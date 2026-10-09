@@ -7905,8 +7905,8 @@ export const activateHostingWordPressPluginV1: API.OperationMethod<
   ActivateHostingWordPressPluginV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateHostingWordPressPluginV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(11872, __c371, 0) as any as S.Schema<ActivateHostingWordPressPluginV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7920,8 +7920,8 @@ export const activateHostingWordPressThemeV1: API.OperationMethod<
   ActivateHostingWordPressThemeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ActivateHostingWordPressThemeV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12480, __c390, 0) as any as S.Schema<ActivateHostingWordPressThemeV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7935,8 +7935,8 @@ export const activateVPSFirewallV1: API.OperationMethod<
   ActivateVPSFirewallV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ActivateVPSFirewallV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(13088, __c409, 0) as any as S.Schema<ActivateVPSFirewallV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7950,8 +7950,8 @@ export const agencyHostingBuildWebsiteNodeJSAssetsV1: API.OperationMethod<
   AgencyHostingBuildWebsiteNodeJSAssetsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AgencyHostingBuildWebsiteNodeJSAssetsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(13792, __c431, 0) as any as S.Schema<AgencyHostingBuildWebsiteNodeJSAssetsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7965,8 +7965,8 @@ export const agencyHostingChangeWebsiteDomainV1: API.OperationMethod<
   AgencyHostingChangeWebsiteDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AgencyHostingChangeWebsiteDomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14176, __c443, 0) as any as S.Schema<AgencyHostingChangeWebsiteDomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7980,8 +7980,8 @@ export const agencyHostingChangeWordPressVersionV1: API.OperationMethod<
   AgencyHostingChangeWordPressVersionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AgencyHostingChangeWordPressVersionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14560, __c455, 0) as any as S.Schema<AgencyHostingChangeWordPressVersionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -7995,8 +7995,8 @@ export const agencyHostingGenerateUploadURLV1: API.OperationMethod<
   AgencyHostingGenerateUploadURLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AgencyHostingGenerateUploadURLV1Request>,
-  output: __S(9, __c1, 1) as any as S.Schema<AgencyHostingV1FilesUploadUrlResource>,
+  input: __S(0, __c0, 0) as any as S.Schema<AgencyHostingGenerateUploadURLV1Request>,
+  output: __S(32, __c1, 0) as any as S.Schema<AgencyHostingV1FilesUploadUrlResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8010,8 +8010,8 @@ export const agencyHostingImportWebsiteFromArchiveV1: API.OperationMethod<
   AgencyHostingImportWebsiteFromArchiveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AgencyHostingImportWebsiteFromArchiveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(384, __c12, 0) as any as S.Schema<AgencyHostingImportWebsiteFromArchiveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8025,8 +8025,8 @@ export const agencyHostingLinkDomainToWebsiteV1: API.OperationMethod<
   AgencyHostingLinkDomainToWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AgencyHostingLinkDomainToWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(736, __c23, 0) as any as S.Schema<AgencyHostingLinkDomainToWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8040,8 +8040,8 @@ export const agencyHostingReinstallWebsiteSSLV1: API.OperationMethod<
   AgencyHostingReinstallWebsiteSSLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AgencyHostingReinstallWebsiteSSLV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1152, __c36, 0) as any as S.Schema<AgencyHostingReinstallWebsiteSSLV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8055,8 +8055,8 @@ export const assignReachAContactToATagV1: API.OperationMethod<
   AssignReachAContactToATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AssignReachAContactToATagV1Request>,
-  output: __S(14, __c1, 6) as any as S.Schema<ReachV1ContactsTagsTagResource>,
+  input: __S(1536, __c48, 0) as any as S.Schema<AssignReachAContactToATagV1Request>,
+  output: __S(1568, __c49, 0) as any as S.Schema<ReachV1ContactsTagsTagResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8070,8 +8070,8 @@ export const assignReachContactsToATagV1: API.OperationMethod<
   AssignReachContactsToATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AssignReachContactsToATagV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1984, __c62, 0) as any as S.Schema<AssignReachContactsToATagV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8085,8 +8085,8 @@ export const attachVPSPublicKeyV1: API.OperationMethod<
   AttachVPSPublicKeyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AttachVPSPublicKeyV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(2400, __c75, 0) as any as S.Schema<AttachVPSPublicKeyV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8100,8 +8100,8 @@ export const billingGetCatalogItemListV1: API.OperationMethod<
   BillingGetCatalogItemListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BillingGetCatalogItemListV1Request>,
-  output: __S(24, __c3, 0) as any as S.Schema<BillingGetCatalogItemListV1Response>,
+  input: __S(2816, __c88, 0) as any as S.Schema<BillingGetCatalogItemListV1Request>,
+  output: __S(2821, __c88, 5) as any as S.Schema<BillingGetCatalogItemListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8115,8 +8115,8 @@ export const billingGetPaymentMethodListV1: API.OperationMethod<
   BillingGetPaymentMethodListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BillingGetPaymentMethodListV1Request>,
-  output: __S(28, __c3, 4) as any as S.Schema<BillingGetPaymentMethodListV1Response>,
+  input: __S(3264, __c102, 0) as any as S.Schema<BillingGetPaymentMethodListV1Request>,
+  output: __S(3267, __c102, 3) as any as S.Schema<BillingGetPaymentMethodListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8130,8 +8130,8 @@ export const billingGetSubscriptionListV1: API.OperationMethod<
   BillingGetSubscriptionListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<BillingGetSubscriptionListV1Request>,
-  output: __S(32, __c4, 0) as any as S.Schema<BillingGetSubscriptionListV1Response>,
+  input: __S(3744, __c117, 0) as any as S.Schema<BillingGetSubscriptionListV1Request>,
+  output: __S(3746, __c117, 2) as any as S.Schema<BillingGetSubscriptionListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8145,8 +8145,8 @@ export const cancelDomainPendingIRTPVerificationV1: API.OperationMethod<
   CancelDomainPendingIRTPVerificationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CancelDomainPendingIRTPVerificationV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(4160, __c130, 0) as any as S.Schema<CancelDomainPendingIRTPVerificationV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8160,8 +8160,8 @@ export const cancelEcommerceAnOrderV1: API.OperationMethod<
   CancelEcommerceAnOrderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CancelEcommerceAnOrderV1Request>,
-  output: __S(36, __c4, 4) as any as S.Schema<EcommerceV1OrderOrderResponseResource>,
+  input: __S(4608, __c144, 0) as any as S.Schema<CancelEcommerceAnOrderV1Request>,
+  output: __S(4640, __c145, 0) as any as S.Schema<EcommerceV1OrderOrderResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8175,8 +8175,8 @@ export const checkDomainDomainAvailabilityV1: API.OperationMethod<
   CheckDomainDomainAvailabilityV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CheckDomainDomainAvailabilityV1Request>,
-  output: __S(40, __c5, 0) as any as S.Schema<CheckDomainDomainAvailabilityV1Response>,
+  input: __S(5024, __c157, 0) as any as S.Schema<CheckDomainDomainAvailabilityV1Request>,
+  output: __S(5027, __c157, 3) as any as S.Schema<CheckDomainDomainAvailabilityV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8190,8 +8190,8 @@ export const checkHostingIfWooCommerceIsInstalledV1: API.OperationMethod<
   CheckHostingIfWooCommerceIsInstalledV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CheckHostingIfWooCommerceIsInstalledV1Request>,
-  output: __S(42, __c5, 2) as any as S.Schema<WordPressV1PluginsWoocommerceInstalledResource>,
+  input: __S(5408, __c169, 0) as any as S.Schema<CheckHostingIfWooCommerceIsInstalledV1Request>,
+  output: __S(5409, __c169, 1) as any as S.Schema<WordPressV1PluginsWoocommerceInstalledResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8207,11 +8207,15 @@ export const checkHostingIfWordPressInstallationsAreValidV1: API.OperationMethod
   CheckHostingIfWordPressInstallationsAreValidV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CheckHostingIfWordPressInstallationsAreValidV1Request>,
+  input: __S(
+    5824,
+    __c182,
+    0,
+  ) as any as S.Schema<CheckHostingIfWordPressInstallationsAreValidV1Request>,
   output: __S(
-    47,
-    __c5,
-    7,
+    5827,
+    __c182,
+    3,
   ) as any as S.Schema<CheckHostingIfWordPressInstallationsAreValidV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -8226,8 +8230,8 @@ export const claimDomainFreeDomainTransferV1: API.OperationMethod<
   ClaimDomainFreeDomainTransferV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ClaimDomainFreeDomainTransferV1Request>,
-  output: __S(50, __c6, 2) as any as S.Schema<DomainsV1TransferTransferResource>,
+  input: __S(6272, __c196, 0) as any as S.Schema<ClaimDomainFreeDomainTransferV1Request>,
+  output: __S(6304, __c197, 0) as any as S.Schema<DomainsV1TransferTransferResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8241,8 +8245,8 @@ export const claimDomainFreeDomainV1: API.OperationMethod<
   ClaimDomainFreeDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ClaimDomainFreeDomainV1Request>,
-  output: __S(52, __c6, 4) as any as S.Schema<DomainsV1PortfolioClaimResource>,
+  input: __S(6688, __c209, 0) as any as S.Schema<ClaimDomainFreeDomainV1Request>,
+  output: __S(6689, __c209, 1) as any as S.Schema<DomainsV1PortfolioClaimResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8256,8 +8260,8 @@ export const clearAgencyHostingWebsiteCacheV1: API.OperationMethod<
   ClearAgencyHostingWebsiteCacheV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ClearAgencyHostingWebsiteCacheV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(7040, __c220, 0) as any as S.Schema<ClearAgencyHostingWebsiteCacheV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8271,8 +8275,8 @@ export const clearHostingNodeJsRuntimeLogsV1: API.OperationMethod<
   ClearHostingNodeJsRuntimeLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ClearHostingNodeJsRuntimeLogsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(7424, __c232, 0) as any as S.Schema<ClearHostingNodeJsRuntimeLogsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8286,8 +8290,8 @@ export const clearHostingWebsiteCacheV1: API.OperationMethod<
   ClearHostingWebsiteCacheV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ClearHostingWebsiteCacheV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(7776, __c243, 0) as any as S.Schema<ClearHostingWebsiteCacheV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8301,8 +8305,8 @@ export const cloneHorizonWebsiteV1: API.OperationMethod<
   CloneHorizonWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CloneHorizonWebsiteV1Request>,
-  output: __S(57, __c7, 1) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
+  input: __S(8192, __c256, 0) as any as S.Schema<CloneHorizonWebsiteV1Request>,
+  output: __S(8224, __c257, 0) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8316,8 +8320,8 @@ export const completeDomainDomainSetupV1: API.OperationMethod<
   CompleteDomainDomainSetupV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CompleteDomainDomainSetupV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8576, __c268, 0) as any as S.Schema<CompleteDomainDomainSetupV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8331,8 +8335,8 @@ export const createAgencyHostingANewWebsiteV1: API.OperationMethod<
   CreateAgencyHostingANewWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateAgencyHostingANewWebsiteV1Request>,
-  output: __S(64, __c8, 0) as any as S.Schema<AgencyHostingV1SetupsWebsiteSetupResource>,
+  input: __S(8932, __c279, 4) as any as S.Schema<CreateAgencyHostingANewWebsiteV1Request>,
+  output: __S(8933, __c279, 5) as any as S.Schema<AgencyHostingV1SetupsWebsiteSetupResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8346,8 +8350,8 @@ export const createAgencyHostingWebsiteCronJobV1: API.OperationMethod<
   CreateAgencyHostingWebsiteCronJobV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateAgencyHostingWebsiteCronJobV1Request>,
-  output: __S(66, __c8, 2) as any as S.Schema<AgencyHostingV1WebsitesCronJobsCronJobResource>,
+  input: __S(9280, __c290, 0) as any as S.Schema<CreateAgencyHostingWebsiteCronJobV1Request>,
+  output: __S(9312, __c291, 0) as any as S.Schema<AgencyHostingV1WebsitesCronJobsCronJobResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8361,8 +8365,12 @@ export const createAgencyHostingWebsiteDatabaseUserV1: API.OperationMethod<
   CreateAgencyHostingWebsiteDatabaseUserV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateAgencyHostingWebsiteDatabaseUserV1Request>,
-  output: __S(68, __c8, 4) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseUserResource>,
+  input: __S(9664, __c302, 0) as any as S.Schema<CreateAgencyHostingWebsiteDatabaseUserV1Request>,
+  output: __S(
+    9696,
+    __c303,
+    0,
+  ) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseUserResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8376,8 +8384,12 @@ export const createAgencyHostingWebsiteDatabaseV1: API.OperationMethod<
   CreateAgencyHostingWebsiteDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateAgencyHostingWebsiteDatabaseV1Request>,
-  output: __S(71, __c8, 7) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseResource>,
+  input: __S(10048, __c314, 0) as any as S.Schema<CreateAgencyHostingWebsiteDatabaseV1Request>,
+  output: __S(
+    10081,
+    __c315,
+    1,
+  ) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8391,8 +8403,8 @@ export const createBillingPurchaseOrderV1: API.OperationMethod<
   CreateBillingPurchaseOrderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateBillingPurchaseOrderV1Request>,
-  output: __S(77, __c9, 5) as any as S.Schema<BillingV1OrderOrderResource>,
+  input: __S(10466, __c327, 2) as any as S.Schema<CreateBillingPurchaseOrderV1Request>,
+  output: __S(10497, __c328, 1) as any as S.Schema<BillingV1OrderOrderResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8406,8 +8418,8 @@ export const createDomainDomainForwardingV1: API.OperationMethod<
   CreateDomainDomainForwardingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreateDomainDomainForwardingV1Request>,
-  output: __S(79, __c9, 7) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
+  input: __S(10880, __c340, 0) as any as S.Schema<CreateDomainDomainForwardingV1Request>,
+  output: __S(10912, __c341, 0) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8421,8 +8433,8 @@ export const createDomainWHOISProfileV1: API.OperationMethod<
   CreateDomainWHOISProfileV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateDomainWHOISProfileV1Request>,
-  output: __S(81, __c10, 1) as any as S.Schema<DomainsV1WHOISProfileResource>,
+  input: __S(11264, __c352, 0) as any as S.Schema<CreateDomainWHOISProfileV1Request>,
+  output: __S(11296, __c353, 0) as any as S.Schema<DomainsV1WHOISProfileResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8436,8 +8448,8 @@ export const createEcommerceADiscountV1: API.OperationMethod<
   CreateEcommerceADiscountV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<CreateEcommerceADiscountV1Request>,
-  output: __S(84, __c10, 4) as any as S.Schema<EcommerceV1DiscountDiscountResponseResource>,
+  input: __S(11680, __c365, 0) as any as S.Schema<CreateEcommerceADiscountV1Request>,
+  output: __S(11681, __c365, 1) as any as S.Schema<EcommerceV1DiscountDiscountResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8451,8 +8463,8 @@ export const createEcommerceAProductVariantV1: API.OperationMethod<
   CreateEcommerceAProductVariantV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateEcommerceAProductVariantV1Request>,
-  output: __S(95, __c11, 7) as any as S.Schema<EcommerceV1VariantVariantResponseResource>,
+  input: __S(11940, __c373, 4) as any as S.Schema<CreateEcommerceAProductVariantV1Request>,
+  output: __S(11941, __c373, 5) as any as S.Schema<EcommerceV1VariantVariantResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8466,8 +8478,12 @@ export const createEcommerceASalesChannelV1: API.OperationMethod<
   CreateEcommerceASalesChannelV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateEcommerceASalesChannelV1Request>,
-  output: __S(98, __c12, 2) as any as S.Schema<EcommerceV1SalesChannelSalesChannelCreationResource>,
+  input: __S(12032, __c376, 0) as any as S.Schema<CreateEcommerceASalesChannelV1Request>,
+  output: __S(
+    12096,
+    __c378,
+    0,
+  ) as any as S.Schema<EcommerceV1SalesChannelSalesChannelCreationResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8481,8 +8497,8 @@ export const createEcommerceDigitalProductV1: API.OperationMethod<
   CreateEcommerceDigitalProductV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateEcommerceDigitalProductV1Request>,
-  output: __S(101, __c12, 5) as any as S.Schema<EcommerceV1ProductProductCreationResource>,
+  input: __S(12128, __c379, 0) as any as S.Schema<CreateEcommerceDigitalProductV1Request>,
+  output: __S(12161, __c380, 1) as any as S.Schema<EcommerceV1ProductProductCreationResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8496,8 +8512,8 @@ export const createEcommercePhysicalProductV1: API.OperationMethod<
   CreateEcommercePhysicalProductV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateEcommercePhysicalProductV1Request>,
-  output: __S(101, __c12, 5) as any as S.Schema<EcommerceV1ProductProductCreationResource>,
+  input: __S(12192, __c381, 0) as any as S.Schema<CreateEcommercePhysicalProductV1Request>,
+  output: __S(12161, __c380, 1) as any as S.Schema<EcommerceV1ProductProductCreationResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8511,8 +8527,8 @@ export const createEcommerceStoreV1: API.OperationMethod<
   CreateEcommerceStoreV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateEcommerceStoreV1Request>,
-  output: __S(107, __c13, 3) as any as S.Schema<EcommerceV1StoreStoreCreationResource>,
+  input: __S(12225, __c382, 1) as any as S.Schema<CreateEcommerceStoreV1Request>,
+  output: __S(12228, __c382, 4) as any as S.Schema<EcommerceV1StoreStoreCreationResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8526,8 +8542,8 @@ export const createHorizonWebsiteV1: API.OperationMethod<
   CreateHorizonWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateHorizonWebsiteV1Request>,
-  output: __S(57, __c7, 1) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
+  input: __S(12256, __c383, 0) as any as S.Schema<CreateHorizonWebsiteV1Request>,
+  output: __S(8224, __c257, 0) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8541,8 +8557,8 @@ export const createHostingAccountCronJobV1: API.OperationMethod<
   CreateHostingAccountCronJobV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateHostingAccountCronJobV1Request>,
-  output: __S(112, __c14, 0) as any as S.Schema<HostingV1CronJobsCronJobResource>,
+  input: __S(12320, __c385, 0) as any as S.Schema<CreateHostingAccountCronJobV1Request>,
+  output: __S(12352, __c386, 0) as any as S.Schema<HostingV1CronJobsCronJobResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8556,8 +8572,8 @@ export const createHostingAccountDatabaseV1: API.OperationMethod<
   CreateHostingAccountDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateHostingAccountDatabaseV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12384, __c387, 0) as any as S.Schema<CreateHostingAccountDatabaseV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8571,8 +8587,8 @@ export const createHostingDatabaseRemoteConnectionV1: API.OperationMethod<
   CreateHostingDatabaseRemoteConnectionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateHostingDatabaseRemoteConnectionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12416, __c388, 0) as any as S.Schema<CreateHostingDatabaseRemoteConnectionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8586,8 +8602,8 @@ export const createHostingLoginLinksV1: API.OperationMethod<
   CreateHostingLoginLinksV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateHostingLoginLinksV1Request>,
-  output: __S(116, __c14, 4) as any as S.Schema<WordPressV1LoginLoginLinksResource>,
+  input: __S(12448, __c389, 0) as any as S.Schema<CreateHostingLoginLinksV1Request>,
+  output: __S(12449, __c389, 1) as any as S.Schema<WordPressV1LoginLoginLinksResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8601,8 +8617,8 @@ export const createHostingWebsiteParkedDomainV1: API.OperationMethod<
   CreateHostingWebsiteParkedDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<CreateHostingWebsiteParkedDomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12512, __c391, 0) as any as S.Schema<CreateHostingWebsiteParkedDomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8616,8 +8632,8 @@ export const createHostingWebsiteRedirectV1: API.OperationMethod<
   CreateHostingWebsiteRedirectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<CreateHostingWebsiteRedirectV1Request>,
-  output: __S(119, __c14, 7) as any as S.Schema<HostingV1RedirectsRedirectResource>,
+  input: __S(12544, __c392, 0) as any as S.Schema<CreateHostingWebsiteRedirectV1Request>,
+  output: __S(12576, __c393, 0) as any as S.Schema<HostingV1RedirectsRedirectResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8631,8 +8647,8 @@ export const createHostingWebsiteSubdomainV1: API.OperationMethod<
   CreateHostingWebsiteSubdomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateHostingWebsiteSubdomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12608, __c394, 0) as any as S.Schema<CreateHostingWebsiteSubdomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8646,8 +8662,8 @@ export const createHostingWebsiteV1: API.OperationMethod<
   CreateHostingWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<CreateHostingWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(12640, __c395, 0) as any as S.Schema<CreateHostingWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8661,8 +8677,8 @@ export const createMailAliasV1: API.OperationMethod<
   CreateMailAliasV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateMailAliasV1Request>,
-  output: __S(124, __c15, 4) as any as S.Schema<MailV1AliasesAliasResource>,
+  input: __S(12672, __c396, 0) as any as S.Schema<CreateMailAliasV1Request>,
+  output: __S(12704, __c397, 0) as any as S.Schema<MailV1AliasesAliasResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8680,8 +8696,8 @@ export const createMailAPITokenV1: API.OperationMethod<
   CreateMailAPITokenV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateMailAPITokenV1Request>,
-  output: __S(129, __c16, 1) as any as S.Schema<MailV1ApiTokensApiTokenCreatedResource>,
+  input: __S(12769, __c399, 1) as any as S.Schema<CreateMailAPITokenV1Request>,
+  output: __S(12770, __c399, 2) as any as S.Schema<MailV1ApiTokensApiTokenCreatedResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8699,8 +8715,8 @@ export const createMailAutoreplyV1: API.OperationMethod<
   CreateMailAutoreplyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateMailAutoreplyV1Request>,
-  output: __S(131, __c16, 3) as any as S.Schema<MailV1AutorepliesAutoreplyResource>,
+  input: __S(12832, __c401, 0) as any as S.Schema<CreateMailAutoreplyV1Request>,
+  output: __S(12864, __c402, 0) as any as S.Schema<MailV1AutorepliesAutoreplyResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8718,8 +8734,8 @@ export const createMailCatchAllV1: API.OperationMethod<
   CreateMailCatchAllV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateMailCatchAllV1Request>,
-  output: __S(133, __c16, 5) as any as S.Schema<MailV1CatchallsCatchallResource>,
+  input: __S(12896, __c403, 0) as any as S.Schema<CreateMailCatchAllV1Request>,
+  output: __S(12928, __c404, 0) as any as S.Schema<MailV1CatchallsCatchallResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8738,8 +8754,8 @@ export const createMailForwarderV1: API.OperationMethod<
   CreateMailForwarderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<CreateMailForwarderV1Request>,
-  output: __S(135, __c16, 7) as any as S.Schema<MailV1ForwardersForwarderResource>,
+  input: __S(12960, __c405, 0) as any as S.Schema<CreateMailForwarderV1Request>,
+  output: __S(12992, __c406, 0) as any as S.Schema<MailV1ForwardersForwarderResource>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8753,8 +8769,8 @@ export const createMailMailboxV1: API.OperationMethod<
   CreateMailMailboxV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateMailMailboxV1Request>,
-  output: __S(140, __c17, 4) as any as S.Schema<MailV1MailboxesMailboxResource>,
+  input: __S(13024, __c407, 0) as any as S.Schema<CreateMailMailboxV1Request>,
+  output: __S(13059, __c408, 3) as any as S.Schema<MailV1MailboxesMailboxResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8773,8 +8789,8 @@ export const createMailWebhookV1: API.OperationMethod<
   CreateMailWebhookV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateMailWebhookV1Request>,
-  output: __S(143, __c17, 7) as any as S.Schema<MailV1WebhooksWebhookCreatedResource>,
+  input: __S(13152, __c411, 0) as any as S.Schema<CreateMailWebhookV1Request>,
+  output: __S(13216, __c413, 0) as any as S.Schema<MailV1WebhooksWebhookCreatedResource>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8788,8 +8804,8 @@ export const createReachAContactFieldV1: API.OperationMethod<
   CreateReachAContactFieldV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateReachAContactFieldV1Request>,
-  output: __S(147, __c18, 3) as any as S.Schema<ReachV1ContactsFieldsContactFieldResource>,
+  input: __S(13248, __c414, 0) as any as S.Schema<CreateReachAContactFieldV1Request>,
+  output: __S(13312, __c416, 0) as any as S.Schema<ReachV1ContactsFieldsContactFieldResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8803,8 +8819,8 @@ export const createReachADraftCampaignV1: API.OperationMethod<
   CreateReachADraftCampaignV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateReachADraftCampaignV1Request>,
-  output: __S(151, __c18, 7) as any as S.Schema<ReachV1CampaignsCreatedCampaignResource>,
+  input: __S(13345, __c417, 1) as any as S.Schema<CreateReachADraftCampaignV1Request>,
+  output: __S(13346, __c417, 2) as any as S.Schema<ReachV1CampaignsCreatedCampaignResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8818,8 +8834,8 @@ export const createReachAnEmailTemplateV1: API.OperationMethod<
   CreateReachAnEmailTemplateV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateReachAnEmailTemplateV1Request>,
-  output: __S(153, __c19, 1) as any as S.Schema<ReachV1TemplatesTemplateResource>,
+  input: __S(13408, __c419, 0) as any as S.Schema<CreateReachAnEmailTemplateV1Request>,
+  output: __S(13440, __c420, 0) as any as S.Schema<ReachV1TemplatesTemplateResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8833,8 +8849,8 @@ export const createReachAProfileSegmentV1: API.OperationMethod<
   CreateReachAProfileSegmentV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<CreateReachAProfileSegmentV1Request>,
-  output: __S(157, __c19, 5) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
+  input: __S(13472, __c421, 0) as any as S.Schema<CreateReachAProfileSegmentV1Request>,
+  output: __S(13504, __c422, 0) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8848,8 +8864,8 @@ export const createReachNewContactsV1: API.OperationMethod<
   CreateReachNewContactsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateReachNewContactsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(13568, __c424, 0) as any as S.Schema<CreateReachNewContactsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8863,8 +8879,8 @@ export const createVPSFirewallRuleV1: API.OperationMethod<
   CreateVPSFirewallRuleV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<CreateVPSFirewallRuleV1Request>,
-  output: __S(160, __c20, 0) as any as S.Schema<VPSV1FirewallFirewallRuleResource>,
+  input: __S(13600, __c425, 0) as any as S.Schema<CreateVPSFirewallRuleV1Request>,
+  output: __S(13632, __c426, 0) as any as S.Schema<VPSV1FirewallFirewallRuleResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8878,8 +8894,8 @@ export const createVPSNewFirewallV1: API.OperationMethod<
   CreateVPSNewFirewallV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<CreateVPSNewFirewallV1Request>,
-  output: __S(163, __c20, 3) as any as S.Schema<VPSV1FirewallFirewallResource>,
+  input: __S(13664, __c427, 0) as any as S.Schema<CreateVPSNewFirewallV1Request>,
+  output: __S(13697, __c428, 1) as any as S.Schema<VPSV1FirewallFirewallResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8893,8 +8909,8 @@ export const createVPSNewProjectV1: API.OperationMethod<
   CreateVPSNewProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateVPSNewProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(13728, __c429, 0) as any as S.Schema<CreateVPSNewProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8908,8 +8924,8 @@ export const createVPSPTRRecordV1: API.OperationMethod<
   CreateVPSPTRRecordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateVPSPTRRecordV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(13760, __c430, 0) as any as S.Schema<CreateVPSPTRRecordV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8923,8 +8939,8 @@ export const createVPSPublicKeyV1: API.OperationMethod<
   CreateVPSPublicKeyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<CreateVPSPublicKeyV1Request>,
-  output: __S(167, __c20, 7) as any as S.Schema<VPSV1PublicKeyPublicKeyResource>,
+  input: __S(13824, __c432, 0) as any as S.Schema<CreateVPSPublicKeyV1Request>,
+  output: __S(13856, __c433, 0) as any as S.Schema<VPSV1PublicKeyPublicKeyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8938,8 +8954,8 @@ export const createVPSSnapshotV1: API.OperationMethod<
   CreateVPSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<CreateVPSSnapshotV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(13888, __c434, 0) as any as S.Schema<CreateVPSSnapshotV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8953,8 +8969,8 @@ export const deactivateHostingWordPressPluginV1: API.OperationMethod<
   DeactivateHostingWordPressPluginV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<DeactivateHostingWordPressPluginV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(13920, __c435, 0) as any as S.Schema<DeactivateHostingWordPressPluginV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8968,8 +8984,8 @@ export const deactivateVPSFirewallV1: API.OperationMethod<
   DeactivateVPSFirewallV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeactivateVPSFirewallV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(13952, __c436, 0) as any as S.Schema<DeactivateVPSFirewallV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8983,8 +8999,8 @@ export const deleteAgencyHostingWebsiteCronJobV1: API.OperationMethod<
   DeleteAgencyHostingWebsiteCronJobV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteAgencyHostingWebsiteCronJobV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(13984, __c437, 0) as any as S.Schema<DeleteAgencyHostingWebsiteCronJobV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -8998,8 +9014,8 @@ export const deleteAgencyHostingWebsiteDatabaseUserV1: API.OperationMethod<
   DeleteAgencyHostingWebsiteDatabaseUserV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteAgencyHostingWebsiteDatabaseUserV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14016, __c438, 0) as any as S.Schema<DeleteAgencyHostingWebsiteDatabaseUserV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9013,8 +9029,8 @@ export const deleteAgencyHostingWebsiteDatabaseV1: API.OperationMethod<
   DeleteAgencyHostingWebsiteDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteAgencyHostingWebsiteDatabaseV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14048, __c439, 0) as any as S.Schema<DeleteAgencyHostingWebsiteDatabaseV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9028,8 +9044,8 @@ export const deleteAgencyHostingWebsiteV1: API.OperationMethod<
   DeleteAgencyHostingWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteAgencyHostingWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14080, __c440, 0) as any as S.Schema<DeleteAgencyHostingWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9043,8 +9059,8 @@ export const deleteBillingPaymentMethodV1: API.OperationMethod<
   DeleteBillingPaymentMethodV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteBillingPaymentMethodV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14112, __c441, 0) as any as S.Schema<DeleteBillingPaymentMethodV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9058,8 +9074,8 @@ export const deleteDNSDNSRecordsV1: API.OperationMethod<
   DeleteDNSDNSRecordsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeleteDNSDNSRecordsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14146, __c442, 2) as any as S.Schema<DeleteDNSDNSRecordsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9073,8 +9089,8 @@ export const deleteDomainDomainForwardingV1: API.OperationMethod<
   DeleteDomainDomainForwardingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteDomainDomainForwardingV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14208, __c444, 0) as any as S.Schema<DeleteDomainDomainForwardingV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9088,8 +9104,8 @@ export const deleteDomainWHOISProfileV1: API.OperationMethod<
   DeleteDomainWHOISProfileV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteDomainWHOISProfileV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14240, __c445, 0) as any as S.Schema<DeleteDomainWHOISProfileV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9103,8 +9119,8 @@ export const deleteEcommerceAProductV1: API.OperationMethod<
   DeleteEcommerceAProductV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DeleteEcommerceAProductV1Request>,
-  output: __S(183, __c22, 7) as any as S.Schema<EcommerceV1ProductProductDeletedResource>,
+  input: __S(14272, __c446, 0) as any as S.Schema<DeleteEcommerceAProductV1Request>,
+  output: __S(14274, __c446, 2) as any as S.Schema<EcommerceV1ProductProductDeletedResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9118,8 +9134,8 @@ export const deleteEcommerceAProductVariantV1: API.OperationMethod<
   DeleteEcommerceAProductVariantV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteEcommerceAProductVariantV1Request>,
-  output: __S(186, __c23, 2) as any as S.Schema<EcommerceV1VariantVariantDeletedResource>,
+  input: __S(14304, __c447, 0) as any as S.Schema<DeleteEcommerceAProductVariantV1Request>,
+  output: __S(14305, __c447, 1) as any as S.Schema<EcommerceV1VariantVariantDeletedResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9133,8 +9149,8 @@ export const deleteEcommerceStoreV1: API.OperationMethod<
   DeleteEcommerceStoreV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeleteEcommerceStoreV1Request>,
-  output: __S(185, __c23, 1) as any as S.Schema<EcommerceV1StoreStoreDeleteResource>,
+  input: __S(14368, __c449, 0) as any as S.Schema<DeleteEcommerceStoreV1Request>,
+  output: __S(14336, __c448, 0) as any as S.Schema<EcommerceV1StoreStoreDeleteResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9148,8 +9164,8 @@ export const deleteHostingAccountCronJobV1: API.OperationMethod<
   DeleteHostingAccountCronJobV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeleteHostingAccountCronJobV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14400, __c450, 0) as any as S.Schema<DeleteHostingAccountCronJobV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9163,8 +9179,8 @@ export const deleteHostingAccountDatabaseV1: API.OperationMethod<
   DeleteHostingAccountDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteHostingAccountDatabaseV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14432, __c451, 0) as any as S.Schema<DeleteHostingAccountDatabaseV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9178,8 +9194,8 @@ export const deleteHostingDatabaseRemoteConnectionV1: API.OperationMethod<
   DeleteHostingDatabaseRemoteConnectionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteHostingDatabaseRemoteConnectionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14464, __c452, 0) as any as S.Schema<DeleteHostingDatabaseRemoteConnectionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9193,8 +9209,8 @@ export const deleteHostingGitAutoDeploymentSettingsV1: API.OperationMethod<
   DeleteHostingGitAutoDeploymentSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeleteHostingGitAutoDeploymentSettingsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14496, __c453, 0) as any as S.Schema<DeleteHostingGitAutoDeploymentSettingsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9208,8 +9224,8 @@ export const deleteHostingWebsiteParkedDomainV1: API.OperationMethod<
   DeleteHostingWebsiteParkedDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteHostingWebsiteParkedDomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14528, __c454, 0) as any as S.Schema<DeleteHostingWebsiteParkedDomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9223,8 +9239,8 @@ export const deleteHostingWebsiteRedirectV1: API.OperationMethod<
   DeleteHostingWebsiteRedirectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeleteHostingWebsiteRedirectV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14592, __c456, 0) as any as S.Schema<DeleteHostingWebsiteRedirectV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9238,8 +9254,8 @@ export const deleteHostingWebsiteSubdomainV1: API.OperationMethod<
   DeleteHostingWebsiteSubdomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DeleteHostingWebsiteSubdomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14624, __c457, 0) as any as S.Schema<DeleteHostingWebsiteSubdomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9253,8 +9269,8 @@ export const deleteHostingWebsiteV1: API.OperationMethod<
   DeleteHostingWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteHostingWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14656, __c458, 0) as any as S.Schema<DeleteHostingWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9268,8 +9284,8 @@ export const deleteHostingWordPressInstallationV1: API.OperationMethod<
   DeleteHostingWordPressInstallationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DeleteHostingWordPressInstallationV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14688, __c459, 0) as any as S.Schema<DeleteHostingWordPressInstallationV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9283,8 +9299,8 @@ export const deleteMailAliasV1: API.OperationMethod<
   DeleteMailAliasV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<DeleteMailAliasV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14720, __c460, 0) as any as S.Schema<DeleteMailAliasV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9298,8 +9314,8 @@ export const deleteMailAutoreplyV1: API.OperationMethod<
   DeleteMailAutoreplyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteMailAutoreplyV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14752, __c461, 0) as any as S.Schema<DeleteMailAutoreplyV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9313,8 +9329,8 @@ export const deleteMailCatchAllV1: API.OperationMethod<
   DeleteMailCatchAllV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<DeleteMailCatchAllV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14784, __c462, 0) as any as S.Schema<DeleteMailCatchAllV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9328,8 +9344,8 @@ export const deleteMailForwarderV1: API.OperationMethod<
   DeleteMailForwarderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteMailForwarderV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14816, __c463, 0) as any as S.Schema<DeleteMailForwarderV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9343,8 +9359,8 @@ export const deleteMailMailboxV1: API.OperationMethod<
   DeleteMailMailboxV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<DeleteMailMailboxV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14848, __c464, 0) as any as S.Schema<DeleteMailMailboxV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, Conflict, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9358,8 +9374,8 @@ export const deleteMailWebhookV1: API.OperationMethod<
   DeleteMailWebhookV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<DeleteMailWebhookV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(14880, __c465, 0) as any as S.Schema<DeleteMailWebhookV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9373,8 +9389,8 @@ export const deleteReachAContactFieldV1: API.OperationMethod<
   DeleteReachAContactFieldV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteReachAContactFieldV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteReachAContactFieldV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9388,8 +9404,8 @@ export const deleteReachAProfileContactV1: API.OperationMethod<
   DeleteReachAProfileContactV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<DeleteReachAProfileContactV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteReachAProfileContactV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9403,8 +9419,8 @@ export const deleteReachAProfileSegmentV1: API.OperationMethod<
   DeleteReachAProfileSegmentV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeleteReachAProfileSegmentV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteReachAProfileSegmentV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9418,8 +9434,8 @@ export const deleteReachATagV1: API.OperationMethod<
   DeleteReachATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeleteReachATagV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteReachATagV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9433,8 +9449,8 @@ export const deleteReachFormV1: API.OperationMethod<
   DeleteReachFormV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeleteReachFormV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteReachFormV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [Conflict, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9448,8 +9464,8 @@ export const deleteVPSFirewallRuleV1: API.OperationMethod<
   DeleteVPSFirewallRuleV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteVPSFirewallRuleV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteVPSFirewallRuleV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9463,8 +9479,8 @@ export const deleteVPSFirewallV1: API.OperationMethod<
   DeleteVPSFirewallV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteVPSFirewallV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteVPSFirewallV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9478,8 +9494,8 @@ export const deleteVPSProjectV1: API.OperationMethod<
   DeleteVPSProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeleteVPSProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteVPSProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9493,8 +9509,8 @@ export const deleteVPSPTRRecordV1: API.OperationMethod<
   DeleteVPSPTRRecordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteVPSPTRRecordV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteVPSPTRRecordV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9508,8 +9524,8 @@ export const deleteVPSPublicKeyV1: API.OperationMethod<
   DeleteVPSPublicKeyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<DeleteVPSPublicKeyV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteVPSPublicKeyV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9523,8 +9539,8 @@ export const deleteVPSSnapshotV1: API.OperationMethod<
   DeleteVPSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<DeleteVPSSnapshotV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteVPSSnapshotV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9538,8 +9554,8 @@ export const deployHostingWebsiteGitRepositoryV1: API.OperationMethod<
   DeployHostingWebsiteGitRepositoryV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<DeployHostingWebsiteGitRepositoryV1Request>,
-  output: __S(215, __c26, 7) as any as S.Schema<HostingV1GitGitDeployOutputResource>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeployHostingWebsiteGitRepositoryV1Request>,
+  output: __S(449, __c14, 1) as any as S.Schema<HostingV1GitGitDeployOutputResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9553,8 +9569,8 @@ export const deployHostingWordPressPluginV1: API.OperationMethod<
   DeployHostingWordPressPluginV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeployHostingWordPressPluginV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeployHostingWordPressPluginV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9568,8 +9584,8 @@ export const deployHostingWordPressThemeV1: API.OperationMethod<
   DeployHostingWordPressThemeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<DeployHostingWordPressThemeV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeployHostingWordPressThemeV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9583,8 +9599,8 @@ export const disableBillingAutoRenewalV1: API.OperationMethod<
   DisableBillingAutoRenewalV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<DisableBillingAutoRenewalV1Request>,
-  output: __S(30, __c3, 6) as any as S.Schema<BillingV1SubscriptionSubscriptionResource>,
+  input: __S(544, __c17, 0) as any as S.Schema<DisableBillingAutoRenewalV1Request>,
+  output: __S(3776, __c118, 0) as any as S.Schema<BillingV1SubscriptionSubscriptionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9598,8 +9614,8 @@ export const disableDomainDomainLockV1: API.OperationMethod<
   DisableDomainDomainLockV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<DisableDomainDomainLockV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(576, __c18, 0) as any as S.Schema<DisableDomainDomainLockV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9613,8 +9629,8 @@ export const disableDomainPrivacyProtectionV1: API.OperationMethod<
   DisableDomainPrivacyProtectionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DisableDomainPrivacyProtectionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(608, __c19, 0) as any as S.Schema<DisableDomainPrivacyProtectionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9628,8 +9644,8 @@ export const dNSGetDNSSnapshotListV1: API.OperationMethod<
   DNSGetDNSSnapshotListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<DNSGetDNSSnapshotListV1Request>,
-  output: __S(224, __c28, 0) as any as S.Schema<DNSGetDNSSnapshotListV1Response>,
+  input: __S(640, __c20, 0) as any as S.Schema<DNSGetDNSSnapshotListV1Request>,
+  output: __S(643, __c20, 3) as any as S.Schema<DNSGetDNSSnapshotListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9643,8 +9659,8 @@ export const domainsAcceptIncomingDomainMoveV1: API.OperationMethod<
   DomainsAcceptIncomingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<DomainsAcceptIncomingDomainMoveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(673, __c21, 1) as any as S.Schema<DomainsAcceptIncomingDomainMoveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9658,8 +9674,8 @@ export const domainsCancelOutgoingDomainMoveV1: API.OperationMethod<
   DomainsCancelOutgoingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<DomainsCancelOutgoingDomainMoveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(704, __c22, 0) as any as S.Schema<DomainsCancelOutgoingDomainMoveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9673,8 +9689,8 @@ export const domainsChangeWHOISProfileForDomainV1: API.OperationMethod<
   DomainsChangeWHOISProfileForDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<DomainsChangeWHOISProfileForDomainV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(768, __c24, 0) as any as S.Schema<DomainsChangeWHOISProfileForDomainV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9688,8 +9704,8 @@ export const domainsGetDomainListV1: API.OperationMethod<
   DomainsGetDomainListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<DomainsGetDomainListV1Request>,
-  output: __S(232, __c29, 0) as any as S.Schema<DomainsGetDomainListV1Response>,
+  input: __S(800, __c25, 0) as any as S.Schema<DomainsGetDomainListV1Request>,
+  output: __S(803, __c25, 3) as any as S.Schema<DomainsGetDomainListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9703,8 +9719,8 @@ export const domainsGetIncomingDomainMoveListV1: API.OperationMethod<
   DomainsGetIncomingDomainMoveListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<DomainsGetIncomingDomainMoveListV1Request>,
-  output: __S(236, __c29, 4) as any as S.Schema<DomainsGetIncomingDomainMoveListV1Response>,
+  input: __S(832, __c26, 0) as any as S.Schema<DomainsGetIncomingDomainMoveListV1Request>,
+  output: __S(897, __c28, 1) as any as S.Schema<DomainsGetIncomingDomainMoveListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9718,8 +9734,8 @@ export const domainsGetIncomingDomainMoveV1: API.OperationMethod<
   DomainsGetIncomingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<DomainsGetIncomingDomainMoveV1Request>,
-  output: __S(234, __c29, 2) as any as S.Schema<DomainsV1MoveMoveResource>,
+  input: __S(928, __c29, 0) as any as S.Schema<DomainsGetIncomingDomainMoveV1Request>,
+  output: __S(864, __c27, 0) as any as S.Schema<DomainsV1MoveMoveResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9733,8 +9749,8 @@ export const domainsGetOutgoingDomainMoveListV1: API.OperationMethod<
   DomainsGetOutgoingDomainMoveListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Request>,
-  output: __S(236, __c29, 4) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Response>,
+  input: __S(960, __c30, 0) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Request>,
+  output: __S(897, __c28, 1) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9748,8 +9764,8 @@ export const domainsGetOutgoingDomainMoveV1: API.OperationMethod<
   DomainsGetOutgoingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<DomainsGetOutgoingDomainMoveV1Request>,
-  output: __S(234, __c29, 2) as any as S.Schema<DomainsV1MoveMoveResource>,
+  input: __S(992, __c31, 0) as any as S.Schema<DomainsGetOutgoingDomainMoveV1Request>,
+  output: __S(864, __c27, 0) as any as S.Schema<DomainsV1MoveMoveResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9763,8 +9779,8 @@ export const domainsGetTransferListV1: API.OperationMethod<
   DomainsGetTransferListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DomainsGetTransferListV1Request>,
-  output: __S(242, __c30, 2) as any as S.Schema<DomainsGetTransferListV1Response>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DomainsGetTransferListV1Request>,
+  output: __S(1026, __c32, 2) as any as S.Schema<DomainsGetTransferListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9778,8 +9794,8 @@ export const domainsGetWHOISProfileListV1: API.OperationMethod<
   DomainsGetWHOISProfileListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<DomainsGetWHOISProfileListV1Request>,
-  output: __S(245, __c30, 5) as any as S.Schema<DomainsGetWHOISProfileListV1Response>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DomainsGetWHOISProfileListV1Request>,
+  output: __S(1058, __c33, 2) as any as S.Schema<DomainsGetWHOISProfileListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9793,8 +9809,8 @@ export const domainsPurchaseNewDomainV1: API.OperationMethod<
   DomainsPurchaseNewDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<DomainsPurchaseNewDomainV1Request>,
-  output: __S(77, __c9, 5) as any as S.Schema<BillingV1OrderOrderResource>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DomainsPurchaseNewDomainV1Request>,
+  output: __S(10497, __c328, 1) as any as S.Schema<BillingV1OrderOrderResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9808,8 +9824,8 @@ export const domainsRejectIncomingDomainMoveV1: API.OperationMethod<
   DomainsRejectIncomingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DomainsRejectIncomingDomainMoveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DomainsRejectIncomingDomainMoveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9823,8 +9839,8 @@ export const domainsStartOutgoingDomainMoveV1: API.OperationMethod<
   DomainsStartOutgoingDomainMoveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DomainsStartOutgoingDomainMoveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DomainsStartOutgoingDomainMoveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9840,11 +9856,11 @@ export const domainsSuggestDomainNamesFromADescriptionV1: API.OperationMethod<
   DomainsSuggestDomainNamesFromADescriptionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<DomainsSuggestDomainNamesFromADescriptionV1Request>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DomainsSuggestDomainNamesFromADescriptionV1Request>,
   output: __S(
-    250,
-    __c31,
-    2,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<DomainsSuggestDomainNamesFromADescriptionV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -9859,8 +9875,8 @@ export const domainsSuggestDomainNamesFromADomainV1: API.OperationMethod<
   DomainsSuggestDomainNamesFromADomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Request>,
-  output: __S(250, __c31, 2) as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Response>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Request>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9874,8 +9890,8 @@ export const domainsUnsetDefaultWHOISProfileV1: API.OperationMethod<
   DomainsUnsetDefaultWHOISProfileV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<DomainsUnsetDefaultWHOISProfileV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DomainsUnsetDefaultWHOISProfileV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9889,11 +9905,15 @@ export const ecommerceCreateAPaymentProviderConnectLinkV1: API.OperationMethod<
   EcommerceCreateAPaymentProviderConnectLinkV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<EcommerceCreateAPaymentProviderConnectLinkV1Request>,
+  input: __S(
+    1344,
+    __c42,
+    0,
+  ) as any as S.Schema<EcommerceCreateAPaymentProviderConnectLinkV1Request>,
   output: __S(
-    255,
-    __c31,
-    7,
+    1346,
+    __c42,
+    2,
   ) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderConnectLinkResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -9908,8 +9928,8 @@ export const ecommerceCreateAProductImageUploadURLV1: API.OperationMethod<
   EcommerceCreateAProductImageUploadURLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<EcommerceCreateAProductImageUploadURLV1Request>,
-  output: __S(257, __c32, 1) as any as S.Schema<EcommerceV1ProductProductImageUploadUrlResource>,
+  input: __S(1376, __c43, 0) as any as S.Schema<EcommerceCreateAProductImageUploadURLV1Request>,
+  output: __S(1377, __c43, 1) as any as S.Schema<EcommerceV1ProductProductImageUploadUrlResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9923,8 +9943,8 @@ export const ecommerceFulfilAnOrderV1: API.OperationMethod<
   EcommerceFulfilAnOrderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<EcommerceFulfilAnOrderV1Request>,
-  output: __S(36, __c4, 4) as any as S.Schema<EcommerceV1OrderOrderResponseResource>,
+  input: __S(1410, __c44, 2) as any as S.Schema<EcommerceFulfilAnOrderV1Request>,
+  output: __S(4640, __c145, 0) as any as S.Schema<EcommerceV1OrderOrderResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9941,8 +9961,8 @@ export const ecommerceUploadAndAttachAProductImageV1: API.OperationMethod<
   EcommerceUploadAndAttachAProductImageV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<EcommerceUploadAndAttachAProductImageV1Request>,
-  output: __S(262, __c32, 6) as any as S.Schema<EcommerceV1ProductProductImageUploadResource>,
+  input: __S(1440, __c45, 0) as any as S.Schema<EcommerceUploadAndAttachAProductImageV1Request>,
+  output: __S(1441, __c45, 1) as any as S.Schema<EcommerceV1ProductProductImageUploadResource>,
   errors: [BadRequest, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9956,8 +9976,8 @@ export const editHorizonWebsiteV1: API.OperationMethod<
   EditHorizonWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<EditHorizonWebsiteV1Request>,
-  output: __S(57, __c7, 1) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
+  input: __S(1472, __c46, 0) as any as S.Schema<EditHorizonWebsiteV1Request>,
+  output: __S(8224, __c257, 0) as any as S.Schema<HorizonsV1WebsitesCreatedWebsiteResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9971,8 +9991,8 @@ export const enableBillingAutoRenewalV1: API.OperationMethod<
   EnableBillingAutoRenewalV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<EnableBillingAutoRenewalV1Request>,
-  output: __S(30, __c3, 6) as any as S.Schema<BillingV1SubscriptionSubscriptionResource>,
+  input: __S(1504, __c47, 0) as any as S.Schema<EnableBillingAutoRenewalV1Request>,
+  output: __S(3776, __c118, 0) as any as S.Schema<BillingV1SubscriptionSubscriptionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -9986,8 +10006,8 @@ export const enableDomainDomainLockV1: API.OperationMethod<
   EnableDomainDomainLockV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<EnableDomainDomainLockV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1600, __c50, 0) as any as S.Schema<EnableDomainDomainLockV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10001,8 +10021,8 @@ export const enableDomainPrivacyProtectionV1: API.OperationMethod<
   EnableDomainPrivacyProtectionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<EnableDomainPrivacyProtectionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(1632, __c51, 0) as any as S.Schema<EnableDomainPrivacyProtectionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10016,8 +10036,8 @@ export const enableEcommerceManualPaymentMethodV1: API.OperationMethod<
   EnableEcommerceManualPaymentMethodV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<EnableEcommerceManualPaymentMethodV1Request>,
-  output: __S(269, __c33, 5) as any as S.Schema<EcommerceV1PaymentManualPaymentResource>,
+  input: __S(1664, __c52, 0) as any as S.Schema<EnableEcommerceManualPaymentMethodV1Request>,
+  output: __S(1666, __c52, 2) as any as S.Schema<EcommerceV1PaymentManualPaymentResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10031,8 +10051,8 @@ export const generateHostingAFreeSubdomainV1: API.OperationMethod<
   GenerateHostingAFreeSubdomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GenerateHostingAFreeSubdomainV1Request>,
-  output: __S(271, __c33, 7) as any as S.Schema<HostingV1DomainsFreeSubdomainResource>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GenerateHostingAFreeSubdomainV1Request>,
+  output: __S(1697, __c53, 1) as any as S.Schema<HostingV1DomainsFreeSubdomainResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10046,8 +10066,8 @@ export const generateHostingGitSSHKeyV1: API.OperationMethod<
   GenerateHostingGitSSHKeyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GenerateHostingGitSSHKeyV1Request>,
-  output: __S(273, __c34, 1) as any as S.Schema<HostingV1GitGitSshKeyResource>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GenerateHostingGitSSHKeyV1Request>,
+  output: __S(1760, __c55, 0) as any as S.Schema<HostingV1GitGitSshKeyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10061,8 +10081,8 @@ export const getAgencyHostingWebsiteDetailsV1: API.OperationMethod<
   GetAgencyHostingWebsiteDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetAgencyHostingWebsiteDetailsV1Request>,
-  output: __S(292, __c36, 4) as any as S.Schema<AgencyHostingV1WebsitesWebsiteResource>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetAgencyHostingWebsiteDetailsV1Request>,
+  output: __S(1810, __c56, 18) as any as S.Schema<AgencyHostingV1WebsitesWebsiteResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10076,8 +10096,8 @@ export const getAgencyHostingWebsiteSetupStatusV1: API.OperationMethod<
   GetAgencyHostingWebsiteSetupStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetAgencyHostingWebsiteSetupStatusV1Request>,
-  output: __S(294, __c36, 6) as any as S.Schema<AgencyHostingV1SetupsWebsiteSetupStatusResource>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetAgencyHostingWebsiteSetupStatusV1Request>,
+  output: __S(1825, __c57, 1) as any as S.Schema<AgencyHostingV1SetupsWebsiteSetupStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10091,8 +10111,8 @@ export const getAgencyHostingWebsiteSSLStatusV1: API.OperationMethod<
   GetAgencyHostingWebsiteSSLStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetAgencyHostingWebsiteSSLStatusV1Request>,
-  output: __S(296, __c37, 0) as any as S.Schema<AgencyHostingV1SslSslStatusResource>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetAgencyHostingWebsiteSSLStatusV1Request>,
+  output: __S(1857, __c58, 1) as any as S.Schema<AgencyHostingV1SslSslStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10106,8 +10126,8 @@ export const getAgencyHostingWordPressSettingsV1: API.OperationMethod<
   GetAgencyHostingWordPressSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetAgencyHostingWordPressSettingsV1Request>,
-  output: __S(298, __c37, 2) as any as S.Schema<AgencyHostingV1WordPressSettingsResource>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetAgencyHostingWordPressSettingsV1Request>,
+  output: __S(1889, __c59, 1) as any as S.Schema<AgencyHostingV1WordPressSettingsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10121,8 +10141,8 @@ export const getDNSDNSRecordsV1: API.OperationMethod<
   GetDNSDNSRecordsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<GetDNSDNSRecordsV1Request>,
-  output: __S(304, __c38, 0) as any as S.Schema<GetDNSDNSRecordsV1Response>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetDNSDNSRecordsV1Request>,
+  output: __S(1921, __c60, 1) as any as S.Schema<GetDNSDNSRecordsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10136,8 +10156,8 @@ export const getDNSDNSSnapshotV1: API.OperationMethod<
   GetDNSDNSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<GetDNSDNSSnapshotV1Request>,
-  output: __S(306, __c38, 2) as any as S.Schema<DNSV1SnapshotSnapshotWithContentResource>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetDNSDNSSnapshotV1Request>,
+  output: __S(2049, __c64, 1) as any as S.Schema<DNSV1SnapshotSnapshotWithContentResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10151,8 +10171,8 @@ export const getDomainDomainAuthorizationCodeV1: API.OperationMethod<
   GetDomainDomainAuthorizationCodeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<GetDomainDomainAuthorizationCodeV1Request>,
-  output: __S(308, __c38, 4) as any as S.Schema<DomainsV1PortfolioAuthCodeAuthCodeResource>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetDomainDomainAuthorizationCodeV1Request>,
+  output: __S(2081, __c65, 1) as any as S.Schema<DomainsV1PortfolioAuthCodeAuthCodeResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10166,8 +10186,8 @@ export const getDomainDomainDetailsV1: API.OperationMethod<
   GetDomainDomainDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetDomainDomainDetailsV1Request>,
-  output: __S(313, __c39, 1) as any as S.Schema<DomainsV1DomainDomainExtendedResource>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetDomainDomainDetailsV1Request>,
+  output: __S(2115, __c66, 3) as any as S.Schema<DomainsV1DomainDomainExtendedResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10181,8 +10201,8 @@ export const getDomainDomainForwardingV1: API.OperationMethod<
   GetDomainDomainForwardingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetDomainDomainForwardingV1Request>,
-  output: __S(79, __c9, 7) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetDomainDomainForwardingV1Request>,
+  output: __S(10912, __c341, 0) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10196,11 +10216,11 @@ export const getDomainDomainRenewalInformationV1: API.OperationMethod<
   GetDomainDomainRenewalInformationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<GetDomainDomainRenewalInformationV1Request>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetDomainDomainRenewalInformationV1Request>,
   output: __S(
-    316,
-    __c39,
-    4,
+    2209,
+    __c69,
+    1,
   ) as any as S.Schema<DomainsV1PortfolioRenewalRenewalInformationResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -10215,8 +10235,8 @@ export const getDomainPendingIRTPVerificationV1: API.OperationMethod<
   GetDomainPendingIRTPVerificationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetDomainPendingIRTPVerificationV1Request>,
-  output: __S(318, __c39, 6) as any as S.Schema<DomainsV1IRTPVerificationResource>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetDomainPendingIRTPVerificationV1Request>,
+  output: __S(2241, __c70, 1) as any as S.Schema<DomainsV1IRTPVerificationResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10230,8 +10250,8 @@ export const getDomainTransferV1: API.OperationMethod<
   GetDomainTransferV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetDomainTransferV1Request>,
-  output: __S(50, __c6, 2) as any as S.Schema<DomainsV1TransferTransferResource>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetDomainTransferV1Request>,
+  output: __S(6304, __c197, 0) as any as S.Schema<DomainsV1TransferTransferResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10245,8 +10265,8 @@ export const getDomainWHOISProfileUsageV1: API.OperationMethod<
   GetDomainWHOISProfileUsageV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetDomainWHOISProfileUsageV1Request>,
-  output: __S(250, __c31, 2) as any as S.Schema<GetDomainWHOISProfileUsageV1Response>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetDomainWHOISProfileUsageV1Request>,
+  output: __S(1248, __c39, 0) as any as S.Schema<GetDomainWHOISProfileUsageV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10260,8 +10280,8 @@ export const getDomainWHOISProfileV1: API.OperationMethod<
   GetDomainWHOISProfileV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<GetDomainWHOISProfileV1Request>,
-  output: __S(81, __c10, 1) as any as S.Schema<DomainsV1WHOISProfileResource>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetDomainWHOISProfileV1Request>,
+  output: __S(11296, __c353, 0) as any as S.Schema<DomainsV1WHOISProfileResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10275,8 +10295,8 @@ export const getEcommerceAnOrderV1: API.OperationMethod<
   GetEcommerceAnOrderV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetEcommerceAnOrderV1Request>,
-  output: __S(331, __c41, 3) as any as S.Schema<EcommerceV1OrderOrderDetailResponseResource>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetEcommerceAnOrderV1Request>,
+  output: __S(2377, __c74, 9) as any as S.Schema<EcommerceV1OrderOrderDetailResponseResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10291,14 +10311,14 @@ export const getEcommerceCustomStorefrontSetupInstructionsV1: API.OperationMetho
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    332,
-    __c41,
-    4,
+    2464,
+    __c77,
+    0,
   ) as any as S.Schema<GetEcommerceCustomStorefrontSetupInstructionsV1Request>,
   output: __S(
-    333,
-    __c41,
-    5,
+    2465,
+    __c77,
+    1,
   ) as any as S.Schema<EcommerceV1MiscellaneousCustomStorefrontInstructionsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -10313,8 +10333,8 @@ export const getEcommerceStoreMetadataV1: API.OperationMethod<
   GetEcommerceStoreMetadataV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetEcommerceStoreMetadataV1Request>,
-  output: __S(337, __c42, 1) as any as S.Schema<EcommerceV1StoreStoreMetadataResource>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetEcommerceStoreMetadataV1Request>,
+  output: __S(2499, __c78, 3) as any as S.Schema<EcommerceV1StoreStoreMetadataResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10328,8 +10348,8 @@ export const getEcommerceStoresV1: API.OperationMethod<
   GetEcommerceStoresV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<GetEcommerceStoresV1Request>,
-  output: __S(342, __c42, 6) as any as S.Schema<GetEcommerceStoresV1Response>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetEcommerceStoresV1Request>,
+  output: __S(2531, __c79, 3) as any as S.Schema<GetEcommerceStoresV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10343,8 +10363,8 @@ export const getHorizonWebsiteV1: API.OperationMethod<
   GetHorizonWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<GetHorizonWebsiteV1Request>,
-  output: __S(344, __c43, 0) as any as S.Schema<HorizonsV1WebsitesWebsiteUrlResource>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetHorizonWebsiteV1Request>,
+  output: __S(2593, __c81, 1) as any as S.Schema<HorizonsV1WebsitesWebsiteUrlResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10358,8 +10378,8 @@ export const getHostingAIOptionStatusV1: API.OperationMethod<
   GetHostingAIOptionStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<GetHostingAIOptionStatusV1Request>,
-  output: __S(346, __c43, 2) as any as S.Schema<WordPressV1HostingerPluginsAiOptionStatusResource>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetHostingAIOptionStatusV1Request>,
+  output: __S(2625, __c82, 1) as any as S.Schema<WordPressV1HostingerPluginsAiOptionStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10373,8 +10393,8 @@ export const getHostingCronJobOutputV1: API.OperationMethod<
   GetHostingCronJobOutputV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<GetHostingCronJobOutputV1Request>,
-  output: __S(348, __c43, 4) as any as S.Schema<HostingV1CronJobsCronJobOutputResource>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetHostingCronJobOutputV1Request>,
+  output: __S(2657, __c83, 1) as any as S.Schema<HostingV1CronJobsCronJobOutputResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10388,8 +10408,8 @@ export const getHostingGitAutoDeploymentSettingsV1: API.OperationMethod<
   GetHostingGitAutoDeploymentSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<GetHostingGitAutoDeploymentSettingsV1Request>,
-  output: __S(350, __c43, 6) as any as S.Schema<HostingV1GitGitAutoDeploymentSettingsResource>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetHostingGitAutoDeploymentSettingsV1Request>,
+  output: __S(2689, __c84, 1) as any as S.Schema<HostingV1GitGitAutoDeploymentSettingsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10403,8 +10423,8 @@ export const getHostingGitSSHPublicKeyV1: API.OperationMethod<
   GetHostingGitSSHPublicKeyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetHostingGitSSHPublicKeyV1Request>,
-  output: __S(273, __c34, 1) as any as S.Schema<HostingV1GitGitSshKeyResource>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetHostingGitSSHPublicKeyV1Request>,
+  output: __S(1760, __c55, 0) as any as S.Schema<HostingV1GitGitSshKeyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10418,8 +10438,8 @@ export const getHostingInstallationJWTTokenV1: API.OperationMethod<
   GetHostingInstallationJWTTokenV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetHostingInstallationJWTTokenV1Request>,
-  output: __S(353, __c44, 1) as any as S.Schema<WordPressV1InstallationsJwtTokenResource>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetHostingInstallationJWTTokenV1Request>,
+  output: __S(2753, __c86, 1) as any as S.Schema<WordPressV1InstallationsJwtTokenResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10433,8 +10453,8 @@ export const getHostingLiteSpeedCacheStatusV1: API.OperationMethod<
   GetHostingLiteSpeedCacheStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetHostingLiteSpeedCacheStatusV1Request>,
-  output: __S(355, __c44, 3) as any as S.Schema<WordPressV1LitespeedLitespeedCacheStatusResource>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetHostingLiteSpeedCacheStatusV1Request>,
+  output: __S(2785, __c87, 1) as any as S.Schema<WordPressV1LitespeedLitespeedCacheStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10448,8 +10468,8 @@ export const getHostingMaintenanceStatusV1: API.OperationMethod<
   GetHostingMaintenanceStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<GetHostingMaintenanceStatusV1Request>,
-  output: __S(357, __c44, 5) as any as S.Schema<WordPressV1MaintenanceMaintenanceStatusResource>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetHostingMaintenanceStatusV1Request>,
+  output: __S(2880, __c90, 0) as any as S.Schema<WordPressV1MaintenanceMaintenanceStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10463,8 +10483,8 @@ export const getHostingMemcachedObjectCacheStatusV1: API.OperationMethod<
   GetHostingMemcachedObjectCacheStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<GetHostingMemcachedObjectCacheStatusV1Request>,
-  output: __S(357, __c44, 5) as any as S.Schema<WordPressV1MemcachedMemcachedStatusResource>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetHostingMemcachedObjectCacheStatusV1Request>,
+  output: __S(2880, __c90, 0) as any as S.Schema<WordPressV1MemcachedMemcachedStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10478,8 +10498,8 @@ export const getHostingNodeJsBuildDetailsV1: API.OperationMethod<
   GetHostingNodeJsBuildDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<GetHostingNodeJsBuildDetailsV1Request>,
-  output: __S(364, __c45, 4) as any as S.Schema<HostingV1NodeJsBuildResource>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetHostingNodeJsBuildDetailsV1Request>,
+  output: __S(2980, __c93, 4) as any as S.Schema<HostingV1NodeJsBuildResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10493,8 +10513,8 @@ export const getHostingNodeJSBuildLogsV1: API.OperationMethod<
   GetHostingNodeJSBuildLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<GetHostingNodeJSBuildLogsV1Request>,
-  output: __S(366, __c45, 6) as any as S.Schema<HostingV1NodeJsBuildLogsResource>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetHostingNodeJSBuildLogsV1Request>,
+  output: __S(3009, __c94, 1) as any as S.Schema<HostingV1NodeJsBuildLogsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10508,8 +10528,8 @@ export const getHostingNodeJsBuildSettingsV1: API.OperationMethod<
   GetHostingNodeJsBuildSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<GetHostingNodeJsBuildSettingsV1Request>,
-  output: __S(368, __c46, 0) as any as S.Schema<HostingV1NodeJsStoredBuildSettingsResource>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetHostingNodeJsBuildSettingsV1Request>,
+  output: __S(3072, __c96, 0) as any as S.Schema<HostingV1NodeJsStoredBuildSettingsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10523,8 +10543,8 @@ export const getHostingNodeJsRuntimeLogsV1: API.OperationMethod<
   GetHostingNodeJsRuntimeLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<GetHostingNodeJsRuntimeLogsV1Request>,
-  output: __S(372, __c46, 4) as any as S.Schema<HostingV1NodeJsRuntimeLogsResource>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetHostingNodeJsRuntimeLogsV1Request>,
+  output: __S(3107, __c97, 3) as any as S.Schema<HostingV1NodeJsRuntimeLogsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10538,8 +10558,8 @@ export const getHostingPHPDetailsV1: API.OperationMethod<
   GetHostingPHPDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<GetHostingPHPDetailsV1Request>,
-  output: __S(377, __c47, 1) as any as S.Schema<HostingV1PhpPhpDetailsResource>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetHostingPHPDetailsV1Request>,
+  output: __S(3140, __c98, 4) as any as S.Schema<HostingV1PhpPhpDetailsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10553,8 +10573,8 @@ export const getHostingPHPInfoV1: API.OperationMethod<
   GetHostingPHPInfoV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<GetHostingPHPInfoV1Request>,
-  output: __S(379, __c47, 3) as any as S.Schema<HostingV1PhpPhpInfoResource>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetHostingPHPInfoV1Request>,
+  output: __S(3169, __c99, 1) as any as S.Schema<HostingV1PhpPhpInfoResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10568,8 +10588,8 @@ export const getHostingPhpMyAdminLinkV1: API.OperationMethod<
   GetHostingPhpMyAdminLinkV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<GetHostingPhpMyAdminLinkV1Request>,
-  output: __S(381, __c47, 5) as any as S.Schema<HostingV1DatabasesPhpMyAdminLinkResource>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetHostingPhpMyAdminLinkV1Request>,
+  output: __S(3201, __c100, 1) as any as S.Schema<HostingV1DatabasesPhpMyAdminLinkResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10583,8 +10603,8 @@ export const getHostingSSLStatusV1: API.OperationMethod<
   GetHostingSSLStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<GetHostingSSLStatusV1Request>,
-  output: __S(383, __c47, 7) as any as S.Schema<HostingV1SslSslStatusResource>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetHostingSSLStatusV1Request>,
+  output: __S(3233, __c101, 1) as any as S.Schema<HostingV1SslSslStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10598,8 +10618,8 @@ export const getHostingWebsiteFileContentV1: API.OperationMethod<
   GetHostingWebsiteFileContentV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<GetHostingWebsiteFileContentV1Request>,
-  output: __S(385, __c48, 1) as any as S.Schema<HostingV1FilesFileContentResource>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetHostingWebsiteFileContentV1Request>,
+  output: __S(3297, __c103, 1) as any as S.Schema<HostingV1FilesFileContentResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10613,8 +10633,8 @@ export const getHostingWordPressCoreVersionV1: API.OperationMethod<
   GetHostingWordPressCoreVersionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetHostingWordPressCoreVersionV1Request>,
-  output: __S(389, __c48, 5) as any as S.Schema<WordPressV1InstallationsVersionResource>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetHostingWordPressCoreVersionV1Request>,
+  output: __S(3329, __c104, 1) as any as S.Schema<WordPressV1InstallationsVersionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10628,8 +10648,8 @@ export const getMailOrderPlanV1: API.OperationMethod<
   GetMailOrderPlanV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<GetMailOrderPlanV1Request>,
-  output: __S(393, __c49, 1) as any as S.Schema<MailV1OrdersPlanResource>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetMailOrderPlanV1Request>,
+  output: __S(3395, __c106, 3) as any as S.Schema<MailV1OrdersPlanResource>,
   errors: [NotFound, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10643,8 +10663,8 @@ export const getMailWebhookV1: API.OperationMethod<
   GetMailWebhookV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetMailWebhookV1Request>,
-  output: __S(395, __c49, 3) as any as S.Schema<MailV1WebhooksWebhookResource>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetMailWebhookV1Request>,
+  output: __S(3456, __c108, 0) as any as S.Schema<MailV1WebhooksWebhookResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10658,8 +10678,8 @@ export const getReachAutomationDetailsV1: API.OperationMethod<
   GetReachAutomationDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<GetReachAutomationDetailsV1Request>,
-  output: __S(398, __c49, 6) as any as S.Schema<ReachV1AutomationsAutomationResource>,
+  input: __S(3488, __c109, 0) as any as S.Schema<GetReachAutomationDetailsV1Request>,
+  output: __S(3521, __c110, 1) as any as S.Schema<ReachV1AutomationsAutomationResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10673,8 +10693,8 @@ export const getReachCampaignDetailsV1: API.OperationMethod<
   GetReachCampaignDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<GetReachCampaignDetailsV1Request>,
-  output: __S(401, __c50, 1) as any as S.Schema<ReachV1CampaignsCampaignDetailsResource>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetReachCampaignDetailsV1Request>,
+  output: __S(3554, __c111, 2) as any as S.Schema<ReachV1CampaignsCampaignDetailsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10688,8 +10708,8 @@ export const getReachCampaignPerformanceV1: API.OperationMethod<
   GetReachCampaignPerformanceV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<GetReachCampaignPerformanceV1Request>,
-  output: __S(403, __c50, 3) as any as S.Schema<ReachV1CampaignsCampaignStatisticsResource>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetReachCampaignPerformanceV1Request>,
+  output: __S(3585, __c112, 1) as any as S.Schema<ReachV1CampaignsCampaignStatisticsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10703,8 +10723,8 @@ export const getReachConnectedSendingDomainV1: API.OperationMethod<
   GetReachConnectedSendingDomainV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<GetReachConnectedSendingDomainV1Request>,
-  output: __S(407, __c50, 7) as any as S.Schema<ReachV1ProfilesDomainsSendingDomainResource>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetReachConnectedSendingDomainV1Request>,
+  output: __S(3619, __c113, 3) as any as S.Schema<ReachV1ProfilesDomainsSendingDomainResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10718,8 +10738,8 @@ export const getReachContactDetailsV1: API.OperationMethod<
   GetReachContactDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetReachContactDetailsV1Request>,
-  output: __S(412, __c51, 4) as any as S.Schema<ReachV1ContactsContactDetailsResource>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetReachContactDetailsV1Request>,
+  output: __S(3651, __c114, 3) as any as S.Schema<ReachV1ContactsContactDetailsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10733,8 +10753,8 @@ export const getReachFormDetailsV1: API.OperationMethod<
   GetReachFormDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<GetReachFormDetailsV1Request>,
-  output: __S(417, __c52, 1) as any as S.Schema<ReachV1FormsFormDetailsResource>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetReachFormDetailsV1Request>,
+  output: __S(3716, __c116, 4) as any as S.Schema<ReachV1FormsFormDetailsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10748,8 +10768,8 @@ export const getReachProfileDomainDNSStatusV1: API.OperationMethod<
   GetReachProfileDomainDNSStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetReachProfileDomainDNSStatusV1Request>,
-  output: __S(424, __c53, 0) as any as S.Schema<ReachV1ProfilesDomainsDnsStatusResource>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetReachProfileDomainDNSStatusV1Request>,
+  output: __S(3814, __c119, 6) as any as S.Schema<ReachV1ProfilesDomainsDnsStatusResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10763,8 +10783,8 @@ export const getReachProfileSegmentDetailsV1: API.OperationMethod<
   GetReachProfileSegmentDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<GetReachProfileSegmentDetailsV1Request>,
-  output: __S(157, __c19, 5) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetReachProfileSegmentDetailsV1Request>,
+  output: __S(13504, __c422, 0) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10778,8 +10798,8 @@ export const getReachRemainingPlanLimitsV1: API.OperationMethod<
   GetReachRemainingPlanLimitsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<GetReachRemainingPlanLimitsV1Request>,
-  output: __S(428, __c53, 4) as any as S.Schema<ReachV1ProfilesPlanLimitsResource>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetReachRemainingPlanLimitsV1Request>,
+  output: __S(3874, __c121, 2) as any as S.Schema<ReachV1ProfilesPlanLimitsResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10793,11 +10813,11 @@ export const getV2DomainVerificationsDIRECT: API.OperationMethod<
   GetV2DomainVerificationsDIRECTError,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<GetV2DomainVerificationsDIRECTRequest>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetV2DomainVerificationsDIRECTRequest>,
   output: __S(
-    437,
-    __c54,
-    5,
+    3912,
+    __c122,
+    8,
   ) as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollection>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -10812,8 +10832,8 @@ export const getVPSActionDetailsV1: API.OperationMethod<
   GetVPSActionDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<GetVPSActionDetailsV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetVPSActionDetailsV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10827,8 +10847,8 @@ export const getVPSActionsV1: API.OperationMethod<
   GetVPSActionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<GetVPSActionsV1Request>,
-  output: __S(441, __c55, 1) as any as S.Schema<GetVPSActionsV1Response>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetVPSActionsV1Request>,
+  output: __S(3970, __c124, 2) as any as S.Schema<GetVPSActionsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10842,8 +10862,8 @@ export const getVPSAttachedPublicKeysV1: API.OperationMethod<
   GetVPSAttachedPublicKeysV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<GetVPSAttachedPublicKeysV1Request>,
-  output: __S(444, __c55, 4) as any as S.Schema<GetVPSAttachedPublicKeysV1Response>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetVPSAttachedPublicKeysV1Request>,
+  output: __S(4033, __c126, 1) as any as S.Schema<GetVPSAttachedPublicKeysV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10857,8 +10877,8 @@ export const getVPSBackupsV1: API.OperationMethod<
   GetVPSBackupsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetVPSBackupsV1Request>,
-  output: __S(448, __c56, 0) as any as S.Schema<GetVPSBackupsV1Response>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetVPSBackupsV1Request>,
+  output: __S(4067, __c127, 3) as any as S.Schema<GetVPSBackupsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10872,8 +10892,8 @@ export const getVPSFirewallDetailsV1: API.OperationMethod<
   GetVPSFirewallDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<GetVPSFirewallDetailsV1Request>,
-  output: __S(163, __c20, 3) as any as S.Schema<VPSV1FirewallFirewallResource>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetVPSFirewallDetailsV1Request>,
+  output: __S(13697, __c428, 1) as any as S.Schema<VPSV1FirewallFirewallResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10887,8 +10907,8 @@ export const getVPSMetricsV1: API.OperationMethod<
   GetVPSMetricsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<GetVPSMetricsV1Request>,
-  output: __S(452, __c56, 4) as any as S.Schema<VPSV1MetricsMetricsCollection>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetVPSMetricsV1Request>,
+  output: __S(4130, __c129, 2) as any as S.Schema<VPSV1MetricsMetricsCollection>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10902,8 +10922,8 @@ export const getVPSProjectContainersV1: API.OperationMethod<
   GetVPSProjectContainersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<GetVPSProjectContainersV1Request>,
-  output: __S(459, __c57, 3) as any as S.Schema<GetVPSProjectContainersV1Response>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetVPSProjectContainersV1Request>,
+  output: __S(4193, __c131, 1) as any as S.Schema<GetVPSProjectContainersV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10917,8 +10937,8 @@ export const getVPSProjectContentsV1: API.OperationMethod<
   GetVPSProjectContentsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<GetVPSProjectContentsV1Request>,
-  output: __S(461, __c57, 5) as any as S.Schema<VPSV1DockerManagerContentResource>,
+  input: __S(4256, __c133, 0) as any as S.Schema<GetVPSProjectContentsV1Request>,
+  output: __S(4257, __c133, 1) as any as S.Schema<VPSV1DockerManagerContentResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10932,8 +10952,8 @@ export const getVPSProjectLogsV1: API.OperationMethod<
   GetVPSProjectLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<GetVPSProjectLogsV1Request>,
-  output: __S(467, __c58, 3) as any as S.Schema<GetVPSProjectLogsV1Response>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetVPSProjectLogsV1Request>,
+  output: __S(4293, __c134, 5) as any as S.Schema<GetVPSProjectLogsV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10947,8 +10967,8 @@ export const getVPSPublicKeysV1: API.OperationMethod<
   GetVPSPublicKeysV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GetVPSPublicKeysV1Request>,
-  output: __S(444, __c55, 4) as any as S.Schema<GetVPSPublicKeysV1Response>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetVPSPublicKeysV1Request>,
+  output: __S(4033, __c126, 1) as any as S.Schema<GetVPSPublicKeysV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10962,8 +10982,8 @@ export const getVPSScanMetricsV1: API.OperationMethod<
   GetVPSScanMetricsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetVPSScanMetricsV1Request>,
-  output: __S(470, __c58, 6) as any as S.Schema<VPSV1MalwareMetricsResource>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetVPSScanMetricsV1Request>,
+  output: __S(4353, __c136, 1) as any as S.Schema<VPSV1MalwareMetricsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10977,8 +10997,8 @@ export const getVPSSnapshotV1: API.OperationMethod<
   GetVPSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GetVPSSnapshotV1Request>,
-  output: __S(472, __c59, 0) as any as S.Schema<VPSV1SnapshotSnapshotResource>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetVPSSnapshotV1Request>,
+  output: __S(4385, __c137, 1) as any as S.Schema<VPSV1SnapshotSnapshotResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -10992,8 +11012,8 @@ export const getVPSTemplateDetailsV1: API.OperationMethod<
   GetVPSTemplateDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<GetVPSTemplateDetailsV1Request>,
-  output: __S(474, __c59, 2) as any as S.Schema<VPSV1TemplateTemplateResource>,
+  input: __S(4416, __c138, 0) as any as S.Schema<GetVPSTemplateDetailsV1Request>,
+  output: __S(4448, __c139, 0) as any as S.Schema<VPSV1TemplateTemplateResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11007,8 +11027,8 @@ export const getVPSTemplatesV1: API.OperationMethod<
   GetVPSTemplatesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<GetVPSTemplatesV1Request>,
-  output: __S(477, __c59, 5) as any as S.Schema<GetVPSTemplatesV1Response>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetVPSTemplatesV1Request>,
+  output: __S(4482, __c140, 2) as any as S.Schema<GetVPSTemplatesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11022,8 +11042,8 @@ export const getVPSVirtualMachineDetailsV1: API.OperationMethod<
   GetVPSVirtualMachineDetailsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<GetVPSVirtualMachineDetailsV1Request>,
-  output: __S(481, __c60, 1) as any as S.Schema<VPSV1VirtualMachineVirtualMachineResource>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetVPSVirtualMachineDetailsV1Request>,
+  output: __S(4546, __c142, 2) as any as S.Schema<VPSV1VirtualMachineVirtualMachineResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11037,8 +11057,8 @@ export const getVPSVirtualMachinesV1: API.OperationMethod<
   GetVPSVirtualMachinesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<GetVPSVirtualMachinesV1Request>,
-  output: __S(484, __c60, 4) as any as S.Schema<GetVPSVirtualMachinesV1Response>,
+  input: __S(4576, __c143, 0) as any as S.Schema<GetVPSVirtualMachinesV1Request>,
+  output: __S(4578, __c143, 2) as any as S.Schema<GetVPSVirtualMachinesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11052,8 +11072,8 @@ export const horizonsGetWebsiteListV1: API.OperationMethod<
   HorizonsGetWebsiteListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<HorizonsGetWebsiteListV1Request>,
-  output: __S(488, __c61, 0) as any as S.Schema<HorizonsGetWebsiteListV1Response>,
+  input: __S(4704, __c147, 0) as any as S.Schema<HorizonsGetWebsiteListV1Request>,
+  output: __S(4707, __c147, 3) as any as S.Schema<HorizonsGetWebsiteListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11067,8 +11087,8 @@ export const hostingAnalyseFailedNodeJsBuildV1: API.OperationMethod<
   HostingAnalyseFailedNodeJsBuildV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<HostingAnalyseFailedNodeJsBuildV1Request>,
-  output: __S(490, __c61, 2) as any as S.Schema<HostingV1NodeJsBuildAnalysisResource>,
+  input: __S(4736, __c148, 0) as any as S.Schema<HostingAnalyseFailedNodeJsBuildV1Request>,
+  output: __S(4737, __c148, 1) as any as S.Schema<HostingV1NodeJsBuildAnalysisResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11082,8 +11102,8 @@ export const hostingChangeDatabasePasswordV1: API.OperationMethod<
   HostingChangeDatabasePasswordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<HostingChangeDatabasePasswordV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(4768, __c149, 0) as any as S.Schema<HostingChangeDatabasePasswordV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11097,8 +11117,8 @@ export const hostingDeployStaticSiteArchiveV1: API.OperationMethod<
   HostingDeployStaticSiteArchiveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<HostingDeployStaticSiteArchiveV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(4800, __c150, 0) as any as S.Schema<HostingDeployStaticSiteArchiveV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11112,8 +11132,8 @@ export const hostingDetectWordPressInstallationsV1: API.OperationMethod<
   HostingDetectWordPressInstallationsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<HostingDetectWordPressInstallationsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(4832, __c151, 0) as any as S.Schema<HostingDetectWordPressInstallationsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11127,8 +11147,8 @@ export const hostingGenerateUploadURLV1: API.OperationMethod<
   HostingGenerateUploadURLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<HostingGenerateUploadURLV1Request>,
-  output: __S(9, __c1, 1) as any as S.Schema<HostingV1FilesUploadUrlResource>,
+  input: __S(4864, __c152, 0) as any as S.Schema<HostingGenerateUploadURLV1Request>,
+  output: __S(32, __c1, 0) as any as S.Schema<HostingV1FilesUploadUrlResource>,
   errors: [Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11144,8 +11164,8 @@ export const hostingGetNodeJsBuildSettingsFromArchiveV1: API.OperationMethod<
   HostingGetNodeJsBuildSettingsFromArchiveV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<HostingGetNodeJsBuildSettingsFromArchiveV1Request>,
-  output: __S(496, __c62, 0) as any as S.Schema<HostingV1NodeJsBuildSettingsResource>,
+  input: __S(4896, __c153, 0) as any as S.Schema<HostingGetNodeJsBuildSettingsFromArchiveV1Request>,
+  output: __S(4897, __c153, 1) as any as S.Schema<HostingV1NodeJsBuildSettingsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11159,8 +11179,8 @@ export const hostingListWebsiteFilesAndDirectoriesV1: API.OperationMethod<
   HostingListWebsiteFilesAndDirectoriesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<HostingListWebsiteFilesAndDirectoriesV1Request>,
-  output: __S(500, __c62, 4) as any as S.Schema<HostingV1FilesFilesResource>,
+  input: __S(4928, __c154, 0) as any as S.Schema<HostingListWebsiteFilesAndDirectoriesV1Request>,
+  output: __S(4931, __c154, 3) as any as S.Schema<HostingV1FilesFilesResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11174,8 +11194,8 @@ export const hostingRepairDatabaseV1: API.OperationMethod<
   HostingRepairDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<HostingRepairDatabaseV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(4960, __c155, 0) as any as S.Schema<HostingRepairDatabaseV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11189,8 +11209,8 @@ export const hostingSetupWebsiteDatabaseV1: API.OperationMethod<
   HostingSetupWebsiteDatabaseV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<HostingSetupWebsiteDatabaseV1Request>,
-  output: __S(504, __c63, 0) as any as S.Schema<HostingV1DatabasesWebsiteDatabaseResource>,
+  input: __S(4992, __c156, 0) as any as S.Schema<HostingSetupWebsiteDatabaseV1Request>,
+  output: __S(4994, __c156, 2) as any as S.Schema<HostingV1DatabasesWebsiteDatabaseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11204,8 +11224,8 @@ export const importHostingWordPressWebsiteV1: API.OperationMethod<
   ImportHostingWordPressWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<ImportHostingWordPressWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5056, __c158, 0) as any as S.Schema<ImportHostingWordPressWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11219,8 +11239,8 @@ export const installAgencyHostingWebsiteSSLV1: API.OperationMethod<
   InstallAgencyHostingWebsiteSSLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<InstallAgencyHostingWebsiteSSLV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5088, __c159, 0) as any as S.Schema<InstallAgencyHostingWebsiteSSLV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11234,8 +11254,8 @@ export const installHostingSSLV1: API.OperationMethod<
   InstallHostingSSLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<InstallHostingSSLV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5120, __c160, 0) as any as S.Schema<InstallHostingSSLV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11249,8 +11269,8 @@ export const installHostingWordPressPluginsV1: API.OperationMethod<
   InstallHostingWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<InstallHostingWordPressPluginsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5152, __c161, 0) as any as S.Schema<InstallHostingWordPressPluginsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11264,8 +11284,8 @@ export const installHostingWordPressThemeV1: API.OperationMethod<
   InstallHostingWordPressThemeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<InstallHostingWordPressThemeV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5184, __c162, 0) as any as S.Schema<InstallHostingWordPressThemeV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11279,8 +11299,8 @@ export const installHostingWordPressV1: API.OperationMethod<
   InstallHostingWordPressV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<InstallHostingWordPressV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(5218, __c163, 2) as any as S.Schema<InstallHostingWordPressV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11294,8 +11314,8 @@ export const installVPSMonarxV1: API.OperationMethod<
   InstallVPSMonarxV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<InstallVPSMonarxV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(5248, __c164, 0) as any as S.Schema<InstallVPSMonarxV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11312,14 +11332,14 @@ export const listAgencyHostingAgencyPlanOrderDiskUsageMetricsV1: API.OperationMe
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    514,
-    __c64,
-    2,
+    5280,
+    __c165,
+    0,
   ) as any as S.Schema<ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request>,
   output: __S(
-    518,
-    __c64,
-    6,
+    5284,
+    __c165,
+    4,
   ) as any as S.Schema<AgencyHostingV1OrdersDiskUsageMetricsMetricsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11334,8 +11354,8 @@ export const listAgencyHostingAgencyPlanWebsitesV1: API.OperationMethod<
   ListAgencyHostingAgencyPlanWebsitesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1Request>,
-  output: __S(523, __c65, 3) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1Response>,
+  input: __S(5312, __c166, 0) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1Request>,
+  output: __S(5316, __c166, 4) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11349,8 +11369,8 @@ export const listAgencyHostingAvailableDatacentersV1: API.OperationMethod<
   ListAgencyHostingAvailableDatacentersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<ListAgencyHostingAvailableDatacentersV1Request>,
-  output: __S(528, __c66, 0) as any as S.Schema<ListAgencyHostingAvailableDatacentersV1Response>,
+  input: __S(5344, __c167, 0) as any as S.Schema<ListAgencyHostingAvailableDatacentersV1Request>,
+  output: __S(5347, __c167, 3) as any as S.Schema<ListAgencyHostingAvailableDatacentersV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11365,14 +11385,14 @@ export const listAgencyHostingAvailablePHPVersionsForAnOrderV1: API.OperationMet
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    529,
-    __c66,
-    1,
+    5440,
+    __c170,
+    0,
   ) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request>,
   output: __S(
-    532,
-    __c66,
-    4,
+    5472,
+    __c171,
+    0,
   ) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11388,14 +11408,14 @@ export const listAgencyHostingAvailablePHPVersionsForAWebsiteV1: API.OperationMe
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    533,
-    __c66,
-    5,
+    5536,
+    __c173,
+    0,
   ) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request>,
   output: __S(
-    532,
-    __c66,
-    4,
+    5472,
+    __c171,
+    0,
   ) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11411,14 +11431,14 @@ export const listAgencyHostingAvailableWordPressVersionsV1: API.OperationMethod<
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    534,
-    __c66,
-    6,
+    5568,
+    __c174,
+    0,
   ) as any as S.Schema<ListAgencyHostingAvailableWordPressVersionsV1Request>,
   output: __S(
-    535,
-    __c66,
-    7,
+    5569,
+    __c174,
+    1,
   ) as any as S.Schema<ListAgencyHostingAvailableWordPressVersionsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11433,8 +11453,8 @@ export const listAgencyHostingDomainsV1: API.OperationMethod<
   ListAgencyHostingDomainsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListAgencyHostingDomainsV1Request>,
-  output: __S(539, __c67, 3) as any as S.Schema<ListAgencyHostingDomainsV1Response>,
+  input: __S(5600, __c175, 0) as any as S.Schema<ListAgencyHostingDomainsV1Request>,
+  output: __S(5603, __c175, 3) as any as S.Schema<ListAgencyHostingDomainsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11450,11 +11470,15 @@ export const listAgencyHostingOrderResourceUsageMetricsV1: API.OperationMethod<
   ListAgencyHostingOrderResourceUsageMetricsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<ListAgencyHostingOrderResourceUsageMetricsV1Request>,
+  input: __S(
+    5632,
+    __c176,
+    0,
+  ) as any as S.Schema<ListAgencyHostingOrderResourceUsageMetricsV1Request>,
   output: __S(
-    546,
-    __c68,
-    2,
+    5638,
+    __c176,
+    6,
   ) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsMetricsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11469,8 +11493,8 @@ export const listAgencyHostingOrdersV1: API.OperationMethod<
   ListAgencyHostingOrdersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<ListAgencyHostingOrdersV1Request>,
-  output: __S(552, __c69, 0) as any as S.Schema<ListAgencyHostingOrdersV1Response>,
+  input: __S(5664, __c177, 0) as any as S.Schema<ListAgencyHostingOrdersV1Request>,
+  output: __S(5669, __c177, 5) as any as S.Schema<ListAgencyHostingOrdersV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11484,11 +11508,15 @@ export const listAgencyHostingPHPExtensionsForAWebsiteV1: API.OperationMethod<
   ListAgencyHostingPHPExtensionsForAWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<ListAgencyHostingPHPExtensionsForAWebsiteV1Request>,
+  input: __S(
+    5696,
+    __c178,
+    0,
+  ) as any as S.Schema<ListAgencyHostingPHPExtensionsForAWebsiteV1Request>,
   output: __S(
-    556,
-    __c69,
-    4,
+    5699,
+    __c178,
+    3,
   ) as any as S.Schema<ListAgencyHostingPHPExtensionsForAWebsiteV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11503,8 +11531,8 @@ export const listAgencyHostingPHPOptionsForAWebsiteV1: API.OperationMethod<
   ListAgencyHostingPHPOptionsForAWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<ListAgencyHostingPHPOptionsForAWebsiteV1Request>,
-  output: __S(560, __c70, 0) as any as S.Schema<ListAgencyHostingPHPOptionsForAWebsiteV1Response>,
+  input: __S(5728, __c179, 0) as any as S.Schema<ListAgencyHostingPHPOptionsForAWebsiteV1Request>,
+  output: __S(5731, __c179, 3) as any as S.Schema<ListAgencyHostingPHPOptionsForAWebsiteV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11518,8 +11546,8 @@ export const listAgencyHostingWebsiteCronJobsV1: API.OperationMethod<
   ListAgencyHostingWebsiteCronJobsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<ListAgencyHostingWebsiteCronJobsV1Request>,
-  output: __S(563, __c70, 3) as any as S.Schema<ListAgencyHostingWebsiteCronJobsV1Response>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ListAgencyHostingWebsiteCronJobsV1Request>,
+  output: __S(5762, __c180, 2) as any as S.Schema<ListAgencyHostingWebsiteCronJobsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11533,8 +11561,8 @@ export const listAgencyHostingWebsiteDatabasesV1: API.OperationMethod<
   ListAgencyHostingWebsiteDatabasesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<ListAgencyHostingWebsiteDatabasesV1Request>,
-  output: __S(566, __c70, 6) as any as S.Schema<ListAgencyHostingWebsiteDatabasesV1Response>,
+  input: __S(5792, __c181, 0) as any as S.Schema<ListAgencyHostingWebsiteDatabasesV1Request>,
+  output: __S(5794, __c181, 2) as any as S.Schema<ListAgencyHostingWebsiteDatabasesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11548,8 +11576,8 @@ export const listAgencyHostingWebsiteProcessesV1: API.OperationMethod<
   ListAgencyHostingWebsiteProcessesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<ListAgencyHostingWebsiteProcessesV1Request>,
-  output: __S(570, __c71, 2) as any as S.Schema<ListAgencyHostingWebsiteProcessesV1Response>,
+  input: __S(5888, __c184, 0) as any as S.Schema<ListAgencyHostingWebsiteProcessesV1Request>,
+  output: __S(5891, __c184, 3) as any as S.Schema<ListAgencyHostingWebsiteProcessesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11563,8 +11591,8 @@ export const listEcommerceDiscountsV1: API.OperationMethod<
   ListEcommerceDiscountsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(571, __c71, 3) as any as S.Schema<ListEcommerceDiscountsV1Request>,
-  output: __S(573, __c71, 5) as any as S.Schema<ListEcommerceDiscountsV1Response>,
+  input: __S(5920, __c185, 0) as any as S.Schema<ListEcommerceDiscountsV1Request>,
+  output: __S(5922, __c185, 2) as any as S.Schema<ListEcommerceDiscountsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11578,8 +11606,8 @@ export const listEcommerceProductsV1: API.OperationMethod<
   ListEcommerceProductsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<ListEcommerceProductsV1Request>,
-  output: __S(584, __c73, 0) as any as S.Schema<ListEcommerceProductsV1Response>,
+  input: __S(5952, __c186, 0) as any as S.Schema<ListEcommerceProductsV1Request>,
+  output: __S(5954, __c186, 2) as any as S.Schema<ListEcommerceProductsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11593,8 +11621,8 @@ export const listEcommerceProductVariantsV1: API.OperationMethod<
   ListEcommerceProductVariantsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<ListEcommerceProductVariantsV1Request>,
-  output: __S(587, __c73, 3) as any as S.Schema<ListEcommerceProductVariantsV1Response>,
+  input: __S(6016, __c188, 0) as any as S.Schema<ListEcommerceProductVariantsV1Request>,
+  output: __S(6017, __c188, 1) as any as S.Schema<ListEcommerceProductVariantsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11608,8 +11636,8 @@ export const listEcommerceSalesChannelsV1: API.OperationMethod<
   ListEcommerceSalesChannelsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<ListEcommerceSalesChannelsV1Request>,
-  output: __S(590, __c73, 6) as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResource>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ListEcommerceSalesChannelsV1Request>,
+  output: __S(6082, __c190, 2) as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11623,8 +11651,8 @@ export const listEcommerceStoreOrdersV1: API.OperationMethod<
   ListEcommerceStoreOrdersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<ListEcommerceStoreOrdersV1Request>,
-  output: __S(593, __c74, 1) as any as S.Schema<ListEcommerceStoreOrdersV1Response>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ListEcommerceStoreOrdersV1Request>,
+  output: __S(6114, __c191, 2) as any as S.Schema<ListEcommerceStoreOrdersV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11638,11 +11666,11 @@ export const listEcommerceStorePaymentProvidersV1: API.OperationMethod<
   ListEcommerceStorePaymentProvidersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<ListEcommerceStorePaymentProvidersV1Request>,
+  input: __S(6144, __c192, 0) as any as S.Schema<ListEcommerceStorePaymentProvidersV1Request>,
   output: __S(
-    600,
-    __c75,
-    0,
+    6150,
+    __c192,
+    6,
   ) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -11657,8 +11685,8 @@ export const listHostingAccountCronJobsV1: API.OperationMethod<
   ListHostingAccountCronJobsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<ListHostingAccountCronJobsV1Request>,
-  output: __S(603, __c75, 3) as any as S.Schema<ListHostingAccountCronJobsV1Response>,
+  input: __S(6176, __c193, 0) as any as S.Schema<ListHostingAccountCronJobsV1Request>,
+  output: __S(6178, __c193, 2) as any as S.Schema<ListHostingAccountCronJobsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11672,8 +11700,8 @@ export const listHostingAccountDatabasesV1: API.OperationMethod<
   ListHostingAccountDatabasesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<ListHostingAccountDatabasesV1Request>,
-  output: __S(607, __c75, 7) as any as S.Schema<ListHostingAccountDatabasesV1Response>,
+  input: __S(6208, __c194, 0) as any as S.Schema<ListHostingAccountDatabasesV1Request>,
+  output: __S(6211, __c194, 3) as any as S.Schema<ListHostingAccountDatabasesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11687,8 +11715,8 @@ export const listHostingAvailableDatacentersV1: API.OperationMethod<
   ListHostingAvailableDatacentersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<ListHostingAvailableDatacentersV1Request>,
-  output: __S(611, __c76, 3) as any as S.Schema<ListHostingAvailableDatacentersV1Response>,
+  input: __S(6240, __c195, 0) as any as S.Schema<ListHostingAvailableDatacentersV1Request>,
+  output: __S(6243, __c195, 3) as any as S.Schema<ListHostingAvailableDatacentersV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11702,8 +11730,12 @@ export const listHostingAvailableWordPressCoreUpdatesV1: API.OperationMethod<
   ListHostingAvailableWordPressCoreUpdatesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<ListHostingAvailableWordPressCoreUpdatesV1Request>,
-  output: __S(615, __c76, 7) as any as S.Schema<ListHostingAvailableWordPressCoreUpdatesV1Response>,
+  input: __S(6368, __c199, 0) as any as S.Schema<ListHostingAvailableWordPressCoreUpdatesV1Request>,
+  output: __S(
+    6371,
+    __c199,
+    3,
+  ) as any as S.Schema<ListHostingAvailableWordPressCoreUpdatesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11717,8 +11749,8 @@ export const listHostingAvailableWordPressPluginsV1: API.OperationMethod<
   ListHostingAvailableWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<ListHostingAvailableWordPressPluginsV1Request>,
-  output: __S(619, __c77, 3) as any as S.Schema<ListHostingAvailableWordPressPluginsV1Response>,
+  input: __S(6400, __c200, 0) as any as S.Schema<ListHostingAvailableWordPressPluginsV1Request>,
+  output: __S(6403, __c200, 3) as any as S.Schema<ListHostingAvailableWordPressPluginsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11732,8 +11764,8 @@ export const listHostingDatabaseRemoteConnectionsV1: API.OperationMethod<
   ListHostingDatabaseRemoteConnectionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<ListHostingDatabaseRemoteConnectionsV1Request>,
-  output: __S(623, __c77, 7) as any as S.Schema<ListHostingDatabaseRemoteConnectionsV1Response>,
+  input: __S(6432, __c201, 0) as any as S.Schema<ListHostingDatabaseRemoteConnectionsV1Request>,
+  output: __S(6435, __c201, 3) as any as S.Schema<ListHostingDatabaseRemoteConnectionsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11747,8 +11779,8 @@ export const listHostingGitInstallationRepositoriesV1: API.OperationMethod<
   ListHostingGitInstallationRepositoriesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<ListHostingGitInstallationRepositoriesV1Request>,
-  output: __S(627, __c78, 3) as any as S.Schema<ListHostingGitInstallationRepositoriesV1Response>,
+  input: __S(6464, __c202, 0) as any as S.Schema<ListHostingGitInstallationRepositoriesV1Request>,
+  output: __S(6467, __c202, 3) as any as S.Schema<ListHostingGitInstallationRepositoriesV1Response>,
   errors: [NotFound, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11762,8 +11794,8 @@ export const listHostingGitInstallationsV1: API.OperationMethod<
   ListHostingGitInstallationsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(628, __c78, 4) as any as S.Schema<ListHostingGitInstallationsV1Request>,
-  output: __S(631, __c78, 7) as any as S.Schema<ListHostingGitInstallationsV1Response>,
+  input: __S(6496, __c203, 0) as any as S.Schema<ListHostingGitInstallationsV1Request>,
+  output: __S(6499, __c203, 3) as any as S.Schema<ListHostingGitInstallationsV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11777,8 +11809,8 @@ export const listHostingInstalledWordPressPluginsV1: API.OperationMethod<
   ListHostingInstalledWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<ListHostingInstalledWordPressPluginsV1Request>,
-  output: __S(635, __c79, 3) as any as S.Schema<ListHostingInstalledWordPressPluginsV1Response>,
+  input: __S(6528, __c204, 0) as any as S.Schema<ListHostingInstalledWordPressPluginsV1Request>,
+  output: __S(6531, __c204, 3) as any as S.Schema<ListHostingInstalledWordPressPluginsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11792,8 +11824,8 @@ export const listHostingInstalledWordPressThemesV1: API.OperationMethod<
   ListHostingInstalledWordPressThemesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<ListHostingInstalledWordPressThemesV1Request>,
-  output: __S(639, __c79, 7) as any as S.Schema<ListHostingInstalledWordPressThemesV1Response>,
+  input: __S(6560, __c205, 0) as any as S.Schema<ListHostingInstalledWordPressThemesV1Request>,
+  output: __S(6563, __c205, 3) as any as S.Schema<ListHostingInstalledWordPressThemesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11807,8 +11839,8 @@ export const listHostingNodeJSBuildsV1: API.OperationMethod<
   ListHostingNodeJSBuildsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<ListHostingNodeJSBuildsV1Request>,
-  output: __S(642, __c80, 2) as any as S.Schema<ListHostingNodeJSBuildsV1Response>,
+  input: __S(6592, __c206, 0) as any as S.Schema<ListHostingNodeJSBuildsV1Request>,
+  output: __S(6594, __c206, 2) as any as S.Schema<ListHostingNodeJSBuildsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11822,8 +11854,8 @@ export const listHostingNodeJsEnvironmentVariablesV1: API.OperationMethod<
   ListHostingNodeJsEnvironmentVariablesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(643, __c80, 3) as any as S.Schema<ListHostingNodeJsEnvironmentVariablesV1Request>,
-  output: __S(646, __c80, 6) as any as S.Schema<ListHostingNodeJsEnvironmentVariablesV1Response>,
+  input: __S(6624, __c207, 0) as any as S.Schema<ListHostingNodeJsEnvironmentVariablesV1Request>,
+  output: __S(6627, __c207, 3) as any as S.Schema<ListHostingNodeJsEnvironmentVariablesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11837,8 +11869,8 @@ export const listHostingNodeJsVulnerabilitiesV1: API.OperationMethod<
   ListHostingNodeJsVulnerabilitiesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647, __c80, 7) as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1Request>,
-  output: __S(650, __c81, 2) as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1Response>,
+  input: __S(6656, __c208, 0) as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1Request>,
+  output: __S(6659, __c208, 3) as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11852,8 +11884,8 @@ export const listHostingOrdersV1: API.OperationMethod<
   ListHostingOrdersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651, __c81, 3) as any as S.Schema<ListHostingOrdersV1Request>,
-  output: __S(655, __c81, 7) as any as S.Schema<ListHostingOrdersV1Response>,
+  input: __S(6720, __c210, 0) as any as S.Schema<ListHostingOrdersV1Request>,
+  output: __S(6724, __c210, 4) as any as S.Schema<ListHostingOrdersV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11867,8 +11899,8 @@ export const listHostingSuggestedWordPressPluginsV1: API.OperationMethod<
   ListHostingSuggestedWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<ListHostingSuggestedWordPressPluginsV1Request>,
-  output: __S(661, __c82, 5) as any as S.Schema<ListHostingSuggestedWordPressPluginsV1Response>,
+  input: __S(6752, __c211, 0) as any as S.Schema<ListHostingSuggestedWordPressPluginsV1Request>,
+  output: __S(6757, __c211, 5) as any as S.Schema<ListHostingSuggestedWordPressPluginsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11882,8 +11914,8 @@ export const listHostingWebsiteGitRepositoriesV1: API.OperationMethod<
   ListHostingWebsiteGitRepositoriesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<ListHostingWebsiteGitRepositoriesV1Request>,
-  output: __S(666, __c83, 2) as any as S.Schema<ListHostingWebsiteGitRepositoriesV1Response>,
+  input: __S(6784, __c212, 0) as any as S.Schema<ListHostingWebsiteGitRepositoriesV1Request>,
+  output: __S(6788, __c212, 4) as any as S.Schema<ListHostingWebsiteGitRepositoriesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11897,8 +11929,8 @@ export const listHostingWebsiteParkedDomainsV1: API.OperationMethod<
   ListHostingWebsiteParkedDomainsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<ListHostingWebsiteParkedDomainsV1Request>,
-  output: __S(670, __c83, 6) as any as S.Schema<ListHostingWebsiteParkedDomainsV1Response>,
+  input: __S(6816, __c213, 0) as any as S.Schema<ListHostingWebsiteParkedDomainsV1Request>,
+  output: __S(6819, __c213, 3) as any as S.Schema<ListHostingWebsiteParkedDomainsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11912,8 +11944,8 @@ export const listHostingWebsiteRedirectsV1: API.OperationMethod<
   ListHostingWebsiteRedirectsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<ListHostingWebsiteRedirectsV1Request>,
-  output: __S(673, __c84, 1) as any as S.Schema<ListHostingWebsiteRedirectsV1Response>,
+  input: __S(6848, __c214, 0) as any as S.Schema<ListHostingWebsiteRedirectsV1Request>,
+  output: __S(6850, __c214, 2) as any as S.Schema<ListHostingWebsiteRedirectsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11927,8 +11959,8 @@ export const listHostingWebsiteSetupsV1: API.OperationMethod<
   ListHostingWebsiteSetupsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674, __c84, 2) as any as S.Schema<ListHostingWebsiteSetupsV1Request>,
-  output: __S(677, __c84, 5) as any as S.Schema<ListHostingWebsiteSetupsV1Response>,
+  input: __S(6880, __c215, 0) as any as S.Schema<ListHostingWebsiteSetupsV1Request>,
+  output: __S(6883, __c215, 3) as any as S.Schema<ListHostingWebsiteSetupsV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11942,8 +11974,8 @@ export const listHostingWebsiteSubdomainsV1: API.OperationMethod<
   ListHostingWebsiteSubdomainsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<ListHostingWebsiteSubdomainsV1Request>,
-  output: __S(681, __c85, 1) as any as S.Schema<ListHostingWebsiteSubdomainsV1Response>,
+  input: __S(6912, __c216, 0) as any as S.Schema<ListHostingWebsiteSubdomainsV1Request>,
+  output: __S(6915, __c216, 3) as any as S.Schema<ListHostingWebsiteSubdomainsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11957,8 +11989,8 @@ export const listHostingWebsitesV1: API.OperationMethod<
   ListHostingWebsitesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682, __c85, 2) as any as S.Schema<ListHostingWebsitesV1Request>,
-  output: __S(685, __c85, 5) as any as S.Schema<ListHostingWebsitesV1Response>,
+  input: __S(6944, __c217, 0) as any as S.Schema<ListHostingWebsitesV1Request>,
+  output: __S(6947, __c217, 3) as any as S.Schema<ListHostingWebsitesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11972,8 +12004,8 @@ export const listHostingWordPressInstallationsV1: API.OperationMethod<
   ListHostingWordPressInstallationsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<ListHostingWordPressInstallationsV1Request>,
-  output: __S(689, __c86, 1) as any as S.Schema<ListHostingWordPressInstallationsV1Response>,
+  input: __S(6976, __c218, 0) as any as S.Schema<ListHostingWordPressInstallationsV1Request>,
+  output: __S(6979, __c218, 3) as any as S.Schema<ListHostingWordPressInstallationsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -11987,8 +12019,8 @@ export const listHostingWordPressThemesV1: API.OperationMethod<
   ListHostingWordPressThemesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(690, __c86, 2) as any as S.Schema<ListHostingWordPressThemesV1Request>,
-  output: __S(693, __c86, 5) as any as S.Schema<ListHostingWordPressThemesV1Response>,
+  input: __S(7008, __c219, 0) as any as S.Schema<ListHostingWordPressThemesV1Request>,
+  output: __S(7011, __c219, 3) as any as S.Schema<ListHostingWordPressThemesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12002,8 +12034,8 @@ export const listMailAccessLogsV1: API.OperationMethod<
   ListMailAccessLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<ListMailAccessLogsV1Request>,
-  output: __S(697, __c87, 1) as any as S.Schema<ListMailAccessLogsV1Response>,
+  input: __S(7072, __c221, 0) as any as S.Schema<ListMailAccessLogsV1Request>,
+  output: __S(7075, __c221, 3) as any as S.Schema<ListMailAccessLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12017,8 +12049,8 @@ export const listMailActionLogsV1: API.OperationMethod<
   ListMailActionLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698, __c87, 2) as any as S.Schema<ListMailActionLogsV1Request>,
-  output: __S(701, __c87, 5) as any as S.Schema<ListMailActionLogsV1Response>,
+  input: __S(7104, __c222, 0) as any as S.Schema<ListMailActionLogsV1Request>,
+  output: __S(7107, __c222, 3) as any as S.Schema<ListMailActionLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12032,8 +12064,8 @@ export const listMailAliasesV1: API.OperationMethod<
   ListMailAliasesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702, __c87, 6) as any as S.Schema<ListMailAliasesV1Request>,
-  output: __S(704, __c88, 0) as any as S.Schema<ListMailAliasesV1Response>,
+  input: __S(7136, __c223, 0) as any as S.Schema<ListMailAliasesV1Request>,
+  output: __S(7138, __c223, 2) as any as S.Schema<ListMailAliasesV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12047,8 +12079,8 @@ export const listMailAPITokensV1: API.OperationMethod<
   ListMailAPITokensV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<ListMailAPITokensV1Request>,
-  output: __S(708, __c88, 4) as any as S.Schema<ListMailAPITokensV1Response>,
+  input: __S(7168, __c224, 0) as any as S.Schema<ListMailAPITokensV1Request>,
+  output: __S(7171, __c224, 3) as any as S.Schema<ListMailAPITokensV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12062,8 +12094,8 @@ export const listMailAutorepliesV1: API.OperationMethod<
   ListMailAutorepliesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709, __c88, 5) as any as S.Schema<ListMailAutorepliesV1Request>,
-  output: __S(711, __c88, 7) as any as S.Schema<ListMailAutorepliesV1Response>,
+  input: __S(7200, __c225, 0) as any as S.Schema<ListMailAutorepliesV1Request>,
+  output: __S(7202, __c225, 2) as any as S.Schema<ListMailAutorepliesV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12077,8 +12109,8 @@ export const listMailCatchAllsV1: API.OperationMethod<
   ListMailCatchAllsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<ListMailCatchAllsV1Request>,
-  output: __S(714, __c89, 2) as any as S.Schema<ListMailCatchAllsV1Response>,
+  input: __S(7232, __c226, 0) as any as S.Schema<ListMailCatchAllsV1Request>,
+  output: __S(7234, __c226, 2) as any as S.Schema<ListMailCatchAllsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12092,8 +12124,8 @@ export const listMailForwardersV1: API.OperationMethod<
   ListMailForwardersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(715, __c89, 3) as any as S.Schema<ListMailForwardersV1Request>,
-  output: __S(717, __c89, 5) as any as S.Schema<ListMailForwardersV1Response>,
+  input: __S(7264, __c227, 0) as any as S.Schema<ListMailForwardersV1Request>,
+  output: __S(7266, __c227, 2) as any as S.Schema<ListMailForwardersV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12107,8 +12139,8 @@ export const listMailInboundLogsV1: API.OperationMethod<
   ListMailInboundLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718, __c89, 6) as any as S.Schema<ListMailInboundLogsV1Request>,
-  output: __S(723, __c90, 3) as any as S.Schema<ListMailInboundLogsV1Response>,
+  input: __S(7296, __c228, 0) as any as S.Schema<ListMailInboundLogsV1Request>,
+  output: __S(7332, __c229, 4) as any as S.Schema<ListMailInboundLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12122,8 +12154,8 @@ export const listMailMailboxActionLogsV1: API.OperationMethod<
   ListMailMailboxActionLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(724, __c90, 4) as any as S.Schema<ListMailMailboxActionLogsV1Request>,
-  output: __S(727, __c90, 7) as any as S.Schema<ListMailMailboxActionLogsV1Response>,
+  input: __S(7360, __c230, 0) as any as S.Schema<ListMailMailboxActionLogsV1Request>,
+  output: __S(7363, __c230, 3) as any as S.Schema<ListMailMailboxActionLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12137,8 +12169,8 @@ export const listMailMailboxesV1: API.OperationMethod<
   ListMailMailboxesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<ListMailMailboxesV1Request>,
-  output: __S(730, __c91, 2) as any as S.Schema<ListMailMailboxesV1Response>,
+  input: __S(7392, __c231, 0) as any as S.Schema<ListMailMailboxesV1Request>,
+  output: __S(7394, __c231, 2) as any as S.Schema<ListMailMailboxesV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12152,8 +12184,8 @@ export const listMailOrdersV1: API.OperationMethod<
   ListMailOrdersV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731, __c91, 3) as any as S.Schema<ListMailOrdersV1Request>,
-  output: __S(736, __c92, 0) as any as S.Schema<ListMailOrdersV1Response>,
+  input: __S(7456, __c233, 0) as any as S.Schema<ListMailOrdersV1Request>,
+  output: __S(7461, __c233, 5) as any as S.Schema<ListMailOrdersV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12167,8 +12199,8 @@ export const listMailOutboundLogsV1: API.OperationMethod<
   ListMailOutboundLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737, __c92, 1) as any as S.Schema<ListMailOutboundLogsV1Request>,
-  output: __S(723, __c90, 3) as any as S.Schema<ListMailOutboundLogsV1Response>,
+  input: __S(7488, __c234, 0) as any as S.Schema<ListMailOutboundLogsV1Request>,
+  output: __S(7332, __c229, 4) as any as S.Schema<ListMailOutboundLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12182,8 +12214,8 @@ export const listMailWebhookDeliveryLogsV1: API.OperationMethod<
   ListMailWebhookDeliveryLogsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(738, __c92, 2) as any as S.Schema<ListMailWebhookDeliveryLogsV1Request>,
-  output: __S(741, __c92, 5) as any as S.Schema<ListMailWebhookDeliveryLogsV1Response>,
+  input: __S(7520, __c235, 0) as any as S.Schema<ListMailWebhookDeliveryLogsV1Request>,
+  output: __S(7523, __c235, 3) as any as S.Schema<ListMailWebhookDeliveryLogsV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12197,8 +12229,8 @@ export const listMailWebhooksV1: API.OperationMethod<
   ListMailWebhooksV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(742, __c92, 6) as any as S.Schema<ListMailWebhooksV1Request>,
-  output: __S(744, __c93, 0) as any as S.Schema<ListMailWebhooksV1Response>,
+  input: __S(7552, __c236, 0) as any as S.Schema<ListMailWebhooksV1Request>,
+  output: __S(7554, __c236, 2) as any as S.Schema<ListMailWebhooksV1Response>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12212,8 +12244,8 @@ export const listReachAutomationStepsV1: API.OperationMethod<
   ListReachAutomationStepsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(745, __c93, 1) as any as S.Schema<ListReachAutomationStepsV1Request>,
-  output: __S(748, __c93, 4) as any as S.Schema<ListReachAutomationStepsV1Response>,
+  input: __S(7584, __c237, 0) as any as S.Schema<ListReachAutomationStepsV1Request>,
+  output: __S(7587, __c237, 3) as any as S.Schema<ListReachAutomationStepsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12227,8 +12259,8 @@ export const listReachAutomationsV1: API.OperationMethod<
   ListReachAutomationsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(749, __c93, 5) as any as S.Schema<ListReachAutomationsV1Request>,
-  output: __S(751, __c93, 7) as any as S.Schema<ListReachAutomationsV1Response>,
+  input: __S(7616, __c238, 0) as any as S.Schema<ListReachAutomationsV1Request>,
+  output: __S(7618, __c238, 2) as any as S.Schema<ListReachAutomationsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12242,8 +12274,8 @@ export const listReachCampaignsV1: API.OperationMethod<
   ListReachCampaignsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<ListReachCampaignsV1Request>,
-  output: __S(756, __c94, 4) as any as S.Schema<ListReachCampaignsV1Response>,
+  input: __S(7648, __c239, 0) as any as S.Schema<ListReachCampaignsV1Request>,
+  output: __S(7652, __c239, 4) as any as S.Schema<ListReachCampaignsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12257,8 +12289,8 @@ export const listReachContactFieldsV1: API.OperationMethod<
   ListReachContactFieldsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(757, __c94, 5) as any as S.Schema<ListReachContactFieldsV1Request>,
-  output: __S(759, __c94, 7) as any as S.Schema<ListReachContactFieldsV1Response>,
+  input: __S(7680, __c240, 0) as any as S.Schema<ListReachContactFieldsV1Request>,
+  output: __S(7682, __c240, 2) as any as S.Schema<ListReachContactFieldsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12272,8 +12304,8 @@ export const listReachEmailTemplatesV1: API.OperationMethod<
   ListReachEmailTemplatesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(760, __c95, 0) as any as S.Schema<ListReachEmailTemplatesV1Request>,
-  output: __S(762, __c95, 2) as any as S.Schema<ListReachEmailTemplatesV1Response>,
+  input: __S(7712, __c241, 0) as any as S.Schema<ListReachEmailTemplatesV1Request>,
+  output: __S(7714, __c241, 2) as any as S.Schema<ListReachEmailTemplatesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12287,8 +12319,8 @@ export const listReachFormsV1: API.OperationMethod<
   ListReachFormsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(763, __c95, 3) as any as S.Schema<ListReachFormsV1Request>,
-  output: __S(767, __c95, 7) as any as S.Schema<ListReachFormsV1Response>,
+  input: __S(7744, __c242, 0) as any as S.Schema<ListReachFormsV1Request>,
+  output: __S(7748, __c242, 4) as any as S.Schema<ListReachFormsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12302,8 +12334,8 @@ export const listReachPlanFeatureAccessV1: API.OperationMethod<
   ListReachPlanFeatureAccessV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<ListReachPlanFeatureAccessV1Request>,
-  output: __S(771, __c96, 3) as any as S.Schema<ListReachPlanFeatureAccessV1Response>,
+  input: __S(7808, __c244, 0) as any as S.Schema<ListReachPlanFeatureAccessV1Request>,
+  output: __S(7811, __c244, 3) as any as S.Schema<ListReachPlanFeatureAccessV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12317,8 +12349,8 @@ export const listReachProfileContactsV1: API.OperationMethod<
   ListReachProfileContactsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(772, __c96, 4) as any as S.Schema<ListReachProfileContactsV1Request>,
-  output: __S(775, __c96, 7) as any as S.Schema<ListReachProfileContactsV1Response>,
+  input: __S(7840, __c245, 0) as any as S.Schema<ListReachProfileContactsV1Request>,
+  output: __S(7874, __c246, 2) as any as S.Schema<ListReachProfileContactsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12332,8 +12364,8 @@ export const listReachProfileSegmentContactsV1: API.OperationMethod<
   ListReachProfileSegmentContactsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(776, __c97, 0) as any as S.Schema<ListReachProfileSegmentContactsV1Request>,
-  output: __S(779, __c97, 3) as any as S.Schema<ListReachProfileSegmentContactsV1Response>,
+  input: __S(7904, __c247, 0) as any as S.Schema<ListReachProfileSegmentContactsV1Request>,
+  output: __S(7907, __c247, 3) as any as S.Schema<ListReachProfileSegmentContactsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12347,8 +12379,8 @@ export const listReachProfileSegmentsV1: API.OperationMethod<
   ListReachProfileSegmentsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(780, __c97, 4) as any as S.Schema<ListReachProfileSegmentsV1Request>,
-  output: __S(783, __c97, 7) as any as S.Schema<ListReachProfileSegmentsV1Response>,
+  input: __S(7936, __c248, 0) as any as S.Schema<ListReachProfileSegmentsV1Request>,
+  output: __S(7939, __c248, 3) as any as S.Schema<ListReachProfileSegmentsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12362,8 +12394,8 @@ export const listReachProfilesV1: API.OperationMethod<
   ListReachProfilesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<ListReachProfilesV1Request>,
-  output: __S(790, __c98, 6) as any as S.Schema<ListReachProfilesV1Response>,
+  input: __S(7968, __c249, 0) as any as S.Schema<ListReachProfilesV1Request>,
+  output: __S(7974, __c249, 6) as any as S.Schema<ListReachProfilesV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12377,8 +12409,8 @@ export const listReachProfileTagsV1: API.OperationMethod<
   ListReachProfileTagsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(791, __c98, 7) as any as S.Schema<ListReachProfileTagsV1Request>,
-  output: __S(792, __c99, 0) as any as S.Schema<ListReachProfileTagsV1Response>,
+  input: __S(8000, __c250, 0) as any as S.Schema<ListReachProfileTagsV1Request>,
+  output: __S(8032, __c251, 0) as any as S.Schema<ListReachProfileTagsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12392,11 +12424,11 @@ export const listReachSegmentFilterAttributesV1: API.OperationMethod<
   ListReachSegmentFilterAttributesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(793, __c99, 1) as any as S.Schema<ListReachSegmentFilterAttributesV1Request>,
+  input: __S(8064, __c252, 0) as any as S.Schema<ListReachSegmentFilterAttributesV1Request>,
   output: __S(
-    799,
-    __c99,
-    7,
+    8070,
+    __c252,
+    6,
   ) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -12415,8 +12447,8 @@ export const mailChangeMailboxPasswordV1: API.OperationMethod<
   MailChangeMailboxPasswordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<MailChangeMailboxPasswordV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8096, __c253, 0) as any as S.Schema<MailChangeMailboxPasswordV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12433,8 +12465,8 @@ export const mailUpdateForwarderKeepCopySettingV1: API.OperationMethod<
   MailUpdateForwarderKeepCopySettingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(801, __c100, 1) as any as S.Schema<MailUpdateForwarderKeepCopySettingV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8128, __c254, 0) as any as S.Schema<MailUpdateForwarderKeepCopySettingV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12448,8 +12480,8 @@ export const patchHostingNodeJsVulnerabilitiesV1: API.OperationMethod<
   PatchHostingNodeJsVulnerabilitiesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(802, __c100, 2) as any as S.Schema<PatchHostingNodeJsVulnerabilitiesV1Request>,
-  output: __S(803, __c100, 3) as any as S.Schema<HostingV1NodeJsPatchResultResource>,
+  input: __S(8160, __c255, 0) as any as S.Schema<PatchHostingNodeJsVulnerabilitiesV1Request>,
+  output: __S(8161, __c255, 1) as any as S.Schema<HostingV1NodeJsPatchResultResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12463,8 +12495,8 @@ export const previewReachContactsMatchingConditionsV1: API.OperationMethod<
   PreviewReachContactsMatchingConditionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(806, __c100, 6) as any as S.Schema<PreviewReachContactsMatchingConditionsV1Request>,
-  output: __S(775, __c96, 7) as any as S.Schema<PreviewReachContactsMatchingConditionsV1Response>,
+  input: __S(8258, __c258, 2) as any as S.Schema<PreviewReachContactsMatchingConditionsV1Request>,
+  output: __S(7874, __c246, 2) as any as S.Schema<PreviewReachContactsMatchingConditionsV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12478,8 +12510,8 @@ export const publishHorizonWebsiteV1: API.OperationMethod<
   PublishHorizonWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(807, __c100, 7) as any as S.Schema<PublishHorizonWebsiteV1Request>,
-  output: __S(808, __c101, 0) as any as S.Schema<HorizonsV1WebsitesPublishedWebsiteResource>,
+  input: __S(8288, __c259, 0) as any as S.Schema<PublishHorizonWebsiteV1Request>,
+  output: __S(8289, __c259, 1) as any as S.Schema<HorizonsV1WebsitesPublishedWebsiteResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12493,8 +12525,8 @@ export const purgeHostingLiteSpeedCacheV1: API.OperationMethod<
   PurgeHostingLiteSpeedCacheV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<PurgeHostingLiteSpeedCacheV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8320, __c260, 0) as any as S.Schema<PurgeHostingLiteSpeedCacheV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12508,11 +12540,11 @@ export const reachCountProfileSegmentContactsV1: API.OperationMethod<
   ReachCountProfileSegmentContactsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(810, __c101, 2) as any as S.Schema<ReachCountProfileSegmentContactsV1Request>,
+  input: __S(8352, __c261, 0) as any as S.Schema<ReachCountProfileSegmentContactsV1Request>,
   output: __S(
-    811,
-    __c101,
-    3,
+    8353,
+    __c261,
+    1,
   ) as any as S.Schema<ReachV1ContactsSegmentsSegmentContactsCountResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
@@ -12527,8 +12559,8 @@ export const reachCreateContactsInBulkV1: API.OperationMethod<
   ReachCreateContactsInBulkV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(814, __c101, 6) as any as S.Schema<ReachCreateContactsInBulkV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8386, __c262, 2) as any as S.Schema<ReachCreateContactsInBulkV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12542,8 +12574,8 @@ export const reachCreateOrFindTagsV1: API.OperationMethod<
   ReachCreateOrFindTagsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(815, __c101, 7) as any as S.Schema<ReachCreateOrFindTagsV1Request>,
-  output: __S(792, __c99, 0) as any as S.Schema<ReachCreateOrFindTagsV1Response>,
+  input: __S(8416, __c263, 0) as any as S.Schema<ReachCreateOrFindTagsV1Request>,
+  output: __S(8032, __c251, 0) as any as S.Schema<ReachCreateOrFindTagsV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12557,8 +12589,8 @@ export const recreateVPSVirtualMachineV1: API.OperationMethod<
   RecreateVPSVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c102, 0) as any as S.Schema<RecreateVPSVirtualMachineV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(8448, __c264, 0) as any as S.Schema<RecreateVPSVirtualMachineV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12572,8 +12604,8 @@ export const regenerateMailWebhookSecretV1: API.OperationMethod<
   RegenerateMailWebhookSecretV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(817, __c102, 1) as any as S.Schema<RegenerateMailWebhookSecretV1Request>,
-  output: __S(143, __c17, 7) as any as S.Schema<MailV1WebhooksWebhookSecretResource>,
+  input: __S(8480, __c265, 0) as any as S.Schema<RegenerateMailWebhookSecretV1Request>,
+  output: __S(13216, __c413, 0) as any as S.Schema<MailV1WebhooksWebhookSecretResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12587,8 +12619,8 @@ export const removeReachAContactFromATagV1: API.OperationMethod<
   RemoveReachAContactFromATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(818, __c102, 2) as any as S.Schema<RemoveReachAContactFromATagV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8512, __c266, 0) as any as S.Schema<RemoveReachAContactFromATagV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12602,8 +12634,8 @@ export const removeReachContactsFromATagV1: API.OperationMethod<
   RemoveReachContactsFromATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(819, __c102, 3) as any as S.Schema<RemoveReachContactsFromATagV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8544, __c267, 0) as any as S.Schema<RemoveReachContactsFromATagV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12617,8 +12649,8 @@ export const renameReachATagV1: API.OperationMethod<
   RenameReachATagV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(820, __c102, 4) as any as S.Schema<RenameReachATagV1Request>,
-  output: __S(14, __c1, 6) as any as S.Schema<ReachV1ContactsTagsTagResource>,
+  input: __S(8608, __c269, 0) as any as S.Schema<RenameReachATagV1Request>,
+  output: __S(1568, __c49, 0) as any as S.Schema<ReachV1ContactsTagsTagResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12632,8 +12664,8 @@ export const renewBillingSubscriptionV1: API.OperationMethod<
   RenewBillingSubscriptionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(821, __c102, 5) as any as S.Schema<RenewBillingSubscriptionV1Request>,
-  output: __S(77, __c9, 5) as any as S.Schema<BillingV1OrderOrderResource>,
+  input: __S(8640, __c270, 0) as any as S.Schema<RenewBillingSubscriptionV1Request>,
+  output: __S(10497, __c328, 1) as any as S.Schema<BillingV1OrderOrderResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12649,8 +12681,8 @@ export const replaceAgencyHostingWebsitePHPExtensionsV1: API.OperationMethod<
   ReplaceAgencyHostingWebsitePHPExtensionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(822, __c102, 6) as any as S.Schema<ReplaceAgencyHostingWebsitePHPExtensionsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8672, __c271, 0) as any as S.Schema<ReplaceAgencyHostingWebsitePHPExtensionsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12664,8 +12696,8 @@ export const replaceAgencyHostingWebsitePHPOptionsV1: API.OperationMethod<
   ReplaceAgencyHostingWebsitePHPOptionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(825, __c103, 1) as any as S.Schema<ReplaceAgencyHostingWebsitePHPOptionsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8706, __c272, 2) as any as S.Schema<ReplaceAgencyHostingWebsitePHPOptionsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12681,8 +12713,8 @@ export const replaceHostingNodeJsEnvironmentVariablesV1: API.OperationMethod<
   ReplaceHostingNodeJsEnvironmentVariablesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(828, __c103, 4) as any as S.Schema<ReplaceHostingNodeJsEnvironmentVariablesV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8738, __c273, 2) as any as S.Schema<ReplaceHostingNodeJsEnvironmentVariablesV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12696,8 +12728,8 @@ export const replaceVPSAllFirewallRulesInGroupV1: API.OperationMethod<
   ReplaceVPSAllFirewallRulesInGroupV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(831, __c103, 7) as any as S.Schema<ReplaceVPSAllFirewallRulesInGroupV1Request>,
-  output: __S(163, __c20, 3) as any as S.Schema<VPSV1FirewallFirewallResource>,
+  input: __S(8770, __c274, 2) as any as S.Schema<ReplaceVPSAllFirewallRulesInGroupV1Request>,
+  output: __S(13697, __c428, 1) as any as S.Schema<VPSV1FirewallFirewallResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12715,8 +12747,8 @@ export const resendMailCatchAllConfirmationV1: API.OperationMethod<
   ResendMailCatchAllConfirmationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c104, 0) as any as S.Schema<ResendMailCatchAllConfirmationV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8800, __c275, 0) as any as S.Schema<ResendMailCatchAllConfirmationV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12734,8 +12766,8 @@ export const resendMailForwarderConfirmationV1: API.OperationMethod<
   ResendMailForwarderConfirmationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(833, __c104, 1) as any as S.Schema<ResendMailForwarderConfirmationV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8832, __c276, 0) as any as S.Schema<ResendMailForwarderConfirmationV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12749,8 +12781,8 @@ export const resetDNSDNSRecordsV1: API.OperationMethod<
   ResetDNSDNSRecordsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(834, __c104, 2) as any as S.Schema<ResetDNSDNSRecordsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8864, __c277, 0) as any as S.Schema<ResetDNSDNSRecordsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12764,8 +12796,8 @@ export const resetHostingPHPExtensionsV1: API.OperationMethod<
   ResetHostingPHPExtensionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(835, __c104, 3) as any as S.Schema<ResetHostingPHPExtensionsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8896, __c278, 0) as any as S.Schema<ResetHostingPHPExtensionsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12779,8 +12811,8 @@ export const resetVPSHostnameV1: API.OperationMethod<
   ResetVPSHostnameV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(836, __c104, 4) as any as S.Schema<ResetVPSHostnameV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(8960, __c280, 0) as any as S.Schema<ResetVPSHostnameV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12794,8 +12826,8 @@ export const restartHostingNodeJsApplicationV1: API.OperationMethod<
   RestartHostingNodeJsApplicationV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(837, __c104, 5) as any as S.Schema<RestartHostingNodeJsApplicationV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(8992, __c281, 0) as any as S.Schema<RestartHostingNodeJsApplicationV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12809,8 +12841,8 @@ export const restartVPSProjectV1: API.OperationMethod<
   RestartVPSProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(838, __c104, 6) as any as S.Schema<RestartVPSProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9024, __c282, 0) as any as S.Schema<RestartVPSProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12824,8 +12856,8 @@ export const restartVPSVirtualMachineV1: API.OperationMethod<
   RestartVPSVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(839, __c104, 7) as any as S.Schema<RestartVPSVirtualMachineV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9056, __c283, 0) as any as S.Schema<RestartVPSVirtualMachineV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12839,8 +12871,8 @@ export const restoreDNSDNSSnapshotV1: API.OperationMethod<
   RestoreDNSDNSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(840, __c105, 0) as any as S.Schema<RestoreDNSDNSSnapshotV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9088, __c284, 0) as any as S.Schema<RestoreDNSDNSSnapshotV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12854,8 +12886,8 @@ export const restoreVPSBackupV1: API.OperationMethod<
   RestoreVPSBackupV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(841, __c105, 1) as any as S.Schema<RestoreVPSBackupV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9120, __c285, 0) as any as S.Schema<RestoreVPSBackupV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12869,8 +12901,8 @@ export const restoreVPSSnapshotV1: API.OperationMethod<
   RestoreVPSSnapshotV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(842, __c105, 2) as any as S.Schema<RestoreVPSSnapshotV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9152, __c286, 0) as any as S.Schema<RestoreVPSSnapshotV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12884,8 +12916,8 @@ export const revokeMailAPITokenV1: API.OperationMethod<
   RevokeMailAPITokenV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(843, __c105, 3) as any as S.Schema<RevokeMailAPITokenV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9184, __c287, 0) as any as S.Schema<RevokeMailAPITokenV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12899,8 +12931,8 @@ export const searchHostingWordPressPluginsV1: API.OperationMethod<
   SearchHostingWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(844, __c105, 4) as any as S.Schema<SearchHostingWordPressPluginsV1Request>,
-  output: __S(848, __c106, 0) as any as S.Schema<SearchHostingWordPressPluginsV1Response>,
+  input: __S(9216, __c288, 0) as any as S.Schema<SearchHostingWordPressPluginsV1Request>,
+  output: __S(9220, __c288, 4) as any as S.Schema<SearchHostingWordPressPluginsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12914,8 +12946,8 @@ export const setBillingDefaultPaymentMethodV1: API.OperationMethod<
   SetBillingDefaultPaymentMethodV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(849, __c106, 1) as any as S.Schema<SetBillingDefaultPaymentMethodV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9248, __c289, 0) as any as S.Schema<SetBillingDefaultPaymentMethodV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12929,8 +12961,8 @@ export const setDomainWHOISProfileAsDefaultV1: API.OperationMethod<
   SetDomainWHOISProfileAsDefaultV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(850, __c106, 2) as any as S.Schema<SetDomainWHOISProfileAsDefaultV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9344, __c292, 0) as any as S.Schema<SetDomainWHOISProfileAsDefaultV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12944,8 +12976,8 @@ export const setEcommerceStoreShippingV1: API.OperationMethod<
   SetEcommerceStoreShippingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(851, __c106, 3) as any as S.Schema<SetEcommerceStoreShippingV1Request>,
-  output: __S(853, __c106, 5) as any as S.Schema<EcommerceV1ShippingShippingResource>,
+  input: __S(9376, __c293, 0) as any as S.Schema<SetEcommerceStoreShippingV1Request>,
+  output: __S(9378, __c293, 2) as any as S.Schema<EcommerceV1ShippingShippingResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12959,8 +12991,8 @@ export const setHostingAIOptionStatusV1: API.OperationMethod<
   SetHostingAIOptionStatusV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(854, __c106, 6) as any as S.Schema<SetHostingAIOptionStatusV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9408, __c294, 0) as any as S.Schema<SetHostingAIOptionStatusV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12974,8 +13006,8 @@ export const setVPSHostnameV1: API.OperationMethod<
   SetVPSHostnameV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(855, __c106, 7) as any as S.Schema<SetVPSHostnameV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9440, __c295, 0) as any as S.Schema<SetVPSHostnameV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -12989,8 +13021,8 @@ export const setVPSNameserversV1: API.OperationMethod<
   SetVPSNameserversV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(856, __c107, 0) as any as S.Schema<SetVPSNameserversV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9472, __c296, 0) as any as S.Schema<SetVPSNameserversV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13004,8 +13036,8 @@ export const setVPSPanelPasswordV1: API.OperationMethod<
   SetVPSPanelPasswordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(857, __c107, 1) as any as S.Schema<SetVPSPanelPasswordV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9504, __c297, 0) as any as S.Schema<SetVPSPanelPasswordV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13019,8 +13051,8 @@ export const setVPSRootPasswordV1: API.OperationMethod<
   SetVPSRootPasswordV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(858, __c107, 2) as any as S.Schema<SetVPSRootPasswordV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9536, __c298, 0) as any as S.Schema<SetVPSRootPasswordV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13034,8 +13066,8 @@ export const startDomainDomainTransferV1: API.OperationMethod<
   StartDomainDomainTransferV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(859, __c107, 3) as any as S.Schema<StartDomainDomainTransferV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9568, __c299, 0) as any as S.Schema<StartDomainDomainTransferV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13049,8 +13081,8 @@ export const startHostingNodeJsBuildV1: API.OperationMethod<
   StartHostingNodeJsBuildV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(861, __c107, 5) as any as S.Schema<StartHostingNodeJsBuildV1Request>,
-  output: __S(364, __c45, 4) as any as S.Schema<HostingV1NodeJsBuildResource>,
+  input: __S(9601, __c300, 1) as any as S.Schema<StartHostingNodeJsBuildV1Request>,
+  output: __S(2980, __c93, 4) as any as S.Schema<HostingV1NodeJsBuildResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13064,8 +13096,8 @@ export const startVPSProjectV1: API.OperationMethod<
   StartVPSProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(862, __c107, 6) as any as S.Schema<StartVPSProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9632, __c301, 0) as any as S.Schema<StartVPSProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13079,8 +13111,8 @@ export const startVPSRecoveryModeV1: API.OperationMethod<
   StartVPSRecoveryModeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(863, __c107, 7) as any as S.Schema<StartVPSRecoveryModeV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9728, __c304, 0) as any as S.Schema<StartVPSRecoveryModeV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13094,8 +13126,8 @@ export const startVPSVirtualMachineV1: API.OperationMethod<
   StartVPSVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c108, 0) as any as S.Schema<StartVPSVirtualMachineV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9760, __c305, 0) as any as S.Schema<StartVPSVirtualMachineV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13109,8 +13141,8 @@ export const stopVPSProjectV1: API.OperationMethod<
   StopVPSProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(865, __c108, 1) as any as S.Schema<StopVPSProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9792, __c306, 0) as any as S.Schema<StopVPSProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13124,8 +13156,8 @@ export const stopVPSRecoveryModeV1: API.OperationMethod<
   StopVPSRecoveryModeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(866, __c108, 2) as any as S.Schema<StopVPSRecoveryModeV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9824, __c307, 0) as any as S.Schema<StopVPSRecoveryModeV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13139,8 +13171,8 @@ export const stopVPSVirtualMachineV1: API.OperationMethod<
   StopVPSVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(867, __c108, 3) as any as S.Schema<StopVPSVirtualMachineV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(9856, __c308, 0) as any as S.Schema<StopVPSVirtualMachineV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13154,8 +13186,8 @@ export const syncVPSFirewallToAllAssignedVMsV1: API.OperationMethod<
   SyncVPSFirewallToAllAssignedVMsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(868, __c108, 4) as any as S.Schema<SyncVPSFirewallToAllAssignedVMsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9888, __c309, 0) as any as S.Schema<SyncVPSFirewallToAllAssignedVMsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13169,8 +13201,8 @@ export const testMailWebhookV1: API.OperationMethod<
   TestMailWebhookV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(869, __c108, 5) as any as S.Schema<TestMailWebhookV1Request>,
-  output: __S(870, __c108, 6) as any as S.Schema<MailV1WebhooksWebhookTestResultResource>,
+  input: __S(9920, __c310, 0) as any as S.Schema<TestMailWebhookV1Request>,
+  output: __S(9921, __c310, 1) as any as S.Schema<MailV1WebhooksWebhookTestResultResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13184,8 +13216,8 @@ export const toggleHostingCachelessModeV1: API.OperationMethod<
   ToggleHostingCachelessModeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(871, __c108, 7) as any as S.Schema<ToggleHostingCachelessModeV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9952, __c311, 0) as any as S.Schema<ToggleHostingCachelessModeV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13199,8 +13231,8 @@ export const toggleHostingHTTPSRedirectV1: API.OperationMethod<
   ToggleHostingHTTPSRedirectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(872, __c109, 0) as any as S.Schema<ToggleHostingHTTPSRedirectV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(9984, __c312, 0) as any as S.Schema<ToggleHostingHTTPSRedirectV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13214,8 +13246,8 @@ export const toggleHostingMaintenanceModeV1: API.OperationMethod<
   ToggleHostingMaintenanceModeV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(873, __c109, 1) as any as S.Schema<ToggleHostingMaintenanceModeV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10016, __c313, 0) as any as S.Schema<ToggleHostingMaintenanceModeV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13229,8 +13261,8 @@ export const toggleHostingMemcachedObjectCacheV1: API.OperationMethod<
   ToggleHostingMemcachedObjectCacheV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(874, __c109, 2) as any as S.Schema<ToggleHostingMemcachedObjectCacheV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10112, __c316, 0) as any as S.Schema<ToggleHostingMemcachedObjectCacheV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13244,8 +13276,8 @@ export const toggleHostingWebsiteCacheV1: API.OperationMethod<
   ToggleHostingWebsiteCacheV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(875, __c109, 3) as any as S.Schema<ToggleHostingWebsiteCacheV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10144, __c317, 0) as any as S.Schema<ToggleHostingWebsiteCacheV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13259,8 +13291,8 @@ export const uninstallAgencyHostingWebsiteSSLV1: API.OperationMethod<
   UninstallAgencyHostingWebsiteSSLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(876, __c109, 4) as any as S.Schema<UninstallAgencyHostingWebsiteSSLV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10176, __c318, 0) as any as S.Schema<UninstallAgencyHostingWebsiteSSLV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13274,8 +13306,8 @@ export const uninstallHostingSSLV1: API.OperationMethod<
   UninstallHostingSSLV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(877, __c109, 5) as any as S.Schema<UninstallHostingSSLV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10208, __c319, 0) as any as S.Schema<UninstallHostingSSLV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13289,8 +13321,8 @@ export const uninstallHostingWordPressPluginsV1: API.OperationMethod<
   UninstallHostingWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(878, __c109, 6) as any as S.Schema<UninstallHostingWordPressPluginsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10240, __c320, 0) as any as S.Schema<UninstallHostingWordPressPluginsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13304,8 +13336,8 @@ export const uninstallHostingWordPressThemesV1: API.OperationMethod<
   UninstallHostingWordPressThemesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(879, __c109, 7) as any as S.Schema<UninstallHostingWordPressThemesV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10272, __c321, 0) as any as S.Schema<UninstallHostingWordPressThemesV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13319,8 +13351,8 @@ export const uninstallVPSMonarxV1: API.OperationMethod<
   UninstallVPSMonarxV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c110, 0) as any as S.Schema<UninstallVPSMonarxV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(10304, __c322, 0) as any as S.Schema<UninstallVPSMonarxV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13334,8 +13366,8 @@ export const unlinkAgencyHostingDomainFromWebsiteV1: API.OperationMethod<
   UnlinkAgencyHostingDomainFromWebsiteV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(881, __c110, 1) as any as S.Schema<UnlinkAgencyHostingDomainFromWebsiteV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10336, __c323, 0) as any as S.Schema<UnlinkAgencyHostingDomainFromWebsiteV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13349,8 +13381,8 @@ export const updateAgencyHostingWebsitePHPVersionV1: API.OperationMethod<
   UpdateAgencyHostingWebsitePHPVersionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(882, __c110, 2) as any as S.Schema<UpdateAgencyHostingWebsitePHPVersionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10368, __c324, 0) as any as S.Schema<UpdateAgencyHostingWebsitePHPVersionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13364,8 +13396,8 @@ export const updateDNSDNSRecordsV1: API.OperationMethod<
   UpdateDNSDNSRecordsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(887, __c110, 7) as any as S.Schema<UpdateDNSDNSRecordsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10402, __c325, 2) as any as S.Schema<UpdateDNSDNSRecordsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13379,8 +13411,8 @@ export const updateDomainDomainForwardingV1: API.OperationMethod<
   UpdateDomainDomainForwardingV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(888, __c111, 0) as any as S.Schema<UpdateDomainDomainForwardingV1Request>,
-  output: __S(79, __c9, 7) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
+  input: __S(10560, __c330, 0) as any as S.Schema<UpdateDomainDomainForwardingV1Request>,
+  output: __S(10912, __c341, 0) as any as S.Schema<DomainsV1ForwardingForwardingResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13394,8 +13426,8 @@ export const updateDomainDomainNameserversV1: API.OperationMethod<
   UpdateDomainDomainNameserversV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(889, __c111, 1) as any as S.Schema<UpdateDomainDomainNameserversV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10592, __c331, 0) as any as S.Schema<UpdateDomainDomainNameserversV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13409,8 +13441,8 @@ export const updateEcommerceAProductV1: API.OperationMethod<
   UpdateEcommerceAProductV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(890, __c111, 2) as any as S.Schema<UpdateEcommerceAProductV1Request>,
-  output: __S(891, __c111, 3) as any as S.Schema<EcommerceV1ProductProductResponseResource>,
+  input: __S(10624, __c332, 0) as any as S.Schema<UpdateEcommerceAProductV1Request>,
+  output: __S(10625, __c332, 1) as any as S.Schema<EcommerceV1ProductProductResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13424,8 +13456,8 @@ export const updateEcommerceProductVariantsInBatchV1: API.OperationMethod<
   UpdateEcommerceProductVariantsInBatchV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1Request>,
-  output: __S(897, __c112, 1) as any as S.Schema<EcommerceV1VariantVariantListResponseResource>,
+  input: __S(10660, __c333, 4) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1Request>,
+  output: __S(10661, __c333, 5) as any as S.Schema<EcommerceV1VariantVariantListResponseResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13439,8 +13471,12 @@ export const updateEcommerceSalesChannelV1: API.OperationMethod<
   UpdateEcommerceSalesChannelV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(898, __c112, 2) as any as S.Schema<UpdateEcommerceSalesChannelV1Request>,
-  output: __S(98, __c12, 2) as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResource>,
+  input: __S(10688, __c334, 0) as any as S.Schema<UpdateEcommerceSalesChannelV1Request>,
+  output: __S(
+    12096,
+    __c378,
+    0,
+  ) as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13454,8 +13490,8 @@ export const updateHostingGitAutoDeploymentSettingsV1: API.OperationMethod<
   UpdateHostingGitAutoDeploymentSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(899, __c112, 3) as any as S.Schema<UpdateHostingGitAutoDeploymentSettingsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10720, __c335, 0) as any as S.Schema<UpdateHostingGitAutoDeploymentSettingsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13469,8 +13505,8 @@ export const updateHostingHostingerWordPressPluginV1: API.OperationMethod<
   UpdateHostingHostingerWordPressPluginV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(900, __c112, 4) as any as S.Schema<UpdateHostingHostingerWordPressPluginV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10752, __c336, 0) as any as S.Schema<UpdateHostingHostingerWordPressPluginV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13484,8 +13520,8 @@ export const updateHostingNodeJsBuildSettingsV1: API.OperationMethod<
   UpdateHostingNodeJsBuildSettingsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(901, __c112, 5) as any as S.Schema<UpdateHostingNodeJsBuildSettingsV1Request>,
-  output: __S(368, __c46, 0) as any as S.Schema<HostingV1NodeJsStoredBuildSettingsResource>,
+  input: __S(10784, __c337, 0) as any as S.Schema<UpdateHostingNodeJsBuildSettingsV1Request>,
+  output: __S(3072, __c96, 0) as any as S.Schema<HostingV1NodeJsStoredBuildSettingsResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13499,8 +13535,8 @@ export const updateHostingPHPExtensionsV1: API.OperationMethod<
   UpdateHostingPHPExtensionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(902, __c112, 6) as any as S.Schema<UpdateHostingPHPExtensionsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10816, __c338, 0) as any as S.Schema<UpdateHostingPHPExtensionsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13514,8 +13550,8 @@ export const updateHostingPHPOptionsV1: API.OperationMethod<
   UpdateHostingPHPOptionsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<UpdateHostingPHPOptionsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10849, __c339, 1) as any as S.Schema<UpdateHostingPHPOptionsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13529,8 +13565,8 @@ export const updateHostingPHPVersionV1: API.OperationMethod<
   UpdateHostingPHPVersionV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(905, __c113, 1) as any as S.Schema<UpdateHostingPHPVersionV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10944, __c342, 0) as any as S.Schema<UpdateHostingPHPVersionV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13544,8 +13580,8 @@ export const updateHostingWordPressCoreV1: API.OperationMethod<
   UpdateHostingWordPressCoreV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(906, __c113, 2) as any as S.Schema<UpdateHostingWordPressCoreV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(10976, __c343, 0) as any as S.Schema<UpdateHostingWordPressCoreV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13559,8 +13595,8 @@ export const updateHostingWordPressPluginsV1: API.OperationMethod<
   UpdateHostingWordPressPluginsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(907, __c113, 3) as any as S.Schema<UpdateHostingWordPressPluginsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(11008, __c344, 0) as any as S.Schema<UpdateHostingWordPressPluginsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13574,8 +13610,8 @@ export const updateHostingWordPressThemesV1: API.OperationMethod<
   UpdateHostingWordPressThemesV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(908, __c113, 4) as any as S.Schema<UpdateHostingWordPressThemesV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(11040, __c345, 0) as any as S.Schema<UpdateHostingWordPressThemesV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13589,8 +13625,8 @@ export const updateMailAutoreplyV1: API.OperationMethod<
   UpdateMailAutoreplyV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(909, __c113, 5) as any as S.Schema<UpdateMailAutoreplyV1Request>,
-  output: __S(131, __c16, 3) as any as S.Schema<MailV1AutorepliesAutoreplyResource>,
+  input: __S(11072, __c346, 0) as any as S.Schema<UpdateMailAutoreplyV1Request>,
+  output: __S(12864, __c402, 0) as any as S.Schema<MailV1AutorepliesAutoreplyResource>,
   errors: [NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13608,8 +13644,8 @@ export const updateMailWebhookV1: API.OperationMethod<
   UpdateMailWebhookV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(910, __c113, 6) as any as S.Schema<UpdateMailWebhookV1Request>,
-  output: __S(395, __c49, 3) as any as S.Schema<MailV1WebhooksWebhookResource>,
+  input: __S(11104, __c347, 0) as any as S.Schema<UpdateMailWebhookV1Request>,
+  output: __S(3456, __c108, 0) as any as S.Schema<MailV1WebhooksWebhookResource>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13623,8 +13659,8 @@ export const updateReachAContactFieldV1: API.OperationMethod<
   UpdateReachAContactFieldV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(913, __c114, 1) as any as S.Schema<UpdateReachAContactFieldV1Request>,
-  output: __S(147, __c18, 3) as any as S.Schema<ReachV1ContactsFieldsContactFieldResource>,
+  input: __S(11138, __c348, 2) as any as S.Schema<UpdateReachAContactFieldV1Request>,
+  output: __S(13312, __c416, 0) as any as S.Schema<ReachV1ContactsFieldsContactFieldResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13638,8 +13674,8 @@ export const updateReachAContactV1: API.OperationMethod<
   UpdateReachAContactV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(916, __c114, 4) as any as S.Schema<UpdateReachAContactV1Request>,
-  output: __S(917, __c114, 5) as any as S.Schema<ReachV1ContactsProfileContactUpdateResource>,
+  input: __S(11170, __c349, 2) as any as S.Schema<UpdateReachAContactV1Request>,
+  output: __S(11171, __c349, 3) as any as S.Schema<ReachV1ContactsProfileContactUpdateResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13653,8 +13689,8 @@ export const updateReachAProfileSegmentV1: API.OperationMethod<
   UpdateReachAProfileSegmentV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(918, __c114, 6) as any as S.Schema<UpdateReachAProfileSegmentV1Request>,
-  output: __S(157, __c19, 5) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
+  input: __S(11200, __c350, 0) as any as S.Schema<UpdateReachAProfileSegmentV1Request>,
+  output: __S(13504, __c422, 0) as any as S.Schema<ReachV1ContactsSegmentsSegmentResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13668,8 +13704,8 @@ export const updateVPSFirewallRuleV1: API.OperationMethod<
   UpdateVPSFirewallRuleV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(919, __c114, 7) as any as S.Schema<UpdateVPSFirewallRuleV1Request>,
-  output: __S(160, __c20, 0) as any as S.Schema<VPSV1FirewallFirewallRuleResource>,
+  input: __S(11232, __c351, 0) as any as S.Schema<UpdateVPSFirewallRuleV1Request>,
+  output: __S(13632, __c426, 0) as any as S.Schema<VPSV1FirewallFirewallRuleResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13683,8 +13719,8 @@ export const updateVPSProjectV1: API.OperationMethod<
   UpdateVPSProjectV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(920, __c115, 0) as any as S.Schema<UpdateVPSProjectV1Request>,
-  output: __S(4, __c0, 4) as any as S.Schema<VPSV1ActionActionResource>,
+  input: __S(11328, __c354, 0) as any as S.Schema<UpdateVPSProjectV1Request>,
+  output: __S(13120, __c410, 0) as any as S.Schema<VPSV1ActionActionResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13698,8 +13734,8 @@ export const validateDNSDNSRecordsV1: API.OperationMethod<
   ValidateDNSDNSRecordsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(923, __c115, 3) as any as S.Schema<ValidateDNSDNSRecordsV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(11362, __c355, 2) as any as S.Schema<ValidateDNSDNSRecordsV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13713,8 +13749,8 @@ export const verifyHostingDomainOwnershipV1: API.OperationMethod<
   VerifyHostingDomainOwnershipV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(924, __c115, 4) as any as S.Schema<VerifyHostingDomainOwnershipV1Request>,
-  output: __S(925, __c115, 5) as any as S.Schema<HostingV1DomainsDomainAccessResource>,
+  input: __S(11392, __c356, 0) as any as S.Schema<VerifyHostingDomainOwnershipV1Request>,
+  output: __S(11393, __c356, 1) as any as S.Schema<HostingV1DomainsDomainAccessResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13728,8 +13764,8 @@ export const vPSCreatePostInstallScriptV1: API.OperationMethod<
   VPSCreatePostInstallScriptV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(926, __c115, 6) as any as S.Schema<VPSCreatePostInstallScriptV1Request>,
-  output: __S(927, __c115, 7) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
+  input: __S(11424, __c357, 0) as any as S.Schema<VPSCreatePostInstallScriptV1Request>,
+  output: __S(11456, __c358, 0) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13743,8 +13779,8 @@ export const vPSDeletePostInstallScriptV1: API.OperationMethod<
   VPSDeletePostInstallScriptV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c116, 0) as any as S.Schema<VPSDeletePostInstallScriptV1Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommonSuccessEmptyResource>,
+  input: __S(11488, __c359, 0) as any as S.Schema<VPSDeletePostInstallScriptV1Request>,
+  output: __S(11904, __c372, 0) as any as S.Schema<CommonSuccessEmptyResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13758,8 +13794,8 @@ export const vPSGetDataCenterListV1: API.OperationMethod<
   VPSGetDataCenterListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(929, __c116, 1) as any as S.Schema<VPSGetDataCenterListV1Request>,
-  output: __S(932, __c116, 4) as any as S.Schema<VPSGetDataCenterListV1Response>,
+  input: __S(11520, __c360, 0) as any as S.Schema<VPSGetDataCenterListV1Request>,
+  output: __S(11523, __c360, 3) as any as S.Schema<VPSGetDataCenterListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13773,8 +13809,8 @@ export const vPSGetFirewallListV1: API.OperationMethod<
   VPSGetFirewallListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(933, __c116, 5) as any as S.Schema<VPSGetFirewallListV1Request>,
-  output: __S(935, __c116, 7) as any as S.Schema<VPSGetFirewallListV1Response>,
+  input: __S(11552, __c361, 0) as any as S.Schema<VPSGetFirewallListV1Request>,
+  output: __S(11554, __c361, 2) as any as S.Schema<VPSGetFirewallListV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13788,8 +13824,8 @@ export const vPSGetPostInstallScriptsV1: API.OperationMethod<
   VPSGetPostInstallScriptsV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(936, __c117, 0) as any as S.Schema<VPSGetPostInstallScriptsV1Request>,
-  output: __S(938, __c117, 2) as any as S.Schema<VPSGetPostInstallScriptsV1Response>,
+  input: __S(11584, __c362, 0) as any as S.Schema<VPSGetPostInstallScriptsV1Request>,
+  output: __S(11586, __c362, 2) as any as S.Schema<VPSGetPostInstallScriptsV1Response>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13803,8 +13839,8 @@ export const vPSGetPostInstallScriptV1: API.OperationMethod<
   VPSGetPostInstallScriptV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(939, __c117, 3) as any as S.Schema<VPSGetPostInstallScriptV1Request>,
-  output: __S(927, __c115, 7) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
+  input: __S(11616, __c363, 0) as any as S.Schema<VPSGetPostInstallScriptV1Request>,
+  output: __S(11456, __c358, 0) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
   errors: [UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13818,8 +13854,8 @@ export const vPSGetProjectListV1: API.OperationMethod<
   VPSGetProjectListV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(940, __c117, 4) as any as S.Schema<VPSGetProjectListV1Request>,
-  output: __S(943, __c117, 7) as any as S.Schema<VPSGetProjectListV1Response>,
+  input: __S(11648, __c364, 0) as any as S.Schema<VPSGetProjectListV1Request>,
+  output: __S(11651, __c364, 3) as any as S.Schema<VPSGetProjectListV1Response>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13833,8 +13869,8 @@ export const vPSPurchaseNewVirtualMachineV1: API.OperationMethod<
   VPSPurchaseNewVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(946, __c118, 2) as any as S.Schema<VPSPurchaseNewVirtualMachineV1Request>,
-  output: __S(947, __c118, 3) as any as S.Schema<BillingV1OrderVirtualMachineOrderResource>,
+  input: __S(11745, __c367, 1) as any as S.Schema<VPSPurchaseNewVirtualMachineV1Request>,
+  output: __S(11746, __c367, 2) as any as S.Schema<BillingV1OrderVirtualMachineOrderResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13848,8 +13884,8 @@ export const vPSSetupPurchasedVirtualMachineV1: API.OperationMethod<
   VPSSetupPurchasedVirtualMachineV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(948, __c118, 4) as any as S.Schema<VPSSetupPurchasedVirtualMachineV1Request>,
-  output: __S(481, __c60, 1) as any as S.Schema<VPSV1VirtualMachineVirtualMachineResource>,
+  input: __S(11808, __c369, 0) as any as S.Schema<VPSSetupPurchasedVirtualMachineV1Request>,
+  output: __S(4546, __c142, 2) as any as S.Schema<VPSV1VirtualMachineVirtualMachineResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13863,8 +13899,8 @@ export const vPSUpdatePostInstallScriptV1: API.OperationMethod<
   VPSUpdatePostInstallScriptV1Error,
   HostingerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(949, __c118, 5) as any as S.Schema<VPSUpdatePostInstallScriptV1Request>,
-  output: __S(927, __c115, 7) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
+  input: __S(11840, __c370, 0) as any as S.Schema<VPSUpdatePostInstallScriptV1Request>,
+  output: __S(11456, __c358, 0) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptResource>,
   errors: [UnprocessableEntity, UnknownHostingerError],
   protocol: HostingerProtocol,
   retry: Retry.Retry,
@@ -13872,123 +13908,6 @@ export const vPSUpdatePostInstallScriptV1: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software: S.String.pipe(T.Label()),
-          plugin: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/activate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateHostingWordPressPluginV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommonSuccessEmptyResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software: S.String.pipe(T.Label()),
-          theme: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/themes/activate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateHostingWordPressThemeV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firewallId: S.Number.pipe(T.Label()),
-          virtualMachineId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateVPSFirewallV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VPSV1ActionActionResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          archive_path: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/build-assets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingBuildWebsiteNodeJSAssetsV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          from_domain: S.String.pipe(T.Label()),
-          domain: S.NullOr(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingChangeWebsiteDomainV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          version: S.String,
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingChangeWordPressVersionV1Request",
-      });
-  }
-}
-function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14004,7 +13923,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AgencyHostingGenerateUploadURLV1Request",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -14014,2266 +13937,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1FilesUploadUrlResource",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          archive_name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/files/import-archive",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingImportWebsiteFromArchiveV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          domain: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingLinkDomainToWebsiteV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl/reinstall",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AgencyHostingReinstallWebsiteSSLV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          tagUuid: S.String.pipe(T.Label()),
-          contactUuid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts/{contactUuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AssignReachAContactToATagV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReachV1ContactsTagsTagResource",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          tagUuid: S.String.pipe(T.Label()),
-          contact_uuids: S.optional(__S(15, __c1, 7)),
-          all_contacts: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AssignReachContactsToATagV1Request",
-      });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.Number.pipe(T.Label()),
-          ids: __S(17, __c2, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/public-keys/attach/{virtualMachineId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AttachVPSPublicKeyV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/billing/v1/catalog", code: 200 })),
-      ).annotate({
-        identifier: "BillingGetCatalogItemListV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          currency: S.optional(S.String),
-          price: S.optional(S.Number),
-          first_period_price: S.optional(S.Number),
-          period: S.optional(S.Number),
-          period_unit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingV1CatalogCatalogItemPriceResource",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          category: S.optional(S.String),
-          metadata: S.optional(S.NullOr(S.Unknown)),
-          prices: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "BillingV1CatalogCatalogItemResource",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(23, __c2, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BillingGetCatalogItemListV1Response",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/billing/v1/payment-methods", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BillingGetPaymentMethodListV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          identifier: S.optional(S.String),
-          payment_method: S.optional(S.String),
-          is_default: S.optional(S.Boolean),
-          is_expired: S.optional(S.Boolean),
-          is_suspended: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          expires_at: S.optional(S.String),
-          suspended_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "BillingV1PaymentMethodPaymentMethodResource",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BillingGetPaymentMethodListV1Response",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/billing/v1/subscriptions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BillingGetSubscriptionListV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          billing_period: S.optional(S.Number),
-          billing_period_unit: S.optional(S.String),
-          currency_code: S.optional(S.String),
-          total_price: S.optional(S.Number),
-          renewal_price: S.optional(S.Number),
-          is_auto_renewed: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          expires_at: S.optional(S.NullOr(S.String)),
-          next_billing_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "BillingV1SubscriptionSubscriptionResource",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BillingGetSubscriptionListV1Response",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/irtp/{domain}", code: 200 })),
-      ).annotate({
-        identifier: "CancelDomainPendingIRTPVerificationV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          order_id: S.String.pipe(T.Label()),
-          notify_customer: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/orders/{order_id}/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelEcommerceAnOrderV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          display_id: S.optional(S.Number),
-          status: S.optional(S.String),
-          payment_status: S.optional(S.String),
-          fulfillment_status: S.optional(S.String),
-          total: S.optional(S.Number),
-          currency_code: S.optional(S.String),
-          customer_email: S.optional(S.NullOr(S.String)),
-          item_count: S.optional(S.Number),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1OrderOrderResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1OrderOrderResponseResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          tlds: __S(15, __c1, 7),
-          with_alternatives: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/availability", code: 200 })),
-      ).annotate({
-        identifier: "CheckDomainDomainAvailabilityV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.NullOr(S.String)),
-          is_available: S.optional(S.Boolean),
-          is_alternative: S.optional(S.Boolean),
-          restriction: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainsV1AvailabilityAvailabilityResource",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CheckDomainDomainAvailabilityV1Response",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/hosting/v1/wordpress/plugins/is-woocommerce-installed",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckHostingIfWooCommerceIsInstalledV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          is_installed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "WordPressV1PluginsWoocommerceInstalledResource",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software_ids: __S(43, __c5, 3),
-          force: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/installations/check-is-valid",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckHostingIfWordPressInstallationsAreValidV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          software_id: S.optional(S.String),
-          is_valid: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "WordPressV1InstallationsCheckIsValidResultResource",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() => __S(46, __c5, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CheckHostingIfWordPressInstallationsAreValidV1Response",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner_id: S.optional(S.Number),
-          admin_id: S.optional(S.Number),
-          billing_id: S.optional(S.Number),
-          tech_id: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ClaimDomainFreeDomainTransferV1RequestDomainContacts",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          auth_code: S.String,
-          domain_contacts: S.optional(__S(48, __c6, 0)),
-          should_keep_ns: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/transfers/claim", code: 200 })),
-      ).annotate({
-        identifier: "ClaimDomainFreeDomainTransferV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          status: S.optional(S.String),
-          initiated_at: S.optional(S.NullOr(S.String)),
-          completed_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainsV1TransferTransferResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          domain_contacts: S.optional(__S(48, __c6, 0)),
-          additional_details: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/portfolio/claim", code: 200 })),
-      ).annotate({
-        identifier: "ClaimDomainFreeDomainV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainsV1PortfolioClaimResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/cache",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearAgencyHostingWebsiteCacheV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearHostingNodeJsRuntimeLogsV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          directory: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearHostingWebsiteCacheV1Request",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          websiteId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/horizons/v1/websites/{websiteId}/clone", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CloneHorizonWebsiteV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          website_url: S.String,
-          website_id: S.String,
-        }),
-      ).annotate({
-        identifier: "HorizonsV1WebsitesCreatedWebsiteResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          domain_contacts: S.optional(__S(48, __c6, 0)),
-          additional_details: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/domains/v1/portfolio/{domain}/setup", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CompleteDomainDomainSetupV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAgencyHostingANewWebsiteV1RequestSettingsPhp",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          php: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "CreateAgencyHostingANewWebsiteV1RequestSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          email: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.String,
-          title: S.String,
-          admin: __S(61, __c7, 5),
-        }),
-      ).annotate({
-        identifier: "CreateAgencyHostingANewWebsiteV1RequestWordpress",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          order_id: S.Number.pipe(T.Label()),
-          datacenter_code: S.String,
-          flavor: S.String,
-          settings: __S(60, __c7, 4),
-          domain: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          wordpress: S.optional(__S(62, __c7, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/orders/{order_id}/websites/setups",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAgencyHostingANewWebsiteV1Request",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          setup_uuid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgencyHostingV1SetupsWebsiteSetupResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          time: S.String,
-          command: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/cron-jobs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAgencyHostingWebsiteCronJobV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          time: S.optional(S.String),
-          command: S.optional(S.String),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgencyHostingV1WebsitesCronJobsCronJobResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          database_name: S.String.pipe(T.Label()),
-          database_user: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          host: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAgencyHostingWebsiteDatabaseUserV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          host: S.optional(S.String),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgencyHostingV1WebsitesDatabasesDatabaseUserResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          database_name: S.String,
-          database_user: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAgencyHostingWebsiteDatabaseV1Request",
-      });
-    case 6:
-      return S.Array(__S(68, __c8, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          users: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "AgencyHostingV1WebsitesDatabasesDatabaseResource",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          item_id: S.String,
-          quantity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateBillingPurchaseOrderV1RequestItemsItem",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          payment_method_id: S.optional(S.Number),
-          items: __S(73, __c9, 1),
-          coupons: S.optional(__S(74, __c9, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/billing/v1/orders", code: 200 })),
-      ).annotate({
-        identifier: "CreateBillingPurchaseOrderV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          company: S.optional(S.NullOr(S.String)),
-          address_1: S.optional(S.NullOr(S.String)),
-          address_2: S.optional(S.NullOr(S.String)),
-          city: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-          zip: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingV1OrderOrderBillingAddressResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          subscription_id: S.optional(S.String),
-          status: S.optional(S.String),
-          currency: S.optional(S.String),
-          subtotal: S.optional(S.Number),
-          total: S.optional(S.Number),
-          billing_address: S.optional(__S(76, __c9, 4)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingV1OrderOrderResource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          redirect_type: S.String,
-          redirect_url: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/forwarding", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainDomainForwardingV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.NullOr(S.String)),
-          redirect_type: S.optional(S.String),
-          redirect_url: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainsV1ForwardingForwardingResource",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tld: S.String,
-          country: S.String,
-          entity_type: S.String,
-          tld_details: S.optional(S.Unknown),
-          whois_details: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/whois", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainWHOISProfileV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          tld: S.optional(S.String),
-          country: S.optional(S.String),
-          entity_type: S.optional(S.String),
-          is_default: S.optional(S.Boolean),
-          whois_details: S.optional(S.Unknown),
-          tld_details: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainsV1WHOISProfileResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          code: S.String,
-          name: S.optional(S.String),
-          type: S.String,
-          value: S.Number,
-          allocation: S.optional(S.String),
-          starts_at: S.optional(S.String),
-          ends_at: S.optional(S.String),
-          usage_limit: S.optional(S.Number),
-          min_cart_value: S.optional(S.Number),
-          time_zone: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/discounts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEcommerceADiscountV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          code: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.Number)),
-          allocation: S.optional(S.NullOr(S.String)),
-          is_disabled: S.optional(S.Boolean),
-          starts_at: S.optional(S.String),
-          ends_at: S.optional(S.NullOr(S.String)),
-          usage_limit: S.optional(S.NullOr(S.Number)),
-          usage_count: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1DiscountDiscountResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1DiscountDiscountResponseResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEcommerceAProductVariantV1RequestOptionsItem",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          sale_amount: S.optional(S.Number),
-          currency: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateEcommerceAProductVariantV1RequestPricesItem",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          product_id: S.String.pipe(T.Label()),
-          title: S.optional(S.String),
-          sku: S.optional(S.String),
-          options: __S(86, __c10, 6),
-          prices: S.optional(__S(88, __c11, 0)),
-          inventory_quantity: S.optional(S.Number),
-          manage_inventory: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}/variants",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEcommerceAProductVariantV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantResourceOptionsItem",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          sale_amount: S.optional(S.NullOr(S.Number)),
-          currency_code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantResourcePricesItem",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.NullOr(S.String)),
-          sku: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(91, __c11, 3)),
-          prices: S.optional(__S(93, __c11, 5)),
-          inventory_quantity: S.optional(S.Number),
-          manage_inventory: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantResource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantResponseResource",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          type: S.String,
-          name: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/sales-channels",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEcommerceASalesChannelV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          is_primary: S.optional(S.Boolean),
-          is_active: S.optional(S.Boolean),
-          external_id: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          domain: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sales_channel: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1SalesChannelSalesChannelCreationResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          name: S.String,
-          price: S.Number,
-          description: S.optional(S.NullOr(S.String)),
-          currency: S.optional(S.NullOr(S.String)),
-          download_url: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/products/digital",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEcommerceDigitalProductV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
-          price: S.optional(S.Number),
-          currency_code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1ProductProductCreationResourceProduct",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.optional(__S(100, __c12, 4)),
-          admin_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1ProductProductCreationResource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          name: S.String,
-          price: S.Number,
-          description: S.optional(S.NullOr(S.String)),
-          currency: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ecommerce/v1/stores/{store_id}/products/physical",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEcommercePhysicalProductV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          external_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateEcommerceStoreV1RequestSalesChannel",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          country_code: S.optional(S.String),
-          company_email: S.optional(S.String),
-          company_name: S.optional(S.String),
-          language: S.optional(S.String),
-          sales_channel: S.optional(__S(103, __c12, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ecommerce/v1/stores", code: 200 })),
-      ).annotate({
-        identifier: "CreateEcommerceStoreV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          company_name: S.optional(S.NullOr(S.String)),
-          h_panel_id: S.optional(S.String),
-          created_at: S.optional(S.String),
-          default_currency_code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1StoreStoreCreationResourceStore",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          external_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1StoreStoreCreationResourceSalesChannel",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          store: S.optional(__S(105, __c13, 1)),
-          sales_channel: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1StoreStoreCreationResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          text: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateHorizonWebsiteV1RequestMessageItem",
-      });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: __S(109, __c13, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/api/horizons/v1/websites", code: 200 })),
-      ).annotate({
-        identifier: "CreateHorizonWebsiteV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          time: S.String,
-          command: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/cron-jobs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingAccountCronJobV1Request",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          username: S.optional(S.String),
-          time: S.optional(S.String),
-          command: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingV1CronJobsCronJobResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          name: S.String,
-          user: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          website_domain: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingAccountDatabaseV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          ip: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/databases/{name}/remote-connections",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingDatabaseRemoteConnectionV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/login/links",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingLoginLinksV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          login: S.optional(S.NullOr(S.String)),
-          fallback: S.optional(S.NullOr(S.String)),
-          default: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "WordPressV1LoginLoginLinksResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          parked_domain: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebsiteParkedDomainV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          from: S.String,
-          to: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/redirects",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebsiteRedirectV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.optional(S.String),
-          to: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingV1RedirectsRedirectResource",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          subdomain: S.String,
-          directory: S.optional(S.NullOr(S.String)),
-          is_using_public_directory: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/subdomains",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebsiteSubdomainV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          order_id: S.Number,
-          datacenter_code: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/hosting/v1/websites", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebsiteV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-          local_part: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/mail/v1/mailboxes/{mailboxId}/aliases", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateMailAliasV1Request" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          address: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1AliasesAliasMailboxResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          address: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
-          is_active: S.optional(S.Boolean),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1AliasesAliasResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          has_all_mailboxes: S.Boolean,
-          mailbox_ids: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateMailAPITokenV1RequestScope",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orderId: S.String.pipe(T.Label()),
-          name: S.String,
-          scope: __S(125, __c15, 5),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/mail/v1/orders/{orderId}/api-tokens", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMailAPITokenV1Request",
-      });
-    case 7:
-      return S.Array(__S(123, __c15, 3));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          has_all_mailboxes: S.optional(S.Boolean),
-          mailboxes: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "MailV1ApiTokensApiTokenScopeResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          token: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          scope: S.optional(__S(128, __c16, 0)),
-          created_at: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1ApiTokensApiTokenCreatedResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-          subject: S.String,
-          body: S.String,
-          display_name: S.optional(S.NullOr(S.String)),
-          starts_at: S.optional(S.NullOr(S.String)),
-          ends_at: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/mail/v1/mailboxes/{mailboxId}/autoreplies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMailAutoreplyV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
-          subject: S.optional(S.String),
-          body: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          starts_at: S.optional(S.String),
-          ends_at: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1AutorepliesAutoreplyResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/mail/v1/mailboxes/{mailboxId}/catchalls",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMailCatchAllV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
-          domain: S.optional(S.String),
-          is_active: S.optional(S.Boolean),
-          is_confirmed: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1CatchallsCatchallResource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-          destination: S.String,
-          is_keep_copy_enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/mail/v1/mailboxes/{mailboxId}/forwarders",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMailForwarderV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
-          destination: S.optional(S.String),
-          is_keep_copy_enabled: S.optional(S.Boolean),
-          is_active: S.optional(S.Boolean),
-          is_confirmed: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1ForwardersForwarderResource",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          orderId: S.String.pipe(T.Label()),
-          local_part: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/mail/v1/orders/{orderId}/mailboxes", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMailMailboxV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          is_imap_enabled: S.optional(S.Boolean),
-          is_pop3_enabled: S.optional(S.Boolean),
-          is_smtp_in_enabled: S.optional(S.Boolean),
-          is_smtp_out_enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "MailV1MailboxesMailboxProtocolsResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          forwarders: S.optional(S.Number),
-          aliases: S.optional(S.Number),
-          autoreplies: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MailV1MailboxesMailboxCountsResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storage_used: S.optional(S.Number),
-          storage_quota: S.optional(S.Number),
-          messages_used: S.optional(S.Number),
-          messages_quota: S.optional(S.Number),
-          synced_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "MailV1MailboxesMailboxUsageResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          address: S.optional(S.String),
-          status: S.optional(S.String),
-          status_reason: S.optional(S.NullOr(S.String)),
-          protocols: S.optional(__S(137, __c17, 1)),
-          counts: S.optional(__S(138, __c17, 2)),
-          is_catchall: S.optional(S.Boolean),
-          usage: S.optional(__S(139, __c17, 3)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1MailboxesMailboxResource",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          events: __S(141, __c17, 5),
-          status: S.optional(S.String),
-          url: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/mail/v1/mailboxes/{mailboxId}/webhooks", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMailWebhookV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
-          name: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          events: S.optional(__S(141, __c17, 5)),
-          status: S.optional(S.String),
-          url: S.optional(S.String),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MailV1WebhooksWebhookCreatedResource",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          type: S.String,
-          label: S.String,
-          options: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/contacts/fields",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReachAContactFieldV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          label: S.optional(S.String),
-          sort_order: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ReachV1ContactsFieldsContactFieldOptionResource",
-      });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          type: S.optional(S.String),
-          label: S.optional(S.String),
-          slug: S.optional(S.String),
-          options: S.optional(__S(146, __c18, 2)),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReachV1ContactsFieldsContactFieldResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          preheader: S.optional(S.String),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateReachADraftCampaignV1RequestMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          sender_name: S.String,
-          sender_email: S.String,
-          title: S.optional(S.String),
-          subject: S.optional(S.String),
-          template_uuid: S.optional(S.String),
-          metadata: S.optional(S.NullOr(__S(148, __c18, 4))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/campaigns",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReachADraftCampaignV1Request",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          title: S.optional(S.String),
-          subject: S.optional(S.String),
-          sender_name: S.optional(S.String),
-          sender_email: S.optional(S.String),
-          template_uuid: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
-          is_all_contacts: S.optional(S.Boolean),
-          metadata: S.optional(__S(150, __c18, 6)),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ReachV1CampaignsCreatedCampaignResource",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          template_content: S.String,
-          title: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/templates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReachAnEmailTemplateV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.NullOr(S.String)),
-          title: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ReachV1TemplatesTemplateResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attribute: S.String,
-          operator: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateReachAProfileSegmentV1RequestConditionsItem",
-      });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          name: S.String,
-          conditions: __S(155, __c19, 3),
-          logic: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/segmentation/segments",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReachAProfileSegmentV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          name: S.optional(S.String),
-          query: S.optional(__S(74, __c9, 2)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReachV1ContactsSegmentsSegmentResource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileUuid: S.String.pipe(T.Label()),
-          email: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          surname: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          note: S.optional(S.NullOr(S.String)),
-          tag_uuids: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/reach/v1/profiles/{profileUuid}/contacts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReachNewContactsV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          firewallId: S.Number.pipe(T.Label()),
-          protocol: S.String,
-          port: S.String,
-          source: S.String,
-          source_detail: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/vps/v1/firewall/{firewallId}/rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateVPSFirewallRuleV1Request",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          action: S.optional(S.String),
-          protocol: S.optional(S.String),
-          port: S.optional(S.String),
-          source: S.optional(S.String),
-          source_detail: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VPSV1FirewallFirewallRuleResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/firewall", code: 200 })),
-      ).annotate({
-        identifier: "CreateVPSNewFirewallV1Request",
-      });
-    case 2:
-      return S.Array(__S(160, __c20, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          is_synced: S.optional(S.Boolean),
-          rules: S.optional(__S(162, __c20, 2)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VPSV1FirewallFirewallResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.Number.pipe(T.Label()),
-          project_name: S.String,
-          content: S.String,
-          environment: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/docker",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVPSNewProjectV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.Number.pipe(T.Label()),
-          ipAddressId: S.Number.pipe(T.Label()),
-          domain: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/ptr/{ipAddressId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVPSPTRRecordV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/public-keys", code: 200 })),
-      ).annotate({
-        identifier: "CreateVPSPublicKeyV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VPSV1PublicKeyPublicKeyResource",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVPSSnapshotV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software: S.String.pipe(T.Label()),
-          plugin: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/deactivate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeactivateHostingWordPressPluginV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          firewallId: S.Number.pipe(T.Label()),
-          virtualMachineId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeactivateVPSFirewallV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          uuid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgencyHostingWebsiteCronJobV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          database_name: S.String.pipe(T.Label()),
-          database_user_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users/{database_user_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgencyHostingWebsiteDatabaseUserV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-          database_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgencyHostingWebsiteDatabaseV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          website_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/agency-hosting/v1/websites/{website_uid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgencyHostingWebsiteV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          paymentMethodId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/billing/v1/payment-methods/{paymentMethodId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBillingPaymentMethodV1Request",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteDNSDNSRecordsV1RequestFiltersItem",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          filters: __S(177, __c22, 1),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/dns/v1/zones/{domain}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteDNSDNSRecordsV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/domains/v1/forwarding/{domain}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainDomainForwardingV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          whoisId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/whois/{whoisId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteDomainWHOISProfileV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          product_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEcommerceAProductV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          is_deleted: S.optional(S.Boolean),
-          is_archived: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1ProductProductDeletedResourceData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1ProductProductDeletedResource",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-          product_id: S.String.pipe(T.Label()),
-          variant_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}/variants/{variant_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEcommerceAProductVariantV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          is_deleted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantDeletedResourceData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(185, __c23, 1)),
-        }),
-      ).annotate({
-        identifier: "EcommerceV1VariantVariantDeletedResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          store_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/ecommerce/v1/stores/{store_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteEcommerceStoreV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/cron-jobs/{uid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingAccountCronJobV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/databases/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingAccountDatabaseV1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/databases/{name}/remote-connections",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingDatabaseRemoteConnectionV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingGitAutoDeploymentSettingsV1Request",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          parkedDomain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains/{parkedDomain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebsiteParkedDomainV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          from: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/redirects",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebsiteRedirectV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          subdomain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/subdomains/{subdomain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebsiteSubdomainV1Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/hosting/v1/websites/{domain}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteHostingWebsiteV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          software: S.String.pipe(T.Label()),
-          delete_files: S.optional(S.Boolean),
-          delete_database: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWordPressInstallationV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          aliasId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/aliases/{aliasId}", code: 200 })),
-      ).annotate({ identifier: "DeleteMailAliasV1Request" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autoreplyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/mail/v1/autoreplies/{autoreplyId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteMailAutoreplyV1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          catchallId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/mail/v1/catchalls/{catchallId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteMailCatchAllV1Request",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          forwarderId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/mail/v1/forwarders/{forwarderId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteMailForwarderV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mailboxId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/mailboxes/{mailboxId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteMailMailboxV1Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteMailWebhookV1Request",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -16288,7 +13956,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteReachAContactFieldV1Request",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -16303,7 +13975,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteReachAProfileContactV1Request",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -16318,7 +13994,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteReachAProfileSegmentV1Request",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -16331,7 +14011,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteReachATagV1Request" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -16346,7 +14030,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteReachFormV1Request" });
   }
 }
-function __c26(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16363,7 +14047,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSFirewallRuleV1Request",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firewallId: S.Number.pipe(T.Label()),
@@ -16371,7 +14059,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSFirewallV1Request",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -16386,7 +14078,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSProjectV1Request",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -16401,7 +14097,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSPTRRecordV1Request",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publicKeyId: S.Number.pipe(T.Label()),
@@ -16411,7 +14111,30 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSPublicKeyV1Request",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          archive_name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/files/import-archive",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingImportWebsiteFromArchiveV1Request",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -16425,7 +14148,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteVPSSnapshotV1Request",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -16443,7 +14170,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeployHostingWebsiteGitRepositoryV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           is_success: S.Boolean,
@@ -16454,7 +14181,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16473,7 +14200,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeployHostingWordPressPluginV1Request",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -16491,7 +14222,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeployHostingWordPressThemeV1Request",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16505,7 +14240,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DisableBillingAutoRenewalV1Request",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16519,7 +14258,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DisableDomainDomainLockV1Request",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16533,7 +14276,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DisableDomainPrivacyProtectionV1Request",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16541,7 +14288,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DNSGetDNSSnapshotListV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -16551,17 +14298,17 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DNSV1SnapshotSnapshotResource",
       });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(223, __c27, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
+      return S.suspend(() => __S(642, __c20, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "DNSGetDNSSnapshotListV1Response",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner_id: S.Number,
@@ -16572,18 +14319,22 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DomainsAcceptIncomingDomainMoveV1RequestDomainContacts",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          domain_contacts: __S(225, __c28, 1),
+          domain_contacts: __S(672, __c21, 0),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/domains/v1/move/incoming/{domain}", code: 200 }),
         ),
       ).annotate({
         identifier: "DomainsAcceptIncomingDomainMoveV1Request",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16593,23 +14344,50 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DomainsCancelOutgoingDomainMoveV1Request",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          domain: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingLinkDomainToWebsiteV1Request",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           new_whois_id: S.Number,
           domain: S.String,
-          change_for: __S(141, __c17, 5),
+          change_for: __S(13184, __c412, 0),
         }).pipe(T.Http({ method: "PUT", uri: "/api/domains/v1/whois/change", code: 200 })),
       ).annotate({
         identifier: "DomainsChangeWHOISProfileForDomainV1Request",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/portfolio", code: 200 })),
       ).annotate({
         identifier: "DomainsGetDomainListV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -16622,17 +14400,17 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DomainsV1DomainDomainResource",
       });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(231, __c28, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() => __S(802, __c25, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "DomainsGetDomainListV1Response",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/domains/v1/move/incoming", code: 200 }),
@@ -16640,7 +14418,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DomainsGetIncomingDomainMoveListV1Request",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -16651,13 +14433,21 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DomainsV1MoveMoveResource",
       });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
-      return S.suspend(() => __S(235, __c29, 3).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(864, __c27, 0));
+    case 1:
+      return S.suspend(() => __S(896, __c28, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "DomainsGetIncomingDomainMoveListV1Response",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16668,7 +14458,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DomainsGetIncomingDomainMoveV1Request",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/domains/v1/move/outgoing", code: 200 }),
@@ -16676,7 +14470,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DomainsGetOutgoingDomainMoveListV1Request",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16688,7 +14486,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16697,12 +14495,16 @@ function __c30(j: number): any {
         identifier: "DomainsGetTransferListV1Request",
       });
     case 1:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(6304, __c197, 0));
     case 2:
-      return S.suspend(() => __S(241, __c30, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1025, __c32, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "DomainsGetTransferListV1Response",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.optional(S.String.pipe(T.Query())),
@@ -16710,26 +14512,34 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "DomainsGetWHOISProfileListV1Request",
       });
-    case 4:
-      return S.Array(__S(81, __c10, 1));
-    case 5:
-      return S.suspend(() => __S(244, __c30, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(11296, __c353, 0));
+    case 2:
+      return S.suspend(() => __S(1057, __c33, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "DomainsGetWHOISProfileListV1Response",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
           item_id: S.String,
           payment_method_id: S.optional(S.Number),
-          domain_contacts: S.optional(__S(48, __c6, 0)),
+          domain_contacts: S.optional(__S(6336, __c198, 0)),
           additional_details: S.optional(S.Unknown),
-          coupons: S.optional(__S(74, __c9, 2)),
+          coupons: S.optional(__S(10528, __c329, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/portfolio", code: 200 })),
       ).annotate({
         identifier: "DomainsPurchaseNewDomainV1Request",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16741,7 +14551,26 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl/reinstall",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingReinstallWebsiteSSLV1Request",
+      });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16754,7 +14583,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DomainsStartOutgoingDomainMoveV1Request",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -16769,11 +14602,19 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DomainsSuggestDomainNamesFromADescriptionV1Request",
       });
-    case 2:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2016, __c63, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "DomainsSuggestDomainNamesFromADescriptionV1Response",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -16788,7 +14629,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DomainsSuggestDomainNamesFromADomainV1Request",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           whoisId: S.Number.pipe(T.Label()),
@@ -16798,7 +14643,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DomainsUnsetDefaultWHOISProfileV1Request",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -16813,7 +14662,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "EcommerceCreateAPaymentProviderConnectLinkV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -16822,17 +14671,17 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(254, __c31, 6)),
+          data: S.optional(__S(1345, __c42, 1)),
         }),
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderConnectLinkResource",
       });
   }
 }
-function __c32(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16853,14 +14702,18 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           upload_url: S.optional(S.String),
-          fields: S.optional(__S(150, __c18, 6)),
+          fields: S.optional(__S(13376, __c418, 0)),
           object_name: S.optional(S.String),
           max_bytes: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "EcommerceV1ProductProductImageUploadUrlResource",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           line_item_id: S.String,
@@ -16869,14 +14722,14 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "EcommerceFulfilAnOrderV1RequestItemsItem",
       });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
           order_id: S.String.pipe(T.Label()),
-          items: S.optional(__S(259, __c32, 3)),
+          items: S.optional(__S(1409, __c44, 1)),
           tracking_number: S.optional(S.String),
           tracking_url: S.optional(S.String),
           notify_customer: S.optional(S.Boolean),
@@ -16890,7 +14743,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "EcommerceFulfilAnOrderV1Request",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -16908,7 +14765,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "EcommerceUploadAndAttachAProductImageV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -16917,11 +14774,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "EcommerceV1ProductProductImageUploadResource",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           websiteId: S.String.pipe(T.Label()),
-          message: __S(109, __c13, 5),
+          message: __S(12289, __c384, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16934,7 +14795,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16950,7 +14811,46 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "EnableBillingAutoRenewalV1Request",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          tagUuid: S.String.pipe(T.Label()),
+          contactUuid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts/{contactUuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AssignReachAContactToATagV1Request",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReachV1ContactsTagsTagResource",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16964,7 +14864,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "EnableDomainDomainLockV1Request",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -16978,7 +14882,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "EnableDomainPrivacyProtectionV1Request",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -16993,7 +14901,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "EnableEcommerceManualPaymentMethodV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -17004,16 +14912,20 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "EcommerceV1PaymentManualPaymentResourcePaymentMethod",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          payment_method: S.optional(__S(268, __c33, 4)),
+          payment_method: S.optional(__S(1665, __c52, 1)),
           admin_url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EcommerceV1PaymentManualPaymentResource",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/api/hosting/v1/domains/free-subdomains", code: 200 }),
@@ -17021,7 +14933,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GenerateHostingAFreeSubdomainV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -17031,7 +14943,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17047,7 +14959,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GenerateHostingGitSSHKeyV1Request",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           public_key: S.NullOr(S.String),
@@ -17055,7 +14971,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "HostingV1GitGitSshKeyResource",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -17069,17 +14989,17 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetAgencyHostingWebsiteDetailsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(15, __c1, 7)),
+          names: S.optional(__S(2016, __c63, 0)),
           expires_at: S.optional(S.String),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesSslCertResource",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           is_expired: S.optional(S.Boolean),
@@ -17089,23 +15009,23 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesCustomSslCertResource",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
           parent_fqdn: S.optional(S.NullOr(S.String)),
           ipv6: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          nameservers: S.optional(__S(43, __c5, 3)),
-          ssl_cert: S.optional(S.NullOr(__S(275, __c34, 3))),
-          custom_ssl_cert: S.optional(S.NullOr(__S(276, __c34, 4))),
+          nameservers: S.optional(__S(5856, __c183, 0)),
+          ssl_cert: S.optional(S.NullOr(__S(1793, __c56, 1))),
+          custom_ssl_cert: S.optional(S.NullOr(__S(1794, __c56, 2))),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteDomainDetailsResource",
       });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(1795, __c56, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
@@ -17114,11 +15034,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsitePreviewDomainResource",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -17127,15 +15043,15 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsitePhpSettingsResource",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          php: S.optional(S.NullOr(__S(280, __c35, 0))),
+          php: S.optional(S.NullOr(__S(1798, __c56, 6))),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteSettingsResource",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -17147,7 +15063,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWordPressInstallResource",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -17159,7 +15075,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteSshDetailsResource",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -17170,17 +15086,17 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteSftpDetailsResource",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          ssh: S.optional(__S(283, __c35, 3)),
-          sftp: S.optional(__S(284, __c35, 4)),
+          ssh: S.optional(__S(1801, __c56, 9)),
+          sftp: S.optional(__S(1802, __c56, 10)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteRemoteAccessResource",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
@@ -17189,7 +15105,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteServerResource",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           disk_quota_bytes: S.optional(S.Number),
@@ -17205,31 +15121,27 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(__S(287, __c35, 7)),
+          parameters: S.optional(__S(1805, __c56, 13)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteOrderPlanResource",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           status: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          plan: S.optional(__S(288, __c36, 0)),
+          plan: S.optional(__S(1806, __c56, 14)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteOrderResource",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -17238,7 +15150,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteUserResource",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
@@ -17246,7 +15158,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteStagingRootResource",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
@@ -17256,20 +15168,24 @@ function __c36(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           state: S.optional(S.String),
           created_at: S.optional(S.String),
-          domains: S.optional(__S(278, __c34, 6)),
-          preview_domain: S.optional(S.NullOr(__S(279, __c34, 7))),
-          settings: S.optional(__S(281, __c35, 1)),
-          wordpress: S.optional(S.NullOr(__S(282, __c35, 2))),
-          remote_access: S.optional(__S(285, __c35, 5)),
-          server: S.optional(__S(286, __c35, 6)),
-          order: S.optional(__S(289, __c36, 1)),
-          user: S.optional(__S(290, __c36, 2)),
-          staging_root: S.optional(S.NullOr(__S(291, __c36, 3))),
+          domains: S.optional(__S(1796, __c56, 4)),
+          preview_domain: S.optional(S.NullOr(__S(1797, __c56, 5))),
+          settings: S.optional(__S(1799, __c56, 7)),
+          wordpress: S.optional(S.NullOr(__S(1800, __c56, 8))),
+          remote_access: S.optional(__S(1803, __c56, 11)),
+          server: S.optional(__S(1804, __c56, 12)),
+          order: S.optional(__S(1807, __c56, 15)),
+          user: S.optional(__S(1808, __c56, 16)),
+          staging_root: S.optional(S.NullOr(__S(1809, __c56, 17))),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteResource",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Label()),
@@ -17284,7 +15200,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetAgencyHostingWebsiteSetupStatusV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.optional(S.NullOr(S.String)),
@@ -17293,7 +15209,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1SetupsWebsiteSetupStatusResource",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -17308,11 +15228,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetAgencyHostingWebsiteSSLStatusV1Request",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -17322,7 +15238,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1SslSslStatusResource",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -17336,7 +15256,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetAgencyHostingWordPressSettingsV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           core_version: S.optional(S.NullOr(S.String)),
@@ -17347,7 +15267,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WordPressSettingsResource",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17355,7 +15279,15 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetDNSDNSRecordsV1Request",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => __S(1955, __c61, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDNSDNSRecordsV1Response",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -17364,28 +15296,51 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DNSV1ZoneNameRecordResource",
       });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          records: S.optional(__S(301, __c37, 5)),
+          records: S.optional(__S(1953, __c61, 1)),
           ttl: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DNSV1ZoneRecordResource" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
+    case 3:
+      return S.Array(__S(1954, __c61, 2));
   }
 }
-function __c38(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(303, __c37, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetDNSDNSRecordsV1Response",
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          tagUuid: S.String.pipe(T.Label()),
+          contact_uuids: S.optional(__S(2016, __c63, 0)),
+          all_contacts: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AssignReachContactsToATagV1Request",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17396,18 +15351,22 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetDNSDNSSnapshotV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           reason: S.optional(S.String),
-          snapshot: S.optional(__S(303, __c37, 7)),
+          snapshot: S.optional(__S(1955, __c61, 3)),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DNSV1SnapshotSnapshotWithContentResource",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17417,7 +15376,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetDomainDomainAuthorizationCodeV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           auth_code: S.optional(S.NullOr(S.String)),
@@ -17425,7 +15384,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DomainsV1PortfolioAuthCodeAuthCodeResource",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17433,7 +15396,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetDomainDomainDetailsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ns1: S.optional(S.String),
@@ -17442,13 +15405,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DomainsV1DomainDomainExtendedResourceNameServers",
       });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           admin_id: S.optional(S.Number),
@@ -17459,7 +15416,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DomainsV1DomainDomainExtendedResourceDomainContacts",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -17469,9 +15426,9 @@ function __c39(j: number): any {
           is_privacy_protected: S.optional(S.Boolean),
           is_lockable: S.optional(S.Boolean),
           is_locked: S.optional(S.Boolean),
-          name_servers: S.optional(__S(310, __c38, 6)),
-          child_name_servers: S.optional(__S(311, __c38, 7)),
-          domain_contacts: S.optional(__S(312, __c39, 0)),
+          name_servers: S.optional(__S(2113, __c66, 1)),
+          child_name_servers: S.optional(__S(2144, __c67, 0)),
+          domain_contacts: S.optional(__S(2114, __c66, 2)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           _60_days_lock_expires_at: S.optional(
@@ -17483,7 +15440,17 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DomainsV1DomainDomainExtendedResource",
       });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2016, __c63, 0));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17491,7 +15458,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetDomainDomainForwardingV1Request",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17501,7 +15472,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetDomainDomainRenewalInformationV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -17511,7 +15482,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DomainsV1PortfolioRenewalRenewalInformationResource",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17519,7 +15494,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetDomainPendingIRTPVerificationV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -17533,7 +15508,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DomainsV1IRTPVerificationResource",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -17543,7 +15522,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17553,7 +15532,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetDomainWHOISProfileUsageV1Request",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           whoisId: S.Number.pipe(T.Label()),
@@ -17561,7 +15544,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetDomainWHOISProfileV1Request",
       });
-    case 2:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -17576,7 +15563,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetEcommerceAnOrderV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -17592,7 +15579,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResourceShippingAddress",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -17608,9 +15595,9 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResourceItemsItem",
       });
-    case 5:
-      return S.Array(__S(324, __c40, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2370, __c74, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           tracking_number: S.optional(S.String),
@@ -17619,27 +15606,23 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem",
       });
-    case 7:
-      return S.Array(__S(326, __c40, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2372, __c74, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           shipped_at: S.optional(S.NullOr(S.String)),
           canceled_at: S.optional(S.NullOr(S.String)),
-          tracking: S.optional(__S(327, __c40, 7)),
+          tracking: S.optional(__S(2373, __c74, 5)),
         }),
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResourceFulfillmentsItem",
       });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(2374, __c74, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -17659,23 +15642,52 @@ function __c41(j: number): any {
           shipping_total: S.optional(S.Number),
           paid_total: S.optional(S.Number),
           refunded_total: S.optional(S.Number),
-          shipping_address: S.optional(S.NullOr(__S(323, __c40, 3))),
-          billing_address: S.optional(S.NullOr(__S(323, __c40, 3))),
-          items: S.optional(__S(325, __c40, 5)),
-          fulfillments: S.optional(__S(329, __c41, 1)),
+          shipping_address: S.optional(S.NullOr(__S(2369, __c74, 1))),
+          billing_address: S.optional(S.NullOr(__S(2369, __c74, 1))),
+          items: S.optional(__S(2371, __c74, 3)),
+          fulfillments: S.optional(__S(2375, __c74, 7)),
         }),
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResource",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(330, __c41, 2)),
+          data: S.optional(__S(2376, __c74, 8)),
         }),
       ).annotate({
         identifier: "EcommerceV1OrderOrderDetailResponseResource",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.Number.pipe(T.Label()),
+          ids: __S(2432, __c76, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/public-keys/attach/{virtualMachineId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AttachVPSPublicKeyV1Request",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -17687,7 +15699,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetEcommerceCustomStorefrontSetupInstructionsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instructions: S.optional(S.String),
@@ -17695,7 +15707,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "EcommerceV1MiscellaneousCustomStorefrontInstructionsResource",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -17705,7 +15721,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetEcommerceStoreMetadataV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -17721,30 +15737,30 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           has_payment_methods: S.optional(S.Boolean),
           has_shipping: S.optional(S.Boolean),
           default_currency_code: S.optional(S.String),
-          default_currency: S.optional(S.NullOr(__S(335, __c41, 7))),
+          default_currency: S.optional(S.NullOr(__S(2497, __c78, 1))),
         }),
       ).annotate({
         identifier: "EcommerceV1StoreStoreMetadataResourceMetadata",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(336, __c42, 0)),
+          metadata: S.optional(__S(2498, __c78, 2)),
         }),
       ).annotate({
         identifier: "EcommerceV1StoreStoreMetadataResource",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -17752,7 +15768,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetEcommerceStoresV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -17765,9 +15781,22 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "EcommerceV1StoreStoreResource",
       });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2529, __c79, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(2530, __c79, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "GetEcommerceStoresV1Response",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
@@ -17777,16 +15806,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CommonSchemaPaginationMetaSchema",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(340, __c42, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
-        }),
-      ).annotate({
-        identifier: "GetEcommerceStoresV1Response",
-      });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           websiteId: S.String.pipe(T.Label()),
@@ -17794,11 +15818,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetHorizonWebsiteV1Request",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           website_url: S.String,
@@ -17806,7 +15826,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "HorizonsV1WebsitesWebsiteUrlResource",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17822,7 +15846,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetHostingAIOptionStatusV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           is_llmstxt_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -17831,7 +15855,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "WordPressV1HostingerPluginsAiOptionStatusResource",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17846,7 +15874,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetHostingCronJobOutputV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           output: S.String,
@@ -17854,7 +15882,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "HostingV1CronJobsCronJobOutputResource",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17869,7 +15901,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetHostingGitAutoDeploymentSettingsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           installation_uuid: S.NullOr(S.String),
@@ -17882,7 +15914,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "HostingV1GitGitAutoDeploymentSettingsResource",
       });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17898,7 +15934,7 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17926,7 +15962,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "WordPressV1InstallationsJwtTokenResource",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17941,7 +15981,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetHostingLiteSpeedCacheStatusV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           is_installed: S.optional(S.Boolean),
@@ -17950,7 +15990,58 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "WordPressV1LitespeedLitespeedCacheStatusResource",
       });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/billing/v1/catalog", code: 200 })),
+      ).annotate({
+        identifier: "BillingGetCatalogItemListV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          currency: S.optional(S.String),
+          price: S.optional(S.Number),
+          first_period_price: S.optional(S.Number),
+          period: S.optional(S.Number),
+          period_unit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingV1CatalogCatalogItemPriceResource",
+      });
+    case 2:
+      return S.Array(__S(2817, __c88, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          category: S.optional(S.String),
+          metadata: S.optional(S.NullOr(S.Unknown)),
+          prices: S.optional(__S(2818, __c88, 2)),
+        }),
+      ).annotate({
+        identifier: "BillingV1CatalogCatalogItemResource",
+      });
     case 4:
+      return S.Array(__S(2819, __c88, 3));
+    case 5:
+      return S.suspend(() => __S(2820, __c88, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BillingGetCatalogItemListV1Response",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17965,7 +16056,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetHostingMaintenanceStatusV1Request",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -17973,7 +16068,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "WordPressV1MaintenanceMaintenanceStatusResource",
       });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -17988,7 +16087,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetHostingMemcachedObjectCacheStatusV1Request",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18006,7 +16109,7 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18022,7 +16125,7 @@ function __c45(j: number): any {
         S.Struct({
           hash: S.String,
           message: S.String,
-          author: __S(360, __c45, 0),
+          author: __S(2976, __c93, 0),
         }),
       ).annotate({
         identifier: "HostingV1GitGitCommitResource",
@@ -18035,7 +16138,7 @@ function __c45(j: number): any {
           repository: S.NullOr(S.String),
           branch: S.NullOr(S.String),
           installation_uuid: S.NullOr(S.String),
-          commit: S.NullOr(__S(361, __c45, 1)),
+          commit: S.NullOr(__S(2977, __c93, 1)),
         }),
       ).annotate({
         identifier: "HostingV1NodeJsSourceOptionsResource",
@@ -18051,7 +16154,7 @@ function __c45(j: number): any {
           entry_file: S.NullOr(S.String),
           package_manager: S.NullOr(S.String),
           source_type: S.NullOr(S.String),
-          source_options: S.NullOr(__S(362, __c45, 2)),
+          source_options: S.NullOr(__S(2978, __c93, 2)),
         }),
       ).annotate({
         identifier: "HostingV1NodeJsBuildOptionsResource",
@@ -18061,14 +16164,18 @@ function __c45(j: number): any {
         S.Struct({
           uuid: S.optional(S.String),
           state: S.optional(S.String),
-          options: S.optional(S.NullOr(__S(363, __c45, 3))),
+          options: S.optional(S.NullOr(__S(2979, __c93, 3))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingV1NodeJsBuildResource",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18085,7 +16192,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetHostingNodeJSBuildLogsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           logs: S.NullOr(S.String),
@@ -18094,7 +16201,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsBuildLogsResource",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18111,7 +16222,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18127,7 +16238,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsStoredBuildSettingsResource",
       });
-    case 1:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18135,7 +16250,7 @@ function __c46(j: number): any {
           period: S.optional(S.String.pipe(T.Query())),
           from_line: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          levels: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          levels: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -18146,7 +16261,7 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetHostingNodeJsRuntimeLogsV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
@@ -18156,12 +16271,12 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsLogEntryResource",
       });
+    case 2:
+      return S.Array(__S(3105, __c97, 1));
     case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          logs: __S(371, __c46, 3),
+          logs: __S(3106, __c97, 2),
           started_at: S.NullOr(S.String),
           total_lines: S.Number,
           last_deployed_at: S.NullOr(S.String),
@@ -18169,7 +16284,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsRuntimeLogsResource",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18184,7 +16303,7 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetHostingPHPDetailsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           supported: S.optional(S.Unknown),
@@ -18193,7 +16312,7 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "HostingV1PhpPhpVersionsResource",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -18206,26 +16325,26 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "HostingV1PhpPhpOptionResource",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(375, __c46, 7));
-    case 1:
+    case 3:
+      return S.Record(S.String, __S(3138, __c98, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           php_version: S.optional(S.String),
           php_version_full: S.optional(S.String),
-          php_versions: S.optional(__S(374, __c46, 6)),
-          options: S.optional(__S(376, __c47, 0)),
+          php_versions: S.optional(__S(3137, __c98, 1)),
+          options: S.optional(__S(3139, __c98, 3)),
           extensions: S.optional(S.Unknown),
-          conflicting_extensions: S.optional(__S(311, __c38, 7)),
+          conflicting_extensions: S.optional(__S(2144, __c67, 0)),
         }),
       ).annotate({
         identifier: "HostingV1PhpPhpDetailsResource",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18240,7 +16359,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetHostingPHPInfoV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           info: S.optional(S.String),
@@ -18248,7 +16367,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "HostingV1PhpPhpInfoResource",
       });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18263,7 +16386,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetHostingPhpMyAdminLinkV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           link: S.String,
@@ -18271,7 +16394,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "HostingV1DatabasesPhpMyAdminLinkResource",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18286,7 +16413,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetHostingSSLStatusV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -18301,7 +16428,42 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/billing/v1/payment-methods", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BillingGetPaymentMethodListV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          identifier: S.optional(S.String),
+          payment_method: S.optional(S.String),
+          is_default: S.optional(S.Boolean),
+          is_expired: S.optional(S.Boolean),
+          is_suspended: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          expires_at: S.optional(S.String),
+          suspended_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "BillingV1PaymentMethodPaymentMethodResource",
+      });
+    case 2:
+      return S.Array(__S(3265, __c102, 1));
+    case 3:
+      return S.suspend(() => __S(3266, __c102, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BillingGetPaymentMethodListV1Response",
+      });
+  }
+}
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18333,7 +16495,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "HostingV1FilesFileContentResource",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -18348,7 +16514,20 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetHostingWordPressCoreVersionV1Request",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          vulnerabilities: S.optional(__S(3361, __c105, 1)),
+        }),
+      ).annotate({
+        identifier: "WordPressV1InstallationsVersionResource",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -18360,18 +16539,13 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "WordPressV1CommonVulnerabilityResource",
       });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          vulnerabilities: S.optional(__S(388, __c48, 4)),
-        }),
-      ).annotate({
-        identifier: "WordPressV1InstallationsVersionResource",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -18379,7 +16553,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetMailOrderPlanV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mailbox_quota: S.optional(S.Number),
@@ -18392,11 +16566,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "MailV1OrdersPlanDomainResource",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           storage_quota: S.optional(S.Number),
@@ -18412,29 +16582,37 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "MailV1OrdersPlanMailboxResource",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           title: S.optional(S.String),
-          domain: S.optional(__S(391, __c48, 7)),
-          mailbox: S.optional(__S(392, __c49, 0)),
+          domain: S.optional(__S(3393, __c106, 1)),
+          mailbox: S.optional(__S(3394, __c106, 2)),
         }),
       ).annotate({ identifier: "MailV1OrdersPlanResource" });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
       ).annotate({ identifier: "GetMailWebhookV1Request" });
-    case 3:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          mailbox: S.optional(__S(123, __c15, 3)),
+          mailbox: S.optional(__S(12736, __c398, 0)),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          events: S.optional(__S(141, __c17, 5)),
+          events: S.optional(__S(13184, __c412, 0)),
           status: S.optional(S.String),
           url: S.optional(S.String),
           created_at: S.optional(S.String),
@@ -18443,7 +16621,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "MailV1WebhooksWebhookResource",
       });
-    case 4:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18458,7 +16640,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetReachAutomationDetailsV1Request",
       });
-    case 5:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           started: S.optional(S.Number),
@@ -18469,7 +16655,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ReachV1AutomationsAutomationEventsResource",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -18477,14 +16663,18 @@ function __c49(j: number): any {
           status: S.optional(S.String),
           type: S.optional(S.String),
           config: S.optional(S.NullOr(S.Unknown)),
-          events: S.optional(__S(397, __c49, 5)),
+          events: S.optional(__S(3520, __c110, 0)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ReachV1AutomationsAutomationResource",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18499,11 +16689,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetReachCampaignDetailsV1Request",
       });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total_sent: S.optional(S.Number),
@@ -18513,7 +16699,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReachV1CampaignsCampaignDeliveryResource",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -18527,8 +16713,8 @@ function __c50(j: number): any {
           failure_reason: S.optional(S.NullOr(S.String)),
           is_smart_send: S.optional(S.Boolean),
           is_all_contacts: S.optional(S.Boolean),
-          delivery: S.optional(__S(400, __c50, 0)),
-          segment_uuids: S.optional(__S(15, __c1, 7)),
+          delivery: S.optional(__S(3553, __c111, 1)),
+          segment_uuids: S.optional(__S(2016, __c63, 0)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
           sent_at: S.optional(S.NullOr(S.String)),
@@ -18537,7 +16723,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReachV1CampaignsCampaignDetailsResource",
       });
-    case 2:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18552,7 +16742,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetReachCampaignPerformanceV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total_sent: S.optional(S.Number),
@@ -18574,7 +16764,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReachV1CampaignsCampaignStatisticsResource",
       });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18584,7 +16778,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetReachConnectedSendingDomainV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -18594,23 +16788,23 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReachV1ProfilesDomainsSuspendedSenderEmailResource",
       });
-    case 6:
-      return S.Array(__S(405, __c50, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(3617, __c113, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          suspended_sender_emails: S.optional(__S(406, __c50, 6)),
+          suspended_sender_emails: S.optional(__S(3618, __c113, 2)),
         }),
       ).annotate({
         identifier: "ReachV1ProfilesDomainsSendingDomainResource",
       });
   }
 }
-function __c51(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18628,8 +16822,6 @@ function __c51(j: number): any {
         identifier: "GetReachContactDetailsV1Request",
       });
     case 1:
-      return S.Array(__S(14, __c1, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -18637,15 +16829,15 @@ function __c51(j: number): any {
           label: S.optional(S.String),
           slug: S.optional(S.String),
           value: S.optional(S.NullOr(S.String)),
-          selected_option_uuids: S.optional(__S(43, __c5, 3)),
-          options: S.optional(__S(146, __c18, 2)),
+          selected_option_uuids: S.optional(__S(5856, __c183, 0)),
+          options: S.optional(__S(13281, __c415, 1)),
         }),
       ).annotate({
         identifier: "ReachV1ContactsFieldsContactFieldValueResource",
       });
+    case 2:
+      return S.Array(__S(3649, __c114, 1));
     case 3:
-      return S.Array(__S(410, __c51, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -18660,13 +16852,23 @@ function __c51(j: number): any {
           domain: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
           note: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(409, __c51, 1)),
-          fields: S.optional(__S(411, __c51, 3)),
+          tags: S.optional(__S(3680, __c115, 0)),
+          fields: S.optional(__S(3650, __c114, 2)),
         }),
       ).annotate({
         identifier: "ReachV1ContactsContactDetailsResource",
       });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1568, __c49, 0));
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18681,7 +16883,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetReachFormDetailsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.NullOr(S.String)),
@@ -18691,7 +16893,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ReachV1FormsFormTemplateDetailsResource",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -18701,28 +16903,69 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ReachV1FormsFormTagResource",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(415, __c51, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(3714, __c116, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
           type: S.optional(S.String),
-          template: S.optional(__S(414, __c51, 6)),
-          tags: S.optional(__S(416, __c52, 0)),
+          template: S.optional(__S(3713, __c116, 1)),
+          tags: S.optional(__S(3715, __c116, 3)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ReachV1FormsFormDetailsResource",
       });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/billing/v1/subscriptions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BillingGetSubscriptionListV1Request",
+      });
+    case 1:
+      return S.Array(__S(3776, __c118, 0));
     case 2:
+      return S.suspend(() => __S(3745, __c117, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BillingGetSubscriptionListV1Response",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          billing_period: S.optional(S.Number),
+          billing_period_unit: S.optional(S.String),
+          currency_code: S.optional(S.String),
+          total_price: S.optional(S.Number),
+          renewal_price: S.optional(S.Number),
+          is_auto_renewed: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          expires_at: S.optional(S.NullOr(S.String)),
+          next_billing_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "BillingV1SubscriptionSubscriptionResource",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18736,7 +16979,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetReachProfileDomainDNSStatusV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -18745,9 +16988,9 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ReachV1ProfilesDomainsDnsRecordStatusActualItem",
       });
-    case 4:
-      return S.Array(__S(419, __c52, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3809, __c119, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -18757,35 +17000,35 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem",
       });
-    case 6:
-      return S.Array(__S(421, __c52, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(3811, __c119, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          actual: S.optional(__S(420, __c52, 4)),
-          suggested: S.optional(__S(422, __c52, 6)),
+          actual: S.optional(__S(3810, __c119, 2)),
+          suggested: S.optional(__S(3812, __c119, 4)),
           is_valid: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ReachV1ProfilesDomainsDnsRecordStatus",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          mx: S.optional(__S(423, __c52, 7)),
-          spf: S.optional(__S(423, __c52, 7)),
-          dkim: S.optional(__S(423, __c52, 7)),
-          dmarc: S.optional(__S(423, __c52, 7)),
+          mx: S.optional(__S(3813, __c119, 5)),
+          spf: S.optional(__S(3813, __c119, 5)),
+          dkim: S.optional(__S(3813, __c119, 5)),
+          dmarc: S.optional(__S(3813, __c119, 5)),
         }),
       ).annotate({
         identifier: "ReachV1ProfilesDomainsDnsStatusResource",
       });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18800,7 +17043,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetReachProfileSegmentDetailsV1Request",
       });
-    case 2:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -18810,7 +17057,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetReachRemainingPlanLimitsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
@@ -18820,30 +17067,34 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ReachV1ProfilesPlanLimitUsageResource",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          emails: S.optional(__S(427, __c53, 3)),
-          recipients: S.optional(__S(427, __c53, 3)),
-          ai_credits: S.optional(__S(427, __c53, 3)),
+          emails: S.optional(__S(3873, __c121, 1)),
+          recipients: S.optional(__S(3873, __c121, 1)),
+          ai_credits: S.optional(__S(3873, __c121, 1)),
           period_start: S.optional(S.String),
           period_end: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReachV1ProfilesPlanLimitsResource",
       });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(15, __c1, 7),
+          domains: __S(2016, __c63, 0),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/direct/verifications/active", code: 200 })),
       ).annotate({
         identifier: "GetV2DomainVerificationsDIRECTRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(43, __c5, 3)),
+          records: S.optional(__S(5856, __c183, 0)),
           last_verification_attempt: S.optional(S.String),
           next_verification_attempt: S.optional(S.String),
           verification_expiration: S.optional(S.String),
@@ -18852,71 +17103,71 @@ function __c53(j: number): any {
         identifier:
           "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          VERIFICATION_TYPE: S.optional(__S(430, __c53, 6)),
+          VERIFICATION_TYPE: S.optional(__S(3905, __c122, 1)),
         }),
       ).annotate({
         identifier:
           "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD",
       });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DOMAIN_TLD: S.optional(__S(431, __c53, 7).pipe(T.Body("DOMAIN.TLD"))),
+          DOMAIN_TLD: S.optional(__S(3906, __c122, 2).pipe(T.Body("DOMAIN.TLD"))),
         }),
       ).annotate({
         identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDING",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(43, __c5, 3)),
+          records: S.optional(__S(5856, __c183, 0)),
         }),
       ).annotate({
         identifier:
           "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          VERIFICATION_TYPE: S.optional(__S(433, __c54, 1)),
+          VERIFICATION_TYPE: S.optional(__S(3908, __c122, 4)),
         }),
       ).annotate({
         identifier:
           "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          DOMAIN_TLD: S.optional(__S(434, __c54, 2).pipe(T.Body("DOMAIN.TLD"))),
+          DOMAIN_TLD: S.optional(__S(3909, __c122, 5).pipe(T.Body("DOMAIN.TLD"))),
         }),
       ).annotate({
         identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          PENDING: S.optional(__S(432, __c54, 0)),
-          VERIFIED: S.optional(__S(435, __c54, 3)),
+          PENDING: S.optional(__S(3907, __c122, 3)),
+          VERIFIED: S.optional(__S(3910, __c122, 6)),
         }),
       ).annotate({
         identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(436, __c54, 4)),
+          data: S.optional(__S(3911, __c122, 7)),
         }),
       ).annotate({
         identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollection",
       });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -18931,7 +17182,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetVPSActionDetailsV1Request",
       });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -18944,20 +17199,20 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVPSActionsV1Request" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4, __c0, 4));
     case 1:
+      return S.Array(__S(13120, __c410, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(440, __c55, 0)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(3969, __c124, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({ identifier: "GetVPSActionsV1Response" });
-    case 2:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -18972,18 +17227,26 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetVPSAttachedPublicKeysV1Request",
       });
-    case 3:
-      return S.Array(__S(167, __c20, 7));
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(13856, __c433, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(443, __c55, 3)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(4032, __c126, 0)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "GetVPSAttachedPublicKeysV1Response",
       });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -18996,7 +17259,7 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVPSBackupsV1Request" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -19008,20 +17271,20 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "VPSV1BackupBackupResource",
       });
-    case 7:
-      return S.Array(__S(446, __c55, 6));
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(4065, __c127, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(447, __c55, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(4066, __c127, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({ identifier: "GetVPSBackupsV1Response" });
-    case 1:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firewallId: S.Number.pipe(T.Label()),
@@ -19029,7 +17292,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetVPSFirewallDetailsV1Request",
       });
-    case 2:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19043,7 +17310,7 @@ function __c56(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVPSMetricsV1Request" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -19052,20 +17319,36 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "VPSV1MetricsMetricsResource",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          cpu_usage: S.optional(S.NullOr(__S(451, __c56, 3))),
-          ram_usage: S.optional(S.NullOr(__S(451, __c56, 3))),
-          disk_space: S.optional(S.NullOr(__S(451, __c56, 3))),
-          outgoing_traffic: S.optional(S.NullOr(__S(451, __c56, 3))),
-          incoming_traffic: S.optional(S.NullOr(__S(451, __c56, 3))),
-          uptime: S.optional(S.NullOr(__S(451, __c56, 3))),
+          cpu_usage: S.optional(S.NullOr(__S(4129, __c129, 1))),
+          ram_usage: S.optional(S.NullOr(__S(4129, __c129, 1))),
+          disk_space: S.optional(S.NullOr(__S(4129, __c129, 1))),
+          outgoing_traffic: S.optional(S.NullOr(__S(4129, __c129, 1))),
+          incoming_traffic: S.optional(S.NullOr(__S(4129, __c129, 1))),
+          uptime: S.optional(S.NullOr(__S(4129, __c129, 1))),
         }),
       ).annotate({
         identifier: "VPSV1MetricsMetricsCollection",
       });
-    case 5:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/irtp/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "CancelDomainPendingIRTPVerificationV1Request",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19080,7 +17363,15 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetVPSProjectContainersV1Request",
       });
-    case 6:
+    case 1:
+      return S.suspend(() => __S(4228, __c132, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetVPSProjectContainersV1Response",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -19096,13 +17387,9 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "VPSV1DockerManagerContainerPortResource",
       });
-    case 7:
-      return S.Array(__S(454, __c56, 6));
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4224, __c132, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cpu_percentage: S.optional(S.Number),
@@ -19115,7 +17402,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "VPSV1DockerManagerContainerStatsResource",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -19125,19 +17412,19 @@ function __c57(j: number): any {
           status: S.optional(S.String),
           state: S.optional(S.String),
           health: S.optional(S.String),
-          ports: S.optional(__S(455, __c56, 7)),
-          stats: S.optional(S.NullOr(__S(456, __c57, 0))),
+          ports: S.optional(__S(4225, __c132, 1)),
+          stats: S.optional(S.NullOr(__S(4226, __c132, 2))),
         }),
       ).annotate({
         identifier: "VPSV1DockerManagerContainerResource",
       });
-    case 2:
-      return S.Array(__S(457, __c57, 1));
-    case 3:
-      return S.suspend(() => __S(458, __c57, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetVPSProjectContainersV1Response",
-      });
     case 4:
+      return S.Array(__S(4227, __c132, 3));
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19152,7 +17439,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetVPSProjectContentsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -19161,7 +17448,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "VPSV1DockerManagerContentResource",
       });
-    case 6:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19176,7 +17467,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetVPSProjectLogsV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
@@ -19185,28 +17476,28 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "VPSV1DockerManagerLogEntryResource",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(4289, __c134, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          entries: S.optional(__S(464, __c58, 0)),
+          entries: S.optional(__S(4290, __c134, 2)),
         }),
       ).annotate({
         identifier: "VPSV1DockerManagerLogsResource",
       });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
-    case 3:
-      return S.suspend(() => __S(466, __c58, 2).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(4291, __c134, 3));
+    case 5:
+      return S.suspend(() => __S(4292, __c134, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVPSProjectLogsV1Response",
       });
-    case 4:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -19214,7 +17505,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetVPSPublicKeysV1Request",
       });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19228,7 +17523,7 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetVPSScanMetricsV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           records: S.optional(S.Number),
@@ -19241,7 +17536,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "VPSV1MalwareMetricsResource",
       });
-    case 7:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19253,11 +17552,7 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVPSSnapshotV1Request" });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -19268,7 +17563,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "VPSV1SnapshotSnapshotResource",
       });
-    case 1:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateId: S.Number.pipe(T.Label()),
@@ -19276,7 +17575,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetVPSTemplateDetailsV1Request",
       });
-    case 2:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -19287,17 +17590,25 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "VPSV1TemplateTemplateResource",
       });
-    case 3:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/templates", code: 200 })),
       ).annotate({ identifier: "GetVPSTemplatesV1Request" });
-    case 4:
-      return S.Array(__S(474, __c59, 2));
-    case 5:
-      return S.suspend(() => __S(476, __c59, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4448, __c139, 0));
+    case 2:
+      return S.suspend(() => __S(4481, __c140, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVPSTemplatesV1Response",
       });
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19311,7 +17622,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetVPSVirtualMachineDetailsV1Request",
       });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -19321,13 +17636,9 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "VPSV1IPAddressIPAddressResource",
       });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(479, __c59, 7));
     case 1:
+      return S.Array(__S(4544, __c142, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -19344,15 +17655,19 @@ function __c60(j: number): any {
           bandwidth: S.optional(S.Number),
           ns1: S.optional(S.NullOr(S.String)),
           ns2: S.optional(S.NullOr(S.String)),
-          ipv4: S.optional(S.NullOr(__S(480, __c60, 0))),
-          ipv6: S.optional(S.NullOr(__S(480, __c60, 0))),
-          template: S.optional(S.NullOr(__S(474, __c59, 2))),
+          ipv4: S.optional(S.NullOr(__S(4545, __c142, 1))),
+          ipv6: S.optional(S.NullOr(__S(4545, __c142, 1))),
+          template: S.optional(S.NullOr(__S(4448, __c139, 0))),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VPSV1VirtualMachineVirtualMachineResource",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/vps/v1/virtual-machines", code: 200 }),
@@ -19360,19 +17675,76 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetVPSVirtualMachinesV1Request",
       });
-    case 3:
-      return S.Array(__S(481, __c60, 1));
-    case 4:
-      return S.suspend(() => __S(483, __c60, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4546, __c142, 2));
+    case 2:
+      return S.suspend(() => __S(4577, __c143, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVPSVirtualMachinesV1Response",
       });
-    case 5:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          order_id: S.String.pipe(T.Label()),
+          notify_customer: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/orders/{order_id}/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelEcommerceAnOrderV1Request",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(4672, __c146, 0)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1OrderOrderResponseResource",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          display_id: S.optional(S.Number),
+          status: S.optional(S.String),
+          payment_status: S.optional(S.String),
+          fulfillment_status: S.optional(S.String),
+          total: S.optional(S.Number),
+          currency_code: S.optional(S.String),
+          customer_email: S.optional(S.NullOr(S.String)),
+          item_count: S.optional(S.Number),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1OrderOrderResource",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/horizons/v1/websites", code: 200 })),
       ).annotate({
         identifier: "HorizonsGetWebsiteListV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           website_id: S.String,
@@ -19385,17 +17757,17 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "HorizonsV1WebsitesWebsiteResource",
       });
-    case 7:
-      return S.Array(__S(486, __c60, 6));
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(487, __c60, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(4705, __c147, 1));
+    case 3:
+      return S.suspend(() => __S(4706, __c147, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "HorizonsGetWebsiteListV1Response",
       });
-    case 1:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19411,7 +17783,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingAnalyseFailedNodeJsBuildV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analysis: S.NullOr(S.String),
@@ -19420,7 +17792,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsBuildAnalysisResource",
       });
-    case 3:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19436,7 +17812,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingChangeDatabasePasswordV1Request",
       });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19452,7 +17832,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingDeployStaticSiteArchiveV1Request",
       });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19466,7 +17850,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingDetectWordPressInstallationsV1Request",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
@@ -19475,7 +17863,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingGenerateUploadURLV1Request",
       });
-    case 7:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19491,11 +17883,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "HostingGetNodeJsBuildSettingsFromArchiveV1Request",
       });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           app_type: S.NullOr(S.String),
@@ -19505,12 +17893,16 @@ function __c62(j: number): any {
           build_script: S.NullOr(S.String),
           entry_file: S.NullOr(S.String),
           package_manager: S.NullOr(S.String),
-          available_scripts: __S(15, __c1, 7),
+          available_scripts: __S(2016, __c63, 0),
         }),
       ).annotate({
         identifier: "HostingV1NodeJsBuildSettingsResource",
       });
-    case 1:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19519,7 +17911,7 @@ function __c62(j: number): any {
           max_depth: S.optional(S.Number.pipe(T.Query())),
           max_items: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          file_types: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          file_types: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -19530,7 +17922,7 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingListWebsiteFilesAndDirectoriesV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -19541,13 +17933,13 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingV1FilesFilesResourceItemsItem",
       });
+    case 2:
+      return S.Array(__S(4929, __c154, 1));
     case 3:
-      return S.Array(__S(498, __c62, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
-          items: __S(499, __c62, 3),
+          items: __S(4930, __c154, 2),
           total_items: S.Number,
           total_items_current_page: S.Number,
           offset: S.Number,
@@ -19555,7 +17947,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingV1FilesFilesResource",
       });
-    case 5:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19570,7 +17966,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingRepairDatabaseV1Request",
       });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19587,7 +17987,7 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingSetupWebsiteDatabaseV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -19598,20 +17998,51 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "HostingV1DatabasesWebsiteDatabaseConnectionResource",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          database: __S(503, __c62, 7),
-          env_var_keys: __S(15, __c1, 7),
+          database: __S(4993, __c156, 1),
+          env_var_keys: __S(2016, __c63, 0),
         }),
       ).annotate({
         identifier: "HostingV1DatabasesWebsiteDatabaseResource",
       });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          tlds: __S(2016, __c63, 0),
+          with_alternatives: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/availability", code: 200 })),
+      ).annotate({
+        identifier: "CheckDomainDomainAvailabilityV1Request",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.NullOr(S.String)),
+          is_available: S.optional(S.Boolean),
+          is_alternative: S.optional(S.Boolean),
+          restriction: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainsV1AvailabilityAvailabilityResource",
+      });
+    case 2:
+      return S.Array(__S(5025, __c157, 1));
+    case 3:
+      return S.suspend(() => __S(5026, __c157, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CheckDomainDomainAvailabilityV1Response",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19628,7 +18059,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ImportHostingWordPressWebsiteV1Request",
       });
-    case 2:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -19643,7 +18078,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallAgencyHostingWebsiteSSLV1Request",
       });
-    case 3:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19658,12 +18097,16 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallHostingSSLV1Request",
       });
-    case 4:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           software: S.String.pipe(T.Label()),
-          plugins: __S(15, __c1, 7),
+          plugins: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19674,7 +18117,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallHostingWordPressPluginsV1Request",
       });
-    case 5:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19693,7 +18140,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallHostingWordPressThemeV1Request",
       });
-    case 6:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -19703,7 +18154,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallHostingWordPressV1RequestCredentials",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -19712,11 +18163,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "InstallHostingWordPressV1RequestDatabase",
       });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -19727,8 +18174,8 @@ function __c64(j: number): any {
           overwrite: S.optional(S.NullOr(S.Boolean)),
           auto_updates: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.String)),
-          credentials: __S(510, __c63, 6),
-          database: S.optional(S.NullOr(__S(511, __c63, 7))),
+          credentials: __S(5216, __c163, 0),
+          database: S.optional(S.NullOr(__S(5217, __c163, 1))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19739,7 +18186,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "InstallHostingWordPressV1Request",
       });
-    case 1:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -19753,7 +18204,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "InstallVPSMonarxV1Request",
       });
-    case 2:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Label()),
@@ -19768,7 +18223,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           disk_bytes: S.optional(S.Number),
@@ -19777,7 +18232,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersDiskUsageMetricsLimitsResource",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           disk_bytes: S.optional(S.Number),
@@ -19787,35 +18242,35 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersDiskUsageMetricsMetricResource",
       });
-    case 5:
-      return S.Array(__S(516, __c64, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(5282, __c165, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(515, __c64, 3)),
-          metrics: S.optional(__S(517, __c64, 5)),
+          limits: S.optional(__S(5281, __c165, 1)),
+          metrics: S.optional(__S(5283, __c165, 3)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1OrdersDiskUsageMetricsMetricsResource",
       });
-    case 7:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          order_ids: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          states: S.optional(__S(141, __c17, 5).pipe(T.Query())),
-          website_types: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          order_ids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          states: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
+          website_types: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/agency-hosting/v1/websites", code: 200 })),
       ).annotate({
         identifier: "ListAgencyHostingAgencyPlanWebsitesV1Request",
       });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -19825,7 +18280,7 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesPlanResource",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -19834,25 +18289,29 @@ function __c65(j: number): any {
           platform: S.String,
           state: S.String,
           created_at: S.String,
-          plan: __S(520, __c65, 0),
+          plan: __S(5313, __c166, 1),
           details: S.Unknown,
           suspension_reason: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteListItemResource",
       });
-    case 2:
-      return S.Array(__S(521, __c65, 1));
     case 3:
+      return S.Array(__S(5314, __c166, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(522, __c65, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5315, __c166, 3)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListAgencyHostingAgencyPlanWebsitesV1Response",
       });
-    case 4:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Label()),
@@ -19866,7 +18325,29 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingAvailableDatacentersV1Request",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          code: S.String,
+          country: S.String,
+          coordinates: __S(5376, __c168, 0),
+          pinger_url: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "AgencyHostingV1DatacentersDatacenterResource",
+      });
+    case 2:
+      return S.Array(__S(5345, __c167, 1));
+    case 3:
+      return S.suspend(() => __S(5346, __c167, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAgencyHostingAvailableDatacentersV1Response",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latitude: S.optional(S.Number),
@@ -19875,29 +18356,37 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1DatacentersCoordinatesResource",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          code: S.String,
-          country: S.String,
-          coordinates: __S(525, __c65, 5),
-          pinger_url: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "AgencyHostingV1DatacentersDatacenterResource",
-      });
-    case 7:
-      return S.Array(__S(526, __c65, 6));
   }
 }
-function __c66(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(527, __c65, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAgencyHostingAvailableDatacentersV1Response",
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/hosting/v1/wordpress/plugins/is-woocommerce-installed",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckHostingIfWooCommerceIsInstalledV1Request",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          is_installed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "WordPressV1PluginsWoocommerceInstalledResource",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Label()),
@@ -19911,7 +18400,19 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request",
       });
-    case 2:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(5505, __c172, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -19919,13 +18420,13 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1PhpVersionResource",
       });
-    case 3:
-      return S.Array(__S(530, __c66, 2));
-    case 4:
-      return S.suspend(() => __S(531, __c66, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(5504, __c172, 0));
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -19939,7 +18440,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -19953,20 +18458,20 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingAvailableWordPressVersionsV1Request",
       });
-    case 7:
-      return S.suspend(() => __S(531, __c66, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(5505, __c172, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAgencyHostingAvailableWordPressVersionsV1Response",
       });
   }
 }
-function __c67(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          website_uuids: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          website_uuids: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/agency-hosting/v1/domains", code: 200 })),
       ).annotate({
         identifier: "ListAgencyHostingDomainsV1Request",
@@ -19982,17 +18487,21 @@ function __c67(j: number): any {
         identifier: "AgencyHostingV1DomainsDomainResource",
       });
     case 2:
-      return S.Array(__S(537, __c67, 1));
+      return S.Array(__S(5601, __c175, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(538, __c67, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5602, __c175, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListAgencyHostingDomainsV1Response",
       });
-    case 4:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Label()),
@@ -20007,7 +18516,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingOrderResourceUsageMetricsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           memory_bytes: S.optional(S.Number),
@@ -20017,7 +18526,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersResourceUsageMetricsLimitsResource",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cpu_percent: S.optional(S.Number),
@@ -20028,35 +18537,35 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersResourceUsageMetricsMetricResource",
       });
-    case 7:
-      return S.Array(__S(542, __c67, 6));
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(5634, __c176, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
-          domains: S.optional(__S(43, __c5, 3)),
-          metrics: S.optional(__S(543, __c67, 7)),
+          domains: S.optional(__S(5856, __c183, 0)),
+          metrics: S.optional(__S(5635, __c176, 3)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource",
       });
-    case 1:
-      return S.Array(__S(544, __c68, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(5636, __c176, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(541, __c67, 5)),
-          metrics: S.optional(__S(543, __c67, 7)),
-          websites: S.optional(__S(545, __c68, 1)),
+          limits: S.optional(__S(5633, __c176, 1)),
+          metrics: S.optional(__S(5635, __c176, 3)),
+          websites: S.optional(__S(5637, __c176, 5)),
         }),
       ).annotate({
         identifier: "AgencyHostingV1OrdersResourceUsageMetricsMetricsResource",
       });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20065,7 +18574,7 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingOrdersV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -20074,7 +18583,7 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersPlanResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -20083,35 +18592,35 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1OrdersDatacenterResource",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           client_id: S.optional(S.Number),
           status: S.optional(S.NullOr(S.String)),
-          plan: S.optional(__S(548, __c68, 4)),
-          datacenter: S.optional(S.NullOr(__S(549, __c68, 5))),
+          plan: S.optional(__S(5665, __c177, 1)),
+          datacenter: S.optional(S.NullOr(__S(5666, __c177, 2))),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AgencyHostingV1OrdersOrderResource",
       });
-    case 7:
-      return S.Array(__S(550, __c68, 6));
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(5667, __c177, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(551, __c68, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5668, __c177, 4)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListAgencyHostingOrdersV1Response",
       });
-    case 1:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -20125,7 +18634,7 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingPHPExtensionsForAWebsiteV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -20135,13 +18644,17 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1PhpExtensionResource",
       });
+    case 2:
+      return S.Array(__S(5697, __c178, 1));
     case 3:
-      return S.Array(__S(554, __c69, 2));
-    case 4:
-      return S.suspend(() => __S(555, __c69, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(5698, __c178, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAgencyHostingPHPExtensionsForAWebsiteV1Response",
       });
-    case 5:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -20155,30 +18668,30 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingPHPOptionsForAWebsiteV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
           default_value: S.optional(S.String),
-          allowed_values: S.optional(S.NullOr(__S(15, __c1, 7))),
+          allowed_values: S.optional(S.NullOr(__S(2016, __c63, 0))),
           value: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AgencyHostingV1PhpOptionResource",
       });
-    case 7:
-      return S.Array(__S(558, __c69, 6));
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(559, __c69, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(5729, __c179, 1));
+    case 3:
+      return S.suspend(() => __S(5730, __c179, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAgencyHostingPHPOptionsForAWebsiteV1Response",
       });
-    case 1:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -20194,18 +18707,22 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingWebsiteCronJobsV1Request",
       });
+    case 1:
+      return S.Array(__S(9312, __c291, 0));
     case 2:
-      return S.Array(__S(66, __c8, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(562, __c70, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5761, __c180, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListAgencyHostingWebsiteCronJobsV1Response",
       });
-    case 4:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -20221,18 +18738,63 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingWebsiteDatabasesV1Request",
       });
-    case 5:
-      return S.Array(__S(71, __c8, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(10081, __c315, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(565, __c70, 5)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5793, __c181, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListAgencyHostingWebsiteDatabasesV1Response",
       });
-    case 7:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software_ids: __S(5856, __c183, 0),
+          force: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/installations/check-is-valid",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckHostingIfWordPressInstallationsAreValidV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          software_id: S.optional(S.String),
+          is_valid: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "WordPressV1InstallationsCheckIsValidResultResource",
+      });
+    case 2:
+      return S.Array(__S(5825, __c182, 1));
+    case 3:
+      return S.suspend(() => __S(5826, __c182, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CheckHostingIfWordPressInstallationsAreValidV1Response",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -20246,11 +18808,7 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListAgencyHostingWebsiteProcessesV1Request",
       });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -20260,13 +18818,17 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "AgencyHostingV1WebsitesWebsiteProcessResource",
       });
-    case 1:
-      return S.Array(__S(568, __c71, 0));
     case 2:
-      return S.suspend(() => __S(569, __c71, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(5889, __c184, 1));
+    case 3:
+      return S.suspend(() => __S(5890, __c184, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAgencyHostingWebsiteProcessesV1Response",
       });
-    case 3:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -20283,25 +18845,29 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListEcommerceDiscountsV1Request",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(11712, __c366, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(572, __c71, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(5921, __c185, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListEcommerceDiscountsV1Response",
       });
-    case 6:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
-          product_ids: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          status: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          product_ids: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          status: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          include: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          include: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/ecommerce/v1/stores/{store_id}/products", code: 200 }),
@@ -20309,7 +18875,22 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListEcommerceProductsV1Request",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(5991, __c187, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(5953, __c186, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "ListEcommerceProductsV1Response",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           min: S.optional(S.NullOr(S.Number)),
@@ -20319,11 +18900,7 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "EcommerceV1ProductProductResourcePriceRange",
       });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -20332,25 +18909,25 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "EcommerceV1ProductProductResourceVariantsItemOptionsItem",
       });
-    case 1:
-      return S.Array(__S(576, __c72, 0));
     case 2:
+      return S.Array(__S(5985, __c187, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.NullOr(S.String)),
           sku: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(577, __c72, 1)),
-          prices: S.optional(__S(93, __c11, 5)),
+          options: S.optional(__S(5986, __c187, 2)),
+          prices: S.optional(__S(11969, __c374, 1)),
           inventory_quantity: S.optional(S.Number),
           manage_inventory: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "EcommerceV1ProductProductResourceVariantsItem",
       });
-    case 3:
-      return S.Array(__S(578, __c72, 2));
     case 4:
+      return S.Array(__S(5987, __c187, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -20360,9 +18937,9 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "EcommerceV1ProductProductResourceMediaItem",
       });
-    case 5:
-      return S.Array(__S(580, __c72, 4));
     case 6:
+      return S.Array(__S(5989, __c187, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -20371,29 +18948,18 @@ function __c72(j: number): any {
           thumbnail: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
           variant_count: S.optional(S.Number),
-          price_range: S.optional(__S(575, __c71, 7)),
-          variants: S.optional(S.NullOr(__S(579, __c72, 3))),
-          media: S.optional(S.NullOr(__S(581, __c72, 5))),
+          price_range: S.optional(__S(5984, __c187, 0)),
+          variants: S.optional(S.NullOr(__S(5988, __c187, 4))),
+          media: S.optional(S.NullOr(__S(5990, __c187, 6))),
         }),
       ).annotate({
         identifier: "EcommerceV1ProductProductResource",
       });
-    case 7:
-      return S.Array(__S(582, __c72, 6));
   }
 }
-function __c73(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(583, __c72, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
-        }),
-      ).annotate({
-        identifier: "ListEcommerceProductsV1Response",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -20409,18 +18975,26 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListEcommerceProductVariantsV1Request",
       });
-    case 2:
-      return S.Array(__S(94, __c11, 6));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(586, __c73, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6048, __c189, 0)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListEcommerceProductVariantsV1Response",
       });
-    case 4:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12002, __c375, 2));
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -20434,23 +19008,27 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListEcommerceSalesChannelsV1Request",
       });
-    case 5:
-      return S.Array(__S(97, __c12, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(12064, __c377, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sales_channels: S.optional(__S(589, __c73, 5)),
+          sales_channels: S.optional(__S(6081, __c190, 1)),
         }),
       ).annotate({
         identifier: "EcommerceV1SalesChannelSalesChannelListResource",
       });
-    case 7:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
-          status: S.optional(__S(141, __c17, 5).pipe(T.Query())),
-          payment_status: S.optional(__S(141, __c17, 5).pipe(T.Query())),
-          fulfillment_status: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          status: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
+          payment_status: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
+          fulfillment_status: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
           display_id: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
@@ -20463,22 +19041,22 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListEcommerceStoreOrdersV1Request",
       });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
     case 1:
+      return S.Array(__S(4672, __c146, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(592, __c74, 0)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6113, __c191, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListEcommerceStoreOrdersV1Response",
       });
-    case 2:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -20493,7 +19071,7 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListEcommerceStorePaymentProvidersV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -20506,44 +19084,44 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem",
       });
-    case 4:
-      return S.Array(__S(595, __c74, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(6145, __c192, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           is_installed: S.optional(S.Boolean),
           is_enabled: S.optional(S.Boolean),
           is_currency_supported: S.optional(S.Boolean),
-          supported_currencies: S.optional(__S(43, __c5, 3)),
+          supported_currencies: S.optional(__S(5856, __c183, 0)),
         }),
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem",
       });
-    case 6:
-      return S.Array(__S(597, __c74, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(6147, __c192, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          connected: S.optional(__S(596, __c74, 4)),
-          available: S.optional(__S(598, __c74, 6)),
+          connected: S.optional(__S(6146, __c192, 2)),
+          available: S.optional(__S(6148, __c192, 4)),
         }),
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderListResourceData",
       });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(599, __c74, 7)),
+          data: S.optional(__S(6149, __c192, 5)),
         }),
       ).annotate({
         identifier: "EcommerceV1PaymentProviderPaymentProviderListResource",
       });
-    case 1:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20557,13 +19135,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListHostingAccountCronJobsV1Request",
       });
+    case 1:
+      return S.Array(__S(12352, __c386, 0));
     case 2:
-      return S.Array(__S(112, __c14, 0));
-    case 3:
-      return S.suspend(() => __S(602, __c75, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6177, __c193, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingAccountCronJobsV1Response",
       });
-    case 4:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20582,7 +19164,7 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListHostingAccountDatabasesV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -20599,20 +19181,20 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "HostingV1DatabasesDatabaseResource",
       });
-    case 6:
-      return S.Array(__S(605, __c75, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(6209, __c194, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(606, __c75, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6210, __c194, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListHostingAccountDatabasesV1Response",
       });
   }
 }
-function __c76(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20627,18 +19209,67 @@ function __c76(j: number): any {
         S.Struct({
           title: S.optional(S.String),
           code: S.optional(S.String),
-          coordinates: S.optional(__S(525, __c65, 5)),
+          coordinates: S.optional(__S(5376, __c168, 0)),
         }),
       ).annotate({
         identifier: "HostingV1DatacenterDatacenterResource",
       });
     case 2:
-      return S.Array(__S(609, __c76, 1));
+      return S.Array(__S(6241, __c195, 1));
     case 3:
-      return S.suspend(() => __S(610, __c76, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6242, __c195, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingAvailableDatacentersV1Response",
       });
-    case 4:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          auth_code: S.String,
+          domain_contacts: S.optional(__S(6336, __c198, 0)),
+          should_keep_ns: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/transfers/claim", code: 200 })),
+      ).annotate({
+        identifier: "ClaimDomainFreeDomainTransferV1Request",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          status: S.optional(S.String),
+          initiated_at: S.optional(S.NullOr(S.String)),
+          completed_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainsV1TransferTransferResource",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner_id: S.optional(S.Number),
+          admin_id: S.optional(S.Number),
+          billing_id: S.optional(S.Number),
+          tech_id: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ClaimDomainFreeDomainTransferV1RequestDomainContacts",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20653,7 +19284,7 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListHostingAvailableWordPressCoreUpdatesV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -20663,15 +19294,15 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "WordPressV1InstallationsUpdateResource",
       });
-    case 6:
-      return S.Array(__S(613, __c76, 5));
-    case 7:
-      return S.suspend(() => __S(614, __c76, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6369, __c199, 1));
+    case 3:
+      return S.suspend(() => __S(6370, __c199, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingAvailableWordPressCoreUpdatesV1Response",
       });
   }
 }
-function __c77(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20706,12 +19337,16 @@ function __c77(j: number): any {
         identifier: "WordPressV1PluginsAvailablePluginResource",
       });
     case 2:
-      return S.Array(__S(617, __c77, 1));
+      return S.Array(__S(6401, __c200, 1));
     case 3:
-      return S.suspend(() => __S(618, __c77, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6402, __c200, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingAvailableWordPressPluginsV1Response",
       });
-    case 4:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20726,7 +19361,7 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListHostingDatabaseRemoteConnectionsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           database_name: S.optional(S.String),
@@ -20736,15 +19371,15 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "HostingV1DatabasesRemoteConnectionsRemoteConnectionResource",
       });
-    case 6:
-      return S.Array(__S(621, __c77, 5));
-    case 7:
-      return S.suspend(() => __S(622, __c77, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6433, __c201, 1));
+    case 3:
+      return S.suspend(() => __S(6434, __c201, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingDatabaseRemoteConnectionsV1Response",
       });
   }
 }
-function __c78(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20776,12 +19411,16 @@ function __c78(j: number): any {
         identifier: "HostingV1GitGitRepositoryResource",
       });
     case 2:
-      return S.Array(__S(625, __c78, 1));
+      return S.Array(__S(6465, __c202, 1));
     case 3:
-      return S.suspend(() => __S(626, __c78, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6466, __c202, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingGitInstallationRepositoriesV1Response",
       });
-    case 4:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String.pipe(T.Query())),
@@ -20790,7 +19429,7 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListHostingGitInstallationsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -20806,15 +19445,15 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "HostingV1GitGitInstallationResource",
       });
-    case 6:
-      return S.Array(__S(629, __c78, 5));
-    case 7:
-      return S.suspend(() => __S(630, __c78, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6497, __c203, 1));
+    case 3:
+      return S.suspend(() => __S(6498, __c203, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingGitInstallationsV1Response",
       });
   }
 }
-function __c79(j: number): any {
+function __c204(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20840,18 +19479,22 @@ function __c79(j: number): any {
           version: S.optional(S.String),
           status: S.optional(S.String),
           update: S.optional(S.String),
-          vulnerabilities: S.optional(__S(388, __c48, 4)),
+          vulnerabilities: S.optional(__S(3361, __c105, 1)),
         }),
       ).annotate({
         identifier: "WordPressV1PluginsInstalledPluginResource",
       });
     case 2:
-      return S.Array(__S(633, __c79, 1));
+      return S.Array(__S(6529, __c204, 1));
     case 3:
-      return S.suspend(() => __S(634, __c79, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6530, __c204, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingInstalledWordPressPluginsV1Response",
       });
-    case 4:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20866,7 +19509,7 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListHostingInstalledWordPressThemesV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -20874,20 +19517,20 @@ function __c79(j: number): any {
           version: S.optional(S.String),
           status: S.optional(S.String),
           update: S.optional(S.String),
-          vulnerabilities: S.optional(__S(388, __c48, 4)),
+          vulnerabilities: S.optional(__S(3361, __c105, 1)),
         }),
       ).annotate({
         identifier: "WordPressV1ThemesInstalledThemeResource",
       });
-    case 6:
-      return S.Array(__S(637, __c79, 5));
-    case 7:
-      return S.suspend(() => __S(638, __c79, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6561, __c205, 1));
+    case 3:
+      return S.suspend(() => __S(6562, __c205, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingInstalledWordPressThemesV1Response",
       });
   }
 }
-function __c80(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20896,7 +19539,7 @@ function __c80(j: number): any {
           domain: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          states: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          states: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20908,17 +19551,21 @@ function __c80(j: number): any {
         identifier: "ListHostingNodeJSBuildsV1Request",
       });
     case 1:
-      return S.Array(__S(364, __c45, 4));
+      return S.Array(__S(2980, __c93, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(641, __c80, 1)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6593, __c206, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListHostingNodeJSBuildsV1Response",
       });
-    case 3:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -20933,7 +19580,7 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListHostingNodeJsEnvironmentVariablesV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -20942,18 +19589,22 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsEnvVarResource",
       });
-    case 5:
-      return S.Array(__S(644, __c80, 4));
-    case 6:
-      return S.suspend(() => __S(645, __c80, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6625, __c207, 1));
+    case 3:
+      return S.suspend(() => __S(6626, __c207, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingNodeJsEnvironmentVariablesV1Response",
       });
-    case 7:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
-          severities: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          severities: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20964,11 +19615,7 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListHostingNodeJsVulnerabilitiesV1Request",
       });
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           package_name: S.optional(S.String),
@@ -20990,24 +19637,52 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "HostingV1NodeJsVulnerabilityResource",
       });
-    case 1:
-      return S.Array(__S(648, __c81, 0));
     case 2:
-      return S.suspend(() => __S(649, __c81, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(6657, __c208, 1));
+    case 3:
+      return S.suspend(() => __S(6658, __c208, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingNodeJsVulnerabilitiesV1Response",
       });
-    case 3:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          domain_contacts: S.optional(__S(6336, __c198, 0)),
+          additional_details: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/portfolio/claim", code: 200 })),
+      ).annotate({
+        identifier: "ClaimDomainFreeDomainV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainsV1PortfolioClaimResource",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          statuses: S.optional(__S(141, __c17, 5).pipe(T.Query())),
-          order_ids: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          statuses: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
+          order_ids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/orders", code: 200 })),
       ).annotate({
         identifier: "ListHostingOrdersV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -21015,33 +19690,33 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "HostingV1OrdersPlanResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           client_id: S.optional(S.Number),
           subscription_id: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          plan: S.optional(__S(652, __c81, 4)),
+          plan: S.optional(__S(6721, __c210, 1)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingV1OrdersOrderResource",
       });
-    case 6:
-      return S.Array(__S(653, __c81, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(6722, __c210, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(654, __c81, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6723, __c210, 3)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListHostingOrdersV1Response",
       });
   }
 }
-function __c82(j: number): any {
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21072,23 +19747,27 @@ function __c82(j: number): any {
         identifier: "WordPressV1PluginsSuggestedPluginResource",
       });
     case 2:
-      return S.Array(__S(657, __c82, 1));
+      return S.Array(__S(6753, __c211, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           website_type: S.optional(S.String),
-          plugins: S.optional(__S(658, __c82, 2)),
+          plugins: S.optional(__S(6754, __c211, 2)),
         }),
       ).annotate({
         identifier: "WordPressV1PluginsSuggestedPluginGroupResource",
       });
     case 4:
-      return S.Array(__S(659, __c82, 3));
+      return S.Array(__S(6755, __c211, 3));
     case 5:
-      return S.suspend(() => __S(660, __c82, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6756, __c211, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingSuggestedWordPressPluginsV1Response",
       });
-    case 6:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -21103,7 +19782,7 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListHostingWebsiteGitRepositoriesV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -21114,28 +19793,28 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "HostingV1GitWebsiteGitRepositoryWebhookResource",
       });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           repository_url: S.String,
           branch: S.String,
           directory: S.String,
-          webhook: __S(663, __c82, 7),
+          webhook: __S(6785, __c212, 1),
         }),
       ).annotate({
         identifier: "HostingV1GitWebsiteGitRepositoryResource",
       });
-    case 1:
-      return S.Array(__S(664, __c83, 0));
-    case 2:
-      return S.suspend(() => __S(665, __c83, 1).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(6786, __c212, 2));
+    case 4:
+      return S.suspend(() => __S(6787, __c212, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebsiteGitRepositoriesV1Response",
       });
-    case 3:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -21150,7 +19829,7 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListHostingWebsiteParkedDomainsV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -21162,13 +19841,17 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "HostingV1DomainsParkedDomainResource",
       });
-    case 5:
-      return S.Array(__S(668, __c83, 4));
-    case 6:
-      return S.suspend(() => __S(669, __c83, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6817, __c213, 1));
+    case 3:
+      return S.suspend(() => __S(6818, __c213, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebsiteParkedDomainsV1Response",
       });
-    case 7:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -21185,22 +19868,22 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListHostingWebsiteRedirectsV1Request",
       });
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
     case 1:
+      return S.Array(__S(12576, __c393, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(672, __c84, 0)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6849, __c214, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListHostingWebsiteRedirectsV1Response",
       });
-    case 2:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String.pipe(T.Query())),
@@ -21208,7 +19891,7 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListHostingWebsiteSetupsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -21220,13 +19903,17 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "HostingV1OnboardingsOnboardingResource",
       });
-    case 4:
-      return S.Array(__S(675, __c84, 3));
-    case 5:
-      return S.suspend(() => __S(676, __c84, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6881, __c215, 1));
+    case 3:
+      return S.suspend(() => __S(6882, __c215, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebsiteSetupsV1Response",
       });
-    case 6:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -21241,7 +19928,7 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListHostingWebsiteSubdomainsV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -21253,17 +19940,17 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "HostingV1DomainsSubdomainResource",
       });
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(679, __c84, 7));
-    case 1:
-      return S.suspend(() => __S(680, __c85, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6913, __c216, 1));
+    case 3:
+      return S.suspend(() => __S(6914, __c216, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebsiteSubdomainsV1Response",
       });
-    case 2:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -21272,12 +19959,12 @@ function __c85(j: number): any {
           order_id: S.optional(S.Number.pipe(T.Query())),
           is_enabled: S.optional(S.Boolean.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
-          website_types: S.optional(__S(141, __c17, 5).pipe(T.Query())),
+          website_types: S.optional(__S(13184, __c412, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/websites", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebsitesV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.NullOr(S.String)),
@@ -21295,18 +19982,22 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "HostingV1WebsitesWebsiteResource",
       });
-    case 4:
-      return S.Array(__S(683, __c85, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(6945, __c217, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(684, __c85, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(6946, __c217, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListHostingWebsitesV1Response",
       });
-    case 6:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String.pipe(T.Query())),
@@ -21318,7 +20009,7 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListHostingWordPressInstallationsV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -21337,17 +20028,17 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "WordPressV1InstallationsWordPressInstallationResource",
       });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(687, __c85, 7));
-    case 1:
-      return S.suspend(() => __S(688, __c86, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(6977, __c218, 1));
+    case 3:
+      return S.suspend(() => __S(6978, __c218, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWordPressInstallationsV1Response",
       });
-    case 2:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.optional(S.Number.pipe(T.Query())),
@@ -21356,7 +20047,7 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListHostingWordPressThemesV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -21371,13 +20062,35 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "WordPressV1ThemesThemeResource",
       });
-    case 4:
-      return S.Array(__S(691, __c86, 3));
-    case 5:
-      return S.suspend(() => __S(692, __c86, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(7009, __c219, 1));
+    case 3:
+      return S.suspend(() => __S(7010, __c219, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWordPressThemesV1Response",
       });
-    case 6:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/cache",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearAgencyHostingWebsiteCacheV1Request",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21396,7 +20109,7 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListMailAccessLogsV1Request",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
@@ -21421,22 +20134,22 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "MailV1LogsAccessAccessLogResource",
       });
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(695, __c86, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(7073, __c221, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(696, __c87, 0)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7074, __c221, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailAccessLogsV1Response",
       });
-    case 2:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21453,7 +20166,7 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListMailActionLogsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -21467,18 +20180,22 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "MailV1LogsActionActionLogResource",
       });
-    case 4:
-      return S.Array(__S(699, __c87, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(7105, __c222, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(700, __c87, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7106, __c222, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailActionLogsV1Response",
       });
-    case 6:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21486,22 +20203,22 @@ function __c87(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/mail/v1/orders/{orderId}/aliases", code: 200 })),
       ).annotate({ identifier: "ListMailAliasesV1Request" });
-    case 7:
-      return S.Array(__S(124, __c15, 4));
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12704, __c397, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(703, __c87, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7137, __c223, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailAliasesV1Response",
       });
-    case 1:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order_id: S.optional(S.String.pipe(T.Query())),
@@ -21511,13 +20228,13 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListMailAPITokensV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           order_id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          scope: S.optional(__S(128, __c16, 0)),
+          scope: S.optional(__S(12801, __c400, 1)),
           created_at: S.optional(S.String),
           last_used_at: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
@@ -21525,18 +20242,22 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "MailV1ApiTokensApiTokenResource",
       });
+    case 2:
+      return S.Array(__S(7169, __c224, 1));
     case 3:
-      return S.Array(__S(706, __c88, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(707, __c88, 3)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7170, __c224, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailAPITokensV1Response",
       });
-    case 5:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21548,20 +20269,20 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListMailAutorepliesV1Request",
       });
-    case 6:
-      return S.Array(__S(131, __c16, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(12864, __c402, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(710, __c88, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7201, __c225, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailAutorepliesV1Response",
       });
   }
 }
-function __c89(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21576,17 +20297,21 @@ function __c89(j: number): any {
         identifier: "ListMailCatchAllsV1Request",
       });
     case 1:
-      return S.Array(__S(133, __c16, 5));
+      return S.Array(__S(12928, __c404, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(713, __c89, 1)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7233, __c226, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailCatchAllsV1Response",
       });
-    case 3:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21598,18 +20323,22 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListMailForwardersV1Request",
       });
-    case 4:
-      return S.Array(__S(135, __c16, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(12992, __c406, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(716, __c89, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7265, __c227, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailForwardersV1Response",
       });
-    case 6:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21628,7 +20357,11 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListMailInboundLogsV1Request",
       });
-    case 7:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address_to: S.optional(S.String),
@@ -21642,13 +20375,9 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "MailV1LogsCommonDeliveryLogRelayEventResource",
       });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(719, __c89, 7));
     case 1:
+      return S.Array(__S(7328, __c229, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
@@ -21658,25 +20387,29 @@ function __c90(j: number): any {
           from: S.optional(S.String),
           nrcpt: S.optional(S.String),
           timestamp: S.optional(S.String),
-          relay_events: S.optional(__S(720, __c90, 0)),
+          relay_events: S.optional(__S(7329, __c229, 1)),
           status: S.optional(S.String),
           is_spam: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "MailV1LogsCommonDeliveryLogResource",
       });
-    case 2:
-      return S.Array(__S(721, __c90, 1));
     case 3:
+      return S.Array(__S(7330, __c229, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(722, __c90, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7331, __c229, 3)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailInboundLogsV1Response",
       });
-    case 4:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21697,7 +20430,7 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ListMailMailboxActionLogsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           folder: S.optional(S.String),
@@ -21710,20 +20443,20 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "MailV1LogsMailboxActionsMailboxActionLogResource",
       });
-    case 6:
-      return S.Array(__S(725, __c90, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(7361, __c230, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(726, __c90, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7362, __c230, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailMailboxActionLogsV1Response",
       });
   }
 }
-function __c91(j: number): any {
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21740,17 +20473,40 @@ function __c91(j: number): any {
         identifier: "ListMailMailboxesV1Request",
       });
     case 1:
-      return S.Array(__S(140, __c17, 4));
+      return S.Array(__S(13059, __c408, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(729, __c91, 1)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7393, __c231, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailMailboxesV1Response",
       });
-    case 3:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearHostingNodeJsRuntimeLogsV1Request",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String.pipe(T.Query())),
@@ -21761,7 +20517,7 @@ function __c91(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/mail/v1/orders", code: 200 })),
       ).annotate({ identifier: "ListMailOrdersV1Request" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -21770,7 +20526,7 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "MailV1OrdersOrderDomainResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -21779,15 +20535,15 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "MailV1OrdersOrderPlanResource",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           status: S.optional(S.String),
           is_trial: S.optional(S.Boolean),
           seats: S.optional(S.Number),
-          domain: S.optional(S.NullOr(__S(732, __c91, 4))),
-          plan: S.optional(S.NullOr(__S(733, __c91, 5))),
+          domain: S.optional(S.NullOr(__S(7457, __c233, 1))),
+          plan: S.optional(S.NullOr(__S(7458, __c233, 2))),
           has_pending_upgrade: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.String)),
@@ -21795,20 +20551,20 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "MailV1OrdersOrderResource",
       });
-    case 7:
-      return S.Array(__S(734, __c91, 6));
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(7459, __c233, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(735, __c91, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7460, __c233, 4)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({ identifier: "ListMailOrdersV1Response" });
-    case 1:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21827,7 +20583,11 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListMailOutboundLogsV1Request",
       });
-    case 2:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21844,7 +20604,7 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListMailWebhookDeliveryLogsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
@@ -21858,18 +20618,22 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "MailV1WebhooksWebhookDeliveryLogResource",
       });
-    case 4:
-      return S.Array(__S(739, __c92, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(7521, __c235, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(740, __c92, 4)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7522, __c235, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailWebhookDeliveryLogsV1Response",
       });
-    case 6:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
@@ -21883,22 +20647,22 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListMailWebhooksV1Request",
       });
-    case 7:
-      return S.Array(__S(395, __c49, 3));
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3456, __c108, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(743, __c92, 7)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7553, __c236, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListMailWebhooksV1Response",
       });
-    case 1:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -21913,7 +20677,7 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "ListReachAutomationStepsV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -21926,13 +20690,17 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "ReachV1AutomationsStepsAutomationStepResource",
       });
+    case 2:
+      return S.Array(__S(7585, __c237, 1));
     case 3:
-      return S.Array(__S(746, __c93, 2));
-    case 4:
-      return S.suspend(() => __S(747, __c93, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7586, __c237, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachAutomationStepsV1Response",
       });
-    case 5:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -21950,20 +20718,20 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "ListReachAutomationsV1Request",
       });
-    case 6:
-      return S.Array(__S(398, __c49, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(3521, __c110, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(750, __c93, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7617, __c238, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListReachAutomationsV1Response",
       });
   }
 }
-function __c94(j: number): any {
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22010,23 +20778,27 @@ function __c94(j: number): any {
           updated_at: S.optional(S.NullOr(S.String)),
           sent_at: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
-          statistics: S.optional(__S(753, __c94, 1)),
+          statistics: S.optional(__S(7649, __c239, 1)),
         }),
       ).annotate({
         identifier: "ReachV1CampaignsCampaignResource",
       });
     case 3:
-      return S.Array(__S(754, __c94, 2));
+      return S.Array(__S(7650, __c239, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(755, __c94, 3)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7651, __c239, 3)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListReachCampaignsV1Response",
       });
-    case 5:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22040,15 +20812,15 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "ListReachContactFieldsV1Request",
       });
-    case 6:
-      return S.Array(__S(147, __c18, 3));
-    case 7:
-      return S.suspend(() => __S(758, __c94, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(13312, __c416, 0));
+    case 2:
+      return S.suspend(() => __S(7681, __c240, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachContactFieldsV1Response",
       });
   }
 }
-function __c95(j: number): any {
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22065,12 +20837,16 @@ function __c95(j: number): any {
         identifier: "ListReachEmailTemplatesV1Request",
       });
     case 1:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(13440, __c420, 0));
     case 2:
-      return S.suspend(() => __S(761, __c95, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7713, __c241, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachEmailTemplatesV1Response",
       });
-    case 3:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22080,7 +20856,7 @@ function __c95(j: number): any {
           T.Http({ method: "GET", uri: "/api/reach/v1/profiles/{profileUuid}/forms", code: 200 }),
         ),
       ).annotate({ identifier: "ListReachFormsV1Request" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.NullOr(S.String)),
@@ -22089,30 +20865,50 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "ReachV1FormsFormTemplateResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
           type: S.optional(S.String),
-          template: S.optional(__S(764, __c95, 4)),
+          template: S.optional(__S(7745, __c242, 1)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ReachV1FormsFormResource" });
-    case 6:
-      return S.Array(__S(765, __c95, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(7746, __c242, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(766, __c95, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7747, __c242, 3)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({ identifier: "ListReachFormsV1Response" });
   }
 }
-function __c96(j: number): any {
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          directory: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearHostingWebsiteCacheV1Request",
+      });
+  }
+}
+function __c244(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22139,12 +20935,16 @@ function __c96(j: number): any {
         identifier: "ReachV1ProfilesFeaturesPlanFeatureResource",
       });
     case 2:
-      return S.Array(__S(769, __c96, 1));
+      return S.Array(__S(7809, __c244, 1));
     case 3:
-      return S.suspend(() => __S(770, __c96, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7810, __c244, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachPlanFeatureAccessV1Response",
       });
-    case 4:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22163,7 +20963,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListReachProfileContactsV1Request",
       });
-    case 5:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -22180,20 +20984,20 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ReachV1ContactsProfileContactResource",
       });
-    case 6:
-      return S.Array(__S(773, __c96, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(7872, __c246, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(774, __c96, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7873, __c246, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListReachProfileContactsV1Response",
       });
   }
 }
-function __c97(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22228,17 +21032,21 @@ function __c97(j: number): any {
         identifier: "ReachV1ContactsSegmentsSegmentationContactResource",
       });
     case 2:
-      return S.Array(__S(777, __c97, 1));
+      return S.Array(__S(7905, __c247, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(778, __c97, 2)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7906, __c247, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListReachProfileSegmentContactsV1Response",
       });
-    case 4:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22255,7 +21063,7 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListReachProfileSegmentsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -22267,20 +21075,20 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ReachV1ContactsSegmentsSegmentListItemResource",
       });
-    case 6:
-      return S.Array(__S(781, __c97, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(7937, __c248, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(782, __c97, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(7938, __c248, 2)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "ListReachProfileSegmentsV1Response",
       });
   }
 }
-function __c98(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22311,27 +21119,31 @@ function __c98(j: number): any {
         identifier: "ReachV1ProfilesProfileResourceProfilesItem",
       });
     case 3:
-      return S.Array(__S(786, __c98, 2));
+      return S.Array(__S(7970, __c249, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(785, __c98, 1)),
+          limits: S.optional(__S(7969, __c249, 1)),
           is_trial: S.optional(S.Boolean),
           expires_at: S.optional(S.String),
           resource_id: S.optional(S.Number),
           status: S.optional(S.String),
-          profiles: S.optional(__S(787, __c98, 3)),
+          profiles: S.optional(__S(7971, __c249, 3)),
         }),
       ).annotate({
         identifier: "ReachV1ProfilesProfileResource",
       });
     case 5:
-      return S.Array(__S(788, __c98, 4));
+      return S.Array(__S(7972, __c249, 4));
     case 6:
-      return S.suspend(() => __S(789, __c98, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7973, __c249, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachProfilesV1Response",
       });
-    case 7:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22343,13 +21155,17 @@ function __c98(j: number): any {
       });
   }
 }
-function __c99(j: number): any {
+function __c251(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(409, __c51, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3680, __c115, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReachProfileTagsV1Response",
       });
-    case 1:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22363,47 +21179,47 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListReachSegmentFilterAttributesV1Request",
       });
-    case 2:
+    case 1:
       return S.Record(S.String, S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operator: S.optional(S.String),
           description: S.optional(S.String),
           input_type: S.optional(S.String),
           example: S.optional(S.String),
-          enum_values: S.optional(__S(794, __c99, 2)),
+          enum_values: S.optional(__S(8065, __c252, 1)),
         }),
       ).annotate({
         identifier: "ReachV1ContactsSegmentsSegmentFilterOperatorResource",
       });
+    case 3:
+      return S.Record(S.String, __S(8066, __c252, 2));
     case 4:
-      return S.Record(S.String, __S(795, __c99, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           type: S.optional(S.String),
           description: S.optional(S.String),
-          operators: S.optional(__S(796, __c99, 4)),
+          operators: S.optional(__S(8067, __c252, 3)),
         }),
       ).annotate({
         identifier: "ReachV1ContactsSegmentsSegmentFilterAttributeResource",
       });
+    case 5:
+      return S.Record(S.String, __S(8068, __c252, 4));
     case 6:
-      return S.Record(S.String, __S(797, __c99, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(798, __c99, 6)),
-          logic_operators: S.optional(__S(794, __c99, 2)),
+          attributes: S.optional(__S(8069, __c252, 5)),
+          logic_operators: S.optional(__S(8065, __c252, 1)),
         }),
       ).annotate({
         identifier: "ReachV1ContactsSegmentsSegmentFilterAttributesResource",
       });
   }
 }
-function __c100(j: number): any {
+function __c253(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22420,7 +21236,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "MailChangeMailboxPasswordV1Request",
       });
-    case 1:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           forwarderId: S.String.pipe(T.Label()),
@@ -22435,12 +21255,16 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "MailUpdateForwarderKeepCopySettingV1Request",
       });
-    case 2:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
-          vulnerability_ids: __S(15, __c1, 7),
+          vulnerability_ids: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22451,18 +21275,49 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "PatchHostingNodeJsVulnerabilitiesV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pr_url: S.optional(S.String),
           pr_number: S.optional(S.Number),
           head_branch: S.optional(S.String),
-          patched_vulnerability_ids: S.optional(__S(15, __c1, 7)),
+          patched_vulnerability_ids: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({
         identifier: "HostingV1NodeJsPatchResultResource",
       });
-    case 4:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          websiteId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/horizons/v1/websites/{websiteId}/clone", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CloneHorizonWebsiteV1Request",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_url: S.String,
+          website_id: S.String,
+        }),
+      ).annotate({
+        identifier: "HorizonsV1WebsitesCreatedWebsiteResource",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attribute: S.String,
@@ -22472,13 +21327,13 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "PreviewReachContactsMatchingConditionsV1RequestConditionsItem",
       });
-    case 5:
-      return S.Array(__S(804, __c100, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(8256, __c258, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
-          conditions: __S(805, __c100, 5),
+          conditions: __S(8257, __c258, 1),
           logic: S.String,
           page: S.optional(S.Number),
           per_page: S.optional(S.Number),
@@ -22495,7 +21350,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "PreviewReachContactsMatchingConditionsV1Request",
       });
-    case 7:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           websiteId: S.String.pipe(T.Label()),
@@ -22509,11 +21368,7 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "PublishHorizonWebsiteV1Request",
       });
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -22524,7 +21379,11 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "HorizonsV1WebsitesPublishedWebsiteResource",
       });
-    case 1:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -22539,7 +21398,11 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "PurgeHostingLiteSpeedCacheV1Request",
       });
-    case 2:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22554,7 +21417,7 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ReachCountProfileSegmentContactsV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -22562,7 +21425,11 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ReachV1ContactsSegmentsSegmentContactsCountResource",
       });
-    case 4:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -22573,14 +21440,14 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ReachCreateContactsInBulkV1RequestContactsItem",
       });
-    case 5:
-      return S.Array(__S(812, __c101, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(8384, __c262, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
-          contacts: __S(813, __c101, 5),
-          tag_uuids: S.optional(__S(15, __c1, 7)),
+          contacts: __S(8385, __c262, 1),
+          tag_uuids: S.optional(__S(2016, __c63, 0)),
           note: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -22592,11 +21459,15 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ReachCreateContactsInBulkV1Request",
       });
-    case 7:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
-          names: __S(15, __c1, 7),
+          names: __S(2016, __c63, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/reach/v1/profiles/{profileUuid}/tags", code: 200 }),
         ),
@@ -22605,7 +21476,7 @@ function __c101(j: number): any {
       });
   }
 }
-function __c102(j: number): any {
+function __c264(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22625,7 +21496,11 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "RecreateVPSVirtualMachineV1Request",
       });
-    case 1:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
@@ -22639,7 +21514,11 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "RegenerateMailWebhookSecretV1Request",
       });
-    case 2:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22655,12 +21534,16 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "RemoveReachAContactFromATagV1Request",
       });
-    case 3:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
           tagUuid: S.String.pipe(T.Label()),
-          contact_uuids: S.optional(__S(15, __c1, 7)),
+          contact_uuids: S.optional(__S(2016, __c63, 0)),
           all_contacts: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -22672,7 +21555,27 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "RemoveReachContactsFromATagV1Request",
       });
-    case 4:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          domain_contacts: S.optional(__S(6336, __c198, 0)),
+          additional_details: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/domains/v1/portfolio/{domain}/setup", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CompleteDomainDomainSetupV1Request",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -22686,12 +21589,16 @@ function __c102(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenameReachATagV1Request" });
-    case 5:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           payment_method_id: S.optional(S.Number),
-          coupons: S.optional(__S(74, __c9, 2)),
+          coupons: S.optional(__S(10528, __c329, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22702,11 +21609,15 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "RenewBillingSubscriptionV1Request",
       });
-    case 6:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
-          extensions: __S(43, __c5, 3),
+          extensions: __S(5856, __c183, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22717,7 +21628,11 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ReplaceAgencyHostingWebsitePHPExtensionsV1Request",
       });
-    case 7:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -22726,17 +21641,13 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem",
       });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(823, __c102, 7));
     case 1:
+      return S.Array(__S(8704, __c272, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
-          options: __S(824, __c103, 0),
+          options: __S(8705, __c272, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22747,7 +21658,11 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ReplaceAgencyHostingWebsitePHPOptionsV1Request",
       });
-    case 2:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -22756,14 +21671,14 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem",
       });
-    case 3:
-      return S.Array(__S(826, __c103, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(8736, __c273, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
-          env_vars: __S(827, __c103, 3),
+          env_vars: __S(8737, __c273, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22774,7 +21689,11 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ReplaceHostingNodeJsEnvironmentVariablesV1Request",
       });
-    case 5:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           protocol: S.String,
@@ -22785,13 +21704,13 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "VPSV1FirewallRulesStoreRequest",
       });
-    case 6:
-      return S.Array(__S(829, __c103, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(8768, __c274, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           firewallId: S.Number.pipe(T.Label()),
-          rules: __S(830, __c103, 6),
+          rules: __S(8769, __c274, 1),
           sync: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/vps/v1/firewall/{firewallId}/rules", code: 200 }),
@@ -22801,7 +21720,7 @@ function __c103(j: number): any {
       });
   }
 }
-function __c104(j: number): any {
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22817,7 +21736,11 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ResendMailCatchAllConfirmationV1Request",
       });
-    case 1:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           forwarderId: S.String.pipe(T.Label()),
@@ -22831,18 +21754,26 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ResendMailForwarderConfirmationV1Request",
       });
-    case 2:
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           sync: S.optional(S.Boolean),
           reset_email_records: S.optional(S.Boolean),
-          whitelisted_record_types: S.optional(__S(15, __c1, 7)),
+          whitelisted_record_types: S.optional(__S(2016, __c63, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/dns/v1/zones/{domain}/reset", code: 200 })),
       ).annotate({
         identifier: "ResetDNSDNSRecordsV1Request",
       });
-    case 3:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -22857,7 +21788,79 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ResetHostingPHPExtensionsV1Request",
       });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAgencyHostingANewWebsiteV1RequestSettingsPhp",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          php: __S(8928, __c279, 0),
+        }),
+      ).annotate({
+        identifier: "CreateAgencyHostingANewWebsiteV1RequestSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          email: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.String,
+          title: S.String,
+          admin: __S(8930, __c279, 2),
+        }),
+      ).annotate({
+        identifier: "CreateAgencyHostingANewWebsiteV1RequestWordpress",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          order_id: S.Number.pipe(T.Label()),
+          datacenter_code: S.String,
+          flavor: S.String,
+          settings: __S(8929, __c279, 1),
+          domain: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          wordpress: S.optional(__S(8931, __c279, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/orders/{order_id}/websites/setups",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAgencyHostingANewWebsiteV1Request",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          setup_uuid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AgencyHostingV1SetupsWebsiteSetupResource",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -22871,7 +21874,11 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ResetVPSHostnameV1Request",
       });
-    case 5:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -22886,7 +21893,11 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "RestartHostingNodeJsApplicationV1Request",
       });
-    case 6:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -22901,7 +21912,11 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "RestartVPSProjectV1Request",
       });
-    case 7:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -22917,7 +21932,7 @@ function __c104(j: number): any {
       });
   }
 }
-function __c105(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22934,7 +21949,11 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "RestoreDNSDNSSnapshotV1Request",
       });
-    case 1:
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -22949,7 +21968,11 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "RestoreVPSBackupV1Request",
       });
-    case 2:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -22963,7 +21986,11 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "RestoreVPSSnapshotV1Request",
       });
-    case 3:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tokenId: S.String.pipe(T.Label()),
@@ -22971,7 +21998,11 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "RevokeMailAPITokenV1Request",
       });
-    case 4:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           search: S.String.pipe(T.Query()),
@@ -22979,7 +22010,7 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "SearchHostingWordPressPluginsV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _1x: S.optional(S.String.pipe(T.Body("1x"))),
@@ -22988,28 +22019,28 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "WordPressV1PluginsPluginResourceIcons",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           title: S.optional(S.String),
-          icons: S.optional(S.NullOr(__S(845, __c105, 5))),
+          icons: S.optional(S.NullOr(__S(9217, __c288, 1))),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WordPressV1PluginsPluginResource",
       });
-    case 7:
-      return S.Array(__S(846, __c105, 6));
-  }
-}
-function __c106(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(847, __c105, 7).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(9218, __c288, 2));
+    case 4:
+      return S.suspend(() => __S(9219, __c288, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchHostingWordPressPluginsV1Response",
       });
-    case 1:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paymentMethodId: S.Number.pipe(T.Label()),
@@ -23023,7 +22054,46 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "SetBillingDefaultPaymentMethodV1Request",
       });
-    case 2:
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          time: S.String,
+          command: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/cron-jobs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAgencyHostingWebsiteCronJobV1Request",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          time: S.optional(S.String),
+          command: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AgencyHostingV1WebsitesCronJobsCronJobResource",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           whoisId: S.Number.pipe(T.Label()),
@@ -23033,7 +22103,11 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "SetDomainWHOISProfileAsDefaultV1Request",
       });
-    case 3:
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -23048,7 +22122,7 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "SetEcommerceStoreShippingV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -23058,16 +22132,20 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "EcommerceV1ShippingShippingResourceShippingOption",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          shipping_option: S.optional(__S(852, __c106, 4)),
+          shipping_option: S.optional(__S(9377, __c293, 1)),
           admin_url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EcommerceV1ShippingShippingResource",
       });
-    case 6:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23084,7 +22162,11 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "SetHostingAIOptionStatusV1Request",
       });
-    case 7:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23099,7 +22181,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "SetVPSHostnameV1Request" });
   }
 }
-function __c107(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23118,7 +22200,11 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "SetVPSNameserversV1Request",
       });
-    case 1:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23133,7 +22219,11 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "SetVPSPanelPasswordV1Request",
       });
-    case 2:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23148,18 +22238,26 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "SetVPSRootPasswordV1Request",
       });
-    case 3:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
           auth_code: S.String,
-          domain_contacts: S.optional(__S(48, __c6, 0)),
+          domain_contacts: S.optional(__S(6336, __c198, 0)),
           should_keep_ns: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/transfers", code: 200 })),
       ).annotate({
         identifier: "StartDomainDomainTransferV1Request",
       });
-    case 4:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           archive_path: S.optional(S.String),
@@ -23171,7 +22269,7 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "StartHostingNodeJsBuildV1RequestSourceOptions",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23184,7 +22282,7 @@ function __c107(j: number): any {
           entry_file: S.optional(S.NullOr(S.String)),
           package_manager: S.optional(S.NullOr(S.String)),
           source_type: S.String,
-          source_options: S.NullOr(__S(860, __c107, 4)),
+          source_options: S.NullOr(__S(9600, __c300, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23195,7 +22293,11 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "StartHostingNodeJsBuildV1Request",
       });
-    case 6:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23208,7 +22310,47 @@ function __c107(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartVPSProjectV1Request" });
-    case 7:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          database_name: S.String.pipe(T.Label()),
+          database_user: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          host: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAgencyHostingWebsiteDatabaseUserV1Request",
+      });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          host: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AgencyHostingV1WebsitesDatabasesDatabaseUserResource",
+      });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23225,7 +22367,7 @@ function __c107(j: number): any {
       });
   }
 }
-function __c108(j: number): any {
+function __c305(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23241,7 +22383,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "StartVPSVirtualMachineV1Request",
       });
-    case 1:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23254,7 +22400,11 @@ function __c108(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopVPSProjectV1Request" });
-    case 2:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23268,7 +22418,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "StopVPSRecoveryModeV1Request",
       });
-    case 3:
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -23282,7 +22436,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "StopVPSVirtualMachineV1Request",
       });
-    case 4:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firewallId: S.Number.pipe(T.Label()),
@@ -23292,7 +22450,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "SyncVPSFirewallToAllAssignedVMsV1Request",
       });
-    case 5:
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
@@ -23300,7 +22462,7 @@ function __c108(j: number): any {
           T.Http({ method: "POST", uri: "/api/mail/v1/webhooks/{webhookId}/test", code: 200 }),
         ),
       ).annotate({ identifier: "TestMailWebhookV1Request" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           http_status: S.optional(S.Number),
@@ -23310,7 +22472,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "MailV1WebhooksWebhookTestResultResource",
       });
-    case 7:
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23328,7 +22494,7 @@ function __c108(j: number): any {
       });
   }
 }
-function __c109(j: number): any {
+function __c312(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23346,7 +22512,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ToggleHostingHTTPSRedirectV1Request",
       });
-    case 1:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23362,7 +22532,48 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ToggleHostingMaintenanceModeV1Request",
       });
-    case 2:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          database_name: S.String,
+          database_user: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAgencyHostingWebsiteDatabaseV1Request",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9696, __c303, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          users: S.optional(__S(10080, __c315, 0)),
+        }),
+      ).annotate({
+        identifier: "AgencyHostingV1WebsitesDatabasesDatabaseResource",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23378,7 +22589,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ToggleHostingMemcachedObjectCacheV1Request",
       });
-    case 3:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23394,7 +22609,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ToggleHostingWebsiteCacheV1Request",
       });
-    case 4:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -23409,7 +22628,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UninstallAgencyHostingWebsiteSSLV1Request",
       });
-    case 5:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23424,12 +22647,16 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UninstallHostingSSLV1Request",
       });
-    case 6:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           software: S.String.pipe(T.Label()),
-          plugins: __S(15, __c1, 7),
+          plugins: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23440,12 +22667,16 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UninstallHostingWordPressPluginsV1Request",
       });
-    case 7:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           software: S.String.pipe(T.Label()),
-          themes: __S(15, __c1, 7),
+          themes: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23458,7 +22689,7 @@ function __c109(j: number): any {
       });
   }
 }
-function __c110(j: number): any {
+function __c322(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23474,7 +22705,11 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UninstallVPSMonarxV1Request",
       });
-    case 1:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -23489,7 +22724,11 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UnlinkAgencyHostingDomainFromWebsiteV1Request",
       });
-    case 2:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_uid: S.String.pipe(T.Label()),
@@ -23504,7 +22743,38 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UpdateAgencyHostingWebsitePHPVersionV1Request",
       });
-    case 3:
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          records: __S(10433, __c326, 1),
+          ttl: S.optional(S.Number),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateDNSDNSRecordsV1RequestZoneItem",
+      });
+    case 1:
+      return S.Array(__S(10400, __c325, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          overwrite: S.optional(S.Boolean),
+          zone: __S(10401, __c325, 1),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/dns/v1/zones/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateDNSDNSRecordsV1Request",
+      });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
@@ -23512,34 +22782,80 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem",
       });
-    case 4:
-      return S.Array(__S(883, __c110, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(10432, __c326, 0));
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          records: __S(884, __c110, 4),
-          ttl: S.optional(S.Number),
-          type: S.String,
+          item_id: S.String,
+          quantity: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "UpdateDNSDNSRecordsV1RequestZoneItem",
+        identifier: "CreateBillingPurchaseOrderV1RequestItemsItem",
       });
-    case 6:
-      return S.Array(__S(885, __c110, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(10464, __c327, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domain: S.String.pipe(T.Label()),
-          overwrite: S.optional(S.Boolean),
-          zone: __S(886, __c110, 6),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/dns/v1/zones/{domain}", code: 200 })),
+          payment_method_id: S.optional(S.Number),
+          items: __S(10465, __c327, 1),
+          coupons: S.optional(__S(10528, __c329, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/billing/v1/orders", code: 200 })),
       ).annotate({
-        identifier: "UpdateDNSDNSRecordsV1Request",
+        identifier: "CreateBillingPurchaseOrderV1Request",
       });
   }
 }
-function __c111(j: number): any {
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          company: S.optional(S.NullOr(S.String)),
+          address_1: S.optional(S.NullOr(S.String)),
+          address_2: S.optional(S.NullOr(S.String)),
+          city: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(S.String)),
+          zip: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingV1OrderOrderBillingAddressResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          subscription_id: S.optional(S.String),
+          status: S.optional(S.String),
+          currency: S.optional(S.String),
+          subtotal: S.optional(S.Number),
+          total: S.optional(S.Number),
+          billing_address: S.optional(__S(10496, __c328, 0)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingV1OrderOrderResource",
+      });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c330(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23551,7 +22867,11 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "UpdateDomainDomainForwardingV1Request",
       });
-    case 1:
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -23569,7 +22889,11 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "UpdateDomainDomainNameserversV1Request",
       });
-    case 2:
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -23587,15 +22911,19 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "UpdateEcommerceAProductV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(582, __c72, 6)),
+          data: S.optional(__S(5991, __c187, 7)),
         }),
       ).annotate({
         identifier: "EcommerceV1ProductProductResponseResource",
       });
-    case 4:
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -23605,32 +22933,28 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem",
       });
-    case 5:
-      return S.Array(__S(892, __c111, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(10656, __c333, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           variant_id: S.String,
           title: S.optional(S.String),
           inventory_quantity: S.optional(S.Number),
           manage_inventory: S.optional(S.Boolean),
-          prices: S.optional(__S(893, __c111, 5)),
+          prices: S.optional(__S(10657, __c333, 1)),
         }),
       ).annotate({
         identifier: "UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem",
       });
-    case 7:
-      return S.Array(__S(894, __c111, 6));
-  }
-}
-function __c112(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(10658, __c333, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
           product_id: S.String.pipe(T.Label()),
-          variants: __S(895, __c111, 7),
+          variants: __S(10659, __c333, 3),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23641,15 +22965,19 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateEcommerceProductVariantsInBatchV1Request",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(586, __c73, 2)),
+          data: S.optional(__S(6048, __c189, 0)),
         }),
       ).annotate({
         identifier: "EcommerceV1VariantVariantListResponseResource",
       });
-    case 2:
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           store_id: S.String.pipe(T.Label()),
@@ -23666,7 +22994,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateEcommerceSalesChannelV1Request",
       });
-    case 3:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23687,7 +23019,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateHostingGitAutoDeploymentSettingsV1Request",
       });
-    case 4:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23703,7 +23039,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateHostingHostingerWordPressPluginV1Request",
       });
-    case 5:
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23725,13 +23065,17 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateHostingNodeJsBuildSettingsV1Request",
       });
-    case 6:
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
-          enable: S.optional(__S(15, __c1, 7)),
-          disable: S.optional(__S(15, __c1, 7)),
+          enable: S.optional(__S(2016, __c63, 0)),
+          disable: S.optional(__S(2016, __c63, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23742,18 +23086,18 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateHostingPHPExtensionsV1Request",
       });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c113(j: number): any {
+function __c339(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
-          options: __S(903, __c112, 7),
+          options: __S(10848, __c339, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23764,7 +23108,41 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateHostingPHPOptionsV1Request",
       });
-    case 1:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          redirect_type: S.String,
+          redirect_url: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/forwarding", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainDomainForwardingV1Request",
+      });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.NullOr(S.String)),
+          redirect_type: S.optional(S.String),
+          redirect_url: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainsV1ForwardingForwardingResource",
+      });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23780,7 +23158,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateHostingPHPVersionV1Request",
       });
-    case 2:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -23797,12 +23179,16 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateHostingWordPressCoreV1Request",
       });
-    case 3:
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           software: S.String.pipe(T.Label()),
-          plugins: __S(15, __c1, 7),
+          plugins: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23813,12 +23199,16 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateHostingWordPressPluginsV1Request",
       });
-    case 4:
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           software: S.String.pipe(T.Label()),
-          themes: __S(15, __c1, 7),
+          themes: __S(2016, __c63, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23829,7 +23219,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateHostingWordPressThemesV1Request",
       });
-    case 5:
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autoreplyId: S.String.pipe(T.Label()),
@@ -23844,20 +23238,28 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateMailAutoreplyV1Request",
       });
-    case 6:
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          events: S.optional(__S(141, __c17, 5)),
+          events: S.optional(__S(13184, __c412, 0)),
           status: S.optional(S.String),
           url: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
       ).annotate({
         identifier: "UpdateMailWebhookV1Request",
       });
-    case 7:
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.NullOr(S.String)),
@@ -23866,19 +23268,15 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateReachAContactFieldV1RequestOptionsItem",
       });
-  }
-}
-function __c114(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(911, __c113, 7));
     case 1:
+      return S.Array(__S(11136, __c348, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
           fieldUuid: S.String.pipe(T.Label()),
           label: S.String,
-          options: S.optional(S.NullOr(__S(912, __c114, 0))),
+          options: S.optional(S.NullOr(__S(11137, __c348, 1))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23889,19 +23287,23 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateReachAContactFieldV1Request",
       });
-    case 2:
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
           value: S.optional(S.NullOr(S.String)),
-          selected_option_uuids: S.optional(__S(15, __c1, 7)),
+          selected_option_uuids: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({
         identifier: "UpdateReachAContactV1RequestFieldsItem",
       });
-    case 3:
-      return S.Array(__S(914, __c114, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(11168, __c349, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
@@ -23912,7 +23314,7 @@ function __c114(j: number): any {
           phone: S.optional(S.NullOr(S.String)),
           subscription_status: S.optional(S.NullOr(S.String)),
           note: S.optional(S.NullOr(S.String)),
-          fields: S.optional(__S(915, __c114, 3)),
+          fields: S.optional(__S(11169, __c349, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23923,7 +23325,7 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateReachAContactV1Request",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -23938,13 +23340,17 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "ReachV1ContactsProfileContactUpdateResource",
       });
-    case 6:
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileUuid: S.String.pipe(T.Label()),
           segmentUuid: S.String.pipe(T.Label()),
           name: S.String,
-          conditions: S.optional(__S(155, __c19, 3)),
+          conditions: S.optional(__S(13537, __c423, 1)),
           logic: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -23956,7 +23362,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateReachAProfileSegmentV1Request",
       });
-    case 7:
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firewallId: S.Number.pipe(T.Label()),
@@ -23977,7 +23387,43 @@ function __c114(j: number): any {
       });
   }
 }
-function __c115(j: number): any {
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tld: S.String,
+          country: S.String,
+          entity_type: S.String,
+          tld_details: S.optional(S.Unknown),
+          whois_details: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/domains/v1/whois", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainWHOISProfileV1Request",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          tld: S.optional(S.String),
+          country: S.optional(S.String),
+          entity_type: S.optional(S.String),
+          is_default: S.optional(S.Boolean),
+          whois_details: S.optional(S.Unknown),
+          tld_details: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainsV1WHOISProfileResource",
+      });
+  }
+}
+function __c354(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23994,30 +23440,38 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "UpdateVPSProjectV1Request",
       });
-    case 1:
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          records: __S(884, __c110, 4),
+          records: __S(10433, __c326, 1),
           ttl: S.optional(S.Number),
           type: S.String,
         }),
       ).annotate({
         identifier: "ValidateDNSDNSRecordsV1RequestZoneItem",
       });
+    case 1:
+      return S.Array(__S(11360, __c355, 0));
     case 2:
-      return S.Array(__S(921, __c115, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           overwrite: S.optional(S.Boolean),
-          zone: __S(922, __c115, 2),
+          zone: __S(11361, __c355, 1),
         }).pipe(T.Http({ method: "POST", uri: "/api/dns/v1/zones/{domain}/validate", code: 200 })),
       ).annotate({
         identifier: "ValidateDNSDNSRecordsV1Request",
       });
-    case 4:
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -24027,7 +23481,7 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "VerifyHostingDomainOwnershipV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -24037,7 +23491,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "HostingV1DomainsDomainAccessResource",
       });
-    case 6:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -24046,7 +23504,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "VPSCreatePostInstallScriptV1Request",
       });
-    case 7:
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -24060,7 +23522,7 @@ function __c115(j: number): any {
       });
   }
 }
-function __c116(j: number): any {
+function __c359(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24076,13 +23538,17 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "VPSDeletePostInstallScriptV1Request",
       });
-    case 1:
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/data-centers", code: 200 })),
       ).annotate({
         identifier: "VPSGetDataCenterListV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -24094,13 +23560,17 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "VPSV1DataCenterDataCenterResource",
       });
+    case 2:
+      return S.Array(__S(11521, __c360, 1));
     case 3:
-      return S.Array(__S(930, __c116, 2));
-    case 4:
-      return S.suspend(() => __S(931, __c116, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(11522, __c360, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "VPSGetDataCenterListV1Response",
       });
-    case 5:
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -24108,20 +23578,20 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "VPSGetFirewallListV1Request",
       });
-    case 6:
-      return S.Array(__S(163, __c20, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(13697, __c428, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(934, __c116, 6)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(11553, __c361, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "VPSGetFirewallListV1Response",
       });
   }
 }
-function __c117(j: number): any {
+function __c362(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24132,17 +23602,21 @@ function __c117(j: number): any {
         identifier: "VPSGetPostInstallScriptsV1Request",
       });
     case 1:
-      return S.Array(__S(927, __c115, 7));
+      return S.Array(__S(11456, __c358, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(937, __c117, 1)),
-          meta: S.optional(__S(341, __c42, 5)),
+          data: S.optional(__S(11585, __c362, 1)),
+          meta: S.optional(__S(2560, __c80, 0)),
         }),
       ).annotate({
         identifier: "VPSGetPostInstallScriptsV1Response",
       });
-    case 3:
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postInstallScriptId: S.Number.pipe(T.Label()),
@@ -24156,7 +23630,11 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "VPSGetPostInstallScriptV1Request",
       });
-    case 4:
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -24170,38 +23648,87 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "VPSGetProjectListV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
           state: S.optional(S.String),
           path: S.optional(S.String),
-          containers: S.optional(__S(458, __c57, 2)),
+          containers: S.optional(__S(4228, __c132, 4)),
         }),
       ).annotate({
         identifier: "VPSV1DockerManagerProjectResource",
       });
-    case 6:
-      return S.Array(__S(941, __c117, 5));
-    case 7:
-      return S.suspend(() => __S(942, __c117, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(11649, __c364, 1));
+    case 3:
+      return S.suspend(() => __S(11650, __c364, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "VPSGetProjectListV1Response",
       });
   }
 }
-function __c118(j: number): any {
+function __c365(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          code: S.String,
           name: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
+          type: S.String,
+          value: S.Number,
+          allocation: S.optional(S.String),
+          starts_at: S.optional(S.String),
+          ends_at: S.optional(S.String),
+          usage_limit: S.optional(S.Number),
+          min_cart_value: S.optional(S.Number),
+          time_zone: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/discounts",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "VPSV1VirtualMachineSetupRequestPublicKey",
+        identifier: "CreateEcommerceADiscountV1Request",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(11712, __c366, 0)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1DiscountDiscountResponseResource",
+      });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          code: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.Number)),
+          allocation: S.optional(S.NullOr(S.String)),
+          is_disabled: S.optional(S.Boolean),
+          starts_at: S.optional(S.String),
+          ends_at: S.optional(S.NullOr(S.String)),
+          usage_limit: S.optional(S.NullOr(S.Number)),
+          usage_count: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1DiscountDiscountResource",
+      });
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           template_id: S.Number,
@@ -24213,32 +23740,49 @@ function __c118(j: number): any {
           enable_backups: S.optional(S.Boolean),
           ns1: S.optional(S.String),
           ns2: S.optional(S.String),
-          public_key: S.optional(__S(944, __c118, 0)),
+          public_key: S.optional(__S(11776, __c368, 0)),
         }),
       ).annotate({
         identifier: "VPSV1VirtualMachineSetupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           item_id: S.String,
           payment_method_id: S.optional(S.Number),
-          setup: __S(945, __c118, 1),
-          coupons: S.optional(__S(74, __c9, 2)),
+          setup: __S(11744, __c367, 0),
+          coupons: S.optional(__S(10528, __c329, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/virtual-machines", code: 200 })),
       ).annotate({
         identifier: "VPSPurchaseNewVirtualMachineV1Request",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          order: S.optional(__S(77, __c9, 5)),
-          virtual_machine: S.optional(__S(481, __c60, 1)),
+          order: S.optional(__S(10497, __c328, 1)),
+          virtual_machine: S.optional(__S(4546, __c142, 2)),
         }),
       ).annotate({
         identifier: "BillingV1OrderVirtualMachineOrderResource",
       });
-    case 4:
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VPSV1VirtualMachineSetupRequestPublicKey",
+      });
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.Number.pipe(T.Label()),
@@ -24251,7 +23795,7 @@ function __c118(j: number): any {
           enable_backups: S.optional(S.Boolean),
           ns1: S.optional(S.String),
           ns2: S.optional(S.String),
-          public_key: S.optional(__S(944, __c118, 0)),
+          public_key: S.optional(__S(11776, __c368, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24262,7 +23806,11 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "VPSSetupPurchasedVirtualMachineV1Request",
       });
-    case 5:
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postInstallScriptId: S.Number.pipe(T.Label()),
@@ -24280,7 +23828,1882 @@ function __c118(j: number): any {
       });
   }
 }
-
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software: S.String.pipe(T.Label()),
+          plugin: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/activate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateHostingWordPressPluginV1Request",
+      });
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommonSuccessEmptyResource",
+      });
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEcommerceAProductVariantV1RequestOptionsItem",
+      });
+    case 1:
+      return S.Array(__S(11936, __c373, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          sale_amount: S.optional(S.Number),
+          currency: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEcommerceAProductVariantV1RequestPricesItem",
+      });
+    case 3:
+      return S.Array(__S(11938, __c373, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          product_id: S.String.pipe(T.Label()),
+          title: S.optional(S.String),
+          sku: S.optional(S.String),
+          options: __S(11937, __c373, 1),
+          prices: S.optional(__S(11939, __c373, 3)),
+          inventory_quantity: S.optional(S.Number),
+          manage_inventory: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}/variants",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEcommerceAProductVariantV1Request",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(12002, __c375, 2)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantResponseResource",
+      });
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          sale_amount: S.optional(S.NullOr(S.Number)),
+          currency_code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantResourcePricesItem",
+      });
+    case 1:
+      return S.Array(__S(11968, __c374, 0));
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantResourceOptionsItem",
+      });
+    case 1:
+      return S.Array(__S(12000, __c375, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.NullOr(S.String)),
+          sku: S.optional(S.NullOr(S.String)),
+          options: S.optional(__S(12001, __c375, 1)),
+          prices: S.optional(__S(11969, __c374, 1)),
+          inventory_quantity: S.optional(S.Number),
+          manage_inventory: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantResource",
+      });
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          type: S.String,
+          name: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/sales-channels",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEcommerceASalesChannelV1Request",
+      });
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          is_primary: S.optional(S.Boolean),
+          is_active: S.optional(S.Boolean),
+          external_id: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          domain: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sales_channel: S.optional(__S(12064, __c377, 0)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1SalesChannelSalesChannelCreationResource",
+      });
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          name: S.String,
+          price: S.Number,
+          description: S.optional(S.NullOr(S.String)),
+          currency: S.optional(S.NullOr(S.String)),
+          download_url: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/products/digital",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEcommerceDigitalProductV1Request",
+      });
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          price: S.optional(S.Number),
+          currency_code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1ProductProductCreationResourceProduct",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(__S(12160, __c380, 0)),
+          admin_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1ProductProductCreationResource",
+      });
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          name: S.String,
+          price: S.Number,
+          description: S.optional(S.NullOr(S.String)),
+          currency: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ecommerce/v1/stores/{store_id}/products/physical",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEcommercePhysicalProductV1Request",
+      });
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          external_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateEcommerceStoreV1RequestSalesChannel",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          country_code: S.optional(S.String),
+          company_email: S.optional(S.String),
+          company_name: S.optional(S.String),
+          language: S.optional(S.String),
+          sales_channel: S.optional(__S(12224, __c382, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ecommerce/v1/stores", code: 200 })),
+      ).annotate({
+        identifier: "CreateEcommerceStoreV1Request",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          company_name: S.optional(S.NullOr(S.String)),
+          h_panel_id: S.optional(S.String),
+          created_at: S.optional(S.String),
+          default_currency_code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1StoreStoreCreationResourceStore",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          external_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1StoreStoreCreationResourceSalesChannel",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          store: S.optional(__S(12226, __c382, 2)),
+          sales_channel: S.optional(__S(12227, __c382, 3)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1StoreStoreCreationResource",
+      });
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: __S(12289, __c384, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/horizons/v1/websites", code: 200 })),
+      ).annotate({
+        identifier: "CreateHorizonWebsiteV1Request",
+      });
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          text: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateHorizonWebsiteV1RequestMessageItem",
+      });
+    case 1:
+      return S.Array(__S(12288, __c384, 0));
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          time: S.String,
+          command: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/cron-jobs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingAccountCronJobV1Request",
+      });
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          username: S.optional(S.String),
+          time: S.optional(S.String),
+          command: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingV1CronJobsCronJobResource",
+      });
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          name: S.String,
+          user: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          website_domain: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingAccountDatabaseV1Request",
+      });
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          ip: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/databases/{name}/remote-connections",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingDatabaseRemoteConnectionV1Request",
+      });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/login/links",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingLoginLinksV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          login: S.optional(S.NullOr(S.String)),
+          fallback: S.optional(S.NullOr(S.String)),
+          default: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "WordPressV1LoginLoginLinksResource",
+      });
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software: S.String.pipe(T.Label()),
+          theme: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/themes/activate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateHostingWordPressThemeV1Request",
+      });
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          parked_domain: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebsiteParkedDomainV1Request",
+      });
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          from: S.String,
+          to: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/redirects",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebsiteRedirectV1Request",
+      });
+  }
+}
+function __c393(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(S.String),
+          to: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingV1RedirectsRedirectResource",
+      });
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          subdomain: S.String,
+          directory: S.optional(S.NullOr(S.String)),
+          is_using_public_directory: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/subdomains",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebsiteSubdomainV1Request",
+      });
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          order_id: S.Number,
+          datacenter_code: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/hosting/v1/websites", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebsiteV1Request",
+      });
+  }
+}
+function __c396(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+          local_part: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/mail/v1/mailboxes/{mailboxId}/aliases", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateMailAliasV1Request" });
+  }
+}
+function __c397(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          address: S.optional(S.String),
+          mailbox: S.optional(__S(12736, __c398, 0)),
+          is_active: S.optional(S.Boolean),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1AliasesAliasResource",
+      });
+  }
+}
+function __c398(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          address: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1AliasesAliasMailboxResource",
+      });
+  }
+}
+function __c399(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          has_all_mailboxes: S.Boolean,
+          mailbox_ids: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateMailAPITokenV1RequestScope",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orderId: S.String.pipe(T.Label()),
+          name: S.String,
+          scope: __S(12768, __c399, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/mail/v1/orders/{orderId}/api-tokens", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMailAPITokenV1Request",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          token: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          scope: S.optional(__S(12801, __c400, 1)),
+          created_at: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1ApiTokensApiTokenCreatedResource",
+      });
+  }
+}
+function __c400(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12736, __c398, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          has_all_mailboxes: S.optional(S.Boolean),
+          mailboxes: S.optional(__S(12800, __c400, 0)),
+        }),
+      ).annotate({
+        identifier: "MailV1ApiTokensApiTokenScopeResource",
+      });
+  }
+}
+function __c401(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+          subject: S.String,
+          body: S.String,
+          display_name: S.optional(S.NullOr(S.String)),
+          starts_at: S.optional(S.NullOr(S.String)),
+          ends_at: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/mail/v1/mailboxes/{mailboxId}/autoreplies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMailAutoreplyV1Request",
+      });
+  }
+}
+function __c402(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          mailbox: S.optional(__S(12736, __c398, 0)),
+          subject: S.optional(S.String),
+          body: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          starts_at: S.optional(S.String),
+          ends_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1AutorepliesAutoreplyResource",
+      });
+  }
+}
+function __c403(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/mail/v1/mailboxes/{mailboxId}/catchalls",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMailCatchAllV1Request",
+      });
+  }
+}
+function __c404(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          mailbox: S.optional(__S(12736, __c398, 0)),
+          domain: S.optional(S.String),
+          is_active: S.optional(S.Boolean),
+          is_confirmed: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1CatchallsCatchallResource",
+      });
+  }
+}
+function __c405(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+          destination: S.String,
+          is_keep_copy_enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/mail/v1/mailboxes/{mailboxId}/forwarders",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMailForwarderV1Request",
+      });
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          mailbox: S.optional(__S(12736, __c398, 0)),
+          destination: S.optional(S.String),
+          is_keep_copy_enabled: S.optional(S.Boolean),
+          is_active: S.optional(S.Boolean),
+          is_confirmed: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1ForwardersForwarderResource",
+      });
+  }
+}
+function __c407(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderId: S.String.pipe(T.Label()),
+          local_part: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/mail/v1/orders/{orderId}/mailboxes", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMailMailboxV1Request",
+      });
+  }
+}
+function __c408(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_imap_enabled: S.optional(S.Boolean),
+          is_pop3_enabled: S.optional(S.Boolean),
+          is_smtp_in_enabled: S.optional(S.Boolean),
+          is_smtp_out_enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "MailV1MailboxesMailboxProtocolsResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          forwarders: S.optional(S.Number),
+          aliases: S.optional(S.Number),
+          autoreplies: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MailV1MailboxesMailboxCountsResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          storage_used: S.optional(S.Number),
+          storage_quota: S.optional(S.Number),
+          messages_used: S.optional(S.Number),
+          messages_quota: S.optional(S.Number),
+          synced_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "MailV1MailboxesMailboxUsageResource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          address: S.optional(S.String),
+          status: S.optional(S.String),
+          status_reason: S.optional(S.NullOr(S.String)),
+          protocols: S.optional(__S(13056, __c408, 0)),
+          counts: S.optional(__S(13057, __c408, 1)),
+          is_catchall: S.optional(S.Boolean),
+          usage: S.optional(__S(13058, __c408, 2)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1MailboxesMailboxResource",
+      });
+  }
+}
+function __c409(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firewallId: S.Number.pipe(T.Label()),
+          virtualMachineId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateVPSFirewallV1Request",
+      });
+  }
+}
+function __c410(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VPSV1ActionActionResource",
+      });
+  }
+}
+function __c411(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          events: __S(13184, __c412, 0),
+          status: S.optional(S.String),
+          url: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/mail/v1/mailboxes/{mailboxId}/webhooks", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMailWebhookV1Request",
+      });
+  }
+}
+function __c412(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c413(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          mailbox: S.optional(__S(12736, __c398, 0)),
+          name: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          events: S.optional(__S(13184, __c412, 0)),
+          status: S.optional(S.String),
+          url: S.optional(S.String),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MailV1WebhooksWebhookCreatedResource",
+      });
+  }
+}
+function __c414(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          type: S.String,
+          label: S.String,
+          options: S.optional(__S(2016, __c63, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/contacts/fields",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReachAContactFieldV1Request",
+      });
+  }
+}
+function __c415(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          label: S.optional(S.String),
+          sort_order: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ReachV1ContactsFieldsContactFieldOptionResource",
+      });
+    case 1:
+      return S.Array(__S(13280, __c415, 0));
+  }
+}
+function __c416(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          type: S.optional(S.String),
+          label: S.optional(S.String),
+          slug: S.optional(S.String),
+          options: S.optional(__S(13281, __c415, 1)),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReachV1ContactsFieldsContactFieldResource",
+      });
+  }
+}
+function __c417(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preheader: S.optional(S.String),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateReachADraftCampaignV1RequestMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          sender_name: S.String,
+          sender_email: S.String,
+          title: S.optional(S.String),
+          subject: S.optional(S.String),
+          template_uuid: S.optional(S.String),
+          metadata: S.optional(S.NullOr(__S(13344, __c417, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/campaigns",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReachADraftCampaignV1Request",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          title: S.optional(S.String),
+          subject: S.optional(S.String),
+          sender_name: S.optional(S.String),
+          sender_email: S.optional(S.String),
+          template_uuid: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
+          is_all_contacts: S.optional(S.Boolean),
+          metadata: S.optional(__S(13376, __c418, 0)),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ReachV1CampaignsCreatedCampaignResource",
+      });
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          template_content: S.String,
+          title: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/templates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReachAnEmailTemplateV1Request",
+      });
+  }
+}
+function __c420(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.NullOr(S.String)),
+          title: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ReachV1TemplatesTemplateResource",
+      });
+  }
+}
+function __c421(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          name: S.String,
+          conditions: __S(13537, __c423, 1),
+          logic: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/segmentation/segments",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReachAProfileSegmentV1Request",
+      });
+  }
+}
+function __c422(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          name: S.optional(S.String),
+          query: S.optional(__S(10528, __c329, 0)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReachV1ContactsSegmentsSegmentResource",
+      });
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.String,
+          operator: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateReachAProfileSegmentV1RequestConditionsItem",
+      });
+    case 1:
+      return S.Array(__S(13536, __c423, 0));
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileUuid: S.String.pipe(T.Label()),
+          email: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          surname: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          note: S.optional(S.NullOr(S.String)),
+          tag_uuids: S.optional(__S(2016, __c63, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/reach/v1/profiles/{profileUuid}/contacts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReachNewContactsV1Request",
+      });
+  }
+}
+function __c425(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firewallId: S.Number.pipe(T.Label()),
+          protocol: S.String,
+          port: S.String,
+          source: S.String,
+          source_detail: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/vps/v1/firewall/{firewallId}/rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateVPSFirewallRuleV1Request",
+      });
+  }
+}
+function __c426(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          action: S.optional(S.String),
+          protocol: S.optional(S.String),
+          port: S.optional(S.String),
+          source: S.optional(S.String),
+          source_detail: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VPSV1FirewallFirewallRuleResource",
+      });
+  }
+}
+function __c427(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/firewall", code: 200 })),
+      ).annotate({
+        identifier: "CreateVPSNewFirewallV1Request",
+      });
+  }
+}
+function __c428(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(13632, __c426, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          is_synced: S.optional(S.Boolean),
+          rules: S.optional(__S(13696, __c428, 0)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VPSV1FirewallFirewallResource",
+      });
+  }
+}
+function __c429(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.Number.pipe(T.Label()),
+          project_name: S.String,
+          content: S.String,
+          environment: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/docker",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVPSNewProjectV1Request",
+      });
+  }
+}
+function __c430(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.Number.pipe(T.Label()),
+          ipAddressId: S.Number.pipe(T.Label()),
+          domain: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/ptr/{ipAddressId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVPSPTRRecordV1Request",
+      });
+  }
+}
+function __c431(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          archive_path: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/build-assets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingBuildWebsiteNodeJSAssetsV1Request",
+      });
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/public-keys", code: 200 })),
+      ).annotate({
+        identifier: "CreateVPSPublicKeyV1Request",
+      });
+  }
+}
+function __c433(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VPSV1PublicKeyPublicKeyResource",
+      });
+  }
+}
+function __c434(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/virtual-machines/{virtualMachineId}/snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVPSSnapshotV1Request",
+      });
+  }
+}
+function __c435(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software: S.String.pipe(T.Label()),
+          plugin: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/deactivate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeactivateHostingWordPressPluginV1Request",
+      });
+  }
+}
+function __c436(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firewallId: S.Number.pipe(T.Label()),
+          virtualMachineId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeactivateVPSFirewallV1Request",
+      });
+  }
+}
+function __c437(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          uuid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgencyHostingWebsiteCronJobV1Request",
+      });
+  }
+}
+function __c438(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          database_name: S.String.pipe(T.Label()),
+          database_user_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users/{database_user_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgencyHostingWebsiteDatabaseUserV1Request",
+      });
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          database_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgencyHostingWebsiteDatabaseV1Request",
+      });
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgencyHostingWebsiteV1Request",
+      });
+  }
+}
+function __c441(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paymentMethodId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/billing/v1/payment-methods/{paymentMethodId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBillingPaymentMethodV1Request",
+      });
+  }
+}
+function __c442(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteDNSDNSRecordsV1RequestFiltersItem",
+      });
+    case 1:
+      return S.Array(__S(14144, __c442, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          filters: __S(14145, __c442, 1),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/dns/v1/zones/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteDNSDNSRecordsV1Request",
+      });
+  }
+}
+function __c443(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          from_domain: S.String.pipe(T.Label()),
+          domain: S.NullOr(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingChangeWebsiteDomainV1Request",
+      });
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/domains/v1/forwarding/{domain}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainDomainForwardingV1Request",
+      });
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          whoisId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/whois/{whoisId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteDomainWHOISProfileV1Request",
+      });
+  }
+}
+function __c446(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          product_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEcommerceAProductV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          is_deleted: S.optional(S.Boolean),
+          is_archived: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1ProductProductDeletedResourceData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(14273, __c446, 1)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1ProductProductDeletedResource",
+      });
+  }
+}
+function __c447(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+          product_id: S.String.pipe(T.Label()),
+          variant_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/ecommerce/v1/stores/{store_id}/products/{product_id}/variants/{variant_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEcommerceAProductVariantV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(14336, __c448, 0)),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantDeletedResource",
+      });
+  }
+}
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          is_deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EcommerceV1VariantVariantDeletedResourceData",
+      });
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          store_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/ecommerce/v1/stores/{store_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteEcommerceStoreV1Request",
+      });
+  }
+}
+function __c450(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/cron-jobs/{uid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingAccountCronJobV1Request",
+      });
+  }
+}
+function __c451(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/databases/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingAccountDatabaseV1Request",
+      });
+  }
+}
+function __c452(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/databases/{name}/remote-connections",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingDatabaseRemoteConnectionV1Request",
+      });
+  }
+}
+function __c453(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingGitAutoDeploymentSettingsV1Request",
+      });
+  }
+}
+function __c454(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          parkedDomain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains/{parkedDomain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebsiteParkedDomainV1Request",
+      });
+  }
+}
+function __c455(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          website_uid: S.String.pipe(T.Label()),
+          version: S.String,
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AgencyHostingChangeWordPressVersionV1Request",
+      });
+  }
+}
+function __c456(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          from: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/redirects",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebsiteRedirectV1Request",
+      });
+  }
+}
+function __c457(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          subdomain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/websites/{domain}/subdomains/{subdomain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebsiteSubdomainV1Request",
+      });
+  }
+}
+function __c458(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/hosting/v1/websites/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteHostingWebsiteV1Request",
+      });
+  }
+}
+function __c459(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          software: S.String.pipe(T.Label()),
+          delete_files: S.optional(S.Boolean),
+          delete_database: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/hosting/v1/accounts/{username}/wordpress/{software}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWordPressInstallationV1Request",
+      });
+  }
+}
+function __c460(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aliasId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/aliases/{aliasId}", code: 200 })),
+      ).annotate({ identifier: "DeleteMailAliasV1Request" });
+  }
+}
+function __c461(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoreplyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/mail/v1/autoreplies/{autoreplyId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteMailAutoreplyV1Request",
+      });
+  }
+}
+function __c462(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          catchallId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/mail/v1/catchalls/{catchallId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteMailCatchAllV1Request",
+      });
+  }
+}
+function __c463(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forwarderId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/mail/v1/forwarders/{forwarderId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteMailForwarderV1Request",
+      });
+  }
+}
+function __c464(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mailboxId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/mailboxes/{mailboxId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteMailMailboxV1Request",
+      });
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteMailWebhookV1Request",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

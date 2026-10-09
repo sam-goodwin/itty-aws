@@ -840,8 +840,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Webhook>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -855,8 +855,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -877,8 +877,8 @@ export const deliveriesWebhook: API.PaginatedOperationMethod<
   DeliveriesWebhookResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<DeliveriesWebhookRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<DeliveriesWebhookResponse>,
+    input: __S(72, __c9, 0) as any as S.Schema<DeliveriesWebhookRequest>,
+    output: __S(77, __c9, 5) as any as S.Schema<DeliveriesWebhookResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetWebhookRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Webhook>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<Webhook>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -919,8 +919,8 @@ export const listWebhookDeliveries: API.PaginatedOperationMethod<
   WebhookDelivery
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListWebhookDeliveriesRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListWebhookDeliveriesResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<ListWebhookDeliveriesRequest>,
+    output: __S(91, __c11, 3) as any as S.Schema<ListWebhookDeliveriesResponse>,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   WebhookListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListWebhooksRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListWebhooksResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListWebhooksRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListWebhooksResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -971,8 +971,8 @@ export const replayWebhook: API.OperationMethod<
   ReplayWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ReplayWebhookRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ReplayWebhookResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<ReplayWebhookRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ReplayWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -986,8 +986,8 @@ export const replayWebhookDelivery: API.OperationMethod<
   ReplayWebhookDeliveryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ReplayWebhookDeliveryRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ReplayWebhookDeliveryResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ReplayWebhookDeliveryRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ReplayWebhookDeliveryResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1001,8 +1001,8 @@ export const testWebhook: API.OperationMethod<
   TestWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<TestWebhookRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<TestWebhookResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<TestWebhookRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<TestWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1016,8 +1016,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Webhook>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1027,160 +1027,6 @@ export const updateWebhook: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          api_version_date: S.optional(S.NullOr(S.String)),
-          child_resource_events: S.optional(S.Boolean),
-          enabled: S.optional(S.Boolean),
-          events: S.optional(__S(0, __c0, 0)),
-          resource_id: S.optional(S.NullOr(S.String)),
-          url: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          api_version: S.String,
-          api_version_date: S.NullOr(S.String),
-          child_resource_events: S.Boolean,
-          consecutive_failures: S.Number,
-          created_at: S.String,
-          disabled_at: S.NullOr(S.String),
-          disabled_reason: S.NullOr(S.String),
-          enabled: S.Boolean,
-          events: __S(0, __c0, 0),
-          failing_since: S.NullOr(S.String),
-          id: S.String,
-          last_failure_at: S.NullOr(S.String),
-          resource_id: S.String,
-          testable_events: __S(0, __c0, 0),
-          url: S.String,
-          webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "Webhook" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Boolean,
-          id: S.String,
-        }),
-      ).annotate({ identifier: "DeleteWebhookResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          after: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhook_id}/deliveries", code: 200 })),
-      ).annotate({ identifier: "DeliveriesWebhookRequest" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          request_body: __S(6, __c0, 6),
-          resource_id: S.String,
-          response_body: __S(6, __c0, 6),
-          response_code: S.Number,
-          sent_at: S.String,
-          total_time: S.Number,
-        }),
-      ).annotate({
-        identifier: "DeliveriesWebhookResponseDataItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "DeliveriesWebhookResponsePageInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(8, __c1, 0),
-          page_info: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "DeliveriesWebhookResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{id}", code: 200 })),
-      ).annotate({ identifier: "GetWebhookRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{id}/deliveries", code: 200 })),
-      ).annotate({
-        identifier: "ListWebhookDeliveriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.NullOr(S.String),
-          id: S.String,
-          replayed_from: S.NullOr(S.String),
-          request_body: S.Unknown,
-          resource_id: S.String,
-          response_body: S.NullOr(S.Unknown),
-          response_code: S.Number,
-          sent_at: S.String,
-          success: S.Boolean,
-          total_time: S.Number,
-        }),
-      ).annotate({ identifier: "WebhookDelivery" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListWebhookDeliveriesResponsePageInfo",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(14, __c1, 6),
-          page_info: __S(15, __c1, 7),
-        }),
-      ).annotate({
-        identifier: "ListWebhookDeliveriesResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
@@ -1193,7 +1039,7 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "ListWebhooksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           api_version: S.String,
@@ -1204,7 +1050,7 @@ function __c2(j: number): any {
           disabled_at: S.NullOr(S.String),
           disabled_reason: S.NullOr(S.String),
           enabled: S.Boolean,
-          events: __S(0, __c0, 0),
+          events: __S(48, __c6, 0),
           failing_since: S.NullOr(S.String),
           id: S.String,
           last_failure_at: S.NullOr(S.String),
@@ -1213,22 +1059,26 @@ function __c2(j: number): any {
           webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "WebhookListItem" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(19, __c2, 3),
-          page_info: __S(15, __c1, 7),
+          data: __S(2, __c0, 2),
+          page_info: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          events: S.optional(__S(21, __c2, 5)),
+          events: S.optional(__S(8, __c1, 0)),
           failed_only: S.optional(S.Boolean),
           regenerate_ids: S.optional(S.Boolean),
           sent_after: S.String,
@@ -1236,7 +1086,7 @@ function __c2(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/{id}/replay", code: 200 })),
       ).annotate({ identifier: "ReplayWebhookRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           queued: S.Boolean,
@@ -1244,7 +1094,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ReplayWebhookResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1273,7 +1123,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReplayWebhookDeliveryResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1281,7 +1135,7 @@ function __c3(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/{id}/test", code: 200 })),
       ).annotate({ identifier: "TestWebhookRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown,
@@ -1289,20 +1143,201 @@ function __c3(j: number): any {
           success: S.Boolean,
         }),
       ).annotate({ identifier: "TestWebhookResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           api_version_date: S.optional(S.NullOr(S.String)),
           child_resource_events: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(0, __c0, 0)),
+          events: S.optional(__S(48, __c6, 0)),
           url: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          api_version_date: S.optional(S.NullOr(S.String)),
+          child_resource_events: S.optional(S.Boolean),
+          enabled: S.optional(S.Boolean),
+          events: S.optional(__S(48, __c6, 0)),
+          resource_id: S.optional(S.NullOr(S.String)),
+          url: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          api_version: S.String,
+          api_version_date: S.NullOr(S.String),
+          child_resource_events: S.Boolean,
+          consecutive_failures: S.Number,
+          created_at: S.String,
+          disabled_at: S.NullOr(S.String),
+          disabled_reason: S.NullOr(S.String),
+          enabled: S.Boolean,
+          events: __S(48, __c6, 0),
+          failing_since: S.NullOr(S.String),
+          id: S.String,
+          last_failure_at: S.NullOr(S.String),
+          resource_id: S.String,
+          testable_events: __S(48, __c6, 0),
+          url: S.String,
+          webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "Webhook" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Boolean,
+          id: S.String,
+        }),
+      ).annotate({ identifier: "DeleteWebhookResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhook_id}/deliveries", code: 200 })),
+      ).annotate({ identifier: "DeliveriesWebhookRequest" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          request_body: __S(73, __c9, 1),
+          resource_id: S.String,
+          response_body: __S(73, __c9, 1),
+          response_code: S.Number,
+          sent_at: S.String,
+          total_time: S.Number,
+        }),
+      ).annotate({
+        identifier: "DeliveriesWebhookResponseDataItem",
+      });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "DeliveriesWebhookResponsePageInfo",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(75, __c9, 3),
+          page_info: __S(76, __c9, 4),
+        }),
+      ).annotate({
+        identifier: "DeliveriesWebhookResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{id}", code: 200 })),
+      ).annotate({ identifier: "GetWebhookRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{id}/deliveries", code: 200 })),
+      ).annotate({
+        identifier: "ListWebhookDeliveriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.NullOr(S.String),
+          id: S.String,
+          replayed_from: S.NullOr(S.String),
+          request_body: S.Unknown,
+          resource_id: S.String,
+          response_body: S.NullOr(S.Unknown),
+          response_code: S.Number,
+          sent_at: S.String,
+          success: S.Boolean,
+          total_time: S.Number,
+        }),
+      ).annotate({ identifier: "WebhookDelivery" });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(90, __c11, 2),
+          page_info: __S(96, __c12, 0),
+        }),
+      ).annotate({
+        identifier: "ListWebhookDeliveriesResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListWebhookDeliveriesResponsePageInfo",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

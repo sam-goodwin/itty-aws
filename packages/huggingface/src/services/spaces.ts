@@ -1181,8 +1181,8 @@ export const checkUploadMethod: API.OperationMethod<
   CheckUploadMethodError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CheckUploadMethodRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CheckUploadMethodResponse>,
+  input: __S(178, __c11, 2) as any as S.Schema<CheckUploadMethodRequest>,
+  output: __S(181, __c11, 5) as any as S.Schema<CheckUploadMethodResponse>,
   errors: [UnprocessableEntity],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1196,8 +1196,8 @@ export const commit: API.OperationMethod<
   CommitError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CommitRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommitResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CommitRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<CommitResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1211,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateBranchRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateBranchResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateBranchRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<CreateBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1226,8 +1226,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateTagRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateTagResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<CreateTagRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<CreateTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1241,8 +1241,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteBranchResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteBranchRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1256,8 +1256,8 @@ export const deleteLargeFile: API.OperationMethod<
   DeleteLargeFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteLargeFileRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteLargeFileResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DeleteLargeFileRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteLargeFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1271,8 +1271,8 @@ export const deleteLargeFiles: API.OperationMethod<
   DeleteLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteLargeFilesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteLargeFilesResponse>,
+  input: __S(801, __c50, 1) as any as S.Schema<DeleteLargeFilesRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1286,8 +1286,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteSecretResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteSecretResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1301,8 @@ export const deleteSpaceVolumes: API.OperationMethod<
   DeleteSpaceVolumesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteSpaceVolumesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteSpaceVolumesResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteSpaceVolumesRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteSpaceVolumesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1316,8 +1316,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteTagRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteTagResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteTagRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1331,8 @@ export const deleteVariable: API.OperationMethod<
   DeleteVariableError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteVariableRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteVariableResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteVariableRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteVariableResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1346,8 @@ export const duplicateXetFiles: API.OperationMethod<
   DuplicateXetFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DuplicateXetFilesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DuplicateXetFilesResponse>,
+  input: __S(67, __c4, 3) as any as S.Schema<DuplicateXetFilesRequest>,
+  output: __S(70, __c4, 6) as any as S.Schema<DuplicateXetFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1361,8 @@ export const featuredSpaces: API.OperationMethod<
   FeaturedSpacesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<FeaturedSpacesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeaturedSpacesResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<FeaturedSpacesRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<FeaturedSpacesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1376,8 +1376,8 @@ export const generateJwt: API.OperationMethod<
   GenerateJwtError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GenerateJwtRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GenerateJwtResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GenerateJwtRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GenerateJwtResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1391,8 +1391,8 @@ export const getCompareRev: API.OperationMethod<
   GetCompareRevError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetCompareRevRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetCompareRevResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetCompareRevRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<GetCompareRevResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1406,8 +1406,8 @@ export const getFolderSize: API.OperationMethod<
   GetFolderSizeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetFolderSizeRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetFolderSizeResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetFolderSizeRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetFolderSizeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1421,8 @@ export const getNotebookUrl: API.OperationMethod<
   GetNotebookUrlError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetNotebookUrlRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetNotebookUrlResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetNotebookUrlRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetNotebookUrlResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetResourceGroupRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetResourceGroupResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetResourceGroupRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1451,8 +1451,8 @@ export const getSecurityStatus: API.OperationMethod<
   GetSecurityStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetSecurityStatusRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetSecurityStatusResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetSecurityStatusRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<GetSecurityStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1466,8 +1466,8 @@ export const getZeroGPUQuota: API.OperationMethod<
   GetZeroGPUQuotaError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetZeroGPUQuotaRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetZeroGPUQuotaResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetZeroGPUQuotaRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<GetZeroGPUQuotaResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1481,8 +1481,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListCommitsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListCommitsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListCommitsRequest>,
+  output: __S(230, __c14, 6) as any as S.Schema<ListCommitsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1496,8 @@ export const listFolderContent: API.OperationMethod<
   ListFolderContentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListFolderContentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListFolderContentResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListFolderContentRequest>,
+  output: __S(264, __c16, 8) as any as S.Schema<ListFolderContentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1511,8 @@ export const listLargeFiles: API.OperationMethod<
   ListLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListLargeFilesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListLargeFilesResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListLargeFilesRequest>,
+  output: __S(293, __c18, 5) as any as S.Schema<ListLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1526,8 @@ export const listLikers: API.OperationMethod<
   ListLikersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListLikersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListLikersResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListLikersRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<ListLikersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1541,8 @@ export const listPathsInfo: API.OperationMethod<
   ListPathsInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListPathsInfoRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListPathsInfoResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListPathsInfoRequest>,
+  output: __S(327, __c20, 7) as any as S.Schema<ListPathsInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const listReferences: API.OperationMethod<
   ListReferencesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListReferencesRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListReferencesResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListReferencesRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<ListReferencesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1571,8 @@ export const listSecrets: API.OperationMethod<
   ListSecretsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListSecretsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListSecretsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListSecretsRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<ListSecretsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1586,8 @@ export const listSpaceHardware: API.OperationMethod<
   ListSpaceHardwareError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListSpaceHardwareRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListSpaceHardwareResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListSpaceHardwareRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<ListSpaceHardwareResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1601,8 @@ export const listSpaceTemplates: API.OperationMethod<
   ListSpaceTemplatesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListSpaceTemplatesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListSpaceTemplatesResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListSpaceTemplatesRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListSpaceTemplatesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1616,8 @@ export const listVariables: API.OperationMethod<
   ListVariablesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListVariablesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListVariablesResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListVariablesRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<ListVariablesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1631,8 @@ export const resolveFile: API.OperationMethod<
   ResolveFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ResolveFileRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ResolveFileResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ResolveFileRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<ResolveFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1646,8 @@ export const resolveFileCached: API.OperationMethod<
   ResolveFileCachedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ResolveFileCachedRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ResolveFileCachedResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ResolveFileCachedRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ResolveFileCachedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1661,8 @@ export const searchSemantic: API.OperationMethod<
   SearchSemanticError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<SearchSemanticRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SearchSemanticResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<SearchSemanticRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<SearchSemanticResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1676,8 @@ export const setCustomDomain: API.OperationMethod<
   SetCustomDomainError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<SetCustomDomainRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SetCustomDomainResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<SetCustomDomainRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<SetCustomDomainResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const setSleepTime: API.OperationMethod<
   SetSleepTimeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<SetSleepTimeRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SetSleepTimeResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<SetSleepTimeRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<SetSleepTimeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const setSpaceVolumes: API.OperationMethod<
   SetSpaceVolumesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<SetSpaceVolumesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SetSpaceVolumesResponse>,
+  input: __S(514, __c32, 2) as any as S.Schema<SetSpaceVolumesRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<SetSpaceVolumesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1721,8 @@ export const squashRef: API.OperationMethod<
   SquashRefError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<SquashRefRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<SquashRefResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<SquashRefRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<SquashRefResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1736,8 @@ export const streamEvents: API.OperationMethod<
   StreamEventsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<StreamEventsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StreamEventsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<StreamEventsRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<StreamEventsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1751,8 @@ export const streamLogs: API.OperationMethod<
   StreamLogsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<StreamLogsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StreamLogsResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<StreamLogsRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<StreamLogsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1766,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<StreamMetricsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StreamMetricsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<StreamMetricsRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<StreamMetricsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1781,8 @@ export const toggleDevMode: API.OperationMethod<
   ToggleDevModeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ToggleDevModeRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ToggleDevModeResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ToggleDevModeRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<ToggleDevModeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1796,8 @@ export const updateHardwareFlavor: API.OperationMethod<
   UpdateHardwareFlavorError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdateHardwareFlavorRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateHardwareFlavorResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<UpdateHardwareFlavorRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UpdateHardwareFlavorResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1811,8 @@ export const updateRepoSettings: API.OperationMethod<
   UpdateRepoSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateRepoSettingsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateRepoSettingsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateRepoSettingsRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<UpdateRepoSettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1826,8 @@ export const upsertSecret: API.OperationMethod<
   UpsertSecretError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<UpsertSecretRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpsertSecretResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<UpsertSecretRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UpsertSecretResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1841,8 @@ export const upsertVariable: API.OperationMethod<
   UpsertVariableError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UpsertVariableRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpsertVariableResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<UpsertVariableRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UpsertVariableResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1856,8 @@ export const xetReadToken: API.OperationMethod<
   XetReadTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<XetReadTokenRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<XetReadTokenResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<XetReadTokenRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<XetReadTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1871,8 @@ export const xetWriteToken: API.OperationMethod<
   XetWriteTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<XetWriteTokenRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<XetWriteTokenResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<XetWriteTokenRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<XetWriteTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1904,182 +1904,11 @@ function __c0(j: number): any {
           addedBy: S.String,
         }),
       ).annotate({ identifier: "AddResourceGroupResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          size: S.Number,
-          sample: S.String,
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodRequestFilesItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          files: __S(3, __c0, 3),
-          gitAttributes: S.optional(S.String),
-          gitIgnore: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/spaces/{namespace}/{repo}/preupload/{rev}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CheckUploadMethodRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          uploadMode: S.String,
-          shouldIgnore: S.Boolean,
-          oid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodResponseFilesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          files: __S(6, __c0, 6),
-          commitOid: S.String,
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodResponse",
-      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          create_pr: S.optional(S.String.pipe(T.Query())),
-          hot_reload: S.optional(S.String.pipe(T.Query())),
-          contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/commit/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CommitRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          pullRequestUrl: S.optional(S.String),
-          commitOid: S.String,
-          commitUrl: S.String,
-          hookOutput: S.String,
-        }),
-      ).annotate({ identifier: "CommitResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          startingPoint: S.optional(S.String),
-          emptyBranch: S.optional(S.Boolean),
-          overwrite: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/branch/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateBranchRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateBranchResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          tag: S.String,
-          message: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/tag/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateTagRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/spaces/{namespace}/{repo}/branch/{rev}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBranchRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          sha: S.String.pipe(T.Label()),
-          rewriteHistory: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/spaces/{namespace}/{repo}/lfs-files/{sha}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLargeFileRequest" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sha: __S(15, __c1, 7),
-          rewriteHistory: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DeleteLargeFilesRequestDeletions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          deletions: __S(16, __c2, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/spaces/{namespace}/{repo}/lfs-files/batch",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLargeFilesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          key: S.String,
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/spaces/{namespace}/{repo}/secrets", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteSecretRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2090,7 +1919,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteSpaceVolumesRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2100,7 +1933,11 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/spaces/{namespace}/{repo}/tag/{rev}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteTagRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2110,7 +1947,11 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/spaces/{namespace}/{repo}/variables", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteVariableRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2119,7 +1960,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestTarget",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -2129,19 +1970,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestFilesItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          target: __S(22, __c2, 6),
-          files: __S(24, __c3, 0),
+          target: __S(64, __c4, 0),
+          files: __S(66, __c4, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2150,7 +1987,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DuplicateXetFilesRequest" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -2160,26 +1997,34 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesResponseFailedItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(27, __c3, 3),
+          failed: __S(69, __c4, 5),
         }),
       ).annotate({
         identifier: "DuplicateXetFilesResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/featured", code: 200 })),
       ).annotate({ identifier: "FeaturedSpacesRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2193,7 +2038,7 @@ function __c3(j: number): any {
           billing_details: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/jwt", code: 200 })),
       ).annotate({ identifier: "GenerateJwtRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           encrypted: S.String,
@@ -2202,20 +2047,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GenerateJwtResponseEncryptedToken",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.String.pipe(T.SensitiveValue({})),
           exp: S.optional(S.Number),
           token: S.String,
-          encryptedToken: S.optional(__S(31, __c3, 7)),
+          encryptedToken: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "GenerateJwtResponse" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2230,11 +2075,15 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCompareRevRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCompareRevResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2249,14 +2098,18 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFolderSizeRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
           size: S.Number,
         }),
       ).annotate({ identifier: "GetFolderSizeResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2271,11 +2124,15 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNotebookUrlRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNotebookUrlResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2288,11 +2145,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetResourceGroupRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2300,14 +2153,73 @@ function __c5(j: number): any {
           numUsers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetResourceGroupResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          size: S.Number,
+          sample: S.String,
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodRequestFilesItem",
+      });
     case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          files: __S(177, __c11, 1),
+          gitAttributes: S.optional(S.String),
+          gitIgnore: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/spaces/{namespace}/{repo}/preupload/{rev}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CheckUploadMethodRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          uploadMode: S.String,
+          shouldIgnore: S.Boolean,
+          oid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodResponseFilesItem",
+      });
+    case 4:
+      return S.Array(__S(179, __c11, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          files: __S(180, __c11, 4),
+          commitOid: S.String,
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/scan", code: 200 })),
       ).annotate({ identifier: "GetSecurityStatusRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -2316,22 +2228,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityStatusResponseFilesWithIssuesItem",
       });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           scansDone: S.Boolean,
-          filesWithIssues: __S(43, __c5, 3),
+          filesWithIssues: __S(194, __c12, 2),
         }),
       ).annotate({
         identifier: "GetSecurityStatusResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/zero-gpu/quota", code: 200 })),
       ).annotate({ identifier: "GetZeroGPUQuotaRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           used: S.Number,
@@ -2342,36 +2258,34 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetZeroGPUQuotaResponseRuns",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           base: S.Number,
           current: S.Number,
           resetsAt: S.NullOr(S.String),
           overquotaUsed: S.optional(S.Number),
-          runs: S.optional(__S(46, __c5, 6)),
+          runs: S.optional(__S(209, __c13, 1)),
         }),
       ).annotate({ identifier: "GetZeroGPUQuotaResponse" });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
           p: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+          expand: S.optional(__S(240, __c15, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/commits/{rev}", code: 200 }),
         ),
       ).annotate({ identifier: "ListCommitsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user: S.String,
@@ -2380,9 +2294,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListCommitsResponseBodyItemAuthorsItem",
       });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
@@ -2391,28 +2305,34 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListCommitsResponseBodyItemFormatted",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
           message: S.String,
-          authors: __S(51, __c6, 3),
+          authors: __S(226, __c14, 2),
           date: S.String,
-          formatted: S.optional(__S(52, __c6, 4)),
+          formatted: S.optional(__S(227, __c14, 3)),
         }),
       ).annotate({
         identifier: "ListCommitsResponseBodyItem",
       });
+    case 5:
+      return S.Array(__S(228, __c14, 4));
     case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() => __S(54, __c6, 6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(229, __c14, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2446,6 +2366,69 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          module: S.String,
+          name: S.String,
+          safety: S.String,
+        }),
+      ).annotate({
+        identifier:
+          "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem",
+      });
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          message: S.optional(S.String),
+          reportLink: S.optional(S.String),
+          reportLabel: S.optional(S.String),
+          pickleImports: S.optional(__S(259, __c16, 3)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          jFrogScan: S.optional(__S(275, __c17, 3)),
+          protectAiScan: S.optional(__S(278, __c17, 6)),
+          avScan: __S(275, __c17, 3),
+          pickleImportScan: __S(260, __c16, 4),
+          virusTotalScan: S.optional(__S(260, __c16, 4)),
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemSecurityFileStatus",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          oid: S.String,
+          size: S.optional(S.Number),
+          lfs: S.optional(__S(257, __c16, 1)),
+          xetHash: S.optional(S.String),
+          lastCommit: S.optional(__S(272, __c17, 0)),
+          securityFileStatus: S.optional(__S(261, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItem",
+      });
+    case 7:
+      return S.Array(__S(262, __c16, 6));
+    case 8:
+      return S.suspend(() => __S(263, __c16, 7).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFolderContentResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String,
           title: S.String,
           date: S.String,
@@ -2453,7 +2436,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemLastCommit",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           module: S.String,
@@ -2463,22 +2446,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(60, __c7, 4)),
+          pickleImports: S.optional(__S(274, __c17, 2)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           module: S.String,
@@ -2489,87 +2472,24 @@ function __c7(j: number): any {
         identifier:
           "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(276, __c17, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(63, __c7, 7)),
+          pickleImports: S.optional(__S(277, __c17, 5)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          module: S.String,
-          name: S.String,
-          safety: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          message: S.optional(S.String),
-          reportLink: S.optional(S.String),
-          reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(66, __c8, 2)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          jFrogScan: S.optional(__S(61, __c7, 5)),
-          protectAiScan: S.optional(__S(64, __c8, 0)),
-          avScan: __S(61, __c7, 5),
-          pickleImportScan: __S(67, __c8, 3),
-          virusTotalScan: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemSecurityFileStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          oid: S.String,
-          size: S.optional(S.Number),
-          lfs: S.optional(__S(57, __c7, 1)),
-          xetHash: S.optional(S.String),
-          lastCommit: S.optional(__S(58, __c7, 2)),
-          securityFileStatus: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItem",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() => __S(70, __c8, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFolderContentResponse",
-      });
   }
 }
-function __c9(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2617,7 +2537,7 @@ function __c9(j: number): any {
           type: S.String,
           isPro: S.Boolean,
           isUserFollowing: S.optional(S.Boolean),
-          primaryOrg: S.optional(__S(73, __c9, 1)),
+          primaryOrg: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "ListLargeFilesResponseBodyItemPusher",
@@ -2625,7 +2545,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pusher: S.optional(__S(74, __c9, 2)),
+          pusher: S.optional(__S(290, __c18, 2)),
           ref: S.optional(S.String),
           fileOid: S.String,
           oid: S.String,
@@ -2638,20 +2558,28 @@ function __c9(j: number): any {
         identifier: "ListLargeFilesResponseBodyItem",
       });
     case 4:
-      return S.Array(__S(75, __c9, 3));
+      return S.Array(__S(291, __c18, 3));
     case 5:
-      return S.suspend(() => __S(76, __c9, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(292, __c18, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLargeFilesResponse",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          expand: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+          expand: S.optional(__S(240, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/likers", code: 200 })),
       ).annotate({ identifier: "ListLikersRequest" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2667,30 +2595,13 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPathsInfoRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pointerSize: S.Number,
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemLfs",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          message: S.optional(S.String),
-          reportLink: S.optional(S.String),
-          reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(60, __c7, 4)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusAvScan",
       });
     case 2:
       return S.suspend(() =>
@@ -2699,47 +2610,64 @@ function __c10(j: number): any {
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(60, __c7, 4)),
+          pickleImports: S.optional(__S(274, __c17, 2)),
           version: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan",
+        identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusAvScan",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          jFrogScan: S.optional(__S(61, __c7, 5)),
-          protectAiScan: S.optional(__S(61, __c7, 5)),
-          avScan: __S(81, __c10, 1),
-          pickleImportScan: __S(64, __c8, 0),
-          virusTotalScan: S.optional(__S(82, __c10, 2)),
+          message: S.optional(S.String),
+          reportLink: S.optional(S.String),
+          reportLabel: S.optional(S.String),
+          pickleImports: S.optional(__S(274, __c17, 2)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          jFrogScan: S.optional(__S(275, __c17, 3)),
+          protectAiScan: S.optional(__S(275, __c17, 3)),
+          avScan: __S(322, __c20, 2),
+          pickleImportScan: __S(278, __c17, 6),
+          virusTotalScan: S.optional(__S(323, __c20, 3)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemSecurityFileStatus",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           oid: S.String,
           size: S.Number,
-          lfs: S.optional(__S(80, __c10, 0)),
+          lfs: S.optional(__S(321, __c20, 1)),
           xetHash: S.optional(S.String),
           path: S.String,
-          lastCommit: S.optional(__S(58, __c7, 2)),
-          securityFileStatus: S.optional(__S(83, __c10, 3)),
+          lastCommit: S.optional(__S(272, __c17, 0)),
+          securityFileStatus: S.optional(__S(324, __c20, 4)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
     case 6:
-      return S.suspend(() => __S(85, __c10, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(325, __c20, 5));
+    case 7:
+      return S.suspend(() => __S(326, __c20, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPathsInfoResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2747,11 +2675,7 @@ function __c10(j: number): any {
           include_prs: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/refs", code: 200 })),
       ).annotate({ identifier: "ListReferencesRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2761,18 +2685,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListReferencesResponseTagsItem",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
     case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          tags: __S(89, __c11, 1),
-          branches: __S(89, __c11, 1),
-          converts: __S(89, __c11, 1),
-          pullRequests: S.optional(__S(89, __c11, 1)),
+          tags: __S(338, __c21, 2),
+          branches: __S(338, __c21, 2),
+          converts: __S(338, __c21, 2),
+          pullRequests: S.optional(__S(338, __c21, 2)),
         }),
       ).annotate({ identifier: "ListReferencesResponse" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2781,7 +2709,7 @@ function __c11(j: number): any {
           T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/secrets", code: 200 }),
         ),
       ).annotate({ identifier: "ListSecretsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2791,21 +2719,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListSecretsResponseBodyValue",
       });
-    case 5:
-      return S.Record(S.String, __S(92, __c11, 4));
-    case 6:
-      return S.suspend(() => __S(93, __c11, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Record(S.String, __S(353, __c22, 1));
+    case 3:
+      return S.suspend(() => __S(354, __c22, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSecretsResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/hardware", code: 200 })),
       ).annotate({ identifier: "ListSpaceHardwareRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2817,14 +2745,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListSpaceHardwareResponseBodyItemAccelerator",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           prettyName: S.String,
           cpu: S.String,
           ram: S.String,
-          accelerator: S.NullOr(__S(96, __c12, 0)),
+          accelerator: S.NullOr(__S(369, __c23, 1)),
           unitCostMicroUSD: S.Number,
           unitCostUSD: S.Number,
           unitLabel: S.String,
@@ -2832,19 +2760,50 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListSpaceHardwareResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
     case 3:
-      return S.suspend(() => __S(98, __c12, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(370, __c23, 2));
+    case 4:
+      return S.suspend(() => __S(371, __c23, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSpaceHardwareResponse",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          create_pr: S.optional(S.String.pipe(T.Query())),
+          hot_reload: S.optional(S.String.pipe(T.Query())),
+          contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/commit/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CommitRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          pullRequestUrl: S.optional(S.String),
+          commitOid: S.String,
+          commitUrl: S.String,
+          hookOutput: S.String,
+        }),
+      ).annotate({ identifier: "CommitResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/templates", code: 200 })),
       ).annotate({
         identifier: "ListSpaceTemplatesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sdk: S.String,
@@ -2855,19 +2814,19 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListSpaceTemplatesResponseTemplatesItem",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          templates: __S(102, __c12, 6),
+          templates: __S(402, __c25, 2),
         }),
       ).annotate({
         identifier: "ListSpaceTemplatesResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2890,12 +2849,16 @@ function __c13(j: number): any {
         identifier: "ListVariablesResponseBodyValue",
       });
     case 2:
-      return S.Record(S.String, __S(105, __c13, 1));
+      return S.Record(S.String, __S(417, __c26, 1));
     case 3:
-      return S.suspend(() => __S(106, __c13, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(418, __c26, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVariablesResponse",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2912,7 +2875,7 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResolveFileRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hash: S.String,
@@ -2922,7 +2885,11 @@ function __c13(j: number): any {
           size: S.Number,
         }),
       ).annotate({ identifier: "ResolveFileResponse" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2939,7 +2906,7 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResolveFileCachedRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hash: S.String,
@@ -2953,7 +2920,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2961,12 +2928,16 @@ function __c14(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
           includeNonRunning: S.optional(S.Boolean.pipe(T.Query())),
-          sdk: S.optional(__S(48, __c6, 0).pipe(T.Query())),
-          filter: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          sdk: S.optional(__S(240, __c15, 0).pipe(T.Query())),
+          filter: S.optional(__S(816, __c51, 0).pipe(T.Query())),
           agents: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/semantic-search", code: 200 })),
       ).annotate({ identifier: "SearchSemanticRequest" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2980,7 +2951,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetCustomDomainRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2990,7 +2965,11 @@ function __c14(j: number): any {
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/sleeptime", code: 200 }),
         ),
       ).annotate({ identifier: "SetSleepTimeRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -3003,19 +2982,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SetSpaceVolumesRequestVolumesItem",
       });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          volumes: __S(116, __c14, 4),
+          volumes: __S(513, __c32, 1),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/spaces/{namespace}/{repo}/volumes", code: 200 }),
         ),
       ).annotate({ identifier: "SetSpaceVolumesRequest" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3030,7 +3013,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SquashRefRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commitId: S.String,
@@ -3038,7 +3021,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "SquashRefResponse" });
   }
 }
-function __c15(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3048,7 +3031,36 @@ function __c15(j: number): any {
           session_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/events", code: 200 })),
       ).annotate({ identifier: "StreamEventsRequest" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          startingPoint: S.optional(S.String),
+          emptyBranch: S.optional(S.Boolean),
+          overwrite: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/branch/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateBranchRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateBranchResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3063,7 +3075,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StreamLogsRequest" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3072,7 +3088,11 @@ function __c15(j: number): any {
           T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/metrics", code: 200 }),
         ),
       ).annotate({ identifier: "StreamMetricsRequest" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3082,7 +3102,11 @@ function __c15(j: number): any {
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/dev-mode", code: 200 }),
         ),
       ).annotate({ identifier: "ToggleDevModeRequest" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3095,7 +3119,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateHardwareFlavorRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3114,7 +3142,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateRepoSettingsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           private: S.optional(S.Boolean),
@@ -3129,7 +3157,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateRepoSettingsResponse",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3143,7 +3175,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "UpsertSecretRequest" });
   }
 }
-function __c16(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3157,7 +3189,11 @@ function __c16(j: number): any {
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/variables", code: 200 }),
         ),
       ).annotate({ identifier: "UpsertVariableRequest" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3171,7 +3207,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "XetReadTokenRequest" });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           casUrl: S.String,
@@ -3179,7 +3219,11 @@ function __c16(j: number): any {
           accessToken: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "XetReadTokenResponse" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3195,7 +3239,106 @@ function __c16(j: number): any {
       ).annotate({ identifier: "XetWriteTokenRequest" });
   }
 }
-
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          tag: S.String,
+          message: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/tag/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateTagRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/spaces/{namespace}/{repo}/branch/{rev}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBranchRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          sha: S.String.pipe(T.Label()),
+          rewriteHistory: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/spaces/{namespace}/{repo}/lfs-files/{sha}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLargeFileRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sha: __S(816, __c51, 0),
+          rewriteHistory: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DeleteLargeFilesRequestDeletions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          deletions: __S(800, __c50, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/spaces/{namespace}/{repo}/lfs-files/batch",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLargeFilesRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          key: S.String,
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/spaces/{namespace}/{repo}/secrets", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteSecretRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

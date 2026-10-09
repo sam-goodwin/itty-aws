@@ -135,8 +135,8 @@ export const exportProjects: API.OperationMethod<
   ExportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ExportProjectsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1, __c0, 1) as any as S.Schema<ExportProjectsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const importProjects: API.OperationMethod<
   ImportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ImportProjectsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(17, __c2, 1) as any as S.Schema<ImportProjectsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -161,33 +161,20 @@ export const importProjects: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          namespaceIds: S.optional(__S(1, __c0, 1)),
-          kinds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleDatastoreAdminV1beta1EntityFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
-          entityFilter: S.optional(__S(2, __c0, 2)),
+          labels: S.optional(__S(8, __c1, 0)),
+          entityFilter: S.optional(__S(10, __c1, 2)),
           outputUrlPrefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1beta1ExportEntitiesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -196,49 +183,66 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExportProjectsRequest" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(6, __c0, 6)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5, __c0, 5)),
+          namespaceIds: S.optional(__S(9, __c1, 1)),
+          kinds: S.optional(__S(9, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleDatastoreAdminV1beta1EntityFilter",
+      });
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(12, __c1, 4)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(11, __c1, 3)),
           name: S.optional(S.String),
-          response: S.optional(__S(5, __c0, 5)),
+          response: S.optional(__S(11, __c1, 3)),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(7, __c0, 7)),
+          error: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          entityFilter: S.optional(__S(2, __c0, 2)),
+          entityFilter: S.optional(__S(10, __c1, 2)),
           inputUrl: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1beta1ImportEntitiesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -249,7 +253,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ImportProjectsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -499,8 +499,8 @@ export const createList: API.OperationMethod<
   CreateListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateListRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateListResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<CreateListRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<CreateListResponse>,
   errors: [ListAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const createListItem: API.OperationMethod<
   CreateListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateListItemRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateListItemResponse>,
+  input: __S(26, __c6, 2) as any as S.Schema<CreateListItemRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<CreateListItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const deleteList: API.OperationMethod<
   DeleteListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteListRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteListResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteListRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<DeleteListResponse>,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const deleteListItem: API.OperationMethod<
   DeleteListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteListItemRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteListItemResponse>,
+  input: __S(38, __c9, 2) as any as S.Schema<DeleteListItemRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<DeleteListItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const getList: API.OperationMethod<
   GetListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetListRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetListResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetListRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<GetListResponse>,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const getListBulkOperation: API.OperationMethod<
   GetListBulkOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetListBulkOperationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetListBulkOperationResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetListBulkOperationRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<GetListBulkOperationResponse>,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const getListItem: API.OperationMethod<
   GetListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetListItemRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetListItemResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetListItemRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<GetListItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -606,8 +606,8 @@ export const listListItems: API.PaginatedOperationMethod<
   ListsItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListListItemsRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<ListListItemsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListListItemsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListListItemsResponse>,
     errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -631,8 +631,8 @@ export const listLists: API.PaginatedOperationMethod<
   ListsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListListsRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListListsResponse>,
+    input: __S(4, __c1, 0) as any as S.Schema<ListListsRequest>,
+    output: __S(7, __c1, 3) as any as S.Schema<ListListsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const updateList: API.OperationMethod<
   UpdateListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateListRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateListResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<UpdateListRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<UpdateListResponse>,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const updateListItem: API.OperationMethod<
   UpdateListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateListItemRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateListItemResponse>,
+  input: __S(14, __c3, 2) as any as S.Schema<UpdateListItemRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<UpdateListItemResponse>,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -675,193 +675,6 @@ export const updateListItem: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          kind: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rules/lists", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateListRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdOn: S.String.pipe(T.Body("created_on")),
-          kind: S.String,
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          name: S.String,
-          numItems: S.Number.pipe(T.Body("num_items")),
-          numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateListResponse" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["ip", "comment"],
-          ["redirect", "comment"],
-          ["hostname", "comment"],
-          ["asn", "comment"],
-        ]),
-      );
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          listId: S.String.pipe(T.Label("list_id")),
-          body: __S(3, __c0, 3).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateListItemRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          operationId: S.String.pipe(T.Body("operation_id")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateListItemResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          listId: S.String.pipe(T.Label("list_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/rules/lists/{list_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteListRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteListResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "ListsItemsDeleteRequestItemsItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          listId: S.String.pipe(T.Label("list_id")),
-          items: S.optional(__S(9, __c1, 1)),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteListItemRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          listId: S.String.pipe(T.Label("list_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/rules/lists/{list_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetListRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          operationId: S.String.pipe(T.Label("operation_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/rules/lists/bulk_operations/{operation_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetListBulkOperationRequest",
-      });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["id", "status"],
-          ["id", "completed", "status"],
-          ["id", "completed", "error", "status"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        __S(13, __c1, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetListBulkOperationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          listId: S.String.pipe(T.Label("list_id")),
-          itemId: S.String.pipe(T.Label("item_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/rules/lists/{list_id}/items/{item_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetListItemRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["id", "createdOn", "ip", "modifiedOn", "comment"],
-          ["id", "createdOn", "hostname", "modifiedOn", "comment"],
-          ["id", "createdOn", "modifiedOn", "redirect", "comment"],
-          ["id", "asn", "createdOn", "modifiedOn", "comment"],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        __S(16, __c2, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetListItemResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -879,7 +692,7 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListItemsRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "createdOn", "ip", "modifiedOn", "comment"],
@@ -888,16 +701,20 @@ function __c2(j: number): any {
           ["id", "asn", "createdOn", "modifiedOn", "comment"],
         ]),
       );
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(20, __c2, 4).pipe(T.EnvelopePayload()),
+          result: __S(2, __c0, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListItemsResponse" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -905,7 +722,7 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/rules/lists", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -918,20 +735,20 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListsListResultItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(24, __c3, 0).pipe(T.EnvelopePayload()),
+          result: __S(6, __c1, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListsResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -947,7 +764,11 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateListRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["ip", "comment"],
@@ -956,14 +777,14 @@ function __c3(j: number): any {
           ["asn", "comment"],
         ]),
       );
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           listId: S.String.pipe(T.Label("list_id")),
-          body: __S(28, __c3, 4).pipe(T.HttpBody()),
+          body: __S(13, __c3, 1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -976,7 +797,221 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateListItemRequest" });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          kind: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rules/lists", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateListRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          kind: S.String,
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          name: S.String,
+          numItems: S.Number.pipe(T.Body("num_items")),
+          numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateListResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["ip", "comment"],
+          ["redirect", "comment"],
+          ["hostname", "comment"],
+          ["asn", "comment"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(24, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          listId: S.String.pipe(T.Label("list_id")),
+          body: __S(25, __c6, 1).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateListItemRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.String.pipe(T.Body("operation_id")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateListItemResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          listId: S.String.pipe(T.Label("list_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/rules/lists/{list_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteListRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteListResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "ListsItemsDeleteRequestItemsItem",
+      });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          listId: S.String.pipe(T.Label("list_id")),
+          items: S.optional(__S(37, __c9, 1)),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteListItemRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          listId: S.String.pipe(T.Label("list_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/rules/lists/{list_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetListRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          operationId: S.String.pipe(T.Label("operation_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/rules/lists/bulk_operations/{operation_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetListBulkOperationRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["id", "status"],
+          ["id", "completed", "status"],
+          ["id", "completed", "error", "status"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(45, __c11, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetListBulkOperationResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          listId: S.String.pipe(T.Label("list_id")),
+          itemId: S.String.pipe(T.Label("item_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/rules/lists/{list_id}/items/{item_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetListItemRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["id", "createdOn", "ip", "modifiedOn", "comment"],
+          ["id", "createdOn", "hostname", "modifiedOn", "comment"],
+          ["id", "createdOn", "modifiedOn", "redirect", "comment"],
+          ["id", "asn", "createdOn", "modifiedOn", "comment"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(49, __c12, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetListItemResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

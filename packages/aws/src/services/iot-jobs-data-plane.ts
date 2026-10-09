@@ -297,7 +297,7 @@ export const describeJobExecution: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DescribeJobExecutionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeJobExecutionResponse>,
+  output: __S(5, __c1, 1) as any as S.Schema<DescribeJobExecutionResponse>,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -329,8 +329,8 @@ export const getPendingJobExecutions: API.OperationMethod<
   GetPendingJobExecutionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetPendingJobExecutionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetPendingJobExecutionsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetPendingJobExecutionsRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<GetPendingJobExecutionsResponse>,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -361,8 +361,8 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<StartCommandExecutionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StartCommandExecutionResponse>,
+  input: __S(18, __c4, 2) as any as S.Schema<StartCommandExecutionRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<StartCommandExecutionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -395,8 +395,8 @@ export const startNextPendingJobExecution: API.OperationMethod<
   StartNextPendingJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<StartNextPendingJobExecutionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartNextPendingJobExecutionResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<StartNextPendingJobExecutionRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<StartNextPendingJobExecutionResponse>,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -428,8 +428,8 @@ export const updateJobExecution: API.OperationMethod<
   UpdateJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateJobExecutionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateJobExecutionResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateJobExecutionRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<UpdateJobExecutionResponse>,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -466,15 +466,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeJobExecutionRequest",
       });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
           thingName: S.optional(S.String),
           status: S.optional(S.String),
-          statusDetails: S.optional(__S(1, __c0, 1)),
+          statusDetails: S.optional(__S(8, __c2, 0)),
           queuedAt: S.optional(S.Number),
           startedAt: S.optional(S.Number),
           lastUpdatedAt: S.optional(S.Number),
@@ -484,11 +486,21 @@ function __c0(j: number): any {
           jobDocument: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobExecution" });
-    case 3:
-      return S.suspend(() => S.Struct({ execution: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ execution: S.optional(__S(4, __c1, 0)) })).annotate({
         identifier: "DescribeJobExecutionResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
           T.all(
@@ -503,7 +515,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPendingJobExecutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
@@ -514,20 +526,20 @@ function __c0(j: number): any {
           executionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobExecutionSummary" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          inProgressJobs: S.optional(__S(6, __c0, 6)),
-          queuedJobs: S.optional(__S(6, __c0, 6)),
+          inProgressJobs: S.optional(__S(14, __c3, 2)),
+          queuedJobs: S.optional(__S(14, __c3, 2)),
         }),
       ).annotate({
         identifier: "GetPendingJobExecutionsResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -542,13 +554,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CommandParameterValue" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(8, __c1, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(16, __c4, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           targetArn: S.String,
           commandArn: S.String,
-          parameters: S.optional(__S(9, __c1, 1)),
+          parameters: S.optional(__S(17, __c4, 1)),
           executionTimeoutSeconds: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -568,11 +580,15 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({ executionId: S.optional(S.String) })).annotate({
         identifier: "StartCommandExecutionResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
-          statusDetails: S.optional(__S(1, __c0, 1)),
+          statusDetails: S.optional(__S(8, __c2, 0)),
           stepTimeoutInMinutes: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -587,13 +603,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "StartNextPendingJobExecutionRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String.pipe(T.HttpLabel("jobId")),
           thingName: S.String.pipe(T.HttpLabel("thingName")),
           status: S.String,
-          statusDetails: S.optional(__S(1, __c0, 1)),
+          statusDetails: S.optional(__S(8, __c2, 0)),
           stepTimeoutInMinutes: S.optional(S.Number),
           expectedVersion: S.optional(S.Number),
           includeJobExecutionState: S.optional(S.Boolean),
@@ -612,18 +632,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateJobExecutionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          statusDetails: S.optional(__S(1, __c0, 1)),
+          statusDetails: S.optional(__S(8, __c2, 0)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobExecutionState" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          executionState: S.optional(__S(14, __c1, 6)),
+          executionState: S.optional(__S(25, __c6, 1)),
           jobDocument: S.optional(S.String),
         }),
       ).annotate({
@@ -631,7 +651,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

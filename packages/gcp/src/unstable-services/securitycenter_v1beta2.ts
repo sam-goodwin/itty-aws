@@ -452,11 +452,11 @@ export const calculateFoldersContainerThreatDetectionSettings: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    0,
-    __c0,
+    124,
+    __c31,
     0,
   ) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersEventThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(176, __c44, 0) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -487,11 +487,11 @@ export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    224,
+    __c56,
+    0,
   ) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,12 @@ export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMetho
   CalculateFoldersSecurityHealthAnalyticsSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: __S(
+    252,
+    __c63,
+    0,
+  ) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -525,11 +529,11 @@ export const calculateFoldersVirtualMachineThreatDetectionSettings: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    260,
+    __c65,
+    0,
   ) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +546,8 @@ export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
   CalculateFoldersWebSecurityScannerSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(268, __c67, 0) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -560,11 +564,11 @@ export const calculateOrganizationsContainerThreatDetectionSettings: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    15,
-    __c1,
-    7,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,11 +585,11 @@ export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    16,
-    __c2,
+    4,
+    __c1,
     0,
   ) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,11 +606,11 @@ export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    17,
+    8,
     __c2,
-    1,
+    0,
   ) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -623,11 +627,11 @@ export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    12,
+    __c3,
+    0,
   ) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,11 +648,11 @@ export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    16,
+    __c4,
+    0,
   ) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,10 +670,10 @@ export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMeth
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
     20,
-    __c2,
-    4,
+    __c5,
+    0,
   ) as any as S.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -686,11 +690,11 @@ export const calculateProjectsContainerThreatDetectionSettings: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    24,
+    __c6,
+    0,
   ) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -703,8 +707,8 @@ export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsEventThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(28, __c7, 0) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -721,11 +725,11 @@ export const calculateProjectsLocationsClustersContainerThreatDetectionSettings:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    32,
+    __c8,
+    0,
   ) as any as S.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -742,11 +746,11 @@ export const calculateProjectsRapidVulnerabilityDetectionSettings: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24,
-    __c3,
+    36,
+    __c9,
     0,
   ) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,11 +767,11 @@ export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    40,
+    __c10,
+    0,
   ) as any as S.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -784,11 +788,11 @@ export const calculateProjectsVirtualMachineThreatDetectionSettings: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    44,
+    __c11,
+    0,
   ) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,8 +805,8 @@ export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
   CalculateProjectsWebSecurityScannerSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(48, __c12, 0) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -815,8 +819,8 @@ export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
   GetContainerThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -833,11 +837,11 @@ export const getContainerThreatDetectionSettingsOrganizations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    29,
-    __c3,
-    5,
+    56,
+    __c14,
+    0,
   ) as any as S.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -850,8 +854,8 @@ export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
   GetContainerThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -868,11 +872,11 @@ export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    64,
+    __c16,
+    0,
   ) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -885,8 +889,8 @@ export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
   GetEventThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -899,8 +903,8 @@ export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetEventThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -913,8 +917,8 @@ export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
   GetEventThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +931,8 @@ export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -945,11 +949,11 @@ export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    36,
-    __c4,
-    4,
+    84,
+    __c21,
+    0,
   ) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -962,8 +966,12 @@ export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod
   GetRapidVulnerabilityDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: __S(
+    88,
+    __c22,
+    0,
+  ) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -976,8 +984,8 @@ export const getSecurityCenterSettingsFolders: API.OperationMethod<
   GetSecurityCenterSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SecurityCenterSettings>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<SecurityCenterSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -990,8 +998,8 @@ export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
   GetSecurityCenterSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SecurityCenterSettings>,
+  input: __S(100, __c25, 0) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<SecurityCenterSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1012,8 @@ export const getSecurityCenterSettingsProjects: API.OperationMethod<
   GetSecurityCenterSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SecurityCenterSettings>,
+  input: __S(104, __c26, 0) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<SecurityCenterSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1018,8 +1026,8 @@ export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: __S(108, __c27, 0) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1036,11 +1044,11 @@ export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    112,
+    __c28,
+    0,
   ) as any as S.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1061,8 @@ export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: __S(116, __c29, 0) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1075,8 @@ export const getSubscriptionOrganizations: API.OperationMethod<
   GetSubscriptionOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetSubscriptionOrganizationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Subscription>,
+  input: __S(120, __c30, 0) as any as S.Schema<GetSubscriptionOrganizationsRequest>,
+  output: __S(122, __c30, 2) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1085,11 +1093,11 @@ export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    48,
-    __c6,
+    136,
+    __c34,
     0,
   ) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1106,11 +1114,11 @@ export const getVirtualMachineThreatDetectionSettingsOrganizations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    140,
+    __c35,
+    0,
   ) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1127,11 +1135,11 @@ export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    144,
+    __c36,
+    0,
   ) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1152,8 @@ export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
   GetWebSecurityScannerSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(148, __c37, 0) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1166,8 @@ export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   GetWebSecurityScannerSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(152, __c38, 0) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1180,8 @@ export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
   GetWebSecurityScannerSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(156, __c39, 0) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1199,12 @@ export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: __S(
+    160,
+    __c40,
+    0,
+  ) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1211,11 +1223,11 @@ export const updateContainerThreatDetectionSettingsOrganizations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    164,
+    __c41,
+    0,
   ) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1245,12 @@ export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod
   UpdateContainerThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: __S(
+    168,
+    __c42,
+    0,
+  ) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1253,11 +1269,11 @@ export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    172,
+    __c43,
+    0,
   ) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  output: __S(128, __c32, 0) as any as S.Schema<ContainerThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1291,8 @@ export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateEventThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(184, __c46, 0) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1295,11 +1311,11 @@ export const updateEventThreatDetectionSettingsOrganizations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    188,
+    __c47,
+    0,
   ) as any as S.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1333,8 @@ export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateEventThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: __S(192, __c48, 0) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<EventThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,11 +1353,11 @@ export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    196,
+    __c49,
+    0,
   ) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1360,11 +1376,11 @@ export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    200,
+    __c50,
+    0,
   ) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1383,11 +1399,11 @@ export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    204,
+    __c51,
+    0,
   ) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  output: __S(228, __c57, 0) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1421,8 @@ export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: __S(208, __c52, 0) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1425,11 +1441,11 @@ export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    212,
+    __c53,
+    0,
   ) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1463,12 @@ export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: __S(
+    216,
+    __c54,
+    0,
+  ) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>,
+  output: __S(256, __c64, 0) as any as S.Schema<SecurityHealthAnalyticsSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1467,11 +1487,11 @@ export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    220,
+    __c55,
+    0,
   ) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1490,11 +1510,11 @@ export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    232,
+    __c58,
+    0,
   ) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1513,11 +1533,11 @@ export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    236,
+    __c59,
+    0,
   ) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  output: __S(264, __c66, 0) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1535,8 +1555,8 @@ export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
   UpdateWebSecurityScannerSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(240, __c60, 0) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1554,8 +1574,12 @@ export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   UpdateWebSecurityScannerSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(
+    244,
+    __c61,
+    0,
+  ) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1597,8 @@ export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
   UpdateWebSecurityScannerSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebSecurityScannerSettings>,
+  input: __S(248, __c62, 0) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>,
+  output: __S(272, __c68, 0) as any as S.Schema<WebSecurityScannerSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1596,184 +1620,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "CalculateFoldersContainerThreatDetectionSettingsRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          moduleEnablementState: S.optional(S.String),
-          value: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "Config" });
-    case 3:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          modules: S.optional(__S(3, __c0, 3)),
-          serviceAccount: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerThreatDetectionSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateFoldersEventThreatDetectionSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modules: S.optional(__S(3, __c0, 3)),
-          serviceEnablementState: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EventThreatDetectionSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateFoldersRapidVulnerabilityDetectionSettingsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          modules: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RapidVulnerabilityDetectionSettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateFoldersSecurityHealthAnalyticsSettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(S.String),
-          modules: S.optional(__S(3, __c0, 3)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecurityHealthAnalyticsSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateFoldersVirtualMachineThreatDetectionSettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceEnablementState: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          modules: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineThreatDetectionSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateFoldersWebSecurityScannerSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
-          modules: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WebSecurityScannerSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+name}:calculate",
-            baseUrl: "https://securitycenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "CalculateOrganizationsContainerThreatDetectionSettingsRequest",
       });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1790,7 +1641,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateOrganizationsEventThreatDetectionSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1804,7 +1659,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1819,7 +1678,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1834,7 +1697,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1849,7 +1716,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateOrganizationsWebSecurityScannerSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1864,7 +1735,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsContainerThreatDetectionSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1879,7 +1754,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsEventThreatDetectionSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1896,7 +1775,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1912,7 +1791,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsRapidVulnerabilityDetectionSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1927,7 +1810,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsSecurityHealthAnalyticsSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1942,7 +1829,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsVirtualMachineThreatDetectionSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1957,7 +1848,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CalculateProjectsWebSecurityScannerSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1971,7 +1866,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetContainerThreatDetectionSettingsFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1985,7 +1884,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetContainerThreatDetectionSettingsOrganizationsRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1999,7 +1902,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetContainerThreatDetectionSettingsProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2015,7 +1922,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2031,7 +1938,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEventThreatDetectionSettingsFoldersRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2045,7 +1956,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEventThreatDetectionSettingsOrganizationsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2059,7 +1974,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEventThreatDetectionSettingsProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2073,7 +1992,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetRapidVulnerabilityDetectionSettingsFoldersRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2087,7 +2010,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetRapidVulnerabilityDetectionSettingsOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2101,7 +2028,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetRapidVulnerabilityDetectionSettingsProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2115,7 +2046,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetSecurityCenterSettingsFoldersRequest",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cryptoKeyName: S.optional(S.String),
@@ -2127,7 +2062,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SecurityCenterSettings" });
   }
 }
-function __c5(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2143,7 +2078,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityCenterSettingsOrganizationsRequest",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2157,7 +2096,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityCenterSettingsProjectsRequest",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2171,7 +2114,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityHealthAnalyticsSettingsFoldersRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2185,7 +2132,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityHealthAnalyticsSettingsOrganizationsRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2199,7 +2150,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSecurityHealthAnalyticsSettingsProjectsRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2213,7 +2168,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionOrganizationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -2221,17 +2176,67 @@ function __c5(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Details" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           tier: S.optional(S.String),
-          details: S.optional(__S(46, __c5, 6)),
+          details: S.optional(__S(121, __c30, 1)),
         }),
       ).annotate({ identifier: "Subscription" });
   }
 }
-function __c6(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersContainerThreatDetectionSettingsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modules: S.optional(__S(134, __c33, 2)),
+          serviceAccount: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          serviceEnablementState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerThreatDetectionSettings",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          moduleEnablementState: S.optional(S.String),
+          value: S.optional(__S(132, __c33, 0)),
+        }),
+      ).annotate({ identifier: "Config" });
+    case 2:
+      return S.Record(S.String, __S(133, __c33, 1));
+  }
+}
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2247,7 +2252,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineThreatDetectionSettingsFoldersRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2261,7 +2270,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineThreatDetectionSettingsOrganizationsRequest",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2275,7 +2288,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineThreatDetectionSettingsProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2289,7 +2306,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetWebSecurityScannerSettingsFoldersRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2303,7 +2324,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetWebSecurityScannerSettingsOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2317,12 +2342,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetWebSecurityScannerSettingsProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2333,12 +2362,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateContainerThreatDetectionSettingsFoldersRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2351,14 +2384,14 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2369,12 +2402,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateContainerThreatDetectionSettingsProjectsRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2385,12 +2422,50 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersEventThreatDetectionSettingsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modules: S.optional(__S(134, __c33, 2)),
+          serviceEnablementState: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EventThreatDetectionSettings",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(180, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2401,12 +2476,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateEventThreatDetectionSettingsFoldersRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(180, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2417,12 +2496,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateEventThreatDetectionSettingsOrganizationsRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(180, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2433,12 +2516,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateEventThreatDetectionSettingsProjectsRequest",
       });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(228, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2449,12 +2536,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateRapidVulnerabilityDetectionSettingsFoldersRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(228, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2465,12 +2556,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(228, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2483,14 +2578,14 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2501,12 +2596,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityHealthAnalyticsSettingsFoldersRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2517,12 +2616,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2533,12 +2636,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityHealthAnalyticsSettingsProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2549,12 +2656,49 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualMachineThreatDetectionSettingsFoldersRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersRapidVulnerabilityDetectionSettingsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modules: S.optional(__S(134, __c33, 2)),
+          name: S.optional(S.String),
+          serviceEnablementState: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RapidVulnerabilityDetectionSettings",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2565,12 +2709,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2581,12 +2729,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualMachineThreatDetectionSettingsProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2597,12 +2749,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateWebSecurityScannerSettingsFoldersRequest",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2615,14 +2771,14 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2635,7 +2791,110 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersSecurityHealthAnalyticsSettingsRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(S.String),
+          modules: S.optional(__S(134, __c33, 2)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          serviceEnablementState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecurityHealthAnalyticsSettings",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersVirtualMachineThreatDetectionSettingsRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceEnablementState: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          modules: S.optional(__S(134, __c33, 2)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineThreatDetectionSettings",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+name}:calculate",
+            baseUrl: "https://securitycenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateFoldersWebSecurityScannerSettingsRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          serviceEnablementState: S.optional(S.String),
+          modules: S.optional(__S(134, __c33, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WebSecurityScannerSettings",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

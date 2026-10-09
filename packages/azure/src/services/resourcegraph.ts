@@ -348,8 +348,8 @@ export const GetGraphQuery: API.OperationMethod<
   GetGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetGraphQueryRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetGraphQueryResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetGraphQueryRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<GetGraphQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const GraphQueryCreateOrUpdate: API.OperationMethod<
   GraphQueryCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GraphQueryCreateOrUpdateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GraphQueryCreateOrUpdateResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<GraphQueryCreateOrUpdateRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<GraphQueryCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const ListGraphQuery: API.OperationMethod<
   ListGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListGraphQueryRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GraphQueryListResult>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListGraphQueryRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GraphQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const ListGraphQueryBySubscription: API.OperationMethod<
   ListGraphQueryBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListGraphQueryBySubscriptionRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GraphQueryListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListGraphQueryBySubscriptionRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GraphQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<OperationListResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(132, __c8, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const Resources: API.OperationMethod<
   ResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ResourcesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<QueryResponse>,
+  input: __S(149, __c9, 5) as any as S.Schema<ResourcesRequest>,
+  output: __S(152, __c9, 8) as any as S.Schema<QueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const UpdateGraphQuery: API.OperationMethod<
   UpdateGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateGraphQueryRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateGraphQueryResponse>,
+  input: __S(161, __c10, 1) as any as S.Schema<UpdateGraphQueryRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateGraphQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -467,7 +467,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteGraphQueryResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -482,7 +486,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGraphQueryRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -493,7 +501,7 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timeModified: S.optional(S.String),
@@ -502,22 +510,30 @@ function __c0(j: number): any {
           resultKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GraphQueryProperties" });
-    case 5:
+    case 2:
       return S.Record(S.String, S.String);
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(34, __c2, 2)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetGraphQueryResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -526,18 +542,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GraphQueryPropertiesInput",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(34, __c2, 2)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -551,22 +563,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GraphQueryCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(34, __c2, 2)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GraphQueryCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -580,16 +596,24 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGraphQueryRequest" });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c3, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11, __c1, 3),
+          value: __S(96, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GraphQueryListResult" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -604,7 +628,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListGraphQueryBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -615,7 +643,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -624,30 +652,30 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(15, __c1, 7)),
-          origin: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17, __c2, 1),
+          name: S.optional(S.String),
+          display: S.optional(__S(129, __c8, 1)),
+          origin: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(131, __c8, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
@@ -658,7 +686,7 @@ function __c2(j: number): any {
           authorizationScopeFilter: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRequestOptions" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sortBy: S.optional(S.String),
@@ -667,27 +695,23 @@ function __c2(j: number): any {
           _top: S.optional(S.Number.pipe(T.Body("$top"))),
         }),
       ).annotate({ identifier: "FacetRequestOptions" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          options: S.optional(__S(21, __c2, 5)),
+          options: S.optional(__S(146, __c9, 2)),
         }),
       ).annotate({ identifier: "FacetRequest" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(__S(19, __c2, 3)),
-          managementGroups: S.optional(__S(19, __c2, 3)),
+          subscriptions: S.optional(__S(144, __c9, 0)),
+          managementGroups: S.optional(__S(144, __c9, 0)),
           query: S.String,
-          options: S.optional(__S(20, __c2, 4)),
-          facets: S.optional(__S(23, __c2, 7)),
+          options: S.optional(__S(145, __c9, 1)),
+          facets: S.optional(__S(148, __c9, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -697,16 +721,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResourcesRequest" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
           resultType: S.String,
         }),
       ).annotate({ identifier: "Facet" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           totalRecords: S.Number,
@@ -714,10 +738,14 @@ function __c3(j: number): any {
           resultTruncated: S.String,
           _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
           data: S.Unknown,
-          facets: S.optional(__S(26, __c3, 2)),
+          facets: S.optional(__S(151, __c9, 7)),
         }),
       ).annotate({ identifier: "QueryResponse" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -726,15 +754,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GraphQueryPropertiesUpdateParameters",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(34, __c2, 2)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -746,7 +774,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateGraphQueryRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

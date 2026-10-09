@@ -133,8 +133,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -148,8 +148,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -164,8 +164,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -176,14 +176,10 @@ export const listOperations: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -192,7 +188,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelOperationsRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -204,7 +212,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -220,47 +232,42 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
+          details: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Status" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(25, __c3, 1)),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(27, __c3, 3)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 5:
+      return S.Array(__S(28, __c3, 4));
+    case 6:
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(8, __c1, 0)),
-          unreachable: S.optional(__S(9, __c1, 1)),
+          operations: S.optional(__S(29, __c3, 5)),
+          unreachable: S.optional(__S(30, __c3, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

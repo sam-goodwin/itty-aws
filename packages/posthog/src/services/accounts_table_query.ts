@@ -1105,8 +1105,8 @@ export const createCustomerAnalyticsAccountsTableQuery: API.OperationMethod<
   CreateCustomerAnalyticsAccountsTableQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AccountsTableQueryResponse>,
+  input: __S(50, __c1, 18) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequest>,
+  output: __S(39, __c1, 7) as any as S.Schema<AccountsTableQueryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1138,25 +1138,21 @@ function __c0(j: number): any {
           pattern: S.String,
         }),
       ).annotate({ identifier: "CustomBotCondition" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.NullOr(S.String)),
           combiner: S.String,
           id: S.String,
-          items: __S(8, __c1, 0),
+          items: __S(8, __c0, 8),
           name: S.String,
         }),
       ).annotate({ identifier: "CustomBotRule" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(9, __c0, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1165,20 +1161,20 @@ function __c1(j: number): any {
           value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "CustomChannelCondition" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           channel_type: S.optional(S.String),
           combiner: S.optional(S.String),
           id: S.optional(S.String),
-          items: S.optional(__S(12, __c1, 4)),
+          items: S.optional(__S(12, __c0, 12)),
         }),
       ).annotate({ identifier: "CustomChannelRule" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(13, __c0, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           distinct_id_field: S.optional(S.String),
@@ -1189,22 +1185,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DataWarehouseEventsModifier",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(15, __c0, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
           bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
           convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
           cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(__S(10, __c1, 2))),
-          customChannelTypeRules: S.optional(S.NullOr(__S(14, __c1, 6))),
-          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(16, __c2, 0))),
+          customBotDefinitions: S.optional(S.NullOr(__S(10, __c0, 10))),
+          customChannelTypeRules: S.optional(S.NullOr(__S(14, __c0, 14))),
+          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(16, __c0, 16))),
           debug: S.optional(S.NullOr(S.Boolean)),
           forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(1, __c0, 1))),
           formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
@@ -1237,9 +1229,9 @@ function __c2(j: number): any {
           webAnalyticsFirstPageviewFilters: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "HogQLQueryModifiers" });
-    case 2:
+    case 18:
       return S.Array(/*@__PURE__*/ S.NullOr(S.Number));
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           active_cpu_time: S.optional(S.Number),
@@ -1249,7 +1241,7 @@ function __c2(j: number): any {
           time_elapsed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClickhouseQueryProgress" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           actionable: S.Boolean,
@@ -1262,32 +1254,28 @@ function __c2(j: number): any {
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(20, __c0, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: __S(21, __c2, 5),
+          findings: __S(21, __c0, 21),
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "QueryScanAnalysis" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(__S(22, __c2, 6))),
+          analysis: S.optional(S.NullOr(__S(22, __c0, 22))),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
           rows_read: S.Number,
         }),
       ).annotate({ identifier: "QueryScanSummary" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           budget_remaining_bytes: S.optional(S.NullOr(S.Number)),
@@ -1305,15 +1293,15 @@ function __c3(j: number): any {
           labels: S.optional(S.NullOr(__S(1, __c0, 1))),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(__S(19, __c2, 3))),
-          query_scan: S.optional(S.NullOr(__S(23, __c2, 7))),
+          query_progress: S.optional(S.NullOr(__S(19, __c0, 19))),
+          query_scan: S.optional(S.NullOr(__S(23, __c0, 23))),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryStatus" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           date_from: S.optional(S.String),
@@ -1322,11 +1310,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ResolvedDateRangeResponse",
       });
-    case 2:
+    case 26:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 3:
+    case 27:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
@@ -1335,33 +1323,33 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AccountsTableCustomPropertyHistoryPoint",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Record(S.String, __S(29, __c3, 5));
-    case 7:
+    case 29:
+      return S.Array(__S(28, __c0, 28));
+    case 30:
+      return S.Record(S.String, __S(29, __c0, 29));
+    case 31:
       return S.Record(S.String, __S(2, __c0, 2));
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountFields: __S(26, __c3, 2),
-          customProperties: __S(27, __c3, 3),
-          customPropertyHistory: __S(30, __c3, 6),
+          accountFields: __S(26, __c0, 26),
+          customProperties: __S(27, __c0, 27),
+          customPropertyHistory: __S(30, __c0, 30),
           externalId: S.optional(S.NullOr(S.String)),
           id: S.String,
           logoDomain: S.optional(S.NullOr(S.String)),
           name: S.String,
           noteCount: S.optional(S.NullOr(S.Number)),
-          relationships: __S(31, __c3, 7),
+          relationships: __S(31, __c0, 31),
           tags: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({ identifier: "AccountsTableRow" });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1370,7 +1358,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "QueryTiming" });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(34, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1380,7 +1368,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DataWarehouseSourceUsage" });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(36, __c1, 4));
     case 6:
       return S.Array(S.Unknown);
     case 7:
@@ -1391,32 +1379,28 @@ function __c4(j: number): any {
           hogql: S.optional(S.NullOr(S.String)),
           kind: S.optional(S.String),
           limit: S.Number,
-          metricsResults: S.optional(S.NullOr(__S(18, __c2, 2))),
-          modifiers: S.optional(S.NullOr(__S(17, __c2, 1))),
+          metricsResults: S.optional(S.NullOr(__S(18, __c0, 18))),
+          modifiers: S.optional(S.NullOr(__S(17, __c0, 17))),
           offset: S.Number,
-          query_status: S.optional(S.NullOr(__S(24, __c3, 0))),
-          resolved_compare_date_range: S.optional(S.NullOr(__S(25, __c3, 1))),
-          resolved_date_range: S.optional(S.NullOr(__S(25, __c3, 1))),
-          results: __S(33, __c4, 1),
-          timings: S.optional(S.NullOr(__S(35, __c4, 3))),
-          used_data_warehouse_sources: S.optional(S.NullOr(__S(37, __c4, 5))),
-          warnings: S.optional(S.NullOr(__S(38, __c4, 6))),
+          query_status: S.optional(S.NullOr(__S(24, __c0, 24))),
+          resolved_compare_date_range: S.optional(S.NullOr(__S(25, __c0, 25))),
+          resolved_date_range: S.optional(S.NullOr(__S(25, __c0, 25))),
+          results: __S(33, __c1, 1),
+          timings: S.optional(S.NullOr(__S(35, __c1, 3))),
+          used_data_warehouse_sources: S.optional(S.NullOr(__S(37, __c1, 5))),
+          warnings: S.optional(S.NullOr(__S(38, __c1, 6))),
         }),
       ).annotate({
         identifier: "AccountsTableQueryResponse",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           column: S.Unknown,
           direction: S.String,
         }),
       ).annotate({ identifier: "AccountsTableSort" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1425,7 +1409,7 @@ function __c5(j: number): any {
           scene: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "QueryLogTags" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           columns: __S(0, __c0, 0),
@@ -1436,15 +1420,15 @@ function __c5(j: number): any {
           kind: S.optional(S.String),
           limit: S.optional(S.NullOr(S.Number)),
           metrics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          modifiers: S.optional(S.NullOr(__S(17, __c2, 1))),
+          modifiers: S.optional(S.NullOr(__S(17, __c0, 17))),
           offset: S.optional(S.NullOr(S.Number)),
-          response: S.optional(S.NullOr(__S(39, __c4, 7))),
-          sort: S.optional(S.NullOr(__S(40, __c5, 0))),
-          tags: S.optional(S.NullOr(__S(41, __c5, 1))),
+          response: S.optional(S.NullOr(__S(39, __c1, 7))),
+          sort: S.optional(S.NullOr(__S(40, __c1, 8))),
+          tags: S.optional(S.NullOr(__S(41, __c1, 9))),
           version: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AccountsTableQuery2" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           group_type_index: S.optional(S.NullOr(S.Number)),
@@ -1454,9 +1438,9 @@ function __c5(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Breakdown" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(43, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           breakdown: S.optional(S.NullOr(S.Unknown)),
@@ -1467,43 +1451,39 @@ function __c5(j: number): any {
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
           breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(44, __c5, 4))),
+          breakdowns: S.optional(S.NullOr(__S(44, __c1, 12))),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
-    case 6:
+    case 14:
       return S.Array(S.Unknown);
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(45, __c5, 5))),
+          breakdown_filter: S.optional(S.NullOr(__S(45, __c1, 13))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(46, __c5, 6))),
+          properties: S.optional(S.NullOr(__S(46, __c1, 14))),
         }),
       ).annotate({ identifier: "DashboardFilter" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Record(S.String, __S(48, __c6, 0));
-    case 2:
+    case 17:
+      return S.Record(S.String, __S(48, __c1, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           async: S.optional(S.NullOr(S.Boolean)),
-          query: __S(42, __c5, 2),
+          query: __S(42, __c1, 10),
           client_query_id: S.optional(S.NullOr(S.String)),
-          filters_override: S.optional(S.NullOr(__S(47, __c5, 7))),
+          filters_override: S.optional(S.NullOr(__S(47, __c1, 15))),
           limit_context: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           refresh: S.optional(S.String),
-          variables_override: S.optional(S.NullOr(__S(49, __c6, 1))),
+          variables_override: S.optional(S.NullOr(__S(49, __c1, 17))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1516,7 +1496,6 @@ function __c6(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -212,8 +212,8 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   JoinStorageSessionAsViewerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<JoinStorageSessionAsViewerInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<JoinStorageSessionAsViewerResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<JoinStorageSessionAsViewerInput>,
+  output: __S(3, __c1, 1) as any as S.Schema<JoinStorageSessionAsViewerResponse>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -245,7 +245,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "JoinStorageSessionResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
           T.all(
@@ -260,13 +264,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "JoinStorageSessionAsViewerInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "JoinStorageSessionAsViewerResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

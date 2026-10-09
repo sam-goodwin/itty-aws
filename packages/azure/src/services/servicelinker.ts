@@ -980,8 +980,8 @@ export const ConnectorCreateOrUpdate: API.OperationMethod<
   ConnectorCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -995,8 +995,8 @@ export const CreateConnectorDryrun: API.OperationMethod<
   CreateConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateConnectorDryrunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateConnectorDryrunResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateConnectorDryrunRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateConnectorDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1010,8 +1010,8 @@ export const CreateLinkerDryrun: API.OperationMethod<
   CreateLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateLinkerDryrunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateLinkerDryrunResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateLinkerDryrunRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateLinkerDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1025,8 +1025,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteConnectorResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1040,8 +1040,8 @@ export const DeleteConnectorDryrun: API.OperationMethod<
   DeleteConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteConnectorDryrunRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteConnectorDryrunResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeleteConnectorDryrunRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteConnectorDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1055,8 +1055,8 @@ export const DeleteLinker: API.OperationMethod<
   DeleteLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteLinkerRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteLinkerResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeleteLinkerRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteLinkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1070,8 +1070,8 @@ export const DeleteLinkerDryrun: API.OperationMethod<
   DeleteLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteLinkerDryrunRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteLinkerDryrunResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteLinkerDryrunRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteLinkerDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1085,8 +1085,8 @@ export const GenerateConnectorConfigurations: API.OperationMethod<
   GenerateConnectorConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GenerateConnectorConfigurationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ConfigurationResult>,
+  input: __S(328, __c41, 0) as any as S.Schema<GenerateConnectorConfigurationsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ConfigurationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1100,8 @@ export const GenerateLinkerConfigurations: API.OperationMethod<
   GenerateLinkerConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GenerateLinkerConfigurationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ConfigurationResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<GenerateLinkerConfigurationsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ConfigurationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1115,8 +1115,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetConnectorResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetConnectorRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1130,8 @@ export const GetConnectorDryrun: API.OperationMethod<
   GetConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetConnectorDryrunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetConnectorDryrunResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetConnectorDryrunRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetConnectorDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1145,8 +1145,8 @@ export const GetLinker: API.OperationMethod<
   GetLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetLinkerRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetLinkerResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetLinkerRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetLinkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1160,8 +1160,8 @@ export const GetLinkerDryrun: API.OperationMethod<
   GetLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetLinkerDryrunRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetLinkerDryrunResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetLinkerDryrunRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetLinkerDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1175,8 +1175,8 @@ export const LinkerCreateOrUpdate: API.OperationMethod<
   LinkerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<LinkerCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<LinkerCreateOrUpdateResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<LinkerCreateOrUpdateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LinkerCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1190,8 @@ export const ListConfigurationNames: API.OperationMethod<
   ListConfigurationNamesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListConfigurationNamesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ConfigurationNameResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListConfigurationNamesRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ConfigurationNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1205,8 +1205,8 @@ export const ListConnector: API.OperationMethod<
   ListConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListConnectorRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ResourceList>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListConnectorRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1220,8 @@ export const ListConnectorDryrun: API.OperationMethod<
   ListConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListConnectorDryrunRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<DryrunList>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListConnectorDryrunRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DryrunList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const ListLinker: API.OperationMethod<
   ListLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListLinkerRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ResourceList>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListLinkerRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1250,8 @@ export const ListLinkerConfigurations: API.OperationMethod<
   ListLinkerConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListLinkerConfigurationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ConfigurationResult>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListLinkerConfigurationsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ConfigurationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1265,8 @@ export const ListLinkerDaprConfigurations: API.OperationMethod<
   ListLinkerDaprConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListLinkerDaprConfigurationsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<DaprConfigurationList>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListLinkerDaprConfigurationsRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<DaprConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1280,8 +1280,8 @@ export const ListLinkerDryrun: API.OperationMethod<
   ListLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListLinkerDryrunRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<DryrunList>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListLinkerDryrunRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DryrunList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1295,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1310,8 @@ export const UpdateConnector: API.OperationMethod<
   UpdateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateConnectorResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UpdateConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1325,8 @@ export const UpdateConnectorDryrun: API.OperationMethod<
   UpdateConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateConnectorDryrunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateConnectorDryrunResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateConnectorDryrunRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateConnectorDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1340,8 @@ export const UpdateLinker: API.OperationMethod<
   UpdateLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UpdateLinkerRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateLinkerResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateLinkerRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UpdateLinkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const UpdateLinkerDryrun: API.OperationMethod<
   UpdateLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<UpdateLinkerDryrunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateLinkerDryrunResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateLinkerDryrunRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateLinkerDryrunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const ValidateConnector: API.OperationMethod<
   ValidateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ValidateConnectorRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ValidateOperationResult>,
+  input: __S(264, __c33, 0) as any as S.Schema<ValidateConnectorRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<ValidateOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const ValidateLinker: API.OperationMethod<
   ValidateLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ValidateLinkerRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ValidateOperationResult>,
+  input: __S(280, __c35, 0) as any as S.Schema<ValidateLinkerRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<ValidateOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,6 +1394,149 @@ export const ValidateLinker: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          properties: __S(25, __c3, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectorCreateOrUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(71, __c8, 7),
+        }),
+      ).annotate({
+        identifier: "ConnectorCreateOrUpdateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleteOrUpdateBehavior: S.optional(S.String),
+          action: S.optional(S.String),
+          customizedKeys: S.optional(__S(48, __c6, 0)),
+          daprProperties: S.optional(__S(32, __c4, 0)),
+          additionalConfigurations: S.optional(__S(48, __c6, 0)),
+          additionalConnectionStringProperties: S.optional(__S(48, __c6, 0)),
+          configurationStore: S.optional(S.NullOr(__S(49, __c6, 1))),
+        }),
+      ).annotate({ identifier: "ConfigurationInfoInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetService: S.optional(__S(64, __c8, 0)),
+          authInfo: S.optional(__S(65, __c8, 1)),
+          clientType: S.optional(S.String),
+          vNetSolution: S.optional(S.NullOr(__S(66, __c8, 2))),
+          secretStore: S.optional(S.NullOr(__S(67, __c8, 3))),
+          scope: S.optional(S.NullOr(S.String)),
+          publicNetworkSolution: S.optional(S.NullOr(__S(69, __c8, 5))),
+          configurationInfo: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }),
+      ).annotate({ identifier: "LinkerPropertiesInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.NullOr(S.String)),
+          componentType: S.optional(S.NullOr(S.String)),
+          secretStoreComponent: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(__S(42, __c5, 2)),
+          scopes: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({ identifier: "DaprPropertiesInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          secretRef: S.optional(S.String),
+          description: S.optional(S.String),
+          required: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DaprMetadata" });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appConfigurationId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ConfigurationStore" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.NullOr(S.String)),
+          componentType: S.optional(S.NullOr(S.String)),
+          secretStoreComponent: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(__S(42, __c5, 2)),
+          scopes: S.optional(__S(40, __c5, 0)),
+          runtimeVersion: S.optional(S.NullOr(S.String)),
+          bindingComponentDirection: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DaprProperties" });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1437,186 +1580,59 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SecretStore" });
     case 4:
-      return S.Array(S.String);
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          ipRanges: S.optional(__S(4, __c0, 4)),
+          ipRanges: S.optional(__S(40, __c5, 0)),
           azureServices: S.optional(S.String),
           callerClientIP: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallRules" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           deleteOrUpdateBehavior: S.optional(S.String),
           action: S.optional(S.String),
-          firewallRules: S.optional(__S(5, __c0, 5)),
+          firewallRules: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "PublicNetworkSolution" });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          secretRef: S.optional(S.String),
-          description: S.optional(S.String),
-          required: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DaprMetadata" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.NullOr(S.String)),
-          componentType: S.optional(S.NullOr(S.String)),
-          secretStoreComponent: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(9, __c1, 1)),
-          scopes: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DaprPropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appConfigurationId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ConfigurationStore" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7, __c0, 7)),
-          daprProperties: S.optional(__S(10, __c1, 2)),
-          additionalConfigurations: S.optional(__S(7, __c0, 7)),
-          additionalConnectionStringProperties: S.optional(__S(7, __c0, 7)),
-          configurationStore: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }),
-      ).annotate({ identifier: "ConfigurationInfoInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetService: S.optional(__S(0, __c0, 0)),
-          authInfo: S.optional(__S(1, __c0, 1)),
-          clientType: S.optional(S.String),
-          vNetSolution: S.optional(S.NullOr(__S(2, __c0, 2))),
-          secretStore: S.optional(S.NullOr(__S(3, __c0, 3))),
-          scope: S.optional(S.NullOr(S.String)),
-          publicNetworkSolution: S.optional(S.NullOr(__S(6, __c0, 6))),
-          configurationInfo: S.optional(S.NullOr(__S(12, __c1, 4))),
-        }),
-      ).annotate({ identifier: "LinkerPropertiesInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          properties: __S(13, __c1, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectorCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.NullOr(S.String)),
-          componentType: S.optional(S.NullOr(S.String)),
-          secretStoreComponent: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(9, __c1, 1)),
-          scopes: S.optional(__S(4, __c0, 4)),
-          runtimeVersion: S.optional(S.NullOr(S.String)),
-          bindingComponentDirection: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DaprProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           deleteOrUpdateBehavior: S.optional(S.String),
           action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7, __c0, 7)),
-          daprProperties: S.optional(__S(16, __c2, 0)),
-          additionalConfigurations: S.optional(__S(7, __c0, 7)),
-          additionalConnectionStringProperties: S.optional(__S(7, __c0, 7)),
-          configurationStore: S.optional(S.NullOr(__S(11, __c1, 3))),
+          customizedKeys: S.optional(__S(48, __c6, 0)),
+          daprProperties: S.optional(__S(56, __c7, 0)),
+          additionalConfigurations: S.optional(__S(48, __c6, 0)),
+          additionalConnectionStringProperties: S.optional(__S(48, __c6, 0)),
+          configurationStore: S.optional(S.NullOr(__S(49, __c6, 1))),
         }),
       ).annotate({ identifier: "ConfigurationInfo" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          targetService: S.optional(__S(0, __c0, 0)),
-          authInfo: S.optional(__S(1, __c0, 1)),
+          targetService: S.optional(__S(64, __c8, 0)),
+          authInfo: S.optional(__S(65, __c8, 1)),
           clientType: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          vNetSolution: S.optional(S.NullOr(__S(2, __c0, 2))),
-          secretStore: S.optional(S.NullOr(__S(3, __c0, 3))),
+          vNetSolution: S.optional(S.NullOr(__S(66, __c8, 2))),
+          secretStore: S.optional(S.NullOr(__S(67, __c8, 3))),
           scope: S.optional(S.NullOr(S.String)),
-          publicNetworkSolution: S.optional(S.NullOr(__S(6, __c0, 6))),
-          configurationInfo: S.optional(S.NullOr(__S(17, __c2, 1))),
+          publicNetworkSolution: S.optional(S.NullOr(__S(69, __c8, 5))),
+          configurationInfo: S.optional(S.NullOr(__S(70, __c8, 6))),
         }),
       ).annotate({ identifier: "LinkerProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: __S(18, __c2, 2),
-        }),
-      ).annotate({
-        identifier: "ConnectorCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actionName: S.String,
-        }),
-      ).annotate({ identifier: "DryrunParameters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "DryrunPropertiesInput" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1628,19 +1644,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateConnectorDryrunRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionName: S.String,
+        }),
+      ).annotate({ identifier: "DryrunParameters" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
         }),
       ).annotate({ identifier: "DryrunPrerequisiteResult" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1650,217 +1672,48 @@ function __c3(j: number): any {
           scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "DryrunOperationPreview" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(83, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(20, __c2, 4)),
-          prerequisiteResults: S.optional(__S(24, __c3, 0)),
-          operationPreviews: S.optional(__S(26, __c3, 2)),
+          parameters: S.optional(__S(80, __c10, 0)),
+          prerequisiteResults: S.optional(__S(82, __c10, 2)),
+          operationPreviews: S.optional(__S(84, __c10, 4)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DryrunProperties" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({
         identifier: "CreateConnectorDryrunResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21, __c2, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLinkerDryrunRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteConnectorRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConnectorResponse",
-      });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          dryrunName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectorDryrunRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          linkerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLinkerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          dryrunName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLinkerDryrunRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7, __c0, 7)),
-          daprProperties: S.optional(__S(10, __c1, 2)),
-          additionalConfigurations: S.optional(__S(35, __c4, 3)),
-          additionalConnectionStringProperties: S.optional(__S(35, __c4, 3)),
-          configurationStore: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateConnectorConfigurationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.NullOr(S.String)),
-          configType: S.optional(S.String),
-          keyVaultReferenceIdentity: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(__S(80, __c10, 0)),
         }),
-      ).annotate({ identifier: "SourceConfiguration" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          configurations: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "ConfigurationResult" });
+      ).annotate({ identifier: "DryrunPropertiesInput" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          linkerName: S.String.pipe(T.Label()),
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7, __c0, 7)),
-          daprProperties: S.optional(__S(10, __c1, 2)),
-          additionalConfigurations: S.optional(__S(35, __c4, 3)),
-          additionalConnectionStringProperties: S.optional(__S(35, __c4, 3)),
-          configurationStore: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateLinkerConfigurationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetConnectorRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: __S(18, __c2, 2),
-        }),
-      ).annotate({ identifier: "GetConnectorResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1878,7 +1731,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetConnectorDryrunRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1892,7 +1749,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLinkerRequest" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1906,22 +1767,30 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLinkerDryrunRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "GetLinkerDryrunResponse" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           linkerName: S.String.pipe(T.Label()),
-          properties: __S(13, __c1, 5),
+          properties: __S(25, __c3, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1935,7 +1804,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1962,7 +1831,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationName" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1970,26 +1839,30 @@ function __c6(j: number): any {
           clientType: S.optional(S.String),
           authType: S.optional(S.String),
           secretType: S.optional(S.String),
-          daprProperties: S.optional(__S(16, __c2, 0)),
-          names: S.optional(__S(50, __c6, 2)),
+          daprProperties: S.optional(__S(56, __c7, 0)),
+          names: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({ identifier: "ConfigurationNames" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(S.NullOr(__S(51, __c6, 3))),
+          properties: S.optional(S.NullOr(__S(147, __c18, 3))),
         }),
       ).annotate({ identifier: "ConfigurationNameItem" });
     case 5:
-      return S.Array(__S(52, __c6, 4));
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(53, __c6, 5)),
+          value: S.optional(__S(149, __c18, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationNameResult" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2006,18 +1879,22 @@ function __c6(j: number): any {
       ).annotate({ identifier: "ListConnectorRequest" });
   }
 }
-function __c7(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(368, __c46, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(56, __c7, 0)),
+          value: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "ResourceList" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2034,16 +1911,24 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConnectorDryrunRequest",
       });
-    case 3:
-      return S.Array(__S(46, __c5, 6));
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(59, __c7, 3)),
+          value: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "DryrunList" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -2056,7 +1941,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLinkerRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -2072,7 +1961,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListLinkerConfigurationsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -2087,38 +1980,59 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListLinkerDaprConfigurationsRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetType: S.optional(S.String),
           authType: S.optional(S.String),
-          daprProperties: S.optional(__S(16, __c2, 0)),
+          daprProperties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "DaprConfigurationProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(201, __c25, 1)),
         }),
       ).annotate({
         identifier: "DaprConfigurationResource",
       });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
     case 3:
+      return S.Array(__S(202, __c25, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66, __c8, 2)),
+          value: S.optional(__S(203, __c25, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DaprConfigurationList" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          dryrunName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(96, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLinkerDryrunRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -2131,7 +2045,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLinkerDryrunRequest" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2142,7 +2060,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2151,37 +2069,37 @@ function __c8(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(70, __c8, 6)),
+          display: S.optional(__S(225, __c28, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(226, __c28, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72, __c9, 0)),
+          value: S.optional(__S(227, __c28, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2191,14 +2109,18 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConnectorRequest" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2210,12 +2132,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateConnectorDryrunRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           linkerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2225,12 +2151,16 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLinkerRequest" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2242,7 +2172,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateLinkerDryrunRequest",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2258,7 +2192,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateConnectorRequest" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2268,13 +2206,9 @@ function __c9(j: number): any {
           errorCode: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ValidationResultItem" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(272, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           linkerName: S.optional(S.NullOr(S.String)),
@@ -2284,18 +2218,22 @@ function __c10(j: number): any {
           sourceId: S.optional(S.NullOr(S.String)),
           targetId: S.optional(S.NullOr(S.String)),
           authType: S.optional(S.NullOr(S.String)),
-          validationDetail: S.optional(__S(80, __c10, 0)),
+          validationDetail: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "ValidateResult" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(S.NullOr(__S(81, __c10, 1))),
+          properties: S.optional(S.NullOr(__S(274, __c34, 2))),
           resourceId: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ValidateOperationResult" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -2311,7 +2249,212 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ValidateLinkerRequest" });
   }
 }
-
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteConnectorRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConnectorResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          dryrunName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectorDryrunRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          linkerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLinkerRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          dryrunName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLinkerDryrunRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          deleteOrUpdateBehavior: S.optional(S.String),
+          action: S.optional(S.String),
+          customizedKeys: S.optional(__S(48, __c6, 0)),
+          daprProperties: S.optional(__S(32, __c4, 0)),
+          additionalConfigurations: S.optional(__S(336, __c42, 0)),
+          additionalConnectionStringProperties: S.optional(__S(336, __c42, 0)),
+          configurationStore: S.optional(S.NullOr(__S(49, __c6, 1))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateConnectorConfigurationsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.NullOr(S.String)),
+          configType: S.optional(S.String),
+          keyVaultReferenceIdentity: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SourceConfiguration" });
+    case 1:
+      return S.Array(__S(344, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(__S(345, __c43, 1)),
+        }),
+      ).annotate({ identifier: "ConfigurationResult" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          linkerName: S.String.pipe(T.Label()),
+          deleteOrUpdateBehavior: S.optional(S.String),
+          action: S.optional(S.String),
+          customizedKeys: S.optional(__S(48, __c6, 0)),
+          daprProperties: S.optional(__S(32, __c4, 0)),
+          additionalConfigurations: S.optional(__S(336, __c42, 0)),
+          additionalConnectionStringProperties: S.optional(__S(336, __c42, 0)),
+          configurationStore: S.optional(S.NullOr(__S(49, __c6, 1))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/{resourceUri+}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateLinkerConfigurationsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetConnectorRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(71, __c8, 7),
+        }),
+      ).annotate({ identifier: "GetConnectorResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

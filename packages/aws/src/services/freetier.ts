@@ -269,7 +269,7 @@ export const getAccountActivity: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetAccountActivityRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetAccountActivityResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetAccountActivityResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -297,8 +297,8 @@ export const getAccountPlanState: API.OperationMethod<
   GetAccountPlanStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAccountPlanStateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetAccountPlanStateResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAccountPlanStateRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetAccountPlanStateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -326,8 +326,8 @@ export const getFreeTierUsage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FreeTierUsage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetFreeTierUsageRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetFreeTierUsageResponse>,
+  input: __S(36, __c4, 4) as any as S.Schema<GetFreeTierUsageRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<GetFreeTierUsageResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -355,8 +355,8 @@ export const listAccountActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListAccountActivitiesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListAccountActivitiesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListAccountActivitiesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListAccountActivitiesResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -385,8 +385,8 @@ export const upgradeAccountPlan: API.OperationMethod<
   UpgradeAccountPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpgradeAccountPlanRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpgradeAccountPlanResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpgradeAccountPlanRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<UpgradeAccountPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -411,12 +411,6 @@ function __c0(j: number): any {
         identifier: "GetAccountActivityRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ amount: S.Number, unit: S.String })).annotate({
-        identifier: "MonetaryAmount",
-      });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ credit: __S(1, __c0, 1) })]);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           activityId: S.String,
@@ -424,7 +418,7 @@ function __c0(j: number): any {
           description: S.String,
           status: S.String,
           instructionsUrl: S.String,
-          reward: __S(2, __c0, 2),
+          reward: __S(16, __c2, 0),
           estimatedTimeToCompleteInMinutes: S.optional(S.Number),
           expiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -433,7 +427,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountActivityResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ amount: S.Number, unit: S.String })).annotate({
+        identifier: "MonetaryAmount",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ credit: __S(8, __c1, 0) })]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -441,13 +453,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountPlanStateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
           accountPlanType: S.String,
           accountPlanStatus: S.String,
-          accountPlanRemainingCredits: S.optional(__S(1, __c0, 1)),
+          accountPlanRemainingCredits: S.optional(__S(8, __c1, 0)),
           accountPlanExpirationDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
@@ -455,46 +467,46 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountPlanStateResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(10, __c1, 2)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(35, __c4, 3)).annotate({
           identifier: "Expression",
         }),
       );
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
-      return S.suspend(() =>
-        S.Struct({ Key: S.String, Values: __S(7, __c0, 7), MatchOptions: __S(8, __c1, 0) }),
-      ).annotate({ identifier: "DimensionValues" });
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          Or: S.optional(S.suspend(() => __S(6, __c0, 6)).annotate({ identifier: "Expressions" })),
-          And: S.optional(S.suspend(() => __S(6, __c0, 6)).annotate({ identifier: "Expressions" })),
-          Not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(10, __c1, 2)).annotate({
-              identifier: "Expression",
-            }),
-          ),
-          Dimensions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Expression" });
+        S.Struct({ Key: S.String, Values: __S(33, __c4, 1), MatchOptions: __S(40, __c5, 0) }),
+      ).annotate({ identifier: "DimensionValues" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(10, __c1, 2)),
+          Or: S.optional(S.suspend(() => __S(32, __c4, 0)).annotate({ identifier: "Expressions" })),
+          And: S.optional(
+            S.suspend(() => __S(32, __c4, 0)).annotate({ identifier: "Expressions" }),
+          ),
+          Not: S.optional(
+            S.suspend((): S.Schema<Expression> => __S(35, __c4, 3)).annotate({
+              identifier: "Expression",
+            }),
+          ),
+          Dimensions: S.optional(__S(34, __c4, 2)),
+        }),
+      ).annotate({ identifier: "Expression" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(35, __c4, 3)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetFreeTierUsageRequest" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
@@ -509,16 +521,26 @@ function __c1(j: number): any {
           freeTierType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeTierUsage" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ freeTierUsages: __S(13, __c1, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "GetFreeTierUsageResponse" });
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
+        S.Struct({ freeTierUsages: __S(38, __c4, 6), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetFreeTierUsageResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
-          filterActivityStatuses: S.optional(__S(8, __c1, 0)),
+          filterActivityStatuses: S.optional(__S(40, __c5, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           languageCode: S.optional(S.String),
@@ -526,28 +548,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountActivitiesRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activityId: S.String,
           title: S.String,
-          reward: __S(2, __c0, 2),
+          reward: __S(16, __c2, 0),
           status: S.String,
         }),
       ).annotate({ identifier: "ActivitySummary" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ activities: __S(17, __c2, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ activities: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAccountActivitiesResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ accountPlanType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -555,7 +577,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpgradeAccountPlanRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
@@ -567,7 +589,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

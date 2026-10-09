@@ -1340,8 +1340,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateTokenRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateTokenResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<CreateTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const createTrigger: API.OperationMethod<
   CreateTriggerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateTriggerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateTriggerResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateTriggerRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<CreateTriggerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const deleteReposConnection: API.OperationMethod<
   DeleteReposConnectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteReposConnectionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteReposConnectionResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteReposConnectionRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteReposConnectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteTokenResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const deleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteTriggerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteTriggerResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<DeleteTriggerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1415,8 @@ export const deleteTriggersEnvironmentVariable: API.OperationMethod<
   DeleteTriggersEnvironmentVariableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteTriggersEnvironmentVariableRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteTriggersEnvironmentVariableResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteTriggersEnvironmentVariableRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteTriggersEnvironmentVariableResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const deployHooksCreate: API.OperationMethod<
   DeployHooksCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeployHooksCreateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeployHooksCreateResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeployHooksCreateRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeployHooksCreateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1445,8 @@ export const deployHooksDelete: API.OperationMethod<
   DeployHooksDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeployHooksDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeployHooksDeleteResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeployHooksDeleteRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeployHooksDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1460,8 @@ export const deployHooksGet: API.OperationMethod<
   DeployHooksGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeployHooksGetRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeployHooksGetResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeployHooksGetRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeployHooksGetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1475,8 @@ export const deployHooksList: API.OperationMethod<
   DeployHooksListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeployHooksListRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeployHooksListResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeployHooksListRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DeployHooksListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1505,8 @@ export const deployHooksUpdate: API.OperationMethod<
   DeployHooksUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeployHooksUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeployHooksUpdateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeployHooksUpdateRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeployHooksUpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1520,8 @@ export const getAccountLimits: API.OperationMethod<
   GetAccountLimitsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetAccountLimitsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAccountLimitsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetAccountLimitsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetAccountLimitsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1535,8 +1535,8 @@ export const getBuild: API.OperationMethod<
   GetBuildError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetBuildRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetBuildResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetBuildRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetBuildResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1550,8 +1550,8 @@ export const getBuildsByVersion: API.OperationMethod<
   GetBuildsByVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetBuildsByVersionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetBuildsByVersionResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetBuildsByVersionRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GetBuildsByVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1565,8 +1565,8 @@ export const getBuildsLog: API.OperationMethod<
   GetBuildsLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetBuildsLogRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetBuildsLogResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetBuildsLogRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetBuildsLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1580,8 @@ export const getLatestBuilds: API.OperationMethod<
   GetLatestBuildsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetLatestBuildsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetLatestBuildsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetLatestBuildsRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<GetLatestBuildsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1595,8 +1595,8 @@ export const getReposConfigAutofill: API.OperationMethod<
   GetReposConfigAutofillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetReposConfigAutofillRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetReposConfigAutofillResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetReposConfigAutofillRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetReposConfigAutofillResponse>,
   errors: [RepositoryConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1610,8 +1610,8 @@ export const listBuilds: API.OperationMethod<
   ListBuildsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListBuildsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListBuildsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListBuildsRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ListBuildsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1625,8 +1625,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListTokensRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListTokensResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListTokensRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<ListTokensResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1640,8 @@ export const listTriggers: API.OperationMethod<
   ListTriggersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListTriggersRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListTriggersResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListTriggersRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListTriggersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1655,8 +1655,8 @@ export const listTriggersEnvironmentVariables: API.OperationMethod<
   ListTriggersEnvironmentVariablesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListTriggersEnvironmentVariablesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListTriggersEnvironmentVariablesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListTriggersEnvironmentVariablesRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<ListTriggersEnvironmentVariablesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1670,8 @@ export const triggersCreateBuild: API.OperationMethod<
   TriggersCreateBuildError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<TriggersCreateBuildRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<TriggersCreateBuildResponse>,
+  input: __S(179, __c22, 3) as any as S.Schema<TriggersCreateBuildRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<TriggersCreateBuildResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1685,8 @@ export const triggersPurgeCache: API.OperationMethod<
   TriggersPurgeCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<TriggersPurgeCacheRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TriggersPurgeCacheResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<TriggersPurgeCacheRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<TriggersPurgeCacheResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1700,8 @@ export const updateTrigger: API.OperationMethod<
   UpdateTriggerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateTriggerRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UpdateTriggerResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateTriggerRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<UpdateTriggerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1715,8 @@ export const upsertReposConnection: API.OperationMethod<
   UpsertReposConnectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<UpsertReposConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpsertReposConnectionResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpsertReposConnectionRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpsertReposConnectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1730,8 @@ export const upsertTriggersEnvironmentVariable: API.OperationMethod<
   UpsertTriggersEnvironmentVariableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpsertTriggersEnvironmentVariableRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpsertTriggersEnvironmentVariableResponse>,
+  input: __S(210, __c26, 2) as any as S.Schema<UpsertTriggersEnvironmentVariableRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<UpsertTriggersEnvironmentVariableResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1761,202 +1761,11 @@ function __c0(j: number): any {
           stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
         }),
       ).annotate({ identifier: "CancelBuildResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          buildTokenName: S.String.pipe(T.Body("build_token_name")),
-          buildTokenSecret: S.String.pipe(T.Body("build_token_secret")),
-          cloudflareTokenId: S.String.pipe(T.Body("cloudflare_token_id")),
-        }).pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/builds/tokens", code: 200 })),
-      ).annotate({ identifier: "CreateTokenRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildTokenName: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_name"))),
-          buildTokenUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_uuid"))),
-          cloudflareTokenId: S.optional(S.NullOr(S.String).pipe(T.Body("cloudflare_token_id"))),
-          ownerType: S.optional(S.NullOr(S.String).pipe(T.Body("owner_type"))),
-        }),
-      ).annotate({ identifier: "CreateTokenResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          branchExcludes: __S(4, __c0, 4).pipe(T.Body("branch_excludes")),
-          branchIncludes: __S(4, __c0, 4).pipe(T.Body("branch_includes")),
-          buildCommand: S.String.pipe(T.Body("build_command")),
-          buildTokenUuid: S.String.pipe(T.Body("build_token_uuid")),
-          deployCommand: S.String.pipe(T.Body("deploy_command")),
-          externalScriptId: S.String.pipe(T.Body("external_script_id")),
-          pathExcludes: __S(4, __c0, 4).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(4, __c0, 4).pipe(T.Body("path_includes")),
-          repoConnectionUuid: S.String.pipe(T.Body("repo_connection_uuid")),
-          rootDirectory: S.String.pipe(T.Body("root_directory")),
-          triggerName: S.String.pipe(T.Body("trigger_name")),
-          buildCachingEnabled: S.optional(S.Boolean.pipe(T.Body("build_caching_enabled"))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/accounts/{account_id}/builds/triggers", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateTriggerRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-          providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-          providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
-          repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-          repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-          repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-        }),
-      ).annotate({
-        identifier: "CreateTriggerResponseRepoConnection",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
-          buildCachingEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-          ),
-          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-          buildTokenName: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_name"))),
-          buildTokenUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_uuid"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
-          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("repo_connection"))),
-          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
-          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-        }),
-      ).annotate({ identifier: "CreateTriggerResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          repoConnectionUuid: S.String.pipe(T.Label("repo_connection_uuid")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReposConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
-        identifier: "DeleteReposConnectionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          buildTokenUuid: S.String.pipe(T.Label("build_token_uuid")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/accounts/{account_id}/builds/tokens/{build_token_uuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTokenRequest" });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
-        identifier: "DeleteTokenResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTriggerRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-          environmentVariableKey: S.String.pipe(T.Label("environment_variable_key")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTriggersEnvironmentVariableRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          scriptName: S.String.pipe(T.Label("script_name")),
-          branch: S.String,
-          deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeployHooksCreateRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.optional(S.NullOr(S.String)),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHookName: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_name"))),
-          deployHookUuid: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid"))),
-          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-        }),
-      ).annotate({
-        identifier: "DeployHooksCreateResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          scriptName: S.String.pipe(T.Label("script_name")),
-          deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeployHooksDeleteRequest" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1970,7 +1779,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeployHooksGetRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.NullOr(S.String)),
@@ -1981,7 +1790,11 @@ function __c2(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({ identifier: "DeployHooksGetResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1994,7 +1807,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeployHooksListRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2002,7 +1815,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeployHooksListResultItemLatestBuild",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.NullOr(S.String)),
@@ -2010,16 +1823,16 @@ function __c2(j: number): any {
           deployHookName: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_name"))),
           deployHookUuid: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
-          latestBuild: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("latest_build"))),
+          latestBuild: S.optional(S.NullOr(__S(17, __c2, 1)).pipe(T.Body("latest_build"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({
         identifier: "DeployHooksListResultItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() => __S(22, __c2, 6).pipe(T.EnvelopePayloadRoot())).annotate({
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
+      return S.suspend(() => __S(19, __c2, 3).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "DeployHooksListResponse",
       });
   }
@@ -2051,7 +1864,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeployHooksTriggerResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2067,7 +1884,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeployHooksUpdateRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2075,7 +1896,7 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/accounts/{account_id}/builds/account/limits", code: 200 }),
         ),
       ).annotate({ identifier: "GetAccountLimitsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buildMinutesRefreshOn: S.optional(
@@ -2086,7 +1907,11 @@ function __c3(j: number): any {
           ),
         }),
       ).annotate({ identifier: "GetAccountLimitsResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2099,9 +1924,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBuildRequest" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           author: S.optional(S.NullOr(S.String)),
@@ -2114,7 +1937,7 @@ function __c3(j: number): any {
           commitMessage: S.optional(S.NullOr(S.String).pipe(T.Body("commit_message"))),
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           environmentVariables: S.optional(
-            S.NullOr(__S(30, __c3, 6)).pipe(T.Body("environment_variables")),
+            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("environment_variables")),
           ),
           providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
           providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
@@ -2124,9 +1947,51 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetBuildResponseBuildTriggerMetadata",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
+          buildCachingEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+          ),
+          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
+          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("repo_connection"))),
+          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
+          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+        }),
+      ).annotate({ identifier: "GetBuildResponseTrigger" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
+          buildTriggerMetadata: S.optional(
+            S.NullOr(__S(49, __c6, 1)).pipe(T.Body("build_trigger_metadata")),
+          ),
+          buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deployHook: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("deploy_hook"))),
+          initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
+          pullRequest: S.optional(S.NullOr(__S(57, __c7, 1)).pipe(T.Body("pull_request"))),
+          runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+          status: S.optional(S.NullOr(S.String)),
+          stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+          trigger: S.optional(S.NullOr(__S(50, __c6, 2))),
+        }),
+      ).annotate({ identifier: "GetBuildResponse" });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2146,49 +2011,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBuildResponsePullRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
-          buildCachingEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-          ),
-          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
-          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("repo_connection"))),
-          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
-          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-        }),
-      ).annotate({ identifier: "GetBuildResponseTrigger" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
-          buildTriggerMetadata: S.optional(
-            S.NullOr(__S(31, __c3, 7)).pipe(T.Body("build_trigger_metadata")),
-          ),
-          buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHook: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("deploy_hook"))),
-          initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
-          pullRequest: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("pull_request"))),
-          runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-          status: S.optional(S.NullOr(S.String)),
-          stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-          trigger: S.optional(S.NullOr(__S(34, __c4, 2))),
-        }),
-      ).annotate({ identifier: "GetBuildResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2197,9 +2030,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBuildsByVersionRequest",
       });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           author: S.optional(S.NullOr(S.String)),
@@ -2212,7 +2043,7 @@ function __c4(j: number): any {
           commitMessage: S.optional(S.NullOr(S.String).pipe(T.Body("commit_message"))),
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           environmentVariables: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("environment_variables")),
+            S.NullOr(__S(80, __c10, 0)).pipe(T.Body("environment_variables")),
           ),
           providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
           providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
@@ -2222,7 +2053,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2238,15 +2069,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBuildsByVersionResponseBuildsValueTriggerRepoConnection",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
           ),
@@ -2256,9 +2083,9 @@ function __c5(j: number): any {
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(39, __c4, 7)).pipe(T.Body("repo_connection"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(74, __c9, 2)).pipe(T.Body("repo_connection"))),
           rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
           triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
@@ -2266,39 +2093,49 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBuildsByVersionResponseBuildsValueTrigger",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
           buildTriggerMetadata: S.optional(
-            S.NullOr(__S(38, __c4, 6)).pipe(T.Body("build_trigger_metadata")),
+            S.NullOr(__S(73, __c9, 1)).pipe(T.Body("build_trigger_metadata")),
           ),
           buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHook: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("deploy_hook"))),
+          deployHook: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("deploy_hook"))),
           initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
-          pullRequest: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("pull_request"))),
+          pullRequest: S.optional(S.NullOr(__S(57, __c7, 1)).pipe(T.Body("pull_request"))),
           runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
           status: S.optional(S.NullOr(S.String)),
           stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-          trigger: S.optional(S.NullOr(__S(40, __c5, 0))),
+          trigger: S.optional(S.NullOr(__S(75, __c9, 3))),
         }),
       ).annotate({
         identifier: "GetBuildsByVersionResponseBuildsValue",
       });
-    case 2:
-      return S.Record(S.String, __S(41, __c5, 1));
-    case 3:
+    case 5:
+      return S.Record(S.String, __S(76, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          builds: S.optional(S.NullOr(__S(42, __c5, 2))),
+          builds: S.optional(S.NullOr(__S(77, __c9, 5))),
         }),
       ).annotate({
         identifier: "GetBuildsByVersionResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2312,21 +2149,21 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBuildsLogRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.NullOr(S.String)),
-          lines: S.optional(S.NullOr(__S(46, __c5, 6))),
+          lines: S.optional(S.NullOr(__S(90, __c11, 2))),
           truncated: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "GetBuildsLogResponse" });
   }
 }
-function __c6(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2350,7 +2187,7 @@ function __c6(j: number): any {
           commitMessage: S.optional(S.NullOr(S.String).pipe(T.Body("commit_message"))),
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           environmentVariables: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("environment_variables")),
+            S.NullOr(__S(80, __c10, 0)).pipe(T.Body("environment_variables")),
           ),
           providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
           providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
@@ -2361,6 +2198,64 @@ function __c6(j: number): any {
         identifier: "GetLatestBuildsResponseBuildsValueBuildTriggerMetadata",
       });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
+          buildCachingEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+          ),
+          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
+          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(104, __c13, 0)).pipe(T.Body("repo_connection"))),
+          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
+          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+        }),
+      ).annotate({
+        identifier: "GetLatestBuildsResponseBuildsValueTrigger",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
+          buildTriggerMetadata: S.optional(
+            S.NullOr(__S(97, __c12, 1)).pipe(T.Body("build_trigger_metadata")),
+          ),
+          buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deployHook: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("deploy_hook"))),
+          initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
+          pullRequest: S.optional(S.NullOr(__S(57, __c7, 1)).pipe(T.Body("pull_request"))),
+          runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+          status: S.optional(S.NullOr(S.String)),
+          stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+          trigger: S.optional(S.NullOr(__S(98, __c12, 2))),
+        }),
+      ).annotate({
+        identifier: "GetLatestBuildsResponseBuildsValue",
+      });
+    case 4:
+      return S.Record(S.String, __S(99, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          builds: S.optional(S.NullOr(__S(100, __c12, 4))),
+        }),
+      ).annotate({ identifier: "GetLatestBuildsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2376,61 +2271,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetLatestBuildsResponseBuildsValueTriggerRepoConnection",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
-          buildCachingEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-          ),
-          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
-          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(50, __c6, 2)).pipe(T.Body("repo_connection"))),
-          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
-          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-        }),
-      ).annotate({
-        identifier: "GetLatestBuildsResponseBuildsValueTrigger",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
-          buildTriggerMetadata: S.optional(
-            S.NullOr(__S(49, __c6, 1)).pipe(T.Body("build_trigger_metadata")),
-          ),
-          buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHook: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("deploy_hook"))),
-          initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
-          pullRequest: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("pull_request"))),
-          runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-          status: S.optional(S.NullOr(S.String)),
-          stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-          trigger: S.optional(S.NullOr(__S(51, __c6, 3))),
-        }),
-      ).annotate({
-        identifier: "GetLatestBuildsResponseBuildsValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          builds: S.optional(S.NullOr(__S(53, __c6, 5))),
-        }),
-      ).annotate({ identifier: "GetLatestBuildsResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2449,23 +2294,49 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetReposConfigAutofillRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           configFile: S.optional(S.NullOr(S.String).pipe(T.Body("config_file"))),
           defaultWorkerName: S.optional(S.NullOr(S.String).pipe(T.Body("default_worker_name"))),
-          envWorkerNames: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("env_worker_names"))),
+          envWorkerNames: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("env_worker_names"))),
           packageManager: S.optional(S.NullOr(S.String).pipe(T.Body("package_manager"))),
-          scripts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          scripts: S.optional(S.NullOr(__S(64, __c8, 0))),
         }),
       ).annotate({
         identifier: "GetReposConfigAutofillResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          buildTokenName: S.String.pipe(T.Body("build_token_name")),
+          buildTokenSecret: S.String.pipe(T.Body("build_token_secret")),
+          cloudflareTokenId: S.String.pipe(T.Body("cloudflare_token_id")),
+        }).pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/builds/tokens", code: 200 })),
+      ).annotate({ identifier: "CreateTokenRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildTokenName: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_name"))),
+          buildTokenUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_uuid"))),
+          cloudflareTokenId: S.optional(S.NullOr(S.String).pipe(T.Body("cloudflare_token_id"))),
+          ownerType: S.optional(S.NullOr(S.String).pipe(T.Body("owner_type"))),
+        }),
+      ).annotate({ identifier: "CreateTokenResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2480,7 +2351,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBuildsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           author: S.optional(S.NullOr(S.String)),
@@ -2493,7 +2364,7 @@ function __c7(j: number): any {
           commitMessage: S.optional(S.NullOr(S.String).pipe(T.Body("commit_message"))),
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           environmentVariables: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("environment_variables")),
+            S.NullOr(__S(80, __c10, 0)).pipe(T.Body("environment_variables")),
           ),
           providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
           providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
@@ -2503,11 +2374,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListBuildsResultItemBuildTriggerMetadata",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
           ),
@@ -2517,9 +2388,9 @@ function __c7(j: number): any {
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("repo_connection"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("repo_connection"))),
           rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
           triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
@@ -2527,33 +2398,37 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListBuildsResultItemTrigger",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
           buildTriggerMetadata: S.optional(
-            S.NullOr(__S(58, __c7, 2)).pipe(T.Body("build_trigger_metadata")),
+            S.NullOr(__S(137, __c17, 1)).pipe(T.Body("build_trigger_metadata")),
           ),
           buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHook: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("deploy_hook"))),
+          deployHook: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("deploy_hook"))),
           initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
-          pullRequest: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("pull_request"))),
+          pullRequest: S.optional(S.NullOr(__S(57, __c7, 1)).pipe(T.Body("pull_request"))),
           runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
           status: S.optional(S.NullOr(S.String)),
           stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-          trigger: S.optional(S.NullOr(__S(59, __c7, 3))),
+          trigger: S.optional(S.NullOr(__S(138, __c17, 2))),
         }),
       ).annotate({ identifier: "ListBuildsResultItem" });
+    case 4:
+      return S.Array(__S(139, __c17, 3));
     case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() => __S(61, __c7, 5).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(140, __c17, 4).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListBuildsResponse",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2561,17 +2436,17 @@ function __c7(j: number): any {
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/builds/tokens", code: 200 })),
       ).annotate({ identifier: "ListTokensRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
-      return S.suspend(() => __S(64, __c8, 0).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.Array(__S(128, __c16, 0));
+    case 2:
+      return S.suspend(() => __S(145, __c18, 1).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListTokensResponse",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2584,11 +2459,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTriggersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
           ),
@@ -2600,21 +2475,25 @@ function __c8(j: number): any {
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("repo_connection"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("repo_connection"))),
           rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
           triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
         }),
       ).annotate({ identifier: "ListTriggersResultItem" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() => __S(68, __c8, 4).pipe(T.EnvelopePayloadRoot())).annotate({
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
+      return S.suspend(() => __S(154, __c19, 2).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListTriggersResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2629,7 +2508,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListTriggersEnvironmentVariablesRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.String.pipe(T.Body("created_on")),
@@ -2639,17 +2522,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListTriggersEnvironmentVariablesResultValue",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(71, __c8, 7));
     case 1:
-      return S.suspend(() => __S(72, __c9, 0).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.Record(S.String, __S(168, __c21, 0));
+    case 2:
+      return S.suspend(() => __S(169, __c21, 1).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListTriggersEnvironmentVariablesResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
@@ -2660,29 +2543,29 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TriggersCreateBuildRequestSeedRepoFilesItem",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(176, __c22, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String,
           provider: S.String,
           repository: S.String,
           branch: S.optional(S.String),
-          files: S.optional(__S(75, __c9, 3)),
+          files: S.optional(__S(177, __c22, 1)),
           path: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TriggersCreateBuildRequestSeedRepo",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
           branch: S.optional(S.String),
           commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
-          seedRepo: S.optional(__S(76, __c9, 4).pipe(T.Body("seed_repo"))),
+          seedRepo: S.optional(__S(178, __c22, 2).pipe(T.Body("seed_repo"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2693,7 +2576,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TriggersCreateBuildRequest",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           author: S.optional(S.NullOr(S.String)),
@@ -2706,7 +2589,7 @@ function __c9(j: number): any {
           commitMessage: S.optional(S.NullOr(S.String).pipe(T.Body("commit_message"))),
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           environmentVariables: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("environment_variables")),
+            S.NullOr(__S(80, __c10, 0)).pipe(T.Body("environment_variables")),
           ),
           providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
           providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
@@ -2716,11 +2599,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TriggersCreateBuildResponseBuildTriggerMetadata",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
           ),
@@ -2730,9 +2613,9 @@ function __c9(j: number): any {
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(50, __c6, 2)).pipe(T.Body("repo_connection"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(104, __c13, 0)).pipe(T.Body("repo_connection"))),
           rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
           triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
@@ -2740,33 +2623,33 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TriggersCreateBuildResponseTrigger",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           buildOutcome: S.optional(S.NullOr(S.String).pipe(T.Body("build_outcome"))),
           buildTriggerMetadata: S.optional(
-            S.NullOr(__S(78, __c9, 6)).pipe(T.Body("build_trigger_metadata")),
+            S.NullOr(__S(180, __c22, 4)).pipe(T.Body("build_trigger_metadata")),
           ),
           buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          deployHook: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("deploy_hook"))),
+          deployHook: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("deploy_hook"))),
           initializingOn: S.optional(S.NullOr(S.String).pipe(T.Body("initializing_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
-          pullRequest: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("pull_request"))),
+          pullRequest: S.optional(S.NullOr(__S(57, __c7, 1)).pipe(T.Body("pull_request"))),
           runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
           status: S.optional(S.NullOr(S.String)),
           stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-          trigger: S.optional(S.NullOr(__S(79, __c9, 7))),
+          trigger: S.optional(S.NullOr(__S(181, __c22, 5))),
         }),
       ).annotate({
         identifier: "TriggersCreateBuildResponse",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2781,19 +2664,23 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "TriggersPurgeCacheRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-          branchExcludes: S.optional(__S(4, __c0, 4).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(__S(4, __c0, 4).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(__S(224, __c28, 0).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(__S(224, __c28, 0).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(S.Boolean.pipe(T.Body("build_caching_enabled"))),
           buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
           buildTokenUuid: S.optional(S.String.pipe(T.Body("build_token_uuid"))),
           deployCommand: S.optional(S.String.pipe(T.Body("deploy_command"))),
-          pathExcludes: S.optional(__S(4, __c0, 4).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(__S(4, __c0, 4).pipe(T.Body("path_includes"))),
+          pathExcludes: S.optional(__S(224, __c28, 0).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(__S(224, __c28, 0).pipe(T.Body("path_includes"))),
           rootDirectory: S.optional(S.String.pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.String.pipe(T.Body("trigger_name"))),
         }).pipe(
@@ -2804,11 +2691,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTriggerRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          branchExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_excludes"))),
-          branchIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("branch_includes"))),
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
           buildCachingEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
           ),
@@ -2820,15 +2707,19 @@ function __c10(j: number): any {
           deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
           externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          pathExcludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("path_includes"))),
-          repoConnection: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("repo_connection"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("repo_connection"))),
           rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
           triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
           triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
         }),
       ).annotate({ identifier: "UpdateTriggerResponse" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2847,7 +2738,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpsertReposConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isSecret: S.Boolean.pipe(T.Body("is_secret")),
@@ -2856,14 +2751,14 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpsertTriggersEnvironmentVariableRequestBodyValue",
       });
-    case 6:
-      return S.Record(S.String, __S(85, __c10, 5));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(208, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-          body: __S(86, __c10, 6).pipe(T.HttpBody()),
+          body: __S(209, __c26, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2876,7 +2771,223 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          branchExcludes: __S(224, __c28, 0).pipe(T.Body("branch_excludes")),
+          branchIncludes: __S(224, __c28, 0).pipe(T.Body("branch_includes")),
+          buildCommand: S.String.pipe(T.Body("build_command")),
+          buildTokenUuid: S.String.pipe(T.Body("build_token_uuid")),
+          deployCommand: S.String.pipe(T.Body("deploy_command")),
+          externalScriptId: S.String.pipe(T.Body("external_script_id")),
+          pathExcludes: __S(224, __c28, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(224, __c28, 0).pipe(T.Body("path_includes")),
+          repoConnectionUuid: S.String.pipe(T.Body("repo_connection_uuid")),
+          rootDirectory: S.String.pipe(T.Body("root_directory")),
+          triggerName: S.String.pipe(T.Body("trigger_name")),
+          buildCachingEnabled: S.optional(S.Boolean.pipe(T.Body("build_caching_enabled"))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/accounts/{account_id}/builds/triggers", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateTriggerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          branchExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_excludes"))),
+          branchIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("branch_includes"))),
+          buildCachingEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+          ),
+          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+          buildTokenName: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_name"))),
+          buildTokenUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_token_uuid"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+          deployCommand: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_command"))),
+          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          pathExcludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("path_includes"))),
+          repoConnection: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("repo_connection"))),
+          rootDirectory: S.optional(S.NullOr(S.String).pipe(T.Body("root_directory"))),
+          triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+          triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+        }),
+      ).annotate({ identifier: "CreateTriggerResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
+          providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
+          providerType: S.optional(S.NullOr(S.String).pipe(T.Body("provider_type"))),
+          repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
+          repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+          repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+        }),
+      ).annotate({
+        identifier: "CreateTriggerResponseRepoConnection",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          repoConnectionUuid: S.String.pipe(T.Label("repo_connection_uuid")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReposConnectionRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
+        identifier: "DeleteReposConnectionResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          buildTokenUuid: S.String.pipe(T.Label("build_token_uuid")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/accounts/{account_id}/builds/tokens/{build_token_uuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTokenRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
+        identifier: "DeleteTokenResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTriggerRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+          environmentVariableKey: S.String.pipe(T.Label("environment_variable_key")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTriggersEnvironmentVariableRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          branch: S.String,
+          deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeployHooksCreateRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(S.NullOr(S.String)),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          deployHookName: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_name"))),
+          deployHookUuid: S.optional(S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid"))),
+          externalScriptId: S.optional(S.NullOr(S.String).pipe(T.Body("external_script_id"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+        }),
+      ).annotate({
+        identifier: "DeployHooksCreateResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeployHooksDeleteRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

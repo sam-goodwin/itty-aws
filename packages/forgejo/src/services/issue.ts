@@ -1135,8 +1135,8 @@ export const createIssue: API.OperationMethod<
   CreateIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateIssueRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(497, __c62, 1) as any as S.Schema<CreateIssueRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1155,8 @@ export const createIssueAttachment: API.OperationMethod<
   CreateIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateIssueAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(656, __c82, 0) as any as S.Schema<CreateIssueAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [BadRequest, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1170,8 @@ export const createIssueBlocking: API.OperationMethod<
   CreateIssueBlockingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateIssueBlockingRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(672, __c84, 0) as any as S.Schema<CreateIssueBlockingRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1190,8 @@ export const createIssueCommentAttachment: API.OperationMethod<
   CreateIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateIssueCommentAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(680, __c85, 0) as any as S.Schema<CreateIssueCommentAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [BadRequest, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1205,8 +1205,8 @@ export const createIssueDependencies: API.OperationMethod<
   CreateIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateIssueDependenciesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateIssueDependenciesRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1220,8 @@ export const deleteIssue: API.OperationMethod<
   DeleteIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteIssueRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteIssueResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteIssueRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteIssueResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const deleteIssueAttachment: API.OperationMethod<
   DeleteIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteIssueAttachmentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteIssueAttachmentResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteIssueAttachmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteIssueAttachmentResponse>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1250,8 @@ export const deleteIssueCommentAttachment: API.OperationMethod<
   DeleteIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteIssueCommentAttachmentRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteIssueCommentAttachmentResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteIssueCommentAttachmentRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteIssueCommentAttachmentResponse>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1265,8 @@ export const deleteIssueReaction: API.OperationMethod<
   DeleteIssueReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteIssueReactionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteIssueReactionResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteIssueReactionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteIssueReactionResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1280,8 +1280,8 @@ export const editIssue: API.OperationMethod<
   EditIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<EditIssueRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(56, __c7, 0) as any as S.Schema<EditIssueRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1295,8 @@ export const editIssueAttachment: API.OperationMethod<
   EditIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<EditIssueAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(64, __c8, 0) as any as S.Schema<EditIssueAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1310,8 @@ export const editIssueCommentAttachment: API.OperationMethod<
   EditIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<EditIssueCommentAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(72, __c9, 0) as any as S.Schema<EditIssueCommentAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1325,8 @@ export const editIssueDeadline: API.OperationMethod<
   EditIssueDeadlineError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<EditIssueDeadlineRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<IssueDeadline>,
+  input: __S(80, __c10, 0) as any as S.Schema<EditIssueDeadlineRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IssueDeadline>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1340,8 @@ export const getIssue: API.OperationMethod<
   GetIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetIssueRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetIssueRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const getIssueAttachment: API.OperationMethod<
   GetIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetIssueAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetIssueAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const getIssueCommentAttachment: API.OperationMethod<
   GetIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetIssueCommentAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Attachment>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetIssueCommentAttachmentRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<Attachment>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const getIssueReactions: API.OperationMethod<
   GetIssueReactionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetIssueReactionsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetIssueReactionsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetIssueReactionsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetIssueReactionsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const issueAddLabel: API.OperationMethod<
   IssueAddLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<IssueAddLabelRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IssueAddLabelResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<IssueAddLabelRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<IssueAddLabelResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1415,8 @@ export const issueAddSubscription: API.OperationMethod<
   IssueAddSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<IssueAddSubscriptionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueAddSubscriptionResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<IssueAddSubscriptionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueAddSubscriptionResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const issueAddTime: API.OperationMethod<
   IssueAddTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<IssueAddTimeRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<TrackedTime>,
+  input: __S(176, __c22, 0) as any as S.Schema<IssueAddTimeRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<TrackedTime>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1445,8 @@ export const issueCheckSubscription: API.OperationMethod<
   IssueCheckSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<IssueCheckSubscriptionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<WatchInfo>,
+  input: __S(192, __c24, 0) as any as S.Schema<IssueCheckSubscriptionRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<WatchInfo>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1460,8 @@ export const issueClearLabels: API.OperationMethod<
   IssueClearLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<IssueClearLabelsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueClearLabelsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<IssueClearLabelsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueClearLabelsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1475,8 @@ export const issueCreateComment: API.OperationMethod<
   IssueCreateCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<IssueCreateCommentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Comment>,
+  input: __S(208, __c26, 0) as any as S.Schema<IssueCreateCommentRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Comment>,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1490,8 @@ export const issueCreateLabel: API.OperationMethod<
   IssueCreateLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<IssueCreateLabelRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Label>,
+  input: __S(224, __c28, 0) as any as S.Schema<IssueCreateLabelRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<Label>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1505,8 @@ export const issueCreateMilestone: API.OperationMethod<
   IssueCreateMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<IssueCreateMilestoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Milestone>,
+  input: __S(232, __c29, 0) as any as S.Schema<IssueCreateMilestoneRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<Milestone>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1520,8 @@ export const issueDeleteComment: API.OperationMethod<
   IssueDeleteCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<IssueDeleteCommentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueDeleteCommentResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<IssueDeleteCommentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueDeleteCommentResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1535,8 +1535,8 @@ export const issueDeleteCommentReaction: API.OperationMethod<
   IssueDeleteCommentReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<IssueDeleteCommentReactionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IssueDeleteCommentReactionResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<IssueDeleteCommentReactionRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<IssueDeleteCommentReactionResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1550,8 +1550,8 @@ export const issueDeleteLabel: API.OperationMethod<
   IssueDeleteLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<IssueDeleteLabelRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueDeleteLabelResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<IssueDeleteLabelRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueDeleteLabelResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1565,8 +1565,8 @@ export const issueDeleteMilestone: API.OperationMethod<
   IssueDeleteMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<IssueDeleteMilestoneRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueDeleteMilestoneResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<IssueDeleteMilestoneRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueDeleteMilestoneResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1580,8 @@ export const issueDeleteStopWatch: API.OperationMethod<
   IssueDeleteStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<IssueDeleteStopWatchRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueDeleteStopWatchResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<IssueDeleteStopWatchRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueDeleteStopWatchResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1595,8 +1595,8 @@ export const issueDeleteSubscription: API.OperationMethod<
   IssueDeleteSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<IssueDeleteSubscriptionRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IssueDeleteSubscriptionResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<IssueDeleteSubscriptionRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<IssueDeleteSubscriptionResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1610,8 +1610,8 @@ export const issueDeleteTime: API.OperationMethod<
   IssueDeleteTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<IssueDeleteTimeRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueDeleteTimeResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<IssueDeleteTimeRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueDeleteTimeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1625,8 +1625,8 @@ export const issueEditComment: API.OperationMethod<
   IssueEditCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<IssueEditCommentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Comment>,
+  input: __S(296, __c37, 0) as any as S.Schema<IssueEditCommentRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Comment>,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1640,8 @@ export const issueEditLabel: API.OperationMethod<
   IssueEditLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<IssueEditLabelRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Label>,
+  input: __S(304, __c38, 0) as any as S.Schema<IssueEditLabelRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<Label>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1655,8 +1655,8 @@ export const issueEditMilestone: API.OperationMethod<
   IssueEditMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<IssueEditMilestoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Milestone>,
+  input: __S(312, __c39, 0) as any as S.Schema<IssueEditMilestoneRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<Milestone>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1670,8 @@ export const issueGetComment: API.OperationMethod<
   IssueGetCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<IssueGetCommentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Comment>,
+  input: __S(320, __c40, 0) as any as S.Schema<IssueGetCommentRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Comment>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1685,8 @@ export const issueGetCommentReactions: API.OperationMethod<
   IssueGetCommentReactionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<IssueGetCommentReactionsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IssueGetCommentReactionsResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<IssueGetCommentReactionsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<IssueGetCommentReactionsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1700,8 @@ export const issueGetComments: API.OperationMethod<
   IssueGetCommentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<IssueGetCommentsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IssueGetCommentsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<IssueGetCommentsRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<IssueGetCommentsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1715,8 @@ export const issueGetCommentsAndTimeline: API.OperationMethod<
   IssueGetCommentsAndTimelineError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<IssueGetCommentsAndTimelineRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<IssueGetCommentsAndTimelineResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<IssueGetCommentsAndTimelineRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<IssueGetCommentsAndTimelineResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1730,8 @@ export const issueGetLabel: API.OperationMethod<
   IssueGetLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<IssueGetLabelRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Label>,
+  input: __S(360, __c45, 0) as any as S.Schema<IssueGetLabelRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<Label>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1745,8 +1745,8 @@ export const issueGetLabels: API.OperationMethod<
   IssueGetLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<IssueGetLabelsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IssueGetLabelsResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<IssueGetLabelsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<IssueGetLabelsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1760,8 +1760,8 @@ export const issueGetMilestone: API.OperationMethod<
   IssueGetMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<IssueGetMilestoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Milestone>,
+  input: __S(376, __c47, 0) as any as S.Schema<IssueGetMilestoneRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<Milestone>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1775,8 +1775,8 @@ export const issueGetMilestonesList: API.OperationMethod<
   IssueGetMilestonesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<IssueGetMilestonesListRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<IssueGetMilestonesListResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<IssueGetMilestonesListRequest>,
+  output: __S(386, __c48, 2) as any as S.Schema<IssueGetMilestonesListResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1790,8 +1790,8 @@ export const issueGetRepoComments: API.OperationMethod<
   IssueGetRepoCommentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<IssueGetRepoCommentsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<IssueGetRepoCommentsResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<IssueGetRepoCommentsRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<IssueGetRepoCommentsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1805,8 @@ export const issueListBlocks: API.OperationMethod<
   IssueListBlocksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<IssueListBlocksRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<IssueListBlocksResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<IssueListBlocksRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<IssueListBlocksResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1820,8 +1820,8 @@ export const issueListLabels: API.OperationMethod<
   IssueListLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<IssueListLabelsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IssueListLabelsResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<IssueListLabelsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<IssueListLabelsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1835,8 +1835,8 @@ export const issuePostCommentReaction: API.OperationMethod<
   IssuePostCommentReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<IssuePostCommentReactionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Reaction>,
+  input: __S(432, __c54, 0) as any as S.Schema<IssuePostCommentReactionRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Reaction>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1850,8 +1850,8 @@ export const issueRemoveLabel: API.OperationMethod<
   IssueRemoveLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<IssueRemoveLabelRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueRemoveLabelResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<IssueRemoveLabelRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueRemoveLabelResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1865,8 +1865,8 @@ export const issueReplaceLabels: API.OperationMethod<
   IssueReplaceLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<IssueReplaceLabelsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<IssueReplaceLabelsResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<IssueReplaceLabelsRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<IssueReplaceLabelsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1880,8 +1880,8 @@ export const issueResetTime: API.OperationMethod<
   IssueResetTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<IssueResetTimeRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueResetTimeResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<IssueResetTimeRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueResetTimeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1895,8 +1895,8 @@ export const issueStartStopWatch: API.OperationMethod<
   IssueStartStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<IssueStartStopWatchRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueStartStopWatchResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<IssueStartStopWatchRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueStartStopWatchResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1910,8 +1910,8 @@ export const issueStopStopWatch: API.OperationMethod<
   IssueStopStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<IssueStopStopWatchRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IssueStopStopWatchResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<IssueStopStopWatchRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueStopStopWatchResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1925,8 +1925,8 @@ export const issueSubscriptions: API.OperationMethod<
   IssueSubscriptionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<IssueSubscriptionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<IssueSubscriptionsResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<IssueSubscriptionsRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<IssueSubscriptionsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1940,8 @@ export const issueTrackedTimes: API.OperationMethod<
   IssueTrackedTimesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<IssueTrackedTimesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<IssueTrackedTimesResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<IssueTrackedTimesRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<IssueTrackedTimesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1955,8 +1955,8 @@ export const listIssueAttachments: API.OperationMethod<
   ListIssueAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListIssueAttachmentsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListIssueAttachmentsResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListIssueAttachmentsRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<ListIssueAttachmentsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1970,8 +1970,8 @@ export const listIssueCommentAttachments: API.OperationMethod<
   ListIssueCommentAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListIssueCommentAttachmentsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListIssueCommentAttachmentsResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListIssueCommentAttachmentsRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<ListIssueCommentAttachmentsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1985,8 @@ export const listIssueDependencies: API.OperationMethod<
   ListIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListIssueDependenciesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListIssueDependenciesResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<ListIssueDependenciesRequest>,
+  output: __S(593, __c74, 1) as any as S.Schema<ListIssueDependenciesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2000,8 @@ export const listIssues: API.OperationMethod<
   ListIssuesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListIssuesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListIssuesResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListIssuesRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<ListIssuesResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2015,8 @@ export const moveIssuePin: API.OperationMethod<
   MoveIssuePinError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<MoveIssuePinRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<MoveIssuePinResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<MoveIssuePinRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<MoveIssuePinResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2030,8 @@ export const pinIssue: API.OperationMethod<
   PinIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<PinIssueRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PinIssueResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<PinIssueRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PinIssueResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2045,8 @@ export const postIssueReaction: API.OperationMethod<
   PostIssueReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<PostIssueReactionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Reaction>,
+  input: __S(624, __c78, 0) as any as S.Schema<PostIssueReactionRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Reaction>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2060,8 @@ export const removeIssueBlocking: API.OperationMethod<
   RemoveIssueBlockingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<RemoveIssueBlockingRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(632, __c79, 0) as any as S.Schema<RemoveIssueBlockingRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2075,8 @@ export const removeIssueDependencies: API.OperationMethod<
   RemoveIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<RemoveIssueDependenciesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Issue>,
+  input: __S(640, __c80, 0) as any as S.Schema<RemoveIssueDependenciesRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<Issue>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2090,8 @@ export const searchIssues: API.OperationMethod<
   SearchIssuesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<SearchIssuesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<SearchIssuesResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<SearchIssuesRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<SearchIssuesResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2105,8 @@ export const unpinIssue: API.OperationMethod<
   UnpinIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UnpinIssueRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UnpinIssueResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<UnpinIssueRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UnpinIssueResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2116,26 +2116,1200 @@ export const unpinIssue: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{index}/dependencies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIssueDependenciesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteIssueRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIssueResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIssueAttachmentRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIssueCommentAttachmentRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIssueCommentAttachmentResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          content: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIssueReactionRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          assignee: S.optional(S.String),
+          assignees: S.optional(__S(504, __c63, 0)),
+          body: S.optional(S.String),
+          due_date: S.optional(S.String),
+          milestone: S.optional(S.Number),
+          ref: S.optional(S.String),
+          state: S.optional(S.String),
+          title: S.optional(S.String),
+          unset_due_date: S.optional(S.Boolean),
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 }),
+        ),
+      ).annotate({ identifier: "EditIssueRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+          browser_download_url: S.optional(S.String),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EditIssueAttachmentRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+          browser_download_url: S.optional(S.String),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EditIssueCommentAttachmentRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          due_date: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{index}/deadline",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "EditIssueDeadlineRequest" });
     case 1:
-      return S.Array(S.Number);
+      return S.suspend(() =>
+        S.Struct({
+          due_date: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueDeadline" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 })),
+      ).annotate({ identifier: "GetIssueRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIssueAttachmentRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          attachment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIssueCommentAttachmentRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetIssueReactionsRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+    case 1:
+      return S.suspend(() => __S(120, __c15, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetIssueReactionsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          created_at: S.optional(S.String),
+          user: S.optional(__S(520, __c65, 0)),
+        }),
+      ).annotate({ identifier: "Reaction" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          labels: S.optional(__S(160, __c20, 0)),
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueAddLabelRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(152, __c19, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueAddLabelResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(528, __c66, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          user: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/{user}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueAddSubscriptionRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          created: S.optional(S.String),
+          time: S.Number,
+          user_name: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/times", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueAddTimeRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue: S.optional(__S(563, __c70, 3)),
+          issue_id: S.optional(S.Number),
+          time: S.optional(S.Number),
+          user_id: S.optional(S.Number),
+          user_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrackedTime" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/check",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueCheckSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.String),
+          ignored: S.optional(S.Boolean),
+          reason: S.optional(S.Unknown),
+          repository_url: S.optional(S.String),
+          subscribed: S.optional(S.Boolean),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WatchInfo" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/labels",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "IssueClearLabelsRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          body: S.String,
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{index}/comments",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueCreateCommentRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(536, __c67, 0)),
+          body: S.optional(S.String),
+          created_at: S.optional(S.String),
+          html_url: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue_url: S.optional(S.String),
+          original_author: S.optional(S.String),
+          original_author_id: S.optional(S.Number),
+          pull_request_url: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          user: S.optional(__S(520, __c65, 0)),
+        }),
+      ).annotate({ identifier: "Comment" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          color: S.String,
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          is_archived: S.optional(S.Boolean),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
+      ).annotate({ identifier: "IssueCreateLabelRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          due_on: S.optional(S.String),
+          state: S.optional(S.String),
+          title: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
+      ).annotate({
+        identifier: "IssueCreateMilestoneRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueDeleteCommentRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueDeleteCommentReactionRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "IssueDeleteLabelRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "IssueDeleteMilestoneRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/delete",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueDeleteStopWatchRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          user: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/{user}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueDeleteSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IssueDeleteSubscriptionResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/times/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "IssueDeleteTimeRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          body: S.String,
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/issues/comments/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueEditCommentRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          color: S.optional(S.String),
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          is_archived: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "IssueEditLabelRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          description: S.optional(S.String),
+          due_on: S.optional(S.String),
+          state: S.optional(S.String),
+          title: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "IssueEditMilestoneRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueGetCommentRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueGetCommentReactionsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          since: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/comments",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "IssueGetCommentsRequest" });
+    case 1:
+      return S.suspend(() => __S(344, __c43, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueGetCommentsResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(216, __c27, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          since: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/timeline",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueGetCommentsAndTimelineRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          avatar_url: S.optional(S.String),
+          created: S.optional(S.String),
+          description: S.optional(S.String),
+          email: S.optional(S.String),
+          full_name: S.optional(S.String),
+          id: S.Number,
+          location: S.optional(S.String),
+          name: S.optional(S.String),
+          repo_admin_change_team_access: S.optional(S.Boolean),
+          username: S.String,
+          visibility: S.optional(S.String),
+          website: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Organization" });
     case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.Record(S.String, S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          can_create_org_repo: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          id: S.Number,
+          includes_all_repositories: S.optional(S.Boolean),
+          name: S.String,
+          organization: S.optional(__S(353, __c44, 1)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(354, __c44, 2)),
+          units_map: S.optional(__S(355, __c44, 3)),
+        }),
+      ).annotate({ identifier: "Team" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assignee: S.optional(__S(520, __c65, 0)),
+          assignee_team: S.optional(__S(356, __c44, 4)),
+          body: S.optional(S.String),
+          created_at: S.optional(S.String),
+          dependent_issue: S.optional(__S(563, __c70, 3)),
+          html_url: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue_url: S.optional(S.String),
+          label: S.optional(__S(528, __c66, 0)),
+          milestone: S.optional(__S(544, __c68, 0)),
+          new_ref: S.optional(S.String),
+          new_title: S.optional(S.String),
+          old_milestone: S.optional(__S(544, __c68, 0)),
+          old_project_id: S.optional(S.Number),
+          old_ref: S.optional(S.String),
+          old_title: S.optional(S.String),
+          project_id: S.optional(S.Number),
+          pull_request_url: S.optional(S.String),
+          ref_action: S.optional(S.String),
+          ref_comment: S.optional(__S(216, __c27, 0)),
+          ref_commit_sha: S.optional(S.String),
+          ref_issue: S.optional(__S(563, __c70, 3)),
+          removed_assignee: S.optional(S.Boolean),
+          resolve_doer: S.optional(__S(520, __c65, 0)),
+          review_id: S.optional(S.Number),
+          tracked_time: S.optional(__S(184, __c23, 0)),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          user: S.optional(__S(520, __c65, 0)),
+        }),
+      ).annotate({ identifier: "TimelineComment" });
+    case 6:
+      return S.Array(__S(357, __c44, 5));
+    case 7:
+      return S.suspend(() => __S(358, __c44, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueGetCommentsAndTimelineResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "IssueGetLabelRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueGetLabelsRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 })),
+      ).annotate({ identifier: "IssueGetMilestoneRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          state: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
+      ).annotate({
+        identifier: "IssueGetMilestonesListRequest",
+      });
+    case 1:
+      return S.Array(__S(544, __c68, 0));
+    case 2:
+      return S.suspend(() => __S(385, __c48, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueGetMilestonesListResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          since: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments", code: 200 })),
+      ).annotate({
+        identifier: "IssueGetRepoCommentsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(344, __c43, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueGetRepoCommentsResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/blocks", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueListBlocksRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(563, __c70, 3));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(408, __c51, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueListBlocksResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
+      ).annotate({ identifier: "IssueListLabelsRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssuePostCommentReactionRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          identifier: S.String.pipe(T.Label()),
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/labels/{identifier}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "IssueRemoveLabelRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          labels: S.optional(__S(160, __c20, 0)),
+          updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "IssueReplaceLabelsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(152, __c19, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueReplaceLabelsResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{index}/times",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "IssueResetTimeRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/start",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueStartStopWatchRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/stop",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueStopStopWatchRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "IssueSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(552, __c69, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueSubscriptionsResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          user: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/times", code: 200 }),
+        ),
+      ).annotate({ identifier: "IssueTrackedTimesRequest" });
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+    case 2:
+      return S.suspend(() => __S(489, __c61, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "IssueTrackedTimesResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           assignee: S.optional(S.String),
-          assignees: S.optional(__S(0, __c0, 0)),
+          assignees: S.optional(__S(504, __c63, 0)),
           body: S.optional(S.String),
           closed: S.optional(S.Boolean),
           due_date: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(496, __c62, 0)),
           milestone: S.optional(S.Number),
           ref: S.optional(S.String),
           title: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
       ).annotate({ identifier: "CreateIssueRequest" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           browser_download_url: S.optional(S.String),
@@ -2148,9 +3322,11 @@ function __c0(j: number): any {
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -2178,9 +3354,11 @@ function __c0(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           color: S.String,
@@ -2194,11 +3372,15 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Label" });
   }
 }
-function __c1(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+      return S.Array(__S(512, __c64, 0));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           closed_at: S.optional(S.String),
@@ -2213,7 +3395,19 @@ function __c1(j: number): any {
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "Milestone" });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(520, __c65, 0));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(528, __c66, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           draft: S.optional(S.Boolean),
@@ -2222,7 +3416,7 @@ function __c1(j: number): any {
           merged_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "PullRequestMeta" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           full_name: S.optional(S.String),
@@ -2231,12 +3425,12 @@ function __c1(j: number): any {
           owner: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepositoryMeta" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(4, __c0, 4)),
-          assignee: S.optional(__S(5, __c0, 5)),
-          assignees: S.optional(__S(6, __c0, 6)),
+          assets: S.optional(__S(536, __c67, 0)),
+          assignee: S.optional(__S(520, __c65, 0)),
+          assignees: S.optional(__S(552, __c69, 0)),
           body: S.optional(S.String),
           closed_at: S.optional(S.String),
           comments: S.optional(S.Number),
@@ -2245,1029 +3439,27 @@ function __c1(j: number): any {
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           is_locked: S.optional(S.Boolean),
-          labels: S.optional(__S(8, __c1, 0)),
-          milestone: S.optional(__S(9, __c1, 1)),
+          labels: S.optional(__S(560, __c70, 0)),
+          milestone: S.optional(__S(544, __c68, 0)),
           number: S.optional(S.Number),
           original_author: S.optional(S.String),
           original_author_id: S.optional(S.Number),
           pin_order: S.optional(S.Number),
-          pull_request: S.optional(__S(10, __c1, 2)),
+          pull_request: S.optional(__S(561, __c70, 1)),
           ref: S.optional(S.String),
-          repository: S.optional(__S(11, __c1, 3)),
+          repository: S.optional(__S(562, __c70, 2)),
           state: S.optional(S.String),
           title: S.optional(S.String),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(__S(5, __c0, 5)),
+          user: S.optional(__S(520, __c65, 0)),
         }),
       ).annotate({ identifier: "Issue" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          updated_at: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/assets", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIssueAttachmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/blocks", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIssueBlockingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          updated_at: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIssueCommentAttachmentRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{index}/dependencies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIssueDependenciesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteIssueRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIssueResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIssueAttachmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIssueCommentAttachmentRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIssueCommentAttachmentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          content: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIssueReactionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          assignee: S.optional(S.String),
-          assignees: S.optional(__S(0, __c0, 0)),
-          body: S.optional(S.String),
-          due_date: S.optional(S.String),
-          milestone: S.optional(S.Number),
-          ref: S.optional(S.String),
-          state: S.optional(S.String),
-          title: S.optional(S.String),
-          unset_due_date: S.optional(S.Boolean),
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 }),
-        ),
-      ).annotate({ identifier: "EditIssueRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-          browser_download_url: S.optional(S.String),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EditIssueAttachmentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-          browser_download_url: S.optional(S.String),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EditIssueCommentAttachmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          due_date: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{index}/deadline",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "EditIssueDeadlineRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          due_date: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueDeadline" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}", code: 200 })),
-      ).annotate({ identifier: "GetIssueRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIssueAttachmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          attachment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets/{attachment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIssueCommentAttachmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetIssueReactionsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          created_at: S.optional(S.String),
-          user: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Reaction" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetIssueReactionsResponse",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          labels: S.optional(__S(35, __c4, 3)),
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueAddLabelRequest" });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
-      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueAddLabelResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          user: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/{user}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueAddSubscriptionRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          created: S.optional(S.String),
-          time: S.Number,
-          user_name: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/times", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueAddTimeRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue: S.optional(__S(12, __c1, 4)),
-          issue_id: S.optional(S.Number),
-          time: S.optional(S.Number),
-          user_id: S.optional(S.Number),
-          user_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrackedTime" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/check",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueCheckSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.String),
-          ignored: S.optional(S.Boolean),
-          reason: S.optional(S.Unknown),
-          repository_url: S.optional(S.String),
-          subscribed: S.optional(S.Boolean),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WatchInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/labels",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "IssueClearLabelsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          body: S.String,
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{index}/comments",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueCreateCommentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(4, __c0, 4)),
-          body: S.optional(S.String),
-          created_at: S.optional(S.String),
-          html_url: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue_url: S.optional(S.String),
-          original_author: S.optional(S.String),
-          original_author_id: S.optional(S.Number),
-          pull_request_url: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          user: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          color: S.String,
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          is_archived: S.optional(S.Boolean),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
-      ).annotate({ identifier: "IssueCreateLabelRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          due_on: S.optional(S.String),
-          state: S.optional(S.String),
-          title: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
-      ).annotate({
-        identifier: "IssueCreateMilestoneRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueDeleteCommentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueDeleteCommentReactionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "IssueDeleteLabelRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "IssueDeleteMilestoneRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/delete",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueDeleteStopWatchRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          user: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions/{user}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueDeleteSubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IssueDeleteSubscriptionResponse",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/times/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "IssueDeleteTimeRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          body: S.String,
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/issues/comments/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueEditCommentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          color: S.optional(S.String),
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          is_archived: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "IssueEditLabelRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          description: S.optional(S.String),
-          due_on: S.optional(S.String),
-          state: S.optional(S.String),
-          title: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "IssueEditMilestoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueGetCommentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueGetCommentReactionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          since: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/comments",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "IssueGetCommentsRequest" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(63, __c7, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueGetCommentsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          since: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/timeline",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueGetCommentsAndTimelineRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          avatar_url: S.optional(S.String),
-          created: S.optional(S.String),
-          description: S.optional(S.String),
-          email: S.optional(S.String),
-          full_name: S.optional(S.String),
-          id: S.Number,
-          location: S.optional(S.String),
-          name: S.optional(S.String),
-          repo_admin_change_team_access: S.optional(S.Boolean),
-          username: S.String,
-          visibility: S.optional(S.String),
-          website: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          can_create_org_repo: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          id: S.Number,
-          includes_all_repositories: S.optional(S.Boolean),
-          name: S.String,
-          organization: S.optional(__S(66, __c8, 2)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(67, __c8, 3)),
-          units_map: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "Team" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assignee: S.optional(__S(5, __c0, 5)),
-          assignee_team: S.optional(__S(69, __c8, 5)),
-          body: S.optional(S.String),
-          created_at: S.optional(S.String),
-          dependent_issue: S.optional(__S(12, __c1, 4)),
-          html_url: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue_url: S.optional(S.String),
-          label: S.optional(__S(7, __c0, 7)),
-          milestone: S.optional(__S(9, __c1, 1)),
-          new_ref: S.optional(S.String),
-          new_title: S.optional(S.String),
-          old_milestone: S.optional(__S(9, __c1, 1)),
-          old_project_id: S.optional(S.Number),
-          old_ref: S.optional(S.String),
-          old_title: S.optional(S.String),
-          project_id: S.optional(S.Number),
-          pull_request_url: S.optional(S.String),
-          ref_action: S.optional(S.String),
-          ref_comment: S.optional(__S(46, __c5, 6)),
-          ref_commit_sha: S.optional(S.String),
-          ref_issue: S.optional(__S(12, __c1, 4)),
-          removed_assignee: S.optional(S.Boolean),
-          resolve_doer: S.optional(__S(5, __c0, 5)),
-          review_id: S.optional(S.Number),
-          tracked_time: S.optional(__S(41, __c5, 1)),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          user: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "TimelineComment" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(71, __c8, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueGetCommentsAndTimelineResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "IssueGetLabelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueGetLabelsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones/{id}", code: 200 })),
-      ).annotate({ identifier: "IssueGetMilestoneRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
-      ).annotate({
-        identifier: "IssueGetMilestonesListRequest",
-      });
-    case 5:
-      return S.Array(__S(9, __c1, 1));
-    case 6:
-      return S.suspend(() => __S(77, __c9, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueGetMilestonesListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          since: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments", code: 200 })),
-      ).annotate({
-        identifier: "IssueGetRepoCommentsRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(63, __c7, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueGetRepoCommentsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/blocks", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueListBlocksRequest" });
-    case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueListBlocksResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
-      ).annotate({ identifier: "IssueListLabelsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/comments/{id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssuePostCommentReactionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          identifier: S.String.pipe(T.Label()),
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/labels/{identifier}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "IssueRemoveLabelRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          labels: S.optional(__S(35, __c4, 3)),
-          updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "IssueReplaceLabelsRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueReplaceLabelsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{index}/times",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "IssueResetTimeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/start",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueStartStopWatchRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{index}/stopwatch/stop",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueStopStopWatchRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{index}/subscriptions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "IssueSubscriptionsRequest",
-      });
-    case 5:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueSubscriptionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          index: S.Number.pipe(T.Label()),
-          user: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{index}/times", code: 200 }),
-        ),
-      ).annotate({ identifier: "IssueTrackedTimesRequest" });
-    case 7:
-      return S.Array(__S(41, __c5, 1));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(95, __c11, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueTrackedTimesResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3279,11 +3471,19 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListIssueAttachmentsRequest",
       });
-    case 2:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(536, __c67, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIssueAttachmentsResponse",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3299,7 +3499,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListIssueCommentAttachmentsRequest",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3317,11 +3521,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListIssueDependenciesRequest",
       });
-    case 5:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(408, __c51, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIssueDependenciesResponse",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3341,7 +3549,11 @@ function __c12(j: number): any {
           sort: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
       ).annotate({ identifier: "ListIssuesRequest" });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3358,7 +3570,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "MoveIssuePinRequest" });
   }
 }
-function __c13(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3370,7 +3582,11 @@ function __c13(j: number): any {
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/pin", code: 200 }),
         ),
       ).annotate({ identifier: "PinIssueRequest" });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3385,7 +3601,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostIssueReactionRequest" });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3401,7 +3621,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RemoveIssueBlockingRequest",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3417,7 +3641,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RemoveIssueDependenciesRequest",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String.pipe(T.Query())),
@@ -3440,7 +3668,29 @@ function __c13(j: number): any {
           sort: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/issues/search", code: 200 })),
       ).annotate({ identifier: "SearchIssuesRequest" });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          updated_at: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/assets", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIssueAttachmentRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -3452,7 +3702,44 @@ function __c13(j: number): any {
       ).annotate({ identifier: "UnpinIssueRequest" });
   }
 }
-
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          index: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/blocks", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIssueBlockingRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          updated_at: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/comments/{id}/assets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIssueCommentAttachmentRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

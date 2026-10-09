@@ -1053,7 +1053,7 @@ export const CancelExperiment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelExperimentResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1067,8 @@ export const CapabilitiesCreateOrUpdate: API.OperationMethod<
   CapabilitiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CapabilitiesCreateOrUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CapabilitiesCreateOrUpdateResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CapabilitiesCreateOrUpdateRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<CapabilitiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1082,8 @@ export const DeleteCapability: API.OperationMethod<
   DeleteCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteCapabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCapabilityResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteCapabilityRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCapabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1097,8 @@ export const DeleteExperiment: API.OperationMethod<
   DeleteExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteExperimentResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteExperimentRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1112,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTargetResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteTargetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1127,8 +1127,8 @@ export const ExperimentsCreateOrUpdate: API.OperationMethod<
   ExperimentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
+  input: __S(897, __c28, 1) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1142,8 @@ export const ExperimentsExecutionDetails: API.OperationMethod<
   ExperimentsExecutionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ExperimentsExecutionDetailsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ExperimentExecutionDetails>,
+  input: __S(992, __c31, 0) as any as S.Schema<ExperimentsExecutionDetailsRequest>,
+  output: __S(1004, __c31, 12) as any as S.Schema<ExperimentExecutionDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1157,8 +1157,8 @@ export const GetCapability: API.OperationMethod<
   GetCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetCapabilityRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetCapabilityResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetCapabilityRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GetCapabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1172,8 @@ export const GetCapabilityType: API.OperationMethod<
   GetCapabilityTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetCapabilityTypeRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetCapabilityTypeResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetCapabilityTypeRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<GetCapabilityTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1187,8 +1187,8 @@ export const GetExperiment: API.OperationMethod<
   GetExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetExperimentRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetExperimentResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetExperimentRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<GetExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1202,8 @@ export const GetExperimentExecution: API.OperationMethod<
   GetExperimentExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetExperimentExecutionRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetExperimentExecutionResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetExperimentExecutionRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<GetExperimentExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1217,8 +1217,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetOperationStatusResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(232, __c7, 8) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1232,8 +1232,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetTargetRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetTargetResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetTargetRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1247,8 +1247,8 @@ export const GetTargetType: API.OperationMethod<
   GetTargetTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetTargetTypeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetTargetTypeResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetTargetTypeRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetTargetTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1262,8 @@ export const ListCapabilities: API.OperationMethod<
   ListCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListCapabilitiesRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<CapabilityListResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListCapabilitiesRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<CapabilityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1277,8 +1277,8 @@ export const ListCapabilityTypes: API.OperationMethod<
   ListCapabilityTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListCapabilityTypesRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CapabilityTypeListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListCapabilityTypesRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<CapabilityTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1292,8 +1292,8 @@ export const ListExperimentAll: API.OperationMethod<
   ListExperimentAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListExperimentAllRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ExperimentListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListExperimentAllRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<ExperimentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1307,8 @@ export const ListExperimentAllExecutions: API.OperationMethod<
   ListExperimentAllExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListExperimentAllExecutionsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ExperimentExecutionListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListExperimentAllExecutionsRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<ExperimentExecutionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1322,8 @@ export const ListExperiments: API.OperationMethod<
   ListExperimentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListExperimentsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ExperimentListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListExperimentsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<ExperimentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1337,8 @@ export const ListOperationAll: API.OperationMethod<
   ListOperationAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListOperationAllRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListOperationAllResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListOperationAllRequest>,
+  output: __S(612, __c19, 4) as any as S.Schema<ListOperationAllResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1352,8 +1352,8 @@ export const ListTargets: API.OperationMethod<
   ListTargetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListTargetsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<TargetListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListTargetsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1367,8 @@ export const ListTargetTypes: API.OperationMethod<
   ListTargetTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListTargetTypesRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<TargetTypeListResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListTargetTypesRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<TargetTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1382,8 @@ export const StartExperiment: API.OperationMethod<
   StartExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<StartExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartExperimentResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<StartExperimentRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<StartExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1397,8 +1397,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<TargetsCreateOrUpdateRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<TargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1412,8 @@ export const UpdateExperiment: API.OperationMethod<
   UpdateExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateExperimentResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<UpdateExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1437,11 +1437,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelExperimentRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelExperimentResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1451,7 +1459,7 @@ function __c0(j: number): any {
           parentResourceName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           capabilityName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1463,7 +1471,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CapabilitiesCreateOrUpdateRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "CapabilitiesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1474,7 +1498,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisher: S.optional(S.String),
@@ -1484,480 +1512,9 @@ function __c0(j: number): any {
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "CapabilitiesCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          parentProviderNamespace: S.String.pipe(T.Label()),
-          parentResourceType: S.String.pipe(T.Label()),
-          parentResourceName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          capabilityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCapabilityRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteExperimentRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          parentProviderNamespace: S.String.pipe(T.Label()),
-          parentResourceType: S.String.pipe(T.Label()),
-          parentResourceName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTargetRequest" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1, __c0, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ExperimentsCreateOrUpdateRequestIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "KeyValuePair" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          duration: S.optional(S.String),
-          parameters: S.optional(__S(13, __c1, 5)),
-          selectorId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChaosExperimentAction" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          actions: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "ChaosExperimentBranch" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          branches: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "ChaosExperimentStep" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zones: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "ChaosTargetSimpleFilterParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          parameters: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ChaosTargetFilter" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          id: S.String,
-        }),
-      ).annotate({ identifier: "TargetReference" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          filter: S.optional(__S(22, __c2, 6)),
-          targets: S.optional(__S(24, __c3, 0)),
-          queryString: S.optional(S.String),
-          subscriptionIds: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ChaosTargetSelector" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          steps: __S(19, __c2, 3),
-          selectors: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "ExperimentPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          identity: S.optional(__S(11, __c1, 3)),
-          properties: __S(27, __c3, 3),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExperimentsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(29, __c3, 5)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "ExperimentsCreateOrUpdateResponseIdentity",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          steps: __S(19, __c2, 3),
-          selectors: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "ExperimentProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          identity: S.optional(__S(31, __c3, 7)),
-          properties: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "ExperimentsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}/getExecutionDetails",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExperimentsExecutionDetailsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExperimentExecutionActionTargetDetailsError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          target: S.optional(S.String),
-          targetFailedTime: S.optional(S.String),
-          targetCompletedTime: S.optional(S.String),
-          error: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "ExperimentExecutionActionTargetDetailsProperties",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          actionName: S.optional(S.String),
-          actionId: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          targets: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "ActionStatus" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          branchName: S.optional(S.String),
-          branchId: S.optional(S.String),
-          status: S.optional(S.String),
-          actions: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "BranchStatus" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stepName: S.optional(S.String),
-          stepId: S.optional(S.String),
-          status: S.optional(S.String),
-          branches: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "StepStatus" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "ExperimentExecutionDetailsPropertiesRunInformation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          startedAt: S.optional(S.String),
-          stoppedAt: S.optional(S.String),
-          failureReason: S.optional(S.String),
-          lastActionAt: S.optional(S.String),
-          runInformation: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "ExperimentExecutionDetailsProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "ExperimentExecutionDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          parentProviderNamespace: S.String.pipe(T.Label()),
-          parentResourceType: S.String.pipe(T.Label()),
-          parentResourceName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          capabilityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCapabilityRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "GetCapabilityResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          targetTypeName: S.String.pipe(T.Label()),
-          capabilityTypeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCapabilityTypeRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CapabilityTypePropertiesRuntimeProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          targetType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          parametersSchema: S.optional(S.String),
-          urn: S.optional(S.String),
-          kind: S.optional(S.String),
-          azureRbacActions: S.optional(__S(50, __c6, 2)),
-          azureRbacDataActions: S.optional(__S(50, __c6, 2)),
-          requiredAzureRoleDefinitionIds: S.optional(__S(50, __c6, 2)),
-          runtimeProperties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "CapabilityTypeProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "GetCapabilityTypeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetExperimentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          identity: S.optional(__S(31, __c3, 7)),
-          properties: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "GetExperimentResponse" });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1980,6 +1537,22 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "GetExperimentExecutionResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           status: S.optional(S.String),
           startedAt: S.optional(S.String),
           stoppedAt: S.optional(S.String),
@@ -1987,19 +1560,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ExperimentExecutionProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "GetExperimentExecutionResponse",
-      });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2016,34 +1581,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetOperationStatusRequest",
       });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(65, __c8, 1)));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(64, __c8, 0)));
-    case 6:
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(230, __c7, 6)));
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(229, __c7, 5)));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(61, __c7, 5)),
-          additionalInfo: S.optional(__S(63, __c7, 7)),
+          details: S.optional(__S(226, __c7, 2)),
+          additionalInfo: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2053,13 +1614,13 @@ function __c8(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(60, __c7, 4)),
-          error: S.optional(__S(64, __c8, 0)),
+          operations: S.optional(__S(225, __c7, 1)),
+          error: S.optional(__S(229, __c7, 5)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(230, __c7, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2069,13 +1630,17 @@ function __c8(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(66, __c8, 2)),
-          error: S.optional(__S(64, __c8, 0)),
+          operations: S.optional(__S(231, __c7, 7)),
+          error: S.optional(__S(229, __c7, 5)),
         }),
       ).annotate({
         identifier: "GetOperationStatusResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2093,20 +1658,32 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTargetRequest" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(69, __c8, 5),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(320, __c10, 0),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTargetResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2123,7 +1700,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetTargetTypeRequest" });
   }
 }
-function __c9(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2131,7 +1708,7 @@ function __c9(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           propertiesSchema: S.optional(S.String),
-          resourceTypes: S.optional(__S(50, __c6, 2)),
+          resourceTypes: S.optional(__S(1120, __c35, 0)),
         }),
       ).annotate({ identifier: "TargetTypeProperties" });
     case 1:
@@ -2140,11 +1717,15 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(72, __c9, 0),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(384, __c12, 0),
         }),
       ).annotate({ identifier: "GetTargetTypeResponse" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2163,16 +1744,20 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCapabilitiesRequest" });
-    case 3:
-      return S.Array(__S(48, __c6, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75, __c9, 3),
+          value: __S(417, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityListResult" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2190,30 +1775,30 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListCapabilityTypesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(52, __c6, 4)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "CapabilityType" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79, __c9, 7),
+          value: __S(450, __c14, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityTypeListResult" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2228,16 +1813,24 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListExperimentAllRequest" });
-    case 2:
-      return S.Array(__S(55, __c6, 7));
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1216, __c38, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82, __c10, 2),
+          value: __S(512, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentListResult" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2254,22 +1847,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListExperimentAllExecutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "ExperimentExecution" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(86, __c10, 6),
+          value: __S(546, __c17, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2277,7 +1870,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2295,7 +1888,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListExperimentsRequest" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2306,7 +1903,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationAllRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2315,26 +1912,53 @@ function __c11(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(90, __c11, 2)),
+          display: S.optional(__S(609, __c19, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(610, __c19, 2));
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(92, __c11, 4)),
+          value: S.optional(__S(611, __c19, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationAllResponse" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          parentProviderNamespace: S.String.pipe(T.Label()),
+          parentResourceType: S.String.pipe(T.Label()),
+          parentResourceName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          capabilityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCapabilityRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2352,20 +1976,20 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTargetsRequest" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(95, __c11, 7),
+          value: __S(673, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2380,16 +2004,20 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTargetTypesRequest" });
+    case 1:
+      return S.Array(__S(385, __c12, 1));
     case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(98, __c12, 2),
+          value: __S(705, __c22, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetTypeListResult" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2404,7 +2032,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartExperimentRequest" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2413,7 +2045,7 @@ function __c12(j: number): any {
           parentResourceType: S.String.pipe(T.Label()),
           parentResourceName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          properties: __S(69, __c8, 5),
+          properties: __S(320, __c10, 0),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2426,27 +2058,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TargetsCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(69, __c8, 5),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(320, __c10, 0),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TargetsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(960, __c30, 0)),
+          identity: S.optional(__S(929, __c29, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2458,7 +2094,474 @@ function __c12(j: number): any {
       ).annotate({ identifier: "UpdateExperimentRequest" });
   }
 }
-
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteExperimentRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          parentProviderNamespace: S.String.pipe(T.Label()),
+          parentResourceType: S.String.pipe(T.Label()),
+          parentResourceName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTargetRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          steps: __S(968, __c30, 8),
+          selectors: __S(975, __c30, 15),
+        }),
+      ).annotate({
+        identifier: "ExperimentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(960, __c30, 0)),
+          location: S.String,
+          identity: S.optional(__S(929, __c29, 1)),
+          properties: __S(896, __c28, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(960, __c30, 0)),
+          location: S.String,
+          identity: S.optional(__S(978, __c30, 18)),
+          properties: __S(979, __c30, 19),
+        }),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "KeyValuePair" });
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          duration: S.optional(S.String),
+          parameters: S.optional(__S(962, __c30, 2)),
+          selectorId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChaosExperimentAction" });
+    case 4:
+      return S.Array(__S(963, __c30, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          actions: __S(964, __c30, 4),
+        }),
+      ).annotate({ identifier: "ChaosExperimentBranch" });
+    case 6:
+      return S.Array(__S(965, __c30, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          branches: __S(966, __c30, 6),
+        }),
+      ).annotate({ identifier: "ChaosExperimentStep" });
+    case 8:
+      return S.Array(__S(967, __c30, 7));
+    case 9:
+      return S.Array(S.String);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          zones: S.optional(__S(969, __c30, 9)),
+        }),
+      ).annotate({
+        identifier: "ChaosTargetSimpleFilterParameters",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          parameters: S.optional(__S(970, __c30, 10)),
+        }),
+      ).annotate({ identifier: "ChaosTargetFilter" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          id: S.String,
+        }),
+      ).annotate({ identifier: "TargetReference" });
+    case 13:
+      return S.Array(__S(972, __c30, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          filter: S.optional(__S(971, __c30, 11)),
+          targets: S.optional(__S(973, __c30, 13)),
+          queryString: S.optional(S.String),
+          subscriptionIds: S.optional(__S(969, __c30, 9)),
+        }),
+      ).annotate({ identifier: "ChaosTargetSelector" });
+    case 15:
+      return S.Array(__S(974, __c30, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 17:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(976, __c30, 16)));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(977, __c30, 17)),
+        }),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateResponseIdentity",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          steps: __S(968, __c30, 8),
+          selectors: __S(975, __c30, 15),
+        }),
+      ).annotate({ identifier: "ExperimentProperties" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}/getExecutionDetails",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExperimentsExecutionDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExperimentExecutionActionTargetDetailsError",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          target: S.optional(S.String),
+          targetFailedTime: S.optional(S.String),
+          targetCompletedTime: S.optional(S.String),
+          error: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "ExperimentExecutionActionTargetDetailsProperties",
+      });
+    case 3:
+      return S.Array(__S(994, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          actionName: S.optional(S.String),
+          actionId: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          targets: S.optional(__S(995, __c31, 3)),
+        }),
+      ).annotate({ identifier: "ActionStatus" });
+    case 5:
+      return S.Array(__S(996, __c31, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          branchName: S.optional(S.String),
+          branchId: S.optional(S.String),
+          status: S.optional(S.String),
+          actions: S.optional(__S(997, __c31, 5)),
+        }),
+      ).annotate({ identifier: "BranchStatus" });
+    case 7:
+      return S.Array(__S(998, __c31, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          stepName: S.optional(S.String),
+          stepId: S.optional(S.String),
+          status: S.optional(S.String),
+          branches: S.optional(__S(999, __c31, 7)),
+        }),
+      ).annotate({ identifier: "StepStatus" });
+    case 9:
+      return S.Array(__S(1000, __c31, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(1001, __c31, 9)),
+        }),
+      ).annotate({
+        identifier: "ExperimentExecutionDetailsPropertiesRunInformation",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          startedAt: S.optional(S.String),
+          stoppedAt: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          lastActionAt: S.optional(S.String),
+          runInformation: S.optional(__S(1002, __c31, 10)),
+        }),
+      ).annotate({
+        identifier: "ExperimentExecutionDetailsProperties",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(1003, __c31, 11)),
+        }),
+      ).annotate({
+        identifier: "ExperimentExecutionDetails",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          parentProviderNamespace: S.String.pipe(T.Label()),
+          parentResourceType: S.String.pipe(T.Label()),
+          parentResourceName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          capabilityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCapabilityRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetCapabilityResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          targetTypeName: S.String.pipe(T.Label()),
+          capabilityTypeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCapabilityTypeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({
+        identifier: "GetCapabilityTypeResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapabilityTypePropertiesRuntimeProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          targetType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          parametersSchema: S.optional(S.String),
+          urn: S.optional(S.String),
+          kind: S.optional(S.String),
+          azureRbacActions: S.optional(__S(1120, __c35, 0)),
+          azureRbacDataActions: S.optional(__S(1120, __c35, 0)),
+          requiredAzureRoleDefinitionIds: S.optional(__S(1120, __c35, 0)),
+          runtimeProperties: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "CapabilityTypeProperties" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetExperimentRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(960, __c30, 0)),
+          location: S.String,
+          identity: S.optional(__S(978, __c30, 18)),
+          properties: __S(979, __c30, 19),
+        }),
+      ).annotate({ identifier: "GetExperimentResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

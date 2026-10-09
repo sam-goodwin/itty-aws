@@ -2738,8 +2738,8 @@ export const AddClusterCalloutPolicies: API.OperationMethod<
   AddClusterCalloutPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddClusterCalloutPoliciesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddClusterCalloutPoliciesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddClusterCalloutPoliciesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<AddClusterCalloutPoliciesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2753,8 @@ export const AddClusterLanguageExtensions: API.OperationMethod<
   AddClusterLanguageExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AddClusterLanguageExtensionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddClusterLanguageExtensionsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<AddClusterLanguageExtensionsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<AddClusterLanguageExtensionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const AddDatabasePrincipals: API.OperationMethod<
   AddDatabasePrincipalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddDatabasePrincipalsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DatabasePrincipalListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<AddDatabasePrincipalsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<DatabasePrincipalListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2783,12 @@ export const AttachedDatabaseConfigurationsCreateOrUpdate: API.OperationMethod<
   AttachedDatabaseConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateResponse>,
+  input: __S(689, __c43, 1) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateRequest>,
+  output: __S(
+    754,
+    __c47,
+    2,
+  ) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2799,11 +2803,11 @@ export const CheckAttachedDatabaseConfigurationNameAvailability: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    976,
+    __c61,
+    0,
   ) as any as S.Schema<CheckAttachedDatabaseConfigurationNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2817,8 +2821,8 @@ export const CheckClusterNameAvailability: API.OperationMethod<
   CheckClusterNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CheckClusterNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(1264, __c79, 0) as any as S.Schema<CheckClusterNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2833,11 +2837,11 @@ export const CheckClusterPrincipalAssignmentNameAvailability: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24,
-    __c3,
+    1472,
+    __c92,
     0,
   ) as any as S.Schema<CheckClusterPrincipalAssignmentNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2855,8 @@ export const CheckDatabaseNameAvailability: API.OperationMethod<
   CheckDatabaseNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CheckDatabaseNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(1648, __c103, 0) as any as S.Schema<CheckDatabaseNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2867,11 +2871,11 @@ export const CheckDatabasePrincipalAssignmentNameAvailability: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<CheckDatabasePrincipalAssignmentNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2885,8 +2889,8 @@ export const CheckDataConnectionNameAvailability: API.OperationMethod<
   CheckDataConnectionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CheckDataConnectionNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(1872, __c117, 0) as any as S.Schema<CheckDataConnectionNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2900,8 +2904,8 @@ export const CheckManagedPrivateEndpointNameAvailability: API.OperationMethod<
   CheckManagedPrivateEndpointNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CheckManagedPrivateEndpointNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(80, __c5, 0) as any as S.Schema<CheckManagedPrivateEndpointNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2915,8 +2919,8 @@ export const CheckSandboxCustomImageNameAvailability: API.OperationMethod<
   CheckSandboxCustomImageNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CheckSandboxCustomImageNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(96, __c6, 0) as any as S.Schema<CheckSandboxCustomImageNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2930,8 +2934,8 @@ export const CheckScriptNameAvailability: API.OperationMethod<
   CheckScriptNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CheckScriptNameAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CheckNameResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<CheckScriptNameAvailabilityRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CheckNameResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2949,8 @@ export const ClusterPrincipalAssignmentsCreateOrUpdate: API.OperationMethod<
   ClusterPrincipalAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ClusterPrincipalAssignmentsCreateOrUpdateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ClusterPrincipalAssignmentsCreateOrUpdateResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ClusterPrincipalAssignmentsCreateOrUpdateRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ClusterPrincipalAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2964,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ClustersCreateOrUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ClustersCreateOrUpdateResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2979,8 @@ export const ClustersDiagnoseVirtualNetwork: API.OperationMethod<
   ClustersDiagnoseVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ClustersDiagnoseVirtualNetworkRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DiagnoseVirtualNetworkResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ClustersDiagnoseVirtualNetworkRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<DiagnoseVirtualNetworkResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2994,8 @@ export const ClustersListFollowerDatabasesGet: API.OperationMethod<
   ClustersListFollowerDatabasesGetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ClustersListFollowerDatabasesGetRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<FollowerDatabaseListResultGet>,
+  input: __S(336, __c21, 0) as any as S.Schema<ClustersListFollowerDatabasesGetRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<FollowerDatabaseListResultGet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3005,8 +3009,8 @@ export const DatabasePrincipalAssignmentsCreateOrUpdate: API.OperationMethod<
   DatabasePrincipalAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3020,8 +3024,8 @@ export const DatabasesCreateOrUpdate: API.OperationMethod<
   DatabasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DatabasesCreateOrUpdateRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DatabasesCreateOrUpdateResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DatabasesCreateOrUpdateRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DatabasesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3035,8 +3039,8 @@ export const DataConnectionsCreateOrUpdate: API.OperationMethod<
   DataConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DataConnectionsCreateOrUpdateRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DataConnectionsCreateOrUpdateResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DataConnectionsCreateOrUpdateRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DataConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3050,8 +3054,8 @@ export const DataConnectionsDataConnectionValidation: API.OperationMethod<
   DataConnectionsDataConnectionValidationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DataConnectionsDataConnectionValidationRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DataConnectionValidationListResult>,
+  input: __S(513, __c32, 1) as any as S.Schema<DataConnectionsDataConnectionValidationRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<DataConnectionValidationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3065,8 +3069,8 @@ export const DeleteAttachedDatabaseConfiguration: API.OperationMethod<
   DeleteAttachedDatabaseConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteAttachedDatabaseConfigurationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAttachedDatabaseConfigurationResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteAttachedDatabaseConfigurationRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteAttachedDatabaseConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3080,8 +3084,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3095,8 +3099,8 @@ export const DeleteClusterPrincipalAssignment: API.OperationMethod<
   DeleteClusterPrincipalAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteClusterPrincipalAssignmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteClusterPrincipalAssignmentResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteClusterPrincipalAssignmentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteClusterPrincipalAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3110,8 +3114,8 @@ export const DeleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3125,8 +3129,8 @@ export const DeleteDatabasePrincipalAssignment: API.OperationMethod<
   DeleteDatabasePrincipalAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteDatabasePrincipalAssignmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDatabasePrincipalAssignmentResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteDatabasePrincipalAssignmentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDatabasePrincipalAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3140,8 +3144,8 @@ export const DeleteDataConnection: API.OperationMethod<
   DeleteDataConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteDataConnectionRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteDataConnectionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteDataConnectionRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteDataConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3155,8 +3159,8 @@ export const DeleteManagedPrivateEndpoint: API.OperationMethod<
   DeleteManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteManagedPrivateEndpointRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteManagedPrivateEndpointResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteManagedPrivateEndpointRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3170,8 +3174,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3185,8 +3189,8 @@ export const DeleteSandboxCustomImage: API.OperationMethod<
   DeleteSandboxCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DeleteSandboxCustomImageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteSandboxCustomImageResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteSandboxCustomImageRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteSandboxCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3200,8 +3204,8 @@ export const DeleteScript: API.OperationMethod<
   DeleteScriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DeleteScriptRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteScriptResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteScriptRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteScriptResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3215,8 +3219,8 @@ export const DetachClusterFollowerDatabases: API.OperationMethod<
   DetachClusterFollowerDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DetachClusterFollowerDatabasesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DetachClusterFollowerDatabasesResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DetachClusterFollowerDatabasesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DetachClusterFollowerDatabasesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3230,8 +3234,8 @@ export const GetAttachedDatabaseConfiguration: API.OperationMethod<
   GetAttachedDatabaseConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetAttachedDatabaseConfigurationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAttachedDatabaseConfigurationResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetAttachedDatabaseConfigurationRequest>,
+  output: __S(754, __c47, 2) as any as S.Schema<GetAttachedDatabaseConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3245,8 +3249,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetClusterRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetClusterResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3260,8 +3264,8 @@ export const GetClusterPrincipalAssignment: API.OperationMethod<
   GetClusterPrincipalAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetClusterPrincipalAssignmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetClusterPrincipalAssignmentResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetClusterPrincipalAssignmentRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetClusterPrincipalAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3275,8 +3279,8 @@ export const GetDatabase: API.OperationMethod<
   GetDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3290,8 +3294,8 @@ export const GetDatabasePrincipalAssignment: API.OperationMethod<
   GetDatabasePrincipalAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetDatabasePrincipalAssignmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetDatabasePrincipalAssignmentResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<GetDatabasePrincipalAssignmentRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetDatabasePrincipalAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3305,8 +3309,8 @@ export const GetDataConnection: API.OperationMethod<
   GetDataConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetDataConnectionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetDataConnectionResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetDataConnectionRequest>,
+  output: __S(897, __c56, 1) as any as S.Schema<GetDataConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3320,8 +3324,8 @@ export const GetManagedPrivateEndpoint: API.OperationMethod<
   GetManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetManagedPrivateEndpointRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetManagedPrivateEndpointResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetManagedPrivateEndpointRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<GetManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3335,8 +3339,8 @@ export const GetOperationsResult: API.OperationMethod<
   GetOperationsResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetOperationsResultRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<OperationResult>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetOperationsResultRequest>,
+  output: __S(963, __c60, 3) as any as S.Schema<OperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3350,8 +3354,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3365,8 +3369,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3380,8 +3384,8 @@ export const GetSandboxCustomImage: API.OperationMethod<
   GetSandboxCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetSandboxCustomImageRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetSandboxCustomImageResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetSandboxCustomImageRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetSandboxCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3395,8 +3399,8 @@ export const GetScript: API.OperationMethod<
   GetScriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetScriptRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetScriptResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetScriptRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<GetScriptResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3410,8 +3414,8 @@ export const InviteDatabaseFollower: API.OperationMethod<
   InviteDatabaseFollowerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<InviteDatabaseFollowerRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DatabaseInviteFollowerResult>,
+  input: __S(1152, __c72, 0) as any as S.Schema<InviteDatabaseFollowerRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<DatabaseInviteFollowerResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3425,8 +3429,8 @@ export const ListAttachedDatabaseConfigurationByCluster: API.OperationMethod<
   ListAttachedDatabaseConfigurationByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListAttachedDatabaseConfigurationByClusterRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<AttachedDatabaseConfigurationListResult>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListAttachedDatabaseConfigurationByClusterRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<AttachedDatabaseConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3440,8 +3444,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ClusterListResult>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3455,8 +3459,8 @@ export const ListClusterCalloutPolicies: API.OperationMethod<
   ListClusterCalloutPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListClusterCalloutPoliciesRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<CalloutPoliciesList>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListClusterCalloutPoliciesRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<CalloutPoliciesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3470,8 +3474,8 @@ export const ListClusterFollowerDatabases: API.OperationMethod<
   ListClusterFollowerDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListClusterFollowerDatabasesRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<FollowerDatabaseListResult>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListClusterFollowerDatabasesRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<FollowerDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3485,8 +3489,8 @@ export const ListClusterLanguageExtensions: API.OperationMethod<
   ListClusterLanguageExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListClusterLanguageExtensionsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<LanguageExtensionsList>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListClusterLanguageExtensionsRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<LanguageExtensionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3501,11 +3505,11 @@ export const ListClusterOutboundNetworkDependenciesEndpoints: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    1280,
+    __c80,
+    0,
   ) as any as S.Schema<ListClusterOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<OutboundNetworkDependenciesEndpointListResult>,
+  output: __S(1288, __c80, 8) as any as S.Schema<OutboundNetworkDependenciesEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3519,8 +3523,8 @@ export const ListClusterPrincipalAssignments: API.OperationMethod<
   ListClusterPrincipalAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListClusterPrincipalAssignmentsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ClusterPrincipalAssignmentListResult>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListClusterPrincipalAssignmentsRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<ClusterPrincipalAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3534,8 +3538,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListClustersRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ClusterListResult>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3549,8 +3553,8 @@ export const ListClusterSkus: API.OperationMethod<
   ListClusterSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListClusterSkusRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<SkuDescriptionList>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListClusterSkusRequest>,
+  output: __S(1353, __c84, 9) as any as S.Schema<SkuDescriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3564,8 +3568,8 @@ export const ListClusterSkusByResource: API.OperationMethod<
   ListClusterSkusByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListClusterSkusByResourceRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListResourceSkusResult>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListClusterSkusByResourceRequest>,
+  output: __S(1364, __c85, 4) as any as S.Schema<ListResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3579,8 +3583,8 @@ export const ListDatabaseByCluster: API.OperationMethod<
   ListDatabaseByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListDatabaseByClusterRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DatabaseListResult>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListDatabaseByClusterRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<DatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3594,8 +3598,8 @@ export const ListDatabasePrincipalAssignments: API.OperationMethod<
   ListDatabasePrincipalAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListDatabasePrincipalAssignmentsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<DatabasePrincipalAssignmentListResult>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListDatabasePrincipalAssignmentsRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<DatabasePrincipalAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3609,8 +3613,8 @@ export const ListDatabasePrincipals: API.OperationMethod<
   ListDatabasePrincipalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListDatabasePrincipalsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DatabasePrincipalListResult>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListDatabasePrincipalsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<DatabasePrincipalListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3624,8 +3628,8 @@ export const ListDataConnectionByDatabase: API.OperationMethod<
   ListDataConnectionByDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListDataConnectionByDatabaseRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<DataConnectionListResult>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListDataConnectionByDatabaseRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<DataConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3639,8 +3643,8 @@ export const ListManagedPrivateEndpoints: API.OperationMethod<
   ListManagedPrivateEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListManagedPrivateEndpointsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ManagedPrivateEndpointListResult>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListManagedPrivateEndpointsRequest>,
+  output: __S(1459, __c91, 3) as any as S.Schema<ManagedPrivateEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3654,8 +3658,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<OperationListResult>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1492, __c93, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3669,8 +3673,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3684,8 +3688,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(1523, __c95, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3699,8 +3703,8 @@ export const ListSandboxCustomImageByCluster: API.OperationMethod<
   ListSandboxCustomImageByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListSandboxCustomImageByClusterRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<SandboxCustomImagesListResult>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListSandboxCustomImageByClusterRequest>,
+  output: __S(1539, __c96, 3) as any as S.Schema<SandboxCustomImagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3714,8 +3718,8 @@ export const ListScriptByDatabase: API.OperationMethod<
   ListScriptByDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListScriptByDatabaseRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<ScriptListResult>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListScriptByDatabaseRequest>,
+  output: __S(1554, __c97, 2) as any as S.Schema<ScriptListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3729,8 +3733,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListSkusRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<SkuDescriptionList>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(1353, __c84, 9) as any as S.Schema<SkuDescriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3744,8 +3748,8 @@ export const ManagedPrivateEndpointsCreateOrUpdate: API.OperationMethod<
   ManagedPrivateEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3759,8 +3763,8 @@ export const MigrateCluster: API.OperationMethod<
   MigrateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<MigrateClusterRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<MigrateClusterResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<MigrateClusterRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<MigrateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3774,8 +3778,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(1618, __c101, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3789,8 +3793,8 @@ export const RemoveClusterCalloutPolicy: API.OperationMethod<
   RemoveClusterCalloutPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<RemoveClusterCalloutPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RemoveClusterCalloutPolicyResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<RemoveClusterCalloutPolicyRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RemoveClusterCalloutPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3804,8 +3808,8 @@ export const RemoveClusterLanguageExtensions: API.OperationMethod<
   RemoveClusterLanguageExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<RemoveClusterLanguageExtensionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RemoveClusterLanguageExtensionsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<RemoveClusterLanguageExtensionsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RemoveClusterLanguageExtensionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3819,8 +3823,8 @@ export const RemoveDatabasePrincipals: API.OperationMethod<
   RemoveDatabasePrincipalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<RemoveDatabasePrincipalsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DatabasePrincipalListResult>,
+  input: __S(1680, __c105, 0) as any as S.Schema<RemoveDatabasePrincipalsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<DatabasePrincipalListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3834,8 +3838,8 @@ export const SandboxCustomImagesCreateOrUpdate: API.OperationMethod<
   SandboxCustomImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<SandboxCustomImagesCreateOrUpdateRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<SandboxCustomImagesCreateOrUpdateResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<SandboxCustomImagesCreateOrUpdateRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<SandboxCustomImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3849,8 +3853,8 @@ export const ScriptsCreateOrUpdate: API.OperationMethod<
   ScriptsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ScriptsCreateOrUpdateRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<ScriptsCreateOrUpdateResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ScriptsCreateOrUpdateRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<ScriptsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3864,8 +3868,8 @@ export const StartCluster: API.OperationMethod<
   StartClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<StartClusterRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<StartClusterResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<StartClusterRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<StartClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3879,8 +3883,8 @@ export const StopCluster: API.OperationMethod<
   StopClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<StopClusterRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<StopClusterResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<StopClusterRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<StopClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3894,8 +3898,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(1761, __c110, 1) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3909,8 +3913,8 @@ export const UpdateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3924,8 +3928,8 @@ export const UpdateDataConnection: API.OperationMethod<
   UpdateDataConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateDataConnectionRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UpdateDataConnectionResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateDataConnectionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateDataConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3939,8 +3943,8 @@ export const UpdateManagedPrivateEndpoint: API.OperationMethod<
   UpdateManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateManagedPrivateEndpointRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UpdateManagedPrivateEndpointResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateManagedPrivateEndpointRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<UpdateManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3954,8 +3958,8 @@ export const UpdateSandboxCustomImage: API.OperationMethod<
   UpdateSandboxCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateSandboxCustomImageRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<UpdateSandboxCustomImageResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<UpdateSandboxCustomImageRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<UpdateSandboxCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3969,8 +3973,8 @@ export const UpdateScript: API.OperationMethod<
   UpdateScriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateScriptRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<UpdateScriptResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateScriptRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<UpdateScriptResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3982,20 +3986,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          calloutUriRegex: S.optional(S.String),
-          calloutType: S.optional(S.String),
-          outboundAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CalloutPolicyInput" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          value: __S(1, __c0, 1),
+          value: __S(33, __c2, 1),
           nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4008,27 +4002,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddClusterCalloutPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddClusterCalloutPoliciesResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          languageExtensionName: S.optional(S.String),
-          languageExtensionImageName: S.optional(S.String),
-          languageExtensionCustomImageName: S.optional(S.String),
+          calloutUriRegex: S.optional(S.String),
+          calloutType: S.optional(S.String),
+          outboundAccess: S.optional(S.String),
         }),
-      ).annotate({ identifier: "LanguageExtension" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+      ).annotate({ identifier: "CalloutPolicyInput" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          value: S.optional(__S(5, __c0, 5)),
+          value: S.optional(__S(65, __c4, 1)),
           nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4041,289 +4047,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddClusterLanguageExtensionsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.String,
-          name: S.String,
-          type: S.String,
-          fqn: S.optional(S.String),
-          email: S.optional(S.String),
-          appId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabasePrincipalInput" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          value: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/addPrincipals",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddDatabasePrincipalsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.String,
-          name: S.String,
-          type: S.String,
-          fqn: S.optional(S.String),
-          email: S.optional(S.String),
-          appId: S.optional(S.String),
-          tenantName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabasePrincipal" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(11, __c1, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabasePrincipalListResult",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tablesToInclude: S.optional(__S(13, __c1, 5)),
-          tablesToExclude: S.optional(__S(13, __c1, 5)),
-          externalTablesToInclude: S.optional(__S(13, __c1, 5)),
-          externalTablesToExclude: S.optional(__S(13, __c1, 5)),
-          materializedViewsToInclude: S.optional(__S(13, __c1, 5)),
-          materializedViewsToExclude: S.optional(__S(13, __c1, 5)),
-          functionsToInclude: S.optional(__S(13, __c1, 5)),
-          functionsToExclude: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "TableLevelSharingProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          databaseName: S.String,
-          clusterResourceId: S.String,
-          defaultPrincipalsModificationKind: S.String,
-          tableLevelSharingProperties: S.optional(__S(14, __c1, 6)),
-          databaseNameOverride: S.optional(S.String),
-          databaseNamePrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttachedDatabaseConfigurationPropertiesInput",
-      });
-  }
-}
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          attachedDatabaseConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15, __c1, 7)),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "AttachedDatabaseConfigurationsCreateOrUpdateRequest",
-      });
+          languageExtensionName: S.optional(S.String),
+          languageExtensionImageName: S.optional(S.String),
+          languageExtensionCustomImageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LanguageExtension" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          databaseName: S.String,
-          clusterResourceId: S.String,
-          attachedDatabaseNames: S.optional(__S(18, __c2, 2)),
-          defaultPrincipalsModificationKind: S.String,
-          tableLevelSharingProperties: S.optional(__S(14, __c1, 6)),
-          databaseNameOverride: S.optional(S.String),
-          databaseNamePrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttachedDatabaseConfigurationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(19, __c2, 3)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttachedDatabaseConfigurationsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckAttachedDatabaseConfigurationNameAvailabilityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CheckNameResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckClusterNameAvailabilityRequest",
-      });
+      return S.Array(__S(64, __c4, 0));
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkPrincipalAssignmentNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckClusterPrincipalAssignmentNameAvailabilityRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckDatabaseNameAvailabilityRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckDatabasePrincipalAssignmentNameAvailabilityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckDataConnectionNameAvailabilityRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4342,7 +4084,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CheckManagedPrivateEndpointNameAvailabilityRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4361,7 +4107,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CheckSandboxCustomImageNameAvailabilityRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4381,7 +4131,34 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CheckScriptNameAvailabilityRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          principalAssignmentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(144, __c9, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClusterPrincipalAssignmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.String,
@@ -4394,28 +4171,9 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          principalAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(31, __c3, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClusterPrincipalAssignmentsCreateOrUpdateRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.String,
@@ -4430,127 +4188,34 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ClusterPrincipalProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(33, __c4, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({
         identifier: "ClusterPrincipalAssignmentsCreateOrUpdateResponse",
       });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrustedExternalTenant" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.Number,
-          isEnabled: S.Boolean,
-          minimum: S.Number,
-          maximum: S.Number,
-        }),
-      ).annotate({ identifier: "OptimizedAutoscale" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subnetId: S.String,
-          enginePublicIpId: S.String,
-          dataManagementPublicIpId: S.String,
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualNetworkConfiguration",
-      });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          keyName: S.optional(S.String),
-          keyVersion: S.optional(S.String),
-          keyVaultUri: S.optional(S.String),
-          userIdentity: S.optional(S.String),
-          federatedIdentityClientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(5, __c0, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LanguageExtensionsList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          trustedExternalTenants: S.optional(__S(37, __c4, 5)),
-          optimizedAutoscale: S.optional(__S(38, __c4, 6)),
-          enableDiskEncryption: S.optional(S.Boolean),
-          enableStreamingIngest: S.optional(S.Boolean),
-          virtualNetworkConfiguration: S.optional(__S(39, __c4, 7)),
-          keyVaultProperties: S.optional(__S(40, __c5, 0)),
-          enablePurge: S.optional(S.Boolean),
-          languageExtensions: S.optional(__S(41, __c5, 1)),
-          enableDoubleEncryption: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          allowedIpRangeList: S.optional(__S(13, __c1, 5)),
-          engineType: S.optional(S.String),
-          acceptedAudiences: S.optional(__S(37, __c4, 5)),
-          enableAutoStop: S.optional(S.Boolean),
-          restrictOutboundNetworkAccess: S.optional(S.String),
-          allowedFqdnList: S.optional(__S(13, __c1, 5)),
-          calloutPolicies: S.optional(__S(1, __c0, 1)),
-          publicIPType: S.optional(S.String),
-          virtualClusterGraduationProperties: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterPropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          capacity: S.optional(S.Number),
-          tier: S.String,
-        }),
-      ).annotate({ identifier: "AzureSku" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier:
-          "ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput",
-      });
-    case 5:
-      return S.Record(S.String, __S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(35, __c4, 3)),
+          tags: S.optional(__S(288, __c18, 0)),
           location: S.String,
-          properties: S.optional(__S(42, __c5, 2)),
-          sku: __S(43, __c5, 3),
-          zones: S.optional(__S(13, __c1, 5)),
-          identity: S.optional(__S(46, __c5, 6)),
+          properties: S.optional(__S(304, __c19, 0)),
+          sku: __S(256, __c16, 0),
+          zones: S.optional(__S(720, __c45, 0)),
+          identity: S.optional(__S(307, __c19, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4562,9 +4227,84 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ClustersCreateOrUpdateRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(704, __c44, 0)),
+          tags: S.optional(__S(288, __c18, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(294, __c18, 6)),
+          sku: S.optional(__S(256, __c16, 0)),
+          zones: S.optional(__S(720, __c45, 0)),
+          identity: S.optional(__S(297, __c18, 9)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClustersCreateOrUpdateResponse",
+      });
   }
 }
-function __c6(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyName: S.optional(S.String),
+          keyVersion: S.optional(S.String),
+          keyVaultUri: S.optional(S.String),
+          userIdentity: S.optional(S.String),
+          federatedIdentityClientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultProperties" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpointProperty" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionStateProperty",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(208, __c13, 0)),
+          privateLinkServiceConnectionState: __S(209, __c13, 1),
+          groupId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(210, __c13, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4576,49 +4316,71 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CalloutPolicy" });
     case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+      return S.Array(__S(224, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
+          value: S.optional(__S(65, __c4, 1)),
+          nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PrivateEndpointProperty" });
+      ).annotate({ identifier: "LanguageExtensionsList" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          capacity: S.optional(S.Number),
+          tier: S.String,
+        }),
+      ).annotate({ identifier: "AzureSku" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(211, __c13, 3));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrustedExternalTenant" });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
+          version: S.Number,
+          isEnabled: S.Boolean,
+          minimum: S.Number,
+          maximum: S.Number,
         }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionStateProperty",
-      });
+      ).annotate({ identifier: "OptimizedAutoscale" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(50, __c6, 2)),
-          privateLinkServiceConnectionState: __S(51, __c6, 3),
-          groupId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          subnetId: S.String,
+          enginePublicIpId: S.String,
+          dataManagementPublicIpId: S.String,
+          state: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
+        identifier: "VirtualNetworkConfiguration",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4629,11 +4391,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "MigrationClusterProperties",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -4641,31 +4399,31 @@ function __c7(j: number): any {
           uri: S.optional(S.String),
           dataIngestionUri: S.optional(S.String),
           stateReason: S.optional(S.String),
-          trustedExternalTenants: S.optional(__S(37, __c4, 5)),
-          optimizedAutoscale: S.optional(__S(38, __c4, 6)),
+          trustedExternalTenants: S.optional(__S(290, __c18, 2)),
+          optimizedAutoscale: S.optional(__S(291, __c18, 3)),
           enableDiskEncryption: S.optional(S.Boolean),
           enableStreamingIngest: S.optional(S.Boolean),
-          virtualNetworkConfiguration: S.optional(__S(39, __c4, 7)),
-          keyVaultProperties: S.optional(__S(40, __c5, 0)),
+          virtualNetworkConfiguration: S.optional(__S(292, __c18, 4)),
+          keyVaultProperties: S.optional(__S(192, __c12, 0)),
           enablePurge: S.optional(S.Boolean),
-          languageExtensions: S.optional(__S(41, __c5, 1)),
+          languageExtensions: S.optional(__S(240, __c15, 0)),
           enableDoubleEncryption: S.optional(S.Boolean),
           publicNetworkAccess: S.optional(S.String),
-          allowedIpRangeList: S.optional(__S(13, __c1, 5)),
+          allowedIpRangeList: S.optional(__S(720, __c45, 0)),
           engineType: S.optional(S.String),
-          acceptedAudiences: S.optional(__S(37, __c4, 5)),
+          acceptedAudiences: S.optional(__S(290, __c18, 2)),
           enableAutoStop: S.optional(S.Boolean),
           restrictOutboundNetworkAccess: S.optional(S.String),
-          allowedFqdnList: S.optional(__S(13, __c1, 5)),
-          calloutPolicies: S.optional(__S(49, __c6, 1)),
+          allowedFqdnList: S.optional(__S(720, __c45, 0)),
+          calloutPolicies: S.optional(__S(225, __c14, 1)),
           publicIPType: S.optional(S.String),
           virtualClusterGraduationProperties: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
-          migrationCluster: S.optional(__S(55, __c6, 7)),
+          privateEndpointConnections: S.optional(__S(272, __c17, 0)),
+          migrationCluster: S.optional(__S(293, __c18, 5)),
           zoneStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -4675,36 +4433,64 @@ function __c7(j: number): any {
         identifier:
           "ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties",
       });
-    case 2:
-      return S.Record(S.String, __S(57, __c7, 1));
-    case 3:
+    case 8:
+      return S.Record(S.String, __S(295, __c18, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(58, __c7, 2)),
+          userAssignedIdentities: S.optional(__S(296, __c18, 8)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          tags: S.optional(__S(35, __c4, 3)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(56, __c7, 0)),
-          sku: S.optional(__S(43, __c5, 3)),
-          zones: S.optional(__S(13, __c1, 5)),
-          identity: S.optional(__S(59, __c7, 3)),
-          etag: S.optional(S.String),
+          trustedExternalTenants: S.optional(__S(290, __c18, 2)),
+          optimizedAutoscale: S.optional(__S(291, __c18, 3)),
+          enableDiskEncryption: S.optional(S.Boolean),
+          enableStreamingIngest: S.optional(S.Boolean),
+          virtualNetworkConfiguration: S.optional(__S(292, __c18, 4)),
+          keyVaultProperties: S.optional(__S(192, __c12, 0)),
+          enablePurge: S.optional(S.Boolean),
+          languageExtensions: S.optional(__S(240, __c15, 0)),
+          enableDoubleEncryption: S.optional(S.Boolean),
+          publicNetworkAccess: S.optional(S.String),
+          allowedIpRangeList: S.optional(__S(720, __c45, 0)),
+          engineType: S.optional(S.String),
+          acceptedAudiences: S.optional(__S(290, __c18, 2)),
+          enableAutoStop: S.optional(S.Boolean),
+          restrictOutboundNetworkAccess: S.optional(S.String),
+          allowedFqdnList: S.optional(__S(720, __c45, 0)),
+          calloutPolicies: S.optional(__S(33, __c2, 1)),
+          publicIPType: S.optional(S.String),
+          virtualClusterGraduationProperties: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ClustersCreateOrUpdateResponse",
+      ).annotate({ identifier: "ClusterPropertiesInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier:
+          "ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput",
       });
-    case 5:
+    case 2:
+      return S.Record(S.String, __S(305, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(306, __c19, 2)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4721,15 +4507,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ClustersDiagnoseVirtualNetworkRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          findings: S.optional(__S(13, __c1, 5)),
+          findings: S.optional(__S(720, __c45, 0)),
         }),
       ).annotate({
         identifier: "DiagnoseVirtualNetworkResult",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4746,9 +4536,28 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ClustersListFollowerDatabasesGetRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(352, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "FollowerDatabaseDefinitionGet",
+      });
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(338, __c21, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FollowerDatabaseListResultGet",
+      });
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4756,32 +4565,17 @@ function __c8(j: number): any {
           clusterResourceId: S.String,
           attachedDatabaseConfigurationName: S.String,
           databaseName: S.optional(S.String),
-          tableLevelSharingProperties: S.optional(__S(14, __c1, 6)),
+          tableLevelSharingProperties: S.optional(__S(736, __c46, 0)),
           databaseShareOrigin: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FollowerDatabaseProperties",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "FollowerDatabaseDefinitionGet",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(66, __c8, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FollowerDatabaseListResultGet",
-      });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4789,7 +4583,7 @@ function __c8(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           principalAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(31, __c3, 7)),
+          properties: S.optional(__S(144, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4801,21 +4595,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DatabasePrincipalAssignmentsCreateOrUpdateRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          softDeletePeriod: S.optional(S.String),
-          hotCachePeriod: S.optional(S.String),
-          statistics: S.optional(S.Unknown),
-          isFollowed: S.optional(S.Boolean),
-          keyVaultProperties: S.optional(__S(40, __c5, 0)),
-          suspensionDetails: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ReadWriteDatabaseProperties",
-      });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4825,7 +4609,7 @@ function __c8(j: number): any {
           callerRole: S.optional(S.String.pipe(T.Query())),
           location: S.optional(S.String),
           kind: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(400, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4837,23 +4621,67 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DatabasesCreateOrUpdateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({
         identifier: "DatabasesCreateOrUpdateResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          softDeletePeriod: S.optional(S.String),
+          hotCachePeriod: S.optional(S.String),
+          statistics: S.optional(S.Unknown),
+          isFollowed: S.optional(S.Boolean),
+          keyVaultProperties: S.optional(__S(192, __c12, 0)),
+          suspensionDetails: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ReadWriteDatabaseProperties",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          dataConnectionName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          kind: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "DataConnectionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4863,7 +4691,7 @@ function __c9(j: number): any {
           tableName: S.optional(S.String),
           mappingRuleName: S.optional(S.String),
           dataFormat: S.optional(S.String),
-          eventSystemProperties: S.optional(__S(13, __c1, 5)),
+          eventSystemProperties: S.optional(__S(720, __c45, 0)),
           compression: S.optional(S.String),
           provisioningState: S.optional(S.String),
           managedIdentityResourceId: S.optional(S.String),
@@ -4881,6 +4709,102 @@ function __c9(j: number): any {
           cosmosDbContainer: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataConnectionProperties" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(704, __c44, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+          properties: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "DataConnectionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          value: S.optional(__S(497, __c31, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/addPrincipals",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddDatabasePrincipalsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.String,
+          name: S.String,
+          type: S.String,
+          fqn: S.optional(S.String),
+          email: S.optional(S.String),
+          appId: S.optional(S.String),
+          tenantName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabasePrincipal" });
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(481, __c30, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabasePrincipalListResult",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.String,
+          name: S.String,
+          type: S.String,
+          fqn: S.optional(S.String),
+          email: S.optional(S.String),
+          appId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabasePrincipalInput" });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "DataConnectionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4888,51 +4812,8 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          dataConnectionName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          kind: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
-            code: 200,
-            apiVersion: "2025-02-14",
-          }),
-        ),
-      ).annotate({
-        identifier: "DataConnectionsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "DataConnectionsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "DataConnectionInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
           dataConnectionName: S.optional(S.String),
-          properties: S.optional(__S(75, __c9, 3)),
+          properties: S.optional(__S(512, __c32, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4944,7 +4825,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DataConnectionsDataConnectionValidationRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
@@ -4952,19 +4833,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DataConnectionValidationResult",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(78, __c9, 6)),
+          value: S.optional(__S(515, __c32, 3)),
         }),
       ).annotate({
         identifier: "DataConnectionValidationListResult",
       });
   }
 }
-function __c10(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4984,7 +4865,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAttachedDatabaseConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4999,11 +4884,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteClusterResponse",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5021,7 +4914,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteClusterPrincipalAssignmentRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5037,7 +4934,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5056,7 +4957,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteDatabasePrincipalAssignmentRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5075,7 +4980,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteDataConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5095,7 +5004,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5115,7 +5024,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5133,7 +5046,122 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteSandboxCustomImageRequest",
       });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.String,
+          clusterResourceId: S.String,
+          defaultPrincipalsModificationKind: S.String,
+          tableLevelSharingProperties: S.optional(__S(736, __c46, 0)),
+          databaseNameOverride: S.optional(S.String),
+          databaseNamePrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttachedDatabaseConfigurationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          attachedDatabaseConfigurationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(688, __c43, 0)),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "AttachedDatabaseConfigurationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tablesToInclude: S.optional(__S(720, __c45, 0)),
+          tablesToExclude: S.optional(__S(720, __c45, 0)),
+          externalTablesToInclude: S.optional(__S(720, __c45, 0)),
+          externalTablesToExclude: S.optional(__S(720, __c45, 0)),
+          materializedViewsToInclude: S.optional(__S(720, __c45, 0)),
+          materializedViewsToExclude: S.optional(__S(720, __c45, 0)),
+          functionsToInclude: S.optional(__S(720, __c45, 0)),
+          functionsToExclude: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "TableLevelSharingProperties",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          databaseName: S.String,
+          clusterResourceId: S.String,
+          attachedDatabaseNames: S.optional(__S(752, __c47, 0)),
+          defaultPrincipalsModificationKind: S.String,
+          tableLevelSharingProperties: S.optional(__S(736, __c46, 0)),
+          databaseNameOverride: S.optional(S.String),
+          databaseNamePrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttachedDatabaseConfigurationProperties",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(753, __c47, 1)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttachedDatabaseConfigurationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5150,7 +5178,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteScriptRequest" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5169,7 +5201,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DetachClusterFollowerDatabasesRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5187,7 +5223,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetAttachedDatabaseConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5202,23 +5242,31 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          tags: S.optional(__S(35, __c4, 3)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          tags: S.optional(__S(288, __c18, 0)),
           location: S.String,
-          properties: S.optional(__S(56, __c7, 0)),
-          sku: __S(43, __c5, 3),
-          zones: S.optional(__S(13, __c1, 5)),
-          identity: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(294, __c18, 6)),
+          sku: __S(256, __c16, 0),
+          zones: S.optional(__S(720, __c45, 0)),
+          identity: S.optional(__S(297, __c18, 9)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5238,7 +5286,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5262,13 +5310,17 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
           location: S.optional(S.String),
           kind: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5287,7 +5339,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabasePrincipalAssignmentRequest",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5304,21 +5360,25 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataConnectionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
           location: S.optional(S.String),
           kind: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
         }),
       ).annotate({
         identifier: "GetDataConnectionResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5336,7 +5396,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetManagedPrivateEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateLinkResourceId: S.String,
@@ -5348,21 +5412,25 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ManagedPrivateEndpointProperties",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(102, __c12, 6)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(928, __c58, 0)),
         }),
       ).annotate({
         identifier: "GetManagedPrivateEndpointResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5409,11 +5477,51 @@ function __c13(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          properties: S.optional(__S(105, __c13, 1)),
-          error: S.optional(__S(106, __c13, 2)),
+          properties: S.optional(__S(961, __c60, 1)),
+          error: S.optional(__S(962, __c60, 2)),
         }),
       ).annotate({ identifier: "OperationResult" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckAttachedDatabaseConfigurationNameAvailabilityRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CheckNameResult" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5431,7 +5539,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5449,31 +5561,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(13, __c1, 5)),
-          requiredZoneNames: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(110, __c13, 6)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1040, __c65, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(720, __c45, 0)),
+          requiredZoneNames: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5493,7 +5609,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSandboxCustomImageRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           language: S.String,
@@ -5505,19 +5625,27 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SandboxCustomImageProperties",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(113, __c14, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }),
       ).annotate({
         identifier: "GetSandboxCustomImageResponse",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5534,7 +5662,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetScriptRequest" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scriptUrl: S.optional(S.String),
@@ -5548,17 +5680,25 @@ function __c14(j: number): any {
           managedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptProperties" });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(116, __c14, 4)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }),
       ).annotate({ identifier: "GetScriptResponse" });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5566,7 +5706,7 @@ function __c14(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           inviteeEmail: S.String,
-          tableLevelSharingProperties: S.optional(__S(14, __c1, 6)),
+          tableLevelSharingProperties: S.optional(__S(736, __c46, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5578,7 +5718,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InviteDatabaseFollowerRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           generatedInvitation: S.optional(S.String),
@@ -5588,7 +5728,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5608,17 +5748,21 @@ function __c15(j: number): any {
         identifier: "ListAttachedDatabaseConfigurationByClusterRequest",
       });
     case 1:
-      return S.Array(__S(20, __c2, 4));
+      return S.Array(__S(754, __c47, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(121, __c15, 1)),
+          value: S.optional(__S(1169, __c73, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AttachedDatabaseConfigurationListResult",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5634,16 +5778,24 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListClusterByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(94, __c11, 6));
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(832, __c52, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(124, __c15, 4)),
+          value: S.optional(__S(1200, __c75, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5660,16 +5812,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListClusterCalloutPoliciesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(49, __c6, 1),
+          value: __S(225, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalloutPoliciesList" });
   }
 }
-function __c16(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5689,17 +5841,21 @@ function __c16(j: number): any {
         identifier: "ListClusterFollowerDatabasesRequest",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(352, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c16, 1)),
+          value: S.optional(__S(1233, __c77, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FollowerDatabaseListResult",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5716,7 +5872,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListClusterLanguageExtensionsRequest",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckClusterNameAvailabilityRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5733,63 +5915,63 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListClusterOutboundNetworkDependenciesEndpointsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
           ipAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointDetail" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1281, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(134, __c16, 6)),
+          endpointDetails: S.optional(__S(1282, __c80, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(1283, __c80, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(136, __c17, 0)),
+          endpoints: S.optional(__S(1284, __c80, 4)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundNetworkDependenciesEndpointProperties",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(137, __c17, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1285, __c80, 5)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundNetworkDependenciesEndpoint",
       });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(1286, __c80, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          value: __S(139, __c17, 3),
+          value: __S(1287, __c80, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundNetworkDependenciesEndpointListResult",
       });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5806,12 +5988,12 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListClusterPrincipalAssignmentsRequest",
       });
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(161, __c10, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(142, __c17, 6)),
+          value: S.optional(__S(1297, __c81, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5819,7 +6001,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5834,7 +6016,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5847,61 +6033,65 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListClusterSkusRequest" });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
+    case 1:
+      return S.Array(__S(1344, __c84, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(__S(720, __c45, 0)),
+          capabilities: S.optional(__S(1345, __c84, 1)),
+        }),
+      ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 3:
-      return S.Array(__S(146, __c18, 2));
+      return S.Array(__S(1346, __c84, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(13, __c1, 5)),
-          capabilities: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({ identifier: "ResourceSkuZoneDetails" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           location: S.String,
-          zones: S.optional(__S(13, __c1, 5)),
-          zoneDetails: S.optional(__S(149, __c18, 5)),
+          zones: S.optional(__S(720, __c45, 0)),
+          zoneDetails: S.optional(__S(1347, __c84, 3)),
         }),
       ).annotate({ identifier: "SkuLocationInfoItem" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(1348, __c84, 4));
+    case 6:
       return S.Array(S.Unknown);
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
           tier: S.optional(S.String),
-          locations: S.optional(__S(13, __c1, 5)),
-          locationInfo: S.optional(__S(151, __c18, 7)),
-          restrictions: S.optional(__S(152, __c19, 0)),
+          locations: S.optional(__S(720, __c45, 0)),
+          locationInfo: S.optional(__S(1349, __c84, 5)),
+          restrictions: S.optional(__S(1350, __c84, 6)),
         }),
       ).annotate({ identifier: "SkuDescription" });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(1351, __c84, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(154, __c19, 2)),
+          value: S.optional(__S(1352, __c84, 8)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuDescriptionList" });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5918,7 +6108,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListClusterSkusByResourceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scaleType: S.String,
@@ -5927,28 +6117,28 @@ function __c19(j: number): any {
           default: S.Number,
         }),
       ).annotate({ identifier: "AzureCapacity" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(43, __c5, 3)),
-          capacity: S.optional(__S(157, __c19, 5)),
+          sku: S.optional(__S(256, __c16, 0)),
+          capacity: S.optional(__S(1361, __c85, 1)),
         }),
       ).annotate({ identifier: "AzureResourceSku" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1362, __c85, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(159, __c19, 7)),
+          value: S.optional(__S(1363, __c85, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourceSkusResult" });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5967,27 +6157,35 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListDatabaseByClusterRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1393, __c87, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseListResult" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
           location: S.optional(S.String),
           kind: S.String,
         }),
       ).annotate({ identifier: "Database" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(163, __c20, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseListResult" });
-    case 5:
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6005,12 +6203,12 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListDatabasePrincipalAssignmentsRequest",
       });
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(161, __c10, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(166, __c20, 6)),
+          value: S.optional(__S(1409, __c88, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6018,7 +6216,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6038,7 +6236,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListDatabasePrincipalsRequest",
       });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6056,14 +6258,18 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListDataConnectionByDatabaseRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(163, __c20, 3)),
+          value: S.optional(__S(1393, __c87, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataConnectionListResult" });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6080,28 +6286,55 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListManagedPrivateEndpointsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(102, __c12, 6)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(928, __c58, 0)),
         }),
       ).annotate({ identifier: "ManagedPrivateEndpoint" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1457, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173, __c21, 5)),
+          value: S.optional(__S(1458, __c91, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedPrivateEndpointListResult",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkPrincipalAssignmentNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckClusterPrincipalAssignmentNameAvailabilityRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6112,11 +6345,7 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6125,25 +6354,29 @@ function __c22(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(176, __c22, 0)),
+          display: S.optional(__S(1489, __c93, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
     case 3:
+      return S.Array(__S(1490, __c93, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(178, __c22, 2)),
+          value: S.optional(__S(1491, __c93, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 4:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6160,16 +6393,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(54, __c6, 6)),
+          value: S.optional(__S(272, __c17, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6186,32 +6423,32 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(110, __c13, 6)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1040, __c65, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1521, __c95, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(184, __c23, 0)),
+          value: S.optional(__S(1522, __c95, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6228,28 +6465,32 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListSandboxCustomImageByClusterRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(113, __c14, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }),
       ).annotate({ identifier: "SandboxCustomImage" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1537, __c96, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(188, __c23, 4),
+          value: __S(1538, __c96, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SandboxCustomImagesListResult",
       });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6267,20 +6508,20 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListScriptByDatabaseRequest",
       });
-    case 7:
-      return S.Array(__S(117, __c14, 5));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1136, __c71, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(191, __c23, 7)),
+          value: S.optional(__S(1553, __c97, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptListResult" });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6294,14 +6535,18 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           managedPrivateEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(102, __c12, 6)),
+          properties: S.optional(__S(928, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6313,7 +6558,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ManagedPrivateEndpointsCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6329,7 +6578,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MigrateClusterRequest" });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -6338,22 +6591,22 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionStatePropertyInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: __S(196, __c24, 4),
+          privateLinkServiceConnectionState: __S(1616, __c101, 0),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197, __c24, 5)),
+          properties: S.optional(__S(1617, __c101, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6365,7 +6618,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6385,7 +6642,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6393,7 +6650,30 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          value: S.optional(__S(5, __c0, 5)),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckDatabaseNameAvailabilityRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          value: S.optional(__S(65, __c4, 1)),
           nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6406,14 +6686,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "RemoveClusterLanguageExtensionsRequest",
       });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          value: S.optional(__S(8, __c1, 0)),
+          value: S.optional(__S(497, __c31, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6425,14 +6709,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "RemoveDatabasePrincipalsRequest",
       });
-    case 2:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           sandboxCustomImageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113, __c14, 1)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6444,7 +6732,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SandboxCustomImagesCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6452,7 +6744,7 @@ function __c25(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           scriptName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(116, __c14, 4)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6464,19 +6756,23 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ScriptsCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(116, __c14, 4)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }),
       ).annotate({
         identifier: "ScriptsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6491,7 +6787,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartClusterRequest" });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6506,18 +6806,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopClusterRequest" });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(35, __c4, 3)),
+          tags: S.optional(__S(288, __c18, 0)),
           location: S.optional(S.String),
-          sku: S.optional(__S(43, __c5, 3)),
-          zones: S.optional(__S(13, __c1, 5)),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(42, __c5, 2)),
+          sku: S.optional(__S(256, __c16, 0)),
+          zones: S.optional(__S(720, __c45, 0)),
+          identity: S.optional(__S(307, __c19, 3)),
+          properties: S.optional(__S(304, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6527,27 +6831,27 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          tags: S.optional(__S(35, __c4, 3)),
+          systemData: S.optional(__S(704, __c44, 0)),
+          tags: S.optional(__S(288, __c18, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(56, __c7, 0)),
-          sku: S.optional(__S(43, __c5, 3)),
-          zones: S.optional(__S(13, __c1, 5)),
-          identity: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(294, __c18, 6)),
+          sku: S.optional(__S(256, __c16, 0)),
+          zones: S.optional(__S(720, __c45, 0)),
+          identity: S.optional(__S(297, __c18, 9)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateClusterResponse" });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6557,7 +6861,7 @@ function __c26(j: number): any {
           callerRole: S.optional(S.String.pipe(T.Query())),
           location: S.optional(S.String),
           kind: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(400, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6567,19 +6871,23 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(704, __c44, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "UpdateDatabaseResponse" });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6589,7 +6897,7 @@ function __c26(j: number): any {
           dataConnectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           kind: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6601,14 +6909,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateDataConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           managedPrivateEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(102, __c12, 6)),
+          properties: S.optional(__S(928, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6620,14 +6932,42 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateManagedPrivateEndpointRequest",
       });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckDatabasePrincipalAssignmentNameAvailabilityRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           sandboxCustomImageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113, __c14, 1)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6639,7 +6979,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateSandboxCustomImageRequest",
       });
-    case 6:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6647,7 +6991,7 @@ function __c26(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           scriptName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(116, __c14, 4)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6659,7 +7003,30 @@ function __c26(j: number): any {
       ).annotate({ identifier: "UpdateScriptRequest" });
   }
 }
-
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-02-14",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckDataConnectionNameAvailabilityRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

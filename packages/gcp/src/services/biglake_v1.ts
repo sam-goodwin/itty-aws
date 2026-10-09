@@ -430,8 +430,8 @@ export const createProjectsLocationsCatalogs: API.OperationMethod<
   CreateProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Catalog>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<Catalog>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,8 +451,8 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   CreateProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Database>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +472,12 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   CreateProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Table>,
+  input: __S(
+    224,
+    __c28,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -493,8 +497,8 @@ export const deleteProjectsLocationsCatalogs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Catalog>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<Catalog>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -514,8 +518,8 @@ export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
   DeleteProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Database>,
+  input: __S(248, __c31, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -535,8 +539,8 @@ export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   DeleteProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Table>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -554,7 +558,7 @@ export const getIamPolicyProjectsCatalogs: API.OperationMethod<
   GetIamPolicyProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -573,7 +577,7 @@ export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -592,7 +596,7 @@ export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -611,8 +615,8 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
   GetProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetProjectsLocationsCatalogsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Catalog>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsLocationsCatalogsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<Catalog>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -630,8 +634,8 @@ export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Database>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -649,8 +653,8 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Table>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -669,8 +673,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListCatalogsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListCatalogsResponse>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -690,8 +694,8 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   GcpOpContext,
   ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListDatabasesResponse>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -711,8 +715,8 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
   GcpOpContext,
   ListTablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListTablesResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListTablesResponse>,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -733,8 +737,8 @@ export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Database>,
+  input: __S(96, __c12, 0) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -754,8 +758,12 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Table>,
+  input: __S(
+    104,
+    __c13,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -775,8 +783,12 @@ export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   RenameProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Table>,
+  input: __S(
+    113,
+    __c14,
+    1,
+  ) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -796,7 +808,7 @@ export const setIamPolicyProjectsCatalogs: API.OperationMethod<
   SetIamPolicyProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>,
+  input: __S(120, __c15, 0) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -817,7 +829,7 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>,
+  input: __S(136, __c17, 0) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -838,7 +850,7 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
+  input: __S(144, __c18, 0) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
   output: __S(23, __c2, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -859,8 +871,8 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +892,8 @@ export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,11 +914,11 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    176,
+    __c22,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -916,153 +928,6 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deleteTime: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Catalog" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          catalogId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/catalogs",
-            baseUrl: "https://biglake.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCatalogsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          locationUri: S.optional(S.String),
-          parameters: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "HiveDatabaseOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hiveOptions: S.optional(__S(3, __c0, 3)),
-          expireTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Database" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          databaseId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/databases",
-            baseUrl: "https://biglake.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCatalogsDatabasesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serializationLib: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SerDeInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inputFormat: S.optional(S.String),
-          serdeInfo: S.optional(__S(6, __c0, 6)),
-          outputFormat: S.optional(S.String),
-          locationUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageDescriptor" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(2, __c0, 2)),
-          tableType: S.optional(S.String),
-          storageDescriptor: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "HiveTableOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hiveOptions: S.optional(__S(8, __c1, 0)),
-          expireTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Table" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          tableId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/tables",
-            baseUrl: "https://biglake.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCatalogsDatabasesTablesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://biglake.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCatalogsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://biglake.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCatalogsDatabasesRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1076,7 +941,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCatalogsDatabasesTablesRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1091,8 +960,6 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsCatalogsRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -1101,7 +968,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(15, __c1, 7)),
+          exemptedMembers: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 1:
@@ -1129,7 +996,7 @@ function __c2(j: number): any {
         S.Struct({
           role: S.optional(S.String),
           condition: S.optional(__S(20, __c2, 4)),
-          members: S.optional(__S(15, __c1, 7)),
+          members: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "Binding" });
     case 6:
@@ -1148,6 +1015,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -1162,7 +1035,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsCatalogsNamespacesRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1177,7 +1054,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsCatalogsNamespacesTablesRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1187,7 +1068,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1197,7 +1082,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsDatabasesRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1207,7 +1096,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsDatabasesTablesRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1223,18 +1116,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsRequest",
       });
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(192, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          catalogs: S.optional(__S(30, __c3, 6)),
+          catalogs: S.optional(__S(73, __c9, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCatalogsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1253,15 +1146,19 @@ function __c4(j: number): any {
         identifier: "ListProjectsLocationsCatalogsDatabasesRequest",
       });
     case 1:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(217, __c27, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          databases: S.optional(__S(33, __c4, 1)),
+          databases: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1278,21 +1175,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest",
       });
-    case 4:
-      return S.Array(__S(9, __c1, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(235, __c29, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          tables: S.optional(__S(36, __c4, 4)),
+          tables: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "ListTablesResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1303,12 +1204,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsDatabasesRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1321,7 +1226,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1333,7 +1238,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1344,18 +1249,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RenameProjectsLocationsCatalogsDatabasesTablesRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(23, __c2, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1366,11 +1268,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsCatalogsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(23, __c2, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1381,11 +1298,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsCatalogsNamespacesRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1396,19 +1317,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsCatalogsNamespacesTablesRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1421,13 +1338,25 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1438,11 +1367,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsCatalogsNamespacesRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1455,7 +1388,185 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          catalogId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/catalogs",
+            baseUrl: "https://biglake.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCatalogsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleteTime: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Catalog" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          databaseId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/databases",
+            baseUrl: "https://biglake.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCatalogsDatabasesRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationUri: S.optional(S.String),
+          parameters: S.optional(__S(208, __c26, 0)),
+        }),
+      ).annotate({ identifier: "HiveDatabaseOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hiveOptions: S.optional(__S(216, __c27, 0)),
+          expireTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Database" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          tableId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/tables",
+            baseUrl: "https://biglake.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCatalogsDatabasesTablesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serializationLib: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SerDeInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputFormat: S.optional(S.String),
+          serdeInfo: S.optional(__S(232, __c29, 0)),
+          outputFormat: S.optional(S.String),
+          locationUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageDescriptor" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(208, __c26, 0)),
+          tableType: S.optional(S.String),
+          storageDescriptor: S.optional(__S(233, __c29, 1)),
+        }),
+      ).annotate({ identifier: "HiveTableOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hiveOptions: S.optional(__S(234, __c29, 2)),
+          expireTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Table" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://biglake.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCatalogsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://biglake.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCatalogsDatabasesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

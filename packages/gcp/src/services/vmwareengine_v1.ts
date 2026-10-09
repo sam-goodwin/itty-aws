@@ -2202,8 +2202,8 @@ export const createProjectsLocationsDatastores: API.OperationMethod<
   CreateProjectsLocationsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateProjectsLocationsDatastoresRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateProjectsLocationsDatastoresRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2222,8 +2222,8 @@ export const createProjectsLocationsNetworkPeerings: API.OperationMethod<
   CreateProjectsLocationsNetworkPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsLocationsNetworkPeeringsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1104, __c69, 0) as any as S.Schema<CreateProjectsLocationsNetworkPeeringsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2242,8 +2242,8 @@ export const createProjectsLocationsNetworkPolicies: API.OperationMethod<
   CreateProjectsLocationsNetworkPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2263,11 +2263,11 @@ export const createProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    1552,
+    __c97,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2286,8 +2286,8 @@ export const createProjectsLocationsPrivateClouds: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1744, __c109, 0) as any as S.Schema<CreateProjectsLocationsPrivateCloudsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2306,8 +2306,12 @@ export const createProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(
+    1952,
+    __c122,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsPrivateCloudsClustersRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,11 +2331,11 @@ export const createProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    41,
-    __c5,
-    1,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsPrivateCloudsExternalAddressesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2351,11 +2355,11 @@ export const createProjectsLocationsPrivateCloudsHcxActivationKeys: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2375,11 +2379,11 @@ export const createProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    176,
+    __c11,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsPrivateCloudsLoggingServersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2399,11 +2403,11 @@ export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    47,
-    __c5,
-    7,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2422,8 +2426,8 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2442,8 +2446,8 @@ export const createProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   CreateProjectsLocationsVmwareEngineNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateProjectsLocationsVmwareEngineNetworksRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateProjectsLocationsVmwareEngineNetworksRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2462,8 +2466,8 @@ export const deleteProjectsLocationsDatastores: API.OperationMethod<
   DeleteProjectsLocationsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteProjectsLocationsDatastoresRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteProjectsLocationsDatastoresRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2482,8 +2486,8 @@ export const deleteProjectsLocationsNetworkPeerings: API.OperationMethod<
   DeleteProjectsLocationsNetworkPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteProjectsLocationsNetworkPeeringsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteProjectsLocationsNetworkPeeringsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2502,8 +2506,8 @@ export const deleteProjectsLocationsNetworkPolicies: API.OperationMethod<
   DeleteProjectsLocationsNetworkPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2523,11 +2527,11 @@ export const deleteProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2546,8 +2550,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2566,8 +2570,8 @@ export const deleteProjectsLocationsPrivateClouds: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2586,8 +2590,8 @@ export const deleteProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsClustersRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2607,11 +2611,11 @@ export const deleteProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    416,
+    __c26,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2631,11 +2635,11 @@ export const deleteProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    432,
+    __c27,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsLoggingServersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2655,11 +2659,11 @@ export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    448,
+    __c28,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2682,8 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2698,8 +2702,8 @@ export const deleteProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   DeleteProjectsLocationsVmwareEngineNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteProjectsLocationsVmwareEngineNetworksRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteProjectsLocationsVmwareEngineNetworksRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2718,11 +2722,11 @@ export const fetchExternalAddressesProjectsLocationsNetworkPolicies: API.Paginat
   FetchNetworkPolicyExternalAddressesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<FetchNetworkPolicyExternalAddressesResponse>,
+  output: __S(497, __c31, 1) as any as S.Schema<FetchNetworkPolicyExternalAddressesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2737,8 +2741,8 @@ export const getDnsBindPermissionProjectsLocations: API.OperationMethod<
   GetDnsBindPermissionProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetDnsBindPermissionProjectsLocationsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DnsBindPermission>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetDnsBindPermissionProjectsLocationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<DnsBindPermission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2752,8 +2756,12 @@ export const getDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod
   GetDnsForwardingProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetDnsForwardingProjectsLocationsPrivateCloudsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<DnsForwarding>,
+  input: __S(
+    560,
+    __c35,
+    0,
+  ) as any as S.Schema<GetDnsForwardingProjectsLocationsPrivateCloudsRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<DnsForwarding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2767,8 +2775,8 @@ export const getIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   GetIamPolicyProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsRequest>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2786,11 +2794,11 @@ export const getIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    624,
+    __c39,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2808,11 +2816,11 @@ export const getIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    87,
-    __c10,
-    7,
+    640,
+    __c40,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2830,11 +2838,11 @@ export const getNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    656,
+    __c41,
     0,
   ) as any as S.Schema<GetNsxCredentialsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Vmwareengine_Credentials>,
+  output: __S(672, __c42, 0) as any as S.Schema<Vmwareengine_Credentials>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2856,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<Location>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2871,8 @@ export const getProjectsLocationsAnnouncements: API.OperationMethod<
   GetProjectsLocationsAnnouncementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetProjectsLocationsAnnouncementsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<Announcement>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetProjectsLocationsAnnouncementsRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<Announcement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2878,8 +2886,8 @@ export const getProjectsLocationsDatastores: API.OperationMethod<
   GetProjectsLocationsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetProjectsLocationsDatastoresRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Datastore>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetProjectsLocationsDatastoresRequest>,
+  output: __S(851, __c53, 3) as any as S.Schema<Datastore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2893,8 +2901,8 @@ export const getProjectsLocationsNetworkPeerings: API.OperationMethod<
   GetProjectsLocationsNetworkPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsLocationsNetworkPeeringsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<NetworkPeering>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetProjectsLocationsNetworkPeeringsRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<NetworkPeering>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2916,8 @@ export const getProjectsLocationsNetworkPolicies: API.OperationMethod<
   GetProjectsLocationsNetworkPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<NetworkPolicy>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetProjectsLocationsNetworkPoliciesRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<NetworkPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2927,11 +2935,11 @@ export const getProjectsLocationsNetworkPoliciesExternalAccessRules: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    912,
+    __c57,
+    0,
   ) as any as S.Schema<GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ExternalAccessRule>,
+  output: __S(1570, __c98, 2) as any as S.Schema<ExternalAccessRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2953,8 @@ export const getProjectsLocationsNodeTypes: API.OperationMethod<
   GetProjectsLocationsNodeTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetProjectsLocationsNodeTypesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<NodeType>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetProjectsLocationsNodeTypesRequest>,
+  output: __S(946, __c59, 2) as any as S.Schema<NodeType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2968,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2983,8 @@ export const getProjectsLocationsPrivateClouds: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<PrivateCloud>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsRequest>,
+  output: __S(1766, __c110, 6) as any as S.Schema<PrivateCloud>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2998,8 @@ export const getProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Cluster>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersRequest>,
+  output: __S(1989, __c124, 5) as any as S.Schema<Cluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3006,11 +3014,11 @@ export const getProjectsLocationsPrivateCloudsClustersNodes: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    106,
-    __c13,
-    2,
+    1008,
+    __c63,
+    0,
   ) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersNodesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<Node>,
+  output: __S(1024, __c64, 0) as any as S.Schema<Node>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3028,11 +3036,11 @@ export const getProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    108,
-    __c13,
-    4,
+    1040,
+    __c65,
+    0,
   ) as any as S.Schema<GetProjectsLocationsPrivateCloudsExternalAddressesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ExternalAddress>,
+  output: __S(16, __c1, 0) as any as S.Schema<ExternalAddress>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3050,11 +3058,11 @@ export const getProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    1056,
+    __c66,
+    0,
   ) as any as S.Schema<GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<HcxActivationKey>,
+  output: __S(160, __c10, 0) as any as S.Schema<HcxActivationKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3072,11 +3080,11 @@ export const getProjectsLocationsPrivateCloudsLoggingServers: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    110,
-    __c13,
-    6,
+    1072,
+    __c67,
+    0,
   ) as any as S.Schema<GetProjectsLocationsPrivateCloudsLoggingServersRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<LoggingServer>,
+  output: __S(192, __c12, 0) as any as S.Schema<LoggingServer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3094,11 +3102,11 @@ export const getProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    1088,
+    __c68,
+    0,
   ) as any as S.Schema<GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ManagementDnsZoneBinding>,
+  output: __S(224, __c14, 0) as any as S.Schema<ManagementDnsZoneBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3112,8 +3120,8 @@ export const getProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsSubnetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsSubnetsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<Subnet>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsSubnetsRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<Subnet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3127,8 +3135,8 @@ export const getProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsUpgradesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetProjectsLocationsPrivateCloudsUpgradesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<Upgrade>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetProjectsLocationsPrivateCloudsUpgradesRequest>,
+  output: __S(1194, __c74, 10) as any as S.Schema<Upgrade>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3142,8 +3150,8 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PrivateConnection>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<PrivateConnection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3157,8 +3165,8 @@ export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   GetProjectsLocationsVmwareEngineNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetProjectsLocationsVmwareEngineNetworksRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<VmwareEngineNetwork>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetProjectsLocationsVmwareEngineNetworksRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<VmwareEngineNetwork>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3176,11 +3184,11 @@ export const getVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    128,
-    __c16,
+    1232,
+    __c77,
     0,
   ) as any as S.Schema<GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Vmwareengine_Credentials>,
+  output: __S(672, __c42, 0) as any as S.Schema<Vmwareengine_Credentials>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3199,8 +3207,8 @@ export const grantProjectsLocationsDnsBindPermission: API.OperationMethod<
   GrantProjectsLocationsDnsBindPermissionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GrantProjectsLocationsDnsBindPermissionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GrantProjectsLocationsDnsBindPermissionRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3215,8 +3223,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3232,8 +3240,8 @@ export const listProjectsLocationsAnnouncements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAnnouncementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ListAnnouncementsResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<ListAnnouncementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3249,8 +3257,8 @@ export const listProjectsLocationsDatastores: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatastoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListProjectsLocationsDatastoresRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListDatastoresResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListProjectsLocationsDatastoresRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<ListDatastoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3266,8 +3274,8 @@ export const listProjectsLocationsNetworkPeerings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNetworkPeeringsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListNetworkPeeringsResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<ListNetworkPeeringsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3287,11 +3295,11 @@ export const listProjectsLocationsNetworkPeeringsPeeringRoutes: API.PaginatedOpe
   ListPeeringRoutesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    143,
-    __c17,
-    7,
+    1376,
+    __c86,
+    0,
   ) as any as S.Schema<ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListPeeringRoutesResponse>,
+  output: __S(1394, __c87, 2) as any as S.Schema<ListPeeringRoutesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3307,8 +3315,8 @@ export const listProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNetworkPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListNetworkPoliciesResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<ListNetworkPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3328,11 +3336,11 @@ export const listProjectsLocationsNetworkPoliciesExternalAccessRules: API.Pagina
   ListExternalAccessRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    150,
-    __c18,
-    6,
+    1424,
+    __c89,
+    0,
   ) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListExternalAccessRulesResponse>,
+  output: __S(1426, __c89, 2) as any as S.Schema<ListExternalAccessRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3348,8 +3356,8 @@ export const listProjectsLocationsNodeTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNodeTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListNodeTypesResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<ListNodeTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3365,8 +3373,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(1458, __c91, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3382,8 +3390,8 @@ export const listProjectsLocationsPrivateClouds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPrivateCloudsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListPrivateCloudsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<ListPrivateCloudsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3399,8 +3407,8 @@ export const listProjectsLocationsPrivateCloudsClusters: API.PaginatedOperationM
   GcpOpContext,
   ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListClustersResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<ListClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3420,11 +3428,11 @@ export const listProjectsLocationsPrivateCloudsClustersNodes: API.PaginatedOpera
   ListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    165,
-    __c20,
-    5,
+    1504,
+    __c94,
+    0,
   ) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ListNodesResponse>,
+  output: __S(1506, __c94, 2) as any as S.Schema<ListNodesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3444,11 +3452,11 @@ export const listProjectsLocationsPrivateCloudsExternalAddresses: API.PaginatedO
   ListExternalAddressesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    168,
-    __c21,
+    1520,
+    __c95,
     0,
   ) as any as S.Schema<ListProjectsLocationsPrivateCloudsExternalAddressesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<ListExternalAddressesResponse>,
+  output: __S(1521, __c95, 1) as any as S.Schema<ListExternalAddressesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,11 +3476,11 @@ export const listProjectsLocationsPrivateCloudsHcxActivationKeys: API.PaginatedO
   ListHcxActivationKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    1536,
+    __c96,
+    0,
   ) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListHcxActivationKeysResponse>,
+  output: __S(1538, __c96, 2) as any as S.Schema<ListHcxActivationKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3492,11 +3500,11 @@ export const listProjectsLocationsPrivateCloudsLoggingServers: API.PaginatedOper
   ListLoggingServersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    173,
-    __c21,
-    5,
+    1584,
+    __c99,
+    0,
   ) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<ListLoggingServersResponse>,
+  output: __S(1586, __c99, 2) as any as S.Schema<ListLoggingServersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3516,11 +3524,11 @@ export const listProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Pa
   ListManagementDnsZoneBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    176,
-    __c22,
+    1600,
+    __c100,
     0,
   ) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListManagementDnsZoneBindingsResponse>,
+  output: __S(1602, __c100, 2) as any as S.Schema<ListManagementDnsZoneBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3544,8 @@ export const listProjectsLocationsPrivateCloudsSubnets: API.PaginatedOperationMe
   GcpOpContext,
   ListSubnetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<ListSubnetsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<ListSubnetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3553,8 +3561,8 @@ export const listProjectsLocationsPrivateCloudsUpgrades: API.PaginatedOperationM
   GcpOpContext,
   ListUpgradesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ListUpgradesResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>,
+  output: __S(1634, __c102, 2) as any as S.Schema<ListUpgradesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3578,8 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   GcpOpContext,
   ListPrivateConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ListPrivateConnectionsResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>,
+  output: __S(1650, __c103, 2) as any as S.Schema<ListPrivateConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3591,11 +3599,11 @@ export const listProjectsLocationsPrivateConnectionsPeeringRoutes: API.Paginated
   ListPrivateConnectionPeeringRoutesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    188,
-    __c23,
-    4,
+    1664,
+    __c104,
+    0,
   ) as any as S.Schema<ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>,
+  output: __S(1394, __c87, 2) as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3611,8 +3619,8 @@ export const listProjectsLocationsVmwareEngineNetworks: API.PaginatedOperationMe
   GcpOpContext,
   ListVmwareEngineNetworksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListVmwareEngineNetworksResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<ListVmwareEngineNetworksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3633,11 +3641,11 @@ export const migrateManagementVmsProjectsLocationsPrivateClouds: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
+    1697,
+    __c106,
     1,
   ) as any as S.Schema<MigrateManagementVmsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3657,11 +3665,11 @@ export const mountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    1713,
+    __c107,
+    1,
   ) as any as S.Schema<MountDatastoreProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3680,8 +3688,8 @@ export const patchProjectsLocationsDatastores: API.OperationMethod<
   PatchProjectsLocationsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PatchProjectsLocationsDatastoresRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1728, __c108, 0) as any as S.Schema<PatchProjectsLocationsDatastoresRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3700,8 +3708,8 @@ export const patchProjectsLocationsNetworkPeerings: API.OperationMethod<
   PatchProjectsLocationsNetworkPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<PatchProjectsLocationsNetworkPeeringsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1792, __c112, 0) as any as S.Schema<PatchProjectsLocationsNetworkPeeringsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,8 +3728,8 @@ export const patchProjectsLocationsNetworkPolicies: API.OperationMethod<
   PatchProjectsLocationsNetworkPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1808, __c113, 0) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3741,11 +3749,11 @@ export const patchProjectsLocationsNetworkPoliciesExternalAccessRules: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    199,
-    __c24,
-    7,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3764,8 +3772,8 @@ export const patchProjectsLocationsPrivateClouds: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<PatchProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1840, __c115, 0) as any as S.Schema<PatchProjectsLocationsPrivateCloudsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3792,12 @@ export const patchProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PatchProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(
+    1856,
+    __c116,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsPrivateCloudsClustersRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3805,11 +3817,11 @@ export const patchProjectsLocationsPrivateCloudsExternalAddresses: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    202,
-    __c25,
-    2,
+    1872,
+    __c117,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsPrivateCloudsExternalAddressesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3829,11 +3841,11 @@ export const patchProjectsLocationsPrivateCloudsLoggingServers: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    203,
-    __c25,
-    3,
+    1888,
+    __c118,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsPrivateCloudsLoggingServersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3853,11 +3865,11 @@ export const patchProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    204,
-    __c25,
-    4,
+    1904,
+    __c119,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3876,8 +3888,8 @@ export const patchProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsSubnetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<PatchProjectsLocationsPrivateCloudsSubnetsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1920, __c120, 0) as any as S.Schema<PatchProjectsLocationsPrivateCloudsSubnetsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3896,8 +3908,12 @@ export const patchProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsUpgradesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PatchProjectsLocationsPrivateCloudsUpgradesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(
+    1936,
+    __c121,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsPrivateCloudsUpgradesRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3932,8 @@ export const patchProjectsLocationsPrivateConnections: API.OperationMethod<
   PatchProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<PatchProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(2000, __c125, 0) as any as S.Schema<PatchProjectsLocationsPrivateConnectionsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3936,8 +3952,8 @@ export const patchProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   PatchProjectsLocationsVmwareEngineNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<PatchProjectsLocationsVmwareEngineNetworksRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(2016, __c126, 0) as any as S.Schema<PatchProjectsLocationsVmwareEngineNetworksRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3957,11 +3973,11 @@ export const privateCloudDeletionNowProjectsLocationsPrivateClouds: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    2033,
+    __c127,
+    1,
   ) as any as S.Schema<PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3981,11 +3997,11 @@ export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    212,
-    __c26,
-    4,
+    2048,
+    __c128,
+    0,
   ) as any as S.Schema<RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4005,11 +4021,11 @@ export const resetNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    213,
-    __c26,
-    5,
+    2080,
+    __c130,
+    0,
   ) as any as S.Schema<ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4029,11 +4045,11 @@ export const resetVcenterCredentialsProjectsLocationsPrivateClouds: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    2097,
+    __c131,
+    1,
   ) as any as S.Schema<ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4052,8 +4068,8 @@ export const revokeProjectsLocationsDnsBindPermission: API.OperationMethod<
   RevokeProjectsLocationsDnsBindPermissionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<RevokeProjectsLocationsDnsBindPermissionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(2112, __c132, 0) as any as S.Schema<RevokeProjectsLocationsDnsBindPermissionRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4072,8 +4088,8 @@ export const setIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   SetIamPolicyProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(2128, __c133, 0) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsRequest>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4093,11 +4109,11 @@ export const setIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    219,
-    __c27,
-    3,
+    2160,
+    __c135,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4117,11 +4133,11 @@ export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    220,
-    __c27,
-    4,
+    2176,
+    __c136,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  output: __S(615, __c38, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4141,11 +4157,11 @@ export const testIamPermissionsProjectsLocationsPrivateClouds: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    222,
-    __c27,
-    6,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4165,11 +4181,11 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsClusters: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    64,
+    __c4,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4189,11 +4205,11 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    80,
+    __c5,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4228,8 @@ export const undeleteProjectsLocationsPrivateClouds: API.OperationMethod<
   UndeleteProjectsLocationsPrivateCloudsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<UndeleteProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(96, __c6, 0) as any as S.Schema<UndeleteProjectsLocationsPrivateCloudsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4233,11 +4249,11 @@ export const unmountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    227,
-    __c28,
-    3,
+    113,
+    __c7,
+    1,
   ) as any as S.Schema<UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4257,11 +4273,11 @@ export const updateDnsForwardingProjectsLocationsPrivateClouds: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    228,
-    __c28,
-    4,
+    128,
+    __c8,
+    0,
   ) as any as S.Schema<UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(882, __c55, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4273,53 +4289,999 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filestoreInstance: S.optional(S.String),
-          netappVolume: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleFileService" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleVmwareFileService",
+          requestId: S.optional(S.String.pipe(T.Query())),
+          externalAddressId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/externalAddresses",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsExternalAddressesRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          servers: S.optional(__S(2, __c0, 2)),
-          fileShare: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          internalIp: S.optional(S.String),
+          uid: S.optional(S.String),
+          externalIp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalAddress" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(896, __c56, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2064, __c129, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean),
+          requestId: S.optional(S.String),
+          datastore: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnmountDatastoreRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(112, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:unmountDatastore",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(578, __c36, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          hcxActivationKeyId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(160, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/hcxActivationKeys",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          activationKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HcxActivationKey" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          loggingServerId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/loggingServers",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsLoggingServersRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          protocol: S.optional(S.String),
+          port: S.optional(S.Number),
+          sourceType: S.optional(S.String),
+          hostname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoggingServer" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          managementDnsZoneBindingId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/managementDnsZoneBindings",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          vmwareEngineNetwork: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          vpcNetwork: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagementDnsZoneBinding" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          privateConnectionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(256, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/privateConnections",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateConnectionsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          serviceNetwork: S.optional(S.String),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          peeringId: S.optional(S.String),
+          type: S.optional(S.String),
+          createTime: S.optional(S.String),
+          peeringState: S.optional(S.String),
+          vmwareEngineNetworkCanonical: S.optional(S.String),
+          vmwareEngineNetwork: S.optional(S.String),
+          routingMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateConnection" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          vmwareEngineNetworkId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(290, __c18, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/vmwareEngineNetworks",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsVmwareEngineNetworksRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
           network: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ThirdPartyFileService" });
+      ).annotate({ identifier: "VpcNetwork" });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          etag: S.optional(S.String),
+          vpcNetworks: S.optional(__S(289, __c18, 1)),
+          createTime: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmwareEngineNetwork" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDatastoresRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsNetworkPeeringsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsNetworkPoliciesRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delayHours: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateCloudsLoggingServersRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPrivateConnectionsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsVmwareEngineNetworksRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkPolicy: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+networkPolicy}:fetchExternalAddresses",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          externalAddresses: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "FetchNetworkPolicyExternalAddressesResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDnsBindPermissionProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          principals: S.optional(__S(529, __c33, 1)),
+        }),
+      ).annotate({ identifier: "DnsBindPermission" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Principal" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDnsForwardingProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nameServers: S.optional(__S(896, __c56, 0)),
+          domain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardingRule" });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          forwardingRules: S.optional(__S(577, __c36, 1)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsForwarding" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exemptedMembers: S.optional(__S(896, __c56, 0)),
+          logType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(609, __c38, 1)),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 3:
+      return S.Array(__S(610, __c38, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          googleFileService: S.optional(__S(0, __c0, 0)),
-          googleVmwareFileService: S.optional(__S(1, __c0, 1)),
-          thirdPartyFileService: S.optional(__S(3, __c0, 3)),
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+          expression: S.optional(S.String),
+          description: S.optional(S.String),
         }),
-      ).annotate({ identifier: "NfsDatastore" });
+      ).annotate({ identifier: "Expr" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          createTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          state: S.optional(S.String),
-          uid: S.optional(S.String),
-          description: S.optional(S.String),
-          nfsDatastore: S.optional(__S(4, __c0, 4)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          clusters: S.optional(__S(2, __c0, 2)),
+          condition: S.optional(__S(612, __c38, 4)),
+          members: S.optional(__S(896, __c56, 0)),
+          role: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Datastore" });
+      ).annotate({ identifier: "Binding" });
     case 6:
+      return S.Array(__S(613, __c38, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          version: S.optional(S.Number),
+          auditConfigs: S.optional(__S(611, __c38, 3)),
+          bindings: S.optional(__S(614, __c38, 6)),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateCloud: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+privateCloud}:showNsxCredentials",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Vmwareengine_Credentials" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(864, __c54, 0)),
+          labels: S.optional(__S(704, __c44, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          locationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAnnouncementsRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          createTime: S.optional(S.String),
+          cluster: S.optional(S.String),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          metadata: S.optional(__S(704, __c44, 0)),
+          description: S.optional(S.String),
+          privateCloud: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          targetResourceType: S.optional(S.String),
+          activityType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Announcement" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDatastoresRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsNetworkPeeringsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsNetworkPoliciesRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           datastoreId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(851, __c53, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4330,18 +5292,71 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatastoresRequest",
       });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleVmwareFileService",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filestoreInstance: S.optional(S.String),
+          netappVolume: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleFileService" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(8, __c1, 0)),
+          servers: S.optional(__S(896, __c56, 0)),
+          fileShare: S.optional(S.String),
+          network: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThirdPartyFileService" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          googleFileService: S.optional(__S(848, __c53, 0)),
+          googleVmwareFileService: S.optional(__S(832, __c52, 0)),
+          thirdPartyFileService: S.optional(__S(849, __c53, 1)),
+        }),
+      ).annotate({ identifier: "NfsDatastore" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          state: S.optional(S.String),
+          uid: S.optional(S.String),
+          description: S.optional(S.String),
+          nfsDatastore: S.optional(__S(850, __c53, 2)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          clusters: S.optional(__S(896, __c56, 0)),
+        }),
+      ).annotate({ identifier: "Datastore" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(864, __c54, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(880, __c55, 0)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -4350,13 +5365,265 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          response: S.optional(__S(7, __c0, 7)),
-          metadata: S.optional(__S(7, __c0, 7)),
+          response: S.optional(__S(864, __c54, 0)),
+          metadata: S.optional(__S(864, __c54, 0)),
           name: S.optional(S.String),
-          error: S.optional(__S(9, __c1, 1)),
+          error: S.optional(__S(881, __c55, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsNodeTypesRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          diskSizeGb: S.optional(S.Number),
+          memoryGb: S.optional(S.Number),
+          families: S.optional(__S(896, __c56, 0)),
+          capabilities: S.optional(__S(944, __c59, 0)),
+          virtualCpuCount: S.optional(S.Number),
+          availableCustomCoreCounts: S.optional(__S(945, __c59, 1)),
+          totalCoreCount: S.optional(S.Number),
+          nodeTypeId: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NodeType" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsClustersNodesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          fqdn: S.optional(S.String),
+          nodeTypeId: S.optional(S.String),
+          customCoreCount: S.optional(S.String),
+          internalIp: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Node" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsExternalAddressesRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsLoggingServersRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          networkPeeringId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1120, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/networkPeerings",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsNetworkPeeringsRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           peerNetworkType: S.optional(S.String),
@@ -4377,1200 +5644,9 @@ function __c1(j: number): any {
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkPeering" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          networkPeeringId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/networkPeerings",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsNetworkPeeringsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkService" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          externalIp: S.optional(__S(13, __c1, 5)),
-          vmwareEngineNetwork: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          edgeServicesCidr: S.optional(S.String),
-          description: S.optional(S.String),
-          vmwareEngineNetworkCanonical: S.optional(S.String),
-          uid: S.optional(S.String),
-          internetAccess: S.optional(__S(13, __c1, 5)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          networkPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/networkPolicies",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsNetworkPoliciesRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          externalAddress: S.optional(S.String),
-          ipAddressRange: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpRange" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          sourcePorts: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          ipProtocol: S.optional(S.String),
-          createTime: S.optional(S.String),
-          destinationPorts: S.optional(__S(2, __c0, 2)),
-          priority: S.optional(S.Number),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          sourceIpRanges: S.optional(__S(17, __c2, 1)),
-          destinationIpRanges: S.optional(__S(17, __c2, 1)),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalAccessRule" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          externalAccessRuleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/externalAccessRules",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          state: S.optional(S.String),
-          internalIp: S.optional(S.String),
-          fqdn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Vcenter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cryptoKeyName: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          secondaryLocation: S.optional(S.String),
-          preferredLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StretchedClusterConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nodeCount: S.optional(S.Number),
-          customCoreCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NodeTypeConfig" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          stretchedClusterConfig: S.optional(__S(22, __c2, 6)),
-          clusterId: S.optional(S.String),
-          nodeTypeConfigs: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "ManagementCluster" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          version: S.optional(S.String),
-          fqdn: S.optional(S.String),
-          internalIp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hcx" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          fqdn: S.optional(S.String),
-          internalIp: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Nsx" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          managementCidr: S.optional(S.String),
-          managementIpAddressLayoutVersion: S.optional(S.Number),
-          vmwareEngineNetwork: S.optional(S.String),
-          dnsServerIp: S.optional(S.String),
-          vmwareEngineNetworkCanonical: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vcenter: S.optional(__S(20, __c2, 4)),
-          expireTime: S.optional(S.String),
-          encryptionConfig: S.optional(__S(21, __c2, 5)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          managementCluster: S.optional(__S(25, __c3, 1)),
-          deleteTime: S.optional(S.String),
-          hcx: S.optional(__S(26, __c3, 2)),
-          nsx: S.optional(__S(27, __c3, 3)),
-          networkConfig: S.optional(__S(28, __c3, 4)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateCloud" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          privateCloudId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/privateClouds",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scaleOut: S.optional(S.Number),
-          scaleIn: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Thresholds" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cpuThresholds: S.optional(__S(31, __c3, 7)),
-          scaleOutSize: S.optional(S.Number),
-          grantedMemoryThresholds: S.optional(__S(31, __c3, 7)),
-          consumedMemoryThresholds: S.optional(__S(31, __c3, 7)),
-          nodeTypeId: S.optional(S.String),
-          storageThresholds: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "AutoscalingPolicy" });
-    case 1:
-      return S.Record(S.String, __S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          coolDownPeriod: S.optional(S.String),
-          autoscalingPolicies: S.optional(__S(33, __c4, 1)),
-          minClusterNodeCount: S.optional(S.Number),
-          maxClusterNodeCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoscalingSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mtu: S.optional(S.Number),
-          connectionCount: S.optional(S.Number),
-          networkPeering: S.optional(S.String),
-          subnet: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatastoreNetwork" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nfsVersion: S.optional(S.String),
-          datastoreNetwork: S.optional(__S(35, __c4, 3)),
-          fileShare: S.optional(S.String),
-          datastore: S.optional(S.String),
-          accessMode: S.optional(S.String),
-          servers: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DatastoreMountConfig" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          autoscalingSettings: S.optional(__S(34, __c4, 2)),
-          createTime: S.optional(S.String),
-          stretchedClusterConfig: S.optional(__S(22, __c2, 6)),
-          nodeTypeConfigs: S.optional(__S(24, __c3, 0)),
-          uid: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          datastoreMountConfig: S.optional(__S(37, __c4, 5)),
-          management: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Cluster" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          clusterId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clusters",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsClustersRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          internalIp: S.optional(S.String),
-          uid: S.optional(S.String),
-          externalIp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalAddress" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          externalAddressId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/externalAddresses",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsExternalAddressesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          activationKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HcxActivationKey" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          hcxActivationKeyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/hcxActivationKeys",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          protocol: S.optional(S.String),
-          port: S.optional(S.Number),
-          sourceType: S.optional(S.String),
-          hostname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoggingServer" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          loggingServerId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/loggingServers",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsLoggingServersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          vmwareEngineNetwork: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          vpcNetwork: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagementDnsZoneBinding" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          managementDnsZoneBindingId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/managementDnsZoneBindings",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          serviceNetwork: S.optional(S.String),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          peeringId: S.optional(S.String),
-          type: S.optional(S.String),
-          createTime: S.optional(S.String),
-          peeringState: S.optional(S.String),
-          vmwareEngineNetworkCanonical: S.optional(S.String),
-          vmwareEngineNetwork: S.optional(S.String),
-          routingMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateConnection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          privateConnectionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/privateConnections",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPrivateConnectionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpcNetwork" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          etag: S.optional(S.String),
-          vpcNetworks: S.optional(__S(51, __c6, 3)),
-          createTime: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmwareEngineNetwork" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          vmwareEngineNetworkId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/vmwareEngineNetworks",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsVmwareEngineNetworksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDatastoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsNetworkPeeringsRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsNetworkPoliciesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          delayHours: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateCloudsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateCloudsClustersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateCloudsLoggingServersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPrivateConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsVmwareEngineNetworksRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          networkPolicy: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+networkPolicy}:fetchExternalAddresses",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
-      });
-    case 3:
-      return S.Array(__S(40, __c5, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          externalAddresses: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "FetchNetworkPolicyExternalAddressesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDnsBindPermissionProjectsLocationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Principal" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          principals: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "DnsBindPermission" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDnsForwardingProjectsLocationsPrivateCloudsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nameServers: S.optional(__S(2, __c0, 2)),
-          domain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardingRule" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          forwardingRules: S.optional(__S(75, __c9, 3)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsForwarding" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exemptedMembers: S.optional(__S(2, __c0, 2)),
-          logType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-          expression: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(__S(82, __c10, 2)),
-          members: S.optional(__S(2, __c0, 2)),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(81, __c10, 1)),
-          bindings: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          privateCloud: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+privateCloud}:showNsxCredentials",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Vmwareengine_Credentials" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(7, __c0, 7)),
-          labels: S.optional(__S(91, __c11, 3)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAnnouncementsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          createTime: S.optional(S.String),
-          cluster: S.optional(S.String),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          metadata: S.optional(__S(91, __c11, 3)),
-          description: S.optional(S.String),
-          privateCloud: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          targetResourceType: S.optional(S.String),
-          activityType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Announcement" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDatastoresRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNetworkPeeringsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNetworkPoliciesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNodeTypesRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          diskSizeGb: S.optional(S.Number),
-          memoryGb: S.optional(S.Number),
-          families: S.optional(__S(2, __c0, 2)),
-          capabilities: S.optional(__S(100, __c12, 4)),
-          virtualCpuCount: S.optional(S.Number),
-          availableCustomCoreCounts: S.optional(__S(101, __c12, 5)),
-          totalCoreCount: S.optional(S.Number),
-          nodeTypeId: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NodeType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsClustersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsClustersNodesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          fqdn: S.optional(S.String),
-          nodeTypeId: S.optional(S.String),
-          customCoreCount: S.optional(S.String),
-          internalIp: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Node" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsExternalAddressesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsLoggingServersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-      });
-  }
-}
-function __c14(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5586,7 +5662,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPrivateCloudsSubnetsRequest",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5597,7 +5677,11 @@ function __c14(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5611,7 +5695,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPrivateCloudsUpgradesRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           seconds: S.optional(S.Number),
@@ -5620,67 +5708,63 @@ function __c14(j: number): any {
           minutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeOfDay" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(__S(115, __c14, 3)),
+          startTime: S.optional(__S(1184, __c74, 0)),
           duration: S.optional(S.String),
           dayOfWeek: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeWindow" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1185, __c74, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(__S(115, __c14, 3)),
+          startTime: S.optional(__S(1184, __c74, 0)),
           startDay: S.optional(S.String),
-          endTime: S.optional(__S(115, __c14, 3)),
+          endTime: S.optional(__S(1184, __c74, 0)),
           endDay: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeeklyTimeInterval" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1187, __c74, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          disallowedIntervals: S.optional(__S(119, __c14, 7)),
+          disallowedIntervals: S.optional(__S(1188, __c74, 4)),
           minHoursDay: S.optional(S.Number),
           minHoursWeek: S.optional(S.Number),
-          rescheduleDateRange: S.optional(__S(120, __c15, 0)),
+          rescheduleDateRange: S.optional(__S(1189, __c74, 5)),
         }),
       ).annotate({ identifier: "Constraints" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           lastEditor: S.optional(S.String),
-          weeklyWindows: S.optional(__S(117, __c14, 5)),
+          weeklyWindows: S.optional(__S(1186, __c74, 2)),
           startTime: S.optional(S.String),
-          constraints: S.optional(__S(121, __c15, 1)),
-          editWindow: S.optional(__S(120, __c15, 0)),
+          constraints: S.optional(__S(1190, __c74, 6)),
+          editWindow: S.optional(__S(1189, __c74, 5)),
         }),
       ).annotate({ identifier: "Schedule" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           componentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmwareUpgradeComponent" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(1192, __c74, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5694,13 +5778,17 @@ function __c15(j: number): any {
           updateTime: S.optional(S.String),
           state: S.optional(S.String),
           endTime: S.optional(S.String),
-          schedule: S.optional(__S(122, __c15, 2)),
+          schedule: S.optional(__S(1191, __c74, 7)),
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
-          componentUpgrades: S.optional(__S(124, __c15, 4)),
+          componentUpgrades: S.optional(__S(1193, __c74, 9)),
         }),
       ).annotate({ identifier: "Upgrade" });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5714,7 +5802,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPrivateConnectionsRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5730,7 +5822,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5747,20 +5839,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principal: S.optional(__S(70, __c8, 6)),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GrantDnsBindPermissionRequest",
-      });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5771,12 +5858,29 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GrantProjectsLocationsDnsBindPermissionRequest",
       });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(__S(544, __c34, 0)),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GrantDnsBindPermissionRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(896, __c56, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -5789,16 +5893,20 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 4:
-      return S.Array(__S(92, __c11, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(720, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(132, __c16, 4)),
+          locations: S.optional(__S(1281, __c80, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5816,23 +5924,23 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAnnouncementsRequest",
       });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
-          announcements: S.optional(__S(135, __c16, 7)),
+          announcements: S.optional(__S(1297, __c81, 1)),
         }),
       ).annotate({
         identifier: "ListAnnouncementsResponse",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5851,17 +5959,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDatastoresRequest",
       });
+    case 1:
+      return S.Array(__S(851, __c53, 3));
     case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
-          datastores: S.optional(__S(138, __c17, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
+          datastores: S.optional(__S(1313, __c82, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatastoresResponse" });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5879,19 +5991,71 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNetworkPeeringsRequest",
       });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          networkPeerings: S.optional(__S(141, __c17, 5)),
+          networkPeerings: S.optional(__S(1329, __c83, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({
         identifier: "ListNetworkPeeringsResponse",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          networkPolicyId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1361, __c85, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/networkPolicies",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsNetworkPoliciesRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkService" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalIp: S.optional(__S(1360, __c85, 0)),
+          vmwareEngineNetwork: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          edgeServicesCidr: S.optional(S.String),
+          description: S.optional(S.String),
+          vmwareEngineNetworkCanonical: S.optional(S.String),
+          uid: S.optional(S.String),
+          internetAccess: S.optional(__S(1360, __c85, 0)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkPolicy" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5910,7 +6074,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5924,17 +6088,21 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "PeeringRoute" });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(1392, __c87, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          peeringRoutes: S.optional(__S(145, __c18, 1)),
+          peeringRoutes: S.optional(__S(1393, __c87, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPeeringRoutesResponse",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5952,19 +6120,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNetworkPoliciesRequest",
       });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(1361, __c85, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
-          networkPolicies: S.optional(__S(148, __c18, 4)),
+          networkPolicies: S.optional(__S(1409, __c88, 1)),
         }),
       ).annotate({
         identifier: "ListNetworkPoliciesResponse",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5982,23 +6154,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
       });
-    case 7:
-      return S.Array(__S(18, __c2, 2));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1570, __c98, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
-          externalAccessRules: S.optional(__S(151, __c18, 7)),
+          externalAccessRules: S.optional(__S(1425, __c89, 1)),
         }),
       ).annotate({
         identifier: "ListExternalAccessRulesResponse",
       });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6015,17 +6187,21 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNodeTypesRequest",
       });
+    case 1:
+      return S.Array(__S(946, __c59, 2));
     case 2:
-      return S.Array(__S(102, __c12, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          nodeTypes: S.optional(__S(154, __c19, 2)),
+          nodeTypes: S.optional(__S(1441, __c90, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({ identifier: "ListNodeTypesResponse" });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6043,17 +6219,21 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(882, __c55, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(157, __c19, 5)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          operations: S.optional(__S(1457, __c91, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6071,23 +6251,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(29, __c3, 5));
     case 1:
+      return S.Array(__S(1766, __c110, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
-          privateClouds: S.optional(__S(160, __c20, 0)),
+          unreachable: S.optional(__S(896, __c56, 0)),
+          privateClouds: S.optional(__S(1473, __c92, 1)),
         }),
       ).annotate({
         identifier: "ListPrivateCloudsResponse",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6105,17 +6285,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsClustersRequest",
       });
-    case 3:
-      return S.Array(__S(38, __c4, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1989, __c124, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
-          clusters: S.optional(__S(163, __c20, 3)),
+          clusters: S.optional(__S(1489, __c93, 1)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6131,18 +6315,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsClustersNodesRequest",
       });
-    case 6:
-      return S.Array(__S(107, __c13, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(1024, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(__S(166, __c20, 6)),
+          nodes: S.optional(__S(1505, __c94, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNodesResponse" });
   }
 }
-function __c21(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6165,14 +6349,18 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          externalAddresses: S.optional(__S(67, __c8, 3)),
+          externalAddresses: S.optional(__S(512, __c32, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({
         identifier: "ListExternalAddressesResponse",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6188,19 +6376,77 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          hcxActivationKeys: S.optional(__S(171, __c21, 3)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          hcxActivationKeys: S.optional(__S(1537, __c96, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({
         identifier: "ListHcxActivationKeysResponse",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          externalAccessRuleId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1570, __c98, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/externalAccessRules",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalAddress: S.optional(S.String),
+          ipAddressRange: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpRange" });
+    case 1:
+      return S.Array(__S(1568, __c98, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          sourcePorts: S.optional(__S(896, __c56, 0)),
+          name: S.optional(S.String),
+          ipProtocol: S.optional(S.String),
+          createTime: S.optional(S.String),
+          destinationPorts: S.optional(__S(896, __c56, 0)),
+          priority: S.optional(S.Number),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          sourceIpRanges: S.optional(__S(1569, __c98, 1)),
+          destinationIpRanges: S.optional(__S(1569, __c98, 1)),
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalAccessRule" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6218,13 +6464,13 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsLoggingServersRequest",
       });
-    case 6:
-      return S.Array(__S(44, __c5, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          loggingServers: S.optional(__S(174, __c21, 6)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          loggingServers: S.optional(__S(1585, __c99, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6232,7 +6478,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6253,18 +6499,22 @@ function __c22(j: number): any {
         identifier: "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
       });
     case 1:
-      return S.Array(__S(46, __c5, 6));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          managementDnsZoneBindings: S.optional(__S(177, __c22, 1)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          managementDnsZoneBindings: S.optional(__S(1601, __c100, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({
         identifier: "ListManagementDnsZoneBindingsResponse",
       });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6280,17 +6530,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsSubnetsRequest",
       });
-    case 4:
-      return S.Array(__S(113, __c14, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(1152, __c72, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          subnets: S.optional(__S(180, __c22, 4)),
+          subnets: S.optional(__S(1617, __c101, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({ identifier: "ListSubnetsResponse" });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6308,21 +6562,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateCloudsUpgradesRequest",
       });
-    case 7:
-      return S.Array(__S(125, __c15, 5));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1194, __c74, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrades: S.optional(__S(183, __c22, 7)),
+          upgrades: S.optional(__S(1633, __c102, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({ identifier: "ListUpgradesResponse" });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6340,19 +6594,23 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateConnectionsRequest",
       });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
     case 2:
-      return S.Array(__S(48, __c6, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          privateConnections: S.optional(__S(186, __c23, 2)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          privateConnections: S.optional(__S(1649, __c103, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateConnectionsResponse",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6368,7 +6626,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest",
       });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6386,13 +6648,13 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsVmwareEngineNetworksRequest",
       });
-    case 6:
-      return S.Array(__S(52, __c6, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(290, __c18, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          vmwareEngineNetworks: S.optional(__S(190, __c23, 6)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          vmwareEngineNetworks: S.optional(__S(1681, __c105, 1)),
+          unreachable: S.optional(__S(896, __c56, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6400,7 +6662,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6416,7 +6678,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6427,20 +6689,24 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "MigrateManagementVmsProjectsLocationsPrivateCloudsRequest",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          datastoreMountConfig: S.optional(__S(36, __c4, 4)),
+          datastoreMountConfig: S.optional(__S(1969, __c123, 1)),
           validateOnly: S.optional(S.Boolean),
           ignoreColocation: S.optional(S.Boolean),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountDatastoreRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(194, __c24, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1712, __c107, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6451,13 +6717,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "MountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(851, __c53, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6468,14 +6738,136 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDatastoresRequest",
       });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          privateCloudId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1766, __c110, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/privateClouds",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          state: S.optional(S.String),
+          internalIp: S.optional(S.String),
+          fqdn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Vcenter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cryptoKeyName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stretchedClusterConfig: S.optional(__S(1776, __c111, 0)),
+          clusterId: S.optional(S.String),
+          nodeTypeConfigs: S.optional(__S(1778, __c111, 2)),
+        }),
+      ).annotate({ identifier: "ManagementCluster" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          version: S.optional(S.String),
+          fqdn: S.optional(S.String),
+          internalIp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hcx" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          fqdn: S.optional(S.String),
+          internalIp: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Nsx" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          managementCidr: S.optional(S.String),
+          managementIpAddressLayoutVersion: S.optional(S.Number),
+          vmwareEngineNetwork: S.optional(S.String),
+          dnsServerIp: S.optional(S.String),
+          vmwareEngineNetworkCanonical: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          vcenter: S.optional(__S(1760, __c110, 0)),
+          expireTime: S.optional(S.String),
+          encryptionConfig: S.optional(__S(1761, __c110, 1)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          managementCluster: S.optional(__S(1762, __c110, 2)),
+          deleteTime: S.optional(S.String),
+          hcx: S.optional(__S(1763, __c110, 3)),
+          nsx: S.optional(__S(1764, __c110, 4)),
+          networkConfig: S.optional(__S(1765, __c110, 5)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateCloud" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secondaryLocation: S.optional(S.String),
+          preferredLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StretchedClusterConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nodeCount: S.optional(S.Number),
+          customCoreCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NodeTypeConfig" });
+    case 2:
+      return S.Record(S.String, __S(1777, __c111, 1));
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1120, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6486,14 +6878,18 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsNetworkPeeringsRequest",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1361, __c85, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6504,14 +6900,18 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsNetworkPoliciesRequest",
       });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1570, __c98, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6524,7 +6924,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6533,7 +6933,7 @@ function __c25(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1766, __c110, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6544,14 +6944,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsRequest",
       });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1989, __c124, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6562,14 +6966,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsClustersRequest",
       });
-    case 2:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6580,13 +6988,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsExternalAddressesRequest",
       });
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6597,13 +7009,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsLoggingServersRequest",
       });
-    case 4:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6614,12 +7030,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
       });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1152, __c72, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6630,13 +7050,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsSubnetsRequest",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1194, __c74, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6647,14 +7071,114 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPrivateCloudsUpgradesRequest",
       });
-    case 7:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          clusterId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1989, __c124, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clusters",
+            baseUrl: "https://vmwareengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPrivateCloudsClustersRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mtu: S.optional(S.Number),
+          connectionCount: S.optional(S.Number),
+          networkPeering: S.optional(S.String),
+          subnet: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatastoreNetwork" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nfsVersion: S.optional(S.String),
+          datastoreNetwork: S.optional(__S(1968, __c123, 0)),
+          fileShare: S.optional(S.String),
+          datastore: S.optional(S.String),
+          accessMode: S.optional(S.String),
+          servers: S.optional(__S(896, __c56, 0)),
+        }),
+      ).annotate({ identifier: "DatastoreMountConfig" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scaleOut: S.optional(S.Number),
+          scaleIn: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Thresholds" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cpuThresholds: S.optional(__S(1984, __c124, 0)),
+          scaleOutSize: S.optional(S.Number),
+          grantedMemoryThresholds: S.optional(__S(1984, __c124, 0)),
+          consumedMemoryThresholds: S.optional(__S(1984, __c124, 0)),
+          nodeTypeId: S.optional(S.String),
+          storageThresholds: S.optional(__S(1984, __c124, 0)),
+        }),
+      ).annotate({ identifier: "AutoscalingPolicy" });
+    case 2:
+      return S.Record(S.String, __S(1985, __c124, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          coolDownPeriod: S.optional(S.String),
+          autoscalingPolicies: S.optional(__S(1986, __c124, 2)),
+          minClusterNodeCount: S.optional(S.Number),
+          maxClusterNodeCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoscalingSettings" });
+    case 4:
+      return S.Array(__S(1969, __c123, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          autoscalingSettings: S.optional(__S(1987, __c124, 3)),
+          createTime: S.optional(S.String),
+          stretchedClusterConfig: S.optional(__S(1776, __c111, 0)),
+          nodeTypeConfigs: S.optional(__S(1778, __c111, 2)),
+          uid: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          datastoreMountConfig: S.optional(__S(1988, __c124, 4)),
+          management: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Cluster" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6667,7 +7191,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6676,7 +7200,7 @@ function __c26(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(290, __c18, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6687,7 +7211,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsVmwareEngineNetworksRequest",
       });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6696,11 +7224,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "AcceleratePrivateCloudDeletionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(209, __c26, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2032, __c127, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6711,19 +7239,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepairManagementDnsZoneBindingRequest",
-      });
-    case 4:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(211, __c26, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2064, __c129, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6734,11 +7258,27 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
       });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepairManagementDnsZoneBindingRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateCloud: S.String.pipe(T.Label()),
-          body: S.optional(__S(211, __c26, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2064, __c129, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6749,7 +7289,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
       });
-    case 6:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6758,11 +7302,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ResetVcenterCredentialsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateCloud: S.String.pipe(T.Label()),
-          body: S.optional(__S(214, __c26, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2096, __c131, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6775,13 +7319,13 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6792,18 +7336,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RevokeProjectsLocationsDnsBindPermissionRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(85, __c10, 5)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 2:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2144, __c134, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6814,11 +7355,26 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsPrivateCloudsRequest",
       });
-    case 3:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(615, __c38, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2144, __c134, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6829,11 +7385,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
       });
-    case 4:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2144, __c134, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6844,121 +7404,8 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest",
-      });
   }
 }
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(211, __c26, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsPrivateCloudsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean),
-          requestId: S.optional(S.String),
-          datastore: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UnmountDatastoreRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(226, __c28, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:unmountDatastore",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://vmwareengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

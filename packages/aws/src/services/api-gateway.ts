@@ -1459,8 +1459,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApiKey>,
+  input: __S(954, __c119, 2) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<ApiKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1491,8 +1491,8 @@ export const createAuthorizer: API.OperationMethod<
   CreateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAuthorizerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Authorizer>,
+  input: __S(1064, __c133, 0) as any as S.Schema<CreateAuthorizerRequest>,
+  output: __S(1072, __c134, 0) as any as S.Schema<Authorizer>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1523,8 +1523,8 @@ export const createBasePathMapping: API.OperationMethod<
   CreateBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateBasePathMappingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BasePathMapping>,
+  input: __S(1176, __c147, 0) as any as S.Schema<CreateBasePathMappingRequest>,
+  output: __S(1184, __c148, 0) as any as S.Schema<BasePathMapping>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1556,8 +1556,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDeploymentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Deployment>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1589,8 +1589,8 @@ export const createDocumentationPart: API.OperationMethod<
   CreateDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateDocumentationPartRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DocumentationPart>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateDocumentationPartRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DocumentationPart>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1621,8 +1621,8 @@ export const createDocumentationVersion: API.OperationMethod<
   CreateDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateDocumentationVersionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DocumentationVersion>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateDocumentationVersionRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DocumentationVersion>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1652,8 +1652,8 @@ export const createDomainName: API.OperationMethod<
   CreateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateDomainNameRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DomainName>,
+  input: __S(305, __c38, 1) as any as S.Schema<CreateDomainNameRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<DomainName>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1683,8 +1683,8 @@ export const createDomainNameAccessAssociation: API.OperationMethod<
   CreateDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateDomainNameAccessAssociationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DomainNameAccessAssociation>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateDomainNameAccessAssociationRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DomainNameAccessAssociation>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1714,8 +1714,8 @@ export const createModel: API.OperationMethod<
   CreateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateModelRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Model>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateModelRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<Model>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1746,8 +1746,8 @@ export const createRequestValidator: API.OperationMethod<
   CreateRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateRequestValidatorRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RequestValidator>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateRequestValidatorRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<RequestValidator>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1778,8 +1778,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Resource>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateResourceRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<Resource>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1809,8 +1809,8 @@ export const createRestApi: API.OperationMethod<
   CreateRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateRestApiRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<RestApi>,
+  input: __S(432, __c54, 0) as any as S.Schema<CreateRestApiRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1840,8 +1840,8 @@ export const createStage: API.OperationMethod<
   CreateStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateStageRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Stage>,
+  input: __S(448, __c56, 0) as any as S.Schema<CreateStageRequest>,
+  output: __S(460, __c57, 4) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1872,8 +1872,8 @@ export const createUsagePlan: API.OperationMethod<
   CreateUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateUsagePlanRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UsagePlan>,
+  input: __S(464, __c58, 0) as any as S.Schema<CreateUsagePlanRequest>,
+  output: __S(484, __c60, 4) as any as S.Schema<UsagePlan>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1904,8 +1904,8 @@ export const createUsagePlanKey: API.OperationMethod<
   CreateUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateUsagePlanKeyRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UsagePlanKey>,
+  input: __S(488, __c61, 0) as any as S.Schema<CreateUsagePlanKeyRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<UsagePlanKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1935,8 +1935,8 @@ export const createVpcLink: API.OperationMethod<
   CreateVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateVpcLinkRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<VpcLink>,
+  input: __S(504, __c63, 0) as any as S.Schema<CreateVpcLinkRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<VpcLink>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1965,8 +1965,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteApiKeyResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1995,8 +1995,8 @@ export const deleteAuthorizer: API.OperationMethod<
   DeleteAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteAuthorizerRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteAuthorizerResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<DeleteAuthorizerRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteAuthorizerResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2025,8 +2025,8 @@ export const deleteBasePathMapping: API.OperationMethod<
   DeleteBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteBasePathMappingRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteBasePathMappingResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<DeleteBasePathMappingRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteBasePathMappingResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2055,8 +2055,8 @@ export const deleteClientCertificate: API.OperationMethod<
   DeleteClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteClientCertificateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteClientCertificateResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<DeleteClientCertificateRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<DeleteClientCertificateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2086,8 +2086,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2117,8 +2117,8 @@ export const deleteDocumentationPart: API.OperationMethod<
   DeleteDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteDocumentationPartRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteDocumentationPartResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<DeleteDocumentationPartRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<DeleteDocumentationPartResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2147,8 +2147,8 @@ export const deleteDocumentationVersion: API.OperationMethod<
   DeleteDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteDocumentationVersionRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteDocumentationVersionResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<DeleteDocumentationVersionRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeleteDocumentationVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2177,8 +2177,8 @@ export const deleteDomainName: API.OperationMethod<
   DeleteDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteDomainNameRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteDomainNameResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeleteDomainNameRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteDomainNameResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2209,8 +2209,8 @@ export const deleteDomainNameAccessAssociation: API.OperationMethod<
   DeleteDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteDomainNameAccessAssociationRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteDomainNameAccessAssociationResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<DeleteDomainNameAccessAssociationRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeleteDomainNameAccessAssociationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2239,8 +2239,8 @@ export const deleteGatewayResponse: API.OperationMethod<
   DeleteGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteGatewayResponseRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteGatewayResponseResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<DeleteGatewayResponseRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteGatewayResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2269,8 +2269,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteIntegrationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteIntegrationResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2299,8 +2299,8 @@ export const deleteIntegrationResponse: API.OperationMethod<
   DeleteIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteIntegrationResponseRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteIntegrationResponseResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<DeleteIntegrationResponseRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeleteIntegrationResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2328,8 +2328,8 @@ export const deleteMethod: API.OperationMethod<
   DeleteMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteMethodRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteMethodResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<DeleteMethodRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteMethodResponse>,
   errors: [ConflictException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2352,8 +2352,8 @@ export const deleteMethodResponse: API.OperationMethod<
   DeleteMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteMethodResponseRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteMethodResponseResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<DeleteMethodResponseRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteMethodResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2382,8 +2382,8 @@ export const deleteModel: API.OperationMethod<
   DeleteModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteModelRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteModelResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<DeleteModelRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteModelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2412,8 +2412,8 @@ export const deleteRequestValidator: API.OperationMethod<
   DeleteRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteRequestValidatorRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteRequestValidatorResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<DeleteRequestValidatorRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteRequestValidatorResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2442,8 +2442,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteResourceResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<DeleteResourceRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2472,8 +2472,8 @@ export const deleteRestApi: API.OperationMethod<
   DeleteRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteRestApiRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteRestApiResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<DeleteRestApiRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteRestApiResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2503,8 +2503,8 @@ export const deleteStage: API.OperationMethod<
   DeleteStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteStageRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteStageResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<DeleteStageRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteStageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2534,8 +2534,8 @@ export const deleteUsagePlan: API.OperationMethod<
   DeleteUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteUsagePlanRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteUsagePlanResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<DeleteUsagePlanRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteUsagePlanResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2564,8 +2564,8 @@ export const deleteUsagePlanKey: API.OperationMethod<
   DeleteUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteUsagePlanKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteUsagePlanKeyResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<DeleteUsagePlanKeyRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteUsagePlanKeyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2594,8 +2594,8 @@ export const deleteVpcLink: API.OperationMethod<
   DeleteVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteVpcLinkRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteVpcLinkResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<DeleteVpcLinkRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<DeleteVpcLinkResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2625,8 +2625,8 @@ export const flushStageAuthorizersCache: API.OperationMethod<
   FlushStageAuthorizersCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<FlushStageAuthorizersCacheRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<FlushStageAuthorizersCacheResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<FlushStageAuthorizersCacheRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<FlushStageAuthorizersCacheResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2657,8 +2657,8 @@ export const flushStageCache: API.OperationMethod<
   FlushStageCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<FlushStageCacheRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<FlushStageCacheResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<FlushStageCacheRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<FlushStageCacheResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2688,8 +2688,8 @@ export const generateClientCertificate: API.OperationMethod<
   GenerateClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GenerateClientCertificateRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ClientCertificate>,
+  input: __S(736, __c92, 0) as any as S.Schema<GenerateClientCertificateRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<ClientCertificate>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2717,8 +2717,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetAccountRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<Account>,
+  input: __S(752, __c94, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(760, __c95, 0) as any as S.Schema<Account>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2740,8 +2740,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetApiKeyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApiKey>,
+  input: __S(768, __c96, 0) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<ApiKey>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2764,8 +2764,8 @@ export const getApiKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetApiKeysRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ApiKeys>,
+  input: __S(776, __c97, 0) as any as S.Schema<GetApiKeysRequest>,
+  output: __S(778, __c97, 2) as any as S.Schema<ApiKeys>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2793,8 +2793,8 @@ export const getAuthorizer: API.OperationMethod<
   GetAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetAuthorizerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Authorizer>,
+  input: __S(784, __c98, 0) as any as S.Schema<GetAuthorizerRequest>,
+  output: __S(1072, __c134, 0) as any as S.Schema<Authorizer>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2816,8 +2816,8 @@ export const getAuthorizers: API.OperationMethod<
   GetAuthorizersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetAuthorizersRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Authorizers>,
+  input: __S(792, __c99, 0) as any as S.Schema<GetAuthorizersRequest>,
+  output: __S(794, __c99, 2) as any as S.Schema<Authorizers>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2839,8 +2839,8 @@ export const getBasePathMapping: API.OperationMethod<
   GetBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetBasePathMappingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BasePathMapping>,
+  input: __S(800, __c100, 0) as any as S.Schema<GetBasePathMappingRequest>,
+  output: __S(1184, __c148, 0) as any as S.Schema<BasePathMapping>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2863,8 +2863,8 @@ export const getBasePathMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BasePathMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetBasePathMappingsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<BasePathMappings>,
+  input: __S(808, __c101, 0) as any as S.Schema<GetBasePathMappingsRequest>,
+  output: __S(810, __c101, 2) as any as S.Schema<BasePathMappings>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2892,8 +2892,8 @@ export const getClientCertificate: API.OperationMethod<
   GetClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetClientCertificateRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ClientCertificate>,
+  input: __S(816, __c102, 0) as any as S.Schema<GetClientCertificateRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<ClientCertificate>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2916,8 +2916,8 @@ export const getClientCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClientCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetClientCertificatesRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ClientCertificates>,
+  input: __S(824, __c103, 0) as any as S.Schema<GetClientCertificatesRequest>,
+  output: __S(826, __c103, 2) as any as S.Schema<ClientCertificates>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2946,8 +2946,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Deployment>,
+  input: __S(832, __c104, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     NotFoundException,
@@ -2977,8 +2977,8 @@ export const getDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Deployment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetDeploymentsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<Deployments>,
+  input: __S(840, __c105, 0) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(842, __c105, 2) as any as S.Schema<Deployments>,
   errors: [
     BadRequestException,
     NotFoundException,
@@ -3012,8 +3012,8 @@ export const getDocumentationPart: API.OperationMethod<
   GetDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetDocumentationPartRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DocumentationPart>,
+  input: __S(848, __c106, 0) as any as S.Schema<GetDocumentationPartRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DocumentationPart>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3035,8 +3035,8 @@ export const getDocumentationParts: API.OperationMethod<
   GetDocumentationPartsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetDocumentationPartsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DocumentationParts>,
+  input: __S(856, __c107, 0) as any as S.Schema<GetDocumentationPartsRequest>,
+  output: __S(858, __c107, 2) as any as S.Schema<DocumentationParts>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3057,8 +3057,8 @@ export const getDocumentationVersion: API.OperationMethod<
   GetDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetDocumentationVersionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DocumentationVersion>,
+  input: __S(864, __c108, 0) as any as S.Schema<GetDocumentationVersionRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DocumentationVersion>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3080,8 +3080,8 @@ export const getDocumentationVersions: API.OperationMethod<
   GetDocumentationVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetDocumentationVersionsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<DocumentationVersions>,
+  input: __S(872, __c109, 0) as any as S.Schema<GetDocumentationVersionsRequest>,
+  output: __S(874, __c109, 2) as any as S.Schema<DocumentationVersions>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3103,8 +3103,8 @@ export const getDomainName: API.OperationMethod<
   GetDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetDomainNameRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DomainName>,
+  input: __S(880, __c110, 0) as any as S.Schema<GetDomainNameRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<DomainName>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3126,8 +3126,8 @@ export const getDomainNameAccessAssociations: API.OperationMethod<
   GetDomainNameAccessAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetDomainNameAccessAssociationsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<DomainNameAccessAssociations>,
+  input: __S(888, __c111, 0) as any as S.Schema<GetDomainNameAccessAssociationsRequest>,
+  output: __S(890, __c111, 2) as any as S.Schema<DomainNameAccessAssociations>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3150,8 +3150,8 @@ export const getDomainNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetDomainNamesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DomainNames>,
+  input: __S(896, __c112, 0) as any as S.Schema<GetDomainNamesRequest>,
+  output: __S(898, __c112, 2) as any as S.Schema<DomainNames>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3181,8 +3181,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetExportRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ExportResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(912, __c114, 0) as any as S.Schema<ExportResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3211,8 +3211,8 @@ export const getGatewayResponse: API.OperationMethod<
   GetGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetGatewayResponseRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GatewayResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<GetGatewayResponseRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<GatewayResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3234,8 +3234,8 @@ export const getGatewayResponses: API.OperationMethod<
   GetGatewayResponsesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetGatewayResponsesRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GatewayResponses>,
+  input: __S(936, __c117, 0) as any as S.Schema<GetGatewayResponsesRequest>,
+  output: __S(938, __c117, 2) as any as S.Schema<GatewayResponses>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3257,8 +3257,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetIntegrationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Integration>,
+  input: __S(944, __c118, 0) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<Integration>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3280,8 +3280,8 @@ export const getIntegrationResponse: API.OperationMethod<
   GetIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetIntegrationResponseRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<IntegrationResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<GetIntegrationResponseRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<IntegrationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3302,8 +3302,8 @@ export const getMethod: API.OperationMethod<
   GetMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetMethodRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Method>,
+  input: __S(992, __c124, 0) as any as S.Schema<GetMethodRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<Method>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3324,8 +3324,8 @@ export const getMethodResponse: API.OperationMethod<
   GetMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetMethodResponseRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MethodResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<GetMethodResponseRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<MethodResponse>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3347,8 +3347,8 @@ export const getModel: API.OperationMethod<
   GetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetModelRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Model>,
+  input: __S(1008, __c126, 0) as any as S.Schema<GetModelRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<Model>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3371,8 +3371,8 @@ export const getModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Model
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetModelsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<Models>,
+  input: __S(1016, __c127, 0) as any as S.Schema<GetModelsRequest>,
+  output: __S(1018, __c127, 2) as any as S.Schema<Models>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3400,8 +3400,8 @@ export const getModelTemplate: API.OperationMethod<
   GetModelTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetModelTemplateRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<Template>,
+  input: __S(1024, __c128, 0) as any as S.Schema<GetModelTemplateRequest>,
+  output: __S(1025, __c128, 1) as any as S.Schema<Template>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3423,8 +3423,8 @@ export const getRequestValidator: API.OperationMethod<
   GetRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetRequestValidatorRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RequestValidator>,
+  input: __S(1032, __c129, 0) as any as S.Schema<GetRequestValidatorRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<RequestValidator>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3446,8 +3446,8 @@ export const getRequestValidators: API.OperationMethod<
   GetRequestValidatorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetRequestValidatorsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<RequestValidators>,
+  input: __S(1040, __c130, 0) as any as S.Schema<GetRequestValidatorsRequest>,
+  output: __S(1042, __c130, 2) as any as S.Schema<RequestValidators>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3468,8 +3468,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Resource>,
+  input: __S(1048, __c131, 0) as any as S.Schema<GetResourceRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<Resource>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3492,8 +3492,8 @@ export const getResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetResourcesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<Resources>,
+  input: __S(1056, __c132, 0) as any as S.Schema<GetResourcesRequest>,
+  output: __S(1058, __c132, 2) as any as S.Schema<Resources>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3521,8 +3521,8 @@ export const getRestApi: API.OperationMethod<
   GetRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetRestApiRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<RestApi>,
+  input: __S(1080, __c135, 0) as any as S.Schema<GetRestApiRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<RestApi>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3545,8 +3545,8 @@ export const getRestApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestApi
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetRestApisRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<RestApis>,
+  input: __S(1088, __c136, 0) as any as S.Schema<GetRestApisRequest>,
+  output: __S(1090, __c136, 2) as any as S.Schema<RestApis>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3576,8 +3576,8 @@ export const getSdk: API.OperationMethod<
   GetSdkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetSdkRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<SdkResponse>,
+  input: __S(1096, __c137, 0) as any as S.Schema<GetSdkRequest>,
+  output: __S(912, __c114, 0) as any as S.Schema<SdkResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3606,8 +3606,8 @@ export const getSdkType: API.OperationMethod<
   GetSdkTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetSdkTypeRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<SdkType>,
+  input: __S(1104, __c138, 0) as any as S.Schema<GetSdkTypeRequest>,
+  output: __S(1114, __c139, 2) as any as S.Schema<SdkType>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3629,8 +3629,8 @@ export const getSdkTypes: API.OperationMethod<
   GetSdkTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetSdkTypesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<SdkTypes>,
+  input: __S(1120, __c140, 0) as any as S.Schema<GetSdkTypesRequest>,
+  output: __S(1122, __c140, 2) as any as S.Schema<SdkTypes>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3654,8 +3654,8 @@ export const getStage: API.OperationMethod<
   GetStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetStageRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Stage>,
+  input: __S(1128, __c141, 0) as any as S.Schema<GetStageRequest>,
+  output: __S(460, __c57, 4) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3686,8 +3686,8 @@ export const getStages: API.OperationMethod<
   GetStagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetStagesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<Stages>,
+  input: __S(1136, __c142, 0) as any as S.Schema<GetStagesRequest>,
+  output: __S(1138, __c142, 2) as any as S.Schema<Stages>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3716,8 +3716,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetTagsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<Tags>,
+  input: __S(1144, __c143, 0) as any as S.Schema<GetTagsRequest>,
+  output: __S(1145, __c143, 1) as any as S.Schema<Tags>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3740,8 +3740,8 @@ export const getUsage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetUsageRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Usage>,
+  input: __S(1152, __c144, 0) as any as S.Schema<GetUsageRequest>,
+  output: __S(1163, __c145, 3) as any as S.Schema<Usage>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3769,8 +3769,8 @@ export const getUsagePlan: API.OperationMethod<
   GetUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetUsagePlanRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UsagePlan>,
+  input: __S(1168, __c146, 0) as any as S.Schema<GetUsagePlanRequest>,
+  output: __S(484, __c60, 4) as any as S.Schema<UsagePlan>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3792,8 +3792,8 @@ export const getUsagePlanKey: API.OperationMethod<
   GetUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetUsagePlanKeyRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UsagePlanKey>,
+  input: __S(1192, __c149, 0) as any as S.Schema<GetUsagePlanKeyRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<UsagePlanKey>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3816,8 +3816,8 @@ export const getUsagePlanKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsagePlanKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetUsagePlanKeysRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<UsagePlanKeys>,
+  input: __S(1200, __c150, 0) as any as S.Schema<GetUsagePlanKeysRequest>,
+  output: __S(1202, __c150, 2) as any as S.Schema<UsagePlanKeys>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3846,8 +3846,8 @@ export const getUsagePlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsagePlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetUsagePlansRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<UsagePlans>,
+  input: __S(1208, __c151, 0) as any as S.Schema<GetUsagePlansRequest>,
+  output: __S(1210, __c151, 2) as any as S.Schema<UsagePlans>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3875,8 +3875,8 @@ export const getVpcLink: API.OperationMethod<
   GetVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetVpcLinkRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<VpcLink>,
+  input: __S(1216, __c152, 0) as any as S.Schema<GetVpcLinkRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<VpcLink>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3899,8 +3899,8 @@ export const getVpcLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VpcLink
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetVpcLinksRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<VpcLinks>,
+  input: __S(1224, __c153, 0) as any as S.Schema<GetVpcLinksRequest>,
+  output: __S(1226, __c153, 2) as any as S.Schema<VpcLinks>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3930,8 +3930,8 @@ export const importApiKeys: API.OperationMethod<
   ImportApiKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ImportApiKeysRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ApiKeyIds>,
+  input: __S(1232, __c154, 0) as any as S.Schema<ImportApiKeysRequest>,
+  output: __S(1240, __c155, 0) as any as S.Schema<ApiKeyIds>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3962,8 +3962,8 @@ export const importDocumentationParts: API.OperationMethod<
   ImportDocumentationPartsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ImportDocumentationPartsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<DocumentationPartIds>,
+  input: __S(1248, __c156, 0) as any as S.Schema<ImportDocumentationPartsRequest>,
+  output: __S(1240, __c155, 0) as any as S.Schema<DocumentationPartIds>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3994,8 +3994,8 @@ export const importRestApi: API.OperationMethod<
   ImportRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ImportRestApiRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<RestApi>,
+  input: __S(1256, __c157, 0) as any as S.Schema<ImportRestApiRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4026,8 +4026,8 @@ export const putGatewayResponse: API.OperationMethod<
   PutGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<PutGatewayResponseRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GatewayResponse>,
+  input: __S(1264, __c158, 0) as any as S.Schema<PutGatewayResponseRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<GatewayResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4058,8 +4058,8 @@ export const putIntegration: API.OperationMethod<
   PutIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<PutIntegrationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Integration>,
+  input: __S(1272, __c159, 0) as any as S.Schema<PutIntegrationRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<Integration>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4090,8 +4090,8 @@ export const putIntegrationResponse: API.OperationMethod<
   PutIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<PutIntegrationResponseRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<IntegrationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<PutIntegrationResponseRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<IntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4122,8 +4122,8 @@ export const putMethod: API.OperationMethod<
   PutMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PutMethodRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Method>,
+  input: __S(24, __c3, 0) as any as S.Schema<PutMethodRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<Method>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4154,8 +4154,8 @@ export const putMethodResponse: API.OperationMethod<
   PutMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<PutMethodResponseRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MethodResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<PutMethodResponseRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<MethodResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4187,8 +4187,8 @@ export const putRestApi: API.OperationMethod<
   PutRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PutRestApiRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<RestApi>,
+  input: __S(40, __c5, 0) as any as S.Schema<PutRestApiRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4220,8 +4220,8 @@ export const rejectDomainNameAccessAssociation: API.OperationMethod<
   RejectDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<RejectDomainNameAccessAssociationRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RejectDomainNameAccessAssociationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<RejectDomainNameAccessAssociationRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<RejectDomainNameAccessAssociationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4251,8 +4251,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4281,8 +4281,8 @@ export const testInvokeAuthorizer: API.OperationMethod<
   TestInvokeAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<TestInvokeAuthorizerRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<TestInvokeAuthorizerResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<TestInvokeAuthorizerRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<TestInvokeAuthorizerResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4304,8 +4304,8 @@ export const testInvokeMethod: API.OperationMethod<
   TestInvokeMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<TestInvokeMethodRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<TestInvokeMethodResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<TestInvokeMethodRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<TestInvokeMethodResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4329,8 +4329,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4361,8 +4361,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<Account>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(760, __c95, 0) as any as S.Schema<Account>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4393,8 +4393,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateApiKeyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApiKey>,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<ApiKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4425,8 +4425,8 @@ export const updateAuthorizer: API.OperationMethod<
   UpdateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateAuthorizerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Authorizer>,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateAuthorizerRequest>,
+  output: __S(1072, __c134, 0) as any as S.Schema<Authorizer>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4457,8 +4457,8 @@ export const updateBasePathMapping: API.OperationMethod<
   UpdateBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateBasePathMappingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BasePathMapping>,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdateBasePathMappingRequest>,
+  output: __S(1184, __c148, 0) as any as S.Schema<BasePathMapping>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4489,8 +4489,8 @@ export const updateClientCertificate: API.OperationMethod<
   UpdateClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateClientCertificateRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ClientCertificate>,
+  input: __S(152, __c19, 0) as any as S.Schema<UpdateClientCertificateRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<ClientCertificate>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4522,8 +4522,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateDeploymentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Deployment>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateDeploymentRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4555,8 +4555,8 @@ export const updateDocumentationPart: API.OperationMethod<
   UpdateDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<UpdateDocumentationPartRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DocumentationPart>,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateDocumentationPartRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DocumentationPart>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4587,8 +4587,8 @@ export const updateDocumentationVersion: API.OperationMethod<
   UpdateDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateDocumentationVersionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DocumentationVersion>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateDocumentationVersionRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DocumentationVersion>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4619,8 +4619,8 @@ export const updateDomainName: API.OperationMethod<
   UpdateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateDomainNameRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DomainName>,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateDomainNameRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<DomainName>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4651,8 +4651,8 @@ export const updateGatewayResponse: API.OperationMethod<
   UpdateGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<UpdateGatewayResponseRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GatewayResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateGatewayResponseRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<GatewayResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4683,8 +4683,8 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<UpdateIntegrationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Integration>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateIntegrationRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<Integration>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4715,8 +4715,8 @@ export const updateIntegrationResponse: API.OperationMethod<
   UpdateIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<UpdateIntegrationResponseRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<IntegrationResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateIntegrationResponseRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<IntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4746,8 +4746,8 @@ export const updateMethod: API.OperationMethod<
   UpdateMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<UpdateMethodRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Method>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateMethodRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<Method>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4777,8 +4777,8 @@ export const updateMethodResponse: API.OperationMethod<
   UpdateMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateMethodResponseRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MethodResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateMethodResponseRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<MethodResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4809,8 +4809,8 @@ export const updateModel: API.OperationMethod<
   UpdateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<UpdateModelRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Model>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateModelRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<Model>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4841,8 +4841,8 @@ export const updateRequestValidator: API.OperationMethod<
   UpdateRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdateRequestValidatorRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RequestValidator>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateRequestValidatorRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<RequestValidator>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4872,8 +4872,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<UpdateResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Resource>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<Resource>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4903,8 +4903,8 @@ export const updateRestApi: API.OperationMethod<
   UpdateRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<UpdateRestApiRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<RestApi>,
+  input: __S(272, __c34, 0) as any as S.Schema<UpdateRestApiRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4935,8 +4935,8 @@ export const updateStage: API.OperationMethod<
   UpdateStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<UpdateStageRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Stage>,
+  input: __S(280, __c35, 0) as any as S.Schema<UpdateStageRequest>,
+  output: __S(460, __c57, 4) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4967,8 +4967,8 @@ export const updateUsage: API.OperationMethod<
   UpdateUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<UpdateUsageRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Usage>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateUsageRequest>,
+  output: __S(1163, __c145, 3) as any as S.Schema<Usage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4999,8 +4999,8 @@ export const updateUsagePlan: API.OperationMethod<
   UpdateUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<UpdateUsagePlanRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UsagePlan>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateUsagePlanRequest>,
+  output: __S(484, __c60, 4) as any as S.Schema<UsagePlan>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5031,8 +5031,8 @@ export const updateVpcLink: API.OperationMethod<
   UpdateVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<UpdateVpcLinkRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<VpcLink>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdateVpcLinkRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<VpcLink>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5051,123 +5051,13 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ restApiId: S.optional(S.String), stageName: S.optional(S.String) }),
-      ).annotate({ identifier: "StageKey" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          generateDistinctId: S.optional(S.Boolean),
-          value: S.optional(SensitiveString),
-          stageKeys: S.optional(__S(1, __c0, 1)),
-          customerId: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/apikeys" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateApiKeyRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          value: S.optional(SensitiveString),
-          name: S.optional(S.String),
-          customerId: S.optional(S.String),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          stageKeys: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ApiKey" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          name: S.String,
-          type: S.String,
-          providerARNs: S.optional(__S(4, __c0, 4)),
-          authType: S.optional(S.String),
-          authorizerUri: S.optional(S.String),
-          authorizerCredentials: S.optional(S.String),
-          identitySource: S.optional(S.String),
-          identityValidationExpression: S.optional(S.String),
-          authorizerResultTtlInSeconds: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/restapis/{restApiId}/authorizers" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateAuthorizerRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          providerARNs: S.optional(__S(4, __c0, 4)),
-          authType: S.optional(S.String),
-          authorizerUri: S.optional(S.String),
-          authorizerCredentials: S.optional(S.String),
-          identitySource: S.optional(S.String),
-          identityValidationExpression: S.optional(S.String),
-          authorizerResultTtlInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Authorizer" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.String.pipe(T.HttpLabel("domainName")),
-          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
-          basePath: S.optional(S.String),
-          restApiId: S.String,
-          stage: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/domainnames/{domainName}/basepathmappings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateBasePathMappingRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          basePath: S.optional(S.String),
-          restApiId: S.optional(S.String),
-          stage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BasePathMapping" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           percentTraffic: S.optional(S.Number),
-          stageVariableOverrides: S.optional(__S(2, __c0, 2)),
+          stageVariableOverrides: S.optional(__S(960, __c120, 0)),
           useStageCache: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeploymentCanarySettings" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5176,8 +5066,8 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           cacheClusterEnabled: S.optional(S.Boolean),
           cacheClusterSize: S.optional(S.String),
-          variables: S.optional(__S(2, __c0, 2)),
-          canarySettings: S.optional(__S(10, __c1, 2)),
+          variables: S.optional(__S(960, __c120, 0)),
+          canarySettings: S.optional(__S(0, __c0, 0)),
           tracingEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5190,29 +5080,347 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateDeploymentRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authorizationType: S.optional(S.String),
           apiKeyRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MethodSnapshot" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12, __c1, 4).pipe(S.optional));
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(13, __c1, 5).pipe(S.optional));
-    case 7:
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(8, __c1, 0).pipe(S.optional));
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(9, __c1, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           description: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          apiSummary: S.optional(__S(14, __c1, 6)),
+          apiSummary: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Deployment" });
   }
 }
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
+          selectionPattern: S.optional(S.String),
+          responseParameters: S.optional(__S(960, __c120, 0)),
+          responseTemplates: S.optional(__S(960, __c120, 0)),
+          contentHandling: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration/responses/{statusCode}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutIntegrationResponseRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          authorizationType: S.String,
+          authorizerId: S.optional(S.String),
+          apiKeyRequired: S.optional(S.Boolean),
+          operationName: S.optional(S.String),
+          requestParameters: S.optional(__S(408, __c51, 0)),
+          requestModels: S.optional(__S(960, __c120, 0)),
+          requestValidatorId: S.optional(S.String),
+          authorizationScopes: S.optional(__S(976, __c122, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutMethodRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
+          responseParameters: S.optional(__S(408, __c51, 0)),
+          responseModels: S.optional(__S(960, __c120, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/responses/{statusCode}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutMethodResponseRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
+          failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
+          parameters: S.optional(__S(960, __c120, 0)).pipe(T.HttpQueryParams()),
+          body: T.StreamingInput.pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/restapis/{restApiId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutRestApiRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainNameAccessAssociationArn: S.String.pipe(
+            T.HttpQuery("domainNameAccessAssociationArn"),
+          ),
+          domainNameArn: S.String.pipe(T.HttpQuery("domainNameArn")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/rejectdomainnameaccessassociations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RejectDomainNameAccessAssociationRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(960, __c120, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
+          headers: S.optional(__S(960, __c120, 0)),
+          multiValueHeaders: S.optional(__S(72, __c9, 0)),
+          pathWithQueryString: S.optional(S.String),
+          body: S.optional(S.String),
+          stageVariables: S.optional(__S(960, __c120, 0)),
+          additionalContext: S.optional(__S(960, __c120, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "TestInvokeAuthorizerRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientStatus: S.optional(S.Number),
+          log: S.optional(S.String),
+          latency: S.optional(S.Number),
+          principalId: S.optional(S.String),
+          policy: S.optional(S.String),
+          authorization: S.optional(__S(72, __c9, 0)),
+          claims: S.optional(__S(960, __c120, 0)),
+        }),
+      ).annotate({
+        identifier: "TestInvokeAuthorizerResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(976, __c122, 0).pipe(S.optional));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          pathWithQueryString: S.optional(S.String),
+          body: S.optional(S.String),
+          headers: S.optional(__S(960, __c120, 0)),
+          multiValueHeaders: S.optional(__S(72, __c9, 0)),
+          clientCertificateId: S.optional(S.String),
+          stageVariables: S.optional(__S(960, __c120, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TestInvokeMethodRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.Number),
+          body: S.optional(S.String),
+          headers: S.optional(__S(960, __c120, 0)),
+          multiValueHeaders: S.optional(__S(72, __c9, 0)),
+          log: S.optional(S.String),
+          latency: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TestInvokeMethodResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(976, __c122, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ patchOperations: S.optional(__S(105, __c13, 1)) }).pipe(
+          T.all(T.Http({ method: "PATCH", uri: "/account" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateAccountRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.optional(S.String),
+          path: S.optional(S.String),
+          value: S.optional(S.String),
+          from: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PatchOperation" });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          location: __S(120, __c15, 0),
+          properties: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/restapis/{restApiId}/documentation/parts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDocumentationPartRequest",
+      });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5229,12 +5437,69 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          location: __S(16, __c2, 0),
-          properties: S.String,
+          id: S.optional(S.String),
+          location: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DocumentationPart" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.String.pipe(T.HttpLabel("apiKey")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
         }).pipe(
           T.all(
-            T.Http({ method: "POST", uri: "/restapis/{restApiId}/documentation/parts" }),
+            T.Http({ method: "PATCH", uri: "/apikeys/{apiKey}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApiKeyRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAuthorizerRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.String.pipe(T.HttpLabel("domainName")),
+          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
+          basePath: S.String.pipe(T.HttpLabel("basePath")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/domainnames/{domainName}/basepathmappings/{basePath}",
+            }),
             svc,
             auth,
             proto,
@@ -5243,17 +5508,180 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({
-        identifier: "CreateDocumentationPartRequest",
+        identifier: "UpdateBasePathMappingRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          location: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DocumentationPart" });
-    case 3:
+          clientCertificateId: S.String.pipe(T.HttpLabel("clientCertificateId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/clientcertificates/{clientCertificateId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateClientCertificateRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/deployments/{deploymentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDeploymentRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          documentationPartId: S.String.pipe(T.HttpLabel("documentationPartId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/documentation/parts/{documentationPartId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateDocumentationPartRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          documentationVersion: S.String.pipe(T.HttpLabel("documentationVersion")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/documentation/versions/{documentationVersion}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateDocumentationVersionRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.String.pipe(T.HttpLabel("domainName")),
+          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/domainnames/{domainName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDomainNameRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          responseType: S.String.pipe(T.HttpLabel("responseType")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/gatewayresponses/{responseType}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateGatewayResponseRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateIntegrationRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5273,7 +5701,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateDocumentationVersionRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -5281,27 +5713,248 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentationVersion" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(21, __c2, 5)),
-          ipAddressType: S.optional(S.String),
-          vpcEndpointIds: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EndpointConfiguration" });
-    case 7:
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration/responses/{statusCode}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIntegrationResponseRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateMethodRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
+          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/responses/{statusCode}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMethodResponseRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          modelName: S.String.pipe(T.HttpLabel("modelName")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/models/{modelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateModelRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          requestValidatorId: S.String.pipe(T.HttpLabel("requestValidatorId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/restapis/{restApiId}/requestvalidators/{requestValidatorId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRequestValidatorRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/resources/{resourceId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateResourceRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateRestApiRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          stageName: S.String.pipe(T.HttpLabel("stageName")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/stages/{stageName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateStageRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
+          keyId: S.String.pipe(T.HttpLabel("keyId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}/keys/{keyId}/usage" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateUsageRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateUsagePlanRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ truststoreUri: S.optional(S.String), truststoreVersion: S.optional(S.String) }),
       ).annotate({
         identifier: "MutualTlsAuthenticationInput",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
@@ -5312,11 +5965,11 @@ function __c3(j: number): any {
           certificateArn: S.optional(S.String),
           regionalCertificateName: S.optional(S.String),
           regionalCertificateArn: S.optional(S.String),
-          endpointConfiguration: S.optional(__S(22, __c2, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
+          endpointConfiguration: S.optional(__S(313, __c39, 1)),
+          tags: S.optional(__S(960, __c120, 0)),
           securityPolicy: S.optional(S.String),
           endpointAccessMode: S.optional(S.String),
-          mutualTlsAuthentication: S.optional(__S(23, __c2, 7)),
+          mutualTlsAuthentication: S.optional(__S(304, __c38, 0)),
           ownershipVerificationCertificateArn: S.optional(S.String),
           policy: S.optional(S.String),
           routingMode: S.optional(S.String),
@@ -5324,15 +5977,33 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/domainnames" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateDomainNameRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          types: S.optional(__S(312, __c39, 0)),
+          ipAddressType: S.optional(S.String),
+          vpcEndpointIds: S.optional(__S(976, __c122, 0)),
+        }),
+      ).annotate({ identifier: "EndpointConfiguration" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           truststoreUri: S.optional(S.String),
           truststoreVersion: S.optional(S.String),
-          truststoreWarnings: S.optional(__S(4, __c0, 4)),
+          truststoreWarnings: S.optional(__S(976, __c122, 0)),
         }),
       ).annotate({ identifier: "MutualTlsAuthentication" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
@@ -5347,26 +6018,50 @@ function __c3(j: number): any {
           regionalCertificateArn: S.optional(S.String),
           distributionDomainName: S.optional(S.String),
           distributionHostedZoneId: S.optional(S.String),
-          endpointConfiguration: S.optional(__S(22, __c2, 6)),
+          endpointConfiguration: S.optional(__S(313, __c39, 1)),
           domainNameStatus: S.optional(S.String),
           domainNameStatusMessage: S.optional(S.String),
           securityPolicy: S.optional(S.String),
           endpointAccessMode: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          mutualTlsAuthentication: S.optional(__S(25, __c3, 1)),
+          tags: S.optional(__S(960, __c120, 0)),
+          mutualTlsAuthentication: S.optional(__S(320, __c40, 0)),
           ownershipVerificationCertificateArn: S.optional(S.String),
           managementPolicy: S.optional(S.String),
           policy: S.optional(S.String),
           routingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainName" });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vpcLinkId: S.String.pipe(T.HttpLabel("vpcLinkId")),
+          patchOperations: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/vpclinks/{vpcLinkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateVpcLinkRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainNameArn: S.String,
           accessAssociationSourceType: S.String,
           accessAssociationSource: S.String,
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domainnameaccessassociations" }),
@@ -5380,19 +6075,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDomainNameAccessAssociationRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainNameAccessAssociationArn: S.optional(S.String),
           domainNameArn: S.optional(S.String),
           accessAssociationSourceType: S.optional(S.String),
           accessAssociationSource: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }),
       ).annotate({
         identifier: "DomainNameAccessAssociation",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5411,7 +6114,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateModelRequest" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5421,7 +6128,11 @@ function __c3(j: number): any {
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Model" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5443,7 +6154,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5454,7 +6165,11 @@ function __c4(j: number): any {
           validateRequestParameters: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RequestValidator" });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5471,39 +6186,31 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateResourceRequest" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.String),
-          responseParameters: S.optional(__S(34, __c4, 2)),
-          responseModels: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "MethodResponse" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(35, __c4, 3).pipe(S.optional));
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
           selectionPattern: S.optional(S.String),
-          responseParameters: S.optional(__S(2, __c0, 2)),
-          responseTemplates: S.optional(__S(2, __c0, 2)),
+          responseParameters: S.optional(__S(960, __c120, 0)),
+          responseTemplates: S.optional(__S(960, __c120, 0)),
           contentHandling: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationResponse" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(37, __c4, 5).pipe(S.optional));
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(392, __c49, 0).pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({ insecureSkipVerification: S.optional(S.Boolean) }),
       ).annotate({ identifier: "TlsConfig" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5512,19 +6219,39 @@ function __c5(j: number): any {
           connectionType: S.optional(S.String),
           connectionId: S.optional(S.String),
           credentials: S.optional(S.String),
-          requestParameters: S.optional(__S(2, __c0, 2)),
-          requestTemplates: S.optional(__S(2, __c0, 2)),
+          requestParameters: S.optional(__S(960, __c120, 0)),
+          requestTemplates: S.optional(__S(960, __c120, 0)),
           passthroughBehavior: S.optional(S.String),
           contentHandling: S.optional(S.String),
           timeoutInMillis: S.optional(S.Number),
           cacheNamespace: S.optional(S.String),
-          cacheKeyParameters: S.optional(__S(4, __c0, 4)),
-          integrationResponses: S.optional(__S(38, __c4, 6)),
-          tlsConfig: S.optional(__S(39, __c4, 7)),
+          cacheKeyParameters: S.optional(__S(976, __c122, 0)),
+          integrationResponses: S.optional(__S(400, __c50, 0)),
+          tlsConfig: S.optional(__S(401, __c50, 1)),
           responseTransferMode: S.optional(S.String),
           integrationTarget: S.optional(S.String),
         }),
       ).annotate({ identifier: "Integration" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.String),
+          responseParameters: S.optional(__S(408, __c51, 0)),
+          responseModels: S.optional(__S(960, __c120, 0)),
+        }),
+      ).annotate({ identifier: "MethodResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(409, __c51, 1).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5534,44 +6261,56 @@ function __c5(j: number): any {
           apiKeyRequired: S.optional(S.Boolean),
           requestValidatorId: S.optional(S.String),
           operationName: S.optional(S.String),
-          requestParameters: S.optional(__S(34, __c4, 2)),
-          requestModels: S.optional(__S(2, __c0, 2)),
-          methodResponses: S.optional(__S(36, __c4, 4)),
-          methodIntegration: S.optional(__S(40, __c5, 0)),
-          authorizationScopes: S.optional(__S(4, __c0, 4)),
+          requestParameters: S.optional(__S(408, __c51, 0)),
+          requestModels: S.optional(__S(960, __c120, 0)),
+          methodResponses: S.optional(__S(416, __c52, 0)),
+          methodIntegration: S.optional(__S(402, __c50, 2)),
+          authorizationScopes: S.optional(__S(976, __c122, 0)),
         }),
       ).annotate({ identifier: "Method" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(41, __c5, 1).pipe(S.optional));
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(417, __c52, 1).pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           parentId: S.optional(S.String),
           pathPart: S.optional(S.String),
           path: S.optional(S.String),
-          resourceMethods: S.optional(__S(42, __c5, 2)),
+          resourceMethods: S.optional(__S(424, __c53, 0)),
         }),
       ).annotate({ identifier: "Resource" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           version: S.optional(S.String),
           cloneFrom: S.optional(S.String),
-          binaryMediaTypes: S.optional(__S(4, __c0, 4)),
+          binaryMediaTypes: S.optional(__S(976, __c122, 0)),
           minimumCompressionSize: S.optional(S.Number),
           apiKeySource: S.optional(S.String),
-          endpointConfiguration: S.optional(__S(22, __c2, 6)),
+          endpointConfiguration: S.optional(__S(313, __c39, 1)),
           policy: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
           disableExecuteApiEndpoint: S.optional(S.Boolean),
           securityPolicy: S.optional(S.String),
           endpointAccessMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/restapis" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRestApiRequest" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5579,13 +6318,13 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
-          warnings: S.optional(__S(4, __c0, 4)),
-          binaryMediaTypes: S.optional(__S(4, __c0, 4)),
+          warnings: S.optional(__S(976, __c122, 0)),
+          binaryMediaTypes: S.optional(__S(976, __c122, 0)),
           minimumCompressionSize: S.optional(S.Number),
           apiKeySource: S.optional(S.String),
-          endpointConfiguration: S.optional(__S(22, __c2, 6)),
+          endpointConfiguration: S.optional(__S(313, __c39, 1)),
           policy: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
           disableExecuteApiEndpoint: S.optional(S.Boolean),
           rootResourceId: S.optional(S.String),
           securityPolicy: S.optional(S.String),
@@ -5594,16 +6333,11 @@ function __c5(j: number): any {
           apiStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestApi" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          percentTraffic: S.optional(S.Number),
-          deploymentId: S.optional(S.String),
-          stageVariableOverrides: S.optional(__S(2, __c0, 2)),
-          useStageCache: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CanarySettings" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5612,11 +6346,11 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           cacheClusterEnabled: S.optional(S.Boolean),
           cacheClusterSize: S.optional(S.String),
-          variables: S.optional(__S(2, __c0, 2)),
+          variables: S.optional(__S(960, __c120, 0)),
           documentationVersion: S.optional(S.String),
-          canarySettings: S.optional(__S(46, __c5, 6)),
+          canarySettings: S.optional(__S(456, __c57, 0)),
           tracingEnabled: S.optional(S.Boolean),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/restapis/{restApiId}/stages" }),
@@ -5630,9 +6364,18 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateStageRequest" });
   }
 }
-function __c6(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percentTraffic: S.optional(S.Number),
+          deploymentId: S.optional(S.String),
+          stageVariableOverrides: S.optional(__S(960, __c120, 0)),
+          useStageCache: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CanarySettings" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metricsEnabled: S.optional(S.Boolean),
@@ -5647,13 +6390,13 @@ function __c6(j: number): any {
           unauthorizedCacheControlHeaderStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "MethodSetting" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(48, __c6, 0).pipe(S.optional));
     case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(457, __c57, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({ format: S.optional(S.String), destinationArn: S.optional(S.String) }),
       ).annotate({ identifier: "AccessLogSettings" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
@@ -5663,39 +6406,60 @@ function __c6(j: number): any {
           cacheClusterEnabled: S.optional(S.Boolean),
           cacheClusterSize: S.optional(S.String),
           cacheClusterStatus: S.optional(S.String),
-          methodSettings: S.optional(__S(49, __c6, 1)),
-          variables: S.optional(__S(2, __c0, 2)),
+          methodSettings: S.optional(__S(458, __c57, 2)),
+          variables: S.optional(__S(960, __c120, 0)),
           documentationVersion: S.optional(S.String),
-          accessLogSettings: S.optional(__S(50, __c6, 2)),
-          canarySettings: S.optional(__S(46, __c5, 6)),
+          accessLogSettings: S.optional(__S(459, __c57, 3)),
+          canarySettings: S.optional(__S(456, __c57, 0)),
           tracingEnabled: S.optional(S.Boolean),
           webAclArn: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Stage" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          apiStages: S.optional(__S(482, __c60, 2)),
+          throttle: S.optional(__S(472, __c59, 0)),
+          quota: S.optional(__S(483, __c60, 3)),
+          tags: S.optional(__S(960, __c120, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/usageplans" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateUsagePlanRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ burstLimit: S.optional(S.Number), rateLimit: S.optional(S.Number) }),
       ).annotate({ identifier: "ThrottleSettings" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(52, __c6, 4).pipe(S.optional));
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(472, __c59, 0).pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiId: S.optional(S.String),
           stage: S.optional(S.String),
-          throttle: S.optional(__S(53, __c6, 5)),
+          throttle: S.optional(__S(480, __c60, 0)),
         }),
       ).annotate({ identifier: "ApiStage" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(481, __c60, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
@@ -5703,33 +6467,24 @@ function __c7(j: number): any {
           period: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          apiStages: S.optional(__S(55, __c6, 7)),
-          throttle: S.optional(__S(52, __c6, 4)),
-          quota: S.optional(__S(56, __c7, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/usageplans" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateUsagePlanRequest" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          apiStages: S.optional(__S(55, __c6, 7)),
-          throttle: S.optional(__S(52, __c6, 4)),
-          quota: S.optional(__S(56, __c7, 0)),
+          apiStages: S.optional(__S(482, __c60, 2)),
+          throttle: S.optional(__S(472, __c59, 0)),
+          quota: S.optional(__S(483, __c60, 3)),
           productCode: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }),
       ).annotate({ identifier: "UsagePlan" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
@@ -5748,7 +6503,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateUsagePlanKeyRequest",
       });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5757,28 +6516,40 @@ function __c7(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagePlanKey" });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          targetArns: __S(4, __c0, 4),
-          tags: S.optional(__S(2, __c0, 2)),
+          targetArns: __S(976, __c122, 0),
+          tags: S.optional(__S(960, __c120, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/vpclinks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVpcLinkRequest" });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          targetArns: S.optional(__S(4, __c0, 4)),
+          targetArns: S.optional(__S(976, __c122, 0)),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }),
       ).annotate({ identifier: "VpcLink" });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiKey: S.String.pipe(T.HttpLabel("apiKey")) }).pipe(
           T.all(
@@ -5793,13 +6564,17 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteApiKeyRequest" });
   }
 }
-function __c8(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteApiKeyResponse",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5815,7 +6590,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAuthorizerRequest" });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -5837,7 +6616,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteBasePathMappingRequest",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ clientCertificateId: S.String.pipe(T.HttpLabel("clientCertificateId")) }).pipe(
           T.all(
@@ -5852,11 +6635,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteClientCertificateRequest",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteClientCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5872,7 +6663,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDeploymentRequest" });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5893,7 +6688,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteDocumentationPartRequest",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5916,13 +6715,17 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDocumentationVersionResponse",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -5938,7 +6741,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDomainNameRequest" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainNameAccessAssociationArn: S.String.pipe(
@@ -5960,7 +6767,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDomainNameAccessAssociationRequest",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -5981,7 +6792,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteGatewayResponseRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6001,7 +6816,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteIntegrationRequest" });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6024,7 +6843,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteIntegrationResponseRequest",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6044,7 +6867,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMethodRequest" });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6069,7 +6896,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6087,7 +6914,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteModelRequest" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6108,7 +6939,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRequestValidatorRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6124,7 +6959,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteResourceRequest" });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ restApiId: S.String.pipe(T.HttpLabel("restApiId")) }).pipe(
           T.all(
@@ -6137,7 +6976,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteRestApiRequest" });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6153,7 +6996,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteStageRequest" });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")) }).pipe(
           T.all(
@@ -6166,7 +7013,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteUsagePlanRequest" });
-    case 6:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
@@ -6184,7 +7035,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteUsagePlanKeyRequest",
       });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ vpcLinkId: S.String.pipe(T.HttpLabel("vpcLinkId")) }).pipe(
           T.all(
@@ -6199,7 +7054,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteVpcLinkRequest" });
   }
 }
-function __c11(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6222,7 +7077,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "FlushStageAuthorizersCacheRequest",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6241,9 +7100,13 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "FlushStageCacheRequest" });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ description: S.optional(S.String), tags: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ description: S.optional(S.String), tags: S.optional(__S(960, __c120, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clientcertificates" }),
             svc,
@@ -6256,7 +7119,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GenerateClientCertificateRequest",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientCertificateId: S.optional(S.String),
@@ -6264,25 +7131,37 @@ function __c11(j: number): any {
           pemEncodedCertificate: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(960, __c120, 0)),
         }),
       ).annotate({ identifier: "ClientCertificate" });
-    case 4:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/account" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 5:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloudwatchRoleArn: S.optional(S.String),
-          throttleSettings: S.optional(__S(52, __c6, 4)),
-          features: S.optional(__S(4, __c0, 4)),
+          throttleSettings: S.optional(__S(472, __c59, 0)),
+          features: S.optional(__S(976, __c122, 0)),
           apiKeyVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Account" });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiKey: S.String.pipe(T.HttpLabel("apiKey")),
@@ -6291,7 +7170,11 @@ function __c11(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/apikeys/{apiKey}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetApiKeyRequest" });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
@@ -6301,21 +7184,21 @@ function __c11(j: number): any {
           includeValues: S.optional(S.Boolean).pipe(T.HttpQuery("includeValues")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/apikeys" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetApiKeysRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
     case 1:
+      return S.Array(__S(968, __c121, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(__S(4, __c0, 4)),
-          items: S.optional(__S(96, __c12, 0)),
+          warnings: S.optional(__S(976, __c122, 0)),
+          items: S.optional(__S(777, __c97, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "ApiKeys" });
-    case 2:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6331,7 +7214,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAuthorizerRequest" });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6348,16 +7235,20 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAuthorizersRequest" });
-    case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(1072, __c134, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(100, __c12, 4)),
+          items: S.optional(__S(793, __c99, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Authorizers" });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -6376,7 +7267,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetBasePathMappingRequest",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -6396,20 +7291,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetBasePathMappingsRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(9, __c1, 1));
     case 1:
+      return S.Array(__S(1184, __c148, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(104, __c13, 0)),
+          items: S.optional(__S(809, __c101, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "BasePathMappings" });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ clientCertificateId: S.String.pipe(T.HttpLabel("clientCertificateId")) }).pipe(
           T.all(
@@ -6424,7 +7319,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetClientCertificateRequest",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
@@ -6442,21 +7341,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetClientCertificatesRequest",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(744, __c93, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(108, __c13, 4)),
+          items: S.optional(__S(825, __c103, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "ClientCertificates" });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
-          embed: S.optional(__S(4, __c0, 4)).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(976, __c122, 0)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/deployments/{deploymentId}" }),
@@ -6468,7 +7371,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDeploymentRequest" });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6485,20 +7392,20 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDeploymentsRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(11, __c1, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(112, __c14, 0)),
+          items: S.optional(__S(841, __c105, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Deployments" });
-    case 2:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6519,7 +7426,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDocumentationPartRequest",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6542,16 +7453,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDocumentationPartsRequest",
       });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(121, __c15, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(116, __c14, 4)),
+          items: S.optional(__S(857, __c107, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DocumentationParts" });
-    case 6:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6572,7 +7487,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDocumentationVersionRequest",
       });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6591,20 +7510,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDocumentationVersionsRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
     case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(120, __c15, 0)),
+          items: S.optional(__S(873, __c109, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DocumentationVersions" });
-    case 2:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -6620,7 +7539,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDomainNameRequest" });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
@@ -6639,18 +7562,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDomainNameAccessAssociationsRequest",
       });
-    case 4:
-      return S.Array(__S(28, __c3, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(344, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(124, __c15, 4)),
+          items: S.optional(__S(889, __c111, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({
         identifier: "DomainNameAccessAssociations",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
@@ -6660,26 +7587,26 @@ function __c15(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/domainnames" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDomainNamesRequest" });
-    case 7:
-      return S.Array(__S(26, __c3, 2));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(321, __c40, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(127, __c15, 7)),
+          items: S.optional(__S(897, __c112, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DomainNames" });
-    case 1:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           stageName: S.String.pipe(T.HttpLabel("stageName")),
           exportType: S.String.pipe(T.HttpLabel("exportType")),
-          parameters: S.optional(__S(2, __c0, 2)).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(960, __c120, 0)).pipe(T.HttpQueryParams()),
           accepts: S.optional(S.String).pipe(T.HttpHeader("Accept")),
         }).pipe(
           T.all(
@@ -6695,7 +7622,11 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetExportRequest" });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -6703,7 +7634,11 @@ function __c16(j: number): any {
           body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
         }),
       ).annotate({ identifier: "ExportResponse" });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6721,17 +7656,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetGatewayResponseRequest",
       });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           responseType: S.optional(S.String),
           statusCode: S.optional(S.String),
-          responseParameters: S.optional(__S(2, __c0, 2)),
-          responseTemplates: S.optional(__S(2, __c0, 2)),
+          responseParameters: S.optional(__S(960, __c120, 0)),
+          responseTemplates: S.optional(__S(960, __c120, 0)),
           defaultResponse: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GatewayResponse" });
-    case 5:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6750,18 +7693,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetGatewayResponsesRequest",
       });
-    case 6:
-      return S.Array(__S(132, __c16, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(928, __c116, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(134, __c16, 6)),
+          items: S.optional(__S(937, __c117, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "GatewayResponses" });
   }
 }
-function __c17(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6783,7 +7726,65 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetIntegrationRequest" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ restApiId: S.optional(S.String), stageName: S.optional(S.String) }),
+      ).annotate({ identifier: "StageKey" });
     case 1:
+      return S.Array(__S(952, __c119, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          generateDistinctId: S.optional(S.Boolean),
+          value: S.optional(SensitiveString),
+          stageKeys: S.optional(__S(953, __c119, 1)),
+          customerId: S.optional(S.String),
+          tags: S.optional(__S(960, __c120, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/apikeys" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateApiKeyRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          value: S.optional(SensitiveString),
+          name: S.optional(S.String),
+          customerId: S.optional(S.String),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stageKeys: S.optional(__S(976, __c122, 0)),
+          tags: S.optional(__S(960, __c120, 0)),
+        }),
+      ).annotate({ identifier: "ApiKey" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6806,7 +7807,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetIntegrationResponseRequest",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6826,7 +7831,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMethodRequest" });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6847,7 +7856,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMethodResponseRequest" });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6864,7 +7877,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetModelRequest" });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6881,18 +7898,18 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetModelsRequest" });
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(360, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(142, __c17, 6)),
+          items: S.optional(__S(1017, __c127, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Models" });
   }
 }
-function __c18(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6917,7 +7934,11 @@ function __c18(j: number): any {
       return S.suspend(() => S.Struct({ value: S.optional(S.String) })).annotate({
         identifier: "Template",
       });
-    case 2:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6938,7 +7959,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetRequestValidatorRequest",
       });
-    case 3:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -6957,21 +7982,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetRequestValidatorsRequest",
       });
-    case 4:
-      return S.Array(__S(32, __c4, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(376, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(148, __c18, 4)),
+          items: S.optional(__S(1041, __c130, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "RequestValidators" });
-    case 6:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          embed: S.optional(__S(4, __c0, 4)).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(976, __c122, 0)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/resources/{resourceId}" }),
@@ -6983,13 +8012,17 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourceRequest" });
-    case 7:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-          embed: S.optional(__S(4, __c0, 4)).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(976, __c122, 0)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/resources" }),
@@ -7001,20 +8034,67 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourcesRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(43, __c5, 3));
     case 1:
+      return S.Array(__S(425, __c53, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(152, __c19, 0)),
+          items: S.optional(__S(1057, __c132, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Resources" });
-    case 2:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
+          name: S.String,
+          type: S.String,
+          providerARNs: S.optional(__S(976, __c122, 0)),
+          authType: S.optional(S.String),
+          authorizerUri: S.optional(S.String),
+          authorizerCredentials: S.optional(S.String),
+          identitySource: S.optional(S.String),
+          identityValidationExpression: S.optional(S.String),
+          authorizerResultTtlInSeconds: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/restapis/{restApiId}/authorizers" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAuthorizerRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          providerARNs: S.optional(__S(976, __c122, 0)),
+          authType: S.optional(S.String),
+          authorizerUri: S.optional(S.String),
+          authorizerCredentials: S.optional(S.String),
+          identitySource: S.optional(S.String),
+          identityValidationExpression: S.optional(S.String),
+          authorizerResultTtlInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Authorizer" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ restApiId: S.String.pipe(T.HttpLabel("restApiId")) }).pipe(
           T.all(
@@ -7027,29 +8107,37 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetRestApiRequest" });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/restapis" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetRestApisRequest" });
-    case 4:
-      return S.Array(__S(45, __c5, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(440, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(156, __c19, 4)),
+          items: S.optional(__S(1089, __c136, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "RestApis" });
-    case 6:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           stageName: S.String.pipe(T.HttpLabel("stageName")),
           sdkType: S.String.pipe(T.HttpLabel("sdkType")),
-          parameters: S.optional(__S(2, __c0, 2)).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(960, __c120, 0)).pipe(T.HttpQueryParams()),
         }).pipe(
           T.all(
             T.Http({
@@ -7064,7 +8152,11 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSdkRequest" });
-    case 7:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/sdktypes/{id}" }), svc, auth, proto, ver, rules),
@@ -7072,7 +8164,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetSdkTypeRequest" });
   }
 }
-function __c20(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7085,30 +8177,38 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "SdkConfigurationProperty" });
     case 1:
-      return S.Array(__S(160, __c20, 0));
+      return S.Array(__S(1112, __c139, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           friendlyName: S.optional(S.String),
           description: S.optional(S.String),
-          configurationProperties: S.optional(__S(161, __c20, 1)),
+          configurationProperties: S.optional(__S(1113, __c139, 1)),
         }),
       ).annotate({ identifier: "SdkType" });
-    case 3:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/sdktypes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetSdkTypesRequest" });
-    case 4:
-      return S.Array(__S(162, __c20, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(1114, __c139, 2));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(164, __c20, 4)) }).pipe(S.encodeKeys({ items: "item" })),
+        S.Struct({ items: S.optional(__S(1121, __c140, 1)) }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "SdkTypes" });
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -7124,7 +8224,11 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetStageRequest" });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -7140,17 +8244,17 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetStagesRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(51, __c6, 3));
     case 1:
-      return S.suspend(() => S.Struct({ item: S.optional(__S(168, __c21, 0)) })).annotate({
+      return S.Array(__S(460, __c57, 4));
+    case 2:
+      return S.suspend(() => S.Struct({ item: S.optional(__S(1137, __c142, 1)) })).annotate({
         identifier: "Stages",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
@@ -7167,11 +8271,15 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTagsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(960, __c120, 0)) })).annotate({
         identifier: "Tags",
       });
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
@@ -7191,27 +8299,31 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUsageRequest" });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(174, __c21, 6).pipe(S.optional));
   }
 }
-function __c22(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Array(__S(1160, __c145, 0));
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(1161, __c145, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.optional(S.String),
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
-          items: S.optional(__S(175, __c21, 7)),
+          items: S.optional(__S(1162, __c145, 2)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "values" })),
       ).annotate({ identifier: "Usage" });
-    case 1:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")) }).pipe(
           T.all(
@@ -7224,7 +8336,48 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUsagePlanRequest" });
-    case 2:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.String.pipe(T.HttpLabel("domainName")),
+          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
+          basePath: S.optional(S.String),
+          restApiId: S.String,
+          stage: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/domainnames/{domainName}/basepathmappings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateBasePathMappingRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basePath: S.optional(S.String),
+          restApiId: S.optional(S.String),
+          stage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BasePathMapping" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
@@ -7240,7 +8393,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUsagePlanKeyRequest" });
-    case 3:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
@@ -7258,16 +8415,20 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUsagePlanKeysRequest" });
-    case 4:
-      return S.Array(__S(60, __c7, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(496, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(180, __c22, 4)),
+          items: S.optional(__S(1201, __c150, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "UsagePlanKeys" });
-    case 6:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
@@ -7275,20 +8436,20 @@ function __c22(j: number): any {
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/usageplans" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetUsagePlansRequest" });
-    case 7:
-      return S.Array(__S(58, __c7, 2));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(484, __c60, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(183, __c22, 7)),
+          items: S.optional(__S(1209, __c151, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "UsagePlans" });
-    case 1:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ vpcLinkId: S.String.pipe(T.HttpLabel("vpcLinkId")) }).pipe(
           T.all(
@@ -7301,23 +8462,31 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetVpcLinkRequest" });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/vpclinks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetVpcLinksRequest" });
-    case 3:
-      return S.Array(__S(62, __c7, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(512, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(187, __c23, 3)),
+          items: S.optional(__S(1225, __c153, 1)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "VpcLinks" });
-    case 5:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: T.StreamingInput.pipe(T.HttpPayload()),
@@ -7334,11 +8503,22 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ImportApiKeysRequest" });
-    case 6:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ids: S.optional(__S(4, __c0, 4)), warnings: S.optional(__S(4, __c0, 4)) }),
+        S.Struct({
+          ids: S.optional(__S(976, __c122, 0)),
+          warnings: S.optional(__S(976, __c122, 0)),
+        }),
       ).annotate({ identifier: "ApiKeyIds" });
-    case 7:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -7360,13 +8540,13 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
-          parameters: S.optional(__S(2, __c0, 2)).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(960, __c120, 0)).pipe(T.HttpQueryParams()),
           body: T.StreamingInput.pipe(T.HttpPayload()),
         }).pipe(
           T.all(
@@ -7379,14 +8559,18 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ImportRestApiRequest" });
-    case 1:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           responseType: S.String.pipe(T.HttpLabel("responseType")),
           statusCode: S.optional(S.String),
-          responseParameters: S.optional(__S(2, __c0, 2)),
-          responseTemplates: S.optional(__S(2, __c0, 2)),
+          responseParameters: S.optional(__S(960, __c120, 0)),
+          responseTemplates: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/restapis/{restApiId}/gatewayresponses/{responseType}" }),
@@ -7400,7 +8584,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutGatewayResponseRequest",
       });
-    case 2:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
@@ -7412,14 +8600,14 @@ function __c24(j: number): any {
           connectionType: S.optional(S.String),
           connectionId: S.optional(S.String),
           credentials: S.optional(S.String),
-          requestParameters: S.optional(__S(2, __c0, 2)),
-          requestTemplates: S.optional(__S(2, __c0, 2)),
+          requestParameters: S.optional(__S(960, __c120, 0)),
+          requestTemplates: S.optional(__S(960, __c120, 0)),
           passthroughBehavior: S.optional(S.String),
           cacheNamespace: S.optional(S.String),
-          cacheKeyParameters: S.optional(__S(4, __c0, 4)),
+          cacheKeyParameters: S.optional(__S(976, __c122, 0)),
           contentHandling: S.optional(S.String),
           timeoutInMillis: S.optional(S.Number),
-          tlsConfig: S.optional(__S(39, __c4, 7)),
+          tlsConfig: S.optional(__S(401, __c50, 1)),
           responseTransferMode: S.optional(S.String),
           integrationTarget: S.optional(S.String),
         })
@@ -7440,670 +8628,8 @@ function __c24(j: number): any {
             ),
           ),
       ).annotate({ identifier: "PutIntegrationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          selectionPattern: S.optional(S.String),
-          responseParameters: S.optional(__S(2, __c0, 2)),
-          responseTemplates: S.optional(__S(2, __c0, 2)),
-          contentHandling: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration/responses/{statusCode}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutIntegrationResponseRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          authorizationType: S.String,
-          authorizerId: S.optional(S.String),
-          apiKeyRequired: S.optional(S.Boolean),
-          operationName: S.optional(S.String),
-          requestParameters: S.optional(__S(34, __c4, 2)),
-          requestModels: S.optional(__S(2, __c0, 2)),
-          requestValidatorId: S.optional(S.String),
-          authorizationScopes: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutMethodRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          responseParameters: S.optional(__S(34, __c4, 2)),
-          responseModels: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/responses/{statusCode}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutMethodResponseRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
-          failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
-          parameters: S.optional(__S(2, __c0, 2)).pipe(T.HttpQueryParams()),
-          body: T.StreamingInput.pipe(T.HttpPayload()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/restapis/{restApiId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutRestApiRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domainNameAccessAssociationArn: S.String.pipe(
-            T.HttpQuery("domainNameAccessAssociationArn"),
-          ),
-          domainNameArn: S.String.pipe(T.HttpQuery("domainNameArn")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/rejectdomainnameaccessassociations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "RejectDomainNameAccessAssociationRequest",
-      });
   }
 }
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(2, __c0, 2),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(4, __c0, 4).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
-          headers: S.optional(__S(2, __c0, 2)),
-          multiValueHeaders: S.optional(__S(201, __c25, 1)),
-          pathWithQueryString: S.optional(S.String),
-          body: S.optional(S.String),
-          stageVariables: S.optional(__S(2, __c0, 2)),
-          additionalContext: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "TestInvokeAuthorizerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientStatus: S.optional(S.Number),
-          log: S.optional(S.String),
-          latency: S.optional(S.Number),
-          principalId: S.optional(S.String),
-          policy: S.optional(S.String),
-          authorization: S.optional(__S(201, __c25, 1)),
-          claims: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "TestInvokeAuthorizerResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          pathWithQueryString: S.optional(S.String),
-          body: S.optional(S.String),
-          headers: S.optional(__S(2, __c0, 2)),
-          multiValueHeaders: S.optional(__S(201, __c25, 1)),
-          clientCertificateId: S.optional(S.String),
-          stageVariables: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TestInvokeMethodRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.Number),
-          body: S.optional(S.String),
-          headers: S.optional(__S(2, __c0, 2)),
-          multiValueHeaders: S.optional(__S(201, __c25, 1)),
-          log: S.optional(S.String),
-          latency: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TestInvokeMethodResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.optional(S.String),
-          path: S.optional(S.String),
-          value: S.optional(S.String),
-          from: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PatchOperation" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ patchOperations: S.optional(__S(208, __c26, 0)) }).pipe(
-          T.all(T.Http({ method: "PATCH", uri: "/account" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UpdateAccountRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.String.pipe(T.HttpLabel("apiKey")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/apikeys/{apiKey}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateApiKeyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateAuthorizerRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.String.pipe(T.HttpLabel("domainName")),
-          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
-          basePath: S.String.pipe(T.HttpLabel("basePath")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/domainnames/{domainName}/basepathmappings/{basePath}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateBasePathMappingRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clientCertificateId: S.String.pipe(T.HttpLabel("clientCertificateId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/clientcertificates/{clientCertificateId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateClientCertificateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/deployments/{deploymentId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateDeploymentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          documentationPartId: S.String.pipe(T.HttpLabel("documentationPartId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/documentation/parts/{documentationPartId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateDocumentationPartRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          documentationVersion: S.String.pipe(T.HttpLabel("documentationVersion")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/documentation/versions/{documentationVersion}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateDocumentationVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.String.pipe(T.HttpLabel("domainName")),
-          domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/domainnames/{domainName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateDomainNameRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          responseType: S.String.pipe(T.HttpLabel("responseType")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/gatewayresponses/{responseType}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateGatewayResponseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateIntegrationRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/integration/responses/{statusCode}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateIntegrationResponseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateMethodRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/resources/{resourceId}/methods/{httpMethod}/responses/{statusCode}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateMethodResponseRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          modelName: S.String.pipe(T.HttpLabel("modelName")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/models/{modelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateModelRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          requestValidatorId: S.String.pipe(T.HttpLabel("requestValidatorId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/restapis/{restApiId}/requestvalidators/{requestValidatorId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRequestValidatorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/resources/{resourceId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateResourceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateRestApiRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          stageName: S.String.pipe(T.HttpLabel("stageName")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/stages/{stageName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateStageRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
-          keyId: S.String.pipe(T.HttpLabel("keyId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}/keys/{keyId}/usage" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateUsageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateUsagePlanRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          vpcLinkId: S.String.pipe(T.HttpLabel("vpcLinkId")),
-          patchOperations: S.optional(__S(208, __c26, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/vpclinks/{vpcLinkId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateVpcLinkRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

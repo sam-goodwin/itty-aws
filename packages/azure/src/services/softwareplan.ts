@@ -186,8 +186,8 @@ export const CreateHybridUseBenefit: API.OperationMethod<
   CreateHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateHybridUseBenefitRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateHybridUseBenefitResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateHybridUseBenefitRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -201,8 +201,8 @@ export const DeleteHybridUseBenefit: API.OperationMethod<
   DeleteHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteHybridUseBenefitRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteHybridUseBenefitResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteHybridUseBenefitRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -216,8 +216,8 @@ export const GetHybridUseBenefit: API.OperationMethod<
   GetHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetHybridUseBenefitRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetHybridUseBenefitResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetHybridUseBenefitRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -231,8 +231,8 @@ export const ListHybridUseBenefit: API.OperationMethod<
   ListHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListHybridUseBenefitRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<HybridUseBenefitListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListHybridUseBenefitRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -246,8 +246,8 @@ export const ListHybridUseBenefitRevision: API.OperationMethod<
   ListHybridUseBenefitRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListHybridUseBenefitRevisionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<HybridUseBenefitListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListHybridUseBenefitRevisionRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -261,8 +261,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OperationList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -276,8 +276,8 @@ export const RegisterSoftwarePlan: API.OperationMethod<
   RegisterSoftwarePlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<RegisterSoftwarePlanRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<RegisterSoftwarePlanResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<RegisterSoftwarePlanRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<RegisterSoftwarePlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -291,8 +291,8 @@ export const UpdateHybridUseBenefit: API.OperationMethod<
   UpdateHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateHybridUseBenefitRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateHybridUseBenefitResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateHybridUseBenefitRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -304,20 +304,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "HybridUseBenefitPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           scope: S.String.pipe(T.Label()),
           planId: S.String.pipe(T.Label()),
-          sku: __S(0, __c0, 0),
-          properties: S.optional(__S(1, __c0, 1)),
+          sku: __S(8, __c1, 0),
+          properties: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -329,7 +319,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateHybridUseBenefitRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -339,20 +339,36 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "HybridUseBenefitProperties",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          sku: __S(0, __c0, 0),
+          sku: __S(8, __c1, 0),
           etag: S.optional(S.Number),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "CreateHybridUseBenefitResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "HybridUseBenefitPropertiesInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -368,11 +384,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteHybridUseBenefitRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteHybridUseBenefitResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -390,7 +414,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -408,29 +432,37 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListHybridUseBenefitRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          sku: __S(0, __c0, 0),
+          sku: __S(8, __c1, 0),
           etag: S.optional(S.Number),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "HybridUseBenefitModel" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10, __c1, 2)),
+          value: S.optional(__S(65, __c8, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HybridUseBenefitListResult",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -446,7 +478,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListHybridUseBenefitRevisionRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -459,7 +495,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -468,28 +504,28 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(14, __c1, 6)),
+          display: S.optional(__S(81, __c10, 1)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
+          value: S.optional(__S(83, __c10, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -504,13 +540,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RegisterSoftwarePlanRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           planId: S.String.pipe(T.Label()),
-          sku: __S(0, __c0, 0),
-          properties: S.optional(__S(1, __c0, 1)),
+          sku: __S(8, __c1, 0),
+          properties: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -524,7 +564,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -154,7 +154,7 @@ export const listEconomicIntelligence: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(0, __c0, 0) as any as S.Schema<ListEconomicIntelligenceRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<ListEconomicIntelligenceResponse>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListEconomicIntelligenceResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const updateEconomicIntelligence: API.OperationMethod<
   UpdateEconomicIntelligenceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateEconomicIntelligenceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EconomicIntelligence2>,
+  input: __S(8, __c2, 0) as any as S.Schema<UpdateEconomicIntelligenceRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<EconomicIntelligence2>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -208,6 +208,32 @@ function __c0(j: number): any {
         identifier: "ListEconomicIntelligenceRequest",
       });
     case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEconomicIntelligenceResponsePageInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1, __c0, 1),
+          page_info: __S(2, __c0, 2),
+        }),
+      ).annotate({
+        identifier: "ListEconomicIntelligenceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.NullOr(S.String),
@@ -216,9 +242,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EconomicIntelligenceOperation",
       });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
@@ -226,7 +252,7 @@ function __c0(j: number): any {
           ai_chat_id: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           executed_at: S.NullOr(S.String),
-          expected_tool_calls: S.NullOr(__S(2, __c0, 2)),
+          expected_tool_calls: S.NullOr(__S(5, __c1, 1)),
           id: S.String,
           input: S.NullOr(S.String),
           prompt: S.NullOr(S.String),
@@ -239,29 +265,11 @@ function __c0(j: number): any {
           user_feedback: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "EconomicIntelligence2" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListEconomicIntelligenceResponsePageInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(4, __c0, 4),
-          page_info: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "ListEconomicIntelligenceResponse",
-      });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -276,7 +284,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

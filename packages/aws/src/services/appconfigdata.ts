@@ -86,7 +86,7 @@ export class BadRequestException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(S.String),
       Details: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(6, __c0, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(2, __c0, 2)).annotate({
           identifier: "BadRequestDetails",
         }),
       ),
@@ -106,7 +106,7 @@ export class ResourceNotFoundException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceType: /*@__PURE__*/ S.optional(S.String),
       ReferencedBy: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(7, __c0, 7)).annotate({ identifier: "StringMap" }),
+        /*@__PURE__*/ S.suspend(() => __S(4, __c1, 0)).annotate({ identifier: "StringMap" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -179,8 +179,8 @@ export const getLatestConfiguration: API.OperationMethod<
   GetLatestConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetLatestConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetLatestConfigurationResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetLatestConfigurationRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GetLatestConfigurationResponse>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -210,8 +210,8 @@ export const startConfigurationSession: API.OperationMethod<
   StartConfigurationSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<StartConfigurationSessionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartConfigurationSessionResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<StartConfigurationSessionRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<StartConfigurationSessionResponse>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -225,6 +225,24 @@ export const startConfigurationSession: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Problem: S.optional(S.String) })).annotate({
+        identifier: "InvalidParameterDetail",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(0, __c0, 0).pipe(S.optional));
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ InvalidParameters: __S(1, __c0, 1) })]);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -250,7 +268,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetLatestConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationIdentifier: S.String,
@@ -270,25 +292,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "StartConfigurationSessionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
       ).annotate({
         identifier: "StartConfigurationSessionResponse",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Problem: S.optional(S.String) })).annotate({
-        identifier: "InvalidParameterDetail",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(4, __c0, 4).pipe(S.optional));
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ InvalidParameters: __S(5, __c0, 5) })]);
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

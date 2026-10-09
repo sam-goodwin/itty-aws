@@ -181,7 +181,7 @@ export const createProxyRecord: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateProxyRecordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProxyRecord>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProxyRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const createProxyRecordsDiagnose: API.OperationMethod<
   CreateProxyRecordsDiagnoseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateProxyRecordsDiagnoseRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DiagnosticReport>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateProxyRecordsDiagnoseRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DiagnosticReport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -210,8 +210,8 @@ export const getProxyRecord: API.OperationMethod<
   GetProxyRecordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetProxyRecordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProxyRecord>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetProxyRecordRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProxyRecord>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const listProxyRecords: API.OperationMethod<
   ListProxyRecordsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListProxyRecordsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ProxyRecordListResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListProxyRecordsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ProxyRecordListResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const proxyRecordsDestroy: API.OperationMethod<
   ProxyRecordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ProxyRecordsDestroyRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ProxyRecordsDestroyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ProxyRecordsDestroyRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ProxyRecordsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const proxyRecordsRetryCreate: API.OperationMethod<
   ProxyRecordsRetryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ProxyRecordsRetryCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProxyRecord>,
+  input: __S(48, __c6, 0) as any as S.Schema<ProxyRecordsRetryCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProxyRecord>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,8 +270,8 @@ export const updateProxyRecordsPartial: API.OperationMethod<
   UpdateProxyRecordsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateProxyRecordsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProxyRecord>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateProxyRecordsPartialRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProxyRecord>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -293,7 +293,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateProxyRecordRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -308,7 +312,11 @@ function __c0(j: number): any {
           created_by: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProxyRecord" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -323,7 +331,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProxyRecordsDiagnoseRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -331,7 +339,7 @@ function __c0(j: number): any {
           next_action: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DiagnosticReportSummary" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -339,41 +347,41 @@ function __c0(j: number): any {
           value: S.String,
         }),
       ).annotate({ identifier: "DiagnosticDnsRecord" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           summary: S.String,
-          records: __S(5, __c0, 5),
+          records: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "DiagnosticRemediation" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           status: S.String,
           detail: S.String,
-          remediation: S.optional(S.NullOr(__S(6, __c0, 6))),
+          remediation: S.optional(S.NullOr(__S(20, __c2, 4))),
         }),
       ).annotate({ identifier: "DiagnosticCheckResult" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(21, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           ran_at: S.String,
-          summary: __S(3, __c0, 3),
-          checks: __S(8, __c1, 0),
+          summary: __S(17, __c2, 1),
+          checks: __S(22, __c2, 6),
         }),
       ).annotate({ identifier: "DiagnosticReport" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -386,7 +394,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProxyRecordRequest" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -398,16 +410,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProxyRecordsRequest" });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(12, __c1, 4)),
+          results: S.optional(__S(33, __c4, 1)),
           max_proxy_records: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProxyRecordListResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -422,13 +438,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ProxyRecordsDestroyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ProxyRecordsDestroyResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -445,7 +461,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ProxyRecordsRetryCreateRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -463,7 +483,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

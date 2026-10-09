@@ -2453,8 +2453,8 @@ export const completeImportSpaces: API.OperationMethod<
   CompleteImportSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CompleteImportSpacesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CompleteImportSpaceResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CompleteImportSpacesRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<CompleteImportSpaceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2473,8 +2473,8 @@ export const createCustomEmojis: API.OperationMethod<
   CreateCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateCustomEmojisRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomEmoji>,
+  input: __S(1728, __c54, 0) as any as S.Schema<CreateCustomEmojisRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<CustomEmoji>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2493,8 +2493,8 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateSpacesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Space>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateSpacesRequest>,
+  output: __S(1321, __c41, 9) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2513,8 +2513,8 @@ export const createSpacesMembers: API.OperationMethod<
   CreateSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateSpacesMembersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Membership>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateSpacesMembersRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2533,8 +2533,8 @@ export const createSpacesMessagePins: API.OperationMethod<
   CreateSpacesMessagePinsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateSpacesMessagePinsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<MessagePin>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateSpacesMessagePinsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<MessagePin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2553,8 @@ export const createSpacesMessages: API.OperationMethod<
   CreateSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateSpacesMessagesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<Message>,
+  input: __S(2240, __c70, 0) as any as S.Schema<CreateSpacesMessagesRequest>,
+  output: __S(2524, __c78, 28) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2573,8 +2573,8 @@ export const createSpacesMessagesReactions: API.OperationMethod<
   CreateSpacesMessagesReactionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<CreateSpacesMessagesReactionsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<Reaction>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateSpacesMessagesReactionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Reaction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2593,8 +2593,8 @@ export const createUsersSections: API.OperationMethod<
   CreateUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<CreateUsersSectionsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GoogleChatV1Section>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateUsersSectionsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleChatV1Section>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2613,8 +2613,8 @@ export const deleteCustomEmojis: API.OperationMethod<
   DeleteCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteCustomEmojisRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteCustomEmojisRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const deleteSpaces: API.OperationMethod<
   DeleteSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteSpacesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteSpacesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2653,8 @@ export const deleteSpacesMembers: API.OperationMethod<
   DeleteSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteSpacesMembersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Membership>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteSpacesMembersRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2673,8 +2673,8 @@ export const deleteSpacesMessagePins: API.OperationMethod<
   DeleteSpacesMessagePinsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteSpacesMessagePinsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteSpacesMessagePinsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const deleteSpacesMessages: API.OperationMethod<
   DeleteSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteSpacesMessagesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteSpacesMessagesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2713,8 +2713,8 @@ export const deleteSpacesMessagesReactions: API.OperationMethod<
   DeleteSpacesMessagesReactionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DeleteSpacesMessagesReactionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteSpacesMessagesReactionsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2733,8 +2733,8 @@ export const deleteUsersSections: API.OperationMethod<
   DeleteUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DeleteUsersSectionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteUsersSectionsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2748,8 +2748,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<Media>,
+  input: __S(352, __c11, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<Media>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2763,8 +2763,8 @@ export const findDirectMessageSpaces: API.OperationMethod<
   FindDirectMessageSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<FindDirectMessageSpacesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Space>,
+  input: __S(384, __c12, 0) as any as S.Schema<FindDirectMessageSpacesRequest>,
+  output: __S(1321, __c41, 9) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2779,8 +2779,8 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   FindGroupChatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<FindGroupChatsSpacesRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<FindGroupChatsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<FindGroupChatsSpacesRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<FindGroupChatsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2795,8 +2795,8 @@ export const getCustomEmojis: API.OperationMethod<
   GetCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetCustomEmojisRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomEmoji>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetCustomEmojisRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<CustomEmoji>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2810,8 @@ export const getSpaceReadStateUsersSpaces: API.OperationMethod<
   GetSpaceReadStateUsersSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetSpaceReadStateUsersSpacesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<SpaceReadState>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetSpaceReadStateUsersSpacesRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<SpaceReadState>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2825,8 +2825,8 @@ export const getSpaces: API.OperationMethod<
   GetSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<GetSpacesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Space>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetSpacesRequest>,
+  output: __S(1321, __c41, 9) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2840,8 +2840,8 @@ export const getSpacesMembers: API.OperationMethod<
   GetSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetSpacesMembersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Membership>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetSpacesMembersRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2855,8 +2855,8 @@ export const getSpacesMessages: API.OperationMethod<
   GetSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetSpacesMessagesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<Message>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetSpacesMessagesRequest>,
+  output: __S(2524, __c78, 28) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2870,8 +2870,8 @@ export const getSpacesMessagesAttachments: API.OperationMethod<
   GetSpacesMessagesAttachmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetSpacesMessagesAttachmentsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<Attachment>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetSpacesMessagesAttachmentsRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<Attachment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2885,8 +2885,8 @@ export const getSpacesSpaceEvents: API.OperationMethod<
   GetSpacesSpaceEventsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetSpacesSpaceEventsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<SpaceEvent>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetSpacesSpaceEventsRequest>,
+  output: __S(746, __c23, 10) as any as S.Schema<SpaceEvent>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const getThreadReadStateUsersSpacesThreads: API.OperationMethod<
   GetThreadReadStateUsersSpacesThreadsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetThreadReadStateUsersSpacesThreadsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ThreadReadState>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetThreadReadStateUsersSpacesThreadsRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ThreadReadState>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2918,8 @@ export const getUsersAvailability: API.OperationMethod<
   GetUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetUsersAvailabilityRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<Availability>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetUsersAvailabilityRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2936,8 +2936,8 @@ export const getUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   GetUsersSpacesSpaceNotificationSettingError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetUsersSpacesSpaceNotificationSettingRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<SpaceNotificationSetting>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetUsersSpacesSpaceNotificationSettingRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<SpaceNotificationSetting>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2952,8 +2952,8 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListCustomEmojisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListCustomEmojisRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListCustomEmojisResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListCustomEmojisRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListCustomEmojisResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2969,8 +2969,8 @@ export const listSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListSpacesRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<ListSpacesResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListSpacesRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListSpacesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2986,8 +2986,8 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<ListSpacesMembersRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<ListMembershipsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListSpacesMembersRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<ListMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3003,8 +3003,8 @@ export const listSpacesMessagePins: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMessagePinsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListSpacesMessagePinsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ListMessagePinsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListSpacesMessagePinsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListMessagePinsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3020,8 +3020,8 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListSpacesMessagesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<ListMessagesResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListSpacesMessagesRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3037,8 +3037,8 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListReactionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListSpacesMessagesReactionsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<ListReactionsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListSpacesMessagesReactionsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<ListReactionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3054,8 +3054,8 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSpaceEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListSpacesSpaceEventsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListSpaceEventsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListSpacesSpaceEventsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ListSpaceEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3071,8 +3071,8 @@ export const listUsersSections: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListUsersSectionsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListSectionsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListUsersSectionsRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<ListSectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3088,8 +3088,8 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSectionItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListUsersSectionsItemsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<ListSectionItemsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListUsersSectionsItemsRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<ListSectionItemsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3109,8 +3109,8 @@ export const markAsActiveUsersAvailability: API.OperationMethod<
   MarkAsActiveUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<MarkAsActiveUsersAvailabilityRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<Availability>,
+  input: __S(1441, __c45, 1) as any as S.Schema<MarkAsActiveUsersAvailabilityRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3129,8 +3129,8 @@ export const markAsAwayUsersAvailability: API.OperationMethod<
   MarkAsAwayUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<MarkAsAwayUsersAvailabilityRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<Availability>,
+  input: __S(1472, __c46, 0) as any as S.Schema<MarkAsAwayUsersAvailabilityRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3149,8 +3149,8 @@ export const markAsDoNotDisturbUsersAvailability: API.OperationMethod<
   MarkAsDoNotDisturbUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<MarkAsDoNotDisturbUsersAvailabilityRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<Availability>,
+  input: __S(1505, __c47, 1) as any as S.Schema<MarkAsDoNotDisturbUsersAvailabilityRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3169,8 @@ export const moveUsersSectionsItems: API.OperationMethod<
   MoveUsersSectionsItemsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<MoveUsersSectionsItemsRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<MoveSectionItemResponse>,
+  input: __S(1537, __c48, 1) as any as S.Schema<MoveUsersSectionsItemsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<MoveSectionItemResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3189,8 +3189,8 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<PatchSpacesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Space>,
+  input: __S(1568, __c49, 0) as any as S.Schema<PatchSpacesRequest>,
+  output: __S(1321, __c41, 9) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3209,8 +3209,8 @@ export const patchSpacesMembers: API.OperationMethod<
   PatchSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<PatchSpacesMembersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Membership>,
+  input: __S(1600, __c50, 0) as any as S.Schema<PatchSpacesMembersRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3229,8 @@ export const patchSpacesMessages: API.OperationMethod<
   PatchSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<PatchSpacesMessagesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<Message>,
+  input: __S(1632, __c51, 0) as any as S.Schema<PatchSpacesMessagesRequest>,
+  output: __S(2524, __c78, 28) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3249,8 +3249,8 @@ export const patchUsersAvailability: API.OperationMethod<
   PatchUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<PatchUsersAvailabilityRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<Availability>,
+  input: __S(1664, __c52, 0) as any as S.Schema<PatchUsersAvailabilityRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3269,8 +3269,8 @@ export const patchUsersSections: API.OperationMethod<
   PatchUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<PatchUsersSectionsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GoogleChatV1Section>,
+  input: __S(1696, __c53, 0) as any as S.Schema<PatchUsersSectionsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleChatV1Section>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3289,8 +3289,8 @@ export const patchUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   PatchUsersSpacesSpaceNotificationSettingError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<SpaceNotificationSetting>,
+  input: __S(1792, __c56, 0) as any as S.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<SpaceNotificationSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3309,8 +3309,8 @@ export const positionUsersSections: API.OperationMethod<
   PositionUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<PositionUsersSectionsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<PositionSectionResponse>,
+  input: __S(1825, __c57, 1) as any as S.Schema<PositionUsersSectionsRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<PositionSectionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3325,8 +3325,8 @@ export const searchSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   SearchSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<SearchSpacesRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<SearchSpacesResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<SearchSpacesRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<SearchSpacesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3346,8 +3346,8 @@ export const searchSpacesMessages: API.OperationMethod<
   SearchSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<SearchSpacesMessagesRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<SearchMessagesResponse>,
+  input: __S(1889, __c59, 1) as any as S.Schema<SearchSpacesMessagesRequest>,
+  output: __S(1892, __c59, 4) as any as S.Schema<SearchMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3366,8 +3366,8 @@ export const setupSpaces: API.OperationMethod<
   SetupSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<SetupSpacesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Space>,
+  input: __S(1921, __c60, 1) as any as S.Schema<SetupSpacesRequest>,
+  output: __S(1321, __c41, 9) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3386,8 +3386,8 @@ export const updateSpaceReadStateUsersSpaces: API.OperationMethod<
   UpdateSpaceReadStateUsersSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<UpdateSpaceReadStateUsersSpacesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<SpaceReadState>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateSpaceReadStateUsersSpacesRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<SpaceReadState>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3406,8 +3406,8 @@ export const updateSpacesMessages: API.OperationMethod<
   UpdateSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<UpdateSpacesMessagesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<Message>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateSpacesMessagesRequest>,
+  output: __S(2524, __c78, 28) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3426,8 +3426,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UploadMediaRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<UploadAttachmentResponse>,
+  input: __S(2017, __c63, 1) as any as S.Schema<UploadMediaRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<UploadAttachmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3437,1331 +3437,10 @@ export const uploadMedia: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CompleteImportSpaceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:completeImport",
-            baseUrl: "https://chat.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteImportSpacesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          joinedGroupCount: S.optional(S.Number),
-          joinedDirectHumanUserCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MembershipCount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Audience" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audience: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Principal" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principals: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AccessPermissionSetting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          discoverSpaceSetting: S.optional(__S(6, __c0, 6)),
-          viewSpaceMembershipSetting: S.optional(__S(6, __c0, 6)),
-          joinSpaceSetting: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AccessPermissionSettings" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessPermissionSettings: S.optional(__S(7, __c0, 7)),
-          audience: S.optional(S.String),
-          accessState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          membersAllowed: S.optional(S.Boolean),
-          managersAllowed: S.optional(S.Boolean),
-          assistantManagersAllowed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PermissionSetting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          manageWebhooks: S.optional(__S(9, __c1, 1)),
-          manageMembersAndGroups: S.optional(__S(9, __c1, 1)),
-          toggleHistory: S.optional(__S(9, __c1, 1)),
-          replyMessages: S.optional(__S(9, __c1, 1)),
-          modifySpaceDetails: S.optional(__S(9, __c1, 1)),
-          useAtMentionAll: S.optional(__S(9, __c1, 1)),
-          viewSpaceMembership: S.optional(__S(9, __c1, 1)),
-          manageApps: S.optional(__S(9, __c1, 1)),
-          postMessages: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "PermissionSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          guidelines: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SpaceDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          externalUserAllowed: S.optional(S.Boolean),
-          spaceType: S.optional(S.String),
-          adminInstalled: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          threaded: S.optional(S.Boolean),
-          predefinedPermissionSettings: S.optional(S.String),
-          membershipCount: S.optional(__S(2, __c0, 2)),
-          importMode: S.optional(S.Boolean),
-          accessSettings: S.optional(__S(8, __c1, 0)),
-          permissionSettings: S.optional(__S(10, __c1, 2)),
-          singleUserBotDm: S.optional(S.Boolean),
-          spaceDetails: S.optional(__S(11, __c1, 3)),
-          spaceUri: S.optional(S.String),
-          name: S.optional(S.String),
-          customer: S.optional(S.String),
-          spaceThreadingState: S.optional(S.String),
-          importModeExpireTime: S.optional(S.String),
-          type: S.optional(S.String),
-          lastActiveTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          spaceHistoryState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Space" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          space: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "CompleteImportSpaceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fileContent: S.optional(S.String),
-          filename: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomEmojiPayload" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          name: S.optional(S.String),
-          payload: S.optional(__S(14, __c1, 6)),
-          emojiName: S.optional(S.String),
-          temporaryImageUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomEmoji" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/customEmojis",
-            baseUrl: "https://chat.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomEmojisRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "v1/spaces", baseUrl: "https://chat.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "CreateSpacesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          isAnonymous: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          email: S.optional(S.String),
-          avatarUrl: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          domainId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          member: S.optional(__S(18, __c2, 2)),
-          affiliation: S.optional(S.String),
-          name: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          groupMember: S.optional(__S(3, __c0, 3)),
-          state: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Membership" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/members",
-            baseUrl: "https://chat.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSpacesMembersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessagePin" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/messagePins",
-            baseUrl: "https://chat.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSpacesMessagePinsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          grade: S.optional(S.Number),
-          weight: S.optional(S.Number),
-          fill: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1MaterialIcon",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          knownIcon: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          altText: S.optional(S.String),
-          materialIcon: S.optional(__S(23, __c2, 7)),
-          imageType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Icon" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ActionParameter",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          loadIndicator: S.optional(S.String),
-          persistValues: S.optional(S.Boolean),
-          requiredWidgets: S.optional(__S(25, __c3, 1)),
-          parameters: S.optional(__S(27, __c3, 3)),
-          function: S.optional(S.String),
-          interaction: S.optional(S.String),
-          allWidgetsAreRequired: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Action" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          onClose: S.optional(S.String),
-          openAs: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1OpenLink" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-          actionLabel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CardAction",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          maxLines: S.optional(S.Number),
-          textSyntax: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1TextParagraph",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-          altText: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Image" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          textParagraph: S.optional(__S(32, __c4, 0)),
-          image: S.optional(__S(33, __c4, 1)),
-          buttonList: S.optional(S.suspend(() => __S(97, __c12, 1))),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1NestedWidget",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          widgets: S.optional(__S(35, __c4, 3)),
-          footerWidgets: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CarouselCard",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          carouselCards: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Carousel" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultToCurrentSpace: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SpaceDataSource" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          spaceDataSource: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "ChatClientDataSourceMarkup",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          includeVariables: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowDataSourceMarkup" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          chatDataSource: S.optional(__S(40, __c5, 0)),
-          workflowDataSource: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "HostAppDataSourceMarkup" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commonDataSource: S.optional(S.String),
-          hostAppDataSource: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1PlatformDataSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minCharactersTrigger: S.optional(S.Number),
-          remoteDataSource: S.optional(__S(28, __c3, 4)),
-          platformDataSource: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1DataSourceConfig",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          selected: S.optional(S.Boolean),
-          startIconUri: S.optional(S.String),
-          bottomText: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1SelectionItem",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          multiSelectMaxSelectedItems: S.optional(S.Number),
-          onChangeAction: S.optional(__S(28, __c3, 4)),
-          name: S.optional(S.String),
-          externalDataSource: S.optional(__S(28, __c3, 4)),
-          dataSourceConfigs: S.optional(__S(45, __c5, 5)),
-          type: S.optional(S.String),
-          items: S.optional(__S(47, __c5, 7)),
-          multiSelectMinQueryLength: S.optional(S.Number),
-          platformDataSource: S.optional(__S(43, __c5, 3)),
-          hintText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1SelectionInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          selected: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          onChangeAction: S.optional(__S(28, __c3, 4)),
-          controlType: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1SwitchControl",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          icon: S.optional(__S(24, __c3, 0)),
-          text: S.optional(S.String),
-          topLabel: S.optional(S.String),
-          wrapText: S.optional(S.Boolean),
-          bottomLabelText: S.optional(__S(32, __c4, 0)),
-          startIcon: S.optional(__S(24, __c3, 0)),
-          endIcon: S.optional(__S(24, __c3, 0)),
-          topLabelText: S.optional(__S(32, __c4, 0)),
-          bottomLabel: S.optional(S.String),
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-          startIconVerticalAlignment: S.optional(S.String),
-          button: S.optional(S.suspend(() => __S(95, __c11, 7))),
-          switchControl: S.optional(__S(49, __c6, 1)),
-          contentText: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1DecoratedText",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          characterLimit: S.optional(S.Number),
-          inputType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1Validation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1SuggestionItem",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1Suggestions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          autoCompleteAction: S.optional(__S(28, __c3, 4)),
-          onChangeAction: S.optional(__S(28, __c3, 4)),
-          hostAppDataSource: S.optional(__S(42, __c5, 2)),
-          validation: S.optional(__S(51, __c6, 3)),
-          hintText: S.optional(S.String),
-          initialSuggestions: S.optional(__S(54, __c6, 6)),
-          label: S.optional(S.String),
-          value: S.optional(S.String),
-          placeholderText: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1TextInput",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          altText: S.optional(S.String),
-          label: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          enabled: S.optional(S.Boolean),
-          icon: S.optional(__S(24, __c3, 0)),
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Chip" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          chips: S.optional(__S(57, __c7, 1)),
-          layout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1ChipList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          valueMsEpoch: S.optional(S.String),
-          hostAppDataSource: S.optional(__S(42, __c5, 2)),
-          onChangeAction: S.optional(__S(28, __c3, 4)),
-          type: S.optional(S.String),
-          timezoneOffsetDate: S.optional(S.Number),
-          label: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1DateTimePicker",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          selectionInput: S.optional(__S(48, __c6, 0)),
-          buttonList: S.optional(S.suspend(() => __S(97, __c12, 1))),
-          decoratedText: S.optional(__S(50, __c6, 2)),
-          image: S.optional(__S(33, __c4, 1)),
-          textInput: S.optional(__S(55, __c6, 7)),
-          chipList: S.optional(__S(58, __c7, 2)),
-          textParagraph: S.optional(__S(32, __c4, 0)),
-          dateTimePicker: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Widgets" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          horizontalAlignment: S.optional(S.String),
-          verticalAlignment: S.optional(S.String),
-          horizontalSizeStyle: S.optional(S.String),
-          widgets: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Column" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          columnItems: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Columns" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1UpdateVisibilityAction",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateVisibilityAction: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CommonWidgetAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionRuleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Trigger" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          commonWidgetAction: S.optional(__S(66, __c8, 2)),
-          actionRuleId: S.optional(S.String),
-          postEventTriggers: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1EventAction",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          red: S.optional(S.Number),
-          alpha: S.optional(S.Number),
-          green: S.optional(S.Number),
-          blue: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Color" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cornerRadius: S.optional(S.Number),
-          strokeColor: S.optional(__S(71, __c8, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1BorderStyle",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          aspectRatio: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ImageCropStyle",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cropStyle: S.optional(__S(73, __c9, 1)),
-          borderStyle: S.optional(__S(72, __c9, 0)),
-          imageUri: S.optional(S.String),
-          altText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ImageComponent",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          layout: S.optional(S.String),
-          subtitle: S.optional(S.String),
-          image: S.optional(__S(74, __c9, 2)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1GridItem" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          borderStyle: S.optional(__S(72, __c9, 0)),
-          title: S.optional(S.String),
-          columnCount: S.optional(S.Number),
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-          items: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Grid" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          carousel: S.optional(__S(38, __c4, 6)),
-          columns: S.optional(__S(64, __c8, 0)),
-          visibility: S.optional(S.String),
-          horizontalAlignment: S.optional(S.String),
-          divider: S.optional(__S(0, __c0, 0)),
-          chipList: S.optional(__S(58, __c7, 2)),
-          buttonList: S.optional(S.suspend(() => __S(97, __c12, 1))),
-          eventActions: S.optional(__S(70, __c8, 6)),
-          selectionInput: S.optional(__S(48, __c6, 0)),
-          grid: S.optional(__S(77, __c9, 5)),
-          textInput: S.optional(__S(55, __c6, 7)),
-          dateTimePicker: S.optional(__S(59, __c7, 3)),
-          textParagraph: S.optional(__S(32, __c4, 0)),
-          image: S.optional(__S(33, __c4, 1)),
-          decoratedText: S.optional(__S(50, __c6, 2)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Widget" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          horizontalAlignment: S.optional(S.String),
-          collapseButton: S.optional(S.suspend(() => __S(95, __c11, 7))),
-          expandButton: S.optional(S.suspend(() => __S(95, __c11, 7))),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CollapseControl",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(S.String),
-          id: S.optional(S.String),
-          uncollapsibleWidgetsCount: S.optional(S.Number),
-          widgets: S.optional(__S(79, __c9, 7)),
-          collapseControl: S.optional(__S(80, __c10, 0)),
-          collapsible: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Section" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          secondaryButton: S.optional(S.suspend(() => __S(95, __c11, 7))),
-          primaryButton: S.optional(S.suspend(() => __S(95, __c11, 7))),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CardFixedFooter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          imageType: S.optional(S.String),
-          title: S.optional(S.String),
-          imageAltText: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1CardHeader",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conditionType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ExpressionDataCondition",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          expressionDataCondition: S.optional(__S(85, __c10, 5)),
-          actionRuleId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1Condition",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          id: S.optional(S.String),
-          conditions: S.optional(__S(87, __c10, 7)),
-          eventActions: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ExpressionData",
-      });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cardActions: S.optional(__S(31, __c3, 7)),
-          name: S.optional(S.String),
-          sections: S.optional(__S(82, __c10, 2)),
-          displayStyle: S.optional(S.String),
-          fixedFooter: S.optional(__S(83, __c10, 3)),
-          peekCardHeader: S.optional(__S(84, __c10, 4)),
-          sectionDividerStyle: S.optional(S.String),
-          header: S.optional(__S(84, __c10, 4)),
-          expressionData: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Card" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          startIcon: S.optional(__S(24, __c3, 0)),
-          disabled: S.optional(S.Boolean),
-          onClick: S.optional(S.suspend(() => __S(94, __c11, 6))),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1OverflowMenuItem",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1OverflowMenu",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          openDynamicLinkAction: S.optional(__S(28, __c3, 4)),
-          openLink: S.optional(__S(29, __c3, 5)),
-          action: S.optional(__S(28, __c3, 4)),
-          card: S.optional(__S(90, __c11, 2)),
-          overflowMenu: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1OnClick" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          icon: S.optional(__S(24, __c3, 0)),
-          disabled: S.optional(S.Boolean),
-          onClick: S.optional(__S(94, __c11, 6)),
-          type: S.optional(S.String),
-          altText: S.optional(S.String),
-          color: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "GoogleAppsCardV1Button" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          buttons: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsCardV1ButtonList",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          buttonList: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "AccessoryWidget" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          driveFileId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DriveDataRef" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.optional(S.String),
-          attachmentUploadToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttachmentDataRef" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          driveDataRef: S.optional(__S(100, __c12, 4)),
-          thumbnailUri: S.optional(S.String),
-          attachmentDataRef: S.optional(__S(101, __c12, 5)),
-          contentType: S.optional(S.String),
-          downloadUri: S.optional(S.String),
-          source: S.optional(S.String),
-          contentName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attachment" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          threadKey: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Thread" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cardId: S.optional(S.String),
-          card: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "CardWithId" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deletionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletionMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          huddleStatus: S.optional(S.String),
-          meetingCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MeetSpaceLinkData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          calendarId: S.optional(S.String),
-          eventId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CalendarEventLinkData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          driveDataRef: S.optional(__S(100, __c12, 4)),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DriveLinkData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          thread: S.optional(S.String),
-          space: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChatSpaceLinkData" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          richLinkType: S.optional(S.String),
-          meetSpaceLinkData: S.optional(__S(108, __c13, 4)),
-          calendarEventLinkData: S.optional(__S(109, __c13, 5)),
-          driveLinkData: S.optional(__S(110, __c13, 6)),
-          chatSpaceLinkData: S.optional(__S(111, __c13, 7)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RichLinkMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          commandName: S.optional(S.String),
-          triggersDialog: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          bot: S.optional(__S(18, __c2, 2)),
-          commandId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlashCommandMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customEmoji: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CustomEmojiMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          user: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "UserMentionMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          richLinkMetadata: S.optional(__S(112, __c14, 0)),
-          length: S.optional(S.Number),
-          slashCommand: S.optional(__S(113, __c14, 1)),
-          customEmojiMetadata: S.optional(__S(114, __c14, 2)),
-          userMention: S.optional(__S(115, __c14, 3)),
-          startIndex: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Annotation" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          commandId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlashCommand" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unicode: S.optional(S.String),
-          customEmoji: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "Emoji" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reactionCount: S.optional(S.Number),
-          emoji: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "EmojiReactionSummary" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          imageStyle: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CardHeader" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(27, __c3, 3)),
-          actionMethodName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FormAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpenLink" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(123, __c15, 3)),
-          openLink: S.optional(__S(124, __c15, 4)),
-        }),
-      ).annotate({ identifier: "OnClick" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          actionLabel: S.optional(S.String),
-          onClick: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "CardAction" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          imageUrl: S.optional(S.String),
-          aspectRatio: S.optional(S.Number),
-          onClick: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextParagraph" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          icon: S.optional(S.String),
-          onClick: S.optional(__S(125, __c15, 5)),
-          name: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageButton" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          onClick: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "TextButton" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageButton: S.optional(__S(130, __c16, 2)),
-          textButton: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "Button" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          iconUrl: S.optional(S.String),
-          bottomLabel: S.optional(S.String),
-          icon: S.optional(S.String),
-          topLabel: S.optional(S.String),
-          button: S.optional(__S(132, __c16, 4)),
-          contentMultiline: S.optional(S.Boolean),
-          content: S.optional(S.String),
-          onClick: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "KeyValue" });
-    case 6:
-      return S.Array(__S(132, __c16, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(128, __c16, 0)),
-          textParagraph: S.optional(__S(129, __c16, 1)),
-          keyValue: S.optional(__S(133, __c16, 5)),
-          buttons: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({ identifier: "WidgetMarkup" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          widgets: S.optional(__S(136, __c17, 0)),
-          header: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Section" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(__S(122, __c15, 2)),
-          cardActions: S.optional(__S(127, __c15, 7)),
-          name: S.optional(S.String),
-          sections: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "Card" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttachedGif" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "SelectionItems" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          widget: S.optional(S.String),
-          suggestions: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({ identifier: "UpdatedWidget" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.String),
-          userFacingMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "Dialog" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionStatus: S.optional(__S(145, __c18, 1)),
-          dialog: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({ identifier: "DialogAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updatedWidget: S.optional(__S(144, __c18, 0)),
-          url: S.optional(S.String),
-          dialogAction: S.optional(__S(147, __c18, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(117, __c14, 5)),
-          attachments: S.optional(__S(103, __c12, 7)),
-          sender: S.optional(S.String),
-          formattedText: S.optional(S.String),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotedMessageSnapshot" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          spaceDisplayName: S.optional(S.String),
-          space: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardedMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lastUpdateTime: S.optional(S.String),
-          quotedMessageSnapshot: S.optional(__S(149, __c18, 5)),
-          forwardedMetadata: S.optional(__S(150, __c18, 6)),
-          quoteType: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotedMessageMetadata" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          threadReply: S.optional(S.Boolean),
-          accessoryWidgets: S.optional(__S(99, __c12, 3)),
-          attachment: S.optional(__S(103, __c12, 7)),
-          text: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-          thread: S.optional(__S(104, __c13, 0)),
-          sender: S.optional(__S(18, __c2, 2)),
-          silent: S.optional(S.Boolean),
-          markupSyntax: S.optional(S.String),
-          cardsV2: S.optional(__S(106, __c13, 2)),
-          deletionMetadata: S.optional(__S(107, __c13, 3)),
-          space: S.optional(__S(12, __c1, 4)),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          annotations: S.optional(__S(117, __c14, 5)),
-          fallbackText: S.optional(S.String),
-          argumentText: S.optional(S.String),
-          formattedText: S.optional(S.String),
-          slashCommand: S.optional(__S(118, __c14, 6)),
-          emojiReactionSummaries: S.optional(__S(121, __c15, 1)),
-          cards: S.optional(__S(140, __c17, 4)),
-          matchedUrl: S.optional(__S(124, __c15, 4)),
-          attachedGifs: S.optional(__S(142, __c17, 6)),
-          privateMessageViewer: S.optional(__S(18, __c2, 2)),
-          clientAssignedMessageId: S.optional(S.String),
-          actionResponse: S.optional(__S(148, __c18, 4)),
-          name: S.optional(S.String),
-          quotedMessageMetadata: S.optional(__S(151, __c18, 7)),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          "createMessageNotificationOptions.notificationType": S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          messageId: S.optional(S.String.pipe(T.Query())),
-          messageReplyOption: S.optional(S.String.pipe(T.Query())),
-          threadKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/messages",
-            baseUrl: "https://chat.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSpacesMessagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          emoji: S.optional(__S(119, __c14, 7)),
-          user: S.optional(__S(18, __c2, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Reaction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4772,20 +3451,27 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateSpacesMessagesReactionsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.Number),
+          emoji: S.optional(__S(2272, __c71, 0)),
+          user: S.optional(__S(2144, __c67, 0)),
           name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          type: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GoogleChatV1Section" });
-    case 5:
+      ).annotate({ identifier: "Reaction" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4796,7 +3482,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateUsersSectionsRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.Number),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleChatV1Section" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4806,7 +3509,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteCustomEmojisRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -4817,7 +3524,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteSpacesRequest" });
   }
 }
-function __c20(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4830,7 +3537,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteSpacesMembersRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4840,7 +3551,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteSpacesMessagePinsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -4851,7 +3566,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteSpacesMessagesRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4861,7 +3580,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteSpacesMessagesReactionsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4871,7 +3594,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSectionsRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
@@ -4883,13 +3610,17 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DownloadMediaRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Media" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -4905,12 +3636,12 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(25, __c3, 1).pipe(T.Query())),
+          users: S.optional(__S(2304, __c72, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           spaceView: S.optional(S.String.pipe(T.Query())),
@@ -4925,15 +3656,23 @@ function __c21(j: number): any {
         identifier: "FindGroupChatsSpacesRequest",
       });
     case 1:
-      return S.Array(__S(12, __c1, 4));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          spaces: S.optional(__S(169, __c21, 1)),
+          spaces: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "FindGroupChatsResponse" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1321, __c41, 9));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4941,7 +3680,11 @@ function __c21(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetCustomEmojisRequest" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4951,14 +3694,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetSpaceReadStateUsersSpacesRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lastReadTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpaceReadState" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -4967,7 +3718,11 @@ function __c21(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetSpacesRequest" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4978,7 +3733,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetSpacesMembersRequest" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4989,7 +3744,11 @@ function __c22(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetSpacesMessagesRequest" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4999,7 +3758,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetSpacesMessagesAttachmentsRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5009,36 +3772,6 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetSpacesSpaceEventsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.optional(__S(154, __c19, 2)),
-        }),
-      ).annotate({ identifier: "ReactionCreatedEventData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          membership: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "MembershipDeletedEventData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({ identifier: "MessageUpdatedEventData" });
-    case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "MessageBatchUpdatedEventData",
-      });
   }
 }
 function __c23(j: number): any {
@@ -5046,68 +3779,102 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          space: S.optional(__S(12, __c1, 4)),
+          reaction: S.optional(__S(32, __c1, 0)),
         }),
-      ).annotate({ identifier: "SpaceUpdatedEventData" });
+      ).annotate({ identifier: "ReactionCreatedEventData" });
     case 1:
-      return S.Array(__S(179, __c22, 3));
+      return S.suspend(() =>
+        S.Struct({
+          membership: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "MembershipDeletedEventData",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reactions: S.optional(__S(185, __c23, 1)),
+          message: S.optional(__S(2524, __c78, 28)),
+        }),
+      ).annotate({ identifier: "MessageUpdatedEventData" });
+    case 3:
+      return S.Array(__S(738, __c23, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(739, __c23, 3)),
+        }),
+      ).annotate({
+        identifier: "MessageBatchUpdatedEventData",
+      });
+    case 5:
+      return S.Array(__S(736, __c23, 0));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          reactions: S.optional(__S(741, __c23, 5)),
         }),
       ).annotate({
         identifier: "ReactionBatchCreatedEventData",
       });
-    case 3:
-      return S.Array(__S(180, __c22, 4));
-    case 4:
+    case 7:
+      return S.Array(__S(737, __c23, 1));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(__S(187, __c23, 3)),
+          memberships: S.optional(__S(743, __c23, 7)),
         }),
       ).annotate({
         identifier: "MembershipBatchCreatedEventData",
       });
-    case 5:
-      return S.Array(__S(184, __c23, 0));
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          spaces: S.optional(__S(189, __c23, 5)),
+          spaces: S.optional(__S(769, __c24, 1)),
         }),
       ).annotate({
         identifier: "SpaceBatchUpdatedEventData",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          reactionCreatedEventData: S.optional(__S(179, __c22, 3)),
-          membershipDeletedEventData: S.optional(__S(180, __c22, 4)),
+          reactionCreatedEventData: S.optional(__S(736, __c23, 0)),
+          membershipDeletedEventData: S.optional(__S(737, __c23, 1)),
           eventTime: S.optional(S.String),
-          messageBatchUpdatedEventData: S.optional(__S(183, __c22, 7)),
-          spaceUpdatedEventData: S.optional(__S(184, __c23, 0)),
-          messageBatchCreatedEventData: S.optional(__S(183, __c22, 7)),
-          messageUpdatedEventData: S.optional(__S(181, __c22, 5)),
+          messageBatchUpdatedEventData: S.optional(__S(740, __c23, 4)),
+          spaceUpdatedEventData: S.optional(__S(768, __c24, 0)),
+          messageBatchCreatedEventData: S.optional(__S(740, __c23, 4)),
+          messageUpdatedEventData: S.optional(__S(738, __c23, 2)),
           eventType: S.optional(S.String),
-          membershipCreatedEventData: S.optional(__S(180, __c22, 4)),
-          messageBatchDeletedEventData: S.optional(__S(183, __c22, 7)),
-          reactionBatchCreatedEventData: S.optional(__S(186, __c23, 2)),
-          membershipBatchCreatedEventData: S.optional(__S(188, __c23, 4)),
-          membershipBatchUpdatedEventData: S.optional(__S(188, __c23, 4)),
-          membershipBatchDeletedEventData: S.optional(__S(188, __c23, 4)),
-          messageDeletedEventData: S.optional(__S(181, __c22, 5)),
-          membershipUpdatedEventData: S.optional(__S(180, __c22, 4)),
-          reactionBatchDeletedEventData: S.optional(__S(186, __c23, 2)),
-          messageCreatedEventData: S.optional(__S(181, __c22, 5)),
-          spaceBatchUpdatedEventData: S.optional(__S(190, __c23, 6)),
-          reactionDeletedEventData: S.optional(__S(179, __c22, 3)),
+          membershipCreatedEventData: S.optional(__S(737, __c23, 1)),
+          messageBatchDeletedEventData: S.optional(__S(740, __c23, 4)),
+          reactionBatchCreatedEventData: S.optional(__S(742, __c23, 6)),
+          membershipBatchCreatedEventData: S.optional(__S(744, __c23, 8)),
+          membershipBatchUpdatedEventData: S.optional(__S(744, __c23, 8)),
+          membershipBatchDeletedEventData: S.optional(__S(744, __c23, 8)),
+          messageDeletedEventData: S.optional(__S(738, __c23, 2)),
+          membershipUpdatedEventData: S.optional(__S(737, __c23, 1)),
+          reactionBatchDeletedEventData: S.optional(__S(742, __c23, 6)),
+          messageCreatedEventData: S.optional(__S(738, __c23, 2)),
+          spaceBatchUpdatedEventData: S.optional(__S(745, __c23, 9)),
+          reactionDeletedEventData: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({ identifier: "SpaceEvent" });
   }
 }
 function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          space: S.optional(__S(1321, __c41, 9)),
+        }),
+      ).annotate({ identifier: "SpaceUpdatedEventData" });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5126,7 +3893,11 @@ function __c24(j: number): any {
           lastReadTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThreadReadState" });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5136,31 +3907,39 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetUsersAvailabilityRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expirationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DoNotDisturbMetadata" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ttl: S.optional(S.String),
           text: S.optional(S.String),
           expireTime: S.optional(S.String),
-          emoji: S.optional(__S(119, __c14, 7)),
+          emoji: S.optional(__S(2272, __c71, 0)),
         }),
       ).annotate({ identifier: "CustomStatus" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          doNotDisturbMetadata: S.optional(__S(195, __c24, 3)),
+          doNotDisturbMetadata: S.optional(__S(864, __c27, 0)),
           name: S.optional(S.String),
-          customStatus: S.optional(__S(196, __c24, 4)),
+          customStatus: S.optional(__S(865, __c27, 1)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Availability" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5170,7 +3949,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetUsersSpacesSpaceNotificationSettingRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           notificationSetting: S.optional(S.String),
@@ -5180,7 +3963,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "SpaceNotificationSetting" });
   }
 }
-function __c25(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5197,15 +3980,19 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomEmojisRequest" });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(1761, __c55, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customEmojis: S.optional(__S(201, __c25, 1)),
+          customEmojis: S.optional(__S(961, __c30, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCustomEmojisResponse" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5215,14 +4002,18 @@ function __c25(j: number): any {
           T.Http({ method: "GET", uri: "v1/spaces", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListSpacesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          spaces: S.optional(__S(169, __c21, 1)),
+          spaces: S.optional(__S(448, __c14, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSpacesResponse" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5240,18 +4031,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSpacesMembersRequest" });
-    case 6:
-      return S.Array(__S(19, __c2, 3));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          memberships: S.optional(__S(206, __c25, 6)),
+          memberships: S.optional(__S(1056, __c33, 0)),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2112, __c66, 0));
+  }
+}
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5270,15 +4065,19 @@ function __c26(j: number): any {
         identifier: "ListSpacesMessagePinsRequest",
       });
     case 1:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(2208, __c69, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          messagePins: S.optional(__S(209, __c26, 1)),
+          messagePins: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "ListMessagePinsResponse" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5298,16 +4097,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListSpacesMessagesRequest",
       });
-    case 4:
-      return S.Array(__S(152, __c19, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(2524, __c78, 28));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(212, __c26, 4)),
+          messages: S.optional(__S(1121, __c35, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMessagesResponse" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5324,20 +4127,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListSpacesMessagesReactionsRequest",
       });
-    case 7:
-      return S.Array(__S(154, __c19, 2));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reactions: S.optional(__S(215, __c26, 7)),
+          reactions: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "ListReactionsResponse" });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5354,16 +4157,20 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListSpacesSpaceEventsRequest",
       });
+    case 1:
+      return S.Array(__S(746, __c23, 10));
     case 2:
-      return S.Array(__S(191, __c23, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          spaceEvents: S.optional(__S(218, __c27, 2)),
+          spaceEvents: S.optional(__S(1185, __c37, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSpaceEventsResponse" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5377,16 +4184,161 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersSectionsRequest" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sections: S.optional(__S(221, __c27, 5)),
+          sections: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "ListSectionsResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:completeImport",
+            baseUrl: "https://chat.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteImportSpacesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          space: S.optional(__S(1321, __c41, 9)),
+        }),
+      ).annotate({
+        identifier: "CompleteImportSpaceResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Audience" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          joinedGroupCount: S.optional(S.Number),
+          joinedDirectHumanUserCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MembershipCount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          audience: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "Principal" });
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          principals: S.optional(__S(1314, __c41, 2)),
+        }),
+      ).annotate({ identifier: "AccessPermissionSetting" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          discoverSpaceSetting: S.optional(__S(1315, __c41, 3)),
+          viewSpaceMembershipSetting: S.optional(__S(1315, __c41, 3)),
+          joinSpaceSetting: S.optional(__S(1315, __c41, 3)),
+        }),
+      ).annotate({ identifier: "AccessPermissionSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accessPermissionSettings: S.optional(__S(1316, __c41, 4)),
+          audience: S.optional(S.String),
+          accessState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          membersAllowed: S.optional(S.Boolean),
+          managersAllowed: S.optional(S.Boolean),
+          assistantManagersAllowed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PermissionSetting" });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          manageWebhooks: S.optional(__S(1318, __c41, 6)),
+          manageMembersAndGroups: S.optional(__S(1318, __c41, 6)),
+          toggleHistory: S.optional(__S(1318, __c41, 6)),
+          replyMessages: S.optional(__S(1318, __c41, 6)),
+          modifySpaceDetails: S.optional(__S(1318, __c41, 6)),
+          useAtMentionAll: S.optional(__S(1318, __c41, 6)),
+          viewSpaceMembership: S.optional(__S(1318, __c41, 6)),
+          manageApps: S.optional(__S(1318, __c41, 6)),
+          postMessages: S.optional(__S(1318, __c41, 6)),
+        }),
+      ).annotate({ identifier: "PermissionSettings" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          guidelines: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpaceDetails" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          externalUserAllowed: S.optional(S.Boolean),
+          spaceType: S.optional(S.String),
+          adminInstalled: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          threaded: S.optional(S.Boolean),
+          predefinedPermissionSettings: S.optional(S.String),
+          membershipCount: S.optional(__S(1312, __c41, 0)),
+          importMode: S.optional(S.Boolean),
+          accessSettings: S.optional(__S(1317, __c41, 5)),
+          permissionSettings: S.optional(__S(1319, __c41, 7)),
+          singleUserBotDm: S.optional(S.Boolean),
+          spaceDetails: S.optional(__S(1320, __c41, 8)),
+          spaceUri: S.optional(S.String),
+          name: S.optional(S.String),
+          customer: S.optional(S.String),
+          spaceThreadingState: S.optional(S.String),
+          importModeExpireTime: S.optional(S.String),
+          type: S.optional(S.String),
+          lastActiveTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          spaceHistoryState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Space" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CompleteImportSpaceRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5403,9 +4355,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListUsersSectionsItemsRequest",
       });
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          sectionItems: S.optional(__S(1377, __c43, 1)),
+        }),
+      ).annotate({ identifier: "ListSectionItemsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5414,27 +4375,22 @@ function __c28(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SectionItem" });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          sectionItems: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({ identifier: "ListSectionItemsResponse" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
           ttl: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarkAsActiveRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(227, __c28, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5445,11 +4401,15 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "MarkAsActiveUsersAvailabilityRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5460,7 +4420,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "MarkAsAwayUsersAvailabilityRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ttl: S.optional(S.String),
@@ -5469,11 +4433,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "MarkAsDoNotDisturbRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(230, __c28, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1504, __c47, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5486,7 +4450,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5498,7 +4462,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1536, __c48, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5512,64 +4476,84 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sectionItem: S.optional(__S(224, __c28, 0)),
+          sectionItem: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "MoveSectionItemResponse" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1321, __c41, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({ identifier: "PatchSpacesRequest" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2112, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchSpacesMembersRequest",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2524, __c78, 28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchSpacesMessagesRequest",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(197, __c24, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(866, __c27, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchUsersAvailabilityRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -5578,32 +4562,75 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1761, __c55, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/customEmojis",
+            baseUrl: "https://chat.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomEmojisRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileContent: S.optional(S.String),
+          filename: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomEmojiPayload" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          name: S.optional(S.String),
+          payload: S.optional(__S(1760, __c55, 0)),
+          emojiName: S.optional(S.String),
+          temporaryImageUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomEmoji" });
+  }
+}
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(199, __c24, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchUsersSpacesSpaceNotificationSettingRequest",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.Number),
           relativePosition: S.optional(S.String),
         }),
       ).annotate({ identifier: "PositionSectionRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5614,13 +4641,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PositionUsersSectionsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          section: S.optional(__S(156, __c19, 4)),
+          section: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "PositionSectionResponse" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -5636,16 +4667,20 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchSpacesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          spaces: S.optional(__S(169, __c21, 1)),
-          results: S.optional(__S(189, __c23, 5)),
+          spaces: S.optional(__S(448, __c14, 0)),
+          results: S.optional(__S(769, __c24, 1)),
         }),
       ).annotate({ identifier: "SearchSpacesResponse" });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
@@ -5656,11 +4691,11 @@ function __c30(j: number): any {
           filter: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchMessagesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(246, __c30, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1888, __c59, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5671,39 +4706,39 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "SearchSpacesMessagesRequest",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          read: S.optional(S.Boolean),
+          message: S.optional(__S(2524, __c78, 28)),
+          spaceMuteSetting: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchMessageResult" });
+    case 3:
+      return S.Array(__S(1890, __c59, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(1891, __c59, 3)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchMessagesResponse" });
   }
 }
-function __c31(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          read: S.optional(S.Boolean),
-          message: S.optional(__S(152, __c19, 0)),
-          spaceMuteSetting: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchMessageResult" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(249, __c31, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchMessagesResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           requestId: S.optional(S.String),
-          memberships: S.optional(__S(206, __c25, 6)),
-          space: S.optional(__S(12, __c1, 4)),
+          memberships: S.optional(__S(1056, __c33, 0)),
+          space: S.optional(__S(1321, __c41, 9)),
         }),
       ).annotate({ identifier: "SetUpSpaceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(251, __c31, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5712,46 +4747,54 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetupSpacesRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSpaceReadStateUsersSpacesRequest",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2524, __c78, 28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSpacesMessagesRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadAttachmentRequest" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5760,15 +4803,1155 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadMediaRequest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          attachmentDataRef: S.optional(__S(101, __c12, 5)),
+          attachmentDataRef: S.optional(__S(2368, __c74, 0)),
         }),
       ).annotate({ identifier: "UploadAttachmentResponse" });
   }
 }
-
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1321, __c41, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "v1/spaces", baseUrl: "https://chat.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "CreateSpacesRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(2112, __c66, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/members",
+            baseUrl: "https://chat.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSpacesMembersRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          member: S.optional(__S(2144, __c67, 0)),
+          affiliation: S.optional(S.String),
+          name: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          groupMember: S.optional(__S(1280, __c40, 0)),
+          state: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Membership" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isAnonymous: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          email: S.optional(S.String),
+          avatarUrl: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          domainId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2208, __c69, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/messagePins",
+            baseUrl: "https://chat.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSpacesMessagePinsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessagePin" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          "createMessageNotificationOptions.notificationType": S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          messageId: S.optional(S.String.pipe(T.Query())),
+          messageReplyOption: S.optional(S.String.pipe(T.Query())),
+          threadKey: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2524, __c78, 28).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/messages",
+            baseUrl: "https://chat.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSpacesMessagesRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unicode: S.optional(S.String),
+          customEmoji: S.optional(__S(1761, __c55, 1)),
+        }),
+      ).annotate({ identifier: "Emoji" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveFileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DriveDataRef" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          driveDataRef: S.optional(__S(2336, __c73, 0)),
+          thumbnailUri: S.optional(S.String),
+          attachmentDataRef: S.optional(__S(2368, __c74, 0)),
+          contentType: S.optional(S.String),
+          downloadUri: S.optional(S.String),
+          source: S.optional(S.String),
+          contentName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attachment" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.optional(S.String),
+          attachmentUploadToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttachmentDataRef" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          grade: S.optional(S.Number),
+          weight: S.optional(S.Number),
+          fill: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1MaterialIcon",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          knownIcon: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          altText: S.optional(S.String),
+          materialIcon: S.optional(__S(2400, __c75, 0)),
+          imageType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Icon" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ActionParameter",
+      });
+    case 3:
+      return S.Array(__S(2402, __c75, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          loadIndicator: S.optional(S.String),
+          persistValues: S.optional(S.Boolean),
+          requiredWidgets: S.optional(__S(2304, __c72, 0)),
+          parameters: S.optional(__S(2403, __c75, 3)),
+          function: S.optional(S.String),
+          interaction: S.optional(S.String),
+          allWidgetsAreRequired: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Action" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          onClose: S.optional(S.String),
+          openAs: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1OpenLink" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+          actionLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CardAction",
+      });
+    case 7:
+      return S.Array(__S(2406, __c75, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          maxLines: S.optional(S.Number),
+          textSyntax: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1TextParagraph",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+          altText: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Image" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          textParagraph: S.optional(__S(2408, __c75, 8)),
+          image: S.optional(__S(2409, __c75, 9)),
+          buttonList: S.optional(S.suspend(() => __S(2473, __c77, 9))),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1NestedWidget",
+      });
+    case 11:
+      return S.Array(__S(2410, __c75, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          widgets: S.optional(__S(2411, __c75, 11)),
+          footerWidgets: S.optional(__S(2411, __c75, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CarouselCard",
+      });
+    case 13:
+      return S.Array(__S(2412, __c75, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          carouselCards: S.optional(__S(2413, __c75, 13)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Carousel" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          defaultToCurrentSpace: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SpaceDataSource" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          spaceDataSource: S.optional(__S(2415, __c75, 15)),
+        }),
+      ).annotate({
+        identifier: "ChatClientDataSourceMarkup",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          includeVariables: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowDataSourceMarkup" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          chatDataSource: S.optional(__S(2416, __c75, 16)),
+          workflowDataSource: S.optional(__S(2417, __c75, 17)),
+        }),
+      ).annotate({ identifier: "HostAppDataSourceMarkup" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          commonDataSource: S.optional(S.String),
+          hostAppDataSource: S.optional(__S(2418, __c75, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1PlatformDataSource",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          minCharactersTrigger: S.optional(S.Number),
+          remoteDataSource: S.optional(__S(2404, __c75, 4)),
+          platformDataSource: S.optional(__S(2419, __c75, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1DataSourceConfig",
+      });
+    case 21:
+      return S.Array(__S(2420, __c75, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          selected: S.optional(S.Boolean),
+          startIconUri: S.optional(S.String),
+          bottomText: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1SelectionItem",
+      });
+    case 23:
+      return S.Array(__S(2422, __c75, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          multiSelectMaxSelectedItems: S.optional(S.Number),
+          onChangeAction: S.optional(__S(2404, __c75, 4)),
+          name: S.optional(S.String),
+          externalDataSource: S.optional(__S(2404, __c75, 4)),
+          dataSourceConfigs: S.optional(__S(2421, __c75, 21)),
+          type: S.optional(S.String),
+          items: S.optional(__S(2423, __c75, 23)),
+          multiSelectMinQueryLength: S.optional(S.Number),
+          platformDataSource: S.optional(__S(2419, __c75, 19)),
+          hintText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1SelectionInput",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          selected: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          onChangeAction: S.optional(__S(2404, __c75, 4)),
+          controlType: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1SwitchControl",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          icon: S.optional(__S(2401, __c75, 1)),
+          text: S.optional(S.String),
+          topLabel: S.optional(S.String),
+          wrapText: S.optional(S.Boolean),
+          bottomLabelText: S.optional(__S(2408, __c75, 8)),
+          startIcon: S.optional(__S(2401, __c75, 1)),
+          endIcon: S.optional(__S(2401, __c75, 1)),
+          topLabelText: S.optional(__S(2408, __c75, 8)),
+          bottomLabel: S.optional(S.String),
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+          startIconVerticalAlignment: S.optional(S.String),
+          button: S.optional(S.suspend(() => __S(2471, __c77, 7))),
+          switchControl: S.optional(__S(2425, __c75, 25)),
+          contentText: S.optional(__S(2408, __c75, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1DecoratedText",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          characterLimit: S.optional(S.Number),
+          inputType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1Validation",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1SuggestionItem",
+      });
+    case 29:
+      return S.Array(__S(2428, __c75, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2429, __c75, 29)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1Suggestions",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          autoCompleteAction: S.optional(__S(2404, __c75, 4)),
+          onChangeAction: S.optional(__S(2404, __c75, 4)),
+          hostAppDataSource: S.optional(__S(2418, __c75, 18)),
+          validation: S.optional(__S(2427, __c75, 27)),
+          hintText: S.optional(S.String),
+          initialSuggestions: S.optional(__S(2430, __c75, 30)),
+          label: S.optional(S.String),
+          value: S.optional(S.String),
+          placeholderText: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1TextInput",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          altText: S.optional(S.String),
+          label: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          enabled: S.optional(S.Boolean),
+          icon: S.optional(__S(2401, __c75, 1)),
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Chip" });
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chips: S.optional(__S(2433, __c76, 1)),
+          layout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1ChipList" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          valueMsEpoch: S.optional(S.String),
+          hostAppDataSource: S.optional(__S(2418, __c75, 18)),
+          onChangeAction: S.optional(__S(2404, __c75, 4)),
+          type: S.optional(S.String),
+          timezoneOffsetDate: S.optional(S.Number),
+          label: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1DateTimePicker",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          selectionInput: S.optional(__S(2424, __c75, 24)),
+          buttonList: S.optional(S.suspend(() => __S(2473, __c77, 9))),
+          decoratedText: S.optional(__S(2426, __c75, 26)),
+          image: S.optional(__S(2409, __c75, 9)),
+          textInput: S.optional(__S(2431, __c75, 31)),
+          chipList: S.optional(__S(2434, __c76, 2)),
+          textParagraph: S.optional(__S(2408, __c75, 8)),
+          dateTimePicker: S.optional(__S(2435, __c76, 3)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Widgets" });
+    case 5:
+      return S.Array(__S(2436, __c76, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          horizontalAlignment: S.optional(S.String),
+          verticalAlignment: S.optional(S.String),
+          horizontalSizeStyle: S.optional(S.String),
+          widgets: S.optional(__S(2437, __c76, 5)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Column" });
+    case 7:
+      return S.Array(__S(2438, __c76, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          columnItems: S.optional(__S(2439, __c76, 7)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Columns" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          visibility: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1UpdateVisibilityAction",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          updateVisibilityAction: S.optional(__S(2441, __c76, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CommonWidgetAction",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          actionRuleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Trigger" });
+    case 12:
+      return S.Array(__S(2443, __c76, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          commonWidgetAction: S.optional(__S(2442, __c76, 10)),
+          actionRuleId: S.optional(S.String),
+          postEventTriggers: S.optional(__S(2444, __c76, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1EventAction",
+      });
+    case 14:
+      return S.Array(__S(2445, __c76, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          red: S.optional(S.Number),
+          alpha: S.optional(S.Number),
+          green: S.optional(S.Number),
+          blue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Color" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          cornerRadius: S.optional(S.Number),
+          strokeColor: S.optional(__S(2447, __c76, 15)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1BorderStyle",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          aspectRatio: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ImageCropStyle",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          cropStyle: S.optional(__S(2449, __c76, 17)),
+          borderStyle: S.optional(__S(2448, __c76, 16)),
+          imageUri: S.optional(S.String),
+          altText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ImageComponent",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          layout: S.optional(S.String),
+          subtitle: S.optional(S.String),
+          image: S.optional(__S(2450, __c76, 18)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1GridItem" });
+    case 20:
+      return S.Array(__S(2451, __c76, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          borderStyle: S.optional(__S(2448, __c76, 16)),
+          title: S.optional(S.String),
+          columnCount: S.optional(S.Number),
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+          items: S.optional(__S(2452, __c76, 20)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Grid" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          carousel: S.optional(__S(2414, __c75, 14)),
+          columns: S.optional(__S(2440, __c76, 8)),
+          visibility: S.optional(S.String),
+          horizontalAlignment: S.optional(S.String),
+          divider: S.optional(__S(1344, __c42, 0)),
+          chipList: S.optional(__S(2434, __c76, 2)),
+          buttonList: S.optional(S.suspend(() => __S(2473, __c77, 9))),
+          eventActions: S.optional(__S(2446, __c76, 14)),
+          selectionInput: S.optional(__S(2424, __c75, 24)),
+          grid: S.optional(__S(2453, __c76, 21)),
+          textInput: S.optional(__S(2431, __c75, 31)),
+          dateTimePicker: S.optional(__S(2435, __c76, 3)),
+          textParagraph: S.optional(__S(2408, __c75, 8)),
+          image: S.optional(__S(2409, __c75, 9)),
+          decoratedText: S.optional(__S(2426, __c75, 26)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Widget" });
+    case 23:
+      return S.Array(__S(2454, __c76, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          horizontalAlignment: S.optional(S.String),
+          collapseButton: S.optional(S.suspend(() => __S(2471, __c77, 7))),
+          expandButton: S.optional(S.suspend(() => __S(2471, __c77, 7))),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CollapseControl",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(S.String),
+          id: S.optional(S.String),
+          uncollapsibleWidgetsCount: S.optional(S.Number),
+          widgets: S.optional(__S(2455, __c76, 23)),
+          collapseControl: S.optional(__S(2456, __c76, 24)),
+          collapsible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Section" });
+    case 26:
+      return S.Array(__S(2457, __c76, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          secondaryButton: S.optional(S.suspend(() => __S(2471, __c77, 7))),
+          primaryButton: S.optional(S.suspend(() => __S(2471, __c77, 7))),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CardFixedFooter",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          imageType: S.optional(S.String),
+          title: S.optional(S.String),
+          imageAltText: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1CardHeader",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          conditionType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ExpressionDataCondition",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          expressionDataCondition: S.optional(__S(2461, __c76, 29)),
+          actionRuleId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1Condition",
+      });
+    case 31:
+      return S.Array(__S(2462, __c76, 30));
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          id: S.optional(S.String),
+          conditions: S.optional(__S(2463, __c76, 31)),
+          eventActions: S.optional(__S(2446, __c76, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ExpressionData",
+      });
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cardActions: S.optional(__S(2407, __c75, 7)),
+          name: S.optional(S.String),
+          sections: S.optional(__S(2458, __c76, 26)),
+          displayStyle: S.optional(S.String),
+          fixedFooter: S.optional(__S(2459, __c76, 27)),
+          peekCardHeader: S.optional(__S(2460, __c76, 28)),
+          sectionDividerStyle: S.optional(S.String),
+          header: S.optional(__S(2460, __c76, 28)),
+          expressionData: S.optional(__S(2465, __c77, 1)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Card" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          startIcon: S.optional(__S(2401, __c75, 1)),
+          disabled: S.optional(S.Boolean),
+          onClick: S.optional(S.suspend(() => __S(2470, __c77, 6))),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1OverflowMenuItem",
+      });
+    case 4:
+      return S.Array(__S(2467, __c77, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2468, __c77, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1OverflowMenu",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          openDynamicLinkAction: S.optional(__S(2404, __c75, 4)),
+          openLink: S.optional(__S(2405, __c75, 5)),
+          action: S.optional(__S(2404, __c75, 4)),
+          card: S.optional(__S(2466, __c77, 2)),
+          overflowMenu: S.optional(__S(2469, __c77, 5)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1OnClick" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          icon: S.optional(__S(2401, __c75, 1)),
+          disabled: S.optional(S.Boolean),
+          onClick: S.optional(__S(2470, __c77, 6)),
+          type: S.optional(S.String),
+          altText: S.optional(S.String),
+          color: S.optional(__S(2447, __c76, 15)),
+        }),
+      ).annotate({ identifier: "GoogleAppsCardV1Button" });
+    case 8:
+      return S.Array(__S(2471, __c77, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          buttons: S.optional(__S(2472, __c77, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsCardV1ButtonList",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          buttonList: S.optional(__S(2473, __c77, 9)),
+        }),
+      ).annotate({ identifier: "AccessoryWidget" });
+    case 11:
+      return S.Array(__S(2474, __c77, 10));
+    case 12:
+      return S.Array(__S(2337, __c73, 1));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          threadKey: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Thread" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          cardId: S.optional(S.String),
+          card: S.optional(__S(2466, __c77, 2)),
+        }),
+      ).annotate({ identifier: "CardWithId" });
+    case 15:
+      return S.Array(__S(2478, __c77, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          deletionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletionMetadata" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          huddleStatus: S.optional(S.String),
+          meetingCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MeetSpaceLinkData" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          calendarId: S.optional(S.String),
+          eventId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CalendarEventLinkData" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          driveDataRef: S.optional(__S(2336, __c73, 0)),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DriveLinkData" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          thread: S.optional(S.String),
+          space: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChatSpaceLinkData" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          richLinkType: S.optional(S.String),
+          meetSpaceLinkData: S.optional(__S(2481, __c77, 17)),
+          calendarEventLinkData: S.optional(__S(2482, __c77, 18)),
+          driveLinkData: S.optional(__S(2483, __c77, 19)),
+          chatSpaceLinkData: S.optional(__S(2484, __c77, 20)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RichLinkMetadata" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          commandName: S.optional(S.String),
+          triggersDialog: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          bot: S.optional(__S(2144, __c67, 0)),
+          commandId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlashCommandMetadata" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          customEmoji: S.optional(__S(1761, __c55, 1)),
+        }),
+      ).annotate({ identifier: "CustomEmojiMetadata" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          user: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "UserMentionMetadata" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          richLinkMetadata: S.optional(__S(2485, __c77, 21)),
+          length: S.optional(S.Number),
+          slashCommand: S.optional(__S(2486, __c77, 22)),
+          customEmojiMetadata: S.optional(__S(2487, __c77, 23)),
+          userMention: S.optional(__S(2488, __c77, 24)),
+          startIndex: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Annotation" });
+    case 26:
+      return S.Array(__S(2489, __c77, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          commandId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlashCommand" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          reactionCount: S.optional(S.Number),
+          emoji: S.optional(__S(2272, __c71, 0)),
+        }),
+      ).annotate({ identifier: "EmojiReactionSummary" });
+    case 29:
+      return S.Array(__S(2492, __c77, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          imageStyle: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CardHeader" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(2403, __c75, 3)),
+          actionMethodName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FormAction" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpenLink" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(2495, __c77, 31)),
+          openLink: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({ identifier: "OnClick" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          actionLabel: S.optional(S.String),
+          onClick: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({ identifier: "CardAction" });
+    case 3:
+      return S.Array(__S(2498, __c78, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          imageUrl: S.optional(S.String),
+          aspectRatio: S.optional(S.Number),
+          onClick: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextParagraph" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          icon: S.optional(S.String),
+          onClick: S.optional(__S(2497, __c78, 1)),
+          name: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageButton" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          onClick: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({ identifier: "TextButton" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          imageButton: S.optional(__S(2502, __c78, 6)),
+          textButton: S.optional(__S(2503, __c78, 7)),
+        }),
+      ).annotate({ identifier: "Button" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          iconUrl: S.optional(S.String),
+          bottomLabel: S.optional(S.String),
+          icon: S.optional(S.String),
+          topLabel: S.optional(S.String),
+          button: S.optional(__S(2504, __c78, 8)),
+          contentMultiline: S.optional(S.Boolean),
+          content: S.optional(S.String),
+          onClick: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({ identifier: "KeyValue" });
+    case 10:
+      return S.Array(__S(2504, __c78, 8));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(2500, __c78, 4)),
+          textParagraph: S.optional(__S(2501, __c78, 5)),
+          keyValue: S.optional(__S(2505, __c78, 9)),
+          buttons: S.optional(__S(2506, __c78, 10)),
+        }),
+      ).annotate({ identifier: "WidgetMarkup" });
+    case 12:
+      return S.Array(__S(2507, __c78, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          widgets: S.optional(__S(2508, __c78, 12)),
+          header: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Section" });
+    case 14:
+      return S.Array(__S(2509, __c78, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(__S(2494, __c77, 30)),
+          cardActions: S.optional(__S(2499, __c78, 3)),
+          name: S.optional(S.String),
+          sections: S.optional(__S(2510, __c78, 14)),
+        }),
+      ).annotate({ identifier: "Card" });
+    case 16:
+      return S.Array(__S(2511, __c78, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttachedGif" });
+    case 18:
+      return S.Array(__S(2513, __c78, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2423, __c75, 23)),
+        }),
+      ).annotate({ identifier: "SelectionItems" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          widget: S.optional(S.String),
+          suggestions: S.optional(__S(2515, __c78, 19)),
+        }),
+      ).annotate({ identifier: "UpdatedWidget" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.String),
+          userFacingMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionStatus" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2466, __c77, 2)),
+        }),
+      ).annotate({ identifier: "Dialog" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          actionStatus: S.optional(__S(2517, __c78, 21)),
+          dialog: S.optional(__S(2518, __c78, 22)),
+        }),
+      ).annotate({ identifier: "DialogAction" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          updatedWidget: S.optional(__S(2516, __c78, 20)),
+          url: S.optional(S.String),
+          dialogAction: S.optional(__S(2519, __c78, 23)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionResponse" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2490, __c77, 26)),
+          attachments: S.optional(__S(2476, __c77, 12)),
+          sender: S.optional(S.String),
+          formattedText: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotedMessageSnapshot" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          spaceDisplayName: S.optional(S.String),
+          space: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardedMetadata" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          lastUpdateTime: S.optional(S.String),
+          quotedMessageSnapshot: S.optional(__S(2521, __c78, 25)),
+          forwardedMetadata: S.optional(__S(2522, __c78, 26)),
+          quoteType: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotedMessageMetadata" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          threadReply: S.optional(S.Boolean),
+          accessoryWidgets: S.optional(__S(2475, __c77, 11)),
+          attachment: S.optional(__S(2476, __c77, 12)),
+          text: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+          thread: S.optional(__S(2477, __c77, 13)),
+          sender: S.optional(__S(2144, __c67, 0)),
+          silent: S.optional(S.Boolean),
+          markupSyntax: S.optional(S.String),
+          cardsV2: S.optional(__S(2479, __c77, 15)),
+          deletionMetadata: S.optional(__S(2480, __c77, 16)),
+          space: S.optional(__S(1321, __c41, 9)),
+          deleteTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          annotations: S.optional(__S(2490, __c77, 26)),
+          fallbackText: S.optional(S.String),
+          argumentText: S.optional(S.String),
+          formattedText: S.optional(S.String),
+          slashCommand: S.optional(__S(2491, __c77, 27)),
+          emojiReactionSummaries: S.optional(__S(2493, __c77, 29)),
+          cards: S.optional(__S(2512, __c78, 16)),
+          matchedUrl: S.optional(__S(2496, __c78, 0)),
+          attachedGifs: S.optional(__S(2514, __c78, 18)),
+          privateMessageViewer: S.optional(__S(2144, __c67, 0)),
+          clientAssignedMessageId: S.optional(S.String),
+          actionResponse: S.optional(__S(2520, __c78, 24)),
+          name: S.optional(S.String),
+          quotedMessageMetadata: S.optional(__S(2523, __c78, 27)),
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

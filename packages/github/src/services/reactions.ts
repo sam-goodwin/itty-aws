@@ -361,8 +361,8 @@ export const createForCommitComment: API.OperationMethod<
   CreateForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateForCommitCommentRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(22, __c11, 0) as any as S.Schema<CreateForCommitCommentRequest>,
+  output: __S(25, __c12, 1) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -376,8 +376,8 @@ export const createForIssue: API.OperationMethod<
   CreateForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateForIssueRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(26, __c13, 0) as any as S.Schema<CreateForIssueRequest>,
+  output: __S(25, __c12, 1) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -391,8 +391,8 @@ export const createForIssueComment: API.OperationMethod<
   CreateForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateForIssueCommentRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(28, __c14, 0) as any as S.Schema<CreateForIssueCommentRequest>,
+  output: __S(25, __c12, 1) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -406,8 +406,8 @@ export const createForPullRequestReviewComment: API.OperationMethod<
   CreateForPullRequestReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateForPullRequestReviewCommentRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(30, __c15, 0) as any as S.Schema<CreateForPullRequestReviewCommentRequest>,
+  output: __S(25, __c12, 1) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -421,8 +421,8 @@ export const createForRelease: API.OperationMethod<
   CreateForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateForReleaseRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(32, __c16, 0) as any as S.Schema<CreateForReleaseRequest>,
+  output: __S(25, __c12, 1) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -436,8 +436,8 @@ export const deleteForCommitComment: API.OperationMethod<
   DeleteForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteForCommitCommentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteForCommitCommentResponse>,
+  input: __S(34, __c17, 0) as any as S.Schema<DeleteForCommitCommentRequest>,
+  output: __S(36, __c18, 0) as any as S.Schema<DeleteForCommitCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -451,8 +451,8 @@ export const deleteForIssue: API.OperationMethod<
   DeleteForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteForIssueRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteForIssueResponse>,
+  input: __S(38, __c19, 0) as any as S.Schema<DeleteForIssueRequest>,
+  output: __S(36, __c18, 0) as any as S.Schema<DeleteForIssueResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const deleteForIssueComment: API.OperationMethod<
   DeleteForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteForIssueCommentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteForIssueCommentResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteForIssueCommentRequest>,
+  output: __S(36, __c18, 0) as any as S.Schema<DeleteForIssueCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const deleteForPullRequestComment: API.OperationMethod<
   DeleteForPullRequestCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteForPullRequestCommentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteForPullRequestCommentResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<DeleteForPullRequestCommentRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<DeleteForPullRequestCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const deleteForRelease: API.OperationMethod<
   DeleteForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteForReleaseRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteForReleaseResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<DeleteForReleaseRequest>,
+  output: __S(36, __c18, 0) as any as S.Schema<DeleteForReleaseResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -511,8 +511,8 @@ export const listForCommitComment: API.OperationMethod<
   ListForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListForCommitCommentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListForCommitCommentResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<ListForCommitCommentRequest>,
+  output: __S(10, __c5, 0) as any as S.Schema<ListForCommitCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -526,8 +526,8 @@ export const listForIssue: API.OperationMethod<
   ListForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListForIssueRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListForIssueResponse>,
+  input: __S(12, __c6, 0) as any as S.Schema<ListForIssueRequest>,
+  output: __S(14, __c7, 0) as any as S.Schema<ListForIssueResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -541,8 +541,8 @@ export const listForIssueComment: API.OperationMethod<
   ListForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListForIssueCommentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListForIssueCommentResponse>,
+  input: __S(16, __c8, 0) as any as S.Schema<ListForIssueCommentRequest>,
+  output: __S(10, __c5, 0) as any as S.Schema<ListForIssueCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,8 @@ export const listForPullRequestReviewComment: API.OperationMethod<
   ListForPullRequestReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListForPullRequestReviewCommentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListForPullRequestReviewCommentResponse>,
+  input: __S(18, __c9, 0) as any as S.Schema<ListForPullRequestReviewCommentRequest>,
+  output: __S(10, __c5, 0) as any as S.Schema<ListForPullRequestReviewCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const listForRelease: API.OperationMethod<
   ListForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListForReleaseRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListForReleaseResponse>,
+  input: __S(20, __c10, 0) as any as S.Schema<ListForReleaseRequest>,
+  output: __S(14, __c7, 0) as any as S.Schema<ListForReleaseResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -580,6 +580,204 @@ export const listForRelease: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          reaction_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteForIssueCommentRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          reaction_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteForPullRequestCommentRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteForPullRequestCommentResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          release_id: S.Number.pipe(T.Label()),
+          reaction_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteForReleaseRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/comments/{comment_id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListForCommitCommentRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(25, __c12, 1));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(8, __c4, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForCommitCommentResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          content: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListForIssueRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(8, __c4, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForIssueResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListForIssueCommentRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListForPullRequestReviewCommentRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          release_id: S.Number.pipe(T.Label()),
+          content: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/releases/{release_id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListForReleaseRequest" });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -598,7 +796,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateForCommitCommentRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -625,17 +827,21 @@ function __c0(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
-          user: S.NullOr(__S(1, __c0, 1)),
+          user: S.NullOr(__S(24, __c12, 0)),
           content: S.String,
           created_at: S.String,
         }),
       ).annotate({ identifier: "Reaction" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -650,7 +856,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateForIssueRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -667,7 +877,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateForIssueCommentRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -684,7 +898,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateForPullRequestReviewCommentRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -699,7 +917,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateForReleaseRequest" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -718,13 +940,17 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteForCommitCommentResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -739,167 +965,8 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteForIssueRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          reaction_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteForIssueCommentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          reaction_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteForPullRequestCommentRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteForPullRequestCommentResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          release_id: S.Number.pipe(T.Label()),
-          reaction_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteForReleaseRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/comments/{comment_id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListForCommitCommentRequest",
-      });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForCommitCommentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListForIssueRequest" });
-    case 2:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForIssueResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListForIssueCommentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListForPullRequestReviewCommentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          release_id: S.Number.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/releases/{release_id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListForReleaseRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

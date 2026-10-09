@@ -724,8 +724,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateTemplateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateTemplateResponse>,
+  input: __S(113, __c28, 1) as any as S.Schema<CreateTemplateRequest>,
+  output: __S(116, __c29, 0) as any as S.Schema<CreateTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -753,8 +753,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateMigrationWorkflowRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateMigrationWorkflowResponse>,
+  input: __S(124, __c31, 0) as any as S.Schema<CreateMigrationWorkflowRequest>,
+  output: __S(125, __c31, 1) as any as S.Schema<CreateMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -781,8 +781,8 @@ export const createWorkflowStep: API.OperationMethod<
   CreateWorkflowStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateWorkflowStepRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateWorkflowStepResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<CreateWorkflowStepRequest>,
+  output: __S(148, __c37, 0) as any as S.Schema<CreateWorkflowStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -809,8 +809,8 @@ export const createWorkflowStepGroup: API.OperationMethod<
   CreateWorkflowStepGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateWorkflowStepGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateWorkflowStepGroupResponse>,
+  input: __S(152, __c38, 0) as any as S.Schema<CreateWorkflowStepGroupRequest>,
+  output: __S(153, __c38, 1) as any as S.Schema<CreateWorkflowStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -838,8 +838,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteTemplateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteTemplateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -869,8 +869,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteMigrationWorkflowRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteMigrationWorkflowResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteMigrationWorkflowRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -900,8 +900,8 @@ export const deleteWorkflowStep: API.OperationMethod<
   DeleteWorkflowStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteWorkflowStepRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteWorkflowStepResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteWorkflowStepRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteWorkflowStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -930,8 +930,8 @@ export const deleteWorkflowStepGroup: API.OperationMethod<
   DeleteWorkflowStepGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteWorkflowStepGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteWorkflowStepGroupResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteWorkflowStepGroupRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<DeleteWorkflowStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -959,8 +959,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetMigrationWorkflowTemplateRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetMigrationWorkflowTemplateResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetMigrationWorkflowTemplateRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<GetMigrationWorkflowTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -988,8 +988,8 @@ export const getTemplateStep: API.OperationMethod<
   GetTemplateStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetTemplateStepRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetTemplateStepResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetTemplateStepRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<GetTemplateStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1018,8 +1018,8 @@ export const getTemplateStepGroup: API.OperationMethod<
   GetTemplateStepGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetTemplateStepGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetTemplateStepGroupResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetTemplateStepGroupRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetTemplateStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1048,8 +1048,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetMigrationWorkflowRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetMigrationWorkflowResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetMigrationWorkflowRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1077,8 +1077,8 @@ export const getWorkflowStep: API.OperationMethod<
   GetWorkflowStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetWorkflowStepRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetWorkflowStepResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetWorkflowStepRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<GetWorkflowStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1106,8 +1106,8 @@ export const getWorkflowStepGroup: API.OperationMethod<
   GetWorkflowStepGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetWorkflowStepGroupRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetWorkflowStepGroupResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetWorkflowStepGroupRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<GetWorkflowStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1135,8 +1135,8 @@ export const listPlugins: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PluginSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListPluginsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListPluginsResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListPluginsRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<ListPluginsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1162,8 +1162,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1185,8 +1185,8 @@ export const listTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListMigrationWorkflowTemplatesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListMigrationWorkflowTemplatesResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ListMigrationWorkflowTemplatesRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<ListMigrationWorkflowTemplatesResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1215,8 +1215,8 @@ export const listTemplateStepGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateStepGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListTemplateStepGroupsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListTemplateStepGroupsResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListTemplateStepGroupsRequest>,
+  output: __S(59, __c14, 3) as any as S.Schema<ListTemplateStepGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1251,8 +1251,8 @@ export const listTemplateSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateStepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListTemplateStepsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListTemplateStepsResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListTemplateStepsRequest>,
+  output: __S(63, __c15, 3) as any as S.Schema<ListTemplateStepsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1288,8 +1288,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MigrationWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListMigrationWorkflowsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListMigrationWorkflowsResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListMigrationWorkflowsRequest>,
+  output: __S(67, __c16, 3) as any as S.Schema<ListMigrationWorkflowsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1325,8 +1325,8 @@ export const listWorkflowStepGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowStepGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListWorkflowStepGroupsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListWorkflowStepGroupsResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListWorkflowStepGroupsRequest>,
+  output: __S(71, __c17, 3) as any as S.Schema<ListWorkflowStepGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1361,8 +1361,8 @@ export const listWorkflowSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowStepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListWorkflowStepsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListWorkflowStepsResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<ListWorkflowStepsRequest>,
+  output: __S(75, __c18, 3) as any as S.Schema<ListWorkflowStepsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1395,8 +1395,8 @@ export const retryWorkflowStep: API.OperationMethod<
   RetryWorkflowStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<RetryWorkflowStepRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<RetryWorkflowStepResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<RetryWorkflowStepRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<RetryWorkflowStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1424,8 +1424,8 @@ export const startWorkflow: API.OperationMethod<
   StartWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<StartMigrationWorkflowRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<StartMigrationWorkflowResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<StartMigrationWorkflowRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<StartMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1454,8 +1454,8 @@ export const stopWorkflow: API.OperationMethod<
   StopWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<StopMigrationWorkflowRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<StopMigrationWorkflowResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<StopMigrationWorkflowRequest>,
+  output: __S(85, __c21, 1) as any as S.Schema<StopMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1478,8 +1478,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1496,8 +1496,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1520,8 +1520,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateTemplateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateTemplateResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(116, __c29, 0) as any as S.Schema<UpdateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1550,8 +1550,8 @@ export const updateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateMigrationWorkflowRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UpdateMigrationWorkflowResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<UpdateMigrationWorkflowRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<UpdateMigrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1579,8 +1579,8 @@ export const updateWorkflowStep: API.OperationMethod<
   UpdateWorkflowStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<UpdateWorkflowStepRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateWorkflowStepResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<UpdateWorkflowStepRequest>,
+  output: __S(148, __c37, 0) as any as S.Schema<UpdateWorkflowStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1608,8 +1608,8 @@ export const updateWorkflowStepGroup: API.OperationMethod<
   UpdateWorkflowStepGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateWorkflowStepGroupRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<UpdateWorkflowStepGroupResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<UpdateWorkflowStepGroupRequest>,
+  output: __S(109, __c27, 1) as any as S.Schema<UpdateWorkflowStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1626,203 +1626,24 @@ export const updateWorkflowStepGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ workflowId: S.String })]);
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          templateName: S.String,
-          templateDescription: S.optional(S.String),
-          templateSource: __S(0, __c0, 0),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/template" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTemplateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          templateId: S.optional(S.String),
-          templateArn: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "CreateTemplateResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ integerValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ listOfStringsValue: __S(4, __c0, 4) }),
-        /*@__PURE__*/ S.Struct({ mapOfStringValue: __S(1, __c0, 1) }),
-      ]);
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(5, __c0, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          templateId: S.String,
-          applicationConfigurationId: S.optional(S.String),
-          inputParameters: __S(6, __c0, 6),
-          stepTargets: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/migrationworkflow/" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/template/{id}" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "DeleteTemplateRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          templateId: S.optional(S.String),
-          adsApplicationConfigurationId: S.optional(S.String),
-          workflowInputs: S.optional(__S(6, __c0, 6)),
-          stepTargets: S.optional(__S(4, __c0, 4)),
-          status: S.optional(S.String),
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateMigrationWorkflowResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ linux: S.optional(S.String), windows: S.optional(S.String) }),
-      ).annotate({ identifier: "PlatformScriptKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scriptLocationS3Bucket: S.optional(S.String),
-          scriptLocationS3Key: S.optional(__S(9, __c1, 1)),
-          command: S.optional(__S(9, __c1, 1)),
-          runEnvironment: S.optional(S.String),
-          targetType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkflowStepAutomationConfiguration",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ integerValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ listOfStringValue: __S(4, __c0, 4) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          dataType: S.optional(S.String),
-          required: S.optional(S.Boolean),
-          value: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "WorkflowStepOutput" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          stepGroupId: S.String,
-          workflowId: S.String,
-          stepActionType: S.String,
-          description: S.optional(S.String),
-          workflowStepAutomationConfiguration: S.optional(__S(10, __c1, 2)),
-          stepTarget: S.optional(__S(4, __c0, 4)),
-          outputs: S.optional(__S(13, __c1, 5)),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/workflowstep" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateWorkflowStepRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          stepGroupId: S.optional(S.String),
-          workflowId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateWorkflowStepResponse",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteTemplateResponse",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          next: S.optional(__S(4, __c0, 4)),
-          previous: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workflowstepgroups" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateWorkflowStepGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
-      ).annotate({ identifier: "Tool" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.optional(S.String),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          tools: S.optional(__S(18, __c2, 2)),
-          next: S.optional(__S(4, __c0, 4)),
-          previous: S.optional(__S(4, __c0, 4)),
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "CreateWorkflowStepGroupResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/template/{id}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteTemplateRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteTemplateResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1837,7 +1658,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteMigrationWorkflowRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1870,7 +1691,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteWorkflowStepRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String.pipe(T.HttpQuery("workflowId")),
@@ -1888,11 +1713,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteWorkflowStepGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWorkflowStepGroupResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1907,7 +1736,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMigrationWorkflowTemplateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           inputName: S.optional(S.String),
@@ -1915,28 +1744,32 @@ function __c3(j: number): any {
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TemplateInput" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           templateArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          inputs: S.optional(__S(29, __c3, 5)),
-          tools: S.optional(__S(18, __c2, 2)),
+          inputs: S.optional(__S(22, __c5, 2)),
+          tools: S.optional(__S(157, __c39, 1)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           owner: S.optional(S.String),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           templateClass: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(120, __c30, 0)),
         }),
       ).annotate({
         identifier: "GetMigrationWorkflowTemplateResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -1946,11 +1779,7 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/templatestep/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTemplateStepRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1958,9 +1787,9 @@ function __c4(j: number): any {
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StepOutput" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1970,13 +1799,17 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           stepActionType: S.optional(S.String),
           creationTime: S.optional(S.String),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
-          outputs: S.optional(__S(33, __c4, 1)),
-          stepAutomationConfiguration: S.optional(__S(10, __c1, 2)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
+          outputs: S.optional(__S(26, __c6, 2)),
+          stepAutomationConfiguration: S.optional(__S(141, __c35, 1)),
         }),
       ).annotate({ identifier: "GetTemplateStepResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateId: S.String.pipe(T.HttpLabel("templateId")),
@@ -1994,7 +1827,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetTemplateStepGroupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           templateId: S.optional(S.String),
@@ -2004,14 +1837,18 @@ function __c4(j: number): any {
           status: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tools: S.optional(__S(18, __c2, 2)),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          tools: S.optional(__S(157, __c39, 1)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
         }),
       ).annotate({
         identifier: "GetTemplateStepGroupResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -2026,7 +1863,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetMigrationWorkflowRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2043,17 +1880,21 @@ function __c4(j: number): any {
           lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tools: S.optional(__S(18, __c2, 2)),
+          tools: S.optional(__S(157, __c39, 1)),
           totalSteps: S.optional(S.Number),
           completedSteps: S.optional(S.Number),
-          workflowInputs: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(1, __c0, 1)),
+          workflowInputs: S.optional(__S(129, __c32, 1)),
+          tags: S.optional(__S(120, __c30, 0)),
           workflowBucket: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMigrationWorkflowResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String.pipe(T.HttpQuery("workflowId")),
@@ -2063,11 +1904,7 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/workflowstep/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetWorkflowStepRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2077,11 +1914,11 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           stepActionType: S.optional(S.String),
           owner: S.optional(S.String),
-          workflowStepAutomationConfiguration: S.optional(__S(10, __c1, 2)),
-          stepTarget: S.optional(__S(4, __c0, 4)),
-          outputs: S.optional(__S(13, __c1, 5)),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          workflowStepAutomationConfiguration: S.optional(__S(141, __c35, 1)),
+          stepTarget: S.optional(__S(132, __c33, 0)),
+          outputs: S.optional(__S(146, __c36, 2)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           scriptOutputLocation: S.optional(S.String),
@@ -2093,7 +1930,11 @@ function __c5(j: number): any {
           totalNoOfSrv: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetWorkflowStepResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -2111,7 +1952,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetWorkflowStepGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2123,21 +1964,25 @@ function __c5(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tools: S.optional(__S(18, __c2, 2)),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          tools: S.optional(__S(157, __c39, 1)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
         }),
       ).annotate({
         identifier: "GetWorkflowStepGroupResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/plugins" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPluginsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pluginId: S.optional(S.String),
@@ -2148,13 +1993,17 @@ function __c5(j: number): any {
           registeredTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PluginSummary" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(45, __c11, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(__S(45, __c5, 5)) }),
+        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(__S(46, __c11, 2)) }),
       ).annotate({ identifier: "ListPluginsResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -2169,15 +2018,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(120, __c30, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2196,7 +2045,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListMigrationWorkflowTemplatesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2205,15 +2054,19 @@ function __c6(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateSummary" });
+    case 2:
+      return S.Array(__S(53, __c13, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templateSummary: __S(51, __c6, 3) }),
+        S.Struct({ nextToken: S.optional(S.String), templateSummary: __S(54, __c13, 2) }),
       ).annotate({
         identifier: "ListMigrationWorkflowTemplatesResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2232,31 +2085,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTemplateStepGroupsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
         }),
       ).annotate({ identifier: "TemplateStepGroupSummary" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          templateStepGroupSummary: __S(55, __c6, 7),
+          templateStepGroupSummary: __S(58, __c14, 2),
         }),
       ).annotate({
         identifier: "ListTemplateStepGroupsResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2267,7 +2120,7 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/templatesteps" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTemplateStepsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2277,22 +2130,26 @@ function __c7(j: number): any {
           stepActionType: S.optional(S.String),
           targetType: S.optional(S.String),
           owner: S.optional(S.String),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
         }),
       ).annotate({ identifier: "TemplateStepSummary" });
+    case 2:
+      return S.Array(__S(61, __c15, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          templateStepSummaryList: S.optional(__S(59, __c7, 3)),
+          templateStepSummaryList: S.optional(__S(62, __c15, 2)),
         }),
       ).annotate({
         identifier: "ListTemplateStepsResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2316,7 +2173,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListMigrationWorkflowsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2331,22 +2188,22 @@ function __c7(j: number): any {
           totalSteps: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MigrationWorkflowSummary" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(65, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          migrationWorkflowSummary: __S(63, __c7, 7),
+          migrationWorkflowSummary: __S(66, __c16, 2),
         }),
       ).annotate({
         identifier: "ListMigrationWorkflowsResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2365,29 +2222,33 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListWorkflowStepGroupsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           owner: S.optional(S.String),
           status: S.optional(S.String),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
         }),
       ).annotate({ identifier: "WorkflowStepGroupSummary" });
+    case 2:
+      return S.Array(__S(69, __c17, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          workflowStepGroupsSummary: __S(67, __c8, 3),
+          workflowStepGroupsSummary: __S(70, __c17, 2),
         }),
       ).annotate({
         identifier: "ListWorkflowStepGroupsResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2408,15 +2269,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListWorkflowStepsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stepId: S.optional(S.String),
           name: S.optional(S.String),
           stepActionType: S.optional(S.String),
           owner: S.optional(S.String),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           noOfSrvCompleted: S.optional(S.Number),
@@ -2426,22 +2287,19 @@ function __c8(j: number): any {
           scriptLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowStepSummary" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(73, __c18, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          workflowStepsSummary: __S(71, __c8, 7),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), workflowStepsSummary: __S(74, __c18, 2) }),
       ).annotate({
         identifier: "ListWorkflowStepsResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String.pipe(T.HttpQuery("workflowId")),
@@ -2458,7 +2316,7 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RetryWorkflowStepRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stepGroupId: S.optional(S.String),
@@ -2469,7 +2327,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RetryWorkflowStepResponse",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -2484,7 +2346,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StartMigrationWorkflowRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2496,7 +2358,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StartMigrationWorkflowResponse",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -2511,7 +2377,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StopMigrationWorkflowRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2523,11 +2389,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StopMigrationWorkflowResponse",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1, __c0, 1),
+          tags: __S(120, __c30, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2541,13 +2411,13 @@ function __c9(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c10(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(132, __c33, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2559,7 +2429,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -2570,14 +2444,18 @@ function __c10(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/template/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateTemplateRequest" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          inputParameters: S.optional(__S(6, __c0, 6)),
-          stepTargets: S.optional(__S(4, __c0, 4)),
+          inputParameters: S.optional(__S(129, __c32, 1)),
+          stepTargets: S.optional(__S(132, __c33, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/migrationworkflow/{id}" }),
@@ -2591,7 +2469,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateMigrationWorkflowRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2600,17 +2478,21 @@ function __c10(j: number): any {
           description: S.optional(S.String),
           templateId: S.optional(S.String),
           adsApplicationConfigurationId: S.optional(S.String),
-          workflowInputs: S.optional(__S(6, __c0, 6)),
-          stepTargets: S.optional(__S(4, __c0, 4)),
+          workflowInputs: S.optional(__S(129, __c32, 1)),
+          stepTargets: S.optional(__S(132, __c33, 0)),
           status: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(120, __c30, 0)),
         }),
       ).annotate({
         identifier: "UpdateMigrationWorkflowResponse",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -2619,11 +2501,11 @@ function __c10(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           stepActionType: S.optional(S.String),
-          workflowStepAutomationConfiguration: S.optional(__S(10, __c1, 2)),
-          stepTarget: S.optional(__S(4, __c0, 4)),
-          outputs: S.optional(__S(13, __c1, 5)),
-          previous: S.optional(__S(4, __c0, 4)),
-          next: S.optional(__S(4, __c0, 4)),
+          workflowStepAutomationConfiguration: S.optional(__S(141, __c35, 1)),
+          stepTarget: S.optional(__S(132, __c33, 0)),
+          outputs: S.optional(__S(146, __c36, 2)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
           status: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2638,15 +2520,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateWorkflowStepRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String.pipe(T.HttpQuery("workflowId")),
           id: S.String.pipe(T.HttpLabel("id")),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          next: S.optional(__S(4, __c0, 4)),
-          previous: S.optional(__S(4, __c0, 4)),
+          next: S.optional(__S(132, __c33, 0)),
+          previous: S.optional(__S(132, __c33, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workflowstepgroup/{id}" }),
@@ -2660,16 +2546,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateWorkflowStepGroupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.optional(S.String),
           name: S.optional(S.String),
           id: S.optional(S.String),
           description: S.optional(S.String),
-          tools: S.optional(__S(18, __c2, 2)),
-          next: S.optional(__S(4, __c0, 4)),
-          previous: S.optional(__S(4, __c0, 4)),
+          tools: S.optional(__S(157, __c39, 1)),
+          next: S.optional(__S(132, __c33, 0)),
+          previous: S.optional(__S(132, __c33, 0)),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -2677,7 +2563,233 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ workflowId: S.String })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          templateDescription: S.optional(S.String),
+          templateSource: __S(112, __c28, 0),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(120, __c30, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/template" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTemplateRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          templateId: S.optional(S.String),
+          templateArn: S.optional(S.String),
+          tags: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({ identifier: "CreateTemplateResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          templateId: S.String,
+          applicationConfigurationId: S.optional(S.String),
+          inputParameters: __S(129, __c32, 1),
+          stepTargets: S.optional(__S(132, __c33, 0)),
+          tags: S.optional(__S(120, __c30, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/migrationworkflow/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateMigrationWorkflowRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          templateId: S.optional(S.String),
+          adsApplicationConfigurationId: S.optional(S.String),
+          workflowInputs: S.optional(__S(129, __c32, 1)),
+          stepTargets: S.optional(__S(132, __c33, 0)),
+          status: S.optional(S.String),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateMigrationWorkflowResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ integerValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ listOfStringsValue: __S(132, __c33, 0) }),
+        /*@__PURE__*/ S.Struct({ mapOfStringValue: __S(120, __c30, 0) }),
+      ]);
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(128, __c32, 0).pipe(S.optional));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          stepGroupId: S.String,
+          workflowId: S.String,
+          stepActionType: S.String,
+          description: S.optional(S.String),
+          workflowStepAutomationConfiguration: S.optional(__S(141, __c35, 1)),
+          stepTarget: S.optional(__S(132, __c33, 0)),
+          outputs: S.optional(__S(146, __c36, 2)),
+          previous: S.optional(__S(132, __c33, 0)),
+          next: S.optional(__S(132, __c33, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/workflowstep" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateWorkflowStepRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ linux: S.optional(S.String), windows: S.optional(S.String) }),
+      ).annotate({ identifier: "PlatformScriptKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scriptLocationS3Bucket: S.optional(S.String),
+          scriptLocationS3Key: S.optional(__S(140, __c35, 0)),
+          command: S.optional(__S(140, __c35, 0)),
+          runEnvironment: S.optional(S.String),
+          targetType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkflowStepAutomationConfiguration",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ integerValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ listOfStringValue: __S(132, __c33, 0) }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          dataType: S.optional(S.String),
+          required: S.optional(S.Boolean),
+          value: S.optional(__S(144, __c36, 0)),
+        }),
+      ).annotate({ identifier: "WorkflowStepOutput" });
+    case 2:
+      return S.Array(__S(145, __c36, 1));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          stepGroupId: S.optional(S.String),
+          workflowId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateWorkflowStepResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          next: S.optional(__S(132, __c33, 0)),
+          previous: S.optional(__S(132, __c33, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workflowstepgroups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateWorkflowStepGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.optional(S.String),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          tools: S.optional(__S(157, __c39, 1)),
+          next: S.optional(__S(132, __c33, 0)),
+          previous: S.optional(__S(132, __c33, 0)),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "CreateWorkflowStepGroupResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
+      ).annotate({ identifier: "Tool" });
+    case 1:
+      return S.Array(__S(156, __c39, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

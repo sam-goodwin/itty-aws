@@ -161,7 +161,7 @@ export const createHealthIssuesResolve: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateHealthIssuesResolveRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<HealthIssue>,
+  output: __S(8, __c2, 0) as any as S.Schema<HealthIssue>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -175,8 +175,8 @@ export const getHealthIssue: API.OperationMethod<
   GetHealthIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetHealthIssueRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HealthIssueDetail>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetHealthIssueRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<HealthIssueDetail>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -190,8 +190,8 @@ export const getHealthIssuesSummary: API.OperationMethod<
   GetHealthIssuesSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetHealthIssuesSummaryRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<HealthIssueSummary>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetHealthIssuesSummaryRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<HealthIssueSummary>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -204,8 +204,8 @@ export const healthIssuesRefreshCreate: API.OperationMethod<
   HealthIssuesRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<HealthIssuesRefreshCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<HealthIssuesRefreshCreateResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<HealthIssuesRefreshCreateRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<HealthIssuesRefreshCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -219,8 +219,8 @@ export const listHealthIssues: API.OperationMethod<
   ListHealthIssuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListHealthIssuesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PaginatedHealthIssueList>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListHealthIssuesRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<PaginatedHealthIssueList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -233,8 +233,8 @@ export const updateHealthIssuesPartial: API.OperationMethod<
   UpdateHealthIssuesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UpdateHealthIssuesPartialRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<HealthIssue>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateHealthIssuesPartialRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<HealthIssue>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -260,9 +260,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateHealthIssuesResolveRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -271,13 +279,17 @@ function __c0(j: number): any {
           status: S.optional(S.String),
           dismissed: S.optional(S.Boolean),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          payload: S.optional(__S(1, __c0, 1)),
+          payload: S.optional(__S(4, __c1, 0)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           resolved_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HealthIssue" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -290,14 +302,14 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetHealthIssueRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           human: S.String,
           agent: S.String,
         }),
       ).annotate({ identifier: "HealthIssueRemediation" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -306,17 +318,21 @@ function __c0(j: number): any {
           status: S.String,
           dismissed: S.optional(S.Boolean),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          payload: __S(1, __c0, 1),
+          payload: __S(4, __c1, 0),
           created_at: S.String,
           updated_at: S.String,
           resolved_at: S.NullOr(S.String),
           title: S.String,
           summary: S.String,
           link: S.String,
-          remediation: S.NullOr(__S(4, __c0, 4)),
+          remediation: S.NullOr(__S(13, __c3, 1)),
         }),
       ).annotate({ identifier: "HealthIssueDetail" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -330,28 +346,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetHealthIssuesSummaryRequest",
       });
-    case 7:
+    case 1:
       return S.Record(S.String, S.Number);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
-          by_severity: __S(7, __c0, 7),
-          by_kind: __S(7, __c0, 7),
+          by_severity: __S(17, __c4, 1),
+          by_kind: __S(17, __c4, 1),
         }),
       ).annotate({ identifier: "HealthIssueCounts" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          unsnoozed: __S(8, __c1, 0),
-          snoozed: __S(8, __c1, 0),
+          unsnoozed: __S(18, __c4, 2),
+          snoozed: __S(18, __c4, 2),
         }),
       ).annotate({ identifier: "HealthIssueSummary" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -365,11 +381,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "HealthIssuesRefreshCreateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "HealthIssuesRefreshCreateResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -383,18 +403,22 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/health_issues/", code: 200 }),
         ),
       ).annotate({ identifier: "ListHealthIssuesRequest" });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(13, __c1, 5)),
+          results: S.optional(__S(25, __c6, 1)),
         }),
       ).annotate({ identifier: "PaginatedHealthIssueList" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -413,7 +437,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

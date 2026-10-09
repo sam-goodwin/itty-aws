@@ -1256,11 +1256,11 @@ export const createAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1278,11 +1278,11 @@ export const createAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    1024,
+    __c32,
+    0,
   ) as any as S.Schema<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1297,11 +1297,11 @@ export const deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(1124, __c35, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1319,11 +1319,11 @@ export const deleteAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(1124, __c35, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1338,11 +1338,11 @@ export const deleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscaler: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(1124, __c35, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1360,11 +1360,11 @@ export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    51,
-    __c6,
-    3,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(1124, __c35, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1378,8 @@ export const getAutoscalingAPIGroup: API.OperationMethod<
   GetAutoscalingAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetAutoscalingAPIGroupRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetAutoscalingAPIGroupRequest>,
+  output: __S(1285, __c40, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1393,8 +1393,8 @@ export const getAutoscalingV1APIResources: API.OperationMethod<
   GetAutoscalingV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetAutoscalingV1APIResourcesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAutoscalingV1APIResourcesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1408,8 @@ export const getAutoscalingV2APIResources: API.OperationMethod<
   GetAutoscalingV2APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetAutoscalingV2APIResourcesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetAutoscalingV2APIResourcesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1424,11 +1424,11 @@ export const listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
+  output: __S(129, __c4, 1) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1443,11 +1443,11 @@ export const listAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
+  output: __S(129, __c4, 1) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1462,11 +1462,11 @@ export const listAutoscalingV2HorizontalPodAutoscalerForAllNamespaces: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
+  output: __S(225, __c7, 1) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1481,11 +1481,11 @@ export const listAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
+    256,
     __c8,
-    6,
+    0,
   ) as any as S.Schema<ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
+  output: __S(225, __c7, 1) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1504,11 +1504,11 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    288,
+    __c9,
+    0,
   ) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1527,11 +1527,11 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    320,
+    __c10,
     0,
   ) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1550,11 +1550,11 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    352,
+    __c11,
+    0,
   ) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1573,11 +1573,11 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1592,11 +1592,11 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    75,
-    __c9,
-    3,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1613,11 +1613,11 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1632,11 +1632,11 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    77,
-    __c9,
-    5,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1653,11 +1653,11 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1676,11 +1676,11 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1699,11 +1699,11 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    576,
+    __c18,
     0,
   ) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
+  output: __S(802, __c25, 2) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1722,11 +1722,11 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    81,
-    __c10,
-    1,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1745,11 +1745,11 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
+  output: __S(1083, __c33, 27) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1764,11 +1764,11 @@ export const watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1783,11 +1783,11 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    736,
+    __c23,
+    0,
   ) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1802,11 +1802,11 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscalerList: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1821,11 +1821,11 @@ export const watchAutoscalingV2HorizontalPodAutoscalerListForAllNamespaces: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    87,
-    __c10,
-    7,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1840,11 +1840,11 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    960,
+    __c30,
     0,
   ) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1859,11 +1859,11 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscalerList: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    89,
-    __c11,
-    1,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(704, __c22, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1873,71 +1873,10 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscalerList: API.Operat
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v1/", code: 200 })),
       ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV1CrossVersionObjectReference",
+        identifier: "GetAutoscalingV1APIResourcesRequest",
       });
   }
 }
@@ -1946,92 +1885,32 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          maxReplicas: S.Number,
-          minReplicas: S.optional(S.Number),
-          scaleTargetRef: __S(7, __c0, 7),
-          targetCPUUtilizationPercentage: S.optional(S.Number),
+          categories: S.optional(__S(832, __c26, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(832, __c26, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(832, __c26, 0),
+          version: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec",
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentCPUUtilizationPercentage: S.optional(S.Number),
-          currentReplicas: S.Number,
-          desiredReplicas: S.Number,
-          lastScaleTime: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus",
-      });
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
+          groupVersion: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(9, __c1, 1)),
+          resources: __S(33, __c1, 1),
         }),
       ).annotate({
-        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscaler",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          periodSeconds: S.Number,
-          type: S.String,
-          value: S.Number,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HPAScalingPolicy",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policies: S.optional(__S(13, __c1, 5)),
-          selectPolicy: S.optional(S.String),
-          stabilizationWindowSeconds: S.optional(S.Number),
-          tolerance: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HPAScalingRules",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scaleDown: S.optional(__S(14, __c1, 6)),
-          scaleUp: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior",
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
   }
 }
@@ -2039,523 +1918,15 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          averageUtilization: S.optional(S.Number),
-          averageValue: S.optional(S.String),
-          type: S.String,
-          value: S.optional(S.String),
-        }),
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v2/", code: 200 })),
       ).annotate({
-        identifier: "IoK8sApiAutoscalingV2MetricTarget",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.String,
-          name: S.String,
-          target: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ContainerResourceMetricSource",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(20, __c2, 4)),
-          matchLabels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          selector: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2MetricIdentifier",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metric: __S(22, __c2, 6),
-          target: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ExternalMetricSource",
+        identifier: "GetAutoscalingV2APIResourcesRequest",
       });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          describedObject: __S(7, __c0, 7),
-          metric: __S(22, __c2, 6),
-          target: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ObjectMetricSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          target: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ResourceMetricSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          containerResource: S.optional(__S(17, __c2, 1)),
-          external: S.optional(__S(23, __c2, 7)),
-          object: S.optional(__S(24, __c3, 0)),
-          pods: S.optional(__S(23, __c2, 7)),
-          resource: S.optional(__S(25, __c3, 1)),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2MetricSpec",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          behavior: S.optional(__S(15, __c1, 7)),
-          maxReplicas: S.Number,
-          metrics: S.optional(__S(27, __c3, 3)),
-          minReplicas: S.optional(S.Number),
-          scaleTargetRef: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          reason: S.optional(S.String),
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          averageUtilization: S.optional(S.Number),
-          averageValue: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2MetricValueStatus",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.String,
-          current: __S(31, __c3, 7),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ContainerResourceMetricStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          current: __S(31, __c3, 7),
-          metric: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ExternalMetricStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          current: __S(31, __c3, 7),
-          describedObject: __S(7, __c0, 7),
-          metric: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ObjectMetricStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          current: __S(31, __c3, 7),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2ResourceMetricStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerResource: S.optional(__S(32, __c4, 0)),
-          external: S.optional(__S(33, __c4, 1)),
-          object: S.optional(__S(34, __c4, 2)),
-          pods: S.optional(__S(33, __c4, 1)),
-          resource: S.optional(__S(35, __c4, 3)),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2MetricStatus",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(30, __c3, 6)),
-          currentMetrics: S.optional(__S(37, __c4, 5)),
-          currentReplicas: S.optional(S.Number),
-          desiredReplicas: S.Number,
-          lastScaleTime: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(28, __c3, 4),
-          status: S.optional(__S(38, __c4, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(28, __c3, 4),
-          status: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscaler",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(44, __c5, 4)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(45, __c5, 5)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(47, __c5, 7)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/", code: 200 })),
-      ).annotate({
-        identifier: "GetAutoscalingAPIGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(53, __c6, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(53, __c6, 5)),
-          serverAddressByClientCIDRs: S.optional(__S(55, __c6, 7)),
-          versions: __S(56, __c7, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v1/", code: 200 })),
-      ).annotate({
-        identifier: "GetAutoscalingV1APIResourcesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v2/", code: 200 })),
-      ).annotate({
-        identifier: "GetAutoscalingV2APIResourcesRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2582,22 +1953,26 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(802, __c25, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(64, __c8, 0),
+          items: __S(128, __c4, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(47, __c5, 7)),
+          metadata: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerList",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2623,7 +1998,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2648,20 +2027,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest",
       });
-    case 4:
-      return S.Array(__S(40, __c5, 0));
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1083, __c33, 27));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(68, __c8, 4),
+          items: __S(224, __c7, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(47, __c5, 7)),
+          metadata: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerList",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2687,7 +2074,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2709,7 +2100,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2731,7 +2122,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2751,7 +2146,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2771,7 +2170,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2787,7 +2190,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2803,7 +2210,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2819,7 +2230,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2835,33 +2250,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
-      });
   }
 }
-function __c10(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2874,9 +2265,37 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(800, __c25, 0),
+          status: S.optional(__S(801, __c25, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(800, __c25, 0),
+          status: S.optional(__S(801, __c25, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2887,7 +2306,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2898,9 +2321,9 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(28, __c3, 4),
-          status: S.optional(__S(38, __c4, 6)),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(1072, __c33, 16),
+          status: S.optional(__S(1082, __c33, 26)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2911,7 +2334,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2922,9 +2349,9 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(28, __c3, 4),
-          status: S.optional(__S(38, __c4, 6)),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(1072, __c33, 16),
+          status: S.optional(__S(1082, __c33, 26)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2935,7 +2362,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2960,7 +2391,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -2969,7 +2404,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2996,7 +2435,152 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
       });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(800, __c25, 0),
+          status: S.optional(__S(801, __c25, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxReplicas: S.Number,
+          minReplicas: S.optional(S.Number),
+          scaleTargetRef: __S(870, __c27, 6),
+          targetCPUUtilizationPercentage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currentCPUUtilizationPercentage: S.optional(S.Number),
+          currentReplicas: S.Number,
+          desiredReplicas: S.Number,
+          lastScaleTime: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(800, __c25, 0),
+          status: S.optional(__S(801, __c25, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscaler",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(867, __c27, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(864, __c27, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(832, __c26, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(864, __c27, 0)),
+          managedFields: S.optional(__S(866, __c27, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(868, __c27, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV1CrossVersionObjectReference",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3022,7 +2606,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3049,7 +2637,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3078,7 +2666,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3106,7 +2698,530 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(1072, __c33, 16),
+          status: S.optional(__S(1082, __c33, 26)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          periodSeconds: S.Number,
+          type: S.String,
+          value: S.Number,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HPAScalingPolicy",
+      });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policies: S.optional(__S(1057, __c33, 1)),
+          selectPolicy: S.optional(S.String),
+          stabilizationWindowSeconds: S.optional(S.Number),
+          tolerance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HPAScalingRules",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scaleDown: S.optional(__S(1058, __c33, 2)),
+          scaleUp: S.optional(__S(1058, __c33, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          averageUtilization: S.optional(S.Number),
+          averageValue: S.optional(S.String),
+          type: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2MetricTarget",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.String,
+          name: S.String,
+          target: __S(1060, __c33, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ContainerResourceMetricSource",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(1062, __c33, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 8:
+      return S.Array(__S(1063, __c33, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(1064, __c33, 8)),
+          matchLabels: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          selector: S.optional(__S(1065, __c33, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2MetricIdentifier",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          metric: __S(1066, __c33, 10),
+          target: __S(1060, __c33, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ExternalMetricSource",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          describedObject: __S(870, __c27, 6),
+          metric: __S(1066, __c33, 10),
+          target: __S(1060, __c33, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ObjectMetricSource",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          target: __S(1060, __c33, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ResourceMetricSource",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          containerResource: S.optional(__S(1061, __c33, 5)),
+          external: S.optional(__S(1067, __c33, 11)),
+          object: S.optional(__S(1068, __c33, 12)),
+          pods: S.optional(__S(1067, __c33, 11)),
+          resource: S.optional(__S(1069, __c33, 13)),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2MetricSpec",
+      });
+    case 15:
+      return S.Array(__S(1070, __c33, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          behavior: S.optional(__S(1059, __c33, 3)),
+          maxReplicas: S.Number,
+          metrics: S.optional(__S(1071, __c33, 15)),
+          minReplicas: S.optional(S.Number),
+          scaleTargetRef: __S(870, __c27, 6),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+          reason: S.optional(S.String),
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition",
+      });
+    case 18:
+      return S.Array(__S(1073, __c33, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          averageUtilization: S.optional(S.Number),
+          averageValue: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2MetricValueStatus",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.String,
+          current: __S(1075, __c33, 19),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ContainerResourceMetricStatus",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          current: __S(1075, __c33, 19),
+          metric: __S(1066, __c33, 10),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ExternalMetricStatus",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          current: __S(1075, __c33, 19),
+          describedObject: __S(870, __c27, 6),
+          metric: __S(1066, __c33, 10),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ObjectMetricStatus",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          current: __S(1075, __c33, 19),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2ResourceMetricStatus",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          containerResource: S.optional(__S(1076, __c33, 20)),
+          external: S.optional(__S(1077, __c33, 21)),
+          object: S.optional(__S(1078, __c33, 22)),
+          pods: S.optional(__S(1077, __c33, 21)),
+          resource: S.optional(__S(1079, __c33, 23)),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2MetricStatus",
+      });
+    case 25:
+      return S.Array(__S(1080, __c33, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(1074, __c33, 18)),
+          currentMetrics: S.optional(__S(1081, __c33, 25)),
+          currentReplicas: S.optional(S.Number),
+          desiredReplicas: S.Number,
+          lastScaleTime: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(869, __c27, 5)),
+          spec: __S(1072, __c33, 16),
+          status: S.optional(__S(1082, __c33, 26)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscaler",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(1120, __c35, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(1122, __c35, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(1123, __c35, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(1153, __c36, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(1120, __c35, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(1120, __c35, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(1120, __c35, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/", code: 200 })),
+      ).annotate({
+        identifier: "GetAutoscalingAPIGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(1282, __c40, 2));
+    case 4:
+      return S.Array(__S(1281, __c40, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(1281, __c40, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(1283, __c40, 3)),
+          versions: __S(1284, __c40, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

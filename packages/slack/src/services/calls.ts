@@ -105,8 +105,8 @@ export const addCall: API.OperationMethod<
   AddCallError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddCallRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddCallResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddCallRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<AddCallResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -120,8 +120,8 @@ export const addParticipant: API.OperationMethod<
   AddParticipantError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddParticipantRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddParticipantResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<AddParticipantRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<AddParticipantResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -135,8 +135,8 @@ export const callsEnd: API.OperationMethod<
   CallsEndError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CallsEndRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CallsEndResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<CallsEndRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<CallsEndResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const callsInfo: API.OperationMethod<
   CallsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CallsInfoRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CallsInfoResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<CallsInfoRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<CallsInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const removeParticipant: API.OperationMethod<
   RemoveParticipantError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RemoveParticipantRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RemoveParticipantResponse>,
+  input: __S(12, __c6, 0) as any as S.Schema<RemoveParticipantRequest>,
+  output: __S(13, __c6, 1) as any as S.Schema<RemoveParticipantResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const updateCall: API.OperationMethod<
   UpdateCallError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateCallRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateCallResponse>,
+  input: __S(14, __c7, 0) as any as S.Schema<UpdateCallRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<UpdateCallResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -191,8 +191,6 @@ export const updateCall: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           external_unique_id: S.String,
@@ -202,44 +200,70 @@ function __c0(j: number): any {
           date_start: S.optional(S.Number),
           title: S.optional(S.String),
           created_by: S.optional(S.String),
-          users: S.optional(__S(0, __c0, 0)),
+          users: S.optional(__S(4, __c2, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/calls.add", code: 200 })),
       ).annotate({ identifier: "AddCallRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           call: S.Unknown,
         }),
       ).annotate({ identifier: "AddCallResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(0, __c0, 0),
+          users: __S(4, __c2, 0),
         }).pipe(T.Http({ method: "POST", uri: "/calls.participants.add", code: 200 })),
       ).annotate({ identifier: "AddParticipantRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           duration: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/calls.end", code: 200 })),
       ).annotate({ identifier: "CallsEndRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/calls.info", code: 200 })),
       ).annotate({ identifier: "CallsInfoRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(0, __c0, 0),
+          users: __S(4, __c2, 0),
         }).pipe(T.Http({ method: "POST", uri: "/calls.participants.remove", code: 200 })),
       ).annotate({ identifier: "RemoveParticipantRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -250,7 +274,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -263,7 +287,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateCallRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

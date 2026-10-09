@@ -1132,8 +1132,8 @@ export const addLocationToGroup: API.OperationMethod<
   AddLocationToGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddLocationToGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddLocationToGroupResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<AddLocationToGroupRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<AddLocationToGroupResponse>,
   errors: [BadRequest, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1147,8 @@ export const addOrganizationMember: API.OperationMethod<
   AddOrganizationMemberError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AddOrganizationMemberRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AddOrganizationMemberResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<AddOrganizationMemberRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<AddOrganizationMemberResponse>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1162,8 @@ export const createAPIToken: API.OperationMethod<
   CreateAPITokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateAPITokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateAPITokenResponse>,
+  input: __S(521, __c65, 1) as any as S.Schema<CreateAPITokenRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<CreateAPITokenResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1177,8 +1177,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(530, __c66, 2) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(532, __c66, 4) as any as S.Schema<CreateDatabaseResponse>,
   errors: [BadRequest, Conflict],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1192,8 +1192,8 @@ export const createDatabaseToken: API.OperationMethod<
   CreateDatabaseTokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateDatabaseTokenRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateDatabaseTokenResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<CreateDatabaseTokenRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<CreateDatabaseTokenResponse>,
   errors: [BadRequest, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1207,8 +1207,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateGroupResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<CreateGroupResponse>,
   errors: [BadRequest, Conflict],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1222,8 @@ export const createGroupToken: API.OperationMethod<
   CreateGroupTokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateGroupTokenRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateGroupTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateGroupTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateGroupTokenResponse>,
   errors: [BadRequest, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1237,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1252,8 +1252,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1267,8 @@ export const deleteOrganizationInviteByEmailV2: API.OperationMethod<
   DeleteOrganizationInviteByEmailV2Error,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteOrganizationInviteByEmailV2Request>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteOrganizationInviteByEmailV2Response>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteOrganizationInviteByEmailV2Request>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteOrganizationInviteByEmailV2Response>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1282,8 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetCurrentUserRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetCurrentUserResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetCurrentUserRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetCurrentUserResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1297,8 +1297,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetDatabaseResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1312,8 +1312,8 @@ export const getDatabaseConfiguration: API.OperationMethod<
   GetDatabaseConfigurationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetDatabaseConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DatabaseConfigurationResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetDatabaseConfigurationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DatabaseConfigurationResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1327,8 +1327,8 @@ export const getDatabaseInstance: API.OperationMethod<
   GetDatabaseInstanceError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetDatabaseInstanceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetDatabaseInstanceResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetDatabaseInstanceRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetDatabaseInstanceResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1342,8 @@ export const getDatabaseStats: API.OperationMethod<
   GetDatabaseStatsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetDatabaseStatsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetDatabaseStatsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetDatabaseStatsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDatabaseStatsResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1357,8 @@ export const getDatabaseUsage: API.OperationMethod<
   GetDatabaseUsageError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetDatabaseUsageRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetDatabaseUsageResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetDatabaseUsageRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetDatabaseUsageResponse>,
   errors: [BadRequest, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1372,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetGroupResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetGroupRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<GetGroupResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1387,8 @@ export const getGroupConfiguration: API.OperationMethod<
   GetGroupConfigurationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetGroupConfigurationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GroupConfigurationResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetGroupConfigurationRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GroupConfigurationResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1402,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetOrganizationResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetOrganizationResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1417,8 @@ export const getOrganizationMember: API.OperationMethod<
   GetOrganizationMemberError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetOrganizationMemberRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetOrganizationMemberResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetOrganizationMemberRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetOrganizationMemberResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1432,8 @@ export const getOrganizationSubscription: API.OperationMethod<
   GetOrganizationSubscriptionError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetOrganizationSubscriptionRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetOrganizationSubscriptionResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetOrganizationSubscriptionRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GetOrganizationSubscriptionResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1447,8 @@ export const getOrganizationUsage: API.OperationMethod<
   GetOrganizationUsageError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetOrganizationUsageRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetOrganizationUsageResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetOrganizationUsageRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<GetOrganizationUsageResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1462,8 @@ export const invalidateDatabaseTokens: API.OperationMethod<
   InvalidateDatabaseTokensError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<InvalidateDatabaseTokensRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<InvalidateDatabaseTokensResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<InvalidateDatabaseTokensRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<InvalidateDatabaseTokensResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1477,8 @@ export const invalidateGroupTokens: API.OperationMethod<
   InvalidateGroupTokensError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<InvalidateGroupTokensRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<InvalidateGroupTokensResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<InvalidateGroupTokensRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<InvalidateGroupTokensResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1492,8 @@ export const inviteOrganizationMemberV2: API.OperationMethod<
   InviteOrganizationMemberV2Error,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<InviteOrganizationMemberV2Request>,
-  output: __S(71, __c8, 7) as any as S.Schema<InviteOrganizationMemberV2Response>,
+  input: __S(216, __c27, 0) as any as S.Schema<InviteOrganizationMemberV2Request>,
+  output: __S(218, __c27, 2) as any as S.Schema<InviteOrganizationMemberV2Response>,
   errors: [BadRequest],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1507,8 @@ export const listAPITokens: API.OperationMethod<
   ListAPITokensError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListAPITokensRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListAPITokensResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListAPITokensRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<ListAPITokensResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1522,8 +1522,8 @@ export const listDatabaseInstances: API.OperationMethod<
   ListDatabaseInstancesError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListDatabaseInstancesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListDatabaseInstancesResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListDatabaseInstancesRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<ListDatabaseInstancesResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1537,8 +1537,8 @@ export const listDatabases: API.OperationMethod<
   ListDatabasesError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListDatabasesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<ListDatabasesResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1552,8 @@ export const listDeletedDatabases: API.OperationMethod<
   ListDeletedDatabasesError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListDeletedDatabasesRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListDeletedDatabasesResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListDeletedDatabasesRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListDeletedDatabasesResponse>,
   errors: [Forbidden],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1567,8 @@ export const listDeletedGroups: API.OperationMethod<
   ListDeletedGroupsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListDeletedGroupsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListDeletedGroupsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListDeletedGroupsRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<ListDeletedGroupsResponse>,
   errors: [Forbidden],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1582,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListGroupsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListGroupsResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1597,8 @@ export const listLocations: API.OperationMethod<
   ListLocationsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListLocationsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListLocationsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListLocationsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListLocationsResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1612,8 @@ export const listOrganizationAPITokens: API.OperationMethod<
   ListOrganizationAPITokensError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListOrganizationAPITokensRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListOrganizationAPITokensResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListOrganizationAPITokensRequest>,
+  output: __S(316, __c39, 4) as any as S.Schema<ListOrganizationAPITokensResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1627,8 @@ export const listOrganizationAuditLogs: API.OperationMethod<
   ListOrganizationAuditLogsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListOrganizationAuditLogsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListOrganizationAuditLogsResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListOrganizationAuditLogsRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<ListOrganizationAuditLogsResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1642,8 @@ export const listOrganizationInvitesV2: API.OperationMethod<
   ListOrganizationInvitesV2Error,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListOrganizationInvitesV2Request>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListOrganizationInvitesV2Response>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListOrganizationInvitesV2Request>,
+  output: __S(331, __c41, 3) as any as S.Schema<ListOrganizationInvitesV2Response>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1657,8 @@ export const listOrganizationInvoices: API.OperationMethod<
   ListOrganizationInvoicesError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListOrganizationInvoicesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListOrganizationInvoicesResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListOrganizationInvoicesRequest>,
+  output: __S(339, __c42, 3) as any as S.Schema<ListOrganizationInvoicesResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1672,8 @@ export const listOrganizationMembers: API.OperationMethod<
   ListOrganizationMembersError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListOrganizationMembersRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListOrganizationMembersResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListOrganizationMembersRequest>,
+  output: __S(378, __c47, 2) as any as S.Schema<ListOrganizationMembersResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1687,8 @@ export const listOrganizationPlans: API.OperationMethod<
   ListOrganizationPlansError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListOrganizationPlansRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListOrganizationPlansResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListOrganizationPlansRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<ListOrganizationPlansResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1702,8 +1702,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<ListOrganizationsResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1717,8 +1717,8 @@ export const removeLocationFromGroup: API.OperationMethod<
   RemoveLocationFromGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<RemoveLocationFromGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RemoveLocationFromGroupResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<RemoveLocationFromGroupRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<RemoveLocationFromGroupResponse>,
   errors: [BadRequest, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1732,8 +1732,8 @@ export const removeOrganizationMember: API.OperationMethod<
   RemoveOrganizationMemberError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<RemoveOrganizationMemberRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<RemoveOrganizationMemberResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<RemoveOrganizationMemberRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<RemoveOrganizationMemberResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1747,8 +1747,8 @@ export const restoreDatabase: API.OperationMethod<
   RestoreDatabaseError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<RestoreDatabaseRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<RestoreDatabaseResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<RestoreDatabaseRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<RestoreDatabaseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1762,8 +1762,8 @@ export const restoreGroup: API.OperationMethod<
   RestoreGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<RestoreGroupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<RestoreGroupResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<RestoreGroupRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<RestoreGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1777,8 +1777,8 @@ export const revokeAPIToken: API.OperationMethod<
   RevokeAPITokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<RevokeAPITokenRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<RevokeAPITokenResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<RevokeAPITokenRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<RevokeAPITokenResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1792,8 +1792,8 @@ export const revokeOrganizationAPIToken: API.OperationMethod<
   RevokeOrganizationAPITokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<RevokeOrganizationAPITokenRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RevokeOrganizationAPITokenResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<RevokeOrganizationAPITokenRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<RevokeOrganizationAPITokenResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1807,8 +1807,8 @@ export const transferGroup: API.OperationMethod<
   TransferGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<TransferGroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TransferGroupResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<TransferGroupRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<TransferGroupResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1822,8 +1822,8 @@ export const unarchiveGroup: API.OperationMethod<
   UnarchiveGroupError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UnarchiveGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UnarchiveGroupResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<UnarchiveGroupRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<UnarchiveGroupResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1837,8 +1837,8 @@ export const updateDatabaseConfiguration: API.OperationMethod<
   UpdateDatabaseConfigurationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UpdateDatabaseConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DatabaseConfigurationResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<UpdateDatabaseConfigurationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DatabaseConfigurationResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1852,8 +1852,8 @@ export const updateGroupConfiguration: API.OperationMethod<
   UpdateGroupConfigurationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateGroupConfigurationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GroupConfigurationResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<UpdateGroupConfigurationRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GroupConfigurationResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1867,8 +1867,8 @@ export const updateGroupDatabases: API.OperationMethod<
   UpdateGroupDatabasesError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<UpdateGroupDatabasesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateGroupDatabasesResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<UpdateGroupDatabasesRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateGroupDatabasesResponse>,
   errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1882,8 +1882,8 @@ export const updateMemberRole: API.OperationMethod<
   UpdateMemberRoleError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdateMemberRoleRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<UpdateMemberRoleResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<UpdateMemberRoleRequest>,
+  output: __S(498, __c62, 2) as any as S.Schema<UpdateMemberRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1897,8 +1897,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateOrganizationResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(505, __c63, 1) as any as S.Schema<UpdateOrganizationResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1912,8 @@ export const validateAPIToken: API.OperationMethod<
   ValidateAPITokenError,
   TursoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ValidateAPITokenRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ValidateAPITokenResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ValidateAPITokenRequest>,
+  output: __S(513, __c64, 1) as any as S.Schema<ValidateAPITokenResponse>,
   errors: [],
   protocol: TursoProtocol,
   retry: Retry.Retry,
@@ -1921,6 +1921,1040 @@ export const validateAPIToken: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          expiration: S.optional(S.String.pipe(T.Query())),
+          authorization: S.optional(S.String.pipe(T.Query())),
+          permissions: S.optional(__S(545, __c68, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateGroupTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateGroupTokenResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDatabaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteDatabaseResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          email: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/organizations/{organizationSlug}/invites/{email}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationInviteByEmailV2Request",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteOrganizationInviteByEmailV2Response",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/user", code: 200 })),
+      ).annotate({ identifier: "GetCurrentUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+          avatarUrl: S.optional(S.String),
+          plan: S.optional(S.String),
+          mfa: S.optional(S.Boolean),
+          has_pending_invites: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetCurrentUserResponseUser",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({ identifier: "GetCurrentUserResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetDatabaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.optional(__S(57, __c7, 1)),
+        }),
+      ).annotate({ identifier: "GetDatabaseResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          branched_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseParent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          DbId: S.optional(S.String),
+          Hostname: S.optional(S.String),
+          block_reads: S.optional(S.Boolean),
+          block_writes: S.optional(S.Boolean),
+          regions: S.optional(__S(360, __c45, 0)),
+          primaryRegion: S.optional(S.String),
+          group: S.optional(S.String),
+          delete_protection: S.optional(S.Boolean),
+          parent: S.optional(S.NullOr(__S(56, __c7, 0))),
+        }),
+      ).annotate({ identifier: "Database" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseConfigurationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          size_limit: S.optional(S.String),
+          allow_attach: S.optional(S.Boolean),
+          block_reads: S.optional(S.Boolean),
+          block_writes: S.optional(S.Boolean),
+          delete_protection: S.optional(S.Boolean),
+          allowed_ips: S.optional(__S(360, __c45, 0)),
+          allowed_aws_vpc_ids: S.optional(__S(360, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "DatabaseConfigurationResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          instanceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instance: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "GetDatabaseInstanceResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          region: S.optional(S.String),
+          hostname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/stats",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetDatabaseStatsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          rows_read: S.optional(S.Number),
+          rows_written: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DatabaseStatsOutput" });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          top_queries: S.optional(S.NullOr(__S(98, __c12, 2))),
+        }),
+      ).annotate({ identifier: "GetDatabaseStatsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetDatabaseUsageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.optional(__S(115, __c14, 3)),
+        }),
+      ).annotate({ identifier: "GetDatabaseUsageResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rows_read: S.optional(S.Number),
+          rows_written: S.optional(S.Number),
+          storage_bytes: S.optional(S.Number),
+          bytes_synced: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DatabaseUsageObject" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          usage: S.optional(__S(112, __c14, 0)),
+        }),
+      ).annotate({
+        identifier: "DatabaseUsageOutputInstancesItem",
+      });
+    case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          instances: S.optional(__S(114, __c14, 2)),
+          total: S.optional(__S(112, __c14, 0)),
+        }),
+      ).annotate({ identifier: "DatabaseUsageOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetGroupRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupConfigurationRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delete_protection: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GroupConfigurationResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}", code: 200 })),
+      ).annotate({ identifier: "GetOrganizationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.optional(__S(152, __c19, 0)),
+        }),
+      ).annotate({ identifier: "GetOrganizationResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          type: S.optional(S.String),
+          overages: S.optional(S.Boolean),
+          require_mfa: S.optional(S.Boolean),
+          blocked_reads: S.optional(S.Boolean),
+          blocked_writes: S.optional(S.Boolean),
+          plan_id: S.optional(S.String),
+          plan_timeline: S.optional(S.String),
+          platform: S.optional(S.String),
+          restore_enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Organization" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/members/{username}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationMemberRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          member: S.optional(__S(168, __c21, 0)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMemberResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          role: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Member" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          overages: S.optional(S.Boolean),
+          plan: S.optional(S.String),
+          timeline: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationSubscriptionResponseSubscription",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscription: S.optional(__S(177, __c22, 1)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationSubscriptionResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}/usage", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationUsageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rows_read: S.optional(S.Number),
+          rows_written: S.optional(S.Number),
+          databases: S.optional(S.Number),
+          locations: S.optional(S.Number),
+          storage_bytes: S.optional(S.Number),
+          groups: S.optional(S.Number),
+          bytes_synced: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationUsageResponseOrganizationUsage",
+      });
+    case 2:
+      return S.Array(__S(115, __c14, 3));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          usage: S.optional(__S(185, __c23, 1)),
+          databases: S.optional(__S(186, __c23, 2)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationUsageResponseOrganization",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationUsageResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "InvalidateDatabaseTokensRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "InvalidateGroupTokensRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "InvalidateGroupTokensResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          email: S.optional(S.String),
+          username: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/organizations/{organizationSlug}/invites",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "InviteOrganizationMemberV2Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          role: S.optional(S.String),
+          organization: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InviteCreatedV2" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          invited: S.optional(__S(217, __c27, 1)),
+        }),
+      ).annotate({
+        identifier: "InviteOrganizationMemberV2Response",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/auth/api-tokens", code: 200 })),
+      ).annotate({ identifier: "ListAPITokensRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          organization: S.optional(S.String),
+          group: S.optional(S.String),
+          scopes: S.optional(__S(360, __c45, 0)),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APIToken" });
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tokens: S.optional(__S(226, __c28, 2)),
+        }),
+      ).annotate({ identifier: "ListAPITokensResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDatabaseInstancesRequest",
+      });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instances: S.optional(__S(233, __c29, 1)),
+        }),
+      ).annotate({
+        identifier: "ListDatabaseInstancesResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          group: S.optional(S.String.pipe(T.Query())),
+          schema: S.optional(S.String.pipe(T.Query())),
+          parent: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListDatabasesRequest" });
+    case 1:
+      return S.Array(__S(57, __c7, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          databases: S.optional(__S(241, __c30, 1)),
+        }),
+      ).annotate({ identifier: "ListDatabasesResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label()),
+          deleted: S.Boolean.pipe(T.Query()),
+          search: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v3/organizations/{organizationId}/databases", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDeletedDatabasesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          databases: S.optional(__S(272, __c34, 0)),
+          pagination: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "ListDeletedDatabasesResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          next: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Pagination" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          DbId: S.optional(S.String),
+          Hostname: S.optional(S.String),
+          group: S.optional(S.String),
+          group_id: S.optional(S.String),
+          organization_id: S.optional(S.String),
+          regions: S.optional(__S(360, __c45, 0)),
+          primaryRegion: S.optional(S.String),
+          delete_protection: S.optional(S.Boolean),
+          deleted_at: S.optional(S.String),
+          group_deleted_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedDatabase" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(264, __c33, 0));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v3/organizations/{organizationId}/deleted-groups",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListDeletedGroupsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          name: S.optional(S.String),
+          deleted_at: S.optional(S.String),
+          cascade_databases: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeletedGroup" });
+    case 2:
+      return S.Array(__S(281, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(282, __c35, 2)),
+          pagination: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "ListDeletedGroupsResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}/groups", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListGroupsRequest" });
+    case 1:
+      return S.Array(__S(368, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(289, __c36, 1)),
+        }),
+      ).annotate({ identifier: "ListGroupsResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/locations", code: 200 })),
+      ).annotate({ identifier: "ListLocationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(304, __c38, 0)),
+        }),
+      ).annotate({ identifier: "ListLocationsResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/api-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationAPITokensRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationAPITokensResponseTokensItemOwner",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          organization: S.optional(S.String),
+          group: S.optional(S.String),
+          scopes: S.optional(__S(360, __c45, 0)),
+          owner: S.optional(__S(313, __c39, 1)),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationAPITokensResponseTokensItem",
+      });
+    case 3:
+      return S.Array(__S(314, __c39, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tokens: S.optional(__S(315, __c39, 3)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationAPITokensResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/audit-logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationAuditLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          origin: S.optional(S.String),
+          author: S.optional(S.String),
+          created_at: S.optional(S.String),
+          data: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "AuditLog" });
+    case 2:
+      return S.Array(__S(321, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          page_size: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+          total_rows: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationAuditLogsResponsePagination",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          audit_logs: S.optional(__S(322, __c40, 2)),
+          pagination: S.optional(__S(323, __c40, 3)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationAuditLogsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v2/organizations/{organizationSlug}/invites", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationInvitesV2Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          email: S.optional(S.String),
+          role: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InviteV2" });
+    case 2:
+      return S.Array(__S(329, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          invites: S.optional(__S(330, __c41, 2)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationInvitesV2Response",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/organizations/{organizationSlug}/invoices",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationInvoicesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_number: S.optional(S.String),
+          amount_due: S.optional(S.String),
+          due_date: S.optional(S.String),
+          paid_at: S.optional(S.String),
+          payment_failed_at: S.optional(S.String),
+          invoice_pdf: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationInvoicesResponseInvoicesItem",
+      });
+    case 2:
+      return S.Array(__S(337, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          invoices: S.optional(__S(338, __c42, 2)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationInvoicesResponse",
+      });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1938,1099 +2972,44 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddLocationToGroupRequest",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(__S(368, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "AddLocationToGroupResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           version: S.optional(S.String),
           uuid: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
+          locations: S.optional(__S(360, __c45, 0)),
           primary: S.optional(S.String),
           delete_protection: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Group" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "AddLocationToGroupResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          username: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/members",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrganizationMemberRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          member: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponse",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tokenName: S.String.pipe(T.Label()),
-          organization: S.optional(S.String),
-          group: S.optional(S.String),
-          scopes: S.optional(__S(6, __c0, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/auth/api-tokens/{tokenName}", code: 200 })),
-      ).annotate({ identifier: "CreateAPITokenRequest" });
   }
 }
-function __c1(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateAPITokenResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          timestamp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseRequestSeed",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          encryption_key: S.optional(S.String),
-          encryption_cipher: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseRequestRemoteEncryption",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          name: S.String,
-          group: S.String,
-          seed: S.optional(__S(9, __c1, 1)),
-          size_limit: S.optional(S.String),
-          remote_encryption: S.optional(__S(10, __c1, 2)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DbId: S.optional(S.String),
-          Hostname: S.optional(S.String),
-          Name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateDatabaseOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CreateDatabaseResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          databases: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseTokenRequestPermissionsReadAttach",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          read_attach: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseTokenRequestPermissions",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          expiration: S.optional(S.String.pipe(T.Query())),
-          authorization: S.optional(S.String.pipe(T.Query())),
-          permissions: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDatabaseTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jwt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseTokenResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          name: S.String,
-          location: S.String,
-          extensions: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/organizations/{organizationSlug}/groups", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateGroupRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "CreateGroupResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          expiration: S.optional(S.String.pipe(T.Query())),
-          authorization: S.optional(S.String.pipe(T.Query())),
-          permissions: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateGroupTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jwt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateGroupTokenResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteDatabaseResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          email: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/organizations/{organizationSlug}/invites/{email}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationInviteByEmailV2Request",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteOrganizationInviteByEmailV2Response",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/user", code: 200 })),
-      ).annotate({ identifier: "GetCurrentUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-          avatarUrl: S.optional(S.String),
-          plan: S.optional(S.String),
-          mfa: S.optional(S.Boolean),
-          has_pending_invites: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetCurrentUserResponseUser",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "GetCurrentUserResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetDatabaseRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          branched_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseParent" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          DbId: S.optional(S.String),
-          Hostname: S.optional(S.String),
-          block_reads: S.optional(S.Boolean),
-          block_writes: S.optional(S.Boolean),
-          regions: S.optional(__S(1, __c0, 1)),
-          primaryRegion: S.optional(S.String),
-          group: S.optional(S.String),
-          delete_protection: S.optional(S.Boolean),
-          parent: S.optional(S.NullOr(__S(31, __c3, 7))),
-        }),
-      ).annotate({ identifier: "Database" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "GetDatabaseResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          size_limit: S.optional(S.String),
-          allow_attach: S.optional(S.Boolean),
-          block_reads: S.optional(S.Boolean),
-          block_writes: S.optional(S.Boolean),
-          delete_protection: S.optional(S.Boolean),
-          allowed_ips: S.optional(__S(1, __c0, 1)),
-          allowed_aws_vpc_ids: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "DatabaseConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          instanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseInstanceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          region: S.optional(S.String),
-          hostname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          instance: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "GetDatabaseInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/stats",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetDatabaseStatsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          rows_read: S.optional(S.Number),
-          rows_written: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DatabaseStatsOutput" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          top_queries: S.optional(S.NullOr(__S(41, __c5, 1))),
-        }),
-      ).annotate({ identifier: "GetDatabaseStatsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetDatabaseUsageRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rows_read: S.optional(S.Number),
-          rows_written: S.optional(S.Number),
-          storage_bytes: S.optional(S.Number),
-          bytes_synced: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DatabaseUsageObject" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          usage: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "DatabaseUsageOutputInstancesItem",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          instances: S.optional(__S(46, __c5, 6)),
-          total: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "DatabaseUsageOutput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "GetDatabaseUsageResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetGroupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          delete_protection: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GroupConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}", code: 200 })),
-      ).annotate({ identifier: "GetOrganizationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          type: S.optional(S.String),
-          overages: S.optional(S.Boolean),
-          require_mfa: S.optional(S.Boolean),
-          blocked_reads: S.optional(S.Boolean),
-          blocked_writes: S.optional(S.Boolean),
-          plan_id: S.optional(S.String),
-          plan_timeline: S.optional(S.String),
-          platform: S.optional(S.String),
-          restore_enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "GetOrganizationResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/members/{username}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationMemberRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          role: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Member" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          member: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMemberResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          overages: S.optional(S.Boolean),
-          plan: S.optional(S.String),
-          timeline: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationSubscriptionResponseSubscription",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscription: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationSubscriptionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}/usage", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationUsageRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rows_read: S.optional(S.Number),
-          rows_written: S.optional(S.Number),
-          databases: S.optional(S.Number),
-          locations: S.optional(S.Number),
-          storage_bytes: S.optional(S.Number),
-          groups: S.optional(S.Number),
-          bytes_synced: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationUsageResponseOrganizationUsage",
-      });
-    case 7:
-      return S.Array(__S(47, __c5, 7));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          usage: S.optional(__S(62, __c7, 6)),
-          databases: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationUsageResponseOrganization",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationUsageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "InvalidateDatabaseTokensRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "InvalidateGroupTokensRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "InvalidateGroupTokensResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          email: S.optional(S.String),
-          username: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/organizations/{organizationSlug}/invites",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "InviteOrganizationMemberV2Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          role: S.optional(S.String),
-          organization: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InviteCreatedV2" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          invited: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "InviteOrganizationMemberV2Response",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/auth/api-tokens", code: 200 })),
-      ).annotate({ identifier: "ListAPITokensRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          organization: S.optional(S.String),
-          group: S.optional(S.String),
-          scopes: S.optional(__S(1, __c0, 1)),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "APIToken" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tokens: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "ListAPITokensResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDatabaseInstancesRequest",
-      });
-    case 5:
-      return S.Array(__S(37, __c4, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          instances: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ListDatabaseInstancesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          group: S.optional(S.String.pipe(T.Query())),
-          schema: S.optional(S.String.pipe(T.Query())),
-          parent: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListDatabasesRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(32, __c4, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          databases: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "ListDatabasesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label()),
-          deleted: S.Boolean.pipe(T.Query()),
-          search: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v3/organizations/{organizationId}/databases", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDeletedDatabasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          DbId: S.optional(S.String),
-          Hostname: S.optional(S.String),
-          group: S.optional(S.String),
-          group_id: S.optional(S.String),
-          organization_id: S.optional(S.String),
-          regions: S.optional(__S(1, __c0, 1)),
-          primaryRegion: S.optional(S.String),
-          delete_protection: S.optional(S.Boolean),
-          deleted_at: S.optional(S.String),
-          group_deleted_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedDatabase" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          next: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Pagination" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          databases: S.optional(__S(84, __c10, 4)),
-          pagination: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({
-        identifier: "ListDeletedDatabasesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v3/organizations/{organizationId}/deleted-groups",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListDeletedGroupsRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          name: S.optional(S.String),
-          deleted_at: S.optional(S.String),
-          cascade_databases: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeletedGroup" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(89, __c11, 1)),
-          pagination: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({
-        identifier: "ListDeletedGroupsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/organizations/{organizationSlug}/groups", code: 200 }),
-        ),
-      ).annotate({ identifier: "ListGroupsRequest" });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "ListGroupsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/locations", code: 200 })),
-      ).annotate({ identifier: "ListLocationsRequest" });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "ListLocationsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/api-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationAPITokensRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationAPITokensResponseTokensItemOwner",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          organization: S.optional(S.String),
-          group: S.optional(S.String),
-          scopes: S.optional(__S(1, __c0, 1)),
-          owner: S.optional(__S(98, __c12, 2)),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationAPITokensResponseTokensItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tokens: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationAPITokensResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/audit-logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationAuditLogsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          origin: S.optional(S.String),
-          author: S.optional(S.String),
-          created_at: S.optional(S.String),
-          data: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "AuditLog" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          page_size: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-          total_rows: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationAuditLogsResponsePagination",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          audit_logs: S.optional(__S(104, __c13, 0)),
-          pagination: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationAuditLogsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v2/organizations/{organizationSlug}/invites", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationInvitesV2Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          email: S.optional(S.String),
-          role: S.optional(S.String),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InviteV2" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          invites: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationInvitesV2Response",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationSlug: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/organizations/{organizationSlug}/invoices",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationInvoicesRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_number: S.optional(S.String),
-          amount_due: S.optional(S.String),
-          due_date: S.optional(S.String),
-          paid_at: S.optional(S.String),
-          payment_failed_at: S.optional(S.String),
-          invoice_pdf: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationInvoicesResponseInvoicesItem",
-      });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          invoices: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationInvoicesResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3040,17 +3019,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMembersRequest",
       });
-    case 4:
-      return S.Array(__S(56, __c7, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(116, __c14, 4)),
+          members: S.optional(__S(377, __c47, 1)),
         }),
       ).annotate({
         identifier: "ListOrganizationMembersResponse",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3060,20 +3043,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationPlansRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           timeline: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlanPrice" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rowsRead: S.optional(S.Number),
@@ -3085,38 +3064,42 @@ function __c15(j: number): any {
           bytesSynced: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlanQuotas" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           price: S.optional(S.String),
-          prices: S.optional(__S(120, __c15, 0)),
-          quotas: S.optional(__S(121, __c15, 1)),
+          prices: S.optional(__S(386, __c48, 2)),
+          quotas: S.optional(__S(387, __c48, 3)),
         }),
       ).annotate({ identifier: "OrganizationPlan" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(388, __c48, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          plans: S.optional(__S(123, __c15, 3)),
+          plans: S.optional(__S(389, __c48, 5)),
         }),
       ).annotate({
         identifier: "ListOrganizationPlansResponse",
       });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/organizations", code: 200 })),
       ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() => __S(126, __c15, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
+      return S.suspend(() => __S(393, __c49, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationsResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3134,7 +3117,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RemoveLocationFromGroupRequest",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3149,7 +3136,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RemoveOrganizationMemberRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           member: S.optional(S.String),
@@ -3157,7 +3144,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RemoveOrganizationMemberResponse",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -3171,13 +3162,17 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreDatabaseRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          database: S.optional(__S(83, __c10, 3)),
+          database: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "RestoreDatabaseResponse" });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -3190,31 +3185,35 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreGroupRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(__S(2, __c0, 2)),
-          databases: S.optional(__S(84, __c10, 4)),
-          failures: S.optional(__S(95, __c11, 7)),
+          group: S.optional(__S(368, __c46, 0)),
+          databases: S.optional(__S(272, __c34, 0)),
+          failures: S.optional(__S(304, __c38, 0)),
         }),
       ).annotate({ identifier: "RestoreGroupResponse" });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tokenName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/auth/api-tokens/{tokenName}", code: 200 })),
       ).annotate({ identifier: "RevokeAPITokenRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevokeAPITokenResponse" });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3229,7 +3228,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "RevokeOrganizationAPITokenRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
@@ -3237,7 +3236,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "RevokeOrganizationAPITokenResponse",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3251,7 +3254,40 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TransferGroupRequest" });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          username: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/members",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrganizationMemberRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          member: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3264,7 +3300,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnarchiveGroupRequest" });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3274,8 +3314,8 @@ function __c17(j: number): any {
           block_reads: S.optional(S.Boolean),
           block_writes: S.optional(S.Boolean),
           delete_protection: S.optional(S.Boolean),
-          allowed_ips: S.optional(__S(1, __c0, 1)),
-          allowed_aws_vpc_ids: S.optional(__S(1, __c0, 1)),
+          allowed_ips: S.optional(__S(360, __c45, 0)),
+          allowed_aws_vpc_ids: S.optional(__S(360, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3286,7 +3326,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateDatabaseConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3302,7 +3346,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateGroupConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3319,7 +3367,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3348,10 +3396,14 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          member: S.optional(__S(145, __c18, 1)),
+          member: S.optional(__S(497, __c62, 1)),
         }),
       ).annotate({ identifier: "UpdateMemberRoleResponse" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String.pipe(T.Label()),
@@ -3364,19 +3416,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          organization: S.optional(__S(53, __c6, 5)),
+          organization: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationResponse",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/auth/validate", code: 200 })),
       ).annotate({ identifier: "ValidateAPITokenRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exp: S.optional(S.Number),
@@ -3384,7 +3440,158 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ValidateAPITokenResponse" });
   }
 }
-
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tokenName: S.String.pipe(T.Label()),
+          organization: S.optional(S.String),
+          group: S.optional(S.String),
+          scopes: S.optional(__S(520, __c65, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/auth/api-tokens/{tokenName}", code: 200 })),
+      ).annotate({ identifier: "CreateAPITokenRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAPITokenResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          timestamp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseRequestSeed",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          encryption_key: S.optional(S.String),
+          encryption_cipher: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseRequestRemoteEncryption",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          name: S.String,
+          group: S.String,
+          seed: S.optional(__S(528, __c66, 0)),
+          size_limit: S.optional(S.String),
+          remote_encryption: S.optional(__S(529, __c66, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DbId: S.optional(S.String),
+          Hostname: S.optional(S.String),
+          Name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDatabaseOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.optional(__S(531, __c66, 3)),
+        }),
+      ).annotate({ identifier: "CreateDatabaseResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          expiration: S.optional(S.String.pipe(T.Query())),
+          authorization: S.optional(S.String.pipe(T.Query())),
+          permissions: S.optional(__S(545, __c68, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDatabaseTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseTokenResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databases: S.optional(__S(360, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseTokenRequestPermissionsReadAttach",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          read_attach: S.optional(__S(544, __c68, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseTokenRequestPermissions",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationSlug: S.String.pipe(T.Label()),
+          name: S.String,
+          location: S.String,
+          extensions: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/organizations/{organizationSlug}/groups", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateGroupRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(__S(368, __c46, 0)),
+        }),
+      ).annotate({ identifier: "CreateGroupResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

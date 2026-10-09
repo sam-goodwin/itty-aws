@@ -134,7 +134,7 @@ export const accountMetrics: API.OperationMethod<
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AccountMetricsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MetricSetResponse>,
+  output: __S(3, __c1, 1) as any as S.Schema<MetricSetResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -148,8 +148,8 @@ export const basinMetrics: API.OperationMethod<
   BasinMetricsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BasinMetricsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MetricSetResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<BasinMetricsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<MetricSetResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -163,8 +163,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<StreamMetricsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MetricSetResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<StreamMetricsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<MetricSetResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -182,15 +182,23 @@ function __c0(j: number): any {
           interval: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
       ).annotate({ identifier: "AccountMetricsRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          values: __S(1, __c0, 1),
+          values: __S(2, __c1, 0),
         }),
       ).annotate({ identifier: "MetricSetResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
@@ -200,7 +208,11 @@ function __c0(j: number): any {
           interval: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics/{basin}", code: 200 })),
       ).annotate({ identifier: "BasinMetricsRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
@@ -213,7 +225,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "StreamMetricsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

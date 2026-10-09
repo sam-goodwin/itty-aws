@@ -412,11 +412,11 @@ export const createOrgPrivateRegistry: API.OperationMethod<
   CreateOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateOrgPrivateRegistryRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateOrgPrivateRegistryRequest>,
   output: __S(
-    3,
+    2,
     __c0,
-    3,
+    2,
   ) as any as S.Schema<OrgPrivateRegistryConfigurationWithSelectedRepositories>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
@@ -431,8 +431,8 @@ export const deleteOrgPrivateRegistry: API.OperationMethod<
   DeleteOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteOrgPrivateRegistryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteOrgPrivateRegistryResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteOrgPrivateRegistryRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteOrgPrivateRegistryResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const getOrgPrivateRegistry: API.OperationMethod<
   GetOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetOrgPrivateRegistryRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<OrgPrivateRegistryConfiguration>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetOrgPrivateRegistryRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<OrgPrivateRegistryConfiguration>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetOrgPublicKeyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetOrgPublicKeyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetOrgPublicKeyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetOrgPublicKeyResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const listOrgPrivateRegistries: API.OperationMethod<
   ListOrgPrivateRegistriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListOrgPrivateRegistriesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListOrgPrivateRegistriesResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListOrgPrivateRegistriesRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListOrgPrivateRegistriesResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const updateOrgPrivateRegistry: API.OperationMethod<
   UpdateOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateOrgPrivateRegistryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateOrgPrivateRegistryResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<UpdateOrgPrivateRegistryRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<UpdateOrgPrivateRegistryResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -502,8 +502,6 @@ export const updateOrgPrivateRegistry: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -514,7 +512,7 @@ function __c0(j: number): any {
           encrypted_value: S.optional(S.String),
           key_id: S.optional(S.String),
           visibility: S.String,
-          selected_repository_ids: S.optional(__S(0, __c0, 0)),
+          selected_repository_ids: S.optional(__S(4, __c1, 0)),
           auth_type: S.optional(S.String),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
@@ -535,9 +533,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOrgPrivateRegistryRequest",
       });
-    case 2:
+    case 1:
       return S.Array(S.Number);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -547,7 +545,7 @@ function __c0(j: number): any {
           username: S.optional(S.String),
           replaces_base: S.optional(S.Boolean),
           visibility: S.String,
-          selected_repository_ids: S.optional(__S(2, __c0, 2)),
+          selected_repository_ids: S.optional(__S(1, __c0, 1)),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
           aws_region: S.optional(S.String),
@@ -569,7 +567,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "OrgPrivateRegistryConfigurationWithSelectedRepositories",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -584,11 +592,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteOrgPrivateRegistryRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteOrgPrivateRegistryResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -599,7 +615,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetOrgPrivateRegistryRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -632,7 +652,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -649,7 +669,11 @@ function __c1(j: number): any {
           key: S.String,
         }),
       ).annotate({ identifier: "GetOrgPublicKeyResponse" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -659,18 +683,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListOrgPrivateRegistriesRequest",
       });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(20, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          configurations: __S(11, __c1, 3),
+          configurations: __S(29, __c7, 1),
         }),
       ).annotate({
         identifier: "ListOrgPrivateRegistriesResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -682,7 +710,7 @@ function __c1(j: number): any {
           encrypted_value: S.optional(S.String),
           key_id: S.optional(S.String),
           visibility: S.optional(S.String),
-          selected_repository_ids: S.optional(__S(0, __c0, 0)),
+          selected_repository_ids: S.optional(__S(4, __c1, 0)),
           auth_type: S.optional(S.String),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
@@ -711,7 +739,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -621,8 +621,8 @@ export const deleteArchiveForAuthenticatedUser: API.OperationMethod<
   DeleteArchiveForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteArchiveForAuthenticatedUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteArchiveForAuthenticatedUserResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteArchiveForAuthenticatedUserRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteArchiveForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -636,8 +636,8 @@ export const deleteArchiveForOrg: API.OperationMethod<
   DeleteArchiveForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteArchiveForOrgRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteArchiveForOrgResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteArchiveForOrgRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteArchiveForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const downloadArchiveForOrg: API.OperationMethod<
   DownloadArchiveForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DownloadArchiveForOrgRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DownloadArchiveForOrgResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DownloadArchiveForOrgRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DownloadArchiveForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const getArchiveForAuthenticatedUser: API.OperationMethod<
   GetArchiveForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetArchiveForAuthenticatedUserResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<GetArchiveForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -681,8 +681,8 @@ export const getStatusForAuthenticatedUser: API.OperationMethod<
   GetStatusForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetStatusForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetStatusForAuthenticatedUserRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<Migration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -696,8 +696,8 @@ export const getStatusForOrg: API.OperationMethod<
   GetStatusForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetStatusForOrgRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetStatusForOrgRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<Migration>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -711,8 +711,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListForAuthenticatedUserRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListForAuthenticatedUserResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -726,8 +726,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListForOrgRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListForOrgResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListForOrgRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ListForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -741,8 +741,8 @@ export const listReposForAuthenticatedUser: API.OperationMethod<
   ListReposForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListReposForAuthenticatedUserRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListReposForAuthenticatedUserResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListReposForAuthenticatedUserRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<ListReposForAuthenticatedUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -756,8 +756,8 @@ export const listReposForOrg: API.OperationMethod<
   ListReposForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListReposForOrgRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListReposForOrgResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListReposForOrgRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListReposForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -771,8 +771,8 @@ export const startForAuthenticatedUser: API.OperationMethod<
   StartForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<StartForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
+  input: __S(64, __c4, 0) as any as S.Schema<StartForAuthenticatedUserRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<Migration>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -786,8 +786,8 @@ export const startForOrg: API.OperationMethod<
   StartForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<StartForOrgRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
+  input: __S(80, __c5, 0) as any as S.Schema<StartForOrgRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<Migration>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const unlockRepoForAuthenticatedUser: API.OperationMethod<
   UnlockRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const unlockRepoForOrg: API.OperationMethod<
   UnlockRepoForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UnlockRepoForOrgRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UnlockRepoForOrgResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<UnlockRepoForOrgRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UnlockRepoForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -829,304 +829,21 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migration_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/user/migrations/{migration_id}/archive", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteArchiveForAuthenticatedUserRequest",
-      });
+          org: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          exclude: S.optional(__S(288, __c18, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations", code: 200 })),
+      ).annotate({ identifier: "ListForOrgRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteArchiveForAuthenticatedUserResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          migration_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/migrations/{migration_id}/archive",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteArchiveForOrgRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteArchiveForOrgResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          migration_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/migrations/{migration_id}/archive",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadArchiveForOrgRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          migration_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/user/migrations/{migration_id}/archive", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetArchiveForAuthenticatedUserRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          migration_id: S.Number.pipe(T.Label()),
-          exclude: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/migrations/{migration_id}", code: 200 })),
-      ).annotate({
-        identifier: "GetStatusForAuthenticatedUserRequest",
+      return S.suspend(() => __S(320, __c20, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForOrgResponse",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableSimpleUser" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          url: S.NullOr(S.String),
-          spdx_id: S.NullOr(S.String),
-          node_id: S.String,
-          html_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableLicenseSimple" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          admin: S.Boolean,
-          pull: S.Boolean,
-          triage: S.optional(S.Boolean),
-          push: S.Boolean,
-          maintain: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RepositoryPermissions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lexical_search_ok: S.optional(S.Boolean),
-          lexical_commit_sha: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryCodeSearchIndexStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          license: S.NullOr(__S(9, __c1, 1)),
-          forks: S.Number,
-          permissions: S.optional(__S(10, __c1, 2)),
-          owner: __S(8, __c1, 0),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          git_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          ssh_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          clone_url: S.String,
-          mirror_url: S.NullOr(S.String),
-          hooks_url: S.String,
-          svn_url: S.String,
-          homepage: S.NullOr(S.String),
-          language: S.NullOr(S.String),
-          forks_count: S.Number,
-          stargazers_count: S.Number,
-          watchers_count: S.Number,
-          size: S.Number,
-          default_branch: S.String,
-          open_issues_count: S.Number,
-          is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(6, __c0, 6)),
-          has_issues: S.Boolean,
-          has_projects: S.Boolean,
-          has_wiki: S.Boolean,
-          has_pages: S.Boolean,
-          has_downloads: S.Boolean,
-          has_discussions: S.optional(S.Boolean),
-          has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
-          archived: S.Boolean,
-          disabled: S.Boolean,
-          visibility: S.optional(S.String),
-          pushed_at: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          allow_rebase_merge: S.optional(S.Boolean),
-          temp_clone_token: S.optional(S.String),
-          allow_squash_merge: S.optional(S.Boolean),
-          allow_auto_merge: S.optional(S.Boolean),
-          delete_branch_on_merge: S.optional(S.Boolean),
-          allow_update_branch: S.optional(S.Boolean),
-          use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
-          allow_merge_commit: S.optional(S.Boolean),
-          allow_forking: S.optional(S.Boolean),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          open_issues: S.Number,
-          watchers: S.Number,
-          master_branch: S.optional(S.String),
-          starred_at: S.optional(S.String),
-          anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          owner: S.NullOr(__S(8, __c1, 0)),
-          guid: S.String,
-          state: S.String,
-          lock_repositories: S.Boolean,
-          exclude_metadata: S.Boolean,
-          exclude_git_data: S.Boolean,
-          exclude_attachments: S.Boolean,
-          exclude_releases: S.Boolean,
-          exclude_owner_projects: S.Boolean,
-          org_metadata_only: S.Boolean,
-          repositories: __S(13, __c1, 5),
-          url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          node_id: S.String,
-          archive_url: S.optional(S.String),
-          exclude: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Migration" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          migration_id: S.Number.pipe(T.Label()),
-          exclude: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations/{migration_id}", code: 200 })),
-      ).annotate({ identifier: "GetStatusForOrgRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/migrations", code: 200 })),
-      ).annotate({
-        identifier: "ListForAuthenticatedUserRequest",
-      });
-    case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForAuthenticatedUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          exclude: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations", code: 200 })),
-      ).annotate({ identifier: "ListForOrgRequest" });
-    case 5:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForOrgResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           migration_id: S.Number.pipe(T.Label()),
@@ -1138,7 +855,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListReposForAuthenticatedUserRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() => __S(43, __c2, 11).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListReposForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -1150,11 +875,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1164,7 +885,7 @@ function __c3(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1174,7 +895,7 @@ function __c3(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1182,7 +903,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1190,7 +911,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -1200,45 +921,41 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
     case 6:
+      return S.Array(__S(37, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(29, __c3, 5)),
+          reviewers: S.optional(__S(38, __c2, 6)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(26, __c3, 2)),
-          code_security: S.optional(__S(26, __c3, 2)),
-          dependabot_security_updates: S.optional(__S(26, __c3, 2)),
-          secret_scanning: S.optional(__S(26, __c3, 2)),
-          secret_scanning_push_protection: S.optional(__S(26, __c3, 2)),
-          secret_scanning_non_provider_patterns: S.optional(__S(26, __c3, 2)),
-          secret_scanning_ai_detection: S.optional(__S(26, __c3, 2)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(27, __c3, 3)),
-          secret_scanning_delegated_bypass: S.optional(__S(26, __c3, 2)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(30, __c3, 6)),
+          advanced_security: S.optional(__S(35, __c2, 3)),
+          code_security: S.optional(__S(35, __c2, 3)),
+          dependabot_security_updates: S.optional(__S(35, __c2, 3)),
+          secret_scanning: S.optional(__S(35, __c2, 3)),
+          secret_scanning_push_protection: S.optional(__S(35, __c2, 3)),
+          secret_scanning_non_provider_patterns: S.optional(__S(35, __c2, 3)),
+          secret_scanning_ai_detection: S.optional(__S(35, __c2, 3)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(36, __c2, 4)),
+          secret_scanning_delegated_bypass: S.optional(__S(35, __c2, 3)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(39, __c2, 7)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(8, __c1, 0),
+          owner: __S(241, __c15, 1),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1294,7 +1011,7 @@ function __c4(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(6, __c0, 6)),
+          topics: S.optional(__S(240, __c15, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1309,30 +1026,30 @@ function __c4(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(23, __c2, 7)),
+          permissions: S.optional(__S(32, __c2, 0)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(24, __c3, 0)),
-          license: S.optional(S.NullOr(__S(25, __c3, 1))),
+          code_of_conduct: S.optional(__S(33, __c2, 1)),
+          license: S.optional(S.NullOr(__S(34, __c2, 2))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(31, __c3, 7))),
-          custom_properties: S.optional(__S(32, __c4, 0)),
+          security_and_analysis: S.optional(S.NullOr(__S(40, __c2, 8))),
+          custom_properties: S.optional(__S(41, __c2, 9)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListReposForAuthenticatedUserResponse",
-      });
-    case 4:
+    case 11:
+      return S.Array(__S(42, __c2, 10));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1347,11 +1064,15 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListReposForOrgRequest" });
-    case 5:
-      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(43, __c2, 11).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReposForOrgResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lock_repositories: S.optional(S.Boolean),
@@ -1361,17 +1082,21 @@ function __c4(j: number): any {
           exclude_releases: S.optional(S.Boolean),
           exclude_owner_projects: S.optional(S.Boolean),
           org_metadata_only: S.optional(S.Boolean),
-          exclude: S.optional(__S(15, __c1, 7)),
-          repositories: __S(6, __c0, 6),
+          exclude: S.optional(__S(288, __c18, 0)),
+          repositories: __S(240, __c15, 0),
         }).pipe(T.Http({ method: "POST", uri: "/user/migrations", code: 200 })),
       ).annotate({
         identifier: "StartForAuthenticatedUserRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          repositories: __S(6, __c0, 6),
+          repositories: __S(240, __c15, 0),
           lock_repositories: S.optional(S.Boolean),
           exclude_metadata: S.optional(S.Boolean),
           exclude_git_data: S.optional(S.Boolean),
@@ -1379,12 +1104,12 @@ function __c4(j: number): any {
           exclude_releases: S.optional(S.Boolean),
           exclude_owner_projects: S.optional(S.Boolean),
           org_metadata_only: S.optional(S.Boolean),
-          exclude: S.optional(__S(15, __c1, 7)),
+          exclude: S.optional(__S(288, __c18, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/migrations", code: 200 })),
       ).annotate({ identifier: "StartForOrgRequest" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1401,7 +1126,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UnlockRepoForAuthenticatedUserRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1417,7 +1146,337 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UnlockRepoForOrgRequest" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migration_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/user/migrations/{migration_id}/archive", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteArchiveForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteArchiveForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          migration_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/migrations/{migration_id}/archive",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteArchiveForOrgRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteArchiveForOrgResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          migration_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/migrations/{migration_id}/archive",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadArchiveForOrgRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migration_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/user/migrations/{migration_id}/archive", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetArchiveForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migration_id: S.Number.pipe(T.Label()),
+          exclude: S.optional(__S(240, __c15, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/migrations/{migration_id}", code: 200 })),
+      ).annotate({
+        identifier: "GetStatusForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableSimpleUser" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          url: S.NullOr(S.String),
+          spdx_id: S.NullOr(S.String),
+          node_id: S.String,
+          html_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableLicenseSimple" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          admin: S.Boolean,
+          pull: S.Boolean,
+          triage: S.optional(S.Boolean),
+          push: S.Boolean,
+          maintain: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RepositoryPermissions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lexical_search_ok: S.optional(S.Boolean),
+          lexical_commit_sha: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryCodeSearchIndexStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          license: S.NullOr(__S(256, __c16, 0)),
+          forks: S.Number,
+          permissions: S.optional(__S(257, __c16, 1)),
+          owner: __S(241, __c15, 1),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          git_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          ssh_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          clone_url: S.String,
+          mirror_url: S.NullOr(S.String),
+          hooks_url: S.String,
+          svn_url: S.String,
+          homepage: S.NullOr(S.String),
+          language: S.NullOr(S.String),
+          forks_count: S.Number,
+          stargazers_count: S.Number,
+          watchers_count: S.Number,
+          size: S.Number,
+          default_branch: S.String,
+          open_issues_count: S.Number,
+          is_template: S.optional(S.Boolean),
+          topics: S.optional(__S(240, __c15, 0)),
+          has_issues: S.Boolean,
+          has_projects: S.Boolean,
+          has_wiki: S.Boolean,
+          has_pages: S.Boolean,
+          has_downloads: S.Boolean,
+          has_discussions: S.optional(S.Boolean),
+          has_pull_requests: S.optional(S.Boolean),
+          pull_request_creation_policy: S.optional(S.String),
+          archived: S.Boolean,
+          disabled: S.Boolean,
+          visibility: S.optional(S.String),
+          pushed_at: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          allow_rebase_merge: S.optional(S.Boolean),
+          temp_clone_token: S.optional(S.String),
+          allow_squash_merge: S.optional(S.Boolean),
+          allow_auto_merge: S.optional(S.Boolean),
+          delete_branch_on_merge: S.optional(S.Boolean),
+          allow_update_branch: S.optional(S.Boolean),
+          use_squash_pr_title_as_default: S.optional(S.Boolean),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
+          allow_merge_commit: S.optional(S.Boolean),
+          allow_forking: S.optional(S.Boolean),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          open_issues: S.Number,
+          watchers: S.Number,
+          master_branch: S.optional(S.String),
+          starred_at: S.optional(S.String),
+          anonymous_access_enabled: S.optional(S.Boolean),
+          code_search_index_status: S.optional(__S(258, __c16, 2)),
+        }),
+      ).annotate({ identifier: "Repository" });
+    case 4:
+      return S.Array(__S(259, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          owner: S.NullOr(__S(241, __c15, 1)),
+          guid: S.String,
+          state: S.String,
+          lock_repositories: S.Boolean,
+          exclude_metadata: S.Boolean,
+          exclude_git_data: S.Boolean,
+          exclude_attachments: S.Boolean,
+          exclude_releases: S.Boolean,
+          exclude_owner_projects: S.Boolean,
+          org_metadata_only: S.Boolean,
+          repositories: __S(260, __c16, 4),
+          url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          node_id: S.String,
+          archive_url: S.optional(S.String),
+          exclude: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Migration" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          migration_id: S.Number.pipe(T.Label()),
+          exclude: S.optional(__S(288, __c18, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations/{migration_id}", code: 200 })),
+      ).annotate({ identifier: "GetStatusForOrgRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/migrations", code: 200 })),
+      ).annotate({
+        identifier: "ListForAuthenticatedUserRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(320, __c20, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(261, __c16, 5));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

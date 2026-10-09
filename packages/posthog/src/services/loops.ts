@@ -459,8 +459,8 @@ export const createLoop: API.OperationMethod<
   CreateLoopError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateLoopRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<LoopDTO>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateLoopRequest>,
+  output: __S(93, __c5, 13) as any as S.Schema<LoopDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -474,8 +474,8 @@ export const createLoopsPreview: API.OperationMethod<
   CreateLoopsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateLoopsPreviewRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<LoopPreviewDTO>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateLoopsPreviewRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<LoopPreviewDTO>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const createLoopsRun: API.OperationMethod<
   CreateLoopsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateLoopsRunRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<LoopFireResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateLoopsRunRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<LoopFireResult>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -500,8 +500,8 @@ export type GetLoopError = NotFound | PosthogOpError;
 /** Get a loop API for managing loops -- named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
 export const getLoop: API.OperationMethod<GetLoopRequest, LoopDTO, GetLoopError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(27, __c3, 3) as any as S.Schema<GetLoopRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<LoopDTO>,
+    input: __S(144, __c9, 0) as any as S.Schema<GetLoopRequest>,
+    output: __S(93, __c5, 13) as any as S.Schema<LoopDTO>,
     errors: [NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const getLoopsRun: API.OperationMethod<
   GetLoopsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetLoopsRunRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<LoopRunPage>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetLoopsRunRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<LoopRunPage>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const listLoops: API.OperationMethod<
   ListLoopsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListLoopsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PaginatedLoopDTOList>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListLoopsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<PaginatedLoopDTOList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const loopsDestroy: API.OperationMethod<
   LoopsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<LoopsDestroyRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<LoopsDestroyResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<LoopsDestroyRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<LoopsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -560,8 +560,8 @@ export const loopsTriggerCreate: API.OperationMethod<
   LoopsTriggerCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<LoopsTriggerCreateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<LoopFireResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<LoopsTriggerCreateRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<LoopFireResult>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -575,8 +575,8 @@ export const updateLoopsPartial: API.OperationMethod<
   UpdateLoopsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateLoopsPartialRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<LoopDTO>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateLoopsPartialRequest>,
+  output: __S(93, __c5, 13) as any as S.Schema<LoopDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -590,8 +590,8 @@ export const updateLoopsSkillBundle: API.OperationMethod<
   UpdateLoopsSkillBundleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateLoopsSkillBundleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<LoopDTO>,
+  input: __S(18, __c1, 2) as any as S.Schema<UpdateLoopsSkillBundleRequest>,
+  output: __S(93, __c5, 13) as any as S.Schema<LoopDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -603,12 +603,158 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          take_ownership: S.optional(S.Boolean),
+          visibility: S.optional(S.String),
+          instructions: S.optional(S.String),
+          runtime_adapter: S.optional(S.String),
+          model: S.optional(S.String),
+          reasoning_effort: S.optional(S.NullOr(S.String)),
+          repositories: S.optional(__S(81, __c5, 1)),
+          sandbox_environment: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.Boolean),
+          overlap_policy: S.optional(S.String),
+          behaviors: S.optional(__S(82, __c5, 2)),
+          connectors: S.optional(__S(48, __c3, 0)),
+          notifications: S.optional(__S(51, __c3, 3)),
+          context_target: S.optional(S.NullOr(__S(52, __c3, 4))),
+          triggers: S.optional(__S(54, __c3, 6)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/loops/{id}/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateLoopsPartialRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file_name: S.String,
+          skill_name: S.String,
+          skill_source: S.String,
+          content_sha256: S.String,
+          bundle_format: S.String,
+          content_base64: S.String,
+        }),
+      ).annotate({ identifier: "LoopSkillBundleUpload" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          bundles: __S(17, __c1, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/projects/{project_id}/loops/{id}/skill_bundles/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateLoopsSkillBundleRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.String),
+          take_ownership: S.optional(S.Boolean),
+          visibility: S.optional(S.String),
+          instructions: S.String,
+          runtime_adapter: S.String,
+          model: S.optional(S.String),
+          reasoning_effort: S.optional(S.NullOr(S.String)),
+          repositories: S.optional(__S(81, __c5, 1)),
+          sandbox_environment: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.Boolean),
+          overlap_policy: S.optional(S.String),
+          behaviors: S.optional(__S(82, __c5, 2)),
+          connectors: S.optional(__S(48, __c3, 0)),
+          notifications: S.optional(__S(51, __c3, 3)),
+          context_target: S.optional(S.NullOr(__S(52, __c3, 4))),
+          triggers: S.optional(__S(54, __c3, 6)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/loops/", code: 200 })),
+      ).annotate({ identifier: "CreateLoopRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mcp_installation_ids: S.optional(__S(83, __c5, 3)),
+          posthog_mcp_scopes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoopConnectors" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          events: S.optional(__S(49, __c3, 1)),
+          params: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "LoopNotificationChannel" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          push: S.optional(__S(50, __c3, 2)),
+          email: S.optional(__S(50, __c3, 2)),
+          slack: S.optional(__S(50, __c3, 2)),
+        }),
+      ).annotate({ identifier: "LoopNotifications" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          name: S.String,
+          outputs: S.optional(__S(84, __c5, 4)),
+        }),
+      ).annotate({ identifier: "LoopContextTargetWrite" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.String,
+          enabled: S.optional(S.Boolean),
+          config: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "LoopTriggerWrite" });
+    case 6:
+      return S.Array(__S(53, __c3, 5));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           github_integration_id: S.Number,
           full_name: S.String,
         }),
       ).annotate({ identifier: "LoopRepositoryEntry" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(80, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -623,138 +769,61 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mcp_installation_ids: S.optional(__S(3, __c0, 3)),
-          posthog_mcp_scopes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoopConnectors" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          events: S.optional(__S(5, __c0, 5)),
-          params: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "LoopNotificationChannel" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          push: S.optional(__S(7, __c0, 7)),
-          email: S.optional(__S(7, __c0, 7)),
-          slack: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "LoopNotifications" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           post_to_feed: S.optional(S.Boolean),
           update_context: S.optional(S.Boolean),
           canvas_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "LoopContextOutputsWrite" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          name: S.String,
-          outputs: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LoopContextTargetWrite" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.String,
-          enabled: S.optional(S.Boolean),
-          config: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "LoopTriggerWrite" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.String),
-          take_ownership: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
-          instructions: S.String,
-          runtime_adapter: S.String,
-          model: S.optional(S.String),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(1, __c0, 1)),
-          sandbox_environment: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.Boolean),
-          overlap_policy: S.optional(S.String),
-          behaviors: S.optional(__S(2, __c0, 2)),
-          connectors: S.optional(__S(4, __c0, 4)),
-          notifications: S.optional(__S(8, __c1, 0)),
-          context_target: S.optional(S.NullOr(__S(10, __c1, 2))),
-          triggers: S.optional(__S(12, __c1, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/loops/", code: 200 })),
-      ).annotate({ identifier: "CreateLoopRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mcp_installation_ids: S.optional(__S(3, __c0, 3)),
+          mcp_installation_ids: S.optional(__S(83, __c5, 3)),
           posthog_mcp_scopes: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoopConnectorsDTO" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(3, __c0, 3)),
-          params: S.optional(__S(6, __c0, 6)),
+          events: S.optional(__S(83, __c5, 3)),
+          params: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "LoopNotificationChannelDTO",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          push: __S(15, __c1, 7),
-          email: __S(15, __c1, 7),
-          slack: __S(15, __c1, 7),
+          push: __S(86, __c5, 6),
+          email: __S(86, __c5, 6),
+          slack: __S(86, __c5, 6),
         }),
       ).annotate({ identifier: "LoopNotificationsDTO" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          outputs: __S(9, __c1, 1),
+          outputs: __S(84, __c5, 4),
           channel_id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "LoopContextTargetDTO" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           loop_id: S.String,
           type: S.String,
           enabled: S.Boolean,
-          config: __S(6, __c0, 6),
+          config: __S(64, __c4, 0),
           schedule_sync_status: S.NullOr(S.String),
           last_fired_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "LoopTriggerDTO" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(89, __c5, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -765,9 +834,9 @@ function __c2(j: number): any {
           uploaded_at: S.String,
         }),
       ).annotate({ identifier: "LoopSkillBundleDTO" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(91, __c5, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -780,15 +849,15 @@ function __c2(j: number): any {
           runtime_adapter: S.String,
           model: S.String,
           reasoning_effort: S.NullOr(S.String),
-          repositories: __S(1, __c0, 1),
+          repositories: __S(81, __c5, 1),
           sandbox_environment_id: S.NullOr(S.String),
           enabled: S.Boolean,
           disabled_reason: S.NullOr(S.String),
           overlap_policy: S.String,
-          behaviors: __S(2, __c0, 2),
-          connectors: __S(14, __c1, 6),
-          notifications: __S(16, __c2, 0),
-          context_target: S.optional(S.NullOr(__S(17, __c2, 1))),
+          behaviors: __S(82, __c5, 2),
+          connectors: __S(85, __c5, 5),
+          notifications: __S(87, __c5, 7),
+          context_target: S.optional(S.NullOr(__S(88, __c5, 8))),
           internal: S.Boolean,
           origin_product: S.String,
           last_run_at: S.NullOr(S.String),
@@ -797,11 +866,15 @@ function __c2(j: number): any {
           consecutive_failures: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          triggers: __S(19, __c2, 3),
-          skill_bundles: __S(21, __c2, 5),
+          triggers: __S(90, __c5, 10),
+          skill_bundles: __S(92, __c5, 12),
         }),
       ).annotate({ identifier: "LoopDTO" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -818,11 +891,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateLoopsPreviewRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instructions: S.String,
@@ -830,7 +899,11 @@ function __c3(j: number): any {
           trigger_context: S.String,
         }),
       ).annotate({ identifier: "LoopPreviewDTO" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -839,7 +912,11 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/loops/{id}/run/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateLoopsRunRequest" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.Boolean,
@@ -848,7 +925,11 @@ function __c3(j: number): any {
           task_run_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LoopFireResult" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -857,7 +938,11 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/loops/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetLoopRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -869,7 +954,7 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/loops/{id}/runs/", code: 200 }),
         ),
       ).annotate({ identifier: "GetLoopsRunRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -879,23 +964,23 @@ function __c3(j: number): any {
           environment: S.String,
           branch: S.NullOr(S.String),
           error_message: S.NullOr(S.String),
-          output: S.NullOr(__S(6, __c0, 6)),
+          output: S.NullOr(__S(64, __c4, 0)),
           created_at: S.String,
           completed_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LoopRunDTO" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(30, __c3, 6),
+          results: __S(162, __c10, 2),
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LoopRunPage" });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -906,19 +991,23 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/loops/", code: 200 })),
       ).annotate({ identifier: "ListLoopsRequest" });
     case 1:
-      return S.Array(__S(22, __c2, 6));
+      return S.Array(__S(93, __c5, 13));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(33, __c4, 1),
+          results: __S(177, __c11, 1),
           max_loops_per_team: S.optional(S.Number),
           total_loop_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedLoopDTOList" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -927,16 +1016,20 @@ function __c4(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/loops/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "LoopsDestroyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "LoopsDestroyResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -947,70 +1040,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "LoopsTriggerCreateRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          take_ownership: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
-          instructions: S.optional(S.String),
-          runtime_adapter: S.optional(S.String),
-          model: S.optional(S.String),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(1, __c0, 1)),
-          sandbox_environment: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.Boolean),
-          overlap_policy: S.optional(S.String),
-          behaviors: S.optional(__S(2, __c0, 2)),
-          connectors: S.optional(__S(4, __c0, 4)),
-          notifications: S.optional(__S(8, __c1, 0)),
-          context_target: S.optional(S.NullOr(__S(10, __c1, 2))),
-          triggers: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/loops/{id}/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateLoopsPartialRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          file_name: S.String,
-          skill_name: S.String,
-          skill_source: S.String,
-          content_sha256: S.String,
-          bundle_format: S.String,
-          content_base64: S.String,
-        }),
-      ).annotate({ identifier: "LoopSkillBundleUpload" });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          bundles: __S(40, __c5, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/projects/{project_id}/loops/{id}/skill_bundles/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateLoopsSkillBundleRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

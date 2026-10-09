@@ -2378,11 +2378,11 @@ export const batchDeleteDocumentsProjectsLocationsProcessorsDataset: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
-    0,
+    1412,
+    __c44,
+    4,
   ) as any as S.Schema<BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2401,8 +2401,8 @@ export const batchProcessProjectsLocationsProcessors: API.OperationMethod<
   BatchProcessProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<BatchProcessProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1920, __c60, 0) as any as S.Schema<BatchProcessProjectsLocationsProcessorsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2422,11 +2422,11 @@ export const batchProcessProjectsLocationsProcessorsProcessorVersions: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    47,
-    __c5,
-    7,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<BatchProcessProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2445,8 +2445,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2368, __c74, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2465,8 +2465,8 @@ export const createProjectsLocationsProcessors: API.OperationMethod<
   CreateProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateProjectsLocationsProcessorsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GoogleCloudDocumentaiV1beta3Processor>,
+  input: __S(2400, __c75, 0) as any as S.Schema<CreateProjectsLocationsProcessorsRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3Processor>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2485,8 @@ export const createProjectsLocationsSchemas: API.OperationMethod<
   CreateProjectsLocationsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateProjectsLocationsSchemasRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateProjectsLocationsSchemasRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2505,8 +2505,8 @@ export const createProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
   CreateProjectsLocationsSchemasSchemaVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateProjectsLocationsSchemasSchemaVersionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsSchemasSchemaVersionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2525,8 +2525,8 @@ export const deleteProjectsLocationsProcessors: API.OperationMethod<
   DeleteProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteProjectsLocationsProcessorsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2546,11 +2546,11 @@ export const deleteProjectsLocationsProcessorsProcessorVersions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2569,8 +2569,8 @@ export const deleteProjectsLocationsSchemas: API.OperationMethod<
   DeleteProjectsLocationsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteProjectsLocationsSchemasRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectsLocationsSchemasRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2589,8 +2589,8 @@ export const deleteProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
   DeleteProjectsLocationsSchemasSchemaVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteProjectsLocationsSchemasSchemaVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsLocationsSchemasSchemaVersionsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2610,11 +2610,11 @@ export const deployProjectsLocationsProcessorsProcessorVersions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<DeployProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const disableProjectsLocationsProcessors: API.OperationMethod<
   DisableProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DisableProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(256, __c8, 0) as any as S.Schema<DisableProjectsLocationsProcessorsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2653,8 @@ export const enableProjectsLocationsProcessors: API.OperationMethod<
   EnableProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<EnableProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(288, __c9, 0) as any as S.Schema<EnableProjectsLocationsProcessorsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2674,11 +2674,11 @@ export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    321,
+    __c10,
+    1,
   ) as any as S.Schema<EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2692,10 +2692,10 @@ export const fetchProcessorTypesProjectsLocations: API.OperationMethod<
   FetchProcessorTypesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<FetchProcessorTypesProjectsLocationsRequest>,
+  input: __S(352, __c11, 0) as any as S.Schema<FetchProcessorTypesProjectsLocationsRequest>,
   output: __S(
-    73,
-    __c9,
+    353,
+    __c11,
     1,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -2717,14 +2717,14 @@ export const generateProjectsLocationsSchemasSchemaVersions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    191,
-    __c23,
-    7,
+    457,
+    __c14,
+    9,
   ) as any as S.Schema<GenerateProjectsLocationsSchemasSchemaVersionsRequest>,
   output: __S(
-    192,
-    __c24,
-    0,
+    458,
+    __c14,
+    10,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2743,11 +2743,11 @@ export const getDatasetSchemaProjectsLocationsProcessorsDataset: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<GetDatasetSchemaProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3DatasetSchema>,
+  output: __S(672, __c21, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3DatasetSchema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2762,11 +2762,11 @@ export const getDocumentProjectsLocationsProcessorsDataset: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<GetDocumentProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GoogleCloudDocumentaiV1beta3GetDocumentResponse>,
+  output: __S(705, __c22, 1) as any as S.Schema<GoogleCloudDocumentaiV1beta3GetDocumentResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2780,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleCloudLocationLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2795,8 +2795,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2810,8 @@ export const getProjectsLocationsProcessors: API.OperationMethod<
   GetProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetProjectsLocationsProcessorsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GoogleCloudDocumentaiV1beta3Processor>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetProjectsLocationsProcessorsRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3Processor>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2829,11 +2829,11 @@ export const getProjectsLocationsProcessorsProcessorVersions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    201,
-    __c25,
-    1,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<GetProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersion>,
+  output: __S(934, __c29, 6) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2851,11 +2851,11 @@ export const getProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3Evaluation>,
+  output: __S(999, __c31, 7) as any as S.Schema<GoogleCloudDocumentaiV1beta3Evaluation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2869,8 @@ export const getProjectsLocationsProcessorTypes: API.OperationMethod<
   GetProjectsLocationsProcessorTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetProjectsLocationsProcessorTypesRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessorType>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetProjectsLocationsProcessorTypesRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessorType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2884,8 @@ export const getProjectsLocationsSchemas: API.OperationMethod<
   GetProjectsLocationsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetProjectsLocationsSchemasRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetProjectsLocationsSchemasRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2899,8 @@ export const getProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
   GetProjectsLocationsSchemasSchemaVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetProjectsLocationsSchemasSchemaVersionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetProjectsLocationsSchemasSchemaVersionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2920,11 +2920,11 @@ export const importDocumentsProjectsLocationsProcessorsDataset: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    1124,
+    __c35,
+    4,
   ) as any as S.Schema<ImportDocumentsProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2944,11 +2944,11 @@ export const importProcessorVersionProjectsLocationsProcessorsProcessorVersions:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    229,
-    __c28,
-    5,
+    1154,
+    __c36,
+    2,
   ) as any as S.Schema<ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2968,11 +2968,11 @@ export const listDocumentsProjectsLocationsProcessorsDataset: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    231,
-    __c28,
-    7,
+    1185,
+    __c37,
+    1,
   ) as any as S.Schema<ListDocumentsProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListDocumentsResponse>,
+  output: __S(1188, __c37, 4) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListDocumentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2987,8 +2987,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3004,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3021,8 +3021,12 @@ export const listProjectsLocationsProcessors: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDocumentaiV1beta3ListProcessorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListProjectsLocationsProcessorsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListProcessorsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListProjectsLocationsProcessorsRequest>,
+  output: __S(
+    1282,
+    __c40,
+    2,
+  ) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListProcessorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3042,14 +3046,14 @@ export const listProjectsLocationsProcessorsProcessorVersions: API.PaginatedOper
   GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    244,
-    __c30,
-    4,
+    1312,
+    __c41,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProcessorsProcessorVersionsRequest>,
   output: __S(
-    246,
-    __c30,
-    6,
+    1314,
+    __c41,
+    2,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3070,14 +3074,14 @@ export const listProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Pa
   GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    247,
-    __c30,
-    7,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest>,
   output: __S(
-    249,
-    __c31,
-    1,
+    1346,
+    __c42,
+    2,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListEvaluationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3094,11 +3098,11 @@ export const listProjectsLocationsProcessorTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListProjectsLocationsProcessorTypesRequest>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListProjectsLocationsProcessorTypesRequest>,
   output: __S(
-    251,
-    __c31,
-    3,
+    1377,
+    __c43,
+    1,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3115,8 +3119,8 @@ export const listProjectsLocationsSchemas: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDocumentaiV1beta3ListSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListProjectsLocationsSchemasRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListSchemasResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListProjectsLocationsSchemasRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3132,11 +3136,11 @@ export const listProjectsLocationsSchemasSchemaVersions: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListProjectsLocationsSchemasSchemaVersionsRequest>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListProjectsLocationsSchemasSchemaVersionsRequest>,
   output: __S(
-    257,
-    __c32,
-    1,
+    1602,
+    __c50,
+    2,
   ) as any as S.Schema<GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3157,8 +3161,8 @@ export const patchProjectsLocationsSchemas: API.OperationMethod<
   PatchProjectsLocationsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<PatchProjectsLocationsSchemasRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
+  input: __S(1632, __c51, 0) as any as S.Schema<PatchProjectsLocationsSchemasRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3NextSchema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3177,8 +3181,8 @@ export const patchProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
   PatchProjectsLocationsSchemasSchemaVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<PatchProjectsLocationsSchemasSchemaVersionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
+  input: __S(1664, __c52, 0) as any as S.Schema<PatchProjectsLocationsSchemasSchemaVersionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3SchemaVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3197,8 +3201,8 @@ export const processProjectsLocationsProcessors: API.OperationMethod<
   ProcessProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ProcessProjectsLocationsProcessorsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ProcessProjectsLocationsProcessorsRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3218,11 +3222,11 @@ export const processProjectsLocationsProcessorsProcessorVersions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    264,
-    __c33,
+    1760,
+    __c55,
     0,
   ) as any as S.Schema<ProcessProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessResponse>,
+  output: __S(1730, __c54, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3ProcessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3242,11 +3246,11 @@ export const reviewDocumentProjectsLocationsProcessorsHumanReviewConfig: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    266,
-    __c33,
-    2,
+    1793,
+    __c56,
+    1,
   ) as any as S.Schema<ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3266,11 +3270,11 @@ export const setDefaultProcessorVersionProjectsLocationsProcessors: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    268,
-    __c33,
-    4,
+    1825,
+    __c57,
+    1,
   ) as any as S.Schema<SetDefaultProcessorVersionProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3290,11 +3294,11 @@ export const trainProjectsLocationsProcessorsProcessorVersions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    274,
-    __c34,
-    2,
+    1861,
+    __c58,
+    5,
   ) as any as S.Schema<TrainProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3314,11 +3318,11 @@ export const undeployProjectsLocationsProcessorsProcessorVersions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    275,
-    __c34,
-    3,
+    1888,
+    __c59,
+    0,
   ) as any as S.Schema<UndeployProjectsLocationsProcessorsProcessorVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3337,8 +3341,8 @@ export const updateDatasetProjectsLocationsProcessors: API.OperationMethod<
   UpdateDatasetProjectsLocationsProcessorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<UpdateDatasetProjectsLocationsProcessorsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2275, __c71, 3) as any as S.Schema<UpdateDatasetProjectsLocationsProcessorsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3358,11 +3362,11 @@ export const updateDatasetSchemaProjectsLocationsProcessorsDataset: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    280,
-    __c35,
+    2304,
+    __c72,
     0,
   ) as any as S.Schema<UpdateDatasetSchemaProjectsLocationsProcessorsDatasetRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<GoogleCloudDocumentaiV1beta3DatasetSchema>,
+  output: __S(672, __c21, 0) as any as S.Schema<GoogleCloudDocumentaiV1beta3DatasetSchema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3370,6 +3374,2014 @@ export const updateDatasetSchemaProjectsLocationsProcessorsDataset: API.Operatio
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+parent}/schemaVersions",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          schema: S.optional(__S(2026, __c63, 10)),
+          createTime: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3SchemaVersion",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsSchemasRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:deploy",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:disable",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:enable",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          evaluationDocuments: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          processorVersion: S.String.pipe(T.Label()),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+processorVersion}:evaluateProcessorVersion",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}:fetchProcessorTypes",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchProcessorTypesProjectsLocationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          processorTypes: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo",
+      });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          availableLocations: S.optional(__S(385, __c12, 1)),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          sampleDocumentUris: S.optional(__S(1984, __c62, 0)),
+          category: S.optional(S.String),
+          allowCreation: S.optional(S.Boolean),
+          launchStage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorType",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(386, __c12, 2));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adjustedSchema: S.optional(__S(32, __c1, 0)),
+          prompt: S.optional(S.String),
+          generatedSchema: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3SchemaGenerationIteration",
+      });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iterations: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3SchemaGenerationHistory",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          history: S.optional(__S(450, __c14, 2)),
+          prompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequestGenerateSchemaVersionParams",
+      });
+    case 4:
+      return S.Array(__S(586, __c18, 10));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          documents: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Documents",
+      });
+    case 6:
+      return S.Array(__S(608, __c19, 0));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          documents: S.optional(__S(454, __c14, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3RawDocuments",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          generateSchemaVersionParams: S.optional(__S(451, __c14, 3)),
+          inlineDocuments: S.optional(__S(453, __c14, 5)),
+          gcsDocuments: S.optional(__S(2081, __c65, 1)),
+          baseSchemaVersion: S.optional(S.String),
+          gcsPrefix: S.optional(__S(2112, __c66, 0)),
+          rawDocuments: S.optional(__S(455, __c14, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequest",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(456, __c14, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+parent}/schemaVersions:generate",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          schemaVersion: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          revision: S.optional(S.Number),
+          index: S.optional(S.Number),
+          id: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentProvenanceParent",
+      });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          type: S.optional(S.String),
+          revision: S.optional(S.Number),
+          parents: S.optional(__S(481, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentProvenance",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endIndex: S.optional(S.String),
+          startIndex: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment",
+      });
+    case 4:
+      return S.Array(__S(483, __c15, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          textSegments: S.optional(__S(484, __c15, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextAnchor",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDate" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeMoney" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          locality: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          organization: S.optional(S.String),
+          administrativeArea: S.optional(S.String),
+          sublocality: S.optional(S.String),
+          addressLines: S.optional(__S(1984, __c62, 0)),
+          sortingCode: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          revision: S.optional(S.Number),
+          recipients: S.optional(__S(1984, __c62, 0)),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypePostalAddress" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeTimeZone" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          utcOffset: S.optional(S.String),
+          day: S.optional(S.Number),
+          timeZone: S.optional(__S(489, __c15, 9)),
+          hours: S.optional(S.Number),
+          year: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDateTime" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          signatureValue: S.optional(S.Boolean),
+          dateValue: S.optional(__S(486, __c15, 6)),
+          moneyValue: S.optional(__S(487, __c15, 7)),
+          floatValue: S.optional(S.Number),
+          addressValue: S.optional(__S(488, __c15, 8)),
+          integerValue: S.optional(S.Number),
+          text: S.optional(S.String),
+          booleanValue: S.optional(S.Boolean),
+          datetimeValue: S.optional(__S(490, __c15, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          y: S.optional(S.Number),
+          x: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3NormalizedVertex",
+      });
+    case 13:
+      return S.Array(__S(492, __c15, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Vertex",
+      });
+    case 15:
+      return S.Array(__S(494, __c15, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          normalizedVertices: S.optional(__S(493, __c15, 13)),
+          vertices: S.optional(__S(495, __c15, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BoundingPoly",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          layoutType: S.optional(S.String),
+          boundingPoly: S.optional(__S(496, __c15, 16)),
+          page: S.optional(S.String),
+          layoutId: S.optional(S.String),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef",
+      });
+    case 18:
+      return S.Array(__S(497, __c15, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          pageRefs: S.optional(__S(498, __c15, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageAnchor",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          properties: S.optional(S.suspend(() => __S(501, __c15, 21))),
+          provenance: S.optional(__S(482, __c15, 2)),
+          mentionText: S.optional(S.String),
+          redacted: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          textAnchor: S.optional(__S(485, __c15, 5)),
+          normalizedValue: S.optional(__S(491, __c15, 11)),
+          type: S.optional(S.String),
+          pageAnchor: S.optional(__S(499, __c15, 19)),
+          mentionId: S.optional(S.String),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntity",
+      });
+    case 21:
+      return S.Array(__S(500, __c15, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          rule: S.optional(S.String),
+          validationDetails: S.optional(S.String),
+          ruleName: S.optional(S.String),
+          ruleDescription: S.optional(S.String),
+          validationResultType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult",
+      });
+    case 23:
+      return S.Array(__S(502, __c15, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          validationResults: S.optional(__S(503, __c15, 23)),
+          passAllRules: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          entities: S.optional(__S(501, __c15, 21)),
+          revisionId: S.optional(S.String),
+          entityValidationOutput: S.optional(__S(504, __c15, 24)),
+          provenance: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision",
+      });
+    case 26:
+      return S.Array(__S(505, __c15, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          green: S.optional(S.Number),
+          red: S.optional(S.Number),
+          blue: S.optional(S.Number),
+          alpha: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeColor" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentStyleFontSize",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          textAnchor: S.optional(__S(485, __c15, 5)),
+          textStyle: S.optional(S.String),
+          backgroundColor: S.optional(__S(507, __c15, 27)),
+          fontSize: S.optional(__S(508, __c15, 28)),
+          fontFamily: S.optional(S.String),
+          color: S.optional(__S(507, __c15, 27)),
+          fontWeight: S.optional(S.String),
+          textDecoration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentStyle",
+      });
+    case 30:
+      return S.Array(__S(509, __c15, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentAnnotations",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataUri: S.optional(S.String),
+          blobAssetId: S.optional(S.String),
+          annotations: S.optional(__S(511, __c15, 31)),
+          imageText: S.optional(S.String),
+          gcsUri: S.optional(S.String),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          blocks: S.optional(S.suspend(() => __S(524, __c16, 12))),
+          type: S.optional(S.String),
+          annotations: S.optional(__S(511, __c15, 31)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pageStart: S.optional(S.Number),
+          pageEnd: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          blocks: S.optional(S.suspend(() => __S(524, __c16, 12))),
+          colSpan: S.optional(S.Number),
+          rowSpan: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell",
+      });
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cells: S.optional(__S(516, __c16, 4)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow",
+      });
+    case 6:
+      return S.Array(__S(517, __c16, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          caption: S.optional(S.String),
+          annotations: S.optional(__S(511, __c15, 31)),
+          bodyRows: S.optional(__S(518, __c16, 6)),
+          headerRows: S.optional(__S(518, __c16, 6)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          blocks: S.optional(S.suspend(() => __S(524, __c16, 12))),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry",
+      });
+    case 9:
+      return S.Array(__S(520, __c16, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          listEntries: S.optional(__S(521, __c16, 9)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          blockId: S.optional(S.String),
+          imageBlock: S.optional(__S(512, __c16, 0)),
+          textBlock: S.optional(__S(513, __c16, 1)),
+          boundingBox: S.optional(__S(496, __c15, 16)),
+          pageSpan: S.optional(__S(514, __c16, 2)),
+          tableBlock: S.optional(__S(519, __c16, 7)),
+          listBlock: S.optional(__S(522, __c16, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock",
+      });
+    case 12:
+      return S.Array(__S(523, __c16, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          blocks: S.optional(__S(524, __c16, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentDocumentLayout",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentBlobAsset",
+      });
+    case 15:
+      return S.Array(__S(526, __c16, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          stateMessage: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(__S(2176, __c68, 0)),
+          createTime: S.optional(S.String),
+          agent: S.optional(S.String),
+          parentIds: S.optional(__S(1984, __c62, 0)),
+          humanReview: S.optional(__S(528, __c16, 16)),
+          id: S.optional(S.String),
+          processor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentRevision",
+      });
+    case 18:
+      return S.Array(__S(529, __c16, 17));
+    case 19:
+      return S.Array(__S(482, __c15, 2));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          provenance: S.optional(__S(531, __c16, 19)),
+          changedText: S.optional(S.String),
+          textAnchor: S.optional(__S(485, __c15, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextChange",
+      });
+    case 21:
+      return S.Array(__S(532, __c16, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          textAnchor: S.optional(__S(485, __c15, 5)),
+          confidence: S.optional(S.Number),
+          boundingPoly: S.optional(__S(496, __c15, 16)),
+          orientation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageLayout",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage",
+      });
+    case 24:
+      return S.Array(__S(535, __c16, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          layout: S.optional(__S(534, __c16, 22)),
+          type: S.optional(S.String),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageVisualElement",
+      });
+    case 26:
+      return S.Array(__S(537, __c16, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.Number),
+          unit: S.optional(S.String),
+          height: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDimension",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          rowSpan: S.optional(S.Number),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          colSpan: S.optional(S.Number),
+          layout: S.optional(__S(534, __c16, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell",
+      });
+    case 29:
+      return S.Array(__S(540, __c16, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          cells: S.optional(__S(541, __c16, 29)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow",
+      });
+    case 31:
+      return S.Array(__S(542, __c16, 30));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          layout: S.optional(__S(534, __c16, 22)),
+          bodyRows: S.optional(__S(543, __c16, 31)),
+          headerRows: S.optional(__S(543, __c16, 31)),
+          provenance: S.optional(__S(482, __c15, 2)),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTable",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscript: S.optional(S.Boolean),
+          backgroundColor: S.optional(__S(507, __c15, 27)),
+          strikeout: S.optional(S.Boolean),
+          italic: S.optional(S.Boolean),
+          pixelFontSize: S.optional(S.Number),
+          textColor: S.optional(__S(507, __c15, 27)),
+          letterSpacing: S.optional(S.Number),
+          bold: S.optional(S.Boolean),
+          fontWeight: S.optional(S.Number),
+          fontSize: S.optional(S.Number),
+          superscript: S.optional(S.Boolean),
+          fontType: S.optional(S.String),
+          underlined: S.optional(S.Boolean),
+          smallcaps: S.optional(S.Boolean),
+          handwritten: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          detectedBreak: S.optional(__S(546, __c17, 2)),
+          styleInfo: S.optional(__S(547, __c17, 3)),
+          layout: S.optional(__S(534, __c16, 22)),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          provenance: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageToken",
+      });
+    case 5:
+      return S.Array(__S(548, __c17, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          provenance: S.optional(__S(482, __c15, 2)),
+          layout: S.optional(__S(534, __c16, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageParagraph",
+      });
+    case 7:
+      return S.Array(__S(550, __c17, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          layout: S.optional(__S(534, __c16, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageSymbol",
+      });
+    case 9:
+      return S.Array(__S(552, __c17, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect",
+      });
+    case 11:
+      return S.Array(__S(554, __c17, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          detectedDefects: S.optional(__S(555, __c17, 11)),
+          qualityScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImage",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          layout: S.optional(__S(534, __c16, 22)),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          provenance: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageLine",
+      });
+    case 15:
+      return S.Array(__S(558, __c17, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          valueDetectedLanguages: S.optional(__S(536, __c16, 24)),
+          fieldValue: S.optional(__S(534, __c16, 22)),
+          provenance: S.optional(__S(482, __c15, 2)),
+          valueType: S.optional(S.String),
+          correctedValueText: S.optional(S.String),
+          correctedKeyText: S.optional(S.String),
+          fieldName: S.optional(__S(534, __c16, 22)),
+          nameDetectedLanguages: S.optional(__S(536, __c16, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageFormField",
+      });
+    case 17:
+      return S.Array(__S(560, __c17, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          layout: S.optional(__S(534, __c16, 22)),
+          provenance: S.optional(__S(482, __c15, 2)),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageBlock",
+      });
+    case 19:
+      return S.Array(__S(562, __c17, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          rawValue: S.optional(S.String),
+          format: S.optional(S.String),
+          valueFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Barcode",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          layout: S.optional(__S(534, __c16, 22)),
+          barcode: S.optional(__S(564, __c17, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDetectedBarcode",
+      });
+    case 22:
+      return S.Array(__S(565, __c17, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.Number),
+          rows: S.optional(S.Number),
+          cols: S.optional(S.Number),
+          data: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageMatrix",
+      });
+    case 24:
+      return S.Array(__S(567, __c17, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          visualElements: S.optional(__S(538, __c16, 26)),
+          dimension: S.optional(__S(539, __c16, 27)),
+          tables: S.optional(__S(545, __c17, 1)),
+          layout: S.optional(__S(534, __c16, 22)),
+          tokens: S.optional(__S(549, __c17, 5)),
+          paragraphs: S.optional(__S(551, __c17, 7)),
+          symbols: S.optional(__S(553, __c17, 9)),
+          imageQualityScores: S.optional(__S(556, __c17, 12)),
+          detectedLanguages: S.optional(__S(536, __c16, 24)),
+          image: S.optional(__S(557, __c17, 13)),
+          lines: S.optional(__S(559, __c17, 15)),
+          formFields: S.optional(__S(561, __c17, 17)),
+          blocks: S.optional(__S(563, __c17, 19)),
+          detectedBarcodes: S.optional(__S(566, __c17, 22)),
+          pageNumber: S.optional(S.Number),
+          transforms: S.optional(__S(568, __c17, 24)),
+          provenance: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentPage",
+      });
+    case 26:
+      return S.Array(__S(569, __c17, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          subjectId: S.optional(S.String),
+          relation: S.optional(S.String),
+          objectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityRelation",
+      });
+    case 28:
+      return S.Array(__S(571, __c17, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          pageStart: S.optional(S.Number),
+          pageEnd: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          pageSpan: S.optional(__S(573, __c17, 29)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter",
+      });
+    case 31:
+      return S.Array(__S(574, __c17, 30));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSpan: S.optional(__S(573, __c17, 29)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader",
+      });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(511, __c15, 31)),
+          blobAssetId: S.optional(S.String),
+          dataUri: S.optional(S.String),
+          gcsUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkImageChunkField",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(511, __c15, 31)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkTableChunkField",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          imageChunkField: S.optional(__S(578, __c18, 2)),
+          tableChunkField: S.optional(__S(579, __c18, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField",
+      });
+    case 5:
+      return S.Array(__S(580, __c18, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          pageFooters: S.optional(__S(575, __c17, 31)),
+          pageHeaders: S.optional(__S(577, __c18, 1)),
+          pageSpan: S.optional(__S(573, __c17, 29)),
+          sourceBlockIds: S.optional(__S(1984, __c62, 0)),
+          chunkFields: S.optional(__S(581, __c18, 5)),
+          chunkId: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk",
+      });
+    case 7:
+      return S.Array(__S(582, __c18, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          chunks: S.optional(__S(583, __c18, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocument",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          shardIndex: S.optional(S.String),
+          textOffset: S.optional(S.String),
+          shardCount: S.optional(S.String),
+          pageOffset: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentShardInfo",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          entities: S.optional(__S(501, __c15, 21)),
+          entitiesRevisions: S.optional(__S(506, __c15, 26)),
+          textStyles: S.optional(__S(510, __c15, 30)),
+          uri: S.optional(S.String),
+          documentLayout: S.optional(__S(525, __c16, 13)),
+          blobAssets: S.optional(__S(527, __c16, 15)),
+          text: S.optional(S.String),
+          content: S.optional(S.String),
+          revisions: S.optional(__S(530, __c16, 18)),
+          textChanges: S.optional(__S(533, __c16, 21)),
+          pages: S.optional(__S(570, __c17, 26)),
+          docid: S.optional(S.String),
+          entityRelations: S.optional(__S(572, __c17, 28)),
+          chunkedDocument: S.optional(__S(584, __c18, 8)),
+          shardInfo: S.optional(__S(585, __c18, 9)),
+          entityValidationOutput: S.optional(__S(504, __c15, 24)),
+          mimeType: S.optional(S.String),
+          error: S.optional(__S(1505, __c47, 1)),
+          entitiesRevisionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Document",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3RawDocument",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visibleFieldsOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatasetSchemaProjectsLocationsProcessorsDatasetRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          satisfiesPzi: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          documentSchema: S.optional(__S(2026, __c63, 10)),
+          satisfiesPzs: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DatasetSchema",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "documentId.gcsManagedDocId.cwDocId": S.optional(S.String.pipe(T.Query())),
+          dataset: S.String.pipe(T.Label()),
+          "documentId.revisionRef.latestProcessorVersion": S.optional(S.String.pipe(T.Query())),
+          "pageRange.start": S.optional(S.Number.pipe(T.Query())),
+          readMask: S.optional(S.String.pipe(T.Query())),
+          "documentId.gcsManagedDocId.gcsUri": S.optional(S.String.pipe(T.Query())),
+          "documentId.revisionRef.revisionId": S.optional(S.String.pipe(T.Query())),
+          "documentId.revisionRef.revisionCase": S.optional(S.String.pipe(T.Query())),
+          "pageRange.end": S.optional(S.Number.pipe(T.Query())),
+          "documentId.unmanagedDocId.docId": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+dataset}:getDocument",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDocumentProjectsLocationsProcessorsDatasetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(__S(586, __c18, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3GetDocumentResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          locationId: S.optional(S.String),
+          metadata: S.optional(__S(1472, __c46, 0)),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationLocation",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          f1Score: S.optional(S.Number),
+          groundTruthDocumentCount: S.optional(S.Number),
+          predictedOccurrencesCount: S.optional(S.Number),
+          falseNegativesCount: S.optional(S.Number),
+          totalDocumentsCount: S.optional(S.Number),
+          falsePositivesCount: S.optional(S.Number),
+          recall: S.optional(S.Number),
+          precision: S.optional(S.Number),
+          groundTruthOccurrencesCount: S.optional(S.Number),
+          truePositivesCount: S.optional(S.Number),
+          predictedDocumentCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationMetrics",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deprecationTime: S.optional(S.String),
+          replacementProcessorVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          finetuningAllowed: S.optional(S.Boolean),
+          minTrainLabeledDocuments: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baseProcessorVersionId: S.optional(S.String),
+          customModelType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          foundationGenAiModelInfo: S.optional(__S(929, __c29, 1)),
+          customGenAiModelInfo: S.optional(__S(930, __c29, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groundingType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3GroundingSettings",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          aggregateMetrics: S.optional(__S(896, __c28, 0)),
+          aggregateMetricsExact: S.optional(__S(896, __c28, 0)),
+          operation: S.optional(S.String),
+          evaluation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationReference",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          documentSchema: S.optional(__S(2026, __c63, 10)),
+          deprecationInfo: S.optional(__S(928, __c29, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+          kmsKeyName: S.optional(S.String),
+          modelType: S.optional(S.String),
+          createTime: S.optional(S.String),
+          kmsKeyVersionName: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          genAiModelInfo: S.optional(__S(931, __c29, 3)),
+          groundingSettings: S.optional(__S(932, __c29, 4)),
+          satisfiesPzi: S.optional(S.Boolean),
+          latestEvaluation: S.optional(__S(933, __c29, 5)),
+          googleManaged: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersion",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(896, __c28, 0)),
+          confidenceLevel: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics",
+      });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auprc: S.optional(S.Number),
+          confidenceLevelMetricsExact: S.optional(__S(993, __c31, 1)),
+          estimatedCalibrationError: S.optional(S.Number),
+          estimatedCalibrationErrorExact: S.optional(S.Number),
+          auprcExact: S.optional(S.Number),
+          confidenceLevelMetrics: S.optional(__S(993, __c31, 1)),
+          metricsType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics",
+      });
+    case 3:
+      return S.Record(S.String, __S(994, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          failedDocumentsCount: S.optional(S.Number),
+          inputDocumentsCount: S.optional(S.Number),
+          invalidDocumentsCount: S.optional(S.Number),
+          evaluatedDocumentsCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationCounters",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          documentCounters: S.optional(__S(996, __c31, 4)),
+          allEntitiesMetrics: S.optional(__S(994, __c31, 2)),
+          entityMetrics: S.optional(__S(995, __c31, 3)),
+          revisionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision",
+      });
+    case 6:
+      return S.Array(__S(997, __c31, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          entityMetrics: S.optional(__S(995, __c31, 3)),
+          kmsKeyName: S.optional(S.String),
+          revisions: S.optional(__S(998, __c31, 6)),
+          allEntitiesMetrics: S.optional(__S(994, __c31, 2)),
+          createTime: S.optional(S.String),
+          documentCounters: S.optional(__S(996, __c31, 4)),
+          kmsKeyVersionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Evaluation",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsProcessorTypesRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsSchemasRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trainingSplitRatio: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          batchInputConfig: S.optional(__S(2144, __c67, 0)),
+          datasetSplit: S.optional(S.String),
+          documentType: S.optional(S.String),
+          autoSplitConfig: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig",
+      });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          batchDocumentsImportConfigs: S.optional(__S(1122, __c35, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String.pipe(T.Label()),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+dataset}:importDocuments",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportDocumentsProjectsLocationsProcessorsDatasetRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceEndpoint: S.optional(S.String),
+          processorVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequestExternalProcessorVersionSource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          processorVersionSource: S.optional(S.String),
+          externalProcessorVersionSource: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1153, __c36, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+parent}/processorVersions:importProcessorVersion",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+          filter: S.optional(S.String),
+          returnTotalSize: S.optional(S.Boolean),
+          skip: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListDocumentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String.pipe(T.Label()),
+          body: S.optional(__S(1184, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+dataset}:listDocuments",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDocumentsProjectsLocationsProcessorsDatasetRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labelingState: S.optional(S.String),
+          pageCount: S.optional(S.Number),
+          documentId: S.optional(__S(1443, __c45, 3)),
+          datasetType: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DocumentMetadata",
+      });
+    case 3:
+      return S.Array(__S(1186, __c37, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          totalSize: S.optional(S.Number),
+          documentMetadata: S.optional(__S(1187, __c37, 3)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListDocumentsResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          extraLocationTypes: S.optional(__S(1984, __c62, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}/locations",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          locations: S.optional(__S(1217, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationListLocationsResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(1249, __c39, 1)),
+          unreachable: S.optional(__S(1984, __c62, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningListOperationsResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/processors",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsProcessorsRequest",
+      });
+    case 1:
+      return S.Array(__S(2434, __c76, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          processors: S.optional(__S(1281, __c40, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/processorVersions",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(934, __c29, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          processorVersions: S.optional(__S(1313, __c41, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/evaluations",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest",
+      });
+    case 1:
+      return S.Array(__S(999, __c31, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          evaluations: S.optional(__S(1345, __c42, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListEvaluationsResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/processorTypes",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsProcessorTypesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          processorTypes: S.optional(__S(416, __c13, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1443, __c45, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          documentIds: S.optional(__S(1408, __c44, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          individualDocumentIds: S.optional(__S(1409, __c44, 1)),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchDatasetDocuments",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          datasetDocuments: S.optional(__S(1410, __c44, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String.pipe(T.Label()),
+          body: S.optional(__S(1411, __c44, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+dataset}:batchDeleteDocuments",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest",
+      });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3401,84 +5413,400 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unmanagedDocId: S.optional(__S(0, __c0, 0)),
-          gcsManagedDocId: S.optional(__S(1, __c0, 1)),
-          revisionRef: S.optional(__S(2, __c0, 2)),
+          unmanagedDocId: S.optional(__S(1440, __c45, 0)),
+          gcsManagedDocId: S.optional(__S(1441, __c45, 1)),
+          revisionRef: S.optional(__S(1442, __c45, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentId",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documentIds: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          individualDocumentIds: S.optional(__S(5, __c0, 5)),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchDatasetDocuments",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datasetDocuments: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1472, __c46, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1504, __c47, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+dataset}:batchDeleteDocuments",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(10, __c1, 2)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(9, __c1, 1)),
+          response: S.optional(__S(1472, __c46, 0)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(1472, __c46, 0)),
           name: S.optional(S.String),
-          error: S.optional(__S(11, __c1, 3)),
+          error: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/schemas",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsSchemasRequest",
+      });
+    case 1:
+      return S.Array(__S(2496, __c78, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemas: S.optional(__S(1569, __c49, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListSchemasResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta3/{+parent}/schemaVersions",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemaVersions: S.optional(__S(1601, __c50, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2496, __c78, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsSchemasRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsSchemasSchemaVersionsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:process",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProcessProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(__S(586, __c18, 10)),
+          fieldMask: S.optional(S.String),
+          rawDocument: S.optional(__S(608, __c19, 0)),
+          imagelessMode: S.optional(S.Boolean),
+          gcsDocument: S.optional(__S(2048, __c64, 0)),
+          processOptions: S.optional(__S(2214, __c69, 6)),
+          skipHumanReview: S.optional(S.Boolean),
+          labels: S.optional(__S(2240, __c70, 0)),
+          inlineDocument: S.optional(__S(586, __c18, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stateMessage: S.optional(S.String),
+          state: S.optional(S.String),
+          humanReviewOperation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          humanReviewOperation: S.optional(S.String),
+          humanReviewStatus: S.optional(__S(1729, __c54, 1)),
+          document: S.optional(__S(586, __c18, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:process",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProcessProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableSchemaValidation: S.optional(S.Boolean),
+          priority: S.optional(S.String),
+          inlineDocument: S.optional(__S(586, __c18, 10)),
+          document: S.optional(__S(586, __c18, 10)),
+          documentSchema: S.optional(__S(2026, __c63, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ReviewDocumentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          humanReviewConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(1792, __c56, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+humanReviewConfig}:reviewDocument",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultProcessorVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          processor: S.String.pipe(T.Label()),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+processor}:setDefaultProcessorVersion",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetDefaultProcessorVersionProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          learningRateMultiplier: S.optional(S.Number),
+          trainSteps: S.optional(S.Number),
+          previousFineTunedProcessorVersionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groundingSettings: S.optional(__S(932, __c29, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          trainingMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          trainingDocuments: S.optional(__S(2144, __c67, 0)),
+          testDocuments: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          foundationModelTuningOptions: S.optional(__S(1856, __c58, 0)),
+          processorVersionOverrides: S.optional(__S(1857, __c58, 1)),
+          documentSchema: S.optional(__S(2026, __c63, 10)),
+          customDocumentExtractionOptions: S.optional(__S(1858, __c58, 2)),
+          baseProcessorVersion: S.optional(S.String),
+          processorVersion: S.optional(__S(934, __c29, 6)),
+          inputData: S.optional(__S(1859, __c58, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1860, __c58, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+parent}/processorVersions:train",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TrainProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:undeploy",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeployProjectsLocationsProcessorsProcessorVersionsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1958, __c61, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/{+name}:batchProcess",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchProcessProjectsLocationsProcessorsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pagesOverlap: S.optional(S.Number),
@@ -3487,27 +5815,66 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfigShardingConfig",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fieldMask: S.optional(S.String),
           gcsUri: S.optional(S.String),
-          shardingConfig: S.optional(__S(13, __c1, 5)),
+          shardingConfig: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          gcsOutputConfig: S.optional(__S(14, __c1, 6)),
+          gcsOutputConfig: S.optional(__S(1953, __c61, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentOutputConfig",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          gcsSource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig",
+      });
+    case 4:
+      return S.Array(__S(1955, __c61, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          gcsDestination: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          documentOutputConfig: S.optional(__S(1954, __c61, 2)),
+          processOptions: S.optional(__S(2214, __c69, 6)),
+          labels: S.optional(__S(2240, __c70, 0)),
+          inputConfigs: S.optional(__S(1956, __c61, 4)),
+          inputDocuments: S.optional(__S(2144, __c67, 0)),
+          skipHumanReview: S.optional(S.Boolean),
+          outputConfig: S.optional(__S(1957, __c61, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequest",
+      });
   }
 }
-function __c2(j: number): any {
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3521,16 +5888,14 @@ function __c2(j: number): any {
         identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(17, __c2, 1)),
+          values: S.optional(__S(1984, __c62, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           inactive: S.optional(S.Boolean),
@@ -3538,7 +5903,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3EntityTypeMetadata",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3547,29 +5912,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3SummaryOptions",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          summaryOptions: S.optional(__S(20, __c2, 4)),
+          summaryOptions: S.optional(__S(2019, __c63, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3FieldExtractionMetadata",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldExtractionMetadata: S.optional(__S(21, __c2, 5)),
+          fieldExtractionMetadata: S.optional(__S(2020, __c63, 4)),
           inactive: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3PropertyMetadata",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           valueType: S.optional(S.String),
           name: S.optional(S.String),
-          propertyMetadata: S.optional(__S(22, __c2, 6)),
+          propertyMetadata: S.optional(__S(2021, __c63, 5)),
           method: S.optional(S.String),
           occurrenceType: S.optional(S.String),
           description: S.optional(S.String),
@@ -3578,150 +5943,39 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(2022, __c63, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          enumValues: S.optional(__S(18, __c2, 2)),
-          baseTypes: S.optional(__S(17, __c2, 1)),
+          enumValues: S.optional(__S(2017, __c63, 1)),
+          baseTypes: S.optional(__S(1984, __c62, 0)),
           displayName: S.optional(S.String),
-          entityTypeMetadata: S.optional(__S(19, __c2, 3)),
+          entityTypeMetadata: S.optional(__S(2018, __c63, 2)),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(2023, __c63, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(2024, __c63, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           documentPrompt: S.optional(S.String),
-          metadata: S.optional(__S(16, __c2, 0)),
-          entityTypes: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(2016, __c63, 0)),
+          entityTypes: S.optional(__S(2025, __c63, 9)),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3DocumentSchema",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          computeStyleInfo: S.optional(S.Boolean),
-          enableMathOcr: S.optional(S.Boolean),
-          enableSelectionMarkDetection: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          languageHints: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3OcrConfigHints",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          premiumFeatures: S.optional(__S(28, __c3, 4)),
-          enableNativePdfParsing: S.optional(S.Boolean),
-          hints: S.optional(__S(29, __c3, 5)),
-          advancedOcrOptions: S.optional(__S(17, __c2, 1)),
-          computeStyleInfo: S.optional(S.Boolean),
-          enableSymbol: S.optional(S.Boolean),
-          enableImageQualityScores: S.optional(S.Boolean),
-          disableCharacterBoxesDetection: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3OcrConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chunkSize: S.optional(S.Number),
-          includeAncestorHeadings: S.optional(S.Boolean),
-          breakpointPercentileThreshold: S.optional(S.Number),
-          semanticChunkingGroupSize: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          returnImages: S.optional(S.Boolean),
-          returnBoundingBoxes: S.optional(S.Boolean),
-          chunkingConfig: S.optional(__S(31, __c3, 7)),
-          enableImageAnnotation: S.optional(S.Boolean),
-          enableTableSplit: S.optional(S.Boolean),
-          enableImageExtraction: S.optional(S.Boolean),
-          enableLlmLayoutParsing: S.optional(S.Boolean),
-          enableTableAnnotation: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig",
-      });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pages: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fromEnd: S.optional(S.Number),
-          schemaOverride: S.optional(__S(27, __c3, 3)),
-          ocrConfig: S.optional(__S(30, __c3, 6)),
-          layoutConfig: S.optional(__S(32, __c4, 0)),
-          individualPageSelector: S.optional(__S(34, __c4, 2)),
-          fromStart: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptions",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          gcsSource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gcsUriPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3GcsPrefix",
-      });
-  }
-}
-function __c5(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3732,67 +5986,221 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3GcsDocument",
       });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2048, __c64, 0));
     case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          documents: S.optional(__S(41, __c5, 1)),
+          documents: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3GcsDocuments",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          gcsPrefix: S.optional(__S(39, __c4, 7)),
-          gcsDocuments: S.optional(__S(42, __c5, 2)),
+          gcsUriPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3GcsPrefix",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPrefix: S.optional(__S(2112, __c66, 0)),
+          gcsDocuments: S.optional(__S(2081, __c65, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig",
       });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computeStyleInfo: S.optional(S.Boolean),
+          enableMathOcr: S.optional(S.Boolean),
+          enableSelectionMarkDetection: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          languageHints: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3OcrConfigHints",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          premiumFeatures: S.optional(__S(2208, __c69, 0)),
+          enableNativePdfParsing: S.optional(S.Boolean),
+          hints: S.optional(__S(2209, __c69, 1)),
+          advancedOcrOptions: S.optional(__S(1984, __c62, 0)),
+          computeStyleInfo: S.optional(S.Boolean),
+          enableSymbol: S.optional(S.Boolean),
+          enableImageQualityScores: S.optional(S.Boolean),
+          disableCharacterBoxesDetection: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3OcrConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          chunkSize: S.optional(S.Number),
+          includeAncestorHeadings: S.optional(S.Boolean),
+          breakpointPercentileThreshold: S.optional(S.Number),
+          semanticChunkingGroupSize: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(S.String),
+          returnImages: S.optional(S.Boolean),
+          returnBoundingBoxes: S.optional(S.Boolean),
+          chunkingConfig: S.optional(__S(2211, __c69, 3)),
+          enableImageAnnotation: S.optional(S.Boolean),
+          enableTableSplit: S.optional(S.Boolean),
+          enableImageExtraction: S.optional(S.Boolean),
+          enableLlmLayoutParsing: S.optional(S.Boolean),
+          enableTableAnnotation: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig",
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          documentOutputConfig: S.optional(__S(15, __c1, 7)),
-          processOptions: S.optional(__S(35, __c4, 3)),
-          labels: S.optional(__S(36, __c4, 4)),
-          inputConfigs: S.optional(__S(38, __c4, 6)),
-          inputDocuments: S.optional(__S(43, __c5, 3)),
-          skipHumanReview: S.optional(S.Boolean),
-          outputConfig: S.optional(__S(44, __c5, 4)),
+          pages: S.optional(__S(2176, __c68, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BatchProcessRequest",
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
+          fromEnd: S.optional(S.Number),
+          schemaOverride: S.optional(__S(2026, __c63, 10)),
+          ocrConfig: S.optional(__S(2210, __c69, 2)),
+          layoutConfig: S.optional(__S(2212, __c69, 4)),
+          individualPageSelector: S.optional(__S(2213, __c69, 5)),
+          fromStart: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessOptions",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPrefix: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(S.String),
+          schema: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          gcsManagedConfig: S.optional(__S(2272, __c71, 0)),
+          documentWarehouseConfig: S.optional(__S(2273, __c71, 1)),
+          satisfiesPzi: S.optional(S.Boolean),
+          satisfiesPzs: S.optional(S.Boolean),
+          unmanagedDatasetConfig: S.optional(__S(224, __c7, 0)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Dataset",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2274, __c71, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:batchProcess",
+            method: "PATCH",
+            uri: "v1beta3/{+name}",
             baseUrl: "https://documentai.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "BatchProcessProjectsLocationsProcessorsRequest",
+        identifier: "UpdateDatasetProjectsLocationsProcessorsRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta3/{+name}",
+            baseUrl: "https://documentai.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDatasetSchemaProjectsLocationsProcessorsDatasetRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1958, __c61, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3805,7 +6213,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3825,41 +6233,15 @@ function __c6(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String),
-          processorVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionAlias",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-          state: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          processorVersionAliases: S.optional(__S(51, __c6, 3)),
-          displayName: S.optional(S.String),
-          satisfiesPzi: S.optional(S.Boolean),
-          defaultProcessorVersion: S.optional(S.String),
-          createTime: S.optional(S.String),
-          processEndpoint: S.optional(S.String),
-          activeSchemaVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Processor",
-      });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2434, __c76, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3870,23 +6252,49 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProcessorsRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
-          displayName: S.optional(S.String),
+          alias: S.optional(S.String),
+          processorVersion: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3NextSchema",
+        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionAlias",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyName: S.optional(S.String),
+          state: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          processorVersionAliases: S.optional(__S(2433, __c76, 1)),
+          displayName: S.optional(S.String),
+          satisfiesPzi: S.optional(S.Boolean),
+          defaultProcessorVersion: S.optional(S.String),
+          createTime: S.optional(S.String),
+          processEndpoint: S.optional(S.String),
+          activeSchemaVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDocumentaiV1beta3Processor",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2496, __c78, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3899,2255 +6307,22 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.String),
-          schema: S.optional(__S(27, __c3, 3)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3SchemaVersion",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+parent}/schemaVersions",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsProcessorsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsSchemasRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:deploy",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:disable",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableProjectsLocationsProcessorsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:enable",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableProjectsLocationsProcessorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          evaluationDocuments: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          processorVersion: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+processorVersion}:evaluateProcessorVersion",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}:fetchProcessorTypes",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchProcessorTypesProjectsLocationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          availableLocations: S.optional(__S(70, __c8, 6)),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          sampleDocumentUris: S.optional(__S(17, __c2, 1)),
-          category: S.optional(S.String),
-          allowCreation: S.optional(S.Boolean),
-          launchStage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorType",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          processorTypes: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          adjustedSchema: S.optional(__S(56, __c7, 0)),
-          prompt: S.optional(S.String),
-          generatedSchema: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3SchemaGenerationIteration",
-      });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          iterations: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3SchemaGenerationHistory",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          history: S.optional(__S(76, __c9, 4)),
-          prompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequestGenerateSchemaVersionParams",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          revision: S.optional(S.Number),
-          index: S.optional(S.Number),
-          id: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentProvenanceParent",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          type: S.optional(S.String),
-          revision: S.optional(S.Number),
-          parents: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentProvenance",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endIndex: S.optional(S.String),
-          startIndex: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          textSegments: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextAnchor",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeMoney" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          locality: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          organization: S.optional(S.String),
-          administrativeArea: S.optional(S.String),
-          sublocality: S.optional(S.String),
-          addressLines: S.optional(__S(17, __c2, 1)),
-          sortingCode: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          revision: S.optional(S.Number),
-          recipients: S.optional(__S(17, __c2, 1)),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypePostalAddress" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeTimeZone" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          utcOffset: S.optional(S.String),
-          day: S.optional(S.Number),
-          timeZone: S.optional(__S(87, __c10, 7)),
-          hours: S.optional(S.Number),
-          year: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDateTime" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          signatureValue: S.optional(S.Boolean),
-          dateValue: S.optional(__S(84, __c10, 4)),
-          moneyValue: S.optional(__S(85, __c10, 5)),
-          floatValue: S.optional(S.Number),
-          addressValue: S.optional(__S(86, __c10, 6)),
-          integerValue: S.optional(S.Number),
-          text: S.optional(S.String),
-          booleanValue: S.optional(S.Boolean),
-          datetimeValue: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          y: S.optional(S.Number),
-          x: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3NormalizedVertex",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Vertex",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          normalizedVertices: S.optional(__S(91, __c11, 3)),
-          vertices: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3BoundingPoly",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          layoutType: S.optional(S.String),
-          boundingPoly: S.optional(__S(94, __c11, 6)),
-          page: S.optional(S.String),
-          layoutId: S.optional(S.String),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageRefs: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageAnchor",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          properties: S.optional(S.suspend(() => __S(99, __c12, 3))),
-          provenance: S.optional(__S(80, __c10, 0)),
-          mentionText: S.optional(S.String),
-          redacted: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          textAnchor: S.optional(__S(83, __c10, 3)),
-          normalizedValue: S.optional(__S(89, __c11, 1)),
-          type: S.optional(S.String),
-          pageAnchor: S.optional(__S(97, __c12, 1)),
-          mentionId: S.optional(S.String),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntity",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rule: S.optional(S.String),
-          validationDetails: S.optional(S.String),
-          ruleName: S.optional(S.String),
-          ruleDescription: S.optional(S.String),
-          validationResultType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validationResults: S.optional(__S(101, __c12, 5)),
-          passAllRules: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entities: S.optional(__S(99, __c12, 3)),
-          revisionId: S.optional(S.String),
-          entityValidationOutput: S.optional(__S(102, __c12, 6)),
-          provenance: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          green: S.optional(S.Number),
-          red: S.optional(S.Number),
-          blue: S.optional(S.Number),
-          alpha: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeColor" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentStyleFontSize",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          textAnchor: S.optional(__S(83, __c10, 3)),
-          textStyle: S.optional(S.String),
-          backgroundColor: S.optional(__S(105, __c13, 1)),
-          fontSize: S.optional(__S(106, __c13, 2)),
-          fontFamily: S.optional(S.String),
-          color: S.optional(__S(105, __c13, 1)),
-          fontWeight: S.optional(S.String),
-          textDecoration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentStyle",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentAnnotations",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataUri: S.optional(S.String),
-          blobAssetId: S.optional(S.String),
-          annotations: S.optional(__S(109, __c13, 5)),
-          imageText: S.optional(S.String),
-          gcsUri: S.optional(S.String),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          blocks: S.optional(S.suspend(() => __S(122, __c15, 2))),
-          type: S.optional(S.String),
-          annotations: S.optional(__S(109, __c13, 5)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageStart: S.optional(S.Number),
-          pageEnd: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blocks: S.optional(S.suspend(() => __S(122, __c15, 2))),
-          colSpan: S.optional(S.Number),
-          rowSpan: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cells: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow",
-      });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          caption: S.optional(S.String),
-          annotations: S.optional(__S(109, __c13, 5)),
-          bodyRows: S.optional(__S(116, __c14, 4)),
-          headerRows: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          blocks: S.optional(S.suspend(() => __S(122, __c15, 2))),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          listEntries: S.optional(__S(119, __c14, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blockId: S.optional(S.String),
-          imageBlock: S.optional(__S(110, __c13, 6)),
-          textBlock: S.optional(__S(111, __c13, 7)),
-          boundingBox: S.optional(__S(94, __c11, 6)),
-          pageSpan: S.optional(__S(112, __c14, 0)),
-          tableBlock: S.optional(__S(117, __c14, 5)),
-          listBlock: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          blocks: S.optional(__S(122, __c15, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentDocumentLayout",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentBlobAsset",
-      });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          stateMessage: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(__S(33, __c4, 1)),
-          createTime: S.optional(S.String),
-          agent: S.optional(S.String),
-          parentIds: S.optional(__S(17, __c2, 1)),
-          humanReview: S.optional(__S(126, __c15, 6)),
-          id: S.optional(S.String),
-          processor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentRevision",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provenance: S.optional(__S(129, __c16, 1)),
-          changedText: S.optional(S.String),
-          textAnchor: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentTextChange",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          textAnchor: S.optional(__S(83, __c10, 3)),
-          confidence: S.optional(S.Number),
-          boundingPoly: S.optional(__S(94, __c11, 6)),
-          orientation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageLayout",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage",
-      });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          layout: S.optional(__S(132, __c16, 4)),
-          type: S.optional(S.String),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageVisualElement",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.Number),
-          unit: S.optional(S.String),
-          height: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDimension",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rowSpan: S.optional(S.Number),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          colSpan: S.optional(S.Number),
-          layout: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell",
-      });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cells: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow",
-      });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          layout: S.optional(__S(132, __c16, 4)),
-          bodyRows: S.optional(__S(141, __c17, 5)),
-          headerRows: S.optional(__S(141, __c17, 5)),
-          provenance: S.optional(__S(80, __c10, 0)),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTable",
-      });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscript: S.optional(S.Boolean),
-          backgroundColor: S.optional(__S(105, __c13, 1)),
-          strikeout: S.optional(S.Boolean),
-          italic: S.optional(S.Boolean),
-          pixelFontSize: S.optional(S.Number),
-          textColor: S.optional(__S(105, __c13, 1)),
-          letterSpacing: S.optional(S.Number),
-          bold: S.optional(S.Boolean),
-          fontWeight: S.optional(S.Number),
-          fontSize: S.optional(S.Number),
-          superscript: S.optional(S.Boolean),
-          fontType: S.optional(S.String),
-          underlined: S.optional(S.Boolean),
-          smallcaps: S.optional(S.Boolean),
-          handwritten: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          detectedBreak: S.optional(__S(144, __c18, 0)),
-          styleInfo: S.optional(__S(145, __c18, 1)),
-          layout: S.optional(__S(132, __c16, 4)),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          provenance: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageToken",
-      });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          provenance: S.optional(__S(80, __c10, 0)),
-          layout: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageParagraph",
-      });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          layout: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageSymbol",
-      });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect",
-      });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          detectedDefects: S.optional(__S(153, __c19, 1)),
-          qualityScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageImage",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          layout: S.optional(__S(132, __c16, 4)),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          provenance: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageLine",
-      });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          valueDetectedLanguages: S.optional(__S(134, __c16, 6)),
-          fieldValue: S.optional(__S(132, __c16, 4)),
-          provenance: S.optional(__S(80, __c10, 0)),
-          valueType: S.optional(S.String),
-          correctedValueText: S.optional(S.String),
-          correctedKeyText: S.optional(S.String),
-          fieldName: S.optional(__S(132, __c16, 4)),
-          nameDetectedLanguages: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageFormField",
-      });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          layout: S.optional(__S(132, __c16, 4)),
-          provenance: S.optional(__S(80, __c10, 0)),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageBlock",
-      });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rawValue: S.optional(S.String),
-          format: S.optional(S.String),
-          valueFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Barcode",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          layout: S.optional(__S(132, __c16, 4)),
-          barcode: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageDetectedBarcode",
-      });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.Number),
-          rows: S.optional(S.Number),
-          cols: S.optional(S.Number),
-          data: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPageMatrix",
-      });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          visualElements: S.optional(__S(136, __c17, 0)),
-          dimension: S.optional(__S(137, __c17, 1)),
-          tables: S.optional(__S(143, __c17, 7)),
-          layout: S.optional(__S(132, __c16, 4)),
-          tokens: S.optional(__S(147, __c18, 3)),
-          paragraphs: S.optional(__S(149, __c18, 5)),
-          symbols: S.optional(__S(151, __c18, 7)),
-          imageQualityScores: S.optional(__S(154, __c19, 2)),
-          detectedLanguages: S.optional(__S(134, __c16, 6)),
-          image: S.optional(__S(155, __c19, 3)),
-          lines: S.optional(__S(157, __c19, 5)),
-          formFields: S.optional(__S(159, __c19, 7)),
-          blocks: S.optional(__S(161, __c20, 1)),
-          detectedBarcodes: S.optional(__S(164, __c20, 4)),
-          pageNumber: S.optional(S.Number),
-          transforms: S.optional(__S(166, __c20, 6)),
-          provenance: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentPage",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subjectId: S.optional(S.String),
-          relation: S.optional(S.String),
-          objectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentEntityRelation",
-      });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageStart: S.optional(S.Number),
-          pageEnd: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          pageSpan: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter",
-      });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSpan: S.optional(__S(171, __c21, 3)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(109, __c13, 5)),
-          blobAssetId: S.optional(S.String),
-          dataUri: S.optional(S.String),
-          gcsUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkImageChunkField",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkTableChunkField",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          imageChunkField: S.optional(__S(176, __c22, 0)),
-          tableChunkField: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField",
-      });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageFooters: S.optional(__S(173, __c21, 5)),
-          pageHeaders: S.optional(__S(175, __c21, 7)),
-          pageSpan: S.optional(__S(171, __c21, 3)),
-          sourceBlockIds: S.optional(__S(17, __c2, 1)),
-          chunkFields: S.optional(__S(179, __c22, 3)),
-          chunkId: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk",
-      });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          chunks: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentChunkedDocument",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          shardIndex: S.optional(S.String),
-          textOffset: S.optional(S.String),
-          shardCount: S.optional(S.String),
-          pageOffset: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentShardInfo",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entities: S.optional(__S(99, __c12, 3)),
-          entitiesRevisions: S.optional(__S(104, __c13, 0)),
-          textStyles: S.optional(__S(108, __c13, 4)),
-          uri: S.optional(S.String),
-          documentLayout: S.optional(__S(123, __c15, 3)),
-          blobAssets: S.optional(__S(125, __c15, 5)),
-          text: S.optional(S.String),
-          content: S.optional(S.String),
-          revisions: S.optional(__S(128, __c16, 0)),
-          textChanges: S.optional(__S(131, __c16, 3)),
-          pages: S.optional(__S(168, __c21, 0)),
-          docid: S.optional(S.String),
-          entityRelations: S.optional(__S(170, __c21, 2)),
-          chunkedDocument: S.optional(__S(182, __c22, 6)),
-          shardInfo: S.optional(__S(183, __c22, 7)),
-          entityValidationOutput: S.optional(__S(102, __c12, 6)),
-          mimeType: S.optional(S.String),
-          error: S.optional(__S(11, __c1, 3)),
-          entitiesRevisionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Document",
-      });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          documents: S.optional(__S(185, __c23, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Documents",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3RawDocument",
-      });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documents: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3RawDocuments",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          generateSchemaVersionParams: S.optional(__S(77, __c9, 5)),
-          inlineDocuments: S.optional(__S(186, __c23, 2)),
-          gcsDocuments: S.optional(__S(42, __c5, 2)),
-          baseSchemaVersion: S.optional(S.String),
-          gcsPrefix: S.optional(__S(39, __c4, 7)),
-          rawDocuments: S.optional(__S(189, __c23, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(190, __c23, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+parent}/schemaVersions:generate",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schemaVersion: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          visibleFieldsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatasetSchemaProjectsLocationsProcessorsDatasetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          satisfiesPzi: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          documentSchema: S.optional(__S(27, __c3, 3)),
-          satisfiesPzs: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DatasetSchema",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "documentId.gcsManagedDocId.cwDocId": S.optional(S.String.pipe(T.Query())),
-          dataset: S.String.pipe(T.Label()),
-          "documentId.revisionRef.latestProcessorVersion": S.optional(S.String.pipe(T.Query())),
-          "pageRange.start": S.optional(S.Number.pipe(T.Query())),
-          readMask: S.optional(S.String.pipe(T.Query())),
-          "documentId.gcsManagedDocId.gcsUri": S.optional(S.String.pipe(T.Query())),
-          "documentId.revisionRef.revisionId": S.optional(S.String.pipe(T.Query())),
-          "documentId.revisionRef.revisionCase": S.optional(S.String.pipe(T.Query())),
-          "pageRange.end": S.optional(S.Number.pipe(T.Query())),
-          "documentId.unmanagedDocId.docId": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+dataset}:getDocument",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDocumentProjectsLocationsProcessorsDatasetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3GetDocumentResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          locationId: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationLocation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsProcessorsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deprecationTime: S.optional(S.String),
-          replacementProcessorVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          finetuningAllowed: S.optional(S.Boolean),
-          minTrainLabeledDocuments: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          baseProcessorVersionId: S.optional(S.String),
-          customModelType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          foundationGenAiModelInfo: S.optional(__S(203, __c25, 3)),
-          customGenAiModelInfo: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groundingType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3GroundingSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          f1Score: S.optional(S.Number),
-          groundTruthDocumentCount: S.optional(S.Number),
-          predictedOccurrencesCount: S.optional(S.Number),
-          falseNegativesCount: S.optional(S.Number),
-          totalDocumentsCount: S.optional(S.Number),
-          falsePositivesCount: S.optional(S.Number),
-          recall: S.optional(S.Number),
-          precision: S.optional(S.Number),
-          groundTruthOccurrencesCount: S.optional(S.Number),
-          truePositivesCount: S.optional(S.Number),
-          predictedDocumentCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationMetrics",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          aggregateMetrics: S.optional(__S(207, __c25, 7)),
-          aggregateMetricsExact: S.optional(__S(207, __c25, 7)),
-          operation: S.optional(S.String),
-          evaluation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationReference",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          documentSchema: S.optional(__S(27, __c3, 3)),
-          deprecationInfo: S.optional(__S(202, __c25, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-          kmsKeyName: S.optional(S.String),
-          modelType: S.optional(S.String),
-          createTime: S.optional(S.String),
-          kmsKeyVersionName: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          genAiModelInfo: S.optional(__S(205, __c25, 5)),
-          groundingSettings: S.optional(__S(206, __c25, 6)),
-          satisfiesPzi: S.optional(S.Boolean),
-          latestEvaluation: S.optional(__S(208, __c26, 0)),
-          googleManaged: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersion",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(207, __c25, 7)),
-          confidenceLevel: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics",
-      });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          auprc: S.optional(S.Number),
-          confidenceLevelMetricsExact: S.optional(__S(212, __c26, 4)),
-          estimatedCalibrationError: S.optional(S.Number),
-          estimatedCalibrationErrorExact: S.optional(S.Number),
-          auprcExact: S.optional(S.Number),
-          confidenceLevelMetrics: S.optional(__S(212, __c26, 4)),
-          metricsType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics",
-      });
-    case 6:
-      return S.Record(S.String, __S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          failedDocumentsCount: S.optional(S.Number),
-          inputDocumentsCount: S.optional(S.Number),
-          invalidDocumentsCount: S.optional(S.Number),
-          evaluatedDocumentsCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationCounters",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          documentCounters: S.optional(__S(215, __c26, 7)),
-          allEntitiesMetrics: S.optional(__S(213, __c26, 5)),
-          entityMetrics: S.optional(__S(214, __c26, 6)),
-          revisionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision",
-      });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          entityMetrics: S.optional(__S(214, __c26, 6)),
-          kmsKeyName: S.optional(S.String),
-          revisions: S.optional(__S(217, __c27, 1)),
-          allEntitiesMetrics: S.optional(__S(213, __c26, 5)),
-          createTime: S.optional(S.String),
-          documentCounters: S.optional(__S(215, __c26, 7)),
-          kmsKeyVersionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Evaluation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsProcessorTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsSchemasRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          trainingSplitRatio: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          batchInputConfig: S.optional(__S(43, __c5, 3)),
-          datasetSplit: S.optional(S.String),
-          documentType: S.optional(S.String),
-          autoSplitConfig: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          batchDocumentsImportConfigs: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+dataset}:importDocuments",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportDocumentsProjectsLocationsProcessorsDatasetRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceEndpoint: S.optional(S.String),
-          processorVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequestExternalProcessorVersionSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          processorVersionSource: S.optional(S.String),
-          externalProcessorVersionSource: S.optional(__S(227, __c28, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(228, __c28, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+parent}/processorVersions:importProcessorVersion",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-          filter: S.optional(S.String),
-          returnTotalSize: S.optional(S.Boolean),
-          skip: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListDocumentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.String.pipe(T.Label()),
-          body: S.optional(__S(230, __c28, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+dataset}:listDocuments",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDocumentsProjectsLocationsProcessorsDatasetRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          labelingState: S.optional(S.String),
-          pageCount: S.optional(S.Number),
-          documentId: S.optional(__S(3, __c0, 3)),
-          datasetType: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DocumentMetadata",
-      });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          totalSize: S.optional(S.Number),
-          documentMetadata: S.optional(__S(233, __c29, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListDocumentsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}/locations",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsRequest",
-      });
-    case 4:
-      return S.Array(__S(198, __c24, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(236, __c29, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationListLocationsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(239, __c29, 7)),
-          unreachable: S.optional(__S(17, __c2, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningListOperationsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/processors",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsProcessorsRequest",
-      });
-    case 2:
-      return S.Array(__S(52, __c6, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          processors: S.optional(__S(242, __c30, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/processorVersions",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 5:
-      return S.Array(__S(209, __c26, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          processorVersions: S.optional(__S(245, __c30, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/evaluations",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest",
+        identifier: "GoogleCloudDocumentaiV1beta3NextSchema",
       });
   }
 }
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(218, __c27, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          evaluations: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListEvaluationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/processorTypes",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsProcessorTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          processorTypes: S.optional(__S(72, __c9, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/schemas",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsSchemasRequest",
-      });
-    case 5:
-      return S.Array(__S(54, __c6, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          schemas: S.optional(__S(253, __c31, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListSchemasResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta3/{+parent}/schemaVersions",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(56, __c7, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          schemaVersions: S.optional(__S(256, __c32, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsSchemasRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsSchemasSchemaVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(__S(184, __c23, 0)),
-          fieldMask: S.optional(S.String),
-          rawDocument: S.optional(__S(187, __c23, 3)),
-          imagelessMode: S.optional(S.Boolean),
-          gcsDocument: S.optional(__S(40, __c5, 0)),
-          processOptions: S.optional(__S(35, __c4, 3)),
-          skipHumanReview: S.optional(S.Boolean),
-          labels: S.optional(__S(36, __c4, 4)),
-          inlineDocument: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(260, __c32, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:process",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProcessProjectsLocationsProcessorsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          stateMessage: S.optional(S.String),
-          state: S.optional(S.String),
-          humanReviewOperation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          humanReviewOperation: S.optional(S.String),
-          humanReviewStatus: S.optional(__S(262, __c32, 6)),
-          document: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessResponse",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(260, __c32, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:process",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProcessProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enableSchemaValidation: S.optional(S.Boolean),
-          priority: S.optional(S.String),
-          inlineDocument: S.optional(__S(184, __c23, 0)),
-          document: S.optional(__S(184, __c23, 0)),
-          documentSchema: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ReviewDocumentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          humanReviewConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(265, __c33, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+humanReviewConfig}:reviewDocument",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultProcessorVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          processor: S.String.pipe(T.Label()),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+processor}:setDefaultProcessorVersion",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetDefaultProcessorVersionProjectsLocationsProcessorsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          learningRateMultiplier: S.optional(S.Number),
-          trainSteps: S.optional(S.Number),
-          previousFineTunedProcessorVersionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groundingSettings: S.optional(__S(206, __c25, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trainingMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          trainingDocuments: S.optional(__S(43, __c5, 3)),
-          testDocuments: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          foundationModelTuningOptions: S.optional(__S(269, __c33, 5)),
-          processorVersionOverrides: S.optional(__S(270, __c33, 6)),
-          documentSchema: S.optional(__S(27, __c3, 3)),
-          customDocumentExtractionOptions: S.optional(__S(271, __c33, 7)),
-          baseProcessorVersion: S.optional(S.String),
-          processorVersion: S.optional(__S(209, __c26, 1)),
-          inputData: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(273, __c34, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+parent}/processorVersions:train",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TrainProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/{+name}:undeploy",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeployProjectsLocationsProcessorsProcessorVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gcsPrefix: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(S.String),
-          schema: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          gcsManagedConfig: S.optional(__S(276, __c34, 4)),
-          documentWarehouseConfig: S.optional(__S(277, __c34, 5)),
-          satisfiesPzi: S.optional(S.Boolean),
-          satisfiesPzs: S.optional(S.Boolean),
-          unmanagedDatasetConfig: S.optional(__S(62, __c7, 6)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDocumentaiV1beta3Dataset",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(278, __c34, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDatasetProjectsLocationsProcessorsRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(194, __c24, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta3/{+name}",
-            baseUrl: "https://documentai.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDatasetSchemaProjectsLocationsProcessorsDatasetRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

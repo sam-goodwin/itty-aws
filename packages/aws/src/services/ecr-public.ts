@@ -576,8 +576,8 @@ export const batchCheckLayerAvailability: API.OperationMethod<
   BatchCheckLayerAvailabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchCheckLayerAvailabilityRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchCheckLayerAvailabilityResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchCheckLayerAvailabilityRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<BatchCheckLayerAvailabilityResponse>,
   errors: [
     InvalidParameterException,
     RegistryNotFoundException,
@@ -613,8 +613,8 @@ export const batchDeleteImage: API.OperationMethod<
   BatchDeleteImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchDeleteImageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BatchDeleteImageResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<BatchDeleteImageRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BatchDeleteImageResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -654,8 +654,8 @@ export const completeLayerUpload: API.OperationMethod<
   CompleteLayerUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CompleteLayerUploadRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CompleteLayerUploadResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CompleteLayerUploadRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CompleteLayerUploadResponse>,
   errors: [
     EmptyUploadException,
     InvalidLayerException,
@@ -692,8 +692,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateRepositoryRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateRepositoryResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateRepositoryRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateRepositoryResponse>,
   errors: [
     InvalidParameterException,
     InvalidTagParameterException,
@@ -726,8 +726,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteRepositoryRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteRepositoryResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteRepositoryRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeleteRepositoryResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotEmptyException,
@@ -756,8 +756,8 @@ export const deleteRepositoryPolicy: API.OperationMethod<
   DeleteRepositoryPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteRepositoryPolicyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteRepositoryPolicyResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteRepositoryPolicyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteRepositoryPolicyResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -793,8 +793,8 @@ export const describeImages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DescribeImagesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DescribeImagesResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DescribeImagesRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<DescribeImagesResponse>,
   errors: [
     ImageNotFoundException,
     InvalidParameterException,
@@ -829,8 +829,8 @@ export const describeImageTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageTagDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DescribeImageTagsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DescribeImageTagsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DescribeImageTagsRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<DescribeImageTagsResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -863,8 +863,8 @@ export const describeRegistries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Registry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeRegistriesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DescribeRegistriesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DescribeRegistriesRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<DescribeRegistriesResponse>,
   errors: [InvalidParameterException, ServerException, UnsupportedCommandException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -893,8 +893,8 @@ export const describeRepositories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Repository
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DescribeRepositoriesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DescribeRepositoriesResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribeRepositoriesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DescribeRepositoriesResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -930,8 +930,8 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetAuthorizationTokenRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetAuthorizationTokenResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetAuthorizationTokenRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<GetAuthorizationTokenResponse>,
   errors: [InvalidParameterException, ServerException, UnsupportedCommandException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const getRegistryCatalogData: API.OperationMethod<
   GetRegistryCatalogDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetRegistryCatalogDataRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetRegistryCatalogDataResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetRegistryCatalogDataRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetRegistryCatalogDataResponse>,
   errors: [ServerException, UnsupportedCommandException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -976,8 +976,8 @@ export const getRepositoryCatalogData: API.OperationMethod<
   GetRepositoryCatalogDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetRepositoryCatalogDataRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetRepositoryCatalogDataResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetRepositoryCatalogDataRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetRepositoryCatalogDataResponse>,
   errors: [
     InvalidParameterException,
     RepositoryCatalogDataNotFoundException,
@@ -1006,8 +1006,8 @@ export const getRepositoryPolicy: API.OperationMethod<
   GetRepositoryPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetRepositoryPolicyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetRepositoryPolicyResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetRepositoryPolicyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetRepositoryPolicyResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -1042,8 +1042,8 @@ export const initiateLayerUpload: API.OperationMethod<
   InitiateLayerUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<InitiateLayerUploadRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<InitiateLayerUploadResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<InitiateLayerUploadRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<InitiateLayerUploadResponse>,
   errors: [
     InvalidParameterException,
     RegistryNotFoundException,
@@ -1071,8 +1071,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -1112,8 +1112,8 @@ export const putImage: API.OperationMethod<
   PutImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PutImageRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PutImageResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<PutImageRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<PutImageResponse>,
   errors: [
     ImageAlreadyExistsException,
     ImageDigestDoesNotMatchException,
@@ -1146,8 +1146,8 @@ export const putRegistryCatalogData: API.OperationMethod<
   PutRegistryCatalogDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PutRegistryCatalogDataRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<PutRegistryCatalogDataResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<PutRegistryCatalogDataRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<PutRegistryCatalogDataResponse>,
   errors: [InvalidParameterException, ServerException, UnsupportedCommandException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1169,8 +1169,8 @@ export const putRepositoryCatalogData: API.OperationMethod<
   PutRepositoryCatalogDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<PutRepositoryCatalogDataRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<PutRepositoryCatalogDataResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<PutRepositoryCatalogDataRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<PutRepositoryCatalogDataResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -1199,8 +1199,8 @@ export const setRepositoryPolicy: API.OperationMethod<
   SetRepositoryPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<SetRepositoryPolicyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SetRepositoryPolicyResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<SetRepositoryPolicyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<SetRepositoryPolicyResponse>,
   errors: [
     InvalidParameterException,
     RepositoryNotFoundException,
@@ -1232,8 +1232,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidParameterException,
     InvalidTagParameterException,
@@ -1264,8 +1264,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidParameterException,
     InvalidTagParameterException,
@@ -1304,8 +1304,8 @@ export const uploadLayerPart: API.OperationMethod<
   UploadLayerPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UploadLayerPartRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UploadLayerPartResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UploadLayerPartRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<UploadLayerPartResponse>,
   errors: [
     InvalidLayerPartException,
     InvalidParameterException,
@@ -1325,18 +1325,16 @@ export const uploadLayerPart: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.String,
-          layerDigests: __S(0, __c0, 0),
+          layerDigests: __S(8, __c1, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchCheckLayerAvailabilityRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           layerDigest: S.optional(S.String),
@@ -1345,9 +1343,9 @@ function __c0(j: number): any {
           mediaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Layer" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           layerDigest: S.optional(S.String),
@@ -1355,64 +1353,82 @@ function __c0(j: number): any {
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "LayerFailure" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          layers: S.optional(__S(3, __c0, 3)),
-          failures: S.optional(__S(5, __c0, 5)),
+          layers: S.optional(__S(2, __c0, 2)),
+          failures: S.optional(__S(4, __c0, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchCheckLayerAvailabilityResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ imageDigest: S.optional(S.String), imageTag: S.optional(S.String) }),
-      ).annotate({ identifier: "ImageIdentifier" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.String,
-          imageIds: __S(8, __c1, 0),
+          imageIds: __S(24, __c3, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "BatchDeleteImageRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          imageId: S.optional(__S(7, __c0, 7)),
+          imageId: S.optional(__S(32, __c4, 0)),
           failureCode: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageFailure" });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          imageIds: S.optional(__S(8, __c1, 0)),
-          failures: S.optional(__S(11, __c1, 3)),
+          imageIds: S.optional(__S(24, __c3, 0)),
+          failures: S.optional(__S(18, __c2, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "BatchDeleteImageResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c4, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ imageDigest: S.optional(S.String), imageTag: S.optional(S.String) }),
+      ).annotate({ identifier: "ImageIdentifier" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.String,
           uploadId: S.String,
-          layerDigests: __S(0, __c0, 0),
+          layerDigests: __S(8, __c1, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CompleteLayerUploadRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1423,38 +1439,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CompleteLayerUploadResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          architectures: S.optional(__S(0, __c0, 0)),
-          operatingSystems: S.optional(__S(0, __c0, 0)),
-          logoImageBlob: S.optional(T.Blob),
-          aboutText: S.optional(S.String),
-          usageText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryCatalogDataInput",
-      });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           repositoryName: S.String,
-          catalogData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(17, __c2, 1)),
+          catalogData: S.optional(__S(80, __c10, 0)),
+          tags: S.optional(__S(73, __c9, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRepositoryRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(__S(56, __c7, 0)),
+          catalogData: S.optional(__S(64, __c8, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateRepositoryResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repositoryArn: S.optional(S.String),
@@ -1464,26 +1472,54 @@ function __c2(j: number): any {
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Repository" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          architectures: S.optional(__S(0, __c0, 0)),
-          operatingSystems: S.optional(__S(0, __c0, 0)),
+          architectures: S.optional(__S(8, __c1, 0)),
+          operatingSystems: S.optional(__S(8, __c1, 0)),
           logoUrl: S.optional(S.String),
           aboutText: S.optional(S.String),
           usageText: S.optional(S.String),
           marketplaceCertified: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RepositoryCatalogData" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          repository: S.optional(__S(19, __c2, 3)),
-          catalogData: S.optional(__S(20, __c2, 4)),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateRepositoryResponse" });
-    case 6:
+          description: S.optional(S.String),
+          architectures: S.optional(__S(8, __c1, 0)),
+          operatingSystems: S.optional(__S(8, __c1, 0)),
+          logoImageBlob: S.optional(T.Blob),
+          aboutText: S.optional(S.String),
+          usageText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryCatalogDataInput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1491,15 +1527,13 @@ function __c2(j: number): any {
           force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteRepositoryRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ repository: S.optional(__S(19, __c2, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteRepositoryResponse",
-      });
+        S.Struct({ repository: S.optional(__S(56, __c7, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteRepositoryResponse" });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1509,7 +1543,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteRepositoryPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1519,39 +1557,47 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteRepositoryPolicyResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.String,
-          imageIds: S.optional(__S(8, __c1, 0)),
+          imageIds: S.optional(__S(24, __c3, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeImagesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.optional(S.String),
           imageDigest: S.optional(S.String),
-          imageTags: S.optional(__S(0, __c0, 0)),
+          imageTags: S.optional(__S(8, __c1, 0)),
           imageSizeInBytes: S.optional(S.Number),
           imagePushedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           imageManifestMediaType: S.optional(S.String),
           artifactMediaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageDetail" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          imageDetails: S.optional(__S(28, __c3, 4)),
+          imageDetails: S.optional(__S(114, __c14, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeImagesResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1560,7 +1606,7 @@ function __c3(j: number): any {
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeImageTagsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           imageDigest: S.optional(S.String),
@@ -1570,30 +1616,30 @@ function __c3(j: number): any {
           artifactMediaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReferencedImageDetail" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           imageTag: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          imageDetail: S.optional(__S(31, __c3, 7)),
+          imageDetail: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "ImageTagDetail" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          imageTagDetails: S.optional(__S(33, __c4, 1)),
+          imageTagDetails: S.optional(__S(123, __c15, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeImageTagsResponse",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1601,7 +1647,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeRegistriesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1610,53 +1656,57 @@ function __c4(j: number): any {
           defaultRegistryAlias: S.Boolean,
         }),
       ).annotate({ identifier: "RegistryAlias" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           registryId: S.String,
           registryArn: S.String,
           registryUri: S.String,
           verified: S.Boolean,
-          aliases: __S(37, __c4, 5),
+          aliases: __S(130, __c16, 2),
         }),
       ).annotate({ identifier: "Registry" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(131, __c16, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ registries: __S(39, __c4, 7), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ registries: __S(132, __c16, 4), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "DescribeRegistriesResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
-          repositoryNames: S.optional(__S(0, __c0, 0)),
+          repositoryNames: S.optional(__S(8, __c1, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeRepositoriesRequest",
       });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(42, __c5, 2)),
+          repositories: S.optional(__S(137, __c17, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeRepositoriesResponse",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1664,20 +1714,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetAuthorizationTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authorizationToken: S.optional(SensitiveString),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AuthorizationData" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ authorizationData: S.optional(__S(45, __c5, 5)) }).pipe(ns),
+        S.Struct({ authorizationData: S.optional(__S(145, __c18, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetAuthorizationTokenResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1687,19 +1741,23 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ displayName: S.optional(S.String) })).annotate({
         identifier: "RegistryCatalogData",
       });
     case 1:
-      return S.suspend(() => S.Struct({ registryCatalogData: __S(48, __c6, 0) }).pipe(ns)).annotate(
-        {
-          identifier: "GetRegistryCatalogDataResponse",
-        },
-      );
-    case 2:
+      return S.suspend(() =>
+        S.Struct({ registryCatalogData: __S(160, __c20, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "GetRegistryCatalogDataResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1707,13 +1765,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRepositoryCatalogDataRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ catalogData: S.optional(__S(20, __c2, 4)) }).pipe(ns),
+        S.Struct({ catalogData: S.optional(__S(64, __c8, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetRepositoryCatalogDataResponse",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1721,7 +1787,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRepositoryPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1729,13 +1799,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "InitiateLayerUploadRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ uploadId: S.optional(S.String), partSize: S.optional(S.Number) }).pipe(ns),
       ).annotate({
         identifier: "InitiateLayerUploadResponse",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1743,15 +1817,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(17, __c2, 1)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(73, __c9, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1762,21 +1836,25 @@ function __c7(j: number): any {
           imageDigest: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutImageRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.optional(S.String),
-          imageId: S.optional(__S(7, __c0, 7)),
+          imageId: S.optional(__S(32, __c4, 0)),
           imageManifest: S.optional(S.String),
           imageManifestMediaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
-    case 3:
-      return S.suspend(() => S.Struct({ image: S.optional(__S(58, __c7, 2)) }).pipe(ns)).annotate({
-        identifier: "PutImageResponse",
-      });
-    case 4:
+    case 2:
+      return S.suspend(() => S.Struct({ image: S.optional(__S(209, __c26, 1)) }).pipe(ns)).annotate(
+        { identifier: "PutImageResponse" },
+      );
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ displayName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1784,17 +1862,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PutRegistryCatalogDataRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
           repositoryName: S.String,
-          catalogData: __S(15, __c1, 7),
+          catalogData: __S(80, __c10, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutRepositoryCatalogDataRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1805,27 +1891,39 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SetRepositoryPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(17, __c2, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(73, __c9, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c8(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagResourceResponse",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(0, __c0, 0) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1836,7 +1934,7 @@ function __c8(j: number): any {
           layerPartBlob: T.Blob,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UploadLayerPartRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registryId: S.optional(S.String),
@@ -1847,7 +1945,6 @@ function __c8(j: number): any {
       ).annotate({ identifier: "UploadLayerPartResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

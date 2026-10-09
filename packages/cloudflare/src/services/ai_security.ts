@@ -106,7 +106,7 @@ export const getAiSecurity: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetAiSecurityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetAiSecurityResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetAiSecurityResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -130,8 +130,8 @@ export const getCustomTopic: API.OperationMethod<
   GetCustomTopicError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetCustomTopicRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetCustomTopicResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetCustomTopicRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GetCustomTopicResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -155,8 +155,8 @@ export const putAiSecurity: API.OperationMethod<
   PutAiSecurityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<PutAiSecurityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutAiSecurityResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<PutAiSecurityRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutAiSecurityResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -180,8 +180,8 @@ export const putCustomTopic: API.OperationMethod<
   PutCustomTopicError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<PutCustomTopicRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutCustomTopicResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<PutCustomTopicRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PutCustomTopicResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -202,13 +202,21 @@ function __c0(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
         }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ai-security/settings", code: 200 })),
       ).annotate({ identifier: "GetAiSecurityRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "GetAiSecurityResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -216,7 +224,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/zones/{zone_id}/ai-security/custom-topics", code: 200 }),
         ),
       ).annotate({ identifier: "GetCustomTopicRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
@@ -225,33 +237,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomTopicsGetResponseTopicsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(S.NullOr(__S(4, __c0, 4))),
+          topics: S.optional(S.NullOr(__S(13, __c3, 1))),
         }),
       ).annotate({ identifier: "GetCustomTopicResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           enabled: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/ai-security/settings", code: 200 })),
       ).annotate({ identifier: "PutAiSecurityRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          topics: S.optional(__S(4, __c0, 4)),
+          topics: S.optional(__S(13, __c3, 1)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/zones/{zone_id}/ai-security/custom-topics", code: 200 }),
         ),
       ).annotate({ identifier: "PutCustomTopicRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

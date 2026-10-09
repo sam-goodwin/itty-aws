@@ -278,7 +278,7 @@ export const createProviderMapping: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateProviderMappingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateProviderMappingResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateProviderMappingResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -292,8 +292,8 @@ export const defaultBillingEntity: API.OperationMethod<
   DefaultBillingEntityError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DefaultBillingEntityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DefaultBillingEntityResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DefaultBillingEntityRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DefaultBillingEntityResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -307,8 +307,8 @@ export const listProviderMappings: API.OperationMethod<
   ListProviderMappingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListProviderMappingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ListProviderMappingsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListProviderMappingsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ListProviderMappingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -322,8 +322,8 @@ export const reorderInferenceProviders: API.OperationMethod<
   ReorderInferenceProvidersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ReorderInferenceProvidersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ReorderInferenceProvidersResponse>,
+  input: __S(18, __c4, 2) as any as S.Schema<ReorderInferenceProvidersRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<ReorderInferenceProvidersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -337,8 +337,8 @@ export const setProviderKey: API.OperationMethod<
   SetProviderKeyError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<SetProviderKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetProviderKeyResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<SetProviderKeyRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SetProviderKeyResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const setSpendingLimit: API.OperationMethod<
   SetSpendingLimitError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<SetSpendingLimitRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetSpendingLimitResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<SetSpendingLimitRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SetSpendingLimitResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const updateMappingStatus: API.OperationMethod<
   UpdateMappingStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateMappingStatusRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateMappingStatusResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateMappingStatusRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UpdateMappingStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -386,11 +386,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProviderMappingRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateProviderMappingResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.optional(S.String),
@@ -404,7 +412,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DefaultBillingEntityRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.String.pipe(T.Label()),
@@ -413,7 +425,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListProviderMappingsRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -422,23 +438,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ReorderInferenceProvidersRequestBodyValue",
       });
-    case 5:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Record(S.String, __S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c4, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/settings/inference-providers", code: 200 })),
       ).annotate({
         identifier: "ReorderInferenceProvidersRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ReorderInferenceProvidersResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -449,7 +465,11 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/api/settings/inference-providers/api-key", code: 200 }),
         ),
       ).annotate({ identifier: "SetProviderKeyRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spendingLimitCents: S.Number,
@@ -461,7 +481,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetSpendingLimitRequest" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.String.pipe(T.Label()),
@@ -479,7 +503,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

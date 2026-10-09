@@ -3276,14 +3276,14 @@ export const AddArtifactStoreNetworkFabricControllerEndPoints: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2,
+    0,
     __c0,
-    2,
+    0,
   ) as any as S.Schema<AddArtifactStoreNetworkFabricControllerEndPointsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<AddArtifactStoreNetworkFabricControllerEndPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3298,8 +3298,8 @@ export const ApproveArtifactStorePrivateEndPoints: API.OperationMethod<
   ApproveArtifactStorePrivateEndPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApproveArtifactStorePrivateEndPointsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApproveArtifactStorePrivateEndPointsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ApproveArtifactStorePrivateEndPointsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<ApproveArtifactStorePrivateEndPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3313,8 +3313,8 @@ export const ArtifactManifestsCreateOrUpdate: API.OperationMethod<
   ArtifactManifestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ArtifactManifestsCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ArtifactManifestsCreateOrUpdateResponse>,
+  input: __S(257, __c16, 1) as any as S.Schema<ArtifactManifestsCreateOrUpdateRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<ArtifactManifestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3328,8 +3328,8 @@ export const ArtifactStoresCreateOrUpdate: API.OperationMethod<
   ArtifactStoresCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ArtifactStoresCreateOrUpdateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ArtifactStoresCreateOrUpdateResponse>,
+  input: __S(705, __c44, 1) as any as S.Schema<ArtifactStoresCreateOrUpdateRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<ArtifactStoresCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3343,8 +3343,8 @@ export const ConfigurationGroupSchemasCreateOrUpdate: API.OperationMethod<
   ConfigurationGroupSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateResponse>,
+  input: __S(1041, __c65, 1) as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3358,8 +3358,8 @@ export const ConfigurationGroupValuesCreateOrUpdate: API.OperationMethod<
   ConfigurationGroupValuesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateResponse>,
+  input: __S(1281, __c80, 1) as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3373,8 +3373,8 @@ export const DeleteArtifactManifest: API.OperationMethod<
   DeleteArtifactManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteArtifactManifestRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteArtifactManifestResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteArtifactManifestRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteArtifactManifestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3388,8 +3388,8 @@ export const DeleteArtifactStore: API.OperationMethod<
   DeleteArtifactStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteArtifactStoreRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteArtifactStoreResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<DeleteArtifactStoreRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteArtifactStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3404,14 +3404,14 @@ export const DeleteArtifactStoreNetworkFabricControllerEndPoints: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    32,
-    __c4,
+    1984,
+    __c124,
     0,
   ) as any as S.Schema<DeleteArtifactStoreNetworkFabricControllerEndPointsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<DeleteArtifactStoreNetworkFabricControllerEndPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3426,8 +3426,8 @@ export const DeleteConfigurationGroupSchema: API.OperationMethod<
   DeleteConfigurationGroupSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteConfigurationGroupSchemaRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteConfigurationGroupSchemaResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<DeleteConfigurationGroupSchemaRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteConfigurationGroupSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3441,8 +3441,8 @@ export const DeleteConfigurationGroupValue: API.OperationMethod<
   DeleteConfigurationGroupValueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteConfigurationGroupValueRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteConfigurationGroupValueResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteConfigurationGroupValueRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteConfigurationGroupValueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3456,8 +3456,8 @@ export const DeleteNetworkFunction: API.OperationMethod<
   DeleteNetworkFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteNetworkFunctionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteNetworkFunctionResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteNetworkFunctionRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteNetworkFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3471,8 +3471,8 @@ export const DeleteNetworkFunctionDefinitionGroup: API.OperationMethod<
   DeleteNetworkFunctionDefinitionGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteNetworkFunctionDefinitionGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteNetworkFunctionDefinitionGroupResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteNetworkFunctionDefinitionGroupRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteNetworkFunctionDefinitionGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3486,8 +3486,8 @@ export const DeleteNetworkFunctionDefinitionVersion: API.OperationMethod<
   DeleteNetworkFunctionDefinitionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteNetworkFunctionDefinitionVersionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteNetworkFunctionDefinitionVersionResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteNetworkFunctionDefinitionVersionRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteNetworkFunctionDefinitionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3501,8 +3501,8 @@ export const DeleteNetworkServiceDesignGroup: API.OperationMethod<
   DeleteNetworkServiceDesignGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteNetworkServiceDesignGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteNetworkServiceDesignGroupResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteNetworkServiceDesignGroupRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteNetworkServiceDesignGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3516,8 +3516,8 @@ export const DeleteNetworkServiceDesignVersion: API.OperationMethod<
   DeleteNetworkServiceDesignVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteNetworkServiceDesignVersionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteNetworkServiceDesignVersionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteNetworkServiceDesignVersionRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteNetworkServiceDesignVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3531,8 +3531,8 @@ export const DeletePublisher: API.OperationMethod<
   DeletePublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeletePublisherRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeletePublisherResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeletePublisherRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeletePublisherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3546,8 +3546,8 @@ export const DeleteSite: API.OperationMethod<
   DeleteSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteSiteRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteSiteResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteSiteRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3561,8 +3561,8 @@ export const DeleteSiteNetworkService: API.OperationMethod<
   DeleteSiteNetworkServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteSiteNetworkServiceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSiteNetworkServiceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteSiteNetworkServiceRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteSiteNetworkServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3576,8 +3576,8 @@ export const ExecuteNetworkFunctionRequest: API.OperationMethod<
   ExecuteNetworkFunctionRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ExecuteNetworkFunctionRequestRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ExecuteNetworkFunctionRequestResponse>,
+  input: __S(241, __c15, 1) as any as S.Schema<ExecuteNetworkFunctionRequestRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<ExecuteNetworkFunctionRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3591,8 +3591,8 @@ export const GetArtifactManifest: API.OperationMethod<
   GetArtifactManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetArtifactManifestRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetArtifactManifestResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetArtifactManifestRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetArtifactManifestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3606,8 +3606,8 @@ export const GetArtifactStore: API.OperationMethod<
   GetArtifactStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetArtifactStoreRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetArtifactStoreResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetArtifactStoreRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<GetArtifactStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3621,8 +3621,8 @@ export const GetComponent: API.OperationMethod<
   GetComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetComponentRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetComponentResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetComponentRequest>,
+  output: __S(415, __c25, 15) as any as S.Schema<GetComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3636,8 +3636,8 @@ export const GetConfigurationGroupSchema: API.OperationMethod<
   GetConfigurationGroupSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetConfigurationGroupSchemaRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetConfigurationGroupSchemaResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetConfigurationGroupSchemaRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<GetConfigurationGroupSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3651,8 +3651,8 @@ export const GetConfigurationGroupValue: API.OperationMethod<
   GetConfigurationGroupValueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetConfigurationGroupValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetConfigurationGroupValueResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetConfigurationGroupValueRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<GetConfigurationGroupValueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3666,8 +3666,8 @@ export const GetNetworkFunction: API.OperationMethod<
   GetNetworkFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetNetworkFunctionRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetNetworkFunctionResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetNetworkFunctionRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetNetworkFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3681,8 +3681,8 @@ export const GetNetworkFunctionDefinitionGroup: API.OperationMethod<
   GetNetworkFunctionDefinitionGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetNetworkFunctionDefinitionGroupRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetNetworkFunctionDefinitionGroupResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetNetworkFunctionDefinitionGroupRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<GetNetworkFunctionDefinitionGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3696,8 +3696,8 @@ export const GetNetworkFunctionDefinitionVersion: API.OperationMethod<
   GetNetworkFunctionDefinitionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetNetworkFunctionDefinitionVersionRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetNetworkFunctionDefinitionVersionResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetNetworkFunctionDefinitionVersionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<GetNetworkFunctionDefinitionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3711,8 +3711,8 @@ export const GetNetworkServiceDesignGroup: API.OperationMethod<
   GetNetworkServiceDesignGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetNetworkServiceDesignGroupRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetNetworkServiceDesignGroupResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetNetworkServiceDesignGroupRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetNetworkServiceDesignGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3726,8 +3726,8 @@ export const GetNetworkServiceDesignVersion: API.OperationMethod<
   GetNetworkServiceDesignVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetNetworkServiceDesignVersionRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GetNetworkServiceDesignVersionResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetNetworkServiceDesignVersionRequest>,
+  output: __S(694, __c43, 6) as any as S.Schema<GetNetworkServiceDesignVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3741,8 +3741,8 @@ export const GetProxyArtifact: API.OperationMethod<
   GetProxyArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetProxyArtifactRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ProxyArtifactVersionsOverviewListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetProxyArtifactRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<ProxyArtifactVersionsOverviewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3756,8 +3756,8 @@ export const GetPublisher: API.OperationMethod<
   GetPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetPublisherRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetPublisherResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetPublisherRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<GetPublisherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3771,8 +3771,8 @@ export const GetSite: API.OperationMethod<
   GetSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetSiteRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetSiteResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetSiteRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<GetSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3786,8 +3786,8 @@ export const GetSiteNetworkService: API.OperationMethod<
   GetSiteNetworkServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetSiteNetworkServiceRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetSiteNetworkServiceResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetSiteNetworkServiceRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<GetSiteNetworkServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3801,8 +3801,8 @@ export const ListArtifactManifestByArtifactStore: API.OperationMethod<
   ListArtifactManifestByArtifactStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListArtifactManifestByArtifactStoreRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ArtifactManifestListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListArtifactManifestByArtifactStoreRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ArtifactManifestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3816,8 +3816,8 @@ export const ListArtifactManifestCredential: API.OperationMethod<
   ListArtifactManifestCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListArtifactManifestCredentialRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListArtifactManifestCredentialResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListArtifactManifestCredentialRequest>,
+  output: __S(963, __c60, 3) as any as S.Schema<ListArtifactManifestCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3831,8 +3831,8 @@ export const ListArtifactStoreByPublisher: API.OperationMethod<
   ListArtifactStoreByPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListArtifactStoreByPublisherRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ArtifactStoreListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListArtifactStoreByPublisherRequest>,
+  output: __S(978, __c61, 2) as any as S.Schema<ArtifactStoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3847,11 +3847,11 @@ export const ListArtifactStoreNetworkFabricControllerPrivateEndPoints: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    120,
-    __c15,
+    992,
+    __c62,
     0,
   ) as any as S.Schema<ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsList>,
+  output: __S(995, __c62, 3) as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3865,8 +3865,8 @@ export const ListArtifactStorePrivateEndPoints: API.OperationMethod<
   ListArtifactStorePrivateEndPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListArtifactStorePrivateEndPointsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ArtifactStorePrivateEndPointsListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListArtifactStorePrivateEndPointsRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<ArtifactStorePrivateEndPointsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3880,8 +3880,8 @@ export const ListComponentByNetworkFunction: API.OperationMethod<
   ListComponentByNetworkFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListComponentByNetworkFunctionRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ComponentListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListComponentByNetworkFunctionRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<ComponentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3895,8 +3895,8 @@ export const ListConfigurationGroupSchemaByPublisher: API.OperationMethod<
   ListConfigurationGroupSchemaByPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListConfigurationGroupSchemaByPublisherRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ConfigurationGroupSchemaListResult>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListConfigurationGroupSchemaByPublisherRequest>,
+  output: __S(1091, __c68, 3) as any as S.Schema<ConfigurationGroupSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3910,8 +3910,8 @@ export const ListConfigurationGroupValueByResourceGroup: API.OperationMethod<
   ListConfigurationGroupValueByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListConfigurationGroupValueByResourceGroupRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ConfigurationGroupValueListResult>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListConfigurationGroupValueByResourceGroupRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ConfigurationGroupValueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3925,8 +3925,8 @@ export const ListConfigurationGroupValueBySubscription: API.OperationMethod<
   ListConfigurationGroupValueBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListConfigurationGroupValueBySubscriptionRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ConfigurationGroupValueListResult>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListConfigurationGroupValueBySubscriptionRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ConfigurationGroupValueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3940,8 +3940,8 @@ export const ListNetworkFunctionByResourceGroup: API.OperationMethod<
   ListNetworkFunctionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListNetworkFunctionByResourceGroupRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<NetworkFunctionListResult>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListNetworkFunctionByResourceGroupRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<NetworkFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3955,8 +3955,8 @@ export const ListNetworkFunctionBySubscription: API.OperationMethod<
   ListNetworkFunctionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListNetworkFunctionBySubscriptionRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<NetworkFunctionListResult>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListNetworkFunctionBySubscriptionRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<NetworkFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3971,11 +3971,11 @@ export const ListNetworkFunctionDefinitionGroupByPublisher: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    1200,
+    __c75,
+    0,
   ) as any as S.Schema<ListNetworkFunctionDefinitionGroupByPublisherRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<NetworkFunctionDefinitionGroupListResult>,
+  output: __S(1202, __c75, 2) as any as S.Schema<NetworkFunctionDefinitionGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3991,11 +3991,11 @@ export const ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGrou
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    1216,
+    __c76,
+    0,
   ) as any as S.Schema<ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGroupRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<NetworkFunctionDefinitionVersionListResult>,
+  output: __S(1218, __c76, 2) as any as S.Schema<NetworkFunctionDefinitionVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4009,8 +4009,8 @@ export const ListNetworkServiceDesignGroupByPublisher: API.OperationMethod<
   ListNetworkServiceDesignGroupByPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListNetworkServiceDesignGroupByPublisherRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<NetworkServiceDesignGroupListResult>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListNetworkServiceDesignGroupByPublisherRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<NetworkServiceDesignGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4025,11 +4025,11 @@ export const ListNetworkServiceDesignVersionByNetworkServiceDesignGroup: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    1248,
+    __c78,
+    0,
   ) as any as S.Schema<ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<NetworkServiceDesignVersionListResult>,
+  output: __S(1250, __c78, 2) as any as S.Schema<NetworkServiceDesignVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4043,8 +4043,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1268, __c79, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4058,8 +4058,8 @@ export const ListProxyArtifact: API.OperationMethod<
   ListProxyArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListProxyArtifactRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ProxyArtifactOverviewListResult>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListProxyArtifactRequest>,
+  output: __S(1363, __c85, 3) as any as S.Schema<ProxyArtifactOverviewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4073,8 +4073,8 @@ export const ListPublisherByResourceGroup: API.OperationMethod<
   ListPublisherByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListPublisherByResourceGroupRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<PublisherListResult>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListPublisherByResourceGroupRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4088,8 +4088,8 @@ export const ListPublisherBySubscription: API.OperationMethod<
   ListPublisherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListPublisherBySubscriptionRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<PublisherListResult>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListPublisherBySubscriptionRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +4103,8 @@ export const ListSiteByResourceGroup: API.OperationMethod<
   ListSiteByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListSiteByResourceGroupRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<SiteListResult>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListSiteByResourceGroupRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<SiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +4118,8 @@ export const ListSiteBySubscription: API.OperationMethod<
   ListSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListSiteBySubscriptionRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<SiteListResult>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListSiteBySubscriptionRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<SiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4133,8 +4133,8 @@ export const ListSiteNetworkServiceByResourceGroup: API.OperationMethod<
   ListSiteNetworkServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListSiteNetworkServiceByResourceGroupRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<SiteNetworkServiceListResult>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListSiteNetworkServiceByResourceGroupRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<SiteNetworkServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4148,8 +4148,8 @@ export const ListSiteNetworkServiceBySubscription: API.OperationMethod<
   ListSiteNetworkServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListSiteNetworkServiceBySubscriptionRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<SiteNetworkServiceListResult>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListSiteNetworkServiceBySubscriptionRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<SiteNetworkServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4164,14 +4164,14 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    180,
-    __c22,
-    4,
+    1520,
+    __c95,
+    0,
   ) as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateRequest>,
   output: __S(
-    76,
-    __c9,
-    4,
+    560,
+    __c35,
+    0,
   ) as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4187,14 +4187,14 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    1553,
+    __c97,
+    1,
   ) as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateRequest>,
   output: __S(
-    184,
-    __c23,
-    0,
+    1555,
+    __c97,
+    3,
   ) as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4209,8 +4209,8 @@ export const NetworkFunctionsCreateOrUpdate: API.OperationMethod<
   NetworkFunctionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<NetworkFunctionsCreateOrUpdateRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<NetworkFunctionsCreateOrUpdateResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<NetworkFunctionsCreateOrUpdateRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<NetworkFunctionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4224,8 +4224,8 @@ export const NetworkServiceDesignGroupsCreateOrUpdate: API.OperationMethod<
   NetworkServiceDesignGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4239,8 +4239,8 @@ export const NetworkServiceDesignVersionsCreateOrUpdate: API.OperationMethod<
   NetworkServiceDesignVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponse>,
+  input: __S(1650, __c103, 2) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequest>,
+  output: __S(694, __c43, 6) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4254,8 +4254,8 @@ export const PublishersCreateOrUpdate: API.OperationMethod<
   PublishersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<PublishersCreateOrUpdateRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<PublishersCreateOrUpdateResponse>,
+  input: __S(1665, __c104, 1) as any as S.Schema<PublishersCreateOrUpdateRequest>,
+  output: __S(1666, __c104, 2) as any as S.Schema<PublishersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4269,8 +4269,8 @@ export const RemoveArtifactStorePrivateEndPoints: API.OperationMethod<
   RemoveArtifactStorePrivateEndPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<RemoveArtifactStorePrivateEndPointsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RemoveArtifactStorePrivateEndPointsResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<RemoveArtifactStorePrivateEndPointsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<RemoveArtifactStorePrivateEndPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4284,8 +4284,8 @@ export const SiteNetworkServicesCreateOrUpdate: API.OperationMethod<
   SiteNetworkServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponse>,
+  input: __S(1698, __c106, 2) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4299,8 +4299,8 @@ export const SitesCreateOrUpdate: API.OperationMethod<
   SitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<SitesCreateOrUpdateRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<SitesCreateOrUpdateResponse>,
+  input: __S(1713, __c107, 1) as any as S.Schema<SitesCreateOrUpdateRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<SitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4314,8 +4314,8 @@ export const UpdateArtifactManifest: API.OperationMethod<
   UpdateArtifactManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdateArtifactManifestRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateArtifactManifestResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<UpdateArtifactManifestRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateArtifactManifestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4329,8 +4329,8 @@ export const UpdateArtifactManifestState: API.OperationMethod<
   UpdateArtifactManifestStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdateArtifactManifestStateRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ArtifactManifestUpdateState>,
+  input: __S(1744, __c109, 0) as any as S.Schema<UpdateArtifactManifestStateRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<ArtifactManifestUpdateState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4344,8 +4344,8 @@ export const UpdateArtifactStore: API.OperationMethod<
   UpdateArtifactStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateArtifactStoreRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateArtifactStoreResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateArtifactStoreRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateArtifactStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4359,8 +4359,8 @@ export const UpdateConfigurationGroupSchema: API.OperationMethod<
   UpdateConfigurationGroupSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateConfigurationGroupSchemaRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateConfigurationGroupSchemaResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateConfigurationGroupSchemaRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<UpdateConfigurationGroupSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4374,8 +4374,8 @@ export const UpdateConfigurationGroupSchemaState: API.OperationMethod<
   UpdateConfigurationGroupSchemaStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateConfigurationGroupSchemaStateRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ConfigurationGroupSchemaVersionUpdateState>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateConfigurationGroupSchemaStateRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<ConfigurationGroupSchemaVersionUpdateState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4389,8 +4389,8 @@ export const UpdateConfigurationGroupValueTags: API.OperationMethod<
   UpdateConfigurationGroupValueTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateConfigurationGroupValueTagsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateConfigurationGroupValueTagsResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<UpdateConfigurationGroupValueTagsRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<UpdateConfigurationGroupValueTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4404,8 +4404,8 @@ export const UpdateNetworkFunctionDefinitionGroup: API.OperationMethod<
   UpdateNetworkFunctionDefinitionGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateNetworkFunctionDefinitionGroupRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateNetworkFunctionDefinitionGroupResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateNetworkFunctionDefinitionGroupRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateNetworkFunctionDefinitionGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4419,8 +4419,8 @@ export const UpdateNetworkFunctionDefinitionVersion: API.OperationMethod<
   UpdateNetworkFunctionDefinitionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4434,8 +4434,12 @@ export const UpdateNetworkFunctionDefinitionVersionState: API.OperationMethod<
   UpdateNetworkFunctionDefinitionVersionStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionStateRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>,
+  input: __S(
+    1888,
+    __c118,
+    0,
+  ) as any as S.Schema<UpdateNetworkFunctionDefinitionVersionStateRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4449,8 +4453,8 @@ export const UpdateNetworkFunctionTags: API.OperationMethod<
   UpdateNetworkFunctionTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateNetworkFunctionTagsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateNetworkFunctionTagsResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<UpdateNetworkFunctionTagsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<UpdateNetworkFunctionTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4464,8 +4468,8 @@ export const UpdateNetworkServiceDesignGroup: API.OperationMethod<
   UpdateNetworkServiceDesignGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<UpdateNetworkServiceDesignGroupRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<UpdateNetworkServiceDesignGroupResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateNetworkServiceDesignGroupRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<UpdateNetworkServiceDesignGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4479,8 +4483,8 @@ export const UpdateNetworkServiceDesignVersion: API.OperationMethod<
   UpdateNetworkServiceDesignVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateNetworkServiceDesignVersionRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<UpdateNetworkServiceDesignVersionResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<UpdateNetworkServiceDesignVersionRequest>,
+  output: __S(694, __c43, 6) as any as S.Schema<UpdateNetworkServiceDesignVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4494,8 +4498,8 @@ export const UpdateNetworkServiceDesignVersionState: API.OperationMethod<
   UpdateNetworkServiceDesignVersionStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateNetworkServiceDesignVersionStateRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<NetworkServiceDesignVersionUpdateState>,
+  input: __S(1952, __c122, 0) as any as S.Schema<UpdateNetworkServiceDesignVersionStateRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<NetworkServiceDesignVersionUpdateState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4509,8 +4513,8 @@ export const UpdateProxyArtifactState: API.OperationMethod<
   UpdateProxyArtifactStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<UpdateProxyArtifactStateRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<UpdateProxyArtifactStateResponse>,
+  input: __S(1969, __c123, 1) as any as S.Schema<UpdateProxyArtifactStateRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<UpdateProxyArtifactStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4524,8 +4528,8 @@ export const UpdatePublisher: API.OperationMethod<
   UpdatePublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<UpdatePublisherRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdatePublisherResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<UpdatePublisherRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdatePublisherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4539,8 +4543,8 @@ export const UpdateSiteNetworkServiceTags: API.OperationMethod<
   UpdateSiteNetworkServiceTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<UpdateSiteNetworkServiceTagsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<UpdateSiteNetworkServiceTagsResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<UpdateSiteNetworkServiceTagsRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<UpdateSiteNetworkServiceTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4554,8 +4558,8 @@ export const UpdateSiteTags: API.OperationMethod<
   UpdateSiteTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateSiteTagsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UpdateSiteTagsResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<UpdateSiteTagsRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<UpdateSiteTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4567,22 +4571,11 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           artifactStoreName: S.String.pipe(T.Label()),
-          networkFabricControllerIds: S.optional(__S(1, __c0, 1)),
+          networkFabricControllerIds: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4594,366 +4587,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddArtifactStoreNetworkFabricControllerEndPointsRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddArtifactStoreNetworkFabricControllerEndPointsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          artifactStoreName: S.String.pipe(T.Label()),
-          manualPrivateEndPointConnections: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/approvePrivateEndPoints",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveArtifactStorePrivateEndPointsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApproveArtifactStorePrivateEndPointsResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          artifactName: S.optional(S.String),
-          artifactType: S.optional(S.String),
-          artifactVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManifestArtifactFormat" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          artifacts: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ArtifactManifestPropertiesFormatInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          artifactStoreName: S.String.pipe(T.Label()),
-          artifactManifestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ArtifactManifestsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          artifactManifestState: S.optional(S.String),
-          artifacts: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ArtifactManifestPropertiesFormat",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
-        identifier: "ArtifactManifestsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          storeType: S.optional(S.String),
-          backingResourcePublicNetworkAccess: S.optional(S.String),
-          replicationStrategy: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "ArtifactStorePropertiesFormatInput",
+        identifier:
+          "AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          artifactStoreName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ArtifactStoresCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          storeType: S.optional(S.String),
-          backingResourcePublicNetworkAccess: S.optional(S.String),
-          replicationStrategy: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(__S(14, __c1, 6)),
-          storageResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ArtifactStorePropertiesFormat",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "ArtifactStoresCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          schemaDefinition: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupSchemaPropertiesFormatInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          configurationGroupSchemaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationGroupSchemasCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          versionState: S.optional(S.String),
-          description: S.optional(S.String),
-          schemaDefinition: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupSchemaPropertiesFormat",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupSchemasCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idType: S.String,
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference",
-      });
+      return S.Array(__S(16, __c1, 0));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          publisherScope: S.optional(S.String),
-          configurationGroupSchemaResourceReference: S.optional(__S(23, __c2, 7)),
-          configurationType: S.String,
-          configurationValue: S.optional(S.String),
-          secretConfigurationValue: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupValuePropertiesFormatInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationGroupValueName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationGroupValuesCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          idType: S.String,
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          publisherName: S.optional(S.String),
-          publisherScope: S.optional(S.String),
-          configurationGroupSchemaName: S.optional(S.String),
-          configurationGroupSchemaOfferingLocation: S.optional(S.String),
-          configurationGroupSchemaResourceReference: S.optional(__S(26, __c3, 2)),
-          configurationType: S.String,
-          configurationValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupValuePropertiesFormat",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationGroupValuesCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          artifactStoreName: S.String.pipe(T.Label()),
-          artifactManifestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteArtifactManifestRequest",
-      });
-    case 6:
       return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteArtifactManifestResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          artifactStoreName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteArtifactStoreRequest",
+        identifier: "AddArtifactStoreNetworkFabricControllerEndPointsResponse",
       });
   }
 }
@@ -4966,37 +4625,31 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           artifactStoreName: S.String.pipe(T.Label()),
-          networkFabricControllerIds: S.optional(__S(1, __c0, 1)),
+          manualPrivateEndPointConnections: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/approvePrivateEndPoints",
             code: 200,
             apiVersion: "2023-09-01",
           }),
         ),
       ).annotate({
-        identifier: "DeleteArtifactStoreNetworkFabricControllerEndPointsRequest",
+        identifier: "ApproveArtifactStorePrivateEndPointsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          configurationGroupSchemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationGroupSchemaRequest",
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApproveArtifactStorePrivateEndPointsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5013,7 +4666,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteConfigurationGroupValueRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5030,7 +4687,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkFunctionRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5048,7 +4709,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkFunctionDefinitionGroupRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5067,7 +4732,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkFunctionDefinitionVersionRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5085,7 +4754,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkServiceDesignGroupRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5106,7 +4779,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5123,7 +4796,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePublisherRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5138,7 +4815,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSiteRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5155,7 +4836,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteSiteNetworkServiceRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           relativePath: S.String,
@@ -5164,14 +4849,14 @@ function __c5(j: number): any {
           apiVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestMetadata" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFunctionName: S.String.pipe(T.Label()),
           serviceEndpoint: S.String,
-          requestMetadata: __S(43, __c5, 3),
+          requestMetadata: __S(240, __c15, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5183,7 +4868,108 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExecuteNetworkFunctionRequestRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          artifacts: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "ArtifactManifestPropertiesFormatInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          artifactStoreName: S.String.pipe(T.Label()),
+          artifactManifestName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(256, __c16, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ArtifactManifestsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          artifactName: S.optional(S.String),
+          artifactType: S.optional(S.String),
+          artifactVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManifestArtifactFormat" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          artifactManifestState: S.optional(S.String),
+          artifacts: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "ArtifactManifestPropertiesFormat",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(274, __c17, 2)),
+        }),
+      ).annotate({
+        identifier: "ArtifactManifestsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5202,7 +4988,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetArtifactManifestRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5218,21 +5008,25 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetArtifactStoreRequest" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(736, __c46, 0)),
         }),
       ).annotate({ identifier: "GetArtifactStoreResponse" });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5250,7 +5044,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetComponentRequest" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5262,9 +5060,9 @@ function __c6(j: number): any {
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Deployment" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5273,9 +5071,9 @@ function __c6(j: number): any {
           lastSeenTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PodEvent" });
+    case 3:
+      return S.Array(__S(402, __c25, 2));
     case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5284,12 +5082,12 @@ function __c6(j: number): any {
           ready: S.optional(S.Number),
           status: S.optional(S.String),
           creationTime: S.optional(S.String),
-          events: S.optional(__S(52, __c6, 4)),
+          events: S.optional(__S(403, __c25, 3)),
         }),
       ).annotate({ identifier: "Pod" });
+    case 5:
+      return S.Array(__S(404, __c25, 4));
     case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5300,13 +5098,9 @@ function __c6(j: number): any {
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaSet" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(406, __c25, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5316,9 +5110,9 @@ function __c7(j: number): any {
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatefulSet" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(408, __c25, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5331,51 +5125,51 @@ function __c7(j: number): any {
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DaemonSet" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(410, __c25, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(50, __c6, 2)),
-          pods: S.optional(__S(54, __c6, 6)),
-          replicaSets: S.optional(__S(56, __c7, 0)),
-          statefulSets: S.optional(__S(58, __c7, 2)),
-          daemonSets: S.optional(__S(60, __c7, 4)),
+          deployments: S.optional(__S(401, __c25, 1)),
+          pods: S.optional(__S(405, __c25, 5)),
+          replicaSets: S.optional(__S(407, __c25, 7)),
+          statefulSets: S.optional(__S(409, __c25, 9)),
+          daemonSets: S.optional(__S(411, __c25, 11)),
         }),
       ).annotate({ identifier: "Resources" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          resources: S.optional(__S(61, __c7, 5)),
+          resources: S.optional(__S(412, __c25, 12)),
           nextExpectedUpdateAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeploymentStatusProperties",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           deploymentProfile: S.optional(S.String),
-          deploymentStatus: S.optional(__S(62, __c7, 6)),
+          deploymentStatus: S.optional(__S(413, __c25, 13)),
         }),
       ).annotate({ identifier: "ComponentProperties" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(63, __c7, 7)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          properties: S.optional(__S(414, __c25, 14)),
         }),
       ).annotate({ identifier: "GetComponentResponse" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5393,7 +5187,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetConfigurationGroupSchemaRequest",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5410,7 +5208,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetConfigurationGroupValueRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5427,9 +5229,41 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetNetworkFunctionRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, __S(480, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(481, __c30, 1))),
+        }),
+      ).annotate({
+        identifier: "GetNetworkFunctionResponseIdentity",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5438,58 +5272,42 @@ function __c8(j: number): any {
           networkFunctionDefinitionGroupName: S.optional(S.String),
           networkFunctionDefinitionVersion: S.optional(S.String),
           networkFunctionDefinitionOfferingLocation: S.optional(S.String),
-          networkFunctionDefinitionVersionResourceReference: S.optional(__S(26, __c3, 2)),
+          networkFunctionDefinitionVersionResourceReference: S.optional(__S(1296, __c81, 0)),
           nfviType: S.optional(S.String),
           nfviId: S.optional(S.String),
           allowSoftwareUpdate: S.optional(S.Boolean),
           configurationType: S.String,
-          roleOverrideValues: S.optional(__S(68, __c8, 4)),
+          roleOverrideValues: S.optional(__S(464, __c29, 0)),
           deploymentValues: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFunctionPropertiesFormat",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 7:
-      return S.Record(S.String, __S(70, __c8, 6));
   }
 }
-function __c9(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(71, __c8, 7))),
-        }),
-      ).annotate({
-        identifier: "GetNetworkFunctionResponseIdentity",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(496, __c31, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(72, __c9, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
         }),
       ).annotate({
         identifier: "GetNetworkFunctionResponse",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5507,7 +5325,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetNetworkFunctionDefinitionGroupRequest",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5516,21 +5338,29 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionDefinitionGroupPropertiesFormat",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(75, __c9, 3)),
+          properties: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({
         identifier: "GetNetworkFunctionDefinitionGroupResponse",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5549,7 +5379,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetNetworkFunctionDefinitionVersionRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5562,23 +5396,27 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionDefinitionVersionPropertiesFormat",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(78, __c9, 6)),
+          properties: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({
         identifier: "GetNetworkFunctionDefinitionVersionResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5598,21 +5436,29 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetNetworkServiceDesignGroupRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(75, __c9, 3)),
+          properties: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({
         identifier: "GetNetworkServiceDesignGroupResponse",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5631,70 +5477,162 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetNetworkServiceDesignVersionRequest",
       });
-    case 3:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16, __c1, 0));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NfviDetails" });
-    case 5:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 6:
+    case 1:
+      return S.Record(S.String, __S(688, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          installDependsOn: S.optional(__S(68, __c8, 4)),
-          uninstallDependsOn: S.optional(__S(68, __c8, 4)),
-          updateDependsOn: S.optional(__S(68, __c8, 4)),
+          installDependsOn: S.optional(__S(464, __c29, 0)),
+          uninstallDependsOn: S.optional(__S(464, __c29, 0)),
+          updateDependsOn: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({
         identifier: "ResourceElementTemplateDependsOnProfile",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           type: S.String,
-          dependsOnProfile: S.optional(__S(86, __c10, 6)),
+          dependsOnProfile: S.optional(__S(690, __c43, 2)),
           configuration: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ResourceElementTemplate" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(691, __c43, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           versionState: S.optional(S.String),
           description: S.optional(S.String),
-          configurationGroupSchemaReferences: S.optional(__S(83, __c10, 3)),
-          nfvisFromSite: S.optional(__S(85, __c10, 5)),
-          resourceElementTemplates: S.optional(__S(88, __c11, 0)),
+          configurationGroupSchemaReferences: S.optional(__S(672, __c42, 0)),
+          nfvisFromSite: S.optional(__S(689, __c43, 1)),
+          resourceElementTemplates: S.optional(__S(692, __c43, 4)),
         }),
       ).annotate({
         identifier: "NetworkServiceDesignVersionPropertiesFormat",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(89, __c11, 1)),
+          properties: S.optional(__S(693, __c43, 5)),
         }),
       ).annotate({
         identifier: "GetNetworkServiceDesignVersionResponse",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeType: S.optional(S.String),
+          backingResourcePublicNetworkAccess: S.optional(S.String),
+          replicationStrategy: S.optional(S.String),
+          managedResourceGroupConfiguration: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "ArtifactStorePropertiesFormatInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          artifactStoreName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(704, __c44, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ArtifactStoresCreateOrUpdateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          storeType: S.optional(S.String),
+          backingResourcePublicNetworkAccess: S.optional(S.String),
+          replicationStrategy: S.optional(S.String),
+          managedResourceGroupConfiguration: S.optional(__S(720, __c45, 0)),
+          storageResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ArtifactStorePropertiesFormat",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(736, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "ArtifactStoresCreateOrUpdateResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5711,7 +5649,22 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProxyArtifactRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(785, __c49, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(769, __c48, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProxyArtifactVersionsOverviewListResult",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           artifactType: S.optional(S.String),
@@ -5721,32 +5674,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProxyArtifactOverviewPropertiesValue",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(92, __c11, 4)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          properties: S.optional(__S(784, __c49, 0)),
         }),
       ).annotate({
         identifier: "ProxyArtifactVersionsListOverview",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(94, __c11, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProxyArtifactVersionsOverviewListResult",
-      });
   }
 }
-function __c12(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5763,7 +5705,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPublisherRequest" });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5772,20 +5718,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PublisherPropertiesFormat",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
-          identity: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
         }),
       ).annotate({ identifier: "GetPublisherResponse" });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5800,7 +5754,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSiteRequest" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5809,21 +5767,21 @@ function __c12(j: number): any {
           customLocationReference: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "NFVIs" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(864, __c54, 0));
+    case 2:
+      return S.Array(__S(16, __c1, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          nfvis: S.optional(__S(101, __c12, 5)),
-          siteNetworkServiceReferences: S.optional(__S(102, __c12, 6)),
+          nfvis: S.optional(__S(865, __c54, 1)),
+          siteNetworkServiceReferences: S.optional(__S(866, __c54, 2)),
         }),
       ).annotate({ identifier: "SitePropertiesFormat" });
   }
 }
-function __c13(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5831,13 +5789,17 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(103, __c12, 7)),
+          properties: S.optional(__S(867, __c54, 3)),
         }),
       ).annotate({ identifier: "GetSiteResponse" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5854,49 +5816,61 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetSiteNetworkServiceRequest",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(__S(14, __c1, 6)),
-          siteReference: S.optional(__S(0, __c0, 0)),
+          managedResourceGroupConfiguration: S.optional(__S(720, __c45, 0)),
+          siteReference: S.optional(__S(16, __c1, 0)),
           publisherName: S.optional(S.String),
           publisherScope: S.optional(S.String),
           networkServiceDesignGroupName: S.optional(S.String),
           networkServiceDesignVersionName: S.optional(S.String),
           networkServiceDesignVersionOfferingLocation: S.optional(S.String),
-          networkServiceDesignVersionResourceReference: S.optional(__S(26, __c3, 2)),
-          desiredStateConfigurationGroupValueReferences: S.optional(__S(83, __c10, 3)),
+          networkServiceDesignVersionResourceReference: S.optional(__S(1296, __c81, 0)),
+          desiredStateConfigurationGroupValueReferences: S.optional(__S(672, __c42, 0)),
           lastStateNetworkServiceDesignVersionName: S.optional(S.String),
-          lastStateConfigurationGroupValueReferences: S.optional(__S(83, __c10, 3)),
+          lastStateConfigurationGroupValueReferences: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({
         identifier: "SiteNetworkServicePropertiesFormat",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(106, __c13, 2)),
-          identity: S.optional(__S(72, __c9, 0)),
-          sku: S.optional(__S(107, __c13, 3)),
+          properties: S.optional(__S(912, __c57, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
+          sku: S.optional(__S(913, __c57, 1)),
         }),
       ).annotate({
         identifier: "GetSiteNetworkServiceResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5914,34 +5888,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListArtifactManifestByArtifactStoreRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(274, __c17, 2)),
         }),
       ).annotate({ identifier: "ArtifactManifest" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(111, __c13, 7)),
+          value: S.optional(__S(946, __c59, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ArtifactManifestListResult",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5960,7 +5934,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListArtifactManifestCredentialRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           containerName: S.optional(S.String),
@@ -5970,24 +5944,28 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ArtifactManifestContainerCredential",
       });
+    case 2:
+      return S.Array(__S(961, __c60, 1));
     case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           credentialType: S.String,
           username: S.optional(S.String),
           acrToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           acrServerUrl: S.optional(S.String),
-          repositories: S.optional(__S(68, __c8, 4)),
+          repositories: S.optional(__S(464, __c29, 0)),
           expiry: S.optional(S.String),
-          containerCredentials: S.optional(__S(115, __c14, 3)),
+          containerCredentials: S.optional(__S(962, __c60, 2)),
           storageAccountId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListArtifactManifestCredentialResponse",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6004,18 +5982,18 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListArtifactStoreByPublisherRequest",
       });
-    case 6:
-      return S.Array(__S(47, __c5, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(118, __c14, 6)),
+          value: S.optional(__S(977, __c61, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactStoreListResult" });
   }
 }
-function __c15(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6038,23 +6016,27 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          networkFabricControllerIds: S.optional(__S(1, __c0, 1)),
+          networkFabricControllerIds: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "ArtifactStoreNetworkFabricControllerEndPoints",
       });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(993, __c62, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(122, __c15, 2)),
+          value: S.optional(__S(994, __c62, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ArtifactStoreNetworkFabricControllerEndPointsList",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6072,20 +6054,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListArtifactStorePrivateEndPointsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          manualPrivateEndPointConnections: S.optional(__S(1, __c0, 1)),
+          manualPrivateEndPointConnections: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "ArtifactStorePrivateEndPointsFormat",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(126, __c15, 6)),
+          value: S.optional(__S(1010, __c63, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6093,7 +6075,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6113,15 +6095,86 @@ function __c16(j: number): any {
         identifier: "ListComponentByNetworkFunctionRequest",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(415, __c25, 15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c16, 1)),
+          value: S.optional(__S(1025, __c64, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentListResult" });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          schemaDefinition: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupSchemaPropertiesFormatInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          configurationGroupSchemaName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(1040, __c65, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationGroupSchemasCreateOrUpdateRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          versionState: S.optional(S.String),
+          description: S.optional(S.String),
+          schemaDefinition: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupSchemaPropertiesFormat",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupSchemasCreateOrUpdateResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6138,30 +6191,34 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListConfigurationGroupSchemaByPublisherRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "ConfigurationGroupSchema" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1089, __c68, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(133, __c16, 5)),
+          value: S.optional(__S(1090, __c68, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigurationGroupSchemaListResult",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6179,7 +6236,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6187,24 +6244,28 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
+          properties: S.optional(__S(1312, __c82, 0)),
         }),
       ).annotate({ identifier: "ConfigurationGroupValue" });
     case 1:
-      return S.Array(__S(136, __c17, 0));
+      return S.Array(__S(1120, __c70, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(137, __c17, 1)),
+          value: S.optional(__S(1121, __c70, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigurationGroupValueListResult",
       });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6219,7 +6280,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListConfigurationGroupValueBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6235,26 +6300,30 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListNetworkFunctionByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(496, __c31, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(72, __c9, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
         }),
       ).annotate({ identifier: "NetworkFunction" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1168, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(142, __c17, 6)),
+          value: S.optional(__S(1169, __c73, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6262,7 +6331,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6279,7 +6348,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListNetworkFunctionBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6296,18 +6369,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListNetworkFunctionDefinitionGroupByPublisherRequest",
       });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
     case 2:
-      return S.Array(__S(76, __c9, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(146, __c18, 2)),
+          value: S.optional(__S(1201, __c75, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFunctionDefinitionGroupListResult",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6325,18 +6402,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGroupRequest",
       });
-    case 5:
-      return S.Array(__S(79, __c9, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(149, __c18, 5)),
+          value: S.optional(__S(1217, __c76, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFunctionDefinitionVersionListResult",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6353,22 +6434,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListNetworkServiceDesignGroupByPublisherRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(81, __c10, 1));
     case 1:
+      return S.Array(__S(640, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(152, __c19, 0)),
+          value: S.optional(__S(1233, __c77, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkServiceDesignGroupListResult",
       });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6386,18 +6467,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(694, __c43, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(155, __c19, 3)),
+          value: S.optional(__S(1249, __c78, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkServiceDesignVersionListResult",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6408,7 +6493,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6417,30 +6502,131 @@ function __c19(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(158, __c19, 6)),
+          display: S.optional(__S(1265, __c79, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1266, __c79, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(160, __c20, 0)),
+          value: S.optional(__S(1267, __c79, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisherScope: S.optional(S.String),
+          configurationGroupSchemaResourceReference: S.optional(__S(1344, __c84, 0)),
+          configurationType: S.String,
+          configurationValue: S.optional(S.String),
+          secretConfigurationValue: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupValuePropertiesFormatInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationGroupValueName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(1280, __c80, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationGroupValuesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idType: S.String,
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          publisherName: S.optional(S.String),
+          publisherScope: S.optional(S.String),
+          configurationGroupSchemaName: S.optional(S.String),
+          configurationGroupSchemaOfferingLocation: S.optional(S.String),
+          configurationGroupSchemaResourceReference: S.optional(__S(1296, __c81, 0)),
+          configurationType: S.String,
+          configurationValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupValuePropertiesFormat",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(1312, __c82, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationGroupValuesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idType: S.String,
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6456,27 +6642,31 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProxyArtifactRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "Resource" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1361, __c85, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(164, __c20, 4)),
+          value: S.optional(__S(1362, __c85, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProxyArtifactOverviewListResult",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6492,20 +6682,24 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListPublisherByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(98, __c12, 2));
   }
 }
-function __c21(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(832, __c52, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(167, __c20, 7)),
+          value: S.optional(__S(1392, __c87, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherListResult" });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6520,7 +6714,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListPublisherBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6536,16 +6734,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSiteByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(104, __c13, 0));
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(880, __c55, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(171, __c21, 3)),
+          value: S.optional(__S(1440, __c90, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteListResult" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6560,7 +6766,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSiteBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6576,36 +6786,40 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSiteNetworkServiceByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(106, __c13, 2)),
-          identity: S.optional(__S(72, __c9, 0)),
-          sku: S.optional(__S(107, __c13, 3)),
+          properties: S.optional(__S(912, __c57, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
+          sku: S.optional(__S(913, __c57, 1)),
         }),
       ).annotate({ identifier: "SiteNetworkService" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
     case 1:
+      return S.Array(__S(1488, __c93, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(176, __c22, 0)),
+          value: S.optional(__S(1489, __c93, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SiteNetworkServiceListResult",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6620,24 +6834,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListSiteNetworkServiceBySubscriptionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkFunctionDefinitionGroupPropertiesFormatInput",
-      });
-    case 4:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(179, __c22, 3)),
+          properties: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6649,7 +6859,23 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionDefinitionGroupsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkFunctionDefinitionGroupPropertiesFormatInput",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -6660,7 +6886,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionDefinitionVersionPropertiesFormatInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6668,9 +6894,9 @@ function __c22(j: number): any {
           publisherName: S.String.pipe(T.Label()),
           networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
           networkFunctionDefinitionVersionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(181, __c22, 5)),
+          properties: S.optional(__S(1552, __c97, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6682,27 +6908,27 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionDefinitionVersionsCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.Record(S.String, S.String);
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(183, __c22, 7)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(1554, __c97, 2)),
           location: S.String,
-          properties: S.optional(__S(78, __c9, 6)),
+          properties: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({
         identifier: "NetworkFunctionDefinitionVersionsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisherName: S.optional(S.String),
@@ -6710,40 +6936,29 @@ function __c23(j: number): any {
           networkFunctionDefinitionGroupName: S.optional(S.String),
           networkFunctionDefinitionVersion: S.optional(S.String),
           networkFunctionDefinitionOfferingLocation: S.optional(S.String),
-          networkFunctionDefinitionVersionResourceReference: S.optional(__S(23, __c2, 7)),
+          networkFunctionDefinitionVersionResourceReference: S.optional(__S(1344, __c84, 0)),
           nfviType: S.optional(S.String),
           nfviId: S.optional(S.String),
           allowSoftwareUpdate: S.optional(S.Boolean),
           configurationType: S.String,
-          roleOverrideValues: S.optional(__S(68, __c8, 4)),
+          roleOverrideValues: S.optional(__S(464, __c29, 0)),
           deploymentValues: S.optional(S.String),
           secretDeploymentValues: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({
         identifier: "NetworkFunctionPropertiesFormatInput",
       });
-    case 2:
-      return S.Record(S.String, __S(30, __c3, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(186, __c23, 2))),
-        }),
-      ).annotate({
-        identifier: "NetworkFunctionsCreateOrUpdateRequestIdentity",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFunctionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(185, __c23, 1)),
+          properties: S.optional(__S(1568, __c98, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(187, __c23, 3)),
+          identity: S.optional(__S(1585, __c99, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6755,16 +6970,66 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "NetworkFunctionsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1616, __c101, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(1584, __c99, 0))),
+        }),
+      ).annotate({
+        identifier: "NetworkFunctionsCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          artifactStoreName: S.String.pipe(T.Label()),
+          artifactManifestName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteArtifactManifestRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteArtifactManifestResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           networkServiceDesignGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(179, __c22, 3)),
+          properties: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6776,24 +7041,24 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "NetworkServiceDesignGroupsCreateOrUpdateRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(688, __c43, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          configurationGroupSchemaReferences: S.optional(__S(83, __c10, 3)),
-          nfvisFromSite: S.optional(__S(190, __c23, 6)),
-          resourceElementTemplates: S.optional(__S(88, __c11, 0)),
+          configurationGroupSchemaReferences: S.optional(__S(672, __c42, 0)),
+          nfvisFromSite: S.optional(__S(1648, __c103, 0)),
+          resourceElementTemplates: S.optional(__S(692, __c43, 4)),
         }),
       ).annotate({
         identifier: "NetworkServiceDesignVersionPropertiesFormatInput",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6801,9 +7066,9 @@ function __c24(j: number): any {
           publisherName: S.String.pipe(T.Label()),
           networkServiceDesignGroupName: S.String.pipe(T.Label()),
           networkServiceDesignVersionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(191, __c23, 7)),
+          properties: S.optional(__S(1649, __c103, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6815,7 +7080,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "NetworkServiceDesignVersionsCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
@@ -6823,16 +7092,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PublisherPropertiesFormatInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(193, __c24, 1)),
-          identity: S.optional(__S(187, __c23, 3)),
+          properties: S.optional(__S(1664, __c104, 0)),
+          identity: S.optional(__S(1585, __c99, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6844,29 +7113,33 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PublishersCreateOrUpdateRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
-          identity: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
+          identity: S.optional(__S(482, __c30, 2)),
         }),
       ).annotate({
         identifier: "PublishersCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           artifactStoreName: S.String.pipe(T.Label()),
-          manualPrivateEndPointConnections: S.optional(__S(1, __c0, 1)),
+          manualPrivateEndPointConnections: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6878,35 +7151,39 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RemoveArtifactStorePrivateEndPointsRequest",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          managedResourceGroupConfiguration: S.optional(__S(14, __c1, 6)),
-          siteReference: S.optional(__S(0, __c0, 0)),
+          managedResourceGroupConfiguration: S.optional(__S(720, __c45, 0)),
+          siteReference: S.optional(__S(16, __c1, 0)),
           publisherScope: S.optional(S.String),
-          networkServiceDesignVersionResourceReference: S.optional(__S(23, __c2, 7)),
-          desiredStateConfigurationGroupValueReferences: S.optional(__S(83, __c10, 3)),
+          networkServiceDesignVersionResourceReference: S.optional(__S(1344, __c84, 0)),
+          desiredStateConfigurationGroupValueReferences: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({
         identifier: "SiteNetworkServicePropertiesFormatInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "SkuInput" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteNetworkServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(197, __c24, 5)),
-          identity: S.optional(__S(187, __c23, 3)),
-          sku: S.optional(__S(198, __c24, 6)),
+          properties: S.optional(__S(1696, __c106, 0)),
+          identity: S.optional(__S(1585, __c99, 1)),
+          sku: S.optional(__S(1697, __c106, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6920,12 +7197,12 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nfvis: S.optional(__S(101, __c12, 5)),
+          nfvis: S.optional(__S(865, __c54, 1)),
         }),
       ).annotate({
         identifier: "SitePropertiesFormatInput",
@@ -6936,9 +7213,9 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(200, __c25, 0)),
+          properties: S.optional(__S(1712, __c107, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6956,15 +7233,19 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          tags: S.optional(__S(320, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(103, __c12, 7)),
+          properties: S.optional(__S(867, __c54, 3)),
         }),
       ).annotate({
         identifier: "SitesCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6972,7 +7253,7 @@ function __c25(j: number): any {
           publisherName: S.String.pipe(T.Label()),
           artifactStoreName: S.String.pipe(T.Label()),
           artifactManifestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6984,7 +7265,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateArtifactManifestRequest",
       });
-    case 4:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7004,7 +7289,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateArtifactManifestStateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           artifactManifestState: S.optional(S.String),
@@ -7012,14 +7297,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ArtifactManifestUpdateState",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           artifactStoreName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7031,14 +7320,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateArtifactStoreRequest",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           configurationGroupSchemaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7052,7 +7345,29 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          artifactStoreName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteArtifactStoreRequest",
+      });
+  }
+}
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7073,7 +7388,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationGroupSchemaStateRequest",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionState: S.optional(S.String),
@@ -7081,13 +7400,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ConfigurationGroupSchemaVersionUpdateState",
       });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationGroupValueName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7099,14 +7422,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationGroupValueTagsRequest",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7118,7 +7445,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkFunctionDefinitionGroupRequest",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7126,7 +7457,7 @@ function __c26(j: number): any {
           publisherName: S.String.pipe(T.Label()),
           networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
           networkFunctionDefinitionVersionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7138,7 +7469,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkFunctionDefinitionVersionRequest",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7158,13 +7493,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkFunctionDefinitionVersionStateRequest",
       });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFunctionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7176,14 +7515,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkFunctionTagsRequest",
       });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
           networkServiceDesignGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7197,7 +7540,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7207,7 +7550,7 @@ function __c27(j: number): any {
           publisherName: S.String.pipe(T.Label()),
           networkServiceDesignGroupName: S.String.pipe(T.Label()),
           networkServiceDesignVersionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7219,7 +7562,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkServiceDesignVersionRequest",
       });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7239,7 +7586,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkServiceDesignVersionStateRequest",
       });
-    case 2:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           artifactState: S.optional(S.String),
@@ -7247,7 +7598,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ArtifactChangeStateProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7256,7 +7607,7 @@ function __c27(j: number): any {
           artifactStoreName: S.String.pipe(T.Label()),
           artifactVersionName: S.String.pipe(T.Label()),
           artifactName: S.String.pipe(T.Query()),
-          properties: S.optional(__S(218, __c27, 2)),
+          properties: S.optional(__S(1968, __c123, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7268,13 +7619,40 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateProxyArtifactStateRequest",
       });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           publisherName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          artifactStoreName: S.String.pipe(T.Label()),
+          networkFabricControllerIds: S.optional(__S(32, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteArtifactStoreNetworkFabricControllerEndPointsRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7284,13 +7662,17 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePublisherRequest" });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteNetworkServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7302,13 +7684,17 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSiteNetworkServiceTagsRequest",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7320,7 +7706,28 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateSiteTagsRequest" });
   }
 }
-
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          configurationGroupSchemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationGroupSchemaRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

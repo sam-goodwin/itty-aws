@@ -797,8 +797,8 @@ export const createVisualReviewRepos: API.OperationMethod<
   CreateVisualReviewReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateVisualReviewReposRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Repo>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateVisualReviewReposRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Repo>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const createVisualReviewReposQuarantine: API.OperationMethod<
   CreateVisualReviewReposQuarantineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateVisualReviewReposQuarantineRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<QuarantinedIdentifierEntry>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateVisualReviewReposQuarantineRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<QuarantinedIdentifierEntry>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -835,8 +835,8 @@ export const createVisualReviewReposQuarantineExpire: API.OperationMethod<
   CreateVisualReviewReposQuarantineExpireError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateVisualReviewReposQuarantineExpireRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateVisualReviewReposQuarantineExpireResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreateVisualReviewReposQuarantineExpireRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<CreateVisualReviewReposQuarantineExpireResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const createVisualReviewRun: API.OperationMethod<
   CreateVisualReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateVisualReviewRunRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateRunResult>,
+  input: __S(305, __c38, 1) as any as S.Schema<CreateVisualReviewRunRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<CreateRunResult>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -865,8 +865,8 @@ export const createVisualReviewRunsComplete: API.OperationMethod<
   CreateVisualReviewRunsCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateVisualReviewRunsCompleteRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Run>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateVisualReviewRunsCompleteRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<Run>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const createVisualReviewRunsFinalize: API.OperationMethod<
   CreateVisualReviewRunsFinalizeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateVisualReviewRunsFinalizeRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<FinalizeResult>,
+  input: __S(344, __c43, 0) as any as S.Schema<CreateVisualReviewRunsFinalizeRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<FinalizeResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -895,8 +895,8 @@ export const createVisualReviewRunsLiftOnMerge: API.OperationMethod<
   CreateVisualReviewRunsLiftOnMergeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateVisualReviewRunsLiftOnMergeRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<QuarantineLiftEntry>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateVisualReviewRunsLiftOnMergeRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<QuarantineLiftEntry>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const createVisualReviewRunsRecompute: API.OperationMethod<
   CreateVisualReviewRunsRecomputeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateVisualReviewRunsRecomputeRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<RecomputeResult>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateVisualReviewRunsRecomputeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RecomputeResult>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -929,8 +929,8 @@ export const createVisualReviewRunsTolerate: API.OperationMethod<
   CreateVisualReviewRunsTolerateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateVisualReviewRunsTolerateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Snapshot>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateVisualReviewRunsTolerateRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Snapshot>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -944,8 +944,8 @@ export const getVisualReviewRepos: API.OperationMethod<
   GetVisualReviewReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetVisualReviewReposRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Repo>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetVisualReviewReposRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Repo>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -959,8 +959,8 @@ export const getVisualReviewReposBaseline: API.OperationMethod<
   GetVisualReviewReposBaselineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetVisualReviewReposBaselineRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BaselineOverview>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetVisualReviewReposBaselineRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<BaselineOverview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -974,8 +974,8 @@ export const getVisualReviewReposFlakiness: API.OperationMethod<
   GetVisualReviewReposFlakinessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetVisualReviewReposFlakinessRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<FlakinessOverview>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetVisualReviewReposFlakinessRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<FlakinessOverview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -989,8 +989,8 @@ export const getVisualReviewReposRunsCount: API.OperationMethod<
   GetVisualReviewReposRunsCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetVisualReviewReposRunsCountRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ReviewStateCounts>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetVisualReviewReposRunsCountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ReviewStateCounts>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1004,8 @@ export const getVisualReviewReposThumbnail: API.OperationMethod<
   GetVisualReviewReposThumbnailError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetVisualReviewReposThumbnailRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetVisualReviewReposThumbnailResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetVisualReviewReposThumbnailRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<GetVisualReviewReposThumbnailResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1019,8 @@ export const getVisualReviewReposTolerationPileup: API.OperationMethod<
   GetVisualReviewReposTolerationPileupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetVisualReviewReposTolerationPileupRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<TolerationPileups>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetVisualReviewReposTolerationPileupRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<TolerationPileups>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1034,8 @@ export const getVisualReviewRun: API.OperationMethod<
   GetVisualReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetVisualReviewRunRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Run>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetVisualReviewRunRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<Run>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1049,8 +1049,8 @@ export const getVisualReviewRunsCount: API.OperationMethod<
   GetVisualReviewRunsCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetVisualReviewRunsCountRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ReviewStateCounts>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetVisualReviewRunsCountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ReviewStateCounts>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1064,8 @@ export const listVisualReviewRepos: API.OperationMethod<
   ListVisualReviewReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListVisualReviewReposRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PaginatedRepoList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListVisualReviewReposRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<PaginatedRepoList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const listVisualReviewReposQuarantine: API.OperationMethod<
   ListVisualReviewReposQuarantineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListVisualReviewReposQuarantineRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PaginatedQuarantinedIdentifierEntryList>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListVisualReviewReposQuarantineRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<PaginatedQuarantinedIdentifierEntryList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1098,8 @@ export const listVisualReviewReposRuns: API.OperationMethod<
   ListVisualReviewReposRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListVisualReviewReposRunsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PaginatedRunList>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListVisualReviewReposRunsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<PaginatedRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1113,8 +1113,8 @@ export const listVisualReviewReposSnapshots: API.OperationMethod<
   ListVisualReviewReposSnapshotsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListVisualReviewReposSnapshotsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<PaginatedSnapshotHistoryEntryList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListVisualReviewReposSnapshotsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<PaginatedSnapshotHistoryEntryList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1128,8 +1128,8 @@ export const listVisualReviewRuns: API.OperationMethod<
   ListVisualReviewRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListVisualReviewRunsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PaginatedRunList>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListVisualReviewRunsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<PaginatedRunList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1143,8 +1143,8 @@ export const listVisualReviewRunsQuarantineLifts: API.OperationMethod<
   ListVisualReviewRunsQuarantineLiftsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1162,8 @@ export const listVisualReviewRunsSnapshotHistory: API.OperationMethod<
   ListVisualReviewRunsSnapshotHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListVisualReviewRunsSnapshotHistoryRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<PaginatedSnapshotHistoryEntryList>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListVisualReviewRunsSnapshotHistoryRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<PaginatedSnapshotHistoryEntryList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1177,8 +1177,8 @@ export const listVisualReviewRunsSnapshots: API.OperationMethod<
   ListVisualReviewRunsSnapshotsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListVisualReviewRunsSnapshotsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PaginatedSnapshotList>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListVisualReviewRunsSnapshotsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<PaginatedSnapshotList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1196,8 +1196,8 @@ export const listVisualReviewRunsToleratedHashes: API.OperationMethod<
   ListVisualReviewRunsToleratedHashesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListVisualReviewRunsToleratedHashesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<PaginatedToleratedHashEntryList>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListVisualReviewRunsToleratedHashesRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<PaginatedToleratedHashEntryList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const updateVisualReviewReposPartial: API.OperationMethod<
   UpdateVisualReviewReposPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<UpdateVisualReviewReposPartialRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Repo>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateVisualReviewReposPartialRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Repo>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1234,8 @@ export const visualReviewRunsAddSnapshotsCreate: API.OperationMethod<
   VisualReviewRunsAddSnapshotsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<AddSnapshotsResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<AddSnapshotsResult>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1249,8 +1249,8 @@ export const visualReviewRunsApproveCreate: API.OperationMethod<
   VisualReviewRunsApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<VisualReviewRunsApproveCreateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Run>,
+  input: __S(242, __c30, 2) as any as S.Schema<VisualReviewRunsApproveCreateRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<Run>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1264,8 +1264,12 @@ export const visualReviewRunsQuarantineLiftsCancelCreate: API.OperationMethod<
   VisualReviewRunsQuarantineLiftsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateRequest>,
+  output: __S(
+    296,
+    __c37,
+    0,
+  ) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1273,299 +1277,6 @@ export const visualReviewRunsQuarantineLiftsCancelCreate: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          repo_full_name: S.optional(S.String),
-          repo_external_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/repos/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewReposRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          team_id: S.optional(S.Number),
-          repo_external_id: S.optional(S.Number),
-          repo_full_name: S.optional(S.String),
-          baseline_file_paths: S.optional(__S(1, __c0, 1)),
-          enable_pr_comments: S.optional(S.Boolean),
-          debt_digest_enabled: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Repo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          run_type: S.String.pipe(T.Label()),
-          identifier: S.optional(S.String),
-          reason: S.optional(S.String),
-          expires_at: S.optional(S.NullOr(S.String)),
-          source_run_id: S.optional(S.NullOr(S.String)),
-          notify_owners: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/{run_type}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewReposQuarantineRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          first_name: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserBasicInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          branch: S.String,
-          commit_sha: S.String,
-          created_at: S.String,
-          pr_number: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "QuarantineSourceRun" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          source_run: S.optional(S.NullOr(__S(5, __c0, 5))),
-          id: S.optional(S.String),
-          identifier: S.optional(S.String),
-          run_type: S.optional(S.String),
-          reason: S.optional(S.String),
-          source: S.optional(S.String),
-          expires_at: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QuarantinedIdentifierEntry",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          run_type: S.String.pipe(T.Label()),
-          identifier: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/{run_type}/expire/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewReposQuarantineExpireRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateVisualReviewReposQuarantineExpireResponse",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          content_hash: S.optional(S.String),
-          width: S.optional(S.NullOr(S.Number)),
-          height: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "SnapshotManifestItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          repo_id: S.optional(S.String),
-          run_type: S.optional(S.String),
-          commit_sha: S.optional(S.String),
-          branch: S.optional(S.String),
-          snapshots: S.optional(__S(11, __c1, 3)),
-          pr_number: S.optional(S.NullOr(S.Number)),
-          baseline_hashes: S.optional(__S(1, __c0, 1)),
-          unchanged_count: S.optional(S.Number),
-          removed_identifiers: S.optional(__S(12, __c1, 4)),
-          purpose: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-          is_partial: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/runs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewRunRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content_hash: S.optional(S.String),
-          url: S.optional(S.String),
-          fields: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "UploadTarget" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          run_id: S.optional(S.String),
-          uploads: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CreateRunResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          check_run_id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/runs/{id}/complete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewRunsCompleteRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.optional(S.Number),
-          changed: S.optional(S.Number),
-          new: S.optional(S.Number),
-          removed: S.optional(S.Number),
-          unchanged: S.optional(S.Number),
-          unresolved: S.optional(S.Number),
-          tolerated_matched: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RunSummary" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          approved_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          purpose: S.optional(S.String),
-          search_match_type: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          repo_id: S.optional(S.String),
-          status: S.optional(S.String),
-          run_type: S.optional(S.String),
-          commit_sha: S.optional(S.String),
-          branch: S.optional(S.String),
-          pr_number: S.optional(S.NullOr(S.Number)),
-          approved: S.optional(S.Boolean),
-          approved_at: S.optional(S.NullOr(S.String)),
-          summary: S.optional(__S(18, __c2, 2)),
-          error_message: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          completed_at: S.optional(S.NullOr(S.String)),
-          is_stale: S.optional(S.Boolean),
-          superseded_by_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Run" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          approve_all: S.optional(S.Boolean),
-          commit_to_github: S.optional(S.Boolean),
-          add_images_to_comment_on_pr: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/runs/{id}/finalize/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewRunsFinalizeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          run: __S(19, __c2, 3),
-          baseline_content: S.String,
-        }),
-      ).annotate({ identifier: "FinalizeResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          identifier: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/visual_review/runs/{id}/lift_on_merge/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVisualReviewRunsLiftOnMergeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          quarantine_id: S.String,
-          identifier: S.String,
-          run_type: S.String,
-          pr_number: S.Number,
-          expected_hash: S.String,
-          state: S.String,
-          detail: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          resolved_at: S.optional(S.NullOr(S.String)),
-          source_run_id: S.optional(S.NullOr(S.String)),
-          requested_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          merge_commit_sha: S.optional(S.NullOr(S.String)),
-          lifted_at_sha: S.optional(S.NullOr(S.String)),
-          source: S.String,
-        }),
-      ).annotate({ identifier: "QuarantineLiftEntry" });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1585,14 +1296,18 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          run: S.optional(__S(19, __c2, 3)),
+          run: S.optional(__S(337, __c42, 1)),
           counts_changed: S.optional(S.Boolean),
           unresolved: S.optional(S.Number),
           ci_rerun_triggered: S.optional(S.Boolean),
           ci_rerun_error: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "RecomputeResult" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1608,7 +1323,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateVisualReviewRunsTolerateRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1618,7 +1337,31 @@ function __c3(j: number): any {
           download_url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Artifact" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          y: S.Number,
+          rows: S.Number,
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "ShiftBand" });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bands: __S(18, __c2, 2),
+          inserted_rows: S.Number,
+          deleted_rows: S.Number,
+          residual_percentage: S.Number,
+          raw_diff_percentage: S.Number,
+        }),
+      ).annotate({ identifier: "RowShift" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           x: S.Number,
@@ -1630,49 +1373,25 @@ function __c3(j: number): any {
           centroid_y: S.Number,
         }),
       ).annotate({ identifier: "DiffCluster" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(29, __c3, 5),
+          items: __S(25, __c3, 1),
           total: S.Number,
           truncated: S.Boolean,
         }),
       ).annotate({ identifier: "ClusterSummary" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          y: S.Number,
-          rows: S.Number,
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "ShiftBand" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bands: __S(32, __c4, 0),
-          inserted_rows: S.Number,
-          deleted_rows: S.Number,
-          residual_percentage: S.Number,
-          raw_diff_percentage: S.Number,
-        }),
-      ).annotate({ identifier: "RowShift" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          current_artifact: S.optional(S.NullOr(__S(27, __c3, 3))),
-          baseline_artifact: S.optional(S.NullOr(__S(27, __c3, 3))),
-          diff_artifact: S.optional(S.NullOr(__S(27, __c3, 3))),
-          reviewed_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          cluster_summary: S.optional(S.NullOr(__S(30, __c3, 6))),
-          row_shift: S.optional(S.NullOr(__S(33, __c4, 1))),
+          current_artifact: S.optional(S.NullOr(__S(16, __c2, 0))),
+          baseline_artifact: S.optional(S.NullOr(__S(16, __c2, 0))),
+          diff_artifact: S.optional(S.NullOr(__S(16, __c2, 0))),
+          reviewed_by: S.optional(S.NullOr(__S(280, __c35, 0))),
+          cluster_summary: S.optional(S.NullOr(__S(26, __c3, 2))),
+          row_shift: S.optional(S.NullOr(__S(19, __c2, 3))),
           id: S.optional(S.String),
           run_id: S.optional(S.String),
           identifier: S.optional(S.String),
@@ -1685,13 +1404,17 @@ function __c4(j: number): any {
           approved_hash: S.optional(S.String),
           tolerated_hash_id: S.optional(S.NullOr(S.String)),
           is_quarantined: S.optional(S.Boolean),
-          metadata: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(320, __c40, 0)),
           ssim_score: S.optional(S.NullOr(S.Number)),
           change_kind: S.optional(S.String),
           size_mismatch: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Snapshot" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1706,7 +1429,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1721,24 +1448,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposBaselineRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          source_run: S.optional(S.NullOr(__S(5, __c0, 5))),
-          id: S.String,
-          reason: S.String,
-          source: S.String,
-          expires_at: S.NullOr(S.String),
-          created_at: S.String,
-        }),
-      ).annotate({
-        identifier: "BaselineQuarantineSummary",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          quarantine: S.optional(S.NullOr(__S(37, __c4, 5))),
+          quarantine: S.optional(S.NullOr(__S(48, __c6, 0))),
           active_variants_current_baseline: S.Number,
           identifier: S.String,
           run_type: S.String,
@@ -1754,18 +1467,12 @@ function __c4(j: number): any {
           recent_drift_avg: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "BaselineEntry" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Number);
-    case 1:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          by_run_type: __S(40, __c5, 0),
+          by_run_type: __S(49, __c6, 1),
           variant_pileups: S.Number,
           all_snapshots: S.Number,
           recently_tolerated: S.Number,
@@ -1773,16 +1480,40 @@ function __c5(j: number): any {
           currently_quarantined: S.Number,
         }),
       ).annotate({ identifier: "BaselineTotals" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          entries: __S(39, __c4, 7),
-          totals: __S(41, __c5, 1),
+          entries: __S(42, __c5, 2),
+          totals: __S(43, __c5, 3),
           truncated: S.Boolean,
           generated_at: S.String,
         }),
       ).annotate({ identifier: "BaselineOverview" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_by: S.optional(S.NullOr(__S(280, __c35, 0))),
+          source_run: S.optional(S.NullOr(__S(264, __c33, 0))),
+          id: S.String,
+          reason: S.String,
+          source: S.String,
+          expires_at: S.NullOr(S.String),
+          created_at: S.String,
+        }),
+      ).annotate({
+        identifier: "BaselineQuarantineSummary",
+      });
+    case 1:
+      return S.Record(S.String, S.Number);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1797,9 +1528,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposFlakinessRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.Number);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           variant_count: S.Number,
@@ -1813,12 +1544,12 @@ function __c5(j: number): any {
           worst_soft_diff_percentage: S.optional(S.NullOr(S.Number)),
           headroom: S.optional(S.NullOr(S.Number)),
           baseline_age_days: S.optional(S.NullOr(S.Number)),
-          daily_hard_counts: __S(44, __c5, 4),
-          daily_soft_counts: __S(44, __c5, 4),
+          daily_hard_counts: __S(57, __c7, 1),
+          daily_soft_counts: __S(57, __c7, 1),
           baseline_moved_day_index: S.optional(S.NullOr(S.Number)),
           flakiness_state: S.String,
           needs_decision: S.Boolean,
-          quarantine: S.optional(S.NullOr(__S(37, __c4, 5))),
+          quarantine: S.optional(S.NullOr(__S(48, __c6, 0))),
           owner_team: S.optional(S.NullOr(S.String)),
           identifier: S.String,
           run_type: S.String,
@@ -1829,9 +1560,9 @@ function __c5(j: number): any {
           is_quarantined: S.Boolean,
         }),
       ).annotate({ identifier: "FlakinessEntry" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           listed: S.Number,
@@ -1841,25 +1572,25 @@ function __c5(j: number): any {
           at_risk: S.Number,
           noisy: S.Number,
           clean: S.Number,
-          by_run_type: __S(40, __c5, 0),
+          by_run_type: __S(49, __c6, 1),
           quarantined: S.Number,
           needs_decision: S.Number,
         }),
       ).annotate({ identifier: "FlakinessTotals" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: __S(46, __c5, 6),
-          totals: __S(47, __c5, 7),
+          entries: __S(59, __c7, 3),
+          totals: __S(60, __c7, 4),
           truncated: S.Boolean,
           generated_at: S.String,
         }),
       ).annotate({ identifier: "FlakinessOverview" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1874,7 +1605,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposRunsCountRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           needs_review: S.optional(S.Number),
@@ -1883,7 +1618,11 @@ function __c6(j: number): any {
           stale: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReviewStateCounts" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1900,7 +1639,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposThumbnailRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1921,7 +1664,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewReposTolerationPileupRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String,
@@ -1931,12 +1674,12 @@ function __c6(j: number): any {
           is_quarantined: S.Boolean,
         }),
       ).annotate({ identifier: "TolerationPileupEntry" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: __S(54, __c6, 6),
+          entries: __S(90, __c11, 2),
           window_days: S.Number,
           min_tolerations: S.Number,
           min_automatic_tolerations: S.NullOr(S.Number),
@@ -1947,7 +1690,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "TolerationPileups" });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1964,7 +1707,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewRunRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1978,7 +1725,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVisualReviewRunsCountRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1994,18 +1745,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewReposRequest",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(59, __c7, 3)),
+          results: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "PaginatedRepoList" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2024,22 +1779,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewReposQuarantineRequest",
       });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(272, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(62, __c7, 6)),
+          results: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({
         identifier: "PaginatedQuarantinedIdentifierEntryList",
       });
   }
 }
-function __c8(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2060,18 +1815,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewReposRunsRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(337, __c42, 1));
     case 1:
-      return S.Array(__S(19, __c2, 3));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(65, __c8, 1)),
+          results: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "PaginatedRunList" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2090,11 +1853,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewReposSnapshotsRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          current_artifact: S.optional(S.NullOr(__S(27, __c3, 3))),
-          row_shift: S.optional(S.NullOr(__S(33, __c4, 1))),
+          current_artifact: S.optional(S.NullOr(__S(16, __c2, 0))),
+          row_shift: S.optional(S.NullOr(__S(19, __c2, 3))),
           run_id: S.optional(S.String),
           snapshot_id: S.optional(S.String),
           result: S.optional(S.String),
@@ -2109,20 +1876,24 @@ function __c8(j: number): any {
           size_mismatch: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SnapshotHistoryEntry" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(69, __c8, 5)),
+          results: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({
         identifier: "PaginatedSnapshotHistoryEntryList",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2145,7 +1916,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2163,12 +1934,16 @@ function __c9(j: number): any {
         identifier: "ListVisualReviewRunsQuarantineLiftsRequest",
       });
     case 1:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(__S(360, __c45, 0));
     case 2:
-      return S.suspend(() => __S(73, __c9, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(169, __c21, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVisualReviewRunsQuarantineLiftsResponse",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2186,7 +1961,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewRunsSnapshotHistoryRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2207,19 +1986,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewRunsSnapshotsRequest",
       });
-    case 5:
-      return S.Array(__S(34, __c4, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(27, __c3, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(77, __c9, 5)),
+          results: S.optional(__S(185, __c23, 1)),
           quarantined_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedSnapshotList" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2237,11 +2020,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListVisualReviewRunsToleratedHashesRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2253,25 +2032,29 @@ function __c10(j: number): any {
           source_run_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ToleratedHashEntry" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(193, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(81, __c10, 1)),
+          results: S.optional(__S(194, __c24, 2)),
         }),
       ).annotate({
         identifier: "PaginatedToleratedHashEntryList",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          baseline_file_paths: S.optional(S.NullOr(__S(1, __c0, 1))),
+          baseline_file_paths: S.optional(S.NullOr(__S(224, __c28, 0))),
           enable_pr_comments: S.optional(S.NullOr(S.Boolean)),
           debt_digest_enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -2284,13 +2067,60 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateVisualReviewReposPartialRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          repo_full_name: S.optional(S.String),
+          repo_external_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/repos/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewReposRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          team_id: S.optional(S.Number),
+          repo_external_id: S.optional(S.Number),
+          repo_full_name: S.optional(S.String),
+          baseline_file_paths: S.optional(__S(224, __c28, 0)),
+          enable_pr_comments: S.optional(S.Boolean),
+          debt_digest_enabled: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repo" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          snapshots: S.optional(__S(11, __c1, 3)),
-          baseline_hashes: S.optional(__S(1, __c0, 1)),
+          snapshots: S.optional(__S(313, __c39, 1)),
+          baseline_hashes: S.optional(__S(224, __c28, 0)),
           story_index_hash: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2302,33 +2132,33 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "VisualReviewRunsAddSnapshotsCreateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          story_index_upload: S.optional(S.NullOr(__S(14, __c1, 6))),
+          story_index_upload: S.optional(S.NullOr(__S(314, __c39, 2))),
           added: S.optional(S.Number),
-          uploads: S.optional(__S(15, __c1, 7)),
+          uploads: S.optional(__S(315, __c39, 3)),
         }),
       ).annotate({ identifier: "AddSnapshotsResult" });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
           new_hash: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApproveSnapshotInput" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(240, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          snapshots: __S(87, __c10, 7),
+          snapshots: __S(241, __c30, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2339,7 +2169,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "VisualReviewRunsApproveCreateRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2357,7 +2191,312 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          run_type: S.String.pipe(T.Label()),
+          identifier: S.optional(S.String),
+          reason: S.optional(S.String),
+          expires_at: S.optional(S.NullOr(S.String)),
+          source_run_id: S.optional(S.NullOr(S.String)),
+          notify_owners: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/{run_type}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewReposQuarantineRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          branch: S.String,
+          commit_sha: S.String,
+          created_at: S.String,
+          pr_number: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "QuarantineSourceRun" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_by: S.optional(S.NullOr(__S(280, __c35, 0))),
+          source_run: S.optional(S.NullOr(__S(264, __c33, 0))),
+          id: S.optional(S.String),
+          identifier: S.optional(S.String),
+          run_type: S.optional(S.String),
+          reason: S.optional(S.String),
+          source: S.optional(S.String),
+          expires_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QuarantinedIdentifierEntry",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          first_name: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserBasicInfo" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          run_type: S.String.pipe(T.Label()),
+          identifier: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/{run_type}/expire/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewReposQuarantineExpireRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateVisualReviewReposQuarantineExpireResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          repo_id: S.optional(S.String),
+          run_type: S.optional(S.String),
+          commit_sha: S.optional(S.String),
+          branch: S.optional(S.String),
+          snapshots: S.optional(__S(313, __c39, 1)),
+          pr_number: S.optional(S.NullOr(S.Number)),
+          baseline_hashes: S.optional(__S(224, __c28, 0)),
+          unchanged_count: S.optional(S.Number),
+          removed_identifiers: S.optional(__S(304, __c38, 0)),
+          purpose: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+          is_partial: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/runs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewRunRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          run_id: S.optional(S.String),
+          uploads: S.optional(__S(315, __c39, 3)),
+        }),
+      ).annotate({ identifier: "CreateRunResult" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          content_hash: S.optional(S.String),
+          width: S.optional(S.NullOr(S.Number)),
+          height: S.optional(S.NullOr(S.Number)),
+          metadata: S.optional(__S(320, __c40, 0)),
+        }),
+      ).annotate({ identifier: "SnapshotManifestItem" });
+    case 1:
+      return S.Array(__S(312, __c39, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          content_hash: S.optional(S.String),
+          url: S.optional(S.String),
+          fields: S.optional(__S(224, __c28, 0)),
+        }),
+      ).annotate({ identifier: "UploadTarget" });
+    case 3:
+      return S.Array(__S(314, __c39, 2));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          check_run_id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/runs/{id}/complete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewRunsCompleteRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.optional(S.Number),
+          changed: S.optional(S.Number),
+          new: S.optional(S.Number),
+          removed: S.optional(S.Number),
+          unchanged: S.optional(S.Number),
+          unresolved: S.optional(S.Number),
+          tolerated_matched: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approved_by: S.optional(S.NullOr(__S(280, __c35, 0))),
+          purpose: S.optional(S.String),
+          search_match_type: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          repo_id: S.optional(S.String),
+          status: S.optional(S.String),
+          run_type: S.optional(S.String),
+          commit_sha: S.optional(S.String),
+          branch: S.optional(S.String),
+          pr_number: S.optional(S.NullOr(S.Number)),
+          approved: S.optional(S.Boolean),
+          approved_at: S.optional(S.NullOr(S.String)),
+          summary: S.optional(__S(336, __c42, 0)),
+          error_message: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          completed_at: S.optional(S.NullOr(S.String)),
+          is_stale: S.optional(S.Boolean),
+          superseded_by_id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(__S(320, __c40, 0)),
+        }),
+      ).annotate({ identifier: "Run" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          approve_all: S.optional(S.Boolean),
+          commit_to_github: S.optional(S.Boolean),
+          add_images_to_comment_on_pr: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/runs/{id}/finalize/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewRunsFinalizeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          run: __S(337, __c42, 1),
+          baseline_content: S.String,
+        }),
+      ).annotate({ identifier: "FinalizeResult" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          identifier: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/visual_review/runs/{id}/lift_on_merge/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVisualReviewRunsLiftOnMergeRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          quarantine_id: S.String,
+          identifier: S.String,
+          run_type: S.String,
+          pr_number: S.Number,
+          expected_hash: S.String,
+          state: S.String,
+          detail: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          resolved_at: S.optional(S.NullOr(S.String)),
+          source_run_id: S.optional(S.NullOr(S.String)),
+          requested_by: S.optional(S.NullOr(__S(280, __c35, 0))),
+          merge_commit_sha: S.optional(S.NullOr(S.String)),
+          lifted_at_sha: S.optional(S.NullOr(S.String)),
+          source: S.String,
+        }),
+      ).annotate({ identifier: "QuarantineLiftEntry" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

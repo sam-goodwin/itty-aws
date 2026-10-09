@@ -164,8 +164,8 @@ export const createSchemaPropertyGroup: API.OperationMethod<
   CreateSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateSchemaPropertyGroupRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SchemaPropertyGroup>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateSchemaPropertyGroupRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<SchemaPropertyGroup>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getSchemaPropertyGroup: API.OperationMethod<
   GetSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetSchemaPropertyGroupRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SchemaPropertyGroup>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetSchemaPropertyGroupRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<SchemaPropertyGroup>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -192,8 +192,8 @@ export const listSchemaPropertyGroups: API.OperationMethod<
   ListSchemaPropertyGroupsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListSchemaPropertyGroupsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PaginatedSchemaPropertyGroupList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListSchemaPropertyGroupsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaginatedSchemaPropertyGroupList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -206,8 +206,8 @@ export const schemaPropertyGroupsDestroy: API.OperationMethod<
   SchemaPropertyGroupsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<SchemaPropertyGroupsDestroyRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<SchemaPropertyGroupsDestroyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<SchemaPropertyGroupsDestroyRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<SchemaPropertyGroupsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -220,8 +220,8 @@ export const updateSchemaPropertyGroup: API.OperationMethod<
   UpdateSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<UpdateSchemaPropertyGroupRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SchemaPropertyGroup>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateSchemaPropertyGroupRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<SchemaPropertyGroup>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const updateSchemaPropertyGroupsPartial: API.OperationMethod<
   UpdateSchemaPropertyGroupsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SchemaPropertyGroup>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<SchemaPropertyGroup>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -251,24 +251,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          property_type: S.optional(S.String),
-          is_required: S.optional(S.Boolean),
-          is_optional_in_types: S.optional(S.Boolean),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SchemaPropertyGroupPropertyInput",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -279,7 +265,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateSchemaPropertyGroupRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -294,24 +284,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SchemaPropertyGroupProperty",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventDefinitionBasic" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(10, __c1, 2));
+    case 4:
       return S.Record(S.String, S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -321,24 +307,46 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(7, __c0, 7))),
+          hedgehog_config: S.optional(S.NullOr(__S(12, __c1, 4))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(4, __c0, 4)),
-          events: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(9, __c1, 1)),
+          events: S.optional(__S(11, __c1, 3)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(8, __c1, 0))),
+          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
         }),
       ).annotate({ identifier: "SchemaPropertyGroup" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          property_type: S.optional(S.String),
+          is_required: S.optional(S.Boolean),
+          is_optional_in_types: S.optional(S.Boolean),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SchemaPropertyGroupPropertyInput",
+      });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -353,7 +361,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSchemaPropertyGroupRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -369,20 +381,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListSchemaPropertyGroupsRequest",
       });
-    case 4:
-      return S.Array(__S(9, __c1, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(14, __c1, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12, __c1, 4)),
+          results: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedSchemaPropertyGroupList",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -397,13 +413,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SchemaPropertyGroupsDestroyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SchemaPropertyGroupsDestroyResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -412,7 +428,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -423,14 +439,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateSchemaPropertyGroupRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -443,7 +463,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

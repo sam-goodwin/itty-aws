@@ -757,8 +757,8 @@ export const addKeyReplicationRegions: API.OperationMethod<
   AddKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddKeyReplicationRegionsInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddKeyReplicationRegionsOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<AddKeyReplicationRegionsInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<AddKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -800,8 +800,8 @@ export const associateMpaTeam: API.OperationMethod<
   AssociateMpaTeamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AssociateMpaTeamInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<AssociateMpaTeamOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateMpaTeamInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateMpaTeamOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -852,8 +852,8 @@ export const createAlias: API.OperationMethod<
   CreateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateAliasInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateAliasOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateAliasInput>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -908,8 +908,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateKeyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateKeyOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateKeyInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -957,8 +957,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAliasInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteAliasOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteAliasInput>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1005,8 +1005,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteKeyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteKeyOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteKeyInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<DeleteKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1047,8 +1047,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteResourcePolicyInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteResourcePolicyOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteResourcePolicyInput>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1093,8 +1093,8 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
   DisableDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DisableDefaultKeyReplicationRegionsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<DisableDefaultKeyReplicationRegionsOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<DisableDefaultKeyReplicationRegionsInput>,
+  output: __S(208, __c13, 0) as any as S.Schema<DisableDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1136,8 +1136,8 @@ export const disassociateMpaTeam: API.OperationMethod<
   DisassociateMpaTeamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DisassociateMpaTeamInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<DisassociateMpaTeamOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<DisassociateMpaTeamInput>,
+  output: __S(240, __c15, 0) as any as S.Schema<DisassociateMpaTeamOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1183,8 +1183,8 @@ export const enableDefaultKeyReplicationRegions: API.OperationMethod<
   EnableDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<EnableDefaultKeyReplicationRegionsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<EnableDefaultKeyReplicationRegionsInput>,
+  output: __S(208, __c13, 0) as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1305,8 +1305,8 @@ export const exportKey: API.OperationMethod<
   ExportKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ExportKeyInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<ExportKeyOutput>,
+  input: __S(282, __c17, 10) as any as S.Schema<ExportKeyInput>,
+  output: __S(284, __c17, 12) as any as S.Schema<ExportKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1350,8 +1350,8 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetAliasInput>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetAliasOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetAliasInput>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetAliasOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1382,8 +1382,8 @@ export const getCertificateSigningRequest: API.OperationMethod<
   GetCertificateSigningRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetCertificateSigningRequestInput>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetCertificateSigningRequestOutput>,
+  input: __S(321, __c20, 1) as any as S.Schema<GetCertificateSigningRequestInput>,
+  output: __S(322, __c20, 2) as any as S.Schema<GetCertificateSigningRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1425,8 +1425,8 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
   GetDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetDefaultKeyReplicationRegionsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetDefaultKeyReplicationRegionsInput>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1468,8 +1468,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetKeyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetKeyOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetKeyInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetKeyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1510,8 +1510,8 @@ export const getMpaTeamAssociation: API.OperationMethod<
   GetMpaTeamAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetMpaTeamAssociationInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetMpaTeamAssociationOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetMpaTeamAssociationInput>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetMpaTeamAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1558,8 +1558,8 @@ export const getParametersForExport: API.OperationMethod<
   GetParametersForExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetParametersForExportInput>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetParametersForExportOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetParametersForExportInput>,
+  output: __S(385, __c24, 1) as any as S.Schema<GetParametersForExportOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1606,8 +1606,8 @@ export const getParametersForImport: API.OperationMethod<
   GetParametersForImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetParametersForImportInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetParametersForImportOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetParametersForImportInput>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetParametersForImportOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1644,8 +1644,8 @@ export const getPublicKeyCertificate: API.OperationMethod<
   GetPublicKeyCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetPublicKeyCertificateInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetPublicKeyCertificateOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetPublicKeyCertificateInput>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetPublicKeyCertificateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1684,8 +1684,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetResourcePolicyInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetResourcePolicyOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetResourcePolicyInput>,
+  output: __S(448, __c28, 0) as any as S.Schema<GetResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1812,8 +1812,8 @@ export const importKey: API.OperationMethod<
   ImportKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ImportKeyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<ImportKeyOutput>,
+  input: __S(472, __c29, 8) as any as S.Schema<ImportKeyInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<ImportKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1861,8 +1861,8 @@ export const listAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Alias
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListAliasesInput>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListAliasesOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListAliasesInput>,
+  output: __S(482, __c30, 2) as any as S.Schema<ListAliasesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1912,8 +1912,8 @@ export const listKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KeySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListKeysInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListKeysOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListKeysInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListKeysOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1961,8 +1961,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(513, __c32, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2014,8 +2014,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<PutResourcePolicyInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<PutResourcePolicyOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<PutResourcePolicyInput>,
+  output: __S(448, __c28, 0) as any as S.Schema<PutResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2062,8 +2062,8 @@ export const removeKeyReplicationRegions: API.OperationMethod<
   RemoveKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<RemoveKeyReplicationRegionsInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<RemoveKeyReplicationRegionsOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<RemoveKeyReplicationRegionsInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<RemoveKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2109,8 +2109,8 @@ export const restoreKey: API.OperationMethod<
   RestoreKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<RestoreKeyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<RestoreKeyOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<RestoreKeyInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<RestoreKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2151,8 +2151,8 @@ export const startKeyUsage: API.OperationMethod<
   StartKeyUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<StartKeyUsageInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<StartKeyUsageOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<StartKeyUsageInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<StartKeyUsageOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2197,8 +2197,8 @@ export const stopKeyUsage: API.OperationMethod<
   StopKeyUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<StopKeyUsageInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<StopKeyUsageOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<StopKeyUsageInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<StopKeyUsageOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2245,8 +2245,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<TagResourceOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(144, __c9, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2290,8 +2290,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<UntagResourceOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(144, __c9, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2336,8 +2336,8 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<UpdateAliasInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateAliasOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<UpdateAliasInput>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2356,16 +2356,730 @@ export const updateAlias: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.String,
+          MpaTeamArn: S.String,
+          RequesterComment: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AssociateMpaTeamInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(16, __c1, 0) })).annotate({
+        identifier: "AssociateMpaTeamOutput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.String,
+          MpaTeamArn: S.String,
+          AssociationState: S.String,
+          MpaStatus: S.optional(__S(672, __c42, 0)),
+        }),
+      ).annotate({ identifier: "MpaTeamAssociation" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAliasInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }),
+      ).annotate({ identifier: "Alias" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Alias: __S(48, __c3, 0) })).annotate({
+        identifier: "CreateAliasOutput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          KeyAttributes: __S(704, __c44, 0),
+          KeyCheckValueAlgorithm: S.optional(S.String),
+          Exportable: S.Boolean,
+          Enabled: S.optional(S.Boolean),
+          Tags: S.optional(__S(113, __c7, 1)),
+          DeriveKeyUsage: S.optional(S.String),
+          ReplicationRegions: S.optional(__S(736, __c46, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateKeyInput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: __S(722, __c45, 2) })).annotate({
+        identifier: "CreateKeyOutput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteAliasInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAliasOutput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String, DeleteKeyInDays: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteKeyInput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyInput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationRegions: __S(736, __c46, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisableDefaultKeyReplicationRegionsInput",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ EnabledReplicationRegions: __S(736, __c46, 0) })).annotate({
+        identifier: "DisableDefaultKeyReplicationRegionsOutput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Action: S.String, RequesterComment: S.optional(SensitiveString) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DisassociateMpaTeamInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(16, __c1, 0) })).annotate({
+        identifier: "DisassociateMpaTeamOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationRegions: __S(736, __c46, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "EnableDefaultKeyReplicationRegionsInput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(0, __c0, 0) }).pipe(
+        S.Struct({
+          KeyModesOfUse: S.optional(__S(688, __c43, 0)),
+          KeyExportability: S.optional(S.String),
+          KeyVersion: S.optional(S.String),
+          OptionalBlocks: S.optional(__S(272, __c17, 0)),
+        }),
+      ).annotate({ identifier: "KeyBlockHeaders" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          WrappingKeyIdentifier: S.String,
+          KeyBlockHeaders: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({ identifier: "ExportTr31KeyBlock" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+          WrappingKeyCertificate: S.String,
+          ExportToken: S.optional(S.String),
+          SigningKeyIdentifier: S.optional(S.String),
+          SigningKeyCertificate: S.optional(S.String),
+          KeyBlockFormat: S.String,
+          RandomNonce: S.optional(S.String),
+          KeyBlockHeaders: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({ identifier: "ExportTr34KeyBlock" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+          WrappingKeyCertificate: S.String,
+          WrappingSpec: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportKeyCryptogram" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PrivateKeyIdentifier: S.String,
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+          PublicKeyCertificate: S.String,
+          DeriveKeyAlgorithm: S.String,
+          KeyDerivationFunction: S.String,
+          KeyDerivationHashAlgorithm: S.String,
+          DerivationData: __S(288, __c18, 0),
+          KeyBlockHeaders: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "ExportDiffieHellmanTr31KeyBlock",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ WrappingKeyIdentifier: S.String, As2805KeyVariant: S.String }),
+      ).annotate({
+        identifier: "ExportAs2805KeyCryptogram",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(274, __c17, 2) }),
+        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(275, __c17, 3) }),
+        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(276, __c17, 4) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(277, __c17, 5) }),
+        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(278, __c17, 6) }),
+      ]);
+    case 8:
+      return S.suspend(() => S.Struct({ KeySerialNumber: S.String })).annotate({
+        identifier: "ExportDukptInitialKey",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          ExportDukptInitialKey: S.optional(__S(280, __c17, 8)),
+          KeyCheckValueAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportAttributes" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          KeyMaterial: __S(279, __c17, 7),
+          ExportKeyIdentifier: S.String,
+          ExportAttributes: S.optional(__S(281, __c17, 9)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ExportKeyInput" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          WrappingKeyArn: S.String,
+          WrappedKeyMaterialFormat: S.String,
+          KeyMaterial: SensitiveString,
+          KeyCheckValue: S.optional(S.String),
+          KeyCheckValueAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WrappedKey" });
+    case 12:
+      return S.suspend(() => S.Struct({ WrappedKey: S.optional(__S(283, __c17, 11)) })).annotate({
+        identifier: "ExportKeyOutput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ SharedInformation: S.String })]);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAliasInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ Alias: __S(48, __c3, 0) })).annotate({
+        identifier: "GetAliasOutput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CommonName: S.String,
+          OrganizationUnit: S.optional(S.String),
+          Organization: S.optional(S.String),
+          City: S.optional(S.String),
+          Country: S.optional(S.String),
+          StateOrProvince: S.optional(S.String),
+          EmailAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateSubjectType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          KeyIdentifier: S.String,
+          SigningAlgorithm: S.String,
+          CertificateSubject: __S(320, __c20, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCertificateSigningRequestInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ CertificateSigningRequest: SensitiveString })).annotate({
+        identifier: "GetCertificateSigningRequestOutput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetDefaultKeyReplicationRegionsInput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetKeyInput" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Action: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetMpaTeamAssociationInput",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          KeyMaterialType: S.String,
+          SigningKeyAlgorithm: S.String,
+          ReuseLastGeneratedToken: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetParametersForExportInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SigningKeyCertificate: S.String,
+          SigningKeyCertificateChain: S.String,
+          SigningKeyAlgorithm: S.String,
+          ExportToken: S.String,
+          ParametersValidUntilTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "GetParametersForExportOutput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          KeyMaterialType: S.String,
+          WrappingKeyAlgorithm: S.String,
+          ReuseLastGeneratedToken: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetParametersForImportInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          WrappingKeyCertificate: S.String,
+          WrappingKeyCertificateChain: S.String,
+          WrappingKeyAlgorithm: S.String,
+          ImportToken: S.String,
+          ParametersValidUntilTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "GetParametersForImportOutput",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetPublicKeyCertificateInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ KeyCertificate: S.String, KeyCertificateChain: S.String }),
+      ).annotate({
+        identifier: "GetPublicKeyCertificateOutput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyInput" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ResourceArn: S.String, Policy: S.String })).annotate({
+        identifier: "GetResourcePolicyOutput",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyAttributes: __S(704, __c44, 0), PublicKeyCertificate: S.String }),
+      ).annotate({ identifier: "RootCertificatePublicKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          KeyAttributes: __S(704, __c44, 0),
+          PublicKeyCertificate: S.String,
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+        }),
+      ).annotate({
+        identifier: "TrustedCertificatePublicKey",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ WrappingKeyIdentifier: S.String, WrappedKeyBlock: SensitiveString }),
+      ).annotate({ identifier: "ImportTr31KeyBlock" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+          SigningKeyCertificate: S.String,
+          ImportToken: S.optional(S.String),
+          WrappingKeyIdentifier: S.optional(S.String),
+          WrappingKeyCertificate: S.optional(S.String),
+          WrappedKeyBlock: SensitiveString,
+          KeyBlockFormat: S.String,
+          RandomNonce: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportTr34KeyBlock" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          KeyAttributes: __S(704, __c44, 0),
+          Exportable: S.Boolean,
+          WrappedKeyCryptogram: SensitiveString,
+          ImportToken: S.String,
+          WrappingSpec: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportKeyCryptogram" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PrivateKeyIdentifier: S.String,
+          CertificateAuthorityPublicKeyIdentifier: S.String,
+          PublicKeyCertificate: S.String,
+          DeriveKeyAlgorithm: S.String,
+          KeyDerivationFunction: S.String,
+          KeyDerivationHashAlgorithm: S.String,
+          DerivationData: __S(288, __c18, 0),
+          WrappedKeyBlock: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "ImportDiffieHellmanTr31KeyBlock",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          As2805KeyVariant: S.String,
+          KeyModesOfUse: __S(688, __c43, 0),
+          KeyAlgorithm: S.String,
+          Exportable: S.Boolean,
+          WrappingKeyIdentifier: S.String,
+          WrappedKeyCryptogram: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "ImportAs2805KeyCryptogram",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ RootCertificatePublicKey: __S(464, __c29, 0) }),
+        /*@__PURE__*/ S.Struct({ TrustedCertificatePublicKey: __S(465, __c29, 1) }),
+        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(466, __c29, 2) }),
+        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(467, __c29, 3) }),
+        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(468, __c29, 4) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(469, __c29, 5) }),
+        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(470, __c29, 6) }),
+      ]);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          KeyMaterial: __S(471, __c29, 7),
+          KeyCheckValueAlgorithm: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          Tags: S.optional(__S(113, __c7, 1)),
+          ReplicationRegions: S.optional(__S(736, __c46, 0)),
+          RequesterComment: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ImportKeyInput" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          KeyArn: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListAliasesInput" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Aliases: __S(481, __c30, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAliasesOutput" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          KeyState: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListKeysInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          KeyArn: S.String,
+          KeyState: S.String,
+          KeyAttributes: __S(704, __c44, 0),
+          KeyCheckValue: S.String,
+          Exportable: S.Boolean,
+          Enabled: S.Boolean,
+          MultiRegionKeyType: S.optional(S.String),
+          PrimaryRegion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeySummary" });
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Keys: __S(498, __c31, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListKeysOutput" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tags: __S(113, __c7, 1), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyInput" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(736, __c46, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RemoveKeyReplicationRegionsInput",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "RestoreKeyInput" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartKeyUsageInput" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopKeyUsageInput" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: __S(113, __c7, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(736, __c46, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateAliasInput" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(736, __c46, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AddKeyReplicationRegionsInput",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MpaSessionArn: S.String,
+          Status: S.String,
+          InitiationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          StatusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MpaStatus" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Encrypt: S.optional(S.Boolean),
@@ -2379,35 +3093,34 @@ function __c0(j: number): any {
           NoRestrictions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "KeyModesOfUse" });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           KeyUsage: S.String,
           KeyClass: S.String,
           KeyAlgorithm: S.String,
-          KeyModesOfUse: __S(2, __c0, 2),
+          KeyModesOfUse: __S(688, __c43, 0),
         }),
       ).annotate({ identifier: "KeyAttributes" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Status: S.String, StatusMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ReplicationStatusType" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(4, __c0, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MpaSessionArn: S.String,
-          Status: S.String,
-          InitiationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          StatusMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MpaStatus" });
-    case 7:
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(720, __c45, 0).pipe(S.optional));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           KeyArn: S.String,
-          KeyAttributes: __S(3, __c0, 3),
+          KeyAttributes: __S(704, __c44, 0),
           KeyCheckValue: S.String,
           KeyCheckValueAlgorithm: S.String,
           Enabled: S.Boolean,
@@ -2422,593 +3135,27 @@ function __c0(j: number): any {
           DeriveKeyUsage: S.optional(S.String),
           MultiRegionKeyType: S.optional(S.String),
           PrimaryRegion: S.optional(S.String),
-          ReplicationStatus: S.optional(__S(5, __c0, 5)),
+          ReplicationStatus: S.optional(__S(721, __c45, 1)),
           UsingDefaultReplicationRegions: S.optional(S.Boolean),
-          MpaStatus: S.optional(__S(6, __c0, 6)),
+          MpaStatus: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "Key" });
   }
 }
-function __c1(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: __S(7, __c0, 7) })).annotate({
+      return S.Array(S.String);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: __S(722, __c45, 2) })).annotate({
         identifier: "AddKeyReplicationRegionsOutput",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.String,
-          MpaTeamArn: S.String,
-          RequesterComment: S.optional(SensitiveString),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AssociateMpaTeamInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.String,
-          MpaTeamArn: S.String,
-          AssociationState: S.String,
-          MpaStatus: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "MpaTeamAssociation" });
-    case 3:
-      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(10, __c1, 2) })).annotate({
-        identifier: "AssociateMpaTeamOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateAliasInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }),
-      ).annotate({ identifier: "Alias" });
-    case 6:
-      return S.suspend(() => S.Struct({ Alias: __S(13, __c1, 5) })).annotate({
-        identifier: "CreateAliasOutput",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "Tag",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          KeyAttributes: __S(3, __c0, 3),
-          KeyCheckValueAlgorithm: S.optional(S.String),
-          Exportable: S.Boolean,
-          Enabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(16, __c2, 0)),
-          DeriveKeyUsage: S.optional(S.String),
-          ReplicationRegions: S.optional(__S(0, __c0, 0)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateKeyInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ Key: __S(7, __c0, 7) })).annotate({
-        identifier: "CreateKeyOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AliasName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteAliasInput" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAliasOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String, DeleteKeyInDays: S.optional(S.Number) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteKeyInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ReplicationRegions: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DisableDefaultKeyReplicationRegionsInput",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ EnabledReplicationRegions: __S(0, __c0, 0) })).annotate({
-        identifier: "DisableDefaultKeyReplicationRegionsOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Action: S.String, RequesterComment: S.optional(SensitiveString) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DisassociateMpaTeamInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(10, __c1, 2) })).annotate({
-        identifier: "DisassociateMpaTeamOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ReplicationRegions: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "EnableDefaultKeyReplicationRegionsInput",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          KeyModesOfUse: S.optional(__S(2, __c0, 2)),
-          KeyExportability: S.optional(S.String),
-          KeyVersion: S.optional(S.String),
-          OptionalBlocks: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "KeyBlockHeaders" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          WrappingKeyIdentifier: S.String,
-          KeyBlockHeaders: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "ExportTr31KeyBlock" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-          WrappingKeyCertificate: S.String,
-          ExportToken: S.optional(S.String),
-          SigningKeyIdentifier: S.optional(S.String),
-          SigningKeyCertificate: S.optional(S.String),
-          KeyBlockFormat: S.String,
-          RandomNonce: S.optional(S.String),
-          KeyBlockHeaders: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "ExportTr34KeyBlock" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-          WrappingKeyCertificate: S.String,
-          WrappingSpec: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportKeyCryptogram" });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ SharedInformation: S.String })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PrivateKeyIdentifier: S.String,
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-          PublicKeyCertificate: S.String,
-          DeriveKeyAlgorithm: S.String,
-          KeyDerivationFunction: S.String,
-          KeyDerivationHashAlgorithm: S.String,
-          DerivationData: __S(33, __c4, 1),
-          KeyBlockHeaders: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "ExportDiffieHellmanTr31KeyBlock",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ WrappingKeyIdentifier: S.String, As2805KeyVariant: S.String }),
-      ).annotate({
-        identifier: "ExportAs2805KeyCryptogram",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(30, __c3, 6) }),
-        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(31, __c3, 7) }),
-        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(32, __c4, 0) }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(34, __c4, 2) }),
-        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(35, __c4, 3) }),
-      ]);
-    case 5:
-      return S.suspend(() => S.Struct({ KeySerialNumber: S.String })).annotate({
-        identifier: "ExportDukptInitialKey",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ExportDukptInitialKey: S.optional(__S(37, __c4, 5)),
-          KeyCheckValueAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportAttributes" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          KeyMaterial: __S(36, __c4, 4),
-          ExportKeyIdentifier: S.String,
-          ExportAttributes: S.optional(__S(38, __c4, 6)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ExportKeyInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          WrappingKeyArn: S.String,
-          WrappedKeyMaterialFormat: S.String,
-          KeyMaterial: SensitiveString,
-          KeyCheckValue: S.optional(S.String),
-          KeyCheckValueAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WrappedKey" });
-    case 1:
-      return S.suspend(() => S.Struct({ WrappedKey: S.optional(__S(40, __c5, 0)) })).annotate({
-        identifier: "ExportKeyOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AliasName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetAliasInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ Alias: __S(13, __c1, 5) })).annotate({
-        identifier: "GetAliasOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CommonName: S.String,
-          OrganizationUnit: S.optional(S.String),
-          Organization: S.optional(S.String),
-          City: S.optional(S.String),
-          Country: S.optional(S.String),
-          StateOrProvince: S.optional(S.String),
-          EmailAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateSubjectType" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          KeyIdentifier: S.String,
-          SigningAlgorithm: S.String,
-          CertificateSubject: __S(44, __c5, 4),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCertificateSigningRequestInput",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ CertificateSigningRequest: SensitiveString })).annotate({
-        identifier: "GetCertificateSigningRequestOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetDefaultKeyReplicationRegionsInput",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetKeyInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Action: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetMpaTeamAssociationInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          KeyMaterialType: S.String,
-          SigningKeyAlgorithm: S.String,
-          ReuseLastGeneratedToken: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetParametersForExportInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SigningKeyCertificate: S.String,
-          SigningKeyCertificateChain: S.String,
-          SigningKeyAlgorithm: S.String,
-          ExportToken: S.String,
-          ParametersValidUntilTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "GetParametersForExportOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          KeyMaterialType: S.String,
-          WrappingKeyAlgorithm: S.String,
-          ReuseLastGeneratedToken: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetParametersForImportInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          WrappingKeyCertificate: S.String,
-          WrappingKeyCertificateChain: S.String,
-          WrappingKeyAlgorithm: S.String,
-          ImportToken: S.String,
-          ParametersValidUntilTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "GetParametersForImportOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetPublicKeyCertificateInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ KeyCertificate: S.String, KeyCertificateChain: S.String }),
-      ).annotate({
-        identifier: "GetPublicKeyCertificateOutput",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetResourcePolicyInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ ResourceArn: S.String, Policy: S.String })).annotate({
-        identifier: "GetResourcePolicyOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ KeyAttributes: __S(3, __c0, 3), PublicKeyCertificate: S.String }),
-      ).annotate({ identifier: "RootCertificatePublicKey" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          KeyAttributes: __S(3, __c0, 3),
-          PublicKeyCertificate: S.String,
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-        }),
-      ).annotate({
-        identifier: "TrustedCertificatePublicKey",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ WrappingKeyIdentifier: S.String, WrappedKeyBlock: SensitiveString }),
-      ).annotate({ identifier: "ImportTr31KeyBlock" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-          SigningKeyCertificate: S.String,
-          ImportToken: S.optional(S.String),
-          WrappingKeyIdentifier: S.optional(S.String),
-          WrappingKeyCertificate: S.optional(S.String),
-          WrappedKeyBlock: SensitiveString,
-          KeyBlockFormat: S.String,
-          RandomNonce: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportTr34KeyBlock" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          KeyAttributes: __S(3, __c0, 3),
-          Exportable: S.Boolean,
-          WrappedKeyCryptogram: SensitiveString,
-          ImportToken: S.String,
-          WrappingSpec: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportKeyCryptogram" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          PrivateKeyIdentifier: S.String,
-          CertificateAuthorityPublicKeyIdentifier: S.String,
-          PublicKeyCertificate: S.String,
-          DeriveKeyAlgorithm: S.String,
-          KeyDerivationFunction: S.String,
-          KeyDerivationHashAlgorithm: S.String,
-          DerivationData: __S(33, __c4, 1),
-          WrappedKeyBlock: SensitiveString,
-        }),
-      ).annotate({
-        identifier: "ImportDiffieHellmanTr31KeyBlock",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          As2805KeyVariant: S.String,
-          KeyModesOfUse: __S(2, __c0, 2),
-          KeyAlgorithm: S.String,
-          Exportable: S.Boolean,
-          WrappingKeyIdentifier: S.String,
-          WrappedKeyCryptogram: SensitiveString,
-        }),
-      ).annotate({
-        identifier: "ImportAs2805KeyCryptogram",
-      });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ RootCertificatePublicKey: __S(58, __c7, 2) }),
-        /*@__PURE__*/ S.Struct({ TrustedCertificatePublicKey: __S(59, __c7, 3) }),
-        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(60, __c7, 4) }),
-        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(61, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(62, __c7, 6) }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(63, __c7, 7) }),
-        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(64, __c8, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          KeyMaterial: __S(65, __c8, 1),
-          KeyCheckValueAlgorithm: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(16, __c2, 0)),
-          ReplicationRegions: S.optional(__S(0, __c0, 0)),
-          RequesterComment: S.optional(SensitiveString),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ImportKeyInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          KeyArn: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListAliasesInput" });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Aliases: __S(68, __c8, 4), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAliasesOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          KeyState: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListKeysInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          KeyArn: S.String,
-          KeyState: S.String,
-          KeyAttributes: __S(3, __c0, 3),
-          KeyCheckValue: S.String,
-          Exportable: S.Boolean,
-          Enabled: S.Boolean,
-          MultiRegionKeyType: S.optional(S.String),
-          PrimaryRegion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeySummary" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Keys: __S(72, __c9, 0), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListKeysOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Tags: __S(16, __c2, 0), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PutResourcePolicyInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "RemoveKeyReplicationRegionsInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "RestoreKeyInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartKeyUsageInput" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StopKeyUsageInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(16, __c2, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UpdateAliasInput" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

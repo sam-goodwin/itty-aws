@@ -193,8 +193,8 @@ export const createAccountsConversionSources: API.OperationMethod<
   CreateAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccountsConversionSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionSource>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccountsConversionSourcesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -213,8 +213,8 @@ export const deleteAccountsConversionSources: API.OperationMethod<
   DeleteAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteAccountsConversionSourcesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteAccountsConversionSourcesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const getAccountsConversionSources: API.OperationMethod<
   GetAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAccountsConversionSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionSource>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAccountsConversionSourcesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListAccountsConversionSourcesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListConversionSourcesResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListAccountsConversionSourcesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListConversionSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -265,8 +265,8 @@ export const patchAccountsConversionSources: API.OperationMethod<
   PatchAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<PatchAccountsConversionSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionSource>,
+  input: __S(40, __c5, 0) as any as S.Schema<PatchAccountsConversionSourcesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const undeleteAccountsConversionSources: API.OperationMethod<
   UndeleteAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionSource>,
+  input: __S(49, __c6, 1) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -298,16 +298,35 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "conversions/v1/{+parent}/conversionSources",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsConversionSourcesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           report: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConversionType" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conversionType: S.optional(__S(1, __c0, 1)),
+          conversionType: S.optional(__S(9, __c1, 1)),
           attributionLookbackWindowDays: S.optional(S.Number),
           attributionModel: S.optional(S.String),
         }),
@@ -315,7 +334,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributionSettings: S.optional(__S(2, __c0, 2)),
+          attributionSettings: S.optional(__S(10, __c1, 2)),
           destination: S.optional(S.String),
           displayName: S.optional(S.String),
           currencyCode: S.optional(S.String),
@@ -328,7 +347,7 @@ function __c0(j: number): any {
         S.Struct({
           property: S.optional(S.String),
           propertyId: S.optional(S.String),
-          attributionSettings: S.optional(__S(2, __c0, 2)),
+          attributionSettings: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "GoogleAnalyticsLink" });
     case 5:
@@ -337,27 +356,16 @@ function __c0(j: number): any {
           state: S.optional(S.String),
           expireTime: S.optional(S.String),
           name: S.optional(S.String),
-          merchantCenterDestination: S.optional(__S(3, __c0, 3)),
+          merchantCenterDestination: S.optional(__S(11, __c1, 3)),
           controller: S.optional(S.String),
-          googleAnalyticsLink: S.optional(__S(4, __c0, 4)),
+          googleAnalyticsLink: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ConversionSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "conversions/v1/{+parent}/conversionSources",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsConversionSourcesRequest",
-      });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -371,15 +379,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsConversionSourcesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -393,7 +401,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAccountsConversionSourcesRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -410,23 +422,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountsConversionSourcesRequest",
       });
-    case 3:
-      return S.Array(__S(5, __c0, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(13, __c1, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          conversionSources: S.optional(__S(11, __c1, 3)),
+          conversionSources: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "ListConversionSourcesResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -437,15 +453,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchAccountsConversionSourcesRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UndeleteConversionSourceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -458,7 +478,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

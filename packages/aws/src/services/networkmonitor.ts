@@ -362,8 +362,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateMonitorInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateMonitorOutput>,
+  input: __S(38, __c9, 2) as any as S.Schema<CreateMonitorInput>,
+  output: __S(40, __c10, 0) as any as S.Schema<CreateMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -398,8 +398,8 @@ export const createProbe: API.OperationMethod<
   CreateProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateProbeInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateProbeOutput>,
+  input: __S(49, __c12, 1) as any as S.Schema<CreateProbeInput>,
+  output: __S(52, __c13, 0) as any as S.Schema<CreateProbeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -432,8 +432,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteMonitorInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteMonitorOutput>,
+  input: __S(56, __c14, 0) as any as S.Schema<DeleteMonitorInput>,
+  output: __S(60, __c15, 0) as any as S.Schema<DeleteMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -469,8 +469,8 @@ export const deleteProbe: API.OperationMethod<
   DeleteProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteProbeInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteProbeOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProbeInput>,
+  output: __S(60, __c15, 0) as any as S.Schema<DeleteProbeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -503,8 +503,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetMonitorInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetMonitorOutput>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetMonitorInput>,
+  output: __S(6, __c1, 2) as any as S.Schema<GetMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -536,8 +536,8 @@ export const getProbe: API.OperationMethod<
   GetProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetProbeInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetProbeOutput>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetProbeInput>,
+  output: __S(52, __c13, 0) as any as S.Schema<GetProbeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -566,8 +566,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListMonitorsInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListMonitorsOutput>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListMonitorsInput>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListMonitorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -602,8 +602,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(17, __c4, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -634,8 +634,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<TagResourceOutput>,
+  input: __S(20, __c5, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(60, __c15, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -666,8 +666,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UntagResourceInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<UntagResourceOutput>,
+  input: __S(25, __c6, 1) as any as S.Schema<UntagResourceInput>,
+  output: __S(60, __c15, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -701,8 +701,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateMonitorInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateMonitorOutput>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateMonitorInput>,
+  output: __S(40, __c10, 0) as any as S.Schema<UpdateMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -753,8 +753,8 @@ export const updateProbe: API.OperationMethod<
   UpdateProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateProbeInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateProbeOutput>,
+  input: __S(32, __c8, 0) as any as S.Schema<UpdateProbeInput>,
+  output: __S(52, __c13, 0) as any as S.Schema<UpdateProbeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -772,109 +772,6 @@ export const updateProbe: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceArn: S.String,
-          destination: S.String,
-          destinationPort: S.optional(S.Number),
-          protocol: S.String,
-          packetSize: S.optional(S.Number),
-          probeTags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CreateMonitorProbeInput" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          monitorName: S.String,
-          probes: S.optional(__S(2, __c0, 2)),
-          aggregationPeriod: S.optional(S.Number),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/monitors" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateMonitorInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          monitorArn: S.String,
-          monitorName: S.String,
-          state: S.String,
-          aggregationPeriod: S.optional(S.Number),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CreateMonitorOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceArn: S.String,
-          destination: S.String,
-          destinationPort: S.optional(S.Number),
-          protocol: S.String,
-          packetSize: S.optional(S.Number),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ProbeInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          monitorName: S.String.pipe(T.HttpLabel("monitorName")),
-          probe: __S(5, __c0, 5),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/monitors/{monitorName}/probes" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateProbeInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          probeId: S.optional(S.String),
-          probeArn: S.optional(S.String),
-          sourceArn: S.String,
-          destination: S.String,
-          destinationPort: S.optional(S.Number),
-          protocol: S.String,
-          packetSize: S.optional(S.Number),
-          addressFamily: S.optional(S.String),
-          vpcId: S.optional(S.String),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CreateProbeOutput" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/monitors/{monitorName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteMonitorInput" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMonitorOutput",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
@@ -890,7 +787,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteProbeInput" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
           T.all(
@@ -903,22 +804,26 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMonitorInput" });
-    case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(52, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           monitorArn: S.String,
           monitorName: S.String,
           state: S.String,
           aggregationPeriod: S.Number,
-          tags: S.optional(__S(0, __c0, 0)),
-          probes: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(44, __c11, 0)),
+          probes: S.optional(__S(5, __c1, 1)),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "GetMonitorOutput" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
@@ -934,7 +839,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetProbeInput" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -942,17 +851,17 @@ function __c1(j: number): any {
           state: S.optional(S.String).pipe(T.HttpQuery("state")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/monitors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMonitorsInput" });
+    case 1:
+      return S.Array(__S(40, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ monitors: __S(13, __c3, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMonitorsOutput" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4, __c0, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ monitors: __S(16, __c2, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListMonitorsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -965,15 +874,19 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(44, __c11, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(0, __c0, 0),
+          tags: __S(44, __c11, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -985,13 +898,17 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(21, __c2, 5).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(24, __c6, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1003,7 +920,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
@@ -1021,7 +942,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateMonitorInput" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1046,7 +967,133 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateProbeInput" });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceArn: S.String,
+          destination: S.String,
+          destinationPort: S.optional(S.Number),
+          protocol: S.String,
+          packetSize: S.optional(S.Number),
+          probeTags: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "CreateMonitorProbeInput" });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          monitorName: S.String,
+          probes: S.optional(__S(37, __c9, 1)),
+          aggregationPeriod: S.optional(S.Number),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(44, __c11, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/monitors" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateMonitorInput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          monitorArn: S.String,
+          monitorName: S.String,
+          state: S.String,
+          aggregationPeriod: S.optional(S.Number),
+          tags: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "CreateMonitorOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceArn: S.String,
+          destination: S.String,
+          destinationPort: S.optional(S.Number),
+          protocol: S.String,
+          packetSize: S.optional(S.Number),
+          tags: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "ProbeInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          monitorName: S.String.pipe(T.HttpLabel("monitorName")),
+          probe: __S(48, __c12, 0),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(44, __c11, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/monitors/{monitorName}/probes" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateProbeInput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          probeId: S.optional(S.String),
+          probeArn: S.optional(S.String),
+          sourceArn: S.String,
+          destination: S.String,
+          destinationPort: S.optional(S.Number),
+          protocol: S.String,
+          packetSize: S.optional(S.Number),
+          addressFamily: S.optional(S.String),
+          vpcId: S.optional(S.String),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "CreateProbeOutput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/monitors/{monitorName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteMonitorInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteMonitorOutput",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

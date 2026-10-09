@@ -358,8 +358,8 @@ export const createFolder: API.OperationMethod<
   CreateFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateFolderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FolderResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateFolderRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<FolderResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -373,8 +373,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateProjectRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Project>,
+  input: __S(73, __c18, 1) as any as S.Schema<CreateProjectRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<Project>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteFolderRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteFolderResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<DeleteFolderRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteFolderResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const deleteFolderLabels: API.OperationMethod<
   DeleteFolderLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteFolderLabelsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteFolderLabelsResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<DeleteFolderLabelsRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteFolderLabelsResponse>,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -418,8 +418,8 @@ export const deleteOrganizationLabels: API.OperationMethod<
   DeleteOrganizationLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteOrganizationLabelsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteOrganizationLabelsResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<DeleteOrganizationLabelsRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<DeleteOrganizationLabelsResponse>,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const deleteProjectLabels: API.OperationMethod<
   DeleteProjectLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectLabelsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteProjectLabelsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectLabelsRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteProjectLabelsResponse>,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const getFolderDetails: API.OperationMethod<
   GetFolderDetailsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetFolderDetailsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFolderDetailsResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetFolderDetailsRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<GetFolderDetailsResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -478,8 +478,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<OrganizationResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<OrganizationResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -493,8 +493,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetProjectRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetProjectResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetProjectResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -508,8 +508,8 @@ export const listFolders: API.OperationMethod<
   ListFoldersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListFoldersRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListFoldersResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListFoldersRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ListFoldersResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -523,8 +523,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<ListOrganizationsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -538,8 +538,8 @@ export const listProjects: API.OperationMethod<
   ListProjectsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListProjectsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListProjectsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<ListProjectsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const partialUpdateFolder: API.OperationMethod<
   PartialUpdateFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PartialUpdateFolderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FolderResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<PartialUpdateFolderRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<FolderResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -568,8 +568,8 @@ export const partialUpdateOrganization: API.OperationMethod<
   PartialUpdateOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PartialUpdateOrganizationRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<OrganizationResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<PartialUpdateOrganizationRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<OrganizationResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -583,8 +583,8 @@ export const partialUpdateProject: API.OperationMethod<
   PartialUpdateProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PartialUpdateProjectRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Project>,
+  input: __S(48, __c12, 0) as any as S.Schema<PartialUpdateProjectRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<Project>,
   errors: [Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -594,165 +594,10 @@ export const partialUpdateProject: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.String,
-          subject: S.String,
-        }),
-      ).annotate({ identifier: "Member" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          containerParentId: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          members: S.optional(__S(2, __c0, 2)),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/folders",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFolderRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String,
-          id: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Parent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String,
-          creationTime: S.String,
-          folderId: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.String,
-          parent: __S(4, __c0, 4),
-          updateTime: S.String,
-        }),
-      ).annotate({ identifier: "FolderResponse" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          containerParentId: S.String,
-          labels: S.optional(__S(6, __c0, 6)),
-          members: __S(2, __c0, 2),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateProjectRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String,
-          creationTime: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          lifecycleState: S.String,
-          name: S.String,
-          parent: __S(4, __c0, 4),
-          projectId: S.String,
-          updateTime: S.String,
-        }),
-      ).annotate({ identifier: "Project" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/folders/{containerId}",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFolderRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFolderResponse",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11, __c1, 3).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/folders/{containerId}/labels",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFolderLabelsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11, __c1, 3).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/organizations/{containerId}/labels",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationLabelsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteOrganizationLabelsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{id}",
-            code: 200,
-            baseUrl: "https://resource-manager.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          keys: S.optional(__S(92, __c23, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -764,7 +609,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectLabelsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
@@ -778,7 +627,24 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFolderDetailsRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String,
+          creationTime: S.String,
+          folderId: S.String,
+          labels: S.optional(__S(64, __c16, 0)),
+          name: S.String,
+          parent: __S(68, __c17, 0),
+          parents: S.optional(__S(9, __c2, 1)),
+          updateTime: S.String,
+        }),
+      ).annotate({ identifier: "GetFolderDetailsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
@@ -789,22 +655,13 @@ function __c2(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "ParentListItem" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.String,
-          creationTime: S.String,
-          folderId: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.String,
-          parent: __S(4, __c0, 4),
-          parents: S.optional(__S(19, __c2, 3)),
-          updateTime: S.String,
-        }),
-      ).annotate({ identifier: "GetFolderDetailsResponse" });
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -817,19 +674,27 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrganizationRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(64, __c16, 0)),
           lifecycleState: S.String,
           name: S.String,
           organizationId: S.String,
           updateTime: S.String,
         }),
       ).annotate({ identifier: "OrganizationResponse" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -843,29 +708,29 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(64, __c16, 0)),
           lifecycleState: S.String,
           name: S.String,
-          parent: __S(4, __c0, 4),
-          parents: S.optional(__S(19, __c2, 3)),
+          parent: __S(68, __c17, 0),
+          parents: S.optional(__S(9, __c2, 1)),
           projectId: S.String,
           updateTime: S.String,
         }),
       ).annotate({ identifier: "GetProjectResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.optional(S.String.pipe(T.Query())),
-          containerIds: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          containerIds: S.optional(__S(92, __c23, 0).pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -879,34 +744,38 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFoldersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
           folderId: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(64, __c16, 0)),
           name: S.String,
-          parent: __S(4, __c0, 4),
+          parent: __S(68, __c17, 0),
           updateTime: S.String,
         }),
       ).annotate({
         identifier: "ListFoldersResponseItemsItem",
       });
+    case 2:
+      return S.Array(__S(25, __c6, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(27, __c3, 3),
+          items: __S(26, __c6, 2),
           limit: S.Number,
           offset: S.Number,
         }),
       ).annotate({ identifier: "ListFoldersResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          containerIds: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          containerIds: S.optional(__S(92, __c23, 0).pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -920,12 +789,12 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(64, __c16, 0)),
           lifecycleState: S.String,
           name: S.String,
           organizationId: S.String,
@@ -934,27 +803,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsResponseItemsItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(29, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(31, __c3, 7),
+          items: __S(30, __c7, 2),
           limit: S.Number,
           offset: S.Number,
         }),
       ).annotate({
         identifier: "ListOrganizationsResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.optional(S.String.pipe(T.Query())),
-          containerIds: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          containerIds: S.optional(__S(92, __c23, 0).pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -968,24 +837,26 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
+    case 1:
+      return S.Array(__S(76, __c19, 0));
     case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(34, __c4, 2),
+          items: __S(33, __c8, 1),
           limit: S.Number,
           offset: S.Number,
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
           containerParentId: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
+          labels: S.optional(__S(40, __c10, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -998,11 +869,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PartialUpdateFolderRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          labels: S.optional(__S(36, __c4, 4)),
+          labels: S.optional(__S(40, __c10, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1015,12 +896,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PartialUpdateOrganizationRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           containerParentId: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
+          labels: S.optional(__S(40, __c10, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1035,7 +920,205 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerParentId: S.String,
+          labels: S.optional(__S(64, __c16, 0)),
+          members: S.optional(__S(61, __c15, 1)),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/folders",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFolderRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String,
+          creationTime: S.String,
+          folderId: S.String,
+          labels: S.optional(__S(64, __c16, 0)),
+          name: S.String,
+          parent: __S(68, __c17, 0),
+          updateTime: S.String,
+        }),
+      ).annotate({ identifier: "FolderResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.String,
+          subject: S.String,
+        }),
+      ).annotate({ identifier: "Member" });
+    case 1:
+      return S.Array(__S(60, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String,
+          id: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Parent" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          containerParentId: S.String,
+          labels: S.optional(__S(72, __c18, 0)),
+          members: __S(61, __c15, 1),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String,
+          creationTime: S.String,
+          labels: S.optional(__S(64, __c16, 0)),
+          lifecycleState: S.String,
+          name: S.String,
+          parent: __S(68, __c17, 0),
+          projectId: S.String,
+          updateTime: S.String,
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/folders/{containerId}",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFolderRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFolderResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String.pipe(T.Label()),
+          keys: S.optional(__S(92, __c23, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/folders/{containerId}/labels",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFolderLabelsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.String.pipe(T.Label()),
+          keys: S.optional(__S(92, __c23, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/organizations/{containerId}/labels",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationLabelsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteOrganizationLabelsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{id}",
+            code: 200,
+            baseUrl: "https://resource-manager.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

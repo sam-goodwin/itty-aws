@@ -714,8 +714,8 @@ export const createPolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   CreatePolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreatePolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreatePolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -730,11 +730,11 @@ export const deletePolicyV1CollectionNamespacedPodDisruptionBudget: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<DeletePolicyV1CollectionNamespacedPodDisruptionBudgetRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(228, __c14, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export const deletePolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   DeletePolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeletePolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeletePolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -766,8 +766,8 @@ export const getPolicyAPIGroup: API.OperationMethod<
   GetPolicyAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetPolicyAPIGroupRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetPolicyAPIGroupRequest>,
+  output: __S(277, __c17, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const getPolicyV1APIResources: API.OperationMethod<
   GetPolicyV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetPolicyV1APIResourcesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetPolicyV1APIResourcesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -796,8 +796,8 @@ export const listPolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   ListPolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListPolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudgetList>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListPolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudgetList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -812,11 +812,11 @@ export const listPolicyV1PodDisruptionBudgetForAllNamespaces: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    336,
+    __c21,
+    0,
   ) as any as S.Schema<ListPolicyV1PodDisruptionBudgetForAllNamespacesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudgetList>,
+  output: __S(321, __c20, 1) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudgetList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const patchPolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   PatchPolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PatchPolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchPolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -854,11 +854,11 @@ export const patchPolicyV1NamespacedPodDisruptionBudgetStatus: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    41,
-    __c5,
-    1,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<PatchPolicyV1NamespacedPodDisruptionBudgetStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -872,8 +872,8 @@ export const readPolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   ReadPolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ReadPolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  input: __S(32, __c2, 0) as any as S.Schema<ReadPolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -888,11 +888,11 @@ export const readPolicyV1NamespacedPodDisruptionBudgetStatus: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<ReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const replacePolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   ReplacePolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ReplacePolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  input: __S(64, __c4, 0) as any as S.Schema<ReplacePolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -930,11 +930,11 @@ export const replacePolicyV1NamespacedPodDisruptionBudgetStatus: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
+    80,
     __c5,
-    5,
+    0,
   ) as any as S.Schema<ReplacePolicyV1NamespacedPodDisruptionBudgetStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
+  output: __S(206, __c12, 14) as any as S.Schema<IoK8sApiPolicyV1PodDisruptionBudget>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const watchPolicyV1NamespacedPodDisruptionBudget: API.OperationMethod<
   WatchPolicyV1NamespacedPodDisruptionBudgetError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<WatchPolicyV1NamespacedPodDisruptionBudgetRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(96, __c6, 0) as any as S.Schema<WatchPolicyV1NamespacedPodDisruptionBudgetRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,12 @@ export const watchPolicyV1NamespacedPodDisruptionBudgetList: API.OperationMethod
   WatchPolicyV1NamespacedPodDisruptionBudgetListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<WatchPolicyV1NamespacedPodDisruptionBudgetListRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    128,
+    __c8,
+    0,
+  ) as any as S.Schema<WatchPolicyV1NamespacedPodDisruptionBudgetListRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -979,11 +983,11 @@ export const watchPolicyV1PodDisruptionBudgetListForAllNamespaces: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(112, __c7, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -991,439 +995,6 @@ export const watchPolicyV1PodDisruptionBudgetListForAllNamespaces: API.Operation
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(9, __c1, 1)),
-          matchLabels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxUnavailable: S.optional(S.String),
-          minAvailable: S.optional(S.String),
-          selector: S.optional(__S(10, __c1, 2)),
-          unhealthyPodEvictionPolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.String,
-          message: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          reason: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(13, __c1, 5)),
-          currentHealthy: S.optional(S.Number),
-          desiredHealthy: S.optional(S.Number),
-          disruptedPods: S.optional(__S(0, __c0, 0)),
-          disruptionsAllowed: S.optional(S.Number),
-          expectedPods: S.optional(S.Number),
-          observedGeneration: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-          status: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePolicyV1NamespacedPodDisruptionBudgetRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-          status: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiPolicyV1PodDisruptionBudget",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePolicyV1CollectionNamespacedPodDisruptionBudgetRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(20, __c2, 4)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(21, __c2, 5)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePolicyV1NamespacedPodDisruptionBudgetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/policy/", code: 200 })),
-      ).annotate({ identifier: "GetPolicyAPIGroupRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Array(__S(27, __c3, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(27, __c3, 3)),
-          serverAddressByClientCIDRs: S.optional(__S(29, __c3, 5)),
-          versions: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/policy/v1/", code: 200 })),
-      ).annotate({
-        identifier: "GetPolicyV1APIResourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(34, __c4, 2),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPolicyV1NamespacedPodDisruptionBudgetRequest",
-      });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(37, __c4, 5),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/apis/policy/v1/poddisruptionbudgets", code: 200 })),
-      ).annotate({
-        identifier: "ListPolicyV1PodDisruptionBudgetForAllNamespacesRequest",
-      });
-  }
-}
-function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1445,7 +1016,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchPolicyV1NamespacedPodDisruptionBudgetRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1465,7 +1040,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchPolicyV1NamespacedPodDisruptionBudgetStatusRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1481,7 +1060,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReadPolicyV1NamespacedPodDisruptionBudgetRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1497,7 +1080,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1508,9 +1095,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-          status: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(197, __c12, 5)),
+          spec: S.optional(__S(202, __c12, 10)),
+          status: S.optional(__S(205, __c12, 13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1521,7 +1108,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReplacePolicyV1NamespacedPodDisruptionBudgetRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1532,9 +1123,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-          status: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(197, __c12, 5)),
+          spec: S.optional(__S(202, __c12, 10)),
+          status: S.optional(__S(205, __c12, 13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1545,7 +1136,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReplacePolicyV1NamespacedPodDisruptionBudgetStatusRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1572,7 +1167,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchPolicyV1NamespacedPodDisruptionBudgetRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1583,7 +1182,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1611,7 +1210,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "WatchPolicyV1NamespacedPodDisruptionBudgetListRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1634,7 +1237,467 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(197, __c12, 5)),
+          spec: S.optional(__S(202, __c12, 10)),
+          status: S.optional(__S(205, __c12, 13)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePolicyV1NamespacedPodDisruptionBudgetRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(195, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(192, __c12, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(176, __c11, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(192, __c12, 0)),
+          managedFields: S.optional(__S(194, __c12, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(196, __c12, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(198, __c12, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 8:
+      return S.Array(__S(199, __c12, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(200, __c12, 8)),
+          matchLabels: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          maxUnavailable: S.optional(S.String),
+          minAvailable: S.optional(S.String),
+          selector: S.optional(__S(201, __c12, 9)),
+          unhealthyPodEvictionPolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetSpec",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.String,
+          message: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+          reason: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
+      });
+    case 12:
+      return S.Array(__S(203, __c12, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(204, __c12, 12)),
+          currentHealthy: S.optional(S.Number),
+          desiredHealthy: S.optional(S.Number),
+          disruptedPods: S.optional(__S(192, __c12, 0)),
+          disruptionsAllowed: S.optional(S.Number),
+          expectedPods: S.optional(S.Number),
+          observedGeneration: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetStatus",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(197, __c12, 5)),
+          spec: S.optional(__S(202, __c12, 10)),
+          status: S.optional(__S(205, __c12, 13)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiPolicyV1PodDisruptionBudget",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(224, __c14, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePolicyV1CollectionNamespacedPodDisruptionBudgetRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(226, __c14, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(227, __c14, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(241, __c15, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(224, __c14, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePolicyV1NamespacedPodDisruptionBudgetRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/policy/", code: 200 })),
+      ).annotate({ identifier: "GetPolicyAPIGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
+    case 4:
+      return S.Array(__S(273, __c17, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(273, __c17, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(275, __c17, 3)),
+          versions: __S(276, __c17, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/policy/v1/", code: 200 })),
+      ).annotate({
+        identifier: "GetPolicyV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(176, __c11, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(176, __c11, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(176, __c11, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(290, __c18, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPolicyV1NamespacedPodDisruptionBudgetRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(206, __c12, 14));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(320, __c20, 0),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(241, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiPolicyV1PodDisruptionBudgetList",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/apis/policy/v1/poddisruptionbudgets", code: 200 })),
+      ).annotate({
+        identifier: "ListPolicyV1PodDisruptionBudgetForAllNamespacesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

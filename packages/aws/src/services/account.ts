@@ -164,7 +164,7 @@ export class ValidationException
       message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(34, __c4, 2)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(65, __c16, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -303,7 +303,7 @@ export interface Region {
   RegionName?: string;
   RegionOptStatus?: string;
 }
-const Region = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Region>;
 export type RegionOptList = Region[];
 export interface ListRegionsResponse {
   NextToken?: string;
@@ -372,8 +372,8 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
   AcceptPrimaryEmailUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -407,8 +407,8 @@ export const deleteAlternateContact: API.OperationMethod<
   DeleteAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAlternateContactRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAlternateContactResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<DeleteAlternateContactRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteAlternateContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -439,8 +439,8 @@ export const disableRegion: API.OperationMethod<
   DisableRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DisableRegionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisableRegionResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<DisableRegionRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DisableRegionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -469,8 +469,8 @@ export const enableRegion: API.OperationMethod<
   EnableRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<EnableRegionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EnableRegionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<EnableRegionRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<EnableRegionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -498,8 +498,8 @@ export const getAccountInformation: API.OperationMethod<
   GetAccountInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetAccountInformationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAccountInformationResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetAccountInformationRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<GetAccountInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -531,8 +531,8 @@ export const getAlternateContact: API.OperationMethod<
   GetAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAlternateContactRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetAlternateContactResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetAlternateContactRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<GetAlternateContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -563,8 +563,8 @@ export const getContactInformation: API.OperationMethod<
   GetContactInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetContactInformationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetContactInformationResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetContactInformationRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetContactInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -594,8 +594,8 @@ export const getGovCloudAccountInformation: API.OperationMethod<
   GetGovCloudAccountInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetGovCloudAccountInformationRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetGovCloudAccountInformationResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetGovCloudAccountInformationRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetGovCloudAccountInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -625,8 +625,8 @@ export const getPrimaryEmail: API.OperationMethod<
   GetPrimaryEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetPrimaryEmailRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetPrimaryEmailResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetPrimaryEmailRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetPrimaryEmailResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -655,8 +655,8 @@ export const getPrimaryEmailUpdateStatus: API.OperationMethod<
   GetPrimaryEmailUpdateStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -684,8 +684,8 @@ export const getRegionOptStatus: API.OperationMethod<
   GetRegionOptStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetRegionOptStatusRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetRegionOptStatusResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetRegionOptStatusRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetRegionOptStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -713,8 +713,8 @@ export const listRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListRegionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListRegionsResponse>,
+  input: __S(37, __c9, 1) as any as S.Schema<ListRegionsRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<ListRegionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -747,8 +747,8 @@ export const putAccountName: API.OperationMethod<
   PutAccountNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PutAccountNameRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutAccountNameResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<PutAccountNameRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PutAccountNameResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -779,8 +779,8 @@ export const putAlternateContact: API.OperationMethod<
   PutAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PutAlternateContactRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutAlternateContactResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<PutAlternateContactRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PutAlternateContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -809,8 +809,8 @@ export const putContactInformation: API.OperationMethod<
   PutContactInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<PutContactInformationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutContactInformationResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<PutContactInformationRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PutContactInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,8 +841,8 @@ export const sendPhoneNumberVerification: API.OperationMethod<
   SendPhoneNumberVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<SendPhoneNumberVerificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendPhoneNumberVerificationResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<SendPhoneNumberVerificationRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<SendPhoneNumberVerificationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -873,8 +873,8 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
   StartPrimaryEmailUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<StartPrimaryEmailUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartPrimaryEmailUpdateResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<StartPrimaryEmailUpdateRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<StartPrimaryEmailUpdateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -907,8 +907,8 @@ export const verifyPhoneNumber: API.OperationMethod<
   VerifyPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<VerifyPhoneNumberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<VerifyPhoneNumberResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<VerifyPhoneNumberRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<VerifyPhoneNumberResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -927,55 +927,15 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString, Otp: SensitiveString }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/acceptPrimaryEmailUpdate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AcceptPrimaryEmailUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "AcceptPrimaryEmailUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/deleteAlternateContact" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAlternateContactRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAlternateContactResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/disableRegion" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DisableRegionRequest" });
-    case 5:
-      return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/enableRegion" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "EnableRegionRequest" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -990,7 +950,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountInformationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -1003,7 +963,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1031,10 +991,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AlternateContact" });
     case 2:
-      return S.suspend(() => S.Struct({ AlternateContact: S.optional(__S(9, __c1, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ AlternateContact: S.optional(__S(9, __c2, 1)) })).annotate({
         identifier: "GetAlternateContactResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1049,7 +1013,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetContactInformationRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ContactInformation: S.optional(__S(16, __c4, 0)),
+          VerificationStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetContactInformationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FullName: SensitiveString,
@@ -1066,16 +1043,11 @@ function __c1(j: number): any {
           WebsiteUrl: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ContactInformation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ContactInformation: S.optional(__S(12, __c1, 4)),
-          VerificationStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetContactInformationResponse",
-      });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ StandardAccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1090,7 +1062,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetGovCloudAccountInformationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ GovCloudAccountId: S.String, AccountState: S.String }),
       ).annotate({
@@ -1098,7 +1070,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1110,7 +1082,11 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({ PrimaryEmail: S.optional(SensitiveString) })).annotate({
         identifier: "GetPrimaryEmailResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1125,7 +1101,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPrimaryEmailUpdateStatusRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
@@ -1134,7 +1110,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPrimaryEmailUpdateStatusResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
           T.all(
@@ -1149,46 +1129,50 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetRegionOptStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
       ).annotate({
         identifier: "GetRegionOptStatusResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          RegionOptStatusContains: S.optional(__S(22, __c2, 6)),
+          RegionOptStatusContains: S.optional(__S(36, __c9, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listRegions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListRegionsRequest" });
+    case 2:
+      return S.Array(Region);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(__S(38, __c9, 2)) }),
+      ).annotate({ identifier: "ListRegionsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
-      ).annotate({ identifier: "Region" });
-    case 1:
-      return S.Array(Region);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(__S(25, __c3, 1)) }),
-      ).annotate({ identifier: "ListRegionsResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({ AccountName: SensitiveString, AccountId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/putAccountName" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutAccountNameRequest" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: SensitiveString,
@@ -1210,9 +1194,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutAlternateContactRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ContactInformation: __S(12, __c1, 4), AccountId: S.optional(S.String) }).pipe(
+        S.Struct({ ContactInformation: __S(16, __c4, 0), AccountId: S.optional(S.String) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/putContactInformation" }),
             svc,
@@ -1225,7 +1213,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutContactInformationRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1240,7 +1232,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SendPhoneNumberVerificationRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString }).pipe(
           T.all(
@@ -1257,7 +1253,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1272,15 +1268,90 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "VerifyPhoneNumberRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: SensitiveString })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
+    case 1:
+      return S.Array(__S(64, __c16, 0));
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString, Otp: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/acceptPrimaryEmailUpdate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptPrimaryEmailUpdateRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "AcceptPrimaryEmailUpdateResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "Region" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/deleteAlternateContact" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAlternateContactRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAlternateContactResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/disableRegion" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DisableRegionRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

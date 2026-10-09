@@ -3366,8 +3366,8 @@ export const applicationServiceManagedResources: API.OperationMethod<
   ApplicationServiceManagedResourcesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ApplicationServiceManagedResourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApplicationManagedResourcesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ApplicationServiceManagedResourcesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<ApplicationManagedResourcesResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3381,8 +3381,8 @@ export const applicationServicePodLogs: API.OperationMethod<
   ApplicationServicePodLogsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ApplicationServicePodLogsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ApplicationServicePodLogsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ApplicationServicePodLogsRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<ApplicationServicePodLogsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3396,8 +3396,8 @@ export const applicationServicePodLogs2: API.OperationMethod<
   ApplicationServicePodLogs2Error,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ApplicationServicePodLogs2Request>,
-  output: __S(11, __c1, 3) as any as S.Schema<ApplicationServicePodLogs2Response>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ApplicationServicePodLogs2Request>,
+  output: __S(1057, __c33, 1) as any as S.Schema<ApplicationServicePodLogs2Response>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3411,8 +3411,8 @@ export const applicationServiceResourceTree: API.OperationMethod<
   ApplicationServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ApplicationServiceResourceTreeRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<V1alpha1ApplicationTree>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ApplicationServiceResourceTreeRequest>,
+  output: __S(1990, __c62, 6) as any as S.Schema<V1alpha1ApplicationTree>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3426,8 +3426,8 @@ export const applicationServiceRevisionChartDetails: API.OperationMethod<
   ApplicationServiceRevisionChartDetailsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ApplicationServiceRevisionChartDetailsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<V1alpha1ChartDetails>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ApplicationServiceRevisionChartDetailsRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<V1alpha1ChartDetails>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3441,8 +3441,8 @@ export const applicationServiceRevisionMetadata: API.OperationMethod<
   ApplicationServiceRevisionMetadataError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ApplicationServiceRevisionMetadataRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<V1alpha1RevisionMetadata>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ApplicationServiceRevisionMetadataRequest>,
+  output: __S(3076, __c96, 4) as any as S.Schema<V1alpha1RevisionMetadata>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3456,8 +3456,8 @@ export const applicationServiceRollback: API.OperationMethod<
   ApplicationServiceRollbackError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ApplicationServiceRollbackRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ApplicationServiceRollbackRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3471,8 +3471,8 @@ export const applicationServiceServerSideDiff: API.OperationMethod<
   ApplicationServiceServerSideDiffError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ApplicationServiceServerSideDiffRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ApplicationApplicationServerSideDiffResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ApplicationServiceServerSideDiffRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<ApplicationApplicationServerSideDiffResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3486,8 +3486,8 @@ export const applicationSetServiceResourceTree: API.OperationMethod<
   ApplicationSetServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ApplicationSetServiceResourceTreeRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<V1alpha1ApplicationSetTree>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ApplicationSetServiceResourceTreeRequest>,
+  output: __S(4577, __c143, 1) as any as S.Schema<V1alpha1ApplicationSetTree>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3501,8 +3501,8 @@ export const createAccountServiceToken: API.OperationMethod<
   CreateAccountServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateAccountServiceTokenRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<AccountCreateTokenResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateAccountServiceTokenRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<AccountCreateTokenResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3516,8 +3516,8 @@ export const createApplicationService: API.OperationMethod<
   CreateApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateApplicationServiceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateApplicationServiceRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3531,8 +3531,8 @@ export const createApplicationSetService: API.OperationMethod<
   CreateApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateApplicationSetServiceRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<V1alpha1ApplicationSet>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateApplicationSetServiceRequest>,
+  output: __S(509, __c15, 29) as any as S.Schema<V1alpha1ApplicationSet>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3546,8 +3546,8 @@ export const createCertificateServiceCertificate: API.OperationMethod<
   CreateCertificateServiceCertificateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<CreateCertificateServiceCertificateRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateCertificateServiceCertificateRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<V1alpha1RepositoryCertificateList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3561,8 +3561,8 @@ export const createClusterService: API.OperationMethod<
   CreateClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<CreateClusterServiceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<V1alpha1Cluster>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateClusterServiceRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<V1alpha1Cluster>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3576,8 +3576,8 @@ export const createGPGKeyService: API.OperationMethod<
   CreateGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<CreateGPGKeyServiceRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateGPGKeyServiceRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3591,8 +3591,8 @@ export const createProjectService: API.OperationMethod<
   CreateProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<CreateProjectServiceRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<V1alpha1AppProject>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateProjectServiceRequest>,
+  output: __S(889, __c27, 25) as any as S.Schema<V1alpha1AppProject>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3606,8 +3606,8 @@ export const createProjectServiceToken: API.OperationMethod<
   CreateProjectServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CreateProjectServiceTokenRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ProjectProjectTokenResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<CreateProjectServiceTokenRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<ProjectProjectTokenResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3621,8 +3621,8 @@ export const createRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   CreateRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<CreateRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<V1alpha1RepoCreds>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateRepoCredsServiceRepositoryCredentialsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<V1alpha1RepoCreds>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3637,11 +3637,11 @@ export const createRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    239,
-    __c29,
-    7,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<CreateRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<V1alpha1RepoCreds>,
+  output: __S(960, __c30, 0) as any as S.Schema<V1alpha1RepoCreds>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3655,8 +3655,8 @@ export const createRepositoryServiceRepository: API.OperationMethod<
   CreateRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateRepositoryServiceRepositoryRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateRepositoryServiceRepositoryRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3670,8 +3670,8 @@ export const createRepositoryServiceWriteRepository: API.OperationMethod<
   CreateRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CreateRepositoryServiceWriteRepositoryRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateRepositoryServiceWriteRepositoryRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3685,8 +3685,8 @@ export const createSessionService: API.OperationMethod<
   CreateSessionServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<CreateSessionServiceRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<SessionSessionResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateSessionServiceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<SessionSessionResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3700,8 +3700,8 @@ export const deleteAccountServiceToken: API.OperationMethod<
   DeleteAccountServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<DeleteAccountServiceTokenRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteAccountServiceTokenResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteAccountServiceTokenRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteAccountServiceTokenResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3715,8 +3715,8 @@ export const deleteApplicationService: API.OperationMethod<
   DeleteApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DeleteApplicationServiceRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteApplicationServiceResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteApplicationServiceRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteApplicationServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3730,8 +3730,8 @@ export const deleteApplicationServiceResource: API.OperationMethod<
   DeleteApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteApplicationServiceResourceRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteApplicationServiceResourceResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DeleteApplicationServiceResourceRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteApplicationServiceResourceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3745,8 +3745,8 @@ export const deleteApplicationSetService: API.OperationMethod<
   DeleteApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<DeleteApplicationSetServiceRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<ApplicationsetApplicationSetResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteApplicationSetServiceRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<ApplicationsetApplicationSetResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3760,8 +3760,8 @@ export const deleteCertificateServiceCertificate: API.OperationMethod<
   DeleteCertificateServiceCertificateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<DeleteCertificateServiceCertificateRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteCertificateServiceCertificateRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<V1alpha1RepositoryCertificateList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3775,8 +3775,8 @@ export const deleteClusterService: API.OperationMethod<
   DeleteClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<DeleteClusterServiceRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteClusterServiceResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteClusterServiceRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteClusterServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3790,8 +3790,8 @@ export const deleteGPGKeyService: API.OperationMethod<
   DeleteGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<DeleteGPGKeyServiceRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteGPGKeyServiceResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteGPGKeyServiceRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteGPGKeyServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3805,8 +3805,8 @@ export const deleteProjectService: API.OperationMethod<
   DeleteProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<DeleteProjectServiceRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteProjectServiceResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteProjectServiceRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteProjectServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3820,8 +3820,8 @@ export const deleteProjectServiceToken: API.OperationMethod<
   DeleteProjectServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<DeleteProjectServiceTokenRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteProjectServiceTokenResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteProjectServiceTokenRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteProjectServiceTokenResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3835,11 +3835,11 @@ export const deleteRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   DeleteRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsRequest>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsRequest>,
   output: __S(
-    246,
-    __c30,
-    6,
+    1312,
+    __c41,
+    0,
   ) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
@@ -3855,14 +3855,14 @@ export const deleteRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    257,
-    __c32,
-    1,
+    1664,
+    __c52,
+    0,
   ) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsRequest>,
   output: __S(
-    258,
-    __c32,
-    2,
+    1665,
+    __c52,
+    1,
   ) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
@@ -3877,8 +3877,8 @@ export const deleteRepositoryServiceRepository: API.OperationMethod<
   DeleteRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<DeleteRepositoryServiceRepositoryRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteRepositoryServiceRepositoryRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3892,8 +3892,8 @@ export const deleteRepositoryServiceWriteRepository: API.OperationMethod<
   DeleteRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3907,8 +3907,8 @@ export const deleteSessionService: API.OperationMethod<
   DeleteSessionServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<DeleteSessionServiceRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<SessionSessionResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteSessionServiceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<SessionSessionResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3922,8 +3922,8 @@ export const generateApplicationSetService: API.OperationMethod<
   GenerateApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<GenerateApplicationSetServiceRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ApplicationsetApplicationSetGenerateResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GenerateApplicationSetServiceRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<ApplicationsetApplicationSetGenerateResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3937,8 +3937,8 @@ export const getAccountServiceAccount: API.OperationMethod<
   GetAccountServiceAccountError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetAccountServiceAccountRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<AccountAccount>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetAccountServiceAccountRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<AccountAccount>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3952,8 @@ export const getApplicationService: API.OperationMethod<
   GetApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<GetApplicationServiceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetApplicationServiceRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3967,8 +3967,8 @@ export const getApplicationServiceApplicationSyncWindows: API.OperationMethod<
   GetApplicationServiceApplicationSyncWindowsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetApplicationServiceApplicationSyncWindowsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ApplicationApplicationSyncWindowsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetApplicationServiceApplicationSyncWindowsRequest>,
+  output: __S(2211, __c69, 3) as any as S.Schema<ApplicationApplicationSyncWindowsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3982,8 +3982,8 @@ export const getApplicationServiceManifests: API.OperationMethod<
   GetApplicationServiceManifestsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetApplicationServiceManifestsRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<RepositoryManifestResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetApplicationServiceManifestsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<RepositoryManifestResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3997,8 +3997,8 @@ export const getApplicationServiceManifestsWithFiles: API.OperationMethod<
   GetApplicationServiceManifestsWithFilesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetApplicationServiceManifestsWithFilesRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<RepositoryManifestResponse>,
+  input: __S(2306, __c72, 2) as any as S.Schema<GetApplicationServiceManifestsWithFilesRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<RepositoryManifestResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4012,8 +4012,8 @@ export const getApplicationServiceOCIMetadata: API.OperationMethod<
   GetApplicationServiceOCIMetadataError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetApplicationServiceOCIMetadataRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<V1alpha1OCIMetadata>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetApplicationServiceOCIMetadataRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<V1alpha1OCIMetadata>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4027,8 +4027,8 @@ export const getApplicationServiceResource: API.OperationMethod<
   GetApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetApplicationServiceResourceRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ApplicationApplicationResourceResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetApplicationServiceResourceRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<ApplicationApplicationResourceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4042,8 +4042,8 @@ export const getApplicationSetService: API.OperationMethod<
   GetApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetApplicationSetServiceRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<V1alpha1ApplicationSet>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetApplicationSetServiceRequest>,
+  output: __S(509, __c15, 29) as any as S.Schema<V1alpha1ApplicationSet>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4057,8 +4057,8 @@ export const getClusterService: API.OperationMethod<
   GetClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<GetClusterServiceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<V1alpha1Cluster>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetClusterServiceRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<V1alpha1Cluster>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4072,8 +4072,8 @@ export const getGPGKeyService: API.OperationMethod<
   GetGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetGPGKeyServiceRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<V1alpha1GnuPGPublicKey>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetGPGKeyServiceRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<V1alpha1GnuPGPublicKey>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4087,8 +4087,8 @@ export const getProjectService: API.OperationMethod<
   GetProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<GetProjectServiceRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<V1alpha1AppProject>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetProjectServiceRequest>,
+  output: __S(889, __c27, 25) as any as S.Schema<V1alpha1AppProject>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4102,8 +4102,8 @@ export const getProjectServiceDetailedProject: API.OperationMethod<
   GetProjectServiceDetailedProjectError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetProjectServiceDetailedProjectRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<ProjectDetailedProjectsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetProjectServiceDetailedProjectRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<ProjectDetailedProjectsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4117,8 +4117,8 @@ export const getProjectServiceGlobalProjects: API.OperationMethod<
   GetProjectServiceGlobalProjectsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetProjectServiceGlobalProjectsRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<ProjectGlobalProjectsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetProjectServiceGlobalProjectsRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<ProjectGlobalProjectsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4132,8 +4132,8 @@ export const getProjectServiceSyncWindowsState: API.OperationMethod<
   GetProjectServiceSyncWindowsStateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<GetProjectServiceSyncWindowsStateRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<ProjectSyncWindowsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetProjectServiceSyncWindowsStateRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<ProjectSyncWindowsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4147,8 +4147,8 @@ export const getRepositoryService: API.OperationMethod<
   GetRepositoryServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetRepositoryServiceRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetRepositoryServiceRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4162,8 +4162,8 @@ export const getRepositoryServiceAppDetails: API.OperationMethod<
   GetRepositoryServiceAppDetailsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetRepositoryServiceAppDetailsRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<RepositoryRepoAppDetailsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetRepositoryServiceAppDetailsRequest>,
+  output: __S(2822, __c88, 6) as any as S.Schema<RepositoryRepoAppDetailsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4177,8 +4177,8 @@ export const getRepositoryServiceHelmCharts: API.OperationMethod<
   GetRepositoryServiceHelmChartsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetRepositoryServiceHelmChartsRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<RepositoryHelmChartsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetRepositoryServiceHelmChartsRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<RepositoryHelmChartsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4192,8 +4192,8 @@ export const getRepositoryServiceWrite: API.OperationMethod<
   GetRepositoryServiceWriteError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetRepositoryServiceWriteRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetRepositoryServiceWriteRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4207,8 +4207,8 @@ export const getSessionServiceUserInfo: API.OperationMethod<
   GetSessionServiceUserInfoError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetSessionServiceUserInfoRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<SessionGetUserInfoResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetSessionServiceUserInfoRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<SessionGetUserInfoResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4222,8 +4222,8 @@ export const getSettingsService: API.OperationMethod<
   GetSettingsServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetSettingsServiceRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<ClusterSettings>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetSettingsServiceRequest>,
+  output: __S(2964, __c92, 20) as any as S.Schema<ClusterSettings>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4237,8 +4237,8 @@ export const getSettingsServicePlugins: API.OperationMethod<
   GetSettingsServicePluginsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<GetSettingsServicePluginsRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<ClusterSettingsPluginsResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetSettingsServicePluginsRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<ClusterSettingsPluginsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4252,8 +4252,8 @@ export const invalidateClusterServiceCache: API.OperationMethod<
   InvalidateClusterServiceCacheError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<InvalidateClusterServiceCacheRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<V1alpha1Cluster>,
+  input: __S(3040, __c95, 0) as any as S.Schema<InvalidateClusterServiceCacheRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<V1alpha1Cluster>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4267,8 +4267,8 @@ export const listAccountServiceAccounts: API.OperationMethod<
   ListAccountServiceAccountsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListAccountServiceAccountsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<AccountAccountsList>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListAccountServiceAccountsRequest>,
+  output: __S(3138, __c98, 2) as any as S.Schema<AccountAccountsList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4282,8 +4282,8 @@ export const listApplicationService: API.OperationMethod<
   ListApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListApplicationServiceRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<V1alpha1ApplicationList>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListApplicationServiceRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<V1alpha1ApplicationList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4297,8 +4297,8 @@ export const listApplicationServiceLinks: API.OperationMethod<
   ListApplicationServiceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<ListApplicationServiceLinksRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ApplicationLinksResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListApplicationServiceLinksRequest>,
+  output: __S(3234, __c101, 2) as any as S.Schema<ApplicationLinksResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4312,8 +4312,8 @@ export const listApplicationServiceResourceActions: API.OperationMethod<
   ListApplicationServiceResourceActionsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListApplicationServiceResourceActionsRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<ApplicationResourceActionsListResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListApplicationServiceResourceActionsRequest>,
+  output: __S(3267, __c102, 3) as any as S.Schema<ApplicationResourceActionsListResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4327,8 +4327,8 @@ export const listApplicationServiceResourceEvents: API.OperationMethod<
   ListApplicationServiceResourceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListApplicationServiceResourceEventsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<EventsEventList>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListApplicationServiceResourceEventsRequest>,
+  output: __S(3334, __c104, 6) as any as S.Schema<EventsEventList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4342,8 +4342,8 @@ export const listApplicationServiceResourceLinks: API.OperationMethod<
   ListApplicationServiceResourceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListApplicationServiceResourceLinksRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ApplicationLinksResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListApplicationServiceResourceLinksRequest>,
+  output: __S(3234, __c101, 2) as any as S.Schema<ApplicationLinksResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4357,8 +4357,8 @@ export const listApplicationSetService: API.OperationMethod<
   ListApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<ListApplicationSetServiceRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<V1alpha1ApplicationSetList>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListApplicationSetServiceRequest>,
+  output: __S(3394, __c106, 2) as any as S.Schema<V1alpha1ApplicationSetList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4372,8 +4372,8 @@ export const listApplicationSetServiceResourceEvents: API.OperationMethod<
   ListApplicationSetServiceResourceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListApplicationSetServiceResourceEventsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<EventsEventList>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListApplicationSetServiceResourceEventsRequest>,
+  output: __S(3334, __c104, 6) as any as S.Schema<EventsEventList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4387,8 +4387,8 @@ export const listCertificateServiceCertificates: API.OperationMethod<
   ListCertificateServiceCertificatesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListCertificateServiceCertificatesRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListCertificateServiceCertificatesRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<V1alpha1RepositoryCertificateList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4402,8 +4402,8 @@ export const listClusterService: API.OperationMethod<
   ListClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<ListClusterServiceRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<V1alpha1ClusterList>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListClusterServiceRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<V1alpha1ClusterList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4417,8 +4417,8 @@ export const listGPGKeyService: API.OperationMethod<
   ListGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<ListGPGKeyServiceRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<V1alpha1GnuPGPublicKeyList>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListGPGKeyServiceRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<V1alpha1GnuPGPublicKeyList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4432,8 +4432,8 @@ export const listNotificationServiceServices: API.OperationMethod<
   ListNotificationServiceServicesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListNotificationServiceServicesRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<NotificationServiceList>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListNotificationServiceServicesRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<NotificationServiceList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4447,8 +4447,8 @@ export const listNotificationServiceTemplates: API.OperationMethod<
   ListNotificationServiceTemplatesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListNotificationServiceTemplatesRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<NotificationTemplateList>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListNotificationServiceTemplatesRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<NotificationTemplateList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4462,8 +4462,8 @@ export const listNotificationServiceTriggers: API.OperationMethod<
   ListNotificationServiceTriggersError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<ListNotificationServiceTriggersRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<NotificationTriggerList>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListNotificationServiceTriggersRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<NotificationTriggerList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4477,8 +4477,8 @@ export const listProjectService: API.OperationMethod<
   ListProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListProjectServiceRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<V1alpha1AppProjectList>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListProjectServiceRequest>,
+  output: __S(3937, __c123, 1) as any as S.Schema<V1alpha1AppProjectList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4492,8 +4492,8 @@ export const listProjectServiceEvents: API.OperationMethod<
   ListProjectServiceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<ListProjectServiceEventsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<EventsEventList>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListProjectServiceEventsRequest>,
+  output: __S(3334, __c104, 6) as any as S.Schema<EventsEventList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4507,8 +4507,8 @@ export const listProjectServiceLinks: API.OperationMethod<
   ListProjectServiceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<ListProjectServiceLinksRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ApplicationLinksResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListProjectServiceLinksRequest>,
+  output: __S(3234, __c101, 2) as any as S.Schema<ApplicationLinksResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4522,8 +4522,8 @@ export const listRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   ListRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<V1alpha1RepoCredsList>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListRepoCredsServiceRepositoryCredentialsRequest>,
+  output: __S(4065, __c127, 1) as any as S.Schema<V1alpha1RepoCredsList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4538,11 +4538,11 @@ export const listRepoCredsServiceWriteRepositoryCredentials: API.OperationMethod
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    377,
-    __c47,
-    1,
+    4096,
+    __c128,
+    0,
   ) as any as S.Schema<ListRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<V1alpha1RepoCredsList>,
+  output: __S(4065, __c127, 1) as any as S.Schema<V1alpha1RepoCredsList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4556,8 +4556,8 @@ export const listRepositoryServiceApps: API.OperationMethod<
   ListRepositoryServiceAppsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListRepositoryServiceAppsRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<RepositoryRepoAppsResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ListRepositoryServiceAppsRequest>,
+  output: __S(4131, __c129, 3) as any as S.Schema<RepositoryRepoAppsResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4570,8 +4570,8 @@ export const listRepositoryServiceOCITags: API.OperationMethod<
   ListRepositoryServiceOCITagsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<ListRepositoryServiceOCITagsRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<RepositoryRefs>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ListRepositoryServiceOCITagsRequest>,
+  output: __S(4224, __c132, 0) as any as S.Schema<RepositoryRefs>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4584,8 +4584,8 @@ export const listRepositoryServiceRefs: API.OperationMethod<
   ListRepositoryServiceRefsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListRepositoryServiceRefsRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<RepositoryRefs>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListRepositoryServiceRefsRequest>,
+  output: __S(4224, __c132, 0) as any as S.Schema<RepositoryRefs>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4599,8 +4599,8 @@ export const listRepositoryServiceRepositories: API.OperationMethod<
   ListRepositoryServiceRepositoriesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListRepositoryServiceRepositoriesRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<V1alpha1RepositoryList>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListRepositoryServiceRepositoriesRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<V1alpha1RepositoryList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4614,8 +4614,8 @@ export const listRepositoryServiceWriteRepositories: API.OperationMethod<
   ListRepositoryServiceWriteRepositoriesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListRepositoryServiceWriteRepositoriesRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<V1alpha1RepositoryList>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListRepositoryServiceWriteRepositoriesRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<V1alpha1RepositoryList>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4629,8 +4629,8 @@ export const patchApplicationService: API.OperationMethod<
   PatchApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<PatchApplicationServiceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(4384, __c137, 0) as any as S.Schema<PatchApplicationServiceRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4644,8 +4644,8 @@ export const patchApplicationServiceResource: API.OperationMethod<
   PatchApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<PatchApplicationServiceResourceRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ApplicationApplicationResourceResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<PatchApplicationServiceResourceRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<ApplicationApplicationResourceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4659,8 +4659,8 @@ export const rotateClusterServiceAuth: API.OperationMethod<
   RotateClusterServiceAuthError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<RotateClusterServiceAuthRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<RotateClusterServiceAuthResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<RotateClusterServiceAuthRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<RotateClusterServiceAuthResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4674,8 +4674,8 @@ export const runApplicationServiceResourceAction: API.OperationMethod<
   RunApplicationServiceResourceActionError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<RunApplicationServiceResourceActionRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<RunApplicationServiceResourceActionResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<RunApplicationServiceResourceActionRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<RunApplicationServiceResourceActionResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4689,8 +4689,8 @@ export const runApplicationServiceResourceActionV2: API.OperationMethod<
   RunApplicationServiceResourceActionV2Error,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<RunApplicationServiceResourceActionV2Request>,
-  output: __S(246, __c30, 6) as any as S.Schema<RunApplicationServiceResourceActionV2Response>,
+  input: __S(4513, __c141, 1) as any as S.Schema<RunApplicationServiceResourceActionV2Request>,
+  output: __S(1312, __c41, 0) as any as S.Schema<RunApplicationServiceResourceActionV2Response>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4704,8 +4704,8 @@ export const syncApplicationService: API.OperationMethod<
   SyncApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<SyncApplicationServiceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(4545, __c142, 1) as any as S.Schema<SyncApplicationServiceRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4719,8 +4719,8 @@ export const terminateApplicationServiceOperation: API.OperationMethod<
   TerminateApplicationServiceOperationError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<TerminateApplicationServiceOperationRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<TerminateApplicationServiceOperationResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<TerminateApplicationServiceOperationRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<TerminateApplicationServiceOperationResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4734,8 +4734,8 @@ export const updateAccountServicePassword: API.OperationMethod<
   UpdateAccountServicePasswordError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<UpdateAccountServicePasswordRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<UpdateAccountServicePasswordResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<UpdateAccountServicePasswordRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<UpdateAccountServicePasswordResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4749,8 +4749,8 @@ export const updateApplicationService: API.OperationMethod<
   UpdateApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<UpdateApplicationServiceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<V1alpha1Application>,
+  input: __S(4672, __c146, 0) as any as S.Schema<UpdateApplicationServiceRequest>,
+  output: __S(3767, __c117, 23) as any as S.Schema<V1alpha1Application>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4764,8 +4764,8 @@ export const updateApplicationServiceSpec: API.OperationMethod<
   UpdateApplicationServiceSpecError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<UpdateApplicationServiceSpecRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<V1alpha1ApplicationSpec>,
+  input: __S(4704, __c147, 0) as any as S.Schema<UpdateApplicationServiceSpecRequest>,
+  output: __S(3724, __c116, 12) as any as S.Schema<V1alpha1ApplicationSpec>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4779,8 +4779,8 @@ export const updateClusterService: API.OperationMethod<
   UpdateClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<UpdateClusterServiceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<V1alpha1Cluster>,
+  input: __S(4736, __c148, 0) as any as S.Schema<UpdateClusterServiceRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<V1alpha1Cluster>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4794,8 +4794,8 @@ export const updateProjectService: API.OperationMethod<
   UpdateProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<UpdateProjectServiceRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<V1alpha1AppProject>,
+  input: __S(4768, __c149, 0) as any as S.Schema<UpdateProjectServiceRequest>,
+  output: __S(889, __c27, 25) as any as S.Schema<V1alpha1AppProject>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4809,8 +4809,12 @@ export const updateRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   UpdateRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<UpdateRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<V1alpha1RepoCreds>,
+  input: __S(
+    4800,
+    __c150,
+    0,
+  ) as any as S.Schema<UpdateRepoCredsServiceRepositoryCredentialsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<V1alpha1RepoCreds>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4825,11 +4829,11 @@ export const updateRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    403,
-    __c50,
-    3,
+    4832,
+    __c151,
+    0,
   ) as any as S.Schema<UpdateRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<V1alpha1RepoCreds>,
+  output: __S(960, __c30, 0) as any as S.Schema<V1alpha1RepoCreds>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4843,8 +4847,8 @@ export const updateRepositoryServiceRepository: API.OperationMethod<
   UpdateRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<UpdateRepositoryServiceRepositoryRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(4864, __c152, 0) as any as S.Schema<UpdateRepositoryServiceRepositoryRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4858,8 +4862,8 @@ export const updateRepositoryServiceWriteRepository: API.OperationMethod<
   UpdateRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<UpdateRepositoryServiceWriteRepositoryRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<V1alpha1Repository>,
+  input: __S(4896, __c153, 0) as any as S.Schema<UpdateRepositoryServiceWriteRepositoryRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<V1alpha1Repository>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4873,8 +4877,8 @@ export const validateRepositoryServiceAccess: API.OperationMethod<
   ValidateRepositoryServiceAccessError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ValidateRepositoryServiceAccessRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ValidateRepositoryServiceAccessResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ValidateRepositoryServiceAccessRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<ValidateRepositoryServiceAccessResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4888,8 +4892,8 @@ export const validateRepositoryServiceWriteAccess: API.OperationMethod<
   ValidateRepositoryServiceWriteAccessError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ValidateRepositoryServiceWriteAccessRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ValidateRepositoryServiceWriteAccessRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4903,8 +4907,8 @@ export const versionServiceVersion: API.OperationMethod<
   VersionServiceVersionError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<VersionServiceVersionRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<VersionVersionMessage>,
+  input: __S(224, __c7, 0) as any as S.Schema<VersionServiceVersionRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<VersionVersionMessage>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4918,8 +4922,8 @@ export const watchApplicationService: API.OperationMethod<
   WatchApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<WatchApplicationServiceRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<WatchApplicationServiceResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<WatchApplicationServiceRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<WatchApplicationServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4933,8 +4937,8 @@ export const watchApplicationServiceResourceTree: API.OperationMethod<
   WatchApplicationServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<WatchApplicationServiceResourceTreeRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<WatchApplicationServiceResourceTreeResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<WatchApplicationServiceResourceTreeRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<WatchApplicationServiceResourceTreeResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4947,8 +4951,8 @@ export const watchApplicationSetService: API.OperationMethod<
   WatchApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<WatchApplicationSetServiceRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<WatchApplicationSetServiceResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<WatchApplicationSetServiceRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<WatchApplicationSetServiceResponse>,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4979,7 +4983,11 @@ function __c0(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountCanIResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.String.pipe(T.Label()),
@@ -5000,7 +5008,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplicationServiceManagedResourcesRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(65, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "ApplicationManagedResourcesResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           diff: S.optional(S.String),
@@ -5017,1112 +5037,11 @@ function __c0(j: number): any {
           targetState: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1ResourceDiff" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ApplicationManagedResourcesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          podName: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          container: S.optional(S.String.pipe(T.Query())),
-          sinceSeconds: S.optional(S.String.pipe(T.Query())),
-          sinceTime_seconds: S.optional(S.String.pipe(T.Query("sinceTime.seconds"))),
-          sinceTime_nanos: S.optional(S.Number.pipe(T.Query("sinceTime.nanos"))),
-          tailLines: S.optional(S.String.pipe(T.Query())),
-          follow: S.optional(S.Boolean.pipe(T.Query())),
-          untilTime: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          previous: S.optional(S.Boolean.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          matchCase: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{name}/pods/{podName}/logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationServicePodLogsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type_url: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtobufAny" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(8, __c1, 0)),
-          grpc_code: S.optional(S.Number),
-          http_code: S.optional(S.Number),
-          http_status: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeStreamError" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          last: S.optional(S.Boolean),
-          podName: S.optional(S.String),
-          timeStamp: S.optional(S.String),
-          timeStampStr: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationLogEntry" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
-          result: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ApplicationServicePodLogsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          podName: S.optional(S.String.pipe(T.Query())),
-          container: S.optional(S.String.pipe(T.Query())),
-          sinceSeconds: S.optional(S.String.pipe(T.Query())),
-          sinceTime_seconds: S.optional(S.String.pipe(T.Query("sinceTime.seconds"))),
-          sinceTime_nanos: S.optional(S.Number.pipe(T.Query("sinceTime.nanos"))),
-          tailLines: S.optional(S.String.pipe(T.Query())),
-          follow: S.optional(S.Boolean.pipe(T.Query())),
-          untilTime: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          previous: S.optional(S.Boolean.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          matchCase: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/logs", code: 200 })),
-      ).annotate({
-        identifier: "ApplicationServicePodLogs2Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationName: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{applicationName}/resource-tree",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationServiceResourceTreeRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          capacity: S.optional(S.Number),
-          requestedByApp: S.optional(S.Number),
-          requestedByNeighbors: S.optional(S.Number),
-          resourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1HostResourceInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "V1NodeSwapStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          architecture: S.optional(S.String),
-          bootID: S.optional(S.String),
-          containerRuntimeVersion: S.optional(S.String),
-          kernelVersion: S.optional(S.String),
-          kubeProxyVersion: S.optional(S.String),
-          kubeletVersion: S.optional(S.String),
-          machineID: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          osImage: S.optional(S.String),
-          runningInUserNamespace: S.optional(S.Boolean),
-          swap: S.optional(__S(17, __c2, 1)),
-          systemUUID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1NodeSystemInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          resourcesInfo: S.optional(__S(16, __c2, 0)),
-          systemInfo: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "V1alpha1HostInfo" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1HealthStatus" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1InfoItem" });
+      return S.Array(__S(64, __c2, 0));
   }
 }
 function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.String),
-          port: S.optional(S.Number),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1PortStatus" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          ip: S.optional(S.String),
-          ipMode: S.optional(S.String),
-          ports: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "V1LoadBalancerIngress" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          uid: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ResourceRef" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalURLs: S.optional(__S(22, __c2, 6)),
-          ingress: S.optional(__S(28, __c3, 4)),
-          labels: S.optional(__S(14, __c1, 6)),
-          targetLabels: S.optional(__S(14, __c1, 6)),
-          targetRefs: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ResourceNetworkingInfo",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          uid: S.optional(S.String),
-          version: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          health: S.optional(__S(21, __c2, 5)),
-          images: S.optional(__S(22, __c2, 6)),
-          info: S.optional(__S(24, __c3, 0)),
-          networkingInfo: S.optional(__S(31, __c3, 7)),
-          parentRefs: S.optional(__S(30, __c3, 6)),
-          resourceVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ResourceNode" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hosts: S.optional(__S(20, __c2, 4)),
-          nodes: S.optional(__S(33, __c4, 1)),
-          orphanedNodes: S.optional(__S(33, __c4, 1)),
-          shardsCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "V1alpha1ApplicationTree" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          revision: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          sourceIndex: S.optional(S.Number.pipe(T.Query())),
-          versionId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{name}/revisions/{revision}/chartdetails",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationServiceRevisionChartDetailsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          home: S.optional(S.String),
-          maintainers: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ChartDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          revision: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          sourceIndex: S.optional(S.Number.pipe(T.Query())),
-          versionId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{name}/revisions/{revision}/metadata",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationServiceRevisionMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          author: S.optional(S.String),
-          body: S.optional(S.String),
-          date: S.optional(S.String),
-          repoUrl: S.optional(S.String),
-          sha: S.optional(S.String),
-          subject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1CommitMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          commit: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1RevisionReference",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          problems: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityCheckResultItem",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          checks: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityCheckResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          author: S.optional(S.String),
-          date: S.optional(S.String),
-          message: S.optional(S.String),
-          references: S.optional(__S(40, __c5, 0)),
-          signatureInfo: S.optional(S.String),
-          sourceIntegrityResult: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1RevisionMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          project: S.optional(S.String),
-          prune: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/rollback", code: 200 })),
-      ).annotate({
-        identifier: "ApplicationServiceRollbackRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Raw: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1FieldsV1" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(__S(46, __c5, 6)),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1ManagedFieldsEntry" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1OwnerReference" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(14, __c1, 6)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(22, __c2, 6)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(14, __c1, 6)),
-          managedFields: S.optional(__S(48, __c6, 0)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(50, __c6, 2)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1ObjectMeta" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          automated: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1OperationInitiator",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-          factor: S.optional(S.Number),
-          maxDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1Backoff" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          backoff: S.optional(__S(53, __c6, 5)),
-          limit: S.optional(S.Number),
-          refresh: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "V1alpha1RetryStrategy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SyncOperationResource",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1JsonnetVar" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          extVars: S.optional(__S(58, __c7, 2)),
-          libs: S.optional(__S(22, __c2, 6)),
-          tlas: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourceJsonnet",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disableExtensionFilter: S.optional(S.Boolean),
-          exclude: S.optional(S.String),
-          include: S.optional(S.String),
-          jsonnet: S.optional(__S(59, __c7, 3)),
-          recurse: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourceDirectory",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1HelmFileParameter",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          forceString: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1HelmParameter" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          raw: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeRawExtension" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersions: S.optional(__S(22, __c2, 6)),
-          fileParameters: S.optional(__S(62, __c7, 6)),
-          ignoreMissingValueFiles: S.optional(S.Boolean),
-          kubeVersion: S.optional(S.String),
-          namespace: S.optional(S.String),
-          parameters: S.optional(__S(64, __c8, 0)),
-          passCredentials: S.optional(S.Boolean),
-          releaseName: S.optional(S.String),
-          skipCrds: S.optional(S.Boolean),
-          skipSchemaValidation: S.optional(S.Boolean),
-          skipTests: S.optional(S.Boolean),
-          valueFiles: S.optional(__S(22, __c2, 6)),
-          values: S.optional(S.String),
-          valuesObject: S.optional(__S(65, __c8, 1)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourceHelm",
-      });
-    case 3:
-      return S.Record(S.String, S.Boolean);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizeGvk" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gvk: S.optional(__S(68, __c8, 4)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizeResId" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotationSelector: S.optional(S.String),
-          labelSelector: S.optional(S.String),
-          resId: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1KustomizeSelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(67, __c8, 3)),
-          patch: S.optional(S.String),
-          path: S.optional(S.String),
-          target: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizePatch" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          intVal: S.optional(S.Number),
-          strVal: S.optional(S.String),
-          type: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IntstrIntOrString" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(__S(73, __c9, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizeReplica" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersions: S.optional(__S(22, __c2, 6)),
-          commonAnnotations: S.optional(__S(14, __c1, 6)),
-          commonAnnotationsEnvsubst: S.optional(S.Boolean),
-          commonLabels: S.optional(__S(14, __c1, 6)),
-          components: S.optional(__S(22, __c2, 6)),
-          forceCommonAnnotations: S.optional(S.Boolean),
-          forceCommonLabels: S.optional(S.Boolean),
-          ignoreMissingComponents: S.optional(S.Boolean),
-          images: S.optional(__S(22, __c2, 6)),
-          kubeVersion: S.optional(S.String),
-          labelIncludeTemplates: S.optional(S.Boolean),
-          labelWithoutSelector: S.optional(S.Boolean),
-          namePrefix: S.optional(S.String),
-          nameSuffix: S.optional(S.String),
-          namespace: S.optional(S.String),
-          patches: S.optional(__S(72, __c9, 0)),
-          replicas: S.optional(__S(75, __c9, 3)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourceKustomize",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          array: S.optional(__S(22, __c2, 6)),
-          map: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          string: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourcePluginParameter",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          env: S.optional(__S(24, __c3, 0)),
-          name: S.optional(S.String),
-          parameters: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSourcePlugin",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          chart: S.optional(S.String),
-          directory: S.optional(__S(60, __c7, 4)),
-          helm: S.optional(__S(66, __c8, 2)),
-          kustomize: S.optional(__S(76, __c9, 4)),
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-          plugin: S.optional(__S(79, __c9, 7)),
-          ref: S.optional(S.String),
-          repoURL: S.optional(S.String),
-          tagPrefix: S.optional(S.String),
-          targetRevision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSource",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SyncStrategyApply",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          syncStrategyApply: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncStrategyHook" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apply: S.optional(__S(82, __c10, 2)),
-          hook: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncStrategy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          autoHealAttemptsCount: S.optional(S.Number),
-          dryRun: S.optional(S.Boolean),
-          manifests: S.optional(__S(22, __c2, 6)),
-          prune: S.optional(S.Boolean),
-          resources: S.optional(__S(56, __c7, 0)),
-          revision: S.optional(S.String),
-          revisions: S.optional(__S(22, __c2, 6)),
-          source: S.optional(__S(80, __c10, 0)),
-          sources: S.optional(__S(81, __c10, 1)),
-          syncOptions: S.optional(__S(22, __c2, 6)),
-          syncStrategy: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncOperation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          info: S.optional(__S(24, __c3, 0)),
-          initiatedBy: S.optional(__S(52, __c6, 4)),
-          retry: S.optional(__S(54, __c6, 6)),
-          sync: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({ identifier: "V1alpha1Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          server: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationDestination",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          jqPathExpressions: S.optional(__S(22, __c2, 6)),
-          jsonPointers: S.optional(__S(22, __c2, 6)),
-          kind: S.optional(S.String),
-          managedFieldsManagers: S.optional(__S(22, __c2, 6)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ResourceIgnoreDifferences",
-      });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          directory: S.optional(__S(60, __c7, 4)),
-          helm: S.optional(__S(66, __c8, 2)),
-          kustomize: S.optional(__S(76, __c9, 4)),
-          path: S.optional(S.String),
-          plugin: S.optional(__S(79, __c9, 7)),
-          repoURL: S.optional(S.String),
-          targetRevision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1DrySource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetBranch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1HydrateTo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          repoURL: S.optional(S.String),
-          targetBranch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          drySource: S.optional(__S(90, __c11, 2)),
-          hydrateTo: S.optional(__S(91, __c11, 3)),
-          syncSource: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "V1alpha1SourceHydrator" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowEmpty: S.optional(S.Boolean),
-          enabled: S.optional(S.Boolean),
-          prune: S.optional(S.Boolean),
-          selfHeal: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SyncPolicyAutomated",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(14, __c1, 6)),
-          labels: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ManagedNamespaceMetadata",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          automated: S.optional(__S(94, __c11, 6)),
-          managedNamespaceMetadata: S.optional(__S(95, __c11, 7)),
-          retry: S.optional(__S(54, __c6, 6)),
-          syncOptions: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(__S(87, __c10, 7)),
-          ignoreDifferences: S.optional(__S(89, __c11, 1)),
-          info: S.optional(__S(24, __c3, 0)),
-          project: S.optional(S.String),
-          revisionHistoryLimit: S.optional(S.Number),
-          source: S.optional(__S(80, __c10, 0)),
-          sourceHydrator: S.optional(__S(93, __c11, 5)),
-          sources: S.optional(__S(81, __c10, 1)),
-          syncPolicy: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1ApplicationSpec" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationCondition",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deployStartedAt: S.optional(S.String),
-          deployedAt: S.optional(S.String),
-          id: S.optional(S.Number),
-          initiatedBy: S.optional(__S(52, __c6, 4)),
-          revision: S.optional(S.String),
-          revisions: S.optional(__S(22, __c2, 6)),
-          source: S.optional(__S(80, __c10, 0)),
-          sources: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "V1alpha1RevisionHistory" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          hookPhase: S.optional(S.String),
-          hookType: S.optional(S.String),
-          images: S.optional(__S(22, __c2, 6)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          status: S.optional(S.String),
-          syncPhase: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ResourceResult" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          managedNamespaceMetadata: S.optional(__S(95, __c11, 7)),
-          resources: S.optional(__S(103, __c12, 7)),
-          revision: S.optional(S.String),
-          revisions: S.optional(__S(22, __c2, 6)),
-          source: S.optional(__S(80, __c10, 0)),
-          sources: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SyncOperationResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          finishedAt: S.optional(S.String),
-          message: S.optional(S.String),
-          operation: S.optional(__S(86, __c10, 6)),
-          phase: S.optional(S.String),
-          retryCount: S.optional(S.Number),
-          startedAt: S.optional(S.String),
-          syncResult: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1OperationState" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          health: S.optional(__S(21, __c2, 5)),
-          hook: S.optional(S.Boolean),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          requiresDeletionConfirmation: S.optional(S.Boolean),
-          requiresPruning: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          syncWave: S.optional(S.Number),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Applicationv1alpha1ResourceStatus",
-      });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          drySHA: S.optional(S.String),
-          finishedAt: S.optional(S.String),
-          hydratedSHA: S.optional(S.String),
-          message: S.optional(S.String),
-          phase: S.optional(S.String),
-          sourceHydrator: S.optional(__S(93, __c11, 5)),
-          startedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1HydrateOperation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          drySHA: S.optional(S.String),
-          hydratedSHA: S.optional(S.String),
-          sourceHydrator: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SuccessfulHydrateOperation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currentOperation: S.optional(__S(108, __c13, 4)),
-          lastComparedDryRevision: S.optional(S.String),
-          lastSuccessfulOperation: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceHydratorStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalURLs: S.optional(__S(22, __c2, 6)),
-          images: S.optional(__S(22, __c2, 6)),
-          isAppOfApps: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSummary",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(__S(87, __c10, 7)),
-          ignoreDifferences: S.optional(__S(89, __c11, 1)),
-          source: S.optional(__S(80, __c10, 0)),
-          sources: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "V1alpha1ComparedTo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          comparedTo: S.optional(__S(112, __c14, 0)),
-          revision: S.optional(S.String),
-          revisions: S.optional(__S(22, __c2, 6)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1SyncStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(99, __c12, 3)),
-          controllerNamespace: S.optional(S.String),
-          health: S.optional(__S(21, __c2, 5)),
-          history: S.optional(__S(101, __c12, 5)),
-          observedAt: S.optional(S.String),
-          operationState: S.optional(__S(105, __c13, 1)),
-          reconciledAt: S.optional(S.String),
-          resourceHealthSource: S.optional(S.String),
-          resources: S.optional(__S(107, __c13, 3)),
-          sourceHydrator: S.optional(__S(110, __c13, 6)),
-          sourceType: S.optional(S.String),
-          sourceTypes: S.optional(__S(22, __c2, 6)),
-          summary: S.optional(__S(111, __c13, 7)),
-          sync: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(51, __c6, 3)),
-          operation: S.optional(__S(86, __c10, 6)),
-          spec: S.optional(__S(97, __c12, 1)),
-          status: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({ identifier: "V1alpha1Application" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appName: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          targetManifests: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{appName}/server-side-diff",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationServiceServerSideDiffRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(4, __c0, 4)),
-          modified: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ApplicationApplicationServerSideDiffResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appsetNamespace: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}/resource-tree", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ApplicationSetServiceResourceTreeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nodes: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetTree",
-      });
-  }
-}
-function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6134,7 +5053,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateAccountServiceTokenRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
@@ -6142,2960 +5065,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "AccountCreateTokenResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          validate: S.optional(S.Boolean.pipe(T.Query())),
-          metadata: S.optional(__S(51, __c6, 3)),
-          operation: S.optional(__S(86, __c10, 6)),
-          spec: S.optional(__S(97, __c12, 1)),
-          status: S.optional(__S(114, __c14, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications", code: 200 })),
-      ).annotate({
-        identifier: "CreateApplicationServiceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          operator: S.optional(S.String),
-          values: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "V1LabelSelectorRequirement",
-      });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(124, __c15, 4)),
-          matchLabels: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "V1LabelSelector" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(14, __c1, 6)),
-          finalizers: S.optional(__S(22, __c2, 6)),
-          labels: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetTemplateMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(126, __c15, 6)),
-          spec: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetTemplate",
-      });
   }
 }
-function __c16(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configMapRef: S.optional(S.String),
-          labelSelector: S.optional(__S(125, __c15, 5)),
-          name: S.optional(S.String),
-          requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1DuckTypeGenerator",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          flatList: S.optional(S.Boolean),
-          selector: S.optional(__S(125, __c15, 5)),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ClusterGenerator" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.Boolean),
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1GitDirectoryGeneratorItem",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          directories: S.optional(__S(131, __c16, 3)),
-          files: S.optional(__S(131, __c16, 3)),
-          pathParamPrefix: S.optional(S.String),
-          repoURL: S.optional(S.String),
-          requeueAfterSeconds: S.optional(S.Number),
-          revision: S.optional(S.String),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1GitGenerator" });
-    case 5:
-      return S.Array(__S(65, __c8, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          elements: S.optional(__S(133, __c16, 5)),
-          elementsYaml: S.optional(S.String),
-          template: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "V1alpha1ListGenerator" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PluginConfigMapRef",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(65, __c8, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1PluginInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configMapRef: S.optional(__S(135, __c16, 7)),
-          input: S.optional(__S(137, __c17, 1)),
-          requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1PluginGenerator" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          secretName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1SecretRef" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          labels: S.optional(__S(22, __c2, 6)),
-          organization: S.optional(S.String),
-          project: S.optional(S.String),
-          repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorAzureDevOps",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          passwordRef: S.optional(__S(139, __c17, 3)),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1BasicAuthBitbucketServer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1BearerTokenBitbucketCloud",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          basicAuth: S.optional(__S(141, __c17, 5)),
-          bearerToken: S.optional(__S(142, __c17, 6)),
-          owner: S.optional(S.String),
-          repo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorBitbucket",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configMapName: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ConfigMapKeyRef" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          basicAuth: S.optional(__S(141, __c17, 5)),
-          bearerToken: S.optional(__S(142, __c17, 6)),
-          caRef: S.optional(__S(144, __c18, 0)),
-          insecure: S.optional(S.Boolean),
-          project: S.optional(S.String),
-          repo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorBitbucketServer",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          branchMatch: S.optional(S.String),
-          targetBranchMatch: S.optional(S.String),
-          titleMatch: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorFilter",
-      });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          insecure: S.optional(S.Boolean),
-          labels: S.optional(__S(22, __c2, 6)),
-          owner: S.optional(S.String),
-          repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorGitea",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          appSecretName: S.optional(S.String),
-          labels: S.optional(__S(22, __c2, 6)),
-          owner: S.optional(S.String),
-          repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorGithub",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          api: S.optional(S.String),
-          caRef: S.optional(__S(144, __c18, 0)),
-          insecure: S.optional(S.Boolean),
-          labels: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          pullRequestState: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGeneratorGitLab",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          azuredevops: S.optional(__S(140, __c17, 4)),
-          bitbucket: S.optional(__S(143, __c17, 7)),
-          bitbucketServer: S.optional(__S(145, __c18, 1)),
-          continueOnRepoNotFoundError: S.optional(S.Boolean),
-          filters: S.optional(__S(147, __c18, 3)),
-          gitea: S.optional(__S(148, __c18, 4)),
-          github: S.optional(__S(149, __c18, 5)),
-          gitlab: S.optional(__S(150, __c18, 6)),
-          requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1PullRequestGenerator",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1TagFilter" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          region: S.optional(S.String),
-          role: S.optional(S.String),
-          tagFilters: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorAWSCodeCommit",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accessTokenRef: S.optional(__S(139, __c17, 3)),
-          allBranches: S.optional(S.Boolean),
-          api: S.optional(S.String),
-          organization: S.optional(S.String),
-          teamProject: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorAzureDevOps",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          appPasswordRef: S.optional(__S(139, __c17, 3)),
-          owner: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorBitbucket",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          api: S.optional(S.String),
-          basicAuth: S.optional(__S(141, __c17, 5)),
-          bearerToken: S.optional(__S(142, __c17, 6)),
-          caRef: S.optional(__S(144, __c18, 0)),
-          insecure: S.optional(S.Boolean),
-          project: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorBitbucketServer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          branchMatch: S.optional(S.String),
-          labelMatch: S.optional(S.String),
-          pathsDoNotExist: S.optional(__S(22, __c2, 6)),
-          pathsExist: S.optional(__S(22, __c2, 6)),
-          repositoryMatch: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorFilter",
-      });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          api: S.optional(S.String),
-          excludeArchivedRepos: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          owner: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorGitea",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          api: S.optional(S.String),
-          appSecretName: S.optional(S.String),
-          excludeArchivedRepos: S.optional(S.Boolean),
-          organization: S.optional(S.String),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorGithub",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allBranches: S.optional(S.Boolean),
-          api: S.optional(S.String),
-          caRef: S.optional(__S(144, __c18, 0)),
-          group: S.optional(S.String),
-          includeArchivedRepos: S.optional(S.Boolean),
-          includeSharedProjects: S.optional(S.Boolean),
-          includeSubgroups: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          tokenRef: S.optional(__S(139, __c17, 3)),
-          topic: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGeneratorGitlab",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          awsCodeCommit: S.optional(__S(154, __c19, 2)),
-          azureDevOps: S.optional(__S(155, __c19, 3)),
-          bitbucket: S.optional(__S(156, __c19, 4)),
-          bitbucketServer: S.optional(__S(157, __c19, 5)),
-          cloneProtocol: S.optional(S.String),
-          filters: S.optional(__S(159, __c19, 7)),
-          gitea: S.optional(__S(160, __c20, 0)),
-          github: S.optional(__S(161, __c20, 1)),
-          gitlab: S.optional(__S(162, __c20, 2)),
-          requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127, __c15, 7)),
-          values: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SCMProviderGenerator",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clusterDecisionResource: S.optional(__S(128, __c16, 0)),
-          clusters: S.optional(__S(129, __c16, 1)),
-          git: S.optional(__S(132, __c16, 4)),
-          list: S.optional(__S(134, __c16, 6)),
-          matrix: S.optional(__S(65, __c8, 1)),
-          merge: S.optional(__S(65, __c8, 1)),
-          oci: S.optional(__S(132, __c16, 4)),
-          plugin: S.optional(__S(138, __c17, 2)),
-          pullRequest: S.optional(__S(151, __c18, 7)),
-          scmProvider: S.optional(__S(163, __c20, 3)),
-          selector: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetNestedGenerator",
-      });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          generators: S.optional(__S(165, __c20, 5)),
-          template: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "V1alpha1MatrixGenerator" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          generators: S.optional(__S(165, __c20, 5)),
-          mergeKeys: S.optional(__S(22, __c2, 6)),
-          template: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "V1alpha1MergeGenerator" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clusterDecisionResource: S.optional(__S(128, __c16, 0)),
-          clusters: S.optional(__S(129, __c16, 1)),
-          git: S.optional(__S(132, __c16, 4)),
-          list: S.optional(__S(134, __c16, 6)),
-          matrix: S.optional(__S(166, __c20, 6)),
-          merge: S.optional(__S(167, __c20, 7)),
-          oci: S.optional(__S(132, __c16, 4)),
-          plugin: S.optional(__S(138, __c17, 2)),
-          pullRequest: S.optional(__S(151, __c18, 7)),
-          scmProvider: S.optional(__S(163, __c20, 3)),
-          selector: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetGenerator",
-      });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          jqPathExpressions: S.optional(__S(170, __c21, 2)),
-          jsonPointers: S.optional(__S(170, __c21, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetResourceIgnoreDifferences",
-      });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(22, __c2, 6)),
-          labels: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationPreservedFields",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(124, __c15, 4)),
-          maxUpdate: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetRolloutStep",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetRolloutStrategy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deletionOrder: S.optional(S.String),
-          rollingSync: S.optional(__S(176, __c22, 0)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetStrategy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationsSync: S.optional(S.String),
-          preserveResourcesOnDeletion: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetSyncPolicy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applyNestedSelectors: S.optional(S.Boolean),
-          generators: S.optional(__S(169, __c21, 1)),
-          goTemplate: S.optional(S.Boolean),
-          goTemplateOptions: S.optional(__S(22, __c2, 6)),
-          ignoreApplicationDifferences: S.optional(__S(172, __c21, 4)),
-          preservedFields: S.optional(__S(173, __c21, 5)),
-          strategy: S.optional(__S(177, __c22, 1)),
-          syncPolicy: S.optional(__S(178, __c22, 2)),
-          template: S.optional(__S(127, __c15, 7)),
-          templatePatch: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.optional(S.String),
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          status: S.optional(S.String),
-          step: S.optional(S.String),
-          targetrevisions: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetApplicationStatus",
-      });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetCondition",
-      });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationStatus: S.optional(__S(181, __c22, 5)),
-          conditions: S.optional(__S(183, __c22, 7)),
-          health: S.optional(__S(21, __c2, 5)),
-          resources: S.optional(__S(107, __c13, 3)),
-          resourcesCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          metadata: S.optional(__S(51, __c6, 3)),
-          spec: S.optional(__S(179, __c22, 3)),
-          status: S.optional(__S(184, __c23, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets", code: 200 })),
-      ).annotate({
-        identifier: "CreateApplicationSetServiceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(51, __c6, 3)),
-          spec: S.optional(__S(179, __c22, 3)),
-          status: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1ApplicationSet" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          certData: S.optional(S.String),
-          certInfo: S.optional(S.String),
-          certSubType: S.optional(S.String),
-          certType: S.optional(S.String),
-          serverName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1RepositoryCertificate",
-      });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1ShardInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(189, __c23, 5)),
-        }),
-      ).annotate({ identifier: "V1ListMeta" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          items: S.optional(__S(188, __c23, 4)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/certificates", code: 200 })),
-      ).annotate({
-        identifier: "CreateCertificateServiceCertificateRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(188, __c23, 4)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1RepositoryCertificateList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clusterName: S.optional(S.String),
-          profile: S.optional(S.String),
-          roleARN: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1AWSAuthConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          args: S.optional(__S(22, __c2, 6)),
-          command: S.optional(S.String),
-          config: S.optional(__S(65, __c8, 1)),
-          env: S.optional(__S(14, __c1, 6)),
-          installHint: S.optional(S.String),
-          provideClusterInfo: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ExecProviderConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          caData: S.optional(S.String),
-          certData: S.optional(S.String),
-          insecure: S.optional(S.Boolean),
-          keyData: S.optional(S.String),
-          serverName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1TLSClientConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          awsAuthConfig: S.optional(__S(193, __c24, 1)),
-          bearerToken: S.optional(S.String),
-          burst: S.optional(S.Number),
-          disableCompression: S.optional(S.Boolean),
-          execProviderConfig: S.optional(__S(194, __c24, 2)),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxyUrl: S.optional(S.String),
-          qps: S.optional(S.Number),
-          tlsClientConfig: S.optional(__S(195, __c24, 3)),
-          username: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ClusterConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attemptedAt: S.optional(S.String),
-          message: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ConnectionState" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apisCount: S.optional(S.Number),
-          lastCacheSyncTime: S.optional(S.String),
-          resourcesCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "V1alpha1ClusterCacheInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersions: S.optional(__S(22, __c2, 6)),
-          applicationsCount: S.optional(S.Number),
-          cacheInfo: S.optional(__S(198, __c24, 6)),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          serverVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1ClusterInfo" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          annotations: S.optional(__S(14, __c1, 6)),
-          clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196, __c24, 4)),
-          configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          info: S.optional(__S(199, __c24, 7)),
-          labels: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          namespaces: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          refreshRequestedAt: S.optional(S.String),
-          server: S.optional(S.String),
-          serverVersion: S.optional(S.String),
-          shard: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/clusters", code: 200 })),
-      ).annotate({
-        identifier: "CreateClusterServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(14, __c1, 6)),
-          clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196, __c24, 4)),
-          configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          info: S.optional(__S(199, __c24, 7)),
-          labels: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          namespaces: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          refreshRequestedAt: S.optional(S.String),
-          server: S.optional(S.String),
-          serverVersion: S.optional(S.String),
-          shard: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "V1alpha1Cluster" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          fingerprint: S.optional(S.String),
-          keyData: S.optional(S.String),
-          keyID: S.optional(S.String),
-          owner: S.optional(S.String),
-          subType: S.optional(S.String),
-          trust: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/gpgkeys", code: 200 })),
-      ).annotate({
-        identifier: "CreateGPGKeyServiceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fingerprint: S.optional(S.String),
-          keyData: S.optional(S.String),
-          keyID: S.optional(S.String),
-          owner: S.optional(S.String),
-          subType: S.optional(S.String),
-          trust: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1GnuPGPublicKey" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(204, __c25, 4)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1GnuPGPublicKeyList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(__S(205, __c25, 5)),
-          skipped: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GpgkeyGnuPGPublicKeyCreateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ClusterResourceRestrictionItem",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          defaultServiceAccount: S.optional(S.String),
-          namespace: S.optional(S.String),
-          server: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationDestinationServiceAccount",
-      });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.Array(__S(87, __c10, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1GroupKind" });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ignore: S.optional(__S(208, __c26, 0)),
-          warn: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "V1alpha1OrphanedResourcesMonitorSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exp: S.optional(S.Number),
-          iat: S.optional(S.Number),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1JWTToken" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          groups: S.optional(__S(22, __c2, 6)),
-          jwtTokens: S.optional(__S(216, __c27, 0)),
-          name: S.optional(S.String),
-          policies: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ProjectRole" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keyID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1SignatureKey" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keys: S.optional(__S(22, __c2, 6)),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityGitPolicyGPG",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityGitPolicyRepo",
-      });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gpg: S.optional(__S(221, __c27, 5)),
-          repos: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityGitPolicy",
-      });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policies: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1SourceIntegrityGit",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          git: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({ identifier: "V1alpha1SourceIntegrity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          andOperator: S.optional(S.Boolean),
-          applications: S.optional(__S(22, __c2, 6)),
-          clusters: S.optional(__S(22, __c2, 6)),
-          description: S.optional(S.String),
-          duration: S.optional(S.String),
-          kind: S.optional(S.String),
-          manualSync: S.optional(S.Boolean),
-          namespaces: S.optional(__S(22, __c2, 6)),
-          schedule: S.optional(S.String),
-          syncOverrun: S.optional(S.Boolean),
-          timeZone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1InlineSyncWindow" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clusterResourceBlacklist: S.optional(__S(208, __c26, 0)),
-          clusterResourceWhitelist: S.optional(__S(208, __c26, 0)),
-          description: S.optional(S.String),
-          destinationServiceAccounts: S.optional(__S(210, __c26, 2)),
-          destinations: S.optional(__S(211, __c26, 3)),
-          namespaceResourceBlacklist: S.optional(__S(213, __c26, 5)),
-          namespaceResourceWhitelist: S.optional(__S(213, __c26, 5)),
-          orphanedResources: S.optional(__S(214, __c26, 6)),
-          permitOnlyProjectScopedClusters: S.optional(S.Boolean),
-          roles: S.optional(__S(218, __c27, 2)),
-          signatureKeys: S.optional(__S(220, __c27, 4)),
-          sourceIntegrity: S.optional(__S(227, __c28, 3)),
-          sourceNamespaces: S.optional(__S(22, __c2, 6)),
-          sourceRepos: S.optional(__S(22, __c2, 6)),
-          syncWindows: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({ identifier: "V1alpha1AppProjectSpec" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(216, __c27, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1JWTTokens" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(231, __c28, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jwtTokensByRole: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({ identifier: "V1alpha1AppProjectStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(51, __c6, 3)),
-          spec: S.optional(__S(230, __c28, 6)),
-          status: S.optional(__S(233, __c29, 1)),
-        }),
-      ).annotate({ identifier: "V1alpha1AppProject" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(__S(234, __c29, 2)),
-          upsert: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/projects", code: 200 })),
-      ).annotate({
-        identifier: "CreateProjectServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          role: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          expiresIn: S.optional(S.Number),
-          id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/projects/{project}/roles/{role}/token",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectServiceTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxy: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/repocreds", code: 200 })),
-      ).annotate({
-        identifier: "CreateRepoCredsServiceRepositoryCredentialsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxy: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1RepoCreds" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxy: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/write-repocreds", code: 200 })),
-      ).annotate({
-        identifier: "CreateRepoCredsServiceWriteRepositoryCredentialsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          credsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          depth: S.optional(S.Number),
-          enableLfs: S.optional(S.Boolean),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          inheritedCreds: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          insecureIgnoreHostKey: S.optional(S.Boolean),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project: S.optional(S.String),
-          proxy: S.optional(S.String),
-          repo: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/repositories", code: 200 })),
-      ).annotate({
-        identifier: "CreateRepositoryServiceRepositoryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          depth: S.optional(S.Number),
-          enableLfs: S.optional(S.Boolean),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          inheritedCreds: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          insecureIgnoreHostKey: S.optional(S.Boolean),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project: S.optional(S.String),
-          proxy: S.optional(S.String),
-          repo: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "V1alpha1Repository" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          upsert: S.optional(S.Boolean.pipe(T.Query())),
-          credsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          depth: S.optional(S.Number),
-          enableLfs: S.optional(S.Boolean),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          inheritedCreds: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          insecureIgnoreHostKey: S.optional(S.Boolean),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project: S.optional(S.String),
-          proxy: S.optional(S.String),
-          repo: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/write-repositories", code: 200 })),
-      ).annotate({
-        identifier: "CreateRepositoryServiceWriteRepositoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          token: S.optional(S.String),
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/session", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionSessionResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/account/{name}/token/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAccountServiceTokenRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteAccountServiceTokenResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          cascade: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteApplicationServiceRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          orphan: S.optional(S.Boolean.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}/resource", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationServiceResourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appsetNamespace: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/applicationsets/{name}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteApplicationSetServiceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationset: S.optional(__S(186, __c23, 2)),
-          project: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationsetApplicationSetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hostNamePattern: S.optional(S.String.pipe(T.Query())),
-          certType: S.optional(S.String.pipe(T.Query())),
-          certSubType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/certificates", code: 200 })),
-      ).annotate({
-        identifier: "DeleteCertificateServiceCertificateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id_value: S.String.pipe(T.Label()),
-          server: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/clusters/{id_value}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteClusterServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyID: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/gpgkeys", code: 200 })),
-      ).annotate({
-        identifier: "DeleteGPGKeyServiceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/projects/{name}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteProjectServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          role: S.String.pipe(T.Label()),
-          iat: S.String.pipe(T.Label()),
-          id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v1/projects/{project}/roles/{role}/token/{iat}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectServiceTokenRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/repocreds/{url}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteRepoCredsServiceRepositoryCredentialsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/write-repocreds/{url}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteRepoCredsServiceWriteRepositoryCredentialsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteRepoCredsServiceWriteRepositoryCredentialsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/repositories/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteRepositoryServiceRepositoryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/write-repositories/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteRepositoryServiceWriteRepositoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/api/v1/session", code: 200 })),
-      ).annotate({
-        identifier: "DeleteSessionServiceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationSet: S.optional(__S(186, __c23, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets/generate", code: 200 })),
-      ).annotate({
-        identifier: "GenerateApplicationSetServiceRequest",
-      });
-    case 7:
-      return S.Array(__S(115, __c14, 3));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applications: S.optional(__S(263, __c32, 7)),
-        }),
-      ).annotate({
-        identifier: "ApplicationsetApplicationSetGenerateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/account/{name}", code: 200 })),
-      ).annotate({
-        identifier: "GetAccountServiceAccountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expiresAt: S.optional(S.Number),
-          id: S.optional(S.String),
-          issuedAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AccountToken" });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          capabilities: S.optional(__S(22, __c2, 6)),
-          enabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          tokens: S.optional(__S(267, __c33, 3)),
-        }),
-      ).annotate({ identifier: "AccountAccount" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          selector: S.optional(S.String.pipe(T.Query())),
-          repo: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          names: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}", code: 200 })),
-      ).annotate({
-        identifier: "GetApplicationServiceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/syncwindows", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationServiceApplicationSyncWindowsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-          kind: S.optional(S.String),
-          manualSync: S.optional(S.Boolean),
-          schedule: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationApplicationSyncWindow",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activeWindows: S.optional(__S(272, __c34, 0)),
-          assignedWindows: S.optional(__S(272, __c34, 0)),
-          canSync: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ApplicationApplicationSyncWindowsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          revision: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          sourcePositions: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          revisions: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          noCache: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/manifests", code: 200 })),
-      ).annotate({
-        identifier: "GetApplicationServiceManifestsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commands: S.optional(__S(22, __c2, 6)),
-          manifests: S.optional(__S(22, __c2, 6)),
-          namespace: S.optional(S.String),
-          revision: S.optional(S.String),
-          server: S.optional(S.String),
-          sourceIntegrityResult: S.optional(__S(43, __c5, 3)),
-          sourceType: S.optional(S.String),
-          verifyResult: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryManifestResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          chunk: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationFileChunk" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appNamespace: S.optional(S.String),
-          checksum: S.optional(S.String),
-          name: S.optional(S.String),
-          project: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationApplicationManifestQueryWithFiles",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          chunk: S.optional(__S(276, __c34, 4)),
-          query: S.optional(__S(277, __c34, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v1/applications/manifestsWithFiles", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationServiceManifestsWithFilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          revision: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          sourceIndex: S.optional(S.Number.pipe(T.Query())),
-          versionId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/applications/{name}/revisions/{revision}/ocimetadata",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationServiceOCIMetadataRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authors: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          docsUrl: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          sourceUrl: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1OCIMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource", code: 200 })),
-      ).annotate({
-        identifier: "GetApplicationServiceResourceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          manifest: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationApplicationResourceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appsetNamespace: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}", code: 200 })),
-      ).annotate({
-        identifier: "GetApplicationSetServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id_value: S.String.pipe(T.Label()),
-          server: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/clusters/{id_value}", code: 200 })),
-      ).annotate({ identifier: "GetClusterServiceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyID: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/gpgkeys/{keyID}", code: 200 })),
-      ).annotate({ identifier: "GetGPGKeyServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}", code: 200 })),
-      ).annotate({ identifier: "GetProjectServiceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/detailed", code: 200 })),
-      ).annotate({
-        identifier: "GetProjectServiceDetailedProjectRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(201, __c25, 1));
-    case 1:
-      return S.Array(__S(234, __c29, 2));
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clusters: S.optional(__S(288, __c36, 0)),
-          globalProjects: S.optional(__S(289, __c36, 1)),
-          project: S.optional(__S(234, __c29, 2)),
-          repositories: S.optional(__S(290, __c36, 2)),
-        }),
-      ).annotate({
-        identifier: "ProjectDetailedProjectsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/projects/{name}/globalprojects", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetProjectServiceGlobalProjectsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(289, __c36, 1)),
-        }),
-      ).annotate({
-        identifier: "ProjectGlobalProjectsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/syncwindows", code: 200 })),
-      ).annotate({
-        identifier: "GetProjectServiceSyncWindowsStateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          windows: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({
-        identifier: "ProjectSyncWindowsResponse",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "GetRepositoryServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          source_repoURL: S.String.pipe(T.Label()),
-          appName: S.optional(S.String),
-          appProject: S.optional(S.String),
-          source: S.optional(__S(80, __c10, 0)),
-          sourceIndex: S.optional(S.Number),
-          versionId: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/repositories/{source_repoURL}/appdetails",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRepositoryServiceAppDetailsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fileParameters: S.optional(__S(62, __c7, 6)),
-          name: S.optional(S.String),
-          parameters: S.optional(__S(64, __c8, 0)),
-          valueFiles: S.optional(__S(22, __c2, 6)),
-          values: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepositoryHelmAppSpec" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          images: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "RepositoryKustomizeAppSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          array: S.optional(__S(22, __c2, 6)),
-          collectionType: S.optional(S.String),
-          itemType: S.optional(S.String),
-          map: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          required: S.optional(S.Boolean),
-          string: S.optional(S.String),
-          title: S.optional(S.String),
-          tooltip: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryParameterAnnouncement",
-      });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parametersAnnouncement: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "RepositoryPluginAppSpec" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          directory: S.optional(S.Unknown),
-          helm: S.optional(__S(298, __c37, 2)),
-          kustomize: S.optional(__S(299, __c37, 3)),
-          plugin: S.optional(__S(302, __c37, 6)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryRepoAppDetailsResponse",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/helmcharts", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetRepositoryServiceHelmChartsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          versions: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "RepositoryHelmChart" });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(306, __c38, 2)),
-        }),
-      ).annotate({
-        identifier: "RepositoryHelmChartsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repositories/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "GetRepositoryServiceWriteRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/session/userinfo", code: 200 })),
-      ).annotate({
-        identifier: "GetSessionServiceUserInfoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(22, __c2, 6)),
-          iss: S.optional(S.String),
-          loggedIn: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SessionGetUserInfoResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/settings", code: 200 })),
-      ).annotate({
-        identifier: "GetSettingsServiceRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          args: S.optional(__S(22, __c2, 6)),
-          command: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1Command" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          generate: S.optional(__S(312, __c39, 0)),
-          init: S.optional(__S(312, __c39, 0)),
-          lockRepo: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ConfigManagementPlugin",
-      });
-    case 2:
-      return S.Array(__S(313, __c39, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterConnector" });
-    case 4:
-      return S.Array(__S(315, __c39, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          connectors: S.optional(__S(316, __c39, 4)),
-          dexAuthConnectorID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterDexConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          anonymizeUsers: S.optional(S.Boolean),
-          trackingID: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterGoogleAnalyticsConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          binaryUrls: S.optional(__S(14, __c1, 6)),
-          chatText: S.optional(S.String),
-          chatUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterHelp" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildOptions: S.optional(S.String),
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizeVersion" });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          binaryPath: S.optional(S.String),
-          buildOptions: S.optional(S.String),
-          versions: S.optional(__S(321, __c40, 1)),
-        }),
-      ).annotate({ identifier: "V1alpha1KustomizeOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          essential: S.optional(S.Boolean),
-          value: S.optional(S.String),
-          values: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "OidcClaim" });
-    case 4:
-      return S.Record(S.String, __S(323, __c40, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cliClientID: S.optional(S.String),
-          clientID: S.optional(S.String),
-          enablePKCEAuthentication: S.optional(S.Boolean),
-          idTokenClaims: S.optional(__S(324, __c40, 4)),
-          issuer: S.optional(S.String),
-          name: S.optional(S.String),
-          scopes: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ClusterOIDCConfig" });
-    case 6:
-      return S.Array(__S(135, __c16, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          jSONPointers: S.optional(__S(22, __c2, 6)),
-          jqPathExpressions: S.optional(__S(22, __c2, 6)),
-          managedFieldsManagers: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1OverrideIgnoreDiff",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V1alpha1KnownTypeField" });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(S.String),
-          healthLua: S.optional(S.String),
-          ignoreDifferences: S.optional(__S(327, __c40, 7)),
-          ignoreResourceUpdates: S.optional(__S(327, __c40, 7)),
-          knownTypeFields: S.optional(__S(329, __c41, 1)),
-          useOpenLibs: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "V1alpha1ResourceOverride" });
-    case 3:
-      return S.Record(S.String, __S(330, __c41, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalUrls: S.optional(__S(22, __c2, 6)),
-          appLabelKey: S.optional(S.String),
-          appsInAnyNamespaceEnabled: S.optional(S.Boolean),
-          configManagementPlugins: S.optional(__S(314, __c39, 2)),
-          controllerNamespace: S.optional(S.String),
-          dexConfig: S.optional(__S(317, __c39, 5)),
-          execEnabled: S.optional(S.Boolean),
-          googleAnalytics: S.optional(__S(318, __c39, 6)),
-          help: S.optional(__S(319, __c39, 7)),
-          hydratorEnabled: S.optional(S.Boolean),
-          impersonationEnabled: S.optional(S.Boolean),
-          installationID: S.optional(S.String),
-          kustomizeOptions: S.optional(__S(322, __c40, 2)),
-          kustomizeVersions: S.optional(__S(22, __c2, 6)),
-          oidcConfig: S.optional(__S(325, __c40, 5)),
-          passwordPattern: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          plugins: S.optional(__S(326, __c40, 6)),
-          resourceOverrides: S.optional(__S(331, __c41, 3)),
-          resourceViewEnabled: S.optional(S.Boolean),
-          statusBadgeEnabled: S.optional(S.Boolean),
-          statusBadgeRootUrl: S.optional(S.String),
-          syncWithReplaceAllowed: S.optional(S.Boolean),
-          trackingMethod: S.optional(S.String),
-          uiBannerContent: S.optional(S.String),
-          uiBannerPermanent: S.optional(S.Boolean),
-          uiBannerPosition: S.optional(S.String),
-          uiBannerURL: S.optional(S.String),
-          uiCssURL: S.optional(S.String),
-          uiLoginButtonText: S.optional(S.String),
-          url: S.optional(S.String),
-          userLoginsDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ClusterSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/settings/plugins", code: 200 })),
-      ).annotate({
-        identifier: "GetSettingsServicePluginsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          plugins: S.optional(__S(326, __c40, 6)),
-        }),
-      ).annotate({
-        identifier: "ClusterSettingsPluginsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id_value: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/clusters/{id_value}/invalidate-cache",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "InvalidateClusterServiceCacheRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/account", code: 200 })),
-      ).annotate({
-        identifier: "ListAccountServiceAccountsRequest",
-      });
-    case 1:
-      return S.Array(__S(268, __c33, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(337, __c42, 1)),
-        }),
-      ).annotate({ identifier: "AccountAccountsList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String.pipe(T.Query())),
-          refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          selector: S.optional(S.String.pipe(T.Query())),
-          repo: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          names: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications", code: 200 })),
-      ).annotate({
-        identifier: "ListApplicationServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(263, __c32, 7)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ApplicationList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/links", code: 200 })),
-      ).annotate({
-        identifier: "ListApplicationServiceLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          iconClass: S.optional(S.String),
-          title: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationLinkInfo" });
-    case 7:
-      return S.Array(__S(342, __c42, 6));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(343, __c42, 7)),
-        }),
-      ).annotate({ identifier: "ApplicationLinksResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource/actions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationServiceResourceActionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          iconClass: S.optional(S.String),
-          name: S.optional(S.String),
-          params: S.optional(__S(326, __c40, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ResourceAction" });
-    case 3:
-      return S.Array(__S(346, __c43, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(347, __c43, 3)),
-        }),
-      ).annotate({
-        identifier: "ApplicationResourceActionsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          resourceNamespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          resourceUID: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/events", code: 200 })),
-      ).annotate({
-        identifier: "ListApplicationServiceResourceEventsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "V1MicroTime" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldPath: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventsObjectReference" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          lastObservedTime: S.optional(__S(350, __c43, 6)),
-        }),
-      ).annotate({ identifier: "EventsEventSeries" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          component: S.optional(S.String),
-          host: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventsEventSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          count: S.optional(S.Number),
-          eventTime: S.optional(__S(350, __c43, 6)),
-          firstTimestamp: S.optional(S.String),
-          involvedObject: S.optional(__S(351, __c43, 7)),
-          lastTimestamp: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(51, __c6, 3)),
-          reason: S.optional(S.String),
-          related: S.optional(__S(351, __c43, 7)),
-          reportingComponent: S.optional(S.String),
-          reportingInstance: S.optional(S.String),
-          series: S.optional(__S(352, __c44, 0)),
-          source: S.optional(__S(353, __c44, 1)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventsEvent" });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(355, __c44, 3)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "EventsEventList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource/links", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationServiceResourceLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projects: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          selector: S.optional(S.String.pipe(T.Query())),
-          appsetNamespace: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets", code: 200 })),
-      ).annotate({
-        identifier: "ListApplicationSetServiceRequest",
-      });
-    case 7:
-      return S.Array(__S(186, __c23, 2));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(359, __c44, 7)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "V1alpha1ApplicationSetList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appsetNamespace: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}/events", code: 200 })),
-      ).annotate({
-        identifier: "ListApplicationSetServiceResourceEventsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hostNamePattern: S.optional(S.String.pipe(T.Query())),
-          certType: S.optional(S.String.pipe(T.Query())),
-          certSubType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/certificates", code: 200 })),
-      ).annotate({
-        identifier: "ListCertificateServiceCertificatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          server: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
-          id_value: S.optional(S.String.pipe(T.Query("id.value"))),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/clusters", code: 200 })),
-      ).annotate({
-        identifier: "ListClusterServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(288, __c36, 0)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1ClusterList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyID: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/gpgkeys", code: 200 })),
-      ).annotate({ identifier: "ListGPGKeyServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/notifications/services", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListNotificationServiceServicesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(326, __c40, 6)),
-        }),
-      ).annotate({ identifier: "NotificationServiceList" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/notifications/templates", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListNotificationServiceTemplatesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/notifications/triggers", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListNotificationServiceTriggersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects", code: 200 })),
-      ).annotate({
-        identifier: "ListProjectServiceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(289, __c36, 1)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1AppProjectList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/events", code: 200 })),
-      ).annotate({
-        identifier: "ListProjectServiceEventsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/links", code: 200 })),
-      ).annotate({
-        identifier: "ListProjectServiceLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repocreds", code: 200 })),
-      ).annotate({
-        identifier: "ListRepoCredsServiceRepositoryCredentialsRequest",
-      });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(375, __c46, 7)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1RepoCredsList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repocreds", code: 200 })),
-      ).annotate({
-        identifier: "ListRepoCredsServiceWriteRepositoryCredentialsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          revision: S.optional(S.String.pipe(T.Query())),
-          appName: S.optional(S.String.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/apps", code: 200 })),
-      ).annotate({
-        identifier: "ListRepositoryServiceAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepositoryAppInfo" });
-    case 4:
-      return S.Array(__S(379, __c47, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(380, __c47, 4)),
-        }),
-      ).annotate({
-        identifier: "RepositoryRepoAppsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/oci-tags", code: 200 })),
-      ).annotate({
-        identifier: "ListRepositoryServiceOCITagsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          branches: S.optional(__S(22, __c2, 6)),
-          tags: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "RepositoryRefs" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/refs", code: 200 })),
-      ).annotate({
-        identifier: "ListRepositoryServiceRefsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.optional(S.String.pipe(T.Query())),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories", code: 200 })),
-      ).annotate({
-        identifier: "ListRepositoryServiceRepositoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(290, __c36, 2)),
-          metadata: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({ identifier: "V1alpha1RepositoryList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.optional(S.String.pipe(T.Query())),
-          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
-          appProject: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repositories", code: 200 })),
-      ).annotate({
-        identifier: "ListRepositoryServiceWriteRepositoriesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String),
-          patch: S.optional(S.String),
-          patchType: S.optional(S.String),
-          project: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/api/v1/applications/{name}", code: 200 })),
-      ).annotate({
-        identifier: "PatchApplicationServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          patchType: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/resource", code: 200 })),
-      ).annotate({
-        identifier: "PatchApplicationServiceResourceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id_value: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v1/clusters/{id_value}/rotate-auth", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RotateClusterServiceAuthRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          namespace: S.optional(S.String.pipe(T.Query())),
-          resourceName: S.optional(S.String.pipe(T.Query())),
-          version: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/applications/{name}/resource/actions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RunApplicationServiceResourceActionRequest",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          action: S.optional(S.String),
-          appNamespace: S.optional(S.String),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          namespace: S.optional(S.String),
-          project: S.optional(S.String),
-          resourceActionParameters: S.optional(__S(392, __c49, 0)),
-          resourceName: S.optional(S.String),
-          version: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/applications/{name}/resource/actions/v2",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RunApplicationServiceResourceActionV2Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ApplicationSyncOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-          infos: S.optional(__S(24, __c3, 0)),
-          manifests: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          prune: S.optional(S.Boolean),
-          resources: S.optional(__S(56, __c7, 0)),
-          retryStrategy: S.optional(__S(54, __c6, 6)),
-          revision: S.optional(S.String),
-          revisions: S.optional(__S(22, __c2, 6)),
-          sourcePositions: S.optional(__S(22, __c2, 6)),
-          strategy: S.optional(__S(84, __c10, 4)),
-          syncOptions: S.optional(__S(394, __c49, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/sync", code: 200 })),
-      ).annotate({
-        identifier: "SyncApplicationServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}/operation", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "TerminateApplicationServiceOperationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currentPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          name: S.optional(S.String),
-          newPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/account/password", code: 200 })),
-      ).annotate({
-        identifier: "UpdateAccountServicePasswordRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          application_metadata_name: S.String.pipe(T.Label()),
-          validate: S.optional(S.Boolean.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          metadata: S.optional(__S(51, __c6, 3)),
-          operation: S.optional(__S(86, __c10, 6)),
-          spec: S.optional(__S(97, __c12, 1)),
-          status: S.optional(__S(114, __c14, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/v1/applications/{application_metadata_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateApplicationServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validate: S.optional(S.Boolean.pipe(T.Query())),
-          appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.String.pipe(T.Query())),
-          destination: S.optional(__S(87, __c10, 7)),
-          ignoreDifferences: S.optional(__S(89, __c11, 1)),
-          info: S.optional(__S(24, __c3, 0)),
-          revisionHistoryLimit: S.optional(S.Number),
-          source: S.optional(__S(80, __c10, 0)),
-          sourceHydrator: S.optional(__S(93, __c11, 5)),
-          sources: S.optional(__S(81, __c10, 1)),
-          syncPolicy: S.optional(__S(96, __c12, 0)),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/applications/{name}/spec", code: 200 })),
-      ).annotate({
-        identifier: "UpdateApplicationServiceSpecRequest",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id_value: S.String.pipe(T.Label()),
-          updatedFields: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
-          annotations: S.optional(__S(14, __c1, 6)),
-          clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196, __c24, 4)),
-          configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          info: S.optional(__S(199, __c24, 7)),
-          labels: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          namespaces: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          refreshRequestedAt: S.optional(S.String),
-          server: S.optional(S.String),
-          serverVersion: S.optional(S.String),
-          shard: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/clusters/{id_value}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateClusterServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_metadata_name: S.String.pipe(T.Label()),
-          project: S.optional(__S(234, __c29, 2)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/projects/{project_metadata_name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateProjectServiceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          creds_url: S.String.pipe(T.Label()),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxy: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/repocreds/{creds_url}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateRepoCredsServiceRepositoryCredentialsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          creds_url: S.String.pipe(T.Label()),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          proxy: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/write-repocreds/{creds_url}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateRepoCredsServiceWriteRepositoryCredentialsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repo_repo: S.String.pipe(T.Label()),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          depth: S.optional(S.Number),
-          enableLfs: S.optional(S.Boolean),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          inheritedCreds: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          insecureIgnoreHostKey: S.optional(S.Boolean),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project: S.optional(S.String),
-          proxy: S.optional(S.String),
-          repo: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/repositories/{repo_repo}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateRepositoryServiceRepositoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repo_repo: S.String.pipe(T.Label()),
-          azureActiveDirectoryEndpoint: S.optional(S.String),
-          azureServicePrincipalClientId: S.optional(S.String),
-          azureServicePrincipalClientSecret: S.optional(S.String),
-          azureServicePrincipalTenantId: S.optional(S.String),
-          bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197, __c24, 5)),
-          depth: S.optional(S.Number),
-          enableLfs: S.optional(S.Boolean),
-          enableOCI: S.optional(S.Boolean),
-          forceHttpBasicAuth: S.optional(S.Boolean),
-          gcpServiceAccountKey: S.optional(S.String),
-          githubAppEnterpriseBaseUrl: S.optional(S.String),
-          githubAppID: S.optional(S.Number),
-          githubAppInstallationID: S.optional(S.Number),
-          githubAppPrivateKey: S.optional(S.String),
-          inheritedCreds: S.optional(S.Boolean),
-          insecure: S.optional(S.Boolean),
-          insecureIgnoreHostKey: S.optional(S.Boolean),
-          insecureOCIForceHttp: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          noProxy: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project: S.optional(S.String),
-          proxy: S.optional(S.String),
-          repo: S.optional(S.String),
-          sshPrivateKey: S.optional(S.String),
-          tlsClientCertData: S.optional(S.String),
-          tlsClientCertKey: S.optional(S.String),
-          type: S.optional(S.String),
-          useAzureWorkloadIdentity: S.optional(S.Boolean),
-          username: S.optional(S.String),
-          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/write-repositories/{repo_repo}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateRepositoryServiceWriteRepositoryRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
@@ -9128,7 +5102,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ValidateRepositoryServiceAccessRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
@@ -9165,7 +5143,7 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9191,41 +5169,49 @@ function __c51(j: number): any {
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersionVersionMessage" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
           refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          projects: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          names: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          project: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          names: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/stream/applications", code: 200 })),
       ).annotate({
         identifier: "WatchApplicationServiceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          application: S.optional(__S(115, __c14, 3)),
+          application: S.optional(__S(3767, __c117, 23)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationWatchEvent",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
-          result: S.optional(__S(411, __c51, 3)),
+          error: S.optional(__S(1090, __c34, 2)),
+          result: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({
         identifier: "WatchApplicationServiceResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.String.pipe(T.Label()),
@@ -9246,26 +5232,1670 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "WatchApplicationServiceResourceTreeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
-          result: S.optional(__S(34, __c4, 2)),
+          error: S.optional(__S(1090, __c34, 2)),
+          result: S.optional(__S(1990, __c62, 6)),
         }),
       ).annotate({
         identifier: "WatchApplicationServiceResourceTreeResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          projects: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           appSetNamespace: S.optional(S.String.pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/stream/applicationsets", code: 200 })),
       ).annotate({
         identifier: "WatchApplicationSetServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationSet: S.optional(__S(509, __c15, 29)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetWatchEvent",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(1090, __c34, 2)),
+          result: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "WatchApplicationSetServiceResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          validate: S.optional(S.Boolean.pipe(T.Query())),
+          metadata: S.optional(__S(3589, __c112, 5)),
+          operation: S.optional(__S(3751, __c117, 7)),
+          spec: S.optional(__S(3724, __c116, 12)),
+          status: S.optional(__S(3766, __c117, 22)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications", code: 200 })),
+      ).annotate({
+        identifier: "CreateApplicationServiceRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          dryRun: S.optional(S.Boolean.pipe(T.Query())),
+          metadata: S.optional(__S(3589, __c112, 5)),
+          spec: S.optional(__S(503, __c15, 23)),
+          status: S.optional(__S(508, __c15, 28)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets", code: 200 })),
+      ).annotate({
+        identifier: "CreateApplicationSetServiceRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PluginConfigMapRef",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          operator: S.optional(S.String),
+          values: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "V1LabelSelectorRequirement",
+      });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(449, __c14, 1)),
+          matchLabels: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "V1LabelSelector" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2048, __c64, 0)),
+          finalizers: S.optional(__S(2016, __c63, 0)),
+          labels: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetTemplateMeta",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(451, __c14, 3)),
+          spec: S.optional(__S(3724, __c116, 12)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetTemplate",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          configMapRef: S.optional(S.String),
+          labelSelector: S.optional(__S(450, __c14, 2)),
+          name: S.optional(S.String),
+          requeueAfterSeconds: S.optional(S.Number),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1DuckTypeGenerator",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          flatList: S.optional(S.Boolean),
+          selector: S.optional(__S(450, __c14, 2)),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1ClusterGenerator" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(S.Boolean),
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1GitDirectoryGeneratorItem",
+      });
+    case 8:
+      return S.Array(__S(455, __c14, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          directories: S.optional(__S(456, __c14, 8)),
+          files: S.optional(__S(456, __c14, 8)),
+          pathParamPrefix: S.optional(S.String),
+          repoURL: S.optional(S.String),
+          requeueAfterSeconds: S.optional(S.Number),
+          revision: S.optional(S.String),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1GitGenerator" });
+    case 10:
+      return S.Array(__S(3552, __c111, 0));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          elements: S.optional(__S(458, __c14, 10)),
+          elementsYaml: S.optional(S.String),
+          template: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "V1alpha1ListGenerator" });
+    case 12:
+      return S.Record(S.String, __S(3552, __c111, 0));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(460, __c14, 12)),
+        }),
+      ).annotate({ identifier: "V1alpha1PluginInput" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          configMapRef: S.optional(__S(416, __c13, 0)),
+          input: S.optional(__S(461, __c14, 13)),
+          requeueAfterSeconds: S.optional(S.Number),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1PluginGenerator" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          secretName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1SecretRef" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
+          organization: S.optional(S.String),
+          project: S.optional(S.String),
+          repo: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorAzureDevOps",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          passwordRef: S.optional(__S(463, __c14, 15)),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1BasicAuthBitbucketServer",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1BearerTokenBitbucketCloud",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          basicAuth: S.optional(__S(465, __c14, 17)),
+          bearerToken: S.optional(__S(466, __c14, 18)),
+          owner: S.optional(S.String),
+          repo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorBitbucket",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          configMapName: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ConfigMapKeyRef" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          basicAuth: S.optional(__S(465, __c14, 17)),
+          bearerToken: S.optional(__S(466, __c14, 18)),
+          caRef: S.optional(__S(468, __c14, 20)),
+          insecure: S.optional(S.Boolean),
+          project: S.optional(S.String),
+          repo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorBitbucketServer",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          branchMatch: S.optional(S.String),
+          targetBranchMatch: S.optional(S.String),
+          titleMatch: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorFilter",
+      });
+    case 23:
+      return S.Array(__S(470, __c14, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          insecure: S.optional(S.Boolean),
+          labels: S.optional(__S(2016, __c63, 0)),
+          owner: S.optional(S.String),
+          repo: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorGitea",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          appSecretName: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
+          owner: S.optional(S.String),
+          repo: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorGithub",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          api: S.optional(S.String),
+          caRef: S.optional(__S(468, __c14, 20)),
+          insecure: S.optional(S.Boolean),
+          labels: S.optional(__S(2016, __c63, 0)),
+          project: S.optional(S.String),
+          pullRequestState: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGeneratorGitLab",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          azuredevops: S.optional(__S(464, __c14, 16)),
+          bitbucket: S.optional(__S(467, __c14, 19)),
+          bitbucketServer: S.optional(__S(469, __c14, 21)),
+          continueOnRepoNotFoundError: S.optional(S.Boolean),
+          filters: S.optional(__S(471, __c14, 23)),
+          gitea: S.optional(__S(472, __c14, 24)),
+          github: S.optional(__S(473, __c14, 25)),
+          gitlab: S.optional(__S(474, __c14, 26)),
+          requeueAfterSeconds: S.optional(S.Number),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1PullRequestGenerator",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1TagFilter" });
+    case 29:
+      return S.Array(__S(476, __c14, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          region: S.optional(S.String),
+          role: S.optional(S.String),
+          tagFilters: S.optional(__S(477, __c14, 29)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorAWSCodeCommit",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          accessTokenRef: S.optional(__S(463, __c14, 15)),
+          allBranches: S.optional(S.Boolean),
+          api: S.optional(S.String),
+          organization: S.optional(S.String),
+          teamProject: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorAzureDevOps",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          appPasswordRef: S.optional(__S(463, __c14, 15)),
+          owner: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorBitbucket",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          api: S.optional(S.String),
+          basicAuth: S.optional(__S(465, __c14, 17)),
+          bearerToken: S.optional(__S(466, __c14, 18)),
+          caRef: S.optional(__S(468, __c14, 20)),
+          insecure: S.optional(S.Boolean),
+          project: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorBitbucketServer",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          branchMatch: S.optional(S.String),
+          labelMatch: S.optional(S.String),
+          pathsDoNotExist: S.optional(__S(2016, __c63, 0)),
+          pathsExist: S.optional(__S(2016, __c63, 0)),
+          repositoryMatch: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorFilter",
+      });
+    case 3:
+      return S.Array(__S(482, __c15, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          api: S.optional(S.String),
+          excludeArchivedRepos: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          owner: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorGitea",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          api: S.optional(S.String),
+          appSecretName: S.optional(S.String),
+          excludeArchivedRepos: S.optional(S.Boolean),
+          organization: S.optional(S.String),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorGithub",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allBranches: S.optional(S.Boolean),
+          api: S.optional(S.String),
+          caRef: S.optional(__S(468, __c14, 20)),
+          group: S.optional(S.String),
+          includeArchivedRepos: S.optional(S.Boolean),
+          includeSharedProjects: S.optional(S.Boolean),
+          includeSubgroups: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          tokenRef: S.optional(__S(463, __c14, 15)),
+          topic: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGeneratorGitlab",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          awsCodeCommit: S.optional(__S(478, __c14, 30)),
+          azureDevOps: S.optional(__S(479, __c14, 31)),
+          bitbucket: S.optional(__S(480, __c15, 0)),
+          bitbucketServer: S.optional(__S(481, __c15, 1)),
+          cloneProtocol: S.optional(S.String),
+          filters: S.optional(__S(483, __c15, 3)),
+          gitea: S.optional(__S(484, __c15, 4)),
+          github: S.optional(__S(485, __c15, 5)),
+          gitlab: S.optional(__S(486, __c15, 6)),
+          requeueAfterSeconds: S.optional(S.Number),
+          template: S.optional(__S(452, __c14, 4)),
+          values: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SCMProviderGenerator",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          clusterDecisionResource: S.optional(__S(453, __c14, 5)),
+          clusters: S.optional(__S(454, __c14, 6)),
+          git: S.optional(__S(457, __c14, 9)),
+          list: S.optional(__S(459, __c14, 11)),
+          matrix: S.optional(__S(3552, __c111, 0)),
+          merge: S.optional(__S(3552, __c111, 0)),
+          oci: S.optional(__S(457, __c14, 9)),
+          plugin: S.optional(__S(462, __c14, 14)),
+          pullRequest: S.optional(__S(475, __c14, 27)),
+          scmProvider: S.optional(__S(487, __c15, 7)),
+          selector: S.optional(__S(450, __c14, 2)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetNestedGenerator",
+      });
+    case 9:
+      return S.Array(__S(488, __c15, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          generators: S.optional(__S(489, __c15, 9)),
+          template: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "V1alpha1MatrixGenerator" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          generators: S.optional(__S(489, __c15, 9)),
+          mergeKeys: S.optional(__S(2016, __c63, 0)),
+          template: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "V1alpha1MergeGenerator" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          clusterDecisionResource: S.optional(__S(453, __c14, 5)),
+          clusters: S.optional(__S(454, __c14, 6)),
+          git: S.optional(__S(457, __c14, 9)),
+          list: S.optional(__S(459, __c14, 11)),
+          matrix: S.optional(__S(490, __c15, 10)),
+          merge: S.optional(__S(491, __c15, 11)),
+          oci: S.optional(__S(457, __c14, 9)),
+          plugin: S.optional(__S(462, __c14, 14)),
+          pullRequest: S.optional(__S(475, __c14, 27)),
+          scmProvider: S.optional(__S(487, __c15, 7)),
+          selector: S.optional(__S(450, __c14, 2)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetGenerator",
+      });
+    case 13:
+      return S.Array(__S(492, __c15, 12));
+    case 14:
+      return S.Array(S.String);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          jqPathExpressions: S.optional(__S(494, __c15, 14)),
+          jsonPointers: S.optional(__S(494, __c15, 14)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetResourceIgnoreDifferences",
+      });
+    case 16:
+      return S.Array(__S(495, __c15, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2016, __c63, 0)),
+          labels: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationPreservedFields",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(449, __c14, 1)),
+          maxUpdate: S.optional(__S(3663, __c114, 15)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetRolloutStep",
+      });
+    case 19:
+      return S.Array(__S(498, __c15, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(499, __c15, 19)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetRolloutStrategy",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          deletionOrder: S.optional(S.String),
+          rollingSync: S.optional(__S(500, __c15, 20)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetStrategy",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          applicationsSync: S.optional(S.String),
+          preserveResourcesOnDeletion: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetSyncPolicy",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          applyNestedSelectors: S.optional(S.Boolean),
+          generators: S.optional(__S(493, __c15, 13)),
+          goTemplate: S.optional(S.Boolean),
+          goTemplateOptions: S.optional(__S(2016, __c63, 0)),
+          ignoreApplicationDifferences: S.optional(__S(496, __c15, 16)),
+          preservedFields: S.optional(__S(497, __c15, 17)),
+          strategy: S.optional(__S(501, __c15, 21)),
+          syncPolicy: S.optional(__S(502, __c15, 22)),
+          template: S.optional(__S(452, __c14, 4)),
+          templatePatch: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetSpec",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.optional(S.String),
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          status: S.optional(S.String),
+          step: S.optional(S.String),
+          targetrevisions: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetApplicationStatus",
+      });
+    case 25:
+      return S.Array(__S(504, __c15, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetCondition",
+      });
+    case 27:
+      return S.Array(__S(506, __c15, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          applicationStatus: S.optional(__S(505, __c15, 25)),
+          conditions: S.optional(__S(507, __c15, 27)),
+          health: S.optional(__S(2144, __c67, 0)),
+          resources: S.optional(__S(3681, __c115, 1)),
+          resourcesCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetStatus",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(3589, __c112, 5)),
+          spec: S.optional(__S(503, __c15, 23)),
+          status: S.optional(__S(508, __c15, 28)),
+        }),
+      ).annotate({ identifier: "V1alpha1ApplicationSet" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          items: S.optional(__S(577, __c18, 1)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/certificates", code: 200 })),
+      ).annotate({
+        identifier: "CreateCertificateServiceCertificateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1ShardInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "V1ListMeta" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certData: S.optional(S.String),
+          certInfo: S.optional(S.String),
+          certSubType: S.optional(S.String),
+          certType: S.optional(S.String),
+          serverName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1RepositoryCertificate",
+      });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(577, __c18, 1)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1RepositoryCertificateList",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          annotations: S.optional(__S(2048, __c64, 0)),
+          clusterResources: S.optional(S.Boolean),
+          config: S.optional(__S(675, __c21, 3)),
+          configHash: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          info: S.optional(__S(677, __c21, 5)),
+          labels: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          namespaces: S.optional(__S(2016, __c63, 0)),
+          project: S.optional(S.String),
+          refreshRequestedAt: S.optional(S.String),
+          server: S.optional(S.String),
+          serverVersion: S.optional(S.String),
+          shard: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/clusters", code: 200 })),
+      ).annotate({
+        identifier: "CreateClusterServiceRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attemptedAt: S.optional(S.String),
+          message: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ConnectionState" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.optional(S.String),
+          profile: S.optional(S.String),
+          roleARN: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1AWSAuthConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          args: S.optional(__S(2016, __c63, 0)),
+          command: S.optional(S.String),
+          config: S.optional(__S(3552, __c111, 0)),
+          env: S.optional(__S(2048, __c64, 0)),
+          installHint: S.optional(S.String),
+          provideClusterInfo: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ExecProviderConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          caData: S.optional(S.String),
+          certData: S.optional(S.String),
+          insecure: S.optional(S.Boolean),
+          keyData: S.optional(S.String),
+          serverName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1TLSClientConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          awsAuthConfig: S.optional(__S(672, __c21, 0)),
+          bearerToken: S.optional(S.String),
+          burst: S.optional(S.Number),
+          disableCompression: S.optional(S.Boolean),
+          execProviderConfig: S.optional(__S(673, __c21, 1)),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxyUrl: S.optional(S.String),
+          qps: S.optional(S.Number),
+          tlsClientConfig: S.optional(__S(674, __c21, 2)),
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ClusterConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apisCount: S.optional(S.Number),
+          lastCacheSyncTime: S.optional(S.String),
+          resourcesCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "V1alpha1ClusterCacheInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersions: S.optional(__S(2016, __c63, 0)),
+          applicationsCount: S.optional(S.Number),
+          cacheInfo: S.optional(__S(676, __c21, 4)),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          serverVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ClusterInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2048, __c64, 0)),
+          clusterResources: S.optional(S.Boolean),
+          config: S.optional(__S(675, __c21, 3)),
+          configHash: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          info: S.optional(__S(677, __c21, 5)),
+          labels: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          namespaces: S.optional(__S(2016, __c63, 0)),
+          project: S.optional(S.String),
+          refreshRequestedAt: S.optional(S.String),
+          server: S.optional(S.String),
+          serverVersion: S.optional(S.String),
+          shard: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "V1alpha1Cluster" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          fingerprint: S.optional(S.String),
+          keyData: S.optional(S.String),
+          keyID: S.optional(S.String),
+          owner: S.optional(S.String),
+          subType: S.optional(S.String),
+          trust: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/gpgkeys", code: 200 })),
+      ).annotate({
+        identifier: "CreateGPGKeyServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(__S(769, __c24, 1)),
+          skipped: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "GpgkeyGnuPGPublicKeyCreateResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fingerprint: S.optional(S.String),
+          keyData: S.optional(S.String),
+          keyID: S.optional(S.String),
+          owner: S.optional(S.String),
+          subType: S.optional(S.String),
+          trust: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1GnuPGPublicKey" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(736, __c23, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(768, __c24, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1GnuPGPublicKeyList",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(__S(889, __c27, 25)),
+          upsert: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/projects", code: 200 })),
+      ).annotate({
+        identifier: "CreateProjectServiceRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          andOperator: S.optional(S.Boolean),
+          applications: S.optional(__S(2016, __c63, 0)),
+          clusters: S.optional(__S(2016, __c63, 0)),
+          description: S.optional(S.String),
+          duration: S.optional(S.String),
+          kind: S.optional(S.String),
+          manualSync: S.optional(S.Boolean),
+          namespaces: S.optional(__S(2016, __c63, 0)),
+          schedule: S.optional(S.String),
+          syncOverrun: S.optional(S.Boolean),
+          timeZone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1InlineSyncWindow" });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ClusterResourceRestrictionItem",
+      });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          defaultServiceAccount: S.optional(S.String),
+          namespace: S.optional(S.String),
+          server: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationDestinationServiceAccount",
+      });
+    case 3:
+      return S.Array(__S(866, __c27, 2));
+    case 4:
+      return S.Array(__S(3616, __c113, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1GroupKind" });
+    case 6:
+      return S.Array(__S(869, __c27, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ignore: S.optional(__S(865, __c27, 1)),
+          warn: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1OrphanedResourcesMonitorSettings",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          exp: S.optional(S.Number),
+          iat: S.optional(S.Number),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1JWTToken" });
+    case 9:
+      return S.Array(__S(872, __c27, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          groups: S.optional(__S(2016, __c63, 0)),
+          jwtTokens: S.optional(__S(873, __c27, 9)),
+          name: S.optional(S.String),
+          policies: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1ProjectRole" });
+    case 11:
+      return S.Array(__S(874, __c27, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          keyID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1SignatureKey" });
+    case 13:
+      return S.Array(__S(876, __c27, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(2016, __c63, 0)),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityGitPolicyGPG",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityGitPolicyRepo",
+      });
+    case 16:
+      return S.Array(__S(879, __c27, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          gpg: S.optional(__S(878, __c27, 14)),
+          repos: S.optional(__S(880, __c27, 16)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityGitPolicy",
+      });
+    case 18:
+      return S.Array(__S(881, __c27, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          policies: S.optional(__S(882, __c27, 18)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityGit",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          git: S.optional(__S(883, __c27, 19)),
+        }),
+      ).annotate({ identifier: "V1alpha1SourceIntegrity" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          clusterResourceBlacklist: S.optional(__S(865, __c27, 1)),
+          clusterResourceWhitelist: S.optional(__S(865, __c27, 1)),
+          description: S.optional(S.String),
+          destinationServiceAccounts: S.optional(__S(867, __c27, 3)),
+          destinations: S.optional(__S(868, __c27, 4)),
+          namespaceResourceBlacklist: S.optional(__S(870, __c27, 6)),
+          namespaceResourceWhitelist: S.optional(__S(870, __c27, 6)),
+          orphanedResources: S.optional(__S(871, __c27, 7)),
+          permitOnlyProjectScopedClusters: S.optional(S.Boolean),
+          roles: S.optional(__S(875, __c27, 11)),
+          signatureKeys: S.optional(__S(877, __c27, 13)),
+          sourceIntegrity: S.optional(__S(884, __c27, 20)),
+          sourceNamespaces: S.optional(__S(2016, __c63, 0)),
+          sourceRepos: S.optional(__S(2016, __c63, 0)),
+          syncWindows: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1AppProjectSpec" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(873, __c27, 9)),
+        }),
+      ).annotate({ identifier: "V1alpha1JWTTokens" });
+    case 23:
+      return S.Record(S.String, __S(886, __c27, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          jwtTokensByRole: S.optional(__S(887, __c27, 23)),
+        }),
+      ).annotate({ identifier: "V1alpha1AppProjectStatus" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(3589, __c112, 5)),
+          spec: S.optional(__S(885, __c27, 21)),
+          status: S.optional(__S(888, __c27, 24)),
+        }),
+      ).annotate({ identifier: "V1alpha1AppProject" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          role: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+          id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/projects/{project}/roles/{role}/token",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectServiceTokenRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxy: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/repocreds", code: 200 })),
+      ).annotate({
+        identifier: "CreateRepoCredsServiceRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxy: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1RepoCreds" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxy: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/write-repocreds", code: 200 })),
+      ).annotate({
+        identifier: "CreateRepoCredsServiceWriteRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          podName: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          container: S.optional(S.String.pipe(T.Query())),
+          sinceSeconds: S.optional(S.String.pipe(T.Query())),
+          sinceTime_seconds: S.optional(S.String.pipe(T.Query("sinceTime.seconds"))),
+          sinceTime_nanos: S.optional(S.Number.pipe(T.Query("sinceTime.nanos"))),
+          tailLines: S.optional(S.String.pipe(T.Query())),
+          follow: S.optional(S.Boolean.pipe(T.Query())),
+          untilTime: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          previous: S.optional(S.Boolean.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          matchCase: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{name}/pods/{podName}/logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationServicePodLogsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          last: S.optional(S.Boolean),
+          podName: S.optional(S.String),
+          timeStamp: S.optional(S.String),
+          timeStampStr: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationLogEntry" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(1090, __c34, 2)),
+          result: S.optional(__S(1056, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplicationServicePodLogsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type_url: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtobufAny" });
+    case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1089, __c34, 1)),
+          grpc_code: S.optional(S.Number),
+          http_code: S.optional(S.Number),
+          http_status: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeStreamError" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          credsOnly: S.optional(S.Boolean.pipe(T.Query())),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          depth: S.optional(S.Number),
+          enableLfs: S.optional(S.Boolean),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          inheritedCreds: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          insecureIgnoreHostKey: S.optional(S.Boolean),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project: S.optional(S.String),
+          proxy: S.optional(S.String),
+          repo: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/repositories", code: 200 })),
+      ).annotate({
+        identifier: "CreateRepositoryServiceRepositoryRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          depth: S.optional(S.Number),
+          enableLfs: S.optional(S.Boolean),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          inheritedCreds: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          insecureIgnoreHostKey: S.optional(S.Boolean),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project: S.optional(S.String),
+          proxy: S.optional(S.String),
+          repo: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "V1alpha1Repository" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upsert: S.optional(S.Boolean.pipe(T.Query())),
+          credsOnly: S.optional(S.Boolean.pipe(T.Query())),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          depth: S.optional(S.Number),
+          enableLfs: S.optional(S.Boolean),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          inheritedCreds: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          insecureIgnoreHostKey: S.optional(S.Boolean),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project: S.optional(S.String),
+          proxy: S.optional(S.String),
+          repo: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/write-repositories", code: 200 })),
+      ).annotate({
+        identifier: "CreateRepositoryServiceWriteRepositoryRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          token: S.optional(S.String),
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/session", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionServiceRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionSessionResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/account/{name}/token/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAccountServiceTokenRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteAccountServiceTokenResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          cascade: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteApplicationServiceRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          orphan: S.optional(S.Boolean.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}/resource", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationServiceResourceRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appsetNamespace: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/applicationsets/{name}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteApplicationSetServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationset: S.optional(__S(509, __c15, 29)),
+          project: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationsetApplicationSetResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hostNamePattern: S.optional(S.String.pipe(T.Query())),
+          certType: S.optional(S.String.pipe(T.Query())),
+          certSubType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/certificates", code: 200 })),
+      ).annotate({
+        identifier: "DeleteCertificateServiceCertificateRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_value: S.String.pipe(T.Label()),
+          server: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/clusters/{id_value}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteClusterServiceRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyID: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/gpgkeys", code: 200 })),
+      ).annotate({
+        identifier: "DeleteGPGKeyServiceRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          podName: S.optional(S.String.pipe(T.Query())),
+          container: S.optional(S.String.pipe(T.Query())),
+          sinceSeconds: S.optional(S.String.pipe(T.Query())),
+          sinceTime_seconds: S.optional(S.String.pipe(T.Query("sinceTime.seconds"))),
+          sinceTime_nanos: S.optional(S.Number.pipe(T.Query("sinceTime.nanos"))),
+          tailLines: S.optional(S.String.pipe(T.Query())),
+          follow: S.optional(S.Boolean.pipe(T.Query())),
+          untilTime: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          previous: S.optional(S.Boolean.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          matchCase: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/logs", code: 200 })),
+      ).annotate({
+        identifier: "ApplicationServicePodLogs2Request",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/projects/{name}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteProjectServiceRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          role: S.String.pipe(T.Label()),
+          iat: S.String.pipe(T.Label()),
+          id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v1/projects/{project}/roles/{role}/token/{iat}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectServiceTokenRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/repocreds/{url}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteRepoCredsServiceRepositoryCredentialsRequest",
       });
   }
 }
@@ -9274,24 +6904,2801 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applicationSet: S.optional(__S(186, __c23, 2)),
-          type: S.optional(S.String),
-        }),
+          url: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/write-repocreds/{url}", code: 200 })),
       ).annotate({
-        identifier: "V1alpha1ApplicationSetWatchEvent",
+        identifier: "DeleteRepoCredsServiceWriteRepositoryCredentialsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteRepoCredsServiceWriteRepositoryCredentialsResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/repositories/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteRepositoryServiceRepositoryRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/write-repositories/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteRepositoryServiceWriteRepositoryRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/api/v1/session", code: 200 })),
+      ).annotate({
+        identifier: "DeleteSessionServiceRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationSet: S.optional(__S(509, __c15, 29)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets/generate", code: 200 })),
+      ).annotate({
+        identifier: "GenerateApplicationSetServiceRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
-          result: S.optional(__S(416, __c52, 0)),
+          applications: S.optional(__S(1824, __c57, 0)),
         }),
       ).annotate({
-        identifier: "WatchApplicationSetServiceResponse",
+        identifier: "ApplicationsetApplicationSetGenerateResponse",
       });
   }
 }
-
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3767, __c117, 23));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/account/{name}", code: 200 })),
+      ).annotate({
+        identifier: "GetAccountServiceAccountRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expiresAt: S.optional(S.Number),
+          id: S.optional(S.String),
+          issuedAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AccountToken" });
+    case 1:
+      return S.Array(__S(1888, __c59, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.optional(__S(2016, __c63, 0)),
+          enabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          tokens: S.optional(__S(1889, __c59, 1)),
+        }),
+      ).annotate({ identifier: "AccountAccount" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          refresh: S.optional(S.String.pipe(T.Query())),
+          projects: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          selector: S.optional(S.String.pipe(T.Query())),
+          repo: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          names: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}", code: 200 })),
+      ).annotate({
+        identifier: "GetApplicationServiceRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{applicationName}/resource-tree",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationServiceResourceTreeRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          capacity: S.optional(S.Number),
+          requestedByApp: S.optional(S.Number),
+          requestedByNeighbors: S.optional(S.Number),
+          resourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1HostResourceInfo" });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "V1NodeSwapStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          architecture: S.optional(S.String),
+          bootID: S.optional(S.String),
+          containerRuntimeVersion: S.optional(S.String),
+          kernelVersion: S.optional(S.String),
+          kubeProxyVersion: S.optional(S.String),
+          kubeletVersion: S.optional(S.String),
+          machineID: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          osImage: S.optional(S.String),
+          runningInUserNamespace: S.optional(S.Boolean),
+          swap: S.optional(__S(1986, __c62, 2)),
+          systemUUID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1NodeSystemInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          resourcesInfo: S.optional(__S(1985, __c62, 1)),
+          systemInfo: S.optional(__S(1987, __c62, 3)),
+        }),
+      ).annotate({ identifier: "V1alpha1HostInfo" });
+    case 5:
+      return S.Array(__S(1988, __c62, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          hosts: S.optional(__S(1989, __c62, 5)),
+          nodes: S.optional(__S(2184, __c68, 8)),
+          orphanedNodes: S.optional(__S(2184, __c68, 8)),
+          shardsCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "V1alpha1ApplicationTree" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1InfoItem" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2080, __c65, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1HealthStatus" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.String),
+          port: S.optional(S.Number),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1PortStatus" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          ip: S.optional(S.String),
+          ipMode: S.optional(S.String),
+          ports: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({ identifier: "V1LoadBalancerIngress" });
+    case 3:
+      return S.Array(__S(2178, __c68, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          uid: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ResourceRef" });
+    case 5:
+      return S.Array(__S(2180, __c68, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          externalURLs: S.optional(__S(2016, __c63, 0)),
+          ingress: S.optional(__S(2179, __c68, 3)),
+          labels: S.optional(__S(2048, __c64, 0)),
+          targetLabels: S.optional(__S(2048, __c64, 0)),
+          targetRefs: S.optional(__S(2181, __c68, 5)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ResourceNetworkingInfo",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          uid: S.optional(S.String),
+          version: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          health: S.optional(__S(2144, __c67, 0)),
+          images: S.optional(__S(2016, __c63, 0)),
+          info: S.optional(__S(2112, __c66, 0)),
+          networkingInfo: S.optional(__S(2182, __c68, 6)),
+          parentRefs: S.optional(__S(2181, __c68, 5)),
+          resourceVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ResourceNode" });
+    case 8:
+      return S.Array(__S(2183, __c68, 7));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/syncwindows", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationServiceApplicationSyncWindowsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+          kind: S.optional(S.String),
+          manualSync: S.optional(S.Boolean),
+          schedule: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationApplicationSyncWindow",
+      });
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          activeWindows: S.optional(__S(2210, __c69, 2)),
+          assignedWindows: S.optional(__S(2210, __c69, 2)),
+          canSync: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApplicationApplicationSyncWindowsResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          revision: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          sourcePositions: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          revisions: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          noCache: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/manifests", code: 200 })),
+      ).annotate({
+        identifier: "GetApplicationServiceManifestsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commands: S.optional(__S(2016, __c63, 0)),
+          manifests: S.optional(__S(2016, __c63, 0)),
+          namespace: S.optional(S.String),
+          revision: S.optional(S.String),
+          server: S.optional(S.String),
+          sourceIntegrityResult: S.optional(__S(3106, __c97, 2)),
+          sourceType: S.optional(S.String),
+          verifyResult: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryManifestResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          chunk: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationFileChunk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appNamespace: S.optional(S.String),
+          checksum: S.optional(S.String),
+          name: S.optional(S.String),
+          project: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationApplicationManifestQueryWithFiles",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chunk: S.optional(__S(2304, __c72, 0)),
+          query: S.optional(__S(2305, __c72, 1)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v1/applications/manifestsWithFiles", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationServiceManifestsWithFilesRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          revision: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          sourceIndex: S.optional(S.Number.pipe(T.Query())),
+          versionId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{name}/revisions/{revision}/ocimetadata",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationServiceOCIMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authors: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          docsUrl: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          sourceUrl: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1OCIMetadata" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource", code: 200 })),
+      ).annotate({
+        identifier: "GetApplicationServiceResourceRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          manifest: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationApplicationResourceResponse",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appsetNamespace: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}", code: 200 })),
+      ).annotate({
+        identifier: "GetApplicationSetServiceRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_value: S.String.pipe(T.Label()),
+          server: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/clusters/{id_value}", code: 200 })),
+      ).annotate({ identifier: "GetClusterServiceRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyID: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/gpgkeys/{keyID}", code: 200 })),
+      ).annotate({ identifier: "GetGPGKeyServiceRequest" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}", code: 200 })),
+      ).annotate({ identifier: "GetProjectServiceRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/detailed", code: 200 })),
+      ).annotate({
+        identifier: "GetProjectServiceDetailedProjectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusters: S.optional(__S(2624, __c82, 0)),
+          globalProjects: S.optional(__S(2592, __c81, 0)),
+          project: S.optional(__S(889, __c27, 25)),
+          repositories: S.optional(__S(2656, __c83, 0)),
+        }),
+      ).annotate({
+        identifier: "ProjectDetailedProjectsResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(889, __c27, 25));
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(678, __c21, 6));
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1152, __c36, 0));
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          revision: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          sourceIndex: S.optional(S.Number.pipe(T.Query())),
+          versionId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{name}/revisions/{revision}/chartdetails",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationServiceRevisionChartDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          home: S.optional(S.String),
+          maintainers: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1ChartDetails" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/projects/{name}/globalprojects", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetProjectServiceGlobalProjectsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2592, __c81, 0)),
+        }),
+      ).annotate({
+        identifier: "ProjectGlobalProjectsResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/syncwindows", code: 200 })),
+      ).annotate({
+        identifier: "GetProjectServiceSyncWindowsStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          windows: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "ProjectSyncWindowsResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "GetRepositoryServiceRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source_repoURL: S.String.pipe(T.Label()),
+          appName: S.optional(S.String),
+          appProject: S.optional(S.String),
+          source: S.optional(__S(3670, __c114, 22)),
+          sourceIndex: S.optional(S.Number),
+          versionId: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/repositories/{source_repoURL}/appdetails",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRepositoryServiceAppDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fileParameters: S.optional(__S(3653, __c114, 5)),
+          name: S.optional(S.String),
+          parameters: S.optional(__S(3655, __c114, 7)),
+          valueFiles: S.optional(__S(2016, __c63, 0)),
+          values: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepositoryHelmAppSpec" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          images: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "RepositoryKustomizeAppSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          array: S.optional(__S(2016, __c63, 0)),
+          collectionType: S.optional(S.String),
+          itemType: S.optional(S.String),
+          map: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          required: S.optional(S.Boolean),
+          string: S.optional(S.String),
+          title: S.optional(S.String),
+          tooltip: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryParameterAnnouncement",
+      });
+    case 4:
+      return S.Array(__S(2819, __c88, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          parametersAnnouncement: S.optional(__S(2820, __c88, 4)),
+        }),
+      ).annotate({ identifier: "RepositoryPluginAppSpec" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          directory: S.optional(S.Unknown),
+          helm: S.optional(__S(2817, __c88, 1)),
+          kustomize: S.optional(__S(2818, __c88, 2)),
+          plugin: S.optional(__S(2821, __c88, 5)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryRepoAppDetailsResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/helmcharts", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetRepositoryServiceHelmChartsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          versions: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "RepositoryHelmChart" });
+    case 2:
+      return S.Array(__S(2849, __c89, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2850, __c89, 2)),
+        }),
+      ).annotate({
+        identifier: "RepositoryHelmChartsResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repositories/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "GetRepositoryServiceWriteRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/session/userinfo", code: 200 })),
+      ).annotate({
+        identifier: "GetSessionServiceUserInfoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(2016, __c63, 0)),
+          iss: S.optional(S.String),
+          loggedIn: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SessionGetUserInfoResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/settings", code: 200 })),
+      ).annotate({
+        identifier: "GetSettingsServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          args: S.optional(__S(2016, __c63, 0)),
+          command: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1Command" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          generate: S.optional(__S(2945, __c92, 1)),
+          init: S.optional(__S(2945, __c92, 1)),
+          lockRepo: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ConfigManagementPlugin",
+      });
+    case 3:
+      return S.Array(__S(2946, __c92, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterConnector" });
+    case 5:
+      return S.Array(__S(2948, __c92, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          connectors: S.optional(__S(2949, __c92, 5)),
+          dexAuthConnectorID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterDexConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          anonymizeUsers: S.optional(S.Boolean),
+          trackingID: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterGoogleAnalyticsConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          binaryUrls: S.optional(__S(2048, __c64, 0)),
+          chatText: S.optional(S.String),
+          chatUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterHelp" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          buildOptions: S.optional(S.String),
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizeVersion" });
+    case 10:
+      return S.Array(__S(2953, __c92, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          binaryPath: S.optional(S.String),
+          buildOptions: S.optional(S.String),
+          versions: S.optional(__S(2954, __c92, 10)),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizeOptions" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          essential: S.optional(S.Boolean),
+          value: S.optional(S.String),
+          values: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "OidcClaim" });
+    case 13:
+      return S.Record(S.String, __S(2956, __c92, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          cliClientID: S.optional(S.String),
+          clientID: S.optional(S.String),
+          enablePKCEAuthentication: S.optional(S.Boolean),
+          idTokenClaims: S.optional(__S(2957, __c92, 13)),
+          issuer: S.optional(S.String),
+          name: S.optional(S.String),
+          scopes: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "ClusterOIDCConfig" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          jSONPointers: S.optional(__S(2016, __c63, 0)),
+          jqPathExpressions: S.optional(__S(2016, __c63, 0)),
+          managedFieldsManagers: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1OverrideIgnoreDiff",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1KnownTypeField" });
+    case 17:
+      return S.Array(__S(2960, __c92, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(S.String),
+          healthLua: S.optional(S.String),
+          ignoreDifferences: S.optional(__S(2959, __c92, 15)),
+          ignoreResourceUpdates: S.optional(__S(2959, __c92, 15)),
+          knownTypeFields: S.optional(__S(2961, __c92, 17)),
+          useOpenLibs: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "V1alpha1ResourceOverride" });
+    case 19:
+      return S.Record(S.String, __S(2962, __c92, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          additionalUrls: S.optional(__S(2016, __c63, 0)),
+          appLabelKey: S.optional(S.String),
+          appsInAnyNamespaceEnabled: S.optional(S.Boolean),
+          configManagementPlugins: S.optional(__S(2947, __c92, 3)),
+          controllerNamespace: S.optional(S.String),
+          dexConfig: S.optional(__S(2950, __c92, 6)),
+          execEnabled: S.optional(S.Boolean),
+          googleAnalytics: S.optional(__S(2951, __c92, 7)),
+          help: S.optional(__S(2952, __c92, 8)),
+          hydratorEnabled: S.optional(S.Boolean),
+          impersonationEnabled: S.optional(S.Boolean),
+          installationID: S.optional(S.String),
+          kustomizeOptions: S.optional(__S(2955, __c92, 11)),
+          kustomizeVersions: S.optional(__S(2016, __c63, 0)),
+          oidcConfig: S.optional(__S(2958, __c92, 14)),
+          passwordPattern: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          plugins: S.optional(__S(2976, __c93, 0)),
+          resourceOverrides: S.optional(__S(2963, __c92, 19)),
+          resourceViewEnabled: S.optional(S.Boolean),
+          statusBadgeEnabled: S.optional(S.Boolean),
+          statusBadgeRootUrl: S.optional(S.String),
+          syncWithReplaceAllowed: S.optional(S.Boolean),
+          trackingMethod: S.optional(S.String),
+          uiBannerContent: S.optional(S.String),
+          uiBannerPermanent: S.optional(S.Boolean),
+          uiBannerPosition: S.optional(S.String),
+          uiBannerURL: S.optional(S.String),
+          uiCssURL: S.optional(S.String),
+          uiLoginButtonText: S.optional(S.String),
+          url: S.optional(S.String),
+          userLoginsDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ClusterSettings" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/settings/plugins", code: 200 })),
+      ).annotate({
+        identifier: "GetSettingsServicePluginsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          plugins: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({
+        identifier: "ClusterSettingsPluginsResponse",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_value: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/clusters/{id_value}/invalidate-cache",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "InvalidateClusterServiceCacheRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          revision: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          sourceIndex: S.optional(S.Number.pipe(T.Query())),
+          versionId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{name}/revisions/{revision}/metadata",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationServiceRevisionMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          author: S.optional(S.String),
+          body: S.optional(S.String),
+          date: S.optional(S.String),
+          repoUrl: S.optional(S.String),
+          sha: S.optional(S.String),
+          subject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1CommitMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          commit: S.optional(__S(3073, __c96, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1RevisionReference",
+      });
+    case 3:
+      return S.Array(__S(3074, __c96, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          author: S.optional(S.String),
+          date: S.optional(S.String),
+          message: S.optional(S.String),
+          references: S.optional(__S(3075, __c96, 3)),
+          signatureInfo: S.optional(S.String),
+          sourceIntegrityResult: S.optional(__S(3106, __c97, 2)),
+          tags: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1RevisionMetadata" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          problems: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityCheckResultItem",
+      });
+    case 1:
+      return S.Array(__S(3104, __c97, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checks: S.optional(__S(3105, __c97, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceIntegrityCheckResult",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/account", code: 200 })),
+      ).annotate({
+        identifier: "ListAccountServiceAccountsRequest",
+      });
+    case 1:
+      return S.Array(__S(1890, __c59, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(3137, __c98, 1)),
+        }),
+      ).annotate({ identifier: "AccountAccountsList" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String.pipe(T.Query())),
+          refresh: S.optional(S.String.pipe(T.Query())),
+          projects: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          selector: S.optional(S.String.pipe(T.Query())),
+          repo: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          names: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications", code: 200 })),
+      ).annotate({
+        identifier: "ListApplicationServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(1824, __c57, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1ApplicationList" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/links", code: 200 })),
+      ).annotate({
+        identifier: "ListApplicationServiceLinksRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          iconClass: S.optional(S.String),
+          title: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationLinkInfo" });
+    case 1:
+      return S.Array(__S(3232, __c101, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(3233, __c101, 1)),
+        }),
+      ).annotate({ identifier: "ApplicationLinksResponse" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource/actions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationServiceResourceActionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          iconClass: S.optional(S.String),
+          name: S.optional(S.String),
+          params: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1ResourceAction" });
+    case 2:
+      return S.Array(__S(3265, __c102, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(3266, __c102, 2)),
+        }),
+      ).annotate({
+        identifier: "ApplicationResourceActionsListResponse",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          resourceNamespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          resourceUID: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/events", code: 200 })),
+      ).annotate({
+        identifier: "ListApplicationServiceResourceEventsRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "V1MicroTime" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldPath: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventsObjectReference" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          lastObservedTime: S.optional(__S(3328, __c104, 0)),
+        }),
+      ).annotate({ identifier: "EventsEventSeries" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          component: S.optional(S.String),
+          host: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventsEventSource" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          count: S.optional(S.Number),
+          eventTime: S.optional(__S(3328, __c104, 0)),
+          firstTimestamp: S.optional(S.String),
+          involvedObject: S.optional(__S(3329, __c104, 1)),
+          lastTimestamp: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(3589, __c112, 5)),
+          reason: S.optional(S.String),
+          related: S.optional(__S(3329, __c104, 1)),
+          reportingComponent: S.optional(S.String),
+          reportingInstance: S.optional(S.String),
+          series: S.optional(__S(3330, __c104, 2)),
+          source: S.optional(__S(3331, __c104, 3)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventsEvent" });
+    case 5:
+      return S.Array(__S(3332, __c104, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(3333, __c104, 5)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "EventsEventList" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/applications/{name}/resource/links", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationServiceResourceLinksRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projects: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          selector: S.optional(S.String.pipe(T.Query())),
+          appsetNamespace: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets", code: 200 })),
+      ).annotate({
+        identifier: "ListApplicationSetServiceRequest",
+      });
+    case 1:
+      return S.Array(__S(509, __c15, 29));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(3393, __c106, 1)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetList",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appsetNamespace: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}/events", code: 200 })),
+      ).annotate({
+        identifier: "ListApplicationSetServiceResourceEventsRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hostNamePattern: S.optional(S.String.pipe(T.Query())),
+          certType: S.optional(S.String.pipe(T.Query())),
+          certSubType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/certificates", code: 200 })),
+      ).annotate({
+        identifier: "ListCertificateServiceCertificatesRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
+          id_value: S.optional(S.String.pipe(T.Query("id.value"))),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/clusters", code: 200 })),
+      ).annotate({
+        identifier: "ListClusterServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2624, __c82, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1ClusterList" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          project: S.optional(S.String),
+          prune: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/rollback", code: 200 })),
+      ).annotate({
+        identifier: "ApplicationServiceRollbackRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          raw: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeRawExtension" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Raw: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1FieldsV1" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(__S(3584, __c112, 0)),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1ManagedFieldsEntry" });
+    case 2:
+      return S.Array(__S(3585, __c112, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1OwnerReference" });
+    case 4:
+      return S.Array(__S(3587, __c112, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2048, __c64, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(2016, __c63, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(2048, __c64, 0)),
+          managedFields: S.optional(__S(3586, __c112, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(3588, __c112, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1ObjectMeta" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          server: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationDestination",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1JsonnetVar" });
+    case 1:
+      return S.Array(__S(3648, __c114, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          extVars: S.optional(__S(3649, __c114, 1)),
+          libs: S.optional(__S(2016, __c63, 0)),
+          tlas: S.optional(__S(3649, __c114, 1)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourceJsonnet",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          disableExtensionFilter: S.optional(S.Boolean),
+          exclude: S.optional(S.String),
+          include: S.optional(S.String),
+          jsonnet: S.optional(__S(3650, __c114, 2)),
+          recurse: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourceDirectory",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1HelmFileParameter",
+      });
+    case 5:
+      return S.Array(__S(3652, __c114, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          forceString: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1HelmParameter" });
+    case 7:
+      return S.Array(__S(3654, __c114, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersions: S.optional(__S(2016, __c63, 0)),
+          fileParameters: S.optional(__S(3653, __c114, 5)),
+          ignoreMissingValueFiles: S.optional(S.Boolean),
+          kubeVersion: S.optional(S.String),
+          namespace: S.optional(S.String),
+          parameters: S.optional(__S(3655, __c114, 7)),
+          passCredentials: S.optional(S.Boolean),
+          releaseName: S.optional(S.String),
+          skipCrds: S.optional(S.Boolean),
+          skipSchemaValidation: S.optional(S.Boolean),
+          skipTests: S.optional(S.Boolean),
+          valueFiles: S.optional(__S(2016, __c63, 0)),
+          values: S.optional(S.String),
+          valuesObject: S.optional(__S(3552, __c111, 0)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourceHelm",
+      });
+    case 9:
+      return S.Record(S.String, S.Boolean);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizeGvk" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          gvk: S.optional(__S(3658, __c114, 10)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizeResId" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          annotationSelector: S.optional(S.String),
+          labelSelector: S.optional(S.String),
+          resId: S.optional(__S(3659, __c114, 11)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1KustomizeSelector",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(3657, __c114, 9)),
+          patch: S.optional(S.String),
+          path: S.optional(S.String),
+          target: S.optional(__S(3660, __c114, 12)),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizePatch" });
+    case 14:
+      return S.Array(__S(3661, __c114, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          intVal: S.optional(S.Number),
+          strVal: S.optional(S.String),
+          type: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IntstrIntOrString" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(__S(3663, __c114, 15)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1KustomizeReplica" });
+    case 17:
+      return S.Array(__S(3664, __c114, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersions: S.optional(__S(2016, __c63, 0)),
+          commonAnnotations: S.optional(__S(2048, __c64, 0)),
+          commonAnnotationsEnvsubst: S.optional(S.Boolean),
+          commonLabels: S.optional(__S(2048, __c64, 0)),
+          components: S.optional(__S(2016, __c63, 0)),
+          forceCommonAnnotations: S.optional(S.Boolean),
+          forceCommonLabels: S.optional(S.Boolean),
+          ignoreMissingComponents: S.optional(S.Boolean),
+          images: S.optional(__S(2016, __c63, 0)),
+          kubeVersion: S.optional(S.String),
+          labelIncludeTemplates: S.optional(S.Boolean),
+          labelWithoutSelector: S.optional(S.Boolean),
+          namePrefix: S.optional(S.String),
+          nameSuffix: S.optional(S.String),
+          namespace: S.optional(S.String),
+          patches: S.optional(__S(3662, __c114, 14)),
+          replicas: S.optional(__S(3665, __c114, 17)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourceKustomize",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          array: S.optional(__S(2016, __c63, 0)),
+          map: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          string: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourcePluginParameter",
+      });
+    case 20:
+      return S.Array(__S(3667, __c114, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          env: S.optional(__S(2112, __c66, 0)),
+          name: S.optional(S.String),
+          parameters: S.optional(__S(3668, __c114, 20)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSourcePlugin",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          chart: S.optional(S.String),
+          directory: S.optional(__S(3651, __c114, 3)),
+          helm: S.optional(__S(3656, __c114, 8)),
+          kustomize: S.optional(__S(3666, __c114, 18)),
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+          plugin: S.optional(__S(3669, __c114, 21)),
+          ref: S.optional(S.String),
+          repoURL: S.optional(S.String),
+          tagPrefix: S.optional(S.String),
+          targetRevision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSource",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          health: S.optional(__S(2144, __c67, 0)),
+          hook: S.optional(S.Boolean),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          requiresDeletionConfirmation: S.optional(S.Boolean),
+          requiresPruning: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          syncWave: S.optional(S.Number),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Applicationv1alpha1ResourceStatus",
+      });
+    case 1:
+      return S.Array(__S(3680, __c115, 0));
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+          factor: S.optional(S.Number),
+          maxDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1Backoff" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          backoff: S.optional(__S(3712, __c116, 0)),
+          limit: S.optional(S.Number),
+          refresh: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "V1alpha1RetryStrategy" });
+    case 2:
+      return S.Array(__S(3670, __c114, 22));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          jqPathExpressions: S.optional(__S(2016, __c63, 0)),
+          jsonPointers: S.optional(__S(2016, __c63, 0)),
+          kind: S.optional(S.String),
+          managedFieldsManagers: S.optional(__S(2016, __c63, 0)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ResourceIgnoreDifferences",
+      });
+    case 4:
+      return S.Array(__S(3715, __c116, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          directory: S.optional(__S(3651, __c114, 3)),
+          helm: S.optional(__S(3656, __c114, 8)),
+          kustomize: S.optional(__S(3666, __c114, 18)),
+          path: S.optional(S.String),
+          plugin: S.optional(__S(3669, __c114, 21)),
+          repoURL: S.optional(S.String),
+          targetRevision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1DrySource" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          targetBranch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1HydrateTo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          repoURL: S.optional(S.String),
+          targetBranch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncSource" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          drySource: S.optional(__S(3717, __c116, 5)),
+          hydrateTo: S.optional(__S(3718, __c116, 6)),
+          syncSource: S.optional(__S(3719, __c116, 7)),
+        }),
+      ).annotate({ identifier: "V1alpha1SourceHydrator" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          allowEmpty: S.optional(S.Boolean),
+          enabled: S.optional(S.Boolean),
+          prune: S.optional(S.Boolean),
+          selfHeal: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SyncPolicyAutomated",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2048, __c64, 0)),
+          labels: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ManagedNamespaceMetadata",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          automated: S.optional(__S(3721, __c116, 9)),
+          managedNamespaceMetadata: S.optional(__S(3722, __c116, 10)),
+          retry: S.optional(__S(3713, __c116, 1)),
+          syncOptions: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncPolicy" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(__S(3616, __c113, 0)),
+          ignoreDifferences: S.optional(__S(3716, __c116, 4)),
+          info: S.optional(__S(2112, __c66, 0)),
+          project: S.optional(S.String),
+          revisionHistoryLimit: S.optional(S.Number),
+          source: S.optional(__S(3670, __c114, 22)),
+          sourceHydrator: S.optional(__S(3720, __c116, 8)),
+          sources: S.optional(__S(3714, __c116, 2)),
+          syncPolicy: S.optional(__S(3723, __c116, 11)),
+        }),
+      ).annotate({ identifier: "V1alpha1ApplicationSpec" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automated: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1OperationInitiator",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SyncOperationResource",
+      });
+    case 2:
+      return S.Array(__S(3745, __c117, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SyncStrategyApply",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          syncStrategyApply: S.optional(__S(3747, __c117, 3)),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncStrategyHook" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apply: S.optional(__S(3747, __c117, 3)),
+          hook: S.optional(__S(3748, __c117, 4)),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncStrategy" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          autoHealAttemptsCount: S.optional(S.Number),
+          dryRun: S.optional(S.Boolean),
+          manifests: S.optional(__S(2016, __c63, 0)),
+          prune: S.optional(S.Boolean),
+          resources: S.optional(__S(3746, __c117, 2)),
+          revision: S.optional(S.String),
+          revisions: S.optional(__S(2016, __c63, 0)),
+          source: S.optional(__S(3670, __c114, 22)),
+          sources: S.optional(__S(3714, __c116, 2)),
+          syncOptions: S.optional(__S(2016, __c63, 0)),
+          syncStrategy: S.optional(__S(3749, __c117, 5)),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncOperation" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          info: S.optional(__S(2112, __c66, 0)),
+          initiatedBy: S.optional(__S(3744, __c117, 0)),
+          retry: S.optional(__S(3713, __c116, 1)),
+          sync: S.optional(__S(3750, __c117, 6)),
+        }),
+      ).annotate({ identifier: "V1alpha1Operation" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationCondition",
+      });
+    case 9:
+      return S.Array(__S(3752, __c117, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          deployStartedAt: S.optional(S.String),
+          deployedAt: S.optional(S.String),
+          id: S.optional(S.Number),
+          initiatedBy: S.optional(__S(3744, __c117, 0)),
+          revision: S.optional(S.String),
+          revisions: S.optional(__S(2016, __c63, 0)),
+          source: S.optional(__S(3670, __c114, 22)),
+          sources: S.optional(__S(3714, __c116, 2)),
+        }),
+      ).annotate({ identifier: "V1alpha1RevisionHistory" });
+    case 11:
+      return S.Array(__S(3754, __c117, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          hookPhase: S.optional(S.String),
+          hookType: S.optional(S.String),
+          images: S.optional(__S(2016, __c63, 0)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          status: S.optional(S.String),
+          syncPhase: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1ResourceResult" });
+    case 13:
+      return S.Array(__S(3756, __c117, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          managedNamespaceMetadata: S.optional(__S(3722, __c116, 10)),
+          resources: S.optional(__S(3757, __c117, 13)),
+          revision: S.optional(S.String),
+          revisions: S.optional(__S(2016, __c63, 0)),
+          source: S.optional(__S(3670, __c114, 22)),
+          sources: S.optional(__S(3714, __c116, 2)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SyncOperationResult",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          finishedAt: S.optional(S.String),
+          message: S.optional(S.String),
+          operation: S.optional(__S(3751, __c117, 7)),
+          phase: S.optional(S.String),
+          retryCount: S.optional(S.Number),
+          startedAt: S.optional(S.String),
+          syncResult: S.optional(__S(3758, __c117, 14)),
+        }),
+      ).annotate({ identifier: "V1alpha1OperationState" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          drySHA: S.optional(S.String),
+          finishedAt: S.optional(S.String),
+          hydratedSHA: S.optional(S.String),
+          message: S.optional(S.String),
+          phase: S.optional(S.String),
+          sourceHydrator: S.optional(__S(3720, __c116, 8)),
+          startedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1HydrateOperation" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          drySHA: S.optional(S.String),
+          hydratedSHA: S.optional(S.String),
+          sourceHydrator: S.optional(__S(3720, __c116, 8)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SuccessfulHydrateOperation",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          currentOperation: S.optional(__S(3760, __c117, 16)),
+          lastComparedDryRevision: S.optional(S.String),
+          lastSuccessfulOperation: S.optional(__S(3761, __c117, 17)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1SourceHydratorStatus",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          externalURLs: S.optional(__S(2016, __c63, 0)),
+          images: S.optional(__S(2016, __c63, 0)),
+          isAppOfApps: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSummary",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(__S(3616, __c113, 0)),
+          ignoreDifferences: S.optional(__S(3716, __c116, 4)),
+          source: S.optional(__S(3670, __c114, 22)),
+          sources: S.optional(__S(3714, __c116, 2)),
+        }),
+      ).annotate({ identifier: "V1alpha1ComparedTo" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          comparedTo: S.optional(__S(3764, __c117, 20)),
+          revision: S.optional(S.String),
+          revisions: S.optional(__S(2016, __c63, 0)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V1alpha1SyncStatus" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(3753, __c117, 9)),
+          controllerNamespace: S.optional(S.String),
+          health: S.optional(__S(2144, __c67, 0)),
+          history: S.optional(__S(3755, __c117, 11)),
+          observedAt: S.optional(S.String),
+          operationState: S.optional(__S(3759, __c117, 15)),
+          reconciledAt: S.optional(S.String),
+          resourceHealthSource: S.optional(S.String),
+          resources: S.optional(__S(3681, __c115, 1)),
+          sourceHydrator: S.optional(__S(3762, __c117, 18)),
+          sourceType: S.optional(S.String),
+          sourceTypes: S.optional(__S(2016, __c63, 0)),
+          summary: S.optional(__S(3763, __c117, 19)),
+          sync: S.optional(__S(3765, __c117, 21)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationStatus",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(3589, __c112, 5)),
+          operation: S.optional(__S(3751, __c117, 7)),
+          spec: S.optional(__S(3724, __c116, 12)),
+          status: S.optional(__S(3766, __c117, 22)),
+        }),
+      ).annotate({ identifier: "V1alpha1Application" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyID: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/gpgkeys", code: 200 })),
+      ).annotate({ identifier: "ListGPGKeyServiceRequest" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/notifications/services", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListNotificationServiceServicesRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({ identifier: "NotificationServiceList" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/notifications/templates", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListNotificationServiceTemplatesRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/notifications/triggers", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListNotificationServiceTriggersRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects", code: 200 })),
+      ).annotate({
+        identifier: "ListProjectServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2592, __c81, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1AppProjectList" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/events", code: 200 })),
+      ).annotate({
+        identifier: "ListProjectServiceEventsRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{name}/links", code: 200 })),
+      ).annotate({
+        identifier: "ListProjectServiceLinksRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repocreds", code: 200 })),
+      ).annotate({
+        identifier: "ListRepoCredsServiceRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(960, __c30, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(4064, __c127, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1RepoCredsList" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repocreds", code: 200 })),
+      ).annotate({
+        identifier: "ListRepoCredsServiceWriteRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          revision: S.optional(S.String.pipe(T.Query())),
+          appName: S.optional(S.String.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/apps", code: 200 })),
+      ).annotate({
+        identifier: "ListRepositoryServiceAppsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepositoryAppInfo" });
+    case 2:
+      return S.Array(__S(4129, __c129, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(4130, __c129, 2)),
+        }),
+      ).annotate({
+        identifier: "RepositoryRepoAppsResponse",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appName: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          targetManifests: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/applications/{appName}/server-side-diff",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationServiceServerSideDiffRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(65, __c2, 1)),
+          modified: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApplicationApplicationServerSideDiffResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/oci-tags", code: 200 })),
+      ).annotate({
+        identifier: "ListRepositoryServiceOCITagsRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branches: S.optional(__S(2016, __c63, 0)),
+          tags: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "RepositoryRefs" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories/{repo}/refs", code: 200 })),
+      ).annotate({
+        identifier: "ListRepositoryServiceRefsRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.optional(S.String.pipe(T.Query())),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/repositories", code: 200 })),
+      ).annotate({
+        identifier: "ListRepositoryServiceRepositoriesRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2656, __c83, 0)),
+          metadata: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "V1alpha1RepositoryList" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.optional(S.String.pipe(T.Query())),
+          forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+          appProject: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/write-repositories", code: 200 })),
+      ).annotate({
+        identifier: "ListRepositoryServiceWriteRepositoriesRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String),
+          patch: S.optional(S.String),
+          patchType: S.optional(S.String),
+          project: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/api/v1/applications/{name}", code: 200 })),
+      ).annotate({
+        identifier: "PatchApplicationServiceRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          patchType: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/resource", code: 200 })),
+      ).annotate({
+        identifier: "PatchApplicationServiceResourceRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_value: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v1/clusters/{id_value}/rotate-auth", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RotateClusterServiceAuthRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          namespace: S.optional(S.String.pipe(T.Query())),
+          resourceName: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/applications/{name}/resource/actions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RunApplicationServiceResourceActionRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2080, __c65, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          action: S.optional(S.String),
+          appNamespace: S.optional(S.String),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          namespace: S.optional(S.String),
+          project: S.optional(S.String),
+          resourceActionParameters: S.optional(__S(4512, __c141, 0)),
+          resourceName: S.optional(S.String),
+          version: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/applications/{name}/resource/actions/v2",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RunApplicationServiceResourceActionV2Request",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationSyncOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+          infos: S.optional(__S(2112, __c66, 0)),
+          manifests: S.optional(__S(2016, __c63, 0)),
+          project: S.optional(S.String),
+          prune: S.optional(S.Boolean),
+          resources: S.optional(__S(3746, __c117, 2)),
+          retryStrategy: S.optional(__S(3713, __c116, 1)),
+          revision: S.optional(S.String),
+          revisions: S.optional(__S(2016, __c63, 0)),
+          sourcePositions: S.optional(__S(2016, __c63, 0)),
+          strategy: S.optional(__S(3749, __c117, 5)),
+          syncOptions: S.optional(__S(4544, __c142, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/sync", code: 200 })),
+      ).annotate({
+        identifier: "SyncApplicationServiceRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appsetNamespace: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/applicationsets/{name}/resource-tree", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ApplicationSetServiceResourceTreeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nodes: S.optional(__S(2184, __c68, 8)),
+        }),
+      ).annotate({
+        identifier: "V1alpha1ApplicationSetTree",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v1/applications/{name}/operation", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "TerminateApplicationServiceOperationRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          name: S.optional(S.String),
+          newPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/account/password", code: 200 })),
+      ).annotate({
+        identifier: "UpdateAccountServicePasswordRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_metadata_name: S.String.pipe(T.Label()),
+          validate: S.optional(S.Boolean.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          metadata: S.optional(__S(3589, __c112, 5)),
+          operation: S.optional(__S(3751, __c117, 7)),
+          spec: S.optional(__S(3724, __c116, 12)),
+          status: S.optional(__S(3766, __c117, 22)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/v1/applications/{application_metadata_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationServiceRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validate: S.optional(S.Boolean.pipe(T.Query())),
+          appNamespace: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.String.pipe(T.Query())),
+          destination: S.optional(__S(3616, __c113, 0)),
+          ignoreDifferences: S.optional(__S(3716, __c116, 4)),
+          info: S.optional(__S(2112, __c66, 0)),
+          revisionHistoryLimit: S.optional(S.Number),
+          source: S.optional(__S(3670, __c114, 22)),
+          sourceHydrator: S.optional(__S(3720, __c116, 8)),
+          sources: S.optional(__S(3714, __c116, 2)),
+          syncPolicy: S.optional(__S(3723, __c116, 11)),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/applications/{name}/spec", code: 200 })),
+      ).annotate({
+        identifier: "UpdateApplicationServiceSpecRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_value: S.String.pipe(T.Label()),
+          updatedFields: S.optional(__S(2016, __c63, 0).pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query("id.type"))),
+          annotations: S.optional(__S(2048, __c64, 0)),
+          clusterResources: S.optional(S.Boolean),
+          config: S.optional(__S(675, __c21, 3)),
+          configHash: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          info: S.optional(__S(677, __c21, 5)),
+          labels: S.optional(__S(2048, __c64, 0)),
+          name: S.optional(S.String),
+          namespaces: S.optional(__S(2016, __c63, 0)),
+          project: S.optional(S.String),
+          refreshRequestedAt: S.optional(S.String),
+          server: S.optional(S.String),
+          serverVersion: S.optional(S.String),
+          shard: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/clusters/{id_value}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateClusterServiceRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_metadata_name: S.String.pipe(T.Label()),
+          project: S.optional(__S(889, __c27, 25)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/projects/{project_metadata_name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateProjectServiceRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creds_url: S.String.pipe(T.Label()),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxy: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/repocreds/{creds_url}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateRepoCredsServiceRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creds_url: S.String.pipe(T.Label()),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          proxy: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/write-repocreds/{creds_url}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateRepoCredsServiceWriteRepositoryCredentialsRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo_repo: S.String.pipe(T.Label()),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          depth: S.optional(S.Number),
+          enableLfs: S.optional(S.Boolean),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          inheritedCreds: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          insecureIgnoreHostKey: S.optional(S.Boolean),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project: S.optional(S.String),
+          proxy: S.optional(S.String),
+          repo: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/repositories/{repo_repo}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateRepositoryServiceRepositoryRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo_repo: S.String.pipe(T.Label()),
+          azureActiveDirectoryEndpoint: S.optional(S.String),
+          azureServicePrincipalClientId: S.optional(S.String),
+          azureServicePrincipalClientSecret: S.optional(S.String),
+          azureServicePrincipalTenantId: S.optional(S.String),
+          bearerToken: S.optional(S.String),
+          connectionState: S.optional(__S(640, __c20, 0)),
+          depth: S.optional(S.Number),
+          enableLfs: S.optional(S.Boolean),
+          enableOCI: S.optional(S.Boolean),
+          forceHttpBasicAuth: S.optional(S.Boolean),
+          gcpServiceAccountKey: S.optional(S.String),
+          githubAppEnterpriseBaseUrl: S.optional(S.String),
+          githubAppID: S.optional(S.Number),
+          githubAppInstallationID: S.optional(S.Number),
+          githubAppPrivateKey: S.optional(S.String),
+          inheritedCreds: S.optional(S.Boolean),
+          insecure: S.optional(S.Boolean),
+          insecureIgnoreHostKey: S.optional(S.Boolean),
+          insecureOCIForceHttp: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          noProxy: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project: S.optional(S.String),
+          proxy: S.optional(S.String),
+          repo: S.optional(S.String),
+          sshPrivateKey: S.optional(S.String),
+          tlsClientCertData: S.optional(S.String),
+          tlsClientCertKey: S.optional(S.String),
+          type: S.optional(S.String),
+          useAzureWorkloadIdentity: S.optional(S.Boolean),
+          username: S.optional(S.String),
+          webhookManifestCacheWarmDisabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/write-repositories/{repo_repo}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateRepositoryServiceWriteRepositoryRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

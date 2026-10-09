@@ -165,8 +165,8 @@ export const createDetection: API.OperationMethod<
   CreateDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateDetectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDetectionResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateDetectionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<CreateDetectionResponse>,
   errors: [
     DetectionQuotaExceeded,
     LeakedCredentialChecksDisabled,
@@ -186,8 +186,8 @@ export const createLeakedCredentialCheck: API.OperationMethod<
   CreateLeakedCredentialCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateLeakedCredentialCheckRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateLeakedCredentialCheckResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateLeakedCredentialCheckRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<CreateLeakedCredentialCheckResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -205,8 +205,8 @@ export const deleteDetection: API.OperationMethod<
   DeleteDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteDetectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDetectionResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteDetectionRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DeleteDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -230,8 +230,8 @@ export const getDetection: API.OperationMethod<
   GetDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDetectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetDetectionResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetDetectionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<GetDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -251,8 +251,8 @@ export const getLeakedCredentialCheck: API.OperationMethod<
   GetLeakedCredentialCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetLeakedCredentialCheckRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetLeakedCredentialCheckResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetLeakedCredentialCheckRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<GetLeakedCredentialCheckResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -268,8 +268,8 @@ export const listDetections: API.PaginatedOperationMethod<
   DetectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8, __c1, 0) as any as S.Schema<ListDetectionsRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListDetectionsResponse>,
+    input: __S(32, __c8, 0) as any as S.Schema<ListDetectionsRequest>,
+    output: __S(34, __c8, 2) as any as S.Schema<ListDetectionsResponse>,
     errors: [LeakedCredentialChecksDisabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const updateDetection: API.OperationMethod<
   UpdateDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateDetectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateDetectionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateDetectionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<UpdateDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -310,6 +310,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
+          detectionId: S.String.pipe(T.Label("detection_id")),
+          password: S.optional(S.String),
+          username: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/zones/{zone_id}/leaked-credential-checks/detections/{detection_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateDetectionRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
           password: S.optional(S.String),
           username: S.optional(S.String),
         }).pipe(
@@ -320,7 +339,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDetectionRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -328,7 +351,11 @@ function __c0(j: number): any {
           username: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreateDetectionResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -339,7 +366,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateLeakedCredentialCheckRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -347,7 +378,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateLeakedCredentialCheckResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -360,11 +395,15 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDetectionRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "DeleteDetectionResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -377,7 +416,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDetectionRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -389,7 +432,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -404,32 +447,16 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListDetectionsRequest" });
     case 1:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(8, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
+          result: __S(33, __c8, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }),
       ).annotate({ identifier: "ListDetectionsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          detectionId: S.String.pipe(T.Label("detection_id")),
-          password: S.optional(S.String),
-          username: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/zones/{zone_id}/leaked-credential-checks/detections/{detection_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateDetectionRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

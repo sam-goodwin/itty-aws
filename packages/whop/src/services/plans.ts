@@ -963,8 +963,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreatePlanRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Plan>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreatePlanRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Plan>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const deletePlan: API.OperationMethod<
   DeletePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeletePlanRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeletePlanResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeletePlanRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DeletePlanResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -989,8 +989,8 @@ export type GetPlanError = NotFound | WhopOpError;
 /** Retrieve Plan Retrieves the details of an existing plan. */
 export const getPlan: API.OperationMethod<GetPlanRequest, Plan, GetPlanError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(21, __c2, 5) as any as S.Schema<GetPlanRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<Plan>,
+    input: __S(48, __c6, 0) as any as S.Schema<GetPlanRequest>,
+    output: __S(25, __c3, 1) as any as S.Schema<Plan>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1006,8 +1006,8 @@ export const listPlans: API.PaginatedOperationMethod<
   PlanListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListPlansRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<ListPlansResponse>,
+    input: __S(56, __c7, 0) as any as S.Schema<ListPlansRequest>,
+    output: __S(60, __c7, 4) as any as S.Schema<ListPlansResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1031,8 +1031,8 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdatePlanRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Plan>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdatePlanRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Plan>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1086,45 +1086,11 @@ function __c0(j: number): any {
           total: S.Number,
         }),
       ).annotate({ identifier: "CalculatePlanTaxResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          field_type: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          order: S.optional(S.Number),
-          placeholder: S.optional(S.NullOr(S.String)),
-          required: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreatePlanRequestCustomFieldsItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          direct_upload_id: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatePlanRequestImage" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(__S(8, __c1, 0)),
-          enabled: S.optional(__S(8, __c1, 0)),
-          include_platform_defaults: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreatePlanRequestPaymentMethodConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
@@ -1133,15 +1099,15 @@ function __c1(j: number): any {
           billing_period: S.optional(S.NullOr(S.Number)),
           checkout_styling: S.optional(S.NullOr(S.Unknown)),
           currency: S.optional(S.String),
-          custom_fields: S.optional(S.NullOr(__S(6, __c0, 6))),
+          custom_fields: S.optional(S.NullOr(__S(33, __c4, 1))),
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
-          image: S.optional(S.NullOr(__S(7, __c0, 7))),
+          image: S.optional(S.NullOr(__S(34, __c4, 2))),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           override_tax_type: S.optional(S.String),
-          payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
+          payment_method_configuration: S.optional(S.NullOr(__S(36, __c4, 4))),
           plan_type: S.optional(S.String),
           product_id: S.optional(S.String),
           release_method: S.optional(S.String),
@@ -1157,16 +1123,20 @@ function __c1(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/plans", code: 200 })),
       ).annotate({ identifier: "CreatePlanRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "AccountSummary" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           field_type: S.String,
@@ -1177,25 +1147,11 @@ function __c1(j: number): any {
           required: S.Boolean,
         }),
       ).annotate({ identifier: "PlanCustomField" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: __S(15, __c1, 7),
-          enabled: __S(15, __c1, 7),
-          include_platform_defaults: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CheckoutSessionPaymentMethodConfiguration",
-      });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
@@ -1204,12 +1160,26 @@ function __c2(j: number): any {
           display_decimals: S.Number,
         }),
       ).annotate({ identifier: "Money" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(11, __c1, 3)),
+          disabled: __S(20, __c2, 4),
+          enabled: __S(20, __c2, 4),
+          include_platform_defaults: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CheckoutSessionPaymentMethodConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.NullOr(__S(16, __c2, 0)),
           adaptive_pricing_enabled: S.Boolean,
-          attributes: S.NullOr(__S(12, __c1, 4)),
+          attributes: S.NullOr(__S(17, __c2, 1)),
           billing_period: S.NullOr(S.Number),
           cancel_discount_intervals: S.NullOr(S.Number),
           cancel_discount_percentage: S.NullOr(S.Number),
@@ -1217,16 +1187,16 @@ function __c2(j: number): any {
           collect_tax: S.Boolean,
           created_at: S.String,
           currency: S.String,
-          custom_fields: __S(14, __c1, 6),
+          custom_fields: __S(19, __c2, 3),
           deletable: S.NullOr(S.Boolean),
           description: S.NullOr(S.String),
-          effective_payment_method_configuration: S.NullOr(__S(16, __c2, 0)),
+          effective_payment_method_configuration: S.NullOr(__S(24, __c3, 0)),
           expiration_days: S.NullOr(S.Number),
           formatted_price: S.String,
           id: S.String,
           image: S.NullOr(S.Unknown),
           initial_price: S.Number,
-          initial_price_due: __S(17, __c2, 1),
+          initial_price_due: __S(21, __c2, 5),
           internal_notes: S.NullOr(S.String),
           invoice: S.NullOr(S.Unknown),
           member_count: S.NullOr(S.Number),
@@ -1252,35 +1222,85 @@ function __c2(j: number): any {
           visibility: S.String,
         }),
       ).annotate({ identifier: "Plan" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_type: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          order: S.optional(S.Number),
+          placeholder: S.optional(S.NullOr(S.String)),
+          required: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreatePlanRequestCustomFieldsItem",
+      });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          direct_upload_id: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatePlanRequestImage" });
     case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(__S(35, __c4, 3)),
+          enabled: S.optional(__S(35, __c4, 3)),
+          include_platform_defaults: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreatePlanRequestPaymentMethodConfiguration",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/plans/{id}", code: 200 })),
       ).annotate({ identifier: "DeletePlanRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
           id: S.String,
         }),
       ).annotate({ identifier: "DeletePlanResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/plans/{id}", code: 200 })),
       ).annotate({ identifier: "GetPlanRequest" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
-          release_methods: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          visibilities: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          plan_types: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          product_ids: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          release_methods: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          visibilities: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          plan_types: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          product_ids: S.optional(__S(20, __c2, 4).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
@@ -1289,26 +1309,26 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/plans", code: 200 })),
       ).annotate({ identifier: "ListPlansRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(11, __c1, 3)),
+          account: S.NullOr(__S(16, __c2, 0)),
           adaptive_pricing_enabled: S.Boolean,
-          attributes: S.NullOr(__S(12, __c1, 4)),
+          attributes: S.NullOr(__S(17, __c2, 1)),
           billing_period: S.NullOr(S.Number),
           cancel_discount_intervals: S.NullOr(S.Number),
           cancel_discount_percentage: S.NullOr(S.Number),
           checkout_styling: S.NullOr(S.Unknown),
           created_at: S.String,
           currency: S.String,
-          custom_fields: __S(14, __c1, 6),
+          custom_fields: __S(19, __c2, 3),
           description: S.NullOr(S.String),
           expiration_days: S.NullOr(S.Number),
           formatted_price: S.String,
           id: S.String,
           image: S.NullOr(S.Unknown),
           initial_price: S.Number,
-          initial_price_due: __S(17, __c2, 1),
+          initial_price_due: __S(21, __c2, 5),
           internal_notes: S.NullOr(S.String),
           invoice: S.NullOr(S.Unknown),
           member_count: S.NullOr(S.Number),
@@ -1333,13 +1353,9 @@ function __c2(j: number): any {
           visibility: S.String,
         }),
       ).annotate({ identifier: "PlanListItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1350,14 +1366,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListPlansResponsePageInfo",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(24, __c3, 0),
-          page_info: __S(25, __c3, 1),
+          data: __S(58, __c7, 2),
+          page_info: __S(59, __c7, 3),
         }),
       ).annotate({ identifier: "ListPlansResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1368,16 +1388,16 @@ function __c3(j: number): any {
           cancel_discount_percentage: S.optional(S.NullOr(S.Number)),
           checkout_styling: S.optional(S.NullOr(S.Unknown)),
           currency: S.optional(S.String),
-          custom_fields: S.optional(S.NullOr(__S(6, __c0, 6))),
+          custom_fields: S.optional(S.NullOr(__S(33, __c4, 1))),
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
-          image: S.optional(S.NullOr(__S(7, __c0, 7))),
+          image: S.optional(S.NullOr(__S(34, __c4, 2))),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           offer_cancel_discount: S.optional(S.NullOr(S.Boolean)),
           override_tax_type: S.optional(S.String),
-          payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
+          payment_method_configuration: S.optional(S.NullOr(__S(36, __c4, 4))),
           release_method: S.optional(S.String),
           renewal_price: S.optional(S.NullOr(S.Number)),
           sku: S.optional(S.NullOr(S.String)),
@@ -1393,7 +1413,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdatePlanRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

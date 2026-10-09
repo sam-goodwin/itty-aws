@@ -1885,8 +1885,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateDataSourceResponse>,
+  input: __S(14, __c0, 14) as any as S.Schema<CreateDataSourceRequest>,
+  output: __S(15, __c0, 15) as any as S.Schema<CreateDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1900,8 +1900,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetDataSourceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetDataSourceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetDataSourceRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GetDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1917,8 +1917,8 @@ export const listDataSourceTemplates: API.PaginatedOperationMethod<
   ListDataSourceTemplatesResponseTemplatesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(26, __c3, 2) as any as S.Schema<ListDataSourceTemplatesRequest>,
-    output: __S(29, __c3, 5) as any as S.Schema<ListDataSourceTemplatesResponse>,
+    input: __S(48, __c3, 0) as any as S.Schema<ListDataSourceTemplatesRequest>,
+    output: __S(51, __c3, 3) as any as S.Schema<ListDataSourceTemplatesResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1942,8 +1942,8 @@ export const queryDataSource: API.PaginatedOperationMethod<
   QueryDataSourceResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(31, __c3, 7) as any as S.Schema<QueryDataSourceRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<QueryDataSourceResponse>,
+    input: __S(66, __c4, 2) as any as S.Schema<QueryDataSourceRequest>,
+    output: __S(69, __c4, 5) as any as S.Schema<QueryDataSourceResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1965,8 +1965,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateDataSourceResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<UpdateDataSourceRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<UpdateDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1978,21 +1978,12 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          database_id: S.String,
-        }),
-      ).annotate({
-        identifier: "ParentOfDataSourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestNumber",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expression: S.optional(S.String),
@@ -2000,7 +1991,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequestFormula",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2010,17 +2001,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequestSelectOptionsItem",
       });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(4, __c0, 4)),
+          options: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestSelect",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2029,21 +2020,17 @@ function __c0(j: number): any {
           group: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusOptionRequest" });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(7, __c0, 7)),
+          options: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "StatusPropertyConfigRequest",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           synced_property_id: S.optional(S.String),
@@ -2052,18 +2039,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequestRelationDualProperty",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String,
           type: S.optional(S.String),
           single_property: S.optional(S.Unknown),
-          dual_property: S.optional(__S(9, __c1, 1)),
+          dual_property: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestRelation",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           function: S.String,
@@ -2075,7 +2062,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequestRollup",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.NullOr(S.String)),
@@ -2083,19 +2070,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequestUniqueId",
       });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
-          number: S.optional(__S(1, __c0, 1)),
-          formula: S.optional(__S(2, __c0, 2)),
-          select: S.optional(__S(5, __c0, 5)),
-          multi_select: S.optional(__S(5, __c0, 5)),
-          status: S.optional(__S(8, __c1, 0)),
-          relation: S.optional(__S(10, __c1, 2)),
-          rollup: S.optional(__S(11, __c1, 3)),
-          unique_id: S.optional(__S(12, __c1, 4)),
+          number: S.optional(__S(0, __c0, 0)),
+          formula: S.optional(__S(1, __c0, 1)),
+          select: S.optional(__S(4, __c0, 4)),
+          multi_select: S.optional(__S(4, __c0, 4)),
+          status: S.optional(__S(7, __c0, 7)),
+          relation: S.optional(__S(9, __c0, 9)),
+          rollup: S.optional(__S(10, __c0, 10)),
+          unique_id: S.optional(__S(11, __c0, 11)),
           title: S.optional(S.Unknown),
           rich_text: S.optional(S.Unknown),
           url: S.optional(S.Unknown),
@@ -2118,9 +2105,35 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PropertyConfigurationRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
-    case 7:
+    case 13:
+      return S.Record(S.String, __S(12, __c0, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          parent: __S(16, __c1, 0),
+          properties: __S(13, __c0, 13),
+          title: S.optional(__S(22, __c1, 6)),
+          icon: S.optional(S.NullOr(S.Unknown)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/data_sources", code: 200 })),
+      ).annotate({ identifier: "CreateDataSourceRequest" });
+    case 15:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDataSourceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          database_id: S.String,
+        }),
+      ).annotate({
+        identifier: "ParentOfDataSourceRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bold: S.optional(S.Boolean),
@@ -2131,11 +2144,7 @@ function __c1(j: number): any {
           color: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnnotationRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -2143,14 +2152,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RichTextItemRequestTextLink",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.optional(S.NullOr(__S(16, __c2, 0))),
+          link: S.optional(S.NullOr(__S(18, __c1, 2))),
         }),
       ).annotate({ identifier: "RichTextItemRequestText" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
@@ -2158,36 +2167,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RichTextItemRequestEquation",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(15, __c1, 7)),
-          type: S.optional(S.String),
-          text: S.optional(__S(17, __c2, 1)),
-          mention: S.optional(S.Unknown),
-          equation: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "RichTextItemRequest" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parent: __S(0, __c0, 0),
-          properties: __S(14, __c1, 6),
-          title: S.optional(__S(20, __c2, 4)),
-          icon: S.optional(S.NullOr(S.Unknown)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/data_sources", code: 200 })),
-      ).annotate({ identifier: "CreateDataSourceRequest" });
+          annotations: S.optional(__S(17, __c1, 1)),
+          type: S.optional(S.String),
+          text: S.optional(__S(19, __c1, 3)),
+          mention: S.optional(S.Unknown),
+          equation: S.optional(__S(20, __c1, 4)),
+        }),
+      ).annotate({ identifier: "RichTextItemRequest" });
     case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDataSourceResponse",
-      });
+      return S.Array(__S(21, __c1, 5));
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2199,7 +2193,11 @@ function __c3(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDataSourceResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String.pipe(T.Label()),
@@ -2212,7 +2210,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListDataSourceTemplatesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2222,26 +2220,32 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListDataSourceTemplatesResponseTemplatesItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          templates: __S(28, __c3, 4),
+          templates: __S(50, __c3, 2),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListDataSourceTemplatesResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          sorts: S.optional(__S(30, __c3, 6)),
+          filter_properties: S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          sorts: S.optional(__S(65, __c4, 1)),
           filter: S.optional(S.Unknown),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
@@ -2251,13 +2255,9 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/v1/data_sources/{data_source_id}/query", code: 200 }),
         ),
       ).annotate({ identifier: "QueryDataSourceRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.Array(S.Unknown);
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2266,7 +2266,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "QueryDataSourceResponseRequestStatus",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2274,30 +2274,33 @@ function __c4(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(32, __c4, 0),
-          request_status: S.optional(__S(33, __c4, 1)),
+          results: __S(67, __c4, 3),
+          request_status: S.optional(__S(68, __c4, 4)),
         }),
       ).annotate({ identifier: "QueryDataSourceResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String.pipe(T.Label()),
-          title: S.optional(__S(20, __c2, 4)),
+          title: S.optional(__S(22, __c1, 6)),
           icon: S.optional(S.NullOr(S.Unknown)),
-          properties: S.optional(__S(35, __c4, 3)),
+          properties: S.optional(__S(80, __c5, 0)),
           in_trash: S.optional(S.Boolean),
-          parent: S.optional(__S(0, __c0, 0)),
+          parent: S.optional(__S(16, __c1, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/data_sources/{data_source_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDataSourceRequest" });
-    case 5:
+    case 2:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDataSourceResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

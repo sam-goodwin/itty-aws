@@ -100,7 +100,7 @@ export const deleteSecret: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSecretResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteSecretResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -113,8 +113,8 @@ export const listSecret: API.OperationMethod<
   ListSecretError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListSecretRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListSecretResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<ListSecretRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<ListSecretResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -127,8 +127,8 @@ export const secretGetInfo: API.OperationMethod<
   SecretGetInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<SecretGetInfoRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SecretGetInfoResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<SecretGetInfoRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<SecretGetInfoResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -141,8 +141,8 @@ export const secretGetOrCreate: API.OperationMethod<
   SecretGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<SecretGetOrCreateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SecretGetOrCreateResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<SecretGetOrCreateRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<SecretGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -155,8 +155,8 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateSecretResponse>,
+  input: __S(50, __c6, 2) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateSecretResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -173,43 +173,33 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretDelete", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteSecretRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSecretResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxObjects: S.optional(S.Number),
           createdBefore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPagination" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
-          pagination: S.optional(__S(2, __c0, 2)),
+          pagination: S.optional(__S(16, __c2, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretList", code: 200 })),
       ).annotate({ identifier: "ListSecretRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.Number),
-          createdBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreationInfo" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          creationInfo: S.optional(__S(4, __c0, 4)),
-          keys: S.optional(__S(5, __c0, 5)),
-          environmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretMetadata" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -217,23 +207,45 @@ function __c0(j: number): any {
           lastUsedAt: S.optional(S.Number),
           environmentName: S.optional(S.String),
           secretId: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
+          metadata: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "SecretListItem" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(8, __c1, 0)),
+          items: S.optional(__S(19, __c2, 3)),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSecretResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.Number),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreationInfo" });
+    case 1:
+      return S.Array(S.String);
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          creationInfo: S.optional(__S(24, __c3, 0)),
+          keys: S.optional(__S(25, __c3, 1)),
+          environmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretMetadata" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
@@ -241,37 +253,45 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretGetInfo", code: 200 }),
         ),
       ).annotate({ identifier: "SecretGetInfoRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6, __c0, 6)),
+          metadata: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "SecretGetInfoResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentName: S.optional(S.String),
           environmentName: S.optional(S.String),
           objectCreationType: S.optional(S.String),
-          envDict: S.optional(__S(12, __c1, 4)),
+          envDict: S.optional(__S(40, __c5, 0)),
           appId: S.optional(S.String),
-          requiredKeys: S.optional(__S(5, __c0, 5)),
+          requiredKeys: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretGetOrCreate", code: 200 }),
         ),
       ).annotate({ identifier: "SecretGetOrCreateRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
+          metadata: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "SecretGetOrCreateResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -280,24 +300,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateSecretRequestUpdate",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
-          updates: S.optional(__S(16, __c2, 0)),
+          updates: S.optional(__S(49, __c6, 1)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretUpdate", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateSecretRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

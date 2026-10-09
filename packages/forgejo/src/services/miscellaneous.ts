@@ -398,8 +398,8 @@ export const getActionsRun: API.OperationMethod<
   GetActionsRunError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetActionsRunRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ActionRun>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetActionsRunRequest>,
+  output: __S(125, __c7, 13) as any as S.Schema<ActionRun>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -413,8 +413,8 @@ export const getGitignoreTemplateInfo: API.OperationMethod<
   GetGitignoreTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetGitignoreTemplateInfoRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GitignoreTemplateInfo>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetGitignoreTemplateInfoRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GitignoreTemplateInfo>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -428,8 +428,8 @@ export const getLabelTemplateInfo: API.OperationMethod<
   GetLabelTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetLabelTemplateInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetLabelTemplateInfoResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetLabelTemplateInfoRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<GetLabelTemplateInfoResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -443,8 +443,8 @@ export const getLicenseTemplateInfo: API.OperationMethod<
   GetLicenseTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetLicenseTemplateInfoRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<LicenseTemplateInfo>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetLicenseTemplateInfoRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<LicenseTemplateInfo>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -458,8 +458,8 @@ export const getNodeInfo: API.OperationMethod<
   GetNodeInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetNodeInfoRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<NodeInfo>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetNodeInfoRequest>,
+  output: __S(197, __c12, 5) as any as S.Schema<NodeInfo>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -473,8 +473,8 @@ export const getSigningKey: API.OperationMethod<
   GetSigningKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetSigningKeyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetSigningKeyResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetSigningKeyRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetSigningKeyResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -488,8 +488,8 @@ export const getSSHSigningKey: API.OperationMethod<
   GetSSHSigningKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetSSHSigningKeyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetSSHSigningKeyResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetSSHSigningKeyRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetSSHSigningKeyResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -503,8 +503,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetVersionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ServerVersion>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<ServerVersion>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -518,8 +518,8 @@ export const listGitignoresTemplates: API.OperationMethod<
   ListGitignoresTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListGitignoresTemplatesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListGitignoresTemplatesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListGitignoresTemplatesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ListGitignoresTemplatesResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -533,8 +533,8 @@ export const listLabelTemplates: API.OperationMethod<
   ListLabelTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListLabelTemplatesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListLabelTemplatesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListLabelTemplatesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ListLabelTemplatesResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -548,8 +548,8 @@ export const listLicenseTemplates: API.OperationMethod<
   ListLicenseTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListLicenseTemplatesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListLicenseTemplatesResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListLicenseTemplatesRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<ListLicenseTemplatesResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -563,8 +563,8 @@ export const renderMarkdown: API.OperationMethod<
   RenderMarkdownError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RenderMarkdownRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RenderMarkdownResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<RenderMarkdownRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<RenderMarkdownResponse>,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -578,8 +578,8 @@ export const renderMarkdownRaw: API.OperationMethod<
   RenderMarkdownRawError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<RenderMarkdownRawRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<RenderMarkdownRawResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<RenderMarkdownRawRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<RenderMarkdownRawResponse>,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const renderMarkup: API.OperationMethod<
   RenderMarkupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<RenderMarkupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RenderMarkupResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<RenderMarkupRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<RenderMarkupResponse>,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -602,6 +602,102 @@ export const renderMarkup: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gitignore/templates", code: 200 })),
+      ).annotate({
+        identifier: "ListGitignoresTemplatesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(128, __c8, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListGitignoresTemplatesResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/label/templates", code: 200 })),
+      ).annotate({
+        identifier: "ListLabelTemplatesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licenses", code: 200 })),
+      ).annotate({
+        identifier: "ListLicenseTemplatesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LicensesTemplateListEntry",
+      });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
+      return S.suspend(() => __S(50, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListLicenseTemplatesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Context: S.optional(S.String),
+          Mode: S.optional(S.String),
+          Text: S.optional(S.String),
+          Wiki: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/markdown", code: 200 })),
+      ).annotate({ identifier: "RenderMarkdownRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/markdown/raw", code: 200 })),
+      ).annotate({ identifier: "RenderMarkdownRawRequest" });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "RenderMarkdownRawResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BranchPath: S.optional(S.String),
+          Context: S.optional(S.String),
+          FilePath: S.optional(S.String),
+          Mode: S.optional(S.String),
+          Text: S.optional(S.String),
+          Wiki: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/markup", code: 200 })),
+      ).annotate({ identifier: "RenderMarkupRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -685,13 +781,9 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Organization" });
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Record(S.String, S.String);
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           can_create_org_repo: S.optional(S.Boolean),
@@ -699,25 +791,23 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(__S(6, __c0, 6)),
+          organization: S.optional(__S(118, __c7, 6)),
           permission: S.optional(S.String),
-          units: S.optional(__S(7, __c0, 7)),
-          units_map: S.optional(__S(8, __c1, 0)),
+          units: S.optional(__S(119, __c7, 7)),
+          units_map: S.optional(__S(120, __c7, 8)),
         }),
       ).annotate({ identifier: "Team" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(121, __c7, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(__S(4, __c0, 4)),
-          recipient: S.optional(__S(4, __c0, 4)),
-          teams: S.optional(__S(10, __c1, 2)),
+          doer: S.optional(__S(116, __c7, 4)),
+          recipient: S.optional(__S(116, __c7, 4)),
+          teams: S.optional(__S(122, __c7, 10)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           allow_fast_forward_only_merge: S.optional(S.Boolean),
@@ -738,8 +828,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(1, __c0, 1)),
-          external_wiki: S.optional(__S(2, __c0, 2)),
+          external_tracker: S.optional(__S(113, __c7, 1)),
+          external_wiki: S.optional(__S(114, __c7, 2)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -756,7 +846,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(3, __c0, 3)),
+          internal_tracker: S.optional(__S(115, __c7, 3)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -768,17 +858,17 @@ function __c1(j: number): any {
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: __S(4, __c0, 4),
-          parent: S.optional(__S(13, __c1, 5)),
-          permissions: S.optional(__S(5, __c0, 5)),
+          owner: __S(116, __c7, 4),
+          parent: S.optional(__S(124, __c7, 12)),
+          permissions: S.optional(__S(117, __c7, 5)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(11, __c1, 3)),
+          repo_transfer: S.optional(__S(123, __c7, 11)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(__S(12, __c1, 4)),
+          topics: S.optional(__S(128, __c8, 0)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -788,7 +878,7 @@ function __c1(j: number): any {
           wiki_ssh_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repository" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ScheduleID: S.optional(S.Number),
@@ -805,18 +895,28 @@ function __c1(j: number): any {
           is_ref_deleted: S.optional(S.Boolean),
           need_approval: S.optional(S.Boolean),
           prettyref: S.optional(S.String),
-          repository: S.optional(__S(13, __c1, 5)),
+          repository: S.optional(__S(124, __c7, 12)),
           started: S.optional(S.String),
           status: S.optional(S.String),
           stopped: S.optional(S.String),
           title: S.optional(S.String),
           trigger_event: S.optional(S.String),
-          trigger_user: S.optional(__S(4, __c0, 4)),
+          trigger_user: S.optional(__S(116, __c7, 4)),
           updated: S.optional(S.String),
           workflow_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionRun" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -824,18 +924,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetGitignoreTemplateInfoRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitignoreTemplateInfo" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -843,7 +943,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetLabelTemplateInfoRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           color: S.optional(S.String),
@@ -852,13 +952,17 @@ function __c2(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelTemplate" });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => __S(19, __c2, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(162, __c10, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLabelTemplateInfoResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -866,7 +970,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetLicenseTemplateInfoRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
@@ -876,22 +980,22 @@ function __c2(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseTemplateInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/nodeinfo", code: 200 })),
-      ).annotate({ identifier: "GetNodeInfoRequest" });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/nodeinfo", code: 200 })),
+      ).annotate({ identifier: "GetNodeInfoRequest" });
+    case 1:
+      return S.suspend(() =>
         S.Struct({
-          inbound: S.optional(__S(12, __c1, 4)),
-          outbound: S.optional(__S(12, __c1, 4)),
+          inbound: S.optional(__S(128, __c8, 0)),
+          outbound: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "NodeInfoServices" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           homepage: S.optional(S.String),
@@ -900,7 +1004,7 @@ function __c3(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeInfoSoftware" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           activeHalfyear: S.optional(S.Number),
@@ -908,41 +1012,53 @@ function __c3(j: number): any {
           total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NodeInfoUsageUsers" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           localComments: S.optional(S.Number),
           localPosts: S.optional(S.Number),
-          users: S.optional(__S(26, __c3, 2)),
+          users: S.optional(__S(195, __c12, 3)),
         }),
       ).annotate({ identifier: "NodeInfoUsage" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           metadata: S.optional(S.Unknown),
           openRegistrations: S.optional(S.Boolean),
-          protocols: S.optional(__S(12, __c1, 4)),
-          services: S.optional(__S(24, __c3, 0)),
-          software: S.optional(__S(25, __c3, 1)),
-          usage: S.optional(__S(27, __c3, 3)),
+          protocols: S.optional(__S(128, __c8, 0)),
+          services: S.optional(__S(193, __c12, 1)),
+          software: S.optional(__S(194, __c12, 2)),
+          usage: S.optional(__S(196, __c12, 4)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeInfo" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/signing-key.gpg", code: 200 })),
       ).annotate({ identifier: "GetSigningKeyRequest" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSigningKeyResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/signing-key.ssh", code: 200 })),
       ).annotate({ identifier: "GetSSHSigningKeyRequest" });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -954,81 +1070,8 @@ function __c4(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerVersion" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gitignore/templates", code: 200 })),
-      ).annotate({
-        identifier: "ListGitignoresTemplatesRequest",
-      });
-    case 3:
-      return S.suspend(() => __S(12, __c1, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListGitignoresTemplatesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/label/templates", code: 200 })),
-      ).annotate({
-        identifier: "ListLabelTemplatesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licenses", code: 200 })),
-      ).annotate({
-        identifier: "ListLicenseTemplatesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LicensesTemplateListEntry",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListLicenseTemplatesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Context: S.optional(S.String),
-          Mode: S.optional(S.String),
-          Text: S.optional(S.String),
-          Wiki: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/markdown", code: 200 })),
-      ).annotate({ identifier: "RenderMarkdownRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/markdown/raw", code: 200 })),
-      ).annotate({ identifier: "RenderMarkdownRawRequest" });
-    case 3:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "RenderMarkdownRawResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BranchPath: S.optional(S.String),
-          Context: S.optional(S.String),
-          FilePath: S.optional(S.String),
-          Mode: S.optional(S.String),
-          Text: S.optional(S.String),
-          Wiki: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/markup", code: 200 })),
-      ).annotate({ identifier: "RenderMarkupRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -248,8 +248,8 @@ export const describeServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DescribeServicesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DescribeServicesResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DescribeServicesRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<DescribeServicesResponse>,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -289,8 +289,8 @@ export const getAttributeValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetAttributeValuesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetAttributeValuesResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetAttributeValuesRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<GetAttributeValuesResponse>,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -330,8 +330,8 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetPriceListFileUrlRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPriceListFileUrlResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPriceListFileUrlRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetPriceListFileUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -364,8 +364,8 @@ export const getProducts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SynthesizedJsonPriceListJsonItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProductsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetProductsResponse>,
+  input: __S(6, __c1, 2) as any as S.Schema<GetProductsRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<GetProductsResponse>,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -408,8 +408,8 @@ export const listPriceLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PriceList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListPriceListsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListPriceListsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListPriceListsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListPriceListsResponse>,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -436,96 +436,49 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ServiceCode: S.optional(S.String),
-          FormatVersion: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DescribeServicesRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ServiceCode: S.String, AttributeNames: S.optional(__S(1, __c0, 1)) }),
-      ).annotate({ identifier: "Service" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Services: S.optional(__S(3, __c0, 3)),
-          FormatVersion: S.optional(S.String),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DescribeServicesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceCode: S.String,
-          AttributeName: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAttributeValuesRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
-        identifier: "AttributeValue",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AttributeValues: S.optional(__S(7, __c0, 7)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetAttributeValuesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({ PriceListArn: S.String, FileFormat: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "GetPriceListFileUrlRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ Url: S.optional(S.String) })).annotate({
         identifier: "GetPriceListFileUrlResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Type: S.String, Field: S.String, Value: S.String }),
       ).annotate({ identifier: "Filter" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
-          Filters: S.optional(__S(12, __c1, 4)),
+          Filters: S.optional(__S(5, __c1, 1)),
           FormatVersion: S.optional(S.String),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetProductsRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           FormatVersion: S.optional(S.String),
-          PriceList: S.optional(__S(1, __c0, 1)),
+          PriceList: S.optional(__S(16, __c4, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetProductsResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -536,28 +489,86 @@ function __c1(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPriceListsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PriceListArn: S.optional(S.String),
           RegionCode: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
-          FileFormats: S.optional(__S(1, __c0, 1)),
+          FileFormats: S.optional(__S(16, __c4, 0)),
         }),
       ).annotate({ identifier: "PriceList" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ PriceLists: S.optional(__S(17, __c2, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ PriceLists: S.optional(__S(10, __c2, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPriceListsResponse" });
   }
 }
-
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceCode: S.optional(S.String),
+          FormatVersion: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeServicesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ServiceCode: S.String, AttributeNames: S.optional(__S(16, __c4, 0)) }),
+      ).annotate({ identifier: "Service" });
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Services: S.optional(__S(14, __c3, 2)),
+          FormatVersion: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeServicesResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceCode: S.String,
+          AttributeName: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetAttributeValuesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
+        identifier: "AttributeValue",
+      });
+    case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AttributeValues: S.optional(__S(22, __c5, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAttributeValuesResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

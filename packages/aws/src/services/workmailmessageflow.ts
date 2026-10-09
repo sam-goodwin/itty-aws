@@ -163,8 +163,8 @@ export const putRawMessageContent: API.OperationMethod<
   PutRawMessageContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<PutRawMessageContentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutRawMessageContentResponse>,
+  input: __S(6, __c1, 2) as any as S.Schema<PutRawMessageContentRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<PutRawMessageContentResponse>,
   errors: [InvalidContentLocation, MessageFrozen, MessageRejected, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -195,19 +195,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetRawMessageContentResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ bucket: S.String, key: S.String, objectVersion: S.optional(S.String) }),
       ).annotate({ identifier: "S3Reference" });
-    case 3:
-      return S.suspend(() => S.Struct({ s3Reference: __S(2, __c0, 2) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ s3Reference: __S(4, __c1, 0) })).annotate({
         identifier: "RawMessageContent",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           messageId: S.String.pipe(T.HttpLabel("messageId")),
-          content: __S(3, __c0, 3),
+          content: __S(5, __c1, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/messages/{messageId}" }),
@@ -221,13 +225,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PutRawMessageContentRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutRawMessageContentResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

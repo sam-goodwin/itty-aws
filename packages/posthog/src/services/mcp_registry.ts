@@ -250,7 +250,7 @@ export const getMcpRegistryServer: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetMcpRegistryServerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<MCPRegistryServerDetail>,
+  output: __S(6, __c0, 6) as any as S.Schema<MCPRegistryServerDetail>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -264,8 +264,8 @@ export const getMcpRegistryServersCompare: API.OperationMethod<
   GetMcpRegistryServersCompareError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetMcpRegistryServersCompareRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetMcpRegistryServersCompareResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetMcpRegistryServersCompareRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetMcpRegistryServersCompareResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const getMcpRegistryServersDiscover: API.OperationMethod<
   GetMcpRegistryServersDiscoverError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetMcpRegistryServersDiscoverRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<MCPDiscoverResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetMcpRegistryServersDiscoverRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<MCPDiscoverResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const listMcpRegistryServers: API.OperationMethod<
   ListMcpRegistryServersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListMcpRegistryServersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<PaginatedMCPRegistryServerListList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListMcpRegistryServersRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaginatedMCPRegistryServerListList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const listMcpRegistryServersMeasuredProjects: API.OperationMethod<
   ListMcpRegistryServersMeasuredProjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const listMcpRegistryServersVersions: API.OperationMethod<
   ListMcpRegistryServersVersionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListMcpRegistryServersVersionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListMcpRegistryServersVersionsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListMcpRegistryServersVersionsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListMcpRegistryServersVersionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -372,10 +372,8 @@ function __c0(j: number): any {
     case 4:
       return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Record(S.String, S.Unknown);
+      return S.Array(__S(8, __c1, 0));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -393,15 +391,21 @@ function __c0(j: number): any {
           repository_url: S.String,
           website_url: S.String,
           last_probed_at: S.NullOr(S.String),
-          tools: __S(6, __c0, 6),
-          measured_stats: __S(6, __c0, 6),
-          scores: __S(6, __c0, 6),
-          connect: __S(5, __c0, 5),
+          tools: __S(5, __c0, 5),
+          measured_stats: __S(5, __c0, 5),
+          scores: __S(5, __c0, 5),
+          connect: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "MCPRegistryServerDetail" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -421,10 +425,14 @@ function __c1(j: number): any {
         identifier: "GetMcpRegistryServersCompareRequest",
       });
     case 1:
-      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetMcpRegistryServersCompareResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -441,7 +449,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetMcpRegistryServersDiscoverRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -451,9 +459,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MCPDiscoverCandidateMatchedToolsItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rank: S.Number,
@@ -464,27 +472,27 @@ function __c1(j: number): any {
           score: S.Number,
           relevance: S.NullOr(S.Number),
           combined_score: S.NullOr(S.Number),
-          why: __S(5, __c0, 5),
+          why: __S(8, __c1, 0),
           liveness: S.String,
           auth_method: S.String,
-          measured: S.NullOr(__S(5, __c0, 5)),
-          matched_tools: __S(12, __c1, 4),
-          connect: __S(5, __c0, 5),
+          measured: S.NullOr(__S(8, __c1, 0)),
+          matched_tools: __S(26, __c3, 2),
+          connect: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "MCPDiscoverCandidate" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           intent: S.String,
           ranking_version: S.String,
-          candidates: __S(14, __c1, 6),
+          candidates: __S(28, __c3, 4),
         }),
       ).annotate({ identifier: "MCPDiscoverResponse" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -521,19 +529,23 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MCPRegistryServerList" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(18, __c2, 2),
+          results: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "PaginatedMCPRegistryServerListList",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -547,7 +559,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListMcpRegistryServersMeasuredProjectsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           team_id: S.Number,
@@ -555,15 +567,15 @@ function __c2(j: number): any {
           calls: S.Number,
         }),
       ).annotate({ identifier: "MCPMeasuredProject" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() => __S(22, __c2, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
+      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMcpRegistryServersMeasuredProjectsResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -593,18 +605,17 @@ function __c3(j: number): any {
           version: S.String,
           description: S.String,
           is_default: S.Boolean,
-          latest_run: S.NullOr(__S(25, __c3, 1)),
+          latest_run: S.NullOr(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "MCPRankingVersion" });
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(50, __c6, 2));
     case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(51, __c6, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMcpRegistryServersVersionsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

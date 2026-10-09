@@ -579,7 +579,7 @@ export const createHostnameCertificate: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateHostnameCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateHostnameCertificateResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateHostnameCertificateResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -604,8 +604,8 @@ export const createOriginTlsClientAuth: API.OperationMethod<
   CreateOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOriginTlsClientAuthRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateOriginTlsClientAuthResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateOriginTlsClientAuthRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateOriginTlsClientAuthResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -631,8 +631,8 @@ export const createZoneCertificate: API.OperationMethod<
   CreateZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateZoneCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateZoneCertificateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateZoneCertificateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateZoneCertificateResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -660,8 +660,8 @@ export const deleteHostnameCertificate: API.OperationMethod<
   DeleteHostnameCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteHostnameCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteHostnameCertificateResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteHostnameCertificateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteHostnameCertificateResponse>,
   errors: [
     HostnameCertificateNotFound,
     HostnameCertificateInUse,
@@ -690,8 +690,8 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
   DeleteOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteOriginTlsClientAuthRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteOriginTlsClientAuthResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteOriginTlsClientAuthRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteOriginTlsClientAuthResponse>,
   errors: [
     CertificateNotFound,
     Forbidden,
@@ -719,8 +719,8 @@ export const deleteZoneCertificate: API.OperationMethod<
   DeleteZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteZoneCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteZoneCertificateResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteZoneCertificateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteZoneCertificateResponse>,
   errors: [
     CertificateNotFound,
     Forbidden,
@@ -742,8 +742,8 @@ export const getHostname: API.OperationMethod<
   GetHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetHostnameRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetHostnameResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetHostnameRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetHostnameResponse>,
   errors: [HostnameAssociationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -760,8 +760,8 @@ export const getHostnameCertificate: API.OperationMethod<
   GetHostnameCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetHostnameCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetHostnameCertificateResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetHostnameCertificateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetHostnameCertificateResponse>,
   errors: [HostnameCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -775,8 +775,8 @@ export const getOriginTlsClientAuth: API.OperationMethod<
   GetOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetOriginTlsClientAuthRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetOriginTlsClientAuthResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetOriginTlsClientAuthRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetOriginTlsClientAuthResponse>,
   errors: [CertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -790,8 +790,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetSettingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetSettingResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const getZoneCertificate: API.OperationMethod<
   GetZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetZoneCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetZoneCertificateResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetZoneCertificateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetZoneCertificateResponse>,
   errors: [CertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -822,8 +822,8 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   HostnameCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListHostnameCertificatesRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListHostnameCertificatesResponse>,
+    input: __S(120, __c15, 0) as any as S.Schema<ListHostnameCertificatesRequest>,
+    output: __S(123, __c15, 3) as any as S.Schema<ListHostnameCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20, __c2, 4) as any as S.Schema<ListOriginTlsClientAuthsRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListOriginTlsClientAuthsResponse>,
+    input: __S(128, __c16, 0) as any as S.Schema<ListOriginTlsClientAuthsRequest>,
+    output: __S(131, __c16, 3) as any as S.Schema<ListOriginTlsClientAuthsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -862,8 +862,8 @@ export const listZoneCertificates: API.PaginatedOperationMethod<
   ListZoneCertificatesResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<ListZoneCertificatesRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListZoneCertificatesResponse>,
+    input: __S(136, __c17, 0) as any as S.Schema<ListZoneCertificatesRequest>,
+    output: __S(139, __c17, 3) as any as S.Schema<ListZoneCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -886,8 +886,8 @@ export const putHostname: API.PaginatedOperationMethod<
   HostnamesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(30, __c3, 6) as any as S.Schema<PutHostnameRequest>,
-    output: __S(33, __c4, 1) as any as S.Schema<PutHostnameResponse>,
+    input: __S(146, __c18, 2) as any as S.Schema<PutHostnameRequest>,
+    output: __S(149, __c18, 5) as any as S.Schema<PutHostnameResponse>,
     errors: [
       HostnameCertificateIdRequired,
       InvalidHostnameConfig,
@@ -910,8 +910,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<PutSettingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PutSettingResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<PutSettingRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<PutSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -938,7 +938,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateHostnameCertificateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -953,7 +957,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateHostnameCertificateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -967,7 +975,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOriginTlsClientAuthRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -983,7 +995,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOriginTlsClientAuthResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -997,7 +1013,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateZoneCertificateRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1008,7 +1028,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateZoneCertificateResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1025,7 +1049,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteHostnameCertificateRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1044,7 +1072,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1063,7 +1091,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteZoneCertificateRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1078,7 +1110,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHostnameRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
@@ -1097,7 +1129,11 @@ function __c1(j: number): any {
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHostnameResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1114,7 +1150,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetHostnameCertificateRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1131,7 +1171,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetOriginTlsClientAuthRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1145,13 +1189,21 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingRequest" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1170,7 +1222,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1204,17 +1256,21 @@ function __c2(j: number): any {
         identifier: "HostnameCertificatesListResultItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
+          result: __S(122, __c15, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListHostnameCertificatesResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1226,7 +1282,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListOriginTlsClientAuthsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1240,12 +1296,12 @@ function __c2(j: number): any {
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(22, __c2, 6).pipe(T.EnvelopePayload()),
+          result: __S(130, __c16, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1253,7 +1309,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1279,17 +1335,21 @@ function __c3(j: number): any {
         identifier: "ListZoneCertificatesResultItem",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
+          result: __S(138, __c17, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListZoneCertificatesResponse",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certId: S.optional(S.String.pipe(T.Body("cert_id"))),
@@ -1299,13 +1359,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "HostnamesUpdateRequestConfigItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          config: __S(29, __c3, 5),
+          config: __S(145, __c18, 1),
         })
           .pipe(
             T.Http({
@@ -1316,7 +1376,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutHostnameRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1329,20 +1389,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "HostnamesUpdateResultItem",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(147, __c18, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(32, __c4, 0).pipe(T.EnvelopePayload()),
+          result: __S(148, __c18, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutHostnameResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1359,7 +1419,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PutSettingRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

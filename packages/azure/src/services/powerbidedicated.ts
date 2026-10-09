@@ -605,8 +605,8 @@ export const CreateAutoScaleVCore: API.OperationMethod<
   CreateAutoScaleVCoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAutoScaleVCoreRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateAutoScaleVCoreResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateAutoScaleVCoreRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateAutoScaleVCoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -620,8 +620,8 @@ export const CreateCapacity: API.OperationMethod<
   CreateCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateCapacityRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateCapacityResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateCapacityRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<CreateCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -635,8 +635,8 @@ export const DeleteAutoScaleVCore: API.OperationMethod<
   DeleteAutoScaleVCoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteAutoScaleVCoreRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteAutoScaleVCoreResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteAutoScaleVCoreRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteAutoScaleVCoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -650,8 +650,8 @@ export const DeleteCapacity: API.OperationMethod<
   DeleteCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteCapacityRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteCapacityResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteCapacityRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -665,8 +665,8 @@ export const GetAutoScaleVCore: API.OperationMethod<
   GetAutoScaleVCoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetAutoScaleVCoreRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAutoScaleVCoreResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetAutoScaleVCoreRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetAutoScaleVCoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -680,8 +680,8 @@ export const GetCapacityDetails: API.OperationMethod<
   GetCapacityDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetCapacityDetailsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetCapacityDetailsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetCapacityDetailsRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetCapacityDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const ListAutoScaleVCoreByResourceGroup: API.OperationMethod<
   ListAutoScaleVCoreByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AutoScaleVCoreListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -710,8 +710,8 @@ export const ListAutoScaleVCoreBySubscription: API.OperationMethod<
   ListAutoScaleVCoreBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AutoScaleVCoreListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -725,8 +725,8 @@ export const ListCapacities: API.OperationMethod<
   ListCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListCapacitiesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DedicatedCapacities>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListCapacitiesRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -740,8 +740,8 @@ export const ListCapacityByResourceGroup: API.OperationMethod<
   ListCapacityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListCapacityByResourceGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DedicatedCapacities>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListCapacityByResourceGroupRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -755,8 +755,8 @@ export const ListCapacitySkus: API.OperationMethod<
   ListCapacitySkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListCapacitySkusRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<SkuEnumerationForNewResourceResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListCapacitySkusRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<SkuEnumerationForNewResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -770,8 +770,8 @@ export const ListCapacitySkusForCapacity: API.OperationMethod<
   ListCapacitySkusForCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListCapacitySkusForCapacityRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<SkuEnumerationForExistingResourceResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListCapacitySkusForCapacityRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<SkuEnumerationForExistingResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<OperationListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(156, __c9, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -800,8 +800,8 @@ export const ResumeCapacity: API.OperationMethod<
   ResumeCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ResumeCapacityRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ResumeCapacityResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ResumeCapacityRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ResumeCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -815,8 +815,8 @@ export const SuspendCapacity: API.OperationMethod<
   SuspendCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<SuspendCapacityRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<SuspendCapacityResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<SuspendCapacityRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<SuspendCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -830,8 +830,8 @@ export const UpdateAutoScaleVCore: API.OperationMethod<
   UpdateAutoScaleVCoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateAutoScaleVCoreRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateAutoScaleVCoreResponse>,
+  input: __S(193, __c12, 1) as any as S.Schema<UpdateAutoScaleVCoreRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateAutoScaleVCoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -845,8 +845,8 @@ export const UpdateCapacity: API.OperationMethod<
   UpdateCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateCapacityRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateCapacityResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<UpdateCapacityRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -883,34 +883,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckCapacityNameAvailabilityResult",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          capacityLimit: S.optional(S.Number),
-          capacityObjectId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoScaleVCoreProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoScaleVCoreSku" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vcoreName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(3, __c0, 3)),
-          sku: __S(4, __c0, 4),
+          properties: S.optional(__S(80, __c5, 0)),
+          sku: __S(32, __c2, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -922,7 +908,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAutoScaleVCoreRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoScaleVCoreSku" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -933,256 +937,42 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(3, __c0, 3)),
-          sku: __S(4, __c0, 4),
+          properties: S.optional(__S(80, __c5, 0)),
+          sku: __S(32, __c2, 0),
         }),
       ).annotate({
         identifier: "CreateAutoScaleVCoreResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "DedicatedCapacityAdministrators",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          administration: S.optional(__S(9, __c1, 1)),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedCapacityPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dedicatedCapacityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(10, __c1, 2)),
-          sku: __S(4, __c0, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateCapacityRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          administration: S.optional(__S(9, __c1, 1)),
-          mode: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          state: S.optional(S.String),
+          capacityLimit: S.optional(S.Number),
+          capacityObjectId: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DedicatedCapacityProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-          sku: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "CreateCapacityResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vcoreName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoScaleVCoreRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAutoScaleVCoreResponse",
-      });
+      ).annotate({ identifier: "AutoScaleVCoreProperties" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dedicatedCapacityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCapacityRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vcoreName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAutoScaleVCoreRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dedicatedCapacityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCapacityDetailsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-          sku: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "GetCapacityDetailsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAutoScaleVCoreByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(3, __c0, 3)),
-          sku: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "AutoScaleVCore" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(22, __c2, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoScaleVCoreListResult" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAutoScaleVCoreBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/capacities",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListCapacitiesRequest" });
-    case 2:
-      return S.Array(__S(13, __c1, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(26, __c3, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedCapacities" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1198,7 +988,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCapacityByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1211,19 +1005,19 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCapacitySkusRequest" });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(30, __c3, 6)),
+          value: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({
         identifier: "SkuEnumerationForNewResourceResult",
       });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1246,22 +1040,26 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(4, __c0, 4)),
+          sku: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "SkuDetailsForExistingResource",
       });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(129, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(34, __c4, 2)),
+          value: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({
         identifier: "SkuEnumerationForExistingResourceResult",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1272,7 +1070,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1281,7 +1079,7 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1290,13 +1088,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "MetricSpecificationDimensionsItem",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1305,12 +1099,12 @@ function __c5(j: number): any {
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
           metricFilterPattern: S.optional(S.String),
-          dimensions: S.optional(__S(39, __c4, 7)),
+          dimensions: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(148, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1318,44 +1112,44 @@ function __c5(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(41, __c5, 1)),
-          logSpecifications: S.optional(__S(43, __c5, 3)),
+          metricSpecifications: S.optional(__S(149, __c9, 5)),
+          logSpecifications: S.optional(__S(151, __c9, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(44, __c5, 4)),
+          serviceSpecification: S.optional(__S(152, __c9, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(37, __c4, 5)),
+          display: S.optional(__S(145, __c9, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(45, __c5, 5)),
+          properties: S.optional(__S(153, __c9, 9)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(154, __c9, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(47, __c5, 7)),
+          value: S.optional(__S(155, __c9, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1370,7 +1164,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeCapacityRequest" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1385,7 +1183,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SuspendCapacityRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           capacityLimit: S.optional(S.Number),
@@ -1393,15 +1195,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AutoScaleVCoreMutableProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vcoreName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(51, __c6, 3)),
+          sku: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1413,15 +1215,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateAutoScaleVCoreRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dedicatedCapacityName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(10, __c1, 2)),
+          sku: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(240, __c15, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1433,7 +1239,284 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateCapacityRequest" });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dedicatedCapacityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c15, 0)),
+          sku: __S(32, __c2, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateCapacityRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          administration: S.optional(__S(257, __c16, 1)),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedCapacityPropertiesInput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(256, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "DedicatedCapacityAdministrators",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          administration: S.optional(__S(257, __c16, 1)),
+          mode: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedCapacityProperties",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(258, __c16, 2)),
+          sku: __S(32, __c2, 0),
+        }),
+      ).annotate({ identifier: "CreateCapacityResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vcoreName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoScaleVCoreRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAutoScaleVCoreResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dedicatedCapacityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCapacityRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vcoreName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAutoScaleVCoreRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dedicatedCapacityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCapacityDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(258, __c16, 2)),
+          sku: __S(32, __c2, 0),
+        }),
+      ).annotate({
+        identifier: "GetCapacityDetailsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAutoScaleVCoreByResourceGroupRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(80, __c5, 0)),
+          sku: __S(32, __c2, 0),
+        }),
+      ).annotate({ identifier: "AutoScaleVCore" });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(385, __c24, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoScaleVCoreListResult" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAutoScaleVCoreBySubscriptionRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/capacities",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListCapacitiesRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c17, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(432, __c27, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedCapacities" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

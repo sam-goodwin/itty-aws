@@ -5018,8 +5018,8 @@ export const authinfoAccounts: API.OperationMethod<
   AuthinfoAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AuthinfoAccountsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccountsAuthInfoResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<AuthinfoAccountsRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<AccountsAuthInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5033,8 +5033,8 @@ export const claimwebsiteAccounts: API.OperationMethod<
   ClaimwebsiteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ClaimwebsiteAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccountsClaimWebsiteResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ClaimwebsiteAccountsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<AccountsClaimWebsiteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5053,8 +5053,8 @@ export const createAccountsCredentials: API.OperationMethod<
   CreateAccountsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateAccountsCredentialsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AccountCredentials>,
+  input: __S(3713, __c116, 1) as any as S.Schema<CreateAccountsCredentialsRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<AccountCredentials>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5068,8 +5068,8 @@ export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAccountsLabelsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AccountLabel>,
+  input: __S(4096, __c128, 0) as any as S.Schema<CreateAccountsLabelsRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5088,8 +5088,8 @@ export const createAccountsReturncarrier: API.OperationMethod<
   CreateAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAccountsReturncarrierRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AccountReturnCarrier>,
+  input: __S(4480, __c140, 0) as any as S.Schema<CreateAccountsReturncarrierRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<AccountReturnCarrier>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5103,8 +5103,8 @@ export const createCollections: API.OperationMethod<
   CreateCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateCollectionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Collection>,
+  input: __S(4864, __c152, 0) as any as S.Schema<CreateCollectionsRequest>,
+  output: __S(4930, __c154, 2) as any as S.Schema<Collection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5123,8 +5123,8 @@ export const createConversionsources: API.OperationMethod<
   CreateConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateConversionsourcesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ConversionSource>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateConversionsourcesRequest>,
+  output: __S(37, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5143,8 +5143,8 @@ export const createOrdertrackingsignals: API.OperationMethod<
   CreateOrdertrackingsignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateOrdertrackingsignalsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OrderTrackingSignal>,
+  input: __S(425, __c13, 9) as any as S.Schema<CreateOrdertrackingsignalsRequest>,
+  output: __S(424, __c13, 8) as any as S.Schema<OrderTrackingSignal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5163,8 +5163,8 @@ export const createProductdeliverytime: API.OperationMethod<
   CreateProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateProductdeliverytimeRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ProductDeliveryTime>,
+  input: __S(832, __c26, 0) as any as S.Schema<CreateProductdeliverytimeRequest>,
+  output: __S(870, __c27, 6) as any as S.Schema<ProductDeliveryTime>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5178,8 +5178,8 @@ export const createPromotions: API.OperationMethod<
   CreatePromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreatePromotionsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Promotion>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreatePromotionsRequest>,
+  output: __S(1254, __c39, 6) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5193,8 +5193,8 @@ export const createRegions: API.OperationMethod<
   CreateRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateRegionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Region>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateRegionsRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5213,8 +5213,8 @@ export const createReturnpolicyonline: API.OperationMethod<
   CreateReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateReturnpolicyonlineRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ReturnPolicyOnline>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateReturnpolicyonlineRequest>,
+  output: __S(1381, __c43, 5) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5228,8 +5228,8 @@ export const custombatchAccounts: API.OperationMethod<
   CustombatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CustombatchAccountsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<AccountsCustomBatchResponse>,
+  input: __S(1412, __c44, 4) as any as S.Schema<CustombatchAccountsRequest>,
+  output: __S(1415, __c44, 7) as any as S.Schema<AccountsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5248,8 +5248,8 @@ export const custombatchAccountstatuses: API.OperationMethod<
   CustombatchAccountstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CustombatchAccountstatusesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<AccountstatusesCustomBatchResponse>,
+  input: __S(1507, __c47, 3) as any as S.Schema<CustombatchAccountstatusesRequest>,
+  output: __S(1510, __c47, 6) as any as S.Schema<AccountstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5263,8 +5263,8 @@ export const custombatchAccounttax: API.OperationMethod<
   CustombatchAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<CustombatchAccounttaxRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<AccounttaxCustomBatchResponse>,
+  input: __S(1571, __c49, 3) as any as S.Schema<CustombatchAccounttaxRequest>,
+  output: __S(1574, __c49, 6) as any as S.Schema<AccounttaxCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5278,8 +5278,8 @@ export const custombatchDatafeeds: API.OperationMethod<
   CustombatchDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CustombatchDatafeedsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<DatafeedsCustomBatchResponse>,
+  input: __S(1635, __c51, 3) as any as S.Schema<CustombatchDatafeedsRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<DatafeedsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5298,8 +5298,8 @@ export const custombatchDatafeedstatuses: API.OperationMethod<
   CustombatchDatafeedstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CustombatchDatafeedstatusesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DatafeedstatusesCustomBatchResponse>,
+  input: __S(1699, __c53, 3) as any as S.Schema<CustombatchDatafeedstatusesRequest>,
+  output: __S(1702, __c53, 6) as any as S.Schema<DatafeedstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5313,8 +5313,8 @@ export const custombatchLiasettings: API.OperationMethod<
   CustombatchLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<CustombatchLiasettingsRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<LiasettingsCustomBatchResponse>,
+  input: __S(1763, __c55, 3) as any as S.Schema<CustombatchLiasettingsRequest>,
+  output: __S(1767, __c55, 7) as any as S.Schema<LiasettingsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5333,8 +5333,8 @@ export const custombatchLocalinventory: API.OperationMethod<
   CustombatchLocalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<CustombatchLocalinventoryRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<LocalinventoryCustomBatchResponse>,
+  input: __S(1923, __c60, 3) as any as S.Schema<CustombatchLocalinventoryRequest>,
+  output: __S(1926, __c60, 6) as any as S.Schema<LocalinventoryCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5348,8 @@ export const custombatchPos: API.OperationMethod<
   CustombatchPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CustombatchPosRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<PosCustomBatchResponse>,
+  input: __S(2053, __c64, 5) as any as S.Schema<CustombatchPosRequest>,
+  output: __S(2056, __c64, 8) as any as S.Schema<PosCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5363,8 +5363,8 @@ export const custombatchProducts: API.OperationMethod<
   CustombatchProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<CustombatchProductsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ProductsCustomBatchResponse>,
+  input: __S(2115, __c66, 3) as any as S.Schema<CustombatchProductsRequest>,
+  output: __S(2118, __c66, 6) as any as S.Schema<ProductsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5383,8 +5383,8 @@ export const custombatchProductstatuses: API.OperationMethod<
   CustombatchProductstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<CustombatchProductstatusesRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<ProductstatusesCustomBatchResponse>,
+  input: __S(2179, __c68, 3) as any as S.Schema<CustombatchProductstatusesRequest>,
+  output: __S(2182, __c68, 6) as any as S.Schema<ProductstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5403,8 +5403,8 @@ export const custombatchRegionalinventory: API.OperationMethod<
   CustombatchRegionalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CustombatchRegionalinventoryRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<RegionalinventoryCustomBatchResponse>,
+  input: __S(2243, __c70, 3) as any as S.Schema<CustombatchRegionalinventoryRequest>,
+  output: __S(2246, __c70, 6) as any as S.Schema<RegionalinventoryCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5423,8 +5423,8 @@ export const custombatchShippingsettings: API.OperationMethod<
   CustombatchShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<CustombatchShippingsettingsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<ShippingsettingsCustomBatchResponse>,
+  input: __S(2307, __c72, 3) as any as S.Schema<CustombatchShippingsettingsRequest>,
+  output: __S(2310, __c72, 6) as any as S.Schema<ShippingsettingsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5438,8 +5438,8 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<DeleteAccountsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteAccountsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteAccountsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5453,8 +5453,8 @@ export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<DeleteAccountsLabelsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteAccountsLabelsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteAccountsLabelsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteAccountsLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5473,8 +5473,8 @@ export const deleteAccountsReturncarrier: API.OperationMethod<
   DeleteAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<DeleteAccountsReturncarrierRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<DeleteAccountsReturncarrierResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteAccountsReturncarrierRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<DeleteAccountsReturncarrierResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5488,8 +5488,8 @@ export const deleteCollections: API.OperationMethod<
   DeleteCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<DeleteCollectionsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteCollectionsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteCollectionsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteCollectionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5508,8 +5508,8 @@ export const deleteConversionsources: API.OperationMethod<
   DeleteConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DeleteConversionsourcesRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<DeleteConversionsourcesResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteConversionsourcesRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<DeleteConversionsourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5523,8 +5523,8 @@ export const deleteDatafeeds: API.OperationMethod<
   DeleteDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<DeleteDatafeedsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteDatafeedsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteDatafeedsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteDatafeedsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5543,8 +5543,8 @@ export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
   DeleteFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5558,8 +5558,8 @@ export const deletePos: API.OperationMethod<
   DeletePosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<DeletePosRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeletePosResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeletePosRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeletePosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5578,8 +5578,8 @@ export const deleteProductdeliverytime: API.OperationMethod<
   DeleteProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DeleteProductdeliverytimeRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<DeleteProductdeliverytimeResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteProductdeliverytimeRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<DeleteProductdeliverytimeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5593,8 +5593,8 @@ export const deleteProducts: API.OperationMethod<
   DeleteProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<DeleteProductsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteProductsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteProductsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5608,8 +5608,8 @@ export const deleteRegions: API.OperationMethod<
   DeleteRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<DeleteRegionsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<DeleteRegionsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteRegionsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteRegionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5628,8 +5628,8 @@ export const deleteReturnpolicyonline: API.OperationMethod<
   DeleteReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<DeleteReturnpolicyonlineRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<DeleteReturnpolicyonlineResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteReturnpolicyonlineRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<DeleteReturnpolicyonlineResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5643,8 +5643,8 @@ export const fetchnowDatafeeds: API.OperationMethod<
   FetchnowDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<FetchnowDatafeedsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DatafeedsFetchNowResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<FetchnowDatafeedsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<DatafeedsFetchNowResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5658,8 +5658,8 @@ export const generateRecommendations: API.OperationMethod<
   GenerateRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GenerateRecommendationsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<GenerateRecommendationsResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GenerateRecommendationsRequest>,
+  output: __S(2921, __c91, 9) as any as S.Schema<GenerateRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5673,8 +5673,8 @@ export const getaccessiblegmbaccountsLiasettings: API.OperationMethod<
   GetaccessiblegmbaccountsLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5688,8 +5688,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<GetAccountsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<Account>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(1491, __c46, 19) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5703,8 +5703,8 @@ export const getAccountstatuses: API.OperationMethod<
   GetAccountstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetAccountstatusesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<AccountStatus>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetAccountstatusesRequest>,
+  output: __S(1543, __c48, 7) as any as S.Schema<AccountStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5718,8 +5718,8 @@ export const getAccounttax: API.OperationMethod<
   GetAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<GetAccounttaxRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<AccountTax>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetAccounttaxRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<AccountTax>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5733,8 +5733,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<GetCollectionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Collection>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(4930, __c154, 2) as any as S.Schema<Collection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5748,8 +5748,8 @@ export const getCollectionstatuses: API.OperationMethod<
   GetCollectionstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<GetCollectionstatusesRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<CollectionStatus>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetCollectionstatusesRequest>,
+  output: __S(3140, __c98, 4) as any as S.Schema<CollectionStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5763,8 +5763,8 @@ export const getConversionsources: API.OperationMethod<
   GetConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetConversionsourcesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ConversionSource>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetConversionsourcesRequest>,
+  output: __S(37, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5774,8 +5774,8 @@ export type GetCssesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a single CSS domain by ID. */
 export const getCsses: API.OperationMethod<GetCssesRequest, Css, GetCssesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(332, __c41, 4) as any as S.Schema<GetCssesRequest>,
-    output: __S(333, __c41, 5) as any as S.Schema<Css>,
+    input: __S(3200, __c100, 0) as any as S.Schema<GetCssesRequest>,
+    output: __S(3232, __c101, 0) as any as S.Schema<Css>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -5789,8 +5789,8 @@ export const getDatafeeds: API.OperationMethod<
   GetDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetDatafeedsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<Datafeed>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetDatafeedsRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5804,8 +5804,8 @@ export const getDatafeedstatuses: API.OperationMethod<
   GetDatafeedstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<GetDatafeedstatusesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<DatafeedStatus>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetDatafeedstatusesRequest>,
+  output: __S(1732, __c54, 4) as any as S.Schema<DatafeedStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5819,8 +5819,8 @@ export const getFreelistingsprogram: API.OperationMethod<
   GetFreelistingsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetFreelistingsprogramRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<FreeListingsProgramStatus>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetFreelistingsprogramRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<FreeListingsProgramStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5834,8 +5834,8 @@ export const getFreelistingsprogramCheckoutsettings: API.OperationMethod<
   GetFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<CheckoutSettings>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5849,8 +5849,8 @@ export const getLiasettings: API.OperationMethod<
   GetLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetLiasettingsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<LiaSettings>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetLiasettingsRequest>,
+  output: __S(1862, __c58, 6) as any as S.Schema<LiaSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5860,8 +5860,8 @@ export type GetPosError = NotFound | Forbidden | GcpOpError;
 /** Retrieves information about the given store. */
 export const getPos: API.OperationMethod<GetPosRequest, PosStore, GetPosError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(345, __c43, 1) as any as S.Schema<GetPosRequest>,
-    output: __S(180, __c22, 4) as any as S.Schema<PosStore>,
+    input: __S(3552, __c111, 0) as any as S.Schema<GetPosRequest>,
+    output: __S(2080, __c65, 0) as any as S.Schema<PosStore>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -5875,8 +5875,8 @@ export const getProductdeliverytime: API.OperationMethod<
   GetProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetProductdeliverytimeRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ProductDeliveryTime>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetProductdeliverytimeRequest>,
+  output: __S(870, __c27, 6) as any as S.Schema<ProductDeliveryTime>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5890,8 +5890,8 @@ export const getProducts: API.OperationMethod<
   GetProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<GetProductsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<Product>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetProductsRequest>,
+  output: __S(2168, __c67, 24) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5905,8 +5905,8 @@ export const getProductstatuses: API.OperationMethod<
   GetProductstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetProductstatusesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<ProductStatus>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetProductstatusesRequest>,
+  output: __S(2212, __c69, 4) as any as S.Schema<ProductStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5920,8 +5920,8 @@ export const getPromotions: API.OperationMethod<
   GetPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<GetPromotionsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Promotion>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetPromotionsRequest>,
+  output: __S(1254, __c39, 6) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5935,8 +5935,8 @@ export const getPubsubnotificationsettings: API.OperationMethod<
   GetPubsubnotificationsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetPubsubnotificationsettingsRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<PubsubNotificationSettings>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetPubsubnotificationsettingsRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<PubsubNotificationSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5950,8 +5950,8 @@ export const getRegions: API.OperationMethod<
   GetRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetRegionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Region>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetRegionsRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5965,8 +5965,8 @@ export const getReturnpolicyonline: API.OperationMethod<
   GetReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<GetReturnpolicyonlineRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ReturnPolicyOnline>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetReturnpolicyonlineRequest>,
+  output: __S(1381, __c43, 5) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5980,8 +5980,8 @@ export const getShippingsettings: API.OperationMethod<
   GetShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetShippingsettingsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<ShippingSettings>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetShippingsettingsRequest>,
+  output: __S(2381, __c74, 13) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5995,8 +5995,8 @@ export const getShoppingadsprogram: API.OperationMethod<
   GetShoppingadsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<GetShoppingadsprogramRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<ShoppingAdsProgramStatus>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetShoppingadsprogramRequest>,
+  output: __S(3907, __c122, 3) as any as S.Schema<ShoppingAdsProgramStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6010,8 +6010,8 @@ export const getsupportedcarriersShippingsettings: API.OperationMethod<
   GetsupportedcarriersShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>,
+  output: __S(3939, __c123, 3) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6025,8 +6025,8 @@ export const getsupportedholidaysShippingsettings: API.OperationMethod<
   GetsupportedholidaysShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>,
+  output: __S(3971, __c124, 3) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6040,8 +6040,12 @@ export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
   GetsupportedpickupservicesShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>,
+  output: __S(
+    4003,
+    __c125,
+    3,
+  ) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6055,8 +6059,8 @@ export const insertAccounts: API.OperationMethod<
   InsertAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<InsertAccountsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<Account>,
+  input: __S(4032, __c126, 0) as any as S.Schema<InsertAccountsRequest>,
+  output: __S(1491, __c46, 19) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6070,8 +6074,8 @@ export const insertDatafeeds: API.OperationMethod<
   InsertDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<InsertDatafeedsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<Datafeed>,
+  input: __S(4064, __c127, 0) as any as S.Schema<InsertDatafeedsRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6090,8 +6094,8 @@ export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
   InsertFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<CheckoutSettings>,
+  input: __S(4161, __c130, 1) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6105,8 +6109,8 @@ export const insertLocalinventory: API.OperationMethod<
   InsertLocalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<InsertLocalinventoryRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<LocalInventory>,
+  input: __S(4192, __c131, 0) as any as S.Schema<InsertLocalinventoryRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<LocalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6120,8 +6124,8 @@ export const insertPos: API.OperationMethod<
   InsertPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<InsertPosRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<PosStore>,
+  input: __S(4224, __c132, 0) as any as S.Schema<InsertPosRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<PosStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6135,8 +6139,8 @@ export const insertProducts: API.OperationMethod<
   InsertProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<InsertProductsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<Product>,
+  input: __S(4256, __c133, 0) as any as S.Schema<InsertProductsRequest>,
+  output: __S(2168, __c67, 24) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6155,8 +6159,8 @@ export const insertRegionalinventory: API.OperationMethod<
   InsertRegionalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<InsertRegionalinventoryRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<RegionalInventory>,
+  input: __S(4288, __c134, 0) as any as S.Schema<InsertRegionalinventoryRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<RegionalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6170,8 +6174,8 @@ export const inventoryPos: API.OperationMethod<
   InventoryPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<InventoryPosRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<PosInventoryResponse>,
+  input: __S(4321, __c135, 1) as any as S.Schema<InventoryPosRequest>,
+  output: __S(4322, __c135, 2) as any as S.Schema<PosInventoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6185,8 +6189,8 @@ export const linkAccounts: API.OperationMethod<
   LinkAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<LinkAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccountsLinkResponse>,
+  input: __S(4355, __c136, 3) as any as S.Schema<LinkAccountsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<AccountsLinkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6201,8 +6205,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListAccountsRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<AccountsListResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(4386, __c137, 2) as any as S.Schema<AccountsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6221,8 +6225,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<ListAccountsLabelsRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<ListAccountLabelsResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<ListAccountsLabelsRequest>,
+  output: __S(4418, __c138, 2) as any as S.Schema<ListAccountLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6240,8 +6244,8 @@ export const listAccountsReturncarrier: API.OperationMethod<
   ListAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListAccountsReturncarrierRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<ListAccountReturnCarrierResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ListAccountsReturncarrierRequest>,
+  output: __S(4450, __c139, 2) as any as S.Schema<ListAccountReturnCarrierResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6256,8 +6260,8 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ListAccountstatusesRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<AccountstatusesListResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<ListAccountstatusesRequest>,
+  output: __S(4546, __c142, 2) as any as S.Schema<AccountstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6276,8 +6280,8 @@ export const listAccounttax: API.PaginatedOperationMethod<
   GcpOpContext,
   AccounttaxListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ListAccounttaxRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<AccounttaxListResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListAccounttaxRequest>,
+  output: __S(4578, __c143, 2) as any as S.Schema<AccounttaxListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6296,8 +6300,8 @@ export const listCollections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCollectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListCollectionsRequest>,
-  output: __S(403, __c50, 3) as any as S.Schema<ListCollectionsResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListCollectionsRequest>,
+  output: __S(4610, __c144, 2) as any as S.Schema<ListCollectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6316,8 +6320,8 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCollectionStatusesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<ListCollectionstatusesRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<ListCollectionStatusesResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListCollectionstatusesRequest>,
+  output: __S(4642, __c145, 2) as any as S.Schema<ListCollectionStatusesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6336,8 +6340,8 @@ export const listConversionsources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListConversionsourcesRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ListConversionSourcesResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<ListConversionsourcesRequest>,
+  output: __S(4674, __c146, 2) as any as S.Schema<ListConversionSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6356,8 +6360,8 @@ export const listCsses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCssesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListCssesRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<ListCssesResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListCssesRequest>,
+  output: __S(4706, __c147, 2) as any as S.Schema<ListCssesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6376,8 +6380,8 @@ export const listDatafeeds: API.PaginatedOperationMethod<
   GcpOpContext,
   DatafeedsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ListDatafeedsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<DatafeedsListResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListDatafeedsRequest>,
+  output: __S(4738, __c148, 2) as any as S.Schema<DatafeedsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6396,8 +6400,8 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   DatafeedstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListDatafeedstatusesRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<DatafeedstatusesListResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<ListDatafeedstatusesRequest>,
+  output: __S(4770, __c149, 2) as any as S.Schema<DatafeedstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6416,8 +6420,8 @@ export const listLiasettings: API.PaginatedOperationMethod<
   GcpOpContext,
   LiasettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<ListLiasettingsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<LiasettingsListResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<ListLiasettingsRequest>,
+  output: __S(4802, __c150, 2) as any as S.Schema<LiasettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6436,8 +6440,8 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<ListlinksAccountsRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<AccountsListLinksResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<ListlinksAccountsRequest>,
+  output: __S(4837, __c151, 5) as any as S.Schema<AccountsListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6455,8 +6459,8 @@ export const listPos: API.OperationMethod<
   ListPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<ListPosRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<PosListResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListPosRequest>,
+  output: __S(4962, __c155, 2) as any as S.Schema<PosListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6470,8 +6474,8 @@ export const listposdataprovidersLiasettings: API.OperationMethod<
   ListposdataprovidersLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<ListposdataprovidersLiasettingsRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<LiasettingsListPosDataProvidersResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<ListposdataprovidersLiasettingsRequest>,
+  output: __S(4993, __c156, 1) as any as S.Schema<LiasettingsListPosDataProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6486,8 +6490,8 @@ export const listProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ProductsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ListProductsRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<ProductsListResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<ListProductsRequest>,
+  output: __S(5026, __c157, 2) as any as S.Schema<ProductsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6506,8 +6510,8 @@ export const listProductstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   ProductstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ListProductstatusesRequest>,
-  output: __S(438, __c54, 6) as any as S.Schema<ProductstatusesListResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<ListProductstatusesRequest>,
+  output: __S(5058, __c158, 2) as any as S.Schema<ProductstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6526,8 +6530,8 @@ export const listPromotions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPromotionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<ListPromotionsRequest>,
-  output: __S(441, __c55, 1) as any as S.Schema<ListPromotionResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<ListPromotionsRequest>,
+  output: __S(5090, __c159, 2) as any as S.Schema<ListPromotionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6546,8 +6550,8 @@ export const listQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMethodQuotasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<ListQuotasRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<ListMethodQuotasResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<ListQuotasRequest>,
+  output: __S(5123, __c160, 3) as any as S.Schema<ListMethodQuotasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6566,8 +6570,8 @@ export const listRegions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<ListRegionsRequest>,
-  output: __S(448, __c56, 0) as any as S.Schema<ListRegionsResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(5154, __c161, 2) as any as S.Schema<ListRegionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6585,8 +6589,8 @@ export const listReturnpolicyonline: API.OperationMethod<
   ListReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<ListReturnpolicyonlineRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<ListReturnPolicyOnlineResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<ListReturnpolicyonlineRequest>,
+  output: __S(5186, __c162, 2) as any as S.Schema<ListReturnPolicyOnlineResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6601,8 +6605,8 @@ export const listShippingsettings: API.PaginatedOperationMethod<
   GcpOpContext,
   ShippingsettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<ListShippingsettingsRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ShippingsettingsListResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<ListShippingsettingsRequest>,
+  output: __S(5218, __c163, 2) as any as S.Schema<ShippingsettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6620,8 +6624,8 @@ export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<PatchAccountsLabelsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AccountLabel>,
+  input: __S(5248, __c164, 0) as any as S.Schema<PatchAccountsLabelsRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6640,8 +6644,8 @@ export const patchAccountsReturncarrier: API.OperationMethod<
   PatchAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<PatchAccountsReturncarrierRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AccountReturnCarrier>,
+  input: __S(64, __c2, 0) as any as S.Schema<PatchAccountsReturncarrierRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<AccountReturnCarrier>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6655,8 +6659,8 @@ export const patchConversionsources: API.OperationMethod<
   PatchConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<PatchConversionsourcesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ConversionSource>,
+  input: __S(96, __c3, 0) as any as S.Schema<PatchConversionsourcesRequest>,
+  output: __S(37, __c1, 5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6670,8 +6674,8 @@ export const patchRegions: API.OperationMethod<
   PatchRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<PatchRegionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Region>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchRegionsRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6690,8 +6694,8 @@ export const patchReturnpolicyonline: API.OperationMethod<
   PatchReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<PatchReturnpolicyonlineRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ReturnPolicyOnline>,
+  input: __S(160, __c5, 0) as any as S.Schema<PatchReturnpolicyonlineRequest>,
+  output: __S(1381, __c43, 5) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6710,8 +6714,8 @@ export const renderaccountissuesMerchantsupport: API.OperationMethod<
   RenderaccountissuesMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<RenderAccountIssuesResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>,
+  output: __S(196, __c6, 4) as any as S.Schema<RenderAccountIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6730,8 +6734,8 @@ export const renderproductissuesMerchantsupport: API.OperationMethod<
   RenderproductissuesMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<RenderproductissuesMerchantsupportRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<RenderProductIssuesResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<RenderproductissuesMerchantsupportRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<RenderProductIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6750,8 +6754,8 @@ export const reportInteractionRecommendations: API.OperationMethod<
   ReportInteractionRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<ReportInteractionRecommendationsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<ReportInteractionRecommendationsResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<ReportInteractionRecommendationsRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<ReportInteractionRecommendationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6770,8 +6774,8 @@ export const requestgmbaccessLiasettings: API.OperationMethod<
   RequestgmbaccessLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<RequestgmbaccessLiasettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<LiasettingsRequestGmbAccessResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<RequestgmbaccessLiasettingsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<LiasettingsRequestGmbAccessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6790,8 +6794,8 @@ export const requestinventoryverificationLiasettings: API.OperationMethod<
   RequestinventoryverificationLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6810,8 +6814,8 @@ export const requestphoneverificationAccounts: API.OperationMethod<
   RequestphoneverificationAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<RequestphoneverificationAccountsRequest>,
-  output: __S(500, __c62, 4) as any as S.Schema<RequestPhoneVerificationResponse>,
+  input: __S(385, __c12, 1) as any as S.Schema<RequestphoneverificationAccountsRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<RequestPhoneVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6830,8 +6834,8 @@ export const requestreviewFreelistingsprogram: API.OperationMethod<
   RequestreviewFreelistingsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<RequestreviewFreelistingsprogramRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<RequestreviewFreelistingsprogramResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<RequestreviewFreelistingsprogramRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<RequestreviewFreelistingsprogramResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6850,8 +6854,8 @@ export const requestreviewShoppingadsprogram: API.OperationMethod<
   RequestreviewShoppingadsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<RequestreviewShoppingadsprogramRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<RequestreviewShoppingadsprogramResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<RequestreviewShoppingadsprogramRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<RequestreviewShoppingadsprogramResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6865,8 +6869,8 @@ export const salePos: API.OperationMethod<
   SalePosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<SalePosRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<PosSaleResponse>,
+  input: __S(577, __c18, 1) as any as S.Schema<SalePosRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<PosSaleResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6880,8 +6884,8 @@ export const searchReports: API.OperationMethod<
   SearchReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<SearchReportsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<SearchResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<SearchReportsRequest>,
+  output: __S(629, __c19, 21) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6900,8 +6904,12 @@ export const setinventoryverificationcontactLiasettings: API.OperationMethod<
   SetinventoryverificationcontactLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>,
+  output: __S(
+    3296,
+    __c103,
+    0,
+  ) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6920,8 +6928,8 @@ export const setomnichannelexperienceLiasettings: API.OperationMethod<
   SetomnichannelexperienceLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<LiaOmnichannelExperience>,
+  input: __S(672, __c21, 0) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<LiaOmnichannelExperience>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6940,8 +6948,8 @@ export const setposdataproviderLiasettings: API.OperationMethod<
   SetposdataproviderLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<SetposdataproviderLiasettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<LiasettingsSetPosDataProviderResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<SetposdataproviderLiasettingsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<LiasettingsSetPosDataProviderResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6960,8 +6968,8 @@ export const triggeractionMerchantsupport: API.OperationMethod<
   TriggeractionMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<TriggeractionMerchantsupportRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<TriggerActionResponse>,
+  input: __S(743, __c23, 7) as any as S.Schema<TriggeractionMerchantsupportRequest>,
+  output: __S(744, __c23, 8) as any as S.Schema<TriggerActionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6980,8 +6988,8 @@ export const undeleteConversionsources: API.OperationMethod<
   UndeleteConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<UndeleteConversionsourcesRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<UndeleteConversionsourcesResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<UndeleteConversionsourcesRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<UndeleteConversionsourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6995,8 +7003,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<UpdateAccountsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<Account>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateAccountsRequest>,
+  output: __S(1491, __c46, 19) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7010,8 +7018,8 @@ export const updateAccounttax: API.OperationMethod<
   UpdateAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<UpdateAccounttaxRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<AccountTax>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateAccounttaxRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<AccountTax>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7025,8 +7033,8 @@ export const updateDatafeeds: API.OperationMethod<
   UpdateDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<UpdateDatafeedsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<Datafeed>,
+  input: __S(928, __c29, 0) as any as S.Schema<UpdateDatafeedsRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7040,8 +7048,8 @@ export const updatelabelsAccounts: API.OperationMethod<
   UpdatelabelsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<UpdatelabelsAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccountsUpdateLabelsResponse>,
+  input: __S(961, __c30, 1) as any as S.Schema<UpdatelabelsAccountsRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<AccountsUpdateLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7055,8 +7063,8 @@ export const updatelabelsCsses: API.OperationMethod<
   UpdatelabelsCssesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<UpdatelabelsCssesRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<Css>,
+  input: __S(993, __c31, 1) as any as S.Schema<UpdatelabelsCssesRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<Css>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7070,8 +7078,8 @@ export const updateLiasettings: API.OperationMethod<
   UpdateLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<UpdateLiasettingsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<LiaSettings>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateLiasettingsRequest>,
+  output: __S(1862, __c58, 6) as any as S.Schema<LiaSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7085,8 +7093,8 @@ export const updateProducts: API.OperationMethod<
   UpdateProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<UpdateProductsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<Product>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateProductsRequest>,
+  output: __S(2168, __c67, 24) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7105,8 +7113,8 @@ export const updatePubsubnotificationsettings: API.OperationMethod<
   UpdatePubsubnotificationsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<PubsubNotificationSettings>,
+  input: __S(1088, __c34, 0) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<PubsubNotificationSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7120,8 +7128,8 @@ export const updateShippingsettings: API.OperationMethod<
   UpdateShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<UpdateShippingsettingsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<ShippingSettings>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateShippingsettingsRequest>,
+  output: __S(2381, __c74, 13) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7140,8 +7148,8 @@ export const verifyphonenumberAccounts: API.OperationMethod<
   VerifyphonenumberAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<VerifyphonenumberAccountsRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<VerifyPhoneNumberResponse>,
+  input: __S(1153, __c36, 1) as any as S.Schema<VerifyphonenumberAccountsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<VerifyPhoneNumberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7152,250 +7160,9 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "accounts/authinfo",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AuthinfoAccountsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aggregatorId: S.optional(S.String),
-          merchantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountIdentifier",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountIdentifiers: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsAuthInfoResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          overwrite: S.optional(S.Boolean.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/accounts/{accountId}/claimwebsite",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimwebsiteAccountsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsClaimWebsiteResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          purpose: S.optional(S.String),
-          accessToken: S.optional(S.String),
-          expiresIn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountCredentials",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/{accountId}/credentials",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsCredentialsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          labelType: S.optional(S.String),
-          name: S.optional(S.String),
-          labelId: S.optional(S.String),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountLabel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/{accountId}/labels",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsLabelsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          carrierAccountId: S.optional(S.String),
-          carrierCode: S.optional(S.String),
-          carrierAccountNumber: S.optional(S.String),
-          carrierAccountName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountReturnCarrier",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/{accountId}/returncarrier",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsReturncarrierRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          y: S.optional(S.Number),
-          offerId: S.optional(S.String),
-          x: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CollectionFeaturedProduct",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customLabel2: S.optional(S.String),
-          id: S.optional(S.String),
-          headline: S.optional(__S(12, __c1, 4)),
-          customLabel1: S.optional(S.String),
-          imageLink: S.optional(__S(12, __c1, 4)),
-          customLabel4: S.optional(S.String),
-          link: S.optional(S.String),
-          customLabel0: S.optional(S.String),
-          customLabel3: S.optional(S.String),
-          featuredProduct: S.optional(__S(14, __c1, 6)),
-          language: S.optional(S.String),
-          mobileLink: S.optional(S.String),
-          productCountry: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Collection" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/collections",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCollectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          includeInReporting: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AttributionSettingsConversionType",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conversionType: S.optional(__S(18, __c2, 2)),
-          attributionLookbackWindowInDays: S.optional(S.Number),
-          attributionModel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttributionSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attributionSettings: S.optional(__S(19, __c2, 3)),
-          currencyCode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          destinationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MerchantCenterDestination",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          propertyName: S.optional(S.String),
-          attributionSettings: S.optional(__S(19, __c2, 3)),
-          propertyId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsLink",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          conversionSourceId: S.optional(S.String),
-          merchantCenterDestination: S.optional(__S(20, __c2, 4)),
-          googleAnalyticsLink: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "ConversionSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7408,7 +7175,536 @@ function __c2(j: number): any {
       });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          includeInReporting: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AttributionSettingsConversionType",
+      });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conversionType: S.optional(__S(33, __c1, 1)),
+          attributionLookbackWindowInDays: S.optional(S.Number),
+          attributionModel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttributionSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attributionSettings: S.optional(__S(34, __c1, 2)),
+          currencyCode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          destinationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MerchantCenterDestination",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          propertyName: S.optional(S.String),
+          attributionSettings: S.optional(__S(34, __c1, 2)),
+          propertyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsLink",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          conversionSourceId: S.optional(S.String),
+          merchantCenterDestination: S.optional(__S(35, __c1, 3)),
+          googleAnalyticsLink: S.optional(__S(36, __c1, 4)),
+        }),
+      ).annotate({
+        identifier: "ConversionSource",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          carrierAccountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4512, __c141, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAccountsReturncarrierRequest",
+      });
+  }
+}
 function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          conversionSourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(37, __c1, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "{merchantId}/conversionsources/{conversionSourceId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchConversionsourcesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1316, __c41, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "{merchantId}/regions/{regionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchRegionsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPolicyId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1381, __c43, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchReturnpolicyonlineRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeZone: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/merchantsupport/renderaccountissues",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RenderaccountissuesMerchantsupportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          breakdowns: S.optional(__S(229, __c7, 5)),
+          severity: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountIssueImpact",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
+          impact: S.optional(__S(193, __c6, 1)),
+          title: S.optional(S.String),
+          prerenderedContent: S.optional(S.String),
+          actions: S.optional(__S(247, __c7, 23)),
+        }),
+      ).annotate({ identifier: "AccountIssue" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          alternateDisputeResolution: S.optional(__S(225, __c7, 1)),
+          issues: S.optional(__S(195, __c6, 3)),
+        }),
+      ).annotate({
+        identifier: "RenderAccountIssuesResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentOption: S.optional(S.String),
+          userInputActionOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RenderAccountIssuesRequestPayload",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          label: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AlternateDisputeResolution",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BreakdownRegion",
+      });
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(4896, __c153, 0)),
+          regions: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "Breakdown" });
+    case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          simpleTooltipValue: S.optional(S.String),
+          simpleValue: S.optional(S.String),
+          tooltipIconStyle: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TextWithTooltip",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          styleHint: S.optional(S.String),
+          fullMessage: S.optional(__S(230, __c7, 6)),
+        }),
+      ).annotate({ identifier: "Callout" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ariaLabel: S.optional(S.String),
+          additionalInfo: S.optional(__S(230, __c7, 6)),
+          formatInfo: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InputFieldTextInput",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(__S(230, __c7, 6)),
+          additionalInput: S.optional(S.suspend(() => __S(236, __c7, 12))),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InputFieldChoiceInputChoiceInputOption",
+      });
+    case 10:
+      return S.Array(__S(233, __c7, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(234, __c7, 10)),
+        }),
+      ).annotate({
+        identifier: "InputFieldChoiceInput",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          textInput: S.optional(__S(232, __c7, 8)),
+          id: S.optional(S.String),
+          choiceInput: S.optional(__S(235, __c7, 11)),
+          required: S.optional(S.Boolean),
+          label: S.optional(__S(230, __c7, 6)),
+          checkboxInput: S.optional(__S(2432, __c76, 0)),
+        }),
+      ).annotate({ identifier: "InputField" });
+    case 13:
+      return S.Array(__S(236, __c7, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          dialogCallout: S.optional(__S(231, __c7, 7)),
+          label: S.optional(S.String),
+          dialogMessage: S.optional(__S(230, __c7, 6)),
+          inputs: S.optional(__S(237, __c7, 13)),
+          dialogTitle: S.optional(S.String),
+          dialogButtonLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionFlow" });
+    case 15:
+      return S.Array(__S(238, __c7, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          flows: S.optional(__S(239, __c7, 15)),
+          actionContext: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BuiltInUserInputAction",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          action: S.optional(S.suspend(() => __S(246, __c7, 22))),
+          detail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionReason" });
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalAction" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          paragraphs: S.optional(__S(4896, __c153, 0)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BuiltInSimpleActionAdditionalContent",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          additionalContent: S.optional(__S(244, __c7, 20)),
+          attributeCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BuiltInSimpleAction",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          buttonLabel: S.optional(S.String),
+          isAvailable: S.optional(S.Boolean),
+          builtinUserInputAction: S.optional(__S(240, __c7, 16)),
+          reasons: S.optional(__S(242, __c7, 18)),
+          externalAction: S.optional(__S(243, __c7, 19)),
+          builtinSimpleAction: S.optional(__S(245, __c7, 21)),
+        }),
+      ).annotate({ identifier: "Action" });
+    case 23:
+      return S.Array(__S(246, __c7, 22));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeZone: S.optional(S.String.pipe(T.Query())),
+          productId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/merchantsupport/renderproductissues/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RenderproductissuesMerchantsupportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          message: S.optional(S.String),
+          breakdowns: S.optional(__S(229, __c7, 5)),
+        }),
+      ).annotate({
+        identifier: "ProductIssueImpact",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          actions: S.optional(__S(247, __c7, 23)),
+          prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
+          impact: S.optional(__S(257, __c8, 1)),
+          prerenderedContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductIssue" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(__S(259, __c8, 3)),
+          alternateDisputeResolution: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({
+        identifier: "RenderProductIssuesResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interactionType: S.optional(S.String),
+          type: S.optional(S.String),
+          subtype: S.optional(S.String),
+          responseToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportInteractionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/recommendations/reportInteraction",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReportInteractionRecommendationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gmbEmail: S.String.pipe(T.Query()),
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/liasettings/{accountId}/requestgmbaccess",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RequestgmbaccessLiasettingsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RequestinventoryverificationLiasettingsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phoneVerificationMethod: S.optional(S.String),
+          phoneRegionCode: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RequestPhoneVerificationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/accounts/{accountId}/requestphoneverification",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RequestphoneverificationAccountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          verificationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RequestPhoneVerificationResponse",
+      });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7427,7 +7723,7 @@ function __c3(j: number): any {
           year: S.optional(S.Number),
           day: S.optional(S.Number),
           minutes: S.optional(S.Number),
-          timeZone: S.optional(__S(24, __c3, 0)),
+          timeZone: S.optional(__S(416, __c13, 0)),
           utcOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateTime" });
@@ -7442,15 +7738,8 @@ function __c3(j: number): any {
         identifier: "OrderTrackingSignalShipmentLineItemMapping",
       });
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(418, __c13, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PriceAmount" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           lineItemId: S.optional(S.String),
@@ -7467,54 +7756,50 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "OrderTrackingSignalLineItemDetails",
       });
+    case 5:
+      return S.Array(__S(420, __c13, 4));
     case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           shippingStatus: S.optional(S.String),
-          earliestDeliveryPromiseTime: S.optional(__S(25, __c3, 1)),
+          earliestDeliveryPromiseTime: S.optional(__S(417, __c13, 1)),
           carrierName: S.optional(S.String),
-          shippedTime: S.optional(__S(25, __c3, 1)),
+          shippedTime: S.optional(__S(417, __c13, 1)),
           shipmentId: S.optional(S.String),
-          latestDeliveryPromiseTime: S.optional(__S(25, __c3, 1)),
+          latestDeliveryPromiseTime: S.optional(__S(417, __c13, 1)),
           carrierServiceName: S.optional(S.String),
           originPostalCode: S.optional(S.String),
           trackingId: S.optional(S.String),
           originRegionCode: S.optional(S.String),
-          actualDeliveryTime: S.optional(__S(25, __c3, 1)),
+          actualDeliveryTime: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({
         identifier: "OrderTrackingSignalShippingInfo",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(422, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          orderCreatedTime: S.optional(__S(25, __c3, 1)),
-          shipmentLineItemMapping: S.optional(__S(27, __c3, 3)),
+          orderCreatedTime: S.optional(__S(417, __c13, 1)),
+          shipmentLineItemMapping: S.optional(__S(419, __c13, 3)),
           deliveryPostalCode: S.optional(S.String),
           orderId: S.optional(S.String),
           merchantId: S.optional(S.String),
           orderTrackingSignalId: S.optional(S.String),
           deliveryRegionCode: S.optional(S.String),
-          customerShippingFee: S.optional(__S(28, __c3, 4)),
-          lineItems: S.optional(__S(30, __c3, 6)),
-          shippingInfo: S.optional(__S(32, __c4, 0)),
+          customerShippingFee: S.optional(__S(448, __c14, 0)),
+          lineItems: S.optional(__S(421, __c13, 5)),
+          shippingInfo: S.optional(__S(423, __c13, 7)),
         }),
       ).annotate({
         identifier: "OrderTrackingSignal",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(424, __c13, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7525,823 +7810,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateOrdertrackingsignalsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductId" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          firstPostalCode: S.optional(S.String),
-          lastPostalCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeliveryAreaPostalCodeRange",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          countryCode: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          postalCodeRange: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "DeliveryArea" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxTransitTimeDays: S.optional(S.Number),
-          minHandlingTimeDays: S.optional(S.Number),
-          minTransitTimeDays: S.optional(S.Number),
-          maxHandlingTimeDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ProductDeliveryTimeAreaDeliveryTimeDeliveryTime",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deliveryArea: S.optional(__S(37, __c4, 5)),
-          deliveryTime: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "ProductDeliveryTimeAreaDeliveryTime",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(__S(35, __c4, 3)),
-          areaDeliveryTimes: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "ProductDeliveryTime",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/productdeliverytime",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProductdeliverytimeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimePeriod" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PromotionPromotionStatusDestinationStatus",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          detail: S.optional(S.String),
-          code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PromotionPromotionStatusPromotionIssue",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          destinationStatuses: S.optional(__S(45, __c5, 5)),
-          lastUpdateDate: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          promotionIssue: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "PromotionPromotionStatus",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          promotionUrl: S.optional(S.String),
-          longTitle: S.optional(S.String),
-          limitQuantity: S.optional(S.Number),
-          freeGiftItemId: S.optional(S.String),
-          promotionDisplayTimePeriod: S.optional(__S(43, __c5, 3)),
-          freeGiftDescription: S.optional(S.String),
-          promotionStatus: S.optional(__S(48, __c6, 0)),
-          itemGroupId: S.optional(__S(12, __c1, 4)),
-          moneyBudget: S.optional(__S(28, __c3, 4)),
-          productApplicability: S.optional(S.String),
-          brandExclusion: S.optional(__S(12, __c1, 4)),
-          customRedemptionRestriction: S.optional(S.String),
-          promotionEffectiveDates: S.optional(S.String),
-          promotionDisplayDates: S.optional(S.String),
-          id: S.optional(S.String),
-          maxDiscountAmount: S.optional(__S(28, __c3, 4)),
-          orderLimit: S.optional(S.Number),
-          percentOff: S.optional(S.Number),
-          targetCountry: S.optional(S.String),
-          minimumPurchaseQuantity: S.optional(S.Number),
-          offerType: S.optional(S.String),
-          productType: S.optional(__S(12, __c1, 4)),
-          promotionId: S.optional(S.String),
-          itemId: S.optional(__S(12, __c1, 4)),
-          moneyOffAmount: S.optional(__S(28, __c3, 4)),
-          genericRedemptionCode: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          redemptionChannel: S.optional(__S(49, __c6, 1)),
-          redemptionRestriction: S.optional(S.String),
-          limitValue: S.optional(__S(28, __c3, 4)),
-          promotionEffectiveTimePeriod: S.optional(__S(43, __c5, 3)),
-          brand: S.optional(__S(12, __c1, 4)),
-          shippingServiceNames: S.optional(__S(12, __c1, 4)),
-          couponValueType: S.optional(S.String),
-          promotionDestinationIds: S.optional(__S(12, __c1, 4)),
-          storeCode: S.optional(__S(12, __c1, 4)),
-          freeGiftValue: S.optional(__S(28, __c3, 4)),
-          storeApplicability: S.optional(S.String),
-          minimumPurchaseAmount: S.optional(__S(28, __c3, 4)),
-          itemIdExclusion: S.optional(__S(12, __c1, 4)),
-          productTypeExclusion: S.optional(__S(12, __c1, 4)),
-          getThisQuantityDiscounted: S.optional(S.Number),
-          itemGroupIdExclusion: S.optional(__S(12, __c1, 4)),
-          storeCodeExclusion: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Promotion" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/promotions",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePromotionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          geotargetCriteriaIds: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "RegionGeoTargetArea",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          begin: S.optional(S.String),
-          end: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegionPostalCodeAreaPostalCodeRange",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          postalCodes: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "RegionPostalCodeArea",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regionalInventoryEligible: S.optional(S.Boolean),
-          regionId: S.optional(S.String),
-          shippingEligible: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          geotargetArea: S.optional(__S(52, __c6, 4)),
-          merchantId: S.optional(S.String),
-          postalCodeArea: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "Region" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          regionId: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/regions",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRegionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          days: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReturnPolicyOnlinePolicy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          fixedFee: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "ReturnPolicyOnlineReturnShippingFee",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          returnReasonCategory: S.optional(S.String),
-          returnLabelSource: S.optional(S.String),
-          returnShippingFee: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fixedFee: S.optional(__S(28, __c3, 4)),
-          microPercent: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ReturnPolicyOnlineRestockingFee",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(58, __c7, 2)),
-          returnReasonCategoryInfo: S.optional(__S(61, __c7, 5)),
-          itemConditions: S.optional(__S(49, __c6, 1)),
-          label: S.optional(S.String),
-          countries: S.optional(__S(12, __c1, 4)),
-          restockingFee: S.optional(__S(62, __c7, 6)),
-          returnMethods: S.optional(__S(49, __c6, 1)),
-          returnPolicyUri: S.optional(S.String),
-          returnPolicyId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReturnPolicyOnline",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/returnpolicyonline",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReturnpolicyonlineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          gmbAccountId: S.optional(S.String),
-          gmbEmail: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountGoogleMyBusinessLink",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orderManager: S.optional(S.Boolean),
-          paymentsAnalyst: S.optional(S.Boolean),
-          admin: S.optional(S.Boolean),
-          paymentsManager: S.optional(S.Boolean),
-          reportingManager: S.optional(S.Boolean),
-          emailAddress: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AccountUser" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adsId: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountAdsLink" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          channelId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountYouTubeChannelLink",
-      });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          freeListingsAutoTaggingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountConversionSettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          url: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountCustomerService",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          streetAddress: S.optional(S.String),
-          locality: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountAddress" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          koreanBusinessRegistrationNumber: S.optional(S.String),
-          phoneVerificationStatus: S.optional(S.String),
-          customerService: S.optional(__S(73, __c9, 1)),
-          phoneNumber: S.optional(S.String),
-          address: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "AccountBusinessInformation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowAutomaticImageImprovements: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountImageImprovementsSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountImageImprovementsSettings: S.optional(__S(76, __c9, 4)),
-          effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountImageImprovements",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowShippingImprovements: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountShippingImprovements",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowConditionUpdates: S.optional(S.Boolean),
-          allowPriceUpdates: S.optional(S.Boolean),
-          allowStrictAvailabilityUpdates: S.optional(S.Boolean),
-          allowAvailabilityUpdates: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountItemUpdatesSettings",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountItemUpdatesSettings: S.optional(__S(79, __c9, 7)),
-          effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
-          effectiveAllowPriceUpdates: S.optional(S.Boolean),
-          effectiveAllowConditionUpdates: S.optional(S.Boolean),
-          effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountItemUpdates",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          imageImprovements: S.optional(__S(77, __c9, 5)),
-          shippingImprovements: S.optional(__S(78, __c9, 6)),
-          itemUpdates: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "AccountAutomaticImprovements",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selfIdentified: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountIdentityType",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          smallBusiness: S.optional(__S(82, __c10, 2)),
-          latinoOwned: S.optional(__S(82, __c10, 2)),
-          veteranOwned: S.optional(__S(82, __c10, 2)),
-          blackOwned: S.optional(__S(82, __c10, 2)),
-          womenOwned: S.optional(__S(82, __c10, 2)),
-          includeForPromotions: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountBusinessIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          websiteUrl: S.optional(S.String),
-          kind: S.optional(S.String),
-          automaticLabelIds: S.optional(__S(12, __c1, 4)),
-          googleMyBusinessLink: S.optional(__S(65, __c8, 1)),
-          users: S.optional(__S(67, __c8, 3)),
-          adsLinks: S.optional(__S(69, __c8, 5)),
-          name: S.optional(S.String),
-          adultContent: S.optional(S.Boolean),
-          youtubeChannelLinks: S.optional(__S(71, __c8, 7)),
-          cssId: S.optional(S.String),
-          conversionSettings: S.optional(__S(72, __c9, 0)),
-          sellerId: S.optional(S.String),
-          businessInformation: S.optional(__S(75, __c9, 3)),
-          labelIds: S.optional(__S(12, __c1, 4)),
-          id: S.optional(S.String),
-          automaticImprovements: S.optional(__S(81, __c10, 1)),
-          accountManagement: S.optional(S.String),
-          businessIdentity: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          linkType: S.optional(S.String),
-          action: S.optional(S.String),
-          linkedAccountId: S.optional(S.String),
-          services: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "AccountsCustomBatchRequestEntryLinkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean),
-          merchantId: S.optional(S.String),
-          overwrite: S.optional(S.Boolean),
-          accountId: S.optional(S.String),
-          account: S.optional(__S(84, __c10, 4)),
-          view: S.optional(S.String),
-          method: S.optional(S.String),
-          labelIds: S.optional(__S(12, __c1, 4)),
-          linkRequest: S.optional(__S(85, __c10, 5)),
-          batchId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AccountsCustomBatchRequestEntry",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "AccountsCustomBatchRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          domain: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Content_Error" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(91, __c11, 3)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Errors" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(92, __c11, 4)),
-          batchId: S.optional(S.Number),
-          account: S.optional(__S(84, __c10, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsCustomBatchResponseEntry",
-      });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(94, __c11, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsCustomBatchResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.optional(S.String),
-          destinations: S.optional(__S(12, __c1, 4)),
-          batchId: S.optional(S.Number),
-          method: S.optional(S.String),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountstatusesCustomBatchRequestEntry",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "AccountstatusesCustomBatchRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accountstatuses/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchAccountstatusesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attributeName: S.optional(S.String),
-          servability: S.optional(S.String),
-          detail: S.optional(S.String),
-          numItems: S.optional(S.String),
-          documentation: S.optional(S.String),
-          code: S.optional(S.String),
-          resolution: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountStatusItemLevelIssue",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disapproved: S.optional(S.String),
-          active: S.optional(S.String),
-          expiring: S.optional(S.String),
-          pending: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountStatusStatistics",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          itemLevelIssues: S.optional(__S(101, __c12, 5)),
-          country: S.optional(S.String),
-          statistics: S.optional(__S(102, __c12, 6)),
-          channel: S.optional(S.String),
-          destination: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountStatusProducts",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.String),
-          severity: S.optional(S.String),
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          documentation: S.optional(S.String),
-          detail: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountStatusAccountLevelIssue",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          products: S.optional(__S(104, __c13, 0)),
-          accountLevelIssues: S.optional(__S(106, __c13, 2)),
-          websiteClaimed: S.optional(S.Boolean),
-          accountManagement: S.optional(S.String),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          batchId: S.optional(S.Number),
-          errors: S.optional(__S(92, __c11, 4)),
-          accountStatus: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "AccountstatusesCustomBatchResponseEntry",
-      });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(109, __c13, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountstatusesCustomBatchResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-          country: S.optional(S.String),
-          useGlobalRate: S.optional(S.Boolean),
-          ratePercent: S.optional(S.String),
-          shippingTaxed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountTaxTaxRule",
-      });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(112, __c14, 0)),
-          kind: S.optional(S.String),
-          accountId: S.optional(S.String),
+          currency: S.optional(S.String),
+          value: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AccountTax" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.optional(S.String),
-          accountTax: S.optional(__S(113, __c14, 1)),
-          batchId: S.optional(S.Number),
-          accountId: S.optional(S.String),
-          method: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccounttaxCustomBatchRequestEntry",
-      });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({
-        identifier: "AccounttaxCustomBatchRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounttax/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchAccounttaxRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountTax: S.optional(__S(113, __c14, 1)),
-          batchId: S.optional(S.Number),
-          errors: S.optional(__S(92, __c11, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccounttaxCustomBatchResponseEntry",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
+      ).annotate({ identifier: "PriceAmount" });
   }
 }
 function __c15(j: number): any {
@@ -8349,3884 +7828,8 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          entries: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "AccounttaxCustomBatchResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minuteOfHour: S.optional(S.Number),
-          fetchUrl: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          password: S.optional(S.String),
-          username: S.optional(S.String),
-          dayOfMonth: S.optional(S.Number),
-          weekday: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          hour: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DatafeedFetchSchedule",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          columnDelimiter: S.optional(S.String),
-          fileEncoding: S.optional(S.String),
-          quotingMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatafeedFormat" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          feedLabel: S.optional(S.String),
-          includedDestinations: S.optional(__S(12, __c1, 4)),
-          excludedDestinations: S.optional(__S(12, __c1, 4)),
-          language: S.optional(S.String),
-          country: S.optional(S.String),
-          targetCountries: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "DatafeedTarget" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          fetchSchedule: S.optional(__S(121, __c15, 1)),
-          format: S.optional(__S(122, __c15, 2)),
-          kind: S.optional(S.String),
-          attributeLanguage: S.optional(S.String),
-          id: S.optional(S.String),
-          fileName: S.optional(S.String),
-          targets: S.optional(__S(124, __c15, 4)),
-          contentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Datafeed" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datafeedId: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          datafeed: S.optional(__S(125, __c15, 5)),
-          method: S.optional(S.String),
-          merchantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatafeedsCustomBatchRequestEntry",
-      });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "DatafeedsCustomBatchRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "datafeeds/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchDatafeedsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(92, __c11, 4)),
-          batchId: S.optional(S.Number),
-          datafeed: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "DatafeedsCustomBatchResponseEntry",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          entries: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "DatafeedsCustomBatchResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          batchId: S.optional(S.Number),
-          feedLabel: S.optional(S.String),
-          datafeedId: S.optional(S.String),
-          language: S.optional(S.String),
-          country: S.optional(S.String),
-          merchantId: S.optional(S.String),
-          method: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatafeedstatusesCustomBatchRequestEntry",
-      });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({
-        identifier: "DatafeedstatusesCustomBatchRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "datafeedstatuses/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchDatafeedstatusesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lineNumber: S.optional(S.String),
-          value: S.optional(S.String),
-          itemId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatafeedStatusExample",
-      });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          examples: S.optional(__S(138, __c17, 2)),
-          message: S.optional(S.String),
-          code: S.optional(S.String),
-          count: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatafeedStatusError",
-      });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          errors: S.optional(__S(140, __c17, 4)),
-          language: S.optional(S.String),
-          kind: S.optional(S.String),
-          processingStatus: S.optional(S.String),
-          itemsTotal: S.optional(S.String),
-          itemsValid: S.optional(S.String),
-          feedLabel: S.optional(S.String),
-          lastUploadDate: S.optional(S.String),
-          warnings: S.optional(__S(140, __c17, 4)),
-          datafeedId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatafeedStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(92, __c11, 4)),
-          datafeedStatus: S.optional(__S(141, __c17, 5)),
-          batchId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DatafeedstatusesCustomBatchResponseEntry",
-      });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          entries: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({
-        identifier: "DatafeedstatusesCustomBatchResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lsfType: S.optional(S.String),
-          country: S.optional(S.String),
-          pickupTypes: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "LiaOmnichannelExperience",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiaAboutPageSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          shippingCostPolicyUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiaOnDisplayToOrderSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          posExternalAccountId: S.optional(S.String),
-          posDataProviderId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiaPosDataProvider",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inventoryVerificationContactEmail: S.optional(S.String),
-          status: S.optional(S.String),
-          inventoryVerificationContactName: S.optional(S.String),
-          inventoryVerificationContactStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiaInventorySettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          omnichannelExperience: S.optional(__S(145, __c18, 1)),
-          country: S.optional(S.String),
-          storePickupActive: S.optional(S.Boolean),
-          hostedLocalStorefrontActive: S.optional(S.Boolean),
-          about: S.optional(__S(146, __c18, 2)),
-          onDisplayToOrder: S.optional(__S(147, __c18, 3)),
-          posDataProvider: S.optional(__S(148, __c18, 4)),
-          inventory: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "LiaCountrySettings",
-      });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          countrySettings: S.optional(__S(151, __c18, 7)),
-          kind: S.optional(S.String),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiaSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          posExternalAccountId: S.optional(S.String),
-          gmbEmail: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          posDataProviderId: S.optional(S.String),
-          country: S.optional(S.String),
-          omnichannelExperience: S.optional(__S(145, __c18, 1)),
-          accountId: S.optional(S.String),
-          contactName: S.optional(S.String),
-          liaSettings: S.optional(__S(152, __c19, 0)),
-          method: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          merchantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiasettingsCustomBatchRequestEntry",
-      });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(154, __c19, 2)),
-        }),
-      ).annotate({
-        identifier: "LiasettingsCustomBatchRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "liasettings/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchLiasettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          providerId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          fullName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PosDataProvidersPosDataProvider",
-      });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          posDataProviders: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "PosDataProviders",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-          listingCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GmbAccountsGmbAccount",
-      });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gmbAccounts: S.optional(__S(162, __c20, 2)),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GmbAccounts" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          posDataProviders: S.optional(__S(160, __c20, 0)),
-          gmbAccounts: S.optional(__S(163, __c20, 3)),
-          batchId: S.optional(S.Number),
-          kind: S.optional(S.String),
-          errors: S.optional(__S(92, __c11, 4)),
-          liaSettings: S.optional(__S(152, __c19, 0)),
-          omnichannelExperience: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({
-        identifier: "LiasettingsCustomBatchResponseEntry",
-      });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(165, __c20, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiasettingsCustomBatchResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupValues: S.optional(S.suspend(() => __S(168, __c21, 0))),
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomAttribute",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          currency: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pickupMethod: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          customAttributes: S.optional(__S(168, __c21, 0)),
-          kind: S.optional(S.String),
-          quantity: S.optional(S.Number),
-          instoreProductLocation: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          availability: S.optional(S.String),
-          salePriceEffectiveDate: S.optional(S.String),
-          salePrice: S.optional(__S(169, __c21, 1)),
-          pickupSla: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalInventory" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          localInventory: S.optional(__S(170, __c21, 2)),
-          merchantId: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          productId: S.optional(S.String),
-          method: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LocalinventoryCustomBatchRequestEntry",
-      });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({
-        identifier: "LocalinventoryCustomBatchRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "localinventory/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchLocalinventoryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          batchId: S.optional(S.Number),
-          errors: S.optional(__S(92, __c11, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LocalinventoryCustomBatchResponseEntry",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          entries: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "LocalinventoryCustomBatchResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          saleId: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          itemId: S.optional(S.String),
-          kind: S.optional(S.String),
-          gtin: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          targetCountry: S.optional(S.String),
-          storeCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PosSale" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pickupMethod: S.optional(S.String),
-          quantity: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          pickupSla: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          itemId: S.optional(S.String),
-          targetCountry: S.optional(S.String),
-          kind: S.optional(S.String),
-          gtin: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "PosInventory" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-          storeAddress: S.optional(S.String),
-          storeName: S.optional(S.String),
-          kind: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          websiteUrl: S.optional(S.String),
-          gcidCategory: S.optional(__S(12, __c1, 4)),
-          matchingStatusHint: S.optional(S.String),
-          matchingStatus: S.optional(S.String),
-          placeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PosStore" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          sale: S.optional(__S(178, __c22, 2)),
-          targetMerchantId: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          inventory: S.optional(__S(179, __c22, 3)),
-          method: S.optional(S.String),
-          store: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({
-        identifier: "PosCustomBatchRequestEntry",
-      });
-    case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "PosCustomBatchRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(183, __c22, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "pos/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchPosRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          errors: S.optional(__S(92, __c11, 4)),
-          batchId: S.optional(S.Number),
-          sale: S.optional(__S(178, __c22, 2)),
-          inventory: S.optional(__S(179, __c22, 3)),
-          store: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({
-        identifier: "PosCustomBatchResponseEntry",
-      });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(186, __c23, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PosCustomBatchResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductDimension",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductUnitPricingBaseMeasure",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          certificationValue: S.optional(S.String),
-          certificationAuthority: S.optional(S.String),
-          certificationName: S.optional(S.String),
-          certificationCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductCertification",
-      });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          programLabel: S.optional(S.String),
-          tierLabel: S.optional(S.String),
-          loyaltyPoints: S.optional(S.String),
-          memberPriceEffectiveDate: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          cashbackForFutureUse: S.optional(__S(169, __c21, 1)),
-          shippingLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoyaltyProgram" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          percentage: S.optional(S.Number),
-          amount: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "ProductSustainabilityIncentive",
-      });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          digitalSourceType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductStructuredTitle",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          priceThreshold: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "FreeShippingThreshold",
-      });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductWeight" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          period: S.optional(S.String),
-          periodLength: S.optional(S.String),
-          amount: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "ProductSubscriptionCost",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minValue: S.optional(S.Number),
-          maxValue: S.optional(S.Number),
-          unitCode: S.optional(S.String),
-          intValue: S.optional(__S(12, __c1, 4)),
-          boolValue: S.optional(S.Boolean),
-          propertyName: S.optional(S.String),
-          textValue: S.optional(__S(12, __c1, 4)),
-          floatValue: S.optional(__S(200, __c25, 0)),
-        }),
-      ).annotate({
-        identifier: "CloudExportAdditionalProperties",
-      });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ProductShippingWeight",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          taxShip: S.optional(S.Boolean),
-          rate: S.optional(S.Number),
-          locationId: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          region: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductTax" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          downpayment: S.optional(__S(169, __c21, 1)),
-          months: S.optional(S.String),
-          creditType: S.optional(S.String),
-          amount: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "Installment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sectionName: S.optional(S.String),
-          attributeName: S.optional(S.String),
-          attributeValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductProductDetail",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          locationGroupName: S.optional(S.String),
-          locationId: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          minHandlingTime: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          minTransitTime: S.optional(S.String),
-          maxHandlingTime: S.optional(S.String),
-          region: S.optional(S.String),
-          country: S.optional(S.String),
-          service: S.optional(S.String),
-          maxTransitTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductShipping",
-      });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.Array(__S(192, __c24, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isBundle: S.optional(S.Boolean),
-          additionalImageLinks: S.optional(__S(12, __c1, 4)),
-          id: S.optional(S.String),
-          channel: S.optional(S.String),
-          virtualModelLink: S.optional(S.String),
-          ageGroup: S.optional(S.String),
-          taxCategory: S.optional(S.String),
-          productWidth: S.optional(__S(188, __c23, 4)),
-          feedLabel: S.optional(S.String),
-          maxEnergyEfficiencyClass: S.optional(S.String),
-          productHighlights: S.optional(__S(12, __c1, 4)),
-          customAttributes: S.optional(__S(168, __c21, 0)),
-          displayAdsSimilarIds: S.optional(__S(12, __c1, 4)),
-          unitPricingBaseMeasure: S.optional(__S(189, __c23, 5)),
-          targetCountry: S.optional(S.String),
-          linkTemplate: S.optional(S.String),
-          certifications: S.optional(__S(191, __c23, 7)),
-          expirationDate: S.optional(S.String),
-          loyaltyProgram: S.optional(__S(192, __c24, 0)),
-          adult: S.optional(S.Boolean),
-          sustainabilityIncentives: S.optional(__S(194, __c24, 2)),
-          mobileLink: S.optional(S.String),
-          transitTimeLabel: S.optional(S.String),
-          unitPricingMeasure: S.optional(__S(188, __c23, 4)),
-          sizeType: S.optional(S.String),
-          pickupSla: S.optional(S.String),
-          multipack: S.optional(S.String),
-          energyEfficiencyClass: S.optional(S.String),
-          maxHandlingTime: S.optional(S.String),
-          structuredTitle: S.optional(__S(195, __c24, 3)),
-          disclosureDate: S.optional(S.String),
-          availability: S.optional(S.String),
-          productTypes: S.optional(__S(12, __c1, 4)),
-          adsGrouping: S.optional(S.String),
-          gender: S.optional(S.String),
-          customLabel0: S.optional(S.String),
-          freeShippingThreshold: S.optional(__S(197, __c24, 5)),
-          salePriceEffectiveDate: S.optional(S.String),
-          salePrice: S.optional(__S(169, __c21, 1)),
-          shoppingAdsExcludedCountries: S.optional(__S(12, __c1, 4)),
-          minHandlingTime: S.optional(S.String),
-          source: S.optional(S.String),
-          productWeight: S.optional(__S(198, __c24, 6)),
-          displayAdsId: S.optional(S.String),
-          productLength: S.optional(__S(188, __c23, 4)),
-          subscriptionCost: S.optional(__S(199, __c24, 7)),
-          cloudExportAdditionalProperties: S.optional(__S(202, __c25, 2)),
-          externalSellerId: S.optional(S.String),
-          link: S.optional(S.String),
-          autoPricingMinPrice: S.optional(__S(169, __c21, 1)),
-          sizes: S.optional(__S(12, __c1, 4)),
-          displayAdsValue: S.optional(S.Number),
-          productHeight: S.optional(__S(188, __c23, 4)),
-          additionalSizeType: S.optional(S.String),
-          material: S.optional(S.String),
-          kind: S.optional(S.String),
-          gtin: S.optional(S.String),
-          availabilityDate: S.optional(S.String),
-          displayAdsTitle: S.optional(S.String),
-          shippingWidth: S.optional(__S(188, __c23, 4)),
-          excludedDestinations: S.optional(__S(12, __c1, 4)),
-          maximumRetailPrice: S.optional(__S(169, __c21, 1)),
-          minEnergyEfficiencyClass: S.optional(S.String),
-          pause: S.optional(S.String),
-          brand: S.optional(S.String),
-          identifierExists: S.optional(S.Boolean),
-          includedDestinations: S.optional(__S(12, __c1, 4)),
-          offerId: S.optional(S.String),
-          itemGroupId: S.optional(S.String),
-          googleProductCategory: S.optional(S.String),
-          customLabel4: S.optional(S.String),
-          costOfGoodsSold: S.optional(__S(169, __c21, 1)),
-          shippingWeight: S.optional(__S(203, __c25, 3)),
-          sizeSystem: S.optional(S.String),
-          pattern: S.optional(S.String),
-          description: S.optional(S.String),
-          promotionIds: S.optional(__S(12, __c1, 4)),
-          mobileLinkTemplate: S.optional(S.String),
-          shippingLabel: S.optional(S.String),
-          mpn: S.optional(S.String),
-          customLabel3: S.optional(S.String),
-          pickupMethod: S.optional(S.String),
-          condition: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          canonicalLink: S.optional(S.String),
-          customLabel1: S.optional(S.String),
-          adsRedirect: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          adsLabels: S.optional(__S(12, __c1, 4)),
-          structuredDescription: S.optional(__S(195, __c24, 3)),
-          taxes: S.optional(__S(205, __c25, 5)),
-          color: S.optional(S.String),
-          lifestyleImageLinks: S.optional(__S(12, __c1, 4)),
-          sellOnGoogleQuantity: S.optional(S.String),
-          shippingHeight: S.optional(__S(188, __c23, 4)),
-          installment: S.optional(__S(206, __c25, 6)),
-          productDetails: S.optional(__S(208, __c26, 0)),
-          imageLink: S.optional(S.String),
-          shipping: S.optional(__S(210, __c26, 2)),
-          title: S.optional(S.String),
-          displayAdsLink: S.optional(S.String),
-          loyaltyPrograms: S.optional(__S(211, __c26, 3)),
-          shippingLength: S.optional(__S(188, __c23, 4)),
-          customLabel2: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.optional(__S(212, __c26, 4)),
-          productId: S.optional(S.String),
-          feedId: S.optional(S.String),
-          method: S.optional(S.String),
-          merchantId: S.optional(S.String),
-          updateMask: S.optional(S.String),
-          batchId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ProductsCustomBatchRequestEntry",
-      });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "ProductsCustomBatchRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(215, __c26, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "products/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchProductsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.optional(__S(212, __c26, 4)),
-          kind: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          errors: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "ProductsCustomBatchResponseEntry",
-      });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(218, __c27, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductsCustomBatchResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          method: S.optional(S.String),
-          destinations: S.optional(__S(12, __c1, 4)),
-          includeAttributes: S.optional(S.Boolean),
-          merchantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductstatusesCustomBatchRequestEntry",
-      });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "ProductstatusesCustomBatchRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(222, __c27, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "productstatuses/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchProductstatusesRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          channel: S.optional(S.String),
-          disapprovedCountries: S.optional(__S(12, __c1, 4)),
-          destination: S.optional(S.String),
-          approvedCountries: S.optional(__S(12, __c1, 4)),
-          pendingCountries: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ProductStatusDestinationStatus",
-      });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          detail: S.optional(S.String),
-          code: S.optional(S.String),
-          attributeName: S.optional(S.String),
-          destination: S.optional(S.String),
-          resolution: S.optional(S.String),
-          documentation: S.optional(S.String),
-          applicableCountries: S.optional(__S(12, __c1, 4)),
-          servability: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductStatusItemLevelIssue",
-      });
-    case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          link: S.optional(S.String),
-          lastUpdateDate: S.optional(S.String),
-          productId: S.optional(S.String),
-          destinationStatuses: S.optional(__S(225, __c28, 1)),
-          googleExpirationDate: S.optional(S.String),
-          kind: S.optional(S.String),
-          itemLevelIssues: S.optional(__S(227, __c28, 3)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(92, __c11, 4)),
-          batchId: S.optional(S.Number),
-          kind: S.optional(S.String),
-          productStatus: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({
-        identifier: "ProductstatusesCustomBatchResponseEntry",
-      });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(230, __c28, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductstatusesCustomBatchResponse",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regionId: S.optional(S.String),
-          availability: S.optional(S.String),
-          kind: S.optional(S.String),
-          salePrice: S.optional(__S(169, __c21, 1)),
-          price: S.optional(__S(169, __c21, 1)),
-          customAttributes: S.optional(__S(168, __c21, 0)),
-          salePriceEffectiveDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegionalInventory",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.optional(S.String),
-          method: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          regionalInventory: S.optional(__S(232, __c29, 0)),
-          productId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegionalinventoryCustomBatchRequestEntry",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(234, __c29, 2)),
-        }),
-      ).annotate({
-        identifier: "RegionalinventoryCustomBatchRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "regionalinventory/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchRegionalinventoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionalInventory: S.optional(__S(232, __c29, 0)),
-          kind: S.optional(S.String),
-          errors: S.optional(__S(92, __c11, 4)),
-          batchId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RegionalinventoryCustomBatchResponseEntry",
-      });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(238, __c29, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegionalinventoryCustomBatchResponse",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          postalCodeRangeBegin: S.optional(S.String),
-          postalCodeRangeEnd: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PostalCodeRange",
-      });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          postalCodeRanges: S.optional(__S(241, __c30, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PostalCodeGroup",
-      });
-    case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minute: S.optional(S.Number),
-          hour: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "WarehouseCutoffTime",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          businessDays: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "BusinessDayConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          administrativeArea: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          streetAddress: S.optional(S.String),
-          city: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Address" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cutoffTime: S.optional(__S(244, __c30, 4)),
-          name: S.optional(S.String),
-          businessDayConfig: S.optional(__S(245, __c30, 5)),
-          shippingAddress: S.optional(__S(246, __c30, 6)),
-          handlingDays: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Warehouse" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
-    case 1:
-      return S.Array(__S(169, __c21, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Weight" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          locationIds: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "LocationIdSet" });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          prices: S.optional(__S(249, __c31, 1)),
-          numberOfItems: S.optional(__S(12, __c1, 4)),
-          weights: S.optional(__S(251, __c31, 3)),
-          postalCodeGroupNames: S.optional(__S(12, __c1, 4)),
-          locations: S.optional(__S(253, __c31, 5)),
-        }),
-      ).annotate({ identifier: "Headers" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pricePercentage: S.optional(S.String),
-          subtableName: S.optional(S.String),
-          noShipping: S.optional(S.Boolean),
-          carrierRateName: S.optional(S.String),
-          flatRate: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "Value" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cells: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({ identifier: "Row" });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rowHeaders: S.optional(__S(254, __c31, 6)),
-          rows: S.optional(__S(258, __c32, 2)),
-          name: S.optional(S.String),
-          columnHeaders: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({ identifier: "Table" });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          flatAdjustment: S.optional(__S(169, __c21, 1)),
-          originPostalCode: S.optional(S.String),
-          percentageAdjustment: S.optional(S.String),
-          carrierService: S.optional(S.String),
-          carrierName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CarrierRate" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicableShippingLabels: S.optional(__S(12, __c1, 4)),
-          subtables: S.optional(__S(260, __c32, 4)),
-          carrierRates: S.optional(__S(262, __c32, 6)),
-          singleValue: S.optional(__S(255, __c31, 7)),
-          mainTable: S.optional(__S(259, __c32, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RateGroup" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hour: S.optional(S.String),
-          minute: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          noDeliveryPostCutoff: S.optional(S.Boolean),
-          storeCloseOffsetHours: S.optional(S.String),
-          localCutoffTime: S.optional(__S(265, __c33, 1)),
-        }),
-      ).annotate({
-        identifier: "ServiceStoreConfigCutoffConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cutoffConfig: S.optional(__S(266, __c33, 2)),
-          storeServiceType: S.optional(S.String),
-          serviceRadius: S.optional(__S(250, __c31, 2)),
-          storeCodes: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ServiceStoreConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storeCodes: S.optional(__S(12, __c1, 4)),
-          value: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "MinimumOrderValueTableStoreCodeSetWithMov",
-      });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storeCodeSetWithMovs: S.optional(__S(269, __c33, 5)),
-        }),
-      ).annotate({
-        identifier: "MinimumOrderValueTable",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deadlineTimezone: S.optional(S.String),
-          visibleFromDate: S.optional(S.String),
-          holidayId: S.optional(S.String),
-          deadlineDate: S.optional(S.String),
-          deadlineHour: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HolidayCutoff" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          originCity: S.optional(S.String),
-          originStreetAddress: S.optional(S.String),
-          originPostalCode: S.optional(S.String),
-          originCountry: S.optional(S.String),
-          originAdministrativeArea: S.optional(S.String),
-          carrierService: S.optional(S.String),
-          carrier: S.optional(S.String),
-          warehouseName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WarehouseBasedDeliveryTime",
-      });
-    case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          minTransitTimeInDays: S.optional(S.Number),
-          maxTransitTimeInDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TransitTableTransitTimeRowTransitTimeValue",
-      });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(276, __c34, 4)),
-        }),
-      ).annotate({
-        identifier: "TransitTableTransitTimeRow",
-      });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(__S(278, __c34, 6)),
-          transitTimeLabels: S.optional(__S(12, __c1, 4)),
-          postalCodeGroupNames: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "TransitTable" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timezone: S.optional(S.String),
-          hour: S.optional(S.Number),
-          minute: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CutoffTime" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minHandlingTimeInDays: S.optional(S.Number),
-          holidayCutoffs: S.optional(__S(272, __c34, 0)),
-          transitBusinessDayConfig: S.optional(__S(245, __c30, 5)),
-          maxHandlingTimeInDays: S.optional(S.Number),
-          minTransitTimeInDays: S.optional(S.Number),
-          warehouseBasedDeliveryTimes: S.optional(__S(274, __c34, 2)),
-          handlingBusinessDayConfig: S.optional(__S(245, __c30, 5)),
-          transitTimeTable: S.optional(__S(279, __c34, 7)),
-          maxTransitTimeInDays: S.optional(S.Number),
-          cutoffTime: S.optional(__S(280, __c35, 0)),
-        }),
-      ).annotate({ identifier: "DeliveryTime" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          carrierName: S.optional(S.String),
-          serviceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PickupCarrierService",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rateGroups: S.optional(__S(264, __c33, 0)),
-          storeConfig: S.optional(__S(267, __c33, 3)),
-          currency: S.optional(S.String),
-          active: S.optional(S.Boolean),
-          minimumOrderValueTable: S.optional(__S(270, __c33, 6)),
-          deliveryTime: S.optional(__S(281, __c35, 1)),
-          minimumOrderValue: S.optional(__S(169, __c21, 1)),
-          pickupService: S.optional(__S(282, __c35, 2)),
-          shipmentType: S.optional(S.String),
-          eligibility: S.optional(S.String),
-          deliveryCountry: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Service" });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          postalCodeGroups: S.optional(__S(243, __c30, 3)),
-          warehouses: S.optional(__S(248, __c31, 0)),
-          accountId: S.optional(S.String),
-          services: S.optional(__S(284, __c35, 4)),
-        }),
-      ).annotate({
-        identifier: "ShippingSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          batchId: S.optional(S.Number),
-          accountId: S.optional(S.String),
-          merchantId: S.optional(S.String),
-          shippingSettings: S.optional(__S(285, __c35, 5)),
-          method: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsCustomBatchRequestEntry",
-      });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(287, __c35, 7)),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsCustomBatchRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(288, __c36, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "shippingsettings/batch",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustombatchShippingsettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(92, __c11, 4)),
-          kind: S.optional(S.String),
-          batchId: S.optional(S.Number),
-          shippingSettings: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsCustomBatchResponseEntry",
-      });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(291, __c36, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsCustomBatchResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/accounts/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccountsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          labelId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "accounts/{accountId}/labels/{labelId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsLabelsRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          carrierAccountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsReturncarrierRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccountsReturncarrierResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          collectionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/collections/{collectionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCollectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conversionSourceId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/conversionsources/{conversionSourceId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConversionsourcesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConversionsourcesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          datafeedId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/datafeeds/{datafeedId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDatafeedsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFreelistingsprogramCheckoutsettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          targetMerchantId: S.String.pipe(T.Label()),
-          storeCode: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePosRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/productdeliverytime/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProductdeliverytimeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          feedId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/products/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProductsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          regionId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/regions/{regionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          returnPolicyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReturnpolicyonlineRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          datafeedId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/datafeeds/{datafeedId}/fetchNow",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchnowDatafeedsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          allowedTag: S.optional(__S(12, __c1, 4).pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/recommendations/generate",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateRecommendationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecommendationCreative",
-      });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          intent: S.optional(S.String),
-          localizedText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecommendationCallToAction",
-      });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecommendationDescription",
-      });
-    case 3:
-      return S.Array(__S(314, __c39, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultDescription: S.optional(S.String),
-          creative: S.optional(__S(311, __c38, 7)),
-          subType: S.optional(S.String),
-          defaultCallToAction: S.optional(__S(312, __c39, 0)),
-          type: S.optional(S.String),
-          additionalCallToAction: S.optional(__S(313, __c39, 1)),
-          numericalImpact: S.optional(S.Number),
-          paid: S.optional(S.Boolean),
-          additionalDescriptions: S.optional(__S(315, __c39, 3)),
-          recommendationName: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Recommendation" });
-    case 5:
-      return S.Array(__S(316, __c39, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recommendations: S.optional(__S(317, __c39, 5)),
-          responseToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenerateRecommendationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetaccessiblegmbaccountsLiasettingsRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          kind: S.optional(S.String),
-          gmbAccounts: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({
-        identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accounts/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          destinations: S.optional(__S(12, __c1, 4).pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accountstatuses/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountstatusesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accounttax/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccounttaxRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collectionId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/collections/{collectionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCollectionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collectionId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/collectionstatuses/{collectionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCollectionstatusesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          approvedCountries: S.optional(__S(12, __c1, 4)),
-          status: S.optional(S.String),
-          disapprovedCountries: S.optional(__S(12, __c1, 4)),
-          pendingCountries: S.optional(__S(12, __c1, 4)),
-          destination: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CollectionStatusDestinationStatus",
-      });
-    case 7:
-      return S.Array(__S(326, __c40, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          resolution: S.optional(S.String),
-          attributeName: S.optional(S.String),
-          detail: S.optional(S.String),
-          documentation: S.optional(S.String),
-          applicableCountries: S.optional(__S(12, __c1, 4)),
-          code: S.optional(S.String),
-          destination: S.optional(S.String),
-          servability: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CollectionStatusItemLevelIssue",
-      });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          destinationStatuses: S.optional(__S(327, __c40, 7)),
-          collectionLevelIssuses: S.optional(__S(329, __c41, 1)),
-          id: S.optional(S.String),
-          lastUpdateDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CollectionStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          conversionSourceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/conversionsources/{conversionSourceId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConversionsourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cssGroupId: S.String.pipe(T.Label()),
-          cssDomainId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{cssGroupId}/csses/{cssDomainId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCssesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          homepageUri: S.optional(S.String),
-          cssDomainId: S.optional(S.String),
-          cssGroupId: S.optional(S.String),
-          fullName: S.optional(S.String),
-          labelIds: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Css" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          datafeedId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/datafeeds/{datafeedId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatafeedsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          country: S.optional(S.String.pipe(T.Query())),
-          datafeedId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          feedLabel: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/datafeedstatuses/{datafeedId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatafeedstatusesRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/freelistingsprogram",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFreelistingsprogramRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cooldownTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reviewIneligibilityReasonDescription: S.optional(S.String),
-          reviewEligibilityStatus: S.optional(S.String),
-          reviewIneligibilityReason: S.optional(S.String),
-          reviewIneligibilityReasonDetails: S.optional(__S(337, __c42, 1)),
-          reviewIssues: S.optional(__S(12, __c1, 4)),
-          onboardingIssues: S.optional(__S(12, __c1, 4)),
-          regionCodes: S.optional(__S(12, __c1, 4)),
-          eligibilityStatus: S.optional(S.String),
-          disapprovalDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FreeListingsProgramStatusRegionStatus",
-      });
-    case 3:
-      return S.Array(__S(338, __c42, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          regionStatuses: S.optional(__S(339, __c42, 3)),
-          globalState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FreeListingsProgramStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFreelistingsprogramCheckoutsettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cartUriTemplate: S.optional(S.String),
-          checkoutUriTemplate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UrlSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveEnrollmentState: S.optional(S.String),
-          effectiveReviewState: S.optional(S.String),
-          reviewState: S.optional(S.String),
-          uriSettings: S.optional(__S(342, __c42, 6)),
-          merchantId: S.optional(S.String),
-          effectiveUriSettings: S.optional(__S(342, __c42, 6)),
-          enrollmentState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckoutSettings",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/liasettings/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetLiasettingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          storeCode: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          targetMerchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({ identifier: "GetPosRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/productdeliverytime/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductdeliverytimeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/products/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          destinations: S.optional(__S(12, __c1, 4).pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/productstatuses/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductstatusesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/promotions/{id}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPromotionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/pubsubnotificationsettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPubsubnotificationsettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          registeredEvents: S.optional(__S(12, __c1, 4)),
-          cloudTopicName: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PubsubNotificationSettings",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regionId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/regions/{regionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRegionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          returnPolicyId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetReturnpolicyonlineRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/shippingsettings/{accountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetShippingsettingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/shoppingadsprogram",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetShoppingadsprogramRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disapprovalDate: S.optional(S.String),
-          reviewIneligibilityReasonDescription: S.optional(S.String),
-          reviewIneligibilityReasonDetails: S.optional(__S(337, __c42, 1)),
-          eligibilityStatus: S.optional(S.String),
-          reviewEligibilityStatus: S.optional(S.String),
-          regionCodes: S.optional(__S(12, __c1, 4)),
-          onboardingIssues: S.optional(__S(12, __c1, 4)),
-          reviewIssues: S.optional(__S(12, __c1, 4)),
-          reviewIneligibilityReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ShoppingAdsProgramStatusRegionStatus",
-      });
-    case 5:
-      return S.Array(__S(356, __c44, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          globalState: S.optional(S.String),
-          regionStatuses: S.optional(__S(357, __c44, 5)),
-        }),
-      ).annotate({
-        identifier: "ShoppingAdsProgramStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/supportedCarriers",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetsupportedcarriersShippingsettingsRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(12, __c1, 4)),
-          country: S.optional(S.String),
-          eddServices: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CarriersCarrier",
-      });
-    case 1:
-      return S.Array(__S(360, __c45, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          carriers: S.optional(__S(361, __c45, 1)),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsGetSupportedCarriersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/supportedHolidays",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetsupportedholidaysShippingsettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          deliveryGuaranteeHour: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          id: S.optional(S.String),
-          deliveryGuaranteeDate: S.optional(S.String),
-          date: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HolidaysHoliday",
-      });
-    case 5:
-      return S.Array(__S(364, __c45, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          holidays: S.optional(__S(365, __c45, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsGetSupportedHolidaysResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/supportedPickupServices",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetsupportedpickupservicesShippingsettingsRequest",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          carrierName: S.optional(S.String),
-          serviceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PickupServicesPickupService",
-      });
-    case 1:
-      return S.Array(__S(368, __c46, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          pickupServices: S.optional(__S(369, __c46, 1)),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsGetSupportedPickupServicesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/accounts",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertAccountsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/datafeeds",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertDatafeedsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uriSettings: S.optional(__S(342, __c42, 6)),
-        }),
-      ).annotate({
-        identifier: "InsertCheckoutSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(373, __c46, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertFreelistingsprogramCheckoutsettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/products/{productId}/localinventory",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertLocalinventoryRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          targetMerchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(180, __c22, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/pos/{targetMerchantId}/store",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertPosRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          feedId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(212, __c26, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/products",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertProductsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/products/{productId}/regionalinventory",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertRegionalinventoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          price: S.optional(__S(169, __c21, 1)),
-          storeCode: S.optional(S.String),
-          pickupMethod: S.optional(S.String),
-          itemId: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          targetCountry: S.optional(S.String),
-          quantity: S.optional(S.String),
-          pickupSla: S.optional(S.String),
-          gtin: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PosInventoryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetMerchantId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(379, __c47, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/pos/{targetMerchantId}/inventory",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InventoryPosRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.String),
-          pickupSla: S.optional(S.String),
-          kind: S.optional(S.String),
-          gtin: S.optional(S.String),
-          pickupMethod: S.optional(S.String),
-          targetCountry: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          itemId: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
-          contentLanguage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PosInventoryResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          externalAccountId: S.optional(S.String),
-          externalAccountBusinessCountry: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PaymentServiceProviderLinkInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalAccountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ECommercePlatformLinkInfo",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          linkType: S.optional(S.String),
-          linkedAccountId: S.optional(S.String),
-          paymentServiceProviderLinkInfo: S.optional(__S(382, __c47, 6)),
-          services: S.optional(__S(12, __c1, 4)),
-          eCommercePlatformLinkInfo: S.optional(__S(383, __c47, 7)),
-          action: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsLinkRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(384, __c48, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/accounts/{accountId}/link",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LinkAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          label: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accounts",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsRequest",
-      });
-    case 3:
-      return S.Array(__S(84, __c10, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          resources: S.optional(__S(387, __c48, 3)),
-        }),
-      ).annotate({
-        identifier: "AccountsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          accountId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "accounts/{accountId}/labels",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsLabelsRequest",
-      });
-    case 6:
-      return S.Array(__S(8, __c1, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountLabels: S.optional(__S(390, __c48, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAccountLabelsResponse",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "accounts/{accountId}/returncarrier",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsReturncarrierRequest",
-      });
-    case 1:
-      return S.Array(__S(10, __c1, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountReturnCarriers: S.optional(__S(393, __c49, 1)),
-        }),
-      ).annotate({
-        identifier: "ListAccountReturnCarrierResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destinations: S.optional(__S(12, __c1, 4).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accountstatuses",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountstatusesRequest",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          resources: S.optional(__S(396, __c49, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountstatusesListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accounttax",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccounttaxRequest",
-      });
-    case 7:
-      return S.Array(__S(113, __c14, 1));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          resources: S.optional(__S(399, __c49, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccounttaxListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/collections",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionsRequest",
-      });
-    case 2:
-      return S.Array(__S(15, __c1, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(402, __c50, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCollectionsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/collectionstatuses",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionstatusesRequest",
-      });
-    case 5:
-      return S.Array(__S(330, __c41, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          resources: S.optional(__S(405, __c50, 5)),
-        }),
-      ).annotate({
-        identifier: "ListCollectionStatusesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/conversionsources",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConversionsourcesRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conversionSources: S.optional(__S(408, __c51, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListConversionSourcesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          cssGroupId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{cssGroupId}/csses",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCssesRequest",
-      });
-    case 3:
-      return S.Array(__S(333, __c41, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          csses: S.optional(__S(411, __c51, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCssesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/datafeeds",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDatafeedsRequest",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          resources: S.optional(__S(414, __c51, 6)),
-        }),
-      ).annotate({
-        identifier: "DatafeedsListResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/datafeedstatuses",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDatafeedstatusesRequest",
-      });
-    case 1:
-      return S.Array(__S(141, __c17, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(417, __c52, 1)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatafeedstatusesListResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/liasettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLiasettingsRequest",
-      });
-    case 4:
-      return S.Array(__S(152, __c19, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(420, __c52, 4)),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiasettingsListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/accounts/{accountId}/listlinks",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListlinksAccountsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkService" });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(423, __c52, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          linkedAccountId: S.optional(S.String),
-          services: S.optional(__S(424, __c53, 0)),
-        }),
-      ).annotate({ identifier: "LinkedAccount" });
-    case 2:
-      return S.Array(__S(425, __c53, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          links: S.optional(__S(426, __c53, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountsListLinksResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetMerchantId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/pos/{targetMerchantId}/store",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPosRequest" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          resources: S.optional(__S(429, __c53, 5)),
-        }),
-      ).annotate({
-        identifier: "PosListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "liasettings/posdataproviders",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListposdataprovidersLiasettingsRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          posDataProviders: S.optional(__S(160, __c20, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LiasettingsListPosDataProvidersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/products",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProductsRequest",
-      });
-    case 2:
-      return S.Array(__S(212, __c26, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          resources: S.optional(__S(434, __c54, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductsListResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          destinations: S.optional(__S(12, __c1, 4).pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/productstatuses",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProductstatusesRequest",
-      });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          resources: S.optional(__S(437, __c54, 5)),
-        }),
-      ).annotate({
-        identifier: "ProductstatusesListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          countryCode: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/promotions",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPromotionsRequest",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(50, __c6, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          promotions: S.optional(__S(440, __c55, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPromotionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/quotas",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListQuotasRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          quotaMinuteLimit: S.optional(S.String),
-          quotaUsage: S.optional(S.String),
-          quotaLimit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MethodQuota" });
-    case 4:
-      return S.Array(__S(443, __c55, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          methodQuotas: S.optional(__S(444, __c55, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListMethodQuotasResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/regions",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegionsRequest",
-      });
-    case 7:
-      return S.Array(__S(56, __c7, 0));
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          regions: S.optional(__S(447, __c55, 7)),
-        }),
-      ).annotate({
-        identifier: "ListRegionsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/returnpolicyonline",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReturnpolicyonlineRequest",
-      });
-    case 2:
-      return S.Array(__S(63, __c7, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          returnPolicies: S.optional(__S(450, __c56, 2)),
-        }),
-      ).annotate({
-        identifier: "ListReturnPolicyOnlineResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{merchantId}/shippingsettings",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListShippingsettingsRequest",
-      });
-    case 5:
-      return S.Array(__S(285, __c35, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          resources: S.optional(__S(453, __c56, 5)),
-        }),
-      ).annotate({
-        identifier: "ShippingsettingsListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          labelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "accounts/{accountId}/labels/{labelId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountsLabelsRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          carrierAccountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountsReturncarrierRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          conversionSourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "{merchantId}/conversionsources/{conversionSourceId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchConversionsourcesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          regionId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "{merchantId}/regions/{regionId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchRegionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          returnPolicyId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchReturnpolicyonlineRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contentOption: S.optional(S.String),
-          userInputActionOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RenderAccountIssuesRequestPayload",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeZone: S.optional(S.String.pipe(T.Query())),
-          merchantId: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(460, __c57, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/merchantsupport/renderaccountissues",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RenderaccountissuesMerchantsupportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          label: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AlternateDisputeResolution",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BreakdownRegion",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(12, __c1, 4)),
-          regions: S.optional(__S(464, __c58, 0)),
-        }),
-      ).annotate({ identifier: "Breakdown" });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          breakdowns: S.optional(__S(466, __c58, 2)),
-          severity: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountIssueImpact",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          simpleTooltipValue: S.optional(S.String),
-          simpleValue: S.optional(S.String),
-          tooltipIconStyle: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TextWithTooltip",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          styleHint: S.optional(S.String),
-          fullMessage: S.optional(__S(468, __c58, 4)),
-        }),
-      ).annotate({ identifier: "Callout" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ariaLabel: S.optional(S.String),
-          additionalInfo: S.optional(__S(468, __c58, 4)),
-          formatInfo: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InputFieldTextInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(__S(468, __c58, 4)),
-          additionalInput: S.optional(S.suspend(() => __S(474, __c59, 2))),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InputFieldChoiceInputChoiceInputOption",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(471, __c58, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(472, __c59, 0)),
-        }),
-      ).annotate({
-        identifier: "InputFieldChoiceInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          textInput: S.optional(__S(470, __c58, 6)),
-          id: S.optional(S.String),
-          choiceInput: S.optional(__S(473, __c59, 1)),
-          required: S.optional(S.Boolean),
-          label: S.optional(__S(468, __c58, 4)),
-          checkboxInput: S.optional(__S(294, __c36, 6)),
-        }),
-      ).annotate({ identifier: "InputField" });
-    case 3:
-      return S.Array(__S(474, __c59, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          dialogCallout: S.optional(__S(469, __c58, 5)),
-          label: S.optional(S.String),
-          dialogMessage: S.optional(__S(468, __c58, 4)),
-          inputs: S.optional(__S(475, __c59, 3)),
-          dialogTitle: S.optional(S.String),
-          dialogButtonLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionFlow" });
-    case 5:
-      return S.Array(__S(476, __c59, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          flows: S.optional(__S(477, __c59, 5)),
-          actionContext: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BuiltInUserInputAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          action: S.optional(S.suspend(() => __S(484, __c60, 4))),
-          detail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionReason" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(479, __c59, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalAction" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          paragraphs: S.optional(__S(12, __c1, 4)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BuiltInSimpleActionAdditionalContent",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          additionalContent: S.optional(__S(482, __c60, 2)),
-          attributeCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BuiltInSimpleAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buttonLabel: S.optional(S.String),
-          isAvailable: S.optional(S.Boolean),
-          builtinUserInputAction: S.optional(__S(478, __c59, 6)),
-          reasons: S.optional(__S(480, __c60, 0)),
-          externalAction: S.optional(__S(481, __c60, 1)),
-          builtinSimpleAction: S.optional(__S(483, __c60, 3)),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 5:
-      return S.Array(__S(484, __c60, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-          impact: S.optional(__S(467, __c58, 3)),
-          title: S.optional(S.String),
-          prerenderedContent: S.optional(S.String),
-          actions: S.optional(__S(485, __c60, 5)),
-        }),
-      ).annotate({ identifier: "AccountIssue" });
-    case 7:
-      return S.Array(__S(486, __c60, 6));
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alternateDisputeResolution: S.optional(__S(462, __c57, 6)),
-          issues: S.optional(__S(487, __c60, 7)),
-        }),
-      ).annotate({
-        identifier: "RenderAccountIssuesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeZone: S.optional(S.String.pipe(T.Query())),
-          productId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(460, __c57, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/merchantsupport/renderproductissues/{productId}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RenderproductissuesMerchantsupportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          message: S.optional(S.String),
-          breakdowns: S.optional(__S(466, __c58, 2)),
-        }),
-      ).annotate({
-        identifier: "ProductIssueImpact",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          actions: S.optional(__S(485, __c60, 5)),
-          prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-          impact: S.optional(__S(490, __c61, 2)),
-          prerenderedContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductIssue" });
-    case 4:
-      return S.Array(__S(491, __c61, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(__S(492, __c61, 4)),
-          alternateDisputeResolution: S.optional(__S(462, __c57, 6)),
-        }),
-      ).annotate({
-        identifier: "RenderProductIssuesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          interactionType: S.optional(S.String),
-          type: S.optional(S.String),
-          subtype: S.optional(S.String),
-          responseToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportInteractionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(494, __c61, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/recommendations/reportInteraction",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReportInteractionRecommendationsRequest",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gmbEmail: S.String.pipe(T.Query()),
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/liasettings/{accountId}/requestgmbaccess",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RequestgmbaccessLiasettingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-          merchantId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RequestinventoryverificationLiasettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          phoneVerificationMethod: S.optional(S.String),
-          phoneRegionCode: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RequestPhoneVerificationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(498, __c62, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{merchantId}/accounts/{accountId}/requestphoneverification",
-            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RequestphoneverificationAccountsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          verificationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RequestPhoneVerificationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RequestReviewFreeListingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(501, __c62, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12237,11 +7840,27 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "RequestreviewFreelistingsprogramRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RequestReviewFreeListingsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(501, __c62, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12254,7 +7873,7 @@ function __c62(j: number): any {
       });
   }
 }
-function __c63(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12265,7 +7884,7 @@ function __c63(j: number): any {
           targetCountry: S.optional(S.String),
           storeCode: S.optional(S.String),
           quantity: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
+          price: S.optional(__S(1952, __c61, 0)),
           saleId: S.optional(S.String),
           contentLanguage: S.optional(S.String),
         }),
@@ -12275,7 +7894,7 @@ function __c63(j: number): any {
         S.Struct({
           targetMerchantId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(504, __c63, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12292,7 +7911,7 @@ function __c63(j: number): any {
           quantity: S.optional(S.String),
           kind: S.optional(S.String),
           gtin: S.optional(S.String),
-          price: S.optional(__S(169, __c21, 1)),
+          price: S.optional(__S(1952, __c61, 0)),
           targetCountry: S.optional(S.String),
           contentLanguage: S.optional(S.String),
           storeCode: S.optional(S.String),
@@ -12301,7 +7920,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "PosSaleResponse",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
@@ -12309,11 +7932,11 @@ function __c63(j: number): any {
           pageSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(507, __c63, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12324,7 +7947,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "SearchReportsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           year: S.optional(S.Number),
@@ -12332,10 +7955,10 @@ function __c63(j: number): any {
           day: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Content_Date" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(__S(509, __c63, 5)),
+          date: S.optional(__S(610, __c19, 2)),
           last90DaysSearchInterest: S.optional(S.Number),
           searchInterest: S.optional(S.Number),
           customerCountryCode: S.optional(S.String),
@@ -12346,7 +7969,7 @@ function __c63(j: number): any {
           last120DaysSearchInterest: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TopicTrends" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -12358,14 +7981,10 @@ function __c63(j: number): any {
           inventoryStatus: S.optional(S.String),
           categoryL3: S.optional(S.String),
           categoryL2: S.optional(S.String),
-          variantGtins: S.optional(__S(12, __c1, 4)),
+          variantGtins: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({ identifier: "ProductCluster" });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           relativeDemand: S.optional(S.String),
@@ -12374,12 +7993,12 @@ function __c64(j: number): any {
           previousRelativeDemand: S.optional(S.String),
           reportGranularity: S.optional(S.String),
           countryCode: S.optional(S.String),
-          reportDate: S.optional(__S(509, __c63, 5)),
+          reportDate: S.optional(__S(610, __c19, 2)),
           previousRank: S.optional(S.String),
           relativeDemandChange: S.optional(S.String),
         }),
       ).annotate({ identifier: "BestSellers" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           higherPositionRate: S.optional(S.Number),
@@ -12392,14 +8011,14 @@ function __c64(j: number): any {
           relativeVisibility: S.optional(S.Number),
           categoryId: S.optional(S.String),
           rank: S.optional(S.String),
-          date: S.optional(__S(509, __c63, 5)),
+          date: S.optional(__S(610, __c19, 2)),
           trafficSource: S.optional(S.String),
           countryCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CompetitiveVisibility",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           benchmarkPriceMicros: S.optional(S.String),
@@ -12409,7 +8028,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "PriceCompetitiveness",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           conversionRate: S.optional(S.Number),
@@ -12437,7 +8056,7 @@ function __c64(j: number): any {
           aos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Metrics" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           effectiveness: S.optional(S.String),
@@ -12451,13 +8070,13 @@ function __c64(j: number): any {
           predictedConversionsChangeFraction: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PriceInsights" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Brand" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           canonicalAttribute: S.optional(S.String),
@@ -12466,44 +8085,40 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ProductViewItemIssueItemIssueType",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          disapprovedCountries: S.optional(__S(12, __c1, 4)),
+          disapprovedCountries: S.optional(__S(4896, __c153, 0)),
           destination: S.optional(S.String),
-          demotedCountries: S.optional(__S(12, __c1, 4)),
+          demotedCountries: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({
         identifier: "ProductViewItemIssueIssueSeverityPerDestination",
       });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(519, __c64, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(620, __c19, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          severityPerDestination: S.optional(__S(520, __c65, 0)),
+          severityPerDestination: S.optional(__S(621, __c19, 13)),
           aggregatedSeverity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProductViewItemIssueItemIssueSeverity",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          issueType: S.optional(__S(518, __c64, 6)),
-          severity: S.optional(__S(521, __c65, 1)),
+          issueType: S.optional(__S(619, __c19, 11)),
+          severity: S.optional(__S(622, __c19, 14)),
           resolution: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProductViewItemIssue",
       });
-    case 3:
-      return S.Array(__S(522, __c65, 2));
-    case 4:
+    case 16:
+      return S.Array(__S(623, __c19, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           productTypeL5: S.optional(S.String),
@@ -12512,7 +8127,7 @@ function __c65(j: number): any {
           condition: S.optional(S.String),
           channel: S.optional(S.String),
           productTypeL3: S.optional(S.String),
-          itemIssues: S.optional(__S(523, __c65, 3)),
+          itemIssues: S.optional(__S(624, __c19, 16)),
           title: S.optional(S.String),
           categoryL5: S.optional(S.String),
           currencyCode: S.optional(S.String),
@@ -12521,7 +8136,7 @@ function __c65(j: number): any {
           categoryL3: S.optional(S.String),
           categoryL2: S.optional(S.String),
           id: S.optional(S.String),
-          gtin: S.optional(__S(12, __c1, 4)),
+          gtin: S.optional(__S(4896, __c153, 0)),
           priceMicros: S.optional(S.String),
           offerId: S.optional(S.String),
           clickPotential: S.optional(S.String),
@@ -12529,7 +8144,7 @@ function __c65(j: number): any {
           languageCode: S.optional(S.String),
           brand: S.optional(S.String),
           shippingLabel: S.optional(S.String),
-          expirationDate: S.optional(__S(509, __c63, 5)),
+          expirationDate: S.optional(__S(610, __c19, 2)),
           itemGroupId: S.optional(S.String),
           creationTime: S.optional(S.String),
           availability: S.optional(S.String),
@@ -12537,7 +8152,7 @@ function __c65(j: number): any {
           aggregatedDestinationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductView" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           categoryL2: S.optional(S.String),
@@ -12546,10 +8161,10 @@ function __c65(j: number): any {
           productTypeL4: S.optional(S.String),
           categoryL4: S.optional(S.String),
           categoryL3: S.optional(S.String),
-          week: S.optional(__S(509, __c63, 5)),
+          week: S.optional(__S(610, __c19, 2)),
           currencyCode: S.optional(S.String),
           brand: S.optional(S.String),
-          date: S.optional(__S(509, __c63, 5)),
+          date: S.optional(__S(610, __c19, 2)),
           title: S.optional(S.String),
           customLabel2: S.optional(S.String),
           program: S.optional(S.String),
@@ -12565,35 +8180,35 @@ function __c65(j: number): any {
           categoryL5: S.optional(S.String),
         }),
       ).annotate({ identifier: "Segments" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          topicTrends: S.optional(__S(510, __c63, 6)),
-          productCluster: S.optional(__S(511, __c63, 7)),
-          bestSellers: S.optional(__S(512, __c64, 0)),
-          competitiveVisibility: S.optional(__S(513, __c64, 1)),
-          priceCompetitiveness: S.optional(__S(514, __c64, 2)),
-          metrics: S.optional(__S(515, __c64, 3)),
-          priceInsights: S.optional(__S(516, __c64, 4)),
-          brand: S.optional(__S(517, __c64, 5)),
-          productView: S.optional(__S(524, __c65, 4)),
-          segments: S.optional(__S(525, __c65, 5)),
+          topicTrends: S.optional(__S(611, __c19, 3)),
+          productCluster: S.optional(__S(612, __c19, 4)),
+          bestSellers: S.optional(__S(613, __c19, 5)),
+          competitiveVisibility: S.optional(__S(614, __c19, 6)),
+          priceCompetitiveness: S.optional(__S(615, __c19, 7)),
+          metrics: S.optional(__S(616, __c19, 8)),
+          priceInsights: S.optional(__S(617, __c19, 9)),
+          brand: S.optional(__S(618, __c19, 10)),
+          productView: S.optional(__S(625, __c19, 17)),
+          segments: S.optional(__S(626, __c19, 18)),
         }),
       ).annotate({ identifier: "ReportRow" });
-    case 7:
-      return S.Array(__S(526, __c65, 6));
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
+      return S.Array(__S(627, __c19, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          results: S.optional(__S(527, __c65, 7)),
+          results: S.optional(__S(628, __c19, 20)),
         }),
       ).annotate({ identifier: "SearchResponse" });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactName: S.String.pipe(T.Query()),
@@ -12612,14 +8227,18 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "SetinventoryverificationcontactLiasettingsRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           lsfType: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
           country: S.optional(S.String.pipe(T.Query())),
-          pickupTypes: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          pickupTypes: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12630,7 +8249,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "SetomnichannelexperienceLiasettingsRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
@@ -12648,7 +8271,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "SetposdataproviderLiasettingsRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           choiceInputOptionId: S.optional(S.String),
@@ -12656,7 +8283,7 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "InputValueChoiceInputValue",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -12664,7 +8291,7 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "InputValueTextInputValue",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Boolean),
@@ -12672,43 +8299,39 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "InputValueCheckboxInputValue",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          choiceInputValue: S.optional(__S(532, __c66, 4)),
+          choiceInputValue: S.optional(__S(736, __c23, 0)),
           inputFieldId: S.optional(S.String),
-          textInputValue: S.optional(__S(533, __c66, 5)),
-          checkboxInputValue: S.optional(__S(534, __c66, 6)),
+          textInputValue: S.optional(__S(737, __c23, 1)),
+          checkboxInputValue: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({ identifier: "InputValue" });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(535, __c66, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(739, __c23, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           actionFlowId: S.optional(S.String),
-          inputValues: S.optional(__S(536, __c67, 0)),
+          inputValues: S.optional(__S(740, __c23, 4)),
         }),
       ).annotate({ identifier: "ActionInput" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          actionInput: S.optional(__S(537, __c67, 1)),
+          actionInput: S.optional(__S(741, __c23, 5)),
           actionContext: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TriggerActionPayload",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(538, __c67, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(742, __c23, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12719,7 +8342,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "TriggeractionMerchantsupportRequest",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -12727,12 +8350,16 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "TriggerActionResponse",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           conversionSourceId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(294, __c36, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2432, __c76, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12743,12 +8370,16 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "UndeleteConversionsourcesRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1491, __c46, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12759,12 +8390,93 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "UpdateAccountsRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(870, __c27, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/productdeliverytime",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProductdeliverytimeRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          firstPostalCode: S.optional(S.String),
+          lastPostalCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeliveryAreaPostalCodeRange",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          countryCode: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          postalCodeRange: S.optional(__S(865, __c27, 1)),
+        }),
+      ).annotate({ identifier: "DeliveryArea" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxTransitTimeDays: S.optional(S.Number),
+          minHandlingTimeDays: S.optional(S.Number),
+          minTransitTimeDays: S.optional(S.Number),
+          maxHandlingTimeDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ProductDeliveryTimeAreaDeliveryTimeDeliveryTime",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryArea: S.optional(__S(866, __c27, 2)),
+          deliveryTime: S.optional(__S(867, __c27, 3)),
+        }),
+      ).annotate({
+        identifier: "ProductDeliveryTimeAreaDeliveryTime",
+      });
+    case 5:
+      return S.Array(__S(868, __c27, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(__S(864, __c27, 0)),
+          areaDeliveryTimes: S.optional(__S(869, __c27, 5)),
+        }),
+      ).annotate({
+        identifier: "ProductDeliveryTime",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1602, __c50, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12777,14 +8489,14 @@ function __c67(j: number): any {
       });
   }
 }
-function __c68(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           datafeedId: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1668, __c52, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12795,20 +8507,24 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "UpdateDatafeedsRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(12, __c1, 4)),
+          labelIds: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({
         identifier: "AccountsUpdateLabelsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(545, __c68, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12819,18 +8535,22 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "UpdatelabelsAccountsRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(12, __c1, 4)),
+          labelIds: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({ identifier: "LabelIds" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cssGroupId: S.String.pipe(T.Label()),
           cssDomainId: S.String.pipe(T.Label()),
-          body: S.optional(__S(547, __c68, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(992, __c31, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12841,12 +8561,16 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "UpdatelabelsCssesRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1862, __c58, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12857,13 +8581,17 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "UpdateLiasettingsRequest",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(212, __c26, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2168, __c67, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12874,11 +8602,15 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "UpdateProductsRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(351, __c43, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3776, __c118, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12891,14 +8623,14 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2381, __c74, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12909,7 +8641,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "UpdateShippingsettingsRequest",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           verificationCode: S.optional(S.String),
@@ -12919,12 +8655,12 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "VerifyPhoneNumberRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(553, __c69, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12935,7 +8671,7 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "VerifyphonenumberAccountsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           verifiedPhoneNumber: S.optional(S.String),
@@ -12945,7 +8681,4658 @@ function __c69(j: number): any {
       });
   }
 }
-
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1254, __c39, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/promotions",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePromotionsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimePeriod" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PromotionPromotionStatusDestinationStatus",
+      });
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          detail: S.optional(S.String),
+          code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PromotionPromotionStatusPromotionIssue",
+      });
+    case 4:
+      return S.Array(__S(1251, __c39, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          destinationStatuses: S.optional(__S(1250, __c39, 2)),
+          lastUpdateDate: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          promotionIssue: S.optional(__S(1252, __c39, 4)),
+        }),
+      ).annotate({
+        identifier: "PromotionPromotionStatus",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          promotionUrl: S.optional(S.String),
+          longTitle: S.optional(S.String),
+          limitQuantity: S.optional(S.Number),
+          freeGiftItemId: S.optional(S.String),
+          promotionDisplayTimePeriod: S.optional(__S(1248, __c39, 0)),
+          freeGiftDescription: S.optional(S.String),
+          promotionStatus: S.optional(__S(1253, __c39, 5)),
+          itemGroupId: S.optional(__S(4896, __c153, 0)),
+          moneyBudget: S.optional(__S(448, __c14, 0)),
+          productApplicability: S.optional(S.String),
+          brandExclusion: S.optional(__S(4896, __c153, 0)),
+          customRedemptionRestriction: S.optional(S.String),
+          promotionEffectiveDates: S.optional(S.String),
+          promotionDisplayDates: S.optional(S.String),
+          id: S.optional(S.String),
+          maxDiscountAmount: S.optional(__S(448, __c14, 0)),
+          orderLimit: S.optional(S.Number),
+          percentOff: S.optional(S.Number),
+          targetCountry: S.optional(S.String),
+          minimumPurchaseQuantity: S.optional(S.Number),
+          offerType: S.optional(S.String),
+          productType: S.optional(__S(4896, __c153, 0)),
+          promotionId: S.optional(S.String),
+          itemId: S.optional(__S(4896, __c153, 0)),
+          moneyOffAmount: S.optional(__S(448, __c14, 0)),
+          genericRedemptionCode: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          redemptionChannel: S.optional(__S(1216, __c38, 0)),
+          redemptionRestriction: S.optional(S.String),
+          limitValue: S.optional(__S(448, __c14, 0)),
+          promotionEffectiveTimePeriod: S.optional(__S(1248, __c39, 0)),
+          brand: S.optional(__S(4896, __c153, 0)),
+          shippingServiceNames: S.optional(__S(4896, __c153, 0)),
+          couponValueType: S.optional(S.String),
+          promotionDestinationIds: S.optional(__S(4896, __c153, 0)),
+          storeCode: S.optional(__S(4896, __c153, 0)),
+          freeGiftValue: S.optional(__S(448, __c14, 0)),
+          storeApplicability: S.optional(S.String),
+          minimumPurchaseAmount: S.optional(__S(448, __c14, 0)),
+          itemIdExclusion: S.optional(__S(4896, __c153, 0)),
+          productTypeExclusion: S.optional(__S(4896, __c153, 0)),
+          getThisQuantityDiscounted: S.optional(S.Number),
+          itemGroupIdExclusion: S.optional(__S(4896, __c153, 0)),
+          storeCodeExclusion: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({ identifier: "Promotion" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionId: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1316, __c41, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/regions",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRegionsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          geotargetCriteriaIds: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "RegionGeoTargetArea",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          begin: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegionPostalCodeAreaPostalCodeRange",
+      });
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          postalCodes: S.optional(__S(1314, __c41, 2)),
+        }),
+      ).annotate({
+        identifier: "RegionPostalCodeArea",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          regionalInventoryEligible: S.optional(S.Boolean),
+          regionId: S.optional(S.String),
+          shippingEligible: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          geotargetArea: S.optional(__S(1312, __c41, 0)),
+          merchantId: S.optional(S.String),
+          postalCodeArea: S.optional(__S(1315, __c41, 3)),
+        }),
+      ).annotate({ identifier: "Region" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1381, __c43, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/returnpolicyonline",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReturnpolicyonlineRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          days: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReturnPolicyOnlinePolicy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          fixedFee: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({
+        identifier: "ReturnPolicyOnlineReturnShippingFee",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          returnReasonCategory: S.optional(S.String),
+          returnLabelSource: S.optional(S.String),
+          returnShippingFee: S.optional(__S(1377, __c43, 1)),
+        }),
+      ).annotate({
+        identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo",
+      });
+    case 3:
+      return S.Array(__S(1378, __c43, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          fixedFee: S.optional(__S(448, __c14, 0)),
+          microPercent: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ReturnPolicyOnlineRestockingFee",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(1376, __c43, 0)),
+          returnReasonCategoryInfo: S.optional(__S(1379, __c43, 3)),
+          itemConditions: S.optional(__S(1216, __c38, 0)),
+          label: S.optional(S.String),
+          countries: S.optional(__S(4896, __c153, 0)),
+          restockingFee: S.optional(__S(1380, __c43, 4)),
+          returnMethods: S.optional(__S(1216, __c38, 0)),
+          returnPolicyUri: S.optional(S.String),
+          returnPolicyId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReturnPolicyOnline",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          linkType: S.optional(S.String),
+          action: S.optional(S.String),
+          linkedAccountId: S.optional(S.String),
+          services: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "AccountsCustomBatchRequestEntryLinkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean),
+          merchantId: S.optional(S.String),
+          overwrite: S.optional(S.Boolean),
+          accountId: S.optional(S.String),
+          account: S.optional(__S(1491, __c46, 19)),
+          view: S.optional(S.String),
+          method: S.optional(S.String),
+          labelIds: S.optional(__S(4896, __c153, 0)),
+          linkRequest: S.optional(__S(1408, __c44, 0)),
+          batchId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AccountsCustomBatchRequestEntry",
+      });
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1410, __c44, 2)),
+        }),
+      ).annotate({
+        identifier: "AccountsCustomBatchRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1411, __c44, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchAccountsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1442, __c45, 2)),
+          batchId: S.optional(S.Number),
+          account: S.optional(__S(1491, __c46, 19)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsCustomBatchResponseEntry",
+      });
+    case 6:
+      return S.Array(__S(1413, __c44, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1414, __c44, 6)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsCustomBatchResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          domain: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Content_Error" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1441, __c45, 1)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Errors" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          gmbAccountId: S.optional(S.String),
+          gmbEmail: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountGoogleMyBusinessLink",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orderManager: S.optional(S.Boolean),
+          paymentsAnalyst: S.optional(S.Boolean),
+          admin: S.optional(S.Boolean),
+          paymentsManager: S.optional(S.Boolean),
+          reportingManager: S.optional(S.Boolean),
+          emailAddress: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AccountUser" });
+    case 2:
+      return S.Array(__S(1473, __c46, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          adsId: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountAdsLink" });
+    case 4:
+      return S.Array(__S(1475, __c46, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          channelId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountYouTubeChannelLink",
+      });
+    case 6:
+      return S.Array(__S(1477, __c46, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          freeListingsAutoTaggingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountConversionSettings",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          url: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountCustomerService",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          streetAddress: S.optional(S.String),
+          locality: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountAddress" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          koreanBusinessRegistrationNumber: S.optional(S.String),
+          phoneVerificationStatus: S.optional(S.String),
+          customerService: S.optional(__S(1480, __c46, 8)),
+          phoneNumber: S.optional(S.String),
+          address: S.optional(__S(1481, __c46, 9)),
+        }),
+      ).annotate({
+        identifier: "AccountBusinessInformation",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          allowAutomaticImageImprovements: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountImageImprovementsSettings",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          accountImageImprovementsSettings: S.optional(__S(1483, __c46, 11)),
+          effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountImageImprovements",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          allowShippingImprovements: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountShippingImprovements",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          allowConditionUpdates: S.optional(S.Boolean),
+          allowPriceUpdates: S.optional(S.Boolean),
+          allowStrictAvailabilityUpdates: S.optional(S.Boolean),
+          allowAvailabilityUpdates: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountItemUpdatesSettings",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          accountItemUpdatesSettings: S.optional(__S(1486, __c46, 14)),
+          effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
+          effectiveAllowPriceUpdates: S.optional(S.Boolean),
+          effectiveAllowConditionUpdates: S.optional(S.Boolean),
+          effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountItemUpdates",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          imageImprovements: S.optional(__S(1484, __c46, 12)),
+          shippingImprovements: S.optional(__S(1485, __c46, 13)),
+          itemUpdates: S.optional(__S(1487, __c46, 15)),
+        }),
+      ).annotate({
+        identifier: "AccountAutomaticImprovements",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          selfIdentified: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountIdentityType",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          smallBusiness: S.optional(__S(1489, __c46, 17)),
+          latinoOwned: S.optional(__S(1489, __c46, 17)),
+          veteranOwned: S.optional(__S(1489, __c46, 17)),
+          blackOwned: S.optional(__S(1489, __c46, 17)),
+          womenOwned: S.optional(__S(1489, __c46, 17)),
+          includeForPromotions: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountBusinessIdentity",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          websiteUrl: S.optional(S.String),
+          kind: S.optional(S.String),
+          automaticLabelIds: S.optional(__S(4896, __c153, 0)),
+          googleMyBusinessLink: S.optional(__S(1472, __c46, 0)),
+          users: S.optional(__S(1474, __c46, 2)),
+          adsLinks: S.optional(__S(1476, __c46, 4)),
+          name: S.optional(S.String),
+          adultContent: S.optional(S.Boolean),
+          youtubeChannelLinks: S.optional(__S(1478, __c46, 6)),
+          cssId: S.optional(S.String),
+          conversionSettings: S.optional(__S(1479, __c46, 7)),
+          sellerId: S.optional(S.String),
+          businessInformation: S.optional(__S(1482, __c46, 10)),
+          labelIds: S.optional(__S(4896, __c153, 0)),
+          id: S.optional(S.String),
+          automaticImprovements: S.optional(__S(1488, __c46, 16)),
+          accountManagement: S.optional(S.String),
+          businessIdentity: S.optional(__S(1490, __c46, 18)),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.optional(S.String),
+          destinations: S.optional(__S(4896, __c153, 0)),
+          batchId: S.optional(S.Number),
+          method: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountstatusesCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({
+        identifier: "AccountstatusesCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1506, __c47, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accountstatuses/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchAccountstatusesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          batchId: S.optional(S.Number),
+          errors: S.optional(__S(1442, __c45, 2)),
+          accountStatus: S.optional(__S(1543, __c48, 7)),
+        }),
+      ).annotate({
+        identifier: "AccountstatusesCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(1508, __c47, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1509, __c47, 5)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountstatusesCustomBatchResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributeName: S.optional(S.String),
+          servability: S.optional(S.String),
+          detail: S.optional(S.String),
+          numItems: S.optional(S.String),
+          documentation: S.optional(S.String),
+          code: S.optional(S.String),
+          resolution: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountStatusItemLevelIssue",
+      });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          disapproved: S.optional(S.String),
+          active: S.optional(S.String),
+          expiring: S.optional(S.String),
+          pending: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountStatusStatistics",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          itemLevelIssues: S.optional(__S(1537, __c48, 1)),
+          country: S.optional(S.String),
+          statistics: S.optional(__S(1538, __c48, 2)),
+          channel: S.optional(S.String),
+          destination: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountStatusProducts",
+      });
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.String),
+          severity: S.optional(S.String),
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          documentation: S.optional(S.String),
+          detail: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountStatusAccountLevelIssue",
+      });
+    case 6:
+      return S.Array(__S(1541, __c48, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          products: S.optional(__S(1540, __c48, 4)),
+          accountLevelIssues: S.optional(__S(1542, __c48, 6)),
+          websiteClaimed: S.optional(S.Boolean),
+          accountManagement: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountStatus" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.optional(S.String),
+          accountTax: S.optional(__S(1602, __c50, 2)),
+          batchId: S.optional(S.Number),
+          accountId: S.optional(S.String),
+          method: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccounttaxCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1569, __c49, 1)),
+        }),
+      ).annotate({
+        identifier: "AccounttaxCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1570, __c49, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounttax/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchAccounttaxRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountTax: S.optional(__S(1602, __c50, 2)),
+          batchId: S.optional(S.Number),
+          errors: S.optional(__S(1442, __c45, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccounttaxCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(1572, __c49, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          entries: S.optional(__S(1573, __c49, 5)),
+        }),
+      ).annotate({
+        identifier: "AccounttaxCustomBatchResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+          country: S.optional(S.String),
+          useGlobalRate: S.optional(S.Boolean),
+          ratePercent: S.optional(S.String),
+          shippingTaxed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountTaxTaxRule",
+      });
+    case 1:
+      return S.Array(__S(1600, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1601, __c50, 1)),
+          kind: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountTax" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datafeedId: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          datafeed: S.optional(__S(1668, __c52, 4)),
+          method: S.optional(S.String),
+          merchantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatafeedsCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "DatafeedsCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1634, __c51, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "datafeeds/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchDatafeedsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1442, __c45, 2)),
+          batchId: S.optional(S.Number),
+          datafeed: S.optional(__S(1668, __c52, 4)),
+        }),
+      ).annotate({
+        identifier: "DatafeedsCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(1636, __c51, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          entries: S.optional(__S(1637, __c51, 5)),
+        }),
+      ).annotate({
+        identifier: "DatafeedsCustomBatchResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minuteOfHour: S.optional(S.Number),
+          fetchUrl: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          password: S.optional(S.String),
+          username: S.optional(S.String),
+          dayOfMonth: S.optional(S.Number),
+          weekday: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          hour: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DatafeedFetchSchedule",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          columnDelimiter: S.optional(S.String),
+          fileEncoding: S.optional(S.String),
+          quotingMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatafeedFormat" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          feedLabel: S.optional(S.String),
+          includedDestinations: S.optional(__S(4896, __c153, 0)),
+          excludedDestinations: S.optional(__S(4896, __c153, 0)),
+          language: S.optional(S.String),
+          country: S.optional(S.String),
+          targetCountries: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({ identifier: "DatafeedTarget" });
+    case 3:
+      return S.Array(__S(1666, __c52, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          fetchSchedule: S.optional(__S(1664, __c52, 0)),
+          format: S.optional(__S(1665, __c52, 1)),
+          kind: S.optional(S.String),
+          attributeLanguage: S.optional(S.String),
+          id: S.optional(S.String),
+          fileName: S.optional(S.String),
+          targets: S.optional(__S(1667, __c52, 3)),
+          contentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Datafeed" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchId: S.optional(S.Number),
+          feedLabel: S.optional(S.String),
+          datafeedId: S.optional(S.String),
+          language: S.optional(S.String),
+          country: S.optional(S.String),
+          merchantId: S.optional(S.String),
+          method: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatafeedstatusesCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1697, __c53, 1)),
+        }),
+      ).annotate({
+        identifier: "DatafeedstatusesCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1698, __c53, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "datafeedstatuses/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchDatafeedstatusesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1442, __c45, 2)),
+          datafeedStatus: S.optional(__S(1732, __c54, 4)),
+          batchId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DatafeedstatusesCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(1700, __c53, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          entries: S.optional(__S(1701, __c53, 5)),
+        }),
+      ).annotate({
+        identifier: "DatafeedstatusesCustomBatchResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lineNumber: S.optional(S.String),
+          value: S.optional(S.String),
+          itemId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatafeedStatusExample",
+      });
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          examples: S.optional(__S(1729, __c54, 1)),
+          message: S.optional(S.String),
+          code: S.optional(S.String),
+          count: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatafeedStatusError",
+      });
+    case 3:
+      return S.Array(__S(1730, __c54, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          errors: S.optional(__S(1731, __c54, 3)),
+          language: S.optional(S.String),
+          kind: S.optional(S.String),
+          processingStatus: S.optional(S.String),
+          itemsTotal: S.optional(S.String),
+          itemsValid: S.optional(S.String),
+          feedLabel: S.optional(S.String),
+          lastUploadDate: S.optional(S.String),
+          warnings: S.optional(__S(1731, __c54, 3)),
+          datafeedId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatafeedStatus" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          posExternalAccountId: S.optional(S.String),
+          gmbEmail: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          posDataProviderId: S.optional(S.String),
+          country: S.optional(S.String),
+          omnichannelExperience: S.optional(__S(1824, __c57, 0)),
+          accountId: S.optional(S.String),
+          contactName: S.optional(S.String),
+          liaSettings: S.optional(__S(1862, __c58, 6)),
+          method: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          merchantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiasettingsCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1761, __c55, 1)),
+        }),
+      ).annotate({
+        identifier: "LiasettingsCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1762, __c55, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "liasettings/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchLiasettingsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          gmbAccounts: S.optional(__S(1793, __c56, 1)),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GmbAccounts" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          posDataProviders: S.optional(__S(1891, __c59, 3)),
+          gmbAccounts: S.optional(__S(1764, __c55, 4)),
+          batchId: S.optional(S.Number),
+          kind: S.optional(S.String),
+          errors: S.optional(__S(1442, __c45, 2)),
+          liaSettings: S.optional(__S(1862, __c58, 6)),
+          omnichannelExperience: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "LiasettingsCustomBatchResponseEntry",
+      });
+    case 6:
+      return S.Array(__S(1765, __c55, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1766, __c55, 6)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiasettingsCustomBatchResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+          listingCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GmbAccountsGmbAccount",
+      });
+    case 1:
+      return S.Array(__S(1792, __c56, 0));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lsfType: S.optional(S.String),
+          country: S.optional(S.String),
+          pickupTypes: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "LiaOmnichannelExperience",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiaAboutPageSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          shippingCostPolicyUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiaOnDisplayToOrderSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          posExternalAccountId: S.optional(S.String),
+          posDataProviderId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiaPosDataProvider",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          inventoryVerificationContactEmail: S.optional(S.String),
+          status: S.optional(S.String),
+          inventoryVerificationContactName: S.optional(S.String),
+          inventoryVerificationContactStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiaInventorySettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          omnichannelExperience: S.optional(__S(1824, __c57, 0)),
+          country: S.optional(S.String),
+          storePickupActive: S.optional(S.Boolean),
+          hostedLocalStorefrontActive: S.optional(S.Boolean),
+          about: S.optional(__S(1856, __c58, 0)),
+          onDisplayToOrder: S.optional(__S(1857, __c58, 1)),
+          posDataProvider: S.optional(__S(1858, __c58, 2)),
+          inventory: S.optional(__S(1859, __c58, 3)),
+        }),
+      ).annotate({
+        identifier: "LiaCountrySettings",
+      });
+    case 5:
+      return S.Array(__S(1860, __c58, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          countrySettings: S.optional(__S(1861, __c58, 5)),
+          kind: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiaSettings" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          providerId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          fullName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PosDataProvidersPosDataProvider",
+      });
+    case 1:
+      return S.Array(__S(1888, __c59, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          posDataProviders: S.optional(__S(1889, __c59, 1)),
+        }),
+      ).annotate({
+        identifier: "PosDataProviders",
+      });
+    case 3:
+      return S.Array(__S(1890, __c59, 2));
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          localInventory: S.optional(__S(2016, __c63, 0)),
+          merchantId: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          productId: S.optional(S.String),
+          method: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LocalinventoryCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(1920, __c60, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(1921, __c60, 1)),
+        }),
+      ).annotate({
+        identifier: "LocalinventoryCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1922, __c60, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "localinventory/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchLocalinventoryRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          batchId: S.optional(S.Number),
+          errors: S.optional(__S(1442, __c45, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LocalinventoryCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(1924, __c60, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          entries: S.optional(__S(1925, __c60, 5)),
+        }),
+      ).annotate({
+        identifier: "LocalinventoryCustomBatchResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          currency: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Price" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupValues: S.optional(S.suspend(() => __S(1985, __c62, 1))),
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomAttribute",
+      });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pickupMethod: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          customAttributes: S.optional(__S(1985, __c62, 1)),
+          kind: S.optional(S.String),
+          quantity: S.optional(S.Number),
+          instoreProductLocation: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          availability: S.optional(S.String),
+          salePriceEffectiveDate: S.optional(S.String),
+          salePrice: S.optional(__S(1952, __c61, 0)),
+          pickupSla: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalInventory" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          saleId: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          itemId: S.optional(S.String),
+          kind: S.optional(S.String),
+          gtin: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          targetCountry: S.optional(S.String),
+          storeCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PosSale" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pickupMethod: S.optional(S.String),
+          quantity: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          pickupSla: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          itemId: S.optional(S.String),
+          targetCountry: S.optional(S.String),
+          kind: S.optional(S.String),
+          gtin: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "PosInventory" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          sale: S.optional(__S(2048, __c64, 0)),
+          targetMerchantId: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          inventory: S.optional(__S(2049, __c64, 1)),
+          method: S.optional(S.String),
+          store: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "PosCustomBatchRequestEntry",
+      });
+    case 3:
+      return S.Array(__S(2050, __c64, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2051, __c64, 3)),
+        }),
+      ).annotate({
+        identifier: "PosCustomBatchRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2052, __c64, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "pos/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchPosRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          errors: S.optional(__S(1442, __c45, 2)),
+          batchId: S.optional(S.Number),
+          sale: S.optional(__S(2048, __c64, 0)),
+          inventory: S.optional(__S(2049, __c64, 1)),
+          store: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "PosCustomBatchResponseEntry",
+      });
+    case 7:
+      return S.Array(__S(2054, __c64, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2055, __c64, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PosCustomBatchResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+          storeAddress: S.optional(S.String),
+          storeName: S.optional(S.String),
+          kind: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          websiteUrl: S.optional(S.String),
+          gcidCategory: S.optional(__S(4896, __c153, 0)),
+          matchingStatusHint: S.optional(S.String),
+          matchingStatus: S.optional(S.String),
+          placeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PosStore" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(__S(2168, __c67, 24)),
+          productId: S.optional(S.String),
+          feedId: S.optional(S.String),
+          method: S.optional(S.String),
+          merchantId: S.optional(S.String),
+          updateMask: S.optional(S.String),
+          batchId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ProductsCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(2112, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2113, __c66, 1)),
+        }),
+      ).annotate({
+        identifier: "ProductsCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2114, __c66, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "products/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchProductsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(__S(2168, __c67, 24)),
+          kind: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          errors: S.optional(__S(1442, __c45, 2)),
+        }),
+      ).annotate({
+        identifier: "ProductsCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(2116, __c66, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2117, __c66, 5)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductsCustomBatchResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductDimension",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductUnitPricingBaseMeasure",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          certificationValue: S.optional(S.String),
+          certificationAuthority: S.optional(S.String),
+          certificationName: S.optional(S.String),
+          certificationCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductCertification",
+      });
+    case 3:
+      return S.Array(__S(2146, __c67, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          programLabel: S.optional(S.String),
+          tierLabel: S.optional(S.String),
+          loyaltyPoints: S.optional(S.String),
+          memberPriceEffectiveDate: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          cashbackForFutureUse: S.optional(__S(1952, __c61, 0)),
+          shippingLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoyaltyProgram" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          percentage: S.optional(S.Number),
+          amount: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "ProductSustainabilityIncentive",
+      });
+    case 6:
+      return S.Array(__S(2149, __c67, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          digitalSourceType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductStructuredTitle",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          priceThreshold: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "FreeShippingThreshold",
+      });
+    case 9:
+      return S.Array(__S(2152, __c67, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductWeight" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          period: S.optional(S.String),
+          periodLength: S.optional(S.String),
+          amount: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "ProductSubscriptionCost",
+      });
+    case 12:
+      return S.Array(S.Number);
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          minValue: S.optional(S.Number),
+          maxValue: S.optional(S.Number),
+          unitCode: S.optional(S.String),
+          intValue: S.optional(__S(4896, __c153, 0)),
+          boolValue: S.optional(S.Boolean),
+          propertyName: S.optional(S.String),
+          textValue: S.optional(__S(4896, __c153, 0)),
+          floatValue: S.optional(__S(2156, __c67, 12)),
+        }),
+      ).annotate({
+        identifier: "CloudExportAdditionalProperties",
+      });
+    case 14:
+      return S.Array(__S(2157, __c67, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ProductShippingWeight",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          taxShip: S.optional(S.Boolean),
+          rate: S.optional(S.Number),
+          locationId: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          region: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductTax" });
+    case 17:
+      return S.Array(__S(2160, __c67, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          downpayment: S.optional(__S(1952, __c61, 0)),
+          months: S.optional(S.String),
+          creditType: S.optional(S.String),
+          amount: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "Installment" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          sectionName: S.optional(S.String),
+          attributeName: S.optional(S.String),
+          attributeValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductProductDetail",
+      });
+    case 20:
+      return S.Array(__S(2163, __c67, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          locationGroupName: S.optional(S.String),
+          locationId: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          minHandlingTime: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          minTransitTime: S.optional(S.String),
+          maxHandlingTime: S.optional(S.String),
+          region: S.optional(S.String),
+          country: S.optional(S.String),
+          service: S.optional(S.String),
+          maxTransitTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductShipping",
+      });
+    case 22:
+      return S.Array(__S(2165, __c67, 21));
+    case 23:
+      return S.Array(__S(2148, __c67, 4));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          isBundle: S.optional(S.Boolean),
+          additionalImageLinks: S.optional(__S(4896, __c153, 0)),
+          id: S.optional(S.String),
+          channel: S.optional(S.String),
+          virtualModelLink: S.optional(S.String),
+          ageGroup: S.optional(S.String),
+          taxCategory: S.optional(S.String),
+          productWidth: S.optional(__S(2144, __c67, 0)),
+          feedLabel: S.optional(S.String),
+          maxEnergyEfficiencyClass: S.optional(S.String),
+          productHighlights: S.optional(__S(4896, __c153, 0)),
+          customAttributes: S.optional(__S(1985, __c62, 1)),
+          displayAdsSimilarIds: S.optional(__S(4896, __c153, 0)),
+          unitPricingBaseMeasure: S.optional(__S(2145, __c67, 1)),
+          targetCountry: S.optional(S.String),
+          linkTemplate: S.optional(S.String),
+          certifications: S.optional(__S(2147, __c67, 3)),
+          expirationDate: S.optional(S.String),
+          loyaltyProgram: S.optional(__S(2148, __c67, 4)),
+          adult: S.optional(S.Boolean),
+          sustainabilityIncentives: S.optional(__S(2150, __c67, 6)),
+          mobileLink: S.optional(S.String),
+          transitTimeLabel: S.optional(S.String),
+          unitPricingMeasure: S.optional(__S(2144, __c67, 0)),
+          sizeType: S.optional(S.String),
+          pickupSla: S.optional(S.String),
+          multipack: S.optional(S.String),
+          energyEfficiencyClass: S.optional(S.String),
+          maxHandlingTime: S.optional(S.String),
+          structuredTitle: S.optional(__S(2151, __c67, 7)),
+          disclosureDate: S.optional(S.String),
+          availability: S.optional(S.String),
+          productTypes: S.optional(__S(4896, __c153, 0)),
+          adsGrouping: S.optional(S.String),
+          gender: S.optional(S.String),
+          customLabel0: S.optional(S.String),
+          freeShippingThreshold: S.optional(__S(2153, __c67, 9)),
+          salePriceEffectiveDate: S.optional(S.String),
+          salePrice: S.optional(__S(1952, __c61, 0)),
+          shoppingAdsExcludedCountries: S.optional(__S(4896, __c153, 0)),
+          minHandlingTime: S.optional(S.String),
+          source: S.optional(S.String),
+          productWeight: S.optional(__S(2154, __c67, 10)),
+          displayAdsId: S.optional(S.String),
+          productLength: S.optional(__S(2144, __c67, 0)),
+          subscriptionCost: S.optional(__S(2155, __c67, 11)),
+          cloudExportAdditionalProperties: S.optional(__S(2158, __c67, 14)),
+          externalSellerId: S.optional(S.String),
+          link: S.optional(S.String),
+          autoPricingMinPrice: S.optional(__S(1952, __c61, 0)),
+          sizes: S.optional(__S(4896, __c153, 0)),
+          displayAdsValue: S.optional(S.Number),
+          productHeight: S.optional(__S(2144, __c67, 0)),
+          additionalSizeType: S.optional(S.String),
+          material: S.optional(S.String),
+          kind: S.optional(S.String),
+          gtin: S.optional(S.String),
+          availabilityDate: S.optional(S.String),
+          displayAdsTitle: S.optional(S.String),
+          shippingWidth: S.optional(__S(2144, __c67, 0)),
+          excludedDestinations: S.optional(__S(4896, __c153, 0)),
+          maximumRetailPrice: S.optional(__S(1952, __c61, 0)),
+          minEnergyEfficiencyClass: S.optional(S.String),
+          pause: S.optional(S.String),
+          brand: S.optional(S.String),
+          identifierExists: S.optional(S.Boolean),
+          includedDestinations: S.optional(__S(4896, __c153, 0)),
+          offerId: S.optional(S.String),
+          itemGroupId: S.optional(S.String),
+          googleProductCategory: S.optional(S.String),
+          customLabel4: S.optional(S.String),
+          costOfGoodsSold: S.optional(__S(1952, __c61, 0)),
+          shippingWeight: S.optional(__S(2159, __c67, 15)),
+          sizeSystem: S.optional(S.String),
+          pattern: S.optional(S.String),
+          description: S.optional(S.String),
+          promotionIds: S.optional(__S(4896, __c153, 0)),
+          mobileLinkTemplate: S.optional(S.String),
+          shippingLabel: S.optional(S.String),
+          mpn: S.optional(S.String),
+          customLabel3: S.optional(S.String),
+          pickupMethod: S.optional(S.String),
+          condition: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          canonicalLink: S.optional(S.String),
+          customLabel1: S.optional(S.String),
+          adsRedirect: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          adsLabels: S.optional(__S(4896, __c153, 0)),
+          structuredDescription: S.optional(__S(2151, __c67, 7)),
+          taxes: S.optional(__S(2161, __c67, 17)),
+          color: S.optional(S.String),
+          lifestyleImageLinks: S.optional(__S(4896, __c153, 0)),
+          sellOnGoogleQuantity: S.optional(S.String),
+          shippingHeight: S.optional(__S(2144, __c67, 0)),
+          installment: S.optional(__S(2162, __c67, 18)),
+          productDetails: S.optional(__S(2164, __c67, 20)),
+          imageLink: S.optional(S.String),
+          shipping: S.optional(__S(2166, __c67, 22)),
+          title: S.optional(S.String),
+          displayAdsLink: S.optional(S.String),
+          loyaltyPrograms: S.optional(__S(2167, __c67, 23)),
+          shippingLength: S.optional(__S(2144, __c67, 0)),
+          customLabel2: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Product" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          method: S.optional(S.String),
+          destinations: S.optional(__S(4896, __c153, 0)),
+          includeAttributes: S.optional(S.Boolean),
+          merchantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductstatusesCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({
+        identifier: "ProductstatusesCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2178, __c68, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "productstatuses/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchProductstatusesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1442, __c45, 2)),
+          batchId: S.optional(S.Number),
+          kind: S.optional(S.String),
+          productStatus: S.optional(__S(2212, __c69, 4)),
+        }),
+      ).annotate({
+        identifier: "ProductstatusesCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(2180, __c68, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2181, __c68, 5)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductstatusesCustomBatchResponse",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          channel: S.optional(S.String),
+          disapprovedCountries: S.optional(__S(4896, __c153, 0)),
+          destination: S.optional(S.String),
+          approvedCountries: S.optional(__S(4896, __c153, 0)),
+          pendingCountries: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "ProductStatusDestinationStatus",
+      });
+    case 1:
+      return S.Array(__S(2208, __c69, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          detail: S.optional(S.String),
+          code: S.optional(S.String),
+          attributeName: S.optional(S.String),
+          destination: S.optional(S.String),
+          resolution: S.optional(S.String),
+          documentation: S.optional(S.String),
+          applicableCountries: S.optional(__S(4896, __c153, 0)),
+          servability: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductStatusItemLevelIssue",
+      });
+    case 3:
+      return S.Array(__S(2210, __c69, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          link: S.optional(S.String),
+          lastUpdateDate: S.optional(S.String),
+          productId: S.optional(S.String),
+          destinationStatuses: S.optional(__S(2209, __c69, 1)),
+          googleExpirationDate: S.optional(S.String),
+          kind: S.optional(S.String),
+          itemLevelIssues: S.optional(__S(2211, __c69, 3)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductStatus" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.optional(S.String),
+          method: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          regionalInventory: S.optional(__S(2272, __c71, 0)),
+          productId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegionalinventoryCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2241, __c70, 1)),
+        }),
+      ).annotate({
+        identifier: "RegionalinventoryCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2242, __c70, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "regionalinventory/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchRegionalinventoryRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          regionalInventory: S.optional(__S(2272, __c71, 0)),
+          kind: S.optional(S.String),
+          errors: S.optional(__S(1442, __c45, 2)),
+          batchId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RegionalinventoryCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(2244, __c70, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2245, __c70, 5)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegionalinventoryCustomBatchResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionId: S.optional(S.String),
+          availability: S.optional(S.String),
+          kind: S.optional(S.String),
+          salePrice: S.optional(__S(1952, __c61, 0)),
+          price: S.optional(__S(1952, __c61, 0)),
+          customAttributes: S.optional(__S(1985, __c62, 1)),
+          salePriceEffectiveDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegionalInventory",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchId: S.optional(S.Number),
+          accountId: S.optional(S.String),
+          merchantId: S.optional(S.String),
+          shippingSettings: S.optional(__S(2381, __c74, 13)),
+          method: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsCustomBatchRequestEntry",
+      });
+    case 1:
+      return S.Array(__S(2304, __c72, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2305, __c72, 1)),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsCustomBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2306, __c72, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "shippingsettings/batch",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustombatchShippingsettingsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1442, __c45, 2)),
+          kind: S.optional(S.String),
+          batchId: S.optional(S.Number),
+          shippingSettings: S.optional(__S(2381, __c74, 13)),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsCustomBatchResponseEntry",
+      });
+    case 5:
+      return S.Array(__S(2308, __c72, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2309, __c72, 5)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsCustomBatchResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postalCodeRangeBegin: S.optional(S.String),
+          postalCodeRangeEnd: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PostalCodeRange",
+      });
+    case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          postalCodeRanges: S.optional(__S(2337, __c73, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PostalCodeGroup",
+      });
+    case 3:
+      return S.Array(__S(2338, __c73, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          minute: S.optional(S.Number),
+          hour: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "WarehouseCutoffTime",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          businessDays: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "BusinessDayConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          administrativeArea: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          streetAddress: S.optional(S.String),
+          city: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Address" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cutoffTime: S.optional(__S(2340, __c73, 4)),
+          name: S.optional(S.String),
+          businessDayConfig: S.optional(__S(2341, __c73, 5)),
+          shippingAddress: S.optional(__S(2342, __c73, 6)),
+          handlingDays: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Warehouse" });
+    case 8:
+      return S.Array(__S(2343, __c73, 7));
+    case 9:
+      return S.Array(__S(1952, __c61, 0));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Weight" });
+    case 11:
+      return S.Array(__S(2346, __c73, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          locationIds: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({ identifier: "LocationIdSet" });
+    case 13:
+      return S.Array(__S(2348, __c73, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          prices: S.optional(__S(2345, __c73, 9)),
+          numberOfItems: S.optional(__S(4896, __c153, 0)),
+          weights: S.optional(__S(2347, __c73, 11)),
+          postalCodeGroupNames: S.optional(__S(4896, __c153, 0)),
+          locations: S.optional(__S(2349, __c73, 13)),
+        }),
+      ).annotate({ identifier: "Headers" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          pricePercentage: S.optional(S.String),
+          subtableName: S.optional(S.String),
+          noShipping: S.optional(S.Boolean),
+          carrierRateName: S.optional(S.String),
+          flatRate: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "Value" });
+    case 16:
+      return S.Array(__S(2351, __c73, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          cells: S.optional(__S(2352, __c73, 16)),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 18:
+      return S.Array(__S(2353, __c73, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          rowHeaders: S.optional(__S(2350, __c73, 14)),
+          rows: S.optional(__S(2354, __c73, 18)),
+          name: S.optional(S.String),
+          columnHeaders: S.optional(__S(2350, __c73, 14)),
+        }),
+      ).annotate({ identifier: "Table" });
+    case 20:
+      return S.Array(__S(2355, __c73, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          flatAdjustment: S.optional(__S(1952, __c61, 0)),
+          originPostalCode: S.optional(S.String),
+          percentageAdjustment: S.optional(S.String),
+          carrierService: S.optional(S.String),
+          carrierName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CarrierRate" });
+    case 22:
+      return S.Array(__S(2357, __c73, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          applicableShippingLabels: S.optional(__S(4896, __c153, 0)),
+          subtables: S.optional(__S(2356, __c73, 20)),
+          carrierRates: S.optional(__S(2358, __c73, 22)),
+          singleValue: S.optional(__S(2351, __c73, 15)),
+          mainTable: S.optional(__S(2355, __c73, 19)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RateGroup" });
+    case 24:
+      return S.Array(__S(2359, __c73, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          hour: S.optional(S.String),
+          minute: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          noDeliveryPostCutoff: S.optional(S.Boolean),
+          storeCloseOffsetHours: S.optional(S.String),
+          localCutoffTime: S.optional(__S(2361, __c73, 25)),
+        }),
+      ).annotate({
+        identifier: "ServiceStoreConfigCutoffConfig",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          cutoffConfig: S.optional(__S(2362, __c73, 26)),
+          storeServiceType: S.optional(S.String),
+          serviceRadius: S.optional(__S(2346, __c73, 10)),
+          storeCodes: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "ServiceStoreConfig",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          storeCodes: S.optional(__S(4896, __c153, 0)),
+          value: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "MinimumOrderValueTableStoreCodeSetWithMov",
+      });
+    case 29:
+      return S.Array(__S(2364, __c73, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          storeCodeSetWithMovs: S.optional(__S(2365, __c73, 29)),
+        }),
+      ).annotate({
+        identifier: "MinimumOrderValueTable",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          deadlineTimezone: S.optional(S.String),
+          visibleFromDate: S.optional(S.String),
+          holidayId: S.optional(S.String),
+          deadlineDate: S.optional(S.String),
+          deadlineHour: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HolidayCutoff" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2367, __c73, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          originCity: S.optional(S.String),
+          originStreetAddress: S.optional(S.String),
+          originPostalCode: S.optional(S.String),
+          originCountry: S.optional(S.String),
+          originAdministrativeArea: S.optional(S.String),
+          carrierService: S.optional(S.String),
+          carrier: S.optional(S.String),
+          warehouseName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WarehouseBasedDeliveryTime",
+      });
+    case 2:
+      return S.Array(__S(2369, __c74, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          minTransitTimeInDays: S.optional(S.Number),
+          maxTransitTimeInDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TransitTableTransitTimeRowTransitTimeValue",
+      });
+    case 4:
+      return S.Array(__S(2371, __c74, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(2372, __c74, 4)),
+        }),
+      ).annotate({
+        identifier: "TransitTableTransitTimeRow",
+      });
+    case 6:
+      return S.Array(__S(2373, __c74, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          rows: S.optional(__S(2374, __c74, 6)),
+          transitTimeLabels: S.optional(__S(4896, __c153, 0)),
+          postalCodeGroupNames: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({ identifier: "TransitTable" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          timezone: S.optional(S.String),
+          hour: S.optional(S.Number),
+          minute: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CutoffTime" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          minHandlingTimeInDays: S.optional(S.Number),
+          holidayCutoffs: S.optional(__S(2368, __c74, 0)),
+          transitBusinessDayConfig: S.optional(__S(2341, __c73, 5)),
+          maxHandlingTimeInDays: S.optional(S.Number),
+          minTransitTimeInDays: S.optional(S.Number),
+          warehouseBasedDeliveryTimes: S.optional(__S(2370, __c74, 2)),
+          handlingBusinessDayConfig: S.optional(__S(2341, __c73, 5)),
+          transitTimeTable: S.optional(__S(2375, __c74, 7)),
+          maxTransitTimeInDays: S.optional(S.Number),
+          cutoffTime: S.optional(__S(2376, __c74, 8)),
+        }),
+      ).annotate({ identifier: "DeliveryTime" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          carrierName: S.optional(S.String),
+          serviceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PickupCarrierService",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          rateGroups: S.optional(__S(2360, __c73, 24)),
+          storeConfig: S.optional(__S(2363, __c73, 27)),
+          currency: S.optional(S.String),
+          active: S.optional(S.Boolean),
+          minimumOrderValueTable: S.optional(__S(2366, __c73, 30)),
+          deliveryTime: S.optional(__S(2377, __c74, 9)),
+          minimumOrderValue: S.optional(__S(1952, __c61, 0)),
+          pickupService: S.optional(__S(2378, __c74, 10)),
+          shipmentType: S.optional(S.String),
+          eligibility: S.optional(S.String),
+          deliveryCountry: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 12:
+      return S.Array(__S(2379, __c74, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          postalCodeGroups: S.optional(__S(2339, __c73, 3)),
+          warehouses: S.optional(__S(2344, __c73, 8)),
+          accountId: S.optional(S.String),
+          services: S.optional(__S(2380, __c74, 12)),
+        }),
+      ).annotate({
+        identifier: "ShippingSettings",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/accounts/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccountsResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          labelId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "accounts/{accountId}/labels/{labelId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsLabelsRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          carrierAccountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsReturncarrierRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccountsReturncarrierResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          collectionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/collections/{collectionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCollectionsRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversionSourceId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/conversionsources/{conversionSourceId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConversionsourcesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConversionsourcesResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          datafeedId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/datafeeds/{datafeedId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDatafeedsRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFreelistingsprogramCheckoutsettingsRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          targetMerchantId: S.String.pipe(T.Label()),
+          storeCode: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePosRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/productdeliverytime/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProductdeliverytimeRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          feedId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/products/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProductsRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/regions/{regionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegionsRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          returnPolicyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReturnpolicyonlineRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "accounts/authinfo",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AuthinfoAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aggregatorId: S.optional(S.String),
+          merchantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountIdentifier",
+      });
+    case 2:
+      return S.Array(__S(2849, __c89, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountIdentifiers: S.optional(__S(2850, __c89, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsAuthInfoResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datafeedId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/datafeeds/{datafeedId}/fetchNow",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchnowDatafeedsRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          allowedTag: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/recommendations/generate",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateRecommendationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecommendationCreative",
+      });
+    case 2:
+      return S.Array(__S(2913, __c91, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          intent: S.optional(S.String),
+          localizedText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecommendationCallToAction",
+      });
+    case 4:
+      return S.Array(__S(2915, __c91, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecommendationDescription",
+      });
+    case 6:
+      return S.Array(__S(2917, __c91, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          defaultDescription: S.optional(S.String),
+          creative: S.optional(__S(2914, __c91, 2)),
+          subType: S.optional(S.String),
+          defaultCallToAction: S.optional(__S(2915, __c91, 3)),
+          type: S.optional(S.String),
+          additionalCallToAction: S.optional(__S(2916, __c91, 4)),
+          numericalImpact: S.optional(S.Number),
+          paid: S.optional(S.Boolean),
+          additionalDescriptions: S.optional(__S(2918, __c91, 6)),
+          recommendationName: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Recommendation" });
+    case 8:
+      return S.Array(__S(2919, __c91, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          recommendations: S.optional(__S(2920, __c91, 8)),
+          responseToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenerateRecommendationsResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetaccessiblegmbaccountsLiasettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          kind: S.optional(S.String),
+          gmbAccounts: S.optional(__S(1793, __c56, 1)),
+        }),
+      ).annotate({
+        identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accounts/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountsRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          destinations: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accountstatuses/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountstatusesRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accounttax/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccounttaxRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/collections/{collectionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCollectionsRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/collectionstatuses/{collectionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCollectionstatusesRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approvedCountries: S.optional(__S(4896, __c153, 0)),
+          status: S.optional(S.String),
+          disapprovedCountries: S.optional(__S(4896, __c153, 0)),
+          pendingCountries: S.optional(__S(4896, __c153, 0)),
+          destination: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CollectionStatusDestinationStatus",
+      });
+    case 1:
+      return S.Array(__S(3136, __c98, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          resolution: S.optional(S.String),
+          attributeName: S.optional(S.String),
+          detail: S.optional(S.String),
+          documentation: S.optional(S.String),
+          applicableCountries: S.optional(__S(4896, __c153, 0)),
+          code: S.optional(S.String),
+          destination: S.optional(S.String),
+          servability: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CollectionStatusItemLevelIssue",
+      });
+    case 3:
+      return S.Array(__S(3138, __c98, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          destinationStatuses: S.optional(__S(3137, __c98, 1)),
+          collectionLevelIssuses: S.optional(__S(3139, __c98, 3)),
+          id: S.optional(S.String),
+          lastUpdateDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CollectionStatus",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          conversionSourceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/conversionsources/{conversionSourceId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConversionsourcesRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cssGroupId: S.String.pipe(T.Label()),
+          cssDomainId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{cssGroupId}/csses/{cssDomainId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCssesRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          homepageUri: S.optional(S.String),
+          cssDomainId: S.optional(S.String),
+          cssGroupId: S.optional(S.String),
+          fullName: S.optional(S.String),
+          labelIds: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({ identifier: "Css" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overwrite: S.optional(S.Boolean.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/accounts/{accountId}/claimwebsite",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimwebsiteAccountsRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsClaimWebsiteResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          datafeedId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/datafeeds/{datafeedId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatafeedsRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          country: S.optional(S.String.pipe(T.Query())),
+          datafeedId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          feedLabel: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/datafeedstatuses/{datafeedId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatafeedstatusesRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/freelistingsprogram",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFreelistingsprogramRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reviewIneligibilityReasonDescription: S.optional(S.String),
+          reviewEligibilityStatus: S.optional(S.String),
+          reviewIneligibilityReason: S.optional(S.String),
+          reviewIneligibilityReasonDetails: S.optional(__S(3424, __c107, 0)),
+          reviewIssues: S.optional(__S(4896, __c153, 0)),
+          onboardingIssues: S.optional(__S(4896, __c153, 0)),
+          regionCodes: S.optional(__S(4896, __c153, 0)),
+          eligibilityStatus: S.optional(S.String),
+          disapprovalDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FreeListingsProgramStatusRegionStatus",
+      });
+    case 2:
+      return S.Array(__S(3393, __c106, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          regionStatuses: S.optional(__S(3394, __c106, 2)),
+          globalState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FreeListingsProgramStatus",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cooldownTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFreelistingsprogramCheckoutsettingsRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cartUriTemplate: S.optional(S.String),
+          checkoutUriTemplate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UrlSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveEnrollmentState: S.optional(S.String),
+          effectiveReviewState: S.optional(S.String),
+          reviewState: S.optional(S.String),
+          uriSettings: S.optional(__S(3488, __c109, 0)),
+          merchantId: S.optional(S.String),
+          effectiveUriSettings: S.optional(__S(3488, __c109, 0)),
+          enrollmentState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckoutSettings",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/liasettings/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetLiasettingsRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeCode: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          targetMerchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({ identifier: "GetPosRequest" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/productdeliverytime/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductdeliverytimeRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/products/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductsRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          destinations: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/productstatuses/{productId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductstatusesRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/promotions/{id}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPromotionsRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          purpose: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          expiresIn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountCredentials",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3712, __c116, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/{accountId}/credentials",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsCredentialsRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/pubsubnotificationsettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPubsubnotificationsettingsRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registeredEvents: S.optional(__S(4896, __c153, 0)),
+          cloudTopicName: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PubsubNotificationSettings",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/regions/{regionId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRegionsRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPolicyId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetReturnpolicyonlineRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/shippingsettings/{accountId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetShippingsettingsRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/shoppingadsprogram",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetShoppingadsprogramRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          disapprovalDate: S.optional(S.String),
+          reviewIneligibilityReasonDescription: S.optional(S.String),
+          reviewIneligibilityReasonDetails: S.optional(__S(3424, __c107, 0)),
+          eligibilityStatus: S.optional(S.String),
+          reviewEligibilityStatus: S.optional(S.String),
+          regionCodes: S.optional(__S(4896, __c153, 0)),
+          onboardingIssues: S.optional(__S(4896, __c153, 0)),
+          reviewIssues: S.optional(__S(4896, __c153, 0)),
+          reviewIneligibilityReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ShoppingAdsProgramStatusRegionStatus",
+      });
+    case 2:
+      return S.Array(__S(3905, __c122, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          globalState: S.optional(S.String),
+          regionStatuses: S.optional(__S(3906, __c122, 2)),
+        }),
+      ).annotate({
+        identifier: "ShoppingAdsProgramStatus",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/supportedCarriers",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetsupportedcarriersShippingsettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(4896, __c153, 0)),
+          country: S.optional(S.String),
+          eddServices: S.optional(__S(4896, __c153, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CarriersCarrier",
+      });
+    case 2:
+      return S.Array(__S(3937, __c123, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          carriers: S.optional(__S(3938, __c123, 2)),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsGetSupportedCarriersResponse",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/supportedHolidays",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetsupportedholidaysShippingsettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          deliveryGuaranteeHour: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          id: S.optional(S.String),
+          deliveryGuaranteeDate: S.optional(S.String),
+          date: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HolidaysHoliday",
+      });
+    case 2:
+      return S.Array(__S(3969, __c124, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          holidays: S.optional(__S(3970, __c124, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsGetSupportedHolidaysResponse",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/supportedPickupServices",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetsupportedpickupservicesShippingsettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          carrierName: S.optional(S.String),
+          serviceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PickupServicesPickupService",
+      });
+    case 2:
+      return S.Array(__S(4001, __c125, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          pickupServices: S.optional(__S(4002, __c125, 2)),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsGetSupportedPickupServicesResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1491, __c46, 19).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/accounts",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertAccountsRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1668, __c52, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/datafeeds",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertDatafeedsRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4128, __c129, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/{accountId}/labels",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsLabelsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          labelType: S.optional(S.String),
+          name: S.optional(S.String),
+          labelId: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountLabel" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uriSettings: S.optional(__S(3488, __c109, 0)),
+        }),
+      ).annotate({
+        identifier: "InsertCheckoutSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4160, __c130, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/freelistingsprogram/checkoutsettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertFreelistingsprogramCheckoutsettingsRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/products/{productId}/localinventory",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertLocalinventoryRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          targetMerchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2080, __c65, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/pos/{targetMerchantId}/store",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertPosRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          feedId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2168, __c67, 24).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/products",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertProductsRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/products/{productId}/regionalinventory",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertRegionalinventoryRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          price: S.optional(__S(1952, __c61, 0)),
+          storeCode: S.optional(S.String),
+          pickupMethod: S.optional(S.String),
+          itemId: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          targetCountry: S.optional(S.String),
+          quantity: S.optional(S.String),
+          pickupSla: S.optional(S.String),
+          gtin: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PosInventoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetMerchantId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4320, __c135, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/pos/{targetMerchantId}/inventory",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InventoryPosRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.String),
+          pickupSla: S.optional(S.String),
+          kind: S.optional(S.String),
+          gtin: S.optional(S.String),
+          pickupMethod: S.optional(S.String),
+          targetCountry: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          itemId: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          price: S.optional(__S(1952, __c61, 0)),
+          contentLanguage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PosInventoryResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalAccountId: S.optional(S.String),
+          externalAccountBusinessCountry: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PaymentServiceProviderLinkInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalAccountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ECommercePlatformLinkInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          linkType: S.optional(S.String),
+          linkedAccountId: S.optional(S.String),
+          paymentServiceProviderLinkInfo: S.optional(__S(4352, __c136, 0)),
+          services: S.optional(__S(4896, __c153, 0)),
+          eCommercePlatformLinkInfo: S.optional(__S(4353, __c136, 1)),
+          action: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsLinkRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4354, __c136, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/accounts/{accountId}/link",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LinkAccountsRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          label: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accounts",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsRequest",
+      });
+    case 1:
+      return S.Array(__S(1491, __c46, 19));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          resources: S.optional(__S(4385, __c137, 1)),
+        }),
+      ).annotate({
+        identifier: "AccountsListResponse",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          accountId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "accounts/{accountId}/labels",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsLabelsRequest",
+      });
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountLabels: S.optional(__S(4417, __c138, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAccountLabelsResponse",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "accounts/{accountId}/returncarrier",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsReturncarrierRequest",
+      });
+    case 1:
+      return S.Array(__S(4512, __c141, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountReturnCarriers: S.optional(__S(4449, __c139, 1)),
+        }),
+      ).annotate({
+        identifier: "ListAccountReturnCarrierResponse",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4512, __c141, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/{accountId}/returncarrier",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsReturncarrierRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          carrierAccountId: S.optional(S.String),
+          carrierCode: S.optional(S.String),
+          carrierAccountNumber: S.optional(S.String),
+          carrierAccountName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountReturnCarrier",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accountstatuses",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountstatusesRequest",
+      });
+    case 1:
+      return S.Array(__S(1543, __c48, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          resources: S.optional(__S(4545, __c142, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountstatusesListResponse",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accounttax",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccounttaxRequest",
+      });
+    case 1:
+      return S.Array(__S(1602, __c50, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          resources: S.optional(__S(4577, __c143, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccounttaxListResponse",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/collections",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionsRequest",
+      });
+    case 1:
+      return S.Array(__S(4930, __c154, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(4609, __c144, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCollectionsResponse",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/collectionstatuses",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionstatusesRequest",
+      });
+    case 1:
+      return S.Array(__S(3140, __c98, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          resources: S.optional(__S(4641, __c145, 1)),
+        }),
+      ).annotate({
+        identifier: "ListCollectionStatusesResponse",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/conversionsources",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConversionsourcesRequest",
+      });
+    case 1:
+      return S.Array(__S(37, __c1, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conversionSources: S.optional(__S(4673, __c146, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListConversionSourcesResponse",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          cssGroupId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{cssGroupId}/csses",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCssesRequest",
+      });
+    case 1:
+      return S.Array(__S(3232, __c101, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          csses: S.optional(__S(4705, __c147, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCssesResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/datafeeds",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDatafeedsRequest",
+      });
+    case 1:
+      return S.Array(__S(1668, __c52, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          resources: S.optional(__S(4737, __c148, 1)),
+        }),
+      ).annotate({
+        identifier: "DatafeedsListResponse",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/datafeedstatuses",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDatafeedstatusesRequest",
+      });
+    case 1:
+      return S.Array(__S(1732, __c54, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(4769, __c149, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatafeedstatusesListResponse",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/liasettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLiasettingsRequest",
+      });
+    case 1:
+      return S.Array(__S(1862, __c58, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(4801, __c150, 1)),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiasettingsListResponse",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/accounts/{accountId}/listlinks",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListlinksAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkService" });
+    case 2:
+      return S.Array(__S(4833, __c151, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          linkedAccountId: S.optional(S.String),
+          services: S.optional(__S(4834, __c151, 2)),
+        }),
+      ).annotate({ identifier: "LinkedAccount" });
+    case 4:
+      return S.Array(__S(4835, __c151, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          links: S.optional(__S(4836, __c151, 4)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountsListLinksResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4930, __c154, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{merchantId}/collections",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCollectionsRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          y: S.optional(S.Number),
+          offerId: S.optional(S.String),
+          x: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CollectionFeaturedProduct",
+      });
+    case 1:
+      return S.Array(__S(4928, __c154, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customLabel2: S.optional(S.String),
+          id: S.optional(S.String),
+          headline: S.optional(__S(4896, __c153, 0)),
+          customLabel1: S.optional(S.String),
+          imageLink: S.optional(__S(4896, __c153, 0)),
+          customLabel4: S.optional(S.String),
+          link: S.optional(S.String),
+          customLabel0: S.optional(S.String),
+          customLabel3: S.optional(S.String),
+          featuredProduct: S.optional(__S(4929, __c154, 1)),
+          language: S.optional(S.String),
+          mobileLink: S.optional(S.String),
+          productCountry: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Collection" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetMerchantId: S.String.pipe(T.Label()),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/pos/{targetMerchantId}/store",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPosRequest" });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          resources: S.optional(__S(4961, __c155, 1)),
+        }),
+      ).annotate({
+        identifier: "PosListResponse",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "liasettings/posdataproviders",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListposdataprovidersLiasettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          posDataProviders: S.optional(__S(1891, __c59, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LiasettingsListPosDataProvidersResponse",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/products",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProductsRequest",
+      });
+    case 1:
+      return S.Array(__S(2168, __c67, 24));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          resources: S.optional(__S(5025, __c157, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductsListResponse",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          destinations: S.optional(__S(4896, __c153, 0).pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/productstatuses",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProductstatusesRequest",
+      });
+    case 1:
+      return S.Array(__S(2212, __c69, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          resources: S.optional(__S(5057, __c158, 1)),
+        }),
+      ).annotate({
+        identifier: "ProductstatusesListResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          countryCode: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/promotions",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPromotionsRequest",
+      });
+    case 1:
+      return S.Array(__S(1254, __c39, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          promotions: S.optional(__S(5089, __c159, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPromotionResponse",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/quotas",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListQuotasRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          quotaMinuteLimit: S.optional(S.String),
+          quotaUsage: S.optional(S.String),
+          quotaLimit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MethodQuota" });
+    case 2:
+      return S.Array(__S(5121, __c160, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          methodQuotas: S.optional(__S(5122, __c160, 2)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListMethodQuotasResponse",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/regions",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegionsRequest",
+      });
+    case 1:
+      return S.Array(__S(1316, __c41, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          regions: S.optional(__S(5153, __c161, 1)),
+        }),
+      ).annotate({
+        identifier: "ListRegionsResponse",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/returnpolicyonline",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReturnpolicyonlineRequest",
+      });
+    case 1:
+      return S.Array(__S(1381, __c43, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          returnPolicies: S.optional(__S(5185, __c162, 1)),
+        }),
+      ).annotate({
+        identifier: "ListReturnPolicyOnlineResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          merchantId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{merchantId}/shippingsettings",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListShippingsettingsRequest",
+      });
+    case 1:
+      return S.Array(__S(2381, __c74, 13));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          resources: S.optional(__S(5217, __c163, 1)),
+        }),
+      ).annotate({
+        identifier: "ShippingsettingsListResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          labelId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4128, __c129, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "accounts/{accountId}/labels/{labelId}",
+            baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAccountsLabelsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

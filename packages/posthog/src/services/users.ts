@@ -1747,8 +1747,8 @@ export const createUsersCredentialsReviewComplete: API.OperationMethod<
   CreateUsersCredentialsReviewCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateUsersCredentialsReviewCompleteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUsersCredentialsReviewCompleteResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateUsersCredentialsReviewCompleteRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<CreateUsersCredentialsReviewCompleteResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1762,8 +1762,8 @@ export const createUsersIntegrationsCodex: API.OperationMethod<
   CreateUsersIntegrationsCodexError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateUsersIntegrationsCodexRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UserCodexIntegration>,
+  input: __S(561, __c35, 1) as any as S.Schema<CreateUsersIntegrationsCodexRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UserCodexIntegration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1777,8 +1777,12 @@ export const createUsersIntegrationsGithubPrepareCallback: API.OperationMethod<
   CreateUsersIntegrationsGithubPrepareCallbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>,
+  output: __S(
+    384,
+    __c24,
+    0,
+  ) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1792,8 +1796,8 @@ export const createUsersOnboardingSkip: API.OperationMethod<
   CreateUsersOnboardingSkipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateUsersOnboardingSkipRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UserOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateUsersOnboardingSkipRequest>,
+  output: __S(783, __c48, 15) as any as S.Schema<UserOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1807,8 +1811,8 @@ export const createUsersPushToken: API.OperationMethod<
   CreateUsersPushTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateUsersPushTokenRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UserPushTokenItem>,
+  input: __S(800, __c50, 0) as any as S.Schema<CreateUsersPushTokenRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<UserPushTokenItem>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1821,8 +1825,8 @@ export const createUsersRequestEmailVerification: API.OperationMethod<
   CreateUsersRequestEmailVerificationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUsersRequestEmailVerificationResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<CreateUsersRequestEmailVerificationResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1839,8 +1843,8 @@ export const createUsersScenePersonalisation: API.OperationMethod<
   CreateUsersScenePersonalisationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateUsersScenePersonalisationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUsersScenePersonalisationResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<CreateUsersScenePersonalisationRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<CreateUsersScenePersonalisationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1854,8 +1858,8 @@ export const createUsersSignalAutonomy: API.OperationMethod<
   CreateUsersSignalAutonomyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateUsersSignalAutonomyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<SignalUserAutonomyConfig>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateUsersSignalAutonomyRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<SignalUserAutonomyConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1877,8 @@ export const createUsersTwoFactorBackupCode: API.OperationMethod<
   CreateUsersTwoFactorBackupCodeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1887,8 +1891,8 @@ export const createUsersValidate2fa: API.OperationMethod<
   CreateUsersValidate2faError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateUsersValidate2faRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateUsersValidate2faResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateUsersValidate2faRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateUsersValidate2faResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1902,8 +1906,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetUserRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UserOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(783, __c48, 15) as any as S.Schema<UserOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1920,8 @@ export const getUsersGithubLogin: API.OperationMethod<
   GetUsersGithubLoginError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetUsersGithubLoginRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UserGithubLogin>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetUsersGithubLoginRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<UserGithubLogin>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1930,8 +1934,8 @@ export const getUsersHedgehogConfig: API.OperationMethod<
   GetUsersHedgehogConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetUsersHedgehogConfigRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetUsersHedgehogConfigResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetUsersHedgehogConfigRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetUsersHedgehogConfigResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1945,8 +1949,8 @@ export const getUsersIntegrationsCodex: API.OperationMethod<
   GetUsersIntegrationsCodexError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetUsersIntegrationsCodexRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UserCodexIntegration>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetUsersIntegrationsCodexRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UserCodexIntegration>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1960,8 +1964,8 @@ export const getUsersIntegrationsGithubBranch: API.OperationMethod<
   GetUsersIntegrationsGithubBranchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetUsersIntegrationsGithubBranchRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GitHubBranchesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetUsersIntegrationsGithubBranchRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GitHubBranchesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1975,8 +1979,8 @@ export const getUsersIntegrationsGithubRepos: API.OperationMethod<
   GetUsersIntegrationsGithubReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetUsersIntegrationsGithubReposRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GitHubReposResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetUsersIntegrationsGithubReposRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GitHubReposResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1990,8 +1994,8 @@ export const getUsersIntegrationsSlackLinkableWorkspace: API.OperationMethod<
   GetUsersIntegrationsSlackLinkableWorkspaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetUsersIntegrationsSlackLinkableWorkspaceRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetUsersIntegrationsSlackLinkableWorkspaceRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2005,8 +2009,8 @@ export const getUsersSignalAutonomy: API.OperationMethod<
   GetUsersSignalAutonomyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetUsersSignalAutonomyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<SignalUserAutonomyConfig>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetUsersSignalAutonomyRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<SignalUserAutonomyConfig>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2019,8 +2023,8 @@ export const getUsersStart2faSetup: API.OperationMethod<
   GetUsersStart2faSetupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetUsersStart2faSetupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetUsersStart2faSetupResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetUsersStart2faSetupRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetUsersStart2faSetupResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2034,8 +2038,8 @@ export const getUsersTwoFactorStatus: API.OperationMethod<
   GetUsersTwoFactorStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetUsersTwoFactorStatusRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<TwoFactorStatus>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetUsersTwoFactorStatusRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<TwoFactorStatus>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2049,8 +2053,16 @@ export const installUsersIntegrationsGithubRequestsDestroy: API.OperationMethod<
   InstallUsersIntegrationsGithubRequestsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>,
+  input: __S(
+    256,
+    __c16,
+    0,
+  ) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>,
+  output: __S(
+    384,
+    __c24,
+    0,
+  ) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2063,8 +2075,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListUsersRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PaginatedUserListOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<PaginatedUserListOutput>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2090,8 @@ export const listUsersIntegrations: API.OperationMethod<
   ListUsersIntegrationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListUsersIntegrationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListUsersIntegrationsRequest>,
+  output: __S(294, __c18, 6) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2105,8 @@ export const listUsersLoginSessions: API.OperationMethod<
   ListUsersLoginSessionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListUsersLoginSessionsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListUsersLoginSessionsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListUsersLoginSessionsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListUsersLoginSessionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2120,8 @@ export const loginUserSessionsDestroy: API.OperationMethod<
   LoginUserSessionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<LoginUserSessionsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LoginUserSessionsDestroyResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<LoginUserSessionsDestroyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<LoginUserSessionsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2123,8 +2135,8 @@ export const signalUserAutonomyDestroy: API.OperationMethod<
   SignalUserAutonomyDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<SignalUserAutonomyDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SignalUserAutonomyDestroyResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<SignalUserAutonomyDestroyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<SignalUserAutonomyDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2150,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateUserRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UserOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(783, __c48, 15) as any as S.Schema<UserOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2156,8 +2168,8 @@ export const updateUsersHedgehogConfigPartial: API.OperationMethod<
   UpdateUsersHedgehogConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2171,8 +2183,8 @@ export const updateUsersPartial: API.OperationMethod<
   UpdateUsersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateUsersPartialRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UserOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateUsersPartialRequest>,
+  output: __S(783, __c48, 15) as any as S.Schema<UserOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2186,8 +2198,8 @@ export const updateUsersProductIntroSeenPartial: API.OperationMethod<
   UpdateUsersProductIntroSeenPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateUsersProductIntroSeenPartialRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateUsersProductIntroSeenPartialRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2215,8 @@ export const usersCancelEmailChangeRequestPartialUpdate: API.OperationMethod<
   UsersCancelEmailChangeRequestPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2217,8 +2229,8 @@ export const usersDestroy: API.OperationMethod<
   UsersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UsersDestroyRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UsersDestroyResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<UsersDestroyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UsersDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2232,8 +2244,8 @@ export const usersIntegrationsCodexDestroy: API.OperationMethod<
   UsersIntegrationsCodexDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersIntegrationsCodexDestroyResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersIntegrationsCodexDestroyResponse>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2247,8 +2259,8 @@ export const usersIntegrationsGithubDestroy: API.OperationMethod<
   UsersIntegrationsGithubDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2263,11 +2275,11 @@ export const usersIntegrationsGithubInstallRequestsRetrieve: API.OperationMethod
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    512,
+    __c32,
+    0,
   ) as any as S.Schema<UsersIntegrationsGithubInstallRequestsRetrieveRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GitHubInstallRequestListResponse>,
+  output: __S(515, __c32, 3) as any as S.Schema<GitHubInstallRequestListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2281,8 +2293,8 @@ export const usersIntegrationsGithubReposRefreshCreate: API.OperationMethod<
   UsersIntegrationsGithubReposRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GitHubReposRefreshResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<GitHubReposRefreshResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2296,8 +2308,8 @@ export const usersIntegrationsGithubStartCreate: API.OperationMethod<
   UsersIntegrationsGithubStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<UserGitHubLinkStartResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<UserGitHubLinkStartResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2311,8 +2323,8 @@ export const usersIntegrationsSlackDestroy: API.OperationMethod<
   UsersIntegrationsSlackDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2326,8 +2338,8 @@ export const usersIntegrationsSlackStartCreate: API.OperationMethod<
   UsersIntegrationsSlackStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<UserSlackLinkStartResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<UserSlackLinkStartResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2341,8 +2353,8 @@ export const usersLoginSessionsRevokeOthersCreate: API.OperationMethod<
   UsersLoginSessionsRevokeOthersCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UsersLoginSessionsRevokeOthersCreateRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<RevokeOtherSessionsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<UsersLoginSessionsRevokeOthersCreateRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<RevokeOtherSessionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2356,8 +2368,8 @@ export const usersPushTokensUnregisterCreate: API.OperationMethod<
   UsersPushTokensUnregisterCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersPushTokensUnregisterCreateResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersPushTokensUnregisterCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2371,8 +2383,8 @@ export const usersTwoFactorDisableCreate: API.OperationMethod<
   UsersTwoFactorDisableCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<UsersTwoFactorDisableCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersTwoFactorDisableCreateResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UsersTwoFactorDisableCreateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersTwoFactorDisableCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2385,8 +2397,8 @@ export const usersTwoFactorStartSetupRetrieve: API.OperationMethod<
   UsersTwoFactorStartSetupRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2399,8 +2411,8 @@ export const usersTwoFactorValidateCreate: API.OperationMethod<
   UsersTwoFactorValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<UsersTwoFactorValidateCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UsersTwoFactorValidateCreateResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<UsersTwoFactorValidateCreateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UsersTwoFactorValidateCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2413,8 +2425,8 @@ export const usersVerifyEmailCreate: API.OperationMethod<
   UsersVerifyEmailCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UsersVerifyEmailCreateRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UsersVerifyEmailCreateResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<UsersVerifyEmailCreateRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UsersVerifyEmailCreateResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2424,361 +2436,6 @@ export const usersVerifyEmailCreate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/users/{uuid}/credentials_review_complete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersCredentialsReviewCompleteRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateUsersCredentialsReviewCompleteResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          refresh_token: S.String.pipe(T.SensitiveValue({})),
-          id_token: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UserCodexAuthTokens" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          tokens: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/users/{uuid}/integrations/codex/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersIntegrationsCodexRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          plan_type: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          connected_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UserCodexIntegration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          installation_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/users/{uuid}/integrations/github/prepare_callback/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersIntegrationsGithubPrepareCallbackRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          reason: S.String,
-          step_at_skip: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/onboarding/skip/", code: 200 })),
-      ).annotate({
-        identifier: "CreateUsersOnboardingSkipRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          setting: S.String,
-          scope_id: S.String,
-          locked_value: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "OrganizationNotificationLock",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          organization: S.optional(S.String),
-          project_id: S.optional(S.Number),
-          api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          name: S.optional(S.String),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          ingested_event: S.optional(S.Boolean),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          access_control: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TeamBasic" });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "OrganizationMemberNoticeAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          action: S.optional(S.NullOr(__S(14, __c1, 6))),
-        }),
-      ).annotate({ identifier: "OrganizationMemberNotice" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          membership_level: S.optional(S.Number),
-          plugins_access_level: S.optional(S.Number),
-          teams: S.optional(__S(11, __c1, 3)),
-          projects: S.optional(__S(11, __c1, 3)),
-          available_product_features: S.optional(S.NullOr(__S(12, __c1, 4))),
-          is_member_join_email_enabled: S.optional(S.Boolean),
-          metadata: S.optional(__S(13, __c1, 5)),
-          customer_id: S.optional(S.NullOr(S.String)),
-          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
-          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
-          members_can_invite: S.optional(S.NullOr(S.Boolean)),
-          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          members_can_see_org_members: S.optional(S.Boolean),
-          allow_publicly_shared_resources: S.optional(S.Boolean),
-          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(15, __c1, 7))),
-          member_count: S.optional(S.Number),
-          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
-          has_signed_baa: S.optional(S.Boolean),
-          default_anonymize_ips: S.optional(S.Boolean),
-          default_role_id: S.optional(S.NullOr(S.String)),
-          is_active: S.optional(S.NullOr(S.Boolean)),
-          is_not_active_reason: S.optional(S.NullOr(S.String)),
-          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-          uses_most_specific_access_resolution: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          membership_level: S.optional(S.Number),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          is_active: S.optional(S.NullOr(S.Boolean)),
-          is_not_active_reason: S.optional(S.NullOr(S.String)),
-          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "OrganizationBasic" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scene: S.optional(S.String),
-          dashboard: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ScenePersonalisationBasic",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          target_email: S.optional(S.String),
-          organization_id: S.optional(S.String),
-          organization_name: S.optional(S.String),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PendingInvite" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date_joined: S.optional(S.String),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          pending_email: S.optional(S.NullOr(S.String)),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          notification_settings: S.optional(__S(7, __c0, 7)),
-          notification_locks: S.optional(__S(9, __c1, 1)),
-          anonymize_data: S.optional(S.NullOr(S.Boolean)),
-          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
-          has_password: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          is_staff: S.optional(S.Boolean),
-          is_impersonated: S.optional(S.NullOr(S.Boolean)),
-          is_impersonated_until: S.optional(S.NullOr(S.String)),
-          is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-          is_impersonated_reason: S.optional(S.NullOr(S.String)),
-          sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-          fresh_reauth_expires_at: S.optional(S.NullOr(S.String)),
-          team: S.optional(__S(10, __c1, 2)),
-          organization: S.optional(__S(16, __c2, 0)),
-          organizations: S.optional(__S(18, __c2, 2)),
-          events_column_config: S.optional(S.Unknown),
-          is_2fa_enabled: S.optional(S.Boolean),
-          has_social_auth: S.optional(S.Boolean),
-          has_sso_enforcement: S.optional(S.Boolean),
-          has_seen_product_intro_for: S.optional(S.Unknown),
-          scene_personalisation: S.optional(__S(20, __c2, 4)),
-          theme_mode: S.optional(S.NullOr(S.Unknown)),
-          hedgehog_config: S.optional(S.Unknown),
-          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(S.Unknown)),
-          role_at_organization: S.optional(S.String),
-          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-          hide_mcp_hints: S.optional(S.Boolean),
-          ui_configuration: S.optional(S.Unknown),
-          onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-          onboarding_skipped_reason: S.optional(S.NullOr(S.String)),
-          onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-          onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-          onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-          onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-          is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-          active_realtime_notification_types: S.optional(__S(21, __c2, 5)),
-          pending_invites: S.optional(__S(23, __c2, 7)),
-          requires_credential_review: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UserOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          token: S.String,
-          platform: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/push_tokens/", code: 200 })),
-      ).annotate({
-        identifier: "CreateUsersPushTokenRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          platform: S.String,
-          created_at: S.String,
-          last_seen_at: S.String,
-        }),
-      ).annotate({ identifier: "UserPushTokenItem" });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          notification_settings: S.optional(__S(27, __c3, 3)),
-          anonymize_data: S.optional(S.NullOr(S.Boolean)),
-          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
-          is_staff: S.optional(S.Boolean),
-          set_current_organization: S.optional(S.String),
-          set_current_team: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          events_column_config: S.optional(S.Unknown),
-          has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(S.Unknown)),
-          hedgehog_config: S.optional(S.Unknown),
-          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(S.Unknown)),
-          role_at_organization: S.optional(S.String),
-          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-          hide_mcp_hints: S.optional(S.Boolean),
-          ui_configuration: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/users/request_email_verification/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersRequestEmailVerificationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
-          anonymize_data: S.optional(S.NullOr(S.Boolean)),
-          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
-          is_staff: S.optional(S.Boolean),
-          set_current_organization: S.optional(S.String),
-          set_current_team: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          events_column_config: S.optional(S.Unknown),
-          has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(S.Unknown)),
-          hedgehog_config: S.optional(S.Unknown),
-          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(S.Unknown)),
-          role_at_organization: S.optional(S.String),
-          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-          hide_mcp_hints: S.optional(S.Boolean),
-          ui_configuration: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/users/{uuid}/scene_personalisation/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersScenePersonalisationRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -2795,7 +2452,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateUsersSignalAutonomyRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -2805,15 +2466,11 @@ function __c3(j: number): any {
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          user: S.optional(__S(31, __c3, 7)),
+          user: S.optional(__S(16, __c1, 0)),
           autostart_priority: S.optional(S.NullOr(S.Unknown)),
           slack_notification_integration_id: S.optional(S.NullOr(S.Number)),
           slack_notification_channel: S.optional(S.NullOr(S.String)),
@@ -2824,14 +2481,18 @@ function __c4(j: number): any {
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalUserAutonomyConfig" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -2856,14 +2517,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateUsersTwoFactorBackupCodeRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -2886,37 +2551,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateUsersValidate2faRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateUsersValidate2faResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/", code: 200 })),
-      ).annotate({ identifier: "GetUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/github_login/", code: 200 })),
-      ).annotate({
-        identifier: "GetUsersGithubLoginRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          github_login: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "UserGithubLogin" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/hedgehog_config/", code: 200 })),
-      ).annotate({
-        identifier: "GetUsersHedgehogConfigRequest",
       });
   }
 }
@@ -2926,11 +2567,55 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/", code: 200 })),
+      ).annotate({ identifier: "GetUserRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/github_login/", code: 200 })),
+      ).annotate({
+        identifier: "GetUsersGithubLoginRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          github_login: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "UserGithubLogin" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/hedgehog_config/", code: 200 })),
+      ).annotate({
+        identifier: "GetUsersHedgehogConfigRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/integrations/codex/", code: 200 })),
       ).annotate({
         identifier: "GetUsersIntegrationsCodexRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -2949,15 +2634,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetUsersIntegrationsGithubBranchRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(__S(21, __c2, 5)),
+          branches: S.optional(__S(752, __c47, 0)),
           default_branch: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GitHubBranchesResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -2976,7 +2665,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetUsersIntegrationsGithubReposRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repositories: S.optional(__S(177, __c11, 1)),
+          has_more: S.optional(S.Boolean),
+          next_offset: S.optional(S.NullOr(S.Number)),
+          total: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GitHubReposResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -2990,18 +2692,13 @@ function __c5(j: number): any {
           can_push: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GitHubRepo" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repositories: S.optional(__S(45, __c5, 5)),
-          has_more: S.optional(S.Boolean),
-          next_offset: S.optional(S.NullOr(S.Number)),
-          total: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GitHubReposResponse" });
-    case 7:
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3015,11 +2712,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetUsersIntegrationsSlackLinkableWorkspaceRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           posthog_team_id: S.Number,
@@ -3031,17 +2724,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UserSlackLinkableWorkspaceItem",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(49, __c6, 1),
+          results: __S(194, __c12, 2),
         }),
       ).annotate({
         identifier: "UserSlackLinkableWorkspaceListResponse",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -3049,7 +2746,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetUsersSignalAutonomyRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3057,7 +2758,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetUsersStart2faSetupRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3065,7 +2770,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetUsersTwoFactorStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           is_enabled: S.Boolean,
@@ -3076,7 +2781,11 @@ function __c6(j: number): any {
           passkeys_enabled_for_2fa: S.Boolean,
         }),
       ).annotate({ identifier: "TwoFactorStatus" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3093,7 +2802,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3105,17 +2814,21 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/users/", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(783, __c48, 15));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(57, __c7, 1)),
+          results: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "PaginatedUserListOutput" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3126,21 +2839,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListUsersIntegrationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "UserGitHubAccount" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           kind: S.String,
           installation_id: S.String,
           repository_selection: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(__S(60, __c7, 4))),
+          account: S.optional(S.NullOr(__S(289, __c18, 1))),
           github_login: S.optional(S.NullOr(S.String)),
           uses_shared_installation: S.Boolean,
           installation_shared: S.Boolean,
@@ -3150,34 +2863,34 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UserGitHubIntegrationItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(290, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(62, __c7, 6),
+          results: __S(291, __c18, 3),
         }),
       ).annotate({
         identifier: "UserGitHubIntegrationListResponse",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(292, __c18, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(64, __c8, 0),
+          results: __S(293, __c18, 5),
         }),
       ).annotate({
         identifier: "PaginatedUserGitHubIntegrationListResponseList",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3187,7 +2900,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListUsersLoginSessionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3199,13 +2912,17 @@ function __c8(j: number): any {
           is_current: S.Boolean,
         }),
       ).annotate({ identifier: "UserAuthSession" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() => __S(68, __c8, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
+      return S.suspend(() => __S(306, __c19, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUsersLoginSessionsResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3220,7 +2937,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "LoginUserSessionsDestroyRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -3232,7 +2953,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3241,7 +2962,7 @@ function __c9(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3262,14 +2983,44 @@ function __c9(j: number): any {
           ui_configuration: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PUT", uri: "/api/users/{uuid}/", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/users/{uuid}/credentials_review_complete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersCredentialsReviewCompleteRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateUsersCredentialsReviewCompleteResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(27, __c3, 3)),
+          notification_settings: S.optional(__S(832, __c52, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3292,14 +3043,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateUsersHedgehogConfigPartialRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3322,7 +3077,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateUsersPartialRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3334,19 +3093,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateUsersProductIntroSeenPartialRequest",
       });
-    case 4:
+    case 1:
       return S.Record(S.String, S.Boolean);
-    case 5:
-      return S.suspend(() => __S(76, __c9, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(433, __c27, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateUsersProductIntroSeenPartialResponse",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(27, __c3, 3)),
+          notification_settings: S.optional(__S(832, __c52, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3371,7 +3134,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UsersCancelEmailChangeRequestPartialUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3379,7 +3146,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UsersDestroyRequest" });
   }
 }
-function __c10(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3391,7 +3158,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsCodexDestroyRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3406,7 +3177,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsGithubDestroyRequest",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3420,7 +3195,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsGithubInstallRequestsRetrieveRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3433,18 +3208,22 @@ function __c10(j: number): any {
           resolved_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GitHubInstallRequestItem" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(84, __c10, 4),
+          results: __S(514, __c32, 2),
           install_url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GitHubInstallRequestListResponse",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3459,10 +3238,10 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsGithubReposRefreshCreateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(45, __c5, 5)),
+          repositories: S.optional(__S(177, __c11, 1)),
           installation_status: S.optional(S.String),
         }),
       ).annotate({
@@ -3470,7 +3249,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3497,7 +3276,47 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UserGitHubLinkStartResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          refresh_token: S.String.pipe(T.SensitiveValue({})),
+          id_token: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UserCodexAuthTokens" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          tokens: __S(560, __c35, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/users/{uuid}/integrations/codex/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersIntegrationsCodexRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          plan_type: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          connected_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UserCodexIntegration" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3512,7 +3331,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsSlackDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3524,7 +3347,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UsersIntegrationsSlackStartCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           install_url: S.String,
@@ -3532,7 +3355,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UserSlackLinkStartResponse",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3546,7 +3373,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UsersLoginSessionsRevokeOthersCreateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           revoked_count: S.Number,
@@ -3554,7 +3381,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RevokeOtherSessionsResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3567,7 +3398,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3576,7 +3407,7 @@ function __c12(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3601,7 +3432,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UsersTwoFactorDisableCreateRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -3611,14 +3446,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UsersTwoFactorStartSetupRetrieveRequest",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(__S(7, __c0, 7)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
           toolbar_mode: S.optional(S.NullOr(S.Unknown)),
@@ -3643,7 +3482,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UsersTwoFactorValidateCreateRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -3654,7 +3497,339 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          installation_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/users/{uuid}/integrations/github/prepare_callback/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersIntegrationsGithubPrepareCallbackRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          reason: S.String,
+          step_at_skip: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/onboarding/skip/", code: 200 })),
+      ).annotate({
+        identifier: "CreateUsersOnboardingSkipRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          setting: S.String,
+          scope_id: S.String,
+          locked_value: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "OrganizationNotificationLock",
+      });
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          organization: S.optional(S.String),
+          project_id: S.optional(S.Number),
+          api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          name: S.optional(S.String),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          ingested_event: S.optional(S.Boolean),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          access_control: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TeamBasic" });
+    case 3:
+      return S.Array(__S(784, __c49, 0));
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
+      return S.Record(S.String, S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationMemberNoticeAction",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          action: S.optional(S.NullOr(__S(774, __c48, 6))),
+        }),
+      ).annotate({ identifier: "OrganizationMemberNotice" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          membership_level: S.optional(S.Number),
+          plugins_access_level: S.optional(S.Number),
+          teams: S.optional(__S(771, __c48, 3)),
+          projects: S.optional(__S(771, __c48, 3)),
+          available_product_features: S.optional(S.NullOr(__S(772, __c48, 4))),
+          is_member_join_email_enabled: S.optional(S.Boolean),
+          metadata: S.optional(__S(773, __c48, 5)),
+          customer_id: S.optional(S.NullOr(S.String)),
+          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
+          members_can_invite: S.optional(S.NullOr(S.Boolean)),
+          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          members_can_see_org_members: S.optional(S.Boolean),
+          allow_publicly_shared_resources: S.optional(S.Boolean),
+          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
+          member_notice: S.optional(S.NullOr(__S(775, __c48, 7))),
+          member_count: S.optional(S.Number),
+          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
+          has_signed_baa: S.optional(S.Boolean),
+          default_anonymize_ips: S.optional(S.Boolean),
+          default_role_id: S.optional(S.NullOr(S.String)),
+          is_active: S.optional(S.NullOr(S.Boolean)),
+          is_not_active_reason: S.optional(S.NullOr(S.String)),
+          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
+          uses_most_specific_access_resolution: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "Organization" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          membership_level: S.optional(S.Number),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          is_active: S.optional(S.NullOr(S.Boolean)),
+          is_not_active_reason: S.optional(S.NullOr(S.String)),
+          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "OrganizationBasic" });
+    case 10:
+      return S.Array(__S(777, __c48, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          scene: S.optional(S.String),
+          dashboard: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ScenePersonalisationBasic",
+      });
+    case 12:
+      return S.Array(__S(779, __c48, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          target_email: S.optional(S.String),
+          organization_id: S.optional(S.String),
+          organization_name: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PendingInvite" });
+    case 14:
+      return S.Array(__S(781, __c48, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          date_joined: S.optional(S.String),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          pending_email: S.optional(S.NullOr(S.String)),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          notification_settings: S.optional(__S(784, __c49, 0)),
+          notification_locks: S.optional(__S(769, __c48, 1)),
+          anonymize_data: S.optional(S.NullOr(S.Boolean)),
+          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
+          has_password: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          is_staff: S.optional(S.Boolean),
+          is_impersonated: S.optional(S.NullOr(S.Boolean)),
+          is_impersonated_until: S.optional(S.NullOr(S.String)),
+          is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
+          is_impersonated_reason: S.optional(S.NullOr(S.String)),
+          sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
+          fresh_reauth_expires_at: S.optional(S.NullOr(S.String)),
+          team: S.optional(__S(770, __c48, 2)),
+          organization: S.optional(__S(776, __c48, 8)),
+          organizations: S.optional(__S(778, __c48, 10)),
+          events_column_config: S.optional(S.Unknown),
+          is_2fa_enabled: S.optional(S.Boolean),
+          has_social_auth: S.optional(S.Boolean),
+          has_sso_enforcement: S.optional(S.Boolean),
+          has_seen_product_intro_for: S.optional(S.Unknown),
+          scene_personalisation: S.optional(__S(780, __c48, 12)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.Unknown),
+          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
+          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
+          hide_mcp_hints: S.optional(S.Boolean),
+          ui_configuration: S.optional(S.Unknown),
+          onboarding_skipped_at: S.optional(S.NullOr(S.String)),
+          onboarding_skipped_reason: S.optional(S.NullOr(S.String)),
+          onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
+          onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
+          onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
+          onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
+          is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
+          active_realtime_notification_types: S.optional(__S(752, __c47, 0)),
+          pending_invites: S.optional(__S(782, __c48, 14)),
+          requires_credential_review: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UserOutput" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          token: S.String,
+          platform: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/push_tokens/", code: 200 })),
+      ).annotate({
+        identifier: "CreateUsersPushTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          platform: S.String,
+          created_at: S.String,
+          last_seen_at: S.String,
+        }),
+      ).annotate({ identifier: "UserPushTokenItem" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          notification_settings: S.optional(__S(832, __c52, 0)),
+          anonymize_data: S.optional(S.NullOr(S.Boolean)),
+          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
+          is_staff: S.optional(S.Boolean),
+          set_current_organization: S.optional(S.String),
+          set_current_team: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          events_column_config: S.optional(S.Unknown),
+          has_seen_product_intro_for: S.optional(S.Unknown),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.Unknown),
+          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
+          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
+          hide_mcp_hints: S.optional(S.Boolean),
+          ui_configuration: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/users/request_email_verification/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersRequestEmailVerificationRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          notification_settings: S.optional(__S(784, __c49, 0)),
+          anonymize_data: S.optional(S.NullOr(S.Boolean)),
+          allow_impersonation: S.optional(S.NullOr(S.Boolean)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
+          is_staff: S.optional(S.Boolean),
+          set_current_organization: S.optional(S.String),
+          set_current_team: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          events_column_config: S.optional(S.Unknown),
+          has_seen_product_intro_for: S.optional(S.Unknown),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.Unknown),
+          allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
+          passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
+          hide_mcp_hints: S.optional(S.Boolean),
+          ui_configuration: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/users/{uuid}/scene_personalisation/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersScenePersonalisationRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

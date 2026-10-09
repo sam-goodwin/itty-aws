@@ -205,8 +205,8 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
   GetConnectionRecordingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetConnectionRecordingPreferencesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetConnectionRecordingPreferencesResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetConnectionRecordingPreferencesRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetConnectionRecordingPreferencesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -239,8 +239,8 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   UpdateConnectionRecordingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -277,7 +277,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ ClientToken: S.optional(S.String) })).annotate({
         identifier: "DeleteConnectionRecordingPreferencesResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -292,39 +296,43 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetConnectionRecordingPreferencesRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ BucketOwner: S.String, BucketName: S.String })).annotate({
         identifier: "S3Bucket",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ S3Buckets: __S(4, __c0, 4) })).annotate({
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ S3Buckets: __S(17, __c2, 1) })).annotate({
         identifier: "RecordingDestinations",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ RecordingDestinations: __S(5, __c0, 5), KMSKeyArn: S.String }),
+        S.Struct({ RecordingDestinations: __S(18, __c2, 2), KMSKeyArn: S.String }),
       ).annotate({
         identifier: "ConnectionRecordingPreferences",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String),
-          ConnectionRecordingPreferences: S.optional(__S(6, __c0, 6)),
+          ConnectionRecordingPreferences: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "GetConnectionRecordingPreferencesResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ConnectionRecordingPreferences: __S(6, __c0, 6),
+          ConnectionRecordingPreferences: __S(19, __c2, 3),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -341,7 +349,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

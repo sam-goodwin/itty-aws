@@ -184,8 +184,8 @@ export const deleteLicenseAssignments: API.OperationMethod<
   DeleteLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteLicenseAssignmentsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(2, __c1, 0) as any as S.Schema<DeleteLicenseAssignmentsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -199,8 +199,8 @@ export const getLicenseAssignments: API.OperationMethod<
   GetLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetLicenseAssignmentsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<LicenseAssignment>,
+  input: __S(4, __c2, 0) as any as S.Schema<GetLicenseAssignmentsRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<LicenseAssignment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -219,8 +219,8 @@ export const insertLicenseAssignments: API.OperationMethod<
   InsertLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<InsertLicenseAssignmentsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<LicenseAssignment>,
+  input: __S(9, __c4, 1) as any as S.Schema<InsertLicenseAssignmentsRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<LicenseAssignment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
   GoogleWorkspaceOpContext,
   LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<LicenseAssignmentList>,
+  input: __S(10, __c5, 0) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>,
+  output: __S(13, __c6, 1) as any as S.Schema<LicenseAssignmentList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListForProductLicenseAssignmentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<LicenseAssignmentList>,
+  input: __S(14, __c7, 0) as any as S.Schema<ListForProductLicenseAssignmentsRequest>,
+  output: __S(13, __c6, 1) as any as S.Schema<LicenseAssignmentList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -276,8 +276,8 @@ export const patchLicenseAssignments: API.OperationMethod<
   PatchLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<PatchLicenseAssignmentsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<LicenseAssignment>,
+  input: __S(16, __c8, 0) as any as S.Schema<PatchLicenseAssignmentsRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<LicenseAssignment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -296,8 +296,8 @@ export const updateLicenseAssignments: API.OperationMethod<
   UpdateLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateLicenseAssignmentsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<LicenseAssignment>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateLicenseAssignmentsRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<LicenseAssignment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -305,6 +305,27 @@ export const updateLicenseAssignments: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          skuId: S.String.pipe(T.Label()),
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
+            baseUrl: "https://licensing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateLicenseAssignmentsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -326,7 +347,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -342,7 +367,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetLicenseAssignmentsRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           skuId: S.optional(S.String),
@@ -355,18 +384,22 @@ function __c0(j: number): any {
           etags: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseAssignment" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseAssignmentInsert" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           skuId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -377,7 +410,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "InsertLicenseAssignmentsRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -395,22 +432,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListForProductAndSkuLicenseAssignmentsRequest",
       });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(6, __c3, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          items: __S(7, __c0, 7),
+          items: __S(12, __c6, 0),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseAssignmentList" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -427,13 +468,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListForProductLicenseAssignmentsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           skuId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -444,26 +489,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchLicenseAssignmentsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          skuId: S.String.pipe(T.Label()),
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
-            baseUrl: "https://licensing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateLicenseAssignmentsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

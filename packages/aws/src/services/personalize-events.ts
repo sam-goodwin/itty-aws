@@ -199,8 +199,8 @@ export const putActionInteractions: API.OperationMethod<
   PutActionInteractionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<PutActionInteractionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PutActionInteractionsResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<PutActionInteractionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutActionInteractionsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -222,8 +222,8 @@ export const putActions: API.OperationMethod<
   PutActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<PutActionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PutActionsResponse>,
+  input: __S(14, __c3, 2) as any as S.Schema<PutActionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutActionsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -241,8 +241,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<PutEventsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PutEventsResponse>,
+  input: __S(19, __c4, 3) as any as S.Schema<PutEventsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutEventsResponse>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -264,8 +264,8 @@ export const putItems: API.OperationMethod<
   PutItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<PutItemsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PutItemsResponse>,
+  input: __S(22, __c5, 2) as any as S.Schema<PutItemsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutItemsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -287,8 +287,8 @@ export const putUsers: API.OperationMethod<
   PutUsersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<PutUsersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PutUsersResponse>,
+  input: __S(26, __c6, 2) as any as S.Schema<PutUsersRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PutUsersResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -299,8 +299,6 @@ export const putUsers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SensitiveString);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           actionId: SensitiveString,
@@ -310,15 +308,15 @@ function __c0(j: number): any {
           eventType: S.String,
           eventId: S.optional(S.String),
           recommendationId: S.optional(S.String),
-          impression: S.optional(__S(0, __c0, 0)),
+          impression: S.optional(__S(8, __c2, 0)),
           properties: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ActionInteraction" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ trackingId: S.String, actionInteractions: __S(2, __c0, 2) }).pipe(
+        S.Struct({ trackingId: S.String, actionInteractions: __S(1, __c0, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/action-interactions" }),
             svc,
@@ -331,25 +329,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PutActionInteractionsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutActionInteractionsResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ actionId: S.String, properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Action" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, actions: __S(6, __c0, 6) }).pipe(
+        S.Struct({ datasetArn: S.String, actions: __S(13, __c3, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutActionsRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ eventAttributionSource: S.String })).annotate({
@@ -365,52 +377,55 @@ function __c1(j: number): any {
           properties: S.optional(SensitiveString),
           sentAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           recommendationId: S.optional(S.String),
-          impression: S.optional(__S(0, __c0, 0)),
-          metricAttribution: S.optional(__S(8, __c1, 0)),
+          impression: S.optional(__S(8, __c2, 0)),
+          metricAttribution: S.optional(__S(16, __c4, 0)),
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(17, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           trackingId: S.String,
           userId: S.optional(SensitiveString),
           sessionId: S.String,
-          eventList: __S(10, __c1, 2),
+          eventList: __S(18, __c4, 2),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/events" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEventsRequest" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ itemId: S.String, properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Item" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(20, __c5, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, items: __S(13, __c1, 5) }).pipe(
+        S.Struct({ datasetArn: S.String, items: __S(21, __c5, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/items" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutItemsRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ userId: S.String, properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "User" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(24, __c6, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, users: __S(16, __c2, 0) }).pipe(
+        S.Struct({ datasetArn: S.String, users: __S(25, __c6, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/users" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutUsersRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -269,8 +269,8 @@ export const createRescoreExecutionPlan: API.OperationMethod<
   CreateRescoreExecutionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateRescoreExecutionPlanRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateRescoreExecutionPlanResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateRescoreExecutionPlanRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<CreateRescoreExecutionPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -303,8 +303,8 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
   DeleteRescoreExecutionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteRescoreExecutionPlanRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteRescoreExecutionPlanResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteRescoreExecutionPlanRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteRescoreExecutionPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -336,8 +336,8 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
   DescribeRescoreExecutionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DescribeRescoreExecutionPlanRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DescribeRescoreExecutionPlanResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeRescoreExecutionPlanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DescribeRescoreExecutionPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -368,8 +368,8 @@ export const listRescoreExecutionPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListRescoreExecutionPlansRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListRescoreExecutionPlansResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListRescoreExecutionPlansRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListRescoreExecutionPlansResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -404,8 +404,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -438,8 +438,8 @@ export const rescore: API.OperationMethod<
   RescoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<RescoreRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<RescoreResult>,
+  input: __S(26, __c3, 2) as any as S.Schema<RescoreRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<RescoreResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -473,8 +473,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -506,8 +506,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -543,8 +543,8 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
   UpdateRescoreExecutionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateRescoreExecutionPlanRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateRescoreExecutionPlanResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateRescoreExecutionPlanRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateRescoreExecutionPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -563,60 +563,6 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ RescoreCapacityUnits: S.Number })).annotate({
-        identifier: "CapacityUnitsConfiguration",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Description: S.optional(S.String),
-          CapacityUnits: S.optional(__S(0, __c0, 0)),
-          Tags: S.optional(__S(2, __c0, 2)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/rescore-execution-plans" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateRescoreExecutionPlanRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ Id: S.String, Arn: S.String })).annotate({
-        identifier: "CreateRescoreExecutionPlanResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/rescore-execution-plans/{Id}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteRescoreExecutionPlanRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRescoreExecutionPlanResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
           T.all(
@@ -631,18 +577,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeRescoreExecutionPlanRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          CapacityUnits: S.optional(__S(0, __c0, 0)),
+          CapacityUnits: S.optional(__S(80, __c10, 0)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
@@ -651,7 +593,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeRescoreExecutionPlanResponse",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -669,7 +615,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListRescoreExecutionPlansRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -681,18 +627,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RescoreExecutionPlanSummary",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          SummaryItems: S.optional(__S(11, __c1, 3)),
+          SummaryItems: S.optional(__S(10, __c1, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRescoreExecutionPlansResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -700,15 +650,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(89, __c11, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -717,19 +665,19 @@ function __c2(j: number): any {
           GroupId: S.optional(S.String),
           Title: S.optional(S.String),
           Body: S.optional(S.String),
-          TokenizedTitle: S.optional(__S(15, __c1, 7)),
-          TokenizedBody: S.optional(__S(15, __c1, 7)),
+          TokenizedTitle: S.optional(__S(32, __c4, 0)),
+          TokenizedBody: S.optional(__S(32, __c4, 0)),
           OriginalScore: S.Number,
         }),
       ).annotate({ identifier: "Document" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           RescoreExecutionPlanId: S.String.pipe(T.HttpLabel("RescoreExecutionPlanId")),
           SearchQuery: S.String,
-          Documents: __S(17, __c2, 1),
+          Documents: __S(25, __c3, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -749,41 +697,56 @@ function __c2(j: number): any {
         S.Struct({ DocumentId: S.optional(S.String), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "RescoreResultItem" });
     case 4:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          RescoreId: S.optional(S.String),
-          ResultItems: S.optional(__S(20, __c2, 4)),
-        }),
+        S.Struct({ RescoreId: S.optional(S.String), ResultItems: S.optional(__S(28, __c3, 4)) }),
       ).annotate({ identifier: "RescoreResult" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(2, __c0, 2) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(89, __c11, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(15, __c1, 7) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(32, __c4, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          CapacityUnits: S.optional(__S(0, __c0, 0)),
+          CapacityUnits: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/rescore-execution-plans/{Id}" }),
@@ -799,7 +762,80 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Description: S.optional(S.String),
+          CapacityUnits: S.optional(__S(80, __c10, 0)),
+          Tags: S.optional(__S(89, __c11, 1)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/rescore-execution-plans" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateRescoreExecutionPlanRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Id: S.String, Arn: S.String })).annotate({
+        identifier: "CreateRescoreExecutionPlanResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RescoreCapacityUnits: S.Number })).annotate({
+        identifier: "CapacityUnitsConfiguration",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/rescore-execution-plans/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteRescoreExecutionPlanRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteRescoreExecutionPlanResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -4659,8 +4659,8 @@ export const approveProjectsLocationsChangeRequests: API.OperationMethod<
   ApproveProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ApproveProjectsLocationsChangeRequestsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
+  input: __S(5377, __c168, 1) as any as S.Schema<ApproveProjectsLocationsChangeRequestsRequest>,
+  output: __S(5739, __c179, 11) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4679,8 +4679,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(6080, __c190, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4699,8 +4699,8 @@ export const cancelProjectsLocationsDataScansJobs: API.OperationMethod<
   CancelProjectsLocationsDataScansJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CancelProjectsLocationsDataScansJobsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<CancelProjectsLocationsDataScansJobsRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4719,8 +4719,8 @@ export const cancelProjectsLocationsLakesTasksJobs: API.OperationMethod<
   CancelProjectsLocationsLakesTasksJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CancelProjectsLocationsLakesTasksJobsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(6912, __c216, 0) as any as S.Schema<CancelProjectsLocationsLakesTasksJobsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4739,8 +4739,8 @@ export const cancelProjectsLocationsMetadataJobs: API.OperationMethod<
   CancelProjectsLocationsMetadataJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CancelProjectsLocationsMetadataJobsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(7264, __c227, 0) as any as S.Schema<CancelProjectsLocationsMetadataJobsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4759,8 +4759,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(7680, __c240, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4779,8 +4779,8 @@ export const createOrganizationsLocationsEncryptionConfigs: API.OperationMethod<
   CreateOrganizationsLocationsEncryptionConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateOrganizationsLocationsEncryptionConfigsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4799,8 +4799,8 @@ export const createProjectsLocationsAspectTypes: API.OperationMethod<
   CreateProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateProjectsLocationsAspectTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateProjectsLocationsAspectTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4819,8 +4819,8 @@ export const createProjectsLocationsDataDomains: API.OperationMethod<
   CreateProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateProjectsLocationsDataDomainsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateProjectsLocationsDataDomainsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4839,8 +4839,8 @@ export const createProjectsLocationsDataDomainsBindings: API.OperationMethod<
   CreateProjectsLocationsDataDomainsBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsLocationsDataDomainsBindingsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateProjectsLocationsDataDomainsBindingsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4859,8 +4859,8 @@ export const createProjectsLocationsDataProducts: API.OperationMethod<
   CreateProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateProjectsLocationsDataProductsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateProjectsLocationsDataProductsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4879,8 +4879,12 @@ export const createProjectsLocationsDataProductsDataAssets: API.OperationMethod<
   CreateProjectsLocationsDataProductsDataAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateProjectsLocationsDataProductsDataAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    2048,
+    __c64,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsDataProductsDataAssetsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4899,8 +4903,8 @@ export const createProjectsLocationsDataScans: API.OperationMethod<
   CreateProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateProjectsLocationsDataScansRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateProjectsLocationsDataScansRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4919,8 +4923,8 @@ export const createProjectsLocationsEntryGroups: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2976, __c93, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4939,8 +4943,8 @@ export const createProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(3360, __c105, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4959,8 +4963,12 @@ export const createProjectsLocationsEntryGroupsEntryLinks: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntryLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntryLinksRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
+  input: __S(
+    3744,
+    __c117,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntryLinksRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4979,8 +4987,8 @@ export const createProjectsLocationsEntryTypes: API.OperationMethod<
   CreateProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<CreateProjectsLocationsEntryTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4096, __c128, 0) as any as S.Schema<CreateProjectsLocationsEntryTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4999,8 +5007,8 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
   CreateProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4416, __c138, 0) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5019,8 +5027,12 @@ export const createProjectsLocationsGlossariesCategories: API.OperationMethod<
   CreateProjectsLocationsGlossariesCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<CreateProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
+  input: __S(
+    4448,
+    __c139,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsGlossariesCategoriesRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5039,8 +5051,8 @@ export const createProjectsLocationsGlossariesTerms: API.OperationMethod<
   CreateProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateProjectsLocationsGlossariesTermsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
+  input: __S(4480, __c140, 0) as any as S.Schema<CreateProjectsLocationsGlossariesTermsRequest>,
+  output: __S(5696, __c178, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5059,8 +5071,8 @@ export const createProjectsLocationsLakes: API.OperationMethod<
   CreateProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<CreateProjectsLocationsLakesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4512, __c141, 0) as any as S.Schema<CreateProjectsLocationsLakesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5079,8 +5091,8 @@ export const createProjectsLocationsLakesTasks: API.OperationMethod<
   CreateProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<CreateProjectsLocationsLakesTasksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4608, __c144, 0) as any as S.Schema<CreateProjectsLocationsLakesTasksRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5099,8 +5111,8 @@ export const createProjectsLocationsLakesZones: API.OperationMethod<
   CreateProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<CreateProjectsLocationsLakesZonesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4704, __c147, 0) as any as S.Schema<CreateProjectsLocationsLakesZonesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5119,8 +5131,8 @@ export const createProjectsLocationsLakesZonesAssets: API.OperationMethod<
   CreateProjectsLocationsLakesZonesAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<CreateProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4800, __c150, 0) as any as S.Schema<CreateProjectsLocationsLakesZonesAssetsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5139,8 +5151,8 @@ export const createProjectsLocationsLakesZonesEntities: API.OperationMethod<
   CreateProjectsLocationsLakesZonesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<CreateProjectsLocationsLakesZonesEntitiesRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GoogleCloudDataplexV1Entity>,
+  input: __S(4864, __c152, 0) as any as S.Schema<CreateProjectsLocationsLakesZonesEntitiesRequest>,
+  output: __S(4908, __c153, 12) as any as S.Schema<GoogleCloudDataplexV1Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5160,11 +5172,11 @@ export const createProjectsLocationsLakesZonesEntitiesPartitions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    221,
-    __c27,
-    5,
+    4928,
+    __c154,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GoogleCloudDataplexV1Partition>,
+  output: __S(4960, __c155, 0) as any as S.Schema<GoogleCloudDataplexV1Partition>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5183,8 +5195,8 @@ export const createProjectsLocationsMetadataFeeds: API.OperationMethod<
   CreateProjectsLocationsMetadataFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<CreateProjectsLocationsMetadataFeedsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4992, __c156, 0) as any as S.Schema<CreateProjectsLocationsMetadataFeedsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5203,8 +5215,8 @@ export const createProjectsLocationsMetadataJobs: API.OperationMethod<
   CreateProjectsLocationsMetadataJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CreateProjectsLocationsMetadataJobsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5056, __c158, 0) as any as S.Schema<CreateProjectsLocationsMetadataJobsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5224,11 +5236,11 @@ export const deleteOrganizationsLocationsEncryptionConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    5120,
+    __c160,
+    0,
   ) as any as S.Schema<DeleteOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5247,8 +5259,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5267,8 +5279,8 @@ export const deleteProjectsLocationsAspectTypes: API.OperationMethod<
   DeleteProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<DeleteProjectsLocationsAspectTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DeleteProjectsLocationsAspectTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5287,8 +5299,8 @@ export const deleteProjectsLocationsChangeRequests: API.OperationMethod<
   DeleteProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<DeleteProjectsLocationsChangeRequestsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(5216, __c163, 0) as any as S.Schema<DeleteProjectsLocationsChangeRequestsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5307,8 +5319,8 @@ export const deleteProjectsLocationsDataDomains: API.OperationMethod<
   DeleteProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<DeleteProjectsLocationsDataDomainsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5248, __c164, 0) as any as S.Schema<DeleteProjectsLocationsDataDomainsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5327,8 +5339,8 @@ export const deleteProjectsLocationsDataDomainsBindings: API.OperationMethod<
   DeleteProjectsLocationsDataDomainsBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DeleteProjectsLocationsDataDomainsBindingsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DeleteProjectsLocationsDataDomainsBindingsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5347,8 +5359,8 @@ export const deleteProjectsLocationsDataProducts: API.OperationMethod<
   DeleteProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<DeleteProjectsLocationsDataProductsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5312, __c166, 0) as any as S.Schema<DeleteProjectsLocationsDataProductsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5368,11 +5380,11 @@ export const deleteProjectsLocationsDataProductsDataAssets: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    242,
-    __c30,
-    2,
+    5344,
+    __c167,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataProductsDataAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5391,8 +5403,8 @@ export const deleteProjectsLocationsDataScans: API.OperationMethod<
   DeleteProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<DeleteProjectsLocationsDataScansRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5760, __c180, 0) as any as S.Schema<DeleteProjectsLocationsDataScansRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5411,8 +5423,8 @@ export const deleteProjectsLocationsEntryGroups: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5792, __c181, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5431,8 +5443,8 @@ export const deleteProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(5824, __c182, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5451,8 +5463,12 @@ export const deleteProjectsLocationsEntryGroupsEntryLinks: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntryLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntryLinksRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
+  input: __S(
+    5856,
+    __c183,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntryLinksRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5471,8 +5487,8 @@ export const deleteProjectsLocationsEntryTypes: API.OperationMethod<
   DeleteProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DeleteProjectsLocationsEntryTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5888, __c184, 0) as any as S.Schema<DeleteProjectsLocationsEntryTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5491,8 +5507,8 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
   DeleteProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5920, __c185, 0) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5511,8 +5527,12 @@ export const deleteProjectsLocationsGlossariesCategories: API.OperationMethod<
   DeleteProjectsLocationsGlossariesCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<DeleteProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(
+    5952,
+    __c186,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsGlossariesCategoriesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5531,8 +5551,8 @@ export const deleteProjectsLocationsGlossariesTerms: API.OperationMethod<
   DeleteProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<DeleteProjectsLocationsGlossariesTermsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(5984, __c187, 0) as any as S.Schema<DeleteProjectsLocationsGlossariesTermsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5551,8 +5571,8 @@ export const deleteProjectsLocationsLakes: API.OperationMethod<
   DeleteProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<DeleteProjectsLocationsLakesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteProjectsLocationsLakesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5571,8 +5591,8 @@ export const deleteProjectsLocationsLakesTasks: API.OperationMethod<
   DeleteProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<DeleteProjectsLocationsLakesTasksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6048, __c189, 0) as any as S.Schema<DeleteProjectsLocationsLakesTasksRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5591,8 +5611,8 @@ export const deleteProjectsLocationsLakesZones: API.OperationMethod<
   DeleteProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<DeleteProjectsLocationsLakesZonesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6176, __c193, 0) as any as S.Schema<DeleteProjectsLocationsLakesZonesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5611,8 +5631,8 @@ export const deleteProjectsLocationsLakesZonesAssets: API.OperationMethod<
   DeleteProjectsLocationsLakesZonesAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<DeleteProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6208, __c194, 0) as any as S.Schema<DeleteProjectsLocationsLakesZonesAssetsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5631,8 +5651,8 @@ export const deleteProjectsLocationsLakesZonesEntities: API.OperationMethod<
   DeleteProjectsLocationsLakesZonesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<DeleteProjectsLocationsLakesZonesEntitiesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(6240, __c195, 0) as any as S.Schema<DeleteProjectsLocationsLakesZonesEntitiesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5652,11 +5672,11 @@ export const deleteProjectsLocationsLakesZonesEntitiesPartitions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    256,
-    __c32,
+    6272,
+    __c196,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5675,8 +5695,8 @@ export const deleteProjectsLocationsMetadataFeeds: API.OperationMethod<
   DeleteProjectsLocationsMetadataFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<DeleteProjectsLocationsMetadataFeedsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6304, __c197, 0) as any as S.Schema<DeleteProjectsLocationsMetadataFeedsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5695,8 +5715,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(6336, __c198, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5716,14 +5736,14 @@ export const generateDataQualityRulesProjectsLocationsDataScans: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    259,
-    __c32,
-    3,
+    6368,
+    __c199,
+    0,
   ) as any as S.Schema<GenerateDataQualityRulesProjectsLocationsDataScansRequest>,
   output: __S(
-    260,
-    __c32,
-    4,
+    6400,
+    __c200,
+    0,
   ) as any as S.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5744,14 +5764,14 @@ export const generateDataQualityRulesProjectsLocationsDataScansJobs: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    261,
-    __c32,
-    5,
+    6432,
+    __c201,
+    0,
   ) as any as S.Schema<GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest>,
   output: __S(
-    260,
-    __c32,
-    4,
+    6400,
+    __c200,
+    0,
   ) as any as S.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5770,11 +5790,11 @@ export const getIamPolicyOrganizationsLocationsEncryptionConfigs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    262,
-    __c32,
-    6,
+    6464,
+    __c202,
+    0,
   ) as any as S.Schema<GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5788,8 +5808,8 @@ export const getIamPolicyProjectsLocationsAgentTasks: API.OperationMethod<
   GetIamPolicyProjectsLocationsAgentTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<GetIamPolicyProjectsLocationsAgentTasksRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6528, __c204, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAgentTasksRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5803,8 +5823,8 @@ export const getIamPolicyProjectsLocationsAspectTypes: API.OperationMethod<
   GetIamPolicyProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAspectTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6592, __c206, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAspectTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5818,8 +5838,12 @@ export const getIamPolicyProjectsLocationsChangeRequests: API.OperationMethod<
   GetIamPolicyProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetIamPolicyProjectsLocationsChangeRequestsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    6624,
+    __c207,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsChangeRequestsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5837,11 +5861,11 @@ export const getIamPolicyProjectsLocationsDataAttributeBindings: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    274,
-    __c34,
-    2,
+    6656,
+    __c208,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDataAttributeBindingsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5855,8 +5879,8 @@ export const getIamPolicyProjectsLocationsDataDomains: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<GetIamPolicyProjectsLocationsDataDomainsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6688, __c209, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDataDomainsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5870,8 +5894,8 @@ export const getIamPolicyProjectsLocationsDataProducts: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<GetIamPolicyProjectsLocationsDataProductsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6720, __c210, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDataProductsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5885,8 +5909,8 @@ export const getIamPolicyProjectsLocationsDataScans: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetIamPolicyProjectsLocationsDataScansRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDataScansRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5900,8 +5924,12 @@ export const getIamPolicyProjectsLocationsDataTaxonomies: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    6784,
+    __c212,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5919,11 +5947,11 @@ export const getIamPolicyProjectsLocationsDataTaxonomiesAttributes: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    279,
-    __c34,
-    7,
+    6816,
+    __c213,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5937,8 +5965,8 @@ export const getIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   GetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6848, __c214, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5952,8 +5980,12 @@ export const getIamPolicyProjectsLocationsEntryLinkTypes: API.OperationMethod<
   GetIamPolicyProjectsLocationsEntryLinkTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetIamPolicyProjectsLocationsEntryLinkTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    6880,
+    __c215,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsEntryLinkTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5967,8 +5999,8 @@ export const getIamPolicyProjectsLocationsEntryTypes: API.OperationMethod<
   GetIamPolicyProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<GetIamPolicyProjectsLocationsEntryTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6944, __c217, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEntryTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5982,8 +6014,8 @@ export const getIamPolicyProjectsLocationsGlossaries: API.OperationMethod<
   GetIamPolicyProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(6976, __c218, 0) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6001,11 +6033,11 @@ export const getIamPolicyProjectsLocationsGlossariesCategories: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    284,
-    __c35,
-    4,
+    7008,
+    __c219,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6019,8 +6051,12 @@ export const getIamPolicyProjectsLocationsGlossariesTerms: API.OperationMethod<
   GetIamPolicyProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesTermsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    7040,
+    __c220,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesTermsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6034,8 +6070,12 @@ export const getIamPolicyProjectsLocationsGovernanceRules: API.OperationMethod<
   GetIamPolicyProjectsLocationsGovernanceRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<GetIamPolicyProjectsLocationsGovernanceRulesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    7072,
+    __c221,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsGovernanceRulesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6049,8 +6089,8 @@ export const getIamPolicyProjectsLocationsLakes: API.OperationMethod<
   GetIamPolicyProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetIamPolicyProjectsLocationsLakesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(7104, __c222, 0) as any as S.Schema<GetIamPolicyProjectsLocationsLakesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6064,8 +6104,8 @@ export const getIamPolicyProjectsLocationsLakesTasks: API.OperationMethod<
   GetIamPolicyProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetIamPolicyProjectsLocationsLakesTasksRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(7136, __c223, 0) as any as S.Schema<GetIamPolicyProjectsLocationsLakesTasksRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6079,8 +6119,8 @@ export const getIamPolicyProjectsLocationsLakesZones: API.OperationMethod<
   GetIamPolicyProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<GetIamPolicyProjectsLocationsLakesZonesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(7168, __c224, 0) as any as S.Schema<GetIamPolicyProjectsLocationsLakesZonesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6095,11 +6135,11 @@ export const getIamPolicyProjectsLocationsLakesZonesAssets: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    290,
-    __c36,
-    2,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6113,8 +6153,8 @@ export const getOrganizationsLocationsEncryptionConfigs: API.OperationMethod<
   GetOrganizationsLocationsEncryptionConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GoogleCloudDataplexV1EncryptionConfig>,
+  input: __S(7232, __c226, 0) as any as S.Schema<GetOrganizationsLocationsEncryptionConfigsRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<GoogleCloudDataplexV1EncryptionConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6128,8 +6168,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7296, __c228, 0) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6143,8 +6183,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: __S(7328, __c229, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(7360, __c230, 0) as any as S.Schema<GoogleCloudLocationLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6158,8 +6198,8 @@ export const getProjectsLocationsAspectTypes: API.OperationMethod<
   GetProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetProjectsLocationsAspectTypesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GoogleCloudDataplexV1AspectType>,
+  input: __S(7392, __c231, 0) as any as S.Schema<GetProjectsLocationsAspectTypesRequest>,
+  output: __S(518, __c16, 6) as any as S.Schema<GoogleCloudDataplexV1AspectType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6173,8 +6213,8 @@ export const getProjectsLocationsChangeRequests: API.OperationMethod<
   GetProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetProjectsLocationsChangeRequestsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetProjectsLocationsChangeRequestsRequest>,
+  output: __S(5739, __c179, 11) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6188,8 +6228,8 @@ export const getProjectsLocationsDataDomains: API.OperationMethod<
   GetProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetProjectsLocationsDataDomainsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GoogleCloudDataplexV1DataDomain>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetProjectsLocationsDataDomainsRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<GoogleCloudDataplexV1DataDomain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6203,8 +6243,8 @@ export const getProjectsLocationsDataDomainsBindings: API.OperationMethod<
   GetProjectsLocationsDataDomainsBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetProjectsLocationsDataDomainsBindingsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GoogleCloudDataplexV1DataDomainBinding>,
+  input: __S(7488, __c234, 0) as any as S.Schema<GetProjectsLocationsDataDomainsBindingsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<GoogleCloudDataplexV1DataDomainBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6218,8 +6258,8 @@ export const getProjectsLocationsDataProducts: API.OperationMethod<
   GetProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<GetProjectsLocationsDataProductsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GoogleCloudDataplexV1DataProduct>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetProjectsLocationsDataProductsRequest>,
+  output: __S(1701, __c53, 5) as any as S.Schema<GoogleCloudDataplexV1DataProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6233,8 +6273,8 @@ export const getProjectsLocationsDataProductsDataAssets: API.OperationMethod<
   GetProjectsLocationsDataProductsDataAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetProjectsLocationsDataProductsDataAssetsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GoogleCloudDataplexV1DataAsset>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetProjectsLocationsDataProductsDataAssetsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<GoogleCloudDataplexV1DataAsset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6248,8 +6288,8 @@ export const getProjectsLocationsDataScans: API.OperationMethod<
   GetProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetProjectsLocationsDataScansRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleCloudDataplexV1DataScan>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetProjectsLocationsDataScansRequest>,
+  output: __S(2536, __c79, 8) as any as S.Schema<GoogleCloudDataplexV1DataScan>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6263,8 +6303,8 @@ export const getProjectsLocationsDataScansJobs: API.OperationMethod<
   GetProjectsLocationsDataScansJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetProjectsLocationsDataScansJobsRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<GoogleCloudDataplexV1DataScanJob>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetProjectsLocationsDataScansJobsRequest>,
+  output: __S(7648, __c239, 0) as any as S.Schema<GoogleCloudDataplexV1DataScanJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6278,8 +6318,8 @@ export const getProjectsLocationsEntryGroups: API.OperationMethod<
   GetProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GoogleCloudDataplexV1EntryGroup>,
+  input: __S(7712, __c241, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<GoogleCloudDataplexV1EntryGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6293,8 +6333,8 @@ export const getProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   GetProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(7744, __c242, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6308,8 +6348,8 @@ export const getProjectsLocationsEntryGroupsEntryLinks: API.OperationMethod<
   GetProjectsLocationsEntryGroupsEntryLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetProjectsLocationsEntryGroupsEntryLinksRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
+  input: __S(7776, __c243, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsEntryLinksRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6323,8 +6363,8 @@ export const getProjectsLocationsEntryTypes: API.OperationMethod<
   GetProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<GetProjectsLocationsEntryTypesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GoogleCloudDataplexV1EntryType>,
+  input: __S(7808, __c244, 0) as any as S.Schema<GetProjectsLocationsEntryTypesRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<GoogleCloudDataplexV1EntryType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6338,8 +6378,8 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
   GetProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetProjectsLocationsGlossariesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudDataplexV1Glossary>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetProjectsLocationsGlossariesRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<GoogleCloudDataplexV1Glossary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6353,8 +6393,8 @@ export const getProjectsLocationsGlossariesCategories: API.OperationMethod<
   GetProjectsLocationsGlossariesCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
+  input: __S(7872, __c246, 0) as any as S.Schema<GetProjectsLocationsGlossariesCategoriesRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6368,8 +6408,8 @@ export const getProjectsLocationsGlossariesTerms: API.OperationMethod<
   GetProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetProjectsLocationsGlossariesTermsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
+  input: __S(7904, __c247, 0) as any as S.Schema<GetProjectsLocationsGlossariesTermsRequest>,
+  output: __S(5696, __c178, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6383,8 +6423,8 @@ export const getProjectsLocationsLakes: API.OperationMethod<
   GetProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetProjectsLocationsLakesRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GoogleCloudDataplexV1Lake>,
+  input: __S(7936, __c248, 0) as any as S.Schema<GetProjectsLocationsLakesRequest>,
+  output: __S(4578, __c143, 2) as any as S.Schema<GoogleCloudDataplexV1Lake>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6398,8 +6438,8 @@ export const getProjectsLocationsLakesTasks: API.OperationMethod<
   GetProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetProjectsLocationsLakesTasksRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GoogleCloudDataplexV1Task>,
+  input: __S(7968, __c249, 0) as any as S.Schema<GetProjectsLocationsLakesTasksRequest>,
+  output: __S(4648, __c145, 8) as any as S.Schema<GoogleCloudDataplexV1Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6413,8 +6453,8 @@ export const getProjectsLocationsLakesTasksJobs: API.OperationMethod<
   GetProjectsLocationsLakesTasksJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<GetProjectsLocationsLakesTasksJobsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<GoogleCloudDataplexV1Job>,
+  input: __S(8000, __c250, 0) as any as S.Schema<GetProjectsLocationsLakesTasksJobsRequest>,
+  output: __S(4673, __c146, 1) as any as S.Schema<GoogleCloudDataplexV1Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6428,8 +6468,8 @@ export const getProjectsLocationsLakesZones: API.OperationMethod<
   GetProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetProjectsLocationsLakesZonesRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<GoogleCloudDataplexV1Zone>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsLocationsLakesZonesRequest>,
+  output: __S(4739, __c148, 3) as any as S.Schema<GoogleCloudDataplexV1Zone>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6443,8 +6483,8 @@ export const getProjectsLocationsLakesZonesAssets: API.OperationMethod<
   GetProjectsLocationsLakesZonesAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<GetProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudDataplexV1Asset>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProjectsLocationsLakesZonesAssetsRequest>,
+  output: __S(4839, __c151, 7) as any as S.Schema<GoogleCloudDataplexV1Asset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6458,8 +6498,8 @@ export const getProjectsLocationsLakesZonesEntities: API.OperationMethod<
   GetProjectsLocationsLakesZonesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetProjectsLocationsLakesZonesEntitiesRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GoogleCloudDataplexV1Entity>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetProjectsLocationsLakesZonesEntitiesRequest>,
+  output: __S(4908, __c153, 12) as any as S.Schema<GoogleCloudDataplexV1Entity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6477,11 +6517,11 @@ export const getProjectsLocationsLakesZonesEntitiesPartitions: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    317,
-    __c39,
-    5,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<GetProjectsLocationsLakesZonesEntitiesPartitionsRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GoogleCloudDataplexV1Partition>,
+  output: __S(4960, __c155, 0) as any as S.Schema<GoogleCloudDataplexV1Partition>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6495,8 +6535,8 @@ export const getProjectsLocationsMetadataFeeds: API.OperationMethod<
   GetProjectsLocationsMetadataFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<GetProjectsLocationsMetadataFeedsRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GoogleCloudDataplexV1MetadataFeed>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetProjectsLocationsMetadataFeedsRequest>,
+  output: __S(5026, __c157, 2) as any as S.Schema<GoogleCloudDataplexV1MetadataFeed>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6510,8 +6550,8 @@ export const getProjectsLocationsMetadataJobs: API.OperationMethod<
   GetProjectsLocationsMetadataJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetProjectsLocationsMetadataJobsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<GoogleCloudDataplexV1MetadataJob>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProjectsLocationsMetadataJobsRequest>,
+  output: __S(5095, __c159, 7) as any as S.Schema<GoogleCloudDataplexV1MetadataJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6525,8 +6565,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6541,8 +6581,8 @@ export const listOrganizationsLocationsEncryptionConfigs: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudDataplexV1ListEncryptionConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<ListOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<GoogleCloudDataplexV1ListEncryptionConfigsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListOrganizationsLocationsEncryptionConfigsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<GoogleCloudDataplexV1ListEncryptionConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6558,8 +6598,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6575,8 +6615,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6592,8 +6632,8 @@ export const listProjectsLocationsAspectTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListAspectTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListProjectsLocationsAspectTypesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<GoogleCloudDataplexV1ListAspectTypesResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListProjectsLocationsAspectTypesRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<GoogleCloudDataplexV1ListAspectTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6609,8 +6649,8 @@ export const listProjectsLocationsChangeRequests: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListChangeRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<ListProjectsLocationsChangeRequestsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<GoogleCloudDataplexV1ListChangeRequestsResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListProjectsLocationsChangeRequestsRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<GoogleCloudDataplexV1ListChangeRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6626,8 +6666,8 @@ export const listProjectsLocationsDataDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListDataDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListProjectsLocationsDataDomainsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataDomainsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListProjectsLocationsDataDomainsRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6643,11 +6683,11 @@ export const listProjectsLocationsDataDomainsBindings: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudDataplexV1ListDataDomainBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListProjectsLocationsDataDomainsBindingsRequest>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListProjectsLocationsDataDomainsBindingsRequest>,
   output: __S(
-    341,
-    __c42,
-    5,
+    642,
+    __c20,
+    2,
   ) as any as S.Schema<GoogleCloudDataplexV1ListDataDomainBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6664,8 +6704,8 @@ export const listProjectsLocationsDataProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListDataProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListProjectsLocationsDataProductsRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<GoogleCloudDataplexV1ListDataProductsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListProjectsLocationsDataProductsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6681,8 +6721,8 @@ export const listProjectsLocationsDataProductsDataAssets: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudDataplexV1ListDataAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<GoogleCloudDataplexV1ListDataAssetsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6698,8 +6738,8 @@ export const listProjectsLocationsDataScans: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListDataScansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<ListProjectsLocationsDataScansRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<GoogleCloudDataplexV1ListDataScansResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListProjectsLocationsDataScansRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataScansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6715,8 +6755,8 @@ export const listProjectsLocationsDataScansJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListDataScanJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ListProjectsLocationsDataScansJobsRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GoogleCloudDataplexV1ListDataScanJobsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListProjectsLocationsDataScansJobsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<GoogleCloudDataplexV1ListDataScanJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6732,8 +6772,8 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListEntryGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<GoogleCloudDataplexV1ListEntryGroupsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<GoogleCloudDataplexV1ListEntryGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6749,8 +6789,8 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDataplexV1ListEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<GoogleCloudDataplexV1ListEntriesResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<GoogleCloudDataplexV1ListEntriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6766,8 +6806,8 @@ export const listProjectsLocationsEntryTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListEntryTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListProjectsLocationsEntryTypesRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<GoogleCloudDataplexV1ListEntryTypesResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListProjectsLocationsEntryTypesRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<GoogleCloudDataplexV1ListEntryTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6783,8 +6823,8 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListGlossariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<ListProjectsLocationsGlossariesRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<GoogleCloudDataplexV1ListGlossariesResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListProjectsLocationsGlossariesRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<GoogleCloudDataplexV1ListGlossariesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6800,11 +6840,11 @@ export const listProjectsLocationsGlossariesCategories: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudDataplexV1ListGlossaryCategoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListProjectsLocationsGlossariesCategoriesRequest>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListProjectsLocationsGlossariesCategoriesRequest>,
   output: __S(
-    368,
-    __c46,
-    0,
+    994,
+    __c31,
+    2,
   ) as any as S.Schema<GoogleCloudDataplexV1ListGlossaryCategoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6821,8 +6861,8 @@ export const listProjectsLocationsGlossariesTerms: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListGlossaryTermsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<ListProjectsLocationsGlossariesTermsRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<GoogleCloudDataplexV1ListGlossaryTermsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListProjectsLocationsGlossariesTermsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<GoogleCloudDataplexV1ListGlossaryTermsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6838,8 +6878,8 @@ export const listProjectsLocationsLakes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListLakesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<ListProjectsLocationsLakesRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<GoogleCloudDataplexV1ListLakesResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListProjectsLocationsLakesRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<GoogleCloudDataplexV1ListLakesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6855,8 +6895,8 @@ export const listProjectsLocationsLakesActions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ListProjectsLocationsLakesActionsRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsLocationsLakesActionsRequest>,
+  output: __S(1126, __c35, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6872,8 +6912,8 @@ export const listProjectsLocationsLakesTasks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListProjectsLocationsLakesTasksRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<GoogleCloudDataplexV1ListTasksResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListProjectsLocationsLakesTasksRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudDataplexV1ListTasksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6889,8 +6929,8 @@ export const listProjectsLocationsLakesTasksJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListProjectsLocationsLakesTasksJobsRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<GoogleCloudDataplexV1ListJobsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListProjectsLocationsLakesTasksJobsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<GoogleCloudDataplexV1ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6906,8 +6946,8 @@ export const listProjectsLocationsLakesZones: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<ListProjectsLocationsLakesZonesRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<GoogleCloudDataplexV1ListZonesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListProjectsLocationsLakesZonesRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<GoogleCloudDataplexV1ListZonesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6923,8 +6963,8 @@ export const listProjectsLocationsLakesZonesActions: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudDataplexV1ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListProjectsLocationsLakesZonesActionsRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListProjectsLocationsLakesZonesActionsRequest>,
+  output: __S(1126, __c35, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6940,8 +6980,8 @@ export const listProjectsLocationsLakesZonesAssets: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudDataplexV1ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(395, __c49, 3) as any as S.Schema<GoogleCloudDataplexV1ListAssetsResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<GoogleCloudDataplexV1ListAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6957,8 +6997,12 @@ export const listProjectsLocationsLakesZonesAssetsActions: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudDataplexV1ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsActionsRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
+  input: __S(
+    1376,
+    __c43,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsActionsRequest>,
+  output: __S(1126, __c35, 6) as any as S.Schema<GoogleCloudDataplexV1ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6974,8 +7018,8 @@ export const listProjectsLocationsLakesZonesEntities: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDataplexV1ListEntitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<GoogleCloudDataplexV1ListEntitiesResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<GoogleCloudDataplexV1ListEntitiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6995,11 +7039,11 @@ export const listProjectsLocationsLakesZonesEntitiesPartitions: API.PaginatedOpe
   GoogleCloudDataplexV1ListPartitionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    400,
-    __c50,
+    1440,
+    __c45,
     0,
   ) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GoogleCloudDataplexV1ListPartitionsResponse>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GoogleCloudDataplexV1ListPartitionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7015,8 +7059,8 @@ export const listProjectsLocationsMetadataFeeds: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListMetadataFeedsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ListProjectsLocationsMetadataFeedsRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<GoogleCloudDataplexV1ListMetadataFeedsResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListProjectsLocationsMetadataFeedsRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<GoogleCloudDataplexV1ListMetadataFeedsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7032,8 +7076,8 @@ export const listProjectsLocationsMetadataJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1ListMetadataJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListProjectsLocationsMetadataJobsRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<GoogleCloudDataplexV1ListMetadataJobsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListProjectsLocationsMetadataJobsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<GoogleCloudDataplexV1ListMetadataJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7049,8 +7093,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7070,8 +7114,8 @@ export const lookupContextProjectsLocations: API.OperationMethod<
   LookupContextProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<LookupContextProjectsLocationsRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<GoogleCloudDataplexV1LookupContextResponse>,
+  input: __S(1569, __c49, 1) as any as S.Schema<LookupContextProjectsLocationsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<GoogleCloudDataplexV1LookupContextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7086,8 +7130,8 @@ export const lookupEntryLinksProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1LookupEntryLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<LookupEntryLinksProjectsLocationsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<GoogleCloudDataplexV1LookupEntryLinksResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<LookupEntryLinksProjectsLocationsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<GoogleCloudDataplexV1LookupEntryLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7102,8 +7146,8 @@ export const lookupEntryProjectsLocations: API.OperationMethod<
   LookupEntryProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<LookupEntryProjectsLocationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(1632, __c51, 0) as any as S.Schema<LookupEntryProjectsLocationsRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7122,8 +7166,8 @@ export const modifyEntryProjectsLocations: API.OperationMethod<
   ModifyEntryProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<ModifyEntryProjectsLocationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(1729, __c54, 1) as any as S.Schema<ModifyEntryProjectsLocationsRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7142,8 +7186,12 @@ export const patchOrganizationsLocationsEncryptionConfigs: API.OperationMethod<
   PatchOrganizationsLocationsEncryptionConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<PatchOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    1760,
+    __c55,
+    0,
+  ) as any as S.Schema<PatchOrganizationsLocationsEncryptionConfigsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7162,8 +7210,8 @@ export const patchProjectsLocationsAspectTypes: API.OperationMethod<
   PatchProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<PatchProjectsLocationsAspectTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1792, __c56, 0) as any as S.Schema<PatchProjectsLocationsAspectTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7182,8 +7230,8 @@ export const patchProjectsLocationsChangeRequests: API.OperationMethod<
   PatchProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<PatchProjectsLocationsChangeRequestsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
+  input: __S(1824, __c57, 0) as any as S.Schema<PatchProjectsLocationsChangeRequestsRequest>,
+  output: __S(5739, __c179, 11) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7250,8 @@ export const patchProjectsLocationsDataDomains: API.OperationMethod<
   PatchProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<PatchProjectsLocationsDataDomainsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1856, __c58, 0) as any as S.Schema<PatchProjectsLocationsDataDomainsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7222,8 +7270,8 @@ export const patchProjectsLocationsDataProducts: API.OperationMethod<
   PatchProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<PatchProjectsLocationsDataProductsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1888, __c59, 0) as any as S.Schema<PatchProjectsLocationsDataProductsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7242,8 +7290,12 @@ export const patchProjectsLocationsDataProductsDataAssets: API.OperationMethod<
   PatchProjectsLocationsDataProductsDataAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<PatchProjectsLocationsDataProductsDataAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    1920,
+    __c60,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsDataProductsDataAssetsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7262,8 +7314,8 @@ export const patchProjectsLocationsDataScans: API.OperationMethod<
   PatchProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<PatchProjectsLocationsDataScansRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1952, __c61, 0) as any as S.Schema<PatchProjectsLocationsDataScansRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7282,8 +7334,8 @@ export const patchProjectsLocationsEntryGroups: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7302,8 +7354,8 @@ export const patchProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDataplexV1Entry>,
+  input: __S(2016, __c63, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<GoogleCloudDataplexV1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7322,8 +7374,8 @@ export const patchProjectsLocationsEntryGroupsEntryLinks: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntryLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntryLinksRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
+  input: __S(2112, __c66, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntryLinksRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<GoogleCloudDataplexV1EntryLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7342,8 +7394,8 @@ export const patchProjectsLocationsEntryTypes: API.OperationMethod<
   PatchProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<PatchProjectsLocationsEntryTypesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2144, __c67, 0) as any as S.Schema<PatchProjectsLocationsEntryTypesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7362,8 +7414,8 @@ export const patchProjectsLocationsGlossaries: API.OperationMethod<
   PatchProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<PatchProjectsLocationsGlossariesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2176, __c68, 0) as any as S.Schema<PatchProjectsLocationsGlossariesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7382,8 +7434,8 @@ export const patchProjectsLocationsGlossariesCategories: API.OperationMethod<
   PatchProjectsLocationsGlossariesCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<PatchProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
+  input: __S(2208, __c69, 0) as any as S.Schema<PatchProjectsLocationsGlossariesCategoriesRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7402,8 +7454,8 @@ export const patchProjectsLocationsGlossariesTerms: API.OperationMethod<
   PatchProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<PatchProjectsLocationsGlossariesTermsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
+  input: __S(2240, __c70, 0) as any as S.Schema<PatchProjectsLocationsGlossariesTermsRequest>,
+  output: __S(5696, __c178, 0) as any as S.Schema<GoogleCloudDataplexV1GlossaryTerm>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7422,8 +7474,8 @@ export const patchProjectsLocationsLakes: API.OperationMethod<
   PatchProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<PatchProjectsLocationsLakesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PatchProjectsLocationsLakesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7442,8 +7494,8 @@ export const patchProjectsLocationsLakesTasks: API.OperationMethod<
   PatchProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<PatchProjectsLocationsLakesTasksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PatchProjectsLocationsLakesTasksRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7462,8 +7514,8 @@ export const patchProjectsLocationsLakesZones: API.OperationMethod<
   PatchProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<PatchProjectsLocationsLakesZonesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2336, __c73, 0) as any as S.Schema<PatchProjectsLocationsLakesZonesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7482,8 +7534,8 @@ export const patchProjectsLocationsLakesZonesAssets: API.OperationMethod<
   PatchProjectsLocationsLakesZonesAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<PatchProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PatchProjectsLocationsLakesZonesAssetsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7502,8 +7554,8 @@ export const patchProjectsLocationsMetadataFeeds: API.OperationMethod<
   PatchProjectsLocationsMetadataFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<PatchProjectsLocationsMetadataFeedsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchProjectsLocationsMetadataFeedsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7522,8 +7574,8 @@ export const rejectProjectsLocationsChangeRequests: API.OperationMethod<
   RejectProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<RejectProjectsLocationsChangeRequestsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
+  input: __S(2625, __c82, 1) as any as S.Schema<RejectProjectsLocationsChangeRequestsRequest>,
+  output: __S(5739, __c179, 11) as any as S.Schema<GoogleCloudDataplexV1ChangeRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7542,10 +7594,10 @@ export const requestAccessProjectsLocationsDataProducts: API.OperationMethod<
   RequestAccessProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<RequestAccessProjectsLocationsDataProductsRequest>,
+  input: __S(2657, __c83, 1) as any as S.Schema<RequestAccessProjectsLocationsDataProductsRequest>,
   output: __S(
-    442,
-    __c55,
+    2658,
+    __c83,
     2,
   ) as any as S.Schema<GoogleCloudDataplexV1RequestDataProductAccessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -7566,8 +7618,8 @@ export const runProjectsLocationsDataScans: API.OperationMethod<
   RunProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<RunProjectsLocationsDataScansRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<GoogleCloudDataplexV1RunDataScanResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<RunProjectsLocationsDataScansRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<GoogleCloudDataplexV1RunDataScanResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7586,8 +7638,8 @@ export const runProjectsLocationsLakesTasks: API.OperationMethod<
   RunProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<RunProjectsLocationsLakesTasksRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<GoogleCloudDataplexV1RunTaskResponse>,
+  input: __S(2721, __c85, 1) as any as S.Schema<RunProjectsLocationsLakesTasksRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<GoogleCloudDataplexV1RunTaskResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7607,8 +7659,8 @@ export const searchEntriesProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDataplexV1SearchEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<SearchEntriesProjectsLocationsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<GoogleCloudDataplexV1SearchEntriesResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<SearchEntriesProjectsLocationsRequest>,
+  output: __S(2756, __c86, 4) as any as S.Schema<GoogleCloudDataplexV1SearchEntriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7629,11 +7681,11 @@ export const setIamPolicyOrganizationsLocationsEncryptionConfigs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    454,
-    __c56,
-    6,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7652,8 +7704,8 @@ export const setIamPolicyProjectsLocationsAgentTasks: API.OperationMethod<
   SetIamPolicyProjectsLocationsAgentTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<SetIamPolicyProjectsLocationsAgentTasksRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(2848, __c89, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAgentTasksRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7672,8 +7724,8 @@ export const setIamPolicyProjectsLocationsAspectTypes: API.OperationMethod<
   SetIamPolicyProjectsLocationsAspectTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAspectTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(2880, __c90, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAspectTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7692,8 +7744,8 @@ export const setIamPolicyProjectsLocationsChangeRequests: API.OperationMethod<
   SetIamPolicyProjectsLocationsChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<SetIamPolicyProjectsLocationsChangeRequestsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(2912, __c91, 0) as any as S.Schema<SetIamPolicyProjectsLocationsChangeRequestsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7713,11 +7765,11 @@ export const setIamPolicyProjectsLocationsDataAttributeBindings: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    458,
-    __c57,
-    2,
+    2944,
+    __c92,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDataAttributeBindingsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7736,8 +7788,8 @@ export const setIamPolicyProjectsLocationsDataDomains: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<SetIamPolicyProjectsLocationsDataDomainsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3040, __c95, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDataDomainsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7756,8 +7808,8 @@ export const setIamPolicyProjectsLocationsDataProducts: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<SetIamPolicyProjectsLocationsDataProductsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3072, __c96, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDataProductsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7776,8 +7828,8 @@ export const setIamPolicyProjectsLocationsDataScans: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<SetIamPolicyProjectsLocationsDataScansRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3104, __c97, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDataScansRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7796,8 +7848,8 @@ export const setIamPolicyProjectsLocationsDataTaxonomies: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3136, __c98, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7817,11 +7869,11 @@ export const setIamPolicyProjectsLocationsDataTaxonomiesAttributes: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    463,
-    __c57,
-    7,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7840,8 +7892,8 @@ export const setIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   SetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3200, __c100, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7860,8 +7912,12 @@ export const setIamPolicyProjectsLocationsEntryLinkTypes: API.OperationMethod<
   SetIamPolicyProjectsLocationsEntryLinkTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<SetIamPolicyProjectsLocationsEntryLinkTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    3232,
+    __c101,
+    0,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsEntryLinkTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7880,8 +7936,8 @@ export const setIamPolicyProjectsLocationsEntryTypes: API.OperationMethod<
   SetIamPolicyProjectsLocationsEntryTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<SetIamPolicyProjectsLocationsEntryTypesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3264, __c102, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEntryTypesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7900,8 +7956,8 @@ export const setIamPolicyProjectsLocationsGlossaries: API.OperationMethod<
   SetIamPolicyProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3296, __c103, 0) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7921,11 +7977,11 @@ export const setIamPolicyProjectsLocationsGlossariesCategories: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    468,
-    __c58,
-    4,
+    3328,
+    __c104,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7944,8 +8000,12 @@ export const setIamPolicyProjectsLocationsGlossariesTerms: API.OperationMethod<
   SetIamPolicyProjectsLocationsGlossariesTermsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesTermsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    3392,
+    __c106,
+    0,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesTermsRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7964,8 +8024,12 @@ export const setIamPolicyProjectsLocationsGovernanceRules: API.OperationMethod<
   SetIamPolicyProjectsLocationsGovernanceRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<SetIamPolicyProjectsLocationsGovernanceRulesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    3424,
+    __c107,
+    0,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsGovernanceRulesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7984,8 +8048,8 @@ export const setIamPolicyProjectsLocationsLakes: API.OperationMethod<
   SetIamPolicyProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<SetIamPolicyProjectsLocationsLakesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3456, __c108, 0) as any as S.Schema<SetIamPolicyProjectsLocationsLakesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8004,8 +8068,8 @@ export const setIamPolicyProjectsLocationsLakesTasks: API.OperationMethod<
   SetIamPolicyProjectsLocationsLakesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<SetIamPolicyProjectsLocationsLakesTasksRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3488, __c109, 0) as any as S.Schema<SetIamPolicyProjectsLocationsLakesTasksRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8024,8 +8088,8 @@ export const setIamPolicyProjectsLocationsLakesZones: API.OperationMethod<
   SetIamPolicyProjectsLocationsLakesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<SetIamPolicyProjectsLocationsLakesZonesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(3520, __c110, 0) as any as S.Schema<SetIamPolicyProjectsLocationsLakesZonesRequest>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8045,11 +8109,11 @@ export const setIamPolicyProjectsLocationsLakesZonesAssets: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    474,
-    __c59,
-    2,
+    3552,
+    __c111,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(6503, __c203, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8069,11 +8133,11 @@ export const testIamPermissionsOrganizationsLocationsEncryptionConfigs: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    476,
-    __c59,
-    4,
+    3584,
+    __c112,
+    0,
   ) as any as S.Schema<TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8093,11 +8157,11 @@ export const testIamPermissionsProjectsLocationsAgentTasks: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    477,
-    __c59,
-    5,
+    3648,
+    __c114,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAgentTasksRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8117,11 +8181,11 @@ export const testIamPermissionsProjectsLocationsAspectTypes: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    478,
-    __c59,
-    6,
+    3680,
+    __c115,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAspectTypesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8141,11 +8205,11 @@ export const testIamPermissionsProjectsLocationsChangeRequests: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    479,
-    __c59,
-    7,
+    3712,
+    __c116,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsChangeRequestsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8165,11 +8229,11 @@ export const testIamPermissionsProjectsLocationsDataAttributeBindings: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    480,
-    __c60,
+    3776,
+    __c118,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8189,11 +8253,11 @@ export const testIamPermissionsProjectsLocationsDataDomains: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    481,
-    __c60,
-    1,
+    3808,
+    __c119,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataDomainsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8213,11 +8277,11 @@ export const testIamPermissionsProjectsLocationsDataProducts: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    482,
-    __c60,
-    2,
+    3840,
+    __c120,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataProductsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8236,8 +8300,12 @@ export const testIamPermissionsProjectsLocationsDataScans: API.OperationMethod<
   TestIamPermissionsProjectsLocationsDataScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<TestIamPermissionsProjectsLocationsDataScansRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(
+    3872,
+    __c121,
+    0,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataScansRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8257,11 +8325,11 @@ export const testIamPermissionsProjectsLocationsDataTaxonomies: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    484,
-    __c60,
-    4,
+    3904,
+    __c122,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8281,11 +8349,11 @@ export const testIamPermissionsProjectsLocationsDataTaxonomiesAttributes: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    485,
-    __c60,
-    5,
+    3936,
+    __c123,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8305,11 +8373,11 @@ export const testIamPermissionsProjectsLocationsEntryGroups: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    486,
-    __c60,
-    6,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8329,11 +8397,11 @@ export const testIamPermissionsProjectsLocationsEntryLinkTypes: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    487,
-    __c60,
-    7,
+    4000,
+    __c125,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryLinkTypesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8353,11 +8421,11 @@ export const testIamPermissionsProjectsLocationsEntryTypes: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    488,
-    __c61,
+    4032,
+    __c126,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryTypesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8377,11 +8445,11 @@ export const testIamPermissionsProjectsLocationsGlossaries: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    489,
-    __c61,
-    1,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8401,11 +8469,11 @@ export const testIamPermissionsProjectsLocationsGlossariesCategories: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    490,
-    __c61,
-    2,
+    4160,
+    __c130,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8425,11 +8493,11 @@ export const testIamPermissionsProjectsLocationsGlossariesTerms: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    491,
-    __c61,
-    3,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesTermsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8449,11 +8517,11 @@ export const testIamPermissionsProjectsLocationsGovernanceRules: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    492,
-    __c61,
-    4,
+    4224,
+    __c132,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsGovernanceRulesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8472,8 +8540,8 @@ export const testIamPermissionsProjectsLocationsLakes: API.OperationMethod<
   TestIamPermissionsProjectsLocationsLakesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8493,11 +8561,11 @@ export const testIamPermissionsProjectsLocationsLakesTasks: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    494,
-    __c61,
-    6,
+    4288,
+    __c134,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesTasksRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8517,11 +8585,11 @@ export const testIamPermissionsProjectsLocationsLakesZones: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    495,
-    __c61,
-    7,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesZonesRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8541,11 +8609,11 @@ export const testIamPermissionsProjectsLocationsLakesZonesAssets: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    496,
-    __c62,
+    4352,
+    __c136,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8564,8 +8632,8 @@ export const updateProjectsLocationsLakesZonesEntities: API.OperationMethod<
   UpdateProjectsLocationsLakesZonesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<UpdateProjectsLocationsLakesZonesEntitiesRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GoogleCloudDataplexV1Entity>,
+  input: __S(4384, __c137, 0) as any as S.Schema<UpdateProjectsLocationsLakesZonesEntitiesRequest>,
+  output: __S(4908, __c153, 12) as any as S.Schema<GoogleCloudDataplexV1Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8577,150 +8645,44 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-          comment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ApproveChangeRequestRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          encryptionConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(65, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+name}:approve",
+            uri: "v1/{+parent}/encryptionConfigs",
             baseUrl: "https://dataplex.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "ApproveProjectsLocationsChangeRequestsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1GlossaryTerm",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          termId: S.optional(S.String),
-          term: S.optional(__S(3, __c0, 3)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1CreateGlossaryTermRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DeleteGlossaryRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          dataVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectSource",
+        identifier: "CreateOrganizationsLocationsEncryptionConfigsRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(5408, __c169, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          updateTime: S.optional(S.String),
-          path: S.optional(S.String),
-          data: S.optional(__S(6, __c0, 6)),
-          aspectType: S.optional(S.String),
-          createTime: S.optional(S.String),
-          aspectSource: S.optional(__S(7, __c0, 7)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(32, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Aspect",
-      });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
+      ).annotate({ identifier: "GoogleRpcStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          response: S.optional(__S(5408, __c169, 0)),
+          done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          metadata: S.optional(__S(5408, __c169, 0)),
+          error: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1EntrySourceAncestor",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resource: S.optional(S.String),
-          location: S.optional(S.String),
-          ancestors: S.optional(__S(11, __c1, 3)),
-          labels: S.optional(__S(2, __c0, 2)),
-          platform: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          system: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntrySource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parentEntry: S.optional(S.String),
-          entryType: S.optional(S.String),
-          fullyQualifiedName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          aspects: S.optional(__S(9, __c1, 1)),
-          entrySource: S.optional(__S(12, __c1, 4)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Entry",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entry: S.optional(__S(13, __c1, 5)),
-          deleteMissingAspects: S.optional(S.Boolean),
-          allowMissing: S.optional(S.Boolean),
-          updateMask: S.optional(S.String),
-          aspectKeys: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1UpdateEntryRequest",
+        identifier: "GoogleLongrunningOperation",
       });
   }
 }
@@ -8729,288 +8691,16 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-          categoryCount: S.optional(S.Number),
-          uid: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          termCount: S.optional(S.Number),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Glossary",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          glossary: S.optional(__S(16, __c2, 0)),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1UpdateGlossaryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.optional(S.String),
-          entry: S.optional(__S(13, __c1, 5)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1CreateEntryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          parent: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          uid: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1GlossaryCategory",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          category: S.optional(__S(19, __c2, 3)),
-          categoryId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1CreateGlossaryCategoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DeleteGlossaryCategoryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroupId: S.optional(S.String),
-          accessGroupDisplayName: S.optional(S.String),
-          requestedPrincipal: S.optional(S.String),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProductAccessRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          category: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1UpdateGlossaryCategoryRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          term: S.optional(__S(3, __c0, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1UpdateGlossaryTermRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntryLinkEntryReference",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          aspects: S.optional(__S(9, __c1, 1)),
-          entryReferences: S.optional(__S(26, __c3, 2)),
-          createTime: S.optional(S.String),
-          entryLinkType: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntryLink",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          entryLinkId: S.optional(S.String),
-          entryLink: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1CreateEntryLinkRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          glossary: S.optional(__S(16, __c2, 0)),
-          glossaryId: S.optional(S.String),
-          parent: S.optional(S.String),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1CreateGlossaryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reviewerComment: S.optional(S.String),
-          state: S.optional(S.String),
-          approver: S.optional(S.String),
-          createGlossaryTerm: S.optional(__S(4, __c0, 4)),
-          updateTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          deleteGlossary: S.optional(__S(5, __c0, 5)),
-          updateEntry: S.optional(__S(15, __c1, 7)),
-          updateGlossary: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-          createEntry: S.optional(__S(18, __c2, 2)),
-          createGlossaryCategory: S.optional(__S(20, __c2, 4)),
-          deleteGlossaryCategory: S.optional(__S(21, __c2, 5)),
-          justification: S.optional(S.String),
-          dataProductAccessRequest: S.optional(__S(22, __c2, 6)),
-          rejectionComment: S.optional(S.String),
-          deleteGlossaryTerm: S.optional(__S(21, __c2, 5)),
-          deleteEntryLink: S.optional(__S(21, __c2, 5)),
-          updateGlossaryCategory: S.optional(__S(23, __c2, 7)),
-          labels: S.optional(__S(2, __c0, 2)),
-          createTime: S.optional(S.String),
-          changeType: S.optional(S.String),
-          updateGlossaryTerm: S.optional(__S(24, __c3, 0)),
-          createEntryLink: S.optional(__S(28, __c3, 4)),
-          resource: S.optional(S.String),
-          createGlossary: S.optional(__S(29, __c3, 5)),
-          author: S.optional(S.String),
-          etag: S.optional(S.String),
-          deleteEntry: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ChangeRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleLongrunningCancelOperationRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsDataScansJobsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsLakesTasksJobsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsMetadataJobsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1EncryptionConfigFailureDetails",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          failureDetails: S.optional(__S(38, __c4, 6)),
+          failureDetails: S.optional(__S(64, __c2, 0)),
           encryptionState: S.optional(S.String),
           createTime: S.optional(S.String),
           key: S.optional(S.String),
@@ -9024,68 +8714,47 @@ function __c4(j: number): any {
       });
   }
 }
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsLakesZonesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsLakesZonesAssetsRequest",
+      });
+  }
+}
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptionConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          name: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/encryptionConfigs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
         ),
       ).annotate({
-        identifier: "CreateOrganizationsLocationsEncryptionConfigsRequest",
+        identifier: "GetProjectsLocationsLakesZonesEntitiesRequest",
       });
-    case 1:
-      return S.Array(__S(6, __c0, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(6, __c0, 6)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          error: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints",
-      });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(49, __c6, 1)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deprecated: S.optional(S.String),
-          index: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -9093,68 +8762,171 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stringValues: S.optional(__S(14, __c1, 6)),
-          displayOrder: S.optional(S.Number),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          deprecated: S.optional(S.String),
-          stringType: S.optional(S.String),
-        }),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations",
+        identifier: "GetProjectsLocationsLakesZonesEntitiesPartitionsRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          constraints: S.optional(__S(44, __c5, 4)),
-          typeRef: S.optional(S.String),
-          mapItems: S.optional(__S(49, __c6, 1)),
-          recordFields: S.optional(__S(45, __c5, 5)),
-          enumValues: S.optional(__S(47, __c5, 7)),
-          arrayItems: S.optional(__S(49, __c6, 1)),
-          annotations: S.optional(__S(48, __c6, 0)),
-          name: S.optional(S.String),
-          typeId: S.optional(S.String),
-          type: S.optional(S.String),
-          index: S.optional(S.Number),
-        }),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplate",
+        identifier: "GetProjectsLocationsMetadataFeedsRequest",
       });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsMetadataJobsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/encryptionConfigs",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsLocationsEncryptionConfigsRequest",
+      });
+    case 1:
+      return S.Array(__S(65, __c2, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          alternateUsePermission: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          encryptionConfigs: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectTypeAuthorization",
+        identifier: "GoogleCloudDataplexV1ListEncryptionConfigsResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.String),
-          metadataTemplate: S.optional(__S(49, __c6, 1)),
-          authorization: S.optional(__S(50, __c6, 2)),
-          transferStatus: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          description: S.optional(S.String),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          dataClassification: S.optional(S.String),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/operations",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(34, __c1, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+          operations: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1AspectType",
+        identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/locations",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(7360, __c230, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(417, __c13, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationListLocationsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           aspectTypeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(518, __c16, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9165,63 +8937,438 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAspectTypesRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          iamPolicyUidPrincipal: S.optional(S.String),
-          iamPolicyNamePrincipal: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1ResourcePolicyMember",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.optional(S.String),
-          contactName: S.optional(S.String),
-          contactRole: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ContactIdentity",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(55, __c6, 7)),
+          alternateUsePermission: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1Contacts",
+        identifier: "GoogleCloudDataplexV1AspectTypeAuthorization",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-          policyMember: S.optional(__S(53, __c6, 5)),
-          updateTime: S.optional(S.String),
-          contacts: S.optional(__S(56, __c7, 0)),
-          name: S.optional(S.String),
-          parentDataDomain: S.optional(S.String),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          displayName: S.optional(S.String),
+          required: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDomain",
+        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints",
       });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(517, __c16, 5)));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deprecated: S.optional(S.String),
+          index: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue",
+      });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          stringValues: S.optional(__S(5472, __c171, 0)),
+          displayOrder: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          deprecated: S.optional(S.String),
+          stringType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          constraints: S.optional(__S(512, __c16, 0)),
+          typeRef: S.optional(S.String),
+          mapItems: S.optional(__S(517, __c16, 5)),
+          recordFields: S.optional(__S(513, __c16, 1)),
+          enumValues: S.optional(__S(515, __c16, 3)),
+          arrayItems: S.optional(__S(517, __c16, 5)),
+          annotations: S.optional(__S(516, __c16, 4)),
+          name: S.optional(S.String),
+          typeId: S.optional(S.String),
+          type: S.optional(S.String),
+          index: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplate",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          metadataTemplate: S.optional(__S(517, __c16, 5)),
+          authorization: S.optional(__S(480, __c15, 0)),
+          transferStatus: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          description: S.optional(S.String),
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          dataClassification: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AspectType",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/aspectTypes",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAspectTypesRequest",
+      });
+    case 1:
+      return S.Array(__S(518, __c16, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+          aspectTypes: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListAspectTypesResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/changeRequests",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsChangeRequestsRequest",
+      });
+    case 1:
+      return S.Array(__S(5739, __c179, 11));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+          changeRequests: S.optional(__S(577, __c18, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListChangeRequestsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dataDomains",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataDomainsRequest",
+      });
+    case 1:
+      return S.Array(__S(900, __c28, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataDomains: S.optional(__S(609, __c19, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataDomainsResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/bindings",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataDomainsBindingsRequest",
+      });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          dataDomainBindings: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataDomainBindingsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dataProducts",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataProductsRequest",
+      });
+    case 1:
+      return S.Array(__S(1701, __c53, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(5472, __c171, 0)),
+          dataProducts: S.optional(__S(673, __c21, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataProductsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dataAssets",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataProductsDataAssetsRequest",
+      });
+    case 1:
+      return S.Array(__S(2082, __c65, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataAssets: S.optional(__S(705, __c22, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataAssetsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dataScans",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataScansRequest",
+      });
+    case 1:
+      return S.Array(__S(2536, __c79, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataScans: S.optional(__S(737, __c23, 1)),
+          unreachable: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataScansResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/jobs",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDataScansJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(7648, __c239, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          dataScanJobs: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListDataScanJobsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/entryGroups",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsEntryGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(3008, __c94, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+          entryGroups: S.optional(__S(801, __c25, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListEntryGroupsResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/entries",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
+      });
+    case 1:
+      return S.Array(__S(5571, __c174, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(833, __c26, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListEntriesResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataDomainId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(900, __c28, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9232,24 +9379,451 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDataDomainsRequest",
       });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamPolicyUidPrincipal: S.optional(S.String),
+          iamPolicyNamePrincipal: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1ResourcePolicyMember",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contactId: S.optional(S.String),
+          contactName: S.optional(S.String),
+          contactRole: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ContactIdentity",
+      });
+    case 2:
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-          resource: S.optional(S.String),
-          name: S.optional(S.String),
+          identities: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDomainBinding",
+        identifier: "GoogleCloudDataplexV1Contacts",
       });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          policyMember: S.optional(__S(896, __c28, 0)),
+          updateTime: S.optional(S.String),
+          contacts: S.optional(__S(899, __c28, 3)),
+          name: S.optional(S.String),
+          parentDataDomain: S.optional(S.String),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDomain",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/entryTypes",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsEntryTypesRequest",
+      });
+    case 1:
+      return S.Array(__S(4130, __c129, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          entryTypes: S.optional(__S(929, __c29, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListEntryTypesResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/glossaries",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGlossariesRequest",
+      });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          glossaries: S.optional(__S(961, __c30, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListGlossariesResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/categories",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGlossariesCategoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(5664, __c177, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          categories: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListGlossaryCategoriesResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/terms",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGlossariesTermsRequest",
+      });
+    case 1:
+      return S.Array(__S(5696, __c178, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          terms: S.optional(__S(1025, __c32, 1)),
+          nextPageToken: S.optional(S.String),
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListGlossaryTermsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/lakes",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesRequest",
+      });
+    case 1:
+      return S.Array(__S(4578, __c143, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          nextPageToken: S.optional(S.String),
+          lakes: S.optional(__S(1057, __c33, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListLakesResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/actions",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesActionsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ActionFailedSecurityPolicyApply",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expectedStructure: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ActionInvalidDataPartition",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          newSchema: S.optional(S.String),
+          table: S.optional(S.String),
+          existingSchema: S.optional(S.String),
+          sampledDataLocations: S.optional(__S(5472, __c171, 0)),
+          schemaChange: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ActionIncompatibleDataSchema",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sampledDataLocations: S.optional(__S(5472, __c171, 0)),
+          expectedFormat: S.optional(S.String),
+          newFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ActionInvalidDataFormat",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.optional(S.String),
+          category: S.optional(S.String),
+          lake: S.optional(S.String),
+          detectTime: S.optional(S.String),
+          failedSecurityPolicyApply: S.optional(__S(1120, __c35, 0)),
+          zone: S.optional(S.String),
+          unauthorizedResource: S.optional(__S(6112, __c191, 0)),
+          issue: S.optional(S.String),
+          dataLocations: S.optional(__S(5472, __c171, 0)),
+          missingData: S.optional(__S(6112, __c191, 0)),
+          name: S.optional(S.String),
+          invalidDataOrganization: S.optional(__S(6112, __c191, 0)),
+          invalidDataPartition: S.optional(__S(1121, __c35, 1)),
+          missingResource: S.optional(__S(6112, __c191, 0)),
+          incompatibleDataSchema: S.optional(__S(1122, __c35, 2)),
+          invalidDataFormat: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Action",
+      });
+    case 5:
+      return S.Array(__S(1124, __c35, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          actions: S.optional(__S(1125, __c35, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListActionsResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/tasks",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesTasksRequest",
+      });
+    case 1:
+      return S.Array(__S(4648, __c145, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          tasks: S.optional(__S(1153, __c36, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListTasksResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/jobs",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesTasksJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(4673, __c146, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobs: S.optional(__S(1185, __c37, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListJobsResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/zones",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesRequest",
+      });
+    case 1:
+      return S.Array(__S(4739, __c148, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          zones: S.optional(__S(1217, __c38, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListZonesResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/actions",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesActionsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataDomainBindingId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1312, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9260,76 +9834,332 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDataDomainsBindingsRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(S.String),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+          resource: S.optional(S.String),
+          name: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(S.String),
-          googleGroup: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProductPrincipal",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          defaultIamRoleConfig: S.optional(__S(61, __c7, 5)),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          principal: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProductAccessGroup",
+        identifier: "GoogleCloudDataplexV1DataDomainBinding",
       });
   }
 }
-function __c8(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(63, __c7, 7));
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/assets",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesAssetsRequest",
+      });
+    case 1:
+      return S.Array(__S(4839, __c151, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(1345, __c42, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListAssetsResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/actions",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesAssetsActionsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/entities",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesEntitiesRequest",
+      });
+    case 1:
+      return S.Array(__S(4908, __c153, 12));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          entities: S.optional(__S(1409, __c44, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListEntitiesResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/partitions",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsLakesZonesEntitiesPartitionsRequest",
+      });
+    case 1:
+      return S.Array(__S(4960, __c155, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          partitions: S.optional(__S(1441, __c45, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListPartitionsResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/metadataFeeds",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsMetadataFeedsRequest",
+      });
+    case 1:
+      return S.Array(__S(5026, __c157, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(5472, __c171, 0)),
+          metadataFeeds: S.optional(__S(1473, __c46, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListMetadataFeedsResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/metadataJobs",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsMetadataJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(5095, __c159, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachableLocations: S.optional(__S(5472, __c171, 0)),
+          metadataJobs: S.optional(__S(1505, __c47, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ListMetadataJobsResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/operations",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(5440, __c170, 0)),
+          resources: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1LookupContextRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          approverEmails: S.optional(__S(14, __c1, 6)),
-        }),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:lookupContext",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProductAccessApprovalConfig",
+        identifier: "LookupContextProjectsLocationsRequest",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updateTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          ownerEmails: S.optional(__S(14, __c1, 6)),
-          displayName: S.optional(S.String),
-          accessGroups: S.optional(__S(64, __c8, 0)),
-          uid: S.optional(S.String),
-          icon: S.optional(S.String),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          assetCount: S.optional(S.Number),
-          accessApprovalConfig: S.optional(__S(65, __c8, 1)),
-          description: S.optional(S.String),
+          context: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProduct",
+        identifier: "GoogleCloudDataplexV1LookupContextResponse",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          entryMode: S.optional(S.String.pipe(T.Query())),
+          entry: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          entryLinkTypes: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:lookupEntryLinks",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LookupEntryLinksProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(5602, __c175, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entryLinks: S.optional(__S(1601, __c50, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1LookupEntryLinksResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          paths: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          entry: S.optional(S.String.pipe(T.Query())),
+          aspectTypes: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:lookupEntry",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LookupEntryProjectsLocationsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           dataProductId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1701, __c53, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9340,39 +10170,299 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDataProductsRequest",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(S.String),
+          googleGroup: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProductPrincipal",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          defaultIamRoleConfig: S.optional(__S(1696, __c53, 0)),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          principal: S.optional(__S(1697, __c53, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProductAccessGroup",
+      });
+    case 3:
+      return S.Record(S.String, __S(1698, __c53, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          iamRoles: S.optional(__S(14, __c1, 6)),
+          approverEmails: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataAssetAccessGroupConfig",
+        identifier: "GoogleCloudDataplexV1DataProductAccessApprovalConfig",
       });
     case 5:
-      return S.Record(S.String, __S(68, __c8, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          ownerEmails: S.optional(__S(5472, __c171, 0)),
+          displayName: S.optional(S.String),
+          accessGroups: S.optional(__S(1699, __c53, 3)),
           uid: S.optional(S.String),
-          resource: S.optional(S.String),
-          accessGroupConfigs: S.optional(__S(69, __c8, 5)),
-          labels: S.optional(__S(2, __c0, 2)),
+          icon: S.optional(S.String),
           etag: S.optional(S.String),
-          createTime: S.optional(S.String),
           name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          assetCount: S.optional(S.Number),
+          accessApprovalConfig: S.optional(__S(1700, __c53, 4)),
+          description: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataAsset",
+        identifier: "GoogleCloudDataplexV1DataProduct",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleteMissingAspects: S.optional(S.Boolean),
+          entry: S.optional(__S(5571, __c174, 3)),
+          aspectKeys: S.optional(__S(5472, __c171, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ModifyEntryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:modifyEntry",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ModifyEntryProjectsLocationsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(65, __c2, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchOrganizationsLocationsEncryptionConfigsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(518, __c16, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAspectTypesRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5739, __c179, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsChangeRequestsRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(900, __c28, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDataDomainsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1701, __c53, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDataProductsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDataProductsDataAssetsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2536, __c79, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3008, __c94, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          aspectKeys: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          deleteMissingAspects: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5571, __c174, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsEntryGroupsEntriesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           dataAssetId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9385,143 +10475,272 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(S.String),
+          state: S.optional(S.String),
+          iamRoles: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1ExecutionIdentityServiceAccount",
+        identifier: "GoogleCloudDataplexV1DataAssetAccessGroupConfig",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(__S(72, __c9, 0)),
-          userCredential: S.optional(__S(31, __c3, 7)),
-          dataplexServiceAgent: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ExecutionIdentity",
-      });
+      return S.Record(S.String, __S(2080, __c65, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resultsTable: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          resource: S.optional(S.String),
+          accessGroupConfigs: S.optional(__S(2081, __c65, 1)),
+          labels: S.optional(__S(5440, __c170, 0)),
+          etag: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryExport: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fieldNames: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          catalogPublishingEnabled: S.optional(S.Boolean),
-          samplingPercent: S.optional(S.Number),
-          mode: S.optional(S.String),
-          postScanActions: S.optional(__S(75, __c9, 3)),
-          includeFields: S.optional(__S(76, __c9, 4)),
-          excludeFields: S.optional(__S(76, __c9, 4)),
-          rowFilter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataProfileSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cron: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TriggerSchedule",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ttlAfterScanCompletion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TriggerOneTime",
+        identifier: "GoogleCloudDataplexV1DataAsset",
       });
   }
 }
-function __c10(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          onDemand: S.optional(__S(31, __c3, 7)),
-          schedule: S.optional(__S(78, __c9, 6)),
-          oneTime: S.optional(__S(79, __c9, 7)),
-        }),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          aspectKeys: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5602, __c175, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1Trigger",
+        identifier: "PatchProjectsLocationsEntryGroupsEntryLinksRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(__S(80, __c10, 0)),
-          field: S.optional(S.String),
-        }),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4130, __c129, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataScanExecutionSpec",
+        identifier: "PatchProjectsLocationsEntryTypesRequest",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5632, __c176, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsGlossariesRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5664, __c177, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsGlossariesCategoriesRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5696, __c178, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsGlossariesTermsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4578, __c143, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsLakesRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4648, __c145, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsLakesTasksRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(4739, __c148, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsLakesZonesRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4839, __c151, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsLakesZonesAssetsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5026, __c157, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsMetadataFeedsRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataScanId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2536, __c79, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dataScans",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          catalogPublishingEnabled: S.optional(S.Boolean),
-          sqlDialect: S.optional(S.String),
-          generationScopes: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          passed: S.optional(S.Boolean),
-          dimension: S.optional(__S(21, __c2, 5)),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityDimensionResult",
-      });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          column: S.optional(S.String),
-          dimensions: S.optional(__S(85, __c10, 5)),
-          passed: S.optional(S.Boolean),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityColumnResult",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
   }
 }
-function __c11(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9545,18 +10764,18 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entrySource: S.optional(__S(88, __c11, 0)),
-          entryLinkSource: S.optional(__S(89, __c11, 1)),
+          entrySource: S.optional(__S(2496, __c78, 0)),
+          entryLinkSource: S.optional(__S(2497, __c78, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement",
       });
     case 3:
-      return S.Array(__S(90, __c11, 2));
+      return S.Array(__S(2498, __c78, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rulePathElements: S.optional(__S(91, __c11, 3)),
+          rulePathElements: S.optional(__S(2499, __c78, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSource",
@@ -9583,12 +10802,8 @@ function __c11(j: number): any {
         identifier: "GoogleCloudDataplexV1DataQualityRuleDebugQuery",
       });
     case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(2502, __c78, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sqlExpression: S.optional(S.String),
@@ -9596,7 +10811,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           regex: S.optional(S.String),
@@ -9604,7 +10819,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleRegexExpectation",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           strictMaxEnabled: S.optional(S.Boolean),
@@ -9615,15 +10830,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleRangeExpectation",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(14, __c1, 6)),
+          values: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleSetExpectation",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
@@ -9631,9 +10846,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateSql",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(2508, __c78, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.String),
@@ -9642,25 +10857,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription",
       });
-    case 7:
-      return S.Record(S.String, __S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Record(S.String, __S(2510, __c78, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          sqlCollection: S.optional(__S(101, __c12, 5)),
+          sqlCollection: S.optional(__S(2509, __c78, 13)),
           dimension: S.optional(S.String),
-          capabilities: S.optional(__S(14, __c1, 6)),
-          inputParameters: S.optional(__S(103, __c12, 7)),
+          capabilities: S.optional(__S(5472, __c171, 0)),
+          inputParameters: S.optional(__S(2511, __c78, 15)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleTemplate",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -9668,20 +10879,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue",
       });
-    case 2:
-      return S.Record(S.String, __S(105, __c13, 1));
-    case 3:
+    case 18:
+      return S.Record(S.String, __S(2513, __c78, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           resolvedSql: S.optional(S.String),
           name: S.optional(S.String),
-          ruleTemplate: S.optional(__S(104, __c13, 0)),
-          values: S.optional(__S(106, __c13, 2)),
+          ruleTemplate: S.optional(__S(2512, __c78, 16)),
+          values: S.optional(__S(2514, __c78, 18)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateReference",
       });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           sqlStatement: S.optional(S.String),
@@ -9689,240 +10900,91 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRuleSqlAssertion",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          ruleSource: S.optional(__S(92, __c11, 4)),
-          statisticRangeExpectation: S.optional(__S(93, __c11, 5)),
+          ruleSource: S.optional(__S(2500, __c78, 4)),
+          statisticRangeExpectation: S.optional(__S(2501, __c78, 5)),
           description: S.optional(S.String),
           threshold: S.optional(S.Number),
-          debugQueries: S.optional(__S(95, __c11, 7)),
+          debugQueries: S.optional(__S(2503, __c78, 7)),
           dimension: S.optional(S.String),
-          rowConditionExpectation: S.optional(__S(96, __c12, 0)),
+          rowConditionExpectation: S.optional(__S(2504, __c78, 8)),
           name: S.optional(S.String),
-          nonNullExpectation: S.optional(__S(31, __c3, 7)),
-          regexExpectation: S.optional(__S(97, __c12, 1)),
+          nonNullExpectation: S.optional(__S(6112, __c191, 0)),
+          regexExpectation: S.optional(__S(2505, __c78, 9)),
           column: S.optional(S.String),
-          rangeExpectation: S.optional(__S(98, __c12, 2)),
+          rangeExpectation: S.optional(__S(2506, __c78, 10)),
           suspended: S.optional(S.Boolean),
           ignoreNull: S.optional(S.Boolean),
-          tableConditionExpectation: S.optional(__S(96, __c12, 0)),
-          attributes: S.optional(__S(2, __c0, 2)),
-          setExpectation: S.optional(__S(99, __c12, 3)),
-          templateReference: S.optional(__S(107, __c13, 3)),
-          uniquenessExpectation: S.optional(__S(31, __c3, 7)),
-          sqlAssertion: S.optional(__S(108, __c13, 4)),
+          tableConditionExpectation: S.optional(__S(2504, __c78, 8)),
+          attributes: S.optional(__S(5440, __c170, 0)),
+          setExpectation: S.optional(__S(2507, __c78, 11)),
+          templateReference: S.optional(__S(2515, __c78, 19)),
+          uniquenessExpectation: S.optional(__S(6112, __c191, 0)),
+          sqlAssertion: S.optional(__S(2516, __c78, 20)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualityRule",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult",
-      });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
+    case 22:
+      return S.Array(__S(2517, __c78, 21));
   }
 }
-function __c14(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(111, __c13, 7)),
+          email: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet",
+        identifier: "GoogleCloudDataplexV1ExecutionIdentityServiceAccount",
       });
     case 1:
-      return S.Array(__S(112, __c14, 0));
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(__S(2528, __c79, 0)),
+          userCredential: S.optional(__S(6112, __c191, 0)),
+          dataplexServiceAgent: S.optional(__S(6112, __c191, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ExecutionIdentity",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          passRatio: S.optional(S.Number),
-          failingRowsQuery: S.optional(S.String),
-          evaluatedCount: S.optional(S.String),
-          passed: S.optional(S.Boolean),
-          assertionRowCount: S.optional(S.String),
-          nullCount: S.optional(S.String),
-          rule: S.optional(__S(109, __c13, 5)),
-          debugQueriesResultSets: S.optional(__S(113, __c14, 1)),
-          passedCount: S.optional(S.String),
+          cron: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityRuleResult",
+        identifier: "GoogleCloudDataplexV1TriggerSchedule",
       });
     case 3:
-      return S.Array(__S(114, __c14, 2));
+      return S.suspend(() =>
+        S.Struct({
+          ttlAfterScanCompletion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TriggerOneTime",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataIntermediateTable: S.optional(S.String),
-          freshnessIntermediateTable: S.optional(S.String),
-          volumeIntermediateTable: S.optional(S.String),
-          resultTable: S.optional(S.String),
+          onDemand: S.optional(__S(6112, __c191, 0)),
+          schedule: S.optional(__S(2530, __c79, 2)),
+          oneTime: S.optional(__S(2531, __c79, 3)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets",
+        identifier: "GoogleCloudDataplexV1Trigger",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryExportResult: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityResultPostScanActionsResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataScanCatalogPublishingStatus",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
+          trigger: S.optional(__S(2532, __c79, 4)),
           field: S.optional(S.String),
-          end: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDataplexV1ScannedDataIncrementalField",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          incrementalField: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ScannedData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(85, __c10, 5)),
-          columns: S.optional(__S(87, __c10, 7)),
-          rules: S.optional(__S(115, __c14, 3)),
-          anomalyDetectionGeneratedAssets: S.optional(__S(116, __c14, 4)),
-          score: S.optional(S.Number),
-          rowCount: S.optional(S.String),
-          passed: S.optional(S.Boolean),
-          postScanActionsResult: S.optional(__S(118, __c14, 6)),
-          catalogPublishingStatus: S.optional(__S(119, __c14, 7)),
-          scannedData: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataQualityResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sql: S.optional(S.String),
-          sqlDialect: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultQuery",
-      });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          fields: S.optional(S.suspend(() => __S(126, __c15, 6))),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultField",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchema",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          overview: S.optional(S.String),
-          queries: S.optional(__S(124, __c15, 4)),
-          schema: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultTableResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(14, __c1, 6)),
-          tableFqn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          leftSchemaPaths: S.optional(__S(129, __c16, 1)),
-          sources: S.optional(__S(82, __c10, 2)),
-          rightSchemaPaths: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          queries: S.optional(__S(124, __c15, 4)),
-          overview: S.optional(S.String),
-          schemaRelationships: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResultDatasetResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tableResult: S.optional(__S(128, __c16, 0)),
-          datasetResult: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataDocumentationResult",
+        identifier: "GoogleCloudDataplexV1DataScanExecutionSpec",
       });
     case 6:
       return S.suspend(() =>
@@ -9936,6 +10998,321 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
+          latestJobEndTime: S.optional(S.String),
+          latestJobStartTime: S.optional(S.String),
+          latestJobCreateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataScanExecutionStatus",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          updateTime: S.optional(S.String),
+          executionIdentity: S.optional(__S(2529, __c79, 1)),
+          state: S.optional(S.String),
+          dataProfileSpec: S.optional(__S(2563, __c80, 3)),
+          executionSpec: S.optional(__S(2533, __c79, 5)),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          dataDocumentationSpec: S.optional(__S(2564, __c80, 4)),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          dataQualityResult: S.optional(__S(2581, __c80, 21)),
+          dataDocumentationResult: S.optional(__S(2592, __c81, 0)),
+          data: S.optional(__S(2534, __c79, 6)),
+          dataProfileResult: S.optional(__S(2603, __c81, 11)),
+          dataDiscoverySpec: S.optional(__S(2608, __c81, 16)),
+          executionStatus: S.optional(__S(2535, __c79, 7)),
+          dataQualitySpec: S.optional(__S(2613, __c81, 21)),
+          description: S.optional(S.String),
+          dataDiscoveryResult: S.optional(__S(2616, __c81, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataScan",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resultsTable: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryExport: S.optional(__S(2560, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fieldNames: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          catalogPublishingEnabled: S.optional(S.Boolean),
+          samplingPercent: S.optional(S.Number),
+          mode: S.optional(S.String),
+          postScanActions: S.optional(__S(2561, __c80, 1)),
+          includeFields: S.optional(__S(2562, __c80, 2)),
+          excludeFields: S.optional(__S(2562, __c80, 2)),
+          rowFilter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProfileSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          catalogPublishingEnabled: S.optional(S.Boolean),
+          sqlDialect: S.optional(S.String),
+          generationScopes: S.optional(__S(2464, __c77, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationSpec",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          passed: S.optional(S.Boolean),
+          dimension: S.optional(__S(5504, __c172, 0)),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityDimensionResult",
+      });
+    case 6:
+      return S.Array(__S(2565, __c80, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          column: S.optional(S.String),
+          dimensions: S.optional(__S(2566, __c80, 6)),
+          passed: S.optional(S.Boolean),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityColumnResult",
+      });
+    case 8:
+      return S.Array(__S(2567, __c80, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult",
+      });
+    case 10:
+      return S.Array(__S(2569, __c80, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(2570, __c80, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet",
+      });
+    case 12:
+      return S.Array(__S(2571, __c80, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          passRatio: S.optional(S.Number),
+          failingRowsQuery: S.optional(S.String),
+          evaluatedCount: S.optional(S.String),
+          passed: S.optional(S.Boolean),
+          assertionRowCount: S.optional(S.String),
+          nullCount: S.optional(S.String),
+          rule: S.optional(__S(2517, __c78, 21)),
+          debugQueriesResultSets: S.optional(__S(2572, __c80, 12)),
+          passedCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityRuleResult",
+      });
+    case 14:
+      return S.Array(__S(2573, __c80, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          dataIntermediateTable: S.optional(S.String),
+          freshnessIntermediateTable: S.optional(S.String),
+          volumeIntermediateTable: S.optional(S.String),
+          resultTable: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryExportResult: S.optional(__S(2576, __c80, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityResultPostScanActionsResult",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataScanCatalogPublishingStatus",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          field: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ScannedDataIncrementalField",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          incrementalField: S.optional(__S(2579, __c80, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ScannedData",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(2566, __c80, 6)),
+          columns: S.optional(__S(2568, __c80, 8)),
+          rules: S.optional(__S(2574, __c80, 14)),
+          anomalyDetectionGeneratedAssets: S.optional(__S(2575, __c80, 15)),
+          score: S.optional(S.Number),
+          rowCount: S.optional(S.String),
+          passed: S.optional(S.Boolean),
+          postScanActionsResult: S.optional(__S(2577, __c80, 17)),
+          catalogPublishingStatus: S.optional(__S(2578, __c80, 18)),
+          scannedData: S.optional(__S(2580, __c80, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataQualityResult",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          sql: S.optional(S.String),
+          sqlDialect: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultQuery",
+      });
+    case 23:
+      return S.Array(__S(2582, __c80, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          fields: S.optional(S.suspend(() => __S(2585, __c80, 25))),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultField",
+      });
+    case 25:
+      return S.Array(__S(2584, __c80, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(2585, __c80, 25)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchema",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          overview: S.optional(S.String),
+          queries: S.optional(__S(2583, __c80, 23)),
+          schema: S.optional(__S(2586, __c80, 26)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultTableResult",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(5472, __c171, 0)),
+          tableFqn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          leftSchemaPaths: S.optional(__S(2588, __c80, 28)),
+          sources: S.optional(__S(2464, __c77, 0)),
+          rightSchemaPaths: S.optional(__S(2588, __c80, 28)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship",
+      });
+    case 30:
+      return S.Array(__S(2589, __c80, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          queries: S.optional(__S(2583, __c80, 23)),
+          overview: S.optional(S.String),
+          schemaRelationships: S.optional(__S(2590, __c80, 30)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResultDatasetResult",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tableResult: S.optional(__S(2587, __c80, 27)),
+          datasetResult: S.optional(__S(2591, __c80, 31)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataDocumentationResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           minLength: S.optional(S.String),
           maxLength: S.optional(S.String),
           averageLength: S.optional(S.Number),
@@ -9943,23 +11320,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           min: S.optional(S.String),
           standardDeviation: S.optional(S.Number),
-          quartiles: S.optional(__S(14, __c1, 6)),
+          quartiles: S.optional(__S(5472, __c171, 0)),
           average: S.optional(S.Number),
           max: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
@@ -9969,73 +11342,69 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue",
       });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.Array(S.Number);
     case 4:
+      return S.Array(__S(2595, __c81, 3));
+    case 5:
+      return S.Array(S.Number);
+    case 6:
       return S.suspend(() =>
         S.Struct({
           standardDeviation: S.optional(S.Number),
           max: S.optional(S.Number),
           average: S.optional(S.Number),
-          quartiles: S.optional(__S(139, __c17, 3)),
+          quartiles: S.optional(__S(2597, __c81, 5)),
           min: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          stringProfile: S.optional(__S(135, __c16, 7)),
-          integerProfile: S.optional(__S(136, __c17, 0)),
-          topNValues: S.optional(__S(138, __c17, 2)),
+          stringProfile: S.optional(__S(2593, __c81, 1)),
+          integerProfile: S.optional(__S(2594, __c81, 2)),
+          topNValues: S.optional(__S(2596, __c81, 4)),
           nullRatio: S.optional(S.Number),
           distinctRatio: S.optional(S.Number),
-          doubleProfile: S.optional(__S(140, __c17, 4)),
+          doubleProfile: S.optional(__S(2598, __c81, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          profile: S.optional(__S(141, __c17, 5)),
+          profile: S.optional(__S(2599, __c81, 7)),
           name: S.optional(S.String),
           mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfileField",
       });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(2600, __c81, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(143, __c17, 7)),
+          fields: S.optional(__S(2601, __c81, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResultProfile",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           rowCount: S.optional(S.String),
-          profile: S.optional(__S(144, __c18, 0)),
-          catalogPublishingStatus: S.optional(__S(119, __c14, 7)),
-          postScanActionsResult: S.optional(__S(118, __c14, 6)),
-          scannedData: S.optional(__S(121, __c15, 1)),
+          profile: S.optional(__S(2602, __c81, 10)),
+          catalogPublishingStatus: S.optional(__S(2578, __c80, 18)),
+          postScanActionsResult: S.optional(__S(2577, __c80, 17)),
+          scannedData: S.optional(__S(2580, __c80, 20)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataProfileResult",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           project: S.optional(S.String),
@@ -10046,7 +11415,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           typeInferenceDisabled: S.optional(S.Boolean),
@@ -10055,7 +11424,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           typeInferenceDisabled: S.optional(S.Boolean),
@@ -10067,51 +11436,35 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          jsonOptions: S.optional(__S(147, __c18, 3)),
-          csvOptions: S.optional(__S(148, __c18, 4)),
-          includePatterns: S.optional(__S(14, __c1, 6)),
-          excludePatterns: S.optional(__S(14, __c1, 6)),
+          jsonOptions: S.optional(__S(2605, __c81, 13)),
+          csvOptions: S.optional(__S(2606, __c81, 14)),
+          includePatterns: S.optional(__S(5472, __c171, 0)),
+          excludePatterns: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfig",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          bigqueryPublishingConfig: S.optional(__S(146, __c18, 2)),
-          storageConfig: S.optional(__S(149, __c18, 5)),
+          bigqueryPublishingConfig: S.optional(__S(2604, __c81, 12)),
+          storageConfig: S.optional(__S(2607, __c81, 15)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoverySpec",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          latestJobEndTime: S.optional(S.String),
-          latestJobStartTime: S.optional(S.String),
-          latestJobCreateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataScanExecutionStatus",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(109, __c13, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(14, __c1, 6)),
+          emails: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           scoreThreshold: S.optional(S.Number),
@@ -10119,33 +11472,33 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger",
       });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          recipients: S.optional(__S(153, __c19, 1)),
-          scoreThresholdTrigger: S.optional(__S(154, __c19, 2)),
-          jobFailureTrigger: S.optional(__S(31, __c3, 7)),
-          jobEndTrigger: S.optional(__S(31, __c3, 7)),
+          recipients: S.optional(__S(2609, __c81, 17)),
+          scoreThresholdTrigger: S.optional(__S(2610, __c81, 18)),
+          jobFailureTrigger: S.optional(__S(6112, __c191, 0)),
+          jobEndTrigger: S.optional(__S(6112, __c191, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport",
       });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          bigqueryExport: S.optional(__S(74, __c9, 2)),
-          notificationReport: S.optional(__S(155, __c19, 3)),
+          bigqueryExport: S.optional(__S(2560, __c80, 0)),
+          notificationReport: S.optional(__S(2611, __c81, 19)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActions",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           enableCatalogBasedRules: S.optional(S.Boolean),
           samplingPercent: S.optional(S.Number),
-          rules: S.optional(__S(152, __c19, 0)),
-          postScanActions: S.optional(__S(156, __c19, 4)),
+          rules: S.optional(__S(2518, __c78, 22)),
+          postScanActions: S.optional(__S(2612, __c81, 20)),
           filter: S.optional(S.String),
           rowFilter: S.optional(S.String),
           catalogPublishingEnabled: S.optional(S.Boolean),
@@ -10153,7 +11506,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataQualitySpec",
       });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           filesetsUpdated: S.optional(S.Number),
@@ -10169,7 +11522,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoveryResultScanStatistics",
       });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           dataset: S.optional(S.String),
@@ -10178,3514 +11531,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          scanStatistics: S.optional(__S(158, __c19, 6)),
-          bigqueryPublishing: S.optional(__S(159, __c19, 7)),
+          scanStatistics: S.optional(__S(2614, __c81, 22)),
+          bigqueryPublishing: S.optional(__S(2615, __c81, 23)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1DataDiscoveryResult",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-          executionIdentity: S.optional(__S(73, __c9, 1)),
-          state: S.optional(S.String),
-          dataProfileSpec: S.optional(__S(77, __c9, 5)),
-          executionSpec: S.optional(__S(81, __c10, 1)),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          dataDocumentationSpec: S.optional(__S(83, __c10, 3)),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          dataQualityResult: S.optional(__S(122, __c15, 2)),
-          dataDocumentationResult: S.optional(__S(133, __c16, 5)),
-          data: S.optional(__S(134, __c16, 6)),
-          dataProfileResult: S.optional(__S(145, __c18, 1)),
-          dataDiscoverySpec: S.optional(__S(150, __c18, 6)),
-          executionStatus: S.optional(__S(151, __c18, 7)),
-          dataQualitySpec: S.optional(__S(157, __c19, 5)),
-          description: S.optional(S.String),
-          dataDiscoveryResult: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataScan",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataScanId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dataScans",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataScansRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          transferStatus: S.optional(S.String),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntryGroup",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entryGroupId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entryGroups",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entries",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          entryLinkId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entryLinks",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsEntryLinksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntryTypeAspectInfo",
-      });
   }
 }
-function __c21(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requiredAspects: S.optional(__S(168, __c21, 0)),
-          authorization: S.optional(__S(50, __c6, 2)),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          platform: S.optional(S.String),
-          system: S.optional(S.String),
-          description: S.optional(S.String),
-          typeAliases: S.optional(__S(14, __c1, 6)),
-          labels: S.optional(__S(2, __c0, 2)),
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntryType",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          entryTypeId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(169, __c21, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entryTypes",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          glossaryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/glossaries",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGlossariesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categoryId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/categories",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGlossariesCategoriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          termId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/terms",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGlossariesTermsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          activeAssets: S.optional(S.Number),
-          securityPolicyApplyingAssets: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1LakeMetastore",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1LakeMetastoreStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(2, __c0, 2)),
-          assetStatus: S.optional(__S(174, __c21, 6)),
-          state: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          metastore: S.optional(__S(175, __c21, 7)),
-          updateTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          metastoreStatus: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Lake",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lakeId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(177, __c22, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/lakes",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxExecutorsCount: S.optional(S.Number),
-          executorsCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          properties: S.optional(__S(2, __c0, 2)),
-          pythonPackages: S.optional(__S(14, __c1, 6)),
-          javaJars: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subNetwork: S.optional(S.String),
-          network: S.optional(S.String),
-          networkTags: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          batch: S.optional(__S(179, __c22, 3)),
-          containerImage: S.optional(__S(180, __c22, 4)),
-          vpcNetwork: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureSpec: S.optional(__S(182, __c22, 6)),
-          notebook: S.optional(S.String),
-          fileUris: S.optional(__S(14, __c1, 6)),
-          archiveUris: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskNotebookTaskConfig",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKey: S.optional(S.String),
-          maxJobExecutionLifetime: S.optional(S.String),
-          args: S.optional(__S(2, __c0, 2)),
-          project: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskExecutionSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          uid: S.optional(S.String),
-          name: S.optional(S.String),
-          serviceJob: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          trigger: S.optional(S.String),
-          retryCount: S.optional(S.Number),
-          executionSpec: S.optional(__S(184, __c23, 0)),
-          startTime: S.optional(S.String),
-          service: S.optional(S.String),
-          endTime: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudDataplexV1Job" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          latestJob: S.optional(__S(185, __c23, 1)),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskExecutionStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxRetries: S.optional(S.Number),
-          disabled: S.optional(S.Boolean),
-          startTime: S.optional(S.String),
-          type: S.optional(S.String),
-          schedule: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskTriggerSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sqlScript: S.optional(S.String),
-          infrastructureSpec: S.optional(__S(182, __c22, 6)),
-          mainJarFileUri: S.optional(S.String),
-          archiveUris: S.optional(__S(14, __c1, 6)),
-          fileUris: S.optional(__S(14, __c1, 6)),
-          pythonScriptFile: S.optional(S.String),
-          sqlScriptFile: S.optional(S.String),
-          mainClass: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1TaskSparkTaskConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          notebook: S.optional(__S(183, __c22, 7)),
-          createTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          executionSpec: S.optional(__S(184, __c23, 0)),
-          executionStatus: S.optional(__S(186, __c23, 2)),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          triggerSpec: S.optional(__S(187, __c23, 3)),
-          updateTime: S.optional(S.String),
-          spark: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Task",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          taskId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/tasks",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesTasksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          locationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ZoneResourceSpec",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          encoding: S.optional(S.String),
-          disableTypeInference: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          delimiter: S.optional(S.String),
-          disableTypeInference: S.optional(S.Boolean),
-          encoding: S.optional(S.String),
-          headerRows: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          includePatterns: S.optional(__S(14, __c1, 6)),
-          jsonOptions: S.optional(__S(192, __c24, 0)),
-          csvOptions: S.optional(__S(193, __c24, 1)),
-          excludePatterns: S.optional(__S(14, __c1, 6)),
-          schedule: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          resourceSpec: S.optional(__S(191, __c23, 7)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          assetStatus: S.optional(__S(174, __c21, 6)),
-          discoverySpec: S.optional(__S(194, __c24, 2)),
-          state: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Zone",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          zoneId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(195, __c24, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/zones",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesZonesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filesets: S.optional(S.String),
-          tables: S.optional(S.String),
-          dataItems: S.optional(S.String),
-          dataSize: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetDiscoveryStatusStats",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          stats: S.optional(__S(197, __c24, 5)),
-          message: S.optional(S.String),
-          lastRunTime: S.optional(S.String),
-          state: S.optional(S.String),
-          lastRunDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetDiscoveryStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          headerRows: S.optional(S.Number),
-          disableTypeInference: S.optional(S.Boolean),
-          delimiter: S.optional(S.String),
-          encoding: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          csvOptions: S.optional(__S(199, __c24, 7)),
-          jsonOptions: S.optional(__S(192, __c24, 0)),
-          enabled: S.optional(S.Boolean),
-          includePatterns: S.optional(__S(14, __c1, 6)),
-          schedule: S.optional(S.String),
-          excludePatterns: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetDiscoverySpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetSecurityStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          readAccessMode: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetResourceSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          message: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          managedAccessIdentity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1AssetResourceStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          discoveryStatus: S.optional(__S(198, __c24, 6)),
-          discoverySpec: S.optional(__S(200, __c25, 0)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          securityStatus: S.optional(__S(201, __c25, 1)),
-          createTime: S.optional(S.String),
-          resourceSpec: S.optional(__S(202, __c25, 2)),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          resourceStatus: S.optional(__S(203, __c25, 3)),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Asset",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          assetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(204, __c25, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/assets",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          delimiter: S.optional(S.String),
-          headerRows: S.optional(S.Number),
-          encoding: S.optional(S.String),
-          quote: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1StorageFormatCsvOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadataLocation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1StorageFormatIcebergOptions",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          encoding: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1StorageFormatJsonOptions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          compressionFormat: S.optional(S.String),
-          csv: S.optional(__S(206, __c25, 6)),
-          mimeType: S.optional(S.String),
-          format: S.optional(S.String),
-          iceberg: S.optional(__S(207, __c25, 7)),
-          json: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1StorageFormat",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          read: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1StorageAccess",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-          fields: S.optional(S.suspend(() => __S(212, __c26, 4))),
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1SchemaSchemaField",
-      });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1SchemaPartitionField",
-      });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(212, __c26, 4)),
-          userManaged: S.optional(S.Boolean),
-          partitionStyle: S.optional(S.String),
-          partitionFields: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Schema",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          compatible: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hiveMetastore: S.optional(__S(216, __c27, 0)),
-          bigquery: S.optional(__S(216, __c27, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1EntityCompatibilityStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          asset: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          dataPath: S.optional(S.String),
-          dataPathPattern: S.optional(S.String),
-          catalogEntry: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          etag: S.optional(S.String),
-          type: S.optional(S.String),
-          system: S.optional(S.String),
-          name: S.optional(S.String),
-          format: S.optional(__S(209, __c26, 1)),
-          access: S.optional(__S(210, __c26, 2)),
-          schema: S.optional(__S(215, __c26, 7)),
-          compatibility: S.optional(__S(217, __c27, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Entity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entities",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesZonesEntitiesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          values: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Partition",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/partitions",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entryTypes: S.optional(__S(14, __c1, 6)),
-          changeTypes: S.optional(__S(82, __c10, 2)),
-          aspectTypes: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataFeedFilters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organizationLevel: S.optional(S.Boolean),
-          projects: S.optional(__S(14, __c1, 6)),
-          entryGroups: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataFeedScope",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubTopic: S.optional(S.String),
-          uid: S.optional(S.String),
-          filters: S.optional(__S(222, __c27, 6)),
-          scope: S.optional(__S(223, __c27, 7)),
-          updateTime: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataFeed",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          metadataFeedId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(224, __c28, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/metadataFeeds",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsMetadataFeedsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          completionPercent: S.optional(S.Number),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdEntryLinks: S.optional(S.String),
-          deletedEntries: S.optional(S.String),
-          updatedEntries: S.optional(S.String),
-          unchangedEntries: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createdEntries: S.optional(S.String),
-          deletedEntryLinks: S.optional(S.String),
-          unchangedEntryLinks: S.optional(S.String),
-          recreatedEntries: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobImportJobResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entryGroups: S.optional(__S(14, __c1, 6)),
-          projects: S.optional(__S(14, __c1, 6)),
-          entryTypes: S.optional(__S(14, __c1, 6)),
-          aspectTypes: S.optional(__S(14, __c1, 6)),
-          organizationLevel: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(__S(228, __c28, 4)),
-          outputPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.String),
-          exportedEntries: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobExportJobResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aspectTypes: S.optional(__S(14, __c1, 6)),
-          glossaries: S.optional(__S(14, __c1, 6)),
-          entryGroups: S.optional(__S(14, __c1, 6)),
-          entryTypes: S.optional(__S(14, __c1, 6)),
-          entryLinkTypes: S.optional(__S(14, __c1, 6)),
-          referencedEntryScopes: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entrySyncMode: S.optional(S.String),
-          logLevel: S.optional(S.String),
-          scope: S.optional(__S(231, __c28, 7)),
-          sourceCreateTime: S.optional(S.String),
-          aspectSyncMode: S.optional(S.String),
-          sourceStorageUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(226, __c28, 2)),
-          importResult: S.optional(__S(227, __c28, 3)),
-          type: S.optional(S.String),
-          exportSpec: S.optional(__S(229, __c28, 5)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          exportResult: S.optional(__S(230, __c28, 6)),
-          uid: S.optional(S.String),
-          importSpec: S.optional(__S(232, __c29, 0)),
-          labels: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1MetadataJob",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          metadataJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/metadataJobs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsMetadataJobsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsEncryptionConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAspectTypesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsChangeRequestsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataDomainsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataDomainsBindingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataProductsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataProductsDataAssetsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataScansRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsEntryGroupsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsEntryGroupsEntryLinksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsEntryTypesRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsGlossariesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsGlossariesCategoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsGlossariesTermsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesTasksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesZonesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesZonesEntitiesRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsMetadataFeedsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:generateDataQualityRules",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateDataQualityRulesProjectsLocationsDataScansRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rule: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1GenerateDataQualityRulesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:generateDataQualityRules",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1AuditLogConfig",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(264, __c33, 0)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-          expression: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeExpr" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(267, __c33, 3)),
-          members: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(266, __c33, 2)),
-          bindings: S.optional(__S(269, __c33, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsAgentTasksRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsAspectTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsChangeRequestsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataAttributeBindingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataDomainsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataProductsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataScansRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataTaxonomiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsEntryGroupsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsEntryLinkTypesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsEntryTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsGlossariesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsGlossariesCategoriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsGlossariesTermsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsGovernanceRulesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsLakesRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsLakesTasksRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsLakesZonesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsEncryptionConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          locationId: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationLocation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAspectTypesRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsChangeRequestsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataDomainsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataDomainsBindingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataProductsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataProductsDataAssetsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataScansRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDataScansJobsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataProfileSpec: S.optional(__S(77, __c9, 5)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          type: S.optional(S.String),
-          dataDiscoveryResult: S.optional(__S(160, __c20, 0)),
-          partialFailureMessage: S.optional(S.String),
-          dataDocumentationResult: S.optional(__S(133, __c16, 5)),
-          dataDiscoverySpec: S.optional(__S(150, __c18, 6)),
-          dataDocumentationSpec: S.optional(__S(83, __c10, 3)),
-          state: S.optional(S.String),
-          startTime: S.optional(S.String),
-          dataQualitySpec: S.optional(__S(157, __c19, 5)),
-          dataQualityResult: S.optional(__S(122, __c15, 2)),
-          uid: S.optional(S.String),
-          dataProfileResult: S.optional(__S(145, __c18, 1)),
-          endTime: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1DataScanJob",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsEntryGroupsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          paths: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          aspectTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsEntryGroupsEntryLinksRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsEntryTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGlossariesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGlossariesCategoriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGlossariesTermsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesTasksRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesTasksJobsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesZonesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesZonesEntitiesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsLakesZonesEntitiesPartitionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsMetadataFeedsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsMetadataJobsRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/encryptionConfigs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsLocationsEncryptionConfigsRequest",
-      });
-    case 2:
-      return S.Array(__S(39, __c4, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          encryptionConfigs: S.optional(__S(322, __c40, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListEncryptionConfigsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/operations",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.Array(__S(43, __c5, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(325, __c40, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningListOperationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/locations",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsRequest",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(294, __c36, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(328, __c41, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationListLocationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/aspectTypes",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAspectTypesRequest",
-      });
-    case 3:
-      return S.Array(__S(51, __c6, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-          aspectTypes: S.optional(__S(331, __c41, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListAspectTypesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/changeRequests",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsChangeRequestsRequest",
-      });
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-          changeRequests: S.optional(__S(334, __c41, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListChangeRequestsResponse",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dataDomains",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataDomainsRequest",
-      });
-    case 1:
-      return S.Array(__S(57, __c7, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataDomains: S.optional(__S(337, __c42, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataDomainsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/bindings",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataDomainsBindingsRequest",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          dataDomainBindings: S.optional(__S(340, __c42, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataDomainBindingsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dataProducts",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataProductsRequest",
-      });
-    case 7:
-      return S.Array(__S(66, __c8, 2));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(14, __c1, 6)),
-          dataProducts: S.optional(__S(343, __c42, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataProductsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dataAssets",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataProductsDataAssetsRequest",
-      });
-    case 2:
-      return S.Array(__S(70, __c8, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataAssets: S.optional(__S(346, __c43, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataAssetsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dataScans",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataScansRequest",
-      });
-    case 5:
-      return S.Array(__S(161, __c20, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataScans: S.optional(__S(349, __c43, 5)),
-          unreachable: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataScansResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/jobs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDataScansJobsRequest",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          dataScanJobs: S.optional(__S(352, __c44, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListDataScanJobsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/entryGroups",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsEntryGroupsRequest",
-      });
-    case 3:
-      return S.Array(__S(163, __c20, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-          entryGroups: S.optional(__S(355, __c44, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListEntryGroupsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/entries",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(358, __c44, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListEntriesResponse",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/entryTypes",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsEntryTypesRequest",
-      });
-    case 1:
-      return S.Array(__S(169, __c21, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          entryTypes: S.optional(__S(361, __c45, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListEntryTypesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/glossaries",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGlossariesRequest",
-      });
-    case 4:
-      return S.Array(__S(16, __c2, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          glossaries: S.optional(__S(364, __c45, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListGlossariesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/categories",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGlossariesCategoriesRequest",
-      });
-    case 7:
-      return S.Array(__S(19, __c2, 3));
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          categories: S.optional(__S(367, __c45, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListGlossaryCategoriesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/terms",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGlossariesTermsRequest",
-      });
-    case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          terms: S.optional(__S(370, __c46, 2)),
-          nextPageToken: S.optional(S.String),
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListGlossaryTermsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/lakes",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesRequest",
-      });
-    case 5:
-      return S.Array(__S(177, __c22, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-          lakes: S.optional(__S(373, __c46, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListLakesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/actions",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesActionsRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          asset: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ActionFailedSecurityPolicyApply",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expectedStructure: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ActionInvalidDataPartition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          newSchema: S.optional(S.String),
-          table: S.optional(S.String),
-          existingSchema: S.optional(S.String),
-          sampledDataLocations: S.optional(__S(14, __c1, 6)),
-          schemaChange: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ActionIncompatibleDataSchema",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sampledDataLocations: S.optional(__S(14, __c1, 6)),
-          expectedFormat: S.optional(S.String),
-          newFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ActionInvalidDataFormat",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          asset: S.optional(S.String),
-          category: S.optional(S.String),
-          lake: S.optional(S.String),
-          detectTime: S.optional(S.String),
-          failedSecurityPolicyApply: S.optional(__S(376, __c47, 0)),
-          zone: S.optional(S.String),
-          unauthorizedResource: S.optional(__S(31, __c3, 7)),
-          issue: S.optional(S.String),
-          dataLocations: S.optional(__S(14, __c1, 6)),
-          missingData: S.optional(__S(31, __c3, 7)),
-          name: S.optional(S.String),
-          invalidDataOrganization: S.optional(__S(31, __c3, 7)),
-          invalidDataPartition: S.optional(__S(377, __c47, 1)),
-          missingResource: S.optional(__S(31, __c3, 7)),
-          incompatibleDataSchema: S.optional(__S(378, __c47, 2)),
-          invalidDataFormat: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1Action",
-      });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          actions: S.optional(__S(381, __c47, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListActionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/tasks",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesTasksRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(189, __c23, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          tasks: S.optional(__S(384, __c48, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListTasksResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/jobs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesTasksJobsRequest",
-      });
-    case 3:
-      return S.Array(__S(185, __c23, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jobs: S.optional(__S(387, __c48, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListJobsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/zones",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesRequest",
-      });
-    case 6:
-      return S.Array(__S(195, __c24, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zones: S.optional(__S(390, __c48, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListZonesResponse",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/actions",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesActionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/assets",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 2:
-      return S.Array(__S(204, __c25, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(394, __c49, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListAssetsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/actions",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesAssetsActionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/entities",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesEntitiesRequest",
-      });
-    case 6:
-      return S.Array(__S(218, __c27, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          entities: S.optional(__S(398, __c49, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListEntitiesResponse",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/partitions",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsLakesZonesEntitiesPartitionsRequest",
-      });
-    case 1:
-      return S.Array(__S(220, __c27, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partitions: S.optional(__S(401, __c50, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListPartitionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/metadataFeeds",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsMetadataFeedsRequest",
-      });
-    case 4:
-      return S.Array(__S(224, __c28, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(14, __c1, 6)),
-          metadataFeeds: S.optional(__S(404, __c50, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListMetadataFeedsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/metadataJobs",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsMetadataJobsRequest",
-      });
-    case 7:
-      return S.Array(__S(233, __c29, 1));
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachableLocations: S.optional(__S(14, __c1, 6)),
-          metadataJobs: S.optional(__S(407, __c50, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ListMetadataJobsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/operations",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(2, __c0, 2)),
-          resources: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1LookupContextRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(410, __c51, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:lookupContext",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LookupContextProjectsLocationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1LookupContextResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          entryMode: S.optional(S.String.pipe(T.Query())),
-          entry: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          entryLinkTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:lookupEntryLinks",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LookupEntryLinksProjectsLocationsRequest",
-      });
-    case 6:
-      return S.Array(__S(27, __c3, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entryLinks: S.optional(__S(414, __c51, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1LookupEntryLinksResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          paths: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          entry: S.optional(S.String.pipe(T.Query())),
-          aspectTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:lookupEntry",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LookupEntryProjectsLocationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deleteMissingAspects: S.optional(S.Boolean),
-          entry: S.optional(__S(13, __c1, 5)),
-          aspectKeys: S.optional(__S(14, __c1, 6)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDataplexV1ModifyEntryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(417, __c52, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:modifyEntry",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ModifyEntryProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchOrganizationsLocationsEncryptionConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAspectTypesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsChangeRequestsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDataDomainsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDataProductsRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDataProductsDataAssetsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDataScansRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsEntryGroupsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          aspectKeys: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          deleteMissingAspects: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          aspectKeys: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsEntryGroupsEntryLinksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(169, __c21, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsEntryTypesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsGlossariesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsGlossariesCategoriesRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsGlossariesTermsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(177, __c22, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsLakesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsLakesTasksRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(195, __c24, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsLakesZonesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(204, __c25, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsLakesZonesAssetsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(224, __c28, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://dataplex.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsMetadataFeedsRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -13694,11 +11553,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1RejectChangeRequestRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(438, __c54, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13711,12 +11570,12 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          changeRequest: S.optional(__S(30, __c3, 6)),
+          changeRequest: S.optional(__S(5739, __c179, 11)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -13726,7 +11585,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(440, __c55, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13745,11 +11604,15 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDataplexV1RequestDataProductAccessResponse",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13760,28 +11623,32 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsDataScansRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(303, __c37, 7)),
+          job: S.optional(__S(7648, __c239, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1RunDataScanResponse",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(2, __c0, 2)),
-          labels: S.optional(__S(2, __c0, 2)),
+          args: S.optional(__S(5440, __c170, 0)),
+          labels: S.optional(__S(5440, __c170, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1RunTaskRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(445, __c55, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13792,17 +11659,17 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsLakesTasksRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(185, __c23, 1)),
+          job: S.optional(__S(4673, __c146, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1RunTaskResponse",
       });
   }
 }
-function __c56(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13814,7 +11681,7 @@ function __c56(j: number): any {
           semanticSearch: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          contexts: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          contexts: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13828,7 +11695,7 @@ function __c56(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataplexEntry: S.optional(__S(13, __c1, 5)),
+          dataplexEntry: S.optional(__S(5571, __c174, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1SearchEntriesResultSnippets",
@@ -13836,40 +11703,35 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataplexEntry: S.optional(__S(13, __c1, 5)),
-          snippets: S.optional(__S(449, __c56, 1)),
+          dataplexEntry: S.optional(__S(5571, __c174, 3)),
+          snippets: S.optional(__S(2753, __c86, 1)),
           linkedResource: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1SearchEntriesResult",
       });
     case 3:
-      return S.Array(__S(450, __c56, 2));
+      return S.Array(__S(2754, __c86, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(451, __c56, 3)),
+          results: S.optional(__S(2755, __c86, 3)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          unreachable: S.optional(__S(5472, __c171, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDataplexV1SearchEntriesResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(270, __c33, 6)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1SetIamPolicyRequest",
-      });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13880,11 +11742,28 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(6503, __c203, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1SetIamPolicyRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13897,13 +11776,13 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13914,11 +11793,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsAspectTypesRequest",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13929,11 +11812,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsChangeRequestsRequest",
       });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13944,11 +11831,56 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataAttributeBindingsRequest",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryGroupId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(3008, __c94, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entryGroups",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          transferStatus: S.optional(S.String),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntryGroup",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13959,11 +11891,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataDomainsRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13974,11 +11910,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataProductsRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13989,11 +11929,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataScansRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14004,11 +11948,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataTaxonomiesRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14021,13 +11969,13 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14038,11 +11986,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsEntryGroupsRequest",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14053,11 +12005,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsEntryLinkTypesRequest",
       });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14068,11 +12024,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsEntryTypesRequest",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14083,11 +12043,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsGlossariesRequest",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14098,11 +12062,35 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsGlossariesCategoriesRequest",
       });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5571, __c174, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entries",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsEntriesRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14113,11 +12101,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsGlossariesTermsRequest",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14128,11 +12120,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsGovernanceRulesRequest",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14145,13 +12141,13 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14162,11 +12158,15 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsLakesTasksRequest",
       });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14177,11 +12177,15 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsLakesZonesRequest",
       });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14192,19 +12196,15 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsLakesZonesAssetsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1TestIamPermissionsRequest",
-      });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14215,11 +12215,27 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1TestIamPermissionsRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14230,11 +12246,15 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAgentTasksRequest",
       });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14245,11 +12265,15 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAspectTypesRequest",
       });
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14262,13 +12286,33 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          entryLinkId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5602, __c175, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entryLinks",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsEntryLinksRequest",
+      });
+  }
+}
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14279,11 +12323,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest",
       });
-    case 1:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14294,11 +12342,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataDomainsRequest",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14309,11 +12361,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataProductsRequest",
       });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14324,11 +12380,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataScansRequest",
       });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14339,11 +12399,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesRequest",
       });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14354,11 +12418,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest",
       });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14369,11 +12437,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEntryGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14386,13 +12458,13 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14403,11 +12475,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEntryTypesRequest",
       });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14418,11 +12494,70 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsGlossariesRequest",
       });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          entryTypeId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4130, __c129, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entryTypes",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryTypesRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntryTypeAspectInfo",
+      });
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          requiredAspects: S.optional(__S(4129, __c129, 1)),
+          authorization: S.optional(__S(480, __c15, 0)),
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          platform: S.optional(S.String),
+          system: S.optional(S.String),
+          description: S.optional(S.String),
+          typeAliases: S.optional(__S(5472, __c171, 0)),
+          labels: S.optional(__S(5440, __c170, 0)),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntryType",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14433,11 +12568,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest",
       });
-    case 3:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14448,11 +12587,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsGlossariesTermsRequest",
       });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14463,11 +12606,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsGovernanceRulesRequest",
       });
-    case 5:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14478,11 +12625,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsLakesRequest",
       });
-    case 6:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14493,11 +12644,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsLakesTasksRequest",
       });
-    case 7:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14510,13 +12665,13 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(475, __c59, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14527,12 +12682,16 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest",
       });
-    case 1:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4908, __c153, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
         ),
@@ -14541,7 +12700,2667 @@ function __c62(j: number): any {
       });
   }
 }
-
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          glossaryId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5632, __c176, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/glossaries",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGlossariesRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          categoryId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5664, __c177, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/categories",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGlossariesCategoriesRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          termId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5696, __c178, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/terms",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGlossariesTermsRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lakeId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4578, __c143, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/lakes",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          activeAssets: S.optional(S.Number),
+          securityPolicyApplyingAssets: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetStatus",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1LakeMetastore",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1LakeMetastoreStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(5440, __c170, 0)),
+          assetStatus: S.optional(__S(4544, __c142, 0)),
+          state: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          metastore: S.optional(__S(4576, __c143, 0)),
+          updateTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          metastoreStatus: S.optional(__S(4577, __c143, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Lake",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          taskId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4648, __c145, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/tasks",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesTasksRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxExecutorsCount: S.optional(S.Number),
+          executorsCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          properties: S.optional(__S(5440, __c170, 0)),
+          pythonPackages: S.optional(__S(5472, __c171, 0)),
+          javaJars: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subNetwork: S.optional(S.String),
+          network: S.optional(S.String),
+          networkTags: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          batch: S.optional(__S(4640, __c145, 0)),
+          containerImage: S.optional(__S(4641, __c145, 1)),
+          vpcNetwork: S.optional(__S(4642, __c145, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskInfrastructureSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureSpec: S.optional(__S(4643, __c145, 3)),
+          notebook: S.optional(S.String),
+          fileUris: S.optional(__S(5472, __c171, 0)),
+          archiveUris: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskNotebookTaskConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          latestJob: S.optional(__S(4673, __c146, 1)),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskExecutionStatus",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxRetries: S.optional(S.Number),
+          disabled: S.optional(S.Boolean),
+          startTime: S.optional(S.String),
+          type: S.optional(S.String),
+          schedule: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskTriggerSpec",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sqlScript: S.optional(S.String),
+          infrastructureSpec: S.optional(__S(4643, __c145, 3)),
+          mainJarFileUri: S.optional(S.String),
+          archiveUris: S.optional(__S(5472, __c171, 0)),
+          fileUris: S.optional(__S(5472, __c171, 0)),
+          pythonScriptFile: S.optional(S.String),
+          sqlScriptFile: S.optional(S.String),
+          mainClass: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskSparkTaskConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          notebook: S.optional(__S(4644, __c145, 4)),
+          createTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          executionSpec: S.optional(__S(4672, __c146, 0)),
+          executionStatus: S.optional(__S(4645, __c145, 5)),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          triggerSpec: S.optional(__S(4646, __c145, 6)),
+          updateTime: S.optional(S.String),
+          spark: S.optional(__S(4647, __c145, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Task",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+          maxJobExecutionLifetime: S.optional(S.String),
+          args: S.optional(__S(5440, __c170, 0)),
+          project: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1TaskExecutionSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          uid: S.optional(S.String),
+          name: S.optional(S.String),
+          serviceJob: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          trigger: S.optional(S.String),
+          retryCount: S.optional(S.Number),
+          executionSpec: S.optional(__S(4672, __c146, 0)),
+          startTime: S.optional(S.String),
+          service: S.optional(S.String),
+          endTime: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudDataplexV1Job" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          zoneId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4739, __c148, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/zones",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesZonesRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ZoneResourceSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          delimiter: S.optional(S.String),
+          disableTypeInference: S.optional(S.Boolean),
+          encoding: S.optional(S.String),
+          headerRows: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          includePatterns: S.optional(__S(5472, __c171, 0)),
+          jsonOptions: S.optional(__S(4768, __c149, 0)),
+          csvOptions: S.optional(__S(4737, __c148, 1)),
+          excludePatterns: S.optional(__S(5472, __c171, 0)),
+          schedule: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          resourceSpec: S.optional(__S(4736, __c148, 0)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          assetStatus: S.optional(__S(4544, __c142, 0)),
+          discoverySpec: S.optional(__S(4738, __c148, 2)),
+          state: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Zone",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encoding: S.optional(S.String),
+          disableTypeInference: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          assetId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4839, __c151, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/assets",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesZonesAssetsRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filesets: S.optional(S.String),
+          tables: S.optional(S.String),
+          dataItems: S.optional(S.String),
+          dataSize: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetDiscoveryStatusStats",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          stats: S.optional(__S(4832, __c151, 0)),
+          message: S.optional(S.String),
+          lastRunTime: S.optional(S.String),
+          state: S.optional(S.String),
+          lastRunDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetDiscoveryStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          headerRows: S.optional(S.Number),
+          disableTypeInference: S.optional(S.Boolean),
+          delimiter: S.optional(S.String),
+          encoding: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          csvOptions: S.optional(__S(4834, __c151, 2)),
+          jsonOptions: S.optional(__S(4768, __c149, 0)),
+          enabled: S.optional(S.Boolean),
+          includePatterns: S.optional(__S(5472, __c171, 0)),
+          schedule: S.optional(S.String),
+          excludePatterns: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetDiscoverySpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetSecurityStatus",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          readAccessMode: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetResourceSpec",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          message: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          managedAccessIdentity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AssetResourceStatus",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          discoveryStatus: S.optional(__S(4833, __c151, 1)),
+          discoverySpec: S.optional(__S(4835, __c151, 3)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          securityStatus: S.optional(__S(4836, __c151, 4)),
+          createTime: S.optional(S.String),
+          resourceSpec: S.optional(__S(4837, __c151, 5)),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          resourceStatus: S.optional(__S(4838, __c151, 6)),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Asset",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4908, __c153, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entities",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesZonesEntitiesRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delimiter: S.optional(S.String),
+          headerRows: S.optional(S.Number),
+          encoding: S.optional(S.String),
+          quote: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1StorageFormatCsvOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadataLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1StorageFormatIcebergOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          encoding: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1StorageFormatJsonOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          compressionFormat: S.optional(S.String),
+          csv: S.optional(__S(4896, __c153, 0)),
+          mimeType: S.optional(S.String),
+          format: S.optional(S.String),
+          iceberg: S.optional(__S(4897, __c153, 1)),
+          json: S.optional(__S(4898, __c153, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1StorageFormat",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          read: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1StorageAccess",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+          fields: S.optional(S.suspend(() => __S(4902, __c153, 6))),
+          name: S.optional(S.String),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1SchemaSchemaField",
+      });
+    case 6:
+      return S.Array(__S(4901, __c153, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1SchemaPartitionField",
+      });
+    case 8:
+      return S.Array(__S(4903, __c153, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(4902, __c153, 6)),
+          userManaged: S.optional(S.Boolean),
+          partitionStyle: S.optional(S.String),
+          partitionFields: S.optional(__S(4904, __c153, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Schema",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          compatible: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          hiveMetastore: S.optional(__S(4906, __c153, 10)),
+          bigquery: S.optional(__S(4906, __c153, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntityCompatibilityStatus",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          asset: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          dataPath: S.optional(S.String),
+          dataPathPattern: S.optional(S.String),
+          catalogEntry: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          etag: S.optional(S.String),
+          type: S.optional(S.String),
+          system: S.optional(S.String),
+          name: S.optional(S.String),
+          format: S.optional(__S(4899, __c153, 3)),
+          access: S.optional(__S(4900, __c153, 4)),
+          schema: S.optional(__S(4905, __c153, 9)),
+          compatibility: S.optional(__S(4907, __c153, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Entity",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(4960, __c155, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/partitions",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          values: S.optional(__S(5472, __c171, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Partition",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          metadataFeedId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(5026, __c157, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/metadataFeeds",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsMetadataFeedsRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryTypes: S.optional(__S(5472, __c171, 0)),
+          changeTypes: S.optional(__S(2464, __c77, 0)),
+          aspectTypes: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataFeedFilters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organizationLevel: S.optional(S.Boolean),
+          projects: S.optional(__S(5472, __c171, 0)),
+          entryGroups: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataFeedScope",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubTopic: S.optional(S.String),
+          uid: S.optional(S.String),
+          filters: S.optional(__S(5024, __c157, 0)),
+          scope: S.optional(__S(5025, __c157, 1)),
+          updateTime: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataFeed",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          metadataJobId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5095, __c159, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/metadataJobs",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsMetadataJobsRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completionPercent: S.optional(S.Number),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdEntryLinks: S.optional(S.String),
+          deletedEntries: S.optional(S.String),
+          updatedEntries: S.optional(S.String),
+          unchangedEntries: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createdEntries: S.optional(S.String),
+          deletedEntryLinks: S.optional(S.String),
+          unchangedEntryLinks: S.optional(S.String),
+          recreatedEntries: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobImportJobResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entryGroups: S.optional(__S(5472, __c171, 0)),
+          projects: S.optional(__S(5472, __c171, 0)),
+          entryTypes: S.optional(__S(5472, __c171, 0)),
+          aspectTypes: S.optional(__S(5472, __c171, 0)),
+          organizationLevel: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(__S(5090, __c159, 2)),
+          outputPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.String),
+          exportedEntries: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobExportJobResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          aspectTypes: S.optional(__S(5472, __c171, 0)),
+          glossaries: S.optional(__S(5472, __c171, 0)),
+          entryGroups: S.optional(__S(5472, __c171, 0)),
+          entryTypes: S.optional(__S(5472, __c171, 0)),
+          entryLinkTypes: S.optional(__S(5472, __c171, 0)),
+          referencedEntryScopes: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entrySyncMode: S.optional(S.String),
+          logLevel: S.optional(S.String),
+          scope: S.optional(__S(5093, __c159, 5)),
+          sourceCreateTime: S.optional(S.String),
+          aspectSyncMode: S.optional(S.String),
+          sourceStorageUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpec",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(5088, __c159, 0)),
+          importResult: S.optional(__S(5089, __c159, 1)),
+          type: S.optional(S.String),
+          exportSpec: S.optional(__S(5091, __c159, 3)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          exportResult: S.optional(__S(5092, __c159, 4)),
+          uid: S.optional(S.String),
+          importSpec: S.optional(__S(5094, __c159, 6)),
+          labels: S.optional(__S(5440, __c170, 0)),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1MetadataJob",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsEncryptionConfigsRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAspectTypesRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsChangeRequestsRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataDomainsRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataDomainsBindingsRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataProductsRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataProductsDataAssetsRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          comment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ApproveChangeRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5376, __c168, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProjectsLocationsChangeRequestsRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DeleteGlossaryCategoryRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          dataVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1AspectSource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          path: S.optional(S.String),
+          data: S.optional(__S(5408, __c169, 0)),
+          aspectType: S.optional(S.String),
+          createTime: S.optional(S.String),
+          aspectSource: S.optional(__S(5536, __c173, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Aspect",
+      });
+    case 2:
+      return S.Record(S.String, __S(5537, __c173, 1));
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntrySourceAncestor",
+      });
+    case 1:
+      return S.Array(__S(5568, __c174, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resource: S.optional(S.String),
+          location: S.optional(S.String),
+          ancestors: S.optional(__S(5569, __c174, 1)),
+          labels: S.optional(__S(5440, __c170, 0)),
+          platform: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          system: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntrySource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parentEntry: S.optional(S.String),
+          entryType: S.optional(S.String),
+          fullyQualifiedName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          aspects: S.optional(__S(5538, __c173, 2)),
+          entrySource: S.optional(__S(5570, __c174, 2)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Entry",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntryLinkEntryReference",
+      });
+    case 1:
+      return S.Array(__S(5600, __c175, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          aspects: S.optional(__S(5538, __c173, 2)),
+          entryReferences: S.optional(__S(5601, __c175, 1)),
+          createTime: S.optional(S.String),
+          entryLinkType: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1EntryLink",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          categoryCount: S.optional(S.Number),
+          uid: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          termCount: S.optional(S.Number),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1Glossary",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          parent: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          uid: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1GlossaryCategory",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(5440, __c170, 0)),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1GlossaryTerm",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          termId: S.optional(S.String),
+          term: S.optional(__S(5696, __c178, 0)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1CreateGlossaryTermRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DeleteGlossaryRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entry: S.optional(__S(5571, __c174, 3)),
+          deleteMissingAspects: S.optional(S.Boolean),
+          allowMissing: S.optional(S.Boolean),
+          updateMask: S.optional(S.String),
+          aspectKeys: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1UpdateEntryRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          glossary: S.optional(__S(5632, __c176, 0)),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1UpdateGlossaryRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.optional(S.String),
+          entry: S.optional(__S(5571, __c174, 3)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1CreateEntryRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          category: S.optional(__S(5664, __c177, 0)),
+          categoryId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1CreateGlossaryCategoryRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroupId: S.optional(S.String),
+          accessGroupDisplayName: S.optional(S.String),
+          requestedPrincipal: S.optional(S.String),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataProductAccessRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          category: S.optional(__S(5664, __c177, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1UpdateGlossaryCategoryRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          term: S.optional(__S(5696, __c178, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1UpdateGlossaryTermRequest",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          entryLinkId: S.optional(S.String),
+          entryLink: S.optional(__S(5602, __c175, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1CreateEntryLinkRequest",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          glossary: S.optional(__S(5632, __c176, 0)),
+          glossaryId: S.optional(S.String),
+          parent: S.optional(S.String),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1CreateGlossaryRequest",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          reviewerComment: S.optional(S.String),
+          state: S.optional(S.String),
+          approver: S.optional(S.String),
+          createGlossaryTerm: S.optional(__S(5728, __c179, 0)),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          deleteGlossary: S.optional(__S(5729, __c179, 1)),
+          updateEntry: S.optional(__S(5730, __c179, 2)),
+          updateGlossary: S.optional(__S(5731, __c179, 3)),
+          name: S.optional(S.String),
+          createEntry: S.optional(__S(5732, __c179, 4)),
+          createGlossaryCategory: S.optional(__S(5733, __c179, 5)),
+          deleteGlossaryCategory: S.optional(__S(5504, __c172, 0)),
+          justification: S.optional(S.String),
+          dataProductAccessRequest: S.optional(__S(5734, __c179, 6)),
+          rejectionComment: S.optional(S.String),
+          deleteGlossaryTerm: S.optional(__S(5504, __c172, 0)),
+          deleteEntryLink: S.optional(__S(5504, __c172, 0)),
+          updateGlossaryCategory: S.optional(__S(5735, __c179, 7)),
+          labels: S.optional(__S(5440, __c170, 0)),
+          createTime: S.optional(S.String),
+          changeType: S.optional(S.String),
+          updateGlossaryTerm: S.optional(__S(5736, __c179, 8)),
+          createEntryLink: S.optional(__S(5737, __c179, 9)),
+          resource: S.optional(S.String),
+          createGlossary: S.optional(__S(5738, __c179, 10)),
+          author: S.optional(S.String),
+          etag: S.optional(S.String),
+          deleteEntry: S.optional(__S(5504, __c172, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1ChangeRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsEntryGroupsEntriesRequest",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsEntryGroupsEntryLinksRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsEntryTypesRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsGlossariesRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsGlossariesCategoriesRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsGlossariesTermsRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesTasksRequest",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleLongrunningCancelOperationRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesZonesRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesZonesAssetsRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesZonesEntitiesRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsMetadataFeedsRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:generateDataQualityRules",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateDataQualityRulesProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rule: S.optional(__S(2518, __c78, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1GenerateDataQualityRulesResponse",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:generateDataQualityRules",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1AuditLogConfig",
+      });
+    case 1:
+      return S.Array(__S(6496, __c203, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(6497, __c203, 1)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
+    case 3:
+      return S.Array(__S(6498, __c203, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+          expression: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeExpr" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(6500, __c203, 4)),
+          members: S.optional(__S(5472, __c171, 0)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Binding" });
+    case 6:
+      return S.Array(__S(6501, __c203, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          auditConfigs: S.optional(__S(6499, __c203, 3)),
+          bindings: S.optional(__S(6502, __c203, 6)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Policy" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsAgentTasksRequest",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsDataScansJobsRequest",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsAspectTypesRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsChangeRequestsRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataAttributeBindingsRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataDomainsRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataProductsRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataTaxonomiesRequest",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsEntryLinkTypesRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsLakesTasksJobsRequest",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsEntryTypesRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsGlossariesRequest",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsGlossariesCategoriesRequest",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsGlossariesTermsRequest",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsGovernanceRulesRequest",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsLakesRequest",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsLakesTasksRequest",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsLakesZonesRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsLakesZonesAssetsRequest",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsEncryptionConfigsRequest",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsMetadataJobsRequest",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(5440, __c170, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          locationId: S.optional(S.String),
+          metadata: S.optional(__S(5408, __c169, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationLocation",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAspectTypesRequest",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsChangeRequestsRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataDomainsRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataDomainsBindingsRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataProductsRequest",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataProductsDataAssetsRequest",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataScansRequest",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDataScansJobsRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataProfileSpec: S.optional(__S(2563, __c80, 3)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          type: S.optional(S.String),
+          dataDiscoveryResult: S.optional(__S(2616, __c81, 24)),
+          partialFailureMessage: S.optional(S.String),
+          dataDocumentationResult: S.optional(__S(2592, __c81, 0)),
+          dataDiscoverySpec: S.optional(__S(2608, __c81, 16)),
+          dataDocumentationSpec: S.optional(__S(2564, __c80, 4)),
+          state: S.optional(S.String),
+          startTime: S.optional(S.String),
+          dataQualitySpec: S.optional(__S(2613, __c81, 21)),
+          dataQualityResult: S.optional(__S(2581, __c80, 21)),
+          uid: S.optional(S.String),
+          dataProfileResult: S.optional(__S(2603, __c81, 11)),
+          endTime: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDataplexV1DataScanJob",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://dataplex.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          paths: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          aspectTypes: S.optional(__S(5472, __c171, 0).pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsEntryGroupsEntriesRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsEntryGroupsEntryLinksRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsEntryTypesRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGlossariesRequest",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGlossariesCategoriesRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGlossariesTermsRequest",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsLakesRequest",
+      });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsLakesTasksRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsLakesTasksJobsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

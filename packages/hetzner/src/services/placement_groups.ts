@@ -242,8 +242,8 @@ export const createPlacementGroup: API.OperationMethod<
   CreatePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreatePlacementGroupRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreatePlacementGroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePlacementGroupRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreatePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -257,8 +257,8 @@ export const deletePlacementGroup: API.OperationMethod<
   DeletePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeletePlacementGroupRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeletePlacementGroupResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeletePlacementGroupRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeletePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const getPlacementGroup: API.OperationMethod<
   GetPlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPlacementGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetPlacementGroupResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPlacementGroupRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetPlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   ListPlacementGroupsResponsePlacementGroupsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<ListPlacementGroupsRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListPlacementGroupsResponse>,
+    input: __S(33, __c4, 1) as any as S.Schema<ListPlacementGroupsRequest>,
+    output: __S(38, __c4, 6) as any as S.Schema<ListPlacementGroupsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const updatePlacementGroup: API.OperationMethod<
   UpdatePlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdatePlacementGroupRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdatePlacementGroupResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdatePlacementGroupRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdatePlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -324,33 +324,29 @@ export const updatePlacementGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
           type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/placement_groups", code: 200 })),
       ).annotate({
         identifier: "CreatePlacementGroupRequest",
       });
-    case 2:
-      return S.Array(S.Number);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.String,
           created: S.String,
-          servers: __S(2, __c0, 2),
+          servers: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "CreatePlacementGroupResponsePlacementGroup",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -359,9 +355,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePlacementGroupResponseActionResourcesItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -370,7 +366,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePlacementGroupResponseActionError",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -379,79 +375,29 @@ function __c0(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(5, __c0, 5),
-          error: S.NullOr(__S(6, __c0, 6)),
+          resources: __S(3, __c0, 3),
+          error: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "CreatePlacementGroupResponseAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          placement_group: __S(1, __c0, 1),
+          action: S.optional(S.NullOr(__S(5, __c0, 5))),
+        }),
+      ).annotate({
+        identifier: "CreatePlacementGroupResponse",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          placement_group: __S(3, __c0, 3),
-          action: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }),
-      ).annotate({
-        identifier: "CreatePlacementGroupResponse",
-      });
+      return S.Record(S.String, S.String);
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/placement_groups/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeletePlacementGroupRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePlacementGroupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/placement_groups/{id}", code: 200 })),
-      ).annotate({ identifier: "GetPlacementGroupRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          labels: __S(0, __c0, 0),
-          type: S.String,
-          created: S.String,
-          servers: __S(2, __c0, 2),
-        }),
-      ).annotate({
-        identifier: "GetPlacementGroupResponsePlacementGroup",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          placement_group: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "GetPlacementGroupResponse",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sort: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          label_selector: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/placement_groups", code: 200 })),
-      ).annotate({
-        identifier: "ListPlacementGroupsRequest",
-      });
+      return S.Array(S.Number);
   }
 }
 function __c2(j: number): any {
@@ -459,19 +405,81 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/placement_groups/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeletePlacementGroupRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePlacementGroupResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/placement_groups/{id}", code: 200 })),
+      ).annotate({ identifier: "GetPlacementGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.String,
           created: S.String,
-          servers: __S(2, __c0, 2),
+          servers: __S(9, __c1, 1),
+        }),
+      ).annotate({
+        identifier: "GetPlacementGroupResponsePlacementGroup",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          placement_group: __S(25, __c3, 1),
+        }),
+      ).annotate({
+        identifier: "GetPlacementGroupResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          label_selector: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/placement_groups", code: 200 })),
+      ).annotate({
+        identifier: "ListPlacementGroupsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          labels: __S(8, __c1, 0),
+          type: S.String,
+          created: S.String,
+          servers: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponsePlacementGroupsItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -484,57 +492,60 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListPlacementGroupsResponseMetaPagination",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(18, __c2, 2),
+          pagination: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponseMeta",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          placement_groups: __S(17, __c2, 1),
-          meta: __S(19, __c2, 3),
+          placement_groups: __S(35, __c4, 3),
+          meta: __S(37, __c4, 5),
         }),
       ).annotate({
         identifier: "ListPlacementGroupsResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/placement_groups/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdatePlacementGroupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.String,
           created: S.String,
-          servers: __S(2, __c0, 2),
+          servers: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "UpdatePlacementGroupResponsePlacementGroup",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          placement_group: __S(22, __c2, 6),
+          placement_group: __S(41, __c5, 1),
         }),
       ).annotate({
         identifier: "UpdatePlacementGroupResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

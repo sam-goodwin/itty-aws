@@ -730,8 +730,8 @@ export const associateAccounts: API.OperationMethod<
   AssociateAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AssociateAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AssociateAccountsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateAccountsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<AssociateAccountsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -771,8 +771,8 @@ export const createAutomationRule: API.OperationMethod<
   CreateAutomationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateAutomationRuleRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateAutomationRuleResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateAutomationRuleRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateAutomationRuleResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -812,8 +812,8 @@ export const deleteAutomationRule: API.OperationMethod<
   DeleteAutomationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteAutomationRuleRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteAutomationRuleResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteAutomationRuleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteAutomationRuleResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -854,8 +854,8 @@ export const disassociateAccounts: API.OperationMethod<
   DisassociateAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DisassociateAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DisassociateAccountsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DisassociateAccountsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisassociateAccountsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -892,8 +892,8 @@ export const getAutomationEvent: API.OperationMethod<
   GetAutomationEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAutomationEventRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetAutomationEventResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetAutomationEventRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetAutomationEventResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -928,8 +928,8 @@ export const getAutomationRule: API.OperationMethod<
   GetAutomationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAutomationRuleRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetAutomationRuleResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetAutomationRuleRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetAutomationRuleResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -964,8 +964,8 @@ export const getEnrollmentConfiguration: API.OperationMethod<
   GetEnrollmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetEnrollmentConfigurationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetEnrollmentConfigurationResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetEnrollmentConfigurationRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetEnrollmentConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1003,8 +1003,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListAccountsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListAccountsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<ListAccountsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1045,8 +1045,8 @@ export const listAutomationEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AutomationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListAutomationEventsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListAutomationEventsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAutomationEventsRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListAutomationEventsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1087,8 +1087,8 @@ export const listAutomationEventSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AutomationEventStep
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListAutomationEventStepsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListAutomationEventStepsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListAutomationEventStepsRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListAutomationEventStepsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1129,8 +1129,8 @@ export const listAutomationEventSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AutomationEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListAutomationEventSummariesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListAutomationEventSummariesResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListAutomationEventSummariesRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListAutomationEventSummariesResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1170,8 +1170,8 @@ export const listAutomationRulePreview: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PreviewResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListAutomationRulePreviewRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListAutomationRulePreviewResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListAutomationRulePreviewRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListAutomationRulePreviewResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1211,8 +1211,8 @@ export const listAutomationRulePreviewSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PreviewResultSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListAutomationRulePreviewSummariesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListAutomationRulePreviewSummariesResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListAutomationRulePreviewSummariesRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<ListAutomationRulePreviewSummariesResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1252,8 +1252,8 @@ export const listAutomationRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AutomationRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListAutomationRulesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListAutomationRulesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListAutomationRulesRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListAutomationRulesResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1295,8 +1295,8 @@ export const listRecommendedActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendedAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListRecommendedActionsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListRecommendedActionsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListRecommendedActionsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListRecommendedActionsResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1338,8 +1338,8 @@ export const listRecommendedActionSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendedActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListRecommendedActionSummariesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListRecommendedActionSummariesResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListRecommendedActionSummariesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<ListRecommendedActionSummariesResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1379,8 +1379,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1419,8 +1419,8 @@ export const rollbackAutomationEvent: API.OperationMethod<
   RollbackAutomationEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<RollbackAutomationEventRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RollbackAutomationEventResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<RollbackAutomationEventRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<RollbackAutomationEventResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1462,8 +1462,8 @@ export const startAutomationEvent: API.OperationMethod<
   StartAutomationEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<StartAutomationEventRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<StartAutomationEventResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<StartAutomationEventRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<StartAutomationEventResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1503,8 +1503,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1543,8 +1543,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1583,8 +1583,8 @@ export const updateAutomationRule: API.OperationMethod<
   UpdateAutomationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<UpdateAutomationRuleRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdateAutomationRuleResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateAutomationRuleRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<UpdateAutomationRuleResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1624,8 +1624,8 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
   UpdateEnrollmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UpdateEnrollmentConfigurationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateEnrollmentConfigurationResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<UpdateEnrollmentConfigurationRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<UpdateEnrollmentConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ForbiddenException,
@@ -1648,94 +1648,31 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          accountIds: __S(0, __c0, 0),
+          accountIds: __S(8, __c1, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AssociateAccountsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ accountIds: S.optional(__S(0, __c0, 0)), errors: S.optional(__S(0, __c0, 0)) }),
-      ).annotate({
-        identifier: "AssociateAccountsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ruleApplyOrder: S.optional(S.String),
-          accountIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "OrganizationConfiguration",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          comparison: S.optional(S.String),
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "StringCriteriaCondition" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.Number);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ comparison: S.optional(S.String), values: S.optional(__S(7, __c0, 7)) }),
-      ).annotate({ identifier: "IntegerCriteriaCondition" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          comparison: S.optional(S.String),
-          key: S.optional(S.String),
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ResourceTagsCriteriaCondition",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(__S(6, __c0, 6)),
-          resourceArn: S.optional(__S(6, __c0, 6)),
-          ebsVolumeType: S.optional(__S(6, __c0, 6)),
-          ebsVolumeSizeInGib: S.optional(__S(9, __c1, 1)),
-          estimatedMonthlySavings: S.optional(__S(9, __c1, 1)),
-          resourceTag: S.optional(__S(11, __c1, 3)),
-          lookBackPeriodInDays: S.optional(__S(9, __c1, 1)),
-          restartNeeded: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Criteria" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleExpression: S.optional(S.String),
-          scheduleExpressionTimezone: S.optional(S.String),
-          executionWindowInMinutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Schedule" });
-    case 6:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accountIds: S.optional(__S(8, __c1, 0)), errors: S.optional(__S(8, __c1, 0)) }),
+      ).annotate({
+        identifier: "AssociateAccountsResponse",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1743,13 +1680,13 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           ruleType: S.String,
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: __S(4, __c0, 4),
-          criteria: S.optional(__S(12, __c1, 4)),
-          schedule: __S(13, __c1, 5),
+          recommendedActionTypes: __S(40, __c5, 0),
+          criteria: S.optional(__S(55, __c6, 7)),
+          schedule: __S(57, __c7, 1),
           status: S.String,
-          tags: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(33, __c4, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1764,19 +1701,106 @@ function __c2(j: number): any {
           description: S.optional(S.String),
           ruleType: S.optional(S.String),
           ruleRevision: S.optional(S.Number),
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: S.optional(__S(4, __c0, 4)),
-          criteria: S.optional(__S(12, __c1, 4)),
-          schedule: S.optional(__S(13, __c1, 5)),
+          recommendedActionTypes: S.optional(__S(40, __c5, 0)),
+          criteria: S.optional(__S(55, __c6, 7)),
+          schedule: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(33, __c4, 1)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "CreateAutomationRuleResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comparison: S.optional(S.String),
+          values: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "StringCriteriaCondition" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(S.Number);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ comparison: S.optional(S.String), values: S.optional(__S(50, __c6, 2)) }),
+      ).annotate({ identifier: "IntegerCriteriaCondition" });
+    case 4:
+      return S.Array(__S(51, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          comparison: S.optional(S.String),
+          key: S.optional(S.String),
+          values: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "ResourceTagsCriteriaCondition",
+      });
+    case 6:
+      return S.Array(__S(53, __c6, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(__S(49, __c6, 1)),
+          resourceArn: S.optional(__S(49, __c6, 1)),
+          ebsVolumeType: S.optional(__S(49, __c6, 1)),
+          ebsVolumeSizeInGib: S.optional(__S(52, __c6, 4)),
+          estimatedMonthlySavings: S.optional(__S(52, __c6, 4)),
+          resourceTag: S.optional(__S(54, __c6, 6)),
+          lookBackPeriodInDays: S.optional(__S(52, __c6, 4)),
+          restartNeeded: S.optional(__S(49, __c6, 1)),
+        }),
+      ).annotate({ identifier: "Criteria" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleApplyOrder: S.optional(S.String),
+          accountIds: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "OrganizationConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleExpression: S.optional(S.String),
+          scheduleExpressionTimezone: S.optional(S.String),
+          executionWindowInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Schedule" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ruleArn: S.String,
@@ -1786,20 +1810,32 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAutomationRuleRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAutomationRuleResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: __S(0, __c0, 0),
+          accountIds: __S(8, __c1, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DisassociateAccountsRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ eventId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1807,16 +1843,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAutomationEventRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.String,
-          beforeDiscountSavings: S.Number,
-          afterDiscountSavings: S.Number,
-          savingsEstimationMode: S.String,
-        }),
-      ).annotate({ identifier: "EstimatedMonthlySavings" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
@@ -1833,14 +1860,27 @@ function __c2(j: number): any {
           resourceType: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          estimatedMonthlySavings: S.optional(__S(22, __c2, 6)),
+          estimatedMonthlySavings: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({
         identifier: "GetAutomationEventResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.String,
+          beforeDiscountSavings: S.Number,
+          afterDiscountSavings: S.Number,
+          savingsEstimationMode: S.String,
+        }),
+      ).annotate({ identifier: "EstimatedMonthlySavings" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1858,20 +1898,24 @@ function __c3(j: number): any {
           ruleType: S.optional(S.String),
           ruleRevision: S.optional(S.Number),
           accountId: S.optional(S.String),
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: S.optional(__S(4, __c0, 4)),
-          criteria: S.optional(__S(12, __c1, 4)),
-          schedule: S.optional(__S(13, __c1, 5)),
+          recommendedActionTypes: S.optional(__S(40, __c5, 0)),
+          criteria: S.optional(__S(55, __c6, 7)),
+          schedule: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(33, __c4, 1)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "GetAutomationRuleResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1879,7 +1923,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEnrollmentConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1890,13 +1934,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEnrollmentConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
@@ -1906,26 +1954,20 @@ function __c3(j: number): any {
           lastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "AccountInfo" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ accounts: __S(30, __c3, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ accounts: __S(122, __c15, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAccountsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, values: __S(0, __c0, 0) })).annotate({
-        identifier: "AutomationEventFilter",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(33, __c4, 1)),
+          filters: S.optional(__S(137, __c17, 1)),
           startTimeInclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTimeExclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           maxResults: S.optional(S.Number),
@@ -1934,7 +1976,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAutomationEventsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
@@ -1951,21 +1993,35 @@ function __c4(j: number): any {
           resourceType: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          estimatedMonthlySavings: S.optional(__S(22, __c2, 6)),
+          estimatedMonthlySavings: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "AutomationEvent" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          automationEvents: S.optional(__S(36, __c4, 4)),
+          automationEvents: S.optional(__S(130, __c16, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutomationEventsResponse",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, values: __S(8, __c1, 0) })).annotate({
+        identifier: "AutomationEventFilter",
+      });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventId: S.String,
@@ -1975,7 +2031,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAutomationEventStepsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
@@ -1985,28 +2041,28 @@ function __c4(j: number): any {
           resourceId: S.optional(S.String),
           startTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          estimatedMonthlySavings: S.optional(__S(22, __c2, 6)),
+          estimatedMonthlySavings: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "AutomationEventStep" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          automationEventSteps: S.optional(__S(40, __c5, 0)),
+          automationEventSteps: S.optional(__S(146, __c18, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutomationEventStepsResponse",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(33, __c4, 1)),
+          filters: S.optional(__S(137, __c17, 1)),
           startDateInclusive: S.optional(S.String),
           endDateExclusive: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -2015,35 +2071,35 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAutomationEventSummariesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTimeInclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTimeExclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TimePeriod" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           automationEventCount: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(__S(22, __c2, 6)),
+          estimatedMonthlySavings: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "SummaryTotals" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          dimensions: S.optional(__S(15, __c1, 7)),
-          timePeriod: S.optional(__S(43, __c5, 3)),
-          total: S.optional(__S(44, __c5, 4)),
+          dimensions: S.optional(__S(33, __c4, 1)),
+          timePeriod: S.optional(__S(153, __c19, 1)),
+          total: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "AutomationEventSummary" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(155, __c19, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          automationEventSummaries: S.optional(__S(46, __c5, 6)),
+          automationEventSummaries: S.optional(__S(156, __c19, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2051,26 +2107,43 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ accountIds: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "OrganizationScope",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleType: S.String,
-          organizationScope: S.optional(__S(48, __c6, 0)),
-          recommendedActionTypes: __S(4, __c0, 4),
-          criteria: S.optional(__S(12, __c1, 4)),
+          organizationScope: S.optional(__S(168, __c21, 0)),
+          recommendedActionTypes: __S(40, __c5, 0),
+          criteria: S.optional(__S(55, __c6, 7)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListAutomationRulePreviewRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          previewResults: S.optional(__S(180, __c22, 4)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAutomationRulePreviewResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ accountIds: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "OrganizationScope",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2079,13 +2152,13 @@ function __c6(j: number): any {
           throughput: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EbsVolumeConfiguration" });
-    case 3:
-      return S.suspend(() => S.Struct({ configuration: S.optional(__S(50, __c6, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ configuration: S.optional(__S(176, __c22, 0)) })).annotate({
         identifier: "EbsVolume",
       });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ ebsVolume: __S(51, __c6, 3) })]);
-    case 5:
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ ebsVolume: __S(177, __c22, 1) })]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recommendedActionId: S.optional(S.String),
@@ -2097,33 +2170,27 @@ function __c6(j: number): any {
           lookBackPeriodInDays: S.optional(S.Number),
           recommendedActionType: S.optional(S.String),
           currentResourceSummary: S.optional(S.String),
-          currentResourceDetails: S.optional(__S(52, __c6, 4)),
+          currentResourceDetails: S.optional(__S(178, __c22, 2)),
           recommendedResourceSummary: S.optional(S.String),
-          recommendedResourceDetails: S.optional(__S(52, __c6, 4)),
+          recommendedResourceDetails: S.optional(__S(178, __c22, 2)),
           restartNeeded: S.optional(S.Boolean),
-          estimatedMonthlySavings: S.optional(__S(22, __c2, 6)),
-          resourceTags: S.optional(__S(15, __c1, 7)),
+          estimatedMonthlySavings: S.optional(__S(96, __c12, 0)),
+          resourceTags: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "PreviewResult" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ previewResults: S.optional(__S(54, __c6, 6)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAutomationRulePreviewResponse",
-      });
+    case 4:
+      return S.Array(__S(179, __c22, 3));
   }
 }
-function __c7(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ruleType: S.String,
-          organizationScope: S.optional(__S(48, __c6, 0)),
-          recommendedActionTypes: __S(4, __c0, 4),
-          criteria: S.optional(__S(12, __c1, 4)),
+          organizationScope: S.optional(__S(168, __c21, 0)),
+          recommendedActionTypes: __S(40, __c5, 0),
+          criteria: S.optional(__S(55, __c6, 7)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2133,36 +2200,41 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          recommendedActionCount: S.Number,
-          estimatedMonthlySavings: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "RulePreviewTotal" });
-    case 2:
-      return S.suspend(() => S.Struct({ key: S.String, total: __S(57, __c7, 1) })).annotate({
-        identifier: "PreviewResultSummary",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          previewResultSummaries: S.optional(__S(59, __c7, 3)),
+          previewResultSummaries: S.optional(__S(194, __c24, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutomationRulePreviewSummariesResponse",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ recommendedActionCount: S.Number, estimatedMonthlySavings: __S(96, __c12, 0) }),
+      ).annotate({ identifier: "RulePreviewTotal" });
+    case 1:
+      return S.suspend(() => S.Struct({ key: S.String, total: __S(192, __c24, 0) })).annotate({
+        identifier: "PreviewResultSummary",
+      });
+    case 2:
+      return S.Array(__S(193, __c24, 1));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(33, __c4, 1)),
+          filters: S.optional(__S(137, __c17, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListAutomationRulesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleArn: S.optional(S.String),
@@ -2172,69 +2244,77 @@ function __c7(j: number): any {
           ruleType: S.optional(S.String),
           ruleRevision: S.optional(S.Number),
           accountId: S.optional(S.String),
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: S.optional(__S(4, __c0, 4)),
-          schedule: S.optional(__S(13, __c1, 5)),
+          recommendedActionTypes: S.optional(__S(40, __c5, 0)),
+          schedule: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AutomationRule" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(201, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          automationRules: S.optional(__S(63, __c7, 7)),
+          automationRules: S.optional(__S(202, __c25, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutomationRulesResponse",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(33, __c4, 1)),
+          filters: S.optional(__S(137, __c17, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListRecommendedActionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          recommendedActions: S.optional(__S(54, __c6, 6)),
+          recommendedActions: S.optional(__S(180, __c22, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRecommendedActionsResponse",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(33, __c4, 1)),
+          filters: S.optional(__S(137, __c17, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListRecommendedActionSummariesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          recommendedActionSummaries: S.optional(__S(59, __c7, 3)),
+          recommendedActionSummaries: S.optional(__S(194, __c24, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRecommendedActionSummariesResponse",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2242,11 +2322,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(15, __c1, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(33, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventId: S.String,
@@ -2255,17 +2339,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RollbackAutomationEventRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ eventId: S.optional(S.String), eventStatus: S.optional(S.String) }),
       ).annotate({
         identifier: "RollbackAutomationEventResponse",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recommendedActionId: S.String,
@@ -2274,7 +2358,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StartAutomationEventRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recommendedActionId: S.optional(S.String),
@@ -2284,25 +2368,37 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StartAutomationEventResponse",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
           ruleRevision: S.Number,
-          tags: __S(15, __c1, 7),
+          tags: __S(33, __c4, 1),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
           ruleRevision: S.Number,
-          tagKeys: __S(0, __c0, 0),
+          tagKeys: __S(8, __c1, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ruleArn: S.String,
@@ -2310,18 +2406,18 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           ruleType: S.optional(S.String),
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: S.optional(__S(4, __c0, 4)),
-          criteria: S.optional(__S(12, __c1, 4)),
-          schedule: S.optional(__S(13, __c1, 5)),
+          recommendedActionTypes: S.optional(__S(40, __c5, 0)),
+          criteria: S.optional(__S(55, __c6, 7)),
+          schedule: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAutomationRuleRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleArn: S.optional(S.String),
@@ -2329,11 +2425,11 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           ruleType: S.optional(S.String),
-          organizationConfiguration: S.optional(__S(3, __c0, 3)),
+          organizationConfiguration: S.optional(__S(56, __c7, 0)),
           priority: S.optional(S.String),
-          recommendedActionTypes: S.optional(__S(4, __c0, 4)),
-          criteria: S.optional(__S(12, __c1, 4)),
-          schedule: S.optional(__S(13, __c1, 5)),
+          recommendedActionTypes: S.optional(__S(40, __c5, 0)),
+          criteria: S.optional(__S(55, __c6, 7)),
+          schedule: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2341,7 +2437,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateAutomationRuleResponse",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -2350,11 +2450,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateEnrollmentConfigurationRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -2366,7 +2462,6 @@ function __c10(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

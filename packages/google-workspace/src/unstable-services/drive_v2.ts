@@ -2303,8 +2303,8 @@ export const copyFiles: API.OperationMethod<
   CopyFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CopyFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CopyFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2323,8 +2323,8 @@ export const deleteChildren: API.OperationMethod<
   DeleteChildrenError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteChildrenRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteChildrenResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteChildrenRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteChildrenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2343,8 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteCommentsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteCommentsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeleteCommentsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2363,8 +2363,8 @@ export const deleteDrives: API.OperationMethod<
   DeleteDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteDrivesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteDrivesResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteDrivesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteDrivesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2383,8 +2383,8 @@ export const deleteFiles: API.OperationMethod<
   DeleteFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteFilesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteFilesResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DeleteFilesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2403,8 +2403,8 @@ export const deleteParents: API.OperationMethod<
   DeleteParentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteParentsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteParentsResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<DeleteParentsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteParentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const deletePermissions: API.OperationMethod<
   DeletePermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeletePermissionsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeletePermissionsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeletePermissionsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeletePermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2443,8 +2443,8 @@ export const deleteProperties: API.OperationMethod<
   DeletePropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeletePropertiesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeletePropertiesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeletePropertiesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeletePropertiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2463,8 +2463,8 @@ export const deleteReplies: API.OperationMethod<
   DeleteRepliesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteRepliesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteRepliesResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteRepliesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteRepliesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2483,8 +2483,8 @@ export const deleteRevisions: API.OperationMethod<
   DeleteRevisionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteRevisionsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteRevisionsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteRevisionsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteRevisionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2503,8 +2503,8 @@ export const deleteTeamdrives: API.OperationMethod<
   DeleteTeamdrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteTeamdrivesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteTeamdrivesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteTeamdrivesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteTeamdrivesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2523,8 +2523,8 @@ export const emptyTrashFiles: API.OperationMethod<
   EmptyTrashFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<EmptyTrashFilesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<EmptyTrashFilesResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<EmptyTrashFilesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<EmptyTrashFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2538,8 @@ export const exportFiles: API.OperationMethod<
   ExportFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ExportFilesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ExportFilesResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ExportFilesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<ExportFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2553,8 @@ export const generateCseTokenFiles: API.OperationMethod<
   GenerateCseTokenFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GenerateCseTokenFilesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GenerateCseTokenResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GenerateCseTokenFilesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GenerateCseTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2568,8 +2568,8 @@ export const generateIdsFiles: API.OperationMethod<
   GenerateIdsFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GenerateIdsFilesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GeneratedIds>,
+  input: __S(256, __c8, 0) as any as S.Schema<GenerateIdsFilesRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<GeneratedIds>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2583,8 +2583,8 @@ export const getAbout: API.OperationMethod<
   GetAboutError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetAboutRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<About>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetAboutRequest>,
+  output: __S(305, __c9, 17) as any as S.Schema<About>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2598,8 +2598,8 @@ export const getApps: API.OperationMethod<
   GetAppsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetAppsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<App>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetAppsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<App>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2613,8 +2613,8 @@ export const getChanges: API.OperationMethod<
   GetChangesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetChangesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<Change>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetChangesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<Change>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2628,8 +2628,8 @@ export const getChildren: API.OperationMethod<
   GetChildrenError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetChildrenRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ChildReference>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetChildrenRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ChildReference>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const getComments: API.OperationMethod<
   GetCommentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetCommentsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Comment>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetCommentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2658,8 +2658,8 @@ export const getDrives: API.OperationMethod<
   GetDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetDrivesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Drive>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetDrivesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2673,8 +2673,8 @@ export const getFiles: API.OperationMethod<
   GetFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2688,8 +2688,8 @@ export const getIdForEmailPermissions: API.OperationMethod<
   GetIdForEmailPermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetIdForEmailPermissionsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<PermissionId>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetIdForEmailPermissionsRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<PermissionId>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2703,8 +2703,8 @@ export const getParents: API.OperationMethod<
   GetParentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetParentsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ParentReference>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetParentsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<ParentReference>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2718,8 +2718,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetPermissionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Permission>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2733,8 +2733,8 @@ export const getProperties: API.OperationMethod<
   GetPropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetPropertiesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Property>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetPropertiesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Property>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2748,8 +2748,8 @@ export const getReplies: API.OperationMethod<
   GetRepliesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetRepliesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CommentReply>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetRepliesRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CommentReply>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2763,8 +2763,8 @@ export const getRevisions: API.OperationMethod<
   GetRevisionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetRevisionsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<Revision>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetRevisionsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Revision>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2778,8 +2778,8 @@ export const getStartPageTokenChanges: API.OperationMethod<
   GetStartPageTokenChangesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetStartPageTokenChangesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<StartPageToken>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetStartPageTokenChangesRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<StartPageToken>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2793,8 +2793,8 @@ export const getTeamdrives: API.OperationMethod<
   GetTeamdrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetTeamdrivesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<TeamDrive>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetTeamdrivesRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2808,8 @@ export const hideDrives: API.OperationMethod<
   HideDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<HideDrivesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Drive>,
+  input: __S(1056, __c33, 0) as any as S.Schema<HideDrivesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2828,8 @@ export const insertChildren: API.OperationMethod<
   InsertChildrenError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<InsertChildrenRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ChildReference>,
+  input: __S(1088, __c34, 0) as any as S.Schema<InsertChildrenRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ChildReference>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2848,8 @@ export const insertComments: API.OperationMethod<
   InsertCommentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<InsertCommentsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Comment>,
+  input: __S(1120, __c35, 0) as any as S.Schema<InsertCommentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2868,8 +2868,8 @@ export const insertDrives: API.OperationMethod<
   InsertDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<InsertDrivesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Drive>,
+  input: __S(1152, __c36, 0) as any as S.Schema<InsertDrivesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2888,8 @@ export const insertFiles: API.OperationMethod<
   InsertFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<InsertFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(1184, __c37, 0) as any as S.Schema<InsertFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2908,8 @@ export const insertParents: API.OperationMethod<
   InsertParentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<InsertParentsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ParentReference>,
+  input: __S(1216, __c38, 0) as any as S.Schema<InsertParentsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<ParentReference>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2928,8 +2928,8 @@ export const insertPermissions: API.OperationMethod<
   InsertPermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<InsertPermissionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Permission>,
+  input: __S(1632, __c51, 0) as any as S.Schema<InsertPermissionsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2948,8 +2948,8 @@ export const insertProperties: API.OperationMethod<
   InsertPropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<InsertPropertiesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Property>,
+  input: __S(1664, __c52, 0) as any as S.Schema<InsertPropertiesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Property>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2968,8 @@ export const insertReplies: API.OperationMethod<
   InsertRepliesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<InsertRepliesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CommentReply>,
+  input: __S(1696, __c53, 0) as any as S.Schema<InsertRepliesRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CommentReply>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2988,8 +2988,8 @@ export const insertTeamdrives: API.OperationMethod<
   InsertTeamdrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<InsertTeamdrivesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<TeamDrive>,
+  input: __S(1728, __c54, 0) as any as S.Schema<InsertTeamdrivesRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3003,8 +3003,8 @@ export const listApps: API.OperationMethod<
   ListAppsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListAppsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<AppList>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAppsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<AppList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3019,8 @@ export const listChanges: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Change
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListChangesRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ChangeList>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListChangesRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ChangeList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3036,8 +3036,8 @@ export const listChildren: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ChildReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListChildrenRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ChildList>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListChildrenRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ChildList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3053,8 +3053,8 @@ export const listComments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListCommentsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<CommentList>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListCommentsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<CommentList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3070,8 @@ export const listDrives: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Drive
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListDrivesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DriveList>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListDrivesRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<DriveList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3087,8 +3087,8 @@ export const listFiles: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   File
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListFilesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<FileList>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<FileList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3104,8 +3104,8 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Label
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListLabelsFilesRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<LabelList>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListLabelsFilesRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<LabelList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3120,8 +3120,8 @@ export const listParents: API.OperationMethod<
   ListParentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListParentsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ParentList>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListParentsRequest>,
+  output: __S(2049, __c64, 1) as any as S.Schema<ParentList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3136,8 +3136,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Permission
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<PermissionList>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<PermissionList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3152,8 +3152,8 @@ export const listProperties: API.OperationMethod<
   ListPropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListPropertiesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<PropertyList>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListPropertiesRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<PropertyList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3168,8 +3168,8 @@ export const listReplies: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   CommentReply
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListRepliesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CommentReplyList>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListRepliesRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<CommentReplyList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3185,8 +3185,8 @@ export const listRevisions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Revision
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListRevisionsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<RevisionList>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListRevisionsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<RevisionList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3202,8 +3202,8 @@ export const listTeamdrives: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   TeamDrive
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListTeamdrivesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<TeamDriveList>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListTeamdrivesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<TeamDriveList>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3223,8 +3223,8 @@ export const modifyLabelsFiles: API.OperationMethod<
   ModifyLabelsFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ModifyLabelsFilesRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ModifyLabelsResponse>,
+  input: __S(2245, __c70, 5) as any as S.Schema<ModifyLabelsFilesRequest>,
+  output: __S(2246, __c70, 6) as any as S.Schema<ModifyLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3243,8 +3243,8 @@ export const patchComments: API.OperationMethod<
   PatchCommentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<PatchCommentsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Comment>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PatchCommentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3258,8 +3258,8 @@ export const patchFiles: API.OperationMethod<
   PatchFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<PatchFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PatchFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3278,8 +3278,8 @@ export const patchPermissions: API.OperationMethod<
   PatchPermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<PatchPermissionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Permission>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PatchPermissionsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3298,8 +3298,8 @@ export const patchProperties: API.OperationMethod<
   PatchPropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<PatchPropertiesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Property>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchPropertiesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Property>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3318,8 +3318,8 @@ export const patchReplies: API.OperationMethod<
   PatchRepliesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<PatchRepliesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CommentReply>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchRepliesRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CommentReply>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3338,8 +3338,8 @@ export const patchRevisions: API.OperationMethod<
   PatchRevisionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PatchRevisionsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<Revision>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchRevisionsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Revision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3358,8 +3358,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<StopChannelsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StopChannelsResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<StopChannelsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3373,8 +3373,8 @@ export const touchFiles: API.OperationMethod<
   TouchFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<TouchFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(2560, __c80, 0) as any as S.Schema<TouchFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3388,8 +3388,8 @@ export const trashFiles: API.OperationMethod<
   TrashFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<TrashFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(2592, __c81, 0) as any as S.Schema<TrashFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3408,8 @@ export const unhideDrives: API.OperationMethod<
   UnhideDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<UnhideDrivesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Drive>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UnhideDrivesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3428,8 +3428,8 @@ export const untrashFiles: API.OperationMethod<
   UntrashFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<UntrashFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(2656, __c83, 0) as any as S.Schema<UntrashFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3448,8 +3448,8 @@ export const updateComments: API.OperationMethod<
   UpdateCommentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<UpdateCommentsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Comment>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateCommentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3468,8 @@ export const updateDrives: API.OperationMethod<
   UpdateDrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateDrivesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Drive>,
+  input: __S(2752, __c86, 0) as any as S.Schema<UpdateDrivesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3488,8 +3488,8 @@ export const updateFiles: API.OperationMethod<
   UpdateFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UpdateFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<File>,
+  input: __S(2784, __c87, 0) as any as S.Schema<UpdateFilesRequest>,
+  output: __S(1614, __c50, 14) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3508,8 +3508,8 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdatePermissionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Permission>,
+  input: __S(2816, __c88, 0) as any as S.Schema<UpdatePermissionsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3528,8 +3528,8 @@ export const updateProperties: API.OperationMethod<
   UpdatePropertiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<UpdatePropertiesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Property>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdatePropertiesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Property>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3548,8 +3548,8 @@ export const updateReplies: API.OperationMethod<
   UpdateRepliesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateRepliesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CommentReply>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UpdateRepliesRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CommentReply>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3568,8 +3568,8 @@ export const updateRevisions: API.OperationMethod<
   UpdateRevisionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateRevisionsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<Revision>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateRevisionsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Revision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3588,8 +3588,8 @@ export const updateTeamdrives: API.OperationMethod<
   UpdateTeamdrivesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UpdateTeamdrivesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<TeamDrive>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateTeamdrivesRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3608,8 +3608,8 @@ export const watchChanges: API.OperationMethod<
   WatchChangesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<WatchChangesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Channel>,
+  input: __S(2976, __c93, 0) as any as S.Schema<WatchChangesRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3623,8 +3623,8 @@ export const watchFiles: API.OperationMethod<
   WatchFilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<WatchFilesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Channel>,
+  input: __S(3008, __c94, 0) as any as S.Schema<WatchFilesRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3632,6 +3632,1191 @@ export const watchFiles: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissionId: S.String.pipe(T.Label()),
+          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          fileId: S.String.pipe(T.Label()),
+          enforceExpansiveAccess: S.optional(S.Boolean.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/permissions/{permissionId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePermissionsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          propertyKey: S.String.pipe(T.Label()),
+          visibility: S.optional(S.String.pipe(T.Query())),
+          fileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/properties/{propertyKey}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePropertiesRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          replyId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          fileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/comments/{commentId}/replies/{replyId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRepliesRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          revisionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/revisions/{revisionId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRevisionsRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamDriveId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "teamdrives/{teamDriveId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTeamdrivesRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          driveId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/trash",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "EmptyTrashFilesRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.String.pipe(T.Query()),
+          fileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/export",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "ExportFilesRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.optional(S.String.pipe(T.Query())),
+          parent: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/generateCseToken",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateCseTokenFilesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currentKaclsName: S.optional(S.String),
+          kind: S.optional(S.String),
+          fileId: S.optional(S.String),
+          currentKaclsId: S.optional(S.String),
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenerateCseTokenResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          space: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/generateIds",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GenerateIdsFilesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(1280, __c40, 0)),
+          space: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedIds" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startChangeId: S.optional(S.String.pipe(T.Query())),
+          includeSubscribed: S.optional(S.Boolean.pipe(T.Query())),
+          maxChangeIdCount: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "about", baseUrl: "https://www.googleapis.com/drive/v2/" }),
+        ),
+      ).annotate({ identifier: "GetAboutRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          featureName: S.optional(S.String),
+          featureRate: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AboutFeaturesItem" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          additionalRoles: S.optional(__S(1280, __c40, 0)),
+          primaryRole: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AboutAdditionalRoleInfoItemRoleSetsItem",
+      });
+    case 4:
+      return S.Array(__S(291, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          roleSets: S.optional(__S(292, __c9, 4)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AboutAdditionalRoleInfoItem",
+      });
+    case 6:
+      return S.Array(__S(293, __c9, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          backgroundImageLink: S.optional(S.String),
+          colorRgb: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AboutDriveThemesItem" });
+    case 8:
+      return S.Array(__S(295, __c9, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          targets: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "AboutImportFormatsItem" });
+    case 10:
+      return S.Array(__S(297, __c9, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          size: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AboutMaxUploadSizesItem" });
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.optional(S.String),
+          bytesUsed: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AboutQuotaBytesByServiceItem",
+      });
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          backgroundImageLink: S.optional(S.String),
+          id: S.optional(S.String),
+          colorRgb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AboutTeamDriveThemesItem" });
+    case 16:
+      return S.Array(__S(303, __c9, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          quotaBytesUsedInTrash: S.optional(S.String),
+          isCurrentAppInstalled: S.optional(S.Boolean),
+          user: S.optional(__S(1313, __c41, 1)),
+          selfLink: S.optional(S.String),
+          features: S.optional(__S(290, __c9, 2)),
+          etag: S.optional(S.String),
+          canCreateDrives: S.optional(S.Boolean),
+          additionalRoleInfo: S.optional(__S(294, __c9, 6)),
+          folderColorPalette: S.optional(__S(1280, __c40, 0)),
+          driveThemes: S.optional(__S(296, __c9, 8)),
+          quotaBytesUsed: S.optional(S.String),
+          permissionId: S.optional(S.String),
+          quotaBytesUsedAggregate: S.optional(S.String),
+          canCreateTeamDrives: S.optional(S.Boolean),
+          importFormats: S.optional(__S(298, __c9, 10)),
+          maxUploadSizes: S.optional(__S(300, __c9, 12)),
+          quotaBytesByService: S.optional(__S(302, __c9, 14)),
+          teamDriveThemes: S.optional(__S(304, __c9, 16)),
+          name: S.optional(S.String),
+          domainSharingPolicy: S.optional(S.String),
+          remainingChangeIds: S.optional(S.String),
+          quotaBytesTotal: S.optional(S.String),
+          exportFormats: S.optional(__S(298, __c9, 10)),
+          quotaType: S.optional(S.String),
+          largestChangeId: S.optional(S.String),
+          rootFolderId: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "About" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "apps/{appId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAppsRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(S.Number),
+          category: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppIconsItem" });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          productUrl: S.optional(S.String),
+          icons: S.optional(__S(353, __c11, 1)),
+          createUrl: S.optional(S.String),
+          openUrlTemplate: S.optional(S.String),
+          installed: S.optional(S.Boolean),
+          primaryFileExtensions: S.optional(__S(1280, __c40, 0)),
+          useByDefault: S.optional(S.Boolean),
+          shortDescription: S.optional(S.String),
+          hasDriveWideScope: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          secondaryMimeTypes: S.optional(__S(1280, __c40, 0)),
+          secondaryFileExtensions: S.optional(__S(1280, __c40, 0)),
+          longDescription: S.optional(S.String),
+          supportsMultiOpen: S.optional(S.Boolean),
+          authorized: S.optional(S.Boolean),
+          objectType: S.optional(S.String),
+          supportsImport: S.optional(S.Boolean),
+          createInFolderTemplate: S.optional(S.String),
+          productId: S.optional(S.String),
+          supportsOfflineCreate: S.optional(S.Boolean),
+          supportsCreate: S.optional(S.Boolean),
+          primaryMimeTypes: S.optional(__S(1280, __c40, 0)),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "App" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveId: S.optional(S.String.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          teamDriveId: S.optional(S.String.pipe(T.Query())),
+          changeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "changes/{changeId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetChangesRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.Number),
+          xCoordinate: S.optional(S.Number),
+          yCoordinate: S.optional(S.Number),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DriveBackgroundImageFile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adminManagedRestrictions: S.optional(S.Boolean),
+          copyRequiresWriterPermission: S.optional(S.Boolean),
+          sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
+          domainUsersOnly: S.optional(S.Boolean),
+          driveMembersOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DriveRestrictions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteDrive: S.optional(S.Boolean),
+          canChangeDriveMembersOnlyRestriction: S.optional(S.Boolean),
+          canChangeDomainUsersOnlyRestriction: S.optional(S.Boolean),
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: S.optional(S.Boolean),
+          canDownload: S.optional(S.Boolean),
+          canResetDriveRestrictions: S.optional(S.Boolean),
+          canChangeCopyRequiresWriterPermissionRestriction: S.optional(S.Boolean),
+          canReadRevisions: S.optional(S.Boolean),
+          canChangeDriveBackground: S.optional(S.Boolean),
+          canRenameDrive: S.optional(S.Boolean),
+          canComment: S.optional(S.Boolean),
+          canShare: S.optional(S.Boolean),
+          canManageMembers: S.optional(S.Boolean),
+          canListChildren: S.optional(S.Boolean),
+          canEdit: S.optional(S.Boolean),
+          canRename: S.optional(S.Boolean),
+          canTrashChildren: S.optional(S.Boolean),
+          canDeleteChildren: S.optional(S.Boolean),
+          canAddChildren: S.optional(S.Boolean),
+          canCopy: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DriveCapabilities" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          backgroundImageFile: S.optional(__S(416, __c13, 0)),
+          orgUnitId: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          restrictions: S.optional(__S(417, __c13, 1)),
+          name: S.optional(S.String),
+          backgroundImageLink: S.optional(S.String),
+          capabilities: S.optional(__S(418, __c13, 2)),
+          themeId: S.optional(S.String),
+          colorRgb: S.optional(S.String),
+          id: S.optional(S.String),
+          hidden: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Drive" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainUsersOnly: S.optional(S.Boolean),
+          teamMembersOnly: S.optional(S.Boolean),
+          adminManagedRestrictions: S.optional(S.Boolean),
+          copyRequiresWriterPermission: S.optional(S.Boolean),
+          sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TeamDriveRestrictions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.Number),
+          xCoordinate: S.optional(S.Number),
+          yCoordinate: S.optional(S.Number),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TeamDriveBackgroundImageFile",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canResetTeamDriveRestrictions: S.optional(S.Boolean),
+          canDeleteTeamDrive: S.optional(S.Boolean),
+          canCopy: S.optional(S.Boolean),
+          canEdit: S.optional(S.Boolean),
+          canRenameTeamDrive: S.optional(S.Boolean),
+          canChangeTeamDriveBackground: S.optional(S.Boolean),
+          canListChildren: S.optional(S.Boolean),
+          canDownload: S.optional(S.Boolean),
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: S.optional(S.Boolean),
+          canReadRevisions: S.optional(S.Boolean),
+          canDeleteChildren: S.optional(S.Boolean),
+          canRename: S.optional(S.Boolean),
+          canChangeDomainUsersOnlyRestriction: S.optional(S.Boolean),
+          canRemoveChildren: S.optional(S.Boolean),
+          canChangeTeamMembersOnlyRestriction: S.optional(S.Boolean),
+          canManageMembers: S.optional(S.Boolean),
+          canAddChildren: S.optional(S.Boolean),
+          canShare: S.optional(S.Boolean),
+          canChangeCopyRequiresWriterPermissionRestriction: S.optional(S.Boolean),
+          canComment: S.optional(S.Boolean),
+          canTrashChildren: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TeamDriveCapabilities" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          colorRgb: S.optional(S.String),
+          restrictions: S.optional(__S(448, __c14, 0)),
+          backgroundImageFile: S.optional(__S(449, __c14, 1)),
+          orgUnitId: S.optional(S.String),
+          themeId: S.optional(S.String),
+          id: S.optional(S.String),
+          backgroundImageLink: S.optional(S.String),
+          kind: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          name: S.optional(S.String),
+          capabilities: S.optional(__S(450, __c14, 2)),
+        }),
+      ).annotate({ identifier: "TeamDrive" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.optional(S.Boolean),
+          selfLink: S.optional(S.String),
+          kind: S.optional(S.String),
+          modificationDate: S.optional(S.String),
+          teamDriveId: S.optional(S.String),
+          file: S.optional(__S(1614, __c50, 14)),
+          teamDrive: S.optional(__S(451, __c14, 3)),
+          id: S.optional(S.String),
+          changeType: S.optional(S.String),
+          drive: S.optional(__S(419, __c13, 3)),
+          type: S.optional(S.String),
+          driveId: S.optional(S.String),
+          fileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Change" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          folderId: S.String.pipe(T.Label()),
+          childId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{folderId}/children/{childId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetChildrenRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          childLink: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChildReference" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commentId: S.String.pipe(T.Label()),
+          fileId: S.String.pipe(T.Label()),
+          includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/comments/{commentId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetCommentsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.optional(S.Boolean),
+          content: S.optional(S.String),
+          htmlContent: S.optional(S.String),
+          replyId: S.optional(S.String),
+          modifiedDate: S.optional(S.String),
+          verb: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          kind: S.optional(S.String),
+          author: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "CommentReply" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c19, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommentContext" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          modifiedDate: S.optional(S.String),
+          commentId: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          content: S.optional(S.String),
+          author: S.optional(__S(1313, __c41, 1)),
+          fileTitle: S.optional(S.String),
+          anchor: S.optional(S.String),
+          replies: S.optional(__S(640, __c20, 0)),
+          status: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          fileId: S.optional(S.String),
+          htmlContent: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          kind: S.optional(S.String),
+          context: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({ identifier: "Comment" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveId: S.String.pipe(T.Label()),
+          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "drives/{driveId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetDrivesRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          acknowledgeAbuse: S.optional(S.Boolean.pipe(T.Query())),
+          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
+          updateViewedDate: S.optional(S.Boolean.pipe(T.Query())),
+          revisionId: S.optional(S.String.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          includeLabels: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(S.String.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetFilesRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "permissionIds/{email}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIdForEmailPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PermissionId" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          parentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/parents/{parentId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetParentsRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          permissionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/permissions/{permissionId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetPermissionsRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          propertyKey: S.String.pipe(T.Label()),
+          visibility: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/properties/{propertyKey}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetPropertiesRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          replyId: S.String.pipe(T.Label()),
+          includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
+          commentId: S.String.pipe(T.Label()),
+          fileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/comments/{commentId}/replies/{replyId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetRepliesRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          revisionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "files/{fileId}/revisions/{revisionId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetRevisionsRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publishedLink: S.optional(S.String),
+          md5Checksum: S.optional(S.String),
+          pinned: S.optional(S.Boolean),
+          publishAuto: S.optional(S.Boolean),
+          originalFilename: S.optional(S.String),
+          lastModifyingUserName: S.optional(S.String),
+          published: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          publishedOutsideDomain: S.optional(S.Boolean),
+          exportLinks: S.optional(__S(1440, __c45, 0)),
+          selfLink: S.optional(S.String),
+          downloadUrl: S.optional(S.String),
+          kind: S.optional(S.String),
+          modifiedDate: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          fileSize: S.optional(S.String),
+          id: S.optional(S.String),
+          lastModifyingUser: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "Revision" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          driveId: S.optional(S.String.pipe(T.Query())),
+          teamDriveId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "changes/startPageToken",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStartPageTokenChangesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartPageToken" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+          teamDriveId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "teamdrives/{teamDriveId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetTeamdrivesRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "drives/{driveId}/hide",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "HideDrivesRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          folderId: S.String.pipe(T.Label()),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "files/{folderId}/children",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertChildrenRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(673, __c21, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "files/{fileId}/comments",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertCommentsRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.String.pipe(T.Query()),
+          body: S.optional(__S(419, __c13, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "drives",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertDrivesRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pinned: S.optional(S.Boolean.pipe(T.Query())),
+          timedTextLanguage: S.optional(S.String.pipe(T.Query())),
+          visibility: S.optional(S.String.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          ocrLanguage: S.optional(S.String.pipe(T.Query())),
+          timedTextTrackName: S.optional(S.String.pipe(T.Query())),
+          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          useContentAsIndexableText: S.optional(S.Boolean.pipe(T.Query())),
+          includeLabels: S.optional(S.String.pipe(T.Query())),
+          convert: S.optional(S.Boolean.pipe(T.Query())),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          ocr: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1614, __c50, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "files", baseUrl: "https://www.googleapis.com/drive/v2/" }),
+        ),
+      ).annotate({ identifier: "InsertFilesRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          fileId: S.String.pipe(T.Label()),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "files/{fileId}/parents",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertParentsRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visibility: S.optional(S.String.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+          ocr: S.optional(S.Boolean.pipe(T.Query())),
+          timedTextLanguage: S.optional(S.String.pipe(T.Query())),
+          fileId: S.String.pipe(T.Label()),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          includeLabels: S.optional(S.String.pipe(T.Query())),
+          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
+          ocrLanguage: S.optional(S.String.pipe(T.Query())),
+          timedTextTrackName: S.optional(S.String.pipe(T.Query())),
+          convert: S.optional(S.Boolean.pipe(T.Query())),
+          pinned: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1614, __c50, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "files/{fileId}/copy",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "CopyFilesRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserPicture" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isAuthenticatedUser: S.optional(S.Boolean),
+          permissionId: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+          picture: S.optional(__S(1312, __c41, 0)),
+          kind: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentLink: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          isRoot: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ParentReference" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissionType: S.optional(S.String),
+          inherited: S.optional(S.Boolean),
+          additionalRoles: S.optional(__S(1280, __c40, 0)),
+          role: S.optional(S.String),
+          inheritedFrom: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PermissionPermissionDetailsItem",
+      });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          additionalRoles: S.optional(__S(1280, __c40, 0)),
+          teamDrivePermissionType: S.optional(S.String),
+          inherited: S.optional(S.Boolean),
+          inheritedFrom: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PermissionTeamDrivePermissionDetailsItem",
+      });
+    case 3:
+      return S.Array(__S(1378, __c43, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          withLink: S.optional(S.Boolean),
+          deleted: S.optional(S.Boolean),
+          authKey: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          inheritedPermissionsDisabled: S.optional(S.Boolean),
+          selfLink: S.optional(S.String),
+          id: S.optional(S.String),
+          etag: S.optional(S.String),
+          permissionDetails: S.optional(__S(1377, __c43, 1)),
+          emailAddress: S.optional(S.String),
+          domain: S.optional(S.String),
+          additionalRoles: S.optional(__S(1280, __c40, 0)),
+          view: S.optional(S.String),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+          photoLink: S.optional(S.String),
+          value: S.optional(S.String),
+          teamDrivePermissionDetails: S.optional(__S(1379, __c43, 3)),
+          type: S.optional(S.String),
+          pendingOwner: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Permission" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visibility: S.optional(S.String),
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Property" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1313, __c41, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          selection: S.optional(__S(1280, __c40, 0)),
+          text: S.optional(__S(1280, __c40, 0)),
+          kind: S.optional(S.String),
+          user: S.optional(__S(1472, __c46, 0)),
+          dateString: S.optional(__S(1280, __c40, 0)),
+          integer: S.optional(__S(1280, __c40, 0)),
+          id: S.optional(S.String),
+          valueType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LabelField" });
+    case 2:
+      return S.Record(S.String, __S(1473, __c46, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          revisionId: S.optional(S.String),
+          kind: S.optional(S.String),
+          fields: S.optional(__S(1474, __c46, 2)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Label" });
+    case 4:
+      return S.Array(__S(1475, __c46, 3));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1344, __c42, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1380, __c43, 4));
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1408, __c44, 0));
+  }
+}
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3649,23 +4834,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           encryptionState: S.optional(S.String),
-          decryptionMetadata: S.optional(__S(0, __c0, 0)),
+          decryptionMetadata: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ClientEncryptionDetails" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.optional(S.String),
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Property" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           longitude: S.optional(S.Number),
@@ -3675,7 +4847,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FileImageMediaMetadataLocation",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           isoSpeed: S.optional(S.Number),
@@ -3697,152 +4869,37 @@ function __c0(j: number): any {
           width: S.optional(S.Number),
           colorSpace: S.optional(S.String),
           sensor: S.optional(S.String),
-          location: S.optional(__S(4, __c0, 4)),
+          location: S.optional(__S(1602, __c50, 2)),
           rotation: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileImageMediaMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserPicture" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isAuthenticatedUser: S.optional(S.Boolean),
-          permissionId: S.optional(S.String),
-          emailAddress: S.optional(S.String),
-          picture: S.optional(__S(6, __c0, 6)),
-          kind: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selection: S.optional(__S(9, __c1, 1)),
-          text: S.optional(__S(9, __c1, 1)),
-          kind: S.optional(S.String),
-          user: S.optional(__S(8, __c1, 0)),
-          dateString: S.optional(__S(9, __c1, 1)),
-          integer: S.optional(__S(9, __c1, 1)),
-          id: S.optional(S.String),
-          valueType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LabelField" });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          revisionId: S.optional(S.String),
-          kind: S.optional(S.String),
-          fields: S.optional(__S(11, __c1, 3)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(13, __c1, 5)),
+          labels: S.optional(__S(1476, __c46, 4)),
         }),
       ).annotate({ identifier: "FileLabelInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissionType: S.optional(S.String),
-          inherited: S.optional(S.Boolean),
-          additionalRoles: S.optional(__S(9, __c1, 1)),
-          role: S.optional(S.String),
-          inheritedFrom: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PermissionPermissionDetailsItem",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          additionalRoles: S.optional(__S(9, __c1, 1)),
-          teamDrivePermissionType: S.optional(S.String),
-          inherited: S.optional(S.Boolean),
-          inheritedFrom: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PermissionTeamDrivePermissionDetailsItem",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          withLink: S.optional(S.Boolean),
-          deleted: S.optional(S.Boolean),
-          authKey: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          inheritedPermissionsDisabled: S.optional(S.Boolean),
-          selfLink: S.optional(S.String),
-          id: S.optional(S.String),
-          etag: S.optional(S.String),
-          permissionDetails: S.optional(__S(16, __c2, 0)),
-          emailAddress: S.optional(S.String),
-          domain: S.optional(S.String),
-          additionalRoles: S.optional(__S(9, __c1, 1)),
-          view: S.optional(S.String),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-          photoLink: S.optional(S.String),
-          value: S.optional(S.String),
-          teamDrivePermissionDetails: S.optional(__S(18, __c2, 2)),
-          type: S.optional(S.String),
-          pendingOwner: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Permission" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           systemRestricted: S.optional(S.Boolean),
           restrictionDate: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          restrictingUser: S.optional(__S(7, __c0, 7)),
+          restrictingUser: S.optional(__S(1313, __c41, 1)),
           ownerRestricted: S.optional(S.Boolean),
           type: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentRestriction" });
     case 6:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(1605, __c50, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileIndexableText" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           modified: S.optional(S.Boolean),
@@ -3853,7 +4910,7 @@ function __c3(j: number): any {
           trashed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FileLabels" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           canMoveItemOutOfTeamDrive: S.optional(S.Boolean),
@@ -3901,26 +4958,14 @@ function __c3(j: number): any {
           canModifyContentRestriction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FileCapabilities" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           securityUpdateEligible: S.optional(S.Boolean),
           securityUpdateEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FileLinkShareMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parentLink: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          isRoot: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ParentReference" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           durationMillis: S.optional(S.String),
@@ -3928,9 +4973,7 @@ function __c3(j: number): any {
           width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileVideoMediaMetadata" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           targetResourceKey: S.optional(S.String),
@@ -3938,25 +4981,21 @@ function __c3(j: number): any {
           targetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShortcutDetails" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileThumbnail" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           webContentLink: S.optional(S.String),
           teamDriveId: S.optional(S.String),
           fullFileExtension: S.optional(S.String),
           writersCanShare: S.optional(S.Boolean),
-          clientEncryptionDetails: S.optional(__S(1, __c0, 1)),
+          clientEncryptionDetails: S.optional(__S(1601, __c50, 1)),
           inheritedPermissionsDisabled: S.optional(S.Boolean),
           driveId: S.optional(S.String),
           downloadUrl: S.optional(S.String),
@@ -3965,11 +5004,11 @@ function __c4(j: number): any {
           modifiedDate: S.optional(S.String),
           hasThumbnail: S.optional(S.Boolean),
           defaultOpenWithLink: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
-          imageMediaMetadata: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(1568, __c49, 0)),
+          imageMediaMetadata: S.optional(__S(1603, __c50, 3)),
           thumbnailLink: S.optional(S.String),
           shared: S.optional(S.Boolean),
-          owners: S.optional(__S(8, __c1, 0)),
+          owners: S.optional(__S(1472, __c46, 0)),
           id: S.optional(S.String),
           title: S.optional(S.String),
           hasAugmentedPermissions: S.optional(S.Boolean),
@@ -3977,1026 +5016,65 @@ function __c4(j: number): any {
           fileSize: S.optional(S.String),
           iconLink: S.optional(S.String),
           copyable: S.optional(S.Boolean),
-          lastModifyingUser: S.optional(__S(7, __c0, 7)),
-          labelInfo: S.optional(__S(14, __c1, 6)),
+          lastModifyingUser: S.optional(__S(1313, __c41, 1)),
+          labelInfo: S.optional(__S(1604, __c50, 4)),
           shareable: S.optional(S.Boolean),
           description: S.optional(S.String),
           canReadRevisions: S.optional(S.Boolean),
           copyRequiresWriterPermission: S.optional(S.Boolean),
-          ownerNames: S.optional(__S(9, __c1, 1)),
-          permissions: S.optional(__S(20, __c2, 4)),
+          ownerNames: S.optional(__S(1280, __c40, 0)),
+          permissions: S.optional(__S(1536, __c48, 0)),
           ownedByMe: S.optional(S.Boolean),
           originalFilename: S.optional(S.String),
           etag: S.optional(S.String),
           fileExtension: S.optional(S.String),
-          contentRestrictions: S.optional(__S(22, __c2, 6)),
+          contentRestrictions: S.optional(__S(1606, __c50, 6)),
           mimeType: S.optional(S.String),
           sha1Checksum: S.optional(S.String),
-          spaces: S.optional(__S(9, __c1, 1)),
-          indexableText: S.optional(__S(23, __c2, 7)),
+          spaces: S.optional(__S(1280, __c40, 0)),
+          indexableText: S.optional(__S(1607, __c50, 7)),
           editable: S.optional(S.Boolean),
-          userPermission: S.optional(__S(19, __c2, 3)),
+          userPermission: S.optional(__S(1380, __c43, 4)),
           selfLink: S.optional(S.String),
-          labels: S.optional(__S(24, __c3, 0)),
+          labels: S.optional(__S(1608, __c50, 8)),
           headRevisionId: S.optional(S.String),
           resourceKey: S.optional(S.String),
           markedViewedByMeDate: S.optional(S.String),
           md5Checksum: S.optional(S.String),
           lastModifyingUserName: S.optional(S.String),
           lastViewedByMeDate: S.optional(S.String),
-          capabilities: S.optional(__S(25, __c3, 1)),
-          trashingUser: S.optional(__S(7, __c0, 7)),
+          capabilities: S.optional(__S(1609, __c50, 9)),
+          trashingUser: S.optional(__S(1313, __c41, 1)),
           kind: S.optional(S.String),
           createdDate: S.optional(S.String),
-          linkShareMetadata: S.optional(__S(26, __c3, 2)),
+          linkShareMetadata: S.optional(__S(1610, __c50, 10)),
           sha256Checksum: S.optional(S.String),
-          parents: S.optional(__S(28, __c3, 4)),
-          videoMediaMetadata: S.optional(__S(29, __c3, 5)),
+          parents: S.optional(__S(1504, __c47, 0)),
+          videoMediaMetadata: S.optional(__S(1611, __c50, 11)),
           alternateLink: S.optional(S.String),
           webViewLink: S.optional(S.String),
-          openWithLinks: S.optional(__S(30, __c3, 6)),
-          shortcutDetails: S.optional(__S(31, __c3, 7)),
-          exportLinks: S.optional(__S(30, __c3, 6)),
-          sharingUser: S.optional(__S(7, __c0, 7)),
+          openWithLinks: S.optional(__S(1440, __c45, 0)),
+          shortcutDetails: S.optional(__S(1612, __c50, 12)),
+          exportLinks: S.optional(__S(1440, __c45, 0)),
+          sharingUser: S.optional(__S(1313, __c41, 1)),
           trashedDate: S.optional(S.String),
           explicitlyTrashed: S.optional(S.Boolean),
-          permissionIds: S.optional(__S(9, __c1, 1)),
+          permissionIds: S.optional(__S(1280, __c40, 0)),
           quotaBytesUsed: S.optional(S.String),
           canComment: S.optional(S.Boolean),
           folderColorRgb: S.optional(S.String),
           embedLink: S.optional(S.String),
           appDataContents: S.optional(S.Boolean),
-          thumbnail: S.optional(__S(32, __c4, 0)),
+          thumbnail: S.optional(__S(1613, __c50, 13)),
           version: S.optional(S.String),
           sharedWithMeDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.optional(S.String.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          ocr: S.optional(S.Boolean.pipe(T.Query())),
-          timedTextLanguage: S.optional(S.String.pipe(T.Query())),
-          fileId: S.String.pipe(T.Label()),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          includeLabels: S.optional(S.String.pipe(T.Query())),
-          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
-          ocrLanguage: S.optional(S.String.pipe(T.Query())),
-          timedTextTrackName: S.optional(S.String.pipe(T.Query())),
-          convert: S.optional(S.Boolean.pipe(T.Query())),
-          pinned: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "files/{fileId}/copy",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "CopyFilesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          folderId: S.String.pipe(T.Label()),
-          childId: S.String.pipe(T.Label()),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{folderId}/children/{childId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteChildrenRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteChildrenResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/comments/{commentId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCommentsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          driveId: S.String.pipe(T.Label()),
-          allowItemDeletion: S.optional(S.Boolean.pipe(T.Query())),
-          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "drives/{driveId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDrivesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFilesRequest" });
   }
 }
-function __c5(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parentId: S.String.pipe(T.Label()),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          fileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/parents/{parentId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteParentsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissionId: S.String.pipe(T.Label()),
-          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          fileId: S.String.pipe(T.Label()),
-          enforceExpansiveAccess: S.optional(S.Boolean.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/permissions/{permissionId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePermissionsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          propertyKey: S.String.pipe(T.Label()),
-          visibility: S.optional(S.String.pipe(T.Query())),
-          fileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/properties/{propertyKey}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePropertiesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          replyId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          fileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/comments/{commentId}/replies/{replyId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRepliesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          revisionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/{fileId}/revisions/{revisionId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRevisionsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamDriveId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "teamdrives/{teamDriveId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTeamdrivesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          driveId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "files/trash",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "EmptyTrashFilesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.String.pipe(T.Query()),
-          fileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/export",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "ExportFilesRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.optional(S.String.pipe(T.Query())),
-          parent: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/generateCseToken",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateCseTokenFilesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentKaclsName: S.optional(S.String),
-          kind: S.optional(S.String),
-          fileId: S.optional(S.String),
-          currentKaclsId: S.optional(S.String),
-          jwt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenerateCseTokenResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          space: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/generateIds",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GenerateIdsFilesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(9, __c1, 1)),
-          space: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedIds" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startChangeId: S.optional(S.String.pipe(T.Query())),
-          includeSubscribed: S.optional(S.Boolean.pipe(T.Query())),
-          maxChangeIdCount: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "about", baseUrl: "https://www.googleapis.com/drive/v2/" }),
-        ),
-      ).annotate({ identifier: "GetAboutRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          featureName: S.optional(S.String),
-          featureRate: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AboutFeaturesItem" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          additionalRoles: S.optional(__S(9, __c1, 1)),
-          primaryRole: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AboutAdditionalRoleInfoItemRoleSetsItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          roleSets: S.optional(__S(56, __c7, 0)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AboutAdditionalRoleInfoItem",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          backgroundImageLink: S.optional(S.String),
-          colorRgb: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AboutDriveThemesItem" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          targets: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AboutImportFormatsItem" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          size: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AboutMaxUploadSizesItem" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.optional(S.String),
-          bytesUsed: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AboutQuotaBytesByServiceItem",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          backgroundImageLink: S.optional(S.String),
-          id: S.optional(S.String),
-          colorRgb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AboutTeamDriveThemesItem" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          quotaBytesUsedInTrash: S.optional(S.String),
-          isCurrentAppInstalled: S.optional(S.Boolean),
-          user: S.optional(__S(7, __c0, 7)),
-          selfLink: S.optional(S.String),
-          features: S.optional(__S(54, __c6, 6)),
-          etag: S.optional(S.String),
-          canCreateDrives: S.optional(S.Boolean),
-          additionalRoleInfo: S.optional(__S(58, __c7, 2)),
-          folderColorPalette: S.optional(__S(9, __c1, 1)),
-          driveThemes: S.optional(__S(60, __c7, 4)),
-          quotaBytesUsed: S.optional(S.String),
-          permissionId: S.optional(S.String),
-          quotaBytesUsedAggregate: S.optional(S.String),
-          canCreateTeamDrives: S.optional(S.Boolean),
-          importFormats: S.optional(__S(62, __c7, 6)),
-          maxUploadSizes: S.optional(__S(64, __c8, 0)),
-          quotaBytesByService: S.optional(__S(66, __c8, 2)),
-          teamDriveThemes: S.optional(__S(68, __c8, 4)),
-          name: S.optional(S.String),
-          domainSharingPolicy: S.optional(S.String),
-          remainingChangeIds: S.optional(S.String),
-          quotaBytesTotal: S.optional(S.String),
-          exportFormats: S.optional(__S(62, __c7, 6)),
-          quotaType: S.optional(S.String),
-          largestChangeId: S.optional(S.String),
-          rootFolderId: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "About" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "apps/{appId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAppsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(S.Number),
-          category: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppIconsItem" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          productUrl: S.optional(S.String),
-          icons: S.optional(__S(72, __c9, 0)),
-          createUrl: S.optional(S.String),
-          openUrlTemplate: S.optional(S.String),
-          installed: S.optional(S.Boolean),
-          primaryFileExtensions: S.optional(__S(9, __c1, 1)),
-          useByDefault: S.optional(S.Boolean),
-          shortDescription: S.optional(S.String),
-          hasDriveWideScope: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          secondaryMimeTypes: S.optional(__S(9, __c1, 1)),
-          secondaryFileExtensions: S.optional(__S(9, __c1, 1)),
-          longDescription: S.optional(S.String),
-          supportsMultiOpen: S.optional(S.Boolean),
-          authorized: S.optional(S.Boolean),
-          objectType: S.optional(S.String),
-          supportsImport: S.optional(S.Boolean),
-          createInFolderTemplate: S.optional(S.String),
-          productId: S.optional(S.String),
-          supportsOfflineCreate: S.optional(S.Boolean),
-          supportsCreate: S.optional(S.Boolean),
-          primaryMimeTypes: S.optional(__S(9, __c1, 1)),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "App" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          driveId: S.optional(S.String.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          teamDriveId: S.optional(S.String.pipe(T.Query())),
-          changeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "changes/{changeId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetChangesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domainUsersOnly: S.optional(S.Boolean),
-          teamMembersOnly: S.optional(S.Boolean),
-          adminManagedRestrictions: S.optional(S.Boolean),
-          copyRequiresWriterPermission: S.optional(S.Boolean),
-          sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TeamDriveRestrictions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.Number),
-          xCoordinate: S.optional(S.Number),
-          yCoordinate: S.optional(S.Number),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TeamDriveBackgroundImageFile",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canResetTeamDriveRestrictions: S.optional(S.Boolean),
-          canDeleteTeamDrive: S.optional(S.Boolean),
-          canCopy: S.optional(S.Boolean),
-          canEdit: S.optional(S.Boolean),
-          canRenameTeamDrive: S.optional(S.Boolean),
-          canChangeTeamDriveBackground: S.optional(S.Boolean),
-          canListChildren: S.optional(S.Boolean),
-          canDownload: S.optional(S.Boolean),
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: S.optional(S.Boolean),
-          canReadRevisions: S.optional(S.Boolean),
-          canDeleteChildren: S.optional(S.Boolean),
-          canRename: S.optional(S.Boolean),
-          canChangeDomainUsersOnlyRestriction: S.optional(S.Boolean),
-          canRemoveChildren: S.optional(S.Boolean),
-          canChangeTeamMembersOnlyRestriction: S.optional(S.Boolean),
-          canManageMembers: S.optional(S.Boolean),
-          canAddChildren: S.optional(S.Boolean),
-          canShare: S.optional(S.Boolean),
-          canChangeCopyRequiresWriterPermissionRestriction: S.optional(S.Boolean),
-          canComment: S.optional(S.Boolean),
-          canTrashChildren: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TeamDriveCapabilities" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          colorRgb: S.optional(S.String),
-          restrictions: S.optional(__S(75, __c9, 3)),
-          backgroundImageFile: S.optional(__S(76, __c9, 4)),
-          orgUnitId: S.optional(S.String),
-          themeId: S.optional(S.String),
-          id: S.optional(S.String),
-          backgroundImageLink: S.optional(S.String),
-          kind: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          name: S.optional(S.String),
-          capabilities: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({ identifier: "TeamDrive" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.Number),
-          xCoordinate: S.optional(S.Number),
-          yCoordinate: S.optional(S.Number),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DriveBackgroundImageFile" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          adminManagedRestrictions: S.optional(S.Boolean),
-          copyRequiresWriterPermission: S.optional(S.Boolean),
-          sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
-          domainUsersOnly: S.optional(S.Boolean),
-          driveMembersOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DriveRestrictions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteDrive: S.optional(S.Boolean),
-          canChangeDriveMembersOnlyRestriction: S.optional(S.Boolean),
-          canChangeDomainUsersOnlyRestriction: S.optional(S.Boolean),
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: S.optional(S.Boolean),
-          canDownload: S.optional(S.Boolean),
-          canResetDriveRestrictions: S.optional(S.Boolean),
-          canChangeCopyRequiresWriterPermissionRestriction: S.optional(S.Boolean),
-          canReadRevisions: S.optional(S.Boolean),
-          canChangeDriveBackground: S.optional(S.Boolean),
-          canRenameDrive: S.optional(S.Boolean),
-          canComment: S.optional(S.Boolean),
-          canShare: S.optional(S.Boolean),
-          canManageMembers: S.optional(S.Boolean),
-          canListChildren: S.optional(S.Boolean),
-          canEdit: S.optional(S.Boolean),
-          canRename: S.optional(S.Boolean),
-          canTrashChildren: S.optional(S.Boolean),
-          canDeleteChildren: S.optional(S.Boolean),
-          canAddChildren: S.optional(S.Boolean),
-          canCopy: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DriveCapabilities" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          backgroundImageFile: S.optional(__S(79, __c9, 7)),
-          orgUnitId: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          restrictions: S.optional(__S(80, __c10, 0)),
-          name: S.optional(S.String),
-          backgroundImageLink: S.optional(S.String),
-          capabilities: S.optional(__S(81, __c10, 1)),
-          themeId: S.optional(S.String),
-          colorRgb: S.optional(S.String),
-          id: S.optional(S.String),
-          hidden: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Drive" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(S.Boolean),
-          selfLink: S.optional(S.String),
-          kind: S.optional(S.String),
-          modificationDate: S.optional(S.String),
-          teamDriveId: S.optional(S.String),
-          file: S.optional(__S(33, __c4, 1)),
-          teamDrive: S.optional(__S(78, __c9, 6)),
-          id: S.optional(S.String),
-          changeType: S.optional(S.String),
-          drive: S.optional(__S(82, __c10, 2)),
-          type: S.optional(S.String),
-          driveId: S.optional(S.String),
-          fileId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Change" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          folderId: S.String.pipe(T.Label()),
-          childId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{folderId}/children/{childId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetChildrenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          childLink: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChildReference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          commentId: S.String.pipe(T.Label()),
-          fileId: S.String.pipe(T.Label()),
-          includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/comments/{commentId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetCommentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(S.Boolean),
-          content: S.optional(S.String),
-          htmlContent: S.optional(S.String),
-          replyId: S.optional(S.String),
-          modifiedDate: S.optional(S.String),
-          verb: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          kind: S.optional(S.String),
-          author: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CommentReply" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommentContext" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          modifiedDate: S.optional(S.String),
-          commentId: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          content: S.optional(S.String),
-          author: S.optional(__S(7, __c0, 7)),
-          fileTitle: S.optional(S.String),
-          anchor: S.optional(S.String),
-          replies: S.optional(__S(88, __c11, 0)),
-          status: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          fileId: S.optional(S.String),
-          htmlContent: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          kind: S.optional(S.String),
-          context: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          driveId: S.String.pipe(T.Label()),
-          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "drives/{driveId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetDrivesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          acknowledgeAbuse: S.optional(S.Boolean.pipe(T.Query())),
-          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
-          updateViewedDate: S.optional(S.Boolean.pipe(T.Query())),
-          revisionId: S.optional(S.String.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          includeLabels: S.optional(S.String.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetFilesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "permissionIds/{email}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIdForEmailPermissionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PermissionId" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          parentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/parents/{parentId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetParentsRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          permissionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/permissions/{permissionId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetPermissionsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          propertyKey: S.String.pipe(T.Label()),
-          visibility: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/properties/{propertyKey}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetPropertiesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          replyId: S.String.pipe(T.Label()),
-          includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          commentId: S.String.pipe(T.Label()),
-          fileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/comments/{commentId}/replies/{replyId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetRepliesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          revisionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "files/{fileId}/revisions/{revisionId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetRevisionsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          publishedLink: S.optional(S.String),
-          md5Checksum: S.optional(S.String),
-          pinned: S.optional(S.Boolean),
-          publishAuto: S.optional(S.Boolean),
-          originalFilename: S.optional(S.String),
-          lastModifyingUserName: S.optional(S.String),
-          published: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          publishedOutsideDomain: S.optional(S.Boolean),
-          exportLinks: S.optional(__S(30, __c3, 6)),
-          selfLink: S.optional(S.String),
-          downloadUrl: S.optional(S.String),
-          kind: S.optional(S.String),
-          modifiedDate: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          fileSize: S.optional(S.String),
-          id: S.optional(S.String),
-          lastModifyingUser: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Revision" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          driveId: S.optional(S.String.pipe(T.Query())),
-          teamDriveId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "changes/startPageToken",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStartPageTokenChangesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StartPageToken" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          teamDriveId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "teamdrives/{teamDriveId}",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetTeamdrivesRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          driveId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "drives/{driveId}/hide",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "HideDrivesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          folderId: S.String.pipe(T.Label()),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "files/{folderId}/children",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertChildrenRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "files/{fileId}/comments",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertCommentsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.String.pipe(T.Query()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "drives",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertDrivesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pinned: S.optional(S.Boolean.pipe(T.Query())),
-          timedTextLanguage: S.optional(S.String.pipe(T.Query())),
-          visibility: S.optional(S.String.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          ocrLanguage: S.optional(S.String.pipe(T.Query())),
-          timedTextTrackName: S.optional(S.String.pipe(T.Query())),
-          includePermissionsForView: S.optional(S.String.pipe(T.Query())),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          useContentAsIndexableText: S.optional(S.Boolean.pipe(T.Query())),
-          includeLabels: S.optional(S.String.pipe(T.Query())),
-          convert: S.optional(S.Boolean.pipe(T.Query())),
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          ocr: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "files", baseUrl: "https://www.googleapis.com/drive/v2/" }),
-        ),
-      ).annotate({ identifier: "InsertFilesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          fileId: S.String.pipe(T.Label()),
-          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "files/{fileId}/parents",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertParentsRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5008,7 +5086,7 @@ function __c13(j: number): any {
           supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
           supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
           enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1380, __c43, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5017,11 +5095,15 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertPermissionsRequest" });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1408, __c44, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5032,14 +5114,14 @@ function __c13(j: number): any {
       ).annotate({ identifier: "InsertPropertiesRequest" });
   }
 }
-function __c14(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5048,11 +5130,15 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertRepliesRequest" });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.String.pipe(T.Query()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(451, __c14, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5061,7 +5147,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertTeamdrivesRequest" });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -5071,19 +5161,23 @@ function __c14(j: number): any {
           T.Http({ method: "GET", uri: "apps", baseUrl: "https://www.googleapis.com/drive/v2/" }),
         ),
       ).annotate({ identifier: "ListAppsRequest" });
-    case 3:
-      return S.Array(__S(73, __c9, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(354, __c11, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          defaultAppIds: S.optional(__S(9, __c1, 1)),
+          defaultAppIds: S.optional(__S(1280, __c40, 0)),
           selfLink: S.optional(S.String),
-          items: S.optional(__S(115, __c14, 3)),
+          items: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({ identifier: "AppList" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spaces: S.optional(S.String.pipe(T.Query())),
@@ -5109,14 +5203,14 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListChangesRequest" });
-    case 6:
-      return S.Array(__S(83, __c10, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           newStartPageToken: S.optional(S.String),
           selfLink: S.optional(S.String),
-          items: __S(118, __c14, 6),
+          items: __S(1793, __c56, 1),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
           largestChangeId: S.optional(S.String),
@@ -5126,7 +5220,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ChangeList" });
   }
 }
-function __c15(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5145,11 +5239,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListChildrenRequest" });
     case 1:
-      return S.Array(__S(85, __c10, 5));
+      return S.Array(__S(544, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(121, __c15, 1),
+          items: __S(1825, __c57, 1),
           selfLink: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
@@ -5157,7 +5251,11 @@ function __c15(j: number): any {
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChildList" });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5173,19 +5271,23 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCommentsRequest" });
-    case 4:
-      return S.Array(__S(90, __c11, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(673, __c21, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(124, __c15, 4),
+          items: __S(1857, __c58, 1),
           nextLink: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommentList" });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5196,21 +5298,21 @@ function __c15(j: number): any {
           T.Http({ method: "GET", uri: "drives", baseUrl: "https://www.googleapis.com/drive/v2/" }),
         ),
       ).annotate({ identifier: "ListDrivesRequest" });
-    case 7:
-      return S.Array(__S(82, __c10, 2));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(419, __c13, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(127, __c15, 7),
+          items: __S(1889, __c59, 1),
         }),
       ).annotate({ identifier: "DriveList" });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           corpora: S.optional(S.String.pipe(T.Query())),
@@ -5233,9 +5335,9 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "files", baseUrl: "https://www.googleapis.com/drive/v2/" }),
         ),
       ).annotate({ identifier: "ListFilesRequest" });
+    case 1:
+      return S.Array(__S(1614, __c50, 14));
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
@@ -5243,11 +5345,41 @@ function __c16(j: number): any {
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           nextLink: S.optional(S.String),
-          items: __S(130, __c16, 2),
+          items: __S(1921, __c60, 1),
           incompleteSearch: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FileList" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          folderId: S.String.pipe(T.Label()),
+          childId: S.String.pipe(T.Label()),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{folderId}/children/{childId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteChildrenRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteChildrenResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5261,15 +5393,19 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLabelsFilesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(13, __c1, 5),
+          items: __S(1476, __c46, 4),
         }),
       ).annotate({ identifier: "LabelList" });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5281,10 +5417,10 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListParentsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(28, __c3, 4)),
+          items: S.optional(__S(1504, __c47, 0)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           selfLink: S.optional(S.String),
@@ -5292,7 +5428,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ParentList" });
   }
 }
-function __c17(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5319,10 +5455,14 @@ function __c17(j: number): any {
           selfLink: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          items: __S(20, __c2, 4),
+          items: __S(1536, __c48, 0),
         }),
       ).annotate({ identifier: "PermissionList" });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5334,16 +5474,20 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPropertiesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(3, __c0, 3)),
+          items: S.optional(__S(1568, __c49, 0)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyList" });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           commentId: S.String.pipe(T.Label()),
@@ -5359,17 +5503,21 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRepliesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           selfLink: S.optional(S.String),
-          items: __S(88, __c11, 0),
+          items: __S(640, __c20, 0),
           nextPageToken: S.optional(S.String),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommentReplyList" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5383,23 +5531,23 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRevisionsRequest" });
-    case 7:
-      return S.Array(__S(100, __c12, 4));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(143, __c17, 7),
+          items: __S(2177, __c68, 1),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           selfLink: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevisionList" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -5414,58 +5562,58 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTeamdrivesRequest" });
+    case 1:
+      return S.Array(__S(451, __c14, 3));
     case 2:
-      return S.Array(__S(78, __c9, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          items: __S(146, __c18, 2),
+          items: __S(2209, __c69, 1),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TeamDriveList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          setTextValues: S.optional(__S(9, __c1, 1)),
-          unsetValues: S.optional(S.Boolean),
-          fieldId: S.optional(S.String),
-          setIntegerValues: S.optional(__S(9, __c1, 1)),
-          kind: S.optional(S.String),
-          setDateValues: S.optional(__S(9, __c1, 1)),
-          setUserValues: S.optional(__S(9, __c1, 1)),
-          setSelectionValues: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LabelFieldModification" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          removeLabel: S.optional(S.Boolean),
-          fieldModifications: S.optional(__S(149, __c18, 5)),
-          kind: S.optional(S.String),
-          labelId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LabelModification" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
   }
 }
-function __c19(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labelModifications: S.optional(__S(151, __c18, 7)),
+          setTextValues: S.optional(__S(1280, __c40, 0)),
+          unsetValues: S.optional(S.Boolean),
+          fieldId: S.optional(S.String),
+          setIntegerValues: S.optional(__S(1280, __c40, 0)),
+          kind: S.optional(S.String),
+          setDateValues: S.optional(__S(1280, __c40, 0)),
+          setUserValues: S.optional(__S(1280, __c40, 0)),
+          setSelectionValues: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "LabelFieldModification" });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          removeLabel: S.optional(S.Boolean),
+          fieldModifications: S.optional(__S(2241, __c70, 1)),
+          kind: S.optional(S.String),
+          labelId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LabelModification" });
+    case 3:
+      return S.Array(__S(2242, __c70, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          labelModifications: S.optional(__S(2243, __c70, 3)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyLabelsRequest" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2244, __c70, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5474,19 +5622,23 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ModifyLabelsFilesRequest" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          modifiedLabels: S.optional(__S(13, __c1, 5)),
+          modifiedLabels: S.optional(__S(1476, __c46, 4)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyLabelsResponse" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(673, __c21, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5495,7 +5647,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchCommentsRequest" });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timedTextLanguage: S.optional(S.String.pipe(T.Query())),
@@ -5517,7 +5673,7 @@ function __c19(j: number): any {
           addParents: S.optional(S.String.pipe(T.Query())),
           newRevision: S.optional(S.Boolean.pipe(T.Query())),
           includeLabels: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1614, __c50, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5526,7 +5682,28 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchFilesRequest" });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/comments/{commentId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCommentsRequest" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5537,7 +5714,7 @@ function __c19(j: number): any {
           enforceExpansiveAccess: S.optional(S.Boolean.pipe(T.Query())),
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
           supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1380, __c43, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5546,13 +5723,17 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchPermissionsRequest" });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           propertyKey: S.String.pipe(T.Label()),
           visibility: S.optional(S.String.pipe(T.Query())),
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1408, __c44, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5561,13 +5742,17 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchPropertiesRequest" });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           replyId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5578,14 +5763,14 @@ function __c19(j: number): any {
       ).annotate({ identifier: "PatchRepliesRequest" });
   }
 }
-function __c20(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5594,11 +5779,31 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchRevisionsRequest" });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "channels/stop",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "StopChannelsRequest" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
-          params: S.optional(__S(30, __c3, 6)),
+          params: S.optional(__S(1440, __c45, 0)),
           kind: S.optional(S.String),
           expiration: S.optional(S.String),
           id: S.optional(S.String),
@@ -5609,19 +5814,11 @@ function __c20(j: number): any {
           token: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "channels/stop",
-            baseUrl: "https://www.googleapis.com/drive/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "StopChannelsRequest" });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includePermissionsForView: S.optional(S.String.pipe(T.Query())),
@@ -5637,7 +5834,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TouchFilesRequest" });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
@@ -5653,7 +5854,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TrashFilesRequest" });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           driveId: S.String.pipe(T.Label()),
@@ -5665,7 +5870,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnhideDrivesRequest" });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includePermissionsForView: S.optional(S.String.pipe(T.Query())),
@@ -5681,12 +5890,16 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UntrashFilesRequest" });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(673, __c21, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5697,14 +5910,32 @@ function __c20(j: number): any {
       ).annotate({ identifier: "UpdateCommentsRequest" });
   }
 }
-function __c21(j: number): any {
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveId: S.String.pipe(T.Label()),
+          allowItemDeletion: S.optional(S.Boolean.pipe(T.Query())),
+          useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "drives/{driveId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDrivesRequest" });
+  }
+}
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           driveId: S.String.pipe(T.Label()),
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(419, __c13, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5713,7 +5944,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDrivesRequest" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ocrLanguage: S.optional(S.String.pipe(T.Query())),
@@ -5735,7 +5970,7 @@ function __c21(j: number): any {
           supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
           removeParents: S.optional(S.String.pipe(T.Query())),
           enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1614, __c50, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5744,7 +5979,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFilesRequest" });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           transferOwnership: S.optional(S.Boolean.pipe(T.Query())),
@@ -5755,7 +5994,7 @@ function __c21(j: number): any {
           permissionId: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
           supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1380, __c43, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5764,13 +6003,17 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePermissionsRequest" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           visibility: S.optional(S.String.pipe(T.Query())),
           propertyKey: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1408, __c44, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5779,13 +6022,17 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePropertiesRequest" });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
           replyId: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5794,12 +6041,16 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRepliesRequest" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           revisionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5808,12 +6059,16 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRevisionsRequest" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
           teamDriveId: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(451, __c14, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5822,7 +6077,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTeamdrivesRequest" });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5840,7 +6099,7 @@ function __c21(j: number): any {
           includeSubscribed: S.optional(S.Boolean.pipe(T.Query())),
           includePermissionsForView: S.optional(S.String.pipe(T.Query())),
           startChangeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5851,7 +6110,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "WatchChangesRequest" });
   }
 }
-function __c22(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5865,7 +6124,7 @@ function __c22(j: number): any {
           fileId: S.String.pipe(T.Label()),
           supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5876,7 +6135,43 @@ function __c22(j: number): any {
       ).annotate({ identifier: "WatchFilesRequest" });
   }
 }
-
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String.pipe(T.Label()),
+          supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFilesRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentId: S.String.pipe(T.Label()),
+          enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
+          fileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "files/{fileId}/parents/{parentId}",
+            baseUrl: "https://www.googleapis.com/drive/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteParentsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

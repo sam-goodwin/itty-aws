@@ -210,8 +210,8 @@ export const addDistributionsPermissions: API.OperationMethod<
   AddDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddDistributionsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddDistributionsPermissionsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddDistributionsPermissionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddDistributionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const completeError: API.OperationMethod<
   CompleteErrorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CompleteErrorRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CompleteErrorResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CompleteErrorRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<CompleteErrorResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const completeSuccess: API.OperationMethod<
   CompleteSuccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CompleteSuccessRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CompleteSuccessResponse>,
+  input: __S(17, __c4, 1) as any as S.Schema<CompleteSuccessRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<CompleteSuccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const exportWorkflowsStepsResponse: API.OperationMethod<
   ExportWorkflowsStepsResponseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ExportWorkflowsStepsResponseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ExportWorkflowsStepsResponseResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ExportWorkflowsStepsResponseRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ExportWorkflowsStepsResponseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -270,8 +270,8 @@ export const listDistributionsPermissions: API.OperationMethod<
   ListDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListDistributionsPermissionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListDistributionsPermissionsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListDistributionsPermissionsRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<ListDistributionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const listWorkflowsSteps: API.OperationMethod<
   ListWorkflowsStepsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListWorkflowsStepsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListWorkflowsStepsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListWorkflowsStepsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListWorkflowsStepsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const removeDistributionsPermissions: API.OperationMethod<
   RemoveDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<RemoveDistributionsPermissionsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RemoveDistributionsPermissionsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<RemoveDistributionsPermissionsRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<RemoveDistributionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const setDistributionsPermissions: API.OperationMethod<
   SetDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SetDistributionsPermissionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SetDistributionsPermissionsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<SetDistributionsPermissionsRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<SetDistributionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -326,21 +326,35 @@ export const setDistributionsPermissions: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
-          user_ids: S.optional(__S(0, __c0, 0)),
+          user_ids: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.add", code: 200 }),
         ),
       ).annotate({
         identifier: "AddDistributionsPermissionsRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          permission_type: S.String,
+          users: S.optional(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "AddDistributionsPermissionsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
@@ -350,45 +364,47 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddDistributionsPermissionsResponseUsersItem",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          permission_type: S.String,
-          users: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AddDistributionsPermissionsResponse",
-      });
-    case 5:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           function_execution_id: S.String,
           error: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/functions.completeError", code: 200 })),
       ).annotate({ identifier: "CompleteErrorRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "CompleteErrorResponse" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           function_execution_id: S.String,
-          outputs: __S(7, __c0, 7),
+          outputs: __S(16, __c4, 0),
         }).pipe(T.Http({ method: "POST", uri: "/functions.completeSuccess", code: 200 })),
       ).annotate({ identifier: "CompleteSuccessRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflow_id: S.optional(S.String),
@@ -401,7 +417,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ExportWorkflowsStepsResponseRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -409,7 +425,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ExportWorkflowsStepsResponseResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           function_id: S.optional(S.String),
@@ -421,19 +441,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListDistributionsPermissionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           permission_type: S.String,
-          users: S.optional(__S(3, __c0, 3)),
-          team_ids: S.optional(__S(0, __c0, 0)),
-          org_ids: S.optional(__S(0, __c0, 0)),
+          users: S.optional(__S(6, __c1, 2)),
+          team_ids: S.optional(__S(4, __c1, 0)),
+          org_ids: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({
         identifier: "ListDistributionsPermissionsResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflow_id: S.optional(S.String),
@@ -444,20 +468,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListWorkflowsStepsRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          steps_versions: __S(14, __c1, 6),
+          steps_versions: __S(29, __c7, 1),
         }),
       ).annotate({
         identifier: "ListWorkflowsStepsResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -465,7 +489,7 @@ function __c2(j: number): any {
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
-          user_ids: S.optional(__S(0, __c0, 0)),
+          user_ids: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.remove", code: 200 }),
         ),
@@ -477,42 +501,45 @@ function __c2(j: number): any {
         S.Struct({
           ok: S.Boolean,
           permission_type: S.String,
-          users: S.optional(__S(3, __c0, 3)),
+          users: S.optional(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "RemoveDistributionsPermissionsResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
           permission_type: S.optional(S.String),
-          user_ids: S.optional(__S(0, __c0, 0)),
-          team_ids: S.optional(__S(0, __c0, 0)),
-          org_ids: S.optional(__S(0, __c0, 0)),
+          user_ids: S.optional(__S(4, __c1, 0)),
+          team_ids: S.optional(__S(4, __c1, 0)),
+          org_ids: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.set", code: 200 }),
         ),
       ).annotate({
         identifier: "SetDistributionsPermissionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           permission_type: S.String,
-          users: S.optional(__S(3, __c0, 3)),
-          team_ids: S.optional(__S(0, __c0, 0)),
-          org_ids: S.optional(__S(0, __c0, 0)),
+          users: S.optional(__S(6, __c1, 2)),
+          team_ids: S.optional(__S(4, __c1, 0)),
+          org_ids: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({
         identifier: "SetDistributionsPermissionsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

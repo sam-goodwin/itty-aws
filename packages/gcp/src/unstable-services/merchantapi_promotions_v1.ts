@@ -398,7 +398,7 @@ export const getAccountsPromotions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetAccountsPromotionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Promotion>,
+  output: __S(28, __c1, 12) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const insertAccountsPromotions: API.OperationMethod<
   InsertAccountsPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<InsertAccountsPromotionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Promotion>,
+  input: __S(33, __c2, 1) as any as S.Schema<InsertAccountsPromotionsRequest>,
+  output: __S(28, __c1, 12) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPromotionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListAccountsPromotionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListPromotionsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListAccountsPromotionsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<ListPromotionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -458,62 +458,66 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountsPromotionsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amountMicros: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Price" });
-    case 4:
+    case 3:
       return S.Array(S.String);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          storeCodesInclusion: S.optional(__S(1, __c0, 1)),
-          itemIdExclusion: S.optional(__S(1, __c0, 1)),
+          storeCodesInclusion: S.optional(__S(16, __c1, 0)),
+          itemIdExclusion: S.optional(__S(16, __c1, 0)),
           limitQuantity: S.optional(S.String),
           audience: S.optional(S.String),
           maxPercentOff: S.optional(S.String),
           productApplicability: S.optional(S.String),
-          promotionDisplayTimePeriod: S.optional(__S(2, __c0, 2)),
-          minimumPurchaseAmount: S.optional(__S(3, __c0, 3)),
-          itemGroupIdExclusion: S.optional(__S(1, __c0, 1)),
-          productTypeExclusion: S.optional(__S(1, __c0, 1)),
+          promotionDisplayTimePeriod: S.optional(__S(17, __c1, 1)),
+          minimumPurchaseAmount: S.optional(__S(18, __c1, 2)),
+          itemGroupIdExclusion: S.optional(__S(16, __c1, 0)),
+          productTypeExclusion: S.optional(__S(16, __c1, 0)),
           customRedemptionRestriction: S.optional(S.String),
           freeGiftDescription: S.optional(S.String),
-          storeCodesExclusion: S.optional(__S(1, __c0, 1)),
+          storeCodesExclusion: S.optional(__S(16, __c1, 0)),
           longTitle: S.optional(S.String),
           minimumPurchaseQuantity: S.optional(S.String),
           freeGiftItemId: S.optional(S.String),
-          maxDiscountAmount: S.optional(__S(3, __c0, 3)),
-          regionIdInclusion: S.optional(__S(1, __c0, 1)),
-          googleProductCategories: S.optional(__S(1, __c0, 1)),
-          minMoneyOffAmount: S.optional(__S(3, __c0, 3)),
-          freeGiftValue: S.optional(__S(3, __c0, 3)),
-          limitValue: S.optional(__S(3, __c0, 3)),
-          brandInclusion: S.optional(__S(1, __c0, 1)),
+          maxDiscountAmount: S.optional(__S(18, __c1, 2)),
+          regionIdInclusion: S.optional(__S(16, __c1, 0)),
+          googleProductCategories: S.optional(__S(16, __c1, 0)),
+          minMoneyOffAmount: S.optional(__S(18, __c1, 2)),
+          freeGiftValue: S.optional(__S(18, __c1, 2)),
+          limitValue: S.optional(__S(18, __c1, 2)),
+          brandInclusion: S.optional(__S(16, __c1, 0)),
           offerType: S.optional(S.String),
           redemptionRestriction: S.optional(S.String),
           minPercentOff: S.optional(S.String),
-          itemGroupIdInclusion: S.optional(__S(1, __c0, 1)),
+          itemGroupIdInclusion: S.optional(__S(16, __c1, 0)),
           storeApplicability: S.optional(S.String),
-          itemIdInclusion: S.optional(__S(1, __c0, 1)),
-          promotionEffectiveTimePeriod: S.optional(__S(2, __c0, 2)),
-          maxMoneyOffAmount: S.optional(__S(3, __c0, 3)),
-          productTypeInclusion: S.optional(__S(1, __c0, 1)),
-          brandExclusion: S.optional(__S(1, __c0, 1)),
-          promotionDestinations: S.optional(__S(4, __c0, 4)),
-          moneyOffAmount: S.optional(__S(3, __c0, 3)),
+          itemIdInclusion: S.optional(__S(16, __c1, 0)),
+          promotionEffectiveTimePeriod: S.optional(__S(17, __c1, 1)),
+          maxMoneyOffAmount: S.optional(__S(18, __c1, 2)),
+          productTypeInclusion: S.optional(__S(16, __c1, 0)),
+          brandExclusion: S.optional(__S(16, __c1, 0)),
+          promotionDestinations: S.optional(__S(19, __c1, 3)),
+          moneyOffAmount: S.optional(__S(18, __c1, 2)),
           promotionUrl: S.optional(S.String),
           eventApplicability: S.optional(S.String),
           genericRedemptionCode: S.optional(S.String),
@@ -522,35 +526,31 @@ function __c0(j: number): any {
           getThisQuantityDiscounted: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attributes" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(S.suspend(() => __S(7, __c0, 7))),
+          groupValues: S.optional(S.suspend(() => __S(22, __c1, 6))),
           value: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAttribute" });
+    case 6:
+      return S.Array(__S(21, __c1, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           reportingContext: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationStatus" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(23, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           detail: S.optional(S.String),
           description: S.optional(S.String),
-          applicableCountries: S.optional(__S(1, __c0, 1)),
+          applicableCountries: S.optional(__S(16, __c1, 0)),
           severity: S.optional(S.String),
           code: S.optional(S.String),
           attribute: S.optional(S.String),
@@ -559,44 +559,48 @@ function __c1(j: number): any {
           documentation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemLevelIssue" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(25, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           lastUpdateDate: S.optional(S.String),
-          destinationStatuses: S.optional(__S(9, __c1, 1)),
-          itemLevelIssues: S.optional(__S(11, __c1, 3)),
+          destinationStatuses: S.optional(__S(24, __c1, 8)),
+          itemLevelIssues: S.optional(__S(26, __c1, 10)),
           creationDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromotionStatus" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(5, __c0, 5)),
+          attributes: S.optional(__S(20, __c1, 4)),
           dataSource: S.optional(S.String),
           name: S.optional(S.String),
           promotionId: S.optional(S.String),
           targetCountry: S.optional(S.String),
-          customAttributes: S.optional(__S(7, __c0, 7)),
-          promotionStatus: S.optional(__S(12, __c1, 4)),
-          redemptionChannel: S.optional(__S(4, __c0, 4)),
+          customAttributes: S.optional(__S(22, __c1, 6)),
+          promotionStatus: S.optional(__S(27, __c1, 11)),
+          redemptionChannel: S.optional(__S(19, __c1, 3)),
           versionNumber: S.optional(S.String),
           contentLanguage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Promotion" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          promotion: S.optional(__S(13, __c1, 5)),
+          promotion: S.optional(__S(28, __c1, 12)),
           dataSource: S.optional(S.String),
         }),
       ).annotate({ identifier: "InsertPromotionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -609,7 +613,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -628,17 +632,16 @@ function __c2(j: number): any {
         identifier: "ListAccountsPromotionsRequest",
       });
     case 1:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(28, __c1, 12));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          promotions: S.optional(__S(17, __c2, 1)),
+          promotions: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "ListPromotionsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

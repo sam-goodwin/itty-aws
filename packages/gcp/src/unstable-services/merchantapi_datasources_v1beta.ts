@@ -351,8 +351,8 @@ export const createAccountsDataSources: API.OperationMethod<
   CreateAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const deleteAccountsDataSources: API.OperationMethod<
   DeleteAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAccountsDataSourcesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteAccountsDataSourcesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -391,8 +391,8 @@ export const fetchAccountsDataSources: API.OperationMethod<
   FetchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<FetchAccountsDataSourcesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(80, __c5, 0) as any as S.Schema<FetchAccountsDataSourcesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -406,8 +406,8 @@ export const getAccountsDataSources: API.OperationMethod<
   GetAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -421,8 +421,8 @@ export const getAccountsDataSourcesFileUploads: API.OperationMethod<
   GetAccountsDataSourcesFileUploadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<FileUpload>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<FileUpload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -437,8 +437,8 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAccountsDataSourcesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListDataSourcesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListAccountsDataSourcesRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<ListDataSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -458,8 +458,8 @@ export const patchAccountsDataSources: API.OperationMethod<
   PatchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -471,51 +471,19 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentLanguage: S.optional(S.String),
-          targetCountry: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PromotionDataSource" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "MerchantReviewDataSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contentLanguage: S.optional(S.String),
-          feedLabel: S.optional(S.String),
-        }),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(62, __c3, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "datasources/v1beta/{+name}",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "RegionalInventoryDataSource",
+        identifier: "PatchAccountsDataSourcesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          self: S.optional(S.Boolean),
-          supplementalDataSourceName: S.optional(S.String),
-          primaryDataSourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSourceReference" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          feedLabel: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-          referencingPrimaryDataSources: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "SupplementalProductDataSource",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          takeFromDataSources: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DefaultRule" });
   }
 }
 function __c1(j: number): any {
@@ -523,87 +491,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Destination" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          countries: S.optional(__S(6, __c0, 6)),
-          feedLabel: S.optional(S.String),
-          defaultRule: S.optional(__S(7, __c0, 7)),
-          contentLanguage: S.optional(S.String),
-          destinations: S.optional(__S(9, __c1, 1)),
-          channel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrimaryProductDataSource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          feedLabel: S.optional(S.String),
-          contentLanguage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalInventoryDataSource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String),
-          dayOfMonth: S.optional(S.Number),
-          frequency: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          fetchUri: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          timeOfDay: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "FetchSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fileInputType: S.optional(S.String),
-          fileName: S.optional(S.String),
-          fetchSettings: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "FileInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          promotionDataSource: S.optional(__S(0, __c0, 0)),
-          dataSourceId: S.optional(S.String),
-          merchantReviewDataSource: S.optional(__S(1, __c0, 1)),
-          input: S.optional(S.String),
-          regionalInventoryDataSource: S.optional(__S(2, __c0, 2)),
-          supplementalProductDataSource: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          primaryProductDataSource: S.optional(__S(10, __c1, 2)),
-          localInventoryDataSource: S.optional(__S(11, __c1, 3)),
-          fileInput: S.optional(__S(14, __c1, 6)),
-          productReviewDataSource: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "DataSource" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(62, __c3, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -614,7 +503,142 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAccountsDataSourcesRequest",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "MerchantReviewDataSource",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentLanguage: S.optional(S.String),
+          targetCountry: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PromotionDataSource" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contentLanguage: S.optional(S.String),
+          feedLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegionalInventoryDataSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          self: S.optional(S.Boolean),
+          supplementalDataSourceName: S.optional(S.String),
+          primaryDataSourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSourceReference" });
+    case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          feedLabel: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+          referencingPrimaryDataSources: S.optional(__S(51, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "SupplementalProductDataSource",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          takeFromDataSources: S.optional(__S(51, __c3, 3)),
+        }),
+      ).annotate({ identifier: "DefaultRule" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Destination" });
+    case 8:
+      return S.Array(__S(55, __c3, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          countries: S.optional(__S(53, __c3, 5)),
+          feedLabel: S.optional(S.String),
+          defaultRule: S.optional(__S(54, __c3, 6)),
+          contentLanguage: S.optional(S.String),
+          destinations: S.optional(__S(56, __c3, 8)),
+          channel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrimaryProductDataSource" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          feedLabel: S.optional(S.String),
+          contentLanguage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalInventoryDataSource" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String),
+          dayOfMonth: S.optional(S.Number),
+          frequency: S.optional(S.String),
+          dayOfWeek: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          fetchUri: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          timeOfDay: S.optional(__S(59, __c3, 11)),
+        }),
+      ).annotate({ identifier: "FetchSettings" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          fileInputType: S.optional(S.String),
+          fileName: S.optional(S.String),
+          fetchSettings: S.optional(__S(60, __c3, 12)),
+        }),
+      ).annotate({ identifier: "FileInput" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          promotionDataSource: S.optional(__S(48, __c3, 0)),
+          dataSourceId: S.optional(S.String),
+          merchantReviewDataSource: S.optional(__S(32, __c2, 0)),
+          input: S.optional(S.String),
+          regionalInventoryDataSource: S.optional(__S(49, __c3, 1)),
+          supplementalProductDataSource: S.optional(__S(52, __c3, 4)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          primaryProductDataSource: S.optional(__S(57, __c3, 9)),
+          localInventoryDataSource: S.optional(__S(58, __c3, 10)),
+          fileInput: S.optional(__S(61, __c3, 13)),
+          productReviewDataSource: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DataSource" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -628,11 +652,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsDataSourcesRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -643,7 +671,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FetchAccountsDataSourcesRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -657,7 +689,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAccountsDataSourcesRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -671,7 +707,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAccountsDataSourcesFileUploadsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -682,15 +718,15 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Issue" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           itemsCreated: S.optional(S.String),
           uploadTime: S.optional(S.String),
           dataSourceId: S.optional(S.String),
-          issues: S.optional(__S(22, __c2, 6)),
+          issues: S.optional(__S(114, __c7, 2)),
           name: S.optional(S.String),
           itemsTotal: S.optional(S.String),
           processingState: S.optional(S.String),
@@ -699,7 +735,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "FileUpload" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -718,33 +754,16 @@ function __c3(j: number): any {
         identifier: "ListAccountsDataSourcesRequest",
       });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(62, __c3, 14));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataSources: S.optional(__S(25, __c3, 1)),
+          dataSources: S.optional(__S(129, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "datasources/v1beta/{+name}",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountsDataSourcesRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

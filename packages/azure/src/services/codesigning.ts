@@ -484,8 +484,8 @@ export const CreateCertificateProfile: API.OperationMethod<
   CreateCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateCertificateProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCertificateProfileResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateCertificateProfileRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const CreateCodeSigningAccount: API.OperationMethod<
   CreateCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateCodeSigningAccountRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateCodeSigningAccountResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateCodeSigningAccountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CreateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const DeleteCertificateProfile: API.OperationMethod<
   DeleteCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteCertificateProfileRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCertificateProfileResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteCertificateProfileRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const DeleteCodeSigningAccount: API.OperationMethod<
   DeleteCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteCodeSigningAccountRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCodeSigningAccountResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteCodeSigningAccountRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const GetCertificateProfile: API.OperationMethod<
   GetCertificateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetCertificateProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetCertificateProfileResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetCertificateProfileRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const GetCodeSigningAccount: API.OperationMethod<
   GetCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetCodeSigningAccountRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCodeSigningAccountResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetCodeSigningAccountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const ListCertificateProfileByCodeSigningAccount: API.OperationMethod<
   ListCertificateProfileByCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CertificateProfileListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<CertificateProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const ListCodeSigningAccountByResourceGroup: API.OperationMethod<
   ListCodeSigningAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CodeSigningAccountListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const ListCodeSigningAccountBySubscription: API.OperationMethod<
   ListCodeSigningAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CodeSigningAccountListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const RevokeCertificateProfileCertificate: API.OperationMethod<
   RevokeCertificateProfileCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<RevokeCertificateProfileCertificateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RevokeCertificateProfileCertificateResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<RevokeCertificateProfileCertificateRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<RevokeCertificateProfileCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const UpdateCodeSigningAccount: API.OperationMethod<
   UpdateCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateCodeSigningAccountRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateCodeSigningAccountResponse>,
+  input: __S(58, __c7, 2) as any as S.Schema<UpdateCodeSigningAccountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -686,76 +686,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileType: S.String,
-          includeStreetAddress: S.optional(S.Boolean),
-          includeCity: S.optional(S.Boolean),
-          includeState: S.optional(S.Boolean),
-          includeCountry: S.optional(S.Boolean),
-          includePostalCode: S.optional(S.Boolean),
-          identityValidationId: S.String,
-        }),
-      ).annotate({
-        identifier: "CertificateProfilePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCertificateProfileRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestedAt: S.optional(S.String),
-          effectiveAt: S.optional(S.String),
-          reason: S.optional(S.String),
-          remarks: S.optional(S.String),
-          status: S.optional(S.String),
-          failureReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Revocation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serialNumber: S.optional(S.String),
-          enhancedKeyUsage: S.optional(S.String),
-          subjectName: S.optional(S.String),
-          thumbprint: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          expiryDate: S.optional(S.String),
-          status: S.optional(S.String),
-          revocation: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Certificate" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -770,84 +700,28 @@ function __c1(j: number): any {
           includeCountry: S.optional(S.Boolean),
           includePostalCode: S.optional(S.Boolean),
           identityValidationId: S.String,
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          certificates: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
-        identifier: "CertificateProfileProperties",
+        identifier: "CertificateProfilePropertiesInput",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateCertificateProfileResponse",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "AccountSku" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "CodeSigningAccountPropertiesInput",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(10, __c1, 2)),
-          location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
+          profileName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
             code: 200,
             apiVersion: "2025-10-13",
           }),
         ),
       ).annotate({
-        identifier: "CreateCodeSigningAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountUri: S.optional(S.String),
-          sku: S.optional(__S(11, __c1, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CodeSigningAccountProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(10, __c1, 2)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateCodeSigningAccountResponse",
+        identifier: "CreateCertificateProfileRequest",
       });
   }
 }
@@ -856,106 +730,14 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCertificateProfileRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCertificateProfileResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCodeSigningAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCertificateProfileRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCodeSigningAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCertificateProfileByCodeSigningAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(8, __c1, 0)),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CertificateProfile" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+      ).annotate({ identifier: "SystemData" });
   }
 }
 function __c3(j: number): any {
@@ -963,67 +745,67 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(23, __c2, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificateProfileListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCodeSigningAccountByResourceGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(10, __c1, 2)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(35, __c4, 3)),
         }),
-      ).annotate({ identifier: "CodeSigningAccount" });
+      ).annotate({
+        identifier: "CreateCertificateProfileResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedAt: S.optional(S.String),
+          effectiveAt: S.optional(S.String),
+          reason: S.optional(S.String),
+          remarks: S.optional(S.String),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Revocation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serialNumber: S.optional(S.String),
+          enhancedKeyUsage: S.optional(S.String),
+          subjectName: S.optional(S.String),
+          thumbprint: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          expiryDate: S.optional(S.String),
+          status: S.optional(S.String),
+          revocation: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({ identifier: "Certificate" });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(27, __c3, 3),
-          nextLink: S.optional(S.String),
+          profileType: S.String,
+          includeStreetAddress: S.optional(S.Boolean),
+          includeCity: S.optional(S.Boolean),
+          includeState: S.optional(S.Boolean),
+          includeCountry: S.optional(S.Boolean),
+          includePostalCode: S.optional(S.Boolean),
+          identityValidationId: S.String,
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          certificates: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({
-        identifier: "CodeSigningAccountListResult",
+        identifier: "CertificateProfileProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts",
-            code: 200,
-            apiVersion: "2025-10-13",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCodeSigningAccountBySubscriptionRequest",
-      });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1034,7 +816,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1043,30 +825,30 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(31, __c3, 7)),
+          display: S.optional(__S(41, __c5, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
+          value: S.optional(__S(43, __c5, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1089,28 +871,32 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RevokeCertificateProfileCertificateRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSkuPatch" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(36, __c4, 4)),
+          sku: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "CodeSigningAccountPatchProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(37, __c4, 5)),
+          tags: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(57, __c7, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1124,7 +910,280 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "CodeSigningAccountPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(80, __c10, 0)),
+          location: S.String,
+          properties: S.optional(__S(64, __c8, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCodeSigningAccountRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
+          location: S.String,
+          properties: S.optional(__S(82, __c10, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateCodeSigningAccountResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "AccountSku" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountUri: S.optional(S.String),
+          sku: S.optional(__S(81, __c10, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeSigningAccountProperties",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCertificateProfileRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCertificateProfileResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCodeSigningAccountRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCertificateProfileRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCodeSigningAccountRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCertificateProfileByCodeSigningAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(35, __c4, 3)),
+        }),
+      ).annotate({ identifier: "CertificateProfile" });
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(130, __c16, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CertificateProfileListResult",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCodeSigningAccountByResourceGroupRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
+          location: S.String,
+          properties: S.optional(__S(82, __c10, 2)),
+        }),
+      ).annotate({ identifier: "CodeSigningAccount" });
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(145, __c18, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeSigningAccountListResult",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts",
+            code: 200,
+            apiVersion: "2025-10-13",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCodeSigningAccountBySubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

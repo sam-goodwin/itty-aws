@@ -2810,7 +2810,7 @@ export const AdministratorsMicrosoftEntraCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AdministratorsMicrosoftEntraCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AdministratorsMicrosoftEntraCreateOrUpdateResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<AdministratorsMicrosoftEntraCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2824,8 +2824,8 @@ export const CancelMigration: API.OperationMethod<
   CancelMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelMigrationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CancelMigrationResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CancelMigrationRequest>,
+  output: __S(175, __c5, 15) as any as S.Schema<CancelMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2839,8 +2839,8 @@ export const CheckBackupsLongTermRetentionPrerequisites: API.OperationMethod<
   CheckBackupsLongTermRetentionPrerequisitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CheckBackupsLongTermRetentionPrerequisitesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<LtrPreBackupResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<CheckBackupsLongTermRetentionPrerequisitesRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<LtrPreBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2854,8 @@ export const CheckMigrationNameAvailability: API.OperationMethod<
   CheckMigrationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CheckMigrationNameAvailabilityRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<MigrationNameAvailability>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CheckMigrationNameAvailabilityRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<MigrationNameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2869,8 @@ export const CheckNameAvailabilityGlobally: API.OperationMethod<
   CheckNameAvailabilityGloballyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CheckNameAvailabilityGloballyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CheckNameAvailabilityGloballyResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CheckNameAvailabilityGloballyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<CheckNameAvailabilityGloballyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2884,8 @@ export const CheckNameAvailabilityWithLocation: API.OperationMethod<
   CheckNameAvailabilityWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CheckNameAvailabilityWithLocationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CheckNameAvailabilityWithLocationResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<CheckNameAvailabilityWithLocationRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<CheckNameAvailabilityWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2899,8 @@ export const CreateBackupsAutomaticAndOnDemand: API.OperationMethod<
   CreateBackupsAutomaticAndOnDemandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateBackupsAutomaticAndOnDemandRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateBackupsAutomaticAndOnDemandResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CreateBackupsAutomaticAndOnDemandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateBackupsAutomaticAndOnDemandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2914,8 @@ export const CreateDatabase: API.OperationMethod<
   CreateDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<CreateDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2929,8 +2929,8 @@ export const CreateMigration: API.OperationMethod<
   CreateMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateMigrationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateMigrationResponse>,
+  input: __S(3073, __c96, 1) as any as S.Schema<CreateMigrationRequest>,
+  output: __S(175, __c5, 15) as any as S.Schema<CreateMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2944,8 +2944,8 @@ export const CreateVirtualEndpoint: API.OperationMethod<
   CreateVirtualEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateVirtualEndpointRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateVirtualEndpointResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<CreateVirtualEndpointRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<CreateVirtualEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2959,8 +2959,8 @@ export const DeleteAdministratorsMicrosoftEntra: API.OperationMethod<
   DeleteAdministratorsMicrosoftEntraError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteAdministratorsMicrosoftEntraRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteAdministratorsMicrosoftEntraResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteAdministratorsMicrosoftEntraRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteAdministratorsMicrosoftEntraResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2974,8 @@ export const DeleteBackupsAutomaticAndOnDemand: API.OperationMethod<
   DeleteBackupsAutomaticAndOnDemandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2989,8 +2989,8 @@ export const DeleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3004,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3019,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3034,8 +3034,8 @@ export const DeleteServer: API.OperationMethod<
   DeleteServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteServerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteServerResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteServerRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<DeleteServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3049,8 +3049,8 @@ export const DeleteVirtualEndpoint: API.OperationMethod<
   DeleteVirtualEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteVirtualEndpointRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteVirtualEndpointResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteVirtualEndpointRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<DeleteVirtualEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3064,8 +3064,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3079,8 @@ export const GetAdministratorsMicrosoftEntra: API.OperationMethod<
   GetAdministratorsMicrosoftEntraError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetAdministratorsMicrosoftEntraRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetAdministratorsMicrosoftEntraResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetAdministratorsMicrosoftEntraRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetAdministratorsMicrosoftEntraResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3094,8 +3094,8 @@ export const GetAdvancedThreatProtectionSettings: API.OperationMethod<
   GetAdvancedThreatProtectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetAdvancedThreatProtectionSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetAdvancedThreatProtectionSettingsRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3109,8 +3109,8 @@ export const GetBackupsAutomaticAndOnDemand: API.OperationMethod<
   GetBackupsAutomaticAndOnDemandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetBackupsAutomaticAndOnDemandRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetBackupsAutomaticAndOnDemandResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetBackupsAutomaticAndOnDemandRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<GetBackupsAutomaticAndOnDemandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const GetBackupsLongTermRetention: API.OperationMethod<
   GetBackupsLongTermRetentionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetBackupsLongTermRetentionRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetBackupsLongTermRetentionResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetBackupsLongTermRetentionRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetBackupsLongTermRetentionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const GetDatabase: API.OperationMethod<
   GetDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3169,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetFirewallRuleResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3184,8 +3184,8 @@ export const GetMigration: API.OperationMethod<
   GetMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetMigrationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetMigrationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetMigrationRequest>,
+  output: __S(175, __c5, 15) as any as S.Schema<GetMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3199,8 +3199,8 @@ export const GetPrivateDnsZoneSuffix: API.OperationMethod<
   GetPrivateDnsZoneSuffixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetPrivateDnsZoneSuffixRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetPrivateDnsZoneSuffixResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetPrivateDnsZoneSuffixRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<GetPrivateDnsZoneSuffixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3214,8 +3214,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3229,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3244,8 +3244,8 @@ export const GetServer: API.OperationMethod<
   GetServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetServerRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetServerResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetServerRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<GetServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3259,8 +3259,8 @@ export const GetTuningOption: API.OperationMethod<
   GetTuningOptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetTuningOptionRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetTuningOptionResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetTuningOptionRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<GetTuningOptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3274,8 +3274,8 @@ export const GetVirtualEndpoint: API.OperationMethod<
   GetVirtualEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetVirtualEndpointRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetVirtualEndpointResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetVirtualEndpointRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<GetVirtualEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3289,8 +3289,8 @@ export const ListAdministratorsMicrosoftEntraByServer: API.OperationMethod<
   ListAdministratorsMicrosoftEntraByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListAdministratorsMicrosoftEntraByServerRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<AdministratorMicrosoftEntraList>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListAdministratorsMicrosoftEntraByServerRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<AdministratorMicrosoftEntraList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3304,8 +3304,12 @@ export const ListAdvancedThreatProtectionSettingsByServer: API.OperationMethod<
   ListAdvancedThreatProtectionSettingsByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListAdvancedThreatProtectionSettingsByServerRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<AdvancedThreatProtectionSettingsList>,
+  input: __S(
+    1664,
+    __c52,
+    0,
+  ) as any as S.Schema<ListAdvancedThreatProtectionSettingsByServerRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<AdvancedThreatProtectionSettingsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3319,8 +3323,8 @@ export const ListBackupsAutomaticAndOnDemandByServer: API.OperationMethod<
   ListBackupsAutomaticAndOnDemandByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListBackupsAutomaticAndOnDemandByServerRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<BackupAutomaticAndOnDemandList>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListBackupsAutomaticAndOnDemandByServerRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<BackupAutomaticAndOnDemandList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3334,8 +3338,8 @@ export const ListBackupsLongTermRetentionByServer: API.OperationMethod<
   ListBackupsLongTermRetentionByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListBackupsLongTermRetentionByServerRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<LtrServerBackupOperationList>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListBackupsLongTermRetentionByServerRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<LtrServerBackupOperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3353,8 @@ export const ListCapabilitiesByLocation: API.OperationMethod<
   ListCapabilitiesByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListCapabilitiesByLocationRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<CapabilityList>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListCapabilitiesByLocationRequest>,
+  output: __S(1811, __c56, 19) as any as S.Schema<CapabilityList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3364,8 +3368,8 @@ export const ListCapabilitiesByServer: API.OperationMethod<
   ListCapabilitiesByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListCapabilitiesByServerRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<CapabilityList>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListCapabilitiesByServerRequest>,
+  output: __S(1811, __c56, 19) as any as S.Schema<CapabilityList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3379,8 +3383,8 @@ export const ListCapturedLogByServer: API.OperationMethod<
   ListCapturedLogByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListCapturedLogByServerRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CapturedLogList>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListCapturedLogByServerRequest>,
+  output: __S(1860, __c58, 4) as any as S.Schema<CapturedLogList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3394,8 +3398,8 @@ export const ListConfigurationByServer: API.OperationMethod<
   ListConfigurationByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListConfigurationByServerRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ConfigurationList>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListConfigurationByServerRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<ConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3409,8 +3413,8 @@ export const ListDatabaseByServer: API.OperationMethod<
   ListDatabaseByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListDatabaseByServerRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<DatabaseList>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListDatabaseByServerRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<DatabaseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3424,8 +3428,8 @@ export const ListFirewallRuleByServer: API.OperationMethod<
   ListFirewallRuleByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListFirewallRuleByServerRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<FirewallRuleList>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListFirewallRuleByServerRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<FirewallRuleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3439,8 +3443,8 @@ export const ListMigrationByTargetServer: API.OperationMethod<
   ListMigrationByTargetServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListMigrationByTargetServerRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<MigrationList>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListMigrationByTargetServerRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<MigrationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3454,8 +3458,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<OperationList>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2090, __c65, 10) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3469,8 +3473,8 @@ export const ListPrivateEndpointConnectionByServer: API.OperationMethod<
   ListPrivateEndpointConnectionByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<PrivateEndpointConnectionList>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3484,8 +3488,8 @@ export const ListPrivateLinkResourceByServer: API.OperationMethod<
   ListPrivateLinkResourceByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListPrivateLinkResourceByServerRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<PrivateLinkResourceList>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListPrivateLinkResourceByServerRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3499,8 +3503,8 @@ export const ListQuotaUsages: API.OperationMethod<
   ListQuotaUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListQuotaUsagesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<QuotaUsageList>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListQuotaUsagesRequest>,
+  output: __S(2180, __c68, 4) as any as S.Schema<QuotaUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3514,8 +3518,8 @@ export const ListReplicasByServer: API.OperationMethod<
   ListReplicasByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListReplicasByServerRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ServerList>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListReplicasByServerRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3529,8 +3533,8 @@ export const ListServerByResourceGroup: API.OperationMethod<
   ListServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListServerByResourceGroupRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ServerList>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListServerByResourceGroupRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3544,8 +3548,8 @@ export const ListServerBySubscription: API.OperationMethod<
   ListServerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListServerBySubscriptionRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ServerList>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListServerBySubscriptionRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3559,8 +3563,8 @@ export const ListTuningOptionByServer: API.OperationMethod<
   ListTuningOptionByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListTuningOptionByServerRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<TuningOptionsList>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListTuningOptionByServerRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<TuningOptionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3574,8 +3578,8 @@ export const ListTuningOptionRecommendations: API.OperationMethod<
   ListTuningOptionRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListTuningOptionRecommendationsRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<ObjectRecommendationList>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListTuningOptionRecommendationsRequest>,
+  output: __S(2410, __c75, 10) as any as S.Schema<ObjectRecommendationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3589,8 +3593,8 @@ export const ListVirtualEndpointByServer: API.OperationMethod<
   ListVirtualEndpointByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListVirtualEndpointByServerRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<VirtualEndpointsList>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListVirtualEndpointByServerRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<VirtualEndpointsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3604,8 +3608,8 @@ export const ListVirtualNetworkSubnetUsage: API.OperationMethod<
   ListVirtualNetworkSubnetUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListVirtualNetworkSubnetUsageRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<VirtualNetworkSubnetUsageModel>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListVirtualNetworkSubnetUsageRequest>,
+  output: __S(2467, __c77, 3) as any as S.Schema<VirtualNetworkSubnetUsageModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3619,8 +3623,8 @@ export const PutConfiguration: API.OperationMethod<
   PutConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PutConfigurationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<PutConfigurationResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PutConfigurationRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<PutConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3634,8 +3638,8 @@ export const RestartServer: API.OperationMethod<
   RestartServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<RestartServerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<RestartServerResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<RestartServerRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<RestartServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3649,8 +3653,8 @@ export const ServersCreateOrUpdate: API.OperationMethod<
   ServersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ServersCreateOrUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ServersCreateOrUpdateResponse>,
+  input: __S(2594, __c81, 2) as any as S.Schema<ServersCreateOrUpdateRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<ServersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3664,8 +3668,12 @@ export const ServerThreatProtectionSettingsCreateOrUpdate: API.OperationMethod<
   ServerThreatProtectionSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>,
+  input: __S(
+    2657,
+    __c83,
+    1,
+  ) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3679,8 +3687,8 @@ export const StartBackupsLongTermRetention: API.OperationMethod<
   StartBackupsLongTermRetentionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<StartBackupsLongTermRetentionRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<BackupsLongTermRetentionResponse>,
+  input: __S(2689, __c84, 1) as any as S.Schema<StartBackupsLongTermRetentionRequest>,
+  output: __S(2690, __c84, 2) as any as S.Schema<BackupsLongTermRetentionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3694,8 +3702,8 @@ export const StartServer: API.OperationMethod<
   StartServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<StartServerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StartServerResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<StartServerRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<StartServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3709,8 +3717,8 @@ export const StopServer: API.OperationMethod<
   StopServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<StopServerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StopServerResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<StopServerRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<StopServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3732,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateConfigurationResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<UpdateConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3739,8 +3747,8 @@ export const UpdateMigration: API.OperationMethod<
   UpdateMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateMigrationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateMigrationResponse>,
+  input: __S(2851, __c89, 3) as any as S.Schema<UpdateMigrationRequest>,
+  output: __S(175, __c5, 15) as any as S.Schema<UpdateMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3754,8 +3762,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(2881, __c90, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3769,8 +3777,8 @@ export const UpdateServer: API.OperationMethod<
   UpdateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<UpdateServerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateServerResponse>,
+  input: __S(2915, __c91, 3) as any as S.Schema<UpdateServerRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<UpdateServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3792,8 @@ export const UpdateVirtualEndpoint: API.OperationMethod<
   UpdateVirtualEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<UpdateVirtualEndpointRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateVirtualEndpointResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateVirtualEndpointRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<UpdateVirtualEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3823,11 +3831,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AdministratorsMicrosoftEntraCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AdministratorsMicrosoftEntraCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3843,7 +3859,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelMigrationRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3854,9 +3874,17 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -3877,125 +3905,108 @@ function __c0(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseMigrationState" });
-    case 7:
-      return S.Record(S.String, __S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(160, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidationMessage" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           state: S.optional(S.String),
-          messages: S.optional(__S(9, __c1, 1)),
+          messages: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "ValidationSummaryItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
           startedOn: S.optional(S.String),
           endedOn: S.optional(S.String),
-          summary: S.optional(__S(11, __c1, 3)),
+          summary: S.optional(__S(165, __c5, 5)),
         }),
       ).annotate({ identifier: "DbLevelValidationStatus" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           validationStartTimeInUtc: S.optional(S.String),
           validationEndTimeInUtc: S.optional(S.String),
-          serverLevelValidationDetails: S.optional(__S(11, __c1, 3)),
-          dbLevelValidationDetails: S.optional(__S(13, __c1, 5)),
+          serverLevelValidationDetails: S.optional(__S(165, __c5, 5)),
+          dbLevelValidationDetails: S.optional(__S(167, __c5, 7)),
         }),
       ).annotate({ identifier: "ValidationDetails" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           currentSubState: S.optional(S.String),
-          dbDetails: S.optional(__S(7, __c0, 7)),
-          validationDetails: S.optional(__S(14, __c1, 6)),
+          dbDetails: S.optional(__S(161, __c5, 1)),
+          validationDetails: S.optional(__S(168, __c5, 8)),
         }),
       ).annotate({ identifier: "MigrationSubstateDetails" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           error: S.optional(S.String),
-          currentSubStateDetails: S.optional(__S(15, __c1, 7)),
+          currentSubStateDetails: S.optional(__S(169, __c5, 9)),
         }),
       ).annotate({ identifier: "MigrationStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerSku" });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
           version: S.optional(S.String),
           storageMb: S.optional(S.Number),
-          sku: S.optional(__S(17, __c2, 1)),
+          sku: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "DbServerMetadata" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           sourceServerPassword: S.String.pipe(T.SensitiveValue({})),
           targetServerPassword: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "AdminCredentials" });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          adminCredentials: __S(19, __c2, 3),
+          adminCredentials: __S(172, __c5, 12),
           sourceServerUsername: S.optional(S.String),
           targetServerUsername: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MigrationSecretParameters",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           migrationId: S.optional(S.String),
-          currentStatus: S.optional(__S(16, __c2, 0)),
+          currentStatus: S.optional(__S(170, __c5, 10)),
           migrationInstanceResourceId: S.optional(S.String),
           migrationMode: S.optional(S.String),
           migrationOption: S.optional(S.String),
           sourceType: S.optional(S.String),
           sslMode: S.optional(S.String),
-          sourceDbServerMetadata: S.optional(__S(18, __c2, 2)),
-          targetDbServerMetadata: S.optional(__S(18, __c2, 2)),
+          sourceDbServerMetadata: S.optional(__S(171, __c5, 11)),
+          targetDbServerMetadata: S.optional(__S(171, __c5, 11)),
           sourceDbServerResourceId: S.optional(S.String),
           sourceDbServerFullyQualifiedDomainName: S.optional(S.String),
           targetDbServerResourceId: S.optional(S.String),
           targetDbServerFullyQualifiedDomainName: S.optional(S.String),
-          secretParameters: S.optional(__S(20, __c2, 4)),
-          dbsToMigrate: S.optional(__S(21, __c2, 5)),
+          secretParameters: S.optional(__S(173, __c5, 13)),
+          dbsToMigrate: S.optional(__S(224, __c7, 0)),
           setupLogicalReplicationOnSourceDbIfNeeded: S.optional(S.String),
           overwriteDbsInTarget: S.optional(S.String),
           migrationWindowStartTimeInUtc: S.optional(S.String),
@@ -4003,270 +4014,45 @@ function __c2(j: number): any {
           migrateRoles: S.optional(S.String),
           startDataMigration: S.optional(S.String),
           triggerCutover: S.optional(S.String),
-          dbsToTriggerCutoverOn: S.optional(__S(21, __c2, 5)),
+          dbsToTriggerCutoverOn: S.optional(__S(224, __c7, 0)),
           cancel: S.optional(S.String),
-          dbsToCancelMigrationOn: S.optional(__S(21, __c2, 5)),
+          dbsToCancelMigrationOn: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "MigrationProperties" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(174, __c5, 14)),
         }),
       ).annotate({ identifier: "CancelMigrationResponse" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          backupName: S.String,
-        }),
-      ).annotate({ identifier: "BackupSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          backupSettings: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrPreBackup",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckBackupsLongTermRetentionPrerequisitesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numberOfContainers: S.Number,
-        }),
-      ).annotate({
-        identifier: "BackupsLongTermRetentionResponseProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "LtrPreBackupResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/checkMigrationNameAvailability",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckMigrationNameAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MigrationNameAvailability",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckNameAvailabilityGloballyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
+          tier: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CheckNameAvailabilityGloballyResponse",
-      });
+      ).annotate({ identifier: "ServerSku" });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckNameAvailabilityWithLocationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          backupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBackupsAutomaticAndOnDemandRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          charset: S.optional(S.String),
-          collation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34, __c4, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateDatabaseResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          migrationInstanceResourceId: S.optional(S.String),
-          migrationMode: S.optional(S.String),
-          migrationOption: S.optional(S.String),
-          sourceType: S.optional(S.String),
-          sslMode: S.optional(S.String),
-          sourceDbServerResourceId: S.optional(S.String),
-          sourceDbServerFullyQualifiedDomainName: S.optional(S.String),
-          targetDbServerFullyQualifiedDomainName: S.optional(S.String),
-          secretParameters: S.optional(__S(20, __c2, 4)),
-          dbsToMigrate: S.optional(__S(21, __c2, 5)),
-          setupLogicalReplicationOnSourceDbIfNeeded: S.optional(S.String),
-          overwriteDbsInTarget: S.optional(S.String),
-          migrationWindowStartTimeInUtc: S.optional(S.String),
-          migrationWindowEndTimeInUtc: S.optional(S.String),
-          migrateRoles: S.optional(S.String),
-          startDataMigration: S.optional(S.String),
-          triggerCutover: S.optional(S.String),
-          dbsToTriggerCutoverOn: S.optional(__S(21, __c2, 5)),
-          cancel: S.optional(S.String),
-          dbsToCancelMigrationOn: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "MigrationPropertiesInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          migrationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(5, __c0, 5)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateMigrationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          members: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualEndpointResourcePropertiesInput",
-      });
+      return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          virtualEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(39, __c4, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVirtualEndpointRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4284,7 +4070,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteAdministratorsMicrosoftEntraRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4302,7 +4092,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteBackupsAutomaticAndOnDemandRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4318,7 +4112,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4336,7 +4134,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteFirewallRuleRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4354,7 +4156,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4369,7 +4175,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServerRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4389,23 +4199,16 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startIpAddress: S.String,
-          endIpAddress: S.String,
-        }),
-      ).annotate({ identifier: "FirewallRuleProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: __S(48, __c6, 0),
+          properties: __S(512, __c16, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4417,7 +4220,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "FirewallRulesCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startIpAddress: S.String,
+          endIpAddress: S.String,
+        }),
+      ).annotate({ identifier: "FirewallRuleProperties" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4435,7 +4253,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAdministratorsMicrosoftEntraRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalType: S.optional(S.String),
@@ -4446,19 +4268,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AdministratorMicrosoftEntraProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(51, __c6, 3),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(576, __c18, 0),
         }),
       ).annotate({
         identifier: "GetAdministratorsMicrosoftEntraResponse",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4476,7 +4302,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAdvancedThreatProtectionSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -4485,21 +4315,67 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AdvancedThreatProtectionSettingsProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(54, __c6, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(640, __c20, 0)),
         }),
       ).annotate({
         identifier: "GetAdvancedThreatProtectionSettingsResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          backupSettings: __S(704, __c22, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrPreBackup",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckBackupsLongTermRetentionPrerequisitesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          numberOfContainers: S.Number,
+        }),
+      ).annotate({
+        identifier: "BackupsLongTermRetentionResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(673, __c21, 1),
+        }),
+      ).annotate({ identifier: "LtrPreBackupResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backupName: S.String,
+        }),
+      ).annotate({ identifier: "BackupSettings" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4519,7 +4395,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetBackupsAutomaticAndOnDemandRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           backupType: S.optional(S.String),
@@ -4529,19 +4409,23 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BackupAutomaticAndOnDemandProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({
         identifier: "GetBackupsAutomaticAndOnDemandResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4559,7 +4443,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetBackupsLongTermRetentionRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "GetBackupsLongTermRetentionResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasourceSizeInBytes: S.optional(S.Number),
@@ -4576,19 +4480,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "LtrBackupOperationResponseProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "GetBackupsLongTermRetentionResponse",
-      });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4604,7 +4500,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConfigurationRequest" });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -4620,21 +4520,21 @@ function __c7(j: number): any {
           documentationLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(63, __c7, 7)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4650,17 +4550,25 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDatabaseRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4676,17 +4584,25 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFirewallRuleRequest" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(48, __c6, 0),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(512, __c16, 0),
         }),
       ).annotate({ identifier: "GetFirewallRuleResponse" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4702,7 +4618,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMigrationRequest" });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4715,13 +4635,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateDnsZoneSuffixRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPrivateDnsZoneSuffixResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4741,13 +4661,44 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(224, __c7, 0)),
+          privateEndpoint: S.optional(__S(1184, __c37, 0)),
+          privateLinkServiceConnectionState: __S(1216, __c38, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1185, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -4757,30 +4708,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(21, __c2, 5)),
-          privateEndpoint: S.optional(__S(73, __c9, 1)),
-          privateLinkServiceConnectionState: __S(74, __c9, 2),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionResponse",
-      });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4798,31 +4730,35 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(21, __c2, 5)),
-          requiredZoneNames: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponseProperties",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(78, __c9, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1280, __c40, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(224, __c7, 0)),
+          requiredZoneNames: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponseProperties",
+      });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4839,7 +4775,108 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServerRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1186, __c37, 2));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backupRetentionDays: S.optional(S.Number),
+          geoRedundantBackup: S.optional(S.String),
+          earliestRestoreDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Backup" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          capacity: S.optional(S.Number),
+          replicationState: S.optional(S.String),
+          promoteMode: S.optional(S.String),
+          promoteOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Replica" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          administratorLogin: S.optional(S.String),
+          administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          version: S.optional(S.String),
+          minorVersion: S.optional(S.String),
+          state: S.optional(S.String),
+          fullyQualifiedDomainName: S.optional(S.String),
+          storage: S.optional(__S(1440, __c45, 0)),
+          authConfig: S.optional(__S(1441, __c45, 1)),
+          dataEncryption: S.optional(__S(1442, __c45, 2)),
+          backup: S.optional(__S(1376, __c43, 0)),
+          network: S.optional(__S(1443, __c45, 3)),
+          highAvailability: S.optional(__S(1408, __c44, 0)),
+          maintenanceWindow: S.optional(__S(1444, __c45, 4)),
+          sourceServerResourceId: S.optional(S.String),
+          pointInTimeUTC: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+          replicationRole: S.optional(S.String),
+          replicaCapacity: S.optional(S.Number),
+          replica: S.optional(__S(1377, __c43, 1)),
+          createMode: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1344, __c42, 0)),
+          cluster: S.optional(__S(1445, __c45, 5)),
+        }),
+      ).annotate({ identifier: "ServerProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userAssignedIdentities: S.optional(__S(1447, __c45, 7)),
+          principalId: S.optional(S.String),
+          type: S.String,
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1378, __c43, 2)),
+          sku: S.optional(__S(1409, __c44, 1)),
+          identity: S.optional(__S(1379, __c43, 3)),
+        }),
+      ).annotate({ identifier: "GetServerResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          state: S.optional(S.String),
+          standbyAvailabilityZone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HighAvailability" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.String,
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storageSizeGB: S.optional(S.Number),
@@ -4850,7 +4887,7 @@ function __c10(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Storage" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activeDirectoryAuth: S.optional(S.String),
@@ -4858,7 +4895,7 @@ function __c10(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           primaryKeyURI: S.optional(S.String),
@@ -4870,15 +4907,7 @@ function __c10(j: number): any {
           geoBackupEncryptionKeyStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataEncryption" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backupRetentionDays: S.optional(S.Number),
-          geoRedundantBackup: S.optional(S.String),
-          earliestRestoreDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Backup" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
@@ -4886,15 +4915,7 @@ function __c10(j: number): any {
           privateDnsZoneArmResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Network" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          state: S.optional(S.String),
-          standbyAvailabilityZone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HighAvailability" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           customWindow: S.optional(S.String),
@@ -4903,100 +4924,62 @@ function __c10(j: number): any {
           dayOfWeek: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          capacity: S.optional(S.Number),
-          replicationState: S.optional(S.String),
-          promoteMode: S.optional(S.String),
-          promoteOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Replica" });
-    case 1:
-      return S.Array(__S(76, __c9, 4));
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
           defaultDatabaseName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cluster" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          administratorLogin: S.optional(S.String),
-          administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          version: S.optional(S.String),
-          minorVersion: S.optional(S.String),
-          state: S.optional(S.String),
-          fullyQualifiedDomainName: S.optional(S.String),
-          storage: S.optional(__S(81, __c10, 1)),
-          authConfig: S.optional(__S(82, __c10, 2)),
-          dataEncryption: S.optional(__S(83, __c10, 3)),
-          backup: S.optional(__S(84, __c10, 4)),
-          network: S.optional(__S(85, __c10, 5)),
-          highAvailability: S.optional(__S(86, __c10, 6)),
-          maintenanceWindow: S.optional(__S(87, __c10, 7)),
-          sourceServerResourceId: S.optional(S.String),
-          pointInTimeUTC: S.optional(S.String),
-          availabilityZone: S.optional(S.String),
-          replicationRole: S.optional(S.String),
-          replicaCapacity: S.optional(S.Number),
-          replica: S.optional(__S(88, __c11, 0)),
-          createMode: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(89, __c11, 1)),
-          cluster: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "ServerProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.String,
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdentity" });
-    case 6:
-      return S.Record(S.String, __S(93, __c11, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userAssignedIdentities: S.optional(__S(94, __c11, 6)),
-          principalId: S.optional(S.String),
-          type: S.String,
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
+      return S.Record(S.String, __S(1446, __c45, 6));
   }
 }
-function __c12(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(5, __c0, 5)),
-          location: S.String,
-          properties: S.optional(__S(91, __c11, 3)),
-          sku: S.optional(__S(92, __c11, 4)),
-          identity: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "GetServerResponse" });
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/checkMigrationNameAvailability",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckMigrationNameAvailabilityRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          nameAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MigrationNameAvailability",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5012,23 +4995,31 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTuningOptionRequest" });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "TuningOptionsProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(98, __c12, 2)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "GetTuningOptionResponse" });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5046,29 +5037,37 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetVirtualEndpointRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          members: S.optional(__S(21, __c2, 5)),
-          virtualEndpoints: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualEndpointResourceProperties",
-      });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(101, __c12, 5)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({
         identifier: "GetVirtualEndpointResponse",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          members: S.optional(__S(224, __c7, 0)),
+          virtualEndpoints: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualEndpointResourceProperties",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5085,22 +5084,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAdministratorsMicrosoftEntraByServerRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(52, __c6, 4));
     case 1:
+      return S.Array(__S(577, __c18, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104, __c13, 0),
+          value: __S(1633, __c51, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdministratorMicrosoftEntraList",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5117,18 +5116,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAdvancedThreatProtectionSettingsByServerRequest",
       });
-    case 3:
-      return S.Array(__S(55, __c6, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(641, __c20, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107, __c13, 3),
+          value: __S(1665, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdvancedThreatProtectionSettingsList",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5145,12 +5148,12 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListBackupsAutomaticAndOnDemandByServerRequest",
       });
-    case 6:
-      return S.Array(__S(58, __c7, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(769, __c24, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(110, __c13, 6),
+          value: __S(1697, __c53, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5158,7 +5161,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5178,17 +5181,21 @@ function __c14(j: number): any {
         identifier: "ListBackupsLongTermRetentionByServerRequest",
       });
     case 1:
-      return S.Array(__S(61, __c7, 5));
+      return S.Array(__S(832, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(113, __c14, 1),
+          value: __S(1729, __c54, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LtrServerBackupOperationList",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5204,7 +5211,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListCapabilitiesByLocationRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5213,9 +5224,9 @@ function __c14(j: number): any {
           iops: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StorageTierCapability" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1792, __c56, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5227,39 +5238,35 @@ function __c14(j: number): any {
           supportedThroughput: S.optional(S.Number),
           supportedMaximumThroughput: S.optional(S.Number),
           defaultIopsTier: S.optional(S.String),
-          supportedIopsTiers: S.optional(__S(117, __c14, 5)),
+          supportedIopsTiers: S.optional(__S(1793, __c56, 1)),
         }),
       ).annotate({ identifier: "StorageMbCapability" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1794, __c56, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           reason: S.optional(S.String),
           name: S.optional(S.String),
           defaultStorageSizeMb: S.optional(S.Number),
-          supportedStorageMb: S.optional(__S(119, __c14, 7)),
+          supportedStorageMb: S.optional(__S(1795, __c56, 3)),
         }),
       ).annotate({ identifier: "StorageEditionCapability" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(1796, __c56, 4));
+    case 6:
       return S.Array(S.String);
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedFeature" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(1799, __c56, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5268,44 +5275,40 @@ function __c15(j: number): any {
           vCores: S.optional(S.Number),
           supportedIops: S.optional(S.Number),
           supportedMemoryPerVcoreMb: S.optional(S.Number),
-          supportedZones: S.optional(__S(21, __c2, 5)),
-          supportedHaMode: S.optional(__S(122, __c15, 2)),
-          supportedFeatures: S.optional(__S(124, __c15, 4)),
+          supportedZones: S.optional(__S(224, __c7, 0)),
+          supportedHaMode: S.optional(__S(1798, __c56, 6)),
+          supportedFeatures: S.optional(__S(1800, __c56, 8)),
           securityProfile: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerSkuCapability" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(1801, __c56, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           reason: S.optional(S.String),
           name: S.optional(S.String),
           defaultSkuName: S.optional(S.String),
-          supportedStorageEditions: S.optional(__S(121, __c15, 1)),
-          supportedServerSkus: S.optional(__S(126, __c15, 6)),
+          supportedStorageEditions: S.optional(__S(1797, __c56, 5)),
+          supportedServerSkus: S.optional(__S(1802, __c56, 10)),
         }),
       ).annotate({ identifier: "ServerEditionCapability" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 12:
+      return S.Array(__S(1803, __c56, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           reason: S.optional(S.String),
           name: S.optional(S.String),
-          supportedVersionsToUpgrade: S.optional(__S(21, __c2, 5)),
-          supportedFeatures: S.optional(__S(124, __c15, 4)),
+          supportedVersionsToUpgrade: S.optional(__S(224, __c7, 0)),
+          supportedFeatures: S.optional(__S(1800, __c56, 8)),
         }),
       ).annotate({ identifier: "ServerVersionCapability" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(1805, __c56, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5319,19 +5322,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "FastProvisioningEditionCapability",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 16:
+      return S.Array(__S(1807, __c56, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           reason: S.optional(S.String),
           name: S.optional(S.String),
-          supportedServerEditions: S.optional(__S(128, __c16, 0)),
-          supportedServerVersions: S.optional(__S(130, __c16, 2)),
-          supportedFeatures: S.optional(__S(124, __c15, 4)),
+          supportedServerEditions: S.optional(__S(1804, __c56, 12)),
+          supportedServerVersions: S.optional(__S(1806, __c56, 14)),
+          supportedFeatures: S.optional(__S(1800, __c56, 8)),
           fastProvisioningSupported: S.optional(S.String),
-          supportedFastProvisioningEditions: S.optional(__S(132, __c16, 4)),
+          supportedFastProvisioningEditions: S.optional(__S(1808, __c56, 16)),
           geoBackupSupported: S.optional(S.String),
           zoneRedundantHaSupported: S.optional(S.String),
           zoneRedundantHaAndGeoBackupSupported: S.optional(S.String),
@@ -5340,18 +5343,18 @@ function __c16(j: number): any {
           restricted: S.optional(S.String),
         }),
       ).annotate({ identifier: "Capability" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 18:
+      return S.Array(__S(1809, __c56, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          value: __S(134, __c16, 6),
+          value: __S(1810, __c56, 18),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityList" });
   }
 }
-function __c17(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5370,7 +5373,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListCapabilitiesByServerRequest",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5387,7 +5394,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListCapturedLogByServerRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdTime: S.optional(S.String),
@@ -5397,26 +5404,30 @@ function __c17(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapturedLogProperties" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(138, __c17, 2)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1857, __c58, 1)),
         }),
       ).annotate({ identifier: "CapturedLog" });
+    case 3:
+      return S.Array(__S(1858, __c58, 2));
     case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(140, __c17, 4),
+          value: __S(1859, __c58, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapturedLogList" });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5433,20 +5444,57 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListConfigurationByServerRequest",
       });
-    case 7:
-      return S.Array(__S(64, __c8, 0));
+    case 1:
+      return S.Array(__S(929, __c29, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1889, __c59, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationList" });
   }
 }
-function __c18(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(143, __c17, 7),
-          nextLink: S.optional(S.String),
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckNameAvailabilityGloballyRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ConfigurationList" });
-    case 1:
+      ).annotate({
+        identifier: "CheckNameAvailabilityGloballyResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5463,16 +5511,20 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListDatabaseByServerRequest",
       });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
     case 2:
-      return S.Array(__S(66, __c8, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(146, __c18, 2),
+          value: __S(1985, __c62, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseList" });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5489,16 +5541,20 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListFirewallRuleByServerRequest",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(149, __c18, 5),
+          value: __S(2017, __c63, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallRuleList" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5516,20 +5572,20 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListMigrationByTargetServerRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
     case 1:
+      return S.Array(__S(175, __c5, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(152, __c19, 0),
+          value: __S(2049, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MigrationList" });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -5540,7 +5596,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -5549,7 +5605,7 @@ function __c19(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5557,14 +5613,14 @@ function __c19(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(21, __c2, 5)),
-          supportedTimeGrainTypes: S.optional(__S(21, __c2, 5)),
+          supportedAggregationTypes: S.optional(__S(224, __c7, 0)),
+          supportedTimeGrainTypes: S.optional(__S(224, __c7, 0)),
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2082, __c65, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5572,45 +5628,45 @@ function __c19(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2084, __c65, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(157, __c19, 5)),
-          logSpecifications: S.optional(__S(159, __c19, 7)),
+          metricSpecifications: S.optional(__S(2083, __c65, 3)),
+          logSpecifications: S.optional(__S(2085, __c65, 5)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(160, __c20, 0)),
+          serviceSpecification: S.optional(__S(2086, __c65, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(155, __c19, 3)),
+          display: S.optional(__S(2081, __c65, 1)),
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          properties: S.optional(__S(161, __c20, 1)),
+          properties: S.optional(__S(2087, __c65, 7)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(2088, __c65, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c20, 3),
+          value: __S(2089, __c65, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5627,16 +5683,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByServerRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(89, __c11, 1),
+          value: __S(1344, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionList",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5653,30 +5713,30 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByServerRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(78, __c9, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1280, __c40, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
     case 2:
+      return S.Array(__S(2145, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(169, __c21, 1),
+          value: __S(2146, __c67, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5690,35 +5750,35 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListQuotaUsagesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameProperty" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(172, __c21, 4)),
+          name: S.optional(__S(2177, __c68, 1)),
           limit: S.optional(S.Number),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaUsage" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2178, __c68, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(174, __c21, 6),
+          value: __S(2179, __c68, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaUsageList" });
   }
 }
-function __c22(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5737,16 +5797,24 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListReplicasByServerRequest",
       });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1380, __c43, 4));
     case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(177, __c22, 1),
+          value: __S(2240, __c70, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerList" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5762,7 +5830,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListServerByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5777,7 +5849,33 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListServerBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckNameAvailabilityWithLocationRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5794,18 +5892,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTuningOptionByServerRequest",
       });
-    case 6:
-      return S.Array(__S(99, __c12, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(1537, __c48, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(182, __c22, 6),
+          value: __S(2369, __c74, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TuningOptionsList" });
   }
 }
-function __c23(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5857,7 +5955,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ImpactRecord" });
     case 5:
-      return S.Array(__S(188, __c23, 4));
+      return S.Array(__S(2404, __c75, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5866,8 +5964,8 @@ function __c23(j: number): any {
           table: S.optional(S.String),
           indexType: S.optional(S.String),
           indexName: S.optional(S.String),
-          indexColumns: S.optional(__S(21, __c2, 5)),
-          includedColumns: S.optional(__S(21, __c2, 5)),
+          indexColumns: S.optional(__S(224, __c7, 0)),
+          includedColumns: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
         identifier: "ObjectRecommendationDetails",
@@ -5878,43 +5976,43 @@ function __c23(j: number): any {
           initialRecommendedTime: S.optional(S.String),
           lastRecommendedTime: S.optional(S.String),
           timesRecommended: S.optional(S.Number),
-          improvedQueryIds: S.optional(__S(185, __c23, 1)),
+          improvedQueryIds: S.optional(__S(2401, __c75, 1)),
           recommendationReason: S.optional(S.String),
           currentState: S.optional(S.String),
           recommendationType: S.optional(S.String),
-          implementationDetails: S.optional(__S(186, __c23, 2)),
-          analyzedWorkload: S.optional(__S(187, __c23, 3)),
-          estimatedImpact: S.optional(__S(189, __c23, 5)),
-          details: S.optional(__S(190, __c23, 6)),
+          implementationDetails: S.optional(__S(2402, __c75, 2)),
+          analyzedWorkload: S.optional(__S(2403, __c75, 3)),
+          estimatedImpact: S.optional(__S(2405, __c75, 5)),
+          details: S.optional(__S(2406, __c75, 6)),
         }),
       ).annotate({
         identifier: "ObjectRecommendationProperties",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(96, __c3, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(191, __c23, 7)),
+          properties: S.optional(__S(2407, __c75, 7)),
         }),
       ).annotate({ identifier: "ObjectRecommendation" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(2408, __c75, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(193, __c24, 1),
+          value: __S(2409, __c75, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectRecommendationList" });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5931,26 +6029,30 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListVirtualEndpointByServerRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(101, __c12, 5)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "VirtualEndpoint" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(197, __c24, 5),
+          value: __S(2434, __c76, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualEndpointsList" });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5967,46 +6069,37 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListVirtualNetworkSubnetUsageRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subnetName: S.optional(S.String),
           usage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DelegatedSubnetUsage" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
     case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          delegatedSubnetsUsage: S.optional(__S(201, __c25, 1)),
+          delegatedSubnetsUsage: S.optional(__S(2466, __c77, 2)),
           location: S.optional(S.String),
           subscriptionId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworkSubnetUsageModel",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(203, __c25, 3)),
+          properties: S.optional(__S(2528, __c79, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6016,7 +6109,24 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutConfigurationRequest" });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationPropertiesInput",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6033,68 +6143,50 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestartServerRequest" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           backupRetentionDays: S.optional(S.Number),
           geoRedundantBackup: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          promoteMode: S.optional(S.String),
-          promoteOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicaInput" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           administratorLogin: S.optional(S.String),
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           version: S.optional(S.String),
-          storage: S.optional(__S(81, __c10, 1)),
-          authConfig: S.optional(__S(82, __c10, 2)),
-          dataEncryption: S.optional(__S(83, __c10, 3)),
-          backup: S.optional(__S(206, __c25, 6)),
-          network: S.optional(__S(85, __c10, 5)),
-          highAvailability: S.optional(__S(86, __c10, 6)),
-          maintenanceWindow: S.optional(__S(87, __c10, 7)),
+          storage: S.optional(__S(1440, __c45, 0)),
+          authConfig: S.optional(__S(1441, __c45, 1)),
+          dataEncryption: S.optional(__S(1442, __c45, 2)),
+          backup: S.optional(__S(2592, __c81, 0)),
+          network: S.optional(__S(1443, __c45, 3)),
+          highAvailability: S.optional(__S(1408, __c44, 0)),
+          maintenanceWindow: S.optional(__S(1444, __c45, 4)),
           sourceServerResourceId: S.optional(S.String),
           pointInTimeUTC: S.optional(S.String),
           availabilityZone: S.optional(S.String),
           replicationRole: S.optional(S.String),
-          replica: S.optional(__S(207, __c25, 7)),
+          replica: S.optional(__S(2624, __c82, 0)),
           createMode: S.optional(S.String),
-          cluster: S.optional(__S(90, __c11, 2)),
+          cluster: S.optional(__S(1445, __c45, 5)),
         }),
       ).annotate({ identifier: "ServerPropertiesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userAssignedIdentities: S.optional(__S(94, __c11, 6)),
-          principalId: S.optional(S.String),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(208, __c26, 0)),
-          sku: S.optional(__S(92, __c11, 4)),
-          identity: S.optional(__S(209, __c26, 1)),
+          properties: S.optional(__S(2593, __c81, 1)),
+          sku: S.optional(__S(1409, __c44, 1)),
+          identity: S.optional(__S(2625, __c82, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6106,7 +6198,33 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ServersCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          promoteMode: S.optional(S.String),
+          promoteOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicaInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userAssignedIdentities: S.optional(__S(1447, __c45, 7)),
+          principalId: S.optional(S.String),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -6114,14 +6232,14 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "AdvancedThreatProtectionSettingsPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           threatProtectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(211, __c26, 3)),
+          properties: S.optional(__S(2656, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6133,20 +6251,24 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ServerThreatProtectionSettingsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sasUriList: __S(21, __c2, 5),
+          sasUriList: __S(224, __c7, 0),
         }),
       ).annotate({ identifier: "BackupStoreDetails" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          backupSettings: __S(24, __c3, 0),
-          targetDetails: __S(213, __c26, 5),
+          backupSettings: __S(704, __c22, 0),
+          targetDetails: __S(2688, __c84, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6158,17 +6280,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StartBackupsLongTermRetentionRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(60, __c7, 4)),
+          properties: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({
         identifier: "BackupsLongTermRetentionResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6185,7 +6307,33 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartServerRequest" });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          backupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBackupsAutomaticAndOnDemandRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6200,14 +6348,18 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopServerRequest" });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(203, __c25, 3)),
+          properties: S.optional(__S(2528, __c79, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6219,54 +6371,58 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceServerPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           targetServerPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "AdminCredentialsForPatch" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          adminCredentials: S.optional(__S(219, __c27, 3)),
+          adminCredentials: S.optional(__S(2848, __c89, 0)),
           sourceServerUsername: S.optional(S.String),
           targetServerUsername: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MigrationSecretParametersForPatch",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sourceDbServerResourceId: S.optional(S.String),
           sourceDbServerFullyQualifiedDomainName: S.optional(S.String),
           targetDbServerFullyQualifiedDomainName: S.optional(S.String),
-          secretParameters: S.optional(__S(220, __c27, 4)),
-          dbsToMigrate: S.optional(__S(21, __c2, 5)),
+          secretParameters: S.optional(__S(2849, __c89, 1)),
+          dbsToMigrate: S.optional(__S(224, __c7, 0)),
           setupLogicalReplicationOnSourceDbIfNeeded: S.optional(S.String),
           overwriteDbsInTarget: S.optional(S.String),
           migrationWindowStartTimeInUtc: S.optional(S.String),
           migrateRoles: S.optional(S.String),
           startDataMigration: S.optional(S.String),
           triggerCutover: S.optional(S.String),
-          dbsToTriggerCutoverOn: S.optional(__S(21, __c2, 5)),
+          dbsToTriggerCutoverOn: S.optional(__S(224, __c7, 0)),
           cancel: S.optional(S.String),
-          dbsToCancelMigrationOn: S.optional(__S(21, __c2, 5)),
+          dbsToCancelMigrationOn: S.optional(__S(224, __c7, 0)),
           migrationMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MigrationPropertiesForPatch",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           migrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(221, __c27, 5)),
-          tags: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(2850, __c89, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6276,27 +6432,27 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMigrationRequest" });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(36, __c4, 4)),
-          privateLinkServiceConnectionState: __S(74, __c9, 2),
+          privateEndpoint: S.optional(__S(3040, __c95, 0)),
+          privateLinkServiceConnectionState: __S(1216, __c38, 0),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(223, __c27, 7)),
+          properties: S.optional(__S(2880, __c90, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6308,50 +6464,54 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           backupRetentionDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackupForPatchInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           standbyAvailabilityZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "HighAvailabilityForPatch" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           version: S.optional(S.String),
-          storage: S.optional(__S(81, __c10, 1)),
-          backup: S.optional(__S(225, __c28, 1)),
-          highAvailability: S.optional(__S(226, __c28, 2)),
-          maintenanceWindow: S.optional(__S(87, __c10, 7)),
-          authConfig: S.optional(__S(82, __c10, 2)),
-          dataEncryption: S.optional(__S(83, __c10, 3)),
+          storage: S.optional(__S(1440, __c45, 0)),
+          backup: S.optional(__S(2912, __c91, 0)),
+          highAvailability: S.optional(__S(2913, __c91, 1)),
+          maintenanceWindow: S.optional(__S(1444, __c45, 4)),
+          authConfig: S.optional(__S(1441, __c45, 1)),
+          dataEncryption: S.optional(__S(1442, __c45, 2)),
           availabilityZone: S.optional(S.String),
           createMode: S.optional(S.String),
           replicationRole: S.optional(S.String),
-          replica: S.optional(__S(207, __c25, 7)),
-          network: S.optional(__S(85, __c10, 5)),
-          cluster: S.optional(__S(90, __c11, 2)),
+          replica: S.optional(__S(2624, __c82, 0)),
+          network: S.optional(__S(1443, __c45, 3)),
+          cluster: S.optional(__S(1445, __c45, 5)),
         }),
       ).annotate({
         identifier: "ServerPropertiesForPatchInput",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(209, __c26, 1)),
-          properties: S.optional(__S(227, __c28, 3)),
-          tags: S.optional(__S(5, __c0, 5)),
+          sku: S.optional(__S(192, __c6, 0)),
+          identity: S.optional(__S(2625, __c82, 1)),
+          properties: S.optional(__S(2914, __c91, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6361,14 +6521,18 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServerRequest" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           virtualEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(39, __c4, 7)),
+          properties: S.optional(__S(3136, __c98, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6382,7 +6546,130 @@ function __c28(j: number): any {
       });
   }
 }
-
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3008, __c94, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          charset: S.optional(S.String),
+          collation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseProperties" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateDatabaseResponse",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migrationInstanceResourceId: S.optional(S.String),
+          migrationMode: S.optional(S.String),
+          migrationOption: S.optional(S.String),
+          sourceType: S.optional(S.String),
+          sslMode: S.optional(S.String),
+          sourceDbServerResourceId: S.optional(S.String),
+          sourceDbServerFullyQualifiedDomainName: S.optional(S.String),
+          targetDbServerFullyQualifiedDomainName: S.optional(S.String),
+          secretParameters: S.optional(__S(173, __c5, 13)),
+          dbsToMigrate: S.optional(__S(224, __c7, 0)),
+          setupLogicalReplicationOnSourceDbIfNeeded: S.optional(S.String),
+          overwriteDbsInTarget: S.optional(S.String),
+          migrationWindowStartTimeInUtc: S.optional(S.String),
+          migrationWindowEndTimeInUtc: S.optional(S.String),
+          migrateRoles: S.optional(S.String),
+          startDataMigration: S.optional(S.String),
+          triggerCutover: S.optional(S.String),
+          dbsToTriggerCutoverOn: S.optional(__S(224, __c7, 0)),
+          cancel: S.optional(S.String),
+          dbsToCancelMigrationOn: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "MigrationPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          migrationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3072, __c96, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateMigrationRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          virtualEndpointName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3136, __c98, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVirtualEndpointRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          members: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualEndpointResourcePropertiesInput",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

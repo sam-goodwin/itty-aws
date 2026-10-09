@@ -2058,8 +2058,8 @@ export const createDrain: API.OperationMethod<
   CreateDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateDrainRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateDrainResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDrainRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2073,8 +2073,8 @@ export const deleteDrain: API.OperationMethod<
   DeleteDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteDrainRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteDrainResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteDrainRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2088,8 @@ export const getDrain: API.OperationMethod<
   GetDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetDrainRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetDrainResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetDrainRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2103,8 @@ export const getDrains: API.OperationMethod<
   GetDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetDrainsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetDrainsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetDrainsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetDrainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2118,8 @@ export const testDrain: API.OperationMethod<
   TestDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<TestDrainRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<TestDrainResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<TestDrainRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<TestDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const updateDrain: API.OperationMethod<
   UpdateDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateDrainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateDrainResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateDrainRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<UpdateDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2144,15 +2144,37 @@ export const updateDrain: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
           filter: S.Unknown,
         }),
       ).annotate({ identifier: "CreateDrainRequestFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+          projects: S.String,
+          projectIds: S.optional(__S(16, __c2, 0)),
+          filter: S.optional(__S(0, __c0, 0)),
+          schemas: __S(9, __c1, 1),
+          delivery: S.optional(S.Unknown),
+          sampling: S.optional(__S(18, __c2, 2)),
+          transforms: S.optional(__S(20, __c2, 4)),
+          source: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/drains", code: 200 })),
+      ).annotate({ identifier: "CreateDrainRequest" });
     case 2:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDrainResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -2160,9 +2182,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDrainRequestSchemasValue",
       });
-    case 3:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2173,9 +2201,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDrainRequestSamplingItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2183,33 +2211,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDrainRequestTransformsItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 4:
+      return S.Array(__S(19, __c2, 3));
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          name: S.String,
-          projects: S.String,
-          projectIds: S.optional(__S(0, __c0, 0)),
-          filter: S.optional(__S(1, __c0, 1)),
-          schemas: __S(3, __c0, 3),
-          delivery: S.optional(S.Unknown),
-          sampling: S.optional(__S(5, __c0, 5)),
-          transforms: S.optional(__S(7, __c0, 7)),
-          source: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/drains", code: 200 })),
-      ).annotate({ identifier: "CreateDrainRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDrainResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2217,11 +2225,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/drains/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteDrainRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDrainResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2229,11 +2241,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/drains/{id}", code: 200 })),
       ).annotate({ identifier: "GetDrainRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDrainResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -2242,7 +2258,7 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/drains", code: 200 })),
       ).annotate({ identifier: "GetDrainsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           drains: S.Unknown,
@@ -2250,14 +2266,14 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetDrainsResponse" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          schemas: __S(3, __c0, 3),
+          schemas: __S(9, __c1, 1),
           delivery: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/drains/test", code: 200 })),
       ).annotate({ identifier: "TestDrainRequest" });
@@ -2265,7 +2281,11 @@ function __c2(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "TestDrainResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2273,23 +2293,22 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
           projects: S.optional(S.String),
-          projectIds: S.optional(S.NullOr(__S(0, __c0, 0))),
+          projectIds: S.optional(S.NullOr(__S(16, __c2, 0))),
           filter: S.optional(S.Unknown),
-          schemas: S.optional(__S(3, __c0, 3)),
+          schemas: S.optional(__S(9, __c1, 1)),
           delivery: S.optional(S.Unknown),
-          sampling: S.optional(S.NullOr(__S(5, __c0, 5))),
-          transforms: S.optional(S.NullOr(__S(7, __c0, 7))),
+          sampling: S.optional(S.NullOr(__S(18, __c2, 2))),
+          transforms: S.optional(S.NullOr(__S(20, __c2, 4))),
           status: S.optional(S.String),
           source: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/drains/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDrainRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDrainResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

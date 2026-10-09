@@ -118,8 +118,8 @@ export const getUserLicense: API.OperationMethod<
   GetUserLicenseError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetUserLicenseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UserLicense>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetUserLicenseRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<UserLicense>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -164,7 +164,11 @@ function __c0(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerLicense" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
@@ -177,7 +181,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserLicenseRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           editionId: S.optional(S.String),
@@ -192,7 +196,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "UserLicense" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

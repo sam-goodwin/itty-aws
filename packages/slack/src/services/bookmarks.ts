@@ -84,7 +84,7 @@ export const addBookmark: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddBookmarkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddBookmarkResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<AddBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -98,8 +98,8 @@ export const editBookmark: API.OperationMethod<
   EditBookmarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<EditBookmarkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EditBookmarkResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<EditBookmarkRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EditBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -113,8 +113,8 @@ export const listBookmarks: API.OperationMethod<
   ListBookmarksError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListBookmarksRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListBookmarksResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListBookmarksRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListBookmarksResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const removeBookmark: API.OperationMethod<
   RemoveBookmarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RemoveBookmarkRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RemoveBookmarkResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<RemoveBookmarkRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<RemoveBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -151,14 +151,22 @@ function __c0(j: number): any {
           parent_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/bookmarks.add", code: 200 })),
       ).annotate({ identifier: "AddBookmarkRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           bookmark: S.Unknown,
         }),
       ).annotate({ identifier: "AddBookmarkResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.optional(S.String),
@@ -168,22 +176,30 @@ function __c0(j: number): any {
           emoji: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/bookmarks.edit", code: 200 })),
       ).annotate({ identifier: "EditBookmarkRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/bookmarks.list", code: 200 })),
       ).annotate({ identifier: "ListBookmarksRequest" });
-    case 4:
+    case 1:
       return S.Array(S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          bookmarks: __S(4, __c0, 4),
+          bookmarks: __S(13, __c3, 1),
         }),
       ).annotate({ identifier: "ListBookmarksResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.optional(S.String),
@@ -191,7 +207,7 @@ function __c0(j: number): any {
           quip_section_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/bookmarks.remove", code: 200 })),
       ).annotate({ identifier: "RemoveBookmarkRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -199,7 +215,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RemoveBookmarkResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

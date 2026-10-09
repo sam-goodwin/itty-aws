@@ -197,7 +197,7 @@ export const getDomains: API.OperationMethod<
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetDomainsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Domain>,
+  output: __S(8, __c1, 0) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -211,8 +211,8 @@ export const getDomainsTrafficStats: API.OperationMethod<
   GetDomainsTrafficStatsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetDomainsTrafficStatsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<TrafficStats>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetDomainsTrafficStatsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<TrafficStats>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -227,8 +227,8 @@ export const listDomains: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListDomainsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListDomainsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListTrafficStatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListDomainsTrafficStatsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListTrafficStatsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListDomainsTrafficStatsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListTrafficStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -267,7 +267,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainsRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -275,7 +279,11 @@ function __c0(j: number): any {
           permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "Domain" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -289,19 +297,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDomainsTrafficStatsRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sampleIps: S.optional(__S(3, __c0, 3)),
+          sampleIps: S.optional(__S(24, __c3, 0)),
           ipCount: S.optional(S.String),
           reputation: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpReputation" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           errorType: S.optional(S.String),
@@ -309,40 +321,40 @@ function __c0(j: number): any {
           errorRatio: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeliveryError" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           spamRatio: S.optional(S.Number),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "FeedbackLoop" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(29, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           domainReputation: S.optional(S.String),
           dkimSuccessRatio: S.optional(S.Number),
           outboundEncryptionRatio: S.optional(S.Number),
-          ipReputations: S.optional(__S(5, __c0, 5)),
+          ipReputations: S.optional(__S(26, __c3, 2)),
           userReportedSpamRatio: S.optional(S.Number),
           dmarcSuccessRatio: S.optional(S.Number),
           userReportedSpamRatioLowerBound: S.optional(S.Number),
-          deliveryErrors: S.optional(__S(7, __c0, 7)),
+          deliveryErrors: S.optional(__S(28, __c3, 4)),
           spfSuccessRatio: S.optional(S.Number),
-          spammyFeedbackLoops: S.optional(__S(9, __c1, 1)),
+          spammyFeedbackLoops: S.optional(__S(30, __c3, 6)),
           userReportedSpamRatioUpperBound: S.optional(S.Number),
           name: S.optional(S.String),
           inboundEncryptionRatio: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TrafficStats" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -355,16 +367,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(12, __c1, 4)),
+          domains: S.optional(__S(33, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "endDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -386,22 +402,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListDomainsTrafficStatsRequest",
       });
-    case 7:
-      return S.Array(__S(10, __c1, 2));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(31, __c3, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          trafficStats: S.optional(__S(15, __c1, 7)),
+          trafficStats: S.optional(__S(41, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTrafficStatsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

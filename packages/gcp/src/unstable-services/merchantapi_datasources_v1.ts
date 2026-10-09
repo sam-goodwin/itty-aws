@@ -346,8 +346,8 @@ export const createAccountsDataSources: API.OperationMethod<
   CreateAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const deleteAccountsDataSources: API.OperationMethod<
   DeleteAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAccountsDataSourcesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteAccountsDataSourcesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const fetchAccountsDataSources: API.OperationMethod<
   FetchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<FetchAccountsDataSourcesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(80, __c5, 0) as any as S.Schema<FetchAccountsDataSourcesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const getAccountsDataSources: API.OperationMethod<
   GetAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const getAccountsDataSourcesFileUploads: API.OperationMethod<
   GetAccountsDataSourcesFileUploadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<FileUpload>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<FileUpload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAccountsDataSourcesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListDataSourcesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListAccountsDataSourcesRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<ListDataSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const patchAccountsDataSources: API.OperationMethod<
   PatchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchAccountsDataSourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSource>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchAccountsDataSourcesRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -462,6 +462,53 @@ export const patchAccountsDataSources: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(62, __c3, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "datasources/v1/{+name}",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAccountsDataSourcesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(62, __c3, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "datasources/v1/{+parent}/dataSources",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsDataSourcesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ProductReviewDataSource",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -486,12 +533,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DataSourceReference" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(50, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           contentLanguage: S.optional(S.String),
-          referencingPrimaryDataSources: S.optional(__S(3, __c0, 3)),
+          referencingPrimaryDataSources: S.optional(__S(51, __c3, 3)),
           feedLabel: S.optional(S.String),
         }),
       ).annotate({
@@ -524,92 +571,69 @@ function __c0(j: number): any {
           fetchUri: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String),
-          timeOfDay: S.optional(__S(6, __c0, 6)),
+          timeOfDay: S.optional(__S(54, __c3, 6)),
           dayOfWeek: S.optional(S.String),
           frequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "FetchSettings" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
-          fetchSettings: S.optional(__S(7, __c0, 7)),
+          fetchSettings: S.optional(__S(55, __c3, 7)),
           fileInputType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileInput" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          takeFromDataSources: S.optional(__S(3, __c0, 3)),
+          takeFromDataSources: S.optional(__S(51, __c3, 3)),
         }),
       ).annotate({ identifier: "DefaultRule" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           destination: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(58, __c3, 10));
+    case 12:
       return S.Array(S.String);
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           contentLanguage: S.optional(S.String),
-          defaultRule: S.optional(__S(9, __c1, 1)),
-          destinations: S.optional(__S(11, __c1, 3)),
+          defaultRule: S.optional(__S(57, __c3, 9)),
+          destinations: S.optional(__S(59, __c3, 11)),
           legacyLocal: S.optional(S.Boolean),
           feedLabel: S.optional(S.String),
-          countries: S.optional(__S(12, __c1, 4)),
+          countries: S.optional(__S(60, __c3, 12)),
         }),
       ).annotate({ identifier: "PrimaryProductDataSource" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ProductReviewDataSource",
-      });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          promotionDataSource: S.optional(__S(0, __c0, 0)),
+          promotionDataSource: S.optional(__S(48, __c3, 0)),
           displayName: S.optional(S.String),
-          localInventoryDataSource: S.optional(__S(1, __c0, 1)),
+          localInventoryDataSource: S.optional(__S(49, __c3, 1)),
           name: S.optional(S.String),
-          supplementalProductDataSource: S.optional(__S(4, __c0, 4)),
-          regionalInventoryDataSource: S.optional(__S(5, __c0, 5)),
-          fileInput: S.optional(__S(8, __c1, 0)),
+          supplementalProductDataSource: S.optional(__S(52, __c3, 4)),
+          regionalInventoryDataSource: S.optional(__S(53, __c3, 5)),
+          fileInput: S.optional(__S(56, __c3, 8)),
           dataSourceId: S.optional(S.String),
-          primaryProductDataSource: S.optional(__S(13, __c1, 5)),
+          primaryProductDataSource: S.optional(__S(61, __c3, 13)),
           input: S.optional(S.String),
-          productReviewDataSource: S.optional(__S(14, __c1, 6)),
-          merchantReviewDataSource: S.optional(__S(14, __c1, 6)),
+          productReviewDataSource: S.optional(__S(32, __c2, 0)),
+          merchantReviewDataSource: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "DataSource" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "datasources/v1/{+parent}/dataSources",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsDataSourcesRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -623,11 +647,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsDataSourcesRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -638,7 +666,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FetchAccountsDataSourcesRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -652,7 +684,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAccountsDataSourcesRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -666,7 +702,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAccountsDataSourcesFileUploadsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           documentationUri: S.optional(S.String),
@@ -677,13 +713,13 @@ function __c2(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Issue" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.optional(S.String),
-          issues: S.optional(__S(22, __c2, 6)),
+          issues: S.optional(__S(114, __c7, 2)),
           itemsUpdated: S.optional(S.String),
           processingState: S.optional(S.String),
           uploadTime: S.optional(S.String),
@@ -694,7 +730,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "FileUpload" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -713,33 +749,16 @@ function __c3(j: number): any {
         identifier: "ListAccountsDataSourcesRequest",
       });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(62, __c3, 14));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dataSources: S.optional(__S(25, __c3, 1)),
+          dataSources: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "datasources/v1/{+name}",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountsDataSourcesRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

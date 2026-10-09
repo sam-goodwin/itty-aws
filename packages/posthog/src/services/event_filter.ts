@@ -67,7 +67,7 @@ export const createEventFilter: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateEventFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EventFilterConfig>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventFilterConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -81,8 +81,8 @@ export const getEventFilter: API.OperationMethod<
   GetEventFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetEventFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EventFilterConfig>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetEventFilterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventFilterConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -96,8 +96,8 @@ export const getEventFilterMetrics: API.OperationMethod<
   GetEventFilterMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetEventFilterMetricsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AppMetricsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetEventFilterMetricsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<AppMetricsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -111,8 +111,8 @@ export const getEventFilterMetricsTotal: API.OperationMethod<
   GetEventFilterMetricsTotalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetEventFilterMetricsTotalRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<AppMetricsTotalsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetEventFilterMetricsTotalRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<AppMetricsTotalsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -132,7 +132,11 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/event_filter/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateEventFilterRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -143,7 +147,11 @@ function __c0(j: number): any {
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventFilterConfig" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -151,7 +159,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/event_filter/", code: 200 }),
         ),
       ).annotate({ identifier: "GetEventFilterRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -165,31 +177,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetEventFilterMetricsRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.String);
-    case 5:
+    case 2:
       return S.Array(S.Number);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          values: S.optional(__S(5, __c0, 5)),
+          values: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "AppMetricSeries" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(4, __c0, 4)),
-          series: S.optional(__S(7, __c0, 7)),
+          labels: S.optional(__S(25, __c3, 1)),
+          series: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "AppMetricsResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -203,17 +215,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEventFilterMetricsTotalRequest",
       });
-    case 2:
+    case 1:
       return S.Record(S.String, S.Number);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          totals: S.optional(__S(10, __c1, 2)),
+          totals: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "AppMetricsTotalsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -9757,8 +9757,8 @@ export const auditAdvertisers: API.OperationMethod<
   AuditAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AuditAdvertisersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AuditAdvertiserResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<AuditAdvertisersRequest>,
+  output: __S(5921, __c185, 1) as any as S.Schema<AuditAdvertiserResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9778,8 +9778,8 @@ export const bulkCreateAdvertisersAdAssets: API.OperationMethod<
   BulkCreateAdvertisersAdAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BulkCreateAdvertisersAdAssetsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BulkCreateAdAssetsResponse>,
+  input: __S(6305, __c197, 1) as any as S.Schema<BulkCreateAdvertisersAdAssetsRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<BulkCreateAdAssetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9799,8 +9799,8 @@ export const bulkEditAdvertisersChannelsSites: API.OperationMethod<
   BulkEditAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BulkEditAdvertisersChannelsSitesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BulkEditSitesResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<BulkEditAdvertisersChannelsSitesRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<BulkEditSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9821,11 +9821,11 @@ export const bulkEditAdvertisersLocationListsAssignedLocations: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    16,
-    __c2,
-    0,
+    7265,
+    __c227,
+    1,
   ) as any as S.Schema<BulkEditAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BulkEditAssignedLocationsResponse>,
+  output: __S(7266, __c227, 2) as any as S.Schema<BulkEditAssignedLocationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9846,11 +9846,11 @@ export const bulkEditAdvertisersNegativeKeywordListsNegativeKeywords: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    7681,
+    __c240,
+    1,
   ) as any as S.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<BulkEditNegativeKeywordsResponse>,
+  output: __S(7744, __c242, 0) as any as S.Schema<BulkEditNegativeKeywordsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9871,11 +9871,11 @@ export const bulkEditAssignedTargetingOptionsAdvertisersAdGroups: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    1,
+    __c0,
+    1,
   ) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<BulkEditAdGroupAssignedTargetingOptionsResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<BulkEditAdGroupAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9896,11 +9896,11 @@ export const bulkEditAssignedTargetingOptionsAdvertisersLineItems: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    105,
-    __c13,
+    737,
+    __c23,
     1,
   ) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<BulkEditAssignedTargetingOptionsResponse>,
+  output: __S(738, __c23, 2) as any as S.Schema<BulkEditAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9920,8 +9920,8 @@ export const bulkEditAssignedUserRolesUsers: API.OperationMethod<
   BulkEditAssignedUserRolesUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<BulkEditAssignedUserRolesUsersRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<BulkEditAssignedUserRolesResponse>,
+  input: __S(1121, __c35, 1) as any as S.Schema<BulkEditAssignedUserRolesUsersRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<BulkEditAssignedUserRolesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9942,11 +9942,11 @@ export const bulkEditInventorySourceGroupsAssignedInventorySources: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    115,
-    __c14,
-    3,
+    1633,
+    __c51,
+    1,
   ) as any as S.Schema<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<BulkEditAssignedInventorySourcesResponse>,
+  output: __S(1634, __c51, 2) as any as S.Schema<BulkEditAssignedInventorySourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9966,8 +9966,8 @@ export const bulkEditPartnersChannelsSites: API.OperationMethod<
   BulkEditPartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<BulkEditPartnersChannelsSitesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BulkEditSitesResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<BulkEditPartnersChannelsSitesRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<BulkEditSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9987,11 +9987,11 @@ export const bulkListAssignedTargetingOptionsAdvertisersAdGroups: API.PaginatedO
   BulkListAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>,
+  output: __S(2435, __c76, 3) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10012,11 +10012,11 @@ export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.Paginated
   BulkListAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>,
+  output: __S(2819, __c88, 3) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10037,8 +10037,8 @@ export const bulkUpdateAdvertisersLineItems: API.OperationMethod<
   BulkUpdateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<BulkUpdateAdvertisersLineItemsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<BulkUpdateLineItemsResponse>,
+  input: __S(3169, __c99, 1) as any as S.Schema<BulkUpdateAdvertisersLineItemsRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<BulkUpdateLineItemsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10058,8 +10058,8 @@ export const createAdvertisers: API.OperationMethod<
   CreateAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateAdvertisersRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<Advertiser>,
+  input: __S(3808, __c119, 0) as any as S.Schema<CreateAdvertisersRequest>,
+  output: __S(3880, __c121, 8) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10079,8 +10079,8 @@ export const createAdvertisersAdAssets: API.OperationMethod<
   CreateAdvertisersAdAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<CreateAdvertisersAdAssetsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AdAsset>,
+  input: __S(4032, __c126, 0) as any as S.Schema<CreateAdvertisersAdAssetsRequest>,
+  output: __S(6369, __c199, 1) as any as S.Schema<AdAsset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10100,8 +10100,8 @@ export const createAdvertisersAdGroupAds: API.OperationMethod<
   CreateAdvertisersAdGroupAdsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CreateAdvertisersAdGroupAdsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<AdGroupAd>,
+  input: __S(4096, __c128, 0) as any as S.Schema<CreateAdvertisersAdGroupAdsRequest>,
+  output: __S(4239, __c132, 15) as any as S.Schema<AdGroupAd>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10121,8 +10121,8 @@ export const createAdvertisersAdGroups: API.OperationMethod<
   CreateAdvertisersAdGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CreateAdvertisersAdGroupsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<AdGroup>,
+  input: __S(4256, __c133, 0) as any as S.Schema<CreateAdvertisersAdGroupsRequest>,
+  output: __S(4294, __c134, 6) as any as S.Schema<AdGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10143,11 +10143,11 @@ export const createAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10168,11 +10168,11 @@ export const createAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    245,
-    __c30,
-    5,
+    4352,
+    __c136,
+    0,
   ) as any as S.Schema<CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<YoutubeAssetAssociation>,
+  output: __S(4392, __c137, 8) as any as S.Schema<YoutubeAssetAssociation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10192,8 +10192,8 @@ export const createAdvertisersCampaigns: API.OperationMethod<
   CreateAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<CreateAdvertisersCampaignsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Campaign>,
+  input: __S(4416, __c138, 0) as any as S.Schema<CreateAdvertisersCampaignsRequest>,
+  output: __S(4486, __c140, 6) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10213,8 +10213,8 @@ export const createAdvertisersChannels: API.OperationMethod<
   CreateAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<CreateAdvertisersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(4512, __c141, 0) as any as S.Schema<CreateAdvertisersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10234,8 +10234,8 @@ export const createAdvertisersChannelsSites: API.OperationMethod<
   CreateAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<CreateAdvertisersChannelsSitesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Site>,
+  input: __S(4576, __c143, 0) as any as S.Schema<CreateAdvertisersChannelsSitesRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10255,8 +10255,8 @@ export const createAdvertisersCreatives: API.OperationMethod<
   CreateAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<CreateAdvertisersCreativesRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<Creative>,
+  input: __S(4608, __c144, 0) as any as S.Schema<CreateAdvertisersCreativesRequest>,
+  output: __S(4658, __c145, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10276,8 +10276,8 @@ export const createAdvertisersInsertionOrders: API.OperationMethod<
   CreateAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<CreateAdvertisersInsertionOrdersRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<InsertionOrder>,
+  input: __S(4704, __c147, 0) as any as S.Schema<CreateAdvertisersInsertionOrdersRequest>,
+  output: __S(4740, __c148, 4) as any as S.Schema<InsertionOrder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10297,8 +10297,8 @@ export const createAdvertisersLineItems: API.OperationMethod<
   CreateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<CreateAdvertisersLineItemsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LineItem>,
+  input: __S(4768, __c149, 0) as any as S.Schema<CreateAdvertisersLineItemsRequest>,
+  output: __S(3441, __c107, 17) as any as S.Schema<LineItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10319,11 +10319,11 @@ export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    286,
-    __c35,
-    6,
+    4800,
+    __c150,
+    0,
   ) as any as S.Schema<CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10344,11 +10344,11 @@ export const createAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    287,
-    __c35,
-    7,
+    4832,
+    __c151,
+    0,
   ) as any as S.Schema<CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<YoutubeAssetAssociation>,
+  output: __S(4392, __c137, 8) as any as S.Schema<YoutubeAssetAssociation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10368,8 +10368,8 @@ export const createAdvertisersLocationLists: API.OperationMethod<
   CreateAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<CreateAdvertisersLocationListsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<LocationList>,
+  input: __S(4864, __c152, 0) as any as S.Schema<CreateAdvertisersLocationListsRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<LocationList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10390,11 +10390,11 @@ export const createAdvertisersLocationListsAssignedLocations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    290,
-    __c36,
-    2,
+    4928,
+    __c154,
+    0,
   ) as any as S.Schema<CreateAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AssignedLocation>,
+  output: __S(7328, __c229, 0) as any as S.Schema<AssignedLocation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10414,8 +10414,8 @@ export const createAdvertisersNegativeKeywordLists: API.OperationMethod<
   CreateAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<CreateAdvertisersNegativeKeywordListsRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<NegativeKeywordList>,
+  input: __S(4960, __c155, 0) as any as S.Schema<CreateAdvertisersNegativeKeywordListsRequest>,
+  output: __S(4992, __c156, 0) as any as S.Schema<NegativeKeywordList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10436,11 +10436,11 @@ export const createAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    293,
-    __c36,
-    5,
+    5024,
+    __c157,
+    0,
   ) as any as S.Schema<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<NegativeKeyword>,
+  output: __S(7776, __c243, 0) as any as S.Schema<NegativeKeyword>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10461,11 +10461,11 @@ export const createAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    294,
-    __c36,
-    6,
+    5056,
+    __c158,
+    0,
   ) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10485,8 +10485,8 @@ export const createCustomBiddingAlgorithms: API.OperationMethod<
   CreateCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<CreateCustomBiddingAlgorithmsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: __S(5088, __c159, 0) as any as S.Schema<CreateCustomBiddingAlgorithmsRequest>,
+  output: __S(5122, __c160, 2) as any as S.Schema<CustomBiddingAlgorithm>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10506,8 +10506,8 @@ export const createCustomBiddingAlgorithmsRules: API.OperationMethod<
   CreateCustomBiddingAlgorithmsRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<CreateCustomBiddingAlgorithmsRulesRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<CustomBiddingAlgorithmRules>,
+  input: __S(5152, __c161, 0) as any as S.Schema<CreateCustomBiddingAlgorithmsRulesRequest>,
+  output: __S(5185, __c162, 1) as any as S.Schema<CustomBiddingAlgorithmRules>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10527,8 +10527,8 @@ export const createCustomBiddingAlgorithmsScripts: API.OperationMethod<
   CreateCustomBiddingAlgorithmsScriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<CreateCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<CustomBiddingScript>,
+  input: __S(5248, __c164, 0) as any as S.Schema<CreateCustomBiddingAlgorithmsScriptsRequest>,
+  output: __S(5314, __c166, 2) as any as S.Schema<CustomBiddingScript>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10548,8 +10548,8 @@ export const createFirstPartyAndPartnerAudiences: API.OperationMethod<
   CreateFirstPartyAndPartnerAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<CreateFirstPartyAndPartnerAudiencesRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<FirstPartyAndPartnerAudience>,
+  input: __S(5344, __c167, 0) as any as S.Schema<CreateFirstPartyAndPartnerAudiencesRequest>,
+  output: __S(5408, __c169, 0) as any as S.Schema<FirstPartyAndPartnerAudience>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10569,8 +10569,8 @@ export const createGuaranteedOrders: API.OperationMethod<
   CreateGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<CreateGuaranteedOrdersRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<GuaranteedOrder>,
+  input: __S(5440, __c170, 0) as any as S.Schema<CreateGuaranteedOrdersRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<GuaranteedOrder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10590,8 +10590,8 @@ export const createInventorySourceGroups: API.OperationMethod<
   CreateInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<CreateInventorySourceGroupsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<InventorySourceGroup>,
+  input: __S(5504, __c172, 0) as any as S.Schema<CreateInventorySourceGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<InventorySourceGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10612,11 +10612,11 @@ export const createInventorySourceGroupsAssignedInventorySources: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    320,
-    __c40,
+    5568,
+    __c174,
     0,
   ) as any as S.Schema<CreateInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<AssignedInventorySource>,
+  output: __S(1696, __c53, 0) as any as S.Schema<AssignedInventorySource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10636,8 +10636,8 @@ export const createInventorySources: API.OperationMethod<
   CreateInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<CreateInventorySourcesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<InventorySource>,
+  input: __S(5600, __c175, 0) as any as S.Schema<CreateInventorySourcesRequest>,
+  output: __S(5640, __c176, 8) as any as S.Schema<InventorySource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10657,8 +10657,8 @@ export const createPartnersChannels: API.OperationMethod<
   CreatePartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<CreatePartnersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(5696, __c178, 0) as any as S.Schema<CreatePartnersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10678,8 +10678,8 @@ export const createPartnersChannelsSites: API.OperationMethod<
   CreatePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<CreatePartnersChannelsSitesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Site>,
+  input: __S(5728, __c179, 0) as any as S.Schema<CreatePartnersChannelsSitesRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10700,11 +10700,11 @@ export const createPartnersTargetingTypesAssignedTargetingOptions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    336,
-    __c42,
+    5760,
+    __c180,
     0,
   ) as any as S.Schema<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10724,8 +10724,8 @@ export const createSdfdownloadtasks: API.OperationMethod<
   CreateSdfdownloadtasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<CreateSdfdownloadtasksRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<Operation>,
+  input: __S(5796, __c181, 4) as any as S.Schema<CreateSdfdownloadtasksRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10745,8 +10745,8 @@ export const createUsers: API.OperationMethod<
   CreateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<CreateUsersRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<User>,
+  input: __S(5856, __c183, 0) as any as S.Schema<CreateUsersRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10766,8 +10766,8 @@ export const deleteAdvertisers: API.OperationMethod<
   DeleteAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<DeleteAdvertisersRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(5952, __c186, 0) as any as S.Schema<DeleteAdvertisersRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10787,8 +10787,8 @@ export const deleteAdvertisersAdGroupAds: API.OperationMethod<
   DeleteAdvertisersAdGroupAdsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<DeleteAdvertisersAdGroupAdsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteAdvertisersAdGroupAdsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10808,8 +10808,8 @@ export const deleteAdvertisersAdGroups: API.OperationMethod<
   DeleteAdvertisersAdGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<DeleteAdvertisersAdGroupsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6048, __c189, 0) as any as S.Schema<DeleteAdvertisersAdGroupsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10830,11 +10830,11 @@ export const deleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    349,
-    __c43,
-    5,
+    6080,
+    __c190,
+    0,
   ) as any as S.Schema<DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10855,11 +10855,11 @@ export const deleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    350,
-    __c43,
-    6,
+    6112,
+    __c191,
+    0,
   ) as any as S.Schema<DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10879,8 +10879,8 @@ export const deleteAdvertisersCampaigns: API.OperationMethod<
   DeleteAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<DeleteAdvertisersCampaignsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6144, __c192, 0) as any as S.Schema<DeleteAdvertisersCampaignsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10900,8 +10900,8 @@ export const deleteAdvertisersChannelsSites: API.OperationMethod<
   DeleteAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DeleteAdvertisersChannelsSitesRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6176, __c193, 0) as any as S.Schema<DeleteAdvertisersChannelsSitesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10921,8 +10921,8 @@ export const deleteAdvertisersCreatives: API.OperationMethod<
   DeleteAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<DeleteAdvertisersCreativesRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6208, __c194, 0) as any as S.Schema<DeleteAdvertisersCreativesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10942,8 +10942,8 @@ export const deleteAdvertisersInsertionOrders: API.OperationMethod<
   DeleteAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<DeleteAdvertisersInsertionOrdersRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6240, __c195, 0) as any as S.Schema<DeleteAdvertisersInsertionOrdersRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10963,8 +10963,8 @@ export const deleteAdvertisersLineItems: API.OperationMethod<
   DeleteAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<DeleteAdvertisersLineItemsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6272, __c196, 0) as any as S.Schema<DeleteAdvertisersLineItemsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10985,11 +10985,11 @@ export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    356,
-    __c44,
-    4,
+    6400,
+    __c200,
+    0,
   ) as any as S.Schema<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11010,11 +11010,11 @@ export const deleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    357,
-    __c44,
-    5,
+    6432,
+    __c201,
+    0,
   ) as any as S.Schema<DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11035,11 +11035,11 @@ export const deleteAdvertisersLocationListsAssignedLocations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    358,
-    __c44,
-    6,
+    6464,
+    __c202,
+    0,
   ) as any as S.Schema<DeleteAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11059,8 +11059,8 @@ export const deleteAdvertisersNegativeKeywordLists: API.OperationMethod<
   DeleteAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6496, __c203, 0) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11081,11 +11081,11 @@ export const deleteAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    360,
-    __c45,
+    6528,
+    __c204,
     0,
   ) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11106,11 +11106,11 @@ export const deleteAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    361,
-    __c45,
-    1,
+    6560,
+    __c205,
+    0,
   ) as any as S.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11130,8 +11130,8 @@ export const deleteInventorySourceGroups: API.OperationMethod<
   DeleteInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<DeleteInventorySourceGroupsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6592, __c206, 0) as any as S.Schema<DeleteInventorySourceGroupsRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11152,11 +11152,11 @@ export const deleteInventorySourceGroupsAssignedInventorySources: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    363,
-    __c45,
-    3,
+    6624,
+    __c207,
+    0,
   ) as any as S.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11176,8 +11176,8 @@ export const deletePartnersChannelsSites: API.OperationMethod<
   DeletePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<DeletePartnersChannelsSitesRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6656, __c208, 0) as any as S.Schema<DeletePartnersChannelsSitesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11198,11 +11198,11 @@ export const deletePartnersTargetingTypesAssignedTargetingOptions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    365,
-    __c45,
-    5,
+    6688,
+    __c209,
+    0,
   ) as any as S.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11222,8 +11222,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Empty>,
+  input: __S(6912, __c216, 0) as any as S.Schema<DeleteUsersRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11237,8 +11237,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleBytestreamMedia>,
+  input: __S(6944, __c217, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleBytestreamMedia>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11258,8 +11258,8 @@ export const duplicateAdvertisersLineItems: API.OperationMethod<
   DuplicateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<DuplicateAdvertisersLineItemsRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<DuplicateLineItemResponse>,
+  input: __S(6977, __c218, 1) as any as S.Schema<DuplicateAdvertisersLineItemsRequest>,
+  output: __S(6978, __c218, 2) as any as S.Schema<DuplicateLineItemResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11279,8 +11279,12 @@ export const editAssignedTargetingOptionsAdvertisers: API.OperationMethod<
   EditAssignedTargetingOptionsAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<EditAssignedTargetingOptionsAdvertisersRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse>,
+  input: __S(7009, __c219, 1) as any as S.Schema<EditAssignedTargetingOptionsAdvertisersRequest>,
+  output: __S(
+    7040,
+    __c220,
+    0,
+  ) as any as S.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11300,8 +11304,8 @@ export const editAssignedTargetingOptionsPartners: API.OperationMethod<
   EditAssignedTargetingOptionsPartnersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<EditAssignedTargetingOptionsPartnersRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>,
+  input: __S(7073, __c221, 1) as any as S.Schema<EditAssignedTargetingOptionsPartnersRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11322,11 +11326,11 @@ export const editCustomerMatchMembersFirstPartyAndPartnerAudiences: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    377,
-    __c47,
+    7105,
+    __c222,
     1,
   ) as any as S.Schema<EditCustomerMatchMembersFirstPartyAndPartnerAudiencesRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<EditCustomerMatchMembersResponse>,
+  output: __S(7106, __c222, 2) as any as S.Schema<EditCustomerMatchMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11347,11 +11351,11 @@ export const editGuaranteedOrderReadAccessorsGuaranteedOrders: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    380,
-    __c47,
-    4,
+    7137,
+    __c223,
+    1,
   ) as any as S.Schema<EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<EditGuaranteedOrderReadAccessorsResponse>,
+  output: __S(7138, __c223, 2) as any as S.Schema<EditGuaranteedOrderReadAccessorsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11372,11 +11376,11 @@ export const editInventorySourceReadWriteAccessorsInventorySources: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    384,
-    __c48,
-    0,
+    7170,
+    __c224,
+    2,
   ) as any as S.Schema<EditInventorySourceReadWriteAccessorsInventorySourcesRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<InventorySourceAccessors>,
+  output: __S(5666, __c177, 2) as any as S.Schema<InventorySourceAccessors>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11397,11 +11401,11 @@ export const generateReachForecastAdvertisersReachForecast: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    393,
-    __c49,
-    1,
+    7208,
+    __c225,
+    8,
   ) as any as S.Schema<GenerateReachForecastAdvertisersReachForecastRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<GenerateReachForecastResponse>,
+  output: __S(7216, __c225, 16) as any as S.Schema<GenerateReachForecastResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11415,8 +11419,8 @@ export const getAdvertisers: API.OperationMethod<
   GetAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<GetAdvertisersRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<Advertiser>,
+  input: __S(7232, __c226, 0) as any as S.Schema<GetAdvertisersRequest>,
+  output: __S(3880, __c121, 8) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11430,8 +11434,8 @@ export const getAdvertisersAdAssets: API.OperationMethod<
   GetAdvertisersAdAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetAdvertisersAdAssetsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AdAsset>,
+  input: __S(7360, __c230, 0) as any as S.Schema<GetAdvertisersAdAssetsRequest>,
+  output: __S(6369, __c199, 1) as any as S.Schema<AdAsset>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11445,8 +11449,8 @@ export const getAdvertisersAdGroupAds: API.OperationMethod<
   GetAdvertisersAdGroupAdsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<GetAdvertisersAdGroupAdsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<AdGroupAd>,
+  input: __S(7392, __c231, 0) as any as S.Schema<GetAdvertisersAdGroupAdsRequest>,
+  output: __S(4239, __c132, 15) as any as S.Schema<AdGroupAd>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11460,8 +11464,8 @@ export const getAdvertisersAdGroups: API.OperationMethod<
   GetAdvertisersAdGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<GetAdvertisersAdGroupsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<AdGroup>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetAdvertisersAdGroupsRequest>,
+  output: __S(4294, __c134, 6) as any as S.Schema<AdGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11480,11 +11484,11 @@ export const getAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    406,
-    __c50,
-    6,
+    7456,
+    __c233,
+    0,
   ) as any as S.Schema<GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11498,8 +11502,8 @@ export const getAdvertisersCampaigns: API.OperationMethod<
   GetAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<GetAdvertisersCampaignsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Campaign>,
+  input: __S(7488, __c234, 0) as any as S.Schema<GetAdvertisersCampaignsRequest>,
+  output: __S(4486, __c140, 6) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11513,8 +11517,8 @@ export const getAdvertisersChannels: API.OperationMethod<
   GetAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetAdvertisersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetAdvertisersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11528,8 +11532,8 @@ export const getAdvertisersCreatives: API.OperationMethod<
   GetAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<GetAdvertisersCreativesRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<Creative>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetAdvertisersCreativesRequest>,
+  output: __S(4658, __c145, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11547,8 +11551,8 @@ export const getAdvertisersInsertionOrders: API.OperationMethod<
   GetAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<GetAdvertisersInsertionOrdersRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<InsertionOrder>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetAdvertisersInsertionOrdersRequest>,
+  output: __S(4740, __c148, 4) as any as S.Schema<InsertionOrder>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11562,8 +11566,8 @@ export const getAdvertisersLineItems: API.OperationMethod<
   GetAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<GetAdvertisersLineItemsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LineItem>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetAdvertisersLineItemsRequest>,
+  output: __S(3441, __c107, 17) as any as S.Schema<LineItem>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11582,11 +11586,11 @@ export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    412,
-    __c51,
-    4,
+    7648,
+    __c239,
+    0,
   ) as any as S.Schema<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11604,8 +11608,8 @@ export const getAdvertisersLocationLists: API.OperationMethod<
   GetAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<GetAdvertisersLocationListsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<LocationList>,
+  input: __S(7808, __c244, 0) as any as S.Schema<GetAdvertisersLocationListsRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<LocationList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11623,8 +11627,8 @@ export const getAdvertisersNegativeKeywordLists: API.OperationMethod<
   GetAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<GetAdvertisersNegativeKeywordListsRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<NegativeKeywordList>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetAdvertisersNegativeKeywordListsRequest>,
+  output: __S(4992, __c156, 0) as any as S.Schema<NegativeKeywordList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11643,11 +11647,11 @@ export const getAdvertisersTargetingTypesAssignedTargetingOptions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    415,
-    __c51,
-    7,
+    7872,
+    __c246,
+    0,
   ) as any as S.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11661,8 +11665,8 @@ export const getCombinedAudiences: API.OperationMethod<
   GetCombinedAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<GetCombinedAudiencesRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<CombinedAudience>,
+  input: __S(7904, __c247, 0) as any as S.Schema<GetCombinedAudiencesRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<CombinedAudience>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11680,8 +11684,8 @@ export const getCustomBiddingAlgorithms: API.OperationMethod<
   GetCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetCustomBiddingAlgorithmsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: __S(7968, __c249, 0) as any as S.Schema<GetCustomBiddingAlgorithmsRequest>,
+  output: __S(5122, __c160, 2) as any as S.Schema<CustomBiddingAlgorithm>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11699,8 +11703,8 @@ export const getCustomBiddingAlgorithmsRules: API.OperationMethod<
   GetCustomBiddingAlgorithmsRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<GetCustomBiddingAlgorithmsRulesRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<CustomBiddingAlgorithmRules>,
+  input: __S(8000, __c250, 0) as any as S.Schema<GetCustomBiddingAlgorithmsRulesRequest>,
+  output: __S(5185, __c162, 1) as any as S.Schema<CustomBiddingAlgorithmRules>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11718,8 +11722,8 @@ export const getCustomBiddingAlgorithmsScripts: API.OperationMethod<
   GetCustomBiddingAlgorithmsScriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<GetCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<CustomBiddingScript>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetCustomBiddingAlgorithmsScriptsRequest>,
+  output: __S(5314, __c166, 2) as any as S.Schema<CustomBiddingScript>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11733,8 +11737,8 @@ export const getCustomLists: API.OperationMethod<
   GetCustomListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<GetCustomListsRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<CustomList>,
+  input: __S(8064, __c252, 0) as any as S.Schema<GetCustomListsRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<CustomList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11752,8 +11756,8 @@ export const getFirstPartyAndPartnerAudiences: API.OperationMethod<
   GetFirstPartyAndPartnerAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<GetFirstPartyAndPartnerAudiencesRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<FirstPartyAndPartnerAudience>,
+  input: __S(8128, __c254, 0) as any as S.Schema<GetFirstPartyAndPartnerAudiencesRequest>,
+  output: __S(5408, __c169, 0) as any as S.Schema<FirstPartyAndPartnerAudience>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11767,8 +11771,8 @@ export const getFloodlightGroups: API.OperationMethod<
   GetFloodlightGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<GetFloodlightGroupsRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<FloodlightGroup>,
+  input: __S(8160, __c255, 0) as any as S.Schema<GetFloodlightGroupsRequest>,
+  output: __S(8194, __c256, 2) as any as S.Schema<FloodlightGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11786,8 +11790,8 @@ export const getFloodlightGroupsFloodlightActivities: API.OperationMethod<
   GetFloodlightGroupsFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<FloodlightActivity>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<FloodlightActivity>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11801,8 +11805,8 @@ export const getGoogleAudiences: API.OperationMethod<
   GetGoogleAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<GetGoogleAudiencesRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<GoogleAudience>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetGoogleAudiencesRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<GoogleAudience>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11816,8 +11820,8 @@ export const getGuaranteedOrders: API.OperationMethod<
   GetGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<GetGuaranteedOrdersRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<GuaranteedOrder>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetGuaranteedOrdersRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<GuaranteedOrder>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11831,8 +11835,8 @@ export const getInventorySourceGroups: API.OperationMethod<
   GetInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<GetInventorySourceGroupsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<InventorySourceGroup>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetInventorySourceGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<InventorySourceGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11846,8 +11850,8 @@ export const getInventorySources: API.OperationMethod<
   GetInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<GetInventorySourcesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<InventorySource>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetInventorySourcesRequest>,
+  output: __S(5640, __c176, 8) as any as S.Schema<InventorySource>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11861,8 +11865,8 @@ export const getPartners: API.OperationMethod<
   GetPartnersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<GetPartnersRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<Partner>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetPartnersRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<Partner>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11876,8 +11880,8 @@ export const getPartnersChannels: API.OperationMethod<
   GetPartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetPartnersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetPartnersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11896,11 +11900,11 @@ export const getPartnersTargetingTypesAssignedTargetingOptions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    447,
-    __c55,
-    7,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<AssignedTargetingOption>,
+  output: __S(154, __c4, 26) as any as S.Schema<AssignedTargetingOption>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11919,11 +11923,11 @@ export const getPlannableLocationsAdvertisersReachForecast: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    448,
-    __c56,
+    672,
+    __c21,
     0,
   ) as any as S.Schema<GetPlannableLocationsAdvertisersReachForecastRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<RetrievePlannableLocationsResponse>,
+  output: __S(675, __c21, 3) as any as S.Schema<RetrievePlannableLocationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11941,8 +11945,8 @@ export const getPlannableProductsAdvertisersReachForecast: API.OperationMethod<
   GetPlannableProductsAdvertisersReachForecastError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<GetPlannableProductsAdvertisersReachForecastRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<RetrievePlannableProductsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetPlannableProductsAdvertisersReachForecastRequest>,
+  output: __S(714, __c22, 10) as any as S.Schema<RetrievePlannableProductsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11961,11 +11965,11 @@ export const getPlannableUserInterestsAdvertisersReachForecast: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    463,
-    __c57,
-    7,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<GetPlannableUserInterestsAdvertisersReachForecastRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<RetrievePlannableUserInterestsResponse>,
+  output: __S(772, __c24, 4) as any as S.Schema<RetrievePlannableUserInterestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11985,11 +11989,11 @@ export const getPlannableUserListsAdvertisersReachForecast: API.PaginatedOperati
   RetrievePlannableUserListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    468,
-    __c58,
-    4,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<GetPlannableUserListsAdvertisersReachForecastRequest>,
-  output: __S(471, __c58, 7) as any as S.Schema<RetrievePlannableUserListsResponse>,
+  output: __S(803, __c25, 3) as any as S.Schema<RetrievePlannableUserListsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12008,8 +12012,8 @@ export const getSdfdownloadtasksOperations: API.OperationMethod<
   GetSdfdownloadtasksOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<GetSdfdownloadtasksOperationsRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<Operation>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetSdfdownloadtasksOperationsRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12027,8 +12031,8 @@ export const getSdfuploadtasksOperations: API.OperationMethod<
   GetSdfuploadtasksOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<GetSdfuploadtasksOperationsRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<Operation>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetSdfuploadtasksOperationsRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12046,8 +12050,8 @@ export const getTargetingTypesTargetingOptions: API.OperationMethod<
   GetTargetingTypesTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<GetTargetingTypesTargetingOptionsRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<TargetingOption>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetTargetingTypesTargetingOptionsRequest>,
+  output: __S(946, __c29, 18) as any as S.Schema<TargetingOption>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12057,8 +12061,8 @@ export type GetUsersError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Gets a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(494, __c61, 6) as any as S.Schema<GetUsersRequest>,
-    output: __S(343, __c42, 7) as any as S.Schema<User>,
+    input: __S(960, __c30, 0) as any as S.Schema<GetUsersRequest>,
+    output: __S(5888, __c184, 0) as any as S.Schema<User>,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -12073,8 +12077,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdvertisersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<ListAdvertisersRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<ListAdvertisersResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListAdvertisersRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ListAdvertisersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12090,8 +12094,8 @@ export const listAdvertisersAdAssets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<ListAdvertisersAdAssetsRequest>,
-  output: __S(499, __c62, 3) as any as S.Schema<ListAdAssetsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListAdvertisersAdAssetsRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<ListAdAssetsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12107,8 +12111,8 @@ export const listAdvertisersAdGroupAds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdGroupAdsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<ListAdvertisersAdGroupAdsRequest>,
-  output: __S(502, __c62, 6) as any as S.Schema<ListAdGroupAdsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListAdvertisersAdGroupAdsRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ListAdGroupAdsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12124,8 +12128,8 @@ export const listAdvertisersAdGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<ListAdvertisersAdGroupsRequest>,
-  output: __S(505, __c63, 1) as any as S.Schema<ListAdGroupsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListAdvertisersAdGroupsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListAdGroupsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12146,11 +12150,11 @@ export const listAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.
   ListAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    506,
-    __c63,
-    2,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<ListAdGroupAssignedTargetingOptionsResponse>,
+  output: __S(1216, __c38, 0) as any as S.Schema<ListAdGroupAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12171,11 +12175,11 @@ export const listAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: A
   ListYoutubeAssetAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    508,
-    __c63,
-    4,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(510, __c63, 6) as any as S.Schema<ListYoutubeAssetAssociationsResponse>,
+  output: __S(1281, __c40, 1) as any as S.Schema<ListYoutubeAssetAssociationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12191,8 +12195,8 @@ export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCampaignsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<ListAdvertisersCampaignsRequest>,
-  output: __S(513, __c64, 1) as any as S.Schema<ListCampaignsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListAdvertisersCampaignsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<ListCampaignsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12208,8 +12212,8 @@ export const listAdvertisersChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<ListAdvertisersChannelsRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<ListChannelsResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListAdvertisersChannelsRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12229,8 +12233,8 @@ export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<ListAdvertisersChannelsSitesRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<ListSitesResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListAdvertisersChannelsSitesRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12246,8 +12250,8 @@ export const listAdvertisersCreatives: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<ListAdvertisersCreativesRequest>,
-  output: __S(521, __c65, 1) as any as S.Schema<ListCreativesResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListAdvertisersCreativesRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<ListCreativesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12267,8 +12271,8 @@ export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInsertionOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<ListInsertionOrdersResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListInsertionOrdersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12284,8 +12288,8 @@ export const listAdvertisersInvoices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInvoicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<ListAdvertisersInvoicesRequest>,
-  output: __S(530, __c66, 2) as any as S.Schema<ListInvoicesResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListAdvertisersInvoicesRequest>,
+  output: __S(1541, __c48, 5) as any as S.Schema<ListInvoicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12301,8 +12305,8 @@ export const listAdvertisersLineItems: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLineItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<ListAdvertisersLineItemsRequest>,
-  output: __S(533, __c66, 5) as any as S.Schema<ListLineItemsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListAdvertisersLineItemsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<ListLineItemsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12323,11 +12327,11 @@ export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API
   ListLineItemAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    534,
-    __c66,
-    6,
+    1600,
+    __c50,
+    0,
   ) as any as S.Schema<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<ListLineItemAssignedTargetingOptionsResponse>,
+  output: __S(1216, __c38, 0) as any as S.Schema<ListLineItemAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12348,11 +12352,11 @@ export const listAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: 
   ListYoutubeAssetAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    535,
-    __c66,
-    7,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest>,
-  output: __S(510, __c63, 6) as any as S.Schema<ListYoutubeAssetAssociationsResponse>,
+  output: __S(1281, __c40, 1) as any as S.Schema<ListYoutubeAssetAssociationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12372,8 +12376,8 @@ export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListAdvertisersLocationListsRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<ListLocationListsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAdvertisersLocationListsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<ListLocationListsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12394,11 +12398,11 @@ export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperati
   ListAssignedLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    539,
-    __c67,
-    3,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<ListAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<ListAssignedLocationsResponse>,
+  output: __S(1793, __c56, 1) as any as S.Schema<ListAssignedLocationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12418,8 +12422,8 @@ export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNegativeKeywordListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>,
-  output: __S(543, __c67, 7) as any as S.Schema<ListNegativeKeywordListsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ListNegativeKeywordListsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12440,11 +12444,11 @@ export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedO
   ListNegativeKeywordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    544,
-    __c68,
+    1856,
+    __c58,
     0,
   ) as any as S.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(545, __c68, 1) as any as S.Schema<ListNegativeKeywordsResponse>,
+  output: __S(1857, __c58, 1) as any as S.Schema<ListNegativeKeywordsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12465,11 +12469,11 @@ export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.Paginate
   ListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    546,
-    __c68,
-    2,
+    1888,
+    __c59,
+    0,
   ) as any as S.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(547, __c68, 3) as any as S.Schema<ListAdvertiserAssignedTargetingOptionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ListAdvertiserAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12489,8 +12493,12 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
   GcpOpContext,
   BulkListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<ListAssignedTargetingOptionsAdvertisersRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListAssignedTargetingOptionsAdvertisersRequest>,
+  output: __S(
+    1216,
+    __c38,
+    0,
+  ) as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12506,8 +12514,8 @@ export const listCombinedAudiences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCombinedAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<ListCombinedAudiencesRequest>,
-  output: __S(551, __c68, 7) as any as S.Schema<ListCombinedAudiencesResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListCombinedAudiencesRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListCombinedAudiencesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12527,8 +12535,8 @@ export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomBiddingAlgorithmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>,
-  output: __S(554, __c69, 2) as any as S.Schema<ListCustomBiddingAlgorithmsResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<ListCustomBiddingAlgorithmsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12548,8 +12556,8 @@ export const listCustomBiddingAlgorithmsRules: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomBiddingAlgorithmRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<ListCustomBiddingAlgorithmsRulesRequest>,
-  output: __S(557, __c69, 5) as any as S.Schema<ListCustomBiddingAlgorithmRulesResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListCustomBiddingAlgorithmsRulesRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ListCustomBiddingAlgorithmRulesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12569,8 +12577,8 @@ export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomBiddingScriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(560, __c70, 0) as any as S.Schema<ListCustomBiddingScriptsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListCustomBiddingScriptsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12586,8 +12594,8 @@ export const listCustomLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<ListCustomListsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<ListCustomListsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListCustomListsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListCustomListsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12607,8 +12615,8 @@ export const listFirstPartyAndPartnerAudiences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFirstPartyAndPartnerAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<ListFirstPartyAndPartnerAudiencesRequest>,
-  output: __S(566, __c70, 6) as any as S.Schema<ListFirstPartyAndPartnerAudiencesResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListFirstPartyAndPartnerAudiencesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ListFirstPartyAndPartnerAudiencesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12628,8 +12636,8 @@ export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMet
   GcpOpContext,
   ListFloodlightActivitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<ListFloodlightActivitiesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ListFloodlightActivitiesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12645,8 +12653,8 @@ export const listGoogleAudiences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGoogleAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<ListGoogleAudiencesRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<ListGoogleAudiencesResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListGoogleAudiencesRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<ListGoogleAudiencesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12662,8 +12670,8 @@ export const listGuaranteedOrders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuaranteedOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<ListGuaranteedOrdersRequest>,
-  output: __S(575, __c71, 7) as any as S.Schema<ListGuaranteedOrdersResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListGuaranteedOrdersRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<ListGuaranteedOrdersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12679,8 +12687,8 @@ export const listInventorySourceGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInventorySourceGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<ListInventorySourceGroupsRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<ListInventorySourceGroupsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListInventorySourceGroupsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<ListInventorySourceGroupsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12701,11 +12709,11 @@ export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOpe
   ListAssignedInventorySourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    579,
-    __c72,
-    3,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(580, __c72, 4) as any as S.Schema<ListAssignedInventorySourcesResponse>,
+  output: __S(2337, __c73, 1) as any as S.Schema<ListAssignedInventorySourcesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12721,8 +12729,8 @@ export const listInventorySources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInventorySourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<ListInventorySourcesRequest>,
-  output: __S(583, __c72, 7) as any as S.Schema<ListInventorySourcesResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListInventorySourcesRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<ListInventorySourcesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12738,8 +12746,8 @@ export const listPartners: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPartnersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<ListPartnersRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<ListPartnersResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListPartnersRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListPartnersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12755,8 +12763,8 @@ export const listPartnersChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<ListPartnersChannelsRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<ListChannelsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListPartnersChannelsRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12772,8 +12780,8 @@ export const listPartnersChannelsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<ListPartnersChannelsSitesRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<ListSitesResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListPartnersChannelsSitesRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12794,11 +12802,11 @@ export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOp
   ListPartnerAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    589,
-    __c73,
-    5,
+    2528,
+    __c79,
+    0,
   ) as any as S.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(547, __c68, 3) as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12818,8 +12826,8 @@ export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<ListTargetingOptionsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<ListTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12835,8 +12843,8 @@ export const listUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<ListUsersRequest>,
-  output: __S(595, __c74, 3) as any as S.Schema<ListUsersResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(2626, __c82, 2) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12855,8 +12863,8 @@ export const lookupInvoiceCurrencyAdvertisersInvoices: API.OperationMethod<
   LookupInvoiceCurrencyAdvertisersInvoicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<LookupInvoiceCurrencyResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>,
+  output: __S(2657, __c83, 1) as any as S.Schema<LookupInvoiceCurrencyResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12876,8 +12884,8 @@ export const patchAdvertisers: API.OperationMethod<
   PatchAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<PatchAdvertisersRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<Advertiser>,
+  input: __S(2688, __c84, 0) as any as S.Schema<PatchAdvertisersRequest>,
+  output: __S(3880, __c121, 8) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12897,8 +12905,8 @@ export const patchAdvertisersAdAssets: API.OperationMethod<
   PatchAdvertisersAdAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<PatchAdvertisersAdAssetsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AdAsset>,
+  input: __S(2720, __c85, 0) as any as S.Schema<PatchAdvertisersAdAssetsRequest>,
+  output: __S(6369, __c199, 1) as any as S.Schema<AdAsset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12918,8 +12926,8 @@ export const patchAdvertisersAdGroupAds: API.OperationMethod<
   PatchAdvertisersAdGroupAdsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<PatchAdvertisersAdGroupAdsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<AdGroupAd>,
+  input: __S(2752, __c86, 0) as any as S.Schema<PatchAdvertisersAdGroupAdsRequest>,
+  output: __S(4239, __c132, 15) as any as S.Schema<AdGroupAd>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12939,8 +12947,8 @@ export const patchAdvertisersAdGroups: API.OperationMethod<
   PatchAdvertisersAdGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<PatchAdvertisersAdGroupsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<AdGroup>,
+  input: __S(2784, __c87, 0) as any as S.Schema<PatchAdvertisersAdGroupsRequest>,
+  output: __S(4294, __c134, 6) as any as S.Schema<AdGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12960,8 +12968,8 @@ export const patchAdvertisersCampaigns: API.OperationMethod<
   PatchAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<PatchAdvertisersCampaignsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Campaign>,
+  input: __S(2848, __c89, 0) as any as S.Schema<PatchAdvertisersCampaignsRequest>,
+  output: __S(4486, __c140, 6) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12981,8 +12989,8 @@ export const patchAdvertisersChannels: API.OperationMethod<
   PatchAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<PatchAdvertisersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(2880, __c90, 0) as any as S.Schema<PatchAdvertisersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13002,8 +13010,8 @@ export const patchAdvertisersCreatives: API.OperationMethod<
   PatchAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<PatchAdvertisersCreativesRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<Creative>,
+  input: __S(2912, __c91, 0) as any as S.Schema<PatchAdvertisersCreativesRequest>,
+  output: __S(4658, __c145, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13023,8 +13031,8 @@ export const patchAdvertisersInsertionOrders: API.OperationMethod<
   PatchAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<PatchAdvertisersInsertionOrdersRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<InsertionOrder>,
+  input: __S(2944, __c92, 0) as any as S.Schema<PatchAdvertisersInsertionOrdersRequest>,
+  output: __S(4740, __c148, 4) as any as S.Schema<InsertionOrder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13044,8 +13052,8 @@ export const patchAdvertisersLineItems: API.OperationMethod<
   PatchAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<PatchAdvertisersLineItemsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LineItem>,
+  input: __S(2976, __c93, 0) as any as S.Schema<PatchAdvertisersLineItemsRequest>,
+  output: __S(3441, __c107, 17) as any as S.Schema<LineItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13065,8 +13073,8 @@ export const patchAdvertisersLocationLists: API.OperationMethod<
   PatchAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<PatchAdvertisersLocationListsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<LocationList>,
+  input: __S(3008, __c94, 0) as any as S.Schema<PatchAdvertisersLocationListsRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<LocationList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13086,8 +13094,8 @@ export const patchAdvertisersNegativeKeywordLists: API.OperationMethod<
   PatchAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<PatchAdvertisersNegativeKeywordListsRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<NegativeKeywordList>,
+  input: __S(3040, __c95, 0) as any as S.Schema<PatchAdvertisersNegativeKeywordListsRequest>,
+  output: __S(4992, __c156, 0) as any as S.Schema<NegativeKeywordList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13107,8 +13115,8 @@ export const patchCustomBiddingAlgorithms: API.OperationMethod<
   PatchCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(609, __c76, 1) as any as S.Schema<PatchCustomBiddingAlgorithmsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: __S(3072, __c96, 0) as any as S.Schema<PatchCustomBiddingAlgorithmsRequest>,
+  output: __S(5122, __c160, 2) as any as S.Schema<CustomBiddingAlgorithm>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13128,8 +13136,8 @@ export const patchFirstPartyAndPartnerAudiences: API.OperationMethod<
   PatchFirstPartyAndPartnerAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<PatchFirstPartyAndPartnerAudiencesRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<FirstPartyAndPartnerAudience>,
+  input: __S(3104, __c97, 0) as any as S.Schema<PatchFirstPartyAndPartnerAudiencesRequest>,
+  output: __S(5408, __c169, 0) as any as S.Schema<FirstPartyAndPartnerAudience>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13149,8 +13157,8 @@ export const patchFloodlightGroups: API.OperationMethod<
   PatchFloodlightGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<PatchFloodlightGroupsRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<FloodlightGroup>,
+  input: __S(3136, __c98, 0) as any as S.Schema<PatchFloodlightGroupsRequest>,
+  output: __S(8194, __c256, 2) as any as S.Schema<FloodlightGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13170,8 +13178,8 @@ export const patchGuaranteedOrders: API.OperationMethod<
   PatchGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<PatchGuaranteedOrdersRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<GuaranteedOrder>,
+  input: __S(3456, __c108, 0) as any as S.Schema<PatchGuaranteedOrdersRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<GuaranteedOrder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13191,8 +13199,8 @@ export const patchInventorySourceGroups: API.OperationMethod<
   PatchInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<PatchInventorySourceGroupsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<InventorySourceGroup>,
+  input: __S(3488, __c109, 0) as any as S.Schema<PatchInventorySourceGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<InventorySourceGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13212,8 +13220,8 @@ export const patchInventorySources: API.OperationMethod<
   PatchInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<PatchInventorySourcesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<InventorySource>,
+  input: __S(3520, __c110, 0) as any as S.Schema<PatchInventorySourcesRequest>,
+  output: __S(5640, __c176, 8) as any as S.Schema<InventorySource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13233,8 +13241,8 @@ export const patchPartnersChannels: API.OperationMethod<
   PatchPartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(615, __c76, 7) as any as S.Schema<PatchPartnersChannelsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Channel>,
+  input: __S(3552, __c111, 0) as any as S.Schema<PatchPartnersChannelsRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13254,8 +13262,8 @@ export const patchUsers: API.OperationMethod<
   PatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<PatchUsersRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<User>,
+  input: __S(3584, __c112, 0) as any as S.Schema<PatchUsersRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13275,8 +13283,8 @@ export const replaceAdvertisersChannelsSites: API.OperationMethod<
   ReplaceAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<ReplaceAdvertisersChannelsSitesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ReplaceSitesResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ReplaceAdvertisersChannelsSitesRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<ReplaceSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13297,11 +13305,11 @@ export const replaceAdvertisersNegativeKeywordListsNegativeKeywords: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    620,
-    __c77,
-    4,
+    3681,
+    __c115,
+    1,
   ) as any as S.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ReplaceNegativeKeywordsResponse>,
+  output: __S(7744, __c242, 0) as any as S.Schema<ReplaceNegativeKeywordsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13321,8 +13329,8 @@ export const replacePartnersChannelsSites: API.OperationMethod<
   ReplacePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<ReplacePartnersChannelsSitesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ReplaceSitesResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ReplacePartnersChannelsSitesRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<ReplaceSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13342,8 +13350,8 @@ export const searchTargetingTypesTargetingOptions: API.OperationMethod<
   SearchTargetingTypesTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(626, __c78, 2) as any as S.Schema<SearchTargetingTypesTargetingOptionsRequest>,
-  output: __S(627, __c78, 3) as any as S.Schema<SearchTargetingOptionsResponse>,
+  input: __S(3748, __c117, 4) as any as S.Schema<SearchTargetingTypesTargetingOptionsRequest>,
+  output: __S(3749, __c117, 5) as any as S.Schema<SearchTargetingOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13363,8 +13371,8 @@ export const uploadAdvertisersAdAssets: API.OperationMethod<
   UploadAdvertisersAdAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<UploadAdvertisersAdAssetsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UploadAdAssetResponse>,
+  input: __S(3777, __c118, 1) as any as S.Schema<UploadAdvertisersAdAssetsRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<UploadAdAssetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13384,8 +13392,8 @@ export const uploadAdvertisersAssets: API.OperationMethod<
   UploadAdvertisersAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<UploadAdvertisersAssetsRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<CreateAssetResponse>,
+  input: __S(3905, __c122, 1) as any as S.Schema<UploadAdvertisersAssetsRequest>,
+  output: __S(3906, __c122, 2) as any as S.Schema<CreateAssetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13405,8 +13413,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(633, __c79, 1) as any as S.Schema<UploadMediaRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleBytestreamMedia>,
+  input: __S(3936, __c123, 0) as any as S.Schema<UploadMediaRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleBytestreamMedia>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13424,8 +13432,8 @@ export const uploadRulesCustomBiddingAlgorithms: API.OperationMethod<
   UploadRulesCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(634, __c79, 2) as any as S.Schema<UploadRulesCustomBiddingAlgorithmsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<CustomBiddingAlgorithmRulesRef>,
+  input: __S(3968, __c124, 0) as any as S.Schema<UploadRulesCustomBiddingAlgorithmsRequest>,
+  output: __S(5216, __c163, 0) as any as S.Schema<CustomBiddingAlgorithmRulesRef>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13443,8 +13451,8 @@ export const uploadScriptCustomBiddingAlgorithms: API.OperationMethod<
   UploadScriptCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<UploadScriptCustomBiddingAlgorithmsRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<CustomBiddingScriptRef>,
+  input: __S(4000, __c125, 0) as any as S.Schema<UploadScriptCustomBiddingAlgorithmsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<CustomBiddingScriptRef>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13456,136 +13464,44 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          readMask: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}:audit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AuditAdvertisersRequest" });
+          createRequests: S.optional(__S(257, __c8, 1)),
+          deleteRequests: S.optional(__S(259, __c8, 3)),
+          adGroupIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAdGroupAssignedTargetingOptionsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          negativeKeywordListsCount: S.optional(S.String),
-          adGroupCriteriaCount: S.optional(S.String),
-          usedLineItemsCount: S.optional(S.String),
-          usedInsertionOrdersCount: S.optional(S.String),
-          channelsCount: S.optional(S.String),
-          negativelyTargetedChannelsCount: S.optional(S.String),
-          campaignCriteriaCount: S.optional(S.String),
-          usedCampaignsCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditAdvertiserResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          youtubeVideoId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "YoutubeVideoAsset" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          youtubeVideoAsset: S.optional(__S(2, __c0, 2)),
-          syntheticContentAttestationStatus: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          name: S.optional(S.String),
-          adAssetId: S.optional(S.String),
-          adAssetType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdAsset" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adAssets: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "BulkCreateAdAssetsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adAssets:bulkCreate",
+            uri: "v4/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions",
             baseUrl: "https://displayvideo.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "BulkCreateAdvertisersAdAssetsRequest",
+        identifier: "BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest",
       });
-    case 7:
-      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(160, __c5, 0)),
+          failedAdGroupIds: S.optional(__S(6880, __c215, 0)),
+          updatedAdGroupIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAdGroupAssignedTargetingOptionsResponse",
+      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          urlOrAppId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Site" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String),
-          deletedSites: S.optional(__S(7, __c0, 7)),
-          createdSites: S.optional(__S(9, __c1, 1)),
-          partnerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkEditSitesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channelId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditAdvertisersChannelsSitesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sites: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "BulkEditSitesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assignedLocationId: S.optional(S.String),
-          name: S.optional(S.String),
-          targetingOptionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssignedLocation" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deletedAssignedLocations: S.optional(__S(7, __c0, 7)),
-          createdAssignedLocations: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAssignedLocationsRequest",
-      });
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -13593,70 +13509,80 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          locationListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
+          environment: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "BulkEditAdvertisersLocationListsAssignedLocationsRequest",
+        identifier: "EnvironmentAssignedTargetingOptionDetails",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assignedLocations: S.optional(__S(14, __c1, 6)),
+          videoPlayerSize: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "BulkEditAssignedLocationsResponse",
+        identifier: "VideoPlayerSizeAssignedTargetingOptionDetails",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          keywordValue: S.optional(S.String),
+          exchange: S.optional(S.String),
         }),
-      ).annotate({ identifier: "NegativeKeyword" });
+      ).annotate({
+        identifier: "ExchangeAssignedTargetingOptionDetails",
+      });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.suspend(() =>
+        S.Struct({
+          viewability: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ViewabilityAssignedTargetingOptionDetails",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deletedNegativeKeywords: S.optional(__S(7, __c0, 7)),
-          createdNegativeKeywords: S.optional(__S(19, __c2, 3)),
+          ageRange: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "BulkEditNegativeKeywordsRequest",
+        identifier: "AgeRangeAssignedTargetingOptionDetails",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          negativeKeywordListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
+          gender: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+        identifier: "GenderAssignedTargetingOptionDetails",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          negativeKeywords: S.optional(__S(19, __c2, 3)),
+          omid: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "BulkEditNegativeKeywordsResponse",
+        identifier: "OmidAssignedTargetingOptionDetails",
       });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          householdIncome: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HouseholdIncomeAssignedTargetingOptionDetails",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          parentalStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ParentalStatusAssignedTargetingOptionDetails",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proximityRadiusAmount: S.optional(S.Number),
@@ -13669,25 +13595,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PoiAssignedTargetingOptionDetails",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubExchangeAssignedTargetingOptionDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnvironmentAssignedTargetingOptionDetails",
       });
     case 2:
       return S.suspend(() =>
@@ -13702,21 +13616,13 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          videoPlayerSize: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VideoPlayerSizeAssignedTargetingOptionDetails",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           targetingOptionId: S.optional(S.String),
           authorizedSellerStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthorizedSellerStatusAssignedTargetingOptionDetails",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           userRewardedContent: S.optional(S.String),
@@ -13725,7 +13631,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UserRewardedContentAssignedTargetingOptionDetails",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -13735,19 +13641,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CategoryAssignedTargetingOptionDetails",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exchange: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExchangeAssignedTargetingOptionDetails",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13756,7 +13650,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "YoutubeChannelAssignedTargetingOptionDetails",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -13765,7 +13659,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UrlAssignedTargetingOptionDetails",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           timeZoneResolution: S.optional(S.String),
@@ -13776,7 +13670,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DayAndTimeAssignedTargetingOptionDetails",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13785,7 +13679,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RegionalLocationListAssignedTargetingOptionDetails",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           inventorySourceId: S.optional(S.String),
@@ -13793,7 +13687,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "InventorySourceAssignedTargetingOptionDetails",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13802,7 +13696,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "YoutubeVideoAssignedTargetingOptionDetails",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
@@ -13812,7 +13706,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AppCategoryAssignedTargetingOptionDetails",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           sessionPosition: S.optional(S.String),
@@ -13820,11 +13714,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SessionPositionAssignedTargetingOptionDetails",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           adType: S.optional(S.String),
@@ -13833,7 +13723,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ContentInstreamPositionAssignedTargetingOptionDetails",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13842,15 +13732,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "YoutubeChannelPackAssignedTargetingOptionDetails",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          viewability: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ViewabilityAssignedTargetingOptionDetails",
-      });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           adType: S.optional(S.String),
@@ -13860,15 +13742,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "OnScreenPositionAssignedTargetingOptionDetails",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ageRange: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgeRangeAssignedTargetingOptionDetails",
-      });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           contentDuration: S.optional(S.String),
@@ -13877,17 +13751,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ContentDurationAssignedTargetingOptionDetails",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           keyword: S.optional(S.String),
           negative: S.optional(S.Boolean),
-          exemptedPolicyNames: S.optional(__S(7, __c0, 7)),
+          exemptedPolicyNames: S.optional(__S(6880, __c215, 0)),
         }),
       ).annotate({
         identifier: "KeywordAssignedTargetingOptionDetails",
       });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           excludedSensitiveCategory: S.optional(S.String),
@@ -13895,11 +13769,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SensitiveCategoryAssignedTargetingOptionDetails",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13910,7 +13780,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AppAssignedTargetingOptionDetails",
       });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           contentPosition: S.optional(S.String),
@@ -13918,7 +13788,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NativeContentPositionAssignedTargetingOptionDetails",
       });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           audioContentType: S.optional(S.String),
@@ -13926,7 +13796,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AudioContentTypeAssignedTargetingOptionDetails",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           negativeKeywordListId: S.optional(S.String),
@@ -13934,15 +13804,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NegativeKeywordListAssignedTargetingOptionDetails",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gender: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenderAssignedTargetingOptionDetails",
-      });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
@@ -13953,7 +13815,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GeoRegionAssignedTargetingOptionDetails",
       });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           contentTheme: S.optional(S.String),
@@ -13963,7 +13825,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ContentThemeAssignedTargetingOptionDetails",
       });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           youtubeAndPartnersBidMultiplier: S.optional(S.Number),
@@ -13972,11 +13834,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeviceTypeAssignedTargetingOptionDetails",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           channelId: S.optional(S.String),
@@ -13985,7 +13843,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ChannelAssignedTargetingOptionDetails",
       });
-    case 1:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           inventorySourceGroupId: S.optional(S.String),
@@ -13993,15 +13851,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InventorySourceGroupAssignedTargetingOptionDetails",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          omid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OmidAssignedTargetingOptionDetails",
-      });
-    case 3:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           contentOutstreamPosition: S.optional(S.String),
@@ -14010,7 +13860,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ContentOutstreamPositionAssignedTargetingOptionDetails",
       });
-    case 4:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -14021,7 +13871,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BusinessChainAssignedTargetingOptionDetails",
       });
-    case 5:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           excludedContentRatingTier: S.optional(S.String),
@@ -14029,15 +13879,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DigitalContentLabelAssignedTargetingOptionDetails",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          householdIncome: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HouseholdIncomeAssignedTargetingOptionDetails",
-      });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
@@ -14046,11 +13892,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ContentStreamTypeAssignedTargetingOptionDetails",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customListId: S.optional(S.String),
@@ -14058,15 +13900,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CustomListTargetingSetting",
       });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
     case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(65, __c8, 1)),
+          settings: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "CustomListGroup" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           combinedAudienceId: S.optional(S.String),
@@ -14074,15 +13916,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CombinedAudienceTargetingSetting",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
     case 5:
+      return S.Array(__S(132, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(68, __c8, 4)),
+          settings: S.optional(__S(133, __c4, 5)),
         }),
       ).annotate({ identifier: "CombinedAudienceGroup" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           googleAudienceId: S.optional(S.String),
@@ -14090,19 +13932,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAudienceTargetingSetting",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(135, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(71, __c8, 7)),
+          settings: S.optional(__S(136, __c4, 8)),
         }),
       ).annotate({ identifier: "GoogleAudienceGroup" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           recency: S.optional(S.String),
@@ -14111,32 +13949,32 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "FirstPartyAndPartnerAudienceTargetingSetting",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(138, __c4, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(74, __c9, 2)),
+          settings: S.optional(__S(139, __c4, 11)),
         }),
       ).annotate({
         identifier: "FirstPartyAndPartnerAudienceGroup",
       });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 13:
+      return S.Array(__S(140, __c4, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          includedCustomListGroup: S.optional(__S(66, __c8, 2)),
-          includedCombinedAudienceGroup: S.optional(__S(69, __c8, 5)),
-          includedGoogleAudienceGroup: S.optional(__S(72, __c9, 0)),
-          excludedGoogleAudienceGroup: S.optional(__S(72, __c9, 0)),
-          includedFirstPartyAndPartnerAudienceGroups: S.optional(__S(76, __c9, 4)),
-          excludedFirstPartyAndPartnerAudienceGroup: S.optional(__S(75, __c9, 3)),
+          includedCustomListGroup: S.optional(__S(131, __c4, 3)),
+          includedCombinedAudienceGroup: S.optional(__S(134, __c4, 6)),
+          includedGoogleAudienceGroup: S.optional(__S(137, __c4, 9)),
+          excludedGoogleAudienceGroup: S.optional(__S(137, __c4, 9)),
+          includedFirstPartyAndPartnerAudienceGroups: S.optional(__S(141, __c4, 13)),
+          excludedFirstPartyAndPartnerAudienceGroup: S.optional(__S(140, __c4, 12)),
         }),
       ).annotate({
         identifier: "AudienceGroupAssignedTargetingOptionDetails",
       });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           proximityRadius: S.optional(S.Number),
@@ -14146,12 +13984,12 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ProximityLocationListAssignedTargetingOptionDetails",
       });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          customSegmentId: S.optional(__S(7, __c0, 7)),
+          customSegmentId: S.optional(__S(6880, __c215, 0)),
           excludedAlcoholRisk: S.optional(S.String),
-          qualitySyncCustomSegmentId: S.optional(__S(7, __c0, 7)),
+          qualitySyncCustomSegmentId: S.optional(__S(6880, __c215, 0)),
           excludedAdultRisk: S.optional(S.String),
           excludedAdFraudRisk: S.optional(S.String),
           excludedGamblingRisk: S.optional(S.String),
@@ -14166,11 +14004,7 @@ function __c9(j: number): any {
           excludedHateSpeechRisk: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegralAdScience" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           avoidedStarRating: S.optional(S.String),
@@ -14179,21 +14013,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DoubleVerifyAppStarRating",
       });
-    case 1:
+    case 18:
       return S.Array(S.String);
-    case 2:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           avoidUnknownBrandSafetyCategory: S.optional(S.Boolean),
-          avoidedHighSeverityCategories: S.optional(__S(81, __c10, 1)),
-          avoidedMediumSeverityCategories: S.optional(__S(81, __c10, 1)),
+          avoidedHighSeverityCategories: S.optional(__S(146, __c4, 18)),
+          avoidedMediumSeverityCategories: S.optional(__S(146, __c4, 18)),
         }),
       ).annotate({
         identifier: "DoubleVerifyBrandSafetyCategories",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           iab: S.optional(S.String),
@@ -14202,7 +14034,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DoubleVerifyDisplayViewability",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           avoidedFraudOption: S.optional(S.String),
@@ -14211,7 +14043,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DoubleVerifyFraudInvalidTraffic",
       });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           videoIab: S.optional(S.String),
@@ -14221,36 +14053,32 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DoubleVerifyVideoViewability",
       });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          appStarRating: S.optional(__S(80, __c10, 0)),
+          appStarRating: S.optional(__S(145, __c4, 17)),
           customSegmentId: S.optional(S.String),
-          brandSafetyCategories: S.optional(__S(82, __c10, 2)),
-          avoidedAgeRatings: S.optional(__S(83, __c10, 3)),
-          displayViewability: S.optional(__S(84, __c10, 4)),
-          fraudInvalidTraffic: S.optional(__S(85, __c10, 5)),
-          videoViewability: S.optional(__S(86, __c10, 6)),
+          brandSafetyCategories: S.optional(__S(147, __c4, 19)),
+          avoidedAgeRatings: S.optional(__S(32, __c1, 0)),
+          displayViewability: S.optional(__S(148, __c4, 20)),
+          fraudInvalidTraffic: S.optional(__S(149, __c4, 21)),
+          videoViewability: S.optional(__S(150, __c4, 22)),
         }),
       ).annotate({ identifier: "DoubleVerify" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           deathInjuryMilitaryConflictContent: S.optional(S.String),
           debatedSensitiveSocialIssueContent: S.optional(S.String),
           hateSpeechActsAggressionContent: S.optional(S.String),
           displayIabViewability: S.optional(S.String),
-          excludedFraudIvtMfaCategories: S.optional(__S(83, __c10, 3)),
+          excludedFraudIvtMfaCategories: S.optional(__S(32, __c1, 0)),
           adultExplicitSexualContent: S.optional(S.String),
           spamHarmfulContent: S.optional(S.String),
           onlinePiracyContent: S.optional(S.String),
           videoIabViewability: S.optional(S.String),
           terrorismContent: S.optional(S.String),
-          excludedAdlooxCategories: S.optional(__S(83, __c10, 3)),
+          excludedAdlooxCategories: S.optional(__S(32, __c1, 0)),
           illegalDrugsTobaccoEcigarettesVapingAlcoholContent: S.optional(S.String),
           obscenityProfanityContent: S.optional(S.String),
           crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent: S.optional(S.String),
@@ -14258,3773 +14086,139 @@ function __c11(j: number): any {
           armsAmmunitionContent: S.optional(S.String),
         }),
       ).annotate({ identifier: "Adloox" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          integralAdScience: S.optional(__S(79, __c9, 7)),
-          doubleVerify: S.optional(__S(87, __c10, 7)),
-          adloox: S.optional(__S(88, __c11, 0)),
+          integralAdScience: S.optional(__S(144, __c4, 16)),
+          doubleVerify: S.optional(__S(151, __c4, 23)),
+          adloox: S.optional(__S(152, __c4, 24)),
         }),
       ).annotate({
         identifier: "ThirdPartyVerifierAssignedTargetingOptionDetails",
       });
-    case 2:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          parentalStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ParentalStatusAssignedTargetingOptionDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          poiDetails: S.optional(__S(23, __c2, 7)),
-          subExchangeDetails: S.optional(__S(24, __c3, 0)),
-          environmentDetails: S.optional(__S(25, __c3, 1)),
-          deviceMakeModelDetails: S.optional(__S(26, __c3, 2)),
-          videoPlayerSizeDetails: S.optional(__S(27, __c3, 3)),
+          poiDetails: S.optional(__S(96, __c3, 0)),
+          subExchangeDetails: S.optional(__S(97, __c3, 1)),
+          environmentDetails: S.optional(__S(64, __c2, 0)),
+          deviceMakeModelDetails: S.optional(__S(98, __c3, 2)),
+          videoPlayerSizeDetails: S.optional(__S(65, __c2, 1)),
           name: S.optional(S.String),
-          authorizedSellerStatusDetails: S.optional(__S(28, __c3, 4)),
-          userRewardedContentDetails: S.optional(__S(29, __c3, 5)),
-          categoryDetails: S.optional(__S(30, __c3, 6)),
-          carrierAndIspDetails: S.optional(__S(26, __c3, 2)),
-          exchangeDetails: S.optional(__S(31, __c3, 7)),
-          youtubeChannelDetails: S.optional(__S(32, __c4, 0)),
-          urlDetails: S.optional(__S(33, __c4, 1)),
-          dayAndTimeDetails: S.optional(__S(34, __c4, 2)),
-          regionalLocationListDetails: S.optional(__S(35, __c4, 3)),
+          authorizedSellerStatusDetails: S.optional(__S(99, __c3, 3)),
+          userRewardedContentDetails: S.optional(__S(100, __c3, 4)),
+          categoryDetails: S.optional(__S(101, __c3, 5)),
+          carrierAndIspDetails: S.optional(__S(98, __c3, 2)),
+          exchangeDetails: S.optional(__S(66, __c2, 2)),
+          youtubeChannelDetails: S.optional(__S(102, __c3, 6)),
+          urlDetails: S.optional(__S(103, __c3, 7)),
+          dayAndTimeDetails: S.optional(__S(104, __c3, 8)),
+          regionalLocationListDetails: S.optional(__S(105, __c3, 9)),
           assignedTargetingOptionId: S.optional(S.String),
-          operatingSystemDetails: S.optional(__S(26, __c3, 2)),
-          contentGenreDetails: S.optional(__S(26, __c3, 2)),
-          inventorySourceDetails: S.optional(__S(36, __c4, 4)),
-          youtubeVideoDetails: S.optional(__S(37, __c4, 5)),
-          appCategoryDetails: S.optional(__S(38, __c4, 6)),
-          sessionPositionDetails: S.optional(__S(39, __c4, 7)),
-          contentInstreamPositionDetails: S.optional(__S(40, __c5, 0)),
-          youtubeChannelPackDetails: S.optional(__S(41, __c5, 1)),
-          viewabilityDetails: S.optional(__S(42, __c5, 2)),
-          onScreenPositionDetails: S.optional(__S(43, __c5, 3)),
-          ageRangeDetails: S.optional(__S(44, __c5, 4)),
-          browserDetails: S.optional(__S(38, __c4, 6)),
+          operatingSystemDetails: S.optional(__S(98, __c3, 2)),
+          contentGenreDetails: S.optional(__S(98, __c3, 2)),
+          inventorySourceDetails: S.optional(__S(106, __c3, 10)),
+          youtubeVideoDetails: S.optional(__S(107, __c3, 11)),
+          appCategoryDetails: S.optional(__S(108, __c3, 12)),
+          sessionPositionDetails: S.optional(__S(109, __c3, 13)),
+          contentInstreamPositionDetails: S.optional(__S(110, __c3, 14)),
+          youtubeChannelPackDetails: S.optional(__S(111, __c3, 15)),
+          viewabilityDetails: S.optional(__S(67, __c2, 3)),
+          onScreenPositionDetails: S.optional(__S(112, __c3, 16)),
+          ageRangeDetails: S.optional(__S(68, __c2, 4)),
+          browserDetails: S.optional(__S(108, __c3, 12)),
           assignedTargetingOptionIdAlias: S.optional(S.String),
-          contentDurationDetails: S.optional(__S(45, __c5, 5)),
-          keywordDetails: S.optional(__S(46, __c5, 6)),
-          sensitiveCategoryExclusionDetails: S.optional(__S(47, __c5, 7)),
-          appDetails: S.optional(__S(48, __c6, 0)),
-          nativeContentPositionDetails: S.optional(__S(49, __c6, 1)),
-          audioContentTypeDetails: S.optional(__S(50, __c6, 2)),
-          negativeKeywordListDetails: S.optional(__S(51, __c6, 3)),
-          genderDetails: S.optional(__S(52, __c6, 4)),
+          contentDurationDetails: S.optional(__S(113, __c3, 17)),
+          keywordDetails: S.optional(__S(114, __c3, 18)),
+          sensitiveCategoryExclusionDetails: S.optional(__S(115, __c3, 19)),
+          appDetails: S.optional(__S(116, __c3, 20)),
+          nativeContentPositionDetails: S.optional(__S(117, __c3, 21)),
+          audioContentTypeDetails: S.optional(__S(118, __c3, 22)),
+          negativeKeywordListDetails: S.optional(__S(119, __c3, 23)),
+          genderDetails: S.optional(__S(69, __c2, 5)),
           inheritance: S.optional(S.String),
-          geoRegionDetails: S.optional(__S(53, __c6, 5)),
-          contentThemeExclusionDetails: S.optional(__S(54, __c6, 6)),
-          deviceTypeDetails: S.optional(__S(55, __c6, 7)),
-          channelDetails: S.optional(__S(56, __c7, 0)),
-          inventorySourceGroupDetails: S.optional(__S(57, __c7, 1)),
-          languageDetails: S.optional(__S(30, __c3, 6)),
-          omidDetails: S.optional(__S(58, __c7, 2)),
-          contentOutstreamPositionDetails: S.optional(__S(59, __c7, 3)),
-          businessChainDetails: S.optional(__S(60, __c7, 4)),
-          digitalContentLabelExclusionDetails: S.optional(__S(61, __c7, 5)),
-          householdIncomeDetails: S.optional(__S(62, __c7, 6)),
-          contentStreamTypeDetails: S.optional(__S(63, __c7, 7)),
-          audienceGroupDetails: S.optional(__S(77, __c9, 5)),
+          geoRegionDetails: S.optional(__S(120, __c3, 24)),
+          contentThemeExclusionDetails: S.optional(__S(121, __c3, 25)),
+          deviceTypeDetails: S.optional(__S(122, __c3, 26)),
+          channelDetails: S.optional(__S(123, __c3, 27)),
+          inventorySourceGroupDetails: S.optional(__S(124, __c3, 28)),
+          languageDetails: S.optional(__S(101, __c3, 5)),
+          omidDetails: S.optional(__S(70, __c2, 6)),
+          contentOutstreamPositionDetails: S.optional(__S(125, __c3, 29)),
+          businessChainDetails: S.optional(__S(126, __c3, 30)),
+          digitalContentLabelExclusionDetails: S.optional(__S(127, __c3, 31)),
+          householdIncomeDetails: S.optional(__S(71, __c2, 7)),
+          contentStreamTypeDetails: S.optional(__S(128, __c4, 0)),
+          audienceGroupDetails: S.optional(__S(142, __c4, 14)),
           targetingType: S.optional(S.String),
-          proximityLocationListDetails: S.optional(__S(78, __c9, 6)),
-          thirdPartyVerifierDetails: S.optional(__S(89, __c11, 1)),
-          parentalStatusDetails: S.optional(__S(90, __c11, 2)),
+          proximityLocationListDetails: S.optional(__S(143, __c4, 15)),
+          thirdPartyVerifierDetails: S.optional(__S(153, __c4, 25)),
+          parentalStatusDetails: S.optional(__S(72, __c2, 8)),
         }),
       ).annotate({ identifier: "AssignedTargetingOption" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.optional(S.String),
-          assignedTargetingOptions: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateAssignedTargetingOptionsRequest",
-      });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.optional(S.String),
-          assignedTargetingOptionIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "DeleteAssignedTargetingOptionsRequest",
-      });
   }
 }
-function __c12(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
+      return S.Array(__S(193, __c6, 1));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c7, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          createRequests: S.optional(__S(94, __c11, 6)),
-          deleteRequests: S.optional(__S(96, __c12, 0)),
-          adGroupIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAdGroupAssignedTargetingOptionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(100, __c12, 4)),
+          details: S.optional(__S(192, __c6, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(102, __c12, 6)),
-          failedAdGroupIds: S.optional(__S(7, __c0, 7)),
-          updatedAdGroupIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAdGroupAssignedTargetingOptionsResponse",
-      });
   }
 }
-function __c13(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lineItemIds: S.optional(__S(7, __c0, 7)),
-          createRequests: S.optional(__S(94, __c11, 6)),
-          deleteRequests: S.optional(__S(96, __c12, 0)),
+          targetingType: S.optional(S.String),
+          assignedTargetingOptions: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
-        identifier: "BulkEditAssignedTargetingOptionsRequest",
+        identifier: "CreateAssignedTargetingOptionsRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest",
-      });
+      return S.Array(__S(256, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updatedLineItemIds: S.optional(__S(7, __c0, 7)),
-          errors: S.optional(__S(102, __c12, 6)),
-          failedLineItemIds: S.optional(__S(7, __c0, 7)),
+          targetingType: S.optional(S.String),
+          assignedTargetingOptionIds: S.optional(__S(6880, __c215, 0)),
         }),
       ).annotate({
-        identifier: "BulkEditAssignedTargetingOptionsResponse",
+        identifier: "DeleteAssignedTargetingOptionsRequest",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          userRole: S.optional(S.String),
-          assignedUserRoleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssignedUserRole" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deletedAssignedUserRoles: S.optional(__S(7, __c0, 7)),
-          createdAssignedUserRoles: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAssignedUserRolesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(109, __c13, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/users/{+userId}:bulkEditAssignedUserRoles",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditAssignedUserRolesUsersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdAssignedUserRoles: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAssignedUserRolesResponse",
-      });
+      return S.Array(__S(258, __c8, 2));
   }
 }
-function __c14(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          inventorySourceId: S.optional(S.String),
-          assignedInventorySourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssignedInventorySource" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          deletedAssignedInventorySources: S.optional(__S(7, __c0, 7)),
-          createdAssignedInventorySources: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAssignedInventorySourcesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceGroupId: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditInventorySourceGroupsAssignedInventorySourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assignedInventorySources: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAssignedInventorySourcesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channelId: S.String.pipe(T.Label()),
-          partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkEditPartnersChannelsSitesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupIds: S.optional(__S(7, __c0, 7).pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/adGroups:bulkListAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assignedTargetingOption: S.optional(__S(91, __c11, 3)),
-          adGroupId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdGroupAssignedTargetingOption",
-      });
+      return S.Array(__S(154, __c4, 26));
   }
 }
-function __c15(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          adGroupAssignedTargetingOptions: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          lineItemIds: S.optional(__S(7, __c0, 7).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          advertiserId: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assignedTargetingOption: S.optional(__S(91, __c11, 3)),
-          lineItemId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LineItemAssignedTargetingOption",
-      });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lineItemAssignedTargetingOptions: S.optional(__S(124, __c15, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BulkListAssignedTargetingOptionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          excludeDemographicExpansion: S.optional(S.Boolean),
-          audienceExpansionSeedListExcluded: S.optional(S.Boolean),
-          audienceExpansionLevel: S.optional(S.String),
-          enableOptimizedTargeting: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TargetingExpansionConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          markupAmount: S.optional(S.String),
-          markupType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerRevenueModel" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeUnitCount: S.optional(S.Number),
-          unlimited: S.optional(S.Boolean),
-          maxImpressions: S.optional(S.Number),
-          timeUnit: S.optional(S.String),
-          maxViews: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FrequencyCap" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveBiddingValue: S.optional(S.String),
-          value: S.optional(S.String),
-          effectiveBiddingValueSource: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DemandGenBiddingStrategy" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customBiddingAlgorithmId: S.optional(S.String),
-          maxAverageCpmBidAmountMicros: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
-          performanceGoalAmountMicros: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PerformanceGoalBidStrategy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bidAmountMicros: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FixedBidStrategy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxAverageCpmBidAmountMicros: S.optional(S.String),
-          customBiddingAlgorithmId: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
-          raiseBidForDeals: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MaximizeSpendBidStrategy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adGroupEffectiveTargetCpaValue: S.optional(S.String),
-          adGroupEffectiveTargetCpaSource: S.optional(S.String),
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAndPartnersBiddingStrategy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          demandGenBid: S.optional(__S(129, __c16, 1)),
-          performanceGoalAutoBid: S.optional(__S(130, __c16, 2)),
-          fixedBid: S.optional(__S(131, __c16, 3)),
-          maximizeSpendAutoBid: S.optional(__S(132, __c16, 4)),
-          youtubeAndPartnersBid: S.optional(__S(133, __c16, 5)),
-        }),
-      ).annotate({ identifier: "BiddingStrategy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxAmount: S.optional(S.String),
-          budgetUnit: S.optional(S.String),
-          budgetAllocationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LineItemBudget" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vendor: S.optional(S.String),
-          placementId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThirdPartyVendorConfig" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          viewabilityVendorConfigs: S.optional(__S(137, __c17, 1)),
-          brandSafetyVendorConfigs: S.optional(__S(137, __c17, 1)),
-          reachVendorConfigs: S.optional(__S(137, __c17, 1)),
-          brandLiftVendorConfigs: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({
-        identifier: "ThirdPartyMeasurementConfigs",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          linkedMerchantId: S.optional(S.String),
-          geoLanguageTargetingEnabled: S.optional(S.Boolean),
-          thirdPartyMeasurementConfigs: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "DemandGenSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          platform: S.optional(S.String),
-          displayName: S.optional(S.String),
-          appId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobileApp" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Displayvideo_Date" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(__S(141, __c17, 5)),
-          startDate: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({ identifier: "DateRange" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          flightDateType: S.optional(S.String),
-          dateRange: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "LineItemFlight" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          includeYoutube: S.optional(S.Boolean),
-          includeGoogleTv: S.optional(S.Boolean),
-          includeYoutubeVideoPartners: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "YoutubeAndPartnersInventorySourceConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targetCount: S.optional(S.String),
-          timeUnit: S.optional(S.String),
-          timeUnitCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TargetFrequency" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowInFeed: S.optional(S.Boolean),
-          allowNonSkippableInStream: S.optional(S.Boolean),
-          allowInStream: S.optional(S.Boolean),
-          allowShorts: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VideoAdInventoryControl" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          adGroupId: S.optional(S.String),
-          interactionType: S.optional(S.String),
-          stepId: S.optional(S.String),
-          previousStepId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoAdSequenceStep" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimumDuration: S.optional(S.String),
-          steps: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({ identifier: "VideoAdSequenceSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          thirdPartyMeasurementConfigs: S.optional(__S(138, __c17, 2)),
-          contentCategory: S.optional(S.String),
-          inventorySourceSettings: S.optional(__S(144, __c18, 0)),
-          linkedMerchantId: S.optional(S.String),
-          relatedVideoIds: S.optional(__S(7, __c0, 7)),
-          effectiveContentCategory: S.optional(S.String),
-          targetFrequency: S.optional(__S(145, __c18, 1)),
-          videoAdInventoryControl: S.optional(__S(146, __c18, 2)),
-          viewFrequencyCap: S.optional(__S(128, __c16, 0)),
-          leadFormId: S.optional(S.String),
-          videoAdSequenceSettings: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "YoutubeAndPartnersSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dailyMaxMicros: S.optional(S.String),
-          pacingType: S.optional(S.String),
-          pacingPeriod: S.optional(S.String),
-          dailyMaxImpressions: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Pacing" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          costType: S.optional(S.String),
-          feePercentageMillis: S.optional(S.String),
-          feeType: S.optional(S.String),
-          feeAmount: S.optional(S.String),
-          invoiceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerCost" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          postClickLookbackWindowDays: S.optional(S.Number),
-          postViewLookbackWindowDays: S.optional(S.Number),
-          floodlightActivityId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TrackingFloodlightActivityConfig",
-      });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          floodlightActivityConfigs: S.optional(__S(155, __c19, 3)),
-          postViewCountPercentageMillis: S.optional(S.String),
-          primaryAttributionModelId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConversionCountingConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(S.String),
-          integrationCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntegrationDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          campaignId: S.optional(S.String),
-          targetingExpansion: S.optional(__S(126, __c15, 6)),
-          advertiserId: S.optional(S.String),
-          partnerRevenueModel: S.optional(__S(127, __c15, 7)),
-          frequencyCap: S.optional(__S(128, __c16, 0)),
-          warningMessages: S.optional(__S(83, __c10, 3)),
-          reservationType: S.optional(S.String),
-          bidStrategy: S.optional(__S(134, __c16, 6)),
-          containsEuPoliticalAds: S.optional(S.String),
-          optimizeFixedBidding: S.optional(S.Boolean),
-          budget: S.optional(__S(135, __c16, 7)),
-          demandGenSettings: S.optional(__S(139, __c17, 3)),
-          updateTime: S.optional(S.String),
-          mobileApp: S.optional(__S(140, __c17, 4)),
-          flight: S.optional(__S(143, __c17, 7)),
-          insertionOrderId: S.optional(S.String),
-          youtubeAndPartnersSettings: S.optional(__S(150, __c18, 6)),
-          pacing: S.optional(__S(151, __c18, 7)),
-          entityStatus: S.optional(S.String),
-          partnerCosts: S.optional(__S(153, __c19, 1)),
-          conversionCounting: S.optional(__S(156, __c19, 4)),
-          integrationDetails: S.optional(__S(157, __c19, 5)),
-          excludeNewExchanges: S.optional(S.Boolean),
-          lineItemId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          lineItemType: S.optional(S.String),
-          name: S.optional(S.String),
-          creativeIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "LineItem" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          targetLineItem: S.optional(__S(158, __c19, 6)),
-          lineItemIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BulkUpdateLineItemsRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkUpdate",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkUpdateAdvertisersLineItemsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          skippedLineItemIds: S.optional(__S(7, __c0, 7)),
-          errors: S.optional(__S(102, __c12, 6)),
-          failedLineItemIds: S.optional(__S(7, __c0, 7)),
-          updatedLineItemIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BulkUpdateLineItemsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cmFloodlightConfigId: S.optional(S.String),
-          cmAccountId: S.optional(S.String),
-          cmAdvertiserIds: S.optional(__S(7, __c0, 7)),
-          dv360ToCmCostReportingEnabled: S.optional(S.Boolean),
-          dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
-          cmFloodlightLinkingAuthorized: S.optional(S.Boolean),
-          cmSyncableSiteIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CmHybridConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pixelOrderIdReportingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ThirdPartyOnlyConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cmHybridConfig: S.optional(__S(162, __c20, 2)),
-          thirdPartyOnlyConfig: S.optional(__S(163, __c20, 3)),
-        }),
-      ).annotate({ identifier: "AdvertiserAdServerConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeZone: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          domainUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdvertiserGeneralConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          iasClientId: S.optional(S.String),
-          obaComplianceDisabled: S.optional(S.Boolean),
-          dynamicCreativeEnabled: S.optional(S.Boolean),
-          videoCreativeDataSharingAuthorized: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdvertiserCreativeConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exemptTvFromViewabilityTargeting: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdvertiserTargetingConfig",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billingProfileId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdvertiserBillingConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          adminEmail: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SdfConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sdfConfig: S.optional(__S(169, __c21, 1)),
-          overridePartnerSdfConfig: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdvertiserSdfConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sdfConfig: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({
-        identifier: "AdvertiserDataAccessConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          adServerConfig: S.optional(__S(164, __c20, 4)),
-          partnerId: S.optional(S.String),
-          defaultBusinessName: S.optional(S.String),
-          generalConfig: S.optional(__S(165, __c20, 5)),
-          creativeConfig: S.optional(__S(166, __c20, 6)),
-          servingConfig: S.optional(__S(167, __c20, 7)),
-          billingConfig: S.optional(__S(168, __c21, 0)),
-          containsEuPoliticalAds: S.optional(S.String),
-          displayName: S.optional(S.String),
-          defaultLogoAssetId: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          prismaEnabled: S.optional(S.Boolean),
-          integrationDetails: S.optional(__S(157, __c19, 5)),
-          advertiserId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          dataAccessConfig: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({ identifier: "Advertiser" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(172, __c21, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAdvertisersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          adAsset: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreateAdAssetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(174, __c21, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adAssets",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersAdAssetsRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          heightPixels: S.optional(S.Number),
-          widthPixels: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Dimensions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          fileSize: S.optional(S.String),
-          assetId: S.optional(S.String),
-          fullSize: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({ identifier: "ImageAsset" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          videoAssetId: S.optional(S.String),
-          unavailableReason: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "YoutubeVideoDetails" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          longHeadlines: S.optional(__S(7, __c0, 7)),
-          displayUrlBreadcrumb1: S.optional(S.String),
-          userSpecifiedTrackingUrl: S.optional(S.String),
-          finalUrlSuffix: S.optional(S.String),
-          logo: S.optional(__S(177, __c22, 1)),
-          callToAction: S.optional(S.String),
-          companionBanner: S.optional(__S(177, __c22, 1)),
-          trackingUrl: S.optional(S.String),
-          customParameters: S.optional(__S(178, __c22, 2)),
-          headlines: S.optional(__S(7, __c0, 7)),
-          displayUrlBreadcrumb2: S.optional(S.String),
-          videos: S.optional(__S(180, __c22, 4)),
-          businessName: S.optional(S.String),
-          finalUrl: S.optional(S.String),
-          finalMobileUrl: S.optional(S.String),
-          descriptions: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "DemandGenVideoAd" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          trackingUrl: S.optional(S.String),
-          video: S.optional(__S(179, __c22, 3)),
-          displayUrl: S.optional(S.String),
-          finalUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AudioAd" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description2: S.optional(S.String),
-          description1: S.optional(S.String),
-          video: S.optional(__S(179, __c22, 3)),
-          headline: S.optional(S.String),
-          thumbnail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoDiscoveryAd" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayUrl: S.optional(S.String),
-          video: S.optional(__S(179, __c22, 3)),
-          actionButtonLabel: S.optional(S.String),
-          finalUrl: S.optional(S.String),
-          companionBanner: S.optional(__S(177, __c22, 1)),
-          actionHeadline: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommonInStreamAttribute" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          commonInStreamAttribute: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "BumperAd" });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionButtonLabels: S.optional(__S(7, __c0, 7)),
-          longHeadlines: S.optional(__S(7, __c0, 7)),
-          descriptions: S.optional(__S(7, __c0, 7)),
-          companionBanners: S.optional(__S(186, __c23, 2)),
-          headlines: S.optional(__S(7, __c0, 7)),
-          displayUrlBreadcrumb1: S.optional(S.String),
-          videos: S.optional(__S(180, __c22, 4)),
-          finalUrl: S.optional(S.String),
-          domain: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-          customParameters: S.optional(__S(178, __c22, 2)),
-          displayUrlBreadcrumb2: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoPerformanceAd" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          marketingImage: S.optional(__S(177, __c22, 1)),
-          callToAction: S.optional(S.String),
-          headline: S.optional(S.String),
-          squareMarketingImage: S.optional(__S(177, __c22, 1)),
-          finalUrl: S.optional(S.String),
-          finalMobileUrl: S.optional(S.String),
-          portraitMarketingImage: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "CarouselCard" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customParameters: S.optional(__S(178, __c22, 2)),
-          businessName: S.optional(S.String),
-          headline: S.optional(S.String),
-          logo: S.optional(__S(177, __c22, 1)),
-          description: S.optional(S.String),
-          userSpecifiedTrackingUrl: S.optional(S.String),
-          cards: S.optional(__S(189, __c23, 5)),
-          finalUrlSuffix: S.optional(S.String),
-          finalUrl: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DemandGenCarouselAd" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          finalUrl: S.optional(S.String),
-          displayUrlBreadcrumb1: S.optional(S.String),
-          customParameters: S.optional(__S(178, __c22, 2)),
-          userSpecifiedTrackingUrl: S.optional(S.String),
-          callToAction: S.optional(S.String),
-          description: S.optional(S.String),
-          displayUrlBreadcrumb2: S.optional(S.String),
-          logo: S.optional(__S(177, __c22, 1)),
-          businessName: S.optional(S.String),
-          finalUrlSuffix: S.optional(S.String),
-          headline: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DemandGenProductAd" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          callToActionButtonLabel: S.optional(S.String),
-          callToActionTrackingUrl: S.optional(S.String),
-          headline: S.optional(S.String),
-          videoAspectRatio: S.optional(S.String),
-          companionYoutubeVideos: S.optional(__S(180, __c22, 4)),
-          autoplayVideoStartMillisecond: S.optional(S.String),
-          description: S.optional(S.String),
-          callToActionFinalUrl: S.optional(S.String),
-          autoplayVideoDuration: S.optional(S.String),
-          video: S.optional(__S(179, __c22, 3)),
-          showChannelArt: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MastheadAd" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customParameters: S.optional(__S(178, __c22, 2)),
-          commonInStreamAttribute: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "InStreamAd" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          creativeId: S.optional(S.String),
-          placementId: S.optional(S.String),
-          trackingAdId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DcmTrackingInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commonInStreamAttribute: S.optional(__S(184, __c23, 0)),
-          customParameters: S.optional(__S(178, __c22, 2)),
-        }),
-      ).annotate({ identifier: "NonSkippableAd" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userSpecifiedTrackingUrl: S.optional(S.String),
-          customParameters: S.optional(__S(178, __c22, 2)),
-          finalUrlSuffix: S.optional(S.String),
-          finalUrl: S.optional(S.String),
-          finalMobileUrl: S.optional(S.String),
-          marketingImages: S.optional(__S(186, __c23, 2)),
-          callToAction: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-          headlines: S.optional(__S(7, __c0, 7)),
-          businessName: S.optional(S.String),
-          logoImages: S.optional(__S(186, __c23, 2)),
-          portraitMarketingImages: S.optional(__S(186, __c23, 2)),
-          squareMarketingImages: S.optional(__S(186, __c23, 2)),
-          descriptions: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "DemandGenImageAd" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdUrl" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          countryLabel: S.optional(S.String),
-          countryCriterionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyCriterionRestriction",
-      });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          countries: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicConstraintAdPolicyCountryConstraintList",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestCertificateFormLink: S.optional(S.String),
-          globalCertificateDomainMismatch: S.optional(__S(199, __c24, 7)),
-          certificateMissingCountryList: S.optional(__S(202, __c25, 2)),
-          certificateDomainMismatchCountryList: S.optional(__S(202, __c25, 2)),
-          resellerConstraint: S.optional(__S(199, __c24, 7)),
-          globalCertificateMissing: S.optional(__S(199, __c24, 7)),
-          countryConstraint: S.optional(__S(202, __c25, 2)),
-        }),
-      ).annotate({ identifier: "AdPolicyTopicConstraint" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owners: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceCounterfeit",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          destinationTexts: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceDestinationTextList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          countryRestrictions: S.optional(__S(201, __c25, 1)),
-          legalPolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          regionalRequirementsEntries: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceRegionalRequirements",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          term: S.optional(S.String),
-          countryRestrictions: S.optional(__S(201, __c25, 1)),
-          owner: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceTrademark",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          expandedUri: S.optional(S.String),
-          dnsErrorType: S.optional(S.String),
-          device: S.optional(S.String),
-          lastCheckedTime: S.optional(S.String),
-          httpErrorCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceDestinationNotWorking",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uriTypes: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceDestinationMismatch",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          websites: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceWebsiteList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          texts: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceTextList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          complainant: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceLegalRemovalDmca",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lawType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceLegalRemovalLocalLegal",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          countryRestrictions: S.optional(__S(201, __c25, 1)),
-          dmca: S.optional(__S(215, __c26, 7)),
-          restrictedUris: S.optional(__S(7, __c0, 7)),
-          complaintType: S.optional(S.String),
-          localLegal: S.optional(__S(216, __c27, 0)),
-        }),
-      ).annotate({
-        identifier: "AdPolicyTopicEvidenceLegalRemoval",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          httpCode: S.optional(S.Number),
-          counterfeit: S.optional(__S(205, __c25, 5)),
-          destinationTextList: S.optional(__S(206, __c25, 6)),
-          regionalRequirements: S.optional(__S(209, __c26, 1)),
-          trademark: S.optional(__S(210, __c26, 2)),
-          destinationNotWorking: S.optional(__S(211, __c26, 3)),
-          destinationMismatch: S.optional(__S(212, __c26, 4)),
-          websiteList: S.optional(__S(213, __c26, 5)),
-          languageCode: S.optional(S.String),
-          textList: S.optional(__S(214, __c26, 6)),
-          legalRemoval: S.optional(__S(217, __c27, 1)),
-        }),
-      ).annotate({ identifier: "AdPolicyTopicEvidence" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appealFormLink: S.optional(S.String),
-          appealType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdPolicyTopicAppealInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policyDecisionType: S.optional(S.String),
-          policyLabel: S.optional(S.String),
-          policyEnforcementMeans: S.optional(S.String),
-          policyTopic: S.optional(S.String),
-          helpCenterLink: S.optional(S.String),
-          policyTopicConstraints: S.optional(__S(204, __c25, 4)),
-          policyTopicEvidences: S.optional(__S(219, __c27, 3)),
-          policyTopicDescription: S.optional(S.String),
-          appealInfo: S.optional(__S(220, __c27, 4)),
-          policyTopicType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdPolicyTopicEntry" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adPolicyReviewStatus: S.optional(S.String),
-          adPolicyApprovalStatus: S.optional(S.String),
-          adPolicyTopicEntry: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({ identifier: "AdPolicy" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creativeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DisplayVideoSourceAd" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          demandGenVideoAd: S.optional(__S(181, __c22, 5)),
-          audioAd: S.optional(__S(182, __c22, 6)),
-          videoDiscoverAd: S.optional(__S(183, __c22, 7)),
-          adGroupId: S.optional(S.String),
-          adGroupAdId: S.optional(S.String),
-          bumperAd: S.optional(__S(185, __c23, 1)),
-          videoPerformanceAd: S.optional(__S(187, __c23, 3)),
-          entityStatus: S.optional(S.String),
-          demandGenCarouselAd: S.optional(__S(190, __c23, 6)),
-          demandGenProductAd: S.optional(__S(191, __c23, 7)),
-          mastheadAd: S.optional(__S(192, __c24, 0)),
-          inStreamAd: S.optional(__S(193, __c24, 1)),
-          advertiserId: S.optional(S.String),
-          dcmTrackingInfo: S.optional(__S(194, __c24, 2)),
-          displayName: S.optional(S.String),
-          nonSkippableAd: S.optional(__S(195, __c24, 3)),
-          name: S.optional(S.String),
-          demandGenImageAd: S.optional(__S(196, __c24, 4)),
-          adUrls: S.optional(__S(198, __c24, 6)),
-          adPolicy: S.optional(__S(223, __c27, 7)),
-          displayVideoSourceAd: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({ identifier: "AdGroupAd" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adGroupAds",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersAdGroupAdsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomLabel" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customLabel: S.optional(__S(227, __c28, 3)),
-          productOfferId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductMatchDimension" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productMatchDimensions: S.optional(__S(229, __c28, 5)),
-          isFeedDisabled: S.optional(S.Boolean),
-          productMatchType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductFeedData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowYoutubeStream: S.optional(S.Boolean),
-          allowDiscover: S.optional(S.Boolean),
-          allowGmail: S.optional(S.Boolean),
-          allowYoutubeShorts: S.optional(S.Boolean),
-          allowGoogleDisplayNetwork: S.optional(S.Boolean),
-          allowYoutubeFeed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SelectedInventories" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          selectedInventories: S.optional(__S(231, __c28, 7)),
-          adGroupInventoryStrategy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdGroupInventoryControl" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          adGroupId: S.optional(S.String),
-          targetingExpansion: S.optional(__S(126, __c15, 6)),
-          name: S.optional(S.String),
-          productFeedData: S.optional(__S(230, __c28, 6)),
-          lineItemId: S.optional(S.String),
-          adGroupInventoryControl: S.optional(__S(232, __c29, 0)),
-          bidStrategy: S.optional(__S(134, __c16, 6)),
-          entityStatus: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          adGroupFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdGroup" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adGroups",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersAdGroupsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationSitelinkAsset",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locationAssetIds: S.optional(__S(7, __c0, 7)),
-          labels: S.optional(__S(7, __c0, 7)),
-          business: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetSetId: S.optional(S.String),
-          locationMatchingFunction: S.optional(__S(237, __c29, 5)),
-          locationMatchingType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationLocationAssetFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chainId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          chains: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({
-        identifier:
-          "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetSetId: S.optional(S.String),
-          affiliateLocationMatchingFunction: S.optional(__S(241, __c30, 1)),
-          affiliateLocationMatchingType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationAffiliateLocationAssetFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sitelinkAsset: S.optional(__S(236, __c29, 4)),
-          locationAssetFilter: S.optional(__S(238, __c29, 6)),
-          affiliateLocationAssetFilter: S.optional(__S(242, __c30, 2)),
-        }),
-      ).annotate({
-        identifier: "YoutubeAssetAssociationLinkedYouTubeAsset",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          youtubeAssetType: S.optional(S.String),
-          linkedYoutubeAsset: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({ identifier: "YoutubeAssetAssociation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "linkedEntity.lineItemId": S.optional(S.String.pipe(T.Query())),
-          youtubeAssetType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-          body: S.optional(__S(244, __c30, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          prismaEstimateCode: S.optional(S.String),
-          prismaClientCode: S.optional(S.String),
-          prismaProductCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrismaCpeCode" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prismaType: S.optional(S.String),
-          supplier: S.optional(S.String),
-          prismaCpeCode: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({ identifier: "PrismaConfig" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          budgetAmountMicros: S.optional(S.String),
-          externalBudgetId: S.optional(S.String),
-          budgetUnit: S.optional(S.String),
-          prismaConfig: S.optional(__S(247, __c30, 7)),
-          invoiceGroupingId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          budgetId: S.optional(S.String),
-          externalBudgetSource: S.optional(S.String),
-          dateRange: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "CampaignBudget" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          plannedSpendAmountMicros: S.optional(S.String),
-          plannedDates: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "CampaignFlight" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          performanceGoalString: S.optional(S.String),
-          performanceGoalAmountMicros: S.optional(S.String),
-          performanceGoalPercentageMicros: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PerformanceGoal" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          campaignGoalType: S.optional(S.String),
-          performanceGoal: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({ identifier: "CampaignGoal" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          campaignBudgets: S.optional(__S(249, __c31, 1)),
-          campaignId: S.optional(S.String),
-          campaignFlight: S.optional(__S(250, __c31, 2)),
-          entityStatus: S.optional(S.String),
-          frequencyCap: S.optional(__S(128, __c16, 0)),
-          updateTime: S.optional(S.String),
-          campaignGoal: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({ identifier: "Campaign" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/campaigns",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersCampaignsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          partnerId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          channelId: S.optional(S.String),
-          negativelyTargetedLineItemCount: S.optional(S.String),
-          positivelyTargetedLineItemCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Channel" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/channels",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersChannelsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.String.pipe(T.Label()),
-          channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersChannelsSitesRequest",
-      });
-    case 2:
-      return S.Array(__S(176, __c22, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          registry: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UniversalAdId" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportingName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimerEvent" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.Array(__S(260, __c32, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mediaId: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Asset" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          asset: S.optional(__S(263, __c32, 7)),
-        }),
-      ).annotate({ identifier: "AssetAssociation" });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
-    case 2:
-      return S.Array(__S(197, __c24, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceMimeType: S.optional(S.String),
-          dimensions: S.optional(__S(176, __c22, 0)),
-          viewTrackingUrl: S.optional(S.String),
-          program: S.optional(S.String),
-          clickTrackingUrl: S.optional(S.String),
-          position: S.optional(S.String),
-          landingPageUrl: S.optional(S.String),
-          resourceUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObaIcon" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.optional(S.String),
-          seconds: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AudioVideoOffset" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          url: S.optional(S.String),
-          reportingName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExitEvent" });
-    case 6:
-      return S.Array(__S(269, __c33, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exchange: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExchangeReviewStatus" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          approvalStatus: S.optional(S.String),
-          creativeAndLandingPageReviewStatus: S.optional(S.String),
-          exchangeReviewStatuses: S.optional(__S(272, __c34, 0)),
-          contentAndPolicyReviewStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewStatusInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          frameRate: S.optional(S.Number),
-          transcoded: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          fileSizeBytes: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          audioBitRateKbps: S.optional(S.String),
-          audioSampleRateHz: S.optional(S.String),
-          dimensions: S.optional(__S(176, __c22, 0)),
-          bitRateKbps: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Transcode" });
-    case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cmPlacementId: S.optional(S.String),
-          cmCreativeId: S.optional(S.String),
-          cmAdId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CmTrackingAd" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entityStatus: S.optional(S.String),
-          additionalDimensions: S.optional(__S(258, __c32, 2)),
-          dimensions: S.optional(__S(176, __c22, 0)),
-          companionCreativeIds: S.optional(__S(7, __c0, 7)),
-          creativeId: S.optional(S.String),
-          requireHtml5: S.optional(S.Boolean),
-          lineItemIds: S.optional(__S(7, __c0, 7)),
-          universalAdId: S.optional(__S(259, __c32, 3)),
-          skippable: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          timerEvents: S.optional(__S(261, __c32, 5)),
-          counterEvents: S.optional(__S(262, __c32, 6)),
-          mediaDuration: S.optional(S.String),
-          expandingDirection: S.optional(S.String),
-          assets: S.optional(__S(265, __c33, 1)),
-          displayName: S.optional(S.String),
-          thirdPartyUrls: S.optional(__S(266, __c33, 2)),
-          trackerUrls: S.optional(__S(7, __c0, 7)),
-          requireMraid: S.optional(S.Boolean),
-          hostingSource: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          requirePingForAttribution: S.optional(S.Boolean),
-          vastTagUrl: S.optional(S.String),
-          obaIcon: S.optional(__S(267, __c33, 3)),
-          integrationCode: S.optional(S.String),
-          html5Video: S.optional(S.Boolean),
-          cmPlacementId: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          skipOffset: S.optional(__S(268, __c33, 4)),
-          mp3Audio: S.optional(S.Boolean),
-          exitEvents: S.optional(__S(270, __c33, 6)),
-          reviewStatus: S.optional(__S(273, __c34, 1)),
-          syntheticContentAttestationStatus: S.optional(S.String),
-          name: S.optional(S.String),
-          oggAudio: S.optional(S.Boolean),
-          thirdPartyTag: S.optional(S.String),
-          dynamic: S.optional(S.Boolean),
-          transcodes: S.optional(__S(275, __c34, 3)),
-          jsTrackerUrl: S.optional(S.String),
-          creativeType: S.optional(S.String),
-          progressOffset: S.optional(__S(268, __c33, 4)),
-          creativeAttributes: S.optional(__S(83, __c10, 3)),
-          appendedTag: S.optional(S.String),
-          cmTrackingAd: S.optional(__S(276, __c34, 4)),
-          notes: S.optional(S.String),
-          vpaid: S.optional(S.Boolean),
-          iasCampaignMonitoring: S.optional(S.Boolean),
-          expandOnHover: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Creative" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(277, __c34, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/creatives",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersCreativesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          campaignBudgetId: S.optional(S.String),
-          budgetAmountMicros: S.optional(S.String),
-          description: S.optional(S.String),
-          dateRange: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({
-        identifier: "InsertionOrderBudgetSegment",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          budgetSegments: S.optional(__S(280, __c35, 0)),
-          budgetUnit: S.optional(S.String),
-          automationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InsertionOrderBudget" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kpiType: S.optional(S.String),
-          kpiAlgorithmId: S.optional(S.String),
-          kpiAmountMicros: S.optional(S.String),
-          kpiString: S.optional(S.String),
-          kpiPercentageMicros: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Kpi" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          insertionOrderId: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          integrationDetails: S.optional(__S(157, __c19, 5)),
-          entityStatus: S.optional(S.String),
-          frequencyCap: S.optional(__S(128, __c16, 0)),
-          updateTime: S.optional(S.String),
-          budget: S.optional(__S(281, __c35, 1)),
-          kpi: S.optional(__S(282, __c35, 2)),
-          pacing: S.optional(__S(151, __c18, 7)),
-          reservationType: S.optional(S.String),
-          partnerCosts: S.optional(__S(153, __c19, 1)),
-          campaignId: S.optional(S.String),
-          bidStrategy: S.optional(__S(134, __c16, 6)),
-          insertionOrderType: S.optional(S.String),
-          optimizationObjective: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InsertionOrder" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(283, __c35, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/insertionOrders",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersInsertionOrdersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersLineItemsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          lineItemId: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          "linkedEntity.adGroupId": S.optional(S.String.pipe(T.Query())),
-          youtubeAssetType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          lineItemId: S.String.pipe(T.Label()),
-          body: S.optional(__S(244, __c30, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          locationType: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          locationListId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocationList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(288, __c36, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/locationLists",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersLocationListsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          locationListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersLocationListsAssignedLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetedLineItemCount: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          negativeKeywordListId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NegativeKeywordList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersNegativeKeywordListsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          negativeKeywordListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          suspensionState: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          readinessState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomBiddingModelDetails",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(295, __c36, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String),
-          thirdPartyOptimizationPartner: S.optional(S.String),
-          modelDetails: S.optional(__S(296, __c37, 0)),
-          advertiserId: S.optional(S.String),
-          customBiddingAlgorithmId: S.optional(S.String),
-          customBiddingAlgorithmType: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sharedAdvertiserIds: S.optional(__S(7, __c0, 7)),
-          entityStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomBiddingAlgorithm" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/customBiddingAlgorithms",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomBiddingAlgorithmsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomBiddingAlgorithmRulesError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomBiddingAlgorithmRulesRef",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          customBiddingAlgorithmId: S.optional(S.String),
-          state: S.optional(S.String),
-          customBiddingAlgorithmRulesId: S.optional(S.String),
-          error: S.optional(__S(299, __c37, 3)),
-          rules: S.optional(__S(300, __c37, 4)),
-          createTime: S.optional(S.String),
-          active: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CustomBiddingAlgorithmRules",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(301, __c37, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomBiddingAlgorithmsRulesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          column: S.optional(S.String),
-          line: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScriptError" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomBiddingScriptRef" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          errors: S.optional(__S(304, __c38, 0)),
-          customBiddingAlgorithmId: S.optional(S.String),
-          name: S.optional(S.String),
-          script: S.optional(__S(305, __c38, 1)),
-          customBiddingScriptId: S.optional(S.String),
-          createTime: S.optional(S.String),
-          active: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CustomBiddingScript" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          body: S.optional(__S(306, __c38, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomBiddingAlgorithmsScriptsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adUserData: S.optional(S.String),
-          adPersonalization: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Consent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hashedLastName: S.optional(S.String),
-          hashedFirstName: S.optional(S.String),
-          hashedPhoneNumbers: S.optional(__S(7, __c0, 7)),
-          countryCode: S.optional(S.String),
-          hashedEmails: S.optional(__S(7, __c0, 7)),
-          zipCodes: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ContactInfo" });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          consent: S.optional(__S(308, __c38, 4)),
-          contactInfos: S.optional(__S(310, __c38, 6)),
-        }),
-      ).annotate({ identifier: "ContactInfoList" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mobileDeviceIds: S.optional(__S(7, __c0, 7)),
-          consent: S.optional(__S(308, __c38, 4)),
-        }),
-      ).annotate({ identifier: "MobileDeviceIdList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activeDisplayAudienceSize: S.optional(S.String),
-          contactInfoList: S.optional(__S(311, __c38, 7)),
-          audienceSource: S.optional(S.String),
-          displayName: S.optional(S.String),
-          youtubeAudienceSize: S.optional(S.String),
-          firstPartyAndPartnerAudienceType: S.optional(S.String),
-          displayDesktopAudienceSize: S.optional(S.String),
-          firstPartyAndPartnerAudienceId: S.optional(S.String),
-          name: S.optional(S.String),
-          membershipDurationDays: S.optional(S.String),
-          gmailAudienceSize: S.optional(S.String),
-          description: S.optional(S.String),
-          audienceType: S.optional(S.String),
-          displayAudienceSize: S.optional(S.String),
-          mobileDeviceIdList: S.optional(__S(312, __c39, 0)),
-          appId: S.optional(S.String),
-          displayMobileWebAudienceSize: S.optional(S.String),
-          displayMobileAppAudienceSize: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FirstPartyAndPartnerAudience",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/firstPartyAndPartnerAudiences",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFirstPartyAndPartnerAudiencesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entityPauseReason: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          configStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GuaranteedOrderStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guaranteedOrderId: S.optional(S.String),
-          readAccessInherited: S.optional(S.Boolean),
-          publisherName: S.optional(S.String),
-          exchange: S.optional(S.String),
-          defaultCampaignId: S.optional(S.String),
-          readWriteAdvertiserId: S.optional(S.String),
-          defaultAdvertiserId: S.optional(S.String),
-          legacyGuaranteedOrderId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          status: S.optional(__S(315, __c39, 3)),
-          readWritePartnerId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          readAdvertiserIds: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GuaranteedOrder" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/guaranteedOrders",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGuaranteedOrdersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceGroupId: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventorySourceGroup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(318, __c39, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/inventorySourceGroups",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInventorySourceGroupsRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          inventorySourceGroupId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInventorySourceGroupsAssignedInventorySourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeRange" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sellerStatus: S.optional(S.String),
-          configStatus: S.optional(S.String),
-          entityPauseReason: S.optional(S.String),
-          sellerPauseReason: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventorySourceStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InventorySourceAccessorsPartnerAccessor",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "InventorySourceAccessorsAdvertiserAccessors",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          partner: S.optional(__S(323, __c40, 3)),
-          advertisers: S.optional(__S(324, __c40, 4)),
-        }),
-      ).annotate({ identifier: "InventorySourceAccessors" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          creativeSize: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "InventorySourceDisplayCreativeConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InventorySourceVideoCreativeConfig",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creativeType: S.optional(S.String),
-          displayCreativeConfig: S.optional(__S(326, __c40, 6)),
-          videoCreativeConfig: S.optional(__S(327, __c40, 7)),
-        }),
-      ).annotate({ identifier: "CreativeConfig" });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          units: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceRateType: S.optional(S.String),
-          unitsPurchased: S.optional(S.String),
-          minimumSpend: S.optional(__S(330, __c41, 2)),
-          rate: S.optional(__S(330, __c41, 2)),
-        }),
-      ).annotate({ identifier: "RateDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timeRange: S.optional(__S(321, __c40, 1)),
-          inventorySourceType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          readAdvertiserIds: S.optional(__S(7, __c0, 7)),
-          dealId: S.optional(S.String),
-          status: S.optional(__S(322, __c40, 2)),
-          readWriteAccessors: S.optional(__S(325, __c40, 5)),
-          creativeConfigs: S.optional(__S(329, __c41, 1)),
-          name: S.optional(S.String),
-          deliveryMethod: S.optional(S.String),
-          inventorySourceProductType: S.optional(S.String),
-          guaranteedOrderId: S.optional(S.String),
-          publisherName: S.optional(S.String),
-          exchange: S.optional(S.String),
-          readPartnerIds: S.optional(__S(7, __c0, 7)),
-          rateDetails: S.optional(__S(331, __c41, 3)),
-          inventorySourceId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          commitment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventorySource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/inventorySources",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInventorySourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/partners/{+partnerId}/channels",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePartnersChannelsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          channelId: S.String.pipe(T.Label()),
-          partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePartnersChannelsSitesRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePartnersTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          campaignIds: S.optional(__S(7, __c0, 7)),
-          adGroupIds: S.optional(__S(7, __c0, 7)),
-          lineItemQaIds: S.optional(__S(7, __c0, 7)),
-          insertionOrderIds: S.optional(__S(7, __c0, 7)),
-          mediaProductIds: S.optional(__S(7, __c0, 7)),
-          adGroupAdIds: S.optional(__S(7, __c0, 7)),
-          lineItemIds: S.optional(__S(7, __c0, 7)),
-          adGroupQaIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "IdFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filterType: S.optional(S.String),
-          filterIds: S.optional(__S(7, __c0, 7)),
-          fileType: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "ParentEntityFilter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "InventorySourceFilter" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String),
-          idFilter: S.optional(__S(337, __c42, 1)),
-          parentEntityFilter: S.optional(__S(338, __c42, 2)),
-          inventorySourceFilter: S.optional(__S(339, __c42, 3)),
-          partnerId: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSdfDownloadTaskRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(340, __c42, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/sdfdownloadtasks",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSdfdownloadtasksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(99, __c12, 3)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(101, __c12, 5)),
-          response: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-          assignedUserRoles: S.optional(__S(108, __c13, 4)),
-          userId: S.optional(S.String),
-          lastLoginTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(343, __c42, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/users",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateUsersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAdvertisersRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupAdId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersAdGroupAdsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersAdGroupsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          youtubeAssetType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          youtubeAssetAssociationId: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-          "linkedEntity.lineItemId": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          campaignId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/campaigns/{+campaignId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersCampaignsRequest",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          urlOrAppId: S.String.pipe(T.Label()),
-          channelId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersChannelsSitesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          creativeId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/creatives/{+creativeId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersCreativesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          insertionOrderId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersInsertionOrdersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lineItemId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersLineItemsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          lineItemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "linkedEntity.adGroupId": S.optional(S.String.pipe(T.Query())),
-          lineItemId: S.String.pipe(T.Label()),
-          youtubeAssetType: S.String.pipe(T.Label()),
-          youtubeAssetAssociationId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          locationListId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          assignedLocationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersLocationListsAssignedLocationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          negativeKeywordListId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersNegativeKeywordListsRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          keywordValue: S.String.pipe(T.Label()),
-          negativeKeywordListId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          inventorySourceGroupId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInventorySourceGroupsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceGroupId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          assignedInventorySourceId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInventorySourceGroupsAssignedInventorySourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channelId: S.String.pipe(T.Label()),
-          partnerId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          urlOrAppId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePartnersChannelsSitesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePartnersTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4/users/{+userId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteUsersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "download/{+resourceName}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DownloadMediaRequest" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          targetDisplayName: S.optional(S.String),
-          containsEuPoliticalAds: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DuplicateLineItemRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lineItemId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(368, __c46, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DuplicateAdvertisersLineItemsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          duplicateLineItemId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DuplicateLineItemResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deleteRequests: S.optional(__S(96, __c12, 0)),
-          createRequests: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAdvertiserAssignedTargetingOptionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(371, __c46, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}:editAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditAssignedTargetingOptionsAdvertisersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAssignedTargetingOptions: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "BulkEditAdvertiserAssignedTargetingOptionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createRequests: S.optional(__S(94, __c11, 6)),
-          deleteRequests: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({
-        identifier: "BulkEditPartnerAssignedTargetingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(374, __c46, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/partners/{+partnerId}:editAssignedTargetingOptions",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditAssignedTargetingOptionsPartnersRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          removedMobileDeviceIdList: S.optional(__S(312, __c39, 0)),
-          advertiserId: S.optional(S.String),
-          addedContactInfoList: S.optional(__S(311, __c38, 7)),
-          addedMobileDeviceIdList: S.optional(__S(312, __c39, 0)),
-          removedContactInfoList: S.optional(__S(311, __c38, 7)),
-        }),
-      ).annotate({
-        identifier: "EditCustomerMatchMembersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          firstPartyAndPartnerAudienceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(376, __c47, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/firstPartyAndPartnerAudiences/{+firstPartyAndPartnerAudienceId}:editCustomerMatchMembers",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditCustomerMatchMembersFirstPartyAndPartnerAudiencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          firstPartyAndPartnerAudienceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EditCustomerMatchMembersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          addedAdvertisers: S.optional(__S(7, __c0, 7)),
-          partnerId: S.optional(S.String),
-          removedAdvertisers: S.optional(__S(7, __c0, 7)),
-          readAccessInherited: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EditGuaranteedOrderReadAccessorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guaranteedOrderId: S.String.pipe(T.Label()),
-          body: S.optional(__S(379, __c47, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          readAccessInherited: S.optional(S.Boolean),
-          readAdvertiserIds: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "EditGuaranteedOrderReadAccessorsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          addedAdvertisers: S.optional(__S(7, __c0, 7)),
-          removedAdvertisers: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String),
-          assignPartner: S.optional(S.Boolean),
-          advertisersUpdate: S.optional(__S(382, __c47, 6)),
-        }),
-      ).annotate({
-        identifier: "EditInventorySourceReadWriteAccessorsRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(383, __c47, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditInventorySourceReadWriteAccessorsInventorySourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          durationDays: S.optional(S.Number),
-          dateRange: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "CampaignDuration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          surfaces: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "SurfaceTargetingSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lineupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "YouTubeSelectSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          surfaceTargetingSettings: S.optional(__S(386, __c48, 2)),
-          network: S.optional(S.String),
-          genders: S.optional(__S(83, __c10, 3)),
-          youtubeSelectSettings: S.optional(__S(387, __c48, 3)),
-          plannableLocationIds: S.optional(__S(7, __c0, 7)),
-          ageRange: S.optional(S.String),
-          dateRange: S.optional(__S(142, __c17, 6)),
-          devices: S.optional(__S(83, __c10, 3)),
-          userListIds: S.optional(__S(7, __c0, 7)),
-          targetFrequency: S.optional(__S(145, __c18, 1)),
-          userInterestIds: S.optional(__S(7, __c0, 7)),
-          frequencyCap: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({ identifier: "AdvancedProductTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          budgetMicros: S.optional(S.String),
-          advancedProductTargeting: S.optional(__S(388, __c48, 4)),
-          plannableProductCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlannedProduct" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          plannableLocationIds: S.optional(__S(7, __c0, 7)),
-          ageRange: S.optional(S.String),
-          genders: S.optional(__S(83, __c10, 3)),
-          devices: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "Targeting" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          campaignDuration: S.optional(__S(385, __c48, 1)),
-          currencyCode: S.optional(S.String),
-          minEffectiveFrequency: S.optional(S.Number),
-          plannedProducts: S.optional(__S(390, __c48, 6)),
-          targeting: S.optional(__S(391, __c48, 7)),
-        }),
-      ).annotate({
-        identifier: "GenerateReachForecastRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(392, __c49, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/advertisers/{+advertiserId}/reachForecast:generateReachForecast",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateReachForecastAdvertisersReachForecastRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          youtubeAudienceSize: S.optional(S.String),
-          censusAudienceSize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OnTargetAudienceMetrics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          totalCoviewReach: S.optional(S.String),
-          onTargetReach: S.optional(S.String),
-          totalCoviewImpressions: S.optional(S.String),
-          viewableImpressions: S.optional(S.String),
-          onTargetCoviewReach: S.optional(S.String),
-          totalImpressions: S.optional(S.String),
-          onTargetCoviewImpressions: S.optional(S.String),
-          onTargetImpressions: S.optional(S.String),
-          totalReach: S.optional(S.String),
-          trueviewViews: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlannedProductForecast" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          plannedProductForecast: S.optional(__S(395, __c49, 3)),
-          plannableProductCode: S.optional(S.String),
-          costMicros: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlannedProductReachForecast",
-      });
-    case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          costMicros: S.optional(S.String),
-          plannedProductReachForecasts: S.optional(__S(397, __c49, 5)),
-          forecast: S.optional(__S(395, __c49, 3)),
-        }),
-      ).annotate({ identifier: "ReachForecast" });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reachForecasts: S.optional(__S(399, __c49, 7)),
-        }),
-      ).annotate({ identifier: "ReachCurve" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onTargetAudienceMetrics: S.optional(__S(394, __c49, 2)),
-          reachCurve: S.optional(__S(400, __c50, 0)),
-        }),
-      ).annotate({
-        identifier: "GenerateReachForecastResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAdvertisersRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          adAssetId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersAdAssetsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adGroupAdId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersAdGroupAdsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adGroupId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersAdGroupsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          adGroupId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          campaignId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/campaigns/{+campaignId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersCampaignsRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          channelId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/channels/{+channelId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersChannelsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          creativeId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/creatives/{+creativeId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersCreativesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          insertionOrderId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersInsertionOrdersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          lineItemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersLineItemsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          lineItemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          locationListId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/locationLists/{+locationListId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersLocationListsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          negativeKeywordListId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersNegativeKeywordListsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          assignedTargetingOptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          combinedAudienceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/combinedAudiences/{+combinedAudienceId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCombinedAudiencesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          combinedAudienceId: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CombinedAudience" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCustomBiddingAlgorithmsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          customBiddingAlgorithmRulesId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCustomBiddingAlgorithmsRulesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-          customBiddingScriptId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCustomBiddingAlgorithmsScriptsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customListId: S.String.pipe(T.Label()),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/customLists/{+customListId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetCustomListsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          customListId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          firstPartyAndPartnerAudienceId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/firstPartyAndPartnerAudiences/{+firstPartyAndPartnerAudienceId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFirstPartyAndPartnerAudiencesRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          floodlightGroupId: S.String.pipe(T.Label()),
-          partnerId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/floodlightGroups/{+floodlightGroupId}",
-            baseUrl: "https://displayvideo.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFloodlightGroupsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          minimumDuration: S.optional(S.String),
-          minimumViewability: S.optional(S.String),
-          minimumQuartile: S.optional(S.String),
-          minimumVolume: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveViewVideoViewabilityMetricConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clickDays: S.optional(S.Number),
-          impressionDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LookbackWindow" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          floodlightGroupId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          webTagType: S.optional(S.String),
-          customVariables: S.optional(__S(99, __c12, 3)),
-          activeViewConfig: S.optional(__S(425, __c53, 1)),
-          lookbackWindow: S.optional(__S(426, __c53, 2)),
-        }),
-      ).annotate({ identifier: "FloodlightGroup" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
@@ -18040,31 +14234,35 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetFloodlightGroupsFloodlightActivitiesRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           remarketingEnabled: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemarketingConfig" });
-    case 6:
-      return S.Array(__S(429, __c53, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           floodlightActivityId: S.optional(S.String),
           sslRequired: S.optional(S.Boolean),
           floodlightGroupId: S.optional(S.String),
-          remarketingConfigs: S.optional(__S(430, __c53, 6)),
+          remarketingConfigs: S.optional(__S(353, __c11, 1)),
           servingStatus: S.optional(S.String),
-          advertiserIds: S.optional(__S(7, __c0, 7)),
+          advertiserIds: S.optional(__S(6880, __c215, 0)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FloodlightActivity" });
   }
 }
-function __c54(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18082,7 +14280,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGoogleAudiencesRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           googleAudienceType: S.optional(S.String),
@@ -18091,7 +14293,11 @@ function __c54(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAudience" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guaranteedOrderId: S.String.pipe(T.Label()),
@@ -18107,7 +14313,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGuaranteedOrdersRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           inventorySourceGroupId: S.String.pipe(T.Label()),
@@ -18123,7 +14333,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetInventorySourceGroupsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           inventorySourceId: S.String.pipe(T.Label()),
@@ -18139,7 +14353,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetInventorySourcesRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
@@ -18151,37 +14369,37 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPartnersRequest" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
           dv360ToCmCostReportingEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MeasurementConfig" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          measurementConfig: S.optional(__S(438, __c54, 6)),
+          measurementConfig: S.optional(__S(576, __c18, 0)),
         }),
       ).annotate({ identifier: "PartnerAdServerConfig" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           timeZone: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerGeneralConfig" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          sdfConfig: S.optional(__S(169, __c21, 1)),
+          sdfConfig: S.optional(__S(3841, __c120, 1)),
         }),
       ).annotate({ identifier: "PartnerDataAccessConfig" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           googleAdManagerAgencyId: S.optional(S.String),
@@ -18192,30 +14410,34 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ExchangeConfigEnabledExchange",
       });
-    case 3:
-      return S.Array(__S(442, __c55, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(580, __c18, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          enabledExchanges: S.optional(__S(443, __c55, 3)),
+          enabledExchanges: S.optional(__S(581, __c18, 5)),
         }),
       ).annotate({ identifier: "ExchangeConfig" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           partnerId: S.optional(S.String),
-          adServerConfig: S.optional(__S(439, __c54, 7)),
-          generalConfig: S.optional(__S(440, __c55, 0)),
-          dataAccessConfig: S.optional(__S(441, __c55, 1)),
+          adServerConfig: S.optional(__S(577, __c18, 1)),
+          generalConfig: S.optional(__S(578, __c18, 2)),
+          dataAccessConfig: S.optional(__S(579, __c18, 3)),
           name: S.optional(S.String),
-          exchangeConfig: S.optional(__S(444, __c55, 4)),
+          exchangeConfig: S.optional(__S(582, __c18, 6)),
           displayName: S.optional(S.String),
-          billingConfig: S.optional(__S(168, __c21, 0)),
+          billingConfig: S.optional(__S(3840, __c120, 0)),
           entityStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Partner" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
@@ -18231,7 +14453,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetPartnersChannelsRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assignedTargetingOptionId: S.String.pipe(T.Label()),
@@ -18249,7 +14475,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18277,16 +14503,20 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "PlannableLocation" });
     case 2:
-      return S.Array(__S(449, __c56, 1));
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          plannableLocations: S.optional(__S(450, __c56, 2)),
+          plannableLocations: S.optional(__S(674, __c21, 2)),
         }),
       ).annotate({
         identifier: "RetrievePlannableLocationsResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plannableLocationId: S.optional(S.String.pipe(T.Query())),
@@ -18301,7 +14531,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetPlannableProductsAdvertisersReachForecastRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           costModel: S.optional(S.String),
@@ -18311,72 +14541,111 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "PlannableProductCoreAttributes",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lineupId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "YouTubeSelectLineUp" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          choices: S.optional(__S(83, __c10, 3)),
+          choices: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "SurfaceTargetingCombination",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(455, __c56, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(707, __c22, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          availableSurfaceTypes: S.optional(__S(83, __c10, 3)),
-          defaultSurfaceTypes: S.optional(__S(83, __c10, 3)),
-          validSurfaceCombinations: S.optional(__S(456, __c57, 0)),
+          availableSurfaceTypes: S.optional(__S(32, __c1, 0)),
+          defaultSurfaceTypes: S.optional(__S(32, __c1, 0)),
+          validSurfaceCombinations: S.optional(__S(708, __c22, 4)),
         }),
       ).annotate({
         identifier: "SurfaceTargetingCombinations",
       });
-    case 2:
-      return S.Array(__S(454, __c56, 6));
-    case 3:
+    case 6:
+      return S.Array(__S(706, __c22, 2));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          defaultYoutubeSelectLineup: S.optional(__S(454, __c56, 6)),
-          surfaceTargetingCombinations: S.optional(__S(457, __c57, 1)),
-          ageRanges: S.optional(__S(83, __c10, 3)),
-          youtubeSelectLineups: S.optional(__S(458, __c57, 2)),
-          networks: S.optional(__S(83, __c10, 3)),
-          genders: S.optional(__S(83, __c10, 3)),
-          devices: S.optional(__S(83, __c10, 3)),
+          defaultYoutubeSelectLineup: S.optional(__S(706, __c22, 2)),
+          surfaceTargetingCombinations: S.optional(__S(709, __c22, 5)),
+          ageRanges: S.optional(__S(32, __c1, 0)),
+          youtubeSelectLineups: S.optional(__S(710, __c22, 6)),
+          networks: S.optional(__S(32, __c1, 0)),
+          genders: S.optional(__S(32, __c1, 0)),
+          devices: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "PlannableTargeting" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          plannableProductCoreAttributes: S.optional(__S(453, __c56, 5)),
+          plannableProductCoreAttributes: S.optional(__S(705, __c22, 1)),
           plannableProductDescription: S.optional(S.String),
-          plannableTargeting: S.optional(__S(459, __c57, 3)),
+          plannableTargeting: S.optional(__S(711, __c22, 7)),
           displayName: S.optional(S.String),
           plannableProductCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductMetadata" });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(712, __c22, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          productMetadata: S.optional(__S(461, __c57, 5)),
+          productMetadata: S.optional(__S(713, __c22, 9)),
         }),
       ).annotate({
         identifier: "RetrievePlannableProductsResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lineItemIds: S.optional(__S(6880, __c215, 0)),
+          createRequests: S.optional(__S(257, __c8, 1)),
+          deleteRequests: S.optional(__S(259, __c8, 3)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedTargetingOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updatedLineItemIds: S.optional(__S(6880, __c215, 0)),
+          errors: S.optional(__S(160, __c5, 0)),
+          failedLineItemIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedTargetingOptionsResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -18391,37 +14660,37 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetPlannableUserInterestsAdvertisersReachForecastRequest",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userInterestCategory: S.optional(S.String),
           userInterestUserList: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserInterest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           userInterestPath: S.optional(S.String),
           userInterestType: S.optional(S.String),
-          userInterest: S.optional(__S(464, __c58, 0)),
+          userInterest: S.optional(__S(769, __c24, 1)),
           userInterestDisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlannableUserInterest" });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
     case 3:
+      return S.Array(__S(770, __c24, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          plannableUserInterests: S.optional(__S(466, __c58, 2)),
+          plannableUserInterests: S.optional(__S(771, __c24, 3)),
         }),
       ).annotate({
         identifier: "RetrievePlannableUserInterestsResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -18438,7 +14707,7 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetPlannableUserListsAdvertisersReachForecastRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -18447,20 +14716,20 @@ function __c58(j: number): any {
           userListType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlannableUserList" });
-    case 6:
-      return S.Array(__S(469, __c58, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          plannableUserLists: S.optional(__S(470, __c58, 6)),
+          plannableUserLists: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({
         identifier: "RetrievePlannableUserListsResponse",
       });
   }
 }
-function __c59(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18476,7 +14745,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetSdfdownloadtasksOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18490,7 +14763,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetSdfuploadtasksOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetingType: S.String.pipe(T.Label()),
@@ -18506,7 +14783,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetTargetingTypesTargetingOptionsRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentRatingTier: S.optional(S.String),
@@ -18514,7 +14795,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "DigitalContentLabelTargetingOptionDetails",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentInstreamPosition: S.optional(S.String),
@@ -18522,7 +14803,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContentInstreamPositionTargetingOptionDetails",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           contentTheme: S.optional(S.String),
@@ -18530,7 +14811,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContentThemeTargetingOptionDetails",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -18538,7 +14819,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "DeviceMakeModelTargetingOptionDetails",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           userRewardedContent: S.optional(S.String),
@@ -18546,11 +14827,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UserRewardedContentTargetingOptionDetails",
       });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           businessChain: S.optional(S.String),
@@ -18560,7 +14837,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "BusinessChainTargetingOptionDetails",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           contentDuration: S.optional(S.String),
@@ -18568,7 +14845,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ContentDurationTargetingOptionDetails",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           authorizedSellerStatus: S.optional(S.String),
@@ -18576,7 +14853,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "AuthorizedSellerStatusTargetingOptionDetails",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sensitiveCategory: S.optional(S.String),
@@ -18584,7 +14861,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "SensitiveCategoryTargetingOptionDetails",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           audioContentType: S.optional(S.String),
@@ -18592,7 +14869,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "AudioContentTypeTargetingOptionDetails",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           deviceType: S.optional(S.String),
@@ -18600,7 +14877,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "DeviceTypeTargetingOptionDetails",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           contentStreamType: S.optional(S.String),
@@ -18608,7 +14885,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ContentStreamTypeTargetingOptionDetails",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           contentOutstreamPosition: S.optional(S.String),
@@ -18616,11 +14893,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ContentOutstreamPositionTargetingOptionDetails",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -18629,7 +14902,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GeoRegionTargetingOptionDetails",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -18638,7 +14911,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "CarrierAndIspTargetingOptionDetails",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           contentPosition: S.optional(S.String),
@@ -18646,7 +14919,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "NativeContentPositionTargetingOptionDetails",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           onScreenPosition: S.optional(S.String),
@@ -18654,7 +14927,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "OnScreenPositionTargetingOptionDetails",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           longitude: S.optional(S.Number),
@@ -18664,49 +14937,53 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "PoiTargetingOptionDetails",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           targetingType: S.optional(S.String),
-          digitalContentLabelDetails: S.optional(__S(475, __c59, 3)),
-          videoPlayerSizeDetails: S.optional(__S(27, __c3, 3)),
-          exchangeDetails: S.optional(__S(31, __c3, 7)),
-          contentInstreamPositionDetails: S.optional(__S(476, __c59, 4)),
-          contentThemeDetails: S.optional(__S(477, __c59, 5)),
-          deviceMakeModelDetails: S.optional(__S(478, __c59, 6)),
-          userRewardedContentDetails: S.optional(__S(479, __c59, 7)),
-          categoryDetails: S.optional(__S(478, __c59, 6)),
-          ageRangeDetails: S.optional(__S(44, __c5, 4)),
-          businessChainDetails: S.optional(__S(480, __c60, 0)),
-          viewabilityDetails: S.optional(__S(42, __c5, 2)),
-          environmentDetails: S.optional(__S(25, __c3, 1)),
-          subExchangeDetails: S.optional(__S(478, __c59, 6)),
+          digitalContentLabelDetails: S.optional(__S(928, __c29, 0)),
+          videoPlayerSizeDetails: S.optional(__S(65, __c2, 1)),
+          exchangeDetails: S.optional(__S(66, __c2, 2)),
+          contentInstreamPositionDetails: S.optional(__S(929, __c29, 1)),
+          contentThemeDetails: S.optional(__S(930, __c29, 2)),
+          deviceMakeModelDetails: S.optional(__S(931, __c29, 3)),
+          userRewardedContentDetails: S.optional(__S(932, __c29, 4)),
+          categoryDetails: S.optional(__S(931, __c29, 3)),
+          ageRangeDetails: S.optional(__S(68, __c2, 4)),
+          businessChainDetails: S.optional(__S(933, __c29, 5)),
+          viewabilityDetails: S.optional(__S(67, __c2, 3)),
+          environmentDetails: S.optional(__S(64, __c2, 0)),
+          subExchangeDetails: S.optional(__S(931, __c29, 3)),
           name: S.optional(S.String),
-          contentDurationDetails: S.optional(__S(481, __c60, 1)),
-          authorizedSellerStatusDetails: S.optional(__S(482, __c60, 2)),
-          sensitiveCategoryDetails: S.optional(__S(483, __c60, 3)),
-          parentalStatusDetails: S.optional(__S(90, __c11, 2)),
-          householdIncomeDetails: S.optional(__S(62, __c7, 6)),
-          appCategoryDetails: S.optional(__S(478, __c59, 6)),
-          contentGenreDetails: S.optional(__S(478, __c59, 6)),
-          audioContentTypeDetails: S.optional(__S(484, __c60, 4)),
+          contentDurationDetails: S.optional(__S(934, __c29, 6)),
+          authorizedSellerStatusDetails: S.optional(__S(935, __c29, 7)),
+          sensitiveCategoryDetails: S.optional(__S(936, __c29, 8)),
+          parentalStatusDetails: S.optional(__S(72, __c2, 8)),
+          householdIncomeDetails: S.optional(__S(71, __c2, 7)),
+          appCategoryDetails: S.optional(__S(931, __c29, 3)),
+          contentGenreDetails: S.optional(__S(931, __c29, 3)),
+          audioContentTypeDetails: S.optional(__S(937, __c29, 9)),
           targetingOptionId: S.optional(S.String),
-          operatingSystemDetails: S.optional(__S(478, __c59, 6)),
-          deviceTypeDetails: S.optional(__S(485, __c60, 5)),
-          genderDetails: S.optional(__S(52, __c6, 4)),
-          contentStreamTypeDetails: S.optional(__S(486, __c60, 6)),
-          contentOutstreamPositionDetails: S.optional(__S(487, __c60, 7)),
-          geoRegionDetails: S.optional(__S(488, __c61, 0)),
-          omidDetails: S.optional(__S(58, __c7, 2)),
-          carrierAndIspDetails: S.optional(__S(489, __c61, 1)),
-          nativeContentPositionDetails: S.optional(__S(490, __c61, 2)),
-          onScreenPositionDetails: S.optional(__S(491, __c61, 3)),
-          browserDetails: S.optional(__S(478, __c59, 6)),
-          languageDetails: S.optional(__S(478, __c59, 6)),
-          poiDetails: S.optional(__S(492, __c61, 4)),
+          operatingSystemDetails: S.optional(__S(931, __c29, 3)),
+          deviceTypeDetails: S.optional(__S(938, __c29, 10)),
+          genderDetails: S.optional(__S(69, __c2, 5)),
+          contentStreamTypeDetails: S.optional(__S(939, __c29, 11)),
+          contentOutstreamPositionDetails: S.optional(__S(940, __c29, 12)),
+          geoRegionDetails: S.optional(__S(941, __c29, 13)),
+          omidDetails: S.optional(__S(70, __c2, 6)),
+          carrierAndIspDetails: S.optional(__S(942, __c29, 14)),
+          nativeContentPositionDetails: S.optional(__S(943, __c29, 15)),
+          onScreenPositionDetails: S.optional(__S(944, __c29, 16)),
+          browserDetails: S.optional(__S(931, __c29, 3)),
+          languageDetails: S.optional(__S(931, __c29, 3)),
+          poiDetails: S.optional(__S(945, __c29, 17)),
         }),
       ).annotate({ identifier: "TargetingOption" });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -18718,7 +14995,11 @@ function __c61(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
@@ -18734,20 +15015,20 @@ function __c61(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAdvertisersRequest" });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(172, __c21, 4));
     case 1:
+      return S.Array(__S(3880, __c121, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          advertisers: S.optional(__S(496, __c62, 0)),
+          advertisers: S.optional(__S(993, __c31, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAdvertisersResponse" });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -18765,14 +15046,18 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersAdAssetsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          adAssets: S.optional(__S(4, __c0, 4)),
+          adAssets: S.optional(__S(6336, __c198, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAdAssetsResponse" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -18790,16 +15075,20 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersAdGroupAdsRequest",
       });
-    case 5:
-      return S.Array(__S(225, __c28, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(4239, __c132, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          adGroupAds: S.optional(__S(501, __c62, 5)),
+          adGroupAds: S.optional(__S(1057, __c33, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAdGroupAdsResponse" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -18817,20 +15106,71 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersAdGroupsRequest",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(233, __c29, 1));
     case 1:
+      return S.Array(__S(4294, __c134, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adGroups: S.optional(__S(504, __c63, 0)),
+          adGroups: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "ListAdGroupsResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deletedAssignedUserRoles: S.optional(__S(6880, __c215, 0)),
+          createdAssignedUserRoles: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedUserRolesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1120, __c35, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/users/{+userId}:bulkEditAssignedUserRoles",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditAssignedUserRolesUsersRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAssignedUserRoles: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedUserRolesResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          userRole: S.optional(S.String),
+          assignedUserRoleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssignedUserRole" });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -18850,16 +15190,24 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          assignedTargetingOptions: S.optional(__S(92, __c11, 4)),
+          assignedTargetingOptions: S.optional(__S(288, __c9, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAdGroupAssignedTargetingOptionsResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "linkedEntity.lineItemId": S.optional(S.String.pipe(T.Query())),
@@ -18879,18 +15227,26 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
       });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4392, __c137, 8));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          youtubeAssetAssociations: S.optional(__S(509, __c63, 5)),
+          youtubeAssetAssociations: S.optional(__S(1280, __c40, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListYoutubeAssetAssociationsResponse",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -18908,20 +15264,20 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersCampaignsRequest",
       });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(253, __c31, 5));
     case 1:
+      return S.Array(__S(4486, __c140, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          campaigns: S.optional(__S(512, __c64, 0)),
+          campaigns: S.optional(__S(1313, __c41, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -18940,16 +15296,24 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersChannelsRequest",
       });
-    case 3:
-      return S.Array(__S(255, __c31, 7));
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4544, __c142, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(515, __c64, 3)),
+          channels: S.optional(__S(1376, __c43, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
@@ -18969,14 +15333,22 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersChannelsSitesRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(9, __c1, 1)),
+          sites: S.optional(__S(6784, __c212, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -18994,20 +15366,20 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersCreativesRequest",
       });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(277, __c34, 5));
     case 1:
+      return S.Array(__S(4658, __c145, 18));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          creatives: S.optional(__S(520, __c65, 0)),
+          creatives: S.optional(__S(1473, __c46, 1)),
         }),
       ).annotate({ identifier: "ListCreativesResponse" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -19025,18 +15397,22 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersInsertionOrdersRequest",
       });
-    case 3:
-      return S.Array(__S(283, __c35, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(4740, __c148, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          insertionOrders: S.optional(__S(523, __c65, 3)),
+          insertionOrders: S.optional(__S(1505, __c47, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInsertionOrdersResponse",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19054,30 +15430,26 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersInvoicesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          prismaCpeCode: S.optional(__S(246, __c30, 6)),
+          prismaCpeCode: S.optional(__S(4448, __c139, 0)),
           preTaxAmountMicros: S.optional(S.String),
           taxAmountMicros: S.optional(S.String),
           externalBudgetId: S.optional(S.String),
           totalAmountMicros: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetSummary" });
-    case 7:
-      return S.Array(__S(526, __c65, 6));
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           paymentsProfileId: S.optional(S.String),
           displayName: S.optional(S.String),
           pdfUrl: S.optional(S.String),
-          replacedInvoiceIds: S.optional(__S(7, __c0, 7)),
+          replacedInvoiceIds: S.optional(__S(6880, __c215, 0)),
           totalTaxAmountMicros: S.optional(S.String),
           paymentsAccountId: S.optional(S.String),
           subtotalAmountMicros: S.optional(S.String),
@@ -19085,26 +15457,30 @@ function __c66(j: number): any {
           invoiceId: S.optional(S.String),
           invoiceType: S.optional(S.String),
           purchaseOrderNumber: S.optional(S.String),
-          budgetSummaries: S.optional(__S(527, __c65, 7)),
-          serviceDateRange: S.optional(__S(142, __c17, 6)),
+          budgetSummaries: S.optional(__S(1538, __c48, 2)),
+          serviceDateRange: S.optional(__S(3297, __c103, 1)),
           correctedInvoiceId: S.optional(S.String),
           currencyCode: S.optional(S.String),
           totalAmountMicros: S.optional(S.String),
-          issueDate: S.optional(__S(141, __c17, 5)),
+          issueDate: S.optional(__S(3296, __c103, 0)),
           nonBudgetMicros: S.optional(S.String),
-          dueDate: S.optional(__S(141, __c17, 5)),
+          dueDate: S.optional(__S(3296, __c103, 0)),
         }),
       ).annotate({ identifier: "Invoice" });
-    case 1:
-      return S.Array(__S(528, __c66, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          invoices: S.optional(__S(529, __c66, 1)),
+          invoices: S.optional(__S(1540, __c48, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInvoicesResponse" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -19122,16 +15498,20 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersLineItemsRequest",
       });
-    case 4:
-      return S.Array(__S(158, __c19, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(3441, __c107, 17));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          lineItems: S.optional(__S(532, __c66, 4)),
+          lineItems: S.optional(__S(1569, __c49, 1)),
         }),
       ).annotate({ identifier: "ListLineItemsResponse" });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -19151,7 +15531,67 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          deletedAssignedInventorySources: S.optional(__S(6880, __c215, 0)),
+          createdAssignedInventorySources: S.optional(__S(1664, __c52, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedInventorySourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceGroupId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditInventorySourceGroupsAssignedInventorySourcesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assignedInventorySources: S.optional(__S(1664, __c52, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedInventorySourcesResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1696, __c53, 0));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          inventorySourceId: S.optional(S.String),
+          assignedInventorySourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssignedInventorySource" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "linkedEntity.adGroupId": S.optional(S.String.pipe(T.Query())),
@@ -19173,7 +15613,7 @@ function __c66(j: number): any {
       });
   }
 }
-function __c67(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19194,17 +15634,21 @@ function __c67(j: number): any {
         identifier: "ListAdvertisersLocationListsRequest",
       });
     case 1:
-      return S.Array(__S(288, __c36, 0));
+      return S.Array(__S(4896, __c153, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locationLists: S.optional(__S(537, __c67, 1)),
+          locationLists: S.optional(__S(1761, __c55, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListLocationListsResponse",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19223,16 +15667,20 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersLocationListsAssignedLocationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assignedLocations: S.optional(__S(14, __c1, 6)),
+          assignedLocations: S.optional(__S(7296, __c228, 0)),
         }),
       ).annotate({
         identifier: "ListAssignedLocationsResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19248,20 +15696,20 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersNegativeKeywordListsRequest",
       });
-    case 6:
-      return S.Array(__S(291, __c36, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(4992, __c156, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          negativeKeywordLists: S.optional(__S(542, __c67, 6)),
+          negativeKeywordLists: S.optional(__S(1825, __c57, 1)),
         }),
       ).annotate({
         identifier: "ListNegativeKeywordListsResponse",
       });
   }
 }
-function __c68(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19285,13 +15733,17 @@ function __c68(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          negativeKeywords: S.optional(__S(19, __c2, 3)),
+          negativeKeywords: S.optional(__S(7712, __c241, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListNegativeKeywordsResponse",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -19310,16 +15762,24 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assignedTargetingOptions: S.optional(__S(92, __c11, 4)),
+          assignedTargetingOptions: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "ListAdvertiserAssignedTargetingOptionsResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19337,7 +15797,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListAssignedTargetingOptionsAdvertisersRequest",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19356,12 +15820,12 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListCombinedAudiencesRequest",
       });
-    case 6:
-      return S.Array(__S(417, __c52, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(7936, __c248, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          combinedAudiences: S.optional(__S(550, __c68, 6)),
+          combinedAudiences: S.optional(__S(1985, __c62, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19369,7 +15833,7 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19391,17 +15855,21 @@ function __c69(j: number): any {
         identifier: "ListCustomBiddingAlgorithmsRequest",
       });
     case 1:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(5122, __c160, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customBiddingAlgorithms: S.optional(__S(553, __c69, 1)),
+          customBiddingAlgorithms: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({
         identifier: "ListCustomBiddingAlgorithmsResponse",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customBiddingAlgorithmId: S.String.pipe(T.Label()),
@@ -19420,18 +15888,42 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListCustomBiddingAlgorithmsRulesRequest",
       });
-    case 4:
-      return S.Array(__S(301, __c37, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(5185, __c162, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customBiddingRules: S.optional(__S(556, __c69, 4)),
+          customBiddingRules: S.optional(__S(2049, __c64, 1)),
         }),
       ).annotate({
         identifier: "ListCustomBiddingAlgorithmRulesResponse",
       });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelId: S.String.pipe(T.Label()),
+          partnerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6752, __c211, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditPartnersChannelsSitesRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19450,22 +15942,22 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListCustomBiddingAlgorithmsScriptsRequest",
       });
-    case 7:
-      return S.Array(__S(306, __c38, 2));
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(5314, __c166, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customBiddingScripts: S.optional(__S(559, __c69, 7)),
+          customBiddingScripts: S.optional(__S(2113, __c66, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCustomBiddingScriptsResponse",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -19481,16 +15973,20 @@ function __c70(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCustomListsRequest" });
+    case 1:
+      return S.Array(__S(8096, __c253, 0));
     case 2:
-      return S.Array(__S(422, __c52, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          customLists: S.optional(__S(562, __c70, 2)),
+          customLists: S.optional(__S(2145, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCustomListsResponse" });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -19509,18 +16005,22 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListFirstPartyAndPartnerAudiencesRequest",
       });
-    case 5:
-      return S.Array(__S(313, __c39, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(5408, __c169, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          firstPartyAndPartnerAudiences: S.optional(__S(565, __c70, 5)),
+          firstPartyAndPartnerAudiences: S.optional(__S(2177, __c68, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFirstPartyAndPartnerAudiencesResponse",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
@@ -19538,22 +16038,22 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListFloodlightGroupsFloodlightActivitiesRequest",
       });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(431, __c53, 7));
     case 1:
+      return S.Array(__S(354, __c11, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          floodlightActivities: S.optional(__S(568, __c71, 0)),
+          floodlightActivities: S.optional(__S(2209, __c69, 1)),
         }),
       ).annotate({
         identifier: "ListFloodlightActivitiesResponse",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -19572,18 +16072,22 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListGoogleAudiencesRequest",
       });
-    case 3:
-      return S.Array(__S(433, __c54, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          googleAudiences: S.optional(__S(571, __c71, 3)),
+          googleAudiences: S.optional(__S(2241, __c70, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListGoogleAudiencesResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -19602,13 +16106,13 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListGuaranteedOrdersRequest",
       });
-    case 6:
-      return S.Array(__S(316, __c39, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(5473, __c171, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          guaranteedOrders: S.optional(__S(574, __c71, 6)),
+          guaranteedOrders: S.optional(__S(2273, __c71, 1)),
         }),
       ).annotate({
         identifier: "ListGuaranteedOrdersResponse",
@@ -19637,17 +16141,21 @@ function __c72(j: number): any {
         identifier: "ListInventorySourceGroupsRequest",
       });
     case 1:
-      return S.Array(__S(318, __c39, 6));
+      return S.Array(__S(5536, __c173, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inventorySourceGroups: S.optional(__S(577, __c72, 1)),
+          inventorySourceGroups: S.optional(__S(2305, __c72, 1)),
         }),
       ).annotate({
         identifier: "ListInventorySourceGroupsResponse",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -19667,16 +16175,20 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListInventorySourceGroupsAssignedInventorySourcesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          assignedInventorySources: S.optional(__S(113, __c14, 1)),
+          assignedInventorySources: S.optional(__S(1664, __c52, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssignedInventorySourcesResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -19695,20 +16207,20 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListInventorySourcesRequest",
       });
-    case 6:
-      return S.Array(__S(332, __c41, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(5640, __c176, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inventorySources: S.optional(__S(582, __c72, 6)),
+          inventorySources: S.optional(__S(2369, __c74, 1)),
         }),
       ).annotate({
         identifier: "ListInventorySourcesResponse",
       });
   }
 }
-function __c73(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19726,15 +16238,62 @@ function __c73(j: number): any {
         ),
       ).annotate({ identifier: "ListPartnersRequest" });
     case 1:
-      return S.Array(__S(445, __c55, 5));
+      return S.Array(__S(583, __c18, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          partners: S.optional(__S(585, __c73, 1)),
+          partners: S.optional(__S(2401, __c75, 1)),
         }),
       ).annotate({ identifier: "ListPartnersResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupIds: S.optional(__S(6880, __c215, 0).pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/adGroups:bulkListAssignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assignedTargetingOption: S.optional(__S(154, __c4, 26)),
+          adGroupId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdGroupAssignedTargetingOption",
+      });
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          adGroupAssignedTargetingOptions: S.optional(__S(2434, __c76, 2)),
+        }),
+      ).annotate({
+        identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -19753,7 +16312,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListPartnersChannelsRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -19773,7 +16336,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListPartnersChannelsSitesRequest",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -19792,7 +16359,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListPartnersTargetingTypesAssignedTargetingOptionsRequest",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -19811,22 +16382,26 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListTargetingTypesTargetingOptionsRequest",
       });
-    case 7:
-      return S.Array(__S(493, __c61, 5));
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          targetingOptions: S.optional(__S(591, __c73, 7)),
+          targetingOptions: S.optional(__S(2592, __c81, 0)),
         }),
       ).annotate({
         identifier: "ListTargetingOptionsResponse",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(946, __c29, 18));
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -19841,16 +16416,20 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
+    case 1:
+      return S.Array(__S(5888, __c184, 0));
     case 2:
-      return S.Array(__S(343, __c42, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          users: S.optional(__S(594, __c74, 2)),
+          users: S.optional(__S(2625, __c82, 1)),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoiceMonth: S.optional(S.String.pipe(T.Query())),
@@ -19865,7 +16444,7 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "LookupInvoiceCurrencyAdvertisersInvoicesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
@@ -19873,12 +16452,16 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "LookupInvoiceCurrencyResponse",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(172, __c21, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3880, __c121, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19887,13 +16470,17 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAdvertisersRequest" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           adAssetId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6369, __c199, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19906,7 +16493,7 @@ function __c74(j: number): any {
       });
   }
 }
-function __c75(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19914,7 +16501,7 @@ function __c75(j: number): any {
           adGroupAdId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4239, __c132, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19925,13 +16512,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersAdGroupAdsRequest",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           adGroupId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4294, __c134, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19942,13 +16533,60 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersAdGroupsRequest",
       });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          lineItemIds: S.optional(__S(6880, __c215, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          advertiserId: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assignedTargetingOption: S.optional(__S(154, __c4, 26)),
+          lineItemId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LineItemAssignedTargetingOption",
+      });
     case 2:
+      return S.Array(__S(2817, __c88, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lineItemAssignedTargetingOptions: S.optional(__S(2818, __c88, 2)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BulkListAssignedTargetingOptionsResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           campaignId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4486, __c140, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19959,14 +16597,18 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersCampaignsRequest",
       });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(4544, __c142, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19977,13 +16619,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersChannelsRequest",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           creativeId: S.String.pipe(T.Label()),
-          body: S.optional(__S(277, __c34, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4658, __c145, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19994,13 +16640,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersCreativesRequest",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           insertionOrderId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(283, __c35, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(4740, __c148, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20011,13 +16661,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersInsertionOrdersRequest",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           lineItemId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3441, __c107, 17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20028,13 +16682,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersLineItemsRequest",
       });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
           locationListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(288, __c36, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(4896, __c153, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20047,7 +16705,7 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20055,7 +16713,7 @@ function __c76(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           negativeKeywordListId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(4992, __c156, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20066,12 +16724,16 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchAdvertisersNegativeKeywordListsRequest",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5122, __c160, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20082,13 +16744,17 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchCustomBiddingAlgorithmsRequest",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String.pipe(T.Query())),
           firstPartyAndPartnerAudienceId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5408, __c169, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20099,13 +16765,17 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchFirstPartyAndPartnerAudiencesRequest",
       });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
           floodlightGroupId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(427, __c53, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8194, __c256, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20116,14 +16786,383 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchFloodlightGroupsRequest",
       });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          targetLineItem: S.optional(__S(3441, __c107, 17)),
+          lineItemIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkUpdateLineItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3168, __c99, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems:bulkUpdate",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkUpdateAdvertisersLineItemsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          skippedLineItemIds: S.optional(__S(6880, __c215, 0)),
+          errors: S.optional(__S(160, __c5, 0)),
+          failedLineItemIds: S.optional(__S(6880, __c215, 0)),
+          updatedLineItemIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkUpdateLineItemsResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(S.String),
+          integrationCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntegrationDetails" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveBiddingValue: S.optional(S.String),
+          value: S.optional(S.String),
+          effectiveBiddingValueSource: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DemandGenBiddingStrategy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customBiddingAlgorithmId: S.optional(S.String),
+          maxAverageCpmBidAmountMicros: S.optional(S.String),
+          performanceGoalType: S.optional(S.String),
+          performanceGoalAmountMicros: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PerformanceGoalBidStrategy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bidAmountMicros: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FixedBidStrategy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxAverageCpmBidAmountMicros: S.optional(S.String),
+          customBiddingAlgorithmId: S.optional(S.String),
+          performanceGoalType: S.optional(S.String),
+          raiseBidForDeals: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MaximizeSpendBidStrategy" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          adGroupEffectiveTargetCpaValue: S.optional(S.String),
+          adGroupEffectiveTargetCpaSource: S.optional(S.String),
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAndPartnersBiddingStrategy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          demandGenBid: S.optional(__S(3232, __c101, 0)),
+          performanceGoalAutoBid: S.optional(__S(3233, __c101, 1)),
+          fixedBid: S.optional(__S(3234, __c101, 2)),
+          maximizeSpendAutoBid: S.optional(__S(3235, __c101, 3)),
+          youtubeAndPartnersBid: S.optional(__S(3236, __c101, 4)),
+        }),
+      ).annotate({ identifier: "BiddingStrategy" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          excludeDemographicExpansion: S.optional(S.Boolean),
+          audienceExpansionSeedListExcluded: S.optional(S.Boolean),
+          audienceExpansionLevel: S.optional(S.String),
+          enableOptimizedTargeting: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TargetingExpansionConfig" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Displayvideo_Date" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(__S(3296, __c103, 0)),
+          startDate: S.optional(__S(3296, __c103, 0)),
+        }),
+      ).annotate({ identifier: "DateRange" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeUnitCount: S.optional(S.Number),
+          unlimited: S.optional(S.Boolean),
+          maxImpressions: S.optional(S.Number),
+          timeUnit: S.optional(S.String),
+          maxViews: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FrequencyCap" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dailyMaxMicros: S.optional(S.String),
+          pacingType: S.optional(S.String),
+          pacingPeriod: S.optional(S.String),
+          dailyMaxImpressions: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Pacing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          costType: S.optional(S.String),
+          feePercentageMillis: S.optional(S.String),
+          feeType: S.optional(S.String),
+          feeAmount: S.optional(S.String),
+          invoiceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerCost" });
+    case 2:
+      return S.Array(__S(3361, __c105, 1));
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetCount: S.optional(S.String),
+          timeUnit: S.optional(S.String),
+          timeUnitCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TargetFrequency" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          markupAmount: S.optional(S.String),
+          markupType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerRevenueModel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxAmount: S.optional(S.String),
+          budgetUnit: S.optional(S.String),
+          budgetAllocationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LineItemBudget" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          vendor: S.optional(S.String),
+          placementId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThirdPartyVendorConfig" });
+    case 3:
+      return S.Array(__S(3426, __c107, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          viewabilityVendorConfigs: S.optional(__S(3427, __c107, 3)),
+          brandSafetyVendorConfigs: S.optional(__S(3427, __c107, 3)),
+          reachVendorConfigs: S.optional(__S(3427, __c107, 3)),
+          brandLiftVendorConfigs: S.optional(__S(3427, __c107, 3)),
+        }),
+      ).annotate({
+        identifier: "ThirdPartyMeasurementConfigs",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          linkedMerchantId: S.optional(S.String),
+          geoLanguageTargetingEnabled: S.optional(S.Boolean),
+          thirdPartyMeasurementConfigs: S.optional(__S(3428, __c107, 4)),
+        }),
+      ).annotate({ identifier: "DemandGenSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          platform: S.optional(S.String),
+          displayName: S.optional(S.String),
+          appId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobileApp" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          flightDateType: S.optional(S.String),
+          dateRange: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({ identifier: "LineItemFlight" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          includeYoutube: S.optional(S.Boolean),
+          includeGoogleTv: S.optional(S.Boolean),
+          includeYoutubeVideoPartners: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "YoutubeAndPartnersInventorySourceConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          allowInFeed: S.optional(S.Boolean),
+          allowNonSkippableInStream: S.optional(S.Boolean),
+          allowInStream: S.optional(S.Boolean),
+          allowShorts: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VideoAdInventoryControl" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          adGroupId: S.optional(S.String),
+          interactionType: S.optional(S.String),
+          stepId: S.optional(S.String),
+          previousStepId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoAdSequenceStep" });
+    case 11:
+      return S.Array(__S(3434, __c107, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          minimumDuration: S.optional(S.String),
+          steps: S.optional(__S(3435, __c107, 11)),
+        }),
+      ).annotate({ identifier: "VideoAdSequenceSettings" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          thirdPartyMeasurementConfigs: S.optional(__S(3428, __c107, 4)),
+          contentCategory: S.optional(S.String),
+          inventorySourceSettings: S.optional(__S(3432, __c107, 8)),
+          linkedMerchantId: S.optional(S.String),
+          relatedVideoIds: S.optional(__S(6880, __c215, 0)),
+          effectiveContentCategory: S.optional(S.String),
+          targetFrequency: S.optional(__S(3392, __c106, 0)),
+          videoAdInventoryControl: S.optional(__S(3433, __c107, 9)),
+          viewFrequencyCap: S.optional(__S(3328, __c104, 0)),
+          leadFormId: S.optional(S.String),
+          videoAdSequenceSettings: S.optional(__S(3436, __c107, 12)),
+        }),
+      ).annotate({
+        identifier: "YoutubeAndPartnersSettings",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          postClickLookbackWindowDays: S.optional(S.Number),
+          postViewLookbackWindowDays: S.optional(S.Number),
+          floodlightActivityId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TrackingFloodlightActivityConfig",
+      });
+    case 15:
+      return S.Array(__S(3438, __c107, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          floodlightActivityConfigs: S.optional(__S(3439, __c107, 15)),
+          postViewCountPercentageMillis: S.optional(S.String),
+          primaryAttributionModelId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConversionCountingConfig" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          campaignId: S.optional(S.String),
+          targetingExpansion: S.optional(__S(3264, __c102, 0)),
+          advertiserId: S.optional(S.String),
+          partnerRevenueModel: S.optional(__S(3424, __c107, 0)),
+          frequencyCap: S.optional(__S(3328, __c104, 0)),
+          warningMessages: S.optional(__S(32, __c1, 0)),
+          reservationType: S.optional(S.String),
+          bidStrategy: S.optional(__S(3237, __c101, 5)),
+          containsEuPoliticalAds: S.optional(S.String),
+          optimizeFixedBidding: S.optional(S.Boolean),
+          budget: S.optional(__S(3425, __c107, 1)),
+          demandGenSettings: S.optional(__S(3429, __c107, 5)),
+          updateTime: S.optional(S.String),
+          mobileApp: S.optional(__S(3430, __c107, 6)),
+          flight: S.optional(__S(3431, __c107, 7)),
+          insertionOrderId: S.optional(S.String),
+          youtubeAndPartnersSettings: S.optional(__S(3437, __c107, 13)),
+          pacing: S.optional(__S(3360, __c105, 0)),
+          entityStatus: S.optional(S.String),
+          partnerCosts: S.optional(__S(3362, __c105, 2)),
+          conversionCounting: S.optional(__S(3440, __c107, 16)),
+          integrationDetails: S.optional(__S(3200, __c100, 0)),
+          excludeNewExchanges: S.optional(S.Boolean),
+          lineItemId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          lineItemType: S.optional(S.String),
+          name: S.optional(S.String),
+          creativeIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "LineItem" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           partnerId: S.optional(S.String.pipe(T.Query())),
           guaranteedOrderId: S.String.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(5473, __c171, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20134,14 +17173,18 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchGuaranteedOrdersRequest",
       });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           inventorySourceGroupId: S.String.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(318, __c39, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5536, __c173, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20152,14 +17195,18 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchInventorySourceGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           inventorySourceId: S.String.pipe(T.Label()),
           partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(5640, __c176, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20170,14 +17217,18 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "PatchInventorySourcesRequest",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channelId: S.String.pipe(T.Label()),
           partnerId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(4544, __c142, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20190,14 +17241,14 @@ function __c76(j: number): any {
       });
   }
 }
-function __c77(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(343, __c42, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(5888, __c184, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20206,20 +17257,16 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchUsersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newSites: S.optional(__S(9, __c1, 1)),
-          advertiserId: S.optional(S.String),
-          partnerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplaceSitesRequest" });
-    case 2:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channelId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(617, __c77, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3648, __c114, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20230,20 +17277,36 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ReplaceAdvertisersChannelsSitesRequest",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          newNegativeKeywords: S.optional(__S(19, __c2, 3)),
+          newSites: S.optional(__S(6784, __c212, 0)),
+          advertiserId: S.optional(S.String),
+          partnerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplaceSitesRequest" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newNegativeKeywords: S.optional(__S(7712, __c241, 0)),
         }),
       ).annotate({
         identifier: "ReplaceNegativeKeywordsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           negativeKeywordListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(619, __c77, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3680, __c115, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20254,12 +17317,16 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
       });
-    case 5:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(617, __c77, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3648, __c114, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20270,47 +17337,47 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ReplacePartnersChannelsSitesRequest",
       });
-    case 6:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionQuery: S.optional(S.String),
           businessChainQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "BusinessChainSearchTerms" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           geoRegionQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeoRegionSearchTerms" });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           poiQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoiSearchTerms" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          businessChainSearchTerms: S.optional(__S(622, __c77, 6)),
-          geoRegionSearchTerms: S.optional(__S(623, __c77, 7)),
-          poiSearchTerms: S.optional(__S(624, __c78, 0)),
+          businessChainSearchTerms: S.optional(__S(3744, __c117, 0)),
+          geoRegionSearchTerms: S.optional(__S(3745, __c117, 1)),
+          poiSearchTerms: S.optional(__S(3746, __c117, 2)),
           pageSize: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SearchTargetingOptionsRequest",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           targetingType: S.String.pipe(T.Label()),
-          body: S.optional(__S(625, __c78, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3747, __c117, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20321,16 +17388,20 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "SearchTargetingTypesTargetingOptionsRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          targetingOptions: S.optional(__S(591, __c73, 7)),
+          targetingOptions: S.optional(__S(2592, __c81, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchTargetingOptionsResponse",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           adAssetType: S.optional(S.String),
@@ -20338,11 +17409,11 @@ function __c78(j: number): any {
           syntheticContentAttestationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadAdAssetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(628, __c78, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3776, __c118, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20353,17 +17424,145 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "UploadAdvertisersAdAssetsRequest",
       });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(3880, __c121, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAdvertisersRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingProfileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdvertiserBillingConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adminEmail: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SdfConfig" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cmFloodlightConfigId: S.optional(S.String),
+          cmAccountId: S.optional(S.String),
+          cmAdvertiserIds: S.optional(__S(6880, __c215, 0)),
+          dv360ToCmCostReportingEnabled: S.optional(S.Boolean),
+          dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
+          cmFloodlightLinkingAuthorized: S.optional(S.Boolean),
+          cmSyncableSiteIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "CmHybridConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pixelOrderIdReportingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ThirdPartyOnlyConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cmHybridConfig: S.optional(__S(3872, __c121, 0)),
+          thirdPartyOnlyConfig: S.optional(__S(3873, __c121, 1)),
+        }),
+      ).annotate({ identifier: "AdvertiserAdServerConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          timeZone: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          domainUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdvertiserGeneralConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          iasClientId: S.optional(S.String),
+          obaComplianceDisabled: S.optional(S.Boolean),
+          dynamicCreativeEnabled: S.optional(S.Boolean),
+          videoCreativeDataSharingAuthorized: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdvertiserCreativeConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          exemptTvFromViewabilityTargeting: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdvertiserTargetingConfig",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sdfConfig: S.optional(__S(3841, __c120, 1)),
+          overridePartnerSdfConfig: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdvertiserSdfConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sdfConfig: S.optional(__S(3878, __c121, 6)),
+        }),
+      ).annotate({
+        identifier: "AdvertiserDataAccessConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          adServerConfig: S.optional(__S(3874, __c121, 2)),
+          partnerId: S.optional(S.String),
+          defaultBusinessName: S.optional(S.String),
+          generalConfig: S.optional(__S(3875, __c121, 3)),
+          creativeConfig: S.optional(__S(3876, __c121, 4)),
+          servingConfig: S.optional(__S(3877, __c121, 5)),
+          billingConfig: S.optional(__S(3840, __c120, 0)),
+          containsEuPoliticalAds: S.optional(S.String),
+          displayName: S.optional(S.String),
+          defaultLogoAssetId: S.optional(S.String),
+          entityStatus: S.optional(S.String),
+          prismaEnabled: S.optional(S.Boolean),
+          integrationDetails: S.optional(__S(3200, __c100, 0)),
+          advertiserId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          dataAccessConfig: S.optional(__S(3879, __c121, 7)),
+        }),
+      ).annotate({ identifier: "Advertiser" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateAssetRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(630, __c78, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3904, __c122, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20374,21 +17573,21 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "UploadAdvertisersAssetsRequest",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.optional(__S(4672, __c146, 0)),
+        }),
+      ).annotate({ identifier: "CreateAssetResponse" });
   }
 }
-function __c79(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          asset: S.optional(__S(263, __c32, 7)),
-        }),
-      ).annotate({ identifier: "CreateAssetResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5280, __c165, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20397,7 +17596,11 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadMediaRequest" });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
@@ -20413,7 +17616,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "UploadRulesCustomBiddingAlgorithmsRequest",
       });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customBiddingAlgorithmId: S.String.pipe(T.Label()),
@@ -20431,7 +17638,3515 @@ function __c79(j: number): any {
       });
   }
 }
-
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4064, __c127, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adAssets",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersAdAssetsRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adAsset: S.optional(__S(6369, __c199, 1)),
+        }),
+      ).annotate({ identifier: "CreateAdAssetRequest" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4239, __c132, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adGroupAds",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersAdGroupAdsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          heightPixels: S.optional(S.Number),
+          widthPixels: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Dimensions" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdUrl" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          fileSize: S.optional(S.String),
+          assetId: S.optional(S.String),
+          fullSize: S.optional(__S(4128, __c129, 0)),
+        }),
+      ).annotate({ identifier: "ImageAsset" });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          videoAssetId: S.optional(S.String),
+          unavailableReason: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "YoutubeVideoDetails" });
+    case 3:
+      return S.Array(__S(4194, __c131, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          longHeadlines: S.optional(__S(6880, __c215, 0)),
+          displayUrlBreadcrumb1: S.optional(S.String),
+          userSpecifiedTrackingUrl: S.optional(S.String),
+          finalUrlSuffix: S.optional(S.String),
+          logo: S.optional(__S(4192, __c131, 0)),
+          callToAction: S.optional(S.String),
+          companionBanner: S.optional(__S(4192, __c131, 0)),
+          trackingUrl: S.optional(S.String),
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          headlines: S.optional(__S(6880, __c215, 0)),
+          displayUrlBreadcrumb2: S.optional(S.String),
+          videos: S.optional(__S(4195, __c131, 3)),
+          businessName: S.optional(S.String),
+          finalUrl: S.optional(S.String),
+          finalMobileUrl: S.optional(S.String),
+          descriptions: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "DemandGenVideoAd" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          trackingUrl: S.optional(S.String),
+          video: S.optional(__S(4194, __c131, 2)),
+          displayUrl: S.optional(S.String),
+          finalUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AudioAd" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description2: S.optional(S.String),
+          description1: S.optional(S.String),
+          video: S.optional(__S(4194, __c131, 2)),
+          headline: S.optional(S.String),
+          thumbnail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoDiscoveryAd" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayUrl: S.optional(S.String),
+          video: S.optional(__S(4194, __c131, 2)),
+          actionButtonLabel: S.optional(S.String),
+          finalUrl: S.optional(S.String),
+          companionBanner: S.optional(__S(4192, __c131, 0)),
+          actionHeadline: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommonInStreamAttribute" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          commonInStreamAttribute: S.optional(__S(4199, __c131, 7)),
+        }),
+      ).annotate({ identifier: "BumperAd" });
+    case 9:
+      return S.Array(__S(4192, __c131, 0));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          actionButtonLabels: S.optional(__S(6880, __c215, 0)),
+          longHeadlines: S.optional(__S(6880, __c215, 0)),
+          descriptions: S.optional(__S(6880, __c215, 0)),
+          companionBanners: S.optional(__S(4201, __c131, 9)),
+          headlines: S.optional(__S(6880, __c215, 0)),
+          displayUrlBreadcrumb1: S.optional(S.String),
+          videos: S.optional(__S(4195, __c131, 3)),
+          finalUrl: S.optional(S.String),
+          domain: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          displayUrlBreadcrumb2: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoPerformanceAd" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          marketingImage: S.optional(__S(4192, __c131, 0)),
+          callToAction: S.optional(S.String),
+          headline: S.optional(S.String),
+          squareMarketingImage: S.optional(__S(4192, __c131, 0)),
+          finalUrl: S.optional(S.String),
+          finalMobileUrl: S.optional(S.String),
+          portraitMarketingImage: S.optional(__S(4192, __c131, 0)),
+        }),
+      ).annotate({ identifier: "CarouselCard" });
+    case 12:
+      return S.Array(__S(4203, __c131, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          businessName: S.optional(S.String),
+          headline: S.optional(S.String),
+          logo: S.optional(__S(4192, __c131, 0)),
+          description: S.optional(S.String),
+          userSpecifiedTrackingUrl: S.optional(S.String),
+          cards: S.optional(__S(4204, __c131, 12)),
+          finalUrlSuffix: S.optional(S.String),
+          finalUrl: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DemandGenCarouselAd" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          finalUrl: S.optional(S.String),
+          displayUrlBreadcrumb1: S.optional(S.String),
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          userSpecifiedTrackingUrl: S.optional(S.String),
+          callToAction: S.optional(S.String),
+          description: S.optional(S.String),
+          displayUrlBreadcrumb2: S.optional(S.String),
+          logo: S.optional(__S(4192, __c131, 0)),
+          businessName: S.optional(S.String),
+          finalUrlSuffix: S.optional(S.String),
+          headline: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DemandGenProductAd" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          callToActionButtonLabel: S.optional(S.String),
+          callToActionTrackingUrl: S.optional(S.String),
+          headline: S.optional(S.String),
+          videoAspectRatio: S.optional(S.String),
+          companionYoutubeVideos: S.optional(__S(4195, __c131, 3)),
+          autoplayVideoStartMillisecond: S.optional(S.String),
+          description: S.optional(S.String),
+          callToActionFinalUrl: S.optional(S.String),
+          autoplayVideoDuration: S.optional(S.String),
+          video: S.optional(__S(4194, __c131, 2)),
+          showChannelArt: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MastheadAd" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          commonInStreamAttribute: S.optional(__S(4199, __c131, 7)),
+        }),
+      ).annotate({ identifier: "InStreamAd" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          creativeId: S.optional(S.String),
+          placementId: S.optional(S.String),
+          trackingAdId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DcmTrackingInfo" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          commonInStreamAttribute: S.optional(__S(4199, __c131, 7)),
+          customParameters: S.optional(__S(4193, __c131, 1)),
+        }),
+      ).annotate({ identifier: "NonSkippableAd" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          userSpecifiedTrackingUrl: S.optional(S.String),
+          customParameters: S.optional(__S(4193, __c131, 1)),
+          finalUrlSuffix: S.optional(S.String),
+          finalUrl: S.optional(S.String),
+          finalMobileUrl: S.optional(S.String),
+          marketingImages: S.optional(__S(4201, __c131, 9)),
+          callToAction: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+          headlines: S.optional(__S(6880, __c215, 0)),
+          businessName: S.optional(S.String),
+          logoImages: S.optional(__S(4201, __c131, 9)),
+          portraitMarketingImages: S.optional(__S(4201, __c131, 9)),
+          squareMarketingImages: S.optional(__S(4201, __c131, 9)),
+          descriptions: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "DemandGenImageAd" });
+    case 20:
+      return S.Array(__S(4160, __c130, 0));
+    case 21:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          countryLabel: S.optional(S.String),
+          countryCriterionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyCriterionRestriction",
+      });
+    case 23:
+      return S.Array(__S(4214, __c131, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          countries: S.optional(__S(4215, __c131, 23)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicConstraintAdPolicyCountryConstraintList",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          requestCertificateFormLink: S.optional(S.String),
+          globalCertificateDomainMismatch: S.optional(__S(4213, __c131, 21)),
+          certificateMissingCountryList: S.optional(__S(4216, __c131, 24)),
+          certificateDomainMismatchCountryList: S.optional(__S(4216, __c131, 24)),
+          resellerConstraint: S.optional(__S(4213, __c131, 21)),
+          globalCertificateMissing: S.optional(__S(4213, __c131, 21)),
+          countryConstraint: S.optional(__S(4216, __c131, 24)),
+        }),
+      ).annotate({ identifier: "AdPolicyTopicConstraint" });
+    case 26:
+      return S.Array(__S(4217, __c131, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          owners: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceCounterfeit",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          destinationTexts: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceDestinationTextList",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          countryRestrictions: S.optional(__S(4215, __c131, 23)),
+          legalPolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry",
+      });
+    case 30:
+      return S.Array(__S(4221, __c131, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          regionalRequirementsEntries: S.optional(__S(4222, __c131, 30)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceRegionalRequirements",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          term: S.optional(S.String),
+          countryRestrictions: S.optional(__S(4215, __c131, 23)),
+          owner: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceTrademark",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expandedUri: S.optional(S.String),
+          dnsErrorType: S.optional(S.String),
+          device: S.optional(S.String),
+          lastCheckedTime: S.optional(S.String),
+          httpErrorCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceDestinationNotWorking",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uriTypes: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceDestinationMismatch",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          websites: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceWebsiteList",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          texts: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceTextList",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          complainant: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceLegalRemovalDmca",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          lawType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceLegalRemovalLocalLegal",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          countryRestrictions: S.optional(__S(4215, __c131, 23)),
+          dmca: S.optional(__S(4229, __c132, 5)),
+          restrictedUris: S.optional(__S(6880, __c215, 0)),
+          complaintType: S.optional(S.String),
+          localLegal: S.optional(__S(4230, __c132, 6)),
+        }),
+      ).annotate({
+        identifier: "AdPolicyTopicEvidenceLegalRemoval",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          httpCode: S.optional(S.Number),
+          counterfeit: S.optional(__S(4219, __c131, 27)),
+          destinationTextList: S.optional(__S(4220, __c131, 28)),
+          regionalRequirements: S.optional(__S(4223, __c131, 31)),
+          trademark: S.optional(__S(4224, __c132, 0)),
+          destinationNotWorking: S.optional(__S(4225, __c132, 1)),
+          destinationMismatch: S.optional(__S(4226, __c132, 2)),
+          websiteList: S.optional(__S(4227, __c132, 3)),
+          languageCode: S.optional(S.String),
+          textList: S.optional(__S(4228, __c132, 4)),
+          legalRemoval: S.optional(__S(4231, __c132, 7)),
+        }),
+      ).annotate({ identifier: "AdPolicyTopicEvidence" });
+    case 9:
+      return S.Array(__S(4232, __c132, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          appealFormLink: S.optional(S.String),
+          appealType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdPolicyTopicAppealInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          policyDecisionType: S.optional(S.String),
+          policyLabel: S.optional(S.String),
+          policyEnforcementMeans: S.optional(S.String),
+          policyTopic: S.optional(S.String),
+          helpCenterLink: S.optional(S.String),
+          policyTopicConstraints: S.optional(__S(4218, __c131, 26)),
+          policyTopicEvidences: S.optional(__S(4233, __c132, 9)),
+          policyTopicDescription: S.optional(S.String),
+          appealInfo: S.optional(__S(4234, __c132, 10)),
+          policyTopicType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdPolicyTopicEntry" });
+    case 12:
+      return S.Array(__S(4235, __c132, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          adPolicyReviewStatus: S.optional(S.String),
+          adPolicyApprovalStatus: S.optional(S.String),
+          adPolicyTopicEntry: S.optional(__S(4236, __c132, 12)),
+        }),
+      ).annotate({ identifier: "AdPolicy" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          creativeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DisplayVideoSourceAd" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          demandGenVideoAd: S.optional(__S(4196, __c131, 4)),
+          audioAd: S.optional(__S(4197, __c131, 5)),
+          videoDiscoverAd: S.optional(__S(4198, __c131, 6)),
+          adGroupId: S.optional(S.String),
+          adGroupAdId: S.optional(S.String),
+          bumperAd: S.optional(__S(4200, __c131, 8)),
+          videoPerformanceAd: S.optional(__S(4202, __c131, 10)),
+          entityStatus: S.optional(S.String),
+          demandGenCarouselAd: S.optional(__S(4205, __c131, 13)),
+          demandGenProductAd: S.optional(__S(4206, __c131, 14)),
+          mastheadAd: S.optional(__S(4207, __c131, 15)),
+          inStreamAd: S.optional(__S(4208, __c131, 16)),
+          advertiserId: S.optional(S.String),
+          dcmTrackingInfo: S.optional(__S(4209, __c131, 17)),
+          displayName: S.optional(S.String),
+          nonSkippableAd: S.optional(__S(4210, __c131, 18)),
+          name: S.optional(S.String),
+          demandGenImageAd: S.optional(__S(4211, __c131, 19)),
+          adUrls: S.optional(__S(4212, __c131, 20)),
+          adPolicy: S.optional(__S(4237, __c132, 13)),
+          displayVideoSourceAd: S.optional(__S(4238, __c132, 14)),
+        }),
+      ).annotate({ identifier: "AdGroupAd" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4294, __c134, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adGroups",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersAdGroupsRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomLabel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customLabel: S.optional(__S(4288, __c134, 0)),
+          productOfferId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductMatchDimension" });
+    case 2:
+      return S.Array(__S(4289, __c134, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          productMatchDimensions: S.optional(__S(4290, __c134, 2)),
+          isFeedDisabled: S.optional(S.Boolean),
+          productMatchType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductFeedData" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          allowYoutubeStream: S.optional(S.Boolean),
+          allowDiscover: S.optional(S.Boolean),
+          allowGmail: S.optional(S.Boolean),
+          allowYoutubeShorts: S.optional(S.Boolean),
+          allowGoogleDisplayNetwork: S.optional(S.Boolean),
+          allowYoutubeFeed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SelectedInventories" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          selectedInventories: S.optional(__S(4292, __c134, 4)),
+          adGroupInventoryStrategy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdGroupInventoryControl" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          adGroupId: S.optional(S.String),
+          targetingExpansion: S.optional(__S(3264, __c102, 0)),
+          name: S.optional(S.String),
+          productFeedData: S.optional(__S(4291, __c134, 3)),
+          lineItemId: S.optional(S.String),
+          adGroupInventoryControl: S.optional(__S(4293, __c134, 5)),
+          bidStrategy: S.optional(__S(3237, __c101, 5)),
+          entityStatus: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          adGroupFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdGroup" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetingType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+          body: S.optional(__S(154, __c4, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "linkedEntity.lineItemId": S.optional(S.String.pipe(T.Query())),
+          youtubeAssetType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4392, __c137, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationSitelinkAsset",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          locationAssetIds: S.optional(__S(6880, __c215, 0)),
+          labels: S.optional(__S(6880, __c215, 0)),
+          business: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assetSetId: S.optional(S.String),
+          locationMatchingFunction: S.optional(__S(4385, __c137, 1)),
+          locationMatchingType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationLocationAssetFilter",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          chainId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain",
+      });
+    case 4:
+      return S.Array(__S(4387, __c137, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          chains: S.optional(__S(4388, __c137, 4)),
+        }),
+      ).annotate({
+        identifier:
+          "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          assetSetId: S.optional(S.String),
+          affiliateLocationMatchingFunction: S.optional(__S(4389, __c137, 5)),
+          affiliateLocationMatchingType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationAffiliateLocationAssetFilter",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sitelinkAsset: S.optional(__S(4384, __c137, 0)),
+          locationAssetFilter: S.optional(__S(4386, __c137, 2)),
+          affiliateLocationAssetFilter: S.optional(__S(4390, __c137, 6)),
+        }),
+      ).annotate({
+        identifier: "YoutubeAssetAssociationLinkedYouTubeAsset",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          youtubeAssetType: S.optional(S.String),
+          linkedYoutubeAsset: S.optional(__S(4391, __c137, 7)),
+        }),
+      ).annotate({ identifier: "YoutubeAssetAssociation" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4486, __c140, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/campaigns",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersCampaignsRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prismaEstimateCode: S.optional(S.String),
+          prismaClientCode: S.optional(S.String),
+          prismaProductCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrismaCpeCode" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prismaType: S.optional(S.String),
+          supplier: S.optional(S.String),
+          prismaCpeCode: S.optional(__S(4448, __c139, 0)),
+        }),
+      ).annotate({ identifier: "PrismaConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          budgetAmountMicros: S.optional(S.String),
+          externalBudgetId: S.optional(S.String),
+          budgetUnit: S.optional(S.String),
+          prismaConfig: S.optional(__S(4480, __c140, 0)),
+          invoiceGroupingId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          budgetId: S.optional(S.String),
+          externalBudgetSource: S.optional(S.String),
+          dateRange: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({ identifier: "CampaignBudget" });
+    case 2:
+      return S.Array(__S(4481, __c140, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          plannedSpendAmountMicros: S.optional(S.String),
+          plannedDates: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({ identifier: "CampaignFlight" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          performanceGoalString: S.optional(S.String),
+          performanceGoalAmountMicros: S.optional(S.String),
+          performanceGoalPercentageMicros: S.optional(S.String),
+          performanceGoalType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PerformanceGoal" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          campaignGoalType: S.optional(S.String),
+          performanceGoal: S.optional(__S(4484, __c140, 4)),
+        }),
+      ).annotate({ identifier: "CampaignGoal" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          campaignBudgets: S.optional(__S(4482, __c140, 2)),
+          campaignId: S.optional(S.String),
+          campaignFlight: S.optional(__S(4483, __c140, 3)),
+          entityStatus: S.optional(S.String),
+          frequencyCap: S.optional(__S(3328, __c104, 0)),
+          updateTime: S.optional(S.String),
+          campaignGoal: S.optional(__S(4485, __c140, 5)),
+        }),
+      ).annotate({ identifier: "Campaign" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4544, __c142, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/channels",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersChannelsRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          partnerId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          channelId: S.optional(S.String),
+          negativelyTargetedLineItemCount: S.optional(S.String),
+          positivelyTargetedLineItemCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Channel" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.String.pipe(T.Label()),
+          channelId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6848, __c214, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersChannelsSitesRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4658, __c145, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/creatives",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersCreativesRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4128, __c129, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          registry: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UniversalAdId" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reportingName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimerEvent" });
+    case 3:
+      return S.Array(__S(4642, __c145, 2));
+    case 4:
+      return S.Array(__S(4642, __c145, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          asset: S.optional(__S(4672, __c146, 0)),
+        }),
+      ).annotate({ identifier: "AssetAssociation" });
+    case 6:
+      return S.Array(__S(4645, __c145, 5));
+    case 7:
+      return S.Array(__S(4160, __c130, 0));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          resourceMimeType: S.optional(S.String),
+          dimensions: S.optional(__S(4128, __c129, 0)),
+          viewTrackingUrl: S.optional(S.String),
+          program: S.optional(S.String),
+          clickTrackingUrl: S.optional(S.String),
+          position: S.optional(S.String),
+          landingPageUrl: S.optional(S.String),
+          resourceUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObaIcon" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.optional(S.String),
+          seconds: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AudioVideoOffset" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          url: S.optional(S.String),
+          reportingName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExitEvent" });
+    case 11:
+      return S.Array(__S(4650, __c145, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          exchange: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExchangeReviewStatus" });
+    case 13:
+      return S.Array(__S(4652, __c145, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          approvalStatus: S.optional(S.String),
+          creativeAndLandingPageReviewStatus: S.optional(S.String),
+          exchangeReviewStatuses: S.optional(__S(4653, __c145, 13)),
+          contentAndPolicyReviewStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewStatusInfo" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          frameRate: S.optional(S.Number),
+          transcoded: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          fileSizeBytes: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          audioBitRateKbps: S.optional(S.String),
+          audioSampleRateHz: S.optional(S.String),
+          dimensions: S.optional(__S(4128, __c129, 0)),
+          bitRateKbps: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Transcode" });
+    case 16:
+      return S.Array(__S(4655, __c145, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          cmPlacementId: S.optional(S.String),
+          cmCreativeId: S.optional(S.String),
+          cmAdId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CmTrackingAd" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          entityStatus: S.optional(S.String),
+          additionalDimensions: S.optional(__S(4640, __c145, 0)),
+          dimensions: S.optional(__S(4128, __c129, 0)),
+          companionCreativeIds: S.optional(__S(6880, __c215, 0)),
+          creativeId: S.optional(S.String),
+          requireHtml5: S.optional(S.Boolean),
+          lineItemIds: S.optional(__S(6880, __c215, 0)),
+          universalAdId: S.optional(__S(4641, __c145, 1)),
+          skippable: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          timerEvents: S.optional(__S(4643, __c145, 3)),
+          counterEvents: S.optional(__S(4644, __c145, 4)),
+          mediaDuration: S.optional(S.String),
+          expandingDirection: S.optional(S.String),
+          assets: S.optional(__S(4646, __c145, 6)),
+          displayName: S.optional(S.String),
+          thirdPartyUrls: S.optional(__S(4647, __c145, 7)),
+          trackerUrls: S.optional(__S(6880, __c215, 0)),
+          requireMraid: S.optional(S.Boolean),
+          hostingSource: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          requirePingForAttribution: S.optional(S.Boolean),
+          vastTagUrl: S.optional(S.String),
+          obaIcon: S.optional(__S(4648, __c145, 8)),
+          integrationCode: S.optional(S.String),
+          html5Video: S.optional(S.Boolean),
+          cmPlacementId: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          skipOffset: S.optional(__S(4649, __c145, 9)),
+          mp3Audio: S.optional(S.Boolean),
+          exitEvents: S.optional(__S(4651, __c145, 11)),
+          reviewStatus: S.optional(__S(4654, __c145, 14)),
+          syntheticContentAttestationStatus: S.optional(S.String),
+          name: S.optional(S.String),
+          oggAudio: S.optional(S.Boolean),
+          thirdPartyTag: S.optional(S.String),
+          dynamic: S.optional(S.Boolean),
+          transcodes: S.optional(__S(4656, __c145, 16)),
+          jsTrackerUrl: S.optional(S.String),
+          creativeType: S.optional(S.String),
+          progressOffset: S.optional(__S(4649, __c145, 9)),
+          creativeAttributes: S.optional(__S(32, __c1, 0)),
+          appendedTag: S.optional(S.String),
+          cmTrackingAd: S.optional(__S(4657, __c145, 17)),
+          notes: S.optional(S.String),
+          vpaid: S.optional(S.Boolean),
+          iasCampaignMonitoring: S.optional(S.Boolean),
+          expandOnHover: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Creative" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mediaId: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Asset" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4740, __c148, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/insertionOrders",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersInsertionOrdersRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaignBudgetId: S.optional(S.String),
+          budgetAmountMicros: S.optional(S.String),
+          description: S.optional(S.String),
+          dateRange: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({
+        identifier: "InsertionOrderBudgetSegment",
+      });
+    case 1:
+      return S.Array(__S(4736, __c148, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          budgetSegments: S.optional(__S(4737, __c148, 1)),
+          budgetUnit: S.optional(S.String),
+          automationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InsertionOrderBudget" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kpiType: S.optional(S.String),
+          kpiAlgorithmId: S.optional(S.String),
+          kpiAmountMicros: S.optional(S.String),
+          kpiString: S.optional(S.String),
+          kpiPercentageMicros: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Kpi" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          insertionOrderId: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          integrationDetails: S.optional(__S(3200, __c100, 0)),
+          entityStatus: S.optional(S.String),
+          frequencyCap: S.optional(__S(3328, __c104, 0)),
+          updateTime: S.optional(S.String),
+          budget: S.optional(__S(4738, __c148, 2)),
+          kpi: S.optional(__S(4739, __c148, 3)),
+          pacing: S.optional(__S(3360, __c105, 0)),
+          reservationType: S.optional(S.String),
+          partnerCosts: S.optional(__S(3362, __c105, 2)),
+          campaignId: S.optional(S.String),
+          bidStrategy: S.optional(__S(3237, __c101, 5)),
+          insertionOrderType: S.optional(S.String),
+          optimizationObjective: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InsertionOrder" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3441, __c107, 17).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersLineItemsRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+          lineItemId: S.String.pipe(T.Label()),
+          body: S.optional(__S(154, __c4, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "linkedEntity.adGroupId": S.optional(S.String.pipe(T.Query())),
+          youtubeAssetType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          lineItemId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4392, __c137, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4896, __c153, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/locationLists",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersLocationListsRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationType: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          locationListId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocationList" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          locationListId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7328, __c229, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersLocationListsAssignedLocationsRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4992, __c156, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersNegativeKeywordListsRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetedLineItemCount: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          negativeKeywordListId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NegativeKeywordList" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          negativeKeywordListId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7776, __c243, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetingType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(154, __c4, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(5122, __c160, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/customBiddingAlgorithms",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomBiddingAlgorithmsRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suspensionState: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          readinessState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomBiddingModelDetails",
+      });
+    case 1:
+      return S.Array(__S(5120, __c160, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String),
+          thirdPartyOptimizationPartner: S.optional(S.String),
+          modelDetails: S.optional(__S(5121, __c160, 1)),
+          advertiserId: S.optional(S.String),
+          customBiddingAlgorithmId: S.optional(S.String),
+          customBiddingAlgorithmType: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sharedAdvertiserIds: S.optional(__S(6880, __c215, 0)),
+          entityStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomBiddingAlgorithm" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customBiddingAlgorithmId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5185, __c162, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomBiddingAlgorithmsRulesRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomBiddingAlgorithmRulesError",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          customBiddingAlgorithmId: S.optional(S.String),
+          state: S.optional(S.String),
+          customBiddingAlgorithmRulesId: S.optional(S.String),
+          error: S.optional(__S(5184, __c162, 0)),
+          rules: S.optional(__S(5216, __c163, 0)),
+          createTime: S.optional(S.String),
+          active: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CustomBiddingAlgorithmRules",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomBiddingAlgorithmRulesRef",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          customBiddingAlgorithmId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5314, __c166, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomBiddingAlgorithmsScriptsRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomBiddingScriptRef" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          column: S.optional(S.String),
+          line: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScriptError" });
+    case 1:
+      return S.Array(__S(5312, __c166, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          errors: S.optional(__S(5313, __c166, 1)),
+          customBiddingAlgorithmId: S.optional(S.String),
+          name: S.optional(S.String),
+          script: S.optional(__S(5280, __c165, 0)),
+          customBiddingScriptId: S.optional(S.String),
+          createTime: S.optional(S.String),
+          active: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomBiddingScript" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5408, __c169, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/firstPartyAndPartnerAudiences",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFirstPartyAndPartnerAudiencesRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adUserData: S.optional(S.String),
+          adPersonalization: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Consent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hashedLastName: S.optional(S.String),
+          hashedFirstName: S.optional(S.String),
+          hashedPhoneNumbers: S.optional(__S(6880, __c215, 0)),
+          countryCode: S.optional(S.String),
+          hashedEmails: S.optional(__S(6880, __c215, 0)),
+          zipCodes: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "ContactInfo" });
+    case 2:
+      return S.Array(__S(5377, __c168, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          consent: S.optional(__S(5376, __c168, 0)),
+          contactInfos: S.optional(__S(5378, __c168, 2)),
+        }),
+      ).annotate({ identifier: "ContactInfoList" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          mobileDeviceIds: S.optional(__S(6880, __c215, 0)),
+          consent: S.optional(__S(5376, __c168, 0)),
+        }),
+      ).annotate({ identifier: "MobileDeviceIdList" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          activeDisplayAudienceSize: S.optional(S.String),
+          contactInfoList: S.optional(__S(5379, __c168, 3)),
+          audienceSource: S.optional(S.String),
+          displayName: S.optional(S.String),
+          youtubeAudienceSize: S.optional(S.String),
+          firstPartyAndPartnerAudienceType: S.optional(S.String),
+          displayDesktopAudienceSize: S.optional(S.String),
+          firstPartyAndPartnerAudienceId: S.optional(S.String),
+          name: S.optional(S.String),
+          membershipDurationDays: S.optional(S.String),
+          gmailAudienceSize: S.optional(S.String),
+          description: S.optional(S.String),
+          audienceType: S.optional(S.String),
+          displayAudienceSize: S.optional(S.String),
+          mobileDeviceIdList: S.optional(__S(5380, __c168, 4)),
+          appId: S.optional(S.String),
+          displayMobileWebAudienceSize: S.optional(S.String),
+          displayMobileAppAudienceSize: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FirstPartyAndPartnerAudience",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5473, __c171, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/guaranteedOrders",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGuaranteedOrdersRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityPauseReason: S.optional(S.String),
+          entityStatus: S.optional(S.String),
+          configStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GuaranteedOrderStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guaranteedOrderId: S.optional(S.String),
+          readAccessInherited: S.optional(S.Boolean),
+          publisherName: S.optional(S.String),
+          exchange: S.optional(S.String),
+          defaultCampaignId: S.optional(S.String),
+          readWriteAdvertiserId: S.optional(S.String),
+          defaultAdvertiserId: S.optional(S.String),
+          legacyGuaranteedOrderId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          status: S.optional(__S(5472, __c171, 0)),
+          readWritePartnerId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          readAdvertiserIds: S.optional(__S(6880, __c215, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GuaranteedOrder" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5536, __c173, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/inventorySourceGroups",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInventorySourceGroupsRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceGroupId: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InventorySourceGroup" });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          inventorySourceGroupId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1696, __c53, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInventorySourceGroupsAssignedInventorySourcesRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5640, __c176, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/inventorySources",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInventorySourcesRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sellerStatus: S.optional(S.String),
+          configStatus: S.optional(S.String),
+          entityPauseReason: S.optional(S.String),
+          sellerPauseReason: S.optional(S.String),
+          entityStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InventorySourceStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          creativeSize: S.optional(__S(4128, __c129, 0)),
+        }),
+      ).annotate({
+        identifier: "InventorySourceDisplayCreativeConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InventorySourceVideoCreativeConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creativeType: S.optional(S.String),
+          displayCreativeConfig: S.optional(__S(5634, __c176, 2)),
+          videoCreativeConfig: S.optional(__S(5635, __c176, 3)),
+        }),
+      ).annotate({ identifier: "CreativeConfig" });
+    case 5:
+      return S.Array(__S(5636, __c176, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          units: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Money" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceRateType: S.optional(S.String),
+          unitsPurchased: S.optional(S.String),
+          minimumSpend: S.optional(__S(5638, __c176, 6)),
+          rate: S.optional(__S(5638, __c176, 6)),
+        }),
+      ).annotate({ identifier: "RateDetails" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          timeRange: S.optional(__S(5632, __c176, 0)),
+          inventorySourceType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          readAdvertiserIds: S.optional(__S(6880, __c215, 0)),
+          dealId: S.optional(S.String),
+          status: S.optional(__S(5633, __c176, 1)),
+          readWriteAccessors: S.optional(__S(5666, __c177, 2)),
+          creativeConfigs: S.optional(__S(5637, __c176, 5)),
+          name: S.optional(S.String),
+          deliveryMethod: S.optional(S.String),
+          inventorySourceProductType: S.optional(S.String),
+          guaranteedOrderId: S.optional(S.String),
+          publisherName: S.optional(S.String),
+          exchange: S.optional(S.String),
+          readPartnerIds: S.optional(__S(6880, __c215, 0)),
+          rateDetails: S.optional(__S(5639, __c176, 7)),
+          inventorySourceId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          commitment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InventorySource" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InventorySourceAccessorsPartnerAccessor",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "InventorySourceAccessorsAdvertiserAccessors",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          partner: S.optional(__S(5664, __c177, 0)),
+          advertisers: S.optional(__S(5665, __c177, 1)),
+        }),
+      ).annotate({ identifier: "InventorySourceAccessors" });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4544, __c142, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/partners/{+partnerId}/channels",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePartnersChannelsRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          channelId: S.String.pipe(T.Label()),
+          partnerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6848, __c214, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePartnersChannelsSitesRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+          body: S.optional(__S(154, __c4, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePartnersTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaignIds: S.optional(__S(6880, __c215, 0)),
+          adGroupIds: S.optional(__S(6880, __c215, 0)),
+          lineItemQaIds: S.optional(__S(6880, __c215, 0)),
+          insertionOrderIds: S.optional(__S(6880, __c215, 0)),
+          mediaProductIds: S.optional(__S(6880, __c215, 0)),
+          adGroupAdIds: S.optional(__S(6880, __c215, 0)),
+          lineItemIds: S.optional(__S(6880, __c215, 0)),
+          adGroupQaIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "IdFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          filterType: S.optional(S.String),
+          filterIds: S.optional(__S(6880, __c215, 0)),
+          fileType: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ParentEntityFilter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({ identifier: "InventorySourceFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String),
+          idFilter: S.optional(__S(5792, __c181, 0)),
+          parentEntityFilter: S.optional(__S(5793, __c181, 1)),
+          inventorySourceFilter: S.optional(__S(5794, __c181, 2)),
+          partnerId: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSdfDownloadTaskRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(5795, __c181, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/sdfdownloadtasks",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSdfdownloadtasksRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(224, __c7, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(193, __c6, 1)),
+          response: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(5888, __c184, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/users",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateUsersRequest" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+          assignedUserRoles: S.optional(__S(1153, __c36, 1)),
+          userId: S.optional(S.String),
+          lastLoginTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          readMask: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}:audit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AuditAdvertisersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          negativeKeywordListsCount: S.optional(S.String),
+          adGroupCriteriaCount: S.optional(S.String),
+          usedLineItemsCount: S.optional(S.String),
+          usedInsertionOrdersCount: S.optional(S.String),
+          channelsCount: S.optional(S.String),
+          negativelyTargetedChannelsCount: S.optional(S.String),
+          campaignCriteriaCount: S.optional(S.String),
+          usedCampaignsCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditAdvertiserResponse" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAdvertisersRequest" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupAdId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersAdGroupAdsRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersAdGroupsRequest",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          youtubeAssetType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          youtubeAssetAssociationId: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+          "linkedEntity.lineItemId": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaignId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/campaigns/{+campaignId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersCampaignsRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          urlOrAppId: S.String.pipe(T.Label()),
+          channelId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersChannelsSitesRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creativeId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/creatives/{+creativeId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersCreativesRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          insertionOrderId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersInsertionOrdersRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lineItemId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersLineItemsRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adAssets: S.optional(__S(6336, __c198, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkCreateAdAssetsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6304, __c197, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/adAssets:bulkCreate",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkCreateAdvertisersAdAssetsRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6369, __c199, 1));
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          youtubeVideoId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "YoutubeVideoAsset" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          youtubeVideoAsset: S.optional(__S(6368, __c199, 0)),
+          syntheticContentAttestationStatus: S.optional(S.String),
+          entityStatus: S.optional(S.String),
+          name: S.optional(S.String),
+          adAssetId: S.optional(S.String),
+          adAssetType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdAsset" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetingType: S.String.pipe(T.Label()),
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          lineItemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "linkedEntity.adGroupId": S.optional(S.String.pipe(T.Query())),
+          lineItemId: S.String.pipe(T.Label()),
+          youtubeAssetType: S.String.pipe(T.Label()),
+          youtubeAssetAssociationId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationListId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          assignedLocationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersLocationListsAssignedLocationsRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          negativeKeywordListId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersNegativeKeywordListsRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          keywordValue: S.String.pipe(T.Label()),
+          negativeKeywordListId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetingType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          inventorySourceGroupId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInventorySourceGroupsRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceGroupId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          assignedInventorySourceId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInventorySourceGroupsAssignedInventorySourcesRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelId: S.String.pipe(T.Label()),
+          partnerId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          urlOrAppId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePartnersChannelsSitesRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePartnersTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6752, __c211, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditAdvertisersChannelsSitesRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String),
+          deletedSites: S.optional(__S(6880, __c215, 0)),
+          createdSites: S.optional(__S(6784, __c212, 0)),
+          partnerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkEditSitesRequest" });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6848, __c214, 0));
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sites: S.optional(__S(6784, __c212, 0)),
+        }),
+      ).annotate({ identifier: "BulkEditSitesResponse" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          urlOrAppId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Site" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4/users/{+userId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteUsersRequest" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "download/{+resourceName}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DownloadMediaRequest" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetDisplayName: S.optional(S.String),
+          containsEuPoliticalAds: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DuplicateLineItemRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lineItemId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6976, __c218, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DuplicateAdvertisersLineItemsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          duplicateLineItemId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DuplicateLineItemResponse",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleteRequests: S.optional(__S(259, __c8, 3)),
+          createRequests: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAdvertiserAssignedTargetingOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7008, __c219, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}:editAssignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditAssignedTargetingOptionsAdvertisersRequest",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAssignedTargetingOptions: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAdvertiserAssignedTargetingOptionsResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createRequests: S.optional(__S(257, __c8, 1)),
+          deleteRequests: S.optional(__S(259, __c8, 3)),
+        }),
+      ).annotate({
+        identifier: "BulkEditPartnerAssignedTargetingOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7072, __c221, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/partners/{+partnerId}:editAssignedTargetingOptions",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditAssignedTargetingOptionsPartnersRequest",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          removedMobileDeviceIdList: S.optional(__S(5380, __c168, 4)),
+          advertiserId: S.optional(S.String),
+          addedContactInfoList: S.optional(__S(5379, __c168, 3)),
+          addedMobileDeviceIdList: S.optional(__S(5380, __c168, 4)),
+          removedContactInfoList: S.optional(__S(5379, __c168, 3)),
+        }),
+      ).annotate({
+        identifier: "EditCustomerMatchMembersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          firstPartyAndPartnerAudienceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7104, __c222, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/firstPartyAndPartnerAudiences/{+firstPartyAndPartnerAudienceId}:editCustomerMatchMembers",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditCustomerMatchMembersFirstPartyAndPartnerAudiencesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstPartyAndPartnerAudienceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EditCustomerMatchMembersResponse",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addedAdvertisers: S.optional(__S(6880, __c215, 0)),
+          partnerId: S.optional(S.String),
+          removedAdvertisers: S.optional(__S(6880, __c215, 0)),
+          readAccessInherited: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EditGuaranteedOrderReadAccessorsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guaranteedOrderId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7136, __c223, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readAccessInherited: S.optional(S.Boolean),
+          readAdvertiserIds: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "EditGuaranteedOrderReadAccessorsResponse",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addedAdvertisers: S.optional(__S(6880, __c215, 0)),
+          removedAdvertisers: S.optional(__S(6880, __c215, 0)),
+        }),
+      ).annotate({
+        identifier: "EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String),
+          assignPartner: S.optional(S.Boolean),
+          advertisersUpdate: S.optional(__S(7168, __c224, 0)),
+        }),
+      ).annotate({
+        identifier: "EditInventorySourceReadWriteAccessorsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7169, __c224, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditInventorySourceReadWriteAccessorsInventorySourcesRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          durationDays: S.optional(S.Number),
+          dateRange: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({ identifier: "CampaignDuration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          surfaces: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "SurfaceTargetingSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lineupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "YouTubeSelectSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          surfaceTargetingSettings: S.optional(__S(7201, __c225, 1)),
+          network: S.optional(S.String),
+          genders: S.optional(__S(32, __c1, 0)),
+          youtubeSelectSettings: S.optional(__S(7202, __c225, 2)),
+          plannableLocationIds: S.optional(__S(6880, __c215, 0)),
+          ageRange: S.optional(S.String),
+          dateRange: S.optional(__S(3297, __c103, 1)),
+          devices: S.optional(__S(32, __c1, 0)),
+          userListIds: S.optional(__S(6880, __c215, 0)),
+          targetFrequency: S.optional(__S(3392, __c106, 0)),
+          userInterestIds: S.optional(__S(6880, __c215, 0)),
+          frequencyCap: S.optional(__S(3328, __c104, 0)),
+        }),
+      ).annotate({ identifier: "AdvancedProductTargeting" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          budgetMicros: S.optional(S.String),
+          advancedProductTargeting: S.optional(__S(7203, __c225, 3)),
+          plannableProductCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlannedProduct" });
+    case 5:
+      return S.Array(__S(7204, __c225, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          plannableLocationIds: S.optional(__S(6880, __c215, 0)),
+          ageRange: S.optional(S.String),
+          genders: S.optional(__S(32, __c1, 0)),
+          devices: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "Targeting" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          campaignDuration: S.optional(__S(7200, __c225, 0)),
+          currencyCode: S.optional(S.String),
+          minEffectiveFrequency: S.optional(S.Number),
+          plannedProducts: S.optional(__S(7205, __c225, 5)),
+          targeting: S.optional(__S(7206, __c225, 6)),
+        }),
+      ).annotate({
+        identifier: "GenerateReachForecastRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7207, __c225, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{+advertiserId}/reachForecast:generateReachForecast",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateReachForecastAdvertisersReachForecastRequest",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          youtubeAudienceSize: S.optional(S.String),
+          censusAudienceSize: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OnTargetAudienceMetrics" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          totalCoviewReach: S.optional(S.String),
+          onTargetReach: S.optional(S.String),
+          totalCoviewImpressions: S.optional(S.String),
+          viewableImpressions: S.optional(S.String),
+          onTargetCoviewReach: S.optional(S.String),
+          totalImpressions: S.optional(S.String),
+          onTargetCoviewImpressions: S.optional(S.String),
+          onTargetImpressions: S.optional(S.String),
+          totalReach: S.optional(S.String),
+          trueviewViews: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlannedProductForecast" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          plannedProductForecast: S.optional(__S(7210, __c225, 10)),
+          plannableProductCode: S.optional(S.String),
+          costMicros: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlannedProductReachForecast",
+      });
+    case 12:
+      return S.Array(__S(7211, __c225, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          costMicros: S.optional(S.String),
+          plannedProductReachForecasts: S.optional(__S(7212, __c225, 12)),
+          forecast: S.optional(__S(7210, __c225, 10)),
+        }),
+      ).annotate({ identifier: "ReachForecast" });
+    case 14:
+      return S.Array(__S(7213, __c225, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          reachForecasts: S.optional(__S(7214, __c225, 14)),
+        }),
+      ).annotate({ identifier: "ReachCurve" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          onTargetAudienceMetrics: S.optional(__S(7209, __c225, 9)),
+          reachCurve: S.optional(__S(7215, __c225, 15)),
+        }),
+      ).annotate({
+        identifier: "GenerateReachForecastResponse",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAdvertisersRequest" });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deletedAssignedLocations: S.optional(__S(6880, __c215, 0)),
+          createdAssignedLocations: S.optional(__S(7296, __c228, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedLocationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          locationListId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7264, __c227, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditAdvertisersLocationListsAssignedLocationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assignedLocations: S.optional(__S(7296, __c228, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditAssignedLocationsResponse",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7328, __c229, 0));
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assignedLocationId: S.optional(S.String),
+          name: S.optional(S.String),
+          targetingOptionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssignedLocation" });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          adAssetId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersAdAssetsRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adGroupAdId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersAdGroupAdsRequest",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adGroupId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersAdGroupsRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+          adGroupId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          campaignId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/campaigns/{+campaignId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersCampaignsRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          channelId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/channels/{+channelId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersChannelsRequest",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creativeId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/creatives/{+creativeId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersCreativesRequest",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          insertionOrderId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersInsertionOrdersRequest",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          lineItemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersLineItemsRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          targetingType: S.String.pipe(T.Label()),
+          lineItemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deletedNegativeKeywords: S.optional(__S(6880, __c215, 0)),
+          createdNegativeKeywords: S.optional(__S(7712, __c241, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditNegativeKeywordsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          negativeKeywordListId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7680, __c240, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7776, __c243, 0));
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          negativeKeywords: S.optional(__S(7712, __c241, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkEditNegativeKeywordsResponse",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          keywordValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NegativeKeyword" });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          locationListId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/locationLists/{+locationListId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersLocationListsRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          negativeKeywordListId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersNegativeKeywordListsRequest",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetingType: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          assignedTargetingOptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          combinedAudienceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/combinedAudiences/{+combinedAudienceId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCombinedAudiencesRequest",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          combinedAudienceId: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CombinedAudience" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          customBiddingAlgorithmId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCustomBiddingAlgorithmsRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customBiddingAlgorithmId: S.String.pipe(T.Label()),
+          customBiddingAlgorithmRulesId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCustomBiddingAlgorithmsRulesRequest",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          customBiddingAlgorithmId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+          customBiddingScriptId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCustomBiddingAlgorithmsScriptsRequest",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customListId: S.String.pipe(T.Label()),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/customLists/{+customListId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetCustomListsRequest" });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          customListId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomList" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          firstPartyAndPartnerAudienceId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/firstPartyAndPartnerAudiences/{+firstPartyAndPartnerAudienceId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFirstPartyAndPartnerAudiencesRequest",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          floodlightGroupId: S.String.pipe(T.Label()),
+          partnerId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/floodlightGroups/{+floodlightGroupId}",
+            baseUrl: "https://displayvideo.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFloodlightGroupsRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          minimumDuration: S.optional(S.String),
+          minimumViewability: S.optional(S.String),
+          minimumQuartile: S.optional(S.String),
+          minimumVolume: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveViewVideoViewabilityMetricConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clickDays: S.optional(S.Number),
+          impressionDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LookbackWindow" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          floodlightGroupId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          webTagType: S.optional(S.String),
+          customVariables: S.optional(__S(224, __c7, 0)),
+          activeViewConfig: S.optional(__S(8192, __c256, 0)),
+          lookbackWindow: S.optional(__S(8193, __c256, 1)),
+        }),
+      ).annotate({ identifier: "FloodlightGroup" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

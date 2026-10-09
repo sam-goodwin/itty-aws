@@ -152,8 +152,8 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
   input: __S(0, __c0, 0) as any as S.Schema<ListProjectsAndroidAppsDeliveryDataRequest>,
   output: __S(
     9,
-    __c1,
-    1,
+    __c0,
+    9,
   ) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -259,16 +259,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          androidDeliveryData: S.optional(__S(8, __c1, 0)),
+          androidDeliveryData: S.optional(__S(8, __c0, 8)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -276,7 +272,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

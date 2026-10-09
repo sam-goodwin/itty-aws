@@ -434,8 +434,8 @@ export const CustomLocationsCreateOrUpdate: API.OperationMethod<
   CustomLocationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CustomLocationsCreateOrUpdateRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CustomLocationsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CustomLocationsCreateOrUpdateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CustomLocationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const DeleteCustomLocation: API.OperationMethod<
   DeleteCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteCustomLocationRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteCustomLocationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteCustomLocationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteCustomLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const GetCustomLocation: API.OperationMethod<
   GetCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetCustomLocationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetCustomLocationResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetCustomLocationRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetCustomLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const ListCustomLocationByResourceGroup: API.OperationMethod<
   ListCustomLocationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListCustomLocationByResourceGroupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CustomLocationListResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListCustomLocationByResourceGroupRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CustomLocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -494,8 +494,8 @@ export const ListCustomLocationBySubscription: API.OperationMethod<
   ListCustomLocationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListCustomLocationBySubscriptionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CustomLocationListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListCustomLocationBySubscriptionRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CustomLocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -509,8 +509,8 @@ export const ListCustomLocationEnabledResourceTypes: API.OperationMethod<
   ListCustomLocationEnabledResourceTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListCustomLocationEnabledResourceTypesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<EnabledResourceTypesListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListCustomLocationEnabledResourceTypesRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<EnabledResourceTypesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -524,8 +524,8 @@ export const ListCustomLocationOperations: API.OperationMethod<
   ListCustomLocationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListCustomLocationOperationsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CustomLocationOperationsList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListCustomLocationOperationsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<CustomLocationOperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -539,8 +539,8 @@ export const UpdateCustomLocation: API.OperationMethod<
   UpdateCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateCustomLocationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateCustomLocationResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateCustomLocationRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<UpdateCustomLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -550,46 +550,15 @@ export const UpdateCustomLocation: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomLocationPropertiesAuthentication",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.optional(__S(2, __c0, 2)),
-          clusterExtensionIds: S.optional(__S(3, __c0, 3)),
-          displayName: S.optional(S.String),
-          hostResourceId: S.optional(S.String),
-          hostType: S.optional(S.String),
-          namespace: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomLocationProperties" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          identity: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(4, __c0, 4)),
+          identity: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -601,15 +570,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomLocationsCreateOrUpdateRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Identity" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -622,26 +583,73 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomLocationsCreateOrUpdateResponseSystemData",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          identity: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(7, __c0, 7)),
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CustomLocationsCreateOrUpdateResponse",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomLocationPropertiesAuthentication",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.optional(__S(9, __c1, 1)),
+          clusterExtensionIds: S.optional(__S(10, __c1, 2)),
+          displayName: S.optional(S.String),
+          hostResourceId: S.optional(S.String),
+          hostType: S.optional(S.String),
+          namespace: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomLocationProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Identity" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -658,11 +666,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteCustomLocationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCustomLocationResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -677,7 +689,26 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCustomLocationRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "GetCustomLocationResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -690,22 +721,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCustomLocationResponseSystemData",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          identity: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GetCustomLocationResponse",
-      });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -721,7 +741,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCustomLocationByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -732,33 +756,33 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomLocationSystemData" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          identity: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(15, __c1, 7)),
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "CustomLocation" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(17, __c2, 1)),
+          value: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "CustomLocationListResult" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -773,7 +797,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCustomLocationBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -790,7 +818,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCustomLocationEnabledResourceTypesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
@@ -800,44 +828,44 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EnabledResourceTypePropertiesTypesMetadataItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           clusterExtensionId: S.optional(S.String),
           extensionType: S.optional(S.String),
-          typesMetadata: S.optional(__S(22, __c2, 6)),
+          typesMetadata: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "EnabledResourceTypeProperties",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(23, __c2, 7)),
-          systemData: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(75, __c9, 3)),
+          systemData: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "EnabledResourceType" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(76, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(25, __c3, 1)),
+          value: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "EnabledResourceTypesListResult",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -850,7 +878,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCustomLocationOperationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -861,29 +889,29 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CustomLocationOperationValueDisplay",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(28, __c3, 4)),
+          display: S.optional(__S(81, __c10, 1)),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomLocationOperation" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(30, __c3, 6),
+          value: __S(83, __c10, 3),
         }),
       ).annotate({
         identifier: "CustomLocationOperationsList",
       });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -891,9 +919,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(0, __c0, 0)),
+          identity: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -911,18 +939,17 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          identity: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(12, __c1, 4)),
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "UpdateCustomLocationResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

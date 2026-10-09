@@ -175,8 +175,8 @@ export const createAppBuild: API.OperationMethod<
   CreateAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAppBuildRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AppBuild>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateAppBuildRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<AppBuild>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -190,8 +190,8 @@ export const getAppBuild: API.OperationMethod<
   GetAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAppBuildRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AppBuild>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetAppBuildRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<AppBuild>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -207,8 +207,8 @@ export const listAppBuilds: API.PaginatedOperationMethod<
   AppBuild
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ListAppBuildsRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<ListAppBuildsResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListAppBuildsRequest>,
+    output: __S(15, __c3, 3) as any as S.Schema<ListAppBuildsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -232,8 +232,8 @@ export const promoteAppBuild: API.OperationMethod<
   PromoteAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<PromoteAppBuildRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AppBuild>,
+  input: __S(16, __c4, 0) as any as S.Schema<PromoteAppBuildRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<AppBuild>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,6 @@ function __c0(j: number): any {
         identifier: "CreateAppBuildRequestAttachment",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ai_prompt_id: S.optional(S.String),
@@ -262,11 +260,17 @@ function __c0(j: number): any {
           checksum: S.String,
           platform: S.String,
           source_attachment: S.optional(__S(0, __c0, 0)),
-          supported_app_view_types: S.optional(__S(1, __c0, 1)),
+          supported_app_view_types: S.optional(__S(4, __c1, 0)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/app_builds", code: 200 })),
       ).annotate({ identifier: "CreateAppBuildRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           checksum: S.String,
@@ -278,16 +282,24 @@ function __c0(j: number): any {
           review_message: S.NullOr(S.String),
           source_url: S.NullOr(S.String),
           status: S.String,
-          supported_app_view_types: __S(1, __c0, 1),
+          supported_app_view_types: __S(4, __c1, 0),
         }),
       ).annotate({ identifier: "AppBuild" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/app_builds/{id}", code: 200 })),
       ).annotate({ identifier: "GetAppBuildRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String.pipe(T.Query()),
@@ -301,9 +313,9 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/app_builds", code: 200 })),
       ).annotate({ identifier: "ListAppBuildsRequest" });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -314,18 +326,18 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAppBuildsResponsePageInfo",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(6, __c0, 6),
-          page_info: __S(7, __c0, 7),
+          data: __S(13, __c3, 1),
+          page_info: __S(14, __c3, 2),
         }),
       ).annotate({ identifier: "ListAppBuildsResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -334,7 +346,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "PromoteAppBuildRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -7372,8 +7372,8 @@ export const addParticipantMeeting: API.OperationMethod<
   AddParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddParticipantMeetingRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddParticipantMeetingResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<AddParticipantMeetingRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<AddParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7387,8 +7387,8 @@ export const createIndependentLivestreamLivestream: API.OperationMethod<
   CreateIndependentLivestreamLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7402,8 +7402,8 @@ export const createMeeting: API.OperationMethod<
   CreateMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateMeetingRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateMeetingResponse>,
+  input: __S(2342, __c73, 6) as any as S.Schema<CreateMeetingRequest>,
+  output: __S(2348, __c73, 12) as any as S.Schema<CreateMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7417,8 +7417,8 @@ export const createPollActiveSession: API.OperationMethod<
   CreatePollActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreatePollActiveSessionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreatePollActiveSessionResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<CreatePollActiveSessionRequest>,
+  output: __S(2663, __c83, 7) as any as S.Schema<CreatePollActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7432,8 +7432,8 @@ export const createPreset: API.OperationMethod<
   CreatePresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreatePresetRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CreatePresetResponse>,
+  input: __S(2691, __c84, 3) as any as S.Schema<CreatePresetRequest>,
+  output: __S(2694, __c84, 6) as any as S.Schema<CreatePresetResponse>,
   errors: [RealtimeKitPresetExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7447,8 +7447,8 @@ export const createWebhookWebhook: API.OperationMethod<
   CreateWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateWebhookWebhookRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<CreateWebhookWebhookResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebhookWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7462,8 +7462,8 @@ export const deleteMeetingParticipantMeeting: API.OperationMethod<
   DeleteMeetingParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7477,8 +7477,8 @@ export const deletePreset: API.OperationMethod<
   DeletePresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeletePresetRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeletePresetResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeletePresetRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<DeletePresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7492,8 +7492,8 @@ export const deleteWebhookWebhook: API.OperationMethod<
   DeleteWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteWebhookWebhookRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteWebhookWebhookResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteWebhookWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7507,8 +7507,8 @@ export const editParticipantMeeting: API.OperationMethod<
   EditParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<EditParticipantMeetingRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<EditParticipantMeetingResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<EditParticipantMeetingRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<EditParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7522,8 +7522,8 @@ export const editWebhookWebhook: API.OperationMethod<
   EditWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<EditWebhookWebhookRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EditWebhookWebhookResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<EditWebhookWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<EditWebhookWebhookResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7537,8 +7537,8 @@ export const generateSummaryOfTranscriptsSession: API.OperationMethod<
   GenerateSummaryOfTranscriptsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7552,11 +7552,15 @@ export const getActiveLivestreamsForLivestreamIdLivestream: API.OperationMethod<
   GetActiveLivestreamsForLivestreamIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>,
+  input: __S(
+    320,
+    __c10,
+    0,
+  ) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>,
   output: __S(
-    93,
-    __c11,
-    5,
+    323,
+    __c10,
+    3,
   ) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7571,8 +7575,8 @@ export const getActiveRecordingsRecording: API.OperationMethod<
   GetActiveRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetActiveRecordingsRecordingRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetActiveRecordingsRecordingResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetActiveRecordingsRecordingRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetActiveRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7586,8 +7590,8 @@ export const getActiveSessionActiveSession: API.OperationMethod<
   GetActiveSessionActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetActiveSessionActiveSessionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetActiveSessionActiveSessionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetActiveSessionActiveSessionRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<GetActiveSessionActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7601,8 +7605,8 @@ export const getAllLivestreamsLivestream: API.OperationMethod<
   GetAllLivestreamsLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetAllLivestreamsLivestreamRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetAllLivestreamsLivestreamResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetAllLivestreamsLivestreamRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<GetAllLivestreamsLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7616,8 +7620,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetAppRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetAppResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetAppRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<GetAppResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7631,8 +7635,8 @@ export const getLivestreamAnalyticsCompleteLivestream: API.OperationMethod<
   GetLivestreamAnalyticsCompleteLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7646,8 +7650,8 @@ export const getLivestreamAnalyticsDaywiseLivestream: API.OperationMethod<
   GetLivestreamAnalyticsDaywiseLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7662,14 +7666,14 @@ export const getLivestreamSessionDetailsForSessionIdLivestream: API.OperationMet
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamRequest>,
   output: __S(
-    118,
-    __c14,
-    6,
+    706,
+    __c22,
+    2,
   ) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7685,14 +7689,14 @@ export const getLivestreamSessionForLivestreamIdLivestream: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    736,
+    __c23,
+    0,
   ) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>,
   output: __S(
-    122,
-    __c15,
-    2,
+    739,
+    __c23,
+    3,
   ) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7707,8 +7711,8 @@ export const getMeeting: API.OperationMethod<
   GetMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetMeetingRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetMeetingResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetMeetingRequest>,
+  output: __S(773, __c24, 5) as any as S.Schema<GetMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7722,8 +7726,8 @@ export const getMeetingActiveLivestreamsLivestream: API.OperationMethod<
   GetMeetingActiveLivestreamsLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7737,8 +7741,8 @@ export const getMeetingByIdMeeting: API.OperationMethod<
   GetMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetMeetingByIdMeetingRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetMeetingByIdMeetingResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetMeetingByIdMeetingRequest>,
+  output: __S(872, __c27, 8) as any as S.Schema<GetMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7752,8 +7756,8 @@ export const getMeetingParticipantMeeting: API.OperationMethod<
   GetMeetingParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetMeetingParticipantMeetingRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetMeetingParticipantMeetingResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetMeetingParticipantMeetingRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<GetMeetingParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7767,8 +7771,8 @@ export const getMeetingParticipantsMeeting: API.OperationMethod<
   GetMeetingParticipantsMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetMeetingParticipantsMeetingRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetMeetingParticipantsMeetingResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetMeetingParticipantsMeetingRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<GetMeetingParticipantsMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7782,8 +7786,8 @@ export const getOneRecordingRecording: API.OperationMethod<
   GetOneRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetOneRecordingRecordingRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetOneRecordingRecordingResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetOneRecordingRecordingRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<GetOneRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7797,8 +7801,8 @@ export const getOrgAnalyticsAnalytic: API.OperationMethod<
   GetOrgAnalyticsAnalyticError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7812,8 +7816,8 @@ export const getParticipantDataFromPeerIdSession: API.OperationMethod<
   GetParticipantDataFromPeerIdSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>,
+  output: __S(1196, __c37, 12) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7827,8 +7831,8 @@ export const getPreset: API.OperationMethod<
   GetPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetPresetRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<GetPresetResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetPresetRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<GetPresetResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7842,8 +7846,8 @@ export const getPresetByIdPreset: API.OperationMethod<
   GetPresetByIdPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetPresetByIdPresetRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GetPresetByIdPresetResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetPresetByIdPresetRequest>,
+  output: __S(1285, __c40, 5) as any as S.Schema<GetPresetByIdPresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7857,8 +7861,8 @@ export const getRecordingsRecording: API.OperationMethod<
   GetRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetRecordingsRecordingRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GetRecordingsRecordingResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetRecordingsRecordingRequest>,
+  output: __S(1353, __c42, 9) as any as S.Schema<GetRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7872,8 +7876,8 @@ export const getSessionChatSession: API.OperationMethod<
   GetSessionChatSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetSessionChatSessionRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetSessionChatSessionResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetSessionChatSessionRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<GetSessionChatSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7887,8 +7891,8 @@ export const getSessionDetailsSession: API.OperationMethod<
   GetSessionDetailsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetSessionDetailsSessionRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetSessionDetailsSessionResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetSessionDetailsSessionRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GetSessionDetailsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7902,8 +7906,8 @@ export const getSessionParticipantDetailsSession: API.OperationMethod<
   GetSessionParticipantDetailsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7917,8 +7921,8 @@ export const getSessionParticipantsSession: API.OperationMethod<
   GetSessionParticipantsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<GetSessionParticipantsSessionRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GetSessionParticipantsSessionResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetSessionParticipantsSessionRequest>,
+  output: __S(1539, __c48, 3) as any as S.Schema<GetSessionParticipantsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7932,8 +7936,8 @@ export const getSessionsSession: API.OperationMethod<
   GetSessionsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetSessionsSessionRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GetSessionsSessionResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetSessionsSessionRequest>,
+  output: __S(1572, __c49, 4) as any as S.Schema<GetSessionsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7947,8 +7951,8 @@ export const getSessionSummarySession: API.OperationMethod<
   GetSessionSummarySessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetSessionSummarySessionRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<GetSessionSummarySessionResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetSessionSummarySessionRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<GetSessionSummarySessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7962,8 +7966,8 @@ export const getSessionTranscriptsSession: API.OperationMethod<
   GetSessionTranscriptsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<GetSessionTranscriptsSessionRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<GetSessionTranscriptsSessionResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetSessionTranscriptsSessionRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<GetSessionTranscriptsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7977,8 +7981,8 @@ export const getWebhookByIdWebhook: API.OperationMethod<
   GetWebhookByIdWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<GetWebhookByIdWebhookRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetWebhookByIdWebhookResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetWebhookByIdWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetWebhookByIdWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7992,8 +7996,8 @@ export const getWebhooksWebhook: API.OperationMethod<
   GetWebhooksWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<GetWebhooksWebhookRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<GetWebhooksWebhookResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetWebhooksWebhookRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GetWebhooksWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8007,8 +8011,8 @@ export const kickAllParticipantsActiveSession: API.OperationMethod<
   KickAllParticipantsActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<KickAllParticipantsActiveSessionRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<KickAllParticipantsActiveSessionResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<KickAllParticipantsActiveSessionRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<KickAllParticipantsActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8022,8 +8026,8 @@ export const kickParticipantsActiveSession: API.OperationMethod<
   KickParticipantsActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<KickParticipantsActiveSessionRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<KickParticipantsActiveSessionResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<KickParticipantsActiveSessionRequest>,
+  output: __S(1764, __c55, 4) as any as S.Schema<KickParticipantsActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8037,8 +8041,8 @@ export const livestreamsGetOrgAnalytics: API.OperationMethod<
   LivestreamsGetOrgAnalyticsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>,
+  output: __S(1796, __c56, 4) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8052,8 +8056,8 @@ export const patchPreset: API.OperationMethod<
   PatchPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<PatchPresetRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<PatchPresetResponse>,
+  input: __S(1843, __c57, 19) as any as S.Schema<PatchPresetRequest>,
+  output: __S(1846, __c57, 22) as any as S.Schema<PatchPresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8067,8 +8071,8 @@ export const pauseResumeStopRecordingRecording: API.OperationMethod<
   PauseResumeStopRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>,
+  output: __S(1925, __c60, 5) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8082,8 +8086,8 @@ export const postApp: API.OperationMethod<
   PostAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<PostAppRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<PostAppResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<PostAppRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<PostAppResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8097,8 +8101,8 @@ export const refreshParticipantTokenMeeting: API.OperationMethod<
   RefreshParticipantTokenMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<RefreshParticipantTokenMeetingRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<RefreshParticipantTokenMeetingResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<RefreshParticipantTokenMeetingRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<RefreshParticipantTokenMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8112,8 +8116,8 @@ export const replaceMeetingByIdMeeting: API.OperationMethod<
   ReplaceMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>,
+  input: __S(2021, __c63, 5) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>,
+  output: __S(2027, __c63, 11) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8127,8 +8131,8 @@ export const replacePresetById: API.OperationMethod<
   ReplacePresetByIdError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ReplacePresetByIdRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ReplacePresetByIdResponse>,
+  input: __S(2086, __c65, 6) as any as S.Schema<ReplacePresetByIdRequest>,
+  output: __S(2094, __c65, 14) as any as S.Schema<ReplacePresetByIdResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8142,8 +8146,8 @@ export const replaceWebhookWebhook: API.OperationMethod<
   ReplaceWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ReplaceWebhookWebhookRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ReplaceWebhookWebhookResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ReplaceWebhookWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ReplaceWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8157,8 +8161,8 @@ export const startLivestreamingAMeetingLivestream: API.OperationMethod<
   StartLivestreamingAMeetingLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>,
+  input: __S(2145, __c67, 1) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8172,8 +8176,8 @@ export const startRecordingsRecording: API.OperationMethod<
   StartRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<StartRecordingsRecordingRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<StartRecordingsRecordingResponse>,
+  input: __S(2180, __c68, 4) as any as S.Schema<StartRecordingsRecordingRequest>,
+  output: __S(2183, __c68, 7) as any as S.Schema<StartRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8187,8 +8191,8 @@ export const startTrackRecordingRecording: API.OperationMethod<
   StartTrackRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<StartTrackRecordingRecordingRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<StartTrackRecordingRecordingResponse>,
+  input: __S(2210, __c69, 2) as any as S.Schema<StartTrackRecordingRecordingRequest>,
+  output: __S(2212, __c69, 4) as any as S.Schema<StartTrackRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8202,8 +8206,8 @@ export const stopLivestreamingAMeetingLivestream: API.OperationMethod<
   StopLivestreamingAMeetingLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8217,8 +8221,8 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
   UpdateMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<UpdateMeetingByIdMeetingRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<UpdateMeetingByIdMeetingResponse>,
+  input: __S(2308, __c72, 4) as any as S.Schema<UpdateMeetingByIdMeetingRequest>,
+  output: __S(2314, __c72, 10) as any as S.Schema<UpdateMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8237,986 +8241,7 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          meetingId: S.String.pipe(T.Label("meeting_id")),
-          customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-          presetName: S.String.pipe(T.Body("preset_name")),
-          name: S.optional(S.String),
-          picture: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AddParticipantMeetingRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          token: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-          presetName: S.String.pipe(T.Body("preset_name")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          name: S.optional(S.NullOr(S.String)),
-          picture: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "MeetingsAddParticipantResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AddParticipantMeetingResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          name: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateIndependentLivestreamLivestreamRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          disabled: S.optional(S.NullOr(S.Boolean)),
-          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
-          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
-          name: S.optional(S.NullOr(S.String)),
-          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
-        }),
-      ).annotate({
-        identifier: "LivestreamsCreateIndependentLivestreamResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateIndependentLivestreamLivestreamResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          summaryType: S.optional(S.String.pipe(T.Body("summary_type"))),
-          textFormat: S.optional(S.String.pipe(T.Body("text_format"))),
-          wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestAiConfigSummarization",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          keywords: S.optional(__S(7, __c0, 7)),
-          language: S.optional(S.String),
-          profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestAiConfigTranscription",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summarization: S.optional(__S(6, __c0, 6)),
-          transcription: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestAiConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.String),
-          codec: S.optional(S.String),
-          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigAudioConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigLiveStreamingConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig",
-      });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "privateKey",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "accessKey",
-            "region",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "privateKey",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "privateKey",
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "password",
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "path",
-            "port",
-            "privateKey",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(S.String),
-          size: S.optional(__S(14, __c1, 6)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermark",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          codec: S.optional(S.String),
-          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-          height: S.optional(S.Number),
-          watermark: S.optional(__S(15, __c1, 7)),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfigVideoConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          audioConfig: S.optional(__S(10, __c1, 2).pipe(T.Body("audio_config"))),
-          fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
-          maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-          realtimekitBucketConfig: S.optional(
-            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
-          ),
-          storageConfig: S.optional(__S(13, __c1, 5).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(__S(16, __c2, 0).pipe(T.Body("video_config"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateRequestRecordingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          aiConfig: S.optional(__S(9, __c1, 1).pipe(T.Body("ai_config"))),
-          liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
-          persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-          recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(__S(17, __c2, 1).pipe(T.Body("recording_config"))),
-          sessionKeepAliveTimeInSecs: S.optional(
-            S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-          ),
-          summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-          title: S.optional(S.String),
-          transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateMeetingRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
-          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
-          wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataAiConfigSummarization",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keywords: S.optional(S.NullOr(__S(7, __c0, 7))),
-          language: S.optional(S.NullOr(S.String)),
-          profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataAiConfigTranscription",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          summarization: S.optional(S.NullOr(__S(19, __c2, 3))),
-          transcription: S.optional(S.NullOr(__S(20, __c2, 4))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataAiConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.NullOr(S.String)),
-          codec: S.optional(S.NullOr(S.String)),
-          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfigAudioConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "privateKey",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "accessKey",
-            "region",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "privateKey",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "privateKey",
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "password",
-            "path",
-            "port",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-          [
-            "password",
-            "accessKey",
-            "authMethod",
-            "bucket",
-            "host",
-            "path",
-            "port",
-            "privateKey",
-            "region",
-            "secret",
-            "type",
-            "username",
-          ],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.NullOr(S.Number)),
-          width: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(S.NullOr(S.String)),
-          size: S.optional(S.NullOr(__S(25, __c3, 1))),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          codec: S.optional(S.NullOr(S.String)),
-          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-          height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
-          width: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("audio_config"))),
-          fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
-          ),
-          maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
-          realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
-          ),
-          storageConfig: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("video_config"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseDataRecordingConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("ai_config"))),
-          liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
-          persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
-          recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("recording_config"))),
-          sessionKeepAliveTimeInSecs: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
-          ),
-          status: S.optional(S.NullOr(S.String)),
-          summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
-          title: S.optional(S.NullOr(S.String)),
-          transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsCreateResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(29, __c3, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateMeetingResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          meetingId: S.String.pipe(T.Label("meeting_id")),
-          options: __S(7, __c0, 7),
-          question: S.String,
-          anonymous: S.optional(S.Boolean),
-          hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreatePollActiveSessionRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          text: S.String,
-          votes: __S(33, __c4, 1),
-        }),
-      ).annotate({
-        identifier: "ActiveSessionCreatePollResponseDataPollOptionsItem",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          options: __S(35, __c4, 3),
-          question: S.String,
-          anonymous: S.optional(S.NullOr(S.Boolean)),
-          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
-          voted: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }),
-      ).annotate({
-        identifier: "ActiveSessionCreatePollResponseDataPoll",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.NullOr(S.String)),
-          poll: S.optional(S.NullOr(__S(36, __c4, 4))),
-        }),
-      ).annotate({
-        identifier: "ActiveSessionCreatePollResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(37, __c4, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreatePollActiveSessionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          desktop: S.Number,
-          mobile: S.Number,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfigMaxVideoStreams",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: S.String,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfigMediaScreenshare",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: S.String,
-          simulcast: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfigMediaVideo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableHighBitrate: S.optional(S.Boolean.pipe(T.Body("enable_high_bitrate"))),
-          enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfigMediaAudio",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          screenshare: __S(40, __c5, 0),
-          video: __S(41, __c5, 1),
-          audio: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfigMedia",
-      });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(43, __c5, 3),
-          viewType: S.String.pipe(T.Body("view_type")),
-          livestreamViewerQualities: S.optional(
-            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
-          ),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          canReceive: S.Boolean.pipe(T.Body("can_receive")),
-          canSend: S.Boolean.pipe(T.Body("can_send")),
-          files: S.Boolean,
-          text: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsChatPrivate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          canSend: S.Boolean.pipe(T.Body("can_send")),
-          files: S.Boolean,
-          text: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsChatPublic",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          private: __S(46, __c5, 6),
-          public: __S(47, __c5, 7),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsChat",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canAlterConnectedMeetings: S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
-          canSwitchConnectedMeetings: S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
-          canSwitchToParentMeeting: S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsConnectedMeetings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          canProduce: S.String.pipe(T.Body("can_produce")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsMediaAudio",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canProduce: S.String.pipe(T.Body("can_produce")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsMediaScreenshare",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audio: __S(50, __c6, 2),
-          screenshare: __S(51, __c6, 3),
-          video: __S(50, __c6, 2),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsMedia",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canClose: S.Boolean.pipe(T.Body("can_close")),
-          canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
-          canStart: S.Boolean.pipe(T.Body("can_start")),
-          config: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsPlugins",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          canCreate: S.Boolean.pipe(T.Body("can_create")),
-          canView: S.Boolean.pipe(T.Body("can_view")),
-          canVote: S.Boolean.pipe(T.Body("can_vote")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissionsPolls",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
-          canAcceptProductionRequests: S.Boolean.pipe(T.Body("can_accept_production_requests")),
-          canChangeParticipantPermissions: S.Boolean.pipe(
-            T.Body("can_change_participant_permissions"),
-          ),
-          canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
-          canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
-          canRecord: S.Boolean.pipe(T.Body("can_record")),
-          canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: __S(48, __c6, 0),
-          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
-          disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
-          disableParticipantScreensharing: S.Boolean.pipe(
-            T.Body("disable_participant_screensharing"),
-          ),
-          disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
-          hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
-          kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: __S(52, __c6, 4),
-          pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: __S(53, __c6, 5),
-          polls: __S(54, __c6, 6),
-          recorderType: S.String.pipe(T.Body("recorder_type")),
-          showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
-          acceptStageRequests: S.optional(S.Boolean.pipe(T.Body("accept_stage_requests"))),
-          isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
-          stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
-          transcriptionEnabled: S.optional(S.Boolean.pipe(T.Body("transcription_enabled"))),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestPermissions",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          "1000": S.String,
-          "600": S.String,
-          "700": S.String,
-          "800": S.String,
-          "900": S.String,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestUiDesignTokensColorsBackground",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          "300": S.String,
-          "400": S.String,
-          "500": S.String,
-          "600": S.String,
-          "700": S.String,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestUiDesignTokensColorsBrand",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          background: __S(56, __c7, 0),
-          brand: __S(57, __c7, 1),
-          danger: S.String,
-          success: S.String,
-          text: S.String,
-          textOnBrand: S.String.pipe(T.Body("text_on_brand")),
-          videoBg: S.String.pipe(T.Body("video_bg")),
-          warning: S.String,
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestUiDesignTokensColors",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          borderRadius: S.String.pipe(T.Body("border_radius")),
-          borderWidth: S.String.pipe(T.Body("border_width")),
-          colors: __S(58, __c7, 2),
-          spacingBase: S.Number.pipe(T.Body("spacing_base")),
-          theme: S.String,
-          fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-          googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-          logo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateRequestUiDesignTokens",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          designTokens: __S(59, __c7, 3).pipe(T.Body("design_tokens")),
-        }),
-      ).annotate({ identifier: "PresetsCreateRequestUi" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          config: __S(45, __c5, 5),
-          name: S.String,
-          permissions: __S(55, __c6, 7),
-          ui: __S(60, __c7, 4),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePresetRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: S.String,
-          simulcast: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataConfigMediaVideo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enableHighBitrate: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate"))),
-          enableStereo: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enable_stereo"))),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataConfigMediaAudio",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          screenshare: __S(40, __c5, 0),
-          video: __S(62, __c7, 6),
-          audio: S.optional(S.NullOr(__S(63, __c7, 7))),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataConfigMedia",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(64, __c8, 0),
-          viewType: S.String.pipe(T.Body("view_type")),
-          livestreamViewerQualities: S.optional(
-            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
-          ),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          audio: __S(51, __c6, 3),
-          screenshare: __S(51, __c6, 3),
-          video: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataPermissionsMedia",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
-          canAcceptProductionRequests: S.Boolean.pipe(T.Body("can_accept_production_requests")),
-          canChangeParticipantPermissions: S.Boolean.pipe(
-            T.Body("can_change_participant_permissions"),
-          ),
-          canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
-          canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
-          canRecord: S.Boolean.pipe(T.Body("can_record")),
-          canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: __S(48, __c6, 0),
-          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
-          disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
-          disableParticipantScreensharing: S.Boolean.pipe(
-            T.Body("disable_participant_screensharing"),
-          ),
-          disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
-          hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
-          kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: __S(66, __c8, 2),
-          pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: __S(53, __c6, 5),
-          polls: __S(54, __c6, 6),
-          recorderType: S.String.pipe(T.Body("recorder_type")),
-          showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
-          acceptStageRequests: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
-          ),
-          isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(S.NullOr(S.String).pipe(T.Body("stage_access"))),
-          stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
-          transcriptionEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
-          ),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataPermissions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          borderRadius: S.String.pipe(T.Body("border_radius")),
-          borderWidth: S.String.pipe(T.Body("border_width")),
-          colors: __S(58, __c7, 2),
-          spacingBase: S.Number.pipe(T.Body("spacing_base")),
-          theme: S.String,
-          fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
-          googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
-          logo: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataUiDesignTokens",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          designTokens: __S(68, __c8, 4).pipe(T.Body("design_tokens")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseDataUi",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          config: __S(65, __c8, 1),
-          createdAt: S.String.pipe(T.Body("created_at")),
-          name: S.String,
-          permissions: __S(67, __c8, 3),
-          ui: __S(69, __c8, 5),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-        }),
-      ).annotate({
-        identifier: "PresetsCreateResponseData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(70, __c8, 6),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePresetResponse" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          events: __S(72, __c9, 0),
+          events: __S(32, __c1, 0),
           name: S.String,
           url: S.String,
           enabled: S.optional(S.Boolean),
@@ -9232,13 +8257,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateWebhookWebhookRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enabled: S.Boolean,
-          events: __S(72, __c9, 0),
+          events: __S(32, __c1, 0),
           name: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
           url: S.String,
@@ -9246,15 +8281,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WebhooksCreateWebhookResponseData",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(74, __c9, 2),
+          data: __S(64, __c2, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateWebhookWebhookResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9273,7 +8316,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteMeetingParticipantMeetingRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -9284,15 +8327,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MeetingsDeleteMeetingParticipantResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(77, __c9, 5))),
+          data: S.optional(S.NullOr(__S(129, __c4, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteMeetingParticipantMeetingResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9308,45 +8355,45 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePresetRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(64, __c8, 0),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2765, __c86, 13),
           viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
+            S.NullOr(__S(2816, __c88, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
         identifier: "PresetsDeleteResponseDataConfig",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: __S(80, __c10, 0),
+          config: __S(161, __c5, 1),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: __S(67, __c8, 3),
-          ui: __S(69, __c8, 5),
+          permissions: __S(2785, __c87, 1),
+          ui: __S(2787, __c87, 3),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
         identifier: "PresetsDeleteResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(81, __c10, 1),
+          data: __S(162, __c5, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePresetResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9364,7 +8411,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteWebhookWebhookRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9386,14 +8437,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "EditParticipantMeetingRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           webhookId: S.String.pipe(T.Label("webhook_id")),
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(72, __c9, 0)),
+          events: S.optional(__S(32, __c1, 0)),
           name: S.optional(S.String),
           url: S.optional(S.String),
         })
@@ -9408,7 +8463,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "EditWebhookWebhookRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9426,7 +8485,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GenerateSummaryOfTranscriptsSessionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
@@ -9435,19 +8494,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SessionsGenerateSummaryOfTranscriptsResponseData",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(87, __c10, 7))),
+          data: S.optional(S.NullOr(__S(289, __c9, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GenerateSummaryOfTranscriptsSessionResponse",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9465,24 +8524,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetActiveLivestreamsForLivestreamIdLivestreamRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          disabled: S.optional(S.NullOr(S.String)),
-          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
-          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
-          name: S.optional(S.NullOr(S.String)),
-          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -9499,24 +8541,49 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          livestream: S.optional(S.NullOr(__S(90, __c11, 2))),
-          session: S.optional(S.NullOr(__S(91, __c11, 3))),
+          livestream: S.optional(S.NullOr(__S(352, __c11, 0))),
+          session: S.optional(S.NullOr(__S(321, __c10, 1))),
         }),
       ).annotate({
         identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseData",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(92, __c11, 4))),
+          data: S.optional(S.NullOr(__S(322, __c10, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetActiveLivestreamsForLivestreamIdLivestreamResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          disabled: S.optional(S.NullOr(S.String)),
+          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
+          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+          name: S.optional(S.NullOr(S.String)),
+          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9534,7 +8601,19 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetActiveRecordingsRecordingRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(416, __c13, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetActiveRecordingsRecordingResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9555,17 +8634,9 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(95, __c11, 7),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetActiveRecordingsRecordingResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9583,9 +8654,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetActiveSessionActiveSessionRequest",
       });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9600,21 +8669,31 @@ function __c12(j: number): any {
           status: S.String,
           type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
+          breakoutRooms: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
         identifier: "ActiveSessionGetActiveSessionResponseData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(99, __c12, 3))),
+          data: S.optional(S.NullOr(__S(449, __c14, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetActiveSessionActiveSessionResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9638,7 +8717,37 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAllLivestreamsLivestreamRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          disabled: S.optional(S.NullOr(S.String)),
+          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
+          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+          name: S.optional(S.NullOr(S.String)),
+          paging: S.optional(S.NullOr(__S(544, __c17, 0))),
+          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "LivestreamsGetAllLivestreamsResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(513, __c16, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAllLivestreamsLivestreamResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("end_offset"))),
@@ -9648,37 +8757,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetAllLivestreamsResponseDataPaging",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          disabled: S.optional(S.NullOr(S.String)),
-          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
-          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
-          name: S.optional(S.NullOr(S.String)),
-          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
-          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "LivestreamsGetAllLivestreamsResponseData",
-      });
   }
 }
-function __c13(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(103, __c12, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAllLivestreamsLivestreamResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9692,7 +8775,20 @@ function __c13(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAppRequest" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(577, __c18, 1))),
+          paging: S.optional(S.NullOr(__S(544, __c17, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -9700,16 +8796,11 @@ function __c13(j: number): any {
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AppsGetResponseDataItem" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(107, __c13, 3))),
-          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppResponse" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9729,7 +8820,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLivestreamAnalyticsCompleteLivestreamRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
@@ -9739,17 +8830,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetLivestreamAnalyticsCompleteResponseData",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(110, __c13, 6))),
+          data: S.optional(S.NullOr(__S(641, __c20, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamAnalyticsCompleteLivestreamResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9783,16 +8874,20 @@ function __c14(j: number): any {
         identifier: "LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem",
       });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(114, __c14, 2))),
+          data: S.optional(S.NullOr(__S(674, __c21, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamAnalyticsDaywiseLivestreamResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9810,7 +8905,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -9826,15 +8921,19 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(117, __c14, 5))),
+          data: S.optional(S.NullOr(__S(705, __c22, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9854,11 +8953,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLivestreamSessionForLivestreamIdLivestreamRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -9875,25 +8970,29 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          livestream: S.optional(S.NullOr(__S(90, __c11, 2))),
-          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
-          session: S.optional(S.NullOr(__S(120, __c15, 0))),
+          livestream: S.optional(S.NullOr(__S(352, __c11, 0))),
+          paging: S.optional(S.NullOr(__S(544, __c17, 0))),
+          session: S.optional(S.NullOr(__S(737, __c23, 1))),
         }),
       ).annotate({
         identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(121, __c15, 1))),
+          data: S.optional(S.NullOr(__S(738, __c23, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9914,7 +9013,7 @@ function __c15(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMeetingRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -9975,25 +9074,25 @@ function __c15(j: number): any {
           ],
         ]),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(S.NullOr(__S(2368, __c74, 0)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(S.NullOr(__S(124, __c15, 4)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(S.NullOr(__S(769, __c24, 1)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsGetResponseDataItemRecordingConfig",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10003,7 +9102,7 @@ function __c15(j: number): any {
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(__S(125, __c15, 5)).pipe(T.Body("recording_config")),
+            S.NullOr(__S(770, __c24, 2)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
@@ -10016,11 +9115,18 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "MeetingsGetResponseDataItem",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
+    case 4:
+      return S.Array(__S(771, __c24, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(772, __c24, 4),
+          paging: __S(800, __c25, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetMeetingResponse" });
   }
 }
-function __c16(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10032,14 +9138,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MeetingsGetResponsePaging",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(127, __c15, 7),
-          paging: __S(128, __c16, 0),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetMeetingResponse" });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10057,7 +9160,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetMeetingActiveLivestreamsLivestreamRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -10074,15 +9177,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetMeetingActiveLivestreamsResponseData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(131, __c16, 3))),
+          data: S.optional(S.NullOr(__S(833, __c26, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingActiveLivestreamsLivestreamResponse",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10101,32 +9208,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetMeetingByIdMeetingRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          keywords: S.optional(S.NullOr(__S(896, __c28, 0))),
           language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataAiConfigTranscription",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(S.NullOr(__S(19, __c2, 3))),
-          transcription: S.optional(S.NullOr(__S(135, __c16, 7))),
+          summarization: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          transcription: S.optional(S.NullOr(__S(865, __c27, 1))),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataAiConfig",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.NullOr(S.String)),
@@ -10136,7 +9237,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig",
       });
-    case 2:
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -10197,48 +9298,48 @@ function __c17(j: number): any {
           ],
         ]),
       );
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
+          watermark: S.optional(S.NullOr(__S(2464, __c77, 0))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(137, __c17, 1)).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(S.NullOr(__S(867, __c27, 3)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(S.NullOr(__S(138, __c17, 2)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(139, __c17, 3)).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(S.NullOr(__S(868, __c27, 4)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(869, __c27, 5)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(S.NullOr(__S(136, __c17, 0)).pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(S.NullOr(__S(866, __c27, 2)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(__S(140, __c17, 4)).pipe(T.Body("recording_config")),
+            S.NullOr(__S(870, __c27, 6)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
@@ -10251,15 +9352,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseData",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(141, __c17, 5))),
+          data: S.optional(S.NullOr(__S(871, __c27, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingByIdMeetingResponse",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10278,9 +9389,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetMeetingParticipantMeetingRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(960, __c30, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetMeetingParticipantMeetingResponse",
+      });
   }
 }
-function __c18(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10296,15 +9415,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "MeetingsGetMeetingParticipantResponseData",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(144, __c18, 0),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetMeetingParticipantMeetingResponse",
-      });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10324,18 +9439,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetMeetingParticipantsMeetingRequest",
       });
-    case 3:
-      return S.Array(__S(144, __c18, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(147, __c18, 3),
-          paging: __S(128, __c16, 0),
+          data: __S(993, __c31, 1),
+          paging: __S(800, __c25, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingParticipantsMeetingResponse",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10353,30 +9472,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetOneRecordingRecordingRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
-        }),
-      ).annotate({
-        identifier: "RecordingsGetOneRecordingResponseDataStartReasonCaller",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          caller: S.optional(S.NullOr(__S(150, __c18, 6))),
-          reason: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "RecordingsGetOneRecordingResponseDataStartReason",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -10437,7 +9533,7 @@ function __c19(j: number): any {
           ],
         ]),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10452,22 +9548,49 @@ function __c19(j: number): any {
           status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("start_reason"))),
-          stopReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("stop_reason"))),
-          storageConfig: S.optional(S.NullOr(__S(152, __c19, 0)).pipe(T.Body("storage_config"))),
+          startReason: S.optional(S.NullOr(__S(1057, __c33, 1)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(1057, __c33, 1)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(1025, __c32, 1)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetOneRecordingResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(153, __c19, 1))),
+          data: S.optional(S.NullOr(__S(1026, __c32, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetOneRecordingRecordingResponse",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
+        }),
+      ).annotate({
+        identifier: "RecordingsGetOneRecordingResponseDataStartReasonCaller",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          caller: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          reason: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "RecordingsGetOneRecordingResponseDataStartReason",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10486,7 +9609,42 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetOrgAnalyticsAnalyticRequest",
       });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dayStats: S.optional(S.NullOr(__S(1089, __c34, 1)).pipe(T.Body("day_stats"))),
+          recordingCount: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_count"))),
+          recordingMinutesConsumed: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
+          ),
+        }),
+      ).annotate({
+        identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStats",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          recordingStats: S.optional(S.NullOr(__S(1090, __c34, 2)).pipe(T.Body("recording_stats"))),
+          sessionStats: S.optional(S.NullOr(__S(1123, __c35, 3)).pipe(T.Body("session_stats"))),
+        }),
+      ).annotate({
+        identifier: "AnalyticsGetOrgAnalyticsResponseData",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(1091, __c34, 3))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetOrgAnalyticsAnalyticResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           day: S.optional(S.NullOr(S.String)),
@@ -10498,21 +9656,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dayStats: S.optional(S.NullOr(__S(157, __c19, 5)).pipe(T.Body("day_stats"))),
-          recordingCount: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_count"))),
-          recordingMinutesConsumed: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
-          ),
-        }),
-      ).annotate({
-        identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStats",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           day: S.optional(S.NullOr(S.String)),
@@ -10522,16 +9666,12 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dayStats: S.optional(S.NullOr(__S(160, __c20, 0)).pipe(T.Body("day_stats"))),
+          dayStats: S.optional(S.NullOr(__S(1122, __c35, 2)).pipe(T.Body("day_stats"))),
           sessionsCount: S.optional(S.NullOr(S.Number).pipe(T.Body("sessions_count"))),
           sessionsMinutesConsumed: S.optional(
             S.NullOr(S.Number).pipe(T.Body("sessions_minutes_consumed")),
@@ -10540,24 +9680,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStats",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          recordingStats: S.optional(S.NullOr(__S(158, __c19, 6)).pipe(T.Body("recording_stats"))),
-          sessionStats: S.optional(S.NullOr(__S(161, __c20, 1)).pipe(T.Body("session_stats"))),
-        }),
-      ).annotate({
-        identifier: "AnalyticsGetOrgAnalyticsResponseData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(162, __c20, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetOrgAnalyticsAnalyticResponse",
-      });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10577,26 +9704,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetParticipantDataFromPeerIdSessionRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          eventName: S.optional(S.NullOr(S.String).pipe(T.Body("event_name"))),
-          minutesConsumed: S.optional(S.NullOr(S.Number).pipe(T.Body("minutes_consumed"))),
-          participantId: S.optional(S.NullOr(S.String).pipe(T.Body("participant_id"))),
-          peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
-          presetViewType: S.optional(S.NullOr(S.String).pipe(T.Body("preset_view_type"))),
-          sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
-          socketSessionId: S.optional(S.NullOr(S.String).pipe(T.Body("socket_session_id"))),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem",
-      });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
@@ -10607,26 +9715,22 @@ function __c20(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(S.NullOr(__S(168, __c21, 0))),
-          removed: S.optional(S.NullOr(__S(168, __c21, 0))),
+          added: S.optional(S.NullOr(__S(1154, __c36, 2))),
+          removed: S.optional(S.NullOr(__S(1154, __c36, 2))),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem",
       });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1155, __c36, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           browser: S.optional(S.NullOr(S.String)),
@@ -10639,7 +9743,7 @@ function __c21(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           availableIncomingBitrate: S.optional(
@@ -10703,23 +9807,23 @@ function __c21(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem",
       });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(1158, __c36, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           consumingTransport: S.optional(
-            S.NullOr(__S(173, __c21, 5)).pipe(T.Body("consuming_transport")),
+            S.NullOr(__S(1159, __c36, 7)).pipe(T.Body("consuming_transport")),
           ),
           producingTransport: S.optional(
-            S.NullOr(__S(173, __c21, 5)).pipe(T.Body("producing_transport")),
+            S.NullOr(__S(1159, __c36, 7)).pipe(T.Body("producing_transport")),
           ),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           cpus: S.optional(S.NullOr(S.Number)),
@@ -10731,18 +9835,14 @@ function __c21(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 1:
-      return S.Record(S.String, __S(176, __c22, 0));
-    case 2:
+    case 11:
+      return S.Record(S.String, __S(1162, __c36, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(S.NullOr(__S(177, __c22, 1))),
+          metadata: S.optional(S.NullOr(__S(1163, __c36, 11))),
           name: S.optional(S.NullOr(S.String)),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
@@ -10750,9 +9850,9 @@ function __c22(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem",
       });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
+    case 13:
+      return S.Array(__S(1164, __c36, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           asn: S.optional(S.NullOr(S.String)),
@@ -10765,10 +9865,10 @@ function __c22(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          asn: S.optional(S.NullOr(__S(180, __c22, 4))),
+          asn: S.optional(S.NullOr(__S(1166, __c36, 14))),
           city: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
           ipv4: S.optional(S.NullOr(S.String)),
@@ -10780,7 +9880,7 @@ function __c22(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           audioEncoder: S.optional(S.NullOr(S.String).pipe(T.Body("audio_encoder"))),
@@ -10790,7 +9890,7 @@ function __c22(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           effectiveNetworkType: S.optional(
@@ -10800,7 +9900,7 @@ function __c22(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("reflexive_connectivity")),
           ),
           relayConnectivity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("relay_connectivity"))),
-          sdp: S.optional(S.NullOr(__S(134, __c16, 6))),
+          sdp: S.optional(S.NullOr(__S(896, __c28, 0))),
           timestamp: S.optional(S.NullOr(S.String)),
           turnConnectivity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("turn_connectivity"))),
         }),
@@ -10808,57 +9908,55 @@ function __c22(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(1169, __c36, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(S.NullOr(__S(167, __c20, 7))),
+          device: S.optional(S.NullOr(__S(1153, __c36, 1))),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem",
       });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(1171, __c36, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           audioDevicesUpdates: S.optional(
-            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("audio_devices_updates")),
+            S.NullOr(__S(1156, __c36, 4)).pipe(T.Body("audio_devices_updates")),
           ),
           browserMetadata: S.optional(
-            S.NullOr(__S(171, __c21, 3)).pipe(T.Body("browser_metadata")),
+            S.NullOr(__S(1157, __c36, 5)).pipe(T.Body("browser_metadata")),
           ),
-          candidatePairs: S.optional(S.NullOr(__S(174, __c21, 6)).pipe(T.Body("candidate_pairs"))),
-          deviceInfo: S.optional(S.NullOr(__S(175, __c21, 7)).pipe(T.Body("device_info"))),
-          events: S.optional(S.NullOr(__S(179, __c22, 3))),
-          ipInformation: S.optional(S.NullOr(__S(181, __c22, 5)).pipe(T.Body("ip_information"))),
-          nativeMetadata: S.optional(S.NullOr(__S(182, __c22, 6)).pipe(T.Body("native_metadata"))),
-          pcMetadata: S.optional(S.NullOr(__S(184, __c23, 0)).pipe(T.Body("pc_metadata"))),
+          candidatePairs: S.optional(S.NullOr(__S(1160, __c36, 8)).pipe(T.Body("candidate_pairs"))),
+          deviceInfo: S.optional(S.NullOr(__S(1161, __c36, 9)).pipe(T.Body("device_info"))),
+          events: S.optional(S.NullOr(__S(1165, __c36, 13))),
+          ipInformation: S.optional(S.NullOr(__S(1167, __c36, 15)).pipe(T.Body("ip_information"))),
+          nativeMetadata: S.optional(
+            S.NullOr(__S(1168, __c36, 16)).pipe(T.Body("native_metadata")),
+          ),
+          pcMetadata: S.optional(S.NullOr(__S(1170, __c36, 18)).pipe(T.Body("pc_metadata"))),
           roomViewType: S.optional(S.NullOr(S.String).pipe(T.Body("room_view_type"))),
           sdkName: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_name"))),
           sdkType: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_type"))),
           sdkVersion: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_version"))),
           selectedDeviceUpdates: S.optional(
-            S.NullOr(__S(186, __c23, 2)).pipe(T.Body("selected_device_updates")),
+            S.NullOr(__S(1172, __c36, 20)).pipe(T.Body("selected_device_updates")),
           ),
           speakerDevicesUpdates: S.optional(
-            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("speaker_devices_updates")),
+            S.NullOr(__S(1156, __c36, 4)).pipe(T.Body("speaker_devices_updates")),
           ),
           videoDevicesUpdates: S.optional(
-            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("video_devices_updates")),
+            S.NullOr(__S(1156, __c36, 4)).pipe(T.Body("video_devices_updates")),
           ),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           bytesReceived: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_received"))),
@@ -10882,9 +9980,9 @@ function __c23(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem",
       });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 23:
+      return S.Array(__S(1174, __c36, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           "100msOrGreaterEventFraction": S.optional(
@@ -10902,7 +10000,7 @@ function __c23(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           "10OrGreaterEventFraction": S.optional(
@@ -10923,11 +10021,7 @@ function __c23(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           avg: S.optional(S.NullOr(S.Number)),
@@ -10939,20 +10033,20 @@ function __c24(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos",
       });
-    case 1:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           jitterBufferDelay: S.optional(
-            S.NullOr(__S(190, __c23, 6)).pipe(T.Body("jitter_buffer_delay")),
+            S.NullOr(__S(1176, __c36, 24)).pipe(T.Body("jitter_buffer_delay")),
           ),
-          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
-          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
+          packetLoss: S.optional(S.NullOr(__S(1177, __c36, 25)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("quality_mos"))),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
@@ -10970,20 +10064,20 @@ function __c24(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem",
       });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
+    case 29:
+      return S.Array(__S(1180, __c36, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
-          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
-          rtt: S.optional(S.NullOr(__S(190, __c23, 6))),
+          packetLoss: S.optional(S.NullOr(__S(1177, __c36, 25)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("quality_mos"))),
+          rtt: S.optional(S.NullOr(__S(1176, __c36, 24))),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative",
       });
-    case 5:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           bytesReceived: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_received"))),
@@ -11013,9 +10107,13 @@ function __c24(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem",
       });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1183, __c36, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lagFraction: S.optional(S.NullOr(S.Number).pipe(T.Body("lag_fraction"))),
@@ -11028,30 +10126,28 @@ function __c24(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          framePerSecond: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_per_second"))),
-          frameWidth: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_width"))),
-          issues: S.optional(S.NullOr(__S(199, __c24, 7))),
+          framePerSecond: S.optional(
+            S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("frame_per_second")),
+          ),
+          frameWidth: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("frame_width"))),
+          issues: S.optional(S.NullOr(__S(1185, __c37, 1))),
           jitterBufferDelay: S.optional(
-            S.NullOr(__S(190, __c23, 6)).pipe(T.Body("jitter_buffer_delay")),
+            S.NullOr(__S(1176, __c36, 24)).pipe(T.Body("jitter_buffer_delay")),
           ),
           keyFramesDecodedFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("key_frames_decoded_fraction")),
           ),
-          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
-          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
+          packetLoss: S.optional(S.NullOr(__S(1177, __c36, 25)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("quality_mos"))),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bandwidth: S.optional(S.NullOr(S.Number)),
@@ -11063,7 +10159,7 @@ function __c25(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
@@ -11081,7 +10177,7 @@ function __c25(j: number): any {
           pliCount: S.optional(S.NullOr(S.Number).pipe(T.Body("pli_count"))),
           producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
           qualityLimitationDurations: S.optional(
-            S.NullOr(__S(201, __c25, 1)).pipe(T.Body("quality_limitation_durations")),
+            S.NullOr(__S(1187, __c37, 3)).pipe(T.Body("quality_limitation_durations")),
           ),
           qualityLimitationReason: S.optional(
             S.NullOr(S.String).pipe(T.Body("quality_limitation_reason")),
@@ -11097,9 +10193,9 @@ function __c25(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem",
       });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(1188, __c37, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           bandwidthQualityLimitationFraction: S.optional(
@@ -11120,87 +10216,85 @@ function __c25(j: number): any {
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          framePerSecond: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_per_second"))),
-          frameWidth: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_width"))),
+          framePerSecond: S.optional(
+            S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("frame_per_second")),
+          ),
+          frameWidth: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("frame_width"))),
           highNegativeFeedbackFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("high_negative_feedback_fraction")),
           ),
-          issues: S.optional(S.NullOr(__S(204, __c25, 4))),
+          issues: S.optional(S.NullOr(__S(1190, __c37, 6))),
           keyFramesEncodedFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("key_frames_encoded_fraction")),
           ),
-          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
-          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
-          rtt: S.optional(S.NullOr(__S(190, __c23, 6))),
+          packetLoss: S.optional(S.NullOr(__S(1177, __c36, 25)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(1178, __c36, 26)).pipe(T.Body("quality_mos"))),
+          rtt: S.optional(S.NullOr(__S(1176, __c36, 24))),
         }),
       ).annotate({
         identifier:
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          audioConsumer: S.optional(S.NullOr(__S(189, __c23, 5)).pipe(T.Body("audio_consumer"))),
+          audioConsumer: S.optional(S.NullOr(__S(1175, __c36, 23)).pipe(T.Body("audio_consumer"))),
           audioConsumerCumulative: S.optional(
-            S.NullOr(__S(193, __c24, 1)).pipe(T.Body("audio_consumer_cumulative")),
+            S.NullOr(__S(1179, __c36, 27)).pipe(T.Body("audio_consumer_cumulative")),
           ),
-          audioProducer: S.optional(S.NullOr(__S(195, __c24, 3)).pipe(T.Body("audio_producer"))),
+          audioProducer: S.optional(S.NullOr(__S(1181, __c36, 29)).pipe(T.Body("audio_producer"))),
           audioProducerCumulative: S.optional(
-            S.NullOr(__S(196, __c24, 4)).pipe(T.Body("audio_producer_cumulative")),
+            S.NullOr(__S(1182, __c36, 30)).pipe(T.Body("audio_producer_cumulative")),
           ),
           screenshareAudioConsumer: S.optional(
-            S.NullOr(__S(189, __c23, 5)).pipe(T.Body("screenshare_audio_consumer")),
+            S.NullOr(__S(1175, __c36, 23)).pipe(T.Body("screenshare_audio_consumer")),
           ),
           screenshareAudioConsumerCumulative: S.optional(
-            S.NullOr(__S(193, __c24, 1)).pipe(T.Body("screenshare_audio_consumer_cumulative")),
+            S.NullOr(__S(1179, __c36, 27)).pipe(T.Body("screenshare_audio_consumer_cumulative")),
           ),
           screenshareAudioProducer: S.optional(
-            S.NullOr(__S(195, __c24, 3)).pipe(T.Body("screenshare_audio_producer")),
+            S.NullOr(__S(1181, __c36, 29)).pipe(T.Body("screenshare_audio_producer")),
           ),
           screenshareAudioProducerCumulative: S.optional(
-            S.NullOr(__S(196, __c24, 4)).pipe(T.Body("screenshare_audio_producer_cumulative")),
+            S.NullOr(__S(1182, __c36, 30)).pipe(T.Body("screenshare_audio_producer_cumulative")),
           ),
           screenshareVideoConsumer: S.optional(
-            S.NullOr(__S(198, __c24, 6)).pipe(T.Body("screenshare_video_consumer")),
+            S.NullOr(__S(1184, __c37, 0)).pipe(T.Body("screenshare_video_consumer")),
           ),
           screenshareVideoConsumerCumulative: S.optional(
-            S.NullOr(__S(200, __c25, 0)).pipe(T.Body("screenshare_video_consumer_cumulative")),
+            S.NullOr(__S(1186, __c37, 2)).pipe(T.Body("screenshare_video_consumer_cumulative")),
           ),
           screenshareVideoProducer: S.optional(
-            S.NullOr(__S(203, __c25, 3)).pipe(T.Body("screenshare_video_producer")),
+            S.NullOr(__S(1189, __c37, 5)).pipe(T.Body("screenshare_video_producer")),
           ),
           screenshareVideoProducerCumulative: S.optional(
-            S.NullOr(__S(205, __c25, 5)).pipe(T.Body("screenshare_video_producer_cumulative")),
+            S.NullOr(__S(1191, __c37, 7)).pipe(T.Body("screenshare_video_producer_cumulative")),
           ),
-          videoConsumer: S.optional(S.NullOr(__S(198, __c24, 6)).pipe(T.Body("video_consumer"))),
+          videoConsumer: S.optional(S.NullOr(__S(1184, __c37, 0)).pipe(T.Body("video_consumer"))),
           videoConsumerCumulative: S.optional(
-            S.NullOr(__S(200, __c25, 0)).pipe(T.Body("video_consumer_cumulative")),
+            S.NullOr(__S(1186, __c37, 2)).pipe(T.Body("video_consumer_cumulative")),
           ),
-          videoProducer: S.optional(S.NullOr(__S(203, __c25, 3)).pipe(T.Body("video_producer"))),
+          videoProducer: S.optional(S.NullOr(__S(1189, __c37, 5)).pipe(T.Body("video_producer"))),
           videoProducerCumulative: S.optional(
-            S.NullOr(__S(205, __c25, 5)).pipe(T.Body("video_producer_cumulative")),
+            S.NullOr(__S(1191, __c37, 7)).pipe(T.Body("video_producer_cumulative")),
           ),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(S.NullOr(__S(187, __c23, 3))),
-          quality: S.optional(S.NullOr(__S(206, __c25, 6))),
+          metadata: S.optional(S.NullOr(__S(1173, __c36, 21))),
+          quality: S.optional(S.NullOr(__S(1192, __c37, 8))),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -11210,8 +10304,8 @@ function __c26(j: number): any {
           duration: S.optional(S.NullOr(S.Number)),
           joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
           leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
-          peerEvents: S.optional(S.NullOr(__S(166, __c20, 6)).pipe(T.Body("peer_events"))),
-          peerReport: S.optional(S.NullOr(__S(207, __c25, 7)).pipe(T.Body("peer_report"))),
+          peerEvents: S.optional(S.NullOr(__S(1217, __c38, 1)).pipe(T.Body("peer_events"))),
+          peerReport: S.optional(S.NullOr(__S(1193, __c37, 9)).pipe(T.Body("peer_report"))),
           role: S.optional(S.NullOr(S.String)),
           sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -11220,23 +10314,50 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipant",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          participant: S.optional(S.NullOr(__S(208, __c26, 0))),
+          participant: S.optional(S.NullOr(__S(1194, __c37, 10))),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseData",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(209, __c26, 1))),
+          data: S.optional(S.NullOr(__S(1195, __c37, 11))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetParticipantDataFromPeerIdSessionResponse",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          eventName: S.optional(S.NullOr(S.String).pipe(T.Body("event_name"))),
+          minutesConsumed: S.optional(S.NullOr(S.Number).pipe(T.Body("minutes_consumed"))),
+          participantId: S.optional(S.NullOr(S.String).pipe(T.Body("participant_id"))),
+          peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
+          presetViewType: S.optional(S.NullOr(S.String).pipe(T.Body("preset_view_type"))),
+          sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+          socketSessionId: S.optional(S.NullOr(S.String).pipe(T.Body("socket_session_id"))),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem",
+      });
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11254,7 +10375,7 @@ function __c26(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPresetRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -11265,16 +10386,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PresetsGetResponseDataItem",
       });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(213, __c26, 5),
-          paging: __S(128, __c16, 0),
+          data: __S(1250, __c39, 2),
+          paging: __S(800, __c25, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPresetResponse" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11292,45 +10417,21 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPresetByIdPresetRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(64, __c8, 0),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2765, __c86, 13),
           viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(__S(216, __c27, 0)).pipe(T.Body("livestream_viewer_qualities")),
+            S.NullOr(__S(1312, __c41, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
         identifier: "PresetsGetPresetByIdResponseDataConfig",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          canProduce: S.String.pipe(T.Body("can_produce")),
-        }),
-      ).annotate({
-        identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          audio: __S(51, __c6, 3),
-          screenshare: __S(218, __c27, 2),
-          video: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
@@ -11342,8 +10443,8 @@ function __c27(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: __S(48, __c6, 0),
-          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
+          chat: __S(2756, __c86, 4),
+          connectedMeetings: __S(2757, __c86, 5).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -11351,10 +10452,10 @@ function __c27(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: __S(219, __c27, 3),
+          media: __S(1314, __c41, 2),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: __S(53, __c6, 5),
-          polls: __S(54, __c6, 6),
+          plugins: __S(2720, __c85, 0),
+          polls: __S(2759, __c86, 7),
           recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
           waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
@@ -11371,12 +10472,67 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PresetsGetPresetByIdResponseDataPermissions",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          designTokens: __S(1315, __c41, 3).pipe(T.Body("design_tokens")),
+          configDiff: S.optional(S.NullOr(S.Unknown).pipe(T.Body("config_diff"))),
+        }),
+      ).annotate({
+        identifier: "PresetsGetPresetByIdResponseDataUi",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          config: __S(1281, __c40, 1),
+          createdAt: S.String.pipe(T.Body("created_at")),
+          name: S.String,
+          permissions: __S(1282, __c40, 2),
+          ui: __S(1283, __c40, 3),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+        }),
+      ).annotate({
+        identifier: "PresetsGetPresetByIdResponseData",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1284, __c40, 4),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetPresetByIdPresetResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canProduce: S.String.pipe(T.Body("can_produce")),
+        }),
+      ).annotate({
+        identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          audio: __S(2758, __c86, 6),
+          screenshare: __S(1313, __c41, 1),
+          video: __S(2758, __c86, 6),
+        }),
+      ).annotate({
+        identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           borderRadius: S.String.pipe(T.Body("border_radius")),
           borderWidth: S.String.pipe(T.Body("border_width")),
-          colors: __S(58, __c7, 2),
+          colors: __S(2762, __c86, 10),
           spacingBase: S.Number.pipe(T.Body("spacing_base")),
           theme: S.String,
           fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
@@ -11386,42 +10542,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PresetsGetPresetByIdResponseDataUiDesignTokens",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          designTokens: __S(221, __c27, 5).pipe(T.Body("design_tokens")),
-          configDiff: S.optional(S.NullOr(S.Unknown).pipe(T.Body("config_diff"))),
-        }),
-      ).annotate({
-        identifier: "PresetsGetPresetByIdResponseDataUi",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          config: __S(217, __c27, 1),
-          createdAt: S.String.pipe(T.Body("created_at")),
-          name: S.String,
-          permissions: __S(220, __c27, 4),
-          ui: __S(222, __c27, 6),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-        }),
-      ).annotate({
-        identifier: "PresetsGetPresetByIdResponseData",
-      });
   }
 }
-function __c28(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(223, __c27, 7),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetPresetByIdPresetResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11435,7 +10560,7 @@ function __c28(j: number): any {
           sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
           sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
           startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-          status: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          status: S.optional(__S(32, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -11448,17 +10573,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetRecordingsRecordingRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.NullOr(S.String)),
-          codec: S.optional(S.NullOr(S.String)),
-          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-        }),
-      ).annotate({
-        identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig",
-      });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -11519,48 +10634,48 @@ function __c28(j: number): any {
           ],
         ]),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.NullOr(S.String)),
-          size: S.optional(S.NullOr(__S(25, __c3, 1))),
+          size: S.optional(S.NullOr(__S(2433, __c76, 1))),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier:
           "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(S.NullOr(__S(228, __c28, 4))),
+          watermark: S.optional(S.NullOr(__S(1346, __c42, 2))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(S.NullOr(__S(1376, __c43, 0)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(S.NullOr(__S(227, __c28, 3)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(229, __c28, 5)).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(S.NullOr(__S(1345, __c42, 1)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(1347, __c42, 3)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11570,7 +10685,7 @@ function __c28(j: number): any {
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(__S(230, __c28, 6)).pipe(T.Body("recording_config")),
+            S.NullOr(__S(1348, __c42, 4)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
@@ -11583,11 +10698,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItemMeeting",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -11648,7 +10759,7 @@ function __c29(j: number): any {
           ],
         ]),
       );
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11662,25 +10773,43 @@ function __c29(j: number): any {
           startedTime: S.String.pipe(T.Body("started_time")),
           status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
-          meeting: S.optional(S.NullOr(__S(231, __c28, 7))),
+          meeting: S.optional(S.NullOr(__S(1349, __c42, 5))),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          storageConfig: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("storage_config"))),
+          storageConfig: S.optional(S.NullOr(__S(1350, __c42, 6)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItem",
       });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(1351, __c42, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          data: __S(234, __c29, 2),
-          paging: __S(128, __c16, 0),
+          data: __S(1352, __c42, 8),
+          paging: __S(800, __c25, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetRecordingsRecordingResponse",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.NullOr(S.String)),
+          codec: S.optional(S.NullOr(S.String)),
+          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+        }),
+      ).annotate({
+        identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11698,7 +10827,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSessionChatSessionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           chatDownloadUrl: S.String.pipe(T.Body("chat_download_url")),
@@ -11707,15 +10836,19 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "SessionsGetSessionChatResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(237, __c29, 5))),
+          data: S.optional(S.NullOr(__S(1409, __c44, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionChatSessionResponse",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11734,11 +10867,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSessionDetailsSessionRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11753,21 +10882,25 @@ function __c30(j: number): any {
           status: S.String,
           type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
+          breakoutRooms: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionDetailsResponseData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(240, __c30, 0))),
+          data: S.optional(S.NullOr(__S(1441, __c45, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionDetailsSessionResponse",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11787,7 +10920,27 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetSessionParticipantDetailsSessionRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          participant: S.optional(S.NullOr(__S(1504, __c47, 0))),
+        }),
+      ).annotate({
+        identifier: "SessionsGetSessionParticipantDetailsResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(1473, __c46, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetSessionParticipantDetailsSessionResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -11797,7 +10950,7 @@ function __c30(j: number): any {
           duration: S.optional(S.NullOr(S.Number)),
           joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
           leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
-          peerEvents: S.optional(S.NullOr(__S(166, __c20, 6)).pipe(T.Body("peer_events"))),
+          peerEvents: S.optional(S.NullOr(__S(1217, __c38, 1)).pipe(T.Body("peer_events"))),
           presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_id"))),
@@ -11805,23 +10958,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "SessionsGetSessionParticipantDetailsResponseDataParticipant",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          participant: S.optional(S.NullOr(__S(243, __c30, 3))),
-        }),
-      ).annotate({
-        identifier: "SessionsGetSessionParticipantDetailsResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.NullOr(__S(244, __c30, 4))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetSessionParticipantDetailsSessionResponse",
-      });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11846,29 +10987,29 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetSessionParticipantsSessionRequest",
       });
-    case 7:
-      return S.Array(__S(243, __c30, 3));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          participants: S.optional(S.NullOr(__S(247, __c30, 7))),
+          participants: S.optional(S.NullOr(__S(1537, __c48, 1))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionParticipantsResponseData",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(248, __c31, 0))),
+          data: S.optional(S.NullOr(__S(1538, __c48, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionParticipantsSessionResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11895,7 +11036,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetSessionsSessionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11910,32 +11051,36 @@ function __c31(j: number): any {
           status: S.String,
           type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
+          breakoutRooms: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionsResponseDataSessionsItem",
       });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          sessions: S.optional(S.NullOr(__S(252, __c31, 4))),
+          sessions: S.optional(S.NullOr(__S(1570, __c49, 2))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionsResponseData",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(253, __c31, 5))),
-          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
+          data: S.optional(S.NullOr(__S(1571, __c49, 3))),
+          paging: S.optional(S.NullOr(__S(544, __c17, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionsSessionResponse",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11953,11 +11098,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetSessionSummarySessionRequest",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
@@ -11967,15 +11108,19 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SessionsGetSessionSummaryResponseData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(256, __c32, 0))),
+          data: S.optional(S.NullOr(__S(1601, __c50, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionSummarySessionResponse",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -11994,7 +11139,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetSessionTranscriptsSessionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
@@ -12004,15 +11149,19 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SessionsGetSessionTranscriptsResponseData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(259, __c32, 3))),
+          data: S.optional(S.NullOr(__S(1633, __c51, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionTranscriptsSessionResponse",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12030,7 +11179,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetWebhookByIdWebhookRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12047,21 +11200,21 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetWebhooksWebhookRequest",
       });
-    case 7:
-      return S.Array(__S(74, __c9, 2));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(263, __c32, 7),
+          data: __S(1697, __c53, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetWebhooksWebhookResponse",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12079,7 +11232,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "KickAllParticipantsActiveSessionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
@@ -12090,22 +11243,28 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ActiveSessionKickAllParticipantsResponseData",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(266, __c33, 2))),
+          data: S.optional(S.NullOr(__S(1729, __c54, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "KickAllParticipantsActiveSessionResponse",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          customParticipantIds: S.optional(__S(7, __c0, 7).pipe(T.Body("custom_participant_ids"))),
-          participantIds: S.optional(__S(7, __c0, 7).pipe(T.Body("participant_ids"))),
+          customParticipantIds: S.optional(
+            __S(2624, __c82, 0).pipe(T.Body("custom_participant_ids")),
+          ),
+          participantIds: S.optional(__S(2624, __c82, 0).pipe(T.Body("participant_ids"))),
         })
           .pipe(
             T.Http({
@@ -12118,7 +11277,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "KickParticipantsActiveSessionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12131,30 +11290,30 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ActiveSessionKickParticipantsResponseDataParticipantsItem",
       });
-    case 6:
-      return S.Array(__S(269, __c33, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1761, __c55, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
-          participants: S.optional(S.NullOr(__S(270, __c33, 6))),
+          participants: S.optional(S.NullOr(__S(1762, __c55, 2))),
         }),
       ).annotate({
         identifier: "ActiveSessionKickParticipantsResponseData",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(271, __c33, 7))),
+          data: S.optional(S.NullOr(__S(1763, __c55, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "KickParticipantsActiveSessionResponse",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12173,12 +11332,12 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsRequest",
       });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
     case 2:
-      return S.Array(__S(156, __c19, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          dayStats: S.optional(S.NullOr(__S(274, __c34, 2)).pipe(T.Body("day_stats"))),
+          dayStats: S.optional(S.NullOr(__S(1793, __c56, 1)).pipe(T.Body("day_stats"))),
           recordingCount: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_count"))),
           recordingMinutesConsumed: S.optional(
             S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
@@ -12187,24 +11346,28 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsResponseDataRecordingStats",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          recordingStats: S.optional(S.NullOr(__S(275, __c34, 3)).pipe(T.Body("recording_stats"))),
-          sessionStats: S.optional(S.NullOr(__S(161, __c20, 1)).pipe(T.Body("session_stats"))),
+          recordingStats: S.optional(S.NullOr(__S(1794, __c56, 2)).pipe(T.Body("recording_stats"))),
+          sessionStats: S.optional(S.NullOr(__S(1123, __c35, 3)).pipe(T.Body("session_stats"))),
         }),
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsResponseData",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(276, __c34, 4))),
+          data: S.optional(S.NullOr(__S(1795, __c56, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsResponse",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           desktop: S.optional(S.Number),
@@ -12213,7 +11376,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMaxVideoStreams",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
@@ -12222,11 +11385,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMediaScreenshare",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
@@ -12236,31 +11395,31 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMediaVideo",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(__S(42, __c5, 2)),
-          screenshare: S.optional(__S(279, __c34, 7)),
-          video: S.optional(__S(280, __c35, 0)),
+          audio: S.optional(__S(2848, __c89, 0)),
+          screenshare: S.optional(__S(1825, __c57, 1)),
+          video: S.optional(__S(1826, __c57, 2)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMedia",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           livestreamViewerQualities: S.optional(
-            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
+            __S(2816, __c88, 0).pipe(T.Body("livestream_viewer_qualities")),
           ),
           maxScreenshareCount: S.optional(S.Number.pipe(T.Body("max_screenshare_count"))),
-          maxVideoStreams: S.optional(__S(278, __c34, 6).pipe(T.Body("max_video_streams"))),
-          media: S.optional(__S(281, __c35, 1)),
+          maxVideoStreams: S.optional(__S(1824, __c57, 0).pipe(T.Body("max_video_streams"))),
+          media: S.optional(__S(1827, __c57, 3)),
           viewType: S.optional(S.String.pipe(T.Body("view_type"))),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestConfig",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           canReceive: S.optional(S.Boolean.pipe(T.Body("can_receive"))),
@@ -12271,7 +11430,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsChatPrivate",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
@@ -12281,16 +11440,16 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsChatPublic",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          private: S.optional(__S(283, __c35, 3)),
-          public: S.optional(__S(284, __c35, 4)),
+          private: S.optional(__S(1829, __c57, 5)),
+          public: S.optional(__S(1830, __c57, 6)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsChat",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           canAlterConnectedMeetings: S.optional(
@@ -12306,7 +11465,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsConnectedMeetings",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           canProduce: S.optional(S.String.pipe(T.Body("can_produce"))),
@@ -12314,21 +11473,17 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsMediaAudio",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(__S(287, __c35, 7)),
-          screenshare: S.optional(__S(287, __c35, 7)),
-          video: S.optional(__S(287, __c35, 7)),
+          audio: S.optional(__S(1833, __c57, 9)),
+          screenshare: S.optional(__S(1833, __c57, 9)),
+          video: S.optional(__S(1833, __c57, 9)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsMedia",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
@@ -12339,7 +11494,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsPlugins",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           canCreate: S.optional(S.Boolean.pipe(T.Body("can_create"))),
@@ -12349,7 +11504,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsPolls",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           acceptStageRequests: S.optional(S.Boolean.pipe(T.Body("accept_stage_requests"))),
@@ -12364,8 +11519,8 @@ function __c36(j: number): any {
           canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
           canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
           canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
-          chat: S.optional(__S(285, __c35, 5)),
-          connectedMeetings: S.optional(__S(286, __c35, 6).pipe(T.Body("connected_meetings"))),
+          chat: S.optional(__S(1831, __c57, 7)),
+          connectedMeetings: S.optional(__S(1832, __c57, 8).pipe(T.Body("connected_meetings"))),
           disableParticipantAudio: S.optional(S.Boolean.pipe(T.Body("disable_participant_audio"))),
           disableParticipantScreensharing: S.optional(
             S.Boolean.pipe(T.Body("disable_participant_screensharing")),
@@ -12374,10 +11529,10 @@ function __c36(j: number): any {
           hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
           isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
           kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
-          media: S.optional(__S(288, __c36, 0)),
+          media: S.optional(__S(1834, __c57, 10)),
           pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
-          plugins: S.optional(__S(289, __c36, 1)),
-          polls: S.optional(__S(290, __c36, 2)),
+          plugins: S.optional(__S(1835, __c57, 11)),
+          polls: S.optional(__S(1836, __c57, 12)),
           recorderType: S.optional(S.String.pipe(T.Body("recorder_type"))),
           showParticipantList: S.optional(S.Boolean.pipe(T.Body("show_participant_list"))),
           stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
@@ -12388,7 +11543,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestPermissions",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           "1000": S.optional(S.String),
@@ -12400,7 +11555,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           "300": S.optional(S.String),
@@ -12412,11 +11567,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          background: S.optional(__S(292, __c36, 4)),
-          brand: S.optional(__S(293, __c36, 5)),
+          background: S.optional(__S(1838, __c57, 14)),
+          brand: S.optional(__S(1839, __c57, 15)),
           danger: S.optional(S.String),
           success: S.optional(S.String),
           text: S.optional(S.String),
@@ -12427,12 +11582,12 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestUiDesignTokensColors",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           borderRadius: S.optional(S.String.pipe(T.Body("border_radius"))),
           borderWidth: S.optional(S.String.pipe(T.Body("border_width"))),
-          colors: S.optional(__S(294, __c36, 6)),
+          colors: S.optional(__S(1840, __c57, 16)),
           fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
           googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
           logo: S.optional(S.String),
@@ -12442,26 +11597,22 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PresetsUpdateRequestUiDesignTokens",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          designTokens: S.optional(__S(295, __c36, 7).pipe(T.Body("design_tokens"))),
+          designTokens: S.optional(__S(1841, __c57, 17).pipe(T.Body("design_tokens"))),
         }),
       ).annotate({ identifier: "PresetsUpdateRequestUi" });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           presetId: S.String.pipe(T.Label("preset_id")),
-          config: S.optional(__S(282, __c35, 2)),
+          config: S.optional(__S(1828, __c57, 4)),
           name: S.optional(S.String),
-          permissions: S.optional(__S(291, __c36, 3)),
-          ui: S.optional(__S(296, __c37, 0)),
+          permissions: S.optional(__S(1837, __c57, 13)),
+          ui: S.optional(__S(1842, __c57, 18)),
         })
           .pipe(
             T.Http({
@@ -12472,41 +11623,98 @@ function __c37(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPresetRequest" });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(64, __c8, 0),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2765, __c86, 13),
           viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
+            S.NullOr(__S(2816, __c88, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
         identifier: "PresetsUpdateResponseDataConfig",
       });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: __S(298, __c37, 2),
+          config: __S(1844, __c57, 20),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: __S(67, __c8, 3),
-          ui: __S(69, __c8, 5),
+          permissions: __S(2785, __c87, 1),
+          ui: __S(2787, __c87, 3),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
         identifier: "PresetsUpdateResponseData",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          data: __S(299, __c37, 3),
+          data: __S(1845, __c57, 21),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPresetResponse" });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          meetingId: S.String.pipe(T.Label("meeting_id")),
+          customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+          presetName: S.String.pipe(T.Body("preset_name")),
+          name: S.optional(S.String),
+          picture: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AddParticipantMeetingRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          token: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+          presetName: S.String.pipe(T.Body("preset_name")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          name: S.optional(S.NullOr(S.String)),
+          picture: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "MeetingsAddParticipantResponseData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(1888, __c59, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AddParticipantMeetingResponse",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12525,7 +11733,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "PauseResumeStopRecordingRecordingRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -12535,20 +11743,16 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          caller: S.optional(S.NullOr(__S(302, __c37, 6))),
+          caller: S.optional(S.NullOr(__S(1921, __c60, 1))),
           reason: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "RecordingsPauseResumeStopRecordingResponseDataStartReason",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -12609,7 +11813,7 @@ function __c38(j: number): any {
           ],
         ]),
       );
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12624,22 +11828,26 @@ function __c38(j: number): any {
           status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(S.NullOr(__S(303, __c37, 7)).pipe(T.Body("start_reason"))),
-          stopReason: S.optional(S.NullOr(__S(303, __c37, 7)).pipe(T.Body("stop_reason"))),
-          storageConfig: S.optional(S.NullOr(__S(304, __c38, 0)).pipe(T.Body("storage_config"))),
+          startReason: S.optional(S.NullOr(__S(1922, __c60, 2)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(1922, __c60, 2)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(1923, __c60, 3)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsPauseResumeStopRecordingResponseData",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(305, __c38, 1))),
+          data: S.optional(S.NullOr(__S(1924, __c60, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PauseResumeStopRecordingRecordingResponse",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12650,19 +11858,23 @@ function __c38(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PostAppRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(S.NullOr(__S(106, __c13, 2))),
+          app: S.optional(S.NullOr(__S(608, __c19, 0))),
         }),
       ).annotate({ identifier: "AppsPostResponseData" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(308, __c38, 4))),
+          data: S.optional(S.NullOr(__S(1953, __c61, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PostAppResponse" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -12681,7 +11893,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "RefreshParticipantTokenMeetingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
@@ -12689,19 +11901,19 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "MeetingsRefreshParticipantTokenResponseData",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(311, __c38, 7),
+          data: __S(1985, __c62, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "RefreshParticipantTokenMeetingResponse",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           summaryType: S.optional(S.String.pipe(T.Body("summary_type"))),
@@ -12711,36 +11923,26 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestAiConfigSummarization",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(__S(134, __c16, 6)),
+          keywords: S.optional(__S(896, __c28, 0)),
           language: S.optional(S.String),
           profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestAiConfigTranscription",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(__S(313, __c39, 1)),
-          transcription: S.optional(__S(314, __c39, 2)),
+          summarization: S.optional(__S(2016, __c63, 0)),
+          transcription: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestAiConfig",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.String),
-          codec: S.optional(S.String),
-          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
-      });
-    case 5:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -12801,59 +12003,35 @@ function __c39(j: number): any {
           ],
         ]),
       );
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(S.String),
-          size: S.optional(__S(14, __c1, 6)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          codec: S.optional(S.String),
-          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-          height: S.optional(S.Number),
-          watermark: S.optional(__S(318, __c39, 6)),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          audioConfig: S.optional(__S(316, __c39, 4).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(__S(2048, __c64, 0).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
+          liveStreamingConfig: S.optional(
+            __S(2528, __c79, 0).pipe(T.Body("live_streaming_config")),
+          ),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
+            __S(2400, __c75, 0).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(__S(317, __c39, 5).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(__S(319, __c39, 7).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(__S(2019, __c63, 3).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(2050, __c64, 2).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfig",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          aiConfig: S.optional(__S(315, __c39, 3).pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(__S(2018, __c63, 2).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(__S(320, __c40, 0).pipe(T.Body("recording_config"))),
+          recordingConfig: S.optional(__S(2020, __c63, 4).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
@@ -12872,36 +12050,26 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ReplaceMeetingByIdMeetingRequest",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
-          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
-          wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
-        }),
-      ).annotate({
-        identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          keywords: S.optional(S.NullOr(__S(896, __c28, 0))),
           language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(S.NullOr(__S(322, __c40, 2))),
-          transcription: S.optional(S.NullOr(__S(323, __c40, 3))),
+          summarization: S.optional(S.NullOr(__S(2051, __c64, 3))),
+          transcription: S.optional(S.NullOr(__S(2022, __c63, 6))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfig",
       });
-    case 5:
+    case 8:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -12962,52 +12130,36 @@ function __c40(j: number): any {
           ],
         ]),
       );
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(S.NullOr(S.String)),
-          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-          height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
-          width: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(S.NullOr(__S(1376, __c43, 0)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(S.NullOr(__S(325, __c40, 5)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(326, __c40, 6)).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(S.NullOr(__S(2024, __c63, 8)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(2052, __c64, 4)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfig",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(S.NullOr(__S(324, __c40, 4)).pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(S.NullOr(__S(2023, __c63, 7)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(__S(327, __c40, 7)).pipe(T.Body("recording_config")),
+            S.NullOr(__S(2025, __c63, 9)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
@@ -13020,29 +12172,91 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseData",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(328, __c41, 0))),
+          data: S.optional(S.NullOr(__S(2026, __c63, 10))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ReplaceMeetingByIdMeetingResponse",
       });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.String),
+          codec: S.optional(S.String),
+          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(S.String),
+          size: S.optional(__S(2529, __c79, 1)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          codec: S.optional(S.String),
+          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+          height: S.optional(S.Number),
+          watermark: S.optional(__S(2049, __c64, 1)),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
+          wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          codec: S.optional(S.NullOr(S.String)),
+          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+          height: S.optional(S.NullOr(S.Number)),
+          watermark: S.optional(S.NullOr(__S(2464, __c77, 0))),
+          width: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(43, __c5, 3),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2881, __c90, 1),
           viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
+            __S(2816, __c88, 0).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestConfig",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessControl: S.optional(S.String.pipe(T.Body("access_control"))),
@@ -13051,20 +12265,20 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ReplacePresetByIdRequestPermissionsPluginsConfigValue",
       });
-    case 4:
-      return S.Record(S.String, __S(331, __c41, 3));
-    case 5:
+    case 2:
+      return S.Record(S.String, __S(2081, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           canClose: S.Boolean.pipe(T.Body("can_close")),
           canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
           canStart: S.Boolean.pipe(T.Body("can_start")),
-          config: __S(332, __c41, 4),
+          config: __S(2082, __c65, 2),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestPermissionsPlugins",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
@@ -13076,8 +12290,8 @@ function __c41(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: __S(48, __c6, 0),
-          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
+          chat: __S(2756, __c86, 4),
+          connectedMeetings: __S(2757, __c86, 5).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -13085,10 +12299,10 @@ function __c41(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: __S(52, __c6, 4),
+          media: __S(2883, __c90, 3),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: __S(333, __c41, 5),
-          polls: __S(54, __c6, 6),
+          plugins: __S(2083, __c65, 3),
+          polls: __S(2759, __c86, 7),
           recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
           waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
@@ -13101,28 +12315,24 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ReplacePresetByIdRequestPermissions",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          designTokens: __S(59, __c7, 3).pipe(T.Body("design_tokens")),
+          designTokens: __S(2884, __c90, 4).pipe(T.Body("design_tokens")),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestUi",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           presetId: S.String.pipe(T.Label("preset_id")),
-          config: __S(330, __c41, 2),
+          config: __S(2080, __c65, 0),
           name: S.String,
-          permissions: __S(334, __c41, 6),
-          ui: __S(335, __c41, 7),
+          permissions: __S(2084, __c65, 4),
+          ui: __S(2085, __c65, 5),
         })
           .pipe(
             T.Http({
@@ -13133,21 +12343,21 @@ function __c42(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReplacePresetByIdRequest" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
-          media: __S(64, __c8, 0),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2765, __c86, 13),
           viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(__S(216, __c27, 0)).pipe(T.Body("livestream_viewer_qualities")),
+            S.NullOr(__S(1312, __c41, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataConfig",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accessControl: S.optional(S.NullOr(S.String).pipe(T.Body("access_control"))),
@@ -13156,20 +12366,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataPermissionsPluginsConfigValue",
       });
-    case 3:
-      return S.Record(S.String, __S(338, __c42, 2));
-    case 4:
+    case 9:
+      return S.Record(S.String, __S(2088, __c65, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           canClose: S.Boolean.pipe(T.Body("can_close")),
           canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
           canStart: S.Boolean.pipe(T.Body("can_start")),
-          config: __S(339, __c42, 3),
+          config: __S(2089, __c65, 9),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataPermissionsPlugins",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
@@ -13181,8 +12391,8 @@ function __c42(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: __S(48, __c6, 0),
-          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
+          chat: __S(2756, __c86, 4),
+          connectedMeetings: __S(2757, __c86, 5).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -13190,10 +12400,10 @@ function __c42(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: __S(219, __c27, 3),
+          media: __S(1314, __c41, 2),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: __S(340, __c42, 4),
-          polls: __S(54, __c6, 6),
+          plugins: __S(2090, __c65, 10),
+          polls: __S(2759, __c86, 7),
           recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
           waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
@@ -13210,47 +12420,47 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataPermissions",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          designTokens: __S(221, __c27, 5).pipe(T.Body("design_tokens")),
+          designTokens: __S(1315, __c41, 3).pipe(T.Body("design_tokens")),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataUi",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: __S(337, __c42, 1),
+          config: __S(2087, __c65, 7),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: __S(341, __c42, 5),
-          ui: __S(342, __c42, 6),
+          permissions: __S(2091, __c65, 11),
+          ui: __S(2092, __c65, 12),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseData",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          data: __S(343, __c42, 7),
+          data: __S(2093, __c65, 13),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ReplacePresetByIdResponse",
       });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           webhookId: S.String.pipe(T.Label("webhook_id")),
-          events: __S(72, __c9, 0),
+          events: __S(32, __c1, 0),
           name: S.String,
           url: S.String,
           enabled: S.optional(S.Boolean),
@@ -13266,7 +12476,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ReplaceWebhookWebhookRequest",
       });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           height: S.optional(S.Number),
@@ -13275,14 +12489,14 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "LivestreamsStartLivestreamingAMeetingRequestVideoConfig",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
           name: S.optional(S.String),
-          videoConfig: S.optional(__S(346, __c43, 2).pipe(T.Body("video_config"))),
+          videoConfig: S.optional(__S(2144, __c67, 0).pipe(T.Body("video_config"))),
         })
           .pipe(
             T.Http({
@@ -13295,7 +12509,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "StartLivestreamingAMeetingLivestreamRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -13307,15 +12521,19 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "LivestreamsStartLivestreamingAMeetingResponseData",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(348, __c43, 4))),
+          data: S.optional(S.NullOr(__S(2146, __c67, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartLivestreamingAMeetingLivestreamResponse",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -13323,7 +12541,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
       });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -13384,50 +12602,46 @@ function __c43(j: number): any {
           ],
         ]),
       );
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String),
-          size: S.optional(__S(14, __c1, 6)),
+          size: S.optional(__S(2529, __c79, 1)),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecordingsStartRecordingsRequestVideoConfigWatermark",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
           height: S.optional(S.Number),
-          watermark: S.optional(__S(352, __c44, 0)),
+          watermark: S.optional(__S(2178, __c68, 2)),
           width: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RecordingsStartRecordingsRequestVideoConfig",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Body("meeting_id")),
           allowMultipleRecordings: S.optional(S.Boolean.pipe(T.Body("allow_multiple_recordings"))),
-          audioConfig: S.optional(__S(10, __c1, 2).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(__S(2560, __c80, 0).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          interactiveConfig: S.optional(__S(350, __c43, 6).pipe(T.Body("interactive_config"))),
+          interactiveConfig: S.optional(__S(2176, __c68, 0).pipe(T.Body("interactive_config"))),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
+            __S(2400, __c75, 0).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          rtmpOutConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("rtmp_out_config"))),
-          storageConfig: S.optional(__S(351, __c43, 7).pipe(T.Body("storage_config"))),
+          rtmpOutConfig: S.optional(__S(2528, __c79, 0).pipe(T.Body("rtmp_out_config"))),
+          storageConfig: S.optional(__S(2177, __c68, 1).pipe(T.Body("storage_config"))),
           url: S.optional(S.String),
-          videoConfig: S.optional(__S(353, __c44, 1).pipe(T.Body("video_config"))),
+          videoConfig: S.optional(__S(2179, __c68, 3).pipe(T.Body("video_config"))),
         })
           .pipe(
             T.Http({
@@ -13440,7 +12654,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "StartRecordingsRecordingRequest",
       });
-    case 3:
+    case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -13501,7 +12715,7 @@ function __c44(j: number): any {
           ],
         ]),
       );
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13516,22 +12730,26 @@ function __c44(j: number): any {
           status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("start_reason"))),
-          stopReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("stop_reason"))),
-          storageConfig: S.optional(S.NullOr(__S(355, __c44, 3)).pipe(T.Body("storage_config"))),
+          startReason: S.optional(S.NullOr(__S(1057, __c33, 1)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(1057, __c33, 1)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(2181, __c68, 5)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsStartRecordingsResponseData",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(356, __c44, 4))),
+          data: S.optional(S.NullOr(__S(2182, __c68, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartRecordingsRecordingResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
@@ -13540,20 +12758,16 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "RecordingsStartTrackRecordingRequestLayersValue",
       });
-    case 7:
-      return S.Record(S.String, __S(358, __c44, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(2208, __c69, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Body("meeting_id")),
-          layers: S.optional(__S(359, __c44, 7)),
-          userIds: S.optional(__S(7, __c0, 7).pipe(T.Body("user_ids"))),
+          layers: S.optional(__S(2209, __c69, 1)),
+          userIds: S.optional(__S(2624, __c82, 0).pipe(T.Body("user_ids"))),
         })
           .pipe(
             T.Http({
@@ -13566,23 +12780,27 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "StartTrackRecordingRecordingRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          recording: __S(95, __c11, 7),
+          recording: __S(416, __c13, 0),
         }),
       ).annotate({
         identifier: "RecordingsStartTrackRecordingResponseData",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(361, __c45, 1))),
+          data: S.optional(S.NullOr(__S(2211, __c69, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartTrackRecordingRecordingResponse",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -13600,7 +12818,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "StopLivestreamingAMeetingLivestreamRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.NullOr(S.String)),
@@ -13608,38 +12826,83 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "LivestreamsStopLivestreamingAMeetingResponseData",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(364, __c45, 4))),
+          data: S.optional(S.NullOr(__S(2241, __c70, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StopLivestreamingAMeetingLivestreamResponse",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(__S(134, __c16, 6)),
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          name: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateIndependentLivestreamLivestreamRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          disabled: S.optional(S.NullOr(S.Boolean)),
+          ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
+          meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+          name: S.optional(S.NullOr(S.String)),
+          playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+        }),
+      ).annotate({
+        identifier: "LivestreamsCreateIndependentLivestreamResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(2273, __c71, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateIndependentLivestreamLivestreamResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keywords: S.optional(__S(896, __c28, 0)),
           language: S.optional(S.String),
           profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdRequestAiConfigTranscription",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(__S(6, __c0, 6)),
-          transcription: S.optional(__S(366, __c45, 6)),
+          summarization: S.optional(__S(2592, __c81, 0)),
+          transcription: S.optional(__S(2304, __c72, 0)),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdRequestAiConfig",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -13700,33 +12963,35 @@ function __c46(j: number): any {
           ],
         ]),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(__S(316, __c39, 4).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(__S(2048, __c64, 0).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
+          liveStreamingConfig: S.optional(
+            __S(2528, __c79, 0).pipe(T.Body("live_streaming_config")),
+          ),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
+            __S(2400, __c75, 0).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(__S(368, __c46, 0).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(__S(319, __c39, 7).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(__S(2306, __c72, 2).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(2050, __c64, 2).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          aiConfig: S.optional(__S(367, __c45, 7).pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(__S(2305, __c72, 1).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(__S(369, __c46, 1).pipe(T.Body("recording_config"))),
+          recordingConfig: S.optional(__S(2307, __c72, 3).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
@@ -13746,26 +13011,26 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UpdateMeetingByIdMeetingRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          keywords: S.optional(S.NullOr(__S(896, __c28, 0))),
           language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(S.NullOr(__S(322, __c40, 2))),
-          transcription: S.optional(S.NullOr(__S(371, __c46, 3))),
+          summarization: S.optional(S.NullOr(__S(2051, __c64, 3))),
+          transcription: S.optional(S.NullOr(__S(2309, __c72, 5))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfig",
       });
-    case 5:
+    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -13826,36 +13091,36 @@ function __c46(j: number): any {
           ],
         ]),
       );
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
+          audioConfig: S.optional(S.NullOr(__S(1376, __c43, 0)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(S.NullOr(__S(373, __c46, 5)).pipe(T.Body("storage_config"))),
-          videoConfig: S.optional(S.NullOr(__S(326, __c40, 6)).pipe(T.Body("video_config"))),
+          storageConfig: S.optional(S.NullOr(__S(2311, __c72, 7)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(2052, __c64, 4)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(S.NullOr(__S(372, __c46, 4)).pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(S.NullOr(__S(2310, __c72, 6)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(__S(374, __c46, 6)).pipe(T.Body("recording_config")),
+            S.NullOr(__S(2312, __c72, 8)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
@@ -13868,21 +13133,947 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseData",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(__S(375, __c46, 7))),
+          data: S.optional(S.NullOr(__S(2313, __c72, 9))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateMeetingByIdMeetingResponse",
       });
   }
 }
-
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keywords: S.optional(__S(2624, __c82, 0)),
+          language: S.optional(S.String),
+          profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestAiConfigTranscription",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          summarization: S.optional(__S(2592, __c81, 0)),
+          transcription: S.optional(__S(2336, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestAiConfig",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "privateKey",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "accessKey",
+            "region",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "privateKey",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "privateKey",
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "password",
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "path",
+            "port",
+            "privateKey",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+        ]),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(S.String),
+          size: S.optional(__S(2529, __c79, 1)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermark",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          codec: S.optional(S.String),
+          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+          height: S.optional(S.Number),
+          watermark: S.optional(__S(2339, __c73, 3)),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigVideoConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          audioConfig: S.optional(__S(2560, __c80, 0).pipe(T.Body("audio_config"))),
+          fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+          liveStreamingConfig: S.optional(
+            __S(2528, __c79, 0).pipe(T.Body("live_streaming_config")),
+          ),
+          maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+          realtimekitBucketConfig: S.optional(
+            __S(2400, __c75, 0).pipe(T.Body("realtimekit_bucket_config")),
+          ),
+          storageConfig: S.optional(__S(2338, __c73, 2).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(2340, __c73, 4).pipe(T.Body("video_config"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          aiConfig: S.optional(__S(2337, __c73, 1).pipe(T.Body("ai_config"))),
+          liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
+          persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+          recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+          recordingConfig: S.optional(__S(2341, __c73, 5).pipe(T.Body("recording_config"))),
+          sessionKeepAliveTimeInSecs: S.optional(
+            S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+          ),
+          summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+          title: S.optional(S.String),
+          transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateMeetingRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          keywords: S.optional(S.NullOr(__S(2624, __c82, 0))),
+          language: S.optional(S.NullOr(S.String)),
+          profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataAiConfigTranscription",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          summarization: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          transcription: S.optional(S.NullOr(__S(2343, __c73, 7))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataAiConfig",
+      });
+    case 9:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "privateKey",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "accessKey",
+            "region",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "privateKey",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "privateKey",
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "password",
+            "path",
+            "port",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+          [
+            "password",
+            "accessKey",
+            "authMethod",
+            "bucket",
+            "host",
+            "path",
+            "port",
+            "privateKey",
+            "region",
+            "secret",
+            "type",
+            "username",
+          ],
+        ]),
+      );
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          audioConfig: S.optional(S.NullOr(__S(2368, __c74, 0)).pipe(T.Body("audio_config"))),
+          fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
+          liveStreamingConfig: S.optional(
+            S.NullOr(__S(2432, __c76, 0)).pipe(T.Body("live_streaming_config")),
+          ),
+          maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
+          realtimekitBucketConfig: S.optional(
+            S.NullOr(__S(2400, __c75, 0)).pipe(T.Body("realtimekit_bucket_config")),
+          ),
+          storageConfig: S.optional(S.NullOr(__S(2345, __c73, 9)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("video_config"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          aiConfig: S.optional(S.NullOr(__S(2344, __c73, 8)).pipe(T.Body("ai_config"))),
+          liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
+          persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+          recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
+          recordingConfig: S.optional(
+            S.NullOr(__S(2346, __c73, 10)).pipe(T.Body("recording_config")),
+          ),
+          sessionKeepAliveTimeInSecs: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
+          ),
+          status: S.optional(S.NullOr(S.String)),
+          summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
+          title: S.optional(S.NullOr(S.String)),
+          transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseData",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(2347, __c73, 11))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateMeetingResponse" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.NullOr(S.String)),
+          codec: S.optional(S.NullOr(S.String)),
+          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfigAudioConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          codec: S.optional(S.NullOr(S.String)),
+          exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+          height: S.optional(S.NullOr(S.Number)),
+          watermark: S.optional(S.NullOr(__S(2464, __c77, 0))),
+          width: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfig",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.NullOr(S.Number)),
+          width: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(__S(2433, __c76, 1))),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
+          wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateResponseDataAiConfigSummarization",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigLiveStreamingConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.String),
+          codec: S.optional(S.String),
+          exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestRecordingConfigAudioConfig",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summaryType: S.optional(S.String.pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.String.pipe(T.Body("text_format"))),
+          wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+        }),
+      ).annotate({
+        identifier: "MeetingsCreateRequestAiConfigSummarization",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          meetingId: S.String.pipe(T.Label("meeting_id")),
+          options: __S(2624, __c82, 0),
+          question: S.String,
+          anonymous: S.optional(S.Boolean),
+          hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreatePollActiveSessionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem",
+      });
+    case 2:
+      return S.Array(__S(2657, __c83, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          text: S.String,
+          votes: __S(2658, __c83, 2),
+        }),
+      ).annotate({
+        identifier: "ActiveSessionCreatePollResponseDataPollOptionsItem",
+      });
+    case 4:
+      return S.Array(__S(2659, __c83, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          options: __S(2660, __c83, 4),
+          question: S.String,
+          anonymous: S.optional(S.NullOr(S.Boolean)),
+          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+          hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
+          voted: S.optional(S.NullOr(__S(2624, __c82, 0))),
+        }),
+      ).annotate({
+        identifier: "ActiveSessionCreatePollResponseDataPoll",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.NullOr(S.String)),
+          poll: S.optional(S.NullOr(__S(2661, __c83, 5))),
+        }),
+      ).annotate({
+        identifier: "ActiveSessionCreatePollResponseData",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.NullOr(__S(2662, __c83, 6))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreatePollActiveSessionResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2881, __c90, 1),
+          viewType: S.String.pipe(T.Body("view_type")),
+          livestreamViewerQualities: S.optional(
+            __S(2816, __c88, 0).pipe(T.Body("livestream_viewer_qualities")),
+          ),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
+          canAcceptProductionRequests: S.Boolean.pipe(T.Body("can_accept_production_requests")),
+          canChangeParticipantPermissions: S.Boolean.pipe(
+            T.Body("can_change_participant_permissions"),
+          ),
+          canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
+          canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
+          canRecord: S.Boolean.pipe(T.Body("can_record")),
+          canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
+          chat: __S(2756, __c86, 4),
+          connectedMeetings: __S(2757, __c86, 5).pipe(T.Body("connected_meetings")),
+          disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
+          disableParticipantScreensharing: S.Boolean.pipe(
+            T.Body("disable_participant_screensharing"),
+          ),
+          disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
+          hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
+          kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
+          media: __S(2883, __c90, 3),
+          pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
+          plugins: __S(2720, __c85, 0),
+          polls: __S(2759, __c86, 7),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
+          showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
+          acceptStageRequests: S.optional(S.Boolean.pipe(T.Body("accept_stage_requests"))),
+          isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+          stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
+          stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+          transcriptionEnabled: S.optional(S.Boolean.pipe(T.Body("transcription_enabled"))),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          designTokens: __S(2884, __c90, 4).pipe(T.Body("design_tokens")),
+        }),
+      ).annotate({ identifier: "PresetsCreateRequestUi" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          config: __S(2688, __c84, 0),
+          name: S.String,
+          permissions: __S(2689, __c84, 1),
+          ui: __S(2690, __c84, 2),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePresetRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
+          maxVideoStreams: __S(2752, __c86, 0).pipe(T.Body("max_video_streams")),
+          media: __S(2765, __c86, 13),
+          viewType: S.String.pipe(T.Body("view_type")),
+          livestreamViewerQualities: S.optional(
+            S.NullOr(__S(2816, __c88, 0)).pipe(T.Body("livestream_viewer_qualities")),
+          ),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          config: __S(2692, __c84, 4),
+          createdAt: S.String.pipe(T.Body("created_at")),
+          name: S.String,
+          permissions: __S(2785, __c87, 1),
+          ui: __S(2787, __c87, 3),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseData",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2693, __c84, 5),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePresetResponse" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canClose: S.Boolean.pipe(T.Body("can_close")),
+          canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
+          canStart: S.Boolean.pipe(T.Body("can_start")),
+          config: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsPlugins",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          desktop: S.Number,
+          mobile: S.Number,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfigMaxVideoStreams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          frameRate: S.Number.pipe(T.Body("frame_rate")),
+          quality: S.String,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfigMediaScreenshare",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canReceive: S.Boolean.pipe(T.Body("can_receive")),
+          canSend: S.Boolean.pipe(T.Body("can_send")),
+          files: S.Boolean,
+          text: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsChatPrivate",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          canSend: S.Boolean.pipe(T.Body("can_send")),
+          files: S.Boolean,
+          text: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsChatPublic",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          private: __S(2754, __c86, 2),
+          public: __S(2755, __c86, 3),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsChat",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          canAlterConnectedMeetings: S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
+          canSwitchConnectedMeetings: S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
+          canSwitchToParentMeeting: S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsConnectedMeetings",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          canProduce: S.String.pipe(T.Body("can_produce")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsMediaScreenshare",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          canCreate: S.Boolean.pipe(T.Body("can_create")),
+          canView: S.Boolean.pipe(T.Body("can_view")),
+          canVote: S.Boolean.pipe(T.Body("can_vote")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsPolls",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          "1000": S.String,
+          "600": S.String,
+          "700": S.String,
+          "800": S.String,
+          "900": S.String,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestUiDesignTokensColorsBackground",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          "300": S.String,
+          "400": S.String,
+          "500": S.String,
+          "600": S.String,
+          "700": S.String,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestUiDesignTokensColorsBrand",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          background: __S(2760, __c86, 8),
+          brand: __S(2761, __c86, 9),
+          danger: S.String,
+          success: S.String,
+          text: S.String,
+          textOnBrand: S.String.pipe(T.Body("text_on_brand")),
+          videoBg: S.String.pipe(T.Body("video_bg")),
+          warning: S.String,
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestUiDesignTokensColors",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          frameRate: S.Number.pipe(T.Body("frame_rate")),
+          quality: S.String,
+          simulcast: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataConfigMediaVideo",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enableHighBitrate: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate"))),
+          enableStereo: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enable_stereo"))),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataConfigMediaAudio",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          screenshare: __S(2753, __c86, 1),
+          video: __S(2763, __c86, 11),
+          audio: S.optional(S.NullOr(__S(2764, __c86, 12))),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataConfigMedia",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          audio: __S(2758, __c86, 6),
+          screenshare: __S(2758, __c86, 6),
+          video: __S(2758, __c86, 6),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataPermissionsMedia",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
+          canAcceptProductionRequests: S.Boolean.pipe(T.Body("can_accept_production_requests")),
+          canChangeParticipantPermissions: S.Boolean.pipe(
+            T.Body("can_change_participant_permissions"),
+          ),
+          canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
+          canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
+          canRecord: S.Boolean.pipe(T.Body("can_record")),
+          canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
+          chat: __S(2756, __c86, 4),
+          connectedMeetings: __S(2757, __c86, 5).pipe(T.Body("connected_meetings")),
+          disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
+          disableParticipantScreensharing: S.Boolean.pipe(
+            T.Body("disable_participant_screensharing"),
+          ),
+          disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
+          hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
+          kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
+          media: __S(2784, __c87, 0),
+          pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
+          plugins: __S(2720, __c85, 0),
+          polls: __S(2759, __c86, 7),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
+          showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
+          acceptStageRequests: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
+          ),
+          isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
+          stageAccess: S.optional(S.NullOr(S.String).pipe(T.Body("stage_access"))),
+          stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
+          transcriptionEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
+          ),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataPermissions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          borderRadius: S.String.pipe(T.Body("border_radius")),
+          borderWidth: S.String.pipe(T.Body("border_width")),
+          colors: __S(2762, __c86, 10),
+          spacingBase: S.Number.pipe(T.Body("spacing_base")),
+          theme: S.String,
+          fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+          googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+          logo: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataUiDesignTokens",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          designTokens: __S(2786, __c87, 2).pipe(T.Body("design_tokens")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateResponseDataUi",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableHighBitrate: S.optional(S.Boolean.pipe(T.Body("enable_high_bitrate"))),
+          enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfigMediaAudio",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frameRate: S.Number.pipe(T.Body("frame_rate")),
+          quality: S.String,
+          simulcast: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfigMediaVideo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          screenshare: __S(2753, __c86, 1),
+          video: __S(2880, __c90, 0),
+          audio: S.optional(__S(2848, __c89, 0)),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestConfigMedia",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canProduce: S.String.pipe(T.Body("can_produce")),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsMediaAudio",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          audio: __S(2882, __c90, 2),
+          screenshare: __S(2758, __c86, 6),
+          video: __S(2882, __c90, 2),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestPermissionsMedia",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          borderRadius: S.String.pipe(T.Body("border_radius")),
+          borderWidth: S.String.pipe(T.Body("border_width")),
+          colors: __S(2762, __c86, 10),
+          spacingBase: S.Number.pipe(T.Body("spacing_base")),
+          theme: S.String,
+          fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+          googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+          logo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PresetsCreateRequestUiDesignTokens",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

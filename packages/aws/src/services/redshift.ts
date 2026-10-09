@@ -1934,7 +1934,7 @@ export interface Endpoint {
   Port?: number;
   VpcEndpoints?: VpcEndpoint[];
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Endpoint>;
 export interface ClusterSecurityGroupMembership {
   ClusterSecurityGroupName?: string;
   Status?: string;
@@ -3865,7 +3865,7 @@ export const acceptReservedNodeExchange: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptReservedNodeExchangeInputMessage>,
-  output: __S(4, __c0, 4) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>,
   errors: [
     DependentServiceUnavailableFault,
     InvalidReservedNodeStateFault,
@@ -3897,8 +3897,8 @@ export const addPartner: API.OperationMethod<
   AddPartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<PartnerIntegrationInputMessage>,
-  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
+  input: __S(128, __c4, 0) as any as S.Schema<PartnerIntegrationInputMessage>,
+  output: __S(160, __c5, 0) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -3925,8 +3925,8 @@ export const associateDataShareConsumer: API.OperationMethod<
   AssociateDataShareConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AssociateDataShareConsumerMessage>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
+  input: __S(192, __c6, 0) as any as S.Schema<AssociateDataShareConsumerMessage>,
+  output: __S(226, __c7, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3966,8 +3966,8 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
   AuthorizeClusterSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AuthorizeClusterSecurityGroupIngressMessage>,
-  output: __S(19, __c2, 3) as any as S.Schema<AuthorizeClusterSecurityGroupIngressResult>,
+  input: __S(256, __c8, 0) as any as S.Schema<AuthorizeClusterSecurityGroupIngressMessage>,
+  output: __S(257, __c8, 1) as any as S.Schema<AuthorizeClusterSecurityGroupIngressResult>,
   errors: [
     AuthorizationAlreadyExistsFault,
     AuthorizationQuotaExceededFault,
@@ -3991,8 +3991,8 @@ export const authorizeDataShare: API.OperationMethod<
   AuthorizeDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<AuthorizeDataShareMessage>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
+  input: __S(384, __c12, 0) as any as S.Schema<AuthorizeDataShareMessage>,
+  output: __S(226, __c7, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4016,8 +4016,8 @@ export const authorizeEndpointAccess: API.OperationMethod<
   AuthorizeEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<AuthorizeEndpointAccessMessage>,
-  output: __S(23, __c2, 7) as any as S.Schema<EndpointAuthorization>,
+  input: __S(416, __c13, 0) as any as S.Schema<AuthorizeEndpointAccessMessage>,
+  output: __S(449, __c14, 1) as any as S.Schema<EndpointAuthorization>,
   errors: [
     ClusterNotFoundFault,
     EndpointAuthorizationAlreadyExistsFault,
@@ -4054,8 +4054,8 @@ export const authorizeSnapshotAccess: API.OperationMethod<
   AuthorizeSnapshotAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AuthorizeSnapshotAccessMessage>,
-  output: __S(29, __c3, 5) as any as S.Schema<AuthorizeSnapshotAccessResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<AuthorizeSnapshotAccessMessage>,
+  output: __S(481, __c15, 1) as any as S.Schema<AuthorizeSnapshotAccessResult>,
   errors: [
     AuthorizationAlreadyExistsFault,
     AuthorizationQuotaExceededFault,
@@ -4080,8 +4080,8 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   BatchDeleteClusterSnapshotsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<BatchDeleteClusterSnapshotsResult>,
+  input: __S(545, __c17, 1) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<BatchDeleteClusterSnapshotsResult>,
   errors: [BatchDeleteRequestSizeExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4101,8 +4101,8 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
   BatchModifyClusterSnapshotsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<BatchModifyClusterSnapshotsMessage>,
-  output: __S(39, __c4, 7) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>,
+  input: __S(640, __c20, 0) as any as S.Schema<BatchModifyClusterSnapshotsMessage>,
+  output: __S(642, __c20, 2) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>,
   errors: [BatchModifyClusterSnapshotsLimitExceededFault, InvalidRetentionPeriodFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4124,8 +4124,8 @@ export const cancelResize: API.OperationMethod<
   CancelResizeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CancelResizeMessage>,
-  output: __S(44, __c5, 4) as any as S.Schema<ResizeProgressMessage>,
+  input: __S(672, __c21, 0) as any as S.Schema<CancelResizeMessage>,
+  output: __S(707, __c22, 3) as any as S.Schema<ResizeProgressMessage>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -4166,8 +4166,8 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CopyClusterSnapshotMessage>,
-  output: __S(46, __c5, 6) as any as S.Schema<CopyClusterSnapshotResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<CopyClusterSnapshotMessage>,
+  output: __S(737, __c23, 1) as any as S.Schema<CopyClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -4195,8 +4195,8 @@ export const createAuthenticationProfile: API.OperationMethod<
   CreateAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateAuthenticationProfileMessage>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateAuthenticationProfileResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<CreateAuthenticationProfileMessage>,
+  output: __S(769, __c24, 1) as any as S.Schema<CreateAuthenticationProfileResult>,
   errors: [
     AuthenticationProfileAlreadyExistsFault,
     AuthenticationProfileQuotaExceededFault,
@@ -4270,8 +4270,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateClusterMessage>,
-  output: __S(88, __c11, 0) as any as S.Schema<CreateClusterResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateClusterMessage>,
+  output: __S(801, __c25, 1) as any as S.Schema<CreateClusterResult>,
   errors: [
     ClusterAlreadyExistsFault,
     ClusterParameterGroupNotFoundFault,
@@ -4331,8 +4331,8 @@ export const createClusterParameterGroup: API.OperationMethod<
   CreateClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateClusterParameterGroupMessage>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateClusterParameterGroupResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateClusterParameterGroupMessage>,
+  output: __S(1089, __c34, 1) as any as S.Schema<CreateClusterParameterGroupResult>,
   errors: [
     ClusterParameterGroupAlreadyExistsFault,
     ClusterParameterGroupQuotaExceededFault,
@@ -4364,8 +4364,8 @@ export const createClusterSecurityGroup: API.OperationMethod<
   CreateClusterSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateClusterSecurityGroupMessage>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateClusterSecurityGroupResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateClusterSecurityGroupMessage>,
+  output: __S(1153, __c36, 1) as any as S.Schema<CreateClusterSecurityGroupResult>,
   errors: [
     ClusterSecurityGroupAlreadyExistsFault,
     ClusterSecurityGroupQuotaExceededFault,
@@ -4400,8 +4400,8 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateClusterSnapshotMessage>,
-  output: __S(95, __c11, 7) as any as S.Schema<CreateClusterSnapshotResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateClusterSnapshotMessage>,
+  output: __S(1185, __c37, 1) as any as S.Schema<CreateClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -4441,8 +4441,8 @@ export const createClusterSubnetGroup: API.OperationMethod<
   CreateClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateClusterSubnetGroupMessage>,
-  output: __S(105, __c13, 1) as any as S.Schema<CreateClusterSubnetGroupResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateClusterSubnetGroupMessage>,
+  output: __S(1217, __c38, 1) as any as S.Schema<CreateClusterSubnetGroupResult>,
   errors: [
     ClusterSubnetGroupAlreadyExistsFault,
     ClusterSubnetGroupQuotaExceededFault,
@@ -4473,8 +4473,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateCustomDomainAssociationMessage>,
-  output: __S(107, __c13, 3) as any as S.Schema<CreateCustomDomainAssociationResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateCustomDomainAssociationMessage>,
+  output: __S(1377, __c43, 1) as any as S.Schema<CreateCustomDomainAssociationResult>,
   errors: [ClusterNotFoundFault, CustomCnameAssociationFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4502,8 +4502,8 @@ export const createEndpointAccess: API.OperationMethod<
   CreateEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateEndpointAccessMessage>,
-  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateEndpointAccessMessage>,
+  output: __S(1440, __c45, 0) as any as S.Schema<EndpointAccess>,
   errors: [
     AccessToClusterDeniedFault,
     ClusterNotFoundFault,
@@ -4561,8 +4561,8 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
-  output: __S(114, __c14, 2) as any as S.Schema<CreateEventSubscriptionResult>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
+  output: __S(1473, __c46, 1) as any as S.Schema<CreateEventSubscriptionResult>,
   errors: [
     EventSubscriptionQuotaExceededFault,
     InvalidTagFault,
@@ -4604,8 +4604,8 @@ export const createHsmClientCertificate: API.OperationMethod<
   CreateHsmClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateHsmClientCertificateMessage>,
-  output: __S(117, __c14, 5) as any as S.Schema<CreateHsmClientCertificateResult>,
+  input: __S(1568, __c49, 0) as any as S.Schema<CreateHsmClientCertificateMessage>,
+  output: __S(1569, __c49, 1) as any as S.Schema<CreateHsmClientCertificateResult>,
   errors: [
     HsmClientCertificateAlreadyExistsFault,
     HsmClientCertificateQuotaExceededFault,
@@ -4639,8 +4639,8 @@ export const createHsmConfiguration: API.OperationMethod<
   CreateHsmConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<CreateHsmConfigurationMessage>,
-  output: __S(120, __c15, 0) as any as S.Schema<CreateHsmConfigurationResult>,
+  input: __S(1632, __c51, 0) as any as S.Schema<CreateHsmConfigurationMessage>,
+  output: __S(1633, __c51, 1) as any as S.Schema<CreateHsmConfigurationResult>,
   errors: [
     HsmConfigurationAlreadyExistsFault,
     HsmConfigurationQuotaExceededFault,
@@ -4672,8 +4672,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateIntegrationMessage>,
-  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateIntegrationMessage>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Integration>,
   errors: [
     IntegrationAlreadyExistsFault,
     IntegrationConflictOperationFault,
@@ -4705,8 +4705,8 @@ export const createQev2IdcApplication: API.OperationMethod<
   CreateQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateQev2IdcApplicationMessage>,
-  output: __S(128, __c16, 0) as any as S.Schema<CreateQev2IdcApplicationResult>,
+  input: __S(1792, __c56, 0) as any as S.Schema<CreateQev2IdcApplicationMessage>,
+  output: __S(1793, __c56, 1) as any as S.Schema<CreateQev2IdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -4736,8 +4736,8 @@ export const createRedshiftIdcApplication: API.OperationMethod<
   CreateRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateRedshiftIdcApplicationMessage>,
-  output: __S(146, __c18, 2) as any as S.Schema<CreateRedshiftIdcApplicationResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateRedshiftIdcApplicationMessage>,
+  output: __S(1857, __c58, 1) as any as S.Schema<CreateRedshiftIdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -4772,8 +4772,8 @@ export const createScheduledAction: API.OperationMethod<
   CreateScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateScheduledActionMessage>,
-  output: __S(153, __c19, 1) as any as S.Schema<ScheduledAction>,
+  input: __S(1952, __c61, 0) as any as S.Schema<CreateScheduledActionMessage>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ScheduledAction>,
   errors: [
     ClusterNotFoundFault,
     InvalidScheduledActionFault,
@@ -4812,8 +4812,8 @@ export const createSnapshotCopyGrant: API.OperationMethod<
   CreateSnapshotCopyGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<CreateSnapshotCopyGrantMessage>,
-  output: __S(156, __c19, 4) as any as S.Schema<CreateSnapshotCopyGrantResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<CreateSnapshotCopyGrantMessage>,
+  output: __S(2113, __c66, 1) as any as S.Schema<CreateSnapshotCopyGrantResult>,
   errors: [
     DependentServiceRequestThrottlingFault,
     InvalidTagFault,
@@ -4844,8 +4844,8 @@ export const createSnapshotSchedule: API.OperationMethod<
   CreateSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateSnapshotScheduleMessage>,
-  output: __S(162, __c20, 2) as any as S.Schema<SnapshotSchedule>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateSnapshotScheduleMessage>,
+  output: __S(2212, __c69, 4) as any as S.Schema<SnapshotSchedule>,
   errors: [
     InvalidScheduleFault,
     InvalidTagFault,
@@ -4880,8 +4880,8 @@ export const createTags: API.OperationMethod<
   CreateTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateTagsMessage>,
-  output: __S(164, __c20, 4) as any as S.Schema<CreateTagsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<CreateTagsMessage>,
+  output: __S(2241, __c70, 1) as any as S.Schema<CreateTagsResponse>,
   errors: [InvalidClusterStateFault, InvalidTagFault, ResourceNotFoundFault, TagLimitExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4907,8 +4907,8 @@ export const createUsageLimit: API.OperationMethod<
   CreateUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateUsageLimitMessage>,
-  output: __S(166, __c20, 6) as any as S.Schema<UsageLimit>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateUsageLimitMessage>,
+  output: __S(2304, __c72, 0) as any as S.Schema<UsageLimit>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -4933,8 +4933,8 @@ export const deauthorizeDataShare: API.OperationMethod<
   DeauthorizeDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeauthorizeDataShareMessage>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeauthorizeDataShareMessage>,
+  output: __S(226, __c7, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4954,8 +4954,8 @@ export const deleteAuthenticationProfile: API.OperationMethod<
   DeleteAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteAuthenticationProfileMessage>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAuthenticationProfileResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteAuthenticationProfileMessage>,
+  output: __S(2369, __c74, 1) as any as S.Schema<DeleteAuthenticationProfileResult>,
   errors: [AuthenticationProfileNotFoundFault, InvalidAuthenticationProfileRequestFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4994,8 +4994,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeleteClusterMessage>,
-  output: __S(171, __c21, 3) as any as S.Schema<DeleteClusterResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteClusterMessage>,
+  output: __S(2401, __c75, 1) as any as S.Schema<DeleteClusterResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -5024,8 +5024,8 @@ export const deleteClusterParameterGroup: API.OperationMethod<
   DeleteClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteClusterParameterGroupMessage>,
-  output: __S(173, __c21, 5) as any as S.Schema<DeleteClusterParameterGroupResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<DeleteClusterParameterGroupMessage>,
+  output: __S(2433, __c76, 1) as any as S.Schema<DeleteClusterParameterGroupResponse>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5052,8 +5052,8 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
   DeleteClusterSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteClusterSecurityGroupMessage>,
-  output: __S(175, __c21, 7) as any as S.Schema<DeleteClusterSecurityGroupResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteClusterSecurityGroupMessage>,
+  output: __S(2465, __c77, 1) as any as S.Schema<DeleteClusterSecurityGroupResponse>,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidClusterSecurityGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5080,8 +5080,8 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteClusterSnapshotMessage>,
-  output: __S(176, __c22, 0) as any as S.Schema<DeleteClusterSnapshotResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteClusterSnapshotMessage>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteClusterSnapshotResult>,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5102,8 +5102,8 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
   DeleteClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteClusterSubnetGroupMessage>,
-  output: __S(178, __c22, 2) as any as S.Schema<DeleteClusterSubnetGroupResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteClusterSubnetGroupMessage>,
+  output: __S(2529, __c79, 1) as any as S.Schema<DeleteClusterSubnetGroupResponse>,
   errors: [
     ClusterSubnetGroupNotFoundFault,
     InvalidClusterSubnetGroupStateFault,
@@ -5129,8 +5129,8 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   DeleteCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteCustomDomainAssociationMessage>,
-  output: __S(180, __c22, 4) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteCustomDomainAssociationMessage>,
+  output: __S(2561, __c80, 1) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
   errors: [
     ClusterNotFoundFault,
     CustomCnameAssociationFault,
@@ -5158,8 +5158,8 @@ export const deleteEndpointAccess: API.OperationMethod<
   DeleteEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DeleteEndpointAccessMessage>,
-  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteEndpointAccessMessage>,
+  output: __S(1440, __c45, 0) as any as S.Schema<EndpointAccess>,
   errors: [
     ClusterNotFoundFault,
     EndpointNotFoundFault,
@@ -5185,8 +5185,8 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeleteEventSubscriptionMessage>,
-  output: __S(183, __c22, 7) as any as S.Schema<DeleteEventSubscriptionResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteEventSubscriptionMessage>,
+  output: __S(2625, __c82, 1) as any as S.Schema<DeleteEventSubscriptionResponse>,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5206,8 +5206,8 @@ export const deleteHsmClientCertificate: API.OperationMethod<
   DeleteHsmClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteHsmClientCertificateMessage>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteHsmClientCertificateResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteHsmClientCertificateMessage>,
+  output: __S(2657, __c83, 1) as any as S.Schema<DeleteHsmClientCertificateResponse>,
   errors: [HsmClientCertificateNotFoundFault, InvalidHsmClientCertificateStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5227,8 +5227,8 @@ export const deleteHsmConfiguration: API.OperationMethod<
   DeleteHsmConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteHsmConfigurationMessage>,
-  output: __S(187, __c23, 3) as any as S.Schema<DeleteHsmConfigurationResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteHsmConfigurationMessage>,
+  output: __S(2689, __c84, 1) as any as S.Schema<DeleteHsmConfigurationResponse>,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5250,8 +5250,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeleteIntegrationMessage>,
-  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteIntegrationMessage>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Integration>,
   errors: [
     IntegrationConflictOperationFault,
     IntegrationConflictStateFault,
@@ -5278,8 +5278,8 @@ export const deletePartner: API.OperationMethod<
   DeletePartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<PartnerIntegrationInputMessage>,
-  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
+  input: __S(128, __c4, 0) as any as S.Schema<PartnerIntegrationInputMessage>,
+  output: __S(160, __c5, 0) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -5306,8 +5306,8 @@ export const deleteQev2IdcApplication: API.OperationMethod<
   DeleteQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteQev2IdcApplicationMessage>,
-  output: __S(190, __c23, 6) as any as S.Schema<DeleteQev2IdcApplicationResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteQev2IdcApplicationMessage>,
+  output: __S(2753, __c86, 1) as any as S.Schema<DeleteQev2IdcApplicationResponse>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -5334,8 +5334,8 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
   DeleteRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>,
-  output: __S(192, __c24, 0) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>,
+  output: __S(2785, __c87, 1) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -5360,8 +5360,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeleteResourcePolicyMessage>,
-  output: __S(194, __c24, 2) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteResourcePolicyMessage>,
+  output: __S(2817, __c88, 1) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5381,8 +5381,8 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteScheduledActionMessage>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteScheduledActionResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteScheduledActionMessage>,
+  output: __S(2849, __c89, 1) as any as S.Schema<DeleteScheduledActionResponse>,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5402,8 +5402,8 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   DeleteSnapshotCopyGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<DeleteSnapshotCopyGrantMessage>,
-  output: __S(198, __c24, 6) as any as S.Schema<DeleteSnapshotCopyGrantResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteSnapshotCopyGrantMessage>,
+  output: __S(2881, __c90, 1) as any as S.Schema<DeleteSnapshotCopyGrantResponse>,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5423,8 +5423,8 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   DeleteSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<DeleteSnapshotScheduleMessage>,
-  output: __S(200, __c25, 0) as any as S.Schema<DeleteSnapshotScheduleResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteSnapshotScheduleMessage>,
+  output: __S(2913, __c91, 1) as any as S.Schema<DeleteSnapshotScheduleResponse>,
   errors: [InvalidClusterSnapshotScheduleStateFault, SnapshotScheduleNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5442,8 +5442,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<DeleteTagsMessage>,
-  output: __S(202, __c25, 2) as any as S.Schema<DeleteTagsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteTagsMessage>,
+  output: __S(2945, __c92, 1) as any as S.Schema<DeleteTagsResponse>,
   errors: [InvalidTagFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5463,8 +5463,8 @@ export const deleteUsageLimit: API.OperationMethod<
   DeleteUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteUsageLimitMessage>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteUsageLimitResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteUsageLimitMessage>,
+  output: __S(2977, __c93, 1) as any as S.Schema<DeleteUsageLimitResponse>,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5485,8 +5485,8 @@ export const deregisterNamespace: API.OperationMethod<
   DeregisterNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeregisterNamespaceInputMessage>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeregisterNamespaceOutputMessage>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeregisterNamespaceInputMessage>,
+  output: __S(3009, __c94, 1) as any as S.Schema<DeregisterNamespaceOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5503,8 +5503,8 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<DescribeAccountAttributesMessage>,
-  output: __S(217, __c27, 1) as any as S.Schema<AccountAttributeList>,
+  input: __S(3073, __c96, 1) as any as S.Schema<DescribeAccountAttributesMessage>,
+  output: __S(3078, __c96, 6) as any as S.Schema<AccountAttributeList>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5524,8 +5524,8 @@ export const describeAuthenticationProfiles: API.OperationMethod<
   DescribeAuthenticationProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<DescribeAuthenticationProfilesMessage>,
-  output: __S(221, __c27, 5) as any as S.Schema<DescribeAuthenticationProfilesResult>,
+  input: __S(3104, __c97, 0) as any as S.Schema<DescribeAuthenticationProfilesMessage>,
+  output: __S(3107, __c97, 3) as any as S.Schema<DescribeAuthenticationProfilesResult>,
   errors: [AuthenticationProfileNotFoundFault, InvalidAuthenticationProfileRequestFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5546,8 +5546,8 @@ export const describeClusterDbRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterDbRevision
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<DescribeClusterDbRevisionsMessage>,
-  output: __S(227, __c28, 3) as any as S.Schema<ClusterDbRevisionsMessage>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DescribeClusterDbRevisionsMessage>,
+  output: __S(3141, __c98, 5) as any as S.Schema<ClusterDbRevisionsMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5592,8 +5592,8 @@ export const describeClusterParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<DescribeClusterParameterGroupsMessage>,
-  output: __S(231, __c28, 7) as any as S.Schema<ClusterParameterGroupsMessage>,
+  input: __S(3168, __c99, 0) as any as S.Schema<DescribeClusterParameterGroupsMessage>,
+  output: __S(3170, __c99, 2) as any as S.Schema<ClusterParameterGroupsMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5629,8 +5629,8 @@ export const describeClusterParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DescribeClusterParametersMessage>,
-  output: __S(235, __c29, 3) as any as S.Schema<ClusterParameterGroupDetails>,
+  input: __S(3232, __c101, 0) as any as S.Schema<DescribeClusterParametersMessage>,
+  output: __S(3233, __c101, 1) as any as S.Schema<ClusterParameterGroupDetails>,
   errors: [ClusterParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5668,8 +5668,8 @@ export const describeClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<DescribeClustersMessage>,
-  output: __S(238, __c29, 6) as any as S.Schema<ClustersMessage>,
+  input: __S(3296, __c103, 0) as any as S.Schema<DescribeClustersMessage>,
+  output: __S(3298, __c103, 2) as any as S.Schema<ClustersMessage>,
   errors: [ClusterNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5712,8 +5712,8 @@ export const describeClusterSecurityGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<DescribeClusterSecurityGroupsMessage>,
-  output: __S(241, __c30, 1) as any as S.Schema<ClusterSecurityGroupMessage>,
+  input: __S(3328, __c104, 0) as any as S.Schema<DescribeClusterSecurityGroupsMessage>,
+  output: __S(3330, __c104, 2) as any as S.Schema<ClusterSecurityGroupMessage>,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5756,8 +5756,8 @@ export const describeClusterSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<DescribeClusterSnapshotsMessage>,
-  output: __S(246, __c30, 6) as any as S.Schema<SnapshotMessage>,
+  input: __S(3362, __c105, 2) as any as S.Schema<DescribeClusterSnapshotsMessage>,
+  output: __S(3364, __c105, 4) as any as S.Schema<SnapshotMessage>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotNotFoundFault,
@@ -5801,8 +5801,8 @@ export const describeClusterSubnetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSubnetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DescribeClusterSubnetGroupsMessage>,
-  output: __S(249, __c31, 1) as any as S.Schema<ClusterSubnetGroupMessage>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DescribeClusterSubnetGroupsMessage>,
+  output: __S(3394, __c106, 2) as any as S.Schema<ClusterSubnetGroupMessage>,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5829,8 +5829,8 @@ export const describeClusterTracks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MaintenanceTrack
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<DescribeClusterTracksMessage>,
-  output: __S(257, __c32, 1) as any as S.Schema<TrackListMessage>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DescribeClusterTracksMessage>,
+  output: __S(3431, __c107, 7) as any as S.Schema<TrackListMessage>,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5859,8 +5859,8 @@ export const describeClusterVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<DescribeClusterVersionsMessage>,
-  output: __S(261, __c32, 5) as any as S.Schema<ClusterVersionsMessage>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DescribeClusterVersionsMessage>,
+  output: __S(3459, __c108, 3) as any as S.Schema<ClusterVersionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5887,8 +5887,8 @@ export const describeCustomDomainAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<DescribeCustomDomainAssociationsMessage>,
-  output: __S(267, __c33, 3) as any as S.Schema<CustomDomainAssociationsMessage>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DescribeCustomDomainAssociationsMessage>,
+  output: __S(3493, __c109, 5) as any as S.Schema<CustomDomainAssociationsMessage>,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5913,8 +5913,8 @@ export const describeDataShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<DescribeDataSharesMessage>,
-  output: __S(270, __c33, 6) as any as S.Schema<DescribeDataSharesResult>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DescribeDataSharesMessage>,
+  output: __S(3521, __c110, 1) as any as S.Schema<DescribeDataSharesResult>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5938,8 +5938,8 @@ export const describeDataSharesForConsumer: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DescribeDataSharesForConsumerMessage>,
-  output: __S(272, __c34, 0) as any as S.Schema<DescribeDataSharesForConsumerResult>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DescribeDataSharesForConsumerMessage>,
+  output: __S(3585, __c112, 1) as any as S.Schema<DescribeDataSharesForConsumerResult>,
   errors: [InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5963,8 +5963,8 @@ export const describeDataSharesForProducer: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<DescribeDataSharesForProducerMessage>,
-  output: __S(274, __c34, 2) as any as S.Schema<DescribeDataSharesForProducerResult>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DescribeDataSharesForProducerMessage>,
+  output: __S(3617, __c113, 1) as any as S.Schema<DescribeDataSharesForProducerResult>,
   errors: [InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5993,8 +5993,8 @@ export const describeDefaultClusterParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DescribeDefaultClusterParametersMessage>,
-  output: __S(277, __c34, 5) as any as S.Schema<DescribeDefaultClusterParametersResult>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DescribeDefaultClusterParametersMessage>,
+  output: __S(3650, __c114, 2) as any as S.Schema<DescribeDefaultClusterParametersResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6022,8 +6022,8 @@ export const describeEndpointAccess: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointAccess
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DescribeEndpointAccessMessage>,
-  output: __S(280, __c35, 0) as any as S.Schema<EndpointAccessList>,
+  input: __S(3680, __c115, 0) as any as S.Schema<DescribeEndpointAccessMessage>,
+  output: __S(3682, __c115, 2) as any as S.Schema<EndpointAccessList>,
   errors: [ClusterNotFoundFault, EndpointNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6050,8 +6050,8 @@ export const describeEndpointAuthorization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointAuthorization
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DescribeEndpointAuthorizationMessage>,
-  output: __S(283, __c35, 3) as any as S.Schema<EndpointAuthorizationList>,
+  input: __S(3712, __c116, 0) as any as S.Schema<DescribeEndpointAuthorizationMessage>,
+  output: __S(3714, __c116, 2) as any as S.Schema<EndpointAuthorizationList>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6076,8 +6076,8 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DescribeEventCategoriesMessage>,
-  output: __S(289, __c36, 1) as any as S.Schema<EventCategoriesMessage>,
+  input: __S(3744, __c117, 0) as any as S.Schema<DescribeEventCategoriesMessage>,
+  output: __S(3749, __c117, 5) as any as S.Schema<EventCategoriesMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6098,8 +6098,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<DescribeEventsMessage>,
-  output: __S(293, __c36, 5) as any as S.Schema<EventsMessage>,
+  input: __S(3776, __c118, 0) as any as S.Schema<DescribeEventsMessage>,
+  output: __S(3779, __c118, 3) as any as S.Schema<EventsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6138,8 +6138,8 @@ export const describeEventSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<DescribeEventSubscriptionsMessage>,
-  output: __S(296, __c37, 0) as any as S.Schema<EventSubscriptionsMessage>,
+  input: __S(3808, __c119, 0) as any as S.Schema<DescribeEventSubscriptionsMessage>,
+  output: __S(3810, __c119, 2) as any as S.Schema<EventSubscriptionsMessage>,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6177,8 +6177,8 @@ export const describeHsmClientCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HsmClientCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<DescribeHsmClientCertificatesMessage>,
-  output: __S(299, __c37, 3) as any as S.Schema<HsmClientCertificateMessage>,
+  input: __S(3840, __c120, 0) as any as S.Schema<DescribeHsmClientCertificatesMessage>,
+  output: __S(3842, __c120, 2) as any as S.Schema<HsmClientCertificateMessage>,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6217,8 +6217,8 @@ export const describeHsmConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HsmConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<DescribeHsmConfigurationsMessage>,
-  output: __S(302, __c37, 6) as any as S.Schema<HsmConfigurationMessage>,
+  input: __S(3872, __c121, 0) as any as S.Schema<DescribeHsmConfigurationsMessage>,
+  output: __S(3874, __c121, 2) as any as S.Schema<HsmConfigurationMessage>,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6246,8 +6246,8 @@ export const describeInboundIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InboundIntegration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<DescribeInboundIntegrationsMessage>,
-  output: __S(306, __c38, 2) as any as S.Schema<InboundIntegrationsMessage>,
+  input: __S(3904, __c122, 0) as any as S.Schema<DescribeInboundIntegrationsMessage>,
+  output: __S(3907, __c122, 3) as any as S.Schema<InboundIntegrationsMessage>,
   errors: [IntegrationNotFoundFault, InvalidNamespaceFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6274,8 +6274,8 @@ export const describeIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Integration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<DescribeIntegrationsMessage>,
-  output: __S(312, __c39, 0) as any as S.Schema<IntegrationsMessage>,
+  input: __S(3939, __c123, 3) as any as S.Schema<DescribeIntegrationsMessage>,
+  output: __S(3941, __c123, 5) as any as S.Schema<IntegrationsMessage>,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6302,8 +6302,8 @@ export const describeLoggingStatus: API.OperationMethod<
   DescribeLoggingStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<DescribeLoggingStatusMessage>,
-  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
+  input: __S(3968, __c124, 0) as any as S.Schema<DescribeLoggingStatusMessage>,
+  output: __S(4000, __c125, 0) as any as S.Schema<LoggingStatus>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6328,8 +6328,8 @@ export const describeNodeConfigurationOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NodeConfigurationOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>,
-  output: __S(320, __c40, 0) as any as S.Schema<NodeConfigurationOptionsMessage>,
+  input: __S(4034, __c126, 2) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>,
+  output: __S(4037, __c126, 5) as any as S.Schema<NodeConfigurationOptionsMessage>,
   errors: [
     AccessToSnapshotDeniedFault,
     ClusterNotFoundFault,
@@ -6367,8 +6367,8 @@ export const describeOrderableClusterOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OrderableClusterOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<DescribeOrderableClusterOptionsMessage>,
-  output: __S(325, __c40, 5) as any as S.Schema<OrderableClusterOptionsMessage>,
+  input: __S(4064, __c127, 0) as any as S.Schema<DescribeOrderableClusterOptionsMessage>,
+  output: __S(4068, __c127, 4) as any as S.Schema<OrderableClusterOptionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6395,8 +6395,8 @@ export const describePartners: API.OperationMethod<
   DescribePartnersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<DescribePartnersInputMessage>,
-  output: __S(329, __c41, 1) as any as S.Schema<DescribePartnersOutputMessage>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DescribePartnersInputMessage>,
+  output: __S(4099, __c128, 3) as any as S.Schema<DescribePartnersOutputMessage>,
   errors: [ClusterNotFoundFault, UnauthorizedPartnerIntegrationFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6419,8 +6419,8 @@ export const describeQev2IdcApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Qev2IdcApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<DescribeQev2IdcApplicationsMessage>,
-  output: __S(332, __c41, 4) as any as S.Schema<DescribeQev2IdcApplicationsResult>,
+  input: __S(4128, __c129, 0) as any as S.Schema<DescribeQev2IdcApplicationsMessage>,
+  output: __S(4130, __c129, 2) as any as S.Schema<DescribeQev2IdcApplicationsResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6454,8 +6454,8 @@ export const describeRedshiftIdcApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RedshiftIdcApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>,
-  output: __S(335, __c41, 7) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>,
+  output: __S(4162, __c130, 2) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6489,8 +6489,8 @@ export const describeReservedNodeExchangeStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeExchangeStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DescribeReservedNodeExchangeStatusInputMessage>,
-  output: __S(338, __c42, 2) as any as S.Schema<DescribeReservedNodeExchangeStatusOutputMessage>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DescribeReservedNodeExchangeStatusInputMessage>,
+  output: __S(4194, __c131, 2) as any as S.Schema<DescribeReservedNodeExchangeStatusOutputMessage>,
   errors: [ReservedNodeExchangeNotFoundFault, ReservedNodeNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6527,8 +6527,8 @@ export const describeReservedNodeOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<DescribeReservedNodeOfferingsMessage>,
-  output: __S(342, __c42, 6) as any as S.Schema<ReservedNodeOfferingsMessage>,
+  input: __S(4224, __c132, 0) as any as S.Schema<DescribeReservedNodeOfferingsMessage>,
+  output: __S(4225, __c132, 1) as any as S.Schema<ReservedNodeOfferingsMessage>,
   errors: [
     DependentServiceUnavailableFault,
     ReservedNodeOfferingNotFoundFault,
@@ -6559,8 +6559,8 @@ export const describeReservedNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNode
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<DescribeReservedNodesMessage>,
-  output: __S(345, __c43, 1) as any as S.Schema<ReservedNodesMessage>,
+  input: __S(4320, __c135, 0) as any as S.Schema<DescribeReservedNodesMessage>,
+  output: __S(4322, __c135, 2) as any as S.Schema<ReservedNodesMessage>,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6593,8 +6593,8 @@ export const describeResize: API.OperationMethod<
   DescribeResizeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<DescribeResizeMessage>,
-  output: __S(44, __c5, 4) as any as S.Schema<ResizeProgressMessage>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DescribeResizeMessage>,
+  output: __S(707, __c22, 3) as any as S.Schema<ResizeProgressMessage>,
   errors: [ClusterNotFoundFault, ResizeNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6615,8 +6615,8 @@ export const describeScheduledActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<DescribeScheduledActionsMessage>,
-  output: __S(351, __c43, 7) as any as S.Schema<ScheduledActionsMessage>,
+  input: __S(4386, __c137, 2) as any as S.Schema<DescribeScheduledActionsMessage>,
+  output: __S(4388, __c137, 4) as any as S.Schema<ScheduledActionsMessage>,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6648,8 +6648,8 @@ export const describeSnapshotCopyGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotCopyGrant
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>,
-  output: __S(354, __c44, 2) as any as S.Schema<SnapshotCopyGrantMessage>,
+  input: __S(4416, __c138, 0) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>,
+  output: __S(4418, __c138, 2) as any as S.Schema<SnapshotCopyGrantMessage>,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6673,8 +6673,8 @@ export const describeSnapshotSchedules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotSchedule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<DescribeSnapshotSchedulesMessage>,
-  output: __S(357, __c44, 5) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DescribeSnapshotSchedulesMessage>,
+  output: __S(4450, __c139, 2) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6697,8 +6697,8 @@ export const describeStorage: API.OperationMethod<
   DescribeStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<DescribeStorageRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<CustomerStorageMessage>,
+  input: __S(4480, __c140, 0) as any as S.Schema<DescribeStorageRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<CustomerStorageMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6724,8 +6724,8 @@ export const describeTableRestoreStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableRestoreStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<DescribeTableRestoreStatusMessage>,
-  output: __S(363, __c45, 3) as any as S.Schema<TableRestoreStatusMessage>,
+  input: __S(4512, __c141, 0) as any as S.Schema<DescribeTableRestoreStatusMessage>,
+  output: __S(4514, __c141, 2) as any as S.Schema<TableRestoreStatusMessage>,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6771,8 +6771,8 @@ export const describeTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaggedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<DescribeTagsMessage>,
-  output: __S(367, __c45, 7) as any as S.Schema<TaggedResourceListMessage>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DescribeTagsMessage>,
+  output: __S(4579, __c143, 3) as any as S.Schema<TaggedResourceListMessage>,
   errors: [InvalidTagFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6812,8 +6812,8 @@ export const describeUsageLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsageLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<DescribeUsageLimitsMessage>,
-  output: __S(370, __c46, 2) as any as S.Schema<UsageLimitList>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DescribeUsageLimitsMessage>,
+  output: __S(4610, __c144, 2) as any as S.Schema<UsageLimitList>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6841,8 +6841,8 @@ export const disableLogging: API.OperationMethod<
   DisableLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<DisableLoggingMessage>,
-  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DisableLoggingMessage>,
+  output: __S(4000, __c125, 0) as any as S.Schema<LoggingStatus>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6870,8 +6870,8 @@ export const disableSnapshotCopy: API.OperationMethod<
   DisableSnapshotCopyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<DisableSnapshotCopyMessage>,
-  output: __S(373, __c46, 5) as any as S.Schema<DisableSnapshotCopyResult>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DisableSnapshotCopyMessage>,
+  output: __S(4673, __c146, 1) as any as S.Schema<DisableSnapshotCopyResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -6897,8 +6897,8 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   DisassociateDataShareConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<DisassociateDataShareConsumerMessage>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DisassociateDataShareConsumerMessage>,
+  output: __S(226, __c7, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6924,8 +6924,8 @@ export const enableLogging: API.OperationMethod<
   EnableLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<EnableLoggingMessage>,
-  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
+  input: __S(4736, __c148, 0) as any as S.Schema<EnableLoggingMessage>,
+  output: __S(4000, __c125, 0) as any as S.Schema<LoggingStatus>,
   errors: [
     BucketNotFoundFault,
     ClusterNotFoundFault,
@@ -6963,8 +6963,8 @@ export const enableSnapshotCopy: API.OperationMethod<
   EnableSnapshotCopyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<EnableSnapshotCopyMessage>,
-  output: __S(377, __c47, 1) as any as S.Schema<EnableSnapshotCopyResult>,
+  input: __S(4768, __c149, 0) as any as S.Schema<EnableSnapshotCopyMessage>,
+  output: __S(4769, __c149, 1) as any as S.Schema<EnableSnapshotCopyResult>,
   errors: [
     ClusterNotFoundFault,
     CopyToRegionDisabledFault,
@@ -6998,8 +6998,8 @@ export const failoverPrimaryCompute: API.OperationMethod<
   FailoverPrimaryComputeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<FailoverPrimaryComputeInputMessage>,
-  output: __S(379, __c47, 3) as any as S.Schema<FailoverPrimaryComputeResult>,
+  input: __S(4800, __c150, 0) as any as S.Schema<FailoverPrimaryComputeInputMessage>,
+  output: __S(4801, __c150, 1) as any as S.Schema<FailoverPrimaryComputeResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -7048,8 +7048,8 @@ export const getClusterCredentials: API.OperationMethod<
   GetClusterCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<GetClusterCredentialsMessage>,
-  output: __S(382, __c47, 6) as any as S.Schema<ClusterCredentials>,
+  input: __S(4833, __c151, 1) as any as S.Schema<GetClusterCredentialsMessage>,
+  output: __S(4834, __c151, 2) as any as S.Schema<ClusterCredentials>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7079,8 +7079,8 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   GetClusterCredentialsWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<GetClusterCredentialsWithIAMMessage>,
-  output: __S(384, __c48, 0) as any as S.Schema<ClusterExtendedCredentials>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetClusterCredentialsWithIAMMessage>,
+  output: __S(4865, __c152, 1) as any as S.Schema<ClusterExtendedCredentials>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7113,8 +7113,8 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   GetIdentityCenterAuthTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetIdentityCenterAuthTokenRequest>,
-  output: __S(387, __c48, 3) as any as S.Schema<GetIdentityCenterAuthTokenResponse>,
+  input: __S(4897, __c153, 1) as any as S.Schema<GetIdentityCenterAuthTokenRequest>,
+  output: __S(4898, __c153, 2) as any as S.Schema<GetIdentityCenterAuthTokenResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -7149,14 +7149,14 @@ export const getReservedNodeExchangeConfigurationOptions: API.PaginatedOperation
   ReservedNodeConfigurationOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    388,
-    __c48,
-    4,
+    4928,
+    __c154,
+    0,
   ) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsInputMessage>,
   output: __S(
-    391,
-    __c48,
-    7,
+    4931,
+    __c154,
+    3,
   ) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsOutputMessage>,
   errors: [
     ClusterNotFoundFault,
@@ -7198,8 +7198,8 @@ export const getReservedNodeExchangeOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetReservedNodeExchangeOfferingsInputMessage>,
-  output: __S(393, __c49, 1) as any as S.Schema<GetReservedNodeExchangeOfferingsOutputMessage>,
+  input: __S(4960, __c155, 0) as any as S.Schema<GetReservedNodeExchangeOfferingsInputMessage>,
+  output: __S(4961, __c155, 1) as any as S.Schema<GetReservedNodeExchangeOfferingsOutputMessage>,
   errors: [
     DependentServiceUnavailableFault,
     InvalidReservedNodeStateFault,
@@ -7233,8 +7233,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetResourcePolicyMessage>,
-  output: __S(396, __c49, 4) as any as S.Schema<GetResourcePolicyResult>,
+  input: __S(4992, __c156, 0) as any as S.Schema<GetResourcePolicyMessage>,
+  output: __S(4993, __c156, 1) as any as S.Schema<GetResourcePolicyResult>,
   errors: [InvalidPolicyFault, ResourceNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7255,8 +7255,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ListRecommendationsMessage>,
-  output: __S(404, __c50, 4) as any as S.Schema<ListRecommendationsResult>,
+  input: __S(5056, __c158, 0) as any as S.Schema<ListRecommendationsMessage>,
+  output: __S(5063, __c158, 7) as any as S.Schema<ListRecommendationsResult>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7283,8 +7283,8 @@ export const modifyAquaConfiguration: API.OperationMethod<
   ModifyAquaConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ModifyAquaInputMessage>,
-  output: __S(406, __c50, 6) as any as S.Schema<ModifyAquaOutputMessage>,
+  input: __S(5088, __c159, 0) as any as S.Schema<ModifyAquaInputMessage>,
+  output: __S(5089, __c159, 1) as any as S.Schema<ModifyAquaOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7305,8 +7305,8 @@ export const modifyAuthenticationProfile: API.OperationMethod<
   ModifyAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ModifyAuthenticationProfileMessage>,
-  output: __S(408, __c51, 0) as any as S.Schema<ModifyAuthenticationProfileResult>,
+  input: __S(5120, __c160, 0) as any as S.Schema<ModifyAuthenticationProfileMessage>,
+  output: __S(5121, __c160, 1) as any as S.Schema<ModifyAuthenticationProfileResult>,
   errors: [
     AuthenticationProfileNotFoundFault,
     AuthenticationProfileQuotaExceededFault,
@@ -7378,8 +7378,8 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<ModifyClusterMessage>,
-  output: __S(410, __c51, 2) as any as S.Schema<ModifyClusterResult>,
+  input: __S(5152, __c161, 0) as any as S.Schema<ModifyClusterMessage>,
+  output: __S(5153, __c161, 1) as any as S.Schema<ModifyClusterResult>,
   errors: [
     ClusterAlreadyExistsFault,
     ClusterNotFoundFault,
@@ -7425,8 +7425,8 @@ export const modifyClusterDbRevision: API.OperationMethod<
   ModifyClusterDbRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ModifyClusterDbRevisionMessage>,
-  output: __S(412, __c51, 4) as any as S.Schema<ModifyClusterDbRevisionResult>,
+  input: __S(5184, __c162, 0) as any as S.Schema<ModifyClusterDbRevisionMessage>,
+  output: __S(5185, __c162, 1) as any as S.Schema<ModifyClusterDbRevisionResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterOnLatestRevisionFault,
@@ -7456,8 +7456,8 @@ export const modifyClusterIamRoles: API.OperationMethod<
   ModifyClusterIamRolesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ModifyClusterIamRolesMessage>,
-  output: __S(414, __c51, 6) as any as S.Schema<ModifyClusterIamRolesResult>,
+  input: __S(5216, __c163, 0) as any as S.Schema<ModifyClusterIamRolesMessage>,
+  output: __S(5217, __c163, 1) as any as S.Schema<ModifyClusterIamRolesResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7477,8 +7477,8 @@ export const modifyClusterMaintenance: API.OperationMethod<
   ModifyClusterMaintenanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<ModifyClusterMaintenanceMessage>,
-  output: __S(416, __c52, 0) as any as S.Schema<ModifyClusterMaintenanceResult>,
+  input: __S(5248, __c164, 0) as any as S.Schema<ModifyClusterMaintenanceMessage>,
+  output: __S(5249, __c164, 1) as any as S.Schema<ModifyClusterMaintenanceResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7502,8 +7502,8 @@ export const modifyClusterParameterGroup: API.OperationMethod<
   ModifyClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<ModifyClusterParameterGroupMessage>,
-  output: __S(418, __c52, 2) as any as S.Schema<ClusterParameterGroupNameMessage>,
+  input: __S(5280, __c165, 0) as any as S.Schema<ModifyClusterParameterGroupMessage>,
+  output: __S(5312, __c166, 0) as any as S.Schema<ClusterParameterGroupNameMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7526,8 +7526,8 @@ export const modifyClusterSnapshot: API.OperationMethod<
   ModifyClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<ModifyClusterSnapshotMessage>,
-  output: __S(420, __c52, 4) as any as S.Schema<ModifyClusterSnapshotResult>,
+  input: __S(5344, __c167, 0) as any as S.Schema<ModifyClusterSnapshotMessage>,
+  output: __S(5345, __c167, 1) as any as S.Schema<ModifyClusterSnapshotResult>,
   errors: [
     ClusterSnapshotNotFoundFault,
     InvalidClusterSnapshotStateFault,
@@ -7552,8 +7552,8 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
   ModifyClusterSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>,
-  output: __S(422, __c52, 6) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>,
+  output: __S(5377, __c168, 1) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterSnapshotScheduleStateFault,
@@ -7600,8 +7600,8 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
   ModifyClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<ModifyClusterSubnetGroupMessage>,
-  output: __S(424, __c53, 0) as any as S.Schema<ModifyClusterSubnetGroupResult>,
+  input: __S(5408, __c169, 0) as any as S.Schema<ModifyClusterSubnetGroupMessage>,
+  output: __S(5409, __c169, 1) as any as S.Schema<ModifyClusterSubnetGroupResult>,
   errors: [
     ClusterSubnetGroupNotFoundFault,
     ClusterSubnetQuotaExceededFault,
@@ -7630,8 +7630,8 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
   ModifyCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<ModifyCustomDomainAssociationMessage>,
-  output: __S(426, __c53, 2) as any as S.Schema<ModifyCustomDomainAssociationResult>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ModifyCustomDomainAssociationMessage>,
+  output: __S(5441, __c170, 1) as any as S.Schema<ModifyCustomDomainAssociationResult>,
   errors: [
     ClusterNotFoundFault,
     CustomCnameAssociationFault,
@@ -7660,8 +7660,8 @@ export const modifyEndpointAccess: API.OperationMethod<
   ModifyEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<ModifyEndpointAccessMessage>,
-  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ModifyEndpointAccessMessage>,
+  output: __S(1440, __c45, 0) as any as S.Schema<EndpointAccess>,
   errors: [
     ClusterNotFoundFault,
     EndpointNotFoundFault,
@@ -7695,8 +7695,8 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<ModifyEventSubscriptionMessage>,
-  output: __S(429, __c53, 5) as any as S.Schema<ModifyEventSubscriptionResult>,
+  input: __S(5504, __c172, 0) as any as S.Schema<ModifyEventSubscriptionMessage>,
+  output: __S(5505, __c172, 1) as any as S.Schema<ModifyEventSubscriptionResult>,
   errors: [
     InvalidSubscriptionStateFault,
     SNSInvalidTopicFault,
@@ -7729,8 +7729,8 @@ export const modifyIntegration: API.OperationMethod<
   ModifyIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<ModifyIntegrationMessage>,
-  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
+  input: __S(5536, __c173, 0) as any as S.Schema<ModifyIntegrationMessage>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Integration>,
   errors: [
     IntegrationAlreadyExistsFault,
     IntegrationConflictOperationFault,
@@ -7761,8 +7761,8 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
   ModifyLakehouseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<ModifyLakehouseConfigurationMessage>,
-  output: __S(432, __c54, 0) as any as S.Schema<LakehouseConfiguration>,
+  input: __S(5568, __c174, 0) as any as S.Schema<ModifyLakehouseConfigurationMessage>,
+  output: __S(5569, __c174, 1) as any as S.Schema<LakehouseConfiguration>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceAccessDeniedFault,
@@ -7792,8 +7792,8 @@ export const modifyQev2IdcApplication: API.OperationMethod<
   ModifyQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ModifyQev2IdcApplicationMessage>,
-  output: __S(434, __c54, 2) as any as S.Schema<ModifyQev2IdcApplicationResult>,
+  input: __S(5600, __c175, 0) as any as S.Schema<ModifyQev2IdcApplicationMessage>,
+  output: __S(5601, __c175, 1) as any as S.Schema<ModifyQev2IdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -7820,8 +7820,8 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
   ModifyRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>,
-  output: __S(436, __c54, 4) as any as S.Schema<ModifyRedshiftIdcApplicationResult>,
+  input: __S(5632, __c176, 0) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>,
+  output: __S(5633, __c176, 1) as any as S.Schema<ModifyRedshiftIdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -7851,8 +7851,8 @@ export const modifyScheduledAction: API.OperationMethod<
   ModifyScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ModifyScheduledActionMessage>,
-  output: __S(153, __c19, 1) as any as S.Schema<ScheduledAction>,
+  input: __S(5664, __c177, 0) as any as S.Schema<ModifyScheduledActionMessage>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ScheduledAction>,
   errors: [
     ClusterNotFoundFault,
     InvalidScheduledActionFault,
@@ -7889,8 +7889,8 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
   ModifySnapshotCopyRetentionPeriodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>,
-  output: __S(439, __c54, 7) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>,
+  input: __S(5696, __c178, 0) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>,
+  output: __S(5697, __c178, 1) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -7918,8 +7918,8 @@ export const modifySnapshotSchedule: API.OperationMethod<
   ModifySnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<ModifySnapshotScheduleMessage>,
-  output: __S(162, __c20, 2) as any as S.Schema<SnapshotSchedule>,
+  input: __S(5728, __c179, 0) as any as S.Schema<ModifySnapshotScheduleMessage>,
+  output: __S(2212, __c69, 4) as any as S.Schema<SnapshotSchedule>,
   errors: [
     InvalidScheduleFault,
     SnapshotScheduleNotFoundFault,
@@ -7945,8 +7945,8 @@ export const modifyUsageLimit: API.OperationMethod<
   ModifyUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<ModifyUsageLimitMessage>,
-  output: __S(166, __c20, 6) as any as S.Schema<UsageLimit>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ModifyUsageLimitMessage>,
+  output: __S(2304, __c72, 0) as any as S.Schema<UsageLimit>,
   errors: [InvalidUsageLimitFault, UnsupportedOperationFault, UsageLimitNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7967,8 +7967,8 @@ export const pauseCluster: API.OperationMethod<
   PauseClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PauseClusterMessage>,
-  output: __S(442, __c55, 2) as any as S.Schema<PauseClusterResult>,
+  input: __S(2016, __c63, 0) as any as S.Schema<PauseClusterMessage>,
+  output: __S(5792, __c181, 0) as any as S.Schema<PauseClusterResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7998,8 +7998,8 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
   PurchaseReservedNodeOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<PurchaseReservedNodeOfferingMessage>,
-  output: __S(444, __c55, 4) as any as S.Schema<PurchaseReservedNodeOfferingResult>,
+  input: __S(5824, __c182, 0) as any as S.Schema<PurchaseReservedNodeOfferingMessage>,
+  output: __S(5825, __c182, 1) as any as S.Schema<PurchaseReservedNodeOfferingResult>,
   errors: [
     ReservedNodeAlreadyExistsFault,
     ReservedNodeOfferingNotFoundFault,
@@ -8026,8 +8026,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<PutResourcePolicyMessage>,
-  output: __S(446, __c55, 6) as any as S.Schema<PutResourcePolicyResult>,
+  input: __S(5856, __c183, 0) as any as S.Schema<PutResourcePolicyMessage>,
+  output: __S(5857, __c183, 1) as any as S.Schema<PutResourcePolicyResult>,
   errors: [
     ConflictPolicyUpdateFault,
     InvalidPolicyFault,
@@ -8056,8 +8056,8 @@ export const rebootCluster: API.OperationMethod<
   RebootClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<RebootClusterMessage>,
-  output: __S(448, __c56, 0) as any as S.Schema<RebootClusterResult>,
+  input: __S(5888, __c184, 0) as any as S.Schema<RebootClusterMessage>,
+  output: __S(5889, __c184, 1) as any as S.Schema<RebootClusterResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8078,8 +8078,8 @@ export const registerNamespace: API.OperationMethod<
   RegisterNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<RegisterNamespaceInputMessage>,
-  output: __S(450, __c56, 2) as any as S.Schema<RegisterNamespaceOutputMessage>,
+  input: __S(5920, __c185, 0) as any as S.Schema<RegisterNamespaceInputMessage>,
+  output: __S(5921, __c185, 1) as any as S.Schema<RegisterNamespaceOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8096,8 +8096,8 @@ export const rejectDataShare: API.OperationMethod<
   RejectDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<RejectDataShareMessage>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
+  input: __S(5952, __c186, 0) as any as S.Schema<RejectDataShareMessage>,
+  output: __S(226, __c7, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8120,8 +8120,8 @@ export const resetClusterParameterGroup: API.OperationMethod<
   ResetClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<ResetClusterParameterGroupMessage>,
-  output: __S(418, __c52, 2) as any as S.Schema<ClusterParameterGroupNameMessage>,
+  input: __S(5984, __c187, 0) as any as S.Schema<ResetClusterParameterGroupMessage>,
+  output: __S(5312, __c166, 0) as any as S.Schema<ClusterParameterGroupNameMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8184,8 +8184,8 @@ export const resizeCluster: API.OperationMethod<
   ResizeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ResizeClusterMessage>,
-  output: __S(453, __c56, 5) as any as S.Schema<ResizeClusterResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ResizeClusterMessage>,
+  output: __S(6016, __c188, 0) as any as S.Schema<ResizeClusterResult>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceUnavailableFault,
@@ -8284,8 +8284,8 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
   RestoreFromClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<RestoreFromClusterSnapshotMessage>,
-  output: __S(455, __c56, 7) as any as S.Schema<RestoreFromClusterSnapshotResult>,
+  input: __S(6048, __c189, 0) as any as S.Schema<RestoreFromClusterSnapshotMessage>,
+  output: __S(6049, __c189, 1) as any as S.Schema<RestoreFromClusterSnapshotResult>,
   errors: [
     AccessToSnapshotDeniedFault,
     ClusterAlreadyExistsFault,
@@ -8361,8 +8361,8 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
   RestoreTableFromClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>,
-  output: __S(457, __c57, 1) as any as S.Schema<RestoreTableFromClusterSnapshotResult>,
+  input: __S(6080, __c190, 0) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>,
+  output: __S(6081, __c190, 1) as any as S.Schema<RestoreTableFromClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotNotFoundFault,
@@ -8392,8 +8392,8 @@ export const resumeCluster: API.OperationMethod<
   ResumeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ResumeClusterMessage>,
-  output: __S(458, __c57, 2) as any as S.Schema<ResumeClusterResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ResumeClusterMessage>,
+  output: __S(6112, __c191, 0) as any as S.Schema<ResumeClusterResult>,
   errors: [
     ClusterNotFoundFault,
     InsufficientClusterCapacityFault,
@@ -8423,8 +8423,8 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
   RevokeClusterSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>,
-  output: __S(460, __c57, 4) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>,
+  input: __S(6144, __c192, 0) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>,
+  output: __S(6145, __c192, 1) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>,
   errors: [
     AuthorizationNotFoundFault,
     ClusterSecurityGroupNotFoundFault,
@@ -8453,8 +8453,8 @@ export const revokeEndpointAccess: API.OperationMethod<
   RevokeEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<RevokeEndpointAccessMessage>,
-  output: __S(23, __c2, 7) as any as S.Schema<EndpointAuthorization>,
+  input: __S(6176, __c193, 0) as any as S.Schema<RevokeEndpointAccessMessage>,
+  output: __S(449, __c14, 1) as any as S.Schema<EndpointAuthorization>,
   errors: [
     ClusterNotFoundFault,
     EndpointAuthorizationNotFoundFault,
@@ -8490,8 +8490,8 @@ export const revokeSnapshotAccess: API.OperationMethod<
   RevokeSnapshotAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<RevokeSnapshotAccessMessage>,
-  output: __S(463, __c57, 7) as any as S.Schema<RevokeSnapshotAccessResult>,
+  input: __S(6208, __c194, 0) as any as S.Schema<RevokeSnapshotAccessMessage>,
+  output: __S(6209, __c194, 1) as any as S.Schema<RevokeSnapshotAccessResult>,
   errors: [
     AccessToSnapshotDeniedFault,
     AuthorizationNotFoundFault,
@@ -8518,8 +8518,8 @@ export const rotateEncryptionKey: API.OperationMethod<
   RotateEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<RotateEncryptionKeyMessage>,
-  output: __S(465, __c58, 1) as any as S.Schema<RotateEncryptionKeyResult>,
+  input: __S(6240, __c195, 0) as any as S.Schema<RotateEncryptionKeyMessage>,
+  output: __S(6241, __c195, 1) as any as S.Schema<RotateEncryptionKeyResult>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceRequestThrottlingFault,
@@ -8546,8 +8546,8 @@ export const updatePartnerStatus: API.OperationMethod<
   UpdatePartnerStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<UpdatePartnerStatusInputMessage>,
-  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
+  input: __S(6272, __c196, 0) as any as S.Schema<UpdatePartnerStatusInputMessage>,
+  output: __S(160, __c5, 0) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -8573,18 +8573,74 @@ function __c0(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ ExchangedReservedNode: S.optional(__S(96, __c3, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "AcceptReservedNodeExchangeOutputMessage",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkInterfaceId: S.optional(S.String),
+          SubnetId: S.optional(S.String),
+          PrivateIpAddress: S.optional(S.String),
+          AvailabilityZone: S.optional(S.String),
+          Ipv6Address: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(32, __c1, 0).pipe(/*@__PURE__*/ T.XmlName("NetworkInterface")).annotate({
+          identifier: "NetworkInterface",
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          VpcEndpointId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          NetworkInterfaces: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({ identifier: "VpcEndpoint" });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ __S(34, __c1, 2).pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint")).annotate({
+          identifier: "VpcEndpoint",
+        }),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Port: S.optional(S.Number),
+          VpcEndpoints: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           RecurringChargeAmount: S.optional(S.Number),
           RecurringChargeFrequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringCharge" });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1, __c0, 1).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
+        /*@__PURE__*/ __S(64, __c2, 0).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
           identifier: "RecurringCharge",
         }),
       );
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeId: S.optional(S.String),
@@ -8598,17 +8654,15 @@ function __c0(j: number): any {
           NodeCount: S.optional(S.Number),
           State: S.optional(S.String),
           OfferingType: S.optional(S.String),
-          RecurringCharges: S.optional(__S(2, __c0, 2)),
+          RecurringCharges: S.optional(__S(65, __c2, 1)),
           ReservedNodeOfferingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedNode" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ExchangedReservedNode: S.optional(__S(3, __c0, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptReservedNodeExchangeOutputMessage",
-      });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -8619,7 +8673,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PartnerIntegrationInputMessage",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.optional(S.String), PartnerName: S.optional(S.String) }).pipe(
           ns,
@@ -8627,7 +8685,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PartnerIntegrationOutputMessage",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
@@ -8641,7 +8703,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8656,19 +8718,23 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DataShareAssociation" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(224, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
           ProducerArn: S.optional(S.String),
           AllowPubliclyAccessibleConsumers: S.optional(S.Boolean),
-          DataShareAssociations: S.optional(__S(9, __c1, 1)),
+          DataShareAssociations: S.optional(__S(225, __c7, 1)),
           ManagedBy: S.optional(S.String),
           DataShareType: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DataShare" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
@@ -8679,66 +8745,80 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AuthorizeClusterSecurityGroupIngressMessage",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
+      ).annotate({
+        identifier: "AuthorizeClusterSecurityGroupIngressResult",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(
-        /*@__PURE__*/ __S(12, __c1, 4)
+        /*@__PURE__*/ __S(288, __c9, 0)
           .pipe(/*@__PURE__*/ T.XmlName("Tag"))
           .annotate({ identifier: "Tag" }),
       );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          EC2SecurityGroupName: S.optional(S.String),
-          EC2SecurityGroupOwnerId: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "EC2SecurityGroup" });
-    case 7:
-      return S.Array(
-        /*@__PURE__*/ __S(14, __c1, 6).pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup")).annotate({
-          identifier: "EC2SecurityGroup",
-        }),
-      );
   }
 }
-function __c2(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
-          CIDRIP: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          EC2SecurityGroupName: S.optional(S.String),
+          EC2SecurityGroupOwnerId: S.optional(S.String),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
-      ).annotate({ identifier: "IPRange" });
+      ).annotate({ identifier: "EC2SecurityGroup" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(16, __c2, 0).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
-          identifier: "IPRange",
-        }),
+        /*@__PURE__*/ __S(352, __c11, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup"))
+          .annotate({
+            identifier: "EC2SecurityGroup",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
+          Status: S.optional(S.String),
+          CIDRIP: S.optional(S.String),
+          Tags: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "IPRange" });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ __S(354, __c11, 2).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
+          identifier: "IPRange",
+        }),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          EC2SecurityGroups: S.optional(__S(15, __c1, 7)),
-          IPRanges: S.optional(__S(17, __c2, 1)),
-          Tags: S.optional(__S(13, __c1, 5)),
+          EC2SecurityGroups: S.optional(__S(353, __c11, 1)),
+          IPRanges: S.optional(__S(355, __c11, 3)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "ClusterSecurityGroup" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeClusterSecurityGroupIngressResult",
-      });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
@@ -8748,19 +8828,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AuthorizeDataShareMessage",
       });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcIdentifier")));
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           Account: S.optional(S.String),
-          VpcIds: S.optional(__S(21, __c2, 5)),
+          VpcIds: S.optional(__S(448, __c14, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AuthorizeEndpointAccessMessage",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcIdentifier")));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Grantor: S.optional(S.String),
@@ -8770,13 +8858,13 @@ function __c2(j: number): any {
           ClusterStatus: S.optional(S.String),
           Status: S.optional(S.String),
           AllowedAllVPCs: S.optional(S.Boolean),
-          AllowedVPCs: S.optional(__S(21, __c2, 5)),
+          AllowedVPCs: S.optional(__S(448, __c14, 0)),
           EndpointCount: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAuthorization" });
   }
 }
-function __c3(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8791,19 +8879,29 @@ function __c3(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
+      ).annotate({
+        identifier: "AuthorizeSnapshotAccessResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String), AccountAlias: S.optional(S.String) }),
       ).annotate({ identifier: "AccountWithRestoreAccess" });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(25, __c3, 1)
+        /*@__PURE__*/ __S(512, __c16, 0)
           .pipe(/*@__PURE__*/ T.XmlName("AccountWithRestoreAccess"))
           .annotate({
             identifier: "AccountWithRestoreAccess",
           }),
       );
-    case 3:
+    case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NodeType")));
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SnapshotIdentifier: S.optional(S.String),
@@ -8824,7 +8922,7 @@ function __c3(j: number): any {
           Encrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           EncryptedWithHSM: S.optional(S.Boolean),
-          AccountsWithRestoreAccess: S.optional(__S(26, __c3, 2)),
+          AccountsWithRestoreAccess: S.optional(__S(513, __c16, 1)),
           OwnerAccount: S.optional(S.String),
           TotalBackupSizeInMegaBytes: S.optional(S.Number),
           ActualIncrementalBackupSizeInMegaBytes: S.optional(S.Number),
@@ -8833,8 +8931,8 @@ function __c3(j: number): any {
           EstimatedSecondsToCompletion: S.optional(S.Number),
           ElapsedTimeInSeconds: S.optional(S.Number),
           SourceRegion: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
-          RestorableNodeTypes: S.optional(__S(27, __c3, 3)),
+          Tags: S.optional(__S(320, __c10, 0)),
+          RestorableNodeTypes: S.optional(__S(514, __c16, 2)),
           EnhancedVpcRouting: S.optional(S.Boolean),
           MaintenanceTrackName: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
@@ -8847,44 +8945,50 @@ function __c3(j: number): any {
           SnapshotArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Snapshot" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeSnapshotAccessResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          SnapshotIdentifier: S.optional(S.String),
-          SnapshotClusterIdentifier: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteClusterSnapshotMessage",
-      });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(
-        /*@__PURE__*/ __S(30, __c3, 6)
+        /*@__PURE__*/ __S(608, __c19, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DeleteClusterSnapshotMessage"))
           .annotate({
             identifier: "DeleteClusterSnapshotMessage",
           }),
       );
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Identifiers: S.optional(__S(31, __c3, 7)) }).pipe(
+        S.Struct({ Identifiers: S.optional(__S(544, __c17, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDeleteClusterSnapshotsRequest",
       });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("String")));
     case 2:
+      return S.Array(
+        /*@__PURE__*/ __S(577, __c18, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
+          .annotate({
+            identifier: "SnapshotErrorMessage",
+          }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Resources: S.optional(__S(576, __c18, 0)),
+          Errors: S.optional(__S(546, __c17, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchDeleteClusterSnapshotsResult",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("String")));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SnapshotIdentifier: S.optional(S.String),
@@ -8893,53 +8997,53 @@ function __c4(j: number): any {
           FailureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotErrorMessage" });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(34, __c4, 2)
-          .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
-          .annotate({
-            identifier: "SnapshotErrorMessage",
-          }),
-      );
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(__S(33, __c4, 1)),
-          Errors: S.optional(__S(35, __c4, 3)),
-        }).pipe(ns),
+          SnapshotIdentifier: S.optional(S.String),
+          SnapshotClusterIdentifier: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "BatchDeleteClusterSnapshotsResult",
+        identifier: "DeleteClusterSnapshotMessage",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SnapshotIdentifierList: S.optional(__S(33, __c4, 1)),
+          SnapshotIdentifierList: S.optional(__S(576, __c18, 0)),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchModifyClusterSnapshotsMessage",
       });
-    case 6:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(34, __c4, 2)
+        /*@__PURE__*/ __S(577, __c18, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
           .annotate({
             identifier: "SnapshotErrorMessage",
           }),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(__S(33, __c4, 1)),
-          Errors: S.optional(__S(38, __c4, 6)),
+          Resources: S.optional(__S(576, __c18, 0)),
+          Errors: S.optional(__S(641, __c20, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchModifyClusterSnapshotsOutputMessage",
       });
   }
 }
-function __c5(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8947,22 +9051,26 @@ function __c5(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelResizeMessage" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
     case 1:
       return S.Array(S.String);
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           TargetNodeType: S.optional(S.String),
           TargetNumberOfNodes: S.optional(S.Number),
           TargetClusterType: S.optional(S.String),
           Status: S.optional(S.String),
-          ImportTablesCompleted: S.optional(__S(41, __c5, 1)),
-          ImportTablesInProgress: S.optional(__S(42, __c5, 2)),
-          ImportTablesNotStarted: S.optional(__S(43, __c5, 3)),
+          ImportTablesCompleted: S.optional(__S(704, __c22, 0)),
+          ImportTablesInProgress: S.optional(__S(705, __c22, 1)),
+          ImportTablesNotStarted: S.optional(__S(706, __c22, 2)),
           AvgResizeRateInMegaBytesPerSecond: S.optional(S.Number),
           TotalResizeDataInMegaBytes: S.optional(S.Number),
           ProgressInMegaBytes: S.optional(S.Number),
@@ -8974,7 +9082,11 @@ function __c5(j: number): any {
           DataTransferProgressPercent: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "ResizeProgressMessage" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceSnapshotIdentifier: S.optional(S.String),
@@ -8985,13 +9097,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CopyClusterSnapshotMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
       ).annotate({
         identifier: "CopyClusterSnapshotResult",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
@@ -9000,11 +9116,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateAuthenticationProfileMessage",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
@@ -9013,15 +9125,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAuthenticationProfileResult",
       });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroupName")),
-      );
-    case 2:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")));
-    case 3:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("IamRoleArn")));
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBName: S.optional(S.String),
@@ -9030,8 +9138,8 @@ function __c6(j: number): any {
           NodeType: S.optional(S.String),
           MasterUsername: S.optional(S.String),
           MasterUserPassword: S.optional(SensitiveString),
-          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
-          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
+          ClusterSecurityGroups: S.optional(__S(1024, __c32, 0)),
+          VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
           ClusterSubnetGroupName: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
@@ -9047,11 +9155,11 @@ function __c6(j: number): any {
           HsmClientCertificateIdentifier: S.optional(S.String),
           HsmConfigurationIdentifier: S.optional(S.String),
           ElasticIp: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
           KmsKeyId: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
           AdditionalInfo: S.optional(S.String),
-          IamRoles: S.optional(__S(51, __c6, 3)),
+          IamRoles: S.optional(__S(1056, __c33, 0)),
           MaintenanceTrackName: S.optional(S.String),
           SnapshotScheduleIdentifier: S.optional(S.String),
           AvailabilityZoneRelocation: S.optional(S.Boolean),
@@ -9067,231 +9175,57 @@ function __c6(j: number): any {
           ExtraComputeForAutomaticOptimization: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateClusterMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NetworkInterfaceId: S.optional(S.String),
-          SubnetId: S.optional(S.String),
-          PrivateIpAddress: S.optional(S.String),
-          AvailabilityZone: S.optional(S.String),
-          Ipv6Address: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(53, __c6, 5).pipe(/*@__PURE__*/ T.XmlName("NetworkInterface")).annotate({
-          identifier: "NetworkInterface",
-        }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          VpcEndpointId: S.optional(S.String),
-          VpcId: S.optional(S.String),
-          NetworkInterfaces: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "VpcEndpoint" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(55, __c6, 7).pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint")).annotate({
-          identifier: "VpcEndpoint",
-        }),
-      );
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Address: S.optional(S.String),
-          Port: S.optional(S.Number),
-          VpcEndpoints: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ClusterSecurityGroupMembership",
-      });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(58, __c7, 2)
-          .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
-          .annotate({
-            identifier: "ClusterSecurityGroupMembership",
-          }),
-      );
-    case 4:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "CreateClusterResult" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({
         identifier: "VpcSecurityGroupMembership",
       });
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ __S(60, __c7, 4).pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroup")).annotate({
-          identifier: "VpcSecurityGroupMembership",
-        }),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ParameterName: S.optional(S.String),
-          ParameterApplyStatus: S.optional(S.String),
-          ParameterApplyErrorDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterParameterStatus" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ParameterGroupName: S.optional(S.String),
-          ParameterApplyStatus: S.optional(S.String),
-          ClusterParameterStatusList: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "ClusterParameterGroupStatus",
-      });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(64, __c8, 0)
-          .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
+        /*@__PURE__*/ __S(832, __c26, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroup"))
           .annotate({
-            identifier: "ClusterParameterGroupStatus",
+            identifier: "VpcSecurityGroupMembership",
           }),
       );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MasterUserPassword: S.optional(SensitiveString),
-          NodeType: S.optional(S.String),
-          NumberOfNodes: S.optional(S.Number),
-          ClusterType: S.optional(S.String),
-          ClusterVersion: S.optional(S.String),
-          AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
-          ClusterIdentifier: S.optional(S.String),
-          PubliclyAccessible: S.optional(S.Boolean),
-          EnhancedVpcRouting: S.optional(S.Boolean),
-          MaintenanceTrackName: S.optional(S.String),
-          EncryptionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PendingModifiedValues" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          CurrentRestoreRateInMegaBytesPerSecond: S.optional(S.Number),
-          SnapshotSizeInMegaBytes: S.optional(S.Number),
-          ProgressInMegaBytes: S.optional(S.Number),
-          ElapsedTimeInSeconds: S.optional(S.Number),
-          EstimatedTimeToCompletionInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RestoreStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          CurrentRateInMegaBytesPerSecond: S.optional(S.Number),
-          TotalDataInMegaBytes: S.optional(S.Number),
-          DataTransferredInMegaBytes: S.optional(S.Number),
-          EstimatedTimeToCompletionInSeconds: S.optional(S.Number),
-          ElapsedTimeInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DataTransferProgress" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          HsmClientCertificateIdentifier: S.optional(S.String),
-          HsmConfigurationIdentifier: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HsmStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationRegion: S.optional(S.String),
-          RetentionPeriod: S.optional(S.Number),
-          ManualSnapshotRetentionPeriod: S.optional(S.Number),
-          SnapshotCopyGrantName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterSnapshotCopyStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          NodeRole: S.optional(S.String),
-          PrivateIPAddress: S.optional(S.String),
-          PublicIPAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterNode" });
   }
 }
-function __c9(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ElasticIp: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({ identifier: "ElasticIpStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ IamRoleArn: S.optional(S.String), ApplyStatus: S.optional(S.String) }),
-      ).annotate({ identifier: "ClusterIamRole" });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(74, __c9, 2).pipe(/*@__PURE__*/ T.XmlName("ClusterIamRole")).annotate({
-          identifier: "ClusterIamRole",
-        }),
-      );
-    case 4:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DeferMaintenanceIdentifier: S.optional(S.String),
-          DeferMaintenanceStartTime: S.optional(
-            T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ),
-          DeferMaintenanceEndTime: S.optional(
-            T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ),
+          S3Tables: S.optional(__S(896, __c28, 0)),
+          S3TableNamespace: S.optional(S.String),
+          S3TableGranularity: S.optional(S.String),
+          EnabledAll: S.optional(S.Boolean),
+          LastIngestionTimes: S.optional(__S(897, __c28, 1)),
         }),
-      ).annotate({
-        identifier: "DeferredMaintenanceWindow",
-      });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(77, __c9, 5)
-          .pipe(/*@__PURE__*/ T.XmlName("DeferredMaintenanceWindow"))
-          .annotate({
-            identifier: "DeferredMaintenanceWindow",
-          }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResizeType: S.optional(S.String), AllowCancelResize: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "ResizeInfo" });
+      ).annotate({ identifier: "S3TablePublishStatus" });
   }
 }
-function __c10(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AquaStatus: S.optional(S.String),
-          AquaConfigurationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AquaConfiguration" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeExchangeRequestId: S.optional(S.String),
@@ -9307,32 +9241,186 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReservedNodeExchangeStatus",
       });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AquaStatus: S.optional(S.String),
+          AquaConfigurationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AquaConfiguration" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClusterSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ClusterSecurityGroupMembership",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(992, __c31, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
+          .annotate({
+            identifier: "ClusterSecurityGroupMembership",
+          }),
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZone: S.optional(S.String),
-          ClusterNodes: S.optional(__S(72, __c9, 0)),
+          ParameterName: S.optional(S.String),
+          ParameterApplyStatus: S.optional(S.String),
+          ParameterApplyErrorDescription: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SecondaryClusterInfo" });
+      ).annotate({ identifier: "ClusterParameterStatus" });
     case 3:
-      return S.Array(S.String);
+      return S.Array(__S(994, __c31, 2));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          S3Tables: S.optional(__S(83, __c10, 3)),
-          S3TableNamespace: S.optional(S.String),
-          S3TableGranularity: S.optional(S.String),
-          EnabledAll: S.optional(S.Boolean),
-          LastIngestionTimes: S.optional(__S(84, __c10, 4)),
+          ParameterGroupName: S.optional(S.String),
+          ParameterApplyStatus: S.optional(S.String),
+          ClusterParameterStatusList: S.optional(__S(995, __c31, 3)),
         }),
-      ).annotate({ identifier: "S3TablePublishStatus" });
+      ).annotate({
+        identifier: "ClusterParameterGroupStatus",
+      });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ __S(996, __c31, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
+          .annotate({
+            identifier: "ClusterParameterGroupStatus",
+          }),
+      );
     case 6:
-      return S.suspend(() => S.Struct({ S3Tables: S.optional(__S(85, __c10, 5)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({
+          MasterUserPassword: S.optional(SensitiveString),
+          NodeType: S.optional(S.String),
+          NumberOfNodes: S.optional(S.Number),
+          ClusterType: S.optional(S.String),
+          ClusterVersion: S.optional(S.String),
+          AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
+          ClusterIdentifier: S.optional(S.String),
+          PubliclyAccessible: S.optional(S.Boolean),
+          EnhancedVpcRouting: S.optional(S.Boolean),
+          MaintenanceTrackName: S.optional(S.String),
+          EncryptionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PendingModifiedValues" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          CurrentRestoreRateInMegaBytesPerSecond: S.optional(S.Number),
+          SnapshotSizeInMegaBytes: S.optional(S.Number),
+          ProgressInMegaBytes: S.optional(S.Number),
+          ElapsedTimeInSeconds: S.optional(S.Number),
+          EstimatedTimeToCompletionInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RestoreStatus" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          CurrentRateInMegaBytesPerSecond: S.optional(S.Number),
+          TotalDataInMegaBytes: S.optional(S.Number),
+          DataTransferredInMegaBytes: S.optional(S.Number),
+          EstimatedTimeToCompletionInSeconds: S.optional(S.Number),
+          ElapsedTimeInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DataTransferProgress" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          HsmClientCertificateIdentifier: S.optional(S.String),
+          HsmConfigurationIdentifier: S.optional(S.String),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HsmStatus" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationRegion: S.optional(S.String),
+          RetentionPeriod: S.optional(S.Number),
+          ManualSnapshotRetentionPeriod: S.optional(S.Number),
+          SnapshotCopyGrantName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterSnapshotCopyStatus",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          NodeRole: S.optional(S.String),
+          PrivateIPAddress: S.optional(S.String),
+          PublicIPAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterNode" });
+    case 12:
+      return S.Array(__S(1003, __c31, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ ElasticIp: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({ identifier: "ElasticIpStatus" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({ IamRoleArn: S.optional(S.String), ApplyStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "ClusterIamRole" });
+    case 15:
+      return S.Array(
+        /*@__PURE__*/ __S(1006, __c31, 14)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterIamRole"))
+          .annotate({
+            identifier: "ClusterIamRole",
+          }),
+      );
+    case 16:
+      return S.Array(S.String);
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          DeferMaintenanceIdentifier: S.optional(S.String),
+          DeferMaintenanceStartTime: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          DeferMaintenanceEndTime: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+        }),
+      ).annotate({
+        identifier: "DeferredMaintenanceWindow",
+      });
+    case 18:
+      return S.Array(
+        /*@__PURE__*/ __S(1009, __c31, 17)
+          .pipe(/*@__PURE__*/ T.XmlName("DeferredMaintenanceWindow"))
+          .annotate({
+            identifier: "DeferredMaintenanceWindow",
+          }),
+      );
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ ResizeType: S.optional(S.String), AllowCancelResize: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "ResizeInfo" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZone: S.optional(S.String),
+          ClusterNodes: S.optional(__S(1004, __c31, 12)),
+        }),
+      ).annotate({ identifier: "SecondaryClusterInfo" });
+    case 21:
+      return S.suspend(() => S.Struct({ S3Tables: S.optional(__S(898, __c28, 2)) })).annotate({
         identifier: "LoggingPublishStatus",
       });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -9346,35 +9434,35 @@ function __c10(j: number): any {
           ClusterCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
-          ClusterSecurityGroups: S.optional(__S(59, __c7, 3)),
-          VpcSecurityGroups: S.optional(__S(61, __c7, 5)),
-          ClusterParameterGroups: S.optional(__S(65, __c8, 1)),
+          ClusterSecurityGroups: S.optional(__S(993, __c31, 1)),
+          VpcSecurityGroups: S.optional(__S(833, __c26, 1)),
+          ClusterParameterGroups: S.optional(__S(997, __c31, 5)),
           ClusterSubnetGroupName: S.optional(S.String),
           VpcId: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
-          PendingModifiedValues: S.optional(__S(66, __c8, 2)),
+          PendingModifiedValues: S.optional(__S(998, __c31, 6)),
           ClusterVersion: S.optional(S.String),
           AllowVersionUpgrade: S.optional(S.Boolean),
           NumberOfNodes: S.optional(S.Number),
           PubliclyAccessible: S.optional(S.Boolean),
           Encrypted: S.optional(S.Boolean),
-          RestoreStatus: S.optional(__S(67, __c8, 3)),
-          DataTransferProgress: S.optional(__S(68, __c8, 4)),
-          HsmStatus: S.optional(__S(69, __c8, 5)),
-          ClusterSnapshotCopyStatus: S.optional(__S(70, __c8, 6)),
+          RestoreStatus: S.optional(__S(999, __c31, 7)),
+          DataTransferProgress: S.optional(__S(1000, __c31, 8)),
+          HsmStatus: S.optional(__S(1001, __c31, 9)),
+          ClusterSnapshotCopyStatus: S.optional(__S(1002, __c31, 10)),
           ClusterPublicKey: S.optional(S.String),
-          ClusterNodes: S.optional(__S(72, __c9, 0)),
-          ElasticIpStatus: S.optional(__S(73, __c9, 1)),
+          ClusterNodes: S.optional(__S(1004, __c31, 12)),
+          ElasticIpStatus: S.optional(__S(1005, __c31, 13)),
           ClusterRevisionNumber: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
           KmsKeyId: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
-          IamRoles: S.optional(__S(75, __c9, 3)),
-          PendingActions: S.optional(__S(76, __c9, 4)),
+          IamRoles: S.optional(__S(1007, __c31, 15)),
+          PendingActions: S.optional(__S(1008, __c31, 16)),
           MaintenanceTrackName: S.optional(S.String),
           ElasticResizeNumberOfNodeOptions: S.optional(S.String),
-          DeferredMaintenanceWindows: S.optional(__S(78, __c9, 6)),
+          DeferredMaintenanceWindows: S.optional(__S(1010, __c31, 18)),
           SnapshotScheduleIdentifier: S.optional(S.String),
           SnapshotScheduleState: S.optional(S.String),
           ExpectedNextSnapshotScheduleTime: S.optional(
@@ -9384,13 +9472,13 @@ function __c10(j: number): any {
           NextMaintenanceWindowStartTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          ResizeInfo: S.optional(__S(79, __c9, 7)),
+          ResizeInfo: S.optional(__S(1011, __c31, 19)),
           AvailabilityZoneRelocationStatus: S.optional(S.String),
           ClusterNamespaceArn: S.optional(S.String),
           TotalStorageCapacityInMegaBytes: S.optional(S.Number),
-          AquaConfiguration: S.optional(__S(80, __c10, 0)),
+          AquaConfiguration: S.optional(__S(960, __c30, 0)),
           DefaultIamRoleArn: S.optional(S.String),
-          ReservedNodeExchangeStatus: S.optional(__S(81, __c10, 1)),
+          ReservedNodeExchangeStatus: S.optional(__S(928, __c29, 0)),
           CustomDomainName: S.optional(S.String),
           CustomDomainCertificateArn: S.optional(S.String),
           CustomDomainCertificateExpiryDate: S.optional(
@@ -9400,157 +9488,193 @@ function __c10(j: number): any {
           MasterPasswordSecretKmsKeyId: S.optional(S.String),
           IpAddressType: S.optional(S.String),
           MultiAZ: S.optional(S.String),
-          MultiAZSecondary: S.optional(__S(82, __c10, 2)),
+          MultiAZSecondary: S.optional(__S(1012, __c31, 20)),
           LakehouseRegistrationStatus: S.optional(S.String),
           CatalogArn: S.optional(S.String),
           ExtraComputeForAutomaticOptimization: S.optional(S.String),
-          LoggingPublishStatus: S.optional(__S(86, __c10, 6)),
+          LoggingPublishStatus: S.optional(__S(1013, __c31, 21)),
         }),
       ).annotate({ identifier: "Cluster" });
   }
 }
-function __c11(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterResult",
-      });
-    case 1:
+      return S.Array(
+        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroupName")),
+      );
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("IamRoleArn")));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           ParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterParameterGroupMessage",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ClusterParameterGroup: S.optional(__S(1120, __c35, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateClusterParameterGroupResult",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           ParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "ClusterParameterGroup" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ClusterParameterGroup: S.optional(__S(90, __c11, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterParameterGroupResult",
-      });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSecurityGroupMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
       ).annotate({
         identifier: "CreateClusterSecurityGroupResult",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotIdentifier: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSnapshotMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
       ).annotate({
         identifier: "CreateClusterSnapshotResult",
       });
   }
 }
-function __c12(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          SubnetIds: S.optional(__S(96, __c12, 0)),
-          Tags: S.optional(__S(13, __c1, 5)),
+          SubnetIds: S.optional(__S(1344, __c42, 0)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSubnetGroupMessage",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ClusterSubnetGroup: S.optional(__S(1314, __c41, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateClusterSubnetGroupResult",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "SupportedPlatform",
       });
-    case 3:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(98, __c12, 2)
+        /*@__PURE__*/ __S(1280, __c40, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedPlatform"))
           .annotate({
             identifier: "SupportedPlatform",
           }),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          SupportedPlatforms: S.optional(__S(99, __c12, 3)),
+          SupportedPlatforms: S.optional(__S(1281, __c40, 1)),
         }),
       ).annotate({ identifier: "AvailabilityZone" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubnetIdentifier: S.optional(S.String),
-          SubnetAvailabilityZone: S.optional(__S(100, __c12, 4)),
+          SubnetAvailabilityZone: S.optional(__S(1282, __c40, 2)),
           SubnetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
-    case 6:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(101, __c12, 5).pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
-          identifier: "Subnet",
-        }),
+        /*@__PURE__*/ __S(1312, __c41, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Subnet"))
+          .annotate({ identifier: "Subnet" }),
       );
-    case 7:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           Description: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetGroupStatus: S.optional(S.String),
-          Subnets: S.optional(__S(102, __c12, 6)),
-          Tags: S.optional(__S(13, __c1, 5)),
-          SupportedClusterIpAddressTypes: S.optional(__S(103, __c12, 7)),
+          Subnets: S.optional(__S(1313, __c41, 1)),
+          Tags: S.optional(__S(320, __c10, 0)),
+          SupportedClusterIpAddressTypes: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({ identifier: "ClusterSubnetGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ClusterSubnetGroup: S.optional(__S(104, __c13, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterSubnetGroupResult",
-      });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
@@ -9560,7 +9684,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateCustomDomainAssociationMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
@@ -9571,19 +9695,27 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateCustomDomainAssociationResult",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
           EndpointName: S.optional(S.String),
           SubnetGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
+          VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEndpointAccessMessage",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -9594,17 +9726,13 @@ function __c13(j: number): any {
           EndpointCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Port: S.optional(S.Number),
           Address: S.optional(S.String),
-          VpcSecurityGroups: S.optional(__S(61, __c7, 5)),
-          VpcEndpoint: S.optional(__S(55, __c6, 7)),
+          VpcSecurityGroups: S.optional(__S(833, __c26, 1)),
+          VpcEndpoint: S.optional(__S(34, __c1, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAccess" });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")));
   }
 }
-function __c14(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9612,15 +9740,33 @@ function __c14(j: number): any {
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIds: S.optional(__S(110, __c13, 6)),
-          EventCategories: S.optional(__S(111, __c13, 7)),
+          SourceIds: S.optional(__S(1536, __c48, 0)),
+          EventCategories: S.optional(__S(1504, __c47, 0)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEventSubscriptionMessage",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EventSubscription: S.optional(__S(1537, __c48, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateEventSubscriptionResult",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9632,43 +9778,49 @@ function __c14(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
           SourceType: S.optional(S.String),
-          SourceIdsList: S.optional(__S(110, __c13, 6)),
-          EventCategoriesList: S.optional(__S(111, __c13, 7)),
+          SourceIdsList: S.optional(__S(1536, __c48, 0)),
+          EventCategoriesList: S.optional(__S(1504, __c47, 0)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "EventSubscription" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(113, __c14, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEventSubscriptionResult",
-      });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmClientCertificateIdentifier: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHsmClientCertificateMessage",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ HsmClientCertificate: S.optional(__S(1600, __c50, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateHsmClientCertificateResult",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmClientCertificateIdentifier: S.optional(S.String),
           HsmClientCertificatePublicKey: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "HsmClientCertificate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ HsmClientCertificate: S.optional(__S(116, __c14, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateHsmClientCertificateResult",
-      });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmConfigurationIdentifier: S.optional(S.String),
@@ -9677,58 +9829,70 @@ function __c14(j: number): any {
           HsmPartitionName: S.optional(S.String),
           HsmPartitionPassword: S.optional(S.String),
           HsmServerPublicCertificate: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHsmConfigurationMessage",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ HsmConfiguration: S.optional(__S(1664, __c52, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateHsmConfigurationResult",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmConfigurationIdentifier: S.optional(S.String),
           Description: S.optional(S.String),
           HsmIpAddress: S.optional(S.String),
           HsmPartitionName: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "HsmConfiguration" });
   }
 }
-function __c15(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ HsmConfiguration: S.optional(__S(119, __c14, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateHsmConfigurationResult",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
           IntegrationName: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          TagList: S.optional(__S(13, __c1, 5)),
-          AdditionalEncryptionContext: S.optional(__S(121, __c15, 1)),
+          TagList: S.optional(__S(320, __c10, 0)),
+          AdditionalEncryptionContext: S.optional(__S(1760, __c55, 0)),
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIntegrationMessage" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "IntegrationError" });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(123, __c15, 3)
+        /*@__PURE__*/ __S(1728, __c54, 0)
           .pipe(/*@__PURE__*/ T.XmlName("IntegrationError"))
           .annotate({
             identifier: "IntegrationError",
           }),
       );
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IntegrationArn: S.optional(S.String),
@@ -9736,26 +9900,40 @@ function __c15(j: number): any {
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
           Status: S.optional(S.String),
-          Errors: S.optional(__S(124, __c15, 4)),
+          Errors: S.optional(__S(1729, __c54, 1)),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Description: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          AdditionalEncryptionContext: S.optional(__S(121, __c15, 1)),
-          Tags: S.optional(__S(13, __c1, 5)),
+          AdditionalEncryptionContext: S.optional(__S(1760, __c55, 0)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "Integration" });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdcInstanceArn: S.optional(S.String),
           Qev2IdcApplicationName: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateQev2IdcApplicationMessage",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Qev2IdcApplication: S.optional(__S(1824, __c57, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateQev2IdcApplicationResult",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdcInstanceArn: S.optional(S.String),
@@ -9764,71 +9942,12 @@ function __c15(j: number): any {
           IdcManagedApplicationArn: S.optional(S.String),
           IdcOnboardStatus: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "Qev2IdcApplication" });
   }
 }
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Qev2IdcApplication: S.optional(__S(127, __c15, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateQev2IdcApplicationResult",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          TrustedTokenIssuerArn: S.optional(S.String),
-          AuthorizedAudiencesList: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({ identifier: "AuthorizedTokenIssuer" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
-        identifier: "LakeFormationQuery",
-      });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ LakeFormationQuery: __S(132, __c16, 4) })]);
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
-        identifier: "ReadWriteAccess",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ ReadWriteAccess: __S(135, __c16, 7) })]);
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
-        identifier: "Connect",
-      });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ Connect: __S(138, __c17, 2) })]);
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ LakeFormation: __S(134, __c16, 6) }),
-        /*@__PURE__*/ S.Struct({ S3AccessGrants: __S(137, __c17, 1) }),
-        /*@__PURE__*/ S.Struct({ Redshift: __S(140, __c17, 4) }),
-      ]);
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("TagKey")));
-  }
-}
-function __c18(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9838,16 +9957,75 @@ function __c18(j: number): any {
           IdentityNamespace: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
-          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
+          AuthorizedTokenIssuerList: S.optional(__S(1922, __c60, 2)),
+          ServiceIntegrations: S.optional(__S(1933, __c60, 13)),
           ApplicationType: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
-          SsoTagKeys: S.optional(__S(143, __c17, 7)),
+          Tags: S.optional(__S(320, __c10, 0)),
+          SsoTagKeys: S.optional(__S(1888, __c59, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateRedshiftIdcApplicationMessage",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ RedshiftIdcApplication: S.optional(__S(1934, __c60, 14)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateRedshiftIdcApplicationResult",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("TagKey")));
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrustedTokenIssuerArn: S.optional(S.String),
+          AuthorizedAudiencesList: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "AuthorizedTokenIssuer" });
+    case 2:
+      return S.Array(__S(1921, __c60, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "LakeFormationQuery",
+      });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ LakeFormationQuery: __S(1923, __c60, 3) })]);
+    case 5:
+      return S.Array(__S(1924, __c60, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "ReadWriteAccess",
+      });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ ReadWriteAccess: __S(1926, __c60, 6) })]);
+    case 8:
+      return S.Array(__S(1927, __c60, 7));
+    case 9:
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "Connect",
+      });
+    case 10:
+      return S.Union([/*@__PURE__*/ S.Struct({ Connect: __S(1929, __c60, 9) })]);
+    case 11:
+      return S.Array(__S(1930, __c60, 10));
+    case 12:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ LakeFormation: __S(1925, __c60, 5) }),
+        /*@__PURE__*/ S.Struct({ S3AccessGrants: __S(1928, __c60, 8) }),
+        /*@__PURE__*/ S.Struct({ Redshift: __S(1931, __c60, 11) }),
+      ]);
+    case 13:
+      return S.Array(__S(1932, __c60, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           IdcInstanceArn: S.optional(S.String),
@@ -9858,56 +10036,22 @@ function __c18(j: number): any {
           IamRoleArn: S.optional(S.String),
           IdcManagedApplicationArn: S.optional(S.String),
           IdcOnboardStatus: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
-          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
+          AuthorizedTokenIssuerList: S.optional(__S(1922, __c60, 2)),
+          ServiceIntegrations: S.optional(__S(1933, __c60, 13)),
           ApplicationType: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
-          SsoTagKeys: S.optional(__S(143, __c17, 7)),
+          Tags: S.optional(__S(320, __c10, 0)),
+          SsoTagKeys: S.optional(__S(1888, __c59, 0)),
         }),
       ).annotate({ identifier: "RedshiftIdcApplication" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ RedshiftIdcApplication: S.optional(__S(145, __c18, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRedshiftIdcApplicationResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterIdentifier: S.optional(S.String),
-          ClusterType: S.optional(S.String),
-          NodeType: S.optional(S.String),
-          NumberOfNodes: S.optional(S.Number),
-          Classic: S.optional(S.Boolean),
-          ReservedNodeId: S.optional(S.String),
-          TargetReservedNodeOfferingId: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ResizeClusterMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PauseClusterMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ResumeClusterMessage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ResizeCluster: S.optional(__S(147, __c18, 3)),
-          PauseCluster: S.optional(__S(148, __c18, 4)),
-          ResumeCluster: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({ identifier: "ScheduledActionType" });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(__S(150, __c18, 6)),
+          TargetAction: S.optional(__S(1984, __c62, 0)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
@@ -9920,78 +10064,134 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResizeCluster: S.optional(__S(2048, __c64, 0)),
+          PauseCluster: S.optional(__S(2016, __c63, 0)),
+          ResumeCluster: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "ScheduledActionType" });
+    case 1:
       return S.Array(
         /*@__PURE__*/ T.DateFromString.pipe(/*@__PURE__*/ T.TimestampFormat("date-time")).pipe(
           /*@__PURE__*/ T.XmlName("ScheduledActionTime"),
         ),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(__S(150, __c18, 6)),
+          TargetAction: S.optional(__S(1984, __c62, 0)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
           State: S.optional(S.String),
-          NextInvocations: S.optional(__S(152, __c19, 0)),
+          NextInvocations: S.optional(__S(1985, __c62, 1)),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
       ).annotate({ identifier: "ScheduledAction" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PauseClusterMessage" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterIdentifier: S.optional(S.String),
+          ClusterType: S.optional(S.String),
+          NodeType: S.optional(S.String),
+          NumberOfNodes: S.optional(S.Number),
+          Classic: S.optional(S.Boolean),
+          ReservedNodeId: S.optional(S.String),
+          TargetReservedNodeOfferingId: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ResizeClusterMessage" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResumeClusterMessage" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotCopyGrantName: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateSnapshotCopyGrantMessage",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ SnapshotCopyGrant: S.optional(__S(2144, __c67, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateSnapshotCopyGrantResult",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotCopyGrantName: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "SnapshotCopyGrant" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ SnapshotCopyGrant: S.optional(__S(155, __c19, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSnapshotCopyGrantResult",
-      });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ScheduleDefinition")));
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
+          ScheduleDefinitions: S.optional(__S(2208, __c69, 0)),
           ScheduleIdentifier: S.optional(S.String),
           ScheduleDescription: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
           DryRun: S.optional(S.Boolean),
           NextInvocations: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateSnapshotScheduleMessage",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ScheduleDefinition")));
+    case 1:
       return S.Array(
         /*@__PURE__*/ T.DateFromString.pipe(/*@__PURE__*/ T.TimestampFormat("date-time")).pipe(
           /*@__PURE__*/ T.XmlName("SnapshotTime"),
         ),
       );
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10000,37 +10200,45 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ClusterAssociatedToSchedule",
       });
-    case 1:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(160, __c20, 0)
+        /*@__PURE__*/ __S(2210, __c69, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterAssociatedToSchedule"))
           .annotate({
             identifier: "ClusterAssociatedToSchedule",
           }),
       );
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
+          ScheduleDefinitions: S.optional(__S(2208, __c69, 0)),
           ScheduleIdentifier: S.optional(S.String),
           ScheduleDescription: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
-          NextInvocations: S.optional(__S(159, __c19, 7)),
+          Tags: S.optional(__S(320, __c10, 0)),
+          NextInvocations: S.optional(__S(2209, __c69, 1)),
           AssociatedClusterCount: S.optional(S.Number),
-          AssociatedClusters: S.optional(__S(161, __c20, 1)),
+          AssociatedClusters: S.optional(__S(2211, __c69, 3)),
         }).pipe(ns),
       ).annotate({ identifier: "SnapshotSchedule" });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(__S(13, __c1, 5)) }).pipe(
+        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(__S(320, __c10, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTagsMessage" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateTagsResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10039,10 +10247,14 @@ function __c20(j: number): any {
           Amount: S.optional(S.Number),
           Period: S.optional(S.String),
           BreachAction: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUsageLimitMessage" });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UsageLimitId: S.optional(S.String),
@@ -10052,10 +10264,14 @@ function __c20(j: number): any {
           Amount: S.optional(S.Number),
           Period: S.optional(S.String),
           BreachAction: S.optional(S.String),
-          Tags: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "UsageLimit" });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
@@ -10066,7 +10282,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10082,7 +10298,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteAuthenticationProfileResult",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10091,13 +10311,15 @@ function __c21(j: number): any {
           FinalClusterSnapshotRetentionPeriod: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteClusterMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteClusterResult",
-      });
-    case 4:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteClusterResult" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ParameterGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10105,11 +10327,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteClusterParameterGroupMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterParameterGroupResponse",
       });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10117,21 +10343,25 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteClusterSecurityGroupMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterSecurityGroupResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteClusterSnapshotResult",
       });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterSubnetGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10139,11 +10369,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteClusterSubnetGroupMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterSubnetGroupResponse",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10152,11 +10386,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteCustomDomainAssociationMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteCustomDomainAssociationResponse",
       });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EndpointName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10164,7 +10402,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteEndpointAccessMessage",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SubscriptionName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10172,13 +10414,13 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteEventSubscriptionMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteEventSubscriptionResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10192,7 +10434,11 @@ function __c23(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteHsmClientCertificateResponse",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ HsmConfigurationIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10200,17 +10446,25 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteHsmConfigurationMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteHsmConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IntegrationArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteIntegrationMessage" });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Qev2IdcApplicationArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10218,11 +10472,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteQev2IdcApplicationMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteQev2IdcApplicationResponse",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RedshiftIdcApplicationArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10230,15 +10488,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteRedshiftIdcApplicationMessage",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteRedshiftIdcApplicationResponse",
       });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10246,11 +10504,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteResourcePolicyResponse",
       });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ScheduledActionName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10258,11 +10520,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteScheduledActionMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteScheduledActionResponse",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SnapshotCopyGrantName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10270,11 +10536,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteSnapshotCopyGrantMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSnapshotCopyGrantResponse",
       });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ScheduleIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10282,116 +10552,128 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteSnapshotScheduleMessage",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSnapshotScheduleResponse",
       });
-    case 1:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceName: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteTagsMessage" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteTagsResponse",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UsageLimitId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteUsageLimitMessage" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteUsageLimitResponse",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceIdentifier: S.optional(__S(3042, __c95, 2)),
+          ConsumerIdentifiers: S.optional(__S(3043, __c95, 3)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeregisterNamespaceInputMessage",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "DeregisterNamespaceOutputMessage",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamespaceIdentifier: S.optional(S.String),
           WorkgroupIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerlessIdentifier" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ ClusterIdentifier: S.optional(S.String) })).annotate({
         identifier: "ProvisionedIdentifier",
       });
-    case 7:
+    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ServerlessIdentifier: __S(205, __c25, 5) }),
-        /*@__PURE__*/ S.Struct({ ProvisionedIdentifier: __S(206, __c25, 6) }),
+        /*@__PURE__*/ S.Struct({ ServerlessIdentifier: __S(3040, __c95, 0) }),
+        /*@__PURE__*/ S.Struct({ ProvisionedIdentifier: __S(3041, __c95, 1) }),
       ]);
+    case 3:
+      return S.Array(S.String);
   }
 }
-function __c26(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AttributeName")));
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          NamespaceIdentifier: S.optional(__S(207, __c25, 7)),
-          ConsumerIdentifiers: S.optional(__S(208, __c26, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterNamespaceInputMessage",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "DeregisterNamespaceOutputMessage",
-      });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AttributeName")));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AttributeNames: S.optional(__S(211, __c26, 3)) }).pipe(
+        S.Struct({ AttributeNames: S.optional(__S(3072, __c96, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DescribeAccountAttributesMessage",
       });
-    case 5:
+    case 2:
       return S.suspend(() => S.Struct({ AttributeValue: S.optional(S.String) })).annotate({
         identifier: "AttributeValueTarget",
       });
-    case 6:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(213, __c26, 5)
+        /*@__PURE__*/ __S(3074, __c96, 2)
           .pipe(/*@__PURE__*/ T.XmlName("AttributeValueTarget"))
           .annotate({
             identifier: "AttributeValueTarget",
           }),
       );
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.optional(S.String),
-          AttributeValues: S.optional(__S(214, __c26, 6)),
+          AttributeValues: S.optional(__S(3075, __c96, 3)),
         }),
       ).annotate({ identifier: "AccountAttribute" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.Array(
-        /*@__PURE__*/ __S(215, __c26, 7)
+        /*@__PURE__*/ __S(3076, __c96, 4)
           .pipe(/*@__PURE__*/ T.XmlName("AccountAttribute"))
           .annotate({
             identifier: "AccountAttribute",
           }),
       );
-    case 1:
+    case 6:
       return S.suspend(() =>
-        S.Struct({ AccountAttributes: S.optional(__S(216, __c27, 0)) }).pipe(ns),
+        S.Struct({ AccountAttributes: S.optional(__S(3077, __c96, 5)) }).pipe(ns),
       ).annotate({ identifier: "AccountAttributeList" });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10399,22 +10681,26 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DescribeAuthenticationProfilesMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
           AuthenticationProfileContent: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationProfile" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3105, __c97, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ AuthenticationProfiles: S.optional(__S(220, __c27, 4)) }).pipe(ns),
+        S.Struct({ AuthenticationProfiles: S.optional(__S(3106, __c97, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAuthenticationProfilesResult",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10424,7 +10710,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DescribeClusterDbRevisionsMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DatabaseRevision: S.optional(S.String),
@@ -10434,17 +10720,13 @@ function __c27(j: number): any {
           ),
         }),
       ).annotate({ identifier: "RevisionTarget" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(223, __c27, 7).pipe(/*@__PURE__*/ T.XmlName("RevisionTarget")).annotate({
+        /*@__PURE__*/ __S(3137, __c98, 1).pipe(/*@__PURE__*/ T.XmlName("RevisionTarget")).annotate({
           identifier: "RevisionTarget",
         }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10452,60 +10734,68 @@ function __c28(j: number): any {
           DatabaseRevisionReleaseDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          RevisionTargets: S.optional(__S(224, __c28, 0)),
+          RevisionTargets: S.optional(__S(3138, __c98, 2)),
         }),
       ).annotate({ identifier: "ClusterDbRevision" });
-    case 2:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(225, __c28, 1)
+        /*@__PURE__*/ __S(3139, __c98, 3)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterDbRevision"))
           .annotate({
             identifier: "ClusterDbRevision",
           }),
       );
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterDbRevisions: S.optional(__S(226, __c28, 2)),
+          ClusterDbRevisions: S.optional(__S(3140, __c98, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterDbRevisionsMessage",
       });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("TagValue")));
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterParameterGroupsMessage",
       });
-    case 6:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(90, __c11, 2)
+        /*@__PURE__*/ __S(1120, __c35, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
           .annotate({
             identifier: "ClusterParameterGroup",
           }),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ParameterGroups: S.optional(__S(230, __c28, 6)),
+          ParameterGroups: S.optional(__S(3169, __c99, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterParameterGroupsMessage",
       });
   }
 }
-function __c29(j: number): any {
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("TagValue")));
+  }
+}
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10521,6 +10811,19 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          Parameters: S.optional(__S(3265, __c102, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ClusterParameterGroupDetails",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ParameterName: S.optional(S.String),
           ParameterValue: S.optional(S.String),
           Description: S.optional(S.String),
@@ -10532,91 +10835,91 @@ function __c29(j: number): any {
           MinimumEngineVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Parameter" });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(233, __c29, 1).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
+        /*@__PURE__*/ __S(3264, __c102, 0).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
           identifier: "Parameter",
         }),
       );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Parameters: S.optional(__S(234, __c29, 2)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "ClusterParameterGroupDetails",
-      });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeClustersMessage" });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(87, __c10, 7).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
+        /*@__PURE__*/ __S(1014, __c31, 22).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
           identifier: "Cluster",
         }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Clusters: S.optional(__S(237, __c29, 5)) }).pipe(
+        S.Struct({ Marker: S.optional(S.String), Clusters: S.optional(__S(3297, __c103, 1)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ClustersMessage" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSecurityGroupsMessage",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(18, __c2, 2)
+        /*@__PURE__*/ __S(356, __c11, 4)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
           .annotate({
             identifier: "ClusterSecurityGroup",
           }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterSecurityGroups: S.optional(__S(240, __c30, 0)),
+          ClusterSecurityGroups: S.optional(__S(3329, __c104, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterSecurityGroupMessage",
       });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Attribute: S.optional(S.String),
           SortOrder: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotSortingEntity" });
-    case 3:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(242, __c30, 2)
+        /*@__PURE__*/ __S(3360, __c105, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotSortingEntity"))
           .annotate({
             identifier: "SnapshotSortingEntity",
           }),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10628,60 +10931,65 @@ function __c30(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
           ClusterExists: S.optional(S.Boolean),
-          SortingEntities: S.optional(__S(243, __c30, 3)),
+          SortingEntities: S.optional(__S(3361, __c105, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSnapshotsMessage",
       });
-    case 5:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(28, __c3, 4).pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
+        /*@__PURE__*/ __S(515, __c16, 3).pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
           identifier: "Snapshot",
         }),
       );
-    case 6:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Snapshots: S.optional(__S(245, __c30, 5)) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Marker: S.optional(S.String),
+          Snapshots: S.optional(__S(3363, __c105, 3)),
+        }).pipe(ns),
       ).annotate({ identifier: "SnapshotMessage" });
-    case 7:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSubnetGroupsMessage",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(104, __c13, 0)
+        /*@__PURE__*/ __S(1314, __c41, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterSubnetGroup"))
           .annotate({
             identifier: "ClusterSubnetGroup",
           }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterSubnetGroups: S.optional(__S(248, __c31, 0)),
+          ClusterSubnetGroups: S.optional(__S(3393, __c106, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterSubnetGroupMessage",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaintenanceTrackName: S.optional(S.String),
@@ -10691,60 +10999,60 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DescribeClusterTracksMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ OperationName: S.optional(S.String) })).annotate({
         identifier: "SupportedOperation",
       });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(251, __c31, 3)
+        /*@__PURE__*/ __S(3425, __c107, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedOperation"))
           .annotate({
             identifier: "SupportedOperation",
           }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaintenanceTrackName: S.optional(S.String),
+          DatabaseVersion: S.optional(S.String),
+          SupportedOperations: S.optional(__S(3426, __c107, 2)),
+        }),
+      ).annotate({ identifier: "UpdateTarget" });
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ __S(3427, __c107, 3).pipe(/*@__PURE__*/ T.XmlName("UpdateTarget")).annotate({
+          identifier: "UpdateTarget",
+        }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
           MaintenanceTrackName: S.optional(S.String),
           DatabaseVersion: S.optional(S.String),
-          SupportedOperations: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({ identifier: "UpdateTarget" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(253, __c31, 5).pipe(/*@__PURE__*/ T.XmlName("UpdateTarget")).annotate({
-          identifier: "UpdateTarget",
-        }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MaintenanceTrackName: S.optional(S.String),
-          DatabaseVersion: S.optional(S.String),
-          UpdateTargets: S.optional(__S(254, __c31, 6)),
+          UpdateTargets: S.optional(__S(3428, __c107, 4)),
         }),
       ).annotate({ identifier: "MaintenanceTrack" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(255, __c31, 7)
+        /*@__PURE__*/ __S(3429, __c107, 5)
           .pipe(/*@__PURE__*/ T.XmlName("MaintenanceTrack"))
           .annotate({
             identifier: "MaintenanceTrack",
           }),
       );
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          MaintenanceTracks: S.optional(__S(256, __c32, 0)),
+          MaintenanceTracks: S.optional(__S(3430, __c107, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "TrackListMessage" });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterVersion: S.optional(S.String),
@@ -10755,7 +11063,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "DescribeClusterVersionsMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ClusterVersion: S.optional(S.String),
@@ -10763,20 +11071,26 @@ function __c32(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterVersion" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(259, __c32, 3).pipe(/*@__PURE__*/ T.XmlName("ClusterVersion")).annotate({
-          identifier: "ClusterVersion",
-        }),
+        /*@__PURE__*/ __S(3457, __c108, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterVersion"))
+          .annotate({
+            identifier: "ClusterVersion",
+          }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterVersions: S.optional(__S(260, __c32, 4)),
+          ClusterVersions: S.optional(__S(3458, __c108, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "ClusterVersionsMessage" });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
@@ -10787,51 +11101,51 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "DescribeCustomDomainAssociationsMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateAssociation" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(263, __c32, 7)
+        /*@__PURE__*/ __S(3489, __c109, 1)
           .pipe(/*@__PURE__*/ T.XmlName("CertificateAssociation"))
           .annotate({
             identifier: "CertificateAssociation",
           }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           CustomDomainCertificateArn: S.optional(S.String),
           CustomDomainCertificateExpiryDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          CertificateAssociations: S.optional(__S(264, __c33, 0)),
+          CertificateAssociations: S.optional(__S(3490, __c109, 2)),
         }),
       ).annotate({ identifier: "Association" });
-    case 2:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(265, __c33, 1).pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
+        /*@__PURE__*/ __S(3491, __c109, 3).pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
           identifier: "Association",
         }),
       );
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Associations: S.optional(__S(266, __c33, 2)),
+          Associations: S.optional(__S(3492, __c109, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "CustomDomainAssociationsMessage",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
@@ -10841,15 +11155,24 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DescribeDataSharesMessage",
       });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          DataShares: S.optional(__S(3552, __c111, 0)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "DescribeDataSharesResult" });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(226, __c7, 2));
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConsumerArn: S.optional(S.String),
@@ -10860,19 +11183,20 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DescribeDataSharesForConsumerMessage",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          DataShares: S.optional(__S(3552, __c111, 0)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeDataSharesForConsumerResult",
       });
-    case 1:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProducerArn: S.optional(S.String),
@@ -10883,15 +11207,20 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DescribeDataSharesForProducerMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          DataShares: S.optional(__S(3552, __c111, 0)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeDataSharesForProducerResult",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupFamily: S.optional(S.String),
@@ -10901,21 +11230,25 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DescribeDefaultClusterParametersMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupFamily: S.optional(S.String),
           Marker: S.optional(S.String),
-          Parameters: S.optional(__S(234, __c29, 2)),
+          Parameters: S.optional(__S(3265, __c102, 1)),
         }),
       ).annotate({ identifier: "DefaultClusterParameters" });
-    case 5:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ DefaultClusterParameters: S.optional(__S(276, __c34, 4)) }).pipe(ns),
+        S.Struct({ DefaultClusterParameters: S.optional(__S(3649, __c114, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeDefaultClusterParametersResult",
       });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10928,20 +11261,20 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DescribeEndpointAccessMessage",
       });
-    case 7:
-      return S.Array(__S(109, __c13, 5));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          EndpointAccessList: S.optional(__S(279, __c34, 7)),
+          EndpointAccessList: S.optional(__S(3681, __c115, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAccessList" });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -10953,18 +11286,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DescribeEndpointAuthorizationMessage",
       });
+    case 1:
+      return S.Array(__S(449, __c14, 1));
     case 2:
-      return S.Array(__S(23, __c2, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          EndpointAuthorizationList: S.optional(__S(282, __c35, 2)),
+          EndpointAuthorizationList: S.optional(__S(3713, __c116, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "EndpointAuthorizationList",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SourceType: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10972,42 +11309,42 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DescribeEventCategoriesMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventId: S.optional(S.String),
-          EventCategories: S.optional(__S(111, __c13, 7)),
+          EventCategories: S.optional(__S(1504, __c47, 0)),
           EventDescription: S.optional(S.String),
           Severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventInfoMap" });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(285, __c35, 5).pipe(/*@__PURE__*/ T.XmlName("EventInfoMap")).annotate({
+        /*@__PURE__*/ __S(3745, __c117, 1).pipe(/*@__PURE__*/ T.XmlName("EventInfoMap")).annotate({
           identifier: "EventInfoMap",
         }),
       );
-    case 7:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ SourceType: S.optional(S.String), Events: S.optional(__S(286, __c35, 6)) }),
+        S.Struct({ SourceType: S.optional(S.String), Events: S.optional(__S(3746, __c117, 2)) }),
       ).annotate({ identifier: "EventCategoriesMap" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(287, __c35, 7)
+        /*@__PURE__*/ __S(3747, __c117, 3)
           .pipe(/*@__PURE__*/ T.XmlName("EventCategoriesMap"))
           .annotate({
             identifier: "EventCategoriesMap",
           }),
       );
-    case 1:
+    case 5:
       return S.suspend(() =>
-        S.Struct({ EventCategoriesMapList: S.optional(__S(288, __c36, 0)) }).pipe(ns),
+        S.Struct({ EventCategoriesMapList: S.optional(__S(3748, __c117, 4)) }).pipe(ns),
       ).annotate({ identifier: "EventCategoriesMessage" });
-    case 2:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
@@ -11019,118 +11356,132 @@ function __c36(j: number): any {
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeEventsMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
           SourceType: S.optional(S.String),
           Message: S.optional(S.String),
-          EventCategories: S.optional(__S(111, __c13, 7)),
+          EventCategories: S.optional(__S(1504, __c47, 0)),
           Severity: S.optional(S.String),
           Date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EventId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(291, __c36, 3).pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
-          identifier: "Event",
-        }),
+        /*@__PURE__*/ __S(3777, __c118, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Event"))
+          .annotate({ identifier: "Event" }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(292, __c36, 4)) }).pipe(ns),
+        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(3778, __c118, 2)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "EventsMessage" });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEventSubscriptionsMessage",
       });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(113, __c14, 1)
+        /*@__PURE__*/ __S(1537, __c48, 1)
           .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
           .annotate({
             identifier: "EventSubscription",
           }),
       );
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          EventSubscriptionsList: S.optional(__S(295, __c36, 7)),
+          EventSubscriptionsList: S.optional(__S(3809, __c119, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "EventSubscriptionsMessage",
       });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmClientCertificateIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeHsmClientCertificatesMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(116, __c14, 4)
+        /*@__PURE__*/ __S(1600, __c50, 0)
           .pipe(/*@__PURE__*/ T.XmlName("HsmClientCertificate"))
           .annotate({
             identifier: "HsmClientCertificate",
           }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          HsmClientCertificates: S.optional(__S(298, __c37, 2)),
+          HsmClientCertificates: S.optional(__S(3841, __c120, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "HsmClientCertificateMessage",
       });
-    case 4:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HsmConfigurationIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeHsmConfigurationsMessage",
       });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(119, __c14, 7)
+        /*@__PURE__*/ __S(1664, __c52, 0)
           .pipe(/*@__PURE__*/ T.XmlName("HsmConfiguration"))
           .annotate({
             identifier: "HsmConfiguration",
           }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          HsmConfigurations: S.optional(__S(301, __c37, 5)),
+          HsmConfigurations: S.optional(__S(3873, __c121, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "HsmConfigurationMessage" });
-    case 7:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IntegrationArn: S.optional(S.String),
@@ -11141,86 +11492,86 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DescribeInboundIntegrationsMessage",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IntegrationArn: S.optional(S.String),
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
           Status: S.optional(S.String),
-          Errors: S.optional(__S(124, __c15, 4)),
+          Errors: S.optional(__S(1729, __c54, 1)),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "InboundIntegration" });
-    case 1:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(304, __c38, 0)
+        /*@__PURE__*/ __S(3905, __c122, 1)
           .pipe(/*@__PURE__*/ T.XmlName("InboundIntegration"))
           .annotate({
             identifier: "InboundIntegration",
           }),
       );
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          InboundIntegrations: S.optional(__S(305, __c38, 1)),
+          InboundIntegrations: S.optional(__S(3906, __c122, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "InboundIntegrationsMessage",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Values: S.optional(__S(307, __c38, 3)),
+          Values: S.optional(__S(3936, __c123, 0)),
         }),
       ).annotate({
         identifier: "DescribeIntegrationsFilter",
       });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(308, __c38, 4)
+        /*@__PURE__*/ __S(3937, __c123, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DescribeIntegrationsFilter"))
           .annotate({
             identifier: "DescribeIntegrationsFilter",
           }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           IntegrationArn: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          Filters: S.optional(__S(309, __c38, 5)),
+          Filters: S.optional(__S(3938, __c123, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeIntegrationsMessage",
       });
-    case 7:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(125, __c15, 5).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
+        /*@__PURE__*/ __S(1761, __c55, 1).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
           identifier: "Integration",
         }),
       );
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Integrations: S.optional(__S(311, __c38, 7)),
+          Integrations: S.optional(__S(3940, __c123, 4)),
         }).pipe(ns),
       ).annotate({ identifier: "IntegrationsMessage" });
-    case 1:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11228,7 +11579,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DescribeLoggingStatusMessage",
       });
-    case 2:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LoggingEnabled: S.optional(S.Boolean),
@@ -11240,29 +11595,33 @@ function __c39(j: number): any {
           LastFailureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastFailureMessage: S.optional(S.String),
           LogDestinationType: S.optional(S.String),
-          LogExports: S.optional(__S(83, __c10, 3)),
-          S3Tables: S.optional(__S(85, __c10, 5)),
+          LogExports: S.optional(__S(896, __c28, 0)),
+          S3Tables: S.optional(__S(898, __c28, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "LoggingStatus" });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Operator: S.optional(S.String),
-          Values: S.optional(__S(103, __c12, 7)).pipe(T.XmlName("Value")),
+          Values: S.optional(__S(1248, __c39, 0)).pipe(T.XmlName("Value")),
         }),
       ).annotate({
         identifier: "NodeConfigurationOptionsFilter",
       });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(315, __c39, 3)
+        /*@__PURE__*/ __S(4032, __c126, 0)
           .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOptionsFilter"))
           .annotate({
             identifier: "NodeConfigurationOptionsFilter",
           }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ActionType: S.optional(S.String),
@@ -11270,14 +11629,14 @@ function __c39(j: number): any {
           SnapshotIdentifier: S.optional(S.String),
           SnapshotArn: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
-          Filters: S.optional(__S(316, __c39, 4)).pipe(T.XmlName("Filter")),
+          Filters: S.optional(__S(4033, __c126, 1)).pipe(T.XmlName("Filter")),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeNodeConfigurationOptionsMessage",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NodeType: S.optional(S.String),
@@ -11286,28 +11645,28 @@ function __c39(j: number): any {
           Mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeConfigurationOption" });
-    case 7:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(318, __c39, 6)
+        /*@__PURE__*/ __S(4035, __c126, 3)
           .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOption"))
           .annotate({
             identifier: "NodeConfigurationOption",
           }),
       );
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          NodeConfigurationOptionList: S.optional(__S(319, __c39, 7)),
+          NodeConfigurationOptionList: S.optional(__S(4036, __c126, 4)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "NodeConfigurationOptionsMessage",
       });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterVersion: S.optional(S.String),
@@ -11318,41 +11677,45 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "DescribeOrderableClusterOptionsMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(100, __c12, 4)
+        /*@__PURE__*/ __S(1282, __c40, 2)
           .pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone"))
           .annotate({
             identifier: "AvailabilityZone",
           }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ClusterVersion: S.optional(S.String),
           ClusterType: S.optional(S.String),
           NodeType: S.optional(S.String),
-          AvailabilityZones: S.optional(__S(322, __c40, 2)),
+          AvailabilityZones: S.optional(__S(4065, __c127, 1)),
         }),
       ).annotate({ identifier: "OrderableClusterOption" });
-    case 4:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(323, __c40, 3)
+        /*@__PURE__*/ __S(4066, __c127, 2)
           .pipe(/*@__PURE__*/ T.XmlName("OrderableClusterOption"))
           .annotate({
             identifier: "OrderableClusterOption",
           }),
       );
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          OrderableClusterOptions: S.optional(__S(324, __c40, 4)),
+          OrderableClusterOptions: S.optional(__S(4067, __c127, 3)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "OrderableClusterOptionsMessage",
       });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -11363,7 +11726,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "DescribePartnersInputMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.optional(S.String),
@@ -11374,25 +11737,25 @@ function __c40(j: number): any {
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PartnerIntegrationInfo" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(327, __c40, 7)
+        /*@__PURE__*/ __S(4097, __c128, 1)
           .pipe(/*@__PURE__*/ T.XmlName("PartnerIntegrationInfo"))
           .annotate({
             identifier: "PartnerIntegrationInfo",
           }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ PartnerIntegrationInfoList: S.optional(__S(328, __c41, 0)) }).pipe(ns),
+        S.Struct({ PartnerIntegrationInfoList: S.optional(__S(4098, __c128, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribePartnersOutputMessage",
       });
-    case 2:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Qev2IdcApplicationArn: S.optional(S.String),
@@ -11402,18 +11765,22 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DescribeQev2IdcApplicationsMessage",
       });
-    case 3:
-      return S.Array(__S(127, __c15, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Qev2IdcApplications: S.optional(__S(331, __c41, 3)),
+          Qev2IdcApplications: S.optional(__S(4129, __c129, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeQev2IdcApplicationsResult",
       });
-    case 5:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RedshiftIdcApplicationArn: S.optional(S.String),
@@ -11423,12 +11790,12 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DescribeRedshiftIdcApplicationsMessage",
       });
-    case 6:
-      return S.Array(__S(145, __c18, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1934, __c60, 14));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RedshiftIdcApplications: S.optional(__S(334, __c41, 6)),
+          RedshiftIdcApplications: S.optional(__S(4161, __c130, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11436,7 +11803,7 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11451,7 +11818,7 @@ function __c42(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(81, __c10, 1)
+        /*@__PURE__*/ __S(928, __c29, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeExchangeStatus"))
           .annotate({
             identifier: "ReservedNodeExchangeStatus",
@@ -11460,13 +11827,17 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ReservedNodeExchangeStatusDetails: S.optional(__S(337, __c42, 1)),
+          ReservedNodeExchangeStatusDetails: S.optional(__S(4193, __c131, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReservedNodeExchangeStatusOutputMessage",
       });
-    case 3:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeOfferingId: S.optional(S.String),
@@ -11476,7 +11847,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DescribeReservedNodeOfferingsMessage",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          ReservedNodeOfferings: S.optional(__S(4288, __c134, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ReservedNodeOfferingsMessage",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeOfferingId: S.optional(S.String),
@@ -11486,28 +11870,27 @@ function __c42(j: number): any {
           UsagePrice: S.optional(S.Number),
           CurrencyCode: S.optional(S.String),
           OfferingType: S.optional(S.String),
-          RecurringCharges: S.optional(__S(2, __c0, 2)),
+          RecurringCharges: S.optional(__S(65, __c2, 1)),
           ReservedNodeOfferingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedNodeOffering" });
-    case 5:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(
-        /*@__PURE__*/ __S(340, __c42, 4)
+        /*@__PURE__*/ __S(4256, __c133, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeOffering"))
           .annotate({
             identifier: "ReservedNodeOffering",
           }),
       );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          ReservedNodeOfferings: S.optional(__S(341, __c42, 5)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ReservedNodeOfferingsMessage",
-      });
-    case 7:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeId: S.optional(S.String),
@@ -11517,45 +11900,46 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DescribeReservedNodesMessage",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3, __c0, 3).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
+        /*@__PURE__*/ __S(96, __c3, 0).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
           identifier: "ReservedNode",
         }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodes: S.optional(__S(344, __c43, 0)),
+          ReservedNodes: S.optional(__S(4321, __c135, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "ReservedNodesMessage" });
-    case 2:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeResizeMessage" });
-    case 3:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Values: S.optional(__S(103, __c12, 7)),
-        }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(1248, __c39, 0)) }),
       ).annotate({ identifier: "ScheduledActionFilter" });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(347, __c43, 3)
+        /*@__PURE__*/ __S(4384, __c137, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ScheduledActionFilter"))
           .annotate({
             identifier: "ScheduledActionFilter",
           }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
@@ -11563,29 +11947,31 @@ function __c43(j: number): any {
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Active: S.optional(S.Boolean),
-          Filters: S.optional(__S(348, __c43, 4)),
+          Filters: S.optional(__S(4385, __c137, 1)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeScheduledActionsMessage",
       });
-    case 6:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(153, __c19, 1).pipe(/*@__PURE__*/ T.XmlName("ScheduledAction")).annotate({
-          identifier: "ScheduledAction",
-        }),
+        /*@__PURE__*/ __S(1986, __c62, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("ScheduledAction"))
+          .annotate({
+            identifier: "ScheduledAction",
+          }),
       );
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ScheduledActions: S.optional(__S(350, __c43, 6)),
+          ScheduledActions: S.optional(__S(4387, __c137, 3)),
         }).pipe(ns),
       ).annotate({ identifier: "ScheduledActionsMessage" });
   }
 }
-function __c44(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11593,15 +11979,15 @@ function __c44(j: number): any {
           SnapshotCopyGrantName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeSnapshotCopyGrantsMessage",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(155, __c19, 3)
+        /*@__PURE__*/ __S(2144, __c67, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotCopyGrant"))
           .annotate({
             identifier: "SnapshotCopyGrant",
@@ -11611,46 +11997,54 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          SnapshotCopyGrants: S.optional(__S(353, __c44, 1)),
+          SnapshotCopyGrants: S.optional(__S(4417, __c138, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "SnapshotCopyGrantMessage" });
-    case 3:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           ScheduleIdentifier: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeSnapshotSchedulesMessage",
       });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(162, __c20, 2)
+        /*@__PURE__*/ __S(2212, __c69, 4)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotSchedule"))
           .annotate({
             identifier: "SnapshotSchedule",
           }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SnapshotSchedules: S.optional(__S(356, __c44, 4)),
+          SnapshotSchedules: S.optional(__S(4449, __c139, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeSnapshotSchedulesOutputMessage",
       });
-    case 6:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeStorageRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TotalBackupSizeInMegaBytes: S.optional(S.Number),
@@ -11659,7 +12053,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "CustomerStorageMessage" });
   }
 }
-function __c45(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11673,6 +12067,27 @@ function __c45(j: number): any {
         identifier: "DescribeTableRestoreStatusMessage",
       });
     case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(4544, __c142, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("TableRestoreStatus"))
+          .annotate({
+            identifier: "TableRestoreStatus",
+          }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TableRestoreStatusDetails: S.optional(__S(4513, __c141, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "TableRestoreStatusMessage",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TableRestoreRequestId: S.optional(S.String),
@@ -11691,52 +12106,41 @@ function __c45(j: number): any {
           NewTableName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableRestoreStatus" });
-    case 2:
-      return S.Array(
-        /*@__PURE__*/ __S(361, __c45, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("TableRestoreStatus"))
-          .annotate({
-            identifier: "TableRestoreStatus",
-          }),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TableRestoreStatusDetails: S.optional(__S(362, __c45, 2)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "TableRestoreStatusMessage",
-      });
-    case 4:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceName: S.optional(S.String),
           ResourceType: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeTagsMessage" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Tag: S.optional(__S(12, __c1, 4)),
+          Tag: S.optional(__S(288, __c9, 0)),
           ResourceName: S.optional(S.String),
           ResourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaggedResource" });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(365, __c45, 5).pipe(/*@__PURE__*/ T.XmlName("TaggedResource")).annotate({
-          identifier: "TaggedResource",
-        }),
+        /*@__PURE__*/ __S(4577, __c143, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("TaggedResource"))
+          .annotate({
+            identifier: "TaggedResource",
+          }),
       );
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          TaggedResources: S.optional(__S(366, __c45, 6)),
+          TaggedResources: S.optional(__S(4578, __c143, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11744,7 +12148,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11754,30 +12158,38 @@ function __c46(j: number): any {
           FeatureType: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(__S(143, __c17, 7)),
-          TagValues: S.optional(__S(228, __c28, 4)),
+          TagKeys: S.optional(__S(1888, __c59, 0)),
+          TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeUsageLimitsMessage",
       });
     case 1:
-      return S.Array(__S(166, __c20, 6));
+      return S.Array(__S(2304, __c72, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          UsageLimits: S.optional(__S(369, __c46, 1)),
+          UsageLimits: S.optional(__S(4609, __c144, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "UsageLimitList" });
-    case 3:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           LogDestinationType: S.optional(S.String),
-          LogExports: S.optional(__S(83, __c10, 3)),
+          LogExports: S.optional(__S(896, __c28, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DisableLoggingMessage" });
-    case 4:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11785,13 +12197,17 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "DisableSnapshotCopyMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "DisableSnapshotCopyResult",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
@@ -11802,21 +12218,25 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "DisassociateDataShareConsumerMessage",
       });
-    case 7:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           BucketName: S.optional(S.String),
           S3KeyPrefix: S.optional(S.String),
           LogDestinationType: S.optional(S.String),
-          LogExports: S.optional(__S(83, __c10, 3)),
+          LogExports: S.optional(__S(896, __c28, 0)),
           S3TableKmsKeyId: S.optional(S.String),
           S3TableGranularity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "EnableLoggingMessage" });
   }
 }
-function __c47(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11832,11 +12252,13 @@ function __c47(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "EnableSnapshotCopyResult",
-      });
-    case 2:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "EnableSnapshotCopyResult" });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11844,15 +12266,19 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "FailoverPrimaryComputeInputMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "FailoverPrimaryComputeResult",
       });
-    case 4:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DbGroup")));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DbUser: S.optional(S.String),
@@ -11860,13 +12286,13 @@ function __c47(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           DurationSeconds: S.optional(S.Number),
           AutoCreate: S.optional(S.Boolean),
-          DbGroups: S.optional(__S(380, __c47, 4)),
+          DbGroups: S.optional(__S(4832, __c151, 0)),
           CustomDomainName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetClusterCredentialsMessage",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DbUser: S.optional(S.String),
@@ -11874,7 +12300,11 @@ function __c47(j: number): any {
           Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
       ).annotate({ identifier: "ClusterCredentials" });
-    case 7:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DbName: S.optional(S.String),
@@ -11885,11 +12315,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetClusterCredentialsWithIAMMessage",
       });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DbUser: S.optional(S.String),
@@ -11900,17 +12326,21 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ClusterExtendedCredentials",
       });
-    case 1:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ClusterIdentifier")));
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterIds: S.optional(__S(385, __c48, 1)) }).pipe(
+        S.Struct({ ClusterIds: S.optional(__S(4896, __c153, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "GetIdentityCenterAuthTokenRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Token: S.optional(SensitiveString),
@@ -11919,7 +12349,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetIdentityCenterAuthTokenResponse",
       });
-    case 4:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ActionType: S.optional(S.String),
@@ -11931,36 +12365,36 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetReservedNodeExchangeConfigurationOptionsInputMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SourceReservedNode: S.optional(__S(3, __c0, 3)),
+          SourceReservedNode: S.optional(__S(96, __c3, 0)),
           TargetReservedNodeCount: S.optional(S.Number),
-          TargetReservedNodeOffering: S.optional(__S(340, __c42, 4)),
+          TargetReservedNodeOffering: S.optional(__S(4256, __c133, 0)),
         }),
       ).annotate({
         identifier: "ReservedNodeConfigurationOption",
       });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(389, __c48, 5)
+        /*@__PURE__*/ __S(4929, __c154, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeConfigurationOption"))
           .annotate({
             identifier: "ReservedNodeConfigurationOption",
           }),
       );
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodeConfigurationOptionList: S.optional(__S(390, __c48, 6)),
+          ReservedNodeConfigurationOptionList: S.optional(__S(4930, __c154, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetReservedNodeExchangeConfigurationOptionsOutputMessage",
       });
   }
 }
-function __c49(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11976,26 +12410,38 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodeOfferings: S.optional(__S(341, __c42, 5)),
+          ReservedNodeOfferings: S.optional(__S(4288, __c134, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetReservedNodeExchangeOfferingsOutputMessage",
       });
-    case 2:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetResourcePolicyMessage" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourcePolicy: S.optional(__S(5024, __c157, 0)) }).pipe(ns),
+      ).annotate({ identifier: "GetResourcePolicyResult" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
       ).annotate({ identifier: "ResourcePolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourcePolicy: S.optional(__S(395, __c49, 3)) }).pipe(ns),
-      ).annotate({ identifier: "GetResourcePolicyResult" });
-    case 5:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12006,7 +12452,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListRecommendationsMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(S.String),
@@ -12015,29 +12461,25 @@ function __c49(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendedAction" });
-    case 7:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(398, __c49, 6)
+        /*@__PURE__*/ __S(5057, __c158, 1)
           .pipe(/*@__PURE__*/ T.XmlName("RecommendedAction"))
           .annotate({
             identifier: "RecommendedAction",
           }),
       );
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Text: S.optional(S.String), Link: S.optional(S.String) }),
       ).annotate({ identifier: "ReferenceLink" });
-    case 1:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(400, __c50, 0).pipe(/*@__PURE__*/ T.XmlName("ReferenceLink")).annotate({
+        /*@__PURE__*/ __S(5059, __c158, 3).pipe(/*@__PURE__*/ T.XmlName("ReferenceLink")).annotate({
           identifier: "ReferenceLink",
         }),
       );
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -12050,37 +12492,47 @@ function __c50(j: number): any {
           Observation: S.optional(S.String),
           ImpactRanking: S.optional(S.String),
           RecommendationText: S.optional(S.String),
-          RecommendedActions: S.optional(__S(399, __c49, 7)),
-          ReferenceLinks: S.optional(__S(401, __c50, 1)),
+          RecommendedActions: S.optional(__S(5058, __c158, 2)),
+          ReferenceLinks: S.optional(__S(5060, __c158, 4)),
         }),
       ).annotate({ identifier: "Recommendation" });
-    case 3:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(402, __c50, 2).pipe(/*@__PURE__*/ T.XmlName("Recommendation")).annotate({
-          identifier: "Recommendation",
-        }),
+        /*@__PURE__*/ __S(5061, __c158, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("Recommendation"))
+          .annotate({
+            identifier: "Recommendation",
+          }),
       );
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          Recommendations: S.optional(__S(403, __c50, 3)),
+          Recommendations: S.optional(__S(5062, __c158, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListRecommendationsResult",
       });
-    case 5:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           AquaConfigurationStatus: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyAquaInputMessage" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AquaConfiguration: S.optional(__S(80, __c10, 0)) }).pipe(ns),
+        S.Struct({ AquaConfiguration: S.optional(__S(960, __c30, 0)) }).pipe(ns),
       ).annotate({ identifier: "ModifyAquaOutputMessage" });
-    case 7:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
@@ -12089,11 +12541,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ModifyAuthenticationProfileMessage",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
@@ -12102,15 +12550,19 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ModifyAuthenticationProfileResult",
       });
-    case 1:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           ClusterType: S.optional(S.String),
           NodeType: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
-          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
-          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
+          ClusterSecurityGroups: S.optional(__S(1024, __c32, 0)),
+          VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
           MasterUserPassword: S.optional(SensitiveString),
           ClusterParameterGroupName: S.optional(S.String),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
@@ -12137,13 +12589,15 @@ function __c51(j: number): any {
           ExtraComputeForAutomaticOptimization: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyClusterMessage" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterResult",
-      });
-    case 3:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyClusterResult" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12152,30 +12606,38 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ModifyClusterDbRevisionMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterDbRevisionResult",
       });
-    case 5:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          AddIamRoles: S.optional(__S(51, __c6, 3)),
-          RemoveIamRoles: S.optional(__S(51, __c6, 3)),
+          AddIamRoles: S.optional(__S(1056, __c33, 0)),
+          RemoveIamRoles: S.optional(__S(1056, __c33, 0)),
           DefaultIamRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterIamRolesMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterIamRolesResult",
       });
-    case 7:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12192,26 +12654,30 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ModifyClusterMaintenanceMessage",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterMaintenanceResult",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
-          Parameters: S.optional(__S(234, __c29, 2)),
+          Parameters: S.optional(__S(3265, __c102, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterParameterGroupMessage",
       });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
@@ -12220,7 +12686,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ClusterParameterGroupNameMessage",
       });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotIdentifier: S.optional(S.String),
@@ -12230,13 +12700,17 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ModifyClusterSnapshotMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterSnapshotResult",
       });
-    case 5:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12246,31 +12720,35 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ModifyClusterSnapshotScheduleMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyClusterSnapshotScheduleResponse",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          SubnetIds: S.optional(__S(96, __c12, 0)),
+          SubnetIds: S.optional(__S(1344, __c42, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterSubnetGroupMessage",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterSubnetGroup: S.optional(__S(104, __c13, 0)) }).pipe(ns),
+        S.Struct({ ClusterSubnetGroup: S.optional(__S(1314, __c41, 2)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterSubnetGroupResult",
       });
-    case 1:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
@@ -12280,7 +12758,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ModifyCustomDomainAssociationMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CustomDomainName: S.optional(S.String),
@@ -12291,36 +12769,48 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ModifyCustomDomainAssociationResult",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
+          VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyEndpointAccessMessage",
       });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIds: S.optional(__S(110, __c13, 6)),
-          EventCategories: S.optional(__S(111, __c13, 7)),
+          SourceIds: S.optional(__S(1536, __c48, 0)),
+          EventCategories: S.optional(__S(1504, __c47, 0)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyEventSubscriptionMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(113, __c14, 1)) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(1537, __c48, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyEventSubscriptionResult",
       });
-    case 6:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IntegrationArn: S.optional(S.String),
@@ -12328,7 +12818,11 @@ function __c53(j: number): any {
           IntegrationName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyIntegrationMessage" });
-    case 7:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12341,11 +12835,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ModifyLakehouseConfigurationMessage",
       });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12354,7 +12844,11 @@ function __c54(j: number): any {
           CatalogArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "LakehouseConfiguration" });
-    case 1:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Qev2IdcApplicationArn: S.optional(S.String),
@@ -12363,36 +12857,44 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ModifyQev2IdcApplicationMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Qev2IdcApplication: S.optional(__S(127, __c15, 7)) }).pipe(ns),
+        S.Struct({ Qev2IdcApplication: S.optional(__S(1824, __c57, 0)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyQev2IdcApplicationResult",
       });
-    case 3:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RedshiftIdcApplicationArn: S.optional(S.String),
           IdentityNamespace: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
-          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
+          AuthorizedTokenIssuerList: S.optional(__S(1922, __c60, 2)),
+          ServiceIntegrations: S.optional(__S(1933, __c60, 13)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyRedshiftIdcApplicationMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ RedshiftIdcApplication: S.optional(__S(145, __c18, 1)) }).pipe(ns),
+        S.Struct({ RedshiftIdcApplication: S.optional(__S(1934, __c60, 14)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyRedshiftIdcApplicationResult",
       });
-    case 5:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(__S(150, __c18, 6)),
+          TargetAction: S.optional(__S(1984, __c62, 0)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
@@ -12403,7 +12905,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ModifyScheduledActionMessage",
       });
-    case 6:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12413,26 +12919,30 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ModifySnapshotCopyRetentionPeriodMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "ModifySnapshotCopyRetentionPeriodResult",
       });
   }
 }
-function __c55(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ScheduleIdentifier: S.optional(S.String),
-          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
+          ScheduleDefinitions: S.optional(__S(2208, __c69, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifySnapshotScheduleMessage",
       });
-    case 1:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UsageLimitId: S.optional(S.String),
@@ -12440,13 +12950,19 @@ function __c55(j: number): any {
           BreachAction: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyUsageLimitMessage" });
-    case 2:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "PauseClusterResult",
-      });
-    case 3:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "PauseClusterResult" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeOfferingId: S.optional(S.String),
@@ -12455,74 +12971,94 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "PurchaseReservedNodeOfferingMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ReservedNode: S.optional(__S(3, __c0, 3)) }).pipe(ns),
+        S.Struct({ ReservedNode: S.optional(__S(96, __c3, 0)) }).pipe(ns),
       ).annotate({
         identifier: "PurchaseReservedNodeOfferingResult",
       });
-    case 5:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutResourcePolicyMessage" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourcePolicy: S.optional(__S(395, __c49, 3)) }).pipe(ns),
+        S.Struct({ ResourcePolicy: S.optional(__S(5024, __c157, 0)) }).pipe(ns),
       ).annotate({ identifier: "PutResourcePolicyResult" });
-    case 7:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RebootClusterMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "RebootClusterResult" });
   }
 }
-function __c56(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "RebootClusterResult",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
-          NamespaceIdentifier: S.optional(__S(207, __c25, 7)),
-          ConsumerIdentifiers: S.optional(__S(208, __c26, 0)),
+          NamespaceIdentifier: S.optional(__S(3042, __c95, 2)),
+          ConsumerIdentifiers: S.optional(__S(3043, __c95, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterNamespaceInputMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RegisterNamespaceOutputMessage",
       });
-    case 3:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataShareArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RejectDataShareMessage" });
-    case 4:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           ResetAllParameters: S.optional(S.Boolean),
-          Parameters: S.optional(__S(234, __c29, 2)),
+          Parameters: S.optional(__S(3265, __c102, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResetClusterParameterGroupMessage",
       });
-    case 5:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "ResizeClusterResult",
-      });
-    case 6:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "ResizeClusterResult" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -12539,8 +13075,8 @@ function __c56(j: number): any {
           HsmConfigurationIdentifier: S.optional(S.String),
           ElasticIp: S.optional(S.String),
           ClusterParameterGroupName: S.optional(S.String),
-          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
-          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
+          ClusterSecurityGroups: S.optional(__S(1024, __c32, 0)),
+          VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
           PreferredMaintenanceWindow: S.optional(S.String),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
@@ -12548,7 +13084,7 @@ function __c56(j: number): any {
           NodeType: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
           AdditionalInfo: S.optional(S.String),
-          IamRoles: S.optional(__S(51, __c6, 3)),
+          IamRoles: S.optional(__S(1056, __c33, 0)),
           MaintenanceTrackName: S.optional(S.String),
           SnapshotScheduleIdentifier: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
@@ -12568,15 +13104,15 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "RestoreFromClusterSnapshotMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreFromClusterSnapshotResult",
       });
   }
 }
-function __c57(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12596,17 +13132,23 @@ function __c57(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TableRestoreStatus: S.optional(__S(361, __c45, 1)) }).pipe(ns),
+        S.Struct({ TableRestoreStatus: S.optional(__S(4544, __c142, 0)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreTableFromClusterSnapshotResult",
       });
-    case 2:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "ResumeClusterResult",
-      });
-    case 3:
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
+      ).annotate({ identifier: "ResumeClusterResult" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
@@ -12617,24 +13159,32 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "RevokeClusterSecurityGroupIngressMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
       ).annotate({
         identifier: "RevokeClusterSecurityGroupIngressResult",
       });
-    case 5:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           Account: S.optional(S.String),
-          VpcIds: S.optional(__S(21, __c2, 5)),
+          VpcIds: S.optional(__S(448, __c14, 0)),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RevokeEndpointAccessMessage",
       });
-    case 6:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotIdentifier: S.optional(S.String),
@@ -12645,15 +13195,15 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "RevokeSnapshotAccessMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+        S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
       ).annotate({
         identifier: "RevokeSnapshotAccessResult",
       });
   }
 }
-function __c58(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12665,11 +13215,15 @@ function __c58(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
       ).annotate({
         identifier: "RotateEncryptionKeyResult",
       });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -12684,7 +13238,6 @@ function __c58(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

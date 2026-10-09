@@ -589,8 +589,8 @@ export const CreateAttestationProvider: API.OperationMethod<
   CreateAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAttestationProviderRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateAttestationProviderResponse>,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateAttestationProviderRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateAttestationProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(113, __c7, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const DeleteAttestationProvider: API.OperationMethod<
   DeleteAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAttestationProviderRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAttestationProviderResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteAttestationProviderRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteAttestationProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const GetAttestationProvider: API.OperationMethod<
   GetAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAttestationProviderRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAttestationProviderResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetAttestationProviderRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetAttestationProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const GetAttestationProviderDefaultByLocation: API.OperationMethod<
   GetAttestationProviderDefaultByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAttestationProviderDefaultByLocationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetAttestationProviderDefaultByLocationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const ListAttestationProviderByResourceGroup: API.OperationMethod<
   ListAttestationProviderByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAttestationProviderByResourceGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AttestationProviderListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListAttestationProviderByResourceGroupRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<AttestationProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const ListAttestationProviderDefault: API.OperationMethod<
   ListAttestationProviderDefaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListAttestationProviderDefaultRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AttestationProviderListResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListAttestationProviderDefaultRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<AttestationProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const ListAttestationProviders: API.OperationMethod<
   ListAttestationProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListAttestationProvidersRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AttestationProviderListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListAttestationProvidersRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<AttestationProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<OperationList>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(136, __c8, 8) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const ListPrivateLinkResourceByProvider: API.OperationMethod<
   ListPrivateLinkResourceByProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListPrivateLinkResourceByProviderRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListPrivateLinkResourceByProviderRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const UpdateAttestationProvider: API.OperationMethod<
   UpdateAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateAttestationProviderRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateAttestationProviderResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<UpdateAttestationProviderRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateAttestationProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -795,10 +795,6 @@ export const UpdateAttestationProvider: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           alg: S.optional(S.String),
@@ -816,37 +812,37 @@ function __c0(j: number): any {
           qi: S.optional(S.String),
           use: S.optional(S.String),
           x: S.optional(S.String),
-          x5c: S.optional(__S(1, __c0, 1)),
+          x5c: S.optional(__S(48, __c3, 0)),
           y: S.optional(S.String),
         }),
       ).annotate({ identifier: "JsonWebKey" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(3, __c0, 3)),
+          keys: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "JsonWebKeySet" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          policySigningCertificates: S.optional(__S(4, __c0, 4)),
+          policySigningCertificates: S.optional(__S(2, __c0, 2)),
           tpmAttestationAuthentication: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AttestationServiceCreationSpecificParams",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: __S(5, __c0, 5),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: __S(3, __c0, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -858,7 +854,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAttestationProviderRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -871,7 +871,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -892,8 +892,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: __S(9, __c1, 1),
+          privateEndpoint: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: __S(33, __c2, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -905,60 +905,80 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(34, __c2, 2)),
         }),
       ).annotate({
         identifier: "StatusResultPrivateEndpointConnectionsItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateAttestationProviderResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(35, __c2, 3));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trustModel: S.optional(S.String),
           status: S.optional(S.String),
           attestUri: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(12, __c1, 4)),
+          privateEndpointConnections: S.optional(__S(80, __c5, 0)),
           tpmAttestationAuthentication: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusResult" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateAttestationProviderResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: __S(9, __c1, 1),
+          privateEndpoint: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: __S(33, __c2, 1),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(112, __c7, 0)),
           id: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -971,7 +991,191 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionRequest",
       });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Attestation/operations",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperationsDisplayDefinition",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogSpecification" });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          logSpecifications: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "ServiceSpecification" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(132, __c8, 4)),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(129, __c8, 1)),
+          properties: S.optional(__S(133, __c8, 5)),
+        }),
+      ).annotate({ identifier: "OperationsDefinition" });
+    case 7:
+      return S.Array(__S(134, __c8, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          systemData: S.optional(__S(16, __c1, 0)),
+          value: S.optional(__S(135, __c8, 7)),
+        }),
+      ).annotate({ identifier: "OperationList" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(80, __c5, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkResourceByProviderRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(48, __c3, 0)),
+          requiredZoneNames: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResultValueItem",
+      });
+    case 3:
+      return S.Array(__S(162, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(163, __c10, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResult",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicNetworkAccess: S.optional(S.String),
+          tpmAttestationAuthentication: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttestationServicePatchSpecificParams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAttestationProviderRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -988,11 +1192,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAttestationProviderRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAttestationProviderResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1010,7 +1222,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1027,7 +1243,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAttestationProviderRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1043,7 +1263,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAttestationProviderDefaultByLocationRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1061,7 +1285,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1079,7 +1307,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1100,24 +1328,28 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "AttestationProvider" });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(24, __c3, 0)),
-          value: S.optional(__S(26, __c3, 2)),
+          systemData: S.optional(__S(304, __c19, 0)),
+          value: S.optional(__S(306, __c19, 2)),
         }),
       ).annotate({
         identifier: "AttestationProviderListResult",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1132,7 +1364,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAttestationProviderDefaultRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1147,181 +1383,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAttestationProvidersRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Attestation/operations",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperationsDisplayDefinition",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogSpecification" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          logSpecifications: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "ServiceSpecification" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(31, __c3, 7)),
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "OperationsDefinition" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          systemData: S.optional(__S(7, __c0, 7)),
-          value: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "OperationList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(12, __c1, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkResourceByProviderRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1, __c0, 1)),
-          requiredZoneNames: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResultValueItem",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(44, __c5, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          tpmAttestationAuthentication: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttestationServicePatchSpecificParams",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(46, __c5, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAttestationProviderRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

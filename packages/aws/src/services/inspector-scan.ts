@@ -119,7 +119,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -165,8 +165,8 @@ export const scanSbom: API.OperationMethod<
   ScanSbomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ScanSbomRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ScanSbomResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<ScanSbomRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<ScanSbomResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -182,6 +182,16 @@ export const scanSbom: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ sbom: S.Any, outputFormat: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/scan/sbom" }), svc, auth, proto, ver, rules),
@@ -191,15 +201,8 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ sbom: S.optional(S.Any) })).annotate({
         identifier: "ScanSbomResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

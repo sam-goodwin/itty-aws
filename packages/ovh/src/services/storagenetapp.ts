@@ -721,7 +721,7 @@ export const confirmStorageNetappTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConfirmStorageNetappTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmStorageNetappTerminationResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<ConfirmStorageNetappTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -735,8 +735,8 @@ export const createStorageNetappChangeContact: API.OperationMethod<
   CreateStorageNetappChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateStorageNetappChangeContactRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateStorageNetappChangeContactResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateStorageNetappChangeContactRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateStorageNetappChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -750,8 +750,8 @@ export const createStorageNetappShareAcl: API.OperationMethod<
   CreateStorageNetappShareAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateStorageNetappShareAclRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<StorageNetAppShareACLRule>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateStorageNetappShareAclRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StorageNetAppShareACLRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const createStorageNetappShareRevert: API.OperationMethod<
   CreateStorageNetappShareRevertError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateStorageNetappShareRevertRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateStorageNetappShareRevertResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateStorageNetappShareRevertRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateStorageNetappShareRevertResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -780,8 +780,8 @@ export const createStorageNetappShareShrink: API.OperationMethod<
   CreateStorageNetappShareShrinkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateStorageNetappShareShrinkRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateStorageNetappShareShrinkResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<CreateStorageNetappShareShrinkRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateStorageNetappShareShrinkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -795,8 +795,8 @@ export const createStorageNetappShareSnapshot: API.OperationMethod<
   CreateStorageNetappShareSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateStorageNetappShareSnapshotRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StorageNetAppShareSnapshot>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateStorageNetappShareSnapshotRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<StorageNetAppShareSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -810,8 +810,8 @@ export const createStorageNetappShareSnapshotHold: API.OperationMethod<
   CreateStorageNetappShareSnapshotHoldError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateStorageNetappShareSnapshotHoldRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StorageNetAppShareSnapshot>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateStorageNetappShareSnapshotHoldRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<StorageNetAppShareSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -825,8 +825,8 @@ export const createStorageNetappSnapshotPolicy: API.OperationMethod<
   CreateStorageNetappSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateStorageNetappSnapshotPolicyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<StorageNetAppSnapshotPolicy>,
+  input: __S(376, __c47, 0) as any as S.Schema<CreateStorageNetappSnapshotPolicyRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<StorageNetAppSnapshotPolicy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -840,8 +840,8 @@ export const deleteStorageNetappShare: API.OperationMethod<
   DeleteStorageNetappShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteStorageNetappShareRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteStorageNetappShareResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<DeleteStorageNetappShareRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteStorageNetappShareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -855,8 +855,8 @@ export const deleteStorageNetappShareAcl: API.OperationMethod<
   DeleteStorageNetappShareAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteStorageNetappShareAclRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteStorageNetappShareAclResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<DeleteStorageNetappShareAclRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteStorageNetappShareAclResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -870,8 +870,8 @@ export const deleteStorageNetappShareSnapshot: API.OperationMethod<
   DeleteStorageNetappShareSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteStorageNetappShareSnapshotRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteStorageNetappShareSnapshotResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteStorageNetappShareSnapshotRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteStorageNetappShareSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const deleteStorageNetappSnapshotPolicy: API.OperationMethod<
   DeleteStorageNetappSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteStorageNetappSnapshotPolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteStorageNetappSnapshotPolicyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteStorageNetappSnapshotPolicyRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteStorageNetappSnapshotPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -900,8 +900,8 @@ export const extendStorageNetappShare: API.OperationMethod<
   ExtendStorageNetappShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ExtendStorageNetappShareRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ExtendStorageNetappShareResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ExtendStorageNetappShareRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<ExtendStorageNetappShareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const getStorageNetapp: API.OperationMethod<
   GetStorageNetappError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetStorageNetappRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<StorageNetAppServiceWithIAM>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetStorageNetappRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<StorageNetAppServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const getStorageNetappMetricsToken: API.OperationMethod<
   GetStorageNetappMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetStorageNetappMetricsTokenRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<StorageMetricsToken>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetStorageNetappMetricsTokenRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<StorageMetricsToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const getStorageNetappNetwork: API.OperationMethod<
   GetStorageNetappNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetStorageNetappNetworkRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<StorageNetAppNetwork>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetStorageNetappNetworkRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<StorageNetAppNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const getStorageNetappServiceInfos: API.OperationMethod<
   GetStorageNetappServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetStorageNetappServiceInfosRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ServicesService>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetStorageNetappServiceInfosRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -975,8 +975,8 @@ export const getStorageNetappShare: API.OperationMethod<
   GetStorageNetappShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetStorageNetappShareRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<StorageNetAppShare>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetStorageNetappShareRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<StorageNetAppShare>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const getStorageNetappShareAccessPath: API.OperationMethod<
   GetStorageNetappShareAccessPathError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetStorageNetappShareAccessPathRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<StorageNetAppShareAccessPath>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetStorageNetappShareAccessPathRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<StorageNetAppShareAccessPath>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1005,8 @@ export const getStorageNetappShareAcl: API.OperationMethod<
   GetStorageNetappShareAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetStorageNetappShareAclRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<StorageNetAppShareACLRule>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetStorageNetappShareAclRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StorageNetAppShareACLRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1020,8 @@ export const getStorageNetappShareSnapshot: API.OperationMethod<
   GetStorageNetappShareSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetStorageNetappShareSnapshotRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StorageNetAppShareSnapshot>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetStorageNetappShareSnapshotRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<StorageNetAppShareSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1035,8 @@ export const getStorageNetappShareSnapshotPolicy: API.OperationMethod<
   GetStorageNetappShareSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetStorageNetappShareSnapshotPolicyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<StorageNetAppShareSnapshotPolicy>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetStorageNetappShareSnapshotPolicyRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<StorageNetAppShareSnapshotPolicy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1050,8 @@ export const getStorageNetappShareSnapshotReserve: API.OperationMethod<
   GetStorageNetappShareSnapshotReserveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetStorageNetappShareSnapshotReserveRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<StorageNetAppShareSnapshotReserve>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetStorageNetappShareSnapshotReserveRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<StorageNetAppShareSnapshotReserve>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1065,8 +1065,8 @@ export const getStorageNetappSnapshotPolicy: API.OperationMethod<
   GetStorageNetappSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetStorageNetappSnapshotPolicyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<StorageNetAppSnapshotPolicy>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetStorageNetappSnapshotPolicyRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<StorageNetAppSnapshotPolicy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1080,8 +1080,8 @@ export const listStorageNetapp: API.OperationMethod<
   ListStorageNetappError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListStorageNetappRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListStorageNetappResponse>,
+  input: __S(203, __c25, 3) as any as S.Schema<ListStorageNetappRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<ListStorageNetappResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1095,8 @@ export const listStorageNetappNetwork: API.OperationMethod<
   ListStorageNetappNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListStorageNetappNetworkRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListStorageNetappNetworkResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListStorageNetappNetworkRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListStorageNetappNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const listStorageNetappShare: API.OperationMethod<
   ListStorageNetappShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListStorageNetappShareRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListStorageNetappShareResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListStorageNetappShareRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListStorageNetappShareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1125,8 +1125,8 @@ export const listStorageNetappShareAccessPath: API.OperationMethod<
   ListStorageNetappShareAccessPathError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListStorageNetappShareAccessPathRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListStorageNetappShareAccessPathResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListStorageNetappShareAccessPathRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<ListStorageNetappShareAccessPathResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1140,8 +1140,8 @@ export const listStorageNetappShareAcl: API.OperationMethod<
   ListStorageNetappShareAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListStorageNetappShareAclRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListStorageNetappShareAclResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListStorageNetappShareAclRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<ListStorageNetappShareAclResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1155,8 @@ export const listStorageNetappShareSnapshot: API.OperationMethod<
   ListStorageNetappShareSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListStorageNetappShareSnapshotRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListStorageNetappShareSnapshotResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListStorageNetappShareSnapshotRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<ListStorageNetappShareSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1170,8 @@ export const listStorageNetappSnapshotPolicy: API.OperationMethod<
   ListStorageNetappSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListStorageNetappSnapshotPolicyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListStorageNetappSnapshotPolicyResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListStorageNetappSnapshotPolicyRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<ListStorageNetappSnapshotPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1185,8 @@ export const putStorageNetapp: API.OperationMethod<
   PutStorageNetappError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<PutStorageNetappRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<StorageNetAppService>,
+  input: __S(272, __c34, 0) as any as S.Schema<PutStorageNetappRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<StorageNetAppService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1200,8 +1200,8 @@ export const putStorageNetappServiceInfos: API.OperationMethod<
   PutStorageNetappServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<PutStorageNetappServiceInfosRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutStorageNetappServiceInfosResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<PutStorageNetappServiceInfosRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PutStorageNetappServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const putStorageNetappShare: API.OperationMethod<
   PutStorageNetappShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<PutStorageNetappShareRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<StorageNetAppShare>,
+  input: __S(288, __c36, 0) as any as S.Schema<PutStorageNetappShareRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<StorageNetAppShare>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const putStorageNetappShareSnapshot: API.OperationMethod<
   PutStorageNetappShareSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<PutStorageNetappShareSnapshotRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StorageNetAppShareSnapshot>,
+  input: __S(296, __c37, 0) as any as S.Schema<PutStorageNetappShareSnapshotRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<StorageNetAppShareSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const putStorageNetappShareSnapshotPolicy: API.OperationMethod<
   PutStorageNetappShareSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<PutStorageNetappShareSnapshotPolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutStorageNetappShareSnapshotPolicyResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<PutStorageNetappShareSnapshotPolicyRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PutStorageNetappShareSnapshotPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const putStorageNetappShareSnapshotReserve: API.OperationMethod<
   PutStorageNetappShareSnapshotReserveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<PutStorageNetappShareSnapshotReserveRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutStorageNetappShareSnapshotReserveResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<PutStorageNetappShareSnapshotReserveRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PutStorageNetappShareSnapshotReserveResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const putStorageNetappSnapshotPolicy: API.OperationMethod<
   PutStorageNetappSnapshotPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<PutStorageNetappSnapshotPolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutStorageNetappSnapshotPolicyResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<PutStorageNetappSnapshotPolicyRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PutStorageNetappSnapshotPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const shareStorageNetapp: API.OperationMethod<
   ShareStorageNetappError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ShareStorageNetappRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<StorageNetAppShare>,
+  input: __S(328, __c41, 0) as any as S.Schema<ShareStorageNetappRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<StorageNetAppShare>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const terminateStorageNetapp: API.OperationMethod<
   TerminateStorageNetappError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<TerminateStorageNetappRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateStorageNetappResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<TerminateStorageNetappRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TerminateStorageNetappResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1333,11 +1333,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmStorageNetappTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmStorageNetappTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1350,13 +1358,311 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateStorageNetappChangeContactRequest",
       });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateStorageNetappChangeContactResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageNetappShareSnapshotRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          snapshotPolicyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/storage/netapp/{serviceName}/snapshotPolicy/{snapshotPolicyId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageNetappSnapshotPolicyRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          size: S.NullOr(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/extend",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExtendStorageNetappShareRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}", code: 200 })),
+      ).annotate({ identifier: "GetStorageNetappRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(64, __c8, 0))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(65, __c8, 1))),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          performanceLevel: S.optional(S.String),
+          product: S.optional(S.String),
+          quota: S.optional(S.Number),
+          region: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppServiceWithIAM",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}/metricsToken", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappMetricsTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          expiry: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageMetricsToken" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          networkId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/storage/netapp/{serviceName}/network/{networkId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappNetworkRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.NullOr(S.String)),
+          vRackServicesURN: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "StorageNetAppNetwork" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappServiceInfosRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteAtExpiration: S.optional(S.Boolean),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+          creation: S.optional(S.String),
+          domain: S.optional(S.String),
+          engagedUpTo: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(24, __c3, 0))),
+          renew: S.optional(S.NullOr(__S(104, __c13, 0))),
+          renewalType: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicesService" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappShareRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          mountPointName: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          protocol: S.NullOr(S.String),
+          size: S.NullOr(S.Number),
+          snapshotID: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "StorageNetAppShare" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          accessPathId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/accessPath/{accessPathId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappShareAccessPathRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          path: S.optional(S.String),
+          preferred: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppShareAccessPath",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          aclRuleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/acl/{aclRuleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStorageNetappShareAclRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1373,7 +1679,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateStorageNetappShareAclRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessLevel: S.NullOr(S.String),
@@ -1386,422 +1696,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "StorageNetAppShareACLRule",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          snapshotID: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/revert",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageNetappShareRevertRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateStorageNetappShareRevertResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          size: S.NullOr(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/shrink",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageNetappShareShrinkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageNetappShareSnapshotRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppShareSnapshot",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}/hold",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageNetappShareSnapshotHoldRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          days: S.optional(S.NullOr(__S(3, __c0, 3))),
-          hours: S.optional(S.NullOr(__S(3, __c0, 3))),
-          minutes: __S(3, __c0, 3),
-          months: S.optional(S.NullOr(__S(3, __c0, 3))),
-          weekdays: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppSnapshotPolicySchedule",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          copies: S.NullOr(S.Number),
-          prefix: S.NullOr(S.String),
-          schedule: S.NullOr(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppSnapshotPolicyRule",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          rules: S.NullOr(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/snapshotPolicy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageNetappSnapshotPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          isDefault: S.optional(S.NullOr(S.Boolean)),
-          name: S.optional(S.NullOr(S.String)),
-          rules: S.NullOr(__S(15, __c1, 7)),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppSnapshotPolicy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageNetappShareRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          aclRuleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/acl/{aclRuleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageNetappShareAclRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageNetappShareSnapshotRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          snapshotPolicyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/storage/netapp/{serviceName}/snapshotPolicy/{snapshotPolicyId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageNetappSnapshotPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          size: S.NullOr(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/extend",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExtendStorageNetappShareRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}", code: 200 })),
-      ).annotate({ identifier: "GetStorageNetappRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(24, __c3, 0))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(25, __c3, 1))),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          performanceLevel: S.optional(S.String),
-          product: S.optional(S.String),
-          quota: S.optional(S.Number),
-          region: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppServiceWithIAM",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}/metricsToken", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappMetricsTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          expiry: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageMetricsToken" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          networkId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/storage/netapp/{serviceName}/network/{networkId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappNetworkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          status: S.optional(S.NullOr(S.String)),
-          vRackServicesURN: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "StorageNetAppNetwork" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/storage/netapp/{serviceName}/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappServiceInfosRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteAtExpiration: S.optional(S.Boolean),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-          creation: S.optional(S.String),
-          domain: S.optional(S.String),
-          engagedUpTo: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(3, __c0, 3))),
-          renew: S.optional(S.NullOr(__S(32, __c4, 0))),
-          renewalType: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicesService" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappShareRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          mountPointName: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          protocol: S.NullOr(S.String),
-          size: S.NullOr(S.Number),
-          snapshotID: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "StorageNetAppShare" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          accessPathId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/accessPath/{accessPathId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappShareAccessPathRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          path: S.optional(S.String),
-          preferred: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StorageNetAppShareAccessPath",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shareId: S.String.pipe(T.Label()),
-          aclRuleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/storage/netapp/{serviceName}/share/{shareId}/acl/{aclRuleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStorageNetappShareAclRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1819,7 +1718,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1845,7 +1744,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StorageNetAppShareSnapshotPolicy",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1860,7 +1763,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetStorageNetappShareSnapshotReserveRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           percent: S.optional(S.Number),
@@ -1869,7 +1772,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StorageNetAppShareSnapshotReserve",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1884,31 +1791,35 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetStorageNetappSnapshotPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "IamResourceTagFilterInput",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.Record(S.String, __S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
+      return S.Record(S.String, __S(201, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(47, __c5, 7).pipe(T.Query())),
+          iamTags: S.optional(__S(202, __c25, 2).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/storage/netapp", code: 200 })),
       ).annotate({ identifier: "ListStorageNetappRequest" });
-    case 1:
-      return S.Array(__S(26, __c3, 2));
-    case 2:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(66, __c8, 2));
+    case 5:
+      return S.suspend(() => __S(204, __c25, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappResponse",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1917,13 +1828,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappNetworkRequest",
       });
-    case 4:
-      return S.Array(__S(30, __c3, 6));
-    case 5:
-      return S.suspend(() => __S(52, __c6, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() => __S(209, __c26, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappNetworkResponse",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1933,17 +1848,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappShareRequest",
       });
-    case 7:
-      return S.Array(__S(35, __c4, 3));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(55, __c6, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(120, __c15, 0));
+    case 2:
+      return S.suspend(() => __S(217, __c27, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappShareResponse",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1958,13 +1873,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappShareAccessPathRequest",
       });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.Array(__S(37, __c4, 5));
-    case 3:
-      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(225, __c28, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappShareAccessPathResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1979,13 +1898,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappShareAclRequest",
       });
-    case 5:
-      return S.Array(__S(6, __c0, 6));
-    case 6:
-      return S.suspend(() => __S(61, __c7, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
+      return S.suspend(() => __S(233, __c29, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappShareAclResponse",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2001,17 +1924,45 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappShareSnapshotRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
     case 1:
-      return S.suspend(() => __S(64, __c8, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(360, __c45, 0));
+    case 2:
+      return S.suspend(() => __S(241, __c30, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappShareSnapshotResponse",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          snapshotID: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/revert",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageNetappShareRevertRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateStorageNetappShareRevertResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2021,20 +1972,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListStorageNetappSnapshotPolicyRequest",
       });
-    case 3:
-      return S.Array(__S(17, __c2, 1));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(387, __c48, 3));
+    case 2:
+      return S.suspend(() => __S(265, __c33, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStorageNetappSnapshotPolicyResponse",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/storage/netapp/{serviceName}", code: 200 })),
       ).annotate({ identifier: "PutStorageNetappRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -2047,11 +2002,15 @@ function __c8(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageNetAppService" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(32, __c4, 0))),
+          renew: S.optional(S.NullOr(__S(104, __c13, 0))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/storage/netapp/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -2060,7 +2019,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2079,7 +2038,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutStorageNetappShareRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2097,7 +2060,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutStorageNetappShareSnapshotRequest",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2113,7 +2080,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutStorageNetappShareSnapshotPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2129,7 +2100,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutStorageNetappShareSnapshotReserveRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2146,7 +2121,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutStorageNetappSnapshotPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2160,7 +2139,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ShareStorageNetappRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2172,7 +2155,187 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          size: S.NullOr(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/shrink",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageNetappShareShrinkRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageNetappShareSnapshotRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppShareSnapshot",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/snapshot/{snapshotId}/hold",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageNetappShareSnapshotHoldRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          rules: S.NullOr(__S(386, __c48, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/storage/netapp/{serviceName}/snapshotPolicy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageNetappSnapshotPolicyRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          days: S.optional(S.NullOr(__S(24, __c3, 0))),
+          hours: S.optional(S.NullOr(__S(24, __c3, 0))),
+          minutes: __S(24, __c3, 0),
+          months: S.optional(S.NullOr(__S(24, __c3, 0))),
+          weekdays: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppSnapshotPolicySchedule",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          copies: S.NullOr(S.Number),
+          prefix: S.NullOr(S.String),
+          schedule: S.NullOr(__S(384, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppSnapshotPolicyRule",
+      });
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          isDefault: S.optional(S.NullOr(S.Boolean)),
+          name: S.optional(S.NullOr(S.String)),
+          rules: S.NullOr(__S(386, __c48, 2)),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "StorageNetAppSnapshotPolicy",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageNetappShareRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+          aclRuleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/storage/netapp/{serviceName}/share/{shareId}/acl/{aclRuleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageNetappShareAclRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

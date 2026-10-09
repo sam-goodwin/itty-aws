@@ -426,8 +426,8 @@ export const GenerateReportReport: API.OperationMethod<
   GenerateReportReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GenerateReportReportRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetReportResult>,
+  input: __S(8, __c1, 0) as any as S.Schema<GenerateReportReportRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetReportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -441,8 +441,8 @@ export const GetReport: API.OperationMethod<
   GetReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetReportRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetReportResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetReportRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -456,8 +456,8 @@ export const GetStorageDiscoveryWorkspace: API.OperationMethod<
   GetStorageDiscoveryWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetStorageDiscoveryWorkspaceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetStorageDiscoveryWorkspaceResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetStorageDiscoveryWorkspaceRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetStorageDiscoveryWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const ListReportByResourceGroup: API.OperationMethod<
   ListReportByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListReportByResourceGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ReportResourceListResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListReportByResourceGroupRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ReportResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const ListReportBySubscription: API.OperationMethod<
   ListReportBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListReportBySubscriptionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ReportResourceListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListReportBySubscriptionRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ReportResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const ListStorageDiscoveryWorkspaceByResourceGroup: API.OperationMethod<
   ListStorageDiscoveryWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListStorageDiscoveryWorkspaceByResourceGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListStorageDiscoveryWorkspaceByResourceGroupRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const ListStorageDiscoveryWorkspaceBySubscription: API.OperationMethod<
   ListStorageDiscoveryWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListStorageDiscoveryWorkspaceBySubscriptionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListStorageDiscoveryWorkspaceBySubscriptionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const StorageDiscoveryWorkspacesCreateOrUpdate: API.OperationMethod<
   StorageDiscoveryWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const StorageDiscoveryWorkspacesReport: API.OperationMethod<
   StorageDiscoveryWorkspacesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<StorageDiscoveryWorkspacesReportRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetReportResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<StorageDiscoveryWorkspacesReportRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetReportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const UpdateStorageDiscoveryWorkspace: API.OperationMethod<
   UpdateStorageDiscoveryWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -607,16 +607,18 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteStorageDiscoveryWorkspaceResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
           discoveryResourceName: S.String.pipe(T.Label()),
-          queries: __S(2, __c0, 2),
+          queries: __S(24, __c3, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -628,38 +630,104 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateReportReportRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "ReportResultColumn" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(__S(2, __c0, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.Array(__S(24, __c3, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(5, __c0, 5)),
-          rows: S.optional(__S(6, __c0, 6)),
+          columns: S.optional(__S(17, __c2, 1)),
+          rows: S.optional(__S(18, __c2, 2)),
           errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResultSet" });
+    case 4:
+      return S.Array(__S(19, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(20, __c2, 4),
+        }),
+      ).annotate({ identifier: "GetReportResult" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
+          queries: __S(24, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/report",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StorageDiscoveryWorkspacesReportRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(S.String),
+          description: S.optional(S.String),
+          workspaceRoots: S.optional(__S(24, __c3, 0)),
+          scopes: S.optional(__S(83, __c10, 3)),
+        }),
+      ).annotate({
+        identifier: "StorageDiscoveryWorkspacePropertiesUpdate",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "GetReportResult" });
-    case 2:
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(40, __c5, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageDiscoveryWorkspaceRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -675,7 +743,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReportRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -686,23 +758,31 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportProperties" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(12, __c1, 4)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "GetReportResponse" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -719,52 +799,56 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetStorageDiscoveryWorkspaceRequest",
       });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Record(S.String, S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
-          resourceTypes: __S(16, __c2, 0),
-          tagKeysOnly: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(15, __c1, 7)),
+          resourceTypes: __S(81, __c10, 1),
+          tagKeysOnly: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "StorageDiscoveryScope" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
           description: S.optional(S.String),
-          workspaceRoots: __S(2, __c0, 2),
-          scopes: __S(18, __c2, 2),
+          workspaceRoots: __S(24, __c3, 0),
+          scopes: __S(83, __c10, 3),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspaceProperties",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(15, __c1, 7)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "GetStorageDiscoveryWorkspaceResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -775,7 +859,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -784,30 +868,30 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(22, __c2, 6)),
+          display: S.optional(__S(89, __c11, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(24, __c3, 0)),
+          value: S.optional(__S(91, __c11, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -824,16 +908,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListReportByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(13, __c1, 5));
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(65, __c8, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(27, __c3, 3),
+          value: __S(104, __c13, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResourceListResult" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -849,7 +941,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListReportBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -865,22 +961,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListStorageDiscoveryWorkspaceByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(20, __c2, 4));
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(85, __c10, 5));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(31, __c3, 7),
+          value: __S(128, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspaceListResult",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -895,26 +995,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListStorageDiscoveryWorkspaceBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
           description: S.optional(S.String),
-          workspaceRoots: __S(2, __c0, 2),
-          scopes: __S(18, __c2, 2),
+          workspaceRoots: __S(24, __c3, 0),
+          scopes: __S(83, __c10, 3),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspacePropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(80, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(34, __c4, 2)),
+          properties: S.optional(__S(144, __c18, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -926,57 +1030,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StorageDiscoveryWorkspacesCreateOrUpdateRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          queries: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/report",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StorageDiscoveryWorkspacesReportRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(S.String),
-          description: S.optional(S.String),
-          workspaceRoots: S.optional(__S(2, __c0, 2)),
-          scopes: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "StorageDiscoveryWorkspacePropertiesUpdate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageDiscoveryWorkspaceRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

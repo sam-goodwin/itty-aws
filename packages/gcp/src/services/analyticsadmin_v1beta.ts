@@ -1242,10 +1242,10 @@ export const acknowledgeUserDataCollectionProperties: API.OperationMethod<
   AcknowledgeUserDataCollectionPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcknowledgeUserDataCollectionPropertiesRequest>,
+  input: __S(1601, __c50, 1) as any as S.Schema<AcknowledgeUserDataCollectionPropertiesRequest>,
   output: __S(
-    2,
-    __c0,
+    1602,
+    __c50,
     2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
@@ -1267,8 +1267,8 @@ export const archivePropertiesCustomDimensions: API.OperationMethod<
   ArchivePropertiesCustomDimensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ArchivePropertiesCustomDimensionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ArchivePropertiesCustomDimensionsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1288,8 @@ export const archivePropertiesCustomMetrics: API.OperationMethod<
   ArchivePropertiesCustomMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ArchivePropertiesCustomMetricsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ArchivePropertiesCustomMetricsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1309,8 @@ export const createProperties: API.OperationMethod<
   CreatePropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreatePropertiesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
+  input: __S(2144, __c67, 0) as any as S.Schema<CreatePropertiesRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1330,8 @@ export const createPropertiesConversionEvents: API.OperationMethod<
   CreatePropertiesConversionEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreatePropertiesConversionEventsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
+  input: __S(2208, __c69, 0) as any as S.Schema<CreatePropertiesConversionEventsRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1351,8 @@ export const createPropertiesCustomDimensions: API.OperationMethod<
   CreatePropertiesCustomDimensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreatePropertiesCustomDimensionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePropertiesCustomDimensionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1372,8 @@ export const createPropertiesCustomMetrics: API.OperationMethod<
   CreatePropertiesCustomMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreatePropertiesCustomMetricsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreatePropertiesCustomMetricsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1393,8 +1393,8 @@ export const createPropertiesDataStreams: API.OperationMethod<
   CreatePropertiesDataStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreatePropertiesDataStreamsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreatePropertiesDataStreamsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1415,11 +1415,11 @@ export const createPropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1439,8 @@ export const createPropertiesFirebaseLinks: API.OperationMethod<
   CreatePropertiesFirebaseLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreatePropertiesFirebaseLinksRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaFirebaseLink>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreatePropertiesFirebaseLinksRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaFirebaseLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1460,8 @@ export const createPropertiesGoogleAdsLinks: API.OperationMethod<
   CreatePropertiesGoogleAdsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreatePropertiesGoogleAdsLinksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaGoogleAdsLink>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreatePropertiesGoogleAdsLinksRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaGoogleAdsLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1481,8 +1481,8 @@ export const createPropertiesKeyEvents: API.OperationMethod<
   CreatePropertiesKeyEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreatePropertiesKeyEventsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreatePropertiesKeyEventsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1502,8 +1502,8 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteAccountsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1523,8 @@ export const deleteProperties: API.OperationMethod<
   DeletePropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeletePropertiesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeletePropertiesRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1544,8 @@ export const deletePropertiesConversionEvents: API.OperationMethod<
   DeletePropertiesConversionEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeletePropertiesConversionEventsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeletePropertiesConversionEventsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1565,8 +1565,8 @@ export const deletePropertiesDataStreams: API.OperationMethod<
   DeletePropertiesDataStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeletePropertiesDataStreamsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeletePropertiesDataStreamsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1587,11 +1587,11 @@ export const deletePropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    35,
-    __c4,
-    3,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1611,8 +1611,8 @@ export const deletePropertiesFirebaseLinks: API.OperationMethod<
   DeletePropertiesFirebaseLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeletePropertiesFirebaseLinksRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeletePropertiesFirebaseLinksRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1632,8 +1632,8 @@ export const deletePropertiesGoogleAdsLinks: API.OperationMethod<
   DeletePropertiesGoogleAdsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeletePropertiesGoogleAdsLinksRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeletePropertiesGoogleAdsLinksRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const deletePropertiesKeyEvents: API.OperationMethod<
   DeletePropertiesKeyEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeletePropertiesKeyEventsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeletePropertiesKeyEventsRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetAccountsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaAccount>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaAccount>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1687,8 @@ export const getDataRetentionSettingsProperties: API.OperationMethod<
   GetDataRetentionSettingsPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetDataRetentionSettingsPropertiesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaDataRetentionSettings>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetDataRetentionSettingsPropertiesRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaDataRetentionSettings>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const getDataSharingSettingsAccounts: API.OperationMethod<
   GetDataSharingSettingsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetDataSharingSettingsAccountsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaDataSharingSettings>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetDataSharingSettingsAccountsRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaDataSharingSettings>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1721,8 @@ export const getProperties: API.OperationMethod<
   GetPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetPropertiesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetPropertiesRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1740,8 @@ export const getPropertiesConversionEvents: API.OperationMethod<
   GetPropertiesConversionEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetPropertiesConversionEventsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetPropertiesConversionEventsRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1759,8 +1759,8 @@ export const getPropertiesCustomDimensions: API.OperationMethod<
   GetPropertiesCustomDimensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetPropertiesCustomDimensionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetPropertiesCustomDimensionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1778,8 +1778,8 @@ export const getPropertiesCustomMetrics: API.OperationMethod<
   GetPropertiesCustomMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetPropertiesCustomMetricsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetPropertiesCustomMetricsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1793,8 +1793,8 @@ export const getPropertiesDataStreams: API.OperationMethod<
   GetPropertiesDataStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetPropertiesDataStreamsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetPropertiesDataStreamsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1813,11 +1813,11 @@ export const getPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    1056,
+    __c33,
+    0,
   ) as any as S.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,8 @@ export const getPropertiesKeyEvents: API.OperationMethod<
   GetPropertiesKeyEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetPropertiesKeyEventsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetPropertiesKeyEventsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1847,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListAccountsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleAnalyticsAdminV1betaListAccountsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaListAccountsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1864,11 +1864,11 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListAccountSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListAccountSummariesRequest>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListAccountSummariesRequest>,
   output: __S(
-    60,
-    __c7,
-    4,
+    1157,
+    __c36,
+    5,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaListAccountSummariesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1885,8 +1885,8 @@ export const listProperties: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListPropertiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListPropertiesRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaListPropertiesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListPropertiesRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaListPropertiesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1906,10 +1906,10 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListConversionEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPropertiesConversionEventsRequest>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListPropertiesConversionEventsRequest>,
   output: __S(
-    66,
-    __c8,
+    1218,
+    __c38,
     2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaListConversionEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
@@ -1931,11 +1931,11 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListCustomDimensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListPropertiesCustomDimensionsRequest>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListPropertiesCustomDimensionsRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    1250,
+    __c39,
+    2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaListCustomDimensionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1956,8 +1956,12 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListCustomMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListPropertiesCustomMetricsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaListCustomMetricsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListPropertiesCustomMetricsRequest>,
+  output: __S(
+    1282,
+    __c40,
+    2,
+  ) as any as S.Schema<GoogleAnalyticsAdminV1betaListCustomMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1973,8 +1977,8 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListDataStreamsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListPropertiesDataStreamsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GoogleAnalyticsAdminV1betaListDataStreamsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListPropertiesDataStreamsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaListDataStreamsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1995,14 +1999,14 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
   GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>,
   output: __S(
-    78,
-    __c9,
-    6,
+    1346,
+    __c42,
+    2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2023,8 +2027,12 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListFirebaseLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListPropertiesFirebaseLinksRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaListFirebaseLinksResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListPropertiesFirebaseLinksRequest>,
+  output: __S(
+    1378,
+    __c43,
+    2,
+  ) as any as S.Schema<GoogleAnalyticsAdminV1betaListFirebaseLinksResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2044,11 +2052,11 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListPropertiesGoogleAdsLinksRequest>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListPropertiesGoogleAdsLinksRequest>,
   output: __S(
-    84,
-    __c10,
-    4,
+    1410,
+    __c44,
+    2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2065,8 +2073,8 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAnalyticsAdminV1betaListKeyEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListPropertiesKeyEventsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaListKeyEventsResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListPropertiesKeyEventsRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaListKeyEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2095,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaAccount>,
+  input: __S(1472, __c46, 0) as any as S.Schema<PatchAccountsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2116,8 @@ export const patchProperties: API.OperationMethod<
   PatchPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<PatchPropertiesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PatchPropertiesRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaProperty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2129,8 +2137,8 @@ export const patchPropertiesConversionEvents: API.OperationMethod<
   PatchPropertiesConversionEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<PatchPropertiesConversionEventsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
+  input: __S(1536, __c48, 0) as any as S.Schema<PatchPropertiesConversionEventsRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2150,8 +2158,8 @@ export const patchPropertiesCustomDimensions: API.OperationMethod<
   PatchPropertiesCustomDimensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PatchPropertiesCustomDimensionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
+  input: __S(1568, __c49, 0) as any as S.Schema<PatchPropertiesCustomDimensionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimension>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2171,8 +2179,8 @@ export const patchPropertiesCustomMetrics: API.OperationMethod<
   PatchPropertiesCustomMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<PatchPropertiesCustomMetricsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
+  input: __S(1632, __c51, 0) as any as S.Schema<PatchPropertiesCustomMetricsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2192,8 +2200,8 @@ export const patchPropertiesDataStreams: API.OperationMethod<
   PatchPropertiesDataStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<PatchPropertiesDataStreamsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
+  input: __S(1664, __c52, 0) as any as S.Schema<PatchPropertiesDataStreamsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStream>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2214,11 +2222,11 @@ export const patchPropertiesDataStreamsMeasurementProtocolSecrets: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    94,
-    __c11,
-    6,
+    1696,
+    __c53,
+    0,
   ) as any as S.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2238,8 +2246,8 @@ export const patchPropertiesGoogleAdsLinks: API.OperationMethod<
   PatchPropertiesGoogleAdsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<PatchPropertiesGoogleAdsLinksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaGoogleAdsLink>,
+  input: __S(1728, __c54, 0) as any as S.Schema<PatchPropertiesGoogleAdsLinksRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaGoogleAdsLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2259,8 +2267,8 @@ export const patchPropertiesKeyEvents: API.OperationMethod<
   PatchPropertiesKeyEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PatchPropertiesKeyEventsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
+  input: __S(1760, __c55, 0) as any as S.Schema<PatchPropertiesKeyEventsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2280,11 +2288,11 @@ export const provisionAccountTicketAccounts: API.OperationMethod<
   ProvisionAccountTicketAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ProvisionAccountTicketAccountsRequest>,
+  input: __S(1793, __c56, 1) as any as S.Schema<ProvisionAccountTicketAccountsRequest>,
   output: __S(
-    99,
-    __c12,
-    3,
+    1794,
+    __c56,
+    2,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2305,8 +2313,12 @@ export const runAccessReportAccounts: API.OperationMethod<
   RunAccessReportAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<RunAccessReportAccountsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaRunAccessReportResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<RunAccessReportAccountsRequest>,
+  output: __S(
+    1881,
+    __c58,
+    25,
+  ) as any as S.Schema<GoogleAnalyticsAdminV1betaRunAccessReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2326,8 +2338,12 @@ export const runAccessReportProperties: API.OperationMethod<
   RunAccessReportPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<RunAccessReportPropertiesRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GoogleAnalyticsAdminV1betaRunAccessReportResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RunAccessReportPropertiesRequest>,
+  output: __S(
+    1881,
+    __c58,
+    25,
+  ) as any as S.Schema<GoogleAnalyticsAdminV1betaRunAccessReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2347,11 +2363,11 @@ export const searchChangeHistoryEventsAccounts: API.OperationMethod<
   SearchChangeHistoryEventsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<SearchChangeHistoryEventsAccountsRequest>,
+  input: __S(1953, __c61, 1) as any as S.Schema<SearchChangeHistoryEventsAccountsRequest>,
   output: __S(
-    136,
-    __c17,
-    0,
+    1959,
+    __c61,
+    7,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2372,8 +2388,8 @@ export const updateDataRetentionSettingsProperties: API.OperationMethod<
   UpdateDataRetentionSettingsPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdateDataRetentionSettingsPropertiesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GoogleAnalyticsAdminV1betaDataRetentionSettings>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateDataRetentionSettingsPropertiesRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GoogleAnalyticsAdminV1betaDataRetentionSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2381,6 +2397,1100 @@ export const updateDataRetentionSettingsProperties: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/customDimensions",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesCustomDimensionsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parameterName: S.optional(S.String),
+          disallowAdsPersonalization: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          scope: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaCustomDimension",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/customMetrics",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesCustomMetricsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          measurementUnit: S.optional(S.String),
+          displayName: S.optional(S.String),
+          parameterName: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          scope: S.optional(S.String),
+          restrictedMetricType: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaCustomMetric",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/dataStreams",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesDataStreamsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          firebaseAppId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          defaultUri: S.optional(S.String),
+          measurementId: S.optional(S.String),
+          firebaseAppId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bundleId: S.optional(S.String),
+          firebaseAppId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          androidAppStreamData: S.optional(__S(192, __c6, 0)),
+          displayName: S.optional(S.String),
+          webStreamData: S.optional(__S(193, __c6, 1)),
+          type: S.optional(S.String),
+          iosAppStreamData: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataStream",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/measurementProtocolSecrets",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          secretValue: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaMeasurementProtocolSecret",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/firebaseLinks",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesFirebaseLinksRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          project: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaFirebaseLink",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/googleAdsLinks",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesGoogleAdsLinksRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          adsPersonalizationEnabled: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          customerId: S.optional(S.String),
+          canManageClients: S.optional(S.Boolean),
+          creatorEmailAddress: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaGoogleAdsLink",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(449, __c14, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/keyEvents",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesKeyEventsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          numericValue: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaKeyEventDefaultValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          eventName: S.optional(S.String),
+          deletable: S.optional(S.Boolean),
+          countingMethod: S.optional(S.String),
+          defaultValue: S.optional(__S(448, __c14, 0)),
+          custom: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaKeyEvent",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAccountsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePropertiesRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesConversionEventsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesDataStreamsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesFirebaseLinksRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesGoogleAdsLinksRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePropertiesKeyEventsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccountsRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          gmpOrganization: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccount",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataRetentionSettingsPropertiesRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventDataRetention: S.optional(S.String),
+          name: S.optional(S.String),
+          userDataRetention: S.optional(S.String),
+          resetUserDataOnNewActivity: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataRetentionSettings",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataSharingSettingsAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sharingWithGoogleProductsEnabled: S.optional(S.Boolean),
+          sharingWithGoogleAnySalesEnabled: S.optional(S.Boolean),
+          sharingWithGoogleSupportEnabled: S.optional(S.Boolean),
+          sharingWithGoogleAssignedSalesEnabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          sharingWithOthersEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaDataSharingSettings",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetPropertiesRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesConversionEventsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesCustomDimensionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesCustomMetricsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesDataStreamsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesDataStreamsMeasurementProtocolSecretsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesKeyEventsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/accounts",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountsRequest" });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          accounts: S.optional(__S(1121, __c35, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListAccountsResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/accountSummaries",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountSummariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          parent: S.optional(S.String),
+          canEdit: S.optional(S.Boolean),
+          property: S.optional(S.String),
+          propertyType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaPropertySummary",
+      });
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          propertySummaries: S.optional(__S(1154, __c36, 2)),
+          displayName: S.optional(S.String),
+          account: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccountSummary",
+      });
+    case 4:
+      return S.Array(__S(1155, __c36, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accountSummaries: S.optional(__S(1156, __c36, 4)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListAccountSummariesResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/properties",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPropertiesRequest" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          properties: S.optional(__S(1185, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListPropertiesResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/conversionEvents",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesConversionEventsRequest",
+      });
+    case 1:
+      return S.Array(__S(2241, __c70, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conversionEvents: S.optional(__S(1217, __c38, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListConversionEventsResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/customDimensions",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesCustomDimensionsRequest",
+      });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          customDimensions: S.optional(__S(1249, __c39, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListCustomDimensionsResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/customMetrics",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesCustomMetricsRequest",
+      });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customMetrics: S.optional(__S(1281, __c40, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListCustomMetricsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/dataStreams",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesDataStreamsRequest",
+      });
+    case 1:
+      return S.Array(__S(195, __c6, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          dataStreams: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListDataStreamsResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/measurementProtocolSecrets",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesDataStreamsMeasurementProtocolSecretsRequest",
+      });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          measurementProtocolSecrets: S.optional(__S(1345, __c42, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/firebaseLinks",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesFirebaseLinksRequest",
+      });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firebaseLinks: S.optional(__S(1377, __c43, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListFirebaseLinksResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/googleAdsLinks",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesGoogleAdsLinksRequest",
+      });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          googleAdsLinks: S.optional(__S(1409, __c44, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/keyEvents",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPropertiesKeyEventsRequest",
+      });
+    case 1:
+      return S.Array(__S(449, __c14, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          keyEvents: S.optional(__S(1441, __c45, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaListKeyEventsResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchAccountsRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchPropertiesRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2241, __c70, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesConversionEventsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesCustomDimensionsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2394,7 +3504,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           property: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2409,15 +3519,508 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest",
-      });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesCustomMetricsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesDataStreamsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesGoogleAdsLinksRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(449, __c14, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPropertiesKeyEventsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(__S(768, __c24, 0)),
+          redirectUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1792, __c56, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/accounts:provisionAccountTicket",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionAccountTicketAccountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountTicketId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.String.pipe(T.Label()),
+          body: S.optional(__S(1874, __c58, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+entity}:runAccessReport",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunAccessReportAccountsRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionName: S.optional(S.String),
+          orderType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimension: S.optional(__S(1856, __c58, 0)),
+          metric: S.optional(__S(1857, __c58, 1)),
+          desc: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessOrderBy",
+      });
+    case 3:
+      return S.Array(__S(1858, __c58, 2));
+    case 4:
+      return S.Array(__S(1857, __c58, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.String),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessDateRange",
+      });
+    case 6:
+      return S.Array(__S(1861, __c58, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessDimension",
+      });
+    case 8:
+      return S.Array(__S(1863, __c58, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          doubleValue: S.optional(S.Number),
+          int64Value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaNumericValue",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          fromValue: S.optional(__S(1865, __c58, 9)),
+          toValue: S.optional(__S(1865, __c58, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessBetweenFilter",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          caseSensitive: S.optional(S.Boolean),
+          matchType: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessStringFilter",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(1888, __c59, 0)),
+          caseSensitive: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessInListFilter",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1865, __c58, 9)),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessNumericFilter",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          betweenFilter: S.optional(__S(1866, __c58, 10)),
+          fieldName: S.optional(S.String),
+          stringFilter: S.optional(__S(1867, __c58, 11)),
+          inListFilter: S.optional(__S(1868, __c58, 12)),
+          numericFilter: S.optional(__S(1869, __c58, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessFilter",
+      });
+    case 15:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1873, __c58, 17)));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          expressions: S.optional(__S(1871, __c58, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessFilterExpressionList",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          accessFilter: S.optional(__S(1870, __c58, 14)),
+          andGroup: S.optional(__S(1872, __c58, 16)),
+          notExpression: S.optional(__S(1873, __c58, 17)),
+          orGroup: S.optional(__S(1872, __c58, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessFilterExpression",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          offset: S.optional(S.String),
+          expandGroups: S.optional(S.Boolean),
+          orderBys: S.optional(__S(1859, __c58, 3)),
+          metrics: S.optional(__S(1860, __c58, 4)),
+          includeAllUsers: S.optional(S.Boolean),
+          dateRanges: S.optional(__S(1862, __c58, 6)),
+          returnEntityQuota: S.optional(S.Boolean),
+          dimensions: S.optional(__S(1864, __c58, 8)),
+          dimensionFilter: S.optional(__S(1873, __c58, 17)),
+          timeZone: S.optional(S.String),
+          limit: S.optional(S.String),
+          metricFilter: S.optional(__S(1873, __c58, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaRunAccessReportRequest",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessMetricValue",
+      });
+    case 20:
+      return S.Array(__S(1875, __c58, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          metricValues: S.optional(__S(1876, __c58, 20)),
+          dimensionValues: S.optional(__S(1876, __c58, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessRow",
+      });
+    case 22:
+      return S.Array(__S(1877, __c58, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          remaining: S.optional(S.Number),
+          consumed: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessQuotaStatus",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          tokensPerHour: S.optional(__S(1879, __c58, 23)),
+          concurrentRequests: S.optional(__S(1879, __c58, 23)),
+          serverErrorsPerProjectPerHour: S.optional(__S(1879, __c58, 23)),
+          tokensPerProjectPerHour: S.optional(__S(1879, __c58, 23)),
+          tokensPerDay: S.optional(__S(1879, __c58, 23)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaAccessQuota",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          metricHeaders: S.optional(__S(1860, __c58, 4)),
+          rows: S.optional(__S(1878, __c58, 22)),
+          rowCount: S.optional(S.Number),
+          dimensionHeaders: S.optional(__S(1864, __c58, 8)),
+          quota: S.optional(__S(1880, __c58, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaRunAccessReportResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.String.pipe(T.Label()),
+          body: S.optional(__S(1874, __c58, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+entity}:runAccessReport",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunAccessReportPropertiesRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(128, __c4, 0)),
+          actorEmail: S.optional(__S(1888, __c59, 0)),
+          resourceType: S.optional(__S(128, __c4, 0)),
+          property: S.optional(S.String),
+          earliestChangeTime: S.optional(S.String),
+          pageToken: S.optional(S.String),
+          latestChangeTime: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.String.pipe(T.Label()),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+account}:searchChangeHistoryEvents",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchChangeHistoryEventsAccountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          googleAdsLink: S.optional(__S(384, __c12, 0)),
+          conversionEvent: S.optional(__S(2241, __c70, 1)),
+          firebaseLink: S.optional(__S(320, __c10, 0)),
+          dataRetentionSettings: S.optional(__S(832, __c26, 0)),
+          measurementProtocolSecret: S.optional(__S(256, __c8, 0)),
+          account: S.optional(__S(768, __c24, 0)),
+          dataStream: S.optional(__S(195, __c6, 3)),
+          property: S.optional(__S(2176, __c68, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          resource: S.optional(S.String),
+          resourceBeforeChange: S.optional(__S(1954, __c61, 2)),
+          resourceAfterChange: S.optional(__S(1954, __c61, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChange",
+      });
+    case 4:
+      return S.Array(__S(1955, __c61, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          changeTime: S.optional(S.String),
+          changesFiltered: S.optional(S.Boolean),
+          actorType: S.optional(S.String),
+          userActorEmail: S.optional(S.String),
+          changes: S.optional(__S(1956, __c61, 4)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryEvent",
+      });
+    case 6:
+      return S.Array(__S(1957, __c61, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          changeHistoryEvents: S.optional(__S(1958, __c61, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(832, __c26, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDataRetentionSettingsPropertiesRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2048, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2428,15 +4031,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ArchivePropertiesCustomDimensionsRequest",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2048, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2447,7 +4066,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ArchivePropertiesCustomMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/properties",
+            baseUrl: "https://analyticsadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreatePropertiesRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timeZone: S.optional(S.String),
@@ -2469,48 +4108,13 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/properties",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreatePropertiesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          custom: S.optional(S.Boolean),
-          defaultConversionValue: S.optional(__S(9, __c1, 1)),
-          countingMethod: S.optional(S.String),
-          eventName: S.optional(S.String),
-          deletable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaConversionEvent",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2241, __c70, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2521,1412 +4125,35 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePropertiesConversionEventsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parameterName: S.optional(S.String),
-          disallowAdsPersonalization: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          scope: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaCustomDimension",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/customDimensions",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesCustomDimensionsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          measurementUnit: S.optional(S.String),
-          displayName: S.optional(S.String),
-          parameterName: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          scope: S.optional(S.String),
-          restrictedMetricType: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaCustomMetric",
-      });
   }
 }
-function __c2(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/customMetrics",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesCustomMetricsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          firebaseAppId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultUri: S.optional(S.String),
-          measurementId: S.optional(S.String),
-          firebaseAppId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bundleId: S.optional(S.String),
-          firebaseAppId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          androidAppStreamData: S.optional(__S(17, __c2, 1)),
-          displayName: S.optional(S.String),
-          webStreamData: S.optional(__S(18, __c2, 2)),
-          type: S.optional(S.String),
-          iosAppStreamData: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataStream",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/dataStreams",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesDataStreamsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          secretValue: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaMeasurementProtocolSecret",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/measurementProtocolSecrets",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          project: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaFirebaseLink",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/firebaseLinks",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesFirebaseLinksRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          adsPersonalizationEnabled: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          customerId: S.optional(S.String),
-          canManageClients: S.optional(S.Boolean),
-          creatorEmailAddress: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaGoogleAdsLink",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/googleAdsLinks",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesGoogleAdsLinksRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          numericValue: S.optional(S.Number),
+          value: S.optional(S.Number),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaKeyEventDefaultValue",
+        identifier: "GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           name: S.optional(S.String),
+          custom: S.optional(S.Boolean),
+          defaultConversionValue: S.optional(__S(2240, __c70, 0)),
+          countingMethod: S.optional(S.String),
           eventName: S.optional(S.String),
           deletable: S.optional(S.Boolean),
-          countingMethod: S.optional(S.String),
-          defaultValue: S.optional(__S(28, __c3, 4)),
-          custom: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaKeyEvent",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/keyEvents",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesKeyEventsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAccountsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePropertiesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesConversionEventsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesDataStreamsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesFirebaseLinksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesGoogleAdsLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePropertiesKeyEventsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccountsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          gmpOrganization: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccount",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataRetentionSettingsPropertiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          eventDataRetention: S.optional(S.String),
-          name: S.optional(S.String),
-          userDataRetention: S.optional(S.String),
-          resetUserDataOnNewActivity: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataRetentionSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataSharingSettingsAccountsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sharingWithGoogleProductsEnabled: S.optional(S.Boolean),
-          sharingWithGoogleAnySalesEnabled: S.optional(S.Boolean),
-          sharingWithGoogleSupportEnabled: S.optional(S.Boolean),
-          sharingWithGoogleAssignedSalesEnabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          sharingWithOthersEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaDataSharingSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetPropertiesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesConversionEventsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesCustomDimensionsRequest",
+        identifier: "GoogleAnalyticsAdminV1betaConversionEvent",
       });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesCustomMetricsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesDataStreamsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesDataStreamsMeasurementProtocolSecretsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesKeyEventsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/accounts",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountsRequest" });
-    case 5:
-      return S.Array(__S(40, __c5, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListAccountsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/accountSummaries",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountSummariesRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          parent: S.optional(S.String),
-          canEdit: S.optional(S.Boolean),
-          property: S.optional(S.String),
-          propertyType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaPropertySummary",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          propertySummaries: S.optional(__S(57, __c7, 1)),
-          displayName: S.optional(S.String),
-          account: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccountSummary",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountSummaries: S.optional(__S(59, __c7, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListAccountSummariesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/properties",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPropertiesRequest" });
-    case 6:
-      return S.Array(__S(7, __c0, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          properties: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListPropertiesResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/conversionEvents",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesConversionEventsRequest",
-      });
-    case 1:
-      return S.Array(__S(10, __c1, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conversionEvents: S.optional(__S(65, __c8, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListConversionEventsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/customDimensions",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesCustomDimensionsRequest",
-      });
-    case 4:
-      return S.Array(__S(12, __c1, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          customDimensions: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListCustomDimensionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/customMetrics",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesCustomMetricsRequest",
-      });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customMetrics: S.optional(__S(71, __c8, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListCustomMetricsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/dataStreams",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesDataStreamsRequest",
-      });
-    case 2:
-      return S.Array(__S(20, __c2, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          dataStreams: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListDataStreamsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/measurementProtocolSecrets",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesDataStreamsMeasurementProtocolSecretsRequest",
-      });
-    case 5:
-      return S.Array(__S(22, __c2, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          measurementProtocolSecrets: S.optional(__S(77, __c9, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/firebaseLinks",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesFirebaseLinksRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(24, __c3, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          firebaseLinks: S.optional(__S(80, __c10, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListFirebaseLinksResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/googleAdsLinks",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesGoogleAdsLinksRequest",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          googleAdsLinks: S.optional(__S(83, __c10, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/keyEvents",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPropertiesKeyEventsRequest",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          keyEvents: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaListKeyEventsResponse",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchAccountsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchPropertiesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesConversionEventsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesCustomDimensionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesCustomMetricsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesDataStreamsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesGoogleAdsLinksRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPropertiesKeyEventsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(__S(40, __c5, 0)),
-          redirectUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/accounts:provisionAccountTicket",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionAccountTicketAccountsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountTicketId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionName: S.optional(S.String),
-          orderType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dimension: S.optional(__S(100, __c12, 4)),
-          metric: S.optional(__S(101, __c12, 5)),
-          desc: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessOrderBy",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(101, __c12, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.String),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessDateRange",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessDimension",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          doubleValue: S.optional(S.Number),
-          int64Value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaNumericValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fromValue: S.optional(__S(109, __c13, 5)),
-          toValue: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessBetweenFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          caseSensitive: S.optional(S.Boolean),
-          matchType: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessStringFilter",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(112, __c14, 0)),
-          caseSensitive: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessInListFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(109, __c13, 5)),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessNumericFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          betweenFilter: S.optional(__S(110, __c13, 6)),
-          fieldName: S.optional(S.String),
-          stringFilter: S.optional(__S(111, __c13, 7)),
-          inListFilter: S.optional(__S(113, __c14, 1)),
-          numericFilter: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessFilter",
-      });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(118, __c14, 6)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expressions: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessFilterExpressionList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessFilter: S.optional(__S(115, __c14, 3)),
-          andGroup: S.optional(__S(117, __c14, 5)),
-          notExpression: S.optional(__S(118, __c14, 6)),
-          orGroup: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessFilterExpression",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          offset: S.optional(S.String),
-          expandGroups: S.optional(S.Boolean),
-          orderBys: S.optional(__S(103, __c12, 7)),
-          metrics: S.optional(__S(104, __c13, 0)),
-          includeAllUsers: S.optional(S.Boolean),
-          dateRanges: S.optional(__S(106, __c13, 2)),
-          returnEntityQuota: S.optional(S.Boolean),
-          dimensions: S.optional(__S(108, __c13, 4)),
-          dimensionFilter: S.optional(__S(118, __c14, 6)),
-          timeZone: S.optional(S.String),
-          limit: S.optional(S.String),
-          metricFilter: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaRunAccessReportRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entity: S.String.pipe(T.Label()),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+entity}:runAccessReport",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunAccessReportAccountsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessMetricValue",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricValues: S.optional(__S(122, __c15, 2)),
-          dimensionValues: S.optional(__S(122, __c15, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessRow",
-      });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          remaining: S.optional(S.Number),
-          consumed: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessQuotaStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tokensPerHour: S.optional(__S(125, __c15, 5)),
-          concurrentRequests: S.optional(__S(125, __c15, 5)),
-          serverErrorsPerProjectPerHour: S.optional(__S(125, __c15, 5)),
-          tokensPerProjectPerHour: S.optional(__S(125, __c15, 5)),
-          tokensPerDay: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaAccessQuota",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metricHeaders: S.optional(__S(104, __c13, 0)),
-          rows: S.optional(__S(124, __c15, 4)),
-          rowCount: S.optional(S.Number),
-          dimensionHeaders: S.optional(__S(108, __c13, 4)),
-          quota: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaRunAccessReportResponse",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entity: S.String.pipe(T.Label()),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+entity}:runAccessReport",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunAccessReportPropertiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(14, __c1, 6)),
-          actorEmail: S.optional(__S(112, __c14, 0)),
-          resourceType: S.optional(__S(14, __c1, 6)),
-          property: S.optional(S.String),
-          earliestChangeTime: S.optional(S.String),
-          pageToken: S.optional(S.String),
-          latestChangeTime: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+account}:searchChangeHistoryEvents",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchChangeHistoryEventsAccountsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          googleAdsLink: S.optional(__S(26, __c3, 2)),
-          conversionEvent: S.optional(__S(10, __c1, 2)),
-          firebaseLink: S.optional(__S(24, __c3, 0)),
-          dataRetentionSettings: S.optional(__S(42, __c5, 2)),
-          measurementProtocolSecret: S.optional(__S(22, __c2, 6)),
-          account: S.optional(__S(40, __c5, 0)),
-          dataStream: S.optional(__S(20, __c2, 4)),
-          property: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          resource: S.optional(S.String),
-          resourceBeforeChange: S.optional(__S(131, __c16, 3)),
-          resourceAfterChange: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChange",
-      });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          changeTime: S.optional(S.String),
-          changesFiltered: S.optional(S.Boolean),
-          actorType: S.optional(S.String),
-          userActorEmail: S.optional(S.String),
-          changes: S.optional(__S(133, __c16, 5)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaChangeHistoryEvent",
-      });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          changeHistoryEvents: S.optional(__S(135, __c16, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDataRetentionSettingsPropertiesRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

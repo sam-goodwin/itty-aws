@@ -2435,7 +2435,7 @@ export const ActivateApplicationPackage: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateApplicationPackageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ActivateApplicationPackageResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<ActivateApplicationPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const BatchAccountSynchronizeAutoStorageKeys: API.OperationMethod<
   BatchAccountSynchronizeAutoStorageKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchAccountSynchronizeAutoStorageKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchAccountSynchronizeAutoStorageKeysResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<BatchAccountSynchronizeAutoStorageKeysRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<BatchAccountSynchronizeAutoStorageKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2464,8 +2464,8 @@ export const CheckLocationNameAvailability: API.OperationMethod<
   CheckLocationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CheckLocationNameAvailabilityRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<CheckLocationNameAvailabilityRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2479,8 +2479,8 @@ export const CreateApplication: API.OperationMethod<
   CreateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<CreateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const CreateApplicationPackage: API.OperationMethod<
   CreateApplicationPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateApplicationPackageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateApplicationPackageResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateApplicationPackageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateApplicationPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const CreateBatchAccount: API.OperationMethod<
   CreateBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateBatchAccountRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateBatchAccountResponse>,
+  input: __S(1633, __c51, 1) as any as S.Schema<CreateBatchAccountRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<CreateBatchAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2524,8 +2524,8 @@ export const CreatePool: API.OperationMethod<
   CreatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<CreatePoolRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<CreatePoolResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreatePoolRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<CreatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2539,8 +2539,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2554,8 +2554,8 @@ export const DeleteApplicationPackage: API.OperationMethod<
   DeleteApplicationPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteApplicationPackageRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteApplicationPackageResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteApplicationPackageRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteApplicationPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2569,8 +2569,8 @@ export const DeleteBatchAccount: API.OperationMethod<
   DeleteBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteBatchAccountRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DeleteBatchAccountResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteBatchAccountRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<DeleteBatchAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2584,8 +2584,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeletePoolRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DeletePoolResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeletePoolRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<DeletePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2599,8 +2599,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2614,8 +2614,8 @@ export const DisablePoolAutoScale: API.OperationMethod<
   DisablePoolAutoScaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DisablePoolAutoScaleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<DisablePoolAutoScaleResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DisablePoolAutoScaleRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<DisablePoolAutoScaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2629,8 +2629,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetApplicationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetApplicationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2644,8 +2644,8 @@ export const GetApplicationPackage: API.OperationMethod<
   GetApplicationPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetApplicationPackageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetApplicationPackageResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetApplicationPackageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetApplicationPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2659,8 +2659,8 @@ export const GetBatchAccount: API.OperationMethod<
   GetBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetBatchAccountRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetBatchAccountResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetBatchAccountRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetBatchAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2674,8 +2674,8 @@ export const GetBatchAccountDetector: API.OperationMethod<
   GetBatchAccountDetectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetBatchAccountDetectorRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetBatchAccountDetectorResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetBatchAccountDetectorRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<GetBatchAccountDetectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2689,8 +2689,8 @@ export const GetBatchAccountKeys: API.OperationMethod<
   GetBatchAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetBatchAccountKeysRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<BatchAccountKeys>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetBatchAccountKeysRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<BatchAccountKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2704,8 +2704,8 @@ export const GetLocationQuotas: API.OperationMethod<
   GetLocationQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetLocationQuotasRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<BatchLocationQuota>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetLocationQuotasRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<BatchLocationQuota>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2719,8 +2719,8 @@ export const GetNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   GetNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2734,8 +2734,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetPoolRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetPoolResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetPoolRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<GetPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2749,8 +2749,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2764,8 +2764,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2779,8 +2779,8 @@ export const ListApplication: API.OperationMethod<
   ListApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListApplicationRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListApplicationsResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListApplicationRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ListApplicationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2794,8 +2794,8 @@ export const ListApplicationPackage: API.OperationMethod<
   ListApplicationPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListApplicationPackageRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListApplicationPackagesResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListApplicationPackageRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListApplicationPackagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2809,8 +2809,8 @@ export const ListBatchAccount: API.OperationMethod<
   ListBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListBatchAccountRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<BatchAccountListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListBatchAccountRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<BatchAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2824,8 +2824,8 @@ export const ListBatchAccountByResourceGroup: API.OperationMethod<
   ListBatchAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListBatchAccountByResourceGroupRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<BatchAccountListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListBatchAccountByResourceGroupRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<BatchAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2839,8 +2839,8 @@ export const ListBatchAccountDetectors: API.OperationMethod<
   ListBatchAccountDetectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListBatchAccountDetectorsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<DetectorListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListBatchAccountDetectorsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<DetectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2855,11 +2855,11 @@ export const ListBatchAccountOutboundNetworkDependenciesEndpoints: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    173,
-    __c21,
-    5,
+    1056,
+    __c33,
+    0,
   ) as any as S.Schema<ListBatchAccountOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  output: __S(1063, __c33, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2873,8 @@ export const ListLocationSupportedVirtualMachineSkus: API.OperationMethod<
   ListLocationSupportedVirtualMachineSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListLocationSupportedVirtualMachineSkusRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SupportedSkusResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListLocationSupportedVirtualMachineSkusRequest>,
+  output: __S(1093, __c34, 5) as any as S.Schema<SupportedSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2888,8 @@ export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<OperationListResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1252, __c39, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2918,8 @@ export const ListPoolByBatchAccount: API.OperationMethod<
   ListPoolByBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<ListPoolByBatchAccountRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListPoolsResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListPoolByBatchAccountRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<ListPoolsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2933,8 @@ export const ListPrivateEndpointConnectionByBatchAccount: API.OperationMethod<
   ListPrivateEndpointConnectionByBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListPrivateEndpointConnectionByBatchAccountRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListPrivateEndpointConnectionsResult>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListPrivateEndpointConnectionByBatchAccountRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<ListPrivateEndpointConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2948,8 +2948,8 @@ export const ListPrivateLinkResourceByBatchAccount: API.OperationMethod<
   ListPrivateLinkResourceByBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListPrivateLinkResourceByBatchAccountRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<ListPrivateLinkResourcesResult>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListPrivateLinkResourceByBatchAccountRequest>,
+  output: __S(1347, __c42, 3) as any as S.Schema<ListPrivateLinkResourcesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2964,14 +2964,14 @@ export const NetworkSecurityPerimeterReconcileConfiguration: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    205,
-    __c25,
-    5,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<NetworkSecurityPerimeterReconcileConfigurationRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<NetworkSecurityPerimeterReconcileConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2986,8 +2986,8 @@ export const PoolStopResize: API.OperationMethod<
   PoolStopResizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PoolStopResizeRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<PoolStopResizeResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PoolStopResizeRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<PoolStopResizeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3001,8 +3001,8 @@ export const RegenerateBatchAccountKey: API.OperationMethod<
   RegenerateBatchAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<RegenerateBatchAccountKeyRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<BatchAccountKeys>,
+  input: __S(1440, __c45, 0) as any as S.Schema<RegenerateBatchAccountKeyRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<BatchAccountKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3016,8 +3016,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3031,8 +3031,8 @@ export const UpdateBatchAccount: API.OperationMethod<
   UpdateBatchAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateBatchAccountRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UpdateBatchAccountResponse>,
+  input: __S(1505, __c47, 1) as any as S.Schema<UpdateBatchAccountRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<UpdateBatchAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3046,8 +3046,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<UpdatePoolResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdatePoolRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<UpdatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3061,8 +3061,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(1602, __c50, 2) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3091,7 +3091,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateApplicationPackageRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3102,7 +3106,35 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "ActivateApplicationPackageResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -3114,23 +3146,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplicationPackageProperties",
       });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ActivateApplicationPackageResponse",
-      });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3147,1062 +3167,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchAccountSynchronizeAutoStorageKeysRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchAccountSynchronizeAutoStorageKeysResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckLocationNameAvailabilityRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckNameAvailabilityResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          allowUpdates: S.optional(S.Boolean),
-          defaultVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(9, __c1, 1)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateApplicationPackageRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComputeNodeIdentityReference",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountId: S.String,
-          authenticationMode: S.optional(S.String),
-          nodeIdentityReference: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "AutoStorageBaseProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "KeyVaultReference" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "IPRule" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAction: S.String,
-          ipRules: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "EndpointAccessProfile" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountAccess: S.optional(__S(18, __c2, 2)),
-          nodeManagementAccess: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "NetworkProfile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyIdentifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keySource: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "EncryptionProperties" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          autoStorage: S.optional(__S(14, __c1, 6)),
-          poolAllocationMode: S.optional(S.String),
-          keyVaultReference: S.optional(__S(15, __c1, 7)),
-          publicNetworkAccess: S.optional(S.String),
-          networkProfile: S.optional(__S(19, __c2, 3)),
-          encryption: S.optional(__S(21, __c2, 5)),
-          allowedAuthenticationModes: S.optional(S.NullOr(__S(22, __c2, 6))),
-        }),
-      ).annotate({
-        identifier: "BatchAccountCreateProperties",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(6, __c0, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchAccountIdentityInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          location: S.String,
-          tags: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(25, __c3, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBatchAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(27, __c3, 3)),
-          groupIds: S.optional(__S(28, __c3, 4)),
-          privateLinkServiceConnectionState: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(30, __c3, 6)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountId: S.String,
-          authenticationMode: S.optional(S.String),
-          nodeIdentityReference: S.optional(__S(13, __c1, 5)),
-          lastKeySync: S.String,
-        }),
-      ).annotate({ identifier: "AutoStorageProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          coreQuota: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineFamilyCoreQuota",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountEndpoint: S.optional(S.String),
-          nodeManagementEndpoint: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          poolAllocationMode: S.optional(S.String),
-          keyVaultReference: S.optional(__S(15, __c1, 7)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          networkProfile: S.optional(S.NullOr(__S(19, __c2, 3))),
-          privateEndpointConnections: S.optional(S.NullOr(__S(32, __c4, 0))),
-          autoStorage: S.optional(__S(33, __c4, 1)),
-          encryption: S.optional(__S(21, __c2, 5)),
-          dedicatedCoreQuota: S.optional(S.NullOr(S.Number)),
-          lowPriorityCoreQuota: S.optional(S.NullOr(S.Number)),
-          dedicatedCoreQuotaPerVMFamily: S.optional(S.NullOr(__S(35, __c4, 3))),
-          dedicatedCoreQuotaPerVMFamilyEnforced: S.optional(S.Boolean),
-          poolQuota: S.optional(S.Number),
-          activeJobAndJobScheduleQuota: S.optional(S.Number),
-          allowedAuthenticationModes: S.optional(S.NullOr(__S(22, __c2, 6))),
-        }),
-      ).annotate({ identifier: "BatchAccountProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentities" });
-    case 6:
-      return S.Record(S.String, __S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "BatchAccountIdentity" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(3, __c0, 3)),
-          location: S.String,
-          properties: S.optional(__S(36, __c4, 4)),
-          identity: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateBatchAccountResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          offer: S.optional(S.String),
-          sku: S.optional(S.String),
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-          sharedGalleryImageId: S.optional(S.String),
-          communityGalleryImageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageReference" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableAutomaticUpdates: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WindowsConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "DiskEncryptionSetParameters",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          securityEncryptionType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "VMDiskSecurityProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountType: S.optional(S.String),
-          securityProfile: S.optional(__S(44, __c5, 4)),
-          diskEncryptionSet: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "ManagedDisk" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lun: S.Number,
-          caching: S.optional(S.String),
-          diskSizeGB: S.Number,
-          managedDisk: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "DataDisk" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          registryServer: S.optional(S.String),
-          identityReference: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "ContainerRegistry" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          containerImageNames: S.optional(__S(28, __c3, 4)),
-          containerRegistries: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "ContainerConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keyUrl: S.optional(S.String),
-          rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
-          identityReference: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "DiskCustomerManagedKey" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targets: S.optional(__S(22, __c2, 6)),
-          customerManagedKey: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "DiskEncryptionConfiguration",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BatchAccountSynchronizeAutoStorageKeysResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NodePlacementConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          publisher: S.String,
-          type: S.String,
-          typeHandlerVersion: S.optional(S.String),
-          autoUpgradeMinorVersion: S.optional(S.Boolean),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          protectedSettings: S.optional(S.Unknown),
-          provisionAfterExtensions: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "VMExtension" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          placement: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiffDiskSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ephemeralOSDiskSettings: S.optional(__S(56, __c7, 0)),
-          caching: S.optional(S.String),
-          managedDisk: S.optional(__S(45, __c5, 5)),
-          diskSizeGB: S.optional(S.Number),
-          writeAcceleratorEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OSDisk" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          secureBootEnabled: S.optional(S.Boolean),
-          vTpmEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UefiSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          inVMAccessControlProfileReferenceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostEndpointSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          imds: S.optional(__S(59, __c7, 3)),
-          wireServer: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "ProxyAgentSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          securityType: S.optional(S.String),
-          encryptionAtHost: S.optional(S.Boolean),
-          uefiSettings: S.optional(__S(58, __c7, 2)),
-          proxyAgentSettings: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "SecurityProfile" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "ServiceArtifactReference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          imageReference: __S(41, __c5, 1),
-          nodeAgentSkuId: S.String,
-          windowsConfiguration: S.optional(__S(42, __c5, 2)),
-          dataDisks: S.optional(__S(47, __c5, 7)),
-          licenseType: S.optional(S.String),
-          containerConfiguration: S.optional(__S(50, __c6, 2)),
-          diskEncryptionConfiguration: S.optional(__S(52, __c6, 4)),
-          nodePlacementConfiguration: S.optional(__S(53, __c6, 5)),
-          extensions: S.optional(__S(55, __c6, 7)),
-          osDisk: S.optional(__S(57, __c7, 1)),
-          securityProfile: S.optional(__S(61, __c7, 5)),
-          serviceArtifactReference: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineConfiguration",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineConfiguration: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "DeploymentConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resizeTimeout: S.optional(S.String),
-          targetDedicatedNodes: S.optional(S.Number),
-          targetLowPriorityNodes: S.optional(S.Number),
-          nodeDeallocationOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FixedScaleSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          formula: S.String,
-          evaluationInterval: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoScaleSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fixedScale: S.optional(__S(65, __c8, 1)),
-          autoScale: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "ScaleSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.Number,
-          access: S.String,
-          sourceAddressPrefix: S.String,
-          sourcePortRanges: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "NetworkSecurityGroupRule" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          protocol: S.String,
-          backendPort: S.Number,
-          frontendPortRangeStart: S.Number,
-          frontendPortRangeEnd: S.Number,
-          networkSecurityGroupRules: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "InboundNatPool" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inboundNatPools: __S(71, __c8, 7),
-        }),
-      ).annotate({
-        identifier: "PoolEndpointConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipTagType: S.optional(S.String),
-          tag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IPTag" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provision: S.optional(S.String),
-          ipAddressIds: S.optional(__S(28, __c3, 4)),
-          ipFamilies: S.optional(__S(22, __c2, 6)),
-          ipTags: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "PublicIPAddressConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subnetId: S.optional(S.String),
-          dynamicVnetAssignmentScope: S.optional(S.String),
-          endpointConfiguration: S.optional(__S(72, __c9, 0)),
-          publicIPAddressConfiguration: S.optional(__S(75, __c9, 3)),
-          enableAcceleratedNetworking: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "NetworkConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jobDefaultOrder: S.optional(S.String),
-          nodeFillType: S.String,
-        }),
-      ).annotate({ identifier: "TaskSchedulingPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.Number),
-          gid: S.optional(S.Number),
-          sshPrivateKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinuxUserConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          loginMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WindowsUserConfiguration" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          elevationLevel: S.optional(S.String),
-          linuxUserConfiguration: S.optional(__S(78, __c9, 6)),
-          windowsUserConfiguration: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "UserAccount" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "MetadataItem" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoStorageContainerName: S.optional(S.String),
-          storageContainerUrl: S.optional(S.String),
-          httpUrl: S.optional(S.String),
-          blobPrefix: S.optional(S.String),
-          filePath: S.optional(S.String),
-          fileMode: S.optional(S.String),
-          identityReference: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "ResourceFile" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentSetting" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String),
-          elevationLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoUserSpecification" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userName: S.optional(S.String),
-          autoUser: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "UserIdentity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          isReadOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ContainerHostBatchBindMountEntry",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerRunOptions: S.optional(S.String),
-          imageName: S.String,
-          registry: S.optional(__S(48, __c6, 0)),
-          workingDirectory: S.optional(S.String),
-          containerHostBatchBindMounts: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({ identifier: "TaskContainerSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          commandLine: S.optional(S.String),
-          resourceFiles: S.optional(__S(85, __c10, 5)),
-          environmentSettings: S.optional(__S(87, __c10, 7)),
-          userIdentity: S.optional(__S(89, __c11, 1)),
-          maxTaskRetryCount: S.optional(S.Number),
-          waitForSuccess: S.optional(S.Boolean),
-          containerSettings: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "StartTask" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationPackageReference",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountName: S.String,
-          containerName: S.String,
-          accountKey: S.optional(S.String),
-          sasKey: S.optional(S.String),
-          blobfuseOptions: S.optional(S.String),
-          relativeMountPath: S.String,
-          identityReference: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "AzureBlobFileSystemConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.String,
-          relativeMountPath: S.String,
-          mountOptions: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NFSMountConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userName: S.String,
-          source: S.String,
-          relativeMountPath: S.String,
-          mountOptions: S.optional(S.String),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "CIFSMountConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountName: S.String,
-          azureFileUrl: S.String,
-          accountKey: S.String,
-          relativeMountPath: S.String,
-          mountOptions: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureFileShareConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          azureBlobFileSystemConfiguration: S.optional(__S(96, __c12, 0)),
-          nfsMountConfiguration: S.optional(__S(97, __c12, 1)),
-          cifsMountConfiguration: S.optional(__S(98, __c12, 2)),
-          azureFileShareConfiguration: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "MountConfiguration" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disableAutomaticRollback: S.optional(S.Boolean),
-          enableAutomaticOSUpgrade: S.optional(S.Boolean),
-          useRollingUpgradePolicy: S.optional(S.Boolean),
-          osRollingUpgradeDeferral: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AutomaticOSUpgradePolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enableCrossZoneUpgrade: S.optional(S.Boolean),
-          maxBatchInstancePercent: S.optional(S.Number),
-          maxUnhealthyInstancePercent: S.optional(S.Number),
-          maxUnhealthyUpgradedInstancePercent: S.optional(S.Number),
-          pauseTimeBetweenBatches: S.optional(S.String),
-          prioritizeUnhealthyInstances: S.optional(S.Boolean),
-          rollbackFailedInstancesOnPolicyBreach: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RollingUpgradePolicy" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-          automaticOSUpgradePolicy: S.optional(__S(102, __c12, 6)),
-          rollingUpgradePolicy: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({ identifier: "UpgradePolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          vmSize: S.optional(S.String),
-          deploymentConfiguration: S.optional(__S(64, __c8, 0)),
-          scaleSettings: S.optional(__S(67, __c8, 3)),
-          interNodeCommunication: S.optional(S.String),
-          networkConfiguration: S.optional(__S(76, __c9, 4)),
-          taskSlotsPerNode: S.optional(S.Number),
-          taskSchedulingPolicy: S.optional(__S(77, __c9, 5)),
-          userAccounts: S.optional(__S(81, __c10, 1)),
-          metadata: S.optional(__S(83, __c10, 3)),
-          startTask: S.optional(__S(93, __c11, 5)),
-          applicationPackages: S.optional(__S(95, __c11, 7)),
-          mountConfiguration: S.optional(__S(101, __c12, 5)),
-          upgradePolicy: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "PoolPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "BatchPoolIdentityInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(105, __c13, 1)),
-          identity: S.optional(__S(106, __c13, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreatePoolRequest" });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(109, __c13, 5)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-          details: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "AutoScaleRunError" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          evaluationTime: S.String,
-          results: S.optional(S.String),
-          error: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "AutoScaleRun" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(112, __c14, 0)));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-          details: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "ResizeError" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          targetDedicatedNodes: S.optional(S.Number),
-          targetLowPriorityNodes: S.optional(S.Number),
-          resizeTimeout: S.optional(S.String),
-          nodeDeallocationOption: S.optional(S.String),
-          startTime: S.optional(S.String),
-          errors: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({ identifier: "ResizeOperationStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          lastModified: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          provisioningStateTransitionTime: S.optional(S.String),
-          allocationState: S.optional(S.String),
-          allocationStateTransitionTime: S.optional(S.String),
-          vmSize: S.optional(S.String),
-          deploymentConfiguration: S.optional(__S(64, __c8, 0)),
-          currentDedicatedNodes: S.optional(S.Number),
-          currentLowPriorityNodes: S.optional(S.Number),
-          scaleSettings: S.optional(__S(67, __c8, 3)),
-          autoScaleRun: S.optional(__S(110, __c13, 6)),
-          interNodeCommunication: S.optional(S.String),
-          networkConfiguration: S.optional(__S(76, __c9, 4)),
-          taskSlotsPerNode: S.optional(S.Number),
-          taskSchedulingPolicy: S.optional(__S(77, __c9, 5)),
-          userAccounts: S.optional(__S(81, __c10, 1)),
-          metadata: S.optional(__S(83, __c10, 3)),
-          startTask: S.optional(__S(93, __c11, 5)),
-          applicationPackages: S.optional(__S(95, __c11, 7)),
-          resizeOperationStatus: S.optional(__S(114, __c14, 2)),
-          mountConfiguration: S.optional(__S(101, __c12, 5)),
-          upgradePolicy: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "PoolProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "BatchPoolIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(115, __c14, 3)),
-          identity: S.optional(__S(116, __c14, 4)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreatePoolResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationPackageRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBatchAccountRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4218,7 +3195,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoolRequest" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4236,7 +3217,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4254,22 +3239,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DisablePoolAutoScaleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(115, __c14, 3)),
-          identity: S.optional(__S(116, __c14, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1991, __c62, 7)),
+          identity: S.optional(__S(1992, __c62, 8)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "DisablePoolAutoScaleResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4285,21 +3274,25 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1152, __c36, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
   }
 }
-function __c16(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4320,7 +3313,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetApplicationPackageRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4335,20 +3332,28 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBatchAccountRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(36, __c4, 4)),
-          identity: S.optional(__S(39, __c4, 7)),
+          properties: S.optional(__S(1738, __c54, 10)),
+          identity: S.optional(__S(1739, __c54, 11)),
         }),
       ).annotate({ identifier: "GetBatchAccountResponse" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4366,7 +3371,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetBatchAccountDetectorRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(512, __c16, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GetBatchAccountDetectorResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -4374,21 +3397,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DetectorResponseProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(132, __c16, 4)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetBatchAccountDetectorResponse",
-      });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4405,7 +3418,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetBatchAccountKeysRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
@@ -4415,7 +3432,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "BatchAccountKeys" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4437,7 +3454,11 @@ function __c17(j: number): any {
           accountQuota: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BatchLocationQuota" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4455,7 +3476,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(684, __c21, 12)),
+        }),
+      ).annotate({
+        identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4463,9 +3500,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "AccessRulePropertiesSubscriptionsItem",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4473,100 +3510,116 @@ function __c17(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeter" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(674, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(28, __c3, 4)),
-          subscriptions: S.optional(__S(140, __c17, 4)),
-          networkSecurityPerimeters: S.optional(__S(142, __c17, 6)),
-          fullyQualifiedDomainNames: S.optional(__S(28, __c3, 4)),
-          emailAddresses: S.optional(__S(28, __c3, 4)),
-          phoneNumbers: S.optional(__S(28, __c3, 4)),
+          addressPrefixes: S.optional(__S(1792, __c56, 0)),
+          subscriptions: S.optional(__S(673, __c21, 1)),
+          networkSecurityPerimeters: S.optional(__S(675, __c21, 3)),
+          fullyQualifiedDomainNames: S.optional(__S(1792, __c56, 0)),
+          emailAddresses: S.optional(__S(1792, __c56, 0)),
+          phoneNumbers: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "AccessRuleProperties" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(143, __c17, 7)),
+          properties: S.optional(__S(676, __c21, 4)),
         }),
       ).annotate({ identifier: "AccessRule" });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(677, __c21, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           issueType: S.optional(S.String),
           severity: S.optional(S.String),
           description: S.optional(S.String),
-          suggestedResourceIds: S.optional(__S(28, __c3, 4)),
-          suggestedAccessRules: S.optional(__S(145, __c18, 1)),
+          suggestedResourceIds: S.optional(__S(1792, __c56, 0)),
+          suggestedAccessRules: S.optional(__S(678, __c21, 6)),
         }),
       ).annotate({
         identifier: "ProvisioningIssueProperties",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(146, __c18, 2)),
+          properties: S.optional(__S(679, __c21, 7)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(680, __c21, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           accessMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceAssociation" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(__S(145, __c18, 1)),
+          accessRules: S.optional(__S(678, __c21, 6)),
           diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(__S(28, __c3, 4)),
+          enabledLogCategories: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "NetworkSecurityProfile" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(148, __c18, 4)),
-          networkSecurityPerimeter: S.optional(__S(141, __c17, 5)),
-          resourceAssociation: S.optional(__S(149, __c18, 5)),
-          profile: S.optional(__S(150, __c18, 6)),
+          provisioningIssues: S.optional(__S(681, __c21, 9)),
+          networkSecurityPerimeter: S.optional(__S(674, __c21, 2)),
+          resourceAssociation: S.optional(__S(682, __c21, 10)),
+          profile: S.optional(__S(683, __c21, 11)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationProperties",
       });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(151, __c18, 7)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
       ).annotate({
-        identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
+        identifier: "CheckLocationNameAvailabilityRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckNameAvailabilityResult",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4582,7 +3635,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPoolRequest" });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4600,7 +3657,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4618,31 +3679,39 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(28, __c3, 4)),
-          requiredZoneNames: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(156, __c19, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(832, __c26, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(1792, __c56, 0)),
+          requiredZoneNames: S.optional(__S(1792, __c56, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4658,20 +3727,20 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListApplicationRequest" });
-    case 7:
-      return S.Array(__S(127, __c15, 7));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(159, __c19, 7),
+          value: __S(865, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsResult" });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4690,30 +3759,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListApplicationPackageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ApplicationPackage" });
+    case 2:
+      return S.Array(__S(897, __c28, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c20, 3),
+          value: __S(898, __c28, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListApplicationPackagesResult",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4726,18 +3799,22 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBatchAccountRequest" });
-    case 6:
-      return S.Array(__S(130, __c16, 2));
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c14, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(166, __c20, 6),
+          value: __S(960, __c30, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchAccountListResult" });
   }
 }
-function __c21(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4755,7 +3832,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListBatchAccountByResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4772,28 +3853,32 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListBatchAccountDetectorsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(132, __c16, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(512, __c16, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "DetectorResponse" });
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
     case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(171, __c21, 3),
+          value: __S(1026, __c32, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DetectorListResult" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4810,49 +3895,49 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListBatchAccountOutboundNetworkDependenciesEndpointsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EndpointDetail" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1057, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           description: S.optional(S.String),
-          endpointDetails: S.optional(__S(175, __c21, 7)),
+          endpointDetails: S.optional(__S(1058, __c33, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1059, __c33, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(177, __c22, 1)),
+          endpoints: S.optional(__S(1060, __c33, 4)),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(1061, __c33, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(179, __c22, 3),
+          value: __S(1062, __c33, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpointCollection",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4870,38 +3955,90 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListLocationSupportedVirtualMachineSkusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapability" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           familyName: S.optional(S.String),
-          capabilities: S.optional(__S(183, __c22, 7)),
+          capabilities: S.optional(__S(1090, __c34, 2)),
           batchSupportEndOfLife: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedSku" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1091, __c34, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(185, __c23, 1),
+          value: __S(1092, __c34, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedSkusResult" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1152, __c36, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          allowUpdates: S.optional(S.Boolean),
+          defaultVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationProperties" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1152, __c36, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4918,30 +4055,34 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(151, __c18, 7)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(684, __c21, 12)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationListResultValueItem",
       });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1217, __c38, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(189, __c23, 5),
+          value: __S(1218, __c38, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationListResult",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4952,11 +4093,7 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -4965,26 +4102,30 @@ function __c24(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(192, __c24, 0)),
+          display: S.optional(__S(1249, __c39, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
     case 3:
+      return S.Array(__S(1250, __c39, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(194, __c24, 2),
+          value: __S(1251, __c39, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5004,16 +4145,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListPoolByBatchAccountRequest",
       });
-    case 5:
-      return S.Array(__S(117, __c14, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(197, __c24, 5),
+          value: __S(1281, __c40, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPoolsResult" });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5031,20 +4176,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByBatchAccountRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(32, __c4, 0),
+          value: __S(1696, __c53, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsResult",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5062,30 +4207,34 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByBatchAccountRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(156, __c19, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(832, __c26, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
+    case 2:
+      return S.Array(__S(1345, __c42, 1));
     case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(203, __c25, 3),
+          value: __S(1346, __c42, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourcesResult",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5103,7 +4252,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "NetworkSecurityPerimeterReconcileConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5119,7 +4272,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PoolStopResizeRequest" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5139,7 +4296,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5148,8 +4305,8 @@ function __c26(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(1152, __c36, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5159,27 +4316,31 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          autoStorage: S.optional(__S(14, __c1, 6)),
-          encryption: S.optional(__S(21, __c2, 5)),
-          allowedAuthenticationModes: S.optional(S.NullOr(__S(22, __c2, 6))),
+          autoStorage: S.optional(__S(1760, __c55, 0)),
+          encryption: S.optional(__S(1734, __c54, 6)),
+          allowedAuthenticationModes: S.optional(S.NullOr(__S(1825, __c57, 1))),
           publicNetworkAccess: S.optional(S.String),
-          networkProfile: S.optional(__S(19, __c2, 3)),
+          networkProfile: S.optional(__S(1732, __c54, 4)),
         }),
       ).annotate({
         identifier: "BatchAccountUpdateProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(209, __c26, 1)),
-          identity: S.optional(__S(25, __c3, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(1504, __c47, 0)),
+          identity: S.optional(__S(1761, __c55, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5191,16 +4352,45 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateBatchAccountRequest",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(192, __c6, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateApplicationPackageRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(105, __c13, 1)),
-          identity: S.optional(__S(106, __c13, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(2048, __c64, 0)),
+          identity: S.optional(__S(2049, __c64, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5210,7 +4400,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePoolRequest" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -5219,23 +4413,23 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionStateInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: S.optional(__S(212, __c26, 4)),
+          privateLinkServiceConnectionState: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(213, __c26, 5)),
-          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(1601, __c50, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5249,7 +4443,980 @@ function __c26(j: number): any {
       });
   }
 }
-
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoStorage: S.optional(__S(1760, __c55, 0)),
+          poolAllocationMode: S.optional(S.String),
+          keyVaultReference: S.optional(__S(1728, __c54, 0)),
+          publicNetworkAccess: S.optional(S.String),
+          networkProfile: S.optional(__S(1732, __c54, 4)),
+          encryption: S.optional(__S(1734, __c54, 6)),
+          allowedAuthenticationModes: S.optional(S.NullOr(__S(1825, __c57, 1))),
+        }),
+      ).annotate({
+        identifier: "BatchAccountCreateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          location: S.String,
+          tags: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(1632, __c51, 0)),
+          identity: S.optional(__S(1761, __c55, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBatchAccountRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(1664, __c52, 0)),
+          groupIds: S.optional(__S(1792, __c56, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1665, __c52, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1666, __c52, 2)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1667, __c52, 3));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "KeyVaultReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "IPRule" });
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAction: S.String,
+          ipRules: S.optional(__S(1730, __c54, 2)),
+        }),
+      ).annotate({ identifier: "EndpointAccessProfile" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountAccess: S.optional(__S(1731, __c54, 3)),
+          nodeManagementAccess: S.optional(__S(1731, __c54, 3)),
+        }),
+      ).annotate({ identifier: "NetworkProfile" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          keyIdentifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultProperties" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          keySource: S.optional(S.String),
+          keyVaultProperties: S.optional(__S(1733, __c54, 5)),
+        }),
+      ).annotate({ identifier: "EncryptionProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountId: S.String,
+          authenticationMode: S.optional(S.String),
+          nodeIdentityReference: S.optional(__S(1824, __c57, 0)),
+          lastKeySync: S.String,
+        }),
+      ).annotate({ identifier: "AutoStorageProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          coreQuota: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineFamilyCoreQuota",
+      });
+    case 9:
+      return S.Array(__S(1736, __c54, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          accountEndpoint: S.optional(S.String),
+          nodeManagementEndpoint: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          poolAllocationMode: S.optional(S.String),
+          keyVaultReference: S.optional(__S(1728, __c54, 0)),
+          publicNetworkAccess: S.optional(S.NullOr(S.String)),
+          networkProfile: S.optional(S.NullOr(__S(1732, __c54, 4))),
+          privateEndpointConnections: S.optional(S.NullOr(__S(1696, __c53, 0))),
+          autoStorage: S.optional(__S(1735, __c54, 7)),
+          encryption: S.optional(__S(1734, __c54, 6)),
+          dedicatedCoreQuota: S.optional(S.NullOr(S.Number)),
+          lowPriorityCoreQuota: S.optional(S.NullOr(S.Number)),
+          dedicatedCoreQuotaPerVMFamily: S.optional(S.NullOr(__S(1737, __c54, 9))),
+          dedicatedCoreQuotaPerVMFamilyEnforced: S.optional(S.Boolean),
+          poolQuota: S.optional(S.Number),
+          activeJobAndJobScheduleQuota: S.optional(S.Number),
+          allowedAuthenticationModes: S.optional(S.NullOr(__S(1825, __c57, 1))),
+        }),
+      ).annotate({ identifier: "BatchAccountProperties" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1827, __c57, 3)),
+        }),
+      ).annotate({ identifier: "BatchAccountIdentity" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountId: S.String,
+          authenticationMode: S.optional(S.String),
+          nodeIdentityReference: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "AutoStorageBaseProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1856, __c58, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchAccountIdentityInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(1738, __c54, 10)),
+          identity: S.optional(__S(1739, __c54, 11)),
+        }),
+      ).annotate({
+        identifier: "CreateBatchAccountResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComputeNodeIdentityReference",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentities" });
+    case 3:
+      return S.Record(S.String, __S(1826, __c57, 2));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(192, __c6, 0));
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2048, __c64, 0)),
+          identity: S.optional(__S(2049, __c64, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreatePoolRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          offer: S.optional(S.String),
+          sku: S.optional(S.String),
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+          sharedGalleryImageId: S.optional(S.String),
+          communityGalleryImageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enableAutomaticUpdates: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WindowsConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "DiskEncryptionSetParameters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          securityEncryptionType: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(1922, __c60, 2)),
+        }),
+      ).annotate({ identifier: "VMDiskSecurityProfile" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountType: S.optional(S.String),
+          securityProfile: S.optional(__S(1923, __c60, 3)),
+          diskEncryptionSet: S.optional(__S(1922, __c60, 2)),
+        }),
+      ).annotate({ identifier: "ManagedDisk" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          lun: S.Number,
+          caching: S.optional(S.String),
+          diskSizeGB: S.Number,
+          managedDisk: S.optional(__S(1924, __c60, 4)),
+        }),
+      ).annotate({ identifier: "DataDisk" });
+    case 6:
+      return S.Array(__S(1925, __c60, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          registryServer: S.optional(S.String),
+          identityReference: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "ContainerRegistry" });
+    case 8:
+      return S.Array(__S(1927, __c60, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          containerImageNames: S.optional(__S(1792, __c56, 0)),
+          containerRegistries: S.optional(__S(1928, __c60, 8)),
+        }),
+      ).annotate({ identifier: "ContainerConfiguration" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          keyUrl: S.optional(S.String),
+          rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
+          identityReference: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "DiskCustomerManagedKey" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          targets: S.optional(__S(1825, __c57, 1)),
+          customerManagedKey: S.optional(__S(1930, __c60, 10)),
+        }),
+      ).annotate({
+        identifier: "DiskEncryptionConfiguration",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NodePlacementConfiguration",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          publisher: S.String,
+          type: S.String,
+          typeHandlerVersion: S.optional(S.String),
+          autoUpgradeMinorVersion: S.optional(S.Boolean),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          protectedSettings: S.optional(S.Unknown),
+          provisionAfterExtensions: S.optional(__S(1792, __c56, 0)),
+        }),
+      ).annotate({ identifier: "VMExtension" });
+    case 14:
+      return S.Array(__S(1933, __c60, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          placement: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiffDiskSettings" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ephemeralOSDiskSettings: S.optional(__S(1935, __c60, 15)),
+          caching: S.optional(S.String),
+          managedDisk: S.optional(__S(1924, __c60, 4)),
+          diskSizeGB: S.optional(S.Number),
+          writeAcceleratorEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OSDisk" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          secureBootEnabled: S.optional(S.Boolean),
+          vTpmEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UefiSettings" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          inVMAccessControlProfileReferenceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostEndpointSettings" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          imds: S.optional(__S(1938, __c60, 18)),
+          wireServer: S.optional(__S(1938, __c60, 18)),
+        }),
+      ).annotate({ identifier: "ProxyAgentSettings" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          securityType: S.optional(S.String),
+          encryptionAtHost: S.optional(S.Boolean),
+          uefiSettings: S.optional(__S(1937, __c60, 17)),
+          proxyAgentSettings: S.optional(__S(1939, __c60, 19)),
+        }),
+      ).annotate({ identifier: "SecurityProfile" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "ServiceArtifactReference" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          imageReference: __S(1920, __c60, 0),
+          nodeAgentSkuId: S.String,
+          windowsConfiguration: S.optional(__S(1921, __c60, 1)),
+          dataDisks: S.optional(__S(1926, __c60, 6)),
+          licenseType: S.optional(S.String),
+          containerConfiguration: S.optional(__S(1929, __c60, 9)),
+          diskEncryptionConfiguration: S.optional(__S(1931, __c60, 11)),
+          nodePlacementConfiguration: S.optional(__S(1932, __c60, 12)),
+          extensions: S.optional(__S(1934, __c60, 14)),
+          osDisk: S.optional(__S(1936, __c60, 16)),
+          securityProfile: S.optional(__S(1940, __c60, 20)),
+          serviceArtifactReference: S.optional(__S(1941, __c60, 21)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineConfiguration",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineConfiguration: S.optional(__S(1942, __c60, 22)),
+        }),
+      ).annotate({ identifier: "DeploymentConfiguration" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          resizeTimeout: S.optional(S.String),
+          targetDedicatedNodes: S.optional(S.Number),
+          targetLowPriorityNodes: S.optional(S.Number),
+          nodeDeallocationOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FixedScaleSettings" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          formula: S.String,
+          evaluationInterval: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoScaleSettings" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          fixedScale: S.optional(__S(1944, __c60, 24)),
+          autoScale: S.optional(__S(1945, __c60, 25)),
+        }),
+      ).annotate({ identifier: "ScaleSettings" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.Number,
+          access: S.String,
+          sourceAddressPrefix: S.String,
+          sourcePortRanges: S.optional(__S(1792, __c56, 0)),
+        }),
+      ).annotate({ identifier: "NetworkSecurityGroupRule" });
+    case 28:
+      return S.Array(__S(1947, __c60, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          protocol: S.String,
+          backendPort: S.Number,
+          frontendPortRangeStart: S.Number,
+          frontendPortRangeEnd: S.Number,
+          networkSecurityGroupRules: S.optional(__S(1948, __c60, 28)),
+        }),
+      ).annotate({ identifier: "InboundNatPool" });
+    case 30:
+      return S.Array(__S(1949, __c60, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          inboundNatPools: __S(1950, __c60, 30),
+        }),
+      ).annotate({
+        identifier: "PoolEndpointConfiguration",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipTagType: S.optional(S.String),
+          tag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPTag" });
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provision: S.optional(S.String),
+          ipAddressIds: S.optional(__S(1792, __c56, 0)),
+          ipFamilies: S.optional(__S(1825, __c57, 1)),
+          ipTags: S.optional(__S(1953, __c61, 1)),
+        }),
+      ).annotate({
+        identifier: "PublicIPAddressConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subnetId: S.optional(S.String),
+          dynamicVnetAssignmentScope: S.optional(S.String),
+          endpointConfiguration: S.optional(__S(1951, __c60, 31)),
+          publicIPAddressConfiguration: S.optional(__S(1954, __c61, 2)),
+          enableAcceleratedNetworking: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jobDefaultOrder: S.optional(S.String),
+          nodeFillType: S.String,
+        }),
+      ).annotate({ identifier: "TaskSchedulingPolicy" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.Number),
+          gid: S.optional(S.Number),
+          sshPrivateKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinuxUserConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          loginMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WindowsUserConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          elevationLevel: S.optional(S.String),
+          linuxUserConfiguration: S.optional(__S(1957, __c61, 5)),
+          windowsUserConfiguration: S.optional(__S(1958, __c61, 6)),
+        }),
+      ).annotate({ identifier: "UserAccount" });
+    case 8:
+      return S.Array(__S(1959, __c61, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "MetadataItem" });
+    case 10:
+      return S.Array(__S(1961, __c61, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          autoStorageContainerName: S.optional(S.String),
+          storageContainerUrl: S.optional(S.String),
+          httpUrl: S.optional(S.String),
+          blobPrefix: S.optional(S.String),
+          filePath: S.optional(S.String),
+          fileMode: S.optional(S.String),
+          identityReference: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "ResourceFile" });
+    case 12:
+      return S.Array(__S(1963, __c61, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSetting" });
+    case 14:
+      return S.Array(__S(1965, __c61, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(S.String),
+          elevationLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoUserSpecification" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          userName: S.optional(S.String),
+          autoUser: S.optional(__S(1967, __c61, 15)),
+        }),
+      ).annotate({ identifier: "UserIdentity" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          isReadOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ContainerHostBatchBindMountEntry",
+      });
+    case 18:
+      return S.Array(__S(1969, __c61, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          containerRunOptions: S.optional(S.String),
+          imageName: S.String,
+          registry: S.optional(__S(1927, __c60, 7)),
+          workingDirectory: S.optional(S.String),
+          containerHostBatchBindMounts: S.optional(__S(1970, __c61, 18)),
+        }),
+      ).annotate({ identifier: "TaskContainerSettings" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          commandLine: S.optional(S.String),
+          resourceFiles: S.optional(__S(1964, __c61, 12)),
+          environmentSettings: S.optional(__S(1966, __c61, 14)),
+          userIdentity: S.optional(__S(1968, __c61, 16)),
+          maxTaskRetryCount: S.optional(S.Number),
+          waitForSuccess: S.optional(S.Boolean),
+          containerSettings: S.optional(__S(1971, __c61, 19)),
+        }),
+      ).annotate({ identifier: "StartTask" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationPackageReference",
+      });
+    case 22:
+      return S.Array(__S(1973, __c61, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          accountName: S.String,
+          containerName: S.String,
+          accountKey: S.optional(S.String),
+          sasKey: S.optional(S.String),
+          blobfuseOptions: S.optional(S.String),
+          relativeMountPath: S.String,
+          identityReference: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "AzureBlobFileSystemConfiguration",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.String,
+          relativeMountPath: S.String,
+          mountOptions: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NFSMountConfiguration" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          userName: S.String,
+          source: S.String,
+          relativeMountPath: S.String,
+          mountOptions: S.optional(S.String),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "CIFSMountConfiguration" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          accountName: S.String,
+          azureFileUrl: S.String,
+          accountKey: S.String,
+          relativeMountPath: S.String,
+          mountOptions: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureFileShareConfiguration",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          azureBlobFileSystemConfiguration: S.optional(__S(1975, __c61, 23)),
+          nfsMountConfiguration: S.optional(__S(1976, __c61, 24)),
+          cifsMountConfiguration: S.optional(__S(1977, __c61, 25)),
+          azureFileShareConfiguration: S.optional(__S(1978, __c61, 26)),
+        }),
+      ).annotate({ identifier: "MountConfiguration" });
+    case 28:
+      return S.Array(__S(1979, __c61, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          disableAutomaticRollback: S.optional(S.Boolean),
+          enableAutomaticOSUpgrade: S.optional(S.Boolean),
+          useRollingUpgradePolicy: S.optional(S.Boolean),
+          osRollingUpgradeDeferral: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AutomaticOSUpgradePolicy" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          enableCrossZoneUpgrade: S.optional(S.Boolean),
+          maxBatchInstancePercent: S.optional(S.Number),
+          maxUnhealthyInstancePercent: S.optional(S.Number),
+          maxUnhealthyUpgradedInstancePercent: S.optional(S.Number),
+          pauseTimeBetweenBatches: S.optional(S.String),
+          prioritizeUnhealthyInstances: S.optional(S.Boolean),
+          rollbackFailedInstancesOnPolicyBreach: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RollingUpgradePolicy" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+          automaticOSUpgradePolicy: S.optional(__S(1981, __c61, 29)),
+          rollingUpgradePolicy: S.optional(__S(1982, __c61, 30)),
+        }),
+      ).annotate({ identifier: "UpgradePolicy" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1985, __c62, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+          details: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "AutoScaleRunError" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          evaluationTime: S.String,
+          results: S.optional(S.String),
+          error: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({ identifier: "AutoScaleRun" });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1988, __c62, 4)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+          details: S.optional(__S(1987, __c62, 3)),
+        }),
+      ).annotate({ identifier: "ResizeError" });
+    case 5:
+      return S.Array(__S(1988, __c62, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          targetDedicatedNodes: S.optional(S.Number),
+          targetLowPriorityNodes: S.optional(S.Number),
+          resizeTimeout: S.optional(S.String),
+          nodeDeallocationOption: S.optional(S.String),
+          startTime: S.optional(S.String),
+          errors: S.optional(__S(1989, __c62, 5)),
+        }),
+      ).annotate({ identifier: "ResizeOperationStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          lastModified: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          provisioningStateTransitionTime: S.optional(S.String),
+          allocationState: S.optional(S.String),
+          allocationStateTransitionTime: S.optional(S.String),
+          vmSize: S.optional(S.String),
+          deploymentConfiguration: S.optional(__S(1943, __c60, 23)),
+          currentDedicatedNodes: S.optional(S.Number),
+          currentLowPriorityNodes: S.optional(S.Number),
+          scaleSettings: S.optional(__S(1946, __c60, 26)),
+          autoScaleRun: S.optional(__S(1986, __c62, 2)),
+          interNodeCommunication: S.optional(S.String),
+          networkConfiguration: S.optional(__S(1955, __c61, 3)),
+          taskSlotsPerNode: S.optional(S.Number),
+          taskSchedulingPolicy: S.optional(__S(1956, __c61, 4)),
+          userAccounts: S.optional(__S(1960, __c61, 8)),
+          metadata: S.optional(__S(1962, __c61, 10)),
+          startTask: S.optional(__S(1972, __c61, 20)),
+          applicationPackages: S.optional(__S(1974, __c61, 22)),
+          resizeOperationStatus: S.optional(__S(1990, __c62, 6)),
+          mountConfiguration: S.optional(__S(1980, __c61, 28)),
+          upgradePolicy: S.optional(__S(1983, __c61, 31)),
+        }),
+      ).annotate({ identifier: "PoolProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1827, __c57, 3)),
+        }),
+      ).annotate({ identifier: "BatchPoolIdentity" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1991, __c62, 7)),
+          identity: S.optional(__S(1992, __c62, 8)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "CreatePoolResponse" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          vmSize: S.optional(S.String),
+          deploymentConfiguration: S.optional(__S(1943, __c60, 23)),
+          scaleSettings: S.optional(__S(1946, __c60, 26)),
+          interNodeCommunication: S.optional(S.String),
+          networkConfiguration: S.optional(__S(1955, __c61, 3)),
+          taskSlotsPerNode: S.optional(S.Number),
+          taskSchedulingPolicy: S.optional(__S(1956, __c61, 4)),
+          userAccounts: S.optional(__S(1960, __c61, 8)),
+          metadata: S.optional(__S(1962, __c61, 10)),
+          startTask: S.optional(__S(1972, __c61, 20)),
+          applicationPackages: S.optional(__S(1974, __c61, 22)),
+          mountConfiguration: S.optional(__S(1980, __c61, 28)),
+          upgradePolicy: S.optional(__S(1983, __c61, 31)),
+        }),
+      ).annotate({ identifier: "PoolPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1856, __c58, 0)),
+        }),
+      ).annotate({ identifier: "BatchPoolIdentityInput" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationPackageRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBatchAccountRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

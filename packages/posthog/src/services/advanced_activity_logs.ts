@@ -211,7 +211,7 @@ export const advancedActivityLogsExportCreate: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ActivityLog>,
+  output: __S(17, __c2, 1) as any as S.Schema<ActivityLog>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,8 +224,8 @@ export const getAdvancedActivityLogsAvailableFilter: API.OperationMethod<
   GetAdvancedActivityLogsAvailableFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetAdvancedActivityLogsAvailableFilterRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AvailableFiltersResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAdvancedActivityLogsAvailableFilterRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<AvailableFiltersResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const listAdvancedActivityLogs: API.OperationMethod<
   ListAdvancedActivityLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListAdvancedActivityLogsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PaginatedActivityLogList>,
+  input: __S(34, __c4, 2) as any as S.Schema<ListAdvancedActivityLogsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<PaginatedActivityLogList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -285,9 +285,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AdvancedActivityLogsExportCreateRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -297,15 +305,15 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          user: S.optional(S.NullOr(__S(3, __c0, 3))),
+          user: S.optional(S.NullOr(__S(16, __c2, 0))),
           unread: S.optional(S.Boolean),
           team_id: S.optional(S.NullOr(S.Number)),
           organization_id: S.optional(S.NullOr(S.String)),
@@ -320,7 +328,11 @@ function __c0(j: number): any {
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivityLog" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -334,55 +346,55 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAdvancedActivityLogsAvailableFilterRequest",
       });
-    case 6:
-      return S.Array(__S(2, __c0, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(6, __c0, 6)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          activities: S.optional(__S(6, __c0, 6)),
-          clients: S.optional(__S(6, __c0, 6)),
+          users: S.optional(__S(25, __c3, 1)),
+          scopes: S.optional(__S(25, __c3, 1)),
+          activities: S.optional(__S(25, __c3, 1)),
+          clients: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "StaticFilters" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          static_filters: S.optional(__S(7, __c0, 7)),
-          detail_fields: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "AvailableFiltersResponse" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.Number);
     case 3:
       return S.suspend(() =>
         S.Struct({
+          static_filters: S.optional(__S(26, __c3, 2)),
+          detail_fields: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "AvailableFiltersResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           project_id: S.String.pipe(T.Label()),
-          activities: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          clients: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          activities: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          clients: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           detail_filters: S.optional(S.String.pipe(T.Query())),
           end_date: S.optional(S.String.pipe(T.Query())),
           follow: S.optional(S.Boolean.pipe(T.Query())),
           hogql_filter: S.optional(S.String.pipe(T.Query())),
           include_values: S.optional(S.Boolean.pipe(T.Query())),
-          ip_addresses: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          ip_addresses: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           is_system: S.optional(S.Boolean.pipe(T.Query())),
-          item_ids: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          item_ids: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           ordering: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
           schema: S.optional(S.String.pipe(T.Query())),
-          scopes: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          scopes: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           search_text: S.optional(S.String.pipe(T.Query())),
           start_date: S.optional(S.String.pipe(T.Query())),
-          team_ids: S.optional(__S(10, __c1, 2).pipe(T.Query())),
-          users: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          team_ids: S.optional(__S(33, __c4, 1).pipe(T.Query())),
+          users: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           was_impersonated: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -394,20 +406,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAdvancedActivityLogsRequest",
       });
+    case 3:
+      return S.Array(__S(17, __c2, 1));
     case 4:
-      return S.Array(__S(4, __c0, 4));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12, __c1, 4)),
+          results: S.optional(__S(35, __c4, 3)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedActivityLogList" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -127,7 +127,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       FieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(78, __c9, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(353, __c11, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -515,7 +515,7 @@ export type RegionName = string;
 export interface Region {
   RegionName?: string;
 }
-const Region = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<Region>;
 export type RegionList = Region[];
 export interface ListRegionsResponse {
   Regions: Region[];
@@ -585,8 +585,8 @@ export const associateVolume: API.OperationMethod<
   AssociateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateVolumeResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<AssociateVolumeRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<AssociateVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -617,8 +617,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateVolumeResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CreateVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -649,8 +649,8 @@ export const createWorkspaceInstance: API.OperationMethod<
   CreateWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateWorkspaceInstanceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<CreateWorkspaceInstanceResponse>,
+  input: __S(610, __c19, 2) as any as S.Schema<CreateWorkspaceInstanceRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<CreateWorkspaceInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -681,8 +681,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<DeleteVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -715,8 +715,8 @@ export const deleteWorkspaceInstance: API.OperationMethod<
   DeleteWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteWorkspaceInstanceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteWorkspaceInstanceResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteWorkspaceInstanceRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<DeleteWorkspaceInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -747,8 +747,8 @@ export const disassociateVolume: API.OperationMethod<
   DisassociateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DisassociateVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateVolumeResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DisassociateVolumeRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<DisassociateVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -778,8 +778,8 @@ export const getWorkspaceInstance: API.OperationMethod<
   GetWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetWorkspaceInstanceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetWorkspaceInstanceResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetWorkspaceInstanceRequest>,
+  output: __S(101, __c3, 5) as any as S.Schema<GetWorkspaceInstanceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -808,8 +808,8 @@ export const listInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListInstanceTypesRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListInstanceTypesResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<ListInstanceTypesRequest>,
+  output: __S(166, __c5, 6) as any as S.Schema<ListInstanceTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +843,8 @@ export const listRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListRegionsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListRegionsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListRegionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -878,8 +878,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -908,8 +908,8 @@ export const listWorkspaceInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListWorkspaceInstancesRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListWorkspaceInstancesResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<ListWorkspaceInstancesRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<ListWorkspaceInstancesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -943,8 +943,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -973,8 +973,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -992,27 +992,264 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ VolumeId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteVolumeRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspaceInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteWorkspaceInstanceResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WorkspaceInstanceId: S.String,
+          VolumeId: S.String,
+          Device: S.optional(S.String),
+          DisassociateMode: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateVolumeRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "WorkspaceInstanceError" });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EC2ErrorCode: S.optional(S.String),
+          EC2ExceptionType: S.optional(S.String),
+          EC2ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EC2InstanceError" });
+    case 4:
+      return S.Array(__S(99, __c3, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          WorkspaceInstanceErrors: S.optional(__S(98, __c3, 2)),
+          EC2InstanceErrors: S.optional(__S(100, __c3, 4)),
+          ProvisionState: S.optional(S.String),
+          WorkspaceInstanceId: S.optional(S.String),
+          EC2ManagedInstance: S.optional(__S(128, __c4, 0)),
+          BillingConfiguration: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceInstanceResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
+        identifier: "EC2ManagedInstance",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BillingMode: S.String,
+          PlatformType: S.String,
+          Tenancy: S.String,
+        }),
+      ).annotate({
+        identifier: "InstanceConfigurationFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(SensitiveString),
+          InstanceConfigurationFilter: S.optional(__S(160, __c5, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListInstanceTypesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BillingMode: S.optional(S.String),
+          PlatformType: S.optional(S.String),
+          Tenancy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SupportedInstanceConfiguration",
+      });
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceType: S.optional(S.String),
+          SupportedInstanceConfigurations: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({ identifier: "InstanceTypeInfo" });
+    case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ InstanceTypes: __S(165, __c5, 5), NextToken: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "ListInstanceTypesResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(SensitiveString) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRegionsRequest" });
+    case 1:
+      return S.Array(Region);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Regions: __S(193, __c6, 1), NextToken: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "ListRegionsResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(545, __c17, 1)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionStates: S.optional(__S(256, __c8, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListWorkspaceInstancesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionState: S.optional(S.String),
+          WorkspaceInstanceId: S.optional(S.String),
+          EC2ManagedInstance: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "WorkspaceInstance" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstances: __S(259, __c8, 3), NextToken: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "ListWorkspaceInstancesResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String, Tags: __S(545, __c17, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String, TagKeys: __S(672, __c21, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Reason: S.String, Message: S.String }),
+      ).annotate({ identifier: "ValidationExceptionField" });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ WorkspaceInstanceId: S.String, VolumeId: S.String, Device: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AssociateVolumeRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateVolumeResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceType: S.optional(S.String), Tags: S.optional(__S(3, __c0, 3)) }),
-      ).annotate({ identifier: "TagSpecification" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RegionName: S.optional(S.String) })).annotate({
+        identifier: "Region",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AvailabilityZone: S.String,
@@ -1022,18 +1259,38 @@ function __c0(j: number): any {
           KmsKeyId: S.optional(SensitiveString),
           SizeInGB: S.optional(S.Number),
           SnapshotId: S.optional(S.String),
-          TagSpecifications: S.optional(__S(5, __c0, 5)),
+          TagSpecifications: S.optional(__S(513, __c16, 1)),
           Throughput: S.optional(S.Number),
           VolumeType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVolumeRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ VolumeId: S.optional(S.String) })).annotate({
         identifier: "CreateVolumeResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(S.String), Tags: S.optional(__S(545, __c17, 1)) }),
+      ).annotate({ identifier: "TagSpecification" });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1050,7 +1307,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeviceName: S.optional(S.String),
-          Ebs: S.optional(__S(8, __c1, 0)),
+          Ebs: S.optional(__S(576, __c18, 0)),
           NoDevice: S.optional(S.String),
           VirtualName: S.optional(S.String),
         }),
@@ -1058,7 +1315,7 @@ function __c1(j: number): any {
         identifier: "BlockDeviceMappingRequest",
       });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(577, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1072,7 +1329,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CapacityReservationPreference: S.optional(S.String),
-          CapacityReservationTarget: S.optional(__S(11, __c1, 3)),
+          CapacityReservationTarget: S.optional(__S(579, __c18, 3)),
         }),
       ).annotate({
         identifier: "CapacityReservationSpecification",
@@ -1094,21 +1351,17 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "EnclaveOptionsRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() => S.Struct({ Configured: S.optional(S.Boolean) })).annotate({
         identifier: "HibernationOptionsRequest",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({
         identifier: "IamInstanceProfileSpecification",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           BlockDurationMinutes: S.optional(S.Number),
@@ -1118,39 +1371,35 @@ function __c2(j: number): any {
           ValidUntilUtc: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SpotMarketOptions" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           MarketType: S.optional(S.String),
-          SpotOptions: S.optional(__S(18, __c2, 2)),
+          SpotOptions: S.optional(__S(586, __c18, 10)),
         }),
       ).annotate({
         identifier: "InstanceMarketOptionsRequest",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           Ipv6Address: S.optional(SensitiveString),
           IsPrimaryIpv6: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InstanceIpv6Address" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(588, __c18, 12));
+    case 14:
       return S.suspend(() => S.Struct({ LicenseConfigurationArn: S.optional(S.String) })).annotate({
         identifier: "LicenseConfigurationRequest",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(590, __c18, 14));
+    case 16:
       return S.suspend(() => S.Struct({ AutoRecovery: S.optional(S.String) })).annotate({
         identifier: "InstanceMaintenanceOptionsRequest",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           HttpEndpoint: S.optional(S.String),
@@ -1162,11 +1411,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "InstanceMetadataOptionsRequest",
       });
-    case 2:
+    case 18:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "RunInstancesMonitoringEnabled",
       });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           TcpEstablishedTimeout: S.optional(S.Number),
@@ -1176,84 +1425,74 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ConnectionTrackingSpecificationRequest",
       });
-    case 4:
+    case 20:
       return S.suspend(() => S.Struct({ EnaSrdUdpEnabled: S.optional(S.Boolean) })).annotate({
         identifier: "EnaSrdUdpSpecificationRequest",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           EnaSrdEnabled: S.optional(S.Boolean),
-          EnaSrdUdpSpecification: S.optional(__S(28, __c3, 4)),
+          EnaSrdUdpSpecification: S.optional(__S(596, __c18, 20)),
         }),
       ).annotate({
         identifier: "EnaSrdSpecificationRequest",
       });
-    case 6:
+    case 22:
       return S.suspend(() => S.Struct({ Ipv4Prefix: S.optional(S.String) })).annotate({
         identifier: "Ipv4PrefixSpecificationRequest",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
+      return S.Array(__S(598, __c18, 22));
+    case 24:
       return S.suspend(() => S.Struct({ Ipv6Prefix: S.optional(S.String) })).annotate({
         identifier: "Ipv6PrefixSpecificationRequest",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(600, __c18, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "PrivateIpAddressSpecification",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 27:
+      return S.Array(__S(602, __c18, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           AssociateCarrierIpAddress: S.optional(S.Boolean),
           AssociatePublicIpAddress: S.optional(S.Boolean),
-          ConnectionTrackingSpecification: S.optional(__S(27, __c3, 3)),
+          ConnectionTrackingSpecification: S.optional(__S(595, __c18, 19)),
           Description: S.optional(S.String),
           DeviceIndex: S.optional(S.Number),
-          EnaSrdSpecification: S.optional(__S(29, __c3, 5)),
+          EnaSrdSpecification: S.optional(__S(597, __c18, 21)),
           InterfaceType: S.optional(S.String),
-          Ipv4Prefixes: S.optional(__S(31, __c3, 7)),
+          Ipv4Prefixes: S.optional(__S(599, __c18, 23)),
           Ipv4PrefixCount: S.optional(S.Number),
           Ipv6AddressCount: S.optional(S.Number),
-          Ipv6Addresses: S.optional(__S(21, __c2, 5)),
-          Ipv6Prefixes: S.optional(__S(33, __c4, 1)),
+          Ipv6Addresses: S.optional(__S(589, __c18, 13)),
+          Ipv6Prefixes: S.optional(__S(601, __c18, 25)),
           Ipv6PrefixCount: S.optional(S.Number),
           NetworkCardIndex: S.optional(S.Number),
           NetworkInterfaceId: S.optional(S.String),
           PrimaryIpv6: S.optional(S.Boolean),
           PrivateIpAddress: S.optional(SensitiveString),
-          PrivateIpAddresses: S.optional(__S(35, __c4, 3)),
+          PrivateIpAddresses: S.optional(__S(603, __c18, 27)),
           SecondaryPrivateIpAddressCount: S.optional(S.Number),
-          Groups: S.optional(__S(36, __c4, 4)),
+          Groups: S.optional(__S(672, __c21, 0)),
           SubnetId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceNetworkInterfaceSpecification",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 29:
+      return S.Array(__S(604, __c18, 28));
+    case 30:
       return S.suspend(() => S.Struct({ BandwidthWeighting: S.optional(S.String) })).annotate({
         identifier: "InstanceNetworkPerformanceOptionsRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           Affinity: S.optional(S.String),
@@ -1266,7 +1505,11 @@ function __c5(j: number): any {
           Tenancy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Placement" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HostnameType: S.optional(S.String),
@@ -1276,273 +1519,74 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PrivateDnsNameOptionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          BlockDeviceMappings: S.optional(__S(10, __c1, 2)),
-          CapacityReservationSpecification: S.optional(__S(12, __c1, 4)),
-          CpuOptions: S.optional(__S(13, __c1, 5)),
-          CreditSpecification: S.optional(__S(14, __c1, 6)),
+          BlockDeviceMappings: S.optional(__S(578, __c18, 2)),
+          CapacityReservationSpecification: S.optional(__S(580, __c18, 4)),
+          CpuOptions: S.optional(__S(581, __c18, 5)),
+          CreditSpecification: S.optional(__S(582, __c18, 6)),
           DisableApiStop: S.optional(S.Boolean),
           EbsOptimized: S.optional(S.Boolean),
           EnablePrimaryIpv6: S.optional(S.Boolean),
-          EnclaveOptions: S.optional(__S(15, __c1, 7)),
-          HibernationOptions: S.optional(__S(16, __c2, 0)),
-          IamInstanceProfile: S.optional(__S(17, __c2, 1)),
+          EnclaveOptions: S.optional(__S(583, __c18, 7)),
+          HibernationOptions: S.optional(__S(584, __c18, 8)),
+          IamInstanceProfile: S.optional(__S(585, __c18, 9)),
           ImageId: S.optional(S.String),
-          InstanceMarketOptions: S.optional(__S(19, __c2, 3)),
+          InstanceMarketOptions: S.optional(__S(587, __c18, 11)),
           InstanceType: S.optional(S.String),
-          Ipv6Addresses: S.optional(__S(21, __c2, 5)),
+          Ipv6Addresses: S.optional(__S(589, __c18, 13)),
           Ipv6AddressCount: S.optional(S.Number),
           KernelId: S.optional(S.String),
           KeyName: S.optional(S.String),
-          LicenseSpecifications: S.optional(__S(23, __c2, 7)),
-          MaintenanceOptions: S.optional(__S(24, __c3, 0)),
-          MetadataOptions: S.optional(__S(25, __c3, 1)),
-          Monitoring: S.optional(__S(26, __c3, 2)),
-          NetworkInterfaces: S.optional(__S(38, __c4, 6)),
-          NetworkPerformanceOptions: S.optional(__S(39, __c4, 7)),
-          Placement: S.optional(__S(40, __c5, 0)),
-          PrivateDnsNameOptions: S.optional(__S(41, __c5, 1)),
+          LicenseSpecifications: S.optional(__S(591, __c18, 15)),
+          MaintenanceOptions: S.optional(__S(592, __c18, 16)),
+          MetadataOptions: S.optional(__S(593, __c18, 17)),
+          Monitoring: S.optional(__S(594, __c18, 18)),
+          NetworkInterfaces: S.optional(__S(605, __c18, 29)),
+          NetworkPerformanceOptions: S.optional(__S(606, __c18, 30)),
+          Placement: S.optional(__S(607, __c18, 31)),
+          PrivateDnsNameOptions: S.optional(__S(608, __c19, 0)),
           PrivateIpAddress: S.optional(SensitiveString),
           RamdiskId: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(36, __c4, 4)),
-          SecurityGroups: S.optional(__S(36, __c4, 4)),
+          SecurityGroupIds: S.optional(__S(672, __c21, 0)),
+          SecurityGroups: S.optional(__S(672, __c21, 0)),
           SubnetId: S.optional(S.String),
-          TagSpecifications: S.optional(__S(5, __c0, 5)),
+          TagSpecifications: S.optional(__S(513, __c16, 1)),
           UserData: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ManagedInstanceRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ BillingMode: S.String })).annotate({
-        identifier: "BillingConfiguration",
-      });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3, __c0, 3)),
-          ManagedInstance: __S(42, __c5, 2),
-          BillingConfiguration: S.optional(__S(43, __c5, 3)),
+          Tags: S.optional(__S(545, __c17, 1)),
+          ManagedInstance: __S(609, __c19, 1),
+          BillingConfiguration: S.optional(__S(640, __c20, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWorkspaceInstanceRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() => S.Struct({ WorkspaceInstanceId: S.optional(S.String) })).annotate({
         identifier: "CreateWorkspaceInstanceResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ VolumeId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkspaceInstanceRequest",
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ BillingMode: S.String })).annotate({
+        identifier: "BillingConfiguration",
       });
   }
 }
-function __c6(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWorkspaceInstanceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          WorkspaceInstanceId: S.String,
-          VolumeId: S.String,
-          Device: S.optional(S.String),
-          DisassociateMode: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateVolumeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceInstanceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "WorkspaceInstanceError" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EC2ErrorCode: S.optional(S.String),
-          EC2ExceptionType: S.optional(S.String),
-          EC2ErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EC2InstanceError" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
-        identifier: "EC2ManagedInstance",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          WorkspaceInstanceErrors: S.optional(__S(52, __c6, 4)),
-          EC2InstanceErrors: S.optional(__S(54, __c6, 6)),
-          ProvisionState: S.optional(S.String),
-          WorkspaceInstanceId: S.optional(S.String),
-          EC2ManagedInstance: S.optional(__S(55, __c6, 7)),
-          BillingConfiguration: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceInstanceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BillingMode: S.String,
-          PlatformType: S.String,
-          Tenancy: S.String,
-        }),
-      ).annotate({
-        identifier: "InstanceConfigurationFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(SensitiveString),
-          InstanceConfigurationFilter: S.optional(__S(57, __c7, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListInstanceTypesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BillingMode: S.optional(S.String),
-          PlatformType: S.optional(S.String),
-          Tenancy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SupportedInstanceConfiguration",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          InstanceType: S.optional(S.String),
-          SupportedInstanceConfigurations: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "InstanceTypeInfo" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ InstanceTypes: __S(62, __c7, 6), NextToken: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "ListInstanceTypesResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(SensitiveString) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListRegionsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ RegionName: S.optional(S.String) })).annotate({
-        identifier: "Region",
-      });
-    case 2:
-      return S.Array(Region);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Regions: __S(66, __c8, 2), NextToken: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "ListRegionsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3, __c0, 3)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 6:
       return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ProvisionStates: S.optional(__S(70, __c8, 6)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(SensitiveString),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkspaceInstancesRequest",
-      });
   }
 }
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ProvisionState: S.optional(S.String),
-          WorkspaceInstanceId: S.optional(S.String),
-          EC2ManagedInstance: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "WorkspaceInstance" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          WorkspaceInstances: __S(73, __c9, 1),
-          NextToken: S.optional(SensitiveString),
-        }),
-      ).annotate({
-        identifier: "ListWorkspaceInstancesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String, Tags: __S(3, __c0, 3) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String, TagKeys: __S(36, __c4, 4) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Reason: S.String, Message: S.String }),
-      ).annotate({ identifier: "ValidationExceptionField" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

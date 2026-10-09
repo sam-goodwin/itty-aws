@@ -1665,7 +1665,7 @@ export const ApplyUpdatesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ApplyUpdatesCreateOrUpdateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ApplyUpdatesCreateOrUpdateResponse>,
+  output: __S(24, __c3, 0) as any as S.Schema<ApplyUpdatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1679,8 +1679,8 @@ export const ApplyUpdatesCreateOrUpdateParent: API.OperationMethod<
   ApplyUpdatesCreateOrUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1694,8 @@ export const ConfigurationAssignmentsCreateOrUpdate: API.OperationMethod<
   ConfigurationAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1709,12 @@ export const ConfigurationAssignmentsCreateOrUpdateParent: API.OperationMethod<
   ConfigurationAssignmentsCreateOrUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentRequest>,
+  output: __S(
+    296,
+    __c37,
+    0,
+  ) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1725,14 +1729,14 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    320,
+    __c40,
+    0,
   ) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest>,
   output: __S(
-    19,
-    __c2,
-    3,
+    328,
+    __c41,
+    0,
   ) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1748,14 +1752,14 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20,
-    __c2,
-    4,
+    336,
+    __c42,
+    0,
   ) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest>,
   output: __S(
-    19,
-    __c2,
-    3,
+    328,
+    __c41,
+    0,
   ) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1770,8 +1774,8 @@ export const DeleteConfigurationAssignment: API.OperationMethod<
   DeleteConfigurationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteConfigurationAssignmentRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteConfigurationAssignmentResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<DeleteConfigurationAssignmentRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeleteConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1789,8 @@ export const DeleteConfigurationAssignmentParent: API.OperationMethod<
   DeleteConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteConfigurationAssignmentParentRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteConfigurationAssignmentParentResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<DeleteConfigurationAssignmentParentRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeleteConfigurationAssignmentParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1800,11 +1804,15 @@ export const DeleteConfigurationAssignmentsForResourceGroup: API.OperationMethod
   DeleteConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupRequest>,
+  input: __S(
+    368,
+    __c46,
+    0,
+  ) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    296,
+    __c37,
+    0,
   ) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1819,11 +1827,15 @@ export const DeleteConfigurationAssignmentsForSubscription: API.OperationMethod<
   DeleteConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionRequest>,
+  input: __S(
+    376,
+    __c47,
+    0,
+  ) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    296,
+    __c37,
+    0,
   ) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1838,8 +1850,8 @@ export const DeleteMaintenanceConfiguration: API.OperationMethod<
   DeleteMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1853,8 +1865,8 @@ export const GetApplyUpdate: API.OperationMethod<
   GetApplyUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetApplyUpdateRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetApplyUpdateResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetApplyUpdateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetApplyUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1868,8 +1880,8 @@ export const GetApplyUpdateParent: API.OperationMethod<
   GetApplyUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetApplyUpdateParentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetApplyUpdateParentResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetApplyUpdateParentRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetApplyUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1883,8 +1895,8 @@ export const GetConfigurationAssignment: API.OperationMethod<
   GetConfigurationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetConfigurationAssignmentRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetConfigurationAssignmentResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetConfigurationAssignmentRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1898,8 +1910,8 @@ export const GetConfigurationAssignmentParent: API.OperationMethod<
   GetConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetConfigurationAssignmentParentRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetConfigurationAssignmentParentResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetConfigurationAssignmentParentRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<GetConfigurationAssignmentParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1913,8 +1925,12 @@ export const GetConfigurationAssignmentsForResourceGroup: API.OperationMethod<
   GetConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupRequest>,
+  output: __S(
+    296,
+    __c37,
+    0,
+  ) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1928,8 +1944,8 @@ export const GetConfigurationAssignmentsForSubscription: API.OperationMethod<
   GetConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1943,8 +1959,8 @@ export const GetMaintenanceConfiguration: API.OperationMethod<
   GetMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetMaintenanceConfigurationRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetMaintenanceConfigurationResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetMaintenanceConfigurationRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1958,8 +1974,8 @@ export const GetPublicMaintenanceConfiguration: API.OperationMethod<
   GetPublicMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetPublicMaintenanceConfigurationRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetPublicMaintenanceConfigurationResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetPublicMaintenanceConfigurationRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetPublicMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1973,8 +1989,8 @@ export const ListConfigurationAssignmentParent: API.OperationMethod<
   ListConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListConfigurationAssignmentParentRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListConfigurationAssignmentsResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListConfigurationAssignmentParentRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1988,8 +2004,8 @@ export const ListConfigurationAssignments: API.OperationMethod<
   ListConfigurationAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListConfigurationAssignmentsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListConfigurationAssignmentsResult>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListConfigurationAssignmentsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2019,12 @@ export const ListConfigurationAssignmentsWithinSubscription: API.OperationMethod
   ListConfigurationAssignmentsWithinSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListConfigurationAssignmentsWithinSubscriptionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListConfigurationAssignmentsResult>,
+  input: __S(
+    192,
+    __c24,
+    0,
+  ) as any as S.Schema<ListConfigurationAssignmentsWithinSubscriptionRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2038,8 @@ export const ListMaintenanceConfigurations: API.OperationMethod<
   ListMaintenanceConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListMaintenanceConfigurationsResult>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2053,12 @@ export const ListMaintenanceConfigurationsForResourceGroup: API.OperationMethod<
   ListMaintenanceConfigurationsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListMaintenanceConfigurationsForResourceGroupRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListMaintenanceConfigurationsResult>,
+  input: __S(
+    216,
+    __c27,
+    0,
+  ) as any as S.Schema<ListMaintenanceConfigurationsForResourceGroupRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2072,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<OperationsListResult>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<OperationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2063,8 +2087,8 @@ export const ListPublicMaintenanceConfigurations: API.OperationMethod<
   ListPublicMaintenanceConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListPublicMaintenanceConfigurationsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListMaintenanceConfigurationsResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListPublicMaintenanceConfigurationsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2102,8 @@ export const ListUpdateParent: API.OperationMethod<
   ListUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListUpdateParentRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListUpdatesResult>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListUpdateParentRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2117,8 @@ export const ListUpdates: API.OperationMethod<
   ListUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListUpdatesRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListUpdatesResult>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListUpdatesRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2132,8 @@ export const MaintenanceConfigurationsCreateOrUpdate: API.OperationMethod<
   MaintenanceConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2123,11 +2147,15 @@ export const UpdateConfigurationAssignmentsForResourceGroup: API.OperationMethod
   UpdateConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupRequest>,
+  input: __S(
+    272,
+    __c34,
+    0,
+  ) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    296,
+    __c37,
+    0,
   ) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2142,11 +2170,15 @@ export const UpdateConfigurationAssignmentsForSubscription: API.OperationMethod<
   UpdateConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionRequest>,
+  input: __S(
+    304,
+    __c38,
+    0,
+  ) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    296,
+    __c37,
+    0,
   ) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2161,8 +2193,8 @@ export const UpdateMaintenanceConfiguration: API.OperationMethod<
   UpdateMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateMaintenanceConfigurationRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UpdateMaintenanceConfigurationResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateMaintenanceConfigurationRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<UpdateMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2190,7 +2222,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplyUpdateProperties" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2203,27 +2251,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateResponseSystemData",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplyUpdateProperties" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2244,7 +2292,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateParentRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplyUpdatesCreateOrUpdateParentResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2257,300 +2321,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateParentResponseSystemData",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "ApplyUpdatesCreateOrUpdateParentResponse",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(8, __c1, 0)),
-          filterOperator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TagSettingsProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceTypes: S.optional(__S(7, __c0, 7)),
-          resourceGroups: S.optional(__S(7, __c0, 7)),
-          osTypes: S.optional(__S(7, __c0, 7)),
-          locations: S.optional(__S(7, __c0, 7)),
-          tagSettings: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentFilterProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceConfigurationId: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          filter: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateResponseSystemData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-          resourceParentType: S.String.pipe(T.Label()),
-          resourceParentName: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateParentRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationAssignmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "DeleteConfigurationAssignmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerName: S.String.pipe(T.Label()),
-          resourceParentType: S.String.pipe(T.Label()),
-          resourceParentName: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationAssignmentParentRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationAssignmentsForResourceGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          configurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationAssignmentsForSubscriptionRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2567,9 +2342,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteMaintenanceConfigurationRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
+        }),
+      ).annotate({
+        identifier: "DeleteMaintenanceConfigurationResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
@@ -2579,63 +2372,49 @@ function __c3(j: number): any {
           recurEvery: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          kbNumbersToExclude: S.optional(__S(7, __c0, 7)),
-          kbNumbersToInclude: S.optional(__S(7, __c0, 7)),
-          classificationsToInclude: S.optional(__S(7, __c0, 7)),
+          kbNumbersToExclude: S.optional(__S(168, __c21, 0)),
+          kbNumbersToInclude: S.optional(__S(168, __c21, 0)),
+          classificationsToInclude: S.optional(__S(168, __c21, 0)),
           excludeKbsRequiringReboot: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InputWindowsParameters" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          packageNameMasksToExclude: S.optional(__S(7, __c0, 7)),
-          packageNameMasksToInclude: S.optional(__S(7, __c0, 7)),
-          classificationsToInclude: S.optional(__S(7, __c0, 7)),
+          packageNameMasksToExclude: S.optional(__S(168, __c21, 0)),
+          packageNameMasksToInclude: S.optional(__S(168, __c21, 0)),
+          classificationsToInclude: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "InputLinuxParameters" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           rebootSetting: S.optional(S.String),
-          windowsParameters: S.optional(__S(29, __c3, 5)),
-          linuxParameters: S.optional(__S(30, __c3, 6)),
+          windowsParameters: S.optional(__S(58, __c7, 2)),
+          linuxParameters: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "InputPatchConfiguration" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
-          extensionProperties: S.optional(__S(27, __c3, 3)),
+          extensionProperties: S.optional(__S(56, __c7, 0)),
           maintenanceScope: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(28, __c3, 4)),
+          maintenanceWindow: S.optional(__S(57, __c7, 1)),
           visibility: S.optional(S.String),
-          installPatches: S.optional(__S(31, __c3, 7)),
+          installPatches: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({
         identifier: "MaintenanceConfigurationProperties",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "DeleteMaintenanceConfigurationResponse",
-      });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2653,17 +2432,21 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplyUpdateRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "GetApplyUpdateResponse" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2685,7 +2468,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetApplyUpdateParentRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2705,20 +2492,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetConfigurationAssignmentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({
         identifier: "GetConfigurationAssignmentResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2742,7 +2533,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2761,7 +2552,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetConfigurationAssignmentsForResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2777,7 +2572,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetConfigurationAssignmentsForSubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2794,21 +2593,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMaintenanceConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({
         identifier: "GetMaintenanceConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2824,21 +2627,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPublicMaintenanceConfigurationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(40, __c5, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({
         identifier: "GetPublicMaintenanceConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2859,32 +2666,137 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListConfigurationAssignmentParentRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({ identifier: "ConfigurationAssignment" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
     case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: S.optional(__S(137, __c17, 1)),
         }),
       ).annotate({
         identifier: "ListConfigurationAssignmentsResult",
       });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+          resourceType: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c20, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateResponseSystemData",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(168, __c21, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(176, __c22, 0)),
+          filterOperator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TagSettingsProperties" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceTypes: S.optional(__S(168, __c21, 0)),
+          resourceGroups: S.optional(__S(168, __c21, 0)),
+          osTypes: S.optional(__S(168, __c21, 0)),
+          locations: S.optional(__S(168, __c21, 0)),
+          tagSettings: S.optional(__S(177, __c22, 1)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentFilterProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceConfigurationId: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          filter: S.optional(__S(178, __c22, 2)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentProperties",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2903,7 +2815,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListConfigurationAssignmentsRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2918,7 +2834,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListConfigurationAssignmentsWithinSubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2933,31 +2853,35 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListMaintenanceConfigurationsRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "MaintenanceConfiguration" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(208, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(54, __c6, 6)),
+          value: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({
         identifier: "ListMaintenanceConfigurationsResult",
       });
   }
 }
-function __c7(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2975,7 +2899,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListMaintenanceConfigurationsForResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2986,7 +2914,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2995,25 +2923,29 @@ function __c7(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationInfo" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(58, __c7, 2)),
+          display: S.optional(__S(225, __c28, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(226, __c28, 2));
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(60, __c7, 4)),
+          value: S.optional(__S(227, __c28, 3)),
         }),
       ).annotate({ identifier: "OperationsListResult" });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3028,7 +2960,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPublicMaintenanceConfigurationsRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3049,7 +2985,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ListUpdateParentRequest" });
   }
 }
-function __c8(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3065,18 +3001,22 @@ function __c8(j: number): any {
           status: S.optional(S.String),
           impactDurationInSec: S.optional(S.Number),
           notBefore: S.optional(S.String),
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
         }),
       ).annotate({ identifier: "Update" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(249, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66, __c8, 2)),
+          value: S.optional(__S(250, __c31, 2)),
         }),
       ).annotate({ identifier: "ListUpdatesResult" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3093,15 +3033,19 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUpdatesRequest" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3113,28 +3057,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MaintenanceConfigurationsCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(160, __c20, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({
         identifier: "MaintenanceConfigurationsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(179, __c22, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3148,7 +3096,69 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+          resourceParentType: S.String.pipe(T.Label()),
+          resourceParentName: S.String.pipe(T.Label()),
+          resourceType: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateParentRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(288, __c36, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponse",
+      });
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3156,7 +3166,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(179, __c22, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3168,15 +3178,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationAssignmentsForSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3188,23 +3202,192 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateMaintenanceConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(40, __c5, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({
         identifier: "UpdateMaintenanceConfigurationResponse",
       });
   }
 }
-
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(288, __c36, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+          resourceType: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationAssignmentRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(179, __c22, 3)),
+        }),
+      ).annotate({
+        identifier: "DeleteConfigurationAssignmentResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerName: S.String.pipe(T.Label()),
+          resourceParentType: S.String.pipe(T.Label()),
+          resourceParentName: S.String.pipe(T.Label()),
+          resourceType: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationAssignmentParentRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationAssignmentsForResourceGroupRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          configurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationAssignmentsForSubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

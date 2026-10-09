@@ -325,8 +325,8 @@ export const createConfigurationManager: API.OperationMethod<
   CreateConfigurationManagerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateConfigurationManagerInput>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateConfigurationManagerOutput>,
+  input: __S(106, __c13, 2) as any as S.Schema<CreateConfigurationManagerInput>,
+  output: __S(107, __c13, 3) as any as S.Schema<CreateConfigurationManagerOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -356,8 +356,8 @@ export const deleteConfigurationManager: API.OperationMethod<
   DeleteConfigurationManagerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteConfigurationManagerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteConfigurationManagerResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteConfigurationManagerInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteConfigurationManagerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -388,8 +388,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetConfigurationInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetConfigurationOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetConfigurationInput>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -420,8 +420,8 @@ export const getConfigurationManager: API.OperationMethod<
   GetConfigurationManagerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetConfigurationManagerInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetConfigurationManagerOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetConfigurationManagerInput>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetConfigurationManagerOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -450,8 +450,8 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetServiceSettingsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetServiceSettingsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetServiceSettingsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetServiceSettingsOutput>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -475,8 +475,8 @@ export const listConfigurationManagers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationManagerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListConfigurationManagersInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListConfigurationManagersOutput>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListConfigurationManagersInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<ListConfigurationManagersOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -512,8 +512,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListConfigurationsInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListConfigurationsOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListConfigurationsInput>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListConfigurationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -547,8 +547,8 @@ export const listQuickSetupTypes: API.OperationMethod<
   ListQuickSetupTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListQuickSetupTypesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListQuickSetupTypesOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListQuickSetupTypesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListQuickSetupTypesOutput>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -572,8 +572,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -604,8 +604,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -636,8 +636,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -668,8 +668,8 @@ export const updateConfigurationDefinition: API.OperationMethod<
   UpdateConfigurationDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateConfigurationDefinitionInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateConfigurationDefinitionResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateConfigurationDefinitionInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateConfigurationDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -700,8 +700,8 @@ export const updateConfigurationManager: API.OperationMethod<
   UpdateConfigurationManagerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateConfigurationManagerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateConfigurationManagerResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateConfigurationManagerInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateConfigurationManagerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -731,8 +731,8 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateServiceSettingsInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateServiceSettingsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateServiceSettingsInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateServiceSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -749,159 +749,6 @@ export const updateServiceSettings: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          Parameters: __S(0, __c0, 0),
-          TypeVersion: S.optional(S.String),
-          LocalDeploymentExecutionRoleName: S.optional(S.String),
-          LocalDeploymentAdministrationRoleArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationDefinitionInput",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          ConfigurationDefinitions: __S(2, __c0, 2),
-          Tags: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/configurationManager" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateConfigurationManagerInput",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ ManagerArn: S.String })).annotate({
-        identifier: "CreateConfigurationManagerOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/configurationManager/{ManagerArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationManagerInput",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConfigurationManagerResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ConfigurationId: S.String.pipe(T.HttpLabel("ConfigurationId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/getConfiguration/{ConfigurationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetConfigurationInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          StatusType: S.String,
-          Status: S.optional(S.String),
-          StatusMessage: S.optional(S.String),
-          LastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          StatusDetails: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "StatusSummary" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          ManagerArn: S.optional(S.String),
-          ConfigurationDefinitionId: S.optional(S.String),
-          Type: S.optional(S.String),
-          TypeVersion: S.optional(S.String),
-          Account: S.optional(S.String),
-          Region: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          StatusSummaries: S.optional(__S(10, __c1, 2)),
-          Parameters: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetConfigurationOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/configurationManager/{ManagerArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetConfigurationManagerInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          Parameters: __S(0, __c0, 0),
-          TypeVersion: S.optional(S.String),
-          LocalDeploymentExecutionRoleName: S.optional(S.String),
-          LocalDeploymentAdministrationRoleArn: S.optional(S.String),
-          Id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigurationDefinition" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ManagerArn: S.String,
-          Description: S.optional(S.String),
-          Name: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          StatusSummaries: S.optional(__S(10, __c1, 2)),
-          ConfigurationDefinitions: S.optional(__S(14, __c1, 6)),
-          Tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationManagerOutput",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/serviceSettings" }), svc, auth, proto, ver, rules),
@@ -914,23 +761,19 @@ function __c2(j: number): any {
         identifier: "ServiceSettings",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ServiceSettings: S.optional(__S(17, __c2, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ ServiceSettings: S.optional(__S(1, __c0, 1)) })).annotate({
         identifier: "GetServiceSettingsOutput",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(19, __c2, 3) })).annotate({
-        identifier: "Filter",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartingToken: S.optional(S.String),
           MaxItems: S.optional(S.Number),
-          Filters: S.optional(__S(21, __c2, 5)),
+          Filters: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/listConfigurationManagers" }),
@@ -944,52 +787,68 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListConfigurationManagersInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Type: S.optional(S.String),
           TypeVersion: S.optional(S.String),
-          FirstClassParameters: S.optional(__S(0, __c0, 0)),
+          FirstClassParameters: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({
         identifier: "ConfigurationDefinitionSummary",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ManagerArn: S.String,
           Description: S.optional(S.String),
           Name: S.optional(S.String),
-          StatusSummaries: S.optional(__S(10, __c1, 2)),
-          ConfigurationDefinitionSummaries: S.optional(__S(24, __c3, 0)),
+          StatusSummaries: S.optional(__S(153, __c19, 1)),
+          ConfigurationDefinitionSummaries: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ConfigurationManagerSummary",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationManagersList: S.optional(__S(26, __c3, 2)),
+          ConfigurationManagersList: S.optional(__S(12, __c1, 4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConfigurationManagersOutput",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(24, __c3, 0) })).annotate({
+        identifier: "Filter",
+      });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartingToken: S.optional(S.String),
           MaxItems: S.optional(S.Number),
-          Filters: S.optional(__S(21, __c2, 5)),
+          Filters: S.optional(__S(17, __c2, 1)),
           ManagerArn: S.optional(S.String),
           ConfigurationDefinitionId: S.optional(S.String),
         }).pipe(
@@ -1003,7 +862,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListConfigurationsInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -1014,22 +873,22 @@ function __c3(j: number): any {
           Region: S.optional(S.String),
           Account: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          FirstClassParameters: S.optional(__S(0, __c0, 0)),
-          StatusSummaries: S.optional(__S(10, __c1, 2)),
+          FirstClassParameters: S.optional(__S(112, __c14, 0)),
+          StatusSummaries: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({ identifier: "ConfigurationSummary" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationsList: S.optional(__S(30, __c3, 6)),
+          ConfigurationsList: S.optional(__S(34, __c4, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConfigurationsOutput" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1051,14 +910,18 @@ function __c4(j: number): any {
         S.Struct({ Type: S.optional(S.String), LatestVersion: S.optional(S.String) }),
       ).annotate({ identifier: "QuickSetupTypeOutput" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ QuickSetupTypeList: S.optional(__S(34, __c4, 2)) }),
+        S.Struct({ QuickSetupTypeList: S.optional(__S(42, __c5, 2)) }),
       ).annotate({
         identifier: "ListQuickSetupTypesOutput",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1073,25 +936,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "TagEntry" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(38, __c4, 6)) })).annotate({
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(50, __c6, 2)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(3, __c0, 3),
+          Tags: __S(120, __c15, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }),
@@ -1103,15 +966,23 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(19, __c2, 3).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(24, __c3, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1123,13 +994,17 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
           Id: S.String.pipe(T.HttpLabel("Id")),
           TypeVersion: S.optional(S.String),
-          Parameters: S.optional(__S(0, __c0, 0)),
+          Parameters: S.optional(__S(112, __c14, 0)),
           LocalDeploymentExecutionRoleName: S.optional(S.String),
           LocalDeploymentAdministrationRoleArn: S.optional(S.String),
         }).pipe(
@@ -1145,7 +1020,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationDefinitionInput",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
@@ -1164,7 +1043,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationManagerInput",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ExplorerEnablingRoleArn: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/serviceSettings" }), svc, auth, proto, ver, rules),
@@ -1174,7 +1057,183 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.String,
+          Parameters: __S(112, __c14, 0),
+          TypeVersion: S.optional(S.String),
+          LocalDeploymentExecutionRoleName: S.optional(S.String),
+          LocalDeploymentAdministrationRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationDefinitionInput",
+      });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          ConfigurationDefinitions: __S(105, __c13, 1),
+          Tags: S.optional(__S(120, __c15, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/configurationManager" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateConfigurationManagerInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ ManagerArn: S.String })).annotate({
+        identifier: "CreateConfigurationManagerOutput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/configurationManager/{ManagerArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationManagerInput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConfigurationManagerResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationId: S.String.pipe(T.HttpLabel("ConfigurationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/getConfiguration/{ConfigurationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConfigurationInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ManagerArn: S.optional(S.String),
+          ConfigurationDefinitionId: S.optional(S.String),
+          Type: S.optional(S.String),
+          TypeVersion: S.optional(S.String),
+          Account: S.optional(S.String),
+          Region: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          StatusSummaries: S.optional(__S(153, __c19, 1)),
+          Parameters: S.optional(__S(112, __c14, 0)),
+        }),
+      ).annotate({ identifier: "GetConfigurationOutput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StatusType: S.String,
+          Status: S.optional(S.String),
+          StatusMessage: S.optional(S.String),
+          LastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          StatusDetails: S.optional(__S(112, __c14, 0)),
+        }),
+      ).annotate({ identifier: "StatusSummary" });
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/configurationManager/{ManagerArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConfigurationManagerInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.String,
+          Parameters: __S(112, __c14, 0),
+          TypeVersion: S.optional(S.String),
+          LocalDeploymentExecutionRoleName: S.optional(S.String),
+          LocalDeploymentAdministrationRoleArn: S.optional(S.String),
+          Id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationDefinition" });
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ManagerArn: S.String,
+          Description: S.optional(S.String),
+          Name: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          StatusSummaries: S.optional(__S(153, __c19, 1)),
+          ConfigurationDefinitions: S.optional(__S(162, __c20, 2)),
+          Tags: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationManagerOutput",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

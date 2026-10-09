@@ -2071,7 +2071,7 @@ export const acceptInformationRequestEvidence: API.OperationMethod<
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptInformationRequestEvidenceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InformationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<InformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2085,8 +2085,8 @@ export const createAuditor: API.OperationMethod<
   CreateAuditorError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateAuditorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Auditor>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateAuditorRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<Auditor>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2100,8 @@ export const createCommentForAuditEvidence: API.OperationMethod<
   CreateCommentForAuditEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateCommentForAuditEvidenceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Comment>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateCommentForAuditEvidenceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<Comment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2115,8 @@ export const createCommentForControl: API.OperationMethod<
   CreateCommentForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCommentForControlRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AuditControlComment>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateCommentForControlRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<AuditControlComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2130,8 +2130,8 @@ export const createCommentForInformationRequest: API.OperationMethod<
   CreateCommentForInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateCommentForInformationRequestRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<InformationRequestComment>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateCommentForInformationRequestRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<InformationRequestComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2145,8 +2145,8 @@ export const createCustomControl: API.OperationMethod<
   CreateCustomControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateCustomControlRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuditorApiControl>,
+  input: __S(1794, __c56, 2) as any as S.Schema<CreateCustomControlRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<AuditorApiControl>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2160,8 @@ export const createCustomEvidenceRequest: API.OperationMethod<
   CreateCustomEvidenceRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateCustomEvidenceRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CustomEvidenceRequest>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreateCustomEvidenceRequestRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CustomEvidenceRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2175,8 @@ export const createInformationRequest: API.OperationMethod<
   CreateInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateInformationRequestRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InformationRequest>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateInformationRequestRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<InformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2190,8 @@ export const deleteCommentForControl: API.OperationMethod<
   DeleteCommentForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteCommentForControlRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteCommentForControlResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteCommentForControlRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<DeleteCommentForControlResponse>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2205,8 +2205,8 @@ export const deleteCommentForInformationRequest: API.OperationMethod<
   DeleteCommentForInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteCommentForInformationRequestRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteCommentForInformationRequestResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteCommentForInformationRequestRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteCommentForInformationRequestResponse>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2220,8 @@ export const deleteInformationRequest: API.OperationMethod<
   DeleteInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteInformationRequestRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteInformationRequestResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteInformationRequestRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteInformationRequestResponse>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2235,8 @@ export const duplicate: API.OperationMethod<
   DuplicateError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DuplicateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Audit>,
+  input: __S(160, __c5, 0) as any as S.Schema<DuplicateRequest>,
+  output: __S(230, __c7, 6) as any as S.Schema<Audit>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2250,8 +2250,8 @@ export const flagInformationRequestEvidence: API.OperationMethod<
   FlagInformationRequestEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<FlagInformationRequestEvidenceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InformationRequest>,
+  input: __S(256, __c8, 0) as any as S.Schema<FlagInformationRequestEvidenceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<InformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2261,8 +2261,8 @@ export type GetAuditError = VantaOpError;
 /** Get audit by ID Returns a single audit by ID, scoped to the audit firm. To identify IRL (Information Request List) audits, check for the presence of the `auditorRequestListMetadata` field. This field is only present for IRL-based audits and will be `undefined` for standard audits. The response includes `segments`, the audit's scope. It returns every in-scope program and system segment; more than one segment does not by itself imply more than one framework. The top-level `framework` field is deprecated; use `segments` for in-scope frameworks. This endpoint returns 404 for a soft-deleted audit. Rate limit: 250 requests / minute. */
 export const getAudit: API.OperationMethod<GetAuditRequest, Audit, GetAuditError, VantaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(36, __c4, 4) as any as S.Schema<GetAuditRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<Audit>,
+    input: __S(288, __c9, 0) as any as S.Schema<GetAuditRequest>,
+    output: __S(230, __c7, 6) as any as S.Schema<Audit>,
     errors: [UnknownVantaError],
     protocol: VantaProtocol,
     retry: Retry.Retry,
@@ -2276,8 +2276,8 @@ export const getAuditEvidence: API.OperationMethod<
   GetAuditEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetAuditEvidenceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Evidence>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetAuditEvidenceRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<Evidence>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2291,8 +2291,8 @@ export const getAuditEvidenceComment: API.OperationMethod<
   GetAuditEvidenceCommentError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetAuditEvidenceCommentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Comment>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetAuditEvidenceCommentRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<Comment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2306,8 +2306,8 @@ export const getCommentForInformationRequest: API.OperationMethod<
   GetCommentForInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetCommentForInformationRequestRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<InformationRequestComment>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetCommentForInformationRequestRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<InformationRequestComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2321,8 +2321,8 @@ export const getFrameworkCodes: API.OperationMethod<
   GetFrameworkCodesError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetFrameworkCodesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<FrameworkCodes>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetFrameworkCodesRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<FrameworkCodes>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2336,8 +2336,8 @@ export const getInformationRequest: API.OperationMethod<
   GetInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetInformationRequestRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InformationRequest>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetInformationRequestRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<InformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2351,8 +2351,8 @@ export const getInformationRequestEvidence: API.OperationMethod<
   GetInformationRequestEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetInformationRequestEvidenceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<InformationRequestEvidence>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetInformationRequestEvidenceRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<InformationRequestEvidence>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2367,11 +2367,11 @@ export const getInformationRequestTestSnapshotEvidenceDetail: API.OperationMetho
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<GetInformationRequestTestSnapshotEvidenceDetailRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<VantaTestSnapshotEvidenceDetail>,
+  output: __S(656, __c20, 16) as any as S.Schema<VantaTestSnapshotEvidenceDetail>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2385,8 +2385,8 @@ export const getOrganizationInformation: API.OperationMethod<
   GetOrganizationInformationError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetOrganizationInformationRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<AuditOrganizationInformation>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetOrganizationInformationRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<AuditOrganizationInformation>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2400,8 +2400,8 @@ export const getOrganizationNotifications: API.OperationMethod<
   GetOrganizationNotificationsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetOrganizationNotificationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<AuditOrganizationNotifications>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetOrganizationNotificationsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<AuditOrganizationNotifications>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2415,8 +2415,8 @@ export const listAccountAccessServices: API.OperationMethod<
   ListAccountAccessServicesError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListAccountAccessServicesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<PaginatedResponseAccountAccessService>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListAccountAccessServicesRequest>,
+  output: __S(740, __c23, 4) as any as S.Schema<PaginatedResponseAccountAccessService>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2430,8 +2430,8 @@ export const listAuditComments: API.OperationMethod<
   ListAuditCommentsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListAuditCommentsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<PaginatedResponseComment>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListAuditCommentsRequest>,
+  output: __S(803, __c25, 3) as any as S.Schema<PaginatedResponseComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2445,8 +2445,8 @@ export const listAuditControls: API.OperationMethod<
   ListAuditControlsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListAuditControlsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PaginatedResponseAuditorControl>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListAuditControlsRequest>,
+  output: __S(841, __c26, 9) as any as S.Schema<PaginatedResponseAuditorControl>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2460,8 +2460,8 @@ export const listAuditEvidence: API.OperationMethod<
   ListAuditEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListAuditEvidenceRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<PaginatedResponseEvidence>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListAuditEvidenceRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<PaginatedResponseEvidence>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2475,8 +2475,8 @@ export const listAuditEvidenceUrls: API.OperationMethod<
   ListAuditEvidenceUrlsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListAuditEvidenceUrlsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PaginatedResponseEvidenceUrl>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListAuditEvidenceUrlsRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<PaginatedResponseEvidenceUrl>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2490,8 +2490,8 @@ export const listAuditIssues: API.OperationMethod<
   ListAuditIssuesError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListAuditIssuesRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<PaginatedResponseIssueSnapshotItem>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListAuditIssuesRequest>,
+  output: __S(933, __c29, 5) as any as S.Schema<PaginatedResponseIssueSnapshotItem>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2505,8 +2505,8 @@ export const listAuditRisks: API.OperationMethod<
   ListAuditRisksError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListAuditRisksRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PaginatedResponseAuditRisk>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListAuditRisksRequest>,
+  output: __S(965, __c30, 5) as any as S.Schema<PaginatedResponseAuditRisk>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2520,8 @@ export const listAudits: API.OperationMethod<
   ListAuditsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListAuditsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<PaginatedResponseAudit>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListAuditsRequest>,
+  output: __S(1059, __c33, 3) as any as S.Schema<PaginatedResponseAudit>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2535,8 @@ export const listAuditSnapshots: API.OperationMethod<
   ListAuditSnapshotsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListAuditSnapshotsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PaginatedResponseIssueSnapshotMetadata>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListAuditSnapshotsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<PaginatedResponseIssueSnapshotMetadata>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2550,8 +2550,8 @@ export const listCodeChanges: API.OperationMethod<
   ListCodeChangesError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListCodeChangesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<PaginatedResponseCodeChange>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListCodeChangesRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<PaginatedResponseCodeChange>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2565,8 +2565,8 @@ export const listCommentsForControl: API.OperationMethod<
   ListCommentsForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListCommentsForControlRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<PaginatedResponseAuditControlComment>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListCommentsForControlRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<PaginatedResponseAuditControlComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2580,8 +2580,8 @@ export const listCommentsForInformationRequest: API.OperationMethod<
   ListCommentsForInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListCommentsForInformationRequestRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<PaginatedResponseInformationRequestComment>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListCommentsForInformationRequestRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<PaginatedResponseInformationRequestComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2595,8 +2595,8 @@ export const listInformationRequestActivity: API.OperationMethod<
   ListInformationRequestActivityError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListInformationRequestActivityRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<PaginatedResponseInformationRequestActivityLog>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListInformationRequestActivityRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<PaginatedResponseInformationRequestActivityLog>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2610,8 +2610,8 @@ export const listInformationRequestEvidence: API.OperationMethod<
   ListInformationRequestEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListInformationRequestEvidenceRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<PaginatedResponseInformationRequestEvidence>,
+  input: __S(1249, __c39, 1) as any as S.Schema<ListInformationRequestEvidenceRequest>,
+  output: __S(1252, __c39, 4) as any as S.Schema<PaginatedResponseInformationRequestEvidence>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2625,8 +2625,8 @@ export const listInformationRequests: API.OperationMethod<
   ListInformationRequestsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListInformationRequestsRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<PaginatedResponseInformationRequest>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListInformationRequestsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PaginatedResponseInformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2640,8 +2640,8 @@ export const listInformationRequestsForControl: API.OperationMethod<
   ListInformationRequestsForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListInformationRequestsForControlRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<PaginatedResponseInformationRequest>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListInformationRequestsForControlRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PaginatedResponseInformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2655,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListIntegrationsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PaginatedResponseAuditIntegration>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<PaginatedResponseAuditIntegration>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2670,8 @@ export const listPersonnelAccountAccess: API.OperationMethod<
   ListPersonnelAccountAccessError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListPersonnelAccountAccessRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<PaginatedResponseAccountAccess>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListPersonnelAccountAccessRequest>,
+  output: __S(1476, __c46, 4) as any as S.Schema<PaginatedResponseAccountAccess>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2685,8 @@ export const listPersonnelGroups: API.OperationMethod<
   ListPersonnelGroupsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListPersonnelGroupsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<PaginatedResponsePersonnelGroup>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListPersonnelGroupsRequest>,
+  output: __S(1510, __c47, 6) as any as S.Schema<PaginatedResponsePersonnelGroup>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const listPersonnelPeople: API.OperationMethod<
   ListPersonnelPeopleError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListPersonnelPeopleRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<PaginatedResponsePersonnelPerson>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListPersonnelPeopleRequest>,
+  output: __S(1545, __c48, 9) as any as S.Schema<PaginatedResponsePersonnelPerson>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2715,8 @@ export const listRiskSnapshots: API.OperationMethod<
   ListRiskSnapshotsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListRiskSnapshotsRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<PaginatedResponseRiskSnapshot>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListRiskSnapshotsRequest>,
+  output: __S(1572, __c49, 4) as any as S.Schema<PaginatedResponseRiskSnapshot>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2730,8 @@ export const listShareInformationRequest: API.OperationMethod<
   ListShareInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListShareInformationRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Audit>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListShareInformationRequestRequest>,
+  output: __S(230, __c7, 6) as any as S.Schema<Audit>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2745,8 @@ export const listVendors: API.OperationMethod<
   ListVendorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListVendorsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<PaginatedResponseAuditVendor>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListVendorsRequest>,
+  output: __S(1637, __c51, 5) as any as S.Schema<PaginatedResponseAuditVendor>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2760,8 @@ export const updateAuditEvidence: API.OperationMethod<
   UpdateAuditEvidenceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateAuditEvidenceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Evidence>,
+  input: __S(1665, __c52, 1) as any as S.Schema<UpdateAuditEvidenceRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<Evidence>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2775,8 @@ export const updateCommentForControl: API.OperationMethod<
   UpdateCommentForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UpdateCommentForControlRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AuditControlComment>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UpdateCommentForControlRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<AuditControlComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2790,8 @@ export const updateCommentForInformationRequest: API.OperationMethod<
   UpdateCommentForInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateCommentForInformationRequestRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<InformationRequestComment>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UpdateCommentForInformationRequestRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<InformationRequestComment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2805,8 @@ export const updateInformationRequest: API.OperationMethod<
   UpdateInformationRequestError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateInformationRequestRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InformationRequest>,
+  input: __S(1760, __c55, 0) as any as S.Schema<UpdateInformationRequestRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<InformationRequest>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2820,8 @@ export const upsertAssessmentForControl: API.OperationMethod<
   UpsertAssessmentForControlError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpsertAssessmentForControlRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<AuditorControlAssessment>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UpsertAssessmentForControlRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<AuditorControlAssessment>,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -2846,19 +2846,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptInformationRequestEvidenceRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           uniqueId: S.String,
-          additionalControlIds: __S(1, __c0, 1),
-          linkedControlIds: __S(1, __c0, 1),
+          additionalControlIds: __S(32, __c1, 0),
+          linkedControlIds: __S(32, __c1, 0),
           approvalStatus: S.String,
           cadence: S.NullOr(S.String),
-          frameworkCodes: __S(1, __c0, 1),
-          segmentIds: __S(1, __c0, 1),
+          frameworkCodes: __S(32, __c1, 0),
+          segmentIds: __S(32, __c1, 0),
           description: S.NullOr(S.String),
           dueDate: S.NullOr(S.String),
           evidenceCaptureDate: S.NullOr(S.String),
@@ -2871,7 +2879,11 @@ function __c0(j: number): any {
           ownerAssignment: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "InformationRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -2879,7 +2891,7 @@ function __c0(j: number): any {
           familyName: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/auditors", code: 200 })),
       ).annotate({ identifier: "CreateAuditorRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2889,7 +2901,320 @@ function __c0(j: number): any {
           familyName: S.String,
         }),
       ).annotate({ identifier: "Auditor" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/audits/{auditId}/information-requests/{requestId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInformationRequestRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAuditId: S.String,
+          displayName: S.String,
+          auditStartDate: S.String,
+          auditEndDate: S.String,
+          earlyAccessStartsAt: S.String,
+          allowAuditorEmails: __S(32, __c1, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/audits/duplicate", code: 200 })),
+      ).annotate({ identifier: "DuplicateRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestsSharedWithCustomer: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "AuditAuditorRequestListMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+        }),
+      ).annotate({ identifier: "AuditSegmentFramework" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          displayName: S.String,
+        }),
+      ).annotate({ identifier: "AuditSegmentAssociation" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          reportType: S.String,
+          tscs: __S(192, __c6, 0),
+        }),
+      ).annotate({ identifier: "AuditSoc2Deliverable" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          displayName: S.String,
+          framework: __S(225, __c7, 1),
+          businessUnit: S.NullOr(__S(226, __c7, 2)),
+          system: S.NullOr(__S(226, __c7, 2)),
+          soc2Deliverable: S.NullOr(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "AuditSegment" });
     case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          customerOrganizationName: S.String,
+          customerDisplayName: S.NullOr(S.String),
+          customerOrganizationId: S.String,
+          auditStartDate: S.String,
+          auditEndDate: S.String,
+          earlyAccessStartsAt: S.NullOr(S.String),
+          framework: S.String,
+          displayName: S.String,
+          allowAuditorEmails: __S(32, __c1, 0),
+          allowAllAuditors: S.Boolean,
+          deletionDate: S.NullOr(S.String),
+          creationDate: S.String,
+          modificationDate: S.NullOr(S.String),
+          completionDate: S.NullOr(S.String),
+          auditFocus: S.String,
+          irlGenerationStatus: S.NullOr(S.String),
+          auditorRequestListMetadata: S.optional(__S(224, __c7, 0)),
+          segments: __S(229, __c7, 5),
+        }),
+      ).annotate({ identifier: "Audit" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          auditorEmail: S.String,
+          reason: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/audits/{auditId}/information-requests/{requestId}/flag-evidence",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FlagInformationRequestEvidenceRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}", code: 200 })),
+      ).annotate({ identifier: "GetAuditRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          auditEvidenceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/audits/{auditId}/evidence/{auditEvidenceId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetAuditEvidenceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          sectionNames: __S(32, __c1, 0),
+        }),
+      ).annotate({ identifier: "EvidenceControl" });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.String,
+          status: S.String,
+          name: S.String,
+          deletionDate: S.NullOr(S.String),
+          creationDate: S.String,
+          statusUpdatedDate: S.String,
+          testStatus: S.NullOr(S.String),
+          evidenceType: S.String,
+          evidenceId: S.String,
+          relatedControls: __S(353, __c11, 1),
+          description: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Evidence" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          auditEvidenceId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/evidence/{auditEvidenceId}/comments/{commentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAuditEvidenceCommentRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/information-requests/{requestId}/comments/{commentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCommentForInformationRequestRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/framework-codes", code: 200 })),
+      ).annotate({ identifier: "GetFrameworkCodesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          framework: S.String,
+          codes: __S(32, __c1, 0),
+        }),
+      ).annotate({
+        identifier: "FrameworkCodesByFramework",
+      });
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          frameworkCodes: __S(32, __c1, 0),
+          codesByFramework: __S(450, __c14, 2),
+        }),
+      ).annotate({ identifier: "FrameworkCodes" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/information-requests/{requestId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInformationRequestRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          evidenceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/information-requests/{requestId}/evidence/{evidenceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInformationRequestEvidenceRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          evidenceType: S.String,
+          visibleToAuditorDate: S.optional(S.NullOr(S.String)),
+          creationDate: S.String,
+          modificationDate: S.String,
+          deletionDate: S.optional(S.NullOr(S.String)),
+          evidence: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "InformationRequestEvidence",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -2907,7 +3232,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCommentForAuditEvidenceRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2920,7 +3249,604 @@ function __c0(j: number): any {
           authorName: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Comment" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          evidenceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/information-requests/{requestId}/evidence/{evidenceId}/test-snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInformationRequestTestSnapshotEvidenceDetailRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          integrationId: S.String,
+          displayName: S.String,
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotIntegration",
+      });
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          numericValue: S.Number,
+          unit: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotSlaRemediationSettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          settings: S.NullOr(__S(643, __c20, 3)),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotSlaRemediation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.NullOr(S.String),
+          resourceType: S.NullOr(S.String),
+          rawJson: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotRawTestDataRow",
+      });
+    case 6:
+      return S.Array(__S(645, __c20, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          displayName: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotExcludedItem",
+      });
+    case 8:
+      return S.Array(__S(647, __c20, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.String,
+          entities: __S(648, __c20, 8),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotExcludedItemGroup",
+      });
+    case 10:
+      return S.Array(__S(649, __c20, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          frameworkId: S.String,
+          frameworkName: S.String,
+          groupedByReason: __S(650, __c20, 10),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotFrameworkExclusion",
+      });
+    case 12:
+      return S.Array(__S(651, __c20, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          testLevel: __S(650, __c20, 10),
+          frameworkLevel: __S(652, __c20, 12),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotOutOfScopeResources",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          resourceType: S.String,
+          resourceTypeDisplayName: S.String,
+          requestMethod: S.String,
+          url: S.String,
+          responseCode: S.Number,
+          timestamp: S.String,
+          dataTooLarge: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotApiRequest",
+      });
+    case 15:
+      return S.Array(__S(654, __c20, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          testId: S.String,
+          testName: S.String,
+          description: S.String,
+          evaluationCriteria: S.NullOr(S.String),
+          integrations: __S(642, __c20, 2),
+          slaRemediation: S.NullOr(__S(644, __c20, 4)),
+          rawTestData: __S(646, __c20, 6),
+          outOfScopeResources: S.optional(__S(653, __c20, 13)),
+          apiRequests: S.optional(__S(655, __c20, 15)),
+        }),
+      ).annotate({
+        identifier: "VantaTestSnapshotEvidenceDetail",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/audits/{auditId}/organization/information", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationInformationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "AuditOrganizationCompanyLogo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          displayName: S.String,
+          legalName: S.optional(S.NullOr(S.String)),
+          incorporation: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          mailingAddress: S.optional(S.NullOr(S.String)),
+          telephone: S.optional(S.NullOr(S.String)),
+          companyLogo: S.optional(S.NullOr(__S(673, __c21, 1))),
+        }),
+      ).annotate({
+        identifier: "AuditOrganizationInformation",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/audits/{auditId}/organization/notifications", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationNotificationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          address: S.String,
+          cadence: S.NullOr(S.String),
+          unsubSettingsKey: S.String,
+          toggleIsSubscribed: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AuditOrganizationNotificationSubscription",
+      });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          preferredTimeZone: S.optional(S.NullOr(S.String)),
+          employeeDigestFrequency: S.optional(S.NullOr(S.String)),
+          subscribedChannelTypes: S.optional(__S(32, __c1, 0)),
+          externalNotifications: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({
+        identifier: "AuditOrganizationNotifications",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/personnel/account-access/services",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountAccessServicesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          credentialDisplayName: S.String,
+          service: S.String,
+          subAccountId: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AccountAccessService" });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(738, __c23, 2),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAccountAccessServiceResults",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(739, __c23, 3),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAccountAccessService",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endCursor: S.NullOr(S.String),
+          hasNextPage: S.Boolean,
+          hasPreviousPage: S.Boolean,
+          startCursor: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "PageInfo" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+          changedSinceDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/comments", code: 200 })),
+      ).annotate({ identifier: "ListAuditCommentsRequest" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(801, __c25, 1),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseCommentResults",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(802, __c25, 2),
+        }),
+      ).annotate({ identifier: "PaginatedResponseComment" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+          externalIdMatchesAny: S.optional(__S(32, __c1, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/controls", code: 200 })),
+      ).annotate({ identifier: "ListAuditControlsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "SectionPrinciple" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          framework: S.String,
+          principle: S.NullOr(__S(833, __c26, 1)),
+        }),
+      ).annotate({ identifier: "Section" });
+    case 3:
+      return S.Array(__S(834, __c26, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          segmentId: S.String,
+          assessmentState: S.String,
+          justification: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AuditControlAssessment" });
+    case 5:
+      return S.Array(__S(836, __c26, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.NullOr(S.String),
+          name: S.String,
+          description: S.String,
+          source: S.String,
+          domains: __S(32, __c1, 0),
+          owner: S.NullOr(__S(1824, __c57, 0)),
+          role: S.optional(S.NullOr(S.String)),
+          customFields: __S(1826, __c57, 2),
+          creationDate: S.NullOr(S.String),
+          modificationDate: S.NullOr(S.String),
+          framework: S.String,
+          sections: __S(835, __c26, 3),
+          inScopeSegmentIds: __S(32, __c1, 0),
+          assessments: __S(837, __c26, 5),
+        }),
+      ).annotate({ identifier: "AuditorControl" });
+    case 7:
+      return S.Array(__S(838, __c26, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(839, __c26, 7),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAuditorControlResults",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(840, __c26, 8),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAuditorControl",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+          changedSinceDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/evidence", code: 200 })),
+      ).annotate({ identifier: "ListAuditEvidenceRequest" });
+    case 1:
+      return S.Array(__S(354, __c11, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(865, __c27, 1),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseEvidenceResults",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(866, __c27, 2),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseEvidence",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          auditEvidenceId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/audits/{auditId}/evidence/{auditEvidenceId}/urls",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAuditEvidenceUrlsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+          filename: S.String,
+          isDownloadable: S.Boolean,
+          mimeType: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "EvidenceUrl" });
+    case 2:
+      return S.Array(__S(897, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(898, __c28, 2),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseEvidenceUrlResults",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(899, __c28, 3),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseEvidenceUrl",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          snapshotIdMatchesAny: S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          createdAfterDate: S.optional(S.String.pipe(T.Query())),
+          createdBeforeDate: S.optional(S.String.pipe(T.Query())),
+          detectedAfterDate: S.optional(S.String.pipe(T.Query())),
+          detectedBeforeDate: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderDirection: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/issues/items", code: 200 })),
+      ).annotate({ identifier: "ListAuditIssuesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approvedCount: S.Number,
+          totalApprovers: S.Number,
+        }),
+      ).annotate({
+        identifier: "IssueSnapshotItemApprovalProgress",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          readableIssueId: S.String,
+          issueId: S.String,
+          snapshotId: S.String,
+          dueDate: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          approvalProgress: S.optional(S.NullOr(__S(929, __c29, 1))),
+          lastModifiedAt: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          detectedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueSnapshotItem" });
+    case 3:
+      return S.Array(__S(930, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(931, __c29, 3),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseIssueSnapshotItemResults",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(932, __c29, 4),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseIssueSnapshotItem",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageCursor: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderDirection: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/risks/{snapshotId}", code: 200 })),
+      ).annotate({ identifier: "ListAuditRisksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          imageUrl: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AuditRiskOwner" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          riskId: S.NullOr(S.String),
+          riskScenario: S.optional(S.NullOr(S.String)),
+          likelihood: S.optional(S.NullOr(S.Number)),
+          impact: S.optional(S.NullOr(S.Number)),
+          inherentRisk: S.optional(S.NullOr(S.Number)),
+          treatment: S.optional(S.NullOr(S.String)),
+          treatmentStatus: S.optional(S.NullOr(S.String)),
+          residualRisk: S.optional(S.NullOr(S.Number)),
+          reviewStatus: S.optional(S.NullOr(S.String)),
+          owner: S.optional(S.NullOr(__S(961, __c30, 1))),
+          categories: S.optional(__S(32, __c1, 0)),
+          ciaCategories: S.optional(__S(192, __c6, 0)),
+          linkedControlIds: S.optional(__S(32, __c1, 0)),
+          identified: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AuditRisk" });
+    case 3:
+      return S.Array(__S(962, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(963, __c30, 3),
+          pageInfo: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAuditRiskResults",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(964, __c30, 4),
+        }),
+      ).annotate({
+        identifier: "PaginatedResponseAuditRisk",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -2940,7 +3866,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2954,1046 +3880,11 @@ function __c1(j: number): any {
           authorName: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AuditControlComment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          text: S.String,
-          email: S.String,
-          creationDate: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/audits/{auditId}/information-requests/{requestId}/comments",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCommentForInformationRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          text: S.String,
-          creationDate: S.String,
-          modificationDate: S.NullOr(S.String),
-          deletionDate: S.NullOr(S.String),
-          email: S.NullOr(S.String),
-          authorName: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "InformationRequestComment",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          frameworkId: S.Unknown,
-          sectionId: S.String,
-        }),
-      ).annotate({ identifier: "FrameworkSection" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          externalId: S.String,
-          name: S.NullOr(S.String),
-          description: S.String,
-          effectiveDate: S.String,
-          category: S.String,
-          sections: S.optional(S.NullOr(__S(12, __c1, 4))),
-          role: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/audits/{auditId}/controls/custom-controls", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomControlRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          displayName: S.String,
-          emailAddress: S.String,
-        }),
-      ).annotate({ identifier: "Owner" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          value: S.Unknown,
-        }),
-      ).annotate({ identifier: "CustomField" });
   }
 }
-function __c2(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.NullOr(S.String),
-          name: S.String,
-          description: S.String,
-          source: S.String,
-          domains: __S(1, __c0, 1),
-          owner: S.NullOr(__S(14, __c1, 6)),
-          role: S.optional(S.NullOr(S.String)),
-          customFields: __S(16, __c2, 0),
-          creationDate: S.NullOr(S.String),
-          modificationDate: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AuditorApiControl" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          controlIds: __S(1, __c0, 1),
-          title: S.String,
-          description: S.String,
-          cadence: S.String,
-          reminderWindow: S.String,
-          isRestricted: S.Boolean,
-          auditorEmail: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/audits/{auditId}/evidence/custom-evidence-requests",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomEvidenceRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          controlIds: __S(1, __c0, 1),
-          title: S.String,
-          description: S.String,
-          cadence: S.String,
-          reminderWindow: S.String,
-          isRestricted: S.Boolean,
-        }),
-      ).annotate({ identifier: "CustomEvidenceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          uniqueId: S.String,
-          title: S.String,
-          requestType: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          frameworkCodes: __S(1, __c0, 1),
-          cadence: S.optional(S.NullOr(S.String)),
-          dueDate: S.optional(S.NullOr(S.String)),
-          evidenceCaptureDate: S.optional(S.NullOr(S.String)),
-          additionalControlIds: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/audits/{auditId}/information-requests", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateInformationRequestRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          controlId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          email: S.String,
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/audits/{auditId}/controls/{controlId}/comments/{commentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommentForControlRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCommentForControlResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          email: S.String,
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/audits/{auditId}/information-requests/{requestId}/comments/{commentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommentForInformationRequestRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCommentForInformationRequestResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/audits/{auditId}/information-requests/{requestId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInformationRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceAuditId: S.String,
-          displayName: S.String,
-          auditStartDate: S.String,
-          auditEndDate: S.String,
-          earlyAccessStartsAt: S.String,
-          allowAuditorEmails: __S(1, __c0, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/audits/duplicate", code: 200 })),
-      ).annotate({ identifier: "DuplicateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestsSharedWithCustomer: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "AuditAuditorRequestListMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-        }),
-      ).annotate({ identifier: "AuditSegmentFramework" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          displayName: S.String,
-        }),
-      ).annotate({ identifier: "AuditSegmentAssociation" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reportType: S.String,
-          tscs: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "AuditSoc2Deliverable" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          displayName: S.String,
-          framework: __S(28, __c3, 4),
-          businessUnit: S.NullOr(__S(29, __c3, 5)),
-          system: S.NullOr(__S(29, __c3, 5)),
-          soc2Deliverable: S.NullOr(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "AuditSegment" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          customerOrganizationName: S.String,
-          customerDisplayName: S.NullOr(S.String),
-          customerOrganizationId: S.String,
-          auditStartDate: S.String,
-          auditEndDate: S.String,
-          earlyAccessStartsAt: S.NullOr(S.String),
-          framework: S.String,
-          displayName: S.String,
-          allowAuditorEmails: __S(1, __c0, 1),
-          allowAllAuditors: S.Boolean,
-          deletionDate: S.NullOr(S.String),
-          creationDate: S.String,
-          modificationDate: S.NullOr(S.String),
-          completionDate: S.NullOr(S.String),
-          auditFocus: S.String,
-          irlGenerationStatus: S.NullOr(S.String),
-          auditorRequestListMetadata: S.optional(__S(27, __c3, 3)),
-          segments: __S(33, __c4, 1),
-        }),
-      ).annotate({ identifier: "Audit" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          auditorEmail: S.String,
-          reason: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/audits/{auditId}/information-requests/{requestId}/flag-evidence",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FlagInformationRequestEvidenceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}", code: 200 })),
-      ).annotate({ identifier: "GetAuditRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          auditEvidenceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/audits/{auditId}/evidence/{auditEvidenceId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetAuditEvidenceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          sectionNames: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "EvidenceControl" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.String,
-          status: S.String,
-          name: S.String,
-          deletionDate: S.NullOr(S.String),
-          creationDate: S.String,
-          statusUpdatedDate: S.String,
-          testStatus: S.NullOr(S.String),
-          evidenceType: S.String,
-          evidenceId: S.String,
-          relatedControls: __S(39, __c4, 7),
-          description: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Evidence" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          auditEvidenceId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/evidence/{auditEvidenceId}/comments/{commentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAuditEvidenceCommentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/information-requests/{requestId}/comments/{commentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCommentForInformationRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/framework-codes", code: 200 })),
-      ).annotate({ identifier: "GetFrameworkCodesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          framework: S.String,
-          codes: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "FrameworkCodesByFramework",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frameworkCodes: __S(1, __c0, 1),
-          codesByFramework: __S(45, __c5, 5),
-        }),
-      ).annotate({ identifier: "FrameworkCodes" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/information-requests/{requestId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInformationRequestRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          evidenceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/information-requests/{requestId}/evidence/{evidenceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInformationRequestEvidenceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          evidenceType: S.String,
-          visibleToAuditorDate: S.optional(S.NullOr(S.String)),
-          creationDate: S.String,
-          modificationDate: S.String,
-          deletionDate: S.optional(S.NullOr(S.String)),
-          evidence: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "InformationRequestEvidence",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          requestId: S.String.pipe(T.Label()),
-          evidenceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/information-requests/{requestId}/evidence/{evidenceId}/test-snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInformationRequestTestSnapshotEvidenceDetailRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationId: S.String,
-          displayName: S.String,
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotIntegration",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          numericValue: S.Number,
-          unit: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotSlaRemediationSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          settings: S.NullOr(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotSlaRemediation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.NullOr(S.String),
-          resourceType: S.NullOr(S.String),
-          rawJson: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotRawTestDataRow",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          displayName: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotExcludedItem",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.String,
-          entities: __S(58, __c7, 2),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotExcludedItemGroup",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          frameworkId: S.String,
-          frameworkName: S.String,
-          groupedByReason: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotFrameworkExclusion",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          testLevel: __S(60, __c7, 4),
-          frameworkLevel: __S(62, __c7, 6),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotOutOfScopeResources",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          resourceType: S.String,
-          resourceTypeDisplayName: S.String,
-          requestMethod: S.String,
-          url: S.String,
-          responseCode: S.Number,
-          timestamp: S.String,
-          dataTooLarge: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotApiRequest",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          testId: S.String,
-          testName: S.String,
-          description: S.String,
-          evaluationCriteria: S.NullOr(S.String),
-          integrations: __S(52, __c6, 4),
-          slaRemediation: S.NullOr(__S(54, __c6, 6)),
-          rawTestData: __S(56, __c7, 0),
-          outOfScopeResources: S.optional(__S(63, __c7, 7)),
-          apiRequests: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "VantaTestSnapshotEvidenceDetail",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/audits/{auditId}/organization/information", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationInformationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "AuditOrganizationCompanyLogo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          displayName: S.String,
-          legalName: S.optional(S.NullOr(S.String)),
-          incorporation: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          mailingAddress: S.optional(S.NullOr(S.String)),
-          telephone: S.optional(S.NullOr(S.String)),
-          companyLogo: S.optional(S.NullOr(__S(68, __c8, 4))),
-        }),
-      ).annotate({
-        identifier: "AuditOrganizationInformation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/audits/{auditId}/organization/notifications", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationNotificationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          address: S.String,
-          cadence: S.NullOr(S.String),
-          unsubSettingsKey: S.String,
-          toggleIsSubscribed: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AuditOrganizationNotificationSubscription",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          preferredTimeZone: S.optional(S.NullOr(S.String)),
-          employeeDigestFrequency: S.optional(S.NullOr(S.String)),
-          subscribedChannelTypes: S.optional(__S(1, __c0, 1)),
-          externalNotifications: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "AuditOrganizationNotifications",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/personnel/account-access/services",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountAccessServicesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          credentialDisplayName: S.String,
-          service: S.String,
-          subAccountId: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AccountAccessService" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endCursor: S.NullOr(S.String),
-          hasNextPage: S.Boolean,
-          hasPreviousPage: S.Boolean,
-          startCursor: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "PageInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(76, __c9, 4),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAccountAccessServiceResults",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(78, __c9, 6),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAccountAccessService",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-          changedSinceDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/comments", code: 200 })),
-      ).annotate({ identifier: "ListAuditCommentsRequest" });
-    case 1:
-      return S.Array(__S(6, __c0, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(81, __c10, 1),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseCommentResults",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(82, __c10, 2),
-        }),
-      ).annotate({ identifier: "PaginatedResponseComment" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-          externalIdMatchesAny: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/controls", code: 200 })),
-      ).annotate({ identifier: "ListAuditControlsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "SectionPrinciple" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          framework: S.String,
-          principle: S.NullOr(__S(85, __c10, 5)),
-        }),
-      ).annotate({ identifier: "Section" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          segmentId: S.String,
-          assessmentState: S.String,
-          justification: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AuditControlAssessment" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.NullOr(S.String),
-          name: S.String,
-          description: S.String,
-          source: S.String,
-          domains: __S(1, __c0, 1),
-          owner: S.NullOr(__S(14, __c1, 6)),
-          role: S.optional(S.NullOr(S.String)),
-          customFields: __S(16, __c2, 0),
-          creationDate: S.NullOr(S.String),
-          modificationDate: S.NullOr(S.String),
-          framework: S.String,
-          sections: __S(87, __c10, 7),
-          inScopeSegmentIds: __S(1, __c0, 1),
-          assessments: __S(89, __c11, 1),
-        }),
-      ).annotate({ identifier: "AuditorControl" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(91, __c11, 3),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAuditorControlResults",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(92, __c11, 4),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAuditorControl",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-          changedSinceDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/evidence", code: 200 })),
-      ).annotate({ identifier: "ListAuditEvidenceRequest" });
-    case 7:
-      return S.Array(__S(40, __c5, 0));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(95, __c11, 7),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseEvidenceResults",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(96, __c12, 0),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseEvidence",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          auditEvidenceId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/audits/{auditId}/evidence/{auditEvidenceId}/urls",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAuditEvidenceUrlsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-          filename: S.String,
-          isDownloadable: S.Boolean,
-          mimeType: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "EvidenceUrl" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(100, __c12, 4),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseEvidenceUrlResults",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(101, __c12, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseEvidenceUrl",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          snapshotIdMatchesAny: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          createdAfterDate: S.optional(S.String.pipe(T.Query())),
-          createdBeforeDate: S.optional(S.String.pipe(T.Query())),
-          detectedAfterDate: S.optional(S.String.pipe(T.Query())),
-          detectedBeforeDate: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          orderDirection: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/issues/items", code: 200 })),
-      ).annotate({ identifier: "ListAuditIssuesRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          approvedCount: S.Number,
-          totalApprovers: S.Number,
-        }),
-      ).annotate({
-        identifier: "IssueSnapshotItemApprovalProgress",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          readableIssueId: S.String,
-          issueId: S.String,
-          snapshotId: S.String,
-          dueDate: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          approvalProgress: S.optional(S.NullOr(__S(104, __c13, 0))),
-          lastModifiedAt: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          detectedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueSnapshotItem" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(106, __c13, 2),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseIssueSnapshotItemResults",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(107, __c13, 3),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseIssueSnapshotItem",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          auditId: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageCursor: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          orderDirection: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/risks/{snapshotId}", code: 200 })),
-      ).annotate({ identifier: "ListAuditRisksRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          imageUrl: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AuditRiskOwner" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          riskId: S.NullOr(S.String),
-          riskScenario: S.optional(S.NullOr(S.String)),
-          likelihood: S.optional(S.NullOr(S.Number)),
-          impact: S.optional(S.NullOr(S.Number)),
-          inherentRisk: S.optional(S.NullOr(S.Number)),
-          treatment: S.optional(S.NullOr(S.String)),
-          treatmentStatus: S.optional(S.NullOr(S.String)),
-          residualRisk: S.optional(S.NullOr(S.Number)),
-          reviewStatus: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(110, __c13, 6))),
-          categories: S.optional(__S(1, __c0, 1)),
-          ciaCategories: S.optional(__S(30, __c3, 6)),
-          linkedControlIds: S.optional(__S(1, __c0, 1)),
-          identified: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AuditRisk" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(112, __c14, 0),
-          pageInfo: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAuditRiskResults",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(113, __c14, 1),
-        }),
-      ).annotate({
-        identifier: "PaginatedResponseAuditRisk",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4002,24 +3893,28 @@ function __c14(j: number): any {
           isActiveAudit: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits", code: 200 })),
       ).annotate({ identifier: "ListAuditsRequest" });
-    case 4:
-      return S.Array(__S(34, __c4, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(230, __c7, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(116, __c14, 4),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1057, __c33, 1),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditResults",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(117, __c14, 5),
+          results: __S(1058, __c33, 2),
         }),
       ).annotate({ identifier: "PaginatedResponseAudit" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4030,11 +3925,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAuditSnapshotsRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4043,38 +3934,42 @@ function __c15(j: number): any {
           createdAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueSnapshotMetadata" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
     case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(121, __c15, 1),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1090, __c34, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseIssueSnapshotMetadataResults",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(122, __c15, 2),
+          results: __S(1091, __c34, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseIssueSnapshotMetadata",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          sourcesMatchesAny: S.optional(__S(30, __c3, 6).pipe(T.Query())),
+          sourcesMatchesAny: S.optional(__S(192, __c6, 0).pipe(T.Query())),
           closedAfterDate: S.optional(S.String.pipe(T.Query())),
           closedBeforeDate: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/assets/code-changes", code: 200 })),
       ).annotate({ identifier: "ListCodeChangesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4086,30 +3981,30 @@ function __c15(j: number): any {
           closedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeChange" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(126, __c15, 6),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1122, __c35, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseCodeChangeResults",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(127, __c15, 7),
+          results: __S(1123, __c35, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseCodeChange",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4127,26 +4022,30 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListCommentsForControlRequest",
       });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
     case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(130, __c16, 2),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1153, __c36, 1),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditControlCommentResults",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(131, __c16, 3),
+          results: __S(1154, __c36, 2),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditControlComment",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4164,30 +4063,30 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListCommentsForInformationRequestRequest",
       });
-    case 6:
-      return S.Array(__S(10, __c1, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(134, __c16, 6),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1185, __c37, 1),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestCommentResults",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(135, __c16, 7),
+          results: __S(1186, __c37, 2),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestComment",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4205,7 +4104,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListInformationRequestActivityRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4222,28 +4121,32 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "InformationRequestActivityLog",
       });
+    case 2:
+      return S.Array(__S(1217, __c38, 1));
     case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(139, __c17, 3),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1218, __c38, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestActivityLogResults",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(140, __c17, 4),
+          results: __S(1219, __c38, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestActivityLog",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4251,7 +4154,7 @@ function __c17(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           changedSinceDate: S.optional(S.String.pipe(T.Query())),
-          evidenceTypeMatchesAny: S.optional(__S(142, __c17, 6).pipe(T.Query())),
+          evidenceTypeMatchesAny: S.optional(__S(1248, __c39, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4262,63 +4165,71 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListInformationRequestEvidenceRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(49, __c6, 1));
-    case 1:
+    case 2:
+      return S.Array(__S(544, __c17, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(144, __c18, 0),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1250, __c39, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestEvidenceResults",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(145, __c18, 1),
+          results: __S(1251, __c39, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestEvidence",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           changedSinceDate: S.optional(S.String.pipe(T.Query())),
-          segmentIdsMatchesAny: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          segmentIdsMatchesAny: S.optional(__S(32, __c1, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/audits/{auditId}/information-requests", code: 200 }),
         ),
       ).annotate({
         identifier: "ListInformationRequestsRequest",
       });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c2, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(148, __c18, 4),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1312, __c41, 0),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequestResults",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(149, __c18, 5),
+          results: __S(1313, __c41, 1),
         }),
       ).annotate({
         identifier: "PaginatedResponseInformationRequest",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4337,7 +4248,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4346,8 +4257,8 @@ function __c19(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          tagsMatchesAny: S.optional(__S(30, __c3, 6).pipe(T.Query())),
-          categoriesMatchesAny: S.optional(__S(30, __c3, 6).pipe(T.Query())),
+          tagsMatchesAny: S.optional(__S(192, __c6, 0).pipe(T.Query())),
+          categoriesMatchesAny: S.optional(__S(192, __c6, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/integrations", code: 200 })),
       ).annotate({ identifier: "ListIntegrationsRequest" });
     case 1:
@@ -4355,17 +4266,17 @@ function __c19(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
-          categories: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          categories: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "AuditIntegration" });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(1377, __c43, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(154, __c19, 2),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1378, __c43, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditIntegrationResults",
@@ -4373,12 +4284,56 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(155, __c19, 3),
+          results: __S(1379, __c43, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditIntegration",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          text: S.String,
+          email: S.String,
+          creationDate: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/audits/{auditId}/information-requests/{requestId}/comments",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCommentForInformationRequestRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          text: S.String,
+          creationDate: S.String,
+          modificationDate: S.NullOr(S.String),
+          deletionDate: S.NullOr(S.String),
+          email: S.NullOr(S.String),
+          authorName: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "InformationRequestComment",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4397,100 +4352,100 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListPersonnelAccountAccessRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountName: S.String,
           owner: S.optional(S.NullOr(S.String)),
-          role: S.optional(__S(1, __c0, 1)),
+          role: S.optional(__S(32, __c1, 0)),
           status: S.optional(S.String),
           mfa: S.optional(S.NullOr(S.Boolean)),
           createdDate: S.optional(S.NullOr(S.String)),
           deactivatedDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AccountAccess" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1473, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(159, __c19, 7),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1474, __c46, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseAccountAccessResults",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(160, __c20, 0),
+          results: __S(1475, __c46, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseAccountAccess",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          sourcesMatchesAny: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          sourcesMatchesAny: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderDirection: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/personnel/groups", code: 200 })),
       ).annotate({
         identifier: "ListPersonnelGroupsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "PersonnelGroupTask" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1505, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           members: S.optional(S.Number),
           source: S.optional(S.String),
-          tasks: S.optional(__S(164, __c20, 4)),
+          tasks: S.optional(__S(1506, __c47, 2)),
           tasksLastUpdated: S.optional(S.NullOr(S.String)),
           pointOfContact: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PersonnelGroup" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(1507, __c47, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(166, __c20, 6),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1508, __c47, 4),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponsePersonnelGroupResults",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          results: __S(167, __c20, 7),
+          results: __S(1509, __c47, 5),
         }),
       ).annotate({
         identifier: "PaginatedResponsePersonnelGroup",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4498,14 +4453,14 @@ function __c21(j: number): any {
           pageCursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
-          groupsMatchesAny: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          groupsMatchesAny: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderDirection: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/personnel/people", code: 200 })),
       ).annotate({
         identifier: "ListPersonnelPeopleRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4513,16 +4468,16 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "PersonnelPersonGroupsItem",
       });
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
     case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           mainSource: S.String,
           supplementarySource: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PeopleSourceInfo" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -4533,7 +4488,7 @@ function __c21(j: number): any {
           numTasksDueSoon: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "PeopleTaskStatusInfo" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -4543,7 +4498,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "PeopleSecurityTaskDetails",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4553,42 +4508,42 @@ function __c21(j: number): any {
           employmentStatus: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.NullOr(S.String)),
           endDate: S.optional(S.NullOr(S.String)),
-          groups: S.optional(__S(171, __c21, 3)),
-          source: S.optional(S.NullOr(__S(172, __c21, 4))),
-          taskStatus: S.optional(S.NullOr(__S(173, __c21, 5))),
+          groups: S.optional(__S(1538, __c48, 2)),
+          source: S.optional(S.NullOr(__S(1539, __c48, 3))),
+          taskStatus: S.optional(S.NullOr(__S(1540, __c48, 4))),
           lastReminded: S.optional(S.NullOr(S.String)),
-          policies: S.optional(S.NullOr(__S(174, __c21, 6))),
-          trainings: S.optional(S.NullOr(__S(174, __c21, 6))),
-          backgroundChecks: S.optional(S.NullOr(__S(174, __c21, 6))),
-          deviceMonitoring: S.optional(S.NullOr(__S(174, __c21, 6))),
-          customOnboarding: S.optional(S.NullOr(__S(174, __c21, 6))),
-          customOffboarding: S.optional(S.NullOr(__S(174, __c21, 6))),
+          policies: S.optional(S.NullOr(__S(1541, __c48, 5))),
+          trainings: S.optional(S.NullOr(__S(1541, __c48, 5))),
+          backgroundChecks: S.optional(S.NullOr(__S(1541, __c48, 5))),
+          deviceMonitoring: S.optional(S.NullOr(__S(1541, __c48, 5))),
+          customOnboarding: S.optional(S.NullOr(__S(1541, __c48, 5))),
+          customOffboarding: S.optional(S.NullOr(__S(1541, __c48, 5))),
         }),
       ).annotate({ identifier: "PersonnelPerson" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(1542, __c48, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          data: __S(176, __c22, 0),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1543, __c48, 7),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponsePersonnelPersonResults",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          results: __S(177, __c22, 1),
+          results: __S(1544, __c48, 8),
         }),
       ).annotate({
         identifier: "PaginatedResponsePersonnelPerson",
       });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4596,35 +4551,35 @@ function __c22(j: number): any {
           pageCursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/risks/snapshots", code: 200 })),
       ).annotate({ identifier: "ListRiskSnapshotsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
         }),
       ).annotate({ identifier: "RiskSnapshot" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(181, __c22, 5),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1570, __c49, 2),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseRiskSnapshotResults",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(182, __c22, 6),
+          results: __S(1571, __c49, 3),
         }),
       ).annotate({
         identifier: "PaginatedResponseRiskSnapshot",
       });
   }
 }
-function __c23(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4640,20 +4595,24 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListShareInformationRequestRequest",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageCursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          vendorStatusesMatchesAny: S.optional(__S(30, __c3, 6).pipe(T.Query())),
-          inherentRiskMatchesAny: S.optional(__S(30, __c3, 6).pipe(T.Query())),
+          vendorStatusesMatchesAny: S.optional(__S(192, __c6, 0).pipe(T.Query())),
+          inherentRiskMatchesAny: S.optional(__S(192, __c6, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderDirection: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/managed-vendors", code: 200 })),
       ).annotate({ identifier: "ListVendorsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -4662,7 +4621,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "AuditVendorDataAgreements",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4674,29 +4633,33 @@ function __c23(j: number): any {
           nextSecurityReviewDueDate: S.optional(S.NullOr(S.String)),
           vendorCategory: S.optional(S.NullOr(S.String)),
           residualRisk: S.optional(S.NullOr(S.String)),
-          dataAgreements: S.optional(S.NullOr(__S(186, __c23, 2))),
+          dataAgreements: S.optional(S.NullOr(__S(1633, __c51, 1))),
         }),
       ).annotate({ identifier: "AuditVendor" });
+    case 3:
+      return S.Array(__S(1634, __c51, 2));
     case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(188, __c23, 4),
-          pageInfo: __S(77, __c9, 5),
+          data: __S(1635, __c51, 3),
+          pageInfo: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditVendorResults",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(189, __c23, 5),
+          results: __S(1636, __c51, 4),
         }),
       ).annotate({
         identifier: "PaginatedResponseAuditVendor",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditorEmail: S.String,
@@ -4705,16 +4668,12 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAuditEvidenceRequestStatusUpdate",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           auditEvidenceId: S.String.pipe(T.Label()),
-          statusUpdate: S.optional(__S(191, __c23, 7)),
+          statusUpdate: S.optional(__S(1664, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4725,7 +4684,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateAuditEvidenceRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4743,7 +4706,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateCommentForControlRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4761,20 +4728,24 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateCommentForInformationRequestRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
           requestId: S.String.pipe(T.Label()),
-          frameworkCodes: S.optional(__S(1, __c0, 1)),
+          frameworkCodes: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.NullOr(S.String)),
           dueDate: S.optional(S.NullOr(S.String)),
           evidenceCaptureDate: S.optional(S.NullOr(S.String)),
           requestType: S.optional(S.String),
           title: S.optional(S.String),
           cadence: S.optional(S.String),
-          additionalControlIds: S.optional(__S(1, __c0, 1)),
-          linkedControlIds: S.optional(__S(1, __c0, 1)),
+          additionalControlIds: S.optional(__S(32, __c1, 0)),
+          linkedControlIds: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4785,7 +4756,78 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateInformationRequestRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frameworkId: S.Unknown,
+          sectionId: S.String,
+        }),
+      ).annotate({ identifier: "FrameworkSection" });
+    case 1:
+      return S.Array(__S(1792, __c56, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          externalId: S.String,
+          name: S.NullOr(S.String),
+          description: S.String,
+          effectiveDate: S.String,
+          category: S.String,
+          sections: S.optional(S.NullOr(__S(1793, __c56, 1))),
+          role: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/audits/{auditId}/controls/custom-controls", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomControlRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.NullOr(S.String),
+          name: S.String,
+          description: S.String,
+          source: S.String,
+          domains: __S(32, __c1, 0),
+          owner: S.NullOr(__S(1824, __c57, 0)),
+          role: S.optional(S.NullOr(S.String)),
+          customFields: __S(1826, __c57, 2),
+          creationDate: S.NullOr(S.String),
+          modificationDate: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AuditorApiControl" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          displayName: S.String,
+          emailAddress: S.String,
+        }),
+      ).annotate({ identifier: "Owner" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          value: S.Unknown,
+        }),
+      ).annotate({ identifier: "CustomField" });
+    case 2:
+      return S.Array(__S(1825, __c57, 1));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditId: S.String.pipe(T.Label()),
@@ -4804,7 +4846,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpsertAssessmentForControlRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           controlId: S.String,
@@ -4815,7 +4857,120 @@ function __c24(j: number): any {
       ).annotate({ identifier: "AuditorControlAssessment" });
   }
 }
-
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          controlIds: __S(32, __c1, 0),
+          title: S.String,
+          description: S.String,
+          cadence: S.String,
+          reminderWindow: S.String,
+          isRestricted: S.Boolean,
+          auditorEmail: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/audits/{auditId}/evidence/custom-evidence-requests",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomEvidenceRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          controlIds: __S(32, __c1, 0),
+          title: S.String,
+          description: S.String,
+          cadence: S.String,
+          reminderWindow: S.String,
+          isRestricted: S.Boolean,
+        }),
+      ).annotate({ identifier: "CustomEvidenceRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          uniqueId: S.String,
+          title: S.String,
+          requestType: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          frameworkCodes: __S(32, __c1, 0),
+          cadence: S.optional(S.NullOr(S.String)),
+          dueDate: S.optional(S.NullOr(S.String)),
+          evidenceCaptureDate: S.optional(S.NullOr(S.String)),
+          additionalControlIds: S.optional(__S(32, __c1, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/audits/{auditId}/information-requests", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateInformationRequestRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          controlId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          email: S.String,
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/audits/{auditId}/controls/{controlId}/comments/{commentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommentForControlRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCommentForControlResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auditId: S.String.pipe(T.Label()),
+          requestId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          email: S.String,
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/audits/{auditId}/information-requests/{requestId}/comments/{commentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommentForInformationRequestRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCommentForInformationRequestResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

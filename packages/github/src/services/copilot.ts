@@ -830,8 +830,8 @@ export const addCopilotSeatsForTeams: API.OperationMethod<
   AddCopilotSeatsForTeamsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddCopilotSeatsForTeamsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddCopilotSeatsForTeamsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<AddCopilotSeatsForTeamsRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<AddCopilotSeatsForTeamsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const addCopilotSeatsForUsers: API.OperationMethod<
   AddCopilotSeatsForUsersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddCopilotSeatsForUsersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddCopilotSeatsForUsersResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<AddCopilotSeatsForUsersRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<AddCopilotSeatsForUsersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,16 @@ export const addOrganizationsToEnterpriseCodingAgentPolicy: API.OperationMethod<
   AddOrganizationsToEnterpriseCodingAgentPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyResponse>,
+  input: __S(
+    578,
+    __c36,
+    2,
+  ) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequest>,
+  output: __S(
+    592,
+    __c37,
+    0,
+  ) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyResponse>,
   errors: [BadRequest],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -883,8 +891,8 @@ export const cancelCopilotSeatAssignmentForTeams: API.OperationMethod<
   CancelCopilotSeatAssignmentForTeamsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CancelCopilotSeatAssignmentForTeamsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CancelCopilotSeatAssignmentForTeamsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<CancelCopilotSeatAssignmentForTeamsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<CancelCopilotSeatAssignmentForTeamsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -902,8 +910,8 @@ export const cancelCopilotSeatAssignmentForUsers: API.OperationMethod<
   CancelCopilotSeatAssignmentForUsersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelCopilotSeatAssignmentForUsersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CancelCopilotSeatAssignmentForUsersResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<CancelCopilotSeatAssignmentForUsersRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<CancelCopilotSeatAssignmentForUsersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -917,8 +925,8 @@ export const copilotContentExclusionForOrganization: API.OperationMethod<
   CopilotContentExclusionForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CopilotContentExclusionForOrganizationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CopilotContentExclusionForOrganizationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CopilotContentExclusionForOrganizationRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CopilotContentExclusionForOrganizationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -932,8 +940,8 @@ export const copilotEnterpriseOneDayUsageMetrics: API.OperationMethod<
   CopilotEnterpriseOneDayUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CopilotEnterpriseOneDayUsageMetricsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(16, __c1, 0) as any as S.Schema<CopilotEnterpriseOneDayUsageMetricsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -947,8 +955,8 @@ export const copilotEnterpriseReposOneDayReport: API.OperationMethod<
   CopilotEnterpriseReposOneDayReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CopilotEnterpriseReposOneDayReportRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(48, __c3, 0) as any as S.Schema<CopilotEnterpriseReposOneDayReportRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -962,8 +970,8 @@ export const copilotEnterpriseUsageMetrics: API.OperationMethod<
   CopilotEnterpriseUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CopilotEnterpriseUsageMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CopilotUsageMetrics28DayReport>,
+  input: __S(64, __c4, 0) as any as S.Schema<CopilotEnterpriseUsageMetricsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CopilotUsageMetrics28DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -977,8 +985,8 @@ export const copilotEnterpriseUserTeamsOneDayReport: API.OperationMethod<
   CopilotEnterpriseUserTeamsOneDayReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CopilotEnterpriseUserTeamsOneDayReportRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(96, __c6, 0) as any as S.Schema<CopilotEnterpriseUserTeamsOneDayReportRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -992,8 +1000,8 @@ export const copilotOrganizationOneDayUsageMetrics: API.OperationMethod<
   CopilotOrganizationOneDayUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CopilotOrganizationOneDayUsageMetricsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(112, __c7, 0) as any as S.Schema<CopilotOrganizationOneDayUsageMetricsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1015,8 @@ export const copilotOrganizationReposOneDayReport: API.OperationMethod<
   CopilotOrganizationReposOneDayReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CopilotOrganizationReposOneDayReportRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(128, __c8, 0) as any as S.Schema<CopilotOrganizationReposOneDayReportRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1022,8 +1030,8 @@ export const copilotOrganizationUsageMetrics: API.OperationMethod<
   CopilotOrganizationUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CopilotOrganizationUsageMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CopilotUsageMetrics28DayReport>,
+  input: __S(144, __c9, 0) as any as S.Schema<CopilotOrganizationUsageMetricsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CopilotUsageMetrics28DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1037,8 +1045,8 @@ export const copilotOrganizationUsersOneDayUsageMetrics: API.OperationMethod<
   CopilotOrganizationUsersOneDayUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CopilotOrganizationUsersOneDayUsageMetricsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(160, __c10, 0) as any as S.Schema<CopilotOrganizationUsersOneDayUsageMetricsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1052,8 +1060,8 @@ export const copilotOrganizationUsersUsageMetrics: API.OperationMethod<
   CopilotOrganizationUsersUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CopilotOrganizationUsersUsageMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CopilotUsageMetrics28DayReport>,
+  input: __S(176, __c11, 0) as any as S.Schema<CopilotOrganizationUsersUsageMetricsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CopilotUsageMetrics28DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1075,8 @@ export const copilotOrganizationUserTeamsOneDayReport: API.OperationMethod<
   CopilotOrganizationUserTeamsOneDayReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CopilotOrganizationUserTeamsOneDayReportRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(192, __c12, 0) as any as S.Schema<CopilotOrganizationUserTeamsOneDayReportRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1090,8 @@ export const copilotUsersOneDayUsageMetrics: API.OperationMethod<
   CopilotUsersOneDayUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CopilotUsersOneDayUsageMetricsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
+  input: __S(208, __c13, 0) as any as S.Schema<CopilotUsersOneDayUsageMetricsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CopilotUsageMetrics1DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1105,8 @@ export const copilotUsersUsageMetrics: API.OperationMethod<
   CopilotUsersUsageMetricsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CopilotUsersUsageMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CopilotUsageMetrics28DayReport>,
+  input: __S(224, __c14, 0) as any as S.Schema<CopilotUsersUsageMetricsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CopilotUsageMetrics28DayReport>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1117,14 +1125,14 @@ export const disableCopilotCodingAgentForRepositoryInOrganization: API.Operation
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    29,
-    __c3,
-    5,
+    240,
+    __c15,
+    0,
   ) as any as S.Schema<DisableCopilotCodingAgentForRepositoryInOrganizationRequest>,
   output: __S(
-    30,
-    __c3,
-    6,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<DisableCopilotCodingAgentForRepositoryInOrganizationResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
@@ -1145,14 +1153,14 @@ export const enableCopilotCodingAgentForRepositoryInOrganization: API.OperationM
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationRequest>,
   output: __S(
-    30,
-    __c3,
-    6,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
@@ -1167,8 +1175,8 @@ export const getCopilotCloudAgentConfiguration: API.OperationMethod<
   GetCopilotCloudAgentConfigurationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetCopilotCloudAgentConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetCopilotCloudAgentConfigurationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetCopilotCloudAgentConfigurationRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<GetCopilotCloudAgentConfigurationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1193,12 @@ export const getCopilotCodingAgentPermissionsOrganization: API.OperationMethod<
   GetCopilotCodingAgentPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetCopilotCodingAgentPermissionsOrganizationRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetCopilotCodingAgentPermissionsOrganizationResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetCopilotCodingAgentPermissionsOrganizationRequest>,
+  output: __S(
+    321,
+    __c20,
+    1,
+  ) as any as S.Schema<GetCopilotCodingAgentPermissionsOrganizationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1216,8 @@ export const getCopilotOrganizationDetails: API.OperationMethod<
   GetCopilotOrganizationDetailsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetCopilotOrganizationDetailsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CopilotOrganizationDetails>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetCopilotOrganizationDetailsRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<CopilotOrganizationDetails>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1235,8 @@ export const getCopilotSeatDetailsForUser: API.OperationMethod<
   GetCopilotSeatDetailsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetCopilotSeatDetailsForUserRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CopilotSeatDetails>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetCopilotSeatDetailsForUserRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<CopilotSeatDetails>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1243,14 +1255,14 @@ export const listCopilotCodingAgentSelectedRepositoriesForOrganization: API.Oper
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    400,
+    __c25,
+    0,
   ) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>,
   output: __S(
-    57,
-    __c7,
-    1,
+    412,
+    __c25,
+    12,
   ) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
@@ -1265,8 +1277,8 @@ export const listCopilotSeats: API.OperationMethod<
   ListCopilotSeatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListCopilotSeatsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListCopilotSeatsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListCopilotSeatsRequest>,
+  output: __S(418, __c26, 2) as any as S.Schema<ListCopilotSeatsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1281,14 +1293,14 @@ export const removeOrganizationsFromEnterpriseCodingAgentPolicy: API.OperationMe
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    434,
+    __c27,
+    2,
   ) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest>,
   output: __S(
-    30,
-    __c3,
-    6,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse>,
   errors: [BadRequest],
   protocol: GithubProtocol,
@@ -1307,8 +1319,12 @@ export const setCopilotCodingAgentPermissionsOrganization: API.OperationMethod<
   SetCopilotCodingAgentPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationRequest>,
+  output: __S(
+    592,
+    __c37,
+    0,
+  ) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1328,14 +1344,14 @@ export const setCopilotCodingAgentSelectedRepositoriesForOrganization: API.Opera
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>,
   output: __S(
-    67,
-    __c8,
-    3,
+    466,
+    __c29,
+    2,
   ) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
@@ -1354,8 +1370,8 @@ export const setCopilotContentExclusionForOrganization: API.OperationMethod<
   SetCopilotContentExclusionForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<SetCopilotContentExclusionForOrganizationResponse>,
+  input: __S(482, __c30, 2) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<SetCopilotContentExclusionForOrganizationResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1369,8 +1385,8 @@ export const setEnterpriseCodingAgentPolicy: API.OperationMethod<
   SetEnterpriseCodingAgentPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<SetEnterpriseCodingAgentPolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<SetEnterpriseCodingAgentPolicyResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<SetEnterpriseCodingAgentPolicyRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<SetEnterpriseCodingAgentPolicyResponse>,
   errors: [BadRequest],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1380,113 +1396,6 @@ export const setEnterpriseCodingAgentPolicy: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          selected_teams: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/orgs/{org}/copilot/billing/selected_teams", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddCopilotSeatsForTeamsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          seats_created: S.Number,
-        }),
-      ).annotate({
-        identifier: "AddCopilotSeatsForTeamsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          selected_usernames: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/orgs/{org}/copilot/billing/selected_users", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddCopilotSeatsForUsersRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          property_name: S.String,
-          values: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enterprise: S.String.pipe(T.Label()),
-          organizations: S.optional(__S(4, __c0, 4)),
-          custom_properties: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/enterprises/{enterprise}/copilot/policies/coding_agent/organizations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          selected_teams: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/copilot/billing/selected_teams",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelCopilotSeatAssignmentForTeamsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          seats_cancelled: S.Number,
-        }),
-      ).annotate({
-        identifier: "CancelCopilotSeatAssignmentForTeamsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          selected_usernames: __S(4, __c0, 4),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/copilot/billing/selected_users",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelCopilotSeatAssignmentForUsersRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1494,13 +1403,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CopilotContentExclusionForOrganizationRequest",
       });
-    case 5:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 6:
-      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Record(S.String, __S(544, __c34, 0));
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "CopilotContentExclusionForOrganizationResponse",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1522,13 +1435,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          download_links: __S(0, __c0, 0),
+          download_links: __S(544, __c34, 0),
           report_day: S.String,
         }),
       ).annotate({
         identifier: "CopilotUsageMetrics1DayReport",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1543,7 +1460,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CopilotEnterpriseReposOneDayReportRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1557,17 +1478,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CopilotEnterpriseUsageMetricsRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          download_links: __S(0, __c0, 0),
+          download_links: __S(544, __c34, 0),
           report_start_day: S.String,
           report_end_day: S.String,
         }),
       ).annotate({
         identifier: "CopilotUsageMetrics28DayReport",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1582,7 +1511,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CopilotEnterpriseUserTeamsOneDayReportRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1597,7 +1530,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationOneDayUsageMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1612,7 +1549,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationReposOneDayReportRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1628,7 +1569,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1645,7 +1586,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationUsersOneDayUsageMetricsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1659,7 +1604,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationUsersUsageMetricsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1674,7 +1623,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationUserTeamsOneDayReportRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1689,7 +1642,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CopilotUsersOneDayUsageMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1703,7 +1660,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CopilotUsersUsageMetricsRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1718,11 +1679,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DisableCopilotCodingAgentForRepositoryInOrganizationRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisableCopilotCodingAgentForRepositoryInOrganizationResponse",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1739,7 +1708,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1757,8 +1726,6 @@ function __c4(j: number): any {
         identifier: "GetCopilotCloudAgentConfigurationRequest",
       });
     case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           codeql: S.Boolean,
@@ -1769,22 +1736,32 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCopilotCloudAgentConfigurationResponseEnabledTools",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          mcp_configuration: S.NullOr(__S(33, __c4, 1)),
-          enabled_tools: __S(34, __c4, 2),
+          mcp_configuration: S.NullOr(__S(304, __c19, 0)),
+          enabled_tools: __S(289, __c18, 1),
           require_actions_workflow_approval: S.Boolean,
           is_firewall_enabled: S.Boolean,
           is_firewall_recommended_allowlist_enabled: S.Boolean,
-          custom_allowlist: __S(0, __c0, 0),
+          custom_allowlist: __S(544, __c34, 0),
           is_automations_enabled: S.Boolean,
           require_write_access_for_automation_triggers: S.Boolean,
         }),
       ).annotate({
         identifier: "GetCopilotCloudAgentConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1794,7 +1771,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCopilotCodingAgentPermissionsOrganizationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled_repositories: S.String,
@@ -1803,7 +1780,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCopilotCodingAgentPermissionsOrganizationResponse",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1811,7 +1792,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCopilotOrganizationDetailsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total: S.optional(S.Number),
@@ -1824,14 +1805,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationSeatBreakdown",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          seat_breakdown: __S(39, __c4, 7),
+          seat_breakdown: __S(337, __c21, 1),
           public_code_suggestions: S.String,
           ide_chat: S.optional(S.String),
           platform_chat: S.optional(S.String),
@@ -1842,7 +1819,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CopilotOrganizationDetails",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1853,7 +1834,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetCopilotSeatDetailsForUserRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1880,7 +1865,11 @@ function __c5(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           login: S.String,
@@ -1899,11 +1888,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "NullableOrganizationSimple",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          assignee: S.optional(S.NullOr(__S(42, __c5, 2))),
-          organization: S.optional(S.NullOr(__S(43, __c5, 3))),
+          assignee: S.optional(S.NullOr(__S(368, __c23, 0))),
+          organization: S.optional(S.NullOr(__S(384, __c24, 0))),
           assigning_team: S.optional(S.NullOr(S.Unknown)),
           pending_cancellation_date: S.optional(S.NullOr(S.String)),
           last_activity_at: S.optional(S.NullOr(S.String)),
@@ -1914,7 +1903,11 @@ function __c5(j: number): any {
           plan_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CopilotSeatDetails" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1930,7 +1923,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -1942,7 +1935,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1952,11 +1945,7 @@ function __c5(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1966,7 +1955,7 @@ function __c6(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1974,7 +1963,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1982,7 +1971,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -1992,39 +1981,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(406, __c25, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(52, __c6, 4)),
+          reviewers: S.optional(__S(407, __c25, 7)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(49, __c6, 1)),
-          code_security: S.optional(__S(49, __c6, 1)),
-          dependabot_security_updates: S.optional(__S(49, __c6, 1)),
-          secret_scanning: S.optional(__S(49, __c6, 1)),
-          secret_scanning_push_protection: S.optional(__S(49, __c6, 1)),
-          secret_scanning_non_provider_patterns: S.optional(__S(49, __c6, 1)),
-          secret_scanning_ai_detection: S.optional(__S(49, __c6, 1)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(50, __c6, 2)),
-          secret_scanning_delegated_bypass: S.optional(__S(49, __c6, 1)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(53, __c6, 5)),
+          advanced_security: S.optional(__S(404, __c25, 4)),
+          code_security: S.optional(__S(404, __c25, 4)),
+          dependabot_security_updates: S.optional(__S(404, __c25, 4)),
+          secret_scanning: S.optional(__S(404, __c25, 4)),
+          secret_scanning_push_protection: S.optional(__S(404, __c25, 4)),
+          secret_scanning_non_provider_patterns: S.optional(__S(404, __c25, 4)),
+          secret_scanning_ai_detection: S.optional(__S(404, __c25, 4)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(405, __c25, 5)),
+          secret_scanning_delegated_bypass: S.optional(__S(404, __c25, 4)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(408, __c25, 8)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(42, __c5, 2),
+          owner: __S(368, __c23, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2080,7 +2069,7 @@ function __c6(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(0, __c0, 0)),
+          topics: S.optional(__S(544, __c34, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -2095,39 +2084,39 @@ function __c6(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(46, __c5, 6)),
+          permissions: S.optional(__S(401, __c25, 1)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(47, __c5, 7)),
-          license: S.optional(S.NullOr(__S(48, __c6, 0))),
+          code_of_conduct: S.optional(__S(402, __c25, 2)),
+          license: S.optional(S.NullOr(__S(403, __c25, 3))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(54, __c6, 6))),
-          custom_properties: S.optional(__S(33, __c4, 1)),
+          security_and_analysis: S.optional(S.NullOr(__S(409, __c25, 9))),
+          custom_properties: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(410, __c25, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(56, __c7, 0),
+          repositories: __S(411, __c25, 11),
         }),
       ).annotate({
         identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2135,32 +2124,36 @@ function __c7(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot/billing/seats", code: 200 })),
       ).annotate({ identifier: "ListCopilotSeatsRequest" });
-    case 3:
-      return S.Array(__S(44, __c5, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(385, __c24, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total_seats: S.optional(S.Number),
-          seats: S.optional(__S(59, __c7, 3)),
+          seats: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "ListCopilotSeatsResponse" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           property_name: S.String,
-          values: __S(4, __c0, 4),
+          values: __S(608, __c38, 0),
         }),
       ).annotate({
         identifier: "RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
-          organizations: S.optional(__S(4, __c0, 4)),
-          custom_properties: S.optional(__S(62, __c7, 6)),
+          organizations: S.optional(__S(608, __c38, 0)),
+          custom_properties: S.optional(__S(433, __c27, 1)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2173,7 +2166,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2186,13 +2179,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SetCopilotCodingAgentPermissionsOrganizationRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(65, __c8, 1),
+          selected_repository_ids: __S(464, __c29, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2203,24 +2200,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
-      return S.Record(S.String, __S(68, __c8, 4));
-    case 6:
+    case 1:
+      return S.Record(S.String, __S(480, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          body: __S(69, __c8, 5).pipe(T.HttpBody()),
+          body: __S(481, __c30, 1).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/copilot/content_exclusion", code: 200 })),
       ).annotate({
         identifier: "SetCopilotContentExclusionForOrganizationRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -2230,7 +2231,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2249,7 +2250,149 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          selected_teams: __S(544, __c34, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/orgs/{org}/copilot/billing/selected_teams", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddCopilotSeatsForTeamsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seats_created: S.Number,
+        }),
+      ).annotate({
+        identifier: "AddCopilotSeatsForTeamsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          selected_usernames: __S(544, __c34, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/orgs/{org}/copilot/billing/selected_users", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddCopilotSeatsForUsersRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          property_name: S.String,
+          values: __S(608, __c38, 0),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem",
+      });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enterprise: S.String.pipe(T.Label()),
+          organizations: S.optional(__S(608, __c38, 0)),
+          custom_properties: S.optional(__S(577, __c36, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/enterprises/{enterprise}/copilot/policies/coding_agent/organizations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          selected_teams: __S(544, __c34, 0),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/copilot/billing/selected_teams",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelCopilotSeatAssignmentForTeamsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seats_cancelled: S.Number,
+        }),
+      ).annotate({
+        identifier: "CancelCopilotSeatAssignmentForTeamsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          selected_usernames: __S(608, __c38, 0),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/copilot/billing/selected_users",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelCopilotSeatAssignmentForUsersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

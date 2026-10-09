@@ -53,7 +53,7 @@ export const flashContainerDeregister: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<FlashContainerDeregisterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FlashContainerDeregisterResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<FlashContainerDeregisterResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -66,8 +66,8 @@ export const flashSetTargetSlotsMetrics: API.OperationMethod<
   FlashSetTargetSlotsMetricsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FlashSetTargetSlotsMetricsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<FlashSetTargetSlotsMetricsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -80,8 +80,8 @@ export const listFlashContainer: API.OperationMethod<
   ListFlashContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListFlashContainerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListFlashContainerResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListFlashContainerRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<ListFlashContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -94,8 +94,8 @@ export const registerFlashContainer: API.OperationMethod<
   RegisterFlashContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<RegisterFlashContainerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RegisterFlashContainerResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<RegisterFlashContainerRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<RegisterFlashContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -118,11 +118,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FlashContainerDeregisterRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "FlashContainerDeregisterResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
@@ -137,7 +145,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FlashSetTargetSlotsMetricsRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
@@ -151,7 +163,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListFlashContainerRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -161,17 +173,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListFlashContainerResponseContainer",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(__S(5, __c0, 5)),
+          containers: S.optional(__S(14, __c3, 2)),
         }),
       ).annotate({
         identifier: "ListFlashContainerResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
@@ -189,11 +205,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RegisterFlashContainerRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -203,7 +215,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

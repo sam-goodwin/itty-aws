@@ -218,8 +218,8 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListPlatformsChannelsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListChannelsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListPlatformsChannelsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -235,8 +235,8 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListPlatformsChannelsVersionsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListVersionsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListPlatformsChannelsVersionsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,8 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListReleasesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -293,7 +293,11 @@ function __c0(j: number): any {
           platforms: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ListPlatformsResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -309,25 +313,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPlatformsChannelsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           channelType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(6, __c0, 6)),
+          channels: S.optional(__S(10, __c1, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -355,15 +359,19 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Version" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          versions: S.optional(__S(10, __c1, 2)),
+          versions: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -381,52 +389,47 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListPlatformsChannelsVersionsReleasesRequest",
       });
-    case 5:
+    case 1:
       return S.Array(S.String);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           rolloutName: S.optional(S.String),
-          tag: S.optional(__S(13, __c1, 5)),
+          tag: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "RolloutData" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fraction: S.optional(S.Number),
           pinnable: S.optional(S.Boolean),
-          rolloutData: S.optional(__S(15, __c1, 7)),
+          rolloutData: S.optional(__S(27, __c3, 3)),
           name: S.optional(S.String),
           fractionGroup: S.optional(S.String),
-          serving: S.optional(__S(16, __c2, 0)),
+          serving: S.optional(__S(28, __c3, 4)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "Release" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(29, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          releases: S.optional(__S(18, __c2, 2)),
+          releases: S.optional(__S(30, __c3, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

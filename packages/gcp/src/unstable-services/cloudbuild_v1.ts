@@ -1763,8 +1763,8 @@ export const approveProjectsBuilds: API.OperationMethod<
   ApproveProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ApproveProjectsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ApproveProjectsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const approveProjectsLocationsBuilds: API.OperationMethod<
   ApproveProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1804,11 +1804,11 @@ export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    13,
-    __c1,
-    5,
+    2084,
+    __c65,
+    4,
   ) as any as S.Schema<BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1822,8 +1822,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1837,8 +1837,8 @@ export const cancelProjectsBuilds: API.OperationMethod<
   CancelProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CancelProjectsBuildsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Build>,
+  input: __S(2240, __c70, 0) as any as S.Schema<CancelProjectsBuildsRequest>,
+  output: __S(2406, __c75, 6) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1857,8 +1857,8 @@ export const cancelProjectsLocationsBuilds: API.OperationMethod<
   CancelProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CancelProjectsLocationsBuildsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Build>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CancelProjectsLocationsBuildsRequest>,
+  output: __S(2406, __c75, 6) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1877,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1892,8 @@ export const createProjectsBuilds: API.OperationMethod<
   CreateProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateProjectsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateProjectsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1912,8 @@ export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
   CreateProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1932,12 +1932,8 @@ export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   CreateProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    100,
-    __c12,
-    4,
-  ) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1952,8 @@ export const createProjectsLocationsBuilds: API.OperationMethod<
   CreateProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateProjectsLocationsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateProjectsLocationsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1977,11 +1973,11 @@ export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1996,8 @@ export const createProjectsLocationsTriggers: API.OperationMethod<
   CreateProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateProjectsLocationsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateProjectsLocationsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2020,8 +2016,8 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
   CreateProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2035,8 +2031,8 @@ export const createProjectsTriggers: API.OperationMethod<
   CreateProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<CreateProjectsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateProjectsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2051,8 @@ export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
   DeleteProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2076,11 +2072,11 @@ export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    123,
-    __c15,
-    3,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2100,11 +2096,11 @@ export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
+    480,
     __c15,
-    4,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2123,8 +2119,8 @@ export const deleteProjectsLocationsTriggers: API.OperationMethod<
   DeleteProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2139,8 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2154,8 @@ export const deleteProjectsTriggers: API.OperationMethod<
   DeleteProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteProjectsTriggersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsTriggersRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2169,8 @@ export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
   GetDefaultServiceAccountProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DefaultServiceAccount>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<DefaultServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2184,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2199,8 @@ export const getProjectsBuilds: API.OperationMethod<
   GetProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetProjectsBuildsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Build>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetProjectsBuildsRequest>,
+  output: __S(2406, __c75, 6) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2214,8 @@ export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GitHubEnterpriseConfig>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<GitHubEnterpriseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2233,8 +2229,8 @@ export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   GetProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<BitbucketServerConfig>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<BitbucketServerConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2248,8 +2244,8 @@ export const getProjectsLocationsBuilds: API.OperationMethod<
   GetProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetProjectsLocationsBuildsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Build>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetProjectsLocationsBuildsRequest>,
+  output: __S(2406, __c75, 6) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2263,8 +2259,8 @@ export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GitHubEnterpriseConfig>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<GitHubEnterpriseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2278,8 +2274,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2293,8 +2289,8 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
   GetProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetProjectsLocationsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetProjectsLocationsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2308,8 +2304,8 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<WorkerPool>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<WorkerPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2323,8 +2319,8 @@ export const getProjectsTriggers: API.OperationMethod<
   GetProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetProjectsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetProjectsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2339,8 +2335,8 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListProjectsBuildsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListBuildsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListProjectsBuildsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListBuildsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2355,8 +2351,8 @@ export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2371,8 +2367,8 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
   GcpOpContext,
   ListBitbucketServerConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBitbucketServerConfigsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListBitbucketServerConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2392,11 +2388,11 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
   ListBitbucketServerRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListBitbucketServerRepositoriesResponse>,
+  output: __S(1123, __c35, 3) as any as S.Schema<ListBitbucketServerRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2412,8 +2408,8 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListProjectsLocationsBuildsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListBuildsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListProjectsLocationsBuildsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListBuildsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2428,8 +2424,12 @@ export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
+  input: __S(
+    1344,
+    __c42,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2444,8 +2444,8 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListProjectsLocationsTriggersRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<ListBuildTriggersResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListProjectsLocationsTriggersRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<ListBuildTriggersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2461,8 +2461,8 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkerPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListWorkerPoolsResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<ListWorkerPoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2478,8 +2478,8 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListProjectsTriggersRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<ListBuildTriggersResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListProjectsTriggersRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<ListBuildTriggersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2499,8 @@ export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
   PatchProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2519,8 +2519,12 @@ export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   PatchProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(
+    1536,
+    __c48,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2540,11 +2544,11 @@ export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    1568,
+    __c49,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2563,8 +2567,8 @@ export const patchProjectsLocationsTriggers: API.OperationMethod<
   PatchProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<PatchProjectsLocationsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(1600, __c50, 0) as any as S.Schema<PatchProjectsLocationsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2583,8 +2587,8 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   PatchProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1632, __c51, 0) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2598,8 +2602,8 @@ export const patchProjectsTriggers: API.OperationMethod<
   PatchProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<PatchProjectsTriggersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
+  input: __S(1696, __c53, 0) as any as S.Schema<PatchProjectsTriggersRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2618,8 +2622,8 @@ export const receiveGithubDotComWebhook: API.OperationMethod<
   ReceiveGithubDotComWebhookError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ReceiveGithubDotComWebhookRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ReceiveGithubDotComWebhookRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2638,8 +2642,8 @@ export const regionalWebhookLocations: API.OperationMethod<
   RegionalWebhookLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<RegionalWebhookLocationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  input: __S(1792, __c56, 0) as any as S.Schema<RegionalWebhookLocationsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2659,11 +2663,11 @@ export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    1825,
+    __c57,
+    1,
   ) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2677,8 +2681,8 @@ export const retryProjectsBuilds: API.OperationMethod<
   RetryProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<RetryProjectsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1856, __c58, 0) as any as S.Schema<RetryProjectsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2697,8 +2701,8 @@ export const retryProjectsLocationsBuilds: API.OperationMethod<
   RetryProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<RetryProjectsLocationsBuildsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RetryProjectsLocationsBuildsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2721,8 @@ export const runProjectsLocationsTriggers: API.OperationMethod<
   RunProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<RunProjectsLocationsTriggersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1953, __c61, 1) as any as S.Schema<RunProjectsLocationsTriggersRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2736,8 @@ export const runProjectsTriggers: API.OperationMethod<
   RunProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<RunProjectsTriggersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<RunProjectsTriggersRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2752,8 +2756,8 @@ export const webhookProjectsLocationsTriggers: API.OperationMethod<
   WebhookProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ReceiveTriggerWebhookResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<ReceiveTriggerWebhookResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2772,8 +2776,8 @@ export const webhookProjectsTriggers: API.OperationMethod<
   WebhookProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<WebhookProjectsTriggersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ReceiveTriggerWebhookResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<WebhookProjectsTriggersRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<ReceiveTriggerWebhookResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2787,8 @@ export type WebhookV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpO
 /** ReceiveWebhook is called when the API receives a GitHub webhook. */
 export const webhookV1: API.OperationMethod<WebhookV1Request, Empty, WebhookV1Error, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(181, __c22, 5) as any as S.Schema<WebhookV1Request>,
-    output: __S(14, __c1, 6) as any as S.Schema<Empty>,
+    input: __S(2144, __c67, 0) as any as S.Schema<WebhookV1Request>,
+    output: __S(2208, __c69, 0) as any as S.Schema<Empty>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2796,733 +2800,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          approverAccount: S.optional(S.String),
-          comment: S.optional(S.String),
-          url: S.optional(S.String),
-          decision: S.optional(S.String),
-          approvalTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApprovalResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          approvalResult: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ApproveBuildRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approve",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveProjectsBuildsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(3, __c0, 3)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          error: S.optional(__S(5, __c0, 5)),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approve",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveProjectsLocationsBuildsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.optional(S.String),
-          webhookId: S.optional(S.Number),
-          repoSlug: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BitbucketServerRepositoryId",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.optional(__S(8, __c1, 0)),
-          parent: S.optional(S.String),
-          status: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BitbucketServerConnectedRepository",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bitbucketServerConnectedRepository: S.optional(__S(9, __c1, 1)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateBitbucketServerConnectedRepositoryRequest",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/connectedRepositories:batchCreate",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          projectId: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CancelBuildRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}/builds/{id}:cancel",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsBuildsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-          destPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenericArtifactDependency",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          developerConnect: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitSourceRepository" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fetchTags: S.optional(S.Boolean),
-          depth: S.optional(S.String),
-          recurseSubmodules: S.optional(S.Boolean),
-          revision: S.optional(S.String),
-          repository: S.optional(__S(20, __c2, 4)),
-          destPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitSourceDependency" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          empty: S.optional(S.Boolean),
-          genericArtifact: S.optional(__S(19, __c2, 3)),
-          gitSource: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "Dependency" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeSpan" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Volume" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attestationType: S.optional(S.String),
-          name: S.optional(S.String),
-          attestationContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StepResult" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          waitFor: S.optional(__S(24, __c3, 0)),
-          allowExitCodes: S.optional(__S(25, __c3, 1)),
-          timeout: S.optional(S.String),
-          args: S.optional(__S(24, __c3, 0)),
-          pullTiming: S.optional(__S(26, __c3, 2)),
-          script: S.optional(S.String),
-          status: S.optional(S.String),
-          secretEnv: S.optional(__S(24, __c3, 0)),
-          automapSubstitutions: S.optional(S.Boolean),
-          timing: S.optional(__S(26, __c3, 2)),
-          entrypoint: S.optional(S.String),
-          volumes: S.optional(__S(28, __c3, 4)),
-          allowFailure: S.optional(S.Boolean),
-          env: S.optional(__S(24, __c3, 0)),
-          exitCode: S.optional(S.Number),
-          id: S.optional(S.String),
-          dir: S.optional(S.String),
-          results: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "BuildStep" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.optional(S.String),
-          paths: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "PythonPackage" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(24, __c3, 0)),
-          timing: S.optional(__S(26, __c3, 2)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ArtifactObjects" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.optional(S.String),
-          packagePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NpmPackage" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryProjectId: S.optional(S.String),
-          repositoryLocation: S.optional(S.String),
-          sourcePath: S.optional(S.String),
-          modulePath: S.optional(S.String),
-          moduleVersion: S.optional(S.String),
-          repositoryName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoModule" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          file: S.optional(S.String),
-          tags: S.optional(__S(24, __c3, 0)),
-          registryPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Oci" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deployFolder: S.optional(S.String),
-          version: S.optional(S.String),
-          path: S.optional(S.String),
-          groupId: S.optional(S.String),
-          artifactId: S.optional(S.String),
-          repository: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MavenArtifact" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          folder: S.optional(S.String),
-          registryPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenericArtifact" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pythonPackages: S.optional(__S(34, __c4, 2)),
-          objects: S.optional(__S(35, __c4, 3)),
-          images: S.optional(__S(24, __c3, 0)),
-          npmPackages: S.optional(__S(37, __c4, 5)),
-          goModules: S.optional(__S(39, __c4, 7)),
-          oci: S.optional(__S(41, __c5, 1)),
-          mavenArtifacts: S.optional(__S(43, __c5, 3)),
-          genericArtifacts: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "Artifacts" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          secretEnv: S.optional(__S(18, __c2, 2)),
-          kmsKeyName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Secret" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-          envMap: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "InlineSecret" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          versionName: S.optional(S.String),
-          env: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretManagerSecret" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inline: S.optional(__S(50, __c6, 2)),
-          secretManager: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "Secrets" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          approvalRequired: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApprovalConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          config: S.optional(__S(54, __c6, 6)),
-          result: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BuildApproval" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.optional(S.String),
-          dir: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectedRepository" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          generation: S.optional(S.String),
-          sourceFetcher: S.optional(S.String),
-          bucket: S.optional(S.String),
-          object: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          dir: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitSource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dir: S.optional(S.String),
-          gitRepositoryLink: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeveloperConnectConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(S.String),
-          object: S.optional(S.String),
-          generation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageSourceManifest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          invertRegex: S.optional(S.Boolean),
-          projectId: S.optional(S.String),
-          repoName: S.optional(S.String),
-          substitutions: S.optional(__S(18, __c2, 2)),
-          branchName: S.optional(S.String),
-          tagName: S.optional(S.String),
-          dir: S.optional(S.String),
-          commitSha: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepoSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          connectedRepository: S.optional(__S(56, __c7, 0)),
-          storageSource: S.optional(__S(57, __c7, 1)),
-          gitSource: S.optional(__S(58, __c7, 2)),
-          developerConnectConfig: S.optional(__S(59, __c7, 3)),
-          storageSourceManifest: S.optional(__S(60, __c7, 4)),
-          repoSource: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "Source" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          proxySecretVersionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpConfig" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          http: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "GitConfig" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workerRelease: S.optional(S.String),
-          resolvedWorkerRelease: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PoolOption" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          env: S.optional(__S(24, __c3, 0)),
-          pubsubTopic: S.optional(S.String),
-          requestedVerifyOption: S.optional(S.String),
-          workerPool: S.optional(S.String),
-          volumes: S.optional(__S(28, __c3, 4)),
-          resolvedWorkerRelease: S.optional(S.String),
-          logStreamingOption: S.optional(S.String),
-          dynamicSubstitutions: S.optional(S.Boolean),
-          workerRelease: S.optional(S.String),
-          sourceProvenanceHash: S.optional(__S(65, __c8, 1)),
-          substitutionOption: S.optional(S.String),
-          diskSizeGb: S.optional(S.String),
-          logging: S.optional(S.String),
-          defaultLogsBucketBehavior: S.optional(S.String),
-          enableStructuredLogging: S.optional(S.Boolean),
-          secretEnv: S.optional(__S(24, __c3, 0)),
-          pool: S.optional(__S(66, __c8, 2)),
-          machineType: S.optional(S.String),
-          automapSubstitutions: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BuildOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hash" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fileHash: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "FileHashes" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileHashes: S.optional(__S(70, __c8, 6)),
-          artifactRegistryPackage: S.optional(S.String),
-          pushTiming: S.optional(__S(26, __c3, 2)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadedMavenArtifact" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ociMediaType: S.optional(S.String),
-          pushTiming: S.optional(__S(26, __c3, 2)),
-          name: S.optional(S.String),
-          artifactRegistryPackage: S.optional(S.String),
-          digest: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuiltImage" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "BuildStepResults" });
-    case 4:
-      return S.Record(S.String, __S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          artifactRegistryPackage: S.optional(S.String),
-          pushTiming: S.optional(__S(26, __c3, 2)),
-          fileHashes: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "UploadedNpmPackage" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileHashes: S.optional(__S(70, __c8, 6)),
-          uri: S.optional(S.String),
-          pushTiming: S.optional(__S(26, __c3, 2)),
-          artifactRegistryPackage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadedPythonPackage" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.Record(S.String, __S(70, __c8, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          artifactFingerprint: S.optional(__S(70, __c8, 6)),
-          fileHashes: S.optional(__S(81, __c10, 1)),
-          pushTiming: S.optional(__S(26, __c3, 2)),
-          uri: S.optional(S.String),
-          artifactRegistryPackage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadedGenericArtifact" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          artifactTiming: S.optional(__S(26, __c3, 2)),
-          mavenArtifacts: S.optional(__S(72, __c9, 0)),
-          artifactManifest: S.optional(S.String),
-          buildStepImages: S.optional(__S(24, __c3, 0)),
-          numArtifacts: S.optional(S.String),
-          images: S.optional(__S(74, __c9, 2)),
-          buildStepOutputs: S.optional(__S(24, __c3, 0)),
-          goModules: S.optional(__S(72, __c9, 0)),
-          buildStepResults: S.optional(__S(76, __c9, 4)),
-          npmPackages: S.optional(__S(78, __c9, 6)),
-          pythonPackages: S.optional(__S(80, __c10, 0)),
-          genericArtifacts: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "Results" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          detail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailureInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resolvedConnectedRepository: S.optional(__S(56, __c7, 0)),
-          resolvedStorageSource: S.optional(__S(57, __c7, 1)),
-          resolvedRepoSource: S.optional(__S(61, __c7, 5)),
-          fileHashes: S.optional(__S(81, __c10, 1)),
-          resolvedStorageSourceManifest: S.optional(__S(60, __c7, 4)),
-          resolvedGitSource: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "SourceProvenance" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          priority: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Warning" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.Record(S.String, __S(26, __c3, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          substitutions: S.optional(__S(18, __c2, 2)),
-          logsBucket: S.optional(S.String),
-          dependencies: S.optional(__S(23, __c2, 7)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          steps: S.optional(__S(32, __c4, 0)),
-          artifacts: S.optional(__S(46, __c5, 6)),
-          logUrl: S.optional(S.String),
-          startTime: S.optional(S.String),
-          statusDetail: S.optional(S.String),
-          secrets: S.optional(__S(48, __c6, 0)),
-          availableSecrets: S.optional(__S(53, __c6, 5)),
-          serviceAccount: S.optional(S.String),
-          queueTtl: S.optional(S.String),
-          approval: S.optional(__S(55, __c6, 7)),
-          source: S.optional(__S(62, __c7, 6)),
-          gitConfig: S.optional(__S(64, __c8, 0)),
-          timeout: S.optional(S.String),
-          options: S.optional(__S(67, __c8, 3)),
-          projectId: S.optional(S.String),
-          finishTime: S.optional(S.String),
-          images: S.optional(__S(24, __c3, 0)),
-          results: S.optional(__S(84, __c10, 4)),
-          tags: S.optional(__S(24, __c3, 0)),
-          failureInfo: S.optional(__S(85, __c10, 5)),
-          sourceProvenance: S.optional(__S(86, __c10, 6)),
-          buildTriggerId: S.optional(S.String),
-          status: S.optional(S.String),
-          warnings: S.optional(__S(88, __c11, 0)),
-          timing: S.optional(__S(89, __c11, 1)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Build" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsBuildsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2208, __c69, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3533,12 +2812,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2406, __c75, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3549,7 +2832,32 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateProjectsBuildsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gheConfigId: S.optional(S.String.pipe(T.Query())),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/githubEnterpriseConfigs",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsGithubEnterpriseConfigsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           oauthSecretName: S.optional(S.String),
@@ -3562,10 +2870,10 @@ function __c11(j: number): any {
           oauthClientIdVersionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubEnterpriseSecrets" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(__S(94, __c11, 6)),
+          secrets: S.optional(__S(96, __c3, 0)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3578,57 +2886,14 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GitHubEnterpriseConfig" });
   }
 }
-function __c12(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gheConfigId: S.optional(S.String.pipe(T.Query())),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/githubEnterpriseConfigs",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsGithubEnterpriseConfigsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          readAccessTokenVersionName: S.optional(S.String),
-          webhookSecretVersionName: S.optional(S.String),
-          adminAccessTokenVersionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BitbucketServerSecrets" });
-    case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sslCa: S.optional(S.String),
-          createTime: S.optional(S.String),
-          hostUri: S.optional(S.String),
-          peeredNetwork: S.optional(S.String),
-          username: S.optional(S.String),
-          secrets: S.optional(__S(97, __c12, 1)),
-          name: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          webhookKey: S.optional(S.String),
-          connectedRepositories: S.optional(__S(98, __c12, 2)),
-          peeredNetworkIpRange: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BitbucketServerConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
           bitbucketServerConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(162, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3639,12 +2904,46 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readAccessTokenVersionName: S.optional(S.String),
+          webhookSecretVersionName: S.optional(S.String),
+          adminAccessTokenVersionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BitbucketServerSecrets" });
+    case 1:
+      return S.Array(__S(2112, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sslCa: S.optional(S.String),
+          createTime: S.optional(S.String),
+          hostUri: S.optional(S.String),
+          peeredNetwork: S.optional(S.String),
+          username: S.optional(S.String),
+          secrets: S.optional(__S(160, __c5, 0)),
+          name: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          webhookKey: S.optional(S.String),
+          connectedRepositories: S.optional(__S(161, __c5, 1)),
+          peeredNetworkIpRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BitbucketServerConfig" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2406, __c75, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3655,13 +2954,17 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsBuildsRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           gheConfigId: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3672,7 +2975,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsGithubEnterpriseConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/triggers",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsTriggersRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.String),
@@ -3680,11 +3007,7 @@ function __c12(j: number): any {
           tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PushFilter" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commentControl: S.optional(S.String),
@@ -3692,18 +3015,18 @@ function __c13(j: number): any {
           branch: S.optional(S.String),
         }),
       ).annotate({ identifier: "PullRequestFilter" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           gitRepositoryLink: S.optional(S.String),
-          push: S.optional(__S(103, __c12, 7)),
+          push: S.optional(__S(288, __c9, 0)),
           gitRepositoryLinkType: S.optional(S.String),
-          pullRequest: S.optional(__S(104, __c13, 0)),
+          pullRequest: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "DeveloperConnectEventConfig",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -3712,23 +3035,23 @@ function __c13(j: number): any {
           serviceAccountEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "PubsubConfig" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           repositoryType: S.optional(S.String),
-          push: S.optional(__S(103, __c12, 7)),
+          push: S.optional(__S(288, __c9, 0)),
           repository: S.optional(S.String),
-          pullRequest: S.optional(__S(104, __c13, 0)),
+          pullRequest: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({ identifier: "RepositoryEventConfig" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           secret: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookConfig" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.String),
@@ -3739,7 +3062,7 @@ function __c13(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitRepoSource" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           githubEnterpriseConfig: S.optional(S.String),
@@ -3751,35 +3074,31 @@ function __c13(j: number): any {
           revision: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitFileSource" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          pullRequest: S.optional(__S(104, __c13, 0)),
-          bitbucketServerConfig: S.optional(__S(99, __c12, 3)),
+          pullRequest: S.optional(__S(289, __c9, 1)),
+          bitbucketServerConfig: S.optional(__S(162, __c5, 2)),
           projectKey: S.optional(S.String),
           repoSlug: S.optional(S.String),
           bitbucketServerConfigResource: S.optional(S.String),
-          push: S.optional(__S(103, __c12, 7)),
+          push: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "BitbucketServerTriggerConfig",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           enterpriseConfigResourceName: S.optional(S.String),
           installationId: S.optional(S.String),
           owner: S.optional(S.String),
-          pullRequest: S.optional(__S(104, __c13, 0)),
-          push: S.optional(__S(103, __c12, 7)),
+          pullRequest: S.optional(__S(289, __c9, 1)),
+          push: S.optional(__S(288, __c9, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubEventsConfig" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -3787,97 +3106,33 @@ function __c14(j: number): any {
           includeBuildLogs: S.optional(S.String),
           autodetect: S.optional(S.Boolean),
           id: S.optional(S.String),
-          developerConnectEventConfig: S.optional(__S(105, __c13, 1)),
+          developerConnectEventConfig: S.optional(__S(290, __c9, 2)),
           createTime: S.optional(S.String),
-          pubsubConfig: S.optional(__S(106, __c13, 2)),
-          tags: S.optional(__S(24, __c3, 0)),
+          pubsubConfig: S.optional(__S(291, __c9, 3)),
+          tags: S.optional(__S(2341, __c73, 5)),
           filter: S.optional(S.String),
-          repositoryEventConfig: S.optional(__S(107, __c13, 3)),
-          build: S.optional(__S(90, __c11, 2)),
-          approvalConfig: S.optional(__S(54, __c6, 6)),
-          webhookConfig: S.optional(__S(108, __c13, 4)),
+          repositoryEventConfig: S.optional(__S(292, __c9, 4)),
+          build: S.optional(__S(2406, __c75, 6)),
+          approvalConfig: S.optional(__S(2371, __c74, 3)),
+          webhookConfig: S.optional(__S(293, __c9, 5)),
           eventType: S.optional(S.String),
-          sourceToBuild: S.optional(__S(109, __c13, 5)),
-          triggerTemplate: S.optional(__S(61, __c7, 5)),
-          includedFiles: S.optional(__S(24, __c3, 0)),
+          sourceToBuild: S.optional(__S(294, __c9, 6)),
+          triggerTemplate: S.optional(__S(2432, __c76, 0)),
+          includedFiles: S.optional(__S(2341, __c73, 5)),
           name: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           serviceAccount: S.optional(S.String),
-          gitFileSource: S.optional(__S(110, __c13, 6)),
-          ignoredFiles: S.optional(__S(24, __c3, 0)),
+          gitFileSource: S.optional(__S(295, __c9, 7)),
+          ignoredFiles: S.optional(__S(2341, __c73, 5)),
           resourceName: S.optional(S.String),
-          bitbucketServerTriggerConfig: S.optional(__S(111, __c13, 7)),
-          substitutions: S.optional(__S(18, __c2, 2)),
-          github: S.optional(__S(112, __c14, 0)),
+          bitbucketServerTriggerConfig: S.optional(__S(296, __c9, 8)),
+          substitutions: S.optional(__S(2304, __c72, 0)),
+          github: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({ identifier: "BuildTrigger" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/triggers",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsTriggersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          networkAttachment: S.optional(S.String),
-          routeAllTraffic: S.optional(S.Boolean),
-          publicIpAddressDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PrivateServiceConnect" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          machineType: S.optional(S.String),
-          enableNestedVirtualization: S.optional(S.Boolean),
-          workerRelease: S.optional(S.String),
-          diskSizeGb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          egressOption: S.optional(S.String),
-          peeredNetworkIpRange: S.optional(S.String),
-          peeredNetwork: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          privateServiceConnect: S.optional(__S(115, __c14, 3)),
-          workerConfig: S.optional(__S(116, __c14, 4)),
-          networkConfig: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "PrivatePoolV1Config" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          annotations: S.optional(__S(18, __c2, 2)),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          state: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          privatePoolV1Config: S.optional(__S(118, __c14, 6)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerPool" });
   }
 }
-function __c15(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3885,7 +3140,7 @@ function __c15(j: number): any {
           parent: S.String.pipe(T.Label()),
           workerPoolId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(356, __c11, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3896,12 +3151,68 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsWorkerPoolsRequest",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkAttachment: S.optional(S.String),
+          routeAllTraffic: S.optional(S.Boolean),
+          publicIpAddressDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PrivateServiceConnect" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          machineType: S.optional(S.String),
+          enableNestedVirtualization: S.optional(S.Boolean),
+          workerRelease: S.optional(S.String),
+          diskSizeGb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          egressOption: S.optional(S.String),
+          peeredNetworkIpRange: S.optional(S.String),
+          peeredNetwork: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          privateServiceConnect: S.optional(__S(352, __c11, 0)),
+          workerConfig: S.optional(__S(353, __c11, 1)),
+          networkConfig: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({ identifier: "PrivatePoolV1Config" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          annotations: S.optional(__S(2304, __c72, 0)),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          state: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          privatePoolV1Config: S.optional(__S(355, __c11, 3)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerPool" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3912,7 +3223,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateProjectsTriggersRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -3928,7 +3243,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsGithubEnterpriseConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3942,7 +3261,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3958,7 +3281,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGithubEnterpriseConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           triggerId: S.optional(S.String.pipe(T.Query())),
@@ -3974,7 +3301,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTriggersRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -3991,7 +3322,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkerPoolsRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -4009,7 +3344,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4032,7 +3367,11 @@ function __c16(j: number): any {
           serviceAccountEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultServiceAccount" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4044,7 +3383,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4058,7 +3401,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsBuildsRequest" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configId: S.optional(S.String.pipe(T.Query())),
@@ -4074,7 +3421,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsGithubEnterpriseConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4088,7 +3439,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String.pipe(T.Query())),
@@ -4104,7 +3459,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBuildsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -4122,7 +3481,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4138,7 +3497,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4154,7 +3517,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTriggersRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4168,7 +3535,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkerPoolsRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -4184,7 +3555,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProjectsTriggersRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4202,16 +3577,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsBuildsRequest",
       });
-    case 5:
-      return S.Array(__S(90, __c11, 2));
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2406, __c75, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          builds: S.optional(__S(141, __c17, 5)),
+          builds: S.optional(__S(992, __c31, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBuildsResponse" });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -4228,19 +3611,23 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
+      return S.Array(__S(97, __c3, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configs: S.optional(__S(144, __c18, 0)),
+          configs: S.optional(__S(1056, __c33, 0)),
         }),
       ).annotate({
         identifier: "ListGithubEnterpriseConfigsResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4256,18 +3643,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 3:
-      return S.Array(__S(99, __c12, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(162, __c5, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          bitbucketServerConfigs: S.optional(__S(147, __c18, 3)),
+          bitbucketServerConfigs: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({
         identifier: "ListBitbucketServerConfigsResponse",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4283,10 +3674,10 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBitbucketServerConfigsReposRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          repoId: S.optional(__S(8, __c1, 0)),
+          repoId: S.optional(__S(2112, __c66, 0)),
           displayName: S.optional(S.String),
           browseUri: S.optional(S.String),
           description: S.optional(S.String),
@@ -4295,22 +3686,95 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "BitbucketServerRepository",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          bitbucketServerRepositories: S.optional(__S(151, __c18, 7)),
+          bitbucketServerRepositories: S.optional(__S(1122, __c35, 2)),
         }),
       ).annotate({
         identifier: "ListBitbucketServerRepositoriesResponse",
       });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1184, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProjectsBuildsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approvalResult: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "ApproveBuildRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
     case 1:
+      return S.Array(__S(1216, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(1217, __c38, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(1216, __c38, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          error: S.optional(__S(1248, __c39, 0)),
+          metadata: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approverAccount: S.optional(S.String),
+          comment: S.optional(S.String),
+          url: S.optional(S.String),
+          decision: S.optional(S.String),
+          approvalTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApprovalResult" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4328,7 +3792,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBuildsRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -4343,7 +3811,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGithubEnterpriseConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -4360,18 +3832,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTriggersRequest",
       });
-    case 4:
-      return S.Array(__S(113, __c14, 1));
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(298, __c9, 10));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          triggers: S.optional(__S(156, __c19, 4)),
+          triggers: S.optional(__S(1408, __c44, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListBuildTriggersResponse",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4387,20 +3867,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkerPoolsRequest",
       });
-    case 7:
-      return S.Array(__S(119, __c14, 7));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(356, __c11, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workerPools: S.optional(__S(159, __c19, 7)),
+          workerPools: S.optional(__S(1441, __c45, 1)),
         }),
       ).annotate({ identifier: "ListWorkerPoolsResponse" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4417,12 +3897,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsTriggersRequest",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4433,12 +3917,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsGithubEnterpriseConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(162, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4449,12 +3937,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4465,14 +3957,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsGithubEnterpriseConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           triggerId: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4483,13 +3979,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsTriggersRequest",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(356, __c11, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4500,13 +4000,36 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsWorkerPoolsRequest",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1184, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProjectsLocationsBuildsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           triggerId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4519,21 +4042,13 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.String),
-          extensions: S.optional(__S(4, __c0, 4)),
-          contentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpBody" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4544,12 +4059,28 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ReceiveGithubDotComWebhookRequest",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          extensions: S.optional(__S(1217, __c38, 1)),
+          contentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpBody" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4560,19 +4091,23 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RegionalWebhookLocationsRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          connectedRepository: S.optional(__S(8, __c1, 0)),
+          connectedRepository: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({
         identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           config: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4584,20 +4119,16 @@ function __c21(j: number): any {
         identifier:
           "RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RetryBuildRequest" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1888, __c59, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4608,11 +4139,27 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RetryProjectsBuildsRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RetryBuildRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1888, __c59, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4625,13 +4172,13 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           triggerId: S.optional(S.String),
-          source: S.optional(__S(61, __c7, 5)),
+          source: S.optional(__S(2432, __c76, 0)),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunBuildTriggerRequest" });
@@ -4639,7 +4186,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4650,13 +4197,17 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsTriggersRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           triggerId: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2432, __c76, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4667,14 +4218,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RunProjectsTriggersRequest",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           projectId: S.optional(S.String.pipe(T.Query())),
           secret: S.optional(S.String.pipe(T.Query())),
           trigger: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4685,14 +4240,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WebhookProjectsLocationsTriggersRequest",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           secret: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           trigger: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4703,11 +4262,78 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WebhookProjectsTriggersRequest",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.optional(__S(2112, __c66, 0)),
+          parent: S.optional(S.String),
+          status: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "BitbucketServerConnectedRepository",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bitbucketServerConnectedRepository: S.optional(__S(2080, __c65, 0)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateBitbucketServerConnectedRepositoryRequest",
+      });
+    case 2:
+      return S.Array(__S(2081, __c65, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2082, __c65, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2083, __c65, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/connectedRepositories:batchCreate",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.optional(S.String),
+          webhookId: S.optional(S.Number),
+          repoSlug: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BitbucketServerRepositoryId",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4718,7 +4344,604 @@ function __c22(j: number): any {
       ).annotate({ identifier: "WebhookV1Request" });
   }
 }
-
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2208, __c69, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}/builds/{id}:cancel",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsBuildsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          projectId: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CancelBuildRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+          destPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenericArtifactDependency",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          developerConnect: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitSourceRepository" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fetchTags: S.optional(S.Boolean),
+          depth: S.optional(S.String),
+          recurseSubmodules: S.optional(S.Boolean),
+          revision: S.optional(S.String),
+          repository: S.optional(__S(2337, __c73, 1)),
+          destPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitSourceDependency" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          empty: S.optional(S.Boolean),
+          genericArtifact: S.optional(__S(2336, __c73, 0)),
+          gitSource: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "Dependency" });
+    case 4:
+      return S.Array(__S(2339, __c73, 3));
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.Array(S.Number);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeSpan" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Volume" });
+    case 9:
+      return S.Array(__S(2344, __c73, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          attestationType: S.optional(S.String),
+          name: S.optional(S.String),
+          attestationContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StepResult" });
+    case 11:
+      return S.Array(__S(2346, __c73, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          waitFor: S.optional(__S(2341, __c73, 5)),
+          allowExitCodes: S.optional(__S(2342, __c73, 6)),
+          timeout: S.optional(S.String),
+          args: S.optional(__S(2341, __c73, 5)),
+          pullTiming: S.optional(__S(2343, __c73, 7)),
+          script: S.optional(S.String),
+          status: S.optional(S.String),
+          secretEnv: S.optional(__S(2341, __c73, 5)),
+          automapSubstitutions: S.optional(S.Boolean),
+          timing: S.optional(__S(2343, __c73, 7)),
+          entrypoint: S.optional(S.String),
+          volumes: S.optional(__S(2345, __c73, 9)),
+          allowFailure: S.optional(S.Boolean),
+          env: S.optional(__S(2341, __c73, 5)),
+          exitCode: S.optional(S.Number),
+          id: S.optional(S.String),
+          dir: S.optional(S.String),
+          results: S.optional(__S(2347, __c73, 11)),
+        }),
+      ).annotate({ identifier: "BuildStep" });
+    case 13:
+      return S.Array(__S(2348, __c73, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(S.String),
+          paths: S.optional(__S(2341, __c73, 5)),
+        }),
+      ).annotate({ identifier: "PythonPackage" });
+    case 15:
+      return S.Array(__S(2350, __c73, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(2341, __c73, 5)),
+          timing: S.optional(__S(2343, __c73, 7)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ArtifactObjects" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(S.String),
+          packagePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NpmPackage" });
+    case 18:
+      return S.Array(__S(2353, __c73, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryProjectId: S.optional(S.String),
+          repositoryLocation: S.optional(S.String),
+          sourcePath: S.optional(S.String),
+          modulePath: S.optional(S.String),
+          moduleVersion: S.optional(S.String),
+          repositoryName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoModule" });
+    case 20:
+      return S.Array(__S(2355, __c73, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          file: S.optional(S.String),
+          tags: S.optional(__S(2341, __c73, 5)),
+          registryPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Oci" });
+    case 22:
+      return S.Array(__S(2357, __c73, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          deployFolder: S.optional(S.String),
+          version: S.optional(S.String),
+          path: S.optional(S.String),
+          groupId: S.optional(S.String),
+          artifactId: S.optional(S.String),
+          repository: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MavenArtifact" });
+    case 24:
+      return S.Array(__S(2359, __c73, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          folder: S.optional(S.String),
+          registryPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenericArtifact" });
+    case 26:
+      return S.Array(__S(2361, __c73, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          pythonPackages: S.optional(__S(2351, __c73, 15)),
+          objects: S.optional(__S(2352, __c73, 16)),
+          images: S.optional(__S(2341, __c73, 5)),
+          npmPackages: S.optional(__S(2354, __c73, 18)),
+          goModules: S.optional(__S(2356, __c73, 20)),
+          oci: S.optional(__S(2358, __c73, 22)),
+          mavenArtifacts: S.optional(__S(2360, __c73, 24)),
+          genericArtifacts: S.optional(__S(2362, __c73, 26)),
+        }),
+      ).annotate({ identifier: "Artifacts" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          secretEnv: S.optional(__S(2304, __c72, 0)),
+          kmsKeyName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Secret" });
+    case 29:
+      return S.Array(__S(2364, __c73, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyName: S.optional(S.String),
+          envMap: S.optional(__S(2304, __c72, 0)),
+        }),
+      ).annotate({ identifier: "InlineSecret" });
+    case 31:
+      return S.Array(__S(2366, __c73, 30));
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionName: S.optional(S.String),
+          env: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretManagerSecret" });
+    case 1:
+      return S.Array(__S(2368, __c74, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inline: S.optional(__S(2367, __c73, 31)),
+          secretManager: S.optional(__S(2369, __c74, 1)),
+        }),
+      ).annotate({ identifier: "Secrets" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          approvalRequired: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApprovalConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          config: S.optional(__S(2371, __c74, 3)),
+          result: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "BuildApproval" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(S.String),
+          dir: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectedRepository" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          generation: S.optional(S.String),
+          sourceFetcher: S.optional(S.String),
+          bucket: S.optional(S.String),
+          object: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageSource" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          dir: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitSource" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          dir: S.optional(S.String),
+          gitRepositoryLink: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeveloperConnectConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.optional(S.String),
+          object: S.optional(S.String),
+          generation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageSourceManifest" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          connectedRepository: S.optional(__S(2373, __c74, 5)),
+          storageSource: S.optional(__S(2374, __c74, 6)),
+          gitSource: S.optional(__S(2375, __c74, 7)),
+          developerConnectConfig: S.optional(__S(2376, __c74, 8)),
+          storageSourceManifest: S.optional(__S(2377, __c74, 9)),
+          repoSource: S.optional(__S(2432, __c76, 0)),
+        }),
+      ).annotate({ identifier: "Source" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          proxySecretVersionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpConfig" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          http: S.optional(__S(2379, __c74, 11)),
+        }),
+      ).annotate({ identifier: "GitConfig" });
+    case 13:
+      return S.Array(S.String);
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          workerRelease: S.optional(S.String),
+          resolvedWorkerRelease: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PoolOption" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          env: S.optional(__S(2341, __c73, 5)),
+          pubsubTopic: S.optional(S.String),
+          requestedVerifyOption: S.optional(S.String),
+          workerPool: S.optional(S.String),
+          volumes: S.optional(__S(2345, __c73, 9)),
+          resolvedWorkerRelease: S.optional(S.String),
+          logStreamingOption: S.optional(S.String),
+          dynamicSubstitutions: S.optional(S.Boolean),
+          workerRelease: S.optional(S.String),
+          sourceProvenanceHash: S.optional(__S(2381, __c74, 13)),
+          substitutionOption: S.optional(S.String),
+          diskSizeGb: S.optional(S.String),
+          logging: S.optional(S.String),
+          defaultLogsBucketBehavior: S.optional(S.String),
+          enableStructuredLogging: S.optional(S.Boolean),
+          secretEnv: S.optional(__S(2341, __c73, 5)),
+          pool: S.optional(__S(2382, __c74, 14)),
+          machineType: S.optional(S.String),
+          automapSubstitutions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BuildOptions" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hash" });
+    case 17:
+      return S.Array(__S(2384, __c74, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          fileHash: S.optional(__S(2385, __c74, 17)),
+        }),
+      ).annotate({ identifier: "FileHashes" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          fileHashes: S.optional(__S(2386, __c74, 18)),
+          artifactRegistryPackage: S.optional(S.String),
+          pushTiming: S.optional(__S(2343, __c73, 7)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadedMavenArtifact" });
+    case 20:
+      return S.Array(__S(2387, __c74, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          ociMediaType: S.optional(S.String),
+          pushTiming: S.optional(__S(2343, __c73, 7)),
+          name: S.optional(S.String),
+          artifactRegistryPackage: S.optional(S.String),
+          digest: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuiltImage" });
+    case 22:
+      return S.Array(__S(2389, __c74, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(2304, __c72, 0)),
+        }),
+      ).annotate({ identifier: "BuildStepResults" });
+    case 24:
+      return S.Record(S.String, __S(2391, __c74, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          artifactRegistryPackage: S.optional(S.String),
+          pushTiming: S.optional(__S(2343, __c73, 7)),
+          fileHashes: S.optional(__S(2386, __c74, 18)),
+        }),
+      ).annotate({ identifier: "UploadedNpmPackage" });
+    case 26:
+      return S.Array(__S(2393, __c74, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          fileHashes: S.optional(__S(2386, __c74, 18)),
+          uri: S.optional(S.String),
+          pushTiming: S.optional(__S(2343, __c73, 7)),
+          artifactRegistryPackage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadedPythonPackage" });
+    case 28:
+      return S.Array(__S(2395, __c74, 27));
+    case 29:
+      return S.Record(S.String, __S(2386, __c74, 18));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          artifactFingerprint: S.optional(__S(2386, __c74, 18)),
+          fileHashes: S.optional(__S(2397, __c74, 29)),
+          pushTiming: S.optional(__S(2343, __c73, 7)),
+          uri: S.optional(S.String),
+          artifactRegistryPackage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadedGenericArtifact" });
+    case 31:
+      return S.Array(__S(2398, __c74, 30));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          artifactTiming: S.optional(__S(2343, __c73, 7)),
+          mavenArtifacts: S.optional(__S(2388, __c74, 20)),
+          artifactManifest: S.optional(S.String),
+          buildStepImages: S.optional(__S(2341, __c73, 5)),
+          numArtifacts: S.optional(S.String),
+          images: S.optional(__S(2390, __c74, 22)),
+          buildStepOutputs: S.optional(__S(2341, __c73, 5)),
+          goModules: S.optional(__S(2388, __c74, 20)),
+          buildStepResults: S.optional(__S(2392, __c74, 24)),
+          npmPackages: S.optional(__S(2394, __c74, 26)),
+          pythonPackages: S.optional(__S(2396, __c74, 28)),
+          genericArtifacts: S.optional(__S(2399, __c74, 31)),
+        }),
+      ).annotate({ identifier: "Results" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          detail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailureInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resolvedConnectedRepository: S.optional(__S(2373, __c74, 5)),
+          resolvedStorageSource: S.optional(__S(2374, __c74, 6)),
+          resolvedRepoSource: S.optional(__S(2432, __c76, 0)),
+          fileHashes: S.optional(__S(2397, __c74, 29)),
+          resolvedStorageSourceManifest: S.optional(__S(2377, __c74, 9)),
+          resolvedGitSource: S.optional(__S(2375, __c74, 7)),
+        }),
+      ).annotate({ identifier: "SourceProvenance" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          priority: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Warning" });
+    case 4:
+      return S.Array(__S(2403, __c75, 3));
+    case 5:
+      return S.Record(S.String, __S(2343, __c73, 7));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          substitutions: S.optional(__S(2304, __c72, 0)),
+          logsBucket: S.optional(S.String),
+          dependencies: S.optional(__S(2340, __c73, 4)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          steps: S.optional(__S(2349, __c73, 13)),
+          artifacts: S.optional(__S(2363, __c73, 27)),
+          logUrl: S.optional(S.String),
+          startTime: S.optional(S.String),
+          statusDetail: S.optional(S.String),
+          secrets: S.optional(__S(2365, __c73, 29)),
+          availableSecrets: S.optional(__S(2370, __c74, 2)),
+          serviceAccount: S.optional(S.String),
+          queueTtl: S.optional(S.String),
+          approval: S.optional(__S(2372, __c74, 4)),
+          source: S.optional(__S(2378, __c74, 10)),
+          gitConfig: S.optional(__S(2380, __c74, 12)),
+          timeout: S.optional(S.String),
+          options: S.optional(__S(2383, __c74, 15)),
+          projectId: S.optional(S.String),
+          finishTime: S.optional(S.String),
+          images: S.optional(__S(2341, __c73, 5)),
+          results: S.optional(__S(2400, __c75, 0)),
+          tags: S.optional(__S(2341, __c73, 5)),
+          failureInfo: S.optional(__S(2401, __c75, 1)),
+          sourceProvenance: S.optional(__S(2402, __c75, 2)),
+          buildTriggerId: S.optional(S.String),
+          status: S.optional(S.String),
+          warnings: S.optional(__S(2404, __c75, 4)),
+          timing: S.optional(__S(2405, __c75, 5)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Build" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invertRegex: S.optional(S.Boolean),
+          projectId: S.optional(S.String),
+          repoName: S.optional(S.String),
+          substitutions: S.optional(__S(2304, __c72, 0)),
+          branchName: S.optional(S.String),
+          tagName: S.optional(S.String),
+          dir: S.optional(S.String),
+          commitSha: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepoSource" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsBuildsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

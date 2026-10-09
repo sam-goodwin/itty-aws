@@ -409,8 +409,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDeploymentInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateDeploymentOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateDeploymentInput>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateDeploymentOutput>,
   errors: [
     InternalServerException,
     ResourceLimitException,
@@ -437,8 +437,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteDeploymentInput>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDeploymentOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteDeploymentInput>,
+  output: __S(105, __c13, 1) as any as S.Schema<DeleteDeploymentOutput>,
   errors: [
     InternalServerException,
     ResourceLimitException,
@@ -464,8 +464,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDeploymentInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetDeploymentOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetDeploymentInput>,
+  output: __S(114, __c14, 2) as any as S.Schema<GetDeploymentOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -485,8 +485,8 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   GetDeploymentPatternVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetDeploymentPatternVersionInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetDeploymentPatternVersionOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetDeploymentPatternVersionInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetDeploymentPatternVersionOutput>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -507,8 +507,8 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetWorkloadInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetWorkloadOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetWorkloadInput>,
+  output: __S(138, __c17, 2) as any as S.Schema<GetWorkloadOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -529,8 +529,8 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
   GetWorkloadDeploymentPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetWorkloadDeploymentPatternInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetWorkloadDeploymentPatternOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetWorkloadDeploymentPatternInput>,
+  output: __S(166, __c20, 6) as any as S.Schema<GetWorkloadDeploymentPatternOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -552,8 +552,8 @@ export const listDeploymentEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentEventDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListDeploymentEventsInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListDeploymentEventsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListDeploymentEventsInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListDeploymentEventsOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -581,8 +581,8 @@ export const listDeploymentPatternVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentPatternVersionDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListDeploymentPatternVersionsInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListDeploymentPatternVersionsOutput>,
+  input: __S(10, __c1, 2) as any as S.Schema<ListDeploymentPatternVersionsInput>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListDeploymentPatternVersionsOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -606,8 +606,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListDeploymentsInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListDeploymentsOutput>,
+  input: __S(18, __c2, 2) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(20, __c2, 4) as any as S.Schema<ListDeploymentsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -634,8 +634,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -657,8 +657,8 @@ export const listWorkloadDeploymentPatterns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkloadDeploymentPatternDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListWorkloadDeploymentPatternsInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListWorkloadDeploymentPatternsOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListWorkloadDeploymentPatternsInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListWorkloadDeploymentPatternsOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -710,8 +710,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<TagResourceOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(152, __c19, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -732,8 +732,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UntagResourceInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<UntagResourceOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(152, __c19, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -755,8 +755,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateDeploymentInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateDeploymentOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateDeploymentInput>,
+  output: __S(73, __c9, 1) as any as S.Schema<UpdateDeploymentOutput>,
   errors: [
     InternalServerException,
     ResourceLimitException,
@@ -772,217 +772,6 @@ export const updateDeployment: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workloadName: S.String,
-          deploymentPatternName: S.String,
-          name: S.String,
-          specifications: __S(0, __c0, 0),
-          dryRun: S.optional(S.Boolean),
-          tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/createDeployment" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateDeploymentInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ deploymentId: S.optional(S.String) })).annotate({
-        identifier: "CreateDeploymentOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ deploymentId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/deleteDeployment" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteDeploymentInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ status: S.optional(S.String), statusReason: S.optional(S.String) }),
-      ).annotate({ identifier: "DeleteDeploymentOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ deploymentId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/getDeployment" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetDeploymentInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          workloadName: S.optional(S.String),
-          patternName: S.optional(S.String),
-          status: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          specifications: S.optional(__S(0, __c0, 0)),
-          resourceGroup: S.optional(S.String),
-          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(1, __c0, 1)),
-          deploymentArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentData" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ deployment: S.optional(__S(7, __c0, 7)) })).annotate({
-        identifier: "GetDeploymentOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workloadName: S.String,
-          deploymentPatternName: S.String,
-          deploymentPatternVersionName: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/getDeploymentPatternVersion" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetDeploymentPatternVersionInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentPatternVersionName: S.optional(S.String),
-          description: S.optional(S.String),
-          documentationUrl: S.optional(S.String),
-          workloadName: S.optional(S.String),
-          deploymentPatternName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeploymentPatternVersionDataSummary",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ deploymentPatternVersion: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({
-        identifier: "GetDeploymentPatternVersionOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ workloadName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/getWorkload" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetWorkloadInput" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ManagementAccountConstraint",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ servicePrincipal: S.String })).annotate({
-        identifier: "DelegatedAdminConstraint",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ managementAccount: __S(13, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ delegatedAdmin: __S(14, __c1, 6) }),
-      ]);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workloadName: S.optional(S.String),
-          displayName: S.optional(S.String),
-          status: S.optional(S.String),
-          accountConstraints: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          documentationUrl: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkloadData" });
-    case 2:
-      return S.suspend(() => S.Struct({ workload: S.optional(__S(17, __c2, 1)) })).annotate({
-        identifier: "GetWorkloadOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ workloadName: S.String, deploymentPatternName: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/getWorkloadDeploymentPattern" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetWorkloadDeploymentPatternInput",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          comparator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeploymentConditionalField",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          allowedValues: S.optional(__S(20, __c2, 4)),
-          required: S.optional(S.String),
-          conditionals: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "DeploymentSpecificationsField",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workloadName: S.optional(S.String),
-          deploymentPatternName: S.optional(S.String),
-          workloadVersionName: S.optional(S.String),
-          deploymentPatternVersionName: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          status: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-          accountConstraints: S.optional(__S(16, __c2, 0)),
-          specifications: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "WorkloadDeploymentPatternData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ workloadDeploymentPattern: S.optional(__S(25, __c3, 1)) }),
-      ).annotate({
-        identifier: "GetWorkloadDeploymentPatternOutput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String,
@@ -1001,7 +790,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListDeploymentEventsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1009,45 +798,45 @@ function __c3(j: number): any {
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          metadata: S.optional(__S(0, __c0, 0)),
+          metadata: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
         identifier: "DeploymentEventDataSummary",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          deploymentEvents: S.optional(__S(29, __c3, 5)),
+          deploymentEvents: S.optional(__S(2, __c0, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeploymentEventsOutput",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: __S(20, __c2, 4),
+          values: __S(168, __c21, 0),
         }),
       ).annotate({
         identifier: "DeploymentPatternVersionFilter",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           workloadName: S.String,
           deploymentPatternName: S.String,
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          filters: S.optional(__S(32, __c4, 0)),
+          filters: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/listDeploymentPatternVersions" }),
@@ -1061,37 +850,48 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDeploymentPatternVersionsInput",
       });
-    case 2:
-      return S.Array(__S(10, __c1, 2));
     case 3:
+      return S.Array(__S(128, __c16, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          deploymentPatternVersions: S.optional(__S(34, __c4, 2)),
+          deploymentPatternVersions: S.optional(__S(11, __c1, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeploymentPatternVersionsOutput",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(20, __c2, 4)),
-        }),
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(168, __c21, 0)) }),
       ).annotate({ identifier: "DeploymentFilter" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(37, __c4, 5)),
+          filters: S.optional(__S(17, __c2, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listDeployments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDeploymentsInput" });
-    case 7:
+    case 3:
+      return S.Array(__S(24, __c3, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deployments: S.optional(__S(19, __c2, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDeploymentsOutput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1105,18 +905,9 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeploymentDataSummary" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deployments: S.optional(__S(40, __c5, 0)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDeploymentsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1129,11 +920,15 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workloadName: S.String,
@@ -1152,7 +947,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListWorkloadDeploymentPatternsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workloadName: S.optional(S.String),
@@ -1163,17 +958,17 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          accountConstraints: S.optional(__S(16, __c2, 0)),
+          accountConstraints: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({
         identifier: "WorkloadDeploymentPatternDataSummary",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          workloadDeploymentPatterns: S.optional(__S(46, __c5, 6)),
+          workloadDeploymentPatterns: S.optional(__S(42, __c5, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1195,23 +990,24 @@ function __c6(j: number): any {
           workloadName: S.optional(S.String),
           displayName: S.optional(S.String),
           status: S.optional(S.String),
-          accountConstraints: S.optional(__S(16, __c2, 0)),
+          accountConstraints: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({ identifier: "WorkloadDataSummary" });
     case 2:
       return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          workloads: S.optional(__S(50, __c6, 2)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ workloads: S.optional(__S(50, __c6, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkloadsOutput" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1, __c0, 1),
+          tags: __S(96, __c12, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1223,11 +1019,15 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(20, __c2, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(168, __c21, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1239,11 +1039,15 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String,
-          specifications: __S(0, __c0, 0),
+          specifications: __S(88, __c11, 0),
           workloadVersionName: S.optional(S.String),
           deploymentPatternVersionName: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
@@ -1252,13 +1056,259 @@ function __c6(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/updateDeployment" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateDeploymentInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ deployment: S.optional(__S(39, __c4, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ deployment: S.optional(__S(24, __c3, 0)) })).annotate({
         identifier: "UpdateDeploymentOutput",
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workloadName: S.String,
+          deploymentPatternName: S.String,
+          name: S.String,
+          specifications: __S(88, __c11, 0),
+          dryRun: S.optional(S.Boolean),
+          tags: S.optional(__S(96, __c12, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/createDeployment" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDeploymentInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ deploymentId: S.optional(S.String) })).annotate({
+        identifier: "CreateDeploymentOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/deleteDeployment" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(S.String), statusReason: S.optional(S.String) }),
+      ).annotate({ identifier: "DeleteDeploymentOutput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/getDeployment" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDeploymentInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          workloadName: S.optional(S.String),
+          patternName: S.optional(S.String),
+          status: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          specifications: S.optional(__S(88, __c11, 0)),
+          resourceGroup: S.optional(S.String),
+          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(__S(96, __c12, 0)),
+          deploymentArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentData" });
+    case 2:
+      return S.suspend(() => S.Struct({ deployment: S.optional(__S(113, __c14, 1)) })).annotate({
+        identifier: "GetDeploymentOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workloadName: S.String,
+          deploymentPatternName: S.String,
+          deploymentPatternVersionName: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getDeploymentPatternVersion" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDeploymentPatternVersionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentPatternVersion: S.optional(__S(128, __c16, 0)) }),
+      ).annotate({
+        identifier: "GetDeploymentPatternVersionOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentPatternVersionName: S.optional(S.String),
+          description: S.optional(S.String),
+          documentationUrl: S.optional(S.String),
+          workloadName: S.optional(S.String),
+          deploymentPatternName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeploymentPatternVersionDataSummary",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ workloadName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/getWorkload" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetWorkloadInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workloadName: S.optional(S.String),
+          displayName: S.optional(S.String),
+          status: S.optional(S.String),
+          accountConstraints: S.optional(__S(146, __c18, 2)),
+          description: S.optional(S.String),
+          documentationUrl: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkloadData" });
+    case 2:
+      return S.suspend(() => S.Struct({ workload: S.optional(__S(137, __c17, 1)) })).annotate({
+        identifier: "GetWorkloadOutput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ servicePrincipal: S.String })).annotate({
+        identifier: "DelegatedAdminConstraint",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ managementAccount: __S(152, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ delegatedAdmin: __S(144, __c18, 0) }),
+      ]);
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ManagementAccountConstraint",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ workloadName: S.String, deploymentPatternName: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getWorkloadDeploymentPattern" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetWorkloadDeploymentPatternInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          comparator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeploymentConditionalField",
+      });
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          allowedValues: S.optional(__S(168, __c21, 0)),
+          required: S.optional(S.String),
+          conditionals: S.optional(__S(162, __c20, 2)),
+        }),
+      ).annotate({
+        identifier: "DeploymentSpecificationsField",
+      });
+    case 4:
+      return S.Array(__S(163, __c20, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workloadName: S.optional(S.String),
+          deploymentPatternName: S.optional(S.String),
+          workloadVersionName: S.optional(S.String),
+          deploymentPatternVersionName: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          status: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          accountConstraints: S.optional(__S(146, __c18, 2)),
+          specifications: S.optional(__S(164, __c20, 4)),
+        }),
+      ).annotate({
+        identifier: "WorkloadDeploymentPatternData",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ workloadDeploymentPattern: S.optional(__S(165, __c20, 5)) }),
+      ).annotate({
+        identifier: "GetWorkloadDeploymentPatternOutput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

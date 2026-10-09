@@ -1044,8 +1044,8 @@ export const cancelInvoice: API.OperationMethod<
   CancelInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelInvoiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelInvoiceResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CancelInvoiceRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<CancelInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const createInvoice: API.OperationMethod<
   CreateInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateInvoiceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Invoice>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateInvoiceRequest>,
+  output: __S(715, __c22, 11) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1074,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateTemplateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Template>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateTemplateRequest>,
+  output: __S(970, __c30, 10) as any as S.Schema<Template>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1089,8 +1089,8 @@ export const deleteInvoice: API.OperationMethod<
   DeleteInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteInvoiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteInvoiceResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteInvoiceRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1109,8 @@ export const deleteInvoicesPayment: API.OperationMethod<
   DeleteInvoicesPaymentError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteInvoicesPaymentRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteInvoicesPaymentResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteInvoicesPaymentRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteInvoicesPaymentResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1124,8 @@ export const deleteInvoicesRefund: API.OperationMethod<
   DeleteInvoicesRefundError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteInvoicesRefundRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteInvoicesRefundResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteInvoicesRefundRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteInvoicesRefundResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1139,8 +1139,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteTemplateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteTemplateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteTemplateResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1154,8 +1154,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetConnectionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<Connections>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Connections>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1169,8 +1169,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Invoice>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(715, __c22, 11) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1184,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetTemplateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Template>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetTemplateRequest>,
+  output: __S(970, __c30, 10) as any as S.Schema<Template>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1199,8 +1199,8 @@ export const invoiceConnectionDetailsGet: API.OperationMethod<
   InvoiceConnectionDetailsGetError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<InvoiceConnectionDetailsGetRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<InvoiceConnectionDetails>,
+  input: __S(160, __c5, 0) as any as S.Schema<InvoiceConnectionDetailsGetRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<InvoiceConnectionDetails>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1214,8 +1214,8 @@ export const invoicesGenerateQrCode: API.OperationMethod<
   InvoicesGenerateQrCodeError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<InvoicesGenerateQrCodeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InvoicesGenerateQrCodeResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<InvoicesGenerateQrCodeRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<InvoicesGenerateQrCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1234,8 @@ export const invoicesPayments: API.OperationMethod<
   InvoicesPaymentsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<InvoicesPaymentsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PaymentReference>,
+  input: __S(224, __c7, 0) as any as S.Schema<InvoicesPaymentsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<PaymentReference>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const invoicesRefunds: API.OperationMethod<
   InvoicesRefundsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<InvoicesRefundsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<RefundReference>,
+  input: __S(256, __c8, 0) as any as S.Schema<InvoicesRefundsRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<RefundReference>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1274,8 @@ export const invoicesRemind: API.OperationMethod<
   InvoicesRemindError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<InvoicesRemindRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InvoicesRemindResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<InvoicesRemindRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<InvoicesRemindResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1289,8 @@ export const invoicingGenerateNextInvoiceNumber: API.OperationMethod<
   InvoicingGenerateNextInvoiceNumberError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<InvoicingGenerateNextInvoiceNumberRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<InvoiceNumber>,
+  input: __S(320, __c10, 0) as any as S.Schema<InvoicingGenerateNextInvoiceNumberRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<InvoiceNumber>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1304,8 @@ export const listInvoices: API.OperationMethod<
   ListInvoicesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListInvoicesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Invoices>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListInvoicesRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<Invoices>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1319,8 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListTemplatesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Templates>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<Templates>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1334,8 @@ export const searchInvoices: API.OperationMethod<
   SearchInvoicesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<SearchInvoicesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Invoices>,
+  input: __S(452, __c14, 4) as any as S.Schema<SearchInvoicesRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<Invoices>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1354,8 @@ export const sendInvoice: API.OperationMethod<
   SendInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<SendInvoiceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<LinkDescription>,
+  input: __S(480, __c15, 0) as any as S.Schema<SendInvoiceRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<LinkDescription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1374,8 +1374,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UpdateInvoiceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Invoice>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(715, __c22, 11) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1389,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UpdateTemplateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Template>,
+  input: __S(544, __c17, 0) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(970, __c30, 10) as any as S.Schema<Template>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1400,570 +1400,6 @@ export const updateTemplate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_id: S.String.pipe(T.Label()),
-          subject: S.optional(S.String),
-          note: S.optional(S.String),
-          send_to_invoicer: S.optional(S.Boolean),
-          send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/cancel", code: 200 }),
-        ),
-      ).annotate({ identifier: "CancelInvoiceRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelInvoiceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          reference_url: S.optional(S.String),
-          content_type: S.optional(S.String),
-          create_time: S.optional(S.String),
-          size: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileReference" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          term_type: S.optional(S.String),
-          due_date: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InvoicePaymentTerm" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(S.String),
-          currency_code: S.String,
-          note: S.optional(S.String),
-          terms_and_conditions: S.optional(S.String),
-          memo: S.optional(S.String),
-          attachments: S.optional(__S(4, __c0, 4)),
-          invoice_number: S.optional(S.String),
-          invoice_date: S.optional(S.String),
-          payment_term: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "InvoiceDetailInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.optional(S.String),
-          given_name: S.optional(S.String),
-          surname: S.optional(S.String),
-          middle_name: S.optional(S.String),
-          suffix: S.optional(S.String),
-          alternate_full_name: S.optional(S.String),
-          full_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Name" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          street_number: S.optional(S.String),
-          street_name: S.optional(S.String),
-          street_type: S.optional(S.String),
-          delivery_service: S.optional(S.String),
-          building_name: S.optional(S.String),
-          sub_building: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          address_line_1: S.optional(S.String),
-          address_line_2: S.optional(S.String),
-          address_line_3: S.optional(S.String),
-          admin_area_4: S.optional(S.String),
-          admin_area_3: S.optional(S.String),
-          admin_area_2: S.optional(S.String),
-          admin_area_1: S.optional(S.String),
-          postal_code: S.optional(S.String),
-          country_code: S.String,
-          address_details: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AddressPortable" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.String,
-          national_number: S.String,
-          extension_number: S.optional(S.String),
-          phone_type: S.String,
-        }),
-      ).annotate({ identifier: "PhoneDetail" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          business_name: S.optional(S.String),
-          name: S.optional(__S(7, __c0, 7)),
-          address: S.optional(__S(9, __c1, 1)),
-          email_address: S.optional(S.String),
-          phones: S.optional(__S(11, __c1, 3)),
-          website: S.optional(S.String),
-          tax_id: S.optional(S.String),
-          additional_notes: S.optional(S.String),
-          logo_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InvoicerInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          business_name: S.optional(S.String),
-          name: S.optional(__S(7, __c0, 7)),
-          address: S.optional(__S(9, __c1, 1)),
-          email_address: S.optional(S.String),
-          phones: S.optional(__S(11, __c1, 3)),
-          additional_info: S.optional(S.String),
-          language: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          business_name: S.optional(S.String),
-          name: S.optional(__S(7, __c0, 7)),
-          address: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "ContactNameAddress" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billing_info: S.optional(__S(13, __c1, 5)),
-          shipping_info: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "RecipientInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currency_code: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          percent: S.String,
-          amount: S.optional(__S(17, __c2, 1)),
-          tax_note: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Tax" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          percent: S.optional(S.String),
-          amount: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Discount" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          quantity: S.String,
-          unit_amount: __S(17, __c2, 1),
-          tax: S.optional(__S(18, __c2, 2)),
-          item_date: S.optional(S.String),
-          discount: S.optional(__S(19, __c2, 3)),
-          unit_of_measure: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ItemInput" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allow_partial_payment: S.optional(S.Boolean),
-          minimum_amount_due: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "PartialPayment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tax_calculated_after_discount: S.optional(S.Boolean),
-          tax_inclusive: S.optional(S.Boolean),
-          allow_tip: S.optional(S.Boolean),
-          partial_payment: S.optional(__S(22, __c2, 6)),
-          has_conditional_rule: S.optional(S.Boolean),
-          template_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configuration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_discount: S.optional(__S(19, __c2, 3)),
-          item_discount: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AggregatedDiscount" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(17, __c2, 1)),
-          tax: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ShippingCost" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          amount: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CustomAmount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          item_total: S.optional(__S(17, __c2, 1)),
-          discount: S.optional(__S(24, __c3, 0)),
-          tax_total: S.optional(__S(17, __c2, 1)),
-          shipping: S.optional(__S(25, __c3, 1)),
-          custom: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "AmountWithBreakdown" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          currency_code: S.optional(S.String),
-          value: S.optional(S.String),
-          breakdown: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "AmountSummaryDetail" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          detail: __S(6, __c0, 6),
-          invoicer: S.optional(__S(12, __c1, 4)),
-          primary_recipients: S.optional(__S(16, __c2, 0)),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-          items: S.optional(__S(21, __c2, 5)),
-          configuration: S.optional(__S(23, __c2, 7)),
-          amount: S.optional(__S(28, __c3, 4)),
-          payments: S.optional(__S(2, __c0, 2)),
-          refunds: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/invoices", code: 200 })),
-      ).annotate({ identifier: "CreateInvoiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          create_time: S.optional(S.String),
-          created_by: S.optional(S.String),
-          last_update_time: S.optional(S.String),
-          last_updated_by: S.optional(S.String),
-          cancel_time: S.optional(S.String),
-          cancelled_by: S.optional(S.String),
-          first_sent_time: S.optional(S.String),
-          last_sent_time: S.optional(S.String),
-          last_sent_by: S.optional(S.String),
-          created_by_flow: S.optional(S.String),
-          recipient_view_url: S.optional(S.String),
-          invoicer_view_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(S.String),
-          currency_code: S.String,
-          note: S.optional(S.String),
-          terms_and_conditions: S.optional(S.String),
-          memo: S.optional(S.String),
-          attachments: S.optional(__S(4, __c0, 4)),
-          invoice_number: S.optional(S.String),
-          invoice_date: S.optional(S.String),
-          payment_term: S.optional(__S(5, __c0, 5)),
-          metadata: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "InvoiceDetail" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          description: S.optional(S.String),
-          quantity: S.String,
-          unit_amount: __S(17, __c2, 1),
-          tax: S.optional(__S(18, __c2, 2)),
-          item_date: S.optional(S.String),
-          discount: S.optional(__S(19, __c2, 3)),
-          unit_of_measure: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Item" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          payment_id: S.optional(S.String),
-          payment_date: S.optional(S.String),
-          method: S.String,
-          note: S.optional(S.String),
-          amount: S.optional(__S(17, __c2, 1)),
-          shipping_info: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "PaymentDetail" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          paid_amount: S.optional(__S(17, __c2, 1)),
-          transactions: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "Payments" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          refund_id: S.optional(S.String),
-          refund_date: S.optional(S.String),
-          amount: S.optional(__S(17, __c2, 1)),
-          method: S.String,
-        }),
-      ).annotate({ identifier: "RefundDetail" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          refund_amount: S.optional(__S(17, __c2, 1)),
-          transactions: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "Refunds" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkDescription" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          parent_id: S.optional(S.String),
-          status: S.optional(S.String),
-          detail: __S(31, __c3, 7),
-          invoicer: S.optional(__S(12, __c1, 4)),
-          primary_recipients: S.optional(__S(16, __c2, 0)),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-          items: S.optional(__S(33, __c4, 1)),
-          configuration: S.optional(__S(23, __c2, 7)),
-          amount: S.optional(__S(28, __c3, 4)),
-          due_amount: S.optional(__S(17, __c2, 1)),
-          gratuity: S.optional(__S(17, __c2, 1)),
-          payments: S.optional(__S(36, __c4, 4)),
-          refunds: S.optional(__S(39, __c4, 7)),
-          links: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "Invoice" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          term_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PaymentTerm" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(S.String),
-          currency_code: S.String,
-          note: S.optional(S.String),
-          terms_and_conditions: S.optional(S.String),
-          memo: S.optional(S.String),
-          attachments: S.optional(__S(4, __c0, 4)),
-          payment_term: S.optional(__S(43, __c5, 3)),
-          metadata: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "TemplateDetailInput" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tax_calculated_after_discount: S.optional(S.Boolean),
-          tax_inclusive: S.optional(S.Boolean),
-          allow_tip: S.optional(S.Boolean),
-          partial_payment: S.optional(__S(22, __c2, 6)),
-          has_conditional_rule: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TemplateConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          detail: S.optional(__S(44, __c5, 4)),
-          invoicer: S.optional(__S(12, __c1, 4)),
-          primary_recipients: S.optional(__S(16, __c2, 0)),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-          items: S.optional(__S(45, __c5, 5)),
-          configuration: S.optional(__S(46, __c5, 6)),
-          amount: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "TemplateInfoInput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hidden: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TemplateDisplayPreference",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          field_name: S.optional(S.String),
-          display_preference: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "TemplateItemSetting" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          template_item_settings: S.optional(__S(50, __c6, 2)),
-          template_subtotal_settings: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "TemplateSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          default_template: S.optional(S.Boolean),
-          template_info: S.optional(__S(47, __c5, 7)),
-          settings: S.optional(__S(51, __c6, 3)),
-          unit_of_measure: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/templates", code: 200 })),
-      ).annotate({ identifier: "CreateTemplateRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          create_time: S.optional(S.String),
-          created_by: S.optional(S.String),
-          last_update_time: S.optional(S.String),
-          last_updated_by: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TemplateMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(S.String),
-          currency_code: S.String,
-          note: S.optional(S.String),
-          terms_and_conditions: S.optional(S.String),
-          memo: S.optional(S.String),
-          attachments: S.optional(__S(4, __c0, 4)),
-          payment_term: S.optional(__S(43, __c5, 3)),
-          metadata: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "TemplateDetail" });
-    case 7:
-      return S.Array(__S(32, __c4, 0));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          detail: S.optional(__S(54, __c6, 6)),
-          invoicer: S.optional(__S(12, __c1, 4)),
-          primary_recipients: S.optional(__S(16, __c2, 0)),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-          items: S.optional(__S(55, __c6, 7)),
-          configuration: S.optional(__S(46, __c5, 6)),
-          amount: S.optional(__S(28, __c3, 4)),
-          due_amount: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "TemplateInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          default_template: S.optional(S.Boolean),
-          template_info: S.optional(__S(56, __c7, 0)),
-          settings: S.optional(__S(51, __c6, 3)),
-          unit_of_measure: S.optional(S.String),
-          standard_template: S.optional(S.Boolean),
-          links: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "Template" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v2/invoicing/invoices/{invoice_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteInvoiceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_id: S.String.pipe(T.Label()),
-          transaction_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/invoicing/invoices/{invoice_id}/payments/{transaction_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInvoicesPaymentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          invoice_id: S.String.pipe(T.Label()),
-          transaction_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/invoicing/invoices/{invoice_id}/refunds/{transaction_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInvoicesRefundRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           template_id: S.String.pipe(T.Label()),
@@ -1971,7 +1407,11 @@ function __c7(j: number): any {
           T.Http({ method: "DELETE", uri: "/v2/invoicing/templates/{template_id}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteTemplateRequest" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1981,7 +1421,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConnectionRequest" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           platform_name: S.optional(S.String),
@@ -1989,31 +1433,39 @@ function __c7(j: number): any {
           last_sync_status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connection" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
     case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(64, __c8, 0)),
+          connections: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({ identifier: "Connections" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v2/invoicing/invoices/{invoice_id}", code: 200 })),
       ).annotate({ identifier: "GetInvoiceRequest" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           template_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v2/invoicing/templates/{template_id}", code: 200 })),
       ).annotate({ identifier: "GetTemplateRequest" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2027,16 +1479,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InvoiceConnectionDetailsGetRequest",
       });
-    case 5:
-      return S.Array(__S(65, __c8, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(66, __c2, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          connection_status: S.optional(__S(69, __c8, 5)),
+          connection_status: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "InvoiceConnectionDetails" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
@@ -2055,7 +1511,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2065,8 +1521,8 @@ function __c9(j: number): any {
           payment_date: S.optional(S.String),
           method: S.String,
           note: S.optional(S.String),
-          amount: S.optional(__S(17, __c2, 1)),
-          shipping_info: S.optional(__S(14, __c1, 6)),
+          amount: S.optional(__S(768, __c24, 0)),
+          shipping_info: S.optional(__S(803, __c25, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2081,24 +1537,32 @@ function __c9(j: number): any {
           payment_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentReference" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
           refund_date: S.optional(S.String),
-          amount: S.optional(__S(17, __c2, 1)),
+          amount: S.optional(__S(768, __c24, 0)),
           method: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/refunds", code: 200 }),
         ),
       ).annotate({ identifier: "InvoicesRefundsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           refund_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefundReference" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
@@ -2106,12 +1570,16 @@ function __c9(j: number): any {
           note: S.optional(S.String),
           send_to_invoicer: S.optional(S.Boolean),
           send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/remind", code: 200 }),
         ),
       ).annotate({ identifier: "InvoicesRemindRequest" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fetch_id: S.optional(S.Boolean),
@@ -2121,14 +1589,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InvoicingGenerateNextInvoiceNumberRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           invoice_number: S.optional(S.String),
           invoice_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoiceNumber" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -2139,20 +1611,24 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListInvoicesRequest" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(715, __c22, 11));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_pages: S.optional(S.Number),
           total_items: S.optional(S.Number),
-          items: S.optional(__S(80, __c10, 0)),
-          links: S.optional(__S(41, __c5, 1)),
+          items: S.optional(__S(384, __c12, 0)),
+          links: S.optional(__S(881, __c27, 17)),
         }),
       ).annotate({ identifier: "Invoices" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fields: S.optional(S.String.pipe(T.Query())),
@@ -2160,43 +1636,43 @@ function __c10(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/invoicing/templates", code: 200 })),
       ).annotate({ identifier: "ListTemplatesRequest" });
+    case 1:
+      return S.Array(__S(802, __c25, 2));
+    case 2:
+      return S.Array(__S(970, __c30, 10));
     case 3:
-      return S.Array(__S(9, __c1, 1));
-    case 4:
-      return S.Array(__S(57, __c7, 1));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          addresses: S.optional(__S(83, __c10, 3)),
+          addresses: S.optional(__S(417, __c13, 1)),
           emails: S.optional(S.String),
-          phones: S.optional(__S(11, __c1, 3)),
-          templates: S.optional(__S(84, __c10, 4)),
-          links: S.optional(__S(41, __c5, 1)),
+          phones: S.optional(__S(867, __c27, 3)),
+          templates: S.optional(__S(418, __c13, 2)),
+          links: S.optional(__S(881, __c27, 17)),
         }),
       ).annotate({ identifier: "Templates" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lower_amount: __S(17, __c2, 1),
-          upper_amount: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "AmountRange" });
   }
 }
-function __c11(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lower_amount: __S(768, __c24, 0),
+          upper_amount: __S(768, __c24, 0),
+        }),
+      ).annotate({ identifier: "AmountRange" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
         }),
       ).annotate({ identifier: "DateRange" });
-    case 1:
+    case 3:
       return S.Array(S.String);
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -2207,20 +1683,24 @@ function __c11(j: number): any {
           recipient_last_name: S.optional(S.String),
           recipient_business_name: S.optional(S.String),
           invoice_number: S.optional(S.String),
-          status: S.optional(__S(86, __c10, 6)),
+          status: S.optional(__S(448, __c14, 0)),
           reference: S.optional(S.String),
           currency_code: S.optional(S.String),
           memo: S.optional(S.String),
-          total_amount_range: S.optional(__S(87, __c10, 7)),
-          invoice_date_range: S.optional(__S(88, __c11, 0)),
-          due_date_range: S.optional(__S(88, __c11, 0)),
-          payment_date_range: S.optional(__S(88, __c11, 0)),
-          creation_date_range: S.optional(__S(88, __c11, 0)),
+          total_amount_range: S.optional(__S(449, __c14, 1)),
+          invoice_date_range: S.optional(__S(450, __c14, 2)),
+          due_date_range: S.optional(__S(450, __c14, 2)),
+          payment_date_range: S.optional(__S(450, __c14, 2)),
+          creation_date_range: S.optional(__S(450, __c14, 2)),
           archived: S.optional(S.Boolean),
-          fields: S.optional(__S(89, __c11, 1)),
+          fields: S.optional(__S(451, __c14, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/search-invoices", code: 200 })),
       ).annotate({ identifier: "SearchInvoicesRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
@@ -2228,42 +1708,653 @@ function __c11(j: number): any {
           note: S.optional(S.String),
           send_to_invoicer: S.optional(S.Boolean),
           send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/send", code: 200 }),
         ),
       ).annotate({ identifier: "SendInvoiceRequest" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
           send_to_recipient: S.optional(S.Boolean.pipe(T.Query())),
           send_to_invoicer: S.optional(S.Boolean.pipe(T.Query())),
-          detail: __S(6, __c0, 6),
-          invoicer: S.optional(__S(12, __c1, 4)),
-          primary_recipients: S.optional(__S(16, __c2, 0)),
-          additional_recipients: S.optional(__S(0, __c0, 0)),
-          items: S.optional(__S(21, __c2, 5)),
-          configuration: S.optional(__S(23, __c2, 7)),
-          amount: S.optional(__S(28, __c3, 4)),
-          payments: S.optional(__S(2, __c0, 2)),
-          refunds: S.optional(__S(2, __c0, 2)),
+          detail: __S(736, __c23, 0),
+          invoicer: S.optional(__S(868, __c27, 4)),
+          primary_recipients: S.optional(__S(871, __c27, 7)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+          items: S.optional(__S(737, __c23, 1)),
+          configuration: S.optional(__S(705, __c22, 1)),
+          amount: S.optional(__S(879, __c27, 15)),
+          payments: S.optional(__S(640, __c20, 0)),
+          refunds: S.optional(__S(640, __c20, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/v2/invoicing/invoices/{invoice_id}", code: 200 })),
       ).annotate({ identifier: "UpdateInvoiceRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           template_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           default_template: S.optional(S.Boolean),
-          template_info: S.optional(__S(47, __c5, 7)),
-          settings: S.optional(__S(51, __c6, 3)),
+          template_info: S.optional(__S(994, __c31, 2)),
+          settings: S.optional(__S(965, __c30, 5)),
           unit_of_measure: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v2/invoicing/templates/{template_id}", code: 200 })),
       ).annotate({ identifier: "UpdateTemplateRequest" });
   }
 }
-
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_id: S.String.pipe(T.Label()),
+          subject: S.optional(S.String),
+          note: S.optional(S.String),
+          send_to_invoicer: S.optional(S.Boolean),
+          send_to_recipient: S.optional(S.Boolean),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/cancel", code: 200 }),
+        ),
+      ).annotate({ identifier: "CancelInvoiceRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelInvoiceResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          detail: __S(736, __c23, 0),
+          invoicer: S.optional(__S(868, __c27, 4)),
+          primary_recipients: S.optional(__S(871, __c27, 7)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+          items: S.optional(__S(737, __c23, 1)),
+          configuration: S.optional(__S(705, __c22, 1)),
+          amount: S.optional(__S(879, __c27, 15)),
+          payments: S.optional(__S(640, __c20, 0)),
+          refunds: S.optional(__S(640, __c20, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/invoices", code: 200 })),
+      ).annotate({ identifier: "CreateInvoiceRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          term_type: S.optional(S.String),
+          due_date: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InvoicePaymentTerm" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tax_calculated_after_discount: S.optional(S.Boolean),
+          tax_inclusive: S.optional(S.Boolean),
+          allow_tip: S.optional(S.Boolean),
+          partial_payment: S.optional(__S(874, __c27, 10)),
+          has_conditional_rule: S.optional(S.Boolean),
+          template_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configuration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          create_time: S.optional(S.String),
+          created_by: S.optional(S.String),
+          last_update_time: S.optional(S.String),
+          last_updated_by: S.optional(S.String),
+          cancel_time: S.optional(S.String),
+          cancelled_by: S.optional(S.String),
+          first_sent_time: S.optional(S.String),
+          last_sent_time: S.optional(S.String),
+          last_sent_by: S.optional(S.String),
+          created_by_flow: S.optional(S.String),
+          recipient_view_url: S.optional(S.String),
+          invoicer_view_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(S.String),
+          currency_code: S.String,
+          note: S.optional(S.String),
+          terms_and_conditions: S.optional(S.String),
+          memo: S.optional(S.String),
+          attachments: S.optional(__S(865, __c27, 1)),
+          invoice_number: S.optional(S.String),
+          invoice_date: S.optional(S.String),
+          payment_term: S.optional(__S(704, __c22, 0)),
+          metadata: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({ identifier: "InvoiceDetail" });
+    case 4:
+      return S.Array(__S(880, __c27, 16));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          payment_id: S.optional(S.String),
+          payment_date: S.optional(S.String),
+          method: S.String,
+          note: S.optional(S.String),
+          amount: S.optional(__S(768, __c24, 0)),
+          shipping_info: S.optional(__S(803, __c25, 3)),
+        }),
+      ).annotate({ identifier: "PaymentDetail" });
+    case 6:
+      return S.Array(__S(709, __c22, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          paid_amount: S.optional(__S(768, __c24, 0)),
+          transactions: S.optional(__S(710, __c22, 6)),
+        }),
+      ).annotate({ identifier: "Payments" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          refund_id: S.optional(S.String),
+          refund_date: S.optional(S.String),
+          amount: S.optional(__S(768, __c24, 0)),
+          method: S.String,
+        }),
+      ).annotate({ identifier: "RefundDetail" });
+    case 9:
+      return S.Array(__S(712, __c22, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          refund_amount: S.optional(__S(768, __c24, 0)),
+          transactions: S.optional(__S(713, __c22, 9)),
+        }),
+      ).annotate({ identifier: "Refunds" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          parent_id: S.optional(S.String),
+          status: S.optional(S.String),
+          detail: __S(707, __c22, 3),
+          invoicer: S.optional(__S(868, __c27, 4)),
+          primary_recipients: S.optional(__S(871, __c27, 7)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+          items: S.optional(__S(708, __c22, 4)),
+          configuration: S.optional(__S(705, __c22, 1)),
+          amount: S.optional(__S(879, __c27, 15)),
+          due_amount: S.optional(__S(768, __c24, 0)),
+          gratuity: S.optional(__S(768, __c24, 0)),
+          payments: S.optional(__S(711, __c22, 7)),
+          refunds: S.optional(__S(714, __c22, 10)),
+          links: S.optional(__S(881, __c27, 17)),
+        }),
+      ).annotate({ identifier: "Invoice" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(S.String),
+          currency_code: S.String,
+          note: S.optional(S.String),
+          terms_and_conditions: S.optional(S.String),
+          memo: S.optional(S.String),
+          attachments: S.optional(__S(865, __c27, 1)),
+          invoice_number: S.optional(S.String),
+          invoice_date: S.optional(S.String),
+          payment_term: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "InvoiceDetailInput" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency_code: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.optional(S.String),
+          given_name: S.optional(S.String),
+          surname: S.optional(S.String),
+          middle_name: S.optional(S.String),
+          suffix: S.optional(S.String),
+          alternate_full_name: S.optional(S.String),
+          full_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Name" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          street_number: S.optional(S.String),
+          street_name: S.optional(S.String),
+          street_type: S.optional(S.String),
+          delivery_service: S.optional(S.String),
+          building_name: S.optional(S.String),
+          sub_building: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          address_line_1: S.optional(S.String),
+          address_line_2: S.optional(S.String),
+          address_line_3: S.optional(S.String),
+          admin_area_4: S.optional(S.String),
+          admin_area_3: S.optional(S.String),
+          admin_area_2: S.optional(S.String),
+          admin_area_1: S.optional(S.String),
+          postal_code: S.optional(S.String),
+          country_code: S.String,
+          address_details: S.optional(__S(801, __c25, 1)),
+        }),
+      ).annotate({ identifier: "AddressPortable" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          business_name: S.optional(S.String),
+          name: S.optional(__S(800, __c25, 0)),
+          address: S.optional(__S(802, __c25, 2)),
+        }),
+      ).annotate({ identifier: "ContactNameAddress" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkDescription" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          reference_url: S.optional(S.String),
+          content_type: S.optional(S.String),
+          create_time: S.optional(S.String),
+          size: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileReference" });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.String,
+          national_number: S.String,
+          extension_number: S.optional(S.String),
+          phone_type: S.String,
+        }),
+      ).annotate({ identifier: "PhoneDetail" });
+    case 3:
+      return S.Array(__S(866, __c27, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          business_name: S.optional(S.String),
+          name: S.optional(__S(800, __c25, 0)),
+          address: S.optional(__S(802, __c25, 2)),
+          email_address: S.optional(S.String),
+          phones: S.optional(__S(867, __c27, 3)),
+          website: S.optional(S.String),
+          tax_id: S.optional(S.String),
+          additional_notes: S.optional(S.String),
+          logo_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InvoicerInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          business_name: S.optional(S.String),
+          name: S.optional(__S(800, __c25, 0)),
+          address: S.optional(__S(802, __c25, 2)),
+          email_address: S.optional(S.String),
+          phones: S.optional(__S(867, __c27, 3)),
+          additional_info: S.optional(S.String),
+          language: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          billing_info: S.optional(__S(869, __c27, 5)),
+          shipping_info: S.optional(__S(803, __c25, 3)),
+        }),
+      ).annotate({ identifier: "RecipientInfo" });
+    case 7:
+      return S.Array(__S(870, __c27, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          percent: S.String,
+          amount: S.optional(__S(768, __c24, 0)),
+          tax_note: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Tax" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          percent: S.optional(S.String),
+          amount: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "Discount" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          allow_partial_payment: S.optional(S.Boolean),
+          minimum_amount_due: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "PartialPayment" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_discount: S.optional(__S(873, __c27, 9)),
+          item_discount: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "AggregatedDiscount" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(768, __c24, 0)),
+          tax: S.optional(__S(872, __c27, 8)),
+        }),
+      ).annotate({ identifier: "ShippingCost" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          amount: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "CustomAmount" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          item_total: S.optional(__S(768, __c24, 0)),
+          discount: S.optional(__S(875, __c27, 11)),
+          tax_total: S.optional(__S(768, __c24, 0)),
+          shipping: S.optional(__S(876, __c27, 12)),
+          custom: S.optional(__S(877, __c27, 13)),
+        }),
+      ).annotate({ identifier: "AmountWithBreakdown" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          currency_code: S.optional(S.String),
+          value: S.optional(S.String),
+          breakdown: S.optional(__S(878, __c27, 14)),
+        }),
+      ).annotate({ identifier: "AmountSummaryDetail" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          description: S.optional(S.String),
+          quantity: S.String,
+          unit_amount: __S(768, __c24, 0),
+          tax: S.optional(__S(872, __c27, 8)),
+          item_date: S.optional(S.String),
+          discount: S.optional(__S(873, __c27, 9)),
+          unit_of_measure: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Item" });
+    case 17:
+      return S.Array(__S(832, __c26, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          quantity: S.String,
+          unit_amount: __S(768, __c24, 0),
+          tax: S.optional(__S(872, __c27, 8)),
+          item_date: S.optional(S.String),
+          discount: S.optional(__S(873, __c27, 9)),
+          unit_of_measure: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ItemInput" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          default_template: S.optional(S.Boolean),
+          template_info: S.optional(__S(994, __c31, 2)),
+          settings: S.optional(__S(965, __c30, 5)),
+          unit_of_measure: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/templates", code: 200 })),
+      ).annotate({ identifier: "CreateTemplateRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          term_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PaymentTerm" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tax_calculated_after_discount: S.optional(S.Boolean),
+          tax_inclusive: S.optional(S.Boolean),
+          allow_tip: S.optional(S.Boolean),
+          partial_payment: S.optional(__S(874, __c27, 10)),
+          has_conditional_rule: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TemplateConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hidden: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TemplateDisplayPreference",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          field_name: S.optional(S.String),
+          display_preference: S.optional(__S(962, __c30, 2)),
+        }),
+      ).annotate({ identifier: "TemplateItemSetting" });
+    case 4:
+      return S.Array(__S(963, __c30, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          template_item_settings: S.optional(__S(964, __c30, 4)),
+          template_subtotal_settings: S.optional(__S(964, __c30, 4)),
+        }),
+      ).annotate({ identifier: "TemplateSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          create_time: S.optional(S.String),
+          created_by: S.optional(S.String),
+          last_update_time: S.optional(S.String),
+          last_updated_by: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateMetadata" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(S.String),
+          currency_code: S.String,
+          note: S.optional(S.String),
+          terms_and_conditions: S.optional(S.String),
+          memo: S.optional(S.String),
+          attachments: S.optional(__S(865, __c27, 1)),
+          payment_term: S.optional(__S(960, __c30, 0)),
+          metadata: S.optional(__S(966, __c30, 6)),
+        }),
+      ).annotate({ identifier: "TemplateDetail" });
+    case 8:
+      return S.Array(__S(880, __c27, 16));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          detail: S.optional(__S(967, __c30, 7)),
+          invoicer: S.optional(__S(868, __c27, 4)),
+          primary_recipients: S.optional(__S(871, __c27, 7)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+          items: S.optional(__S(968, __c30, 8)),
+          configuration: S.optional(__S(961, __c30, 1)),
+          amount: S.optional(__S(879, __c27, 15)),
+          due_amount: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "TemplateInfo" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          default_template: S.optional(S.Boolean),
+          template_info: S.optional(__S(969, __c30, 9)),
+          settings: S.optional(__S(965, __c30, 5)),
+          unit_of_measure: S.optional(S.String),
+          standard_template: S.optional(S.Boolean),
+          links: S.optional(__S(881, __c27, 17)),
+        }),
+      ).annotate({ identifier: "Template" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(S.String),
+          currency_code: S.String,
+          note: S.optional(S.String),
+          terms_and_conditions: S.optional(S.String),
+          memo: S.optional(S.String),
+          attachments: S.optional(__S(865, __c27, 1)),
+          payment_term: S.optional(__S(960, __c30, 0)),
+          metadata: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({ identifier: "TemplateDetailInput" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          detail: S.optional(__S(992, __c31, 0)),
+          invoicer: S.optional(__S(868, __c27, 4)),
+          primary_recipients: S.optional(__S(871, __c27, 7)),
+          additional_recipients: S.optional(__S(608, __c19, 0)),
+          items: S.optional(__S(993, __c31, 1)),
+          configuration: S.optional(__S(961, __c30, 1)),
+          amount: S.optional(__S(879, __c27, 15)),
+        }),
+      ).annotate({ identifier: "TemplateInfoInput" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v2/invoicing/invoices/{invoice_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteInvoiceRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_id: S.String.pipe(T.Label()),
+          transaction_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/invoicing/invoices/{invoice_id}/payments/{transaction_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInvoicesPaymentRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invoice_id: S.String.pipe(T.Label()),
+          transaction_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/invoicing/invoices/{invoice_id}/refunds/{transaction_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInvoicesRefundRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

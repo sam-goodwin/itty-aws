@@ -51,8 +51,8 @@ export const stopTunnel: API.OperationMethod<
   StopTunnelError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<StopTunnelRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StopTunnelResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<StopTunnelRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<StopTunnelResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -80,13 +80,17 @@ function __c0(j: number): any {
           unencryptedPort: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StartTunnelResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/TunnelStop", code: 200 })),
       ).annotate({ identifier: "StopTunnelRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exists: S.optional(S.Boolean),
@@ -94,7 +98,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "StopTunnelResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

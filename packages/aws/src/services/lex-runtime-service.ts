@@ -424,8 +424,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSessionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetSessionResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetSessionResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -517,8 +517,8 @@ export const postContent: API.OperationMethod<
   PostContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PostContentRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PostContentResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<PostContentRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<PostContentResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -611,8 +611,8 @@ export const postText: API.OperationMethod<
   PostTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<PostTextRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PostTextResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<PostTextRequest>,
+  output: __S(90, __c5, 10) as any as S.Schema<PostTextResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -652,8 +652,8 @@ export const putSession: API.OperationMethod<
   PutSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PutSessionRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PutSessionResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PutSessionRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<PutSessionResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -701,7 +701,11 @@ function __c0(j: number): any {
           sessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteSessionResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           botName: S.String.pipe(T.HttpLabel("botName")),
@@ -719,65 +723,73 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSessionRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recentIntentSummaryView: S.optional(__S(49, __c3, 1)),
+          sessionAttributes: S.optional(__S(32, __c2, 0)),
+          sessionId: S.optional(S.String),
+          dialogAction: S.optional(__S(50, __c3, 2)),
+          activeContexts: S.optional(__S(36, __c2, 4)),
+        }),
+      ).annotate({ identifier: "GetSessionResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ timeToLiveInSeconds: S.optional(S.Number), turnsToLive: S.optional(S.Number) }),
+      ).annotate({ identifier: "ActiveContextTimeToLive" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          timeToLive: __S(33, __c2, 1),
+          parameters: __S(34, __c2, 2),
+        }),
+      ).annotate({ identifier: "ActiveContext" });
     case 4:
+      return S.Array(__S(35, __c2, 3));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           intentName: S.optional(S.String),
           checkpointLabel: S.optional(S.String),
-          slots: S.optional(__S(3, __c0, 3)),
+          slots: S.optional(__S(32, __c2, 0)),
           confirmationStatus: S.optional(S.String),
           dialogActionType: S.String,
           fulfillmentState: S.optional(S.String),
           slotToElicit: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntentSummary" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           intentName: S.optional(S.String),
-          slots: S.optional(__S(3, __c0, 3)),
+          slots: S.optional(__S(32, __c2, 0)),
           slotToElicit: S.optional(S.String),
           fulfillmentState: S.optional(S.String),
           message: S.optional(SensitiveString),
           messageFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "DialogAction" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ timeToLiveInSeconds: S.optional(S.Number), turnsToLive: S.optional(S.Number) }),
-      ).annotate({ identifier: "ActiveContextTimeToLive" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          timeToLive: __S(7, __c0, 7),
-          parameters: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "ActiveContext" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          recentIntentSummaryView: S.optional(__S(5, __c0, 5)),
-          sessionAttributes: S.optional(__S(3, __c0, 3)),
-          sessionId: S.optional(S.String),
-          dialogAction: S.optional(__S(6, __c0, 6)),
-          activeContexts: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "GetSessionResponse" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           botName: S.String.pipe(T.HttpLabel("botName")),
@@ -809,7 +821,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PostContentRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -844,16 +856,20 @@ function __c1(j: number): any {
           ),
         }),
       ).annotate({ identifier: "PostContentResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           botName: S.String.pipe(T.HttpLabel("botName")),
           botAlias: S.String.pipe(T.HttpLabel("botAlias")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          sessionAttributes: S.optional(__S(3, __c0, 3)),
-          requestAttributes: S.optional(__S(3, __c0, 3)),
+          sessionAttributes: S.optional(__S(32, __c2, 0)),
+          requestAttributes: S.optional(__S(32, __c2, 0)),
           inputText: SensitiveString,
-          activeContexts: S.optional(__S(10, __c1, 2)),
+          activeContexts: S.optional(__S(36, __c2, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/text" }),
@@ -865,88 +881,84 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PostTextRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ score: S.optional(S.Number) })).annotate({
         identifier: "IntentConfidence",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           intentName: S.optional(S.String),
-          nluIntentConfidence: S.optional(__S(15, __c1, 7)),
-          slots: S.optional(__S(3, __c0, 3)),
+          nluIntentConfidence: S.optional(__S(81, __c5, 1)),
+          slots: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "PredictedIntent" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(82, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({ sentimentLabel: S.optional(S.String), sentimentScore: S.optional(S.String) }),
       ).annotate({ identifier: "SentimentResponse" });
-    case 3:
+    case 5:
       return S.suspend(() => S.Struct({ text: S.String, value: S.String })).annotate({
         identifier: "Button",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(85, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           subTitle: S.optional(S.String),
           attachmentLinkUrl: S.optional(S.String),
           imageUrl: S.optional(S.String),
-          buttons: S.optional(__S(20, __c2, 4)),
+          buttons: S.optional(__S(86, __c5, 6)),
         }),
       ).annotate({ identifier: "GenericAttachment" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(87, __c5, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           contentType: S.optional(S.String),
-          genericAttachments: S.optional(__S(22, __c2, 6)),
+          genericAttachments: S.optional(__S(88, __c5, 8)),
         }),
       ).annotate({ identifier: "ResponseCard" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           intentName: S.optional(S.String),
-          nluIntentConfidence: S.optional(__S(15, __c1, 7)),
-          alternativeIntents: S.optional(__S(17, __c2, 1)),
-          slots: S.optional(__S(3, __c0, 3)),
-          sessionAttributes: S.optional(__S(3, __c0, 3)),
+          nluIntentConfidence: S.optional(__S(81, __c5, 1)),
+          alternativeIntents: S.optional(__S(83, __c5, 3)),
+          slots: S.optional(__S(32, __c2, 0)),
+          sessionAttributes: S.optional(__S(32, __c2, 0)),
           message: S.optional(SensitiveString),
-          sentimentResponse: S.optional(__S(18, __c2, 2)),
+          sentimentResponse: S.optional(__S(84, __c5, 4)),
           messageFormat: S.optional(S.String),
           dialogState: S.optional(S.String),
           slotToElicit: S.optional(S.String),
-          responseCard: S.optional(__S(23, __c2, 7)),
+          responseCard: S.optional(__S(89, __c5, 9)),
           sessionId: S.optional(S.String),
           botVersion: S.optional(S.String),
-          activeContexts: S.optional(__S(10, __c1, 2)),
+          activeContexts: S.optional(__S(36, __c2, 4)),
         }),
       ).annotate({ identifier: "PostTextResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           botName: S.String.pipe(T.HttpLabel("botName")),
           botAlias: S.String.pipe(T.HttpLabel("botAlias")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          sessionAttributes: S.optional(__S(3, __c0, 3)),
-          dialogAction: S.optional(__S(6, __c0, 6)),
-          recentIntentSummaryView: S.optional(__S(5, __c0, 5)),
+          sessionAttributes: S.optional(__S(32, __c2, 0)),
+          dialogAction: S.optional(__S(50, __c3, 2)),
+          recentIntentSummaryView: S.optional(__S(49, __c3, 1)),
           accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-          activeContexts: S.optional(__S(10, __c1, 2)),
+          activeContexts: S.optional(__S(36, __c2, 4)),
         }).pipe(
           T.all(
             T.Http({
@@ -961,7 +973,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutSessionRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -986,7 +998,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "PutSessionResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

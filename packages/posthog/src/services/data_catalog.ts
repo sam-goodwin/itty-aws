@@ -492,7 +492,7 @@ export const createDataCatalogCertification: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateDataCatalogCertificationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -506,8 +506,8 @@ export const createDataCatalogCertificationsCertify: API.OperationMethod<
   CreateDataCatalogCertificationsCertifyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateDataCatalogCertificationsCertifyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateDataCatalogCertificationsCertifyRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const createDataCatalogCertificationsDeprecate: API.OperationMethod<
   CreateDataCatalogCertificationsDeprecateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateDataCatalogCertificationsDeprecateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
+  input: __S(68, __c17, 0) as any as S.Schema<CreateDataCatalogCertificationsDeprecateRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -536,8 +536,8 @@ export const createDataCatalogMetrics: API.OperationMethod<
   CreateDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateDataCatalogMetricsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(72, __c18, 0) as any as S.Schema<CreateDataCatalogMetricsRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -551,8 +551,8 @@ export const createDataCatalogMetricsRun: API.OperationMethod<
   CreateDataCatalogMetricsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateDataCatalogMetricsRunRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DataCatalogMetricRun>,
+  input: __S(80, __c20, 0) as any as S.Schema<CreateDataCatalogMetricsRunRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<DataCatalogMetricRun>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -566,8 +566,8 @@ export const createDataCatalogRelationshipProposal: API.OperationMethod<
   CreateDataCatalogRelationshipProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDataCatalogRelationshipProposalRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
+  input: __S(88, __c22, 0) as any as S.Schema<CreateDataCatalogRelationshipProposalRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -581,8 +581,8 @@ export const dataCatalogCertificationsDestroy: API.OperationMethod<
   DataCatalogCertificationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DataCatalogCertificationsDestroyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DataCatalogCertificationsDestroyResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<DataCatalogCertificationsDestroyRequest>,
+  output: __S(100, __c25, 0) as any as S.Schema<DataCatalogCertificationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -596,8 +596,8 @@ export const dataCatalogMetricsApproveCreate: API.OperationMethod<
   DataCatalogMetricsApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DataCatalogMetricsApproveCreateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(104, __c26, 0) as any as S.Schema<DataCatalogMetricsApproveCreateRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -611,8 +611,8 @@ export const dataCatalogMetricsBulkApproveCreate: API.OperationMethod<
   DataCatalogMetricsBulkApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DataCatalogMetricBulkApprove>,
+  input: __S(108, __c27, 0) as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequest>,
+  output: __S(109, __c27, 1) as any as S.Schema<DataCatalogMetricBulkApprove>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const dataCatalogMetricsBulkDeleteCreate: API.OperationMethod<
   DataCatalogMetricsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DataCatalogMetricBulkDelete>,
+  input: __S(12, __c3, 0) as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DataCatalogMetricBulkDelete>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -641,8 +641,8 @@ export const dataCatalogMetricsDestroy: API.OperationMethod<
   DataCatalogMetricsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DataCatalogMetricsDestroyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DataCatalogMetricsDestroyResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DataCatalogMetricsDestroyRequest>,
+  output: __S(100, __c25, 0) as any as S.Schema<DataCatalogMetricsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -656,8 +656,8 @@ export const dataCatalogMetricsRefreshFromInsightCreate: API.OperationMethod<
   DataCatalogMetricsRefreshFromInsightCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DataCatalogMetricsRefreshFromInsightCreateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(20, __c5, 0) as any as S.Schema<DataCatalogMetricsRefreshFromInsightCreateRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -671,8 +671,8 @@ export const dataCatalogRelationshipProposalsAcceptCreate: API.OperationMethod<
   DataCatalogRelationshipProposalsAcceptCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DataCatalogRelationshipProposalsAcceptCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
+  input: __S(24, __c6, 0) as any as S.Schema<DataCatalogRelationshipProposalsAcceptCreateRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -686,8 +686,8 @@ export const dataCatalogRelationshipProposalsRejectCreate: API.OperationMethod<
   DataCatalogRelationshipProposalsRejectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DataCatalogRelationshipProposalsRejectCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
+  input: __S(28, __c7, 0) as any as S.Schema<DataCatalogRelationshipProposalsRejectCreateRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -701,8 +701,8 @@ export const getDataCatalogCertification: API.OperationMethod<
   GetDataCatalogCertificationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetDataCatalogCertificationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetDataCatalogCertificationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -716,8 +716,8 @@ export const getDataCatalogMetrics: API.OperationMethod<
   GetDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetDataCatalogMetricsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetDataCatalogMetricsRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -731,8 +731,8 @@ export const getDataCatalogRelationshipProposal: API.OperationMethod<
   GetDataCatalogRelationshipProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDataCatalogRelationshipProposalRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetDataCatalogRelationshipProposalRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -746,8 +746,8 @@ export const listDataCatalogCertifications: API.OperationMethod<
   ListDataCatalogCertificationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListDataCatalogCertificationsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PaginatedDataCatalogCertificationList>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListDataCatalogCertificationsRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<PaginatedDataCatalogCertificationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -761,8 +761,8 @@ export const listDataCatalogMetrics: API.OperationMethod<
   ListDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListDataCatalogMetricsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PaginatedDataCatalogMetricList>,
+  input: __S(48, __c12, 0) as any as S.Schema<ListDataCatalogMetricsRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<PaginatedDataCatalogMetricList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -776,8 +776,8 @@ export const listDataCatalogRelationshipProposals: API.OperationMethod<
   ListDataCatalogRelationshipProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListDataCatalogRelationshipProposalsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PaginatedDataCatalogRelationshipProposalList>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListDataCatalogRelationshipProposalsRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<PaginatedDataCatalogRelationshipProposalList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -791,8 +791,8 @@ export const updateDataCatalogMetrics: API.OperationMethod<
   UpdateDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateDataCatalogMetricsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(60, __c15, 0) as any as S.Schema<UpdateDataCatalogMetricsRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -806,8 +806,8 @@ export const updateDataCatalogMetricsPartial: API.OperationMethod<
   UpdateDataCatalogMetricsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UpdateDataCatalogMetricsPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
+  input: __S(64, __c16, 0) as any as S.Schema<UpdateDataCatalogMetricsPartialRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -836,23 +836,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataCatalogCertificationRequest",
       });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -863,13 +851,263 @@ function __c0(j: number): any {
           status: S.String,
           proposed_status: S.String,
           notes: S.optional(S.String),
-          certified_by: S.NullOr(__S(2, __c0, 2)),
+          certified_by: S.NullOr(__S(9, __c2, 1)),
           certified_at: S.NullOr(S.String),
           created_by: S.NullOr(S.Number),
           created_at: S.String,
         }),
       ).annotate({ identifier: "DataCatalogCertification" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c2, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          names: __S(84, __c21, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/bulk_delete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataCatalogMetricsBulkDeleteCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: __S(84, __c21, 0),
+          skipped: __S(113, __c28, 1),
+        }),
+      ).annotate({
+        identifier: "DataCatalogMetricBulkDelete",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataCatalogMetricsDestroyRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/refresh_from_insight/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataCatalogMetricsRefreshFromInsightCreateRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/accept/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataCatalogRelationshipProposalsAcceptCreateRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          rejection_reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/reject/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataCatalogRelationshipProposalsRejectCreateRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/certifications/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataCatalogCertificationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataCatalogMetricsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataCatalogRelationshipProposalRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/certifications/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDataCatalogCertificationsRequest",
+      });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(45, __c11, 1),
+        }),
+      ).annotate({
+        identifier: "PaginatedDataCatalogCertificationList",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDataCatalogMetricsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(116, __c29, 0),
+        }),
+      ).annotate({
+        identifier: "PaginatedDataCatalogMetricList",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -884,7 +1122,101 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataCatalogCertificationsCertifyRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDataCatalogRelationshipProposalsRequest",
+      });
+    case 1:
+      return S.Array(__S(92, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(57, __c14, 1),
+        }),
+      ).annotate({
+        identifier: "PaginatedDataCatalogRelationshipProposalList",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          display_name: S.optional(S.String),
+          description: S.String,
+          unit: S.optional(S.String),
+          definition: S.optional(S.NullOr(__S(8, __c2, 0))),
+          source_insight_short_id: S.optional(S.NullOr(S.String)),
+          created_source: S.optional(S.String),
+          ai_model: S.optional(S.String),
+          confidence: S.optional(S.NullOr(S.Number)),
+          reasoning: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDataCatalogMetricsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          display_name: S.optional(S.String),
+          description: S.optional(S.String),
+          unit: S.optional(S.String),
+          definition: S.optional(S.NullOr(__S(8, __c2, 0))),
+          source_insight_short_id: S.optional(S.NullOr(S.String)),
+          created_source: S.optional(S.String),
+          ai_model: S.optional(S.String),
+          confidence: S.optional(S.NullOr(S.Number)),
+          reasoning: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDataCatalogMetricsPartialRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -899,7 +1231,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataCatalogCertificationsDeprecateRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -907,7 +1243,7 @@ function __c0(j: number): any {
           display_name: S.optional(S.String),
           description: S.String,
           unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
+          definition: S.optional(S.NullOr(__S(8, __c2, 0))),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
           created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
@@ -923,7 +1259,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataCatalogMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -932,27 +1272,27 @@ function __c0(j: number): any {
           description: S.String,
           unit: S.optional(S.String),
           owner: S.NullOr(S.String),
-          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
+          definition: S.optional(S.NullOr(__S(8, __c2, 0))),
           definition_kind: S.NullOr(S.String),
           referenced_table_names: S.Unknown,
           status: S.String,
           is_drifted: S.Boolean,
           approved_at: S.NullOr(S.String),
-          approved_by: S.NullOr(__S(2, __c0, 2)),
+          approved_by: S.NullOr(__S(9, __c2, 1)),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
           last_run_at: S.NullOr(S.String),
           created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
-          created_by: __S(2, __c0, 2),
+          created_by: __S(9, __c2, 1),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DataCatalogMetric" });
   }
 }
-function __c1(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -975,8 +1315,6 @@ function __c1(j: number): any {
         identifier: "CreateDataCatalogMetricsRunRequest",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -984,7 +1322,7 @@ function __c1(j: number): any {
           unit: S.NullOr(S.String),
           kind: S.NullOr(S.String),
           results: S.Unknown,
-          columns: S.NullOr(__S(9, __c1, 1)),
+          columns: S.NullOr(__S(84, __c21, 0)),
           compiled_query: S.NullOr(S.String),
           query_status: S.Unknown,
           has_more: S.Boolean,
@@ -993,7 +1331,17 @@ function __c1(j: number): any {
           instructions: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DataCatalogMetricRun" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1016,7 +1364,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateDataCatalogRelationshipProposalRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1030,7 +1382,7 @@ function __c1(j: number): any {
           reasoning: S.optional(S.String),
           evidence: S.optional(S.Unknown),
           status: S.String,
-          reviewed_by: S.NullOr(__S(2, __c0, 2)),
+          reviewed_by: S.NullOr(__S(9, __c2, 1)),
           reviewed_at: S.NullOr(S.String),
           rejection_reason: S.String,
           created_join: S.NullOr(S.String),
@@ -1040,7 +1392,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DataCatalogRelationshipProposal",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1055,11 +1411,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DataCatalogCertificationsDestroyRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DataCatalogCertificationsDestroyResponse",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1076,13 +1440,13 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          names: __S(9, __c1, 1),
+          names: __S(84, __c21, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1094,8 +1458,19 @@ function __c2(j: number): any {
         identifier: "DataCatalogMetricsBulkApproveCreateRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
-    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          approved: __S(116, __c29, 0),
+          skipped: __S(113, __c28, 1),
+        }),
+      ).annotate({
+        identifier: "DataCatalogMetricBulkApprove",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1104,292 +1479,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DataCatalogMetricBulkSkip",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          approved: __S(17, __c2, 1),
-          skipped: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "DataCatalogMetricBulkApprove",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          names: __S(9, __c1, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/bulk_delete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataCatalogMetricsBulkDeleteCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: __S(9, __c1, 1),
-          skipped: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "DataCatalogMetricBulkDelete",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataCatalogMetricsDestroyRequest",
-      });
+    case 1:
+      return S.Array(__S(112, __c28, 0));
   }
 }
-function __c3(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/refresh_from_insight/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataCatalogMetricsRefreshFromInsightCreateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/accept/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataCatalogRelationshipProposalsAcceptCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          rejection_reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/reject/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataCatalogRelationshipProposalsRejectCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/certifications/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataCatalogCertificationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataCatalogMetricsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataCatalogRelationshipProposalRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/certifications/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDataCatalogCertificationsRequest",
-      });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(76, __c19, 0));
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(31, __c3, 7),
-        }),
-      ).annotate({
-        identifier: "PaginatedDataCatalogCertificationList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDataCatalogMetricsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "PaginatedDataCatalogMetricList",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_catalog/relationship_proposals/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDataCatalogRelationshipProposalsRequest",
-      });
-    case 4:
-      return S.Array(__S(12, __c1, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "PaginatedDataCatalogRelationshipProposalList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          display_name: S.optional(S.String),
-          description: S.String,
-          unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
-          source_insight_short_id: S.optional(S.NullOr(S.String)),
-          created_source: S.optional(S.String),
-          ai_model: S.optional(S.String),
-          confidence: S.optional(S.NullOr(S.Number)),
-          reasoning: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDataCatalogMetricsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          display_name: S.optional(S.String),
-          description: S.optional(S.String),
-          unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
-          source_insight_short_id: S.optional(S.NullOr(S.String)),
-          created_source: S.optional(S.String),
-          ai_model: S.optional(S.String),
-          confidence: S.optional(S.NullOr(S.Number)),
-          reasoning: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/data_catalog/metrics/{name}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDataCatalogMetricsPartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

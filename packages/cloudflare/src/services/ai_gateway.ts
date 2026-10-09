@@ -3777,8 +3777,8 @@ export const createAiGateway: API.OperationMethod<
   CreateAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateAiGatewayRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateAiGatewayResponse>,
+  input: __S(11, __c0, 11) as any as S.Schema<CreateAiGatewayRequest>,
+  output: __S(20, __c0, 20) as any as S.Schema<CreateAiGatewayResponse>,
   errors: [GatewayAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3795,8 +3795,8 @@ export const createBillingSpendingLimit: API.OperationMethod<
   CreateBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateBillingSpendingLimitRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateBillingSpendingLimitResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateBillingSpendingLimitRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<CreateBillingSpendingLimitResponse>,
   errors: [NoManualTopup, AiGatewaySpendingLimitDeprecated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3810,8 +3810,8 @@ export const createBillingTopup: API.OperationMethod<
   CreateBillingTopupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateBillingTopupRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateBillingTopupResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateBillingTopupRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<CreateBillingTopupResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3825,8 +3825,8 @@ export const createBillingTopupConfig: API.OperationMethod<
   CreateBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateBillingTopupConfigRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateBillingTopupConfigResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateBillingTopupConfigRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<CreateBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3840,8 +3840,8 @@ export const createCustomProvider: API.OperationMethod<
   CreateCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateCustomProviderRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateCustomProviderResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateCustomProviderRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<CreateCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3855,8 +3855,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateDatasetResponse>,
+  input: __S(324, __c10, 4) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(329, __c10, 9) as any as S.Schema<CreateDatasetResponse>,
   errors: [GatewayNotFound, DatasetNameAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3870,8 +3870,8 @@ export const createDeploymentDynamicRouting: API.OperationMethod<
   CreateDeploymentDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3885,8 +3885,8 @@ export const createDynamicRouting: API.OperationMethod<
   CreateDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateDynamicRoutingRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateDynamicRoutingResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateDynamicRoutingRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<CreateDynamicRoutingResponse>,
   errors: [RouteAlreadyExists, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3903,8 +3903,8 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateEvaluationRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CreateEvaluationResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateEvaluationRequest>,
+  output: __S(519, __c16, 7) as any as S.Schema<CreateEvaluationResponse>,
   errors: [GatewayNotFound, EvaluationNameAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3922,8 +3922,8 @@ export const createProviderConfig: API.OperationMethod<
   CreateProviderConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateProviderConfigRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CreateProviderConfigResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateProviderConfigRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<CreateProviderConfigResponse>,
   errors: [
     ProviderConfigSecretNotFound,
     ProviderConfigAlreadyExists,
@@ -3943,8 +3943,8 @@ export const createVersionDynamicRouting: API.OperationMethod<
   CreateVersionDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateVersionDynamicRoutingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CreateVersionDynamicRoutingResponse>,
+  input: __S(610, __c19, 2) as any as S.Schema<CreateVersionDynamicRoutingRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<CreateVersionDynamicRoutingResponse>,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3958,8 +3958,8 @@ export const creditBalanceBilling: API.OperationMethod<
   CreditBalanceBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreditBalanceBillingRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreditBalanceBillingResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<CreditBalanceBillingRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<CreditBalanceBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3973,8 +3973,8 @@ export const deleteAiGateway: API.OperationMethod<
   DeleteAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteAiGatewayRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<DeleteAiGatewayResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteAiGatewayRequest>,
+  output: __S(681, __c21, 9) as any as S.Schema<DeleteAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3988,8 +3988,8 @@ export const deleteBillingSpendingLimit: API.OperationMethod<
   DeleteBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteBillingSpendingLimitRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteBillingSpendingLimitResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteBillingSpendingLimitRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DeleteBillingSpendingLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4003,8 +4003,8 @@ export const deleteBillingTopupConfig: API.OperationMethod<
   DeleteBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DeleteBillingTopupConfigRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteBillingTopupConfigResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteBillingTopupConfigRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DeleteBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4018,8 +4018,8 @@ export const deleteCustomProvider: API.OperationMethod<
   DeleteCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteCustomProviderRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DeleteCustomProviderResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteCustomProviderRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4033,8 +4033,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteDatasetRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<DeleteDatasetResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(805, __c25, 5) as any as S.Schema<DeleteDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4048,8 +4048,8 @@ export const deleteDynamicRouting: API.OperationMethod<
   DeleteDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteDynamicRoutingRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<DeleteDynamicRoutingResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteDynamicRoutingRequest>,
+  output: __S(835, __c26, 3) as any as S.Schema<DeleteDynamicRoutingResponse>,
   errors: [RouteNotFound, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4063,8 +4063,8 @@ export const deleteEvaluation: API.OperationMethod<
   DeleteEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteEvaluationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteEvaluationResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteEvaluationRequest>,
+  output: __S(871, __c27, 7) as any as S.Schema<DeleteEvaluationResponse>,
   errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4078,8 +4078,8 @@ export const deleteLog: API.OperationMethod<
   DeleteLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteLogRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteLogResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteLogRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeleteLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4092,8 +4092,8 @@ export const deleteProviderConfig: API.OperationMethod<
   DeleteProviderConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteProviderConfigRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteProviderConfigResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteProviderConfigRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DeleteProviderConfigResponse>,
   errors: [ProviderConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4107,8 +4107,8 @@ export const getAiGateway: API.OperationMethod<
   GetAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetAiGatewayRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetAiGatewayResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAiGatewayRequest>,
+  output: __S(1001, __c31, 9) as any as S.Schema<GetAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4122,8 +4122,8 @@ export const getBillingSpendingLimit: API.OperationMethod<
   GetBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetBillingSpendingLimitRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GetBillingSpendingLimitResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetBillingSpendingLimitRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<GetBillingSpendingLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4137,8 +4137,8 @@ export const getBillingTopupConfig: API.OperationMethod<
   GetBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetBillingTopupConfigRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetBillingTopupConfigResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetBillingTopupConfigRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4152,8 +4152,8 @@ export const getCustomProvider: API.OperationMethod<
   GetCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetCustomProviderRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetCustomProviderResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetCustomProviderRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4167,8 +4167,8 @@ export const getDataset: API.OperationMethod<
   GetDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetDatasetRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetDatasetResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetDatasetRequest>,
+  output: __S(1125, __c35, 5) as any as S.Schema<GetDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4182,8 +4182,8 @@ export const getDynamicRouting: API.OperationMethod<
   GetDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetDynamicRoutingRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetDynamicRoutingResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetDynamicRoutingRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<GetDynamicRoutingResponse>,
   errors: [RouteNotFound, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4197,8 +4197,8 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetEvaluationRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetEvaluationResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetEvaluationRequest>,
+  output: __S(1191, __c37, 7) as any as S.Schema<GetEvaluationResponse>,
   errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4212,8 @@ export const getLog: API.OperationMethod<
   GetLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetLogRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<GetLogResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetLogRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4227,8 +4227,8 @@ export const getUrl: API.OperationMethod<
   GetUrlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetUrlRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetUrlResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetUrlRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<GetUrlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4242,8 @@ export const getVersionDynamicRouting: API.OperationMethod<
   GetVersionDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetVersionDynamicRoutingRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetVersionDynamicRoutingResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetVersionDynamicRoutingRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<GetVersionDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4257,8 @@ export const invoiceHistoryBilling: API.OperationMethod<
   InvoiceHistoryBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<InvoiceHistoryBillingRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<InvoiceHistoryBillingResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<InvoiceHistoryBillingRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<InvoiceHistoryBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4272,8 @@ export const invoicePreviewBilling: API.OperationMethod<
   InvoicePreviewBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<InvoicePreviewBillingRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<InvoicePreviewBillingResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<InvoicePreviewBillingRequest>,
+  output: __S(1351, __c42, 7) as any as S.Schema<InvoicePreviewBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4289,8 +4289,8 @@ export const listAiGateways: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(171, __c21, 3) as any as S.Schema<ListAiGatewaysRequest>,
-    output: __S(182, __c22, 6) as any as S.Schema<ListAiGatewaysResponse>,
+    input: __S(1376, __c43, 0) as any as S.Schema<ListAiGatewaysRequest>,
+    output: __S(1387, __c43, 11) as any as S.Schema<ListAiGatewaysResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4315,8 +4315,8 @@ export const listCustomProviders: API.PaginatedOperationMethod<
   CustomProvidersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(183, __c22, 7) as any as S.Schema<ListCustomProvidersRequest>,
-    output: __S(186, __c23, 2) as any as S.Schema<ListCustomProvidersResponse>,
+    input: __S(1408, __c44, 0) as any as S.Schema<ListCustomProvidersRequest>,
+    output: __S(1411, __c44, 3) as any as S.Schema<ListCustomProvidersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4341,8 +4341,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   DatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(187, __c23, 3) as any as S.Schema<ListDatasetsRequest>,
-    output: __S(194, __c24, 2) as any as S.Schema<ListDatasetsResponse>,
+    input: __S(1440, __c45, 0) as any as S.Schema<ListDatasetsRequest>,
+    output: __S(1447, __c45, 7) as any as S.Schema<ListDatasetsResponse>,
     errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4365,8 +4365,8 @@ export const listDeploymentsDynamicRouting: API.OperationMethod<
   ListDeploymentsDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>,
+  output: __S(1475, __c46, 3) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4380,8 +4380,8 @@ export const listDynamicRoutings: API.OperationMethod<
   ListDynamicRoutingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListDynamicRoutingsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListDynamicRoutingsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListDynamicRoutingsRequest>,
+  output: __S(1510, __c47, 6) as any as S.Schema<ListDynamicRoutingsResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4397,8 +4397,8 @@ export const listEvaluations: API.PaginatedOperationMethod<
   EvaluationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(206, __c25, 6) as any as S.Schema<ListEvaluationsRequest>,
-    output: __S(215, __c26, 7) as any as S.Schema<ListEvaluationsResponse>,
+    input: __S(1536, __c48, 0) as any as S.Schema<ListEvaluationsRequest>,
+    output: __S(1545, __c48, 9) as any as S.Schema<ListEvaluationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4423,8 +4423,8 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
   EvaluationTypesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(216, __c27, 0) as any as S.Schema<ListEvaluationTypesRequest>,
-    output: __S(219, __c27, 3) as any as S.Schema<ListEvaluationTypesResponse>,
+    input: __S(1568, __c49, 0) as any as S.Schema<ListEvaluationTypesRequest>,
+    output: __S(1571, __c49, 3) as any as S.Schema<ListEvaluationTypesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4449,8 +4449,8 @@ export const listLogs: API.PaginatedOperationMethod<
   LogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(220, __c27, 4) as any as S.Schema<ListLogsRequest>,
-    output: __S(223, __c27, 7) as any as S.Schema<ListLogsResponse>,
+    input: __S(1600, __c50, 0) as any as S.Schema<ListLogsRequest>,
+    output: __S(1603, __c50, 3) as any as S.Schema<ListLogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4475,8 +4475,8 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
   ProviderConfigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(224, __c28, 0) as any as S.Schema<ListProviderConfigsRequest>,
-    output: __S(227, __c28, 3) as any as S.Schema<ListProviderConfigsResponse>,
+    input: __S(1632, __c51, 0) as any as S.Schema<ListProviderConfigsRequest>,
+    output: __S(1635, __c51, 3) as any as S.Schema<ListProviderConfigsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4499,8 +4499,8 @@ export const listVersionsDynamicRouting: API.OperationMethod<
   ListVersionsDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ListVersionsDynamicRoutingRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<ListVersionsDynamicRoutingResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListVersionsDynamicRoutingRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<ListVersionsDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4514,8 +4514,8 @@ export const patchDynamicRouting: API.OperationMethod<
   PatchDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<PatchDynamicRoutingRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<PatchDynamicRoutingResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<PatchDynamicRoutingRequest>,
+  output: __S(1700, __c53, 4) as any as S.Schema<PatchDynamicRoutingResponse>,
   errors: [RouteNotFound, RouteAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4529,8 +4529,8 @@ export const patchLog: API.OperationMethod<
   PatchLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<PatchLogRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<PatchLogResponse>,
+  input: __S(1730, __c54, 2) as any as S.Schema<PatchLogRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<PatchLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4544,8 +4544,8 @@ export const requestLog: API.OperationMethod<
   RequestLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<RequestLogRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<RequestLogResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<RequestLogRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<RequestLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4559,8 +4559,8 @@ export const responseLog: API.OperationMethod<
   ResponseLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ResponseLogRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ResponseLogResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ResponseLogRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ResponseLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4574,8 +4574,8 @@ export const statusBillingTopup: API.OperationMethod<
   StatusBillingTopupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<StatusBillingTopupRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<StatusBillingTopupResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<StatusBillingTopupRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<StatusBillingTopupResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4589,8 +4589,8 @@ export const updateAiGateway: API.OperationMethod<
   UpdateAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<UpdateAiGatewayRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<UpdateAiGatewayResponse>,
+  input: __S(1864, __c58, 8) as any as S.Schema<UpdateAiGatewayRequest>,
+  output: __S(1873, __c58, 17) as any as S.Schema<UpdateAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4604,8 +4604,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<UpdateDatasetRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<UpdateDatasetResponse>,
+  input: __S(1892, __c59, 4) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(1897, __c59, 9) as any as S.Schema<UpdateDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4619,8 +4619,8 @@ export const usageHistoryBilling: API.OperationMethod<
   UsageHistoryBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<UsageHistoryBillingRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<UsageHistoryBillingResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<UsageHistoryBillingRequest>,
+  output: __S(1923, __c60, 3) as any as S.Schema<UsageHistoryBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4630,87 +4630,53 @@ export const usageHistoryBilling: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
+    case 1:
+      return S.Record(S.String, S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          p1: S.optional(S.String.pipe(T.Body("P1"))),
-          s1: S.optional(S.String.pipe(T.Body("S1"))),
-          s10: S.optional(S.String.pipe(T.Body("S10"))),
-          s11: S.optional(S.String.pipe(T.Body("S11"))),
-          s12: S.optional(S.String.pipe(T.Body("S12"))),
-          s13: S.optional(S.String.pipe(T.Body("S13"))),
-          s2: S.optional(S.String.pipe(T.Body("S2"))),
-          s3: S.optional(S.String.pipe(T.Body("S3"))),
-          s4: S.optional(S.String.pipe(T.Body("S4"))),
-          s5: S.optional(S.String.pipe(T.Body("S5"))),
-          s6: S.optional(S.String.pipe(T.Body("S6"))),
-          s7: S.optional(S.String.pipe(T.Body("S7"))),
-          s8: S.optional(S.String.pipe(T.Body("S8"))),
-          s9: S.optional(S.String.pipe(T.Body("S9"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestGuardrailsPrompt",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: __S(2, __c0, 2),
-          response: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "CreateRequestGuardrails" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          headers: __S(4, __c0, 4),
+          headers: __S(1, __c0, 1),
           url: S.String,
           authorization: S.optional(S.String),
           contentType: S.optional(S.String.pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "CreateRequestOtelItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["mode"], ["mode", "values"]], {
           key: "mode",
           values: ["partition", "filter"],
         }),
       );
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
+    case 5:
+      return S.Record(S.String, __S(4, __c0, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItemModel",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItemProvider",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -4718,45 +4684,24 @@ function __c1(j: number): any {
           window: S.Number,
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metadata: S.optional(__S(8, __c1, 0)),
-          model: S.optional(__S(9, __c1, 1)),
-          provider: S.optional(__S(10, __c1, 2)),
+          metadata: S.optional(__S(5, __c0, 5)),
+          model: S.optional(__S(6, __c0, 6)),
+          provider: S.optional(__S(7, __c0, 7)),
           technique: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          rules: S.optional(__S(12, __c1, 4)),
+          rules: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "CreateRequestSpendLimits" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateRequestStripeUsageEventsItem",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authorization: S.String,
-          usageEvents: __S(15, __c1, 7).pipe(T.Body("usage_events")),
-        }),
-      ).annotate({ identifier: "CreateRequestStripe" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4768,21 +4713,21 @@ function __c2(j: number): any {
           rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.Boolean),
           byokOnly: S.optional(S.Boolean.pipe(T.Body("byok_only"))),
-          dlp: S.optional(__S(1, __c0, 1)),
-          guardrails: S.optional(__S(3, __c0, 3)),
+          dlp: S.optional(__S(0, __c0, 0)),
+          guardrails: S.optional(__S(97, __c3, 1)),
           logClassification: S.optional(S.Boolean.pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(S.String.pipe(T.Body("log_management_strategy"))),
           logpush: S.optional(S.Boolean),
           logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(__S(6, __c0, 6)),
+          otel: S.optional(__S(3, __c0, 3)),
           rateLimitingTechnique: S.optional(S.String.pipe(T.Body("rate_limiting_technique"))),
           retryBackoff: S.optional(S.String.pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(__S(13, __c1, 5).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(__S(10, __c0, 10).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-          stripe: S.optional(__S(16, __c2, 0)),
+          stripe: S.optional(__S(66, __c2, 2)),
           workersAiBillingMode: S.optional(S.String.pipe(T.Body("workers_ai_billing_mode"))),
           zdr: S.optional(S.Boolean),
         })
@@ -4795,13 +4740,135 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateAiGatewayRequest" });
-    case 2:
+    case 12:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          headers: __S(69, __c2, 5),
+          url: S.String,
+          authorization: S.optional(S.NullOr(S.String)),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+        }),
+      ).annotate({ identifier: "CreateResponseOtelItem" });
+    case 14:
+      return S.Array(__S(13, __c0, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+          values: __S(32, __c1, 0),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSpendLimitsRulesItemModel",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+          values: __S(32, __c1, 0),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSpendLimitsRulesItemProvider",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.Number,
+          limitType: S.String,
+          window: S.Number,
+          id: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          metadata: S.optional(S.NullOr(__S(69, __c2, 5))),
+          model: S.optional(S.NullOr(__S(15, __c0, 15))),
+          provider: S.optional(S.NullOr(__S(16, __c0, 16))),
+          technique: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSpendLimitsRulesItem",
+      });
+    case 18:
+      return S.Array(__S(17, __c0, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          rules: S.optional(S.NullOr(__S(18, __c0, 18))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSpendLimits",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cacheInvalidateOnUpdate: S.Boolean.pipe(T.Body("cache_invalidate_on_update")),
+          cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+          collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+          createdAt: S.String.pipe(T.Body("created_at")),
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+          rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
+          authentication: S.optional(S.NullOr(S.Boolean)),
+          byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
+          dlp: S.optional(S.NullOr(__S(12, __c0, 12))),
+          guardrails: S.optional(S.NullOr(__S(68, __c2, 4))),
+          isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+          logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
+          logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
+          logManagementStrategy: S.optional(
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
+          ),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
+          otel: S.optional(S.NullOr(__S(14, __c0, 14))),
+          rateLimitingTechnique: S.optional(
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
+          ),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
+          retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+          retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
+          spendLimits: S.optional(S.NullOr(__S(19, __c0, 19)).pipe(T.Body("spend_limits"))),
+          storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+          stripe: S.optional(S.NullOr(__S(66, __c2, 2))),
+          workersAiBillingMode: S.optional(
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
+          ),
+          zdr: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAiGatewayResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateRequestStripeUsageEventsItem",
+      });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          authorization: S.String,
+          usageEvents: __S(65, __c2, 1).pipe(T.Body("usage_events")),
+        }),
+      ).annotate({ identifier: "CreateRequestStripe" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4826,23 +4893,12 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          prompt: __S(19, __c2, 3),
-          response: __S(19, __c2, 3),
+          prompt: __S(67, __c2, 3),
+          response: __S(67, __c2, 3),
         }),
       ).annotate({ identifier: "CreateResponseGuardrails" });
     case 5:
       return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          headers: __S(21, __c2, 5),
-          url: S.String,
-          authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-        }),
-      ).annotate({ identifier: "CreateResponseOtelItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -4850,88 +4906,36 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
-          values: __S(0, __c0, 0),
+          p1: S.optional(S.String.pipe(T.Body("P1"))),
+          s1: S.optional(S.String.pipe(T.Body("S1"))),
+          s10: S.optional(S.String.pipe(T.Body("S10"))),
+          s11: S.optional(S.String.pipe(T.Body("S11"))),
+          s12: S.optional(S.String.pipe(T.Body("S12"))),
+          s13: S.optional(S.String.pipe(T.Body("S13"))),
+          s2: S.optional(S.String.pipe(T.Body("S2"))),
+          s3: S.optional(S.String.pipe(T.Body("S3"))),
+          s4: S.optional(S.String.pipe(T.Body("S4"))),
+          s5: S.optional(S.String.pipe(T.Body("S5"))),
+          s6: S.optional(S.String.pipe(T.Body("S6"))),
+          s7: S.optional(S.String.pipe(T.Body("S7"))),
+          s8: S.optional(S.String.pipe(T.Body("S8"))),
+          s9: S.optional(S.String.pipe(T.Body("S9"))),
         }),
       ).annotate({
-        identifier: "CreateResponseSpendLimitsRulesItemModel",
+        identifier: "CreateRequestGuardrailsPrompt",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
-          values: __S(0, __c0, 0),
+          prompt: __S(96, __c3, 0),
+          response: __S(96, __c3, 0),
         }),
-      ).annotate({
-        identifier: "CreateResponseSpendLimitsRulesItemProvider",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.Number,
-          limitType: S.String,
-          window: S.Number,
-          id: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(__S(21, __c2, 5))),
-          model: S.optional(S.NullOr(__S(24, __c3, 0))),
-          provider: S.optional(S.NullOr(__S(25, __c3, 1))),
-          technique: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseSpendLimitsRulesItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(__S(27, __c3, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseSpendLimits",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cacheInvalidateOnUpdate: S.Boolean.pipe(T.Body("cache_invalidate_on_update")),
-          cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
-          collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
-          createdAt: S.String.pipe(T.Body("created_at")),
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
-          rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-          authentication: S.optional(S.NullOr(S.Boolean)),
-          byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(__S(18, __c2, 2))),
-          guardrails: S.optional(S.NullOr(__S(20, __c2, 4))),
-          isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-          logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
-          logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
-          logManagementStrategy: S.optional(
-            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
-          ),
-          logpush: S.optional(S.NullOr(S.Boolean)),
-          logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(__S(23, __c2, 7))),
-          rateLimitingTechnique: S.optional(
-            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
-          ),
-          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
-          retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-          retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("spend_limits"))),
-          storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(__S(16, __c2, 0))),
-          workersAiBillingMode: S.optional(
-            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
-          ),
-          zdr: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAiGatewayResponse" });
-    case 6:
+      ).annotate({ identifier: "CreateRequestGuardrails" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4950,7 +4954,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBillingSpendingLimitRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4958,7 +4966,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4990,7 +4998,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateBillingTopupResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5008,7 +5020,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateBillingTopupConfigRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -5017,7 +5029,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateBillingTopupConfigResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5044,7 +5060,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateCustomProviderRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5066,33 +5086,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateCustomProviderResponse",
       });
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(39, __c4, 7),
+          value: __S(321, __c10, 1),
         }),
       ).annotate({
         identifier: "DatasetsCreateRequestFiltersItem",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           enable: S.Boolean,
-          filters: __S(41, __c5, 1),
+          filters: __S(323, __c10, 3),
           name: S.String,
         })
           .pipe(
@@ -5104,29 +5124,29 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateDatasetRequest" });
-    case 3:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 4:
-      return S.Array(__S(43, __c5, 3));
     case 5:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(44, __c5, 4),
+          value: __S(326, __c10, 6),
         }),
       ).annotate({
         identifier: "DatasetsCreateResponseFiltersItem",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(46, __c5, 6),
+          filters: __S(328, __c10, 8),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5134,7 +5154,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateDatasetResponse" });
   }
 }
-function __c6(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5170,13 +5190,13 @@ function __c6(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(353, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: __S(50, __c6, 2),
+          elements: __S(354, __c11, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5184,28 +5204,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateDeploymentDynamicRoutingResponse",
       });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["id", "outputs", "type"],
-            ["id", "outputs", "properties", "type"],
-            ["id", "outputs", "type"],
-            ["id", "outputs", "properties", "type"],
-            ["id", "outputs", "properties", "type"],
-            ["id", "outputs", "type"],
-          ],
-          { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
-        ),
-      );
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          elements: __S(53, __c6, 5),
+          elements: __S(417, __c13, 1),
           name: S.String,
         })
           .pipe(
@@ -5219,19 +5227,40 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateDynamicRoutingRequest",
       });
-    case 7:
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["id", "outputs", "type"],
+            ["id", "outputs", "properties", "type"],
+            ["id", "outputs", "type"],
+            ["id", "outputs", "properties", "type"],
+            ["id", "outputs", "properties", "type"],
+            ["id", "outputs", "type"],
+          ],
+          { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
+        ),
+      );
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
+          id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          deploymentId: S.String.pipe(T.Body("deployment_id")),
-          versionId: S.String.pipe(T.Body("version_id")),
-        }),
+          deployment: __S(448, __c14, 0),
+          elements: __S(386, __c12, 2),
+          gatewayId: S.String.pipe(T.Body("gateway_id")),
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          name: S.String,
+          version: __S(480, __c15, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
-        identifier: "DynamicRoutingCreateResponseDeployment",
+        identifier: "CreateDynamicRoutingResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -5248,41 +5277,48 @@ function __c7(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          deploymentId: S.String.pipe(T.Body("deployment_id")),
+          versionId: S.String.pipe(T.Body("version_id")),
+        }),
+      ).annotate({
+        identifier: "DynamicRoutingCreateResponseDeployment",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          data: __S(53, __c6, 5),
+          data: __S(417, __c13, 1),
           versionId: S.String.pipe(T.Body("version_id")),
           isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
         }),
       ).annotate({
         identifier: "DynamicRoutingCreateResponseVersion",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: __S(55, __c6, 7),
-          elements: __S(57, __c7, 1),
-          gatewayId: S.String.pipe(T.Body("gateway_id")),
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          name: S.String,
-          version: __S(58, __c7, 2),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDynamicRoutingResponse",
-      });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          datasetIds: __S(0, __c0, 0).pipe(T.Body("dataset_ids")),
-          evaluationTypeIds: __S(0, __c0, 0).pipe(T.Body("evaluation_type_ids")),
+          datasetIds: __S(32, __c1, 0).pipe(T.Body("dataset_ids")),
+          evaluationTypeIds: __S(32, __c1, 0).pipe(T.Body("evaluation_type_ids")),
           name: S.String,
         })
           .pipe(
@@ -5294,27 +5330,23 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateEvaluationRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(62, __c7, 6),
+          value: __S(514, __c16, 2),
         }),
       ).annotate({
         identifier: "EvaluationsCreateResponseDatasetsItemFiltersItem",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5322,7 +5354,7 @@ function __c8(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(64, __c8, 0),
+          filters: __S(516, __c16, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5330,9 +5362,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EvaluationsCreateResponseDatasetsItem",
       });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(517, __c16, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          datasets: __S(518, __c16, 6),
+          gatewayId: S.String.pipe(T.Body("gateway_id")),
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          name: S.String,
+          processed: S.Boolean,
+          results: __S(545, __c17, 1),
+          totalLogs: S.Number.pipe(T.Body("total_logs")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateEvaluationResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5348,23 +5398,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EvaluationsCreateResponseResultsItem",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: __S(66, __c8, 2),
-          gatewayId: S.String.pipe(T.Body("gateway_id")),
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          name: S.String,
-          processed: S.Boolean,
-          results: __S(68, __c8, 4),
-          totalLogs: S.Number.pipe(T.Body("total_logs")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateEvaluationResponse" });
-    case 6:
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5388,7 +5428,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProviderConfigRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5407,7 +5447,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -5424,14 +5464,14 @@ function __c9(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(608, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
-          elements: __S(73, __c9, 1),
+          elements: __S(609, __c19, 1),
         })
           .pipe(
             T.Http({
@@ -5459,13 +5499,13 @@ function __c9(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(75, __c9, 3));
+      return S.Array(__S(611, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: __S(76, __c9, 4),
+          elements: __S(612, __c19, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5474,7 +5514,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateVersionDynamicRoutingResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5490,7 +5534,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreditBalanceBillingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           brand: S.optional(S.NullOr(S.String)),
@@ -5499,11 +5543,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "BillingCreditBalanceResponsePaymentMethod",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -5515,19 +5555,23 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "BillingCreditBalanceResponseTopupConfig",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           balance: S.Number,
           hasDefaultPaymentMethod: S.Boolean.pipe(T.Body("has_default_payment_method")),
-          paymentMethod: __S(79, __c9, 7).pipe(T.Body("payment_method")),
-          topupConfig: __S(80, __c10, 0).pipe(T.Body("topup_config")),
+          paymentMethod: __S(641, __c20, 1).pipe(T.Body("payment_method")),
+          topupConfig: __S(642, __c20, 2).pipe(T.Body("topup_config")),
           firstTopupSuccess: S.optional(S.NullOr(S.Boolean).pipe(T.Body("first_topup_success"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreditBalanceBillingResponse",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5542,47 +5586,43 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteAiGatewayRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(21, __c2, 5),
+          headers: __S(69, __c2, 5),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
           contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "DeleteResponseOtelItem" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(674, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItemModel",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItemProvider",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -5590,26 +5630,26 @@ function __c11(j: number): any {
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(__S(21, __c2, 5))),
-          model: S.optional(S.NullOr(__S(86, __c10, 6))),
-          provider: S.optional(S.NullOr(__S(87, __c10, 7))),
+          metadata: S.optional(S.NullOr(__S(69, __c2, 5))),
+          model: S.optional(S.NullOr(__S(676, __c21, 4))),
+          provider: S.optional(S.NullOr(__S(677, __c21, 5))),
           technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItem",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(678, __c21, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(__S(89, __c11, 1))),
+          rules: S.optional(S.NullOr(__S(679, __c21, 7))),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimits",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5622,8 +5662,8 @@ function __c11(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(__S(83, __c10, 3))),
-          guardrails: S.optional(S.NullOr(__S(20, __c2, 4))),
+          dlp: S.optional(S.NullOr(__S(673, __c21, 1))),
+          guardrails: S.optional(S.NullOr(__S(68, __c2, 4))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
@@ -5632,23 +5672,27 @@ function __c11(j: number): any {
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(__S(85, __c10, 5))),
+          otel: S.optional(S.NullOr(__S(675, __c21, 3))),
           rateLimitingTechnique: S.optional(
             S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
           retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(680, __c21, 8)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(__S(16, __c2, 0))),
+          stripe: S.optional(S.NullOr(__S(66, __c2, 2))),
           workersAiBillingMode: S.optional(
             S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteAiGatewayResponse" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5664,7 +5708,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteBillingSpendingLimitRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5680,7 +5728,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteBillingTopupConfigRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5697,7 +5749,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteCustomProviderRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5713,39 +5769,39 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDatasetRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Array(__S(96, __c12, 0));
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(97, __c12, 1),
+          value: __S(802, __c25, 2),
         }),
       ).annotate({
         identifier: "DatasetsDeleteResponseFiltersItem",
       });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
     case 4:
+      return S.Array(__S(803, __c25, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(99, __c12, 3),
+          filters: __S(804, __c25, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDatasetResponse" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5763,7 +5819,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDynamicRoutingRequest",
       });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -5777,18 +5833,14 @@ function __c12(j: number): any {
           { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
         ),
       );
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: __S(103, __c12, 7),
+          elements: __S(834, __c26, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5796,7 +5848,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteDynamicRoutingResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5812,23 +5868,23 @@ function __c13(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteEvaluationRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 2:
+      return S.Array(__S(865, __c27, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(107, __c13, 3),
+          value: __S(866, __c27, 2),
         }),
       ).annotate({
         identifier: "EvaluationsDeleteResponseDatasetsItemFiltersItem",
       });
+    case 4:
+      return S.Array(__S(867, __c27, 3));
     case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5836,7 +5892,7 @@ function __c13(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(109, __c13, 5),
+          filters: __S(868, __c27, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -5844,32 +5900,32 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EvaluationsDeleteResponseDatasetsItem",
       });
+    case 6:
+      return S.Array(__S(869, __c27, 5));
     case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: __S(111, __c13, 7),
+          datasets: __S(870, __c27, 6),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: __S(68, __c8, 4),
+          results: __S(545, __c17, 1),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteEvaluationResponse" });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          filters: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          filters: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           orderByDirection: S.optional(S.String.pipe(T.Query("order_by_direction"))),
@@ -5883,11 +5939,19 @@ function __c14(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteLogRequest" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteLogResponse",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5905,7 +5969,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProviderConfigRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5920,47 +5988,43 @@ function __c14(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAiGatewayRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(21, __c2, 5),
+          headers: __S(69, __c2, 5),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
           contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "GetResponseOtelItem" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(994, __c31, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItemModel",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItemProvider",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -5968,24 +6032,24 @@ function __c15(j: number): any {
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(__S(21, __c2, 5))),
-          model: S.optional(S.NullOr(__S(120, __c15, 0))),
-          provider: S.optional(S.NullOr(__S(121, __c15, 1))),
+          metadata: S.optional(S.NullOr(__S(69, __c2, 5))),
+          model: S.optional(S.NullOr(__S(996, __c31, 4))),
+          provider: S.optional(S.NullOr(__S(997, __c31, 5))),
           technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItem",
       });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(998, __c31, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(__S(123, __c15, 3))),
+          rules: S.optional(S.NullOr(__S(999, __c31, 7))),
         }),
       ).annotate({ identifier: "GetResponseSpendLimits" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5998,8 +6062,8 @@ function __c15(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(__S(117, __c14, 5))),
-          guardrails: S.optional(S.NullOr(__S(20, __c2, 4))),
+          dlp: S.optional(S.NullOr(__S(993, __c31, 1))),
+          guardrails: S.optional(S.NullOr(__S(68, __c2, 4))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
@@ -6008,23 +6072,27 @@ function __c15(j: number): any {
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(__S(119, __c14, 7))),
+          otel: S.optional(S.NullOr(__S(995, __c31, 3))),
           rateLimitingTechnique: S.optional(
             S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
           retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(__S(124, __c15, 4)).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(1000, __c31, 8)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(__S(16, __c2, 0))),
+          stripe: S.optional(S.NullOr(__S(66, __c2, 2))),
           workersAiBillingMode: S.optional(
             S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAiGatewayResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6040,7 +6108,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetBillingSpendingLimitRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -6050,20 +6118,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "BillingSpendingLimitGetResponseConfig",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(127, __c15, 7),
+          config: __S(1025, __c32, 1),
           enabled: S.Boolean,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetBillingSpendingLimitResponse",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6079,7 +6147,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetBillingTopupConfigRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -6091,7 +6159,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetBillingTopupConfigResponse",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6106,7 +6178,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCustomProviderRequest" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6122,39 +6198,39 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDatasetRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(134, __c16, 6),
+          value: __S(1122, __c35, 2),
         }),
       ).annotate({
         identifier: "DatasetsGetResponseFiltersItem",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(1123, __c35, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(136, __c17, 0),
+          filters: __S(1124, __c35, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDatasetResponse" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6170,7 +6246,7 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDynamicRoutingRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6184,24 +6260,28 @@ function __c17(j: number): any {
           { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
         ),
       );
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: __S(55, __c6, 7),
-          elements: __S(140, __c17, 4),
+          deployment: __S(448, __c14, 0),
+          elements: __S(1154, __c36, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: __S(58, __c7, 2),
+          version: __S(480, __c15, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDynamicRoutingResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6217,27 +6297,23 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEvaluationRequest" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
     case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(144, __c18, 0),
+          value: __S(1186, __c37, 2),
         }),
       ).annotate({
         identifier: "EvaluationsGetResponseDatasetsItemFiltersItem",
       });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1187, __c37, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6245,7 +6321,7 @@ function __c18(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(146, __c18, 2),
+          filters: __S(1188, __c37, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6253,23 +6329,27 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EvaluationsGetResponseDatasetsItem",
       });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(1189, __c37, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: __S(148, __c18, 4),
+          datasets: __S(1190, __c37, 6),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: __S(68, __c8, 4),
+          results: __S(545, __c17, 1),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEvaluationResponse" });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6285,7 +6365,7 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLogRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6321,7 +6401,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetLogResponse" });
   }
 }
-function __c19(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6343,7 +6423,11 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUrlResponse" });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6362,7 +6446,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetVersionDynamicRoutingRequest",
       });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6376,16 +6460,16 @@ function __c19(j: number): any {
           { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
         ),
       );
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           active: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          data: __S(53, __c6, 5),
-          elements: __S(156, __c19, 4),
+          data: __S(417, __c13, 1),
+          elements: __S(1282, __c40, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6395,7 +6479,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetVersionDynamicRoutingResponse",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6412,7 +6500,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "InvoiceHistoryBillingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amountDue: S.Number.pipe(T.Body("amount_due")),
@@ -6433,13 +6521,9 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "BillingInvoiceHistoryResponseInvoicesItem",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           hasMore: S.Boolean.pipe(T.Body("has_more")),
@@ -6450,16 +6534,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BillingInvoiceHistoryResponsePagination",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          invoices: __S(160, __c20, 0),
-          pagination: __S(161, __c20, 1),
+          invoices: __S(1314, __c41, 2),
+          pagination: __S(1315, __c41, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "InvoiceHistoryBillingResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6475,7 +6563,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InvoicePreviewBillingRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end: S.Number,
@@ -6484,7 +6572,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPeriod",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           unitAmountDecimal: S.String.pipe(T.Body("unit_amount_decimal")),
@@ -6492,7 +6580,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPricing",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -6505,31 +6593,27 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem",
       });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1347, __c42, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
           currency: S.String,
           description: S.String,
-          period: __S(164, __c20, 4),
-          pricing: __S(165, __c20, 5),
+          period: __S(1345, __c42, 1),
+          pricing: __S(1346, __c42, 2),
           quantity: S.Number,
           pretaxCreditAmounts: S.optional(
-            S.NullOr(__S(167, __c20, 7)).pipe(T.Body("pretax_credit_amounts")),
+            S.NullOr(__S(1348, __c42, 4)).pipe(T.Body("pretax_credit_amounts")),
           ),
         }),
       ).annotate({
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItem",
       });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1349, __c42, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6537,7 +6621,7 @@ function __c21(j: number): any {
           amountPaid: S.Number.pipe(T.Body("amount_paid")),
           amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
           currency: S.String,
-          invoiceLines: __S(169, __c21, 1).pipe(T.Body("invoice_lines")),
+          invoiceLines: __S(1350, __c42, 6).pipe(T.Body("invoice_lines")),
           periodEnd: S.Number.pipe(T.Body("period_end")),
           periodStart: S.Number.pipe(T.Body("period_start")),
           status: S.String,
@@ -6545,7 +6629,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InvoicePreviewBillingResponse",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6558,47 +6646,43 @@ function __c21(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAiGatewaysRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(21, __c2, 5),
+          headers: __S(69, __c2, 5),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
           contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "ListResultItemOtelItem" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1378, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItemModel",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItemProvider",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -6606,26 +6690,26 @@ function __c22(j: number): any {
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(__S(21, __c2, 5))),
-          model: S.optional(S.NullOr(__S(175, __c21, 7))),
-          provider: S.optional(S.NullOr(__S(176, __c22, 0))),
+          metadata: S.optional(S.NullOr(__S(69, __c2, 5))),
+          model: S.optional(S.NullOr(__S(1380, __c43, 4))),
+          provider: S.optional(S.NullOr(__S(1381, __c43, 5))),
           technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItem",
       });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1382, __c43, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(__S(178, __c22, 2))),
+          rules: S.optional(S.NullOr(__S(1383, __c43, 7))),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimits",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6638,8 +6722,8 @@ function __c22(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(__S(172, __c21, 4))),
-          guardrails: S.optional(S.NullOr(__S(20, __c2, 4))),
+          dlp: S.optional(S.NullOr(__S(1377, __c43, 1))),
+          guardrails: S.optional(S.NullOr(__S(68, __c2, 4))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
@@ -6648,32 +6732,36 @@ function __c22(j: number): any {
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(__S(174, __c21, 6))),
+          otel: S.optional(S.NullOr(__S(1379, __c43, 3))),
           rateLimitingTechnique: S.optional(
             S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
           retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(__S(179, __c22, 3)).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(1384, __c43, 8)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(__S(16, __c2, 0))),
+          stripe: S.optional(S.NullOr(__S(66, __c2, 2))),
           workersAiBillingMode: S.optional(
             S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(1385, __c43, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          result: __S(181, __c22, 5).pipe(T.EnvelopePayload()),
+          result: __S(1386, __c43, 10).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAiGatewaysResponse" });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6694,11 +6782,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListCustomProvidersRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6720,18 +6804,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "CustomProvidersListResultItem",
       });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(185, __c23, 1).pipe(T.EnvelopePayload()),
+          result: __S(1410, __c44, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListCustomProvidersResponse",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6751,48 +6839,48 @@ function __c23(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDatasetsRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(189, __c23, 5),
+          value: __S(1442, __c45, 2),
         }),
       ).annotate({
         identifier: "DatasetsListResultItemFiltersItem",
       });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1443, __c45, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(191, __c23, 7),
+          filters: __S(1444, __c45, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
         }),
       ).annotate({ identifier: "DatasetsListResultItem" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(193, __c24, 1).pipe(T.EnvelopePayload()),
+          result: __S(1446, __c45, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDatasetsResponse" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6810,12 +6898,12 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDeploymentsDynamicRoutingRequest",
       });
-    case 4:
-      return S.Array(__S(55, __c6, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: __S(196, __c24, 4),
+          deployments: __S(1473, __c46, 1),
           orderBy: S.String.pipe(T.Body("order_by")),
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
@@ -6824,15 +6912,19 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DynamicRoutingListDeploymentsResponseData",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(197, __c24, 5),
+          data: __S(1474, __c46, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListDeploymentsDynamicRoutingResponse",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6851,11 +6943,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDynamicRoutingsRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6869,47 +6957,51 @@ function __c25(j: number): any {
           { key: "type", values: ["start", "conditional", "percentage", "rate", "model", "end"] },
         ),
       );
-    case 1:
-      return S.Array(__S(200, __c25, 0));
     case 2:
+      return S.Array(__S(1505, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: __S(55, __c6, 7),
-          elements: __S(201, __c25, 1),
+          deployment: __S(448, __c14, 0),
+          elements: __S(1506, __c47, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: __S(58, __c7, 2),
+          version: __S(480, __c15, 0),
         }),
       ).annotate({
         identifier: "DynamicRoutingListResponseDataRoutesItem",
       });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
     case 4:
+      return S.Array(__S(1507, __c47, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.String.pipe(T.Body("order_by")),
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
-          routes: __S(203, __c25, 3),
+          routes: __S(1508, __c47, 4),
         }),
       ).annotate({
         identifier: "DynamicRoutingListResponseData",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(204, __c25, 4),
+          data: __S(1509, __c47, 5),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListDynamicRoutingsResponse",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6929,27 +7021,23 @@ function __c25(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEvaluationsRequest" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
     case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(208, __c26, 0),
+          value: __S(1538, __c48, 2),
         }),
       ).annotate({
         identifier: "EvaluationsListResultItemDatasetsItemFiltersItem",
       });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6957,7 +7045,7 @@ function __c26(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(210, __c26, 2),
+          filters: __S(1540, __c48, 4),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6965,36 +7053,36 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "EvaluationsListResultItemDatasetsItem",
       });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(1541, __c48, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: __S(212, __c26, 4),
+          datasets: __S(1542, __c48, 6),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: __S(68, __c8, 4),
+          results: __S(545, __c17, 1),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }),
       ).annotate({
         identifier: "EvaluationsListResultItem",
       });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          result: __S(214, __c26, 6).pipe(T.EnvelopePayload()),
+          result: __S(1544, __c48, 8).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEvaluationsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7032,17 +7120,21 @@ function __c27(j: number): any {
         identifier: "EvaluationTypesListResultItem",
       });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(1569, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(218, __c27, 2).pipe(T.EnvelopePayload()),
+          result: __S(1570, __c49, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListEvaluationTypesResponse",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7051,7 +7143,7 @@ function __c27(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query("end_date"))),
           feedback: S.optional(S.String.pipe(T.Query())),
-          filters: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          filters: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           maxCost: S.optional(S.Number.pipe(T.Query("max_cost"))),
           maxDuration: S.optional(S.Number.pipe(T.Query("max_duration"))),
           maxTokensIn: S.optional(S.Number.pipe(T.Query("max_tokens_in"))),
@@ -7085,7 +7177,7 @@ function __c27(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLogsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7109,18 +7201,18 @@ function __c27(j: number): any {
           step: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "LogsListResultItem" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1601, __c50, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(222, __c27, 6).pipe(T.EnvelopePayload()),
+          result: __S(1602, __c50, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLogsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7159,17 +7251,21 @@ function __c28(j: number): any {
         identifier: "ProviderConfigsListResultItem",
       });
     case 2:
-      return S.Array(__S(225, __c28, 1));
+      return S.Array(__S(1633, __c51, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(226, __c28, 2).pipe(T.EnvelopePayload()),
+          result: __S(1634, __c51, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListProviderConfigsResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7187,31 +7283,31 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListVersionsDynamicRoutingRequest",
       });
-    case 5:
-      return S.Array(__S(58, __c7, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.String.pipe(T.Body("order_by")),
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
-          versions: __S(229, __c28, 5),
+          versions: __S(1665, __c52, 1),
         }),
       ).annotate({
         identifier: "DynamicRoutingListVersionsResponseData",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(230, __c28, 6),
+          data: __S(1666, __c52, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListVersionsDynamicRoutingResponse",
       });
   }
 }
-function __c29(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7247,19 +7343,19 @@ function __c29(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(233, __c29, 1));
+      return S.Array(__S(1697, __c53, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: __S(55, __c6, 7),
-          elements: __S(234, __c29, 2),
+          deployment: __S(448, __c14, 0),
+          elements: __S(1698, __c53, 2),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: __S(58, __c7, 2),
+          version: __S(480, __c15, 0),
         }),
       ).annotate({
         identifier: "DynamicRoutingUpdateResponseRoute",
@@ -7267,23 +7363,27 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          route: __S(235, __c29, 3),
+          route: __S(1699, __c53, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchDynamicRoutingResponse",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 6:
-      return S.Record(S.String, __S(237, __c29, 5));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(1728, __c54, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
           feedback: S.optional(S.Number),
-          metadata: S.optional(__S(238, __c29, 6)),
+          metadata: S.optional(__S(1729, __c54, 1)),
           score: S.optional(S.Number),
         })
           .pipe(
@@ -7295,15 +7395,15 @@ function __c29(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchLogRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchLogResponse" });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7319,7 +7419,11 @@ function __c30(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RequestLogRequest" });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7335,7 +7439,11 @@ function __c30(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ResponseLogRequest" });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7352,7 +7460,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "StatusBillingTopupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
@@ -7361,47 +7469,47 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "StatusBillingTopupResponse",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(21, __c2, 5),
+          headers: __S(69, __c2, 5),
           url: S.String,
           authorization: S.optional(S.String),
           contentType: S.optional(S.String.pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "UpdateRequestOtelItem" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1857, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItemModel",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItemProvider",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -7409,24 +7517,24 @@ function __c31(j: number): any {
           window: S.Number,
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metadata: S.optional(__S(21, __c2, 5)),
-          model: S.optional(__S(248, __c31, 0)),
-          provider: S.optional(__S(249, __c31, 1)),
+          metadata: S.optional(__S(69, __c2, 5)),
+          model: S.optional(__S(1859, __c58, 3)),
+          provider: S.optional(__S(1860, __c58, 4)),
           technique: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItem",
       });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(1861, __c58, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          rules: S.optional(__S(251, __c31, 3)),
+          rules: S.optional(__S(1862, __c58, 6)),
         }),
       ).annotate({ identifier: "UpdateRequestSpendLimits" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7438,21 +7546,21 @@ function __c31(j: number): any {
           rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.Boolean),
           byokOnly: S.optional(S.Boolean.pipe(T.Body("byok_only"))),
-          dlp: S.optional(__S(245, __c30, 5)),
-          guardrails: S.optional(__S(3, __c0, 3)),
+          dlp: S.optional(__S(1856, __c58, 0)),
+          guardrails: S.optional(__S(97, __c3, 1)),
           logClassification: S.optional(S.Boolean.pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(S.String.pipe(T.Body("log_management_strategy"))),
           logpush: S.optional(S.Boolean),
           logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(__S(247, __c30, 7)),
+          otel: S.optional(__S(1858, __c58, 2)),
           rateLimitingTechnique: S.optional(S.String.pipe(T.Body("rate_limiting_technique"))),
           retryBackoff: S.optional(S.String.pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(__S(252, __c31, 4).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(__S(1863, __c58, 7).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-          stripe: S.optional(__S(16, __c2, 0)),
+          stripe: S.optional(__S(66, __c2, 2)),
           workersAiBillingMode: S.optional(S.String.pipe(T.Body("workers_ai_billing_mode"))),
           zdr: S.optional(S.Boolean),
         })
@@ -7465,47 +7573,43 @@ function __c31(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAiGatewayRequest" });
-    case 6:
+    case 9:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["action", "enabled", "profiles"],
           ["enabled", "policies"],
         ]),
       );
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(21, __c2, 5),
+          headers: __S(69, __c2, 5),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
           contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "UpdateResponseOtelItem" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(1866, __c58, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItemModel",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          values: __S(0, __c0, 0),
+          values: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItemProvider",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -7513,26 +7617,26 @@ function __c32(j: number): any {
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(__S(21, __c2, 5))),
-          model: S.optional(S.NullOr(__S(257, __c32, 1))),
-          provider: S.optional(S.NullOr(__S(258, __c32, 2))),
+          metadata: S.optional(S.NullOr(__S(69, __c2, 5))),
+          model: S.optional(S.NullOr(__S(1868, __c58, 12))),
+          provider: S.optional(S.NullOr(__S(1869, __c58, 13))),
           technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItem",
       });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
+    case 15:
+      return S.Array(__S(1870, __c58, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(__S(260, __c32, 4))),
+          rules: S.optional(S.NullOr(__S(1871, __c58, 15))),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimits",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7545,8 +7649,8 @@ function __c32(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(__S(254, __c31, 6))),
-          guardrails: S.optional(S.NullOr(__S(20, __c2, 4))),
+          dlp: S.optional(S.NullOr(__S(1865, __c58, 9))),
+          guardrails: S.optional(S.NullOr(__S(68, __c2, 4))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
@@ -7555,50 +7659,50 @@ function __c32(j: number): any {
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(__S(256, __c32, 0))),
+          otel: S.optional(S.NullOr(__S(1867, __c58, 11))),
           rateLimitingTechnique: S.optional(
             S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
           retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(__S(261, __c32, 5)).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(1872, __c58, 16)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(__S(16, __c2, 0))),
+          stripe: S.optional(S.NullOr(__S(66, __c2, 2))),
           workersAiBillingMode: S.optional(
             S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAiGatewayResponse" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
   }
 }
-function __c33(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(263, __c32, 7));
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
+      return S.Array(__S(1888, __c59, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(264, __c33, 0),
+          value: __S(1889, __c59, 1),
         }),
       ).annotate({
         identifier: "DatasetsUpdateRequestFiltersItem",
       });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
     case 3:
+      return S.Array(__S(1890, __c59, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
           enable: S.Boolean,
-          filters: __S(266, __c33, 2),
+          filters: __S(1891, __c59, 3),
           name: S.String,
         })
           .pipe(
@@ -7610,39 +7714,39 @@ function __c33(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateDatasetRequest" });
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 5:
-      return S.Array(__S(268, __c33, 4));
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
+      return S.Array(__S(1893, __c59, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           operator: S.String,
-          value: __S(269, __c33, 5),
+          value: __S(1894, __c59, 6),
         }),
       ).annotate({
         identifier: "DatasetsUpdateResponseFiltersItem",
       });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(1895, __c59, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: __S(271, __c33, 7),
+          filters: __S(1896, __c59, 8),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateDatasetResponse" });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7661,7 +7765,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UsageHistoryBillingRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7672,19 +7776,18 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "BillingUsageHistoryResponseHistoryItem",
       });
+    case 2:
+      return S.Array(__S(1921, __c60, 1));
     case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          history: __S(275, __c34, 3),
+          history: __S(1922, __c60, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageHistoryBillingResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

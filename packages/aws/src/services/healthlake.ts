@@ -840,8 +840,8 @@ export const createFHIRDatastore: API.OperationMethod<
   CreateFHIRDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateFHIRDatastoreRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateFHIRDatastoreResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateFHIRDatastoreRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateFHIRDatastoreResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -869,8 +869,8 @@ export const deleteDataTransformationProfile: API.OperationMethod<
   DeleteDataTransformationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteDataTransformationProfileRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteDataTransformationProfileResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteDataTransformationProfileRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteDataTransformationProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +901,8 @@ export const deleteFHIRDatastore: API.OperationMethod<
   DeleteFHIRDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteFHIRDatastoreRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteFHIRDatastoreResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteFHIRDatastoreRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteFHIRDatastoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -932,8 +932,8 @@ export const describeDataTransformationJob: API.OperationMethod<
   DescribeDataTransformationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DescribeDataTransformationJobRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DescribeDataTransformationJobResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DescribeDataTransformationJobRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<DescribeDataTransformationJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -962,8 +962,8 @@ export const describeFHIRDatastore: API.OperationMethod<
   DescribeFHIRDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DescribeFHIRDatastoreRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DescribeFHIRDatastoreResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DescribeFHIRDatastoreRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DescribeFHIRDatastoreResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -990,8 +990,8 @@ export const describeFHIRExportJob: API.OperationMethod<
   DescribeFHIRExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeFHIRExportJobRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DescribeFHIRExportJobResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DescribeFHIRExportJobRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DescribeFHIRExportJobResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1018,8 +1018,8 @@ export const describeFHIRImportJob: API.OperationMethod<
   DescribeFHIRImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DescribeFHIRImportJobRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DescribeFHIRImportJobResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribeFHIRImportJobRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<DescribeFHIRImportJobResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1047,8 +1047,8 @@ export const getDataTransformationProfile: API.OperationMethod<
   GetDataTransformationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetDataTransformationProfileRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetDataTransformationProfileResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetDataTransformationProfileRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetDataTransformationProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1078,8 +1078,8 @@ export const listDataTransformationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransformationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListDataTransformationJobsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListDataTransformationJobsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListDataTransformationJobsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListDataTransformationJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1114,8 +1114,8 @@ export const listDataTransformationProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataTransformationProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListDataTransformationProfilesRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListDataTransformationProfilesResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListDataTransformationProfilesRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ListDataTransformationProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1151,8 +1151,8 @@ export const listDataTransformationProfileVersions: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   DataTransformationProfileVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListDataTransformationProfileVersionsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListDataTransformationProfileVersionsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListDataTransformationProfileVersionsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<ListDataTransformationProfileVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1187,8 +1187,8 @@ export const listFHIRDatastores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListFHIRDatastoresRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListFHIRDatastoresResponse>,
+  input: __S(201, __c25, 1) as any as S.Schema<ListFHIRDatastoresRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListFHIRDatastoresResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1217,8 +1217,8 @@ export const listFHIRExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListFHIRExportJobsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListFHIRExportJobsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListFHIRExportJobsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListFHIRExportJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1253,8 +1253,8 @@ export const listFHIRImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListFHIRImportJobsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListFHIRImportJobsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListFHIRImportJobsRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListFHIRImportJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1285,8 +1285,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1310,8 +1310,8 @@ export const publishDataTransformationProfile: API.OperationMethod<
   PublishDataTransformationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<PublishDataTransformationProfileRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PublishDataTransformationProfileResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<PublishDataTransformationProfileRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<PublishDataTransformationProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1343,8 +1343,8 @@ export const restoreFHIRDatastore: API.OperationMethod<
   RestoreFHIRDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<RestoreFHIRDatastoreRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RestoreFHIRDatastoreResponse>,
+  input: __S(242, __c30, 2) as any as S.Schema<RestoreFHIRDatastoreRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RestoreFHIRDatastoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1374,8 +1374,8 @@ export const startDataTransformationJob: API.OperationMethod<
   StartDataTransformationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<StartDataTransformationJobRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<StartDataTransformationJobResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<StartDataTransformationJobRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<StartDataTransformationJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1406,8 +1406,8 @@ export const startFHIRExportJob: API.OperationMethod<
   StartFHIRExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<StartFHIRExportJobRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<StartFHIRExportJobResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<StartFHIRExportJobRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<StartFHIRExportJobResponse>,
   errors: [
     AccessDeniedException,
     FailedDependencyException,
@@ -1438,8 +1438,8 @@ export const startFHIRImportJob: API.OperationMethod<
   StartFHIRImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<StartFHIRImportJobRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<StartFHIRImportJobResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<StartFHIRImportJobRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<StartFHIRImportJobResponse>,
   errors: [
     AccessDeniedException,
     FailedDependencyException,
@@ -1463,8 +1463,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1481,8 +1481,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1505,8 +1505,8 @@ export const updateDataTransformationProfile: API.OperationMethod<
   UpdateDataTransformationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateDataTransformationProfileRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<UpdateDataTransformationProfileResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateDataTransformationProfileRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<UpdateDataTransformationProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1537,8 +1537,8 @@ export const updateFHIRDatastore: API.OperationMethod<
   UpdateFHIRDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateFHIRDatastoreRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateFHIRDatastoreResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateFHIRDatastoreRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateFHIRDatastoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1573,8 +1573,8 @@ export const updateProfileWithAgent: API.OperationMethod<
   UpdateProfileWithAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateProfileWithAgentRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<UpdateProfileWithAgentResponse>,
+  input: __S(321, __c40, 1) as any as S.Schema<UpdateProfileWithAgentRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<UpdateProfileWithAgentResponse>,
   errors: [
     AccessDeniedException,
     AgentMessageOutOfContextException,
@@ -1663,75 +1663,27 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ CmkType: S.String, KmsKeyId: S.optional(S.String) }),
-      ).annotate({ identifier: "KmsEncryptionConfig" });
-    case 1:
-      return S.suspend(() => S.Struct({ KmsEncryptionConfig: __S(8, __c1, 0) })).annotate({
-        identifier: "SseConfiguration",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ PreloadDataType: S.String })).annotate({
-        identifier: "PreloadDataConfig",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
         S.Struct({
-          AuthorizationStrategy: S.String,
-          FineGrainedAuthorizationEnabled: S.optional(S.Boolean),
-          Metadata: S.optional(S.String),
-          IdpLambdaArn: S.optional(S.String),
-        }),
+          DatastoreName: S.optional(S.String),
+          DatastoreTypeVersion: S.String,
+          SseConfiguration: S.optional(__S(33, __c4, 1)),
+          PreloadDataConfig: S.optional(__S(40, __c5, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(49, __c6, 1)),
+          IdentityProviderConfiguration: S.optional(__S(34, __c4, 2)),
+          AnalyticsConfiguration: S.optional(__S(35, __c4, 3)),
+          NlpConfiguration: S.optional(__S(35, __c4, 3)),
+          ProfileConfiguration: S.optional(__S(36, __c4, 4)),
+          BackupConfiguration: S.optional(__S(41, __c5, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "IdentityProviderConfiguration",
+        identifier: "CreateFHIRDatastoreRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "AnalyticsConfiguration",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ DefaultProfiles: S.optional(__S(15, __c1, 7)) })).annotate({
-        identifier: "ProfileConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          BackupType: S.optional(S.String),
-          RetentionPeriodInDays: S.optional(S.Number),
-          BackupTagsEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BackupConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DatastoreName: S.optional(S.String),
-          DatastoreTypeVersion: S.String,
-          SseConfiguration: S.optional(__S(9, __c1, 1)),
-          PreloadDataConfig: S.optional(__S(10, __c1, 2)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(12, __c1, 4)),
-          IdentityProviderConfiguration: S.optional(__S(13, __c1, 5)),
-          AnalyticsConfiguration: S.optional(__S(14, __c1, 6)),
-          NlpConfiguration: S.optional(__S(14, __c1, 6)),
-          ProfileConfiguration: S.optional(__S(16, __c2, 0)),
-          BackupConfiguration: S.optional(__S(17, __c2, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFHIRDatastoreRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           DatastoreId: S.String,
@@ -1742,7 +1694,75 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateFHIRDatastoreResponse",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CmkType: S.String, KmsKeyId: S.optional(S.String) }),
+      ).annotate({ identifier: "KmsEncryptionConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ KmsEncryptionConfig: __S(32, __c4, 0) })).annotate({
+        identifier: "SseConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AuthorizationStrategy: S.String,
+          FineGrainedAuthorizationEnabled: S.optional(S.Boolean),
+          Metadata: S.optional(S.String),
+          IdpLambdaArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentityProviderConfiguration",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "AnalyticsConfiguration",
+      });
     case 4:
+      return S.suspend(() => S.Struct({ DefaultProfiles: S.optional(__S(24, __c3, 0)) })).annotate({
+        identifier: "ProfileConfiguration",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ PreloadDataType: S.String })).annotate({
+        identifier: "PreloadDataConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          BackupType: S.optional(S.String),
+          RetentionPeriodInDays: S.optional(S.Number),
+          BackupTagsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BackupConfiguration" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProfileId: S.String.pipe(T.HttpLabel("ProfileId")) }).pipe(
           T.all(
@@ -1757,7 +1777,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteDataTransformationProfileRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
@@ -1767,7 +1787,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteDataTransformationProfileResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatastoreId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1775,7 +1799,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteFHIRDatastoreRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
           T.all(
@@ -1790,9 +1818,46 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DescribeDataTransformationJobRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TotalFilesScanned: S.Number,
+          TotalFilesConverted: S.Number,
+          TotalFilesFailed: S.Number,
+          TotalResourcesGenerated: S.Number,
+        }),
+      ).annotate({
+        identifier: "TransformationJobProgressReport",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.String,
+          JobStatus: S.String,
+          InputDataConfig: __S(80, __c10, 0),
+          OutputDataConfig: __S(82, __c10, 2),
+          DataAccessRoleArn: S.String,
+          SubmitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          JobName: S.optional(S.String),
+          ProfileId: S.optional(S.String),
+          ProfileName: S.optional(S.String),
+          ProfileVersion: S.optional(S.Number),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DriftDetectionEnabled: S.optional(S.Boolean),
+          ProvenanceEnabled: S.optional(S.Boolean),
+          Message: S.optional(S.String),
+          JobProgressReport: S.optional(__S(73, __c9, 1)),
+        }),
+      ).annotate({
+        identifier: "TransformationJobProperties",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ TransformationJobProperties: __S(74, __c9, 2) })).annotate({
+        identifier: "DescribeDataTransformationJobResponse",
+      });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1805,47 +1870,14 @@ function __c3(j: number): any {
         identifier: "DataTransformationS3Configuration",
       });
     case 2:
-      return S.suspend(() => S.Struct({ S3Configuration: __S(25, __c3, 1) })).annotate({
+      return S.suspend(() => S.Struct({ S3Configuration: __S(81, __c10, 1) })).annotate({
         identifier: "TransformationOutputDataConfig",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TotalFilesScanned: S.Number,
-          TotalFilesConverted: S.Number,
-          TotalFilesFailed: S.Number,
-          TotalResourcesGenerated: S.Number,
-        }),
-      ).annotate({
-        identifier: "TransformationJobProgressReport",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          JobId: S.String,
-          JobStatus: S.String,
-          InputDataConfig: __S(24, __c3, 0),
-          OutputDataConfig: __S(26, __c3, 2),
-          DataAccessRoleArn: S.String,
-          SubmitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          JobName: S.optional(S.String),
-          ProfileId: S.optional(S.String),
-          ProfileName: S.optional(S.String),
-          ProfileVersion: S.optional(S.Number),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DriftDetectionEnabled: S.optional(S.Boolean),
-          ProvenanceEnabled: S.optional(S.Boolean),
-          Message: S.optional(S.String),
-          JobProgressReport: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "TransformationJobProperties",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ TransformationJobProperties: __S(28, __c3, 4) })).annotate({
-        identifier: "DescribeDataTransformationJobResponse",
-      });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatastoreId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1853,18 +1885,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeFHIRDatastoreRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ErrorMessage: S.optional(S.String), ErrorCategory: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorCause" });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ ErrorMessage: S.optional(S.String), ErrorCategory: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorCause" });
+    case 1:
+      return S.suspend(() =>
         S.Struct({
-          Configuration: S.optional(__S(17, __c2, 1)),
+          Configuration: S.optional(__S(41, __c5, 1)),
           BackupEnabledAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EarliestRestorePoint: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LatestRestorePoint: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1873,7 +1905,7 @@ function __c4(j: number): any {
           ),
         }),
       ).annotate({ identifier: "DatastoreBackupStatus" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DatastoreId: S.String,
@@ -1883,21 +1915,29 @@ function __c4(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DatastoreTypeVersion: S.String,
           DatastoreEndpoint: S.String,
-          SseConfiguration: S.optional(__S(9, __c1, 1)),
-          PreloadDataConfig: S.optional(__S(10, __c1, 2)),
-          IdentityProviderConfiguration: S.optional(__S(13, __c1, 5)),
-          ErrorCause: S.optional(__S(31, __c3, 7)),
-          NlpConfiguration: S.optional(__S(14, __c1, 6)),
-          AnalyticsConfiguration: S.optional(__S(14, __c1, 6)),
-          ProfileConfiguration: S.optional(__S(16, __c2, 0)),
-          BackupStatusInfo: S.optional(__S(32, __c4, 0)),
+          SseConfiguration: S.optional(__S(33, __c4, 1)),
+          PreloadDataConfig: S.optional(__S(40, __c5, 0)),
+          IdentityProviderConfiguration: S.optional(__S(34, __c4, 2)),
+          ErrorCause: S.optional(__S(96, __c12, 0)),
+          NlpConfiguration: S.optional(__S(35, __c4, 3)),
+          AnalyticsConfiguration: S.optional(__S(35, __c4, 3)),
+          ProfileConfiguration: S.optional(__S(36, __c4, 4)),
+          BackupStatusInfo: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "DatastoreProperties" });
-    case 2:
-      return S.suspend(() => S.Struct({ DatastoreProperties: __S(33, __c4, 1) })).annotate({
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ DatastoreProperties: __S(98, __c12, 2) })).annotate({
         identifier: "DescribeFHIRDatastoreResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatastoreId: S.String, JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1905,13 +1945,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeFHIRExportJobRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ ExportJobProperties: __S(128, __c16, 0) })).annotate({
+        identifier: "DescribeFHIRExportJobResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ S3Uri: S.String, KmsKeyId: S.String })).annotate({
         identifier: "S3Configuration",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ S3Configuration: __S(36, __c4, 4) })]);
-    case 6:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ S3Configuration: __S(120, __c15, 0) })]);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.String,
@@ -1920,18 +1972,14 @@ function __c4(j: number): any {
           SubmitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DatastoreId: S.String,
-          OutputDataConfig: __S(37, __c4, 5),
+          OutputDataConfig: __S(121, __c15, 1),
           DataAccessRoleArn: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportJobProperties" });
-    case 7:
-      return S.suspend(() => S.Struct({ ExportJobProperties: __S(38, __c4, 6) })).annotate({
-        identifier: "DescribeFHIRExportJobResponse",
-      });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1942,8 +1990,14 @@ function __c5(j: number): any {
         identifier: "DescribeFHIRImportJobRequest",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ S3Uri: S.String })]);
-    case 2:
+      return S.suspend(() => S.Struct({ ImportJobProperties: __S(145, __c18, 1) })).annotate({
+        identifier: "DescribeFHIRImportJobResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TotalNumberOfScannedFiles: S.optional(S.Number),
@@ -1965,7 +2019,7 @@ function __c5(j: number): any {
           TotalResourcesGenerated: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobProgressReport" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.String,
@@ -1974,19 +2028,25 @@ function __c5(j: number): any {
           SubmitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DatastoreId: S.String,
-          InputDataConfig: __S(41, __c5, 1),
-          JobOutputDataConfig: S.optional(__S(37, __c4, 5)),
-          JobProgressReport: S.optional(__S(42, __c5, 2)),
+          InputDataConfig: __S(152, __c19, 0),
+          JobOutputDataConfig: S.optional(__S(121, __c15, 1)),
+          JobProgressReport: S.optional(__S(144, __c18, 0)),
           DataAccessRoleArn: S.optional(S.String),
           Message: S.optional(S.String),
           ValidationLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportJobProperties" });
-    case 4:
-      return S.suspend(() => S.Struct({ ImportJobProperties: __S(43, __c5, 3) })).annotate({
-        identifier: "DescribeFHIRImportJobResponse",
-      });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ S3Uri: S.String })]);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String.pipe(T.HttpLabel("ProfileId")),
@@ -2004,16 +2064,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetDataTransformationProfileRequest",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
           Version: S.Number,
           SourceFormat: S.String,
           TargetFormat: S.String,
-          ProfileMapping: __S(46, __c5, 6),
+          ProfileMapping: __S(168, __c21, 0),
           ProfileName: S.optional(S.String),
           ProfileDescription: S.optional(S.String),
           ChangeDescription: S.optional(S.String),
@@ -2024,7 +2082,13 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2064,14 +2128,18 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "TransformationJobSummary" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: __S(50, __c6, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: __S(178, __c22, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataTransformationJobsResponse",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceFormat: S.String.pipe(T.HttpQuery("sourceFormat")),
@@ -2090,7 +2158,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDataTransformationProfilesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
@@ -2104,17 +2172,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DataTransformationProfileSummary",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Items: __S(54, __c6, 6), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: __S(186, __c23, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataTransformationProfilesResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2150,17 +2218,18 @@ function __c7(j: number): any {
         identifier: "DataTransformationProfileVersionSummary",
       });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: __S(58, __c7, 2),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ Items: __S(194, __c24, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataTransformationProfileVersionsResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatastoreName: S.optional(S.String),
@@ -2169,30 +2238,27 @@ function __c7(j: number): any {
           CreatedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DatastoreFilter" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(60, __c7, 4)),
+          Filter: S.optional(__S(200, __c25, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListFHIRDatastoresRequest",
       });
-    case 6:
-      return S.Array(__S(33, __c4, 1));
-    case 7:
+    case 2:
+      return S.Array(__S(98, __c12, 2));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          DatastorePropertiesList: __S(62, __c7, 6),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ DatastorePropertiesList: __S(202, __c25, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFHIRDatastoresResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2209,17 +2275,18 @@ function __c8(j: number): any {
         identifier: "ListFHIRExportJobsRequest",
       });
     case 1:
-      return S.Array(__S(38, __c4, 6));
+      return S.Array(__S(128, __c16, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          ExportJobPropertiesList: __S(65, __c8, 1),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ ExportJobPropertiesList: __S(209, __c26, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFHIRExportJobsResponse",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatastoreId: S.String,
@@ -2233,18 +2300,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListFHIRImportJobsRequest",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(145, __c18, 1));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          ImportJobPropertiesList: __S(68, __c8, 4),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ ImportJobPropertiesList: __S(217, __c27, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFHIRImportJobsResponse",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2252,13 +2320,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(12, __c1, 4)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(49, __c6, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2293,40 +2361,48 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PublishDataTransformationProfileResponse",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RestorePointTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
       ).annotate({
         identifier: "ContinuousBackupRestoreConfiguration",
       });
-    case 3:
+    case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          ContinuousBackupRestoreConfiguration: __S(74, __c9, 2),
+          ContinuousBackupRestoreConfiguration: __S(240, __c30, 0),
         }),
       ]);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SourceDatastoreId: S.String,
-          RestoreConfiguration: __S(75, __c9, 3),
+          RestoreConfiguration: __S(241, __c30, 1),
           DatastoreName: S.optional(S.String),
-          SseConfiguration: S.optional(__S(9, __c1, 1)),
+          SseConfiguration: S.optional(__S(33, __c4, 1)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(12, __c1, 4)),
-          IdentityProviderConfiguration: S.optional(__S(13, __c1, 5)),
-          AnalyticsConfiguration: S.optional(__S(14, __c1, 6)),
-          NlpConfiguration: S.optional(__S(14, __c1, 6)),
-          ProfileConfiguration: S.optional(__S(16, __c2, 0)),
+          Tags: S.optional(__S(49, __c6, 1)),
+          IdentityProviderConfiguration: S.optional(__S(34, __c4, 2)),
+          AnalyticsConfiguration: S.optional(__S(35, __c4, 3)),
+          NlpConfiguration: S.optional(__S(35, __c4, 3)),
+          ProfileConfiguration: S.optional(__S(36, __c4, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreFHIRDatastoreRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(24, __c3, 0),
-          OutputDataConfig: __S(26, __c3, 2),
+          InputDataConfig: __S(80, __c10, 0),
+          OutputDataConfig: __S(82, __c10, 2),
           DataAccessRoleArn: S.String,
           ClientToken: S.String,
           JobName: S.optional(S.String),
@@ -2346,15 +2422,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "StartDataTransformationJobRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ JobId: S.String, JobStatus: S.String })).annotate({
         identifier: "StartDataTransformationJobResponse",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          OutputDataConfig: __S(37, __c4, 5),
+          OutputDataConfig: __S(121, __c15, 1),
           DatastoreId: S.String,
           DataAccessRoleArn: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2364,7 +2444,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2372,12 +2452,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StartFHIRExportJobResponse",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          InputDataConfig: __S(41, __c5, 1),
-          JobOutputDataConfig: __S(37, __c4, 5),
+          InputDataConfig: __S(152, __c19, 0),
+          JobOutputDataConfig: __S(121, __c15, 1),
           DatastoreId: S.String,
           DataAccessRoleArn: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2390,27 +2474,43 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StartFHIRImportJobRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(12, __c1, 4) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(49, __c6, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(15, __c1, 7) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(24, __c3, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String.pipe(T.HttpLabel("ProfileId")),
-          ProfileMapping: __S(46, __c5, 6),
+          ProfileMapping: __S(168, __c21, 0),
           ChangeDescription: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2425,7 +2525,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateDataTransformationProfileRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
@@ -2437,23 +2537,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateDataTransformationProfileResponse",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatastoreId: S.String,
           DatastoreName: S.optional(S.String),
-          AnalyticsConfiguration: S.optional(__S(14, __c1, 6)),
-          NlpConfiguration: S.optional(__S(14, __c1, 6)),
-          ProfileConfiguration: S.optional(__S(16, __c2, 0)),
-          IdentityProviderConfiguration: S.optional(__S(13, __c1, 5)),
-          BackupConfiguration: S.optional(__S(17, __c2, 1)),
+          AnalyticsConfiguration: S.optional(__S(35, __c4, 3)),
+          NlpConfiguration: S.optional(__S(35, __c4, 3)),
+          ProfileConfiguration: S.optional(__S(36, __c4, 4)),
+          IdentityProviderConfiguration: S.optional(__S(34, __c4, 2)),
+          BackupConfiguration: S.optional(__S(41, __c5, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateFHIRDatastoreRequest",
       });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Body: SensitiveString, Type: S.String })).annotate({
@@ -2464,7 +2568,7 @@ function __c11(j: number): any {
         S.Struct({
           ProfileId: S.String,
           SourceFormat: S.String,
-          InputMessage: __S(88, __c11, 0),
+          InputMessage: __S(320, __c40, 0),
           ConversationId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2486,18 +2590,17 @@ function __c11(j: number): any {
         S.Struct({
           Body: SensitiveString,
           Type: S.String,
-          OptionsList: S.optional(__S(90, __c11, 2)),
+          OptionsList: S.optional(__S(322, __c40, 2)),
         }),
       ).annotate({ identifier: "AgentOutputMessage" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ AgentResponse: __S(91, __c11, 3), ConversationId: S.String }),
+        S.Struct({ AgentResponse: __S(323, __c40, 3), ConversationId: S.String }),
       ).annotate({
         identifier: "UpdateProfileWithAgentResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -244,7 +244,7 @@ export const deleteWebhook: API.OperationMethod<
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteWebhookResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -258,8 +258,8 @@ export const deleteWebhooksLookup: API.OperationMethod<
   DeleteWebhooksLookupError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteWebhooksLookupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteWebhooksLookupResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteWebhooksLookupRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteWebhooksLookupResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -273,8 +273,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetWebhookRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Webhook>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<Webhook>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -288,8 +288,8 @@ export const getWebhooksEvent: API.OperationMethod<
   GetWebhooksEventError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetWebhooksEventRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Event>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetWebhooksEventRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Event>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const getWebhooksLookup: API.OperationMethod<
   GetWebhooksLookupError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetWebhooksLookupRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebhooksLookup>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetWebhooksLookupRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<WebhooksLookup>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const listEventTypes: API.OperationMethod<
   ListEventTypesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListEventTypesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EventTypeList>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListEventTypesRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<EventTypeList>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -333,8 +333,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListWebhooksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<WebhookList>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<WebhookList>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const listWebhooksEvents: API.OperationMethod<
   ListWebhooksEventsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListWebhooksEventsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<EventList>,
+  input: __S(80, __c20, 0) as any as S.Schema<ListWebhooksEventsRequest>,
+  output: __S(82, __c20, 2) as any as S.Schema<EventList>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const listWebhooksEventTypes: API.OperationMethod<
   ListWebhooksEventTypesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListWebhooksEventTypesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EventTypeList>,
+  input: __S(84, __c21, 0) as any as S.Schema<ListWebhooksEventTypesRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<EventTypeList>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const listWebhooksLookup: API.OperationMethod<
   ListWebhooksLookupError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListWebhooksLookupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WebhookLookupList>,
+  input: __S(88, __c22, 0) as any as S.Schema<ListWebhooksLookupRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<WebhookLookupList>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const postSimulateEvent: API.OperationMethod<
   PostSimulateEventError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PostSimulateEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PostSimulateEventResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<PostSimulateEventRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PostSimulateEventResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const postWebhook: API.OperationMethod<
   PostWebhookError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<PostWebhookRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Webhook>,
+  input: __S(18, __c4, 2) as any as S.Schema<PostWebhookRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<Webhook>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const postWebhooksLookup: API.OperationMethod<
   PostWebhooksLookupError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<PostWebhooksLookupRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WebhooksLookup>,
+  input: __S(20, __c5, 0) as any as S.Schema<PostWebhooksLookupRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<WebhooksLookup>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const resendWebhooksEvent: API.OperationMethod<
   ResendWebhooksEventError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ResendWebhooksEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResendWebhooksEventResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<ResendWebhooksEventRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ResendWebhooksEventResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Webhook>,
+  input: __S(30, __c7, 2) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<Webhook>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const verifyWebhookSignaturePost: API.OperationMethod<
   VerifyWebhookSignaturePostError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<VerifyWebhookSignaturePostRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<VerifyWebhookSignatureResponse>,
+  input: __S(33, __c8, 1) as any as S.Schema<VerifyWebhookSignaturePostRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<VerifyWebhookSignatureResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -486,11 +486,19 @@ function __c0(j: number): any {
           T.Http({ method: "DELETE", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWebhookResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_lookup_id: S.String.pipe(T.Label()),
@@ -504,7 +512,135 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteWebhooksLookupRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.optional(S.String),
+          url: S.optional(S.String),
+          event_type: S.String,
+          resource_version: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/notifications/simulate-event", code: 200 })),
+      ).annotate({ identifier: "PostSimulateEventRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "EventTypeInput" });
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          event_types: __S(17, __c4, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/notifications/webhooks", code: 200 })),
+      ).annotate({ identifier: "PostWebhookRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/v1/notifications/webhooks-lookup", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PostWebhooksLookupRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          event_id: S.String.pipe(T.Label()),
+          webhook_ids: S.optional(__S(24, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/notifications/webhooks-events/{event_id}/resend",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ResendWebhooksEventRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.String,
+          path: S.optional(S.String),
+          value: S.optional(S.NullOr(S.Unknown)),
+          from: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Patch" });
+    case 1:
+      return S.Array(__S(28, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          body: S.optional(__S(29, __c7, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          event_version: S.optional(S.String),
+          resource_version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          auth_algo: S.String,
+          cert_url: S.String,
+          transmission_id: S.String,
+          transmission_sig: S.String,
+          transmission_time: S.String,
+          webhook_id: S.String,
+          webhook_event: __S(32, __c8, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/notifications/verify-webhook-signature", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "VerifyWebhookSignaturePostRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          verification_status: S.String,
+        }),
+      ).annotate({
+        identifier: "VerifyWebhookSignatureResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -512,20 +648,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          status: S.optional(S.String),
-          resource_versions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EventType" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -533,22 +660,43 @@ function __c0(j: number): any {
           method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
+    case 1:
+      return S.Array(__S(40, __c10, 0));
   }
 }
-function __c1(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          status: S.optional(S.String),
+          resource_versions: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "EventType" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(45, __c11, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           url: S.String,
-          event_types: __S(6, __c0, 6),
-          links: S.optional(__S(8, __c1, 0)),
+          event_types: __S(48, __c12, 0),
+          links: S.optional(__S(41, __c10, 1)),
         }),
       ).annotate({ identifier: "Webhook" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           event_id: S.String.pipe(T.Label()),
@@ -556,9 +704,13 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/v1/notifications/webhooks-events/{event_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetWebhooksEventRequest" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -568,11 +720,15 @@ function __c1(j: number): any {
           event_type: S.optional(S.String),
           summary: S.optional(S.String),
           resource_version: S.optional(S.String),
-          resource: S.optional(__S(11, __c1, 3)),
-          links: S.optional(__S(8, __c1, 0)),
+          resource: S.optional(__S(56, __c14, 0)),
+          links: S.optional(__S(41, __c10, 1)),
         }),
       ).annotate({ identifier: "Event" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_lookup_id: S.String.pipe(T.Label()),
@@ -584,15 +740,23 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWebhooksLookupRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           client_id: S.optional(S.String),
-          links: S.optional(__S(8, __c1, 0)),
+          links: S.optional(__S(41, __c10, 1)),
         }),
       ).annotate({ identifier: "WebhooksLookup" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -606,31 +770,39 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ListEventTypesRequest" });
   }
 }
-function __c2(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(45, __c11, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          event_types: S.optional(__S(16, __c2, 0)),
+          event_types: S.optional(__S(72, __c18, 0)),
         }),
       ).annotate({ identifier: "EventTypeList" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           anchor_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/notifications/webhooks", code: 200 })),
       ).annotate({ identifier: "ListWebhooksRequest" });
-    case 3:
-      return S.Array(__S(9, __c1, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(49, __c12, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          webhooks: S.optional(__S(19, __c2, 3)),
+          webhooks: S.optional(__S(77, __c19, 1)),
         }),
       ).annotate({ identifier: "WebhookList" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_size: S.optional(S.Number.pipe(T.Query())),
@@ -642,19 +814,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListWebhooksEventsRequest",
       });
-    case 6:
-      return S.Array(__S(12, __c1, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(57, __c14, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(22, __c2, 6)),
+          events: S.optional(__S(81, __c20, 1)),
           count: S.optional(S.Number),
-          links: S.optional(__S(8, __c1, 0)),
+          links: S.optional(__S(41, __c10, 1)),
         }),
       ).annotate({ identifier: "EventList" });
   }
 }
-function __c3(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -664,7 +836,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListWebhooksEventTypesRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/notifications/webhooks-lookup", code: 200 }),
@@ -672,125 +848,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListWebhooksLookupRequest",
       });
+    case 1:
+      return S.Array(__S(64, __c16, 0));
     case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          webhooks_lookups: S.optional(__S(26, __c3, 2)),
+          webhooks_lookups: S.optional(__S(89, __c22, 1)),
         }),
       ).annotate({ identifier: "WebhookLookupList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.optional(S.String),
-          url: S.optional(S.String),
-          event_type: S.String,
-          resource_version: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/notifications/simulate-event", code: 200 })),
-      ).annotate({ identifier: "PostSimulateEventRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "EventTypeInput" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          event_types: __S(30, __c3, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/notifications/webhooks", code: 200 })),
-      ).annotate({ identifier: "PostWebhookRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/v1/notifications/webhooks-lookup", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PostWebhooksLookupRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          event_id: S.String.pipe(T.Label()),
-          webhook_ids: S.optional(__S(33, __c4, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/notifications/webhooks-events/{event_id}/resend",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ResendWebhooksEventRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.String,
-          path: S.optional(S.String),
-          value: S.optional(S.NullOr(S.Unknown)),
-          from: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Patch" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          event_version: S.optional(S.String),
-          resource_version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auth_algo: S.String,
-          cert_url: S.String,
-          transmission_id: S.String,
-          transmission_sig: S.String,
-          transmission_time: S.String,
-          webhook_id: S.String,
-          webhook_event: __S(38, __c4, 6),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/notifications/verify-webhook-signature", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "VerifyWebhookSignaturePostRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          verification_status: S.String,
-        }),
-      ).annotate({
-        identifier: "VerifyWebhookSignatureResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

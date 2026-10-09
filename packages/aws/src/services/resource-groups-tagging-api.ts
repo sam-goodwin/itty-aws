@@ -278,8 +278,8 @@ export const describeReportCreation: API.OperationMethod<
   DescribeReportCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DescribeReportCreationInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DescribeReportCreationOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<DescribeReportCreationInput>,
+  output: __S(97, __c6, 1) as any as S.Schema<DescribeReportCreationOutput>,
   errors: [
     ConstraintViolationException,
     InternalServiceException,
@@ -321,8 +321,8 @@ export const getComplianceSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Summary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetComplianceSummaryInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetComplianceSummaryOutput>,
+  input: __S(113, __c7, 1) as any as S.Schema<GetComplianceSummaryInput>,
+  output: __S(116, __c7, 4) as any as S.Schema<GetComplianceSummaryOutput>,
   errors: [
     ConstraintViolationException,
     InternalServiceException,
@@ -380,8 +380,8 @@ export const getResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceTagMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetResourcesInput>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetResourcesOutput>,
+  input: __S(146, __c9, 2) as any as S.Schema<GetResourcesInput>,
+  output: __S(152, __c9, 8) as any as S.Schema<GetResourcesOutput>,
   errors: [
     InternalServiceException,
     InvalidParameterException,
@@ -423,8 +423,8 @@ export const getTagKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TagKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetTagKeysInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetTagKeysOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetTagKeysInput>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetTagKeysOutput>,
   errors: [
     InternalServiceException,
     InvalidParameterException,
@@ -465,8 +465,8 @@ export const getTagValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TagValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetTagValuesInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTagValuesOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetTagValuesInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetTagValuesOutput>,
   errors: [
     InternalServiceException,
     InvalidParameterException,
@@ -499,8 +499,8 @@ export const listRequiredTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RequiredTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListRequiredTagsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListRequiredTagsOutput>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListRequiredTagsInput>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListRequiredTagsOutput>,
   errors: [
     InternalServiceException,
     InvalidParameterException,
@@ -554,8 +554,8 @@ export const startReportCreation: API.OperationMethod<
   StartReportCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<StartReportCreationInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<StartReportCreationOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<StartReportCreationInput>,
+  output: __S(33, __c2, 1) as any as S.Schema<StartReportCreationOutput>,
   errors: [
     ConcurrentModificationException,
     ConstraintViolationException,
@@ -631,8 +631,8 @@ export const tagResources: API.OperationMethod<
   TagResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<TagResourcesInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<TagResourcesOutput>,
+  input: __S(49, __c3, 1) as any as S.Schema<TagResourcesInput>,
+  output: __S(66, __c4, 2) as any as S.Schema<TagResourcesOutput>,
   errors: [InternalServiceException, InvalidParameterException, ThrottledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -682,8 +682,8 @@ export const untagResources: API.OperationMethod<
   UntagResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UntagResourcesInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<UntagResourcesOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<UntagResourcesInput>,
+  output: __S(66, __c4, 2) as any as S.Schema<UntagResourcesOutput>,
   errors: [InternalServiceException, InvalidParameterException, ThrottledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -692,6 +692,111 @@ export const untagResources: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PaginationToken: S.optional(S.String), Key: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetTagValues" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTagValuesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PaginationToken: S.optional(S.String),
+          TagValues: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "GetTagValuesOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListRequiredTags" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRequiredTagsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: S.optional(S.String),
+          CloudFormationResourceTypes: S.optional(__S(128, __c8, 0)),
+          ReportingTagKeys: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "RequiredTag" });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RequiredTags: S.optional(__S(18, __c1, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRequiredTagsOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ S3Bucket: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartReportCreation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartReportCreationInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "StartReportCreationOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceARNList: __S(128, __c8, 0), Tags: __S(48, __c3, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResources" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourcesInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StatusCode: S.optional(S.Number),
+          ErrorCode: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailureInfo" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(64, __c4, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ FailedResourcesMap: S.optional(__S(65, __c4, 1)) }),
+      ).annotate({ identifier: "TagResourcesOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARNList: __S(128, __c8, 0), TagKeys: __S(128, __c8, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResources" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourcesInput" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -719,18 +824,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeReportCreationOutput",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TargetIdFilters: S.optional(__S(2, __c0, 2)),
-          RegionFilters: S.optional(__S(2, __c0, 2)),
-          ResourceTypeFilters: S.optional(__S(2, __c0, 2)),
-          TagKeyFilters: S.optional(__S(2, __c0, 2)),
-          GroupBy: S.optional(__S(3, __c0, 3)),
+          TargetIdFilters: S.optional(__S(128, __c8, 0)),
+          RegionFilters: S.optional(__S(128, __c8, 0)),
+          ResourceTypeFilters: S.optional(__S(128, __c8, 0)),
+          TagKeyFilters: S.optional(__S(128, __c8, 0)),
+          GroupBy: S.optional(__S(112, __c7, 0)),
           MaxResults: S.optional(S.Number),
           PaginationToken: S.optional(S.String),
         }).pipe(
@@ -746,7 +853,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetComplianceSummaryInput",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           LastUpdated: S.optional(S.String),
@@ -757,12 +864,12 @@ function __c0(j: number): any {
           NonCompliantResources: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Summary" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          SummaryList: S.optional(__S(6, __c0, 6)),
+          SummaryList: S.optional(__S(115, __c7, 3)),
           PaginationToken: S.optional(S.String),
         }),
       ).annotate({
@@ -770,25 +877,31 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(2, __c0, 2)) }),
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(128, __c8, 0)) }),
       ).annotate({ identifier: "TagFilter" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(144, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           PaginationToken: S.optional(S.String),
-          TagFilters: S.optional(__S(9, __c1, 1)),
+          TagFilters: S.optional(__S(145, __c9, 1)),
           ResourcesPerPage: S.optional(S.Number),
           TagsPerPage: S.optional(S.Number),
-          ResourceTypeFilters: S.optional(__S(2, __c0, 2)),
+          ResourceTypeFilters: S.optional(__S(128, __c8, 0)),
           IncludeComplianceDetails: S.optional(S.Boolean),
           ExcludeCompliantResources: S.optional(S.Boolean),
-          ResourceARNList: S.optional(__S(2, __c0, 2)),
+          ResourceARNList: S.optional(__S(128, __c8, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetResources" }), svc, auth, proto, ver, rules),
         ),
@@ -798,13 +911,13 @@ function __c1(j: number): any {
         identifier: "Tag",
       });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(147, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NoncompliantKeys: S.optional(__S(2, __c0, 2)),
-          KeysWithNoncompliantValues: S.optional(__S(2, __c0, 2)),
-          MissingTagKeys: S.optional(__S(2, __c0, 2)),
+          NoncompliantKeys: S.optional(__S(128, __c8, 0)),
+          KeysWithNoncompliantValues: S.optional(__S(128, __c8, 0)),
+          MissingTagKeys: S.optional(__S(128, __c8, 0)),
           ComplianceStatus: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ComplianceDetails" });
@@ -812,125 +925,35 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.optional(S.String),
-          Tags: S.optional(__S(12, __c1, 4)),
-          ComplianceDetails: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(148, __c9, 4)),
+          ComplianceDetails: S.optional(__S(149, __c9, 5)),
         }),
       ).annotate({ identifier: "ResourceTagMapping" });
     case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           PaginationToken: S.optional(S.String),
-          ResourceTagMappingList: S.optional(__S(15, __c1, 7)),
+          ResourceTagMappingList: S.optional(__S(151, __c9, 7)),
         }),
       ).annotate({ identifier: "GetResourcesOutput" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PaginationToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetTagKeys" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTagKeysInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ PaginationToken: S.optional(S.String), TagKeys: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "GetTagKeysOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ PaginationToken: S.optional(S.String), Key: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/GetTagValues" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetTagValuesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PaginationToken: S.optional(S.String),
-          TagValues: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "GetTagValuesOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/ListRequiredTags" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListRequiredTagsInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceType: S.optional(S.String),
-          CloudFormationResourceTypes: S.optional(__S(2, __c0, 2)),
-          ReportingTagKeys: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "RequiredTag" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RequiredTags: S.optional(__S(23, __c2, 7)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRequiredTagsOutput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ S3Bucket: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/StartReportCreation" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartReportCreationInput" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StartReportCreationOutput",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceARNList: __S(2, __c0, 2), Tags: __S(27, __c3, 3) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/TagResources" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourcesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          StatusCode: S.optional(S.Number),
-          ErrorCode: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailureInfo" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(29, __c3, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ FailedResourcesMap: S.optional(__S(30, __c3, 6)) }),
-      ).annotate({ identifier: "TagResourcesOutput" });
+        S.Struct({ PaginationToken: S.optional(S.String), TagKeys: S.optional(__S(128, __c8, 0)) }),
+      ).annotate({ identifier: "GetTagKeysOutput" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceARNList: __S(2, __c0, 2), TagKeys: __S(2, __c0, 2) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/UntagResources" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourcesInput" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -3174,14 +3174,14 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    400,
+    __c25,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3200,13 +3200,13 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: 
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    720,
+    __c45,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    26,
-    __c3,
+    738,
+    __c46,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -3226,14 +3226,14 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    27,
-    __c3,
-    3,
+    912,
+    __c57,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3252,14 +3252,14 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    1088,
+    __c68,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    31,
-    __c3,
-    7,
+    1105,
+    __c69,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3278,14 +3278,14 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicy: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    37,
-    __c4,
-    5,
+    1296,
+    __c81,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    1313,
+    __c82,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3304,13 +3304,13 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
+    1504,
+    __c94,
     0,
   ) as any as S.Schema<CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    41,
-    __c5,
+    1521,
+    __c95,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -3330,14 +3330,14 @@ export const createAdmissionregistrationV1MutatingWebhookConfiguration: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    48,
-    __c6,
+    1712,
+    __c107,
     0,
   ) as any as S.Schema<CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
   output: __S(
-    49,
-    __c6,
-    1,
+    1746,
+    __c109,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3356,14 +3356,14 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operati
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3382,13 +3382,13 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    32,
+    __c2,
     0,
   ) as any as S.Schema<CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
   output: __S(
-    65,
-    __c8,
+    49,
+    __c3,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -3408,14 +3408,14 @@ export const createAdmissionregistrationV1ValidatingWebhookConfiguration: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    64,
+    __c4,
+    0,
   ) as any as S.Schema<CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3432,11 +3432,11 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    96,
+    __c6,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3452,11 +3452,11 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
+    144,
     __c9,
-    6,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3474,11 +3474,11 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3496,11 +3496,11 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: 
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    176,
+    __c11,
     0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3516,11 +3516,11 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    81,
-    __c10,
-    1,
+    192,
+    __c12,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3536,11 +3536,11 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3558,11 +3558,11 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    224,
+    __c14,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3580,11 +3580,11 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    84,
-    __c10,
-    4,
+    240,
+    __c15,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3599,11 +3599,11 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicy: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3619,11 +3619,11 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3639,11 +3639,11 @@ export const deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    87,
-    __c10,
-    7,
+    288,
+    __c18,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3659,11 +3659,11 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicy: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    304,
+    __c19,
     0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3679,11 +3679,11 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    89,
-    __c11,
-    1,
+    320,
+    __c20,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3699,11 +3699,11 @@ export const deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    90,
-    __c11,
-    2,
+    336,
+    __c21,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3721,11 +3721,11 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicy: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    91,
-    __c11,
-    3,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3743,11 +3743,11 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    92,
-    __c11,
-    4,
+    368,
+    __c23,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3765,11 +3765,11 @@ export const deleteAdmissionregistrationV1MutatingWebhookConfiguration: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    384,
+    __c24,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3787,11 +3787,11 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operati
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    94,
-    __c11,
-    6,
+    528,
+    __c33,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3809,11 +3809,11 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    544,
+    __c34,
+    0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3831,11 +3831,11 @@ export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    96,
-    __c12,
+    560,
+    __c35,
     0,
   ) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(116, __c7, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3849,8 +3849,8 @@ export const getAdmissionregistrationAPIGroup: API.OperationMethod<
   GetAdmissionregistrationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetAdmissionregistrationAPIGroupRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetAdmissionregistrationAPIGroupRequest>,
+  output: __S(581, __c36, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3864,8 +3864,8 @@ export const getAdmissionregistrationV1alpha1APIResources: API.OperationMethod<
   GetAdmissionregistrationV1alpha1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetAdmissionregistrationV1alpha1APIResourcesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetAdmissionregistrationV1alpha1APIResourcesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3879,8 +3879,8 @@ export const getAdmissionregistrationV1APIResources: API.OperationMethod<
   GetAdmissionregistrationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetAdmissionregistrationV1APIResourcesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetAdmissionregistrationV1APIResourcesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3894,8 +3894,8 @@ export const getAdmissionregistrationV1beta1APIResources: API.OperationMethod<
   GetAdmissionregistrationV1beta1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetAdmissionregistrationV1beta1APIResourcesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetAdmissionregistrationV1beta1APIResourcesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3910,14 +3910,14 @@ export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    656,
+    __c41,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    673,
+    __c42,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3934,13 +3934,13 @@ export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: AP
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    688,
+    __c43,
     0,
   ) as any as S.Schema<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    114,
-    __c14,
+    690,
+    __c43,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList>,
   errors: [UnknownKubernetesError],
@@ -3957,14 +3957,14 @@ export const listAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    115,
-    __c14,
-    3,
+    704,
+    __c44,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    673,
+    __c42,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -3980,14 +3980,14 @@ export const listAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    752,
+    __c47,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    118,
-    __c14,
-    6,
+    754,
+    __c47,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4003,14 +4003,14 @@ export const listAdmissionregistrationV1MutatingAdmissionPolicy: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    768,
+    __c48,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
   output: __S(
-    121,
-    __c15,
-    1,
+    770,
+    __c48,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4026,14 +4026,14 @@ export const listAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    784,
+    __c49,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    124,
-    __c15,
-    4,
+    786,
+    __c49,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4049,14 +4049,14 @@ export const listAdmissionregistrationV1MutatingWebhookConfiguration: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    125,
-    __c15,
-    5,
+    800,
+    __c50,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
   output: __S(
-    127,
-    __c15,
-    7,
+    802,
+    __c50,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4072,13 +4072,13 @@ export const listAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    128,
-    __c16,
+    816,
+    __c51,
     0,
   ) as any as S.Schema<ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
   output: __S(
-    130,
-    __c16,
+    818,
+    __c51,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList>,
   errors: [UnknownKubernetesError],
@@ -4095,14 +4095,14 @@ export const listAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    832,
+    __c52,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
   output: __S(
-    133,
-    __c16,
-    5,
+    834,
+    __c52,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4118,14 +4118,14 @@ export const listAdmissionregistrationV1ValidatingWebhookConfiguration: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    134,
-    __c16,
-    6,
+    848,
+    __c53,
+    0,
   ) as any as S.Schema<ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
   output: __S(
-    136,
-    __c17,
-    0,
+    850,
+    __c53,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4145,14 +4145,14 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    864,
+    __c54,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4172,13 +4172,13 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    138,
-    __c17,
-    2,
+    880,
+    __c55,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    26,
-    __c3,
+    738,
+    __c46,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4199,14 +4199,14 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    896,
+    __c56,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4226,14 +4226,14 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: AP
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    928,
+    __c58,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    31,
-    __c3,
-    7,
+    1105,
+    __c69,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4253,14 +4253,14 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicy: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    141,
-    __c17,
-    5,
+    944,
+    __c59,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    1313,
+    __c82,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4280,13 +4280,13 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    960,
+    __c60,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    41,
-    __c5,
+    1521,
+    __c95,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4307,14 +4307,14 @@ export const patchAdmissionregistrationV1MutatingWebhookConfiguration: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    143,
-    __c17,
-    7,
+    976,
+    __c61,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
   output: __S(
-    49,
-    __c6,
-    1,
+    1746,
+    __c109,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4334,14 +4334,14 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
+    992,
+    __c62,
     0,
   ) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4361,13 +4361,13 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    1008,
+    __c63,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
   output: __S(
-    65,
-    __c8,
+    49,
+    __c3,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4388,14 +4388,14 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    146,
-    __c18,
-    2,
+    1024,
+    __c64,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4415,14 +4415,14 @@ export const patchAdmissionregistrationV1ValidatingWebhookConfiguration: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    147,
-    __c18,
-    3,
+    1040,
+    __c65,
+    0,
   ) as any as S.Schema<PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4440,14 +4440,14 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    1056,
+    __c66,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4465,13 +4465,13 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: AP
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    1072,
+    __c67,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    26,
-    __c3,
+    738,
+    __c46,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, UnknownKubernetesError],
@@ -4490,14 +4490,14 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    150,
-    __c18,
-    6,
+    1136,
+    __c71,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4515,14 +4515,14 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    151,
-    __c18,
-    7,
+    1152,
+    __c72,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    31,
-    __c3,
-    7,
+    1105,
+    __c69,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4538,14 +4538,14 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicy: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
+    1168,
+    __c73,
     0,
   ) as any as S.Schema<ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    1313,
+    __c82,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4563,13 +4563,13 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    1184,
+    __c74,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    41,
-    __c5,
+    1521,
+    __c95,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, UnknownKubernetesError],
@@ -4588,14 +4588,14 @@ export const readAdmissionregistrationV1MutatingWebhookConfiguration: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    1200,
+    __c75,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
   output: __S(
-    49,
-    __c6,
-    1,
+    1746,
+    __c109,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4613,14 +4613,14 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
-    3,
+    1216,
+    __c76,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4638,13 +4638,13 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    156,
-    __c19,
-    4,
+    1232,
+    __c77,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
   output: __S(
-    65,
-    __c8,
+    49,
+    __c3,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>,
   errors: [NotFound, UnknownKubernetesError],
@@ -4663,14 +4663,14 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    157,
-    __c19,
-    5,
+    1248,
+    __c78,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4688,14 +4688,14 @@ export const readAdmissionregistrationV1ValidatingWebhookConfiguration: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    1264,
+    __c79,
+    0,
   ) as any as S.Schema<ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4715,14 +4715,14 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    159,
-    __c19,
-    7,
+    1280,
+    __c80,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4742,13 +4742,13 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding:
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    160,
-    __c20,
+    1344,
+    __c84,
     0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    26,
-    __c3,
+    738,
+    __c46,
     2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4769,14 +4769,14 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    161,
-    __c20,
-    1,
+    1360,
+    __c85,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4796,14 +4796,14 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: 
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    162,
-    __c20,
-    2,
+    1376,
+    __c86,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    31,
-    __c3,
-    7,
+    1105,
+    __c69,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4823,14 +4823,14 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicy: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    163,
-    __c20,
-    3,
+    1392,
+    __c87,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    1313,
+    __c82,
+    1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4850,13 +4850,13 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    1408,
+    __c88,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
   output: __S(
-    41,
-    __c5,
+    1521,
+    __c95,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4877,14 +4877,14 @@ export const replaceAdmissionregistrationV1MutatingWebhookConfiguration: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    165,
-    __c20,
-    5,
+    1424,
+    __c89,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
   output: __S(
-    49,
-    __c6,
-    1,
+    1746,
+    __c109,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4904,14 +4904,14 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    166,
-    __c20,
-    6,
+    1440,
+    __c90,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4931,13 +4931,13 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    167,
-    __c20,
-    7,
+    1456,
+    __c91,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
   output: __S(
-    65,
-    __c8,
+    49,
+    __c3,
     1,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
@@ -4958,14 +4958,14 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    168,
-    __c21,
+    1472,
+    __c92,
     0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    27,
+    __c1,
+    11,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -4985,14 +4985,14 @@ export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    169,
-    __c21,
-    1,
+    1488,
+    __c93,
+    0,
   ) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -5008,11 +5008,11 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicy: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    1536,
+    __c96,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5028,11 +5028,11 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    1568,
+    __c98,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5048,11 +5048,11 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingLis
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    173,
-    __c21,
-    5,
+    1584,
+    __c99,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5067,11 +5067,11 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyList: API.
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    1600,
+    __c100,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5086,11 +5086,11 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicy: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    1616,
+    __c101,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5106,11 +5106,11 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding: AP
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    176,
-    __c22,
+    1632,
+    __c102,
     0,
   ) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5126,11 +5126,11 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    1648,
+    __c103,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5145,11 +5145,11 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyList: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    178,
-    __c22,
-    2,
+    1664,
+    __c104,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5164,11 +5164,11 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicy: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    179,
-    __c22,
-    3,
+    1680,
+    __c105,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5183,11 +5183,11 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBinding: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    180,
-    __c22,
-    4,
+    1696,
+    __c106,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5202,11 +5202,11 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBindingList: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    1760,
+    __c110,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5221,11 +5221,11 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyList: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    1776,
+    __c111,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5240,11 +5240,11 @@ export const watchAdmissionregistrationV1MutatingWebhookConfiguration: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    183,
-    __c22,
-    7,
+    1792,
+    __c112,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5259,11 +5259,11 @@ export const watchAdmissionregistrationV1MutatingWebhookConfigurationList: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    184,
-    __c23,
+    1808,
+    __c113,
     0,
   ) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5278,11 +5278,11 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicy: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    185,
-    __c23,
-    1,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5297,11 +5297,11 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBinding: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    186,
-    __c23,
-    2,
+    1840,
+    __c115,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5317,11 +5317,11 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBindingList: A
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    1856,
+    __c116,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5336,11 +5336,11 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyList: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    188,
-    __c23,
-    4,
+    1872,
+    __c117,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5355,11 +5355,11 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfiguration: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    189,
-    __c23,
-    5,
+    1888,
+    __c118,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5374,11 +5374,11 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    190,
-    __c23,
-    6,
+    1904,
+    __c119,
+    0,
   ) as any as S.Schema<WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1552, __c97, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -5388,555 +5388,32 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList: API
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(20, __c1, 4)),
+          status: S.optional(__S(26, __c1, 10)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MatchCondition",
+        identifier: "CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroups: S.optional(__S(9, __c1, 1)),
-          apiVersions: S.optional(__S(9, __c1, 1)),
-          operations: S.optional(__S(9, __c1, 1)),
-          resourceNames: S.optional(__S(9, __c1, 1)),
-          resources: S.optional(__S(9, __c1, 1)),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(13, __c1, 5)),
-          matchLabels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          excludeResourceRules: S.optional(__S(11, __c1, 3)),
-          matchPolicy: S.optional(S.String),
-          namespaceSelector: S.optional(__S(14, __c1, 6)),
-          objectSelector: S.optional(__S(14, __c1, 6)),
-          resourceRules: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MatchResources",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applyConfiguration: S.optional(__S(16, __c2, 0)),
-          jsonPatch: S.optional(__S(16, __c2, 0)),
-          patchType: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1Mutation",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1ParamKind",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          failurePolicy: S.optional(S.String),
-          matchConditions: S.optional(__S(8, __c1, 0)),
-          matchConstraints: S.optional(__S(15, __c1, 7)),
-          mutations: S.optional(__S(18, __c2, 2)),
-          paramKind: S.optional(__S(19, __c2, 3)),
-          reinvocationPolicy: S.optional(S.String),
-          variables: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          parameterNotFoundAction: S.optional(S.String),
-          selector: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1ParamRef",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          matchResources: S.optional(__S(15, __c1, 7)),
-          paramRef: S.optional(__S(23, __c2, 7)),
-          policyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          parameterNotFoundAction: S.String,
-          selector: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1beta1ParamRef",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          matchResources: S.optional(__S(15, __c1, 7)),
-          paramRef: S.optional(__S(28, __c3, 4)),
-          policyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroups: S.optional(__S(9, __c1, 1)),
-          apiVersions: S.optional(__S(9, __c1, 1)),
-          operations: S.optional(__S(9, __c1, 1)),
-          resourceNames: S.optional(__S(9, __c1, 1)),
-          resources: S.optional(__S(9, __c1, 1)),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1NamedRuleWithOperations",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Array(__S(32, __c4, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          excludeResourceRules: S.optional(__S(33, __c4, 1)),
-          matchPolicy: S.optional(S.String),
-          namespaceSelector: S.optional(__S(14, __c1, 6)),
-          objectSelector: S.optional(__S(14, __c1, 6)),
-          resourceRules: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MatchResources",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          failurePolicy: S.optional(S.String),
-          matchConditions: S.optional(__S(8, __c1, 0)),
-          matchConstraints: S.optional(__S(35, __c4, 3)),
-          mutations: S.optional(__S(18, __c2, 2)),
-          paramKind: S.optional(__S(19, __c2, 3)),
-          reinvocationPolicy: S.optional(S.String),
-          variables: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchResources: S.optional(__S(35, __c4, 3)),
-          paramRef: S.optional(__S(28, __c3, 4)),
-          policyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(39, __c4, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          namespace: S.String,
-          path: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1ServiceReference",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          caBundle: S.optional(S.String),
-          service: S.optional(__S(42, __c5, 2)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1WebhookClientConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroups: S.optional(__S(1, __c0, 1)),
-          apiVersions: S.optional(__S(9, __c1, 1)),
-          operations: S.optional(__S(9, __c1, 1)),
-          resources: S.optional(__S(1, __c0, 1)),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1RuleWithOperations",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          admissionReviewVersions: __S(9, __c1, 1),
-          clientConfig: __S(43, __c5, 3),
-          failurePolicy: S.optional(S.String),
-          matchConditions: S.optional(__S(8, __c1, 0)),
-          matchPolicy: S.optional(S.String),
-          name: S.String,
-          namespaceSelector: S.optional(__S(14, __c1, 6)),
-          objectSelector: S.optional(__S(14, __c1, 6)),
-          reinvocationPolicy: S.optional(S.String),
-          rules: S.optional(__S(45, __c5, 5)),
-          sideEffects: S.String,
-          timeoutSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhook",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(47, __c5, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -5945,9 +5422,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1AuditAnnotation",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
@@ -5958,23 +5435,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1Validation",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          auditAnnotations: S.optional(__S(51, __c6, 3)),
+          auditAnnotations: S.optional(__S(17, __c1, 1)),
           failurePolicy: S.optional(S.String),
-          matchConditions: S.optional(__S(8, __c1, 0)),
-          matchConstraints: S.optional(__S(35, __c4, 3)),
-          paramKind: S.optional(__S(19, __c2, 3)),
-          validations: S.optional(__S(53, __c6, 5)),
-          variables: S.optional(__S(8, __c1, 0)),
+          matchConditions: S.optional(__S(513, __c32, 1)),
+          matchConstraints: S.optional(__S(1331, __c83, 3)),
+          paramKind: S.optional(__S(480, __c30, 0)),
+          validations: S.optional(__S(19, __c1, 3)),
+          variables: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           lastTransitionTime: S.String,
@@ -5987,13 +5464,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(21, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           fieldRef: S.String,
@@ -6002,74 +5475,41 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ExpressionWarning",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(23, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          expressionWarnings: S.optional(__S(58, __c7, 2)),
+          expressionWarnings: S.optional(__S(24, __c1, 8)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1TypeChecking",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(56, __c7, 0)),
+          conditions: S.optional(__S(22, __c1, 6)),
           observedGeneration: S.optional(S.Number),
-          typeChecking: S.optional(__S(59, __c7, 3)),
+          typeChecking: S.optional(__S(25, __c1, 9)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(54, __c6, 6)),
-          status: S.optional(__S(60, __c7, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
-      });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(54, __c6, 6)),
-          status: S.optional(__S(60, __c7, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(20, __c1, 4)),
+          status: S.optional(__S(26, __c1, 10)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchResources: S.optional(__S(35, __c4, 3)),
-          paramRef: S.optional(__S(28, __c3, 4)),
-          policyName: S.String,
-          validationActions: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec",
-      });
   }
 }
-function __c8(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6080,8 +5520,8 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(63, __c7, 7),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: __S(48, __c3, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6092,38 +5532,37 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchResources: S.optional(__S(1331, __c83, 3)),
+          paramRef: S.optional(__S(1120, __c70, 0)),
+          policyName: S.String,
+          validationActions: __S(454, __c28, 6),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(63, __c7, 7),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: __S(48, __c3, 0),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          admissionReviewVersions: __S(9, __c1, 1),
-          clientConfig: __S(43, __c5, 3),
-          failurePolicy: S.optional(S.String),
-          matchConditions: S.optional(__S(8, __c1, 0)),
-          matchPolicy: S.optional(S.String),
-          name: S.String,
-          namespaceSelector: S.optional(__S(14, __c1, 6)),
-          objectSelector: S.optional(__S(14, __c1, 6)),
-          rules: S.optional(__S(45, __c5, 5)),
-          sideEffects: S.String,
-          timeoutSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhook",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6132,8 +5571,8 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(67, __c8, 3)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(81, __c5, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6144,27 +5583,46 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          admissionReviewVersions: __S(454, __c28, 6),
+          clientConfig: __S(1729, __c108, 1),
+          failurePolicy: S.optional(S.String),
+          matchConditions: S.optional(__S(513, __c32, 1)),
+          matchPolicy: S.optional(S.String),
+          name: S.String,
+          namespaceSelector: S.optional(__S(457, __c28, 9)),
+          objectSelector: S.optional(__S(457, __c28, 9)),
+          rules: S.optional(__S(1731, __c108, 3)),
+          sideEffects: S.String,
+          timeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhook",
+      });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(67, __c8, 3)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6184,7 +5642,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6197,9 +5655,18 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
@@ -6209,12 +5676,12 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(__S(73, __c9, 1)),
+          causes: S.optional(__S(114, __c7, 2)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -6224,7 +5691,26 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
       });
-    case 3:
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(115, __c7, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(129, __c8, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           selector: S.String,
@@ -6232,34 +5718,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.String),
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(75, __c9, 3)),
+          shardInfo: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(74, __c9, 2)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6279,7 +5754,7 @@ function __c9(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6290,29 +5765,6 @@ function __c9(j: number): any {
       ).annotate({
         identifier:
           "DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
       });
   }
 }
@@ -6330,7 +5782,34 @@ function __c10(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6341,7 +5820,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6361,7 +5844,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6372,7 +5855,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6392,7 +5879,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6404,7 +5891,11 @@ function __c10(j: number): any {
         identifier:
           "DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6416,7 +5907,7 @@ function __c10(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6427,7 +5918,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6439,7 +5934,7 @@ function __c10(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6450,7 +5945,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6470,7 +5969,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6481,7 +5980,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6501,7 +6004,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6512,7 +6015,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6532,7 +6039,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6545,7 +6052,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6567,7 +6074,7 @@ function __c11(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6578,7 +6085,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6598,7 +6109,7 @@ function __c11(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6610,7 +6121,11 @@ function __c11(j: number): any {
         identifier:
           "DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6630,7 +6145,7 @@ function __c11(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6641,7 +6156,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6653,7 +6172,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6664,7 +6183,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6676,7 +6199,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6687,7 +6210,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6699,7 +6226,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6710,7 +6237,236 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroups: S.optional(__S(454, __c28, 6)),
+          apiVersions: S.optional(__S(454, __c28, 6)),
+          operations: S.optional(__S(454, __c28, 6)),
+          resourceNames: S.optional(__S(454, __c28, 6)),
+          resources: S.optional(__S(454, __c28, 6)),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations",
+      });
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          excludeResourceRules: S.optional(__S(417, __c26, 1)),
+          matchPolicy: S.optional(S.String),
+          namespaceSelector: S.optional(__S(457, __c28, 9)),
+          objectSelector: S.optional(__S(457, __c28, 9)),
+          resourceRules: S.optional(__S(417, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MatchResources",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(449, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(451, __c28, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(448, __c28, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(432, __c27, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(448, __c28, 0)),
+          managedFields: S.optional(__S(450, __c28, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(452, __c28, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
     case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(454, __c28, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 8:
+      return S.Array(__S(455, __c28, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(456, __c28, 8)),
+          matchLabels: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          failurePolicy: S.optional(S.String),
+          matchConditions: S.optional(__S(513, __c32, 1)),
+          matchConstraints: S.optional(__S(418, __c26, 2)),
+          mutations: S.optional(__S(498, __c31, 2)),
+          paramKind: S.optional(__S(480, __c30, 0)),
+          reinvocationPolicy: S.optional(S.String),
+          variables: S.optional(__S(513, __c32, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1ParamKind",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applyConfiguration: S.optional(__S(496, __c31, 0)),
+          jsonPatch: S.optional(__S(496, __c31, 0)),
+          patchType: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1Mutation",
+      });
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MatchCondition",
+      });
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6722,7 +6478,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6733,7 +6489,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6745,7 +6505,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6758,7 +6518,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6772,7 +6532,7 @@ function __c12(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(70, __c8, 6)),
+          preconditions: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6783,7 +6543,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/", code: 200 }),
@@ -6791,7 +6555,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAdmissionregistrationAPIGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -6800,7 +6564,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -6809,24 +6573,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
+    case 3:
+      return S.Array(__S(578, __c36, 2));
     case 4:
-      return S.Array(__S(99, __c12, 3));
+      return S.Array(__S(577, __c36, 1));
     case 5:
-      return S.Array(__S(98, __c12, 2));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(98, __c12, 2)),
-          serverAddressByClientCIDRs: S.optional(__S(100, __c12, 4)),
-          versions: __S(101, __c12, 5),
+          preferredVersion: S.optional(__S(577, __c36, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(579, __c36, 3)),
+          versions: __S(580, __c36, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1alpha1/", code: 200 }),
@@ -6836,39 +6604,43 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(432, __c27, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(432, __c27, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(432, __c27, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(608, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(105, __c13, 1),
+          resources: __S(609, __c38, 1),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1/", code: 200 }),
@@ -6876,7 +6648,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAdmissionregistrationV1APIResourcesRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1beta1/", code: 200 }),
@@ -6884,7 +6660,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAdmissionregistrationV1beta1APIResourcesRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6909,22 +6689,26 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
       });
-    case 6:
-      return S.Array(__S(22, __c2, 6));
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(465, __c29, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(110, __c13, 6),
+          items: __S(672, __c42, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList",
       });
   }
 }
-function __c14(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6952,19 +6736,23 @@ function __c14(j: number): any {
         identifier: "ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
     case 1:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(738, __c46, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(113, __c14, 1),
+          items: __S(689, __c43, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -6989,7 +6777,72 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(737, __c46, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          parameterNotFoundAction: S.optional(S.String),
+          selector: S.optional(__S(457, __c28, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1ParamRef",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matchResources: S.optional(__S(418, __c26, 2)),
+          paramRef: S.optional(__S(736, __c46, 0)),
+          policyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(737, __c46, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7014,20 +6867,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
-      return S.Array(__S(31, __c3, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(1105, __c69, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(117, __c14, 5),
+          items: __S(753, __c47, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7052,24 +6909,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(38, __c4, 6));
     case 1:
+      return S.Array(__S(1313, __c82, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(120, __c15, 0),
+          items: __S(769, __c48, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7094,20 +6951,24 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 3:
-      return S.Array(__S(41, __c5, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(1521, __c95, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(123, __c15, 3),
+          items: __S(785, __c49, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7132,22 +6993,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1MutatingWebhookConfigurationRequest",
       });
-    case 6:
-      return S.Array(__S(49, __c6, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1746, __c109, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(126, __c15, 6),
+          items: __S(801, __c50, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList",
       });
   }
 }
-function __c16(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7175,19 +7036,23 @@ function __c16(j: number): any {
         identifier: "ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
     case 1:
-      return S.Array(__S(62, __c7, 6));
+      return S.Array(__S(27, __c1, 11));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(129, __c16, 1),
+          items: __S(817, __c51, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7212,20 +7077,24 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
       });
-    case 4:
-      return S.Array(__S(65, __c8, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(49, __c3, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(132, __c16, 4),
+          items: __S(833, __c52, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -7250,24 +7119,24 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 7:
-      return S.Array(__S(69, __c8, 5));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(82, __c5, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(135, __c16, 7),
+          items: __S(849, __c53, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
+          metadata: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7286,7 +7155,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7305,7 +7178,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7324,7 +7201,36 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7343,7 +7249,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7362,7 +7272,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7381,7 +7295,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7402,7 +7320,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7423,7 +7341,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7442,7 +7364,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
       });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7461,7 +7387,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7480,7 +7410,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7495,7 +7429,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7510,7 +7448,76 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1104, __c69, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchResources: S.optional(__S(418, __c26, 2)),
+          paramRef: S.optional(__S(1120, __c70, 0)),
+          policyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1104, __c69, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          parameterNotFoundAction: S.String,
+          selector: S.optional(__S(457, __c28, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1beta1ParamRef",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7525,7 +7532,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7542,7 +7553,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7559,7 +7570,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7574,7 +7589,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7589,7 +7608,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7604,7 +7627,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7619,7 +7646,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7634,7 +7665,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7649,7 +7684,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7659,8 +7698,8 @@ function __c19(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7673,7 +7712,94 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1312, __c82, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          failurePolicy: S.optional(S.String),
+          matchConditions: S.optional(__S(513, __c32, 1)),
+          matchConstraints: S.optional(__S(1331, __c83, 3)),
+          mutations: S.optional(__S(498, __c31, 2)),
+          paramKind: S.optional(__S(480, __c30, 0)),
+          reinvocationPolicy: S.optional(S.String),
+          variables: S.optional(__S(513, __c32, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1312, __c82, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroups: S.optional(__S(454, __c28, 6)),
+          apiVersions: S.optional(__S(454, __c28, 6)),
+          operations: S.optional(__S(454, __c28, 6)),
+          resourceNames: S.optional(__S(454, __c28, 6)),
+          resources: S.optional(__S(454, __c28, 6)),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1NamedRuleWithOperations",
+      });
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
+      return S.Array(__S(1328, __c83, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          excludeResourceRules: S.optional(__S(1329, __c83, 1)),
+          matchPolicy: S.optional(S.String),
+          namespaceSelector: S.optional(__S(457, __c28, 9)),
+          objectSelector: S.optional(__S(457, __c28, 9)),
+          resourceRules: S.optional(__S(1330, __c83, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MatchResources",
+      });
+  }
+}
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7685,8 +7811,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(24, __c3, 0)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(737, __c46, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7697,7 +7823,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7707,8 +7837,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7719,7 +7849,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7729,8 +7863,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(29, __c3, 5)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1104, __c69, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7741,7 +7875,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7751,8 +7889,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(36, __c4, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1312, __c82, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7763,7 +7901,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7773,8 +7915,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(39, __c4, 7)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1520, __c95, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7785,7 +7927,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7795,8 +7941,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(47, __c5, 7)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(1745, __c109, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7807,7 +7953,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7817,9 +7967,9 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(54, __c6, 6)),
-          status: S.optional(__S(60, __c7, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(20, __c1, 4)),
+          status: S.optional(__S(26, __c1, 10)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7830,7 +7980,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7840,8 +7994,8 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(63, __c7, 7),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: __S(48, __c3, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7854,7 +8008,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7866,9 +8020,9 @@ function __c21(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(54, __c6, 6)),
-          status: S.optional(__S(60, __c7, 4)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(20, __c1, 4)),
+          status: S.optional(__S(26, __c1, 10)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7879,7 +8033,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7889,8 +8047,8 @@ function __c21(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          webhooks: S.optional(__S(67, __c8, 3)),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(81, __c5, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7901,7 +8059,61 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1520, __c95, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchResources: S.optional(__S(1331, __c83, 3)),
+          paramRef: S.optional(__S(1120, __c70, 0)),
+          policyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          spec: S.optional(__S(1520, __c95, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7927,7 +8139,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -7936,7 +8152,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7962,7 +8182,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7987,7 +8211,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListRequest",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8012,7 +8240,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListRequest",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8040,7 +8272,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8068,7 +8300,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest",
       });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8093,7 +8329,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListRequest",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8118,7 +8358,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest",
       });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8144,7 +8388,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8170,7 +8418,111 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(1745, __c109, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          namespace: S.String,
+          path: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1ServiceReference",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          caBundle: S.optional(S.String),
+          service: S.optional(__S(1728, __c108, 0)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1WebhookClientConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroups: S.optional(__S(432, __c27, 0)),
+          apiVersions: S.optional(__S(454, __c28, 6)),
+          operations: S.optional(__S(454, __c28, 6)),
+          resources: S.optional(__S(432, __c27, 0)),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1RuleWithOperations",
+      });
+    case 3:
+      return S.Array(__S(1730, __c108, 2));
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          admissionReviewVersions: __S(454, __c28, 6),
+          clientConfig: __S(1729, __c108, 1),
+          failurePolicy: S.optional(S.String),
+          matchConditions: S.optional(__S(513, __c32, 1)),
+          matchPolicy: S.optional(S.String),
+          name: S.String,
+          namespaceSelector: S.optional(__S(457, __c28, 9)),
+          objectSelector: S.optional(__S(457, __c28, 9)),
+          reinvocationPolicy: S.optional(S.String),
+          rules: S.optional(__S(1731, __c108, 3)),
+          sideEffects: S.String,
+          timeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhook",
+      });
+    case 1:
+      return S.Array(__S(1744, __c109, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(453, __c28, 5)),
+          webhooks: S.optional(__S(1745, __c109, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8195,7 +8547,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListRequest",
       });
-    case 6:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8220,7 +8576,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest",
       });
-    case 7:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8248,7 +8608,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8275,7 +8635,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8301,7 +8665,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8327,7 +8695,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8352,7 +8724,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListRequest",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8377,7 +8753,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8403,7 +8783,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -8430,7 +8814,6 @@ function __c23(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

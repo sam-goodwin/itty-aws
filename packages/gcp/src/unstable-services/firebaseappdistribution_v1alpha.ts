@@ -805,8 +805,8 @@ export const batchDeleteProjectsAppsTestCases: API.OperationMethod<
   BatchDeleteProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteProjectsAppsTestCasesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(641, __c20, 1) as any as S.Schema<BatchDeleteProjectsAppsTestCasesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -825,11 +825,11 @@ export const batchUpdateProjectsAppsTestCases: API.OperationMethod<
   BatchUpdateProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BatchUpdateProjectsAppsTestCasesRequest>,
+  input: __S(739, __c23, 3) as any as S.Schema<BatchUpdateProjectsAppsTestCasesRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    740,
+    __c23,
+    4,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -844,11 +844,11 @@ export const cancelProjectsAppsReleasesTests: API.OperationMethod<
   CancelProjectsAppsReleasesTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CancelProjectsAppsReleasesTestsRequest>,
+  input: __S(864, __c27, 0) as any as S.Schema<CancelProjectsAppsReleasesTestsRequest>,
   output: __S(
-    15,
-    __c1,
-    7,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -868,11 +868,11 @@ export const clearTestCaseCacheProjectsAppsTestCases: API.OperationMethod<
   ClearTestCaseCacheProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ClearTestCaseCacheProjectsAppsTestCasesRequest>,
+  input: __S(929, __c29, 1) as any as S.Schema<ClearTestCaseCacheProjectsAppsTestCasesRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -892,11 +892,11 @@ export const createAppsReleasesNotes: API.OperationMethod<
   CreateAppsReleasesNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateAppsReleasesNotesRequest>,
+  input: __S(1058, __c33, 2) as any as S.Schema<CreateAppsReleasesNotesRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -916,8 +916,8 @@ export const createProjectsAppsReleasesTests: API.OperationMethod<
   CreateProjectsAppsReleasesTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateProjectsAppsReleasesTestsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateProjectsAppsReleasesTestsRequest>,
+  output: __S(1174, __c36, 22) as any as S.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -936,8 +936,8 @@ export const createProjectsAppsTestCases: API.OperationMethod<
   CreateProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateProjectsAppsTestCasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsAppsTestCasesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -956,8 +956,8 @@ export const deleteProjectsAppsTestCases: API.OperationMethod<
   DeleteProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsAppsTestCasesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteProjectsAppsTestCasesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -976,11 +976,11 @@ export const enableAccessAppsReleases: API.OperationMethod<
   EnableAccessAppsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<EnableAccessAppsReleasesRequest>,
+  input: __S(65, __c2, 1) as any as S.Schema<EnableAccessAppsReleasesRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -995,8 +995,8 @@ export const getApps: API.OperationMethod<
   GetAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetAppsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaApp>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetAppsRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<GoogleFirebaseAppdistroV1alphaApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1010,11 +1010,11 @@ export const getAppsRelease_by_hash: API.OperationMethod<
   GetAppsRelease_by_hashError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetAppsRelease_by_hashRequest>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetAppsRelease_by_hashRequest>,
   output: __S(
-    59,
-    __c7,
-    3,
+    129,
+    __c4,
+    1,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1029,11 +1029,11 @@ export const getAppsUpload_status: API.OperationMethod<
   GetAppsUpload_statusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetAppsUpload_statusRequest>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetAppsUpload_statusRequest>,
   output: __S(
-    61,
-    __c7,
-    5,
+    193,
+    __c6,
+    1,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1048,8 +1048,8 @@ export const getJwtApps: API.OperationMethod<
   GetJwtAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetJwtAppsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GoogleFirebaseAppdistroV1alphaJwt>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetJwtAppsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GoogleFirebaseAppdistroV1alphaJwt>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1063,8 @@ export const getProjectsAppsReleasesTests: API.OperationMethod<
   GetProjectsAppsReleasesTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsAppsReleasesTestsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProjectsAppsReleasesTestsRequest>,
+  output: __S(1174, __c36, 22) as any as S.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1078,8 +1078,8 @@ export const getProjectsAppsTestCases: API.OperationMethod<
   GetProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsAppsTestCasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetProjectsAppsTestCasesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1093,8 @@ export const getTestConfigProjectsApps: API.OperationMethod<
   GetTestConfigProjectsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetTestConfigProjectsAppsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestConfig>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetTestConfigProjectsAppsRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1108,12 @@ export const getTesterUdidsAppsTesters: API.OperationMethod<
   GetTesterUdidsAppsTestersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetTesterUdidsAppsTestersRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetTesterUdidsAppsTestersRequest>,
+  output: __S(
+    418,
+    __c13,
+    2,
+  ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1123,8 +1127,8 @@ export const getTestQuotaProjects: API.OperationMethod<
   GetTestQuotaProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetTestQuotaProjectsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestQuota>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetTestQuotaProjectsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestQuota>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1142,12 @@ export const getUdidsProjectsTesters: API.OperationMethod<
   GetUdidsProjectsTestersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetUdidsProjectsTestersRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetUdidsProjectsTestersRequest>,
+  output: __S(
+    418,
+    __c13,
+    2,
+  ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1154,11 +1162,11 @@ export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListProjectsAppsReleasesTestsRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListProjectsAppsReleasesTestsRequest>,
   output: __S(
-    78,
-    __c9,
-    6,
+    514,
+    __c16,
+    2,
   ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1175,8 +1183,12 @@ export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFirebaseAppdistroV1alphaListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListProjectsAppsTestCasesRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaListTestCasesResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListProjectsAppsTestCasesRequest>,
+  output: __S(
+    545,
+    __c17,
+    1,
+  ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaListTestCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1196,8 +1208,8 @@ export const patchProjectsAppsTestCases: API.OperationMethod<
   PatchProjectsAppsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PatchProjectsAppsTestCasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
+  input: __S(576, __c18, 0) as any as S.Schema<PatchProjectsAppsTestCasesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1216,8 +1228,8 @@ export const updateTestConfigProjectsApps: API.OperationMethod<
   UpdateTestConfigProjectsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateTestConfigProjectsAppsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestConfig>,
+  input: __S(608, __c19, 0) as any as S.Schema<UpdateTestConfigProjectsAppsRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1227,20 +1239,501 @@ export const updateTestConfigProjectsApps: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          testCaseId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/testCases",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAppsTestCasesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsAppsTestCasesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(704, __c22, 0)),
+          displayVersion: S.optional(S.String),
+          buildVersion: S.optional(S.String),
+          emails: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(0, __c0, 0)),
+          mobilesdkAppId: S.String.pipe(T.Label()),
+          releaseId: S.String.pipe(T.Label()),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/apps/{mobilesdkAppId}/releases/{releaseId}/enable_access",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableAccessAppsReleasesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mobilesdkAppId: S.String.pipe(T.Label()),
+          appView: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/apps/{mobilesdkAppId}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAppsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certificateHashSha1: S.optional(S.String),
+          certificateHashSha256: S.optional(S.String),
+          certificateHashMd5: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest",
+        identifier: "GoogleFirebaseAppdistroV1alphaAabCertificate",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          projectNumber: S.optional(S.String),
+          appId: S.optional(S.String),
+          aabCertificate: S.optional(__S(97, __c3, 1)),
+          platform: S.optional(S.String),
+          bundleId: S.optional(S.String),
+          aabState: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaApp",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mobilesdkAppId: S.String.pipe(T.Label()),
+          uploadHash: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAppsRelease_by_hashRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          release: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          openInvitationCount: S.optional(S.Number),
+          instanceId: S.optional(S.String),
+          lastActivityAt: S.optional(S.String),
+          testerWithInstallCount: S.optional(S.Number),
+          testerCount: S.optional(S.Number),
+          distributedAt: S.optional(S.String),
+          buildVersion: S.optional(S.String),
+          receivedAt: S.optional(S.String),
+          displayVersion: S.optional(S.String),
+          id: S.optional(S.String),
+          releaseNotesSummary: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaRelease",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uploadToken: S.String.pipe(T.Label()),
+          mobilesdkAppId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAppsUpload_statusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.String),
+          message: S.optional(S.String),
+          release: S.optional(__S(160, __c5, 0)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mobilesdkAppId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/apps/{mobilesdkAppId}/jwt",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetJwtAppsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaJwt",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAppsReleasesTestsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAppsTestCasesRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTestConfigProjectsAppsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          loginCredential: S.optional(__S(1121, __c35, 1)),
+          aiInstructions: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaRoboCrawler",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          roboCrawler: S.optional(__S(352, __c11, 0)),
+          resultsBucket: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          testDevices: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaTestConfig",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(S.String.pipe(T.Query())),
+          mobilesdkAppId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/apps/{mobilesdkAppId}/testers:getTesterUdids",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTesterUdidsAppsTestersRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          platform: S.optional(S.String),
+          udid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaTesterUdid",
+      });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          testerUdids: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTestQuotaProjectsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.String),
+          name: S.optional(S.String),
+          usage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaTestQuota",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          mobilesdkAppId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+project}/testers:udids",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetUdidsProjectsTestersRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/tests",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAppsReleasesTestsRequest",
+      });
+    case 1:
+      return S.Array(__S(1174, __c36, 22));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          releaseTests: S.optional(__S(513, __c16, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/testCases",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAppsTestCasesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          testCases: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaListTestCasesResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAppsTestCasesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(353, __c11, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTestConfigProjectsAppsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1251,64 +1744,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchDeleteProjectsAppsTestCasesRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hint: S.optional(S.String),
-          assertion: S.optional(S.String),
-          testCase: S.optional(S.String),
-          successCriteria: S.optional(S.String),
-          goal: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaAiStep",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaAiInstructions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dependentTestCases: S.optional(__S(0, __c0, 0)),
-          prerequisiteTestCase: S.optional(S.String),
-          name: S.optional(S.String),
-          aiInstructions: S.optional(__S(6, __c0, 6)),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaTestCase",
-      });
   }
 }
-function __c1(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          testCase: S.optional(__S(7, __c0, 7)),
+          testCase: S.optional(__S(768, __c24, 0)),
           allowMissing: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(736, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(9, __c1, 1)),
+          requests: S.optional(__S(737, __c23, 1)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest",
@@ -1317,7 +1785,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(738, __c23, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1329,16 +1797,67 @@ function __c1(j: number): any {
         identifier: "BatchUpdateProjectsAppsTestCasesRequest",
       });
     case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          testCases: S.optional(__S(12, __c1, 4)),
+          testCases: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dependentTestCases: S.optional(__S(704, __c22, 0)),
+          prerequisiteTestCase: S.optional(S.String),
+          name: S.optional(S.String),
+          aiInstructions: S.optional(__S(834, __c26, 2)),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaTestCase",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(768, __c24, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hint: S.optional(S.String),
+          assertion: S.optional(S.String),
+          testCase: S.optional(S.String),
+          successCriteria: S.optional(S.String),
+          goal: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaAiStep",
+      });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaAiInstructions",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1352,13 +1871,58 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelProjectsAppsReleasesTestsRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          testDevices: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          testCase: S.String.pipe(T.Label()),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+testCase}:clearTestCaseCache",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearTestCaseCacheProjectsAppsTestCasesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1024, __c32, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1371,36 +1935,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaTestDevice",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          testDevices: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          testCase: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+testCase}:clearTestCaseCache",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearTestCaseCacheProjectsAppsTestCasesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse",
-      });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           releaseNotes: S.optional(S.String),
@@ -1408,20 +1947,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaReleaseNotes",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          releaseNotes: S.optional(__S(21, __c2, 5)),
+          releaseNotes: S.optional(__S(1056, __c33, 0)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           releaseId: S.String.pipe(T.Label()),
           mobilesdkAppId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1057, __c33, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1434,7 +1973,51 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          releaseTestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1174, __c36, 22).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/tests",
+            baseUrl: "https://firebaseappdistribution.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAppsReleasesTestsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usernameResourceName: S.optional(S.String),
+          passwordResourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          google: S.optional(S.Boolean),
+          fieldHints: S.optional(__S(1120, __c35, 0)),
+          password: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirebaseAppdistroV1alphaLoginCredential",
+      });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1470,7 +2053,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           result: S.optional(S.Boolean),
-          screenshot: S.optional(__S(26, __c3, 2)),
+          screenshot: S.optional(__S(1154, __c36, 2)),
           explanation: S.optional(S.String),
         }),
       ).annotate({
@@ -1488,8 +2071,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(__S(28, __c3, 4)),
-          end: S.optional(__S(28, __c3, 4)),
+          start: S.optional(__S(1156, __c36, 4)),
+          end: S.optional(__S(1156, __c36, 4)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop",
@@ -1497,8 +2080,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(__S(28, __c3, 4)),
-          end: S.optional(__S(28, __c3, 4)),
+          start: S.optional(__S(1156, __c36, 4)),
+          end: S.optional(__S(1156, __c36, 4)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe",
@@ -1511,11 +2094,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionWait",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           top: S.optional(S.Number),
@@ -1526,46 +2105,46 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AndroidxCrawlerOutputRectangle",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          elementBounds: S.optional(__S(32, __c4, 0)),
+          elementBounds: S.optional(__S(1160, __c36, 8)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          backAction: S.optional(__S(15, __c1, 7)),
-          tap: S.optional(__S(28, __c3, 4)),
+          backAction: S.optional(__S(896, __c28, 0)),
+          tap: S.optional(__S(1156, __c36, 4)),
           keyCode: S.optional(S.String),
-          dragAndDrop: S.optional(__S(29, __c3, 5)),
+          dragAndDrop: S.optional(__S(1157, __c36, 5)),
           targetFoldedState: S.optional(S.String),
-          swipe: S.optional(__S(30, __c3, 6)),
-          wait: S.optional(__S(31, __c3, 7)),
-          screenshot: S.optional(__S(26, __c3, 2)),
-          longPress: S.optional(__S(28, __c3, 4)),
+          swipe: S.optional(__S(1158, __c36, 6)),
+          wait: S.optional(__S(1159, __c36, 7)),
+          screenshot: S.optional(__S(1154, __c36, 2)),
+          longPress: S.optional(__S(1156, __c36, 4)),
           targetOrientation: S.optional(S.String),
           textInput: S.optional(S.String),
-          enterText: S.optional(__S(33, __c4, 1)),
+          enterText: S.optional(__S(1161, __c36, 9)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteraction",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(1162, __c36, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          deviceInteractions: S.optional(__S(35, __c4, 3)),
+          deviceInteractions: S.optional(__S(1163, __c36, 11)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceAction",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           jsonUri: S.optional(S.String),
@@ -1574,70 +2153,66 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          screenshot: S.optional(__S(26, __c3, 2)),
+          screenshot: S.optional(__S(1154, __c36, 2)),
           reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaTerminalAction",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           cachingType: S.optional(S.String),
           explanation: S.optional(S.String),
-          deviceAction: S.optional(__S(36, __c4, 4)),
-          debugInfo: S.optional(__S(37, __c4, 5)),
-          terminalAction: S.optional(__S(38, __c4, 6)),
+          deviceAction: S.optional(__S(1164, __c36, 12)),
+          debugInfo: S.optional(__S(1165, __c36, 13)),
+          terminalAction: S.optional(__S(1166, __c36, 14)),
           startTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaGoalAction",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(1167, __c36, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          goalActions: S.optional(__S(40, __c5, 0)),
+          goalActions: S.optional(__S(1168, __c36, 16)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaGoalDetails",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          assertionDetails: S.optional(__S(27, __c3, 3)),
-          step: S.optional(__S(4, __c0, 4)),
-          goalDetails: S.optional(__S(41, __c5, 1)),
+          assertionDetails: S.optional(__S(1155, __c36, 3)),
+          step: S.optional(__S(832, __c26, 0)),
+          goalDetails: S.optional(__S(1169, __c36, 17)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaAiStepResult",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(1170, __c36, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           executionType: S.optional(S.String),
           originDeviceExecution: S.optional(S.String),
-          roboStats: S.optional(__S(24, __c3, 0)),
+          roboStats: S.optional(__S(1152, __c36, 0)),
           videoUri: S.optional(S.String),
           resultsStoragePath: S.optional(S.String),
           inconclusiveReason: S.optional(S.String),
           state: S.optional(S.String),
           name: S.optional(S.String),
-          appCrash: S.optional(__S(25, __c3, 1)),
-          device: S.optional(__S(16, __c2, 0)),
-          screenshotUris: S.optional(__S(0, __c0, 0)),
-          aiStepResults: S.optional(__S(43, __c5, 3)),
+          appCrash: S.optional(__S(1153, __c36, 1)),
+          device: S.optional(__S(1024, __c32, 0)),
+          screenshotUris: S.optional(__S(704, __c22, 0)),
+          aiStepResults: S.optional(__S(1171, __c36, 19)),
           videoStartTime: S.optional(S.String),
           failedReason: S.optional(S.String),
           finalAiAssertionMissing: S.optional(S.Boolean),
@@ -1646,486 +2221,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaDeviceExecution",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          usernameResourceName: S.optional(S.String),
-          passwordResourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          google: S.optional(S.Boolean),
-          fieldHints: S.optional(__S(46, __c5, 6)),
-          password: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaLoginCredential",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(1172, __c36, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          deviceExecutions: S.optional(__S(45, __c5, 5)),
-          loginCredential: S.optional(__S(47, __c5, 7)),
+          deviceExecutions: S.optional(__S(1173, __c36, 21)),
+          loginCredential: S.optional(__S(1121, __c35, 1)),
           displayName: S.optional(S.String),
           testCase: S.optional(S.String),
           resultsBucket: S.optional(S.String),
           testState: S.optional(S.String),
-          aiInstructions: S.optional(__S(6, __c0, 6)),
+          aiInstructions: S.optional(__S(834, __c26, 2)),
         }),
       ).annotate({
         identifier: "GoogleFirebaseAppdistroV1alphaReleaseTest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          releaseTestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/tests",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAppsReleasesTestsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          testCaseId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/testCases",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAppsTestCasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsAppsTestCasesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(0, __c0, 0)),
-          displayVersion: S.optional(S.String),
-          buildVersion: S.optional(S.String),
-          emails: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mobilesdkAppId: S.String.pipe(T.Label()),
-          releaseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/apps/{mobilesdkAppId}/releases/{releaseId}/enable_access",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableAccessAppsReleasesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mobilesdkAppId: S.String.pipe(T.Label()),
-          appView: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/apps/{mobilesdkAppId}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAppsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          certificateHashSha1: S.optional(S.String),
-          certificateHashSha256: S.optional(S.String),
-          certificateHashMd5: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaAabCertificate",
-      });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectNumber: S.optional(S.String),
-          appId: S.optional(S.String),
-          aabCertificate: S.optional(__S(55, __c6, 7)),
-          platform: S.optional(S.String),
-          bundleId: S.optional(S.String),
-          aabState: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaApp",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mobilesdkAppId: S.String.pipe(T.Label()),
-          uploadHash: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAppsRelease_by_hashRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          openInvitationCount: S.optional(S.Number),
-          instanceId: S.optional(S.String),
-          lastActivityAt: S.optional(S.String),
-          testerWithInstallCount: S.optional(S.Number),
-          testerCount: S.optional(S.Number),
-          distributedAt: S.optional(S.String),
-          buildVersion: S.optional(S.String),
-          receivedAt: S.optional(S.String),
-          displayVersion: S.optional(S.String),
-          id: S.optional(S.String),
-          releaseNotesSummary: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaRelease",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          release: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uploadToken: S.String.pipe(T.Label()),
-          mobilesdkAppId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAppsUpload_statusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          message: S.optional(S.String),
-          release: S.optional(__S(58, __c7, 2)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mobilesdkAppId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/apps/{mobilesdkAppId}/jwt",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetJwtAppsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaJwt",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAppsReleasesTestsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAppsTestCasesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTestConfigProjectsAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          loginCredential: S.optional(__S(47, __c5, 7)),
-          aiInstructions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaRoboCrawler",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          roboCrawler: S.optional(__S(67, __c8, 3)),
-          resultsBucket: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          testDevices: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaTestConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(S.String.pipe(T.Query())),
-          mobilesdkAppId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/apps/{mobilesdkAppId}/testers:getTesterUdids",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTesterUdidsAppsTestersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          platform: S.optional(S.String),
-          udid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaTesterUdid",
-      });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          testerUdids: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTestQuotaProjectsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.String),
-          name: S.optional(S.String),
-          usage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaTestQuota",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          mobilesdkAppId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+project}/testers:udids",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetUdidsProjectsTestersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/tests",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAppsReleasesTestsRequest",
-      });
-    case 5:
-      return S.Array(__S(48, __c6, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          releaseTests: S.optional(__S(77, __c9, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/testCases",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAppsTestCasesRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          testCases: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleFirebaseAppdistroV1alphaListTestCasesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAppsTestCasesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebaseappdistribution.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTestConfigProjectsAppsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

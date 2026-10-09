@@ -108,7 +108,7 @@ export const getCsamScanner: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCsamScannerRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetCsamScannerResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetCsamScannerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -122,8 +122,8 @@ export const patchCsamScanner: API.OperationMethod<
   PatchCsamScannerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<PatchCsamScannerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PatchCsamScannerResponse>,
+  input: __S(9, __c2, 1) as any as S.Schema<PatchCsamScannerRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<PatchCsamScannerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -147,41 +147,49 @@ function __c0(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCsamScannerRequest" });
     case 1:
-      return S.Record(S.String, S.Boolean);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
           emailState: S.optional(S.NullOr(S.String).pipe(T.Body("email_state"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          sources: S.optional(S.NullOr(__S(1, __c0, 1))),
+          sources: S.optional(S.NullOr(__S(4, __c1, 0))),
           zonePlan: S.optional(S.NullOr(S.String).pipe(T.Body("zone_plan"))),
         }),
       ).annotate({ identifier: "GetResponseValue" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(__S(2, __c0, 2))),
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCsamScannerResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Boolean);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           resendEmail: S.optional(S.Boolean.pipe(T.Body("resend_email"))),
-          sources: S.optional(__S(1, __c0, 1)),
+          sources: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "EditRequestValue" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           id: S.optional(S.String),
-          value: S.optional(__S(4, __c0, 4)),
+          value: S.optional(__S(8, __c2, 0)),
         })
           .pipe(
             T.Http({
@@ -192,28 +200,27 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchCsamScannerRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
           emailState: S.optional(S.NullOr(S.String).pipe(T.Body("email_state"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          sources: S.optional(S.NullOr(__S(1, __c0, 1))),
+          sources: S.optional(S.NullOr(__S(4, __c1, 0))),
           zonePlan: S.optional(S.NullOr(S.String).pipe(T.Body("zone_plan"))),
         }),
       ).annotate({ identifier: "EditResponseValue" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(__S(6, __c0, 6))),
+          value: S.optional(S.NullOr(__S(10, __c2, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchCsamScannerResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

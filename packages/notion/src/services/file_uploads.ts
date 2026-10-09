@@ -136,7 +136,7 @@ export const completeFileUpload: API.OperationMethod<
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CompleteFileUploadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FileUploadObjectResponse>,
+  output: __S(12, __c1, 4) as any as S.Schema<FileUploadObjectResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const createFileUpload: API.OperationMethod<
   CreateFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateFileUploadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FileUploadObjectResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateFileUploadRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<FileUploadObjectResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const getFileUpload: API.OperationMethod<
   GetFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetFileUploadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FileUploadObjectResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetFileUploadRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<FileUploadObjectResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -182,8 +182,8 @@ export const listFileUploads: API.PaginatedOperationMethod<
   FileUploadObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8, __c1, 0) as any as S.Schema<ListFileUploadsRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListFileUploadsResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListFileUploadsRequest>,
+    output: __S(35, __c4, 3) as any as S.Schema<ListFileUploadsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -205,8 +205,8 @@ export const sendFileUpload: API.OperationMethod<
   SendFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<SendFileUploadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FileUploadObjectResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<SendFileUploadRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<FileUploadObjectResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -225,7 +225,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteFileUploadRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -234,7 +238,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FileUploadObjectResponseCreatedBy",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -246,18 +250,18 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FileUploadObjectResponseFileImportResultError",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           imported_time: S.String,
           type: S.optional(S.String),
           success: S.optional(S.Unknown),
-          error: S.optional(__S(2, __c0, 2)),
+          error: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "FileUploadObjectResponseFileImportResult",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -266,13 +270,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FileUploadObjectResponseNumberOfParts",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
           created_time: S.String,
-          created_by: __S(1, __c0, 1),
+          created_by: __S(8, __c1, 0),
           last_edited_time: S.String,
           in_trash: S.Boolean,
           expiry_time: S.NullOr(S.String),
@@ -282,11 +286,15 @@ function __c0(j: number): any {
           content_length: S.NullOr(S.Number),
           upload_url: S.optional(S.String),
           complete_url: S.optional(S.String),
-          file_import_result: S.optional(__S(3, __c0, 3)),
-          number_of_parts: S.optional(__S(4, __c0, 4)),
+          file_import_result: S.optional(__S(10, __c1, 2)),
+          number_of_parts: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "FileUploadObjectResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
@@ -296,7 +304,11 @@ function __c0(j: number): any {
           external_url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/file_uploads", code: 200 })),
       ).annotate({ identifier: "CreateFileUploadRequest" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           file_upload_id: S.String.pipe(T.Label()),
@@ -304,7 +316,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetFileUploadRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -315,7 +327,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/file_uploads", code: 200 })),
       ).annotate({ identifier: "ListFileUploadsRequest" });
     case 1:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(12, __c1, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -329,13 +341,17 @@ function __c1(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(9, __c1, 1),
+          results: __S(33, __c4, 1),
           type: S.String,
           file_upload: S.Unknown,
-          request_status: S.optional(__S(10, __c1, 2)),
+          request_status: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "ListFileUploadsResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           file_upload_id: S.String.pipe(T.Label()),
@@ -352,7 +368,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "SendFileUploadRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

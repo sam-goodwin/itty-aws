@@ -1208,7 +1208,7 @@ export const getListing: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetListingInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetListingOutput>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetListingOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1225,8 +1225,8 @@ export const getOffer: API.OperationMethod<
   GetOfferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetOfferInput>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetOfferOutput>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetOfferInput>,
+  output: __S(291, __c9, 3) as any as S.Schema<GetOfferOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1243,8 +1243,8 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetOfferSetInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetOfferSetOutput>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetOfferSetInput>,
+  output: __S(355, __c11, 3) as any as S.Schema<GetOfferSetOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1262,8 +1262,8 @@ export const getOfferTerms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OfferTerm
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetOfferTermsInput>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetOfferTermsOutput>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetOfferTermsInput>,
+  output: __S(424, __c13, 8) as any as S.Schema<GetOfferTermsOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1286,8 +1286,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetProductInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetProductOutput>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetProductInput>,
+  output: __S(449, __c14, 1) as any as S.Schema<GetProductOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1305,8 +1305,8 @@ export const listFulfillmentOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FulfillmentOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListFulfillmentOptionsInput>,
-  output: __S(112, __c14, 0) as any as S.Schema<ListFulfillmentOptionsOutput>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListFulfillmentOptionsInput>,
+  output: __S(508, __c15, 28) as any as S.Schema<ListFulfillmentOptionsOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1332,8 +1332,8 @@ export const listPurchaseOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PurchaseOptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListPurchaseOptionsInput>,
-  output: __S(120, __c15, 0) as any as S.Schema<ListPurchaseOptionsOutput>,
+  input: __S(514, __c16, 2) as any as S.Schema<ListPurchaseOptionsInput>,
+  output: __S(519, __c16, 7) as any as S.Schema<ListPurchaseOptionsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const searchFacets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<SearchFacetsInput>,
-  output: __S(128, __c16, 0) as any as S.Schema<SearchFacetsOutput>,
+  input: __S(545, __c17, 1) as any as S.Schema<SearchFacetsInput>,
+  output: __S(549, __c17, 5) as any as S.Schema<SearchFacetsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1380,8 +1380,8 @@ export const searchListings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<SearchListingsInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<SearchListingsOutput>,
+  input: __S(608, __c19, 0) as any as S.Schema<SearchListingsInput>,
+  output: __S(613, __c19, 5) as any as S.Schema<SearchListingsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1412,71 +1412,97 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetListingInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ sellerProfileId: S.String, displayName: S.String }),
-      ).annotate({ identifier: "SellerInformation" });
+        S.Struct({ product: S.optional(__S(64, __c2, 0)), offer: S.optional(__S(128, __c4, 0)) }),
+      ).annotate({ identifier: "ListingAssociatedEntity" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ productId: S.String, productName: S.String, manufacturer: __S(1, __c0, 1) }),
-      ).annotate({ identifier: "ProductInformation" });
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          offerId: S.String,
-          offerName: S.optional(S.String),
-          sellerOfRecord: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "OfferInformation" });
+        S.Struct({ description: S.String, displayName: S.String, value: S.String }),
+      ).annotate({ identifier: "UseCase" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ product: S.optional(__S(2, __c0, 2)), offer: S.optional(__S(3, __c0, 3)) }),
-      ).annotate({ identifier: "ListingAssociatedEntity" });
+      return S.suspend(() => S.Struct({ useCase: __S(3, __c0, 3) })).annotate({
+        identifier: "UseCaseEntry",
+      });
     case 5:
       return S.Array(__S(4, __c0, 4));
     case 6:
-      return S.suspend(() => S.Struct({ displayName: S.String, badgeType: S.String })).annotate({
-        identifier: "ListingBadge",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+      return S.suspend(() =>
+        S.Struct({
+          locale: S.optional(S.String),
+          associatedEntities: __S(2, __c0, 2),
+          badges: __S(66, __c2, 2),
+          catalog: S.String,
+          categories: __S(225, __c7, 1),
+          fulfillmentOptionSummaries: __S(227, __c7, 3),
+          highlights: __S(192, __c6, 0),
+          integrationGuide: S.optional(S.String),
+          listingId: S.String,
+          listingName: S.String,
+          logoThumbnailUrl: S.String,
+          longDescription: S.String,
+          pricingModels: __S(256, __c8, 0),
+          pricingUnits: __S(258, __c8, 2),
+          promotionalMedia: __S(163, __c5, 3),
+          publisher: __S(32, __c1, 0),
+          resources: __S(165, __c5, 5),
+          reviewSummary: S.optional(__S(261, __c8, 5)),
+          sellerEngagements: __S(167, __c5, 7),
+          shortDescription: S.String,
+          useCases: __S(5, __c0, 5),
+        }),
+      ).annotate({ identifier: "GetListingOutput" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ categoryId: S.String, displayName: S.String })).annotate({
-        identifier: "Category",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
       return S.suspend(() =>
-        S.Struct({ fulfillmentOptionType: S.String, displayName: S.String }),
-      ).annotate({ identifier: "FulfillmentOptionSummary" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ pricingModelType: S.String, displayName: S.String }),
-      ).annotate({ identifier: "PricingModel" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ pricingUnitType: S.String, displayName: S.String }),
-      ).annotate({ identifier: "PricingUnit" });
+        S.Struct({ sellerProfileId: S.String, displayName: S.String }),
+      ).annotate({ identifier: "SellerInformation" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.suspend(() =>
+        S.Struct({ productId: S.String, productName: S.String, manufacturer: __S(32, __c1, 0) }),
+      ).annotate({ identifier: "ProductInformation" });
     case 1:
+      return S.suspend(() => S.Struct({ displayName: S.String, badgeType: S.String })).annotate({
+        identifier: "ListingBadge",
+      });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ pricingModelType: S.String, displayName: S.String }),
+      ).annotate({ identifier: "PricingModel" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offerId: S.String,
+          offerName: S.optional(S.String),
+          sellerOfRecord: __S(32, __c1, 0),
+        }),
+      ).annotate({ identifier: "OfferInformation" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ title: S.String, url: S.String, description: S.optional(S.String) }),
       ).annotate({ identifier: "PromotionalEmbeddedImage" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
@@ -1486,14 +1512,14 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromotionalEmbeddedVideo" });
-    case 3:
+    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ embeddedImage: __S(17, __c2, 1) }),
-        /*@__PURE__*/ S.Struct({ embeddedVideo: __S(18, __c2, 2) }),
+        /*@__PURE__*/ S.Struct({ embeddedImage: __S(160, __c5, 0) }),
+        /*@__PURE__*/ S.Struct({ embeddedVideo: __S(161, __c5, 1) }),
       ]);
+    case 3:
+      return S.Array(__S(162, __c5, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
@@ -1502,9 +1528,53 @@ function __c2(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
+    case 5:
+      return S.Array(__S(164, __c5, 4));
     case 6:
-      return S.Array(__S(21, __c2, 5));
+      return S.suspend(() =>
+        S.Struct({
+          engagementType: S.String,
+          contentType: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "SellerEngagement" });
     case 7:
+      return S.Array(__S(166, __c5, 6));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ categoryId: S.String, displayName: S.String })).annotate({
+        identifier: "Category",
+      });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ fulfillmentOptionType: S.String, displayName: S.String }),
+      ).annotate({ identifier: "FulfillmentOptionSummary" });
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(96, __c3, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ pricingUnitType: S.String, displayName: S.String }),
+      ).annotate({ identifier: "PricingUnit" });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sourceName: S.String,
@@ -1514,65 +1584,15 @@ function __c2(j: number): any {
           totalReviews: S.Number,
         }),
       ).annotate({ identifier: "ReviewSourceSummary" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ reviewSourceSummaries: __S(24, __c3, 0) })).annotate({
+    case 4:
+      return S.Array(__S(259, __c8, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ reviewSourceSummaries: __S(260, __c8, 4) })).annotate({
         identifier: "ReviewSummary",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          engagementType: S.String,
-          contentType: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "SellerEngagement" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ description: S.String, displayName: S.String, value: S.String }),
-      ).annotate({ identifier: "UseCase" });
-    case 5:
-      return S.suspend(() => S.Struct({ useCase: __S(28, __c3, 4) })).annotate({
-        identifier: "UseCaseEntry",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          locale: S.optional(S.String),
-          associatedEntities: __S(5, __c0, 5),
-          badges: __S(7, __c0, 7),
-          catalog: S.String,
-          categories: __S(9, __c1, 1),
-          fulfillmentOptionSummaries: __S(11, __c1, 3),
-          highlights: __S(12, __c1, 4),
-          integrationGuide: S.optional(S.String),
-          listingId: S.String,
-          listingName: S.String,
-          logoThumbnailUrl: S.String,
-          longDescription: S.String,
-          pricingModels: __S(14, __c1, 6),
-          pricingUnits: __S(16, __c2, 0),
-          promotionalMedia: __S(20, __c2, 4),
-          publisher: __S(1, __c0, 1),
-          resources: __S(22, __c2, 6),
-          reviewSummary: S.optional(__S(25, __c3, 1)),
-          sellerEngagements: __S(27, __c3, 3),
-          shortDescription: S.String,
-          useCases: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "GetListingOutput" });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1589,15 +1609,11 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetOfferInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ offerSetId: S.String, sellerOfRecord: __S(1, __c0, 1) }),
-      ).annotate({ identifier: "OfferSetInformation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ product: __S(2, __c0, 2), offerSet: S.optional(__S(33, __c4, 1)) }),
+        S.Struct({ product: __S(64, __c2, 0), offerSet: S.optional(__S(320, __c10, 0)) }),
       ).annotate({ identifier: "OfferAssociatedEntity" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
@@ -1606,15 +1622,27 @@ function __c4(j: number): any {
           offerName: S.optional(S.String),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sellerOfRecord: __S(1, __c0, 1),
-          associatedEntities: __S(35, __c4, 3),
+          sellerOfRecord: __S(32, __c1, 0),
+          associatedEntities: __S(290, __c9, 2),
           agreementProposalId: S.String,
           replacementAgreementId: S.optional(S.String),
-          pricingModel: __S(13, __c1, 5),
-          badges: __S(7, __c0, 7),
+          pricingModel: __S(96, __c3, 0),
+          badges: __S(66, __c2, 2),
         }),
       ).annotate({ identifier: "GetOfferOutput" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ offerSetId: S.String, sellerOfRecord: __S(32, __c1, 0) }),
+      ).annotate({ identifier: "OfferSetInformation" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ locale: S.optional(S.String), offerSetId: S.String }).pipe(
           T.all(
@@ -1627,17 +1655,13 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetOfferSetInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ product: __S(2, __c0, 2), offer: __S(3, __c0, 3) }),
+        S.Struct({ product: __S(64, __c2, 0), offer: __S(128, __c4, 0) }),
       ).annotate({ identifier: "OfferSetAssociatedEntity" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
@@ -1647,12 +1671,16 @@ function __c5(j: number): any {
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           buyerNotes: S.optional(S.String),
-          sellerOfRecord: __S(1, __c0, 1),
-          badges: __S(7, __c0, 7),
-          associatedEntities: __S(39, __c4, 7),
+          sellerOfRecord: __S(32, __c1, 0),
+          badges: __S(66, __c2, 2),
+          associatedEntities: __S(354, __c11, 2),
         }),
       ).annotate({ identifier: "GetOfferSetOutput" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
@@ -1670,22 +1698,22 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetOfferTermsInput" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ id: S.String, type: S.String })).annotate({
         identifier: "ByolPricingTerm",
       });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
         identifier: "Selector",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           multipleDimensionSelection: S.String,
           quantityConfiguration: S.String,
         }),
       ).annotate({ identifier: "Constraints" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           labelType: S.String,
@@ -1693,62 +1721,58 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionLabel" });
+    case 5:
+      return S.Array(__S(388, __c12, 4));
     case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           dimensionKey: S.String,
           displayName: S.String,
           description: S.optional(S.String),
-          dimensionLabels: S.optional(__S(46, __c5, 6)),
+          dimensionLabels: S.optional(__S(389, __c12, 5)),
           unit: S.String,
           price: S.String,
         }),
       ).annotate({ identifier: "RateCardItem" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(390, __c12, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          selector: __S(43, __c5, 3),
-          constraints: __S(44, __c5, 4),
-          rateCard: __S(48, __c6, 0),
+          selector: __S(386, __c12, 2),
+          constraints: __S(387, __c12, 3),
+          rateCard: __S(391, __c12, 7),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontRateCardItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(392, __c12, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           currencyCode: S.String,
-          rateCards: S.optional(__S(50, __c6, 2)),
+          rateCards: S.optional(__S(393, __c12, 9)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontPricingTerm",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           dimensionKey: S.String,
           displayName: S.String,
           description: S.optional(S.String),
-          dimensionLabels: S.optional(__S(46, __c5, 6)),
+          dimensionLabels: S.optional(__S(389, __c12, 5)),
           unit: S.String,
           maxQuantity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GrantItem" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(395, __c12, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1756,51 +1780,47 @@ function __c6(j: number): any {
           currencyCode: S.String,
           duration: S.optional(S.String),
           price: S.String,
-          grants: __S(53, __c6, 5),
+          grants: __S(396, __c12, 12),
         }),
       ).annotate({ identifier: "FixedUpfrontPricingTerm" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           duration: S.optional(S.String),
-          grants: __S(53, __c6, 5),
+          grants: __S(396, __c12, 12),
         }),
       ).annotate({ identifier: "FreeTrialPricingTerm" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({ type: S.String, url: S.String, version: S.optional(S.String) }),
       ).annotate({ identifier: "DocumentItem" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 16:
+      return S.Array(__S(399, __c12, 15));
+    case 17:
       return S.suspend(() =>
-        S.Struct({ id: S.String, type: S.String, documents: __S(57, __c7, 1) }),
+        S.Struct({ id: S.String, type: S.String, documents: __S(400, __c12, 16) }),
       ).annotate({ identifier: "LegalTerm" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           chargeDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           chargeAmount: S.String,
         }),
       ).annotate({ identifier: "ScheduleItem" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 19:
+      return S.Array(__S(402, __c12, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           currencyCode: S.String,
-          schedule: __S(60, __c7, 4),
+          schedule: __S(403, __c12, 19),
         }),
       ).annotate({ identifier: "PaymentScheduleTerm" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1810,24 +1830,20 @@ function __c7(j: number): any {
           price: S.String,
         }),
       ).annotate({ identifier: "RecurringPaymentTerm" });
-    case 7:
+    case 22:
       return S.suspend(() => S.Struct({ percentageValue: S.String })).annotate({
         identifier: "FixedPercentage",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
       return S.suspend(() =>
         S.Struct({ minimumValue: S.String, maximumValue: S.String, defaultValue: S.String }),
       ).annotate({ identifier: "PercentageRange" });
-    case 1:
+    case 24:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(63, __c7, 7) }),
-        /*@__PURE__*/ S.Struct({ percentageRange: __S(64, __c8, 0) }),
+        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(406, __c12, 22) }),
+        /*@__PURE__*/ S.Struct({ percentageRange: __S(407, __c12, 23) }),
       ]);
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           chargeDateOffset: S.String,
@@ -1835,17 +1851,19 @@ function __c8(j: number): any {
           dayOfMonth: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaymentScheduleEntry" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ schedule: __S(67, __c8, 3) })).annotate({
+    case 26:
+      return S.Array(__S(409, __c12, 25));
+    case 27:
+      return S.suspend(() => S.Struct({ schedule: __S(410, __c12, 26) })).annotate({
         identifier: "PaymentScheduleTermTemplate",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(68, __c8, 4) })]);
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 28:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(411, __c12, 27) }),
+      ]);
+    case 29:
+      return S.Array(__S(412, __c12, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1853,34 +1871,34 @@ function __c8(j: number): any {
           maxRenewals: S.optional(S.Number),
           lockoutPeriod: S.optional(S.String),
           adjustmentDeadline: S.optional(S.String),
-          priceIncrease: S.optional(__S(65, __c8, 1)),
-          termTemplates: S.optional(__S(70, __c8, 6)),
+          priceIncrease: S.optional(__S(408, __c12, 24)),
+          termTemplates: S.optional(__S(413, __c12, 29)),
         }),
       ).annotate({ identifier: "RenewalTerm" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({ id: S.String, type: S.String, refundPolicy: S.String }),
       ).annotate({ identifier: "SupportTerm" });
-    case 1:
-      return S.suspend(() => S.Struct({ rateCard: __S(48, __c6, 0) })).annotate({
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ rateCard: __S(391, __c12, 7) })).annotate({
         identifier: "UsageBasedRateCardItem",
       });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
     case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           currencyCode: S.String,
-          rateCards: __S(74, __c9, 2),
+          rateCards: __S(417, __c13, 1),
         }),
       ).annotate({ identifier: "UsageBasedPricingTerm" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1890,7 +1908,7 @@ function __c9(j: number): any {
           agreementStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ValidityTerm" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1899,41 +1917,41 @@ function __c9(j: number): any {
           maxTotalChargeAmount: S.String,
         }),
       ).annotate({ identifier: "VariablePaymentTerm" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({ id: S.String, type: S.String, paymentDuePeriod: S.String }),
       ).annotate({ identifier: "NetPaymentTerm" });
-    case 7:
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(42, __c5, 2) }),
-        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(51, __c6, 3) }),
-        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(54, __c6, 6) }),
-        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(55, __c6, 7) }),
-        /*@__PURE__*/ S.Struct({ legalTerm: __S(58, __c7, 2) }),
-        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(61, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(62, __c7, 6) }),
-        /*@__PURE__*/ S.Struct({ renewalTerm: __S(71, __c8, 7) }),
-        /*@__PURE__*/ S.Struct({ supportTerm: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(75, __c9, 3) }),
-        /*@__PURE__*/ S.Struct({ validityTerm: __S(76, __c9, 4) }),
-        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(77, __c9, 5) }),
-        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(78, __c9, 6) }),
+        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(385, __c12, 1) }),
+        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(394, __c12, 10) }),
+        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(397, __c12, 13) }),
+        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(398, __c12, 14) }),
+        /*@__PURE__*/ S.Struct({ legalTerm: __S(401, __c12, 17) }),
+        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(404, __c12, 20) }),
+        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(405, __c12, 21) }),
+        /*@__PURE__*/ S.Struct({ renewalTerm: __S(414, __c12, 30) }),
+        /*@__PURE__*/ S.Struct({ supportTerm: __S(415, __c12, 31) }),
+        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(418, __c13, 2) }),
+        /*@__PURE__*/ S.Struct({ validityTerm: __S(419, __c13, 3) }),
+        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(420, __c13, 4) }),
+        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(421, __c13, 5) }),
       ]);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(422, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          offerTerms: __S(80, __c10, 0),
+          offerTerms: __S(423, __c13, 7),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetOfferTermsOutput" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ locale: S.optional(S.String), productId: S.String }).pipe(
           T.all(
@@ -1946,28 +1964,32 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetProductInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
           productId: S.String,
           catalog: S.String,
           productName: S.String,
-          manufacturer: __S(1, __c0, 1),
+          manufacturer: __S(32, __c1, 0),
           deployedOnAws: S.String,
           shortDescription: S.String,
           longDescription: S.String,
           logoThumbnailUrl: S.String,
-          fulfillmentOptionSummaries: __S(11, __c1, 3),
-          categories: __S(9, __c1, 1),
-          highlights: __S(12, __c1, 4),
-          promotionalMedia: __S(20, __c2, 4),
-          resources: __S(22, __c2, 6),
-          sellerEngagements: __S(27, __c3, 3),
+          fulfillmentOptionSummaries: __S(227, __c7, 3),
+          categories: __S(225, __c7, 1),
+          highlights: __S(192, __c6, 0),
+          promotionalMedia: __S(163, __c5, 3),
+          resources: __S(165, __c5, 5),
+          sellerEngagements: __S(167, __c5, 7),
           listingId: S.String,
         }),
       ).annotate({ identifier: "GetProductOutput" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
@@ -1987,7 +2009,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListFulfillmentOptionsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operatingSystemFamilyName: S.String,
@@ -1997,41 +2019,37 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "AmazonMachineImageOperatingSystem",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           protocol: S.String,
           fromPort: S.Number,
           toPort: S.Number,
-          cidrIpAddresses: __S(12, __c1, 4),
+          cidrIpAddresses: __S(192, __c6, 0),
         }),
       ).annotate({
         identifier: "AmazonMachineImageSecurityGroup",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(483, __c15, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.String,
-          securityGroups: S.optional(__S(88, __c11, 0)),
+          securityGroups: S.optional(__S(484, __c15, 4)),
         }),
       ).annotate({
         identifier: "AmazonMachineImageRecommendation",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
-        S.Struct({ volumeTypes: __S(12, __c1, 4), iops: S.optional(S.Number) }),
+        S.Struct({ volumeTypes: __S(192, __c6, 0), iops: S.optional(S.Number) }),
       ).annotate({
         identifier: "AmazonMachineImageEbsVolume",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2039,37 +2057,37 @@ function __c11(j: number): any {
           fulfillmentOptionVersion: S.optional(S.String),
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
-          operatingSystems: __S(86, __c10, 6),
-          recommendation: S.optional(__S(89, __c11, 1)),
+          operatingSystems: __S(482, __c15, 2),
+          recommendation: S.optional(__S(485, __c15, 5)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           accessUrlTemplate: S.optional(S.String),
           architecture: S.String,
           amiAlias: S.optional(S.String),
-          ebsVolume: S.optional(__S(90, __c11, 2)),
+          ebsVolume: S.optional(__S(486, __c15, 6)),
           shortDescription: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AmazonMachineImageFulfillmentOption",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({ supportedServiceType: S.String, displayName: S.String, description: S.String }),
       ).annotate({ identifier: "AwsSupportedService" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(488, __c15, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           usageInstructions: S.optional(S.String),
-          awsSupportedServices: __S(93, __c11, 5),
+          awsSupportedServices: __S(489, __c15, 9),
         }),
       ).annotate({ identifier: "ApiFulfillmentOption" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2086,17 +2104,13 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CloudFormationFulfillmentOption",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({ operatingSystemFamilyName: S.String, operatingSystemName: S.String }),
       ).annotate({ identifier: "ContainerOperatingSystem" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(492, __c15, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2104,15 +2118,15 @@ function __c12(j: number): any {
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(__S(97, __c12, 1)),
-          awsSupportedServices: S.optional(__S(93, __c11, 5)),
+          operatingSystems: S.optional(__S(493, __c15, 13)),
+          awsSupportedServices: S.optional(__S(489, __c15, 9)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ContainerFulfillmentOption",
       });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2120,13 +2134,13 @@ function __c12(j: number): any {
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(__S(97, __c12, 1)),
+          operatingSystems: S.optional(__S(493, __c15, 13)),
           releaseNotes: S.optional(S.String),
-          awsSupportedServices: S.optional(__S(93, __c11, 5)),
+          awsSupportedServices: S.optional(__S(489, __c15, 9)),
           usageInstructions: S.optional(S.String),
         }),
       ).annotate({ identifier: "HelmFulfillmentOption" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2134,15 +2148,15 @@ function __c12(j: number): any {
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(__S(97, __c12, 1)),
+          operatingSystems: S.optional(__S(493, __c15, 13)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          awsSupportedServices: S.optional(__S(93, __c11, 5)),
+          awsSupportedServices: S.optional(__S(489, __c15, 9)),
         }),
       ).annotate({
         identifier: "EksAddOnFulfillmentOption",
       });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -2151,24 +2165,20 @@ function __c12(j: number): any {
           dataClassification: S.String,
         }),
       ).annotate({ identifier: "DataArtifact" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 18:
+      return S.Array(__S(497, __c15, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
-          dataArtifacts: S.optional(__S(102, __c12, 6)),
+          dataArtifacts: S.optional(__S(498, __c15, 18)),
         }),
       ).annotate({
         identifier: "DataExchangeFulfillmentOption",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2178,7 +2188,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ProfessionalServicesFulfillmentOption",
       });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2191,7 +2201,7 @@ function __c13(j: number): any {
           quickLaunch: S.String,
         }),
       ).annotate({ identifier: "SaasFulfillmentOption" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           recommendedBatchTransformInstanceType: S.String,
@@ -2201,7 +2211,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SageMakerAlgorithmRecommendation",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2210,12 +2220,12 @@ function __c13(j: number): any {
           fulfillmentOptionVersion: S.optional(S.String),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          recommendation: S.optional(__S(106, __c13, 2)),
+          recommendation: S.optional(__S(502, __c15, 22)),
         }),
       ).annotate({
         identifier: "SageMakerAlgorithmFulfillmentOption",
       });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           recommendedBatchTransformInstanceType: S.String,
@@ -2224,7 +2234,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SageMakerModelRecommendation",
       });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
@@ -2233,70 +2243,63 @@ function __c13(j: number): any {
           fulfillmentOptionVersion: S.optional(S.String),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          recommendation: S.optional(__S(108, __c13, 4)),
-          supportedContentTypes: S.optional(__S(12, __c1, 4)),
-          supportedResponseMimeTypes: S.optional(__S(12, __c1, 4)),
+          recommendation: S.optional(__S(504, __c15, 24)),
+          supportedContentTypes: S.optional(__S(192, __c6, 0)),
+          supportedResponseMimeTypes: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "SageMakerModelFulfillmentOption",
       });
-    case 6:
+    case 26:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          amazonMachineImageFulfillmentOption: __S(91, __c11, 3),
+          amazonMachineImageFulfillmentOption: __S(487, __c15, 7),
         }),
-        /*@__PURE__*/ S.Struct({ apiFulfillmentOption: __S(94, __c11, 6) }),
+        /*@__PURE__*/ S.Struct({ apiFulfillmentOption: __S(490, __c15, 10) }),
+        /*@__PURE__*/ S.Struct({ cloudFormationFulfillmentOption: __S(491, __c15, 11) }),
+        /*@__PURE__*/ S.Struct({ containerFulfillmentOption: __S(494, __c15, 14) }),
+        /*@__PURE__*/ S.Struct({ helmFulfillmentOption: __S(495, __c15, 15) }),
+        /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: __S(496, __c15, 16) }),
         /*@__PURE__*/ S.Struct({
-          cloudFormationFulfillmentOption: __S(95, __c11, 7),
+          ec2ImageBuilderComponentFulfillmentOption: __S(494, __c15, 14),
         }),
-        /*@__PURE__*/ S.Struct({ containerFulfillmentOption: __S(98, __c12, 2) }),
-        /*@__PURE__*/ S.Struct({ helmFulfillmentOption: __S(99, __c12, 3) }),
-        /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: __S(100, __c12, 4) }),
+        /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: __S(499, __c15, 19) }),
         /*@__PURE__*/ S.Struct({
-          ec2ImageBuilderComponentFulfillmentOption: __S(98, __c12, 2),
+          professionalServicesFulfillmentOption: __S(500, __c15, 20),
         }),
-        /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: __S(103, __c12, 7) }),
+        /*@__PURE__*/ S.Struct({ saasFulfillmentOption: __S(501, __c15, 21) }),
         /*@__PURE__*/ S.Struct({
-          professionalServicesFulfillmentOption: __S(104, __c13, 0),
+          sageMakerAlgorithmFulfillmentOption: __S(503, __c15, 23),
         }),
-        /*@__PURE__*/ S.Struct({ saasFulfillmentOption: __S(105, __c13, 1) }),
-        /*@__PURE__*/ S.Struct({
-          sageMakerAlgorithmFulfillmentOption: __S(107, __c13, 3),
-        }),
-        /*@__PURE__*/ S.Struct({
-          sageMakerModelFulfillmentOption: __S(109, __c13, 5),
-        }),
+        /*@__PURE__*/ S.Struct({ sageMakerModelFulfillmentOption: __S(505, __c15, 25) }),
       ]);
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
+      return S.Array(__S(506, __c15, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          fulfillmentOptions: __S(111, __c13, 7),
+          fulfillmentOptions: __S(507, __c15, 27),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFulfillmentOptionsOutput",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          filterType: S.String,
-          filterValues: __S(12, __c1, 4),
-        }),
+        S.Struct({ filterType: S.String, filterValues: __S(192, __c6, 0) }),
       ).annotate({ identifier: "PurchaseOptionFilter" });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
     case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          filters: S.optional(__S(114, __c14, 2)),
+          filters: S.optional(__S(513, __c16, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2310,19 +2313,19 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPurchaseOptionsInput" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          product: __S(2, __c0, 2),
-          offer: __S(3, __c0, 3),
-          offerSet: S.optional(__S(33, __c4, 1)),
+          product: __S(64, __c2, 0),
+          offer: __S(128, __c4, 0),
+          offerSet: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "PurchaseOptionAssociatedEntity",
       });
+    case 4:
+      return S.Array(__S(515, __c16, 3));
     case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           purchaseOptionId: S.String,
@@ -2331,41 +2334,35 @@ function __c14(j: number): any {
           purchaseOptionName: S.optional(S.String),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sellerOfRecord: __S(1, __c0, 1),
-          badges: S.optional(__S(7, __c0, 7)),
-          associatedEntities: __S(117, __c14, 5),
+          sellerOfRecord: __S(32, __c1, 0),
+          badges: S.optional(__S(66, __c2, 2)),
+          associatedEntities: __S(516, __c16, 4),
         }),
       ).annotate({ identifier: "PurchaseOptionSummary" });
+    case 6:
+      return S.Array(__S(517, __c16, 5));
     case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          purchaseOptions: S.optional(__S(119, __c14, 7)),
+          purchaseOptions: S.optional(__S(518, __c16, 6)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPurchaseOptionsOutput",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ filterType: S.String, filterValues: __S(12, __c1, 4) }),
-      ).annotate({ identifier: "SearchFilter" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(__S(122, __c15, 2)),
-          facetTypes: S.optional(__S(123, __c15, 3)),
+          filters: S.optional(__S(577, __c18, 1)),
+          facetTypes: S.optional(__S(544, __c17, 0)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2378,7 +2375,7 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchFacetsInput" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -2387,28 +2384,38 @@ function __c15(j: number): any {
           count: S.Number,
         }),
       ).annotate({ identifier: "ListingFacet" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(126, __c15, 6).pipe(S.optional));
+    case 3:
+      return S.Array(__S(546, __c17, 2));
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(547, __c17, 3).pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          totalResults: S.Number,
+          listingFacets: __S(548, __c17, 4),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchFacetsOutput" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ filterType: S.String, filterValues: __S(192, __c6, 0) }),
+      ).annotate({ identifier: "SearchFilter" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          totalResults: S.Number,
-          listingFacets: __S(127, __c15, 7),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchFacetsOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(__S(122, __c15, 2)),
+          filters: S.optional(__S(577, __c18, 1)),
           maxResults: S.optional(S.Number),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
@@ -2424,43 +2431,42 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchListingsInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ product: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ product: S.optional(__S(64, __c2, 0)) })).annotate({
         identifier: "ListingSummaryAssociatedEntity",
       });
+    case 2:
+      return S.Array(__S(609, __c19, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           listingId: S.String,
           listingName: S.String,
-          publisher: __S(1, __c0, 1),
-          fulfillmentOptionSummaries: __S(11, __c1, 3),
+          publisher: __S(32, __c1, 0),
+          fulfillmentOptionSummaries: __S(227, __c7, 3),
           catalog: S.String,
           shortDescription: S.String,
           logoThumbnailUrl: S.String,
-          categories: __S(9, __c1, 1),
-          badges: __S(7, __c0, 7),
-          reviewSummary: __S(25, __c3, 1),
-          pricingModels: __S(14, __c1, 6),
-          pricingUnits: __S(16, __c2, 0),
-          associatedEntities: __S(131, __c16, 3),
+          categories: __S(225, __c7, 1),
+          badges: __S(66, __c2, 2),
+          reviewSummary: __S(261, __c8, 5),
+          pricingModels: __S(256, __c8, 0),
+          pricingUnits: __S(258, __c8, 2),
+          associatedEntities: __S(610, __c19, 2),
         }),
       ).annotate({ identifier: "ListingSummary" });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
     case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           totalResults: S.Number,
-          listingSummaries: __S(133, __c16, 5),
+          listingSummaries: __S(612, __c19, 4),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchListingsOutput" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

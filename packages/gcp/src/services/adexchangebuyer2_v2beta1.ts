@@ -2239,8 +2239,8 @@ export const acceptAccountsProposals: API.OperationMethod<
   AcceptAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcceptAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(2017, __c63, 1) as any as S.Schema<AcceptAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2260,8 +2260,8 @@ export const addAccountsCreativesDealAssociations: API.OperationMethod<
   AddAccountsCreativesDealAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<AddAccountsCreativesDealAssociationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(2560, __c80, 0) as any as S.Schema<AddAccountsCreativesDealAssociationsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2281,8 +2281,8 @@ export const addNoteAccountsProposals: API.OperationMethod<
   AddNoteAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<AddNoteAccountsProposalsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Note>,
+  input: __S(3009, __c94, 1) as any as S.Schema<AddNoteAccountsProposalsRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2302,8 +2302,8 @@ export const cancelNegotiationAccountsProposals: API.OperationMethod<
   CancelNegotiationAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CancelNegotiationAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3360, __c105, 0) as any as S.Schema<CancelNegotiationAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2323,8 +2323,8 @@ export const completeSetupAccountsProposals: API.OperationMethod<
   CompleteSetupAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CompleteSetupAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3489, __c109, 1) as any as S.Schema<CompleteSetupAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2344,8 @@ export const createAccountsClients: API.OperationMethod<
   CreateAccountsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateAccountsClientsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Client>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccountsClientsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2365,8 +2365,8 @@ export const createAccountsClientsInvitations: API.OperationMethod<
   CreateAccountsClientsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateAccountsClientsInvitationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ClientUserInvitation>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateAccountsClientsInvitationsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ClientUserInvitation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2386,8 +2386,8 @@ export const createAccountsCreatives: API.OperationMethod<
   CreateAccountsCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateAccountsCreativesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Creative>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateAccountsCreativesRequest>,
+  output: __S(210, __c6, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2407,8 +2407,8 @@ export const createAccountsProposals: API.OperationMethod<
   CreateAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2428,8 +2428,8 @@ export const createBiddersAccountsFilterSets: API.OperationMethod<
   CreateBiddersAccountsFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateBiddersAccountsFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateBiddersAccountsFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const createBiddersFilterSets: API.OperationMethod<
   CreateBiddersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateBiddersFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateBiddersFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2470,8 +2470,8 @@ export const createBuyersFilterSets: API.OperationMethod<
   CreateBuyersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateBuyersFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateBuyersFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2491,8 +2491,8 @@ export const deleteBiddersAccountsFilterSets: API.OperationMethod<
   DeleteBiddersAccountsFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteBiddersAccountsFilterSetsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteBiddersAccountsFilterSetsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2512,8 +2512,8 @@ export const deleteBiddersFilterSets: API.OperationMethod<
   DeleteBiddersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeleteBiddersFilterSetsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteBiddersFilterSetsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2533,8 +2533,8 @@ export const deleteBuyersFilterSets: API.OperationMethod<
   DeleteBuyersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteBuyersFilterSetsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteBuyersFilterSetsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2548,8 +2548,8 @@ export const getAccountsClients: API.OperationMethod<
   GetAccountsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetAccountsClientsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Client>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetAccountsClientsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2567,8 +2567,8 @@ export const getAccountsClientsInvitations: API.OperationMethod<
   GetAccountsClientsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetAccountsClientsInvitationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ClientUserInvitation>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetAccountsClientsInvitationsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ClientUserInvitation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2582,8 +2582,8 @@ export const getAccountsClientsUsers: API.OperationMethod<
   GetAccountsClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetAccountsClientsUsersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ClientUser>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetAccountsClientsUsersRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2597,8 +2597,8 @@ export const getAccountsCreatives: API.OperationMethod<
   GetAccountsCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetAccountsCreativesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Creative>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetAccountsCreativesRequest>,
+  output: __S(210, __c6, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2612,8 +2612,8 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetAccountsProductsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<Product>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetAccountsProductsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2627,8 +2627,8 @@ export const getAccountsProposals: API.OperationMethod<
   GetAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2646,8 @@ export const getAccountsPublisherProfiles: API.OperationMethod<
   GetAccountsPublisherProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetAccountsPublisherProfilesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PublisherProfile>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetAccountsPublisherProfilesRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<PublisherProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2665,8 +2665,8 @@ export const getBiddersAccountsFilterSets: API.OperationMethod<
   GetBiddersAccountsFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetBiddersAccountsFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetBiddersAccountsFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2680,8 +2680,8 @@ export const getBiddersFilterSets: API.OperationMethod<
   GetBiddersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetBiddersFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetBiddersFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2695,8 +2695,8 @@ export const getBuyersFilterSets: API.OperationMethod<
   GetBuyersFilterSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetBuyersFilterSetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<FilterSet>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetBuyersFilterSetsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<FilterSet>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2711,8 @@ export const listAccountsClients: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListAccountsClientsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListClientsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListAccountsClientsRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<ListClientsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2732,8 @@ export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClientUserInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListAccountsClientsInvitationsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListClientUserInvitationsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListAccountsClientsInvitationsRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<ListClientUserInvitationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2749,8 +2749,8 @@ export const listAccountsClientsUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClientUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListAccountsClientsUsersRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListClientUsersResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListAccountsClientsUsersRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListClientUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2766,8 +2766,8 @@ export const listAccountsCreatives: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListAccountsCreativesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListCreativesResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListAccountsCreativesRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ListCreativesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2787,8 +2787,8 @@ export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod
   GcpOpContext,
   ListDealAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ListDealAssociationsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ListDealAssociationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2808,8 @@ export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListAccountsFinalizedProposalsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListProposalsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListAccountsFinalizedProposalsRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<ListProposalsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2825,8 +2825,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListAccountsProductsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListProductsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListAccountsProductsRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListProductsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2842,8 +2842,8 @@ export const listAccountsProposals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListAccountsProposalsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListProposalsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListAccountsProposalsRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<ListProposalsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2863,8 @@ export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPublisherProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListAccountsPublisherProfilesRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListPublisherProfilesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListAccountsPublisherProfilesRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ListPublisherProfilesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2884,8 @@ export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListFilterSetsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListFilterSetsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2905,8 @@ export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMeth
   GcpOpContext,
   ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBidMetricsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<ListBidMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2927,11 +2927,11 @@ export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperat
   ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
+  output: __S(1440, __c45, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2952,11 +2952,11 @@ export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.Paginated
   ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2977,11 +2977,11 @@ export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOper
   ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    157,
-    __c19,
-    5,
+    1536,
+    __c48,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListFilteredBidRequestsResponse>,
+  output: __S(1568, __c49, 0) as any as S.Schema<ListFilteredBidRequestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3001,8 +3001,8 @@ export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMe
   GcpOpContext,
   ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListFilteredBidsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<ListFilteredBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3023,11 +3023,11 @@ export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOp
   ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    163,
-    __c20,
-    3,
+    1696,
+    __c53,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3048,11 +3048,11 @@ export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOper
   ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    167,
-    __c20,
-    7,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3073,11 +3073,11 @@ export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperat
   ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    171,
-    __c21,
-    3,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListImpressionMetricsResponse>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListImpressionMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3097,8 +3097,8 @@ export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMeth
   GcpOpContext,
   ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListLosingBidsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ListLosingBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3119,11 +3119,11 @@ export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedO
   ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListNonBillableWinningBidsResponse>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListNonBillableWinningBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const listBiddersFilterSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListBiddersFilterSetsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListFilterSetsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListBiddersFilterSetsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListFilterSetsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3160,8 +3160,8 @@ export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListBiddersFilterSetsBidMetricsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBidMetricsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListBiddersFilterSetsBidMetricsRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<ListBidMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3181,8 +3181,8 @@ export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMetho
   GcpOpContext,
   ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3202,8 +3202,12 @@ export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperatio
   GcpOpContext,
   ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
+  input: __S(
+    2336,
+    __c73,
+    0,
+  ) as any as S.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3223,8 +3227,8 @@ export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMet
   GcpOpContext,
   ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListFilteredBidRequestsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<ListFilteredBidRequestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3244,8 +3248,8 @@ export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListBiddersFilterSetsFilteredBidsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListFilteredBidsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListBiddersFilterSetsFilteredBidsRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<ListFilteredBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3269,8 @@ export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationM
   GcpOpContext,
   ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3286,8 +3290,8 @@ export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMet
   GcpOpContext,
   ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3307,8 +3311,8 @@ export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMetho
   GcpOpContext,
   ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListBiddersFilterSetsImpressionMetricsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListImpressionMetricsResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListBiddersFilterSetsImpressionMetricsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListImpressionMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3328,8 +3332,8 @@ export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListBiddersFilterSetsLosingBidsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListLosingBidsResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListBiddersFilterSetsLosingBidsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ListLosingBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3353,8 @@ export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperation
   GcpOpContext,
   ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListNonBillableWinningBidsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListNonBillableWinningBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3366,8 +3370,8 @@ export const listBuyersFilterSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListBuyersFilterSetsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListFilterSetsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListBuyersFilterSetsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListFilterSetsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3387,8 +3391,8 @@ export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListBuyersFilterSetsBidMetricsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBidMetricsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListBuyersFilterSetsBidMetricsRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<ListBidMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3412,8 @@ export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod
   GcpOpContext,
   ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<ListBidResponseErrorsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3429,8 +3433,8 @@ export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperation
   GcpOpContext,
   ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListBidResponsesWithoutBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3454,8 @@ export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMeth
   GcpOpContext,
   ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListFilteredBidRequestsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<ListFilteredBidRequestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3471,8 +3475,8 @@ export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListBuyersFilterSetsFilteredBidsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListFilteredBidsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListBuyersFilterSetsFilteredBidsRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<ListFilteredBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3492,8 +3496,8 @@ export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMe
   GcpOpContext,
   ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3513,8 +3517,8 @@ export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMeth
   GcpOpContext,
   ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3534,8 +3538,8 @@ export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod
   GcpOpContext,
   ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListBuyersFilterSetsImpressionMetricsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListImpressionMetricsResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListBuyersFilterSetsImpressionMetricsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListImpressionMetricsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3555,8 +3559,8 @@ export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListBuyersFilterSetsLosingBidsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListLosingBidsResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListBuyersFilterSetsLosingBidsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ListLosingBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3576,8 +3580,8 @@ export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationM
   GcpOpContext,
   ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListNonBillableWinningBidsResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListNonBillableWinningBidsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3598,8 +3602,8 @@ export const pauseAccountsFinalizedProposals: API.OperationMethod<
   PauseAccountsFinalizedProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PauseAccountsFinalizedProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3105, __c97, 1) as any as S.Schema<PauseAccountsFinalizedProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3619,8 +3623,8 @@ export const pauseAccountsProposals: API.OperationMethod<
   PauseAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PauseAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3137, __c98, 1) as any as S.Schema<PauseAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3640,8 +3644,8 @@ export const removeAccountsCreativesDealAssociations: API.OperationMethod<
   RemoveAccountsCreativesDealAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<RemoveAccountsCreativesDealAssociationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(3168, __c99, 0) as any as S.Schema<RemoveAccountsCreativesDealAssociationsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3661,8 +3665,8 @@ export const resumeAccountsFinalizedProposals: API.OperationMethod<
   ResumeAccountsFinalizedProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ResumeAccountsFinalizedProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3201, __c100, 1) as any as S.Schema<ResumeAccountsFinalizedProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3682,8 +3686,8 @@ export const resumeAccountsProposals: API.OperationMethod<
   ResumeAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ResumeAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ResumeAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3703,8 +3707,8 @@ export const stopWatchingAccountsCreatives: API.OperationMethod<
   StopWatchingAccountsCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<StopWatchingAccountsCreativesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(3264, __c102, 0) as any as S.Schema<StopWatchingAccountsCreativesRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3728,8 @@ export const updateAccountsClients: API.OperationMethod<
   UpdateAccountsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateAccountsClientsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Client>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UpdateAccountsClientsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3745,8 +3749,8 @@ export const updateAccountsClientsUsers: API.OperationMethod<
   UpdateAccountsClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateAccountsClientsUsersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ClientUser>,
+  input: __S(3328, __c104, 0) as any as S.Schema<UpdateAccountsClientsUsersRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3770,8 @@ export const updateAccountsCreatives: API.OperationMethod<
   UpdateAccountsCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateAccountsCreativesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Creative>,
+  input: __S(3392, __c106, 0) as any as S.Schema<UpdateAccountsCreativesRequest>,
+  output: __S(210, __c6, 18) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3787,8 +3791,8 @@ export const updateAccountsProposals: API.OperationMethod<
   UpdateAccountsProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<UpdateAccountsProposalsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Proposal>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UpdateAccountsProposalsRequest>,
+  output: __S(2232, __c69, 24) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3808,8 +3812,8 @@ export const watchAccountsCreatives: API.OperationMethod<
   WatchAccountsCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<WatchAccountsCreativesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Empty>,
+  input: __S(3457, __c108, 1) as any as S.Schema<WatchAccountsCreativesRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3821,524 +3825,23 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          proposalRevision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AcceptProposalRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label()),
-          proposalId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept",
+            uri: "v2beta1/accounts/{accountId}/clients",
             baseUrl: "https://adexchangebuyer.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "AcceptAccountsProposalsRequest",
+        identifier: "CreateAccountsClientsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(S.String),
-          creatorRole: S.optional(S.String),
-          noteId: S.optional(S.String),
-          createTime: S.optional(S.String),
-          proposalRevision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Note" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactInformation" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          referenceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Buyer" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          subAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Seller" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          numTimeUnits: S.optional(S.Number),
-          timeUnitType: S.optional(S.String),
-          maxImpressions: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FrequencyCap" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          creativeBlockingLevel: S.optional(S.String),
-          deliveryRateType: S.optional(S.String),
-          frequencyCaps: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "DeliveryControl" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hasBuyerPaused: S.optional(S.Boolean),
-          firstPausedBy: S.optional(S.String),
-          sellerPauseReason: S.optional(S.String),
-          buyerPauseReason: S.optional(S.String),
-          hasSellerPaused: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DealPauseStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dealPauseStatus: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "DealServingMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sizeType: S.optional(S.String),
-          height: S.optional(S.String),
-          width: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdSize" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creativeSize: S.optional(__S(14, __c1, 6)),
-          creativeCompanionSizes: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CreativeSpecification" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          skippableAdType: S.optional(S.String),
-          creativeSpecifications: S.optional(__S(17, __c2, 1)),
-          creativeFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeRestrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.optional(S.String),
-          startTime: S.optional(__S(19, __c2, 3)),
-          endTime: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "DayPart" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeZoneType: S.optional(S.String),
-          dayParts: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "DayPartTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Size" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          companionSizes: S.optional(__S(24, __c3, 0)),
-          nativeTemplate: S.optional(S.String),
-          allowedFormats: S.optional(__S(25, __c3, 1)),
-          size: S.optional(__S(23, __c2, 7)),
-          skippableAdType: S.optional(S.String),
-          creativeSizeType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeSize" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dayPartTargetingValue: S.optional(__S(22, __c2, 6)),
-          stringValue: S.optional(S.String),
-          creativeSizeValue: S.optional(__S(26, __c3, 2)),
-          longValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetingValue" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          inclusions: S.optional(__S(28, __c3, 4)),
-          exclusions: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "TargetingCriteria" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetedInventorySizes: S.optional(__S(15, __c1, 7)),
-          excludedInventorySizes: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "InventorySizeTargeting" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targetedUrls: S.optional(__S(32, __c4, 0)),
-          excludedUrls: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "UrlTargeting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          excludedAppIds: S.optional(__S(32, __c4, 0)),
-          targetedAppIds: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "FirstPartyMobileApplicationTargeting",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firstPartyTargeting: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "MobileApplicationTargeting",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          urlTargeting: S.optional(__S(33, __c4, 1)),
-          mobileApplicationTargeting: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "PlacementTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetedPositionTypes: S.optional(__S(25, __c3, 1)),
-          excludedPositionTypes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "VideoTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetedCriteriaIds: S.optional(__S(32, __c4, 0)),
-          excludedCriteriaIds: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "CriteriaTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operatingSystemVersionCriteria: S.optional(__S(38, __c4, 6)),
-          operatingSystemCriteria: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "OperatingSystemTargeting" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deviceCapabilityTargeting: S.optional(__S(38, __c4, 6)),
-          operatingSystemTargeting: S.optional(__S(39, __c4, 7)),
-          deviceCategoryTargeting: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "TechnologyTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inventorySizeTargeting: S.optional(__S(31, __c3, 7)),
-          placementTargeting: S.optional(__S(36, __c4, 4)),
-          videoTargeting: S.optional(__S(37, __c4, 5)),
-          technologyTargeting: S.optional(__S(40, __c5, 0)),
-          geoTargeting: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "MarketplaceTargeting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          nanos: S.optional(S.Number),
-          units: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pricingType: S.optional(S.String),
-          amount: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          price: S.optional(__S(43, __c5, 3)),
-          advertiserIds: S.optional(__S(32, __c4, 0)),
-          buyer: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "PricePerBuyer" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fixedPrices: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "NonGuaranteedFixedPriceTerms",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          autoOptimizePrivateAuction: S.optional(S.Boolean),
-          reservePricesPerBuyer: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "NonGuaranteedAuctionTerms",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          percentShareOfVoice: S.optional(S.String),
-          guaranteedImpressions: S.optional(S.String),
-          minimumDailyLooks: S.optional(S.String),
-          fixedPrices: S.optional(__S(45, __c5, 5)),
-          impressionCap: S.optional(S.String),
-          guaranteedLooks: S.optional(S.String),
-          reservationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuaranteedFixedPriceTerms",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sellerTimeZone: S.optional(S.String),
-          nonGuaranteedFixedPriceTerms: S.optional(__S(46, __c5, 6)),
-          estimatedGrossSpend: S.optional(__S(43, __c5, 3)),
-          description: S.optional(S.String),
-          nonGuaranteedAuctionTerms: S.optional(__S(47, __c5, 7)),
-          brandingType: S.optional(S.String),
-          estimatedImpressionsPerDay: S.optional(S.String),
-          guaranteedFixedPriceTerms: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "DealTerms" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deliveryControl: S.optional(__S(11, __c1, 3)),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          programmaticCreativeSource: S.optional(S.String),
-          proposalId: S.optional(S.String),
-          dealServingMetadata: S.optional(__S(13, __c1, 5)),
-          creativeRestrictions: S.optional(__S(18, __c2, 2)),
-          creativePreApprovalPolicy: S.optional(S.String),
-          availableStartTime: S.optional(S.String),
-          dealId: S.optional(S.String),
-          availableEndTime: S.optional(S.String),
-          externalDealId: S.optional(S.String),
-          createProductId: S.optional(S.String),
-          sellerContacts: S.optional(__S(5, __c0, 5)),
-          createProductRevision: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          buyerPrivateData: S.optional(__S(6, __c0, 6)),
-          targetingCriterion: S.optional(__S(30, __c3, 6)),
-          targeting: S.optional(__S(41, __c5, 1)),
-          dealTerms: S.optional(__S(49, __c6, 1)),
-          isSetupComplete: S.optional(S.Boolean),
-          syndicationProduct: S.optional(S.String),
-          creativeSafeFrameCompatibility: S.optional(S.String),
-          displayName: S.optional(S.String),
-          webPropertyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deal" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastUpdaterOrCommentorRole: S.optional(S.String),
-          isRenegotiating: S.optional(S.Boolean),
-          privateAuctionId: S.optional(S.String),
-          notes: S.optional(__S(3, __c0, 3)),
-          originatorRole: S.optional(S.String),
-          sellerContacts: S.optional(__S(5, __c0, 5)),
-          buyerContacts: S.optional(__S(5, __c0, 5)),
-          termsAndConditions: S.optional(S.String),
-          buyerPrivateData: S.optional(__S(6, __c0, 6)),
-          proposalId: S.optional(S.String),
-          buyer: S.optional(__S(7, __c0, 7)),
-          isSetupComplete: S.optional(S.Boolean),
-          seller: S.optional(__S(8, __c1, 0)),
-          billedBuyer: S.optional(__S(7, __c0, 7)),
-          deals: S.optional(__S(51, __c6, 3)),
-          displayName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          proposalRevision: S.optional(S.String),
-          proposalState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Proposal" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dealsId: S.optional(S.String),
-          accountId: S.optional(S.String),
-          creativeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeDealAssociation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          association: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "AddDealAssociationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          creativeId: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddAccountsCreativesDealAssociationsRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "AddNoteRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          proposalId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddNoteAccountsProposalsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          proposalId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelNegotiationAccountsProposalsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          externalDealIds: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "CompleteSetupRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          proposalId: S.String.pipe(T.Label()),
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteSetupAccountsProposalsRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           partnerClientId: S.optional(S.String),
@@ -4352,39 +3855,16 @@ function __c7(j: number): any {
           entityType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Client" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/accounts/{accountId}/clients",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsClientsRequest",
-      });
   }
 }
-function __c8(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          invitationId: S.optional(S.String),
-          clientAccountId: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientUserInvitation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label()),
           clientAccountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4395,174 +3875,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateAccountsClientsInvitationsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          snippet: S.optional(S.String),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HtmlContent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          detectedProviderIds: S.optional(__S(32, __c4, 0)),
-          hasUnidentifiedProvider: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdTechnologyProviders" });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          videoUrl: S.optional(S.String),
-          videoVastXml: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoContent" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          auctionTypes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "AuctionContext" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          geoCriteriaIds: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "LocationContext" });
   }
 }
-function __c9(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          appTypes: S.optional(__S(25, __c3, 1)),
+          invitationId: S.optional(S.String),
+          clientAccountId: S.optional(S.String),
+          email: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AppContext" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          platforms: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "PlatformContext" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          securities: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "SecurityContext" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auctionType: S.optional(__S(70, __c8, 6)),
-          location: S.optional(__S(71, __c8, 7)),
-          all: S.optional(S.String),
-          appType: S.optional(__S(72, __c9, 0)),
-          platform: S.optional(__S(73, __c9, 1)),
-          securityType: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "ServingContext" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          contexts: S.optional(__S(76, __c9, 4)),
-          details: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Correction" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.Number),
-          url: S.optional(S.String),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Image" });
+      ).annotate({ identifier: "ClientUserInvitation" });
   }
 }
-function __c10(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          callToAction: S.optional(S.String),
-          body: S.optional(S.String),
-          starRating: S.optional(S.Number),
-          headline: S.optional(S.String),
-          clickLinkUrl: S.optional(S.String),
-          logo: S.optional(__S(79, __c9, 7)),
-          image: S.optional(__S(79, __c9, 7)),
-          priceDisplayText: S.optional(S.String),
-          appIcon: S.optional(__S(79, __c9, 7)),
-          videoUrl: S.optional(S.String),
-          clickTrackingUrl: S.optional(S.String),
-          advertiserName: S.optional(S.String),
-          storeUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NativeContent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Disapproval" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          disapproval: S.optional(__S(81, __c10, 1)),
-          status: S.optional(S.String),
-          disapprovalReasons: S.optional(__S(82, __c10, 2)),
-          contexts: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "ServingRestriction" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          declaredClickThroughUrls: S.optional(__S(32, __c4, 0)),
-          html: S.optional(__S(66, __c8, 2)),
-          adTechnologyProviders: S.optional(__S(67, __c8, 3)),
-          vendorIds: S.optional(__S(68, __c8, 4)),
-          openAuctionStatus: S.optional(S.String),
-          video: S.optional(__S(69, __c8, 5)),
-          agencyId: S.optional(S.String),
-          corrections: S.optional(__S(78, __c9, 6)),
-          adChoicesDestinationUrl: S.optional(S.String),
-          native: S.optional(__S(80, __c10, 0)),
-          detectedAdvertiserIds: S.optional(__S(32, __c4, 0)),
-          detectedSensitiveCategories: S.optional(__S(68, __c8, 4)),
-          detectedLanguages: S.optional(__S(32, __c4, 0)),
-          clickThroughUrls: S.optional(__S(32, __c4, 0)),
-          dealsStatus: S.optional(S.String),
-          creativeId: S.optional(S.String),
-          advertiserName: S.optional(S.String),
-          version: S.optional(S.Number),
-          detectedDomains: S.optional(__S(32, __c4, 0)),
-          accountId: S.optional(S.String),
-          impressionTrackingUrls: S.optional(__S(32, __c4, 0)),
-          apiUpdateTime: S.optional(S.String),
-          detectedProductCategories: S.optional(__S(68, __c8, 4)),
-          attributes: S.optional(__S(25, __c3, 1)),
-          servingRestrictions: S.optional(__S(84, __c10, 4)),
-          restrictedCategories: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "Creative" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           duplicateIdMode: S.optional(S.String.pipe(T.Query())),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(210, __c6, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4573,11 +3907,177 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateAccountsCreativesRequest",
       });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(S.String),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HtmlContent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          detectedProviderIds: S.optional(__S(2080, __c65, 0)),
+          hasUnidentifiedProvider: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdTechnologyProviders" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          videoUrl: S.optional(S.String),
+          videoVastXml: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoContent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          auctionTypes: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "AuctionContext" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          geoCriteriaIds: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "LocationContext" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          appTypes: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "AppContext" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          platforms: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "PlatformContext" });
     case 7:
       return S.suspend(() =>
         S.Struct({
+          securities: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "SecurityContext" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          auctionType: S.optional(__S(195, __c6, 3)),
+          location: S.optional(__S(196, __c6, 4)),
+          all: S.optional(S.String),
+          appType: S.optional(__S(197, __c6, 5)),
+          platform: S.optional(__S(198, __c6, 6)),
+          securityType: S.optional(__S(199, __c6, 7)),
+        }),
+      ).annotate({ identifier: "ServingContext" });
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          contexts: S.optional(__S(201, __c6, 9)),
+          details: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "Correction" });
+    case 11:
+      return S.Array(__S(202, __c6, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.Number),
+          url: S.optional(S.String),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          callToAction: S.optional(S.String),
+          body: S.optional(S.String),
+          starRating: S.optional(S.Number),
+          headline: S.optional(S.String),
+          clickLinkUrl: S.optional(S.String),
+          logo: S.optional(__S(204, __c6, 12)),
+          image: S.optional(__S(204, __c6, 12)),
+          priceDisplayText: S.optional(S.String),
+          appIcon: S.optional(__S(204, __c6, 12)),
+          videoUrl: S.optional(S.String),
+          clickTrackingUrl: S.optional(S.String),
+          advertiserName: S.optional(S.String),
+          storeUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NativeContent" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          details: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "Disapproval" });
+    case 15:
+      return S.Array(__S(206, __c6, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          disapproval: S.optional(__S(206, __c6, 14)),
+          status: S.optional(S.String),
+          disapprovalReasons: S.optional(__S(207, __c6, 15)),
+          contexts: S.optional(__S(201, __c6, 9)),
+        }),
+      ).annotate({ identifier: "ServingRestriction" });
+    case 17:
+      return S.Array(__S(208, __c6, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          declaredClickThroughUrls: S.optional(__S(2080, __c65, 0)),
+          html: S.optional(__S(192, __c6, 0)),
+          adTechnologyProviders: S.optional(__S(193, __c6, 1)),
+          vendorIds: S.optional(__S(160, __c5, 0)),
+          openAuctionStatus: S.optional(S.String),
+          video: S.optional(__S(194, __c6, 2)),
+          agencyId: S.optional(S.String),
+          corrections: S.optional(__S(203, __c6, 11)),
+          adChoicesDestinationUrl: S.optional(S.String),
+          native: S.optional(__S(205, __c6, 13)),
+          detectedAdvertiserIds: S.optional(__S(2080, __c65, 0)),
+          detectedSensitiveCategories: S.optional(__S(160, __c5, 0)),
+          detectedLanguages: S.optional(__S(2080, __c65, 0)),
+          clickThroughUrls: S.optional(__S(2080, __c65, 0)),
+          dealsStatus: S.optional(S.String),
+          creativeId: S.optional(S.String),
+          advertiserName: S.optional(S.String),
+          version: S.optional(S.Number),
+          detectedDomains: S.optional(__S(2080, __c65, 0)),
+          accountId: S.optional(S.String),
+          impressionTrackingUrls: S.optional(__S(2080, __c65, 0)),
+          apiUpdateTime: S.optional(S.String),
+          detectedProductCategories: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(2112, __c66, 0)),
+          servingRestrictions: S.optional(__S(209, __c6, 17)),
+          restrictedCategories: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "Creative" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2232, __c69, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4590,7 +4090,27 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isTransient: S.optional(S.Boolean.pipe(T.Query())),
+          ownerName: S.String.pipe(T.Label()),
+          body: S.optional(__S(292, __c9, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+ownerName}/filterSets",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBiddersAccountsFilterSetsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4609,8 +4129,8 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(__S(89, __c11, 1)),
-          startDate: S.optional(__S(89, __c11, 1)),
+          endDate: S.optional(__S(289, __c9, 1)),
+          startDate: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({ identifier: "AbsoluteDateRange" });
     case 3:
@@ -4623,44 +4143,32 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sellerNetworkIds: S.optional(__S(68, __c8, 4)),
+          sellerNetworkIds: S.optional(__S(160, __c5, 0)),
           dealId: S.optional(S.String),
-          realtimeTimeRange: S.optional(__S(88, __c11, 0)),
-          publisherIdentifiers: S.optional(__S(32, __c4, 0)),
+          realtimeTimeRange: S.optional(__S(288, __c9, 0)),
+          publisherIdentifiers: S.optional(__S(2080, __c65, 0)),
           timeSeriesGranularity: S.optional(S.String),
-          absoluteDateRange: S.optional(__S(90, __c11, 2)),
-          relativeDateRange: S.optional(__S(91, __c11, 3)),
-          breakdownDimensions: S.optional(__S(25, __c3, 1)),
-          formats: S.optional(__S(25, __c3, 1)),
+          absoluteDateRange: S.optional(__S(290, __c9, 2)),
+          relativeDateRange: S.optional(__S(291, __c9, 3)),
+          breakdownDimensions: S.optional(__S(2112, __c66, 0)),
+          formats: S.optional(__S(2112, __c66, 0)),
           name: S.optional(S.String),
-          platforms: S.optional(__S(25, __c3, 1)),
+          platforms: S.optional(__S(2112, __c66, 0)),
           format: S.optional(S.String),
           creativeId: S.optional(S.String),
           environment: S.optional(S.String),
         }),
       ).annotate({ identifier: "FilterSet" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          isTransient: S.optional(S.Boolean.pipe(T.Query())),
-          ownerName: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+ownerName}/filterSets",
-            baseUrl: "https://adexchangebuyer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBiddersAccountsFilterSetsRequest",
-      });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerName: S.String.pipe(T.Label()),
           isTransient: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(292, __c9, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4671,12 +4179,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateBiddersFilterSetsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerName: S.String.pipe(T.Label()),
           isTransient: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(292, __c9, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4705,7 +4217,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteBiddersAccountsFilterSetsRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4719,7 +4235,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteBiddersFilterSetsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4733,7 +4253,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteBuyersFilterSetsRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
@@ -4748,7 +4272,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAccountsClientsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invitationId: S.String.pipe(T.Label()),
@@ -4764,7 +4292,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAccountsClientsInvitationsRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
@@ -4780,7 +4312,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAccountsClientsUsersRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -4789,7 +4325,11 @@ function __c12(j: number): any {
           clientAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientUser" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
@@ -4806,7 +4346,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4823,27 +4363,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAccountsProductsRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hasCreatorSignedOff: S.optional(S.Boolean),
           productId: S.optional(S.String),
-          terms: S.optional(__S(49, __c6, 1)),
+          terms: S.optional(__S(2197, __c68, 21)),
           createTime: S.optional(S.String),
           productRevision: S.optional(S.String),
-          creatorContacts: S.optional(__S(5, __c0, 5)),
+          creatorContacts: S.optional(__S(2177, __c68, 1)),
           availableStartTime: S.optional(S.String),
           availableEndTime: S.optional(S.String),
-          seller: S.optional(__S(8, __c1, 0)),
+          seller: S.optional(__S(2144, __c67, 0)),
           updateTime: S.optional(S.String),
           publisherProfileId: S.optional(S.String),
           webPropertyCode: S.optional(S.String),
           syndicationProduct: S.optional(S.String),
-          targetingCriterion: S.optional(__S(30, __c3, 6)),
+          targetingCriterion: S.optional(__S(2189, __c68, 13)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proposalId: S.String.pipe(T.Label()),
@@ -4858,7 +4406,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAccountsProposalsRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
@@ -4873,7 +4425,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAccountsPublisherProfilesRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appStore: S.optional(S.String),
@@ -4883,14 +4439,14 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PublisherProfileMobileApplication",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          topHeadlines: S.optional(__S(32, __c4, 0)),
+          topHeadlines: S.optional(__S(2080, __c65, 0)),
           overview: S.optional(S.String),
-          domains: S.optional(__S(32, __c4, 0)),
+          domains: S.optional(__S(2080, __c65, 0)),
           isParent: S.optional(S.Boolean),
           samplePageUrl: S.optional(S.String),
           mediaKitUrl: S.optional(S.String),
@@ -4901,13 +4457,17 @@ function __c13(j: number): any {
           directDealsContact: S.optional(S.String),
           publisherProfileId: S.optional(S.String),
           audienceDescription: S.optional(S.String),
-          seller: S.optional(__S(8, __c1, 0)),
-          mobileApps: S.optional(__S(109, __c13, 5)),
+          seller: S.optional(__S(2144, __c67, 0)),
+          mobileApps: S.optional(__S(769, __c24, 1)),
           googlePlusUrl: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherProfile" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4923,7 +4483,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4939,7 +4499,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetBiddersFilterSetsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4953,7 +4517,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetBuyersFilterSetsRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4970,16 +4538,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAccountsClientsRequest",
       });
-    case 3:
-      return S.Array(__S(62, __c7, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clients: S.optional(__S(115, __c14, 3)),
+          clients: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({ identifier: "ListClientsResponse" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientAccountId: S.String.pipe(T.Label()),
@@ -4996,12 +4568,12 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAccountsClientsInvitationsRequest",
       });
-    case 6:
-      return S.Array(__S(64, __c8, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          invitations: S.optional(__S(118, __c14, 6)),
+          invitations: S.optional(__S(929, __c29, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5009,7 +4581,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5029,15 +4601,19 @@ function __c15(j: number): any {
         identifier: "ListAccountsClientsUsersRequest",
       });
     case 1:
-      return S.Array(__S(102, __c12, 6));
+      return S.Array(__S(576, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(121, __c15, 1)),
+          users: S.optional(__S(961, __c30, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListClientUsersResponse" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -5054,16 +4630,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAccountsCreativesRequest",
       });
-    case 4:
-      return S.Array(__S(85, __c10, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(210, __c6, 18));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          creatives: S.optional(__S(124, __c15, 4)),
+          creatives: S.optional(__S(993, __c31, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCreativesResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5081,22 +4661,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAccountsCreativesDealAssociationsRequest",
       });
-    case 7:
-      return S.Array(__S(53, __c6, 5));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2592, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          associations: S.optional(__S(127, __c15, 7)),
+          associations: S.optional(__S(1025, __c32, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDealAssociationsResponse",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSyntax: S.optional(S.String.pipe(T.Query())),
@@ -5114,16 +4694,24 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountsFinalizedProposalsRequest",
       });
-    case 2:
-      return S.Array(__S(52, __c6, 4));
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2232, __c69, 24));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          proposals: S.optional(__S(130, __c16, 2)),
+          proposals: S.optional(__S(1088, __c34, 0)),
         }),
       ).annotate({ identifier: "ListProposalsResponse" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5140,16 +4728,20 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountsProductsRequest",
       });
-    case 5:
-      return S.Array(__S(105, __c13, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(133, __c16, 5)),
+          products: S.optional(__S(1121, __c35, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
@@ -5169,7 +4761,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5188,17 +4780,21 @@ function __c17(j: number): any {
         identifier: "ListAccountsPublisherProfilesRequest",
       });
     case 1:
-      return S.Array(__S(110, __c13, 6));
+      return S.Array(__S(770, __c24, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          publisherProfiles: S.optional(__S(137, __c17, 1)),
+          publisherProfiles: S.optional(__S(1185, __c37, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPublisherProfilesResponse",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5214,16 +4810,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsRequest",
       });
-    case 4:
-      return S.Array(__S(92, __c11, 4));
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(292, __c9, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          filterSets: S.optional(__S(140, __c17, 4)),
+          filterSets: S.optional(__S(1248, __c39, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFilterSetsResponse" });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5239,54 +4843,62 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsBidMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           variance: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricValue" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeInterval" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeInterval: S.optional(__S(144, __c18, 0)),
-          publisherIdentifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RowDimensions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billedImpressions: S.optional(__S(143, __c17, 7)),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
-          measurableImpressions: S.optional(__S(143, __c17, 7)),
-          reachedQueries: S.optional(__S(143, __c17, 7)),
-          impressionsWon: S.optional(__S(143, __c17, 7)),
-          bids: S.optional(__S(143, __c17, 7)),
-          bidsInAuction: S.optional(__S(143, __c17, 7)),
-          viewableImpressions: S.optional(__S(143, __c17, 7)),
+          timeInterval: S.optional(__S(1313, __c41, 1)),
+          publisherIdentifier: S.optional(S.String),
         }),
-      ).annotate({ identifier: "BidMetricsRow" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
+      ).annotate({ identifier: "RowDimensions" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          bidMetricsRows: S.optional(__S(147, __c18, 3)),
+          billedImpressions: S.optional(__S(1312, __c41, 0)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
+          measurableImpressions: S.optional(__S(1312, __c41, 0)),
+          reachedQueries: S.optional(__S(1312, __c41, 0)),
+          impressionsWon: S.optional(__S(1312, __c41, 0)),
+          bids: S.optional(__S(1312, __c41, 0)),
+          bidsInAuction: S.optional(__S(1312, __c41, 0)),
+          viewableImpressions: S.optional(__S(1312, __c41, 0)),
+        }),
+      ).annotate({ identifier: "BidMetricsRow" });
+    case 1:
+      return S.Array(__S(1344, __c42, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bidMetricsRows: S.optional(__S(1345, __c42, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBidMetricsResponse" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5302,30 +4914,38 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsBidResponseErrorsRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          impressionCount: S.optional(__S(143, __c17, 7)),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
+          impressionCount: S.optional(__S(1312, __c41, 0)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
           calloutStatusId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CalloutStatusRow" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
   }
 }
-function __c19(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          calloutStatusRows: S.optional(__S(151, __c18, 7)),
+          calloutStatusRows: S.optional(__S(1409, __c44, 1)),
         }),
       ).annotate({
         identifier: "ListBidResponseErrorsResponse",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5341,28 +4961,36 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          impressionCount: S.optional(__S(143, __c17, 7)),
+          impressionCount: S.optional(__S(1312, __c41, 0)),
           status: S.optional(S.String),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({
         identifier: "BidResponseWithoutBidsStatusRow",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          bidResponseWithoutBidsStatusRows: S.optional(__S(155, __c19, 3)),
+          bidResponseWithoutBidsStatusRows: S.optional(__S(1505, __c47, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListBidResponsesWithoutBidsResponse",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5378,16 +5006,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsFilteredBidRequestsRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          calloutStatusRows: S.optional(__S(151, __c18, 7)),
+          calloutStatusRows: S.optional(__S(1409, __c44, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFilteredBidRequestsResponse",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5405,26 +5041,34 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bidCount: S.optional(__S(143, __c17, 7)),
+          bidCount: S.optional(__S(1312, __c41, 0)),
           creativeStatusId: S.optional(S.Number),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({ identifier: "CreativeStatusRow" });
     case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+      return S.Array(__S(1632, __c51, 0));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          creativeStatusRows: S.optional(__S(161, __c20, 1)),
+          creativeStatusRows: S.optional(__S(1633, __c51, 1)),
         }),
       ).annotate({ identifier: "ListFilteredBidsResponse" });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5441,26 +5085,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creativeId: S.optional(S.String),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
-          bidCount: S.optional(__S(143, __c17, 7)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
+          bidCount: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "FilteredBidCreativeRow" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          filteredBidCreativeRows: S.optional(__S(165, __c20, 5)),
+          filteredBidCreativeRows: S.optional(__S(1729, __c54, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCreativeStatusBreakdownByCreativeResponse",
       });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5479,30 +5131,34 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rowDimensions: S.optional(__S(145, __c18, 1)),
-          bidCount: S.optional(__S(143, __c17, 7)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
+          bidCount: S.optional(__S(1312, __c41, 0)),
           detail: S.optional(S.String),
           detailId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FilteredBidDetailRow" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(1792, __c56, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           detailType: S.optional(S.String),
-          filteredBidDetailRows: S.optional(__S(169, __c21, 1)),
+          filteredBidDetailRows: S.optional(__S(1793, __c56, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCreativeStatusBreakdownByDetailResponse",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5518,29 +5174,37 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsImpressionMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          rowDimensions: S.optional(__S(145, __c18, 1)),
-          availableImpressions: S.optional(__S(143, __c17, 7)),
-          successfulResponses: S.optional(__S(143, __c17, 7)),
-          responsesWithBids: S.optional(__S(143, __c17, 7)),
-          inventoryMatches: S.optional(__S(143, __c17, 7)),
-          bidRequests: S.optional(__S(143, __c17, 7)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
+          availableImpressions: S.optional(__S(1312, __c41, 0)),
+          successfulResponses: S.optional(__S(1312, __c41, 0)),
+          responsesWithBids: S.optional(__S(1312, __c41, 0)),
+          inventoryMatches: S.optional(__S(1312, __c41, 0)),
+          bidRequests: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "ImpressionMetricsRow" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1856, __c58, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          impressionMetricsRows: S.optional(__S(173, __c21, 5)),
+          impressionMetricsRows: S.optional(__S(1857, __c58, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImpressionMetricsResponse",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5558,16 +5222,20 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creativeStatusRows: S.optional(__S(161, __c20, 1)),
+          creativeStatusRows: S.optional(__S(1633, __c51, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLosingBidsResponse" });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5583,28 +5251,460 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          rowDimensions: S.optional(__S(145, __c18, 1)),
-          bidCount: S.optional(__S(143, __c17, 7)),
+          rowDimensions: S.optional(__S(1314, __c41, 2)),
+          bidCount: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({
         identifier: "NonBillableWinningBidStatusRow",
       });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          nonBillableWinningBidStatusRows: S.optional(__S(179, __c22, 3)),
+          nonBillableWinningBidStatusRows: S.optional(__S(1985, __c62, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListNonBillableWinningBidsResponse",
       });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          proposalRevision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcceptProposalRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          proposalId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptAccountsProposalsRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          note: S.optional(S.String),
+          creatorRole: S.optional(S.String),
+          noteId: S.optional(S.String),
+          createTime: S.optional(S.String),
+          proposalRevision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Note" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          subAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Seller" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactInformation" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Buyer" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.optional(S.String),
+          startTime: S.optional(__S(2179, __c68, 3)),
+          endTime: S.optional(__S(2179, __c68, 3)),
+        }),
+      ).annotate({ identifier: "DayPart" });
     case 5:
+      return S.Array(__S(2180, __c68, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timeZoneType: S.optional(S.String),
+          dayParts: S.optional(__S(2181, __c68, 5)),
+        }),
+      ).annotate({ identifier: "DayPartTargeting" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Size" });
+    case 8:
+      return S.Array(__S(2183, __c68, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          companionSizes: S.optional(__S(2184, __c68, 8)),
+          nativeTemplate: S.optional(S.String),
+          allowedFormats: S.optional(__S(2112, __c66, 0)),
+          size: S.optional(__S(2183, __c68, 7)),
+          skippableAdType: S.optional(S.String),
+          creativeSizeType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeSize" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          dayPartTargetingValue: S.optional(__S(2182, __c68, 6)),
+          stringValue: S.optional(S.String),
+          creativeSizeValue: S.optional(__S(2185, __c68, 9)),
+          longValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetingValue" });
+    case 11:
+      return S.Array(__S(2186, __c68, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          inclusions: S.optional(__S(2187, __c68, 11)),
+          exclusions: S.optional(__S(2187, __c68, 11)),
+        }),
+      ).annotate({ identifier: "TargetingCriteria" });
+    case 13:
+      return S.Array(__S(2188, __c68, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          nanos: S.optional(S.Number),
+          units: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          pricingType: S.optional(S.String),
+          amount: S.optional(__S(2190, __c68, 14)),
+        }),
+      ).annotate({ identifier: "Price" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          price: S.optional(__S(2191, __c68, 15)),
+          advertiserIds: S.optional(__S(2080, __c65, 0)),
+          buyer: S.optional(__S(2178, __c68, 2)),
+        }),
+      ).annotate({ identifier: "PricePerBuyer" });
+    case 17:
+      return S.Array(__S(2192, __c68, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          fixedPrices: S.optional(__S(2193, __c68, 17)),
+        }),
+      ).annotate({
+        identifier: "NonGuaranteedFixedPriceTerms",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          autoOptimizePrivateAuction: S.optional(S.Boolean),
+          reservePricesPerBuyer: S.optional(__S(2193, __c68, 17)),
+        }),
+      ).annotate({
+        identifier: "NonGuaranteedAuctionTerms",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          percentShareOfVoice: S.optional(S.String),
+          guaranteedImpressions: S.optional(S.String),
+          minimumDailyLooks: S.optional(S.String),
+          fixedPrices: S.optional(__S(2193, __c68, 17)),
+          impressionCap: S.optional(S.String),
+          guaranteedLooks: S.optional(S.String),
+          reservationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuaranteedFixedPriceTerms",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          sellerTimeZone: S.optional(S.String),
+          nonGuaranteedFixedPriceTerms: S.optional(__S(2194, __c68, 18)),
+          estimatedGrossSpend: S.optional(__S(2191, __c68, 15)),
+          description: S.optional(S.String),
+          nonGuaranteedAuctionTerms: S.optional(__S(2195, __c68, 19)),
+          brandingType: S.optional(S.String),
+          estimatedImpressionsPerDay: S.optional(S.String),
+          guaranteedFixedPriceTerms: S.optional(__S(2196, __c68, 20)),
+        }),
+      ).annotate({ identifier: "DealTerms" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2048, __c64, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referenceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          numTimeUnits: S.optional(S.Number),
+          timeUnitType: S.optional(S.String),
+          maxImpressions: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FrequencyCap" });
+    case 3:
+      return S.Array(__S(2210, __c69, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creativeBlockingLevel: S.optional(S.String),
+          deliveryRateType: S.optional(S.String),
+          frequencyCaps: S.optional(__S(2211, __c69, 3)),
+        }),
+      ).annotate({ identifier: "DeliveryControl" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          hasBuyerPaused: S.optional(S.Boolean),
+          firstPausedBy: S.optional(S.String),
+          sellerPauseReason: S.optional(S.String),
+          buyerPauseReason: S.optional(S.String),
+          hasSellerPaused: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DealPauseStatus" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dealPauseStatus: S.optional(__S(2213, __c69, 5)),
+        }),
+      ).annotate({ identifier: "DealServingMetadata" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sizeType: S.optional(S.String),
+          height: S.optional(S.String),
+          width: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdSize" });
+    case 8:
+      return S.Array(__S(2215, __c69, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          creativeSize: S.optional(__S(2215, __c69, 7)),
+          creativeCompanionSizes: S.optional(__S(2216, __c69, 8)),
+        }),
+      ).annotate({ identifier: "CreativeSpecification" });
+    case 10:
+      return S.Array(__S(2217, __c69, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          skippableAdType: S.optional(S.String),
+          creativeSpecifications: S.optional(__S(2218, __c69, 10)),
+          creativeFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeRestrictions" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          targetedInventorySizes: S.optional(__S(2216, __c69, 8)),
+          excludedInventorySizes: S.optional(__S(2216, __c69, 8)),
+        }),
+      ).annotate({ identifier: "InventorySizeTargeting" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          targetedUrls: S.optional(__S(2080, __c65, 0)),
+          excludedUrls: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "UrlTargeting" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          excludedAppIds: S.optional(__S(2080, __c65, 0)),
+          targetedAppIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "FirstPartyMobileApplicationTargeting",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          firstPartyTargeting: S.optional(__S(2222, __c69, 14)),
+        }),
+      ).annotate({
+        identifier: "MobileApplicationTargeting",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          urlTargeting: S.optional(__S(2221, __c69, 13)),
+          mobileApplicationTargeting: S.optional(__S(2223, __c69, 15)),
+        }),
+      ).annotate({ identifier: "PlacementTargeting" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          targetedPositionTypes: S.optional(__S(2112, __c66, 0)),
+          excludedPositionTypes: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "VideoTargeting" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          targetedCriteriaIds: S.optional(__S(2080, __c65, 0)),
+          excludedCriteriaIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "CriteriaTargeting" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          operatingSystemVersionCriteria: S.optional(__S(2226, __c69, 18)),
+          operatingSystemCriteria: S.optional(__S(2226, __c69, 18)),
+        }),
+      ).annotate({ identifier: "OperatingSystemTargeting" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          deviceCapabilityTargeting: S.optional(__S(2226, __c69, 18)),
+          operatingSystemTargeting: S.optional(__S(2227, __c69, 19)),
+          deviceCategoryTargeting: S.optional(__S(2226, __c69, 18)),
+        }),
+      ).annotate({ identifier: "TechnologyTargeting" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          inventorySizeTargeting: S.optional(__S(2220, __c69, 12)),
+          placementTargeting: S.optional(__S(2224, __c69, 16)),
+          videoTargeting: S.optional(__S(2225, __c69, 17)),
+          technologyTargeting: S.optional(__S(2228, __c69, 20)),
+          geoTargeting: S.optional(__S(2226, __c69, 18)),
+        }),
+      ).annotate({ identifier: "MarketplaceTargeting" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryControl: S.optional(__S(2212, __c69, 4)),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          programmaticCreativeSource: S.optional(S.String),
+          proposalId: S.optional(S.String),
+          dealServingMetadata: S.optional(__S(2214, __c69, 6)),
+          creativeRestrictions: S.optional(__S(2219, __c69, 11)),
+          creativePreApprovalPolicy: S.optional(S.String),
+          availableStartTime: S.optional(S.String),
+          dealId: S.optional(S.String),
+          availableEndTime: S.optional(S.String),
+          externalDealId: S.optional(S.String),
+          createProductId: S.optional(S.String),
+          sellerContacts: S.optional(__S(2177, __c68, 1)),
+          createProductRevision: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          buyerPrivateData: S.optional(__S(2209, __c69, 1)),
+          targetingCriterion: S.optional(__S(2189, __c68, 13)),
+          targeting: S.optional(__S(2229, __c69, 21)),
+          dealTerms: S.optional(__S(2197, __c68, 21)),
+          isSetupComplete: S.optional(S.Boolean),
+          syndicationProduct: S.optional(S.String),
+          creativeSafeFrameCompatibility: S.optional(S.String),
+          displayName: S.optional(S.String),
+          webPropertyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deal" });
+    case 23:
+      return S.Array(__S(2230, __c69, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          lastUpdaterOrCommentorRole: S.optional(S.String),
+          isRenegotiating: S.optional(S.Boolean),
+          privateAuctionId: S.optional(S.String),
+          notes: S.optional(__S(2208, __c69, 0)),
+          originatorRole: S.optional(S.String),
+          sellerContacts: S.optional(__S(2177, __c68, 1)),
+          buyerContacts: S.optional(__S(2177, __c68, 1)),
+          termsAndConditions: S.optional(S.String),
+          buyerPrivateData: S.optional(__S(2209, __c69, 1)),
+          proposalId: S.optional(S.String),
+          buyer: S.optional(__S(2178, __c68, 2)),
+          isSetupComplete: S.optional(S.Boolean),
+          seller: S.optional(__S(2144, __c67, 0)),
+          billedBuyer: S.optional(__S(2178, __c68, 2)),
+          deals: S.optional(__S(2231, __c69, 23)),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          proposalRevision: S.optional(S.String),
+          proposalState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Proposal" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerName: S.String.pipe(T.Label()),
@@ -5620,7 +5720,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsRequest",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5636,7 +5740,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsBidMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5654,7 +5762,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5672,7 +5780,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsBidResponsesWithoutBidsRequest",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5688,7 +5800,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsFilteredBidRequestsRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5704,7 +5820,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsFilteredBidsRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5721,7 +5841,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsFilteredBidsCreativesRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5738,7 +5862,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsFilteredBidsDetailsRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5754,7 +5882,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsImpressionMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5770,7 +5902,63 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBiddersFilterSetsLosingBidsRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          creativeId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddAccountsCreativesDealAssociationsRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dealsId: S.optional(S.String),
+          accountId: S.optional(S.String),
+          creativeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeDealAssociation" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          association: S.optional(__S(2592, __c81, 0)),
+        }),
+      ).annotate({
+        identifier: "AddDealAssociationRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5788,7 +5976,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5806,7 +5994,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsRequest",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filterSetName: S.String.pipe(T.Label()),
@@ -5822,7 +6014,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsBidMetricsRequest",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5838,7 +6034,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsBidResponseErrorsRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5854,7 +6054,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsBidResponsesWithoutBidsRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5870,7 +6074,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsFilteredBidRequestsRequest",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5886,7 +6094,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsFilteredBidsRequest",
       });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creativeStatusId: S.Number.pipe(T.Label()),
@@ -5903,7 +6115,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsFilteredBidsCreativesRequest",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5922,7 +6138,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5940,7 +6156,37 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsImpressionMetricsRequest",
       });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          note: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "AddNoteRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          proposalId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3008, __c94, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddNoteAccountsProposalsRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5956,7 +6202,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsLosingBidsRequest",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5972,21 +6222,25 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListBuyersFilterSetsNonBillableWinningBidsRequest",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
-          externalDealIds: S.optional(__S(32, __c4, 0)),
+          externalDealIds: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "PauseProposalDealsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           proposalId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(203, __c25, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3104, __c97, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5997,18 +6251,22 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PauseAccountsFinalizedProposalsRequest",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "PauseProposalRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           proposalId: S.String.pipe(T.Label()),
-          body: S.optional(__S(205, __c25, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3136, __c98, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6019,12 +6277,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PauseAccountsProposalsRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           creativeId: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6037,12 +6299,12 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          externalDealIds: S.optional(__S(32, __c4, 0)),
+          externalDealIds: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "ResumeProposalDealsRequest",
@@ -6052,7 +6314,7 @@ function __c26(j: number): any {
         S.Struct({
           proposalId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3200, __c100, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6063,12 +6325,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ResumeAccountsFinalizedProposalsRequest",
       });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           proposalId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6079,12 +6345,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ResumeAccountsProposalsRequest",
       });
-    case 3:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creativeId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6095,12 +6365,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StopWatchingAccountsCreativesRequest",
       });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           clientAccountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6111,13 +6385,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAccountsClientsRequest",
       });
-    case 5:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientAccountId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6128,12 +6406,36 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAccountsClientsUsersRequest",
       });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label()),
+          proposalId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelNegotiationAccountsProposalsRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creativeId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(210, __c6, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6144,12 +6446,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAccountsCreativesRequest",
       });
-    case 7:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proposalId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2232, __c69, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6162,7 +6468,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6175,7 +6481,7 @@ function __c27(j: number): any {
         S.Struct({
           creativeId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3456, __c108, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6188,7 +6494,32 @@ function __c27(j: number): any {
       });
   }
 }
-
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalDealIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "CompleteSetupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          proposalId: S.String.pipe(T.Label()),
+          accountId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3488, __c109, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup",
+            baseUrl: "https://adexchangebuyer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteSetupAccountsProposalsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

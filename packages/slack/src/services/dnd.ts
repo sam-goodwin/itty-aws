@@ -93,8 +93,8 @@ export const endDnd: API.OperationMethod<
   EndDndError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<EndDndRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EndDndResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<EndDndRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<EndDndResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -108,8 +108,8 @@ export const endSnooze: API.OperationMethod<
   EndSnoozeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<EndSnoozeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EndSnoozeResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<EndSnoozeRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<EndSnoozeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -123,8 +123,8 @@ export const setSnooze: API.OperationMethod<
   SetSnoozeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<SetSnoozeRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SetSnoozeResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<SetSnoozeRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<SetSnoozeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -138,8 +138,8 @@ export const teamInfo: API.OperationMethod<
   TeamInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<TeamInfoRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<TeamInfoResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<TeamInfoRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<TeamInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -169,21 +169,29 @@ function __c0(j: number): any {
           dnd_profile_status: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DndInfoResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dnd.endDnd", code: 200 })),
       ).annotate({ identifier: "EndDndRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "EndDndResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dnd.endSnooze", code: 200 })),
       ).annotate({ identifier: "EndSnoozeRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -196,13 +204,17 @@ function __c0(j: number): any {
           dnd_profile_status: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "EndSnoozeResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           num_minutes: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/dnd.setSnooze", code: 200 })),
       ).annotate({ identifier: "SetSnoozeRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -214,7 +226,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SetSnoozeResponse" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -229,12 +241,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: __S(9, __c1, 1),
+          users: __S(17, __c4, 1),
         }),
       ).annotate({ identifier: "TeamInfoResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

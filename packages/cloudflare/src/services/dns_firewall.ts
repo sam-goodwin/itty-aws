@@ -477,8 +477,8 @@ export const createDnsFirewall: API.OperationMethod<
   CreateDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDnsFirewallRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateDnsFirewallResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateDnsFirewallRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateDnsFirewallResponse>,
   errors: [DnsFirewallNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -492,8 +492,8 @@ export const deleteDnsFirewall: API.OperationMethod<
   DeleteDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteDnsFirewallRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteDnsFirewallResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteDnsFirewallRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetAnalyticReportRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetAnalyticReportResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAnalyticReportRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<GetAnalyticReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -522,8 +522,8 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAnalyticReportBytimeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetAnalyticReportBytimeResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetAnalyticReportBytimeRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GetAnalyticReportBytimeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -537,8 +537,8 @@ export const getDnsFirewall: API.OperationMethod<
   GetDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetDnsFirewallRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetDnsFirewallResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetDnsFirewallRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const getReverseDn: API.OperationMethod<
   GetReverseDnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetReverseDnRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetReverseDnResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetReverseDnRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetReverseDnResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -569,8 +569,8 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListDnsFirewallsRequest>,
-    output: __S(28, __c3, 4) as any as S.Schema<ListDnsFirewallsResponse>,
+    input: __S(112, __c14, 0) as any as S.Schema<ListDnsFirewallsRequest>,
+    output: __S(115, __c14, 3) as any as S.Schema<ListDnsFirewallsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const patchDnsFirewall: API.OperationMethod<
   PatchDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<PatchDnsFirewallRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<PatchDnsFirewallResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchDnsFirewallRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PatchDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const patchReverseDn: API.OperationMethod<
   PatchReverseDnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<PatchReverseDnRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PatchReverseDnResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<PatchReverseDnRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<PatchReverseDnResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -619,25 +619,61 @@ export const patchReverseDn: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.Boolean),
-          onlyWhenUpstreamUnhealthy: S.optional(
-            S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-          ),
-        }),
-      ).annotate({
-        identifier: "CreateRequestAttackMitigation",
-      });
-    case 2:
+          accountId: S.String.pipe(T.Label("account_id")),
+          dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+          attackMitigation: S.optional(__S(24, __c3, 0).pipe(T.Body("attack_mitigation"))),
+          deprecateAnyRequests: S.optional(S.Boolean.pipe(T.Body("deprecate_any_requests"))),
+          ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
+          maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
+          minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
+          name: S.optional(S.String),
+          negativeCacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("negative_cache_ttl"))),
+          ratelimit: S.optional(S.NullOr(S.Number)),
+          retries: S.optional(S.Number),
+          upstreamIps: S.optional(__S(32, __c4, 0).pipe(T.Body("upstream_ips"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchDnsFirewallRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+          ptr: S.optional(__S(104, __c13, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchReverseDnRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(__S(1, __c0, 1).pipe(T.Body("attack_mitigation"))),
+          upstreamIps: __S(32, __c4, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(__S(24, __c3, 0).pipe(T.Body("attack_mitigation"))),
           deprecateAnyRequests: S.optional(S.Boolean.pipe(T.Body("deprecate_any_requests"))),
           dnsFirewallIpCount: S.optional(S.Number.pipe(T.Body("dns_firewall_ip_count"))),
           ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
@@ -650,7 +686,54 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/dns_firewall", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateDnsFirewallRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
+          dnsFirewallIps: __S(32, __c4, 0).pipe(T.Body("dns_firewall_ips")),
+          ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
+          maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
+          minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          name: S.String,
+          negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
+          ratelimit: S.Number,
+          retries: S.Number,
+          upstreamIps: __S(32, __c4, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(
+            S.NullOr(__S(40, __c5, 0)).pipe(T.Body("attack_mitigation")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDnsFirewallResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          onlyWhenUpstreamUnhealthy: S.optional(
+            S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
+          ),
+        }),
+      ).annotate({
+        identifier: "CreateRequestAttackMitigation",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -661,27 +744,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateResponseAttackMitigation",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
-          ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
-          maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
-          minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          name: S.String,
-          negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
-          ratelimit: S.Number,
-          retries: S.Number,
-          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDnsFirewallResponse",
-      });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -696,7 +763,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDnsFirewallRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -704,7 +771,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteDnsFirewallResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -726,33 +797,27 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAnalyticReportRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(0, __c0, 0),
-          metrics: __S(8, __c1, 0),
+          dimensions: __S(32, __c4, 0),
+          metrics: __S(64, __c8, 0),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseDataItem",
       });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(0, __c0, 0),
+          dimensions: __S(32, __c4, 0),
           limit: S.Number,
-          metrics: __S(0, __c0, 0),
+          metrics: __S(32, __c4, 0),
           since: S.String,
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sort: S.optional(S.NullOr(__S(32, __c4, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseQuery",
@@ -760,18 +825,28 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10, __c1, 2),
+          data: __S(58, __c7, 2),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(11, __c1, 3),
+          query: __S(59, __c7, 3),
           rows: S.Number,
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticReportResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -796,56 +871,56 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAnalyticReportBytimeRequest",
       });
-    case 6:
-      return S.Array(__S(8, __c1, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(0, __c0, 0),
-          metrics: __S(14, __c1, 6),
+          dimensions: __S(32, __c4, 0),
+          metrics: __S(73, __c9, 1),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseDataItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(0, __c0, 0),
+          dimensions: __S(32, __c4, 0),
           limit: S.Number,
-          metrics: __S(0, __c0, 0),
+          metrics: __S(32, __c4, 0),
           since: S.String,
           timeDelta: S.String.pipe(T.Body("time_delta")),
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sort: S.optional(S.NullOr(__S(32, __c4, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseQuery",
       });
-    case 2:
-      return S.Array(__S(0, __c0, 0));
-    case 3:
+    case 5:
+      return S.Array(__S(32, __c4, 0));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(16, __c2, 0),
+          data: __S(75, __c9, 3),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(17, __c2, 1),
+          query: __S(76, __c9, 4),
           rows: S.Number,
-          timeIntervals: __S(18, __c2, 2).pipe(T.Body("time_intervals")),
+          timeIntervals: __S(77, __c9, 5).pipe(T.Body("time_intervals")),
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticReportBytimeResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -860,12 +935,16 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsFirewallRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
+          dnsFirewallIps: __S(32, __c4, 0).pipe(T.Body("dns_firewall_ips")),
           ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
           maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
           minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
@@ -874,11 +953,17 @@ function __c2(j: number): any {
           negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
           ratelimit: S.Number,
           retries: S.Number,
-          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
+          upstreamIps: __S(32, __c4, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(
+            S.NullOr(__S(40, __c5, 0)).pipe(T.Body("attack_mitigation")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsFirewallResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -893,19 +978,23 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetReverseDnRequest" });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c3(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ptr: __S(23, __c2, 7),
+          ptr: __S(104, __c13, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetReverseDnResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -915,12 +1004,12 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/dns_firewall", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnsFirewallsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
+          dnsFirewallIps: __S(32, __c4, 0).pipe(T.Body("dns_firewall_ips")),
           ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
           maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
           minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
@@ -929,63 +1018,23 @@ function __c3(j: number): any {
           negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
           ratelimit: S.Number,
           retries: S.Number,
-          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
+          upstreamIps: __S(32, __c4, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(
+            S.NullOr(__S(40, __c5, 0)).pipe(T.Body("attack_mitigation")),
+          ),
         }),
       ).annotate({ identifier: "ListResultItem" });
+    case 2:
+      return S.Array(__S(113, __c14, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
+          result: __S(114, __c14, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnsFirewallsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-          attackMitigation: S.optional(__S(1, __c0, 1).pipe(T.Body("attack_mitigation"))),
-          deprecateAnyRequests: S.optional(S.Boolean.pipe(T.Body("deprecate_any_requests"))),
-          ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
-          maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
-          minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
-          name: S.optional(S.String),
-          negativeCacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("negative_cache_ttl"))),
-          ratelimit: S.optional(S.NullOr(S.Number)),
-          retries: S.optional(S.Number),
-          upstreamIps: S.optional(__S(0, __c0, 0).pipe(T.Body("upstream_ips"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchDnsFirewallRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-          ptr: S.optional(__S(23, __c2, 7)),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchReverseDnRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

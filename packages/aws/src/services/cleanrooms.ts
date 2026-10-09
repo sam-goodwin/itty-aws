@@ -137,7 +137,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(435, __c54, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(3201, __c100, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -2875,8 +2875,8 @@ export const batchGetCollaborationAnalysisTemplate: API.OperationMethod<
   BatchGetCollaborationAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetCollaborationAnalysisTemplateInput>,
-  output: __S(28, __c3, 4) as any as S.Schema<BatchGetCollaborationAnalysisTemplateOutput>,
+  input: __S(3616, __c113, 0) as any as S.Schema<BatchGetCollaborationAnalysisTemplateInput>,
+  output: __S(3620, __c113, 4) as any as S.Schema<BatchGetCollaborationAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2905,8 +2905,8 @@ export const batchGetSchema: API.OperationMethod<
   BatchGetSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<BatchGetSchemaInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<BatchGetSchemaOutput>,
+  input: __S(4064, __c127, 0) as any as S.Schema<BatchGetSchemaInput>,
+  output: __S(4068, __c127, 4) as any as S.Schema<BatchGetSchemaOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2935,8 +2935,8 @@ export const batchGetSchemaAnalysisRule: API.OperationMethod<
   BatchGetSchemaAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<BatchGetSchemaAnalysisRuleInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<BatchGetSchemaAnalysisRuleOutput>,
+  input: __S(4578, __c143, 2) as any as S.Schema<BatchGetSchemaAnalysisRuleInput>,
+  output: __S(4582, __c143, 6) as any as S.Schema<BatchGetSchemaAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2967,8 +2967,8 @@ export const createAnalysisTemplate: API.OperationMethod<
   CreateAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateAnalysisTemplateInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<CreateAnalysisTemplateOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAnalysisTemplateInput>,
+  output: __S(65, __c2, 1) as any as S.Schema<CreateAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2999,8 +2999,8 @@ export const createCollaboration: API.OperationMethod<
   CreateCollaborationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateCollaborationInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<CreateCollaborationOutput>,
+  input: __S(418, __c13, 2) as any as S.Schema<CreateCollaborationInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<CreateCollaborationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3031,8 +3031,8 @@ export const createCollaborationChangeRequest: API.OperationMethod<
   CreateCollaborationChangeRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateCollaborationChangeRequestInput>,
-  output: __S(110, __c13, 6) as any as S.Schema<CreateCollaborationChangeRequestOutput>,
+  input: __S(578, __c18, 2) as any as S.Schema<CreateCollaborationChangeRequestInput>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateCollaborationChangeRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3065,8 +3065,8 @@ export const createConfiguredAudienceModelAssociation: API.OperationMethod<
   CreateConfiguredAudienceModelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateConfiguredAudienceModelAssociationInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateConfiguredAudienceModelAssociationOutput>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateConfiguredAudienceModelAssociationInput>,
+  output: __S(705, __c22, 1) as any as S.Schema<CreateConfiguredAudienceModelAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3099,8 +3099,8 @@ export const createConfiguredTable: API.OperationMethod<
   CreateConfiguredTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<CreateConfiguredTableInput>,
-  output: __S(124, __c15, 4) as any as S.Schema<CreateConfiguredTableOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateConfiguredTableInput>,
+  output: __S(832, __c26, 0) as any as S.Schema<CreateConfiguredTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3133,8 +3133,8 @@ export const createConfiguredTableAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<CreateConfiguredTableAnalysisRuleInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<CreateConfiguredTableAnalysisRuleOutput>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateConfiguredTableAnalysisRuleInput>,
+  output: __S(899, __c28, 3) as any as S.Schema<CreateConfiguredTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3167,8 +3167,8 @@ export const createConfiguredTableAssociation: API.OperationMethod<
   CreateConfiguredTableAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateConfiguredTableAssociationInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<CreateConfiguredTableAssociationOutput>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateConfiguredTableAssociationInput>,
+  output: __S(993, __c31, 1) as any as S.Schema<CreateConfiguredTableAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3200,8 +3200,12 @@ export const createConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAssociationAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateConfiguredTableAssociationAnalysisRuleInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<CreateConfiguredTableAssociationAnalysisRuleOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateConfiguredTableAssociationAnalysisRuleInput>,
+  output: __S(
+    1057,
+    __c33,
+    1,
+  ) as any as S.Schema<CreateConfiguredTableAssociationAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3233,8 +3237,8 @@ export const createIdMappingTable: API.OperationMethod<
   CreateIdMappingTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<CreateIdMappingTableInput>,
-  output: __S(142, __c17, 6) as any as S.Schema<CreateIdMappingTableOutput>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateIdMappingTableInput>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateIdMappingTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3267,8 +3271,8 @@ export const createIdNamespaceAssociation: API.OperationMethod<
   CreateIdNamespaceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateIdNamespaceAssociationInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<CreateIdNamespaceAssociationOutput>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateIdNamespaceAssociationInput>,
+  output: __S(1281, __c40, 1) as any as S.Schema<CreateIdNamespaceAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3301,8 +3305,8 @@ export const createIntermediateTable: API.OperationMethod<
   CreateIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateIntermediateTableInput>,
-  output: __S(169, __c21, 1) as any as S.Schema<CreateIntermediateTableOutput>,
+  input: __S(1312, __c41, 0) as any as S.Schema<CreateIntermediateTableInput>,
+  output: __S(1362, __c42, 18) as any as S.Schema<CreateIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3335,8 +3339,8 @@ export const createIntermediateTableAnalysisRule: API.OperationMethod<
   CreateIntermediateTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateIntermediateTableAnalysisRuleInput>,
-  output: __S(175, __c21, 7) as any as S.Schema<CreateIntermediateTableAnalysisRuleOutput>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateIntermediateTableAnalysisRuleInput>,
+  output: __S(1444, __c45, 4) as any as S.Schema<CreateIntermediateTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3369,8 +3373,8 @@ export const createMembership: API.OperationMethod<
   CreateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateMembershipInput>,
-  output: __S(186, __c23, 2) as any as S.Schema<CreateMembershipOutput>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateMembershipInput>,
+  output: __S(1541, __c48, 5) as any as S.Schema<CreateMembershipOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3403,8 +3407,8 @@ export const createPrivacyBudgetTemplate: API.OperationMethod<
   CreatePrivacyBudgetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<CreatePrivacyBudgetTemplateInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<CreatePrivacyBudgetTemplateOutput>,
+  input: __S(1632, __c51, 0) as any as S.Schema<CreatePrivacyBudgetTemplateInput>,
+  output: __S(1729, __c54, 1) as any as S.Schema<CreatePrivacyBudgetTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3435,8 +3439,8 @@ export const deleteAnalysisTemplate: API.OperationMethod<
   DeleteAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteAnalysisTemplateInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteAnalysisTemplateOutput>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteAnalysisTemplateInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3464,8 +3468,8 @@ export const deleteCollaboration: API.OperationMethod<
   DeleteCollaborationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<DeleteCollaborationInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteCollaborationOutput>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteCollaborationInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteCollaborationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3493,8 +3497,8 @@ export const deleteConfiguredAudienceModelAssociation: API.OperationMethod<
   DeleteConfiguredAudienceModelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteConfiguredAudienceModelAssociationInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteConfiguredAudienceModelAssociationOutput>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteConfiguredAudienceModelAssociationInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeleteConfiguredAudienceModelAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3524,8 +3528,8 @@ export const deleteConfiguredTable: API.OperationMethod<
   DeleteConfiguredTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteConfiguredTableInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteConfiguredTableOutput>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DeleteConfiguredTableInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteConfiguredTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3556,8 +3560,8 @@ export const deleteConfiguredTableAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<DeleteConfiguredTableAnalysisRuleInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteConfiguredTableAnalysisRuleOutput>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteConfiguredTableAnalysisRuleInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeleteConfiguredTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3588,8 +3592,8 @@ export const deleteConfiguredTableAssociation: API.OperationMethod<
   DeleteConfiguredTableAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<DeleteConfiguredTableAssociationInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteConfiguredTableAssociationOutput>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteConfiguredTableAssociationInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeleteConfiguredTableAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3620,8 +3624,12 @@ export const deleteConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAssociationAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteConfiguredTableAssociationAnalysisRuleInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteConfiguredTableAssociationAnalysisRuleOutput>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteConfiguredTableAssociationAnalysisRuleInput>,
+  output: __S(
+    1888,
+    __c59,
+    0,
+  ) as any as S.Schema<DeleteConfiguredTableAssociationAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3651,8 +3659,8 @@ export const deleteIdMappingTable: API.OperationMethod<
   DeleteIdMappingTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<DeleteIdMappingTableInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteIdMappingTableOutput>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteIdMappingTableInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteIdMappingTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3681,8 +3689,8 @@ export const deleteIdNamespaceAssociation: API.OperationMethod<
   DeleteIdNamespaceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeleteIdNamespaceAssociationInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteIdNamespaceAssociationOutput>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteIdNamespaceAssociationInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeleteIdNamespaceAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3712,8 +3720,8 @@ export const deleteIntermediateTable: API.OperationMethod<
   DeleteIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeleteIntermediateTableInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteIntermediateTableOutput>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteIntermediateTableInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3744,8 +3752,8 @@ export const deleteIntermediateTableAnalysisRule: API.OperationMethod<
   DeleteIntermediateTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeleteIntermediateTableAnalysisRuleInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteIntermediateTableAnalysisRuleOutput>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteIntermediateTableAnalysisRuleInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeleteIntermediateTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3776,8 +3784,8 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteMemberInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteMemberOutput>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteMemberInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteMemberOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3808,8 +3816,8 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteMembershipInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<DeleteMembershipOutput>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteMembershipInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteMembershipOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3839,8 +3847,8 @@ export const deletePrivacyBudgetTemplate: API.OperationMethod<
   DeletePrivacyBudgetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeletePrivacyBudgetTemplateInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeletePrivacyBudgetTemplateOutput>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeletePrivacyBudgetTemplateInput>,
+  output: __S(1888, __c59, 0) as any as S.Schema<DeletePrivacyBudgetTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3870,8 +3878,8 @@ export const disallowIntermediateTable: API.OperationMethod<
   DisallowIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DisallowIntermediateTableInput>,
-  output: __S(212, __c26, 4) as any as S.Schema<DisallowIntermediateTableOutput>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DisallowIntermediateTableInput>,
+  output: __S(2273, __c71, 1) as any as S.Schema<DisallowIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3903,8 +3911,8 @@ export const getAnalysisLogExport: API.OperationMethod<
   GetAnalysisLogExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetAnalysisLogExportInput>,
-  output: __S(218, __c27, 2) as any as S.Schema<GetAnalysisLogExportOutput>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetAnalysisLogExportInput>,
+  output: __S(2340, __c73, 4) as any as S.Schema<GetAnalysisLogExportOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3933,8 +3941,8 @@ export const getAnalysisTemplate: API.OperationMethod<
   GetAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetAnalysisTemplateInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetAnalysisTemplateOutput>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetAnalysisTemplateInput>,
+  output: __S(65, __c2, 1) as any as S.Schema<GetAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3962,8 +3970,8 @@ export const getCollaboration: API.OperationMethod<
   GetCollaborationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetCollaborationInput>,
-  output: __S(221, __c27, 5) as any as S.Schema<GetCollaborationOutput>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetCollaborationInput>,
+  output: __S(2401, __c75, 1) as any as S.Schema<GetCollaborationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3991,8 +3999,8 @@ export const getCollaborationAnalysisTemplate: API.OperationMethod<
   GetCollaborationAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetCollaborationAnalysisTemplateInput>,
-  output: __S(223, __c27, 7) as any as S.Schema<GetCollaborationAnalysisTemplateOutput>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetCollaborationAnalysisTemplateInput>,
+  output: __S(2433, __c76, 1) as any as S.Schema<GetCollaborationAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4021,8 +4029,8 @@ export const getCollaborationChangeRequest: API.OperationMethod<
   GetCollaborationChangeRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetCollaborationChangeRequestInput>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetCollaborationChangeRequestOutput>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetCollaborationChangeRequestInput>,
+  output: __S(640, __c20, 0) as any as S.Schema<GetCollaborationChangeRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4052,14 +4060,14 @@ export const getCollaborationConfiguredAudienceModelAssociation: API.OperationMe
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    225,
-    __c28,
-    1,
+    2496,
+    __c78,
+    0,
   ) as any as S.Schema<GetCollaborationConfiguredAudienceModelAssociationInput>,
   output: __S(
-    227,
-    __c28,
-    3,
+    2498,
+    __c78,
+    2,
   ) as any as S.Schema<GetCollaborationConfiguredAudienceModelAssociationOutput>,
   errors: [
     AccessDeniedException,
@@ -4089,8 +4097,8 @@ export const getCollaborationIdNamespaceAssociation: API.OperationMethod<
   GetCollaborationIdNamespaceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetCollaborationIdNamespaceAssociationInput>,
-  output: __S(230, __c28, 6) as any as S.Schema<GetCollaborationIdNamespaceAssociationOutput>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetCollaborationIdNamespaceAssociationInput>,
+  output: __S(2530, __c79, 2) as any as S.Schema<GetCollaborationIdNamespaceAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4119,8 +4127,8 @@ export const getCollaborationPrivacyBudgetTemplate: API.OperationMethod<
   GetCollaborationPrivacyBudgetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetCollaborationPrivacyBudgetTemplateInput>,
-  output: __S(233, __c29, 1) as any as S.Schema<GetCollaborationPrivacyBudgetTemplateOutput>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetCollaborationPrivacyBudgetTemplateInput>,
+  output: __S(2562, __c80, 2) as any as S.Schema<GetCollaborationPrivacyBudgetTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4149,8 +4157,8 @@ export const getConfiguredAudienceModelAssociation: API.OperationMethod<
   GetConfiguredAudienceModelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetConfiguredAudienceModelAssociationInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetConfiguredAudienceModelAssociationOutput>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetConfiguredAudienceModelAssociationInput>,
+  output: __S(705, __c22, 1) as any as S.Schema<GetConfiguredAudienceModelAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4179,8 +4187,8 @@ export const getConfiguredTable: API.OperationMethod<
   GetConfiguredTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetConfiguredTableInput>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetConfiguredTableOutput>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetConfiguredTableInput>,
+  output: __S(2625, __c82, 1) as any as S.Schema<GetConfiguredTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4209,8 +4217,8 @@ export const getConfiguredTableAnalysisRule: API.OperationMethod<
   GetConfiguredTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetConfiguredTableAnalysisRuleInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetConfiguredTableAnalysisRuleOutput>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetConfiguredTableAnalysisRuleInput>,
+  output: __S(899, __c28, 3) as any as S.Schema<GetConfiguredTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4239,8 +4247,8 @@ export const getConfiguredTableAssociation: API.OperationMethod<
   GetConfiguredTableAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<GetConfiguredTableAssociationInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<GetConfiguredTableAssociationOutput>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetConfiguredTableAssociationInput>,
+  output: __S(993, __c31, 1) as any as S.Schema<GetConfiguredTableAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4269,8 +4277,8 @@ export const getConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   GetConfiguredTableAssociationAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetConfiguredTableAssociationAnalysisRuleInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetConfiguredTableAssociationAnalysisRuleOutput>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetConfiguredTableAssociationAnalysisRuleInput>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetConfiguredTableAssociationAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4299,8 +4307,8 @@ export const getIdMappingTable: API.OperationMethod<
   GetIdMappingTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetIdMappingTableInput>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetIdMappingTableOutput>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetIdMappingTableInput>,
+  output: __S(2753, __c86, 1) as any as S.Schema<GetIdMappingTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4329,8 +4337,8 @@ export const getIdNamespaceAssociation: API.OperationMethod<
   GetIdNamespaceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetIdNamespaceAssociationInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetIdNamespaceAssociationOutput>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetIdNamespaceAssociationInput>,
+  output: __S(1281, __c40, 1) as any as S.Schema<GetIdNamespaceAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4359,8 +4367,8 @@ export const getIntermediateTable: API.OperationMethod<
   GetIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<GetIntermediateTableInput>,
-  output: __S(169, __c21, 1) as any as S.Schema<GetIntermediateTableOutput>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetIntermediateTableInput>,
+  output: __S(1362, __c42, 18) as any as S.Schema<GetIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4389,8 +4397,8 @@ export const getIntermediateTableAnalysisRule: API.OperationMethod<
   GetIntermediateTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetIntermediateTableAnalysisRuleInput>,
-  output: __S(175, __c21, 7) as any as S.Schema<GetIntermediateTableAnalysisRuleOutput>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetIntermediateTableAnalysisRuleInput>,
+  output: __S(1444, __c45, 4) as any as S.Schema<GetIntermediateTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4419,8 +4427,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<GetMembershipInput>,
-  output: __S(186, __c23, 2) as any as S.Schema<GetMembershipOutput>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetMembershipInput>,
+  output: __S(1541, __c48, 5) as any as S.Schema<GetMembershipOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4449,8 +4457,8 @@ export const getPrivacyBudgetTemplate: API.OperationMethod<
   GetPrivacyBudgetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<GetPrivacyBudgetTemplateInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<GetPrivacyBudgetTemplateOutput>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetPrivacyBudgetTemplateInput>,
+  output: __S(1729, __c54, 1) as any as S.Schema<GetPrivacyBudgetTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4479,8 +4487,8 @@ export const getProtectedJob: API.OperationMethod<
   GetProtectedJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetProtectedJobInput>,
-  output: __S(263, __c32, 7) as any as S.Schema<GetProtectedJobOutput>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetProtectedJobInput>,
+  output: __S(3049, __c95, 9) as any as S.Schema<GetProtectedJobOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4509,8 +4517,8 @@ export const getProtectedQuery: API.OperationMethod<
   GetProtectedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetProtectedQueryInput>,
-  output: __S(282, __c35, 2) as any as S.Schema<GetProtectedQueryOutput>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetProtectedQueryInput>,
+  output: __S(3073, __c96, 1) as any as S.Schema<GetProtectedQueryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4539,8 +4547,8 @@ export const getSchema: API.OperationMethod<
   GetSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetSchemaInput>,
-  output: __S(284, __c35, 4) as any as S.Schema<GetSchemaOutput>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetSchemaInput>,
+  output: __S(3233, __c101, 1) as any as S.Schema<GetSchemaOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4569,8 +4577,8 @@ export const getSchemaAnalysisRule: API.OperationMethod<
   GetSchemaAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetSchemaAnalysisRuleInput>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetSchemaAnalysisRuleOutput>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetSchemaAnalysisRuleInput>,
+  output: __S(3265, __c102, 1) as any as S.Schema<GetSchemaAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4600,8 +4608,8 @@ export const listAnalysisLogExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnalysisLogExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListAnalysisLogExportsInput>,
-  output: __S(290, __c36, 2) as any as S.Schema<ListAnalysisLogExportsOutput>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListAnalysisLogExportsInput>,
+  output: __S(3299, __c103, 3) as any as S.Schema<ListAnalysisLogExportsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4637,8 +4645,8 @@ export const listAnalysisTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnalysisTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<ListAnalysisTemplatesInput>,
-  output: __S(294, __c36, 6) as any as S.Schema<ListAnalysisTemplatesOutput>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ListAnalysisTemplatesInput>,
+  output: __S(3331, __c104, 3) as any as S.Schema<ListAnalysisTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4674,8 +4682,8 @@ export const listCollaborationAnalysisTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationAnalysisTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<ListCollaborationAnalysisTemplatesInput>,
-  output: __S(298, __c37, 2) as any as S.Schema<ListCollaborationAnalysisTemplatesOutput>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListCollaborationAnalysisTemplatesInput>,
+  output: __S(3363, __c105, 3) as any as S.Schema<ListCollaborationAnalysisTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4711,8 +4719,8 @@ export const listCollaborationChangeRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationChangeRequestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<ListCollaborationChangeRequestsInput>,
-  output: __S(301, __c37, 5) as any as S.Schema<ListCollaborationChangeRequestsOutput>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListCollaborationChangeRequestsInput>,
+  output: __S(3394, __c106, 2) as any as S.Schema<ListCollaborationChangeRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4749,14 +4757,14 @@ export const listCollaborationConfiguredAudienceModelAssociations: API.Paginated
   CollaborationConfiguredAudienceModelAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    302,
-    __c37,
-    6,
+    3424,
+    __c107,
+    0,
   ) as any as S.Schema<ListCollaborationConfiguredAudienceModelAssociationsInput>,
   output: __S(
-    305,
-    __c38,
-    1,
+    3427,
+    __c107,
+    3,
   ) as any as S.Schema<ListCollaborationConfiguredAudienceModelAssociationsOutput>,
   errors: [
     AccessDeniedException,
@@ -4793,8 +4801,8 @@ export const listCollaborationIdNamespaceAssociations: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   CollaborationIdNamespaceAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<ListCollaborationIdNamespaceAssociationsInput>,
-  output: __S(310, __c38, 6) as any as S.Schema<ListCollaborationIdNamespaceAssociationsOutput>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListCollaborationIdNamespaceAssociationsInput>,
+  output: __S(3459, __c108, 3) as any as S.Schema<ListCollaborationIdNamespaceAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4830,8 +4838,8 @@ export const listCollaborationPrivacyBudgets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationPrivacyBudgetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ListCollaborationPrivacyBudgetsInput>,
-  output: __S(321, __c40, 1) as any as S.Schema<ListCollaborationPrivacyBudgetsOutput>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListCollaborationPrivacyBudgetsInput>,
+  output: __S(3523, __c110, 3) as any as S.Schema<ListCollaborationPrivacyBudgetsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4867,8 +4875,8 @@ export const listCollaborationPrivacyBudgetTemplates: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   CollaborationPrivacyBudgetTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<ListCollaborationPrivacyBudgetTemplatesInput>,
-  output: __S(325, __c40, 5) as any as S.Schema<ListCollaborationPrivacyBudgetTemplatesOutput>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListCollaborationPrivacyBudgetTemplatesInput>,
+  output: __S(3587, __c112, 3) as any as S.Schema<ListCollaborationPrivacyBudgetTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4903,8 +4911,8 @@ export const listCollaborations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ListCollaborationsInput>,
-  output: __S(329, __c41, 1) as any as S.Schema<ListCollaborationsOutput>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListCollaborationsInput>,
+  output: __S(3747, __c117, 3) as any as S.Schema<ListCollaborationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4939,8 +4947,8 @@ export const listConfiguredAudienceModelAssociations: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ConfiguredAudienceModelAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListConfiguredAudienceModelAssociationsInput>,
-  output: __S(333, __c41, 5) as any as S.Schema<ListConfiguredAudienceModelAssociationsOutput>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListConfiguredAudienceModelAssociationsInput>,
+  output: __S(3779, __c118, 3) as any as S.Schema<ListConfiguredAudienceModelAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4976,8 +4984,8 @@ export const listConfiguredTableAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfiguredTableAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<ListConfiguredTableAssociationsInput>,
-  output: __S(337, __c42, 1) as any as S.Schema<ListConfiguredTableAssociationsOutput>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListConfiguredTableAssociationsInput>,
+  output: __S(3811, __c119, 3) as any as S.Schema<ListConfiguredTableAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5012,8 +5020,8 @@ export const listConfiguredTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfiguredTableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<ListConfiguredTablesInput>,
-  output: __S(341, __c42, 5) as any as S.Schema<ListConfiguredTablesOutput>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListConfiguredTablesInput>,
+  output: __S(3843, __c120, 3) as any as S.Schema<ListConfiguredTablesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5048,8 +5056,8 @@ export const listIdMappingTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdMappingTableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListIdMappingTablesInput>,
-  output: __S(345, __c43, 1) as any as S.Schema<ListIdMappingTablesOutput>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListIdMappingTablesInput>,
+  output: __S(3875, __c121, 3) as any as S.Schema<ListIdMappingTablesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5085,8 +5093,8 @@ export const listIdNamespaceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdNamespaceAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListIdNamespaceAssociationsInput>,
-  output: __S(349, __c43, 5) as any as S.Schema<ListIdNamespaceAssociationsOutput>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListIdNamespaceAssociationsInput>,
+  output: __S(3907, __c122, 3) as any as S.Schema<ListIdNamespaceAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5122,8 +5130,8 @@ export const listIntermediateTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntermediateTableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListIntermediateTablesInput>,
-  output: __S(353, __c44, 1) as any as S.Schema<ListIntermediateTablesOutput>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListIntermediateTablesInput>,
+  output: __S(3939, __c123, 3) as any as S.Schema<ListIntermediateTablesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5159,8 +5167,8 @@ export const listIntermediateTableVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntermediateTableVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListIntermediateTableVersionsInput>,
-  output: __S(357, __c44, 5) as any as S.Schema<ListIntermediateTableVersionsOutput>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListIntermediateTableVersionsInput>,
+  output: __S(3971, __c124, 3) as any as S.Schema<ListIntermediateTableVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5196,8 +5204,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MemberSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<ListMembersInput>,
-  output: __S(361, __c45, 1) as any as S.Schema<ListMembersOutput>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListMembersInput>,
+  output: __S(4003, __c125, 3) as any as S.Schema<ListMembersOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5232,8 +5240,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MembershipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListMembershipsInput>,
-  output: __S(365, __c45, 5) as any as S.Schema<ListMembershipsOutput>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListMembershipsInput>,
+  output: __S(4035, __c126, 3) as any as S.Schema<ListMembershipsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5268,8 +5276,8 @@ export const listPrivacyBudgets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrivacyBudgetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListPrivacyBudgetsInput>,
-  output: __S(369, __c46, 1) as any as S.Schema<ListPrivacyBudgetsOutput>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListPrivacyBudgetsInput>,
+  output: __S(4227, __c132, 3) as any as S.Schema<ListPrivacyBudgetsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5305,8 +5313,8 @@ export const listPrivacyBudgetTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrivacyBudgetTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListPrivacyBudgetTemplatesInput>,
-  output: __S(373, __c46, 5) as any as S.Schema<ListPrivacyBudgetTemplatesOutput>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListPrivacyBudgetTemplatesInput>,
+  output: __S(4259, __c133, 3) as any as S.Schema<ListPrivacyBudgetTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5342,8 +5350,8 @@ export const listProtectedJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtectedJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListProtectedJobsInput>,
-  output: __S(381, __c47, 5) as any as S.Schema<ListProtectedJobsOutput>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListProtectedJobsInput>,
+  output: __S(4293, __c134, 5) as any as S.Schema<ListProtectedJobsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5379,8 +5387,8 @@ export const listProtectedQueries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtectedQuerySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<ListProtectedQueriesInput>,
-  output: __S(387, __c48, 3) as any as S.Schema<ListProtectedQueriesOutput>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListProtectedQueriesInput>,
+  output: __S(4357, __c136, 5) as any as S.Schema<ListProtectedQueriesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5416,8 +5424,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ListSchemasInput>,
-  output: __S(391, __c48, 7) as any as S.Schema<ListSchemasOutput>,
+  input: __S(4384, __c137, 0) as any as S.Schema<ListSchemasInput>,
+  output: __S(4387, __c137, 3) as any as S.Schema<ListSchemasOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5449,8 +5457,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(393, __c49, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(4416, __c138, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(4417, __c138, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5475,8 +5483,8 @@ export const populateIdMappingTable: API.OperationMethod<
   PopulateIdMappingTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<PopulateIdMappingTableInput>,
-  output: __S(395, __c49, 3) as any as S.Schema<PopulateIdMappingTableOutput>,
+  input: __S(4448, __c139, 0) as any as S.Schema<PopulateIdMappingTableInput>,
+  output: __S(4449, __c139, 1) as any as S.Schema<PopulateIdMappingTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5509,8 +5517,8 @@ export const populateIntermediateTable: API.OperationMethod<
   PopulateIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<PopulateIntermediateTableInput>,
-  output: __S(398, __c49, 6) as any as S.Schema<PopulateIntermediateTableOutput>,
+  input: __S(4481, __c140, 1) as any as S.Schema<PopulateIntermediateTableInput>,
+  output: __S(4482, __c140, 2) as any as S.Schema<PopulateIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5541,8 +5549,8 @@ export const previewPrivacyImpact: API.OperationMethod<
   PreviewPrivacyImpactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<PreviewPrivacyImpactInput>,
-  output: __S(405, __c50, 5) as any as S.Schema<PreviewPrivacyImpactOutput>,
+  input: __S(4513, __c141, 1) as any as S.Schema<PreviewPrivacyImpactInput>,
+  output: __S(4518, __c141, 6) as any as S.Schema<PreviewPrivacyImpactOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5586,8 +5594,8 @@ export const startAnalysisLogExport: API.OperationMethod<
   StartAnalysisLogExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<StartAnalysisLogExportInput>,
-  output: __S(218, __c27, 2) as any as S.Schema<StartAnalysisLogExportOutput>,
+  input: __S(4544, __c142, 0) as any as S.Schema<StartAnalysisLogExportInput>,
+  output: __S(2340, __c73, 4) as any as S.Schema<StartAnalysisLogExportOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5618,8 +5626,8 @@ export const startProtectedJob: API.OperationMethod<
   StartProtectedJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<StartProtectedJobInput>,
-  output: __S(263, __c32, 7) as any as S.Schema<StartProtectedJobOutput>,
+  input: __S(4738, __c148, 2) as any as S.Schema<StartProtectedJobInput>,
+  output: __S(3049, __c95, 9) as any as S.Schema<StartProtectedJobOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5650,8 +5658,8 @@ export const startProtectedQuery: API.OperationMethod<
   StartProtectedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<StartProtectedQueryInput>,
-  output: __S(411, __c51, 3) as any as S.Schema<StartProtectedQueryOutput>,
+  input: __S(4768, __c149, 0) as any as S.Schema<StartProtectedQueryInput>,
+  output: __S(4800, __c150, 0) as any as S.Schema<StartProtectedQueryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5675,8 +5683,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<TagResourceOutput>,
+  input: __S(4832, __c151, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<TagResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5693,8 +5701,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<UntagResourceInput>,
-  output: __S(196, __c24, 4) as any as S.Schema<UntagResourceOutput>,
+  input: __S(4864, __c152, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(1792, __c56, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5717,8 +5725,8 @@ export const updateAnalysisTemplate: API.OperationMethod<
   UpdateAnalysisTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<UpdateAnalysisTemplateInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateAnalysisTemplateOutput>,
+  input: __S(4896, __c153, 0) as any as S.Schema<UpdateAnalysisTemplateInput>,
+  output: __S(65, __c2, 1) as any as S.Schema<UpdateAnalysisTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5746,8 +5754,8 @@ export const updateCollaboration: API.OperationMethod<
   UpdateCollaborationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<UpdateCollaborationInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateCollaborationOutput>,
+  input: __S(4928, __c154, 0) as any as S.Schema<UpdateCollaborationInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateCollaborationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5778,8 +5786,8 @@ export const updateCollaborationChangeRequest: API.OperationMethod<
   UpdateCollaborationChangeRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<UpdateCollaborationChangeRequestInput>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdateCollaborationChangeRequestOutput>,
+  input: __S(4960, __c155, 0) as any as S.Schema<UpdateCollaborationChangeRequestInput>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateCollaborationChangeRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5809,8 +5817,8 @@ export const updateConfiguredAudienceModelAssociation: API.OperationMethod<
   UpdateConfiguredAudienceModelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<UpdateConfiguredAudienceModelAssociationInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<UpdateConfiguredAudienceModelAssociationOutput>,
+  input: __S(4992, __c156, 0) as any as S.Schema<UpdateConfiguredAudienceModelAssociationInput>,
+  output: __S(705, __c22, 1) as any as S.Schema<UpdateConfiguredAudienceModelAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5841,8 +5849,8 @@ export const updateConfiguredTable: API.OperationMethod<
   UpdateConfiguredTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<UpdateConfiguredTableInput>,
-  output: __S(124, __c15, 4) as any as S.Schema<UpdateConfiguredTableOutput>,
+  input: __S(5024, __c157, 0) as any as S.Schema<UpdateConfiguredTableInput>,
+  output: __S(832, __c26, 0) as any as S.Schema<UpdateConfiguredTableOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5875,8 +5883,8 @@ export const updateConfiguredTableAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<UpdateConfiguredTableAnalysisRuleInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<UpdateConfiguredTableAnalysisRuleOutput>,
+  input: __S(5056, __c158, 0) as any as S.Schema<UpdateConfiguredTableAnalysisRuleInput>,
+  output: __S(899, __c28, 3) as any as S.Schema<UpdateConfiguredTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5908,8 +5916,8 @@ export const updateConfiguredTableAssociation: API.OperationMethod<
   UpdateConfiguredTableAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<UpdateConfiguredTableAssociationInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<UpdateConfiguredTableAssociationOutput>,
+  input: __S(96, __c3, 0) as any as S.Schema<UpdateConfiguredTableAssociationInput>,
+  output: __S(993, __c31, 1) as any as S.Schema<UpdateConfiguredTableAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5940,8 +5948,12 @@ export const updateConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAssociationAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<UpdateConfiguredTableAssociationAnalysisRuleInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<UpdateConfiguredTableAssociationAnalysisRuleOutput>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateConfiguredTableAssociationAnalysisRuleInput>,
+  output: __S(
+    1057,
+    __c33,
+    1,
+  ) as any as S.Schema<UpdateConfiguredTableAssociationAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5971,8 +5983,8 @@ export const updateIdMappingTable: API.OperationMethod<
   UpdateIdMappingTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<UpdateIdMappingTableInput>,
-  output: __S(142, __c17, 6) as any as S.Schema<UpdateIdMappingTableOutput>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateIdMappingTableInput>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UpdateIdMappingTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6001,8 +6013,8 @@ export const updateIdNamespaceAssociation: API.OperationMethod<
   UpdateIdNamespaceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<UpdateIdNamespaceAssociationInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateIdNamespaceAssociationOutput>,
+  input: __S(192, __c6, 0) as any as S.Schema<UpdateIdNamespaceAssociationInput>,
+  output: __S(1281, __c40, 1) as any as S.Schema<UpdateIdNamespaceAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6031,8 +6043,8 @@ export const updateIntermediateTable: API.OperationMethod<
   UpdateIntermediateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateIntermediateTableInput>,
-  output: __S(169, __c21, 1) as any as S.Schema<UpdateIntermediateTableOutput>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdateIntermediateTableInput>,
+  output: __S(1362, __c42, 18) as any as S.Schema<UpdateIntermediateTableOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6062,8 +6074,8 @@ export const updateIntermediateTableAnalysisRule: API.OperationMethod<
   UpdateIntermediateTableAnalysisRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<UpdateIntermediateTableAnalysisRuleInput>,
-  output: __S(175, __c21, 7) as any as S.Schema<UpdateIntermediateTableAnalysisRuleOutput>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateIntermediateTableAnalysisRuleInput>,
+  output: __S(1444, __c45, 4) as any as S.Schema<UpdateIntermediateTableAnalysisRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6094,8 +6106,8 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<UpdateMembershipInput>,
-  output: __S(186, __c23, 2) as any as S.Schema<UpdateMembershipOutput>,
+  input: __S(289, __c9, 1) as any as S.Schema<UpdateMembershipInput>,
+  output: __S(1541, __c48, 5) as any as S.Schema<UpdateMembershipOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6126,8 +6138,8 @@ export const updatePrivacyBudgetTemplate: API.OperationMethod<
   UpdatePrivacyBudgetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<UpdatePrivacyBudgetTemplateInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<UpdatePrivacyBudgetTemplateOutput>,
+  input: __S(323, __c10, 3) as any as S.Schema<UpdatePrivacyBudgetTemplateInput>,
+  output: __S(1729, __c54, 1) as any as S.Schema<UpdatePrivacyBudgetTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6158,8 +6170,8 @@ export const updateProtectedJob: API.OperationMethod<
   UpdateProtectedJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<UpdateProtectedJobInput>,
-  output: __S(263, __c32, 7) as any as S.Schema<UpdateProtectedJobOutput>,
+  input: __S(352, __c11, 0) as any as S.Schema<UpdateProtectedJobInput>,
+  output: __S(3049, __c95, 9) as any as S.Schema<UpdateProtectedJobOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6190,8 +6202,8 @@ export const updateProtectedQuery: API.OperationMethod<
   UpdateProtectedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<UpdateProtectedQueryInput>,
-  output: __S(411, __c51, 3) as any as S.Schema<UpdateProtectedQueryOutput>,
+  input: __S(384, __c12, 0) as any as S.Schema<UpdateProtectedQueryInput>,
+  output: __S(4800, __c150, 0) as any as S.Schema<UpdateProtectedQueryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6209,561 +6221,18 @@ export const updateProtectedQuery: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-          analysisTemplateArns: __S(0, __c0, 0),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/collaborations/{collaborationIdentifier}/batch-analysistemplates",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetCollaborationAnalysisTemplateInput",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ referencedTables: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "AnalysisSchema",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
-        identifier: "S3Location",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ location: __S(3, __c0, 3) })).annotate({
-        identifier: "AnalysisTemplateArtifact",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entryPoint: __S(4, __c0, 4),
-          additionalArtifacts: S.optional(__S(5, __c0, 5)),
-          roleArn: S.String,
-        }),
-      ).annotate({
-        identifier: "AnalysisTemplateArtifacts",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ artifacts: __S(6, __c0, 6) }),
-      ]);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ sha256: S.optional(S.String) })).annotate({
-        identifier: "Hash",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryPointHash: __S(8, __c1, 0),
-          additionalArtifactHashes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "AnalysisTemplateArtifactMetadata",
-      });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ artifacts: __S(10, __c1, 2) })]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, type: S.String, defaultValue: S.optional(S.String) }),
-      ).annotate({ identifier: "AnalysisParameter" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ message: S.String })).annotate({
-        identifier: "AnalysisTemplateValidationStatusReason",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          status: S.String,
-          reasons: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "AnalysisTemplateValidationStatusDetail",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
-        identifier: "ErrorMessageConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columnName: S.String,
-          columnType: S.String,
-          isPredictiveValue: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "SyntheticDataColumnProperties",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ columnMapping: __S(20, __c2, 4) })).annotate({
-        identifier: "ColumnClassificationDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          epsilon: S.Number,
-          maxMembershipInferenceAttackScore: S.Number,
-          columnClassification: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "MLSyntheticDataParameters",
-      });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ mlSyntheticDataParameters: __S(22, __c2, 6) })]);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          arn: S.String,
-          collaborationId: S.String,
-          collaborationArn: S.String,
-          description: S.optional(S.String),
-          creatorAccountId: S.String,
-          name: S.String,
-          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          schema: __S(2, __c0, 2),
-          format: S.String,
-          source: S.optional(__S(7, __c0, 7)),
-          sourceMetadata: S.optional(__S(11, __c1, 3)),
-          analysisParameters: S.optional(__S(13, __c1, 5)),
-          validations: S.optional(__S(17, __c2, 1)),
-          errorMessageConfiguration: S.optional(__S(18, __c2, 2)),
-          syntheticDataParameters: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "CollaborationAnalysisTemplate",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchGetCollaborationAnalysisTemplateError",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationAnalysisTemplates: __S(25, __c3, 1),
-          errors: __S(27, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "BatchGetCollaborationAnalysisTemplateOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-          names: __S(0, __c0, 0),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/collaborations/{collaborationIdentifier}/batch-schema",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "BatchGetSchemaInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
-        identifier: "Column",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
-        identifier: "SchemaStatusReason",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          reasons: S.optional(__S(34, __c4, 2)),
-          analysisRuleType: S.optional(S.String),
-          configurations: S.optional(__S(32, __c4, 0)),
-          analysisType: S.String,
-        }),
-      ).annotate({ identifier: "SchemaStatusDetail" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ idNamespaceAssociationId: S.String, type: S.String }),
-      ).annotate({
-        identifier: "IdMappingTableInputSource",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idMappingTableInputSource: __S(38, __c4, 6),
-          idMappingTableId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IdMappingTableSchemaTypeProperties",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ intermediateTableId: S.String })).annotate({
-        identifier: "IntermediateTableSchemaTypeProperties",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ configuredTableAssociationId: S.String })).annotate({
-        identifier: "ConfiguredTableAssociationSchemaTypeProperties",
-      });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ idMappingTable: __S(39, __c4, 7) }),
-        /*@__PURE__*/ S.Struct({ intermediateTable: __S(40, __c5, 0) }),
-        /*@__PURE__*/ S.Struct({
-          configuredTableAssociation: __S(41, __c5, 1),
-        }),
-      ]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columns: __S(31, __c3, 7),
-          partitionKeys: __S(31, __c3, 7),
-          analysisRuleTypes: __S(32, __c4, 0),
-          analysisMethod: S.optional(S.String),
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
-          creatorAccountId: S.String,
-          name: S.String,
-          collaborationId: S.String,
-          collaborationArn: S.String,
-          description: S.String,
-          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          type: S.String,
-          schemaStatusDetails: __S(36, __c4, 4),
-          resourceArn: S.optional(S.String),
-          schemaTypeProperties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "Schema" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, code: S.String, message: S.String }),
-      ).annotate({ identifier: "BatchGetSchemaError" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ schemas: __S(44, __c5, 4), errors: __S(46, __c5, 6) }),
-      ).annotate({ identifier: "BatchGetSchemaOutput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
-        identifier: "SchemaAnalysisRuleRequest",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-          schemaAnalysisRuleRequests: __S(49, __c6, 1),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/collaborations/{collaborationIdentifier}/batch-schema-analysis-rule",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetSchemaAnalysisRuleInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          joinColumns: __S(0, __c0, 0),
-          allowedJoinOperators: S.optional(__S(0, __c0, 0)),
-          listColumns: __S(0, __c0, 0),
-          additionalAnalyses: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnalysisRuleList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ columnNames: __S(0, __c0, 0), function: S.String }),
-      ).annotate({ identifier: "AggregateColumn" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ columnName: S.String, minimum: S.Number, type: S.String }),
-      ).annotate({ identifier: "AggregationConstraint" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          aggregateColumns: __S(53, __c6, 5),
-          joinColumns: __S(0, __c0, 0),
-          joinRequired: S.optional(S.String),
-          allowedJoinOperators: S.optional(__S(0, __c0, 0)),
-          dimensionColumns: __S(0, __c0, 0),
-          scalarFunctions: __S(0, __c0, 0),
-          outputConstraints: __S(55, __c6, 7),
-          additionalAnalyses: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnalysisRuleAggregation" });
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String })).annotate({
-        identifier: "DifferentialPrivacyColumn",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ columns: __S(58, __c7, 2) })).annotate({
-        identifier: "DifferentialPrivacyConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ outputColumnName: S.String, minimumIdentityCount: S.Number }),
-      ).annotate({ identifier: "OutputColumnThreshold" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identityColumns: __S(0, __c0, 0),
-          minimumIdentityCount: S.Number,
-          type: S.String,
-          outputColumnThresholds: S.optional(__S(61, __c7, 5)),
-          allowedAggregateExpressionType: S.String,
-        }),
-      ).annotate({ identifier: "AggregationThreshold" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedLiteralComparisonColumns: __S(0, __c0, 0),
-          allowedColumnComparisonColumns: __S(0, __c0, 0),
-        }),
-      ).annotate({ identifier: "ComparisonControls" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAnalyses: __S(0, __c0, 0),
-          allowedAnalysisProviders: S.optional(__S(0, __c0, 0)),
-          additionalAnalyses: S.optional(S.String),
-          disallowedOutputColumns: S.optional(__S(0, __c0, 0)),
-          differentialPrivacy: S.optional(__S(59, __c7, 3)),
-          aggregationThresholds: S.optional(__S(63, __c7, 7)),
-          comparisonControls: S.optional(__S(64, __c8, 0)),
-          allowedResultReceivers: S.optional(__S(0, __c0, 0)),
-          allowedAdditionalAnalyses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AnalysisRuleCustom" });
-    case 2:
-      return S.suspend(() => S.Struct({ columns: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "QueryConstraintRequireOverlap",
-      });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ requireOverlap: __S(66, __c8, 2) })]);
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          joinColumns: __S(0, __c0, 0),
-          queryConstraints: __S(68, __c8, 4),
-          dimensionColumns: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "AnalysisRuleIdMappingTable",
-      });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ list: __S(51, __c6, 3) }),
-        /*@__PURE__*/ S.Struct({ aggregation: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ custom: __S(65, __c8, 1) }),
-        /*@__PURE__*/ S.Struct({ idMappingTable: __S(69, __c8, 5) }),
-      ]);
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(70, __c8, 6) })]);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedResultReceivers: S.optional(__S(0, __c0, 0)),
-          allowedAdditionalAnalyses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ConfiguredTableAssociationAnalysisRuleList",
-      });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ list: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ aggregation: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ custom: __S(72, __c9, 0) }),
-      ]);
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(73, __c9, 1) })]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          joinColumns: __S(0, __c0, 0),
-          allowedJoinOperators: S.optional(__S(0, __c0, 0)),
-          listColumns: __S(0, __c0, 0),
-          additionalAnalyses: S.optional(S.String),
-          allowedResultReceivers: S.optional(__S(0, __c0, 0)),
-          allowedAdditionalAnalyses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ConsolidatedPolicyList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aggregateColumns: __S(53, __c6, 5),
-          joinColumns: __S(0, __c0, 0),
-          joinRequired: S.optional(S.String),
-          allowedJoinOperators: S.optional(__S(0, __c0, 0)),
-          dimensionColumns: __S(0, __c0, 0),
-          scalarFunctions: __S(0, __c0, 0),
-          outputConstraints: __S(55, __c6, 7),
-          additionalAnalyses: S.optional(S.String),
-          allowedResultReceivers: S.optional(__S(0, __c0, 0)),
-          allowedAdditionalAnalyses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ConsolidatedPolicyAggregation",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ list: __S(75, __c9, 3) }),
-        /*@__PURE__*/ S.Struct({ aggregation: __S(76, __c9, 4) }),
-        /*@__PURE__*/ S.Struct({ custom: __S(65, __c8, 1) }),
-      ]);
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(77, __c9, 5) })]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationId: S.String,
-          type: S.String,
-          name: S.String,
-          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          policy: __S(71, __c8, 7),
-          collaborationPolicy: S.optional(__S(74, __c9, 2)),
-          consolidatedPolicy: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "AnalysisRule" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, type: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchGetSchemaAnalysisRuleError",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          analysisRules: __S(80, __c10, 0),
-          errors: __S(82, __c10, 2),
-        }),
-      ).annotate({
-        identifier: "BatchGetSchemaAnalysisRuleOutput",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           name: S.String,
           format: S.String,
-          source: __S(7, __c0, 7),
-          tags: S.optional(__S(84, __c10, 4)),
-          analysisParameters: S.optional(__S(13, __c1, 5)),
-          schema: S.optional(__S(2, __c0, 2)),
-          errorMessageConfiguration: S.optional(__S(18, __c2, 2)),
-          syntheticDataParameters: S.optional(__S(23, __c2, 7)),
+          source: __S(3653, __c114, 5),
+          tags: S.optional(__S(32, __c1, 0)),
+          analysisParameters: S.optional(__S(3659, __c114, 11)),
+          schema: S.optional(__S(3648, __c114, 0)),
+          errorMessageConfiguration: S.optional(__S(3664, __c114, 16)),
+          syntheticDataParameters: S.optional(__S(3669, __c114, 21)),
         }).pipe(
           T.all(
             T.Http({
@@ -6780,7 +6249,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateAnalysisTemplateInput",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6793,65 +6272,397 @@ function __c10(j: number): any {
           name: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          schema: __S(2, __c0, 2),
+          schema: __S(3648, __c114, 0),
           format: S.String,
-          source: __S(7, __c0, 7),
-          sourceMetadata: S.optional(__S(11, __c1, 3)),
-          analysisParameters: S.optional(__S(13, __c1, 5)),
-          validations: S.optional(__S(17, __c2, 1)),
-          errorMessageConfiguration: S.optional(__S(18, __c2, 2)),
-          syntheticDataParameters: S.optional(__S(23, __c2, 7)),
+          source: __S(3653, __c114, 5),
+          sourceMetadata: S.optional(__S(3657, __c114, 9)),
+          analysisParameters: S.optional(__S(3659, __c114, 11)),
+          validations: S.optional(__S(3663, __c114, 15)),
+          errorMessageConfiguration: S.optional(__S(3664, __c114, 16)),
+          syntheticDataParameters: S.optional(__S(3669, __c114, 21)),
         }),
       ).annotate({ identifier: "AnalysisTemplate" });
-    case 7:
-      return S.suspend(() => S.Struct({ analysisTemplate: __S(86, __c10, 6) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ analysisTemplate: __S(64, __c2, 0) })).annotate({
         identifier: "CreateAnalysisTemplateOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configuredTableAssociationIdentifier: S.String.pipe(
+            T.HttpLabel("configuredTableAssociationIdentifier"),
+          ),
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          description: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/configuredTableAssociations/{configuredTableAssociationIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConfiguredTableAssociationInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          configuredTableAssociationIdentifier: S.String.pipe(
+            T.HttpLabel("configuredTableAssociationIdentifier"),
+          ),
+          analysisRuleType: S.String.pipe(T.HttpLabel("analysisRuleType")),
+          analysisRulePolicy: __S(4674, __c146, 2),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/configuredTableAssociations/{configuredTableAssociationIdentifier}/analysisRule/{analysisRuleType}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConfiguredTableAssociationAnalysisRuleInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idMappingTableIdentifier: S.String.pipe(T.HttpLabel("idMappingTableIdentifier")),
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          description: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/idmappingtables/{idMappingTableIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIdMappingTableInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceAssociationIdentifier: S.String.pipe(
+            T.HttpLabel("idNamespaceAssociationIdentifier"),
+          ),
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          idMappingConfig: S.optional(__S(1248, __c39, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/idnamespaceassociations/{idNamespaceAssociationIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIdNamespaceAssociationInput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          description: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          columns: S.optional(__S(4161, __c130, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/intermediateTables/{intermediateTableIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIntermediateTableInput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
+          analysisRuleType: S.String.pipe(T.HttpLabel("analysisRuleType")),
+          analysisRulePolicy: __S(1442, __c45, 2),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/intermediateTables/{intermediateTableIdentifier}/analysisRule/{analysisRuleType}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIntermediateTableAnalysisRuleInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryCompute: S.optional(__S(449, __c14, 1)),
+          machineLearning: S.optional(__S(1600, __c50, 0)),
+          jobCompute: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateMembershipPaymentConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          queryLogStatus: S.optional(S.String),
+          jobLogStatus: S.optional(S.String),
+          defaultResultConfiguration: S.optional(__S(1537, __c48, 1)),
+          defaultJobResultConfiguration: S.optional(__S(1539, __c48, 3)),
+          membershipPaymentConfiguration: S.optional(__S(288, __c9, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/memberships/{membershipIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateMembershipInput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ epsilon: S.optional(S.Number), usersNoisePerQuery: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "DifferentialPrivacyTemplateUpdateParameters",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ budgetParameters: __S(1665, __c52, 1) })).annotate({
+        identifier: "AccessBudgetsPrivacyTemplateUpdateParameters",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ differentialPrivacy: __S(320, __c10, 0) }),
+        /*@__PURE__*/ S.Struct({ accessBudget: __S(321, __c10, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          privacyBudgetTemplateIdentifier: S.String.pipe(
+            T.HttpLabel("privacyBudgetTemplateIdentifier"),
+          ),
+          privacyBudgetType: S.String,
+          parameters: S.optional(__S(322, __c10, 2)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/privacybudgettemplates/{privacyBudgetTemplateIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdatePrivacyBudgetTemplateInput",
       });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ customMLMemberAbilities: __S(32, __c4, 0) })).annotate({
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          protectedJobIdentifier: S.String.pipe(T.HttpLabel("protectedJobIdentifier")),
+          targetStatus: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/protectedJobs/{protectedJobIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateProtectedJobInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          protectedQueryIdentifier: S.String.pipe(T.HttpLabel("protectedQueryIdentifier")),
+          targetStatus: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/protectedQueries/{protectedQueryIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateProtectedQueryInput",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          memberAbilities: __S(4096, __c128, 0),
+          mlMemberAbilities: S.optional(__S(448, __c14, 0)),
+          displayName: S.String,
+          paymentConfiguration: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({ identifier: "MemberSpecification" });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          members: __S(417, __c13, 1),
+          name: S.String,
+          description: S.optional(S.String),
+          creatorMemberAbilities: __S(4096, __c128, 0),
+          creatorMLMemberAbilities: S.optional(__S(448, __c14, 0)),
+          creatorDisplayName: S.String,
+          dataEncryptionMetadata: S.optional(__S(512, __c16, 0)),
+          queryLogStatus: S.String,
+          jobLogStatus: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          creatorPaymentConfiguration: S.optional(__S(482, __c15, 2)),
+          analyticsEngine: S.optional(S.String),
+          autoApprovedChangeRequestTypes: S.optional(__S(4096, __c128, 0)),
+          allowedResultRegions: S.optional(__S(4096, __c128, 0)),
+          isMetricsEnabled: S.optional(S.Boolean),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/collaborations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateCollaborationInput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ customMLMemberAbilities: __S(4096, __c128, 0) })).annotate({
         identifier: "MLMemberAbilities",
       });
     case 1:
       return S.suspend(() => S.Struct({ isResponsible: S.Boolean })).annotate({
         identifier: "QueryComputePaymentConfig",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          modelTraining: S.optional(__S(89, __c11, 1)),
-          modelInference: S.optional(__S(89, __c11, 1)),
-          syntheticDataGeneration: S.optional(__S(89, __c11, 1)),
+          modelTraining: S.optional(__S(449, __c14, 1)),
+          modelInference: S.optional(__S(449, __c14, 1)),
+          syntheticDataGeneration: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "MLPaymentConfig" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ isResponsible: S.Boolean })).annotate({
         identifier: "JobComputePaymentConfig",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          queryCompute: __S(89, __c11, 1),
-          machineLearning: S.optional(__S(90, __c11, 2)),
-          jobCompute: S.optional(__S(91, __c11, 3)),
+          queryCompute: __S(449, __c14, 1),
+          machineLearning: S.optional(__S(480, __c15, 0)),
+          jobCompute: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({ identifier: "PaymentConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String,
-          memberAbilities: __S(32, __c4, 0),
-          mlMemberAbilities: S.optional(__S(88, __c11, 0)),
-          displayName: S.String,
-          paymentConfiguration: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "MemberSpecification" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowCleartext: S.Boolean,
@@ -6860,32 +6671,6 @@ function __c11(j: number): any {
           preserveNulls: S.Boolean,
         }),
       ).annotate({ identifier: "DataEncryptionMetadata" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          members: __S(94, __c11, 6),
-          name: S.String,
-          description: S.optional(S.String),
-          creatorMemberAbilities: __S(32, __c4, 0),
-          creatorMLMemberAbilities: S.optional(__S(88, __c11, 0)),
-          creatorDisplayName: S.String,
-          dataEncryptionMetadata: S.optional(__S(95, __c11, 7)),
-          queryLogStatus: S.String,
-          jobLogStatus: S.optional(S.String),
-          tags: S.optional(__S(84, __c10, 4)),
-          creatorPaymentConfiguration: S.optional(__S(92, __c11, 4)),
-          analyticsEngine: S.optional(S.String),
-          autoApprovedChangeRequestTypes: S.optional(__S(32, __c4, 0)),
-          allowedResultRegions: S.optional(__S(32, __c4, 0)),
-          isMetricsEnabled: S.optional(S.Boolean),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/collaborations" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateCollaborationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6900,60 +6685,38 @@ function __c12(j: number): any {
           memberStatus: S.String,
           membershipId: S.optional(S.String),
           membershipArn: S.optional(S.String),
-          dataEncryptionMetadata: S.optional(__S(95, __c11, 7)),
+          dataEncryptionMetadata: S.optional(__S(512, __c16, 0)),
           queryLogStatus: S.String,
           jobLogStatus: S.optional(S.String),
           analyticsEngine: S.optional(S.String),
-          autoApprovedChangeTypes: S.optional(__S(32, __c4, 0)),
-          allowedResultRegions: S.optional(__S(32, __c4, 0)),
+          autoApprovedChangeTypes: S.optional(__S(4096, __c128, 0)),
+          allowedResultRegions: S.optional(__S(4096, __c128, 0)),
           isMetricsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Collaboration" });
-    case 2:
-      return S.suspend(() => S.Struct({ collaboration: __S(97, __c12, 1) })).annotate({
-        identifier: "CreateCollaborationOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String,
-          memberAbilities: __S(32, __c4, 0),
-          mlMemberAbilities: S.optional(__S(88, __c11, 0)),
-          paymentConfiguration: S.optional(__S(92, __c11, 4)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MemberChangeSpecification",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ autoApprovedChangeTypes: S.optional(__S(32, __c4, 0)) }),
-      ).annotate({
-        identifier: "CollaborationChangeSpecification",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ member: __S(99, __c12, 3) }),
-        /*@__PURE__*/ S.Struct({ collaboration: __S(100, __c12, 4) }),
-      ]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          specificationType: S.String,
-          specification: __S(101, __c12, 5),
-        }),
-      ).annotate({ identifier: "ChangeInput" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ collaboration: __S(513, __c16, 1) })).annotate({
+        identifier: "CreateCollaborationOutput",
+      });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ specificationType: S.String, specification: __S(610, __c19, 2) }),
+      ).annotate({ identifier: "ChangeInput" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-          changes: __S(103, __c12, 7),
+          changes: __S(577, __c18, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -6970,23 +6733,50 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateCollaborationChangeRequestInput",
       });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          memberAbilities: __S(4096, __c128, 0),
+          mlMemberAbilities: S.optional(__S(448, __c14, 0)),
+          paymentConfiguration: S.optional(__S(482, __c15, 2)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MemberChangeSpecification",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ autoApprovedChangeTypes: S.optional(__S(4096, __c128, 0)) }),
+      ).annotate({
+        identifier: "CollaborationChangeSpecification",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ member: __S(608, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ collaboration: __S(609, __c19, 1) }),
+      ]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           specificationType: S.String,
-          specification: __S(101, __c12, 5),
-          types: __S(32, __c4, 0),
+          specification: __S(610, __c19, 2),
+          types: __S(4096, __c128, 0),
         }),
       ).annotate({ identifier: "Change" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(611, __c19, 3));
+    case 5:
       return S.suspend(() => S.Struct({ status: S.String })).annotate({
         identifier: "ApprovalStatusDetails",
       });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(107, __c13, 3).pipe(S.optional));
-    case 5:
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ __S(613, __c19, 5).pipe(S.optional));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6995,26 +6785,34 @@ function __c13(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
           isAutoApproved: S.Boolean,
-          changes: __S(106, __c13, 2),
-          approvals: S.optional(__S(108, __c13, 4)),
+          changes: __S(612, __c19, 4),
+          approvals: S.optional(__S(614, __c19, 6)),
         }),
       ).annotate({
         identifier: "CollaborationChangeRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ collaborationChangeRequest: __S(109, __c13, 5) })).annotate(
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ collaborationChangeRequest: __S(615, __c19, 7) })).annotate(
         {
           identifier: "CreateCollaborationChangeRequestOutput",
         },
       );
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           configuredAudienceModelArn: S.String,
           configuredAudienceModelAssociationName: S.String,
           manageResourcePolicies: S.Boolean,
-          tags: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7034,7 +6832,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7057,27 +6855,53 @@ function __c14(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ configuredAudienceModelAssociation: __S(112, __c14, 0) }),
+        S.Struct({ configuredAudienceModelAssociation: __S(704, __c22, 0) }),
       ).annotate({
         identifier: "CreateConfiguredAudienceModelAssociationOutput",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(S.String),
-          tableName: S.String,
-          databaseName: S.String,
-        }),
+          name: S.String,
+          description: S.optional(S.String),
+          tableReference: __S(806, __c25, 6),
+          allowedColumns: __S(3712, __c116, 0),
+          analysisMethod: S.String,
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/configuredTables" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateConfiguredTableInput",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ region: S.optional(S.String), tableName: S.String, databaseName: S.String }),
       ).annotate({ identifier: "GlueTableReference" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ columnName: S.String, columnType: S.String })).annotate({
         identifier: "SnowflakeTableSchemaV1",
       });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(802, __c25, 2) })]);
     case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(116, __c14, 4) })]);
-    case 6:
       return S.suspend(() =>
         S.Struct({
           secretArn: S.String,
@@ -7085,10 +6909,10 @@ function __c14(j: number): any {
           databaseName: S.String,
           tableName: S.String,
           schemaName: S.String,
-          tableSchema: __S(117, __c14, 5),
+          tableSchema: __S(803, __c25, 3),
         }),
       ).annotate({ identifier: "SnowflakeTableReference" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -7099,68 +6923,46 @@ function __c14(j: number): any {
           catalogName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AthenaTableReference" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ glue: __S(114, __c14, 2) }),
-        /*@__PURE__*/ S.Struct({ snowflake: __S(118, __c14, 6) }),
-        /*@__PURE__*/ S.Struct({ athena: __S(119, __c14, 7) }),
+        /*@__PURE__*/ S.Struct({ glue: __S(800, __c25, 0) }),
+        /*@__PURE__*/ S.Struct({ snowflake: __S(804, __c25, 4) }),
+        /*@__PURE__*/ S.Struct({ athena: __S(805, __c25, 5) }),
       ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          tableReference: __S(120, __c15, 0),
-          allowedColumns: __S(0, __c0, 0),
-          analysisMethod: S.String,
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
-          tags: S.optional(__S(84, __c10, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/configuredTables" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateConfiguredTableInput",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           arn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          tableReference: __S(120, __c15, 0),
+          tableReference: __S(806, __c25, 6),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          analysisRuleTypes: __S(122, __c15, 2),
+          analysisRuleTypes: __S(768, __c24, 0),
           analysisMethod: S.String,
-          allowedColumns: __S(0, __c0, 0),
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
+          allowedColumns: __S(3712, __c116, 0),
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({ identifier: "ConfiguredTable" });
-    case 4:
-      return S.suspend(() => S.Struct({ configuredTable: __S(123, __c15, 3) })).annotate({
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ configuredTable: __S(807, __c25, 7) })).annotate({
         identifier: "CreateConfiguredTableOutput",
       });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ list: __S(51, __c6, 3) }),
-        /*@__PURE__*/ S.Struct({ aggregation: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ custom: __S(65, __c8, 1) }),
-      ]);
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(125, __c15, 5) })]);
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
           analysisRuleType: S.String,
-          analysisRulePolicy: __S(126, __c15, 6),
+          analysisRulePolicy: __S(897, __c28, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -7179,14 +6981,22 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ list: __S(4640, __c145, 0) }),
+        /*@__PURE__*/ S.Struct({ aggregation: __S(4645, __c145, 5) }),
+        /*@__PURE__*/ S.Struct({ custom: __S(4646, __c145, 6) }),
+      ]);
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(896, __c28, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configuredTableId: S.String,
           configuredTableArn: S.String,
-          policy: __S(126, __c15, 6),
+          policy: __S(897, __c28, 1),
           type: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -7194,11 +7004,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ConfiguredTableAnalysisRule",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ analysisRule: __S(128, __c16, 0) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ analysisRule: __S(898, __c28, 2) })).annotate({
         identifier: "CreateConfiguredTableAnalysisRuleOutput",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7206,7 +7020,7 @@ function __c16(j: number): any {
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           configuredTableIdentifier: S.String,
           roleArn: S.String,
-          tags: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7223,7 +7037,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateConfiguredTableAssociationInput",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
@@ -7233,9 +7051,13 @@ function __c16(j: number): any {
           resourceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChildResource" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -7247,21 +7069,25 @@ function __c16(j: number): any {
           roleArn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          analysisRuleTypes: S.optional(__S(122, __c15, 2)),
+          analysisRuleTypes: S.optional(__S(768, __c24, 0)),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          childResources: S.optional(__S(132, __c16, 4)),
+          childResources: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({
         identifier: "ConfiguredTableAssociation",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ configuredTableAssociation: __S(133, __c16, 5) })).annotate(
+    case 1:
+      return S.suspend(() => S.Struct({ configuredTableAssociation: __S(992, __c31, 0) })).annotate(
         {
           identifier: "CreateConfiguredTableAssociationOutput",
         },
       );
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -7269,7 +7095,7 @@ function __c16(j: number): any {
             T.HttpLabel("configuredTableAssociationIdentifier"),
           ),
           analysisRuleType: S.String,
-          analysisRulePolicy: __S(74, __c9, 2),
+          analysisRulePolicy: __S(4674, __c146, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -7288,7 +7114,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7296,7 +7122,7 @@ function __c17(j: number): any {
           membershipIdentifier: S.String,
           configuredTableAssociationId: S.String,
           configuredTableAssociationArn: S.String,
-          policy: __S(74, __c9, 2),
+          policy: __S(4674, __c146, 2),
           type: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -7305,23 +7131,21 @@ function __c17(j: number): any {
         identifier: "ConfiguredTableAssociationAnalysisRule",
       });
     case 1:
-      return S.suspend(() => S.Struct({ analysisRule: __S(136, __c17, 0) })).annotate({
+      return S.suspend(() => S.Struct({ analysisRule: __S(1056, __c33, 0) })).annotate({
         identifier: "CreateConfiguredTableAssociationAnalysisRuleOutput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ inputReferenceArn: S.String, manageResourcePolicies: S.Boolean }),
-      ).annotate({
-        identifier: "IdMappingTableInputReferenceConfig",
-      });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           name: S.String,
           description: S.optional(S.String),
-          inputReferenceConfig: __S(138, __c17, 2),
-          tags: S.optional(__S(84, __c10, 4)),
+          inputReferenceConfig: __S(1152, __c36, 0),
+          tags: S.optional(__S(32, __c1, 0)),
           kmsKeyArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7336,16 +7160,40 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateIdMappingTableInput",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ idMappingTableInputSource: __S(38, __c4, 6) })).annotate({
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ idMappingTable: __S(1185, __c37, 1) })).annotate({
+        identifier: "CreateIdMappingTableOutput",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ inputReferenceArn: S.String, manageResourcePolicies: S.Boolean }),
+      ).annotate({
+        identifier: "IdMappingTableInputReferenceConfig",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ idMappingTableInputSource: __S(4129, __c129, 1) }),
+      ).annotate({
         identifier: "IdMappingTableInputReferenceProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           arn: S.String,
-          inputReferenceConfig: __S(138, __c17, 2),
+          inputReferenceConfig: __S(1152, __c36, 0),
           membershipId: S.String,
           membershipArn: S.String,
           collaborationId: S.String,
@@ -7354,32 +7202,24 @@ function __c17(j: number): any {
           name: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          inputReferenceProperties: __S(140, __c17, 4),
+          inputReferenceProperties: __S(1184, __c37, 0),
           kmsKeyArn: S.optional(S.String),
-          childResources: S.optional(__S(132, __c16, 4)),
+          childResources: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "IdMappingTable" });
-    case 6:
-      return S.suspend(() => S.Struct({ idMappingTable: __S(141, __c17, 5) })).annotate({
-        identifier: "CreateIdMappingTableOutput",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ allowUseAsDimensionColumn: S.Boolean })).annotate({
-        identifier: "IdMappingConfig",
-      });
   }
 }
-function __c18(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          inputReferenceConfig: __S(138, __c17, 2),
-          tags: S.optional(__S(84, __c10, 4)),
+          inputReferenceConfig: __S(1152, __c36, 0),
+          tags: S.optional(__S(32, __c1, 0)),
           name: S.String,
           description: S.optional(S.String),
-          idMappingConfig: S.optional(__S(143, __c17, 7)),
+          idMappingConfig: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7396,18 +7236,30 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateIdNamespaceAssociationInput",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ allowUseAsDimensionColumn: S.Boolean })).annotate({
+        identifier: "IdMappingConfig",
+      });
     case 1:
       return S.Array(S.Any);
     case 2:
       return S.suspend(() =>
         S.Struct({
           idNamespaceType: S.String,
-          idMappingWorkflowsSupported: __S(145, __c18, 1),
+          idMappingWorkflowsSupported: __S(1249, __c39, 1),
         }),
       ).annotate({
         identifier: "IdNamespaceAssociationInputReferenceProperties",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7420,33 +7272,29 @@ function __c18(j: number): any {
           description: S.optional(S.String),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          inputReferenceConfig: __S(138, __c17, 2),
-          inputReferenceProperties: __S(146, __c18, 2),
-          idMappingConfig: S.optional(__S(143, __c17, 7)),
+          inputReferenceConfig: __S(1152, __c36, 0),
+          inputReferenceProperties: __S(1250, __c39, 2),
+          idMappingConfig: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({ identifier: "IdNamespaceAssociation" });
-    case 4:
-      return S.suspend(() => S.Struct({ idNamespaceAssociation: __S(147, __c18, 3) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ idNamespaceAssociation: __S(1280, __c40, 0) })).annotate({
         identifier: "CreateIdNamespaceAssociationOutput",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ queryString: S.optional(S.String), analysisTemplateArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PopulationAnalysisSqlParameters",
-      });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ sqlParameters: __S(149, __c18, 5) })]);
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           name: S.String,
           description: S.optional(S.String),
-          populationAnalysisConfiguration: __S(150, __c18, 6),
+          populationAnalysisConfiguration: __S(1345, __c42, 1),
           kmsKeyArn: S.optional(S.String),
           retentionInDays: S.optional(S.Number),
-          tags: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7465,9 +7313,17 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ queryString: S.optional(S.String), analysisTemplateArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "PopulationAnalysisSqlParameters",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ sqlParameters: __S(1344, __c42, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7479,11 +7335,9 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "IntermediateTableDependency",
       });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
+      return S.Array(__S(1346, __c42, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7495,46 +7349,42 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "InheritedAdditionalAnalysesSource",
       });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
     case 5:
-      return S.suspend(() => S.Struct({ value: S.String, sources: __S(156, __c19, 4) })).annotate({
+      return S.Array(__S(1348, __c42, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ value: S.String, sources: __S(1349, __c42, 5) })).annotate({
         identifier: "InheritedAdditionalAnalyses",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           id: S.String,
           type: S.String,
-          value: __S(0, __c0, 0),
+          value: __S(3712, __c116, 0),
           sourceAccountId: S.String,
         }),
       ).annotate({
         identifier: "InheritedAllowedAdditionalAnalysesSource",
       });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(1351, __c42, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: __S(0, __c0, 0),
-          sources: __S(159, __c19, 7),
+          value: __S(3712, __c116, 0),
+          sources: __S(1352, __c42, 8),
         }),
       ).annotate({
         identifier: "InheritedAllowedAdditionalAnalyses",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
-        S.Struct({ value: __S(0, __c0, 0), sources: __S(159, __c19, 7) }),
+        S.Struct({ value: __S(3712, __c116, 0), sources: __S(1352, __c42, 8) }),
       ).annotate({
         identifier: "InheritedAllowedResultReceivers",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           column: S.String,
@@ -7545,48 +7395,44 @@ function __c20(j: number): any {
           sourceAccountId: S.String,
         }),
       ).annotate({ identifier: "ColumnLineageEntry" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(1355, __c42, 11));
+    case 13:
       return S.suspend(() =>
-        S.Struct({ value: __S(0, __c0, 0), columnLineage: __S(163, __c20, 3) }),
+        S.Struct({ value: __S(3712, __c116, 0), columnLineage: __S(1356, __c42, 12) }),
       ).annotate({
         identifier: "InheritedDisallowedOutputColumns",
       });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          additionalAnalyses: S.optional(__S(157, __c19, 5)),
-          allowedAdditionalAnalyses: S.optional(__S(160, __c20, 0)),
-          allowedResultReceivers: S.optional(__S(161, __c20, 1)),
-          disallowedOutputColumns: S.optional(__S(164, __c20, 4)),
+          additionalAnalyses: S.optional(__S(1350, __c42, 6)),
+          allowedAdditionalAnalyses: S.optional(__S(1353, __c42, 9)),
+          allowedResultReceivers: S.optional(__S(1354, __c42, 10)),
+          disallowedOutputColumns: S.optional(__S(1357, __c42, 13)),
         }),
       ).annotate({
         identifier: "IntermediateTableInheritedConstraints",
       });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           versionId: S.String,
           analysisId: S.String,
           analysisType: S.String,
           kmsKeyArn: S.optional(S.String),
-          parameters: S.optional(__S(154, __c19, 2)),
-          inheritedConstraints: __S(165, __c20, 5),
+          parameters: S.optional(__S(1376, __c43, 0)),
+          inheritedConstraints: __S(1358, __c42, 14),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "IntermediateTableActiveVersion",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ columns: __S(31, __c3, 7) })).annotate({
+    case 16:
+      return S.suspend(() => S.Struct({ columns: __S(4161, __c130, 1) })).annotate({
         identifier: "IntermediateTableSchema",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7597,51 +7443,41 @@ function __c21(j: number): any {
           membershipId: S.String,
           collaborationArn: S.String,
           collaborationId: S.String,
-          childResources: S.optional(__S(132, __c16, 4)),
+          childResources: S.optional(__S(961, __c30, 1)),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
           statusReason: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          populationAnalysisConfiguration: __S(150, __c18, 6),
+          populationAnalysisConfiguration: __S(1345, __c42, 1),
           retentionInDays: S.optional(S.Number),
-          tableDependencies: S.optional(__S(153, __c19, 1)),
-          intermediateTableVersion: S.optional(__S(166, __c20, 6)),
-          analysisRuleTypes: S.optional(__S(122, __c15, 2)),
-          schema: S.optional(__S(167, __c20, 7)),
+          tableDependencies: S.optional(__S(1347, __c42, 3)),
+          intermediateTableVersion: S.optional(__S(1359, __c42, 15)),
+          analysisRuleTypes: S.optional(__S(768, __c24, 0)),
+          schema: S.optional(__S(1360, __c42, 16)),
         }),
       ).annotate({ identifier: "IntermediateTable" });
-    case 1:
-      return S.suspend(() => S.Struct({ intermediateTable: __S(168, __c21, 0) })).annotate({
+    case 18:
+      return S.suspend(() => S.Struct({ intermediateTable: __S(1361, __c42, 17) })).annotate({
         identifier: "CreateIntermediateTableOutput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAnalyses: S.optional(__S(0, __c0, 0)),
-          additionalAnalyses: S.optional(S.String),
-          allowedAdditionalAnalyses: S.optional(__S(0, __c0, 0)),
-          allowedAnalysisProviders: S.optional(__S(0, __c0, 0)),
-          allowedResultReceivers: S.optional(__S(0, __c0, 0)),
-          differentialPrivacy: S.optional(__S(59, __c7, 3)),
-          disallowedOutputColumns: S.optional(__S(0, __c0, 0)),
-          aggregationThresholds: S.optional(__S(63, __c7, 7)),
-          comparisonControls: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "IntermediateTableAnalysisRuleCustom",
-      });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ custom: __S(170, __c21, 2) })]);
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(171, __c21, 3) })]);
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
           analysisRuleType: S.String,
-          analysisRulePolicy: __S(172, __c21, 4),
+          analysisRulePolicy: __S(1442, __c45, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -7658,12 +7494,36 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "CreateIntermediateTableAnalysisRuleInput",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAnalyses: S.optional(__S(3712, __c116, 0)),
+          additionalAnalyses: S.optional(S.String),
+          allowedAdditionalAnalyses: S.optional(__S(3712, __c116, 0)),
+          allowedAnalysisProviders: S.optional(__S(3712, __c116, 0)),
+          allowedResultReceivers: S.optional(__S(3712, __c116, 0)),
+          differentialPrivacy: S.optional(__S(4610, __c144, 2)),
+          disallowedOutputColumns: S.optional(__S(3712, __c116, 0)),
+          aggregationThresholds: S.optional(__S(4614, __c144, 6)),
+          comparisonControls: S.optional(__S(4615, __c144, 7)),
+        }),
+      ).annotate({
+        identifier: "IntermediateTableAnalysisRuleCustom",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ custom: __S(1440, __c45, 0) })]);
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(1441, __c45, 1) })]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           intermediateTableIdentifier: S.String,
           intermediateTableArn: S.String,
-          analysisRulePolicy: __S(172, __c21, 4),
+          analysisRulePolicy: __S(1442, __c45, 2),
           analysisRuleType: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -7671,76 +7531,13 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "IntermediateTableAnalysisRule",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ analysisRule: __S(174, __c21, 6) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ analysisRule: __S(1443, __c45, 3) })).annotate({
         identifier: "CreateIntermediateTableAnalysisRuleOutput",
       });
   }
 }
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resultFormat: S.String,
-          bucket: S.String,
-          keyPrefix: S.optional(S.String),
-          singleFileOutput: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ProtectedQueryS3OutputConfiguration",
-      });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(176, __c22, 0) })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          outputConfiguration: __S(177, __c22, 1),
-          roleArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MembershipProtectedQueryResultConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ bucket: S.String, keyPrefix: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ProtectedJobS3OutputConfigurationInput",
-      });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(179, __c22, 3) })]);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          outputConfiguration: __S(180, __c22, 4),
-          roleArn: S.String,
-        }),
-      ).annotate({
-        identifier: "MembershipProtectedJobResultConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modelTraining: S.optional(__S(89, __c11, 1)),
-          modelInference: S.optional(__S(89, __c11, 1)),
-          syntheticDataGeneration: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "MembershipMLPaymentConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          queryCompute: __S(89, __c11, 1),
-          machineLearning: S.optional(__S(182, __c22, 6)),
-          jobCompute: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "MembershipPaymentConfiguration",
-      });
-  }
-}
-function __c23(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7748,16 +7545,49 @@ function __c23(j: number): any {
           collaborationIdentifier: S.String,
           queryLogStatus: S.String,
           jobLogStatus: S.optional(S.String),
-          tags: S.optional(__S(84, __c10, 4)),
-          defaultResultConfiguration: S.optional(__S(178, __c22, 2)),
-          defaultJobResultConfiguration: S.optional(__S(181, __c22, 5)),
-          paymentConfiguration: S.optional(__S(183, __c22, 7)),
+          tags: S.optional(__S(32, __c1, 0)),
+          defaultResultConfiguration: S.optional(__S(1537, __c48, 1)),
+          defaultJobResultConfiguration: S.optional(__S(1539, __c48, 3)),
+          paymentConfiguration: S.optional(__S(1601, __c50, 1)),
           isMetricsEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/memberships" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMembershipInput" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bucket: S.String, keyPrefix: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ProtectedJobS3OutputConfigurationInput",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(1568, __c49, 0) })]);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          outputConfiguration: __S(1536, __c48, 0),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MembershipProtectedQueryResultConfiguration",
+      });
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(1504, __c47, 0) })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ outputConfiguration: __S(1538, __c48, 2), roleArn: S.String }),
+      ).annotate({
+        identifier: "MembershipProtectedJobResultConfiguration",
+      });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7770,50 +7600,62 @@ function __c23(j: number): any {
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          memberAbilities: __S(32, __c4, 0),
-          mlMemberAbilities: S.optional(__S(88, __c11, 0)),
+          memberAbilities: __S(4096, __c128, 0),
+          mlMemberAbilities: S.optional(__S(448, __c14, 0)),
           queryLogStatus: S.String,
           jobLogStatus: S.optional(S.String),
-          defaultResultConfiguration: S.optional(__S(178, __c22, 2)),
-          defaultJobResultConfiguration: S.optional(__S(181, __c22, 5)),
-          paymentConfiguration: __S(183, __c22, 7),
+          defaultResultConfiguration: S.optional(__S(1537, __c48, 1)),
+          defaultJobResultConfiguration: S.optional(__S(1539, __c48, 3)),
+          paymentConfiguration: __S(1601, __c50, 1),
           isMetricsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Membership" });
-    case 2:
-      return S.suspend(() => S.Struct({ membership: __S(185, __c23, 1) })).annotate({
+    case 5:
+      return S.suspend(() => S.Struct({ membership: __S(1540, __c48, 4) })).annotate({
         identifier: "CreateMembershipOutput",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ epsilon: S.Number, usersNoisePerQuery: S.Number }),
-      ).annotate({
-        identifier: "DifferentialPrivacyTemplateParametersInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          budget: S.Number,
-          autoRefresh: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BudgetParameter" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ budgetParameters: __S(189, __c23, 5), resourceArn: S.String }),
-      ).annotate({
-        identifier: "AccessBudgetsPrivacyTemplateParametersInput",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ differentialPrivacy: __S(187, __c23, 3) }),
-        /*@__PURE__*/ S.Struct({ accessBudget: __S(190, __c23, 6) }),
-      ]);
   }
 }
-function __c24(j: number): any {
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resultFormat: S.String,
+          bucket: S.String,
+          keyPrefix: S.optional(S.String),
+          singleFileOutput: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ProtectedQueryS3OutputConfiguration",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelTraining: S.optional(__S(449, __c14, 1)),
+          modelInference: S.optional(__S(449, __c14, 1)),
+          syntheticDataGeneration: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "MembershipMLPaymentConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          queryCompute: __S(449, __c14, 1),
+          machineLearning: S.optional(__S(1600, __c50, 0)),
+          jobCompute: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "MembershipPaymentConfiguration",
+      });
+  }
+}
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7821,8 +7663,8 @@ function __c24(j: number): any {
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           autoRefresh: S.optional(S.String),
           privacyBudgetType: S.String,
-          parameters: __S(191, __c23, 7),
-          tags: S.optional(__S(84, __c10, 4)),
+          parameters: __S(1667, __c52, 3),
+          tags: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7839,7 +7681,42 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CreatePrivacyBudgetTemplateInput",
       });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ type: S.String, budget: S.Number, autoRefresh: S.optional(S.String) }),
+      ).annotate({ identifier: "BudgetParameter" });
     case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ budgetParameters: __S(1665, __c52, 1), resourceArn: S.String }),
+      ).annotate({
+        identifier: "AccessBudgetsPrivacyTemplateParametersInput",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ differentialPrivacy: __S(1696, __c53, 0) }),
+        /*@__PURE__*/ S.Struct({ accessBudget: __S(1666, __c52, 2) }),
+      ]);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ epsilon: S.Number, usersNoisePerQuery: S.Number }),
+      ).annotate({
+        identifier: "DifferentialPrivacyTemplateParametersInput",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7852,14 +7729,18 @@ function __c24(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           privacyBudgetType: S.String,
           autoRefresh: S.String,
-          parameters: __S(191, __c23, 7),
+          parameters: __S(1667, __c52, 3),
         }),
       ).annotate({ identifier: "PrivacyBudgetTemplate" });
-    case 2:
-      return S.suspend(() => S.Struct({ privacyBudgetTemplate: __S(193, __c24, 1) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ privacyBudgetTemplate: __S(1728, __c54, 0) })).annotate({
         identifier: "CreatePrivacyBudgetTemplateOutput",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -7880,11 +7761,19 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteAnalysisTemplateInput",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAnalysisTemplateOutput",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -7899,7 +7788,11 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteCollaborationInput" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelAssociationIdentifier: S.String.pipe(
@@ -7922,13 +7815,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredAudienceModelAssociationInput",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConfiguredAudienceModelAssociationOutput",
       });
   }
 }
-function __c25(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7947,7 +7844,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredTableInput",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
@@ -7968,7 +7869,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredTableAnalysisRuleInput",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableAssociationIdentifier: S.String.pipe(
@@ -7991,7 +7896,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredTableAssociationInput",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8015,7 +7924,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredTableAssociationAnalysisRuleInput",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idMappingTableIdentifier: S.String.pipe(T.HttpLabel("idMappingTableIdentifier")),
@@ -8036,7 +7949,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteIdMappingTableInput",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idNamespaceAssociationIdentifier: S.String.pipe(
@@ -8059,7 +7976,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteIdNamespaceAssociationInput",
       });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8080,7 +8001,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteIntermediateTableInput",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8104,7 +8029,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8125,7 +8050,11 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMemberInput" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
           T.all(
@@ -8138,7 +8067,11 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMembershipInput" });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8161,7 +8094,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeletePrivacyBudgetTemplateInput",
       });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8183,11 +8120,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DisallowIntermediateTableInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisallowIntermediateTableOutput",
       });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8208,23 +8149,23 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetAnalysisLogExportInput",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ s3: __S(179, __c22, 3) })).annotate({
-        identifier: "AnalysisLogExportOutputConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ outputConfiguration: __S(214, __c26, 6) })).annotate({
-        identifier: "AnalysisLogExportResultConfiguration",
-      });
   }
 }
-function __c27(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ s3: __S(1504, __c47, 0) })).annotate({
+        identifier: "AnalysisLogExportOutputConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ outputConfiguration: __S(2336, __c73, 0) })).annotate({
+        identifier: "AnalysisLogExportResultConfiguration",
+      });
+    case 2:
       return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
         identifier: "AnalysisLogExportError",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           analysisLogExportId: S.String,
@@ -8232,17 +8173,21 @@ function __c27(j: number): any {
           analysisType: S.String,
           membershipId: S.String,
           status: S.String,
-          resultConfiguration: __S(215, __c26, 7),
+          resultConfiguration: __S(2337, __c73, 1),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          error: S.optional(__S(216, __c27, 0)),
+          error: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "AnalysisLogExport" });
-    case 2:
-      return S.suspend(() => S.Struct({ analysisLogExport: __S(217, __c27, 1) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ analysisLogExport: __S(2339, __c73, 3) })).annotate({
         identifier: "GetAnalysisLogExportOutput",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8261,7 +8206,11 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAnalysisTemplateInput" });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8276,11 +8225,15 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetCollaborationInput" });
-    case 5:
-      return S.suspend(() => S.Struct({ collaboration: __S(97, __c12, 1) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ collaboration: __S(513, __c16, 1) })).annotate({
         identifier: "GetCollaborationOutput",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8301,15 +8254,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetCollaborationAnalysisTemplateInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ collaborationAnalysisTemplate: __S(24, __c3, 0) }),
+        S.Struct({ collaborationAnalysisTemplate: __S(3680, __c115, 0) }),
       ).annotate({
         identifier: "GetCollaborationAnalysisTemplateOutput",
       });
   }
 }
-function __c28(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8332,7 +8285,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCollaborationChangeRequestInput",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8355,7 +8312,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCollaborationConfiguredAudienceModelAssociationInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8372,15 +8329,19 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "CollaborationConfiguredAudienceModelAssociation",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          collaborationConfiguredAudienceModelAssociation: __S(226, __c28, 2),
+          collaborationConfiguredAudienceModelAssociation: __S(2497, __c78, 1),
         }),
       ).annotate({
         identifier: "GetCollaborationConfiguredAudienceModelAssociationOutput",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8403,7 +8364,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCollaborationIdNamespaceAssociationInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8415,20 +8376,24 @@ function __c28(j: number): any {
           creatorAccountId: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          inputReferenceConfig: __S(138, __c17, 2),
-          inputReferenceProperties: __S(146, __c18, 2),
-          idMappingConfig: S.optional(__S(143, __c17, 7)),
+          inputReferenceConfig: __S(1152, __c36, 0),
+          inputReferenceProperties: __S(1250, __c39, 2),
+          idMappingConfig: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "CollaborationIdNamespaceAssociation",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ collaborationIdNamespaceAssociation: __S(229, __c28, 5) }),
+        S.Struct({ collaborationIdNamespaceAssociation: __S(2529, __c79, 1) }),
       ).annotate({
         identifier: "GetCollaborationIdNamespaceAssociationOutput",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8451,11 +8416,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCollaborationPrivacyBudgetTemplateInput",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8467,18 +8428,22 @@ function __c29(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           privacyBudgetType: S.String,
           autoRefresh: S.String,
-          parameters: __S(191, __c23, 7),
+          parameters: __S(1667, __c52, 3),
         }),
       ).annotate({
         identifier: "CollaborationPrivacyBudgetTemplate",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ collaborationPrivacyBudgetTemplate: __S(232, __c29, 0) }),
+        S.Struct({ collaborationPrivacyBudgetTemplate: __S(2561, __c80, 1) }),
       ).annotate({
         identifier: "GetCollaborationPrivacyBudgetTemplateOutput",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelAssociationIdentifier: S.String.pipe(
@@ -8501,7 +8466,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetConfiguredAudienceModelAssociationInput",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
@@ -8516,11 +8485,15 @@ function __c29(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetConfiguredTableInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ configuredTable: __S(123, __c15, 3) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ configuredTable: __S(807, __c25, 7) })).annotate({
         identifier: "GetConfiguredTableOutput",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
@@ -8541,7 +8514,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetConfiguredTableAnalysisRuleInput",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableAssociationIdentifier: S.String.pipe(
@@ -8564,7 +8541,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetConfiguredTableAssociationInput",
       });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8590,7 +8571,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8612,10 +8593,14 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "GetIdMappingTableInput" });
     case 1:
-      return S.suspend(() => S.Struct({ idMappingTable: __S(141, __c17, 5) })).annotate({
+      return S.suspend(() => S.Struct({ idMappingTable: __S(1185, __c37, 1) })).annotate({
         identifier: "GetIdMappingTableOutput",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idNamespaceAssociationIdentifier: S.String.pipe(
@@ -8638,7 +8623,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetIdNamespaceAssociationInput",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
@@ -8659,7 +8648,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetIntermediateTableInput",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8681,7 +8674,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetIntermediateTableAnalysisRuleInput",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
           T.all(
@@ -8694,7 +8691,11 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMembershipInput" });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8717,7 +8718,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetPrivacyBudgetTemplateInput",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -8738,97 +8743,101 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetProtectedJobInput" });
   }
 }
-function __c31(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ analysisTemplateArn: S.String, parameters: S.optional(__S(154, __c19, 2)) }),
-      ).annotate({ identifier: "ProtectedJobParameters" });
-    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ spark: __S(1376, __c43, 0) })]);
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
         identifier: "ProtectedJobMemberOutputConfigurationOutput",
       });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(179, __c22, 3) }),
-        /*@__PURE__*/ S.Struct({ member: __S(249, __c31, 1) }),
-      ]);
-    case 3:
-      return S.suspend(() => S.Struct({ outputConfiguration: __S(250, __c31, 2) })).annotate({
-        identifier: "ProtectedJobResultConfigurationOutput",
-      });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ units: S.Number })).annotate({
         identifier: "BilledJobResourceUtilization",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalDurationInMillis: S.optional(S.Number),
-          billedResourceUtilization: S.optional(__S(252, __c31, 4)),
+          billedResourceUtilization: S.optional(__S(3009, __c94, 1)),
         }),
       ).annotate({ identifier: "ProtectedJobStatistics" });
-    case 6:
+    case 3:
       return S.suspend(() => S.Struct({ location: S.String })).annotate({
         identifier: "ProtectedJobS3Output",
       });
-    case 7:
-      return S.Array(__S(249, __c31, 1));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(254, __c31, 6) }),
-        /*@__PURE__*/ S.Struct({ memberList: __S(255, __c31, 7) }),
-      ]);
-    case 1:
-      return S.suspend(() => S.Struct({ output: __S(256, __c32, 0) })).annotate({
-        identifier: "ProtectedJobResult",
-      });
-    case 2:
+    case 4:
       return S.suspend(() => S.Struct({ message: S.String, code: S.String })).annotate({
         identifier: "ProtectedJobError",
       });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ analysisTemplateArn: S.String, parameters: S.optional(__S(1376, __c43, 0)) }),
+      ).annotate({ identifier: "ProtectedJobParameters" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3: __S(1504, __c47, 0) }),
+        /*@__PURE__*/ S.Struct({ member: __S(3008, __c94, 0) }),
+      ]);
+    case 2:
+      return S.suspend(() => S.Struct({ outputConfiguration: __S(3041, __c95, 1) })).annotate({
+        identifier: "ProtectedJobResultConfigurationOutput",
+      });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ spark: __S(154, __c19, 2) })]);
+      return S.Array(__S(3008, __c94, 0));
     case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3: __S(3011, __c94, 3) }),
+        /*@__PURE__*/ S.Struct({ memberList: __S(3043, __c95, 3) }),
+      ]);
+    case 5:
+      return S.suspend(() => S.Struct({ output: __S(3044, __c95, 4) })).annotate({
+        identifier: "ProtectedJobResult",
+      });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           number: S.Number,
-          properties: S.optional(__S(259, __c32, 3)),
+          properties: S.optional(__S(2976, __c93, 0)),
         }),
       ).annotate({
         identifier: "ProtectedJobWorkerComputeConfiguration",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(260, __c32, 4) })]);
-    case 6:
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(3046, __c95, 6) })]);
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           membershipId: S.String,
           membershipArn: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          jobParameters: S.optional(__S(248, __c31, 0)),
+          jobParameters: S.optional(__S(3040, __c95, 0)),
           status: S.String,
-          resultConfiguration: S.optional(__S(251, __c31, 3)),
-          statistics: S.optional(__S(253, __c31, 5)),
-          result: S.optional(__S(257, __c32, 1)),
-          error: S.optional(__S(258, __c32, 2)),
-          computeConfiguration: S.optional(__S(261, __c32, 5)),
+          resultConfiguration: S.optional(__S(3042, __c95, 2)),
+          statistics: S.optional(__S(3010, __c94, 2)),
+          result: S.optional(__S(3045, __c95, 5)),
+          error: S.optional(__S(3012, __c94, 4)),
+          computeConfiguration: S.optional(__S(3047, __c95, 7)),
           jobComputePayerAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectedJob" });
-    case 7:
-      return S.suspend(() => S.Struct({ protectedJob: __S(262, __c32, 6) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ protectedJob: __S(3048, __c95, 8) })).annotate({
         identifier: "GetProtectedJobOutput",
       });
   }
 }
-function __c33(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8850,67 +8859,89 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "GetProtectedQueryInput" });
     case 1:
+      return S.suspend(() => S.Struct({ protectedQuery: __S(3182, __c99, 14) })).annotate({
+        identifier: "GetProtectedQueryOutput",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ id: S.String, arn: S.String, name: S.String })).annotate({
+        identifier: "IntermediateTableOutputConfiguration",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          number: S.optional(S.Number),
+          properties: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({
+        identifier: "WorkerComputeConfiguration",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           queryString: S.optional(S.String),
           analysisTemplateArn: S.optional(S.String),
-          parameters: S.optional(__S(154, __c19, 2)),
+          parameters: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "ProtectedQuerySQLParameters",
       });
-    case 2:
+    case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(176, __c22, 0) }),
-        /*@__PURE__*/ S.Struct({ member: __S(249, __c31, 1) }),
+        /*@__PURE__*/ S.Struct({ s3: __S(1568, __c49, 0) }),
+        /*@__PURE__*/ S.Struct({ member: __S(3008, __c94, 0) }),
       ]);
+    case 2:
+      return S.Array(__S(3169, __c99, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ locations: __S(267, __c33, 3) })).annotate({
+      return S.suspend(() => S.Struct({ locations: __S(3170, __c99, 2) })).annotate({
         identifier: "ProtectedQueryDistributeOutputConfiguration",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ id: S.String, arn: S.String, name: S.String })).annotate({
-        identifier: "IntermediateTableOutputConfiguration",
-      });
-    case 6:
+    case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(176, __c22, 0) }),
-        /*@__PURE__*/ S.Struct({ member: __S(249, __c31, 1) }),
-        /*@__PURE__*/ S.Struct({ distribute: __S(268, __c33, 4) }),
-        /*@__PURE__*/ S.Struct({ intermediateTable: __S(269, __c33, 5) }),
+        /*@__PURE__*/ S.Struct({ s3: __S(1568, __c49, 0) }),
+        /*@__PURE__*/ S.Struct({ member: __S(3008, __c94, 0) }),
+        /*@__PURE__*/ S.Struct({ distribute: __S(3171, __c99, 3) }),
+        /*@__PURE__*/ S.Struct({ intermediateTable: __S(3104, __c97, 0) }),
       ]);
-    case 7:
-      return S.suspend(() => S.Struct({ outputConfiguration: __S(270, __c33, 6) })).annotate({
+    case 5:
+      return S.suspend(() => S.Struct({ outputConfiguration: __S(3172, __c99, 4) })).annotate({
         identifier: "ProtectedQueryResultConfiguration",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(249, __c31, 1));
-    case 1:
+    case 6:
+      return S.Array(__S(3008, __c94, 0));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          s3: S.optional(__S(254, __c31, 6)),
-          memberList: S.optional(__S(272, __c34, 0)),
+          s3: S.optional(__S(3011, __c94, 3)),
+          memberList: S.optional(__S(3174, __c99, 6)),
         }),
       ).annotate({
         identifier: "ProtectedQueryDistributeOutput",
       });
-    case 2:
+    case 8:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(254, __c31, 6) }),
-        /*@__PURE__*/ S.Struct({ memberList: __S(272, __c34, 0) }),
-        /*@__PURE__*/ S.Struct({ distribute: __S(273, __c34, 1) }),
+        /*@__PURE__*/ S.Struct({ s3: __S(3011, __c94, 3) }),
+        /*@__PURE__*/ S.Struct({ memberList: __S(3174, __c99, 6) }),
+        /*@__PURE__*/ S.Struct({ distribute: __S(3175, __c99, 7) }),
       ]);
-    case 3:
-      return S.suspend(() => S.Struct({ output: __S(274, __c34, 2) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ output: __S(3176, __c99, 8) })).annotate({
         identifier: "ProtectedQueryResult",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           aggregationType: S.String,
@@ -8922,51 +8953,47 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DifferentialPrivacySensitivityParameters",
       });
-    case 5:
-      return S.Array(__S(276, __c34, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ sensitivityParameters: __S(277, __c34, 5) })).annotate({
+    case 11:
+      return S.Array(__S(3178, __c99, 10));
+    case 12:
+      return S.suspend(() => S.Struct({ sensitivityParameters: __S(3179, __c99, 11) })).annotate({
         identifier: "DifferentialPrivacyParameters",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          number: S.optional(S.Number),
-          properties: S.optional(__S(259, __c32, 3)),
-        }),
-      ).annotate({
-        identifier: "WorkerComputeConfiguration",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(279, __c34, 7) })]);
-    case 1:
+    case 13:
+      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(3136, __c98, 0) })]);
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           membershipId: S.String,
           membershipArn: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          sqlParameters: S.optional(__S(265, __c33, 1)),
+          sqlParameters: S.optional(__S(3168, __c99, 0)),
           status: S.String,
-          resultConfiguration: S.optional(__S(271, __c33, 7)),
-          statistics: S.optional(__S(253, __c31, 5)),
-          result: S.optional(__S(275, __c34, 3)),
-          error: S.optional(__S(258, __c32, 2)),
-          differentialPrivacy: S.optional(__S(278, __c34, 6)),
-          computeConfiguration: S.optional(__S(280, __c35, 0)),
+          resultConfiguration: S.optional(__S(3173, __c99, 5)),
+          statistics: S.optional(__S(3010, __c94, 2)),
+          result: S.optional(__S(3177, __c99, 9)),
+          error: S.optional(__S(3012, __c94, 4)),
+          differentialPrivacy: S.optional(__S(3180, __c99, 12)),
+          computeConfiguration: S.optional(__S(3181, __c99, 13)),
           queryComputePayerAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectedQuery" });
-    case 2:
-      return S.suspend(() => S.Struct({ protectedQuery: __S(281, __c35, 1) })).annotate({
-        identifier: "GetProtectedQueryOutput",
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(3200, __c100, 0));
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -8985,11 +9012,15 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSchemaInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ schema: __S(43, __c5, 3) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ schema: __S(4200, __c131, 8) })).annotate({
         identifier: "GetSchemaOutput",
       });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9011,11 +9042,15 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetSchemaAnalysisRuleInput",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ analysisRule: __S(79, __c9, 7) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ analysisRule: __S(4714, __c147, 10) })).annotate({
         identifier: "GetSchemaAnalysisRuleOutput",
       });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9039,11 +9074,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListAnalysisLogExportsInput",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analysisLogExportId: S.String,
@@ -9053,18 +9084,19 @@ function __c36(j: number): any {
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "AnalysisLogExportSummary" });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
     case 2:
+      return S.Array(__S(3297, __c103, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          analysisLogExports: __S(289, __c36, 1),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), analysisLogExports: __S(3298, __c103, 2) }),
       ).annotate({
         identifier: "ListAnalysisLogExportsOutput",
       });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9083,7 +9115,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListAnalysisTemplatesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -9099,18 +9131,22 @@ function __c36(j: number): any {
           isSyntheticData: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AnalysisTemplateSummary" });
-    case 5:
-      return S.Array(__S(292, __c36, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3329, __c104, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          analysisTemplateSummaries: __S(293, __c36, 5),
+          analysisTemplateSummaries: __S(3330, __c104, 2),
         }),
       ).annotate({
         identifier: "ListAnalysisTemplatesOutput",
       });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9132,11 +9168,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListCollaborationAnalysisTemplatesInput",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -9153,18 +9185,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "CollaborationAnalysisTemplateSummary",
       });
-    case 1:
-      return S.Array(__S(296, __c37, 0));
     case 2:
+      return S.Array(__S(3361, __c105, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationAnalysisTemplateSummaries: __S(297, __c37, 1),
+          collaborationAnalysisTemplateSummaries: __S(3362, __c105, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationAnalysisTemplatesOutput",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9187,18 +9223,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListCollaborationChangeRequestsInput",
       });
-    case 4:
-      return S.Array(__S(109, __c13, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(615, __c19, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          collaborationChangeRequestSummaries: __S(300, __c37, 4),
+          collaborationChangeRequestSummaries: __S(3393, __c106, 1),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCollaborationChangeRequestsOutput",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9220,7 +9260,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListCollaborationConfiguredAudienceModelAssociationsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -9236,22 +9276,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "CollaborationConfiguredAudienceModelAssociationSummary",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3425, __c107, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          collaborationConfiguredAudienceModelAssociationSummaries: __S(304, __c38, 0),
+          collaborationConfiguredAudienceModelAssociationSummaries: __S(3426, __c107, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCollaborationConfiguredAudienceModelAssociationsOutput",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9273,11 +9313,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListCollaborationIdNamespaceAssociationsInput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ idNamespaceType: S.String })).annotate({
-        identifier: "IdNamespaceAssociationInputReferencePropertiesSummary",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -9287,26 +9323,38 @@ function __c38(j: number): any {
           collaborationArn: S.String,
           collaborationId: S.String,
           creatorAccountId: S.String,
-          inputReferenceConfig: __S(138, __c17, 2),
+          inputReferenceConfig: __S(1152, __c36, 0),
           name: S.String,
           description: S.optional(S.String),
-          inputReferenceProperties: __S(307, __c38, 3),
+          inputReferenceProperties: __S(3488, __c109, 0),
         }),
       ).annotate({
         identifier: "CollaborationIdNamespaceAssociationSummary",
       });
-    case 5:
-      return S.Array(__S(308, __c38, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3457, __c108, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationIdNamespaceAssociationSummaries: __S(309, __c38, 5),
+          collaborationIdNamespaceAssociationSummaries: __S(3458, __c108, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationIdNamespaceAssociationsOutput",
       });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ idNamespaceType: S.String })).annotate({
+        identifier: "IdNamespaceAssociationInputReferencePropertiesSummary",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9332,9 +9380,37 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListCollaborationPrivacyBudgetsInput",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          privacyBudgetTemplateId: S.String,
+          privacyBudgetTemplateArn: S.String,
+          collaborationId: S.String,
+          collaborationArn: S.String,
+          creatorAccountId: S.String,
+          type: S.String,
+          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          budget: __S(3558, __c111, 6),
+        }),
+      ).annotate({
+        identifier: "CollaborationPrivacyBudgetSummary",
+      });
+    case 2:
+      return S.Array(__S(3521, __c110, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationPrivacyBudgetSummaries: __S(3522, __c110, 2),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCollaborationPrivacyBudgetsOutput",
+      });
   }
 }
-function __c39(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9347,13 +9423,10 @@ function __c39(j: number): any {
         identifier: "DifferentialPrivacyPrivacyBudgetAggregation",
       });
     case 1:
-      return S.Array(__S(312, __c39, 0));
+      return S.Array(__S(3552, __c111, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          aggregations: __S(313, __c39, 1),
-          epsilon: S.Number,
-        }),
+        S.Struct({ aggregations: __S(3553, __c111, 1), epsilon: S.Number }),
       ).annotate({
         identifier: "DifferentialPrivacyPrivacyBudget",
       });
@@ -9369,53 +9442,25 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "AccessBudgetDetails" });
     case 4:
-      return S.Array(__S(315, __c39, 3));
+      return S.Array(__S(3555, __c111, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
-          details: __S(316, __c39, 4),
+          details: __S(3556, __c111, 4),
           aggregateRemainingBudget: S.Number,
         }),
       ).annotate({ identifier: "AccessBudget" });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ differentialPrivacy: __S(314, __c39, 2) }),
-        /*@__PURE__*/ S.Struct({ accessBudget: __S(317, __c39, 5) }),
+        /*@__PURE__*/ S.Struct({ differentialPrivacy: __S(3554, __c111, 2) }),
+        /*@__PURE__*/ S.Struct({ accessBudget: __S(3557, __c111, 5) }),
       ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          privacyBudgetTemplateId: S.String,
-          privacyBudgetTemplateArn: S.String,
-          collaborationId: S.String,
-          collaborationArn: S.String,
-          creatorAccountId: S.String,
-          type: S.String,
-          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          budget: __S(318, __c39, 6),
-        }),
-      ).annotate({
-        identifier: "CollaborationPrivacyBudgetSummary",
-      });
   }
 }
-function __c40(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(319, __c39, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collaborationPrivacyBudgetSummaries: __S(320, __c40, 0),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCollaborationPrivacyBudgetsOutput",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9437,7 +9482,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListCollaborationPrivacyBudgetTemplatesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9452,18 +9497,208 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "CollaborationPrivacyBudgetTemplateSummary",
       });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3585, __c112, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationPrivacyBudgetTemplateSummaries: __S(324, __c40, 4),
+          collaborationPrivacyBudgetTemplateSummaries: __S(3586, __c112, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationPrivacyBudgetTemplatesOutput",
       });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
+          analysisTemplateArns: __S(3712, __c116, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/collaborations/{collaborationIdentifier}/batch-analysistemplates",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetCollaborationAnalysisTemplateInput",
+      });
+    case 1:
+      return S.Array(__S(3680, __c115, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, code: S.String, message: S.String }),
+      ).annotate({
+        identifier: "BatchGetCollaborationAnalysisTemplateError",
+      });
+    case 3:
+      return S.Array(__S(3618, __c113, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationAnalysisTemplates: __S(3617, __c113, 1),
+          errors: __S(3619, __c113, 3),
+        }),
+      ).annotate({
+        identifier: "BatchGetCollaborationAnalysisTemplateOutput",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ referencedTables: S.optional(__S(3712, __c116, 0)) }),
+      ).annotate({ identifier: "AnalysisSchema" });
+    case 1:
+      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
+        identifier: "S3Location",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ location: __S(3649, __c114, 1) })).annotate({
+        identifier: "AnalysisTemplateArtifact",
+      });
+    case 3:
+      return S.Array(__S(3650, __c114, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entryPoint: __S(3650, __c114, 2),
+          additionalArtifacts: S.optional(__S(3651, __c114, 3)),
+          roleArn: S.String,
+        }),
+      ).annotate({
+        identifier: "AnalysisTemplateArtifacts",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ artifacts: __S(3652, __c114, 4) }),
+      ]);
     case 6:
+      return S.suspend(() => S.Struct({ sha256: S.optional(S.String) })).annotate({
+        identifier: "Hash",
+      });
+    case 7:
+      return S.Array(__S(3654, __c114, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          entryPointHash: __S(3654, __c114, 6),
+          additionalArtifactHashes: S.optional(__S(3655, __c114, 7)),
+        }),
+      ).annotate({
+        identifier: "AnalysisTemplateArtifactMetadata",
+      });
+    case 9:
+      return S.Union([/*@__PURE__*/ S.Struct({ artifacts: __S(3656, __c114, 8) })]);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, type: S.String, defaultValue: S.optional(S.String) }),
+      ).annotate({ identifier: "AnalysisParameter" });
+    case 11:
+      return S.Array(__S(3658, __c114, 10));
+    case 12:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "AnalysisTemplateValidationStatusReason",
+      });
+    case 13:
+      return S.Array(__S(3660, __c114, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          status: S.String,
+          reasons: S.optional(__S(3661, __c114, 13)),
+        }),
+      ).annotate({
+        identifier: "AnalysisTemplateValidationStatusDetail",
+      });
+    case 15:
+      return S.Array(__S(3662, __c114, 14));
+    case 16:
+      return S.suspend(() => S.Struct({ type: S.String })).annotate({
+        identifier: "ErrorMessageConfiguration",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          columnName: S.String,
+          columnType: S.String,
+          isPredictiveValue: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "SyntheticDataColumnProperties",
+      });
+    case 18:
+      return S.Array(__S(3665, __c114, 17));
+    case 19:
+      return S.suspend(() => S.Struct({ columnMapping: __S(3666, __c114, 18) })).annotate({
+        identifier: "ColumnClassificationDetails",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          epsilon: S.Number,
+          maxMembershipInferenceAttackScore: S.Number,
+          columnClassification: __S(3667, __c114, 19),
+        }),
+      ).annotate({
+        identifier: "MLSyntheticDataParameters",
+      });
+    case 21:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ mlSyntheticDataParameters: __S(3668, __c114, 20) }),
+      ]);
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          collaborationId: S.String,
+          collaborationArn: S.String,
+          description: S.optional(S.String),
+          creatorAccountId: S.String,
+          name: S.String,
+          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          schema: __S(3648, __c114, 0),
+          format: S.String,
+          source: S.optional(__S(3653, __c114, 5)),
+          sourceMetadata: S.optional(__S(3657, __c114, 9)),
+          analysisParameters: S.optional(__S(3659, __c114, 11)),
+          validations: S.optional(__S(3663, __c114, 15)),
+          errorMessageConfiguration: S.optional(__S(3664, __c114, 16)),
+          syntheticDataParameters: S.optional(__S(3669, __c114, 21)),
+        }),
+      ).annotate({
+        identifier: "CollaborationAnalysisTemplate",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9473,7 +9708,7 @@ function __c40(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/collaborations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCollaborationsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9489,17 +9724,17 @@ function __c40(j: number): any {
           analyticsEngine: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollaborationSummary" });
+    case 2:
+      return S.Array(__S(3745, __c117, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), collaborationList: __S(3746, __c117, 2) }),
+      ).annotate({ identifier: "ListCollaborationsOutput" });
   }
 }
-function __c41(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), collaborationList: __S(328, __c41, 0) }),
-      ).annotate({ identifier: "ListCollaborationsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9521,7 +9756,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListConfiguredAudienceModelAssociationsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String,
@@ -9539,18 +9774,22 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ConfiguredAudienceModelAssociationSummary",
       });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3777, __c118, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          configuredAudienceModelAssociationSummaries: __S(332, __c41, 4),
+          configuredAudienceModelAssociationSummaries: __S(3778, __c118, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConfiguredAudienceModelAssociationsOutput",
       });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9572,7 +9811,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListConfiguredTableAssociationsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           configuredTableId: S.String,
@@ -9583,27 +9822,27 @@ function __c41(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           id: S.String,
           arn: S.String,
-          analysisRuleTypes: S.optional(__S(122, __c15, 2)),
+          analysisRuleTypes: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({
         identifier: "ConfiguredTableAssociationSummary",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3809, __c119, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          configuredTableAssociationSummaries: __S(336, __c42, 0),
+          configuredTableAssociationSummaries: __S(3810, __c119, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConfiguredTableAssociationsOutput",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9614,7 +9853,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListConfiguredTablesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9622,23 +9861,27 @@ function __c42(j: number): any {
           name: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          analysisRuleTypes: __S(122, __c15, 2),
+          analysisRuleTypes: __S(768, __c24, 0),
           analysisMethod: S.String,
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({ identifier: "ConfiguredTableSummary" });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3841, __c120, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          configuredTableSummaries: __S(340, __c42, 4),
+          configuredTableSummaries: __S(3842, __c120, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConfiguredTablesOutput",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9655,7 +9898,7 @@ function __c42(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListIdMappingTablesInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collaborationArn: S.String,
@@ -9667,26 +9910,26 @@ function __c42(j: number): any {
           id: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          inputReferenceConfig: __S(138, __c17, 2),
+          inputReferenceConfig: __S(1152, __c36, 0),
           name: S.String,
         }),
       ).annotate({ identifier: "IdMappingTableSummary" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3873, __c121, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          idMappingTableSummaries: __S(344, __c43, 0),
+          idMappingTableSummaries: __S(3874, __c121, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListIdMappingTablesOutput",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9708,7 +9951,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListIdNamespaceAssociationsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String,
@@ -9719,26 +9962,30 @@ function __c43(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           id: S.String,
           arn: S.String,
-          inputReferenceConfig: __S(138, __c17, 2),
+          inputReferenceConfig: __S(1152, __c36, 0),
           name: S.String,
           description: S.optional(S.String),
-          inputReferenceProperties: __S(307, __c38, 3),
+          inputReferenceProperties: __S(3488, __c109, 0),
         }),
       ).annotate({
         identifier: "IdNamespaceAssociationSummary",
       });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3905, __c122, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          idNamespaceAssociationSummaries: __S(348, __c43, 4),
+          idNamespaceAssociationSummaries: __S(3906, __c122, 2),
         }),
       ).annotate({
         identifier: "ListIdNamespaceAssociationsOutput",
       });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9760,7 +10007,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListIntermediateTablesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9775,25 +10022,25 @@ function __c43(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
           retentionInDays: S.optional(S.Number),
-          analysisRuleTypes: S.optional(__S(122, __c15, 2)),
+          analysisRuleTypes: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({ identifier: "IntermediateTableSummary" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3937, __c123, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          intermediateTableSummaries: __S(352, __c44, 0),
+          intermediateTableSummaries: __S(3938, __c123, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListIntermediateTablesOutput",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9816,7 +10063,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListIntermediateTableVersionsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           versionId: S.String,
@@ -9831,18 +10078,22 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "IntermediateTableVersionSummary",
       });
-    case 4:
-      return S.Array(__S(355, __c44, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3969, __c124, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          intermediateTableVersionSummaries: __S(356, __c44, 4),
+          intermediateTableVersionSummaries: __S(3970, __c124, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListIntermediateTableVersionsOutput",
       });
-    case 6:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -9859,32 +10110,32 @@ function __c44(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListMembersInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
           status: S.String,
           displayName: S.String,
-          abilities: __S(32, __c4, 0),
-          mlAbilities: S.optional(__S(88, __c11, 0)),
+          abilities: __S(4096, __c128, 0),
+          mlAbilities: S.optional(__S(448, __c14, 0)),
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           membershipId: S.optional(S.String),
           membershipArn: S.optional(S.String),
-          paymentConfiguration: __S(92, __c11, 4),
+          paymentConfiguration: __S(482, __c15, 2),
         }),
       ).annotate({ identifier: "MemberSummary" });
+    case 2:
+      return S.Array(__S(4001, __c125, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), memberSummaries: __S(4002, __c125, 2) }),
+      ).annotate({ identifier: "ListMembersOutput" });
   }
 }
-function __c45(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(359, __c44, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), memberSummaries: __S(360, __c45, 0) }),
-      ).annotate({ identifier: "ListMembersOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9894,7 +10145,7 @@ function __c45(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/memberships" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMembershipsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9907,18 +10158,153 @@ function __c45(j: number): any {
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          memberAbilities: __S(32, __c4, 0),
-          mlMemberAbilities: S.optional(__S(88, __c11, 0)),
-          paymentConfiguration: __S(183, __c22, 7),
+          memberAbilities: __S(4096, __c128, 0),
+          mlMemberAbilities: S.optional(__S(448, __c14, 0)),
+          paymentConfiguration: __S(1601, __c50, 1),
         }),
       ).annotate({ identifier: "MembershipSummary" });
-    case 4:
-      return S.Array(__S(363, __c45, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4033, __c126, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), membershipSummaries: __S(364, __c45, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), membershipSummaries: __S(4034, __c126, 2) }),
       ).annotate({ identifier: "ListMembershipsOutput" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
+          names: __S(3712, __c116, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/collaborations/{collaborationIdentifier}/batch-schema",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchGetSchemaInput" });
+    case 1:
+      return S.Array(__S(4200, __c131, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, code: S.String, message: S.String }),
+      ).annotate({ identifier: "BatchGetSchemaError" });
+    case 3:
+      return S.Array(__S(4066, __c127, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ schemas: __S(4065, __c127, 1), errors: __S(4067, __c127, 3) }),
+      ).annotate({ identifier: "BatchGetSchemaOutput" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ idNamespaceAssociationId: S.String, type: S.String }),
+      ).annotate({
+        identifier: "IdMappingTableInputSource",
+      });
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
+        identifier: "Column",
+      });
+    case 1:
+      return S.Array(__S(4160, __c130, 0));
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
+        identifier: "SchemaStatusReason",
+      });
+    case 1:
+      return S.Array(__S(4192, __c131, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          reasons: S.optional(__S(4193, __c131, 1)),
+          analysisRuleType: S.optional(S.String),
+          configurations: S.optional(__S(4096, __c128, 0)),
+          analysisType: S.String,
+        }),
+      ).annotate({ identifier: "SchemaStatusDetail" });
+    case 3:
+      return S.Array(__S(4194, __c131, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          idMappingTableInputSource: __S(4129, __c129, 1),
+          idMappingTableId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdMappingTableSchemaTypeProperties",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ intermediateTableId: S.String })).annotate({
+        identifier: "IntermediateTableSchemaTypeProperties",
+      });
     case 6:
+      return S.suspend(() => S.Struct({ configuredTableAssociationId: S.String })).annotate({
+        identifier: "ConfiguredTableAssociationSchemaTypeProperties",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ idMappingTable: __S(4196, __c131, 4) }),
+        /*@__PURE__*/ S.Struct({ intermediateTable: __S(4197, __c131, 5) }),
+        /*@__PURE__*/ S.Struct({
+          configuredTableAssociation: __S(4198, __c131, 6),
+        }),
+      ]);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          columns: __S(4161, __c130, 1),
+          partitionKeys: __S(4161, __c130, 1),
+          analysisRuleTypes: __S(4096, __c128, 0),
+          analysisMethod: S.optional(S.String),
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
+          creatorAccountId: S.String,
+          name: S.String,
+          collaborationId: S.String,
+          collaborationArn: S.String,
+          description: S.String,
+          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          type: S.String,
+          schemaStatusDetails: __S(4195, __c131, 3),
+          resourceArn: S.optional(S.String),
+          schemaTypeProperties: S.optional(__S(4199, __c131, 7)),
+        }),
+      ).annotate({ identifier: "Schema" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9939,7 +10325,7 @@ function __c45(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPrivacyBudgetsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9952,23 +10338,20 @@ function __c45(j: number): any {
           type: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          budget: __S(318, __c39, 6),
+          budget: __S(3558, __c111, 6),
         }),
       ).annotate({ identifier: "PrivacyBudgetSummary" });
+    case 2:
+      return S.Array(__S(4225, __c132, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ privacyBudgetSummaries: __S(4226, __c132, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPrivacyBudgetsOutput" });
   }
 }
-function __c46(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          privacyBudgetSummaries: __S(368, __c46, 0),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListPrivacyBudgetsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -9990,7 +10373,7 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListPrivacyBudgetTemplatesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10006,18 +10389,22 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "PrivacyBudgetTemplateSummary",
       });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4257, __c133, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          privacyBudgetTemplateSummaries: __S(372, __c46, 4),
+          privacyBudgetTemplateSummaries: __S(4258, __c133, 2),
         }),
       ).annotate({
         identifier: "ListPrivacyBudgetTemplatesOutput",
       });
-    case 6:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -10035,33 +10422,17 @@ function __c46(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListProtectedJobsInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ receiverAccountIds: S.optional(__S(0, __c0, 0)) }),
-      ).annotate({
-        identifier: "ProtectedJobDirectAnalysisConfigurationDetails",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          directAnalysisConfigurationDetails: __S(375, __c46, 7),
-        }),
-      ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           analysisType: S.String,
-          configurationDetails: S.optional(__S(376, __c47, 0)),
+          configurationDetails: S.optional(__S(4321, __c135, 1)),
         }),
       ).annotate({
         identifier: "ProtectedJobReceiverConfiguration",
       });
     case 2:
-      return S.Array(__S(377, __c47, 1));
+      return S.Array(__S(4289, __c134, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10070,17 +10441,37 @@ function __c47(j: number): any {
           membershipArn: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          receiverConfigurations: __S(378, __c47, 2),
+          receiverConfigurations: __S(4290, __c134, 2),
           jobComputePayerAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectedJobSummary" });
     case 4:
-      return S.Array(__S(379, __c47, 3));
+      return S.Array(__S(4291, __c134, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), protectedJobs: __S(380, __c47, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), protectedJobs: __S(4292, __c134, 4) }),
       ).annotate({ identifier: "ListProtectedJobsOutput" });
-    case 6:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ receiverAccountIds: S.optional(__S(3712, __c116, 0)) }),
+      ).annotate({
+        identifier: "ProtectedJobDirectAnalysisConfigurationDetails",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          directAnalysisConfigurationDetails: __S(4320, __c135, 0),
+        }),
+      ]);
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -10100,20 +10491,16 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProtectedQueriesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analysisType: S.String,
-          configurationDetails: S.optional(__S(376, __c47, 0)),
+          configurationDetails: S.optional(__S(4321, __c135, 1)),
         }),
       ).annotate({ identifier: "ReceiverConfiguration" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(383, __c47, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(4353, __c136, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10121,20 +10508,24 @@ function __c48(j: number): any {
           membershipArn: S.String,
           createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          receiverConfigurations: __S(384, __c48, 0),
+          receiverConfigurations: __S(4354, __c136, 2),
           queryComputePayerAccountId: S.optional(S.String),
-          intermediateTableConfiguration: S.optional(__S(269, __c33, 5)),
+          intermediateTableConfiguration: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({ identifier: "ProtectedQuerySummary" });
-    case 2:
-      return S.Array(__S(385, __c48, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(4355, __c136, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), protectedQueries: __S(386, __c48, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), protectedQueries: __S(4356, __c136, 4) }),
       ).annotate({
         identifier: "ListProtectedQueriesOutput",
       });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -10152,7 +10543,7 @@ function __c48(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSchemasInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -10162,21 +10553,21 @@ function __c48(j: number): any {
           updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           collaborationId: S.String,
           collaborationArn: S.String,
-          analysisRuleTypes: __S(32, __c4, 0),
+          analysisRuleTypes: __S(4096, __c128, 0),
           analysisMethod: S.optional(S.String),
           resourceArn: S.optional(S.String),
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({ identifier: "SchemaSummary" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4385, __c137, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ schemaSummaries: __S(390, __c48, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ schemaSummaries: __S(4386, __c137, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSchemasOutput" });
   }
 }
-function __c49(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10192,10 +10583,14 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(84, __c10, 4) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(32, __c1, 0) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 2:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idMappingTableIdentifier: S.String.pipe(T.HttpLabel("idMappingTableIdentifier")),
@@ -10217,19 +10612,23 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PopulateIdMappingTableInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ idMappingJobId: S.String })).annotate({
         identifier: "PopulateIdMappingTableOutput",
       });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ queryComputeConfiguration: __S(279, __c34, 7) })]);
-    case 5:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ queryComputeConfiguration: __S(3136, __c98, 0) })]);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          parameters: S.optional(__S(154, __c19, 2)),
-          computeConfiguration: S.optional(__S(396, __c49, 4)),
+          parameters: S.optional(__S(1376, __c43, 0)),
+          computeConfiguration: S.optional(__S(4480, __c140, 0)),
           analysisPayerAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10247,7 +10646,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PopulateIntermediateTableInput",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           analysisId: S.String,
@@ -10257,17 +10656,17 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PopulateIntermediateTableOutput",
       });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ differentialPrivacy: __S(187, __c23, 3) })]);
   }
 }
-function __c50(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ differentialPrivacy: __S(1696, __c53, 0) })]);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          parameters: __S(399, __c49, 7),
+          parameters: __S(4512, __c141, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -10284,29 +10683,33 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PreviewPrivacyImpactInput",
       });
-    case 1:
+    case 2:
       return S.suspend(() => S.Struct({ type: S.String, maxCount: S.Number })).annotate({
         identifier: "DifferentialPrivacyPreviewAggregation",
       });
-    case 2:
-      return S.Array(__S(401, __c50, 1));
     case 3:
-      return S.suspend(() => S.Struct({ aggregations: __S(402, __c50, 2) })).annotate({
+      return S.Array(__S(4514, __c141, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ aggregations: __S(4515, __c141, 3) })).annotate({
         identifier: "DifferentialPrivacyPrivacyImpact",
       });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ differentialPrivacy: __S(403, __c50, 3) })]);
     case 5:
-      return S.suspend(() => S.Struct({ privacyImpact: __S(404, __c50, 4) })).annotate({
+      return S.Union([/*@__PURE__*/ S.Struct({ differentialPrivacy: __S(4516, __c141, 4) })]);
+    case 6:
+      return S.suspend(() => S.Struct({ privacyImpact: __S(4517, __c141, 5) })).annotate({
         identifier: "PreviewPrivacyImpactOutput",
       });
-    case 6:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           analysisId: S.String,
           analysisType: S.String,
-          resultConfiguration: __S(215, __c26, 7),
+          resultConfiguration: __S(2337, __c73, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -10323,24 +10726,263 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "StartAnalysisLogExportInput",
       });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ member: __S(249, __c31, 1) })]);
   }
 }
-function __c51(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ outputConfiguration: __S(407, __c50, 7) })).annotate({
-        identifier: "ProtectedJobResultConfigurationInput",
+      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
+        identifier: "SchemaAnalysisRuleRequest",
       });
     case 1:
+      return S.Array(__S(4576, __c143, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
+          schemaAnalysisRuleRequests: __S(4577, __c143, 1),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/collaborations/{collaborationIdentifier}/batch-schema-analysis-rule",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetSchemaAnalysisRuleInput",
+      });
+    case 3:
+      return S.Array(__S(4714, __c147, 10));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, type: S.String, code: S.String, message: S.String }),
+      ).annotate({
+        identifier: "BatchGetSchemaAnalysisRuleError",
+      });
+    case 5:
+      return S.Array(__S(4580, __c143, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ analysisRules: __S(4579, __c143, 3), errors: __S(4581, __c143, 5) }),
+      ).annotate({
+        identifier: "BatchGetSchemaAnalysisRuleOutput",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String })).annotate({
+        identifier: "DifferentialPrivacyColumn",
+      });
+    case 1:
+      return S.Array(__S(4608, __c144, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ columns: __S(4609, __c144, 1) })).annotate({
+        identifier: "DifferentialPrivacyConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ outputColumnName: S.String, minimumIdentityCount: S.Number }),
+      ).annotate({ identifier: "OutputColumnThreshold" });
+    case 4:
+      return S.Array(__S(4611, __c144, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          identityColumns: __S(3712, __c116, 0),
+          minimumIdentityCount: S.Number,
+          type: S.String,
+          outputColumnThresholds: S.optional(__S(4612, __c144, 4)),
+          allowedAggregateExpressionType: S.String,
+        }),
+      ).annotate({ identifier: "AggregationThreshold" });
+    case 6:
+      return S.Array(__S(4613, __c144, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allowedLiteralComparisonColumns: __S(3712, __c116, 0),
+          allowedColumnComparisonColumns: __S(3712, __c116, 0),
+        }),
+      ).annotate({ identifier: "ComparisonControls" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          joinColumns: __S(3712, __c116, 0),
+          allowedJoinOperators: S.optional(__S(3712, __c116, 0)),
+          listColumns: __S(3712, __c116, 0),
+          additionalAnalyses: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalysisRuleList" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ columnNames: __S(3712, __c116, 0), function: S.String }),
+      ).annotate({ identifier: "AggregateColumn" });
+    case 2:
+      return S.Array(__S(4641, __c145, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ columnName: S.String, minimum: S.Number, type: S.String }),
+      ).annotate({ identifier: "AggregationConstraint" });
+    case 4:
+      return S.Array(__S(4643, __c145, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          aggregateColumns: __S(4642, __c145, 2),
+          joinColumns: __S(3712, __c116, 0),
+          joinRequired: S.optional(S.String),
+          allowedJoinOperators: S.optional(__S(3712, __c116, 0)),
+          dimensionColumns: __S(3712, __c116, 0),
+          scalarFunctions: __S(3712, __c116, 0),
+          outputConstraints: __S(4644, __c145, 4),
+          additionalAnalyses: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalysisRuleAggregation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAnalyses: __S(3712, __c116, 0),
+          allowedAnalysisProviders: S.optional(__S(3712, __c116, 0)),
+          additionalAnalyses: S.optional(S.String),
+          disallowedOutputColumns: S.optional(__S(3712, __c116, 0)),
+          differentialPrivacy: S.optional(__S(4610, __c144, 2)),
+          aggregationThresholds: S.optional(__S(4614, __c144, 6)),
+          comparisonControls: S.optional(__S(4615, __c144, 7)),
+          allowedResultReceivers: S.optional(__S(3712, __c116, 0)),
+          allowedAdditionalAnalyses: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({ identifier: "AnalysisRuleCustom" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedResultReceivers: S.optional(__S(3712, __c116, 0)),
+          allowedAdditionalAnalyses: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfiguredTableAssociationAnalysisRuleList",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ list: __S(4672, __c146, 0) }),
+        /*@__PURE__*/ S.Struct({ aggregation: __S(4672, __c146, 0) }),
+        /*@__PURE__*/ S.Struct({ custom: __S(4672, __c146, 0) }),
+      ]);
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(4673, __c146, 1) })]);
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ columns: S.optional(__S(3712, __c116, 0)) })).annotate({
+        identifier: "QueryConstraintRequireOverlap",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ requireOverlap: __S(4704, __c147, 0) })]);
+    case 2:
+      return S.Array(__S(4705, __c147, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          joinColumns: __S(3712, __c116, 0),
+          queryConstraints: __S(4706, __c147, 2),
+          dimensionColumns: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({
+        identifier: "AnalysisRuleIdMappingTable",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ list: __S(4640, __c145, 0) }),
+        /*@__PURE__*/ S.Struct({ aggregation: __S(4645, __c145, 5) }),
+        /*@__PURE__*/ S.Struct({ custom: __S(4646, __c145, 6) }),
+        /*@__PURE__*/ S.Struct({ idMappingTable: __S(4707, __c147, 3) }),
+      ]);
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(4708, __c147, 4) })]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          joinColumns: __S(3712, __c116, 0),
+          allowedJoinOperators: S.optional(__S(3712, __c116, 0)),
+          listColumns: __S(3712, __c116, 0),
+          additionalAnalyses: S.optional(S.String),
+          allowedResultReceivers: S.optional(__S(3712, __c116, 0)),
+          allowedAdditionalAnalyses: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({ identifier: "ConsolidatedPolicyList" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          aggregateColumns: __S(4642, __c145, 2),
+          joinColumns: __S(3712, __c116, 0),
+          joinRequired: S.optional(S.String),
+          allowedJoinOperators: S.optional(__S(3712, __c116, 0)),
+          dimensionColumns: __S(3712, __c116, 0),
+          scalarFunctions: __S(3712, __c116, 0),
+          outputConstraints: __S(4644, __c145, 4),
+          additionalAnalyses: S.optional(S.String),
+          allowedResultReceivers: S.optional(__S(3712, __c116, 0)),
+          allowedAdditionalAnalyses: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({
+        identifier: "ConsolidatedPolicyAggregation",
+      });
+    case 8:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ list: __S(4710, __c147, 6) }),
+        /*@__PURE__*/ S.Struct({ aggregation: __S(4711, __c147, 7) }),
+        /*@__PURE__*/ S.Struct({ custom: __S(4646, __c145, 6) }),
+      ]);
+    case 9:
+      return S.Union([/*@__PURE__*/ S.Struct({ v1: __S(4712, __c147, 8) })]);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          collaborationId: S.String,
+          type: S.String,
+          name: S.String,
+          createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          policy: __S(4709, __c147, 5),
+          collaborationPolicy: S.optional(__S(4674, __c146, 2)),
+          consolidatedPolicy: S.optional(__S(4713, __c147, 9)),
+        }),
+      ).annotate({ identifier: "AnalysisRule" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ member: __S(3008, __c94, 0) })]);
+    case 1:
+      return S.suspend(() => S.Struct({ outputConfiguration: __S(4736, __c148, 0) })).annotate({
+        identifier: "ProtectedJobResultConfigurationInput",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          jobParameters: __S(248, __c31, 0),
-          resultConfiguration: S.optional(__S(408, __c51, 0)),
-          computeConfiguration: S.optional(__S(261, __c32, 5)),
+          jobParameters: __S(3040, __c95, 0),
+          resultConfiguration: S.optional(__S(4737, __c148, 1)),
+          computeConfiguration: S.optional(__S(3047, __c95, 7)),
           jobComputePayerAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10353,14 +10995,18 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartProtectedJobInput" });
-    case 2:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          sqlParameters: __S(265, __c33, 1),
-          resultConfiguration: S.optional(__S(271, __c33, 7)),
-          computeConfiguration: S.optional(__S(280, __c35, 0)),
+          sqlParameters: __S(3168, __c99, 0),
+          resultConfiguration: S.optional(__S(3173, __c99, 5)),
+          computeConfiguration: S.optional(__S(3181, __c99, 13)),
           queryComputePayerAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10373,15 +11019,23 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartProtectedQueryInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ protectedQuery: __S(281, __c35, 1) })).annotate({
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ protectedQuery: __S(3182, __c99, 14) })).annotate({
         identifier: "StartProtectedQueryOutput",
       });
-    case 4:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(84, __c10, 4),
+          tags: __S(32, __c1, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -10393,11 +11047,15 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(3712, __c116, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -10409,7 +11067,11 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 6:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -10431,7 +11093,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "UpdateAnalysisTemplateInput",
       });
-    case 7:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -10451,7 +11117,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "UpdateCollaborationInput" });
   }
 }
-function __c52(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10475,7 +11141,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "UpdateCollaborationChangeRequestInput",
       });
-    case 1:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelAssociationIdentifier: S.String.pipe(
@@ -10500,16 +11170,20 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "UpdateConfiguredAudienceModelAssociationInput",
       });
-    case 2:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tableReference: S.optional(__S(120, __c15, 0)),
-          allowedColumns: S.optional(__S(0, __c0, 0)),
+          tableReference: S.optional(__S(806, __c25, 6)),
+          allowedColumns: S.optional(__S(3712, __c116, 0)),
           analysisMethod: S.optional(S.String),
-          selectedAnalysisMethods: S.optional(__S(32, __c4, 0)),
+          selectedAnalysisMethods: S.optional(__S(4096, __c128, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/configuredTables/{configuredTableIdentifier}" }),
@@ -10523,12 +11197,16 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "UpdateConfiguredTableInput",
       });
-    case 3:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredTableIdentifier: S.String.pipe(T.HttpLabel("configuredTableIdentifier")),
           analysisRuleType: S.String.pipe(T.HttpLabel("analysisRuleType")),
-          analysisRulePolicy: __S(126, __c15, 6),
+          analysisRulePolicy: __S(897, __c28, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -10545,283 +11223,8 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "UpdateConfiguredTableAnalysisRuleInput",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          configuredTableAssociationIdentifier: S.String.pipe(
-            T.HttpLabel("configuredTableAssociationIdentifier"),
-          ),
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          description: S.optional(S.String),
-          roleArn: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/configuredTableAssociations/{configuredTableAssociationIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateConfiguredTableAssociationInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          configuredTableAssociationIdentifier: S.String.pipe(
-            T.HttpLabel("configuredTableAssociationIdentifier"),
-          ),
-          analysisRuleType: S.String.pipe(T.HttpLabel("analysisRuleType")),
-          analysisRulePolicy: __S(74, __c9, 2),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/configuredTableAssociations/{configuredTableAssociationIdentifier}/analysisRule/{analysisRuleType}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateConfiguredTableAssociationAnalysisRuleInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          idMappingTableIdentifier: S.String.pipe(T.HttpLabel("idMappingTableIdentifier")),
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          description: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/idmappingtables/{idMappingTableIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateIdMappingTableInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idNamespaceAssociationIdentifier: S.String.pipe(
-            T.HttpLabel("idNamespaceAssociationIdentifier"),
-          ),
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          idMappingConfig: S.optional(__S(143, __c17, 7)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/idnamespaceassociations/{idNamespaceAssociationIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateIdNamespaceAssociationInput",
-      });
   }
 }
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          description: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-          columns: S.optional(__S(31, __c3, 7)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/intermediateTables/{intermediateTableIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateIntermediateTableInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          intermediateTableIdentifier: S.String.pipe(T.HttpLabel("intermediateTableIdentifier")),
-          analysisRuleType: S.String.pipe(T.HttpLabel("analysisRuleType")),
-          analysisRulePolicy: __S(172, __c21, 4),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/intermediateTables/{intermediateTableIdentifier}/analysisRule/{analysisRuleType}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateIntermediateTableAnalysisRuleInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          queryCompute: S.optional(__S(89, __c11, 1)),
-          machineLearning: S.optional(__S(182, __c22, 6)),
-          jobCompute: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateMembershipPaymentConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          queryLogStatus: S.optional(S.String),
-          jobLogStatus: S.optional(S.String),
-          defaultResultConfiguration: S.optional(__S(178, __c22, 2)),
-          defaultJobResultConfiguration: S.optional(__S(181, __c22, 5)),
-          membershipPaymentConfiguration: S.optional(__S(426, __c53, 2)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/memberships/{membershipIdentifier}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateMembershipInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ epsilon: S.optional(S.Number), usersNoisePerQuery: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "DifferentialPrivacyTemplateUpdateParameters",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ budgetParameters: __S(189, __c23, 5) })).annotate({
-        identifier: "AccessBudgetsPrivacyTemplateUpdateParameters",
-      });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          differentialPrivacy: __S(428, __c53, 4),
-        }),
-        /*@__PURE__*/ S.Struct({ accessBudget: __S(429, __c53, 5) }),
-      ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          privacyBudgetTemplateIdentifier: S.String.pipe(
-            T.HttpLabel("privacyBudgetTemplateIdentifier"),
-          ),
-          privacyBudgetType: S.String,
-          parameters: S.optional(__S(430, __c53, 6)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/privacybudgettemplates/{privacyBudgetTemplateIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdatePrivacyBudgetTemplateInput",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          protectedJobIdentifier: S.String.pipe(T.HttpLabel("protectedJobIdentifier")),
-          targetStatus: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/protectedJobs/{protectedJobIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateProtectedJobInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          protectedQueryIdentifier: S.String.pipe(T.HttpLabel("protectedQueryIdentifier")),
-          targetStatus: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/protectedQueries/{protectedQueryIdentifier}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateProtectedQueryInput",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 3:
-      return S.Array(__S(434, __c54, 2));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

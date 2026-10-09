@@ -1206,8 +1206,8 @@ export const autoresearchArchiveCreate: API.OperationMethod<
   AutoresearchArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AutoresearchArchiveCreateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AutoresearchPipeline>,
+  input: __S(224, __c28, 0) as any as S.Schema<AutoresearchArchiveCreateRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<AutoresearchPipeline>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1221,8 @@ export const autoresearchDestroy: API.OperationMethod<
   AutoresearchDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AutoresearchDestroyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AutoresearchDestroyResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<AutoresearchDestroyRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<AutoresearchDestroyResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1236,8 @@ export const autoresearchResumeCreate: API.OperationMethod<
   AutoresearchResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AutoresearchResumeCreateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AutoresearchPipeline>,
+  input: __S(336, __c42, 0) as any as S.Schema<AutoresearchResumeCreateRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<AutoresearchPipeline>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1251,12 @@ export const autoresearchTrainingRunsArtifactsDeleteCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AutoresearchTrainingRunsArtifactsDeleteCreateRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ArtifactDeleteResult>,
+  input: __S(
+    344,
+    __c43,
+    0,
+  ) as any as S.Schema<AutoresearchTrainingRunsArtifactsDeleteCreateRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<ArtifactDeleteResult>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1270,8 @@ export const autoresearchTrainingRunsArtifactsGetCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsGetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AutoresearchTrainingRunsArtifactsGetCreateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ArtifactContent>,
+  input: __S(352, __c44, 0) as any as S.Schema<AutoresearchTrainingRunsArtifactsGetCreateRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<ArtifactContent>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1285,12 @@ export const autoresearchTrainingRunsArtifactsUploadCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AutoresearchTrainingRunsArtifactsUploadCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<StoredArtifact>,
+  input: __S(
+    360,
+    __c45,
+    0,
+  ) as any as S.Schema<AutoresearchTrainingRunsArtifactsUploadCreateRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<StoredArtifact>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1304,8 @@ export const autoresearchValidateCreate: API.OperationMethod<
   AutoresearchValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AutoresearchValidateCreateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ValidatePipelineResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<AutoresearchValidateCreateRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<ValidatePipelineResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1319,8 @@ export const autoresearchValidateOnlineCreate: API.OperationMethod<
   AutoresearchValidateOnlineCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AutoresearchValidateOnlineCreateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<AutoresearchValidateOnlineCreateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AutoresearchValidateOnlineCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AutoresearchValidateOnlineCreateResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1334,8 @@ export const createAutoresearch: API.OperationMethod<
   CreateAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateAutoresearchRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AutoresearchPipeline>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateAutoresearchRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<AutoresearchPipeline>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1349,8 @@ export const createAutoresearchPause: API.OperationMethod<
   CreateAutoresearchPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateAutoresearchPauseRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AutoresearchPipeline>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateAutoresearchPauseRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<AutoresearchPipeline>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1356,8 +1364,8 @@ export const createAutoresearchResolveTemplate: API.OperationMethod<
   CreateAutoresearchResolveTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateAutoresearchResolveTemplateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ResolvedTemplate>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateAutoresearchResolveTemplateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ResolvedTemplate>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1379,8 @@ export const createAutoresearchScore: API.OperationMethod<
   CreateAutoresearchScoreError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateAutoresearchScoreRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AutoresearchRun>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateAutoresearchScoreRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AutoresearchRun>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1394,8 @@ export const createAutoresearchSuggestion: API.OperationMethod<
   CreateAutoresearchSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateAutoresearchSuggestionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AutoresearchSuggestion>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateAutoresearchSuggestionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<AutoresearchSuggestion>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1409,8 @@ export const createAutoresearchSuggestionsRespond: API.OperationMethod<
   CreateAutoresearchSuggestionsRespondError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateAutoresearchSuggestionsRespondRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AutoresearchSuggestion>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateAutoresearchSuggestionsRespondRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<AutoresearchSuggestion>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1424,8 @@ export const createAutoresearchTrain: API.OperationMethod<
   CreateAutoresearchTrainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateAutoresearchTrainRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<AutoresearchTrainingRun>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateAutoresearchTrainRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<AutoresearchTrainingRun>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1431,8 +1439,8 @@ export const createAutoresearchTrainingRun: API.OperationMethod<
   CreateAutoresearchTrainingRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateAutoresearchTrainingRunRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<AutoresearchTrainingRun>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateAutoresearchTrainingRunRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<AutoresearchTrainingRun>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1446,8 +1454,8 @@ export const createAutoresearchTrainingRunsComplete: API.OperationMethod<
   CreateAutoresearchTrainingRunsCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateAutoresearchTrainingRunsCompleteRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<AutoresearchTrainingRun>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateAutoresearchTrainingRunsCompleteRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<AutoresearchTrainingRun>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1469,8 @@ export const createAutoresearchTrainingRunsIteration: API.OperationMethod<
   CreateAutoresearchTrainingRunsIterationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<AutoresearchIteration>,
+  input: __S(132, __c16, 4) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<AutoresearchIteration>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1477,11 +1485,11 @@ export const createAutoresearchTrainingRunsMaterializeFeature: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    144,
+    __c18,
+    0,
   ) as any as S.Schema<CreateAutoresearchTrainingRunsMaterializeFeatureRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<MaterializeFeaturesResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<MaterializeFeaturesResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1495,8 +1503,8 @@ export const getAutoresearch: API.OperationMethod<
   GetAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetAutoresearchRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AutoresearchPipeline>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetAutoresearchRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<AutoresearchPipeline>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1510,8 +1518,8 @@ export const getAutoresearchModel: API.OperationMethod<
   GetAutoresearchModelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetAutoresearchModelRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<AutoresearchModel>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetAutoresearchModelRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<AutoresearchModel>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1525,8 +1533,8 @@ export const getAutoresearchOnlinePerformance: API.OperationMethod<
   GetAutoresearchOnlinePerformanceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetAutoresearchOnlinePerformanceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<OnlinePerformance>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetAutoresearchOnlinePerformanceRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<OnlinePerformance>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1548,8 @@ export const getAutoresearchRun: API.OperationMethod<
   GetAutoresearchRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetAutoresearchRunRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AutoresearchRun>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetAutoresearchRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AutoresearchRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1555,8 +1563,8 @@ export const getAutoresearchSuggestion: API.OperationMethod<
   GetAutoresearchSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetAutoresearchSuggestionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AutoresearchSuggestion>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetAutoresearchSuggestionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<AutoresearchSuggestion>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1570,8 +1578,8 @@ export const getAutoresearchTrainingRun: API.OperationMethod<
   GetAutoresearchTrainingRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetAutoresearchTrainingRunRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<AutoresearchTrainingRun>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetAutoresearchTrainingRunRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<AutoresearchTrainingRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1585,8 +1593,8 @@ export const getAutoresearchTrainingRunsArtifact: API.OperationMethod<
   GetAutoresearchTrainingRunsArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetAutoresearchTrainingRunsArtifactRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ArtifactList>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetAutoresearchTrainingRunsArtifactRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ArtifactList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1600,8 +1608,8 @@ export const getAutoresearchTrainingRunsHistory: API.OperationMethod<
   GetAutoresearchTrainingRunsHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetAutoresearchTrainingRunsHistoryRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<TrainingRunHistory>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetAutoresearchTrainingRunsHistoryRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<TrainingRunHistory>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1615,8 +1623,8 @@ export const listAutoresearch: API.OperationMethod<
   ListAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListAutoresearchRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PaginatedAutoresearchPipelineList>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListAutoresearchRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<PaginatedAutoresearchPipelineList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1630,8 +1638,8 @@ export const listAutoresearchModels: API.OperationMethod<
   ListAutoresearchModelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListAutoresearchModelsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<PaginatedAutoresearchModelList>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListAutoresearchModelsRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<PaginatedAutoresearchModelList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1645,8 +1653,8 @@ export const listAutoresearchRuns: API.OperationMethod<
   ListAutoresearchRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListAutoresearchRunsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PaginatedAutoresearchRunList>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListAutoresearchRunsRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<PaginatedAutoresearchRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1660,8 +1668,8 @@ export const listAutoresearchSuggestions: API.OperationMethod<
   ListAutoresearchSuggestionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListAutoresearchSuggestionsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<PaginatedAutoresearchSuggestionList>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListAutoresearchSuggestionsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<PaginatedAutoresearchSuggestionList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1675,8 +1683,8 @@ export const listAutoresearchTemplates: API.OperationMethod<
   ListAutoresearchTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListAutoresearchTemplatesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListAutoresearchTemplatesResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListAutoresearchTemplatesRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListAutoresearchTemplatesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1690,8 +1698,8 @@ export const listAutoresearchTrainingRuns: API.OperationMethod<
   ListAutoresearchTrainingRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListAutoresearchTrainingRunsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<PaginatedAutoresearchTrainingRunList>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListAutoresearchTrainingRunsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<PaginatedAutoresearchTrainingRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1705,8 +1713,8 @@ export const updateAutoresearch: API.OperationMethod<
   UpdateAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateAutoresearchRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AutoresearchPipelineCreate>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateAutoresearchRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<AutoresearchPipelineCreate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1720,8 +1728,8 @@ export const updateAutoresearchPartial: API.OperationMethod<
   UpdateAutoresearchPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateAutoresearchPartialRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AutoresearchPipelineCreate>,
+  input: __S(320, __c40, 0) as any as S.Schema<UpdateAutoresearchPartialRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<AutoresearchPipelineCreate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1738,106 +1746,16 @@ function __c0(j: number): any {
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{id}/archive/",
+            uri: "/api/projects/{project_id}/autoresearch/{id}/validate_online/",
             code: 200,
           }),
         ),
       ).annotate({
-        identifier: "AutoresearchArchiveCreateRequest",
+        identifier: "AutoresearchValidateOnlineCreateRequest",
       });
     case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          target_event: S.String,
-          target_definition: S.Unknown,
-          horizon_days: S.optional(S.Number),
-          training_lookback_days: S.optional(S.Number),
-          training_population: S.Unknown,
-          inference_population: S.Unknown,
-          cadence_days: S.optional(S.Number),
-          iteration_budget: S.optional(S.Number),
-          iteration_budget_remaining: S.Number,
-          success_auc: S.optional(S.NullOr(S.Number)),
-          plateau_iterations: S.optional(S.Number),
-          output_person_property: S.optional(S.String),
-          status: S.String,
-          created_by: __S(2, __c0, 2),
-          created_at: S.String,
-          updated_at: S.String,
-          last_scored_at: S.NullOr(S.String),
-          champion_holdout_auc: S.NullOr(S.Number),
-          champion_realized_auc: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "AutoresearchPipeline" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/autoresearch/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchDestroyRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AutoresearchDestroyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{id}/resume/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchResumeCreateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          pipeline_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          path: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/delete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchTrainingRunsArtifactsDeleteCreateRequest",
+      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AutoresearchValidateOnlineCreateResponse",
       });
   }
 }
@@ -1846,148 +1764,30 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          path: S.String,
-          deleted: S.Boolean,
-        }),
-      ).annotate({ identifier: "ArtifactDeleteResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          pipeline_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          path: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/get/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchTrainingRunsArtifactsGetCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          size_bytes: S.Number,
-          sha256: S.String,
-          content_base64: S.String,
-        }),
-      ).annotate({ identifier: "ArtifactContent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          pipeline_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          path: S.String,
-          content_base64: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/upload/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchTrainingRunsArtifactsUploadCreateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          size_bytes: S.Number,
-          sha256: S.String,
-        }),
-      ).annotate({ identifier: "StoredArtifact" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
-          horizon_days: S.optional(S.Number),
-          training_lookback_days: S.optional(S.Number),
-          training_population: S.optional(S.Unknown),
-          inference_population: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/validate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchValidateCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-          severity: S.String,
-        }),
-      ).annotate({ identifier: "ValidationWarning" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          can_proceed: S.Boolean,
-          requires_acknowledgement: S.Boolean,
-          estimated_training_rows: S.NullOr(S.Number),
-          positive_count: S.NullOr(S.Number),
-          negative_count: S.NullOr(S.Number),
-          base_rate: S.NullOr(S.Number),
-          inference_population_size: S.NullOr(S.Number),
-          warnings: __S(15, __c1, 7),
-          error: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ValidatePipelineResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/autoresearch/{id}/validate_online/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoresearchValidateOnlineCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String,
           pipeline: S.String,
           model: S.optional(S.NullOr(S.String)),
           run_type: S.String,
           status: S.optional(S.String),
           rows_scored: S.optional(S.NullOr(S.Number)),
-          metrics: __S(1, __c0, 1),
+          metrics: __S(232, __c29, 0),
           error: S.optional(S.String),
           started_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
           created_at: S.String,
         }),
       ).annotate({ identifier: "AutoresearchRun" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => __S(19, __c2, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AutoresearchValidateOnlineCreateResponse",
-      });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2010,7 +1810,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2025,7 +1829,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchPauseRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2042,12 +1850,6 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchResolveTemplateRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2057,7 +1859,7 @@ function __c3(j: number): any {
           suggested_name: S.String,
           target_event: S.String,
           resolved_activity_event: S.NullOr(S.String),
-          activity_event_alternatives: __S(24, __c3, 0),
+          activity_event_alternatives: __S(48, __c6, 0),
           horizon_days: S.Number,
           training_lookback_days: S.Number,
           training_population: S.Unknown,
@@ -2066,7 +1868,17 @@ function __c3(j: number): any {
           notes: S.String,
         }),
       ).annotate({ identifier: "ResolvedTemplate" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2081,7 +1893,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchScoreRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2098,7 +1914,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchSuggestionRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2108,13 +1928,17 @@ function __c3(j: number): any {
           status: S.String,
           source: S.String,
           agent_response: S.String,
-          created_by: S.NullOr(__S(2, __c0, 2)),
-          linked_iteration_ids: __S(24, __c3, 0),
+          created_by: S.NullOr(__S(240, __c30, 0)),
+          linked_iteration_ids: __S(48, __c6, 0),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "AutoresearchSuggestion" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2132,7 +1956,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchSuggestionsRespondRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2148,7 +1976,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchTrainRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           iteration_number: S.Number,
@@ -2159,13 +1991,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "TrainingRunSummaryLadderItem",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           target_event: S.String,
@@ -2173,21 +2001,25 @@ function __c4(j: number): any {
           best_holdout_score: S.NullOr(S.Number),
           champion_promoted: S.Boolean,
           champion_model_class: S.String,
-          kept_ladder: __S(32, __c4, 0),
-          dead_ends: __S(32, __c4, 0),
+          kept_ladder: __S(97, __c12, 1),
+          dead_ends: __S(97, __c12, 1),
           recommended_next: S.String,
           distillation: S.String,
           report_notebook_short_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrainingRunSummary" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(1, __c0, 1))),
+          model_params: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({ identifier: "IterationTrailModelSpec" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           iteration_number: S.Number,
@@ -2195,12 +2027,12 @@ function __c4(j: number): any {
           holdout_score: S.optional(S.NullOr(S.Number)),
           train_score: S.optional(S.NullOr(S.Number)),
           agent_description: S.optional(S.String),
-          model_spec: __S(34, __c4, 2),
+          model_spec: __S(104, __c13, 0),
         }),
       ).annotate({ identifier: "IterationTrail" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2212,15 +2044,19 @@ function __c4(j: number): any {
           iteration_budget: S.optional(S.Number),
           iteration_count: S.Number,
           best_holdout_score: S.NullOr(S.Number),
-          summary: S.NullOr(__S(33, __c4, 1)),
-          iterations: __S(36, __c4, 4),
+          summary: S.NullOr(__S(98, __c12, 2)),
+          iterations: __S(106, __c13, 2),
           error: S.String,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
         }),
       ).annotate({ identifier: "AutoresearchTrainingRun" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2236,7 +2072,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2259,7 +2099,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -2267,7 +2107,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           feature_sql: S.String,
-          feature_transforms: S.optional(S.NullOr(__S(40, __c5, 0))),
+          feature_transforms: S.optional(S.NullOr(__S(128, __c16, 0))),
         }),
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot",
@@ -2278,7 +2118,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(42, __c5, 2))),
+          model_params: S.optional(S.NullOr(__S(130, __c16, 2))),
         }),
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunsIterationRequestModelSpec",
@@ -2290,8 +2130,8 @@ function __c5(j: number): any {
           pipeline_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           iteration_number: S.Number,
-          recipe_snapshot: __S(41, __c5, 1),
-          model_spec: __S(43, __c5, 3),
+          recipe_snapshot: __S(129, __c16, 1),
+          model_spec: __S(131, __c16, 3),
           status: S.String,
           train_score: S.optional(S.NullOr(S.Number)),
           holdout_score: S.optional(S.NullOr(S.Number)),
@@ -2309,30 +2149,6 @@ function __c5(j: number): any {
         identifier: "CreateAutoresearchTrainingRunsIterationRequest",
       });
     case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          feature_sql: S.String,
-          feature_transforms: S.optional(S.NullOr(__S(45, __c5, 5))),
-        }),
-      ).annotate({
-        identifier: "AutoresearchIterationRecipeSnapshot",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({
-        identifier: "AutoresearchIterationModelSpec",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2340,8 +2156,8 @@ function __c6(j: number): any {
           training_run: S.String,
           iteration_number: S.Number,
           recipe_hash: S.String,
-          recipe_snapshot: __S(46, __c5, 6),
-          model_spec: __S(47, __c5, 7),
+          recipe_snapshot: __S(137, __c17, 1),
+          model_spec: __S(138, __c17, 2),
           train_score: S.optional(S.NullOr(S.Number)),
           holdout_score: S.optional(S.NullOr(S.Number)),
           status: S.String,
@@ -2351,7 +2167,35 @@ function __c6(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "AutoresearchIteration" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          feature_sql: S.String,
+          feature_transforms: S.optional(S.NullOr(__S(136, __c17, 0))),
+        }),
+      ).annotate({
+        identifier: "AutoresearchIterationRecipeSnapshot",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          model_class: S.String,
+          model_params: S.optional(S.NullOr(__S(232, __c29, 0))),
+        }),
+      ).annotate({
+        identifier: "AutoresearchIterationModelSpec",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2368,7 +2212,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunsMaterializeFeatureRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           train_features_path: S.String,
@@ -2378,15 +2222,19 @@ function __c6(j: number): any {
           n_train: S.Number,
           n_holdout: S.Number,
           n_features: S.Number,
-          feature_cols: __S(24, __c3, 0),
+          feature_cols: __S(48, __c6, 0),
           elapsed_s: S.Number,
           rows_read: S.Number,
-          hints: __S(24, __c3, 0),
+          hints: __S(48, __c6, 0),
         }),
       ).annotate({
         identifier: "MaterializeFeaturesResponse",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2399,7 +2247,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAutoresearchRequest" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2415,7 +2267,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchModelRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2427,7 +2283,7 @@ function __c6(j: number): any {
           holdout_score: S.optional(S.NullOr(S.Number)),
           realized_score: S.optional(S.NullOr(S.Number)),
           calibration_error: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(__S(1, __c0, 1)),
+          metrics: S.optional(__S(232, __c29, 0)),
           source_training_run: S.NullOr(S.String),
           agent_description: S.optional(S.String),
           trained_on_start: S.optional(S.NullOr(S.String)),
@@ -2440,7 +2296,11 @@ function __c6(j: number): any {
           in_shadow_set: S.Boolean,
         }),
       ).annotate({ identifier: "AutoresearchModel" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2456,7 +2316,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchOnlinePerformanceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           n: S.Number,
@@ -2464,13 +2324,9 @@ function __c6(j: number): any {
           positive_rate: S.Number,
         }),
       ).annotate({ identifier: "CalibrationBin" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           validation_run_id: S.String,
@@ -2491,20 +2347,24 @@ function __c7(j: number): any {
           calibration_error: S.NullOr(S.Number),
           lift_at_10: S.NullOr(S.Number),
           lift_at_20: S.NullOr(S.Number),
-          calibration_bins: S.NullOr(__S(56, __c7, 0)),
+          calibration_bins: S.NullOr(__S(178, __c22, 2)),
           warning: S.NullOr(S.String),
           validated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "OnlinePerformanceRow" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(179, __c22, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          rows: __S(58, __c7, 2),
+          rows: __S(180, __c22, 4),
         }),
       ).annotate({ identifier: "OnlinePerformance" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2520,7 +2380,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchRunRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2536,7 +2400,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchSuggestionRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2552,7 +2420,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchTrainingRunRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2568,18 +2440,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchTrainingRunsArtifactRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          paths: __S(24, __c3, 0),
+          paths: __S(48, __c6, 0),
           count: S.Number,
         }),
       ).annotate({ identifier: "ArtifactList" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2595,7 +2467,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetAutoresearchTrainingRunsHistoryRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           iteration_number: S.Number,
@@ -2603,13 +2475,13 @@ function __c8(j: number): any {
           holdout_score: S.optional(S.NullOr(S.Number)),
           train_score: S.optional(S.NullOr(S.Number)),
           agent_description: S.optional(S.String),
-          model_spec: __S(47, __c5, 7),
-          recipe_snapshot: __S(46, __c5, 6),
+          model_spec: __S(138, __c17, 2),
+          recipe_snapshot: __S(137, __c17, 1),
         }),
       ).annotate({ identifier: "IterationTrailWithRecipe" });
+    case 2:
+      return S.Array(__S(217, __c27, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           run_id: S.String,
@@ -2620,19 +2492,97 @@ function __c8(j: number): any {
           best_holdout_score: S.NullOr(S.Number),
           iteration_count: S.Number,
           completed_at: S.NullOr(S.String),
-          summary: S.NullOr(__S(33, __c4, 1)),
-          iterations: __S(67, __c8, 3),
+          summary: S.NullOr(__S(98, __c12, 2)),
+          iterations: __S(218, __c27, 2),
         }),
       ).annotate({ identifier: "TrainingRunHistoryEntry" });
+    case 4:
+      return S.Array(__S(219, __c27, 3));
     case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          runs: __S(69, __c8, 5),
+          runs: __S(220, __c27, 4),
         }),
       ).annotate({ identifier: "TrainingRunHistory" });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/{id}/archive/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchArchiveCreateRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(232, __c29, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          target_event: S.String,
+          target_definition: S.Unknown,
+          horizon_days: S.optional(S.Number),
+          training_lookback_days: S.optional(S.Number),
+          training_population: S.Unknown,
+          inference_population: S.Unknown,
+          cadence_days: S.optional(S.Number),
+          iteration_budget: S.optional(S.Number),
+          iteration_budget_remaining: S.Number,
+          success_auc: S.optional(S.NullOr(S.Number)),
+          plateau_iterations: S.optional(S.Number),
+          output_person_property: S.optional(S.String),
+          status: S.String,
+          created_by: __S(240, __c30, 0),
+          created_at: S.String,
+          updated_at: S.String,
+          last_scored_at: S.NullOr(S.String),
+          champion_holdout_auc: S.NullOr(S.Number),
+          champion_realized_auc: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "AutoresearchPipeline" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2642,24 +2592,24 @@ function __c8(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/autoresearch/", code: 200 }),
         ),
       ).annotate({ identifier: "ListAutoresearchRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(248, __c31, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(72, __c9, 0),
+          results: __S(257, __c32, 1),
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchPipelineList",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2676,20 +2626,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListAutoresearchModelsRequest",
       });
-    case 3:
-      return S.Array(__S(53, __c6, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(75, __c9, 3),
+          results: __S(265, __c33, 1),
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchModelList",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2706,18 +2660,22 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListAutoresearchRunsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(19, __c2, 3),
+          results: __S(16, __c2, 0),
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchRunList",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2734,24 +2692,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListAutoresearchSuggestionsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(28, __c3, 4));
     case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(80, __c10, 0),
+          results: __S(281, __c35, 1),
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchSuggestionList",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2765,7 +2723,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListAutoresearchTemplatesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2777,13 +2735,17 @@ function __c10(j: number): any {
           notes: S.String,
         }),
       ).annotate({ identifier: "TemplateInfo" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() => __S(84, __c10, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(289, __c36, 1));
+    case 3:
+      return S.suspend(() => __S(290, __c36, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAutoresearchTemplatesResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2800,24 +2762,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListAutoresearchTrainingRunsRequest",
       });
-    case 7:
-      return S.Array(__S(37, __c4, 5));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(107, __c13, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(87, __c10, 7),
+          results: __S(297, __c37, 1),
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchTrainingRunList",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2845,7 +2807,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateAutoresearchRequest",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2865,7 +2831,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AutoresearchPipelineCreate",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2895,7 +2865,184 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/autoresearch/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchDestroyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AutoresearchDestroyResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/{id}/resume/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchResumeCreateRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          pipeline_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          path: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/delete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchTrainingRunsArtifactsDeleteCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          deleted: S.Boolean,
+        }),
+      ).annotate({ identifier: "ArtifactDeleteResult" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          pipeline_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          path: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/get/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchTrainingRunsArtifactsGetCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          size_bytes: S.Number,
+          sha256: S.String,
+          content_base64: S.String,
+        }),
+      ).annotate({ identifier: "ArtifactContent" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          pipeline_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          path: S.String,
+          content_base64: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/upload/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchTrainingRunsArtifactsUploadCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          size_bytes: S.Number,
+          sha256: S.String,
+        }),
+      ).annotate({ identifier: "StoredArtifact" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          target_event: S.optional(S.String),
+          target_definition: S.optional(S.Unknown),
+          horizon_days: S.optional(S.Number),
+          training_lookback_days: S.optional(S.Number),
+          training_population: S.optional(S.Unknown),
+          inference_population: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/autoresearch/validate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoresearchValidateCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+          severity: S.String,
+        }),
+      ).annotate({ identifier: "ValidationWarning" });
+    case 2:
+      return S.Array(__S(369, __c46, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          can_proceed: S.Boolean,
+          requires_acknowledgement: S.Boolean,
+          estimated_training_rows: S.NullOr(S.Number),
+          positive_count: S.NullOr(S.Number),
+          negative_count: S.NullOr(S.Number),
+          base_rate: S.NullOr(S.Number),
+          inference_population_size: S.NullOr(S.Number),
+          warnings: __S(370, __c46, 2),
+          error: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ValidatePipelineResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

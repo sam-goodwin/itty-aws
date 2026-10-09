@@ -454,7 +454,7 @@ export const runpagespeedPagespeedapi: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<RunpagespeedPagespeedapiRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PagespeedApiPagespeedResponseV5>,
+  output: __S(32, __c1, 0) as any as S.Schema<PagespeedApiPagespeedResponseV5>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -524,11 +524,7 @@ function __c0(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "LighthouseCategoryV5" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           "best-practices": S.optional(__S(7, __c0, 7)),
@@ -539,9 +535,9 @@ function __c1(j: number): any {
           pwa: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "Categories" });
-    case 1:
+    case 9:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           LCP: S.optional(S.Number),
@@ -551,15 +547,15 @@ function __c1(j: number): any {
           CLS: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricSavings" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           displayValue: S.optional(S.String),
           warnings: S.optional(S.Unknown),
-          details: S.optional(__S(9, __c1, 1)),
+          details: S.optional(__S(9, __c0, 9)),
           title: S.optional(S.String),
           scoreDisplayMode: S.optional(S.String),
-          metricSavings: S.optional(__S(10, __c1, 2)),
+          metricSavings: S.optional(__S(10, __c0, 10)),
           numericUnit: S.optional(S.String),
           explanation: S.optional(S.String),
           score: S.optional(S.Unknown),
@@ -569,46 +565,42 @@ function __c1(j: number): any {
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "LighthouseAuditResultV5" });
-    case 4:
-      return S.Record(S.String, __S(11, __c1, 3));
-    case 5:
+    case 12:
+      return S.Record(S.String, __S(11, __c0, 11));
+    case 13:
       return S.Record(S.String, S.String);
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          descriptions: S.optional(__S(13, __c1, 5)),
+          descriptions: S.optional(__S(13, __c0, 13)),
           iconDataURL: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "StackPack" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(14, __c0, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           benchmarkIndex: S.optional(S.Number),
           networkUserAgent: S.optional(S.String),
           hostUserAgent: S.optional(S.String),
-          credits: S.optional(__S(13, __c1, 5)),
+          credits: S.optional(__S(13, __c0, 13)),
         }),
       ).annotate({ identifier: "Environment" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "CategoryGroupV5" });
-    case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 3:
+    case 18:
+      return S.Record(S.String, __S(17, __c0, 17));
+    case 19:
       return S.Array(S.Unknown);
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           isFirstParty: S.optional(S.Boolean),
@@ -619,9 +611,9 @@ function __c2(j: number): any {
           origins: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "LhrEntity" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(20, __c0, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
@@ -631,7 +623,7 @@ function __c2(j: number): any {
           emulatedFormFactor: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigSettings" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           crcInitialNavigation: S.optional(S.String),
@@ -684,48 +676,44 @@ function __c2(j: number): any {
           calculatorLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RendererFormattedStrings" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          rendererFormattedStrings: S.optional(__S(23, __c2, 7)),
+          rendererFormattedStrings: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({ identifier: "I18n" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuntimeError" });
-    case 2:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           timing: S.optional(__S(3, __c0, 3)),
-          categories: S.optional(__S(8, __c1, 0)),
-          audits: S.optional(__S(12, __c1, 4)),
+          categories: S.optional(__S(8, __c0, 8)),
+          audits: S.optional(__S(12, __c0, 12)),
           lighthouseVersion: S.optional(S.String),
-          stackPacks: S.optional(__S(15, __c1, 7)),
+          stackPacks: S.optional(__S(15, __c0, 15)),
           fullPageScreenshot: S.optional(S.Unknown),
-          environment: S.optional(__S(16, __c2, 0)),
+          environment: S.optional(__S(16, __c0, 16)),
           mainDocumentUrl: S.optional(S.String),
-          categoryGroups: S.optional(__S(18, __c2, 2)),
+          categoryGroups: S.optional(__S(18, __c0, 18)),
           userAgent: S.optional(S.String),
-          runWarnings: S.optional(__S(19, __c2, 3)),
-          entities: S.optional(__S(21, __c2, 5)),
+          runWarnings: S.optional(__S(19, __c0, 19)),
+          entities: S.optional(__S(21, __c0, 21)),
           requestedUrl: S.optional(S.String),
           finalUrl: S.optional(S.String),
-          configSettings: S.optional(__S(22, __c2, 6)),
-          i18n: S.optional(__S(24, __c3, 0)),
-          runtimeError: S.optional(__S(25, __c3, 1)),
+          configSettings: S.optional(__S(22, __c0, 22)),
+          i18n: S.optional(__S(24, __c0, 24)),
+          runtimeError: S.optional(__S(25, __c0, 25)),
           fetchTime: S.optional(S.String),
           finalDisplayedUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "LighthouseResultV5" });
-    case 3:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           proportion: S.optional(S.Number),
@@ -733,12 +721,12 @@ function __c3(j: number): any {
           min: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Bucket" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 28:
+      return S.Array(__S(27, __c0, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          distributions: S.optional(__S(28, __c3, 4)),
+          distributions: S.optional(__S(28, __c0, 28)),
           median: S.optional(S.Number),
           percentile: S.optional(S.Number),
           metricId: S.optional(S.String),
@@ -746,23 +734,23 @@ function __c3(j: number): any {
           formFactor: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPageLoadMetricV5" });
-    case 6:
-      return S.Record(S.String, __S(29, __c3, 5));
-    case 7:
+    case 30:
+      return S.Record(S.String, __S(29, __c0, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           origin_fallback: S.optional(S.Boolean),
           initial_url: S.optional(S.String),
           id: S.optional(S.String),
           overall_category: S.optional(S.String),
-          metrics: S.optional(__S(30, __c3, 6)),
+          metrics: S.optional(__S(30, __c0, 30)),
         }),
       ).annotate({
         identifier: "PagespeedApiLoadingExperienceV5",
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -771,17 +759,16 @@ function __c4(j: number): any {
           analysisUTCTimestamp: S.optional(S.String),
           id: S.optional(S.String),
           captchaResult: S.optional(S.String),
-          lighthouseResult: S.optional(__S(26, __c3, 2)),
-          originLoadingExperience: S.optional(__S(31, __c3, 7)),
+          lighthouseResult: S.optional(__S(26, __c0, 26)),
+          originLoadingExperience: S.optional(__S(31, __c0, 31)),
           kind: S.optional(S.String),
-          loadingExperience: S.optional(__S(31, __c3, 7)),
+          loadingExperience: S.optional(__S(31, __c0, 31)),
         }),
       ).annotate({
         identifier: "PagespeedApiPagespeedResponseV5",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

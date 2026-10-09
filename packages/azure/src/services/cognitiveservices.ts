@@ -5805,8 +5805,8 @@ export const AccountCapabilityHostsCreateOrUpdate: API.OperationMethod<
   AccountCapabilityHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5820,8 +5820,8 @@ export const AddRaiBlocklistItemBatch: API.OperationMethod<
   AddRaiBlocklistItemBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AddRaiBlocklistItemBatchRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AddRaiBlocklistItemBatchResponse>,
+  input: __S(194, __c6, 2) as any as S.Schema<AddRaiBlocklistItemBatchRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<AddRaiBlocklistItemBatchResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5835,8 +5835,8 @@ export const AgentApplicationsCreateOrUpdate: API.OperationMethod<
   AgentApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<AgentApplicationsCreateOrUpdateRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AgentApplicationsCreateOrUpdateResponse>,
+  input: __S(2818, __c88, 2) as any as S.Schema<AgentApplicationsCreateOrUpdateRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<AgentApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5850,8 +5850,8 @@ export const AgentDeploymentsCreateOrUpdate: API.OperationMethod<
   AgentDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<AgentDeploymentsCreateOrUpdateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AgentDeploymentsCreateOrUpdateResponse>,
+  input: __S(3265, __c102, 1) as any as S.Schema<AgentDeploymentsCreateOrUpdateRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<AgentDeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5865,8 +5865,8 @@ export const CalculateModelCapacity: API.OperationMethod<
   CalculateModelCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CalculateModelCapacityRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CalculateModelCapacityResult>,
+  input: __S(3715, __c116, 3) as any as S.Schema<CalculateModelCapacityRequest>,
+  output: __S(3717, __c116, 5) as any as S.Schema<CalculateModelCapacityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5880,8 +5880,8 @@ export const CheckDomainAvailability: API.OperationMethod<
   CheckDomainAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CheckDomainAvailabilityRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DomainAvailability>,
+  input: __S(4160, __c130, 0) as any as S.Schema<CheckDomainAvailabilityRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<DomainAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5895,8 +5895,8 @@ export const CheckSkuAvailability: API.OperationMethod<
   CheckSkuAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CheckSkuAvailabilityRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SkuAvailabilityListResult>,
+  input: __S(4704, __c147, 0) as any as S.Schema<CheckSkuAvailabilityRequest>,
+  output: __S(4707, __c147, 3) as any as S.Schema<SkuAvailabilityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5910,8 +5910,8 @@ export const CommitmentPlansCreateOrUpdate: API.OperationMethod<
   CommitmentPlansCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CommitmentPlansCreateOrUpdateRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CommitmentPlansCreateOrUpdateResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<CommitmentPlansCreateOrUpdateRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<CommitmentPlansCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5925,8 +5925,8 @@ export const CommitmentPlansCreateOrUpdateAssociation: API.OperationMethod<
   CommitmentPlansCreateOrUpdateAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequest>,
+  output: __S(6273, __c196, 1) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5940,8 +5940,8 @@ export const CommitmentPlansCreateOrUpdatePlan: API.OperationMethod<
   CommitmentPlansCreateOrUpdatePlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5955,8 +5955,8 @@ export const CreateAccount: API.OperationMethod<
   CreateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreateAccountRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CreateAccountResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateAccountRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5970,8 +5970,8 @@ export const CreateAccountConnection: API.OperationMethod<
   CreateAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateAccountConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<CreateAccountConnectionResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateAccountConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<CreateAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5985,8 +5985,8 @@ export const CreateProject: API.OperationMethod<
   CreateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateProjectRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<CreateProjectResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateProjectRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<CreateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6000,8 +6000,8 @@ export const CreateProjectConnection: API.OperationMethod<
   CreateProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateProjectConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<CreateProjectConnectionResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<CreateProjectConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<CreateProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6015,8 +6015,8 @@ export const DefenderForAISettingsCreateOrUpdate: API.OperationMethod<
   DefenderForAISettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6030,8 +6030,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6045,8 +6045,8 @@ export const DeleteAccountCapabilityHost: API.OperationMethod<
   DeleteAccountCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteAccountCapabilityHostRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteAccountCapabilityHostResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteAccountCapabilityHostRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteAccountCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6060,8 +6060,8 @@ export const DeleteAccountConnection: API.OperationMethod<
   DeleteAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteAccountConnectionRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<DeleteAccountConnectionResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteAccountConnectionRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<DeleteAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6075,8 +6075,8 @@ export const DeleteAgentApplication: API.OperationMethod<
   DeleteAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteAgentApplicationRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteAgentApplicationResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteAgentApplicationRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6090,8 +6090,8 @@ export const DeleteAgentDeployment: API.OperationMethod<
   DeleteAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteAgentDeploymentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteAgentDeploymentResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteAgentDeploymentRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6105,8 +6105,8 @@ export const DeleteCommitmentPlan: API.OperationMethod<
   DeleteCommitmentPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteCommitmentPlanRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteCommitmentPlanResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteCommitmentPlanRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteCommitmentPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6120,8 +6120,8 @@ export const DeleteCommitmentPlanAssociation: API.OperationMethod<
   DeleteCommitmentPlanAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteCommitmentPlanAssociationRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteCommitmentPlanAssociationResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteCommitmentPlanAssociationRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteCommitmentPlanAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6135,8 +6135,8 @@ export const DeleteCommitmentPlanPlan: API.OperationMethod<
   DeleteCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteCommitmentPlanPlanRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteCommitmentPlanPlanResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeleteCommitmentPlanPlanRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6150,8 +6150,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6165,8 +6165,8 @@ export const DeleteEncryptionScope: API.OperationMethod<
   DeleteEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteEncryptionScopeRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteEncryptionScopeResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<DeleteEncryptionScopeRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6180,8 +6180,8 @@ export const DeleteManagedNetworkSettings: API.OperationMethod<
   DeleteManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteManagedNetworkSettingsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteManagedNetworkSettingsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<DeleteManagedNetworkSettingsRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6195,8 +6195,8 @@ export const DeleteOutboundRule: API.OperationMethod<
   DeleteOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteOutboundRuleRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteOutboundRuleResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DeleteOutboundRuleRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteOutboundRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6210,8 +6210,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6225,8 +6225,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6240,8 +6240,8 @@ export const DeleteProjectCapabilityHost: API.OperationMethod<
   DeleteProjectCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectCapabilityHostRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteProjectCapabilityHostResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<DeleteProjectCapabilityHostRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteProjectCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6255,8 +6255,8 @@ export const DeleteProjectConnection: API.OperationMethod<
   DeleteProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DeleteProjectConnectionRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<DeleteProjectConnectionResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DeleteProjectConnectionRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<DeleteProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6270,8 +6270,8 @@ export const DeleteRaiBlocklist: API.OperationMethod<
   DeleteRaiBlocklistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteRaiBlocklistRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteRaiBlocklistResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DeleteRaiBlocklistRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRaiBlocklistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6285,8 +6285,8 @@ export const DeleteRaiBlocklistItem: API.OperationMethod<
   DeleteRaiBlocklistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeleteRaiBlocklistItemRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteRaiBlocklistItemResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DeleteRaiBlocklistItemRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRaiBlocklistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6300,8 +6300,8 @@ export const DeleteRaiBlocklistItemBatch: API.OperationMethod<
   DeleteRaiBlocklistItemBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DeleteRaiBlocklistItemBatchRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteRaiBlocklistItemBatchRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6315,8 +6315,8 @@ export const DeleteRaiExternalSafetyProvider: API.OperationMethod<
   DeleteRaiExternalSafetyProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DeleteRaiExternalSafetyProviderRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DeleteRaiExternalSafetyProviderRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6330,8 +6330,8 @@ export const DeleteRaiPolicy: API.OperationMethod<
   DeleteRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteRaiPolicyRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteRaiPolicyResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DeleteRaiPolicyRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6345,8 +6345,8 @@ export const DeleteRaiToolLabel: API.OperationMethod<
   DeleteRaiToolLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DeleteRaiToolLabelRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteRaiToolLabelResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DeleteRaiToolLabelRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRaiToolLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6360,8 +6360,8 @@ export const DeleteRaiTopic: API.OperationMethod<
   DeleteRaiTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteRaiTopicRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteRaiTopicResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DeleteRaiTopicRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRaiTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6375,8 +6375,8 @@ export const DeleteSubscriptionRaiPolicy: API.OperationMethod<
   DeleteSubscriptionRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteSubscriptionRaiPolicyRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DeleteSubscriptionRaiPolicyRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6390,8 +6390,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
+  input: __S(3650, __c114, 2) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(3651, __c114, 3) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6405,8 +6405,8 @@ export const DisableAgentApplication: API.OperationMethod<
   DisableAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DisableAgentApplicationRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<DisableAgentApplicationResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<DisableAgentApplicationRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<DisableAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6420,8 +6420,8 @@ export const EnableAgentApplication: API.OperationMethod<
   EnableAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<EnableAgentApplicationRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EnableAgentApplicationResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<EnableAgentApplicationRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<EnableAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6435,8 +6435,8 @@ export const EncryptionScopesCreateOrUpdate: API.OperationMethod<
   EncryptionScopesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<EncryptionScopesCreateOrUpdateRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<EncryptionScopesCreateOrUpdateResponse>,
+  input: __S(3841, __c120, 1) as any as S.Schema<EncryptionScopesCreateOrUpdateRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<EncryptionScopesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6450,8 +6450,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetAccountRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetAccountResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6465,8 +6465,8 @@ export const GetAccountCapabilityHost: API.OperationMethod<
   GetAccountCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetAccountCapabilityHostRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetAccountCapabilityHostResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetAccountCapabilityHostRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetAccountCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6480,8 +6480,8 @@ export const GetAccountConnection: API.OperationMethod<
   GetAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetAccountConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetAccountConnectionResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetAccountConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6495,8 +6495,8 @@ export const GetAgentApplication: API.OperationMethod<
   GetAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetAgentApplicationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetAgentApplicationResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetAgentApplicationRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<GetAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6510,8 +6510,8 @@ export const GetAgentDeployment: API.OperationMethod<
   GetAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetAgentDeploymentRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetAgentDeploymentResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetAgentDeploymentRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<GetAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6525,8 +6525,8 @@ export const GetCommitmentPlan: API.OperationMethod<
   GetCommitmentPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetCommitmentPlanRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetCommitmentPlanResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetCommitmentPlanRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<GetCommitmentPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6540,8 +6540,8 @@ export const GetCommitmentPlanAssociation: API.OperationMethod<
   GetCommitmentPlanAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetCommitmentPlanAssociationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetCommitmentPlanAssociationResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetCommitmentPlanAssociationRequest>,
+  output: __S(6273, __c196, 1) as any as S.Schema<GetCommitmentPlanAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6555,8 +6555,8 @@ export const GetCommitmentPlanPlan: API.OperationMethod<
   GetCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetCommitmentPlanPlanRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetCommitmentPlanPlanResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetCommitmentPlanPlanRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<GetCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6570,8 +6570,8 @@ export const GetDefenderForAISettings: API.OperationMethod<
   GetDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetDefenderForAISettingsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetDefenderForAISettingsResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetDefenderForAISettingsRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<GetDefenderForAISettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6585,8 +6585,8 @@ export const GetDeletedAccount: API.OperationMethod<
   GetDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetDeletedAccountRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GetDeletedAccountResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<GetDeletedAccountRequest>,
+  output: __S(4257, __c133, 1) as any as S.Schema<GetDeletedAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6600,8 +6600,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetDeploymentResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6615,8 +6615,8 @@ export const GetEncryptionScope: API.OperationMethod<
   GetEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetEncryptionScopeRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetEncryptionScopeResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetEncryptionScopeRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<GetEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6630,8 +6630,8 @@ export const GetManagedNetworkSettings: API.OperationMethod<
   GetManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetManagedNetworkSettingsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetManagedNetworkSettingsResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetManagedNetworkSettingsRequest>,
+  output: __S(4484, __c140, 4) as any as S.Schema<GetManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6645,8 +6645,12 @@ export const GetNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   GetNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(
+    4557,
+    __c142,
+    13,
+  ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6660,8 +6664,8 @@ export const GetOutboundRule: API.OperationMethod<
   GetOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetOutboundRuleRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetOutboundRuleResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<GetOutboundRuleRequest>,
+  output: __S(4609, __c144, 1) as any as S.Schema<GetOutboundRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6675,8 +6679,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6690,8 +6694,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetProjectRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GetProjectResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6705,8 +6709,8 @@ export const GetProjectCapabilityHost: API.OperationMethod<
   GetProjectCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<GetProjectCapabilityHostRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GetProjectCapabilityHostResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<GetProjectCapabilityHostRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<GetProjectCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6720,8 +6724,8 @@ export const GetProjectConnection: API.OperationMethod<
   GetProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetProjectConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetProjectConnectionResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetProjectConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6735,8 +6739,8 @@ export const GetQuotaTier: API.OperationMethod<
   GetQuotaTierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetQuotaTierRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetQuotaTierResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetQuotaTierRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetQuotaTierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6750,8 +6754,8 @@ export const GetRaiBlocklist: API.OperationMethod<
   GetRaiBlocklistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetRaiBlocklistRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GetRaiBlocklistResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<GetRaiBlocklistRequest>,
+  output: __S(4992, __c156, 0) as any as S.Schema<GetRaiBlocklistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6765,8 +6769,8 @@ export const GetRaiBlocklistItem: API.OperationMethod<
   GetRaiBlocklistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetRaiBlocklistItemRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetRaiBlocklistItemResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<GetRaiBlocklistItemRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<GetRaiBlocklistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6780,8 +6784,8 @@ export const GetRaiContentFilter: API.OperationMethod<
   GetRaiContentFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetRaiContentFilterRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetRaiContentFilterResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<GetRaiContentFilterRequest>,
+  output: __S(5089, __c159, 1) as any as S.Schema<GetRaiContentFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6795,8 +6799,8 @@ export const GetRaiExternalSafetyProvider: API.OperationMethod<
   GetRaiExternalSafetyProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetRaiExternalSafetyProviderRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetRaiExternalSafetyProviderResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetRaiExternalSafetyProviderRequest>,
+  output: __S(5185, __c162, 1) as any as S.Schema<GetRaiExternalSafetyProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6810,8 +6814,8 @@ export const GetRaiPolicy: API.OperationMethod<
   GetRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetRaiPolicyRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<GetRaiPolicyResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetRaiPolicyRequest>,
+  output: __S(5248, __c164, 0) as any as S.Schema<GetRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6825,8 +6829,8 @@ export const GetRaiToolLabel: API.OperationMethod<
   GetRaiToolLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetRaiToolLabelRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetRaiToolLabelResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<GetRaiToolLabelRequest>,
+  output: __S(5344, __c167, 0) as any as S.Schema<GetRaiToolLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6840,8 +6844,8 @@ export const GetRaiTopic: API.OperationMethod<
   GetRaiTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetRaiTopicRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetRaiTopicResponse>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetRaiTopicRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GetRaiTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6855,8 +6859,8 @@ export const GetSubscriptionRaiPolicy: API.OperationMethod<
   GetSubscriptionRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetSubscriptionRaiPolicyRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<GetSubscriptionRaiPolicyResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetSubscriptionRaiPolicyRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<GetSubscriptionRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6870,8 +6874,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<AccountListResult>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(5793, __c181, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6885,8 +6889,8 @@ export const ListAccountCapabilityHosts: API.OperationMethod<
   ListAccountCapabilityHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListAccountCapabilityHostsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<CapabilityHostResourceArmPaginatedResult>,
+  input: __S(5824, __c182, 0) as any as S.Schema<ListAccountCapabilityHostsRequest>,
+  output: __S(5827, __c182, 3) as any as S.Schema<CapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6900,11 +6904,11 @@ export const ListAccountConnections: API.OperationMethod<
   ListAccountConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListAccountConnectionsRequest>,
+  input: __S(5856, __c183, 0) as any as S.Schema<ListAccountConnectionsRequest>,
   output: __S(
-    253,
-    __c31,
-    5,
+    5889,
+    __c184,
+    1,
   ) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6919,8 +6923,8 @@ export const ListAccountKeys: API.OperationMethod<
   ListAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListAccountKeysRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ApiKeys>,
+  input: __S(5920, __c185, 0) as any as S.Schema<ListAccountKeysRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<ApiKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6934,8 +6938,8 @@ export const ListAccountModels: API.OperationMethod<
   ListAccountModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListAccountModelsRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<AccountModelListResult>,
+  input: __S(5984, __c187, 0) as any as S.Schema<ListAccountModelsRequest>,
+  output: __S(5986, __c187, 2) as any as S.Schema<AccountModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6949,8 +6953,8 @@ export const ListAccounts: API.OperationMethod<
   ListAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListAccountsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<AccountListResult>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(5793, __c181, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6964,8 +6968,8 @@ export const ListAccountSkus: API.OperationMethod<
   ListAccountSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListAccountSkusRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<AccountSkuListResult>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ListAccountSkusRequest>,
+  output: __S(6115, __c191, 3) as any as S.Schema<AccountSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6979,8 +6983,8 @@ export const ListAccountUsages: API.OperationMethod<
   ListAccountUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListAccountUsagesRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<UsageListResult>,
+  input: __S(6144, __c192, 0) as any as S.Schema<ListAccountUsagesRequest>,
+  output: __S(6179, __c193, 3) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6994,8 +6998,8 @@ export const ListAgentApplicationAgents: API.OperationMethod<
   ListAgentApplicationAgentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<ListAgentApplicationAgentsRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<AgentReferenceResourceArmPaginatedResult>,
+  input: __S(6208, __c194, 0) as any as S.Schema<ListAgentApplicationAgentsRequest>,
+  output: __S(6211, __c194, 3) as any as S.Schema<AgentReferenceResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7009,8 +7013,8 @@ export const ListAgentApplications: API.OperationMethod<
   ListAgentApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListAgentApplicationsRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>,
+  input: __S(6304, __c197, 0) as any as S.Schema<ListAgentApplicationsRequest>,
+  output: __S(6307, __c197, 3) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7024,8 +7028,8 @@ export const ListAgentDeployments: API.OperationMethod<
   ListAgentDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListAgentDeploymentsRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<AgentDeploymentResourceArmPaginatedResult>,
+  input: __S(6336, __c198, 0) as any as S.Schema<ListAgentDeploymentsRequest>,
+  output: __S(6339, __c198, 3) as any as S.Schema<AgentDeploymentResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7039,8 +7043,8 @@ export const ListCommitmentPlanAssociations: API.OperationMethod<
   ListCommitmentPlanAssociationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<ListCommitmentPlanAssociationsRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<CommitmentPlanAccountAssociationListResult>,
+  input: __S(6368, __c199, 0) as any as S.Schema<ListCommitmentPlanAssociationsRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<CommitmentPlanAccountAssociationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7054,8 +7058,8 @@ export const ListCommitmentPlanPlansByResourceGroup: API.OperationMethod<
   ListCommitmentPlanPlansByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListCommitmentPlanPlansByResourceGroupRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CommitmentPlanListResult>,
+  input: __S(6400, __c200, 0) as any as S.Schema<ListCommitmentPlanPlansByResourceGroupRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7069,8 +7073,8 @@ export const ListCommitmentPlanPlansBySubscription: API.OperationMethod<
   ListCommitmentPlanPlansBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<ListCommitmentPlanPlansBySubscriptionRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CommitmentPlanListResult>,
+  input: __S(6464, __c202, 0) as any as S.Schema<ListCommitmentPlanPlansBySubscriptionRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7084,8 +7088,8 @@ export const ListCommitmentPlans: API.OperationMethod<
   ListCommitmentPlansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<ListCommitmentPlansRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<CommitmentPlanListResult>,
+  input: __S(6496, __c203, 0) as any as S.Schema<ListCommitmentPlansRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7099,8 +7103,8 @@ export const ListCommitmentTiers: API.OperationMethod<
   ListCommitmentTiersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<ListCommitmentTiersRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<CommitmentTierListResult>,
+  input: __S(6528, __c204, 0) as any as S.Schema<ListCommitmentTiersRequest>,
+  output: __S(6532, __c204, 4) as any as S.Schema<CommitmentTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7114,8 +7118,8 @@ export const ListDefenderForAISettings: API.OperationMethod<
   ListDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListDefenderForAISettingsRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DefenderForAISettingResult>,
+  input: __S(6560, __c205, 0) as any as S.Schema<ListDefenderForAISettingsRequest>,
+  output: __S(6563, __c205, 3) as any as S.Schema<DefenderForAISettingResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7129,8 +7133,8 @@ export const ListDeletedAccounts: API.OperationMethod<
   ListDeletedAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListDeletedAccountsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<AccountListResult>,
+  input: __S(6592, __c206, 0) as any as S.Schema<ListDeletedAccountsRequest>,
+  output: __S(5793, __c181, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7144,8 +7148,8 @@ export const ListDeployments: API.OperationMethod<
   ListDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeploymentListResult>,
+  input: __S(6624, __c207, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(6626, __c207, 2) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7159,8 +7163,8 @@ export const ListDeploymentSkus: API.OperationMethod<
   ListDeploymentSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<ListDeploymentSkusRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<DeploymentSkuListResult>,
+  input: __S(6688, __c209, 0) as any as S.Schema<ListDeploymentSkusRequest>,
+  output: __S(6691, __c209, 3) as any as S.Schema<DeploymentSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7174,8 +7178,8 @@ export const ListEncryptionScopes: API.OperationMethod<
   ListEncryptionScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<ListEncryptionScopesRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<EncryptionScopeListResult>,
+  input: __S(6720, __c210, 0) as any as S.Schema<ListEncryptionScopesRequest>,
+  output: __S(6723, __c210, 3) as any as S.Schema<EncryptionScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7189,8 +7193,8 @@ export const ListLocationBasedModelCapacities: API.OperationMethod<
   ListLocationBasedModelCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<ListLocationBasedModelCapacitiesRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<ModelCapacityListResult>,
+  input: __S(6752, __c211, 0) as any as S.Schema<ListLocationBasedModelCapacitiesRequest>,
+  output: __S(6787, __c212, 3) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7204,8 +7208,8 @@ export const ListManagedNetworkSettings: API.OperationMethod<
   ListManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ListManagedNetworkSettingsRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<ManagedNetworkListResult>,
+  input: __S(6816, __c213, 0) as any as S.Schema<ListManagedNetworkSettingsRequest>,
+  output: __S(6818, __c213, 2) as any as S.Schema<ManagedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7219,8 +7223,8 @@ export const ListModelCapacities: API.OperationMethod<
   ListModelCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<ListModelCapacitiesRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<ModelCapacityListResult>,
+  input: __S(6848, __c214, 0) as any as S.Schema<ListModelCapacitiesRequest>,
+  output: __S(6787, __c212, 3) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7234,8 +7238,8 @@ export const ListModels: API.OperationMethod<
   ListModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListModelsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<ModelListResult>,
+  input: __S(6880, __c215, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(6883, __c215, 3) as any as S.Schema<ModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7249,8 +7253,8 @@ export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
+  input: __S(6912, __c216, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
+  output: __S(6914, __c216, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7264,8 +7268,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(341, __c42, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(6948, __c217, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7279,8 +7283,8 @@ export const ListOutboundRule: API.OperationMethod<
   ListOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListOutboundRuleRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<OutboundRuleListResult>,
+  input: __S(6976, __c218, 0) as any as S.Schema<ListOutboundRuleRequest>,
+  output: __S(7041, __c220, 1) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7294,8 +7298,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(7072, __c221, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(7073, __c221, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7309,8 +7313,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(676, __c21, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7324,8 +7328,8 @@ export const ListProjectCapabilityHosts: API.OperationMethod<
   ListProjectCapabilityHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListProjectCapabilityHostsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListProjectCapabilityHostsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7339,11 +7343,11 @@ export const ListProjectConnections: API.OperationMethod<
   ListProjectConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListProjectConnectionsRequest>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListProjectConnectionsRequest>,
   output: __S(
-    253,
-    __c31,
-    5,
+    5889,
+    __c184,
+    1,
   ) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7358,8 +7362,8 @@ export const ListProjects: API.OperationMethod<
   ListProjectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<ListProjectsRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ProjectListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7373,8 +7377,8 @@ export const ListQuotaTierBySubscription: API.OperationMethod<
   ListQuotaTierBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListQuotaTierBySubscriptionRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<QuotaTierListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListQuotaTierBySubscriptionRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<QuotaTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7388,8 +7392,8 @@ export const ListRaiBlocklistItems: API.OperationMethod<
   ListRaiBlocklistItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<ListRaiBlocklistItemsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<RaiBlockListItemsResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListRaiBlocklistItemsRequest>,
+  output: __S(835, __c26, 3) as any as S.Schema<RaiBlockListItemsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7403,8 +7407,8 @@ export const ListRaiBlocklists: API.OperationMethod<
   ListRaiBlocklistsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListRaiBlocklistsRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<RaiBlockListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListRaiBlocklistsRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<RaiBlockListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7418,8 +7422,8 @@ export const ListRaiContentFilters: API.OperationMethod<
   ListRaiContentFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<ListRaiContentFiltersRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<RaiContentFilterListResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListRaiContentFiltersRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<RaiContentFilterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7433,8 +7437,8 @@ export const ListRaiExternalSafetyProviders: API.OperationMethod<
   ListRaiExternalSafetyProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ListRaiExternalSafetyProvidersRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<RaiExternalSafetyProviderResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListRaiExternalSafetyProvidersRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<RaiExternalSafetyProviderResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7448,8 +7452,8 @@ export const ListRaiPolicies: API.OperationMethod<
   ListRaiPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListRaiPoliciesRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<RaiPolicyListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListRaiPoliciesRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<RaiPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7463,8 +7467,8 @@ export const ListRaiToolLabels: API.OperationMethod<
   ListRaiToolLabelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListRaiToolLabelsRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<RaiToolLabelResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListRaiToolLabelsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<RaiToolLabelResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7478,8 +7482,8 @@ export const ListRaiTopics: API.OperationMethod<
   ListRaiTopicsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListRaiTopicsRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<RaiTopicResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListRaiTopicsRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<RaiTopicResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7493,8 +7497,8 @@ export const ListResourceSkus: API.OperationMethod<
   ListResourceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListResourceSkusRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<ResourceSkuListResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListResourceSkusRequest>,
+  output: __S(1158, __c36, 6) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7508,8 +7512,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListUsagesRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<UsageListResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(6179, __c193, 3) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7524,14 +7528,14 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    395,
-    __c49,
-    3,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
   output: __S(
-    190,
-    __c23,
-    6,
+    4557,
+    __c142,
+    13,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7546,8 +7550,8 @@ export const OutboundRuleCreateOrUpdate: API.OperationMethod<
   OutboundRuleCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<OutboundRuleCreateOrUpdateRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<OutboundRuleCreateOrUpdateResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<OutboundRuleCreateOrUpdateRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<OutboundRuleCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7561,8 +7565,8 @@ export const PatchManagedNetworkSettings: API.OperationMethod<
   PatchManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<PatchManagedNetworkSettingsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<PatchManagedNetworkSettingsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PatchManagedNetworkSettingsRequest>,
+  output: __S(4484, __c140, 4) as any as S.Schema<PatchManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7576,8 +7580,8 @@ export const PauseDeployment: API.OperationMethod<
   PauseDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<PauseDeploymentRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<PauseDeploymentResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PauseDeploymentRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<PauseDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7591,8 +7595,8 @@ export const PostOutboundRule: API.OperationMethod<
   PostOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<PostOutboundRuleRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<OutboundRuleListResult>,
+  input: __S(1440, __c45, 0) as any as S.Schema<PostOutboundRuleRequest>,
+  output: __S(7041, __c220, 1) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7606,8 +7610,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(1473, __c46, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7621,8 +7625,8 @@ export const ProjectCapabilityHostsCreateOrUpdate: API.OperationMethod<
   ProjectCapabilityHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>,
+  input: __S(1601, __c50, 1) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7637,11 +7641,11 @@ export const ProvisionManagedNetworkProvisionManagedNetwork: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    408,
+    1632,
     __c51,
     0,
   ) as any as S.Schema<ProvisionManagedNetworkProvisionManagedNetworkRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ManagedNetworkProvisionStatus>,
+  output: __S(4448, __c139, 0) as any as S.Schema<ManagedNetworkProvisionStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7655,8 +7659,8 @@ export const PurgeDeletedAccount: API.OperationMethod<
   PurgeDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<PurgeDeletedAccountRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<PurgeDeletedAccountResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<PurgeDeletedAccountRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<PurgeDeletedAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7670,8 +7674,8 @@ export const PutManagedNetworkSettings: API.OperationMethod<
   PutManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<PutManagedNetworkSettingsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<PutManagedNetworkSettingsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<PutManagedNetworkSettingsRequest>,
+  output: __S(4484, __c140, 4) as any as S.Schema<PutManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7685,8 +7689,8 @@ export const QuotaTiersCreateOrUpdate: API.OperationMethod<
   QuotaTiersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<QuotaTiersCreateOrUpdateRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<QuotaTiersCreateOrUpdateResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<QuotaTiersCreateOrUpdateRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<QuotaTiersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7700,8 +7704,8 @@ export const RaiBlocklistItemsCreateOrUpdate: API.OperationMethod<
   RaiBlocklistItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7715,8 +7719,8 @@ export const RaiBlocklistsCreateOrUpdate: API.OperationMethod<
   RaiBlocklistsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<RaiBlocklistsCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<RaiBlocklistsCreateOrUpdateRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7730,8 +7734,8 @@ export const RaiExternalSafetyProviderCreateOrUpdate: API.OperationMethod<
   RaiExternalSafetyProviderCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateRequest>,
+  output: __S(5185, __c162, 1) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7745,8 +7749,8 @@ export const RaiPoliciesCreateOrUpdate: API.OperationMethod<
   RaiPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<RaiPoliciesCreateOrUpdateRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RaiPoliciesCreateOrUpdateRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7760,8 +7764,8 @@ export const RaiToolLabelsCreateOrUpdate: API.OperationMethod<
   RaiToolLabelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<RaiToolLabelsCreateOrUpdateRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<RaiToolLabelsCreateOrUpdateResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<RaiToolLabelsCreateOrUpdateRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<RaiToolLabelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7775,8 +7779,8 @@ export const RaiTopicsCreateOrUpdate: API.OperationMethod<
   RaiTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<RaiTopicsCreateOrUpdateRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<RaiTopicsCreateOrUpdateResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<RaiTopicsCreateOrUpdateRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<RaiTopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7790,8 +7794,8 @@ export const RegenerateAccountKey: API.OperationMethod<
   RegenerateAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<RegenerateAccountKeyRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ApiKeys>,
+  input: __S(2048, __c64, 0) as any as S.Schema<RegenerateAccountKeyRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<ApiKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7805,8 +7809,8 @@ export const ResumeDeployment: API.OperationMethod<
   ResumeDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ResumeDeploymentRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ResumeDeploymentResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ResumeDeploymentRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<ResumeDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7820,8 +7824,8 @@ export const StartAgentDeployment: API.OperationMethod<
   StartAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<StartAgentDeploymentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<StartAgentDeploymentResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<StartAgentDeploymentRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<StartAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7835,8 +7839,8 @@ export const StopAgentDeployment: API.OperationMethod<
   StopAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<StopAgentDeploymentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<StopAgentDeploymentResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<StopAgentDeploymentRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<StopAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7850,8 +7854,8 @@ export const SubscriptionRaiPolicyCreateOrUpdate: API.OperationMethod<
   SubscriptionRaiPolicyCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7865,11 +7869,11 @@ export const TestRaiExternalSafetyProviderCreateOrUpdate: API.OperationMethod<
   TestRaiExternalSafetyProviderCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateRequest>,
   output: __S(
-    212,
-    __c26,
-    4,
+    5185,
+    __c162,
+    1,
   ) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7884,8 +7888,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7899,8 +7903,8 @@ export const UpdateAccountConnection: API.OperationMethod<
   UpdateAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<UpdateAccountConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UpdateAccountConnectionResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<UpdateAccountConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<UpdateAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7914,8 +7918,8 @@ export const UpdateCommitmentPlanPlan: API.OperationMethod<
   UpdateCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<UpdateCommitmentPlanPlanRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateCommitmentPlanPlanResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UpdateCommitmentPlanPlanRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<UpdateCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7929,8 +7933,8 @@ export const UpdateDefenderForAISettings: API.OperationMethod<
   UpdateDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<UpdateDefenderForAISettingsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<UpdateDefenderForAISettingsResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<UpdateDefenderForAISettingsRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<UpdateDefenderForAISettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7944,8 +7948,8 @@ export const UpdateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<UpdateDeploymentRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<UpdateDeploymentResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<UpdateDeploymentRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UpdateDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7959,8 +7963,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7974,8 +7978,8 @@ export const UpdateProjectConnection: API.OperationMethod<
   UpdateProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<UpdateProjectConnectionRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UpdateProjectConnectionResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<UpdateProjectConnectionRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<UpdateProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7989,8 +7993,8 @@ export const UpdateQuotaTier: API.OperationMethod<
   UpdateQuotaTierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<UpdateQuotaTierRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<UpdateQuotaTierResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdateQuotaTierRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateQuotaTierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8000,33 +8004,29 @@ export const UpdateQuotaTier: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          aiServicesConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          aiServicesConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
           capabilityHostKind: S.optional(S.String),
           customerSubnet: S.optional(S.NullOr(S.String)),
-          storageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          threadStorageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          vectorStoreConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
+          storageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          threadStorageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
           enablePublicHostingEnvironment: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "CapabilityHostPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           capabilityHostName: S.String.pipe(T.Label()),
-          properties: __S(2, __c0, 2),
+          properties: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8038,7 +8038,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountCapabilityHostsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -8049,57 +8053,68 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          aiServicesConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          capabilityHostKind: S.optional(S.String),
-          customerSubnet: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(S.String),
-          storageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          threadStorageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          vectorStoreConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          enablePublicHostingEnvironment: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CapabilityHostProperties" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(5, __c0, 5),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(128, __c4, 0),
         }),
       ).annotate({
         identifier: "AccountCapabilityHostsCreateOrUpdateResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pattern: S.optional(S.String),
-          isRegex: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "RaiBlocklistItemProperties",
-      });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          aiServicesConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          capabilityHostKind: S.optional(S.String),
+          customerSubnet: S.optional(S.NullOr(S.String)),
+          provisioningState: S.optional(S.String),
+          storageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          threadStorageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          enablePublicHostingEnvironment: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CapabilityHostProperties" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "RaiBlocklistItemBulkRequest",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(192, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8107,7 +8122,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
-          body: __S(9, __c1, 1).pipe(T.HttpBody()),
+          body: __S(193, __c6, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8119,520 +8134,6 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddRaiBlocklistItemBatchRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiBlocklistProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(11, __c1, 3)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "AddRaiBlocklistItemBatchResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          agentId: S.optional(S.NullOr(S.String)),
-          agentName: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AgentReferenceProperties" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          type: S.String,
-          clientId: S.String,
-          principalId: S.String,
-          tenantId: S.String,
-          subject: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AssignedIdentityInput" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationAuthorizationPolicy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          deploymentId: S.optional(S.NullOr(S.String)),
-          trafficPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TrafficRoutingRule" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.optional(S.String),
-          rules: S.optional(S.NullOr(__S(18, __c2, 2))),
-        }),
-      ).annotate({
-        identifier: "ApplicationTrafficRoutingPolicy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          displayName: S.optional(S.NullOr(S.String)),
-          baseUrl: S.optional(S.NullOr(S.String)),
-          agents: S.optional(S.NullOr(__S(14, __c1, 6))),
-          agentIdentityBlueprint: S.optional(S.NullOr(__S(15, __c1, 7))),
-          defaultInstanceIdentity: S.optional(S.NullOr(__S(15, __c1, 7))),
-          authorizationPolicy: S.optional(S.NullOr(__S(16, __c2, 0))),
-          trafficRoutingPolicy: S.optional(S.NullOr(__S(19, __c2, 3))),
-        }),
-      ).annotate({
-        identifier: "AgenticApplicationPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: __S(20, __c2, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "AgentApplicationsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          type: S.String,
-          clientId: S.String,
-          principalId: S.String,
-          tenantId: S.String,
-          subject: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssignedIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          displayName: S.optional(S.NullOr(S.String)),
-          baseUrl: S.optional(S.NullOr(S.String)),
-          agents: S.optional(S.NullOr(__S(14, __c1, 6))),
-          agentIdentityBlueprint: S.optional(S.NullOr(__S(22, __c2, 6))),
-          defaultInstanceIdentity: S.optional(S.NullOr(__S(22, __c2, 6))),
-          authorizationPolicy: S.optional(S.NullOr(__S(16, __c2, 0))),
-          trafficRoutingPolicy: S.optional(S.NullOr(__S(19, __c2, 3))),
-          provisioningState: S.optional(S.String),
-          isEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AgenticApplicationProperties",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "AgentApplicationsCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.optional(S.String),
-          version: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AgentProtocolVersion" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          agentId: S.optional(S.NullOr(S.String)),
-          agentName: S.optional(S.NullOr(S.String)),
-          agentVersion: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "VersionedAgentReference" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          displayName: S.optional(S.NullOr(S.String)),
-          deploymentId: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-          protocols: S.optional(S.NullOr(__S(26, __c3, 2))),
-          agents: S.optional(S.NullOr(__S(28, __c3, 4))),
-          deploymentType: S.String,
-        }),
-      ).annotate({
-        identifier: "AgentDeploymentPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          appName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-          properties: __S(29, __c3, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "AgentDeploymentsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          displayName: S.optional(S.NullOr(S.String)),
-          deploymentId: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-          protocols: S.optional(S.NullOr(__S(26, __c3, 2))),
-          agents: S.optional(S.NullOr(__S(28, __c3, 4))),
-          deploymentType: S.String,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgentDeploymentProperties",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(31, __c3, 7),
-        }),
-      ).annotate({
-        identifier: "AgentDeploymentsCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          format: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          source: S.optional(S.String),
-          sourceAccount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentModel" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          avgPromptTokens: S.optional(S.Number),
-          avgGeneratedTokens: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ModelCapacityCalculatorWorkloadRequestParam",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestPerMinute: S.optional(S.Number),
-          requestParameters: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "ModelCapacityCalculatorWorkload",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          model: S.optional(__S(33, __c4, 1)),
-          skuName: S.optional(S.String),
-          workloads: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CalculateModelCapacityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-          deployableValue: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CalculateModelCapacityResultEstimatedCapacity",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(__S(33, __c4, 1)),
-          skuName: S.optional(S.String),
-          estimatedCapacity: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CalculateModelCapacityResult",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          subdomainName: S.String,
-          type: S.String,
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckDomainAvailabilityRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          isSubdomainAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          subdomainName: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainAvailability" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          skus: __S(1, __c0, 1),
-          kind: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckSkuAvailabilityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          type: S.optional(S.String),
-          skuName: S.optional(S.String),
-          skuAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkuAvailability" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "SkuAvailabilityListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tier: S.optional(S.String),
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CommitmentPeriodInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          commitmentPlanGuid: S.optional(S.String),
-          hostingModel: S.optional(S.String),
-          planType: S.optional(S.String),
-          current: S.optional(__S(46, __c5, 6)),
-          autoRenew: S.optional(S.Boolean),
-          next: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "CommitmentPlanPropertiesInput",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          size: S.optional(S.String),
-          family: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47, __c5, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitmentPlansCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommitmentQuota" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tier: S.optional(S.String),
-          count: S.optional(S.Number),
-          quota: S.optional(__S(50, __c6, 2)),
-          startDate: S.optional(S.String),
-          endDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommitmentPeriod" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          commitmentPlanGuid: S.optional(S.String),
-          hostingModel: S.optional(S.String),
-          planType: S.optional(S.String),
-          current: S.optional(__S(51, __c6, 3)),
-          autoRenew: S.optional(S.Boolean),
-          next: S.optional(__S(51, __c6, 3)),
-          last: S.optional(__S(51, __c6, 3)),
-          provisioningIssues: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "CommitmentPlanProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(52, __c6, 4)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "CommitmentPlansCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommitmentPlanAccountAssociationProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-          commitmentPlanAssociationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitmentPlansCreateOrUpdateAssociationRequest",
-      });
   }
 }
 function __c7(j: number): any {
@@ -8643,64 +8144,174 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(54, __c6, 6)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(256, __c8, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
-        identifier: "CommitmentPlansCreateOrUpdateAssociationResponse",
+        identifier: "AddRaiBlocklistItemBatchResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiBlocklistProperties" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pattern: S.optional(S.String),
+          isRegex: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "RaiBlocklistItemProperties",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47, __c5, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          accountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(448, __c14, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          identity: S.optional(__S(353, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
             code: 200,
             apiVersion: "2026-09-01",
           }),
         ),
-      ).annotate({
-        identifier: "CommitmentPlansCreateOrUpdatePlanRequest",
+      ).annotate({ identifier: "CreateAccountRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(384, __c12, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
       });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, __S(416, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.String,
+          type: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          principalId: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(417, __c13, 1)),
         }),
-      ).annotate({ identifier: "IpRule" });
+      ).annotate({ identifier: "Identity" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migrationToken: S.optional(S.String),
+          customSubDomainName: S.optional(S.String),
+          networkAcls: S.optional(__S(580, __c18, 4)),
+          encryption: S.optional(__S(581, __c18, 5)),
+          userOwnedStorage: S.optional(__S(583, __c18, 7)),
+          amlWorkspace: S.optional(__S(582, __c18, 6)),
+          publicNetworkAccess: S.optional(S.String),
+          apiProperties: S.optional(__S(584, __c18, 8)),
+          dynamicThrottlingEnabled: S.optional(S.Boolean),
+          storedCompletionsDisabled: S.optional(S.Boolean),
+          a365LoggingEnabled: S.optional(S.Boolean),
+          restrictOutboundNetworkAccess: S.optional(S.Boolean),
+          allowedFqdnList: S.optional(__S(160, __c5, 0)),
+          disableLocalAuth: S.optional(S.Boolean),
+          restore: S.optional(S.Boolean),
+          locations: S.optional(__S(587, __c18, 11)),
+          raiMonitorConfig: S.optional(__S(588, __c18, 12)),
+          networkInjections: S.optional(__S(590, __c18, 14)),
+          allowProjectManagement: S.optional(S.Boolean),
+          defaultProject: S.optional(S.String),
+          associatedProjects: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "AccountPropertiesInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestMatchPattern" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          renewalPeriod: S.optional(S.Number),
+          count: S.optional(S.Number),
+          minCount: S.optional(S.Number),
+          dynamicThrottlingEnabled: S.optional(S.Boolean),
+          matchPatterns: S.optional(__S(481, __c15, 1)),
+        }),
+      ).annotate({ identifier: "ThrottlingRule" });
     case 3:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(482, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          state: S.optional(S.String),
-          ignoreMissingVnetServiceEndpoint: S.optional(S.Boolean),
+          count: S.optional(S.Number),
+          renewalPeriod: S.optional(S.Number),
+          rules: S.optional(__S(483, __c15, 3)),
         }),
-      ).annotate({ identifier: "VirtualNetworkRule" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAction: S.optional(S.String),
-          bypass: S.optional(S.String),
-          ipRules: S.optional(__S(59, __c7, 3)),
-          virtualNetworkRules: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "NetworkRuleSet" });
-    case 7:
+      ).annotate({ identifier: "CallRateLimit" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
@@ -8711,25 +8322,99 @@ function __c7(j: number): any {
       ).annotate({ identifier: "KeyVaultProperties" });
   }
 }
-function __c8(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(63, __c7, 7)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesPrivateEndpoint",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(544, __c17, 0)),
+          privateLinkServiceConnectionState: __S(545, __c17, 1),
+          provisioningState: S.optional(S.String),
+          groupIds: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(546, __c17, 2)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+        }),
+      ).annotate({ identifier: "IpRule" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.optional(S.String),
+          ignoreMissingVnetServiceEndpoint: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VirtualNetworkRule" });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAction: S.optional(S.String),
+          bypass: S.optional(S.String),
+          ipRules: S.optional(__S(577, __c18, 1)),
+          virtualNetworkRules: S.optional(__S(579, __c18, 3)),
+        }),
+      ).annotate({ identifier: "NetworkRuleSet" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          keyVaultProperties: S.optional(__S(512, __c16, 0)),
           keySource: S.optional(S.String),
         }),
       ).annotate({ identifier: "Encryption" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
           identityClientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserOwnedStorage" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(582, __c18, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           qnaRuntimeEndpoint: S.optional(S.String),
@@ -8744,7 +8429,7 @@ function __c8(j: number): any {
           websiteName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiProperties" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8752,27 +8437,23 @@ function __c8(j: number): any {
           customsubdomain: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionSetting" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(585, __c18, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           routingMethod: S.optional(S.String),
-          regions: S.optional(__S(69, __c8, 5)),
+          regions: S.optional(__S(586, __c18, 10)),
         }),
       ).annotate({ identifier: "MultiRegionSettings" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           adxStorageResourceId: S.optional(S.String),
           identityClientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RaiMonitorConfig" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           scenario: S.optional(S.String),
@@ -8780,82 +8461,18 @@ function __c9(j: number): any {
           useMicrosoftManagedNetwork: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NetworkInjection" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          migrationToken: S.optional(S.String),
-          customSubDomainName: S.optional(S.String),
-          networkAcls: S.optional(__S(62, __c7, 6)),
-          encryption: S.optional(__S(64, __c8, 0)),
-          userOwnedStorage: S.optional(__S(66, __c8, 2)),
-          amlWorkspace: S.optional(__S(65, __c8, 1)),
-          publicNetworkAccess: S.optional(S.String),
-          apiProperties: S.optional(__S(67, __c8, 3)),
-          dynamicThrottlingEnabled: S.optional(S.Boolean),
-          storedCompletionsDisabled: S.optional(S.Boolean),
-          a365LoggingEnabled: S.optional(S.Boolean),
-          restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(__S(1, __c0, 1)),
-          disableLocalAuth: S.optional(S.Boolean),
-          restore: S.optional(S.Boolean),
-          locations: S.optional(__S(70, __c8, 6)),
-          raiMonitorConfig: S.optional(__S(71, __c8, 7)),
-          networkInjections: S.optional(__S(73, __c9, 1)),
-          allowProjectManagement: S.optional(S.Boolean),
-          defaultProject: S.optional(S.String),
-          associatedProjects: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AccountPropertiesInput" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 4:
-      return S.Record(S.String, __S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(74, __c9, 2)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(77, __c9, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAccountRequest" });
-    case 7:
+    case 14:
+      return S.Array(__S(589, __c18, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapability" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(591, __c18, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           countOfDowngrades: S.optional(S.Number),
@@ -8863,86 +8480,7 @@ function __c10(j: number): any {
           lastChangeDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuChangeInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesPrivateEndpoint",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(82, __c10, 2)),
-          privateLinkServiceConnectionState: __S(83, __c10, 3),
-          provisioningState: S.optional(S.String),
-          groupIds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(84, __c10, 4)),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestMatchPattern" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          renewalPeriod: S.optional(S.Number),
-          count: S.optional(S.Number),
-          minCount: S.optional(S.Number),
-          dynamicThrottlingEnabled: S.optional(S.Boolean),
-          matchPatterns: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "ThrottlingRule" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          renewalPeriod: S.optional(S.Number),
-          rules: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "CallRateLimit" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           commitmentPlanId: S.optional(S.String),
@@ -8951,9 +8489,9 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CommitmentPlanAssociation",
       });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 19:
+      return S.Array(__S(594, __c18, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -8961,1055 +8499,53 @@ function __c11(j: number): any {
           expiration: S.optional(S.String),
         }),
       ).annotate({ identifier: "AbusePenalty" });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           endpoint: S.optional(S.String),
           internalId: S.optional(S.String),
-          capabilities: S.optional(__S(80, __c10, 0)),
+          capabilities: S.optional(__S(592, __c18, 16)),
           isMigrated: S.optional(S.Boolean),
           migrationToken: S.optional(S.String),
-          skuChangeInfo: S.optional(__S(81, __c10, 1)),
+          skuChangeInfo: S.optional(__S(593, __c18, 17)),
           customSubDomainName: S.optional(S.String),
-          networkAcls: S.optional(__S(62, __c7, 6)),
-          encryption: S.optional(__S(64, __c8, 0)),
-          userOwnedStorage: S.optional(__S(66, __c8, 2)),
-          amlWorkspace: S.optional(__S(65, __c8, 1)),
-          privateEndpointConnections: S.optional(__S(86, __c10, 6)),
+          networkAcls: S.optional(__S(580, __c18, 4)),
+          encryption: S.optional(__S(581, __c18, 5)),
+          userOwnedStorage: S.optional(__S(583, __c18, 7)),
+          amlWorkspace: S.optional(__S(582, __c18, 6)),
+          privateEndpointConnections: S.optional(__S(608, __c19, 0)),
           publicNetworkAccess: S.optional(S.String),
-          apiProperties: S.optional(__S(67, __c8, 3)),
+          apiProperties: S.optional(__S(584, __c18, 8)),
           dateCreated: S.optional(S.String),
-          callRateLimit: S.optional(__S(91, __c11, 3)),
+          callRateLimit: S.optional(__S(484, __c15, 4)),
           dynamicThrottlingEnabled: S.optional(S.Boolean),
           storedCompletionsDisabled: S.optional(S.Boolean),
           a365LoggingEnabled: S.optional(S.Boolean),
-          quotaLimit: S.optional(__S(91, __c11, 3)),
+          quotaLimit: S.optional(__S(484, __c15, 4)),
           restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(__S(1, __c0, 1)),
+          allowedFqdnList: S.optional(__S(160, __c5, 0)),
           disableLocalAuth: S.optional(S.Boolean),
-          endpoints: S.optional(__S(0, __c0, 0)),
+          endpoints: S.optional(__S(64, __c2, 0)),
           restore: S.optional(S.Boolean),
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          locations: S.optional(__S(70, __c8, 6)),
-          commitmentPlanAssociations: S.optional(__S(93, __c11, 5)),
-          abusePenalty: S.optional(__S(94, __c11, 6)),
-          raiMonitorConfig: S.optional(__S(71, __c8, 7)),
-          networkInjections: S.optional(__S(73, __c9, 1)),
+          locations: S.optional(__S(587, __c18, 11)),
+          commitmentPlanAssociations: S.optional(__S(595, __c18, 19)),
+          abusePenalty: S.optional(__S(596, __c18, 20)),
+          raiMonitorConfig: S.optional(__S(588, __c18, 12)),
+          networkInjections: S.optional(__S(590, __c18, 14)),
           allowProjectManagement: S.optional(S.Boolean),
           defaultProject: S.optional(S.String),
-          associatedProjects: S.optional(__S(1, __c0, 1)),
+          associatedProjects: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "AccountProperties" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, __S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          principalId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "Identity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(95, __c11, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({ identifier: "CreateAccountResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authType: S.String,
-          category: S.optional(S.String),
-          error: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(__S(0, __c0, 0)),
-          peRequirement: S.optional(S.String),
-          peStatus: S.optional(S.String),
-          sharedUserList: S.optional(__S(1, __c0, 1)),
-          target: S.optional(S.String),
-          useWorkspaceManagedIdentity: S.optional(S.Boolean),
-          credentials: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ConnectionPropertiesV2Input",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          properties: __S(100, __c12, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authType: S.String,
-          category: S.optional(S.String),
-          createdByWorkspaceArmId: S.optional(S.String),
-          error: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          group: S.optional(S.String),
-          isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(__S(0, __c0, 0)),
-          peRequirement: S.optional(S.String),
-          peStatus: S.optional(S.String),
-          sharedUserList: S.optional(__S(1, __c0, 1)),
-          target: S.optional(S.String),
-          useWorkspaceManagedIdentity: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ConnectionPropertiesV2" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(102, __c12, 6),
-        }),
-      ).annotate({
-        identifier: "CreateAccountConnectionResponse",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectPropertiesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104, __c13, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(77, __c9, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          endpoints: S.optional(__S(0, __c0, 0)),
-          isDefault: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ProjectProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(106, __c13, 2)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({ identifier: "CreateProjectResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          properties: __S(100, __c12, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefenderForAISettingProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          defenderForAISettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(109, __c13, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DefenderForAISettingsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(109, __c13, 5)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "DefenderForAISettingsCreateOrUpdateResponse",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAccountRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          capabilityHostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountCapabilityHostRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccountCapabilityHostResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccountConnectionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgentApplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          appName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgentDeploymentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommitmentPlanRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-          commitmentPlanAssociationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommitmentPlanAssociationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommitmentPlanPlanRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeploymentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          encryptionScopeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEncryptionScopeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managedNetworkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedNetworkSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managedNetworkName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOutboundRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          capabilityHostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectCapabilityHostRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiBlocklistName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRaiBlocklistRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiBlocklistName: S.String.pipe(T.Label()),
-          raiBlocklistItemName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRaiBlocklistItemRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiBlocklistName: S.String.pipe(T.Label()),
-          body: __S(1, __c0, 1).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/deleteRaiBlocklistItems",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRaiBlocklistItemBatchRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          safetyProviderName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRaiExternalSafetyProviderRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRaiPolicyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiToolConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRaiToolLabelRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiTopicName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRaiTopicRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          raiPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSubscriptionRaiPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scaleType: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DeploymentScaleSettingsInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          designatedCapacity: S.optional(S.Number),
-          priority: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DeploymentCapacitySettings",
-      });
-    case 4:
-      return S.Array(__S(33, __c4, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          models: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({ identifier: "DeploymentRouting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(__S(33, __c4, 1)),
-          contextCacheContainerId: S.optional(S.String),
-          scaleSettings: S.optional(__S(138, __c17, 2)),
-          raiPolicyName: S.optional(S.String),
-          versionUpgradeOption: S.optional(S.String),
-          currentCapacity: S.optional(S.Number),
-          capacitySettings: S.optional(__S(139, __c17, 3)),
-          parentDeploymentName: S.optional(S.String),
-          spilloverDeploymentName: S.optional(S.String),
-          serviceTier: S.optional(S.NullOr(S.String)),
-          deploymentState: S.optional(S.NullOr(S.String)),
-          routing: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({
-        identifier: "DeploymentPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(142, __c17, 6)),
-          sku: S.optional(__S(48, __c6, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeploymentsCreateOrUpdateRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scaleType: S.optional(S.String),
-          capacity: S.optional(S.Number),
-          activeCapacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeploymentScaleSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          model: S.optional(__S(33, __c4, 1)),
-          contextCacheContainerId: S.optional(S.String),
-          scaleSettings: S.optional(__S(144, __c18, 0)),
-          capabilities: S.optional(__S(0, __c0, 0)),
-          raiPolicyName: S.optional(S.String),
-          callRateLimit: S.optional(__S(91, __c11, 3)),
-          rateLimits: S.optional(__S(90, __c11, 2)),
-          versionUpgradeOption: S.optional(S.String),
-          dynamicThrottlingEnabled: S.optional(S.Boolean),
-          currentCapacity: S.optional(S.Number),
-          capacitySettings: S.optional(__S(139, __c17, 3)),
-          parentDeploymentName: S.optional(S.String),
-          spilloverDeploymentName: S.optional(S.String),
-          serviceTier: S.optional(S.NullOr(S.String)),
-          deploymentState: S.optional(S.NullOr(S.String)),
-          routing: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({ identifier: "DeploymentProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(145, __c18, 1)),
-          sku: S.optional(__S(48, __c6, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "DeploymentsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableAgentApplicationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableAgentApplicationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyVaultProperties: S.optional(__S(63, __c7, 7)),
-          keySource: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(149, __c18, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EncryptionScopesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keyVaultProperties: S.optional(__S(63, __c7, 7)),
-          keySource: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopeProperties",
-      });
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(151, __c18, 7)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccountRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          capabilityHostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountCapabilityHostRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentApplicationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          appName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentDeploymentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCommitmentPlanRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-          commitmentPlanAssociationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCommitmentPlanAssociationRequest",
-      });
+      return S.Array(__S(547, __c17, 3));
   }
 }
 function __c20(j: number): any {
@@ -10017,2003 +8553,24 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCommitmentPlanPlanRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          defenderForAISettingName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDefenderForAISettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDeletedAccountRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(95, __c11, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(597, __c18, 21)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(98, __c12, 2)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          identity: S.optional(__S(418, __c13, 2)),
         }),
-      ).annotate({
-        identifier: "GetDeletedAccountResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDeploymentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(145, __c18, 1)),
-          sku: S.optional(__S(48, __c6, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetDeploymentResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          encryptionScopeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEncryptionScopeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managedNetworkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetManagedNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateAccountResponse" });
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.String,
-          errorInformation: S.optional(S.String),
-          parentRuleNames: S.optional(__S(1, __c0, 1)),
-          destination: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "OutboundRule" });
-    case 1:
-      return S.Record(S.String, __S(168, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedNetworkProvisionStatus",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isolationMode: S.optional(S.String),
-          networkId: S.optional(S.String),
-          outboundRules: S.optional(S.NullOr(__S(169, __c21, 1))),
-          status: S.optional(__S(170, __c21, 2)),
-          firewallSku: S.optional(S.String),
-          managedNetworkKind: S.optional(S.String),
-          firewallPublicIpAddress: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(S.String),
-          changeableIsolationModes: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({ identifier: "ManagedNetworkSettingsEx" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          managedNetwork: S.optional(__S(172, __c21, 4)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedNetworkSettingsProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(173, __c21, 5)),
-        }),
-      ).annotate({
-        identifier: "GetManagedNetworkSettingsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          nspConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNetworkSecurityPerimeterConfigurationRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem",
-      });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          perimeterGuid: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkSecurityPerimeter" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(176, __c22, 0)),
-          subscriptions: S.optional(__S(178, __c22, 2)),
-          networkSecurityPerimeters: S.optional(__S(180, __c22, 4)),
-          fullyQualifiedDomainNames: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterAccessRuleProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterAccessRule",
-      });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          issueType: S.optional(S.String),
-          severity: S.optional(S.String),
-          description: S.optional(S.String),
-          suggestedResourceIds: S.optional(__S(1, __c0, 1)),
-          suggestedAccessRules: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({
-        identifier: "ProvisioningIssueProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "ProvisioningIssue" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          accessMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterConfigurationAssociationInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(__S(183, __c22, 7)),
-          diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterProfileInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(186, __c23, 2)),
-          networkSecurityPerimeter: S.optional(__S(179, __c22, 3)),
-          resourceAssociation: S.optional(__S(187, __c23, 3)),
-          profile: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterConfigurationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(189, __c23, 5)),
-        }),
-      ).annotate({
-        identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managedNetworkName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({ identifier: "GetOutboundRuleRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(168, __c21, 0),
-        }),
-      ).annotate({ identifier: "GetOutboundRuleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetProjectRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          capabilityHostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectCapabilityHostRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aiServicesConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          vectorStoreConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          storageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          threadStorageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectCapabilityHostProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(196, __c24, 4),
-        }),
-      ).annotate({
-        identifier: "GetProjectCapabilityHostResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetQuotaTierRequest" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextTierName: S.optional(S.NullOr(S.String)),
-          upgradeAvailabilityStatus: S.optional(S.String),
-          upgradeApplicableDate: S.optional(S.NullOr(S.String)),
-          upgradeUnavailabilityReason: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "QuotaTierUpgradeEligibilityInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentTierName: S.optional(S.String),
-          tierUpgradePolicy: S.optional(S.String),
-          assignmentDate: S.optional(S.String),
-          tierUpgradeEligibilityInfo: S.optional(S.NullOr(__S(200, __c25, 0))),
-        }),
-      ).annotate({ identifier: "QuotaTierProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({ identifier: "GetQuotaTierResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiBlocklistName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRaiBlocklistRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(11, __c1, 3)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetRaiBlocklistResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiBlocklistName: S.String.pipe(T.Label()),
-          raiBlocklistItemName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRaiBlocklistItemRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(7, __c0, 7)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetRaiBlocklistItemResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          filterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters/{filterName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRaiContentFilterRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isMultiLevelFilter: S.optional(S.Boolean),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RaiContentFilterProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "GetRaiContentFilterResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          safetyProviderName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRaiExternalSafetyProviderRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          providerId: S.optional(S.String),
-          providerName: S.optional(S.String),
-          mode: S.optional(S.String),
-          url: S.optional(S.String),
-          secretName: S.optional(S.String),
-          managedIdentity: S.optional(S.String),
-          keyVaultUri: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RaiExternalSafetyProviderSchemaProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(211, __c26, 3)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetRaiExternalSafetyProviderResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRaiPolicyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          severityThreshold: S.optional(S.String),
-          blocking: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiPolicyContentFilter" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          blocklistName: S.optional(S.String),
-          blocking: S.optional(S.Boolean),
-          source: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomBlocklistConfig" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          safetyProviderName: S.optional(S.String),
-          blocking: S.optional(S.Boolean),
-          source: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SafetyProviderConfig" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiEgressRuleMatch" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          secretId: S.String,
-          secretKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiEgressSecretRef" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String,
-          format: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RaiEgressManagedIdentityRef",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          secretRef: S.optional(__S(221, __c27, 5)),
-          managedIdentityRef: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({ identifier: "RaiEgressHeaderValueRef" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.String,
-          name: S.String,
-          value: S.optional(S.String),
-          valueRef: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({ identifier: "RaiEgressHeaderTransform" });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scheme: S.optional(S.String),
-          host: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiEgressRewriteTarget" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionType: S.String,
-          headers: S.optional(__S(225, __c28, 1)),
-          rewrite: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({ identifier: "RaiEgressRuleAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          ruleType: S.String,
-          match: S.optional(__S(220, __c27, 4)),
-          action: __S(227, __c28, 3),
-        }),
-      ).annotate({ identifier: "RaiEgressRule" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          description: S.optional(S.String),
-          rules: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({ identifier: "RaiEgressPolicyConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          mode: S.optional(S.String),
-          basePolicyName: S.optional(S.String),
-          contentFilters: S.optional(__S(215, __c26, 7)),
-          customBlocklists: S.optional(__S(217, __c27, 1)),
-          safetyProviders: S.optional(__S(219, __c27, 3)),
-          egressPolicy: S.optional(__S(230, __c28, 6)),
-        }),
-      ).annotate({ identifier: "RaiPolicyProperties" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(231, __c28, 7)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetRaiPolicyResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiToolConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRaiToolLabelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          labelValues: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "RaiToolLabelPropertiesAccountScope",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String,
-          labelValues: __S(0, __c0, 0),
-        }),
-      ).annotate({
-        identifier: "RaiToolLabelPropertiesProjectScopesItem",
-      });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          toolConnectionName: S.String,
-          accountScope: S.optional(__S(234, __c29, 2)),
-          projectScopes: S.optional(__S(236, __c29, 4)),
-        }),
-      ).annotate({ identifier: "RaiToolLabelProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(237, __c29, 5)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetRaiToolLabelResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          raiTopicName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRaiTopicRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          topicId: S.optional(S.String),
-          topicName: S.optional(S.String),
-          description: S.optional(S.String),
-          sampleBlobUrl: S.optional(S.String),
-          status: S.optional(S.String),
-          failedReason: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RaiTopicProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(240, __c30, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GetRaiTopicResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          raiPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSubscriptionRaiPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(231, __c28, 7)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetSubscriptionRaiPolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountByResourceGroupRequest",
-      });
-    case 5:
-      return S.Array(__S(99, __c12, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(245, __c30, 5)),
-        }),
-      ).annotate({ identifier: "AccountListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountCapabilityHostsRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "CapabilityHost" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(249, __c31, 1)),
-        }),
-      ).annotate({
-        identifier: "CapabilityHostResourceArmPaginatedResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          target: S.optional(S.String.pipe(T.Query())),
-          category: S.optional(S.String.pipe(T.Query())),
-          includeAll: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountConnectionsRequest",
-      });
-    case 4:
-      return S.Array(__S(103, __c12, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({
-        identifier: "ConnectionPropertiesV2BasicResourceArmPaginatedResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountKeysRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key1: S.optional(S.String),
-          key2: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiKeys" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountModelsRequest" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          minimum: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          step: S.optional(S.Number),
-          default: S.optional(S.Number),
-          allowedValues: S.optional(__S(257, __c32, 1)),
-        }),
-      ).annotate({ identifier: "CapacityConfig" });
-    case 3:
-      return S.Array(__S(91, __c11, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          meterId: S.optional(S.String),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingMeterInfo" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          usageName: S.optional(S.String),
-          deprecationDate: S.optional(S.String),
-          capacity: S.optional(__S(258, __c32, 2)),
-          rateLimits: S.optional(__S(259, __c32, 3)),
-          cost: S.optional(__S(261, __c32, 5)),
-        }),
-      ).annotate({ identifier: "ModelSku" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fineTune: S.optional(S.String),
-          inference: S.optional(S.String),
-          deprecationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModelDeprecationInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targetModelName: S.optional(S.String),
-          targetModelVersion: S.optional(S.String),
-          autoUpgradeStartDate: S.optional(S.String),
-          upgradeOnExpiryLeadTimeDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReplacementConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          format: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          source: S.optional(S.String),
-          sourceAccount: S.optional(S.String),
-          callRateLimit: S.optional(__S(91, __c11, 3)),
-          baseModel: S.optional(__S(33, __c4, 1)),
-          isDefaultVersion: S.optional(S.Boolean),
-          skus: S.optional(__S(263, __c32, 7)),
-          maxCapacity: S.optional(S.Number),
-          capabilities: S.optional(__S(0, __c0, 0)),
-          finetuneCapabilities: S.optional(__S(0, __c0, 0)),
-          deprecation: S.optional(__S(264, __c33, 0)),
-          replacementConfig: S.optional(__S(265, __c33, 1)),
-          modelCatalogAssetId: S.optional(S.String),
-          lifecycleStatus: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AccountModel" });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(267, __c33, 3)),
-        }),
-      ).annotate({ identifier: "AccountModelListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountSkusRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "AccountSku" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({ identifier: "AccountSkuListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/usages",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountUsagesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricName" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          name: S.optional(__S(275, __c34, 3)),
-          quotaPeriod: S.optional(S.String),
-          limit: S.optional(S.Number),
-          currentValue: S.optional(S.Number),
-          nextResetTime: S.optional(S.String),
-          status: S.optional(S.String),
-          scopeType: S.optional(S.NullOr(S.String)),
-          scopeId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Usage" });
-    case 5:
-      return S.Array(__S(276, __c34, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(277, __c34, 5)),
-        }),
-      ).annotate({ identifier: "UsageListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentApplicationAgentsRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(13, __c1, 5),
-        }),
-      ).annotate({ identifier: "AgentReference" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(281, __c35, 1))),
-        }),
-      ).annotate({
-        identifier: "AgentReferenceResourceArmPaginatedResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          count: S.optional(S.Number.pipe(T.Query())),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          names: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          searchText: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentApplicationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "AgentApplication" });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "AgentApplicationResourceArmPaginatedResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          appName: S.String.pipe(T.Label()),
-          count: S.optional(S.Number.pipe(T.Query())),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          names: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentDeploymentsRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(31, __c3, 7),
-        }),
-      ).annotate({ identifier: "AgentDeployment" });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(289, __c36, 1)),
-        }),
-      ).annotate({
-        identifier: "AgentDeploymentResourceArmPaginatedResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          commitmentPlanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommitmentPlanAssociationsRequest",
-      });
-    case 4:
-      return S.Array(__S(56, __c7, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(292, __c36, 4)),
-        }),
-      ).annotate({
-        identifier: "CommitmentPlanAccountAssociationListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommitmentPlanPlansByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(52, __c6, 4)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "CommitmentPlan" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(295, __c36, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(296, __c37, 0)),
-        }),
-      ).annotate({ identifier: "CommitmentPlanListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommitmentPlanPlansBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommitmentPlansRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommitmentTiersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          commitmentMeterId: S.optional(S.String),
-          overageMeterId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommitmentCost" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          skuName: S.optional(S.String),
-          hostingModel: S.optional(S.String),
-          planType: S.optional(S.String),
-          tier: S.optional(S.String),
-          maxCount: S.optional(S.Number),
-          quota: S.optional(__S(50, __c6, 2)),
-          cost: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "CommitmentTier" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(303, __c37, 7)),
-        }),
-      ).annotate({ identifier: "CommitmentTierListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDefenderForAISettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(109, __c13, 5)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DefenderForAISetting" });
-    case 3:
-      return S.Array(__S(306, __c38, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({
-        identifier: "DefenderForAISettingResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDeletedAccountsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDeploymentsRequest" });
-    case 7:
-      return S.Array(__S(165, __c20, 5));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(311, __c38, 7)),
-        }),
-      ).annotate({ identifier: "DeploymentListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDeploymentSkusRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-          capacity: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "SkuResource" });
-    case 3:
-      return S.Array(__S(314, __c39, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(315, __c39, 3)),
-        }),
-      ).annotate({ identifier: "DeploymentSkuListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEncryptionScopesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(151, __c18, 7)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "EncryptionScope" });
-    case 7:
-      return S.Array(__S(318, __c39, 6));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(319, __c39, 7)),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopeListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          modelFormat: S.String.pipe(T.Query()),
-          modelName: S.String.pipe(T.Query()),
-          modelVersion: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLocationBasedModelCapacitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(__S(33, __c4, 1)),
-          skuName: S.optional(S.String),
-          availableCapacity: S.optional(S.Number),
-          availableFinetuneCapacity: S.optional(S.Number),
-          scopeId: S.optional(S.NullOr(S.String)),
-          scopeType: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ModelSkuCapacityProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(322, __c40, 2)),
-        }),
-      ).annotate({
-        identifier: "ModelCapacityListResultValueItem",
-      });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(324, __c40, 4)),
-        }),
-      ).annotate({ identifier: "ModelCapacityListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedNetworkSettingsRequest",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(327, __c40, 7)),
-        }),
-      ).annotate({ identifier: "ManagedNetworkListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          modelFormat: S.String.pipe(T.Query()),
-          modelName: S.String.pipe(T.Query()),
-          modelVersion: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListModelCapacitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListModelsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(__S(266, __c33, 2)),
-          kind: S.optional(S.String),
-          skuName: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Model" });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(332, __c41, 4)),
-        }),
-      ).annotate({ identifier: "ModelListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
-      });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(335, __c41, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterConfigurationList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.CognitiveServices/operations",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(338, __c42, 2)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(340, __c42, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managedNetworkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({ identifier: "ListOutboundRuleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(168, __c21, 0),
-        }),
-      ).annotate({
-        identifier: "OutboundRuleBasicResource",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(344, __c43, 0)),
-        }),
-      ).annotate({ identifier: "OutboundRuleListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12030,42 +8587,42 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1, __c0, 1)),
-          requiredZoneNames: S.optional(__S(1, __c0, 1)),
+          requiredMembers: S.optional(__S(160, __c5, 0)),
+          requiredZoneNames: S.optional(__S(160, __c5, 0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(349, __c43, 5)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 7:
-      return S.Array(__S(350, __c43, 6));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(674, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(351, __c43, 7)),
+          value: S.optional(__S(675, __c21, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12083,28 +8640,32 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListProjectCapabilityHostsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: __S(196, __c24, 4),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(4768, __c149, 0),
         }),
       ).annotate({ identifier: "ProjectCapabilityHost" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
     case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(355, __c44, 3)),
+          value: S.optional(__S(706, __c22, 2)),
         }),
       ).annotate({
         identifier: "ProjectCapabilityHostResourceArmPaginatedResult",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12125,7 +8686,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListProjectConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12140,20 +8705,20 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 7:
-      return S.Array(__S(107, __c13, 3));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1569, __c49, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(359, __c44, 7)),
+          value: S.optional(__S(769, __c24, 1)),
         }),
       ).annotate({ identifier: "ProjectListResult" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12168,16 +8733,20 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListQuotaTierBySubscriptionRequest",
       });
+    case 1:
+      return S.Array(__S(4928, __c154, 0));
     case 2:
-      return S.Array(__S(202, __c25, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(362, __c45, 2)),
+          value: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "QuotaTierListResult" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12195,30 +8764,30 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListRaiBlocklistItemsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(7, __c0, 7)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "RaiBlocklistItem" });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(366, __c45, 6)),
+          value: S.optional(__S(834, __c26, 2)),
         }),
       ).annotate({ identifier: "RaiBlockListItemsResult" });
   }
 }
-function __c46(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12236,15 +8805,19 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiBlocklistsRequest" });
     case 1:
-      return S.Array(__S(204, __c25, 4));
+      return S.Array(__S(4992, __c156, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(369, __c46, 1)),
+          value: S.optional(__S(865, __c27, 1)),
         }),
       ).annotate({ identifier: "RaiBlockListResult" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12260,28 +8833,32 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListRaiContentFiltersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(208, __c26, 0)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5120, __c160, 0)),
         }),
       ).annotate({ identifier: "RaiContentFilter" });
-    case 5:
-      return S.Array(__S(372, __c46, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(897, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(373, __c46, 5)),
+          value: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({
         identifier: "RaiContentFilterListResult",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12296,22 +8873,22 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListRaiExternalSafetyProvidersRequest",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(212, __c26, 4));
     case 1:
+      return S.Array(__S(5185, __c162, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(376, __c47, 0)),
+          value: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({
         identifier: "RaiExternalSafetyProviderResult",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12326,16 +8903,100 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRaiPoliciesRequest" });
-    case 3:
-      return S.Array(__S(232, __c29, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(5248, __c164, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(379, __c47, 3)),
+          value: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "RaiPolicyListResult" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          properties: __S(1024, __c32, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountConnectionRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authType: S.String,
+          category: S.optional(S.String),
+          error: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          isSharedToAll: S.optional(S.Boolean),
+          metadata: S.optional(__S(64, __c2, 0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(160, __c5, 0)),
+          target: S.optional(S.String),
+          useWorkspaceManagedIdentity: S.optional(S.Boolean),
+          credentials: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ConnectionPropertiesV2Input",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authType: S.String,
+          category: S.optional(S.String),
+          createdByWorkspaceArmId: S.optional(S.String),
+          error: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          group: S.optional(S.String),
+          isSharedToAll: S.optional(S.Boolean),
+          metadata: S.optional(__S(64, __c2, 0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(160, __c5, 0)),
+          target: S.optional(S.String),
+          useWorkspaceManagedIdentity: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ConnectionPropertiesV2" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(1056, __c33, 0),
+        }),
+      ).annotate({
+        identifier: "CreateAccountConnectionResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12350,18 +9011,18 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRaiToolLabelsRequest" });
-    case 6:
-      return S.Array(__S(238, __c29, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(5344, __c167, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(382, __c47, 6)),
+          value: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "RaiToolLabelResult" });
   }
 }
-function __c48(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12379,15 +9040,19 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiTopicsRequest" });
     case 1:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(5440, __c170, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(385, __c48, 1)),
+          value: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "RaiTopicResult" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12400,51 +9065,51 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListResourceSkusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(1, __c0, 1)),
-          zones: S.optional(__S(1, __c0, 1)),
+          locations: S.optional(__S(160, __c5, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(1, __c0, 1)),
-          restrictionInfo: S.optional(__S(388, __c48, 4)),
+          values: S.optional(__S(160, __c5, 0)),
+          restrictionInfo: S.optional(__S(1153, __c36, 1)),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
           tier: S.optional(S.String),
           kind: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-          restrictions: S.optional(__S(390, __c48, 6)),
+          locations: S.optional(__S(160, __c5, 0)),
+          restrictions: S.optional(__S(1155, __c36, 3)),
         }),
       ).annotate({ identifier: "ResourceSku" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(391, __c48, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(392, __c49, 0),
+          value: __S(1157, __c36, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12459,7 +9124,11 @@ function __c49(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12477,16 +9146,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationsReconcileRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.String,
-          destination: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "OutboundRuleInput" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12494,7 +9158,7 @@ function __c49(j: number): any {
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: __S(396, __c49, 4),
+          properties: __S(1280, __c40, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12506,40 +9170,31 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "OutboundRuleCreateOrUpdateRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(396, __c49, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isolationMode: S.optional(S.String),
-          outboundRules: S.optional(S.NullOr(__S(398, __c49, 6))),
-          status: S.optional(__S(170, __c21, 2)),
-          firewallSku: S.optional(S.String),
-          managedNetworkKind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedNetworkSettingsExInput",
-      });
   }
 }
-function __c50(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedNetwork: S.optional(__S(399, __c49, 7)),
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
+          destination: S.optional(S.Unknown),
         }),
-      ).annotate({
-        identifier: "ManagedNetworkSettingsPropertiesInput",
-      });
-    case 1:
+      ).annotate({ identifier: "OutboundRuleInput" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(400, __c50, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12551,7 +9206,41 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PatchManagedNetworkSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1280, __c40, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isolationMode: S.optional(S.String),
+          outboundRules: S.optional(S.NullOr(__S(1344, __c42, 0))),
+          status: S.optional(__S(4448, __c139, 0)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedNetworkSettingsExInput",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managedNetwork: S.optional(__S(1345, __c42, 1)),
+        }),
+      ).annotate({
+        identifier: "ManagedNetworkSettingsPropertiesInput",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12567,14 +9256,18 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PauseDeploymentRequest" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(399, __c49, 7)),
+          properties: S.optional(__S(1345, __c42, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12584,24 +9277,28 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostOutboundRuleRequest" });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(75, __c9, 3)),
-          privateLinkServiceConnectionState: __S(83, __c10, 3),
-          groupIds: S.optional(__S(1, __c0, 1)),
+          privateEndpoint: S.optional(__S(384, __c12, 0)),
+          privateLinkServiceConnectionState: __S(545, __c17, 1),
+          groupIds: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(404, __c50, 4)),
+          properties: S.optional(__S(1472, __c46, 0)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12614,18 +9311,85 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          aiServicesConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          vectorStoreConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          storageConnections: S.optional(S.NullOr(__S(1, __c0, 1))),
-          threadStorageConnections: S.optional(S.NullOr(__S(176, __c22, 0))),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1536, __c48, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(353, __c11, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectPropertiesInput" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          endpoints: S.optional(__S(64, __c2, 0)),
+          isDefault: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProjectProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1568, __c49, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "CreateProjectResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aiServicesConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          storageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          threadStorageConnections: S.optional(S.NullOr(__S(4576, __c143, 0))),
         }),
       ).annotate({
         identifier: "ProjectCapabilityHostPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12633,7 +9397,7 @@ function __c50(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           capabilityHostName: S.String.pipe(T.Label()),
-          properties: __S(406, __c50, 6),
+          properties: __S(1600, __c50, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12667,7 +9431,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ProvisionManagedNetworkProvisionManagedNetworkRequest",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12685,14 +9453,18 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PurgeDeletedAccountRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(400, __c50, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12704,18 +9476,16 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PutManagedNetworkSettingsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tierUpgradePolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaTierPropertiesInput" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           default: S.String.pipe(T.Label()),
-          properties: S.optional(__S(411, __c51, 3)),
+          properties: S.optional(__S(1760, __c55, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12727,19 +9497,33 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "QuotaTiersCreateOrUpdateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(201, __c25, 1)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(4897, __c153, 1)),
         }),
       ).annotate({
         identifier: "QuotaTiersCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tierUpgradePolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaTierPropertiesInput" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12747,8 +9531,8 @@ function __c51(j: number): any {
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
           raiBlocklistItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12760,15 +9544,19 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "RaiBlocklistItemsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(256, __c8, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12782,7 +9570,28 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          safetyProviderName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1888, __c59, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "RaiExternalSafetyProviderCreateOrUpdateRequest",
+      });
+  }
+}
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12798,32 +9607,19 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RaiExternalSafetyProviderSchemaPropertiesInput",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          safetyProviderName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(416, __c52, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-            code: 200,
-            apiVersion: "2026-07-15-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "RaiExternalSafetyProviderCreateOrUpdateRequest",
-      });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(231, __c28, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(5297, __c165, 17)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12835,15 +9631,19 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RaiPoliciesCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiToolConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(237, __c29, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(5379, __c168, 3)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12855,29 +9655,57 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RaiToolLabelsCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(237, __c29, 5)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5379, __c168, 3)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "RaiToolLabelsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          properties: __S(1024, __c32, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectConnectionRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiTopicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(240, __c30, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(5472, __c171, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12889,21 +9717,25 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RaiTopicsCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5472, __c171, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "RaiTopicsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12923,7 +9755,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12941,7 +9773,11 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeDeploymentRequest" });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12961,7 +9797,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "StartAgentDeploymentRequest",
       });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12981,13 +9821,17 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "StopAgentDeploymentRequest",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           raiPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(231, __c28, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(5297, __c165, 17)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12999,14 +9843,18 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SubscriptionRaiPolicyCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           safetyProviderName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(416, __c52, 0)),
+          properties: S.optional(__S(1888, __c59, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13018,18 +9866,22 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "TestRaiExternalSafetyProviderCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(74, __c9, 2)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(448, __c14, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(77, __c9, 5)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          identity: S.optional(__S(353, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13039,14 +9891,18 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(100, __c12, 4)),
+          properties: S.optional(__S(1024, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13058,14 +9914,18 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "UpdateAccountConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13079,7 +9939,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13088,8 +9948,62 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           defenderForAISettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(109, __c13, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(2400, __c75, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DefenderForAISettingsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2400, __c75, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "DefenderForAISettingsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefenderForAISettingProperties",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          defenderForAISettingName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2400, __c75, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13101,15 +10015,19 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "UpdateDefenderForAISettingsRequest",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13119,17 +10037,21 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeploymentRequest" });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104, __c13, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(1536, __c48, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(77, __c9, 5)),
+          identity: S.optional(__S(353, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13139,7 +10061,11 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13147,7 +10073,7 @@ function __c54(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(100, __c12, 4)),
+          properties: S.optional(__S(1024, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13159,12 +10085,16 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "UpdateProjectConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           default: S.String.pipe(T.Label()),
-          properties: S.optional(__S(411, __c51, 3)),
+          properties: S.optional(__S(1760, __c55, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13176,7 +10106,3748 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UpdateQuotaTierRequest" });
   }
 }
-
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAccountRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          capabilityHostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountCapabilityHostRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccountCapabilityHostResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountConnectionRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccountConnectionResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgentApplicationRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          appName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgentDeploymentRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          type: S.String,
+          clientId: S.String,
+          principalId: S.String,
+          tenantId: S.String,
+          subject: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AssignedIdentityInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          displayName: S.optional(S.NullOr(S.String)),
+          baseUrl: S.optional(S.NullOr(S.String)),
+          agents: S.optional(S.NullOr(__S(2912, __c91, 0))),
+          agentIdentityBlueprint: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          defaultInstanceIdentity: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          authorizationPolicy: S.optional(S.NullOr(__S(2913, __c91, 1))),
+          trafficRoutingPolicy: S.optional(S.NullOr(__S(2916, __c91, 4))),
+        }),
+      ).annotate({
+        identifier: "AgenticApplicationPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: __S(2817, __c88, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "AgentApplicationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(2918, __c91, 6),
+        }),
+      ).annotate({
+        identifier: "AgentApplicationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentId: S.optional(S.NullOr(S.String)),
+          agentName: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AgentReferenceProperties" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2880, __c90, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ApplicationAuthorizationPolicy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          deploymentId: S.optional(S.NullOr(S.String)),
+          trafficPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TrafficRoutingRule" });
+    case 3:
+      return S.Array(__S(2914, __c91, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          rules: S.optional(S.NullOr(__S(2915, __c91, 3))),
+        }),
+      ).annotate({
+        identifier: "ApplicationTrafficRoutingPolicy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          type: S.String,
+          clientId: S.String,
+          principalId: S.String,
+          tenantId: S.String,
+          subject: S.optional(S.NullOr(S.String)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssignedIdentity" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          displayName: S.optional(S.NullOr(S.String)),
+          baseUrl: S.optional(S.NullOr(S.String)),
+          agents: S.optional(S.NullOr(__S(2912, __c91, 0))),
+          agentIdentityBlueprint: S.optional(S.NullOr(__S(2917, __c91, 5))),
+          defaultInstanceIdentity: S.optional(S.NullOr(__S(2917, __c91, 5))),
+          authorizationPolicy: S.optional(S.NullOr(__S(2913, __c91, 1))),
+          trafficRoutingPolicy: S.optional(S.NullOr(__S(2916, __c91, 4))),
+          provisioningState: S.optional(S.String),
+          isEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AgenticApplicationProperties",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommitmentPlanRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+          commitmentPlanAssociationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommitmentPlanAssociationRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommitmentPlanPlanRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          encryptionScopeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEncryptionScopeRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managedNetworkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedNetworkSettingsRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managedNetworkName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOutboundRuleRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          capabilityHostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectCapabilityHostRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          displayName: S.optional(S.NullOr(S.String)),
+          deploymentId: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(S.String)),
+          protocols: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          agents: S.optional(S.NullOr(__S(3331, __c104, 3))),
+          deploymentType: S.String,
+        }),
+      ).annotate({
+        identifier: "AgentDeploymentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          appName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+          properties: __S(3264, __c102, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "AgentDeploymentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(3332, __c104, 4),
+        }),
+      ).annotate({
+        identifier: "AgentDeploymentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          version: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AgentProtocolVersion" });
+    case 1:
+      return S.Array(__S(3328, __c104, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          agentId: S.optional(S.NullOr(S.String)),
+          agentName: S.optional(S.NullOr(S.String)),
+          agentVersion: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "VersionedAgentReference" });
+    case 3:
+      return S.Array(__S(3330, __c104, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(64, __c2, 0))),
+          displayName: S.optional(S.NullOr(S.String)),
+          deploymentId: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(S.String)),
+          protocols: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          agents: S.optional(S.NullOr(__S(3331, __c104, 3))),
+          deploymentType: S.String,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AgentDeploymentProperties",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectConnectionRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiBlocklistName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRaiBlocklistRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiBlocklistName: S.String.pipe(T.Label()),
+          raiBlocklistItemName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRaiBlocklistItemRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiBlocklistName: S.String.pipe(T.Label()),
+          body: __S(160, __c5, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/deleteRaiBlocklistItems",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRaiBlocklistItemBatchRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          safetyProviderName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRaiExternalSafetyProviderRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRaiPolicyRequest" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiToolConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRaiToolLabelRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiTopicName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRaiTopicRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          raiPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionRaiPolicyRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scaleType: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DeploymentScaleSettingsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(__S(3744, __c117, 0)),
+          contextCacheContainerId: S.optional(S.String),
+          scaleSettings: S.optional(__S(3648, __c114, 0)),
+          raiPolicyName: S.optional(S.String),
+          versionUpgradeOption: S.optional(S.String),
+          currentCapacity: S.optional(S.Number),
+          capacitySettings: S.optional(__S(3680, __c115, 0)),
+          parentDeploymentName: S.optional(S.String),
+          spilloverDeploymentName: S.optional(S.String),
+          serviceTier: S.optional(S.NullOr(S.String)),
+          deploymentState: S.optional(S.NullOr(S.String)),
+          routing: S.optional(__S(3682, __c115, 2)),
+        }),
+      ).annotate({
+        identifier: "DeploymentPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3649, __c114, 1)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeploymentsCreateOrUpdateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(3684, __c115, 4)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "DeploymentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          designatedCapacity: S.optional(S.Number),
+          priority: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DeploymentCapacitySettings",
+      });
+    case 1:
+      return S.Array(__S(3744, __c117, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          models: S.optional(__S(3681, __c115, 1)),
+        }),
+      ).annotate({ identifier: "DeploymentRouting" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scaleType: S.optional(S.String),
+          capacity: S.optional(S.Number),
+          activeCapacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeploymentScaleSettings" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          model: S.optional(__S(3744, __c117, 0)),
+          contextCacheContainerId: S.optional(S.String),
+          scaleSettings: S.optional(__S(3683, __c115, 3)),
+          capabilities: S.optional(__S(64, __c2, 0)),
+          raiPolicyName: S.optional(S.String),
+          callRateLimit: S.optional(__S(484, __c15, 4)),
+          rateLimits: S.optional(__S(483, __c15, 3)),
+          versionUpgradeOption: S.optional(S.String),
+          dynamicThrottlingEnabled: S.optional(S.Boolean),
+          currentCapacity: S.optional(S.Number),
+          capacitySettings: S.optional(__S(3680, __c115, 0)),
+          parentDeploymentName: S.optional(S.String),
+          spilloverDeploymentName: S.optional(S.String),
+          serviceTier: S.optional(S.NullOr(S.String)),
+          deploymentState: S.optional(S.NullOr(S.String)),
+          routing: S.optional(__S(3682, __c115, 2)),
+        }),
+      ).annotate({ identifier: "DeploymentProperties" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avgPromptTokens: S.optional(S.Number),
+          avgGeneratedTokens: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ModelCapacityCalculatorWorkloadRequestParam",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestPerMinute: S.optional(S.Number),
+          requestParameters: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({
+        identifier: "ModelCapacityCalculatorWorkload",
+      });
+    case 2:
+      return S.Array(__S(3713, __c116, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          model: S.optional(__S(3744, __c117, 0)),
+          skuName: S.optional(S.String),
+          workloads: S.optional(__S(3714, __c116, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CalculateModelCapacityRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+          deployableValue: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CalculateModelCapacityResultEstimatedCapacity",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(__S(3744, __c117, 0)),
+          skuName: S.optional(S.String),
+          estimatedCapacity: S.optional(__S(3716, __c116, 4)),
+        }),
+      ).annotate({
+        identifier: "CalculateModelCapacityResult",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          format: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          source: S.optional(S.String),
+          sourceAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentModel" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableAgentApplicationRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableAgentApplicationRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyVaultProperties: S.optional(__S(512, __c16, 0)),
+          keySource: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          encryptionScopeName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3840, __c120, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EncryptionScopesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(3904, __c122, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyVaultProperties: S.optional(__S(512, __c16, 0)),
+          keySource: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopeProperties",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccountRequest" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          capabilityHostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountCapabilityHostRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountConnectionRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentApplicationRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          appName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentDeploymentRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCommitmentPlanRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+          commitmentPlanAssociationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCommitmentPlanAssociationRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          subdomainName: S.String,
+          type: S.String,
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckDomainAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isSubdomainAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          subdomainName: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainAvailability" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCommitmentPlanPlanRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          defenderForAISettingName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDefenderForAISettingsRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDeletedAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(597, __c18, 21)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+          identity: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({
+        identifier: "GetDeletedAccountResponse",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDeploymentRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(3684, __c115, 4)),
+          sku: S.optional(__S(5568, __c174, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetDeploymentResponse" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          encryptionScopeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEncryptionScopeRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managedNetworkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetManagedNetworkSettingsRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
+          errorInformation: S.optional(S.String),
+          parentRuleNames: S.optional(__S(160, __c5, 0)),
+          destination: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "OutboundRule" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedNetworkProvisionStatus",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4416, __c138, 0));
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isolationMode: S.optional(S.String),
+          networkId: S.optional(S.String),
+          outboundRules: S.optional(S.NullOr(__S(4480, __c140, 0))),
+          status: S.optional(__S(4448, __c139, 0)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
+          firewallPublicIpAddress: S.optional(S.NullOr(S.String)),
+          provisioningState: S.optional(S.String),
+          changeableIsolationModes: S.optional(__S(4481, __c140, 1)),
+        }),
+      ).annotate({ identifier: "ManagedNetworkSettingsEx" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          managedNetwork: S.optional(__S(4482, __c140, 2)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedNetworkSettingsProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(4483, __c140, 3)),
+        }),
+      ).annotate({
+        identifier: "GetManagedNetworkSettingsResponse",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          nspConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNetworkSecurityPerimeterConfigurationRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem",
+      });
+    case 1:
+      return S.Array(__S(4544, __c142, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          perimeterGuid: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkSecurityPerimeter" });
+    case 3:
+      return S.Array(__S(4546, __c142, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          direction: S.optional(S.String),
+          addressPrefixes: S.optional(__S(4576, __c143, 0)),
+          subscriptions: S.optional(__S(4545, __c142, 1)),
+          networkSecurityPerimeters: S.optional(__S(4547, __c142, 3)),
+          fullyQualifiedDomainNames: S.optional(__S(4576, __c143, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterAccessRuleProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(4548, __c142, 4)),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterAccessRule",
+      });
+    case 6:
+      return S.Array(__S(4549, __c142, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          issueType: S.optional(S.String),
+          severity: S.optional(S.String),
+          description: S.optional(S.String),
+          suggestedResourceIds: S.optional(__S(160, __c5, 0)),
+          suggestedAccessRules: S.optional(__S(4550, __c142, 6)),
+        }),
+      ).annotate({
+        identifier: "ProvisioningIssueProperties",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(4551, __c142, 7)),
+        }),
+      ).annotate({ identifier: "ProvisioningIssue" });
+    case 9:
+      return S.Array(__S(4552, __c142, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          accessMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterConfigurationAssociationInfo",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          accessRulesVersion: S.optional(S.Number),
+          accessRules: S.optional(__S(4550, __c142, 6)),
+          diagnosticSettingsVersion: S.optional(S.Number),
+          enabledLogCategories: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterProfileInfo",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          provisioningIssues: S.optional(__S(4553, __c142, 9)),
+          networkSecurityPerimeter: S.optional(__S(4546, __c142, 2)),
+          resourceAssociation: S.optional(__S(4554, __c142, 10)),
+          profile: S.optional(__S(4555, __c142, 11)),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterConfigurationProperties",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(4556, __c142, 12)),
+        }),
+      ).annotate({
+        identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managedNetworkName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({ identifier: "GetOutboundRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(4416, __c138, 0),
+        }),
+      ).annotate({ identifier: "GetOutboundRuleResponse" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetProjectRequest" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          skus: __S(160, __c5, 0),
+          kind: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckSkuAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          type: S.optional(S.String),
+          skuName: S.optional(S.String),
+          skuAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SkuAvailability" });
+    case 2:
+      return S.Array(__S(4705, __c147, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4706, __c147, 2)),
+        }),
+      ).annotate({
+        identifier: "SkuAvailabilityListResult",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          capabilityHostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectCapabilityHostRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aiServicesConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          storageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          threadStorageConnections: S.optional(S.NullOr(__S(160, __c5, 0))),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProjectCapabilityHostProperties",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(4768, __c149, 0),
+        }),
+      ).annotate({
+        identifier: "GetProjectCapabilityHostResponse",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectConnectionRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          default: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetQuotaTierRequest" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextTierName: S.optional(S.NullOr(S.String)),
+          upgradeAvailabilityStatus: S.optional(S.String),
+          upgradeApplicableDate: S.optional(S.NullOr(S.String)),
+          upgradeUnavailabilityReason: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "QuotaTierUpgradeEligibilityInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currentTierName: S.optional(S.String),
+          tierUpgradePolicy: S.optional(S.String),
+          assignmentDate: S.optional(S.String),
+          tierUpgradeEligibilityInfo: S.optional(S.NullOr(__S(4896, __c153, 0))),
+        }),
+      ).annotate({ identifier: "QuotaTierProperties" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(4897, __c153, 1)),
+        }),
+      ).annotate({ identifier: "GetQuotaTierResponse" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiBlocklistName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRaiBlocklistRequest" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(256, __c8, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetRaiBlocklistResponse" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiBlocklistName: S.String.pipe(T.Label()),
+          raiBlocklistItemName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRaiBlocklistItemRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GetRaiBlocklistItemResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          filterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters/{filterName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRaiContentFilterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5120, __c160, 0)),
+        }),
+      ).annotate({
+        identifier: "GetRaiContentFilterResponse",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isMultiLevelFilter: S.optional(S.Boolean),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RaiContentFilterProperties",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          safetyProviderName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRaiExternalSafetyProviderRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          providerId: S.optional(S.String),
+          providerName: S.optional(S.String),
+          mode: S.optional(S.String),
+          url: S.optional(S.String),
+          secretName: S.optional(S.String),
+          managedIdentity: S.optional(S.String),
+          keyVaultUri: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RaiExternalSafetyProviderSchemaProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5184, __c162, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GetRaiExternalSafetyProviderResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRaiPolicyRequest" });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5297, __c165, 17)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetRaiPolicyResponse" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          severityThreshold: S.optional(S.String),
+          blocking: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiPolicyContentFilter" });
+    case 1:
+      return S.Array(__S(5280, __c165, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          blocklistName: S.optional(S.String),
+          blocking: S.optional(S.Boolean),
+          source: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomBlocklistConfig" });
+    case 3:
+      return S.Array(__S(5282, __c165, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          safetyProviderName: S.optional(S.String),
+          blocking: S.optional(S.Boolean),
+          source: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SafetyProviderConfig" });
+    case 5:
+      return S.Array(__S(5284, __c165, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiEgressRuleMatch" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          secretId: S.String,
+          secretKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiEgressSecretRef" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String,
+          format: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RaiEgressManagedIdentityRef",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          secretRef: S.optional(__S(5287, __c165, 7)),
+          managedIdentityRef: S.optional(__S(5288, __c165, 8)),
+        }),
+      ).annotate({ identifier: "RaiEgressHeaderValueRef" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.String,
+          name: S.String,
+          value: S.optional(S.String),
+          valueRef: S.optional(__S(5289, __c165, 9)),
+        }),
+      ).annotate({ identifier: "RaiEgressHeaderTransform" });
+    case 11:
+      return S.Array(__S(5290, __c165, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          scheme: S.optional(S.String),
+          host: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiEgressRewriteTarget" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          actionType: S.String,
+          headers: S.optional(__S(5291, __c165, 11)),
+          rewrite: S.optional(__S(5292, __c165, 12)),
+        }),
+      ).annotate({ identifier: "RaiEgressRuleAction" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          ruleType: S.String,
+          match: S.optional(__S(5286, __c165, 6)),
+          action: __S(5293, __c165, 13),
+        }),
+      ).annotate({ identifier: "RaiEgressRule" });
+    case 15:
+      return S.Array(__S(5294, __c165, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          description: S.optional(S.String),
+          rules: S.optional(__S(5295, __c165, 15)),
+        }),
+      ).annotate({ identifier: "RaiEgressPolicyConfig" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
+          basePolicyName: S.optional(S.String),
+          contentFilters: S.optional(__S(5281, __c165, 1)),
+          customBlocklists: S.optional(__S(5283, __c165, 3)),
+          safetyProviders: S.optional(__S(5285, __c165, 5)),
+          egressPolicy: S.optional(__S(5296, __c165, 16)),
+        }),
+      ).annotate({ identifier: "RaiPolicyProperties" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiToolConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRaiToolLabelRequest" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5379, __c168, 3)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetRaiToolLabelResponse" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labelValues: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "RaiToolLabelPropertiesAccountScope",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String,
+          labelValues: __S(64, __c2, 0),
+        }),
+      ).annotate({
+        identifier: "RaiToolLabelPropertiesProjectScopesItem",
+      });
+    case 2:
+      return S.Array(__S(5377, __c168, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          toolConnectionName: S.String,
+          accountScope: S.optional(__S(5376, __c168, 0)),
+          projectScopes: S.optional(__S(5378, __c168, 2)),
+        }),
+      ).annotate({ identifier: "RaiToolLabelProperties" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          raiTopicName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRaiTopicRequest" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5472, __c171, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetRaiTopicResponse" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topicId: S.optional(S.String),
+          topicName: S.optional(S.String),
+          description: S.optional(S.String),
+          sampleBlobUrl: S.optional(S.String),
+          status: S.optional(S.String),
+          failedReason: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RaiTopicProperties" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5537, __c173, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitmentPlansCreateOrUpdateRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tier: S.optional(S.String),
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CommitmentPeriodInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commitmentPlanGuid: S.optional(S.String),
+          hostingModel: S.optional(S.String),
+          planType: S.optional(S.String),
+          current: S.optional(__S(5536, __c173, 0)),
+          autoRenew: S.optional(S.Boolean),
+          next: S.optional(__S(5536, __c173, 0)),
+        }),
+      ).annotate({
+        identifier: "CommitmentPlanPropertiesInput",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          size: S.optional(S.String),
+          family: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5633, __c176, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+        }),
+      ).annotate({
+        identifier: "CommitmentPlansCreateOrUpdateResponse",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tier: S.optional(S.String),
+          count: S.optional(S.Number),
+          quota: S.optional(__S(5664, __c177, 0)),
+          startDate: S.optional(S.String),
+          endDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitmentPeriod" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          commitmentPlanGuid: S.optional(S.String),
+          hostingModel: S.optional(S.String),
+          planType: S.optional(S.String),
+          current: S.optional(__S(5632, __c176, 0)),
+          autoRenew: S.optional(S.Boolean),
+          next: S.optional(__S(5632, __c176, 0)),
+          last: S.optional(__S(5632, __c176, 0)),
+          provisioningIssues: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "CommitmentPlanProperties" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitmentQuota" });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          raiPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionRaiPolicyRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5297, __c165, 17)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSubscriptionRaiPolicyResponse",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountByResourceGroupRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c20, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(5792, __c181, 0)),
+        }),
+      ).annotate({ identifier: "AccountListResult" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountCapabilityHostsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(128, __c4, 0),
+        }),
+      ).annotate({ identifier: "CapabilityHost" });
+    case 2:
+      return S.Array(__S(5825, __c182, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.NullOr(S.String)),
+          value: S.optional(__S(5826, __c182, 2)),
+        }),
+      ).annotate({
+        identifier: "CapabilityHostResourceArmPaginatedResult",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          target: S.optional(S.String.pipe(T.Query())),
+          category: S.optional(S.String.pipe(T.Query())),
+          includeAll: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountConnectionsRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1057, __c33, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(5888, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectionPropertiesV2BasicResourceArmPaginatedResult",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountKeysRequest" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key1: S.optional(S.String),
+          key2: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiKeys" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountModelsRequest" });
+    case 1:
+      return S.Array(__S(6055, __c189, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(5985, __c187, 1)),
+        }),
+      ).annotate({ identifier: "AccountModelListResult" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minimum: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          step: S.optional(S.Number),
+          default: S.optional(S.Number),
+          allowedValues: S.optional(__S(6016, __c188, 0)),
+        }),
+      ).annotate({ identifier: "CapacityConfig" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(484, __c15, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          meterId: S.optional(S.String),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingMeterInfo" });
+    case 2:
+      return S.Array(__S(6049, __c189, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          usageName: S.optional(S.String),
+          deprecationDate: S.optional(S.String),
+          capacity: S.optional(__S(6017, __c188, 1)),
+          rateLimits: S.optional(__S(6048, __c189, 0)),
+          cost: S.optional(__S(6050, __c189, 2)),
+        }),
+      ).annotate({ identifier: "ModelSku" });
+    case 4:
+      return S.Array(__S(6051, __c189, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          fineTune: S.optional(S.String),
+          inference: S.optional(S.String),
+          deprecationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelDeprecationInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          targetModelName: S.optional(S.String),
+          targetModelVersion: S.optional(S.String),
+          autoUpgradeStartDate: S.optional(S.String),
+          upgradeOnExpiryLeadTimeDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReplacementConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          format: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          source: S.optional(S.String),
+          sourceAccount: S.optional(S.String),
+          callRateLimit: S.optional(__S(484, __c15, 4)),
+          baseModel: S.optional(__S(3744, __c117, 0)),
+          isDefaultVersion: S.optional(S.Boolean),
+          skus: S.optional(__S(6052, __c189, 4)),
+          maxCapacity: S.optional(S.Number),
+          capabilities: S.optional(__S(64, __c2, 0)),
+          finetuneCapabilities: S.optional(__S(64, __c2, 0)),
+          deprecation: S.optional(__S(6053, __c189, 5)),
+          replacementConfig: S.optional(__S(6054, __c189, 6)),
+          modelCatalogAssetId: S.optional(S.String),
+          lifecycleStatus: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "AccountModel" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountsRequest" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountSkusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+        }),
+      ).annotate({ identifier: "AccountSku" });
+    case 2:
+      return S.Array(__S(6113, __c191, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(6114, __c191, 2)),
+        }),
+      ).annotate({ identifier: "AccountSkuListResult" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/usages",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountUsagesRequest" });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricName" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          name: S.optional(__S(6176, __c193, 0)),
+          quotaPeriod: S.optional(S.String),
+          limit: S.optional(S.Number),
+          currentValue: S.optional(S.Number),
+          nextResetTime: S.optional(S.String),
+          status: S.optional(S.String),
+          scopeType: S.optional(S.NullOr(S.String)),
+          scopeId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 2:
+      return S.Array(__S(6177, __c193, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6178, __c193, 2)),
+        }),
+      ).annotate({ identifier: "UsageListResult" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentApplicationAgentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(2880, __c90, 0),
+        }),
+      ).annotate({ identifier: "AgentReference" });
+    case 2:
+      return S.Array(__S(6209, __c194, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(6210, __c194, 2))),
+        }),
+      ).annotate({
+        identifier: "AgentReferenceResourceArmPaginatedResult",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+          commitmentPlanAssociationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(6272, __c196, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitmentPlansCreateOrUpdateAssociationRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommitmentPlanAccountAssociationProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(6272, __c196, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "CommitmentPlansCreateOrUpdateAssociationResponse",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          count: S.optional(S.Number.pipe(T.Query())),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          names: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          searchText: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentApplicationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(2918, __c91, 6),
+        }),
+      ).annotate({ identifier: "AgentApplication" });
+    case 2:
+      return S.Array(__S(6305, __c197, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.NullOr(S.String)),
+          value: S.optional(__S(6306, __c197, 2)),
+        }),
+      ).annotate({
+        identifier: "AgentApplicationResourceArmPaginatedResult",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          appName: S.String.pipe(T.Label()),
+          count: S.optional(S.Number.pipe(T.Query())),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          names: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentDeploymentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(3332, __c104, 4),
+        }),
+      ).annotate({ identifier: "AgentDeployment" });
+    case 2:
+      return S.Array(__S(6337, __c198, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.NullOr(S.String)),
+          value: S.optional(__S(6338, __c198, 2)),
+        }),
+      ).annotate({
+        identifier: "AgentDeploymentResourceArmPaginatedResult",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommitmentPlanAssociationsRequest",
+      });
+    case 1:
+      return S.Array(__S(6273, __c196, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6369, __c199, 1)),
+        }),
+      ).annotate({
+        identifier: "CommitmentPlanAccountAssociationListResult",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommitmentPlanPlansByResourceGroupRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(5633, __c176, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+        }),
+      ).annotate({ identifier: "CommitmentPlan" });
+    case 1:
+      return S.Array(__S(6432, __c201, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6433, __c201, 1)),
+        }),
+      ).annotate({ identifier: "CommitmentPlanListResult" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommitmentPlanPlansBySubscriptionRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommitmentPlansRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommitmentTiersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commitmentMeterId: S.optional(S.String),
+          overageMeterId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitmentCost" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          skuName: S.optional(S.String),
+          hostingModel: S.optional(S.String),
+          planType: S.optional(S.String),
+          tier: S.optional(S.String),
+          maxCount: S.optional(S.Number),
+          quota: S.optional(__S(5664, __c177, 0)),
+          cost: S.optional(__S(6529, __c204, 1)),
+        }),
+      ).annotate({ identifier: "CommitmentTier" });
+    case 3:
+      return S.Array(__S(6530, __c204, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6531, __c204, 3)),
+        }),
+      ).annotate({ identifier: "CommitmentTierListResult" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDefenderForAISettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2400, __c75, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DefenderForAISetting" });
+    case 2:
+      return S.Array(__S(6561, __c205, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6562, __c205, 2)),
+        }),
+      ).annotate({
+        identifier: "DefenderForAISettingResult",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDeletedAccountsRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListDeploymentsRequest" });
+    case 1:
+      return S.Array(__S(4320, __c135, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6625, __c207, 1)),
+        }),
+      ).annotate({ identifier: "DeploymentListResult" });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          commitmentPlanName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5537, __c173, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitmentPlansCreateOrUpdatePlanRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDeploymentSkusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          sku: S.optional(__S(5568, __c174, 0)),
+          capacity: S.optional(__S(6017, __c188, 1)),
+        }),
+      ).annotate({ identifier: "SkuResource" });
+    case 2:
+      return S.Array(__S(6689, __c209, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6690, __c209, 2)),
+        }),
+      ).annotate({ identifier: "DeploymentSkuListResult" });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEncryptionScopesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(3904, __c122, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "EncryptionScope" });
+    case 2:
+      return S.Array(__S(6721, __c210, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6722, __c210, 2)),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopeListResult",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          modelFormat: S.String.pipe(T.Query()),
+          modelName: S.String.pipe(T.Query()),
+          modelVersion: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLocationBasedModelCapacitiesRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(__S(3744, __c117, 0)),
+          skuName: S.optional(S.String),
+          availableCapacity: S.optional(S.Number),
+          availableFinetuneCapacity: S.optional(S.Number),
+          scopeId: S.optional(S.NullOr(S.String)),
+          scopeType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ModelSkuCapacityProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(6784, __c212, 0)),
+        }),
+      ).annotate({
+        identifier: "ModelCapacityListResultValueItem",
+      });
+    case 2:
+      return S.Array(__S(6785, __c212, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6786, __c212, 2)),
+        }),
+      ).annotate({ identifier: "ModelCapacityListResult" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedNetworkSettingsRequest",
+      });
+    case 1:
+      return S.Array(__S(4484, __c140, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6817, __c213, 1)),
+        }),
+      ).annotate({ identifier: "ManagedNetworkListResult" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          modelFormat: S.String.pipe(T.Query()),
+          modelName: S.String.pipe(T.Query()),
+          modelVersion: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListModelCapacitiesRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListModelsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(__S(6055, __c189, 7)),
+          kind: S.optional(S.String),
+          skuName: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Model" });
+    case 2:
+      return S.Array(__S(6881, __c215, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(6882, __c215, 2)),
+        }),
+      ).annotate({ identifier: "ModelListResult" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(4557, __c142, 13));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(6913, __c216, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterConfigurationList",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.CognitiveServices/operations",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(6945, __c217, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(6946, __c217, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(6947, __c217, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managedNetworkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
+            code: 200,
+            apiVersion: "2026-07-15-preview",
+          }),
+        ),
+      ).annotate({ identifier: "ListOutboundRuleRequest" });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(4416, __c138, 0),
+        }),
+      ).annotate({
+        identifier: "OutboundRuleBasicResource",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7008, __c219, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(7040, __c220, 0)),
+        }),
+      ).annotate({ identifier: "OutboundRuleListResult" });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

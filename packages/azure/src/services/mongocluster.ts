@@ -1093,8 +1093,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1108,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1123,8 +1123,8 @@ export const DeleteMongoCluster: API.OperationMethod<
   DeleteMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteMongoClusterRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMongoClusterResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteMongoClusterRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1138,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1153,8 @@ export const DeleteUser: API.OperationMethod<
   DeleteUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteUserRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteUserResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1168,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: __S(449, __c28, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1183,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetFirewallRuleResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1198,8 @@ export const GetMongoCluster: API.OperationMethod<
   GetMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetMongoClusterRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetMongoClusterResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetMongoClusterRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GetMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1213,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1228,8 @@ export const GetUser: API.OperationMethod<
   GetUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetUserRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetUserResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1243,8 @@ export const ListFirewallRuleByMongoCluster: API.OperationMethod<
   ListFirewallRuleByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListFirewallRuleByMongoClusterRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<FirewallRuleListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListFirewallRuleByMongoClusterRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1258,8 @@ export const ListMongoClusterByResourceGroup: API.OperationMethod<
   ListMongoClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListMongoClusterByResourceGroupRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<MongoClusterListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListMongoClusterByResourceGroupRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<MongoClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1273,8 +1273,8 @@ export const ListMongoClusterConnectionStrings: API.OperationMethod<
   ListMongoClusterConnectionStringsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListMongoClusterConnectionStringsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListConnectionStringsResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListMongoClusterConnectionStringsRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListConnectionStringsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1288,8 @@ export const ListMongoClusters: API.OperationMethod<
   ListMongoClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListMongoClustersRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<MongoClusterListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListMongoClustersRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<MongoClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1303,8 +1303,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1318,8 +1318,8 @@ export const ListPrivateEndpointConnectionByMongoCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListPrivateEndpointConnectionByMongoClusterRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListPrivateEndpointConnectionByMongoClusterRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1333,8 +1333,8 @@ export const ListPrivateLinkByMongoCluster: API.OperationMethod<
   ListPrivateLinkByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListPrivateLinkByMongoClusterRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListPrivateLinkByMongoClusterRequest>,
+  output: __S(260, __c16, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1348,8 @@ export const ListReplicasByParent: API.OperationMethod<
   ListReplicasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListReplicasByParentRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ReplicaListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListReplicasByParentRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<ReplicaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1363,8 +1363,8 @@ export const ListUserByMongoCluster: API.OperationMethod<
   ListUserByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListUserByMongoClusterRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<UserListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListUserByMongoClusterRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<UserListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1378,8 @@ export const MongoClustersCreateOrUpdate: API.OperationMethod<
   MongoClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<MongoClustersCreateOrUpdateRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<MongoClustersCreateOrUpdateResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<MongoClustersCreateOrUpdateRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<MongoClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1393,8 +1393,8 @@ export const PromoteMongoCluster: API.OperationMethod<
   PromoteMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PromoteMongoClusterRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<PromoteMongoClusterResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<PromoteMongoClusterRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<PromoteMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1408,8 @@ export const UpdateMongoCluster: API.OperationMethod<
   UpdateMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UpdateMongoClusterRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateMongoClusterResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<UpdateMongoClusterRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<UpdateMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1423,8 +1423,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UsersCreateOrUpdateRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<UsersCreateOrUpdateResponse>,
+  input: __S(385, __c24, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1461,37 +1461,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckMongoClusterNameAvailabilityResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointInput",
-      });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(2, __c0, 2)),
-          privateLinkServiceConnectionState: __S(3, __c0, 3),
+          privateEndpoint: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: __S(80, __c5, 0),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionRequestProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1503,7 +1493,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1514,28 +1516,347 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(7, __c0, 7)),
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: __S(3, __c0, 3),
+          groupIds: S.optional(__S(64, __c4, 0)),
+          privateEndpoint: S.optional(__S(81, __c5, 1)),
+          privateLinkServiceConnectionState: __S(80, __c5, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponseProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(82, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "CreatePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+          userName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetUserRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+        }),
+      ).annotate({ identifier: "GetUserResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalType: S.String,
+        }),
+      ).annotate({
+        identifier: "EntraIdentityProviderProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          properties: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "IdentityProvider" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          db: S.String,
+          role: S.String,
+        }),
+      ).annotate({ identifier: "DatabaseRole" });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          identityProvider: S.optional(__S(129, __c8, 1)),
+          roles: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "UserProperties" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFirewallRuleByMongoClusterRequest",
+      });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(145, __c9, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FirewallRuleListResult" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMongoClusterByResourceGroupRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(528, __c33, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(176, __c11, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MongoClusterListResult" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/listConnectionStrings",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMongoClusterConnectionStringsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionString" });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectionStrings: S.optional(__S(194, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "ListConnectionStringsResult",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListMongoClustersRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.DocumentDB/operations",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(225, __c14, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(226, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(227, __c14, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionByMongoClusterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(544, __c34, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionResourceListResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkByMongoClusterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(64, __c4, 0)),
+          requiredZoneNames: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
       });
     case 2:
       return S.suspend(() =>
@@ -1543,13 +1864,96 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(257, __c16, 1)),
+        }),
+      ).annotate({ identifier: "PrivateLinkResource" });
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(259, __c16, 3),
+          nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreatePrivateEndpointConnectionResponse",
+        identifier: "PrivateLinkResourceListResult",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/replicas",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReplicasByParentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(575, __c35, 15)),
+        }),
+      ).annotate({ identifier: "Replica" });
+    case 2:
+      return S.Array(__S(273, __c17, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(274, __c17, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicaListResult" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUserByMongoClusterRequest",
+      });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(289, __c18, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserListResult" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1567,7 +1971,198 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteFirewallRuleRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createMode: S.optional(S.String),
+          restoreParameters: S.optional(__S(560, __c35, 0)),
+          replicaParameters: S.optional(__S(561, __c35, 1)),
+          administrator: S.optional(__S(562, __c35, 2)),
+          serverVersion: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          highAvailability: S.optional(__S(563, __c35, 3)),
+          storage: S.optional(__S(564, __c35, 4)),
+          sharding: S.optional(__S(565, __c35, 5)),
+          compute: S.optional(__S(566, __c35, 6)),
+          backup: S.optional(__S(32, __c2, 0)),
+          dataApi: S.optional(__S(568, __c35, 8)),
+          previewFeatures: S.optional(__S(569, __c35, 9)),
+          authConfig: S.optional(__S(571, __c35, 11)),
+          encryption: S.optional(__S(574, __c35, 14)),
+          networkBypassMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MongoClusterPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(320, __c20, 0)),
+          identity: S.optional(__S(337, __c21, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MongoClustersCreateOrUpdateRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c2, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(336, __c21, 0)),
+        }),
+      ).annotate({
+        identifier: "MongoClustersCreateOrUpdateRequestIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(575, __c35, 15)),
+          identity: S.optional(__S(579, __c36, 3)),
+        }),
+      ).annotate({
+        identifier: "MongoClustersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+          promoteOption: S.String,
+          mode: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PromoteMongoClusterRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          administrator: S.optional(__S(562, __c35, 2)),
+          serverVersion: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          highAvailability: S.optional(__S(563, __c35, 3)),
+          storage: S.optional(__S(564, __c35, 4)),
+          sharding: S.optional(__S(565, __c35, 5)),
+          compute: S.optional(__S(566, __c35, 6)),
+          backup: S.optional(__S(32, __c2, 0)),
+          dataApi: S.optional(__S(568, __c35, 8)),
+          previewFeatures: S.optional(__S(569, __c35, 9)),
+          authConfig: S.optional(__S(571, __c35, 11)),
+          encryption: S.optional(__S(574, __c35, 14)),
+          networkBypassMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MongoClusterUpdatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(337, __c21, 1)),
+          tags: S.optional(__S(576, __c36, 0)),
+          properties: S.optional(__S(368, __c23, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateMongoClusterRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityProvider: S.optional(__S(129, __c8, 1)),
+          roles: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "UserPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          mongoClusterName: S.String.pipe(T.Label()),
+          userName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(384, __c24, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UsersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+        }),
+      ).annotate({
+        identifier: "UsersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1584,7 +2179,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteMongoClusterRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1602,11 +2201,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePrivateEndpointConnectionResponse",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1624,7 +2227,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteUserRequest" });
   }
 }
-function __c2(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1642,7 +2245,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(448, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1657,24 +2260,32 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "FirewallRulesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           provisioningState: S.optional(S.String),
           startIpAddress: S.String,
           endIpAddress: S.String,
         }),
       ).annotate({ identifier: "FirewallRuleProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "FirewallRulesCreateOrUpdateResponse",
-      });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1690,17 +2301,25 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFirewallRuleRequest" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "GetFirewallRuleResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1715,11 +2334,32 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMongoClusterRequest" });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c3(j: number): any {
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(575, __c35, 15)),
+          identity: S.optional(__S(579, __c36, 3)),
+        }),
+      ).annotate({ identifier: "GetMongoClusterResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(83, __c5, 3));
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1779,21 +2419,15 @@ function __c3(j: number): any {
           earliestRestoreTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupProperties" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataApiProperties" });
-    case 1:
-      return S.Array(__S(10, __c1, 2));
-    case 2:
+    case 9:
       return S.Array(S.String);
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           sourceResourceId: S.optional(S.String),
@@ -1801,65 +2435,67 @@ function __c4(j: number): any {
           replicationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationProperties" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          allowedModes: S.optional(__S(34, __c4, 2)),
+          allowedModes: S.optional(__S(569, __c35, 9)),
         }),
       ).annotate({ identifier: "AuthConfigProperties" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           identityType: S.optional(S.String),
           userAssignedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyEncryptionKeyIdentity" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(37, __c4, 5)),
+          keyEncryptionKeyIdentity: S.optional(__S(572, __c35, 12)),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomerManagedKeyEncryptionProperties",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(38, __c4, 6)),
+          customerManagedKeyEncryption: S.optional(__S(573, __c35, 13)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           createMode: S.optional(S.String),
-          restoreParameters: S.optional(__S(24, __c3, 0)),
-          replicaParameters: S.optional(__S(25, __c3, 1)),
-          administrator: S.optional(__S(26, __c3, 2)),
+          restoreParameters: S.optional(__S(560, __c35, 0)),
+          replicaParameters: S.optional(__S(561, __c35, 1)),
+          administrator: S.optional(__S(562, __c35, 2)),
           serverVersion: S.optional(S.String),
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           provisioningState: S.optional(S.String),
           clusterStatus: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(27, __c3, 3)),
-          storage: S.optional(__S(28, __c3, 4)),
-          sharding: S.optional(__S(29, __c3, 5)),
-          compute: S.optional(__S(30, __c3, 6)),
-          backup: S.optional(__S(31, __c3, 7)),
-          dataApi: S.optional(__S(32, __c4, 0)),
-          privateEndpointConnections: S.optional(__S(33, __c4, 1)),
-          previewFeatures: S.optional(__S(34, __c4, 2)),
-          replica: S.optional(__S(35, __c4, 3)),
+          highAvailability: S.optional(__S(563, __c35, 3)),
+          storage: S.optional(__S(564, __c35, 4)),
+          sharding: S.optional(__S(565, __c35, 5)),
+          compute: S.optional(__S(566, __c35, 6)),
+          backup: S.optional(__S(567, __c35, 7)),
+          dataApi: S.optional(__S(568, __c35, 8)),
+          privateEndpointConnections: S.optional(__S(544, __c34, 0)),
+          previewFeatures: S.optional(__S(569, __c35, 9)),
+          replica: S.optional(__S(570, __c35, 10)),
           infrastructureVersion: S.optional(S.String),
-          authConfig: S.optional(__S(36, __c4, 4)),
-          encryption: S.optional(__S(39, __c4, 7)),
+          authConfig: S.optional(__S(571, __c35, 11)),
+          encryption: S.optional(__S(574, __c35, 14)),
           networkBypassMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoClusterProperties" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1868,32 +2504,23 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(41, __c5, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(577, __c36, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(42, __c5, 2)),
+          userAssignedIdentities: S.optional(__S(578, __c36, 2)),
         }),
       ).annotate({
         identifier: "GetMongoClusterResponseIdentity",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
-          identity: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "GetMongoClusterResponse" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1911,532 +2538,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-          userName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalType: S.String,
-        }),
-      ).annotate({
-        identifier: "EntraIdentityProviderProperties",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          properties: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "IdentityProvider" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          db: S.String,
-          role: S.String,
-        }),
-      ).annotate({ identifier: "DatabaseRole" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          identityProvider: S.optional(__S(48, __c6, 0)),
-          roles: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "UserProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "GetUserResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFirewallRuleByMongoClusterRequest",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(54, __c6, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FirewallRuleListResult" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMongoClusterByResourceGroupRequest",
-      });
-    case 1:
-      return S.Array(__S(44, __c5, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(57, __c7, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MongoClusterListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/listConnectionStrings",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMongoClusterConnectionStringsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionString" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          connectionStrings: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "ListConnectionStringsResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListMongoClustersRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.DocumentDB/operations",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(65, __c8, 1)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(67, __c8, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionByMongoClusterRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(33, __c4, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionResourceListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkByMongoClusterRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(7, __c0, 7)),
-          requiredZoneNames: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "PrivateLinkResource" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(74, __c9, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/replicas",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReplicasByParentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "Replica" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(78, __c9, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicaListResult" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUserByMongoClusterRequest",
-      });
-    case 1:
-      return S.Array(__S(52, __c6, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(81, __c10, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createMode: S.optional(S.String),
-          restoreParameters: S.optional(__S(24, __c3, 0)),
-          replicaParameters: S.optional(__S(25, __c3, 1)),
-          administrator: S.optional(__S(26, __c3, 2)),
-          serverVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(27, __c3, 3)),
-          storage: S.optional(__S(28, __c3, 4)),
-          sharding: S.optional(__S(29, __c3, 5)),
-          compute: S.optional(__S(30, __c3, 6)),
-          backup: S.optional(__S(2, __c0, 2)),
-          dataApi: S.optional(__S(32, __c4, 0)),
-          previewFeatures: S.optional(__S(34, __c4, 2)),
-          authConfig: S.optional(__S(36, __c4, 4)),
-          encryption: S.optional(__S(39, __c4, 7)),
-          networkBypassMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MongoClusterPropertiesInput",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2, __c0, 2)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier: "MongoClustersCreateOrUpdateRequestIdentity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: S.optional(__S(83, __c10, 3)),
-          identity: S.optional(__S(85, __c10, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MongoClustersCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
-          identity: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "MongoClustersCreateOrUpdateResponse",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-          promoteOption: S.String,
-          mode: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PromoteMongoClusterRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          administrator: S.optional(__S(26, __c3, 2)),
-          serverVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(27, __c3, 3)),
-          storage: S.optional(__S(28, __c3, 4)),
-          sharding: S.optional(__S(29, __c3, 5)),
-          compute: S.optional(__S(30, __c3, 6)),
-          backup: S.optional(__S(2, __c0, 2)),
-          dataApi: S.optional(__S(32, __c4, 0)),
-          previewFeatures: S.optional(__S(34, __c4, 2)),
-          authConfig: S.optional(__S(36, __c4, 4)),
-          encryption: S.optional(__S(39, __c4, 7)),
-          networkBypassMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MongoClusterUpdatePropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(85, __c10, 5)),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(89, __c11, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateMongoClusterRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identityProvider: S.optional(__S(48, __c6, 0)),
-          roles: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "UserPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          mongoClusterName: S.String.pipe(T.Label()),
-          userName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(91, __c11, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UsersCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "UsersCreateOrUpdateResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -145,8 +145,8 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
   AddFirebaseProjectsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddFirebaseProjectsBucketsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Bucket>,
+  input: __S(4, __c1, 0) as any as S.Schema<AddFirebaseProjectsBucketsRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const createProjectsDefaultBucket: API.OperationMethod<
   CreateProjectsDefaultBucketError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateProjectsDefaultBucketRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DefaultBucket>,
+  input: __S(16, __c4, 0) as any as S.Schema<CreateProjectsDefaultBucketRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DefaultBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,8 +185,8 @@ export const deleteDefaultBucketProjects: API.OperationMethod<
   DeleteDefaultBucketProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteDefaultBucketProjectsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteDefaultBucketProjectsRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -200,8 +200,8 @@ export const getDefaultBucketProjects: API.OperationMethod<
   GetDefaultBucketProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDefaultBucketProjectsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DefaultBucket>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetDefaultBucketProjectsRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DefaultBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -215,8 +215,8 @@ export const getProjectsBuckets: API.OperationMethod<
   GetProjectsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetProjectsBucketsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Bucket>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetProjectsBucketsRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -231,8 +231,8 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListProjectsBucketsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListBucketsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListProjectsBucketsRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,8 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
   RemoveFirebaseProjectsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<RemoveFirebaseProjectsBucketsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<RemoveFirebaseProjectsBucketsRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -263,14 +263,29 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddFirebaseRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+bucket}:removeFirebase",
+            baseUrl: "https://firebasestorage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveFirebaseProjectsBucketsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String.pipe(T.Label()),
+          body: S.optional(__S(12, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -281,26 +296,33 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddFirebaseProjectsBucketsRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Bucket" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          storageClass: S.optional(S.String),
-          location: S.optional(S.String),
-          bucket: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DefaultBucket" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddFirebaseRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -311,7 +333,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProjectsDefaultBucketRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          storageClass: S.optional(S.String),
+          location: S.optional(S.String),
+          bucket: S.optional(__S(8, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DefaultBucket" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -325,7 +364,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteDefaultBucketProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -339,7 +382,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDefaultBucketProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -355,7 +402,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -374,32 +421,16 @@ function __c1(j: number): any {
         identifier: "ListProjectsBucketsRequest",
       });
     case 1:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(8, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(__S(9, __c1, 1)),
+          buckets: S.optional(__S(37, __c9, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBucketsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+bucket}:removeFirebase",
-            baseUrl: "https://firebasestorage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveFirebaseProjectsBucketsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

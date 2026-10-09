@@ -122,7 +122,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(93, __c11, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(355, __c44, 3)).annotate({
           identifier: "ValidationErrorList",
         }),
       ),
@@ -956,8 +956,8 @@ export const acceptConnectionInvitation: API.OperationMethod<
   AcceptConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptConnectionInvitationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AcceptConnectionInvitationResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<AcceptConnectionInvitationRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<AcceptConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -989,8 +989,12 @@ export const associateAwsTrainingCertificationEmailDomain: API.OperationMethod<
   AssociateAwsTrainingCertificationEmailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainRequest>,
+  output: __S(
+    392,
+    __c49,
+    0,
+  ) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1021,8 +1025,8 @@ export const cancelConnection: API.OperationMethod<
   CancelConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CancelConnectionResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CancelConnectionRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<CancelConnectionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1053,8 +1057,8 @@ export const cancelConnectionInvitation: API.OperationMethod<
   CancelConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelConnectionInvitationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CancelConnectionInvitationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelConnectionInvitationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1085,8 +1089,8 @@ export const cancelProfileUpdateTask: API.OperationMethod<
   CancelProfileUpdateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CancelProfileUpdateTaskRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CancelProfileUpdateTaskResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CancelProfileUpdateTaskRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<CancelProfileUpdateTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1118,8 +1122,8 @@ export const createConnectionInvitation: API.OperationMethod<
   CreateConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateConnectionInvitationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateConnectionInvitationResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateConnectionInvitationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1150,8 +1154,8 @@ export const createPartner: API.OperationMethod<
   CreatePartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreatePartnerRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreatePartnerResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreatePartnerRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreatePartnerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1181,14 +1185,14 @@ export const disassociateAwsTrainingCertificationEmailDomain: API.OperationMetho
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainRequest>,
   output: __S(
-    9,
-    __c1,
-    1,
+    392,
+    __c49,
+    0,
   ) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainResponse>,
   errors: [
     AccessDeniedException,
@@ -1218,8 +1222,8 @@ export const getAllianceLeadContact: API.OperationMethod<
   GetAllianceLeadContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetAllianceLeadContactRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetAllianceLeadContactResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetAllianceLeadContactRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetAllianceLeadContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1248,8 +1252,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetConnectionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<GetConnectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1278,8 +1282,8 @@ export const getConnectionInvitation: API.OperationMethod<
   GetConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetConnectionInvitationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetConnectionInvitationResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetConnectionInvitationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1307,8 +1311,8 @@ export const getConnectionPreferences: API.OperationMethod<
   GetConnectionPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetConnectionPreferencesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetConnectionPreferencesResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetConnectionPreferencesRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetConnectionPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1336,8 +1340,8 @@ export const getPartner: API.OperationMethod<
   GetPartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPartnerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetPartnerResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetPartnerRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetPartnerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1366,8 +1370,8 @@ export const getProfileUpdateTask: API.OperationMethod<
   GetProfileUpdateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetProfileUpdateTaskRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetProfileUpdateTaskResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetProfileUpdateTaskRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetProfileUpdateTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1396,8 +1400,8 @@ export const getProfileVisibility: API.OperationMethod<
   GetProfileVisibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetProfileVisibilityRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetProfileVisibilityResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetProfileVisibilityRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetProfileVisibilityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1426,8 +1430,8 @@ export const getQualificationsAssociationDetails: API.OperationMethod<
   GetQualificationsAssociationDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetQualificationsAssociationDetailsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetQualificationsAssociationDetailsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetQualificationsAssociationDetailsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GetQualificationsAssociationDetailsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1456,8 +1460,8 @@ export const getQualificationsAssociationTask: API.OperationMethod<
   GetQualificationsAssociationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetQualificationsAssociationTaskRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetQualificationsAssociationTaskResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetQualificationsAssociationTaskRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetQualificationsAssociationTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1486,8 +1490,8 @@ export const getQualificationsDisassociationTask: API.OperationMethod<
   GetQualificationsDisassociationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetQualificationsDisassociationTaskRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetQualificationsDisassociationTaskResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetQualificationsDisassociationTaskRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetQualificationsDisassociationTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1516,8 +1520,8 @@ export const getVerification: API.OperationMethod<
   GetVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetVerificationRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetVerificationResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetVerificationRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GetVerificationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1546,8 +1550,8 @@ export const listConnectionInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectionInvitationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListConnectionInvitationsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListConnectionInvitationsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListConnectionInvitationsRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<ListConnectionInvitationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1581,8 +1585,8 @@ export const listConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListConnectionsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListConnectionsRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<ListConnectionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1616,8 +1620,8 @@ export const listPartners: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PartnerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListPartnersRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListPartnersResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListPartnersRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<ListPartnersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1650,8 +1654,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1680,8 +1684,8 @@ export const putAllianceLeadContact: API.OperationMethod<
   PutAllianceLeadContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<PutAllianceLeadContactRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PutAllianceLeadContactResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<PutAllianceLeadContactRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<PutAllianceLeadContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1711,8 +1715,8 @@ export const putProfileVisibility: API.OperationMethod<
   PutProfileVisibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<PutProfileVisibilityRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<PutProfileVisibilityResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<PutProfileVisibilityRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<PutProfileVisibilityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1743,8 +1747,8 @@ export const rejectConnectionInvitation: API.OperationMethod<
   RejectConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<RejectConnectionInvitationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RejectConnectionInvitationResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<RejectConnectionInvitationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RejectConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1774,8 +1778,8 @@ export const sendEmailVerificationCode: API.OperationMethod<
   SendEmailVerificationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SendEmailVerificationCodeRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SendEmailVerificationCodeResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<SendEmailVerificationCodeRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<SendEmailVerificationCodeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1806,8 +1810,8 @@ export const startProfileUpdateTask: API.OperationMethod<
   StartProfileUpdateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<StartProfileUpdateTaskRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<StartProfileUpdateTaskResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<StartProfileUpdateTaskRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<StartProfileUpdateTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1839,8 +1843,8 @@ export const startQualificationsAssociationTask: API.OperationMethod<
   StartQualificationsAssociationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<StartQualificationsAssociationTaskRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<StartQualificationsAssociationTaskResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<StartQualificationsAssociationTaskRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<StartQualificationsAssociationTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1871,8 +1875,8 @@ export const startQualificationsDisassociationTask: API.OperationMethod<
   StartQualificationsDisassociationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<StartQualificationsDisassociationTaskRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<StartQualificationsDisassociationTaskResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<StartQualificationsDisassociationTaskRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<StartQualificationsDisassociationTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1903,8 +1907,8 @@ export const startVerification: API.OperationMethod<
   StartVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<StartVerificationRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<StartVerificationResponse>,
+  input: __S(313, __c39, 1) as any as S.Schema<StartVerificationRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<StartVerificationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1935,8 +1939,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1967,8 +1971,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1998,8 +2002,8 @@ export const updateConnectionPreferences: API.OperationMethod<
   UpdateConnectionPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateConnectionPreferencesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateConnectionPreferencesResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<UpdateConnectionPreferencesRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateConnectionPreferencesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2023,92 +2027,13 @@ function __c0(j: number): any {
           ClientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "AcceptConnectionInvitationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Id: S.String, Name: S.String })).annotate({
-        identifier: "PartnerProfileSummary",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
-        identifier: "AccountSummary",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ PartnerProfile: __S(1, __c0, 1) }),
-        /*@__PURE__*/ S.Struct({ SellerProfile: __S(1, __c0, 1) }),
-        /*@__PURE__*/ S.Struct({ Account: __S(2, __c0, 2) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          InviterEmail: S.String,
-          InviterName: SensitiveString,
-          Status: S.String,
-          CanceledAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          CanceledBy: S.optional(S.String),
-          OtherParticipant: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "ConnectionTypeDetail" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(4, __c0, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Id: S.String,
-          Arn: S.String,
-          OtherParticipantAccountId: S.String,
-          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ConnectionTypes: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "Connection" });
-    case 7:
-      return S.suspend(() => S.Struct({ Connection: __S(6, __c0, 6) })).annotate({
-        identifier: "AcceptConnectionInvitationResponse",
+        identifier: "CancelConnectionInvitationRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Identifier: S.String,
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Email: S.String,
-          EmailVerificationCode: SensitiveString,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateAwsTrainingCertificationEmailDomainRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateAwsTrainingCertificationEmailDomainResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Identifier: S.String,
-          ConnectionType: S.String,
-          Reason: S.String,
-          ClientToken: S.String.pipe(T.IdempotencyToken()),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CancelConnectionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Identifier: S.String,
-          ClientToken: S.String.pipe(T.IdempotencyToken()),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelConnectionInvitationRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2129,7 +2054,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelConnectionInvitationResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2140,9 +2069,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelProfileUpdateTaskRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DisplayName: S.String,
@@ -2152,17 +2085,17 @@ function __c1(j: number): any {
           Locale: S.String,
         }),
       ).annotate({ identifier: "LocalizedContent" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ CountryCode: S.String, SubdivisionCode: S.String }),
       ).annotate({ identifier: "Headquarters" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DisplayName: S.String,
@@ -2170,35 +2103,39 @@ function __c2(j: number): any {
           WebsiteUrl: S.String,
           LogoUrl: S.String,
           PrimarySolutionType: S.String,
-          IndustrySegments: __S(14, __c1, 6),
+          IndustrySegments: __S(24, __c3, 0),
           TranslationSourceLocale: S.String,
-          LocalizedContents: S.optional(__S(16, __c2, 0)),
-          Headquarters: S.optional(__S(17, __c2, 1)),
+          LocalizedContents: S.optional(__S(26, __c3, 2)),
+          Headquarters: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "TaskDetails" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Locale: S.String, Message: S.String, Reason: S.String }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           Arn: S.String,
           Id: S.String,
           TaskId: S.String,
-          TaskDetails: __S(18, __c2, 2),
+          TaskDetails: __S(32, __c4, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Status: S.String,
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ErrorDetailList: S.optional(__S(20, __c2, 4)),
+          ErrorDetailList: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({
         identifier: "CancelProfileUpdateTaskResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2212,7 +2149,40 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateConnectionInvitationRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          LegalName: SensitiveString,
+          PrimarySolutionType: S.String,
+          AllianceLeadContact: __S(56, __c7, 0),
+          EmailVerificationCode: SensitiveString,
+          Tags: S.optional(__S(73, __c9, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePartnerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Arn: S.String,
+          Id: S.String,
+          LegalName: SensitiveString,
+          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          Profile: __S(64, __c8, 0),
+          AwsTrainingCertificationEmailDomains: S.optional(__S(66, __c8, 2)),
+          AllianceLeadContact: __S(56, __c7, 0),
+        }),
+      ).annotate({ identifier: "CreatePartnerResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FirstName: SensitiveString,
@@ -2223,27 +2193,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "AllianceLeadContact" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LegalName: SensitiveString,
-          PrimarySolutionType: S.String,
-          AllianceLeadContact: __S(23, __c2, 7),
-          EmailVerificationCode: SensitiveString,
-          Tags: S.optional(__S(25, __c3, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreatePartnerRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           DisplayName: S.String,
@@ -2251,36 +2203,37 @@ function __c3(j: number): any {
           WebsiteUrl: S.String,
           LogoUrl: S.String,
           PrimarySolutionType: S.String,
-          IndustrySegments: __S(14, __c1, 6),
+          IndustrySegments: __S(24, __c3, 0),
           TranslationSourceLocale: S.String,
-          LocalizedContents: S.optional(__S(16, __c2, 0)),
-          Headquarters: S.optional(__S(17, __c2, 1)),
+          LocalizedContents: S.optional(__S(26, __c3, 2)),
+          Headquarters: S.optional(__S(27, __c3, 3)),
           ProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerProfile" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
           RegisteredAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "PartnerDomain" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Arn: S.String,
-          Id: S.String,
-          LegalName: SensitiveString,
-          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Profile: __S(27, __c3, 3),
-          AwsTrainingCertificationEmailDomains: S.optional(__S(29, __c3, 5)),
-          AllianceLeadContact: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "CreatePartnerResponse" });
-    case 7:
+    case 2:
+      return S.Array(__S(65, __c8, 1));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2293,7 +2246,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2303,63 +2256,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAllianceLeadContactRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Arn: S.String,
-          Id: S.String,
-          AllianceLeadContact: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "GetAllianceLeadContactResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetConnectionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetConnectionInvitationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Catalog: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetConnectionPreferencesRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Arn: S.String,
-          AccessType: S.String,
-          ExcludedParticipantIds: S.optional(__S(37, __c4, 5)),
-          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Revision: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetConnectionPreferencesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetPartnerRequest" });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2367,13 +2266,95 @@ function __c5(j: number): any {
           Catalog: S.String,
           Arn: S.String,
           Id: S.String,
+          AllianceLeadContact: __S(56, __c7, 0),
+        }),
+      ).annotate({
+        identifier: "GetAllianceLeadContactResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetConnectionRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetConnectionInvitationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetConnectionPreferencesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Arn: S.String,
+          AccessType: S.String,
+          ExcludedParticipantIds: S.optional(__S(128, __c16, 0)),
+          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          Revision: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetConnectionPreferencesResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPartnerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Arn: S.String,
+          Id: S.String,
           LegalName: SensitiveString,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Profile: __S(27, __c3, 3),
-          AwsTrainingCertificationEmailDomains: S.optional(__S(29, __c3, 5)),
+          Profile: __S(64, __c8, 0),
+          AwsTrainingCertificationEmailDomains: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "GetPartnerResponse" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2381,7 +2362,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProfileUpdateTaskRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2389,7 +2374,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProfileVisibilityRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2401,7 +2390,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProfileVisibilityResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2409,23 +2402,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetQualificationsAssociationDetailsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ProfileId: S.optional(S.String), AccountId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "QualificationsAssociationPartner",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           Arn: S.String,
           Id: S.String,
           Status: S.String,
-          PrimaryPartner: S.optional(__S(45, __c5, 5)),
-          AssociatedPartners: S.optional(__S(46, __c5, 6)),
+          PrimaryPartner: S.optional(__S(184, __c23, 0)),
+          AssociatedPartners: S.optional(__S(177, __c22, 1)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -2433,7 +2420,17 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ProfileId: S.optional(S.String), AccountId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "QualificationsAssociationPartner",
+      });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2451,14 +2448,18 @@ function __c6(j: number): any {
           Id: S.String,
           TaskId: S.String,
           Status: S.String,
-          PrimaryPartner: __S(45, __c5, 5),
+          PrimaryPartner: __S(184, __c23, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "GetQualificationsAssociationTaskResponse",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2466,7 +2467,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetQualificationsDisassociationTaskRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2474,20 +2475,39 @@ function __c6(j: number): any {
           Id: S.String,
           TaskId: S.String,
           Status: S.String,
-          AssociatedPartner: __S(45, __c5, 5),
+          AssociatedPartner: __S(184, __c23, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "GetQualificationsDisassociationTaskResponse",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VerificationType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetVerificationRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VerificationType: S.String,
+          VerificationStatus: S.String,
+          VerificationStatusReason: S.optional(S.String),
+          VerificationResponseDetails: __S(219, __c27, 3),
+          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "GetVerificationResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LegalName: SensitiveString,
@@ -2498,17 +2518,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "BusinessVerificationDetails",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          BusinessVerificationDetails: __S(53, __c6, 5),
+          BusinessVerificationDetails: __S(216, __c27, 0),
           CompletionUrl: S.optional(S.String),
           CompletionUrlExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "BusinessVerificationResponse",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           CompletionUrl: S.String,
@@ -2517,41 +2537,30 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RegistrantVerificationResponse",
       });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ BusinessVerificationResponse: __S(217, __c27, 1) }),
+        /*@__PURE__*/ S.Struct({ RegistrantVerificationResponse: __S(218, __c27, 2) }),
+      ]);
   }
 }
-function __c7(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ BusinessVerificationResponse: __S(54, __c6, 6) }),
-        /*@__PURE__*/ S.Struct({ RegistrantVerificationResponse: __S(55, __c6, 7) }),
-      ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VerificationType: S.String,
-          VerificationStatus: S.String,
-          VerificationStatusReason: S.optional(S.String),
-          VerificationResponseDetails: __S(56, __c7, 0),
-          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "GetVerificationResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           NextToken: S.optional(S.String),
           ConnectionType: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          OtherParticipantIdentifiers: S.optional(__S(37, __c4, 5)),
+          OtherParticipantIdentifiers: S.optional(__S(128, __c16, 0)),
           ParticipantType: S.optional(S.String),
           Status: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListConnectionInvitationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2569,38 +2578,38 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ConnectionInvitationSummary",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ConnectionInvitationSummaries: __S(60, __c7, 4),
+          ConnectionInvitationSummaries: __S(226, __c28, 2),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConnectionInvitationsResponse",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           NextToken: S.optional(S.String),
           ConnectionType: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          OtherParticipantIdentifiers: S.optional(__S(37, __c4, 5)),
+          OtherParticipantIdentifiers: S.optional(__S(128, __c16, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectionsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Status: S.String, OtherParticipant: __S(3, __c0, 3) }),
-      ).annotate({ identifier: "ConnectionTypeSummary" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(63, __c7, 7).pipe(S.optional));
     case 1:
+      return S.suspend(() =>
+        S.Struct({ Status: S.String, OtherParticipant: __S(378, __c47, 2) }),
+      ).annotate({ identifier: "ConnectionTypeSummary" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(233, __c29, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2608,22 +2617,26 @@ function __c8(j: number): any {
           Arn: S.String,
           OtherParticipantAccountId: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ConnectionTypes: __S(64, __c8, 0),
+          ConnectionTypes: __S(234, __c29, 2),
         }),
       ).annotate({ identifier: "ConnectionSummary" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ConnectionSummaries: __S(66, __c8, 2), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListConnectionsResponse" });
     case 4:
+      return S.Array(__S(235, __c29, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ConnectionSummaries: __S(236, __c29, 4), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListConnectionsResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPartnersRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2633,15 +2646,15 @@ function __c8(j: number): any {
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "PartnerSummary" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(241, __c30, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ PartnerSummaryList: __S(70, __c8, 6), NextToken: S.optional(S.String) }),
+        S.Struct({ PartnerSummaryList: __S(242, __c30, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPartnersResponse" });
   }
 }
-function __c9(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2653,22 +2666,30 @@ function __c9(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: S.optional(__S(25, __c3, 1)) }),
+        S.Struct({ ResourceArn: S.String, Tags: S.optional(__S(73, __c9, 1)) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           Identifier: S.String,
-          AllianceLeadContact: __S(23, __c2, 7),
+          AllianceLeadContact: __S(56, __c7, 0),
           EmailVerificationCode: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutAllianceLeadContactRequest",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Identifier: S.String, Visibility: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2676,7 +2697,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PutProfileVisibilityRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2687,7 +2712,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RejectConnectionInvitationRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Catalog: S.String, Email: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2695,58 +2724,37 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SendEmailVerificationCodeRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Identifier: S.String,
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          TaskDetails: __S(18, __c2, 2),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartProfileUpdateTaskRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          Identifier: S.String,
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          PrimaryPartner: __S(45, __c5, 5),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartQualificationsAssociationTaskRequest",
-      });
   }
 }
-function __c10(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          Arn: S.String,
-          Id: S.String,
-          TaskId: S.String,
-          Status: S.String,
-          PrimaryPartner: __S(45, __c5, 5),
-          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
+          Identifier: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          TaskDetails: __S(32, __c4, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "StartQualificationsAssociationTaskResponse",
+        identifier: "StartProfileUpdateTaskRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           Identifier: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          AssociatedPartner: __S(45, __c5, 5),
+          PrimaryPartner: __S(184, __c23, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "StartQualificationsDisassociationTaskRequest",
+        identifier: "StartQualificationsAssociationTaskRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
@@ -2754,86 +2762,237 @@ function __c10(j: number): any {
           Id: S.String,
           TaskId: S.String,
           Status: S.String,
-          AssociatedPartner: __S(45, __c5, 5),
+          PrimaryPartner: __S(184, __c23, 0),
+          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "StartQualificationsAssociationTaskResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AssociatedPartner: __S(184, __c23, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartQualificationsDisassociationTaskRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Arn: S.String,
+          Id: S.String,
+          TaskId: S.String,
+          Status: S.String,
+          AssociatedPartner: __S(184, __c23, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
         identifier: "StartQualificationsDisassociationTaskResponse",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "RegistrantVerificationDetails",
-      });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ BusinessVerificationDetails: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ RegistrantVerificationDetails: __S(83, __c10, 3) }),
+        /*@__PURE__*/ S.Struct({ BusinessVerificationDetails: __S(216, __c27, 0) }),
+        /*@__PURE__*/ S.Struct({ RegistrantVerificationDetails: __S(320, __c40, 0) }),
       ]);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          VerificationDetails: S.optional(__S(84, __c10, 4)),
+          VerificationDetails: S.optional(__S(312, __c39, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartVerificationRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           VerificationType: S.String,
           VerificationStatus: S.String,
           VerificationStatusReason: S.optional(S.String),
-          VerificationResponseDetails: __S(56, __c7, 0),
+          VerificationResponseDetails: __S(219, __c27, 3),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "StartVerificationResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RegistrantVerificationDetails",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(25, __c3, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(73, __c9, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c11(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(37, __c4, 5) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(128, __c16, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           Revision: S.Number,
           AccessType: S.String,
-          ExcludedParticipantIdentifiers: S.optional(__S(37, __c4, 5)),
+          ExcludedParticipantIdentifiers: S.optional(__S(128, __c16, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateConnectionPreferencesRequest",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Message: S.String, Code: S.String }),
       ).annotate({ identifier: "FieldValidationError" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ Message: S.String, Code: S.String })).annotate({
         identifier: "BusinessValidationError",
       });
-    case 4:
+    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ FieldValidationError: __S(90, __c11, 2) }),
-        /*@__PURE__*/ S.Struct({ BusinessValidationError: __S(91, __c11, 3) }),
+        /*@__PURE__*/ S.Struct({ FieldValidationError: __S(352, __c44, 0) }),
+        /*@__PURE__*/ S.Struct({ BusinessValidationError: __S(353, __c44, 1) }),
       ]);
-    case 5:
-      return S.Array(__S(92, __c11, 4));
+    case 3:
+      return S.Array(__S(354, __c44, 2));
   }
 }
-
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AcceptConnectionInvitationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Connection: __S(370, __c46, 2) })).annotate({
+        identifier: "AcceptConnectionInvitationResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          InviterEmail: S.String,
+          InviterName: SensitiveString,
+          Status: S.String,
+          CanceledAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CanceledBy: S.optional(S.String),
+          OtherParticipant: __S(378, __c47, 2),
+        }),
+      ).annotate({ identifier: "ConnectionTypeDetail" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(368, __c46, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Id: S.String,
+          Arn: S.String,
+          OtherParticipantAccountId: S.String,
+          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ConnectionTypes: __S(369, __c46, 1),
+        }),
+      ).annotate({ identifier: "Connection" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Id: S.String, Name: S.String })).annotate({
+        identifier: "PartnerProfileSummary",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "AccountSummary",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ PartnerProfile: __S(376, __c47, 0) }),
+        /*@__PURE__*/ S.Struct({ SellerProfile: __S(376, __c47, 0) }),
+        /*@__PURE__*/ S.Struct({ Account: __S(377, __c47, 1) }),
+      ]);
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Email: S.String,
+          EmailVerificationCode: SensitiveString,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateAwsTrainingCertificationEmailDomainRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateAwsTrainingCertificationEmailDomainResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          ConnectionType: S.String,
+          Reason: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CancelConnectionRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

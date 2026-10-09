@@ -616,8 +616,8 @@ export const checkIamAuthorization: API.OperationMethod<
   CheckIamAuthorizationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CheckIamAuthorizationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CheckIamAuthorizationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckIamAuthorizationRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CheckIamAuthorizationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -631,8 +631,8 @@ export const checkIamResourceAuthorization: API.OperationMethod<
   CheckIamResourceAuthorizationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CheckIamResourceAuthorizationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IamAuthorizeResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CheckIamResourceAuthorizationRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<IamAuthorizeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -646,8 +646,8 @@ export const createIamLogSubscription: API.OperationMethod<
   CreateIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateIamLogSubscriptionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateIamLogSubscriptionRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -661,8 +661,8 @@ export const createIamLogUrl: API.OperationMethod<
   CreateIamLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateIamLogUrlRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateIamLogUrlRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -676,8 +676,8 @@ export const createIamPermissionsGroup: API.OperationMethod<
   CreateIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateIamPermissionsGroupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<IamPermissionsGroup>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateIamPermissionsGroupRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -691,8 +691,8 @@ export const createIamPolicy: API.OperationMethod<
   CreateIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateIamPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IamPolicyResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateIamPolicyRequest>,
+  output: __S(536, __c33, 8) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -706,8 +706,8 @@ export const createIamResourceGroup: API.OperationMethod<
   CreateIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateIamResourceGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IamGroupResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<CreateIamResourceGroupRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -721,8 +721,8 @@ export const createIamResourceTag: API.OperationMethod<
   CreateIamResourceTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateIamResourceTagRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateIamResourceTagResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateIamResourceTagRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<CreateIamResourceTagResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const deleteIamLogSubscription: API.OperationMethod<
   DeleteIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteIamLogSubscriptionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteIamLogSubscriptionRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export const deleteIamPermissionsGroup: API.OperationMethod<
   DeleteIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteIamPermissionsGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteIamPermissionsGroupResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteIamPermissionsGroupRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<DeleteIamPermissionsGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -766,8 +766,8 @@ export const deleteIamPolicy: API.OperationMethod<
   DeleteIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteIamPolicyRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteIamPolicyResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteIamPolicyRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteIamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const deleteIamResourceGroup: API.OperationMethod<
   DeleteIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteIamResourceGroupRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteIamResourceGroupResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteIamResourceGroupRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteIamResourceGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -796,8 +796,8 @@ export const deleteIamResourceTag: API.OperationMethod<
   DeleteIamResourceTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteIamResourceTagRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteIamResourceTagResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteIamResourceTagRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteIamResourceTagResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -811,8 +811,8 @@ export const getIamLogKind: API.OperationMethod<
   GetIamLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetIamLogKindRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DbaasLogsLogKind>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetIamLogKindRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<DbaasLogsLogKind>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -826,8 +826,8 @@ export const getIamLogSubscription: API.OperationMethod<
   GetIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetIamLogSubscriptionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DbaasLogsLogSubscription>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetIamLogSubscriptionRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<DbaasLogsLogSubscription>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -841,8 +841,8 @@ export const getIamPermissionsGroup: API.OperationMethod<
   GetIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetIamPermissionsGroupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<IamPermissionsGroup>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetIamPermissionsGroupRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -856,8 +856,8 @@ export const getIamPolicy: API.OperationMethod<
   GetIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetIamPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IamPolicyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetIamPolicyRequest>,
+  output: __S(536, __c33, 8) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -871,8 +871,8 @@ export const getIamResource: API.OperationMethod<
   GetIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetIamResourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<IamResourceResource>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetIamResourceRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<IamResourceResource>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -886,8 +886,8 @@ export const getIamResourceGroup: API.OperationMethod<
   GetIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetIamResourceGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IamGroupResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetIamResourceGroupRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const listIamLogKind: API.OperationMethod<
   ListIamLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListIamLogKindRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListIamLogKindResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListIamLogKindRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ListIamLogKindResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const listIamLogSubscription: API.OperationMethod<
   ListIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListIamLogSubscriptionRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListIamLogSubscriptionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListIamLogSubscriptionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ListIamLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const listIamPermissionsGroup: API.OperationMethod<
   ListIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListIamPermissionsGroupRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListIamPermissionsGroupResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListIamPermissionsGroupRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListIamPermissionsGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const listIamPolicy: API.OperationMethod<
   ListIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListIamPolicyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListIamPolicyResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListIamPolicyRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListIamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -961,8 +961,8 @@ export const listIamReferenceAction: API.OperationMethod<
   ListIamReferenceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListIamReferenceActionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListIamReferenceActionResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListIamReferenceActionRequest>,
+  output: __S(323, __c20, 3) as any as S.Schema<ListIamReferenceActionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const listIamReferenceResourceType: API.OperationMethod<
   ListIamReferenceResourceTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListIamReferenceResourceTypeRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListIamReferenceResourceTypeResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListIamReferenceResourceTypeRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ListIamReferenceResourceTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const listIamResource: API.OperationMethod<
   ListIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListIamResourceRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListIamResourceResponse>,
+  input: __S(354, __c22, 2) as any as S.Schema<ListIamResourceRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<ListIamResourceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1006,8 +1006,8 @@ export const listIamResourceGroup: API.OperationMethod<
   ListIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListIamResourceGroupRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListIamResourceGroupResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListIamResourceGroupRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<ListIamResourceGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1021,8 +1021,8 @@ export const putIamPermissionsGroup: API.OperationMethod<
   PutIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<PutIamPermissionsGroupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<IamPermissionsGroup>,
+  input: __S(384, __c24, 0) as any as S.Schema<PutIamPermissionsGroupRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1036,8 +1036,8 @@ export const putIamPolicy: API.OperationMethod<
   PutIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<PutIamPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IamPolicyResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<PutIamPolicyRequest>,
+  output: __S(536, __c33, 8) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1051,8 +1051,8 @@ export const putIamResource: API.OperationMethod<
   PutIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PutIamResourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<IamResourceResource>,
+  input: __S(416, __c26, 0) as any as S.Schema<PutIamResourceRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<IamResourceResource>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1066,8 @@ export const putIamResourceGroup: API.OperationMethod<
   PutIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PutIamResourceGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IamGroupResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<PutIamResourceGroupRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1077,39 +1077,47 @@ export const putIamResourceGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-          actions: __S(0, __c0, 0),
-          resourceURNs: __S(0, __c0, 0),
+          actions: __S(16, __c1, 0),
+          resourceURNs: __S(16, __c1, 0),
         }).pipe(T.Http({ method: "POST", uri: "/iam/authorization/check", code: 200 })),
       ).annotate({
         identifier: "CheckIamAuthorizationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedActions: S.optional(__S(0, __c0, 0)),
+          authorizedActions: S.optional(__S(16, __c1, 0)),
           resourceURN: S.optional(S.String),
-          unauthorizedActions: S.optional(__S(0, __c0, 0)),
+          unauthorizedActions: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "IamAuthorizeBatchResponse",
       });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "CheckIamAuthorizationResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceURN: S.String.pipe(T.Label()),
-          actions: __S(0, __c0, 0),
+          actions: __S(16, __c1, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1120,14 +1128,190 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckIamResourceAuthorizationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedActions: S.optional(__S(0, __c0, 0)),
-          unauthorizedActions: S.optional(__S(0, __c0, 0)),
+          authorizedActions: S.optional(__S(16, __c1, 0)),
+          unauthorizedActions: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "IamAuthorizeResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/iam/policy/{policyId}", code: 200 })),
+      ).annotate({ identifier: "DeleteIamPolicyRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteIamResourceGroupRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceURN: S.String.pipe(T.Label()),
+          key: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/iam/resource/{resourceURN}/tag/{key}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteIamResourceTagRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/log/kind/{name}", code: 200 })),
+      ).annotate({ identifier: "GetIamLogKindRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          additionalReturnedFields: S.optional(__S(16, __c1, 0)),
+          createdAt: S.optional(S.String),
+          displayName: S.optional(S.String),
+          kindId: S.optional(S.String),
+          name: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbaasLogsLogKind" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/iam/log/subscription/{subscriptionId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIamLogSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DbaasLogsLogSubscriptionResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          kind: S.optional(S.String),
+          resource: S.optional(__S(113, __c7, 1)),
+          serviceName: S.optional(S.String),
+          streamId: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbaasLogsLogSubscription" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissionsGroupURN: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/iam/permissionsGroup/{permissionsGroupURN}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIamPermissionsGroupRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String.pipe(T.Label()),
+          details: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/policy/{policyId}", code: 200 })),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceURN: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/resource/{resourceURN}", code: 200 })),
+      ).annotate({ identifier: "GetIamResourceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          owner: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(560, __c35, 0))),
+          type: S.optional(S.String),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceResource" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          details: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
+      ).annotate({
+        identifier: "GetIamResourceGroupRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/log/kind", code: 200 })),
+      ).annotate({ identifier: "ListIamLogKindRequest" });
+    case 1:
+      return S.suspend(() => __S(16, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamLogKindResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -1138,7 +1322,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1149,13 +1333,214 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DbaasLogsLogSubscriptionResponse",
       });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/log/subscription", code: 200 })),
+      ).annotate({
+        identifier: "ListIamLogSubscriptionRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(16, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamLogSubscriptionResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/permissionsGroup", code: 200 })),
+      ).annotate({
+        identifier: "ListIamPermissionsGroupRequest",
+      });
     case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
+      return S.suspend(() => __S(289, __c18, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamPermissionsGroupResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          details: S.optional(S.Boolean.pipe(T.Query())),
+          identity: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          readOnly: S.optional(S.Boolean.pipe(T.Query())),
+          resourceURN: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/policy", code: 200 })),
+      ).annotate({ identifier: "ListIamPolicyRequest" });
+    case 1:
+      return S.Array(__S(536, __c33, 8));
+    case 2:
+      return S.suspend(() => __S(305, __c19, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamPolicyResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/reference/action", code: 200 })),
+      ).annotate({
+        identifier: "ListIamReferenceActionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          categories: S.optional(__S(16, __c1, 0)),
+          description: S.optional(S.String),
+          hasQueryParameters: S.optional(S.Boolean),
+          resourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamReferenceAction" });
+    case 2:
+      return S.Array(__S(321, __c20, 1));
+    case 3:
+      return S.suspend(() => __S(322, __c20, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamReferenceActionResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/reference/resource/type", code: 200 })),
+      ).annotate({
+        identifier: "ListIamReferenceResourceTypeRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c40, 0));
+    case 1:
+      return S.Record(S.String, __S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          resourceType: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          resourceURN: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          tags: S.optional(__S(353, __c22, 1).pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/resource", code: 200 })),
+      ).annotate({ identifier: "ListIamResourceRequest" });
+    case 3:
+      return S.Array(__S(176, __c11, 0));
+    case 4:
+      return S.suspend(() => __S(355, __c22, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamResourceResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(S.Boolean.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/iam/resourceGroup", code: 200 })),
+      ).annotate({
+        identifier: "ListIamResourceGroupRequest",
+      });
+    case 1:
+      return S.Array(__S(594, __c37, 2));
+    case 2:
+      return S.suspend(() => __S(369, __c23, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIamResourceGroupResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissionsGroupURN: S.String.pipe(T.Label()),
+          description: S.String,
+          name: S.String,
+          permissions: __S(498, __c31, 2),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/iam/permissionsGroup/{permissionsGroupURN}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutIamPermissionsGroupRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String.pipe(T.Label()),
+          conditions: S.optional(S.NullOr(__S(529, __c33, 1))),
+          description: S.optional(S.String),
+          expiredAt: S.optional(S.NullOr(S.String)),
+          identities: __S(16, __c1, 0),
+          name: S.String,
+          permissions: __S(498, __c31, 2),
+          permissionsGroups: S.optional(S.NullOr(__S(545, __c34, 1))),
+          resources: __S(547, __c34, 3),
+        }).pipe(T.Http({ method: "PUT", uri: "/iam/policy/{policyId}", code: 200 })),
+      ).annotate({ identifier: "PutIamPolicyRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceURN: S.String.pipe(T.Label()),
+          tags: S.optional(S.NullOr(__S(560, __c35, 0))),
+        }).pipe(T.Http({ method: "PUT", uri: "/iam/resource/{resourceURN}", code: 200 })),
+      ).annotate({ identifier: "PutIamResourceRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/iam/log/url", code: 200 })),
       ).annotate({ identifier: "CreateIamLogUrlRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -1164,33 +1549,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DbaasLogsTemporaryLogsLink",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-        }),
-      ).annotate({ identifier: "IamPolicyAction" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allow: S.optional(S.NullOr(__S(12, __c1, 4))),
-          deny: S.optional(S.NullOr(__S(12, __c1, 4))),
-          except: S.optional(S.NullOr(__S(12, __c1, 4))),
-        }),
-      ).annotate({ identifier: "IamPolicyPermissions" });
-    case 6:
+          groupId: S.String.pipe(T.Label()),
+          name: S.String,
+          resources: __S(609, __c38, 1),
+        }).pipe(T.Http({ method: "PUT", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
+      ).annotate({
+        identifier: "PutIamResourceGroupRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           name: S.String,
-          permissions: __S(13, __c1, 5),
+          permissions: __S(498, __c31, 2),
         }).pipe(T.Http({ method: "POST", uri: "/iam/permissionsGroup", code: 200 })),
       ).annotate({
         identifier: "CreateIamPermissionsGroupRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -1198,76 +1589,76 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           owner: S.optional(S.String),
-          permissions: __S(13, __c1, 5),
+          permissions: __S(498, __c31, 2),
           updatedAt: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamPermissionsGroup" });
   }
 }
-function __c2(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(18, __c2, 2)));
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+        }),
+      ).annotate({ identifier: "IamPolicyAction" });
     case 1:
-      return S.Record(S.String, S.String);
+      return S.Array(__S(496, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(__S(16, __c2, 0))),
-          operator: S.optional(S.String),
-          values: S.optional(S.NullOr(__S(17, __c2, 1))),
+          allow: S.optional(S.NullOr(__S(497, __c31, 1))),
+          deny: S.optional(S.NullOr(__S(497, __c31, 1))),
+          except: S.optional(S.NullOr(__S(497, __c31, 1))),
         }),
-      ).annotate({ identifier: "IamPolicyCondition" });
-    case 3:
+      ).annotate({ identifier: "IamPolicyPermissions" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          urn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IamPolicyPermissionsGroupInput",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          urn: S.String,
-        }),
-      ).annotate({ identifier: "IamPolicyResourceInput" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(S.NullOr(__S(18, __c2, 2))),
+          conditions: S.optional(S.NullOr(__S(529, __c33, 1))),
           description: S.optional(S.String),
           expiredAt: S.optional(S.NullOr(S.String)),
-          identities: __S(0, __c0, 0),
+          identities: __S(16, __c1, 0),
           name: S.String,
-          permissions: __S(13, __c1, 5),
-          permissionsGroups: S.optional(S.NullOr(__S(20, __c2, 4))),
-          resources: __S(22, __c2, 6),
+          permissions: __S(498, __c31, 2),
+          permissionsGroups: S.optional(S.NullOr(__S(545, __c34, 1))),
+          resources: __S(547, __c34, 3),
         }).pipe(T.Http({ method: "POST", uri: "/iam/policy", code: 200 })),
       ).annotate({ identifier: "CreateIamPolicyRequest" });
   }
 }
-function __c3(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(529, __c33, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(S.NullOr(__S(528, __c33, 0))),
+          operator: S.optional(S.String),
+          values: S.optional(S.NullOr(__S(560, __c35, 0))),
+        }),
+      ).annotate({ identifier: "IamPolicyCondition" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
           owner: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(__S(13, __c1, 5))),
+          permissions: S.optional(S.NullOr(__S(498, __c31, 2))),
           urn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IamPolicyPermissionsGroup",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(530, __c33, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1275,82 +1666,105 @@ function __c3(j: number): any {
           readOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IamPolicyGroup" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
           owner: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(17, __c2, 1))),
+          tags: S.optional(S.NullOr(__S(560, __c35, 0))),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamPolicySingleResource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.NullOr(__S(26, __c3, 2))),
-          resource: S.optional(S.NullOr(__S(27, __c3, 3))),
-          urn: S.String,
-        }),
-      ).annotate({ identifier: "IamPolicyResource" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(__S(18, __c2, 2))),
+          group: S.optional(S.NullOr(__S(532, __c33, 4))),
+          resource: S.optional(S.NullOr(__S(533, __c33, 5))),
+          urn: S.String,
+        }),
+      ).annotate({ identifier: "IamPolicyResource" });
+    case 7:
+      return S.Array(__S(534, __c33, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(S.NullOr(__S(529, __c33, 1))),
           createdAt: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           expiredAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          identities: S.optional(__S(0, __c0, 0)),
+          identities: S.optional(__S(16, __c1, 0)),
           name: S.optional(S.String),
           owner: S.optional(S.String),
-          permissions: S.optional(__S(13, __c1, 5)),
-          permissionsGroups: S.optional(__S(25, __c3, 1)),
+          permissions: S.optional(__S(498, __c31, 2)),
+          permissionsGroups: S.optional(__S(531, __c33, 3)),
           readOnly: S.optional(S.Boolean),
-          resources: S.optional(__S(29, __c3, 5)),
+          resources: S.optional(__S(535, __c33, 7)),
           updatedAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IamPolicyResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          urn: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IamGroupResourceInput" });
   }
 }
-function __c4(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
+      return S.suspend(() =>
+        S.Struct({
+          urn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IamPolicyPermissionsGroupInput",
+      });
     case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          urn: S.String,
+        }),
+      ).annotate({ identifier: "IamPolicyResourceInput" });
+    case 3:
+      return S.Array(__S(546, __c34, 2));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          resources: S.optional(__S(32, __c4, 0)),
+          resources: S.optional(__S(609, __c38, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/iam/resourceGroup", code: 200 })),
       ).annotate({
         identifier: "CreateIamResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           owner: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(17, __c2, 1))),
+          tags: S.optional(S.NullOr(__S(560, __c35, 0))),
           type: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IamGroupResource" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(592, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -1358,12 +1772,29 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          resources: S.optional(__S(35, __c4, 3)),
+          resources: S.optional(__S(593, __c37, 1)),
           updatedAt: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamGroupResponse" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          urn: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IamGroupResourceInput" });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceURN: S.String.pipe(T.Label()),
@@ -1373,11 +1804,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateIamResourceTagRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateIamResourceTagResponse",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1389,7 +1828,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1409,320 +1848,8 @@ function __c5(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteIamPermissionsGroupResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policyId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/iam/policy/{policyId}", code: 200 })),
-      ).annotate({ identifier: "DeleteIamPolicyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteIamResourceGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceURN: S.String.pipe(T.Label()),
-          key: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/iam/resource/{resourceURN}/tag/{key}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteIamResourceTagRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/log/kind/{name}", code: 200 })),
-      ).annotate({ identifier: "GetIamLogKindRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          additionalReturnedFields: S.optional(__S(0, __c0, 0)),
-          createdAt: S.optional(S.String),
-          displayName: S.optional(S.String),
-          kindId: S.optional(S.String),
-          name: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DbaasLogsLogKind" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/iam/log/subscription/{subscriptionId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIamLogSubscriptionRequest",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DbaasLogsLogSubscriptionResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          kind: S.optional(S.String),
-          resource: S.optional(__S(48, __c6, 0)),
-          serviceName: S.optional(S.String),
-          streamId: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DbaasLogsLogSubscription" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          permissionsGroupURN: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/iam/permissionsGroup/{permissionsGroupURN}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIamPermissionsGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policyId: S.String.pipe(T.Label()),
-          details: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/policy/{policyId}", code: 200 })),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceURN: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/resource/{resourceURN}", code: 200 })),
-      ).annotate({ identifier: "GetIamResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          owner: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(17, __c2, 1))),
-          type: S.optional(S.String),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          details: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
-      ).annotate({
-        identifier: "GetIamResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/log/kind", code: 200 })),
-      ).annotate({ identifier: "ListIamLogKindRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(0, __c0, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamLogKindResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/log/subscription", code: 200 })),
-      ).annotate({
-        identifier: "ListIamLogSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() => __S(0, __c0, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamLogSubscriptionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/permissionsGroup", code: 200 })),
-      ).annotate({
-        identifier: "ListIamPermissionsGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
-      return S.suspend(() => __S(60, __c7, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamPermissionsGroupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          details: S.optional(S.Boolean.pipe(T.Query())),
-          identity: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          readOnly: S.optional(S.Boolean.pipe(T.Query())),
-          resourceURN: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/policy", code: 200 })),
-      ).annotate({ identifier: "ListIamPolicyRequest" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(63, __c7, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamPolicyResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/reference/action", code: 200 })),
-      ).annotate({
-        identifier: "ListIamReferenceActionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          categories: S.optional(__S(0, __c0, 0)),
-          description: S.optional(S.String),
-          hasQueryParameters: S.optional(S.Boolean),
-          resourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamReferenceAction" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamReferenceActionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/reference/resource/type", code: 200 })),
-      ).annotate({
-        identifier: "ListIamReferenceResourceTypeRequest",
-      });
-    case 6:
-      return S.Array(__S(38, __c4, 6));
-    case 7:
-      return S.Record(S.String, __S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          resourceType: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          resourceURN: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          tags: S.optional(__S(71, __c8, 7).pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/resource", code: 200 })),
-      ).annotate({ identifier: "ListIamResourceRequest" });
-    case 1:
-      return S.Array(__S(53, __c6, 5));
-    case 2:
-      return S.suspend(() => __S(73, __c9, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamResourceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(S.Boolean.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/iam/resourceGroup", code: 200 })),
-      ).annotate({
-        identifier: "ListIamResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
-      return S.suspend(() => __S(76, __c9, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIamResourceGroupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          permissionsGroupURN: S.String.pipe(T.Label()),
-          description: S.String,
-          name: S.String,
-          permissions: __S(13, __c1, 5),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/iam/permissionsGroup/{permissionsGroupURN}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutIamPermissionsGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policyId: S.String.pipe(T.Label()),
-          conditions: S.optional(S.NullOr(__S(18, __c2, 2))),
-          description: S.optional(S.String),
-          expiredAt: S.optional(S.NullOr(S.String)),
-          identities: __S(0, __c0, 0),
-          name: S.String,
-          permissions: __S(13, __c1, 5),
-          permissionsGroups: S.optional(S.NullOr(__S(20, __c2, 4))),
-          resources: __S(22, __c2, 6),
-        }).pipe(T.Http({ method: "PUT", uri: "/iam/policy/{policyId}", code: 200 })),
-      ).annotate({ identifier: "PutIamPolicyRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceURN: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }).pipe(T.Http({ method: "PUT", uri: "/iam/resource/{resourceURN}", code: 200 })),
-      ).annotate({ identifier: "PutIamResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          name: S.String,
-          resources: __S(32, __c4, 0),
-        }).pipe(T.Http({ method: "PUT", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
-      ).annotate({
-        identifier: "PutIamResourceGroupRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

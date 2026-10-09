@@ -4600,8 +4600,8 @@ export const batchGetStatsVideos: API.OperationMethod<
   BatchGetStatsVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetStatsVideosRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchGetStatsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<BatchGetStatsVideosRequest>,
+  output: __S(1510, __c47, 6) as any as S.Schema<BatchGetStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4615,8 +4615,8 @@ export const bindLiveBroadcasts: API.OperationMethod<
   BindLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BindLiveBroadcastsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<LiveBroadcast>,
+  input: __S(2016, __c63, 0) as any as S.Schema<BindLiveBroadcastsRequest>,
+  output: __S(2093, __c65, 13) as any as S.Schema<LiveBroadcast>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4630,8 +4630,8 @@ export const deleteCaptions: API.OperationMethod<
   DeleteCaptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteCaptionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteCaptionsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteCaptionsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteCaptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4645,8 +4645,8 @@ export const deleteChannelSections: API.OperationMethod<
   DeleteChannelSectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteChannelSectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteChannelSectionsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteChannelSectionsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteChannelSectionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4660,8 +4660,8 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteCommentsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteCommentsResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DeleteCommentsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4675,8 +4675,8 @@ export const deleteLiveBroadcasts: API.OperationMethod<
   DeleteLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteLiveBroadcastsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteLiveBroadcastsResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteLiveBroadcastsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteLiveBroadcastsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4690,8 +4690,8 @@ export const deleteLiveChatBans: API.OperationMethod<
   DeleteLiveChatBansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteLiveChatBansRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteLiveChatBansResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteLiveChatBansRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteLiveChatBansResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4705,8 +4705,8 @@ export const deleteLiveChatMessages: API.OperationMethod<
   DeleteLiveChatMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteLiveChatMessagesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteLiveChatMessagesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteLiveChatMessagesRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteLiveChatMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4725,8 +4725,8 @@ export const deleteLiveChatModerators: API.OperationMethod<
   DeleteLiveChatModeratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteLiveChatModeratorsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteLiveChatModeratorsResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteLiveChatModeratorsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteLiveChatModeratorsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4740,8 +4740,8 @@ export const deleteLiveStreams: API.OperationMethod<
   DeleteLiveStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteLiveStreamsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteLiveStreamsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteLiveStreamsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteLiveStreamsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4755,8 +4755,8 @@ export const deletePlaylistImages: API.OperationMethod<
   DeletePlaylistImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeletePlaylistImagesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeletePlaylistImagesResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeletePlaylistImagesRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeletePlaylistImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4770,8 +4770,8 @@ export const deletePlaylistItems: API.OperationMethod<
   DeletePlaylistItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeletePlaylistItemsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeletePlaylistItemsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeletePlaylistItemsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeletePlaylistItemsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4785,8 +4785,8 @@ export const deletePlaylists: API.OperationMethod<
   DeletePlaylistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeletePlaylistsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeletePlaylistsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeletePlaylistsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeletePlaylistsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4800,8 +4800,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteSubscriptionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteSubscriptionsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4815,8 +4815,8 @@ export const deleteThirdPartyLinks: API.OperationMethod<
   DeleteThirdPartyLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteThirdPartyLinksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteThirdPartyLinksResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteThirdPartyLinksRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteThirdPartyLinksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4830,8 +4830,8 @@ export const deleteVideos: API.OperationMethod<
   DeleteVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteVideosRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteVideosResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteVideosRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteVideosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4845,8 +4845,8 @@ export const downloadCaptions: API.OperationMethod<
   DownloadCaptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DownloadCaptionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DownloadCaptionsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DownloadCaptionsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DownloadCaptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4860,8 +4860,8 @@ export const getRatingVideos: API.OperationMethod<
   GetRatingVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetRatingVideosRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<VideoGetRatingResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetRatingVideosRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<VideoGetRatingResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4875,8 +4875,8 @@ export const getVideoTrainability: API.OperationMethod<
   GetVideoTrainabilityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetVideoTrainabilityRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<VideoTrainability>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetVideoTrainabilityRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<VideoTrainability>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4890,8 +4890,8 @@ export const insertAbuseReports: API.OperationMethod<
   InsertAbuseReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<InsertAbuseReportsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<AbuseReport>,
+  input: __S(454, __c14, 6) as any as S.Schema<InsertAbuseReportsRequest>,
+  output: __S(453, __c14, 5) as any as S.Schema<AbuseReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4905,8 +4905,8 @@ export const insertCaptions: API.OperationMethod<
   InsertCaptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<InsertCaptionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Caption>,
+  input: __S(480, __c15, 0) as any as S.Schema<InsertCaptionsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<Caption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4920,8 +4920,8 @@ export const insertChannelBanners: API.OperationMethod<
   InsertChannelBannersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<InsertChannelBannersRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ChannelBannerResource>,
+  input: __S(545, __c17, 1) as any as S.Schema<InsertChannelBannersRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ChannelBannerResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4935,8 +4935,8 @@ export const insertChannelSections: API.OperationMethod<
   InsertChannelSectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<InsertChannelSectionsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ChannelSection>,
+  input: __S(576, __c18, 0) as any as S.Schema<InsertChannelSectionsRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<ChannelSection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4950,8 +4950,8 @@ export const insertComments: API.OperationMethod<
   InsertCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<InsertCommentsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Comment>,
+  input: __S(640, __c20, 0) as any as S.Schema<InsertCommentsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4965,8 +4965,8 @@ export const insertCommentThreads: API.OperationMethod<
   InsertCommentThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<InsertCommentThreadsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<CommentThread>,
+  input: __S(704, __c22, 0) as any as S.Schema<InsertCommentThreadsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<CommentThread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4985,8 +4985,8 @@ export const insertCuepointLiveBroadcasts: API.OperationMethod<
   InsertCuepointLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<InsertCuepointLiveBroadcastsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Cuepoint>,
+  input: __S(801, __c25, 1) as any as S.Schema<InsertCuepointLiveBroadcastsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<Cuepoint>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5000,8 +5000,8 @@ export const insertLiveBroadcasts: API.OperationMethod<
   InsertLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<InsertLiveBroadcastsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<LiveBroadcast>,
+  input: __S(832, __c26, 0) as any as S.Schema<InsertLiveBroadcastsRequest>,
+  output: __S(2093, __c65, 13) as any as S.Schema<LiveBroadcast>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5015,8 +5015,8 @@ export const insertLiveChatBans: API.OperationMethod<
   InsertLiveChatBansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<InsertLiveChatBansRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<LiveChatBan>,
+  input: __S(866, __c27, 2) as any as S.Schema<InsertLiveChatBansRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<LiveChatBan>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5030,8 +5030,8 @@ export const insertLiveChatMessages: API.OperationMethod<
   InsertLiveChatMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<InsertLiveChatMessagesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<LiveChatMessage>,
+  input: __S(928, __c29, 0) as any as S.Schema<InsertLiveChatMessagesRequest>,
+  output: __S(1010, __c31, 18) as any as S.Schema<LiveChatMessage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5050,8 +5050,8 @@ export const insertLiveChatModerators: API.OperationMethod<
   InsertLiveChatModeratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<InsertLiveChatModeratorsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<LiveChatModerator>,
+  input: __S(1024, __c32, 0) as any as S.Schema<InsertLiveChatModeratorsRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<LiveChatModerator>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5065,8 +5065,8 @@ export const insertLiveStreams: API.OperationMethod<
   InsertLiveStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<InsertLiveStreamsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<LiveStream>,
+  input: __S(1088, __c34, 0) as any as S.Schema<InsertLiveStreamsRequest>,
+  output: __S(1128, __c35, 8) as any as S.Schema<LiveStream>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5080,8 +5080,8 @@ export const insertPlaylistImages: API.OperationMethod<
   InsertPlaylistImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<InsertPlaylistImagesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<PlaylistImage>,
+  input: __S(1152, __c36, 0) as any as S.Schema<InsertPlaylistImagesRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<PlaylistImage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5095,8 +5095,8 @@ export const insertPlaylistItems: API.OperationMethod<
   InsertPlaylistItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<InsertPlaylistItemsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<PlaylistItem>,
+  input: __S(1216, __c38, 0) as any as S.Schema<InsertPlaylistItemsRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<PlaylistItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5110,8 +5110,8 @@ export const insertPlaylists: API.OperationMethod<
   InsertPlaylistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<InsertPlaylistsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<Playlist>,
+  input: __S(1312, __c41, 0) as any as S.Schema<InsertPlaylistsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Playlist>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5125,8 +5125,8 @@ export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<InsertSubscriptionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Subscription>,
+  input: __S(1408, __c44, 0) as any as S.Schema<InsertSubscriptionsRequest>,
+  output: __S(1443, __c45, 3) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5140,8 +5140,8 @@ export const insertTests: API.OperationMethod<
   InsertTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<InsertTestsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<TestItem>,
+  input: __S(1473, __c46, 1) as any as S.Schema<InsertTestsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<TestItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5155,8 +5155,8 @@ export const insertThirdPartyLinks: API.OperationMethod<
   InsertThirdPartyLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<InsertThirdPartyLinksRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ThirdPartyLink>,
+  input: __S(1568, __c49, 0) as any as S.Schema<InsertThirdPartyLinksRequest>,
+  output: __S(1606, __c50, 6) as any as S.Schema<ThirdPartyLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5170,8 +5170,8 @@ export const insertVideos: API.OperationMethod<
   InsertVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<InsertVideosRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Video>,
+  input: __S(1632, __c51, 0) as any as S.Schema<InsertVideosRequest>,
+  output: __S(1691, __c52, 27) as any as S.Schema<Video>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5186,8 +5186,8 @@ export const listActivities: API.PaginatedOperationMethod<
   GcpOpContext,
   Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListActivitiesRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ActivityListResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListActivitiesRequest>,
+  output: __S(1707, __c53, 11) as any as S.Schema<ActivityListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5202,8 +5202,8 @@ export const listCaptions: API.OperationMethod<
   ListCaptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListCaptionsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<CaptionListResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListCaptionsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<CaptionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5218,8 +5218,8 @@ export const listChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   Channel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListChannelsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ChannelListResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ChannelListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5234,8 +5234,8 @@ export const listChannelSections: API.OperationMethod<
   ListChannelSectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListChannelSectionsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<ChannelSectionListResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListChannelSectionsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ChannelSectionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5250,8 +5250,8 @@ export const listComments: API.PaginatedOperationMethod<
   GcpOpContext,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<ListCommentsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<CommentListResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListCommentsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CommentListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5267,8 +5267,8 @@ export const listCommentThreads: API.PaginatedOperationMethod<
   GcpOpContext,
   CommentThread
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListCommentThreadsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<CommentThreadListResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListCommentThreadsRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<CommentThreadListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5283,8 +5283,8 @@ export const listI18nLanguages: API.OperationMethod<
   ListI18nLanguagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListI18nLanguagesRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<I18nLanguageListResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListI18nLanguagesRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<I18nLanguageListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5298,8 +5298,8 @@ export const listI18nRegions: API.OperationMethod<
   ListI18nRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListI18nRegionsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<I18nRegionListResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListI18nRegionsRequest>,
+  output: __S(1988, __c62, 4) as any as S.Schema<I18nRegionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5314,8 +5314,8 @@ export const listLiveBroadcasts: API.PaginatedOperationMethod<
   GcpOpContext,
   LiveBroadcast
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListLiveBroadcastsRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<LiveBroadcastListResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListLiveBroadcastsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<LiveBroadcastListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5331,8 +5331,8 @@ export const listLiveChatMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   LiveChatMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListLiveChatMessagesRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<LiveChatMessageListResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListLiveChatMessagesRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<LiveChatMessageListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5348,8 @@ export const listLiveChatModerators: API.PaginatedOperationMethod<
   GcpOpContext,
   LiveChatModerator
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListLiveChatModeratorsRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<LiveChatModeratorListResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListLiveChatModeratorsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<LiveChatModeratorListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5365,8 +5365,8 @@ export const listLiveStreams: API.PaginatedOperationMethod<
   GcpOpContext,
   LiveStream
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<ListLiveStreamsRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<LiveStreamListResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListLiveStreamsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<LiveStreamListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5382,8 +5382,8 @@ export const listMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListMembersRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<MemberListResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(2280, __c71, 8) as any as S.Schema<MemberListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5398,8 +5398,8 @@ export const listMembershipsLevels: API.OperationMethod<
   ListMembershipsLevelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListMembershipsLevelsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<MembershipsLevelListResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListMembershipsLevelsRequest>,
+  output: __S(2309, __c72, 5) as any as S.Schema<MembershipsLevelListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5414,8 +5414,8 @@ export const listPlaylistImages: API.PaginatedOperationMethod<
   GcpOpContext,
   PlaylistImage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListPlaylistImagesRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<PlaylistImageListResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListPlaylistImagesRequest>,
+  output: __S(2338, __c73, 2) as any as S.Schema<PlaylistImageListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5431,8 +5431,8 @@ export const listPlaylistItems: API.PaginatedOperationMethod<
   GcpOpContext,
   PlaylistItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<ListPlaylistItemsRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<PlaylistItemListResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListPlaylistItemsRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<PlaylistItemListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5448,8 +5448,8 @@ export const listPlaylists: API.PaginatedOperationMethod<
   GcpOpContext,
   Playlist
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListPlaylistsRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<PlaylistListResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListPlaylistsRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<PlaylistListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5465,8 +5465,8 @@ export const listSearch: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListSearchRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<SearchListResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListSearchRequest>,
+  output: __S(2436, __c76, 4) as any as S.Schema<SearchListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5482,8 +5482,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<SubscriptionListResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<SubscriptionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5499,8 +5499,8 @@ export const listSuperChatEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   SuperChatEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ListSuperChatEventsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<SuperChatEventListResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListSuperChatEventsRequest>,
+  output: __S(2564, __c80, 4) as any as S.Schema<SuperChatEventListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5515,8 +5515,8 @@ export const listThirdPartyLinks: API.OperationMethod<
   ListThirdPartyLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListThirdPartyLinksRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<ThirdPartyLinkListResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListThirdPartyLinksRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<ThirdPartyLinkListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5530,8 +5530,8 @@ export const listVideoAbuseReportReasons: API.OperationMethod<
   ListVideoAbuseReportReasonsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListVideoAbuseReportReasonsRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<VideoAbuseReportReasonListResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListVideoAbuseReportReasonsRequest>,
+  output: __S(2630, __c82, 6) as any as S.Schema<VideoAbuseReportReasonListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5545,8 +5545,8 @@ export const listVideoCategories: API.OperationMethod<
   ListVideoCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListVideoCategoriesRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<VideoCategoryListResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListVideoCategoriesRequest>,
+  output: __S(2660, __c83, 4) as any as S.Schema<VideoCategoryListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5561,8 +5561,8 @@ export const listVideos: API.PaginatedOperationMethod<
   GcpOpContext,
   Video
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<ListVideosRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<VideoListResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListVideosRequest>,
+  output: __S(2690, __c84, 2) as any as S.Schema<VideoListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5577,8 +5577,8 @@ export const markAsSpamComments: API.OperationMethod<
   MarkAsSpamCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<MarkAsSpamCommentsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<MarkAsSpamCommentsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<MarkAsSpamCommentsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<MarkAsSpamCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5592,8 +5592,8 @@ export const rateVideos: API.OperationMethod<
   RateVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<RateVideosRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<RateVideosResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<RateVideosRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<RateVideosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5607,8 +5607,8 @@ export const reportAbuseVideos: API.OperationMethod<
   ReportAbuseVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ReportAbuseVideosRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ReportAbuseVideosResponse>,
+  input: __S(2785, __c87, 1) as any as S.Schema<ReportAbuseVideosRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<ReportAbuseVideosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5627,8 +5627,8 @@ export const setModerationStatusComments: API.OperationMethod<
   SetModerationStatusCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<SetModerationStatusCommentsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<SetModerationStatusCommentsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<SetModerationStatusCommentsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SetModerationStatusCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5642,8 +5642,8 @@ export const setThumbnails: API.OperationMethod<
   SetThumbnailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<SetThumbnailsRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<ThumbnailSetResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<SetThumbnailsRequest>,
+  output: __S(2882, __c90, 2) as any as S.Schema<ThumbnailSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5657,8 +5657,8 @@ export const setWatermarks: API.OperationMethod<
   SetWatermarksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<SetWatermarksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<SetWatermarksResponse>,
+  input: __S(2915, __c91, 3) as any as S.Schema<SetWatermarksRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<SetWatermarksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5673,8 +5673,8 @@ export const streamYoutubeV3LiveChatMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   LiveChatMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<StreamYoutubeV3LiveChatMessagesRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<LiveChatMessageListResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<StreamYoutubeV3LiveChatMessagesRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<LiveChatMessageListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5694,8 +5694,8 @@ export const transitionLiveBroadcasts: API.OperationMethod<
   TransitionLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<TransitionLiveBroadcastsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<LiveBroadcast>,
+  input: __S(2976, __c93, 0) as any as S.Schema<TransitionLiveBroadcastsRequest>,
+  output: __S(2093, __c65, 13) as any as S.Schema<LiveBroadcast>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5714,8 +5714,8 @@ export const transitionLiveChatMessages: API.OperationMethod<
   TransitionLiveChatMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<TransitionLiveChatMessagesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<LiveChatMessage>,
+  input: __S(3008, __c94, 0) as any as S.Schema<TransitionLiveChatMessagesRequest>,
+  output: __S(1010, __c31, 18) as any as S.Schema<LiveChatMessage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5729,8 +5729,8 @@ export const unsetWatermarks: API.OperationMethod<
   UnsetWatermarksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<UnsetWatermarksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UnsetWatermarksResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UnsetWatermarksRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<UnsetWatermarksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5744,8 +5744,8 @@ export const updateCaptions: API.OperationMethod<
   UpdateCaptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UpdateCaptionsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Caption>,
+  input: __S(3072, __c96, 0) as any as S.Schema<UpdateCaptionsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<Caption>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5759,8 +5759,8 @@ export const updateChannels: API.OperationMethod<
   UpdateChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<UpdateChannelsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<Channel>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpdateChannelsRequest>,
+  output: __S(1845, __c57, 21) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5774,8 +5774,8 @@ export const updateChannelSections: API.OperationMethod<
   UpdateChannelSectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<UpdateChannelSectionsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ChannelSection>,
+  input: __S(3136, __c98, 0) as any as S.Schema<UpdateChannelSectionsRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<ChannelSection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5789,8 +5789,8 @@ export const updateComments: API.OperationMethod<
   UpdateCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<UpdateCommentsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Comment>,
+  input: __S(3168, __c99, 0) as any as S.Schema<UpdateCommentsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5804,8 +5804,8 @@ export const updateLiveBroadcasts: API.OperationMethod<
   UpdateLiveBroadcastsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<UpdateLiveBroadcastsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<LiveBroadcast>,
+  input: __S(3232, __c101, 0) as any as S.Schema<UpdateLiveBroadcastsRequest>,
+  output: __S(2093, __c65, 13) as any as S.Schema<LiveBroadcast>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5819,8 +5819,8 @@ export const updateLiveStreams: API.OperationMethod<
   UpdateLiveStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<UpdateLiveStreamsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<LiveStream>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateLiveStreamsRequest>,
+  output: __S(1128, __c35, 8) as any as S.Schema<LiveStream>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5834,8 +5834,8 @@ export const updatePlaylistImages: API.OperationMethod<
   UpdatePlaylistImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<UpdatePlaylistImagesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<PlaylistImage>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UpdatePlaylistImagesRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<PlaylistImage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5849,8 +5849,8 @@ export const updatePlaylistItems: API.OperationMethod<
   UpdatePlaylistItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<UpdatePlaylistItemsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<PlaylistItem>,
+  input: __S(3328, __c104, 0) as any as S.Schema<UpdatePlaylistItemsRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<PlaylistItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5864,8 +5864,8 @@ export const updatePlaylists: API.OperationMethod<
   UpdatePlaylistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdatePlaylistsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<Playlist>,
+  input: __S(3360, __c105, 0) as any as S.Schema<UpdatePlaylistsRequest>,
+  output: __S(1380, __c43, 4) as any as S.Schema<Playlist>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5879,8 +5879,8 @@ export const updateThirdPartyLinks: API.OperationMethod<
   UpdateThirdPartyLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<UpdateThirdPartyLinksRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ThirdPartyLink>,
+  input: __S(3392, __c106, 0) as any as S.Schema<UpdateThirdPartyLinksRequest>,
+  output: __S(1606, __c50, 6) as any as S.Schema<ThirdPartyLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5894,8 +5894,8 @@ export const updateVideos: API.OperationMethod<
   UpdateVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<UpdateVideosRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Video>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UpdateVideosRequest>,
+  output: __S(1691, __c52, 27) as any as S.Schema<Video>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5905,316 +5905,6 @@ export const updateVideos: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "youtube/v3/videos:batchGetStats",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetStatsVideosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          viewCount: S.optional(S.String),
-          commentCount: S.optional(S.String),
-          likeCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoStatsStatistics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          publishTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoStatsSnippet" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoStatsContentDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          statistics: S.optional(__S(2, __c0, 2)),
-          snippet: S.optional(__S(3, __c0, 3)),
-          kind: S.optional(S.String),
-          contentDetails: S.optional(__S(4, __c0, 4)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoStat" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          items: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "BatchGetStatsResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          streamId: S.optional(S.String.pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/liveBroadcasts/bind",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BindLiveBroadcastsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleStrategy: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          repeatIntervalSecs: S.optional(S.Number),
-          pauseAdsUntil: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CuepointSchedule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cuepointSchedule: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "LiveBroadcastMonetizationDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Thumbnail" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxres: S.optional(__S(11, __c1, 3)),
-          uhd: S.optional(__S(11, __c1, 3)),
-          qhd: S.optional(__S(11, __c1, 3)),
-          fhd: S.optional(__S(11, __c1, 3)),
-          default: S.optional(__S(11, __c1, 3)),
-          standard: S.optional(__S(11, __c1, 3)),
-          high: S.optional(__S(11, __c1, 3)),
-          medium: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ThumbnailDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scheduledEndTime: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
-          scheduledStartTime: S.optional(S.String),
-          title: S.optional(S.String),
-          categoryId: S.optional(S.String),
-          description: S.optional(S.String),
-          actualEndTime: S.optional(S.String),
-          channelId: S.optional(S.String),
-          actualStartTime: S.optional(S.String),
-          liveChatId: S.optional(S.String),
-          publishedAt: S.optional(S.String),
-          isDefaultBroadcast: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LiveBroadcastSnippet" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          concurrentViewers: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiveBroadcastStatistics" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selfDeclaredMadeForKids: S.optional(S.Boolean),
-          lifeCycleStatus: S.optional(S.String),
-          liveBroadcastPriority: S.optional(S.String),
-          madeForKids: S.optional(S.Boolean),
-          recordingStatus: S.optional(S.String),
-          privacyStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiveBroadcastStatus" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enableMonitorStream: S.optional(S.Boolean),
-          embedHtml: S.optional(S.String),
-          broadcastStreamDelayMs: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MonitorStreamInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Interval" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          excludedRegionCodes: S.optional(__S(0, __c0, 0)),
-          interval: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "AvailabilityConfigGlobalConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          interval: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "AvailabilityConfigRegionsConfigRegionInterval",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionIntervals: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "AvailabilityConfigRegionsConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          globalConfig: S.optional(__S(18, __c2, 2)),
-          regionsConfig: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "AvailabilityConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boundStreamLastUpdateTimeMs: S.optional(S.String),
-          mesh: S.optional(S.String),
-          monitorStream: S.optional(__S(16, __c2, 0)),
-          enableDvr: S.optional(S.Boolean),
-          projection: S.optional(S.String),
-          enableClosedCaptions: S.optional(S.Boolean),
-          boundStreamId: S.optional(S.String),
-          enableEmbed: S.optional(S.Boolean),
-          latencyPreference: S.optional(S.String),
-          enableAutoStop: S.optional(S.Boolean),
-          enableLowLatency: S.optional(S.Boolean),
-          closedCaptionsType: S.optional(S.String),
-          stereoLayout: S.optional(S.String),
-          enableContentEncryption: S.optional(S.Boolean),
-          enableAutoStart: S.optional(S.Boolean),
-          availabilityConfig: S.optional(__S(22, __c2, 6)),
-          recordFromStart: S.optional(S.Boolean),
-          startWithSlate: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "LiveBroadcastContentDetails",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          monetizationDetails: S.optional(__S(10, __c1, 2)),
-          etag: S.optional(S.String),
-          snippet: S.optional(__S(13, __c1, 5)),
-          statistics: S.optional(__S(14, __c1, 6)),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          status: S.optional(__S(15, __c1, 7)),
-          contentDetails: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "LiveBroadcast" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          onBehalfOf: S.optional(S.String.pipe(T.Query())),
-          id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "youtube/v3/captions",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCaptionsRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCaptionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "youtube/v3/channelSections",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteChannelSectionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "youtube/v3/comments",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCommentsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "youtube/v3/liveBroadcasts",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLiveBroadcastsRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Query()),
@@ -6228,7 +5918,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteLiveChatBansRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Query()),
@@ -6244,7 +5938,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6260,11 +5954,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteLiveChatModeratorsRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteLiveChatModeratorsResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -6278,7 +5980,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteLiveStreamsRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -6293,7 +5999,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePlaylistImagesRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Query()),
@@ -6308,7 +6018,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePlaylistItemsRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -6321,7 +6035,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePlaylistsRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Query()),
@@ -6335,11 +6053,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteSubscriptionsRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           externalChannelId: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           linkingToken: S.String.pipe(T.Query()),
           type: S.String.pipe(T.Query()),
         }).pipe(
@@ -6354,7 +6076,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6369,7 +6091,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVideosRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tfmt: S.optional(S.String.pipe(T.Query())),
@@ -6385,10 +6111,14 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DownloadCaptionsRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: __S(0, __c0, 0).pipe(T.Query()),
+          id: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6398,26 +6128,30 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRatingVideosRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           videoId: S.optional(S.String),
           rating: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoRating" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(44, __c5, 4)),
+          items: S.optional(__S(386, __c12, 2)),
           visitorId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoGetRatingResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String.pipe(T.Query())),
@@ -6431,18 +6165,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetVideoTrainabilityRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           videoId: S.optional(S.String),
           kind: S.optional(S.String),
-          permitted: S.optional(__S(0, __c0, 0)),
+          permitted: S.optional(__S(1536, __c48, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoTrainability" });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6455,11 +6189,11 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          entity: S.optional(__S(48, __c6, 0)),
+          entity: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "RelatedEntity" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(449, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6467,21 +6201,21 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AbuseType" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
+      return S.Array(__S(451, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          subject: S.optional(__S(48, __c6, 0)),
-          relatedEntities: S.optional(__S(50, __c6, 2)),
-          abuseTypes: S.optional(__S(52, __c6, 4)),
+          subject: S.optional(__S(448, __c14, 0)),
+          relatedEntities: S.optional(__S(450, __c14, 2)),
+          abuseTypes: S.optional(__S(452, __c14, 4)),
         }),
       ).annotate({ identifier: "AbuseReport" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(453, __c14, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6492,7 +6226,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "InsertAbuseReportsRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOf: S.optional(S.String.pipe(T.Query())),
+          sync: S.optional(S.Boolean.pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/captions",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertCaptionsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6510,36 +6268,20 @@ function __c6(j: number): any {
           trackKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaptionSnippet" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          snippet: S.optional(__S(55, __c6, 7)),
+          snippet: S.optional(__S(512, __c16, 0)),
           etag: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Caption" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOf: S.optional(S.String.pipe(T.Query())),
-          sync: S.optional(S.Boolean.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/captions",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertCaptionsRequest" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
@@ -6547,13 +6289,13 @@ function __c7(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelBannerResource" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channelId: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6564,68 +6306,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InsertChannelBannersRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ChannelSectionLocalization",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          localized: S.optional(__S(60, __c7, 4)),
-          type: S.optional(S.String),
-          channelId: S.optional(S.String),
-          style: S.optional(S.String),
-          position: S.optional(S.Number),
-          defaultLanguage: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChannelSectionSnippet" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channels: S.optional(__S(0, __c0, 0)),
-          playlists: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ChannelSectionContentDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          countries: S.optional(__S(0, __c0, 0)),
-          regions: S.optional(__S(0, __c0, 0)),
-          languages: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ChannelSectionTargeting" });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(60, __c7, 4));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          snippet: S.optional(__S(61, __c7, 5)),
-          contentDetails: S.optional(__S(62, __c7, 6)),
-          etag: S.optional(S.String),
-          targeting: S.optional(__S(63, __c7, 7)),
-          localizations: S.optional(__S(64, __c8, 0)),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChannelSection" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(613, __c19, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6636,7 +6327,83 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsertChannelSectionsRequest",
       });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ChannelSectionLocalization",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          localized: S.optional(__S(608, __c19, 0)),
+          type: S.optional(S.String),
+          channelId: S.optional(S.String),
+          style: S.optional(S.String),
+          position: S.optional(S.Number),
+          defaultLanguage: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChannelSectionSnippet" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          channels: S.optional(__S(1536, __c48, 0)),
+          playlists: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "ChannelSectionContentDetails",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          countries: S.optional(__S(1536, __c48, 0)),
+          regions: S.optional(__S(1536, __c48, 0)),
+          languages: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({ identifier: "ChannelSectionTargeting" });
+    case 4:
+      return S.Record(S.String, __S(608, __c19, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(__S(609, __c19, 1)),
+          contentDetails: S.optional(__S(610, __c19, 2)),
+          etag: S.optional(S.String),
+          targeting: S.optional(__S(611, __c19, 3)),
+          localizations: S.optional(__S(612, __c19, 4)),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChannelSection" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/comments",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertCommentsRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -6644,7 +6411,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CommentSnippetAuthorChannelId",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           publishedAt: S.optional(S.String),
@@ -6658,73 +6425,31 @@ function __c8(j: number): any {
           authorChannelUrl: S.optional(S.String),
           parentId: S.optional(S.String),
           updatedAt: S.optional(S.String),
-          authorChannelId: S.optional(__S(67, __c8, 3)),
+          authorChannelId: S.optional(__S(672, __c21, 0)),
           textDisplay: S.optional(S.String),
           authorDisplayName: S.optional(S.String),
           canRate: S.optional(S.Boolean),
           videoId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommentSnippet" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          snippet: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/comments",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertCommentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          topLevelComment: S.optional(__S(69, __c8, 5)),
-          videoId: S.optional(S.String),
-          channelId: S.optional(S.String),
-          totalReplyCount: S.optional(S.Number),
-          canReply: S.optional(S.Boolean),
-          isPublic: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CommentThreadSnippet" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(69, __c8, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          comments: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "CommentThreadReplies" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          snippet: S.optional(__S(71, __c8, 7)),
-          replies: S.optional(__S(73, __c9, 1)),
           etag: S.optional(S.String),
           id: S.optional(S.String),
+          kind: S.optional(S.String),
+          snippet: S.optional(__S(673, __c21, 1)),
         }),
-      ).annotate({ identifier: "CommentThread" });
-    case 3:
+      ).annotate({ identifier: "Comment" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(770, __c24, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6735,7 +6460,48 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InsertCommentThreadsRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(674, __c21, 2));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topLevelComment: S.optional(__S(674, __c21, 2)),
+          videoId: S.optional(S.String),
+          channelId: S.optional(S.String),
+          totalReplyCount: S.optional(S.Number),
+          canReply: S.optional(S.Boolean),
+          isPublic: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CommentThreadSnippet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          comments: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({ identifier: "CommentThreadReplies" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          snippet: S.optional(__S(768, __c24, 0)),
+          replies: S.optional(__S(769, __c24, 1)),
+          etag: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommentThread" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -6746,14 +6512,14 @@ function __c9(j: number): any {
           cueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cuepoint" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           id: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6764,13 +6530,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InsertCuepointLiveBroadcastsRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2093, __c65, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6781,23 +6551,14 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InsertLiveBroadcastsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channelId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          profileImageUrl: S.optional(S.String),
-          channelUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChannelProfileDetails" });
   }
 }
-function __c10(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bannedUserDetails: S.optional(__S(79, __c9, 7)),
+          bannedUserDetails: S.optional(__S(896, __c28, 0)),
           type: S.optional(S.String),
           liveChatId: S.optional(S.String),
           banDurationSeconds: S.optional(S.String),
@@ -6809,14 +6570,14 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          snippet: S.optional(__S(80, __c10, 0)),
+          snippet: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "LiveChatBan" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(865, __c27, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6827,7 +6588,55 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InsertLiveChatBansRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          profileImageUrl: S.optional(S.String),
+          channelUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChannelProfileDetails" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1010, __c31, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/liveChat/messages",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertLiveChatMessagesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stickerId: S.optional(S.String),
+          altText: S.optional(S.String),
+          altTextLanguage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SuperStickerMetadata" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -6842,19 +6651,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LiveChatMessageAuthorDetails",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          stickerId: S.optional(S.String),
-          altText: S.optional(S.String),
-          altTextLanguage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SuperStickerMetadata" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amountDisplayString: S.optional(S.String),
-          superStickerMetadata: S.optional(__S(84, __c10, 4)),
+          superStickerMetadata: S.optional(__S(960, __c30, 0)),
           amountMicros: S.optional(S.String),
           currency: S.optional(S.String),
           tier: S.optional(S.Number),
@@ -6862,7 +6663,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LiveChatSuperStickerDetails",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.String),
@@ -6873,7 +6674,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LiveChatFanFundingEventDetails",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           tally: S.optional(S.String),
@@ -6882,29 +6683,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LiveChatPollDetailsPollMetadataPollOption",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(995, __c31, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           questionText: S.optional(S.String),
-          options: S.optional(__S(88, __c11, 0)),
+          options: S.optional(__S(996, __c31, 4)),
         }),
       ).annotate({
         identifier: "LiveChatPollDetailsPollMetadata",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          metadata: S.optional(__S(89, __c11, 1)),
+          metadata: S.optional(__S(997, __c31, 5)),
         }),
       ).annotate({ identifier: "LiveChatPollDetails" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           giftMembershipsCount: S.optional(S.Number),
@@ -6913,7 +6710,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LiveChatMembershipGiftingDetails",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           messageText: S.optional(S.String),
@@ -6921,7 +6718,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LiveChatTextMessageDetails",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           retractedMessageId: S.optional(S.String),
@@ -6929,7 +6726,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LiveChatMessageRetractedDetails",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           userComment: S.optional(S.String),
@@ -6939,7 +6736,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LiveChatMemberMilestoneChatDetails",
       });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           deletedMessageId: S.optional(S.String),
@@ -6947,11 +6744,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LiveChatMessageDeletedDetails",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           isUpgrade: S.optional(S.Boolean),
@@ -6960,7 +6753,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LiveChatNewSponsorDetails",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           giftDuration: S.optional(S.String),
@@ -6973,7 +6766,7 @@ function __c12(j: number): any {
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveChatGiftDetails" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           tier: S.optional(S.Number),
@@ -6983,7 +6776,7 @@ function __c12(j: number): any {
           amountDisplayString: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveChatSuperChatDetails" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           gifterChannelId: S.optional(S.String),
@@ -6993,90 +6786,59 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LiveChatGiftMembershipReceivedDetails",
       });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           banDurationSeconds: S.optional(S.String),
-          bannedUserDetails: S.optional(__S(79, __c9, 7)),
+          bannedUserDetails: S.optional(__S(896, __c28, 0)),
           banType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LiveChatUserBannedMessageDetails",
       });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          superStickerDetails: S.optional(__S(85, __c10, 5)),
+          superStickerDetails: S.optional(__S(993, __c31, 1)),
           publishedAt: S.optional(S.String),
           liveChatId: S.optional(S.String),
-          fanFundingEventDetails: S.optional(__S(86, __c10, 6)),
-          pollDetails: S.optional(__S(90, __c11, 2)),
+          fanFundingEventDetails: S.optional(__S(994, __c31, 2)),
+          pollDetails: S.optional(__S(998, __c31, 6)),
           displayMessage: S.optional(S.String),
           authorChannelId: S.optional(S.String),
-          membershipGiftingDetails: S.optional(__S(91, __c11, 3)),
+          membershipGiftingDetails: S.optional(__S(999, __c31, 7)),
           type: S.optional(S.String),
-          textMessageDetails: S.optional(__S(92, __c11, 4)),
-          messageRetractedDetails: S.optional(__S(93, __c11, 5)),
-          memberMilestoneChatDetails: S.optional(__S(94, __c11, 6)),
+          textMessageDetails: S.optional(__S(1000, __c31, 8)),
+          messageRetractedDetails: S.optional(__S(1001, __c31, 9)),
+          memberMilestoneChatDetails: S.optional(__S(1002, __c31, 10)),
           hasDisplayContent: S.optional(S.Boolean),
-          messageDeletedDetails: S.optional(__S(95, __c11, 7)),
-          newSponsorDetails: S.optional(__S(96, __c12, 0)),
-          giftDetails: S.optional(__S(97, __c12, 1)),
-          superChatDetails: S.optional(__S(98, __c12, 2)),
-          giftMembershipReceivedDetails: S.optional(__S(99, __c12, 3)),
-          userBannedDetails: S.optional(__S(100, __c12, 4)),
+          messageDeletedDetails: S.optional(__S(1003, __c31, 11)),
+          newSponsorDetails: S.optional(__S(1004, __c31, 12)),
+          giftDetails: S.optional(__S(1005, __c31, 13)),
+          superChatDetails: S.optional(__S(1006, __c31, 14)),
+          giftMembershipReceivedDetails: S.optional(__S(1007, __c31, 15)),
+          userBannedDetails: S.optional(__S(1008, __c31, 16)),
         }),
       ).annotate({ identifier: "LiveChatMessageSnippet" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          authorDetails: S.optional(__S(83, __c10, 3)),
+          authorDetails: S.optional(__S(992, __c31, 0)),
           etag: S.optional(S.String),
-          snippet: S.optional(__S(101, __c12, 5)),
+          snippet: S.optional(__S(1009, __c31, 17)),
         }),
       ).annotate({ identifier: "LiveChatMessage" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/liveChat/messages",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertLiveChatMessagesRequest",
-      });
   }
 }
-function __c13(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          moderatorDetails: S.optional(__S(79, __c9, 7)),
-          liveChatId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiveChatModeratorSnippet" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          snippet: S.optional(__S(104, __c13, 0)),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiveChatModerator" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1057, __c33, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7087,7 +6849,50 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertLiveChatModeratorsRequest",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          moderatorDetails: S.optional(__S(896, __c28, 0)),
+          liveChatId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiveChatModeratorSnippet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(__S(1056, __c33, 0)),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiveChatModerator" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1128, __c35, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/liveStreams",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertLiveStreamsRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ingestionAddress: S.optional(S.String),
@@ -7097,17 +6902,17 @@ function __c13(j: number): any {
           backupIngestionAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionInfo" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           frameRate: S.optional(S.String),
           resolution: S.optional(S.String),
           ingestionType: S.optional(S.String),
-          ingestionInfo: S.optional(__S(107, __c13, 3)),
+          ingestionInfo: S.optional(__S(1120, __c35, 0)),
         }),
       ).annotate({ identifier: "CdnSettings" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -7118,35 +6923,31 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "LiveStreamConfigurationIssue",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1122, __c35, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          configurationIssues: S.optional(__S(110, __c13, 6)),
+          configurationIssues: S.optional(__S(1123, __c35, 3)),
           lastUpdateTimeSeconds: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveStreamHealthStatus" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          healthStatus: S.optional(__S(111, __c13, 7)),
+          healthStatus: S.optional(__S(1124, __c35, 4)),
           streamStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveStreamStatus" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           closedCaptionsIngestionUrl: S.optional(S.String),
           isReusable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LiveStreamContentDetails" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           channelId: S.optional(S.String),
@@ -7156,57 +6957,29 @@ function __c14(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveStreamSnippet" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          cdn: S.optional(__S(108, __c13, 4)),
-          status: S.optional(__S(112, __c14, 0)),
+          cdn: S.optional(__S(1121, __c35, 1)),
+          status: S.optional(__S(1125, __c35, 5)),
           etag: S.optional(S.String),
-          contentDetails: S.optional(__S(113, __c14, 1)),
+          contentDetails: S.optional(__S(1126, __c35, 6)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          snippet: S.optional(__S(114, __c14, 2)),
+          snippet: S.optional(__S(1127, __c35, 7)),
         }),
       ).annotate({ identifier: "LiveStream" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/liveStreams",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertLiveStreamsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          width: S.optional(S.Number),
-          playlistId: S.optional(S.String),
-          height: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PlaylistImageSnippet" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          snippet: S.optional(__S(117, __c14, 5)),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlaylistImage" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(118, __c14, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1185, __c37, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7219,7 +6992,61 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          width: S.optional(S.Number),
+          playlistId: S.optional(S.String),
+          height: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PlaylistImageSnippet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(__S(1184, __c37, 0)),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlaylistImage" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1283, __c40, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/playlistItems",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertPlaylistItemsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          playlistId: S.optional(S.String),
+          videoId: S.optional(S.String),
+          channelId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceId" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7230,20 +7057,11 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          playlistId: S.optional(S.String),
-          videoId: S.optional(S.String),
-          channelId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceId" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           publishedAt: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
           playlistId: S.optional(S.String),
           channelId: S.optional(S.String),
-          resourceId: S.optional(__S(121, __c15, 1)),
+          resourceId: S.optional(__S(1248, __c39, 0)),
           title: S.optional(S.String),
           description: S.optional(S.String),
           videoOwnerChannelTitle: S.optional(S.String),
@@ -7252,7 +7070,7 @@ function __c15(j: number): any {
           channelTitle: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaylistItemSnippet" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           startAt: S.optional(S.String),
@@ -7264,100 +7082,28 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PlaylistItemContentDetails",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          status: S.optional(__S(120, __c15, 0)),
-          snippet: S.optional(__S(122, __c15, 2)),
-          contentDetails: S.optional(__S(123, __c15, 3)),
+          status: S.optional(__S(1280, __c40, 0)),
+          snippet: S.optional(__S(1281, __c40, 1)),
+          contentDetails: S.optional(__S(1282, __c40, 2)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaylistItem" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/playlistItems",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertPlaylistItemsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          embedHtml: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlaylistPlayer" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          itemCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PlaylistContentDetails" });
   }
 }
-function __c16(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          podcastStatus: S.optional(S.String),
-          privacyStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlaylistStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlaylistLocalization" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          localized: S.optional(__S(129, __c16, 1)),
-          channelId: S.optional(S.String),
-          publishedAt: S.optional(S.String),
-          defaultLanguage: S.optional(S.String),
-          title: S.optional(S.String),
-          thumbnailVideoId: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
-          channelTitle: S.optional(S.String),
-          description: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "PlaylistSnippet" });
-    case 3:
-      return S.Record(S.String, __S(129, __c16, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          player: S.optional(__S(126, __c15, 6)),
-          contentDetails: S.optional(__S(127, __c15, 7)),
-          kind: S.optional(S.String),
-          status: S.optional(__S(128, __c16, 0)),
-          snippet: S.optional(__S(130, __c16, 2)),
-          id: S.optional(S.String),
-          localizations: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "Playlist" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1380, __c43, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7366,58 +7112,79 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertPlaylistsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(__S(121, __c15, 1)),
-          channelId: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          publishedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionSnippet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          totalItemCount: S.optional(S.Number),
-          newItemCount: S.optional(S.Number),
-          activityType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionContentDetails",
-      });
   }
 }
-function __c17(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           description: S.optional(S.String),
-          channelId: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
         }),
-      ).annotate({
-        identifier: "SubscriptionSubscriberSnippet",
-      });
+      ).annotate({ identifier: "PlaylistLocalization" });
+    case 1:
+      return S.Record(S.String, __S(1344, __c42, 0));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          embedHtml: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlaylistPlayer" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          snippet: S.optional(__S(134, __c16, 6)),
-          contentDetails: S.optional(__S(135, __c16, 7)),
-          subscriberSnippet: S.optional(__S(136, __c17, 0)),
-          etag: S.optional(S.String),
-          id: S.optional(S.String),
+          itemCount: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "Subscription" });
+      ).annotate({ identifier: "PlaylistContentDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
+          podcastStatus: S.optional(S.String),
+          privacyStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlaylistStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          localized: S.optional(__S(1344, __c42, 0)),
+          channelId: S.optional(S.String),
+          publishedAt: S.optional(S.String),
+          defaultLanguage: S.optional(S.String),
+          title: S.optional(S.String),
+          thumbnailVideoId: S.optional(S.String),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
+          channelTitle: S.optional(S.String),
+          description: S.optional(S.String),
+          tags: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({ identifier: "PlaylistSnippet" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          player: S.optional(__S(1376, __c43, 0)),
+          contentDetails: S.optional(__S(1377, __c43, 1)),
+          kind: S.optional(S.String),
+          status: S.optional(__S(1378, __c43, 2)),
+          snippet: S.optional(__S(1379, __c43, 3)),
+          id: S.optional(S.String),
+          localizations: S.optional(__S(1345, __c42, 1)),
+        }),
+      ).annotate({ identifier: "Playlist" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1443, __c45, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7428,23 +7195,74 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "InsertSubscriptionsRequest",
       });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(__S(1248, __c39, 0)),
+          channelId: S.optional(S.String),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          publishedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionSnippet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          totalItemCount: S.optional(S.Number),
+          newItemCount: S.optional(S.Number),
+          activityType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionContentDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          channelId: S.optional(S.String),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
+        }),
+      ).annotate({
+        identifier: "SubscriptionSubscriberSnippet",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          snippet: S.optional(__S(1440, __c45, 0)),
+          contentDetails: S.optional(__S(1441, __c45, 1)),
+          subscriberSnippet: S.optional(__S(1442, __c45, 2)),
+          etag: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Subscription" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           gaia: S.optional(S.String),
           featuredPart: S.optional(S.Boolean),
-          snippet: S.optional(__S(26, __c3, 2)),
+          snippet: S.optional(__S(2496, __c78, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestItem" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           externalChannelId: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1472, __c46, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7453,79 +7271,83 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertTestsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          linkStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThirdPartyLinkStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          billingStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ChannelToStoreLinkDetailsBillingDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails",
-      });
   }
 }
-function __c18(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingDetails: S.optional(__S(142, __c17, 6)),
-          merchantAffiliateProgramDetails: S.optional(__S(143, __c17, 7)),
-          storeUrl: S.optional(S.String),
-          storeName: S.optional(S.String),
-          merchantId: S.optional(S.String),
-        }),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "youtube/v3/videos:batchGetStats",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "ChannelToStoreLinkDetails",
+        identifier: "BatchGetStatsVideosRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          statusUpdateReason: S.optional(S.String),
-          programStatus: S.optional(S.String),
-          merchantId: S.optional(S.String),
-          statusUpdateTime: S.optional(S.String),
+          viewCount: S.optional(S.String),
+          commentCount: S.optional(S.String),
+          likeCount: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ChannelToAffiliateProgramLinkDetails",
-      });
+      ).annotate({ identifier: "VideoStatsStatistics" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channelToStoreLink: S.optional(__S(144, __c18, 0)),
-          type: S.optional(S.String),
-          channelToAffiliateProgramLink: S.optional(__S(145, __c18, 1)),
+          publishTime: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ThirdPartyLinkSnippet" });
+      ).annotate({ identifier: "VideoStatsSnippet" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          status: S.optional(__S(141, __c17, 5)),
-          etag: S.optional(S.String),
-          linkingToken: S.optional(S.String),
-          snippet: S.optional(__S(146, __c18, 2)),
+          duration: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ThirdPartyLink" });
+      ).annotate({ identifier: "VideoStatsContentDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          id: S.optional(S.String),
+          statistics: S.optional(__S(1505, __c47, 1)),
+          snippet: S.optional(__S(1506, __c47, 2)),
+          kind: S.optional(S.String),
+          contentDetails: S.optional(__S(1507, __c47, 3)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoStat" });
+    case 5:
+      return S.Array(__S(1508, __c47, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          items: S.optional(__S(1509, __c47, 5)),
+        }),
+      ).annotate({ identifier: "BatchGetStatsResponse" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           externalChannelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1606, __c50, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7536,14 +7358,107 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "InsertThirdPartyLinksRequest",
       });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          linkStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThirdPartyLinkStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billingStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ChannelToStoreLinkDetailsBillingDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          billingDetails: S.optional(__S(1601, __c50, 1)),
+          merchantAffiliateProgramDetails: S.optional(__S(1602, __c50, 2)),
+          storeUrl: S.optional(S.String),
+          storeName: S.optional(S.String),
+          merchantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ChannelToStoreLinkDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          statusUpdateReason: S.optional(S.String),
+          programStatus: S.optional(S.String),
+          merchantId: S.optional(S.String),
+          statusUpdateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ChannelToAffiliateProgramLinkDetails",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          channelToStoreLink: S.optional(__S(1603, __c50, 3)),
+          type: S.optional(S.String),
+          channelToAffiliateProgramLink: S.optional(__S(1604, __c50, 4)),
+        }),
+      ).annotate({ identifier: "ThirdPartyLinkSnippet" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          status: S.optional(__S(1600, __c50, 0)),
+          etag: S.optional(S.String),
+          linkingToken: S.optional(S.String),
+          snippet: S.optional(__S(1605, __c50, 5)),
+        }),
+      ).annotate({ identifier: "ThirdPartyLink" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          autoLevels: S.optional(S.Boolean.pipe(T.Query())),
+          notifySubscribers: S.optional(S.Boolean.pipe(T.Query())),
+          stabilize: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1691, __c52, 27).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/videos",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertVideosRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channelId: S.optional(S.String),
           channelHandle: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrandPartner" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           partsTotal: S.optional(S.String),
@@ -7553,7 +7468,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "VideoProcessingDetailsProcessingProgress",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           fileDetailsAvailability: S.optional(S.String),
@@ -7561,16 +7476,12 @@ function __c18(j: number): any {
           processingIssuesAvailability: S.optional(S.String),
           thumbnailsAvailability: S.optional(S.String),
           tagSuggestionsAvailability: S.optional(S.String),
-          processingProgress: S.optional(__S(150, __c18, 6)),
+          processingProgress: S.optional(__S(1665, __c52, 1)),
           editorSuggestionsAvailability: S.optional(S.String),
           processingFailureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoProcessingDetails" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           defaultAudioLanguage: S.optional(S.String),
@@ -7580,14 +7491,14 @@ function __c19(j: number): any {
           categoryId: S.optional(S.String),
           publishedAt: S.optional(S.String),
           channelTitle: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
-          localized: S.optional(__S(129, __c16, 1)),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
+          localized: S.optional(__S(1344, __c42, 0)),
           channelId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(1536, __c48, 0)),
           liveBroadcastContent: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoSnippet" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           embedHtml: S.optional(S.String),
@@ -7595,38 +7506,38 @@ function __c19(j: number): any {
           embedWidth: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoPlayer" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          topicCategories: S.optional(__S(0, __c0, 0)),
-          topicIds: S.optional(__S(0, __c0, 0)),
-          relevantTopicIds: S.optional(__S(0, __c0, 0)),
+          topicCategories: S.optional(__S(1536, __c48, 0)),
+          topicIds: S.optional(__S(1536, __c48, 0)),
+          relevantTopicIds: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "VideoTopicDetails" });
-    case 3:
+    case 6:
       return S.Array(S.String);
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          categoryRestricts: S.optional(__S(0, __c0, 0)),
+          categoryRestricts: S.optional(__S(1536, __c48, 0)),
           tag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VideoSuggestionsTagSuggestion",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1671, __c52, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          editorSuggestions: S.optional(__S(155, __c19, 3)),
-          processingErrors: S.optional(__S(155, __c19, 3)),
-          processingHints: S.optional(__S(155, __c19, 3)),
-          processingWarnings: S.optional(__S(155, __c19, 3)),
-          tagSuggestions: S.optional(__S(157, __c19, 5)),
+          editorSuggestions: S.optional(__S(1670, __c52, 6)),
+          processingErrors: S.optional(__S(1670, __c52, 6)),
+          processingHints: S.optional(__S(1670, __c52, 6)),
+          processingWarnings: S.optional(__S(1670, __c52, 6)),
+          tagSuggestions: S.optional(__S(1672, __c52, 8)),
         }),
       ).annotate({ identifier: "VideoSuggestions" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           actualEndTime: S.optional(S.String),
@@ -7639,11 +7550,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "VideoLiveStreamingDetails",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           hasPaidProductPlacement: S.optional(S.Boolean),
@@ -7651,7 +7558,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "VideoPaidProductPlacementDetails",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           favoriteCount: S.optional(S.String),
@@ -7661,20 +7568,20 @@ function __c20(j: number): any {
           commentCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoStatistics" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          exception: S.optional(__S(0, __c0, 0)),
+          exception: S.optional(__S(1536, __c48, 0)),
           allowed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccessPolicy" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(__S(162, __c20, 2)),
+          access: S.optional(__S(1677, __c52, 13)),
         }),
       ).annotate({ identifier: "VideoMonetizationDetails" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           restricted: S.optional(S.Boolean),
@@ -7682,7 +7589,7 @@ function __c20(j: number): any {
           videoGameRating: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoAgeGating" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           vendor: S.optional(S.String),
@@ -7697,9 +7604,9 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "VideoFileDetailsVideoStream",
       });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 17:
+      return S.Array(__S(1680, __c52, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           vendor: S.optional(S.String),
@@ -7710,27 +7617,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "VideoFileDetailsAudioStream",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 19:
+      return S.Array(__S(1682, __c52, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          videoStreams: S.optional(__S(166, __c20, 6)),
+          videoStreams: S.optional(__S(1681, __c52, 17)),
           fileSize: S.optional(S.String),
           container: S.optional(S.String),
           durationMs: S.optional(S.String),
           fileType: S.optional(S.String),
-          audioStreams: S.optional(__S(168, __c21, 0)),
+          audioStreams: S.optional(__S(1683, __c52, 19)),
           fileName: S.optional(S.String),
           creationTime: S.optional(S.String),
           bitrateBps: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoFileDetails" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           latitude: S.optional(S.Number),
@@ -7738,24 +7641,24 @@ function __c21(j: number): any {
           altitude: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GeoPoint" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           recordingDate: S.optional(S.String),
-          location: S.optional(__S(170, __c21, 2)),
+          location: S.optional(__S(1685, __c52, 21)),
           locationDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoRecordingDetails" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          blocked: S.optional(__S(0, __c0, 0)),
-          allowed: S.optional(__S(0, __c0, 0)),
+          blocked: S.optional(__S(1536, __c48, 0)),
+          allowed: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "VideoContentDetailsRegionRestriction",
       });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           bmukkRating: S.optional(S.String),
@@ -7769,11 +7672,11 @@ function __c21(j: number): any {
           nmcRating: S.optional(S.String),
           oflcRating: S.optional(S.String),
           mocRating: S.optional(S.String),
-          djctqRatingReasons: S.optional(__S(155, __c19, 3)),
+          djctqRatingReasons: S.optional(__S(1670, __c52, 6)),
           moctwRating: S.optional(S.String),
           chvrsRating: S.optional(S.String),
           skfilmRating: S.optional(S.String),
-          fpbRatingReasons: S.optional(__S(155, __c19, 3)),
+          fpbRatingReasons: S.optional(__S(1670, __c52, 6)),
           kfcbRating: S.optional(S.String),
           mcstRating: S.optional(S.String),
           smsaRating: S.optional(S.String),
@@ -7831,22 +7734,22 @@ function __c21(j: number): any {
           resorteviolenciaRating: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentRating" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          regionRestriction: S.optional(__S(172, __c21, 4)),
-          countryRestriction: S.optional(__S(162, __c20, 2)),
+          regionRestriction: S.optional(__S(1687, __c52, 23)),
+          countryRestriction: S.optional(__S(1677, __c52, 13)),
           hasCustomThumbnail: S.optional(S.Boolean),
           caption: S.optional(S.String),
           licensedContent: S.optional(S.Boolean),
           projection: S.optional(S.String),
-          contentRating: S.optional(__S(173, __c21, 5)),
+          contentRating: S.optional(__S(1688, __c52, 24)),
           dimension: S.optional(S.String),
           definition: S.optional(S.String),
           duration: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoContentDetails" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           selfDeclaredMadeForKids: S.optional(S.Boolean),
@@ -7862,58 +7765,40 @@ function __c21(j: number): any {
           rejectionReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoStatus" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          brandPartner: S.optional(__S(1664, __c52, 0)),
+          processingDetails: S.optional(__S(1666, __c52, 2)),
+          snippet: S.optional(__S(1667, __c52, 3)),
+          player: S.optional(__S(1668, __c52, 4)),
+          topicDetails: S.optional(__S(1669, __c52, 5)),
+          suggestions: S.optional(__S(1673, __c52, 9)),
+          liveStreamingDetails: S.optional(__S(1674, __c52, 10)),
+          kind: S.optional(S.String),
+          localizations: S.optional(__S(1345, __c42, 1)),
+          paidProductPlacementDetails: S.optional(__S(1675, __c52, 11)),
+          id: S.optional(S.String),
+          projectDetails: S.optional(__S(2496, __c78, 0)),
+          statistics: S.optional(__S(1676, __c52, 12)),
+          monetizationDetails: S.optional(__S(1678, __c52, 14)),
+          ageGating: S.optional(__S(1679, __c52, 15)),
+          fileDetails: S.optional(__S(1684, __c52, 20)),
+          recordingDetails: S.optional(__S(1686, __c52, 22)),
+          contentDetails: S.optional(__S(1689, __c52, 25)),
+          status: S.optional(__S(1690, __c52, 26)),
+        }),
+      ).annotate({ identifier: "Video" });
   }
 }
-function __c22(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-          brandPartner: S.optional(__S(149, __c18, 5)),
-          processingDetails: S.optional(__S(151, __c18, 7)),
-          snippet: S.optional(__S(152, __c19, 0)),
-          player: S.optional(__S(153, __c19, 1)),
-          topicDetails: S.optional(__S(154, __c19, 2)),
-          suggestions: S.optional(__S(158, __c19, 6)),
-          liveStreamingDetails: S.optional(__S(159, __c19, 7)),
-          kind: S.optional(S.String),
-          localizations: S.optional(__S(131, __c16, 3)),
-          paidProductPlacementDetails: S.optional(__S(160, __c20, 0)),
-          id: S.optional(S.String),
-          projectDetails: S.optional(__S(26, __c3, 2)),
-          statistics: S.optional(__S(161, __c20, 1)),
-          monetizationDetails: S.optional(__S(163, __c20, 3)),
-          ageGating: S.optional(__S(164, __c20, 4)),
-          fileDetails: S.optional(__S(169, __c21, 1)),
-          recordingDetails: S.optional(__S(171, __c21, 3)),
-          contentDetails: S.optional(__S(174, __c21, 6)),
-          status: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({ identifier: "Video" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          autoLevels: S.optional(S.Boolean.pipe(T.Query())),
-          notifySubscribers: S.optional(S.Boolean.pipe(T.Query())),
-          stabilize: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "youtube/v3/videos",
-            baseUrl: "https://youtube.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertVideosRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           publishedAfter: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           publishedBefore: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           channelId: S.optional(S.String.pipe(T.Query())),
@@ -7929,15 +7814,15 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListActivitiesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceId: S.optional(__S(121, __c15, 1)),
+          resourceId: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "ActivityContentDetailsComment",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clickTrackingUrl: S.optional(S.String),
@@ -7947,14 +7832,14 @@ function __c22(j: number): any {
           ctaType: S.optional(S.String),
           customCtaButtonText: S.optional(S.String),
           destinationUrl: S.optional(S.String),
-          impressionUrl: S.optional(__S(0, __c0, 0)),
+          impressionUrl: S.optional(__S(1536, __c48, 0)),
           adTag: S.optional(S.String),
-          forecastingUrl: S.optional(__S(0, __c0, 0)),
+          forecastingUrl: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "ActivityContentDetailsPromotedItem",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           videoId: S.optional(S.String),
@@ -7962,57 +7847,53 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ActivityContentDetailsUpload",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           playlistItemId: S.optional(S.String),
           playlistId: S.optional(S.String),
-          resourceId: S.optional(__S(121, __c15, 1)),
+          resourceId: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "ActivityContentDetailsPlaylistItem",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           referenceUrl: S.optional(S.String),
           type: S.optional(S.String),
           author: S.optional(S.String),
-          resourceId: S.optional(__S(121, __c15, 1)),
+          resourceId: S.optional(__S(1248, __c39, 0)),
           imageUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActivityContentDetailsSocial",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          seedResourceId: S.optional(__S(121, __c15, 1)),
-          resourceId: S.optional(__S(121, __c15, 1)),
+          seedResourceId: S.optional(__S(1248, __c39, 0)),
+          resourceId: S.optional(__S(1248, __c39, 0)),
           reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActivityContentDetailsRecommendation",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          comment: S.optional(__S(179, __c22, 3)),
-          channelItem: S.optional(__S(179, __c22, 3)),
-          subscription: S.optional(__S(179, __c22, 3)),
-          promotedItem: S.optional(__S(180, __c22, 4)),
-          upload: S.optional(__S(181, __c22, 5)),
-          bulletin: S.optional(__S(179, __c22, 3)),
-          playlistItem: S.optional(__S(182, __c22, 6)),
-          social: S.optional(__S(183, __c22, 7)),
-          recommendation: S.optional(__S(184, __c23, 0)),
+          comment: S.optional(__S(1697, __c53, 1)),
+          channelItem: S.optional(__S(1697, __c53, 1)),
+          subscription: S.optional(__S(1697, __c53, 1)),
+          promotedItem: S.optional(__S(1698, __c53, 2)),
+          upload: S.optional(__S(1699, __c53, 3)),
+          bulletin: S.optional(__S(1697, __c53, 1)),
+          playlistItem: S.optional(__S(1700, __c53, 4)),
+          social: S.optional(__S(1701, __c53, 5)),
+          recommendation: S.optional(__S(1702, __c53, 6)),
         }),
       ).annotate({ identifier: "ActivityContentDetails" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -8020,52 +7901,60 @@ function __c23(j: number): any {
           groupId: S.optional(S.String),
           type: S.optional(S.String),
           publishedAt: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
           channelId: S.optional(S.String),
           channelTitle: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivitySnippet" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          contentDetails: S.optional(__S(185, __c23, 1)),
-          snippet: S.optional(__S(186, __c23, 2)),
+          contentDetails: S.optional(__S(1703, __c53, 7)),
+          snippet: S.optional(__S(1704, __c53, 8)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Activity" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
+    case 10:
+      return S.Array(__S(1705, __c53, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          totalResults: S.optional(S.Number),
-          resultsPerPage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PageInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tokenPagination: S.optional(__S(26, __c3, 2)),
-          items: __S(188, __c23, 4),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
+          items: __S(1706, __c53, 10),
           prevPageToken: S.optional(S.String),
           eventId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
           visitorId: S.optional(S.String),
           kind: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({ identifier: "ActivityListResponse" });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          totalResults: S.optional(S.Number),
+          resultsPerPage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PageInfo" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           videoId: S.String.pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           onBehalfOf: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8074,29 +7963,29 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCaptionsRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(56, __c7, 0));
     case 1:
+      return S.Array(__S(513, __c16, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(192, __c24, 0)),
+          items: S.optional(__S(1761, __c55, 1)),
           visitorId: S.optional(S.String),
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaptionListResponse" });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mine: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           hl: S.optional(S.String.pipe(T.Query())),
           forUsername: S.optional(S.String.pipe(T.Query())),
           categoryId: S.optional(S.String.pipe(T.Query())),
@@ -8104,7 +7993,7 @@ function __c24(j: number): any {
           forHandle: S.optional(S.String.pipe(T.Query())),
           mySubscribers: S.optional(S.Boolean.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8113,7 +8002,27 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListChannelsRequest" });
-    case 3:
+    case 1:
+      return S.Array(__S(1845, __c57, 21));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          eventId: S.optional(S.String),
+          prevPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          items: __S(1793, __c56, 1),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
+          nextPageToken: S.optional(S.String),
+          visitorId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChannelListResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           madeForKids: S.optional(S.Boolean),
@@ -8124,7 +8033,7 @@ function __c24(j: number): any {
           longUploadsStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelStatus" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentOwner: S.optional(S.String),
@@ -8133,16 +8042,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ChannelContentOwnerDetails",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           property: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyValue" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1826, __c57, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           textColor: S.optional(S.String),
@@ -8150,61 +8059,57 @@ function __c24(j: number): any {
           featuredPlaylistId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchSettings" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguageTag" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedString" });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1830, __c57, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          defaultLanguage: S.optional(__S(200, __c25, 0)),
+          defaultLanguage: S.optional(__S(1829, __c57, 5)),
           default: S.optional(S.String),
-          localized: S.optional(__S(202, __c25, 2)),
+          localized: S.optional(__S(1831, __c57, 7)),
         }),
       ).annotate({ identifier: "LocalizedProperty" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           bannerTabletImageUrl: S.optional(S.String),
           bannerTabletHdImageUrl: S.optional(S.String),
-          largeBrandedBannerImageUrl: S.optional(__S(203, __c25, 3)),
+          largeBrandedBannerImageUrl: S.optional(__S(1832, __c57, 8)),
           bannerMobileLowImageUrl: S.optional(S.String),
           watchIconImageUrl: S.optional(S.String),
           bannerExternalUrl: S.optional(S.String),
           bannerTvLowImageUrl: S.optional(S.String),
-          backgroundImageUrl: S.optional(__S(203, __c25, 3)),
+          backgroundImageUrl: S.optional(__S(1832, __c57, 8)),
           bannerMobileHdImageUrl: S.optional(S.String),
           bannerTabletLowImageUrl: S.optional(S.String),
-          smallBrandedBannerImageUrl: S.optional(__S(203, __c25, 3)),
+          smallBrandedBannerImageUrl: S.optional(__S(1832, __c57, 8)),
           bannerTvMediumImageUrl: S.optional(S.String),
           trackingImageUrl: S.optional(S.String),
           bannerMobileMediumHdImageUrl: S.optional(S.String),
-          largeBrandedBannerImageImapScript: S.optional(__S(203, __c25, 3)),
+          largeBrandedBannerImageImapScript: S.optional(__S(1832, __c57, 8)),
           bannerMobileExtraHdImageUrl: S.optional(S.String),
           bannerTabletExtraHdImageUrl: S.optional(S.String),
           bannerTvImageUrl: S.optional(S.String),
           bannerMobileImageUrl: S.optional(S.String),
-          smallBrandedBannerImageImapScript: S.optional(__S(203, __c25, 3)),
+          smallBrandedBannerImageImapScript: S.optional(__S(1832, __c57, 8)),
           bannerImageUrl: S.optional(S.String),
           bannerTvHighImageUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageSettings" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           showBrowseView: S.optional(S.Boolean),
@@ -8219,39 +8124,35 @@ function __c25(j: number): any {
           defaultTab: S.optional(S.String),
           defaultLanguage: S.optional(S.String),
           title: S.optional(S.String),
-          featuredChannelsUrls: S.optional(__S(0, __c0, 0)),
+          featuredChannelsUrls: S.optional(__S(1536, __c48, 0)),
           showRelatedChannels: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChannelSettings" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          hints: S.optional(__S(198, __c24, 6)),
-          watch: S.optional(__S(199, __c24, 7)),
-          image: S.optional(__S(204, __c25, 4)),
-          channel: S.optional(__S(205, __c25, 5)),
+          hints: S.optional(__S(1827, __c57, 3)),
+          watch: S.optional(__S(1828, __c57, 4)),
+          image: S.optional(__S(1833, __c57, 9)),
+          channel: S.optional(__S(1834, __c57, 10)),
         }),
       ).annotate({ identifier: "ChannelBrandingSettings" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
           conversionUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelConversionPing" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(1836, __c57, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          pings: S.optional(__S(208, __c26, 0)),
+          pings: S.optional(__S(1837, __c57, 13)),
         }),
       ).annotate({ identifier: "ChannelConversionPings" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           viewCount: S.optional(S.String),
@@ -8261,14 +8162,14 @@ function __c26(j: number): any {
           hiddenSubscriberCount: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChannelStatistics" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          topicIds: S.optional(__S(0, __c0, 0)),
-          topicCategories: S.optional(__S(0, __c0, 0)),
+          topicIds: S.optional(__S(1536, __c48, 0)),
+          topicCategories: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "ChannelTopicDetails" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           contentIdClaimsGoodStanding: S.optional(S.Boolean),
@@ -8276,20 +8177,20 @@ function __c26(j: number): any {
           communityGuidelinesGoodStanding: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChannelAuditDetails" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           customUrl: S.optional(S.String),
           defaultLanguage: S.optional(S.String),
           description: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
           publishedAt: S.optional(S.String),
           title: S.optional(S.String),
-          localized: S.optional(__S(129, __c16, 1)),
+          localized: S.optional(__S(1344, __c42, 0)),
           country: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelSnippet" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           watchHistory: S.optional(S.String),
@@ -8301,58 +8202,42 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ChannelContentDetailsRelatedPlaylists",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          relatedPlaylists: S.optional(__S(214, __c26, 6)),
+          relatedPlaylists: S.optional(__S(1843, __c57, 19)),
         }),
       ).annotate({ identifier: "ChannelContentDetails" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          status: S.optional(__S(1824, __c57, 0)),
+          id: S.optional(S.String),
+          contentOwnerDetails: S.optional(__S(1825, __c57, 1)),
+          localizations: S.optional(__S(1345, __c42, 1)),
+          brandingSettings: S.optional(__S(1835, __c57, 11)),
+          conversionPings: S.optional(__S(1838, __c57, 14)),
+          statistics: S.optional(__S(1839, __c57, 15)),
+          topicDetails: S.optional(__S(1840, __c57, 16)),
+          auditDetails: S.optional(__S(1841, __c57, 17)),
+          kind: S.optional(S.String),
+          snippet: S.optional(__S(1842, __c57, 18)),
+          contentDetails: S.optional(__S(1844, __c57, 20)),
+        }),
+      ).annotate({ identifier: "Channel" });
   }
 }
-function __c27(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-          status: S.optional(__S(195, __c24, 3)),
-          id: S.optional(S.String),
-          contentOwnerDetails: S.optional(__S(196, __c24, 4)),
-          localizations: S.optional(__S(131, __c16, 3)),
-          brandingSettings: S.optional(__S(206, __c25, 6)),
-          conversionPings: S.optional(__S(209, __c26, 1)),
-          statistics: S.optional(__S(210, __c26, 2)),
-          topicDetails: S.optional(__S(211, __c26, 3)),
-          auditDetails: S.optional(__S(212, __c26, 4)),
-          kind: S.optional(S.String),
-          snippet: S.optional(__S(213, __c26, 5)),
-          contentDetails: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({ identifier: "Channel" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          eventId: S.optional(S.String),
-          prevPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          items: __S(217, __c27, 1),
-          pageInfo: S.optional(__S(189, __c23, 5)),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
-          nextPageToken: S.optional(S.String),
-          visitorId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChannelListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           hl: S.optional(S.String.pipe(T.Query())),
           channelId: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           mine: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -8364,28 +8249,32 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListChannelSectionsRequest",
       });
-    case 4:
-      return S.Array(__S(65, __c8, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(613, __c19, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           visitorId: S.optional(S.String),
-          items: S.optional(__S(220, __c27, 4)),
+          items: S.optional(__S(1857, __c58, 1)),
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChannelSectionListResponse",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           textFormat: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           parentId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -8395,27 +8284,27 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCommentsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(72, __c9, 0),
+          items: __S(736, __c23, 0),
           visitorId: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({ identifier: "CommentListResponse" });
   }
 }
-function __c28(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           allThreadsRelatedToChannelId: S.optional(S.String.pipe(T.Query())),
@@ -8425,7 +8314,7 @@ function __c28(j: number): any {
           searchTerms: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           textFormat: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8437,27 +8326,31 @@ function __c28(j: number): any {
         identifier: "ListCommentThreadsRequest",
       });
     case 1:
-      return S.Array(__S(74, __c9, 2));
+      return S.Array(__S(770, __c24, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(225, __c28, 1),
+          items: __S(1921, __c60, 1),
           visitorId: S.optional(S.String),
           eventId: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           etag: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({
         identifier: "CommentThreadListResponse",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hl: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8466,43 +8359,43 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListI18nLanguagesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hl: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "I18nLanguageSnippet" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          snippet: S.optional(__S(228, __c28, 4)),
+          snippet: S.optional(__S(1953, __c61, 1)),
           etag: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "I18nLanguage" });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1954, __c61, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(230, __c28, 6)),
+          items: S.optional(__S(1955, __c61, 3)),
           visitorId: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "I18nLanguageListResponse" });
   }
 }
-function __c29(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           hl: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8524,32 +8417,226 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          snippet: S.optional(__S(233, __c29, 1)),
+          snippet: S.optional(__S(1985, __c62, 1)),
         }),
       ).annotate({ identifier: "I18nRegion" });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(1986, __c62, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
-          items: S.optional(__S(235, __c29, 3)),
+          items: S.optional(__S(1987, __c62, 3)),
           etag: S.optional(S.String),
           visitorId: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "I18nRegionListResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          streamId: S.optional(S.String.pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "youtube/v3/liveBroadcasts/bind",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BindLiveBroadcastsRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Thumbnail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxres: S.optional(__S(2048, __c64, 0)),
+          uhd: S.optional(__S(2048, __c64, 0)),
+          qhd: S.optional(__S(2048, __c64, 0)),
+          fhd: S.optional(__S(2048, __c64, 0)),
+          default: S.optional(__S(2048, __c64, 0)),
+          standard: S.optional(__S(2048, __c64, 0)),
+          high: S.optional(__S(2048, __c64, 0)),
+          medium: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "ThumbnailDetails" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleStrategy: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          repeatIntervalSecs: S.optional(S.Number),
+          pauseAdsUntil: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CuepointSchedule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cuepointSchedule: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "LiveBroadcastMonetizationDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scheduledEndTime: S.optional(S.String),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
+          scheduledStartTime: S.optional(S.String),
+          title: S.optional(S.String),
+          categoryId: S.optional(S.String),
+          description: S.optional(S.String),
+          actualEndTime: S.optional(S.String),
+          channelId: S.optional(S.String),
+          actualStartTime: S.optional(S.String),
+          liveChatId: S.optional(S.String),
+          publishedAt: S.optional(S.String),
+          isDefaultBroadcast: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LiveBroadcastSnippet" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          concurrentViewers: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiveBroadcastStatistics" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          selfDeclaredMadeForKids: S.optional(S.Boolean),
+          lifeCycleStatus: S.optional(S.String),
+          liveBroadcastPriority: S.optional(S.String),
+          madeForKids: S.optional(S.Boolean),
+          recordingStatus: S.optional(S.String),
+          privacyStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiveBroadcastStatus" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enableMonitorStream: S.optional(S.Boolean),
+          embedHtml: S.optional(S.String),
+          broadcastStreamDelayMs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MonitorStreamInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Interval" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          excludedRegionCodes: S.optional(__S(1536, __c48, 0)),
+          interval: S.optional(__S(2086, __c65, 6)),
+        }),
+      ).annotate({
+        identifier: "AvailabilityConfigGlobalConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          interval: S.optional(__S(2086, __c65, 6)),
+        }),
+      ).annotate({
+        identifier: "AvailabilityConfigRegionsConfigRegionInterval",
+      });
+    case 9:
+      return S.Array(__S(2088, __c65, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          regionIntervals: S.optional(__S(2089, __c65, 9)),
+        }),
+      ).annotate({
+        identifier: "AvailabilityConfigRegionsConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          globalConfig: S.optional(__S(2087, __c65, 7)),
+          regionsConfig: S.optional(__S(2090, __c65, 10)),
+        }),
+      ).annotate({ identifier: "AvailabilityConfig" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          boundStreamLastUpdateTimeMs: S.optional(S.String),
+          mesh: S.optional(S.String),
+          monitorStream: S.optional(__S(2085, __c65, 5)),
+          enableDvr: S.optional(S.Boolean),
+          projection: S.optional(S.String),
+          enableClosedCaptions: S.optional(S.Boolean),
+          boundStreamId: S.optional(S.String),
+          enableEmbed: S.optional(S.Boolean),
+          latencyPreference: S.optional(S.String),
+          enableAutoStop: S.optional(S.Boolean),
+          enableLowLatency: S.optional(S.Boolean),
+          closedCaptionsType: S.optional(S.String),
+          stereoLayout: S.optional(S.String),
+          enableContentEncryption: S.optional(S.Boolean),
+          enableAutoStart: S.optional(S.Boolean),
+          availabilityConfig: S.optional(__S(2091, __c65, 11)),
+          recordFromStart: S.optional(S.Boolean),
+          startWithSlate: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "LiveBroadcastContentDetails",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          monetizationDetails: S.optional(__S(2081, __c65, 1)),
+          etag: S.optional(S.String),
+          snippet: S.optional(__S(2082, __c65, 2)),
+          statistics: S.optional(__S(2083, __c65, 3)),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(__S(2084, __c65, 4)),
+          contentDetails: S.optional(__S(2092, __c65, 12)),
+        }),
+      ).annotate({ identifier: "LiveBroadcast" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           broadcastType: S.optional(S.String.pipe(T.Query())),
           mine: S.optional(S.Boolean.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           broadcastStatus: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -8561,27 +8648,27 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListLiveBroadcastsRequest",
       });
-    case 6:
-      return S.Array(__S(24, __c3, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(2093, __c65, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           visitorId: S.optional(S.String),
           eventId: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           prevPageToken: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
-          items: __S(238, __c29, 6),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
+          items: __S(2113, __c66, 1),
         }),
       ).annotate({
         identifier: "LiveBroadcastListResponse",
       });
   }
 }
-function __c30(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8589,7 +8676,7 @@ function __c30(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           liveChatId: S.String.pipe(T.Query()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           profileImageSize: S.optional(S.Number.pipe(T.Query())),
           hl: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -8602,33 +8689,41 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListLiveChatMessagesRequest",
       });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1010, __c31, 18));
     case 1:
-      return S.Array(__S(102, __c12, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(241, __c30, 1),
+          items: __S(2176, __c68, 0),
           visitorId: S.optional(S.String),
-          activePollItem: S.optional(__S(102, __c12, 6)),
+          activePollItem: S.optional(__S(1010, __c31, 18)),
           nextPageToken: S.optional(S.String),
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
           offlineAt: S.optional(S.String),
           pollingIntervalMillis: S.optional(S.Number),
           kind: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
         }),
       ).annotate({
         identifier: "LiveChatMessageListResponse",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           liveChatId: S.String.pipe(T.Query()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8639,29 +8734,33 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListLiveChatModeratorsRequest",
       });
-    case 4:
-      return S.Array(__S(105, __c13, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(1057, __c33, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           prevPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          items: __S(244, __c30, 4),
+          items: __S(2209, __c69, 1),
           kind: S.optional(S.String),
           eventId: S.optional(S.String),
           visitorId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
         }),
       ).annotate({
         identifier: "LiveChatModeratorListResponse",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8675,33 +8774,33 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLiveStreamsRequest" });
-    case 7:
-      return S.Array(__S(115, __c14, 3));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1128, __c35, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           prevPageToken: S.optional(S.String),
           visitorId: S.optional(S.String),
           etag: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           nextPageToken: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           kind: S.optional(S.String),
-          items: __S(247, __c30, 7),
+          items: __S(2241, __c70, 1),
         }),
       ).annotate({ identifier: "LiveStreamListResponse" });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           mode: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           filterByMemberChannelId: S.optional(S.String.pipe(T.Query())),
           hasAccessToLevel: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -8712,7 +8811,7 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMembersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           memberSince: S.optional(S.String),
@@ -8722,64 +8821,64 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "MembershipsDurationAtLevel",
       });
+    case 2:
+      return S.Array(__S(2273, __c71, 1));
     case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           memberTotalDurationMonths: S.optional(S.Number),
           memberSince: S.optional(S.String),
         }),
       ).annotate({ identifier: "MembershipsDuration" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          membershipsDurationAtLevels: S.optional(__S(251, __c31, 3)),
+          membershipsDurationAtLevels: S.optional(__S(2274, __c71, 2)),
           highestAccessibleLevelDisplayName: S.optional(S.String),
-          accessibleLevels: S.optional(__S(0, __c0, 0)),
-          membershipsDuration: S.optional(__S(252, __c31, 4)),
+          accessibleLevels: S.optional(__S(1536, __c48, 0)),
+          membershipsDuration: S.optional(__S(2275, __c71, 3)),
           highestAccessibleLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "MembershipsDetails" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           creatorChannelId: S.optional(S.String),
-          memberDetails: S.optional(__S(79, __c9, 7)),
-          membershipsDetails: S.optional(__S(253, __c31, 5)),
+          memberDetails: S.optional(__S(896, __c28, 0)),
+          membershipsDetails: S.optional(__S(2276, __c71, 4)),
         }),
       ).annotate({ identifier: "MemberSnippet" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          snippet: S.optional(__S(254, __c31, 6)),
+          snippet: S.optional(__S(2277, __c71, 5)),
         }),
       ).annotate({ identifier: "Member" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(2278, __c71, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           visitorId: S.optional(S.String),
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
-          items: __S(256, __c32, 0),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
+          items: __S(2279, __c71, 7),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemberListResponse" });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8790,37 +8889,37 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListMembershipsLevelsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LevelDetails" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           creatorChannelId: S.optional(S.String),
-          levelDetails: S.optional(__S(259, __c32, 3)),
+          levelDetails: S.optional(__S(2305, __c72, 1)),
         }),
       ).annotate({ identifier: "MembershipsLevelSnippet" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          snippet: S.optional(__S(260, __c32, 4)),
+          snippet: S.optional(__S(2306, __c72, 2)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "MembershipsLevel" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(2307, __c72, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
           visitorId: S.optional(S.String),
-          items: S.optional(__S(262, __c32, 6)),
+          items: S.optional(__S(2308, __c72, 4)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -8828,7 +8927,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8836,7 +8935,7 @@ function __c33(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           parent: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -8850,28 +8949,32 @@ function __c33(j: number): any {
         identifier: "ListPlaylistImagesRequest",
       });
     case 1:
-      return S.Array(__S(118, __c14, 6));
+      return S.Array(__S(1185, __c37, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           prevPageToken: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
-          items: __S(265, __c33, 1),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
+          items: __S(2337, __c73, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PlaylistImageListResponse",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           playlistId: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           videoId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -8881,28 +8984,32 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPlaylistItemsRequest" });
-    case 4:
-      return S.Array(__S(124, __c15, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(1283, __c40, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           visitorId: S.optional(S.String),
           prevPageToken: S.optional(S.String),
           eventId: S.optional(S.String),
-          items: __S(268, __c33, 4),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          items: __S(2369, __c74, 1),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaylistItemListResponse" });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           channelId: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           mine: S.optional(S.Boolean.pipe(T.Query())),
@@ -8917,27 +9024,27 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPlaylistsRequest" });
-    case 7:
-      return S.Array(__S(132, __c16, 4));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1380, __c43, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(271, __c33, 7),
+          items: __S(2401, __c75, 1),
           kind: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           nextPageToken: S.optional(S.String),
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           prevPageToken: S.optional(S.String),
           visitorId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaylistListResponse" });
-    case 1:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           videoCategoryId: S.optional(S.String.pipe(T.Query())),
@@ -8949,7 +9056,7 @@ function __c34(j: number): any {
           channelType: S.optional(S.String.pipe(T.Query())),
           videoPaidProductPlacement: S.optional(S.String.pipe(T.Query())),
           topicId: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          type: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           regionCode: S.optional(S.String.pipe(T.Query())),
           relevanceLanguage: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
@@ -8963,7 +9070,7 @@ function __c34(j: number): any {
           order: S.optional(S.String.pipe(T.Query())),
           videoDefinition: S.optional(S.String.pipe(T.Query())),
           videoCaption: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           publishedBefore: S.optional(S.String.pipe(T.Query())),
           forContentOwner: S.optional(S.Boolean.pipe(T.Query())),
           publishedAfter: S.optional(S.String.pipe(T.Query())),
@@ -8979,49 +9086,79 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSearchRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channelTitle: S.optional(S.String),
           channelId: S.optional(S.String),
-          thumbnails: S.optional(__S(12, __c1, 4)),
+          thumbnails: S.optional(__S(2049, __c64, 1)),
           title: S.optional(S.String),
           publishedAt: S.optional(S.String),
           liveBroadcastContent: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchResultSnippet" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(121, __c15, 1)),
-          snippet: S.optional(__S(274, __c34, 2)),
+          id: S.optional(__S(1248, __c39, 0)),
+          snippet: S.optional(__S(2433, __c76, 1)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchResult" });
+    case 3:
+      return S.Array(__S(2434, __c76, 2));
     case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           regionCode: S.optional(S.String),
-          items: __S(276, __c34, 4),
+          items: __S(2435, __c76, 3),
           etag: S.optional(S.String),
           visitorId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           eventId: S.optional(S.String),
           prevPageToken: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({ identifier: "SearchListResponse" });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          onBehalfOf: S.optional(S.String.pipe(T.Query())),
+          id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "youtube/v3/captions",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCaptionsRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCaptionsResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           order: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           mySubscribers: S.optional(S.Boolean.pipe(T.Query())),
           forChannelId: S.optional(S.String.pipe(T.Query())),
@@ -9030,7 +9167,7 @@ function __c34(j: number): any {
           channelId: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -9040,31 +9177,31 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
-    case 7:
-      return S.Array(__S(137, __c17, 1));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1443, __c45, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pageInfo: S.optional(__S(189, __c23, 5)),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           eventId: S.optional(S.String),
           prevPageToken: S.optional(S.String),
           visitorId: S.optional(S.String),
-          items: __S(279, __c34, 7),
+          items: __S(2529, __c79, 1),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionListResponse" });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           hl: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -9077,7 +9214,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSuperChatEventsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commentText: S.optional(S.String),
@@ -9088,40 +9225,44 @@ function __c35(j: number): any {
           channelId: S.optional(S.String),
           currency: S.optional(S.String),
           messageType: S.optional(S.Number),
-          superStickerMetadata: S.optional(__S(84, __c10, 4)),
-          supporterDetails: S.optional(__S(79, __c9, 7)),
+          superStickerMetadata: S.optional(__S(960, __c30, 0)),
+          supporterDetails: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "SuperChatEventSnippet" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          snippet: S.optional(__S(282, __c35, 2)),
+          snippet: S.optional(__S(2561, __c80, 1)),
         }),
       ).annotate({ identifier: "SuperChatEvent" });
+    case 3:
+      return S.Array(__S(2562, __c80, 2));
     case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           eventId: S.optional(S.String),
           visitorId: S.optional(S.String),
-          items: __S(284, __c35, 4),
+          items: __S(2563, __c80, 3),
           nextPageToken: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           etag: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({
         identifier: "SuperChatEventListResponse",
       });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           externalChannelId: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
           linkingToken: S.optional(S.String.pipe(T.Query())),
@@ -9135,27 +9276,27 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListThirdPartyLinksRequest",
       });
-    case 7:
-      return S.Array(__S(147, __c18, 3));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1606, __c50, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          items: S.optional(__S(287, __c35, 7)),
+          items: S.optional(__S(2593, __c81, 1)),
         }),
       ).annotate({
         identifier: "ThirdPartyLinkListResponse",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hl: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9166,7 +9307,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListVideoAbuseReportReasonsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -9175,33 +9316,33 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "VideoAbuseReportSecondaryReason",
       });
+    case 2:
+      return S.Array(__S(2625, __c82, 1));
     case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          secondaryReasons: S.optional(__S(291, __c36, 3)),
+          secondaryReasons: S.optional(__S(2626, __c82, 2)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VideoAbuseReportReasonSnippet",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          snippet: S.optional(__S(292, __c36, 4)),
+          snippet: S.optional(__S(2627, __c82, 3)),
         }),
       ).annotate({ identifier: "VideoAbuseReportReason" });
+    case 5:
+      return S.Array(__S(2628, __c82, 4));
     case 6:
-      return S.Array(__S(293, __c36, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(294, __c36, 6)),
+          items: S.optional(__S(2629, __c82, 5)),
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
           visitorId: S.optional(S.String),
@@ -9211,14 +9352,14 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           hl: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           regionCode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -9243,29 +9384,33 @@ function __c37(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           etag: S.optional(S.String),
-          snippet: S.optional(__S(297, __c37, 1)),
+          snippet: S.optional(__S(2657, __c83, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoCategory" });
     case 3:
-      return S.Array(__S(298, __c37, 2));
+      return S.Array(__S(2658, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
-          items: S.optional(__S(299, __c37, 3)),
+          items: S.optional(__S(2659, __c83, 3)),
           nextPageToken: S.optional(S.String),
           prevPageToken: S.optional(S.String),
           visitorId: S.optional(S.String),
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
         }),
       ).annotate({
         identifier: "VideoCategoryListResponse",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxHeight: S.optional(S.Number.pipe(T.Query())),
@@ -9275,8 +9420,8 @@ function __c37(j: number): any {
           locale: S.optional(S.String.pipe(T.Query())),
           myRating: S.optional(S.String.pipe(T.Query())),
           maxWidth: S.optional(S.Number.pipe(T.Query())),
-          id: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          id: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           regionCode: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -9289,16 +9434,16 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVideosRequest" });
-    case 6:
-      return S.Array(__S(176, __c22, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(1691, __c52, 27));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tokenPagination: S.optional(__S(26, __c3, 2)),
+          tokenPagination: S.optional(__S(2496, __c78, 0)),
           prevPageToken: S.optional(S.String),
-          items: __S(302, __c37, 6),
+          items: __S(2689, __c84, 1),
           visitorId: S.optional(S.String),
-          pageInfo: S.optional(__S(189, __c23, 5)),
+          pageInfo: S.optional(__S(1728, __c54, 0)),
           etag: S.optional(S.String),
           eventId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
@@ -9307,12 +9452,12 @@ function __c37(j: number): any {
       ).annotate({ identifier: "VideoListResponse" });
   }
 }
-function __c38(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: __S(0, __c0, 0).pipe(T.Query()),
+          id: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9323,7 +9468,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "MarkAsSpamCommentsRequest",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rating: S.String.pipe(T.Query()),
@@ -9336,7 +9485,11 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RateVideosRequest" });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           secondaryReasonId: S.optional(S.String),
@@ -9346,11 +9499,11 @@ function __c38(j: number): any {
           comments: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoAbuseReport" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(306, __c38, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9359,12 +9512,16 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ReportAbuseVideosRequest" });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           moderationStatus: S.String.pipe(T.Query()),
           banAuthor: S.optional(S.Boolean.pipe(T.Query())),
-          id: __S(0, __c0, 0).pipe(T.Query()),
+          id: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9375,7 +9532,30 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "SetModerationStatusCommentsRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "youtube/v3/channelSections",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteChannelSectionsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           videoId: S.String.pipe(T.Query()),
@@ -9388,13 +9568,13 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetThumbnailsRequest" });
-    case 6:
-      return S.Array(__S(12, __c1, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(2049, __c64, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(310, __c38, 6)),
+          items: S.optional(__S(2881, __c90, 1)),
           eventId: S.optional(S.String),
           etag: S.optional(S.String),
           visitorId: S.optional(S.String),
@@ -9402,7 +9582,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ThumbnailSetResponse" });
   }
 }
-function __c39(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9422,11 +9602,11 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(312, __c39, 0)),
+          position: S.optional(__S(2912, __c91, 0)),
           targetChannelId: S.optional(S.String),
           imageBytes: S.optional(S.String),
           imageUrl: S.optional(S.String),
-          timing: S.optional(__S(313, __c39, 1)),
+          timing: S.optional(__S(2913, __c91, 1)),
         }),
       ).annotate({ identifier: "InvideoBranding" });
     case 3:
@@ -9434,7 +9614,7 @@ function __c39(j: number): any {
         S.Struct({
           channelId: S.String.pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(314, __c39, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2914, __c91, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9443,10 +9623,14 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetWatermarksRequest" });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
           hl: S.optional(S.String.pipe(T.Query())),
           profileImageSize: S.optional(S.Number.pipe(T.Query())),
           liveChatId: S.optional(S.String.pipe(T.Query())),
@@ -9462,14 +9646,18 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "StreamYoutubeV3LiveChatMessagesRequest",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           id: S.String.pipe(T.Query()),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
           broadcastStatus: S.String.pipe(T.Query()),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9480,7 +9668,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "TransitionLiveBroadcastsRequest",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -9495,7 +9687,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "TransitionLiveChatMessagesRequest",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channelId: S.String.pipe(T.Query()),
@@ -9510,16 +9706,16 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UnsetWatermarksRequest" });
   }
 }
-function __c40(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           sync: S.optional(S.Boolean.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOf: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9528,12 +9724,16 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCaptionsRequest" });
-    case 1:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1845, __c57, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9542,12 +9742,16 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateChannelsRequest" });
-    case 2:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(613, __c19, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9558,11 +9762,15 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateChannelSectionsRequest",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9571,13 +9779,33 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCommentsRequest" });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "youtube/v3/comments",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCommentsRequest" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2093, __c65, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9588,13 +9816,17 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateLiveBroadcastsRequest",
       });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1128, __c35, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9603,12 +9835,16 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLiveStreamsRequest" });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          body: S.optional(__S(118, __c14, 6).pipe(T.HttpBody())),
+          part: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          body: S.optional(__S(1185, __c37, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9619,12 +9855,16 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdatePlaylistImagesRequest",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1283, __c40, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9637,14 +9877,14 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          part: __S(0, __c0, 0).pipe(T.Query()),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1380, __c43, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9653,12 +9893,16 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePlaylistsRequest" });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           externalChannelId: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1606, __c50, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9669,12 +9913,16 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "UpdateThirdPartyLinksRequest",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          part: __S(0, __c0, 0).pipe(T.Query()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+          part: __S(1536, __c48, 0).pipe(T.Query()),
+          body: S.optional(__S(1691, __c52, 27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9685,7 +9933,26 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UpdateVideosRequest" });
   }
 }
-
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "youtube/v3/liveBroadcasts",
+            baseUrl: "https://youtube.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLiveBroadcastsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -267,7 +267,7 @@ export const listRealtimeContactAnalysisSegments: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ListRealtimeContactAnalysisSegmentsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListRealtimeContactAnalysisSegmentsResponse>,
+  output: __S(17, __c0, 17) as any as S.Schema<ListRealtimeContactAnalysisSegmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -342,24 +342,20 @@ function __c0(j: number): any {
       ).annotate({ identifier: "PointOfInterest" });
     case 7:
       return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() => S.Struct({ PointsOfInterest: S.optional(__S(7, __c0, 7)) })).annotate({
         identifier: "CategoryDetails",
       });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(8, __c1, 0).pipe(S.optional));
-    case 2:
+    case 9:
+      return S.Record(S.String, /*@__PURE__*/ __S(8, __c0, 8).pipe(S.optional));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           MatchedCategories: S.optional(__S(5, __c0, 5)),
-          MatchedDetails: S.optional(__S(9, __c1, 1)),
+          MatchedDetails: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "Categories" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           Content: S.optional(S.String),
@@ -367,45 +363,41 @@ function __c1(j: number): any {
           FailureCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostContactSummary" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({ Content: S.optional(S.String), PointsOfInterest: S.optional(__S(7, __c0, 7)) }),
       ).annotate({
         identifier: "ExtractedInformationValue",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           ExtractionDefinitionId: S.optional(S.String),
           ExtractionDefinitionName: S.optional(S.String),
           ExtractionDefinitionDisplayLabel: S.optional(S.String),
-          ExtractedValues: S.optional(__S(13, __c1, 5)),
+          ExtractedValues: S.optional(__S(13, __c0, 13)),
           FailureCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtractedInformation" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           Transcript: S.optional(__S(4, __c0, 4)),
-          Categories: S.optional(__S(10, __c1, 2)),
-          PostContactSummary: S.optional(__S(11, __c1, 3)),
-          ExtractedInformation: S.optional(__S(14, __c1, 6)),
+          Categories: S.optional(__S(10, __c0, 10)),
+          PostContactSummary: S.optional(__S(11, __c0, 11)),
+          ExtractedInformation: S.optional(__S(14, __c0, 14)),
         }),
       ).annotate({
         identifier: "RealtimeContactAnalysisSegment",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(15, __c0, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          Segments: S.optional(__S(16, __c2, 0)),
+          Segments: S.optional(__S(16, __c0, 16)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -413,7 +405,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -97,7 +97,7 @@ export const getAction: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetActionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetActionResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -111,8 +111,8 @@ export const getActions: API.OperationMethod<
   GetActionsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetActionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetActionsResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<GetActionsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetActionsResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -131,49 +131,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "GetActionResponseActionResourcesItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "GetActionResponseActionError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
           command: S.String,
           status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "GetActionResponseAction" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4, __c0, 4),
+          action: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "GetActionResponse" });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: __S(6, __c0, 6).pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/actions", code: 200 })),
-      ).annotate({ identifier: "GetActionsRequest" });
   }
 }
 function __c1(j: number): any {
@@ -182,28 +154,59 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          type: S.String,
         }),
       ).annotate({
-        identifier: "GetActionsResponseActionsItem",
+        identifier: "GetActionResponseActionResourcesItem",
       });
     case 1:
       return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(9, __c1, 1),
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "GetActionResponseActionError",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: __S(16, __c2, 0).pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/actions", code: 200 })),
+      ).annotate({ identifier: "GetActionsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "GetActionsResponseActionsItem",
+      });
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "GetActionsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

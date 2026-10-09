@@ -448,8 +448,8 @@ export const ScheduledActionsVirtualMachinesCancelOperations: API.OperationMetho
   ScheduledActionsVirtualMachinesCancelOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CancelOperationsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CancelOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const ScheduledActionsVirtualMachinesExecuteCreate: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteCreateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateResourceOperationResponse>,
+  input: __S(51, __c6, 3) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<CreateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,11 +479,11 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocate: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    64,
+    __c8,
+    0,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeallocateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeallocateResourceOperationResponse>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeallocateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const ScheduledActionsVirtualMachinesExecuteDelete: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteDeleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourceOperationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -513,11 +513,11 @@ export const ScheduledActionsVirtualMachinesExecuteHibernate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    88,
+    __c11,
+    0,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<HibernateResourceOperationResponse>,
+  output: __S(57, __c7, 1) as any as S.Schema<HibernateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const ScheduledActionsVirtualMachinesExecuteStart: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteStartError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<StartResourceOperationResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<StartResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -547,11 +547,11 @@ export const ScheduledActionsVirtualMachinesGetOperationErrors: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    104,
+    __c13,
+    0,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetOperationErrorsResponse>,
+  output: __S(109, __c13, 5) as any as S.Schema<GetOperationErrorsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -566,11 +566,11 @@ export const ScheduledActionsVirtualMachinesGetOperationStatus: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    112,
+    __c14,
+    0,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetOperationStatusResponse>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -585,11 +585,11 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitDeallocateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeallocateResourceOperationResponse>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeallocateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const ScheduledActionsVirtualMachinesSubmitHibernate: API.OperationMethod
   ScheduledActionsVirtualMachinesSubmitHibernateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitHibernateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<HibernateResourceOperationResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitHibernateRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<HibernateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const ScheduledActionsVirtualMachinesSubmitStart: API.OperationMethod<
   ScheduledActionsVirtualMachinesSubmitStartError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitStartRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<StartResourceOperationResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitStartRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<StartResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -667,14 +667,16 @@ function __c0(j: number): any {
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5, __c0, 5),
+          operationIds: __S(24, __c3, 0),
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -687,25 +689,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ScheduledActionsVirtualMachinesCancelOperationsRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(20, __c2, 4),
+        }),
+      ).annotate({ identifier: "CancelOperationsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.String,
           errorDetails: S.String,
         }),
       ).annotate({ identifier: "ResourceOperationError" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           retryCount: S.optional(S.Number),
           retryWindowInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RetryPolicy" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operationId: S.String,
@@ -717,241 +725,28 @@ function __c1(j: number): any {
           state: S.optional(S.String),
           timezone: S.optional(S.String),
           timeZone: S.optional(S.String),
-          resourceOperationError: S.optional(__S(7, __c0, 7)),
+          resourceOperationError: S.optional(__S(16, __c2, 0)),
           completedAt: S.optional(S.String),
-          retryPolicy: S.optional(__S(8, __c1, 0)),
+          retryPolicy: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "ResourceOperationDetails" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorDetails: S.optional(S.String),
-          operation: S.optional(__S(9, __c1, 1)),
+          operation: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ResourceOperation" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(11, __c1, 3),
-        }),
-      ).annotate({ identifier: "CancelOperationsResponse" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          baseProfile: S.optional(__S(13, __c1, 5)),
-          resourceOverrides: S.optional(__S(14, __c1, 6)),
-          resourceCount: S.Number,
-          resourcePrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceProvisionPayload" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          optimizationPreference: S.optional(S.String),
-          retryPolicy: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ExecutionParameters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          resourceConfigParameters: __S(15, __c1, 7),
-          executionParameters: __S(16, __c2, 0),
-          correlationid: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesExecuteCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          type: S.String,
-          location: S.String,
-          results: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateResourceOperationResponse",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ids: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "Resources" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
-          correlationid: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesExecuteDeallocateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
-          correlationid: S.optional(S.String),
-          forceDeletion: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDelete",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesExecuteDeleteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
-          correlationid: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesExecuteHibernateRequest",
-      });
+      return S.Array(__S(19, __c2, 3));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
-          correlationid: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesExecuteStartRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesGetOperationErrorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.String,
-          errorDetails: S.String,
-          timestamp: S.optional(S.String),
-          timeStamp: S.optional(S.String),
-          azureOperationName: S.optional(S.String),
-          crpOperationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationErrorDetails" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operationId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          activationTime: S.optional(S.String),
-          completedAt: S.optional(S.String),
-          operationErrors: S.optional(__S(27, __c3, 3)),
-          requestErrorCode: S.optional(S.String),
-          requestErrorDetails: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationErrorsResult" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "GetOperationErrorsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5, __c0, 5),
-          correlationid: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesGetOperationStatusRequest",
-      });
+      return S.Array(S.String);
   }
 }
 function __c4(j: number): any {
@@ -959,49 +754,11 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "GetOperationStatusResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deadline: S.optional(S.String),
-          deadLine: S.optional(S.String),
-          timezone: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          deadlineType: S.String,
-        }),
-      ).annotate({ identifier: "Schedule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33, __c4, 1),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
-          correlationid: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitDeallocate",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduledActionsVirtualMachinesSubmitDeallocateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33, __c4, 1),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
+          schedule: __S(128, __c16, 0),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -1014,14 +771,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScheduledActionsVirtualMachinesSubmitHibernateRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33, __c4, 1),
-          executionParameters: __S(16, __c2, 0),
-          resources: __S(20, __c2, 4),
+          schedule: __S(128, __c16, 0),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -1036,7 +797,293 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baseProfile: S.optional(__S(48, __c6, 0)),
+          resourceOverrides: S.optional(__S(49, __c6, 1)),
+          resourceCount: S.Number,
+          resourcePrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceProvisionPayload" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          resourceConfigParameters: __S(50, __c6, 2),
+          executionParameters: __S(56, __c7, 0),
+          correlationid: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesExecuteCreateRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          optimizationPreference: S.optional(S.String),
+          retryPolicy: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "ExecutionParameters" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          type: S.String,
+          location: S.String,
+          results: S.optional(__S(20, __c2, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateResourceOperationResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
+          correlationid: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesExecuteDeallocateRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ids: __S(72, __c9, 0),
+        }),
+      ).annotate({ identifier: "Resources" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
+          correlationid: S.optional(S.String),
+          forceDeletion: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDelete",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesExecuteDeleteRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
+          correlationid: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesExecuteHibernateRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
+          correlationid: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesExecuteStartRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          operationIds: __S(24, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesGetOperationErrorsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.String,
+          errorDetails: S.String,
+          timestamp: S.optional(S.String),
+          timeStamp: S.optional(S.String),
+          azureOperationName: S.optional(S.String),
+          crpOperationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationErrorDetails" });
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          activationTime: S.optional(S.String),
+          completedAt: S.optional(S.String),
+          operationErrors: S.optional(__S(106, __c13, 2)),
+          requestErrorCode: S.optional(S.String),
+          requestErrorDetails: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationErrorsResult" });
+    case 4:
+      return S.Array(__S(107, __c13, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(108, __c13, 4),
+        }),
+      ).annotate({
+        identifier: "GetOperationErrorsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          operationIds: __S(24, __c3, 0),
+          correlationid: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesGetOperationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(20, __c2, 4),
+        }),
+      ).annotate({
+        identifier: "GetOperationStatusResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationparameter: S.String.pipe(T.Label()),
+          schedule: __S(128, __c16, 0),
+          executionParameters: __S(56, __c7, 0),
+          resources: __S(73, __c9, 1),
+          correlationid: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitDeallocate",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduledActionsVirtualMachinesSubmitDeallocateRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deadline: S.optional(S.String),
+          deadLine: S.optional(S.String),
+          timezone: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          deadlineType: S.String,
+        }),
+      ).annotate({ identifier: "Schedule" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

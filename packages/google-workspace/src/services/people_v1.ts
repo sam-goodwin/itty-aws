@@ -1300,8 +1300,8 @@ export const batchCreateContactsPeople: API.OperationMethod<
   BatchCreateContactsPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<BatchCreateContactsPeopleRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<BatchCreateContactsResponse>,
+  input: __S(675, __c21, 3) as any as S.Schema<BatchCreateContactsPeopleRequest>,
+  output: __S(676, __c21, 4) as any as S.Schema<BatchCreateContactsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const batchDeleteContactsPeople: API.OperationMethod<
   BatchDeleteContactsPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<BatchDeleteContactsPeopleRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
+  input: __S(929, __c29, 1) as any as S.Schema<BatchDeleteContactsPeopleRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const batchGetContactGroups: API.OperationMethod<
   BatchGetContactGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<BatchGetContactGroupsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<BatchGetContactGroupsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<BatchGetContactGroupsRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<BatchGetContactGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const batchUpdateContactsPeople: API.OperationMethod<
   BatchUpdateContactsPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<BatchUpdateContactsPeopleRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<BatchUpdateContactsResponse>,
+  input: __S(1058, __c33, 2) as any as S.Schema<BatchUpdateContactsPeopleRequest>,
+  output: __S(1060, __c33, 4) as any as S.Schema<BatchUpdateContactsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1376,11 +1376,11 @@ export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    97,
-    __c12,
+    1089,
+    __c34,
     1,
   ) as any as S.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Person>,
+  output: __S(900, __c28, 4) as any as S.Schema<Person>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1399,8 @@ export const createContactGroups: API.OperationMethod<
   CreateContactGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateContactGroupsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ContactGroup>,
+  input: __S(1121, __c35, 1) as any as S.Schema<CreateContactGroupsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ContactGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1419,8 @@ export const createContactPeople: API.OperationMethod<
   CreateContactPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateContactPeopleRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Person>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateContactPeopleRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<Person>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1439,8 @@ export const deleteContactGroups: API.OperationMethod<
   DeleteContactGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteContactGroupsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteContactGroupsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1459,8 +1459,8 @@ export const deleteContactPeople: API.OperationMethod<
   DeleteContactPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteContactPeopleRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteContactPeopleRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1479,8 @@ export const deleteContactPhotoPeople: API.OperationMethod<
   DeleteContactPhotoPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteContactPhotoPeopleRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<DeleteContactPhotoResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteContactPhotoPeopleRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteContactPhotoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1494,8 @@ export const getBatchGetPeople: API.OperationMethod<
   GetBatchGetPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetBatchGetPeopleRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetPeopleResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetBatchGetPeopleRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<GetPeopleResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1509,8 @@ export const getContactGroups: API.OperationMethod<
   GetContactGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetContactGroupsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ContactGroup>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetContactGroupsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ContactGroup>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1524,8 +1524,8 @@ export const getPeople: API.OperationMethod<
   GetPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetPeopleRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Person>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetPeopleRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<Person>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1540,8 @@ export const listContactGroups: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListContactGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListContactGroupsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListContactGroupsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListContactGroupsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ListContactGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1557,8 +1557,8 @@ export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListDirectoryPeopleResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListDirectoryPeoplePeopleRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListDirectoryPeopleResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListDirectoryPeoplePeopleRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<ListDirectoryPeopleResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1574,8 @@ export const listOtherContacts: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListOtherContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListOtherContactsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListOtherContactsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListOtherContactsRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<ListOtherContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const listPeopleConnections: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListPeopleConnectionsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListPeopleConnectionsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1612,8 @@ export const modifyContactGroupsMembers: API.OperationMethod<
   ModifyContactGroupsMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ModifyContactGroupsMembersRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ModifyContactGroupMembersResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<ModifyContactGroupsMembersRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ModifyContactGroupMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1627,8 @@ export const searchContactsPeople: API.OperationMethod<
   SearchContactsPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<SearchContactsPeopleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<SearchResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<SearchContactsPeopleRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1643,8 +1643,8 @@ export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   SearchDirectoryPeopleResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<SearchDirectoryPeoplePeopleRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<SearchDirectoryPeopleResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<SearchDirectoryPeoplePeopleRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<SearchDirectoryPeopleResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1659,8 @@ export const searchOtherContacts: API.OperationMethod<
   SearchOtherContactsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<SearchOtherContactsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<SearchResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<SearchOtherContactsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1679,8 +1679,8 @@ export const updateContactGroups: API.OperationMethod<
   UpdateContactGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<UpdateContactGroupsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ContactGroup>,
+  input: __S(577, __c18, 1) as any as S.Schema<UpdateContactGroupsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ContactGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1699,8 +1699,8 @@ export const updateContactPeople: API.OperationMethod<
   UpdateContactPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<UpdateContactPeopleRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Person>,
+  input: __S(608, __c19, 0) as any as S.Schema<UpdateContactPeopleRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<Person>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1719,8 +1719,8 @@ export const updateContactPhotoPeople: API.OperationMethod<
   UpdateContactPhotoPeopleError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<UpdateContactPhotoPeopleRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UpdateContactPhotoResponse>,
+  input: __S(641, __c20, 1) as any as S.Schema<UpdateContactPhotoPeopleRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UpdateContactPhotoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1730,746 +1730,11 @@ export const updateContactPhotoPeople: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userTypes: S.optional(__S(0, __c0, 0)),
-          objectType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProfileMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileMetadata: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Source" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          source: S.optional(__S(2, __c0, 2)),
-          verified: S.optional(S.Boolean),
-          sourcePrimary: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FieldMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          type: S.optional(S.String),
-          formattedType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CalendarUrl" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          previousResourceNames: S.optional(__S(6, __c0, 6)),
-          objectType: S.optional(S.String),
-          sources: S.optional(__S(7, __c0, 7)),
-          linkedPeopleResourceNames: S.optional(__S(6, __c0, 6)),
-          deleted: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PersonMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          contentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Biography" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          current: S.optional(S.Boolean),
-          buildingId: S.optional(S.String),
-          type: S.optional(S.String),
-          floor: S.optional(S.String),
-          deskCode: S.optional(S.String),
-          value: S.optional(S.String),
-          floorSection: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-          formattedType: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MiscKeyword" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          formattedType: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          person: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Relation" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "FileAs" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Locale" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inViewerDomain: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DomainMembership" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contactGroupResourceName: S.optional(S.String),
-          contactGroupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactGroupMembership" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domainMembership: S.optional(__S(21, __c2, 5)),
-          contactGroupMembership: S.optional(__S(22, __c2, 6)),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Membership" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          current: S.optional(S.Boolean),
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Residence" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          ageRange: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgeRangeType" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          formattedValue: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          addressMeAs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Gender" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          default: S.optional(S.Boolean),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CoverPhoto" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.Array(__S(19, __c2, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          formattedType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SipAddress" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          formattedType: S.optional(S.String),
-          value: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailAddress" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-          formattedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelationshipInterest" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          middleName: S.optional(S.String),
-          phoneticFullName: S.optional(S.String),
-          phoneticHonorificSuffix: S.optional(S.String),
-          phoneticMiddleName: S.optional(S.String),
-          phoneticGivenName: S.optional(S.String),
-          unstructuredName: S.optional(S.String),
-          phoneticHonorificPrefix: S.optional(S.String),
-          displayNameLastFirst: S.optional(S.String),
-          honorificPrefix: S.optional(S.String),
-          honorificSuffix: S.optional(S.String),
-          familyName: S.optional(S.String),
-          givenName: S.optional(S.String),
-          phoneticFamilyName: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Name" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "People_Date" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          formattedType: S.optional(S.String),
-          date: S.optional(__S(42, __c5, 2)),
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          formattedValue: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          extendedAddress: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          type: S.optional(S.String),
-          region: S.optional(S.String),
-          streetAddress: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          formattedType: S.optional(S.String),
-          poBox: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Address" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Nickname" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-          formattedType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalId" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientData" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          date: S.optional(__S(42, __c5, 2)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Birthday" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          canonicalForm: S.optional(S.String),
-          value: S.optional(S.String),
-          formattedType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhoneNumber" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          costCenter: S.optional(S.String),
-          department: S.optional(S.String),
-          symbol: S.optional(S.String),
-          domain: S.optional(S.String),
-          current: S.optional(S.Boolean),
-          jobDescription: S.optional(S.String),
-          endDate: S.optional(__S(42, __c5, 2)),
-          metadata: S.optional(__S(3, __c0, 3)),
-          formattedType: S.optional(S.String),
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-          fullTimeEquivalentMillipercent: S.optional(S.Number),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          startDate: S.optional(__S(42, __c5, 2)),
-          phoneticName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserDefined" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          formattedType: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Url" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          url: S.optional(S.String),
-          default: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Photo" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          formattedType: S.optional(S.String),
-          username: S.optional(S.String),
-          protocol: S.optional(S.String),
-          formattedProtocol: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImClient" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          formattedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelationshipStatus" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          calendarUrls: S.optional(__S(5, __c0, 5)),
-          metadata: S.optional(__S(8, __c1, 0)),
-          biographies: S.optional(__S(10, __c1, 2)),
-          locations: S.optional(__S(12, __c1, 4)),
-          ageRange: S.optional(S.String),
-          miscKeywords: S.optional(__S(14, __c1, 6)),
-          relations: S.optional(__S(16, __c2, 0)),
-          etag: S.optional(S.String),
-          fileAses: S.optional(__S(18, __c2, 2)),
-          locales: S.optional(__S(20, __c2, 4)),
-          resourceName: S.optional(S.String),
-          memberships: S.optional(__S(24, __c3, 0)),
-          residences: S.optional(__S(26, __c3, 2)),
-          ageRanges: S.optional(__S(28, __c3, 4)),
-          genders: S.optional(__S(30, __c3, 6)),
-          coverPhotos: S.optional(__S(32, __c4, 0)),
-          braggingRights: S.optional(__S(33, __c4, 1)),
-          sipAddresses: S.optional(__S(35, __c4, 3)),
-          emailAddresses: S.optional(__S(37, __c4, 5)),
-          relationshipInterests: S.optional(__S(39, __c4, 7)),
-          names: S.optional(__S(41, __c5, 1)),
-          events: S.optional(__S(44, __c5, 4)),
-          occupations: S.optional(__S(18, __c2, 2)),
-          taglines: S.optional(__S(18, __c2, 2)),
-          addresses: S.optional(__S(46, __c5, 6)),
-          interests: S.optional(__S(20, __c2, 4)),
-          nicknames: S.optional(__S(48, __c6, 0)),
-          externalIds: S.optional(__S(50, __c6, 2)),
-          clientData: S.optional(__S(52, __c6, 4)),
-          birthdays: S.optional(__S(54, __c6, 6)),
-          phoneNumbers: S.optional(__S(56, __c7, 0)),
-          organizations: S.optional(__S(58, __c7, 2)),
-          userDefined: S.optional(__S(60, __c7, 4)),
-          skills: S.optional(__S(20, __c2, 4)),
-          urls: S.optional(__S(62, __c7, 6)),
-          photos: S.optional(__S(64, __c8, 0)),
-          imClients: S.optional(__S(66, __c8, 2)),
-          relationshipStatuses: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "Person" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contactPerson: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "ContactToCreate" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          readMask: S.optional(S.String),
-          sources: S.optional(__S(0, __c0, 0)),
-          contacts: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateContactsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/people:batchCreateContacts",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateContactsPeopleRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(76, __c9, 4)),
-          httpStatusCode: S.optional(S.Number),
-          requestedResourceName: S.optional(S.String),
-          person: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "PersonResponse" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdPeople: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateContactsResponse",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceNames: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteContactsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/people:batchDeleteContacts",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteContactsPeopleRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceNames: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          maxMembers: S.optional(S.Number.pipe(T.Query())),
-          groupFields: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/contactGroups:batchGet",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetContactGroupsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactGroupMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupClientData" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          memberCount: S.optional(S.Number),
-          metadata: S.optional(__S(84, __c10, 4)),
-          clientData: S.optional(__S(86, __c10, 6)),
-          groupType: S.optional(S.String),
-          name: S.optional(S.String),
-          memberResourceNames: S.optional(__S(6, __c0, 6)),
-          resourceName: S.optional(S.String),
-          etag: S.optional(S.String),
-          formattedName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactGroup" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestedResourceName: S.optional(S.String),
-          contactGroup: S.optional(__S(87, __c10, 7)),
-          status: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "ContactGroupResponse" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "BatchGetContactGroupsResponse",
-      });
-    case 3:
-      return S.Record(S.String, __S(69, __c8, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contacts: S.optional(__S(91, __c11, 3)),
-          sources: S.optional(__S(0, __c0, 0)),
-          updateMask: S.optional(S.String),
-          readMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateContactsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/people:batchUpdateContacts",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateContactsPeopleRequest",
-      });
-    case 6:
-      return S.Record(S.String, __S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateResult: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateContactsResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          readMask: S.optional(S.String),
-          copyMask: S.optional(S.String),
-          sources: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "CopyOtherContactToMyContactsGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contactGroup: S.optional(__S(87, __c10, 7)),
-          readGroupFields: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateContactGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/contactGroups",
-            baseUrl: "https://people.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContactGroupsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           personFields: S.optional(S.String.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
+          body: S.optional(__S(900, __c28, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2480,7 +1745,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateContactPeopleRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleteContacts: S.optional(S.Boolean.pipe(T.Query())),
@@ -2495,7 +1764,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteContactGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
@@ -2509,11 +1782,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteContactPeopleRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           personFields: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2527,21 +1804,25 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          person: S.optional(__S(69, __c8, 5)),
+          person: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({
         identifier: "DeleteContactPhotoResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          resourceNames: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
+          resourceNames: S.optional(__S(736, __c23, 0).pipe(T.Query())),
           personFields: S.optional(S.String.pipe(T.Query())),
           "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2552,13 +1833,17 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBatchGetPeopleRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          responses: S.optional(__S(78, __c9, 6)),
+          responses: S.optional(__S(704, __c22, 0)),
         }),
       ).annotate({ identifier: "GetPeopleResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
@@ -2572,10 +1857,14 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContactGroupsRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           resourceName: S.String.pipe(T.Label()),
           personFields: S.optional(S.String.pipe(T.Query())),
           "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
@@ -2587,7 +1876,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPeopleRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupFields: S.optional(S.String.pipe(T.Query())),
@@ -2602,12 +1895,12 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListContactGroupsRequest" });
-    case 6:
-      return S.Array(__S(87, __c10, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1027, __c32, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contactGroups: S.optional(__S(110, __c13, 6)),
+          contactGroups: S.optional(__S(257, __c8, 1)),
           totalItems: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
@@ -2617,18 +1910,18 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           readMask: S.optional(S.String.pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Query())),
           requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
-          mergeSources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          mergeSources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2640,18 +1933,26 @@ function __c14(j: number): any {
         identifier: "ListDirectoryPeoplePeopleRequest",
       });
     case 1:
-      return S.Array(__S(69, __c8, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          people: S.optional(__S(113, __c14, 1)),
+          people: S.optional(__S(320, __c10, 0)),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDirectoryPeopleResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(900, __c28, 4));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           syncToken: S.optional(S.String.pipe(T.Query())),
@@ -2659,7 +1960,7 @@ function __c14(j: number): any {
           requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2668,25 +1969,29 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOtherContactsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
-          otherContacts: S.optional(__S(113, __c14, 1)),
+          otherContacts: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "ListOtherContactsResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           resourceName: S.String.pipe(T.Label()),
           requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Query())),
           "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
           personFields: S.optional(S.String.pipe(T.Query())),
@@ -2701,34 +2006,34 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPeopleConnectionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(113, __c14, 1)),
+          connections: S.optional(__S(320, __c10, 0)),
           totalPeople: S.optional(S.Number),
           totalItems: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceNamesToAdd: S.optional(__S(6, __c0, 6)),
-          resourceNamesToRemove: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "ModifyContactGroupMembersRequest",
-      });
   }
 }
-function __c15(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          resourceNamesToAdd: S.optional(__S(736, __c23, 0)),
+          resourceNamesToRemove: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "ModifyContactGroupMembersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2739,21 +2044,25 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ModifyContactGroupsMembersRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          notFoundResourceNames: S.optional(__S(6, __c0, 6)),
-          canNotRemoveLastContactGroupResourceNames: S.optional(__S(6, __c0, 6)),
+          notFoundResourceNames: S.optional(__S(736, __c23, 0)),
+          canNotRemoveLastContactGroupResourceNames: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "ModifyContactGroupMembersResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2765,28 +2074,36 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SearchContactsPeopleRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          person: S.optional(__S(69, __c8, 5)),
+          person: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({ identifier: "SearchResult" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(124, __c15, 4)),
+          results: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({ identifier: "SearchResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           readMask: S.optional(S.String.pipe(T.Query())),
-          mergeSources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          mergeSources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2798,11 +2115,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SearchDirectoryPeoplePeopleRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          people: S.optional(__S(113, __c14, 1)),
+          people: S.optional(__S(320, __c10, 0)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -2810,7 +2127,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2828,21 +2145,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SearchOtherContactsRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readGroupFields: S.optional(S.String),
-          contactGroup: S.optional(__S(87, __c10, 7)),
+          contactGroup: S.optional(__S(1027, __c32, 3)),
           updateGroupFields: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateContactGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2853,14 +2174,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateContactGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           personFields: S.optional(S.String.pipe(T.Query())),
-          sources: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          sources: S.optional(__S(832, __c26, 0).pipe(T.Query())),
           updatePersonFields: S.optional(S.String.pipe(T.Query())),
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(900, __c28, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2871,21 +2196,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateContactPeopleRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           personFields: S.optional(S.String),
-          sources: S.optional(__S(0, __c0, 0)),
+          sources: S.optional(__S(832, __c26, 0)),
           photoBytes: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateContactPhotoRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2898,7 +2227,753 @@ function __c16(j: number): any {
       });
   }
 }
-
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactPerson: S.optional(__S(900, __c28, 4)),
+        }),
+      ).annotate({ identifier: "ContactToCreate" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readMask: S.optional(S.String),
+          sources: S.optional(__S(832, __c26, 0)),
+          contacts: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateContactsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/people:batchCreateContacts",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateContactsPeopleRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createdPeople: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateContactsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(800, __c25, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(770, __c24, 2)),
+          httpStatusCode: S.optional(S.Number),
+          requestedResourceName: S.optional(S.String),
+          person: S.optional(__S(900, __c28, 4)),
+        }),
+      ).annotate({ identifier: "PersonResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userTypes: S.optional(__S(832, __c26, 0)),
+          objectType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProfileMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          profileMetadata: S.optional(__S(833, __c26, 1)),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Source" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          source: S.optional(__S(834, __c26, 2)),
+          verified: S.optional(S.Boolean),
+          sourcePrimary: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FieldMetadata" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          type: S.optional(S.String),
+          formattedType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CalendarUrl" });
+    case 5:
+      return S.Array(__S(836, __c26, 4));
+    case 6:
+      return S.Array(__S(834, __c26, 2));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          previousResourceNames: S.optional(__S(736, __c23, 0)),
+          objectType: S.optional(S.String),
+          sources: S.optional(__S(838, __c26, 6)),
+          linkedPeopleResourceNames: S.optional(__S(736, __c23, 0)),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PersonMetadata" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          contentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Biography" });
+    case 9:
+      return S.Array(__S(840, __c26, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          current: S.optional(S.Boolean),
+          buildingId: S.optional(S.String),
+          type: S.optional(S.String),
+          floor: S.optional(S.String),
+          deskCode: S.optional(S.String),
+          value: S.optional(S.String),
+          floorSection: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "Location" });
+    case 11:
+      return S.Array(__S(842, __c26, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+          formattedType: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MiscKeyword" });
+    case 13:
+      return S.Array(__S(844, __c26, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          formattedType: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          person: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Relation" });
+    case 15:
+      return S.Array(__S(846, __c26, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "FileAs" });
+    case 17:
+      return S.Array(__S(848, __c26, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Locale" });
+    case 19:
+      return S.Array(__S(850, __c26, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          inViewerDomain: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DomainMembership" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          contactGroupResourceName: S.optional(S.String),
+          contactGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactGroupMembership" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          domainMembership: S.optional(__S(852, __c26, 20)),
+          contactGroupMembership: S.optional(__S(853, __c26, 21)),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "Membership" });
+    case 23:
+      return S.Array(__S(854, __c26, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          current: S.optional(S.Boolean),
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Residence" });
+    case 25:
+      return S.Array(__S(856, __c26, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          ageRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgeRangeType" });
+    case 27:
+      return S.Array(__S(858, __c26, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          formattedValue: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          addressMeAs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Gender" });
+    case 29:
+      return S.Array(__S(860, __c26, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          default: S.optional(S.Boolean),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "CoverPhoto" });
+    case 31:
+      return S.Array(__S(862, __c26, 30));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(850, __c26, 18));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          formattedType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SipAddress" });
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          formattedType: S.optional(S.String),
+          value: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailAddress" });
+    case 4:
+      return S.Array(__S(867, __c27, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+          formattedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelationshipInterest" });
+    case 6:
+      return S.Array(__S(869, __c27, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          middleName: S.optional(S.String),
+          phoneticFullName: S.optional(S.String),
+          phoneticHonorificSuffix: S.optional(S.String),
+          phoneticMiddleName: S.optional(S.String),
+          phoneticGivenName: S.optional(S.String),
+          unstructuredName: S.optional(S.String),
+          phoneticHonorificPrefix: S.optional(S.String),
+          displayNameLastFirst: S.optional(S.String),
+          honorificPrefix: S.optional(S.String),
+          honorificSuffix: S.optional(S.String),
+          familyName: S.optional(S.String),
+          givenName: S.optional(S.String),
+          phoneticFamilyName: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "Name" });
+    case 8:
+      return S.Array(__S(871, __c27, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "People_Date" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          formattedType: S.optional(S.String),
+          date: S.optional(__S(873, __c27, 9)),
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 11:
+      return S.Array(__S(874, __c27, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          formattedValue: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          extendedAddress: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          type: S.optional(S.String),
+          region: S.optional(S.String),
+          streetAddress: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          formattedType: S.optional(S.String),
+          poBox: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Address" });
+    case 13:
+      return S.Array(__S(876, __c27, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Nickname" });
+    case 15:
+      return S.Array(__S(878, __c27, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+          formattedType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalId" });
+    case 17:
+      return S.Array(__S(880, __c27, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientData" });
+    case 19:
+      return S.Array(__S(882, __c27, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          date: S.optional(__S(873, __c27, 9)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Birthday" });
+    case 21:
+      return S.Array(__S(884, __c27, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          canonicalForm: S.optional(S.String),
+          value: S.optional(S.String),
+          formattedType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhoneNumber" });
+    case 23:
+      return S.Array(__S(886, __c27, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          costCenter: S.optional(S.String),
+          department: S.optional(S.String),
+          symbol: S.optional(S.String),
+          domain: S.optional(S.String),
+          current: S.optional(S.Boolean),
+          jobDescription: S.optional(S.String),
+          endDate: S.optional(__S(873, __c27, 9)),
+          metadata: S.optional(__S(835, __c26, 3)),
+          formattedType: S.optional(S.String),
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+          fullTimeEquivalentMillipercent: S.optional(S.Number),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          startDate: S.optional(__S(873, __c27, 9)),
+          phoneticName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Organization" });
+    case 25:
+      return S.Array(__S(888, __c27, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserDefined" });
+    case 27:
+      return S.Array(__S(890, __c27, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          formattedType: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Url" });
+    case 29:
+      return S.Array(__S(892, __c27, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          url: S.optional(S.String),
+          default: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Photo" });
+    case 31:
+      return S.Array(__S(894, __c27, 30));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(835, __c26, 3)),
+          formattedType: S.optional(S.String),
+          username: S.optional(S.String),
+          protocol: S.optional(S.String),
+          formattedProtocol: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImClient" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          metadata: S.optional(__S(835, __c26, 3)),
+          formattedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelationshipStatus" });
+    case 3:
+      return S.Array(__S(898, __c28, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          calendarUrls: S.optional(__S(837, __c26, 5)),
+          metadata: S.optional(__S(839, __c26, 7)),
+          biographies: S.optional(__S(841, __c26, 9)),
+          locations: S.optional(__S(843, __c26, 11)),
+          ageRange: S.optional(S.String),
+          miscKeywords: S.optional(__S(845, __c26, 13)),
+          relations: S.optional(__S(847, __c26, 15)),
+          etag: S.optional(S.String),
+          fileAses: S.optional(__S(849, __c26, 17)),
+          locales: S.optional(__S(851, __c26, 19)),
+          resourceName: S.optional(S.String),
+          memberships: S.optional(__S(855, __c26, 23)),
+          residences: S.optional(__S(857, __c26, 25)),
+          ageRanges: S.optional(__S(859, __c26, 27)),
+          genders: S.optional(__S(861, __c26, 29)),
+          coverPhotos: S.optional(__S(863, __c26, 31)),
+          braggingRights: S.optional(__S(864, __c27, 0)),
+          sipAddresses: S.optional(__S(866, __c27, 2)),
+          emailAddresses: S.optional(__S(868, __c27, 4)),
+          relationshipInterests: S.optional(__S(870, __c27, 6)),
+          names: S.optional(__S(872, __c27, 8)),
+          events: S.optional(__S(875, __c27, 11)),
+          occupations: S.optional(__S(849, __c26, 17)),
+          taglines: S.optional(__S(849, __c26, 17)),
+          addresses: S.optional(__S(877, __c27, 13)),
+          interests: S.optional(__S(851, __c26, 19)),
+          nicknames: S.optional(__S(879, __c27, 15)),
+          externalIds: S.optional(__S(881, __c27, 17)),
+          clientData: S.optional(__S(883, __c27, 19)),
+          birthdays: S.optional(__S(885, __c27, 21)),
+          phoneNumbers: S.optional(__S(887, __c27, 23)),
+          organizations: S.optional(__S(889, __c27, 25)),
+          userDefined: S.optional(__S(891, __c27, 27)),
+          skills: S.optional(__S(851, __c26, 19)),
+          urls: S.optional(__S(893, __c27, 29)),
+          photos: S.optional(__S(895, __c27, 31)),
+          imClients: S.optional(__S(897, __c28, 1)),
+          relationshipStatuses: S.optional(__S(899, __c28, 3)),
+        }),
+      ).annotate({ identifier: "Person" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceNames: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteContactsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/people:batchDeleteContacts",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteContactsPeopleRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceNames: S.optional(__S(736, __c23, 0).pipe(T.Query())),
+          maxMembers: S.optional(S.Number.pipe(T.Query())),
+          groupFields: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/contactGroups:batchGet",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetContactGroupsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestedResourceName: S.optional(S.String),
+          contactGroup: S.optional(__S(1027, __c32, 3)),
+          status: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "ContactGroupResponse" });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(994, __c31, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchGetContactGroupsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactGroupMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupClientData" });
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          memberCount: S.optional(S.Number),
+          metadata: S.optional(__S(1024, __c32, 0)),
+          clientData: S.optional(__S(1026, __c32, 2)),
+          groupType: S.optional(S.String),
+          name: S.optional(S.String),
+          memberResourceNames: S.optional(__S(736, __c23, 0)),
+          resourceName: S.optional(S.String),
+          etag: S.optional(S.String),
+          formattedName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactGroup" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(900, __c28, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contacts: S.optional(__S(1056, __c33, 0)),
+          sources: S.optional(__S(832, __c26, 0)),
+          updateMask: S.optional(S.String),
+          readMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateContactsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1057, __c33, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/people:batchUpdateContacts",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateContactsPeopleRequest",
+      });
+    case 3:
+      return S.Record(S.String, __S(800, __c25, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updateResult: S.optional(__S(1059, __c33, 3)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateContactsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readMask: S.optional(S.String),
+          copyMask: S.optional(S.String),
+          sources: S.optional(__S(832, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "CopyOtherContactToMyContactsGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactGroup: S.optional(__S(1027, __c32, 3)),
+          readGroupFields: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateContactGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1120, __c35, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/contactGroups",
+            baseUrl: "https://people.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContactGroupsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

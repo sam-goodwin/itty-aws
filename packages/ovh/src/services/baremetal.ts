@@ -3839,8 +3839,8 @@ export const activateDedicatedServerAntiDDosGame: API.OperationMethod<
   ActivateDedicatedServerAntiDDosGameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateDedicatedServerAntiDDosGameRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ActivateDedicatedServerAntiDDosGameRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3854,8 +3854,8 @@ export const cancelDedicatedServerTask: API.OperationMethod<
   CancelDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelDedicatedServerTaskRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CancelDedicatedServerTaskResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<CancelDedicatedServerTaskRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<CancelDedicatedServerTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3869,8 +3869,8 @@ export const confirmDedicatedServerTermination: API.OperationMethod<
   ConfirmDedicatedServerTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ConfirmDedicatedServerTerminationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ConfirmDedicatedServerTerminationResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ConfirmDedicatedServerTerminationRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ConfirmDedicatedServerTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3884,8 +3884,12 @@ export const createDedicatedServerAuthenticationSecret: API.OperationMethod<
   CreateDedicatedServerAuthenticationSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateDedicatedServerAuthenticationSecretRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<CreateDedicatedServerAuthenticationSecretRequest>,
+  output: __S(
+    2115,
+    __c132,
+    3,
+  ) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3899,8 +3903,12 @@ export const createDedicatedServerBiosSettingsSgxConfigure: API.OperationMethod<
   CreateDedicatedServerBiosSettingsSgxConfigureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateDedicatedServerBiosSettingsSgxConfigureRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(
+    2320,
+    __c145,
+    0,
+  ) as any as S.Schema<CreateDedicatedServerBiosSettingsSgxConfigureRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3914,8 +3922,8 @@ export const createDedicatedServerChangeContact: API.OperationMethod<
   CreateDedicatedServerChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateDedicatedServerChangeContactRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateDedicatedServerChangeContactResponse>,
+  input: __S(2544, __c159, 0) as any as S.Schema<CreateDedicatedServerChangeContactRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<CreateDedicatedServerChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3929,8 +3937,8 @@ export const createDedicatedServerFeatureBackupCloud: API.OperationMethod<
   CreateDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DedicatedServerBackupCloud>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(38, __c2, 6) as any as S.Schema<DedicatedServerBackupCloud>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3945,11 +3953,11 @@ export const createDedicatedServerFeatureBackupCloudPassword: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudPasswordRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DedicatedServerBackupBackupPassword>,
+  output: __S(209, __c13, 1) as any as S.Schema<DedicatedServerBackupBackupPassword>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3963,8 +3971,8 @@ export const createDedicatedServerFeatureBackupFTP: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3978,8 +3986,8 @@ export const createDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPAccessRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3993,8 +4001,12 @@ export const createDedicatedServerFeatureBackupFTPPassword: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPPasswordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(
+    784,
+    __c49,
+    0,
+  ) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPPasswordRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4008,8 +4020,8 @@ export const createDedicatedServerFeatureBmcJavaKvm: API.OperationMethod<
   CreateDedicatedServerFeatureBmcJavaKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateDedicatedServerFeatureBmcJavaKvmRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateDedicatedServerFeatureBmcJavaKvmRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4023,8 +4035,8 @@ export const createDedicatedServerFeatureBmcSshSol: API.OperationMethod<
   CreateDedicatedServerFeatureBmcSshSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateDedicatedServerFeatureBmcSshSolRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(1024, __c64, 0) as any as S.Schema<CreateDedicatedServerFeatureBmcSshSolRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4038,8 +4050,8 @@ export const createDedicatedServerFeatureBmcWebKvm: API.OperationMethod<
   CreateDedicatedServerFeatureBmcWebKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateDedicatedServerFeatureBmcWebKvmRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(1040, __c65, 0) as any as S.Schema<CreateDedicatedServerFeatureBmcWebKvmRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4053,8 +4065,8 @@ export const createDedicatedServerFeatureBmcWebSol: API.OperationMethod<
   CreateDedicatedServerFeatureBmcWebSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateDedicatedServerFeatureBmcWebSolRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(1056, __c66, 0) as any as S.Schema<CreateDedicatedServerFeatureBmcWebSolRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4068,8 +4080,8 @@ export const createDedicatedServerFeatureIpmiAccess: API.OperationMethod<
   CreateDedicatedServerFeatureIpmiAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateDedicatedServerFeatureIpmiAccessRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1072, __c67, 0) as any as S.Schema<CreateDedicatedServerFeatureIpmiAccessRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4083,8 +4095,8 @@ export const createDedicatedServerIpBlockMerge: API.OperationMethod<
   CreateDedicatedServerIpBlockMergeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateDedicatedServerIpBlockMergeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1088, __c68, 0) as any as S.Schema<CreateDedicatedServerIpBlockMergeRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4098,8 +4110,8 @@ export const createDedicatedServerIpMove: API.OperationMethod<
   CreateDedicatedServerIpMoveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateDedicatedServerIpMoveRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1104, __c69, 0) as any as S.Schema<CreateDedicatedServerIpMoveRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4113,8 +4125,8 @@ export const createDedicatedServerLicenseWindows: API.OperationMethod<
   CreateDedicatedServerLicenseWindowsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateDedicatedServerLicenseWindowsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateDedicatedServerLicenseWindowsRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4128,8 +4140,8 @@ export const createDedicatedServerNetworking: API.OperationMethod<
   CreateDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateDedicatedServerNetworkingRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DedicatedServerNetworking>,
+  input: __S(1136, __c71, 0) as any as S.Schema<CreateDedicatedServerNetworkingRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4143,8 +4155,8 @@ export const createDedicatedServerOlaAggregation: API.OperationMethod<
   CreateDedicatedServerOlaAggregationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateDedicatedServerOlaAggregationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1184, __c74, 0) as any as S.Schema<CreateDedicatedServerOlaAggregationRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4163,8 +4175,8 @@ export const createDedicatedServerReinstall: API.OperationMethod<
   CreateDedicatedServerReinstallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateDedicatedServerReinstallRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DedicatedServerTaskResponse>,
+  input: __S(1226, __c76, 10) as any as S.Schema<CreateDedicatedServerReinstallRequest>,
+  output: __S(1227, __c76, 11) as any as S.Schema<DedicatedServerTaskResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4178,8 +4190,8 @@ export const createDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   CreateDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4193,8 +4205,8 @@ export const createDedicatedServerSpla: API.OperationMethod<
   CreateDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateDedicatedServerSplaRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateDedicatedServerSplaResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<CreateDedicatedServerSplaRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<CreateDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4208,8 +4220,8 @@ export const createDedicatedServerSupportReplaceCooling: API.OperationMethod<
   CreateDedicatedServerSupportReplaceCoolingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateDedicatedServerSupportReplaceCoolingRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<SupportNewMessageInfo>,
+  input: __S(1280, __c80, 0) as any as S.Schema<CreateDedicatedServerSupportReplaceCoolingRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4224,11 +4236,11 @@ export const createDedicatedServerSupportReplaceHardDiskDrive: API.OperationMeth
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
+    1314,
+    __c82,
     2,
   ) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<SupportNewMessageInfo>,
+  output: __S(1296, __c81, 0) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4254,8 @@ export const createDedicatedServerSupportReplaceMemory: API.OperationMethod<
   CreateDedicatedServerSupportReplaceMemoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<SupportNewMessageInfo>,
+  input: __S(1328, __c83, 0) as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4269,8 @@ export const createDedicatedServerTaskSchedule: API.OperationMethod<
   CreateDedicatedServerTaskScheduleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4284,8 @@ export const createDedicatedServerVirtualMac: API.OperationMethod<
   CreateDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateDedicatedServerVirtualMacRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1360, __c85, 0) as any as S.Schema<CreateDedicatedServerVirtualMacRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4287,8 +4299,12 @@ export const createDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   CreateDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateDedicatedServerVirtualMacVirtualAddressRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(
+    1376,
+    __c86,
+    0,
+  ) as any as S.Schema<CreateDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4318,8 @@ export const deleteDedicatedServerFeatureBackupCloud: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4317,8 +4333,8 @@ export const deleteDedicatedServerFeatureBackupFTP: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1408, __c88, 0) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4332,8 +4348,8 @@ export const deleteDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPAccessRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1424, __c89, 0) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4347,8 +4363,8 @@ export const deleteDedicatedServerNetworking: API.OperationMethod<
   DeleteDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteDedicatedServerNetworkingRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DedicatedServerNetworking>,
+  input: __S(1440, __c90, 0) as any as S.Schema<DeleteDedicatedServerNetworkingRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4362,8 +4378,8 @@ export const deleteDedicatedServerOption: API.OperationMethod<
   DeleteDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteDedicatedServerOptionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDedicatedServerOptionResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<DeleteDedicatedServerOptionRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteDedicatedServerOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4377,8 +4393,8 @@ export const deleteDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   DeleteDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4392,8 +4408,12 @@ export const deleteDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   DeleteDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteDedicatedServerVirtualMacVirtualAddressRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(
+    1520,
+    __c95,
+    0,
+  ) as any as S.Schema<DeleteDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4407,8 +4427,8 @@ export const deleteDedicatedServerVrack: API.OperationMethod<
   DeleteDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteDedicatedServerVrackRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<VrackTask>,
+  input: __S(1536, __c96, 0) as any as S.Schema<DeleteDedicatedServerVrackRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4422,8 +4442,8 @@ export const getDedicatedServer: API.OperationMethod<
   GetDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetDedicatedServerRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DedicatedServerDedicatedWithIAM>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetDedicatedServerRequest>,
+  output: __S(1554, __c97, 2) as any as S.Schema<DedicatedServerDedicatedWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4437,8 +4457,8 @@ export const getDedicatedServerAntiDDosGameStatus: API.OperationMethod<
   GetDedicatedServerAntiDDosGameStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4452,8 +4472,8 @@ export const getDedicatedServerBackupCloudOfferDetails: API.OperationMethod<
   GetDedicatedServerBackupCloudOfferDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetDedicatedServerBackupCloudOfferDetailsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<DedicatedServerBackupBackupOffer>,
+  input: __S(1584, __c99, 0) as any as S.Schema<GetDedicatedServerBackupCloudOfferDetailsRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<DedicatedServerBackupBackupOffer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4467,8 +4487,8 @@ export const getDedicatedServerBiosSettings: API.OperationMethod<
   GetDedicatedServerBiosSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetDedicatedServerBiosSettingsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<DedicatedBiosSettingsBiosSettings>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetDedicatedServerBiosSettingsRequest>,
+  output: __S(1603, __c100, 3) as any as S.Schema<DedicatedBiosSettingsBiosSettings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4482,8 +4502,8 @@ export const getDedicatedServerBiosSettingsSgx: API.OperationMethod<
   GetDedicatedServerBiosSettingsSgxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetDedicatedServerBiosSettingsSgxRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DedicatedBiosSettingsSgxBiosSettingsSgx>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetDedicatedServerBiosSettingsSgxRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<DedicatedBiosSettingsSgxBiosSettingsSgx>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4497,8 +4517,8 @@ export const getDedicatedServerBoot: API.OperationMethod<
   GetDedicatedServerBootError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetDedicatedServerBootRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<DedicatedServerNetboot>,
+  input: __S(1648, __c103, 0) as any as S.Schema<GetDedicatedServerBootRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<DedicatedServerNetboot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4512,8 +4532,8 @@ export const getDedicatedServerBootOption: API.OperationMethod<
   GetDedicatedServerBootOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetDedicatedServerBootOptionRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DedicatedServerNetbootOption>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetDedicatedServerBootOptionRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<DedicatedServerNetbootOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4547,8 @@ export const getDedicatedServerBurst: API.OperationMethod<
   GetDedicatedServerBurstError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetDedicatedServerBurstRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<DedicatedServerServerBurst>,
+  input: __S(1680, __c105, 0) as any as S.Schema<GetDedicatedServerBurstRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<DedicatedServerServerBurst>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4542,8 +4562,8 @@ export const getDedicatedServerFeatureBackupFTP: API.OperationMethod<
   GetDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetDedicatedServerFeatureBackupFTPRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DedicatedServerBackupFtp>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<DedicatedServerBackupFtp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4557,8 +4577,8 @@ export const getDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   GetDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetDedicatedServerFeatureBackupFTPAccessRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DedicatedServerBackupFtpAcl>,
+  input: __S(1744, __c109, 0) as any as S.Schema<GetDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<DedicatedServerBackupFtpAcl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4572,8 +4592,8 @@ export const getDedicatedServerFeatureBmc: API.OperationMethod<
   GetDedicatedServerFeatureBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetDedicatedServerFeatureBmcRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<DedicatedServerBMC>,
+  input: __S(1760, __c110, 0) as any as S.Schema<GetDedicatedServerFeatureBmcRequest>,
+  output: __S(1762, __c110, 2) as any as S.Schema<DedicatedServerBMC>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4587,8 +4607,8 @@ export const getDedicatedServerFeatureBmcJavaKvm: API.OperationMethod<
   GetDedicatedServerFeatureBmcJavaKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDedicatedServerFeatureBmcJavaKvmRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<DedicatedServerBmcJavaKvmValue>,
+  input: __S(1776, __c111, 0) as any as S.Schema<GetDedicatedServerFeatureBmcJavaKvmRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<DedicatedServerBmcJavaKvmValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4602,8 +4622,8 @@ export const getDedicatedServerFeatureBmcSshSol: API.OperationMethod<
   GetDedicatedServerFeatureBmcSshSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetDedicatedServerFeatureBmcSshSolRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<DedicatedServerBmcSshSolValue>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetDedicatedServerFeatureBmcSshSolRequest>,
+  output: __S(1793, __c112, 1) as any as S.Schema<DedicatedServerBmcSshSolValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4617,8 +4637,8 @@ export const getDedicatedServerFeatureBmcTest: API.OperationMethod<
   GetDedicatedServerFeatureBmcTestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetDedicatedServerFeatureBmcTestRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DedicatedServerBmcTestResult>,
+  input: __S(1808, __c113, 0) as any as S.Schema<GetDedicatedServerFeatureBmcTestRequest>,
+  output: __S(1809, __c113, 1) as any as S.Schema<DedicatedServerBmcTestResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4632,8 +4652,8 @@ export const getDedicatedServerFeatureBmcWebKvm: API.OperationMethod<
   GetDedicatedServerFeatureBmcWebKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetDedicatedServerFeatureBmcWebKvmRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DedicatedServerBmcWebKvmValue>,
+  input: __S(1824, __c114, 0) as any as S.Schema<GetDedicatedServerFeatureBmcWebKvmRequest>,
+  output: __S(1840, __c115, 0) as any as S.Schema<DedicatedServerBmcWebKvmValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4647,8 +4667,8 @@ export const getDedicatedServerFeatureBmcWebSol: API.OperationMethod<
   GetDedicatedServerFeatureBmcWebSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetDedicatedServerFeatureBmcWebSolRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DedicatedServerBmcWebSolValue>,
+  input: __S(1856, __c116, 0) as any as S.Schema<GetDedicatedServerFeatureBmcWebSolRequest>,
+  output: __S(1840, __c115, 0) as any as S.Schema<DedicatedServerBmcWebSolValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4662,8 +4682,8 @@ export const getDedicatedServerFeatureFirewall: API.OperationMethod<
   GetDedicatedServerFeatureFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetDedicatedServerFeatureFirewallRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DedicatedServerFirewall>,
+  input: __S(1872, __c117, 0) as any as S.Schema<GetDedicatedServerFeatureFirewallRequest>,
+  output: __S(1873, __c117, 1) as any as S.Schema<DedicatedServerFirewall>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4677,8 +4697,8 @@ export const getDedicatedServerFeatureIpmi: API.OperationMethod<
   GetDedicatedServerFeatureIpmiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetDedicatedServerFeatureIpmiRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<DedicatedServerIpmi>,
+  input: __S(1888, __c118, 0) as any as S.Schema<GetDedicatedServerFeatureIpmiRequest>,
+  output: __S(1890, __c118, 2) as any as S.Schema<DedicatedServerIpmi>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4692,8 +4712,8 @@ export const getDedicatedServerFeatureIpmiAccess: API.OperationMethod<
   GetDedicatedServerFeatureIpmiAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetDedicatedServerFeatureIpmiAccessRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DedicatedServerIpmiAccessValue>,
+  input: __S(1936, __c121, 0) as any as S.Schema<GetDedicatedServerFeatureIpmiAccessRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<DedicatedServerIpmiAccessValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4707,8 +4727,8 @@ export const getDedicatedServerFeatureIpmiTest: API.OperationMethod<
   GetDedicatedServerFeatureIpmiTestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetDedicatedServerFeatureIpmiTestRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<DedicatedServerIpmiTestResult>,
+  input: __S(1952, __c122, 0) as any as S.Schema<GetDedicatedServerFeatureIpmiTestRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<DedicatedServerIpmiTestResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4722,8 +4742,8 @@ export const getDedicatedServerFeatureKvm: API.OperationMethod<
   GetDedicatedServerFeatureKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetDedicatedServerFeatureKvmRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<DedicatedServerKvm>,
+  input: __S(1968, __c123, 0) as any as S.Schema<GetDedicatedServerFeatureKvmRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<DedicatedServerKvm>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4737,8 +4757,8 @@ export const getDedicatedServerIntervention: API.OperationMethod<
   GetDedicatedServerInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetDedicatedServerInterventionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DedicatedServerIntervention>,
+  input: __S(1984, __c124, 0) as any as S.Schema<GetDedicatedServerInterventionRequest>,
+  output: __S(1985, __c124, 1) as any as S.Schema<DedicatedServerIntervention>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4752,8 +4772,8 @@ export const getDedicatedServerIpCanBeMovedTo: API.OperationMethod<
   GetDedicatedServerIpCanBeMovedToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4767,11 +4787,15 @@ export const getDedicatedServerNetworkInterfaceController: API.OperationMethod<
   GetDedicatedServerNetworkInterfaceControllerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetDedicatedServerNetworkInterfaceControllerRequest>,
+  input: __S(
+    2016,
+    __c126,
+    0,
+  ) as any as S.Schema<GetDedicatedServerNetworkInterfaceControllerRequest>,
   output: __S(
-    131,
-    __c16,
-    3,
+    2017,
+    __c126,
+    1,
   ) as any as S.Schema<DedicatedNetworkInterfaceControllerNetworkInterfaceController>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -4786,8 +4810,8 @@ export const getDedicatedServerOperation: API.OperationMethod<
   GetDedicatedServerOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetDedicatedServerOperationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(2032, __c127, 0) as any as S.Schema<GetDedicatedServerOperationRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4801,8 +4825,8 @@ export const getDedicatedServerOption: API.OperationMethod<
   GetDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetDedicatedServerOptionRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DedicatedServerOption>,
+  input: __S(2048, __c128, 0) as any as S.Schema<GetDedicatedServerOptionRequest>,
+  output: __S(2049, __c128, 1) as any as S.Schema<DedicatedServerOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4816,8 +4840,8 @@ export const getDedicatedServerOrderableFeature: API.OperationMethod<
   GetDedicatedServerOrderableFeatureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetDedicatedServerOrderableFeatureRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetDedicatedServerOrderableFeatureResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<GetDedicatedServerOrderableFeatureRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<GetDedicatedServerOrderableFeatureResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4831,8 +4855,8 @@ export const getDedicatedServerOrderableKvm: API.OperationMethod<
   GetDedicatedServerOrderableKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetDedicatedServerOrderableKvmResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<GetDedicatedServerOrderableKvmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4846,8 +4870,8 @@ export const getDedicatedServerOrderableKvmExpress: API.OperationMethod<
   GetDedicatedServerOrderableKvmExpressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4861,8 +4885,12 @@ export const getDedicatedServerOrderableProfessionalUse: API.OperationMethod<
   GetDedicatedServerOrderableProfessionalUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>,
+  output: __S(
+    2080,
+    __c130,
+    0,
+  ) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4876,8 +4904,8 @@ export const getDedicatedServerPlannedIntervention: API.OperationMethod<
   GetDedicatedServerPlannedInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetDedicatedServerPlannedInterventionRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<DedicatedServerPlannedIntervention>,
+  input: __S(2160, __c135, 0) as any as S.Schema<GetDedicatedServerPlannedInterventionRequest>,
+  output: __S(2161, __c135, 1) as any as S.Schema<DedicatedServerPlannedIntervention>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4891,8 +4919,8 @@ export const getDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   GetDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<SecondaryDnsSecondaryDNS>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<SecondaryDnsSecondaryDNS>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4907,11 +4935,11 @@ export const getDedicatedServerSecondaryDnsDomainDnsServer: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
+    2192,
+    __c137,
     0,
   ) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainDnsServerRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
+  output: __S(2208, __c138, 0) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4926,11 +4954,11 @@ export const getDedicatedServerSecondaryDnsNameDomainToken: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    146,
-    __c18,
-    2,
+    2224,
+    __c139,
+    0,
   ) as any as S.Schema<GetDedicatedServerSecondaryDnsNameDomainTokenRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<SecondaryDnsSecondaryDNSCheckField>,
+  output: __S(2225, __c139, 1) as any as S.Schema<SecondaryDnsSecondaryDNSCheckField>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4945,11 +4973,11 @@ export const getDedicatedServerSecondaryDnsNameServerAvailable: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    2240,
+    __c140,
+    0,
   ) as any as S.Schema<GetDedicatedServerSecondaryDnsNameServerAvailableRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
+  output: __S(2208, __c138, 0) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4963,8 +4991,8 @@ export const getDedicatedServerServiceInfos: API.OperationMethod<
   GetDedicatedServerServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetDedicatedServerServiceInfosRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ServicesService>,
+  input: __S(2256, __c141, 0) as any as S.Schema<GetDedicatedServerServiceInfosRequest>,
+  output: __S(2257, __c141, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4978,8 +5006,8 @@ export const getDedicatedServerSpecificationHardware: API.OperationMethod<
   GetDedicatedServerSpecificationHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetDedicatedServerSpecificationHardwareRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<DedicatedServerHardwareSpecifications>,
+  input: __S(2288, __c143, 0) as any as S.Schema<GetDedicatedServerSpecificationHardwareRequest>,
+  output: __S(2294, __c143, 6) as any as S.Schema<DedicatedServerHardwareSpecifications>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4993,8 +5021,8 @@ export const getDedicatedServerSpecificationNetwork: API.OperationMethod<
   GetDedicatedServerSpecificationNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetDedicatedServerSpecificationNetworkRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<DedicatedServerNetworkSpecifications>,
+  input: __S(2304, __c144, 0) as any as S.Schema<GetDedicatedServerSpecificationNetworkRequest>,
+  output: __S(2317, __c144, 13) as any as S.Schema<DedicatedServerNetworkSpecifications>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5008,8 +5036,8 @@ export const getDedicatedServerSpla: API.OperationMethod<
   GetDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetDedicatedServerSplaRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<DedicatedServerSpla>,
+  input: __S(2336, __c146, 0) as any as S.Schema<GetDedicatedServerSplaRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<DedicatedServerSpla>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5023,8 +5051,8 @@ export const getDedicatedServerTask: API.OperationMethod<
   GetDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetDedicatedServerTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(2352, __c147, 0) as any as S.Schema<GetDedicatedServerTaskRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5038,8 +5066,8 @@ export const getDedicatedServerVirtualMac: API.OperationMethod<
   GetDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetDedicatedServerVirtualMacRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DedicatedServerVirtualMac>,
+  input: __S(2368, __c148, 0) as any as S.Schema<GetDedicatedServerVirtualMacRequest>,
+  output: __S(2369, __c148, 1) as any as S.Schema<DedicatedServerVirtualMac>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5053,8 +5081,8 @@ export const getDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   GetDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetDedicatedServerVirtualMacVirtualAddressRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<DedicatedServerVirtualMacManagement>,
+  input: __S(2384, __c149, 0) as any as S.Schema<GetDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(2385, __c149, 1) as any as S.Schema<DedicatedServerVirtualMacManagement>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5068,8 +5096,8 @@ export const getDedicatedServerVirtualNetworkInterface: API.OperationMethod<
   GetDedicatedServerVirtualNetworkInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<DedicatedServerVirtualNetworkInterface>,
+  input: __S(2400, __c150, 0) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceRequest>,
+  output: __S(2416, __c151, 0) as any as S.Schema<DedicatedServerVirtualNetworkInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5084,14 +5112,14 @@ export const getDedicatedServerVirtualNetworkInterfaceByUuid: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    2432,
+    __c152,
+    0,
   ) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceByUuidRequest>,
   output: __S(
-    181,
-    __c22,
-    5,
+    2416,
+    __c151,
+    0,
   ) as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5106,8 +5134,8 @@ export const getDedicatedServerVrack: API.OperationMethod<
   GetDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetDedicatedServerVrackRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<VrackDedicatedServer>,
+  input: __S(2448, __c153, 0) as any as S.Schema<GetDedicatedServerVrackRequest>,
+  output: __S(2449, __c153, 1) as any as S.Schema<VrackDedicatedServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5121,8 +5149,8 @@ export const listDedicatedServer: API.OperationMethod<
   ListDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListDedicatedServerRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerResponse>,
+  input: __S(2466, __c154, 2) as any as S.Schema<ListDedicatedServerRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5136,8 +5164,8 @@ export const listDedicatedServerAvailabilityRaw: API.OperationMethod<
   ListDedicatedServerAvailabilityRawError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListDedicatedServerAvailabilityRawRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ListDedicatedServerAvailabilityRawResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<ListDedicatedServerAvailabilityRawRequest>,
+  output: __S(2515, __c157, 3) as any as S.Schema<ListDedicatedServerAvailabilityRawResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5151,8 +5179,8 @@ export const listDedicatedServerBoot: API.OperationMethod<
   ListDedicatedServerBootError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListDedicatedServerBootRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListDedicatedServerBootResponse>,
+  input: __S(2528, __c158, 0) as any as S.Schema<ListDedicatedServerBootRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<ListDedicatedServerBootResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5166,8 +5194,8 @@ export const listDedicatedServerBootOption: API.OperationMethod<
   ListDedicatedServerBootOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListDedicatedServerBootOptionRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListDedicatedServerBootOptionResponse>,
+  input: __S(2592, __c162, 0) as any as S.Schema<ListDedicatedServerBootOptionRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<ListDedicatedServerBootOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5181,11 +5209,15 @@ export const listDedicatedServerDatacenterAvailabilities: API.OperationMethod<
   ListDedicatedServerDatacenterAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesRequest>,
+  input: __S(
+    2624,
+    __c164,
+    0,
+  ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesRequest>,
   output: __S(
-    202,
-    __c25,
-    2,
+    2629,
+    __c164,
+    5,
   ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5200,11 +5232,15 @@ export const listDedicatedServerDatacenterAvailabilityRaw: API.OperationMethod<
   ListDedicatedServerDatacenterAvailabilityRawError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawRequest>,
+  input: __S(
+    2640,
+    __c165,
+    0,
+  ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawRequest>,
   output: __S(
-    212,
-    __c26,
-    4,
+    2649,
+    __c165,
+    9,
   ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5219,8 +5255,8 @@ export const listDedicatedServerFeatureBackupCloud: API.OperationMethod<
   ListDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ListDedicatedServerFeatureBackupCloudRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DedicatedServerBackupCloud>,
+  input: __S(2656, __c166, 0) as any as S.Schema<ListDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(38, __c2, 6) as any as S.Schema<DedicatedServerBackupCloud>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5234,8 +5270,12 @@ export const listDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   ListDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(
+    2496,
+    __c156,
+    0,
+  ) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5250,14 +5290,14 @@ export const listDedicatedServerFeatureBackupFTPAuthorizableBlocks: API.Operatio
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    2688,
+    __c168,
+    0,
   ) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest>,
   output: __S(
-    216,
-    __c27,
-    0,
+    2689,
+    __c168,
+    1,
   ) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5273,14 +5313,14 @@ export const listDedicatedServerInstallCompatibleTemplatePartitionSchemes: API.O
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
-    1,
+    2704,
+    __c169,
+    0,
   ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest>,
   output: __S(
-    218,
-    __c27,
-    2,
+    2705,
+    __c169,
+    1,
   ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5296,11 +5336,11 @@ export const listDedicatedServerInstallCompatibleTemplates: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    219,
-    __c27,
-    3,
+    2720,
+    __c170,
+    0,
   ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<DedicatedServerInstallTemplate>,
+  output: __S(2721, __c170, 1) as any as S.Schema<DedicatedServerInstallTemplate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5315,11 +5355,11 @@ export const listDedicatedServerInstallHardwareRaidProfile: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    221,
-    __c27,
-    5,
+    2736,
+    __c171,
+    0,
   ) as any as S.Schema<ListDedicatedServerInstallHardwareRaidProfileRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<DedicatedServerHardwareRaidProfile>,
+  output: __S(2742, __c171, 6) as any as S.Schema<DedicatedServerHardwareRaidProfile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5333,8 +5373,8 @@ export const listDedicatedServerInstallHardwareRaidSize: API.OperationMethod<
   ListDedicatedServerInstallHardwareRaidSizeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ListDedicatedServerInstallHardwareRaidSizeRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<DedicatedServerHardwareRaidSize>,
+  input: __S(2752, __c172, 0) as any as S.Schema<ListDedicatedServerInstallHardwareRaidSizeRequest>,
+  output: __S(2755, __c172, 3) as any as S.Schema<DedicatedServerHardwareRaidSize>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5388,8 @@ export const listDedicatedServerInstallStatus: API.OperationMethod<
   ListDedicatedServerInstallStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListDedicatedServerInstallStatusRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<DedicatedServerInstallationProgressStatus>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListDedicatedServerInstallStatusRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<DedicatedServerInstallationProgressStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5363,8 +5403,8 @@ export const listDedicatedServerIntervention: API.OperationMethod<
   ListDedicatedServerInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ListDedicatedServerInterventionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListDedicatedServerInterventionResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListDedicatedServerInterventionRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<ListDedicatedServerInterventionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5378,8 +5418,8 @@ export const listDedicatedServerIpCountryAvailable: API.OperationMethod<
   ListDedicatedServerIpCountryAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListDedicatedServerIpCountryAvailableRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListDedicatedServerIpCountryAvailableRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5393,8 +5433,8 @@ export const listDedicatedServerIps: API.OperationMethod<
   ListDedicatedServerIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListDedicatedServerIpsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerIpsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListDedicatedServerIpsRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5408,8 +5448,12 @@ export const listDedicatedServerLicenseCompliantWindows: API.OperationMethod<
   ListDedicatedServerLicenseCompliantWindowsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsRequest>,
+  output: __S(
+    2608,
+    __c163,
+    0,
+  ) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5424,13 +5468,13 @@ export const listDedicatedServerLicenseCompliantWindowsSqlServer: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    240,
-    __c30,
+    128,
+    __c8,
     0,
   ) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerRequest>,
   output: __S(
-    242,
-    __c30,
+    130,
+    __c8,
     2,
   ) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponse>,
   errors: [UnknownOvhError],
@@ -5446,8 +5490,8 @@ export const listDedicatedServerNetworking: API.OperationMethod<
   ListDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListDedicatedServerNetworkingRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DedicatedServerNetworking>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListDedicatedServerNetworkingRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5462,14 +5506,14 @@ export const listDedicatedServerNetworkInterfaceController: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    244,
-    __c30,
-    4,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerRequest>,
   output: __S(
-    189,
-    __c23,
-    5,
+    2496,
+    __c156,
+    0,
   ) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5485,14 +5529,14 @@ export const listDedicatedServerNetworkInterfaceControllerMrtg: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    245,
-    __c30,
-    5,
+    176,
+    __c11,
+    0,
   ) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgRequest>,
   output: __S(
-    248,
-    __c31,
-    0,
+    179,
+    __c11,
+    3,
   ) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5507,8 +5551,8 @@ export const listDedicatedServerOngoing: API.OperationMethod<
   ListDedicatedServerOngoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListDedicatedServerOngoingRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListDedicatedServerOngoingResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListDedicatedServerOngoingRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListDedicatedServerOngoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5522,8 +5566,8 @@ export const listDedicatedServerOperation: API.OperationMethod<
   ListDedicatedServerOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListDedicatedServerOperationRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerOperationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListDedicatedServerOperationRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerOperationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5537,8 +5581,8 @@ export const listDedicatedServerOption: API.OperationMethod<
   ListDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListDedicatedServerOptionRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListDedicatedServerOptionResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListDedicatedServerOptionRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<ListDedicatedServerOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5552,8 +5596,8 @@ export const listDedicatedServerOrderableBackupStorage: API.OperationMethod<
   ListDedicatedServerOrderableBackupStorageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListDedicatedServerOrderableBackupStorageRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<DedicatedServerBackupStorageOrderable>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListDedicatedServerOrderableBackupStorageRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DedicatedServerBackupStorageOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5567,8 +5611,8 @@ export const listDedicatedServerOrderableBandwidth: API.OperationMethod<
   ListDedicatedServerOrderableBandwidthError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListDedicatedServerOrderableBandwidthRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<DedicatedServerBandwidthOrderable>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListDedicatedServerOrderableBandwidthRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<DedicatedServerBandwidthOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5582,8 +5626,8 @@ export const listDedicatedServerOrderableBandwidthvRack: API.OperationMethod<
   ListDedicatedServerOrderableBandwidthvRackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListDedicatedServerOrderableBandwidthvRackRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<DedicatedServerBandwidthvRackOrderable>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListDedicatedServerOrderableBandwidthvRackRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<DedicatedServerBandwidthvRackOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5597,8 +5641,8 @@ export const listDedicatedServerOrderableIp: API.OperationMethod<
   ListDedicatedServerOrderableIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<ListDedicatedServerOrderableIpRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DedicatedServerIpOrderable>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListDedicatedServerOrderableIpRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<DedicatedServerIpOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5612,8 +5656,8 @@ export const listDedicatedServerOrderableSupportLevel: API.OperationMethod<
   ListDedicatedServerOrderableSupportLevelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListDedicatedServerOrderableSupportLevelRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<DedicatedServerSupportLevelOrderable>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListDedicatedServerOrderableSupportLevelRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<DedicatedServerSupportLevelOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5627,8 +5671,8 @@ export const listDedicatedServerOrderableTraffic: API.OperationMethod<
   ListDedicatedServerOrderableTrafficError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListDedicatedServerOrderableTrafficRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<DedicatedServerTrafficOrderable>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListDedicatedServerOrderableTrafficRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<DedicatedServerTrafficOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5642,8 +5686,8 @@ export const listDedicatedServerOrderableUsbKey: API.OperationMethod<
   ListDedicatedServerOrderableUsbKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListDedicatedServerOrderableUsbKeyRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DedicatedServerUsbKeyOrderableDetails>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListDedicatedServerOrderableUsbKeyRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DedicatedServerUsbKeyOrderableDetails>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5657,8 +5701,8 @@ export const listDedicatedServerOsAvailabilities: API.OperationMethod<
   ListDedicatedServerOsAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5672,8 +5716,8 @@ export const listDedicatedServerPlannedIntervention: API.OperationMethod<
   ListDedicatedServerPlannedInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5687,8 +5731,8 @@ export const listDedicatedServerRegionAvailabilities: API.OperationMethod<
   ListDedicatedServerRegionAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequest>,
+  output: __S(455, __c28, 7) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5702,8 +5746,8 @@ export const listDedicatedServerSecondaryDnsDomains: API.OperationMethod<
   ListDedicatedServerSecondaryDnsDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5717,8 +5761,8 @@ export const listDedicatedServerSpecificationIp: API.OperationMethod<
   ListDedicatedServerSpecificationIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListDedicatedServerSpecificationIpRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DedicatedServerIpOrderable>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListDedicatedServerSpecificationIpRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<DedicatedServerIpOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5732,8 +5776,8 @@ export const listDedicatedServerSpla: API.OperationMethod<
   ListDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<ListDedicatedServerSplaRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListDedicatedServerSplaResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListDedicatedServerSplaRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<ListDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5747,8 +5791,8 @@ export const listDedicatedServerTask: API.OperationMethod<
   ListDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ListDedicatedServerTaskRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListDedicatedServerTaskResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListDedicatedServerTaskRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<ListDedicatedServerTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5762,8 +5806,8 @@ export const listDedicatedServerTaskAvailableTimeslots: API.OperationMethod<
   ListDedicatedServerTaskAvailableTimeslotsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsRequest>,
+  output: __S(546, __c34, 2) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5777,8 +5821,8 @@ export const listDedicatedServerUpdateAllowed: API.OperationMethod<
   ListDedicatedServerUpdateAllowedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<ListDedicatedServerUpdateAllowedRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<ListDedicatedServerUpdateAllowedResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListDedicatedServerUpdateAllowedRequest>,
+  output: __S(563, __c35, 3) as any as S.Schema<ListDedicatedServerUpdateAllowedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5792,11 +5836,11 @@ export const listDedicatedServerUpgradeAvailableTimeslots: API.OperationMethod<
   ListDedicatedServerUpgradeAvailableTimeslotsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsRequest>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsRequest>,
   output: __S(
-    289,
-    __c36,
-    1,
+    546,
+    __c34,
+    2,
   ) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5811,8 +5855,8 @@ export const listDedicatedServerVirtualMac: API.OperationMethod<
   ListDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<ListDedicatedServerVirtualMacRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerVirtualMacResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListDedicatedServerVirtualMacRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerVirtualMacResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5826,11 +5870,11 @@ export const listDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   ListDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>,
   output: __S(
-    189,
-    __c23,
-    5,
+    2496,
+    __c156,
+    0,
   ) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5845,8 +5889,12 @@ export const listDedicatedServerVirtualNetworkInterface: API.OperationMethod<
   ListDedicatedServerVirtualNetworkInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>,
+  output: __S(
+    2496,
+    __c156,
+    0,
+  ) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5860,8 +5908,8 @@ export const listDedicatedServerVrack: API.OperationMethod<
   ListDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<ListDedicatedServerVrackRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListDedicatedServerVrackResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListDedicatedServerVrackRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<ListDedicatedServerVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5875,8 +5923,8 @@ export const putDedicatedServer: API.OperationMethod<
   PutDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<PutDedicatedServerRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<PutDedicatedServerResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<PutDedicatedServerRequest>,
+  output: __S(2480, __c155, 0) as any as S.Schema<PutDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5890,8 +5938,8 @@ export const putDedicatedServerBurst: API.OperationMethod<
   PutDedicatedServerBurstError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<PutDedicatedServerBurstRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<PutDedicatedServerBurstResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<PutDedicatedServerBurstRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<PutDedicatedServerBurstResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5905,8 +5953,8 @@ export const putDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   PutDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5920,8 +5968,8 @@ export const putDedicatedServerFeatureFirewall: API.OperationMethod<
   PutDedicatedServerFeatureFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5935,8 +5983,8 @@ export const putDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   PutDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5950,8 +5998,8 @@ export const putDedicatedServerServiceInfos: API.OperationMethod<
   PutDedicatedServerServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<PutDedicatedServerServiceInfosRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDedicatedServerServiceInfosResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<PutDedicatedServerServiceInfosRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<PutDedicatedServerServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5965,8 +6013,8 @@ export const putDedicatedServerSpla: API.OperationMethod<
   PutDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<PutDedicatedServerSplaRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<PutDedicatedServerSplaResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<PutDedicatedServerSplaRequest>,
+  output: __S(2480, __c155, 0) as any as S.Schema<PutDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5980,8 +6028,8 @@ export const putDedicatedServerUpgradeSchedule: API.OperationMethod<
   PutDedicatedServerUpgradeScheduleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5995,8 +6043,8 @@ export const rebootDedicatedServer: API.OperationMethod<
   RebootDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<RebootDedicatedServerRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(816, __c51, 0) as any as S.Schema<RebootDedicatedServerRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6010,8 +6058,8 @@ export const resetDedicatedServerFeaturesIpmiInterface: API.OperationMethod<
   ResetDedicatedServerFeaturesIpmiInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ResetDedicatedServerFeaturesIpmiInterfaceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(832, __c52, 0) as any as S.Schema<ResetDedicatedServerFeaturesIpmiInterfaceRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6025,8 +6073,8 @@ export const resetDedicatedServerFeaturesIpmiSessions: API.OperationMethod<
   ResetDedicatedServerFeaturesIpmiSessionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<ResetDedicatedServerFeaturesIpmiSessionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(848, __c53, 0) as any as S.Schema<ResetDedicatedServerFeaturesIpmiSessionsRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6040,8 +6088,8 @@ export const resetDedicatedServerOla: API.OperationMethod<
   ResetDedicatedServerOlaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ResetDedicatedServerOlaRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(864, __c54, 0) as any as S.Schema<ResetDedicatedServerOlaRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6055,8 +6103,8 @@ export const restartDedicatedServerFeaturesBmc: API.OperationMethod<
   RestartDedicatedServerFeaturesBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<RestartDedicatedServerFeaturesBmcRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(880, __c55, 0) as any as S.Schema<RestartDedicatedServerFeaturesBmcRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6070,8 +6118,8 @@ export const revokeDedicatedServerFeaturesBmcSessions: API.OperationMethod<
   RevokeDedicatedServerFeaturesBmcSessionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<RevokeDedicatedServerFeaturesBmcSessionsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(896, __c56, 0) as any as S.Schema<RevokeDedicatedServerFeaturesBmcSessionsRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6085,8 +6133,8 @@ export const revokeDedicatedServerSpla: API.OperationMethod<
   RevokeDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<RevokeDedicatedServerSplaRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RevokeDedicatedServerSplaResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<RevokeDedicatedServerSplaRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<RevokeDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6100,8 +6148,8 @@ export const startDedicatedServerInstall: API.OperationMethod<
   StartDedicatedServerInstallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<StartDedicatedServerInstallRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(931, __c58, 3) as any as S.Schema<StartDedicatedServerInstallRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6115,8 +6163,8 @@ export const terminateDedicatedServer: API.OperationMethod<
   TerminateDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<TerminateDedicatedServerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<TerminateDedicatedServerResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<TerminateDedicatedServerRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<TerminateDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6130,8 +6178,8 @@ export const testDedicatedServerFeaturesBmc: API.OperationMethod<
   TestDedicatedServerFeaturesBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<TestDedicatedServerFeaturesBmcRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DedicatedServerOperation>,
+  input: __S(992, __c62, 0) as any as S.Schema<TestDedicatedServerFeaturesBmcRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6145,8 +6193,8 @@ export const testDedicatedServerFeaturesIpmi: API.OperationMethod<
   TestDedicatedServerFeaturesIpmiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<TestDedicatedServerFeaturesIpmiRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DedicatedServerTask>,
+  input: __S(1008, __c63, 0) as any as S.Schema<TestDedicatedServerFeaturesIpmiRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6154,166 +6202,6 @@ export const testDedicatedServerFeaturesIpmi: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          enable: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/antiDDosGame/activate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateDedicatedServerAntiDDosGameRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeSafeKeyValueCanBeNullString",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.NullOr(S.String)),
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          needSchedule: S.optional(S.Boolean),
-          note: S.optional(S.NullOr(S.String)),
-          plannedInterventionId: S.optional(S.NullOr(S.Number)),
-          startDate: S.optional(S.String),
-          status: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
-          taskId: S.optional(S.Number),
-          ticketReference: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DedicatedServerTask" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          taskId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/task/{taskId}/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelDedicatedServerTaskRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelDedicatedServerTaskResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          commentary: S.optional(S.String),
-          futureUse: S.optional(S.String),
-          reason: S.optional(S.String),
-          token: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/confirmTermination",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfirmDedicatedServerTerminationRequest",
-      });
-    case 7:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ConfirmDedicatedServerTerminationResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/authenticationSecret",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedServerAuthenticationSecretRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          type: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DedicatedServerAccess" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDedicatedServerAuthenticationSecretResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          prmrr: S.optional(S.String),
-          status: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/biosSettings/sgx/configure",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedServerBiosSettingsSgxConfigureRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/changeContact",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedServerChangeContactRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDedicatedServerChangeContactResponse",
-      });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6331,16 +6219,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBackupCloudRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          projectId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerBackupBackupProject",
-      });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -6349,18 +6232,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ComplexTypeUnitAndValueLong",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          maxBandwidth: S.optional(S.NullOr(__S(18, __c2, 2))),
-          maxStorage: S.optional(S.NullOr(__S(18, __c2, 2))),
-          storageUsed: S.optional(S.NullOr(__S(18, __c2, 2))),
+          description: S.optional(S.NullOr(S.String)),
+          projectId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBackupBackupProject",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxBandwidth: S.optional(S.NullOr(__S(16, __c1, 0))),
+          maxStorage: S.optional(S.NullOr(__S(16, __c1, 0))),
+          storageUsed: S.optional(S.NullOr(__S(16, __c1, 0))),
           usagePercent: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupBackupQuota",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -6370,7 +6266,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBackupBackupSftp",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           authUrl: S.optional(S.NullOr(S.String)),
@@ -6380,21 +6276,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBackupBackupSwift",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudProject: S.optional(S.NullOr(__S(17, __c2, 1))),
+          cloudProject: S.optional(S.NullOr(__S(32, __c2, 0))),
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          quota: S.optional(S.NullOr(__S(19, __c2, 3))),
+          quota: S.optional(S.NullOr(__S(33, __c2, 1))),
           region: S.optional(S.NullOr(S.String)),
-          sftp: S.optional(S.NullOr(__S(20, __c2, 4))),
-          swift: S.optional(S.NullOr(__S(21, __c2, 5))),
+          sftp: S.optional(S.NullOr(__S(34, __c2, 2))),
+          swift: S.optional(S.NullOr(__S(35, __c2, 3))),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupBackupContainer",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -6403,6 +6299,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBackupBackupStatus",
       });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          agreements: S.optional(S.NullOr(__S(2560, __c160, 0))),
+          archive: S.optional(S.NullOr(__S(36, __c2, 4))),
+          status: S.optional(__S(37, __c2, 5)),
+          storage: S.optional(S.NullOr(__S(36, __c2, 4))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBackupCloud",
+      });
   }
 }
 function __c3(j: number): any {
@@ -6410,15 +6317,227 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agreements: S.optional(S.NullOr(__S(14, __c1, 6))),
-          archive: S.optional(S.NullOr(__S(22, __c2, 6))),
-          status: S.optional(__S(23, __c2, 7)),
-          storage: S.optional(S.NullOr(__S(22, __c2, 6))),
-        }),
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/install/status",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "DedicatedServerBackupCloud",
+        identifier: "ListDedicatedServerInstallStatusRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.String),
+          error: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerInstallationProgressSteps",
+      });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          elapsedTime: S.optional(S.Number),
+          progress: S.optional(S.NullOr(__S(50, __c3, 2))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerInstallationProgressStatus",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/intervention", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerInterventionRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/ipCountryAvailable",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerIpCountryAvailableRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ips", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedServerIpsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/license/compliantWindows",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerLicenseCompliantWindowsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() => __S(129, __c8, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/networking", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerNetworkingRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          linkType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/networkInterfaceController",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerNetworkInterfaceControllerRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          mac: S.String.pipe(T.Label()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.Number),
+          value: S.optional(S.NullOr(__S(16, __c1, 0))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerMrtgTimestampValue",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() => __S(178, __c11, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ongoing", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOngoingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datacenter: S.optional(S.String),
+          description: S.optional(S.String),
+          server: S.optional(S.String),
+          todoDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedExposedTask" });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() => __S(194, __c12, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerOngoingResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6432,7 +6551,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBackupCloudPasswordRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sftpArchive: S.optional(S.NullOr(S.String)),
@@ -6443,7 +6562,267 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBackupBackupPassword",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/operation", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOperationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/option", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOptionRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/backupStorage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableBackupStorageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          capacities: S.optional(S.NullOr(__S(272, __c17, 0))),
+          orderable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBackupStorageOrderable",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/bandwidth",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableBandwidthRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orderable: S.optional(S.Boolean),
+          platinum: S.optional(S.NullOr(__S(272, __c17, 0))),
+          premium: S.optional(S.NullOr(__S(272, __c17, 0))),
+          ultimate: S.optional(S.NullOr(__S(272, __c17, 0))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBandwidthOrderable",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/bandwidthvRack",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableBandwidthvRackRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orderable: S.optional(S.Boolean),
+          vrack: S.optional(S.NullOr(__S(272, __c17, 0))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBandwidthvRackOrderable",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/orderable/ip", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableIpRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blockSizes: S.optional(__S(272, __c17, 0)),
+          included: S.optional(S.Boolean),
+          ipNumber: S.optional(S.NullOr(S.Number)),
+          number: S.optional(S.Number),
+          optionRequired: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerIpOrderableDetails",
+      });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ipv4: S.optional(S.NullOr(__S(337, __c21, 1))),
+          ipv6: S.optional(S.NullOr(__S(337, __c21, 1))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerIpOrderable",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/supportLevel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableSupportLevelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          levels: S.optional(S.NullOr(__S(1616, __c101, 0))),
+          orderable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerSupportLevelOrderable",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/traffic",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableTrafficRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orderable: S.optional(S.Boolean),
+          traffic: S.optional(S.NullOr(__S(1616, __c101, 0))),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerTrafficOrderable",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/orderable/usbKey",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerOrderableUsbKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          capacity: S.optional(__S(272, __c17, 0)),
+          number: S.optional(S.Number),
+          optionRequired: S.optional(S.NullOr(S.String)),
+          orderable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerUsbKeyOrderableDetails",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hardware: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/osAvailabilities", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedServerOsAvailabilitiesRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6457,7 +6836,266 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBackupFTPRequest",
       });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/plannedIntervention",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerPlannedInterventionRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          excludeRegions: S.optional(S.Boolean.pipe(T.Query())),
+          gpu: S.optional(S.String.pipe(T.Query())),
+          memory: S.optional(S.String.pipe(T.Query())),
+          planCode: S.optional(S.String.pipe(T.Query())),
+          regions: S.optional(__S(1616, __c101, 0).pipe(T.Query())),
+          server: S.optional(S.String.pipe(T.Query())),
+          storage: S.optional(S.String.pipe(T.Query())),
+          systemStorage: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/region/availabilities", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerRegionAvailabilitiesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerAvailabilityZones",
+      });
+    case 2:
+      return S.Array(__S(449, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          availabilityZones: S.optional(__S(450, __c28, 2)),
+          region: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerAvailabilityByRegion",
+      });
     case 4:
+      return S.Array(__S(451, __c28, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          fqn: S.optional(S.String),
+          gpu: S.optional(S.NullOr(S.String)),
+          memory: S.optional(S.NullOr(S.String)),
+          planCode: S.optional(S.String),
+          regions: S.optional(S.NullOr(__S(452, __c28, 4))),
+          server: S.optional(S.String),
+          storage: S.optional(S.NullOr(S.String)),
+          systemStorage: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerRegionAvailability",
+      });
+    case 6:
+      return S.Array(__S(453, __c28, 5));
+    case 7:
+      return S.suspend(() => __S(454, __c28, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerRegionAvailabilitiesResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/secondaryDnsDomains",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerSecondaryDnsDomainsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/specifications/ip",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerSpecificationIpRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/spla", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedServerSplaRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/task", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedServerTaskRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          taskId: S.Number.pipe(T.Label()),
+          periodEnd: S.String.pipe(T.Query()),
+          periodStart: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/task/{taskId}/availableTimeslots",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerTaskAvailableTimeslotsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.String),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedPlannedInterventionTimeSlot",
+      });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() => __S(545, __c34, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerTaskAvailableTimeslotsResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          family: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/updates/allowed",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerUpdateAllowedRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          family: S.optional(S.String),
+          planCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerBillingAddon",
+      });
+    case 2:
+      return S.Array(__S(561, __c35, 1));
+    case 3:
+      return S.suspend(() => __S(562, __c35, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedServerUpdateAllowedResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          periodEnd: S.String.pipe(T.Query()),
+          periodStart: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/upgrade/availableTimeslots",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerUpgradeAvailableTimeslotsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/virtualMac", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerVirtualMacRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6475,7 +7113,194 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBackupFTPAccessRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          macAddress: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerVirtualMacVirtualAddressRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          enabled: S.optional(S.Boolean.pipe(T.Query())),
+          mode: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          vrack: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/server/{serviceName}/virtualNetworkInterface",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedServerVirtualNetworkInterfaceRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/vrack", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedServerVrackRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          bootId: S.optional(S.NullOr(S.Number)),
+          bootScript: S.optional(S.NullOr(S.String)),
+          efiBootloaderPath: S.optional(S.NullOr(S.String)),
+          monitoring: S.optional(S.Boolean),
+          noIntervention: S.optional(S.Boolean),
+          rescueMail: S.optional(S.NullOr(S.String)),
+          rescueSshKey: S.optional(S.NullOr(S.String)),
+          rootDevice: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}", code: 200 })),
+      ).annotate({
+        identifier: "PutDedicatedServerRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          status: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/burst", code: 200 })),
+      ).annotate({
+        identifier: "PutDedicatedServerBurstRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutDedicatedServerBurstResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ipBlock: S.String.pipe(T.Label()),
+          cifs: S.optional(S.Boolean),
+          ftp: S.optional(S.Boolean),
+          nfs: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerFeatureBackupFTPAccessRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/dedicated/server/{serviceName}/features/firewall",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerFeatureFirewallRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          ipMaster: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerSecondaryDnsDomainRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          renew: S.optional(S.NullOr(__S(2272, __c142, 0))),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerServiceInfosRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          serialNumber: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/spla/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerSplaRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6489,7 +7314,211 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBackupFTPPasswordRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          hasPerformedBackup: S.Boolean,
+          wantedBeginningDate: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/dedicated/server/{serviceName}/upgrade/schedule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedServerUpgradeScheduleRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/reboot", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RebootDedicatedServerRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/ipmi/resetInterface",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ResetDedicatedServerFeaturesIpmiInterfaceRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/ipmi/resetSessions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ResetDedicatedServerFeaturesIpmiSessionsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          virtualNetworkInterface: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/ola/reset", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ResetDedicatedServerOlaRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/bmc/restart",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartDedicatedServerFeaturesBmcRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/bmc/revokeSessions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeDedicatedServerFeaturesBmcSessionsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/spla/{id}/revoke",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeDedicatedServerSplaRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customHostname: S.optional(S.NullOr(S.String)),
+          diskGroupId: S.optional(S.NullOr(S.Number)),
+          noRaid: S.optional(S.NullOr(S.Boolean)),
+          postInstallationScriptLink: S.optional(S.NullOr(S.String)),
+          postInstallationScriptReturn: S.optional(S.NullOr(S.String)),
+          softRaidDevices: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerInstallCustom",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeSafeKeyValueString",
+      });
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          details: S.optional(__S(928, __c58, 0)),
+          partitionSchemeName: S.optional(S.String),
+          templateName: S.String,
+          userMetadata: S.optional(__S(930, __c58, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/install/start",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "StartDedicatedServerInstallRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/terminate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "TerminateDedicatedServerRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6505,7 +7534,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBmcJavaKvmRequest",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
@@ -6519,7 +7552,47 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DedicatedServerOperation" });
   }
 }
-function __c4(j: number): any {
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ttl: S.optional(S.Number),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/bmc/test",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TestDedicatedServerFeaturesBmcRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ttl: S.Number,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/features/ipmi/test",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TestDedicatedServerFeaturesIpmiRequest",
+      });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6537,7 +7610,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBmcSshSolRequest",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6553,7 +7630,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBmcWebKvmRequest",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6569,7 +7650,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureBmcWebSolRequest",
       });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6587,7 +7672,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerFeatureIpmiAccessRequest",
       });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6602,7 +7691,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerIpBlockMergeRequest",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6613,7 +7706,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerIpMoveRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6629,52 +7726,62 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerLicenseWindowsRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          macs: S.optional(__S(39, __c4, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerInterfaces",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          interfaces: __S(41, __c5, 1),
+          interfaces: __S(1169, __c73, 1),
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/networking", code: 200 }),
         ),
       ).annotate({
         identifier: "CreateDedicatedServerNetworkingRequest",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          macs: S.optional(__S(1152, __c72, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedServerInterfaces",
+      });
+    case 1:
+      return S.Array(__S(1168, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          interfaces: S.optional(__S(41, __c5, 1)),
+          interfaces: S.optional(__S(1169, __c73, 1)),
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerNetworking",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String,
-          virtualNetworkInterfaces: __S(44, __c5, 4),
+          virtualNetworkInterfaces: __S(1200, __c75, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6685,15 +7792,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerOlaAggregationRequest",
       });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configDriveUserData: S.optional(S.String),
           efiBootloaderPath: S.optional(S.String),
           hostname: S.optional(S.String),
-          httpHeaders: S.optional(__S(46, __c5, 6)),
+          httpHeaders: S.optional(__S(1232, __c77, 0)),
           imageCheckSum: S.optional(S.String),
           imageCheckSumType: S.optional(S.String),
           imageType: S.optional(S.String),
@@ -6706,11 +7821,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DedicatedServerReinstallCustomizations",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arrays: S.optional(S.Number),
@@ -6721,9 +7832,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DedicatedServerReinstallStorageHardwareRaid",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(1217, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6731,19 +7842,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioningLayoutExtrasLv",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          lv: S.optional(__S(50, __c6, 2)),
-          zp: S.optional(__S(50, __c6, 2)),
+          lv: S.optional(__S(1219, __c76, 3)),
+          zp: S.optional(__S(1219, __c76, 3)),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioningLayoutExtras",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          extras: S.optional(__S(51, __c6, 3)),
+          extras: S.optional(__S(1220, __c76, 4)),
           fileSystem: S.String,
           mountPoint: S.String,
           raidLevel: S.optional(S.Number),
@@ -6752,49 +7863,45 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioningLayout",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
     case 6:
+      return S.Array(__S(1221, __c76, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           disks: S.optional(S.Number),
-          layout: S.optional(__S(53, __c6, 5)),
+          layout: S.optional(__S(1222, __c76, 6)),
           schemeName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioning",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           diskGroupId: S.optional(S.Number),
-          hardwareRaid: S.optional(__S(49, __c6, 1)),
-          partitioning: S.optional(__S(54, __c6, 6)),
+          hardwareRaid: S.optional(__S(1218, __c76, 2)),
+          partitioning: S.optional(__S(1223, __c76, 7)),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStorage",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(1224, __c76, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          customizations: S.optional(__S(47, __c5, 7)),
+          customizations: S.optional(__S(1216, __c76, 0)),
           operatingSystem: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-          storage: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(1232, __c77, 0)),
+          storage: S.optional(__S(1225, __c76, 9)),
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/reinstall", code: 200 }),
         ),
       ).annotate({
         identifier: "CreateDedicatedServerReinstallRequest",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -6807,7 +7914,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DedicatedServerTaskResponse",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6823,7 +7940,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerSecondaryDnsDomainRequest",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6833,11 +7954,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerSplaRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Number.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDedicatedServerSplaResponse",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6853,7 +7978,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerSupportReplaceCoolingRequest",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           additionalNotice: S.optional(S.NullOr(S.String)),
@@ -6864,7 +7993,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "SupportNewMessageInfo" });
   }
 }
-function __c8(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6876,13 +8005,13 @@ function __c8(j: number): any {
         identifier: "DedicatedServerSupportReplaceHddInfo",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(1312, __c82, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           comment: S.String,
-          disks: __S(65, __c8, 1),
+          disks: __S(1313, __c82, 1),
           inverse: S.Boolean,
         }).pipe(
           T.Http({
@@ -6894,13 +8023,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerSupportReplaceHardDiskDriveRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           comment: S.String,
           details: S.String,
-          slots: S.optional(__S(39, __c4, 7)),
+          slots: S.optional(__S(1152, __c72, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6911,7 +8044,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerSupportReplaceMemoryRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6928,7 +8065,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerTaskScheduleRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6941,7 +8082,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerVirtualMacRequest",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6958,7 +8103,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedServerVirtualMacVirtualAddressRequest",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6974,7 +8123,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6990,7 +8139,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerFeatureBackupFTPRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7005,7 +8158,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerFeatureBackupFTPAccessRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7019,7 +8176,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerNetworkingRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7034,7 +8195,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerOptionRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7049,7 +8214,62 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerSecondaryDnsDomainRequest",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          enable: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/antiDDosGame/activate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateDedicatedServerAntiDDosGameRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeSafeKeyValueCanBeNullString",
+      });
+    case 1:
+      return S.Array(__S(1504, __c94, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.NullOr(S.String)),
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          needSchedule: S.optional(S.Boolean),
+          note: S.optional(S.NullOr(S.String)),
+          plannedInterventionId: S.optional(S.NullOr(S.Number)),
+          startDate: S.optional(S.String),
+          status: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(1505, __c94, 1))),
+          taskId: S.optional(S.Number),
+          ticketReference: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DedicatedServerTask" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7065,7 +8285,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerVirtualMacVirtualAddressRequest",
       });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7080,7 +8304,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedServerVrackRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           function: S.optional(S.String),
@@ -7095,7 +8319,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "VrackTask" });
   }
 }
-function __c10(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7110,7 +8334,7 @@ function __c10(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(46, __c5, 6))),
+          tags: S.optional(S.NullOr(__S(1232, __c77, 0))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -7123,7 +8347,7 @@ function __c10(j: number): any {
           commercialRange: S.optional(S.NullOr(S.String)),
           datacenter: S.optional(S.String),
           efiBootloaderPath: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(81, __c10, 1))),
+          iam: S.optional(S.NullOr(__S(1553, __c97, 1))),
           ip: S.optional(S.String),
           linkSpeed: S.optional(S.NullOr(S.Number)),
           monitoring: S.optional(S.Boolean),
@@ -7146,7 +8370,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DedicatedServerDedicatedWithIAM",
       });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7160,11 +8388,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerAntiDDosGameStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDedicatedServerAntiDDosGameStatusResponse",
       });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7178,18 +8410,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerBackupCloudOfferDetailsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          maxArchive: S.optional(S.NullOr(__S(18, __c2, 2))),
-          maxBandwidthArchive: S.optional(S.NullOr(__S(18, __c2, 2))),
-          maxBandwidthStorage: S.optional(S.NullOr(__S(18, __c2, 2))),
-          maxStorage: S.optional(S.NullOr(__S(18, __c2, 2))),
+          maxArchive: S.optional(S.NullOr(__S(16, __c1, 0))),
+          maxBandwidthArchive: S.optional(S.NullOr(__S(16, __c1, 0))),
+          maxBandwidthStorage: S.optional(S.NullOr(__S(16, __c1, 0))),
+          maxStorage: S.optional(S.NullOr(__S(16, __c1, 0))),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupBackupOffer",
       });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7199,17 +8435,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerBiosSettingsRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          prmrr: S.optional(__S(88, __c11, 0)),
-          status: S.optional(__S(88, __c11, 0)),
+          prmrr: S.optional(__S(1616, __c101, 0)),
+          status: S.optional(__S(1616, __c101, 0)),
         }),
       ).annotate({
         identifier: "DedicatedServerBiosSettingsSupportSgxOptions",
@@ -7218,7 +8448,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sgx: S.optional(S.Boolean),
-          sgxOptions: S.optional(__S(89, __c11, 1)),
+          sgxOptions: S.optional(__S(1601, __c100, 1)),
         }),
       ).annotate({
         identifier: "DedicatedServerBiosSettingsSupport",
@@ -7226,12 +8456,22 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          supportedSettings: S.optional(__S(90, __c11, 2)),
+          supportedSettings: S.optional(__S(1602, __c100, 2)),
         }),
       ).annotate({
         identifier: "DedicatedBiosSettingsBiosSettings",
       });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7245,7 +8485,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerBiosSettingsSgxRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prmrr: S.optional(S.String),
@@ -7254,7 +8494,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DedicatedBiosSettingsSgxBiosSettingsSgx",
       });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7269,7 +8513,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerBootRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bootId: S.optional(S.Number),
@@ -7280,7 +8524,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DedicatedServerNetboot" });
   }
 }
-function __c12(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7307,7 +8551,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DedicatedServerNetbootOption",
       });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7315,16 +8563,47 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerBurstRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(S.NullOr(__S(18, __c2, 2))),
+          capacity: S.optional(S.NullOr(__S(16, __c1, 0))),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerServerBurst",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          taskId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/task/{taskId}/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelDedicatedServerTaskRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelDedicatedServerTaskResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7338,17 +8617,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBackupFTPRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ftpBackupName: S.optional(S.String),
-          quota: S.optional(S.NullOr(__S(18, __c2, 2))),
+          quota: S.optional(S.NullOr(__S(16, __c1, 0))),
           readOnlyDate: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
-          usage: S.optional(S.NullOr(__S(18, __c2, 2))),
+          usage: S.optional(S.NullOr(__S(16, __c1, 0))),
         }),
       ).annotate({ identifier: "DedicatedServerBackupFtp" });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7363,7 +8646,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBackupFTPAccessRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cifs: S.optional(S.Boolean),
@@ -7378,7 +8661,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7408,10 +8691,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Boolean),
-          supportedFeatures: S.optional(__S(105, __c13, 1)),
+          supportedFeatures: S.optional(__S(1761, __c110, 1)),
         }),
       ).annotate({ identifier: "DedicatedServerBMC" });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7426,7 +8713,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBmcJavaKvmRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -7435,7 +8722,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBmcJavaKvmValue",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7450,7 +8741,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBmcSshSolRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -7459,7 +8750,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBmcSshSolValue",
       });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7475,11 +8770,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBmcTestRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -7489,7 +8780,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBmcTestResult",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7504,7 +8799,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBmcWebKvmRequest",
       });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -7513,7 +8812,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBmcWebKvmValue",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7528,7 +8831,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureBmcWebSolRequest",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7542,7 +8849,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureFirewallRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -7552,7 +8859,11 @@ function __c14(j: number): any {
           model: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DedicatedServerFirewall" });
-    case 6:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7566,7 +8877,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureIpmiRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kvmipHtml5URL: S.optional(S.Boolean),
@@ -7577,18 +8888,48 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DedicatedServerIpmiSupportedFeatures",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          activated: S.optional(S.Boolean),
+          supportedFeatures: S.optional(__S(1889, __c118, 1)),
+        }),
+      ).annotate({ identifier: "DedicatedServerIpmi" });
   }
 }
-function __c15(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activated: S.optional(S.Boolean),
-          supportedFeatures: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "DedicatedServerIpmi" });
-    case 1:
+          serviceName: S.String.pipe(T.Label()),
+          commentary: S.optional(S.String),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
+          token: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/confirmTermination",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfirmDedicatedServerTerminationRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ConfirmDedicatedServerTerminationResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7603,7 +8944,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureIpmiAccessRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expiration: S.optional(S.NullOr(S.String)),
@@ -7612,7 +8953,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DedicatedServerIpmiAccessValue",
       });
-    case 3:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7627,7 +8972,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureIpmiTestRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
@@ -7636,7 +8981,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DedicatedServerIpmiTestResult",
       });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7646,7 +8995,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerFeatureKvmRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expiration: S.optional(S.String),
@@ -7654,7 +9003,11 @@ function __c15(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerKvm" });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7669,11 +9022,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerInterventionRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
@@ -7683,7 +9032,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DedicatedServerIntervention",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7698,7 +9051,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerIpCanBeMovedToRequest",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7713,7 +9070,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerNetworkInterfaceControllerRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           linkType: S.optional(S.String),
@@ -7723,7 +9080,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DedicatedNetworkInterfaceControllerNetworkInterfaceController",
       });
-    case 4:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7738,7 +9099,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerOperationRequest",
       });
-    case 5:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7753,14 +9118,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerOptionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           option: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerOption" });
-    case 7:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7777,13 +9146,17 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDedicatedServerOrderableFeatureResponse",
       });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7797,7 +9170,44 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerOrderableKvmRequest",
       });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/authenticationSecret",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedServerAuthenticationSecretRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          type: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DedicatedServerAccess" });
     case 2:
+      return S.Array(__S(2113, __c132, 1));
+    case 3:
+      return S.suspend(() => __S(2114, __c132, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDedicatedServerAuthenticationSecretResponse",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7811,7 +9221,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerOrderableKvmExpressRequest",
       });
-    case 3:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7825,7 +9239,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerOrderableProfessionalUseRequest",
       });
-    case 4:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7840,7 +9258,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerPlannedInterventionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expectedEndDate: S.optional(S.String),
@@ -7852,7 +9270,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DedicatedServerPlannedIntervention",
       });
-    case 6:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7867,7 +9289,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSecondaryDnsDomainRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
@@ -7878,7 +9300,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "SecondaryDnsSecondaryDNS" });
   }
 }
-function __c18(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7895,7 +9317,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSecondaryDnsDomainDnsServerRequest",
       });
-    case 1:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
@@ -7905,7 +9331,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SecondaryDnsSecondaryDNSNameServer",
       });
-    case 2:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7920,7 +9350,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSecondaryDnsNameDomainTokenRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fieldType: S.optional(S.String),
@@ -7930,7 +9360,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SecondaryDnsSecondaryDNSCheckField",
       });
-    case 4:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7944,7 +9378,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSecondaryDnsNameServerAvailableRequest",
       });
-    case 5:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7954,17 +9392,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerServiceInfosRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -7975,8 +9403,8 @@ function __c18(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(14, __c1, 6))),
-          renew: S.optional(S.NullOr(__S(150, __c18, 6))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(2560, __c160, 0))),
+          renew: S.optional(S.NullOr(__S(2272, __c142, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
@@ -7984,7 +9412,21 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ServicesService" });
   }
 }
-function __c19(j: number): any {
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8003,11 +9445,11 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultHardwareRaidSize: S.optional(S.NullOr(__S(18, __c2, 2))),
+          defaultHardwareRaidSize: S.optional(S.NullOr(__S(16, __c1, 0))),
           defaultHardwareRaidType: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           diskGroupId: S.optional(S.NullOr(S.Number)),
-          diskSize: S.optional(S.NullOr(__S(18, __c2, 2))),
+          diskSize: S.optional(S.NullOr(__S(16, __c1, 0))),
           diskType: S.optional(S.NullOr(S.String)),
           numberOfDisks: S.optional(S.NullOr(S.Number)),
           raidController: S.optional(S.NullOr(S.String)),
@@ -8016,7 +9458,7 @@ function __c19(j: number): any {
         identifier: "DedicatedServerHardwareSpecificationsDisk",
       });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(2289, __c143, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8027,32 +9469,36 @@ function __c19(j: number): any {
         identifier: "DedicatedServerHardwareSpecificationsExpansionCard",
       });
     case 4:
-      return S.Array(__S(155, __c19, 3));
+      return S.Array(__S(2291, __c143, 3));
     case 5:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(16, __c1, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           bootMode: S.optional(S.String),
           coresPerProcessor: S.optional(S.NullOr(S.Number)),
-          defaultHardwareRaidSize: S.optional(S.NullOr(__S(18, __c2, 2))),
+          defaultHardwareRaidSize: S.optional(S.NullOr(__S(16, __c1, 0))),
           defaultHardwareRaidType: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          diskGroups: S.optional(S.NullOr(__S(154, __c19, 2))),
-          expansionCards: S.optional(S.NullOr(__S(156, __c19, 4))),
+          diskGroups: S.optional(S.NullOr(__S(2290, __c143, 2))),
+          expansionCards: S.optional(S.NullOr(__S(2292, __c143, 4))),
           formFactor: S.optional(S.NullOr(S.String)),
-          memorySize: S.optional(S.NullOr(__S(18, __c2, 2))),
+          memorySize: S.optional(S.NullOr(__S(16, __c1, 0))),
           motherboard: S.optional(S.NullOr(S.String)),
           numberOfProcessors: S.optional(S.NullOr(S.Number)),
           processorArchitecture: S.optional(S.NullOr(S.String)),
           processorName: S.optional(S.NullOr(S.String)),
           threadsPerProcessor: S.optional(S.NullOr(S.Number)),
-          usbKeys: S.optional(S.NullOr(__S(157, __c19, 5))),
+          usbKeys: S.optional(S.NullOr(__S(2293, __c143, 5))),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareSpecifications",
       });
-    case 7:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8066,22 +9512,18 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSpecificationNetworkRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          InternetToOvh: S.optional(S.NullOr(__S(18, __c2, 2))),
-          OvhToInternet: S.optional(S.NullOr(__S(18, __c2, 2))),
-          OvhToOvh: S.optional(S.NullOr(__S(18, __c2, 2))),
+          InternetToOvh: S.optional(S.NullOr(__S(16, __c1, 0))),
+          OvhToInternet: S.optional(S.NullOr(__S(16, __c1, 0))),
+          OvhToOvh: S.optional(S.NullOr(__S(16, __c1, 0))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthDetails",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           aggregation: S.optional(S.Boolean),
@@ -8091,31 +9533,31 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DedicatedServerOlaInterface",
       });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
     case 3:
+      return S.Array(__S(2306, __c144, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.Boolean),
-          interfaces: S.optional(__S(162, __c20, 2)),
+          interfaces: S.optional(__S(2307, __c144, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerOlaAvailableModes",
       });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
     case 5:
+      return S.Array(__S(2308, __c144, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Boolean),
-          availableModes: S.optional(__S(164, __c20, 4)),
-          supportedModes: S.optional(S.NullOr(__S(88, __c11, 0))),
+          availableModes: S.optional(__S(2309, __c144, 5)),
+          supportedModes: S.optional(S.NullOr(__S(1616, __c101, 0))),
         }),
       ).annotate({
         identifier: "DedicatedServerOlaDetails",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           gateway: S.optional(S.NullOr(S.String)),
@@ -8125,20 +9567,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DedicatedServerRoutingDetailsIpv4",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.optional(S.NullOr(__S(166, __c20, 6))),
-          ipv6: S.optional(S.NullOr(__S(166, __c20, 6))),
+          ipv4: S.optional(S.NullOr(__S(2311, __c144, 7))),
+          ipv6: S.optional(S.NullOr(__S(2311, __c144, 7))),
         }),
       ).annotate({
         identifier: "DedicatedServerRoutingDetails",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -8146,20 +9584,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DedicatedServerSwitchingDetails",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          inputQuotaSize: S.optional(S.NullOr(__S(18, __c2, 2))),
-          inputQuotaUsed: S.optional(S.NullOr(__S(18, __c2, 2))),
+          inputQuotaSize: S.optional(S.NullOr(__S(16, __c1, 0))),
+          inputQuotaUsed: S.optional(S.NullOr(__S(16, __c1, 0))),
           isThrottled: S.optional(S.NullOr(S.Boolean)),
-          outputQuotaSize: S.optional(S.NullOr(__S(18, __c2, 2))),
-          outputQuotaUsed: S.optional(S.NullOr(__S(18, __c2, 2))),
+          outputQuotaSize: S.optional(S.NullOr(__S(16, __c1, 0))),
+          outputQuotaUsed: S.optional(S.NullOr(__S(16, __c1, 0))),
           resetQuotaDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerTrafficDetails",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           quota: S.optional(S.Number),
@@ -8168,31 +9606,55 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DedicatedServerVmacDetails",
       });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: S.optional(S.NullOr(__S(18, __c2, 2))),
+          bandwidth: S.optional(S.NullOr(__S(16, __c1, 0))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthvRackDetails",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: S.optional(S.NullOr(__S(160, __c20, 0))),
-          connection: S.optional(S.NullOr(__S(18, __c2, 2))),
-          ola: S.optional(S.NullOr(__S(165, __c20, 5))),
-          routing: S.optional(S.NullOr(__S(167, __c20, 7))),
-          switching: S.optional(S.NullOr(__S(168, __c21, 0))),
-          traffic: S.optional(S.NullOr(__S(169, __c21, 1))),
-          vmac: S.optional(__S(170, __c21, 2)),
-          vrack: S.optional(S.NullOr(__S(171, __c21, 3))),
+          bandwidth: S.optional(S.NullOr(__S(2305, __c144, 1))),
+          connection: S.optional(S.NullOr(__S(16, __c1, 0))),
+          ola: S.optional(S.NullOr(__S(2310, __c144, 6))),
+          routing: S.optional(S.NullOr(__S(2312, __c144, 8))),
+          switching: S.optional(S.NullOr(__S(2313, __c144, 9))),
+          traffic: S.optional(S.NullOr(__S(2314, __c144, 10))),
+          vmac: S.optional(__S(2315, __c144, 11)),
+          vrack: S.optional(S.NullOr(__S(2316, __c144, 12))),
         }),
       ).annotate({
         identifier: "DedicatedServerNetworkSpecifications",
       });
-    case 5:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          prmrr: S.optional(S.String),
+          status: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/biosSettings/sgx/configure",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedServerBiosSettingsSgxConfigureRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8203,7 +9665,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerSplaRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -8213,7 +9675,11 @@ function __c21(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerSpla" });
-    case 7:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8230,7 +9696,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8256,7 +9722,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DedicatedServerVirtualMac",
       });
-    case 2:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8272,7 +9742,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerVirtualMacVirtualAddressRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -8281,7 +9751,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DedicatedServerVirtualMacManagement",
       });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -8295,13 +9769,17 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerVirtualNetworkInterfaceRequest",
       });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           mode: S.optional(S.String),
           name: S.optional(S.String),
-          networkInterfaceController: S.optional(__S(44, __c5, 4)),
+          networkInterfaceController: S.optional(__S(1200, __c75, 0)),
           serverName: S.optional(S.String),
           uuid: S.optional(S.String),
           vrack: S.optional(S.NullOr(S.String)),
@@ -8309,7 +9787,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DedicatedServerVirtualNetworkInterface",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8324,7 +9806,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerVirtualNetworkInterfaceByUuidRequest",
       });
-    case 7:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8339,38 +9825,50 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetDedicatedServerVrackRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dedicatedServer: S.optional(S.String),
           vrack: S.optional(S.String),
         }),
       ).annotate({ identifier: "VrackDedicatedServer" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2480, __c155, 0));
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
+      return S.Record(S.String, __S(2464, __c154, 0));
     case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.Record(S.String, __S(186, __c23, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(187, __c23, 3).pipe(T.Query())),
+          iamTags: S.optional(__S(2465, __c154, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/server", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedServerRequest",
       });
-    case 5:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1152, __c72, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerResponse",
       });
-    case 6:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/dedicated/server/availabilities/raw", code: 200 }),
@@ -8378,7 +9876,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerAvailabilityRawRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
@@ -8397,17 +9895,17 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DedicatedAvailabilitiesRaw",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() => __S(192, __c24, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2513, __c157, 1));
+    case 3:
+      return S.suspend(() => __S(2514, __c157, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerAvailabilityRawResponse",
       });
-    case 2:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8416,7 +9914,46 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerBootRequest",
       });
-    case 3:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/server/{serviceName}/changeContact",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedServerChangeContactRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2560, __c160, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDedicatedServerChangeContactResponse",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8431,11 +9968,19 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerBootOptionRequest",
       });
-    case 4:
-      return S.suspend(() => __S(88, __c11, 0).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1616, __c101, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerBootOptionResponse",
       });
-    case 5:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datacenters: S.optional(S.String.pipe(T.Query())),
@@ -8452,7 +9997,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilitiesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
@@ -8461,16 +10006,12 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DedicatedAvailabilityDatacenter",
       });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2625, __c164, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          datacenters: S.optional(__S(199, __c24, 7)),
+          datacenters: S.optional(__S(2626, __c164, 2)),
           fqn: S.optional(S.String),
           gpu: S.optional(S.NullOr(S.String)),
           memory: S.optional(S.NullOr(S.String)),
@@ -8482,13 +10023,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DedicatedDatacenterAvailability",
       });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
-      return S.suspend(() => __S(201, __c25, 1).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(2627, __c164, 3));
+    case 5:
+      return S.suspend(() => __S(2628, __c164, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilitiesResponse",
       });
-    case 3:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datacenters: S.optional(S.String.pipe(T.Query())),
@@ -8509,7 +10054,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilityRawRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
@@ -8521,9 +10066,9 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DedicatedAvailabilityRawDatacenter",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2641, __c165, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
@@ -8535,17 +10080,13 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DedicatedAvailabilityRawAvailabilityZones",
       });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(2643, __c165, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
-          availabilityZones: S.optional(__S(207, __c25, 7)),
+          availabilityZones: S.optional(__S(2644, __c165, 4)),
           lastRule: S.optional(S.NullOr(S.String)),
           parentAvailable: S.optional(S.Number),
           region: S.optional(S.String),
@@ -8554,17 +10095,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DedicatedAvailabilityRawRegion",
       });
-    case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(2645, __c165, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          datacenters: S.optional(__S(205, __c25, 5)),
+          datacenters: S.optional(__S(2642, __c165, 2)),
           fqn: S.optional(S.String),
           gpu: S.optional(S.NullOr(S.String)),
           memory: S.optional(S.NullOr(S.String)),
           planCode: S.optional(S.String),
-          regions: S.optional(S.NullOr(__S(209, __c26, 1))),
+          regions: S.optional(S.NullOr(__S(2646, __c165, 6))),
           server: S.optional(S.String),
           storage: S.optional(S.NullOr(S.String)),
           systemStorage: S.optional(S.NullOr(S.String)),
@@ -8572,13 +10113,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DedicatedDatacenterRawAvailability",
       });
-    case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
-      return S.suspend(() => __S(211, __c26, 3).pipe(T.RawResponseRoot())).annotate({
+    case 8:
+      return S.Array(__S(2647, __c165, 7));
+    case 9:
+      return S.suspend(() => __S(2648, __c165, 8).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilityRawResponse",
       });
-    case 5:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8592,7 +10137,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerFeatureBackupCloudRequest",
       });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8606,7 +10155,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerFeatureBackupFTPAccessRequest",
       });
-    case 7:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8620,15 +10173,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(44, __c5, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(1200, __c75, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse",
       });
-    case 1:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8643,11 +10196,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest",
       });
-    case 2:
-      return S.suspend(() => __S(44, __c5, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(1200, __c75, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse",
       });
-    case 3:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8661,16 +10218,20 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerInstallCompatibleTemplatesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ovh: S.optional(S.NullOr(__S(39, __c4, 7))),
-          personal: S.optional(S.NullOr(__S(39, __c4, 7))),
+          ovh: S.optional(S.NullOr(__S(1152, __c72, 0))),
+          personal: S.optional(S.NullOr(__S(1152, __c72, 0))),
         }),
       ).annotate({
         identifier: "DedicatedServerInstallTemplate",
       });
-    case 5:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8684,7 +10245,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerInstallHardwareRaidProfileRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -8693,45 +10254,45 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ComplexTypeUnitAndValueString",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(18, __c2, 2)),
+          capacity: S.optional(__S(16, __c1, 0)),
           diskGroupId: S.optional(S.Number),
-          names: S.optional(__S(39, __c4, 7)),
-          speed: S.optional(__S(222, __c27, 6)),
+          names: S.optional(__S(1152, __c72, 0)),
+          speed: S.optional(__S(2737, __c171, 1)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidDiskGroup",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(2738, __c171, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(224, __c28, 0)),
+          disks: S.optional(__S(2739, __c171, 3)),
           model: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidController",
       });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(2740, __c171, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          controllers: S.optional(__S(226, __c28, 2)),
+          controllers: S.optional(__S(2741, __c171, 5)),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidProfile",
       });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8747,12 +10308,12 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListDedicatedServerInstallHardwareRaidSizeRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(18, __c2, 2)),
+          capacity: S.optional(__S(16, __c1, 0)),
           diskCount: S.optional(S.Number),
-          diskSize: S.optional(__S(18, __c2, 2)),
+          diskSize: S.optional(__S(16, __c1, 0)),
           diskSpanSize: S.optional(S.Number),
           mode: S.optional(S.String),
           name: S.optional(S.String),
@@ -8761,1004 +10322,18 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DedicatedServerHardwareRaidConfiguration",
       });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2753, __c172, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(230, __c28, 6)),
+          configurations: S.optional(__S(2754, __c172, 2)),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidSize",
       });
   }
 }
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/install/status",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerInstallStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.String),
-          error: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerInstallationProgressSteps",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          elapsedTime: S.optional(S.Number),
-          progress: S.optional(S.NullOr(__S(234, __c29, 2))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerInstallationProgressStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/intervention", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerInterventionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/ipCountryAvailable",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerIpCountryAvailableRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ips", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedServerIpsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/license/compliantWindows",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerLicenseCompliantWindowsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => __S(241, __c30, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/networking", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerNetworkingRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          linkType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/networkInterfaceController",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerNetworkInterfaceControllerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          mac: S.String.pipe(T.Label()),
-          period: S.String.pipe(T.Query()),
-          type: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.Number),
-          value: S.optional(S.NullOr(__S(18, __c2, 2))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerMrtgTimestampValue",
-      });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(247, __c30, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ongoing", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOngoingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datacenter: S.optional(S.String),
-          description: S.optional(S.String),
-          server: S.optional(S.String),
-          todoDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedExposedTask" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() => __S(251, __c31, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerOngoingResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/operation", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOperationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/option", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/backupStorage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableBackupStorageRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          capacities: S.optional(S.NullOr(__S(256, __c32, 0))),
-          orderable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerBackupStorageOrderable",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/bandwidth",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableBandwidthRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orderable: S.optional(S.Boolean),
-          platinum: S.optional(S.NullOr(__S(256, __c32, 0))),
-          premium: S.optional(S.NullOr(__S(256, __c32, 0))),
-          ultimate: S.optional(S.NullOr(__S(256, __c32, 0))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerBandwidthOrderable",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/bandwidthvRack",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableBandwidthvRackRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orderable: S.optional(S.Boolean),
-          vrack: S.optional(S.NullOr(__S(256, __c32, 0))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerBandwidthvRackOrderable",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/orderable/ip", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableIpRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          blockSizes: S.optional(__S(256, __c32, 0)),
-          included: S.optional(S.Boolean),
-          ipNumber: S.optional(S.NullOr(S.Number)),
-          number: S.optional(S.Number),
-          optionRequired: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerIpOrderableDetails",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipv4: S.optional(S.NullOr(__S(264, __c33, 0))),
-          ipv6: S.optional(S.NullOr(__S(264, __c33, 0))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerIpOrderable",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/supportLevel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableSupportLevelRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          levels: S.optional(S.NullOr(__S(88, __c11, 0))),
-          orderable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerSupportLevelOrderable",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/traffic",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableTrafficRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orderable: S.optional(S.Boolean),
-          traffic: S.optional(S.NullOr(__S(88, __c11, 0))),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerTrafficOrderable",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/orderable/usbKey",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerOrderableUsbKeyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          capacity: S.optional(__S(256, __c32, 0)),
-          number: S.optional(S.Number),
-          optionRequired: S.optional(S.NullOr(S.String)),
-          orderable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerUsbKeyOrderableDetails",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hardware: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/osAvailabilities", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedServerOsAvailabilitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/plannedIntervention",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerPlannedInterventionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          excludeRegions: S.optional(S.Boolean.pipe(T.Query())),
-          gpu: S.optional(S.String.pipe(T.Query())),
-          memory: S.optional(S.String.pipe(T.Query())),
-          planCode: S.optional(S.String.pipe(T.Query())),
-          regions: S.optional(__S(88, __c11, 0).pipe(T.Query())),
-          server: S.optional(S.String.pipe(T.Query())),
-          storage: S.optional(S.String.pipe(T.Query())),
-          systemStorage: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/region/availabilities", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerRegionAvailabilitiesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(S.String),
-          availabilityZone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerAvailabilityZones",
-      });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(S.String),
-          availabilityZones: S.optional(__S(276, __c34, 4)),
-          region: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerAvailabilityByRegion",
-      });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fqn: S.optional(S.String),
-          gpu: S.optional(S.NullOr(S.String)),
-          memory: S.optional(S.NullOr(S.String)),
-          planCode: S.optional(S.String),
-          regions: S.optional(S.NullOr(__S(278, __c34, 6))),
-          server: S.optional(S.String),
-          storage: S.optional(S.NullOr(S.String)),
-          systemStorage: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerRegionAvailability",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() => __S(280, __c35, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerRegionAvailabilitiesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/secondaryDnsDomains",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerSecondaryDnsDomainsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/specifications/ip",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerSpecificationIpRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/spla", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedServerSplaRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/task", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedServerTaskRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          taskId: S.Number.pipe(T.Label()),
-          periodEnd: S.String.pipe(T.Query()),
-          periodStart: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/task/{taskId}/availableTimeslots",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerTaskAvailableTimeslotsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.String),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedPlannedInterventionTimeSlot",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(287, __c35, 7));
-    case 1:
-      return S.suspend(() => __S(288, __c36, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerTaskAvailableTimeslotsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          family: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/updates/allowed",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerUpdateAllowedRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          family: S.optional(S.String),
-          planCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerBillingAddon",
-      });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.suspend(() => __S(292, __c36, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedServerUpdateAllowedResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          periodEnd: S.String.pipe(T.Query()),
-          periodStart: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/upgrade/availableTimeslots",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerUpgradeAvailableTimeslotsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/virtualMac", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerVirtualMacRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          macAddress: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerVirtualMacVirtualAddressRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          enabled: S.optional(S.Boolean.pipe(T.Query())),
-          mode: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          vrack: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/server/{serviceName}/virtualNetworkInterface",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedServerVirtualNetworkInterfaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/vrack", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedServerVrackRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          bootId: S.optional(S.NullOr(S.Number)),
-          bootScript: S.optional(S.NullOr(S.String)),
-          efiBootloaderPath: S.optional(S.NullOr(S.String)),
-          monitoring: S.optional(S.Boolean),
-          noIntervention: S.optional(S.Boolean),
-          rescueMail: S.optional(S.NullOr(S.String)),
-          rescueSshKey: S.optional(S.NullOr(S.String)),
-          rootDevice: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}", code: 200 })),
-      ).annotate({
-        identifier: "PutDedicatedServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          status: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/burst", code: 200 })),
-      ).annotate({
-        identifier: "PutDedicatedServerBurstRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutDedicatedServerBurstResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ipBlock: S.String.pipe(T.Label()),
-          cifs: S.optional(S.Boolean),
-          ftp: S.optional(S.Boolean),
-          nfs: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerFeatureBackupFTPAccessRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/dedicated/server/{serviceName}/features/firewall",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerFeatureFirewallRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          ipMaster: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerSecondaryDnsDomainRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(150, __c18, 6))),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerServiceInfosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          serialNumber: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/spla/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerSplaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          hasPerformedBackup: S.Boolean,
-          wantedBeginningDate: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/dedicated/server/{serviceName}/upgrade/schedule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedServerUpgradeScheduleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/reboot", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RebootDedicatedServerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/ipmi/resetInterface",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ResetDedicatedServerFeaturesIpmiInterfaceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/ipmi/resetSessions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ResetDedicatedServerFeaturesIpmiSessionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          virtualNetworkInterface: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/ola/reset", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ResetDedicatedServerOlaRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/bmc/restart",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartDedicatedServerFeaturesBmcRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/bmc/revokeSessions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeDedicatedServerFeaturesBmcSessionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/spla/{id}/revoke",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeDedicatedServerSplaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customHostname: S.optional(S.NullOr(S.String)),
-          diskGroupId: S.optional(S.NullOr(S.Number)),
-          noRaid: S.optional(S.NullOr(S.Boolean)),
-          postInstallationScriptLink: S.optional(S.NullOr(S.String)),
-          postInstallationScriptReturn: S.optional(S.NullOr(S.String)),
-          softRaidDevices: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "DedicatedServerInstallCustom",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeSafeKeyValueString",
-      });
-    case 5:
-      return S.Array(__S(316, __c39, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          details: S.optional(__S(315, __c39, 3)),
-          partitionSchemeName: S.optional(S.String),
-          templateName: S.String,
-          userMetadata: S.optional(__S(317, __c39, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/install/start",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "StartDedicatedServerInstallRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/terminate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "TerminateDedicatedServerRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ttl: S.optional(S.Number),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/bmc/test",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TestDedicatedServerFeaturesBmcRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ttl: S.Number,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/server/{serviceName}/features/ipmi/test",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TestDedicatedServerFeaturesIpmiRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

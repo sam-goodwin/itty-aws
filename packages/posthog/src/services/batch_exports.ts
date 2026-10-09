@@ -1824,8 +1824,8 @@ export const batchExportsBackfillsCancelCreate: API.OperationMethod<
   BatchExportsBackfillsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<BatchExportsBackfillsCancelCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BatchExportsBackfillsCancelCreateResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<BatchExportsBackfillsCancelCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BatchExportsBackfillsCancelCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1838,8 +1838,8 @@ export const batchExportsDestroy: API.OperationMethod<
   BatchExportsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchExportsDestroyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BatchExportsDestroyResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<BatchExportsDestroyRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<BatchExportsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1853,8 +1853,8 @@ export const batchExportsRunsCancelCreate: API.OperationMethod<
   BatchExportsRunsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BatchExportsRunsCancelCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BatchExportsRunsCancelCreateResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<BatchExportsRunsCancelCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BatchExportsRunsCancelCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1868,8 +1868,8 @@ export const batchExportsRunsRetryCreate: API.OperationMethod<
   BatchExportsRunsRetryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchExportsRunsRetryCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BatchExportsRunsRetryCreateResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<BatchExportsRunsRetryCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BatchExportsRunsRetryCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1883,8 +1883,8 @@ export const batchExportsUnpauseCreate: API.OperationMethod<
   BatchExportsUnpauseCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BatchExportsUnpauseCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BatchExportsUnpauseCreateResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<BatchExportsUnpauseCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BatchExportsUnpauseCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1897,8 +1897,8 @@ export const createBatchExport: API.OperationMethod<
   CreateBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateBatchExportRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BatchExportOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateBatchExportRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<BatchExportOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1912,8 @@ export const createBatchExportsBackfill: API.OperationMethod<
   CreateBatchExportsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateBatchExportsBackfillRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<BatchExportBackfill>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateBatchExportsBackfillRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<BatchExportBackfill>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1927,8 +1927,8 @@ export const createBatchExportsPause: API.OperationMethod<
   CreateBatchExportsPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateBatchExportsPauseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateBatchExportsPauseResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateBatchExportsPauseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBatchExportsPauseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1941,8 @@ export const createBatchExportsRunTestStep: API.OperationMethod<
   CreateBatchExportsRunTestStepError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateBatchExportsRunTestStepRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateBatchExportsRunTestStepResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateBatchExportsRunTestStepRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<CreateBatchExportsRunTestStepResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1959,8 +1959,8 @@ export const createBatchExportsRunTestStepNew: API.OperationMethod<
   CreateBatchExportsRunTestStepNewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1974,8 +1974,8 @@ export const fileDownloadBatchExportsCancelCreate: API.OperationMethod<
   FileDownloadBatchExportsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1989,8 +1989,8 @@ export const fileDownloadBatchExportsCountRowsCreate: API.OperationMethod<
   FileDownloadBatchExportsCountRowsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<FileDownloadBatchExportsCountRowsCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<FileDownloadCountRowsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<FileDownloadBatchExportsCountRowsCreateRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<FileDownloadCountRowsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2004,8 +2004,8 @@ export const fileDownloadBatchExportsCreate: API.OperationMethod<
   FileDownloadBatchExportsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<FileDownloadBatchExportsCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileDownloadBatchExportsCreateResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<FileDownloadBatchExportsCreateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<FileDownloadBatchExportsCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2019,8 +2019,8 @@ export const fileDownloadBatchExportsDownloadRetrieve: API.OperationMethod<
   FileDownloadBatchExportsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2033,8 @@ export const fileDownloadBatchExportsList: API.OperationMethod<
   FileDownloadBatchExportsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<FileDownloadBatchExportsListRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<PaginatedListOutputList>,
+  input: __S(128, __c8, 0) as any as S.Schema<FileDownloadBatchExportsListRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<PaginatedListOutputList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2047,8 +2047,8 @@ export const fileDownloadBatchExportsLogsRetrieve: API.OperationMethod<
   FileDownloadBatchExportsLogsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2062,8 +2062,8 @@ export const fileDownloadBatchExportsRetrieve: API.OperationMethod<
   FileDownloadBatchExportsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<FileDownloadBatchExportsRetrieveRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<FileDownloadBatchExportsRetrieveResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<FileDownloadBatchExportsRetrieveRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<FileDownloadBatchExportsRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2076,8 @@ export const getBatchExport: API.OperationMethod<
   GetBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetBatchExportRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BatchExportOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetBatchExportRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<BatchExportOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2091,8 +2091,8 @@ export const getBatchExportsBackfill: API.OperationMethod<
   GetBatchExportsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetBatchExportsBackfillRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<BatchExportBackfill>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetBatchExportsBackfillRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<BatchExportBackfill>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2105,8 @@ export const getBatchExportsLog: API.OperationMethod<
   GetBatchExportsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetBatchExportsLogRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetBatchExportsLogResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetBatchExportsLogRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetBatchExportsLogResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2119,8 +2119,8 @@ export const getBatchExportsRun: API.OperationMethod<
   GetBatchExportsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetBatchExportsRunRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<BatchExportRun>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetBatchExportsRunRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<BatchExportRun>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const getBatchExportsRunsLog: API.OperationMethod<
   GetBatchExportsRunsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetBatchExportsRunsLogRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetBatchExportsRunsLogResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetBatchExportsRunsLogRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetBatchExportsRunsLogResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2147,8 @@ export const getBatchExportsTest: API.OperationMethod<
   GetBatchExportsTestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetBatchExportsTestRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetBatchExportsTestResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetBatchExportsTestRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetBatchExportsTestResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2161,8 @@ export const listBatchExports: API.OperationMethod<
   ListBatchExportsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListBatchExportsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<PaginatedBatchExportListOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListBatchExportsRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<PaginatedBatchExportListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2176,8 @@ export const listBatchExportsBackfills: API.OperationMethod<
   ListBatchExportsBackfillsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListBatchExportsBackfillsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<PaginatedBatchExportBackfillList>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListBatchExportsBackfillsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<PaginatedBatchExportBackfillList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2190,8 @@ export const listBatchExportsRuns: API.OperationMethod<
   ListBatchExportsRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListBatchExportsRunsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PaginatedBatchExportRunList>,
+  input: __S(305, __c19, 1) as any as S.Schema<ListBatchExportsRunsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<PaginatedBatchExportRunList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2204,8 +2204,8 @@ export const updateBatchExport: API.OperationMethod<
   UpdateBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UpdateBatchExportRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BatchExportOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<UpdateBatchExportRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<BatchExportOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const updateBatchExportsPartial: API.OperationMethod<
   UpdateBatchExportsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateBatchExportsPartialRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BatchExportOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<UpdateBatchExportsPartialRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<BatchExportOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2229,366 +2229,6 @@ export const updateBatchExportsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          batch_export_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          start_at: S.optional(S.NullOr(S.String)),
-          end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          finished_at: S.optional(S.NullOr(S.String)),
-          total_records_count: S.optional(S.NullOr(S.Number)),
-          adjusted_start_at: S.optional(S.NullOr(S.String)),
-          team: S.optional(S.Number),
-          batch_export: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/cancel/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchExportsBackfillsCancelCreateRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchExportsBackfillsCancelCreateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/batch_exports/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchExportsDestroyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchExportsDestroyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          batch_export_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
-          records_completed: S.optional(S.NullOr(S.Number)),
-          records_failed: S.optional(S.NullOr(S.Number)),
-          latest_error: S.optional(S.NullOr(S.String)),
-          data_interval_start: S.optional(S.NullOr(S.String)),
-          cursor: S.optional(S.NullOr(S.String)),
-          finished_at: S.optional(S.NullOr(S.String)),
-          records_total_count: S.optional(S.NullOr(S.Number)),
-          bytes_exported: S.optional(S.NullOr(S.Number)),
-          batch_export_on_demand: S.optional(S.NullOr(S.String)),
-          backfill: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/cancel/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchExportsRunsCancelCreateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          batch_export_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
-          records_completed: S.optional(S.NullOr(S.Number)),
-          records_failed: S.optional(S.NullOr(S.Number)),
-          latest_error: S.optional(S.NullOr(S.String)),
-          data_interval_start: S.optional(S.NullOr(S.String)),
-          cursor: S.optional(S.NullOr(S.String)),
-          finished_at: S.optional(S.NullOr(S.String)),
-          records_total_count: S.optional(S.NullOr(S.Number)),
-          bytes_exported: S.optional(S.NullOr(S.Number)),
-          batch_export_on_demand: S.optional(S.NullOr(S.String)),
-          backfill: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/retry/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchExportsRunsRetryCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          backfill: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/batch_exports/{id}/unpause/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchExportsUnpauseCreateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          key: S.String,
-          matcher: S.String,
-          pattern: S.String,
-        }),
-      ).annotate({ identifier: "CustomBotCondition" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.NullOr(S.String)),
-          combiner: S.String,
-          id: S.String,
-          items: __S(8, __c1, 0),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "CustomBotRule" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          key: S.optional(S.String),
-          op: S.optional(S.String),
-          value: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "CustomChannelCondition" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel_type: S.optional(S.String),
-          combiner: S.optional(S.String),
-          id: S.optional(S.String),
-          items: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CustomChannelRule" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          distinct_id_field: S.optional(S.String),
-          id_field: S.optional(S.String),
-          table_name: S.optional(S.String),
-          timestamp_field: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataWarehouseEventsModifier",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
-          bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
-          convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
-          cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(__S(10, __c1, 2))),
-          customChannelTypeRules: S.optional(S.NullOr(__S(15, __c1, 7))),
-          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(17, __c2, 1))),
-          debug: S.optional(S.NullOr(S.Boolean)),
-          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
-          inCohortVia: S.optional(S.NullOr(S.String)),
-          inlineCohortCalculation: S.optional(S.NullOr(S.String)),
-          materializationMode: S.optional(S.NullOr(S.String)),
-          materializedColumnsOptimizationMode: S.optional(S.NullOr(S.String)),
-          mergeFederatedAggregateJoins: S.optional(S.NullOr(S.Boolean)),
-          optimizeJoinedFilters: S.optional(S.NullOr(S.Boolean)),
-          optimizeProjections: S.optional(S.NullOr(S.Boolean)),
-          parserMode: S.optional(S.NullOr(S.String)),
-          personIdPushdown: S.optional(S.NullOr(S.Boolean)),
-          personsArgMaxVersion: S.optional(S.NullOr(S.String)),
-          personsJoinMode: S.optional(S.NullOr(S.String)),
-          personsOnEventsMode: S.optional(S.NullOr(S.String)),
-          propertyGroupsMode: S.optional(S.NullOr(S.String)),
-          pushDownPredicates: S.optional(S.NullOr(S.Boolean)),
-          s3TableUseInvalidColumns: S.optional(S.NullOr(S.Boolean)),
-          sessionIdPushdown: S.optional(S.NullOr(S.Boolean)),
-          sessionPropertyPreAggregation: S.optional(S.NullOr(S.Boolean)),
-          sessionTableVersion: S.optional(S.NullOr(S.String)),
-          sessionsV2JoinMode: S.optional(S.NullOr(S.String)),
-          timings: S.optional(S.NullOr(S.Boolean)),
-          typeAwareCastSimplification: S.optional(S.NullOr(S.Boolean)),
-          useMaterializedViews: S.optional(S.NullOr(S.Boolean)),
-          useNewEventsSchema: S.optional(S.NullOr(S.Boolean)),
-          usePreaggregatedIntermediateResults: S.optional(S.NullOr(S.Boolean)),
-          usePreaggregatedTableTransforms: S.optional(S.NullOr(S.Boolean)),
-          useWebAnalyticsPreAggregatedTables: S.optional(S.NullOr(S.Boolean)),
-          webAnalyticsFirstPageviewFilters: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "HogQLQueryModifiers" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          model: S.optional(S.String),
-          destination: S.Unknown,
-          interval: S.String,
-          paused: S.optional(S.Boolean),
-          hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
-          filters: S.optional(S.Unknown),
-          timezone: S.optional(S.NullOr(S.String)),
-          offset_day: S.optional(S.NullOr(S.Number)),
-          offset_hour: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/batch_exports/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateBatchExportRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          config: S.optional(S.Unknown),
-          integration: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "BatchExportDestinationOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
-          records_completed: S.optional(S.NullOr(S.Number)),
-          records_failed: S.optional(S.NullOr(S.Number)),
-          latest_error: S.optional(S.NullOr(S.String)),
-          data_interval_start: S.optional(S.NullOr(S.String)),
-          cursor: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          finished_at: S.optional(S.NullOr(S.String)),
-          last_updated_at: S.optional(S.String),
-          records_total_count: S.optional(S.NullOr(S.Number)),
-          bytes_exported: S.optional(S.NullOr(S.Number)),
-          batch_export: S.optional(S.NullOr(S.String)),
-          batch_export_on_demand: S.optional(S.NullOr(S.String)),
-          backfill: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "BatchExportRun" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          team_id: S.optional(S.Number),
-          name: S.optional(S.String),
-          model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(20, __c2, 4)),
-          interval: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          last_updated_at: S.optional(S.String),
-          last_paused_at: S.optional(S.NullOr(S.String)),
-          start_at: S.optional(S.NullOr(S.String)),
-          end_at: S.optional(S.NullOr(S.String)),
-          latest_runs: S.optional(__S(22, __c2, 6)),
-          hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
-          schema: S.optional(S.Unknown),
-          filters: S.optional(S.Unknown),
-          timezone: S.optional(S.NullOr(S.String)),
-          offset_day: S.optional(S.NullOr(S.Number)),
-          offset_hour: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "BatchExportOutput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          batch_export_id: S.String.pipe(T.Label()),
-          start_at: S.optional(S.NullOr(S.String)),
-          end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          finished_at: S.optional(S.NullOr(S.String)),
-          total_records_count: S.optional(S.NullOr(S.Number)),
-          adjusted_start_at: S.optional(S.NullOr(S.String)),
-          team: S.optional(S.Number),
-          batch_export: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBatchExportsBackfillRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          total_runs: S.optional(S.NullOr(S.Number)),
-          finished_runs: S.optional(S.NullOr(S.Number)),
-          progress: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "BatchExportBackfillProgress",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          progress: S.optional(S.NullOr(__S(25, __c3, 1))),
-          start_at: S.optional(S.NullOr(S.String)),
-          end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          created_at: S.optional(S.String),
-          finished_at: S.optional(S.NullOr(S.String)),
-          last_updated_at: S.optional(S.String),
-          total_records_count: S.optional(S.NullOr(S.Number)),
-          adjusted_start_at: S.optional(S.NullOr(S.String)),
-          team: S.optional(S.Number),
-          batch_export: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchExportBackfill" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2603,34 +2243,29 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBatchExportsPauseRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateBatchExportsPauseResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          config: S.optional(S.Unknown),
-          integration: S.optional(S.NullOr(S.Number)),
-          integration_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "BatchExportDestination" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(29, __c3, 5)),
+          destination: S.optional(__S(32, __c2, 0)),
           interval: S.optional(S.String),
           paused: S.optional(S.Boolean),
           last_paused_at: S.optional(S.NullOr(S.String)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -2645,20 +2280,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBatchExportsRunTestStepRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          config: S.optional(S.Unknown),
+          integration: S.optional(S.NullOr(S.Number)),
+          integration_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "BatchExportDestination" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(29, __c3, 5)),
+          destination: S.optional(__S(32, __c2, 0)),
           interval: S.optional(S.String),
           paused: S.optional(S.Boolean),
           last_paused_at: S.optional(S.NullOr(S.String)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -2692,13 +2344,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsCancelCreateRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           model: S.String,
           hogql_query: S.String,
-          hogql_modifiers: S.optional(__S(18, __c2, 2)),
+          hogql_modifiers: S.optional(__S(491, __c30, 11)),
           data_interval_start: S.optional(S.String),
           data_interval_end: S.optional(S.String),
         }).pipe(
@@ -2711,7 +2367,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsCountRowsCreateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -2719,7 +2375,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadCountRowsResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2734,7 +2394,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsCreateRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2749,7 +2413,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsDownloadRetrieveRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2765,29 +2433,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsListRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           status: S.String,
         }),
       ).annotate({ identifier: "ListOutput" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(39, __c4, 7),
+          results: __S(130, __c8, 2),
         }),
       ).annotate({ identifier: "PaginatedListOutputList" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2808,7 +2476,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsLogsRetrieveRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2823,11 +2495,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "FileDownloadBatchExportsRetrieveRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "FileDownloadBatchExportsRetrieveResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2840,7 +2516,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBatchExportRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2856,7 +2536,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBatchExportsBackfillRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2877,7 +2561,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBatchExportsLogRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2895,7 +2583,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2919,7 +2607,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetBatchExportsRunsLogRequest",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2933,7 +2625,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetBatchExportsTestRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2943,20 +2639,24 @@ function __c6(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/batch_exports/", code: 200 }),
         ),
       ).annotate({ identifier: "ListBatchExportsRequest" });
-    case 3:
-      return S.Array(__S(23, __c2, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(529, __c33, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(51, __c6, 3)),
+          results: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportListOutput",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2973,21 +2673,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListBatchExportsBackfillsRequest",
       });
-    case 6:
-      return S.Array(__S(26, __c3, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(561, __c35, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(54, __c6, 6)),
+          results: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportBackfillList",
       });
   }
 }
-function __c7(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -3002,7 +2702,7 @@ function __c7(j: number): any {
           end: S.optional(S.String.pipe(T.Query())),
           ordering: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          status: S.optional(__S(304, __c19, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3018,12 +2718,16 @@ function __c7(j: number): any {
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(22, __c2, 6)),
+          results: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportRunList",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3034,7 +2738,7 @@ function __c7(j: number): any {
           interval: S.String,
           paused: S.optional(S.Boolean),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -3047,7 +2751,47 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBatchExportRequest" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          batch_export_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          start_at: S.optional(S.NullOr(S.String)),
+          end_at: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          finished_at: S.optional(S.NullOr(S.String)),
+          total_records_count: S.optional(S.NullOr(S.Number)),
+          adjusted_start_at: S.optional(S.NullOr(S.String)),
+          team: S.optional(S.Number),
+          batch_export: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/cancel/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchExportsBackfillsCancelCreateRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BatchExportsBackfillsCancelCreateResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3058,7 +2802,7 @@ function __c7(j: number): any {
           interval: S.optional(S.String),
           paused: S.optional(S.Boolean),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18, __c2, 2))),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -3075,7 +2819,374 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/batch_exports/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchExportsDestroyRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BatchExportsDestroyResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          batch_export_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          data_interval_end: S.optional(S.String),
+          status: S.optional(S.String),
+          records_completed: S.optional(S.NullOr(S.Number)),
+          records_failed: S.optional(S.NullOr(S.Number)),
+          latest_error: S.optional(S.NullOr(S.String)),
+          data_interval_start: S.optional(S.NullOr(S.String)),
+          cursor: S.optional(S.NullOr(S.String)),
+          finished_at: S.optional(S.NullOr(S.String)),
+          records_total_count: S.optional(S.NullOr(S.Number)),
+          bytes_exported: S.optional(S.NullOr(S.Number)),
+          batch_export_on_demand: S.optional(S.NullOr(S.String)),
+          backfill: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/cancel/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchExportsRunsCancelCreateRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          batch_export_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          data_interval_end: S.optional(S.String),
+          status: S.optional(S.String),
+          records_completed: S.optional(S.NullOr(S.Number)),
+          records_failed: S.optional(S.NullOr(S.Number)),
+          latest_error: S.optional(S.NullOr(S.String)),
+          data_interval_start: S.optional(S.NullOr(S.String)),
+          cursor: S.optional(S.NullOr(S.String)),
+          finished_at: S.optional(S.NullOr(S.String)),
+          records_total_count: S.optional(S.NullOr(S.Number)),
+          bytes_exported: S.optional(S.NullOr(S.Number)),
+          batch_export_on_demand: S.optional(S.NullOr(S.String)),
+          backfill: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/retry/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchExportsRunsRetryCreateRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          backfill: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/batch_exports/{id}/unpause/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchExportsUnpauseCreateRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          model: S.optional(S.String),
+          destination: S.Unknown,
+          interval: S.String,
+          paused: S.optional(S.Boolean),
+          hogql_query: S.optional(S.NullOr(S.String)),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
+          filters: S.optional(S.Unknown),
+          timezone: S.optional(S.NullOr(S.String)),
+          offset_day: S.optional(S.NullOr(S.Number)),
+          offset_hour: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/batch_exports/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateBatchExportRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          key: S.String,
+          matcher: S.String,
+          pattern: S.String,
+        }),
+      ).annotate({ identifier: "CustomBotCondition" });
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.NullOr(S.String)),
+          combiner: S.String,
+          id: S.String,
+          items: __S(481, __c30, 1),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "CustomBotRule" });
+    case 3:
+      return S.Array(__S(482, __c30, 2));
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          key: S.optional(S.String),
+          op: S.optional(S.String),
+          value: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "CustomChannelCondition" });
+    case 6:
+      return S.Array(__S(485, __c30, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          channel_type: S.optional(S.String),
+          combiner: S.optional(S.String),
+          id: S.optional(S.String),
+          items: S.optional(__S(486, __c30, 6)),
+        }),
+      ).annotate({ identifier: "CustomChannelRule" });
+    case 8:
+      return S.Array(__S(487, __c30, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          distinct_id_field: S.optional(S.String),
+          id_field: S.optional(S.String),
+          table_name: S.optional(S.String),
+          timestamp_field: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataWarehouseEventsModifier",
+      });
+    case 10:
+      return S.Array(__S(489, __c30, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
+          bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
+          convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
+          cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
+          customBotDefinitions: S.optional(S.NullOr(__S(483, __c30, 3))),
+          customChannelTypeRules: S.optional(S.NullOr(__S(488, __c30, 8))),
+          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(490, __c30, 10))),
+          debug: S.optional(S.NullOr(S.Boolean)),
+          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(484, __c30, 4))),
+          formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
+          inCohortVia: S.optional(S.NullOr(S.String)),
+          inlineCohortCalculation: S.optional(S.NullOr(S.String)),
+          materializationMode: S.optional(S.NullOr(S.String)),
+          materializedColumnsOptimizationMode: S.optional(S.NullOr(S.String)),
+          mergeFederatedAggregateJoins: S.optional(S.NullOr(S.Boolean)),
+          optimizeJoinedFilters: S.optional(S.NullOr(S.Boolean)),
+          optimizeProjections: S.optional(S.NullOr(S.Boolean)),
+          parserMode: S.optional(S.NullOr(S.String)),
+          personIdPushdown: S.optional(S.NullOr(S.Boolean)),
+          personsArgMaxVersion: S.optional(S.NullOr(S.String)),
+          personsJoinMode: S.optional(S.NullOr(S.String)),
+          personsOnEventsMode: S.optional(S.NullOr(S.String)),
+          propertyGroupsMode: S.optional(S.NullOr(S.String)),
+          pushDownPredicates: S.optional(S.NullOr(S.Boolean)),
+          s3TableUseInvalidColumns: S.optional(S.NullOr(S.Boolean)),
+          sessionIdPushdown: S.optional(S.NullOr(S.Boolean)),
+          sessionPropertyPreAggregation: S.optional(S.NullOr(S.Boolean)),
+          sessionTableVersion: S.optional(S.NullOr(S.String)),
+          sessionsV2JoinMode: S.optional(S.NullOr(S.String)),
+          timings: S.optional(S.NullOr(S.Boolean)),
+          typeAwareCastSimplification: S.optional(S.NullOr(S.Boolean)),
+          useMaterializedViews: S.optional(S.NullOr(S.Boolean)),
+          useNewEventsSchema: S.optional(S.NullOr(S.Boolean)),
+          usePreaggregatedIntermediateResults: S.optional(S.NullOr(S.Boolean)),
+          usePreaggregatedTableTransforms: S.optional(S.NullOr(S.Boolean)),
+          useWebAnalyticsPreAggregatedTables: S.optional(S.NullOr(S.Boolean)),
+          webAnalyticsFirstPageviewFilters: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "HogQLQueryModifiers" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          data_interval_end: S.optional(S.String),
+          status: S.optional(S.String),
+          records_completed: S.optional(S.NullOr(S.Number)),
+          records_failed: S.optional(S.NullOr(S.Number)),
+          latest_error: S.optional(S.NullOr(S.String)),
+          data_interval_start: S.optional(S.NullOr(S.String)),
+          cursor: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          finished_at: S.optional(S.NullOr(S.String)),
+          last_updated_at: S.optional(S.String),
+          records_total_count: S.optional(S.NullOr(S.Number)),
+          bytes_exported: S.optional(S.NullOr(S.Number)),
+          batch_export: S.optional(S.NullOr(S.String)),
+          batch_export_on_demand: S.optional(S.NullOr(S.String)),
+          backfill: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BatchExportRun" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(496, __c31, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          config: S.optional(S.Unknown),
+          integration: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "BatchExportDestinationOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          team_id: S.optional(S.Number),
+          name: S.optional(S.String),
+          model: S.optional(S.NullOr(S.Unknown)),
+          destination: S.optional(__S(528, __c33, 0)),
+          interval: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          last_updated_at: S.optional(S.String),
+          last_paused_at: S.optional(S.NullOr(S.String)),
+          start_at: S.optional(S.NullOr(S.String)),
+          end_at: S.optional(S.NullOr(S.String)),
+          latest_runs: S.optional(__S(512, __c32, 0)),
+          hogql_query: S.optional(S.NullOr(S.String)),
+          hogql_modifiers: S.optional(S.NullOr(__S(491, __c30, 11))),
+          schema: S.optional(S.Unknown),
+          filters: S.optional(S.Unknown),
+          timezone: S.optional(S.NullOr(S.String)),
+          offset_day: S.optional(S.NullOr(S.Number)),
+          offset_hour: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "BatchExportOutput" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          batch_export_id: S.String.pipe(T.Label()),
+          start_at: S.optional(S.NullOr(S.String)),
+          end_at: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          finished_at: S.optional(S.NullOr(S.String)),
+          total_records_count: S.optional(S.NullOr(S.Number)),
+          adjusted_start_at: S.optional(S.NullOr(S.String)),
+          team: S.optional(S.Number),
+          batch_export: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBatchExportsBackfillRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total_runs: S.optional(S.NullOr(S.Number)),
+          finished_runs: S.optional(S.NullOr(S.Number)),
+          progress: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "BatchExportBackfillProgress",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          progress: S.optional(S.NullOr(__S(560, __c35, 0))),
+          start_at: S.optional(S.NullOr(S.String)),
+          end_at: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          finished_at: S.optional(S.NullOr(S.String)),
+          last_updated_at: S.optional(S.String),
+          total_records_count: S.optional(S.NullOr(S.Number)),
+          adjusted_start_at: S.optional(S.NullOr(S.String)),
+          team: S.optional(S.Number),
+          batch_export: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchExportBackfill" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

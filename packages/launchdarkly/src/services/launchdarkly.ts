@@ -11707,8 +11707,8 @@ export const associateRepositoriesAndProjects: API.OperationMethod<
   AssociateRepositoriesAndProjectsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AssociateRepositoriesAndProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<InsightsRepositoryProjectCollection>,
+  input: __S(14690, __c459, 2) as any as S.Schema<AssociateRepositoriesAndProjectsRequest>,
+  output: __S(14691, __c459, 3) as any as S.Schema<InsightsRepositoryProjectCollection>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11722,8 +11722,8 @@ export const copyFeatureFlag: API.OperationMethod<
   CopyFeatureFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CopyFeatureFlagRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<FeatureFlag>,
+  input: __S(15105, __c472, 1) as any as S.Schema<CopyFeatureFlagRequest>,
+  output: __S(15353, __c479, 25) as any as S.Schema<FeatureFlag>,
   errors: [BadRequest, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11742,8 +11742,8 @@ export const createAnnouncementPublic: API.OperationMethod<
   CreateAnnouncementPublicError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateAnnouncementPublicRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<AnnouncementResponse>,
+  input: __S(15936, __c498, 0) as any as S.Schema<CreateAnnouncementPublicRequest>,
+  output: __S(15976, __c499, 8) as any as S.Schema<AnnouncementResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11757,8 +11757,8 @@ export const createApprovalRequest: API.OperationMethod<
   CreateApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateApprovalRequestRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ApprovalRequestResponse>,
+  input: __S(16320, __c510, 0) as any as S.Schema<CreateApprovalRequestRequest>,
+  output: __S(16352, __c511, 0) as any as S.Schema<ApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11776,8 +11776,8 @@ export const createApprovalRequestApply: API.OperationMethod<
   CreateApprovalRequestApplyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateApprovalRequestApplyRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ApprovalRequestResponse>,
+  input: __S(16832, __c526, 0) as any as S.Schema<CreateApprovalRequestApplyRequest>,
+  output: __S(16352, __c511, 0) as any as S.Schema<ApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11795,8 +11795,8 @@ export const createApprovalRequestReview: API.OperationMethod<
   CreateApprovalRequestReviewError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateApprovalRequestReviewRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ApprovalRequestResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateApprovalRequestReviewRequest>,
+  output: __S(16352, __c511, 0) as any as S.Schema<ApprovalRequestResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11810,8 +11810,8 @@ export const createBigSegmentExport: API.OperationMethod<
   CreateBigSegmentExportError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateBigSegmentExportRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CreateBigSegmentExportResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateBigSegmentExportRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateBigSegmentExportResponse>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11825,8 +11825,8 @@ export const createBigSegmentImport: API.OperationMethod<
   CreateBigSegmentImportError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateBigSegmentImportRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CreateBigSegmentImportResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CreateBigSegmentImportRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateBigSegmentImportResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11845,8 +11845,8 @@ export const createBigSegmentStoreIntegration: API.OperationMethod<
   CreateBigSegmentStoreIntegrationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateBigSegmentStoreIntegrationRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BigSegmentStoreIntegration>,
+  input: __S(1760, __c55, 0) as any as S.Schema<CreateBigSegmentStoreIntegrationRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<BigSegmentStoreIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11860,8 +11860,8 @@ export const createDeploymentEvent: API.OperationMethod<
   CreateDeploymentEventError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateDeploymentEventRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CreateDeploymentEventResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateDeploymentEventRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateDeploymentEventResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11875,8 +11875,8 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateExperimentRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<Experiment>,
+  input: __S(2760, __c86, 8) as any as S.Schema<CreateExperimentRequest>,
+  output: __S(2801, __c87, 17) as any as S.Schema<Experiment>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11895,8 +11895,8 @@ export const createFlagImportConfiguration: API.OperationMethod<
   CreateFlagImportConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreateFlagImportConfigurationRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<FlagImportIntegration>,
+  input: __S(3488, __c109, 0) as any as S.Schema<CreateFlagImportConfigurationRequest>,
+  output: __S(3524, __c110, 4) as any as S.Schema<FlagImportIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11910,8 +11910,8 @@ export const createFlagLink: API.OperationMethod<
   CreateFlagLinkError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateFlagLinkRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<FlagLinkRep>,
+  input: __S(3936, __c123, 0) as any as S.Schema<CreateFlagLinkRequest>,
+  output: __S(3970, __c124, 2) as any as S.Schema<FlagLinkRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11930,8 +11930,8 @@ export const createInsightGroup: API.OperationMethod<
   CreateInsightGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<CreateInsightGroupRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<InsightGroup>,
+  input: __S(4384, __c137, 0) as any as S.Schema<CreateInsightGroupRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<InsightGroup>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11950,8 +11950,8 @@ export const createIntegrationConfiguration: API.OperationMethod<
   CreateIntegrationConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateIntegrationConfigurationRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<IntegrationConfigurationsRep>,
+  input: __S(4930, __c154, 2) as any as S.Schema<CreateIntegrationConfigurationRequest>,
+  output: __S(4972, __c155, 12) as any as S.Schema<IntegrationConfigurationsRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11969,8 +11969,8 @@ export const createIntegrationDeliveryConfiguration: API.OperationMethod<
   CreateIntegrationDeliveryConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<CreateIntegrationDeliveryConfigurationRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<IntegrationDeliveryConfiguration>,
+  input: __S(5440, __c170, 0) as any as S.Schema<CreateIntegrationDeliveryConfigurationRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<IntegrationDeliveryConfiguration>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -11989,8 +11989,8 @@ export const createIpAllowlistEntry: API.OperationMethod<
   CreateIpAllowlistEntryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<CreateIpAllowlistEntryRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<IpAllowlistEntryResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<CreateIpAllowlistEntryRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<IpAllowlistEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12004,8 +12004,8 @@ export const createLayer: API.OperationMethod<
   CreateLayerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateLayerRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<LayerRep>,
+  input: __S(6400, __c200, 0) as any as S.Schema<CreateLayerRequest>,
+  output: __S(6436, __c201, 4) as any as S.Schema<LayerRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12019,8 +12019,8 @@ export const createMember: API.OperationMethod<
   CreateMemberError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<CreateMemberRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<Members>,
+  input: __S(6882, __c215, 2) as any as S.Schema<CreateMemberRequest>,
+  output: __S(6913, __c216, 1) as any as S.Schema<Members>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12039,8 +12039,8 @@ export const createMemberTeam: API.OperationMethod<
   CreateMemberTeamError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<CreateMemberTeamRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<Member>,
+  input: __S(7360, __c230, 0) as any as S.Schema<CreateMemberTeamRequest>,
+  output: __S(6948, __c217, 4) as any as S.Schema<Member>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12054,8 +12054,8 @@ export const createMetricGroup: API.OperationMethod<
   CreateMetricGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<CreateMetricGroupRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<MetricGroupRep>,
+  input: __S(7714, __c241, 2) as any as S.Schema<CreateMetricGroupRequest>,
+  output: __S(7777, __c243, 1) as any as S.Schema<MetricGroupRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12069,8 +12069,8 @@ export const createOAuth2Client: API.OperationMethod<
   CreateOAuth2ClientError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<CreateOAuth2ClientRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Client>,
+  input: __S(8160, __c255, 0) as any as S.Schema<CreateOAuth2ClientRequest>,
+  output: __S(8192, __c256, 0) as any as S.Schema<Client>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12084,8 +12084,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<CreateProjectRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<ProjectRep>,
+  input: __S(8707, __c272, 3) as any as S.Schema<CreateProjectRequest>,
+  output: __S(8832, __c276, 0) as any as S.Schema<ProjectRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12099,8 +12099,8 @@ export const createReleaseForFlag: API.OperationMethod<
   CreateReleaseForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<CreateReleaseForFlagRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<Release>,
+  input: __S(9248, __c289, 0) as any as S.Schema<CreateReleaseForFlagRequest>,
+  output: __S(9349, __c292, 5) as any as S.Schema<Release>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12114,8 +12114,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Integration>,
+  input: __S(9760, __c305, 0) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(9795, __c306, 3) as any as S.Schema<Integration>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12129,8 +12129,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CreateTeamRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<Team>,
+  input: __S(10274, __c321, 2) as any as S.Schema<CreateTeamRequest>,
+  output: __S(10434, __c326, 2) as any as S.Schema<Team>,
   errors: [BadRequest, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12144,8 +12144,8 @@ export const createTeamMember: API.OperationMethod<
   CreateTeamMemberError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<CreateTeamMemberRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<TeamImportsRep>,
+  input: __S(10784, __c337, 0) as any as S.Schema<CreateTeamMemberRequest>,
+  output: __S(10787, __c337, 3) as any as S.Schema<TeamImportsRep>,
   errors: [BadRequest, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12159,8 +12159,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CreateTokenRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<Token>,
+  input: __S(11136, __c348, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(11168, __c349, 0) as any as S.Schema<Token>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12174,8 +12174,8 @@ export const createTriggerWorkflow: API.OperationMethod<
   CreateTriggerWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<CreateTriggerWorkflowRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<TriggerWorkflowRep>,
+  input: __S(11520, __c360, 0) as any as S.Schema<CreateTriggerWorkflowRequest>,
+  output: __S(11554, __c361, 2) as any as S.Schema<TriggerWorkflowRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12189,8 +12189,8 @@ export const createView: API.OperationMethod<
   CreateViewError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CreateViewRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<View>,
+  input: __S(11968, __c374, 0) as any as S.Schema<CreateViewRequest>,
+  output: __S(12070, __c377, 6) as any as S.Schema<View>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12204,8 +12204,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<Webhook>,
+  input: __S(12544, __c392, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12219,8 +12219,8 @@ export const createWorkflowTemplate: API.OperationMethod<
   CreateWorkflowTemplateError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<CreateWorkflowTemplateRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<WorkflowTemplateOutput>,
+  input: __S(12928, __c404, 0) as any as S.Schema<CreateWorkflowTemplateRequest>,
+  output: __S(12992, __c406, 0) as any as S.Schema<WorkflowTemplateOutput>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12234,8 +12234,8 @@ export const deleteAdaptiveTrigger: API.OperationMethod<
   DeleteAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<DeleteAdaptiveTriggerRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteAdaptiveTriggerResponse>,
+  input: __S(13376, __c418, 0) as any as S.Schema<DeleteAdaptiveTriggerRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAdaptiveTriggerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12249,8 +12249,8 @@ export const deleteAgentGraph: API.OperationMethod<
   DeleteAgentGraphError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<DeleteAgentGraphRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteAgentGraphResponse>,
+  input: __S(13760, __c430, 0) as any as S.Schema<DeleteAgentGraphRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAgentGraphResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12264,8 +12264,8 @@ export const deleteAgentOptimization: API.OperationMethod<
   DeleteAgentOptimizationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DeleteAgentOptimizationRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<DeleteAgentOptimizationResponse>,
+  input: __S(14144, __c442, 0) as any as S.Schema<DeleteAgentOptimizationRequest>,
+  output: __S(14176, __c443, 0) as any as S.Schema<DeleteAgentOptimizationResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12279,8 +12279,8 @@ export const deleteAgentOptimizationRun: API.OperationMethod<
   DeleteAgentOptimizationRunError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<DeleteAgentOptimizationRunRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteAgentOptimizationRunResponse>,
+  input: __S(14336, __c448, 0) as any as S.Schema<DeleteAgentOptimizationRunRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteAgentOptimizationRunResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12294,8 +12294,8 @@ export const deleteAgentSkill: API.OperationMethod<
   DeleteAgentSkillError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<DeleteAgentSkillRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteAgentSkillResponse>,
+  input: __S(14400, __c450, 0) as any as S.Schema<DeleteAgentSkillRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAgentSkillResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12309,8 +12309,8 @@ export const deleteAIConfig: API.OperationMethod<
   DeleteAIConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<DeleteAIConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteAIConfigResponse>,
+  input: __S(14432, __c451, 0) as any as S.Schema<DeleteAIConfigRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAIConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12324,8 +12324,8 @@ export const deleteAIConfigVariation: API.OperationMethod<
   DeleteAIConfigVariationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<DeleteAIConfigVariationRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<DeleteAIConfigVariationResponse>,
+  input: __S(14464, __c452, 0) as any as S.Schema<DeleteAIConfigVariationRequest>,
+  output: __S(14176, __c443, 0) as any as S.Schema<DeleteAIConfigVariationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12339,8 +12339,8 @@ export const deleteAITool: API.OperationMethod<
   DeleteAIToolError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<DeleteAIToolRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteAIToolResponse>,
+  input: __S(14496, __c453, 0) as any as S.Schema<DeleteAIToolRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAIToolResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12354,8 +12354,8 @@ export const deleteAnnouncementPublic: API.OperationMethod<
   DeleteAnnouncementPublicError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<DeleteAnnouncementPublicRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteAnnouncementPublicResponse>,
+  input: __S(14528, __c454, 0) as any as S.Schema<DeleteAnnouncementPublicRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteAnnouncementPublicResponse>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12369,8 +12369,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(14560, __c455, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12384,8 +12384,8 @@ export const deleteApplicationVersion: API.OperationMethod<
   DeleteApplicationVersionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<DeleteApplicationVersionRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteApplicationVersionResponse>,
+  input: __S(14592, __c456, 0) as any as S.Schema<DeleteApplicationVersionRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteApplicationVersionResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12399,8 +12399,8 @@ export const deleteApprovalRequest: API.OperationMethod<
   DeleteApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<DeleteApprovalRequestRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteApprovalRequestResponse>,
+  input: __S(14624, __c457, 0) as any as S.Schema<DeleteApprovalRequestRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteApprovalRequestResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12414,8 +12414,8 @@ export const deleteApprovalRequestForFlag: API.OperationMethod<
   DeleteApprovalRequestForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<DeleteApprovalRequestForFlagRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteApprovalRequestForFlagResponse>,
+  input: __S(14656, __c458, 0) as any as S.Schema<DeleteApprovalRequestForFlagRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteApprovalRequestForFlagResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12433,8 +12433,8 @@ export const deleteBigSegmentStoreIntegration: API.OperationMethod<
   DeleteBigSegmentStoreIntegrationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<DeleteBigSegmentStoreIntegrationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteBigSegmentStoreIntegrationResponse>,
+  input: __S(14784, __c462, 0) as any as S.Schema<DeleteBigSegmentStoreIntegrationRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteBigSegmentStoreIntegrationResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12448,8 +12448,8 @@ export const deleteBranches: API.OperationMethod<
   DeleteBranchesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<DeleteBranchesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteBranchesResponse>,
+  input: __S(14816, __c463, 0) as any as S.Schema<DeleteBranchesRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteBranchesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12463,8 +12463,8 @@ export const deleteCustomRole: API.OperationMethod<
   DeleteCustomRoleError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<DeleteCustomRoleRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteCustomRoleResponse>,
+  input: __S(14848, __c464, 0) as any as S.Schema<DeleteCustomRoleRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteCustomRoleResponse>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12478,8 +12478,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DeleteDestinationRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteDestinationResponse>,
+  input: __S(14880, __c465, 0) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteDestinationResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12493,8 +12493,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(14912, __c466, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12508,8 +12508,8 @@ export const deleteFeatureFlag: API.OperationMethod<
   DeleteFeatureFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<DeleteFeatureFlagRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteFeatureFlagResponse>,
+  input: __S(14944, __c467, 0) as any as S.Schema<DeleteFeatureFlagRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteFeatureFlagResponse>,
   errors: [NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12527,8 +12527,8 @@ export const deleteFlagConfigScheduledChanges: API.OperationMethod<
   DeleteFlagConfigScheduledChangesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<DeleteFlagConfigScheduledChangesRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteFlagConfigScheduledChangesResponse>,
+  input: __S(14976, __c468, 0) as any as S.Schema<DeleteFlagConfigScheduledChangesRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteFlagConfigScheduledChangesResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12542,8 +12542,8 @@ export const deleteFlagFollower: API.OperationMethod<
   DeleteFlagFollowerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<DeleteFlagFollowerRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteFlagFollowerResponse>,
+  input: __S(15008, __c469, 0) as any as S.Schema<DeleteFlagFollowerRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteFlagFollowerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12561,8 +12561,8 @@ export const deleteFlagImportConfiguration: API.OperationMethod<
   DeleteFlagImportConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<DeleteFlagImportConfigurationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteFlagImportConfigurationResponse>,
+  input: __S(15040, __c470, 0) as any as S.Schema<DeleteFlagImportConfigurationRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteFlagImportConfigurationResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12576,8 +12576,8 @@ export const deleteFlagLink: API.OperationMethod<
   DeleteFlagLinkError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<DeleteFlagLinkRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteFlagLinkResponse>,
+  input: __S(15072, __c471, 0) as any as S.Schema<DeleteFlagLinkRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteFlagLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12591,8 +12591,8 @@ export const deleteInsightGroup: API.OperationMethod<
   DeleteInsightGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<DeleteInsightGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteInsightGroupResponse>,
+  input: __S(15616, __c488, 0) as any as S.Schema<DeleteInsightGroupRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteInsightGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12610,8 +12610,8 @@ export const deleteIntegrationConfiguration: API.OperationMethod<
   DeleteIntegrationConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DeleteIntegrationConfigurationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteIntegrationConfigurationResponse>,
+  input: __S(15648, __c489, 0) as any as S.Schema<DeleteIntegrationConfigurationRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteIntegrationConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12629,8 +12629,8 @@ export const deleteIntegrationDeliveryConfiguration: API.OperationMethod<
   DeleteIntegrationDeliveryConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<DeleteIntegrationDeliveryConfigurationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DeleteIntegrationDeliveryConfigurationResponse>,
+  input: __S(15680, __c490, 0) as any as S.Schema<DeleteIntegrationDeliveryConfigurationRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<DeleteIntegrationDeliveryConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12649,8 +12649,8 @@ export const deleteIpAllowlistEntry: API.OperationMethod<
   DeleteIpAllowlistEntryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<DeleteIpAllowlistEntryRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteIpAllowlistEntryResponse>,
+  input: __S(15712, __c491, 0) as any as S.Schema<DeleteIpAllowlistEntryRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteIpAllowlistEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12664,8 +12664,8 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<DeleteMemberRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteMemberResponse>,
+  input: __S(15744, __c492, 0) as any as S.Schema<DeleteMemberRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteMemberResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12679,8 +12679,8 @@ export const deleteMetric: API.OperationMethod<
   DeleteMetricError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<DeleteMetricRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteMetricResponse>,
+  input: __S(15776, __c493, 0) as any as S.Schema<DeleteMetricRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteMetricResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12694,8 +12694,8 @@ export const deleteMetricGroup: API.OperationMethod<
   DeleteMetricGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<DeleteMetricGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteMetricGroupResponse>,
+  input: __S(15808, __c494, 0) as any as S.Schema<DeleteMetricGroupRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteMetricGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12709,8 +12709,8 @@ export const deleteModelConfig: API.OperationMethod<
   DeleteModelConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<DeleteModelConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteModelConfigResponse>,
+  input: __S(15840, __c495, 0) as any as S.Schema<DeleteModelConfigRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteModelConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12724,8 +12724,8 @@ export const deleteOAuthClient: API.OperationMethod<
   DeleteOAuthClientError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<DeleteOAuthClientRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteOAuthClientResponse>,
+  input: __S(15872, __c496, 0) as any as S.Schema<DeleteOAuthClientRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteOAuthClientResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12739,8 +12739,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(15904, __c497, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12754,8 +12754,8 @@ export const deletePromptSnippet: API.OperationMethod<
   DeletePromptSnippetError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<DeletePromptSnippetRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeletePromptSnippetResponse>,
+  input: __S(16000, __c500, 0) as any as S.Schema<DeletePromptSnippetRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeletePromptSnippetResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12769,8 +12769,8 @@ export const deleteRelayAutoConfig: API.OperationMethod<
   DeleteRelayAutoConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<DeleteRelayAutoConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteRelayAutoConfigResponse>,
+  input: __S(16032, __c501, 0) as any as S.Schema<DeleteRelayAutoConfigRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteRelayAutoConfigResponse>,
   errors: [NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12784,8 +12784,8 @@ export const deleteReleaseByFlagKey: API.OperationMethod<
   DeleteReleaseByFlagKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<DeleteReleaseByFlagKeyRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteReleaseByFlagKeyResponse>,
+  input: __S(16064, __c502, 0) as any as S.Schema<DeleteReleaseByFlagKeyRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteReleaseByFlagKeyResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12799,8 +12799,8 @@ export const deleteReleasePipeline: API.OperationMethod<
   DeleteReleasePipelineError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<DeleteReleasePipelineRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteReleasePipelineResponse>,
+  input: __S(16096, __c503, 0) as any as S.Schema<DeleteReleasePipelineRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteReleasePipelineResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12814,8 +12814,8 @@ export const deleteReleasePolicy: API.OperationMethod<
   DeleteReleasePolicyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<DeleteReleasePolicyRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteReleasePolicyResponse>,
+  input: __S(16128, __c504, 0) as any as S.Schema<DeleteReleasePolicyRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteReleasePolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12829,8 +12829,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<DeleteRepositoryRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteRepositoryResponse>,
+  input: __S(16160, __c505, 0) as any as S.Schema<DeleteRepositoryRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteRepositoryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12844,8 +12844,8 @@ export const deleteRepositoryProject: API.OperationMethod<
   DeleteRepositoryProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<DeleteRepositoryProjectRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<DeleteRepositoryProjectResponse>,
+  input: __S(16192, __c506, 0) as any as S.Schema<DeleteRepositoryProjectRequest>,
+  output: __S(14176, __c443, 0) as any as S.Schema<DeleteRepositoryProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12859,8 +12859,8 @@ export const deleteRestrictedModels: API.OperationMethod<
   DeleteRestrictedModelsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DeleteRestrictedModelsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteRestrictedModelsResponse>,
+  input: __S(16224, __c507, 0) as any as S.Schema<DeleteRestrictedModelsRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteRestrictedModelsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12879,8 +12879,8 @@ export const deleteSdkKeyByKey: API.OperationMethod<
   DeleteSdkKeyByKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<DeleteSdkKeyByKeyRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteSdkKeyByKeyResponse>,
+  input: __S(16256, __c508, 0) as any as S.Schema<DeleteSdkKeyByKeyRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteSdkKeyByKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12894,8 +12894,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<DeleteSegmentRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteSegmentResponse>,
+  input: __S(16288, __c509, 0) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteSegmentResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12909,8 +12909,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<DeleteSubscriptionRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteSubscriptionResponse>,
+  input: __S(16480, __c515, 0) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12924,8 +12924,8 @@ export const deleteTeam: API.OperationMethod<
   DeleteTeamError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<DeleteTeamRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteTeamResponse>,
+  input: __S(16512, __c516, 0) as any as S.Schema<DeleteTeamRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteTeamResponse>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12939,8 +12939,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteTokenResponse>,
+  input: __S(16544, __c517, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12954,8 +12954,8 @@ export const deleteTriggerWorkflow: API.OperationMethod<
   DeleteTriggerWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<DeleteTriggerWorkflowRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteTriggerWorkflowResponse>,
+  input: __S(16576, __c518, 0) as any as S.Schema<DeleteTriggerWorkflowRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteTriggerWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12969,8 +12969,8 @@ export const deleteView: API.OperationMethod<
   DeleteViewError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<DeleteViewRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteViewResponse>,
+  input: __S(16608, __c519, 0) as any as S.Schema<DeleteViewRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteViewResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12984,8 +12984,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(16640, __c520, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -12999,8 +12999,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(16672, __c521, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13014,8 +13014,8 @@ export const deleteWorkflowTemplate: API.OperationMethod<
   DeleteWorkflowTemplateError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<DeleteWorkflowTemplateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteWorkflowTemplateResponse>,
+  input: __S(16704, __c522, 0) as any as S.Schema<DeleteWorkflowTemplateRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteWorkflowTemplateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13029,8 +13029,8 @@ export const evaluateContextInstance: API.OperationMethod<
   EvaluateContextInstanceError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<EvaluateContextInstanceRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<ContextInstanceEvaluations>,
+  input: __S(16736, __c523, 0) as any as S.Schema<EvaluateContextInstanceRequest>,
+  output: __S(16740, __c523, 4) as any as S.Schema<ContextInstanceEvaluations>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13044,8 +13044,8 @@ export const getAdaptiveTrigger: API.OperationMethod<
   GetAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetAdaptiveTriggerRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<AdaptiveTrigger>,
+  input: __S(16768, __c524, 0) as any as S.Schema<GetAdaptiveTriggerRequest>,
+  output: __S(16804, __c525, 4) as any as S.Schema<AdaptiveTrigger>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13059,8 +13059,8 @@ export const getAgentGraph: API.OperationMethod<
   GetAgentGraphError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetAgentGraphRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<AgentGraph>,
+  input: __S(16864, __c527, 0) as any as S.Schema<GetAgentGraphRequest>,
+  output: __S(16898, __c528, 2) as any as S.Schema<AgentGraph>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13074,8 +13074,8 @@ export const getAgentOptimization: API.OperationMethod<
   GetAgentOptimizationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetAgentOptimizationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<AgentOptimization>,
+  input: __S(16960, __c530, 0) as any as S.Schema<GetAgentOptimizationRequest>,
+  output: __S(16996, __c531, 4) as any as S.Schema<AgentOptimization>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13089,8 +13089,8 @@ export const getAgentSkill: API.OperationMethod<
   GetAgentSkillError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetAgentSkillRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<AgentSkill>,
+  input: __S(17024, __c532, 0) as any as S.Schema<GetAgentSkillRequest>,
+  output: __S(17056, __c533, 0) as any as S.Schema<AgentSkill>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13104,8 +13104,8 @@ export const getAIConfig: API.OperationMethod<
   GetAIConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetAIConfigRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<AIConfig>,
+  input: __S(17088, __c534, 0) as any as S.Schema<GetAIConfigRequest>,
+  output: __S(17122, __c535, 2) as any as S.Schema<AIConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13119,8 +13119,8 @@ export const getAIConfigMetrics: API.OperationMethod<
   GetAIConfigMetricsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<GetAIConfigMetricsRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<Metrics>,
+  input: __S(17216, __c538, 0) as any as S.Schema<GetAIConfigMetricsRequest>,
+  output: __S(17248, __c539, 0) as any as S.Schema<Metrics>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13138,8 +13138,8 @@ export const getAIConfigMetricsByVariation: API.OperationMethod<
   GetAIConfigMetricsByVariationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<GetAIConfigMetricsByVariationRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<GetAIConfigMetricsByVariationResponse>,
+  input: __S(17280, __c540, 0) as any as S.Schema<GetAIConfigMetricsByVariationRequest>,
+  output: __S(17283, __c540, 3) as any as S.Schema<GetAIConfigMetricsByVariationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13153,8 +13153,8 @@ export const getAIConfigQuickStats: API.OperationMethod<
   GetAIConfigQuickStatsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<GetAIConfigQuickStatsRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<QuickStats>,
+  input: __S(17312, __c541, 0) as any as S.Schema<GetAIConfigQuickStatsRequest>,
+  output: __S(17313, __c541, 1) as any as S.Schema<QuickStats>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13168,8 +13168,8 @@ export const getAIConfigs: API.OperationMethod<
   GetAIConfigsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetAIConfigsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<AIConfigs>,
+  input: __S(17344, __c542, 0) as any as S.Schema<GetAIConfigsRequest>,
+  output: __S(17346, __c542, 2) as any as S.Schema<AIConfigs>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13183,8 +13183,8 @@ export const getAIConfigTargeting: API.OperationMethod<
   GetAIConfigTargetingError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<GetAIConfigTargetingRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<AIConfigTargeting>,
+  input: __S(17408, __c544, 0) as any as S.Schema<GetAIConfigTargetingRequest>,
+  output: __S(17462, __c545, 22) as any as S.Schema<AIConfigTargeting>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13198,8 +13198,8 @@ export const getAIConfigVariation: API.OperationMethod<
   GetAIConfigVariationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetAIConfigVariationRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<AIConfigVariationsResponse>,
+  input: __S(17472, __c546, 0) as any as S.Schema<GetAIConfigVariationRequest>,
+  output: __S(17473, __c546, 1) as any as S.Schema<AIConfigVariationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13213,8 +13213,8 @@ export const getAIRunsUsage: API.OperationMethod<
   GetAIRunsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<GetAIRunsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetAIRunsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13228,8 +13228,8 @@ export const getAITool: API.OperationMethod<
   GetAIToolError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<GetAIToolRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<AITool>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetAIToolRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<AITool>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13243,8 +13243,8 @@ export const getAllHoldouts: API.OperationMethod<
   GetAllHoldoutsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetAllHoldoutsRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<HoldoutsCollectionRep>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetAllHoldoutsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<HoldoutsCollectionRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13262,8 +13262,8 @@ export const getAllIntegrationConfigurations: API.OperationMethod<
   GetAllIntegrationConfigurationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<GetAllIntegrationConfigurationsRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<IntegrationConfigurationCollectionRep>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetAllIntegrationConfigurationsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<IntegrationConfigurationCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13277,8 +13277,8 @@ export const getAllReleasePipelines: API.OperationMethod<
   GetAllReleasePipelinesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetAllReleasePipelinesRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<ReleasePipelineCollection>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetAllReleasePipelinesRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<ReleasePipelineCollection>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13292,8 +13292,8 @@ export const getAllReleaseProgressionsForReleasePipeline: API.OperationMethod<
   GetAllReleaseProgressionsForReleasePipelineError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GetAllReleaseProgressionsForReleasePipelineRequest>,
-  output: __S(476, __c59, 4) as any as S.Schema<ReleaseProgressionCollection>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetAllReleaseProgressionsForReleasePipelineRequest>,
+  output: __S(357, __c11, 5) as any as S.Schema<ReleaseProgressionCollection>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13307,8 +13307,8 @@ export const getAllWebhooks: API.OperationMethod<
   GetAllWebhooksError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<GetAllWebhooksRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<Webhooks>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetAllWebhooksRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<Webhooks>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13322,8 +13322,8 @@ export const getAnnouncementsPublic: API.OperationMethod<
   GetAnnouncementsPublicError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<GetAnnouncementsPublicRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<GetAnnouncementsPublic200Response>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetAnnouncementsPublicRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<GetAnnouncementsPublic200Response>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13337,8 +13337,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<GetApplicationRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<ApplicationRep>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ApplicationRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13352,8 +13352,8 @@ export const getApplications: API.OperationMethod<
   GetApplicationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<GetApplicationsRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<ApplicationCollectionRep>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetApplicationsRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ApplicationCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13367,8 +13367,8 @@ export const getApplicationVersions: API.OperationMethod<
   GetApplicationVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<GetApplicationVersionsRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<ApplicationVersionsCollectionRep>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetApplicationVersionsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<ApplicationVersionsCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13382,8 +13382,8 @@ export const getApprovalForFlag: API.OperationMethod<
   GetApprovalForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<GetApprovalForFlagRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetApprovalForFlagRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13397,8 +13397,8 @@ export const getApprovalRequest: API.OperationMethod<
   GetApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<GetApprovalRequestRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<ExpandableApprovalRequestResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetApprovalRequestRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<ExpandableApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13412,8 +13412,8 @@ export const getApprovalRequests: API.OperationMethod<
   GetApprovalRequestsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<GetApprovalRequestsRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<ExpandableApprovalRequestsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetApprovalRequestsRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<ExpandableApprovalRequestsResponse>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13431,8 +13431,8 @@ export const getApprovalRequestSettings: API.OperationMethod<
   GetApprovalRequestSettingsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<GetApprovalRequestSettingsRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<GetApprovalRequestSettingsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetApprovalRequestSettingsRequest>,
+  output: __S(996, __c31, 4) as any as S.Schema<GetApprovalRequestSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13446,8 +13446,8 @@ export const getApprovalsForFlag: API.OperationMethod<
   GetApprovalsForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<GetApprovalsForFlagRequest>,
-  output: __S(523, __c65, 3) as any as S.Schema<FlagConfigApprovalRequestsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetApprovalsForFlagRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<FlagConfigApprovalRequestsResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13461,8 +13461,8 @@ export const getAuditLogEntries: API.OperationMethod<
   GetAuditLogEntriesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetAuditLogEntriesRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<AuditLogEntryListingRepCollection>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetAuditLogEntriesRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<AuditLogEntryListingRepCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13476,8 +13476,8 @@ export const getAuditLogEntry: API.OperationMethod<
   GetAuditLogEntryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<GetAuditLogEntryRequest>,
-  output: __S(537, __c67, 1) as any as S.Schema<AuditLogEntryRep>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetAuditLogEntryRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<AuditLogEntryRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13491,8 +13491,8 @@ export const getBigSegmentExport: API.OperationMethod<
   GetBigSegmentExportError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<GetBigSegmentExportRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<Export>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetBigSegmentExportRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<Export>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13506,8 +13506,8 @@ export const getBigSegmentImport: API.OperationMethod<
   GetBigSegmentImportError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<GetBigSegmentImportRequest>,
-  output: __S(544, __c68, 0) as any as S.Schema<Import>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetBigSegmentImportRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<Import>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13521,8 +13521,8 @@ export const getBigSegmentStoreIntegration: API.OperationMethod<
   GetBigSegmentStoreIntegrationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<GetBigSegmentStoreIntegrationRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BigSegmentStoreIntegration>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetBigSegmentStoreIntegrationRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<BigSegmentStoreIntegration>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13536,8 +13536,8 @@ export const getBigSegmentStoreIntegrations: API.OperationMethod<
   GetBigSegmentStoreIntegrationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<GetBigSegmentStoreIntegrationsRequest>,
-  output: __S(549, __c68, 5) as any as S.Schema<BigSegmentStoreIntegrationCollection>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetBigSegmentStoreIntegrationsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<BigSegmentStoreIntegrationCollection>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13551,8 +13551,8 @@ export const getBranch: API.OperationMethod<
   GetBranchError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<GetBranchRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<BranchRep>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetBranchRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<BranchRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13566,8 +13566,8 @@ export const getBranches: API.OperationMethod<
   GetBranchesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<GetBranchesRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<BranchCollectionRep>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetBranchesRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<BranchCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13581,8 +13581,8 @@ export const getCallerIdentity: API.OperationMethod<
   GetCallerIdentityError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<GetCallerIdentityRequest>,
-  output: __S(560, __c70, 0) as any as S.Schema<CallerIdentityRep>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetCallerIdentityRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<CallerIdentityRep>,
   errors: [UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13596,8 +13596,8 @@ export const getContextAttributeNames: API.OperationMethod<
   GetContextAttributeNamesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<GetContextAttributeNamesRequest>,
-  output: __S(566, __c70, 6) as any as S.Schema<ContextAttributeNamesCollection>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetContextAttributeNamesRequest>,
+  output: __S(1573, __c49, 5) as any as S.Schema<ContextAttributeNamesCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13611,8 +13611,8 @@ export const getContextAttributeValues: API.OperationMethod<
   GetContextAttributeValuesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<GetContextAttributeValuesRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<ContextAttributeValuesCollection>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetContextAttributeValuesRequest>,
+  output: __S(1605, __c50, 5) as any as S.Schema<ContextAttributeValuesCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13629,8 +13629,8 @@ export const getContextInstanceSegmentsMembershipByEnv: API.OperationMethod<
   GetContextInstanceSegmentsMembershipByEnvError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<GetContextInstanceSegmentsMembershipByEnvRequest>,
-  output: __S(576, __c72, 0) as any as S.Schema<ContextInstanceSegmentMemberships>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetContextInstanceSegmentsMembershipByEnvRequest>,
+  output: __S(1635, __c51, 3) as any as S.Schema<ContextInstanceSegmentMemberships>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13644,8 +13644,8 @@ export const getContextKindsByProjectKey: API.OperationMethod<
   GetContextKindsByProjectKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<GetContextKindsByProjectKeyRequest>,
-  output: __S(582, __c72, 6) as any as S.Schema<ContextKindsCollectionRep>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetContextKindsByProjectKeyRequest>,
+  output: __S(1669, __c52, 5) as any as S.Schema<ContextKindsCollectionRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13659,8 +13659,8 @@ export const getContexts: API.OperationMethod<
   GetContextsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<GetContextsRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<Contexts>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetContextsRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<Contexts>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13674,8 +13674,8 @@ export const getContextsClientsideUsage: API.OperationMethod<
   GetContextsClientsideUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<GetContextsClientsideUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetContextsClientsideUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13689,8 +13689,8 @@ export const getContextsServersideUsage: API.OperationMethod<
   GetContextsServersideUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<GetContextsServersideUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetContextsServersideUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13704,8 +13704,8 @@ export const getContextsTotalUsage: API.OperationMethod<
   GetContextsTotalUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<GetContextsTotalUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetContextsTotalUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13719,8 +13719,8 @@ export const getCustomRole: API.OperationMethod<
   GetCustomRoleError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<GetCustomRoleRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<CustomRole>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetCustomRoleRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<CustomRole>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13734,8 +13734,8 @@ export const getCustomRoles: API.OperationMethod<
   GetCustomRolesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<GetCustomRolesRequest>,
-  output: __S(595, __c74, 3) as any as S.Schema<CustomRoles>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetCustomRolesRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<CustomRoles>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13749,8 +13749,8 @@ export const getCustomWorkflow: API.OperationMethod<
   GetCustomWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<GetCustomWorkflowRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<CustomWorkflowOutput>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetCustomWorkflowRequest>,
+  output: __S(2087, __c65, 7) as any as S.Schema<CustomWorkflowOutput>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13764,8 +13764,8 @@ export const getDataExportEventsUsage: API.OperationMethod<
   GetDataExportEventsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<GetDataExportEventsUsageRequest>,
-  output: __S(606, __c75, 6) as any as S.Schema<DataExportSeriesListRep>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetDataExportEventsUsageRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DataExportSeriesListRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13783,8 +13783,8 @@ export const getDataExportProjectRanking: API.OperationMethod<
   GetDataExportProjectRankingError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<GetDataExportProjectRankingRequest>,
-  output: __S(613, __c76, 5) as any as S.Schema<DataExportProjectRankingRep>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetDataExportProjectRankingRequest>,
+  output: __S(2182, __c68, 6) as any as S.Schema<DataExportProjectRankingRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13798,8 +13798,8 @@ export const getDependentFlags: API.OperationMethod<
   GetDependentFlagsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<GetDependentFlagsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<MultiEnvironmentDependentFlags>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetDependentFlagsRequest>,
+  output: __S(2211, __c69, 3) as any as S.Schema<MultiEnvironmentDependentFlags>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13813,8 +13813,8 @@ export const getDependentFlagsByEnv: API.OperationMethod<
   GetDependentFlagsByEnvError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<GetDependentFlagsByEnvRequest>,
-  output: __S(621, __c77, 5) as any as S.Schema<DependentFlagsByEnvironment>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetDependentFlagsByEnvRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<DependentFlagsByEnvironment>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13828,8 +13828,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(633, __c79, 1) as any as S.Schema<DeploymentRep>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(2378, __c74, 10) as any as S.Schema<DeploymentRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13847,8 +13847,8 @@ export const getDeploymentFrequencyChart: API.OperationMethod<
   GetDeploymentFrequencyChartError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(634, __c79, 2) as any as S.Schema<GetDeploymentFrequencyChartRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<InsightsChart>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetDeploymentFrequencyChartRequest>,
+  output: __S(2445, __c76, 13) as any as S.Schema<InsightsChart>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13862,8 +13862,8 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<GetDeploymentsRequest>,
-  output: __S(624, __c78, 0) as any as S.Schema<DeploymentCollectionRep>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<DeploymentCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13877,8 +13877,8 @@ export const getDestination: API.OperationMethod<
   GetDestinationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<GetDestinationRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<Destination>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetDestinationRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<Destination>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13892,8 +13892,8 @@ export const getDestinations: API.OperationMethod<
   GetDestinationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<GetDestinationsRequest>,
-  output: __S(655, __c81, 7) as any as S.Schema<Destinations>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetDestinationsRequest>,
+  output: __S(2562, __c80, 2) as any as S.Schema<Destinations>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13907,8 +13907,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<Environment>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<Environment>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13922,8 +13922,8 @@ export const getEnvironmentsByProject: API.OperationMethod<
   GetEnvironmentsByProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c82, 1) as any as S.Schema<GetEnvironmentsByProjectRequest>,
-  output: __S(499, __c62, 3) as any as S.Schema<Environments>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetEnvironmentsByProjectRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<Environments>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13937,8 +13937,8 @@ export const getEvaluationsUsage: API.OperationMethod<
   GetEvaluationsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658, __c82, 2) as any as S.Schema<GetEvaluationsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetEvaluationsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13952,8 +13952,8 @@ export const getEventsUsage: API.OperationMethod<
   GetEventsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659, __c82, 3) as any as S.Schema<GetEventsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetEventsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13967,8 +13967,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<GetExperimentRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<Experiment>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetExperimentRequest>,
+  output: __S(2801, __c87, 17) as any as S.Schema<Experiment>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13982,8 +13982,8 @@ export const getExperimentationEventsUsage: API.OperationMethod<
   GetExperimentationEventsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661, __c82, 5) as any as S.Schema<GetExperimentationEventsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetExperimentationEventsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -13997,8 +13997,8 @@ export const getExperimentationKeysUsage: API.OperationMethod<
   GetExperimentationKeysUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<GetExperimentationKeysUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetExperimentationKeysUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14016,8 +14016,8 @@ export const getExperimentationSettings: API.OperationMethod<
   GetExperimentationSettingsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663, __c82, 7) as any as S.Schema<GetExperimentationSettingsRequest>,
-  output: __S(666, __c83, 2) as any as S.Schema<RandomizationSettingsRep>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetExperimentationSettingsRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<RandomizationSettingsRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14031,8 +14031,8 @@ export const getExperiments: API.OperationMethod<
   GetExperimentsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<GetExperimentsRequest>,
-  output: __S(669, __c83, 5) as any as S.Schema<ExperimentCollectionRep>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetExperimentsRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<ExperimentCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14046,8 +14046,8 @@ export const getExperimentsAnyEnv: API.OperationMethod<
   GetExperimentsAnyEnvError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(670, __c83, 6) as any as S.Schema<GetExperimentsAnyEnvRequest>,
-  output: __S(669, __c83, 5) as any as S.Schema<ExperimentCollectionRep>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetExperimentsAnyEnvRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<ExperimentCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14061,8 +14061,8 @@ export const getExpiringContextTargets: API.OperationMethod<
   GetExpiringContextTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<GetExpiringContextTargetsRequest>,
-  output: __S(675, __c84, 3) as any as S.Schema<ExpiringTargetGetResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetExpiringContextTargetsRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<ExpiringTargetGetResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14076,8 +14076,8 @@ export const getExpiringTargetsForSegment: API.OperationMethod<
   GetExpiringTargetsForSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<GetExpiringTargetsForSegmentRequest>,
-  output: __S(675, __c84, 3) as any as S.Schema<ExpiringTargetGetResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetExpiringTargetsForSegmentRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<ExpiringTargetGetResponse>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14091,8 +14091,8 @@ export const getExpiringUserTargets: API.OperationMethod<
   GetExpiringUserTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<GetExpiringUserTargetsRequest>,
-  output: __S(681, __c85, 1) as any as S.Schema<ExpiringUserTargetGetResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetExpiringUserTargetsRequest>,
+  output: __S(3328, __c104, 0) as any as S.Schema<ExpiringUserTargetGetResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14106,8 +14106,8 @@ export const getExpiringUserTargetsForSegment: API.OperationMethod<
   GetExpiringUserTargetsForSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682, __c85, 2) as any as S.Schema<GetExpiringUserTargetsForSegmentRequest>,
-  output: __S(681, __c85, 1) as any as S.Schema<ExpiringUserTargetGetResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetExpiringUserTargetsForSegmentRequest>,
+  output: __S(3328, __c104, 0) as any as S.Schema<ExpiringUserTargetGetResponse>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14121,8 +14121,8 @@ export const getExtinctions: API.OperationMethod<
   GetExtinctionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683, __c85, 3) as any as S.Schema<GetExtinctionsRequest>,
-  output: __S(687, __c85, 7) as any as S.Schema<ExtinctionCollectionRep>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetExtinctionsRequest>,
+  output: __S(3426, __c107, 2) as any as S.Schema<ExtinctionCollectionRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14136,8 +14136,8 @@ export const getFeatureFlag: API.OperationMethod<
   GetFeatureFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c86, 0) as any as S.Schema<GetFeatureFlagRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<FeatureFlag>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetFeatureFlagRequest>,
+  output: __S(15353, __c479, 25) as any as S.Schema<FeatureFlag>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14151,8 +14151,8 @@ export const getFeatureFlags: API.OperationMethod<
   GetFeatureFlagsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(689, __c86, 1) as any as S.Schema<GetFeatureFlagsRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<FeatureFlags>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetFeatureFlagsRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<FeatureFlags>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14166,8 +14166,8 @@ export const getFeatureFlagScheduledChange: API.OperationMethod<
   GetFeatureFlagScheduledChangeError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692, __c86, 4) as any as S.Schema<GetFeatureFlagScheduledChangeRequest>,
-  output: __S(693, __c86, 5) as any as S.Schema<FeatureFlagScheduledChange>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetFeatureFlagScheduledChangeRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<FeatureFlagScheduledChange>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14181,8 +14181,8 @@ export const getFeatureFlagStatus: API.OperationMethod<
   GetFeatureFlagStatusError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<GetFeatureFlagStatusRequest>,
-  output: __S(695, __c86, 7) as any as S.Schema<FlagStatusRep>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetFeatureFlagStatusRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<FlagStatusRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14199,8 +14199,8 @@ export const getFeatureFlagStatusAcrossEnvironments: API.OperationMethod<
   GetFeatureFlagStatusAcrossEnvironmentsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<GetFeatureFlagStatusAcrossEnvironmentsRequest>,
-  output: __S(699, __c87, 3) as any as S.Schema<FeatureFlagStatusAcrossEnvironments>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetFeatureFlagStatusAcrossEnvironmentsRequest>,
+  output: __S(3747, __c117, 3) as any as S.Schema<FeatureFlagStatusAcrossEnvironments>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14214,8 +14214,8 @@ export const getFeatureFlagStatuses: API.OperationMethod<
   GetFeatureFlagStatusesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700, __c87, 4) as any as S.Schema<GetFeatureFlagStatusesRequest>,
-  output: __S(702, __c87, 6) as any as S.Schema<FeatureFlagStatuses>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetFeatureFlagStatusesRequest>,
+  output: __S(3778, __c118, 2) as any as S.Schema<FeatureFlagStatuses>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14233,8 +14233,8 @@ export const getFlagConfigScheduledChanges: API.OperationMethod<
   GetFlagConfigScheduledChangesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<GetFlagConfigScheduledChangesRequest>,
-  output: __S(705, __c88, 1) as any as S.Schema<FeatureFlagScheduledChanges>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetFlagConfigScheduledChangesRequest>,
+  output: __S(3810, __c119, 2) as any as S.Schema<FeatureFlagScheduledChanges>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14248,8 +14248,8 @@ export const getFlagDefaultsByProject: API.OperationMethod<
   GetFlagDefaultsByProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706, __c88, 2) as any as S.Schema<GetFlagDefaultsByProjectRequest>,
-  output: __S(708, __c88, 4) as any as S.Schema<FlagDefaultsRep>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetFlagDefaultsByProjectRequest>,
+  output: __S(3842, __c120, 2) as any as S.Schema<FlagDefaultsRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14263,8 +14263,8 @@ export const getFlagEvents: API.OperationMethod<
   GetFlagEventsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709, __c88, 5) as any as S.Schema<GetFlagEventsRequest>,
-  output: __S(721, __c90, 1) as any as S.Schema<FlagEventCollectionRep>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetFlagEventsRequest>,
+  output: __S(3884, __c121, 12) as any as S.Schema<FlagEventCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14278,8 +14278,8 @@ export const getFlagFollowers: API.OperationMethod<
   GetFlagFollowersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722, __c90, 2) as any as S.Schema<GetFlagFollowersRequest>,
-  output: __S(723, __c90, 3) as any as S.Schema<FlagFollowersGetRep>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetFlagFollowersRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<FlagFollowersGetRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14298,8 +14298,8 @@ export const getFlagImportConfiguration: API.OperationMethod<
   GetFlagImportConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(724, __c90, 4) as any as S.Schema<GetFlagImportConfigurationRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<FlagImportIntegration>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetFlagImportConfigurationRequest>,
+  output: __S(3524, __c110, 4) as any as S.Schema<FlagImportIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14318,8 +14318,8 @@ export const getFlagImportConfigurations: API.OperationMethod<
   GetFlagImportConfigurationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(725, __c90, 5) as any as S.Schema<GetFlagImportConfigurationsRequest>,
-  output: __S(727, __c90, 7) as any as S.Schema<FlagImportIntegrationCollection>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetFlagImportConfigurationsRequest>,
+  output: __S(4066, __c127, 2) as any as S.Schema<FlagImportIntegrationCollection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14333,8 +14333,8 @@ export const getFlagLinks: API.OperationMethod<
   GetFlagLinksError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<GetFlagLinksRequest>,
-  output: __S(730, __c91, 2) as any as S.Schema<FlagLinkCollectionRep>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetFlagLinksRequest>,
+  output: __S(4098, __c128, 2) as any as S.Schema<FlagLinkCollectionRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14348,8 +14348,8 @@ export const getFlagStatusChart: API.OperationMethod<
   GetFlagStatusChartError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731, __c91, 3) as any as S.Schema<GetFlagStatusChartRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<InsightsChart>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetFlagStatusChartRequest>,
+  output: __S(2445, __c76, 13) as any as S.Schema<InsightsChart>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14363,8 +14363,8 @@ export const getFollowersByProjEnv: API.OperationMethod<
   GetFollowersByProjEnvError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(732, __c91, 4) as any as S.Schema<GetFollowersByProjEnvRequest>,
-  output: __S(735, __c91, 7) as any as S.Schema<FlagFollowersByProjEnvGetRep>,
+  input: __S(4160, __c130, 0) as any as S.Schema<GetFollowersByProjEnvRequest>,
+  output: __S(4163, __c130, 3) as any as S.Schema<FlagFollowersByProjEnvGetRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14378,8 +14378,8 @@ export const getHoldout: API.OperationMethod<
   GetHoldoutError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<GetHoldoutRequest>,
-  output: __S(737, __c92, 1) as any as S.Schema<HoldoutDetailRep>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetHoldoutRequest>,
+  output: __S(4193, __c131, 1) as any as S.Schema<HoldoutDetailRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14393,8 +14393,8 @@ export const getHoldoutById: API.OperationMethod<
   GetHoldoutByIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(738, __c92, 2) as any as S.Schema<GetHoldoutByIdRequest>,
-  output: __S(739, __c92, 3) as any as S.Schema<HoldoutRep>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetHoldoutByIdRequest>,
+  output: __S(4256, __c133, 0) as any as S.Schema<HoldoutRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14408,8 +14408,8 @@ export const getInsightGroup: API.OperationMethod<
   GetInsightGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(740, __c92, 4) as any as S.Schema<GetInsightGroupRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<InsightGroup>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetInsightGroupRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<InsightGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14423,8 +14423,8 @@ export const getInsightGroups: API.OperationMethod<
   GetInsightGroupsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(741, __c92, 5) as any as S.Schema<GetInsightGroupsRequest>,
-  output: __S(745, __c93, 1) as any as S.Schema<InsightGroupCollection>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetInsightGroupsRequest>,
+  output: __S(4324, __c135, 4) as any as S.Schema<InsightGroupCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14438,8 +14438,8 @@ export const getInsightsRepositories: API.OperationMethod<
   GetInsightsRepositoriesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(746, __c93, 2) as any as S.Schema<GetInsightsRepositoriesRequest>,
-  output: __S(750, __c93, 6) as any as S.Schema<InsightsRepositoryCollection>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetInsightsRepositoriesRequest>,
+  output: __S(4356, __c136, 4) as any as S.Schema<InsightsRepositoryCollection>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14453,8 +14453,8 @@ export const getInsightsScores: API.OperationMethod<
   GetInsightsScoresError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(751, __c93, 7) as any as S.Schema<GetInsightsScoresRequest>,
-  output: __S(752, __c94, 0) as any as S.Schema<InsightScores>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetInsightsScoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<InsightScores>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14472,8 +14472,8 @@ export const getIntegrationConfiguration: API.OperationMethod<
   GetIntegrationConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753, __c94, 1) as any as S.Schema<GetIntegrationConfigurationRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<IntegrationConfigurationsRep>,
+  input: __S(4544, __c142, 0) as any as S.Schema<GetIntegrationConfigurationRequest>,
+  output: __S(4972, __c155, 12) as any as S.Schema<IntegrationConfigurationsRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14491,11 +14491,11 @@ export const getIntegrationDeliveryConfigurationByEnvironment: API.OperationMeth
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    754,
-    __c94,
-    2,
+    4576,
+    __c143,
+    0,
   ) as any as S.Schema<GetIntegrationDeliveryConfigurationByEnvironmentRequest>,
-  output: __S(756, __c94, 4) as any as S.Schema<IntegrationDeliveryConfigurationCollection>,
+  output: __S(4609, __c144, 1) as any as S.Schema<IntegrationDeliveryConfigurationCollection>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14509,8 +14509,8 @@ export const getIntegrationDeliveryConfigurationById: API.OperationMethod<
   GetIntegrationDeliveryConfigurationByIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(757, __c94, 5) as any as S.Schema<GetIntegrationDeliveryConfigurationByIdRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<IntegrationDeliveryConfiguration>,
+  input: __S(4640, __c145, 0) as any as S.Schema<GetIntegrationDeliveryConfigurationByIdRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<IntegrationDeliveryConfiguration>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14524,8 +14524,8 @@ export const getIntegrationDeliveryConfigurations: API.OperationMethod<
   GetIntegrationDeliveryConfigurationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(758, __c94, 6) as any as S.Schema<GetIntegrationDeliveryConfigurationsRequest>,
-  output: __S(756, __c94, 4) as any as S.Schema<IntegrationDeliveryConfigurationCollection>,
+  input: __S(4672, __c146, 0) as any as S.Schema<GetIntegrationDeliveryConfigurationsRequest>,
+  output: __S(4609, __c144, 1) as any as S.Schema<IntegrationDeliveryConfigurationCollection>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14539,8 +14539,8 @@ export const getIpAllowlist: API.OperationMethod<
   GetIpAllowlistError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(759, __c94, 7) as any as S.Schema<GetIpAllowlistRequest>,
-  output: __S(761, __c95, 1) as any as S.Schema<IpAllowlistResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetIpAllowlistRequest>,
+  output: __S(4737, __c148, 1) as any as S.Schema<IpAllowlistResponse>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14554,8 +14554,8 @@ export const getIps: API.OperationMethod<
   GetIpsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(762, __c95, 2) as any as S.Schema<GetIpsRequest>,
-  output: __S(763, __c95, 3) as any as S.Schema<IpList>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetIpsRequest>,
+  output: __S(4769, __c149, 1) as any as S.Schema<IpList>,
   errors: [UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14569,8 +14569,8 @@ export const getLayers: API.OperationMethod<
   GetLayersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(764, __c95, 4) as any as S.Schema<GetLayersRequest>,
-  output: __S(766, __c95, 6) as any as S.Schema<LayerCollectionRep>,
+  input: __S(4800, __c150, 0) as any as S.Schema<GetLayersRequest>,
+  output: __S(4802, __c150, 2) as any as S.Schema<LayerCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14584,8 +14584,8 @@ export const getLeadTimeChart: API.OperationMethod<
   GetLeadTimeChartError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(767, __c95, 7) as any as S.Schema<GetLeadTimeChartRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<InsightsChart>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetLeadTimeChartRequest>,
+  output: __S(2445, __c76, 13) as any as S.Schema<InsightsChart>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14599,8 +14599,8 @@ export const getLinkedResources: API.OperationMethod<
   GetLinkedResourcesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<GetLinkedResourcesRequest>,
-  output: __S(772, __c96, 4) as any as S.Schema<ViewLinkedResources>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetLinkedResourcesRequest>,
+  output: __S(4899, __c153, 3) as any as S.Schema<ViewLinkedResources>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14614,8 +14614,8 @@ export const getLinkedViews: API.OperationMethod<
   GetLinkedViewsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(773, __c96, 5) as any as S.Schema<GetLinkedViewsRequest>,
-  output: __S(775, __c96, 7) as any as S.Schema<Views>,
+  input: __S(5056, __c158, 0) as any as S.Schema<GetLinkedViewsRequest>,
+  output: __S(5089, __c159, 1) as any as S.Schema<Views>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14629,8 +14629,8 @@ export const getMAUClientsideUsage: API.OperationMethod<
   GetMAUClientsideUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(776, __c97, 0) as any as S.Schema<GetMAUClientsideUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5120, __c160, 0) as any as S.Schema<GetMAUClientsideUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14644,8 +14644,8 @@ export const getMauSdksByType: API.OperationMethod<
   GetMauSdksByTypeError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(777, __c97, 1) as any as S.Schema<GetMauSdksByTypeRequest>,
-  output: __S(778, __c97, 2) as any as S.Schema<SdkListRep>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetMauSdksByTypeRequest>,
+  output: __S(5153, __c161, 1) as any as S.Schema<SdkListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14659,8 +14659,8 @@ export const getMAUTotalUsage: API.OperationMethod<
   GetMAUTotalUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(779, __c97, 3) as any as S.Schema<GetMAUTotalUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetMAUTotalUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14674,8 +14674,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(780, __c97, 4) as any as S.Schema<GetMemberRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<Member>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetMemberRequest>,
+  output: __S(6948, __c217, 4) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14689,8 +14689,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(781, __c97, 5) as any as S.Schema<GetMembersRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<Members>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetMembersRequest>,
+  output: __S(6913, __c216, 1) as any as S.Schema<Members>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14704,8 +14704,8 @@ export const getMetric: API.OperationMethod<
   GetMetricError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(782, __c97, 6) as any as S.Schema<GetMetricRequest>,
-  output: __S(786, __c98, 2) as any as S.Schema<MetricRep>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetMetricRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<MetricRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14719,8 +14719,8 @@ export const getMetricGroup: API.OperationMethod<
   GetMetricGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(787, __c98, 3) as any as S.Schema<GetMetricGroupRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<MetricGroupRep>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetMetricGroupRequest>,
+  output: __S(7777, __c243, 1) as any as S.Schema<MetricGroupRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14734,8 +14734,8 @@ export const getMetricGroups: API.OperationMethod<
   GetMetricGroupsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(788, __c98, 4) as any as S.Schema<GetMetricGroupsRequest>,
-  output: __S(790, __c98, 6) as any as S.Schema<MetricGroupCollectionRep>,
+  input: __S(5376, __c168, 0) as any as S.Schema<GetMetricGroupsRequest>,
+  output: __S(5378, __c168, 2) as any as S.Schema<MetricGroupCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14749,8 +14749,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(791, __c98, 7) as any as S.Schema<GetMetricsRequest>,
-  output: __S(793, __c99, 1) as any as S.Schema<MetricCollectionRep>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetMetricsRequest>,
+  output: __S(5410, __c169, 2) as any as S.Schema<MetricCollectionRep>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14764,8 +14764,8 @@ export const getModelConfig: API.OperationMethod<
   GetModelConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(794, __c99, 2) as any as S.Schema<GetModelConfigRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<ModelConfig>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetModelConfigRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<ModelConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14779,8 +14779,8 @@ export const getOAuthClientById: API.OperationMethod<
   GetOAuthClientByIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(796, __c99, 4) as any as S.Schema<GetOAuthClientByIdRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Client>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetOAuthClientByIdRequest>,
+  output: __S(8192, __c256, 0) as any as S.Schema<Client>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14794,8 +14794,8 @@ export const getOAuthClients: API.OperationMethod<
   GetOAuthClientsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(797, __c99, 5) as any as S.Schema<GetOAuthClientsRequest>,
-  output: __S(799, __c99, 7) as any as S.Schema<ClientCollection>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetOAuthClientsRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<ClientCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14813,8 +14813,8 @@ export const getObservabilityErrorsUsage: API.OperationMethod<
   GetObservabilityErrorsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<GetObservabilityErrorsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5632, __c176, 0) as any as S.Schema<GetObservabilityErrorsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14832,8 +14832,8 @@ export const getObservabilityLogsUsage: API.OperationMethod<
   GetObservabilityLogsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(801, __c100, 1) as any as S.Schema<GetObservabilityLogsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5664, __c177, 0) as any as S.Schema<GetObservabilityLogsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14851,8 +14851,8 @@ export const getObservabilityMetricsUsage: API.OperationMethod<
   GetObservabilityMetricsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(802, __c100, 2) as any as S.Schema<GetObservabilityMetricsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetObservabilityMetricsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14870,8 +14870,8 @@ export const getObservabilitySessionsUsage: API.OperationMethod<
   GetObservabilitySessionsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(803, __c100, 3) as any as S.Schema<GetObservabilitySessionsUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetObservabilitySessionsUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14889,8 +14889,8 @@ export const getObservabilityTracesUsage: API.OperationMethod<
   GetObservabilityTracesUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(804, __c100, 4) as any as S.Schema<GetObservabilityTracesUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(5760, __c180, 0) as any as S.Schema<GetObservabilityTracesUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14904,8 +14904,8 @@ export const getOpenapiSpec: API.OperationMethod<
   GetOpenapiSpecError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(805, __c100, 5) as any as S.Schema<GetOpenapiSpecRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetOpenapiSpecResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetOpenapiSpecRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<GetOpenapiSpecResponse>,
   errors: [UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14919,8 +14919,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(806, __c100, 6) as any as S.Schema<GetProjectRequest>,
-  output: __S(500, __c62, 4) as any as S.Schema<Project>,
+  input: __S(5824, __c182, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<Project>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14934,8 +14934,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(807, __c100, 7) as any as S.Schema<GetProjectsRequest>,
-  output: __S(809, __c101, 1) as any as S.Schema<Projects>,
+  input: __S(5920, __c185, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(5922, __c185, 2) as any as S.Schema<Projects>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14949,8 +14949,8 @@ export const getProjectSdkKeys: API.OperationMethod<
   GetProjectSdkKeysError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(810, __c101, 2) as any as S.Schema<GetProjectSdkKeysRequest>,
-  output: __S(817, __c102, 1) as any as S.Schema<SdkKeys>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetProjectSdkKeysRequest>,
+  output: __S(5956, __c186, 4) as any as S.Schema<SdkKeys>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14964,8 +14964,8 @@ export const getPromptSnippet: API.OperationMethod<
   GetPromptSnippetError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(818, __c102, 2) as any as S.Schema<GetPromptSnippetRequest>,
-  output: __S(819, __c102, 3) as any as S.Schema<PromptSnippet>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetPromptSnippetRequest>,
+  output: __S(6048, __c189, 0) as any as S.Schema<PromptSnippet>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14979,8 +14979,8 @@ export const getPullRequests: API.OperationMethod<
   GetPullRequestsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(820, __c102, 4) as any as S.Schema<GetPullRequestsRequest>,
-  output: __S(631, __c78, 7) as any as S.Schema<PullRequestCollectionRep>,
+  input: __S(6080, __c190, 0) as any as S.Schema<GetPullRequestsRequest>,
+  output: __S(2376, __c74, 8) as any as S.Schema<PullRequestCollectionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -14994,8 +14994,8 @@ export const getRelayProxyConfig: API.OperationMethod<
   GetRelayProxyConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(821, __c102, 5) as any as S.Schema<GetRelayProxyConfigRequest>,
-  output: __S(822, __c102, 6) as any as S.Schema<RelayAutoConfigRep>,
+  input: __S(6112, __c191, 0) as any as S.Schema<GetRelayProxyConfigRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<RelayAutoConfigRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15009,8 +15009,8 @@ export const getRelayProxyConfigs: API.OperationMethod<
   GetRelayProxyConfigsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(823, __c102, 7) as any as S.Schema<GetRelayProxyConfigsRequest>,
-  output: __S(825, __c103, 1) as any as S.Schema<RelayAutoConfigCollectionRep>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetRelayProxyConfigsRequest>,
+  output: __S(6178, __c193, 2) as any as S.Schema<RelayAutoConfigCollectionRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15024,8 +15024,8 @@ export const getReleaseByFlagKey: API.OperationMethod<
   GetReleaseByFlagKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(826, __c103, 2) as any as S.Schema<GetReleaseByFlagKeyRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<Release>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetReleaseByFlagKeyRequest>,
+  output: __S(9349, __c292, 5) as any as S.Schema<Release>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15039,8 +15039,8 @@ export const getReleaseFrequencyChart: API.OperationMethod<
   GetReleaseFrequencyChartError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(827, __c103, 3) as any as S.Schema<GetReleaseFrequencyChartRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<InsightsChart>,
+  input: __S(6240, __c195, 0) as any as S.Schema<GetReleaseFrequencyChartRequest>,
+  output: __S(2445, __c76, 13) as any as S.Schema<InsightsChart>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15054,8 +15054,8 @@ export const getReleasePipelineByKey: API.OperationMethod<
   GetReleasePipelineByKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(828, __c103, 4) as any as S.Schema<GetReleasePipelineByKeyRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<ReleasePipeline>,
+  input: __S(6272, __c196, 0) as any as S.Schema<GetReleasePipelineByKeyRequest>,
+  output: __S(324, __c10, 4) as any as S.Schema<ReleasePipeline>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15069,8 +15069,8 @@ export const getReleasePolicies: API.OperationMethod<
   GetReleasePoliciesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(829, __c103, 5) as any as S.Schema<GetReleasePoliciesRequest>,
-  output: __S(844, __c105, 4) as any as S.Schema<ReleasePoliciesResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetReleasePoliciesRequest>,
+  output: __S(6305, __c197, 1) as any as S.Schema<ReleasePoliciesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15084,8 +15084,8 @@ export const getReleasePolicy: API.OperationMethod<
   GetReleasePolicyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(845, __c105, 5) as any as S.Schema<GetReleasePolicyRequest>,
-  output: __S(842, __c105, 2) as any as S.Schema<ReleasePolicy>,
+  input: __S(6464, __c202, 0) as any as S.Schema<GetReleasePolicyRequest>,
+  output: __S(6348, __c198, 12) as any as S.Schema<ReleasePolicy>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15099,8 +15099,8 @@ export const getRepositories: API.OperationMethod<
   GetRepositoriesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(846, __c105, 6) as any as S.Schema<GetRepositoriesRequest>,
-  output: __S(849, __c106, 1) as any as S.Schema<RepositoryCollectionRep>,
+  input: __S(6496, __c203, 0) as any as S.Schema<GetRepositoriesRequest>,
+  output: __S(6498, __c203, 2) as any as S.Schema<RepositoryCollectionRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15114,8 +15114,8 @@ export const getRepository: API.OperationMethod<
   GetRepositoryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(850, __c106, 2) as any as S.Schema<GetRepositoryRequest>,
-  output: __S(847, __c105, 7) as any as S.Schema<RepositoryRep>,
+  input: __S(6560, __c205, 0) as any as S.Schema<GetRepositoryRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<RepositoryRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15129,8 +15129,8 @@ export const getRoot: API.OperationMethod<
   GetRootError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(851, __c106, 3) as any as S.Schema<GetRootRequest>,
-  output: __S(852, __c106, 4) as any as S.Schema<RootResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<GetRootRequest>,
+  output: __S(6593, __c206, 1) as any as S.Schema<RootResponse>,
   errors: [UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15144,8 +15144,8 @@ export const getRootStatistic: API.OperationMethod<
   GetRootStatisticError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(853, __c106, 5) as any as S.Schema<GetRootStatisticRequest>,
-  output: __S(855, __c106, 7) as any as S.Schema<StatisticsRoot>,
+  input: __S(6624, __c207, 0) as any as S.Schema<GetRootStatisticRequest>,
+  output: __S(6626, __c207, 2) as any as S.Schema<StatisticsRoot>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15159,8 +15159,8 @@ export const getSdkAllVersions: API.OperationMethod<
   GetSdkAllVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(856, __c107, 0) as any as S.Schema<GetSdkAllVersionsRequest>,
-  output: __S(859, __c107, 3) as any as S.Schema<GetSdkAllVersionsResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<GetSdkAllVersionsRequest>,
+  output: __S(6690, __c209, 2) as any as S.Schema<GetSdkAllVersionsResponse>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15174,8 +15174,8 @@ export const getSdkKeyByKey: API.OperationMethod<
   GetSdkKeyByKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(860, __c107, 4) as any as S.Schema<GetSdkKeyByKeyRequest>,
-  output: __S(861, __c107, 5) as any as S.Schema<SdkKey>,
+  input: __S(6720, __c210, 0) as any as S.Schema<GetSdkKeyByKeyRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<SdkKey>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15189,8 +15189,8 @@ export const getSdkKeys: API.OperationMethod<
   GetSdkKeysError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(862, __c107, 6) as any as S.Schema<GetSdkKeysRequest>,
-  output: __S(864, __c108, 0) as any as S.Schema<SdkKeysForGetSdkKeys>,
+  input: __S(6784, __c212, 0) as any as S.Schema<GetSdkKeysRequest>,
+  output: __S(6786, __c212, 2) as any as S.Schema<SdkKeysForGetSdkKeys>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15204,8 +15204,8 @@ export const getSdkVersionsDetails: API.OperationMethod<
   GetSdkVersionsDetailsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(865, __c108, 1) as any as S.Schema<GetSdkVersionsDetailsRequest>,
-  output: __S(859, __c107, 3) as any as S.Schema<GetSdkVersionsDetailsResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetSdkVersionsDetailsRequest>,
+  output: __S(6690, __c209, 2) as any as S.Schema<GetSdkVersionsDetailsResponse>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15219,8 +15219,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(866, __c108, 2) as any as S.Schema<GetSegmentRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<UserSegment>,
+  input: __S(6848, __c214, 0) as any as S.Schema<GetSegmentRequest>,
+  output: __S(902, __c28, 6) as any as S.Schema<UserSegment>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15234,8 +15234,8 @@ export const getSegmentMembershipForContext: API.OperationMethod<
   GetSegmentMembershipForContextError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(867, __c108, 3) as any as S.Schema<GetSegmentMembershipForContextRequest>,
-  output: __S(868, __c108, 4) as any as S.Schema<BigSegmentTarget>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetSegmentMembershipForContextRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<BigSegmentTarget>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15249,8 +15249,8 @@ export const getSegmentMembershipForUser: API.OperationMethod<
   GetSegmentMembershipForUserError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(869, __c108, 5) as any as S.Schema<GetSegmentMembershipForUserRequest>,
-  output: __S(868, __c108, 4) as any as S.Schema<BigSegmentTarget>,
+  input: __S(7072, __c221, 0) as any as S.Schema<GetSegmentMembershipForUserRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<BigSegmentTarget>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15264,8 +15264,8 @@ export const getSegments: API.OperationMethod<
   GetSegmentsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(870, __c108, 6) as any as S.Schema<GetSegmentsRequest>,
-  output: __S(872, __c109, 0) as any as S.Schema<UserSegments>,
+  input: __S(7104, __c222, 0) as any as S.Schema<GetSegmentsRequest>,
+  output: __S(7106, __c222, 2) as any as S.Schema<UserSegments>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15279,8 +15279,8 @@ export const getServiceConnectionsUsage: API.OperationMethod<
   GetServiceConnectionsUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(873, __c109, 1) as any as S.Schema<GetServiceConnectionsUsageRequest>,
-  output: __S(874, __c109, 2) as any as S.Schema<SeriesListRepFloat>,
+  input: __S(7136, __c223, 0) as any as S.Schema<GetServiceConnectionsUsageRequest>,
+  output: __S(7137, __c223, 1) as any as S.Schema<SeriesListRepFloat>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15294,8 +15294,8 @@ export const getStaleFlagsChart: API.OperationMethod<
   GetStaleFlagsChartError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(875, __c109, 3) as any as S.Schema<GetStaleFlagsChartRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<InsightsChart>,
+  input: __S(7168, __c224, 0) as any as S.Schema<GetStaleFlagsChartRequest>,
+  output: __S(2445, __c76, 13) as any as S.Schema<InsightsChart>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15309,8 +15309,8 @@ export const getStatistics: API.OperationMethod<
   GetStatisticsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(876, __c109, 4) as any as S.Schema<GetStatisticsRequest>,
-  output: __S(880, __c110, 0) as any as S.Schema<StatisticCollectionRep>,
+  input: __S(7200, __c225, 0) as any as S.Schema<GetStatisticsRequest>,
+  output: __S(7204, __c225, 4) as any as S.Schema<StatisticCollectionRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15324,8 +15324,8 @@ export const getStreamUsage: API.OperationMethod<
   GetStreamUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(881, __c110, 1) as any as S.Schema<GetStreamUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(7232, __c226, 0) as any as S.Schema<GetStreamUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15343,8 +15343,8 @@ export const getStreamUsageBySdkVersion: API.OperationMethod<
   GetStreamUsageBySdkVersionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(882, __c110, 2) as any as S.Schema<GetStreamUsageBySdkVersionRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(7264, __c227, 0) as any as S.Schema<GetStreamUsageBySdkVersionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15358,8 +15358,8 @@ export const getStreamUsageSdkversion: API.OperationMethod<
   GetStreamUsageSdkversionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(883, __c110, 3) as any as S.Schema<GetStreamUsageSdkversionRequest>,
-  output: __S(886, __c110, 6) as any as S.Schema<SdkVersionListRep>,
+  input: __S(7296, __c228, 0) as any as S.Schema<GetStreamUsageSdkversionRequest>,
+  output: __S(7299, __c228, 3) as any as S.Schema<SdkVersionListRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15373,8 +15373,8 @@ export const getSubscriptionByID: API.OperationMethod<
   GetSubscriptionByIDError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(887, __c110, 7) as any as S.Schema<GetSubscriptionByIDRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Integration>,
+  input: __S(7328, __c229, 0) as any as S.Schema<GetSubscriptionByIDRequest>,
+  output: __S(9795, __c306, 3) as any as S.Schema<Integration>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15388,8 +15388,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(888, __c111, 0) as any as S.Schema<GetSubscriptionsRequest>,
-  output: __S(890, __c111, 2) as any as S.Schema<Integrations>,
+  input: __S(7392, __c231, 0) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(7394, __c231, 2) as any as S.Schema<Integrations>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15403,8 +15403,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(891, __c111, 3) as any as S.Schema<GetTagsRequest>,
-  output: __S(892, __c111, 4) as any as S.Schema<TagsCollection>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetTagsRequest>,
+  output: __S(7425, __c232, 1) as any as S.Schema<TagsCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15418,8 +15418,8 @@ export const getTeam: API.OperationMethod<
   GetTeamError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(893, __c111, 5) as any as S.Schema<GetTeamRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<Team>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetTeamRequest>,
+  output: __S(10434, __c326, 2) as any as S.Schema<Team>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15433,8 +15433,8 @@ export const getTeamMaintainers: API.OperationMethod<
   GetTeamMaintainersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(894, __c111, 6) as any as S.Schema<GetTeamMaintainersRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<TeamMaintainers>,
+  input: __S(7488, __c234, 0) as any as S.Schema<GetTeamMaintainersRequest>,
+  output: __S(10368, __c324, 0) as any as S.Schema<TeamMaintainers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15448,8 +15448,8 @@ export const getTeamRoles: API.OperationMethod<
   GetTeamRolesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(895, __c111, 7) as any as S.Schema<GetTeamRolesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<TeamCustomRoles>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetTeamRolesRequest>,
+  output: __S(10403, __c325, 3) as any as S.Schema<TeamCustomRoles>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15463,8 +15463,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<GetTeamsRequest>,
-  output: __S(898, __c112, 2) as any as S.Schema<Teams>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetTeamsRequest>,
+  output: __S(7554, __c236, 2) as any as S.Schema<Teams>,
   errors: [UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15478,8 +15478,8 @@ export const getToken: API.OperationMethod<
   GetTokenError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(899, __c112, 3) as any as S.Schema<GetTokenRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<Token>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetTokenRequest>,
+  output: __S(11168, __c349, 0) as any as S.Schema<Token>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15493,8 +15493,8 @@ export const getTokens: API.OperationMethod<
   GetTokensError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(900, __c112, 4) as any as S.Schema<GetTokensRequest>,
-  output: __S(902, __c112, 6) as any as S.Schema<Tokens>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetTokensRequest>,
+  output: __S(7618, __c238, 2) as any as S.Schema<Tokens>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15508,8 +15508,8 @@ export const getTriggerWorkflowById: API.OperationMethod<
   GetTriggerWorkflowByIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(903, __c112, 7) as any as S.Schema<GetTriggerWorkflowByIdRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<TriggerWorkflowRep>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetTriggerWorkflowByIdRequest>,
+  output: __S(11554, __c361, 2) as any as S.Schema<TriggerWorkflowRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15523,8 +15523,8 @@ export const getTriggerWorkflows: API.OperationMethod<
   GetTriggerWorkflowsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<GetTriggerWorkflowsRequest>,
-  output: __S(906, __c113, 2) as any as S.Schema<TriggerWorkflowCollectionRep>,
+  input: __S(7680, __c240, 0) as any as S.Schema<GetTriggerWorkflowsRequest>,
+  output: __S(7682, __c240, 2) as any as S.Schema<TriggerWorkflowCollectionRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15538,8 +15538,8 @@ export const getVegaAIUsage: API.OperationMethod<
   GetVegaAIUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(907, __c113, 3) as any as S.Schema<GetVegaAIUsageRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<SeriesListRep>,
+  input: __S(7808, __c244, 0) as any as S.Schema<GetVegaAIUsageRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<SeriesListRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15553,8 +15553,8 @@ export const getVersions: API.OperationMethod<
   GetVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(908, __c113, 4) as any as S.Schema<GetVersionsRequest>,
-  output: __S(910, __c113, 6) as any as S.Schema<VersionsRep>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetVersionsRequest>,
+  output: __S(7842, __c245, 2) as any as S.Schema<VersionsRep>,
   errors: [Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15568,8 +15568,8 @@ export const getView: API.OperationMethod<
   GetViewError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(911, __c113, 7) as any as S.Schema<GetViewRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<View>,
+  input: __S(7872, __c246, 0) as any as S.Schema<GetViewRequest>,
+  output: __S(12070, __c377, 6) as any as S.Schema<View>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15583,8 +15583,8 @@ export const getViews: API.OperationMethod<
   GetViewsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c114, 0) as any as S.Schema<GetViewsRequest>,
-  output: __S(775, __c96, 7) as any as S.Schema<Views>,
+  input: __S(7904, __c247, 0) as any as S.Schema<GetViewsRequest>,
+  output: __S(5089, __c159, 1) as any as S.Schema<Views>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15598,8 +15598,8 @@ export const getWarehouseExportUsage: API.OperationMethod<
   GetWarehouseExportUsageError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(913, __c114, 1) as any as S.Schema<GetWarehouseExportUsageRequest>,
-  output: __S(606, __c75, 6) as any as S.Schema<DataExportSeriesListRep>,
+  input: __S(7936, __c248, 0) as any as S.Schema<GetWarehouseExportUsageRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DataExportSeriesListRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15613,8 +15613,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(914, __c114, 2) as any as S.Schema<GetWebhookRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<Webhook>,
+  input: __S(7968, __c249, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<Webhook>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15628,8 +15628,8 @@ export const getWorkflows: API.OperationMethod<
   GetWorkflowsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(915, __c114, 3) as any as S.Schema<GetWorkflowsRequest>,
-  output: __S(917, __c114, 5) as any as S.Schema<CustomWorkflowsListingOutput>,
+  input: __S(8000, __c250, 0) as any as S.Schema<GetWorkflowsRequest>,
+  output: __S(8002, __c250, 2) as any as S.Schema<CustomWorkflowsListingOutput>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15643,8 +15643,8 @@ export const getWorkflowTemplates: API.OperationMethod<
   GetWorkflowTemplatesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(918, __c114, 6) as any as S.Schema<GetWorkflowTemplatesRequest>,
-  output: __S(920, __c115, 0) as any as S.Schema<WorkflowTemplatesListingOutputRep>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetWorkflowTemplatesRequest>,
+  output: __S(8034, __c251, 2) as any as S.Schema<WorkflowTemplatesListingOutputRep>,
   errors: [NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15658,8 +15658,8 @@ export const linkResource: API.OperationMethod<
   LinkResourceError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(921, __c115, 1) as any as S.Schema<LinkResourceRequest>,
-  output: __S(924, __c115, 4) as any as S.Schema<LinkResourceSuccessResponse>,
+  input: __S(8064, __c252, 0) as any as S.Schema<LinkResourceRequest>,
+  output: __S(8065, __c252, 1) as any as S.Schema<LinkResourceSuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15673,8 +15673,8 @@ export const listAdaptiveTriggers: API.OperationMethod<
   ListAdaptiveTriggersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(925, __c115, 5) as any as S.Schema<ListAdaptiveTriggersRequest>,
-  output: __S(927, __c115, 7) as any as S.Schema<AdaptiveTriggers>,
+  input: __S(8128, __c254, 0) as any as S.Schema<ListAdaptiveTriggersRequest>,
+  output: __S(8130, __c254, 2) as any as S.Schema<AdaptiveTriggers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15688,8 +15688,8 @@ export const listAgentGraphs: API.OperationMethod<
   ListAgentGraphsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c116, 0) as any as S.Schema<ListAgentGraphsRequest>,
-  output: __S(930, __c116, 2) as any as S.Schema<AgentGraphs>,
+  input: __S(8224, __c257, 0) as any as S.Schema<ListAgentGraphsRequest>,
+  output: __S(8226, __c257, 2) as any as S.Schema<AgentGraphs>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15703,8 +15703,8 @@ export const listAgentOptimizationResults: API.OperationMethod<
   ListAgentOptimizationResultsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(931, __c116, 3) as any as S.Schema<ListAgentOptimizationResultsRequest>,
-  output: __S(934, __c116, 6) as any as S.Schema<AgentOptimizationResults>,
+  input: __S(8256, __c258, 0) as any as S.Schema<ListAgentOptimizationResultsRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<AgentOptimizationResults>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15718,8 +15718,8 @@ export const listAgentOptimizationResultsByRunId: API.OperationMethod<
   ListAgentOptimizationResultsByRunIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(935, __c116, 7) as any as S.Schema<ListAgentOptimizationResultsByRunIdRequest>,
-  output: __S(934, __c116, 6) as any as S.Schema<AgentOptimizationResults>,
+  input: __S(8352, __c261, 0) as any as S.Schema<ListAgentOptimizationResultsByRunIdRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<AgentOptimizationResults>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15737,8 +15737,8 @@ export const listAgentOptimizationRuns: API.OperationMethod<
   ListAgentOptimizationRunsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(936, __c117, 0) as any as S.Schema<ListAgentOptimizationRunsRequest>,
-  output: __S(939, __c117, 3) as any as S.Schema<AgentOptimizationRuns>,
+  input: __S(8384, __c262, 0) as any as S.Schema<ListAgentOptimizationRunsRequest>,
+  output: __S(8387, __c262, 3) as any as S.Schema<AgentOptimizationRuns>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15752,8 +15752,8 @@ export const listAgentOptimizations: API.OperationMethod<
   ListAgentOptimizationsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(940, __c117, 4) as any as S.Schema<ListAgentOptimizationsRequest>,
-  output: __S(942, __c117, 6) as any as S.Schema<AgentOptimizations>,
+  input: __S(8416, __c263, 0) as any as S.Schema<ListAgentOptimizationsRequest>,
+  output: __S(8418, __c263, 2) as any as S.Schema<AgentOptimizations>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15767,8 +15767,8 @@ export const listAgentSkillReferences: API.OperationMethod<
   ListAgentSkillReferencesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(943, __c117, 7) as any as S.Schema<ListAgentSkillReferencesRequest>,
-  output: __S(946, __c118, 2) as any as S.Schema<AgentSkillReferences>,
+  input: __S(8448, __c264, 0) as any as S.Schema<ListAgentSkillReferencesRequest>,
+  output: __S(8482, __c265, 2) as any as S.Schema<AgentSkillReferences>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15782,8 +15782,8 @@ export const listAgentSkills: API.OperationMethod<
   ListAgentSkillsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(947, __c118, 3) as any as S.Schema<ListAgentSkillsRequest>,
-  output: __S(949, __c118, 5) as any as S.Schema<AgentSkills>,
+  input: __S(8512, __c266, 0) as any as S.Schema<ListAgentSkillsRequest>,
+  output: __S(8545, __c267, 1) as any as S.Schema<AgentSkills>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15797,8 +15797,8 @@ export const listAgentSkillVersions: API.OperationMethod<
   ListAgentSkillVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(950, __c118, 6) as any as S.Schema<ListAgentSkillVersionsRequest>,
-  output: __S(949, __c118, 5) as any as S.Schema<AgentSkills>,
+  input: __S(8576, __c268, 0) as any as S.Schema<ListAgentSkillVersionsRequest>,
+  output: __S(8545, __c267, 1) as any as S.Schema<AgentSkills>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15812,8 +15812,8 @@ export const listAIToolReferences: API.OperationMethod<
   ListAIToolReferencesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(951, __c118, 7) as any as S.Schema<ListAIToolReferencesRequest>,
-  output: __S(954, __c119, 2) as any as S.Schema<ToolReferences>,
+  input: __S(8608, __c269, 0) as any as S.Schema<ListAIToolReferencesRequest>,
+  output: __S(8611, __c269, 3) as any as S.Schema<ToolReferences>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15827,8 +15827,8 @@ export const listAITools: API.OperationMethod<
   ListAIToolsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(955, __c119, 3) as any as S.Schema<ListAIToolsRequest>,
-  output: __S(957, __c119, 5) as any as S.Schema<AITools>,
+  input: __S(8640, __c270, 0) as any as S.Schema<ListAIToolsRequest>,
+  output: __S(8673, __c271, 1) as any as S.Schema<AITools>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15842,8 +15842,8 @@ export const listAIToolVersions: API.OperationMethod<
   ListAIToolVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(958, __c119, 6) as any as S.Schema<ListAIToolVersionsRequest>,
-  output: __S(957, __c119, 5) as any as S.Schema<AITools>,
+  input: __S(8864, __c277, 0) as any as S.Schema<ListAIToolVersionsRequest>,
+  output: __S(8673, __c271, 1) as any as S.Schema<AITools>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15857,8 +15857,8 @@ export const listAllAgentOptimizationResults: API.OperationMethod<
   ListAllAgentOptimizationResultsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(959, __c119, 7) as any as S.Schema<ListAllAgentOptimizationResultsRequest>,
-  output: __S(934, __c116, 6) as any as S.Schema<AgentOptimizationResults>,
+  input: __S(8896, __c278, 0) as any as S.Schema<ListAllAgentOptimizationResultsRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<AgentOptimizationResults>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15872,8 +15872,8 @@ export const listModelConfigs: API.OperationMethod<
   ListModelConfigsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c120, 0) as any as S.Schema<ListModelConfigsRequest>,
-  output: __S(962, __c120, 2) as any as S.Schema<ListModelConfigsResponse>,
+  input: __S(8928, __c279, 0) as any as S.Schema<ListModelConfigsRequest>,
+  output: __S(8929, __c279, 1) as any as S.Schema<ListModelConfigsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15887,8 +15887,8 @@ export const listModelConfigVersions: API.OperationMethod<
   ListModelConfigVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(963, __c120, 3) as any as S.Schema<ListModelConfigVersionsRequest>,
-  output: __S(964, __c120, 4) as any as S.Schema<ModelConfigs>,
+  input: __S(8992, __c281, 0) as any as S.Schema<ListModelConfigVersionsRequest>,
+  output: __S(8993, __c281, 1) as any as S.Schema<ModelConfigs>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15902,8 +15902,8 @@ export const listPromptSnippetReferences: API.OperationMethod<
   ListPromptSnippetReferencesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(965, __c120, 5) as any as S.Schema<ListPromptSnippetReferencesRequest>,
-  output: __S(946, __c118, 2) as any as S.Schema<SnippetReferences>,
+  input: __S(9024, __c282, 0) as any as S.Schema<ListPromptSnippetReferencesRequest>,
+  output: __S(8482, __c265, 2) as any as S.Schema<SnippetReferences>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15917,8 +15917,8 @@ export const listPromptSnippets: API.OperationMethod<
   ListPromptSnippetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(966, __c120, 6) as any as S.Schema<ListPromptSnippetsRequest>,
-  output: __S(968, __c121, 0) as any as S.Schema<PromptSnippets>,
+  input: __S(9056, __c283, 0) as any as S.Schema<ListPromptSnippetsRequest>,
+  output: __S(9089, __c284, 1) as any as S.Schema<PromptSnippets>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15936,8 +15936,8 @@ export const listPromptSnippetVersions: API.OperationMethod<
   ListPromptSnippetVersionsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(969, __c121, 1) as any as S.Schema<ListPromptSnippetVersionsRequest>,
-  output: __S(968, __c121, 0) as any as S.Schema<PromptSnippets>,
+  input: __S(9120, __c285, 0) as any as S.Schema<ListPromptSnippetVersionsRequest>,
+  output: __S(9089, __c284, 1) as any as S.Schema<PromptSnippets>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15951,8 +15951,8 @@ export const patchAdaptiveTrigger: API.OperationMethod<
   PatchAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(970, __c121, 2) as any as S.Schema<PatchAdaptiveTriggerRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<AdaptiveTrigger>,
+  input: __S(9152, __c286, 0) as any as S.Schema<PatchAdaptiveTriggerRequest>,
+  output: __S(16804, __c525, 4) as any as S.Schema<AdaptiveTrigger>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15966,8 +15966,8 @@ export const patchAgentGraph: API.OperationMethod<
   PatchAgentGraphError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(971, __c121, 3) as any as S.Schema<PatchAgentGraphRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<AgentGraph>,
+  input: __S(9184, __c287, 0) as any as S.Schema<PatchAgentGraphRequest>,
+  output: __S(16898, __c528, 2) as any as S.Schema<AgentGraph>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -15986,8 +15986,8 @@ export const patchAgentOptimization: API.OperationMethod<
   PatchAgentOptimizationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(972, __c121, 4) as any as S.Schema<PatchAgentOptimizationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<AgentOptimization>,
+  input: __S(9216, __c288, 0) as any as S.Schema<PatchAgentOptimizationRequest>,
+  output: __S(16996, __c531, 4) as any as S.Schema<AgentOptimization>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16005,8 +16005,8 @@ export const patchAgentOptimizationResult: API.OperationMethod<
   PatchAgentOptimizationResultError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(973, __c121, 5) as any as S.Schema<PatchAgentOptimizationResultRequest>,
-  output: __S(932, __c116, 4) as any as S.Schema<AgentOptimizationResult>,
+  input: __S(9376, __c293, 0) as any as S.Schema<PatchAgentOptimizationResultRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<AgentOptimizationResult>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16025,8 +16025,8 @@ export const patchAgentSkill: API.OperationMethod<
   PatchAgentSkillError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(974, __c121, 6) as any as S.Schema<PatchAgentSkillRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<AgentSkill>,
+  input: __S(9408, __c294, 0) as any as S.Schema<PatchAgentSkillRequest>,
+  output: __S(17056, __c533, 0) as any as S.Schema<AgentSkill>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16040,8 +16040,8 @@ export const patchAIConfig: API.OperationMethod<
   PatchAIConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(975, __c121, 7) as any as S.Schema<PatchAIConfigRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<AIConfig>,
+  input: __S(9440, __c295, 0) as any as S.Schema<PatchAIConfigRequest>,
+  output: __S(17122, __c535, 2) as any as S.Schema<AIConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16055,8 +16055,8 @@ export const patchAIConfigTargeting: API.OperationMethod<
   PatchAIConfigTargetingError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c122, 0) as any as S.Schema<PatchAIConfigTargetingRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<AIConfigTargeting>,
+  input: __S(9472, __c296, 0) as any as S.Schema<PatchAIConfigTargetingRequest>,
+  output: __S(17462, __c545, 22) as any as S.Schema<AIConfigTargeting>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16070,8 +16070,8 @@ export const patchAIConfigVariation: API.OperationMethod<
   PatchAIConfigVariationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(977, __c122, 1) as any as S.Schema<PatchAIConfigVariationRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<AIConfigVariation>,
+  input: __S(9504, __c297, 0) as any as S.Schema<PatchAIConfigVariationRequest>,
+  output: __S(17162, __c536, 10) as any as S.Schema<AIConfigVariation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16085,8 +16085,8 @@ export const patchAITool: API.OperationMethod<
   PatchAIToolError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(978, __c122, 2) as any as S.Schema<PatchAIToolRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<AITool>,
+  input: __S(9536, __c298, 0) as any as S.Schema<PatchAIToolRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<AITool>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16104,8 +16104,8 @@ export const patchApprovalRequestSettings: API.OperationMethod<
   PatchApprovalRequestSettingsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(979, __c122, 3) as any as S.Schema<PatchApprovalRequestSettingsRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<PatchApprovalRequestSettingsResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<PatchApprovalRequestSettingsRequest>,
+  output: __S(996, __c31, 4) as any as S.Schema<PatchApprovalRequestSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16124,8 +16124,8 @@ export const patchBigSegmentStoreIntegration: API.OperationMethod<
   PatchBigSegmentStoreIntegrationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(982, __c122, 6) as any as S.Schema<PatchBigSegmentStoreIntegrationRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BigSegmentStoreIntegration>,
+  input: __S(9600, __c300, 0) as any as S.Schema<PatchBigSegmentStoreIntegrationRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<BigSegmentStoreIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16139,8 +16139,8 @@ export const patchCustomRole: API.OperationMethod<
   PatchCustomRoleError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(983, __c122, 7) as any as S.Schema<PatchCustomRoleRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<CustomRole>,
+  input: __S(9696, __c303, 0) as any as S.Schema<PatchCustomRoleRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<CustomRole>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16154,8 +16154,8 @@ export const patchEnvironment: API.OperationMethod<
   PatchEnvironmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(984, __c123, 0) as any as S.Schema<PatchEnvironmentRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<Environment>,
+  input: __S(9728, __c304, 0) as any as S.Schema<PatchEnvironmentRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<Environment>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16175,8 +16175,8 @@ export const patchExperiment: API.OperationMethod<
   PatchExperimentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(985, __c123, 1) as any as S.Schema<PatchExperimentRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<Experiment>,
+  input: __S(9824, __c307, 0) as any as S.Schema<PatchExperimentRequest>,
+  output: __S(2801, __c87, 17) as any as S.Schema<Experiment>,
   errors: [
     BadRequest,
     Forbidden,
@@ -16197,8 +16197,8 @@ export const patchExpiringTargets: API.OperationMethod<
   PatchExpiringTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(986, __c123, 2) as any as S.Schema<PatchExpiringTargetsRequest>,
-  output: __S(989, __c123, 5) as any as S.Schema<ExpiringTargetPatchResponse>,
+  input: __S(9856, __c308, 0) as any as S.Schema<PatchExpiringTargetsRequest>,
+  output: __S(9888, __c309, 0) as any as S.Schema<ExpiringTargetPatchResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16217,8 +16217,8 @@ export const patchExpiringTargetsForSegment: API.OperationMethod<
   PatchExpiringTargetsForSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c124, 0) as any as S.Schema<PatchExpiringTargetsForSegmentRequest>,
-  output: __S(989, __c123, 5) as any as S.Schema<ExpiringTargetPatchResponse>,
+  input: __S(9954, __c311, 2) as any as S.Schema<PatchExpiringTargetsForSegmentRequest>,
+  output: __S(9888, __c309, 0) as any as S.Schema<ExpiringTargetPatchResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16232,8 +16232,8 @@ export const patchExpiringUserTargets: API.OperationMethod<
   PatchExpiringUserTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(993, __c124, 1) as any as S.Schema<PatchExpiringUserTargetsRequest>,
-  output: __S(994, __c124, 2) as any as S.Schema<ExpiringUserTargetPatchResponse>,
+  input: __S(9984, __c312, 0) as any as S.Schema<PatchExpiringUserTargetsRequest>,
+  output: __S(10016, __c313, 0) as any as S.Schema<ExpiringUserTargetPatchResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16252,8 +16252,8 @@ export const patchExpiringUserTargetsForSegment: API.OperationMethod<
   PatchExpiringUserTargetsForSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(997, __c124, 5) as any as S.Schema<PatchExpiringUserTargetsForSegmentRequest>,
-  output: __S(994, __c124, 2) as any as S.Schema<ExpiringUserTargetPatchResponse>,
+  input: __S(10050, __c314, 2) as any as S.Schema<PatchExpiringUserTargetsForSegmentRequest>,
+  output: __S(10016, __c313, 0) as any as S.Schema<ExpiringUserTargetPatchResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16267,8 +16267,8 @@ export const patchFeatureFlag: API.OperationMethod<
   PatchFeatureFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(998, __c124, 6) as any as S.Schema<PatchFeatureFlagRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<FeatureFlag>,
+  input: __S(10080, __c315, 0) as any as S.Schema<PatchFeatureFlagRequest>,
+  output: __S(15353, __c479, 25) as any as S.Schema<FeatureFlag>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16282,8 +16282,8 @@ export const patchFlagConfigApprovalRequest: API.OperationMethod<
   PatchFlagConfigApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(999, __c124, 7) as any as S.Schema<PatchFlagConfigApprovalRequestRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(10112, __c316, 0) as any as S.Schema<PatchFlagConfigApprovalRequestRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16302,8 +16302,8 @@ export const patchFlagConfigScheduledChange: API.OperationMethod<
   PatchFlagConfigScheduledChangeError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1000, __c125, 0) as any as S.Schema<PatchFlagConfigScheduledChangeRequest>,
-  output: __S(693, __c86, 5) as any as S.Schema<FeatureFlagScheduledChange>,
+  input: __S(10144, __c317, 0) as any as S.Schema<PatchFlagConfigScheduledChangeRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<FeatureFlagScheduledChange>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16322,8 +16322,8 @@ export const patchFlagDefaultsByProject: API.OperationMethod<
   PatchFlagDefaultsByProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1001, __c125, 1) as any as S.Schema<PatchFlagDefaultsByProjectRequest>,
-  output: __S(1004, __c125, 4) as any as S.Schema<UpsertPayloadRep>,
+  input: __S(10176, __c318, 0) as any as S.Schema<PatchFlagDefaultsByProjectRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<UpsertPayloadRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16342,8 +16342,8 @@ export const patchFlagImportConfiguration: API.OperationMethod<
   PatchFlagImportConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1005, __c125, 5) as any as S.Schema<PatchFlagImportConfigurationRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<FlagImportIntegration>,
+  input: __S(10240, __c320, 0) as any as S.Schema<PatchFlagImportConfigurationRequest>,
+  output: __S(3524, __c110, 4) as any as S.Schema<FlagImportIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16357,8 +16357,8 @@ export const patchHoldout: API.OperationMethod<
   PatchHoldoutError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1006, __c125, 6) as any as S.Schema<PatchHoldoutRequest>,
-  output: __S(739, __c92, 3) as any as S.Schema<HoldoutRep>,
+  input: __S(10464, __c327, 0) as any as S.Schema<PatchHoldoutRequest>,
+  output: __S(4256, __c133, 0) as any as S.Schema<HoldoutRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16377,8 +16377,8 @@ export const patchInsightGroup: API.OperationMethod<
   PatchInsightGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1007, __c125, 7) as any as S.Schema<PatchInsightGroupRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<InsightGroup>,
+  input: __S(10496, __c328, 0) as any as S.Schema<PatchInsightGroupRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<InsightGroup>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16397,8 +16397,8 @@ export const patchIntegrationDeliveryConfiguration: API.OperationMethod<
   PatchIntegrationDeliveryConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c126, 0) as any as S.Schema<PatchIntegrationDeliveryConfigurationRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<IntegrationDeliveryConfiguration>,
+  input: __S(10528, __c329, 0) as any as S.Schema<PatchIntegrationDeliveryConfigurationRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<IntegrationDeliveryConfiguration>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16412,8 +16412,8 @@ export const patchIpAllowlistConfig: API.OperationMethod<
   PatchIpAllowlistConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1009, __c126, 1) as any as S.Schema<PatchIpAllowlistConfigRequest>,
-  output: __S(761, __c95, 1) as any as S.Schema<IpAllowlistResponse>,
+  input: __S(10560, __c330, 0) as any as S.Schema<PatchIpAllowlistConfigRequest>,
+  output: __S(4737, __c148, 1) as any as S.Schema<IpAllowlistResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16427,8 +16427,8 @@ export const patchIpAllowlistEntry: API.OperationMethod<
   PatchIpAllowlistEntryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1010, __c126, 2) as any as S.Schema<PatchIpAllowlistEntryRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<IpAllowlistEntryResponse>,
+  input: __S(10592, __c331, 0) as any as S.Schema<PatchIpAllowlistEntryRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<IpAllowlistEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16442,8 +16442,8 @@ export const patchMetric: API.OperationMethod<
   PatchMetricError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1011, __c126, 3) as any as S.Schema<PatchMetricRequest>,
-  output: __S(786, __c98, 2) as any as S.Schema<MetricRep>,
+  input: __S(10624, __c332, 0) as any as S.Schema<PatchMetricRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<MetricRep>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16457,8 +16457,8 @@ export const patchMetricGroup: API.OperationMethod<
   PatchMetricGroupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1012, __c126, 4) as any as S.Schema<PatchMetricGroupRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<MetricGroupRep>,
+  input: __S(10656, __c333, 0) as any as S.Schema<PatchMetricGroupRequest>,
+  output: __S(7777, __c243, 1) as any as S.Schema<MetricGroupRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16472,8 +16472,8 @@ export const patchModelConfig: API.OperationMethod<
   PatchModelConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1013, __c126, 5) as any as S.Schema<PatchModelConfigRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<ModelConfig>,
+  input: __S(10688, __c334, 0) as any as S.Schema<PatchModelConfigRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<ModelConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16487,8 +16487,8 @@ export const patchOAuthClient: API.OperationMethod<
   PatchOAuthClientError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1014, __c126, 6) as any as S.Schema<PatchOAuthClientRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Client>,
+  input: __S(10720, __c335, 0) as any as S.Schema<PatchOAuthClientRequest>,
+  output: __S(8192, __c256, 0) as any as S.Schema<Client>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16507,8 +16507,8 @@ export const patchPromptSnippet: API.OperationMethod<
   PatchPromptSnippetError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1015, __c126, 7) as any as S.Schema<PatchPromptSnippetRequest>,
-  output: __S(819, __c102, 3) as any as S.Schema<PromptSnippet>,
+  input: __S(10752, __c336, 0) as any as S.Schema<PatchPromptSnippetRequest>,
+  output: __S(6048, __c189, 0) as any as S.Schema<PromptSnippet>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16527,8 +16527,8 @@ export const patchRelayAutoConfig: API.OperationMethod<
   PatchRelayAutoConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1016, __c127, 0) as any as S.Schema<PatchRelayAutoConfigRequest>,
-  output: __S(822, __c102, 6) as any as S.Schema<RelayAutoConfigRep>,
+  input: __S(10816, __c338, 0) as any as S.Schema<PatchRelayAutoConfigRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<RelayAutoConfigRep>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16542,8 +16542,8 @@ export const patchReleaseByFlagKey: API.OperationMethod<
   PatchReleaseByFlagKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1017, __c127, 1) as any as S.Schema<PatchReleaseByFlagKeyRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<Release>,
+  input: __S(10848, __c339, 0) as any as S.Schema<PatchReleaseByFlagKeyRequest>,
+  output: __S(9349, __c292, 5) as any as S.Schema<Release>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16557,8 +16557,8 @@ export const patchRepository: API.OperationMethod<
   PatchRepositoryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1018, __c127, 2) as any as S.Schema<PatchRepositoryRequest>,
-  output: __S(847, __c105, 7) as any as S.Schema<RepositoryRep>,
+  input: __S(10880, __c340, 0) as any as S.Schema<PatchRepositoryRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<RepositoryRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16577,8 +16577,8 @@ export const patchSdkKeyByKey: API.OperationMethod<
   PatchSdkKeyByKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1019, __c127, 3) as any as S.Schema<PatchSdkKeyByKeyRequest>,
-  output: __S(861, __c107, 5) as any as S.Schema<SdkKey>,
+  input: __S(10912, __c341, 0) as any as S.Schema<PatchSdkKeyByKeyRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<SdkKey>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16597,8 +16597,8 @@ export const patchTriggerWorkflow: API.OperationMethod<
   PatchTriggerWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1020, __c127, 4) as any as S.Schema<PatchTriggerWorkflowRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<TriggerWorkflowRep>,
+  input: __S(10944, __c342, 0) as any as S.Schema<PatchTriggerWorkflowRequest>,
+  output: __S(11554, __c361, 2) as any as S.Schema<TriggerWorkflowRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16617,8 +16617,8 @@ export const postAdaptiveTrigger: API.OperationMethod<
   PostAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1021, __c127, 5) as any as S.Schema<PostAdaptiveTriggerRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<AdaptiveTrigger>,
+  input: __S(10976, __c343, 0) as any as S.Schema<PostAdaptiveTriggerRequest>,
+  output: __S(16804, __c525, 4) as any as S.Schema<AdaptiveTrigger>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16632,8 +16632,8 @@ export const postAgentGraph: API.OperationMethod<
   PostAgentGraphError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1022, __c127, 6) as any as S.Schema<PostAgentGraphRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<AgentGraph>,
+  input: __S(11008, __c344, 0) as any as S.Schema<PostAgentGraphRequest>,
+  output: __S(16898, __c528, 2) as any as S.Schema<AgentGraph>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16647,8 +16647,8 @@ export const postAgentOptimization: API.OperationMethod<
   PostAgentOptimizationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1023, __c127, 7) as any as S.Schema<PostAgentOptimizationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<AgentOptimization>,
+  input: __S(11040, __c345, 0) as any as S.Schema<PostAgentOptimizationRequest>,
+  output: __S(16996, __c531, 4) as any as S.Schema<AgentOptimization>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16666,8 +16666,8 @@ export const postAgentOptimizationResult: API.OperationMethod<
   PostAgentOptimizationResultError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c128, 0) as any as S.Schema<PostAgentOptimizationResultRequest>,
-  output: __S(932, __c116, 4) as any as S.Schema<AgentOptimizationResult>,
+  input: __S(11072, __c346, 0) as any as S.Schema<PostAgentOptimizationResultRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<AgentOptimizationResult>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16686,8 +16686,8 @@ export const postAgentSkill: API.OperationMethod<
   PostAgentSkillError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c128, 1) as any as S.Schema<PostAgentSkillRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<AgentSkill>,
+  input: __S(11104, __c347, 0) as any as S.Schema<PostAgentSkillRequest>,
+  output: __S(17056, __c533, 0) as any as S.Schema<AgentSkill>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16701,8 +16701,8 @@ export const postAIConfig: API.OperationMethod<
   PostAIConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1027, __c128, 3) as any as S.Schema<PostAIConfigRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<AIConfig>,
+  input: __S(11201, __c350, 1) as any as S.Schema<PostAIConfigRequest>,
+  output: __S(17122, __c535, 2) as any as S.Schema<AIConfig>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16716,8 +16716,8 @@ export const postAIConfigVariation: API.OperationMethod<
   PostAIConfigVariationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1028, __c128, 4) as any as S.Schema<PostAIConfigVariationRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<AIConfigVariation>,
+  input: __S(11232, __c351, 0) as any as S.Schema<PostAIConfigVariationRequest>,
+  output: __S(17162, __c536, 10) as any as S.Schema<AIConfigVariation>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16731,8 +16731,8 @@ export const postAITool: API.OperationMethod<
   PostAIToolError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1029, __c128, 5) as any as S.Schema<PostAIToolRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<AITool>,
+  input: __S(11264, __c352, 0) as any as S.Schema<PostAIToolRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<AITool>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16750,8 +16750,8 @@ export const postApprovalRequestApplyForFlag: API.OperationMethod<
   PostApprovalRequestApplyForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1030, __c128, 6) as any as S.Schema<PostApprovalRequestApplyForFlagRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(11296, __c353, 0) as any as S.Schema<PostApprovalRequestApplyForFlagRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16765,8 +16765,8 @@ export const postApprovalRequestForFlag: API.OperationMethod<
   PostApprovalRequestForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1031, __c128, 7) as any as S.Schema<PostApprovalRequestForFlagRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(11328, __c354, 0) as any as S.Schema<PostApprovalRequestForFlagRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16784,8 +16784,8 @@ export const postApprovalRequestReviewForFlag: API.OperationMethod<
   PostApprovalRequestReviewForFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1032, __c129, 0) as any as S.Schema<PostApprovalRequestReviewForFlagRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(11360, __c355, 0) as any as S.Schema<PostApprovalRequestReviewForFlagRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16799,8 +16799,8 @@ export const postAuditLogEntries: API.OperationMethod<
   PostAuditLogEntriesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1033, __c129, 1) as any as S.Schema<PostAuditLogEntriesRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<AuditLogEntryListingRepCollection>,
+  input: __S(11392, __c356, 0) as any as S.Schema<PostAuditLogEntriesRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<AuditLogEntryListingRepCollection>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16814,8 +16814,8 @@ export const postAuditLogEntryCounts: API.OperationMethod<
   PostAuditLogEntryCountsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1034, __c129, 2) as any as S.Schema<PostAuditLogEntryCountsRequest>,
-  output: __S(1037, __c129, 5) as any as S.Schema<CountBucketsResult>,
+  input: __S(11424, __c357, 0) as any as S.Schema<PostAuditLogEntryCountsRequest>,
+  output: __S(11427, __c357, 3) as any as S.Schema<CountBucketsResult>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16833,8 +16833,8 @@ export const postCompleteWarehouseDestinationSetup: API.OperationMethod<
   PostCompleteWarehouseDestinationSetupError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1038, __c129, 6) as any as S.Schema<PostCompleteWarehouseDestinationSetupRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<Destination>,
+  input: __S(11456, __c358, 0) as any as S.Schema<PostCompleteWarehouseDestinationSetupRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<Destination>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16848,8 +16848,8 @@ export const postCustomRole: API.OperationMethod<
   PostCustomRoleError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1039, __c129, 7) as any as S.Schema<PostCustomRoleRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<CustomRole>,
+  input: __S(11488, __c359, 0) as any as S.Schema<PostCustomRoleRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<CustomRole>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16867,8 +16867,8 @@ export const postDisableAdaptiveTrigger: API.OperationMethod<
   PostDisableAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c130, 0) as any as S.Schema<PostDisableAdaptiveTriggerRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<PostDisableAdaptiveTriggerResponse>,
+  input: __S(11616, __c363, 0) as any as S.Schema<PostDisableAdaptiveTriggerRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<PostDisableAdaptiveTriggerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16886,8 +16886,8 @@ export const postEnableAdaptiveTrigger: API.OperationMethod<
   PostEnableAdaptiveTriggerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1041, __c130, 1) as any as S.Schema<PostEnableAdaptiveTriggerRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<PostEnableAdaptiveTriggerResponse>,
+  input: __S(11648, __c364, 0) as any as S.Schema<PostEnableAdaptiveTriggerRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<PostEnableAdaptiveTriggerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16906,8 +16906,8 @@ export const postEnvironment: API.OperationMethod<
   PostEnvironmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1042, __c130, 2) as any as S.Schema<PostEnvironmentRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<Environment>,
+  input: __S(11680, __c365, 0) as any as S.Schema<PostEnvironmentRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<Environment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16921,8 +16921,8 @@ export const postExtinction: API.OperationMethod<
   PostExtinctionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1043, __c130, 3) as any as S.Schema<PostExtinctionRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PostExtinctionResponse>,
+  input: __S(11712, __c366, 0) as any as S.Schema<PostExtinctionRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PostExtinctionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16936,8 +16936,8 @@ export const postFeatureFlag: API.OperationMethod<
   PostFeatureFlagError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1047, __c130, 7) as any as S.Schema<PostFeatureFlagRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<FeatureFlag>,
+  input: __S(11747, __c367, 3) as any as S.Schema<PostFeatureFlagRequest>,
+  output: __S(15353, __c479, 25) as any as S.Schema<FeatureFlag>,
   errors: [BadRequest, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16956,8 +16956,8 @@ export const postFlagConfigScheduledChanges: API.OperationMethod<
   PostFlagConfigScheduledChangesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1048, __c131, 0) as any as S.Schema<PostFlagConfigScheduledChangesRequest>,
-  output: __S(693, __c86, 5) as any as S.Schema<FeatureFlagScheduledChange>,
+  input: __S(11776, __c368, 0) as any as S.Schema<PostFlagConfigScheduledChangesRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<FeatureFlagScheduledChange>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16975,8 +16975,8 @@ export const postFlagCopyConfigApprovalRequest: API.OperationMethod<
   PostFlagCopyConfigApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1049, __c131, 1) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(11808, __c369, 0) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -16995,11 +16995,11 @@ export const postGenerateProjectEnvWarehouseDestinationKeyPair: API.OperationMet
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1050,
-    __c131,
-    2,
+    11840,
+    __c370,
+    0,
   ) as any as S.Schema<PostGenerateProjectEnvWarehouseDestinationKeyPairRequest>,
-  output: __S(1051, __c131, 3) as any as S.Schema<GenerateWarehouseDestinationKeyPairPostRep>,
+  output: __S(11872, __c371, 0) as any as S.Schema<GenerateWarehouseDestinationKeyPairPostRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17013,8 +17013,8 @@ export const postGenerateTrustPolicy: API.OperationMethod<
   PostGenerateTrustPolicyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1052, __c131, 4) as any as S.Schema<PostGenerateTrustPolicyRequest>,
-  output: __S(1056, __c132, 0) as any as S.Schema<GenerateTrustPolicyPostRep>,
+  input: __S(11904, __c372, 0) as any as S.Schema<PostGenerateTrustPolicyRequest>,
+  output: __S(11908, __c372, 4) as any as S.Schema<GenerateTrustPolicyPostRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17032,8 +17032,8 @@ export const postGenerateWarehouseDestinationKeyPair: API.OperationMethod<
   PostGenerateWarehouseDestinationKeyPairError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1057, __c132, 1) as any as S.Schema<PostGenerateWarehouseDestinationKeyPairRequest>,
-  output: __S(1051, __c131, 3) as any as S.Schema<GenerateWarehouseDestinationKeyPairPostRep>,
+  input: __S(11936, __c373, 0) as any as S.Schema<PostGenerateWarehouseDestinationKeyPairRequest>,
+  output: __S(11872, __c371, 0) as any as S.Schema<GenerateWarehouseDestinationKeyPairPostRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17051,11 +17051,11 @@ export const postGenerateWarehouseDestinationSetupScript: API.OperationMethod<
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1058,
-    __c132,
-    2,
+    12192,
+    __c381,
+    0,
   ) as any as S.Schema<PostGenerateWarehouseDestinationSetupScriptRequest>,
-  output: __S(1059, __c132, 3) as any as S.Schema<WarehouseDestinationSetupScriptRep>,
+  output: __S(12193, __c381, 1) as any as S.Schema<WarehouseDestinationSetupScriptRep>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17069,8 +17069,8 @@ export const postHoldout: API.OperationMethod<
   PostHoldoutError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1061, __c132, 5) as any as S.Schema<PostHoldoutRequest>,
-  output: __S(739, __c92, 3) as any as S.Schema<HoldoutRep>,
+  input: __S(12225, __c382, 1) as any as S.Schema<PostHoldoutRequest>,
+  output: __S(4256, __c133, 0) as any as S.Schema<HoldoutRep>,
   errors: [BadRequest, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17084,8 +17084,8 @@ export const postMetric: API.OperationMethod<
   PostMetricError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1066, __c133, 2) as any as S.Schema<PostMetricRequest>,
-  output: __S(786, __c98, 2) as any as S.Schema<MetricRep>,
+  input: __S(12260, __c383, 4) as any as S.Schema<PostMetricRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<MetricRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17103,8 +17103,8 @@ export const postMigrationSafetyIssues: API.OperationMethod<
   PostMigrationSafetyIssuesError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1067, __c133, 3) as any as S.Schema<PostMigrationSafetyIssuesRequest>,
-  output: __S(1070, __c133, 6) as any as S.Schema<PostMigrationSafetyIssuesResponse>,
+  input: __S(12288, __c384, 0) as any as S.Schema<PostMigrationSafetyIssuesRequest>,
+  output: __S(12291, __c384, 3) as any as S.Schema<PostMigrationSafetyIssuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17118,8 +17118,8 @@ export const postModelConfig: API.OperationMethod<
   PostModelConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1071, __c133, 7) as any as S.Schema<PostModelConfigRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<ModelConfig>,
+  input: __S(12320, __c385, 0) as any as S.Schema<PostModelConfigRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<ModelConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17138,8 +17138,8 @@ export const postPromptSnippet: API.OperationMethod<
   PostPromptSnippetError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c134, 0) as any as S.Schema<PostPromptSnippetRequest>,
-  output: __S(819, __c102, 3) as any as S.Schema<PromptSnippet>,
+  input: __S(12352, __c386, 0) as any as S.Schema<PostPromptSnippetRequest>,
+  output: __S(6048, __c189, 0) as any as S.Schema<PromptSnippet>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17153,8 +17153,8 @@ export const postRelayAutoConfig: API.OperationMethod<
   PostRelayAutoConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1073, __c134, 1) as any as S.Schema<PostRelayAutoConfigRequest>,
-  output: __S(822, __c102, 6) as any as S.Schema<RelayAutoConfigRep>,
+  input: __S(12384, __c387, 0) as any as S.Schema<PostRelayAutoConfigRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<RelayAutoConfigRep>,
   errors: [BadRequest, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17173,8 +17173,8 @@ export const postReleasePipeline: API.OperationMethod<
   PostReleasePipelineError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1078, __c134, 6) as any as S.Schema<PostReleasePipelineRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<ReleasePipeline>,
+  input: __S(12416, __c388, 0) as any as S.Schema<PostReleasePipelineRequest>,
+  output: __S(324, __c10, 4) as any as S.Schema<ReleasePipeline>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17188,8 +17188,8 @@ export const postReleasePoliciesOrder: API.OperationMethod<
   PostReleasePoliciesOrderError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1079, __c134, 7) as any as S.Schema<PostReleasePoliciesOrderRequest>,
-  output: __S(1080, __c135, 0) as any as S.Schema<PostReleasePoliciesOrderResponse>,
+  input: __S(12480, __c390, 0) as any as S.Schema<PostReleasePoliciesOrderRequest>,
+  output: __S(12481, __c390, 1) as any as S.Schema<PostReleasePoliciesOrderResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17208,8 +17208,8 @@ export const postReleasePolicy: API.OperationMethod<
   PostReleasePolicyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1081, __c135, 1) as any as S.Schema<PostReleasePolicyRequest>,
-  output: __S(842, __c105, 2) as any as S.Schema<ReleasePolicy>,
+  input: __S(12512, __c391, 0) as any as S.Schema<PostReleasePolicyRequest>,
+  output: __S(6348, __c198, 12) as any as S.Schema<ReleasePolicy>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17223,8 +17223,8 @@ export const postRepository: API.OperationMethod<
   PostRepositoryError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1082, __c135, 2) as any as S.Schema<PostRepositoryRequest>,
-  output: __S(847, __c105, 7) as any as S.Schema<RepositoryRep>,
+  input: __S(12608, __c394, 0) as any as S.Schema<PostRepositoryRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<RepositoryRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17238,8 +17238,8 @@ export const postRestrictedModels: API.OperationMethod<
   PostRestrictedModelsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1083, __c135, 3) as any as S.Schema<PostRestrictedModelsRequest>,
-  output: __S(1086, __c135, 6) as any as S.Schema<RestrictedModelsResponse>,
+  input: __S(12640, __c395, 0) as any as S.Schema<PostRestrictedModelsRequest>,
+  output: __S(12643, __c395, 3) as any as S.Schema<RestrictedModelsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17253,8 +17253,8 @@ export const postSdkKey: API.OperationMethod<
   PostSdkKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1087, __c135, 7) as any as S.Schema<PostSdkKeyRequest>,
-  output: __S(861, __c107, 5) as any as S.Schema<SdkKey>,
+  input: __S(12672, __c396, 0) as any as S.Schema<PostSdkKeyRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<SdkKey>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17268,8 +17268,8 @@ export const postWorkflow: API.OperationMethod<
   PostWorkflowError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c136, 0) as any as S.Schema<PostWorkflowRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<CustomWorkflowOutput>,
+  input: __S(12704, __c397, 0) as any as S.Schema<PostWorkflowRequest>,
+  output: __S(2087, __c65, 7) as any as S.Schema<CustomWorkflowOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17283,8 +17283,8 @@ export const putBranch: API.OperationMethod<
   PutBranchError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1089, __c136, 1) as any as S.Schema<PutBranchRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PutBranchResponse>,
+  input: __S(12736, __c398, 0) as any as S.Schema<PutBranchRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PutBranchResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17303,8 +17303,8 @@ export const putContextFlagSetting: API.OperationMethod<
   PutContextFlagSettingError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1090, __c136, 2) as any as S.Schema<PutContextFlagSettingRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PutContextFlagSettingResponse>,
+  input: __S(12768, __c399, 0) as any as S.Schema<PutContextFlagSettingRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PutContextFlagSettingResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17318,8 +17318,8 @@ export const putContextKind: API.OperationMethod<
   PutContextKindError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1091, __c136, 3) as any as S.Schema<PutContextKindRequest>,
-  output: __S(1092, __c136, 4) as any as S.Schema<UpsertResponseRep>,
+  input: __S(12800, __c400, 0) as any as S.Schema<PutContextKindRequest>,
+  output: __S(12801, __c400, 1) as any as S.Schema<UpsertResponseRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17337,8 +17337,8 @@ export const putExperimentationSettings: API.OperationMethod<
   PutExperimentationSettingsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1095, __c136, 7) as any as S.Schema<PutExperimentationSettingsRequest>,
-  output: __S(666, __c83, 2) as any as S.Schema<RandomizationSettingsRep>,
+  input: __S(12834, __c401, 2) as any as S.Schema<PutExperimentationSettingsRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<RandomizationSettingsRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17357,8 +17357,8 @@ export const putFlagDefaultsByProject: API.OperationMethod<
   PutFlagDefaultsByProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1096, __c137, 0) as any as S.Schema<PutFlagDefaultsByProjectRequest>,
-  output: __S(1004, __c125, 4) as any as S.Schema<UpsertPayloadRep>,
+  input: __S(12864, __c402, 0) as any as S.Schema<PutFlagDefaultsByProjectRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<UpsertPayloadRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17372,8 +17372,8 @@ export const putFlagFollower: API.OperationMethod<
   PutFlagFollowerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1097, __c137, 1) as any as S.Schema<PutFlagFollowerRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PutFlagFollowerResponse>,
+  input: __S(12896, __c403, 0) as any as S.Schema<PutFlagFollowerRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PutFlagFollowerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17387,8 +17387,8 @@ export const putReleasePipeline: API.OperationMethod<
   PutReleasePipelineError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1098, __c137, 2) as any as S.Schema<PutReleasePipelineRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<ReleasePipeline>,
+  input: __S(13056, __c408, 0) as any as S.Schema<PutReleasePipelineRequest>,
+  output: __S(324, __c10, 4) as any as S.Schema<ReleasePipeline>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17402,8 +17402,8 @@ export const putReleasePolicy: API.OperationMethod<
   PutReleasePolicyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1099, __c137, 3) as any as S.Schema<PutReleasePolicyRequest>,
-  output: __S(842, __c105, 2) as any as S.Schema<ReleasePolicy>,
+  input: __S(13088, __c409, 0) as any as S.Schema<PutReleasePolicyRequest>,
+  output: __S(6348, __c198, 12) as any as S.Schema<ReleasePolicy>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17417,8 +17417,8 @@ export const putSdkKeyViews: API.OperationMethod<
   PutSdkKeyViewsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1100, __c137, 4) as any as S.Schema<PutSdkKeyViewsRequest>,
-  output: __S(1101, __c137, 5) as any as S.Schema<PutSdkKeyViewsResponse>,
+  input: __S(13120, __c410, 0) as any as S.Schema<PutSdkKeyViewsRequest>,
+  output: __S(13121, __c410, 1) as any as S.Schema<PutSdkKeyViewsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17437,8 +17437,8 @@ export const resetEnvironmentMobileKey: API.OperationMethod<
   ResetEnvironmentMobileKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1102, __c137, 6) as any as S.Schema<ResetEnvironmentMobileKeyRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<Environment>,
+  input: __S(13152, __c411, 0) as any as S.Schema<ResetEnvironmentMobileKeyRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<Environment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17457,8 +17457,8 @@ export const resetEnvironmentSDKKey: API.OperationMethod<
   ResetEnvironmentSDKKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1103, __c137, 7) as any as S.Schema<ResetEnvironmentSDKKeyRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<Environment>,
+  input: __S(13184, __c412, 0) as any as S.Schema<ResetEnvironmentSDKKeyRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<Environment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17472,8 +17472,8 @@ export const resetRelayAutoConfig: API.OperationMethod<
   ResetRelayAutoConfigError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c138, 0) as any as S.Schema<ResetRelayAutoConfigRequest>,
-  output: __S(822, __c102, 6) as any as S.Schema<RelayAutoConfigRep>,
+  input: __S(13216, __c413, 0) as any as S.Schema<ResetRelayAutoConfigRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<RelayAutoConfigRep>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17487,8 +17487,8 @@ export const searchContexts: API.OperationMethod<
   SearchContextsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1105, __c138, 1) as any as S.Schema<SearchContextsRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<Contexts>,
+  input: __S(13248, __c414, 0) as any as S.Schema<SearchContextsRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<Contexts>,
   errors: [BadRequest, Forbidden, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17507,8 +17507,8 @@ export const triggerFlagImportJob: API.OperationMethod<
   TriggerFlagImportJobError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1106, __c138, 2) as any as S.Schema<TriggerFlagImportJobRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<TriggerFlagImportJobResponse>,
+  input: __S(13280, __c415, 0) as any as S.Schema<TriggerFlagImportJobRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<TriggerFlagImportJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17522,8 +17522,8 @@ export const unlinkResource: API.OperationMethod<
   UnlinkResourceError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1107, __c138, 3) as any as S.Schema<UnlinkResourceRequest>,
-  output: __S(1108, __c138, 4) as any as S.Schema<UnlinkResourceSuccessResponse>,
+  input: __S(13312, __c416, 0) as any as S.Schema<UnlinkResourceRequest>,
+  output: __S(13313, __c416, 1) as any as S.Schema<UnlinkResourceSuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17542,8 +17542,8 @@ export const updateAnnouncementPublic: API.OperationMethod<
   UpdateAnnouncementPublicError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1110, __c138, 6) as any as S.Schema<UpdateAnnouncementPublicRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<AnnouncementResponse>,
+  input: __S(13345, __c417, 1) as any as S.Schema<UpdateAnnouncementPublicRequest>,
+  output: __S(15976, __c499, 8) as any as S.Schema<AnnouncementResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17557,8 +17557,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1111, __c138, 7) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<ApplicationRep>,
+  input: __S(13408, __c419, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ApplicationRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17572,8 +17572,8 @@ export const updateApplicationVersion: API.OperationMethod<
   UpdateApplicationVersionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1112, __c139, 0) as any as S.Schema<UpdateApplicationVersionRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<ApplicationVersionRep>,
+  input: __S(13440, __c420, 0) as any as S.Schema<UpdateApplicationVersionRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<ApplicationVersionRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17587,8 +17587,8 @@ export const updateApprovalRequest: API.OperationMethod<
   UpdateApprovalRequestError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1113, __c139, 1) as any as S.Schema<UpdateApprovalRequestRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<FlagConfigApprovalRequestResponse>,
+  input: __S(13472, __c421, 0) as any as S.Schema<UpdateApprovalRequestRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<FlagConfigApprovalRequestResponse>,
   errors: [Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17602,8 +17602,8 @@ export const updateBigSegmentContextTargets: API.OperationMethod<
   UpdateBigSegmentContextTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1115, __c139, 3) as any as S.Schema<UpdateBigSegmentContextTargetsRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<UpdateBigSegmentContextTargetsResponse>,
+  input: __S(13504, __c422, 0) as any as S.Schema<UpdateBigSegmentContextTargetsRequest>,
+  output: __S(14368, __c449, 0) as any as S.Schema<UpdateBigSegmentContextTargetsResponse>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17617,8 +17617,8 @@ export const updateBigSegmentTargets: API.OperationMethod<
   UpdateBigSegmentTargetsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1116, __c139, 4) as any as S.Schema<UpdateBigSegmentTargetsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<UpdateBigSegmentTargetsResponse>,
+  input: __S(13568, __c424, 0) as any as S.Schema<UpdateBigSegmentTargetsRequest>,
+  output: __S(14176, __c443, 0) as any as S.Schema<UpdateBigSegmentTargetsResponse>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17632,8 +17632,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1117, __c139, 5) as any as S.Schema<UpdateDeploymentRequest>,
-  output: __S(633, __c79, 1) as any as S.Schema<DeploymentRep>,
+  input: __S(13600, __c425, 0) as any as S.Schema<UpdateDeploymentRequest>,
+  output: __S(2378, __c74, 10) as any as S.Schema<DeploymentRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17647,8 +17647,8 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1118, __c139, 6) as any as S.Schema<UpdateDestinationRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<Destination>,
+  input: __S(13632, __c426, 0) as any as S.Schema<UpdateDestinationRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<Destination>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17667,8 +17667,8 @@ export const updateDestinationById: API.OperationMethod<
   UpdateDestinationByIdError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1119, __c139, 7) as any as S.Schema<UpdateDestinationByIdRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<Destination>,
+  input: __S(13664, __c427, 0) as any as S.Schema<UpdateDestinationByIdRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<Destination>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17687,8 +17687,8 @@ export const updateFlagLink: API.OperationMethod<
   UpdateFlagLinkError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c140, 0) as any as S.Schema<UpdateFlagLinkRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<FlagLinkRep>,
+  input: __S(13696, __c428, 0) as any as S.Schema<UpdateFlagLinkRequest>,
+  output: __S(3970, __c124, 2) as any as S.Schema<FlagLinkRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17707,8 +17707,8 @@ export const updateIntegrationConfiguration: API.OperationMethod<
   UpdateIntegrationConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1121, __c140, 1) as any as S.Schema<UpdateIntegrationConfigurationRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<IntegrationConfigurationsRep>,
+  input: __S(13728, __c429, 0) as any as S.Schema<UpdateIntegrationConfigurationRequest>,
+  output: __S(4972, __c155, 12) as any as S.Schema<IntegrationConfigurationsRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17722,8 +17722,8 @@ export const updateLayer: API.OperationMethod<
   UpdateLayerError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1122, __c140, 2) as any as S.Schema<UpdateLayerRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<LayerRep>,
+  input: __S(13792, __c431, 0) as any as S.Schema<UpdateLayerRequest>,
+  output: __S(6436, __c201, 4) as any as S.Schema<LayerRep>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17737,8 +17737,8 @@ export const updateMember: API.OperationMethod<
   UpdateMemberError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1123, __c140, 3) as any as S.Schema<UpdateMemberRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<Member>,
+  input: __S(13824, __c432, 0) as any as S.Schema<UpdateMemberRequest>,
+  output: __S(6948, __c217, 4) as any as S.Schema<Member>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17752,8 +17752,8 @@ export const updateMembers: API.OperationMethod<
   UpdateMembersError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1124, __c140, 4) as any as S.Schema<UpdateMembersRequest>,
-  output: __S(1126, __c140, 6) as any as S.Schema<BulkEditMembersRep>,
+  input: __S(13856, __c433, 0) as any as S.Schema<UpdateMembersRequest>,
+  output: __S(13857, __c433, 1) as any as S.Schema<BulkEditMembersRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17767,8 +17767,8 @@ export const updatePhaseStatus: API.OperationMethod<
   UpdatePhaseStatusError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1130, __c141, 2) as any as S.Schema<UpdatePhaseStatusRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<Release>,
+  input: __S(13923, __c435, 3) as any as S.Schema<UpdatePhaseStatusRequest>,
+  output: __S(9349, __c292, 5) as any as S.Schema<Release>,
   errors: [BadRequest, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17782,8 +17782,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1131, __c141, 3) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<ProjectRep>,
+  input: __S(13952, __c436, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(8832, __c276, 0) as any as S.Schema<ProjectRep>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17797,8 +17797,8 @@ export const updateSegment: API.OperationMethod<
   UpdateSegmentError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1132, __c141, 4) as any as S.Schema<UpdateSegmentRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<UserSegment>,
+  input: __S(13984, __c437, 0) as any as S.Schema<UpdateSegmentRequest>,
+  output: __S(902, __c28, 6) as any as S.Schema<UserSegment>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17817,8 +17817,8 @@ export const updateSegmentBySegmentKey: API.OperationMethod<
   UpdateSegmentBySegmentKeyError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1133, __c141, 5) as any as S.Schema<UpdateSegmentBySegmentKeyRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<UserSegment>,
+  input: __S(14016, __c438, 0) as any as S.Schema<UpdateSegmentBySegmentKeyRequest>,
+  output: __S(902, __c28, 6) as any as S.Schema<UserSegment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17837,8 +17837,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1134, __c141, 6) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Integration>,
+  input: __S(14048, __c439, 0) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(9795, __c306, 3) as any as S.Schema<Integration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17852,8 +17852,8 @@ export const updateTeam: API.OperationMethod<
   UpdateTeamError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1135, __c141, 7) as any as S.Schema<UpdateTeamRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<Team>,
+  input: __S(14080, __c440, 0) as any as S.Schema<UpdateTeamRequest>,
+  output: __S(10434, __c326, 2) as any as S.Schema<Team>,
   errors: [BadRequest, NotFound, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17867,8 +17867,8 @@ export const updateTeams: API.OperationMethod<
   UpdateTeamsError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c142, 0) as any as S.Schema<UpdateTeamsRequest>,
-  output: __S(1137, __c142, 1) as any as S.Schema<BulkEditTeamsRep>,
+  input: __S(14112, __c441, 0) as any as S.Schema<UpdateTeamsRequest>,
+  output: __S(14113, __c441, 1) as any as S.Schema<BulkEditTeamsRep>,
   errors: [BadRequest, Forbidden, Conflict, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17888,8 +17888,8 @@ export const updateToken: API.OperationMethod<
   UpdateTokenError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1138, __c142, 2) as any as S.Schema<UpdateTokenRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<Token>,
+  input: __S(14208, __c444, 0) as any as S.Schema<UpdateTokenRequest>,
+  output: __S(11168, __c349, 0) as any as S.Schema<Token>,
   errors: [
     BadRequest,
     Forbidden,
@@ -17910,8 +17910,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1139, __c142, 3) as any as S.Schema<UpdateViewRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<View>,
+  input: __S(14240, __c445, 0) as any as S.Schema<UpdateViewRequest>,
+  output: __S(12070, __c377, 6) as any as S.Schema<View>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17925,8 +17925,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1140, __c142, 4) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<Webhook>,
+  input: __S(14272, __c446, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17944,8 +17944,8 @@ export const validateIntegrationDeliveryConfiguration: API.OperationMethod<
   ValidateIntegrationDeliveryConfigurationError,
   LaunchDarklyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1141, __c142, 5) as any as S.Schema<ValidateIntegrationDeliveryConfigurationRequest>,
-  output: __S(1142, __c142, 6) as any as S.Schema<IntegrationDeliveryConfigurationResponse>,
+  input: __S(14304, __c447, 0) as any as S.Schema<ValidateIntegrationDeliveryConfigurationRequest>,
+  output: __S(14305, __c447, 1) as any as S.Schema<IntegrationDeliveryConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownLaunchDarklyError],
   protocol: LaunchDarklyProtocol,
   retry: Retry.Retry,
@@ -17955,779 +17955,6 @@ export const validateIntegrationDeliveryConfiguration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryKey: S.String,
-          projectKey: S.String,
-        }),
-      ).annotate({
-        identifier: "InsightsRepositoryProject",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mappings: __S(1, __c0, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/v2/engineering-insights/repositories/projects",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AssociateRepositoriesAndProjectsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Link" });
-    case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.Number,
-          items: __S(1, __c0, 1),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "InsightsRepositoryProjectCollection",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          currentVersion: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FlagCopyConfigEnvironment",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          source: __S(6, __c0, 6),
-          target: __S(6, __c0, 6),
-          comment: S.optional(S.String),
-          includedActions: S.optional(__S(7, __c0, 7)),
-          excludedActions: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/copy",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CopyFeatureFlagRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          usingMobileKey: S.optional(S.Boolean),
-          usingEnvironmentId: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ClientSideAvailability" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          value: S.Unknown,
-          valueHash: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Variation" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          role: S.String,
-          email: S.String,
-        }),
-      ).annotate({ identifier: "MemberSummary" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "MaintainerTeam" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessDeniedReason" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "AccessDenied" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessAllowedReason" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(18, __c2, 2),
-        }),
-      ).annotate({ identifier: "AccessAllowedRep" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          denied: __S(17, __c2, 1),
-          allowed: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "Access" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Modification" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          attribute: S.optional(S.String),
-          op: S.String,
-          values: __S(23, __c2, 7),
-          contextKind: S.optional(S.String),
-          negate: S.Boolean,
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricEventDefaultRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          environmentKey: S.optional(S.String),
-          _name: S.optional(S.String),
-          _integrationKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricDataSourceRefRep" });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eventName: S.optional(S.String),
-          isNumeric: S.optional(S.Boolean),
-          unitAggregationType: S.optional(S.String),
-          unitAggregationField: S.optional(S.String),
-          valueColumn: S.optional(S.String),
-          dataSource: S.optional(__S(26, __c3, 2)),
-          filters: S.optional(__S(24, __c3, 0)),
-          windowStartOffset: S.optional(S.Number),
-          windowEndOffset: S.optional(S.Number),
-          winsorLowerPercentile: S.optional(S.Number),
-          winsorUpperPercentile: S.optional(S.Number),
-          winsorIncludeImputed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MetricDenominatorRep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          experimentCount: S.optional(S.Number),
-          metricGroupCount: S.optional(S.Number),
-          activeExperimentCount: S.optional(S.Number),
-          activeGuardedRolloutCount: S.optional(S.Number),
-          _id: S.String,
-          _versionId: S.String,
-          _version: S.optional(S.Number),
-          key: S.String,
-          name: S.String,
-          kind: S.String,
-          _attachedFlagCount: S.optional(S.Number),
-          _links: __S(4, __c0, 4),
-          _site: S.optional(__S(3, __c0, 3)),
-          _access: S.optional(__S(21, __c2, 5)),
-          tags: __S(12, __c1, 4),
-          _creationDate: S.Number,
-          lastModified: S.optional(__S(22, __c2, 6)),
-          maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
-          description: S.optional(S.String),
-          category: S.optional(S.String),
-          isNumeric: S.optional(S.Boolean),
-          successCriteria: S.optional(S.String),
-          unit: S.optional(S.String),
-          eventKey: S.optional(S.String),
-          randomizationUnits: S.optional(__S(12, __c1, 4)),
-          analysisUnits: S.optional(__S(12, __c1, 4)),
-          filters: S.optional(__S(24, __c3, 0)),
-          unitAggregationType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          percentileValue: S.optional(S.Number),
-          eventDefault: S.optional(__S(25, __c3, 1)),
-          dataSource: __S(26, __c3, 2),
-          lastSeen: S.optional(S.Number),
-          archived: S.optional(S.Boolean),
-          archivedAt: S.optional(S.Number),
-          selector: S.optional(S.String),
-          urls: S.optional(__S(28, __c3, 4)),
-          windowStartOffset: S.optional(S.Number),
-          windowEndOffset: S.optional(S.Number),
-          winsorLowerPercentile: S.optional(S.Number),
-          winsorUpperPercentile: S.optional(S.Number),
-          winsorIncludeImputed: S.optional(S.Boolean),
-          traceQuery: S.optional(S.String),
-          traceValueLocation: S.optional(S.String),
-          unitAggregationField: S.optional(S.String),
-          denominator: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "MetricListingRep" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startDate: S.optional(S.Number),
-          stopDate: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExperimentEnabledPeriodRep",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startDate: S.optional(S.Number),
-          stopDate: S.optional(S.Number),
-          enabledPeriods: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "ExperimentEnvironmentSettingRep",
-      });
-    case 2:
-      return S.Record(S.String, __S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricKey: S.optional(S.String),
-          _metric: S.optional(__S(30, __c3, 6)),
-          environments: S.optional(__S(12, __c1, 4)),
-          _environmentSettings: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "LegacyExperimentRep" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          baselineIdx: S.Number,
-          items: __S(36, __c4, 4),
-        }),
-      ).annotate({ identifier: "ExperimentInfoRep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "CustomProperty" });
-    case 7:
-      return S.Record(S.String, __S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          onVariation: S.Number,
-          offVariation: S.Number,
-        }),
-      ).annotate({ identifier: "Defaults" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contextKind: S.optional(S.String),
-          stageCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FlagMigrationSettingsRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          readyForCodeRemoval: S.optional(S.Boolean),
-          readyToArchive: S.optional(S.Boolean),
-          cleanupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StaleFlagData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          values: __S(12, __c1, 4),
-          variation: S.Number,
-          contextKind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Target" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          variation: S.Number,
-          weight: S.Number,
-          _untracked: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WeightedVariation" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultVariation: S.Number,
-          canReshuffle: S.Boolean,
-        }),
-      ).annotate({ identifier: "ExperimentAllocationRep" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          variations: __S(46, __c5, 6),
-          experimentAllocation: S.optional(__S(47, __c5, 7)),
-          seed: S.optional(S.Number),
-          bucketBy: S.optional(S.String),
-          contextKind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Rollout" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          attribute: S.String,
-          op: S.String,
-          values: __S(23, __c2, 7),
-          contextKind: S.optional(S.String),
-          negate: S.Boolean,
-        }),
-      ).annotate({ identifier: "Clause" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          variation: S.optional(S.Number),
-          rollout: S.optional(__S(48, __c6, 0)),
-          clauses: __S(50, __c6, 2),
-          trackEvents: S.Boolean,
-          description: S.optional(S.String),
-          ref: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Rule" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          variation: S.optional(S.Number),
-          rollout: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "VariationOrRolloutRep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          variation: S.Number,
-        }),
-      ).annotate({ identifier: "Prerequisite" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.Number,
-          nullRules: S.Number,
-          targets: S.Number,
-          contextTargets: S.Number,
-          isFallthrough: S.optional(S.Boolean),
-          isOff: S.optional(S.Boolean),
-          rollout: S.optional(S.Number),
-          bucketBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VariationSummary" });
-    case 1:
-      return S.Record(S.String, __S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          variations: __S(57, __c7, 1),
-          prerequisites: S.Number,
-        }),
-      ).annotate({ identifier: "FlagSummary" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contextKinds: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "FlagConfigEvaluation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          checkRatio: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FlagConfigMigrationSettingsRep",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          on: S.Boolean,
-          archived: S.Boolean,
-          salt: S.String,
-          sel: S.String,
-          lastModified: S.Number,
-          version: S.Number,
-          targets: S.optional(__S(44, __c5, 4)),
-          contextTargets: S.optional(__S(44, __c5, 4)),
-          rules: S.optional(__S(52, __c6, 4)),
-          fallthrough: S.optional(__S(53, __c6, 5)),
-          offVariation: S.optional(S.Number),
-          prerequisites: S.optional(__S(55, __c6, 7)),
-          _site: __S(3, __c0, 3),
-          _access: S.optional(__S(21, __c2, 5)),
-          _environmentName: S.String,
-          trackEvents: S.Boolean,
-          trackEventsFallthrough: S.Boolean,
-          _debugEventsUntilDate: S.optional(S.Number),
-          _summary: S.optional(__S(58, __c7, 2)),
-          evaluation: S.optional(__S(59, __c7, 3)),
-          migrationSettings: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "FeatureFlagConfig" });
-    case 6:
-      return S.Record(S.String, __S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          kind: S.String,
-          description: S.optional(S.String),
-          key: S.String,
-          _version: S.Number,
-          creationDate: S.Number,
-          includeInSnippet: S.optional(S.Boolean),
-          clientSideAvailability: S.optional(__S(9, __c1, 1)),
-          variations: __S(11, __c1, 3),
-          temporary: S.Boolean,
-          tags: __S(12, __c1, 4),
-          _links: __S(4, __c0, 4),
-          maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
-          maintainerTeamKey: S.optional(S.String),
-          _maintainerTeam: S.optional(__S(14, __c1, 6)),
-          goalIds: S.optional(__S(12, __c1, 4)),
-          experiments: __S(37, __c4, 5),
-          customProperties: __S(39, __c4, 7),
-          archived: S.Boolean,
-          archivedDate: S.optional(S.Number),
-          deprecated: S.optional(S.Boolean),
-          deprecatedDate: S.optional(S.Number),
-          defaults: S.optional(__S(40, __c5, 0)),
-          _purpose: S.optional(S.String),
-          migrationSettings: S.optional(__S(41, __c5, 1)),
-          stale: S.optional(__S(42, __c5, 2)),
-          environments: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "FeatureFlag" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isDismissible: S.Boolean,
-          title: S.String,
-          message: S.String,
-          startTime: S.Number,
-          endTime: S.optional(S.Number),
-          severity: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/announcements", code: 200 })),
-      ).annotate({
-        identifier: "CreateAnnouncementPublicRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnnouncementAccessDeniedReason",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(65, __c8, 1),
-        }),
-      ).annotate({ identifier: "AnnouncementAccessDenied" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnnouncementAccessAllowedReason",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(68, __c8, 4),
-        }),
-      ).annotate({
-        identifier: "AnnouncementAccessAllowedRep",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          denied: __S(67, __c8, 3),
-          allowed: __S(70, __c8, 6),
-        }),
-      ).annotate({ identifier: "AnnouncementAccess" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "AnnouncementResponseLinks",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          isDismissible: S.Boolean,
-          title: S.String,
-          message: S.String,
-          startTime: S.Number,
-          endTime: S.optional(S.Number),
-          severity: S.String,
-          _status: S.String,
-          _access: S.optional(__S(71, __c8, 7)),
-          _links: __S(72, __c9, 0),
-        }),
-      ).annotate({ identifier: "AnnouncementResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String,
-          comment: S.optional(S.String),
-          description: S.String,
-          instructions: __S(28, __c3, 4),
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          integrationConfig: S.optional(__S(27, __c3, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/approval-requests", code: 200 })),
-      ).annotate({
-        identifier: "CreateApprovalRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          kind: S.String,
-          creationDate: S.optional(S.Number),
-          comment: S.optional(S.String),
-          memberId: S.optional(S.String),
-          serviceTokenId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewResponse" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          instruction: S.optional(__S(27, __c3, 3)),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Conflict2" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          display: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "IntegrationStatus" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          externalId: S.String,
-          externalStatus: __S(79, __c9, 7),
-          externalUrl: S.String,
-          lastChecked: S.Number,
-        }),
-      ).annotate({ identifier: "IntegrationMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          version: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CopiedFromEnv" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomWorkflowStageMeta" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          stage: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "CustomWorkflowMeta" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.Boolean,
-          bypassApprovalsForPendingChanges: S.Boolean,
-          minNumApprovals: S.Number,
-          canReviewOwnRequest: S.Boolean,
-          canApplyDeclinedChanges: S.Boolean,
-          autoApplyApprovedChanges: S.optional(S.Boolean),
-          serviceKind: S.String,
-          serviceConfig: __S(27, __c3, 3),
-          requiredApprovalTags: __S(12, __c1, 4),
-          serviceKindConfigurationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApprovalSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _version: S.Number,
-          creationDate: S.Number,
-          serviceKind: S.String,
-          requestorId: S.optional(S.String),
-          description: S.optional(S.String),
-          reviewStatus: S.String,
-          allReviews: __S(76, __c9, 4),
-          notifyMemberIds: __S(12, __c1, 4),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          appliedDate: S.optional(S.Number),
-          appliedByMemberId: S.optional(S.String),
-          appliedByServiceTokenId: S.optional(S.String),
-          status: S.String,
-          instructions: __S(28, __c3, 4),
-          conflicts: __S(78, __c9, 6),
-          _links: __S(27, __c3, 3),
-          executionDate: S.optional(S.Number),
-          operatingOnId: S.optional(S.String),
-          integrationMetadata: S.optional(__S(80, __c10, 0)),
-          source: S.optional(__S(81, __c10, 1)),
-          customWorkflowMetadata: S.optional(__S(83, __c10, 3)),
-          resourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "ApprovalRequestResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          comment: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/approval-requests/{id}/apply", code: 200 })),
-      ).annotate({
-        identifier: "CreateApprovalRequestApplyRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -18741,7 +17968,428 @@ function __c10(j: number): any {
       });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+          projectKey: S.optional(S.String.pipe(T.Query())),
+          environmentKey: S.optional(S.String.pipe(T.Query())),
+          sdkName: S.optional(S.String.pipe(T.Query())),
+          sdkVersion: S.optional(S.String.pipe(T.Query())),
+          sdkType: S.optional(S.String.pipe(T.Query())),
+          groupBy: S.optional(S.String.pipe(T.Query())),
+          aggregationType: S.optional(S.String.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/ai-runs", code: 200 })),
+      ).annotate({ identifier: "GetAIRunsUsageRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(15488, __c484, 0),
+          metadata: __S(11584, __c362, 0),
+          series: __S(65, __c2, 1),
+        }),
+      ).annotate({ identifier: "SeriesListRep" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          toolKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-tools/{toolKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAIToolRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          _site: S.optional(__S(12128, __c379, 0)),
+          _maintainer: S.optional(S.Unknown),
+          description: S.optional(S.String),
+          schema: S.Unknown,
+          customParameters: S.optional(S.Unknown),
+          tags: S.optional(__S(12096, __c378, 0)),
+          version: S.Number,
+          createdAt: S.Number,
+        }),
+      ).annotate({ identifier: "AITool" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAllHoldoutsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          createdAt: S.optional(S.Number),
+          updatedAt: S.optional(S.Number),
+          experiments: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "SimpleHoldoutRep" });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(194, __c6, 2)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          total_count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HoldoutsCollectionRep" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelatedExperimentRep" });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationKey: S.String.pipe(T.Label()),
+          includePending: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/integration-configurations/keys/{integrationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAllIntegrationConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(4972, __c155, 12));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(257, __c8, 1),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "IntegrationConfigurationCollectionRep",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/release-pipelines",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAllReleasePipelinesRequest",
+      });
+    case 1:
+      return S.Array(__S(324, __c10, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(289, __c9, 1),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ReleasePipelineCollection",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(9280, __c290, 0)),
+          name: S.String,
+          configuration: S.optional(__S(9282, __c290, 2)),
+          segmentKeys: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "Audience" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          audiences: __S(321, __c10, 1),
+          name: S.String,
+          configuration: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Phase" });
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          description: S.optional(S.String),
+          key: S.String,
+          name: S.String,
+          phases: __S(323, __c10, 3),
+          tags: S.optional(__S(15456, __c483, 0)),
+          _version: S.optional(S.Number),
+          _access: S.optional(__S(15206, __c475, 6)),
+          isProjectDefault: S.optional(S.Boolean),
+          _isLegacy: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ReleasePipeline" });
+  }
+}
 function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          pipelineKey: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}/releases",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAllReleaseProgressionsForReleasePipelineRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _createdAt: S.Number,
+          _completedAt: S.optional(S.Number),
+          flagKey: S.String,
+          activePhaseId: S.optional(S.String),
+          activePhaseStatus: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "ReleaseProgression" });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          name: S.String,
+          releaseCount: S.Number,
+        }),
+      ).annotate({ identifier: "PhaseInfo" });
+    case 4:
+      return S.Array(__S(355, __c11, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          activeCount: S.Number,
+          completedCount: S.Number,
+          items: __S(354, __c11, 2),
+          phases: __S(356, __c11, 4),
+          totalCount: S.Number,
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "ReleaseProgressionCollection",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/webhooks", code: 200 })),
+      ).annotate({ identifier: "GetAllWebhooksRequest" });
+    case 1:
+      return S.Array(__S(12576, __c393, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          items: __S(385, __c12, 1),
+        }),
+      ).annotate({ identifier: "Webhooks" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/announcements", code: 200 })),
+      ).annotate({
+        identifier: "GetAnnouncementsPublicRequest",
+      });
+    case 1:
+      return S.Array(__S(15976, __c499, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(417, __c13, 1),
+          _links: __S(17376, __c543, 0),
+        }),
+      ).annotate({
+        identifier: "GetAnnouncementsPublic200Response",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationKey: S.String.pipe(T.Label()),
+          expand: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/applications/{applicationKey}", code: 200 })),
+      ).annotate({ identifier: "GetApplicationRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+          _links: S.optional(__S(14720, __c460, 0)),
+          _site: S.optional(__S(14752, __c461, 0)),
+        }),
+      ).annotate({ identifier: "FlagListingRep" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(481, __c15, 1)),
+          totalCount: S.optional(S.Number),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplicationFlagCollectionRep",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          member: S.optional(__S(15392, __c481, 0)),
+          team: S.optional(__S(6976, __c218, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationMaintainerRep" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          flags: S.optional(__S(512, __c16, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          _version: S.optional(S.Number),
+          autoAdded: S.Boolean,
+          creationDate: S.optional(S.Number),
+          description: S.optional(S.String),
+          key: S.String,
+          kind: S.String,
+          _maintainer: S.optional(__S(513, __c16, 1)),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ApplicationRep" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          expand: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/applications", code: 200 })),
+      ).annotate({ identifier: "GetApplicationsRequest" });
+    case 1:
+      return S.Array(__S(514, __c16, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          items: S.optional(__S(545, __c17, 1)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ApplicationCollectionRep" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18759,11 +18407,688 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateBigSegmentExportRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateBigSegmentExportResponse",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationKey: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/applications/{applicationKey}/versions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          items: S.optional(__S(641, __c20, 1)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ApplicationVersionsCollectionRep",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(15206, __c475, 6)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          _version: S.optional(S.Number),
+          autoAdded: S.Boolean,
+          creationDate: S.optional(S.Number),
+          key: S.String,
+          name: S.String,
+          supported: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApplicationVersionRep" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApprovalForFlagRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _version: S.Number,
+          creationDate: S.Number,
+          serviceKind: S.String,
+          requestorId: S.optional(S.String),
+          description: S.optional(S.String),
+          reviewStatus: S.String,
+          allReviews: __S(16385, __c512, 1),
+          notifyMemberIds: __S(15456, __c483, 0),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          appliedDate: S.optional(S.Number),
+          appliedByMemberId: S.optional(S.String),
+          appliedByServiceTokenId: S.optional(S.String),
+          status: S.String,
+          instructions: __S(15520, __c485, 0),
+          conflicts: __S(16387, __c512, 3),
+          _links: __S(15488, __c484, 0),
+          executionDate: S.optional(S.Number),
+          operatingOnId: S.optional(S.String),
+          integrationMetadata: S.optional(__S(16449, __c514, 1)),
+          source: S.optional(__S(16388, __c512, 4)),
+          customWorkflowMetadata: S.optional(__S(16390, __c512, 6)),
+        }),
+      ).annotate({
+        identifier: "FlagConfigApprovalRequestResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          expand: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/approval-requests/{id}", code: 200 })),
+      ).annotate({
+        identifier: "GetApprovalRequestRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "AiConfigsMaintainerTeam" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          kind: S.String,
+          description: S.optional(S.String),
+          key: S.String,
+          _version: S.Number,
+          creationDate: S.Number,
+          includeInSnippet: S.optional(S.Boolean),
+          clientSideAvailability: S.optional(__S(15424, __c482, 0)),
+          variations: __S(15169, __c474, 1),
+          temporary: S.Boolean,
+          tags: __S(15456, __c483, 0),
+          _links: __S(14720, __c460, 0),
+          maintainerId: S.optional(S.String),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
+          customProperties: __S(15171, __c474, 3),
+          archived: S.Boolean,
+          archivedDate: S.optional(S.Number),
+          defaults: S.optional(__S(15172, __c474, 4)),
+        }),
+      ).annotate({ identifier: "ExpandedFlagRep" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          _access: S.optional(__S(15206, __c475, 6)),
+        }),
+      ).annotate({ identifier: "ExpandedExperimentRep" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          aiConfig: S.optional(__S(800, __c25, 0)),
+          experiment: S.optional(__S(802, __c25, 2)),
+          flag: S.optional(__S(801, __c25, 1)),
+          segment: S.optional(__S(902, __c28, 6)),
+        }),
+      ).annotate({ identifier: "ExpandedResourceRep" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _version: S.Number,
+          creationDate: S.Number,
+          serviceKind: S.String,
+          requestorId: S.optional(S.String),
+          description: S.optional(S.String),
+          reviewStatus: S.String,
+          allReviews: __S(16385, __c512, 1),
+          notifyMemberIds: __S(15456, __c483, 0),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          appliedDate: S.optional(S.Number),
+          appliedByMemberId: S.optional(S.String),
+          appliedByServiceTokenId: S.optional(S.String),
+          status: S.String,
+          instructions: __S(15520, __c485, 0),
+          conflicts: __S(16387, __c512, 3),
+          _links: __S(15488, __c484, 0),
+          executionDate: S.optional(S.Number),
+          operatingOnId: S.optional(S.String),
+          integrationMetadata: S.optional(__S(16449, __c514, 1)),
+          source: S.optional(__S(16388, __c512, 4)),
+          customWorkflowMetadata: S.optional(__S(16390, __c512, 6)),
+          resourceId: S.optional(S.String),
+          approvalSettings: S.optional(__S(16416, __c513, 0)),
+          project: S.optional(__S(864, __c27, 0)),
+          environments: S.optional(__S(8736, __c273, 0)),
+          flag: S.optional(__S(801, __c25, 1)),
+          resource: S.optional(__S(803, __c25, 3)),
+        }),
+      ).annotate({
+        identifier: "ExpandableApprovalRequestResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          totalCount: S.optional(S.Number),
+          items: __S(8736, __c273, 0),
+        }),
+      ).annotate({ identifier: "Environments" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          key: S.String,
+          includeInSnippetByDefault: S.Boolean,
+          defaultClientSideAvailability: S.optional(__S(15424, __c482, 0)),
+          name: S.String,
+          _access: S.optional(__S(15206, __c475, 6)),
+          tags: __S(12096, __c378, 0),
+          defaultReleasePipelineKey: S.optional(S.String),
+          environments: S.optional(__S(832, __c26, 0)),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(15456, __c483, 0)),
+          contextKind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SegmentTarget" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+    case 2:
+      return S.Array(__S(15136, __c473, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          clauses: __S(898, __c28, 2),
+          weight: S.optional(S.Number),
+          rolloutContextKind: S.optional(S.String),
+          bucketBy: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserSegmentRule" });
+    case 4:
+      return S.Array(__S(899, __c28, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          envId: S.optional(S.String),
+          segmentId: S.optional(S.String),
+          version: S.optional(S.Number),
+          includedCount: S.optional(S.Number),
+          excludedCount: S.optional(S.Number),
+          lastModified: S.optional(S.Number),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SegmentMetadata" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          tags: __S(15456, __c483, 0),
+          creationDate: S.Number,
+          lastModifiedDate: S.Number,
+          key: S.String,
+          included: S.optional(__S(15456, __c483, 0)),
+          excluded: S.optional(__S(15456, __c483, 0)),
+          includedContexts: S.optional(__S(897, __c28, 1)),
+          excludedContexts: S.optional(__S(897, __c28, 1)),
+          _links: __S(14720, __c460, 0),
+          rules: __S(900, __c28, 4),
+          version: S.Number,
+          deleted: S.Boolean,
+          _access: S.optional(__S(15206, __c475, 6)),
+          _flags: S.optional(__S(481, __c15, 1)),
+          unbounded: S.optional(S.Boolean),
+          unboundedContextKind: S.optional(S.String),
+          generation: S.Number,
+          _unboundedMetadata: S.optional(__S(901, __c28, 5)),
+          _external: S.optional(S.String),
+          _externalLink: S.optional(S.String),
+          _importInProgress: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UserSegment" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          expand: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/approval-requests", code: 200 })),
+      ).annotate({
+        identifier: "GetApprovalRequestsRequest",
+      });
+    case 1:
+      return S.Array(__S(804, __c25, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(929, __c29, 1),
+          totalCount: S.Number,
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "ExpandableApprovalRequestsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.optional(S.String.pipe(T.Query())),
+          resourceKind: S.optional(S.String.pipe(T.Query())),
+          expand: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/approval-requests/projects/{projectKey}/settings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApprovalRequestSettingsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          required: S.Boolean,
+          bypassApprovalsForPendingChanges: S.Boolean,
+          minNumApprovals: S.Number,
+          canReviewOwnRequest: S.Boolean,
+          canApplyDeclinedChanges: S.Boolean,
+          autoApplyApprovedChanges: S.optional(S.NullOr(S.Boolean)),
+          serviceKind: S.String,
+          serviceConfig: __S(15488, __c484, 0),
+          requiredApprovalTags: __S(15456, __c483, 0),
+          serviceKindConfigurationId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ApprovalRequestSetting" });
+    case 1:
+      return S.Record(S.String, __S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          environments: S.optional(__S(993, __c31, 1)),
+          _default: S.optional(__S(992, __c31, 0)),
+          _strict: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "ApprovalRequestSettingWithEnvs",
+      });
+    case 3:
+      return S.Record(S.String, __S(994, __c31, 2));
+    case 4:
+      return S.suspend(() => __S(995, __c31, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetApprovalRequestSettingsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApprovalsForFlagRequest",
+      });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1025, __c32, 1),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "FlagConfigApprovalRequestsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          before: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.Number.pipe(T.Query())),
+          q: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          spec: S.optional(S.String.pipe(T.Query())),
+          member: S.optional(S.String.pipe(T.Query())),
+          token: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/auditlog", code: 200 })),
+      ).annotate({
+        identifier: "GetAuditLogEntriesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          resource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceAccess" });
+    case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+        }),
+      ).annotate({ identifier: "RelatedFlag" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.optional(S.String),
+          avatarUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubjectDataRep" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          _id: S.optional(S.String),
+          email: S.optional(S.String),
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MemberDataRep" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          _id: S.optional(S.String),
+          isScim: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          maintainerName: S.optional(S.String),
+          isAgent: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AuthorizedAppDataRep" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.optional(S.String),
+          resources: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "TargetResourceRep" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.optional(S.String),
+          resource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ParentResourceRep" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          _accountId: S.String,
+          date: S.Number,
+          accesses: __S(1089, __c34, 1),
+          kind: S.String,
+          name: S.String,
+          description: S.String,
+          shortDescription: S.String,
+          comment: S.optional(S.String),
+          relatedFlag: S.optional(__S(1090, __c34, 2)),
+          relatedExperiment: S.optional(__S(1090, __c34, 2)),
+          relatedAIConfig: S.optional(__S(1090, __c34, 2)),
+          subject: S.optional(__S(1091, __c34, 3)),
+          member: S.optional(__S(1092, __c34, 4)),
+          token: S.optional(__S(9312, __c291, 0)),
+          app: S.optional(__S(1093, __c34, 5)),
+          titleVerb: S.optional(S.String),
+          title: S.optional(S.String),
+          target: S.optional(__S(1094, __c34, 6)),
+          parent: S.optional(__S(1095, __c34, 7)),
+        }),
+      ).annotate({ identifier: "AuditLogEntryListingRep" });
+    case 9:
+      return S.Array(__S(1096, __c34, 8));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1097, __c34, 9),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "AuditLogEntryListingRepCollection",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v2/auditlog/{id}", code: 200 })),
+      ).annotate({ identifier: "GetAuditLogEntryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          _accountId: S.String,
+          date: S.Number,
+          accesses: __S(1089, __c34, 1),
+          kind: S.String,
+          name: S.String,
+          description: S.String,
+          shortDescription: S.String,
+          comment: S.optional(S.String),
+          relatedFlag: S.optional(__S(1090, __c34, 2)),
+          relatedExperiment: S.optional(__S(1090, __c34, 2)),
+          relatedAIConfig: S.optional(__S(1090, __c34, 2)),
+          subject: S.optional(__S(1091, __c34, 3)),
+          member: S.optional(__S(1092, __c34, 4)),
+          token: S.optional(__S(9312, __c291, 0)),
+          app: S.optional(__S(1093, __c34, 5)),
+          titleVerb: S.optional(S.String),
+          title: S.optional(S.String),
+          target: S.optional(__S(1094, __c34, 6)),
+          parent: S.optional(__S(1095, __c34, 7)),
+          delta: S.optional(S.Unknown),
+          triggerBody: S.optional(S.Unknown),
+          merge: S.optional(S.Unknown),
+          previousVersion: S.optional(S.Unknown),
+          currentVersion: S.optional(S.Unknown),
+          subentries: S.optional(__S(1097, __c34, 9)),
+        }),
+      ).annotate({ identifier: "AuditLogEntryRep" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          segmentKey: S.String.pipe(T.Label()),
+          exportID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBigSegmentExportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InitiatorRep" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          segmentKey: S.String,
+          creationTime: S.Number,
+          status: S.String,
+          sizeBytes: S.Number,
+          size: S.String,
+          initiator: __S(1185, __c37, 1),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "Export" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          segmentKey: S.String.pipe(T.Label()),
+          importID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBigSegmentImportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          filename: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileRep" });
+    case 2:
+      return S.Array(__S(1217, __c38, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          segmentKey: S.String,
+          creationTime: S.Number,
+          mode: S.String,
+          status: S.String,
+          files: S.optional(__S(1218, __c38, 2)),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "Import" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -18783,4666 +19108,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateBigSegmentImportRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          on: S.optional(S.Boolean),
-          config: __S(27, __c3, 3),
-          tags: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBigSegmentStoreIntegrationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          self: __S(3, __c0, 3),
-          parent: __S(3, __c0, 3),
-          project: __S(3, __c0, 3),
-          environment: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "BigSegmentStoreIntegrationLinks",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.Number),
-          message: S.optional(S.String),
-          timestamp: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StoreIntegrationError" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          available: S.optional(S.Boolean),
-          potentiallyStale: S.optional(S.Boolean),
-          lastSync: S.optional(S.Number),
-          lastError: S.optional(S.Number),
-          errors: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({ identifier: "BigSegmentStoreStatus" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(92, __c11, 4),
-          _id: S.String,
-          integrationKey: S.String,
-          projectKey: S.String,
-          environmentKey: S.String,
-          config: __S(27, __c3, 3),
-          on: S.Boolean,
-          tags: __S(12, __c1, 4),
-          name: S.String,
-          version: S.Number,
-          _access: S.optional(__S(21, __c2, 5)),
-          _status: __S(95, __c11, 7),
-        }),
-      ).annotate({
-        identifier: "BigSegmentStoreIntegration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String,
-          environmentKey: S.String,
-          applicationKey: S.String,
-          applicationName: S.optional(S.String),
-          applicationKind: S.optional(S.String),
-          version: S.String,
-          versionName: S.optional(S.String),
-          eventType: S.String,
-          eventTime: S.optional(S.Number),
-          eventMetadata: S.optional(__S(27, __c3, 3)),
-          deploymentMetadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/engineering-insights/deployment-events",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDeploymentEventRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          isGroup: S.optional(S.Boolean),
-          primary: S.optional(S.Boolean),
-          analysisUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricInput" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flagKey: S.String,
-          variationId: S.String,
-        }),
-      ).annotate({ identifier: "TreatmentParameterInput" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          baseline: S.Boolean,
-          allocationPercent: S.String,
-          parameters: __S(101, __c12, 5),
-        }),
-      ).annotate({ identifier: "TreatmentInput" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.String,
-          flagConfigVersion: S.Number,
-          notInExperimentVariationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlagInput" });
-    case 1:
-      return S.Record(S.String, __S(104, __c13, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hypothesis: S.String,
-          canReshuffleTraffic: S.optional(S.Boolean),
-          metrics: __S(99, __c12, 3),
-          primarySingleMetricKey: S.optional(S.String),
-          primaryFunnelKey: S.optional(S.String),
-          treatments: __S(103, __c12, 7),
-          flags: __S(105, __c13, 1),
-          randomizationUnit: S.optional(S.String),
-          reallocationFrequencyMillis: S.optional(S.Number),
-          covariateId: S.optional(S.String),
-          attributes: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "IterationInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bayesianThreshold: S.optional(S.String),
-          significanceThreshold: S.optional(S.String),
-          testDirection: S.optional(S.String),
-          multipleComparisonCorrectionMethod: S.optional(S.String),
-          multipleComparisonCorrectionScope: S.optional(S.String),
-          sequentialTestingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AnalysisConfigInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.String),
-          maintainerId: S.optional(S.String),
-          key: S.String,
-          iteration: __S(106, __c13, 2),
-          holdoutId: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
-          methodology: S.optional(S.String),
-          analysisConfig: S.optional(__S(107, __c13, 3)),
-          dataSource: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateExperimentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetingRule: S.optional(S.String),
-          targetingRuleDescription: S.optional(S.String),
-          targetingRuleClauses: S.optional(__S(23, __c2, 7)),
-          flagConfigVersion: S.optional(S.Number),
-          notInExperimentVariationId: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "FlagRep" });
-    case 6:
-      return S.Record(S.String, __S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          _versionId: S.optional(S.String),
-          name: S.String,
-          kind: S.String,
-          isNumeric: S.optional(S.Boolean),
-          unitAggregationType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          eventKey: S.optional(S.String),
-          analysisUnit: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-          nameInGroup: S.optional(S.String),
-          randomizationUnits: S.optional(__S(12, __c1, 4)),
-          analysisUnits: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "MetricInGroupRep" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          _versionId: S.String,
-          name: S.String,
-          kind: S.String,
-          isNumeric: S.optional(S.Boolean),
-          eventKey: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-          isGroup: S.Boolean,
-          metrics: S.optional(__S(112, __c14, 0)),
-          analysisType: S.optional(S.String),
-          analysisUnit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DependentMetricOrMetricGroupRep",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          _versionId: S.optional(S.String),
-          name: S.String,
-          kind: S.String,
-          isNumeric: S.optional(S.Boolean),
-          unitAggregationType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          eventKey: S.optional(S.String),
-          analysisUnit: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "MetricV2Rep" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          kind: S.String,
-          _links: __S(4, __c0, 4),
-          metrics: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "DependentMetricGroupRepWithMetrics",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          variationId: S.optional(S.String),
-          flagKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ParameterRep" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          name: S.String,
-          allocationPercent: S.String,
-          baseline: S.optional(S.Boolean),
-          parameters: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "TreatmentRep" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(114, __c14, 2));
-    case 1:
-      return S.Array(__S(113, __c14, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          reservationPercent: S.Number,
-          otherReservationPercent: S.Number,
-        }),
-      ).annotate({ identifier: "LayerSnapshotRep" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          fileName: S.String,
-          createdAt: S.Number,
-        }),
-      ).annotate({ identifier: "CovariateInfoRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          hypothesis: S.String,
-          status: S.String,
-          createdAt: S.Number,
-          startedAt: S.optional(S.Number),
-          endedAt: S.optional(S.Number),
-          winningTreatmentId: S.optional(S.String),
-          winningReason: S.optional(S.String),
-          canReshuffleTraffic: S.optional(S.Boolean),
-          flags: S.optional(__S(110, __c13, 6)),
-          reallocationFrequencyMillis: S.optional(S.Number),
-          version: S.optional(S.Number),
-          primaryMetric: S.optional(__S(113, __c14, 1)),
-          primarySingleMetric: S.optional(__S(114, __c14, 2)),
-          primaryFunnel: S.optional(__S(115, __c14, 3)),
-          randomizationUnit: S.optional(S.String),
-          attributes: S.optional(__S(12, __c1, 4)),
-          treatments: S.optional(__S(119, __c14, 7)),
-          secondaryMetrics: S.optional(__S(120, __c15, 0)),
-          metrics: S.optional(__S(121, __c15, 1)),
-          layerSnapshot: S.optional(__S(122, __c15, 2)),
-          covariateInfo: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({ identifier: "IterationRep" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.Record(S.String, __S(12, __c1, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          not_started: S.optional(__S(126, __c15, 6)),
-          running: S.optional(__S(126, __c15, 6)),
-          stopped: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "MutableFieldsByStatusRep" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          key: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          _maintainerId: S.String,
-          _creationDate: S.Number,
-          environmentKey: S.String,
-          methodology: S.optional(S.String),
-          dataSource: S.optional(S.String),
-          archivedDate: S.optional(S.Number),
-          tags: S.optional(__S(12, __c1, 4)),
-          _links: __S(4, __c0, 4),
-          holdoutId: S.optional(S.String),
-          currentIteration: S.optional(__S(124, __c15, 4)),
-          type: S.optional(S.String),
-          _access: S.optional(__S(21, __c2, 5)),
-          draftIteration: S.optional(__S(124, __c15, 4)),
-          previousIterations: S.optional(__S(125, __c15, 5)),
-          analysisConfig: S.optional(__S(107, __c13, 3)),
-          mutableFieldsByStatus: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "Experiment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          config: __S(27, __c3, 3),
-          tags: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFlagImportConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          self: __S(3, __c0, 3),
-          parent: __S(3, __c0, 3),
-          project: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "FlagImportIntegrationLinks",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationId: S.optional(S.String),
-          message: S.optional(S.String),
-          statusCode: S.optional(S.Number),
-          timestamp: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StatusResponse" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          lastImport: S.optional(S.Number),
-          lastError: S.optional(S.Number),
-          errors: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "FlagImportStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(130, __c16, 2),
-          _id: S.String,
-          integrationKey: S.String,
-          projectKey: S.String,
-          config: __S(27, __c3, 3),
-          tags: __S(12, __c1, 4),
-          name: S.String,
-          version: S.Number,
-          _access: S.optional(__S(21, __c2, 5)),
-          _status: __S(133, __c16, 5),
-        }),
-      ).annotate({ identifier: "FlagImportIntegration" });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          key: S.optional(S.String),
-          integrationKey: S.optional(S.String),
-          timestamp: S.optional(S.Number),
-          deepLink: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          metadata: S.optional(__S(135, __c16, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateFlagLinkRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          milliseconds: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          rfc3339: S.optional(S.String),
-          simple: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimestampRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlagLinkMember" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _key: S.optional(S.String),
-          _integrationKey: S.optional(S.String),
-          _id: S.String,
-          _deepLink: S.String,
-          _timestamp: __S(137, __c17, 1),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          _metadata: S.optional(__S(135, __c16, 7)),
-          _createdAt: S.Number,
-          _member: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "FlagLinkRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-          projectKey: S.String,
-          environmentKey: S.String,
-          applicationKeys: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v2/engineering-insights/insights/group", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateInsightGroupRequest",
-      });
-    case 5:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          key: S.String,
-          name: S.String,
-          apiKey: S.String.pipe(T.SensitiveValue({})),
-          mobileKey: S.String,
-          color: S.String,
-          defaultTtl: S.Number,
-          secureMode: S.Boolean,
-          _access: S.optional(__S(21, __c2, 5)),
-          defaultTrackEvents: S.Boolean,
-          requireComments: S.Boolean,
-          confirmChanges: S.Boolean,
-          tags: __S(12, __c1, 4),
-          approvalSettings: S.optional(__S(84, __c10, 4)),
-          resourceApprovalSettings: S.optional(__S(141, __c17, 5)),
-          critical: S.Boolean,
-        }),
-      ).annotate({ identifier: "Environment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          min: S.Number,
-          max: S.Number,
-        }),
-      ).annotate({
-        identifier: "InsightsMetricIndicatorRange",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.Number,
-          aggregateOf: S.optional(__S(12, __c1, 4)),
-          diffVsLastPeriod: S.optional(S.Number),
-          indicator: S.String,
-          indicatorRange: __S(143, __c17, 7),
-          lastPeriod: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({ identifier: "InsightsMetricScore" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          overall: __S(144, __c18, 0),
-          deploymentFrequency: __S(144, __c18, 0),
-          deploymentFailureRate: __S(144, __c18, 0),
-          leadTime: __S(144, __c18, 0),
-          impactSize: __S(144, __c18, 0),
-          experimentationCoverage: __S(144, __c18, 0),
-          flagHealth: __S(144, __c18, 0),
-          velocity: __S(144, __c18, 0),
-          risk: __S(144, __c18, 0),
-          efficiency: __S(144, __c18, 0),
-          creationRatio: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({ identifier: "InsightGroupScores" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.Number,
-          endTime: S.Number,
-        }),
-      ).annotate({ identifier: "InsightPeriod" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          period: __S(146, __c18, 2),
-          lastPeriod: __S(146, __c18, 2),
-        }),
-      ).annotate({
-        identifier: "InsightGroupCollectionScoreMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(142, __c17, 6)),
-          scores: S.optional(__S(145, __c18, 1)),
-          scoreMetadata: S.optional(__S(147, __c18, 3)),
-          key: S.String,
-          name: S.String,
-          projectKey: S.String,
-          environmentKey: S.String,
-          applicationKeys: S.optional(__S(12, __c1, 4)),
-          createdAt: S.Number,
-        }),
-      ).annotate({ identifier: "InsightGroup" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeaderItems" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          headerName: S.optional(S.String),
-          hmacSecretFormVariableKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HMACSignature" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(150, __c18, 6)),
-          hmacSignature: S.optional(__S(151, __c18, 7)),
-          method: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OptionsArray" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          optionsItems: S.optional(__S(153, __c19, 1)),
-          optionsPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicOptionsParser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(__S(152, __c19, 0)),
-          parser: S.optional(__S(154, __c19, 2)),
-        }),
-      ).annotate({ identifier: "DynamicOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-          placeholder: S.optional(S.String),
-          isOptional: S.optional(S.Boolean),
-          defaultValue: S.optional(S.Unknown),
-          allowedValues: S.optional(__S(12, __c1, 4)),
-          dynamicOptions: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "FormVariable" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          additionalFormVariables: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({
-        identifier: "ApprovalsCapabilityConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-        }),
-      ).annotate({ identifier: "StatementPost" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          statements: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "AuditLogEventsHookCapabilityConfigPost",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          approvals: S.optional(__S(158, __c19, 6)),
-          auditLogEventsHook: S.optional(__S(161, __c20, 1)),
-        }),
-      ).annotate({ identifier: "CapabilityConfigPost" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationKey: S.String.pipe(T.Label()),
-          name: S.String,
-          enabled: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          configValues: __S(27, __c3, 3),
-          capabilityConfig: S.optional(__S(162, __c20, 2)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/integration-configurations/keys/{integrationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-        }),
-      ).annotate({ identifier: "Statement" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          statements: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "AuditLogEventsHookCapabilityConfigRep",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          approvals: S.optional(__S(158, __c19, 6)),
-          auditLogEventsHook: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({ identifier: "CapabilityConfigRep" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          name: S.String,
-          _createdAt: S.optional(S.Number),
-          _integrationKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
-          enabled: S.optional(S.Boolean),
-          _access: S.optional(__S(21, __c2, 5)),
-          configValues: S.optional(__S(27, __c3, 3)),
-          capabilityConfig: S.optional(__S(167, __c20, 7)),
-          snowflakeSetupScript: S.optional(S.String),
-          redshiftSetupScripts: S.optional(__S(12, __c1, 4)),
-          redshiftIAMPermissionsPolicy: S.optional(S.String),
-          redshiftIAMTrustPolicy: S.optional(S.String),
-          _maintainerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IntegrationConfigurationsRep",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          on: S.optional(S.Boolean),
-          config: __S(27, __c3, 3),
-          tags: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationDeliveryConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(92, __c11, 4),
-          _id: S.String,
-          integrationKey: S.String,
-          projectKey: S.String,
-          environmentKey: S.String,
-          config: __S(27, __c3, 3),
-          on: S.Boolean,
-          tags: __S(12, __c1, 4),
-          name: S.String,
-          version: S.Number,
-          _access: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "IntegrationDeliveryConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.String,
-          description: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/account/ip-allowlist", code: 200 })),
-      ).annotate({
-        identifier: "CreateIpAllowlistEntryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          ipAddress: S.String,
-          description: S.optional(S.String),
-          _createdByMemberId: S.optional(S.String),
-          _createdAt: S.Number,
-          _updatedAt: S.Number,
-        }),
-      ).annotate({ identifier: "IpAllowlistEntryResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          key: S.String,
-          name: S.String,
-          description: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/layers", code: 200 })),
-      ).annotate({ identifier: "CreateLayerRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          experimentKey: S.String,
-          flagKey: S.String,
-          reservationPercent: S.Number,
-        }),
-      ).annotate({ identifier: "LayerReservationRep" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reservations: __S(175, __c21, 7),
-        }),
-      ).annotate({ identifier: "LayerConfigurationRep" });
-    case 1:
-      return S.Record(S.String, __S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          description: S.String,
-          createdAt: S.Number,
-          randomizationUnit: S.optional(S.String),
-          environments: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "LayerRep" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          role: S.optional(S.String),
-          customRoles: S.optional(__S(12, __c1, 4)),
-          teamKeys: S.optional(__S(12, __c1, 4)),
-          roleAttributes: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "NewMemberForm" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: __S(180, __c22, 4).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/members", code: 200 })),
-      ).annotate({ identifier: "CreateMemberRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tokenId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LastSeenMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customRoleKeys: __S(12, __c1, 4),
-          key: S.String,
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "MemberTeamSummaryRep" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          actionSet: S.optional(S.String),
-          actions: S.optional(__S(12, __c1, 4)),
-          resource: S.String,
-        }),
-      ).annotate({
-        identifier: "MemberPermissionGrantSummaryRep",
-      });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          role: S.String,
-          email: S.String,
-          _pendingInvite: S.Boolean,
-          _verified: S.Boolean,
-          _pendingEmail: S.optional(S.String),
-          customRoles: __S(12, __c1, 4),
-          mfa: S.String,
-          excludedDashboards: S.optional(__S(12, __c1, 4)),
-          _lastSeen: S.Number,
-          _lastSeenMetadata: S.optional(__S(182, __c22, 6)),
-          _integrationMetadata: S.optional(__S(80, __c10, 0)),
-          teams: S.optional(__S(184, __c23, 0)),
-          permissionGrants: S.optional(__S(186, __c23, 2)),
-          creationDate: S.Number,
-          oauthProviders: S.optional(__S(12, __c1, 4)),
-          hasPassword: S.optional(S.Boolean),
-          version: S.optional(S.Number),
-          roleAttributes: S.optional(__S(126, __c15, 6)),
-          mfaEnforced: S.optional(S.Boolean),
-          mfaGracePeriodExpiresAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Member" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(188, __c23, 4),
-          _links: __S(4, __c0, 4),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Members" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          teamKeys: __S(12, __c1, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/members/{id}/teams", code: 200 })),
-      ).annotate({ identifier: "CreateMemberTeamRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          nameInGroup: S.String,
-        }),
-      ).annotate({ identifier: "MetricInMetricGroupInput" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          key: S.String,
-          name: S.String,
-          kind: S.String,
-          description: S.optional(S.String),
-          maintainerId: S.String,
-          tags: __S(12, __c1, 4),
-          metrics: __S(192, __c24, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/metric-groups", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateMetricGroupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          kind: S.String,
-          _member: S.optional(__S(13, __c1, 5)),
-          _team: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({ identifier: "MaintainerRep" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          environmentId: S.String,
-          environmentKey: S.String,
-          creationDate: S.Number,
-          archivedDate: S.optional(S.Number),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "DependentExperimentRep" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          key: S.String,
-          name: S.String,
-          kind: S.String,
-          description: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-          _access: S.optional(__S(21, __c2, 5)),
-          tags: __S(12, __c1, 4),
-          _creationDate: S.Number,
-          _lastModified: S.Number,
-          maintainer: __S(194, __c24, 2),
-          metrics: __S(112, __c14, 0),
-          _version: S.Number,
-          experiments: S.optional(__S(196, __c24, 4)),
-          experimentCount: S.optional(S.Number),
-          activeExperimentCount: S.optional(S.Number),
-          activeGuardedRolloutCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricGroupRep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          redirectUri: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/oauth/clients", code: 200 })),
-      ).annotate({
-        identifier: "CreateOAuth2ClientRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          name: S.String,
-          description: S.optional(S.String),
-          _accountId: S.String,
-          _clientId: S.String,
-          _clientSecret: S.optional(S.String),
-          redirectUri: S.String,
-          _creationDate: S.Number,
-        }),
-      ).annotate({ identifier: "Client" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          usingEnvironmentId: S.Boolean,
-          usingMobileKey: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "DefaultClientSideAvailabilityPost",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SourceEnv" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-          color: S.String,
-          defaultTtl: S.optional(S.Number),
-          secureMode: S.optional(S.Boolean),
-          defaultTrackEvents: S.optional(S.Boolean),
-          confirmChanges: S.optional(S.Boolean),
-          requireComments: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          source: S.optional(__S(201, __c25, 1)),
-          critical: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EnvironmentPost" });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          case: S.optional(S.String),
-          prefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamingConvention" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-          includeInSnippetByDefault: S.optional(S.Boolean),
-          defaultClientSideAvailability: S.optional(__S(200, __c25, 0)),
-          tags: S.optional(__S(12, __c1, 4)),
-          environments: S.optional(__S(203, __c25, 3)),
-          namingConvention: S.optional(__S(204, __c25, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects", code: 200 })),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 6:
-      return S.Array(__S(142, __c17, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          key: S.String,
-          includeInSnippetByDefault: S.Boolean,
-          defaultClientSideAvailability: S.optional(__S(9, __c1, 1)),
-          name: S.String,
-          _access: S.optional(__S(21, __c2, 5)),
-          tags: __S(12, __c1, 4),
-          defaultReleasePipelineKey: S.optional(S.String),
-          environments: __S(206, __c25, 6),
-        }),
-      ).annotate({ identifier: "ProjectRep" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          flagKey: S.String.pipe(T.Label()),
-          releaseVariationId: S.optional(S.String),
-          releasePipelineKey: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/v2/projects/{projectKey}/flags/{flagKey}/release",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReleaseForFlagRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          _id: S.optional(S.String),
-          name: S.optional(S.String),
-          ending: S.optional(S.String),
-          serviceToken: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TokenSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          member: S.optional(__S(13, __c1, 5)),
-          token: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({ identifier: "CompletedBy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          key: S.String,
-          name: S.String,
-          color: S.String,
-        }),
-      ).annotate({ identifier: "EnvironmentSummary" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          monitoringWindowMilliseconds: S.Number,
-          rolloutWeight: S.Number,
-          rollbackOnRegression: S.Boolean,
-          randomizationUnit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReleaseGuardianConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          releaseStrategy: S.String,
-          requireApproval: S.Boolean,
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          releaseGuardianConfiguration: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({ identifier: "AudienceConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _links: S.optional(__S(4, __c0, 4)),
-          environment: S.optional(__S(211, __c26, 3)),
-          name: S.String,
-          configuration: S.optional(__S(213, __c26, 5)),
-          segmentKeys: S.optional(__S(12, __c1, 4)),
-          status: S.optional(S.String),
-          _ruleIds: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "ReleaseAudience" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _name: S.String,
-          complete: S.Boolean,
-          _creationDate: S.Number,
-          _completionDate: S.optional(S.Number),
-          _completedBy: S.optional(__S(210, __c26, 2)),
-          _audiences: __S(215, __c26, 7),
-          status: S.optional(S.String),
-          started: S.optional(S.Boolean),
-          _startedDate: S.optional(S.Number),
-          configuration: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "PipelineReleasePhase" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.String,
-          releasePipelineKey: S.String,
-          releasePipelineDescription: S.String,
-          phases: __S(217, __c27, 1),
-          _version: S.Number,
-          _releaseVariationId: S.optional(S.String),
-          _canceledAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Release" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationKey: S.String.pipe(T.Label()),
-          name: S.String,
-          statements: S.optional(__S(160, __c20, 0)),
-          on: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          config: __S(27, __c3, 3),
-          url: S.optional(S.String),
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v2/integrations/{integrationKey}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateSubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.Number),
-          responseBody: S.optional(S.String),
-          timestamp: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IntegrationStatusRep" });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          successCount: S.optional(S.Number),
-          lastSuccess: S.optional(S.Number),
-          lastError: S.optional(S.Number),
-          errorCount: S.optional(S.Number),
-          errors: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "IntegrationSubscriptionStatusRep",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          _id: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          config: S.optional(__S(27, __c3, 3)),
-          statements: S.optional(__S(165, __c20, 5)),
-          on: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          _access: S.optional(__S(21, __c2, 5)),
-          _status: S.optional(__S(222, __c27, 6)),
-          url: S.optional(S.String),
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "Integration" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionSet: S.optional(S.String),
-          actions: S.optional(__S(12, __c1, 4)),
-          memberIDs: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "PermissionGrantInput" });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expand: S.optional(S.String.pipe(T.Query())),
-          customRoleKeys: S.optional(__S(12, __c1, 4)),
-          description: S.optional(S.String),
-          key: S.String,
-          memberIDs: S.optional(__S(12, __c1, 4)),
-          name: S.String,
-          permissionGrants: S.optional(__S(225, __c28, 1)),
-          roleAttributes: S.optional(__S(126, __c15, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/teams", code: 200 })),
-      ).annotate({ identifier: "CreateTeamRequest" });
-    case 3:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _links: __S(4, __c0, 4),
-          key: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ProjectSummary" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.optional(S.Number),
-          items: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({ identifier: "TeamProjects" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          projects: S.optional(__S(230, __c28, 6)),
-          appliedOn: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TeamCustomRole" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.optional(S.Number),
-          items: S.optional(__S(232, __c29, 0)),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "TeamCustomRoles" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TeamMembers" });
-    case 3:
-      return S.Array(__S(13, __c1, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.optional(S.Number),
-          items: S.optional(__S(235, __c29, 3)),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "TeamMaintainers" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          _access: S.optional(__S(21, __c2, 5)),
-          _creationDate: S.optional(S.Number),
-          _links: S.optional(__S(227, __c28, 3)),
-          _lastModified: S.optional(S.Number),
-          _version: S.optional(S.Number),
-          _idpSynced: S.optional(S.Boolean),
-          roleAttributes: S.optional(__S(126, __c15, 6)),
-          roles: S.optional(__S(233, __c29, 1)),
-          members: S.optional(__S(234, __c29, 2)),
-          projects: S.optional(__S(230, __c28, 6)),
-          maintainers: S.optional(__S(236, __c29, 4)),
-        }),
-      ).annotate({ identifier: "Team" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          teamKey: S.String.pipe(T.Label()),
-          file: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/teams/{teamKey}/members",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({ identifier: "CreateTeamMemberRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          status: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "MemberImportItem" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({ identifier: "TeamImportsRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          role: S.optional(S.String),
-          customRoleIds: S.optional(__S(12, __c1, 4)),
-          inlineRole: S.optional(__S(160, __c20, 0)),
-          serviceToken: S.optional(S.Boolean),
-          defaultApiVersion: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/tokens", code: 200 })),
-      ).annotate({ identifier: "CreateTokenRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          ownerId: S.String,
-          memberId: S.String,
-          _member: S.optional(__S(13, __c1, 5)),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          creationDate: S.Number,
-          lastModified: S.Number,
-          customRoleIds: S.optional(__S(12, __c1, 4)),
-          inlineRole: S.optional(__S(165, __c20, 5)),
-          role: S.optional(S.String),
-          token: S.optional(S.String),
-          serviceToken: S.optional(S.Boolean),
-          _links: __S(4, __c0, 4),
-          defaultApiVersion: S.optional(S.Number),
-          lastUsed: S.optional(S.Number),
-          expiry: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Token" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          comment: S.optional(S.String),
-          instructions: S.optional(__S(244, __c30, 4)),
-          integrationKey: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTriggerWorkflowRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.Number),
-          jsonBody: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "RecentTriggerBody" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          _version: S.optional(S.Number),
-          _creationDate: S.optional(S.Number),
-          _maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
-          enabled: S.optional(S.Boolean),
-          _status: S.optional(S.String),
-          _lastFailedAt: S.optional(S.Number),
-          _integrationKey: S.optional(S.String),
-          instructions: S.optional(__S(28, __c3, 4)),
-          _lastTriggeredAt: S.optional(S.Number),
-          _recentTriggerBodies: S.optional(__S(247, __c30, 7)),
-          _triggerCount: S.optional(S.Number),
-          triggerURL: S.optional(S.String),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "TriggerWorkflowRep" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          key: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          maintainerId: S.optional(S.String),
-          maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/views", code: 200 })),
-      ).annotate({ identifier: "CreateViewRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ViewsAccessDeniedReason" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(250, __c31, 2),
-        }),
-      ).annotate({ identifier: "ViewsAccessDenied" });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ViewsAccessAllowedReason" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(253, __c31, 5),
-        }),
-      ).annotate({ identifier: "ViewsAccessAllowedRep" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          denied: __S(252, __c31, 4),
-          allowed: __S(255, __c31, 7),
-        }),
-      ).annotate({ identifier: "ViewsAccess" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "CoreLink" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          self: __S(257, __c32, 1),
-          parent: __S(257, __c32, 1),
-        }),
-      ).annotate({ identifier: "ParentAndSelfLinks" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          email: S.String,
-          role: S.String,
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ViewsMaintainerMember" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          key: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ViewsMaintainerTeam" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          maintainerMember: S.optional(__S(260, __c32, 4)),
-          maintainerTeam: S.optional(__S(261, __c32, 5)),
-        }),
-      ).annotate({ identifier: "Maintainer" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          self: __S(257, __c32, 1),
-        }),
-      ).annotate({ identifier: "ViewsSelfLink" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          links: __S(263, __c32, 7),
-        }),
-      ).annotate({
-        identifier: "ExpandedDirectlyLinkedFlag",
-      });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(265, __c33, 1),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ExpandedDirectlyLinkedFlags",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          linkedFlags: S.optional(__S(266, __c33, 2)),
-        }),
-      ).annotate({ identifier: "FlagsSummary" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          environmentId: S.String,
-          links: __S(263, __c32, 7),
-        }),
-      ).annotate({
-        identifier: "ExpandedDirectlyLinkedSegment",
-      });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(269, __c33, 5),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ExpandedDirectlyLinkedSegments",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          linkedSegments: S.optional(__S(270, __c33, 6)),
-        }),
-      ).annotate({ identifier: "SegmentsSummary" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "MetricsSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          flagCount: S.Number,
-          segmentCount: S.optional(S.Number),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ResourceSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customRoleKeys: __S(12, __c1, 4),
-          key: S.String,
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "ViewsMemberTeamSummaryRep",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          kind: S.String,
-          _member: S.optional(__S(13, __c1, 5)),
-          _team: S.optional(__S(274, __c34, 2)),
-        }),
-      ).annotate({ identifier: "ExpandedFlagMaintainer" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          creationDate: S.optional(S.Number),
-          _version: S.optional(S.Number),
-          archived: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          temporary: S.optional(S.Boolean),
-          includeInSnippet: S.optional(S.Boolean),
-          maintainer: S.optional(__S(275, __c34, 3)),
-          _links: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "ExpandedFlag" });
-    case 5:
-      return S.Array(__S(276, __c34, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(277, __c34, 5),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ExpandedLinkedFlags" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          environmentId: S.optional(S.String),
-          environmentKey: S.optional(S.String),
-          description: S.optional(S.String),
-          creationDate: S.optional(S.Number),
-          lastModifiedDate: S.optional(S.Number),
-          deleted: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          unbounded: S.optional(S.Boolean),
-          version: S.optional(S.Number),
-          generation: S.optional(S.Number),
-          _links: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "ExpandedSegment" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(280, __c35, 0),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ExpandedLinkedSegments" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          creationDate: S.optional(S.Number),
-          lastModified: S.optional(S.Number),
-          isActive: S.optional(S.Boolean),
-          eventKey: S.optional(S.String),
-          _id: S.optional(S.String),
-          _versionId: S.optional(S.String),
-          kind: S.optional(S.String),
-          category: S.optional(S.String),
-          description: S.optional(S.String),
-          isNumeric: S.optional(S.Boolean),
-          lastSeen: S.optional(S.Number),
-          _links: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "ExpandedMetric" });
-    case 3:
-      return S.Array(__S(282, __c35, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(283, __c35, 3),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ExpandedLinkedMetrics" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
-          description: S.optional(S.String),
-          version: S.optional(S.Number),
-          createdAt: S.optional(S.Number),
-          updatedAt: S.optional(S.Number),
-          flagKey: S.optional(S.String),
-          _links: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "ExpandedAIConfig" });
-    case 6:
-      return S.Array(__S(285, __c35, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(286, __c35, 6),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ExpandedLinkedAIConfigs" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(277, __c34, 5),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ExpandedLinkedResourcesFlags",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(280, __c35, 0),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ExpandedLinkedResourcesSegments",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          flags: __S(288, __c36, 0),
-          segments: S.optional(__S(289, __c36, 1)),
-        }),
-      ).annotate({
-        identifier: "ExpandedLinkedResourcesItems",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(290, __c36, 2),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "ExpandedLinkedResources" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _access: S.optional(__S(256, __c32, 0)),
-          _links: S.optional(__S(258, __c32, 2)),
-          id: S.String,
-          accountId: S.String,
-          projectId: S.String,
-          projectKey: S.String,
-          key: S.String,
-          name: S.String,
-          description: S.String,
-          _affectsSdkPayload: S.Boolean,
-          generateSdkKeys: S.optional(S.Boolean),
-          version: S.Number,
-          tags: __S(259, __c32, 3),
-          createdAt: S.Number,
-          updatedAt: S.Number,
-          deletedAt: S.optional(S.Number),
-          deleted: S.Boolean,
-          maintainer: S.optional(__S(262, __c32, 6)),
-          flagsSummary: S.optional(__S(267, __c33, 3)),
-          segmentsSummary: S.optional(__S(271, __c33, 7)),
-          metricsSummary: S.optional(__S(272, __c34, 0)),
-          aiConfigsSummary: S.optional(__S(272, __c34, 0)),
-          resourceSummary: S.optional(__S(273, __c34, 1)),
-          flagsExpanded: S.optional(__S(278, __c34, 6)),
-          segmentsExpanded: S.optional(__S(281, __c35, 1)),
-          metricsExpanded: S.optional(__S(284, __c35, 4)),
-          aiConfigsExpanded: S.optional(__S(287, __c35, 7)),
-          resourcesExpanded: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({ identifier: "View" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          url: S.String,
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          statements: S.optional(__S(160, __c20, 0)),
-          sign: S.Boolean,
-          on: S.Boolean,
-          tags: S.optional(__S(12, __c1, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          name: S.optional(S.String),
-          url: S.String,
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          statements: S.optional(__S(165, __c20, 5)),
-          on: S.Boolean,
-          tags: __S(259, __c32, 3),
-          _access: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "Webhook" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleKind: S.optional(S.String),
-          executionDate: S.optional(S.Number),
-          waitDuration: S.optional(S.Number),
-          waitDurationUnit: S.optional(S.String),
-          executeNow: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          integrationConfig: S.optional(__S(27, __c3, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConditionInput" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(295, __c36, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          instructions: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ActionInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          executeConditionsInSequence: S.optional(S.Boolean),
-          conditions: S.optional(__S(296, __c37, 0)),
-          action: S.optional(__S(297, __c37, 1)),
-        }),
-      ).annotate({ identifier: "StageInput" });
-    case 3:
-      return S.Array(__S(298, __c37, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          workflowId: S.optional(S.String),
-          stages: S.optional(__S(299, __c37, 3)),
-          projectKey: S.optional(S.String),
-          environmentKey: S.optional(S.String),
-          flagKey: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v2/templates", code: 200 })),
-      ).annotate({
-        identifier: "CreateWorkflowTemplateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          stopDate: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ExecutionOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          kind: S.String,
-          creationDate: S.optional(S.Number),
-          comment: S.optional(S.String),
-          memberId: S.optional(S.String),
-          serviceTokenId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewOutput" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          kind: S.optional(S.String),
-          _execution: __S(301, __c37, 5),
-          scheduleKind: S.optional(S.String),
-          executionDate: S.optional(S.Number),
-          waitDuration: S.optional(S.Number),
-          waitDurationUnit: S.optional(S.String),
-          description: S.String,
-          notifyMemberIds: __S(12, __c1, 4),
-          allReviews: __S(303, __c37, 7),
-          reviewStatus: S.String,
-          appliedDate: S.optional(S.Number),
-          creationConfig: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "ConditionOutput" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          instructions: __S(28, __c3, 4),
-        }),
-      ).annotate({ identifier: "ActionOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          name: S.optional(S.String),
-          conditions: __S(305, __c38, 1),
-          action: __S(306, __c38, 2),
-          _execution: __S(301, __c37, 5),
-        }),
-      ).annotate({ identifier: "StageOutput" });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _key: S.String,
-          name: S.optional(S.String),
-          _creationDate: S.Number,
-          _ownerId: S.String,
-          _maintainerId: S.String,
-          _links: __S(4, __c0, 4),
-          description: S.optional(S.String),
-          stages: S.optional(__S(308, __c38, 4)),
-        }),
-      ).annotate({ identifier: "WorkflowTemplateOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          triggerID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/adaptive-triggers/{triggerID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdaptiveTriggerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          graphKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/agent-graphs/{graphKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAgentGraphRequest" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          optimizationKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgentOptimizationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAgentOptimizationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          optimizationKey: S.String.pipe(T.Label()),
-          runId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgentOptimizationRunRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAgentOptimizationRunResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          skillKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAgentSkillRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAIConfigRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-          variationKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAIConfigVariationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          toolKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-tools/{toolKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAIToolRequest" });
   }
 }
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          announcementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v2/announcements/{announcementId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteAnnouncementPublicRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v2/applications/{applicationKey}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationKey: S.String.pipe(T.Label()),
-          versionKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/applications/{applicationKey}/versions/{versionKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationVersionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/approval-requests/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteApprovalRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApprovalRequestForFlagRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          integrationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBigSegmentStoreIntegrationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-          body: __S(12, __c1, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/code-refs/repositories/{repo}/branch-delete-tasks",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBranchesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customRoleKey: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
-      ).annotate({ identifier: "DeleteCustomRoleRequest" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/destinations/{projectKey}/{environmentKey}/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDestinationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFeatureFlagRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFlagConfigScheduledChangesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          memberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFlagFollowerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          integrationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFlagImportConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFlagLinkRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          insightGroupKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/engineering-insights/insights/groups/{insightGroupKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInsightGroupRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/integration-configurations/{integrationConfigurationId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIntegrationConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          integrationKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIntegrationDeliveryConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/account/ip-allowlist/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteIpAllowlistEntryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/members/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteMemberRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          metricKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v2/metrics/{projectKey}/{metricKey}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteMetricRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          metricGroupKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteMetricGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          modelConfigKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteModelConfigRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/oauth/clients/{clientId}", code: 200 })),
-      ).annotate({ identifier: "DeleteOAuthClientRequest" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/projects/{projectKey}", code: 200 })),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          snippetKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePromptSnippetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v2/account/relay-auto-configs/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteRelayAutoConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          flagKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/flags/{projectKey}/{flagKey}/release",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReleaseByFlagKeyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          pipelineKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReleasePipelineRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          policyKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/release-policies/{policyKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReleasePolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteRepositoryRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryKey: S.String.pipe(T.Label()),
-          projectKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRepositoryProjectRequest",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          keys: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/model-configs/restricted",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRestrictedModelsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          sdkKeyKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSdkKeyByKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          segmentKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSegmentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/integrations/{integrationKey}/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          teamKey: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/teams/{teamKey}", code: 200 })),
-      ).annotate({ identifier: "DeleteTeamRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/tokens/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteTokenRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTriggerWorkflowRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          viewKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/views/{viewKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteViewRequest" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/webhooks/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          workflowId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkflowRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          templateKey: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/templates/{templateKey}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteWorkflowTemplateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          body: __S(27, __c3, 3).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EvaluateContextInstanceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          ruleIndex: S.optional(S.Number),
-          ruleID: S.optional(S.String),
-          prerequisiteKey: S.optional(S.String),
-          inExperiment: S.optional(S.Boolean),
-          errorKind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContextInstanceEvaluationReason",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-          _value: S.Unknown,
-          reason: S.optional(__S(364, __c45, 4)),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ContextInstanceEvaluation",
-      });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(366, __c45, 6),
-          totalCount: S.optional(S.Number),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ContextInstanceEvaluations",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          triggerID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/adaptive-triggers/{triggerID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdaptiveTriggerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          alertId: S.Number,
-        }),
-      ).annotate({ identifier: "ObservabilityAlertSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          variationId: S.String,
-          ruleId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdaptiveTriggerInstruction",
-      });
-    case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          instructions: __S(371, __c46, 3),
-        }),
-      ).annotate({ identifier: "AdaptiveTriggerTask" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          resourceKind: S.String,
-          resourceKey: S.String,
-          enabled: S.Boolean,
-          triggerSource: __S(369, __c46, 1),
-          task: __S(372, __c46, 4),
-          createdAt: S.Number,
-          updatedAt: S.Number,
-        }),
-      ).annotate({ identifier: "AdaptiveTrigger" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          graphKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/agent-graphs/{graphKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAgentGraphRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AiConfigsAccessDeniedReason",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(375, __c46, 7),
-        }),
-      ).annotate({ identifier: "AiConfigsAccessDenied" });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
-          effect: S.String,
-          role_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AiConfigsAccessAllowedReason",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          reason: __S(378, __c47, 2),
-        }),
-      ).annotate({
-        identifier: "AiConfigsAccessAllowedRep",
-      });
-    case 4:
-      return S.Array(__S(379, __c47, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          denied: __S(377, __c47, 1),
-          allowed: __S(380, __c47, 4),
-        }),
-      ).annotate({ identifier: "AiConfigsAccess" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "AiConfigsMaintainerTeam" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          sourceConfig: S.String,
-          targetConfig: S.String,
-          handoff: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "AgentGraphEdge" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(383, __c47, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _access: S.optional(__S(381, __c47, 5)),
-          _site: S.optional(__S(257, __c32, 1)),
-          key: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          _maintainer: S.optional(S.Unknown),
-          rootConfigKey: S.optional(S.String),
-          edges: S.optional(__S(384, __c48, 0)),
-          createdAt: S.Number,
-          updatedAt: S.Number,
-        }),
-      ).annotate({ identifier: "AgentGraph" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          optimizationKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentOptimizationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statement: S.String,
-          threshold: S.Number,
-        }),
-      ).annotate({
-        identifier: "AgentOptimizationAcceptanceStatement",
-      });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          threshold: S.Number,
-        }),
-      ).annotate({ identifier: "AgentOptimizationJudge" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
-          id: S.String,
-          key: S.String,
-          aiConfigKey: S.String,
-          maxAttempts: S.Number,
-          modelChoices: __S(12, __c1, 4),
-          judgeModel: S.String,
-          variableChoices: __S(244, __c30, 4),
-          acceptanceStatements: __S(388, __c48, 4),
-          judges: __S(390, __c48, 6),
-          userInputOptions: __S(12, __c1, 4),
-          groundTruthResponses: __S(12, __c1, 4),
-          metricKey: S.optional(S.String),
-          tokenLimit: S.optional(S.Number),
-          variationKey: S.optional(S.String),
-          label: S.optional(S.String),
-          latencyOptimization: S.optional(S.Boolean),
-          tokenOptimization: S.optional(S.Boolean),
-          autoCommit: S.optional(S.Boolean),
-          version: S.Number,
-          createdAt: S.Number,
-        }),
-      ).annotate({ identifier: "AgentOptimization" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          skillKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAgentSkillRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
-          _maintainer: S.optional(S.Unknown),
-          name: S.String,
-          description: S.optional(S.String),
-          markdown: S.String,
-          tags: __S(12, __c1, 4),
-          version: S.Number,
-          createdAt: S.Number,
-        }),
-      ).annotate({ identifier: "AgentSkill" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAIConfigRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: __S(257, __c32, 1),
-        }),
-      ).annotate({ identifier: "ParentLink" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          role: S.String,
-        }),
-      ).annotate({ identifier: "Message" });
-    case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          version: S.Number,
-          customParameters: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "VariationTool" });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          version: S.Number,
-        }),
-      ).annotate({ identifier: "VariationSkill" });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          judgeConfigKey: S.String,
-          samplingRate: S.Number,
-        }),
-      ).annotate({ identifier: "JudgeAttachment" });
-    case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          judges: S.optional(__S(403, __c50, 3)),
-        }),
-      ).annotate({ identifier: "JudgeConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(395, __c49, 3)),
-          color: S.optional(S.String),
-          comment: S.optional(S.String),
-          description: S.optional(S.String),
-          instructions: S.optional(S.String),
-          key: S.String,
-          _id: S.String,
-          messages: S.optional(__S(397, __c49, 5)),
-          model: S.Unknown,
-          modelConfigKey: S.optional(S.String),
-          modelConfigVersion: S.optional(S.Number),
-          name: S.String,
-          outputFormat: S.optional(__S(27, __c3, 3)),
-          createdAt: S.Number,
-          version: S.Number,
-          state: S.optional(S.String),
-          _archivedAt: S.optional(S.Number),
-          _publishedAt: S.optional(S.Number),
-          tools: S.optional(__S(399, __c49, 7)),
-          skills: S.optional(__S(401, __c50, 1)),
-          judgeConfiguration: S.optional(__S(404, __c50, 4)),
-          judgingConfigKeys: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AIConfigVariation" });
-    case 6:
-      return S.Array(__S(405, __c50, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          key: S.String,
-        }),
-      ).annotate({ identifier: "AIConfigDependency" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(407, __c50, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
-          _site: S.optional(__S(257, __c32, 1)),
-          description: S.String,
-          key: S.String,
-          _maintainer: S.optional(S.Unknown),
-          mode: S.optional(S.String),
-          name: S.String,
-          tags: __S(12, __c1, 4),
-          version: S.Number,
-          variations: __S(406, __c50, 6),
-          createdAt: S.Number,
-          updatedAt: S.Number,
-          evaluationMetricKey: S.optional(S.String),
-          evaluationMetricKeys: S.optional(__S(12, __c1, 4)),
-          isInverted: S.optional(S.Boolean),
-          dependencies: S.optional(__S(408, __c51, 0)),
-        }),
-      ).annotate({ identifier: "AIConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-          from: S.Number.pipe(T.Query()),
-          to: S.Number.pipe(T.Query()),
-          env: S.String.pipe(T.Query()),
-          contextKind: S.optional(S.String.pipe(T.Query())),
-          contextKey: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAIConfigMetricsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inputTokens: S.optional(S.Number),
-          outputTokens: S.optional(S.Number),
-          totalTokens: S.optional(S.Number),
-          generationCount: S.optional(S.Number),
-          generationSuccessCount: S.optional(S.Number),
-          generationErrorCount: S.optional(S.Number),
-          thumbsUp: S.optional(S.Number),
-          thumbsDown: S.optional(S.Number),
-          durationMs: S.optional(S.Number),
-          timeToFirstTokenMs: S.optional(S.Number),
-          satisfactionRating: S.optional(S.Number),
-          inputCost: S.optional(S.Number),
-          outputCost: S.optional(S.Number),
-          judgeAccuracy: S.optional(S.Number),
-          judgeRelevance: S.optional(S.Number),
-          judgeToxicity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Metrics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-          from: S.Number.pipe(T.Query()),
-          to: S.Number.pipe(T.Query()),
-          env: S.String.pipe(T.Query()),
-          contextKind: S.optional(S.String.pipe(T.Query())),
-          contextKey: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAIConfigMetricsByVariationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          variationKey: S.optional(S.String),
-          metrics: S.optional(__S(411, __c51, 3)),
-        }),
-      ).annotate({ identifier: "MetricByVariation" });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
-      return S.suspend(() => __S(414, __c51, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAIConfigMetricsByVariationResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/quick-stats",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAIConfigQuickStatsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activeConfigs: S.Number,
-          activeExperiments: S.Number,
-          averageSatisfaction7D: S.optional(S.NullOr(S.Number)),
-          spendMonthToDate: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "QuickStats" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/ai-configs", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetAIConfigsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          first: S.optional(__S(3, __c0, 3)),
-          last: S.optional(__S(3, __c0, 3)),
-          next: S.optional(__S(3, __c0, 3)),
-          prev: S.optional(__S(3, __c0, 3)),
-          self: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "PaginatedLinks" });
-    case 4:
-      return S.Array(__S(409, __c51, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(420, __c52, 4),
-          totalCount: S.Number,
-        }),
-      ).annotate({ identifier: "AIConfigs" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAIConfigTargetingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          onVariation: S.Number,
-          offVariation: S.Number,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingDefaults",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contextKind: S.String,
-          values: __S(12, __c1, 4),
-          variation: S.Number,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentTarget",
-      });
-    case 1:
-      return S.Array(__S(424, __c53, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          canReshuffle: S.Boolean,
-          defaultVariation: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _untracked: S.optional(S.Boolean),
-          variation: S.Number,
-          weight: S.Number,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentFallthroughRolloutVariation",
-      });
-    case 4:
-      return S.Array(__S(427, __c53, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bucketBy: S.optional(S.String),
-          contextKind: S.String,
-          experimentAllocation: S.optional(__S(426, __c53, 2)),
-          seed: S.optional(S.Number),
-          variations: __S(428, __c53, 4),
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentFallthroughRollout",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          variation: S.optional(S.Number),
-          rollout: S.optional(__S(429, __c53, 5)),
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentFallthrough",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attribute: S.String,
-          id: S.String,
-          negate: S.Boolean,
-          op: S.String,
-          values: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentRuleClause",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(431, __c53, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clauses: __S(432, __c54, 0),
-          trackEvents: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironmentRule",
-      });
-    case 2:
-      return S.Array(__S(433, __c54, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contextTargets: __S(425, __c53, 1),
-          enabled: S.Boolean,
-          fallthrough: __S(430, __c53, 6),
-          lastModified: S.Number,
-          offVariation: S.optional(S.Number),
-          rules: __S(434, __c54, 2),
-          targets: __S(425, __c53, 1),
-          trackEvents: S.Boolean,
-          trackEventsFallthrough: S.Boolean,
-          _environmentName: S.String,
-          _version: S.Number,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingEnvironment",
-      });
-    case 4:
-      return S.Record(S.String, __S(435, __c54, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          attribute: S.optional(S.String),
-          op: S.String,
-          values: __S(23, __c2, 7),
-          contextKind: S.optional(S.String),
-          negate: S.Boolean,
-        }),
-      ).annotate({ identifier: "AiConfigsFilter" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          eventName: S.optional(S.String),
-          isNumeric: S.optional(S.Boolean),
-          unitAggregationType: S.optional(S.String),
-          unitAggregationField: S.optional(S.String),
-          valueColumn: S.optional(S.String),
-          dataSource: S.optional(__S(26, __c3, 2)),
-          filters: S.optional(__S(437, __c54, 5)),
-          windowStartOffset: S.optional(S.Number),
-          windowEndOffset: S.optional(S.Number),
-          winsorLowerPercentile: S.optional(S.Number),
-          winsorUpperPercentile: S.optional(S.Number),
-          winsorIncludeImputed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AiConfigsMetricDenominatorRep",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          experimentCount: S.optional(S.Number),
-          metricGroupCount: S.optional(S.Number),
-          guardedRolloutCount: S.optional(S.Number),
-          releasePolicyCount: S.optional(S.Number),
-          activeExperimentCount: S.optional(S.Number),
-          activeGuardedRolloutCount: S.optional(S.Number),
-          _id: S.String,
-          _versionId: S.String,
-          _version: S.optional(S.Number),
-          key: S.String,
-          name: S.String,
-          kind: S.String,
-          _attachedFlagCount: S.optional(S.Number),
-          _links: __S(4, __c0, 4),
-          _site: S.optional(__S(3, __c0, 3)),
-          _access: S.optional(__S(381, __c47, 5)),
-          tags: __S(12, __c1, 4),
-          _creationDate: S.Number,
-          lastModified: S.optional(__S(22, __c2, 6)),
-          maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
-          description: S.optional(S.String),
-          category: S.optional(S.String),
-          isNumeric: S.optional(S.Boolean),
-          successCriteria: S.optional(S.String),
-          unit: S.optional(S.String),
-          eventKey: S.optional(S.String),
-          randomizationUnits: S.optional(__S(12, __c1, 4)),
-          analysisUnits: S.optional(__S(12, __c1, 4)),
-          filters: S.optional(__S(437, __c54, 5)),
-          unitAggregationType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          percentileValue: S.optional(S.Number),
-          eventDefault: S.optional(__S(25, __c3, 1)),
-          dataSource: __S(26, __c3, 2),
-          lastSeen: S.optional(S.Number),
-          archived: S.optional(S.Boolean),
-          archivedAt: S.optional(S.Number),
-          selector: S.optional(S.String),
-          urls: S.optional(__S(244, __c30, 4)),
-          windowStartOffset: S.optional(S.Number),
-          windowEndOffset: S.optional(S.Number),
-          winsorLowerPercentile: S.optional(S.Number),
-          winsorUpperPercentile: S.optional(S.Number),
-          winsorIncludeImputed: S.optional(S.Boolean),
-          traceQuery: S.optional(S.String),
-          traceValueLocation: S.optional(S.String),
-          unitAggregationField: S.optional(S.String),
-          denominator: S.optional(__S(438, __c54, 6)),
-        }),
-      ).annotate({
-        identifier: "AiConfigsMetricListingRep",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metricKey: S.optional(S.String),
-          _metric: S.optional(__S(439, __c54, 7)),
-          environments: S.optional(__S(12, __c1, 4)),
-          _environmentSettings: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "AiConfigsLegacyExperimentRep",
-      });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          baselineIdx: S.Number,
-          items: __S(441, __c55, 1),
-        }),
-      ).annotate({
-        identifier: "AiConfigsExperimentInfoRep",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          description: S.String,
-          name: S.String,
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "AIConfigTargetingVariation",
-      });
-    case 4:
-      return S.Array(__S(443, __c55, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          defaults: S.optional(__S(423, __c52, 7)),
-          environments: __S(436, __c54, 4),
-          experiments: __S(442, __c55, 2),
-          key: S.String,
-          name: S.String,
-          tags: __S(12, __c1, 4),
-          variations: __S(444, __c55, 4),
-          _version: S.Number,
-        }),
-      ).annotate({ identifier: "AIConfigTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          configKey: S.String.pipe(T.Label()),
-          variationKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAIConfigVariationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(406, __c50, 6),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "AIConfigVariationsResponse",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-          projectKey: S.optional(S.String.pipe(T.Query())),
-          environmentKey: S.optional(S.String.pipe(T.Query())),
-          sdkName: S.optional(S.String.pipe(T.Query())),
-          sdkVersion: S.optional(S.String.pipe(T.Query())),
-          sdkType: S.optional(S.String.pipe(T.Query())),
-          groupBy: S.optional(S.String.pipe(T.Query())),
-          aggregationType: S.optional(S.String.pipe(T.Query())),
-          granularity: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/ai-runs", code: 200 })),
-      ).annotate({ identifier: "GetAIRunsUsageRequest" });
-    case 1:
-      return S.Record(S.String, S.Number);
-    case 2:
-      return S.Array(__S(449, __c56, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(27, __c3, 3),
-          metadata: __S(244, __c30, 4),
-          series: __S(450, __c56, 2),
-        }),
-      ).annotate({ identifier: "SeriesListRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          toolKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/ai-tools/{toolKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAIToolRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
-          _site: S.optional(__S(257, __c32, 1)),
-          _maintainer: S.optional(S.Unknown),
-          description: S.optional(S.String),
-          schema: S.Unknown,
-          customParameters: S.optional(S.Unknown),
-          tags: S.optional(__S(259, __c32, 3)),
-          version: S.Number,
-          createdAt: S.Number,
-        }),
-      ).annotate({ identifier: "AITool" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAllHoldoutsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelatedExperimentRep" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(455, __c56, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          createdAt: S.optional(S.Number),
-          updatedAt: S.optional(S.Number),
-          experiments: S.optional(__S(456, __c57, 0)),
-        }),
-      ).annotate({ identifier: "SimpleHoldoutRep" });
-    case 2:
-      return S.Array(__S(457, __c57, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(458, __c57, 2)),
-          _links: S.optional(__S(4, __c0, 4)),
-          total_count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HoldoutsCollectionRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          integrationKey: S.String.pipe(T.Label()),
-          includePending: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/integration-configurations/keys/{integrationKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAllIntegrationConfigurationsRequest",
-      });
-    case 5:
-      return S.Array(__S(168, __c21, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(461, __c57, 5),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "IntegrationConfigurationCollectionRep",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/release-pipelines",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAllReleasePipelinesRequest",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(211, __c26, 3)),
-          name: S.String,
-          configuration: S.optional(__S(213, __c26, 5)),
-          segmentKeys: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Audience" });
-    case 1:
-      return S.Array(__S(464, __c58, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          audiences: __S(465, __c58, 1),
-          name: S.String,
-          configuration: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Phase" });
-    case 3:
-      return S.Array(__S(466, __c58, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          description: S.optional(S.String),
-          key: S.String,
-          name: S.String,
-          phases: __S(467, __c58, 3),
-          tags: S.optional(__S(12, __c1, 4)),
-          _version: S.optional(S.Number),
-          _access: S.optional(__S(21, __c2, 5)),
-          isProjectDefault: S.optional(S.Boolean),
-          _isLegacy: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ReleasePipeline" });
-    case 5:
-      return S.Array(__S(468, __c58, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(469, __c58, 5),
-          totalCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ReleasePipelineCollection",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          pipelineKey: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}/releases",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAllReleaseProgressionsForReleasePipelineRequest",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _createdAt: S.Number,
-          _completedAt: S.optional(S.Number),
-          flagKey: S.String,
-          activePhaseId: S.optional(S.String),
-          activePhaseStatus: S.optional(S.String),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "ReleaseProgression" });
-    case 1:
-      return S.Array(__S(472, __c59, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          name: S.String,
-          releaseCount: S.Number,
-        }),
-      ).annotate({ identifier: "PhaseInfo" });
-    case 3:
-      return S.Array(__S(474, __c59, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activeCount: S.Number,
-          completedCount: S.Number,
-          items: __S(473, __c59, 1),
-          phases: __S(475, __c59, 3),
-          totalCount: S.Number,
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ReleaseProgressionCollection",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/webhooks", code: 200 })),
-      ).annotate({ identifier: "GetAllWebhooksRequest" });
-    case 6:
-      return S.Array(__S(294, __c36, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(478, __c59, 6),
-        }),
-      ).annotate({ identifier: "Webhooks" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/announcements", code: 200 })),
-      ).annotate({
-        identifier: "GetAnnouncementsPublicRequest",
-      });
-    case 1:
-      return S.Array(__S(73, __c9, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(481, __c60, 1),
-          _links: __S(419, __c52, 3),
-        }),
-      ).annotate({
-        identifier: "GetAnnouncementsPublic200Response",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applicationKey: S.String.pipe(T.Label()),
-          expand: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/applications/{applicationKey}", code: 200 })),
-      ).annotate({ identifier: "GetApplicationRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          key: S.String,
-          _links: S.optional(__S(4, __c0, 4)),
-          _site: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "FlagListingRep" });
-    case 5:
-      return S.Array(__S(484, __c60, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(485, __c60, 5)),
-          totalCount: S.optional(S.Number),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ApplicationFlagCollectionRep",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          member: S.optional(__S(13, __c1, 5)),
-          team: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({ identifier: "ApplicationMaintainerRep" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          flags: S.optional(__S(486, __c60, 6)),
-          _access: S.optional(__S(21, __c2, 5)),
-          _links: S.optional(__S(4, __c0, 4)),
-          _version: S.optional(S.Number),
-          autoAdded: S.Boolean,
-          creationDate: S.optional(S.Number),
-          description: S.optional(S.String),
-          key: S.String,
-          kind: S.String,
-          _maintainer: S.optional(__S(487, __c60, 7)),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ApplicationRep" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/applications", code: 200 })),
-      ).annotate({ identifier: "GetApplicationsRequest" });
-    case 2:
-      return S.Array(__S(488, __c61, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          items: S.optional(__S(490, __c61, 2)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ApplicationCollectionRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          applicationKey: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/applications/{applicationKey}/versions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _access: S.optional(__S(21, __c2, 5)),
-          _links: S.optional(__S(4, __c0, 4)),
-          _version: S.optional(S.Number),
-          autoAdded: S.Boolean,
-          creationDate: S.optional(S.Number),
-          key: S.String,
-          name: S.String,
-          supported: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApplicationVersionRep" });
-    case 6:
-      return S.Array(__S(493, __c61, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          items: S.optional(__S(494, __c61, 6)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ApplicationVersionsCollectionRep",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApprovalForFlagRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _version: S.Number,
-          creationDate: S.Number,
-          serviceKind: S.String,
-          requestorId: S.optional(S.String),
-          description: S.optional(S.String),
-          reviewStatus: S.String,
-          allReviews: __S(76, __c9, 4),
-          notifyMemberIds: __S(12, __c1, 4),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          appliedDate: S.optional(S.Number),
-          appliedByMemberId: S.optional(S.String),
-          appliedByServiceTokenId: S.optional(S.String),
-          status: S.String,
-          instructions: __S(28, __c3, 4),
-          conflicts: __S(78, __c9, 6),
-          _links: __S(27, __c3, 3),
-          executionDate: S.optional(S.Number),
-          operatingOnId: S.optional(S.String),
-          integrationMetadata: S.optional(__S(80, __c10, 0)),
-          source: S.optional(__S(81, __c10, 1)),
-          customWorkflowMetadata: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "FlagConfigApprovalRequestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          expand: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/approval-requests/{id}", code: 200 })),
-      ).annotate({
-        identifier: "GetApprovalRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          totalCount: S.optional(S.Number),
-          items: __S(206, __c25, 6),
-        }),
-      ).annotate({ identifier: "Environments" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          key: S.String,
-          includeInSnippetByDefault: S.Boolean,
-          defaultClientSideAvailability: S.optional(__S(9, __c1, 1)),
-          name: S.String,
-          _access: S.optional(__S(21, __c2, 5)),
-          tags: __S(259, __c32, 3),
-          defaultReleasePipelineKey: S.optional(S.String),
-          environments: S.optional(__S(499, __c62, 3)),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          kind: S.String,
-          description: S.optional(S.String),
-          key: S.String,
-          _version: S.Number,
-          creationDate: S.Number,
-          includeInSnippet: S.optional(S.Boolean),
-          clientSideAvailability: S.optional(__S(9, __c1, 1)),
-          variations: __S(11, __c1, 3),
-          temporary: S.Boolean,
-          tags: __S(12, __c1, 4),
-          _links: __S(4, __c0, 4),
-          maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
-          customProperties: __S(39, __c4, 7),
-          archived: S.Boolean,
-          archivedDate: S.optional(S.Number),
-          defaults: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "ExpandedFlagRep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          _access: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ExpandedExperimentRep" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(12, __c1, 4)),
-          contextKind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SegmentTarget" });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(503, __c62, 7));
-    case 1:
-      return S.Array(__S(49, __c6, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          clauses: __S(505, __c63, 1),
-          weight: S.optional(S.Number),
-          rolloutContextKind: S.optional(S.String),
-          bucketBy: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserSegmentRule" });
-    case 3:
-      return S.Array(__S(506, __c63, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          envId: S.optional(S.String),
-          segmentId: S.optional(S.String),
-          version: S.optional(S.Number),
-          includedCount: S.optional(S.Number),
-          excludedCount: S.optional(S.Number),
-          lastModified: S.optional(S.Number),
-          deleted: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SegmentMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          tags: __S(12, __c1, 4),
-          creationDate: S.Number,
-          lastModifiedDate: S.Number,
-          key: S.String,
-          included: S.optional(__S(12, __c1, 4)),
-          excluded: S.optional(__S(12, __c1, 4)),
-          includedContexts: S.optional(__S(504, __c63, 0)),
-          excludedContexts: S.optional(__S(504, __c63, 0)),
-          _links: __S(4, __c0, 4),
-          rules: __S(507, __c63, 3),
-          version: S.Number,
-          deleted: S.Boolean,
-          _access: S.optional(__S(21, __c2, 5)),
-          _flags: S.optional(__S(485, __c60, 5)),
-          unbounded: S.optional(S.Boolean),
-          unboundedContextKind: S.optional(S.String),
-          generation: S.Number,
-          _unboundedMetadata: S.optional(__S(508, __c63, 4)),
-          _external: S.optional(S.String),
-          _externalLink: S.optional(S.String),
-          _importInProgress: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UserSegment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          aiConfig: S.optional(__S(382, __c47, 6)),
-          experiment: S.optional(__S(502, __c62, 6)),
-          flag: S.optional(__S(501, __c62, 5)),
-          segment: S.optional(__S(509, __c63, 5)),
-        }),
-      ).annotate({ identifier: "ExpandedResourceRep" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          _version: S.Number,
-          creationDate: S.Number,
-          serviceKind: S.String,
-          requestorId: S.optional(S.String),
-          description: S.optional(S.String),
-          reviewStatus: S.String,
-          allReviews: __S(76, __c9, 4),
-          notifyMemberIds: __S(12, __c1, 4),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          appliedDate: S.optional(S.Number),
-          appliedByMemberId: S.optional(S.String),
-          appliedByServiceTokenId: S.optional(S.String),
-          status: S.String,
-          instructions: __S(28, __c3, 4),
-          conflicts: __S(78, __c9, 6),
-          _links: __S(27, __c3, 3),
-          executionDate: S.optional(S.Number),
-          operatingOnId: S.optional(S.String),
-          integrationMetadata: S.optional(__S(80, __c10, 0)),
-          source: S.optional(__S(81, __c10, 1)),
-          customWorkflowMetadata: S.optional(__S(83, __c10, 3)),
-          resourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(84, __c10, 4)),
-          project: S.optional(__S(500, __c62, 4)),
-          environments: S.optional(__S(206, __c25, 6)),
-          flag: S.optional(__S(501, __c62, 5)),
-          resource: S.optional(__S(510, __c63, 6)),
-        }),
-      ).annotate({
-        identifier: "ExpandableApprovalRequestResponse",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/approval-requests", code: 200 })),
-      ).annotate({
-        identifier: "GetApprovalRequestsRequest",
-      });
-    case 1:
-      return S.Array(__S(511, __c63, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(513, __c64, 1),
-          totalCount: S.Number,
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ExpandableApprovalRequestsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.optional(S.String.pipe(T.Query())),
-          resourceKind: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/approval-requests/projects/{projectKey}/settings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApprovalRequestSettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.Boolean,
-          bypassApprovalsForPendingChanges: S.Boolean,
-          minNumApprovals: S.Number,
-          canReviewOwnRequest: S.Boolean,
-          canApplyDeclinedChanges: S.Boolean,
-          autoApplyApprovedChanges: S.optional(S.NullOr(S.Boolean)),
-          serviceKind: S.String,
-          serviceConfig: __S(27, __c3, 3),
-          requiredApprovalTags: __S(12, __c1, 4),
-          serviceKindConfigurationId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ApprovalRequestSetting" });
-    case 5:
-      return S.Record(S.String, __S(516, __c64, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          environments: S.optional(__S(517, __c64, 5)),
-          _default: S.optional(__S(516, __c64, 4)),
-          _strict: S.optional(__S(516, __c64, 4)),
-        }),
-      ).annotate({
-        identifier: "ApprovalRequestSettingWithEnvs",
-      });
-    case 7:
-      return S.Record(S.String, __S(518, __c64, 6));
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(519, __c64, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetApprovalRequestSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          featureFlagKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApprovalsForFlagRequest",
-      });
-    case 2:
-      return S.Array(__S(497, __c62, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(522, __c65, 2),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "FlagConfigApprovalRequestsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          before: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.Number.pipe(T.Query())),
-          q: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          spec: S.optional(S.String.pipe(T.Query())),
-          member: S.optional(S.String.pipe(T.Query())),
-          token: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/auditlog", code: 200 })),
-      ).annotate({
-        identifier: "GetAuditLogEntriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          resource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceAccess" });
-    case 6:
-      return S.Array(__S(525, __c65, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-        }),
-      ).annotate({ identifier: "RelatedFlag" });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          avatarUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubjectDataRep" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          _id: S.optional(S.String),
-          email: S.optional(S.String),
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MemberDataRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          _id: S.optional(S.String),
-          isScim: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          maintainerName: S.optional(S.String),
-          isAgent: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AuthorizedAppDataRep" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          resources: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "TargetResourceRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          resource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ParentResourceRep" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          _accountId: S.String,
-          date: S.Number,
-          accesses: __S(526, __c65, 6),
-          kind: S.String,
-          name: S.String,
-          description: S.String,
-          shortDescription: S.String,
-          comment: S.optional(S.String),
-          relatedFlag: S.optional(__S(527, __c65, 7)),
-          relatedExperiment: S.optional(__S(527, __c65, 7)),
-          relatedAIConfig: S.optional(__S(527, __c65, 7)),
-          subject: S.optional(__S(528, __c66, 0)),
-          member: S.optional(__S(529, __c66, 1)),
-          token: S.optional(__S(209, __c26, 1)),
-          app: S.optional(__S(530, __c66, 2)),
-          titleVerb: S.optional(S.String),
-          title: S.optional(S.String),
-          target: S.optional(__S(531, __c66, 3)),
-          parent: S.optional(__S(532, __c66, 4)),
-        }),
-      ).annotate({ identifier: "AuditLogEntryListingRep" });
-    case 6:
-      return S.Array(__S(533, __c66, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(534, __c66, 6),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "AuditLogEntryListingRepCollection",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v2/auditlog/{id}", code: 200 })),
-      ).annotate({ identifier: "GetAuditLogEntryRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          _id: S.String,
-          _accountId: S.String,
-          date: S.Number,
-          accesses: __S(526, __c65, 6),
-          kind: S.String,
-          name: S.String,
-          description: S.String,
-          shortDescription: S.String,
-          comment: S.optional(S.String),
-          relatedFlag: S.optional(__S(527, __c65, 7)),
-          relatedExperiment: S.optional(__S(527, __c65, 7)),
-          relatedAIConfig: S.optional(__S(527, __c65, 7)),
-          subject: S.optional(__S(528, __c66, 0)),
-          member: S.optional(__S(529, __c66, 1)),
-          token: S.optional(__S(209, __c26, 1)),
-          app: S.optional(__S(530, __c66, 2)),
-          titleVerb: S.optional(S.String),
-          title: S.optional(S.String),
-          target: S.optional(__S(531, __c66, 3)),
-          parent: S.optional(__S(532, __c66, 4)),
-          delta: S.optional(S.Unknown),
-          triggerBody: S.optional(S.Unknown),
-          merge: S.optional(S.Unknown),
-          previousVersion: S.optional(S.Unknown),
-          currentVersion: S.optional(S.Unknown),
-          subentries: S.optional(__S(534, __c66, 6)),
-        }),
-      ).annotate({ identifier: "AuditLogEntryRep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          segmentKey: S.String.pipe(T.Label()),
-          exportID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBigSegmentExportRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InitiatorRep" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          segmentKey: S.String,
-          creationTime: S.Number,
-          status: S.String,
-          sizeBytes: S.Number,
-          size: S.String,
-          initiator: __S(539, __c67, 3),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "Export" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectKey: S.String.pipe(T.Label()),
-          environmentKey: S.String.pipe(T.Label()),
-          segmentKey: S.String.pipe(T.Label()),
-          importID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBigSegmentImportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filename: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileRep" });
-    case 7:
-      return S.Array(__S(542, __c67, 6));
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          segmentKey: S.String,
-          creationTime: S.Number,
-          mode: S.String,
-          status: S.String,
-          files: S.optional(__S(543, __c67, 7)),
-          _links: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "Import" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23459,7 +19129,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetBigSegmentStoreIntegrationRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -23471,27 +19145,35 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetBigSegmentStoreIntegrationsRequest",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(1795, __c56, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          self: __S(3, __c0, 3),
-          parent: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "BigSegmentStoreIntegrationCollectionLinks",
-      });
-    case 4:
-      return S.Array(__S(96, __c12, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(547, __c68, 3),
-          items: __S(548, __c68, 4),
+          _links: __S(1344, __c42, 0),
+          items: __S(1313, __c41, 1),
         }),
       ).annotate({
         identifier: "BigSegmentStoreIntegrationCollection",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: __S(14752, __c461, 0),
+          parent: S.optional(__S(14752, __c461, 0)),
+        }),
+      ).annotate({
+        identifier: "BigSegmentStoreIntegrationCollectionLinks",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
@@ -23506,44 +19188,52 @@ function __c68(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startingLineNumber: S.Number,
-          lines: S.optional(S.String),
-          projKey: S.optional(S.String),
-          flagKey: S.optional(S.String),
-          aliases: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "HunkRep" });
   }
 }
-function __c69(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(551, __c68, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          hint: S.optional(S.String),
-          hunks: __S(552, __c69, 0),
-        }),
-      ).annotate({ identifier: "ReferenceRep" });
-    case 2:
-      return S.Array(__S(553, __c69, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           head: S.String,
           updateSequenceId: S.optional(S.Number),
           syncTime: S.Number,
-          references: S.optional(__S(554, __c69, 2)),
-          _links: __S(27, __c3, 3),
+          references: S.optional(__S(1443, __c45, 3)),
+          _links: __S(15488, __c484, 0),
         }),
       ).annotate({ identifier: "BranchRep" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startingLineNumber: S.Number,
+          lines: S.optional(S.String),
+          projKey: S.optional(S.String),
+          flagKey: S.optional(S.String),
+          aliases: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "HunkRep" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          hint: S.optional(S.String),
+          hunks: __S(1441, __c45, 1),
+        }),
+      ).annotate({ identifier: "ReferenceRep" });
+    case 3:
+      return S.Array(__S(1442, __c45, 2));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
@@ -23555,24 +19245,28 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchesRequest" });
-    case 5:
-      return S.Array(__S(555, __c69, 3));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(557, __c69, 5),
+          _links: __S(14720, __c460, 0),
+          items: __S(1504, __c47, 0),
         }),
       ).annotate({ identifier: "BranchCollectionRep" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1408, __c44, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/caller-identity", code: 200 })),
       ).annotate({ identifier: "GetCallerIdentityRequest" });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -23587,10 +19281,14 @@ function __c70(j: number): any {
           tokenId: S.optional(S.String),
           memberId: S.optional(S.String),
           serviceToken: S.optional(S.Boolean),
-          scopes: S.optional(__S(12, __c1, 4)),
+          scopes: S.optional(__S(15456, __c483, 0)),
         }),
       ).annotate({ identifier: "CallerIdentityRep" });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23607,7 +19305,7 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetContextAttributeNamesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -23615,26 +19313,30 @@ function __c70(j: number): any {
           redacted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContextAttributeName" });
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
     case 3:
-      return S.Array(__S(562, __c70, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          names: __S(563, __c70, 3),
+          names: __S(1570, __c49, 2),
         }),
       ).annotate({ identifier: "ContextAttributeNames" });
+    case 4:
+      return S.Array(__S(1571, __c49, 3));
     case 5:
-      return S.Array(__S(564, __c70, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          items: __S(565, __c70, 5),
+          items: __S(1572, __c49, 4),
         }),
       ).annotate({
         identifier: "ContextAttributeNamesCollection",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23652,42 +19354,42 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetContextAttributeValuesRequest",
       });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.Unknown,
           weight: S.Number,
         }),
       ).annotate({ identifier: "ContextAttributeValue" });
-    case 1:
-      return S.Array(__S(568, __c71, 0));
     case 2:
+      return S.Array(__S(1601, __c50, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          values: __S(569, __c71, 1),
+          values: __S(1602, __c50, 2),
         }),
       ).annotate({ identifier: "ContextAttributeValues" });
-    case 3:
-      return S.Array(__S(570, __c71, 2));
     case 4:
+      return S.Array(__S(1603, __c50, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          items: __S(571, __c71, 3),
+          items: __S(1604, __c50, 4),
         }),
       ).annotate({
         identifier: "ContextAttributeValuesCollection",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
-          body: __S(27, __c3, 3).pipe(T.HttpBody()),
+          body: __S(15488, __c484, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23698,7 +19400,7 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetContextInstanceSegmentsMembershipByEnvRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -23709,27 +19411,27 @@ function __c71(j: number): any {
           isMember: S.Boolean,
           isIndividuallyTargeted: S.Boolean,
           isRuleTargeted: S.Boolean,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({
         identifier: "ContextInstanceSegmentMembership",
       });
-    case 7:
-      return S.Array(__S(574, __c71, 6));
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1633, __c51, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(575, __c71, 7),
-          _links: __S(4, __c0, 4),
+          items: __S(1634, __c51, 2),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({
         identifier: "ContextInstanceSegmentMemberships",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23740,7 +19442,7 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetContextKindsByProjectKeyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentKey: S.String,
@@ -23749,9 +19451,9 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ContextKindEnvironmentObservation",
       });
+    case 2:
+      return S.Array(__S(1665, __c52, 1));
     case 3:
-      return S.Array(__S(578, __c72, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -23761,25 +19463,29 @@ function __c72(j: number): any {
           creationDate: S.Number,
           lastModified: S.Number,
           lastSeen: S.optional(S.Number),
-          environmentObservations: S.optional(__S(579, __c72, 3)),
+          environmentObservations: S.optional(__S(1666, __c52, 2)),
           createdFrom: S.String,
           hideInTargeting: S.optional(S.Boolean),
           archived: S.optional(S.Boolean),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "ContextKindRep" });
+    case 4:
+      return S.Array(__S(1667, __c52, 3));
     case 5:
-      return S.Array(__S(580, __c72, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          items: __S(581, __c72, 5),
-          _links: __S(4, __c0, 4),
+          items: __S(1668, __c52, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({
         identifier: "ContextKindsCollectionRep",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23801,7 +19507,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "GetContextsRequest" });
   }
 }
-function __c73(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23809,24 +19515,110 @@ function __c73(j: number): any {
           lastSeen: S.optional(S.String),
           applicationId: S.optional(S.String),
           context: S.Unknown,
-          _links: S.optional(__S(4, __c0, 4)),
-          _access: S.optional(__S(21, __c2, 5)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
           associatedContexts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContextRecord" });
     case 1:
-      return S.Array(__S(584, __c73, 0));
+      return S.Array(__S(1728, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalCount: S.optional(S.Number),
           _environmentId: S.String,
           continuationToken: S.optional(S.String),
-          items: __S(585, __c73, 1),
+          items: __S(1729, __c54, 1),
         }),
       ).annotate({ identifier: "Contexts" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          on: S.optional(S.Boolean),
+          config: __S(15488, __c484, 0),
+          tags: S.optional(__S(15456, __c483, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBigSegmentStoreIntegrationRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.Number),
+          message: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StoreIntegrationError" });
+    case 1:
+      return S.Array(__S(1792, __c56, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          available: S.optional(S.Boolean),
+          potentiallyStale: S.optional(S.Boolean),
+          lastSync: S.optional(S.Number),
+          lastError: S.optional(S.Number),
+          errors: S.optional(__S(1793, __c56, 1)),
+        }),
+      ).annotate({ identifier: "BigSegmentStoreStatus" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(1824, __c57, 0),
+          _id: S.String,
+          integrationKey: S.String,
+          projectKey: S.String,
+          environmentKey: S.String,
+          config: __S(15488, __c484, 0),
+          on: S.Boolean,
+          tags: __S(15456, __c483, 0),
+          name: S.String,
+          version: S.Number,
+          _access: S.optional(__S(15206, __c475, 6)),
+          _status: __S(1794, __c56, 2),
+        }),
+      ).annotate({
+        identifier: "BigSegmentStoreIntegration",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: __S(14752, __c461, 0),
+          parent: __S(14752, __c461, 0),
+          project: __S(14752, __c461, 0),
+          environment: __S(14752, __c461, 0),
+        }),
+      ).annotate({
+        identifier: "BigSegmentStoreIntegrationLinks",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -23843,7 +19635,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetContextsClientsideUsageRequest",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -23860,7 +19656,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetContextsServersideUsageRequest",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -23878,58 +19678,70 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetContextsTotalUsageRequest",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customRoleKey: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
       ).annotate({ identifier: "GetCustomRoleRequest" });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membersCount: S.optional(S.Number),
           teamsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AssignedToRep" });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          _links: __S(4, __c0, 4),
-          _access: S.optional(__S(21, __c2, 5)),
+          _links: __S(14720, __c460, 0),
+          _access: S.optional(__S(15206, __c475, 6)),
           description: S.optional(S.String),
           key: S.String,
           name: S.String,
-          policy: __S(165, __c20, 5),
+          policy: __S(4993, __c156, 1),
           basePermissions: S.optional(S.String),
           resourceCategory: S.optional(S.String),
-          assignedTo: S.optional(__S(591, __c73, 7)),
+          assignedTo: S.optional(__S(1984, __c62, 0)),
           _presetBundleVersion: S.optional(S.Number),
-          _presetStatements: S.optional(__S(165, __c20, 5)),
+          _presetStatements: S.optional(__S(4993, __c156, 1)),
         }),
       ).annotate({ identifier: "CustomRole" });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/roles", code: 200 })),
       ).annotate({ identifier: "GetCustomRolesRequest" });
+    case 1:
+      return S.Array(__S(1985, __c62, 1));
     case 2:
-      return S.Array(__S(592, __c74, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          items: __S(594, __c74, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
+          items: __S(2017, __c63, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CustomRoles" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -23944,16 +19756,20 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCustomWorkflowRequest" });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stageId: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "ConflictOutput" });
-    case 6:
-      return S.Array(__S(597, __c74, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attribute: S.optional(S.String),
@@ -23961,56 +19777,56 @@ function __c74(j: number): any {
           negate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RuleClause" });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
           booleanVariationValue: S.optional(S.Boolean),
-          ruleClause: S.optional(__S(599, __c74, 7)),
+          ruleClause: S.optional(__S(2082, __c65, 2)),
         }),
       ).annotate({ identifier: "ParameterDefault" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           _id: S.optional(S.String),
           path: S.optional(S.String),
-          default: S.optional(__S(600, __c75, 0)),
+          default: S.optional(__S(2083, __c65, 3)),
           valid: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "WorkflowTemplateParameter",
       });
-    case 2:
-      return S.Array(__S(601, __c75, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(2084, __c65, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(602, __c75, 2)),
+          parameters: S.optional(__S(2085, __c65, 5)),
         }),
       ).annotate({ identifier: "WorkflowTemplateMetadata" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           _version: S.Number,
-          _conflicts: __S(598, __c74, 6),
+          _conflicts: __S(2081, __c65, 1),
           _creationDate: S.Number,
           _maintainerId: S.String,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
           name: S.String,
           description: S.optional(S.String),
           kind: S.optional(S.String),
-          stages: S.optional(__S(308, __c38, 4)),
-          _execution: __S(301, __c37, 5),
-          meta: S.optional(__S(603, __c75, 3)),
+          stages: S.optional(__S(12967, __c405, 7)),
+          _execution: __S(12960, __c405, 0),
+          meta: S.optional(__S(2086, __c65, 6)),
           templateKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomWorkflowOutput" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -24026,24 +19842,32 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetDataExportEventsUsageRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(27, __c3, 3),
-          metadata: __S(244, __c30, 4),
-          series: __S(450, __c56, 2),
+          _links: __S(15488, __c484, 0),
+          metadata: __S(11584, __c362, 0),
+          series: __S(65, __c2, 1),
           dataThrough: S.optional(S.String),
           delayed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataExportSeriesListRep" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.Number.pipe(T.Query()),
           to: S.Number.pipe(T.Query()),
           source: S.optional(S.String.pipe(T.Query())),
           dimension: S.optional(S.String.pipe(T.Query())),
-          projectKey: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          projectKey: S.optional(__S(15456, __c483, 0).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -24057,11 +19881,7 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetDataExportProjectRankingRequest",
       });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           streaming: S.Number,
@@ -24069,19 +19889,19 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "DataExportProjectRankComponentsRep",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String,
           projectName: S.String,
           rank: S.Number,
           usage: S.Number,
-          components: __S(608, __c76, 0),
+          components: __S(2177, __c68, 1),
         }),
       ).annotate({ identifier: "DataExportProjectRankRep" });
-    case 2:
-      return S.Array(__S(609, __c76, 1));
     case 3:
+      return S.Array(__S(2178, __c68, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
@@ -24092,7 +19912,7 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "DataExportProjectRankingPageRep",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           source: S.String,
@@ -24103,17 +19923,21 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "DataExportProjectRankingScopeRep",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          items: __S(610, __c76, 2),
-          page: __S(611, __c76, 3),
-          scope: __S(612, __c76, 4),
+          items: __S(2179, __c68, 3),
+          page: __S(2180, __c68, 4),
+          scope: __S(2181, __c68, 5),
         }),
       ).annotate({
         identifier: "DataExportProjectRankingRep",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24126,44 +19950,48 @@ function __c76(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDependentFlagsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          key: S.String,
-          _links: __S(4, __c0, 4),
-          _site: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "DependentFlagEnvironment" });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(615, __c76, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           key: S.String,
-          environments: __S(616, __c77, 0),
+          environments: __S(2241, __c70, 1),
         }),
       ).annotate({
         identifier: "MultiEnvironmentDependentFlag",
       });
     case 2:
-      return S.Array(__S(617, __c77, 1));
+      return S.Array(__S(2209, __c69, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(618, __c77, 2),
-          _links: __S(4, __c0, 4),
-          _site: __S(3, __c0, 3),
+          items: __S(2210, __c69, 2),
+          _links: __S(14720, __c460, 0),
+          _site: __S(14752, __c461, 0),
         }),
       ).annotate({
         identifier: "MultiEnvironmentDependentFlags",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          key: S.String,
+          _links: __S(14720, __c460, 0),
+          _site: __S(14752, __c461, 0),
+        }),
+      ).annotate({ identifier: "DependentFlagEnvironment" });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24179,17 +20007,49 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetDependentFlagsByEnvRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(616, __c77, 0),
-          _links: __S(4, __c0, 4),
-          _site: __S(3, __c0, 3),
+          items: __S(2241, __c70, 1),
+          _links: __S(14720, __c460, 0),
+          _site: __S(14752, __c461, 0),
         }),
       ).annotate({
         identifier: "DependentFlagsByEnvironment",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String,
+          environmentKey: S.String,
+          applicationKey: S.String,
+          applicationName: S.optional(S.String),
+          applicationKind: S.optional(S.String),
+          version: S.String,
+          versionName: S.optional(S.String),
+          eventType: S.String,
+          eventTime: S.optional(S.Number),
+          eventMetadata: S.optional(__S(15488, __c484, 0)),
+          deploymentMetadata: S.optional(__S(15488, __c484, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/engineering-insights/deployment-events",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDeploymentEventRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentID: S.String.pipe(T.Label()),
@@ -24202,21 +20062,21 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeploymentRequest" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(633, __c79, 1)));
   }
 }
-function __c78(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2378, __c74, 10)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(623, __c77, 7),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(2368, __c74, 0),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "DeploymentCollectionRep" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String,
@@ -24225,18 +20085,18 @@ function __c78(j: number): any {
           referencesRemoved: S.Number,
         }),
       ).annotate({ identifier: "FlagReferenceRep" });
-    case 2:
-      return S.Array(__S(625, __c78, 1));
     case 3:
+      return S.Array(__S(2370, __c74, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(626, __c78, 2),
+          items: __S(2371, __c74, 3),
         }),
       ).annotate({
         identifier: "FlagReferenceCollectionRep",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           codingDurationMs: S.Number,
@@ -24249,7 +20109,7 @@ function __c78(j: number): any {
           avgTotalLeadTimeMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PullRequestLeadTimeRep" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24266,26 +20126,22 @@ function __c78(j: number): any {
           linesAdded: S.Number,
           linesDeleted: S.Number,
           url: S.String,
-          deployments: S.optional(__S(624, __c78, 0)),
-          flagReferences: S.optional(__S(627, __c78, 3)),
-          leadTime: S.optional(__S(628, __c78, 4)),
+          deployments: S.optional(__S(2369, __c74, 1)),
+          flagReferences: S.optional(__S(2372, __c74, 4)),
+          leadTime: S.optional(__S(2373, __c74, 5)),
         }),
       ).annotate({ identifier: "PullRequestRep" });
-    case 6:
-      return S.Array(__S(629, __c78, 5));
     case 7:
+      return S.Array(__S(2374, __c74, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(630, __c78, 6),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(2375, __c74, 7),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "PullRequestCollectionRep" });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           codingDurationMs: S.Number,
@@ -24295,7 +20151,7 @@ function __c79(j: number): any {
           totalLeadTimeMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LeadTimeStagesRep" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24307,7 +20163,7 @@ function __c79(j: number): any {
           status: S.String,
           kind: S.String,
           active: S.Boolean,
-          metadata: S.optional(__S(27, __c3, 3)),
+          metadata: S.optional(__S(15488, __c484, 0)),
           archived: S.Boolean,
           environmentKey: S.String,
           numberOfContributors: S.Number,
@@ -24315,12 +20171,16 @@ function __c79(j: number): any {
           linesAdded: S.Number,
           linesDeleted: S.Number,
           leadTime: S.Number,
-          pullRequests: S.optional(__S(631, __c78, 7)),
-          flagReferences: S.optional(__S(627, __c78, 3)),
-          leadTimeStages: S.optional(__S(632, __c79, 0)),
+          pullRequests: S.optional(__S(2376, __c74, 8)),
+          flagReferences: S.optional(__S(2372, __c74, 4)),
+          leadTimeStages: S.optional(__S(2377, __c74, 9)),
         }),
       ).annotate({ identifier: "DeploymentRep" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.optional(S.String.pipe(T.Query())),
@@ -24342,7 +20202,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "GetDeploymentFrequencyChartRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           indicator: S.String,
@@ -24351,21 +20215,21 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "InsightsMetricTierDefinition",
       });
-    case 4:
-      return S.Array(__S(635, __c79, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           indicator: S.String,
           value: S.Number,
           unit: S.String,
           modifier: S.String,
-          tiers: __S(636, __c79, 4),
+          tiers: __S(2433, __c76, 1),
         }),
       ).annotate({ identifier: "InsightsChartMetric" });
-    case 6:
-      return S.Record(S.String, __S(637, __c79, 5));
-    case 7:
+    case 3:
+      return S.Record(S.String, __S(2434, __c76, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           unit: S.String,
@@ -24373,72 +20237,68 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "InsightsChartSeriesMetadataAxis",
       });
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          summary: __S(27, __c3, 3),
+          summary: __S(15488, __c484, 0),
           name: S.optional(S.String),
-          metrics: S.optional(__S(638, __c79, 6)),
-          xAxis: __S(639, __c79, 7),
-          yAxis: __S(639, __c79, 7),
+          metrics: S.optional(__S(2435, __c76, 3)),
+          xAxis: __S(2436, __c76, 4),
+          yAxis: __S(2436, __c76, 4),
         }),
       ).annotate({ identifier: "InsightsChartMetadata" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.Number,
         }),
       ).annotate({ identifier: "InsightsChartBounds" });
-    case 2:
-      return S.Array(__S(641, __c80, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(2438, __c76, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           count: S.optional(S.Number),
-          bounds: S.optional(__S(642, __c80, 2)),
+          bounds: S.optional(__S(2439, __c76, 7)),
         }),
       ).annotate({
         identifier: "InsightsChartSeriesMetadata",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           x: S.Number,
           y: S.Number,
-          values: S.optional(__S(27, __c3, 3)),
+          values: S.optional(__S(15488, __c484, 0)),
         }),
       ).annotate({
         identifier: "InsightsChartSeriesDataPoint",
       });
-    case 5:
-      return S.Array(__S(644, __c80, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(2441, __c76, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(643, __c80, 3),
-          data: __S(645, __c80, 5),
+          metadata: __S(2440, __c76, 8),
+          data: __S(2442, __c76, 10),
         }),
       ).annotate({ identifier: "InsightsChartSeries" });
-    case 7:
-      return S.Array(__S(646, __c80, 6));
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(2443, __c76, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(640, __c80, 0),
-          series: __S(647, __c80, 7),
+          metadata: __S(2437, __c76, 5),
+          series: __S(2444, __c76, 12),
         }),
       ).annotate({ identifier: "InsightsChart" });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -24456,7 +20316,11 @@ function __c81(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/engineering-insights/deployments", code: 200 }),
         ),
       ).annotate({ identifier: "GetDeploymentsRequest" });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24470,7 +20334,11 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDestinationRequest" });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sqlSetupScript: S.optional(S.String),
@@ -24479,11 +20347,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "RedshiftDataExportCompletedArtifactsRep",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.optional(S.String),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
           name: S.optional(S.String),
           kind: S.optional(S.String),
           version: S.optional(S.Number),
@@ -24491,26 +20359,30 @@ function __c81(j: number): any {
           on: S.optional(S.Boolean),
           createdAt: S.optional(S.Number),
           maintainerId: S.optional(S.String),
-          _access: S.optional(__S(21, __c2, 5)),
-          completedArtifacts: S.optional(__S(651, __c81, 3)),
+          _access: S.optional(__S(15206, __c475, 6)),
+          completedArtifacts: S.optional(__S(2528, __c79, 0)),
         }),
       ).annotate({ identifier: "Destination" });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/destinations", code: 200 })),
       ).annotate({ identifier: "GetDestinationsRequest" });
-    case 6:
-      return S.Array(__S(652, __c81, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(2529, __c79, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          items: S.optional(__S(654, __c81, 6)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          items: S.optional(__S(2561, __c80, 1)),
         }),
       ).annotate({ identifier: "Destinations" });
   }
 }
-function __c82(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24525,7 +20397,11 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24539,7 +20415,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetEnvironmentsByProjectRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24558,7 +20438,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetEvaluationsUsageRequest",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String.pipe(T.Label()),
@@ -24566,7 +20450,11 @@ function __c82(j: number): any {
           to: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/events/{type}", code: 200 })),
       ).annotate({ identifier: "GetEventsUsageRequest" });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24581,7 +20469,307 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExperimentRequest" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2880, __c90, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          flagKey: S.String,
+          variationId: S.String,
+        }),
+      ).annotate({ identifier: "TreatmentParameterInput" });
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          baseline: S.Boolean,
+          allocationPercent: S.String,
+          parameters: __S(2754, __c86, 2),
+        }),
+      ).annotate({ identifier: "TreatmentInput" });
+    case 4:
+      return S.Array(__S(2755, __c86, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String,
+          flagConfigVersion: S.Number,
+          notInExperimentVariationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlagInput" });
+    case 6:
+      return S.Record(S.String, __S(2757, __c86, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hypothesis: S.String,
+          canReshuffleTraffic: S.optional(S.Boolean),
+          metrics: __S(2752, __c86, 0),
+          primarySingleMetricKey: S.optional(S.String),
+          primaryFunnelKey: S.optional(S.String),
+          treatments: __S(2756, __c86, 4),
+          flags: __S(2758, __c86, 6),
+          randomizationUnit: S.optional(S.String),
+          reallocationFrequencyMillis: S.optional(S.Number),
+          covariateId: S.optional(S.String),
+          attributes: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "IterationInput" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.String),
+          maintainerId: S.optional(S.String),
+          key: S.String,
+          iteration: __S(2759, __c86, 7),
+          holdoutId: S.optional(S.String),
+          tags: S.optional(__S(15456, __c483, 0)),
+          methodology: S.optional(S.String),
+          analysisConfig: S.optional(__S(2784, __c87, 0)),
+          dataSource: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateExperimentRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bayesianThreshold: S.optional(S.String),
+          significanceThreshold: S.optional(S.String),
+          testDirection: S.optional(S.String),
+          multipleComparisonCorrectionMethod: S.optional(S.String),
+          multipleComparisonCorrectionScope: S.optional(S.String),
+          sequentialTestingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AnalysisConfigInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetingRule: S.optional(S.String),
+          targetingRuleDescription: S.optional(S.String),
+          targetingRuleClauses: S.optional(__S(15232, __c476, 0)),
+          flagConfigVersion: S.optional(S.Number),
+          notInExperimentVariationId: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "FlagRep" });
+    case 2:
+      return S.Record(S.String, __S(2785, __c87, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          _versionId: S.String,
+          name: S.String,
+          kind: S.String,
+          isNumeric: S.optional(S.Boolean),
+          eventKey: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+          isGroup: S.Boolean,
+          metrics: S.optional(__S(2849, __c89, 1)),
+          analysisType: S.optional(S.String),
+          analysisUnit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DependentMetricOrMetricGroupRep",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          _versionId: S.optional(S.String),
+          name: S.String,
+          kind: S.String,
+          isNumeric: S.optional(S.Boolean),
+          unitAggregationType: S.optional(S.String),
+          analysisType: S.optional(S.String),
+          eventKey: S.optional(S.String),
+          analysisUnit: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "MetricV2Rep" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          kind: S.String,
+          _links: __S(14720, __c460, 0),
+          metrics: S.optional(__S(2849, __c89, 1)),
+        }),
+      ).annotate({
+        identifier: "DependentMetricGroupRepWithMetrics",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          variationId: S.optional(S.String),
+          flagKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ParameterRep" });
+    case 7:
+      return S.Array(__S(2790, __c87, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          name: S.String,
+          allocationPercent: S.String,
+          baseline: S.optional(S.Boolean),
+          parameters: S.optional(__S(2791, __c87, 7)),
+        }),
+      ).annotate({ identifier: "TreatmentRep" });
+    case 9:
+      return S.Array(__S(2792, __c87, 8));
+    case 10:
+      return S.Array(__S(2788, __c87, 4));
+    case 11:
+      return S.Array(__S(2787, __c87, 3));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          reservationPercent: S.Number,
+          otherReservationPercent: S.Number,
+        }),
+      ).annotate({ identifier: "LayerSnapshotRep" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          fileName: S.String,
+          createdAt: S.Number,
+        }),
+      ).annotate({ identifier: "CovariateInfoRep" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          hypothesis: S.String,
+          status: S.String,
+          createdAt: S.Number,
+          startedAt: S.optional(S.Number),
+          endedAt: S.optional(S.Number),
+          winningTreatmentId: S.optional(S.String),
+          winningReason: S.optional(S.String),
+          canReshuffleTraffic: S.optional(S.Boolean),
+          flags: S.optional(__S(2786, __c87, 2)),
+          reallocationFrequencyMillis: S.optional(S.Number),
+          version: S.optional(S.Number),
+          primaryMetric: S.optional(__S(2787, __c87, 3)),
+          primarySingleMetric: S.optional(__S(2788, __c87, 4)),
+          primaryFunnel: S.optional(__S(2789, __c87, 5)),
+          randomizationUnit: S.optional(S.String),
+          attributes: S.optional(__S(15456, __c483, 0)),
+          treatments: S.optional(__S(2793, __c87, 9)),
+          secondaryMetrics: S.optional(__S(2794, __c87, 10)),
+          metrics: S.optional(__S(2795, __c87, 11)),
+          layerSnapshot: S.optional(__S(2796, __c87, 12)),
+          covariateInfo: S.optional(__S(2797, __c87, 13)),
+        }),
+      ).annotate({ identifier: "IterationRep" });
+    case 15:
+      return S.Array(__S(2798, __c87, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          not_started: S.optional(__S(2816, __c88, 0)),
+          running: S.optional(__S(2816, __c88, 0)),
+          stopped: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "MutableFieldsByStatusRep" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          key: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          _maintainerId: S.String,
+          _creationDate: S.Number,
+          environmentKey: S.String,
+          methodology: S.optional(S.String),
+          dataSource: S.optional(S.String),
+          archivedDate: S.optional(S.Number),
+          tags: S.optional(__S(15456, __c483, 0)),
+          _links: __S(14720, __c460, 0),
+          holdoutId: S.optional(S.String),
+          currentIteration: S.optional(__S(2798, __c87, 14)),
+          type: S.optional(S.String),
+          _access: S.optional(__S(15206, __c475, 6)),
+          draftIteration: S.optional(__S(2798, __c87, 14)),
+          previousIterations: S.optional(__S(2799, __c87, 15)),
+          analysisConfig: S.optional(__S(2784, __c87, 0)),
+          mutableFieldsByStatus: S.optional(__S(2800, __c87, 16)),
+        }),
+      ).annotate({ identifier: "Experiment" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(15456, __c483, 0));
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          _versionId: S.optional(S.String),
+          name: S.String,
+          kind: S.String,
+          isNumeric: S.optional(S.Boolean),
+          unitAggregationType: S.optional(S.String),
+          analysisType: S.optional(S.String),
+          eventKey: S.optional(S.String),
+          analysisUnit: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+          nameInGroup: S.optional(S.String),
+          randomizationUnits: S.optional(__S(15456, __c483, 0)),
+          analysisUnits: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "MetricInGroupRep" });
+    case 1:
+      return S.Array(__S(2848, __c89, 0));
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          isGroup: S.optional(S.Boolean),
+          primary: S.optional(S.Boolean),
+          analysisUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricInput" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -24597,7 +20785,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetExperimentationEventsUsageRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -24612,7 +20804,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetExperimentationKeysUsageRequest",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24628,7 +20824,7 @@ function __c82(j: number): any {
       });
   }
 }
-function __c83(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24640,18 +20836,22 @@ function __c83(j: number): any {
         }),
       ).annotate({ identifier: "RandomizationUnitRep" });
     case 1:
-      return S.Array(__S(664, __c83, 0));
+      return S.Array(__S(3008, __c94, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           _projectId: S.optional(S.String),
           _projectKey: S.optional(S.String),
-          randomizationUnits: S.optional(__S(665, __c83, 1)),
+          randomizationUnits: S.optional(__S(3009, __c94, 1)),
           _creationDate: S.optional(S.Number),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "RandomizationSettingsRep" });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24669,17 +20869,29 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExperimentsRequest" });
-    case 4:
-      return S.Array(__S(128, __c16, 0));
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          items: __S(668, __c83, 4),
+          items: __S(3104, __c97, 0),
           total_count: S.optional(S.Number),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "ExperimentCollectionRep" });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2801, __c87, 17));
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24694,7 +20906,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "GetExperimentsAnyEnvRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24712,7 +20928,20 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(3234, __c101, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({
+        identifier: "ExpiringTargetGetResponse",
+      });
+  }
+}
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24734,21 +20963,16 @@ function __c84(j: number): any {
           contextKey: S.String,
           targetType: S.optional(S.String),
           variationId: S.optional(S.String),
-          _resourceId: __S(672, __c84, 0),
+          _resourceId: __S(3232, __c101, 0),
         }),
       ).annotate({ identifier: "ExpiringTarget" });
     case 2:
-      return S.Array(__S(673, __c84, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(674, __c84, 2),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ExpiringTargetGetResponse",
-      });
-    case 4:
+      return S.Array(__S(3233, __c101, 1));
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24764,7 +20988,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "GetExpiringTargetsForSegmentRequest",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24780,7 +21008,24 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "GetExpiringUserTargetsRequest",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(3362, __c105, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({
+        identifier: "ExpiringUserTargetGetResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -24790,7 +21035,7 @@ function __c84(j: number): any {
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIDResponse" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -24799,25 +21044,16 @@ function __c84(j: number): any {
           userKey: S.String,
           targetType: S.optional(S.String),
           variationId: S.optional(S.String),
-          _resourceId: __S(678, __c84, 6),
+          _resourceId: __S(3360, __c105, 0),
         }),
       ).annotate({ identifier: "ExpiringUserTargetItem" });
+    case 2:
+      return S.Array(__S(3361, __c105, 1));
   }
 }
-function __c85(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(679, __c84, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(680, __c85, 0),
-          _links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ExpiringUserTargetGetResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24833,7 +21069,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "GetExpiringUserTargetsForSegmentRequest",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoName: S.optional(S.String.pipe(T.Query())),
@@ -24844,7 +21084,20 @@ function __c85(j: number): any {
           to: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/code-refs/extinctions", code: 200 })),
       ).annotate({ identifier: "GetExtinctionsRequest" });
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(3457, __c108, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          items: __S(3425, __c107, 1),
+        }),
+      ).annotate({ identifier: "ExtinctionCollectionRep" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           revision: S.String,
@@ -24854,20 +21107,82 @@ function __c85(j: number): any {
           projKey: S.String,
         }),
       ).annotate({ identifier: "Extinction" });
-    case 5:
-      return S.Array(__S(684, __c85, 4));
-    case 6:
-      return S.Record(S.String, __S(685, __c85, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(686, __c85, 6),
-        }),
-      ).annotate({ identifier: "ExtinctionCollectionRep" });
+    case 1:
+      return S.Array(__S(3456, __c108, 0));
   }
 }
-function __c86(j: number): any {
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          config: __S(15488, __c484, 0),
+          tags: S.optional(__S(15456, __c483, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFlagImportConfigurationRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: __S(14752, __c461, 0),
+          parent: __S(14752, __c461, 0),
+          project: __S(14752, __c461, 0),
+        }),
+      ).annotate({
+        identifier: "FlagImportIntegrationLinks",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          integrationId: S.optional(S.String),
+          message: S.optional(S.String),
+          statusCode: S.optional(S.Number),
+          timestamp: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StatusResponse" });
+    case 2:
+      return S.Array(__S(3521, __c110, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          lastImport: S.optional(S.Number),
+          lastError: S.optional(S.Number),
+          errors: S.optional(__S(3522, __c110, 2)),
+        }),
+      ).annotate({ identifier: "FlagImportStatus" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(3520, __c110, 0),
+          _id: S.String,
+          integrationKey: S.String,
+          projectKey: S.String,
+          config: __S(15488, __c484, 0),
+          tags: __S(15456, __c483, 0),
+          name: S.String,
+          version: S.Number,
+          _access: S.optional(__S(15206, __c475, 6)),
+          _status: __S(3523, __c110, 3),
+        }),
+      ).annotate({ identifier: "FlagImportIntegration" });
+  }
+}
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24880,7 +21195,11 @@ function __c86(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/flags/{projectKey}/{featureFlagKey}", code: 200 }),
         ),
       ).annotate({ identifier: "GetFeatureFlagRequest" });
-    case 1:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24896,18 +21215,22 @@ function __c86(j: number): any {
           expand: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/flags/{projectKey}", code: 200 })),
       ).annotate({ identifier: "GetFeatureFlagsRequest" });
+    case 1:
+      return S.Array(__S(15353, __c479, 25));
     case 2:
-      return S.Array(__S(63, __c7, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(690, __c86, 2),
-          _links: __S(4, __c0, 4),
+          items: __S(3585, __c112, 1),
+          _links: __S(14720, __c460, 0),
           totalCount: S.optional(S.Number),
           totalCountWithDifferences: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FeatureFlags" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24924,7 +21247,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "GetFeatureFlagScheduledChangeRequest",
       });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -24933,14 +21260,18 @@ function __c86(j: number): any {
           _maintainerServiceTokenId: S.optional(S.String),
           _version: S.Number,
           executionDate: S.Number,
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
           conflicts: S.optional(S.Unknown),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({
         identifier: "FeatureFlagScheduledChange",
       });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -24956,18 +21287,22 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "GetFeatureFlagStatusRequest",
       });
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           lastRequested: S.optional(S.String),
           default: S.optional(S.Unknown),
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "FlagStatusRep" });
   }
 }
-function __c87(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24994,18 +21329,22 @@ function __c87(j: number): any {
         }),
       ).annotate({ identifier: "FeatureFlagStatus" });
     case 2:
-      return S.Record(S.String, __S(697, __c87, 1));
+      return S.Record(S.String, __S(3745, __c117, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(698, __c87, 2),
+          environments: __S(3746, __c117, 2),
           key: S.String,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({
         identifier: "FeatureFlagStatusAcrossEnvironments",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25020,16 +21359,20 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "GetFeatureFlagStatusesRequest",
       });
-    case 5:
-      return S.Array(__S(695, __c86, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(3712, __c116, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: S.optional(__S(701, __c87, 5)),
+          _links: __S(14720, __c460, 0),
+          items: S.optional(__S(3777, __c118, 1)),
         }),
       ).annotate({ identifier: "FeatureFlagStatuses" });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25045,22 +21388,22 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "GetFlagConfigScheduledChangesRequest",
       });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(693, __c86, 5));
     case 1:
+      return S.Array(__S(3648, __c114, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(704, __c88, 0),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(3809, __c119, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({
         identifier: "FeatureFlagScheduledChanges",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25070,7 +21413,7 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "GetFlagDefaultsByProjectRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trueDisplayName: S.optional(S.String),
@@ -25081,18 +21424,22 @@ function __c88(j: number): any {
           offVariation: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BooleanDefaults" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
           key: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
           temporary: S.optional(S.Boolean),
-          defaultClientSideAvailability: S.optional(__S(9, __c1, 1)),
-          booleanDefaults: S.optional(__S(707, __c88, 3)),
+          defaultClientSideAvailability: S.optional(__S(15424, __c482, 0)),
+          booleanDefaults: S.optional(__S(3841, __c120, 1)),
         }),
       ).annotate({ identifier: "FlagDefaultsRep" });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -25112,7 +21459,7 @@ function __c88(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/engineering-insights/flag-events", code: 200 }),
         ),
       ).annotate({ identifier: "GetFlagEventsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25121,7 +21468,7 @@ function __c88(j: number): any {
           lastName: S.String,
         }),
       ).annotate({ identifier: "FlagEventMemberRep" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
@@ -25129,60 +21476,56 @@ function __c88(j: number): any {
           after: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VariationEvalSummary" });
-  }
-}
-function __c89(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(711, __c88, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(3874, __c121, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          variations: S.optional(__S(712, __c89, 0)),
+          variations: S.optional(__S(3875, __c121, 3)),
         }),
       ).annotate({ identifier: "EvaluationsSummary" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.String),
           percentage: S.optional(S.Number),
           reason: S.optional(S.String),
-          evaluationsSummary: S.optional(__S(713, __c89, 1)),
+          evaluationsSummary: S.optional(__S(3876, __c121, 4)),
         }),
       ).annotate({ identifier: "FlagEventImpactRep" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           status: S.String,
           startedAt: S.Number,
           endedAt: S.optional(S.Number),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({
         identifier: "FlagEventExperimentIteration",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
-          iteration: __S(715, __c89, 3),
-          _links: S.optional(__S(4, __c0, 4)),
+          iteration: __S(3878, __c121, 6),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "FlagEventExperiment" });
-    case 5:
-      return S.Array(__S(716, __c89, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(3879, __c121, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(717, __c89, 5),
+          items: __S(3880, __c121, 8),
         }),
       ).annotate({
         identifier: "FlagEventExperimentCollection",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25195,27 +21538,27 @@ function __c89(j: number): any {
           eventTime: S.Number,
           description: S.String,
           auditLogEntryId: S.optional(S.String),
-          member: S.optional(__S(710, __c88, 6)),
-          actions: S.optional(__S(12, __c1, 4)),
-          impact: __S(714, __c89, 2),
-          experiments: S.optional(__S(718, __c89, 6)),
+          member: S.optional(__S(3873, __c121, 1)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          impact: __S(3877, __c121, 5),
+          experiments: S.optional(__S(3881, __c121, 9)),
         }),
       ).annotate({ identifier: "FlagEventRep" });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(719, __c89, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(3882, __c121, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(720, __c90, 0),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(3883, __c121, 11),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "FlagEventCollectionRep" });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25229,14 +21572,86 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFlagFollowersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(235, __c29, 3),
+          _links: __S(14720, __c460, 0),
+          items: __S(10304, __c322, 0),
         }),
       ).annotate({ identifier: "FlagFollowersGetRep" });
-    case 4:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          key: S.optional(S.String),
+          integrationKey: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+          deepLink: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          metadata: S.optional(__S(4000, __c125, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateFlagLinkRequest" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          milliseconds: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          rfc3339: S.optional(S.String),
+          simple: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimestampRep" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlagLinkMember" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _key: S.optional(S.String),
+          _integrationKey: S.optional(S.String),
+          _id: S.String,
+          _deepLink: S.String,
+          _timestamp: __S(3968, __c124, 0),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          _metadata: S.optional(__S(4000, __c125, 0)),
+          _createdAt: S.Number,
+          _member: S.optional(__S(3969, __c124, 1)),
+        }),
+      ).annotate({ identifier: "FlagLinkRep" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25252,7 +21667,11 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "GetFlagImportConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/v2/integration-capabilities/flag-import", code: 200 }),
@@ -25260,20 +21679,20 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "GetFlagImportConfigurationsRequest",
       });
-    case 6:
-      return S.Array(__S(134, __c16, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(3524, __c110, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(547, __c68, 3),
-          items: __S(726, __c90, 6),
+          _links: __S(1344, __c42, 0),
+          items: __S(4065, __c127, 1),
         }),
       ).annotate({
         identifier: "FlagImportIntegrationCollection",
       });
   }
 }
-function __c91(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25289,15 +21708,19 @@ function __c91(j: number): any {
         ),
       ).annotate({ identifier: "GetFlagLinksRequest" });
     case 1:
-      return S.Array(__S(139, __c17, 3));
+      return S.Array(__S(3970, __c124, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(729, __c91, 1),
-          _links: __S(4, __c0, 4),
+          items: __S(4097, __c128, 1),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "FlagLinkCollectionRep" });
-    case 3:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -25313,7 +21736,11 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "GetFlagStatusChartRequest",
       });
-    case 4:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25328,27 +21755,27 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "GetFollowersByProjEnvRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           flagKey: S.optional(S.String),
-          followers: S.optional(__S(235, __c29, 3)),
+          followers: S.optional(__S(10304, __c322, 0)),
         }),
       ).annotate({ identifier: "FollowersPerFlag" });
-    case 6:
-      return S.Array(__S(733, __c91, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4161, __c130, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: S.optional(__S(734, __c91, 6)),
+          _links: __S(14720, __c460, 0),
+          items: S.optional(__S(4162, __c130, 2)),
         }),
       ).annotate({
         identifier: "FlagFollowersByProjEnvGetRep",
       });
   }
 }
-function __c92(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25375,11 +21802,15 @@ function __c92(j: number): any {
           isDirty: S.optional(S.Boolean),
           createdAt: S.Number,
           updatedAt: S.Number,
-          baseExperiment: __S(128, __c16, 0),
-          relatedExperiments: S.optional(__S(668, __c83, 4)),
+          baseExperiment: __S(2801, __c87, 17),
+          relatedExperiments: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({ identifier: "HoldoutDetailRep" });
-    case 2:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25393,7 +21824,11 @@ function __c92(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetHoldoutByIdRequest" });
-    case 3:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -25402,11 +21837,15 @@ function __c92(j: number): any {
           holdoutAmount: S.String,
           createdAt: S.Number,
           updatedAt: S.Number,
-          baseExperiment: __S(128, __c16, 0),
-          experiments: S.optional(__S(456, __c57, 0)),
+          baseExperiment: __S(2801, __c87, 17),
+          experiments: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "HoldoutRep" });
-    case 4:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           insightGroupKey: S.String.pipe(T.Label()),
@@ -25419,7 +21858,11 @@ function __c92(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInsightGroupRequest" });
-    case 5:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -25431,9 +21874,9 @@ function __c92(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/engineering-insights/insights/groups", code: 200 }),
         ),
       ).annotate({ identifier: "GetInsightGroupsRequest" });
-    case 6:
-      return S.Array(__S(148, __c18, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(4449, __c139, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           excellent: S.Number,
@@ -25447,29 +21890,29 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "InsightGroupsCountByIndicator",
       });
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          countByIndicator: __S(743, __c92, 7),
+          countByIndicator: __S(4322, __c135, 2),
         }),
       ).annotate({
         identifier: "InsightGroupCollectionMetadata",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(742, __c92, 6),
-          _links: S.optional(__S(4, __c0, 4)),
-          metadata: S.optional(__S(744, __c93, 0)),
-          scoreMetadata: S.optional(__S(147, __c18, 3)),
+          items: __S(4321, __c135, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
+          metadata: S.optional(__S(4323, __c135, 3)),
+          scoreMetadata: S.optional(__S(4448, __c139, 0)),
         }),
       ).annotate({ identifier: "InsightGroupCollection" });
-    case 2:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expand: S.optional(S.String.pipe(T.Query())),
@@ -25479,15 +21922,15 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "GetInsightsRepositoriesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(229, __c28, 5),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(10337, __c323, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "ProjectSummaryCollection" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -25496,22 +21939,146 @@ function __c93(j: number): any {
           type: S.String,
           url: S.String,
           mainBranch: S.String,
-          projects: S.optional(__S(747, __c93, 3)),
+          projects: S.optional(__S(4353, __c136, 1)),
         }),
       ).annotate({ identifier: "InsightsRepository" });
-    case 5:
-      return S.Array(__S(748, __c93, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(4354, __c136, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.Number,
-          items: __S(749, __c93, 5),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(4355, __c136, 3),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({
         identifier: "InsightsRepositoryCollection",
       });
-    case 7:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+          projectKey: S.String,
+          environmentKey: S.String,
+          applicationKeys: S.optional(__S(15456, __c483, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v2/engineering-insights/insights/group", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateInsightGroupRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          min: S.Number,
+          max: S.Number,
+        }),
+      ).annotate({
+        identifier: "InsightsMetricIndicatorRange",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.Number,
+          aggregateOf: S.optional(__S(15456, __c483, 0)),
+          diffVsLastPeriod: S.optional(S.Number),
+          indicator: S.String,
+          indicatorRange: __S(4416, __c138, 0),
+          lastPeriod: S.optional(__S(4417, __c138, 1)),
+        }),
+      ).annotate({ identifier: "InsightsMetricScore" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          overall: __S(4417, __c138, 1),
+          deploymentFrequency: __S(4417, __c138, 1),
+          deploymentFailureRate: __S(4417, __c138, 1),
+          leadTime: __S(4417, __c138, 1),
+          impactSize: __S(4417, __c138, 1),
+          experimentationCoverage: __S(4417, __c138, 1),
+          flagHealth: __S(4417, __c138, 1),
+          velocity: __S(4417, __c138, 1),
+          risk: __S(4417, __c138, 1),
+          efficiency: __S(4417, __c138, 1),
+          creationRatio: S.optional(__S(4417, __c138, 1)),
+        }),
+      ).annotate({ identifier: "InsightGroupScores" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.Number,
+          endTime: S.Number,
+        }),
+      ).annotate({ identifier: "InsightPeriod" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          period: __S(4419, __c138, 3),
+          lastPeriod: __S(4419, __c138, 3),
+        }),
+      ).annotate({
+        identifier: "InsightGroupCollectionScoreMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(4481, __c140, 1)),
+          scores: S.optional(__S(4418, __c138, 2)),
+          scoreMetadata: S.optional(__S(4448, __c139, 0)),
+          key: S.String,
+          name: S.String,
+          projectKey: S.String,
+          environmentKey: S.String,
+          applicationKeys: S.optional(__S(15456, __c483, 0)),
+          createdAt: S.Number,
+        }),
+      ).annotate({ identifier: "InsightGroup" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16416, __c513, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          key: S.String,
+          name: S.String,
+          apiKey: S.String.pipe(T.SensitiveValue({})),
+          mobileKey: S.String,
+          color: S.String,
+          defaultTtl: S.Number,
+          secureMode: S.Boolean,
+          _access: S.optional(__S(15206, __c475, 6)),
+          defaultTrackEvents: S.Boolean,
+          requireComments: S.Boolean,
+          confirmChanges: S.Boolean,
+          tags: __S(15456, __c483, 0),
+          approvalSettings: S.optional(__S(16416, __c513, 0)),
+          resourceApprovalSettings: S.optional(__S(4480, __c140, 0)),
+          critical: S.Boolean,
+        }),
+      ).annotate({ identifier: "Environment" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -25521,20 +22088,20 @@ function __c93(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/engineering-insights/insights/scores", code: 200 }),
         ),
       ).annotate({ identifier: "GetInsightsScoresRequest" });
-  }
-}
-function __c94(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          period: __S(146, __c18, 2),
-          lastPeriod: __S(146, __c18, 2),
-          scores: __S(145, __c18, 1),
-          _links: S.optional(__S(4, __c0, 4)),
+          period: __S(4419, __c138, 3),
+          lastPeriod: __S(4419, __c138, 3),
+          scores: __S(4418, __c138, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "InsightScores" });
-    case 1:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -25548,7 +22115,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GetIntegrationConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25563,18 +22134,26 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GetIntegrationDeliveryConfigurationByEnvironmentRequest",
       });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5472, __c171, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(547, __c68, 3),
-          items: __S(755, __c94, 3),
+          _links: __S(1344, __c42, 0),
+          items: __S(4608, __c144, 0),
         }),
       ).annotate({
         identifier: "IntegrationDeliveryConfigurationCollection",
       });
-    case 5:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25591,7 +22170,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GetIntegrationDeliveryConfigurationByIdRequest",
       });
-    case 6:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -25603,7 +22186,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GetIntegrationDeliveryConfigurationsRequest",
       });
-    case 7:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           search: S.optional(S.String.pipe(T.Query())),
@@ -25613,49 +22200,61 @@ function __c94(j: number): any {
       ).annotate({ identifier: "GetIpAllowlistRequest" });
   }
 }
-function __c95(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(172, __c21, 4));
+      return S.Array(__S(5888, __c184, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(263, __c32, 7)),
+          _links: S.optional(__S(12000, __c375, 0)),
           sessionAllowlistEnabled: S.Boolean,
           apiTokenAllowlistEnabled: S.Boolean,
           totalCount: S.optional(S.Number),
-          entries: __S(760, __c95, 0),
+          entries: __S(4736, __c148, 0),
         }),
       ).annotate({ identifier: "IpAllowlistResponse" });
-    case 2:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/public-ip-list", code: 200 })),
       ).annotate({ identifier: "GetIpsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          addresses: __S(12, __c1, 4),
-          outboundAddresses: __S(12, __c1, 4),
+          addresses: __S(15456, __c483, 0),
+          outboundAddresses: __S(15456, __c483, 0),
         }),
       ).annotate({ identifier: "IpList" });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/layers", code: 200 })),
       ).annotate({ identifier: "GetLayersRequest" });
-    case 5:
-      return S.Array(__S(178, __c22, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(6436, __c201, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(765, __c95, 5),
+          items: __S(4801, __c150, 1),
           totalCount: S.Number,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "LayerCollectionRep" });
-    case 7:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -25677,7 +22276,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "GetLeadTimeChartRequest" });
   }
 }
-function __c96(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25690,7 +22289,7 @@ function __c96(j: number): any {
           sort: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          expand: S.optional(__S(15360, __c480, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -25701,41 +22300,230 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "GetLinkedResourcesRequest",
       });
-    case 1:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(__S(292, __c36, 4)),
-          flag: S.optional(__S(276, __c34, 4)),
-          segment: S.optional(__S(279, __c34, 7)),
-          aiConfig: S.optional(__S(285, __c35, 5)),
-          metric: S.optional(__S(282, __c35, 2)),
+          view: S.optional(__S(12070, __c377, 6)),
+          flag: S.optional(__S(12054, __c376, 22)),
+          segment: S.optional(__S(12057, __c376, 25)),
+          aiConfig: S.optional(__S(12063, __c376, 31)),
+          metric: S.optional(__S(12060, __c376, 28)),
         }),
       ).annotate({
         identifier: "ViewLinkedResourceDetails",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(258, __c32, 2),
+          _links: __S(12160, __c380, 0),
           resourceKey: S.String,
           environmentId: S.optional(S.String),
           environmentKey: S.optional(S.String),
           resourceType: S.String,
           linkedAt: S.Number,
-          resourceDetails: S.optional(__S(769, __c96, 1)),
+          resourceDetails: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({ identifier: "ViewLinkedResource" });
+    case 2:
+      return S.Array(__S(4897, __c153, 1));
     case 3:
-      return S.Array(__S(770, __c96, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(771, __c96, 3),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(4898, __c153, 2),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "ViewLinkedResources" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statements: S.optional(__S(5025, __c157, 1)),
+        }),
+      ).annotate({
+        identifier: "AuditLogEventsHookCapabilityConfigPost",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approvals: S.optional(__S(4969, __c155, 9)),
+          auditLogEventsHook: S.optional(__S(4928, __c154, 0)),
+        }),
+      ).annotate({ identifier: "CapabilityConfigPost" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          integrationKey: S.String.pipe(T.Label()),
+          name: S.String,
+          enabled: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          configValues: __S(15488, __c484, 0),
+          capabilityConfig: S.optional(__S(4929, __c154, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/integration-configurations/keys/{integrationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationConfigurationRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeaderItems" });
+    case 1:
+      return S.Array(__S(4960, __c155, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          headerName: S.optional(S.String),
+          hmacSecretFormVariableKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HMACSignature" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(4961, __c155, 1)),
+          hmacSignature: S.optional(__S(4962, __c155, 2)),
+          method: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OptionsArray" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          optionsItems: S.optional(__S(4964, __c155, 4)),
+          optionsPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DynamicOptionsParser" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(__S(4963, __c155, 3)),
+          parser: S.optional(__S(4965, __c155, 5)),
+        }),
+      ).annotate({ identifier: "DynamicOptions" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+          placeholder: S.optional(S.String),
+          isOptional: S.optional(S.Boolean),
+          defaultValue: S.optional(S.Unknown),
+          allowedValues: S.optional(__S(15456, __c483, 0)),
+          dynamicOptions: S.optional(__S(4966, __c155, 6)),
+        }),
+      ).annotate({ identifier: "FormVariable" });
+    case 8:
+      return S.Array(__S(4967, __c155, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          additionalFormVariables: S.optional(__S(4968, __c155, 8)),
+        }),
+      ).annotate({
+        identifier: "ApprovalsCapabilityConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          statements: S.optional(__S(4993, __c156, 1)),
+        }),
+      ).annotate({
+        identifier: "AuditLogEventsHookCapabilityConfigRep",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          approvals: S.optional(__S(4969, __c155, 9)),
+          auditLogEventsHook: S.optional(__S(4970, __c155, 10)),
+        }),
+      ).annotate({ identifier: "CapabilityConfigRep" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          name: S.String,
+          _createdAt: S.optional(S.Number),
+          _integrationKey: S.optional(S.String),
+          tags: S.optional(__S(15456, __c483, 0)),
+          enabled: S.optional(S.Boolean),
+          _access: S.optional(__S(15206, __c475, 6)),
+          configValues: S.optional(__S(15488, __c484, 0)),
+          capabilityConfig: S.optional(__S(4971, __c155, 11)),
+          snowflakeSetupScript: S.optional(S.String),
+          redshiftSetupScripts: S.optional(__S(15456, __c483, 0)),
+          redshiftIAMPermissionsPolicy: S.optional(S.String),
+          redshiftIAMTrustPolicy: S.optional(S.String),
+          _maintainerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IntegrationConfigurationsRep",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+        }),
+      ).annotate({ identifier: "Statement" });
+    case 1:
+      return S.Array(__S(4992, __c156, 0));
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+        }),
+      ).annotate({ identifier: "StatementPost" });
+    case 1:
+      return S.Array(__S(5024, __c157, 0));
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25752,19 +22540,23 @@ function __c96(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLinkedViewsRequest" });
-    case 6:
-      return S.Array(__S(292, __c36, 4));
-    case 7:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12070, __c377, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(774, __c96, 6),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(5088, __c159, 0),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "Views" });
   }
 }
-function __c97(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25782,7 +22574,11 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "GetMAUClientsideUsageRequest",
       });
-    case 1:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -25790,14 +22586,18 @@ function __c97(j: number): any {
           sdktype: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/mau/sdks", code: 200 })),
       ).annotate({ identifier: "GetMauSdksByTypeRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(27, __c3, 3),
-          sdks: __S(12, __c1, 4),
+          _links: __S(15488, __c484, 0),
+          sdks: __S(15456, __c483, 0),
         }),
       ).annotate({ identifier: "SdkListRep" });
-    case 3:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -25812,14 +22612,22 @@ function __c97(j: number): any {
           granularity: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/total-mau", code: 200 })),
       ).annotate({ identifier: "GetMAUTotalUsageRequest" });
-    case 4:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/members/{id}", code: 200 })),
       ).annotate({ identifier: "GetMemberRequest" });
-    case 5:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -25829,7 +22637,11 @@ function __c97(j: number): any {
           sort: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/members", code: 200 })),
       ).annotate({ identifier: "GetMembersRequest" });
-    case 6:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25840,22 +22652,22 @@ function __c97(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/metrics/{projectKey}/{metricKey}", code: 200 }),
         ),
       ).annotate({ identifier: "GetMetricRequest" });
-    case 7:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
           kind: S.String,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "DependentMetricGroupRep" });
-  }
-}
-function __c98(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(783, __c97, 7));
     case 1:
+      return S.Array(__S(5312, __c166, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -25866,10 +22678,10 @@ function __c98(j: number): any {
           environmentName: S.String,
           status: S.String,
           creationDate: S.Number,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "DependentReleasePhaseRep" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           experimentCount: S.optional(S.Number),
@@ -25883,33 +22695,33 @@ function __c98(j: number): any {
           name: S.String,
           kind: S.String,
           _attachedFlagCount: S.optional(S.Number),
-          _links: __S(4, __c0, 4),
-          _site: S.optional(__S(3, __c0, 3)),
-          _access: S.optional(__S(21, __c2, 5)),
-          tags: __S(12, __c1, 4),
+          _links: __S(14720, __c460, 0),
+          _site: S.optional(__S(14752, __c461, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
+          tags: __S(15456, __c483, 0),
           _creationDate: S.Number,
-          lastModified: S.optional(__S(22, __c2, 6)),
+          lastModified: S.optional(__S(15552, __c486, 0)),
           maintainerId: S.optional(S.String),
-          _maintainer: S.optional(__S(13, __c1, 5)),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
           description: S.optional(S.String),
           category: S.optional(S.String),
           isNumeric: S.optional(S.Boolean),
           successCriteria: S.optional(S.String),
           unit: S.optional(S.String),
           eventKey: S.optional(S.String),
-          randomizationUnits: S.optional(__S(12, __c1, 4)),
-          analysisUnits: S.optional(__S(12, __c1, 4)),
-          filters: S.optional(__S(24, __c3, 0)),
+          randomizationUnits: S.optional(__S(15456, __c483, 0)),
+          analysisUnits: S.optional(__S(15456, __c483, 0)),
+          filters: S.optional(__S(15264, __c477, 0)),
           unitAggregationType: S.optional(S.String),
           analysisType: S.optional(S.String),
           percentileValue: S.optional(S.Number),
-          eventDefault: S.optional(__S(25, __c3, 1)),
-          dataSource: __S(26, __c3, 2),
+          eventDefault: S.optional(__S(15553, __c486, 1)),
+          dataSource: __S(15554, __c486, 2),
           lastSeen: S.optional(S.Number),
           archived: S.optional(S.Boolean),
           archivedAt: S.optional(S.Number),
           selector: S.optional(S.String),
-          urls: S.optional(__S(28, __c3, 4)),
+          urls: S.optional(__S(15520, __c485, 0)),
           windowStartOffset: S.optional(S.Number),
           windowEndOffset: S.optional(S.Number),
           winsorLowerPercentile: S.optional(S.Number),
@@ -25918,16 +22730,20 @@ function __c98(j: number): any {
           traceQuery: S.optional(S.String),
           traceValueLocation: S.optional(S.String),
           unitAggregationField: S.optional(S.String),
-          denominator: S.optional(__S(29, __c3, 5)),
-          experiments: S.optional(__S(196, __c24, 4)),
-          metricGroups: S.optional(__S(784, __c98, 0)),
-          lastUsedInExperiment: S.optional(__S(195, __c24, 3)),
-          lastUsedInGuardedRollout: S.optional(__S(785, __c98, 1)),
+          denominator: S.optional(__S(15265, __c477, 1)),
+          experiments: S.optional(__S(7745, __c242, 1)),
+          metricGroups: S.optional(__S(5313, __c166, 1)),
+          lastUsedInExperiment: S.optional(__S(7744, __c242, 0)),
+          lastUsedInGuardedRollout: S.optional(__S(5314, __c166, 2)),
           isActive: S.optional(S.Boolean),
-          _attachedFeatures: S.optional(__S(485, __c60, 5)),
+          _attachedFeatures: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({ identifier: "MetricRep" });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25941,7 +22757,11 @@ function __c98(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMetricGroupRequest" });
-    case 4:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25954,17 +22774,21 @@ function __c98(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/metric-groups", code: 200 }),
         ),
       ).annotate({ identifier: "GetMetricGroupsRequest" });
-    case 5:
-      return S.Array(__S(197, __c24, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(7777, __c243, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(789, __c98, 5),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(5377, __c168, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricGroupCollectionRep" });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -25975,21 +22799,67 @@ function __c98(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/metrics/{projectKey}", code: 200 })),
       ).annotate({ identifier: "GetMetricsRequest" });
-  }
-}
-function __c99(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(30, __c3, 6));
     case 1:
+      return S.Array(__S(15296, __c478, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(792, __c99, 0)),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(5409, __c169, 1)),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricCollectionRep" });
-    case 2:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          on: S.optional(S.Boolean),
+          config: __S(15488, __c484, 0),
+          tags: S.optional(__S(15456, __c483, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationDeliveryConfigurationRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(1824, __c57, 0),
+          _id: S.String,
+          integrationKey: S.String,
+          projectKey: S.String,
+          environmentKey: S.String,
+          config: __S(15488, __c484, 0),
+          on: S.Boolean,
+          tags: __S(15456, __c483, 0),
+          name: S.String,
+          version: S.Number,
+          _access: S.optional(__S(15206, __c475, 6)),
+        }),
+      ).annotate({
+        identifier: "IntegrationDeliveryConfiguration",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26003,10 +22873,14 @@ function __c99(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetModelConfigRequest" });
-    case 3:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _access: S.optional(__S(381, __c47, 5)),
+          _access: S.optional(__S(16934, __c529, 6)),
           _maintainer: S.optional(S.Unknown),
           name: S.String,
           key: S.String,
@@ -26016,7 +22890,7 @@ function __c99(j: number): any {
           global: S.Boolean,
           params: S.optional(S.Unknown),
           customParams: S.optional(S.Unknown),
-          tags: __S(12, __c1, 4),
+          tags: __S(15456, __c483, 0),
           version: S.Number,
           costPerInputToken: S.optional(S.Number),
           costPerOutputToken: S.optional(S.Number),
@@ -26025,7 +22899,11 @@ function __c99(j: number): any {
           usedInCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ModelConfig" });
-    case 4:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.Label()),
@@ -26033,22 +22911,26 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "GetOAuthClientByIdRequest",
       });
-    case 5:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/oauth/clients", code: 200 })),
       ).annotate({ identifier: "GetOAuthClientsRequest" });
-    case 6:
-      return S.Array(__S(199, __c24, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(8192, __c256, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(798, __c99, 6),
+          _links: __S(14720, __c460, 0),
+          items: __S(5601, __c175, 1),
         }),
       ).annotate({ identifier: "ClientCollection" });
   }
 }
-function __c100(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -26062,7 +22944,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetObservabilityErrorsUsageRequest",
       });
-    case 1:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -26074,7 +22960,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetObservabilityLogsUsageRequest",
       });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -26086,7 +22976,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetObservabilityMetricsUsageRequest",
       });
-    case 3:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -26098,7 +22992,11 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetObservabilitySessionsUsageRequest",
       });
-    case 4:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -26110,18 +23008,58 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetObservabilityTracesUsageRequest",
       });
-    case 5:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/openapi.json", code: 200 })),
       ).annotate({ identifier: "GetOpenapiSpecRequest" });
-    case 6:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}", code: 200 })),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 7:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.String,
+          description: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/account/ip-allowlist", code: 200 })),
+      ).annotate({
+        identifier: "CreateIpAllowlistEntryRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          ipAddress: S.String,
+          description: S.optional(S.String),
+          _createdByMemberId: S.optional(S.String),
+          _createdAt: S.Number,
+          _updatedAt: S.Number,
+        }),
+      ).annotate({ identifier: "IpAllowlistEntryResponse" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -26131,21 +23069,21 @@ function __c100(j: number): any {
           expand: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(500, __c62, 4));
     case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(808, __c101, 0),
+          _links: __S(14720, __c460, 0),
+          items: __S(5921, __c185, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Projects" });
-    case 2:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26158,10 +23096,10 @@ function __c101(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/sdk-keys", code: 200 }),
         ),
       ).annotate({ identifier: "GetProjectSdkKeysRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
           key: S.String,
           name: S.String,
           color: S.String,
@@ -26169,28 +23107,10 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "SdkKeysEnvironmentSummary",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          flagCount: S.Number,
-          segmentCount: S.Number,
-        }),
-      ).annotate({ identifier: "ViewResourceSummary" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(258, __c32, 2)),
-          key: S.String,
-          name: S.String,
-          resourceSummary: __S(812, __c101, 4),
-        }),
-      ).annotate({ identifier: "ViewSummary" });
-    case 6:
-      return S.Array(__S(813, __c101, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(258, __c32, 2)),
+          _links: S.optional(__S(12160, __c380, 0)),
           kind: S.String,
           key: S.String,
           name: S.String,
@@ -26202,25 +23122,47 @@ function __c101(j: number): any {
           _createdAt: S.Number,
           _updatedAt: S.Number,
           _version: S.Number,
-          environmentSummary: S.optional(__S(811, __c101, 3)),
-          viewSummaries: S.optional(__S(814, __c101, 6)),
+          environmentSummary: S.optional(__S(5953, __c186, 1)),
+          viewSummaries: S.optional(__S(5986, __c187, 2)),
         }),
       ).annotate({ identifier: "SdkKeyListItem" });
-  }
-}
-function __c102(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(815, __c101, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(5954, __c186, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(263, __c32, 7)),
-          items: __S(816, __c102, 0),
+          _links: S.optional(__S(12000, __c375, 0)),
+          items: __S(5955, __c186, 3),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "SdkKeys" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          flagCount: S.Number,
+          segmentCount: S.Number,
+        }),
+      ).annotate({ identifier: "ViewResourceSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(12160, __c380, 0)),
+          key: S.String,
+          name: S.String,
+          resourceSummary: __S(5984, __c187, 0),
+        }),
+      ).annotate({ identifier: "ViewSummary" });
     case 2:
+      return S.Array(__S(5985, __c187, 1));
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26233,23 +23175,31 @@ function __c102(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPromptSnippetRequest" });
-    case 3:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
-          _site: S.optional(__S(257, __c32, 1)),
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          _site: S.optional(__S(12128, __c379, 0)),
           _maintainer: S.optional(S.Unknown),
           name: S.String,
           description: S.optional(S.String),
           text: S.String,
-          tags: __S(12, __c1, 4),
+          tags: __S(15456, __c483, 0),
           version: S.Number,
           createdAt: S.Number,
         }),
       ).annotate({ identifier: "PromptSnippet" });
-    case 4:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -26268,7 +23218,11 @@ function __c102(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/engineering-insights/pull-requests", code: 200 }),
         ),
       ).annotate({ identifier: "GetPullRequestsRequest" });
-    case 5:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -26278,21 +23232,29 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "GetRelayProxyConfigRequest",
       });
-    case 6:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          _creator: S.optional(__S(13, __c1, 5)),
-          _access: S.optional(__S(21, __c2, 5)),
+          _creator: S.optional(__S(15392, __c481, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
           name: S.String,
-          policy: __S(165, __c20, 5),
+          policy: __S(4993, __c156, 1),
           fullKey: S.optional(S.String),
           displayKey: S.String,
           creationDate: S.Number,
           lastModified: S.Number,
         }),
       ).annotate({ identifier: "RelayAutoConfigRep" });
-    case 7:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/v2/account/relay-auto-configs", code: 200 }),
@@ -26300,21 +23262,21 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "GetRelayProxyConfigsRequest",
       });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(822, __c102, 6));
     case 1:
+      return S.Array(__S(6144, __c192, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(824, __c103, 0),
+          items: __S(6177, __c193, 1),
         }),
       ).annotate({
         identifier: "RelayAutoConfigCollectionRep",
       });
-    case 2:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26325,7 +23287,11 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GetReleaseByFlagKeyRequest",
       });
-    case 3:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -26349,7 +23315,11 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GetReleaseFrequencyChartRequest",
       });
-    case 4:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26364,7 +23334,11 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GetReleasePipelineByKeyRequest",
       });
-    case 5:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26379,127 +23353,177 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GetReleasePoliciesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
+          items: __S(6368, __c199, 0),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ReleasePoliciesResponse" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
           effect: S.String,
           role_name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReleasePoliciesAccessDeniedReason",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          reason: __S(830, __c103, 6),
+          reason: __S(6336, __c198, 0),
         }),
       ).annotate({
         identifier: "ReleasePoliciesAccessDenied",
       });
-  }
-}
-function __c104(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(831, __c103, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(6337, __c198, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(12, __c1, 4)),
-          notResources: S.optional(__S(12, __c1, 4)),
-          actions: S.optional(__S(12, __c1, 4)),
-          notActions: S.optional(__S(12, __c1, 4)),
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
           effect: S.String,
           role_name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReleasePoliciesAccessAllowedReason",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          reason: __S(833, __c104, 1),
+          reason: __S(6339, __c198, 3),
         }),
       ).annotate({
         identifier: "ReleasePoliciesAccessAllowedRep",
       });
-    case 3:
-      return S.Array(__S(834, __c104, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(6340, __c198, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          denied: __S(832, __c104, 0),
-          allowed: __S(835, __c104, 3),
+          denied: __S(6338, __c198, 2),
+          allowed: __S(6341, __c198, 5),
         }),
       ).annotate({ identifier: "ReleasePoliciesAccess" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          environmentKeys: S.optional(__S(12, __c1, 4)),
-          flagTagKeys: S.optional(__S(12, __c1, 4)),
+          environmentKeys: S.optional(__S(15456, __c483, 0)),
+          flagTagKeys: S.optional(__S(15456, __c483, 0)),
         }),
       ).annotate({ identifier: "ReleasePolicyScope" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           allocation: S.Number,
           durationMillis: S.Number,
         }),
       ).annotate({ identifier: "ReleasePolicyStage" });
-    case 7:
-      return S.Array(__S(838, __c104, 6));
-  }
-}
-function __c105(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(6344, __c198, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           rolloutContextKindKey: S.optional(S.String),
           minSampleSize: S.optional(S.Number),
           rollbackOnRegression: S.optional(S.Boolean),
-          metricKeys: S.optional(__S(12, __c1, 4)),
-          metricGroupKeys: S.optional(__S(12, __c1, 4)),
-          stages: S.optional(__S(839, __c104, 7)),
+          metricKeys: S.optional(__S(15456, __c483, 0)),
+          metricGroupKeys: S.optional(__S(15456, __c483, 0)),
+          stages: S.optional(__S(6345, __c198, 9)),
         }),
       ).annotate({ identifier: "GuardedReleaseConfig" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           rolloutContextKindKey: S.optional(S.String),
-          stages: S.optional(__S(839, __c104, 7)),
+          stages: S.optional(__S(6345, __c198, 9)),
         }),
       ).annotate({ identifier: "ProgressiveReleaseConfig" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          _access: S.optional(__S(836, __c104, 4)),
+          _access: S.optional(__S(6342, __c198, 6)),
           _id: S.String,
-          scope: S.optional(__S(837, __c104, 5)),
+          scope: S.optional(__S(6343, __c198, 7)),
           rank: S.Number,
           releaseMethod: S.String,
-          guardedReleaseConfig: S.optional(__S(840, __c105, 0)),
-          progressiveReleaseConfig: S.optional(__S(841, __c105, 1)),
+          guardedReleaseConfig: S.optional(__S(6346, __c198, 10)),
+          progressiveReleaseConfig: S.optional(__S(6347, __c198, 11)),
           name: S.String,
           key: S.String,
         }),
       ).annotate({ identifier: "ReleasePolicy" });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6348, __c198, 12));
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          key: S.String,
+          name: S.String,
+          description: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/layers", code: 200 })),
+      ).annotate({ identifier: "CreateLayerRequest" });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          experimentKey: S.String,
+          flagKey: S.String,
+          reservationPercent: S.Number,
+        }),
+      ).annotate({ identifier: "LayerReservationRep" });
+    case 1:
+      return S.Array(__S(6432, __c201, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reservations: __S(6433, __c201, 1),
+        }),
+      ).annotate({ identifier: "LayerConfigurationRep" });
     case 3:
-      return S.Array(__S(842, __c105, 2));
+      return S.Record(S.String, __S(6434, __c201, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(843, __c105, 3),
-          totalCount: S.Number,
+          key: S.String,
+          name: S.String,
+          description: S.String,
+          createdAt: S.Number,
+          randomizationUnit: S.optional(S.String),
+          environments: S.optional(__S(6435, __c201, 3)),
         }),
-      ).annotate({ identifier: "ReleasePoliciesResponse" });
-    case 5:
+      ).annotate({ identifier: "LayerRep" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26512,7 +23536,11 @@ function __c105(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReleasePolicyRequest" });
-    case 6:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           withBranches: S.optional(S.String.pipe(T.Query())),
@@ -26521,7 +23549,20 @@ function __c105(j: number): any {
           flagKey: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/code-refs/repositories", code: 200 })),
       ).annotate({ identifier: "GetRepositoriesRequest" });
-    case 7:
+    case 1:
+      return S.Array(__S(6528, __c204, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          items: __S(6497, __c203, 1),
+        }),
+      ).annotate({ identifier: "RepositoryCollectionRep" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -26532,58 +23573,57 @@ function __c105(j: number): any {
           defaultBranch: S.String,
           enabled: S.Boolean,
           version: S.Number,
-          branches: S.optional(__S(557, __c69, 5)),
-          _links: __S(27, __c3, 3),
-          _access: S.optional(__S(21, __c2, 5)),
+          branches: S.optional(__S(1504, __c47, 0)),
+          _links: __S(15488, __c484, 0),
+          _access: S.optional(__S(15206, __c475, 6)),
         }),
       ).annotate({ identifier: "RepositoryRep" });
   }
 }
-function __c106(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(847, __c105, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _links: __S(4, __c0, 4),
-          items: __S(848, __c106, 0),
-        }),
-      ).annotate({ identifier: "RepositoryCollectionRep" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 })),
       ).annotate({ identifier: "GetRepositoryRequest" });
-    case 3:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2", code: 200 })),
       ).annotate({ identifier: "GetRootRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: __S(4, __c0, 4),
+          links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "RootResponse" });
-    case 5:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/v2/code-refs/statistics", code: 200 }),
         ),
       ).annotate({ identifier: "GetRootStatisticRequest" });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(14752, __c461, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          projects: S.optional(__S(854, __c106, 6)),
-          self: S.optional(__S(3, __c0, 3)),
+          projects: S.optional(__S(6625, __c207, 1)),
+          self: S.optional(__S(14752, __c461, 0)),
         }),
       ).annotate({ identifier: "StatisticsRoot" });
   }
 }
-function __c107(j: number): any {
+function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -26596,7 +23636,11 @@ function __c107(j: number): any {
           connectionType: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/sdk-versions/all", code: 200 })),
       ).annotate({ identifier: "GetSdkAllVersionsRequest" });
-    case 1:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -26619,13 +23663,17 @@ function __c107(j: number): any {
           relayLatestReleaseUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "SdkVersionDetailsRep" });
+    case 1:
+      return S.Array(__S(6688, __c209, 0));
     case 2:
-      return S.Array(__S(857, __c107, 1));
-    case 3:
-      return S.suspend(() => __S(858, __c107, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6689, __c209, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSdkAllVersionsResponse",
       });
-    case 4:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26639,10 +23687,14 @@ function __c107(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSdkKeyByKeyRequest" });
-    case 5:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(258, __c32, 2)),
+          _links: S.optional(__S(12160, __c380, 0)),
           kind: S.String,
           key: S.String,
           name: S.String,
@@ -26656,7 +23708,11 @@ function __c107(j: number): any {
           _version: S.Number,
         }),
       ).annotate({ identifier: "SdkKey" });
-    case 6:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26673,21 +23729,21 @@ function __c107(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSdkKeysRequest" });
-    case 7:
-      return S.Array(__S(861, __c107, 5));
-  }
-}
-function __c108(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(6752, __c211, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(263, __c32, 7)),
-          items: __S(863, __c107, 7),
+          _links: S.optional(__S(12000, __c375, 0)),
+          items: __S(6785, __c212, 1),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "SdkKeysForGetSdkKeys" });
-    case 1:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/v2/usage/sdk-versions/details", code: 200 }),
@@ -26695,7 +23751,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "GetSdkVersionsDetailsRequest",
       });
-    case 2:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26709,7 +23769,116 @@ function __c108(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSegmentRequest" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          role: S.optional(S.String),
+          customRoles: S.optional(__S(15456, __c483, 0)),
+          teamKeys: S.optional(__S(15456, __c483, 0)),
+          roleAttributes: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "NewMemberForm" });
+    case 1:
+      return S.Array(__S(6880, __c215, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: __S(6881, __c215, 1).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/members", code: 200 })),
+      ).annotate({ identifier: "CreateMemberRequest" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6948, __c217, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(6912, __c216, 0),
+          _links: __S(14720, __c460, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Members" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tokenId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LastSeenMetadata" });
+    case 1:
+      return S.Array(__S(6976, __c218, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          actionSet: S.optional(S.String),
+          actions: S.optional(__S(15456, __c483, 0)),
+          resource: S.String,
+        }),
+      ).annotate({
+        identifier: "MemberPermissionGrantSummaryRep",
+      });
     case 3:
+      return S.Array(__S(6946, __c217, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          role: S.String,
+          email: S.String,
+          _pendingInvite: S.Boolean,
+          _verified: S.Boolean,
+          _pendingEmail: S.optional(S.String),
+          customRoles: __S(15456, __c483, 0),
+          mfa: S.String,
+          excludedDashboards: S.optional(__S(15456, __c483, 0)),
+          _lastSeen: S.Number,
+          _lastSeenMetadata: S.optional(__S(6944, __c217, 0)),
+          _integrationMetadata: S.optional(__S(16449, __c514, 1)),
+          teams: S.optional(__S(6945, __c217, 1)),
+          permissionGrants: S.optional(__S(6947, __c217, 3)),
+          creationDate: S.Number,
+          oauthProviders: S.optional(__S(15456, __c483, 0)),
+          hasPassword: S.optional(S.Boolean),
+          version: S.optional(S.Number),
+          roleAttributes: S.optional(__S(2816, __c88, 0)),
+          mfaEnforced: S.optional(S.Boolean),
+          mfaGracePeriodExpiresAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Member" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customRoleKeys: __S(15456, __c483, 0),
+          key: S.String,
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "MemberTeamSummaryRep" });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26726,7 +23895,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "GetSegmentMembershipForContextRequest",
       });
-    case 4:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String,
@@ -26734,7 +23907,11 @@ function __c108(j: number): any {
           excluded: S.Boolean,
         }),
       ).annotate({ identifier: "BigSegmentTarget" });
-    case 5:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26751,7 +23928,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "GetSegmentMembershipForUserRequest",
       });
-    case 6:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26768,21 +23949,21 @@ function __c108(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSegmentsRequest" });
-    case 7:
-      return S.Array(__S(509, __c63, 5));
-  }
-}
-function __c109(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(902, __c28, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(871, __c108, 7),
-          _links: __S(4, __c0, 4),
+          items: __S(7105, __c222, 1),
+          _links: __S(14720, __c460, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UserSegments" });
-    case 1:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -26802,16 +23983,20 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "GetServiceConnectionsUsageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(27, __c3, 3),
-          metadata: __S(244, __c30, 4),
-          series: __S(450, __c56, 2),
-          projectedSeries: S.optional(__S(450, __c56, 2)),
+          _links: __S(15488, __c484, 0),
+          metadata: __S(11584, __c362, 0),
+          series: __S(65, __c2, 1),
+          projectedSeries: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({ identifier: "SeriesListRepFloat" });
-    case 3:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Query()),
@@ -26831,7 +24016,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "GetStaleFlagsChartRequest",
       });
-    case 4:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -26840,7 +24029,7 @@ function __c109(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/code-refs/statistics/{projectKey}", code: 200 }),
         ),
       ).annotate({ identifier: "GetStatisticsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -26851,26 +24040,26 @@ function __c109(j: number): any {
           version: S.Number,
           hunkCount: S.Number,
           fileCount: S.Number,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
           latestCommitTime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StatisticRep" });
-    case 6:
-      return S.Array(__S(877, __c109, 5));
-    case 7:
-      return S.Record(S.String, __S(878, __c109, 6));
-  }
-}
-function __c110(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(7201, __c225, 1));
+    case 3:
+      return S.Record(S.String, __S(7202, __c225, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          flags: __S(879, __c109, 7),
-          _links: __S(4, __c0, 4),
+          flags: __S(7203, __c225, 3),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({ identifier: "StatisticCollectionRep" });
-    case 1:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String.pipe(T.Label()),
@@ -26879,7 +24068,11 @@ function __c110(j: number): any {
           tz: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/streams/{source}", code: 200 })),
       ).annotate({ identifier: "GetStreamUsageRequest" });
-    case 2:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String.pipe(T.Label()),
@@ -26894,7 +24087,11 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "GetStreamUsageBySdkVersionRequest",
       });
-    case 3:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String.pipe(T.Label()),
@@ -26904,23 +24101,27 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "GetStreamUsageSdkversionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sdk: S.String,
           version: S.String,
         }),
       ).annotate({ identifier: "SdkVersionRep" });
-    case 5:
-      return S.Array(__S(884, __c110, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(7297, __c228, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          _links: __S(27, __c3, 3),
-          sdkVersions: __S(885, __c110, 5),
+          _links: __S(15488, __c484, 0),
+          sdkVersions: __S(7298, __c228, 2),
         }),
       ).annotate({ identifier: "SdkVersionListRep" });
-    case 7:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationKey: S.String.pipe(T.Label()),
@@ -26933,7 +24134,18 @@ function __c110(j: number): any {
       });
   }
 }
-function __c111(j: number): any {
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          teamKeys: __S(15456, __c483, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/members/{id}/teams", code: 200 })),
+      ).annotate({ identifier: "CreateMemberTeamRequest" });
+  }
+}
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -26942,19 +24154,23 @@ function __c111(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/integrations/{integrationKey}", code: 200 })),
       ).annotate({ identifier: "GetSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(223, __c27, 7));
+      return S.Array(__S(9795, __c306, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          items: S.optional(__S(889, __c111, 1)),
+          _links: S.optional(__S(14720, __c460, 0)),
+          items: S.optional(__S(7393, __c231, 1)),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "Integrations" });
-    case 3:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          kind: S.optional(__S(15456, __c483, 0).pipe(T.Query())),
           pre: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -26962,22 +24178,30 @@ function __c111(j: number): any {
           asOf: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/tags", code: 200 })),
       ).annotate({ identifier: "GetTagsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(12, __c1, 4),
-          _links: __S(4, __c0, 4),
+          items: __S(15456, __c483, 0),
+          _links: __S(14720, __c460, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TagsCollection" });
-    case 5:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamKey: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/teams/{teamKey}", code: 200 })),
       ).annotate({ identifier: "GetTeamRequest" });
-    case 6:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamKey: S.String.pipe(T.Label()),
@@ -26987,7 +24211,11 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "GetTeamMaintainersRequest",
       });
-    case 7:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamKey: S.String.pipe(T.Label()),
@@ -26997,7 +24225,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "GetTeamRolesRequest" });
   }
 }
-function __c112(j: number): any {
+function __c236(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27010,22 +24238,30 @@ function __c112(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/teams", code: 200 })),
       ).annotate({ identifier: "GetTeamsRequest" });
     case 1:
-      return S.Array(__S(237, __c29, 5));
+      return S.Array(__S(10434, __c326, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(897, __c112, 1),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(7553, __c236, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Teams" });
-    case 3:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/tokens/{id}", code: 200 })),
       ).annotate({ identifier: "GetTokenRequest" });
-    case 4:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showAll: S.optional(S.Boolean.pipe(T.Query())),
@@ -27033,17 +24269,21 @@ function __c112(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/tokens", code: 200 })),
       ).annotate({ identifier: "GetTokensRequest" });
-    case 5:
-      return S.Array(__S(243, __c30, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(11168, __c349, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(901, __c112, 5)),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(7617, __c238, 1)),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Tokens" });
-    case 7:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27062,7 +24302,7 @@ function __c112(j: number): any {
       });
   }
 }
-function __c113(j: number): any {
+function __c240(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27081,17 +24321,102 @@ function __c113(j: number): any {
         identifier: "GetTriggerWorkflowsRequest",
       });
     case 1:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(11554, __c361, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(905, __c113, 1)),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(7681, __c240, 1)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({
         identifier: "TriggerWorkflowCollectionRep",
       });
-    case 3:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          nameInGroup: S.String,
+        }),
+      ).annotate({ identifier: "MetricInMetricGroupInput" });
+    case 1:
+      return S.Array(__S(7712, __c241, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          key: S.String,
+          name: S.String,
+          kind: S.String,
+          description: S.optional(S.String),
+          maintainerId: S.String,
+          tags: __S(15456, __c483, 0),
+          metrics: __S(7713, __c241, 1),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/metric-groups", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateMetricGroupRequest" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          environmentId: S.String,
+          environmentKey: S.String,
+          creationDate: S.Number,
+          archivedDate: S.optional(S.Number),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({ identifier: "DependentExperimentRep" });
+    case 1:
+      return S.Array(__S(7744, __c242, 0));
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          kind: S.String,
+          _member: S.optional(__S(15392, __c481, 0)),
+          _team: S.optional(__S(6976, __c218, 0)),
+        }),
+      ).annotate({ identifier: "MaintainerRep" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          key: S.String,
+          name: S.String,
+          kind: S.String,
+          description: S.optional(S.String),
+          _links: __S(14720, __c460, 0),
+          _access: S.optional(__S(15206, __c475, 6)),
+          tags: __S(15456, __c483, 0),
+          _creationDate: S.Number,
+          _lastModified: S.Number,
+          maintainer: __S(7776, __c243, 0),
+          metrics: __S(2849, __c89, 1),
+          _version: S.Number,
+          experiments: S.optional(__S(7745, __c242, 1)),
+          experimentCount: S.optional(S.Number),
+          activeExperimentCount: S.optional(S.Number),
+          activeGuardedRolloutCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricGroupRep" });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -27101,22 +24426,30 @@ function __c113(j: number): any {
           aggregationType: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/vega-ai", code: 200 })),
       ).annotate({ identifier: "GetVegaAIUsageRequest" });
-    case 4:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/versions", code: 200 })),
       ).annotate({ identifier: "GetVersionsRequest" });
-    case 5:
+    case 1:
       return S.Array(S.Number);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          validVersions: __S(909, __c113, 5),
+          validVersions: __S(7841, __c245, 1),
           latestVersion: S.Number,
           currentVersion: S.Number,
           beta: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VersionsRep" });
-    case 7:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27125,7 +24458,7 @@ function __c113(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          expand: S.optional(__S(15360, __c480, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27136,7 +24469,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "GetViewRequest" });
   }
 }
-function __c114(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27146,10 +24479,14 @@ function __c114(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          expand: S.optional(__S(15360, __c480, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/views", code: 200 })),
       ).annotate({ identifier: "GetViewsRequest" });
-    case 1:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -27165,13 +24502,21 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "GetWarehouseExportUsageRequest",
       });
-    case 2:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v2/webhooks/{id}", code: 200 })),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 3:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27189,19 +24534,23 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkflowsRequest" });
-    case 4:
-      return S.Array(__S(604, __c75, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(2087, __c65, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(916, __c114, 4),
+          items: __S(8001, __c250, 1),
           totalCount: S.Number,
-          _links: __S(4, __c0, 4),
+          _links: __S(14720, __c460, 0),
         }),
       ).annotate({
         identifier: "CustomWorkflowsListingOutput",
       });
-    case 6:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           summary: S.optional(S.Boolean.pipe(T.Query())),
@@ -27210,21 +24559,21 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "GetWorkflowTemplatesRequest",
       });
-    case 7:
-      return S.Array(__S(309, __c38, 5));
-  }
-}
-function __c115(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12992, __c406, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(919, __c114, 7),
+          items: __S(8033, __c251, 1),
         }),
       ).annotate({
         identifier: "WorkflowTemplatesListingOutputRep",
       });
-    case 1:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27239,7 +24588,22 @@ function __c115(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LinkResourceRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          successCount: S.Number,
+          failureCount: S.Number,
+          linkedResources: S.optional(__S(4899, __c153, 3)),
+          failedResources: S.optional(__S(8097, __c253, 1)),
+        }),
+      ).annotate({
+        identifier: "LinkResourceSuccessResponse",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceKey: S.String,
@@ -27248,20 +24612,13 @@ function __c115(j: number): any {
           errorMessage: S.String,
         }),
       ).annotate({ identifier: "FailedResourceLink" });
-    case 3:
-      return S.Array(__S(922, __c115, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          successCount: S.Number,
-          failureCount: S.Number,
-          linkedResources: S.optional(__S(772, __c96, 4)),
-          failedResources: S.optional(__S(923, __c115, 3)),
-        }),
-      ).annotate({
-        identifier: "LinkResourceSuccessResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(8096, __c253, 0));
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27280,19 +24637,50 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "ListAdaptiveTriggersRequest",
       });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(16804, __c525, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(926, __c115, 6),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8129, __c254, 1),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AdaptiveTriggers" });
   }
 }
-function __c116(j: number): any {
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          redirectUri: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/oauth/clients", code: 200 })),
+      ).annotate({
+        identifier: "CreateOAuth2ClientRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          name: S.String,
+          description: S.optional(S.String),
+          _accountId: S.String,
+          _clientId: S.String,
+          _clientSecret: S.optional(S.String),
+          redirectUri: S.String,
+          _creationDate: S.Number,
+        }),
+      ).annotate({ identifier: "Client" });
+  }
+}
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27306,16 +24694,20 @@ function __c116(j: number): any {
         ),
       ).annotate({ identifier: "ListAgentGraphsRequest" });
     case 1:
-      return S.Array(__S(385, __c48, 1));
+      return S.Array(__S(16898, __c528, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(929, __c116, 1),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8225, __c257, 1),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AgentGraphs" });
-    case 3:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27332,11 +24724,29 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "ListAgentOptimizationResultsRequest",
       });
-    case 4:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8320, __c260, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _access: S.optional(__S(381, __c47, 5)),
-          _links: S.optional(__S(258, __c32, 2)),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8288, __c259, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AgentOptimizationResults" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
           id: S.String,
           runId: S.String,
           agentOptimizationId: S.String,
@@ -27345,32 +24755,26 @@ function __c116(j: number): any {
           activity: S.String,
           iteration: S.Number,
           instructions: S.String,
-          parameters: S.optional(__S(27, __c3, 3)),
+          parameters: S.optional(__S(15488, __c484, 0)),
           userInput: S.String,
           completionResponse: S.optional(S.String),
-          variation: S.optional(__S(27, __c3, 3)),
-          scores: S.optional(__S(27, __c3, 3)),
-          generationTokens: S.optional(__S(27, __c3, 3)),
-          evaluationTokens: S.optional(__S(27, __c3, 3)),
+          variation: S.optional(__S(15488, __c484, 0)),
+          scores: S.optional(__S(15488, __c484, 0)),
+          generationTokens: S.optional(__S(15488, __c484, 0)),
+          evaluationTokens: S.optional(__S(15488, __c484, 0)),
           generationLatency: S.optional(S.Number),
-          evaluationLatencies: S.optional(__S(27, __c3, 3)),
+          evaluationLatencies: S.optional(__S(15488, __c484, 0)),
           completedAt: S.optional(S.Number),
           createdVariationKey: S.optional(S.String),
           createdAt: S.Number,
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "AgentOptimizationResult" });
-    case 5:
-      return S.Array(__S(932, __c116, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(933, __c116, 5),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AgentOptimizationResults" });
-    case 7:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27388,7 +24792,7 @@ function __c116(j: number): any {
       });
   }
 }
-function __c117(j: number): any {
+function __c262(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27421,16 +24825,20 @@ function __c117(j: number): any {
         }),
       ).annotate({ identifier: "AgentOptimizationRun" });
     case 2:
-      return S.Array(__S(937, __c117, 1));
+      return S.Array(__S(8385, __c262, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(938, __c117, 2),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8386, __c262, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AgentOptimizationRuns" });
-    case 4:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27447,17 +24855,21 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "ListAgentOptimizationsRequest",
       });
-    case 5:
-      return S.Array(__S(391, __c48, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(16996, __c531, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(941, __c117, 5),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8417, __c263, 1),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AgentOptimizations" });
-    case 7:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27476,7 +24888,7 @@ function __c117(j: number): any {
       });
   }
 }
-function __c118(j: number): any {
+function __c265(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27490,18 +24902,22 @@ function __c118(j: number): any {
         }),
       ).annotate({ identifier: "AgentSkillReference" });
     case 1:
-      return S.Array(__S(944, __c118, 0));
+      return S.Array(__S(8480, __c265, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
+          _links: S.optional(__S(17376, __c543, 0)),
           resourceKey: S.String,
           resourceType: S.String,
-          items: __S(945, __c118, 1),
+          items: __S(8481, __c265, 1),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AgentSkillReferences" });
-    case 3:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27516,17 +24932,25 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAgentSkillsRequest" });
-    case 4:
-      return S.Array(__S(393, __c49, 1));
-    case 5:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(17056, __c533, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(948, __c118, 4),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8544, __c267, 0),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AgentSkills" });
-    case 6:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27543,7 +24967,11 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "ListAgentSkillVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27560,11 +24988,7 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "ListAIToolReferencesRequest",
       });
-  }
-}
-function __c119(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           aiConfigKey: S.String,
@@ -27575,19 +24999,23 @@ function __c119(j: number): any {
           toolVersion: S.Number,
         }),
       ).annotate({ identifier: "ToolReference" });
-    case 1:
-      return S.Array(__S(952, __c119, 0));
     case 2:
+      return S.Array(__S(8609, __c269, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
+          _links: S.optional(__S(17376, __c543, 0)),
           resourceKey: S.String,
           resourceType: S.String,
-          items: __S(953, __c119, 1),
+          items: __S(8610, __c269, 2),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "ToolReferences" });
-    case 3:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27599,17 +25027,115 @@ function __c119(j: number): any {
           T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/ai-tools", code: 200 }),
         ),
       ).annotate({ identifier: "ListAIToolsRequest" });
-    case 4:
-      return S.Array(__S(453, __c56, 5));
-    case 5:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(160, __c5, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(956, __c119, 4),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8672, __c271, 0),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "AITools" });
-    case 6:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+          color: S.String,
+          defaultTtl: S.optional(S.Number),
+          secureMode: S.optional(S.Boolean),
+          defaultTrackEvents: S.optional(S.Boolean),
+          confirmChanges: S.optional(S.Boolean),
+          requireComments: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          source: S.optional(__S(8768, __c274, 0)),
+          critical: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EnvironmentPost" });
+    case 1:
+      return S.Array(__S(8704, __c272, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          case: S.optional(S.String),
+          prefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamingConvention" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+          includeInSnippetByDefault: S.optional(S.Boolean),
+          defaultClientSideAvailability: S.optional(__S(8800, __c275, 0)),
+          tags: S.optional(__S(15456, __c483, 0)),
+          environments: S.optional(__S(8705, __c272, 1)),
+          namingConvention: S.optional(__S(8706, __c272, 2)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects", code: 200 })),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4481, __c140, 1));
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SourceEnv" });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usingEnvironmentId: S.Boolean,
+          usingMobileKey: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "DefaultClientSideAvailabilityPost",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          key: S.String,
+          includeInSnippetByDefault: S.Boolean,
+          defaultClientSideAvailability: S.optional(__S(15424, __c482, 0)),
+          name: S.String,
+          _access: S.optional(__S(15206, __c475, 6)),
+          tags: __S(15456, __c483, 0),
+          defaultReleasePipelineKey: S.optional(S.String),
+          environments: __S(8736, __c273, 0),
+        }),
+      ).annotate({ identifier: "ProjectRep" });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27627,7 +25153,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "ListAIToolVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27646,7 +25176,7 @@ function __c119(j: number): any {
       });
   }
 }
-function __c120(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27664,12 +25194,20 @@ function __c120(j: number): any {
         ),
       ).annotate({ identifier: "ListModelConfigsRequest" });
     case 1:
-      return S.Array(__S(795, __c99, 3));
-    case 2:
-      return S.suspend(() => __S(961, __c120, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(8960, __c280, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListModelConfigsResponse",
       });
-    case 3:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5536, __c173, 0));
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27686,15 +25224,19 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "ListModelConfigVersionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(961, __c120, 1),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(8960, __c280, 0),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "ModelConfigs" });
-    case 5:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27711,7 +25253,11 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "ListPromptSnippetReferencesRequest",
       });
-    case 6:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27728,21 +25274,25 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "ListPromptSnippetsRequest",
       });
-    case 7:
-      return S.Array(__S(819, __c102, 3));
   }
 }
-function __c121(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(6048, __c189, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(419, __c52, 3)),
-          items: __S(967, __c120, 7),
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(9088, __c284, 0),
           totalCount: S.Number,
         }),
       ).annotate({ identifier: "PromptSnippets" });
-    case 1:
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27759,14 +25309,18 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "ListPromptSnippetVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           triggerID: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          task: S.optional(__S(372, __c46, 4)),
+          task: S.optional(__S(16803, __c525, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27777,7 +25331,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "PatchAdaptiveTriggerRequest",
       });
-    case 3:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27787,7 +25345,7 @@ function __c121(j: number): any {
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
           rootConfigKey: S.optional(S.String),
-          edges: S.optional(__S(384, __c48, 0)),
+          edges: S.optional(__S(16897, __c528, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27796,19 +25354,23 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAgentGraphRequest" });
-    case 4:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           optimizationKey: S.String.pipe(T.Label()),
           maxAttempts: S.optional(S.Number),
-          modelChoices: S.optional(__S(12, __c1, 4)),
+          modelChoices: S.optional(__S(15456, __c483, 0)),
           judgeModel: S.optional(S.String),
-          variableChoices: S.optional(__S(244, __c30, 4)),
-          acceptanceStatements: S.optional(__S(388, __c48, 4)),
-          judges: S.optional(__S(390, __c48, 6)),
-          userInputOptions: S.optional(__S(12, __c1, 4)),
-          groundTruthResponses: S.optional(__S(12, __c1, 4)),
+          variableChoices: S.optional(__S(11584, __c362, 0)),
+          acceptanceStatements: S.optional(__S(16993, __c531, 1)),
+          judges: S.optional(__S(16995, __c531, 3)),
+          userInputOptions: S.optional(__S(15456, __c483, 0)),
+          groundTruthResponses: S.optional(__S(15456, __c483, 0)),
           metricKey: S.optional(S.String),
           tokenLimit: S.optional(S.Number),
           variationKey: S.optional(S.String),
@@ -27826,7 +25388,137 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "PatchAgentOptimizationRequest",
       });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          flagKey: S.String.pipe(T.Label()),
+          releaseVariationId: S.optional(S.String),
+          releasePipelineKey: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/v2/projects/{projectKey}/flags/{flagKey}/release",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReleaseForFlagRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          key: S.String,
+          name: S.String,
+          color: S.String,
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          monitoringWindowMilliseconds: S.Number,
+          rolloutWeight: S.Number,
+          rollbackOnRegression: S.Boolean,
+          randomizationUnit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReleaseGuardianConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          releaseStrategy: S.String,
+          requireApproval: S.Boolean,
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          releaseGuardianConfiguration: S.optional(__S(9281, __c290, 1)),
+        }),
+      ).annotate({ identifier: "AudienceConfiguration" });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          _id: S.optional(S.String),
+          name: S.optional(S.String),
+          ending: S.optional(S.String),
+          serviceToken: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TokenSummary" });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          member: S.optional(__S(15392, __c481, 0)),
+          token: S.optional(__S(9312, __c291, 0)),
+        }),
+      ).annotate({ identifier: "CompletedBy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _links: S.optional(__S(14720, __c460, 0)),
+          environment: S.optional(__S(9280, __c290, 0)),
+          name: S.String,
+          configuration: S.optional(__S(9282, __c290, 2)),
+          segmentKeys: S.optional(__S(15456, __c483, 0)),
+          status: S.optional(S.String),
+          _ruleIds: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "ReleaseAudience" });
+    case 2:
+      return S.Array(__S(9345, __c292, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _name: S.String,
+          complete: S.Boolean,
+          _creationDate: S.Number,
+          _completionDate: S.optional(S.Number),
+          _completedBy: S.optional(__S(9344, __c292, 0)),
+          _audiences: __S(9346, __c292, 2),
+          status: S.optional(S.String),
+          started: S.optional(S.Boolean),
+          _startedDate: S.optional(S.Number),
+          configuration: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "PipelineReleasePhase" });
+    case 4:
+      return S.Array(__S(9347, __c292, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.String,
+          releasePipelineKey: S.String,
+          releasePipelineDescription: S.String,
+          phases: __S(9348, __c292, 4),
+          _version: S.Number,
+          _releaseVariationId: S.optional(S.String),
+          _canceledAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Release" });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27835,12 +25527,12 @@ function __c121(j: number): any {
           status: S.optional(S.String),
           activity: S.optional(S.String),
           completionResponse: S.optional(S.String),
-          variation: S.optional(__S(27, __c3, 3)),
-          scores: S.optional(__S(27, __c3, 3)),
-          generationTokens: S.optional(__S(27, __c3, 3)),
-          evaluationTokens: S.optional(__S(27, __c3, 3)),
+          variation: S.optional(__S(15488, __c484, 0)),
+          scores: S.optional(__S(15488, __c484, 0)),
+          generationTokens: S.optional(__S(15488, __c484, 0)),
+          evaluationTokens: S.optional(__S(15488, __c484, 0)),
           generationLatency: S.optional(S.Number),
-          evaluationLatencies: S.optional(__S(27, __c3, 3)),
+          evaluationLatencies: S.optional(__S(15488, __c484, 0)),
           createdVariationKey: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -27852,7 +25544,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "PatchAgentOptimizationResultRequest",
       });
-    case 6:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27862,7 +25558,7 @@ function __c121(j: number): any {
           markdown: S.optional(S.String),
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27871,7 +25567,11 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAgentSkillRequest" });
-    case 7:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27881,7 +25581,7 @@ function __c121(j: number): any {
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
           evaluationMetricKey: S.optional(S.String),
           isInverted: S.optional(S.Boolean),
         }).pipe(
@@ -27894,7 +25594,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "PatchAIConfigRequest" });
   }
 }
-function __c122(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27903,7 +25603,7 @@ function __c122(j: number): any {
           configKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           environmentKey: S.String,
-          instructions: __S(244, __c30, 4),
+          instructions: __S(11584, __c362, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27914,7 +25614,11 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "PatchAIConfigTargetingRequest",
       });
-    case 1:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27923,18 +25627,18 @@ function __c122(j: number): any {
           comment: S.optional(S.String),
           description: S.optional(S.String),
           instructions: S.optional(S.String),
-          messages: S.optional(__S(397, __c49, 5)),
+          messages: S.optional(__S(17154, __c536, 2)),
           model: S.optional(S.Unknown),
           modelConfigKey: S.optional(S.String),
           modelConfigVersion: S.optional(S.Number),
           name: S.optional(S.String),
-          outputFormat: S.optional(__S(27, __c3, 3)),
+          outputFormat: S.optional(__S(15488, __c484, 0)),
           published: S.optional(S.Boolean),
           state: S.optional(S.String),
-          tools: S.optional(__S(401, __c50, 1)),
-          toolKeys: S.optional(__S(12, __c1, 4)),
-          skills: S.optional(__S(401, __c50, 1)),
-          judgeConfiguration: S.optional(__S(404, __c50, 4)),
+          tools: S.optional(__S(17158, __c536, 6)),
+          toolKeys: S.optional(__S(15456, __c483, 0)),
+          skills: S.optional(__S(17158, __c536, 6)),
+          judgeConfiguration: S.optional(__S(17161, __c536, 9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27945,7 +25649,11 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "PatchAIConfigVariationRequest",
       });
-    case 2:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27955,7 +25663,7 @@ function __c122(j: number): any {
           description: S.optional(S.String),
           schema: S.optional(S.Unknown),
           customParameters: S.optional(S.Unknown),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -27964,7 +25672,11 @@ function __c122(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAIToolRequest" });
-    case 3:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -27975,9 +25687,9 @@ function __c122(j: number): any {
           environmentKey: S.String,
           minNumApprovals: S.optional(S.Number),
           required: S.optional(S.Boolean),
-          requiredApprovalTags: S.optional(__S(12, __c1, 4)),
+          requiredApprovalTags: S.optional(__S(15456, __c483, 0)),
           resourceKind: S.String,
-          serviceConfig: S.optional(__S(27, __c3, 3)),
+          serviceConfig: S.optional(__S(15488, __c484, 0)),
           serviceKind: S.optional(S.String),
           serviceKindConfigurationId: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -27990,24 +25702,18 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "PatchApprovalRequestSettingsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.String,
-          path: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "PatchOperation" });
-    case 5:
-      return S.Array(__S(980, __c122, 4));
-    case 6:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           integrationKey: S.String.pipe(T.Label()),
           integrationId: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28018,24 +25724,46 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "PatchBigSegmentStoreIntegrationRequest",
       });
-    case 7:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.String,
+          path: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "PatchOperation" });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9632, __c301, 0));
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customRoleKey: S.String.pipe(T.Label()),
-          patch: __S(981, __c122, 5),
+          patch: __S(9664, __c302, 0),
           comment: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
       ).annotate({ identifier: "PatchCustomRoleRequest" });
   }
 }
-function __c123(j: number): any {
+function __c304(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28044,14 +25772,82 @@ function __c123(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchEnvironmentRequest" });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationKey: S.String.pipe(T.Label()),
+          name: S.String,
+          statements: S.optional(__S(5025, __c157, 1)),
+          on: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          config: __S(15488, __c484, 0),
+          url: S.optional(S.String),
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v2/integrations/{integrationKey}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateSubscriptionRequest",
+      });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.Number),
+          responseBody: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IntegrationStatusRep" });
     case 1:
+      return S.Array(__S(9792, __c306, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          successCount: S.optional(S.Number),
+          lastSuccess: S.optional(S.Number),
+          lastError: S.optional(S.Number),
+          errorCount: S.optional(S.Number),
+          errors: S.optional(__S(9793, __c306, 1)),
+        }),
+      ).annotate({
+        identifier: "IntegrationSubscriptionStatusRep",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(14720, __c460, 0)),
+          _id: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          config: S.optional(__S(15488, __c484, 0)),
+          statements: S.optional(__S(4993, __c156, 1)),
+          on: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
+          _status: S.optional(__S(9794, __c306, 2)),
+          url: S.optional(S.String),
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "Integration" });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           experimentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28060,14 +25856,18 @@ function __c123(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchExperimentRequest" });
-    case 2:
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           featureFlagKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(244, __c30, 4),
+          instructions: __S(11584, __c362, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28078,29 +25878,41 @@ function __c123(j: number): any {
       ).annotate({
         identifier: "PatchExpiringTargetsRequest",
       });
-    case 3:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(3234, __c101, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
+          totalInstructions: S.optional(S.Number),
+          successfulInstructions: S.optional(S.Number),
+          failedInstructions: S.optional(S.Number),
+          errors: S.optional(__S(9921, __c310, 1)),
+        }),
+      ).annotate({
+        identifier: "ExpiringTargetPatchResponse",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instructionIndex: S.Number,
           message: S.String,
         }),
       ).annotate({ identifier: "ExpiringTargetError" });
-    case 4:
-      return S.Array(__S(987, __c123, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(674, __c84, 2),
-          _links: S.optional(__S(4, __c0, 4)),
-          totalInstructions: S.optional(S.Number),
-          successfulInstructions: S.optional(S.Number),
-          failedInstructions: S.optional(S.Number),
-          errors: S.optional(__S(988, __c123, 4)),
-        }),
-      ).annotate({
-        identifier: "ExpiringTargetPatchResponse",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(9920, __c310, 0));
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -28113,20 +25925,16 @@ function __c123(j: number): any {
       ).annotate({
         identifier: "PatchSegmentExpiringTargetInstruction",
       });
-    case 7:
-      return S.Array(__S(990, __c123, 6));
-  }
-}
-function __c124(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(9952, __c311, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           segmentKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(991, __c123, 7),
+          instructions: __S(9953, __c311, 1),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28137,14 +25945,18 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "PatchExpiringTargetsForSegmentRequest",
       });
-    case 1:
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           featureFlagKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(244, __c30, 4),
+          instructions: __S(11584, __c362, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28155,20 +25967,28 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "PatchExpiringUserTargetsRequest",
       });
-    case 2:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          items: __S(680, __c85, 0),
-          _links: S.optional(__S(4, __c0, 4)),
+          items: __S(3362, __c105, 2),
+          _links: S.optional(__S(14720, __c460, 0)),
           totalInstructions: S.optional(S.Number),
           successfulInstructions: S.optional(S.Number),
           failedInstructions: S.optional(S.Number),
-          errors: S.optional(__S(988, __c123, 4)),
+          errors: S.optional(__S(9921, __c310, 1)),
         }),
       ).annotate({
         identifier: "ExpiringUserTargetPatchResponse",
       });
-    case 3:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -28178,16 +25998,16 @@ function __c124(j: number): any {
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PatchSegmentInstruction" });
-    case 4:
-      return S.Array(__S(995, __c124, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(10048, __c314, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           segmentKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(996, __c124, 4),
+          instructions: __S(10049, __c314, 1),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28198,14 +26018,18 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "PatchExpiringUserTargetsForSegmentRequest",
       });
-    case 6:
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           featureFlagKey: S.String.pipe(T.Label()),
           ignoreConflicts: S.optional(S.Boolean.pipe(T.Query())),
           dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          patch: __S(981, __c122, 5),
+          patch: __S(9664, __c302, 0),
           comment: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -28215,7 +26039,11 @@ function __c124(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchFeatureFlagRequest" });
-    case 7:
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28234,7 +26062,7 @@ function __c124(j: number): any {
       });
   }
 }
-function __c125(j: number): any {
+function __c317(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28245,7 +26073,7 @@ function __c125(j: number): any {
           id: S.String.pipe(T.Label()),
           ignoreConflicts: S.optional(S.Boolean.pipe(T.Query())),
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28256,11 +26084,15 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "PatchFlagConfigScheduledChangeRequest",
       });
-    case 1:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28271,7 +26103,11 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "PatchFlagDefaultsByProjectRequest",
       });
-    case 2:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trueDisplayName: S.String,
@@ -28282,7 +26118,7 @@ function __c125(j: number): any {
           offVariation: S.Number,
         }),
       ).annotate({ identifier: "BooleanFlagDefaults" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           usingMobileKey: S.Boolean,
@@ -28291,23 +26127,27 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "DefaultClientSideAvailability",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(4, __c0, 4)),
-          tags: __S(12, __c1, 4),
+          _links: S.optional(__S(14720, __c460, 0)),
+          tags: __S(15456, __c483, 0),
           temporary: S.Boolean,
-          booleanDefaults: __S(1002, __c125, 2),
-          defaultClientSideAvailability: __S(1003, __c125, 3),
+          booleanDefaults: __S(10208, __c319, 0),
+          defaultClientSideAvailability: __S(10209, __c319, 1),
         }),
       ).annotate({ identifier: "UpsertPayloadRep" });
-    case 5:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           integrationKey: S.String.pipe(T.Label()),
           integrationId: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28318,14 +26158,139 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "PatchFlagImportConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionSet: S.optional(S.String),
+          actions: S.optional(__S(15456, __c483, 0)),
+          memberIDs: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "PermissionGrantInput" });
+    case 1:
+      return S.Array(__S(10272, __c321, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          expand: S.optional(S.String.pipe(T.Query())),
+          customRoleKeys: S.optional(__S(15456, __c483, 0)),
+          description: S.optional(S.String),
+          key: S.String,
+          memberIDs: S.optional(__S(15456, __c483, 0)),
+          name: S.String,
+          permissionGrants: S.optional(__S(10273, __c321, 1)),
+          roleAttributes: S.optional(__S(2816, __c88, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/teams", code: 200 })),
+      ).annotate({ identifier: "CreateTeamRequest" });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(15392, __c481, 0));
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _links: __S(14720, __c460, 0),
+          key: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ProjectSummary" });
+    case 1:
+      return S.Array(__S(10336, __c323, 0));
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.optional(S.Number),
+          items: S.optional(__S(10304, __c322, 0)),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({ identifier: "TeamMaintainers" });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.optional(S.Number),
+          items: S.optional(__S(10337, __c323, 1)),
+        }),
+      ).annotate({ identifier: "TeamProjects" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          projects: S.optional(__S(10400, __c325, 0)),
+          appliedOn: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeamCustomRole" });
+    case 2:
+      return S.Array(__S(10401, __c325, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.optional(S.Number),
+          items: S.optional(__S(10402, __c325, 2)),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({ identifier: "TeamCustomRoles" });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(14752, __c461, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeamMembers" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          _access: S.optional(__S(15206, __c475, 6)),
+          _creationDate: S.optional(S.Number),
+          _links: S.optional(__S(10432, __c326, 0)),
+          _lastModified: S.optional(S.Number),
+          _version: S.optional(S.Number),
+          _idpSynced: S.optional(S.Boolean),
+          roleAttributes: S.optional(__S(2816, __c88, 0)),
+          roles: S.optional(__S(10403, __c325, 3)),
+          members: S.optional(__S(10433, __c326, 1)),
+          projects: S.optional(__S(10400, __c325, 0)),
+          maintainers: S.optional(__S(10368, __c324, 0)),
+        }),
+      ).annotate({ identifier: "Team" });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           holdoutKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28334,11 +26299,15 @@ function __c125(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchHoldoutRequest" });
-    case 7:
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           insightGroupKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28349,7 +26318,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "PatchInsightGroupRequest" });
   }
 }
-function __c126(j: number): any {
+function __c329(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28358,7 +26327,7 @@ function __c126(j: number): any {
           environmentKey: S.String.pipe(T.Label()),
           integrationKey: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28369,7 +26338,11 @@ function __c126(j: number): any {
       ).annotate({
         identifier: "PatchIntegrationDeliveryConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionAllowlistEnabled: S.optional(S.Boolean),
@@ -28378,7 +26351,11 @@ function __c126(j: number): any {
       ).annotate({
         identifier: "PatchIpAllowlistConfigRequest",
       });
-    case 2:
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -28387,22 +26364,30 @@ function __c126(j: number): any {
       ).annotate({
         identifier: "PatchIpAllowlistEntryRequest",
       });
-    case 3:
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           metricKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/metrics/{projectKey}/{metricKey}", code: 200 }),
         ),
       ).annotate({ identifier: "PatchMetricRequest" });
-    case 4:
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           metricGroupKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28411,7 +26396,11 @@ function __c126(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchMetricGroupRequest" });
-    case 5:
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28424,7 +26413,7 @@ function __c126(j: number): any {
           costPerCachedInputToken: S.optional(S.Number),
           params: S.optional(S.Unknown),
           customParams: S.optional(S.Unknown),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
         }).pipe(
@@ -28435,14 +26424,22 @@ function __c126(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchModelConfigRequest" });
-    case 6:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/oauth/clients/{clientId}", code: 200 })),
       ).annotate({ identifier: "PatchOAuthClientRequest" });
-    case 7:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28452,7 +26449,7 @@ function __c126(j: number): any {
           text: S.optional(S.String),
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28465,13 +26462,47 @@ function __c126(j: number): any {
       });
   }
 }
-function __c127(j: number): any {
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamKey: S.String.pipe(T.Label()),
+          file: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/teams/{teamKey}/members",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({ identifier: "CreateTeamMemberRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          status: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "MemberImportItem" });
+    case 2:
+      return S.Array(__S(10785, __c337, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(10786, __c337, 2)),
+        }),
+      ).annotate({ identifier: "TeamImportsRep" });
+  }
+}
+function __c338(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          patch: __S(981, __c122, 5),
+          patch: __S(9664, __c302, 0),
           comment: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/account/relay-auto-configs/{id}", code: 200 }),
@@ -28479,12 +26510,16 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "PatchRelayAutoConfigRequest",
       });
-    case 1:
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           flagKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28495,16 +26530,24 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "PatchReleaseByFlagKeyRequest",
       });
-    case 2:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 }),
         ),
       ).annotate({ identifier: "PatchRepositoryRequest" });
-    case 3:
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28522,7 +26565,11 @@ function __c127(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchSdkKeyByKeyRequest" });
-    case 4:
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28530,7 +26577,7 @@ function __c127(j: number): any {
           environmentKey: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: S.optional(__S(244, __c30, 4)),
+          instructions: S.optional(__S(11584, __c362, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -28541,7 +26588,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "PatchTriggerWorkflowRequest",
       });
-    case 5:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28549,8 +26600,8 @@ function __c127(j: number): any {
           name: S.String,
           resourceKind: S.String,
           resourceKey: S.String,
-          triggerSource: __S(369, __c46, 1),
-          task: __S(372, __c46, 4),
+          triggerSource: __S(16800, __c525, 0),
+          task: __S(16803, __c525, 3),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28561,7 +26612,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "PostAdaptiveTriggerRequest",
       });
-    case 6:
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28571,25 +26626,29 @@ function __c127(j: number): any {
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
           rootConfigKey: S.optional(S.String),
-          edges: S.optional(__S(384, __c48, 0)),
+          edges: S.optional(__S(16897, __c528, 1)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/agent-graphs", code: 200 }),
         ),
       ).annotate({ identifier: "PostAgentGraphRequest" });
-    case 7:
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           key: S.String,
           aiConfigKey: S.String,
           maxAttempts: S.Number,
-          modelChoices: S.optional(__S(12, __c1, 4)),
+          modelChoices: S.optional(__S(15456, __c483, 0)),
           judgeModel: S.String,
-          variableChoices: S.optional(__S(244, __c30, 4)),
-          acceptanceStatements: S.optional(__S(388, __c48, 4)),
-          judges: S.optional(__S(390, __c48, 6)),
-          userInputOptions: S.optional(__S(12, __c1, 4)),
-          groundTruthResponses: S.optional(__S(12, __c1, 4)),
+          variableChoices: S.optional(__S(11584, __c362, 0)),
+          acceptanceStatements: S.optional(__S(16993, __c531, 1)),
+          judges: S.optional(__S(16995, __c531, 3)),
+          userInputOptions: S.optional(__S(15456, __c483, 0)),
+          groundTruthResponses: S.optional(__S(15456, __c483, 0)),
           metricKey: S.optional(S.String),
           tokenLimit: S.optional(S.Number),
           variationKey: S.optional(S.String),
@@ -28609,7 +26668,7 @@ function __c127(j: number): any {
       });
   }
 }
-function __c128(j: number): any {
+function __c346(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28621,7 +26680,7 @@ function __c128(j: number): any {
           iteration: S.Number,
           instructions: S.String,
           userInput: S.String,
-          parameters: S.optional(__S(27, __c3, 3)),
+          parameters: S.optional(__S(15488, __c484, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28632,7 +26691,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "PostAgentOptimizationResultRequest",
       });
-    case 1:
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28642,7 +26705,7 @@ function __c128(j: number): any {
           markdown: S.String,
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28651,26 +26714,72 @@ function __c128(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostAgentSkillRequest" });
-    case 2:
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          role: S.optional(S.String),
+          customRoleIds: S.optional(__S(15456, __c483, 0)),
+          inlineRole: S.optional(__S(5025, __c157, 1)),
+          serviceToken: S.optional(S.Boolean),
+          defaultApiVersion: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/tokens", code: 200 })),
+      ).annotate({ identifier: "CreateTokenRequest" });
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          ownerId: S.String,
+          memberId: S.String,
+          _member: S.optional(__S(15392, __c481, 0)),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          creationDate: S.Number,
+          lastModified: S.Number,
+          customRoleIds: S.optional(__S(15456, __c483, 0)),
+          inlineRole: S.optional(__S(4993, __c156, 1)),
+          role: S.optional(S.String),
+          token: S.optional(S.String),
+          serviceToken: S.optional(S.Boolean),
+          _links: __S(14720, __c460, 0),
+          defaultApiVersion: S.optional(S.Number),
+          lastUsed: S.optional(S.Number),
+          expiry: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Token" });
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
           description: S.optional(S.String),
           instructions: S.optional(S.String),
           key: S.String,
-          messages: S.optional(__S(397, __c49, 5)),
+          messages: S.optional(__S(17154, __c536, 2)),
           model: S.optional(S.Unknown),
           name: S.String,
           modelConfigKey: S.optional(S.String),
           modelConfigVersion: S.optional(S.Number),
-          outputFormat: S.optional(__S(27, __c3, 3)),
-          tools: S.optional(__S(401, __c50, 1)),
-          toolKeys: S.optional(__S(12, __c1, 4)),
-          skills: S.optional(__S(401, __c50, 1)),
-          judgeConfiguration: S.optional(__S(404, __c50, 4)),
+          outputFormat: S.optional(__S(15488, __c484, 0)),
+          tools: S.optional(__S(17158, __c536, 6)),
+          toolKeys: S.optional(__S(15456, __c483, 0)),
+          skills: S.optional(__S(17158, __c536, 6)),
+          judgeConfiguration: S.optional(__S(17161, __c536, 9)),
         }),
       ).annotate({ identifier: "AIConfigVariationPost" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28680,16 +26789,20 @@ function __c128(j: number): any {
           maintainerTeamKey: S.optional(S.String),
           mode: S.optional(S.String),
           name: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
-          viewKeys: S.optional(__S(12, __c1, 4)),
-          defaultVariation: S.optional(__S(1026, __c128, 2)),
+          tags: S.optional(__S(15456, __c483, 0)),
+          viewKeys: S.optional(__S(15456, __c483, 0)),
+          defaultVariation: S.optional(__S(11200, __c350, 0)),
           evaluationMetricKey: S.optional(S.String),
           isInverted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/ai-configs", code: 200 }),
         ),
       ).annotate({ identifier: "PostAIConfigRequest" });
-    case 4:
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28698,16 +26811,16 @@ function __c128(j: number): any {
           description: S.optional(S.String),
           instructions: S.optional(S.String),
           key: S.String,
-          messages: S.optional(__S(397, __c49, 5)),
+          messages: S.optional(__S(17154, __c536, 2)),
           model: S.optional(S.Unknown),
           name: S.String,
           modelConfigKey: S.optional(S.String),
           modelConfigVersion: S.optional(S.Number),
-          outputFormat: S.optional(__S(27, __c3, 3)),
-          tools: S.optional(__S(401, __c50, 1)),
-          toolKeys: S.optional(__S(12, __c1, 4)),
-          skills: S.optional(__S(401, __c50, 1)),
-          judgeConfiguration: S.optional(__S(404, __c50, 4)),
+          outputFormat: S.optional(__S(15488, __c484, 0)),
+          tools: S.optional(__S(17158, __c536, 6)),
+          toolKeys: S.optional(__S(15456, __c483, 0)),
+          skills: S.optional(__S(17158, __c536, 6)),
+          judgeConfiguration: S.optional(__S(17161, __c536, 9)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28718,7 +26831,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "PostAIConfigVariationRequest",
       });
-    case 5:
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28728,12 +26845,16 @@ function __c128(j: number): any {
           description: S.optional(S.String),
           schema: S.Unknown,
           customParameters: S.optional(S.Unknown),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/ai-tools", code: 200 }),
         ),
       ).annotate({ identifier: "PostAIToolRequest" });
-    case 6:
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28751,7 +26872,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "PostApprovalRequestApplyForFlagRequest",
       });
-    case 7:
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28759,12 +26884,12 @@ function __c128(j: number): any {
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           description: S.String,
-          instructions: __S(28, __c3, 4),
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
+          instructions: __S(15520, __c485, 0),
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
           executionDate: S.optional(S.Number),
           operatingOnId: S.optional(S.String),
-          integrationConfig: S.optional(__S(27, __c3, 3)),
+          integrationConfig: S.optional(__S(15488, __c484, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28777,7 +26902,7 @@ function __c128(j: number): any {
       });
   }
 }
-function __c129(j: number): any {
+function __c355(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28798,7 +26923,11 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "PostApprovalRequestReviewForFlagRequest",
       });
-    case 1:
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           before: S.optional(S.Number.pipe(T.Query())),
@@ -28807,12 +26936,16 @@ function __c129(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           token: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(5025, __c157, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/auditlog", code: 200 })),
       ).annotate({
         identifier: "PostAuditLogEntriesRequest",
       });
-    case 2:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           before: S.optional(S.Number.pipe(T.Query())),
@@ -28820,29 +26953,33 @@ function __c129(j: number): any {
           buckets: S.optional(S.Number.pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           token: S.optional(S.String.pipe(T.Query())),
-          body: __S(160, __c20, 0).pipe(T.HttpBody()),
+          body: __S(5025, __c157, 1).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/auditlog/counts", code: 200 })),
       ).annotate({
         identifier: "PostAuditLogEntryCountsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.Number,
           count: S.Number,
         }),
       ).annotate({ identifier: "CountBucket" });
-    case 4:
-      return S.Array(__S(1035, __c129, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(11425, __c357, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          buckets: __S(1036, __c129, 4),
+          buckets: __S(11426, __c357, 2),
           totalCount: S.Number,
           bucketIntervalMs: S.Number,
         }),
       ).annotate({ identifier: "CountBucketsResult" });
-    case 6:
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projKey: S.String.pipe(T.Label()),
@@ -28859,20 +26996,86 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "PostCompleteWarehouseDestinationSetupRequest",
       });
-    case 7:
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           key: S.String,
           description: S.optional(S.String),
-          policy: __S(160, __c20, 0),
+          policy: __S(5025, __c157, 1),
           basePermissions: S.optional(S.String),
           resourceCategory: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/roles", code: 200 })),
       ).annotate({ identifier: "PostCustomRoleRequest" });
   }
 }
-function __c130(j: number): any {
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          comment: S.optional(S.String),
+          instructions: S.optional(__S(11584, __c362, 0)),
+          integrationKey: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTriggerWorkflowRequest",
+      });
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.Number),
+          jsonBody: S.optional(__S(15488, __c484, 0)),
+        }),
+      ).annotate({ identifier: "RecentTriggerBody" });
+    case 1:
+      return S.Array(__S(11552, __c361, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          _version: S.optional(S.Number),
+          _creationDate: S.optional(S.Number),
+          _maintainerId: S.optional(S.String),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
+          enabled: S.optional(S.Boolean),
+          _status: S.optional(S.String),
+          _lastFailedAt: S.optional(S.Number),
+          _integrationKey: S.optional(S.String),
+          instructions: S.optional(__S(15520, __c485, 0)),
+          _lastTriggeredAt: S.optional(S.Number),
+          _recentTriggerBodies: S.optional(__S(11553, __c361, 1)),
+          _triggerCount: S.optional(S.Number),
+          triggerURL: S.optional(S.String),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({ identifier: "TriggerWorkflowRep" });
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(15488, __c484, 0));
+  }
+}
+function __c363(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28890,7 +27093,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "PostDisableAdaptiveTriggerRequest",
       });
-    case 1:
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28906,7 +27113,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "PostEnableAdaptiveTriggerRequest",
       });
-    case 2:
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28918,19 +27129,23 @@ function __c130(j: number): any {
           defaultTrackEvents: S.optional(S.Boolean),
           confirmChanges: S.optional(S.Boolean),
           requireComments: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          source: S.optional(__S(201, __c25, 1)),
+          tags: S.optional(__S(15456, __c483, 0)),
+          source: S.optional(__S(8768, __c274, 0)),
           critical: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/environments", code: 200 }),
         ),
       ).annotate({ identifier: "PostEnvironmentRequest" });
-    case 3:
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          body: __S(685, __c85, 5).pipe(T.HttpBody()),
+          body: __S(3457, __c108, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -28939,23 +27154,27 @@ function __c130(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostExtinctionRequest" });
-    case 4:
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contextKind: S.optional(S.String),
           stageCount: S.Number,
         }),
       ).annotate({ identifier: "MigrationSettingsPost" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           variationId: S.String,
         }),
       ).annotate({ identifier: "FlagPrerequisitePost" });
-    case 6:
-      return S.Array(__S(1045, __c130, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(11745, __c367, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -28964,23 +27183,23 @@ function __c130(j: number): any {
           key: S.String,
           description: S.optional(S.String),
           includeInSnippet: S.optional(S.Boolean),
-          clientSideAvailability: S.optional(__S(200, __c25, 0)),
-          variations: S.optional(__S(11, __c1, 3)),
+          clientSideAvailability: S.optional(__S(8800, __c275, 0)),
+          variations: S.optional(__S(15169, __c474, 1)),
           temporary: S.optional(S.Boolean),
-          tags: S.optional(__S(12, __c1, 4)),
-          customProperties: S.optional(__S(39, __c4, 7)),
-          defaults: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(15456, __c483, 0)),
+          customProperties: S.optional(__S(15171, __c474, 3)),
+          defaults: S.optional(__S(15172, __c474, 4)),
           purpose: S.optional(S.String),
-          migrationSettings: S.optional(__S(1044, __c130, 4)),
+          migrationSettings: S.optional(__S(11744, __c367, 0)),
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          initialPrerequisites: S.optional(__S(1046, __c130, 6)),
+          initialPrerequisites: S.optional(__S(11746, __c367, 2)),
           isFlagOn: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/flags/{projectKey}", code: 200 })),
       ).annotate({ identifier: "PostFeatureFlagRequest" });
   }
 }
-function __c131(j: number): any {
+function __c368(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28991,7 +27210,7 @@ function __c131(j: number): any {
           ignoreConflicts: S.optional(S.Boolean.pipe(T.Query())),
           comment: S.optional(S.String),
           executionDate: S.Number,
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29002,7 +27221,11 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "PostFlagConfigScheduledChangesRequest",
       });
-    case 1:
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29010,11 +27233,11 @@ function __c131(j: number): any {
           environmentKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           description: S.String,
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
-          source: __S(81, __c10, 1),
-          includedActions: S.optional(__S(7, __c0, 7)),
-          excludedActions: S.optional(__S(7, __c0, 7)),
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          source: __S(16388, __c512, 4),
+          includedActions: S.optional(__S(15360, __c480, 0)),
+          excludedActions: S.optional(__S(15360, __c480, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29025,7 +27248,11 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "PostFlagCopyConfigApprovalRequestRequest",
       });
-    case 2:
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projKey: S.String.pipe(T.Label()),
@@ -29040,7 +27267,11 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "PostGenerateProjectEnvWarehouseDestinationKeyPairRequest",
       });
-    case 3:
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           public_key: S.optional(S.String),
@@ -29049,7 +27280,11 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "GenerateWarehouseDestinationKeyPairPostRep",
       });
-    case 4:
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projKey: S.String.pipe(T.Label()),
@@ -29064,37 +27299,37 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "PostGenerateTrustPolicyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Effect: S.optional(S.String),
-          Action: S.optional(__S(12, __c1, 4)),
+          Action: S.optional(__S(15456, __c483, 0)),
           Principal: S.optional(S.Unknown),
           Condition: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TrustPolicyStatement" });
-    case 6:
-      return S.Array(__S(1053, __c131, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(11905, __c372, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Version: S.optional(S.String),
-          Statement: S.optional(__S(1054, __c131, 6)),
+          Statement: S.optional(__S(11906, __c372, 2)),
         }),
       ).annotate({ identifier: "TrustPolicyDetails" });
-  }
-}
-function __c132(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          awsTrustPolicy: S.optional(__S(1055, __c131, 7)),
+          awsTrustPolicy: S.optional(__S(11907, __c372, 3)),
         }),
       ).annotate({
         identifier: "GenerateTrustPolicyPostRep",
       });
-    case 1:
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -29106,7 +27341,408 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "PostGenerateWarehouseDestinationKeyPairRequest",
       });
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          key: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          maintainerId: S.optional(S.String),
+          maintainerTeamKey: S.optional(S.String),
+          tags: S.optional(__S(15456, __c483, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/projects/{projectKey}/views", code: 200 })),
+      ).annotate({ identifier: "CreateViewRequest" });
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: __S(12128, __c379, 0),
+        }),
+      ).annotate({ identifier: "ViewsSelfLink" });
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ViewsAccessDeniedReason" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(12032, __c376, 0),
+        }),
+      ).annotate({ identifier: "ViewsAccessDenied" });
     case 2:
+      return S.Array(__S(12033, __c376, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ViewsAccessAllowedReason" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(12035, __c376, 3),
+        }),
+      ).annotate({ identifier: "ViewsAccessAllowedRep" });
+    case 5:
+      return S.Array(__S(12036, __c376, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          denied: __S(12034, __c376, 2),
+          allowed: __S(12037, __c376, 5),
+        }),
+      ).annotate({ identifier: "ViewsAccess" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          email: S.String,
+          role: S.String,
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ViewsMaintainerMember" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          key: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ViewsMaintainerTeam" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          maintainerMember: S.optional(__S(12039, __c376, 7)),
+          maintainerTeam: S.optional(__S(12040, __c376, 8)),
+        }),
+      ).annotate({ identifier: "Maintainer" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          links: __S(12000, __c375, 0),
+        }),
+      ).annotate({
+        identifier: "ExpandedDirectlyLinkedFlag",
+      });
+    case 11:
+      return S.Array(__S(12042, __c376, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12043, __c376, 11),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ExpandedDirectlyLinkedFlags",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          linkedFlags: S.optional(__S(12044, __c376, 12)),
+        }),
+      ).annotate({ identifier: "FlagsSummary" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          environmentId: S.String,
+          links: __S(12000, __c375, 0),
+        }),
+      ).annotate({
+        identifier: "ExpandedDirectlyLinkedSegment",
+      });
+    case 15:
+      return S.Array(__S(12046, __c376, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12047, __c376, 15),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ExpandedDirectlyLinkedSegments",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          linkedSegments: S.optional(__S(12048, __c376, 16)),
+        }),
+      ).annotate({ identifier: "SegmentsSummary" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "MetricsSummary" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          flagCount: S.Number,
+          segmentCount: S.optional(S.Number),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ResourceSummary" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          customRoleKeys: __S(15456, __c483, 0),
+          key: S.String,
+          _links: S.optional(__S(14720, __c460, 0)),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "ViewsMemberTeamSummaryRep",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          kind: S.String,
+          _member: S.optional(__S(15392, __c481, 0)),
+          _team: S.optional(__S(12052, __c376, 20)),
+        }),
+      ).annotate({ identifier: "ExpandedFlagMaintainer" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          creationDate: S.optional(S.Number),
+          _version: S.optional(S.Number),
+          archived: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          temporary: S.optional(S.Boolean),
+          includeInSnippet: S.optional(S.Boolean),
+          maintainer: S.optional(__S(12053, __c376, 21)),
+          _links: S.optional(__S(12160, __c380, 0)),
+        }),
+      ).annotate({ identifier: "ExpandedFlag" });
+    case 23:
+      return S.Array(__S(12054, __c376, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12055, __c376, 23),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ExpandedLinkedFlags" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          environmentId: S.optional(S.String),
+          environmentKey: S.optional(S.String),
+          description: S.optional(S.String),
+          creationDate: S.optional(S.Number),
+          lastModifiedDate: S.optional(S.Number),
+          deleted: S.optional(S.Boolean),
+          tags: S.optional(__S(15456, __c483, 0)),
+          unbounded: S.optional(S.Boolean),
+          version: S.optional(S.Number),
+          generation: S.optional(S.Number),
+          _links: S.optional(__S(12160, __c380, 0)),
+        }),
+      ).annotate({ identifier: "ExpandedSegment" });
+    case 26:
+      return S.Array(__S(12057, __c376, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12058, __c376, 26),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ExpandedLinkedSegments" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          creationDate: S.optional(S.Number),
+          lastModified: S.optional(S.Number),
+          isActive: S.optional(S.Boolean),
+          eventKey: S.optional(S.String),
+          _id: S.optional(S.String),
+          _versionId: S.optional(S.String),
+          kind: S.optional(S.String),
+          category: S.optional(S.String),
+          description: S.optional(S.String),
+          isNumeric: S.optional(S.Boolean),
+          lastSeen: S.optional(S.Number),
+          _links: S.optional(__S(12160, __c380, 0)),
+        }),
+      ).annotate({ identifier: "ExpandedMetric" });
+    case 29:
+      return S.Array(__S(12060, __c376, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12061, __c376, 29),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ExpandedLinkedMetrics" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          tags: S.optional(__S(15456, __c483, 0)),
+          description: S.optional(S.String),
+          version: S.optional(S.Number),
+          createdAt: S.optional(S.Number),
+          updatedAt: S.optional(S.Number),
+          flagKey: S.optional(S.String),
+          _links: S.optional(__S(12160, __c380, 0)),
+        }),
+      ).annotate({ identifier: "ExpandedAIConfig" });
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12063, __c376, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12064, __c377, 0),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ExpandedLinkedAIConfigs" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12055, __c376, 23),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ExpandedLinkedResourcesFlags",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12058, __c376, 26),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ExpandedLinkedResourcesSegments",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          flags: __S(12066, __c377, 2),
+          segments: S.optional(__S(12067, __c377, 3)),
+        }),
+      ).annotate({
+        identifier: "ExpandedLinkedResourcesItems",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(12068, __c377, 4),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "ExpandedLinkedResources" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(12038, __c376, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          id: S.String,
+          accountId: S.String,
+          projectId: S.String,
+          projectKey: S.String,
+          key: S.String,
+          name: S.String,
+          description: S.String,
+          _affectsSdkPayload: S.Boolean,
+          generateSdkKeys: S.optional(S.Boolean),
+          version: S.Number,
+          tags: __S(12096, __c378, 0),
+          createdAt: S.Number,
+          updatedAt: S.Number,
+          deletedAt: S.optional(S.Number),
+          deleted: S.Boolean,
+          maintainer: S.optional(__S(12041, __c376, 9)),
+          flagsSummary: S.optional(__S(12045, __c376, 13)),
+          segmentsSummary: S.optional(__S(12049, __c376, 17)),
+          metricsSummary: S.optional(__S(12050, __c376, 18)),
+          aiConfigsSummary: S.optional(__S(12050, __c376, 18)),
+          resourceSummary: S.optional(__S(12051, __c376, 19)),
+          flagsExpanded: S.optional(__S(12056, __c376, 24)),
+          segmentsExpanded: S.optional(__S(12059, __c376, 27)),
+          metricsExpanded: S.optional(__S(12062, __c376, 30)),
+          aiConfigsExpanded: S.optional(__S(12065, __c377, 1)),
+          resourcesExpanded: S.optional(__S(12069, __c377, 5)),
+        }),
+      ).annotate({ identifier: "View" });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "CoreLink" });
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: __S(12128, __c379, 0),
+          parent: __S(12128, __c379, 0),
+        }),
+      ).annotate({ identifier: "ParentAndSelfLinks" });
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projKey: S.String.pipe(T.Label()),
@@ -29141,7 +27777,7 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "PostGenerateWarehouseDestinationSetupScriptRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           script: S.optional(S.String),
@@ -29154,9 +27790,13 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "WarehouseDestinationSetupScriptRep",
       });
-    case 4:
-      return S.Array(__S(98, __c12, 2));
-    case 5:
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2880, __c90, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29165,10 +27805,10 @@ function __c132(j: number): any {
           key: S.optional(S.String),
           description: S.optional(S.String),
           randomizationunit: S.optional(S.String),
-          attributes: S.optional(__S(12, __c1, 4)),
+          attributes: S.optional(__S(15456, __c483, 0)),
           holdoutamount: S.optional(S.String),
           primarymetrickey: S.optional(S.String),
-          metrics: S.optional(__S(1060, __c132, 4)),
+          metrics: S.optional(__S(12224, __c382, 0)),
           prerequisiteflagkey: S.optional(S.String),
           maintainerId: S.optional(S.String),
         }).pipe(
@@ -29179,7 +27819,11 @@ function __c132(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostHoldoutRequest" });
-    case 6:
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -29188,33 +27832,29 @@ function __c132(j: number): any {
           pattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "UrlPost" });
-    case 7:
-      return S.Array(__S(1062, __c132, 6));
-  }
-}
-function __c133(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12256, __c383, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           attribute: S.optional(S.String),
           op: S.String,
-          values: __S(23, __c2, 7),
+          values: __S(15232, __c476, 0),
           contextKind: S.optional(S.String),
           negate: S.Boolean,
         }),
       ).annotate({ identifier: "EventFilter" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           eventName: S.optional(S.String),
           isNumeric: S.optional(S.Boolean),
-          dataSource: S.optional(__S(26, __c3, 2)),
+          dataSource: S.optional(__S(15554, __c486, 2)),
           unitAggregationType: S.optional(S.String),
           unitAggregationField: S.optional(S.String),
           valueColumn: S.optional(S.String),
-          filters: S.optional(__S(1064, __c133, 0)),
+          filters: S.optional(__S(12258, __c383, 2)),
           windowStartOffset: S.optional(S.Number),
           windowEndOffset: S.optional(S.Number),
           winsorLowerPercentile: S.optional(S.Number),
@@ -29222,7 +27862,7 @@ function __c133(j: number): any {
           winsorIncludeImputed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DenominatorPost" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29231,21 +27871,21 @@ function __c133(j: number): any {
           description: S.optional(S.String),
           kind: S.String,
           selector: S.optional(S.String),
-          urls: S.optional(__S(1063, __c132, 7)),
+          urls: S.optional(__S(12257, __c383, 1)),
           isNumeric: S.optional(S.Boolean),
           unit: S.optional(S.String),
           eventKey: S.optional(S.String),
           successCriteria: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
-          randomizationUnits: S.optional(__S(12, __c1, 4)),
-          analysisUnits: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
+          randomizationUnits: S.optional(__S(15456, __c483, 0)),
+          analysisUnits: S.optional(__S(15456, __c483, 0)),
           maintainerId: S.optional(S.String),
           unitAggregationType: S.optional(S.String),
           analysisType: S.optional(S.String),
           percentileValue: S.optional(S.Number),
-          eventDefault: S.optional(__S(25, __c3, 1)),
-          dataSource: S.optional(__S(26, __c3, 2)),
-          filters: S.optional(__S(1064, __c133, 0)),
+          eventDefault: S.optional(__S(15553, __c486, 1)),
+          dataSource: S.optional(__S(15554, __c486, 2)),
+          filters: S.optional(__S(12258, __c383, 2)),
           windowStartOffset: S.optional(S.Number),
           windowEndOffset: S.optional(S.Number),
           winsorLowerPercentile: S.optional(S.Number),
@@ -29255,16 +27895,20 @@ function __c133(j: number): any {
           traceValueLocation: S.optional(S.String),
           unitAggregationField: S.optional(S.String),
           valueColumn: S.optional(S.String),
-          denominator: S.optional(__S(1065, __c133, 1)),
+          denominator: S.optional(__S(12259, __c383, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/metrics/{projectKey}", code: 200 })),
       ).annotate({ identifier: "PostMetricRequest" });
-    case 3:
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           flagKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
           comment: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -29276,22 +27920,26 @@ function __c133(j: number): any {
       ).annotate({
         identifier: "PostMigrationSafetyIssuesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           causingRuleId: S.optional(S.String),
-          affectedRuleIds: S.optional(__S(12, __c1, 4)),
+          affectedRuleIds: S.optional(__S(15456, __c483, 0)),
           issue: S.optional(S.String),
           oldSystemAffected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MigrationSafetyIssueRep" });
-    case 5:
-      return S.Array(__S(1068, __c133, 4));
-    case 6:
-      return S.suspend(() => __S(1069, __c133, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(12289, __c384, 1));
+    case 3:
+      return S.suspend(() => __S(12290, __c384, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "PostMigrationSafetyIssuesResponse",
       });
-    case 7:
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29304,7 +27952,7 @@ function __c133(j: number): any {
           provider: S.optional(S.String),
           params: S.optional(S.Unknown),
           customParams: S.optional(S.Unknown),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
           costPerInputToken: S.optional(S.Number),
           costPerOutputToken: S.optional(S.Number),
           costPerCachedInputToken: S.optional(S.Number),
@@ -29318,7 +27966,7 @@ function __c133(j: number): any {
       ).annotate({ identifier: "PostModelConfigRequest" });
   }
 }
-function __c134(j: number): any {
+function __c386(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29330,7 +27978,7 @@ function __c134(j: number): any {
           text: S.String,
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29339,45 +27987,32 @@ function __c134(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostPromptSnippetRequest" });
-    case 1:
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          policy: __S(165, __c20, 5),
+          policy: __S(4993, __c156, 1),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/account/relay-auto-configs", code: 200 })),
       ).annotate({
         identifier: "PostRelayAutoConfigRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environmentKey: S.String,
-          name: S.String,
-          segmentKeys: S.optional(__S(12, __c1, 4)),
-          configuration: S.optional(__S(213, __c26, 5)),
-        }),
-      ).annotate({ identifier: "AudiencePost" });
-    case 3:
-      return S.Array(__S(1074, __c134, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audiences: __S(1075, __c134, 3),
-          name: S.String,
-          configuration: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "CreatePhaseInput" });
-    case 5:
-      return S.Array(__S(1076, __c134, 4));
-    case 6:
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           key: S.String,
           name: S.String,
-          phases: __S(1077, __c134, 5),
-          tags: S.optional(__S(12, __c1, 4)),
+          phases: __S(12451, __c389, 3),
+          tags: S.optional(__S(15456, __c483, 0)),
           isProjectDefault: S.optional(S.Boolean),
           isLegacy: S.optional(S.Boolean),
         }).pipe(
@@ -29390,11 +28025,40 @@ function __c134(j: number): any {
       ).annotate({
         identifier: "PostReleasePipelineRequest",
       });
-    case 7:
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentKey: S.String,
+          name: S.String,
+          segmentKeys: S.optional(__S(15456, __c483, 0)),
+          configuration: S.optional(__S(9282, __c290, 2)),
+        }),
+      ).annotate({ identifier: "AudiencePost" });
+    case 1:
+      return S.Array(__S(12448, __c389, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          audiences: __S(12449, __c389, 1),
+          name: S.String,
+          configuration: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CreatePhaseInput" });
+    case 3:
+      return S.Array(__S(12450, __c389, 2));
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          body: __S(12, __c1, 4).pipe(T.HttpBody()),
+          body: __S(15456, __c483, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29405,22 +28069,22 @@ function __c134(j: number): any {
       ).annotate({
         identifier: "PostReleasePoliciesOrderRequest",
       });
-  }
-}
-function __c135(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(843, __c105, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(6368, __c199, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "PostReleasePoliciesOrderResponse",
       });
-    case 1:
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          scope: S.optional(__S(837, __c104, 5)),
+          scope: S.optional(__S(6343, __c198, 7)),
           releaseMethod: S.String,
-          guardedReleaseConfig: S.optional(__S(840, __c105, 0)),
-          progressiveReleaseConfig: S.optional(__S(841, __c105, 1)),
+          guardedReleaseConfig: S.optional(__S(6346, __c198, 10)),
+          progressiveReleaseConfig: S.optional(__S(6347, __c198, 11)),
           name: S.String,
           key: S.String,
         }).pipe(
@@ -29431,7 +28095,45 @@ function __c135(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostReleasePolicyRequest" });
-    case 2:
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          url: S.String,
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          statements: S.optional(__S(5025, __c157, 1)),
+          sign: S.Boolean,
+          on: S.Boolean,
+          tags: S.optional(__S(15456, __c483, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c393(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          name: S.optional(S.String),
+          url: S.String,
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          statements: S.optional(__S(4993, __c156, 1)),
+          on: S.Boolean,
+          tags: __S(12096, __c378, 0),
+          _access: S.optional(__S(15206, __c475, 6)),
+        }),
+      ).annotate({ identifier: "Webhook" });
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -29442,11 +28144,15 @@ function __c135(j: number): any {
           defaultBranch: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v2/code-refs/repositories", code: 200 })),
       ).annotate({ identifier: "PostRepositoryRequest" });
-    case 3:
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          keys: __S(12, __c1, 4),
+          keys: __S(15456, __c483, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29457,7 +28163,7 @@ function __c135(j: number): any {
       ).annotate({
         identifier: "PostRestrictedModelsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -29465,16 +28171,20 @@ function __c135(j: number): any {
           code: S.Number,
         }),
       ).annotate({ identifier: "RestrictedModelError" });
-    case 5:
-      return S.Array(__S(1084, __c135, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(12641, __c395, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          successes: __S(12, __c1, 4),
-          errors: __S(1085, __c135, 5),
+          successes: __S(15456, __c483, 0),
+          errors: __S(12642, __c395, 2),
         }),
       ).annotate({ identifier: "RestrictedModelsResponse" });
-    case 7:
+  }
+}
+function __c396(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29484,7 +28194,7 @@ function __c135(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           expiry: S.optional(S.Number),
-          viewKeys: S.optional(__S(12, __c1, 4)),
+          viewKeys: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29495,7 +28205,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "PostSdkKeyRequest" });
   }
 }
-function __c136(j: number): any {
+function __c397(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29508,7 +28218,7 @@ function __c136(j: number): any {
           maintainerId: S.optional(S.String),
           name: S.String,
           description: S.optional(S.String),
-          stages: S.optional(__S(299, __c37, 3)),
+          stages: S.optional(__S(13028, __c407, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29517,7 +28227,11 @@ function __c136(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostWorkflowRequest" });
-    case 1:
+  }
+}
+function __c398(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repo: S.String.pipe(T.Label()),
@@ -29526,7 +28240,7 @@ function __c136(j: number): any {
           head: S.String,
           updateSequenceId: S.optional(S.Number),
           syncTime: S.Number,
-          references: S.optional(__S(554, __c69, 2)),
+          references: S.optional(__S(1443, __c45, 3)),
           commitTime: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -29536,7 +28250,11 @@ function __c136(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutBranchRequest" });
-    case 2:
+  }
+}
+function __c399(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29556,7 +28274,11 @@ function __c136(j: number): any {
       ).annotate({
         identifier: "PutContextFlagSettingRequest",
       });
-    case 3:
+  }
+}
+function __c400(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29574,14 +28296,18 @@ function __c136(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutContextKindRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          _links: S.optional(__S(4, __c0, 4)),
+          _links: S.optional(__S(14720, __c460, 0)),
         }),
       ).annotate({ identifier: "UpsertResponseRep" });
-    case 5:
+  }
+}
+function __c401(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           randomizationUnit: S.String,
@@ -29589,13 +28315,13 @@ function __c136(j: number): any {
           standardRandomizationUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "RandomizationUnitInput" });
-    case 6:
-      return S.Array(__S(1093, __c136, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(12832, __c401, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          randomizationUnits: __S(1094, __c136, 6),
+          randomizationUnits: __S(12833, __c401, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -29608,23 +28334,27 @@ function __c136(j: number): any {
       });
   }
 }
-function __c137(j: number): any {
+function __c402(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          tags: __S(12, __c1, 4),
+          tags: __S(15456, __c483, 0),
           temporary: S.Boolean,
-          booleanDefaults: __S(1002, __c125, 2),
-          defaultClientSideAvailability: __S(1003, __c125, 3),
+          booleanDefaults: __S(10208, __c319, 0),
+          defaultClientSideAvailability: __S(10209, __c319, 1),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v2/projects/{projectKey}/flag-defaults", code: 200 }),
         ),
       ).annotate({
         identifier: "PutFlagDefaultsByProjectRequest",
       });
-    case 1:
+  }
+}
+function __c403(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29639,15 +28369,157 @@ function __c137(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutFlagFollowerRequest" });
+  }
+}
+function __c404(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          workflowId: S.optional(S.String),
+          stages: S.optional(__S(13028, __c407, 4)),
+          projectKey: S.optional(S.String),
+          environmentKey: S.optional(S.String),
+          flagKey: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/templates", code: 200 })),
+      ).annotate({
+        identifier: "CreateWorkflowTemplateRequest",
+      });
+  }
+}
+function __c405(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          stopDate: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExecutionOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          kind: S.String,
+          creationDate: S.optional(S.Number),
+          comment: S.optional(S.String),
+          memberId: S.optional(S.String),
+          serviceTokenId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewOutput" });
     case 2:
+      return S.Array(__S(12961, __c405, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          kind: S.optional(S.String),
+          _execution: __S(12960, __c405, 0),
+          scheduleKind: S.optional(S.String),
+          executionDate: S.optional(S.Number),
+          waitDuration: S.optional(S.Number),
+          waitDurationUnit: S.optional(S.String),
+          description: S.String,
+          notifyMemberIds: __S(15456, __c483, 0),
+          allReviews: __S(12962, __c405, 2),
+          reviewStatus: S.String,
+          appliedDate: S.optional(S.Number),
+          creationConfig: S.optional(__S(15488, __c484, 0)),
+        }),
+      ).annotate({ identifier: "ConditionOutput" });
+    case 4:
+      return S.Array(__S(12963, __c405, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          instructions: __S(15520, __c485, 0),
+        }),
+      ).annotate({ identifier: "ActionOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          name: S.optional(S.String),
+          conditions: __S(12964, __c405, 4),
+          action: __S(12965, __c405, 5),
+          _execution: __S(12960, __c405, 0),
+        }),
+      ).annotate({ identifier: "StageOutput" });
+    case 7:
+      return S.Array(__S(12966, __c405, 6));
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _key: S.String,
+          name: S.optional(S.String),
+          _creationDate: S.Number,
+          _ownerId: S.String,
+          _maintainerId: S.String,
+          _links: __S(14720, __c460, 0),
+          description: S.optional(S.String),
+          stages: S.optional(__S(12967, __c405, 7)),
+        }),
+      ).annotate({ identifier: "WorkflowTemplateOutput" });
+  }
+}
+function __c407(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleKind: S.optional(S.String),
+          executionDate: S.optional(S.Number),
+          waitDuration: S.optional(S.Number),
+          waitDurationUnit: S.optional(S.String),
+          executeNow: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          integrationConfig: S.optional(__S(15488, __c484, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConditionInput" });
+    case 1:
+      return S.Array(__S(13024, __c407, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instructions: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ActionInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          executeConditionsInSequence: S.optional(S.Boolean),
+          conditions: S.optional(__S(13025, __c407, 1)),
+          action: S.optional(__S(13026, __c407, 2)),
+        }),
+      ).annotate({ identifier: "StageInput" });
+    case 4:
+      return S.Array(__S(13027, __c407, 3));
+  }
+}
+function __c408(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           pipelineKey: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           name: S.String,
-          phases: __S(1077, __c134, 5),
-          tags: S.optional(__S(12, __c1, 4)),
+          phases: __S(12451, __c389, 3),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -29658,15 +28530,19 @@ function __c137(j: number): any {
       ).annotate({
         identifier: "PutReleasePipelineRequest",
       });
-    case 3:
+  }
+}
+function __c409(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           policyKey: S.String.pipe(T.Label()),
-          scope: S.optional(__S(837, __c104, 5)),
+          scope: S.optional(__S(6343, __c198, 7)),
           releaseMethod: S.String,
-          guardedReleaseConfig: S.optional(__S(840, __c105, 0)),
-          progressiveReleaseConfig: S.optional(__S(841, __c105, 1)),
+          guardedReleaseConfig: S.optional(__S(6346, __c198, 10)),
+          progressiveReleaseConfig: S.optional(__S(6347, __c198, 11)),
           name: S.String,
         }).pipe(
           T.Http({
@@ -29676,14 +28552,18 @@ function __c137(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutReleasePolicyRequest" });
-    case 4:
+  }
+}
+function __c410(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           sdkKeyKey: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
-          viewKeys: __S(12, __c1, 4),
+          viewKeys: __S(15456, __c483, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -29692,10 +28572,10 @@ function __c137(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutSdkKeyViewsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(__S(258, __c32, 2)),
+          _links: S.optional(__S(12160, __c380, 0)),
           kind: S.String,
           key: S.String,
           name: S.String,
@@ -29707,10 +28587,14 @@ function __c137(j: number): any {
           _createdAt: S.Number,
           _updatedAt: S.Number,
           _version: S.Number,
-          viewSummaries: S.optional(__S(814, __c101, 6)),
+          viewSummaries: S.optional(__S(5986, __c187, 2)),
         }),
       ).annotate({ identifier: "PutSdkKeyViewsResponse" });
-    case 6:
+  }
+}
+function __c411(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29725,7 +28609,11 @@ function __c137(j: number): any {
       ).annotate({
         identifier: "ResetEnvironmentMobileKeyRequest",
       });
-    case 7:
+  }
+}
+function __c412(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29743,7 +28631,7 @@ function __c137(j: number): any {
       });
   }
 }
-function __c138(j: number): any {
+function __c413(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29760,7 +28648,11 @@ function __c138(j: number): any {
       ).annotate({
         identifier: "ResetRelayAutoConfigRequest",
       });
-    case 1:
+  }
+}
+function __c414(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29778,7 +28670,11 @@ function __c138(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchContextsRequest" });
-    case 2:
+  }
+}
+function __c415(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29794,7 +28690,11 @@ function __c138(j: number): any {
       ).annotate({
         identifier: "TriggerFlagImportJobRequest",
       });
-    case 3:
+  }
+}
+function __c416(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29809,48 +28709,76 @@ function __c138(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnlinkResourceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           successCount: S.Number,
           failureCount: S.Number,
-          failedResources: S.optional(__S(923, __c115, 3)),
+          failedResources: S.optional(__S(8097, __c253, 1)),
         }),
       ).annotate({
         identifier: "UnlinkResourceSuccessResponse",
       });
-    case 5:
-      return S.Array(__S(980, __c122, 4));
-    case 6:
+  }
+}
+function __c417(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9632, __c301, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           announcementId: S.String.pipe(T.Label()),
-          body: __S(1109, __c138, 5).pipe(T.HttpBody()),
+          body: __S(13344, __c417, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/announcements/{announcementId}", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateAnnouncementPublicRequest",
       });
-    case 7:
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          triggerID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/adaptive-triggers/{triggerID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdaptiveTriggerRequest",
+      });
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/applications/{applicationKey}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-function __c139(j: number): any {
+function __c420(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           applicationKey: S.String.pipe(T.Label()),
           versionKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29861,31 +28789,32 @@ function __c139(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationVersionRequest",
       });
-    case 1:
+  }
+}
+function __c421(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/approval-requests/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateApprovalRequestRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          add: S.optional(__S(12, __c1, 4)),
-          remove: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "SegmentUserList" });
-    case 3:
+  }
+}
+function __c422(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           segmentKey: S.String.pipe(T.Label()),
-          included: S.optional(__S(1114, __c139, 2)),
-          excluded: S.optional(__S(1114, __c139, 2)),
+          included: S.optional(__S(13536, __c423, 0)),
+          excluded: S.optional(__S(13536, __c423, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29896,14 +28825,29 @@ function __c139(j: number): any {
       ).annotate({
         identifier: "UpdateBigSegmentContextTargetsRequest",
       });
-    case 4:
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          add: S.optional(__S(15456, __c483, 0)),
+          remove: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "SegmentUserList" });
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           segmentKey: S.String.pipe(T.Label()),
-          included: S.optional(__S(1114, __c139, 2)),
-          excluded: S.optional(__S(1114, __c139, 2)),
+          included: S.optional(__S(13536, __c423, 0)),
+          excluded: S.optional(__S(13536, __c423, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29914,11 +28858,15 @@ function __c139(j: number): any {
       ).annotate({
         identifier: "UpdateBigSegmentTargetsRequest",
       });
-    case 5:
+  }
+}
+function __c425(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentID: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29927,7 +28875,11 @@ function __c139(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeploymentRequest" });
-    case 6:
+  }
+}
+function __c426(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -29944,13 +28896,17 @@ function __c139(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDestinationRequest" });
-    case 7:
+  }
+}
+function __c427(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29963,7 +28919,7 @@ function __c139(j: number): any {
       });
   }
 }
-function __c140(j: number): any {
+function __c428(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29971,7 +28927,7 @@ function __c140(j: number): any {
           projectKey: S.String.pipe(T.Label()),
           featureFlagKey: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29980,11 +28936,15 @@ function __c140(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFlagLinkRequest" });
-    case 1:
+  }
+}
+function __c429(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29995,14 +28955,35 @@ function __c140(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c430(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          graphKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/agent-graphs/{graphKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAgentGraphRequest" });
+  }
+}
+function __c431(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           layerKey: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           environmentKey: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -30011,30 +28992,46 @@ function __c140(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLayerRequest" });
-    case 3:
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/members/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateMemberRequest" });
-    case 4:
+  }
+}
+function __c433(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/members", code: 200 })),
       ).annotate({ identifier: "UpdateMembersRequest" });
-    case 5:
-      return S.Array(__S(135, __c16, 7));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(12, __c1, 4)),
-          errors: S.optional(__S(1125, __c140, 5)),
+          members: S.optional(__S(15456, __c483, 0)),
+          errors: S.optional(__S(13888, __c434, 0)),
         }),
       ).annotate({ identifier: "BulkEditMembersRep" });
-    case 7:
+  }
+}
+function __c434(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4000, __c125, 0));
+  }
+}
+function __c435(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           monitoringWindowMilliseconds: S.optional(S.Number),
@@ -30045,31 +29042,27 @@ function __c140(j: number): any {
       ).annotate({
         identifier: "ReleaseGuardianConfigurationInput",
       });
-  }
-}
-function __c141(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           audienceId: S.optional(S.String),
-          releaseGuardianConfiguration: S.optional(__S(1127, __c140, 7)),
-          notifyMemberIds: S.optional(__S(12, __c1, 4)),
-          notifyTeamKeys: S.optional(__S(12, __c1, 4)),
+          releaseGuardianConfiguration: S.optional(__S(13920, __c435, 0)),
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
         }),
       ).annotate({
         identifier: "ReleaserAudienceConfigInput",
       });
-    case 1:
-      return S.Array(__S(1128, __c141, 0));
     case 2:
+      return S.Array(__S(13921, __c435, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           flagKey: S.String.pipe(T.Label()),
           phaseId: S.String.pipe(T.Label()),
           status: S.optional(S.String),
-          audiences: S.optional(__S(1129, __c141, 1)),
+          audiences: S.optional(__S(13922, __c435, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30078,14 +29071,22 @@ function __c141(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePhaseStatusRequest" });
-    case 3:
+  }
+}
+function __c436(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/projects/{projectKey}", code: 200 })),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 4:
+  }
+}
+function __c437(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -30093,7 +29094,7 @@ function __c141(j: number): any {
           name: S.String,
           key: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
           unbounded: S.optional(S.Boolean),
           unboundedContextKind: S.optional(S.String),
         }).pipe(
@@ -30104,14 +29105,18 @@ function __c141(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSegmentRequest" });
-    case 5:
+  }
+}
+function __c438(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
           environmentKey: S.String.pipe(T.Label()),
           segmentKey: S.String.pipe(T.Label()),
           dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          patch: __S(981, __c122, 5),
+          patch: __S(9664, __c302, 0),
           comment: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -30123,54 +29128,97 @@ function __c141(j: number): any {
       ).annotate({
         identifier: "UpdateSegmentBySegmentKeyRequest",
       });
-    case 6:
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationKey: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v2/integrations/{integrationKey}/{id}", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamKey: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/teams/{teamKey}", code: 200 })),
       ).annotate({ identifier: "UpdateTeamRequest" });
   }
 }
-function __c142(j: number): any {
+function __c441(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          instructions: __S(28, __c3, 4),
+          instructions: __S(15520, __c485, 0),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/teams", code: 200 })),
       ).annotate({ identifier: "UpdateTeamsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          memberIDs: S.optional(__S(12, __c1, 4)),
-          teamKeys: S.optional(__S(12, __c1, 4)),
-          errors: S.optional(__S(1125, __c140, 5)),
+          memberIDs: S.optional(__S(15456, __c483, 0)),
+          teamKeys: S.optional(__S(15456, __c483, 0)),
+          errors: S.optional(__S(13888, __c434, 0)),
         }),
       ).annotate({ identifier: "BulkEditTeamsRep" });
-    case 2:
+  }
+}
+function __c442(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          optimizationKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgentOptimizationRequest",
+      });
+  }
+}
+function __c443(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAgentOptimizationResponse",
+      });
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/tokens/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateTokenRequest" });
-    case 3:
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -30179,7 +29227,7 @@ function __c142(j: number): any {
           description: S.optional(S.String),
           maintainerId: S.optional(S.String),
           maintainerTeamKey: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(15456, __c483, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -30188,14 +29236,22 @@ function __c142(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateViewRequest" });
-    case 4:
+  }
+}
+function __c446(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: __S(981, __c122, 5).pipe(T.HttpBody()),
+          body: __S(9664, __c302, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v2/webhooks/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 5:
+  }
+}
+function __c447(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectKey: S.String.pipe(T.Label()),
@@ -30212,7 +29268,7 @@ function __c142(j: number): any {
       ).annotate({
         identifier: "ValidateIntegrationDeliveryConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.Number),
@@ -30225,7 +29281,2566 @@ function __c142(j: number): any {
       });
   }
 }
-
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          optimizationKey: S.String.pipe(T.Label()),
+          runId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}/runs/{runId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAgentOptimizationRunRequest",
+      });
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAgentOptimizationRunResponse",
+      });
+  }
+}
+function __c450(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          skillKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAgentSkillRequest" });
+  }
+}
+function __c451(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAIConfigRequest" });
+  }
+}
+function __c452(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+          variationKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAIConfigVariationRequest",
+      });
+  }
+}
+function __c453(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          toolKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-tools/{toolKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAIToolRequest" });
+  }
+}
+function __c454(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          announcementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v2/announcements/{announcementId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteAnnouncementPublicRequest",
+      });
+  }
+}
+function __c455(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v2/applications/{applicationKey}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c456(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationKey: S.String.pipe(T.Label()),
+          versionKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/applications/{applicationKey}/versions/{versionKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationVersionRequest",
+      });
+  }
+}
+function __c457(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/approval-requests/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteApprovalRequestRequest",
+      });
+  }
+}
+function __c458(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApprovalRequestForFlagRequest",
+      });
+  }
+}
+function __c459(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryKey: S.String,
+          projectKey: S.String,
+        }),
+      ).annotate({
+        identifier: "InsightsRepositoryProject",
+      });
+    case 1:
+      return S.Array(__S(14688, __c459, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mappings: __S(14689, __c459, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/v2/engineering-insights/repositories/projects",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AssociateRepositoriesAndProjectsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.Number,
+          items: __S(14689, __c459, 1),
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({
+        identifier: "InsightsRepositoryProjectCollection",
+      });
+  }
+}
+function __c460(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(14752, __c461, 0));
+  }
+}
+function __c461(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Link" });
+  }
+}
+function __c462(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          integrationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBigSegmentStoreIntegrationRequest",
+      });
+  }
+}
+function __c463(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+          body: __S(15456, __c483, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/code-refs/repositories/{repo}/branch-delete-tasks",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBranchesRequest" });
+  }
+}
+function __c464(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customRoleKey: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
+      ).annotate({ identifier: "DeleteCustomRoleRequest" });
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/destinations/{projectKey}/{environmentKey}/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDestinationRequest" });
+  }
+}
+function __c466(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c467(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFeatureFlagRequest" });
+  }
+}
+function __c468(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFlagConfigScheduledChangesRequest",
+      });
+  }
+}
+function __c469(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          memberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFlagFollowerRequest",
+      });
+  }
+}
+function __c470(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          integrationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFlagImportConfigurationRequest",
+      });
+  }
+}
+function __c471(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFlagLinkRequest" });
+  }
+}
+function __c472(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          currentVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FlagCopyConfigEnvironment",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          source: __S(15104, __c472, 0),
+          target: __S(15104, __c472, 0),
+          comment: S.optional(S.String),
+          includedActions: S.optional(__S(15360, __c480, 0)),
+          excludedActions: S.optional(__S(15360, __c480, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/copy",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CopyFeatureFlagRequest" });
+  }
+}
+function __c473(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          attribute: S.String,
+          op: S.String,
+          values: __S(15232, __c476, 0),
+          contextKind: S.optional(S.String),
+          negate: S.Boolean,
+        }),
+      ).annotate({ identifier: "Clause" });
+  }
+}
+function __c474(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          value: S.Unknown,
+          valueHash: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Variation" });
+    case 1:
+      return S.Array(__S(15168, __c474, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: __S(15456, __c483, 0),
+        }),
+      ).annotate({ identifier: "CustomProperty" });
+    case 3:
+      return S.Record(S.String, __S(15170, __c474, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          onVariation: S.Number,
+          offVariation: S.Number,
+        }),
+      ).annotate({ identifier: "Defaults" });
+  }
+}
+function __c475(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessDeniedReason" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(15200, __c475, 0),
+        }),
+      ).annotate({ identifier: "AccessDenied" });
+    case 2:
+      return S.Array(__S(15201, __c475, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessAllowedReason" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(15203, __c475, 3),
+        }),
+      ).annotate({ identifier: "AccessAllowedRep" });
+    case 5:
+      return S.Array(__S(15204, __c475, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          denied: __S(15202, __c475, 2),
+          allowed: __S(15205, __c475, 5),
+        }),
+      ).annotate({ identifier: "Access" });
+  }
+}
+function __c476(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c477(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          attribute: S.optional(S.String),
+          op: S.String,
+          values: __S(15232, __c476, 0),
+          contextKind: S.optional(S.String),
+          negate: S.Boolean,
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eventName: S.optional(S.String),
+          isNumeric: S.optional(S.Boolean),
+          unitAggregationType: S.optional(S.String),
+          unitAggregationField: S.optional(S.String),
+          valueColumn: S.optional(S.String),
+          dataSource: S.optional(__S(15554, __c486, 2)),
+          filters: S.optional(__S(15264, __c477, 0)),
+          windowStartOffset: S.optional(S.Number),
+          windowEndOffset: S.optional(S.Number),
+          winsorLowerPercentile: S.optional(S.Number),
+          winsorUpperPercentile: S.optional(S.Number),
+          winsorIncludeImputed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MetricDenominatorRep" });
+  }
+}
+function __c478(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          experimentCount: S.optional(S.Number),
+          metricGroupCount: S.optional(S.Number),
+          activeExperimentCount: S.optional(S.Number),
+          activeGuardedRolloutCount: S.optional(S.Number),
+          _id: S.String,
+          _versionId: S.String,
+          _version: S.optional(S.Number),
+          key: S.String,
+          name: S.String,
+          kind: S.String,
+          _attachedFlagCount: S.optional(S.Number),
+          _links: __S(14720, __c460, 0),
+          _site: S.optional(__S(14752, __c461, 0)),
+          _access: S.optional(__S(15206, __c475, 6)),
+          tags: __S(15456, __c483, 0),
+          _creationDate: S.Number,
+          lastModified: S.optional(__S(15552, __c486, 0)),
+          maintainerId: S.optional(S.String),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
+          description: S.optional(S.String),
+          category: S.optional(S.String),
+          isNumeric: S.optional(S.Boolean),
+          successCriteria: S.optional(S.String),
+          unit: S.optional(S.String),
+          eventKey: S.optional(S.String),
+          randomizationUnits: S.optional(__S(15456, __c483, 0)),
+          analysisUnits: S.optional(__S(15456, __c483, 0)),
+          filters: S.optional(__S(15264, __c477, 0)),
+          unitAggregationType: S.optional(S.String),
+          analysisType: S.optional(S.String),
+          percentileValue: S.optional(S.Number),
+          eventDefault: S.optional(__S(15553, __c486, 1)),
+          dataSource: __S(15554, __c486, 2),
+          lastSeen: S.optional(S.Number),
+          archived: S.optional(S.Boolean),
+          archivedAt: S.optional(S.Number),
+          selector: S.optional(S.String),
+          urls: S.optional(__S(15520, __c485, 0)),
+          windowStartOffset: S.optional(S.Number),
+          windowEndOffset: S.optional(S.Number),
+          winsorLowerPercentile: S.optional(S.Number),
+          winsorUpperPercentile: S.optional(S.Number),
+          winsorIncludeImputed: S.optional(S.Boolean),
+          traceQuery: S.optional(S.String),
+          traceValueLocation: S.optional(S.String),
+          unitAggregationField: S.optional(S.String),
+          denominator: S.optional(__S(15265, __c477, 1)),
+        }),
+      ).annotate({ identifier: "MetricListingRep" });
+  }
+}
+function __c479(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          _links: S.optional(__S(14720, __c460, 0)),
+        }),
+      ).annotate({ identifier: "MaintainerTeam" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metricKey: S.optional(S.String),
+          _metric: S.optional(__S(15296, __c478, 0)),
+          environments: S.optional(__S(15456, __c483, 0)),
+          _environmentSettings: S.optional(__S(15587, __c487, 3)),
+        }),
+      ).annotate({ identifier: "LegacyExperimentRep" });
+    case 2:
+      return S.Array(__S(15329, __c479, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          baselineIdx: S.Number,
+          items: __S(15330, __c479, 2),
+        }),
+      ).annotate({ identifier: "ExperimentInfoRep" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contextKind: S.optional(S.String),
+          stageCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FlagMigrationSettingsRep" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          readyForCodeRemoval: S.optional(S.Boolean),
+          readyToArchive: S.optional(S.Boolean),
+          cleanupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StaleFlagData" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          values: __S(15456, __c483, 0),
+          variation: S.Number,
+          contextKind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Target" });
+    case 7:
+      return S.Array(__S(15334, __c479, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          variation: S.Number,
+          weight: S.Number,
+          _untracked: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WeightedVariation" });
+    case 9:
+      return S.Array(__S(15336, __c479, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          defaultVariation: S.Number,
+          canReshuffle: S.Boolean,
+        }),
+      ).annotate({ identifier: "ExperimentAllocationRep" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          variations: __S(15337, __c479, 9),
+          experimentAllocation: S.optional(__S(15338, __c479, 10)),
+          seed: S.optional(S.Number),
+          bucketBy: S.optional(S.String),
+          contextKind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rollout" });
+    case 12:
+      return S.Array(__S(15136, __c473, 0));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          variation: S.optional(S.Number),
+          rollout: S.optional(__S(15339, __c479, 11)),
+          clauses: __S(15340, __c479, 12),
+          trackEvents: S.Boolean,
+          description: S.optional(S.String),
+          ref: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rule" });
+    case 14:
+      return S.Array(__S(15341, __c479, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          variation: S.optional(S.Number),
+          rollout: S.optional(__S(15339, __c479, 11)),
+        }),
+      ).annotate({ identifier: "VariationOrRolloutRep" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          variation: S.Number,
+        }),
+      ).annotate({ identifier: "Prerequisite" });
+    case 17:
+      return S.Array(__S(15344, __c479, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.Number,
+          nullRules: S.Number,
+          targets: S.Number,
+          contextTargets: S.Number,
+          isFallthrough: S.optional(S.Boolean),
+          isOff: S.optional(S.Boolean),
+          rollout: S.optional(S.Number),
+          bucketBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VariationSummary" });
+    case 19:
+      return S.Record(S.String, __S(15346, __c479, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          variations: __S(15347, __c479, 19),
+          prerequisites: S.Number,
+        }),
+      ).annotate({ identifier: "FlagSummary" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          contextKinds: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "FlagConfigEvaluation" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          checkRatio: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FlagConfigMigrationSettingsRep",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          on: S.Boolean,
+          archived: S.Boolean,
+          salt: S.String,
+          sel: S.String,
+          lastModified: S.Number,
+          version: S.Number,
+          targets: S.optional(__S(15335, __c479, 7)),
+          contextTargets: S.optional(__S(15335, __c479, 7)),
+          rules: S.optional(__S(15342, __c479, 14)),
+          fallthrough: S.optional(__S(15343, __c479, 15)),
+          offVariation: S.optional(S.Number),
+          prerequisites: S.optional(__S(15345, __c479, 17)),
+          _site: __S(14752, __c461, 0),
+          _access: S.optional(__S(15206, __c475, 6)),
+          _environmentName: S.String,
+          trackEvents: S.Boolean,
+          trackEventsFallthrough: S.Boolean,
+          _debugEventsUntilDate: S.optional(S.Number),
+          _summary: S.optional(__S(15348, __c479, 20)),
+          evaluation: S.optional(__S(15349, __c479, 21)),
+          migrationSettings: S.optional(__S(15350, __c479, 22)),
+        }),
+      ).annotate({ identifier: "FeatureFlagConfig" });
+    case 24:
+      return S.Record(S.String, __S(15351, __c479, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          kind: S.String,
+          description: S.optional(S.String),
+          key: S.String,
+          _version: S.Number,
+          creationDate: S.Number,
+          includeInSnippet: S.optional(S.Boolean),
+          clientSideAvailability: S.optional(__S(15424, __c482, 0)),
+          variations: __S(15169, __c474, 1),
+          temporary: S.Boolean,
+          tags: __S(15456, __c483, 0),
+          _links: __S(14720, __c460, 0),
+          maintainerId: S.optional(S.String),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
+          maintainerTeamKey: S.optional(S.String),
+          _maintainerTeam: S.optional(__S(15328, __c479, 0)),
+          goalIds: S.optional(__S(15456, __c483, 0)),
+          experiments: __S(15331, __c479, 3),
+          customProperties: __S(15171, __c474, 3),
+          archived: S.Boolean,
+          archivedDate: S.optional(S.Number),
+          deprecated: S.optional(S.Boolean),
+          deprecatedDate: S.optional(S.Number),
+          defaults: S.optional(__S(15172, __c474, 4)),
+          _purpose: S.optional(S.String),
+          migrationSettings: S.optional(__S(15332, __c479, 4)),
+          stale: S.optional(__S(15333, __c479, 5)),
+          environments: S.optional(__S(15352, __c479, 24)),
+        }),
+      ).annotate({ identifier: "FeatureFlag" });
+  }
+}
+function __c480(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c481(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _links: __S(14720, __c460, 0),
+          _id: S.String,
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          role: S.String,
+          email: S.String,
+        }),
+      ).annotate({ identifier: "MemberSummary" });
+  }
+}
+function __c482(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usingMobileKey: S.optional(S.Boolean),
+          usingEnvironmentId: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ClientSideAvailability" });
+  }
+}
+function __c483(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c484(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c485(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(15488, __c484, 0));
+  }
+}
+function __c486(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Modification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricEventDefaultRep" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          environmentKey: S.optional(S.String),
+          _name: S.optional(S.String),
+          _integrationKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricDataSourceRefRep" });
+  }
+}
+function __c487(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.optional(S.Number),
+          stopDate: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExperimentEnabledPeriodRep",
+      });
+    case 1:
+      return S.Array(__S(15584, __c487, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.optional(S.Number),
+          stopDate: S.optional(S.Number),
+          enabledPeriods: S.optional(__S(15585, __c487, 1)),
+        }),
+      ).annotate({
+        identifier: "ExperimentEnvironmentSettingRep",
+      });
+    case 3:
+      return S.Record(S.String, __S(15586, __c487, 2));
+  }
+}
+function __c488(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          insightGroupKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/engineering-insights/insights/groups/{insightGroupKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInsightGroupRequest",
+      });
+  }
+}
+function __c489(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/integration-configurations/{integrationConfigurationId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIntegrationConfigurationRequest",
+      });
+  }
+}
+function __c490(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          integrationKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIntegrationDeliveryConfigurationRequest",
+      });
+  }
+}
+function __c491(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/account/ip-allowlist/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteIpAllowlistEntryRequest",
+      });
+  }
+}
+function __c492(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/members/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteMemberRequest" });
+  }
+}
+function __c493(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          metricKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v2/metrics/{projectKey}/{metricKey}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteMetricRequest" });
+  }
+}
+function __c494(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          metricGroupKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteMetricGroupRequest" });
+  }
+}
+function __c495(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          modelConfigKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteModelConfigRequest" });
+  }
+}
+function __c496(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/oauth/clients/{clientId}", code: 200 })),
+      ).annotate({ identifier: "DeleteOAuthClientRequest" });
+  }
+}
+function __c497(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/projects/{projectKey}", code: 200 })),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c498(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isDismissible: S.Boolean,
+          title: S.String,
+          message: S.String,
+          startTime: S.Number,
+          endTime: S.optional(S.Number),
+          severity: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/announcements", code: 200 })),
+      ).annotate({
+        identifier: "CreateAnnouncementPublicRequest",
+      });
+  }
+}
+function __c499(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnnouncementAccessDeniedReason",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(15968, __c499, 0),
+        }),
+      ).annotate({ identifier: "AnnouncementAccessDenied" });
+    case 2:
+      return S.Array(__S(15969, __c499, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnnouncementAccessAllowedReason",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(15971, __c499, 3),
+        }),
+      ).annotate({
+        identifier: "AnnouncementAccessAllowedRep",
+      });
+    case 5:
+      return S.Array(__S(15972, __c499, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          denied: __S(15970, __c499, 2),
+          allowed: __S(15973, __c499, 5),
+        }),
+      ).annotate({ identifier: "AnnouncementAccess" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          parent: __S(14752, __c461, 0),
+        }),
+      ).annotate({
+        identifier: "AnnouncementResponseLinks",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          isDismissible: S.Boolean,
+          title: S.String,
+          message: S.String,
+          startTime: S.Number,
+          endTime: S.optional(S.Number),
+          severity: S.String,
+          _status: S.String,
+          _access: S.optional(__S(15974, __c499, 6)),
+          _links: __S(15975, __c499, 7),
+        }),
+      ).annotate({ identifier: "AnnouncementResponse" });
+  }
+}
+function __c500(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          snippetKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/prompt-snippets/{snippetKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePromptSnippetRequest",
+      });
+  }
+}
+function __c501(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v2/account/relay-auto-configs/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteRelayAutoConfigRequest",
+      });
+  }
+}
+function __c502(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          flagKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/flags/{projectKey}/{flagKey}/release",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReleaseByFlagKeyRequest",
+      });
+  }
+}
+function __c503(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          pipelineKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReleasePipelineRequest",
+      });
+  }
+}
+function __c504(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          policyKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/release-policies/{policyKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReleasePolicyRequest",
+      });
+  }
+}
+function __c505(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteRepositoryRequest" });
+  }
+}
+function __c506(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryKey: S.String.pipe(T.Label()),
+          projectKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRepositoryProjectRequest",
+      });
+  }
+}
+function __c507(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          keys: __S(15456, __c483, 0),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/model-configs/restricted",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRestrictedModelsRequest",
+      });
+  }
+}
+function __c508(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          sdkKeyKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/sdk-keys/{sdkKeyKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSdkKeyByKeyRequest" });
+  }
+}
+function __c509(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          segmentKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSegmentRequest" });
+  }
+}
+function __c510(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String,
+          comment: S.optional(S.String),
+          description: S.String,
+          instructions: __S(15520, __c485, 0),
+          notifyMemberIds: S.optional(__S(15456, __c483, 0)),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          integrationConfig: S.optional(__S(15488, __c484, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/approval-requests", code: 200 })),
+      ).annotate({
+        identifier: "CreateApprovalRequestRequest",
+      });
+  }
+}
+function __c511(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          _version: S.Number,
+          creationDate: S.Number,
+          serviceKind: S.String,
+          requestorId: S.optional(S.String),
+          description: S.optional(S.String),
+          reviewStatus: S.String,
+          allReviews: __S(16385, __c512, 1),
+          notifyMemberIds: __S(15456, __c483, 0),
+          notifyTeamKeys: S.optional(__S(15456, __c483, 0)),
+          appliedDate: S.optional(S.Number),
+          appliedByMemberId: S.optional(S.String),
+          appliedByServiceTokenId: S.optional(S.String),
+          status: S.String,
+          instructions: __S(15520, __c485, 0),
+          conflicts: __S(16387, __c512, 3),
+          _links: __S(15488, __c484, 0),
+          executionDate: S.optional(S.Number),
+          operatingOnId: S.optional(S.String),
+          integrationMetadata: S.optional(__S(16449, __c514, 1)),
+          source: S.optional(__S(16388, __c512, 4)),
+          customWorkflowMetadata: S.optional(__S(16390, __c512, 6)),
+          resourceId: S.optional(S.String),
+          approvalSettings: S.optional(__S(16416, __c513, 0)),
+        }),
+      ).annotate({ identifier: "ApprovalRequestResponse" });
+  }
+}
+function __c512(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          kind: S.String,
+          creationDate: S.optional(S.Number),
+          comment: S.optional(S.String),
+          memberId: S.optional(S.String),
+          serviceTokenId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewResponse" });
+    case 1:
+      return S.Array(__S(16384, __c512, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instruction: S.optional(__S(15488, __c484, 0)),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Conflict2" });
+    case 3:
+      return S.Array(__S(16386, __c512, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CopiedFromEnv" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomWorkflowStageMeta" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          stage: S.optional(__S(16389, __c512, 5)),
+        }),
+      ).annotate({ identifier: "CustomWorkflowMeta" });
+  }
+}
+function __c513(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          required: S.Boolean,
+          bypassApprovalsForPendingChanges: S.Boolean,
+          minNumApprovals: S.Number,
+          canReviewOwnRequest: S.Boolean,
+          canApplyDeclinedChanges: S.Boolean,
+          autoApplyApprovedChanges: S.optional(S.Boolean),
+          serviceKind: S.String,
+          serviceConfig: __S(15488, __c484, 0),
+          requiredApprovalTags: __S(15456, __c483, 0),
+          serviceKindConfigurationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApprovalSettings" });
+  }
+}
+function __c514(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          display: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "IntegrationStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalId: S.String,
+          externalStatus: __S(16448, __c514, 0),
+          externalUrl: S.String,
+          lastChecked: S.Number,
+        }),
+      ).annotate({ identifier: "IntegrationMetadata" });
+  }
+}
+function __c515(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/integrations/{integrationKey}/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionRequest",
+      });
+  }
+}
+function __c516(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamKey: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/teams/{teamKey}", code: 200 })),
+      ).annotate({ identifier: "DeleteTeamRequest" });
+  }
+}
+function __c517(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/tokens/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteTokenRequest" });
+  }
+}
+function __c518(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTriggerWorkflowRequest",
+      });
+  }
+}
+function __c519(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          viewKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/views/{viewKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteViewRequest" });
+  }
+}
+function __c520(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/webhooks/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c521(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          featureFlagKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          workflowId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkflowRequest" });
+  }
+}
+function __c522(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          templateKey: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/templates/{templateKey}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteWorkflowTemplateRequest",
+      });
+  }
+}
+function __c523(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          body: __S(15488, __c484, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EvaluateContextInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          ruleIndex: S.optional(S.Number),
+          ruleID: S.optional(S.String),
+          prerequisiteKey: S.optional(S.String),
+          inExperiment: S.optional(S.Boolean),
+          errorKind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContextInstanceEvaluationReason",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          key: S.String,
+          _value: S.Unknown,
+          reason: S.optional(__S(16737, __c523, 1)),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "ContextInstanceEvaluation",
+      });
+    case 3:
+      return S.Array(__S(16738, __c523, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(16739, __c523, 3),
+          totalCount: S.optional(S.Number),
+          _links: __S(14720, __c460, 0),
+        }),
+      ).annotate({
+        identifier: "ContextInstanceEvaluations",
+      });
+  }
+}
+function __c524(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          environmentKey: S.String.pipe(T.Label()),
+          triggerID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/environments/{environmentKey}/adaptive-triggers/{triggerID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdaptiveTriggerRequest",
+      });
+  }
+}
+function __c525(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          alertId: S.Number,
+        }),
+      ).annotate({ identifier: "ObservabilityAlertSource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          variationId: S.String,
+          ruleId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdaptiveTriggerInstruction",
+      });
+    case 2:
+      return S.Array(__S(16801, __c525, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instructions: __S(16802, __c525, 2),
+        }),
+      ).annotate({ identifier: "AdaptiveTriggerTask" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          resourceKind: S.String,
+          resourceKey: S.String,
+          enabled: S.Boolean,
+          triggerSource: __S(16800, __c525, 0),
+          task: __S(16803, __c525, 3),
+          createdAt: S.Number,
+          updatedAt: S.Number,
+        }),
+      ).annotate({ identifier: "AdaptiveTrigger" });
+  }
+}
+function __c526(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          comment: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v2/approval-requests/{id}/apply", code: 200 })),
+      ).annotate({
+        identifier: "CreateApprovalRequestApplyRequest",
+      });
+  }
+}
+function __c527(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          graphKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/agent-graphs/{graphKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAgentGraphRequest" });
+  }
+}
+function __c528(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          sourceConfig: S.String,
+          targetConfig: S.String,
+          handoff: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "AgentGraphEdge" });
+    case 1:
+      return S.Array(__S(16896, __c528, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(16934, __c529, 6)),
+          _site: S.optional(__S(12128, __c379, 0)),
+          key: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          _maintainer: S.optional(S.Unknown),
+          rootConfigKey: S.optional(S.String),
+          edges: S.optional(__S(16897, __c528, 1)),
+          createdAt: S.Number,
+          updatedAt: S.Number,
+        }),
+      ).annotate({ identifier: "AgentGraph" });
+  }
+}
+function __c529(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AiConfigsAccessDeniedReason",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(16928, __c529, 0),
+        }),
+      ).annotate({ identifier: "AiConfigsAccessDenied" });
+    case 2:
+      return S.Array(__S(16929, __c529, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(15456, __c483, 0)),
+          notResources: S.optional(__S(15456, __c483, 0)),
+          actions: S.optional(__S(15456, __c483, 0)),
+          notActions: S.optional(__S(15456, __c483, 0)),
+          effect: S.String,
+          role_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AiConfigsAccessAllowedReason",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          reason: __S(16931, __c529, 3),
+        }),
+      ).annotate({
+        identifier: "AiConfigsAccessAllowedRep",
+      });
+    case 5:
+      return S.Array(__S(16932, __c529, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          denied: __S(16930, __c529, 2),
+          allowed: __S(16933, __c529, 5),
+        }),
+      ).annotate({ identifier: "AiConfigsAccess" });
+  }
+}
+function __c530(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          optimizationKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/agent-optimizations/{optimizationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentOptimizationRequest",
+      });
+  }
+}
+function __c531(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statement: S.String,
+          threshold: S.Number,
+        }),
+      ).annotate({
+        identifier: "AgentOptimizationAcceptanceStatement",
+      });
+    case 1:
+      return S.Array(__S(16992, __c531, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          threshold: S.Number,
+        }),
+      ).annotate({ identifier: "AgentOptimizationJudge" });
+    case 3:
+      return S.Array(__S(16994, __c531, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          id: S.String,
+          key: S.String,
+          aiConfigKey: S.String,
+          maxAttempts: S.Number,
+          modelChoices: __S(15456, __c483, 0),
+          judgeModel: S.String,
+          variableChoices: __S(11584, __c362, 0),
+          acceptanceStatements: __S(16993, __c531, 1),
+          judges: __S(16995, __c531, 3),
+          userInputOptions: __S(15456, __c483, 0),
+          groundTruthResponses: __S(15456, __c483, 0),
+          metricKey: S.optional(S.String),
+          tokenLimit: S.optional(S.Number),
+          variationKey: S.optional(S.String),
+          label: S.optional(S.String),
+          latencyOptimization: S.optional(S.Boolean),
+          tokenOptimization: S.optional(S.Boolean),
+          autoCommit: S.optional(S.Boolean),
+          version: S.Number,
+          createdAt: S.Number,
+        }),
+      ).annotate({ identifier: "AgentOptimization" });
+  }
+}
+function __c532(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          skillKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/skills/{skillKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAgentSkillRequest" });
+  }
+}
+function __c533(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          _maintainer: S.optional(S.Unknown),
+          name: S.String,
+          description: S.optional(S.String),
+          markdown: S.String,
+          tags: __S(15456, __c483, 0),
+          version: S.Number,
+          createdAt: S.Number,
+        }),
+      ).annotate({ identifier: "AgentSkill" });
+  }
+}
+function __c534(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAIConfigRequest" });
+  }
+}
+function __c535(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          key: S.String,
+        }),
+      ).annotate({ identifier: "AIConfigDependency" });
+    case 1:
+      return S.Array(__S(17120, __c535, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _access: S.optional(__S(16934, __c529, 6)),
+          _links: S.optional(__S(12160, __c380, 0)),
+          _site: S.optional(__S(12128, __c379, 0)),
+          description: S.String,
+          key: S.String,
+          _maintainer: S.optional(S.Unknown),
+          mode: S.optional(S.String),
+          name: S.String,
+          tags: __S(15456, __c483, 0),
+          version: S.Number,
+          variations: __S(17184, __c537, 0),
+          createdAt: S.Number,
+          updatedAt: S.Number,
+          evaluationMetricKey: S.optional(S.String),
+          evaluationMetricKeys: S.optional(__S(15456, __c483, 0)),
+          isInverted: S.optional(S.Boolean),
+          dependencies: S.optional(__S(17121, __c535, 1)),
+        }),
+      ).annotate({ identifier: "AIConfig" });
+  }
+}
+function __c536(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: __S(12128, __c379, 0),
+        }),
+      ).annotate({ identifier: "ParentLink" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          role: S.String,
+        }),
+      ).annotate({ identifier: "Message" });
+    case 2:
+      return S.Array(__S(17153, __c536, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          version: S.Number,
+          customParameters: S.optional(__S(15488, __c484, 0)),
+        }),
+      ).annotate({ identifier: "VariationTool" });
+    case 4:
+      return S.Array(__S(17155, __c536, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          version: S.Number,
+        }),
+      ).annotate({ identifier: "VariationSkill" });
+    case 6:
+      return S.Array(__S(17157, __c536, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          judgeConfigKey: S.String,
+          samplingRate: S.Number,
+        }),
+      ).annotate({ identifier: "JudgeAttachment" });
+    case 8:
+      return S.Array(__S(17159, __c536, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          judges: S.optional(__S(17160, __c536, 8)),
+        }),
+      ).annotate({ identifier: "JudgeConfiguration" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(17152, __c536, 0)),
+          color: S.optional(S.String),
+          comment: S.optional(S.String),
+          description: S.optional(S.String),
+          instructions: S.optional(S.String),
+          key: S.String,
+          _id: S.String,
+          messages: S.optional(__S(17154, __c536, 2)),
+          model: S.Unknown,
+          modelConfigKey: S.optional(S.String),
+          modelConfigVersion: S.optional(S.Number),
+          name: S.String,
+          outputFormat: S.optional(__S(15488, __c484, 0)),
+          createdAt: S.Number,
+          version: S.Number,
+          state: S.optional(S.String),
+          _archivedAt: S.optional(S.Number),
+          _publishedAt: S.optional(S.Number),
+          tools: S.optional(__S(17156, __c536, 4)),
+          skills: S.optional(__S(17158, __c536, 6)),
+          judgeConfiguration: S.optional(__S(17161, __c536, 9)),
+          judgingConfigKeys: S.optional(__S(15456, __c483, 0)),
+        }),
+      ).annotate({ identifier: "AIConfigVariation" });
+  }
+}
+function __c537(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(17162, __c536, 10));
+  }
+}
+function __c538(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+          from: S.Number.pipe(T.Query()),
+          to: S.Number.pipe(T.Query()),
+          env: S.String.pipe(T.Query()),
+          contextKind: S.optional(S.String.pipe(T.Query())),
+          contextKey: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAIConfigMetricsRequest",
+      });
+  }
+}
+function __c539(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputTokens: S.optional(S.Number),
+          outputTokens: S.optional(S.Number),
+          totalTokens: S.optional(S.Number),
+          generationCount: S.optional(S.Number),
+          generationSuccessCount: S.optional(S.Number),
+          generationErrorCount: S.optional(S.Number),
+          thumbsUp: S.optional(S.Number),
+          thumbsDown: S.optional(S.Number),
+          durationMs: S.optional(S.Number),
+          timeToFirstTokenMs: S.optional(S.Number),
+          satisfactionRating: S.optional(S.Number),
+          inputCost: S.optional(S.Number),
+          outputCost: S.optional(S.Number),
+          judgeAccuracy: S.optional(S.Number),
+          judgeRelevance: S.optional(S.Number),
+          judgeToxicity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Metrics" });
+  }
+}
+function __c540(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+          from: S.Number.pipe(T.Query()),
+          to: S.Number.pipe(T.Query()),
+          env: S.String.pipe(T.Query()),
+          contextKind: S.optional(S.String.pipe(T.Query())),
+          contextKey: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAIConfigMetricsByVariationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          variationKey: S.optional(S.String),
+          metrics: S.optional(__S(17248, __c539, 0)),
+        }),
+      ).annotate({ identifier: "MetricByVariation" });
+    case 2:
+      return S.Array(__S(17281, __c540, 1));
+    case 3:
+      return S.suspend(() => __S(17282, __c540, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAIConfigMetricsByVariationResponse",
+      });
+  }
+}
+function __c541(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          env: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/quick-stats",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAIConfigQuickStatsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activeConfigs: S.Number,
+          activeExperiments: S.Number,
+          averageSatisfaction7D: S.optional(S.NullOr(S.Number)),
+          spendMonthToDate: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "QuickStats" });
+  }
+}
+function __c542(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/ai-configs", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetAIConfigsRequest" });
+    case 1:
+      return S.Array(__S(17122, __c535, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _links: S.optional(__S(17376, __c543, 0)),
+          items: __S(17345, __c542, 1),
+          totalCount: S.Number,
+        }),
+      ).annotate({ identifier: "AIConfigs" });
+  }
+}
+function __c543(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          first: S.optional(__S(14752, __c461, 0)),
+          last: S.optional(__S(14752, __c461, 0)),
+          next: S.optional(__S(14752, __c461, 0)),
+          prev: S.optional(__S(14752, __c461, 0)),
+          self: __S(14752, __c461, 0),
+        }),
+      ).annotate({ identifier: "PaginatedLinks" });
+  }
+}
+function __c544(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAIConfigTargetingRequest",
+      });
+  }
+}
+function __c545(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onVariation: S.Number,
+          offVariation: S.Number,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingDefaults",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contextKind: S.String,
+          values: __S(15456, __c483, 0),
+          variation: S.Number,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentTarget",
+      });
+    case 2:
+      return S.Array(__S(17441, __c545, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          canReshuffle: S.Boolean,
+          defaultVariation: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _untracked: S.optional(S.Boolean),
+          variation: S.Number,
+          weight: S.Number,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentFallthroughRolloutVariation",
+      });
+    case 5:
+      return S.Array(__S(17444, __c545, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bucketBy: S.optional(S.String),
+          contextKind: S.String,
+          experimentAllocation: S.optional(__S(17443, __c545, 3)),
+          seed: S.optional(S.Number),
+          variations: __S(17445, __c545, 5),
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentFallthroughRollout",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          variation: S.optional(S.Number),
+          rollout: S.optional(__S(17446, __c545, 6)),
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentFallthrough",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.String,
+          id: S.String,
+          negate: S.Boolean,
+          op: S.String,
+          values: __S(15232, __c476, 0),
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentRuleClause",
+      });
+    case 9:
+      return S.Array(__S(17448, __c545, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          clauses: __S(17449, __c545, 9),
+          trackEvents: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironmentRule",
+      });
+    case 11:
+      return S.Array(__S(17450, __c545, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          contextTargets: __S(17442, __c545, 2),
+          enabled: S.Boolean,
+          fallthrough: __S(17447, __c545, 7),
+          lastModified: S.Number,
+          offVariation: S.optional(S.Number),
+          rules: __S(17451, __c545, 11),
+          targets: __S(17442, __c545, 2),
+          trackEvents: S.Boolean,
+          trackEventsFallthrough: S.Boolean,
+          _environmentName: S.String,
+          _version: S.Number,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingEnvironment",
+      });
+    case 13:
+      return S.Record(S.String, __S(17452, __c545, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          attribute: S.optional(S.String),
+          op: S.String,
+          values: __S(15232, __c476, 0),
+          contextKind: S.optional(S.String),
+          negate: S.Boolean,
+        }),
+      ).annotate({ identifier: "AiConfigsFilter" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          eventName: S.optional(S.String),
+          isNumeric: S.optional(S.Boolean),
+          unitAggregationType: S.optional(S.String),
+          unitAggregationField: S.optional(S.String),
+          valueColumn: S.optional(S.String),
+          dataSource: S.optional(__S(15554, __c486, 2)),
+          filters: S.optional(__S(17454, __c545, 14)),
+          windowStartOffset: S.optional(S.Number),
+          windowEndOffset: S.optional(S.Number),
+          winsorLowerPercentile: S.optional(S.Number),
+          winsorUpperPercentile: S.optional(S.Number),
+          winsorIncludeImputed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AiConfigsMetricDenominatorRep",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          experimentCount: S.optional(S.Number),
+          metricGroupCount: S.optional(S.Number),
+          guardedRolloutCount: S.optional(S.Number),
+          releasePolicyCount: S.optional(S.Number),
+          activeExperimentCount: S.optional(S.Number),
+          activeGuardedRolloutCount: S.optional(S.Number),
+          _id: S.String,
+          _versionId: S.String,
+          _version: S.optional(S.Number),
+          key: S.String,
+          name: S.String,
+          kind: S.String,
+          _attachedFlagCount: S.optional(S.Number),
+          _links: __S(14720, __c460, 0),
+          _site: S.optional(__S(14752, __c461, 0)),
+          _access: S.optional(__S(16934, __c529, 6)),
+          tags: __S(15456, __c483, 0),
+          _creationDate: S.Number,
+          lastModified: S.optional(__S(15552, __c486, 0)),
+          maintainerId: S.optional(S.String),
+          _maintainer: S.optional(__S(15392, __c481, 0)),
+          description: S.optional(S.String),
+          category: S.optional(S.String),
+          isNumeric: S.optional(S.Boolean),
+          successCriteria: S.optional(S.String),
+          unit: S.optional(S.String),
+          eventKey: S.optional(S.String),
+          randomizationUnits: S.optional(__S(15456, __c483, 0)),
+          analysisUnits: S.optional(__S(15456, __c483, 0)),
+          filters: S.optional(__S(17454, __c545, 14)),
+          unitAggregationType: S.optional(S.String),
+          analysisType: S.optional(S.String),
+          percentileValue: S.optional(S.Number),
+          eventDefault: S.optional(__S(15553, __c486, 1)),
+          dataSource: __S(15554, __c486, 2),
+          lastSeen: S.optional(S.Number),
+          archived: S.optional(S.Boolean),
+          archivedAt: S.optional(S.Number),
+          selector: S.optional(S.String),
+          urls: S.optional(__S(11584, __c362, 0)),
+          windowStartOffset: S.optional(S.Number),
+          windowEndOffset: S.optional(S.Number),
+          winsorLowerPercentile: S.optional(S.Number),
+          winsorUpperPercentile: S.optional(S.Number),
+          winsorIncludeImputed: S.optional(S.Boolean),
+          traceQuery: S.optional(S.String),
+          traceValueLocation: S.optional(S.String),
+          unitAggregationField: S.optional(S.String),
+          denominator: S.optional(__S(17455, __c545, 15)),
+        }),
+      ).annotate({
+        identifier: "AiConfigsMetricListingRep",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          metricKey: S.optional(S.String),
+          _metric: S.optional(__S(17456, __c545, 16)),
+          environments: S.optional(__S(15456, __c483, 0)),
+          _environmentSettings: S.optional(__S(15587, __c487, 3)),
+        }),
+      ).annotate({
+        identifier: "AiConfigsLegacyExperimentRep",
+      });
+    case 18:
+      return S.Array(__S(17457, __c545, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          baselineIdx: S.Number,
+          items: __S(17458, __c545, 18),
+        }),
+      ).annotate({
+        identifier: "AiConfigsExperimentInfoRep",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          description: S.String,
+          name: S.String,
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "AIConfigTargetingVariation",
+      });
+    case 21:
+      return S.Array(__S(17460, __c545, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          defaults: S.optional(__S(17440, __c545, 0)),
+          environments: __S(17453, __c545, 13),
+          experiments: __S(17459, __c545, 19),
+          key: S.String,
+          name: S.String,
+          tags: __S(15456, __c483, 0),
+          variations: __S(17461, __c545, 21),
+          _version: S.Number,
+        }),
+      ).annotate({ identifier: "AIConfigTargeting" });
+  }
+}
+function __c546(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectKey: S.String.pipe(T.Label()),
+          configKey: S.String.pipe(T.Label()),
+          variationKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAIConfigVariationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(17184, __c537, 0),
+          totalCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "AIConfigVariationsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

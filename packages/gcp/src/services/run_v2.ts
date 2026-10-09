@@ -2140,8 +2140,8 @@ export const cancelProjectsLocationsJobsExecutions: API.OperationMethod<
   CancelProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsJobsExecutionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CancelProjectsLocationsJobsExecutionsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2160,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2180,8 +2180,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2200,8 @@ export const createProjectsLocationsServices: API.OperationMethod<
   CreateProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateProjectsLocationsServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2592, __c81, 0) as any as S.Schema<CreateProjectsLocationsServicesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2220,8 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
   CreateProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2720, __c85, 0) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2240,8 +2240,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2260,8 +2260,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2280,8 +2280,8 @@ export const deleteProjectsLocationsJobsExecutions: API.OperationMethod<
   DeleteProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteProjectsLocationsJobsExecutionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteProjectsLocationsJobsExecutionsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2300,8 +2300,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2320,8 +2320,8 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
   DeleteProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteProjectsLocationsServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsLocationsServicesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2340,8 +2340,8 @@ export const deleteProjectsLocationsServicesRevisions: API.OperationMethod<
   DeleteProjectsLocationsServicesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteProjectsLocationsServicesRevisionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteProjectsLocationsServicesRevisionsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2360,8 +2360,8 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2380,8 +2380,8 @@ export const deleteProjectsLocationsWorkerPoolsRevisions: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRevisionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2395,8 +2395,8 @@ export const exportImageMetadataProjectsLocations: API.OperationMethod<
   ExportImageMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ExportImageMetadataProjectsLocationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleCloudRunV2Metadata>,
+  input: __S(288, __c9, 0) as any as S.Schema<ExportImageMetadataProjectsLocationsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2415,8 +2415,8 @@ export const exportImageProjectsLocations: API.OperationMethod<
   ExportImageProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ExportImageProjectsLocationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GoogleCloudRunV2ExportImageResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<ExportImageProjectsLocationsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudRunV2ExportImageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2430,8 +2430,8 @@ export const exportMetadataProjectsLocations: API.OperationMethod<
   ExportMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ExportMetadataProjectsLocationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleCloudRunV2Metadata>,
+  input: __S(384, __c12, 0) as any as S.Schema<ExportMetadataProjectsLocationsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2445,8 +2445,8 @@ export const exportProjectMetadataProjectsLocations: API.OperationMethod<
   ExportProjectMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ExportProjectMetadataProjectsLocationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleCloudRunV2Metadata>,
+  input: __S(416, __c13, 0) as any as S.Schema<ExportProjectMetadataProjectsLocationsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2460,8 +2460,8 @@ export const exportStatusProjectsLocationsJobsExecutions: API.OperationMethod<
   ExportStatusProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ExportStatusProjectsLocationsJobsExecutionsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ExportStatusProjectsLocationsJobsExecutionsRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2476,11 +2476,11 @@ export const exportStatusProjectsLocationsServicesRevisions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<ExportStatusProjectsLocationsServicesRevisionsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
+  output: __S(483, __c15, 3) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const getIamPolicyProjectsLocationsJobs: API.OperationMethod<
   GetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2524,8 +2524,8 @@ export const getIamPolicyProjectsLocationsServices: API.OperationMethod<
   GetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2539,8 +2539,8 @@ export const getIamPolicyProjectsLocationsWorkerPools: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerPoolsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerPoolsRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2554,8 +2554,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GoogleCloudRunV2Instance>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<GoogleCloudRunV2Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2569,8 +2569,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetProjectsLocationsJobsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GoogleCloudRunV2Job>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<GoogleCloudRunV2Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2584,8 +2584,8 @@ export const getProjectsLocationsJobsExecutions: API.OperationMethod<
   GetProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetProjectsLocationsJobsExecutionsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleCloudRunV2Execution>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetProjectsLocationsJobsExecutionsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<GoogleCloudRunV2Execution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2599,8 +2599,8 @@ export const getProjectsLocationsJobsExecutionsTasks: API.OperationMethod<
   GetProjectsLocationsJobsExecutionsTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetProjectsLocationsJobsExecutionsTasksRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleCloudRunV2Task>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetProjectsLocationsJobsExecutionsTasksRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<GoogleCloudRunV2Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2614,8 +2614,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2629,8 +2629,8 @@ export const getProjectsLocationsServices: API.OperationMethod<
   GetProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetProjectsLocationsServicesRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudRunV2Service>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetProjectsLocationsServicesRequest>,
+  output: __S(2664, __c83, 8) as any as S.Schema<GoogleCloudRunV2Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2644,8 +2644,8 @@ export const getProjectsLocationsServicesRevisions: API.OperationMethod<
   GetProjectsLocationsServicesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetProjectsLocationsServicesRevisionsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudRunV2Revision>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetProjectsLocationsServicesRevisionsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<GoogleCloudRunV2Revision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2659,8 +2659,8 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GoogleCloudRunV2WorkerPool>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
+  output: __S(2758, __c86, 6) as any as S.Schema<GoogleCloudRunV2WorkerPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2674,8 +2674,8 @@ export const getProjectsLocationsWorkerPoolsRevisions: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetProjectsLocationsWorkerPoolsRevisionsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudRunV2Revision>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<GoogleCloudRunV2Revision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2690,8 +2690,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GoogleCloudRunV2ListInstancesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<GoogleCloudRunV2ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2707,8 +2707,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListProjectsLocationsJobsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GoogleCloudRunV2ListJobsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<GoogleCloudRunV2ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2724,8 +2724,8 @@ export const listProjectsLocationsJobsExecutions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleCloudRunV2ListExecutionsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRunV2ListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2741,8 +2741,8 @@ export const listProjectsLocationsJobsExecutionsTasks: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudRunV2ListTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudRunV2ListTasksResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<GoogleCloudRunV2ListTasksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2758,8 +2758,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2775,8 @@ export const listProjectsLocationsServices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListProjectsLocationsServicesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GoogleCloudRunV2ListServicesResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListProjectsLocationsServicesRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<GoogleCloudRunV2ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2792,8 +2792,8 @@ export const listProjectsLocationsServicesRevisions: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudRunV2ListRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2813,8 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListWorkerPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GoogleCloudRunV2ListWorkerPoolsResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<GoogleCloudRunV2ListWorkerPoolsResponse>,
   errors: [NotFound, Forbidden, LocationWildcardUnsupported, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2830,8 @@ export const listProjectsLocationsWorkerPoolsRevisions: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudRunV2ListRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListProjectsLocationsWorkerPoolsRevisionsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2851,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2871,8 @@ export const patchProjectsLocationsJobs: API.OperationMethod<
   PatchProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<PatchProjectsLocationsJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1440, __c45, 0) as any as S.Schema<PatchProjectsLocationsJobsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2891,8 +2891,8 @@ export const patchProjectsLocationsServices: API.OperationMethod<
   PatchProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PatchProjectsLocationsServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1472, __c46, 0) as any as S.Schema<PatchProjectsLocationsServicesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2911,8 +2911,8 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   PatchProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2931,8 +2931,8 @@ export const runProjectsLocationsJobs: API.OperationMethod<
   RunProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<RunProjectsLocationsJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1668, __c52, 4) as any as S.Schema<RunProjectsLocationsJobsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2951,8 +2951,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1696, __c53, 0) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2971,8 +2971,8 @@ export const setIamPolicyProjectsLocationsJobs: API.OperationMethod<
   SetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1760, __c55, 0) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2991,8 +2991,8 @@ export const setIamPolicyProjectsLocationsServices: API.OperationMethod<
   SetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1792, __c56, 0) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3011,8 @@ export const setIamPolicyProjectsLocationsWorkerPools: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerPoolsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1824, __c57, 0) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerPoolsRequest>,
+  output: __S(583, __c18, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3031,8 +3031,8 @@ export const startProjectsLocationsInstances: API.OperationMethod<
   StartProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<StartProjectsLocationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1856, __c58, 0) as any as S.Schema<StartProjectsLocationsInstancesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3051,8 +3051,8 @@ export const stopProjectsLocationsInstances: API.OperationMethod<
   StopProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<StopProjectsLocationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1888, __c59, 0) as any as S.Schema<StopProjectsLocationsInstancesRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3071,8 +3071,8 @@ export const submitProjectsLocationsBuilds: API.OperationMethod<
   SubmitProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<SubmitProjectsLocationsBuildsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GoogleCloudRunV2SubmitBuildResponse>,
+  input: __S(1923, __c60, 3) as any as S.Schema<SubmitProjectsLocationsBuildsRequest>,
+  output: __S(1924, __c60, 4) as any as S.Schema<GoogleCloudRunV2SubmitBuildResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3091,8 +3091,12 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(
+    1952,
+    __c61,
+    0,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3111,8 +3115,8 @@ export const testIamPermissionsProjectsLocationsJobs: API.OperationMethod<
   TestIamPermissionsProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3131,8 +3135,8 @@ export const testIamPermissionsProjectsLocationsServices: API.OperationMethod<
   TestIamPermissionsProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3152,11 +3156,11 @@ export const testIamPermissionsProjectsLocationsWorkerPools: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkerPoolsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3179,8 @@ export const uploadProjectsLocationsSourceUploads: API.OperationMethod<
   UploadProjectsLocationsSourceUploadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UploadProjectsLocationsSourceUploadsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GoogleCloudRunV2UploadSourceResponse>,
+  input: __S(2401, __c75, 1) as any as S.Schema<UploadProjectsLocationsSourceUploadsRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<GoogleCloudRunV2UploadSourceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3199,8 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2433, __c76, 1) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3208,865 +3212,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2CancelExecutionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:cancel",
-            baseUrl: "https://run.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsJobsExecutionsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(4, __c0, 4)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          response: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.optional(S.String),
-          subnetwork: S.optional(S.String),
-          tags: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2NetworkInterface",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connector: S.optional(S.String),
-          networkInterfaces: S.optional(__S(8, __c1, 0)),
-          egress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2VpcAccess",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          mode: S.optional(S.Number),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2VersionToPath",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          defaultMode: S.optional(S.Number),
-          secret: S.optional(S.String),
-          items: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2SecretVolumeSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          mountOptions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2GCSVolumeSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sizeLimit: S.optional(S.String),
-          medium: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2EmptyDirVolumeSource",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instances: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2CloudSqlInstance",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          server: S.optional(S.String),
-          path: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2NFSVolumeSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          secret: S.optional(__S(13, __c1, 5)),
-          gcs: S.optional(__S(14, __c1, 6)),
-          emptyDir: S.optional(__S(15, __c1, 7)),
-          cloudSqlInstance: S.optional(__S(16, __c2, 0)),
-          nfs: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2Volume" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accelerator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2NodeSelector",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imageDigest: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ContainerStatus",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2GRPCAction",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2TCPSocketAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2HTTPHeader",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          httpHeaders: S.optional(__S(26, __c3, 2)),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2HTTPGetAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          failureThreshold: S.optional(S.Number),
-          timeoutSeconds: S.optional(S.Number),
-          grpc: S.optional(__S(23, __c2, 7)),
-          tcpSocket: S.optional(__S(24, __c3, 0)),
-          httpGet: S.optional(__S(27, __c3, 3)),
-          initialDelaySeconds: S.optional(S.Number),
-          periodSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2Probe" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          subPath: S.optional(S.String),
-          mountPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2VolumeMount",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.optional(S.String),
-          bucket: S.optional(S.String),
-          generation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2CloudStorageSource",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          filename: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2SourceFile",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sources: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2InlinedSource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cloudStorageSource: S.optional(__S(31, __c3, 7)),
-          inlinedSource: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2SourceCode",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          containerPort: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ContainerPort",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          secret: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2SecretKeySelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          secretKeyRef: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2EnvVarSource",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          valueSource: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2EnvVar" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limits: S.optional(__S(10, __c1, 2)),
-          cpuIdle: S.optional(S.Boolean),
-          startupCpuBoost: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ResourceRequirements",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceLocation: S.optional(S.String),
-          functionTarget: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2BuildInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxLauncher: S.optional(S.Boolean),
-          readinessProbe: S.optional(__S(28, __c3, 4)),
-          startupProbe: S.optional(__S(28, __c3, 4)),
-          volumeMounts: S.optional(__S(30, __c3, 6)),
-          name: S.optional(S.String),
-          sourceCode: S.optional(__S(35, __c4, 3)),
-          command: S.optional(__S(6, __c0, 6)),
-          ports: S.optional(__S(37, __c4, 5)),
-          livenessProbe: S.optional(__S(28, __c3, 4)),
-          env: S.optional(__S(41, __c5, 1)),
-          workingDir: S.optional(S.String),
-          image: S.optional(S.String),
-          dependsOn: S.optional(__S(6, __c0, 6)),
-          baseImageUri: S.optional(S.String),
-          resources: S.optional(__S(42, __c5, 2)),
-          buildInfo: S.optional(__S(43, __c5, 3)),
-          args: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2Container",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          executionReason: S.optional(S.String),
-          revisionReason: S.optional(S.String),
-          reason: S.optional(S.String),
-          instanceReason: S.optional(S.String),
-          severity: S.optional(S.String),
-          message: S.optional(S.String),
-          lastTransitionTime: S.optional(S.String),
-          type: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2Condition",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          useDefault: S.optional(S.Boolean),
-          breakglassJustification: S.optional(S.String),
-          policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2BinaryAuthorization",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(46, __c5, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientVersion: S.optional(S.String),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          satisfiesPzs: S.optional(S.Boolean),
-          encryptionKeyShutdownDuration: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          expireTime: S.optional(S.String),
-          creator: S.optional(S.String),
-          generation: S.optional(S.String),
-          volumes: S.optional(__S(19, __c2, 3)),
-          iapEnabled: S.optional(S.Boolean),
-          encryptionKeyRevocationAction: S.optional(S.String),
-          defaultUriDisabled: S.optional(S.Boolean),
-          nodeSelector: S.optional(__S(20, __c2, 4)),
-          createTime: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          containerStatuses: S.optional(__S(22, __c2, 6)),
-          observedGeneration: S.optional(S.String),
-          lastModifier: S.optional(S.String),
-          name: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
-          etag: S.optional(S.String),
-          logUri: S.optional(S.String),
-          restartPolicy: S.optional(S.String),
-          sshEnabled: S.optional(S.Boolean),
-          encryptionKey: S.optional(S.String),
-          invokerIamDisabled: S.optional(S.Boolean),
-          uid: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          containers: S.optional(__S(45, __c5, 5)),
-          urls: S.optional(__S(6, __c0, 6)),
-          terminalCondition: S.optional(__S(46, __c5, 6)),
-          ingress: S.optional(S.String),
-          binaryAuthorization: S.optional(__S(47, __c5, 7)),
-          description: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          conditions: S.optional(__S(48, __c6, 0)),
-          updateTime: S.optional(S.String),
-          launchStage: S.optional(S.String),
-          client: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2Instance" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/instances",
-            baseUrl: "https://run.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          identityType: S.optional(S.String),
-          identityCertificateEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2WorkloadIdentityConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionKey: S.optional(S.String),
-          timeout: S.optional(S.String),
-          containers: S.optional(__S(45, __c5, 5)),
-          volumes: S.optional(__S(19, __c2, 3)),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          serviceAccount: S.optional(S.String),
-          nodeSelector: S.optional(__S(20, __c2, 4)),
-          maxRetries: S.optional(S.Number),
-          executionEnvironment: S.optional(S.String),
-          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          workloadIdentityConfig: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2TaskTemplate",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clientVersion: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          taskCount: S.optional(S.Number),
-          delayExecution: S.optional(S.Boolean),
-          client: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
-          template: S.optional(__S(52, __c6, 4)),
-          parallelism: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ExecutionTemplate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completionStatus: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          completionTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ExecutionReference",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientVersion: S.optional(S.String),
-          executionCount: S.optional(S.Number),
-          satisfiesPzs: S.optional(S.Boolean),
-          startExecutionToken: S.optional(S.String),
-          terminalCondition: S.optional(__S(46, __c5, 6)),
-          template: S.optional(__S(53, __c6, 5)),
-          labels: S.optional(__S(10, __c1, 2)),
-          lastModifier: S.optional(S.String),
-          launchStage: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          creator: S.optional(S.String),
-          createTime: S.optional(S.String),
-          observedGeneration: S.optional(S.String),
-          generation: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          binaryAuthorization: S.optional(__S(47, __c5, 7)),
-          reconciling: S.optional(S.Boolean),
-          deleteTime: S.optional(S.String),
-          runExecutionToken: S.optional(S.String),
-          conditions: S.optional(__S(48, __c6, 0)),
-          latestCreatedExecution: S.optional(__S(54, __c6, 6)),
-          functionalType: S.optional(S.String),
-          uid: S.optional(S.String),
-          client: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2Job" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/jobs",
-            baseUrl: "https://run.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsJobsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          percent: S.optional(S.Number),
-          tag: S.optional(S.String),
-          type: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2TrafficTarget",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          multiRegionId: S.optional(S.String),
-          regions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2MultiRegionSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxInstanceCount: S.optional(S.Number),
-          manualInstanceCount: S.optional(S.Number),
-          scalingMode: S.optional(S.String),
-          minInstanceCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ServiceScaling",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          concurrencyUtilization: S.optional(S.Number),
-          maxInstanceCount: S.optional(S.Number),
-          minInstanceCount: S.optional(S.Number),
-          cpuUtilization: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2RevisionScaling",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mesh: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2ServiceMesh",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionKey: S.optional(S.String),
-          clientVersion: S.optional(S.String),
-          healthCheckDisabled: S.optional(S.Boolean),
-          encryptionKeyShutdownDuration: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          timeout: S.optional(S.String),
-          maxInstanceRequestConcurrency: S.optional(S.Number),
-          scaling: S.optional(__S(61, __c7, 5)),
-          revision: S.optional(S.String),
-          serviceMesh: S.optional(__S(62, __c7, 6)),
-          encryptionKeyRevocationAction: S.optional(S.String),
-          containers: S.optional(__S(45, __c5, 5)),
-          workloadIdentityConfig: S.optional(__S(51, __c6, 3)),
-          client: S.optional(S.String),
-          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          nodeSelector: S.optional(__S(20, __c2, 4)),
-          sessionAffinity: S.optional(S.Boolean),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          annotations: S.optional(__S(10, __c1, 2)),
-          serviceAccount: S.optional(S.String),
-          volumes: S.optional(__S(19, __c2, 3)),
-          executionEnvironment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2RevisionTemplate",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workerPool: S.optional(S.String),
-          enableAutomaticUpdates: S.optional(S.Boolean),
-          environmentVariables: S.optional(__S(10, __c1, 2)),
-          imageUri: S.optional(S.String),
-          functionTarget: S.optional(S.String),
-          name: S.optional(S.String),
-          sourceLocation: S.optional(S.String),
-          baseImage: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2BuildConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          revision: S.optional(S.String),
-          tag: S.optional(S.String),
-          type: S.optional(S.String),
-          uri: S.optional(S.String),
-          percent: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2TrafficTargetStatus",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          traffic: S.optional(__S(58, __c7, 2)),
-          deleteTime: S.optional(S.String),
-          conditions: S.optional(__S(48, __c6, 0)),
-          multiRegionSettings: S.optional(__S(59, __c7, 3)),
-          scaling: S.optional(__S(60, __c7, 4)),
-          customAudiences: S.optional(__S(6, __c0, 6)),
-          annotations: S.optional(__S(10, __c1, 2)),
-          urls: S.optional(__S(6, __c0, 6)),
-          uid: S.optional(S.String),
-          observedGeneration: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          functionalType: S.optional(S.String),
-          defaultUriDisabled: S.optional(S.Boolean),
-          ingress: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          template: S.optional(__S(63, __c7, 7)),
-          reconciling: S.optional(S.Boolean),
-          sshEnabled: S.optional(S.Boolean),
-          latestReadyRevision: S.optional(S.String),
-          threatDetectionEnabled: S.optional(S.Boolean),
-          lastModifier: S.optional(S.String),
-          buildConfig: S.optional(__S(64, __c8, 0)),
-          launchStage: S.optional(S.String),
-          latestCreatedRevision: S.optional(S.String),
-          description: S.optional(S.String),
-          binaryAuthorization: S.optional(__S(47, __c5, 7)),
-          client: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          name: S.optional(S.String),
-          trafficStatuses: S.optional(__S(66, __c8, 2)),
-          etag: S.optional(S.String),
-          uri: S.optional(S.String),
-          createTime: S.optional(S.String),
-          iapEnabled: S.optional(S.Boolean),
-          creator: S.optional(S.String),
-          invokerIamDisabled: S.optional(S.Boolean),
-          terminalCondition: S.optional(__S(46, __c5, 6)),
-          generation: S.optional(S.String),
-          clientVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudRunV2Service" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          serviceId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/services",
-            baseUrl: "https://run.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsServicesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          percent: S.optional(S.Number),
-          revision: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2InstanceSplitStatus",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          manualInstanceCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2WorkerPoolScaling",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nodeSelector: S.optional(__S(20, __c2, 4)),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          labels: S.optional(__S(10, __c1, 2)),
-          encryptionKey: S.optional(S.String),
-          clientVersion: S.optional(S.String),
-          encryptionKeyRevocationAction: S.optional(S.String),
-          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          revision: S.optional(S.String),
-          serviceMesh: S.optional(__S(62, __c7, 6)),
-          encryptionKeyShutdownDuration: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
-          volumes: S.optional(__S(19, __c2, 3)),
-          containers: S.optional(__S(45, __c5, 5)),
-          serviceAccount: S.optional(S.String),
-          client: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2WorkerPoolRevisionTemplate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          percent: S.optional(S.Number),
-          type: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2InstanceSplit",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          observedGeneration: S.optional(S.String),
-          instanceSplitStatuses: S.optional(__S(70, __c8, 6)),
-          binaryAuthorization: S.optional(__S(47, __c5, 7)),
-          terminalCondition: S.optional(__S(46, __c5, 6)),
-          latestCreatedRevision: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          generation: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          scaling: S.optional(__S(71, __c8, 7)),
-          annotations: S.optional(__S(10, __c1, 2)),
-          template: S.optional(__S(72, __c9, 0)),
-          clientVersion: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          uid: S.optional(S.String),
-          client: S.optional(S.String),
-          threatDetectionEnabled: S.optional(S.Boolean),
-          creator: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          latestReadyRevision: S.optional(S.String),
-          description: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          customAudiences: S.optional(__S(6, __c0, 6)),
-          conditions: S.optional(__S(48, __c6, 0)),
-          updateTime: S.optional(S.String),
-          launchStage: S.optional(S.String),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-          lastModifier: S.optional(S.String),
-          instanceSplits: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRunV2WorkerPool",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          workerPoolId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/workerPools",
-            baseUrl: "https://run.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsWorkerPoolsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           etag: S.optional(S.String.pipe(T.Query())),
@@ -4076,7 +3221,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4088,7 +3237,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsJobsRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4102,7 +3255,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4114,11 +3267,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -4130,7 +3291,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsServicesRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -4142,7 +3307,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsServicesRevisionsRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -4154,7 +3323,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkerPoolsRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4166,7 +3339,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkerPoolsRevisionsRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4180,7 +3357,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExportImageMetadataProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metadata: S.optional(S.String),
@@ -4202,7 +3383,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4221,7 +3402,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRunV2ExportImageResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4235,7 +3420,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExportMetadataProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4249,7 +3438,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExportProjectMetadataProjectsLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4264,20 +3457,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExportStatusProjectsLocationsJobsExecutionsRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           canonicalCode: S.optional(S.Number),
-          messageSet: S.optional(__S(81, __c10, 1)),
+          messageSet: S.optional(__S(128, __c4, 0)),
           space: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UtilStatusProto" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(94, __c11, 6)),
+          status: S.optional(__S(480, __c15, 0)),
           exportedImageDigest: S.optional(S.String),
           exportJobState: S.optional(S.String),
           tag: S.optional(S.String),
@@ -4285,23 +3482,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRunV2ImageExportStatus",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          imageExportStatuses: S.optional(__S(96, __c12, 0)),
+          imageExportStatuses: S.optional(__S(482, __c15, 2)),
           operationState: S.optional(S.String),
           operationId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ExportStatusResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4316,7 +3513,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ExportStatusProjectsLocationsServicesRevisionsRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4331,31 +3532,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(6, __c0, 6)),
+          exemptedMembers: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(101, __c12, 5)),
+          auditLogConfigs: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4364,26 +3565,30 @@ function __c13(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeExpr" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(6, __c0, 6)),
-          condition: S.optional(__S(104, __c13, 0)),
+          members: S.optional(__S(2112, __c66, 0)),
+          condition: S.optional(__S(580, __c18, 4)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(581, __c18, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(103, __c12, 7)),
+          auditConfigs: S.optional(__S(579, __c18, 3)),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(106, __c13, 2)),
+          bindings: S.optional(__S(582, __c18, 6)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4398,7 +3603,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsJobsRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4413,7 +3622,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsServicesRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4428,7 +3641,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsWorkerPoolsRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4440,7 +3657,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4452,7 +3669,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4462,7 +3683,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsExecutionsRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           runningCount: S.optional(S.Number),
@@ -4474,11 +3699,11 @@ function __c14(j: number): any {
           reconciling: S.optional(S.Boolean),
           parallelism: S.optional(S.Number),
           observedGeneration: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
+          annotations: S.optional(__S(2240, __c70, 0)),
           completionTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          conditions: S.optional(__S(48, __c6, 0)),
+          labels: S.optional(__S(2240, __c70, 0)),
+          conditions: S.optional(__S(2176, __c68, 0)),
           retriedCount: S.optional(S.Number),
           updateTime: S.optional(S.String),
           generation: S.optional(S.String),
@@ -4494,12 +3719,16 @@ function __c14(j: number): any {
           launchStage: S.optional(S.String),
           cancelledCount: S.optional(S.Number),
           satisfiesPzs: S.optional(S.Boolean),
-          template: S.optional(__S(52, __c6, 4)),
+          template: S.optional(__S(2496, __c78, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2Execution",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4509,17 +3738,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsExecutionsTasksRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(4, __c0, 4)),
+          status: S.optional(__S(1602, __c50, 2)),
           exitCode: S.optional(S.Number),
           termSignal: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2TaskAttemptResult",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           encryptionKey: S.optional(S.String),
@@ -4531,34 +3764,38 @@ function __c14(j: number): any {
           job: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           executionEnvironment: S.optional(S.String),
-          nodeSelector: S.optional(__S(20, __c2, 4)),
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
           expireTime: S.optional(S.String),
           retried: S.optional(S.Number),
-          lastAttemptResult: S.optional(__S(116, __c14, 4)),
-          annotations: S.optional(__S(10, __c1, 2)),
+          lastAttemptResult: S.optional(__S(864, __c27, 0)),
+          annotations: S.optional(__S(2240, __c70, 0)),
           maxRetries: S.optional(S.Number),
           observedGeneration: S.optional(S.String),
           index: S.optional(S.Number),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          workloadIdentityConfig: S.optional(__S(51, __c6, 3)),
-          containers: S.optional(__S(45, __c5, 5)),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          workloadIdentityConfig: S.optional(__S(2560, __c80, 0)),
+          containers: S.optional(__S(2174, __c67, 30)),
           startTime: S.optional(S.String),
           scheduledTime: S.optional(S.String),
           execution: S.optional(S.String),
           logUri: S.optional(S.String),
           timeout: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
+          labels: S.optional(__S(2240, __c70, 0)),
           completionTime: S.optional(S.String),
-          volumes: S.optional(__S(19, __c2, 3)),
+          volumes: S.optional(__S(2155, __c67, 11)),
           deleteTime: S.optional(S.String),
           uid: S.optional(S.String),
-          conditions: S.optional(__S(48, __c6, 0)),
+          conditions: S.optional(__S(2176, __c68, 0)),
           updateTime: S.optional(S.String),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2Task" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4568,7 +3805,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4580,7 +3821,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4592,7 +3833,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsServicesRevisionsRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           desiredMinInstanceCount: S.optional(S.Number),
@@ -4600,15 +3845,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRunV2RevisionScalingStatus",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          volumes: S.optional(__S(19, __c2, 3)),
+          volumes: S.optional(__S(2155, __c67, 11)),
           logUri: S.optional(S.String),
           encryptionKeyShutdownDuration: S.optional(S.String),
           executionEnvironment: S.optional(S.String),
           maxInstanceRequestConcurrency: S.optional(S.Number),
-          scalingStatus: S.optional(__S(121, __c15, 1)),
+          scalingStatus: S.optional(__S(992, __c31, 0)),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
           creator: S.optional(S.String),
           encryptionKeyRevocationAction: S.optional(S.String),
@@ -4618,31 +3863,35 @@ function __c15(j: number): any {
           timeout: S.optional(S.String),
           clientVersion: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
+          labels: S.optional(__S(2240, __c70, 0)),
           generation: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           updateTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          conditions: S.optional(__S(48, __c6, 0)),
+          conditions: S.optional(__S(2176, __c68, 0)),
           client: S.optional(S.String),
           name: S.optional(S.String),
           etag: S.optional(S.String),
-          serviceMesh: S.optional(__S(62, __c7, 6)),
-          workloadIdentityConfig: S.optional(__S(51, __c6, 3)),
-          vpcAccess: S.optional(__S(9, __c1, 1)),
-          scaling: S.optional(__S(61, __c7, 5)),
+          serviceMesh: S.optional(__S(2688, __c84, 0)),
+          workloadIdentityConfig: S.optional(__S(2560, __c80, 0)),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          scaling: S.optional(__S(2624, __c82, 0)),
           satisfiesPzs: S.optional(S.Boolean),
           encryptionKey: S.optional(S.String),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
+          annotations: S.optional(__S(2240, __c70, 0)),
           observedGeneration: S.optional(S.String),
           service: S.optional(S.String),
-          nodeSelector: S.optional(__S(20, __c2, 4)),
-          containers: S.optional(__S(45, __c5, 5)),
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
+          containers: S.optional(__S(2174, __c67, 30)),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2Revision" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4652,7 +3901,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkerPoolsRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4662,7 +3915,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkerPoolsRevisionsRequest",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4679,20 +3936,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesRequest",
       });
-    case 6:
-      return S.Array(__S(49, __c6, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(2082, __c65, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          instances: S.optional(__S(126, __c15, 6)),
+          instances: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListInstancesResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4712,17 +3969,21 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsJobsRequest",
       });
     case 1:
-      return S.Array(__S(55, __c6, 7));
+      return S.Array(__S(2530, __c79, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(129, __c16, 1)),
+          jobs: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListJobsResponse",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4739,18 +4000,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsJobsExecutionsRequest",
       });
-    case 4:
-      return S.Array(__S(114, __c14, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          executions: S.optional(__S(132, __c16, 4)),
+          executions: S.optional(__S(1153, __c36, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListExecutionsResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4767,22 +4032,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsJobsExecutionsTasksRequest",
       });
-    case 7:
-      return S.Array(__S(117, __c14, 5));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(865, __c27, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          tasks: S.optional(__S(135, __c16, 7)),
+          tasks: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListTasksResponse",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -4800,19 +4065,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
     case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(138, __c17, 2)),
+          operations: S.optional(__S(1217, __c38, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4829,19 +4098,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsServicesRequest",
       });
-    case 5:
-      return S.Array(__S(67, __c8, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(2664, __c83, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(141, __c17, 5)),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          services: S.optional(__S(1249, __c39, 1)),
+          unreachable: S.optional(__S(2112, __c66, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListServicesResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4860,20 +4133,24 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(993, __c31, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          revisions: S.optional(__S(144, __c18, 0)),
+          revisions: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListRevisionsResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4890,18 +4167,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkerPoolsRequest",
       });
-    case 3:
-      return S.Array(__S(75, __c9, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(2758, __c86, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workerPools: S.optional(__S(147, __c18, 3)),
+          workerPools: S.optional(__S(1345, __c42, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListWorkerPoolsResponse",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4918,27 +4199,35 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkerPoolsRevisionsRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesRequest",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -4947,7 +4236,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4957,14 +4246,18 @@ function __c19(j: number): any {
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2664, __c83, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsServicesRequest",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -4972,76 +4265,135 @@ function __c19(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           forceNewRevision: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2758, __c86, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsWorkerPoolsRequest",
       });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:cancel",
+            baseUrl: "https://run.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsJobsExecutionsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2CancelExecutionRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(1600, __c50, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(6, __c0, 6)),
-          env: S.optional(__S(41, __c5, 1)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(1602, __c50, 2)),
+          metadata: S.optional(__S(1600, __c50, 0)),
+          response: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          args: S.optional(__S(2112, __c66, 0)),
+          env: S.optional(__S(2211, __c69, 3)),
           clearArgs: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ContainerOverride",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.String),
-          containerOverrides: S.optional(__S(155, __c19, 3)),
+          containerOverrides: S.optional(__S(1665, __c52, 1)),
           delayExecution: S.optional(S.Boolean),
           taskCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2Overrides",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
           etag: S.optional(S.String),
-          overrides: S.optional(__S(156, __c19, 4)),
+          overrides: S.optional(__S(1666, __c52, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2RunJobRequest",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(157, __c19, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1667, __c52, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v2/{+name}:run", baseUrl: "https://run.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "RunProjectsLocationsJobsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1SetIamPolicyRequest",
-      });
   }
 }
-function __c20(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5052,11 +4404,28 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(583, __c18, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1SetIamPolicyRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5067,11 +4436,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsJobsRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5082,11 +4455,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsServicesRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5097,11 +4474,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsWorkerPoolsRequest",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5112,11 +4493,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "StartProjectsLocationsInstancesRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5127,7 +4512,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           generation: S.optional(S.String),
@@ -5137,7 +4526,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRunV2StorageSource",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           functionTarget: S.optional(S.String),
@@ -5146,37 +4535,33 @@ function __c20(j: number): any {
           enableAutomaticUpdates: S.optional(S.Boolean),
           runtime: S.optional(S.String),
           projectDescriptor: S.optional(S.String),
-          environmentVariables: S.optional(__S(10, __c1, 2)),
+          environmentVariables: S.optional(__S(2240, __c70, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2BuildpacksBuild",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dockerBuild: S.optional(__S(81, __c10, 1)),
-          tags: S.optional(__S(6, __c0, 6)),
+          dockerBuild: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(2112, __c66, 0)),
           client: S.optional(S.String),
           imageUri: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          storageSource: S.optional(__S(166, __c20, 6)),
+          storageSource: S.optional(__S(1920, __c60, 0)),
           workerPool: S.optional(S.String),
           machineType: S.optional(S.String),
-          buildpackBuild: S.optional(__S(167, __c20, 7)),
+          buildpackBuild: S.optional(__S(1921, __c60, 1)),
           releaseTrack: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2SubmitBuildRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1922, __c60, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5187,29 +4572,25 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SubmitProjectsLocationsBuildsRequest",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           baseImageWarning: S.optional(S.String),
-          buildOperation: S.optional(__S(5, __c0, 5)),
+          buildOperation: S.optional(__S(1632, __c51, 0)),
           baseImageUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2SubmitBuildResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1TestIamPermissionsRequest",
-      });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5220,11 +4601,27 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsInstancesRequest",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1TestIamPermissionsRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5235,11 +4632,441 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsJobsRequest",
       });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          instanceId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/instances",
+            baseUrl: "https://run.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageDigest: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ContainerStatus",
+      });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientVersion: S.optional(S.String),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
+          satisfiesPzs: S.optional(S.Boolean),
+          encryptionKeyShutdownDuration: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          expireTime: S.optional(S.String),
+          creator: S.optional(S.String),
+          generation: S.optional(S.String),
+          volumes: S.optional(__S(2155, __c67, 11)),
+          iapEnabled: S.optional(S.Boolean),
+          encryptionKeyRevocationAction: S.optional(S.String),
+          defaultUriDisabled: S.optional(S.Boolean),
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
+          createTime: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          containerStatuses: S.optional(__S(2081, __c65, 1)),
+          observedGeneration: S.optional(S.String),
+          lastModifier: S.optional(S.String),
+          name: S.optional(S.String),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          etag: S.optional(S.String),
+          logUri: S.optional(S.String),
+          restartPolicy: S.optional(S.String),
+          sshEnabled: S.optional(S.Boolean),
+          encryptionKey: S.optional(S.String),
+          invokerIamDisabled: S.optional(S.Boolean),
+          uid: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          containers: S.optional(__S(2174, __c67, 30)),
+          urls: S.optional(__S(2112, __c66, 0)),
+          terminalCondition: S.optional(__S(2175, __c67, 31)),
+          ingress: S.optional(S.String),
+          binaryAuthorization: S.optional(__S(2304, __c72, 0)),
+          description: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          conditions: S.optional(__S(2176, __c68, 0)),
+          updateTime: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          client: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2Instance" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(S.String),
+          subnetwork: S.optional(S.String),
+          tags: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2NetworkInterface",
+      });
+    case 1:
+      return S.Array(__S(2144, __c67, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connector: S.optional(S.String),
+          networkInterfaces: S.optional(__S(2145, __c67, 1)),
+          egress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2VpcAccess",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          mode: S.optional(S.Number),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2VersionToPath",
+      });
+    case 4:
+      return S.Array(__S(2147, __c67, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          defaultMode: S.optional(S.Number),
+          secret: S.optional(S.String),
+          items: S.optional(__S(2148, __c67, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2SecretVolumeSource",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
+          bucket: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          mountOptions: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2GCSVolumeSource",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sizeLimit: S.optional(S.String),
+          medium: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2EmptyDirVolumeSource",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          instances: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2CloudSqlInstance",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.optional(S.String),
+          path: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2NFSVolumeSource",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          secret: S.optional(__S(2149, __c67, 5)),
+          gcs: S.optional(__S(2150, __c67, 6)),
+          emptyDir: S.optional(__S(2151, __c67, 7)),
+          cloudSqlInstance: S.optional(__S(2152, __c67, 8)),
+          nfs: S.optional(__S(2153, __c67, 9)),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2Volume" });
+    case 11:
+      return S.Array(__S(2154, __c67, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          accelerator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2NodeSelector",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2GRPCAction",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2TCPSocketAction",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2HTTPHeader",
+      });
+    case 16:
+      return S.Array(__S(2159, __c67, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          httpHeaders: S.optional(__S(2160, __c67, 16)),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2HTTPGetAction",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          failureThreshold: S.optional(S.Number),
+          timeoutSeconds: S.optional(S.Number),
+          grpc: S.optional(__S(2157, __c67, 13)),
+          tcpSocket: S.optional(__S(2158, __c67, 14)),
+          httpGet: S.optional(__S(2161, __c67, 17)),
+          initialDelaySeconds: S.optional(S.Number),
+          periodSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2Probe" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          subPath: S.optional(S.String),
+          mountPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2VolumeMount",
+      });
+    case 20:
+      return S.Array(__S(2163, __c67, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          filename: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2SourceFile",
+      });
+    case 22:
+      return S.Array(__S(2165, __c67, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          sources: S.optional(__S(2166, __c67, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2InlinedSource",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          cloudStorageSource: S.optional(__S(2272, __c71, 0)),
+          inlinedSource: S.optional(__S(2167, __c67, 23)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2SourceCode",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          containerPort: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ContainerPort",
+      });
+    case 26:
+      return S.Array(__S(2169, __c67, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          limits: S.optional(__S(2240, __c70, 0)),
+          cpuIdle: S.optional(S.Boolean),
+          startupCpuBoost: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ResourceRequirements",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          sourceLocation: S.optional(S.String),
+          functionTarget: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2BuildInfo",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxLauncher: S.optional(S.Boolean),
+          readinessProbe: S.optional(__S(2162, __c67, 18)),
+          startupProbe: S.optional(__S(2162, __c67, 18)),
+          volumeMounts: S.optional(__S(2164, __c67, 20)),
+          name: S.optional(S.String),
+          sourceCode: S.optional(__S(2168, __c67, 24)),
+          command: S.optional(__S(2112, __c66, 0)),
+          ports: S.optional(__S(2170, __c67, 26)),
+          livenessProbe: S.optional(__S(2162, __c67, 18)),
+          env: S.optional(__S(2211, __c69, 3)),
+          workingDir: S.optional(S.String),
+          image: S.optional(S.String),
+          dependsOn: S.optional(__S(2112, __c66, 0)),
+          baseImageUri: S.optional(S.String),
+          resources: S.optional(__S(2171, __c67, 27)),
+          buildInfo: S.optional(__S(2172, __c67, 28)),
+          args: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2Container",
+      });
+    case 30:
+      return S.Array(__S(2173, __c67, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          executionReason: S.optional(S.String),
+          revisionReason: S.optional(S.String),
+          reason: S.optional(S.String),
+          instanceReason: S.optional(S.String),
+          severity: S.optional(S.String),
+          message: S.optional(S.String),
+          lastTransitionTime: S.optional(S.String),
+          type: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2Condition",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2175, __c67, 31));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secret: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2SecretKeySelector",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secretKeyRef: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2EnvVarSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          valueSource: S.optional(__S(2209, __c69, 1)),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2EnvVar" });
+    case 3:
+      return S.Array(__S(2210, __c69, 2));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          bucket: S.optional(S.String),
+          generation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2CloudStorageSource",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          useDefault: S.optional(S.Boolean),
+          breakglassJustification: S.optional(S.String),
+          policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2BinaryAuthorization",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5250,11 +5077,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsServicesRequest",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5267,7 +5098,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5281,7 +5112,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2400, __c75, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5295,12 +5126,16 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cloudStorageSource: S.optional(__S(31, __c3, 7)),
+          cloudStorageSource: S.optional(__S(2272, __c71, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2UploadSourceResponse",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.String),
@@ -5308,11 +5143,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleLongrunningWaitOperationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2432, __c76, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5325,7 +5160,431 @@ function __c22(j: number): any {
       });
   }
 }
-
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/jobs",
+            baseUrl: "https://run.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsJobsRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionKey: S.optional(S.String),
+          timeout: S.optional(S.String),
+          containers: S.optional(__S(2174, __c67, 30)),
+          volumes: S.optional(__S(2155, __c67, 11)),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          serviceAccount: S.optional(S.String),
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
+          maxRetries: S.optional(S.Number),
+          executionEnvironment: S.optional(S.String),
+          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
+          workloadIdentityConfig: S.optional(__S(2560, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2TaskTemplate",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientVersion: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          taskCount: S.optional(S.Number),
+          delayExecution: S.optional(S.Boolean),
+          client: S.optional(S.String),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          template: S.optional(__S(2496, __c78, 0)),
+          parallelism: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ExecutionTemplate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completionStatus: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          completionTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ExecutionReference",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientVersion: S.optional(S.String),
+          executionCount: S.optional(S.Number),
+          satisfiesPzs: S.optional(S.Boolean),
+          startExecutionToken: S.optional(S.String),
+          terminalCondition: S.optional(__S(2175, __c67, 31)),
+          template: S.optional(__S(2528, __c79, 0)),
+          labels: S.optional(__S(2240, __c70, 0)),
+          lastModifier: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          creator: S.optional(S.String),
+          createTime: S.optional(S.String),
+          observedGeneration: S.optional(S.String),
+          generation: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          binaryAuthorization: S.optional(__S(2304, __c72, 0)),
+          reconciling: S.optional(S.Boolean),
+          deleteTime: S.optional(S.String),
+          runExecutionToken: S.optional(S.String),
+          conditions: S.optional(__S(2176, __c68, 0)),
+          latestCreatedExecution: S.optional(__S(2529, __c79, 1)),
+          functionalType: S.optional(S.String),
+          uid: S.optional(S.String),
+          client: S.optional(S.String),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2Job" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          identityType: S.optional(S.String),
+          identityCertificateEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2WorkloadIdentityConfig",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          serviceId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(2664, __c83, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/services",
+            baseUrl: "https://run.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsServicesRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          concurrencyUtilization: S.optional(S.Number),
+          maxInstanceCount: S.optional(S.Number),
+          minInstanceCount: S.optional(S.Number),
+          cpuUtilization: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2RevisionScaling",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percent: S.optional(S.Number),
+          tag: S.optional(S.String),
+          type: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2TrafficTarget",
+      });
+    case 1:
+      return S.Array(__S(2656, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          multiRegionId: S.optional(S.String),
+          regions: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2MultiRegionSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxInstanceCount: S.optional(S.Number),
+          manualInstanceCount: S.optional(S.Number),
+          scalingMode: S.optional(S.String),
+          minInstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ServiceScaling",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionKey: S.optional(S.String),
+          clientVersion: S.optional(S.String),
+          healthCheckDisabled: S.optional(S.Boolean),
+          encryptionKeyShutdownDuration: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          timeout: S.optional(S.String),
+          maxInstanceRequestConcurrency: S.optional(S.Number),
+          scaling: S.optional(__S(2624, __c82, 0)),
+          revision: S.optional(S.String),
+          serviceMesh: S.optional(__S(2688, __c84, 0)),
+          encryptionKeyRevocationAction: S.optional(S.String),
+          containers: S.optional(__S(2174, __c67, 30)),
+          workloadIdentityConfig: S.optional(__S(2560, __c80, 0)),
+          client: S.optional(S.String),
+          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
+          sessionAffinity: S.optional(S.Boolean),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          serviceAccount: S.optional(S.String),
+          volumes: S.optional(__S(2155, __c67, 11)),
+          executionEnvironment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2RevisionTemplate",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workerPool: S.optional(S.String),
+          enableAutomaticUpdates: S.optional(S.Boolean),
+          environmentVariables: S.optional(__S(2240, __c70, 0)),
+          imageUri: S.optional(S.String),
+          functionTarget: S.optional(S.String),
+          name: S.optional(S.String),
+          sourceLocation: S.optional(S.String),
+          baseImage: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2BuildConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          revision: S.optional(S.String),
+          tag: S.optional(S.String),
+          type: S.optional(S.String),
+          uri: S.optional(S.String),
+          percent: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2TrafficTargetStatus",
+      });
+    case 7:
+      return S.Array(__S(2662, __c83, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          traffic: S.optional(__S(2657, __c83, 1)),
+          deleteTime: S.optional(S.String),
+          conditions: S.optional(__S(2176, __c68, 0)),
+          multiRegionSettings: S.optional(__S(2658, __c83, 2)),
+          scaling: S.optional(__S(2659, __c83, 3)),
+          customAudiences: S.optional(__S(2112, __c66, 0)),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          urls: S.optional(__S(2112, __c66, 0)),
+          uid: S.optional(S.String),
+          observedGeneration: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          functionalType: S.optional(S.String),
+          defaultUriDisabled: S.optional(S.Boolean),
+          ingress: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          template: S.optional(__S(2660, __c83, 4)),
+          reconciling: S.optional(S.Boolean),
+          sshEnabled: S.optional(S.Boolean),
+          latestReadyRevision: S.optional(S.String),
+          threatDetectionEnabled: S.optional(S.Boolean),
+          lastModifier: S.optional(S.String),
+          buildConfig: S.optional(__S(2661, __c83, 5)),
+          launchStage: S.optional(S.String),
+          latestCreatedRevision: S.optional(S.String),
+          description: S.optional(S.String),
+          binaryAuthorization: S.optional(__S(2304, __c72, 0)),
+          client: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          name: S.optional(S.String),
+          trafficStatuses: S.optional(__S(2663, __c83, 7)),
+          etag: S.optional(S.String),
+          uri: S.optional(S.String),
+          createTime: S.optional(S.String),
+          iapEnabled: S.optional(S.Boolean),
+          creator: S.optional(S.String),
+          invokerIamDisabled: S.optional(S.Boolean),
+          terminalCondition: S.optional(__S(2175, __c67, 31)),
+          generation: S.optional(S.String),
+          clientVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudRunV2Service" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mesh: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2ServiceMesh",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          workerPoolId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2758, __c86, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/workerPools",
+            baseUrl: "https://run.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsWorkerPoolsRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percent: S.optional(S.Number),
+          revision: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2InstanceSplitStatus",
+      });
+    case 1:
+      return S.Array(__S(2752, __c86, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          manualInstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2WorkerPoolScaling",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nodeSelector: S.optional(__S(2156, __c67, 12)),
+          vpcAccess: S.optional(__S(2146, __c67, 2)),
+          labels: S.optional(__S(2240, __c70, 0)),
+          encryptionKey: S.optional(S.String),
+          clientVersion: S.optional(S.String),
+          encryptionKeyRevocationAction: S.optional(S.String),
+          gpuZonalRedundancyDisabled: S.optional(S.Boolean),
+          revision: S.optional(S.String),
+          serviceMesh: S.optional(__S(2688, __c84, 0)),
+          encryptionKeyShutdownDuration: S.optional(S.String),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          volumes: S.optional(__S(2155, __c67, 11)),
+          containers: S.optional(__S(2174, __c67, 30)),
+          serviceAccount: S.optional(S.String),
+          client: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2WorkerPoolRevisionTemplate",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          percent: S.optional(S.Number),
+          type: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2InstanceSplit",
+      });
+    case 5:
+      return S.Array(__S(2756, __c86, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          observedGeneration: S.optional(S.String),
+          instanceSplitStatuses: S.optional(__S(2753, __c86, 1)),
+          binaryAuthorization: S.optional(__S(2304, __c72, 0)),
+          terminalCondition: S.optional(__S(2175, __c67, 31)),
+          latestCreatedRevision: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          generation: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          scaling: S.optional(__S(2754, __c86, 2)),
+          annotations: S.optional(__S(2240, __c70, 0)),
+          template: S.optional(__S(2755, __c86, 3)),
+          clientVersion: S.optional(S.String),
+          labels: S.optional(__S(2240, __c70, 0)),
+          uid: S.optional(S.String),
+          client: S.optional(S.String),
+          threatDetectionEnabled: S.optional(S.Boolean),
+          creator: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          latestReadyRevision: S.optional(S.String),
+          description: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          customAudiences: S.optional(__S(2112, __c66, 0)),
+          conditions: S.optional(__S(2176, __c68, 0)),
+          updateTime: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+          lastModifier: S.optional(S.String),
+          instanceSplits: S.optional(__S(2757, __c86, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRunV2WorkerPool",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

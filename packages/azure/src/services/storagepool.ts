@@ -740,7 +740,7 @@ export const DeleteDiskPool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteDiskPoolRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDiskPoolResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDiskPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const DeleteIscsiTarget: API.OperationMethod<
   DeleteIscsiTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteIscsiTargetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIscsiTargetResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteIscsiTargetRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteIscsiTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const DiskPoolsCreateOrUpdate: API.OperationMethod<
   DiskPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DiskPoolsCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DiskPoolsCreateOrUpdateResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<DiskPoolsCreateOrUpdateRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<DiskPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const DiskPoolsDeallocate: API.OperationMethod<
   DiskPoolsDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DiskPoolsDeallocateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DiskPoolsDeallocateResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DiskPoolsDeallocateRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DiskPoolsDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const DiskPoolsUpgrade: API.OperationMethod<
   DiskPoolsUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DiskPoolsUpgradeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DiskPoolsUpgradeResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DiskPoolsUpgradeRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DiskPoolsUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const GetDiskPool: API.OperationMethod<
   GetDiskPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetDiskPoolRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetDiskPoolResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetDiskPoolRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetDiskPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -829,8 +829,8 @@ export const GetIscsiTarget: API.OperationMethod<
   GetIscsiTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetIscsiTargetRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetIscsiTargetResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetIscsiTargetRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetIscsiTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const IscsiTargetsCreateOrUpdate: API.OperationMethod<
   IscsiTargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<IscsiTargetsCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IscsiTargetsCreateOrUpdateResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<IscsiTargetsCreateOrUpdateRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<IscsiTargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const ListDiskPoolByResourceGroup: API.OperationMethod<
   ListDiskPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListDiskPoolByResourceGroupRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DiskPoolListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListDiskPoolByResourceGroupRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<DiskPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const ListDiskPoolBySubscription: API.OperationMethod<
   ListDiskPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListDiskPoolBySubscriptionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DiskPoolListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListDiskPoolBySubscriptionRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<DiskPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -890,11 +890,11 @@ export const ListDiskPoolOutboundNetworkDependenciesEndpoints: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    33,
-    __c4,
-    1,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<ListDiskPoolOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<OutboundEnvironmentEndpointList>,
+  output: __S(55, __c3, 7) as any as S.Schema<OutboundEnvironmentEndpointList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const ListDiskPoolZones: API.OperationMethod<
   ListDiskPoolZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListDiskPoolZonesRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DiskPoolZoneListResult>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListDiskPoolZonesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<DiskPoolZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const ListIscsiTargetByDiskPool: API.OperationMethod<
   ListIscsiTargetByDiskPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListIscsiTargetByDiskPoolRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IscsiTargetList>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListIscsiTargetByDiskPoolRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<IscsiTargetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StoragePoolOperationListResult>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<StoragePoolOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const ListResourceSkus: API.OperationMethod<
   ListResourceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListResourceSkusRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ResourceSkuListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListResourceSkusRequest>,
+  output: __S(123, __c7, 11) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -968,8 +968,8 @@ export const StartDiskPool: API.OperationMethod<
   StartDiskPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<StartDiskPoolRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartDiskPoolResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<StartDiskPoolRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StartDiskPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const UpdateDiskPool: API.OperationMethod<
   UpdateDiskPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UpdateDiskPoolRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateDiskPoolResponse>,
+  input: __S(145, __c9, 1) as any as S.Schema<UpdateDiskPoolRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<UpdateDiskPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -998,8 +998,8 @@ export const UpdateIscsiTarget: API.OperationMethod<
   UpdateIscsiTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UpdateIscsiTargetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateIscsiTargetResponse>,
+  input: __S(161, __c10, 1) as any as S.Schema<UpdateIscsiTargetRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<UpdateIscsiTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1023,11 +1023,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDiskPoolRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDiskPoolResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1043,331 +1051,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIscsiTargetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "Disk" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZones: S.optional(__S(4, __c0, 4)),
-          disks: S.optional(__S(6, __c0, 6)),
-          subnetId: S.String,
-          additionalCapabilities: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DiskPoolCreateProperties" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-          sku: __S(3, __c0, 3),
-          properties: __S(7, __c0, 7),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DiskPoolsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.String,
-          availabilityZones: __S(4, __c0, 4),
-          status: S.String,
-          disks: S.optional(__S(6, __c0, 6)),
-          subnetId: S.String,
-          additionalCapabilities: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DiskPoolProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          sku: S.optional(__S(3, __c0, 3)),
-          properties: __S(10, __c1, 2),
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "DiskPoolsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DiskPoolsDeallocateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DiskPoolsUpgradeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDiskPoolRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          sku: S.optional(__S(3, __c0, 3)),
-          properties: __S(10, __c1, 2),
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-          systemData: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "GetDiskPoolResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-          iscsiTargetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetIscsiTargetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          initiatorIqn: S.String,
-          mappedLuns: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "Acl" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          managedDiskAzureResourceId: S.String,
-          lun: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IscsiLun" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aclMode: S.String,
-          staticAcls: S.optional(__S(19, __c2, 3)),
-          luns: S.optional(__S(21, __c2, 5)),
-          targetIqn: S.String,
-          provisioningState: S.String,
-          status: S.String,
-          endpoints: S.optional(__S(4, __c0, 4)),
-          port: S.optional(S.Number),
-          sessions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "IscsiTargetProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(22, __c2, 6),
-          systemData: S.optional(__S(11, __c1, 3)),
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "GetIscsiTargetResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          managedDiskAzureResourceId: S.String,
-        }),
-      ).annotate({ identifier: "IscsiLunInput" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          aclMode: S.String,
-          targetIqn: S.optional(S.String),
-          staticAcls: S.optional(__S(19, __c2, 3)),
-          luns: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "IscsiTargetCreatePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diskPoolName: S.String.pipe(T.Label()),
-          iscsiTargetName: S.String.pipe(T.Label()),
-          properties: __S(26, __c3, 2),
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "IscsiTargetsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(22, __c2, 6),
-          systemData: S.optional(__S(11, __c1, 3)),
-          managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "IscsiTargetsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDiskPoolByResourceGroupRequest",
-      });
-    case 6:
-      return S.Array(__S(16, __c2, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(30, __c3, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskPoolListResult" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDiskPoolBySubscriptionRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1384,7 +1072,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDiskPoolOutboundNetworkDependenciesEndpointsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -1393,42 +1081,42 @@ function __c4(j: number): any {
           isAccessible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EndpointDetail" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(35, __c4, 3)),
+          endpointDetails: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
+    case 4:
+      return S.Array(__S(51, __c3, 3));
     case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(37, __c4, 5)),
+          endpoints: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
+    case 6:
+      return S.Array(__S(53, __c3, 5));
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(39, __c4, 7),
+          value: __S(54, __c3, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpointList",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1442,24 +1130,28 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDiskPoolZonesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          availabilityZones: S.optional(__S(4, __c0, 4)),
-          additionalCapabilities: S.optional(__S(4, __c0, 4)),
-          sku: S.optional(__S(3, __c0, 3)),
+          availabilityZones: S.optional(__S(192, __c12, 0)),
+          additionalCapabilities: S.optional(__S(192, __c12, 0)),
+          sku: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({ identifier: "DiskPoolZoneInfo" });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: S.optional(__S(66, __c4, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskPoolZoneListResult" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1476,12 +1168,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListIscsiTargetByDiskPoolRequest",
       });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46, __c5, 6),
+          value: __S(81, __c5, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IscsiTargetList" });
@@ -1517,22 +1209,26 @@ function __c6(j: number): any {
           name: S.String,
           isDataAction: S.Boolean,
           actionType: S.optional(S.String),
-          display: __S(49, __c6, 1),
+          display: __S(97, __c6, 1),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "StoragePoolRPOperation" });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(98, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(51, __c6, 3),
+          value: __S(99, __c6, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StoragePoolOperationListResult",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1546,82 +1242,78 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListResourceSkusRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuCapability" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(__S(4, __c0, 4)),
-          capabilities: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "ResourceSkuZoneDetails" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          zones: S.optional(__S(4, __c0, 4)),
-          zoneDetails: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "ResourceSkuLocationInfo" });
+      return S.Array(__S(113, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(4, __c0, 4)),
-          zones: S.optional(__S(4, __c0, 4)),
+          name: S.optional(__S(192, __c12, 0)),
+          capabilities: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "ResourceSkuZoneDetails" });
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          zones: S.optional(__S(192, __c12, 0)),
+          zoneDetails: S.optional(__S(116, __c7, 4)),
+        }),
+      ).annotate({ identifier: "ResourceSkuLocationInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(192, __c12, 0)),
+          zones: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(4, __c0, 4)),
-          restrictionInfo: S.optional(__S(59, __c7, 3)),
+          values: S.optional(__S(192, __c12, 0)),
+          restrictionInfo: S.optional(__S(118, __c7, 6)),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           resourceType: S.optional(S.String),
-          capabilities: S.optional(__S(55, __c6, 7)),
-          locationInfo: S.optional(__S(58, __c7, 2)),
+          capabilities: S.optional(__S(114, __c7, 2)),
+          locationInfo: S.optional(__S(117, __c7, 5)),
           name: S.optional(S.String),
           tier: S.optional(S.String),
-          restrictions: S.optional(__S(61, __c7, 5)),
+          restrictions: S.optional(__S(120, __c7, 8)),
         }),
       ).annotate({ identifier: "ResourceSkuInfo" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
+    case 10:
+      return S.Array(__S(121, __c7, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(122, __c7, 10)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceSkuListResult" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(63, __c7, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceSkuListResult" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1636,23 +1328,27 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartDiskPoolRequest" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(6, __c0, 6)),
+          disks: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({ identifier: "DiskPoolUpdateProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diskPoolName: S.String.pipe(T.Label()),
           managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
-          properties: __S(66, __c8, 2),
-          sku: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(8, __c1, 0)),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+          properties: __S(144, __c9, 0),
+          sku: S.optional(__S(224, __c14, 0)),
+          tags: S.optional(__S(242, __c15, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1662,25 +1358,29 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDiskPoolRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          staticAcls: S.optional(__S(19, __c2, 3)),
-          luns: S.optional(__S(25, __c3, 1)),
+          staticAcls: S.optional(__S(353, __c22, 1)),
+          luns: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "IscsiTargetUpdatePropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diskPoolName: S.String.pipe(T.Label()),
           iscsiTargetName: S.String.pipe(T.Label()),
-          properties: __S(68, __c8, 4),
+          properties: __S(160, __c10, 0),
           managedBy: S.optional(S.String),
-          managedByExtended: S.optional(__S(4, __c0, 4)),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1692,7 +1392,382 @@ function __c8(j: number): any {
       ).annotate({ identifier: "UpdateIscsiTargetRequest" });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZones: S.optional(__S(192, __c12, 0)),
+          disks: S.optional(__S(241, __c15, 1)),
+          subnetId: S.String,
+          additionalCapabilities: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DiskPoolCreateProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+          sku: __S(224, __c14, 0),
+          properties: __S(176, __c11, 0),
+          tags: S.optional(__S(242, __c15, 2)),
+          location: S.String,
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DiskPoolsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(242, __c15, 2)),
+          location: S.String,
+          sku: S.optional(__S(224, __c14, 0)),
+          properties: __S(243, __c15, 3),
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+          systemData: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "DiskPoolsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemMetadata" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "Disk" });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
+      return S.Record(S.String, S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.String,
+          availabilityZones: __S(192, __c12, 0),
+          status: S.String,
+          disks: S.optional(__S(241, __c15, 1)),
+          subnetId: S.String,
+          additionalCapabilities: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DiskPoolProperties" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DiskPoolsDeallocateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DiskPoolsUpgradeRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDiskPoolRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(242, __c15, 2)),
+          location: S.String,
+          sku: S.optional(__S(224, __c14, 0)),
+          properties: __S(243, __c15, 3),
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+          systemData: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "GetDiskPoolResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+          iscsiTargetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetIscsiTargetRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(356, __c22, 4),
+          systemData: S.optional(__S(208, __c13, 0)),
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "GetIscsiTargetResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initiatorIqn: S.String,
+          mappedLuns: __S(192, __c12, 0),
+        }),
+      ).annotate({ identifier: "Acl" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          managedDiskAzureResourceId: S.String,
+          lun: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IscsiLun" });
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          aclMode: S.String,
+          staticAcls: S.optional(__S(353, __c22, 1)),
+          luns: S.optional(__S(355, __c22, 3)),
+          targetIqn: S.String,
+          provisioningState: S.String,
+          status: S.String,
+          endpoints: S.optional(__S(192, __c12, 0)),
+          port: S.optional(S.Number),
+          sessions: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "IscsiTargetProperties" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aclMode: S.String,
+          targetIqn: S.optional(S.String),
+          staticAcls: S.optional(__S(353, __c22, 1)),
+          luns: S.optional(__S(385, __c24, 1)),
+        }),
+      ).annotate({
+        identifier: "IscsiTargetCreatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diskPoolName: S.String.pipe(T.Label()),
+          iscsiTargetName: S.String.pipe(T.Label()),
+          properties: __S(368, __c23, 0),
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "IscsiTargetsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          managedDiskAzureResourceId: S.String,
+        }),
+      ).annotate({ identifier: "IscsiLunInput" });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(356, __c22, 4),
+          systemData: S.optional(__S(208, __c13, 0)),
+          managedBy: S.optional(S.String),
+          managedByExtended: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "IscsiTargetsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDiskPoolByResourceGroupRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(304, __c19, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(416, __c26, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskPoolListResult" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDiskPoolBySubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

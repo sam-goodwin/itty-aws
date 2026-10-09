@@ -837,8 +837,8 @@ export const addOrUpdateMembershipForUserInOrg: API.OperationMethod<
   AddOrUpdateMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddOrUpdateMembershipForUserInOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TeamMembership>,
+  input: __S(160, __c10, 0) as any as S.Schema<AddOrUpdateMembershipForUserInOrgRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<TeamMembership>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -852,8 +852,8 @@ export const addOrUpdateRepoPermissionsInOrg: API.OperationMethod<
   AddOrUpdateRepoPermissionsInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -867,8 +867,8 @@ export const checkPermissionsForRepoInOrg: API.OperationMethod<
   CheckPermissionsForRepoInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CheckPermissionsForRepoInOrgRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TeamRepository>,
+  input: __S(224, __c14, 0) as any as S.Schema<CheckPermissionsForRepoInOrgRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<TeamRepository>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export type CreateError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Create a team To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/articles/setting-team-creation-permissions-in-your-organization)." When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/about-teams)". */
 export const create: API.OperationMethod<CreateRequest, TeamFull, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(10, __c1, 2) as any as S.Schema<CreateRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<TeamFull>,
+    input: __S(272, __c17, 0) as any as S.Schema<CreateRequest>,
+    output: __S(306, __c19, 2) as any as S.Schema<TeamFull>,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const deleteInOrg: API.OperationMethod<
   DeleteInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteInOrgRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteInOrgResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteInOrgRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeleteInOrgResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const getByName: API.OperationMethod<
   GetByNameError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetByNameRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TeamFull>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetByNameRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<TeamFull>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const getMembershipForUserInOrg: API.OperationMethod<
   GetMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetMembershipForUserInOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TeamMembership>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetMembershipForUserInOrgRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<TeamMembership>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -934,8 +934,8 @@ export type ListError = Forbidden | GithubOpError;
 /** List teams Lists all teams in an organization that are visible to the authenticated user. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListRequest>,
+    output: __S(19, __c1, 3) as any as S.Schema<ListResponse>,
     errors: [Forbidden],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -949,8 +949,8 @@ export const listChildInOrg: API.OperationMethod<
   ListChildInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListChildInOrgRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListChildInOrgResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListChildInOrgRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListChildInOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -964,8 +964,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListForAuthenticatedUserRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListForAuthenticatedUserResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -979,8 +979,8 @@ export const listMembersInOrg: API.OperationMethod<
   ListMembersInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListMembersInOrgRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListMembersInOrgResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListMembersInOrgRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListMembersInOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -994,8 +994,8 @@ export const listPendingInvitationsInOrg: API.OperationMethod<
   ListPendingInvitationsInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListPendingInvitationsInOrgRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListPendingInvitationsInOrgResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListPendingInvitationsInOrgRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListPendingInvitationsInOrgResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1009,8 @@ export const listReposInOrg: API.OperationMethod<
   ListReposInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListReposInOrgRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListReposInOrgResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListReposInOrgRequest>,
+  output: __S(109, __c6, 13) as any as S.Schema<ListReposInOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1024,8 @@ export const removeMembershipForUserInOrg: API.OperationMethod<
   RemoveMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<RemoveMembershipForUserInOrgRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RemoveMembershipForUserInOrgResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<RemoveMembershipForUserInOrgRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<RemoveMembershipForUserInOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1039,8 @@ export const removeRepoInOrg: API.OperationMethod<
   RemoveRepoInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<RemoveRepoInOrgRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RemoveRepoInOrgResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<RemoveRepoInOrgRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<RemoveRepoInOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1054,8 @@ export const updateInOrg: API.OperationMethod<
   UpdateInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateInOrgRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TeamFull>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateInOrgRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<TeamFull>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1068,391 +1068,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/orgs/{org}/teams/{team_slug}/memberships/{username}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrUpdateMembershipForUserInOrgRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          role: S.String,
-          state: S.String,
-        }),
-      ).annotate({ identifier: "TeamMembership" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          permission: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrUpdateRepoPermissionsInOrgRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddOrUpdateRepoPermissionsInOrgResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckPermissionsForRepoInOrgRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          url: S.NullOr(S.String),
-          spdx_id: S.NullOr(S.String),
-          node_id: S.String,
-          html_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableLicenseSimple" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          admin: S.Boolean,
-          pull: S.Boolean,
-          triage: S.optional(S.Boolean),
-          push: S.Boolean,
-          maintain: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TeamRepositoryPermissions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableSimpleUser" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          license: S.NullOr(__S(5, __c0, 5)),
-          forks: S.Number,
-          permissions: S.optional(__S(6, __c0, 6)),
-          role_name: S.optional(S.String),
-          owner: S.NullOr(__S(7, __c0, 7)),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          git_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          ssh_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          clone_url: S.String,
-          mirror_url: S.NullOr(S.String),
-          hooks_url: S.String,
-          svn_url: S.String,
-          homepage: S.NullOr(S.String),
-          language: S.NullOr(S.String),
-          forks_count: S.Number,
-          stargazers_count: S.Number,
-          watchers_count: S.Number,
-          size: S.Number,
-          default_branch: S.String,
-          open_issues_count: S.Number,
-          is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(8, __c1, 0)),
-          has_issues: S.Boolean,
-          has_projects: S.Boolean,
-          has_wiki: S.Boolean,
-          has_pages: S.Boolean,
-          has_downloads: S.Boolean,
-          archived: S.Boolean,
-          disabled: S.Boolean,
-          visibility: S.optional(S.String),
-          pushed_at: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          allow_rebase_merge: S.optional(S.Boolean),
-          temp_clone_token: S.optional(S.String),
-          allow_squash_merge: S.optional(S.Boolean),
-          allow_auto_merge: S.optional(S.Boolean),
-          delete_branch_on_merge: S.optional(S.Boolean),
-          allow_merge_commit: S.optional(S.Boolean),
-          allow_forking: S.optional(S.Boolean),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          subscribers_count: S.optional(S.Number),
-          network_count: S.optional(S.Number),
-          open_issues: S.Number,
-          watchers: S.Number,
-          master_branch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TeamRepository" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.String),
-          maintainers: S.optional(__S(8, __c1, 0)),
-          repo_names: S.optional(__S(8, __c1, 0)),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          permission: S.optional(S.String),
-          parent_team_id: S.optional(S.Number),
-          parent_team_slug: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
-      ).annotate({ identifier: "CreateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          members_url: S.String,
-          name: S.String,
-          description: S.NullOr(S.String),
-          permission: S.String,
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          html_url: S.String,
-          repositories_url: S.String,
-          slug: S.String,
-          ldap_dn: S.optional(S.String),
-          type: S.String,
-          organization_id: S.optional(S.Number),
-          enterprise_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NullableTeamSimple" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          space: S.Number,
-          private_repos: S.Number,
-          filled_seats: S.optional(S.Number),
-          seats: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TeamOrganizationPlan" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          hooks_url: S.String,
-          issues_url: S.String,
-          members_url: S.String,
-          public_members_url: S.String,
-          avatar_url: S.String,
-          description: S.NullOr(S.String),
-          name: S.optional(S.String),
-          company: S.optional(S.NullOr(S.String)),
-          blog: S.optional(S.NullOr(S.String)),
-          location: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          twitter_username: S.optional(S.NullOr(S.String)),
-          is_verified: S.optional(S.Boolean),
-          has_organization_projects: S.Boolean,
-          has_repository_projects: S.Boolean,
-          public_repos: S.Number,
-          public_gists: S.Number,
-          followers: S.Number,
-          following: S.Number,
-          html_url: S.String,
-          created_at: S.String,
-          type: S.String,
-          total_private_repos: S.optional(S.Number),
-          owned_private_repos: S.optional(S.Number),
-          private_gists: S.optional(S.NullOr(S.Number)),
-          disk_usage: S.optional(S.NullOr(S.Number)),
-          collaborators: S.optional(S.NullOr(S.Number)),
-          billing_email: S.optional(S.NullOr(S.String)),
-          plan: S.optional(__S(12, __c1, 4)),
-          default_repository_permission: S.optional(S.NullOr(S.String)),
-          members_can_create_repositories: S.optional(S.NullOr(S.Boolean)),
-          two_factor_requirement_enabled: S.optional(S.NullOr(S.Boolean)),
-          members_allowed_repository_creation_type: S.optional(S.String),
-          members_can_create_public_repositories: S.optional(S.Boolean),
-          members_can_create_private_repositories: S.optional(S.Boolean),
-          members_can_create_internal_repositories: S.optional(S.Boolean),
-          members_can_create_pages: S.optional(S.Boolean),
-          members_can_create_public_pages: S.optional(S.Boolean),
-          members_can_create_private_pages: S.optional(S.Boolean),
-          members_can_fork_private_repositories: S.optional(S.NullOr(S.Boolean)),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          updated_at: S.String,
-          archived_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TeamOrganization" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          html_url: S.String,
-          name: S.String,
-          slug: S.String,
-          description: S.NullOr(S.String),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          permission: S.String,
-          members_url: S.String,
-          repositories_url: S.String,
-          parent: S.optional(S.NullOr(__S(11, __c1, 3))),
-          members_count: S.Number,
-          repos_count: S.Number,
-          created_at: S.String,
-          updated_at: S.String,
-          organization: __S(13, __c1, 5),
-          ldap_dn: S.optional(S.String),
-          type: S.String,
-          organization_id: S.optional(S.Number),
-          enterprise_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TeamFull" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/teams/{team_slug}", code: 200 })),
-      ).annotate({ identifier: "DeleteInOrgRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteInOrgResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}", code: 200 })),
-      ).annotate({ identifier: "GetByNameRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          team_slug: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/teams/{team_slug}/memberships/{username}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMembershipForUserInOrgRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           team_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams", code: 200 })),
       ).annotate({ identifier: "ListRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pull: S.Boolean,
@@ -1462,7 +1087,7 @@ function __c2(j: number): any {
           admin: S.Boolean,
         }),
       ).annotate({ identifier: "TeamPermissions" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1473,7 +1098,7 @@ function __c2(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(20, __c2, 4)),
+          permissions: S.optional(__S(16, __c1, 0)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
@@ -1482,18 +1107,18 @@ function __c2(j: number): any {
           access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(11, __c1, 3)),
+          parent: S.NullOr(__S(288, __c18, 0)),
         }),
       ).annotate({ identifier: "Team" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() => __S(22, __c2, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() => __S(18, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1504,7 +1129,11 @@ function __c3(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}/teams", code: 200 })),
       ).annotate({ identifier: "ListChildInOrgRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1513,13 +1142,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListForAuthenticatedUserRequest",
       });
+    case 1:
+      return S.Array(__S(306, __c19, 2));
     case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(49, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForAuthenticatedUserResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1529,7 +1162,7 @@ function __c3(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}/members", code: 200 })),
       ).annotate({ identifier: "ListMembersInOrgRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1558,15 +1191,15 @@ function __c3(j: number): any {
           inherited: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TeamMember" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() => __S(30, __c3, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() => __S(66, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMembersInOrgResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1591,7 +1224,7 @@ function __c4(j: number): any {
           created_at: S.String,
           failed_at: S.optional(S.NullOr(S.String)),
           failed_reason: S.optional(S.NullOr(S.String)),
-          inviter: __S(7, __c0, 7),
+          inviter: __S(240, __c15, 0),
           team_count: S.Number,
           node_id: S.String,
           invitation_teams_url: S.String,
@@ -1599,12 +1232,16 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "OrganizationInvitation" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(81, __c5, 1));
     case 3:
-      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(82, __c5, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPendingInvitationsInOrgResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1613,7 +1250,7 @@ function __c4(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}/repos", code: 200 })),
       ).annotate({ identifier: "ListReposInOrgRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -1625,7 +1262,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1635,7 +1272,7 @@ function __c4(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1645,11 +1282,7 @@ function __c4(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1657,7 +1290,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1665,7 +1298,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -1675,41 +1308,41 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(102, __c6, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(43, __c5, 3)),
+          reviewers: S.optional(__S(103, __c6, 7)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(40, __c5, 0)),
-          code_security: S.optional(__S(40, __c5, 0)),
-          dependabot_security_updates: S.optional(__S(40, __c5, 0)),
-          secret_scanning: S.optional(__S(40, __c5, 0)),
-          secret_scanning_push_protection: S.optional(__S(40, __c5, 0)),
-          secret_scanning_non_provider_patterns: S.optional(__S(40, __c5, 0)),
-          secret_scanning_ai_detection: S.optional(__S(40, __c5, 0)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(41, __c5, 1)),
-          secret_scanning_delegated_bypass: S.optional(__S(40, __c5, 0)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(44, __c5, 4)),
+          advanced_security: S.optional(__S(100, __c6, 4)),
+          code_security: S.optional(__S(100, __c6, 4)),
+          dependabot_security_updates: S.optional(__S(100, __c6, 4)),
+          secret_scanning: S.optional(__S(100, __c6, 4)),
+          secret_scanning_push_protection: S.optional(__S(100, __c6, 4)),
+          secret_scanning_non_provider_patterns: S.optional(__S(100, __c6, 4)),
+          secret_scanning_ai_detection: S.optional(__S(100, __c6, 4)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(101, __c6, 5)),
+          secret_scanning_delegated_bypass: S.optional(__S(100, __c6, 4)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(104, __c6, 8)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-    case 6:
+    case 10:
       return S.Record(S.String, S.Unknown);
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(7, __c0, 7),
+          owner: __S(240, __c15, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1765,7 +1398,7 @@ function __c5(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(8, __c1, 0)),
+          topics: S.optional(__S(256, __c16, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1780,34 +1413,34 @@ function __c5(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(37, __c4, 5)),
+          permissions: S.optional(__S(97, __c6, 1)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(38, __c4, 6)),
-          license: S.optional(S.NullOr(__S(39, __c4, 7))),
+          code_of_conduct: S.optional(__S(98, __c6, 2)),
+          license: S.optional(S.NullOr(__S(99, __c6, 3))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(45, __c5, 5))),
-          custom_properties: S.optional(__S(46, __c5, 6)),
+          security_and_analysis: S.optional(S.NullOr(__S(105, __c6, 9))),
+          custom_properties: S.optional(__S(106, __c6, 10)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() => __S(48, __c6, 0).pipe(T.RawResponseRoot())).annotate({
+    case 12:
+      return S.Array(__S(107, __c6, 11));
+    case 13:
+      return S.suspend(() => __S(108, __c6, 12).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReposInOrgResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1823,7 +1456,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RemoveMembershipForUserInOrgRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1838,7 +1475,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveRepoInOrgRequest" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1854,7 +1495,433 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateInOrgRequest" });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/orgs/{org}/teams/{team_slug}/memberships/{username}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrUpdateMembershipForUserInOrgRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          role: S.String,
+          state: S.String,
+        }),
+      ).annotate({ identifier: "TeamMembership" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          permission: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrUpdateRepoPermissionsInOrgRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddOrUpdateRepoPermissionsInOrgResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckPermissionsForRepoInOrgRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          url: S.NullOr(S.String),
+          spdx_id: S.NullOr(S.String),
+          node_id: S.String,
+          html_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableLicenseSimple" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          admin: S.Boolean,
+          pull: S.Boolean,
+          triage: S.optional(S.Boolean),
+          push: S.Boolean,
+          maintain: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TeamRepositoryPermissions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          license: S.NullOr(__S(225, __c14, 1)),
+          forks: S.Number,
+          permissions: S.optional(__S(226, __c14, 2)),
+          role_name: S.optional(S.String),
+          owner: S.NullOr(__S(240, __c15, 0)),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          git_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          ssh_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          clone_url: S.String,
+          mirror_url: S.NullOr(S.String),
+          hooks_url: S.String,
+          svn_url: S.String,
+          homepage: S.NullOr(S.String),
+          language: S.NullOr(S.String),
+          forks_count: S.Number,
+          stargazers_count: S.Number,
+          watchers_count: S.Number,
+          size: S.Number,
+          default_branch: S.String,
+          open_issues_count: S.Number,
+          is_template: S.optional(S.Boolean),
+          topics: S.optional(__S(256, __c16, 0)),
+          has_issues: S.Boolean,
+          has_projects: S.Boolean,
+          has_wiki: S.Boolean,
+          has_pages: S.Boolean,
+          has_downloads: S.Boolean,
+          archived: S.Boolean,
+          disabled: S.Boolean,
+          visibility: S.optional(S.String),
+          pushed_at: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          allow_rebase_merge: S.optional(S.Boolean),
+          temp_clone_token: S.optional(S.String),
+          allow_squash_merge: S.optional(S.Boolean),
+          allow_auto_merge: S.optional(S.Boolean),
+          delete_branch_on_merge: S.optional(S.Boolean),
+          allow_merge_commit: S.optional(S.Boolean),
+          allow_forking: S.optional(S.Boolean),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          subscribers_count: S.optional(S.Number),
+          network_count: S.optional(S.Number),
+          open_issues: S.Number,
+          watchers: S.Number,
+          master_branch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TeamRepository" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableSimpleUser" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.String),
+          maintainers: S.optional(__S(256, __c16, 0)),
+          repo_names: S.optional(__S(256, __c16, 0)),
+          privacy: S.optional(S.String),
+          notification_setting: S.optional(S.String),
+          permission: S.optional(S.String),
+          parent_team_id: S.optional(S.Number),
+          parent_team_slug: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
+      ).annotate({ identifier: "CreateRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          members_url: S.String,
+          name: S.String,
+          description: S.NullOr(S.String),
+          permission: S.String,
+          privacy: S.optional(S.String),
+          notification_setting: S.optional(S.String),
+          html_url: S.String,
+          repositories_url: S.String,
+          slug: S.String,
+          ldap_dn: S.optional(S.String),
+          type: S.String,
+          organization_id: S.optional(S.Number),
+          enterprise_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NullableTeamSimple" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          space: S.Number,
+          private_repos: S.Number,
+          filled_seats: S.optional(S.Number),
+          seats: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeamOrganizationPlan" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          hooks_url: S.String,
+          issues_url: S.String,
+          members_url: S.String,
+          public_members_url: S.String,
+          avatar_url: S.String,
+          description: S.NullOr(S.String),
+          name: S.optional(S.String),
+          company: S.optional(S.NullOr(S.String)),
+          blog: S.optional(S.NullOr(S.String)),
+          location: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          twitter_username: S.optional(S.NullOr(S.String)),
+          is_verified: S.optional(S.Boolean),
+          has_organization_projects: S.Boolean,
+          has_repository_projects: S.Boolean,
+          public_repos: S.Number,
+          public_gists: S.Number,
+          followers: S.Number,
+          following: S.Number,
+          html_url: S.String,
+          created_at: S.String,
+          type: S.String,
+          total_private_repos: S.optional(S.Number),
+          owned_private_repos: S.optional(S.Number),
+          private_gists: S.optional(S.NullOr(S.Number)),
+          disk_usage: S.optional(S.NullOr(S.Number)),
+          collaborators: S.optional(S.NullOr(S.Number)),
+          billing_email: S.optional(S.NullOr(S.String)),
+          plan: S.optional(__S(304, __c19, 0)),
+          default_repository_permission: S.optional(S.NullOr(S.String)),
+          members_can_create_repositories: S.optional(S.NullOr(S.Boolean)),
+          two_factor_requirement_enabled: S.optional(S.NullOr(S.Boolean)),
+          members_allowed_repository_creation_type: S.optional(S.String),
+          members_can_create_public_repositories: S.optional(S.Boolean),
+          members_can_create_private_repositories: S.optional(S.Boolean),
+          members_can_create_internal_repositories: S.optional(S.Boolean),
+          members_can_create_pages: S.optional(S.Boolean),
+          members_can_create_public_pages: S.optional(S.Boolean),
+          members_can_create_private_pages: S.optional(S.Boolean),
+          members_can_fork_private_repositories: S.optional(S.NullOr(S.Boolean)),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          updated_at: S.String,
+          archived_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TeamOrganization" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          html_url: S.String,
+          name: S.String,
+          slug: S.String,
+          description: S.NullOr(S.String),
+          privacy: S.optional(S.String),
+          notification_setting: S.optional(S.String),
+          permission: S.String,
+          members_url: S.String,
+          repositories_url: S.String,
+          parent: S.optional(S.NullOr(__S(288, __c18, 0))),
+          members_count: S.Number,
+          repos_count: S.Number,
+          created_at: S.String,
+          updated_at: S.String,
+          organization: __S(305, __c19, 1),
+          ldap_dn: S.optional(S.String),
+          type: S.String,
+          organization_id: S.optional(S.Number),
+          enterprise_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeamFull" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/teams/{team_slug}", code: 200 })),
+      ).annotate({ identifier: "DeleteInOrgRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteInOrgResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}", code: 200 })),
+      ).annotate({ identifier: "GetByNameRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          team_slug: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/teams/{team_slug}/memberships/{username}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMembershipForUserInOrgRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

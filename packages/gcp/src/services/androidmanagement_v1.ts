@@ -3095,8 +3095,8 @@ export const cancelEnterprisesDevicesOperations: API.OperationMethod<
   CancelEnterprisesDevicesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelEnterprisesDevicesOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CancelEnterprisesDevicesOperationsRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3116,8 +3116,8 @@ export const createEnterprises: API.OperationMethod<
   CreateEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateEnterprisesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Enterprise>,
+  input: __S(1440, __c45, 0) as any as S.Schema<CreateEnterprisesRequest>,
+  output: __S(1544, __c48, 8) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3137,8 +3137,8 @@ export const createEnterprisesEnrollmentTokens: API.OperationMethod<
   CreateEnterprisesEnrollmentTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateEnterprisesEnrollmentTokensRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EnrollmentToken>,
+  input: __S(1568, __c49, 0) as any as S.Schema<CreateEnterprisesEnrollmentTokensRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<EnrollmentToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3158,8 +3158,8 @@ export const createEnterprisesMigrationTokens: API.OperationMethod<
   CreateEnterprisesMigrationTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateEnterprisesMigrationTokensRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MigrationToken>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateEnterprisesMigrationTokensRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<MigrationToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3179,8 +3179,8 @@ export const createEnterprisesWebApps: API.OperationMethod<
   CreateEnterprisesWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateEnterprisesWebAppsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<WebApp>,
+  input: __S(1728, __c54, 0) as any as S.Schema<CreateEnterprisesWebAppsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3200,8 +3200,8 @@ export const createEnterprisesWebTokens: API.OperationMethod<
   CreateEnterprisesWebTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateEnterprisesWebTokensRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<WebToken>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateEnterprisesWebTokensRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<WebToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3221,8 +3221,8 @@ export const createSignupUrls: API.OperationMethod<
   CreateSignupUrlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateSignupUrlsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<SignupUrl>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateSignupUrlsRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<SignupUrl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3242,8 +3242,8 @@ export const deleteEnterprises: API.OperationMethod<
   DeleteEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteEnterprisesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteEnterprisesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3263,8 +3263,8 @@ export const deleteEnterprisesDevices: API.OperationMethod<
   DeleteEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteEnterprisesDevicesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteEnterprisesDevicesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3284,8 +3284,8 @@ export const deleteEnterprisesEnrollmentTokens: API.OperationMethod<
   DeleteEnterprisesEnrollmentTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteEnterprisesEnrollmentTokensRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteEnterprisesEnrollmentTokensRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3305,8 +3305,8 @@ export const deleteEnterprisesPolicies: API.OperationMethod<
   DeleteEnterprisesPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteEnterprisesPoliciesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteEnterprisesPoliciesRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3326,8 @@ export const deleteEnterprisesWebApps: API.OperationMethod<
   DeleteEnterprisesWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteEnterprisesWebAppsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteEnterprisesWebAppsRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3347,8 +3347,8 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
   GenerateEnterpriseUpgradeUrlEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3362,8 +3362,8 @@ export const getEnterprises: API.OperationMethod<
   GetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetEnterprisesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Enterprise>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetEnterprisesRequest>,
+  output: __S(1544, __c48, 8) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3381,8 +3381,8 @@ export const getEnterprisesApplications: API.OperationMethod<
   GetEnterprisesApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetEnterprisesApplicationsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Application>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetEnterprisesApplicationsRequest>,
+  output: __S(331, __c10, 11) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3396,8 +3396,8 @@ export const getEnterprisesDevices: API.OperationMethod<
   GetEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetEnterprisesDevicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<Device>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetEnterprisesDevicesRequest>,
+  output: __S(488, __c15, 8) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3415,8 +3415,8 @@ export const getEnterprisesDevicesOperations: API.OperationMethod<
   GetEnterprisesDevicesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetEnterprisesDevicesOperationsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<Operation>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetEnterprisesDevicesOperationsRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3434,8 +3434,8 @@ export const getEnterprisesEnrollmentTokens: API.OperationMethod<
   GetEnterprisesEnrollmentTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetEnterprisesEnrollmentTokensRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EnrollmentToken>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetEnterprisesEnrollmentTokensRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<EnrollmentToken>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3453,8 +3453,8 @@ export const getEnterprisesMigrationTokens: API.OperationMethod<
   GetEnterprisesMigrationTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetEnterprisesMigrationTokensRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MigrationToken>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetEnterprisesMigrationTokensRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<MigrationToken>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3468,8 @@ export const getEnterprisesPolicies: API.OperationMethod<
   GetEnterprisesPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetEnterprisesPoliciesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<Policy>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetEnterprisesPoliciesRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3483,8 +3483,8 @@ export const getEnterprisesWebApps: API.OperationMethod<
   GetEnterprisesWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetEnterprisesWebAppsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<WebApp>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetEnterprisesWebAppsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3498,8 +3498,8 @@ export const getProvisioningInfo: API.OperationMethod<
   GetProvisioningInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetProvisioningInfoRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ProvisioningInfo>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetProvisioningInfoRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<ProvisioningInfo>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3519,8 +3519,8 @@ export const issueCommandEnterprisesDevices: API.OperationMethod<
   IssueCommandEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<IssueCommandEnterprisesDevicesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<Operation>,
+  input: __S(911, __c28, 15) as any as S.Schema<IssueCommandEnterprisesDevicesRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3535,8 +3535,8 @@ export const listEnterprises: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEnterprisesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListEnterprisesRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ListEnterprisesResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListEnterprisesRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<ListEnterprisesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3552,8 +3552,8 @@ export const listEnterprisesDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListEnterprisesDevicesRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListDevicesResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListEnterprisesDevicesRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3573,8 +3573,8 @@ export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListEnterprisesDevicesOperationsRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListEnterprisesDevicesOperationsRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3594,8 +3594,8 @@ export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEnrollmentTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<ListEnterprisesEnrollmentTokensRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<ListEnrollmentTokensResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListEnterprisesEnrollmentTokensRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ListEnrollmentTokensResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3615,8 +3615,8 @@ export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMigrationTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ListEnterprisesMigrationTokensRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListMigrationTokensResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListEnterprisesMigrationTokensRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ListMigrationTokensResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3632,8 +3632,8 @@ export const listEnterprisesPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListEnterprisesPoliciesRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<ListPoliciesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListEnterprisesPoliciesRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListPoliciesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3649,8 +3649,8 @@ export const listEnterprisesWebApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWebAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ListEnterprisesWebAppsRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<ListWebAppsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListEnterprisesWebAppsRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListWebAppsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3671,8 +3671,8 @@ export const modifyPolicyApplicationsEnterprisesPolicies: API.OperationMethod<
   ModifyPolicyApplicationsEnterprisesPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ModifyPolicyApplicationsEnterprisesPoliciesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<ModifyPolicyApplicationsResponse>,
+  input: __S(1155, __c36, 3) as any as S.Schema<ModifyPolicyApplicationsEnterprisesPoliciesRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<ModifyPolicyApplicationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3692,8 +3692,8 @@ export const patchEnterprises: API.OperationMethod<
   PatchEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<PatchEnterprisesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Enterprise>,
+  input: __S(1216, __c38, 0) as any as S.Schema<PatchEnterprisesRequest>,
+  output: __S(1544, __c48, 8) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3713,8 +3713,8 @@ export const patchEnterprisesDevices: API.OperationMethod<
   PatchEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<PatchEnterprisesDevicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<Device>,
+  input: __S(1248, __c39, 0) as any as S.Schema<PatchEnterprisesDevicesRequest>,
+  output: __S(488, __c15, 8) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3734,8 +3734,8 @@ export const patchEnterprisesPolicies: API.OperationMethod<
   PatchEnterprisesPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<PatchEnterprisesPoliciesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<Policy>,
+  input: __S(1280, __c40, 0) as any as S.Schema<PatchEnterprisesPoliciesRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3755,8 +3755,8 @@ export const patchEnterprisesWebApps: API.OperationMethod<
   PatchEnterprisesWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<PatchEnterprisesWebAppsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<WebApp>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PatchEnterprisesWebAppsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3776,8 +3776,8 @@ export const removePolicyApplicationsEnterprisesPolicies: API.OperationMethod<
   RemovePolicyApplicationsEnterprisesPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<RemovePolicyApplicationsEnterprisesPoliciesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<RemovePolicyApplicationsResponse>,
+  input: __S(1345, __c42, 1) as any as S.Schema<RemovePolicyApplicationsEnterprisesPoliciesRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<RemovePolicyApplicationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3789,263 +3789,18 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://androidmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelEnterprisesDevicesOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sha256Hash: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalData" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultMessage: S.optional(S.String),
-          localizedMessages: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "UserFacingMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(__S(4, __c0, 4)),
-          content: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "TermsAndConditions" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          googleAuthenticationRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAuthenticationSettings",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dataProtectionOfficerEmail: S.optional(S.String),
-          dataProtectionOfficerName: S.optional(S.String),
-          dataProtectionOfficerPhone: S.optional(S.String),
-          euRepresentativeName: S.optional(S.String),
-          euRepresentativeEmail: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          euRepresentativePhone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactInfo" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authenticationRequirement: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SigninDetailGoogleAuthenticationOptions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultStatus: S.optional(S.String),
-          tokenTag: S.optional(S.String),
-          googleAuthenticationOptions: S.optional(__S(10, __c1, 2)),
-          allowPersonalUsage: S.optional(S.String),
-          signinEnrollmentToken: S.optional(S.String),
-          qrCode: S.optional(S.String),
-          signinUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SigninDetail" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appAutoApprovalEnabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          pubsubTopic: S.optional(S.String),
-          enterpriseType: S.optional(S.String),
-          logo: S.optional(__S(2, __c0, 2)),
-          primaryColor: S.optional(S.Number),
-          termsAndConditions: S.optional(__S(6, __c0, 6)),
-          enterpriseDisplayName: S.optional(S.String),
-          googleAuthenticationSettings: S.optional(__S(7, __c0, 7)),
-          contactInfo: S.optional(__S(8, __c1, 0)),
-          managedGooglePlayAccountsEnterpriseType: S.optional(S.String),
-          managedGoogleDomainType: S.optional(S.String),
-          enabledNotificationTypes: S.optional(__S(9, __c1, 1)),
-          signinDetails: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Enterprise" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          signupUrlName: S.optional(S.String.pipe(T.Query())),
-          enterpriseToken: S.optional(S.String.pipe(T.Query())),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          agreementAccepted: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/enterprises",
-            baseUrl: "https://androidmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateEnterprisesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountIdentifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requiredAccountEmail: S.optional(S.String),
-          authenticationRequirement: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAuthenticationOptions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(__S(15, __c1, 7)),
-          qrCode: S.optional(S.String),
-          additionalData: S.optional(S.String),
           value: S.optional(S.String),
-          googleAuthenticationOptions: S.optional(__S(16, __c2, 0)),
-          allowPersonalUsage: S.optional(S.String),
-          duration: S.optional(S.String),
-          oneTimeOnly: S.optional(S.Boolean),
+          permissions: S.optional(__S(1472, __c46, 0)),
           name: S.optional(S.String),
-          policyName: S.optional(S.String),
-          expirationTimestamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnrollmentToken" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/enrollmentTokens",
-            baseUrl: "https://androidmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEnterprisesEnrollmentTokensRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          additionalData: S.optional(S.String),
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-          device: S.optional(S.String),
-          userId: S.optional(S.String),
-          policy: S.optional(S.String),
-          deviceId: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          ttl: S.optional(S.String),
-          managementMode: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MigrationToken" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/migrationTokens",
-            baseUrl: "https://androidmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEnterprisesMigrationTokensRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imageData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebAppIcon" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          icons: S.optional(__S(22, __c2, 6)),
-          versionCode: S.optional(S.String),
-          startUrl: S.optional(S.String),
-          displayMode: S.optional(S.String),
-          title: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebApp" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/webApps",
-            baseUrl: "https://androidmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEnterprisesWebAppsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          permissions: S.optional(__S(9, __c1, 1)),
-          name: S.optional(S.String),
-          enabledFeatures: S.optional(__S(9, __c1, 1)),
+          enabledFeatures: S.optional(__S(1472, __c46, 0)),
           parentFrameUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebToken" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4056,14 +3811,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateEnterprisesWebTokensRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           adminEmail: S.optional(S.String.pipe(T.Query())),
           callbackUrl: S.optional(S.String.pipe(T.Query())),
-          allowedDomains: S.optional(__S(27, __c3, 3).pipe(T.Query())),
+          allowedDomains: S.optional(__S(64, __c2, 0).pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4073,14 +3830,24 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSignupUrlsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignupUrl" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4092,10 +3859,14 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEnterprisesRequest" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          wipeDataFlags: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          wipeDataFlags: S.optional(__S(1472, __c46, 0).pipe(T.Query())),
           wipeReasonMessage: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -4110,7 +3881,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4126,7 +3897,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEnterprisesEnrollmentTokensRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4140,7 +3915,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEnterprisesPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4154,20 +3933,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEnterprisesWebAppsRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedDomains: S.optional(__S(27, __c3, 3)),
+          allowedDomains: S.optional(__S(64, __c2, 0)),
           adminEmail: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GenerateEnterpriseUpgradeUrlRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4178,7 +3961,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateEnterpriseUpgradeUrlEnterprisesRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -4186,7 +3969,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateEnterpriseUpgradeUrlResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4198,7 +3985,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEnterprisesRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -4213,11 +4004,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesApplicationsRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4225,73 +4012,69 @@ function __c5(j: number): any {
           permissionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationPermission" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
+      return S.Array(__S(321, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           versionString: S.optional(S.String),
           production: S.optional(S.Boolean),
           versionCode: S.optional(S.Number),
-          trackIds: S.optional(__S(27, __c3, 3)),
+          trackIds: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "AppVersion" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
     case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedPropertyEntry" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
     case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           defaultValue: S.optional(S.Unknown),
-          nestedProperties: S.optional(S.suspend(() => __S(47, __c5, 7))),
+          nestedProperties: S.optional(S.suspend(() => __S(328, __c10, 8))),
           type: S.optional(S.String),
           description: S.optional(S.String),
-          entries: S.optional(__S(45, __c5, 5)),
+          entries: S.optional(__S(326, __c10, 6)),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedProperty" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           trackAlias: S.optional(S.String),
           trackId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppTrackInfo" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(329, __c10, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           iconUrl: S.optional(S.String),
           author: S.optional(S.String),
           minAndroidSdkVersion: S.optional(S.Number),
-          permissions: S.optional(__S(41, __c5, 1)),
-          appVersions: S.optional(__S(43, __c5, 3)),
+          permissions: S.optional(__S(322, __c10, 2)),
+          appVersions: S.optional(__S(324, __c10, 4)),
           name: S.optional(S.String),
           appPricing: S.optional(S.String),
-          features: S.optional(__S(9, __c1, 1)),
-          availableCountries: S.optional(__S(27, __c3, 3)),
+          features: S.optional(__S(1472, __c46, 0)),
+          availableCountries: S.optional(__S(64, __c2, 0)),
           fullDescription: S.optional(S.String),
           updateTime: S.optional(S.String),
-          screenshotUrls: S.optional(__S(27, __c3, 3)),
-          managedProperties: S.optional(__S(47, __c5, 7)),
+          screenshotUrls: S.optional(__S(64, __c2, 0)),
+          managedProperties: S.optional(__S(328, __c10, 8)),
           contentRating: S.optional(S.String),
-          appTracks: S.optional(__S(49, __c6, 1)),
+          appTracks: S.optional(__S(330, __c10, 10)),
           description: S.optional(S.String),
           playStoreUrl: S.optional(S.String),
           title: S.optional(S.String),
@@ -4301,7 +4084,11 @@ function __c6(j: number): any {
           smallIconUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Application" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4315,156 +4102,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesDevicesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          previousDpc: S.optional(S.String),
-          additionalData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DpcMigrationInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          displayId: S.optional(S.Number),
-          refreshRate: S.optional(S.Number),
-          density: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Display" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.Array(__S(4, __c0, 4));
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          advice: S.optional(__S(55, __c6, 7)),
-          securityRisk: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostureDetail" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          devicePosture: S.optional(S.String),
-          postureDetails: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "SecurityPosture" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          byteCount: S.optional(S.String),
-          eventType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MemoryEvent" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateReceivedTime: S.optional(S.String),
-          updateStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemUpdateInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          androidDevicePolicyVersionCode: S.optional(S.Number),
-          primaryLanguageCode: S.optional(S.String),
-          androidVersion: S.optional(S.String),
-          bootloaderVersion: S.optional(S.String),
-          androidBuildTime: S.optional(S.String),
-          systemUpdateInfo: S.optional(__S(61, __c7, 5)),
-          deviceBuildSignature: S.optional(S.String),
-          androidDevicePolicyVersionName: S.optional(S.String),
-          androidBuildNumber: S.optional(S.String),
-          securityPatchLevel: S.optional(S.String),
-          deviceKernelVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SoftwareInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-          iccId: S.optional(S.String),
-          configMode: S.optional(S.String),
-          activationState: S.optional(S.String),
-          carrierName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TelephonyInfo" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          imei: S.optional(S.String),
-          meid: S.optional(S.String),
-          networkOperatorName: S.optional(S.String),
-          telephonyInfos: S.optional(__S(64, __c8, 0)),
-          wifiMacAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          attemptOutcome: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultApplicationSettingAttempt",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultApplicationType: S.optional(S.String),
-          defaultApplicationSettingAttempts: S.optional(__S(67, __c8, 3)),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DefaultApplicationInfo" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-          message: S.optional(S.String),
-          createTime: S.optional(S.String),
-          severity: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyedAppState" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          eventType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationEvent" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           signingKeyCertFingerprintSha256: S.optional(S.String),
@@ -4472,29 +4114,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ApplicationSigningKeyCert",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userFacingType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          keyedAppStates: S.optional(__S(71, __c8, 7)),
-          versionName: S.optional(S.String),
-          state: S.optional(S.String),
-          versionCode: S.optional(S.Number),
-          events: S.optional(__S(73, __c9, 1)),
-          applicationSource: S.optional(S.String),
-          signingKeyCertFingerprints: S.optional(__S(27, __c3, 3)),
-          signingKeyCerts: S.optional(__S(75, __c9, 3)),
-          installerPackageName: S.optional(S.String),
-          packageSha256Hash: S.optional(S.String),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationReport" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           passwordMinimumLetters: S.optional(S.Number),
@@ -4513,74 +4135,231 @@ function __c9(j: number): any {
           passwordMinimumSymbols: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PasswordRequirements" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
+    case 3:
+      return S.Array(__S(386, __c12, 2));
   }
 }
-function __c10(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           eid: S.optional(S.String),
         }),
       ).annotate({ identifier: "EuiccChipInfo" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          previousDpc: S.optional(S.String),
+          additionalData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DpcMigrationInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          displayId: S.optional(S.Number),
+          refreshRate: S.optional(S.Number),
+          density: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Display" });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(449, __c14, 1));
     case 3:
+      return S.Array(__S(1505, __c47, 1));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          advice: S.optional(__S(451, __c14, 3)),
+          securityRisk: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostureDetail" });
+    case 5:
+      return S.Array(__S(452, __c14, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          devicePosture: S.optional(S.String),
+          postureDetails: S.optional(__S(453, __c14, 5)),
+        }),
+      ).annotate({ identifier: "SecurityPosture" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          byteCount: S.optional(S.String),
+          eventType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MemoryEvent" });
+    case 8:
+      return S.Array(__S(455, __c14, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          updateReceivedTime: S.optional(S.String),
+          updateStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemUpdateInfo" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          androidDevicePolicyVersionCode: S.optional(S.Number),
+          primaryLanguageCode: S.optional(S.String),
+          androidVersion: S.optional(S.String),
+          bootloaderVersion: S.optional(S.String),
+          androidBuildTime: S.optional(S.String),
+          systemUpdateInfo: S.optional(__S(457, __c14, 9)),
+          deviceBuildSignature: S.optional(S.String),
+          androidDevicePolicyVersionName: S.optional(S.String),
+          androidBuildNumber: S.optional(S.String),
+          securityPatchLevel: S.optional(S.String),
+          deviceKernelVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SoftwareInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+          iccId: S.optional(S.String),
+          configMode: S.optional(S.String),
+          activationState: S.optional(S.String),
+          carrierName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TelephonyInfo" });
+    case 12:
+      return S.Array(__S(459, __c14, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          imei: S.optional(S.String),
+          meid: S.optional(S.String),
+          networkOperatorName: S.optional(S.String),
+          telephonyInfos: S.optional(__S(460, __c14, 12)),
+          wifiMacAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkInfo" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          attemptOutcome: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultApplicationSettingAttempt",
+      });
+    case 15:
+      return S.Array(__S(462, __c14, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          defaultApplicationType: S.optional(S.String),
+          defaultApplicationSettingAttempts: S.optional(__S(463, __c14, 15)),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DefaultApplicationInfo" });
+    case 17:
+      return S.Array(__S(464, __c14, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+          message: S.optional(S.String),
+          createTime: S.optional(S.String),
+          severity: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyedAppState" });
+    case 19:
+      return S.Array(__S(466, __c14, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          eventType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationEvent" });
+    case 21:
+      return S.Array(__S(468, __c14, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          userFacingType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          keyedAppStates: S.optional(__S(467, __c14, 19)),
+          versionName: S.optional(S.String),
+          state: S.optional(S.String),
+          versionCode: S.optional(S.Number),
+          events: S.optional(__S(469, __c14, 21)),
+          applicationSource: S.optional(S.String),
+          signingKeyCertFingerprints: S.optional(__S(64, __c2, 0)),
+          signingKeyCerts: S.optional(__S(385, __c12, 1)),
+          installerPackageName: S.optional(S.String),
+          packageSha256Hash: S.optional(S.String),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationReport" });
+    case 23:
+      return S.Array(__S(470, __c14, 22));
+    case 24:
+      return S.Array(S.Number);
+    case 25:
+      return S.Array(__S(416, __c13, 0));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           manufacturer: S.optional(S.String),
-          skinShutdownTemperatures: S.optional(__S(80, __c10, 0)),
-          cpuShutdownTemperatures: S.optional(__S(80, __c10, 0)),
+          skinShutdownTemperatures: S.optional(__S(472, __c14, 24)),
+          cpuShutdownTemperatures: S.optional(__S(472, __c14, 24)),
           enterpriseSpecificId: S.optional(S.String),
           hardware: S.optional(S.String),
           brand: S.optional(S.String),
-          skinThrottlingTemperatures: S.optional(__S(80, __c10, 0)),
+          skinThrottlingTemperatures: S.optional(__S(472, __c14, 24)),
           model: S.optional(S.String),
-          batteryShutdownTemperatures: S.optional(__S(80, __c10, 0)),
-          cpuThrottlingTemperatures: S.optional(__S(80, __c10, 0)),
-          gpuThrottlingTemperatures: S.optional(__S(80, __c10, 0)),
-          gpuShutdownTemperatures: S.optional(__S(80, __c10, 0)),
-          batteryThrottlingTemperatures: S.optional(__S(80, __c10, 0)),
+          batteryShutdownTemperatures: S.optional(__S(472, __c14, 24)),
+          cpuThrottlingTemperatures: S.optional(__S(472, __c14, 24)),
+          gpuThrottlingTemperatures: S.optional(__S(472, __c14, 24)),
+          gpuShutdownTemperatures: S.optional(__S(472, __c14, 24)),
+          batteryThrottlingTemperatures: S.optional(__S(472, __c14, 24)),
           serialNumber: S.optional(S.String),
           deviceBasebandVersion: S.optional(S.String),
-          euiccChipInfo: S.optional(__S(82, __c10, 2)),
+          euiccChipInfo: S.optional(__S(473, __c14, 25)),
         }),
       ).annotate({ identifier: "HardwareInfo" });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           policySignatureVerificationStatus: S.optional(S.String),
           commonCriteriaModeStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonCriteriaModeInfo" });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           totalInternalStorage: S.optional(S.String),
           totalRam: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemoryInfo" });
-    case 6:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           passwordPolicyScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "PasswordPoliciesContext" });
-    case 7:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           wifiGuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "OncWifiContext" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           defaultApplicationScope: S.optional(S.String),
@@ -4588,32 +4367,36 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DefaultApplicationContext",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          passwordPoliciesContext: S.optional(__S(86, __c10, 6)),
-          oncWifiContext: S.optional(__S(87, __c10, 7)),
-          defaultApplicationContext: S.optional(__S(88, __c11, 0)),
+          passwordPoliciesContext: S.optional(__S(477, __c14, 29)),
+          oncWifiContext: S.optional(__S(478, __c14, 30)),
+          defaultApplicationContext: S.optional(__S(479, __c14, 31)),
         }),
       ).annotate({
         identifier: "SpecificNonComplianceContext",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fieldPath: S.optional(S.String),
           currentValue: S.optional(S.Unknown),
           installationFailureReason: S.optional(S.String),
           specificNonComplianceReason: S.optional(S.String),
-          specificNonComplianceContext: S.optional(__S(89, __c11, 1)),
+          specificNonComplianceContext: S.optional(__S(480, __c15, 0)),
           settingName: S.optional(S.String),
           packageName: S.optional(S.String),
           nonComplianceReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "NonComplianceDetail" });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           adbEnabled: S.optional(S.Boolean),
@@ -4625,21 +4408,21 @@ function __c11(j: number): any {
           developmentSettingsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeviceSettings" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          gpuTemperatures: S.optional(__S(80, __c10, 0)),
-          fanSpeeds: S.optional(__S(80, __c10, 0)),
-          cpuUsages: S.optional(__S(80, __c10, 0)),
-          cpuTemperatures: S.optional(__S(80, __c10, 0)),
-          batteryTemperatures: S.optional(__S(80, __c10, 0)),
-          skinTemperatures: S.optional(__S(80, __c10, 0)),
+          gpuTemperatures: S.optional(__S(472, __c14, 24)),
+          fanSpeeds: S.optional(__S(472, __c14, 24)),
+          cpuUsages: S.optional(__S(472, __c14, 24)),
+          cpuTemperatures: S.optional(__S(472, __c14, 24)),
+          batteryTemperatures: S.optional(__S(472, __c14, 24)),
+          skinTemperatures: S.optional(__S(472, __c14, 24)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "HardwareStatus" });
+    case 5:
+      return S.Array(__S(484, __c15, 4));
     case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.String),
@@ -4647,55 +4430,55 @@ function __c11(j: number): any {
           batteryLevel: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PowerManagementEvent" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(486, __c15, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enrollmentTime: S.optional(S.String),
           appliedPolicyVersion: S.optional(S.String),
-          dpcMigrationInfo: S.optional(__S(52, __c6, 4)),
+          dpcMigrationInfo: S.optional(__S(448, __c14, 0)),
           name: S.optional(S.String),
-          displays: S.optional(__S(54, __c6, 6)),
+          displays: S.optional(__S(450, __c14, 2)),
           ownership: S.optional(S.String),
-          securityPosture: S.optional(__S(58, __c7, 2)),
+          securityPosture: S.optional(__S(454, __c14, 6)),
           appliedPolicyName: S.optional(S.String),
-          memoryEvents: S.optional(__S(60, __c7, 4)),
-          softwareInfo: S.optional(__S(62, __c7, 6)),
-          networkInfo: S.optional(__S(65, __c8, 1)),
+          memoryEvents: S.optional(__S(456, __c14, 8)),
+          softwareInfo: S.optional(__S(458, __c14, 10)),
+          networkInfo: S.optional(__S(461, __c14, 13)),
           lastPolicyComplianceReportTime: S.optional(S.String),
           lastPolicySyncTime: S.optional(S.String),
           policyCompliant: S.optional(S.Boolean),
-          defaultApplicationInfo: S.optional(__S(69, __c8, 5)),
+          defaultApplicationInfo: S.optional(__S(465, __c14, 17)),
           managementMode: S.optional(S.String),
           apiLevel: S.optional(S.Number),
           userName: S.optional(S.String),
           lastStatusReportTime: S.optional(S.String),
           enrollmentTokenData: S.optional(S.String),
-          applicationReports: S.optional(__S(77, __c9, 5)),
+          applicationReports: S.optional(__S(471, __c14, 23)),
           enrollmentTokenName: S.optional(S.String),
           appliedState: S.optional(S.String),
-          appliedPasswordPolicies: S.optional(__S(79, __c9, 7)),
-          hardwareInfo: S.optional(__S(83, __c10, 3)),
-          commonCriteriaModeInfo: S.optional(__S(84, __c10, 4)),
+          appliedPasswordPolicies: S.optional(__S(387, __c12, 3)),
+          hardwareInfo: S.optional(__S(474, __c14, 26)),
+          commonCriteriaModeInfo: S.optional(__S(475, __c14, 27)),
           state: S.optional(S.String),
           policyName: S.optional(S.String),
-          memoryInfo: S.optional(__S(85, __c10, 5)),
-          nonComplianceDetails: S.optional(__S(91, __c11, 3)),
-          deviceSettings: S.optional(__S(92, __c11, 4)),
-          hardwareStatusSamples: S.optional(__S(94, __c11, 6)),
-          systemProperties: S.optional(__S(3, __c0, 3)),
-          disabledReason: S.optional(__S(4, __c0, 4)),
-          powerManagementEvents: S.optional(__S(96, __c12, 0)),
-          user: S.optional(__S(15, __c1, 7)),
-          previousDeviceNames: S.optional(__S(27, __c3, 3)),
+          memoryInfo: S.optional(__S(476, __c14, 28)),
+          nonComplianceDetails: S.optional(__S(482, __c15, 2)),
+          deviceSettings: S.optional(__S(483, __c15, 3)),
+          hardwareStatusSamples: S.optional(__S(485, __c15, 5)),
+          systemProperties: S.optional(__S(1504, __c47, 0)),
+          disabledReason: S.optional(__S(1505, __c47, 1)),
+          powerManagementEvents: S.optional(__S(487, __c15, 7)),
+          user: S.optional(__S(1600, __c50, 0)),
+          previousDeviceNames: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "Device" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4709,29 +4492,41 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesDevicesOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(544, __c17, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(100, __c12, 4)),
+          details: S.optional(__S(576, __c18, 0)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(__S(101, __c12, 5)),
-          response: S.optional(__S(99, __c12, 3)),
-          metadata: S.optional(__S(99, __c12, 3)),
+          error: S.optional(__S(577, __c18, 1)),
+          response: S.optional(__S(544, __c17, 0)),
+          metadata: S.optional(__S(544, __c17, 0)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4747,7 +4542,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4763,7 +4558,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesMigrationTokensRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4777,7 +4576,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageNames: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "PackageNameList" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           statusBar: S.optional(S.String),
@@ -4787,17 +4600,17 @@ function __c13(j: number): any {
           systemErrorWarnings: S.optional(S.String),
         }),
       ).annotate({ identifier: "KioskCustomization" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mmsProxyPort: S.optional(S.Number),
           proxyAddress: S.optional(S.String),
-          apnTypes: S.optional(__S(9, __c1, 1)),
+          apnTypes: S.optional(__S(1472, __c46, 0)),
           proxyPort: S.optional(S.Number),
           mvnoType: S.optional(S.String),
           displayName: S.optional(S.String),
           alwaysOnSetting: S.optional(S.String),
-          networkTypes: S.optional(__S(9, __c1, 1)),
+          networkTypes: S.optional(__S(1472, __c46, 0)),
           authType: S.optional(S.String),
           mtuV6: S.optional(S.Number),
           mmsc: S.optional(S.String),
@@ -4812,57 +4625,53 @@ function __c13(j: number): any {
           carrierId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ApnSetting" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          apnSettings: S.optional(__S(108, __c13, 4)),
+          apnSettings: S.optional(__S(738, __c23, 2)),
           overrideApns: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApnPolicy" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           wifiRoamingMode: S.optional(S.String),
           wifiSsid: S.optional(S.String),
         }),
       ).annotate({ identifier: "WifiRoamingSetting" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(740, __c23, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          wifiRoamingSettings: S.optional(__S(111, __c13, 7)),
+          wifiRoamingSettings: S.optional(__S(741, __c23, 5)),
         }),
       ).annotate({ identifier: "WifiRoamingPolicy" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           wifiSsid: S.optional(S.String),
         }),
       ).annotate({ identifier: "WifiSsid" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(743, __c23, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           wifiSsidPolicyType: S.optional(S.String),
-          wifiSsids: S.optional(__S(114, __c14, 2)),
+          wifiSsids: S.optional(__S(744, __c23, 8)),
         }),
       ).annotate({ identifier: "WifiSsidPolicy" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           privateDnsMode: S.optional(S.String),
           privateDnsHost: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateDnsSettings" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           fallbackToDefaultConnection: S.optional(S.String),
@@ -4872,46 +4681,42 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PreferentialNetworkServiceConfig",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(747, __c23, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           defaultPreferentialNetworkId: S.optional(S.String),
-          preferentialNetworkServiceConfigs: S.optional(__S(118, __c14, 6)),
+          preferentialNetworkServiceConfigs: S.optional(__S(748, __c23, 12)),
         }),
       ).annotate({
         identifier: "PreferentialNetworkServiceSettings",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           usbDataAccess: S.optional(S.String),
-          apnPolicy: S.optional(__S(109, __c13, 5)),
-          wifiRoamingPolicy: S.optional(__S(112, __c14, 0)),
+          apnPolicy: S.optional(__S(739, __c23, 3)),
+          wifiRoamingPolicy: S.optional(__S(742, __c23, 6)),
           bluetoothSharing: S.optional(S.String),
           configureWifi: S.optional(S.String),
-          wifiSsidPolicy: S.optional(__S(115, __c14, 3)),
-          privateDnsSettings: S.optional(__S(116, __c14, 4)),
-          preferentialNetworkServiceSettings: S.optional(__S(119, __c14, 7)),
+          wifiSsidPolicy: S.optional(__S(745, __c23, 9)),
+          privateDnsSettings: S.optional(__S(746, __c23, 10)),
+          preferentialNetworkServiceSettings: S.optional(__S(749, __c23, 13)),
           wifiDirectSettings: S.optional(S.String),
           tetheringSettings: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeviceConnectivityManagement",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           requiredAccountEmail: S.optional(S.String),
           authenticationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkAccountSetupConfig" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           nonComplianceReason: S.optional(S.String),
@@ -4921,92 +4726,78 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "NonComplianceDetailCondition",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           minApiLevel: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ApiLevelCondition" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          nonComplianceDetailCondition: S.optional(__S(122, __c15, 2)),
-          apiLevelCondition: S.optional(__S(123, __c15, 3)),
+          nonComplianceDetailCondition: S.optional(__S(752, __c23, 16)),
+          apiLevelCondition: S.optional(__S(753, __c23, 17)),
           disableApps: S.optional(S.Boolean),
-          packageNamesToDisable: S.optional(__S(27, __c3, 3)),
+          packageNamesToDisable: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ComplianceRule" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 19:
+      return S.Array(__S(754, __c23, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           privateKeyAlias: S.optional(S.String),
           urlPattern: S.optional(S.String),
-          packageNames: S.optional(__S(27, __c3, 3)),
+          packageNames: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ChoosePrivateKeyRule" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(756, __c23, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          packageNames: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "PackageNameList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabledLogTypes: S.optional(__S(9, __c1, 1)),
-          uploadOnCellularAllowed: S.optional(__S(9, __c1, 1)),
+          enabledLogTypes: S.optional(__S(1472, __c46, 0)),
+          uploadOnCellularAllowed: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "UsageLog" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(27, __c3, 3)),
+          actions: S.optional(__S(64, __c2, 0)),
           receiverActivity: S.optional(S.String),
-          categories: S.optional(__S(27, __c3, 3)),
+          categories: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "PersistentPreferredActivity",
       });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+    case 24:
+      return S.Array(__S(759, __c23, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           policy: S.optional(S.String),
           permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "PermissionGrant" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 26:
+      return S.Array(__S(761, __c23, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           lockdownEnabled: S.optional(S.Boolean),
           packageName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlwaysOnVpnPackage" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          excludedHosts: S.optional(__S(27, __c3, 3)),
+          excludedHosts: S.optional(__S(64, __c2, 0)),
           port: S.optional(S.Number),
           pacUri: S.optional(S.String),
           host: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyInfo" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           month: S.optional(S.Number),
@@ -5014,59 +4805,59 @@ function __c17(j: number): any {
           year: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Androidmanagement_Date" });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          startDate: S.optional(__S(136, __c17, 0)),
-          endDate: S.optional(__S(136, __c17, 0)),
+          startDate: S.optional(__S(765, __c23, 29)),
+          endDate: S.optional(__S(765, __c23, 29)),
         }),
       ).annotate({ identifier: "FreezePeriod" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 31:
+      return S.Array(__S(766, __c23, 30));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endMinutes: S.optional(S.Number),
           type: S.optional(S.String),
           startMinutes: S.optional(S.Number),
-          freezePeriods: S.optional(__S(138, __c17, 2)),
+          freezePeriods: S.optional(__S(767, __c23, 31)),
         }),
       ).annotate({ identifier: "SystemUpdate" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           templateId: S.optional(S.String),
-          configurationVariables: S.optional(__S(3, __c0, 3)),
+          configurationVariables: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationTemplate",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           userUninstallSettings: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAppConfig" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           roleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Role" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(771, __c24, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           notificationReceiver: S.optional(S.String),
-          signingKeyFingerprintsSha256: S.optional(__S(27, __c3, 3)),
+          signingKeyFingerprintsSha256: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ExtensionConfig" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           networkTypeConstraint: S.optional(S.String),
@@ -5074,40 +4865,40 @@ function __c18(j: number): any {
           deviceIdleConstraint: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstallConstraint" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(774, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           preferentialNetworkId: S.optional(S.String),
-          managedConfigurationTemplate: S.optional(__S(140, __c17, 4)),
+          managedConfigurationTemplate: S.optional(__S(769, __c24, 1)),
           minimumVersionCode: S.optional(S.Number),
-          signingKeyCerts: S.optional(__S(75, __c9, 3)),
-          permissionGrants: S.optional(__S(133, __c16, 5)),
-          customAppConfig: S.optional(__S(141, __c17, 5)),
-          managedConfiguration: S.optional(__S(99, __c12, 3)),
+          signingKeyCerts: S.optional(__S(385, __c12, 1)),
+          permissionGrants: S.optional(__S(762, __c23, 26)),
+          customAppConfig: S.optional(__S(770, __c24, 2)),
+          managedConfiguration: S.optional(__S(544, __c17, 0)),
           packageName: S.optional(S.String),
           alwaysOnVpnLockdownExemption: S.optional(S.String),
-          delegatedScopes: S.optional(__S(9, __c1, 1)),
+          delegatedScopes: S.optional(__S(1472, __c46, 0)),
           workProfileWidgets: S.optional(S.String),
           defaultPermissionPolicy: S.optional(S.String),
-          roles: S.optional(__S(143, __c17, 7)),
+          roles: S.optional(__S(772, __c24, 4)),
           autoUpdateMode: S.optional(S.String),
           installType: S.optional(S.String),
-          extensionConfig: S.optional(__S(144, __c18, 0)),
-          installConstraint: S.optional(__S(146, __c18, 2)),
+          extensionConfig: S.optional(__S(773, __c24, 5)),
+          installConstraint: S.optional(__S(775, __c24, 7)),
           connectedWorkAndPersonalApp: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          accessibleTrackIds: S.optional(__S(27, __c3, 3)),
+          accessibleTrackIds: S.optional(__S(64, __c2, 0)),
           userControlSettings: S.optional(S.String),
           credentialProviderPolicy: S.optional(S.String),
           installPriority: S.optional(S.Number),
           lockTaskAllowed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ApplicationPolicy" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(776, __c24, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           includeRemovedApps: S.optional(S.Boolean),
@@ -5115,7 +4906,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ApplicationReportingSettings",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           systemPropertiesEnabled: S.optional(S.Boolean),
@@ -5127,12 +4918,12 @@ function __c18(j: number): any {
           powerManagementEventsEnabled: S.optional(S.Boolean),
           applicationReportsEnabled: S.optional(S.Boolean),
           displayInfoEnabled: S.optional(S.Boolean),
-          applicationReportingSettings: S.optional(__S(149, __c18, 5)),
+          applicationReportingSettings: S.optional(__S(778, __c24, 10)),
           memoryInfoEnabled: S.optional(S.Boolean),
           commonCriteriaModeEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StatusReportingSettings" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           taskContinuityHandoff: S.optional(S.String),
@@ -5140,11 +4931,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PersonalCrossDevicePolicies",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           installType: S.optional(S.String),
@@ -5153,27 +4940,27 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PersonalApplicationPolicy",
       });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(781, __c24, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          crossDevicePolicies: S.optional(__S(151, __c18, 7)),
+          crossDevicePolicies: S.optional(__S(780, __c24, 12)),
           maxDaysWithWorkOff: S.optional(S.Number),
           cameraDisabled: S.optional(S.Boolean),
           personalPlayStoreMode: S.optional(S.String),
           privateSpacePolicy: S.optional(S.String),
           screenCaptureDisabled: S.optional(S.Boolean),
           bluetoothSharing: S.optional(S.String),
-          accountTypesWithManagementDisabled: S.optional(__S(27, __c3, 3)),
-          personalApplications: S.optional(__S(153, __c19, 1)),
+          accountTypesWithManagementDisabled: S.optional(__S(64, __c2, 0)),
+          personalApplications: S.optional(__S(782, __c24, 14)),
         }),
       ).annotate({ identifier: "PersonalUsagePolicies" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           commonCriteriaMode: S.optional(S.String),
-          personalAppsThatCanReadWorkNotifications: S.optional(__S(27, __c3, 3)),
+          personalAppsThatCanReadWorkNotifications: S.optional(__S(64, __c2, 0)),
           contentProtectionPolicy: S.optional(S.String),
           untrustedAppsPolicy: S.optional(S.String),
           developerSettings: S.optional(S.String),
@@ -5183,56 +4970,52 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "AdvancedSecurityOverrides",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           blockAfterDays: S.optional(S.Number),
           blockScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlockAction" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           wipeAfterDays: S.optional(S.Number),
           preserveFrp: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WipeAction" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           settingName: S.optional(S.String),
-          blockAction: S.optional(__S(156, __c19, 4)),
-          wipeAction: S.optional(__S(157, __c19, 5)),
+          blockAction: S.optional(__S(785, __c24, 17)),
+          wipeAction: S.optional(__S(786, __c24, 18)),
         }),
       ).annotate({ identifier: "PolicyEnforcementRule" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
+      return S.Array(__S(787, __c24, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           screenTimeout: S.optional(S.String),
           screenTimeoutMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScreenTimeoutSettings" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           screenBrightnessMode: S.optional(S.String),
           screenBrightness: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ScreenBrightnessSettings" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          screenTimeoutSettings: S.optional(__S(160, __c20, 0)),
-          screenBrightnessSettings: S.optional(__S(161, __c20, 1)),
+          screenTimeoutSettings: S.optional(__S(789, __c24, 21)),
+          screenBrightnessSettings: S.optional(__S(790, __c24, 22)),
         }),
       ).annotate({ identifier: "DisplaySettings" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           nearbyNotificationStreaming: S.optional(S.String),
@@ -5240,23 +5023,23 @@ function __c20(j: number): any {
           nearbyAppStreaming: S.optional(S.String),
         }),
       ).annotate({ identifier: "CrossDevicePolicies" });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchAppAction" });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(__S(4, __c0, 4)),
-          launchApp: S.optional(__S(164, __c20, 4)),
-          description: S.optional(__S(4, __c0, 4)),
+          title: S.optional(__S(1505, __c47, 1)),
+          launchApp: S.optional(__S(793, __c24, 25)),
+          description: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({ identifier: "SetupAction" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 27:
+      return S.Array(__S(794, __c24, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           minimumWifiSecurityLevel: S.optional(S.String),
@@ -5267,57 +5050,57 @@ function __c20(j: number): any {
           wifiState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceRadioState" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          signingCertsSha256: S.optional(__S(64, __c2, 0)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentProviderEndpoint" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          certificateReferences: S.optional(__S(64, __c2, 0)),
+          contentProviderEndpoint: S.optional(__S(797, __c24, 29)),
+        }),
+      ).annotate({ identifier: "OncCertificateProvider" });
+    case 31:
+      return S.Array(__S(798, __c24, 30));
   }
 }
-function __c21(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          packageName: S.optional(S.String),
-          signingCertsSha256: S.optional(__S(27, __c3, 3)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentProviderEndpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          certificateReferences: S.optional(__S(27, __c3, 3)),
-          contentProviderEndpoint: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({ identifier: "OncCertificateProvider" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           showWorkContactsInPersonalProfile: S.optional(S.String),
           crossProfileCopyPaste: S.optional(S.String),
-          exemptionsToShowWorkContactsInPersonalProfile: S.optional(__S(128, __c16, 0)),
+          exemptionsToShowWorkContactsInPersonalProfile: S.optional(__S(704, __c22, 0)),
           crossProfileAppFunctions: S.optional(S.String),
           crossProfileDataSharing: S.optional(S.String),
           workProfileWidgetsDefault: S.optional(S.String),
         }),
       ).annotate({ identifier: "CrossProfilePolicies" });
-    case 4:
-      return S.Array(__S(164, __c20, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(793, __c24, 25));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           defaultApplicationType: S.optional(S.String),
-          defaultApplications: S.optional(__S(172, __c21, 4)),
-          defaultApplicationScopes: S.optional(__S(9, __c1, 1)),
+          defaultApplications: S.optional(__S(801, __c25, 1)),
+          defaultApplicationScopes: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({
         identifier: "DefaultApplicationSetting",
       });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(802, __c25, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          kioskCustomization: S.optional(__S(106, __c13, 2)),
-          longSupportMessage: S.optional(__S(4, __c0, 4)),
+          kioskCustomization: S.optional(__S(736, __c23, 0)),
+          longSupportMessage: S.optional(__S(1505, __c47, 1)),
           name: S.optional(S.String),
           locationMode: S.optional(S.String),
           cameraDisabled: S.optional(S.Boolean),
@@ -5327,55 +5110,55 @@ function __c21(j: number): any {
           credentialProviderPolicyDefault: S.optional(S.String),
           mountPhysicalMediaDisabled: S.optional(S.Boolean),
           usbFileTransferDisabled: S.optional(S.Boolean),
-          deviceConnectivityManagement: S.optional(__S(120, __c15, 0)),
-          workAccountSetupConfig: S.optional(__S(121, __c15, 1)),
-          complianceRules: S.optional(__S(125, __c15, 5)),
-          passwordRequirements: S.optional(__S(78, __c9, 6)),
+          deviceConnectivityManagement: S.optional(__S(750, __c23, 14)),
+          workAccountSetupConfig: S.optional(__S(751, __c23, 15)),
+          complianceRules: S.optional(__S(755, __c23, 19)),
+          passwordRequirements: S.optional(__S(386, __c12, 2)),
           createWindowsDisabled: S.optional(S.Boolean),
           unmuteMicrophoneDisabled: S.optional(S.Boolean),
           maximumTimeToLock: S.optional(S.String),
           assistContentPolicy: S.optional(S.String),
           vpnConfigDisabled: S.optional(S.Boolean),
-          choosePrivateKeyRules: S.optional(__S(127, __c15, 7)),
-          permittedAccessibilityServices: S.optional(__S(128, __c16, 0)),
+          choosePrivateKeyRules: S.optional(__S(757, __c23, 21)),
+          permittedAccessibilityServices: S.optional(__S(704, __c22, 0)),
           kioskCustomLauncherEnabled: S.optional(S.Boolean),
           installAppsDisabled: S.optional(S.Boolean),
           microphoneAccess: S.optional(S.String),
           wifiConfigsLockdownEnabled: S.optional(S.Boolean),
-          usageLog: S.optional(__S(129, __c16, 1)),
+          usageLog: S.optional(__S(758, __c23, 22)),
           bluetoothDisabled: S.optional(S.Boolean),
           setWallpaperDisabled: S.optional(S.Boolean),
-          persistentPreferredActivities: S.optional(__S(131, __c16, 3)),
+          persistentPreferredActivities: S.optional(__S(760, __c23, 24)),
           minimumApiLevel: S.optional(S.Number),
-          wipeDataFlags: S.optional(__S(9, __c1, 1)),
+          wipeDataFlags: S.optional(__S(1472, __c46, 0)),
           ensureVerifyAppsEnabled: S.optional(S.Boolean),
-          accountTypesWithManagementDisabled: S.optional(__S(27, __c3, 3)),
+          accountTypesWithManagementDisabled: S.optional(__S(64, __c2, 0)),
           printingPolicy: S.optional(S.String),
-          permissionGrants: S.optional(__S(133, __c16, 5)),
+          permissionGrants: S.optional(__S(762, __c23, 26)),
           autofillPolicy: S.optional(S.String),
           usbMassStorageEnabled: S.optional(S.Boolean),
-          alwaysOnVpnPackage: S.optional(__S(134, __c16, 6)),
-          openNetworkConfiguration: S.optional(__S(99, __c12, 3)),
+          alwaysOnVpnPackage: S.optional(__S(763, __c23, 27)),
+          openNetworkConfiguration: S.optional(__S(544, __c17, 0)),
           outgoingCallsDisabled: S.optional(S.Boolean),
-          recommendedGlobalProxy: S.optional(__S(135, __c16, 7)),
+          recommendedGlobalProxy: S.optional(__S(764, __c23, 28)),
           appFunctions: S.optional(S.String),
-          stayOnPluggedModes: S.optional(__S(9, __c1, 1)),
+          stayOnPluggedModes: S.optional(__S(1472, __c46, 0)),
           statusBarDisabled: S.optional(S.Boolean),
-          systemUpdate: S.optional(__S(139, __c17, 3)),
-          frpAdminEmails: S.optional(__S(27, __c3, 3)),
+          systemUpdate: S.optional(__S(768, __c24, 0)),
+          frpAdminEmails: S.optional(__S(64, __c2, 0)),
           smsDisabled: S.optional(S.Boolean),
           credentialsConfigDisabled: S.optional(S.Boolean),
-          applications: S.optional(__S(148, __c18, 4)),
-          deviceOwnerLockScreenInfo: S.optional(__S(4, __c0, 4)),
-          statusReportingSettings: S.optional(__S(150, __c18, 6)),
+          applications: S.optional(__S(777, __c24, 9)),
+          deviceOwnerLockScreenInfo: S.optional(__S(1505, __c47, 1)),
+          statusReportingSettings: S.optional(__S(779, __c24, 11)),
           backupService: S.optional(S.String),
           autoDateAndTimeZone: S.optional(S.String),
           funDisabled: S.optional(S.Boolean),
           addUserDisabled: S.optional(S.Boolean),
           bluetoothContactSharingDisabled: S.optional(S.Boolean),
           adjustVolumeDisabled: S.optional(S.Boolean),
-          permittedInputMethods: S.optional(__S(128, __c16, 0)),
-          personalUsagePolicies: S.optional(__S(154, __c19, 2)),
+          permittedInputMethods: S.optional(__S(704, __c22, 0)),
+          personalUsagePolicies: S.optional(__S(783, __c24, 15)),
           defaultPermissionPolicy: S.optional(S.String),
           cellBroadcastsConfigDisabled: S.optional(S.Boolean),
           screenCaptureDisabled: S.optional(S.Boolean),
@@ -5383,46 +5166,46 @@ function __c21(j: number): any {
           safeBootDisabled: S.optional(S.Boolean),
           networkEscapeHatchEnabled: S.optional(S.Boolean),
           version: S.optional(S.String),
-          advancedSecurityOverrides: S.optional(__S(155, __c19, 3)),
-          policyEnforcementRules: S.optional(__S(159, __c19, 7)),
+          advancedSecurityOverrides: S.optional(__S(784, __c24, 16)),
+          policyEnforcementRules: S.optional(__S(788, __c24, 20)),
           outgoingBeamDisabled: S.optional(S.Boolean),
-          shortSupportMessage: S.optional(__S(4, __c0, 4)),
+          shortSupportMessage: S.optional(__S(1505, __c47, 1)),
           cameraAccess: S.optional(S.String),
           modifyAccountsDisabled: S.optional(S.Boolean),
           setUserIconDisabled: S.optional(S.Boolean),
-          displaySettings: S.optional(__S(162, __c20, 2)),
+          displaySettings: S.optional(__S(791, __c24, 23)),
           encryptionPolicy: S.optional(S.String),
           factoryResetDisabled: S.optional(S.Boolean),
-          crossDevicePolicies: S.optional(__S(163, __c20, 3)),
-          setupActions: S.optional(__S(166, __c20, 6)),
+          crossDevicePolicies: S.optional(__S(792, __c24, 24)),
+          setupActions: S.optional(__S(795, __c24, 27)),
           installUnknownSourcesAllowed: S.optional(S.Boolean),
-          passwordPolicies: S.optional(__S(79, __c9, 7)),
+          passwordPolicies: S.optional(__S(387, __c12, 3)),
           shareLocationDisabled: S.optional(S.Boolean),
           autoTimeRequired: S.optional(S.Boolean),
           wifiConfigDisabled: S.optional(S.Boolean),
           keyguardDisabled: S.optional(S.Boolean),
           bluetoothConfigDisabled: S.optional(S.Boolean),
           dataRoamingDisabled: S.optional(S.Boolean),
-          deviceRadioState: S.optional(__S(167, __c20, 7)),
+          deviceRadioState: S.optional(__S(796, __c24, 28)),
           networkResetDisabled: S.optional(S.Boolean),
           skipFirstUseHintsEnabled: S.optional(S.Boolean),
           mobileNetworksConfigDisabled: S.optional(S.Boolean),
-          androidDevicePolicyTracks: S.optional(__S(9, __c1, 1)),
+          androidDevicePolicyTracks: S.optional(__S(1472, __c46, 0)),
           enterpriseDisplayNameVisibility: S.optional(S.String),
-          oncCertificateProviders: S.optional(__S(170, __c21, 2)),
+          oncCertificateProviders: S.optional(__S(799, __c24, 31)),
           privateKeySelectionEnabled: S.optional(S.Boolean),
-          keyguardDisabledFeatures: S.optional(__S(9, __c1, 1)),
+          keyguardDisabledFeatures: S.optional(__S(1472, __c46, 0)),
           preferentialNetworkService: S.optional(S.String),
-          crossProfilePolicies: S.optional(__S(171, __c21, 3)),
+          crossProfilePolicies: S.optional(__S(800, __c25, 0)),
           playStoreMode: S.optional(S.String),
           appAutoUpdatePolicy: S.optional(S.String),
           tetheringConfigDisabled: S.optional(S.Boolean),
-          defaultApplicationSettings: S.optional(__S(174, __c21, 6)),
+          defaultApplicationSettings: S.optional(__S(803, __c25, 3)),
         }),
       ).annotate({ identifier: "Policy" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5438,7 +5221,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesWebAppsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5452,7 +5239,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetProvisioningInfoRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiLevel: S.optional(S.Number),
@@ -5468,19 +5255,23 @@ function __c22(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisioningInfo" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "StopLostModeStatus" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           iccId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EsimInfo" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operationCode: S.optional(S.String),
@@ -5489,110 +5280,102 @@ function __c22(j: number): any {
           operationCodeDetail: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalErrorDetails" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          esimInfo: S.optional(__S(180, __c22, 4)),
-          internalErrorDetails: S.optional(__S(181, __c22, 5)),
+          esimInfo: S.optional(__S(897, __c28, 1)),
+          internalErrorDetails: S.optional(__S(898, __c28, 2)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "EsimCommandStatus" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           clearingResult: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerAppResult" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(183, __c22, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "ClearAppsDataStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lostOrganization: S.optional(__S(4, __c0, 4)),
-          lostStreetAddress: S.optional(__S(4, __c0, 4)),
-          lostEmailAddress: S.optional(S.String),
-          lostMessage: S.optional(__S(4, __c0, 4)),
-          lostPhoneNumber: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "StartLostModeParams" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          wipeDataFlags: S.optional(__S(9, __c1, 1)),
-          wipeReason: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "WipeParams" });
-    case 4:
-      return S.Array(__S(81, __c10, 1));
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eids: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({ identifier: "EidInfo" });
+      return S.Record(S.String, __S(900, __c28, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
+          results: S.optional(__S(901, __c28, 5)),
+        }),
+      ).annotate({ identifier: "ClearAppsDataStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          lostOrganization: S.optional(__S(1505, __c47, 1)),
+          lostStreetAddress: S.optional(__S(1505, __c47, 1)),
+          lostEmailAddress: S.optional(S.String),
+          lostMessage: S.optional(__S(1505, __c47, 1)),
+          lostPhoneNumber: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({ identifier: "StartLostModeParams" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          wipeDataFlags: S.optional(__S(1472, __c46, 0)),
+          wipeReason: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({ identifier: "WipeParams" });
+    case 9:
+      return S.Array(__S(416, __c13, 0));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          eids: S.optional(__S(905, __c28, 9)),
+        }),
+      ).annotate({ identifier: "EidInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
           status: S.optional(S.String),
-          eidInfo: S.optional(__S(189, __c23, 5)),
+          eidInfo: S.optional(__S(906, __c28, 10)),
         }),
       ).annotate({ identifier: "RequestDeviceInfoStatus" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           activationState: S.optional(S.String),
           activationCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddEsimParams" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           deviceInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestDeviceInfoParams" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          stopLostModeStatus: S.optional(__S(179, __c22, 3)),
-          esimStatus: S.optional(__S(182, __c22, 6)),
+          stopLostModeStatus: S.optional(__S(896, __c28, 0)),
+          esimStatus: S.optional(__S(899, __c28, 3)),
           errorCode: S.optional(S.String),
-          resetPasswordFlags: S.optional(__S(9, __c1, 1)),
-          clearAppsDataStatus: S.optional(__S(185, __c23, 1)),
+          resetPasswordFlags: S.optional(__S(1472, __c46, 0)),
+          clearAppsDataStatus: S.optional(__S(902, __c28, 6)),
           userName: S.optional(S.String),
           createTime: S.optional(S.String),
-          startLostModeParams: S.optional(__S(186, __c23, 2)),
-          removeEsimParams: S.optional(__S(180, __c22, 4)),
-          wipeParams: S.optional(__S(187, __c23, 3)),
+          startLostModeParams: S.optional(__S(903, __c28, 7)),
+          removeEsimParams: S.optional(__S(897, __c28, 1)),
+          wipeParams: S.optional(__S(904, __c28, 8)),
           newPassword: S.optional(S.String),
-          stopLostModeParams: S.optional(__S(1, __c0, 1)),
+          stopLostModeParams: S.optional(__S(1408, __c44, 0)),
           duration: S.optional(S.String),
-          startLostModeStatus: S.optional(__S(179, __c22, 3)),
-          clearAppsDataParams: S.optional(__S(128, __c16, 0)),
+          startLostModeStatus: S.optional(__S(896, __c28, 0)),
+          clearAppsDataParams: S.optional(__S(704, __c22, 0)),
           type: S.optional(S.String),
-          requestDeviceInfoStatus: S.optional(__S(190, __c23, 6)),
-          addEsimParams: S.optional(__S(191, __c23, 7)),
-          requestDeviceInfoParams: S.optional(__S(192, __c24, 0)),
+          requestDeviceInfoStatus: S.optional(__S(907, __c28, 11)),
+          addEsimParams: S.optional(__S(908, __c28, 12)),
+          requestDeviceInfoParams: S.optional(__S(909, __c28, 13)),
         }),
       ).annotate({ identifier: "Command" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(193, __c24, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(910, __c28, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5603,7 +5386,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "IssueCommandEnterprisesDevicesRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -5618,16 +5405,20 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEnterprisesRequest" });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(1544, __c48, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          enterprises: S.optional(__S(196, __c24, 4)),
+          enterprises: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({ identifier: "ListEnterprisesResponse" });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5643,20 +5434,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesDevicesRequest",
       });
-    case 7:
-      return S.Array(__S(97, __c12, 1));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(488, __c15, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          devices: S.optional(__S(199, __c24, 7)),
+          devices: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "ListDevicesResponse" });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5674,17 +5465,21 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesDevicesOperationsRequest",
       });
+    case 1:
+      return S.Array(__S(578, __c18, 2));
     case 2:
-      return S.Array(__S(102, __c12, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(27, __c3, 3)),
-          operations: S.optional(__S(202, __c25, 2)),
+          unreachable: S.optional(__S(64, __c2, 0)),
+          operations: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5700,18 +5495,22 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesEnrollmentTokensRequest",
       });
-    case 5:
-      return S.Array(__S(17, __c2, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(1633, __c51, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          enrollmentTokens: S.optional(__S(205, __c25, 5)),
+          enrollmentTokens: S.optional(__S(1025, __c32, 1)),
         }),
       ).annotate({
         identifier: "ListEnrollmentTokensResponse",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5727,22 +5526,22 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesMigrationTokensRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(19, __c2, 3));
     case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          migrationTokens: S.optional(__S(208, __c26, 0)),
+          migrationTokens: S.optional(__S(1057, __c33, 1)),
         }),
       ).annotate({
         identifier: "ListMigrationTokensResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5758,16 +5557,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesPoliciesRequest",
       });
-    case 3:
-      return S.Array(__S(175, __c21, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(804, __c25, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policies: S.optional(__S(211, __c26, 3)),
+          policies: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "ListPoliciesResponse" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5783,32 +5586,32 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesWebAppsRequest",
       });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1762, __c55, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          webApps: S.optional(__S(214, __c26, 6)),
+          webApps: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "ListWebAppsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          application: S.optional(__S(147, __c18, 3)),
+          application: S.optional(__S(776, __c24, 8)),
         }),
       ).annotate({ identifier: "ApplicationPolicyChange" });
     case 1:
-      return S.Array(__S(216, __c27, 0));
+      return S.Array(__S(1152, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          changes: S.optional(__S(217, __c27, 1)),
+          changes: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({
         identifier: "ModifyPolicyApplicationsRequest",
@@ -5817,7 +5620,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1154, __c36, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5828,20 +5631,28 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ModifyPolicyApplicationsEnterprisesPoliciesRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(175, __c21, 7)),
+          policy: S.optional(__S(804, __c25, 4)),
         }),
       ).annotate({
         identifier: "ModifyPolicyApplicationsResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1544, __c48, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5850,12 +5661,16 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchEnterprisesRequest" });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(488, __c15, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5866,12 +5681,16 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PatchEnterprisesDevicesRequest",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(804, __c25, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5884,14 +5703,14 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1762, __c55, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5902,19 +5721,23 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "PatchEnterprisesWebAppsRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          packageNames: S.optional(__S(27, __c3, 3)),
+          packageNames: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "RemovePolicyApplicationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5927,7 +5750,291 @@ function __c28(j: number): any {
       });
   }
 }
-
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://androidmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelEnterprisesDevicesOperationsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signupUrlName: S.optional(S.String.pipe(T.Query())),
+          enterpriseToken: S.optional(S.String.pipe(T.Query())),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          agreementAccepted: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1544, __c48, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/enterprises",
+            baseUrl: "https://androidmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateEnterprisesRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          defaultMessage: S.optional(S.String),
+          localizedMessages: S.optional(__S(1504, __c47, 0)),
+        }),
+      ).annotate({ identifier: "UserFacingMessage" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sha256Hash: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(__S(1505, __c47, 1)),
+          content: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({ identifier: "TermsAndConditions" });
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          googleAuthenticationRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAuthenticationSettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataProtectionOfficerEmail: S.optional(S.String),
+          dataProtectionOfficerName: S.optional(S.String),
+          dataProtectionOfficerPhone: S.optional(S.String),
+          euRepresentativeName: S.optional(S.String),
+          euRepresentativeEmail: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          euRepresentativePhone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationRequirement: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SigninDetailGoogleAuthenticationOptions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          defaultStatus: S.optional(S.String),
+          tokenTag: S.optional(S.String),
+          googleAuthenticationOptions: S.optional(__S(1541, __c48, 5)),
+          allowPersonalUsage: S.optional(S.String),
+          signinEnrollmentToken: S.optional(S.String),
+          qrCode: S.optional(S.String),
+          signinUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SigninDetail" });
+    case 7:
+      return S.Array(__S(1542, __c48, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          appAutoApprovalEnabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          pubsubTopic: S.optional(S.String),
+          enterpriseType: S.optional(S.String),
+          logo: S.optional(__S(1536, __c48, 0)),
+          primaryColor: S.optional(S.Number),
+          termsAndConditions: S.optional(__S(1538, __c48, 2)),
+          enterpriseDisplayName: S.optional(S.String),
+          googleAuthenticationSettings: S.optional(__S(1539, __c48, 3)),
+          contactInfo: S.optional(__S(1540, __c48, 4)),
+          managedGooglePlayAccountsEnterpriseType: S.optional(S.String),
+          managedGoogleDomainType: S.optional(S.String),
+          enabledNotificationTypes: S.optional(__S(1472, __c46, 0)),
+          signinDetails: S.optional(__S(1543, __c48, 7)),
+        }),
+      ).annotate({ identifier: "Enterprise" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1633, __c51, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/enrollmentTokens",
+            baseUrl: "https://androidmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEnterprisesEnrollmentTokensRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountIdentifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requiredAccountEmail: S.optional(S.String),
+          authenticationRequirement: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAuthenticationOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(__S(1600, __c50, 0)),
+          qrCode: S.optional(S.String),
+          additionalData: S.optional(S.String),
+          value: S.optional(S.String),
+          googleAuthenticationOptions: S.optional(__S(1632, __c51, 0)),
+          allowPersonalUsage: S.optional(S.String),
+          duration: S.optional(S.String),
+          oneTimeOnly: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          policyName: S.optional(S.String),
+          expirationTimestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnrollmentToken" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1696, __c53, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/migrationTokens",
+            baseUrl: "https://androidmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEnterprisesMigrationTokensRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          additionalData: S.optional(S.String),
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+          device: S.optional(S.String),
+          userId: S.optional(S.String),
+          policy: S.optional(S.String),
+          deviceId: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          ttl: S.optional(S.String),
+          managementMode: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MigrationToken" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1762, __c55, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/webApps",
+            baseUrl: "https://androidmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEnterprisesWebAppsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebAppIcon" });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          icons: S.optional(__S(1761, __c55, 1)),
+          versionCode: S.optional(S.String),
+          startUrl: S.optional(S.String),
+          displayMode: S.optional(S.String),
+          title: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebApp" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

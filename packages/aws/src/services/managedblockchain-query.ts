@@ -140,7 +140,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(46, __c5, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(57, __c7, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -430,8 +430,8 @@ export const batchGetTokenBalance: API.OperationMethod<
   BatchGetTokenBalanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchGetTokenBalanceInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<BatchGetTokenBalanceOutput>,
+  input: __S(66, __c8, 2) as any as S.Schema<BatchGetTokenBalanceInput>,
+  output: __S(71, __c8, 7) as any as S.Schema<BatchGetTokenBalanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -468,8 +468,8 @@ export const getAssetContract: API.OperationMethod<
   GetAssetContractError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetAssetContractInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAssetContractOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetAssetContractInput>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetAssetContractOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -503,8 +503,8 @@ export const getTokenBalance: API.OperationMethod<
   GetTokenBalanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetTokenBalanceInput>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetTokenBalanceOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetTokenBalanceInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetTokenBalanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -539,8 +539,8 @@ export const getTransaction: API.OperationMethod<
   GetTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetTransactionInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetTransactionOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetTransactionInput>,
+  output: __S(122, __c15, 2) as any as S.Schema<GetTransactionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -575,8 +575,8 @@ export const listAssetContracts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetContract
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListAssetContractsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListAssetContractsOutput>,
+  input: __S(1, __c0, 1) as any as S.Schema<ListAssetContractsInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListAssetContractsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -614,8 +614,8 @@ export const listFilteredTransactionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransactionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListFilteredTransactionEventsInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListFilteredTransactionEventsOutput>,
+  input: __S(12, __c1, 4) as any as S.Schema<ListFilteredTransactionEventsInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListFilteredTransactionEventsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -661,8 +661,8 @@ export const listTokenBalances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TokenBalance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListTokenBalancesInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListTokenBalancesOutput>,
+  input: __S(33, __c4, 1) as any as S.Schema<ListTokenBalancesInput>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListTokenBalancesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -702,8 +702,8 @@ export const listTransactionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransactionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListTransactionEventsInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListTransactionEventsOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListTransactionEventsInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListTransactionEventsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -739,8 +739,8 @@ export const listTransactions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransactionOutputItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListTransactionsInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListTransactionsOutput>,
+  input: __S(49, __c6, 1) as any as S.Schema<ListTransactionsInput>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListTransactionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -764,35 +764,260 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          network: S.String,
-          contractAddress: S.optional(S.String),
-          tokenId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TokenIdentifier" });
+        S.Struct({ network: S.String, tokenStandard: S.String, deployerAddress: S.String }),
+      ).annotate({ identifier: "ContractFilter" });
     case 1:
-      return S.suspend(() => S.Struct({ address: S.String })).annotate({
-        identifier: "OwnerIdentifier",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          contractFilter: __S(0, __c0, 0),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-asset-contracts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAssetContractsInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
-      ).annotate({ identifier: "BlockchainInstant" });
+        S.Struct({
+          contractIdentifier: __S(96, __c12, 0),
+          tokenStandard: S.String,
+          deployerAddress: S.String,
+        }),
+      ).annotate({ identifier: "AssetContract" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ contracts: __S(3, __c0, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetContractsOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ transactionEventToAddress: __S(24, __c3, 0) })).annotate({
+        identifier: "AddressIdentifierFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ from: S.optional(__S(72, __c9, 0)), to: S.optional(__S(72, __c9, 0)) }),
+      ).annotate({ identifier: "TimeFilter" });
+    case 2:
+      return S.suspend(() => S.Struct({ voutSpent: S.Boolean })).annotate({
+        identifier: "VoutFilter",
+      });
     case 3:
       return S.suspend(() =>
+        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsSort",
+      });
+    case 4:
+      return S.suspend(() =>
         S.Struct({
-          tokenIdentifier: __S(0, __c0, 0),
-          ownerIdentifier: __S(1, __c0, 1),
-          atBlockchainInstant: S.optional(__S(2, __c0, 2)),
+          network: S.String,
+          addressIdentifierFilter: __S(8, __c1, 0),
+          timeFilter: S.optional(__S(9, __c1, 1)),
+          voutFilter: S.optional(__S(10, __c1, 2)),
+          confirmationStatusFilter: S.optional(__S(25, __c3, 1)),
+          sort: S.optional(__S(11, __c1, 3)),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          transactionHash: S.String,
+          eventType: S.String,
+          from: S.optional(S.String),
+          to: S.optional(S.String),
+          value: S.optional(S.String),
+          contractAddress: S.optional(S.String),
+          tokenId: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          voutIndex: S.optional(S.Number),
+          voutSpent: S.optional(S.Boolean),
+          spentVoutTransactionId: S.optional(S.String),
+          spentVoutTransactionHash: S.optional(S.String),
+          spentVoutIndex: S.optional(S.Number),
+          blockchainInstant: S.optional(__S(72, __c9, 0)),
+          confirmationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransactionEvent" });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ events: __S(17, __c2, 1), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() => S.Struct({ include: __S(24, __c3, 0) })).annotate({
+        identifier: "ConfirmationStatusFilter",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ address: S.String })).annotate({
+        identifier: "OwnerFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ownerFilter: S.optional(__S(32, __c4, 0)),
+          tokenFilter: __S(80, __c10, 0),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-token-balances" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTokenBalancesInput" });
+    case 2:
+      return S.Array(__S(112, __c14, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ tokenBalances: __S(34, __c4, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTokenBalancesOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactionHash: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          network: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-transaction-events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTransactionEventsInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTransactionsSort" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.String,
+          network: S.String,
+          fromBlockchainInstant: S.optional(__S(72, __c9, 0)),
+          toBlockchainInstant: S.optional(__S(72, __c9, 0)),
+          sort: S.optional(__S(48, __c6, 0)),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          confirmationStatusFilter: S.optional(__S(25, __c3, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-transactions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTransactionsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          transactionHash: S.String,
+          transactionId: S.optional(S.String),
+          network: S.String,
+          transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          confirmationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransactionOutputItem" });
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ transactions: __S(51, __c6, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTransactionsOutput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tokenIdentifier: __S(80, __c10, 0),
+          ownerIdentifier: __S(81, __c10, 1),
+          atBlockchainInstant: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "BatchGetTokenBalanceInputItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ getTokenBalanceInputs: S.optional(__S(4, __c0, 4)) }).pipe(
+        S.Struct({ getTokenBalanceInputs: S.optional(__S(65, __c8, 1)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/batch-get-token-balance" }),
             svc,
@@ -805,30 +1030,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchGetTokenBalanceInput",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ownerIdentifier: S.optional(__S(1, __c0, 1)),
-          tokenIdentifier: S.optional(__S(0, __c0, 0)),
+          ownerIdentifier: S.optional(__S(81, __c10, 1)),
+          tokenIdentifier: S.optional(__S(80, __c10, 0)),
           balance: S.String,
-          atBlockchainInstant: __S(2, __c0, 2),
-          lastUpdatedTime: S.optional(__S(2, __c0, 2)),
+          atBlockchainInstant: __S(72, __c9, 0),
+          lastUpdatedTime: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "BatchGetTokenBalanceOutputItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(67, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          tokenIdentifier: S.optional(__S(0, __c0, 0)),
-          ownerIdentifier: S.optional(__S(1, __c0, 1)),
-          atBlockchainInstant: S.optional(__S(2, __c0, 2)),
+          tokenIdentifier: S.optional(__S(80, __c10, 0)),
+          ownerIdentifier: S.optional(__S(81, __c10, 1)),
+          atBlockchainInstant: S.optional(__S(72, __c9, 0)),
           errorCode: S.String,
           errorMessage: S.String,
           errorType: S.String,
@@ -836,24 +1057,45 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchGetTokenBalanceErrorItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(69, __c8, 5));
+    case 7:
       return S.suspend(() =>
-        S.Struct({
-          tokenBalances: __S(7, __c0, 7),
-          errors: __S(9, __c1, 1),
-        }),
+        S.Struct({ tokenBalances: __S(68, __c8, 4), errors: __S(70, __c8, 6) }),
       ).annotate({
         identifier: "BatchGetTokenBalanceOutput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ network: S.String, contractAddress: S.String })).annotate({
-        identifier: "ContractIdentifier",
-      });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ contractIdentifier: __S(11, __c1, 3) }).pipe(
+        S.Struct({ time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
+      ).annotate({ identifier: "BlockchainInstant" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          contractAddress: S.optional(S.String),
+          tokenId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TokenIdentifier" });
+    case 1:
+      return S.suspend(() => S.Struct({ address: S.String })).annotate({
+        identifier: "OwnerIdentifier",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ contractIdentifier: __S(96, __c12, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/get-asset-contract" }),
             svc,
@@ -864,7 +1106,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAssetContractInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -872,21 +1114,33 @@ function __c1(j: number): any {
           decimals: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContractMetadata" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contractIdentifier: __S(11, __c1, 3),
+          contractIdentifier: __S(96, __c12, 0),
           tokenStandard: S.String,
           deployerAddress: S.String,
-          metadata: S.optional(__S(13, __c1, 5)),
+          metadata: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "GetAssetContractOutput" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ network: S.String, contractAddress: S.String })).annotate({
+        identifier: "ContractIdentifier",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tokenIdentifier: __S(0, __c0, 0),
-          ownerIdentifier: __S(1, __c0, 1),
-          atBlockchainInstant: S.optional(__S(2, __c0, 2)),
+          tokenIdentifier: __S(80, __c10, 0),
+          ownerIdentifier: __S(81, __c10, 1),
+          atBlockchainInstant: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/get-token-balance" }),
@@ -900,19 +1154,23 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetTokenBalanceInput" });
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ownerIdentifier: S.optional(__S(1, __c0, 1)),
-          tokenIdentifier: S.optional(__S(0, __c0, 0)),
+          ownerIdentifier: S.optional(__S(81, __c10, 1)),
+          tokenIdentifier: S.optional(__S(80, __c10, 0)),
           balance: S.String,
-          atBlockchainInstant: __S(2, __c0, 2),
-          lastUpdatedTime: S.optional(__S(2, __c0, 2)),
+          atBlockchainInstant: __S(72, __c9, 0),
+          lastUpdatedTime: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "GetTokenBalanceOutput" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           transactionHash: S.optional(S.String),
@@ -922,7 +1180,7 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/get-transaction" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTransactionInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           network: S.String,
@@ -947,234 +1205,12 @@ function __c2(j: number): any {
           executionStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transaction" });
-    case 3:
-      return S.suspend(() => S.Struct({ transaction: __S(18, __c2, 2) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ transaction: __S(121, __c15, 1) })).annotate({
         identifier: "GetTransactionOutput",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ network: S.String, tokenStandard: S.String, deployerAddress: S.String }),
-      ).annotate({ identifier: "ContractFilter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contractFilter: __S(20, __c2, 4),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/list-asset-contracts" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListAssetContractsInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contractIdentifier: __S(11, __c1, 3),
-          tokenStandard: S.String,
-          deployerAddress: S.String,
-        }),
-      ).annotate({ identifier: "AssetContract" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ contracts: __S(23, __c2, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAssetContractsOutput" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => S.Struct({ transactionEventToAddress: __S(25, __c3, 1) })).annotate({
-        identifier: "AddressIdentifierFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ from: S.optional(__S(2, __c0, 2)), to: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "TimeFilter" });
-    case 4:
-      return S.suspend(() => S.Struct({ voutSpent: S.Boolean })).annotate({
-        identifier: "VoutFilter",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ include: __S(25, __c3, 1) })).annotate({
-        identifier: "ConfirmationStatusFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFilteredTransactionEventsSort",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.String,
-          addressIdentifierFilter: __S(26, __c3, 2),
-          timeFilter: S.optional(__S(27, __c3, 3)),
-          voutFilter: S.optional(__S(28, __c3, 4)),
-          confirmationStatusFilter: S.optional(__S(29, __c3, 5)),
-          sort: S.optional(__S(30, __c3, 6)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListFilteredTransactionEventsInput",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.String,
-          transactionHash: S.String,
-          eventType: S.String,
-          from: S.optional(S.String),
-          to: S.optional(S.String),
-          value: S.optional(S.String),
-          contractAddress: S.optional(S.String),
-          tokenId: S.optional(S.String),
-          transactionId: S.optional(S.String),
-          voutIndex: S.optional(S.Number),
-          voutSpent: S.optional(S.Boolean),
-          spentVoutTransactionId: S.optional(S.String),
-          spentVoutTransactionHash: S.optional(S.String),
-          spentVoutIndex: S.optional(S.Number),
-          blockchainInstant: S.optional(__S(2, __c0, 2)),
-          confirmationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransactionEvent" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ events: __S(33, __c4, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFilteredTransactionEventsOutput",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ address: S.String })).annotate({
-        identifier: "OwnerFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ownerFilter: S.optional(__S(35, __c4, 3)),
-          tokenFilter: __S(0, __c0, 0),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/list-token-balances" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListTokenBalancesInput" });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ tokenBalances: __S(37, __c4, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTokenBalancesOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          transactionHash: S.optional(S.String),
-          transactionId: S.optional(S.String),
-          network: S.String,
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/list-transaction-events" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTransactionEventsInput",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTransactionsSort" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.String,
-          network: S.String,
-          fromBlockchainInstant: S.optional(__S(2, __c0, 2)),
-          toBlockchainInstant: S.optional(__S(2, __c0, 2)),
-          sort: S.optional(__S(40, __c5, 0)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-          confirmationStatusFilter: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/list-transactions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListTransactionsInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          transactionHash: S.String,
-          transactionId: S.optional(S.String),
-          network: S.String,
-          transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          confirmationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransactionOutputItem" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ transactions: __S(43, __c5, 3), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTransactionsOutput" });
-    case 5:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

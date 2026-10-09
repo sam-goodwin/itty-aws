@@ -1363,8 +1363,8 @@ export const commitAutofix: API.OperationMethod<
   CommitAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CommitAutofixRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CodeScanningAutofixCommitsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<CommitAutofixRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<CodeScanningAutofixCommitsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1383,8 @@ export const createAutofix: API.OperationMethod<
   CreateAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAutofixRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CodeScanningAutofix>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateAutofixRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<CodeScanningAutofix>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,8 @@ export const createVariantAnalysis: API.OperationMethod<
   CreateVariantAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateVariantAnalysisRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CodeScanningVariantAnalysis>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateVariantAnalysisRequest>,
+  output: __S(1128, __c35, 8) as any as S.Schema<CodeScanningVariantAnalysis>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1413,8 @@ export const deleteAnalysis: API.OperationMethod<
   DeleteAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAnalysisRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CodeScanningAnalysisDeletion>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteAnalysisRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<CodeScanningAnalysisDeletion>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1428,8 @@ export const deleteCodeqlDatabase: API.OperationMethod<
   DeleteCodeqlDatabaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteCodeqlDatabaseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCodeqlDatabaseResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteCodeqlDatabaseRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteCodeqlDatabaseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1443,8 @@ export const getAiScanEnablement: API.OperationMethod<
   GetAiScanEnablementError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAiScanEnablementRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CodeScanningAiScanEnablement>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAiScanEnablementRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CodeScanningAiScanEnablement>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1458,8 @@ export const getAiScanEnablementForOrg: API.OperationMethod<
   GetAiScanEnablementForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetAiScanEnablementForOrgRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CodeScanningAiScanOrgSettings>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetAiScanEnablementForOrgRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CodeScanningAiScanOrgSettings>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAlertRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CodeScanningAlert>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(244, __c7, 20) as any as S.Schema<CodeScanningAlert>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const getAnalysis: API.OperationMethod<
   GetAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetAnalysisRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CodeScanningAnalysis>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetAnalysisRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<CodeScanningAnalysis>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const getAutofix: API.OperationMethod<
   GetAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetAutofixRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CodeScanningAutofix>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetAutofixRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<CodeScanningAutofix>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const getCodeqlDatabase: API.OperationMethod<
   GetCodeqlDatabaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetCodeqlDatabaseRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CodeScanningCodeqlDatabase>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetCodeqlDatabaseRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<CodeScanningCodeqlDatabase>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const getDefaultSetup: API.OperationMethod<
   GetDefaultSetupError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetDefaultSetupRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CodeScanningDefaultSetup>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetDefaultSetupRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<CodeScanningDefaultSetup>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const getSarif: API.OperationMethod<
   GetSarifError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetSarifRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CodeScanningSarifsStatus>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetSarifRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CodeScanningSarifsStatus>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const getVariantAnalysis: API.OperationMethod<
   GetVariantAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetVariantAnalysisRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CodeScanningVariantAnalysis>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetVariantAnalysisRequest>,
+  output: __S(1128, __c35, 8) as any as S.Schema<CodeScanningVariantAnalysis>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const getVariantAnalysisRepoTask: API.OperationMethod<
   GetVariantAnalysisRepoTaskError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetVariantAnalysisRepoTaskRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CodeScanningVariantAnalysisRepoTask>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetVariantAnalysisRepoTaskRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<CodeScanningVariantAnalysisRepoTask>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1593,8 @@ export const listAlertInstances: API.OperationMethod<
   ListAlertInstancesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListAlertInstancesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListAlertInstancesResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListAlertInstancesRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<ListAlertInstancesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const listAlertsForOrg: API.OperationMethod<
   ListAlertsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListAlertsForOrgRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListAlertsForOrgResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAlertsForOrgRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<ListAlertsForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1623,8 @@ export const listAlertsForRepo: API.OperationMethod<
   ListAlertsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListAlertsForRepoRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListAlertsForRepoResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListAlertsForRepoRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<ListAlertsForRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const listCodeqlDatabases: API.OperationMethod<
   ListCodeqlDatabasesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListCodeqlDatabasesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListCodeqlDatabasesResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListCodeqlDatabasesRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<ListCodeqlDatabasesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const listRecentAnalyses: API.OperationMethod<
   ListRecentAnalysesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListRecentAnalysesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListRecentAnalysesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListRecentAnalysesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListRecentAnalysesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1672,8 @@ export const updateAiScanEnablement: API.OperationMethod<
   UpdateAiScanEnablementError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateAiScanEnablementRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CodeScanningAiScanEnablement>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdateAiScanEnablementRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CodeScanningAiScanEnablement>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const updateAiScanEnablementForOrg: API.OperationMethod<
   UpdateAiScanEnablementForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UpdateAiScanEnablementForOrgRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CodeScanningAiScanOrgSettings>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateAiScanEnablementForOrgRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CodeScanningAiScanOrgSettings>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateAlertRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CodeScanningAlert>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(244, __c7, 20) as any as S.Schema<CodeScanningAlert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const updateDefaultSetup: API.OperationMethod<
   UpdateDefaultSetupError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UpdateDefaultSetupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<UpdateDefaultSetupResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateDefaultSetupRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<UpdateDefaultSetupResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1741,8 @@ export const uploadSarif: API.OperationMethod<
   UploadSarifError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UploadSarifRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UploadSarifResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<UploadSarifRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UploadSarifResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1756,148 +1756,12 @@ function __c0(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          alert_number: S.Number.pipe(T.Label()),
-          target_ref: S.optional(S.String),
-          message: S.optional(S.String),
         }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CommitAutofixRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          target_ref: S.optional(S.String),
-          sha: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CodeScanningAutofixCommitsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          alert_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateAutofixRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          description: S.NullOr(S.String),
-          started_at: S.String,
-        }),
-      ).annotate({ identifier: "CodeScanningAutofix" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          language: S.String,
-          query_pack: S.String,
-          repositories: S.optional(__S(4, __c0, 4)),
-          repository_lists: S.optional(__S(4, __c0, 4)),
-          repository_owners: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses",
-            code: 200,
-          }),
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/code-scanning/ai-scan", code: 200 }),
         ),
       ).annotate({
-        identifier: "CreateVariantAnalysisRequest",
+        identifier: "GetAiScanEnablementRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SimpleUser" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          owner: __S(6, __c0, 6),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          hooks_url: S.String,
-        }),
-      ).annotate({ identifier: "SimpleRepository" });
   }
 }
 function __c1(j: number): any {
@@ -1905,151 +1769,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.Number,
-          name: S.String,
-          full_name: S.String,
-          private: S.Boolean,
-          stargazers_count: S.Number,
-          updated_at: S.NullOr(S.String),
+          pr_scan: S.String,
         }),
       ).annotate({
-        identifier: "CodeScanningVariantAnalysisRepository",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repository: __S(8, __c1, 0),
-          analysis_status: S.String,
-          result_count: S.optional(S.Number),
-          artifact_size_in_bytes: S.optional(S.Number),
-          failure_message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CodeScanningVariantAnalysisScannedRepositoriesItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repository_count: S.Number,
-          repositories: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "CodeScanningVariantAnalysisSkippedRepoGroup",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repository_count: S.Number,
-          repository_full_names: __S(13, __c1, 5),
-        }),
-      ).annotate({
-        identifier: "CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          access_mismatch_repos: __S(12, __c1, 4),
-          not_found_repos: __S(14, __c1, 6),
-          no_codeql_db_repos: __S(12, __c1, 4),
-          over_limit_repos: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "CodeScanningVariantAnalysisSkippedRepositories",
+        identifier: "CodeScanningAiScanEnablement",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          controller_repo: __S(7, __c0, 7),
-          actor: __S(6, __c0, 6),
-          query_language: S.String,
-          query_pack_url: S.String,
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          completed_at: S.optional(S.NullOr(S.String)),
-          status: S.String,
-          actions_workflow_run_id: S.optional(S.Number),
-          failure_reason: S.optional(S.String),
-          scanned_repositories: S.optional(__S(10, __c1, 2)),
-          skipped_repositories: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "CodeScanningVariantAnalysis",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          analysis_id: S.Number.pipe(T.Label()),
-          confirm_delete: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAnalysisRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          next_analysis_url: S.NullOr(S.String),
-          confirm_delete_url: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CodeScanningAnalysisDeletion",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCodeqlDatabaseRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCodeqlDatabaseResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/code-scanning/ai-scan", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetAiScanEnablementRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pr_scan: S.String,
-        }),
-      ).annotate({
-        identifier: "CodeScanningAiScanEnablement",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2075,21 +1804,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          severity: S.optional(S.NullOr(S.String)),
-          security_severity_level: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          full_description: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(4, __c0, 4))),
-          help: S.optional(S.NullOr(S.String)),
-          help_uri: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CodeScanningAlertRule" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2097,16 +1816,11 @@ function __c3(j: number): any {
           guid: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CodeScanningAnalysisTool" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          markdown: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CodeScanningAlertInstanceMessage",
-      });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -2118,9 +1832,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CodeScanningAlertLocation",
       });
-    case 5:
+    case 1:
       return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          markdown: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeScanningAlertInstanceMessage",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.String),
@@ -2129,21 +1856,35 @@ function __c3(j: number): any {
           category: S.optional(S.String),
           state: S.optional(S.NullOr(S.String)),
           commit_sha: S.optional(S.String),
-          message: S.optional(__S(27, __c3, 3)),
-          location: S.optional(__S(28, __c3, 4)),
+          message: S.optional(__S(192, __c6, 0)),
+          location: S.optional(__S(160, __c5, 0)),
           html_url: S.optional(S.String),
-          classifications: S.optional(__S(29, __c3, 5)),
+          classifications: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({
         identifier: "CodeScanningAlertInstance",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 2:
+      return S.Array(__S(1056, __c33, 0));
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          severity: S.optional(S.NullOr(S.String)),
+          security_severity_level: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          full_description: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          help: S.optional(S.NullOr(S.String)),
+          help_uri: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CodeScanningAlertRule" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2153,14 +1894,14 @@ function __c4(j: number): any {
           description: S.String,
           color: S.String,
           default: S.Boolean,
-          archived_by: S.NullOr(__S(6, __c0, 6)),
+          archived_by: S.NullOr(__S(1056, __c33, 0)),
         }),
       ).annotate({
         identifier: "PullRequestSimpleLabelsItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -2172,7 +1913,7 @@ function __c4(j: number): any {
           state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(__S(6, __c0, 6)),
+          creator: S.NullOr(__S(1056, __c33, 0)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -2181,7 +1922,7 @@ function __c4(j: number): any {
           due_on: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "NullableMilestone" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           pull: S.Boolean,
@@ -2191,7 +1932,7 @@ function __c4(j: number): any {
           admin: S.Boolean,
         }),
       ).annotate({ identifier: "TeamPermissions" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2212,7 +1953,7 @@ function __c4(j: number): any {
           enterprise_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableTeamSimple" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2223,7 +1964,7 @@ function __c4(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(35, __c4, 3)),
+          permissions: S.optional(__S(228, __c7, 4)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
@@ -2232,12 +1973,12 @@ function __c4(j: number): any {
           access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(36, __c4, 4)),
+          parent: S.NullOr(__S(229, __c7, 5)),
         }),
       ).annotate({ identifier: "Team" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
     case 7:
+      return S.Array(__S(230, __c7, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2248,11 +1989,7 @@ function __c4(j: number): any {
           html_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableLicenseSimple" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           admin: S.Boolean,
@@ -2262,7 +1999,7 @@ function __c5(j: number): any {
           maintain: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RepositoryPermissions" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lexical_search_ok: S.optional(S.Boolean),
@@ -2271,17 +2008,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RepositoryCodeSearchIndexStatus",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(39, __c4, 7)),
+          license: S.NullOr(__S(232, __c7, 8)),
           forks: S.Number,
-          permissions: S.optional(__S(40, __c5, 0)),
-          owner: __S(6, __c0, 6),
+          permissions: S.optional(__S(233, __c7, 9)),
+          owner: __S(1056, __c33, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2337,7 +2074,7 @@ function __c5(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(4, __c0, 4)),
+          topics: S.optional(__S(1088, __c34, 0)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2371,69 +2108,65 @@ function __c5(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(41, __c5, 1)),
+          code_search_index_status: S.optional(__S(234, __c7, 10)),
         }),
       ).annotate({ identifier: "Repository" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
           ref: S.String,
-          repo: __S(42, __c5, 2),
+          repo: __S(235, __c7, 11),
           sha: S.String,
-          user: S.NullOr(__S(6, __c0, 6)),
+          user: S.NullOr(__S(1056, __c33, 0)),
         }),
       ).annotate({ identifier: "PullRequestSimpleHead" });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
         }),
       ).annotate({ identifier: "Link" });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          comments: __S(44, __c5, 4),
-          commits: __S(44, __c5, 4),
-          statuses: __S(44, __c5, 4),
-          html: __S(44, __c5, 4),
-          issue: __S(44, __c5, 4),
-          review_comments: __S(44, __c5, 4),
-          review_comment: __S(44, __c5, 4),
-          self: __S(44, __c5, 4),
+          comments: __S(237, __c7, 13),
+          commits: __S(237, __c7, 13),
+          statuses: __S(237, __c7, 13),
+          html: __S(237, __c7, 13),
+          issue: __S(237, __c7, 13),
+          review_comments: __S(237, __c7, 13),
+          review_comment: __S(237, __c7, 13),
+          self: __S(237, __c7, 13),
         }),
       ).annotate({ identifier: "PullRequestSimpleLinks" });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          enabled_by: __S(6, __c0, 6),
+          enabled_by: __S(1056, __c33, 0),
           merge_method: S.String,
           commit_title: S.String,
           commit_message: S.String,
         }),
       ).annotate({ identifier: "AutoMerge" });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           ref: S.String,
           sha: S.String,
         }),
       ).annotate({ identifier: "PullRequestStackBase" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          base: __S(47, __c5, 7),
+          base: __S(240, __c7, 16),
           size: S.optional(S.Number),
           position: S.optional(S.Number),
           id: S.optional(S.Number),
           number: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PullRequestStack" });
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -2452,32 +2185,32 @@ function __c6(j: number): any {
           state: S.String,
           locked: S.Boolean,
           title: S.String,
-          user: S.NullOr(__S(6, __c0, 6)),
+          user: S.NullOr(__S(1056, __c33, 0)),
           body: S.NullOr(S.String),
-          labels: __S(33, __c4, 1),
-          milestone: S.NullOr(__S(34, __c4, 2)),
+          labels: __S(226, __c7, 2),
+          milestone: S.NullOr(__S(227, __c7, 3)),
           active_lock_reason: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
           merged_at: S.NullOr(S.String),
           merge_commit_sha: S.NullOr(S.String),
-          assignee: S.NullOr(__S(6, __c0, 6)),
-          assignees: S.optional(__S(31, __c3, 7)),
-          requested_reviewers: S.optional(__S(31, __c3, 7)),
-          requested_teams: S.optional(__S(38, __c4, 6)),
-          head: __S(43, __c5, 3),
-          base: __S(43, __c5, 3),
-          _links: __S(45, __c5, 5),
+          assignee: S.NullOr(__S(1056, __c33, 0)),
+          assignees: S.optional(__S(194, __c6, 2)),
+          requested_reviewers: S.optional(__S(194, __c6, 2)),
+          requested_teams: S.optional(__S(231, __c7, 7)),
+          head: __S(236, __c7, 12),
+          base: __S(236, __c7, 12),
+          _links: __S(238, __c7, 14),
           author_association: S.String,
-          auto_merge: S.NullOr(__S(46, __c5, 6)),
-          stack: S.optional(S.NullOr(__S(48, __c6, 0))),
+          auto_merge: S.NullOr(__S(239, __c7, 15)),
+          stack: S.optional(S.NullOr(__S(241, __c7, 17))),
           draft: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PullRequestSimple" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 19:
+      return S.Array(__S(242, __c7, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
@@ -2488,19 +2221,23 @@ function __c6(j: number): any {
           instances_url: S.String,
           state: S.NullOr(S.String),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6, __c0, 6)),
+          dismissed_by: S.NullOr(__S(1056, __c33, 0)),
           dismissed_at: S.NullOr(S.String),
           dismissed_reason: S.NullOr(S.String),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(25, __c3, 1),
-          tool: __S(26, __c3, 2),
-          most_recent_instance: __S(30, __c3, 6),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          assignees: S.optional(__S(31, __c3, 7)),
-          linked_pull_requests: S.optional(__S(50, __c6, 2)),
+          rule: __S(224, __c7, 0),
+          tool: __S(128, __c4, 0),
+          most_recent_instance: __S(193, __c6, 1),
+          dismissal_approved_by: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          assignees: S.optional(__S(194, __c6, 2)),
+          linked_pull_requests: S.optional(__S(243, __c7, 19)),
         }),
       ).annotate({ identifier: "CodeScanningAlert" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2514,7 +2251,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAnalysisRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ref: S.String,
@@ -2529,12 +2270,16 @@ function __c6(j: number): any {
           id: S.Number,
           url: S.String,
           sarif_id: S.String,
-          tool: __S(26, __c3, 2),
+          tool: __S(128, __c4, 0),
           deletable: S.Boolean,
           warning: S.String,
         }),
       ).annotate({ identifier: "CodeScanningAnalysis" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2548,7 +2293,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAutofixRequest" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2564,7 +2313,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetCodeqlDatabaseRequest" });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2572,7 +2321,7 @@ function __c7(j: number): any {
           id: S.Number,
           name: S.String,
           language: S.String,
-          uploader: __S(6, __c0, 6),
+          uploader: __S(1056, __c33, 0),
           content_type: S.String,
           size: S.Number,
           created_at: S.String,
@@ -2583,7 +2332,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CodeScanningCodeqlDatabase",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2596,13 +2349,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDefaultSetupRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          languages: S.optional(__S(58, __c7, 2)),
+          languages: S.optional(__S(448, __c14, 0)),
           runner_type: S.optional(S.NullOr(S.String)),
           runner_label: S.optional(S.NullOr(S.String)),
           query_suite: S.optional(S.String),
@@ -2611,7 +2362,17 @@ function __c7(j: number): any {
           schedule: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CodeScanningDefaultSetup" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2625,15 +2386,19 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSarifRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           processing_status: S.optional(S.String),
           analyses_url: S.optional(S.NullOr(S.String)),
-          errors: S.optional(S.NullOr(__S(4, __c0, 4))),
+          errors: S.optional(S.NullOr(__S(1088, __c34, 0))),
         }),
       ).annotate({ identifier: "CodeScanningSarifsStatus" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2649,7 +2414,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVariantAnalysisRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2667,14 +2436,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVariantAnalysisRepoTaskRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          repository: __S(7, __c0, 7),
+          repository: __S(1152, __c36, 0),
           analysis_status: S.String,
           artifact_size_in_bytes: S.optional(S.Number),
           result_count: S.optional(S.Number),
@@ -2686,7 +2451,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CodeScanningVariantAnalysisRepoTask",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2706,7 +2475,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListAlertInstancesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -2714,7 +2483,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CodeScanningAlertInstanceListMessage",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.String),
@@ -2723,21 +2492,25 @@ function __c8(j: number): any {
           category: S.optional(S.String),
           state: S.optional(S.NullOr(S.String)),
           commit_sha: S.optional(S.String),
-          message: S.optional(__S(66, __c8, 2)),
-          location: S.optional(__S(28, __c3, 4)),
+          message: S.optional(__S(577, __c18, 1)),
+          location: S.optional(__S(160, __c5, 0)),
           html_url: S.optional(S.String),
-          classifications: S.optional(__S(29, __c3, 5)),
+          classifications: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({
         identifier: "CodeScanningAlertInstanceList",
       });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
     case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() => __S(68, __c8, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(579, __c18, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertInstancesResponse",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2754,27 +2527,7 @@ function __c8(j: number): any {
           assignees: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/code-scanning/alerts", code: 200 })),
       ).annotate({ identifier: "ListAlertsForOrgRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          severity: S.optional(S.NullOr(S.String)),
-          security_severity_level: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          full_description: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(4, __c0, 4))),
-          help: S.optional(S.NullOr(S.String)),
-          help_uri: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CodeScanningAlertRuleSummary",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
@@ -2785,27 +2538,51 @@ function __c9(j: number): any {
           instances_url: S.String,
           state: S.NullOr(S.String),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6, __c0, 6)),
+          dismissed_by: S.NullOr(__S(1056, __c33, 0)),
           dismissed_at: S.NullOr(S.String),
           dismissed_reason: S.NullOr(S.String),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(71, __c8, 7),
-          tool: __S(26, __c3, 2),
-          most_recent_instance: __S(30, __c3, 6),
-          repository: __S(7, __c0, 7),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          assignees: S.optional(__S(31, __c3, 7)),
+          rule: __S(640, __c20, 0),
+          tool: __S(128, __c4, 0),
+          most_recent_instance: __S(193, __c6, 1),
+          repository: __S(1152, __c36, 0),
+          dismissal_approved_by: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          assignees: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({
         identifier: "CodeScanningOrganizationAlertItems",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
-      return S.suspend(() => __S(73, __c9, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(609, __c19, 1));
+    case 3:
+      return S.suspend(() => __S(610, __c19, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForOrgResponse",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          severity: S.optional(S.NullOr(S.String)),
+          security_severity_level: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          full_description: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          help: S.optional(S.NullOr(S.String)),
+          help_uri: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CodeScanningAlertRuleSummary",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2827,7 +2604,7 @@ function __c9(j: number): any {
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/code-scanning/alerts", code: 200 }),
         ),
       ).annotate({ identifier: "ListAlertsForRepoRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
@@ -2838,24 +2615,28 @@ function __c9(j: number): any {
           instances_url: S.String,
           state: S.NullOr(S.String),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6, __c0, 6)),
+          dismissed_by: S.NullOr(__S(1056, __c33, 0)),
           dismissed_at: S.NullOr(S.String),
           dismissed_reason: S.NullOr(S.String),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(71, __c8, 7),
-          tool: __S(26, __c3, 2),
-          most_recent_instance: __S(30, __c3, 6),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          assignees: S.optional(__S(31, __c3, 7)),
+          rule: __S(640, __c20, 0),
+          tool: __S(128, __c4, 0),
+          most_recent_instance: __S(193, __c6, 1),
+          dismissal_approved_by: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          assignees: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({ identifier: "CodeScanningAlertItems" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() => __S(77, __c9, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
+      return S.suspend(() => __S(674, __c21, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForRepoResponse",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2870,17 +2651,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListCodeqlDatabasesRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(56, __c7, 0));
     case 1:
-      return S.suspend(() => __S(80, __c10, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() => __S(705, __c22, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCodeqlDatabasesResponse",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2900,13 +2681,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListRecentAnalysesRequest",
       });
-    case 3:
-      return S.Array(__S(53, __c6, 5));
-    case 4:
-      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() => __S(737, __c23, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRecentAnalysesResponse",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2922,7 +2707,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateAiScanEnablementRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2931,7 +2720,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateAiScanEnablementForOrgRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2941,7 +2734,7 @@ function __c10(j: number): any {
           dismissed_reason: S.optional(S.NullOr(S.String)),
           dismissed_comment: S.optional(S.NullOr(S.String)),
           create_request: S.optional(S.Boolean),
-          assignees: S.optional(__S(4, __c0, 4)),
+          assignees: S.optional(__S(1088, __c34, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2952,7 +2745,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "UpdateAlertRequest" });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2964,7 +2757,7 @@ function __c11(j: number): any {
           runner_label: S.optional(S.NullOr(S.String)),
           query_suite: S.optional(S.String),
           threat_model: S.optional(S.String),
-          languages: S.optional(__S(58, __c7, 2)),
+          languages: S.optional(__S(448, __c14, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2979,7 +2772,11 @@ function __c11(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDefaultSetupResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2997,7 +2794,321 @@ function __c11(j: number): any {
       ).annotate({ identifier: "UploadSarifRequest" });
   }
 }
-
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          alert_number: S.Number.pipe(T.Label()),
+          target_ref: S.optional(S.String),
+          message: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CommitAutofixRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          target_ref: S.optional(S.String),
+          sha: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeScanningAutofixCommitsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          alert_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateAutofixRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          description: S.NullOr(S.String),
+          started_at: S.String,
+        }),
+      ).annotate({ identifier: "CodeScanningAutofix" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          language: S.String,
+          query_pack: S.String,
+          repositories: S.optional(__S(1088, __c34, 0)),
+          repository_lists: S.optional(__S(1088, __c34, 0)),
+          repository_owners: S.optional(__S(1088, __c34, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVariantAnalysisRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SimpleUser" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          full_name: S.String,
+          private: S.Boolean,
+          stargazers_count: S.Number,
+          updated_at: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysisRepository",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repository: __S(1120, __c35, 0),
+          analysis_status: S.String,
+          result_count: S.optional(S.Number),
+          artifact_size_in_bytes: S.optional(S.Number),
+          failure_message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysisScannedRepositoriesItem",
+      });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.Array(__S(1120, __c35, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          repository_count: S.Number,
+          repositories: __S(1123, __c35, 3),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysisSkippedRepoGroup",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          repository_count: S.Number,
+          repository_full_names: __S(1125, __c35, 5),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          access_mismatch_repos: __S(1124, __c35, 4),
+          not_found_repos: __S(1126, __c35, 6),
+          no_codeql_db_repos: __S(1124, __c35, 4),
+          over_limit_repos: __S(1124, __c35, 4),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysisSkippedRepositories",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          controller_repo: __S(1152, __c36, 0),
+          actor: __S(1056, __c33, 0),
+          query_language: S.String,
+          query_pack_url: S.String,
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          completed_at: S.optional(S.NullOr(S.String)),
+          status: S.String,
+          actions_workflow_run_id: S.optional(S.Number),
+          failure_reason: S.optional(S.String),
+          scanned_repositories: S.optional(__S(1122, __c35, 2)),
+          skipped_repositories: S.optional(__S(1127, __c35, 7)),
+        }),
+      ).annotate({
+        identifier: "CodeScanningVariantAnalysis",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          owner: __S(1056, __c33, 0),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          hooks_url: S.String,
+        }),
+      ).annotate({ identifier: "SimpleRepository" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          analysis_id: S.Number.pipe(T.Label()),
+          confirm_delete: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAnalysisRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          next_analysis_url: S.NullOr(S.String),
+          confirm_delete_url: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CodeScanningAnalysisDeletion",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCodeqlDatabaseRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCodeqlDatabaseResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

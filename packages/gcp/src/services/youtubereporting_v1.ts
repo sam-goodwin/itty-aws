@@ -409,8 +409,8 @@ export const createJobs: API.OperationMethod<
   CreateJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateJobsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Job>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateJobsRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const deleteJobs: API.OperationMethod<
   DeleteJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteJobsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteJobsRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GdataMedia>,
+  input: __S(80, __c5, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(92, __c5, 12) as any as S.Schema<GdataMedia>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -450,8 +450,8 @@ export type GetJobsError = NotFound | Forbidden | GcpOpError;
 /** Gets a job. */
 export const getJobs: API.OperationMethod<GetJobsRequest, Job, GetJobsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(17, __c2, 1) as any as S.Schema<GetJobsRequest>,
-    output: __S(0, __c0, 0) as any as S.Schema<Job>,
+    input: __S(96, __c6, 0) as any as S.Schema<GetJobsRequest>,
+    output: __S(48, __c3, 0) as any as S.Schema<Job>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -465,8 +465,8 @@ export const getJobsReports: API.OperationMethod<
   GetJobsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetJobsReportsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Report>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetJobsReportsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const listJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListJobsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListJobsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -498,8 +498,8 @@ export const listJobsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListJobsReportsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListReportsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListJobsReportsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const listReportTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListReportTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListReportTypesResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListReportTypesRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListReportTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,265 +527,6 @@ export const listReportTypes: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
-          systemManaged: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          reportTypeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/jobs",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateJobsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String.pipe(T.Label()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/jobs/{jobId}",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteJobsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/media/{+resourceName}",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DownloadMediaRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uploadMetadataContainer: S.optional(S.String),
-          uploadFragmentListCreationInfo: S.optional(S.String),
-          readToken: S.optional(S.String),
-          downloadReadHandle: S.optional(S.String),
-          blobId: S.optional(S.String),
-          blobGeneration: S.optional(S.String),
-          downloadExternalReadToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataBlobstore2Info" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bucketName: S.optional(S.String),
-          generation: S.optional(S.String),
-          objectName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataObjectId" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          md5Hash: S.optional(S.String),
-          blobstore2Info: S.optional(__S(5, __c0, 5)),
-          inline: S.optional(S.String),
-          sha1Hash: S.optional(S.String),
-          crc32cHash: S.optional(S.Number),
-          objectId: S.optional(__S(6, __c0, 6)),
-          cosmoBinaryReference: S.optional(S.String),
-          blobRef: S.optional(S.String),
-          path: S.optional(S.String),
-          referenceType: S.optional(S.String),
-          length: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataCompositeMedia" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          originalObject: S.optional(__S(7, __c0, 7)),
-          objectVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataDiffUploadResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowGzipCompression: S.optional(S.Boolean),
-          ignoreRange: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GdataDownloadParameters" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fromBytes: S.optional(S.String),
-          fromFusionId: S.optional(S.String),
-          fromHeader: S.optional(S.String),
-          fromFileName: S.optional(S.String),
-          fusionIdDetectionMetadata: S.optional(S.String),
-          fromUrlPath: S.optional(S.String),
-          bestGuess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataContentTypeInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          objectInfo: S.optional(__S(7, __c0, 7)),
-          objectVersion: S.optional(S.String),
-          checksumsInfo: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GdataDiffUploadRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          checksumsLocation: S.optional(__S(7, __c0, 7)),
-          objectVersion: S.optional(S.String),
-          objectLocation: S.optional(__S(7, __c0, 7)),
-          chunkSizeBytes: S.optional(S.String),
-          objectSizeBytes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GdataDiffChecksumsResponse",
-      });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectVersion: S.optional(S.String),
-          objectSizeBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataDiffVersionResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          objectLocation: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GdataDiffDownloadResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          referenceType: S.optional(S.String),
-          diffUploadResponse: S.optional(__S(8, __c1, 0)),
-          sha256Hash: S.optional(S.String),
-          downloadParameters: S.optional(__S(9, __c1, 1)),
-          inline: S.optional(S.String),
-          isPotentialRetry: S.optional(S.Boolean),
-          contentTypeInfo: S.optional(__S(10, __c1, 2)),
-          objectId: S.optional(__S(6, __c0, 6)),
-          timestamp: S.optional(S.String),
-          diffUploadRequest: S.optional(__S(11, __c1, 3)),
-          contentType: S.optional(S.String),
-          blobRef: S.optional(S.String),
-          filename: S.optional(S.String),
-          token: S.optional(S.String),
-          diffChecksumsResponse: S.optional(__S(12, __c1, 4)),
-          blobstore2Info: S.optional(__S(5, __c0, 5)),
-          sha512Hash: S.optional(S.String),
-          algorithm: S.optional(S.String),
-          mediaId: S.optional(S.String),
-          length: S.optional(S.String),
-          compositeMedia: S.optional(__S(13, __c1, 5)),
-          md5Hash: S.optional(S.String),
-          hash: S.optional(S.String),
-          diffVersionResponse: S.optional(__S(14, __c1, 6)),
-          crc32cHash: S.optional(S.Number),
-          hashVerified: S.optional(S.Boolean),
-          diffDownloadResponse: S.optional(__S(15, __c1, 7)),
-          cosmoBinaryReference: S.optional(S.String),
-          bigstoreObjectRef: S.optional(S.String),
-          sha1Hash: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GdataMedia" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String.pipe(T.Label()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/jobs/{jobId}",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportId: S.String.pipe(T.Label()),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          jobId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/jobs/{jobId}/reports/{reportId}",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobsReportsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          createTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          downloadUrl: S.optional(S.String),
-          startTime: S.optional(S.String),
-          jobId: S.optional(S.String),
-          jobExpireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Report" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          includeSystemManaged: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/jobs",
-            baseUrl: "https://youtubereporting.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobsRequest" });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ListJobsResponse" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -803,20 +544,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobsReportsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(19, __c2, 3));
     case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(24, __c3, 0)),
+          reports: S.optional(__S(1, __c0, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -831,7 +572,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListReportTypesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           systemManaged: S.optional(S.Boolean),
@@ -840,18 +581,300 @@ function __c3(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportType" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          reportTypes: S.optional(__S(28, __c3, 4)),
+          reportTypes: S.optional(__S(18, __c1, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportTypesResponse" });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/jobs",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateJobsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          systemManaged: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          reportTypeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Job" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.Label()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/jobs/{jobId}",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteJobsRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/media/{+resourceName}",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DownloadMediaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uploadMetadataContainer: S.optional(S.String),
+          uploadFragmentListCreationInfo: S.optional(S.String),
+          readToken: S.optional(S.String),
+          downloadReadHandle: S.optional(S.String),
+          blobId: S.optional(S.String),
+          blobGeneration: S.optional(S.String),
+          downloadExternalReadToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataBlobstore2Info" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bucketName: S.optional(S.String),
+          generation: S.optional(S.String),
+          objectName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataObjectId" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          md5Hash: S.optional(S.String),
+          blobstore2Info: S.optional(__S(81, __c5, 1)),
+          inline: S.optional(S.String),
+          sha1Hash: S.optional(S.String),
+          crc32cHash: S.optional(S.Number),
+          objectId: S.optional(__S(82, __c5, 2)),
+          cosmoBinaryReference: S.optional(S.String),
+          blobRef: S.optional(S.String),
+          path: S.optional(S.String),
+          referenceType: S.optional(S.String),
+          length: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataCompositeMedia" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          originalObject: S.optional(__S(83, __c5, 3)),
+          objectVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataDiffUploadResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          allowGzipCompression: S.optional(S.Boolean),
+          ignoreRange: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GdataDownloadParameters" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          fromBytes: S.optional(S.String),
+          fromFusionId: S.optional(S.String),
+          fromHeader: S.optional(S.String),
+          fromFileName: S.optional(S.String),
+          fusionIdDetectionMetadata: S.optional(S.String),
+          fromUrlPath: S.optional(S.String),
+          bestGuess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataContentTypeInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          objectInfo: S.optional(__S(83, __c5, 3)),
+          objectVersion: S.optional(S.String),
+          checksumsInfo: S.optional(__S(83, __c5, 3)),
+        }),
+      ).annotate({ identifier: "GdataDiffUploadRequest" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          checksumsLocation: S.optional(__S(83, __c5, 3)),
+          objectVersion: S.optional(S.String),
+          objectLocation: S.optional(__S(83, __c5, 3)),
+          chunkSizeBytes: S.optional(S.String),
+          objectSizeBytes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GdataDiffChecksumsResponse",
+      });
+    case 9:
+      return S.Array(__S(83, __c5, 3));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          objectVersion: S.optional(S.String),
+          objectSizeBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataDiffVersionResponse" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          objectLocation: S.optional(__S(83, __c5, 3)),
+        }),
+      ).annotate({
+        identifier: "GdataDiffDownloadResponse",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          referenceType: S.optional(S.String),
+          diffUploadResponse: S.optional(__S(84, __c5, 4)),
+          sha256Hash: S.optional(S.String),
+          downloadParameters: S.optional(__S(85, __c5, 5)),
+          inline: S.optional(S.String),
+          isPotentialRetry: S.optional(S.Boolean),
+          contentTypeInfo: S.optional(__S(86, __c5, 6)),
+          objectId: S.optional(__S(82, __c5, 2)),
+          timestamp: S.optional(S.String),
+          diffUploadRequest: S.optional(__S(87, __c5, 7)),
+          contentType: S.optional(S.String),
+          blobRef: S.optional(S.String),
+          filename: S.optional(S.String),
+          token: S.optional(S.String),
+          diffChecksumsResponse: S.optional(__S(88, __c5, 8)),
+          blobstore2Info: S.optional(__S(81, __c5, 1)),
+          sha512Hash: S.optional(S.String),
+          algorithm: S.optional(S.String),
+          mediaId: S.optional(S.String),
+          length: S.optional(S.String),
+          compositeMedia: S.optional(__S(89, __c5, 9)),
+          md5Hash: S.optional(S.String),
+          hash: S.optional(S.String),
+          diffVersionResponse: S.optional(__S(90, __c5, 10)),
+          crc32cHash: S.optional(S.Number),
+          hashVerified: S.optional(S.Boolean),
+          diffDownloadResponse: S.optional(__S(91, __c5, 11)),
+          cosmoBinaryReference: S.optional(S.String),
+          bigstoreObjectRef: S.optional(S.String),
+          sha1Hash: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GdataMedia" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.Label()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/jobs/{jobId}",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobsRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportId: S.String.pipe(T.Label()),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          jobId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/jobs/{jobId}/reports/{reportId}",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobsReportsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          createTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          downloadUrl: S.optional(S.String),
+          startTime: S.optional(S.String),
+          jobId: S.optional(S.String),
+          jobExpireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Report" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          includeSystemManaged: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/jobs",
+            baseUrl: "https://youtubereporting.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobsRequest" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          jobs: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({ identifier: "ListJobsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

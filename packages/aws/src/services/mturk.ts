@@ -667,8 +667,8 @@ export const acceptQualificationRequest: API.OperationMethod<
   AcceptQualificationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptQualificationRequestRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptQualificationRequestResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<AcceptQualificationRequestRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<AcceptQualificationRequestResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -701,8 +701,8 @@ export const approveAssignment: API.OperationMethod<
   ApproveAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ApproveAssignmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveAssignmentResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ApproveAssignmentRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ApproveAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -731,8 +731,8 @@ export const associateQualificationWithWorker: API.OperationMethod<
   AssociateQualificationWithWorkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AssociateQualificationWithWorkerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateQualificationWithWorkerResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<AssociateQualificationWithWorkerRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<AssociateQualificationWithWorkerResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -762,8 +762,8 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   CreateAdditionalAssignmentsForHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateAdditionalAssignmentsForHITRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -793,8 +793,8 @@ export const createHIT: API.OperationMethod<
   CreateHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateHITRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateHITResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<CreateHITRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<CreateHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -814,8 +814,8 @@ export const createHITType: API.OperationMethod<
   CreateHITTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateHITTypeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateHITTypeResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateHITTypeRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<CreateHITTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -843,8 +843,8 @@ export const createHITWithHITType: API.OperationMethod<
   CreateHITWithHITTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateHITWithHITTypeRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateHITWithHITTypeResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<CreateHITWithHITTypeRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<CreateHITWithHITTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -865,8 +865,8 @@ export const createQualificationType: API.OperationMethod<
   CreateQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateQualificationTypeRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateQualificationTypeResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<CreateQualificationTypeRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<CreateQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -883,8 +883,8 @@ export const createWorkerBlock: API.OperationMethod<
   CreateWorkerBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateWorkerBlockRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateWorkerBlockResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWorkerBlockRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateWorkerBlockResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -917,8 +917,8 @@ export const deleteHIT: API.OperationMethod<
   DeleteHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteHITRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteHITResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteHITRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const deleteQualificationType: API.OperationMethod<
   DeleteQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteQualificationTypeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteQualificationTypeResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteQualificationTypeRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -970,7 +970,7 @@ export const deleteWorkerBlock: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<DeleteWorkerBlockRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteWorkerBlockResponse>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteWorkerBlockResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -991,8 +991,8 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   DisassociateQualificationFromWorkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DisassociateQualificationFromWorkerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateQualificationFromWorkerResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DisassociateQualificationFromWorkerRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DisassociateQualificationFromWorkerResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1011,8 +1011,8 @@ export const getAccountBalance: API.OperationMethod<
   GetAccountBalanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetAccountBalanceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetAccountBalanceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAccountBalanceRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetAccountBalanceResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1029,8 +1029,8 @@ export const getAssignment: API.OperationMethod<
   GetAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetAssignmentRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetAssignmentResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAssignmentRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1061,8 +1061,8 @@ export const getFileUploadURL: API.OperationMethod<
   GetFileUploadURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetFileUploadURLRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetFileUploadURLResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetFileUploadURLRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetFileUploadURLResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1079,8 +1079,8 @@ export const getHIT: API.OperationMethod<
   GetHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetHITRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetHITResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetHITRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<GetHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1108,8 +1108,8 @@ export const getQualificationScore: API.OperationMethod<
   GetQualificationScoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetQualificationScoreRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetQualificationScoreResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetQualificationScoreRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetQualificationScoreResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1126,8 +1126,8 @@ export const getQualificationType: API.OperationMethod<
   GetQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetQualificationTypeRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetQualificationTypeResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetQualificationTypeRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<GetQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1169,8 +1169,8 @@ export const listAssignmentsForHIT: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListAssignmentsForHITRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListAssignmentsForHITResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAssignmentsForHITRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<ListAssignmentsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1196,8 +1196,8 @@ export const listBonusPayments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListBonusPaymentsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListBonusPaymentsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListBonusPaymentsRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListBonusPaymentsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1224,8 +1224,8 @@ export const listHITs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListHITsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListHITsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListHITsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ListHITsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1251,8 +1251,8 @@ export const listHITsForQualificationType: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListHITsForQualificationTypeRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListHITsForQualificationTypeResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListHITsForQualificationTypeRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<ListHITsForQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1280,8 +1280,8 @@ export const listQualificationRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListQualificationRequestsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListQualificationRequestsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListQualificationRequestsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ListQualificationRequestsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1307,8 +1307,8 @@ export const listQualificationTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListQualificationTypesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListQualificationTypesResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListQualificationTypesRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListQualificationTypesResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1332,8 +1332,8 @@ export const listReviewableHITs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListReviewableHITsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListReviewableHITsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListReviewableHITsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<ListReviewableHITsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1360,8 +1360,8 @@ export const listReviewPolicyResultsForHIT: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListReviewPolicyResultsForHITRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListReviewPolicyResultsForHITResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListReviewPolicyResultsForHITRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListReviewPolicyResultsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1384,8 +1384,8 @@ export const listWorkerBlocks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListWorkerBlocksRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListWorkerBlocksResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListWorkerBlocksRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListWorkerBlocksResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1409,8 +1409,8 @@ export const listWorkersWithQualificationType: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListWorkersWithQualificationTypeRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListWorkersWithQualificationTypeResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListWorkersWithQualificationTypeRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<ListWorkersWithQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1439,8 +1439,8 @@ export const notifyWorkers: API.OperationMethod<
   NotifyWorkersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<NotifyWorkersRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<NotifyWorkersResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<NotifyWorkersRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<NotifyWorkersResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1465,8 +1465,8 @@ export const rejectAssignment: API.OperationMethod<
   RejectAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<RejectAssignmentRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RejectAssignmentResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<RejectAssignmentRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<RejectAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1488,8 +1488,8 @@ export const rejectQualificationRequest: API.OperationMethod<
   RejectQualificationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<RejectQualificationRequestRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectQualificationRequestResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<RejectQualificationRequestRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RejectQualificationRequestResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1517,8 +1517,8 @@ export const sendBonus: API.OperationMethod<
   SendBonusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<SendBonusRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<SendBonusResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<SendBonusRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<SendBonusResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,8 +1539,8 @@ export const sendTestEventNotification: API.OperationMethod<
   SendTestEventNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<SendTestEventNotificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendTestEventNotificationResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<SendTestEventNotificationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<SendTestEventNotificationResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1558,8 +1558,8 @@ export const updateExpirationForHIT: API.OperationMethod<
   UpdateExpirationForHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateExpirationForHITRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateExpirationForHITResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateExpirationForHITRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateExpirationForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1578,8 +1578,8 @@ export const updateHITReviewStatus: API.OperationMethod<
   UpdateHITReviewStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UpdateHITReviewStatusRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateHITReviewStatusResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateHITReviewStatusRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateHITReviewStatusResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1601,8 +1601,8 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   UpdateHITTypeOfHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UpdateHITTypeOfHITRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateHITTypeOfHITResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateHITTypeOfHITRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateHITTypeOfHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1628,8 +1628,8 @@ export const updateNotificationSettings: API.OperationMethod<
   UpdateNotificationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UpdateNotificationSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateNotificationSettingsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateNotificationSettingsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateNotificationSettingsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1682,8 +1682,8 @@ export const updateQualificationType: API.OperationMethod<
   UpdateQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<UpdateQualificationTypeRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateQualificationTypeResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdateQualificationTypeRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<UpdateQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1695,17 +1695,504 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ WorkerId: S.String, Reason: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateWorkerBlockRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HITId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteHITRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteHITResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ QualificationTypeId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteQualificationTypeRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkerId: S.String, Reason: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteWorkerBlockRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WorkerId: S.String,
+          QualificationTypeId: S.String,
+          Reason: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateQualificationFromWorkerRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAccountBalanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AvailableBalance: S.optional(S.String),
+          OnHoldBalance: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetAccountBalanceResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AssignmentId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAssignmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Assignment: S.optional(__S(64, __c8, 0)),
+          HIT: S.optional(__S(384, __c48, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetAssignmentResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AssignmentId: S.optional(S.String),
+          WorkerId: S.optional(S.String),
+          HITId: S.optional(S.String),
+          AssignmentStatus: S.optional(S.String),
+          AutoApprovalTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AcceptTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ApprovalTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RejectionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Deadline: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Answer: S.optional(S.String),
+          RequesterFeedback: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Assignment" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AssignmentId: S.String, QuestionIdentifier: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetFileUploadURLRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ FileUploadURL: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "GetFileUploadURLResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HITId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetHITRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ QualificationTypeId: S.String, WorkerId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetQualificationScoreRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Qualification: S.optional(__S(96, __c12, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetQualificationScoreResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.optional(S.String),
+          WorkerId: S.optional(S.String),
+          GrantTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IntegerValue: S.optional(S.Number),
+          LocaleValue: S.optional(__S(360, __c45, 0)),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Qualification" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ QualificationRequestId: S.String, IntegerValue: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AcceptQualificationRequestRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AcceptQualificationRequestResponse",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ QualificationTypeId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetQualificationTypeRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITId: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          AssignmentStatuses: S.optional(__S(136, __c17, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAssignmentsForHITRequest",
+      });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          NumResults: S.optional(S.Number),
+          Assignments: S.optional(__S(129, __c16, 1)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListAssignmentsForHITResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITId: S.optional(S.String),
+          AssignmentId: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListBonusPaymentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          WorkerId: S.optional(S.String),
+          BonusAmount: S.optional(S.String),
+          AssignmentId: S.optional(S.String),
+          Reason: S.optional(S.String),
+          GrantTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "BonusPayment" });
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NumResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          BonusPayments: S.optional(__S(146, __c18, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListBonusPaymentsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListHITsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          NumResults: S.optional(S.Number),
+          HITs: S.optional(__S(160, __c20, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListHITsResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c48, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListHITsForQualificationTypeRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          NumResults: S.optional(S.Number),
+          HITs: S.optional(__S(160, __c20, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListHITsForQualificationTypeResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListQualificationRequestsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationRequestId: S.optional(S.String),
+          QualificationTypeId: S.optional(S.String),
+          WorkerId: S.optional(S.String),
+          Test: S.optional(S.String),
+          Answer: S.optional(S.String),
+          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "QualificationRequest" });
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NumResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          QualificationRequests: S.optional(__S(186, __c23, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListQualificationRequestsResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Query: S.optional(S.String),
+          MustBeRequestable: S.Boolean,
+          MustBeOwnedByCaller: S.optional(S.Boolean),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListQualificationTypesRequest",
+      });
+    case 1:
+      return S.Array(__S(432, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NumResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          QualificationTypes: S.optional(__S(193, __c24, 1)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListQualificationTypesResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITTypeId: S.optional(S.String),
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListReviewableHITsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITId: S.String,
+          PolicyLevels: S.optional(__S(136, __c17, 0)),
+          RetrieveActions: S.optional(S.Boolean),
+          RetrieveResults: S.optional(S.Boolean),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListReviewPolicyResultsForHITRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ActionId: S.optional(S.String),
+          SubjectId: S.optional(S.String),
+          SubjectType: S.optional(S.String),
+          QuestionId: S.optional(S.String),
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewResultDetail" });
+    case 2:
+      return S.Array(__S(209, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ActionId: S.optional(S.String),
+          ActionName: S.optional(S.String),
+          TargetId: S.optional(S.String),
+          TargetType: S.optional(S.String),
+          Status: S.optional(S.String),
+          CompleteTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Result: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewActionDetail" });
+    case 4:
+      return S.Array(__S(211, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ReviewResults: S.optional(__S(210, __c26, 2)),
+          ReviewActions: S.optional(__S(212, __c26, 4)),
+        }),
+      ).annotate({ identifier: "ReviewReport" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          HITId: S.optional(S.String),
+          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
+          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
+          AssignmentReviewReport: S.optional(__S(213, __c26, 5)),
+          HITReviewReport: S.optional(__S(213, __c26, 5)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListReviewPolicyResultsForHITResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListWorkerBlocksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ WorkerId: S.optional(S.String), Reason: S.optional(S.String) }),
+      ).annotate({ identifier: "WorkerBlock" });
+    case 2:
+      return S.Array(__S(217, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          NumResults: S.optional(S.Number),
+          WorkerBlocks: S.optional(__S(218, __c27, 2)),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListWorkerBlocksResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AssignmentId: S.String,
@@ -1713,7 +2200,182 @@ function __c0(j: number): any {
           OverrideRejection: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ApproveAssignmentRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.String,
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListWorkersWithQualificationTypeRequest",
+      });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          NumResults: S.optional(S.Number),
+          Qualifications: S.optional(__S(233, __c29, 1)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListWorkersWithQualificationTypeResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Subject: S.String, MessageText: S.String, WorkerIds: __S(400, __c50, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "NotifyWorkersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NotifyWorkersFailureCode: S.optional(S.String),
+          NotifyWorkersFailureMessage: S.optional(S.String),
+          WorkerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NotifyWorkersFailureStatus",
+      });
+    case 2:
+      return S.Array(__S(241, __c30, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ NotifyWorkersFailureStatuses: S.optional(__S(242, __c30, 2)) }).pipe(ns),
+      ).annotate({ identifier: "NotifyWorkersResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AssignmentId: S.String, RequesterFeedback: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "RejectAssignmentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "RejectAssignmentResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ QualificationRequestId: S.String, Reason: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RejectQualificationRequestRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WorkerId: S.String,
+          BonusAmount: S.String,
+          AssignmentId: S.String,
+          Reason: S.String,
+          UniqueRequestToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendBonusRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Notification: __S(280, __c35, 0), TestEventType: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SendTestEventNotificationRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Destination: S.String,
+          Transport: S.String,
+          Version: S.String,
+          EventTypes: __S(136, __c17, 0),
+        }),
+      ).annotate({
+        identifier: "NotificationSpecification",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITId: S.String,
+          ExpireAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateExpirationForHITRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HITId: S.String, Revert: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateHITReviewStatusRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HITId: S.String, HITTypeId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateHITTypeOfHITRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HITTypeId: S.String,
+          Notification: S.optional(__S(280, __c35, 0)),
+          Active: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateNotificationSettingsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QualificationTypeId: S.String,
@@ -1724,7 +2386,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateQualificationWithWorkerRequest",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.String,
+          Description: S.optional(S.String),
+          QualificationTypeStatus: S.optional(S.String),
+          Test: S.optional(S.String),
+          AnswerKey: S.optional(S.String),
+          TestDurationInSeconds: S.optional(S.Number),
+          RetryDelayInSeconds: S.optional(S.Number),
+          AutoGranted: S.optional(S.Boolean),
+          AutoGrantedValue: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateQualificationTypeRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HITId: S.String,
@@ -1734,64 +2420,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAdditionalAssignmentsForHITRequest",
       });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Country: S.String, Subdivision: S.optional(S.String) }),
-      ).annotate({ identifier: "Locale" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.String,
-          Comparator: S.String,
-          IntegerValues: S.optional(__S(5, __c0, 5)),
-          LocaleValues: S.optional(__S(7, __c0, 7)),
-          RequiredToPreview: S.optional(S.Boolean),
-          ActionsGuarded: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QualificationRequirement" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({ identifier: "ParameterMapEntry" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(S.String),
-          Values: S.optional(__S(10, __c1, 2)),
-          MapEntries: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "PolicyParameter" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ PolicyName: S.String, Parameters: S.optional(__S(14, __c1, 6)) }),
-      ).annotate({ identifier: "ReviewPolicy" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "HITLayoutParameter",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           MaxAssignments: S.optional(S.Number),
@@ -1804,15 +2437,66 @@ function __c2(j: number): any {
           Description: S.String,
           Question: S.optional(S.String),
           RequesterAnnotation: S.optional(S.String),
-          QualificationRequirements: S.optional(__S(9, __c1, 1)),
+          QualificationRequirements: S.optional(__S(371, __c46, 3)),
           UniqueRequestToken: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(15, __c1, 7)),
-          HITReviewPolicy: S.optional(__S(15, __c1, 7)),
+          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
+          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
           HITLayoutId: S.optional(S.String),
-          HITLayoutParameters: S.optional(__S(17, __c2, 1)),
+          HITLayoutParameters: S.optional(__S(377, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHITRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ HIT: S.optional(__S(384, __c48, 0)) }).pipe(ns)).annotate({
+        identifier: "CreateHITResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Country: S.String, Subdivision: S.optional(S.String) }),
+      ).annotate({ identifier: "Locale" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Array(__S(360, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationTypeId: S.String,
+          Comparator: S.String,
+          IntegerValues: S.optional(__S(368, __c46, 0)),
+          LocaleValues: S.optional(__S(369, __c46, 1)),
+          RequiredToPreview: S.optional(S.Boolean),
+          ActionsGuarded: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QualificationRequirement" });
     case 3:
+      return S.Array(__S(370, __c46, 2));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "HITLayoutParameter",
+      });
+    case 1:
+      return S.Array(__S(376, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HITId: S.optional(S.String),
@@ -1831,18 +2515,48 @@ function __c2(j: number): any {
           Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AssignmentDurationInSeconds: S.optional(S.Number),
           RequesterAnnotation: S.optional(S.String),
-          QualificationRequirements: S.optional(__S(9, __c1, 1)),
+          QualificationRequirements: S.optional(__S(371, __c46, 3)),
           HITReviewStatus: S.optional(S.String),
           NumberOfAssignmentsPending: S.optional(S.Number),
           NumberOfAssignmentsAvailable: S.optional(S.Number),
           NumberOfAssignmentsCompleted: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HIT" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(400, __c50, 0)) }),
+      ).annotate({ identifier: "ParameterMapEntry" });
+    case 1:
+      return S.Array(__S(392, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Values: S.optional(__S(400, __c50, 0)),
+          MapEntries: S.optional(__S(393, __c49, 1)),
+        }),
+      ).annotate({ identifier: "PolicyParameter" });
+    case 3:
+      return S.Array(__S(394, __c49, 2));
     case 4:
-      return S.suspend(() => S.Struct({ HIT: S.optional(__S(19, __c2, 3)) }).pipe(ns)).annotate({
-        identifier: "CreateHITResponse",
-      });
-    case 5:
+      return S.suspend(() =>
+        S.Struct({ PolicyName: S.String, Parameters: S.optional(__S(395, __c49, 3)) }),
+      ).annotate({ identifier: "ReviewPolicy" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AutoApprovalDelayInSeconds: S.optional(S.Number),
@@ -1851,14 +2565,18 @@ function __c2(j: number): any {
           Title: S.String,
           Keywords: S.optional(S.String),
           Description: S.String,
-          QualificationRequirements: S.optional(__S(9, __c1, 1)),
+          QualificationRequirements: S.optional(__S(371, __c46, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHITTypeRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ HITTypeId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateHITTypeResponse",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HITTypeId: S.String,
@@ -1867,23 +2585,23 @@ function __c2(j: number): any {
           Question: S.optional(S.String),
           RequesterAnnotation: S.optional(S.String),
           UniqueRequestToken: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(15, __c1, 7)),
-          HITReviewPolicy: S.optional(__S(15, __c1, 7)),
+          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
+          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
           HITLayoutId: S.optional(S.String),
-          HITLayoutParameters: S.optional(__S(17, __c2, 1)),
+          HITLayoutParameters: S.optional(__S(377, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHITWithHITTypeRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ HIT: S.optional(__S(19, __c2, 3)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ HIT: S.optional(__S(384, __c48, 0)) }).pipe(ns)).annotate({
         identifier: "CreateHITWithHITTypeResponse",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -1900,7 +2618,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateQualificationTypeRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QualificationTypeId: S.optional(S.String),
@@ -1918,565 +2640,18 @@ function __c3(j: number): any {
           AutoGrantedValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QualificationType" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ QualificationType: S.optional(__S(26, __c3, 2)) }).pipe(ns),
+        S.Struct({ QualificationType: S.optional(__S(432, __c54, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateQualificationTypeResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ WorkerId: S.String, Reason: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateWorkerBlockRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ HITId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteHITRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteHITResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ QualificationTypeId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteQualificationTypeRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ WorkerId: S.String, Reason: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteWorkerBlockRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          WorkerId: S.String,
-          QualificationTypeId: S.String,
-          Reason: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateQualificationFromWorkerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetAccountBalanceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AvailableBalance: S.optional(S.String),
-          OnHoldBalance: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountBalanceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AssignmentId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetAssignmentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AssignmentId: S.optional(S.String),
-          WorkerId: S.optional(S.String),
-          HITId: S.optional(S.String),
-          AssignmentStatus: S.optional(S.String),
-          AutoApprovalTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AcceptTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ApprovalTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RejectionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Deadline: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Answer: S.optional(S.String),
-          RequesterFeedback: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Assignment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Assignment: S.optional(__S(37, __c4, 5)),
-          HIT: S.optional(__S(19, __c2, 3)),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetAssignmentResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AssignmentId: S.String, QuestionIdentifier: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetFileUploadURLRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ FileUploadURL: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "GetFileUploadURLResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ HITId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetHITRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ QualificationTypeId: S.String, WorkerId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetQualificationScoreRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.optional(S.String),
-          WorkerId: S.optional(S.String),
-          GrantTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IntegerValue: S.optional(S.Number),
-          LocaleValue: S.optional(__S(6, __c0, 6)),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Qualification" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Qualification: S.optional(__S(43, __c5, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetQualificationScoreResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ QualificationTypeId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetQualificationTypeRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          HITId: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          AssignmentStatuses: S.optional(__S(46, __c5, 6)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAssignmentsForHITRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(37, __c4, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          Assignments: S.optional(__S(48, __c6, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListAssignmentsForHITResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          HITId: S.optional(S.String),
-          AssignmentId: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListBonusPaymentsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          WorkerId: S.optional(S.String),
-          BonusAmount: S.optional(S.String),
-          AssignmentId: S.optional(S.String),
-          Reason: S.optional(S.String),
-          GrantTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "BonusPayment" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NumResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          BonusPayments: S.optional(__S(52, __c6, 4)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListBonusPaymentsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListHITsRequest" });
-    case 7:
-      return S.Array(__S(19, __c2, 3));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          HITs: S.optional(__S(55, __c6, 7)),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListHITsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListHITsForQualificationTypeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          HITs: S.optional(__S(55, __c6, 7)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListHITsForQualificationTypeResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListQualificationRequestsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationRequestId: S.optional(S.String),
-          QualificationTypeId: S.optional(S.String),
-          WorkerId: S.optional(S.String),
-          Test: S.optional(S.String),
-          Answer: S.optional(S.String),
-          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "QualificationRequest" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          NumResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          QualificationRequests: S.optional(__S(61, __c7, 5)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListQualificationRequestsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Query: S.optional(S.String),
-          MustBeRequestable: S.Boolean,
-          MustBeOwnedByCaller: S.optional(S.Boolean),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListQualificationTypesRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(26, __c3, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NumResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          QualificationTypes: S.optional(__S(64, __c8, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListQualificationTypesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          HITTypeId: S.optional(S.String),
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListReviewableHITsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          HITId: S.String,
-          PolicyLevels: S.optional(__S(46, __c5, 6)),
-          RetrieveActions: S.optional(S.Boolean),
-          RetrieveResults: S.optional(S.Boolean),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListReviewPolicyResultsForHITRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ActionId: S.optional(S.String),
-          SubjectId: S.optional(S.String),
-          SubjectType: S.optional(S.String),
-          QuestionId: S.optional(S.String),
-          Key: S.optional(S.String),
-          Value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewResultDetail" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ActionId: S.optional(S.String),
-          ActionName: S.optional(S.String),
-          TargetId: S.optional(S.String),
-          TargetType: S.optional(S.String),
-          Status: S.optional(S.String),
-          CompleteTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Result: S.optional(S.String),
-          ErrorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewActionDetail" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ReviewResults: S.optional(__S(69, __c8, 5)),
-          ReviewActions: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "ReviewReport" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          HITId: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(15, __c1, 7)),
-          HITReviewPolicy: S.optional(__S(15, __c1, 7)),
-          AssignmentReviewReport: S.optional(__S(72, __c9, 0)),
-          HITReviewReport: S.optional(__S(72, __c9, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListReviewPolicyResultsForHITResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListWorkerBlocksRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ WorkerId: S.optional(S.String), Reason: S.optional(S.String) }),
-      ).annotate({ identifier: "WorkerBlock" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          WorkerBlocks: S.optional(__S(76, __c9, 4)),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListWorkerBlocksResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.String,
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkersWithQualificationTypeRequest",
-      });
-    case 7:
-      return S.Array(__S(43, __c5, 3));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          Qualifications: S.optional(__S(79, __c9, 7)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListWorkersWithQualificationTypeResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Subject: S.String, MessageText: S.String, WorkerIds: __S(10, __c1, 2) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "NotifyWorkersRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NotifyWorkersFailureCode: S.optional(S.String),
-          NotifyWorkersFailureMessage: S.optional(S.String),
-          WorkerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NotifyWorkersFailureStatus",
-      });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ NotifyWorkersFailureStatuses: S.optional(__S(83, __c10, 3)) }).pipe(ns),
-      ).annotate({ identifier: "NotifyWorkersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ AssignmentId: S.String, RequesterFeedback: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "RejectAssignmentRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RejectAssignmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ QualificationRequestId: S.String, Reason: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "RejectQualificationRequestRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          WorkerId: S.String,
-          BonusAmount: S.String,
-          AssignmentId: S.String,
-          Reason: S.String,
-          UniqueRequestToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "SendBonusRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Destination: S.String,
-          Transport: S.String,
-          Version: S.String,
-          EventTypes: __S(46, __c5, 6),
-        }),
-      ).annotate({
-        identifier: "NotificationSpecification",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Notification: __S(89, __c11, 1), TestEventType: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "SendTestEventNotificationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          HITId: S.String,
-          ExpireAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateExpirationForHITRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ HITId: S.String, Revert: S.optional(S.Boolean) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateHITReviewStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ HITId: S.String, HITTypeId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateHITTypeOfHITRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          HITTypeId: S.String,
-          Notification: S.optional(__S(89, __c11, 1)),
-          Active: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateNotificationSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          QualificationTypeId: S.String,
-          Description: S.optional(S.String),
-          QualificationTypeStatus: S.optional(S.String),
-          Test: S.optional(S.String),
-          AnswerKey: S.optional(S.String),
-          TestDurationInSeconds: S.optional(S.Number),
-          RetryDelayInSeconds: S.optional(S.Number),
-          AutoGranted: S.optional(S.Boolean),
-          AutoGrantedValue: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateQualificationTypeRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

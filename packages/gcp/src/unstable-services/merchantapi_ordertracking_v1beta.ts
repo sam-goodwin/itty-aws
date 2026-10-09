@@ -201,8 +201,8 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OrderTrackingSignal>,
+  input: __S(11, __c0, 11) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
+  output: __S(10, __c0, 10) as any as S.Schema<OrderTrackingSignal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -269,11 +269,7 @@ function __c0(j: number): any {
       return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           gtin: S.optional(S.String),
@@ -286,9 +282,9 @@ function __c1(j: number): any {
           gtins: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LineItemDetails" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           deliveryPostalCode: S.optional(S.String),
@@ -300,15 +296,15 @@ function __c1(j: number): any {
           shipmentLineItemMapping: S.optional(__S(4, __c0, 4)),
           merchantId: S.optional(S.String),
           shippingInfo: S.optional(__S(6, __c0, 6)),
-          lineItems: S.optional(__S(9, __c1, 1)),
+          lineItems: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "OrderTrackingSignal" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c0, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -321,7 +317,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

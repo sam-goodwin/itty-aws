@@ -356,7 +356,7 @@ export const deleteAgentUsers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteAgentUsersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  output: __S(32, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const queryDevices: API.OperationMethod<
   QueryDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<QueryDevicesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<QueryResponse>,
+  input: __S(70, __c2, 6) as any as S.Schema<QueryDevicesRequest>,
+  output: __S(80, __c2, 16) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -390,8 +390,8 @@ export const reportStateAndNotificationDevices: API.OperationMethod<
   ReportStateAndNotificationDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ReportStateAndNotificationDevicesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ReportStateAndNotificationResponse>,
+  input: __S(205, __c6, 13) as any as S.Schema<ReportStateAndNotificationDevicesRequest>,
+  output: __S(208, __c6, 16) as any as S.Schema<ReportStateAndNotificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -405,8 +405,8 @@ export const requestSyncDevices: API.OperationMethod<
   RequestSyncDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RequestSyncDevicesRequest_>,
-  output: __S(1, __c0, 1) as any as S.Schema<RequestSyncDevicesResponse>,
+  input: __S(225, __c7, 1) as any as S.Schema<RequestSyncDevicesRequest_>,
+  output: __S(32, __c1, 0) as any as S.Schema<RequestSyncDevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -420,8 +420,8 @@ export const syncDevices: API.OperationMethod<
   SyncDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<SyncDevicesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SyncResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<SyncDevicesRequest>,
+  output: __S(265, __c8, 9) as any as S.Schema<SyncResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -443,50 +443,54 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAgentUsersRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentDeviceId" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          devices: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "QueryRequestPayload" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "QueryRequestInput" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          includeDeviceMetadata: S.optional(S.Boolean),
-          deviceView: S.optional(S.String),
-          inputs: S.optional(__S(6, __c0, 6)),
-          agentUserId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentDeviceId" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          devices: S.optional(__S(65, __c2, 1)),
+        }),
+      ).annotate({ identifier: "QueryRequestPayload" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(__S(66, __c2, 2)),
+        }),
+      ).annotate({ identifier: "QueryRequestInput" });
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          includeDeviceMetadata: S.optional(S.Boolean),
+          deviceView: S.optional(S.String),
+          inputs: S.optional(__S(68, __c2, 4)),
+          agentUserId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(69, __c2, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -495,159 +499,163 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryDevicesRequest" });
-    case 1:
+    case 7:
       return S.Record(S.String, S.String);
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          traitCommitTimestamps: S.optional(__S(9, __c1, 1)),
+          traitCommitTimestamps: S.optional(__S(71, __c2, 7)),
         }),
       ).annotate({ identifier: "DeviceMetadata" });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(17, __c2, 1)));
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
+    case 9:
+      return S.Record(S.String, __S(72, __c2, 8));
+    case 10:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(75, __c2, 11)));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          trait: S.optional(__S(14, __c1, 6)),
-          commitTime: S.optional(S.String),
-          providerUpdateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TraitData" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deviceTypes: S.optional(__S(12, __c1, 4)),
-          childComponents: S.optional(__S(13, __c1, 5)),
-          traitData: S.optional(__S(16, __c2, 0)),
+          deviceTypes: S.optional(__S(160, __c5, 0)),
+          childComponents: S.optional(__S(74, __c2, 10)),
+          traitData: S.optional(__S(97, __c3, 1)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Component" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          rootComponent: S.optional(__S(17, __c2, 1)),
+          rootComponent: S.optional(__S(75, __c2, 11)),
         }),
       ).annotate({ identifier: "HomeTraitPayload" });
-    case 3:
-      return S.Record(S.String, __S(18, __c2, 2));
-    case 4:
-      return S.Record(S.String, __S(14, __c1, 6));
-    case 5:
+    case 13:
+      return S.Record(S.String, __S(76, __c2, 12));
+    case 14:
+      return S.Record(S.String, __S(128, __c4, 0));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(__S(11, __c1, 3)),
-          homeTraitPayload: S.optional(__S(19, __c2, 3)),
-          devices: S.optional(__S(20, __c2, 4)),
+          deviceMetadata: S.optional(__S(73, __c2, 9)),
+          homeTraitPayload: S.optional(__S(77, __c2, 13)),
+          devices: S.optional(__S(78, __c2, 14)),
         }),
       ).annotate({ identifier: "QueryResponsePayload" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          payload: S.optional(__S(21, __c2, 5)),
+          payload: S.optional(__S(79, __c2, 15)),
         }),
       ).annotate({ identifier: "QueryResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          componentId: S.optional(S.String),
-          traitData: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "ComponentTraitUpdates" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.suspend(() =>
+        S.Struct({
+          trait: S.optional(__S(128, __c4, 0)),
+          commitTime: S.optional(S.String),
+          providerUpdateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TraitData" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deviceId: S.optional(S.String),
-          components: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "HomeTraitUpdates" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          eventId: S.optional(S.String),
-          event: S.optional(__S(14, __c1, 6)),
-          eventTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventData" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          componentId: S.optional(S.String),
-          events: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "Events" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deviceId: S.optional(S.String),
-          events: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "HomeEvents" });
+      return S.Array(__S(96, __c3, 0));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          states: S.optional(__S(14, __c1, 6)),
-          homeTraits: S.optional(__S(26, __c3, 2)),
-          homeEvents: S.optional(__S(32, __c4, 0)),
-          notifications: S.optional(__S(14, __c1, 6)),
+          componentId: S.optional(S.String),
+          traitData: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({ identifier: "ComponentTraitUpdates" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deviceId: S.optional(S.String),
+          components: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "HomeTraitUpdates" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          eventId: S.optional(S.String),
+          event: S.optional(__S(128, __c4, 0)),
+          eventTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventData" });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          componentId: S.optional(S.String),
+          events: S.optional(__S(197, __c6, 5)),
+        }),
+      ).annotate({ identifier: "Events" });
+    case 7:
+      return S.Array(__S(198, __c6, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          deviceId: S.optional(S.String),
+          events: S.optional(__S(199, __c6, 7)),
+        }),
+      ).annotate({ identifier: "HomeEvents" });
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          states: S.optional(__S(128, __c4, 0)),
+          homeTraits: S.optional(__S(195, __c6, 3)),
+          homeEvents: S.optional(__S(201, __c6, 9)),
+          notifications: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "ReportStateAndNotificationDevice",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(33, __c4, 1)),
+          devices: S.optional(__S(202, __c6, 10)),
         }),
       ).annotate({
         identifier: "StateAndNotificationPayload",
       });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           eventId: S.optional(S.String),
           followUpToken: S.optional(S.String),
-          payload: S.optional(__S(34, __c4, 2)),
+          payload: S.optional(__S(203, __c6, 11)),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReportStateAndNotificationRequest",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(204, __c6, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -658,18 +666,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ReportStateAndNotificationDevicesRequest",
       });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           homeTraitCommitTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Result" });
-    case 6:
-      return S.Record(S.String, __S(37, __c4, 5));
-    case 7:
+    case 15:
+      return S.Record(S.String, __S(206, __c6, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          deviceResults: S.optional(__S(38, __c4, 6)),
+          deviceResults: S.optional(__S(207, __c6, 15)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -677,7 +685,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -691,7 +699,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -702,17 +710,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RequestSyncDevicesRequest_",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -721,16 +733,16 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SyncDevicesRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.String),
           agentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentOtherDeviceId" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
@@ -739,54 +751,49 @@ function __c5(j: number): any {
           swVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceInfo" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          defaultNames: S.optional(__S(12, __c1, 4)),
+          defaultNames: S.optional(__S(160, __c5, 0)),
           name: S.optional(S.String),
-          nicknames: S.optional(__S(12, __c1, 4)),
+          nicknames: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "DeviceNames" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           roomHint: S.optional(S.String),
           id: S.optional(S.String),
           structureHint: S.optional(S.String),
-          customData: S.optional(__S(14, __c1, 6)),
-          attributes: S.optional(__S(14, __c1, 6)),
-          otherDeviceIds: S.optional(__S(45, __c5, 5)),
-          deviceInfo: S.optional(__S(46, __c5, 6)),
+          customData: S.optional(__S(128, __c4, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
+          otherDeviceIds: S.optional(__S(259, __c8, 3)),
+          deviceInfo: S.optional(__S(260, __c8, 4)),
           notificationSupportedByAgent: S.optional(S.Boolean),
           type: S.optional(S.String),
-          traits: S.optional(__S(12, __c1, 4)),
-          name: S.optional(__S(47, __c5, 7)),
+          traits: S.optional(__S(160, __c5, 0)),
+          name: S.optional(__S(261, __c8, 5)),
           willReportState: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Device" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(49, __c6, 1)),
+          devices: S.optional(__S(263, __c8, 7)),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncResponsePayload" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          payload: S.optional(__S(50, __c6, 2)),
+          payload: S.optional(__S(264, __c8, 8)),
         }),
       ).annotate({ identifier: "SyncResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

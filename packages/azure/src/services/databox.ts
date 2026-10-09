@@ -1367,7 +1367,7 @@ export const CancelJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelJobResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const CreateJob: API.OperationMethod<
   CreateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateJobResponse>,
+  input: __S(66, __c2, 2) as any as S.Schema<CreateJobRequest>,
+  output: __S(299, __c9, 11) as any as S.Schema<CreateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1396,8 +1396,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteJobResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteJobRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1411,8 +1411,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetJobResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(299, __c9, 11) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1426,8 +1426,8 @@ export const JobsBookShipmentPickUp: API.OperationMethod<
   JobsBookShipmentPickUpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<JobsBookShipmentPickUpRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ShipmentPickUpResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<JobsBookShipmentPickUpRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<ShipmentPickUpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1441,8 +1441,8 @@ export const JobsMarkDevicesShipped: API.OperationMethod<
   JobsMarkDevicesShippedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<JobsMarkDevicesShippedRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<JobsMarkDevicesShippedResponse>,
+  input: __S(705, __c22, 1) as any as S.Schema<JobsMarkDevicesShippedRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<JobsMarkDevicesShippedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1456,8 +1456,8 @@ export const ListJobByResourceGroup: API.OperationMethod<
   ListJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListJobByResourceGroupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<JobResourceList>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListJobByResourceGroupRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<JobResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1471,8 +1471,8 @@ export const ListJobCredentials: API.OperationMethod<
   ListJobCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListJobCredentialsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<UnencryptedCredentialsList>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListJobCredentialsRequest>,
+  output: __S(805, __c25, 5) as any as S.Schema<UnencryptedCredentialsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1486,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListJobsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<JobResourceList>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<JobResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1501,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<OperationList>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const ListServiceAvailableSkusByResourceGroup: API.OperationMethod<
   ListServiceAvailableSkusByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListServiceAvailableSkusByResourceGroupRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<AvailableSkusResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListServiceAvailableSkusByResourceGroupRequest>,
+  output: __S(329, __c10, 9) as any as S.Schema<AvailableSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const Mitigate: API.OperationMethod<
   MitigateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<MitigateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<MitigateResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<MitigateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<MitigateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const ServiceRegionConfiguration: API.OperationMethod<
   ServiceRegionConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ServiceRegionConfigurationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<RegionConfigurationResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ServiceRegionConfigurationRequest>,
+  output: __S(426, __c13, 10) as any as S.Schema<RegionConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1561,8 @@ export const ServiceRegionConfigurationByResourceGroup: API.OperationMethod<
   ServiceRegionConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ServiceRegionConfigurationByResourceGroupRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<RegionConfigurationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ServiceRegionConfigurationByResourceGroupRequest>,
+  output: __S(426, __c13, 10) as any as S.Schema<RegionConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const UpdateJob: API.OperationMethod<
   UpdateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<UpdateJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateJobResponse>,
+  input: __S(483, __c15, 3) as any as S.Schema<UpdateJobRequest>,
+  output: __S(299, __c9, 11) as any as S.Schema<UpdateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const ValidateServiceInputs: API.OperationMethod<
   ValidateServiceInputsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ValidateServiceInputsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ValidationResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<ValidateServiceInputsRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<ValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const ValidateServiceInputsByResourceGroup: API.OperationMethod<
   ValidateServiceInputsByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ValidateServiceInputsByResourceGroupRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ValidationResponse>,
+  input: __S(577, __c18, 1) as any as S.Schema<ValidateServiceInputsByResourceGroupRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<ValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1632,35 +1632,196 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelJobRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelJobResponse",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactDetails: __S(259, __c8, 3),
+          shippingAddress: S.optional(__S(260, __c8, 4)),
+          dataImportDetails: S.optional(__S(263, __c8, 7)),
+          dataExportDetails: S.optional(__S(274, __c8, 18)),
+          jobDetailsType: S.String,
+          preferences: S.optional(__S(97, __c3, 1)),
+          reverseShippingDetails: S.optional(__S(98, __c3, 2)),
+          keyEncryptionKey: S.optional(__S(279, __c8, 23)),
+          expectedDataSizeInTeraBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobDetailsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          transferType: S.String,
+          details: S.optional(__S(64, __c2, 0)),
+          deliveryType: S.optional(S.String),
+          deliveryInfo: S.optional(__S(280, __c8, 24)),
+        }),
+      ).annotate({ identifier: "JobPropertiesInput" });
     case 2:
-      return S.Record(S.String, S.String);
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(65, __c2, 1),
+          sku: __S(193, __c6, 1),
+          identity: S.optional(__S(101, __c3, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateJobRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preferredShipmentType: S.String,
+        }),
+      ).annotate({
+        identifier: "TransportPreferencesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preferredDataCenterRegion: S.optional(__S(160, __c5, 0)),
+          transportPreferences: S.optional(__S(96, __c3, 0)),
+          reverseTransportPreferences: S.optional(__S(96, __c3, 0)),
+          encryptionPreferences: S.optional(__S(275, __c8, 19)),
+          storageAccountAccessTierPreferences: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "PreferencesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contactDetails: S.optional(__S(276, __c8, 20)),
+          shippingAddress: S.optional(__S(260, __c8, 4)),
+        }),
+      ).annotate({
+        identifier: "ReverseShippingDetailsInput",
+      });
     case 3:
-      return S.Array(S.String);
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ResourceIdentityInputUserAssignedIdentitiesValue",
+      });
     case 4:
+      return S.Record(S.String, __S(99, __c3, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(100, __c3, 4)),
+        }),
+      ).annotate({ identifier: "ResourceIdentityInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          info: S.optional(__S(128, __c4, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdditionalErrorInfo" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(132, __c4, 4)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          additionalInfo: S.optional(__S(130, __c4, 2)),
+          code: S.optional(S.String),
+          details: S.optional(__S(131, __c4, 3)),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudError" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayName: S.optional(S.String),
+          family: S.optional(S.String),
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datacenterAddressType: S.String,
+          supportedCarriersForReturnShipment: S.optional(__S(224, __c7, 0)),
+          dataCenterAzureLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatacenterAddressResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stageName: S.String,
           sendNotification: S.Boolean,
         }),
       ).annotate({ identifier: "NotificationPreference" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           contactName: S.String,
           phone: S.String,
           phoneExtension: S.optional(S.String),
           mobile: S.optional(S.String),
-          emailList: __S(3, __c0, 3),
-          notificationPreference: S.optional(__S(5, __c0, 5)),
+          emailList: __S(160, __c5, 0),
+          notificationPreference: S.optional(__S(258, __c8, 2)),
         }),
       ).annotate({ identifier: "ContactDetails" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           streetAddress1: S.String,
@@ -1677,73 +1838,65 @@ function __c0(j: number): any {
           taxIdentificationNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingAddress" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           dataAccountType: S.String,
           sharePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "DataAccountDetails" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          accountDetails: __S(8, __c1, 0),
+          accountDetails: __S(261, __c8, 5),
           logCollectionLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataImportDetails" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          blobPrefixList: S.optional(__S(3, __c0, 3)),
-          blobPathList: S.optional(__S(3, __c0, 3)),
-          containerList: S.optional(__S(3, __c0, 3)),
+          blobPrefixList: S.optional(__S(160, __c5, 0)),
+          blobPathList: S.optional(__S(160, __c5, 0)),
+          containerList: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "BlobFilterDetails" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          filePrefixList: S.optional(__S(3, __c0, 3)),
-          filePathList: S.optional(__S(3, __c0, 3)),
-          fileShareList: S.optional(__S(3, __c0, 3)),
+          filePrefixList: S.optional(__S(160, __c5, 0)),
+          filePathList: S.optional(__S(160, __c5, 0)),
+          fileShareList: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "AzureFileFilterDetails" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           filterFileType: S.String,
           filterFilePath: S.String,
         }),
       ).annotate({ identifier: "FilterFileDetails" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(266, __c8, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           dataAccountType: S.String,
-          blobFilterDetails: S.optional(__S(11, __c1, 3)),
-          azureFileFilterDetails: S.optional(__S(12, __c1, 4)),
-          filterFileDetails: S.optional(__S(14, __c1, 6)),
+          blobFilterDetails: S.optional(__S(264, __c8, 8)),
+          azureFileFilterDetails: S.optional(__S(265, __c8, 9)),
+          filterFileDetails: S.optional(__S(267, __c8, 11)),
         }),
       ).annotate({ identifier: "TransferFilterDetails" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(__S(15, __c1, 7)),
+          include: S.optional(__S(268, __c8, 12)),
         }),
       ).annotate({
         identifier: "TransferConfigurationTransferFilterDetails",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           dataAccountType: S.String,
@@ -1751,64 +1904,40 @@ function __c2(j: number): any {
           transferAllFiles: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TransferAllDetails" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(__S(17, __c2, 1)),
+          include: S.optional(__S(270, __c8, 14)),
         }),
       ).annotate({
         identifier: "TransferConfigurationTransferAllDetails",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           transferConfigurationType: S.String,
-          transferFilterDetails: S.optional(__S(16, __c2, 0)),
-          transferAllDetails: S.optional(__S(18, __c2, 2)),
+          transferFilterDetails: S.optional(__S(269, __c8, 13)),
+          transferAllDetails: S.optional(__S(271, __c8, 15)),
         }),
       ).annotate({ identifier: "TransferConfiguration" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          transferConfiguration: __S(19, __c2, 3),
+          transferConfiguration: __S(272, __c8, 16),
           logCollectionLevel: S.optional(S.String),
-          accountDetails: __S(8, __c1, 0),
+          accountDetails: __S(261, __c8, 5),
         }),
       ).annotate({ identifier: "DataExportDetails" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preferredShipmentType: S.String,
-        }),
-      ).annotate({
-        identifier: "TransportPreferencesInput",
-      });
-    case 7:
+    case 18:
+      return S.Array(__S(273, __c8, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           doubleEncryption: S.optional(S.String),
           hardwareEncryption: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionPreferences" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          preferredDataCenterRegion: S.optional(__S(3, __c0, 3)),
-          transportPreferences: S.optional(__S(22, __c2, 6)),
-          reverseTransportPreferences: S.optional(__S(22, __c2, 6)),
-          encryptionPreferences: S.optional(__S(23, __c2, 7)),
-          storageAccountAccessTierPreferences: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "PreferencesInput" });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           contactName: S.String,
@@ -1817,113 +1946,35 @@ function __c3(j: number): any {
           mobile: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contactDetails: S.optional(__S(26, __c3, 2)),
-          shippingAddress: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "ReverseShippingDetailsInput",
-      });
-    case 4:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedProperties" });
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssigned: S.optional(__S(28, __c3, 4)),
+          userAssigned: S.optional(__S(277, __c8, 21)),
         }),
       ).annotate({ identifier: "IdentityProperties" });
-    case 6:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           kekType: S.String,
-          identityProperties: S.optional(__S(29, __c3, 5)),
+          identityProperties: S.optional(__S(278, __c8, 22)),
           kekUrl: S.optional(S.String),
           kekVaultResourceID: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyEncryptionKey" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contactDetails: __S(6, __c0, 6),
-          shippingAddress: S.optional(__S(7, __c0, 7)),
-          dataImportDetails: S.optional(__S(10, __c1, 2)),
-          dataExportDetails: S.optional(__S(21, __c2, 5)),
-          jobDetailsType: S.String,
-          preferences: S.optional(__S(25, __c3, 1)),
-          reverseShippingDetails: S.optional(__S(27, __c3, 3)),
-          keyEncryptionKey: S.optional(__S(30, __c3, 6)),
-          expectedDataSizeInTeraBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JobDetailsInput" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           scheduledDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobDeliveryInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          transferType: S.String,
-          details: S.optional(__S(31, __c3, 7)),
-          deliveryType: S.optional(S.String),
-          deliveryInfo: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "JobPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          displayName: S.optional(S.String),
-          family: S.optional(S.String),
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ResourceIdentityInputUserAssignedIdentitiesValue",
-      });
-    case 4:
-      return S.Record(S.String, __S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "ResourceIdentityInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: __S(33, __c4, 1),
-          sku: __S(34, __c4, 2),
-          identity: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1934,34 +1985,7 @@ function __c4(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          info: S.optional(__S(40, __c5, 0)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdditionalErrorInfo" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(44, __c5, 4)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalInfo: S.optional(__S(42, __c5, 2)),
-          code: S.optional(S.String),
-          details: S.optional(__S(43, __c5, 3)),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudError" });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1971,9 +1995,9 @@ function __c5(j: number): any {
           resolutionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobDelayDetails" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 27:
+      return S.Array(__S(282, __c8, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           stageName: S.optional(S.String),
@@ -1981,16 +2005,12 @@ function __c5(j: number): any {
           stageStatus: S.optional(S.String),
           stageTime: S.optional(S.String),
           jobStageDetails: S.optional(S.Unknown),
-          delayInformation: S.optional(__S(46, __c5, 6)),
+          delayInformation: S.optional(__S(283, __c8, 27)),
         }),
       ).annotate({ identifier: "JobStages" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 29:
+      return S.Array(__S(284, __c8, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           trackingUrl: S.optional(S.String),
@@ -1998,40 +2018,44 @@ function __c6(j: number): any {
           trackingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageShippingDetails" });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           preferredShipmentType: S.String,
           isUpdated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TransportPreferences" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          preferredDataCenterRegion: S.optional(__S(3, __c0, 3)),
-          transportPreferences: S.optional(__S(50, __c6, 2)),
-          reverseTransportPreferences: S.optional(__S(50, __c6, 2)),
-          encryptionPreferences: S.optional(__S(23, __c2, 7)),
-          storageAccountAccessTierPreferences: S.optional(__S(24, __c3, 0)),
+          preferredDataCenterRegion: S.optional(__S(160, __c5, 0)),
+          transportPreferences: S.optional(__S(287, __c8, 31)),
+          reverseTransportPreferences: S.optional(__S(287, __c8, 31)),
+          encryptionPreferences: S.optional(__S(275, __c8, 19)),
+          storageAccountAccessTierPreferences: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "Preferences" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          contactDetails: S.optional(__S(26, __c3, 2)),
-          shippingAddress: S.optional(__S(7, __c0, 7)),
+          contactDetails: S.optional(__S(276, __c8, 20)),
+          shippingAddress: S.optional(__S(260, __c8, 4)),
           isUpdated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReverseShippingDetails" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           copyLogDetailsType: S.String,
         }),
       ).annotate({ identifier: "CopyLogDetails" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           deviceErasureStatus: S.optional(S.String),
@@ -2039,11 +2063,7 @@ function __c6(j: number): any {
           secureErasureCertificateSasKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceErasureDetails" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           actionDateTimeInUtc: S.optional(S.String),
@@ -2053,44 +2073,32 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "LastMitigationActionOnJob",
       });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          datacenterAddressType: S.String,
-          supportedCarriersForReturnShipment: S.optional(__S(57, __c7, 1)),
-          dataCenterAzureLocation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatacenterAddressResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          jobStages: S.optional(__S(48, __c6, 0)),
-          contactDetails: __S(6, __c0, 6),
-          shippingAddress: S.optional(__S(7, __c0, 7)),
-          deliveryPackage: S.optional(__S(49, __c6, 1)),
-          returnPackage: S.optional(__S(49, __c6, 1)),
-          dataImportDetails: S.optional(__S(10, __c1, 2)),
-          dataExportDetails: S.optional(__S(21, __c2, 5)),
+          jobStages: S.optional(__S(285, __c8, 29)),
+          contactDetails: __S(259, __c8, 3),
+          shippingAddress: S.optional(__S(260, __c8, 4)),
+          deliveryPackage: S.optional(__S(286, __c8, 30)),
+          returnPackage: S.optional(__S(286, __c8, 30)),
+          dataImportDetails: S.optional(__S(263, __c8, 7)),
+          dataExportDetails: S.optional(__S(274, __c8, 18)),
           jobDetailsType: S.String,
-          preferences: S.optional(__S(51, __c6, 3)),
-          reverseShippingDetails: S.optional(__S(52, __c6, 4)),
-          copyLogDetails: S.optional(__S(54, __c6, 6)),
+          preferences: S.optional(__S(288, __c9, 0)),
+          reverseShippingDetails: S.optional(__S(289, __c9, 1)),
+          copyLogDetails: S.optional(__S(291, __c9, 3)),
           reverseShipmentLabelSasKey: S.optional(S.String),
           chainOfCustodySasKey: S.optional(S.String),
-          deviceErasureDetails: S.optional(__S(55, __c6, 7)),
-          keyEncryptionKey: S.optional(__S(30, __c3, 6)),
+          deviceErasureDetails: S.optional(__S(292, __c9, 4)),
+          keyEncryptionKey: S.optional(__S(279, __c8, 23)),
           expectedDataSizeInTeraBytes: S.optional(S.Number),
-          actions: S.optional(__S(24, __c3, 0)),
-          lastMitigationActionOnJob: S.optional(__S(56, __c7, 0)),
-          datacenterAddress: S.optional(__S(58, __c7, 2)),
+          actions: S.optional(__S(192, __c6, 0)),
+          lastMitigationActionOnJob: S.optional(__S(293, __c9, 5)),
+          datacenterAddress: S.optional(__S(225, __c7, 1)),
           dataCenterCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobDetails" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           transferType: S.String,
@@ -2103,16 +2111,16 @@ function __c7(j: number): any {
           status: S.optional(S.String),
           delayedStage: S.optional(S.String),
           startTime: S.optional(S.String),
-          error: S.optional(__S(44, __c5, 4)),
-          details: S.optional(__S(59, __c7, 3)),
+          error: S.optional(__S(132, __c4, 4)),
+          details: S.optional(__S(294, __c9, 6)),
           cancellationReason: S.optional(S.String),
           deliveryType: S.optional(S.String),
-          deliveryInfo: S.optional(__S(32, __c4, 0)),
+          deliveryInfo: S.optional(__S(280, __c8, 24)),
           isCancellableWithoutFee: S.optional(S.Boolean),
           allDevicesLost: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "JobProperties" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -2121,36 +2129,404 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResourceIdentityUserAssignedIdentitiesValue",
       });
-    case 6:
-      return S.Record(S.String, __S(61, __c7, 5));
-    case 7:
+    case 9:
+      return S.Record(S.String, __S(296, __c9, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(62, __c7, 6)),
+          userAssignedIdentities: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({ identifier: "ResourceIdentity" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(39, __c4, 7)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(281, __c8, 25)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: __S(60, __c7, 4),
-          sku: __S(34, __c4, 2),
-          identity: S.optional(__S(63, __c7, 7)),
+          properties: __S(295, __c9, 7),
+          sku: __S(193, __c6, 1),
+          identity: S.optional(__S(298, __c9, 10)),
         }),
       ).annotate({ identifier: "CreateJobResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          transferType: S.String,
+          country: S.String,
+          skuNames: S.optional(__S(192, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceAvailableSkusByResourceGroupRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataLocation: S.optional(S.String),
+          serviceLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataLocationToServiceLocationMap",
+      });
+    case 2:
+      return S.Array(__S(321, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usable: S.optional(S.String),
+          maximum: S.optional(S.String),
+          individualSkuUsable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SkuCapacity" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          meterId: S.optional(S.String),
+          meterType: S.optional(S.String),
+          multiplier: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SkuCost" });
+    case 5:
+      return S.Array(__S(324, __c10, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dataLocationToServiceLocationMap: S.optional(__S(322, __c10, 2)),
+          capacity: S.optional(__S(323, __c10, 3)),
+          costs: S.optional(__S(325, __c10, 5)),
+          apiVersions: S.optional(__S(160, __c5, 0)),
+          disabledReason: S.optional(S.String),
+          disabledReasonMessage: S.optional(S.String),
+          requiredFeature: S.optional(S.String),
+          countriesWithinCommerceBoundary: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "SkuProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(__S(193, __c6, 1)),
+          enabled: S.optional(S.Boolean),
+          properties: S.optional(__S(326, __c10, 6)),
+        }),
+      ).annotate({ identifier: "SkuInformation" });
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(328, __c10, 8),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AvailableSkusResult" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          customerResolutionCode: S.optional(S.String),
+          serialNumberCustomerResolutionMap: S.optional(__S(352, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "MitigateRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          scheduleAvailabilityRequest: S.optional(__S(416, __c13, 0)),
+          transportAvailabilityRequest: S.optional(__S(417, __c13, 1)),
+          datacenterAddressRequest: S.optional(__S(418, __c13, 2)),
+          deviceCapabilityRequest: S.optional(__S(417, __c13, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServiceRegionConfigurationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageLocation: S.String,
+          skuName: S.String,
+          country: S.optional(S.String),
+          model: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScheduleAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skuName: S.optional(S.String),
+          model: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransportAvailabilityRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          storageLocation: S.String,
+          skuName: S.String,
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatacenterAddressRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availableDates: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "ScheduleAvailabilityResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          shipmentType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransportAvailabilityDetails",
+      });
+    case 5:
+      return S.Array(__S(420, __c13, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          transportAvailabilityDetails: S.optional(__S(421, __c13, 5)),
+        }),
+      ).annotate({
+        identifier: "TransportAvailabilityResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hardwareEncryption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceCapabilityDetails" });
+    case 8:
+      return S.Array(__S(423, __c13, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          deviceCapabilityDetails: S.optional(__S(424, __c13, 8)),
+        }),
+      ).annotate({ identifier: "DeviceCapabilityResponse" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleAvailabilityResponse: S.optional(__S(419, __c13, 3)),
+          transportAvailabilityResponse: S.optional(__S(422, __c13, 6)),
+          datacenterAddressResponse: S.optional(__S(225, __c7, 1)),
+          deviceCapabilityResponse: S.optional(__S(425, __c13, 9)),
+        }),
+      ).annotate({
+        identifier: "RegionConfigurationResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          scheduleAvailabilityRequest: S.optional(__S(416, __c13, 0)),
+          transportAvailabilityRequest: S.optional(__S(417, __c13, 1)),
+          datacenterAddressRequest: S.optional(__S(418, __c13, 2)),
+          deviceCapabilityRequest: S.optional(__S(417, __c13, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServiceRegionConfigurationByResourceGroupRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          carrierAccountNumber: S.optional(S.String),
+          carrierName: S.optional(S.String),
+          trackingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackageCarrierDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contactDetails: S.optional(__S(259, __c8, 3)),
+          shippingAddress: S.optional(__S(260, __c8, 4)),
+          reverseShippingDetails: S.optional(__S(98, __c3, 2)),
+          preferences: S.optional(__S(97, __c3, 1)),
+          keyEncryptionKey: S.optional(__S(279, __c8, 23)),
+          returnToCustomerPackageDetails: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "UpdateJobDetailsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(481, __c15, 1)),
+        }),
+      ).annotate({ identifier: "UpdateJobPropertiesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(482, __c15, 2)),
+          tags: S.optional(__S(256, __c8, 0)),
+          identity: S.optional(__S(101, __c3, 5)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateJobRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(544, __c17, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          validationCategory: S.String,
+          individualRequestDetails: __S(512, __c16, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateServiceInputsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validationType: S.String,
+        }),
+      ).annotate({ identifier: "ValidationInputRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          validationType: S.String,
+          error: S.optional(__S(132, __c4, 4)),
+        }),
+      ).annotate({ identifier: "ValidationInputResponse" });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          individualResponseDetails: S.optional(__S(546, __c17, 2)),
+        }),
+      ).annotate({
+        identifier: "ValidationResponseProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(547, __c17, 3)),
+        }),
+      ).annotate({ identifier: "ValidationResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(544, __c17, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          validationCategory: S.String,
+          individualRequestDetails: __S(576, __c18, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
+            code: 200,
+            apiVersion: "2025-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateServiceInputsByResourceGroupRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2165,7 +2541,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteJobRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2181,7 +2561,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2201,27 +2585,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "JobsBookShipmentPickUpRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           confirmationNumber: S.optional(S.String),
           readyByTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShipmentPickUpResponse" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           carrierName: S.optional(S.String),
           trackingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageCarrierInfo" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          deliverToDcPackageDetails: __S(69, __c8, 5),
+          deliverToDcPackageDetails: __S(704, __c22, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2233,7 +2621,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "JobsMarkDevicesShippedRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2252,18 +2644,22 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(299, __c9, 11));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(72, __c9, 0),
+          value: __S(768, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobResourceList" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2280,34 +2676,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListJobCredentialsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reverseDCAccessCode: S.optional(S.String),
           forwardDCAccessCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DcAccessSecurityCode" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           jobSecretsType: S.String,
-          dcAccessSecurityCode: S.optional(__S(75, __c9, 3)),
-          error: S.optional(__S(44, __c5, 4)),
+          dcAccessSecurityCode: S.optional(__S(801, __c25, 1)),
+          error: S.optional(__S(132, __c4, 4)),
         }),
       ).annotate({ identifier: "JobSecrets" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           jobName: S.optional(S.String),
-          jobSecrets: S.optional(__S(76, __c9, 4)),
+          jobSecrets: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({ identifier: "UnencryptedCredentials" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(803, __c25, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78, __c9, 6),
+          value: __S(804, __c25, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2315,7 +2711,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2331,7 +2727,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2342,7 +2742,7 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2351,380 +2751,27 @@ function __c10(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(82, __c10, 2)),
+          display: S.optional(__S(865, __c27, 1)),
           properties: S.optional(S.Unknown),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(866, __c27, 2));
     case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(84, __c10, 4)),
+          value: S.optional(__S(867, __c27, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          transferType: S.String,
-          country: S.String,
-          skuNames: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceAvailableSkusByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataLocation: S.optional(S.String),
-          serviceLocation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataLocationToServiceLocationMap",
-      });
   }
 }
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          usable: S.optional(S.String),
-          maximum: S.optional(S.String),
-          individualSkuUsable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkuCapacity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          meterId: S.optional(S.String),
-          meterType: S.optional(S.String),
-          multiplier: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SkuCost" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataLocationToServiceLocationMap: S.optional(__S(88, __c11, 0)),
-          capacity: S.optional(__S(89, __c11, 1)),
-          costs: S.optional(__S(91, __c11, 3)),
-          apiVersions: S.optional(__S(3, __c0, 3)),
-          disabledReason: S.optional(S.String),
-          disabledReasonMessage: S.optional(S.String),
-          requiredFeature: S.optional(S.String),
-          countriesWithinCommerceBoundary: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "SkuProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(34, __c4, 2)),
-          enabled: S.optional(S.Boolean),
-          properties: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "SkuInformation" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(94, __c11, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AvailableSkusResult" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          customerResolutionCode: S.optional(S.String),
-          serialNumberCustomerResolutionMap: S.optional(__S(96, __c12, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "MitigateRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          storageLocation: S.String,
-          skuName: S.String,
-          country: S.optional(S.String),
-          model: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ScheduleAvailabilityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          skuName: S.optional(S.String),
-          model: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransportAvailabilityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageLocation: S.String,
-          skuName: S.String,
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatacenterAddressRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          scheduleAvailabilityRequest: S.optional(__S(98, __c12, 2)),
-          transportAvailabilityRequest: S.optional(__S(99, __c12, 3)),
-          datacenterAddressRequest: S.optional(__S(100, __c12, 4)),
-          deviceCapabilityRequest: S.optional(__S(99, __c12, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServiceRegionConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          availableDates: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ScheduleAvailabilityResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          shipmentType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransportAvailabilityDetails",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          transportAvailabilityDetails: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "TransportAvailabilityResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareEncryption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceCapabilityDetails" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deviceCapabilityDetails: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({ identifier: "DeviceCapabilityResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleAvailabilityResponse: S.optional(__S(102, __c12, 6)),
-          transportAvailabilityResponse: S.optional(__S(105, __c13, 1)),
-          datacenterAddressResponse: S.optional(__S(58, __c7, 2)),
-          deviceCapabilityResponse: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "RegionConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          scheduleAvailabilityRequest: S.optional(__S(98, __c12, 2)),
-          transportAvailabilityRequest: S.optional(__S(99, __c12, 3)),
-          datacenterAddressRequest: S.optional(__S(100, __c12, 4)),
-          deviceCapabilityRequest: S.optional(__S(99, __c12, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServiceRegionConfigurationByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          carrierAccountNumber: S.optional(S.String),
-          carrierName: S.optional(S.String),
-          trackingId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PackageCarrierDetails" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contactDetails: S.optional(__S(6, __c0, 6)),
-          shippingAddress: S.optional(__S(7, __c0, 7)),
-          reverseShippingDetails: S.optional(__S(27, __c3, 3)),
-          preferences: S.optional(__S(25, __c3, 1)),
-          keyEncryptionKey: S.optional(__S(30, __c3, 6)),
-          returnToCustomerPackageDetails: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "UpdateJobDetailsInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({ identifier: "UpdateJobPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113, __c14, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          identity: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateJobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validationType: S.String,
-        }),
-      ).annotate({ identifier: "ValidationInputRequest" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          validationCategory: S.String,
-          individualRequestDetails: __S(116, __c14, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateServiceInputsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validationType: S.String,
-          error: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "ValidationInputResponse" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          individualResponseDetails: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "ValidationResponseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({ identifier: "ValidationResponse" });
-    case 2:
-      return S.Array(__S(115, __c14, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          validationCategory: S.String,
-          individualRequestDetails: __S(122, __c15, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
-            code: 200,
-            apiVersion: "2025-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateServiceInputsByResourceGroupRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

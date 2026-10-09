@@ -617,8 +617,8 @@ export const createProjects: API.OperationMethod<
   CreateProjectsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Project>,
+  input: __S(177, __c11, 1) as any as S.Schema<CreateProjectsRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<Project>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -637,8 +637,8 @@ export const createProjectsDeployments: API.OperationMethod<
   CreateProjectsDeploymentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsDeploymentsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Deployment>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateProjectsDeploymentsRequest>,
+  output: __S(248, __c15, 8) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -657,8 +657,8 @@ export const createProjectsVersions: API.OperationMethod<
   CreateProjectsVersionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectsVersionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Version>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateProjectsVersionsRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const deleteProjectsDeployments: API.OperationMethod<
   DeleteProjectsDeploymentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectsDeploymentsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteProjectsDeploymentsRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const getContentProjects: API.OperationMethod<
   GetContentProjectsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetContentProjectsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Content>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetContentProjectsRequest>,
+  output: __S(326, __c20, 6) as any as S.Schema<Content>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -707,8 +707,8 @@ export const getMetricsProjects: API.OperationMethod<
   GetMetricsProjectsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetMetricsProjectsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Metrics>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetMetricsProjectsRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<Metrics>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -722,8 +722,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetProjectsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Project>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<Project>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -737,8 +737,8 @@ export const getProjectsDeployments: API.OperationMethod<
   GetProjectsDeploymentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetProjectsDeploymentsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Deployment>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetProjectsDeploymentsRequest>,
+  output: __S(248, __c15, 8) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -752,8 +752,8 @@ export const getProjectsVersions: API.OperationMethod<
   GetProjectsVersionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetProjectsVersionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Version>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetProjectsVersionsRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const listProcesses: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListUserProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListProcessesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListUserProcessesResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListProcessesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListUserProcessesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListProjectsDeploymentsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListDeploymentsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListProjectsDeploymentsRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -802,8 +802,8 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListProjectsVersionsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListVersionsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListProjectsVersionsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -819,8 +819,8 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListScriptProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListScriptProcessesProcessesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListScriptProcessesResponse>,
+  input: __S(113, __c7, 1) as any as S.Schema<ListScriptProcessesProcessesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListScriptProcessesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const runScripts: API.OperationMethod<
   RunScriptsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RunScriptsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Operation>,
+  input: __S(130, __c8, 2) as any as S.Schema<RunScriptsRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -854,8 +854,8 @@ export const updateContentProjects: API.OperationMethod<
   UpdateContentProjectsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateContentProjectsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Content>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateContentProjectsRequest>,
+  output: __S(326, __c20, 6) as any as S.Schema<Content>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const updateProjectsDeployments: API.OperationMethod<
   UpdateProjectsDeploymentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateProjectsDeploymentsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Deployment>,
+  input: __S(161, __c10, 1) as any as S.Schema<UpdateProjectsDeploymentsRequest>,
+  output: __S(248, __c15, 8) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -887,6 +887,294 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/projects/{scriptId}",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetProjectsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String.pipe(T.Label()),
+          scriptId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/projects/{scriptId}/deployments/{deploymentId}",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsDeploymentsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionNumber: S.Number.pipe(T.Label()),
+          scriptId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/projects/{scriptId}/versions/{versionNumber}",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsVersionsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "userProcessFilter.types": S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          "userProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          "userProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
+          "userProcessFilter.functionName": S.optional(S.String.pipe(T.Query())),
+          "userProcessFilter.scriptId": S.optional(S.String.pipe(T.Query())),
+          "userProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
+          "userProcessFilter.userAccessLevels": S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          "userProcessFilter.statuses": S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          "userProcessFilter.projectName": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/processes", baseUrl: "https://script.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "ListProcessesRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectName: S.optional(S.String),
+          runtimeVersion: S.optional(S.String),
+          processStatus: S.optional(S.String),
+          functionName: S.optional(S.String),
+          startTime: S.optional(S.String),
+          userAccessLevel: S.optional(S.String),
+          duration: S.optional(S.String),
+          processType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAppsScriptTypeProcess",
+      });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          processes: S.optional(__S(66, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "ListUserProcessesResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/projects/{scriptId}/deployments",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsDeploymentsRequest",
+      });
+    case 1:
+      return S.Array(__S(248, __c15, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          deployments: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "ListDeploymentsResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/projects/{scriptId}/versions",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          versions: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "ListVersionsResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.optional(S.String.pipe(T.Query())),
+          "scriptProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
+          "scriptProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          "scriptProcessFilter.userAccessLevels": S.optional(__S(112, __c7, 0).pipe(T.Query())),
+          "scriptProcessFilter.types": S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          "scriptProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
+          "scriptProcessFilter.statuses": S.optional(__S(112, __c7, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          "scriptProcessFilter.functionName": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/processes:listScriptProcesses",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListScriptProcessesProcessesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          devMode: S.optional(S.Boolean),
+          sessionState: S.optional(S.String),
+          parameters: S.optional(__S(128, __c8, 0)),
+          function: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecutionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+          body: S.optional(__S(129, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/scripts/{scriptId}:run",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RunScriptsRequest" });
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(132, __c8, 4)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(133, __c8, 5)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+          body: S.optional(__S(326, __c20, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1/projects/{scriptId}/content",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContentProjectsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentConfig: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({ identifier: "UpdateDeploymentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.String.pipe(T.Label()),
+          deploymentId: S.String.pipe(T.Label()),
+          body: S.optional(__S(160, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1/projects/{scriptId}/deployments/{deploymentId}",
+            baseUrl: "https://script.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateProjectsDeploymentsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           title: S.optional(S.String),
           parentId: S.optional(S.String),
         }),
@@ -894,12 +1182,32 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/projects", baseUrl: "https://script.googleapis.com/" }),
         ),
       ).annotate({ identifier: "CreateProjectsRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentId: S.optional(S.String),
+          lastModifyUser: S.optional(__S(208, __c13, 0)),
+          title: S.optional(S.String),
+          createTime: S.optional(S.String),
+          creator: S.optional(__S(208, __c13, 0)),
+          updateTime: S.optional(S.String),
+          scriptId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -908,32 +1216,15 @@ function __c0(j: number): any {
           photoUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsScriptTypeUser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parentId: S.optional(S.String),
-          lastModifyUser: S.optional(__S(2, __c0, 2)),
-          title: S.optional(S.String),
-          createTime: S.optional(S.String),
-          creator: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-          scriptId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.optional(S.String),
-          description: S.optional(S.String),
-          manifestFileName: S.optional(S.String),
-          versionNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeploymentConfig" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -944,7 +1235,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProjectsDeploymentsRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.optional(S.String),
+          description: S.optional(S.String),
+          manifestFileName: S.optional(S.String),
+          versionNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeploymentConfig" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access: S.optional(S.String),
@@ -952,19 +1256,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleAppsScriptTypeExecutionApiConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          entryPointConfig: S.optional(__S(6, __c0, 6)),
+          entryPointConfig: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           addOnType: S.optional(S.String),
@@ -977,7 +1277,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAppsScriptTypeAddOnEntryPoint",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           executeAs: S.optional(S.String),
@@ -986,49 +1286,44 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAppsScriptTypeWebAppConfig",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          entryPointConfig: S.optional(__S(9, __c1, 1)),
+          entryPointConfig: S.optional(__S(244, __c15, 4)),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeWebAppEntryPoint",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          executionApi: S.optional(__S(7, __c0, 7)),
-          addOn: S.optional(__S(8, __c1, 0)),
+          executionApi: S.optional(__S(242, __c15, 2)),
+          addOn: S.optional(__S(243, __c15, 3)),
           entryPointType: S.optional(S.String),
-          webApp: S.optional(__S(10, __c1, 2)),
+          webApp: S.optional(__S(245, __c15, 5)),
         }),
       ).annotate({ identifier: "EntryPoint" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(246, __c15, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          entryPoints: S.optional(__S(12, __c1, 4)),
-          deploymentConfig: S.optional(__S(4, __c0, 4)),
+          entryPoints: S.optional(__S(247, __c15, 7)),
+          deploymentConfig: S.optional(__S(240, __c15, 0)),
           updateTime: S.optional(S.String),
           deploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Deployment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.optional(S.String),
-          createTime: S.optional(S.String),
-          description: S.optional(S.String),
-          versionNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Version" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1041,7 +1336,20 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scriptId: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+          versionNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Version" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1062,7 +1370,11 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionNumber: S.optional(S.Number.pipe(T.Query())),
@@ -1077,53 +1389,57 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetContentProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          parameters: S.optional(__S(19, __c2, 3)),
+          parameters: S.optional(__S(320, __c20, 0)),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeFunction",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(321, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(21, __c2, 5)),
+          values: S.optional(__S(322, __c20, 2)),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeFunctionSet",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          lastModifyUser: S.optional(__S(2, __c0, 2)),
+          lastModifyUser: S.optional(__S(208, __c13, 0)),
           name: S.optional(S.String),
           type: S.optional(S.String),
           createTime: S.optional(S.String),
-          functionSet: S.optional(__S(22, __c2, 6)),
+          functionSet: S.optional(__S(323, __c20, 3)),
           updateTime: S.optional(S.String),
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(324, __c20, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(24, __c3, 0)),
+          files: S.optional(__S(325, __c20, 5)),
           scriptId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Content" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metricsGranularity: S.optional(S.String.pipe(T.Query())),
@@ -1139,7 +1455,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMetricsProjectsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -1147,275 +1463,18 @@ function __c3(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsValue" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          activeUsers: S.optional(__S(28, __c3, 4)),
-          totalExecutions: S.optional(__S(28, __c3, 4)),
-          failedExecutions: S.optional(__S(28, __c3, 4)),
+          activeUsers: S.optional(__S(338, __c21, 2)),
+          totalExecutions: S.optional(__S(338, __c21, 2)),
+          failedExecutions: S.optional(__S(338, __c21, 2)),
         }),
       ).annotate({ identifier: "Metrics" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/projects/{scriptId}",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetProjectsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.String.pipe(T.Label()),
-          scriptId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/projects/{scriptId}/deployments/{deploymentId}",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsDeploymentsRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          versionNumber: S.Number.pipe(T.Label()),
-          scriptId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/projects/{scriptId}/versions/{versionNumber}",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsVersionsRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          "userProcessFilter.types": S.optional(__S(33, __c4, 1).pipe(T.Query())),
-          "userProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          "userProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.functionName": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.scriptId": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.userAccessLevels": S.optional(__S(33, __c4, 1).pipe(T.Query())),
-          "userProcessFilter.statuses": S.optional(__S(33, __c4, 1).pipe(T.Query())),
-          "userProcessFilter.projectName": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/processes", baseUrl: "https://script.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "ListProcessesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectName: S.optional(S.String),
-          runtimeVersion: S.optional(S.String),
-          processStatus: S.optional(S.String),
-          functionName: S.optional(S.String),
-          startTime: S.optional(S.String),
-          userAccessLevel: S.optional(S.String),
-          duration: S.optional(S.String),
-          processType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAppsScriptTypeProcess",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          processes: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "ListUserProcessesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/projects/{scriptId}/deployments",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsDeploymentsRequest",
-      });
-    case 7:
-      return S.Array(__S(13, __c1, 5));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          deployments: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "ListDeploymentsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/projects/{scriptId}/versions",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsVersionsRequest",
-      });
-    case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          versions: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "ListVersionsResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.userAccessLevels": S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          "scriptProcessFilter.types": S.optional(__S(33, __c4, 1).pipe(T.Query())),
-          "scriptProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.statuses": S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          "scriptProcessFilter.functionName": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/processes:listScriptProcesses",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListScriptProcessesProcessesRequest",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          devMode: S.optional(S.Boolean),
-          sessionState: S.optional(S.String),
-          parameters: S.optional(__S(46, __c5, 6)),
-          function: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/scripts/{scriptId}:run",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RunScriptsRequest" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(50, __c6, 2)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(51, __c6, 3)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1/projects/{scriptId}/content",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContentProjectsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentConfig: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "UpdateDeploymentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scriptId: S.String.pipe(T.Label()),
-          deploymentId: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1/projects/{scriptId}/deployments/{deploymentId}",
-            baseUrl: "https://script.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateProjectsDeploymentsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

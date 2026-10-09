@@ -1198,7 +1198,7 @@ export const createAddressMap: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(3, __c0, 3) as any as S.Schema<CreateAddressMapRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateAddressMapResponse>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateAddressMapResponse>,
   errors: [FeatureNotEnabled, InvalidAccountId, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1212,8 @@ export const createLoaDocument: API.OperationMethod<
   CreateLoaDocumentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateLoaDocumentRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateLoaDocumentResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateLoaDocumentRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateLoaDocumentResponse>,
   errors: [InvalidAccountId, InvalidLoaForm, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1231,8 @@ export const createPrefix: API.OperationMethod<
   CreatePrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreatePrefixRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreatePrefixResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreatePrefixRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreatePrefixResponse>,
   errors: [
     InvalidAccountId,
     InvalidNetworkCidr,
@@ -1256,8 +1256,8 @@ export const createPrefixBgpPrefix: API.OperationMethod<
   CreatePrefixBgpPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreatePrefixBgpPrefixRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreatePrefixBgpPrefixResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreatePrefixBgpPrefixRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreatePrefixBgpPrefixResponse>,
   errors: [
     NonexistentAccountPrefix,
     InvalidAccountId,
@@ -1281,8 +1281,8 @@ export const createPrefixDelegation: API.OperationMethod<
   CreatePrefixDelegationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreatePrefixDelegationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreatePrefixDelegationResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreatePrefixDelegationRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<CreatePrefixDelegationResponse>,
   errors: [
     PrefixNotFound,
     MissingAccountId,
@@ -1305,8 +1305,8 @@ export const createPrefixServiceBinding: API.OperationMethod<
   CreatePrefixServiceBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreatePrefixServiceBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreatePrefixServiceBindingResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreatePrefixServiceBindingRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<CreatePrefixServiceBindingResponse>,
   errors: [
     UnsupportedBindingConfiguration,
     InvalidAccountId,
@@ -1329,8 +1329,8 @@ export const createRegionalHostname: API.OperationMethod<
   CreateRegionalHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateRegionalHostnameRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateRegionalHostnameResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateRegionalHostnameRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateRegionalHostnameResponse>,
   errors: [
     InvalidZoneId,
     InvalidHostname,
@@ -1355,8 +1355,8 @@ export const deleteAddressMap: API.OperationMethod<
   DeleteAddressMapError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteAddressMapRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteAddressMapResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteAddressMapRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteAddressMapResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -1381,8 +1381,8 @@ export const deleteAddressMapAccount: API.OperationMethod<
   DeleteAddressMapAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteAddressMapAccountRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteAddressMapAccountResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteAddressMapAccountRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAddressMapAccountResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -1407,8 +1407,8 @@ export const deleteAddressMapIp: API.OperationMethod<
   DeleteAddressMapIpError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteAddressMapIpRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteAddressMapIpResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteAddressMapIpRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAddressMapIpResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -1433,8 +1433,8 @@ export const deleteAddressMapZone: API.OperationMethod<
   DeleteAddressMapZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteAddressMapZoneRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteAddressMapZoneResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteAddressMapZoneRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAddressMapZoneResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -1458,8 +1458,8 @@ export const deletePrefix: API.OperationMethod<
   DeletePrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeletePrefixRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeletePrefixResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeletePrefixRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeletePrefixResponse>,
   errors: [
     MethodNotAllowed,
     PrefixNotFound,
@@ -1479,8 +1479,8 @@ export const deletePrefixDelegation: API.OperationMethod<
   DeletePrefixDelegationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeletePrefixDelegationRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeletePrefixDelegationResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeletePrefixDelegationRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<DeletePrefixDelegationResponse>,
   errors: [DelegationNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1494,8 @@ export const deletePrefixesBgpPrefix: API.OperationMethod<
   DeletePrefixesBgpPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeletePrefixesBgpPrefixRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeletePrefixesBgpPrefixResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeletePrefixesBgpPrefixRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeletePrefixesBgpPrefixResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1513,8 +1513,8 @@ export const deletePrefixServiceBinding: API.OperationMethod<
   DeletePrefixServiceBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeletePrefixServiceBindingRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeletePrefixServiceBindingResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeletePrefixServiceBindingRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeletePrefixServiceBindingResponse>,
   errors: [
     BindingNotFound,
     InvalidAccountId,
@@ -1539,8 +1539,8 @@ export const deleteRegionalHostname: API.OperationMethod<
   DeleteRegionalHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteRegionalHostnameRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteRegionalHostnameResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteRegionalHostnameRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteRegionalHostnameResponse>,
   errors: [
     MethodNotAllowed,
     InvalidZoneId,
@@ -1565,8 +1565,8 @@ export const getAddressMap: API.OperationMethod<
   GetAddressMapError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetAddressMapRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetAddressMapResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetAddressMapRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetAddressMapResponse>,
   errors: [AddressMapNotFound, InvalidAccountId, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1580,8 @@ export const getLoaDocument: API.OperationMethod<
   GetLoaDocumentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetLoaDocumentRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetLoaDocumentResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetLoaDocumentRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetLoaDocumentResponse>,
   errors: [LoaDocumentNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1595,8 +1595,8 @@ export const getPrefix: API.OperationMethod<
   GetPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPrefixRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetPrefixResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetPrefixRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetPrefixResponse>,
   errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1613,8 +1613,8 @@ export const getPrefixAdvertisementStatus: API.OperationMethod<
   GetPrefixAdvertisementStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetPrefixAdvertisementStatusRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetPrefixAdvertisementStatusResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetPrefixAdvertisementStatusRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetPrefixAdvertisementStatusResponse>,
   errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1632,8 +1632,8 @@ export const getPrefixBgpPrefix: API.OperationMethod<
   GetPrefixBgpPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetPrefixBgpPrefixRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetPrefixBgpPrefixResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetPrefixBgpPrefixRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetPrefixBgpPrefixResponse>,
   errors: [
     BgpPrefixNotFound,
     InvalidAccountId,
@@ -1657,8 +1657,8 @@ export const getPrefixServiceBinding: API.OperationMethod<
   GetPrefixServiceBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetPrefixServiceBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetPrefixServiceBindingResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetPrefixServiceBindingRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetPrefixServiceBindingResponse>,
   errors: [
     BindingNotFound,
     InvalidAccountId,
@@ -1682,8 +1682,8 @@ export const getRegionalHostname: API.OperationMethod<
   GetRegionalHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetRegionalHostnameRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetRegionalHostnameResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetRegionalHostnameRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetRegionalHostnameResponse>,
   errors: [
     InvalidZoneId,
     RegionalHostnameNotFound,
@@ -1705,8 +1705,8 @@ export const listAddressMaps: API.PaginatedOperationMethod<
   AddressMapsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45, __c5, 5) as any as S.Schema<ListAddressMapsRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<ListAddressMapsResponse>,
+    input: __S(264, __c33, 0) as any as S.Schema<ListAddressMapsRequest>,
+    output: __S(267, __c33, 3) as any as S.Schema<ListAddressMapsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1725,8 +1725,8 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
   PrefixesBgpPrefixesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(49, __c6, 1) as any as S.Schema<ListPrefixBgpPrefixesRequest>,
-    output: __S(52, __c6, 4) as any as S.Schema<ListPrefixBgpPrefixesResponse>,
+    input: __S(272, __c34, 0) as any as S.Schema<ListPrefixBgpPrefixesRequest>,
+    output: __S(275, __c34, 3) as any as S.Schema<ListPrefixBgpPrefixesResponse>,
     errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1745,8 +1745,8 @@ export const listPrefixDelegations: API.PaginatedOperationMethod<
   PrefixesDelegationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(53, __c6, 5) as any as S.Schema<ListPrefixDelegationsRequest>,
-    output: __S(56, __c7, 0) as any as S.Schema<ListPrefixDelegationsResponse>,
+    input: __S(280, __c35, 0) as any as S.Schema<ListPrefixDelegationsRequest>,
+    output: __S(283, __c35, 3) as any as S.Schema<ListPrefixDelegationsResponse>,
     errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1765,8 +1765,8 @@ export const listPrefixes: API.PaginatedOperationMethod<
   PrefixesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(57, __c7, 1) as any as S.Schema<ListPrefixesRequest>,
-    output: __S(60, __c7, 4) as any as S.Schema<ListPrefixesResponse>,
+    input: __S(288, __c36, 0) as any as S.Schema<ListPrefixesRequest>,
+    output: __S(291, __c36, 3) as any as S.Schema<ListPrefixesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1785,8 +1785,8 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
   PrefixesServiceBindingsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(61, __c7, 5) as any as S.Schema<ListPrefixServiceBindingsRequest>,
-    output: __S(64, __c8, 0) as any as S.Schema<ListPrefixServiceBindingsResponse>,
+    input: __S(296, __c37, 0) as any as S.Schema<ListPrefixServiceBindingsRequest>,
+    output: __S(299, __c37, 3) as any as S.Schema<ListPrefixServiceBindingsResponse>,
     errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1805,8 +1805,8 @@ export const listRegionalHostnameRegions: API.PaginatedOperationMethod<
   RegionalHostnamesRegionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(65, __c8, 1) as any as S.Schema<ListRegionalHostnameRegionsRequest>,
-    output: __S(68, __c8, 4) as any as S.Schema<ListRegionalHostnameRegionsResponse>,
+    input: __S(304, __c38, 0) as any as S.Schema<ListRegionalHostnameRegionsRequest>,
+    output: __S(307, __c38, 3) as any as S.Schema<ListRegionalHostnameRegionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1825,8 +1825,8 @@ export const listRegionalHostnames: API.PaginatedOperationMethod<
   RegionalHostnamesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(69, __c8, 5) as any as S.Schema<ListRegionalHostnamesRequest>,
-    output: __S(72, __c9, 0) as any as S.Schema<ListRegionalHostnamesResponse>,
+    input: __S(312, __c39, 0) as any as S.Schema<ListRegionalHostnamesRequest>,
+    output: __S(315, __c39, 3) as any as S.Schema<ListRegionalHostnamesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const listServices: API.PaginatedOperationMethod<
   ServicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(73, __c9, 1) as any as S.Schema<ListServicesRequest>,
-    output: __S(76, __c9, 4) as any as S.Schema<ListServicesResponse>,
+    input: __S(320, __c40, 0) as any as S.Schema<ListServicesRequest>,
+    output: __S(323, __c40, 3) as any as S.Schema<ListServicesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1867,8 +1867,8 @@ export const patchAddressMap: API.OperationMethod<
   PatchAddressMapError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<PatchAddressMapRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PatchAddressMapResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<PatchAddressMapRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<PatchAddressMapResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -1892,8 +1892,8 @@ export const patchPrefix: API.OperationMethod<
   PatchPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<PatchPrefixRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PatchPrefixResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<PatchPrefixRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PatchPrefixResponse>,
   errors: [
     MethodNotAllowed,
     PrefixNotFound,
@@ -1916,8 +1916,8 @@ export const patchPrefixAdvertisementStatus: API.OperationMethod<
   PatchPrefixAdvertisementStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PatchPrefixAdvertisementStatusRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PatchPrefixAdvertisementStatusResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<PatchPrefixAdvertisementStatusRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<PatchPrefixAdvertisementStatusResponse>,
   errors: [PrefixNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1935,8 +1935,8 @@ export const patchPrefixBgpPrefix: API.OperationMethod<
   PatchPrefixBgpPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<PatchPrefixBgpPrefixRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PatchPrefixBgpPrefixResponse>,
+  input: __S(353, __c44, 1) as any as S.Schema<PatchPrefixBgpPrefixRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchPrefixBgpPrefixResponse>,
   errors: [
     BgpPrefixNotFound,
     PrefixNotFound,
@@ -1960,8 +1960,8 @@ export const patchRegionalHostname: API.OperationMethod<
   PatchRegionalHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<PatchRegionalHostnameRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<PatchRegionalHostnameResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<PatchRegionalHostnameRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<PatchRegionalHostnameResponse>,
   errors: [
     InvalidZoneId,
     RegionalHostnameNotFound,
@@ -1985,8 +1985,8 @@ export const putAddressMapAccount: API.OperationMethod<
   PutAddressMapAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<PutAddressMapAccountRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PutAddressMapAccountResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<PutAddressMapAccountRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutAddressMapAccountResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -2011,8 +2011,8 @@ export const putAddressMapIp: API.OperationMethod<
   PutAddressMapIpError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<PutAddressMapIpRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<PutAddressMapIpResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<PutAddressMapIpRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<PutAddressMapIpResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -2037,8 +2037,8 @@ export const putAddressMapZone: API.OperationMethod<
   PutAddressMapZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PutAddressMapZoneRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PutAddressMapZoneResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<PutAddressMapZoneRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutAddressMapZoneResponse>,
   errors: [
     MethodNotAllowed,
     FeatureNotEnabled,
@@ -2058,8 +2058,8 @@ export const validatePrefix: API.OperationMethod<
   ValidatePrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ValidatePrefixRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ValidatePrefixResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ValidatePrefixRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ValidatePrefixResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2102,15 +2102,34 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
+          canModifyIps: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_modify_ips"))),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          defaultSni: S.optional(S.NullOr(S.String).pipe(T.Body("default_sni"))),
+          description: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          ips: S.optional(S.NullOr(__S(9, __c1, 1))),
+          memberships: S.optional(S.NullOr(__S(11, __c1, 3))),
+          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAddressMapResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           ip: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "AddressMapsCreateResponseIps",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
@@ -2121,28 +2140,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddressMapsCreateResponseMembershipsItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 3:
+      return S.Array(__S(10, __c1, 2));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
-          canModifyIps: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_modify_ips"))),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          defaultSni: S.optional(S.NullOr(S.String).pipe(T.Body("default_sni"))),
-          description: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          ips: S.optional(S.NullOr(__S(5, __c0, 5))),
-          memberships: S.optional(S.NullOr(__S(7, __c0, 7))),
-          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAddressMapResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2157,7 +2161,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLoaDocumentRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2172,7 +2176,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoaDocumentResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2191,7 +2199,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePrefixRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2222,7 +2234,11 @@ function __c1(j: number): any {
           rpkiValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("rpki_validation_state"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePrefixResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2240,7 +2256,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePrefixBgpPrefixRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -2249,7 +2269,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PrefixesBgpPrefixesCreateResponseBgpSignalOpts",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           advertised: S.optional(S.NullOr(S.Boolean)),
@@ -2264,7 +2284,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2275,16 +2295,20 @@ function __c2(j: number): any {
           autoAdvertiseWithdraw: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
           ),
-          bgpSignalOpts: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("bgp_signal_opts"))),
+          bgpSignalOpts: S.optional(S.NullOr(__S(48, __c6, 0)).pipe(T.Body("bgp_signal_opts"))),
           cidr: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-          onDemand: S.optional(S.NullOr(__S(15, __c1, 7)).pipe(T.Body("on_demand"))),
+          onDemand: S.optional(S.NullOr(__S(49, __c6, 1)).pipe(T.Body("on_demand"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreatePrefixBgpPrefixResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2303,7 +2327,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePrefixDelegationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2316,7 +2340,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePrefixDelegationResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2335,7 +2363,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePrefixServiceBindingRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          cidr: S.optional(S.NullOr(S.String)),
+          provisioning: S.optional(S.NullOr(__S(88, __c11, 0))),
+          serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
+          serviceName: S.optional(S.NullOr(S.String).pipe(T.Body("service_name"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreatePrefixServiceBindingResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.NullOr(S.String)),
@@ -2343,19 +2391,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PrefixesServiceBindingsCreateResponseProvisioning",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          cidr: S.optional(S.NullOr(S.String)),
-          provisioning: S.optional(S.NullOr(__S(20, __c2, 4))),
-          serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-          serviceName: S.optional(S.NullOr(S.String).pipe(T.Body("service_name"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreatePrefixServiceBindingResponse",
-      });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2374,7 +2414,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateRegionalHostnameRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.String.pipe(T.Body("created_on")),
@@ -2387,7 +2431,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2404,11 +2448,19 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteAddressMapRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteAddressMapResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2426,11 +2478,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAddressMapAccountRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteAddressMapAccountResponse",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2448,7 +2508,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAddressMapIpRequest",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2466,7 +2530,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAddressMapZoneRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2481,7 +2549,11 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePrefixRequest" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2499,11 +2571,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeletePrefixDelegationRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2511,7 +2579,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePrefixDelegationResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2529,7 +2601,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePrefixesBgpPrefixRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2547,7 +2623,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePrefixServiceBindingRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2564,7 +2644,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteRegionalHostnameRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2579,7 +2663,7 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAddressMapRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2589,12 +2673,16 @@ function __c4(j: number): any {
           defaultSni: S.optional(S.NullOr(S.String).pipe(T.Body("default_sni"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          ips: S.optional(S.NullOr(__S(5, __c0, 5))),
-          memberships: S.optional(S.NullOr(__S(7, __c0, 7))),
+          ips: S.optional(S.NullOr(__S(9, __c1, 1))),
+          memberships: S.optional(S.NullOr(__S(11, __c1, 3))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAddressMapResponse" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2609,7 +2697,11 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLoaDocumentRequest" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2626,7 +2718,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetPrefixRequest" });
   }
 }
-function __c5(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2645,7 +2737,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrefixAdvertisementStatusRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertised: S.optional(S.NullOr(S.Boolean)),
@@ -2656,7 +2752,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrefixAdvertisementStatusResponse",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2674,7 +2774,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrefixBgpPrefixRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2692,7 +2796,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrefixServiceBindingRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2709,7 +2817,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetRegionalHostnameRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2723,7 +2835,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAddressMapsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2738,20 +2850,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AddressMapsListResultItem",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(265, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(47, __c5, 7).pipe(T.EnvelopePayload()),
+          result: __S(266, __c33, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAddressMapsResponse" });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2768,7 +2880,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListPrefixBgpPrefixesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2777,27 +2889,31 @@ function __c6(j: number): any {
           autoAdvertiseWithdraw: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
           ),
-          bgpSignalOpts: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("bgp_signal_opts"))),
+          bgpSignalOpts: S.optional(S.NullOr(__S(48, __c6, 0)).pipe(T.Body("bgp_signal_opts"))),
           cidr: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-          onDemand: S.optional(S.NullOr(__S(15, __c1, 7)).pipe(T.Body("on_demand"))),
+          onDemand: S.optional(S.NullOr(__S(49, __c6, 1)).pipe(T.Body("on_demand"))),
         }),
       ).annotate({
         identifier: "PrefixesBgpPrefixesListResultItem",
       });
+    case 2:
+      return S.Array(__S(273, __c34, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(51, __c6, 3).pipe(T.EnvelopePayload()),
+          result: __S(274, __c34, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListPrefixBgpPrefixesResponse",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2814,7 +2930,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListPrefixDelegationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2827,22 +2943,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PrefixesDelegationsListResultItem",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(281, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(55, __c6, 7).pipe(T.EnvelopePayload()),
+          result: __S(282, __c35, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListPrefixDelegationsResponse",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2852,7 +2968,7 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPrefixesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2883,16 +2999,20 @@ function __c7(j: number): any {
           rpkiValidationState: S.optional(S.NullOr(S.String).pipe(T.Body("rpki_validation_state"))),
         }),
       ).annotate({ identifier: "PrefixesListResultItem" });
+    case 2:
+      return S.Array(__S(289, __c36, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(59, __c7, 3).pipe(T.EnvelopePayload()),
+          result: __S(290, __c36, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPrefixesResponse" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2909,34 +3029,34 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPrefixServiceBindingsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           cidr: S.optional(S.NullOr(S.String)),
-          provisioning: S.optional(S.NullOr(__S(20, __c2, 4))),
+          provisioning: S.optional(S.NullOr(__S(88, __c11, 0))),
           serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
           serviceName: S.optional(S.NullOr(S.String).pipe(T.Body("service_name"))),
         }),
       ).annotate({
         identifier: "PrefixesServiceBindingsListResultItem",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(297, __c37, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(63, __c7, 7).pipe(T.EnvelopePayload()),
+          result: __S(298, __c37, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListPrefixServiceBindingsResponse",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2952,7 +3072,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListRegionalHostnameRegionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.NullOr(S.String)),
@@ -2961,18 +3081,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RegionalHostnamesRegionsListResultItem",
       });
+    case 2:
+      return S.Array(__S(305, __c38, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(67, __c8, 3).pipe(T.EnvelopePayload()),
+          result: __S(306, __c38, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListRegionalHostnameRegionsResponse",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2988,7 +3112,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListRegionalHostnamesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.String.pipe(T.Body("created_on")),
@@ -2999,22 +3123,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RegionalHostnamesListResultItem",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(313, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(71, __c8, 7).pipe(T.EnvelopePayload()),
+          result: __S(314, __c39, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListRegionalHostnamesResponse",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3024,23 +3148,27 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ServicesListResultItem" });
+    case 2:
+      return S.Array(__S(321, __c40, 1));
     case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(75, __c9, 3).pipe(T.EnvelopePayload()),
+          result: __S(322, __c40, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListServicesResponse" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3058,7 +3186,7 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchAddressMapRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -3071,7 +3199,11 @@ function __c9(j: number): any {
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchAddressMapResponse" });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3089,7 +3221,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "PatchPrefixRequest" });
   }
 }
-function __c10(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3109,7 +3241,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchPrefixAdvertisementStatusRequest",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertised: S.optional(S.Boolean),
@@ -3117,7 +3253,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PrefixesBgpPrefixesEditRequestOnDemand",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3125,7 +3261,7 @@ function __c10(j: number): any {
           bgpPrefixId: S.String.pipe(T.Label("bgp_prefix_id")),
           asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
           autoAdvertiseWithdraw: S.optional(S.Boolean.pipe(T.Body("auto_advertise_withdraw"))),
-          onDemand: S.optional(__S(81, __c10, 1).pipe(T.Body("on_demand"))),
+          onDemand: S.optional(__S(352, __c44, 0).pipe(T.Body("on_demand"))),
         })
           .pipe(
             T.Http({
@@ -3138,7 +3274,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchPrefixBgpPrefixRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -3156,7 +3296,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchRegionalHostnameRequest",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3174,7 +3318,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutAddressMapAccountRequest",
       });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3190,7 +3338,11 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutAddressMapIpRequest" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3206,7 +3358,11 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutAddressMapZoneRequest" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3223,7 +3379,6 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ValidatePrefixRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -721,8 +721,8 @@ export const getDailyPapers: API.OperationMethod<
   GetDailyPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetDailyPapersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetDailyPapersResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetDailyPapersRequest>,
+  output: __S(36, __c1, 4) as any as S.Schema<GetDailyPapersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const getPaper: API.OperationMethod<
   GetPaperError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPaperRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetPaperResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetPaperRequest>,
+  output: __S(148, __c4, 20) as any as S.Schema<GetPaperResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export const indexPaper: API.OperationMethod<
   IndexPaperError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<IndexPaperRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IndexPaperResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<IndexPaperRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<IndexPaperResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -766,8 +766,8 @@ export const listPapers: API.OperationMethod<
   ListPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListPapersRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListPapersResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListPapersRequest>,
+  output: __S(228, __c7, 4) as any as S.Schema<ListPapersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const searchPapers: API.OperationMethod<
   SearchPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<SearchPapersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SearchPapersResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<SearchPapersRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<SearchPapersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -796,8 +796,8 @@ export const updatePaperLinks: API.OperationMethod<
   UpdatePaperLinksError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdatePaperLinksRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdatePaperLinksResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<UpdatePaperLinksRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdatePaperLinksResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -825,7 +825,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ClaimPaperAuthorshipResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
@@ -837,7 +841,63 @@ function __c0(j: number): any {
           sort: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/daily_papers", code: 200 })),
       ).annotate({ identifier: "GetDailyPapersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          authors: __S(98, __c3, 2),
+          mediaUrls: S.optional(__S(64, __c2, 0)),
+          publishedAt: S.String,
+          submittedOnDailyAt: S.optional(S.String),
+          title: S.String,
+          submittedOnDailyBy: S.optional(__S(96, __c3, 0)),
+          summary: S.String,
+          upvotes: S.Number,
+          withdrawnAt: S.optional(S.String),
+          discussionId: S.String,
+          projectPage: S.optional(S.String),
+          githubRepo: S.optional(S.String),
+          ai_summary: S.optional(S.String),
+          ai_keywords: S.optional(__S(64, __c2, 0)),
+          ai_summary_model: S.optional(S.String),
+          githubStars: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetDailyPapersResponseBodyItemPaper",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          paper: __S(33, __c1, 1),
+          publishedAt: S.String,
+          title: S.String,
+          summary: S.String,
+          mediaUrls: S.optional(__S(64, __c2, 0)),
+          thumbnail: S.String,
+          numComments: S.Number,
+          submittedBy: __S(96, __c3, 0),
+          isAuthorParticipating: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetDailyPapersResponseBodyItem",
+      });
     case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
+      return S.suspend(() => __S(35, __c1, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDailyPapersResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -855,81 +915,33 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDailyPapersResponseBodyItemPaperAuthorsItemUser",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           name: S.String,
           status: S.optional(S.String),
           statusLastChangedAt: S.optional(S.String),
-          user: S.optional(__S(3, __c0, 3)),
+          user: S.optional(__S(96, __c3, 0)),
           hidden: S.Boolean,
         }),
       ).annotate({
         identifier: "GetDailyPapersResponseBodyItemPaperAuthorsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          authors: __S(5, __c0, 5),
-          mediaUrls: S.optional(__S(6, __c0, 6)),
-          publishedAt: S.String,
-          submittedOnDailyAt: S.optional(S.String),
-          title: S.String,
-          submittedOnDailyBy: S.optional(__S(3, __c0, 3)),
-          summary: S.String,
-          upvotes: S.Number,
-          withdrawnAt: S.optional(S.String),
-          discussionId: S.String,
-          projectPage: S.optional(S.String),
-          githubRepo: S.optional(S.String),
-          ai_summary: S.optional(S.String),
-          ai_keywords: S.optional(__S(6, __c0, 6)),
-          ai_summary_model: S.optional(S.String),
-          githubStars: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetDailyPapersResponseBodyItemPaper",
-      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          paper: __S(7, __c0, 7),
-          publishedAt: S.String,
-          title: S.String,
-          summary: S.String,
-          mediaUrls: S.optional(__S(6, __c0, 6)),
-          thumbnail: S.String,
-          numComments: S.Number,
-          submittedBy: __S(3, __c0, 3),
-          isAuthorParticipating: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetDailyPapersResponseBodyItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => __S(9, __c1, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetDailyPapersResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
           field: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/papers/{paperId}", code: 200 })),
       ).annotate({ identifier: "GetPaperRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           toolCalling: S.optional(S.Boolean),
@@ -937,7 +949,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemFeatures",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -947,7 +959,7 @@ function __c1(j: number): any {
           task: S.String,
           adapterType: S.optional(S.String),
           adapterWeightsPath: S.optional(S.String),
-          features: S.optional(__S(12, __c1, 4)),
+          features: S.optional(__S(129, __c4, 1)),
           isCheapestPricingOutput: S.Boolean,
           isFastestThroughput: S.Boolean,
           isModelAuthor: S.Boolean,
@@ -958,9 +970,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -970,17 +982,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseLinkedModelsItemResourceGroup",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           author: S.String,
           downloads: S.Number,
           id: S.String,
-          availableInferenceProviders: __S(14, __c1, 6),
+          availableInferenceProviders: __S(131, __c4, 3),
           isLikedByUser: S.Boolean,
           lastModified: S.String,
           likes: S.Number,
@@ -988,45 +996,45 @@ function __c2(j: number): any {
           private: S.Boolean,
           repoType: S.String,
           gated: S.Unknown,
-          resourceGroup: S.optional(__S(15, __c1, 7)),
+          resourceGroup: S.optional(__S(132, __c4, 4)),
           numParameters: S.optional(S.Number),
           authorData: S.optional(S.Unknown),
-          widgetOutputUrls: S.optional(__S(6, __c0, 6)),
+          widgetOutputUrls: S.optional(__S(64, __c2, 0)),
           isPreRelease: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetPaperResponseLinkedModelsItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(133, __c4, 5));
+    case 7:
       return S.Array(S.String);
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           viewer: S.String,
           numRows: S.NullOr(S.Number),
-          libraries: __S(18, __c2, 2),
-          formats: __S(18, __c2, 2),
-          modalities: __S(18, __c2, 2),
+          libraries: __S(135, __c4, 7),
+          formats: __S(135, __c4, 7),
+          modalities: __S(135, __c4, 7),
         }),
       ).annotate({
         identifier: "GetPaperResponseLinkedDatasetsItemDatasetsServerInfo",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           author: S.String,
           id: S.String,
           isLikedByUser: S.Boolean,
           likes: S.Number,
-          datasetsServerInfo: S.optional(__S(19, __c2, 3)),
+          datasetsServerInfo: S.optional(__S(136, __c4, 8)),
           private: S.Boolean,
           repoType: S.String,
           downloads: S.Number,
           gated: S.Unknown,
           lastModified: S.String,
-          resourceGroup: S.optional(__S(15, __c1, 7)),
+          resourceGroup: S.optional(__S(132, __c4, 4)),
           isBenchmark: S.optional(S.Boolean),
           isTraces: S.optional(S.Boolean),
           isEnvironment: S.optional(S.Boolean),
@@ -1034,9 +1042,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseLinkedDatasetsItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(137, __c4, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1048,13 +1056,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseLinkedSpacesItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(139, __c4, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -1065,19 +1069,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseCommentsItemDataLatest",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(6, __c0, 6),
+          users: __S(64, __c2, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "GetPaperResponseCommentsItemDataReactionsItem",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(142, __c4, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           language: S.String,
@@ -1086,19 +1090,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseCommentsItemDataIdentifiedLanguage",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
           hiddenReason: S.optional(S.String),
-          latest: __S(24, __c3, 0),
+          latest: __S(141, __c4, 13),
           numEdits: S.Number,
-          editors: __S(6, __c0, 6),
-          editorAvatarUrls: __S(6, __c0, 6),
-          reactions: __S(26, __c3, 2),
-          identifiedLanguage: S.optional(__S(27, __c3, 3)),
+          editors: __S(64, __c2, 0),
+          editorAvatarUrls: __S(64, __c2, 0),
+          reactions: __S(143, __c4, 15),
+          identifiedLanguage: S.optional(__S(144, __c4, 16)),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -1106,30 +1110,30 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPaperResponseCommentsItemData",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(28, __c3, 4),
+          data: __S(145, __c4, 17),
         }),
       ).annotate({
         identifier: "GetPaperResponseCommentsItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(146, __c4, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          authors: __S(5, __c0, 5),
-          mediaUrls: S.optional(__S(6, __c0, 6)),
+          authors: __S(98, __c3, 2),
+          mediaUrls: S.optional(__S(64, __c2, 0)),
           publishedAt: S.String,
           submittedOnDailyAt: S.optional(S.String),
           title: S.String,
-          submittedOnDailyBy: S.optional(__S(3, __c0, 3)),
+          submittedOnDailyBy: S.optional(__S(96, __c3, 0)),
           summary: S.String,
           upvotes: S.Number,
           withdrawnAt: S.optional(S.String),
@@ -1137,22 +1141,22 @@ function __c3(j: number): any {
           projectPage: S.optional(S.String),
           githubRepo: S.optional(S.String),
           ai_summary: S.optional(S.String),
-          ai_keywords: S.optional(__S(6, __c0, 6)),
+          ai_keywords: S.optional(__S(64, __c2, 0)),
           ai_summary_model: S.optional(S.String),
           githubStars: S.optional(S.Number),
           submissionDeadline: S.optional(S.String),
-          linkedModels: __S(17, __c2, 1),
+          linkedModels: __S(134, __c4, 6),
           numTotalModels: S.Number,
-          linkedDatasets: __S(21, __c2, 5),
+          linkedDatasets: __S(138, __c4, 10),
           numTotalDatasets: S.Number,
-          linkedSpaces: __S(23, __c2, 7),
+          linkedSpaces: __S(140, __c4, 12),
           numTotalSpaces: S.Number,
-          comments: S.optional(__S(30, __c3, 6)),
+          comments: S.optional(__S(147, __c4, 19)),
         }),
       ).annotate({ identifier: "GetPaperResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1160,18 +1164,26 @@ function __c4(j: number): any {
           arxivId: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/papers/index", code: 200 })),
       ).annotate({ identifier: "IndexPaperRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "IndexPaperResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/papers", code: 200 })),
       ).annotate({ identifier: "ListPapersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1182,7 +1194,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPapersResponseBodyItemOrganization",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1190,38 +1202,42 @@ function __c4(j: number): any {
           upvotes: S.Number,
           publishedAt: S.String,
           thumbnailUrl: S.optional(S.String),
-          authors: __S(5, __c0, 5),
+          authors: __S(98, __c3, 2),
           summary: S.String,
           projectPage: S.optional(S.String),
           githubRepo: S.optional(S.String),
           ai_summary: S.optional(S.String),
-          organization: S.optional(__S(35, __c4, 3)),
+          organization: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "ListPapersResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
+      return S.suspend(() => __S(227, __c7, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPapersResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/papers/search", code: 200 })),
       ).annotate({ identifier: "SearchPapersRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SearchPapersResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
@@ -1232,7 +1248,6 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UpdatePaperLinksRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

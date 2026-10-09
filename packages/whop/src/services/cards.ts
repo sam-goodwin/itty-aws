@@ -485,7 +485,7 @@ export const createCard: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateCardRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateCardResponse>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateCardResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const getCard: API.OperationMethod<
   GetCardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetCardRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetCardResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCardRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetCardResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const getCardTransaction: API.OperationMethod<
   GetCardTransactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetCardTransactionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CardTransaction>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetCardTransactionRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CardTransaction>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const listCards: API.OperationMethod<
   ListCardsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListCardsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListCardsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListCardsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListCardsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const listCardTransactions: API.PaginatedOperationMethod<
   CardTransaction
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14, __c1, 6) as any as S.Schema<ListCardTransactionsRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<ListCardTransactionsResponse>,
+    input: __S(57, __c7, 1) as any as S.Schema<ListCardTransactionsRequest>,
+    output: __S(60, __c7, 4) as any as S.Schema<ListCardTransactionsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const updateCard: API.OperationMethod<
   UpdateCardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateCardRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateCardResponse>,
+  input: __S(66, __c8, 2) as any as S.Schema<UpdateCardRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateCardResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -594,7 +594,11 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/cards", code: 200 })),
       ).annotate({ identifier: "CreateCardRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           city: S.NullOr(S.String),
@@ -607,14 +611,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCardResponseBilling",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          frequency: S.String,
-        }),
-      ).annotate({ identifier: "CreateCardResponseLimit" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           card_number: S.String,
@@ -625,27 +622,42 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCardResponseSecrets",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          billing: S.NullOr(__S(1, __c0, 1)),
+          amount: S.Number,
+          frequency: S.String,
+        }),
+      ).annotate({ identifier: "CreateCardResponseLimit" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billing: S.NullOr(__S(8, __c1, 0)),
           canceled_at: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           expiration_month: S.NullOr(S.String),
           expiration_year: S.NullOr(S.String),
           id: S.String,
           last4: S.NullOr(S.String),
-          limit: S.NullOr(__S(2, __c0, 2)),
+          limit: S.NullOr(__S(16, __c2, 0)),
           name: S.NullOr(S.String),
           object: S.String,
-          secrets: S.optional(S.NullOr(__S(3, __c0, 3))),
+          secrets: S.optional(S.NullOr(__S(9, __c1, 1))),
           spent_last_month: S.NullOr(S.Number),
           status: S.NullOr(S.String),
           type: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CreateCardResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -653,7 +665,11 @@ function __c0(j: number): any {
           user_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/cards/{id}", code: 200 })),
       ).annotate({ identifier: "GetCardRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -662,7 +678,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCardTransactionRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.String,
@@ -686,7 +706,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CardTransaction" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -707,17 +727,17 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billing: S.NullOr(__S(1, __c0, 1)),
+          billing: S.NullOr(__S(8, __c1, 0)),
           canceled_at: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           expiration_month: S.NullOr(S.String),
           expiration_year: S.NullOr(S.String),
           id: S.String,
           last4: S.NullOr(S.String),
-          limit: S.NullOr(__S(9, __c1, 1)),
+          limit: S.NullOr(__S(49, __c6, 1)),
           name: S.NullOr(S.String),
           object: S.String,
-          secrets: S.optional(S.NullOr(__S(3, __c0, 3))),
+          secrets: S.optional(S.NullOr(__S(9, __c1, 1))),
           spent_last_month: S.NullOr(S.Number),
           status: S.NullOr(S.String),
           type: S.NullOr(S.String),
@@ -727,22 +747,26 @@ function __c1(j: number): any {
         identifier: "ListCardsResponseDataItem",
       });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(11, __c1, 3),
+          data: __S(51, __c6, 3),
         }),
       ).annotate({ identifier: "ListCardsResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          transaction_ids: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-          card_id: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-          cardholder_id: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          transaction_ids: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          card_id: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          cardholder_id: S.optional(__S(56, __c7, 0).pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
@@ -756,13 +780,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCardTransactionsRequest",
       });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(40, __c5, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -773,16 +793,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCardTransactionsResponsePageInfo",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(15, __c1, 7),
-          page_info: __S(16, __c2, 0),
+          data: __S(58, __c7, 2),
+          page_info: __S(59, __c7, 3),
         }),
       ).annotate({
         identifier: "ListCardTransactionsResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           city: S.String,
@@ -793,7 +817,7 @@ function __c2(j: number): any {
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateCardRequestBilling" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -804,14 +828,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateCardRequestCardholder",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String),
-          billing: S.optional(__S(18, __c2, 2)),
+          billing: S.optional(__S(64, __c8, 0)),
           canceled: S.optional(S.Boolean),
-          cardholder: S.optional(__S(19, __c2, 3)),
+          cardholder: S.optional(__S(65, __c8, 1)),
           frozen: S.optional(S.Boolean),
           name: S.optional(S.String),
           pin: S.optional(S.String),
@@ -824,7 +848,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateCardRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

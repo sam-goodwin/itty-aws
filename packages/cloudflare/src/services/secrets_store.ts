@@ -477,7 +477,7 @@ export const bulkDeleteStoreSecrets: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<BulkDeleteStoreSecretsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BulkDeleteStoreSecretsResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<BulkDeleteStoreSecretsResponse>,
   errors: [
     StoreNotFound,
     InvalidAccountId,
@@ -497,8 +497,8 @@ export const createStore: API.OperationMethod<
   CreateStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateStoreResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateStoreRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<CreateStoreResponse>,
   errors: [InvalidAccountId, MaximumStoresExceeded, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -520,8 +520,8 @@ export const createStoreSecret: API.PaginatedOperationMethod<
   StoresSecretsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<CreateStoreSecretRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<CreateStoreSecretResponse>,
+    input: __S(18, __c4, 2) as any as S.Schema<CreateStoreSecretRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<CreateStoreSecretResponse>,
     errors: [
       StoreNotFound,
       InvalidAccountId,
@@ -546,8 +546,8 @@ export const deleteStore: API.OperationMethod<
   DeleteStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteStoreRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteStoreResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteStoreRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<DeleteStoreResponse>,
   errors: [StoreNotFound, InvalidAccountId, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -566,8 +566,8 @@ export const deleteStoreSecret: API.OperationMethod<
   DeleteStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteStoreSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteStoreSecretResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteStoreSecretRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteStoreSecretResponse>,
   errors: [
     StoreNotFound,
     SecretNotFound,
@@ -596,8 +596,8 @@ export const duplicateStoreSecret: API.OperationMethod<
   DuplicateStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DuplicateStoreSecretRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DuplicateStoreSecretResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DuplicateStoreSecretRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<DuplicateStoreSecretResponse>,
   errors: [
     StoreNotFound,
     SecretNotFound,
@@ -621,8 +621,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetQuotaRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetQuotaResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(42, __c10, 2) as any as S.Schema<GetQuotaResponse>,
   errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -636,8 +636,8 @@ export const getStore: API.OperationMethod<
   GetStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetStoreResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetStoreRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<GetStoreResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -656,8 +656,8 @@ export const getStoreSecret: API.OperationMethod<
   GetStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetStoreSecretRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetStoreSecretResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetStoreSecretRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<GetStoreSecretResponse>,
   errors: [
     StoreNotFound,
     SecretNotFound,
@@ -680,8 +680,8 @@ export const listStores: API.PaginatedOperationMethod<
   StoresListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListStoresRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListStoresResponse>,
+    input: __S(56, __c14, 0) as any as S.Schema<ListStoresRequest>,
+    output: __S(59, __c14, 3) as any as S.Schema<ListStoresResponse>,
     errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -706,8 +706,8 @@ export const listStoreSecrets: API.PaginatedOperationMethod<
   StoresSecretsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(26, __c3, 2) as any as S.Schema<ListStoreSecretsRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListStoreSecretsResponse>,
+    input: __S(60, __c15, 0) as any as S.Schema<ListStoreSecretsRequest>,
+    output: __S(61, __c15, 1) as any as S.Schema<ListStoreSecretsResponse>,
     errors: [StoreNotFound, InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -735,8 +735,8 @@ export const patchStoreSecret: API.OperationMethod<
   PatchStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PatchStoreSecretRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<PatchStoreSecretResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<PatchStoreSecretRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<PatchStoreSecretResponse>,
   errors: [
     StoreNotFound,
     SecretNotFound,
@@ -769,13 +769,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BulkDeleteStoreSecretsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkDeleteStoreSecretsResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -790,7 +798,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStoreRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -800,27 +812,29 @@ function __c0(j: number): any {
           accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStoreResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          scopes: __S(4, __c0, 4),
+          scopes: __S(20, __c5, 0),
           value: S.String,
           comment: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StoresSecretsCreateRequestBodyItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           storeId: S.String.pipe(T.Label("store_id")),
-          body: __S(6, __c0, 6).pipe(T.HttpBody()),
+          body: __S(17, __c4, 1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -831,9 +845,24 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStoreSecretRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(25, __c6, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateStoreSecretResponse",
+      });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -845,23 +874,18 @@ function __c1(j: number): any {
           status: S.String,
           storeId: S.String.pipe(T.Body("store_id")),
           comment: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(__S(4, __c0, 4))),
+          scopes: S.optional(S.NullOr(__S(20, __c5, 0))),
         }),
       ).annotate({
         identifier: "StoresSecretsCreateResultItem",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateStoreSecretResponse",
-      });
-    case 3:
+      return S.Array(__S(24, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -877,11 +901,15 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteStoreRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteStoreResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -897,14 +925,18 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteStoreSecretRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           storeId: S.String.pipe(T.Label("store_id")),
           secretId: S.String.pipe(T.Label("secret_id")),
           name: S.String,
-          scopes: __S(4, __c0, 4),
+          scopes: __S(20, __c5, 0),
           comment: S.optional(S.String),
         })
           .pipe(
@@ -918,7 +950,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DuplicateStoreSecretRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -928,14 +960,14 @@ function __c1(j: number): any {
           status: S.String,
           storeId: S.String.pipe(T.Body("store_id")),
           comment: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(__S(4, __c0, 4))),
+          scopes: S.optional(S.NullOr(__S(20, __c5, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DuplicateStoreSecretResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -957,10 +989,14 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          secrets: __S(17, __c2, 1),
+          secrets: __S(41, __c10, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetQuotaResponse" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -975,7 +1011,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStoreRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -991,7 +1031,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStoreSecretRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1001,10 +1045,14 @@ function __c2(j: number): any {
           status: S.String,
           storeId: S.String.pipe(T.Body("store_id")),
           comment: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(__S(4, __c0, 4))),
+          scopes: S.optional(S.NullOr(__S(20, __c5, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStoreSecretResponse" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1022,7 +1070,7 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStoresRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1032,20 +1080,20 @@ function __c2(j: number): any {
           accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
         }),
       ).annotate({ identifier: "StoresListResultItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(24, __c3, 0).pipe(T.EnvelopePayload()),
+          result: __S(58, __c14, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStoresResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1054,7 +1102,7 @@ function __c3(j: number): any {
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          scopes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          scopes: S.optional(__S(20, __c5, 0).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1066,21 +1114,25 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStoreSecretsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
+          result: __S(25, __c6, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStoreSecretsResponse" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           storeId: S.String.pipe(T.Label("store_id")),
           secretId: S.String.pipe(T.Label("secret_id")),
           comment: S.optional(S.String),
-          scopes: S.optional(__S(4, __c0, 4)),
+          scopes: S.optional(__S(20, __c5, 0)),
           value: S.optional(S.String),
         })
           .pipe(
@@ -1094,7 +1146,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "PatchStoreSecretRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

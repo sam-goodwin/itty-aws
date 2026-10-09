@@ -971,8 +971,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const createProjectsLocationsWorkstationClusters: API.OperationMethod<
   CreateProjectsLocationsWorkstationClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsLocationsWorkstationClustersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateProjectsLocationsWorkstationClustersRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1012,11 +1012,11 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    1280,
+    __c40,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1036,11 +1036,11 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const deleteProjectsLocationsWorkstationClusters: API.OperationMethod<
   DeleteProjectsLocationsWorkstationClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1100,11 +1100,11 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1124,11 +1124,11 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1148,11 +1148,11 @@ export const generateAccessTokenProjectsLocationsWorkstationClustersWorkstationC
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    65,
+    __c2,
+    1,
   ) as any as S.Schema<GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GenerateAccessTokenResponse>,
+  output: __S(66, __c2, 2) as any as S.Schema<GenerateAccessTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1170,11 +1170,11 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  output: __S(135, __c4, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1192,11 +1192,11 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  output: __S(135, __c4, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1210,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1225,8 @@ export const getProjectsLocationsWorkstationClusters: API.OperationMethod<
   GetProjectsLocationsWorkstationClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsLocationsWorkstationClustersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<WorkstationCluster>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetProjectsLocationsWorkstationClustersRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<WorkstationCluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1244,11 +1244,11 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigs: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
+    256,
     __c8,
-    2,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<WorkstationConfig>,
+  output: __S(1335, __c41, 23) as any as S.Schema<WorkstationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1266,11 +1266,11 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigsWorkstatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    288,
+    __c9,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workstation>,
+  output: __S(1382, __c43, 6) as any as S.Schema<Workstation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1285,8 +1285,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,8 +1302,8 @@ export const listProjectsLocationsWorkstationClusters: API.PaginatedOperationMet
   GcpOpContext,
   ListWorkstationClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListWorkstationClustersResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<ListWorkstationClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1323,11 +1323,11 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigs: API.Pag
   ListWorkstationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListWorkstationConfigsResponse>,
+  output: __S(417, __c13, 1) as any as S.Schema<ListWorkstationConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1347,11 +1347,11 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   ListWorkstationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    77,
-    __c9,
-    5,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListWorkstationsResponse>,
+  output: __S(449, __c14, 1) as any as S.Schema<ListWorkstationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1371,11 +1371,11 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigs: A
   ListUsableWorkstationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    80,
-    __c10,
+    512,
+    __c16,
     0,
   ) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListUsableWorkstationConfigsResponse>,
+  output: __S(417, __c13, 1) as any as S.Schema<ListUsableWorkstationConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1395,11 +1395,11 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigsWor
   ListUsableWorkstationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    81,
-    __c10,
-    1,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListUsableWorkstationsResponse>,
+  output: __S(545, __c17, 1) as any as S.Schema<ListUsableWorkstationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1419,8 @@ export const patchProjectsLocationsWorkstationClusters: API.OperationMethod<
   PatchProjectsLocationsWorkstationClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<PatchProjectsLocationsWorkstationClustersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(576, __c18, 0) as any as S.Schema<PatchProjectsLocationsWorkstationClustersRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1440,11 +1440,11 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigs: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    84,
-    __c10,
-    4,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1464,11 +1464,11 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1488,11 +1488,11 @@ export const pushCredentialsProjectsLocationsWorkstationClustersWorkstationConfi
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
-    0,
+    674,
+    __c21,
+    2,
   ) as any as S.Schema<PushCredentialsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1512,11 +1512,11 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    90,
-    __c11,
-    2,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  output: __S(135, __c4, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,11 +1536,11 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    91,
-    __c11,
-    3,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  output: __S(135, __c4, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1560,11 +1560,11 @@ export const startProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    801,
+    __c25,
+    1,
   ) as any as S.Schema<StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1584,11 +1584,11 @@ export const stopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,11 +1608,11 @@ export const suspendProjectsLocationsWorkstationClustersWorkstationConfigsWorkst
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    96,
-    __c12,
+    896,
+    __c28,
     0,
   ) as any as S.Schema<SuspendProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1632,11 +1632,11 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(960, __c30, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1656,11 +1656,11 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    99,
-    __c12,
-    3,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(960, __c30, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1670,14 +1670,723 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          ttl: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GenerateAccessTokenRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          workstation: S.String.pipe(T.Label()),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+workstation}:generateAccessToken",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          accessToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenerateAccessTokenResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+resource}:getIamPolicy",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          title: S.optional(S.String),
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(128, __c4, 0)),
+          members: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 4:
+      return S.Array(__S(131, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(132, __c4, 4)),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 6:
+      return S.Array(__S(133, __c4, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(130, __c4, 2)),
+          auditConfigs: S.optional(__S(134, __c4, 6)),
+          etag: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+resource}:getIamPolicy",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsWorkstationClustersRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}/operations",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1152, __c36, 0)),
+          operations: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/workstationClusters",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsWorkstationClustersRequest",
+      });
+    case 1:
+      return S.Array(__S(1123, __c35, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workstationClusters: S.optional(__S(353, __c11, 1)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "ListWorkstationClustersResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/workstationConfigs",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1335, __c41, 23));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1152, __c36, 0)),
+          workstationConfigs: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "ListWorkstationConfigsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/workstations",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workstations: S.optional(__S(480, __c15, 0)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ListWorkstationsResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1382, __c43, 6));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/workstationConfigs:listUsable",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/workstations:listUsable",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workstations: S.optional(__S(480, __c15, 0)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "ListUsableWorkstationsResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkstationClustersRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1335, __c41, 23).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(1382, __c43, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expiresIn: S.optional(S.String),
+          email: S.optional(S.String),
+          scopes: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthToken" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationDefaultCredentials: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({ identifier: "PushCredentialsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workstation: S.String.pipe(T.Label()),
+          body: S.optional(__S(673, __c21, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+workstation}:pushCredentials",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "PushCredentialsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+resource}:setIamPolicy",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(135, __c4, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+resource}:setIamPolicy",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          boostConfig: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartWorkstationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:start",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:stop",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StopWorkstationRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:suspend",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SuspendProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+resource}:testIamPermissions",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+resource}:testIamPermissions",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1688,43 +2397,54 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workstationClusterId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/workstationClusters",
+            baseUrl: "https://workstations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsWorkstationClustersRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           http2Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GatewayConfig" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enablePrivateEndpoint: S.optional(S.Boolean),
           clusterHostname: S.optional(S.String),
           serviceAttachmentUri: S.optional(S.String),
-          allowedProjects: S.optional(__S(3, __c0, 3)),
+          allowedProjects: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({ identifier: "PrivateClusterConfig" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(6, __c0, 6)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Record(S.String, S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1736,65 +2456,107 @@ function __c1(j: number): any {
         S.Struct({
           network: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          gatewayConfig: S.optional(__S(2, __c0, 2)),
+          gatewayConfig: S.optional(__S(1120, __c35, 0)),
           workstationLaunchUrl: S.optional(S.String),
           workstationAuthorizationUrl: S.optional(S.String),
           uid: S.optional(S.String),
-          privateClusterConfig: S.optional(__S(4, __c0, 4)),
+          privateClusterConfig: S.optional(__S(1121, __c35, 1)),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           controlPlaneIp: S.optional(S.String),
           degraded: S.optional(S.Boolean),
           satisfiesPzs: S.optional(S.Boolean),
-          conditions: S.optional(__S(8, __c1, 0)),
+          conditions: S.optional(__S(1184, __c37, 0)),
           subnetwork: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          annotations: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(1185, __c37, 1)),
+          annotations: S.optional(__S(1185, __c37, 1)),
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(9, __c1, 1)),
+          labels: S.optional(__S(1185, __c37, 1)),
           createTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          domainConfig: S.optional(__S(10, __c1, 2)),
+          domainConfig: S.optional(__S(1122, __c35, 2)),
           satisfiesPzi: S.optional(S.Boolean),
           consoleBaseUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkstationCluster" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1218, __c38, 2));
+    case 1:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workstationClusterId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          message: S.optional(S.String),
+          details: S.optional(__S(1217, __c38, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(1216, __c38, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(1216, __c38, 0)),
+          error: S.optional(__S(1218, __c38, 2)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          workstationConfigId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1335, __c41, 23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1beta/{+parent}/workstationClusters",
+            uri: "v1beta/{+parent}/workstationConfigs",
             baseUrl: "https://workstations.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsWorkstationClustersRequest",
+        identifier: "CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(5, __c0, 5)),
-          error: S.optional(__S(7, __c0, 7)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kmsKey: S.optional(S.String),
           kmsKeyServiceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerEncryptionKey" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reclaimPolicy: S.optional(S.String),
@@ -1808,11 +2570,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GceRegionalPersistentDisk",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sizeGb: S.optional(S.Number),
@@ -1826,26 +2584,26 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GceHyperdiskBalancedHighAvailability",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          gcePd: S.optional(__S(15, __c1, 7)),
+          gcePd: S.optional(__S(1313, __c41, 1)),
           mountPath: S.optional(S.String),
-          gceHd: S.optional(__S(16, __c2, 0)),
+          gceHd: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({ identifier: "PersistentDirectory" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1315, __c41, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Accelerator" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(1317, __c41, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           enableSecureBoot: S.optional(S.Boolean),
@@ -1855,19 +2613,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GceShieldedInstanceConfig",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(3, __c0, 3)),
+          values: S.optional(__S(1152, __c36, 0)),
           consumeReservationType: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationAffinity" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          accelerators: S.optional(__S(20, __c2, 4)),
-          reservationAffinity: S.optional(__S(22, __c2, 6)),
+          accelerators: S.optional(__S(1318, __c41, 6)),
+          reservationAffinity: S.optional(__S(1320, __c41, 8)),
           id: S.optional(S.String),
           machineType: S.optional(S.String),
           bootDiskSizeGb: S.optional(S.Number),
@@ -1875,13 +2633,9 @@ function __c2(j: number): any {
           enableNestedVirtualization: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BoostConfig" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(1321, __c41, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           enableConfidentialCompute: S.optional(S.Boolean),
@@ -1889,67 +2643,63 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GceConfidentialInstanceConfig",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
           poolSize: S.optional(S.Number),
-          instanceMetadata: S.optional(__S(9, __c1, 1)),
-          serviceAccountScopes: S.optional(__S(3, __c0, 3)),
-          accelerators: S.optional(__S(20, __c2, 4)),
-          tags: S.optional(__S(3, __c0, 3)),
+          instanceMetadata: S.optional(__S(1185, __c37, 1)),
+          serviceAccountScopes: S.optional(__S(1152, __c36, 0)),
+          accelerators: S.optional(__S(1318, __c41, 6)),
+          tags: S.optional(__S(1152, __c36, 0)),
           bootDiskSizeGb: S.optional(S.Number),
           enableNestedVirtualization: S.optional(S.Boolean),
           startupScriptUri: S.optional(S.String),
-          shieldedInstanceConfig: S.optional(__S(21, __c2, 5)),
-          boostConfigs: S.optional(__S(24, __c3, 0)),
+          shieldedInstanceConfig: S.optional(__S(1319, __c41, 7)),
+          boostConfigs: S.optional(__S(1322, __c41, 10)),
           disableSsh: S.optional(S.Boolean),
           pooledInstances: S.optional(S.Number),
           disablePublicIpAddresses: S.optional(S.Boolean),
-          reservationAffinity: S.optional(__S(22, __c2, 6)),
-          vmTags: S.optional(__S(9, __c1, 1)),
-          confidentialInstanceConfig: S.optional(__S(25, __c3, 1)),
+          reservationAffinity: S.optional(__S(1320, __c41, 8)),
+          vmTags: S.optional(__S(1185, __c37, 1)),
+          confidentialInstanceConfig: S.optional(__S(1323, __c41, 11)),
           machineType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GceInstance" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          gceInstance: S.optional(__S(26, __c3, 2)),
+          gceInstance: S.optional(__S(1324, __c41, 12)),
         }),
       ).annotate({ identifier: "Host" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           first: S.optional(S.Number),
           last: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PortRange" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 15:
+      return S.Array(__S(1326, __c41, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           disableLocalhostReplacement: S.optional(S.Boolean),
           allowedUnauthenticatedCorsPreflightRequests: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HttpOptions" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          command: S.optional(__S(3, __c0, 3)),
-          env: S.optional(__S(9, __c1, 1)),
+          command: S.optional(__S(1152, __c36, 0)),
+          env: S.optional(__S(1185, __c37, 1)),
           workingDir: S.optional(S.String),
           runAsUser: S.optional(S.Number),
           image: S.optional(S.String),
-          args: S.optional(__S(3, __c0, 3)),
+          args: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({ identifier: "Container" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           sourceImage: S.optional(S.String),
@@ -1958,150 +2708,71 @@ function __c4(j: number): any {
           readOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GcePersistentDisk" });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          gcePd: S.optional(__S(32, __c4, 0)),
+          gcePd: S.optional(__S(1330, __c41, 18)),
           mountPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "EphemeralDirectory" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(1331, __c41, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReadinessCheck" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 22:
+      return S.Array(__S(1333, __c41, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           reconciling: S.optional(S.Boolean),
           disableTcpConnections: S.optional(S.Boolean),
           uid: S.optional(S.String),
           enableAuditAgent: S.optional(S.Boolean),
-          encryptionKey: S.optional(__S(14, __c1, 6)),
+          encryptionKey: S.optional(__S(1312, __c41, 0)),
           idleAction: S.optional(S.String),
           updateTime: S.optional(S.String),
           grantWorkstationAdminRoleOnCreate: S.optional(S.Boolean),
           runningTimeout: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          persistentDirectories: S.optional(__S(18, __c2, 2)),
+          persistentDirectories: S.optional(__S(1316, __c41, 4)),
           enablePushingCredentials: S.optional(S.Boolean),
           maxUsableWorkstations: S.optional(S.Number),
-          annotations: S.optional(__S(9, __c1, 1)),
+          annotations: S.optional(__S(1185, __c37, 1)),
           etag: S.optional(S.String),
-          host: S.optional(__S(27, __c3, 3)),
+          host: S.optional(__S(1325, __c41, 13)),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          allowedPorts: S.optional(__S(29, __c3, 5)),
-          httpOptions: S.optional(__S(30, __c3, 6)),
-          container: S.optional(__S(31, __c3, 7)),
+          allowedPorts: S.optional(__S(1327, __c41, 15)),
+          httpOptions: S.optional(__S(1328, __c41, 16)),
+          container: S.optional(__S(1329, __c41, 17)),
           name: S.optional(S.String),
-          replicaZones: S.optional(__S(3, __c0, 3)),
+          replicaZones: S.optional(__S(1152, __c36, 0)),
           degraded: S.optional(S.Boolean),
-          conditions: S.optional(__S(8, __c1, 0)),
-          labels: S.optional(__S(9, __c1, 1)),
-          ephemeralDirectories: S.optional(__S(34, __c4, 2)),
-          readinessChecks: S.optional(__S(36, __c4, 4)),
+          conditions: S.optional(__S(1184, __c37, 0)),
+          labels: S.optional(__S(1185, __c37, 1)),
+          ephemeralDirectories: S.optional(__S(1332, __c41, 20)),
+          readinessChecks: S.optional(__S(1334, __c41, 22)),
           idleTimeout: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WorkstationConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          workstationConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/workstationConfigs",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          running: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WorkstationBoostConfig" });
   }
 }
-function __c5(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GceInstanceHost" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gceInstanceHost: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "RuntimeHost" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sizeGb: S.optional(S.Number),
-          mountPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkstationPersistentDirectory",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          boostConfigs: S.optional(__S(40, __c5, 0)),
-          conditions: S.optional(__S(8, __c1, 0)),
-          satisfiesPzs: S.optional(S.Boolean),
-          runtimeHost: S.optional(__S(42, __c5, 2)),
-          degraded: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-          sourceWorkstation: S.optional(S.String),
-          startTime: S.optional(S.String),
-          persistentDirectories: S.optional(__S(44, __c5, 4)),
-          env: S.optional(__S(9, __c1, 1)),
-          satisfiesPzi: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          annotations: S.optional(__S(9, __c1, 1)),
-          etag: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(9, __c1, 1)),
-          state: S.optional(S.String),
-          host: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Workstation" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           workstationId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1382, __c43, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2113,7 +2784,77 @@ function __c5(j: number): any {
         identifier:
           "CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          running: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WorkstationBoostConfig" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GceInstanceHost" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          gceInstanceHost: S.optional(__S(1378, __c43, 2)),
+        }),
+      ).annotate({ identifier: "RuntimeHost" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sizeGb: S.optional(S.Number),
+          mountPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkstationPersistentDirectory",
+      });
+    case 5:
+      return S.Array(__S(1380, __c43, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          boostConfigs: S.optional(__S(1377, __c43, 1)),
+          conditions: S.optional(__S(1184, __c37, 0)),
+          satisfiesPzs: S.optional(S.Boolean),
+          runtimeHost: S.optional(__S(1379, __c43, 3)),
+          degraded: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+          sourceWorkstation: S.optional(S.String),
+          startTime: S.optional(S.String),
+          persistentDirectories: S.optional(__S(1381, __c43, 5)),
+          env: S.optional(__S(1185, __c37, 1)),
+          satisfiesPzi: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          annotations: S.optional(__S(1185, __c37, 1)),
+          etag: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(1185, __c37, 1)),
+          state: S.optional(S.String),
+          host: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Workstation" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2129,7 +2870,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2148,618 +2889,8 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkstationClustersRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
-          ttl: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GenerateAccessTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workstation: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+workstation}:generateAccessToken",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
-          accessToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenerateAccessTokenResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+resource}:getIamPolicy",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          title: S.optional(S.String),
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(55, __c6, 7)),
-          members: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bindings: S.optional(__S(57, __c7, 1)),
-          auditConfigs: S.optional(__S(61, __c7, 5)),
-          etag: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+resource}:getIamPolicy",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsWorkstationClustersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}/operations",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.Array(__S(13, __c1, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          operations: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/workstationClusters",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsWorkstationClustersRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workstationClusters: S.optional(__S(72, __c9, 0)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListWorkstationClustersResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/workstationConfigs",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 3:
-      return S.Array(__S(37, __c4, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          workstationConfigs: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "ListWorkstationConfigsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/workstations",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workstations: S.optional(__S(78, __c9, 6)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ListWorkstationsResponse" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/workstationConfigs:listUsable",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/workstations:listUsable",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workstations: S.optional(__S(78, __c9, 6)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListUsableWorkstationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkstationClustersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          expiresIn: S.optional(S.String),
-          email: S.optional(S.String),
-          scopes: S.optional(S.String),
-          accessToken: S.optional(S.String),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthToken" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationDefaultCredentials: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "PushCredentialsRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workstation: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+workstation}:pushCredentials",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "PushCredentialsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(62, __c7, 6)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+resource}:setIamPolicy",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+resource}:setIamPolicy",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          boostConfig: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StartWorkstationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:start",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StopWorkstationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:stop",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:suspend",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SuspendProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+resource}:testIamPermissions",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+resource}:testIamPermissions",
-            baseUrl: "https://workstations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

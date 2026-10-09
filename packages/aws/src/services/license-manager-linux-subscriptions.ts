@@ -256,8 +256,8 @@ export const deregisterSubscriptionProvider: API.OperationMethod<
   DeregisterSubscriptionProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeregisterSubscriptionProviderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeregisterSubscriptionProviderResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeregisterSubscriptionProviderRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<DeregisterSubscriptionProviderResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -284,8 +284,8 @@ export const getRegisteredSubscriptionProvider: API.OperationMethod<
   GetRegisteredSubscriptionProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetRegisteredSubscriptionProviderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetRegisteredSubscriptionProviderResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetRegisteredSubscriptionProviderRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetRegisteredSubscriptionProviderResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -311,8 +311,8 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetServiceSettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetServiceSettingsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetServiceSettingsRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<GetServiceSettingsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -335,8 +335,8 @@ export const listLinuxSubscriptionInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ListLinuxSubscriptionInstancesResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<ListLinuxSubscriptionInstancesResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -366,8 +366,8 @@ export const listLinuxSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListLinuxSubscriptionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListLinuxSubscriptionsResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListLinuxSubscriptionsRequest>,
+  output: __S(63, __c15, 3) as any as S.Schema<ListLinuxSubscriptionsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -395,8 +395,8 @@ export const listRegisteredSubscriptionProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegisteredSubscriptionProvider
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListRegisteredSubscriptionProvidersRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListRegisteredSubscriptionProvidersResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListRegisteredSubscriptionProvidersRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<ListRegisteredSubscriptionProvidersResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -424,8 +424,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -446,8 +446,8 @@ export const registerSubscriptionProvider: API.OperationMethod<
   RegisterSubscriptionProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<RegisterSubscriptionProviderRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<RegisterSubscriptionProviderResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<RegisterSubscriptionProviderRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<RegisterSubscriptionProviderResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -468,8 +468,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -486,8 +486,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -508,8 +508,8 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateServiceSettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateServiceSettingsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateServiceSettingsRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<UpdateServiceSettingsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -520,220 +520,6 @@ export const updateServiceSettings: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/DeregisterSubscriptionProvider" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeregisterSubscriptionProviderRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeregisterSubscriptionProviderResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/GetRegisteredSubscriptionProvider" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetRegisteredSubscriptionProviderRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SubscriptionProviderArn: S.optional(S.String),
-          SubscriptionProviderSource: S.optional(S.String),
-          SecretArn: S.optional(S.String),
-          SubscriptionProviderStatus: S.optional(S.String),
-          SubscriptionProviderStatusMessage: S.optional(S.String),
-          LastSuccessfulDataRetrievalTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetRegisteredSubscriptionProviderResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/GetServiceSettings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetServiceSettingsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SourceRegions: __S(5, __c0, 5), OrganizationIntegration: S.String }),
-      ).annotate({
-        identifier: "LinuxSubscriptionsDiscoverySettings",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          LinuxSubscriptionsDiscovery: S.optional(S.String),
-          LinuxSubscriptionsDiscoverySettings: S.optional(__S(6, __c0, 6)),
-          Status: S.optional(S.String),
-          StatusMessage: S.optional(__S(7, __c0, 7)),
-          HomeRegions: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GetServiceSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Values: S.optional(__S(5, __c0, 5)),
-          Operator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(10, __c1, 2)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptionInstances" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListLinuxSubscriptionInstancesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AmiId: S.optional(S.String),
-          InstanceID: S.optional(S.String),
-          InstanceType: S.optional(S.String),
-          AccountID: S.optional(S.String),
-          Status: S.optional(S.String),
-          Region: S.optional(S.String),
-          UsageOperation: S.optional(S.String),
-          ProductCode: S.optional(__S(5, __c0, 5)),
-          LastUpdatedTime: S.optional(S.String),
-          SubscriptionName: S.optional(S.String),
-          OsVersion: S.optional(S.String),
-          SubscriptionProviderCreateTime: S.optional(S.String),
-          SubscriptionProviderUpdateTime: S.optional(S.String),
-          DualSubscription: S.optional(S.String),
-          RegisteredWithSubscriptionProvider: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Instances: S.optional(__S(13, __c1, 5)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListLinuxSubscriptionInstancesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(10, __c1, 2)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListLinuxSubscriptionsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Type: S.optional(S.String),
-          InstanceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Subscriptions: S.optional(__S(17, __c2, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListLinuxSubscriptionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SubscriptionProviderSources: S.optional(__S(5, __c0, 5)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/subscription/ListRegisteredSubscriptionProviders" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListRegisteredSubscriptionProvidersRequest",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RegisteredSubscriptionProviders: S.optional(__S(20, __c2, 4)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListRegisteredSubscriptionProvidersResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -748,20 +534,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(7, __c0, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(40, __c10, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionProviderSource: S.String,
           SecretArn: S.String,
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(40, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/subscription/RegisterSubscriptionProvider" }),
@@ -785,11 +571,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RegisterSubscriptionProviderResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(7, __c0, 7),
+          tags: __S(40, __c10, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }),
@@ -801,15 +591,23 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(5, __c0, 5).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(48, __c12, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -821,11 +619,15 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LinuxSubscriptionsDiscovery: S.String,
-          LinuxSubscriptionsDiscoverySettings: __S(6, __c0, 6),
+          LinuxSubscriptionsDiscoverySettings: __S(44, __c11, 0),
           AllowUpdate: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -842,7 +644,256 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/DeregisterSubscriptionProvider" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeregisterSubscriptionProviderRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeregisterSubscriptionProviderResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/GetRegisteredSubscriptionProvider" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRegisteredSubscriptionProviderRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderArn: S.optional(S.String),
+          SubscriptionProviderSource: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+          SubscriptionProviderStatus: S.optional(S.String),
+          SubscriptionProviderStatusMessage: S.optional(S.String),
+          LastSuccessfulDataRetrievalTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRegisteredSubscriptionProviderResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/GetServiceSettings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetServiceSettingsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SourceRegions: __S(48, __c12, 0), OrganizationIntegration: S.String }),
+      ).annotate({
+        identifier: "LinuxSubscriptionsDiscoverySettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          LinuxSubscriptionsDiscovery: S.optional(S.String),
+          LinuxSubscriptionsDiscoverySettings: S.optional(__S(44, __c11, 0)),
+          Status: S.optional(S.String),
+          StatusMessage: S.optional(__S(40, __c10, 0)),
+          HomeRegions: S.optional(__S(48, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "GetServiceSettingsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(57, __c14, 1)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptionInstances" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionInstancesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AmiId: S.optional(S.String),
+          InstanceID: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          AccountID: S.optional(S.String),
+          Status: S.optional(S.String),
+          Region: S.optional(S.String),
+          UsageOperation: S.optional(S.String),
+          ProductCode: S.optional(__S(48, __c12, 0)),
+          LastUpdatedTime: S.optional(S.String),
+          SubscriptionName: S.optional(S.String),
+          OsVersion: S.optional(S.String),
+          SubscriptionProviderCreateTime: S.optional(S.String),
+          SubscriptionProviderUpdateTime: S.optional(S.String),
+          DualSubscription: S.optional(S.String),
+          RegisteredWithSubscriptionProvider: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+    case 2:
+      return S.Array(__S(53, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Instances: S.optional(__S(54, __c13, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionInstancesResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Values: S.optional(__S(48, __c12, 0)),
+          Operator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(57, __c14, 1)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          InstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Subscription" });
+    case 2:
+      return S.Array(__S(61, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Subscriptions: S.optional(__S(62, __c15, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderSources: S.optional(__S(48, __c12, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListRegisteredSubscriptionProviders" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRegisteredSubscriptionProvidersRequest",
+      });
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RegisteredSubscriptionProviders: S.optional(__S(65, __c16, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRegisteredSubscriptionProvidersResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

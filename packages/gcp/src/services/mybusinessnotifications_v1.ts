@@ -110,7 +110,7 @@ export const getNotificationSettingAccounts: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetNotificationSettingAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<NotificationSetting>,
+  output: __S(3, __c1, 1) as any as S.Schema<NotificationSetting>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -129,8 +129,8 @@ export const updateNotificationSettingAccounts: API.OperationMethod<
   UpdateNotificationSettingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<UpdateNotificationSettingAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<NotificationSetting>,
+  input: __S(4, __c2, 0) as any as S.Schema<UpdateNotificationSettingAccountsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<NotificationSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -153,22 +153,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetNotificationSettingAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           pubsubTopic: S.optional(S.String),
-          notificationTypes: S.optional(__S(1, __c0, 1)),
+          notificationTypes: S.optional(__S(2, __c1, 0)),
         }),
       ).annotate({ identifier: "NotificationSetting" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -181,7 +189,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

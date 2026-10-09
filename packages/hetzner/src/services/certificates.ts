@@ -402,8 +402,8 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCertificateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateCertificateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCertificateRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetCertificateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCertificateResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesResponseCertificatesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListCertificatesRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<ListCertificatesResponse>,
+    input: __S(33, __c4, 1) as any as S.Schema<ListCertificatesRequest>,
+    output: __S(38, __c4, 6) as any as S.Schema<ListCertificatesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -473,8 +473,8 @@ export const updateCertificate: API.OperationMethod<
   UpdateCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateCertificateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateCertificateResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateCertificateRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdateCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -484,74 +484,36 @@ export const updateCertificate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
           type: S.optional(S.String),
           certificate: S.optional(S.String),
           private_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          domain_names: S.optional(__S(1, __c0, 1)),
+          domain_names: S.optional(__S(9, __c1, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
       ).annotate({ identifier: "CreateCertificateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateCertificateResponseCertificateStatusError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          issuance: S.optional(S.String),
-          renewal: S.optional(S.String),
-          error: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateCertificateResponseCertificateStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateCertificateResponseCertificateUsedByItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: __S(1, __c0, 1),
+          domain_names: __S(9, __c1, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(__S(4, __c0, 4))),
-          used_by: __S(6, __c0, 6),
+          status: S.optional(S.NullOr(__S(11, __c1, 3))),
+          used_by: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "CreateCertificateResponseCertificate",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -560,7 +522,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateCertificateResponseActionError",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -569,75 +531,121 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6, __c0, 6),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(13, __c1, 5),
+          error: S.NullOr(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CreateCertificateResponseAction",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          certificate: __S(7, __c0, 7),
-          action: S.optional(S.NullOr(__S(9, __c1, 1))),
+          certificate: __S(1, __c0, 1),
+          action: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({
         identifier: "CreateCertificateResponse",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateCertificateResponseCertificateStatusError",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          issuance: S.optional(S.String),
+          renewal: S.optional(S.String),
+          error: S.optional(S.NullOr(__S(10, __c1, 2))),
+        }),
+      ).annotate({
+        identifier: "CreateCertificateResponseCertificateStatus",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCertificateResponseCertificateUsedByItem",
+      });
+    case 5:
+      return S.Array(__S(12, __c1, 4));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/certificates/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteCertificateRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/certificates/{id}", code: 200 })),
       ).annotate({ identifier: "GetCertificateRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: __S(1, __c0, 1),
+          domain_names: __S(9, __c1, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(__S(4, __c0, 4))),
-          used_by: __S(6, __c0, 6),
+          status: S.optional(S.NullOr(__S(11, __c1, 3))),
+          used_by: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "GetCertificateResponseCertificate",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          certificate: __S(14, __c1, 6),
+          certificate: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          type: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
@@ -647,22 +655,22 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: __S(1, __c0, 1),
+          domain_names: __S(9, __c1, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(__S(4, __c0, 4))),
-          used_by: __S(6, __c0, 6),
+          status: S.optional(S.NullOr(__S(11, __c1, 3))),
+          used_by: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseCertificatesItem",
       });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -679,7 +687,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(20, __c2, 4),
+          pagination: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseMeta",
@@ -687,52 +695,51 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          certificates: __S(19, __c2, 3),
-          meta: __S(21, __c2, 5),
+          certificates: __S(35, __c4, 3),
+          meta: __S(37, __c4, 5),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-        }).pipe(T.Http({ method: "PUT", uri: "/certificates/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateCertificateRequest" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          labels: S.optional(__S(8, __c1, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/certificates/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateCertificateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: __S(1, __c0, 1),
+          domain_names: __S(9, __c1, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(__S(4, __c0, 4))),
-          used_by: __S(6, __c0, 6),
+          status: S.optional(S.NullOr(__S(11, __c1, 3))),
+          used_by: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "UpdateCertificateResponseCertificate",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          certificate: __S(24, __c3, 0),
+          certificate: __S(41, __c5, 1),
         }),
       ).annotate({
         identifier: "UpdateCertificateResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

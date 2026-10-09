@@ -1137,8 +1137,8 @@ export const batchPutPropertyValues: API.OperationMethod<
   BatchPutPropertyValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchPutPropertyValuesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchPutPropertyValuesResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchPutPropertyValuesRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<BatchPutPropertyValuesResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1168,8 +1168,8 @@ export const cancelMetadataTransferJob: API.OperationMethod<
   CancelMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CancelMetadataTransferJobRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CancelMetadataTransferJobResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CancelMetadataTransferJobRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CancelMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1201,8 +1201,8 @@ export const createComponentType: API.OperationMethod<
   CreateComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateComponentTypeRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateComponentTypeResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateComponentTypeRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1234,8 +1234,8 @@ export const createEntity: API.OperationMethod<
   CreateEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateEntityRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateEntityResponse>,
+  input: __S(260, __c16, 4) as any as S.Schema<CreateEntityRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<CreateEntityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1268,8 +1268,8 @@ export const createMetadataTransferJob: API.OperationMethod<
   CreateMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateMetadataTransferJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateMetadataTransferJobResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateMetadataTransferJobRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<CreateMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1302,8 +1302,8 @@ export const createScene: API.OperationMethod<
   CreateSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateSceneRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateSceneResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateSceneRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CreateSceneResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1335,8 +1335,8 @@ export const createSyncJob: API.OperationMethod<
   CreateSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateSyncJobRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<CreateSyncJobResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateSyncJobRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<CreateSyncJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1368,8 +1368,8 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateWorkspaceResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateWorkspaceRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CreateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1400,8 +1400,8 @@ export const deleteComponentType: API.OperationMethod<
   DeleteComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteComponentTypeRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeleteComponentTypeResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteComponentTypeRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DeleteComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1431,8 +1431,8 @@ export const deleteEntity: API.OperationMethod<
   DeleteEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteEntityRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteEntityResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteEntityRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteEntityResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1462,8 +1462,8 @@ export const deleteScene: API.OperationMethod<
   DeleteSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteSceneRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteSceneResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteSceneRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1494,8 +1494,8 @@ export const deleteSyncJob: API.OperationMethod<
   DeleteSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteSyncJobRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteSyncJobResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteSyncJobRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteSyncJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1526,8 +1526,8 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1563,8 +1563,8 @@ export const executeQuery: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ExecuteQueryRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ExecuteQueryResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ExecuteQueryRequest>,
+  output: __S(502, __c31, 6) as any as S.Schema<ExecuteQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1600,8 +1600,8 @@ export const getComponentType: API.OperationMethod<
   GetComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetComponentTypeRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetComponentTypeResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetComponentTypeRequest>,
+  output: __S(520, __c32, 8) as any as S.Schema<GetComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1631,8 +1631,8 @@ export const getEntity: API.OperationMethod<
   GetEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetEntityRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetEntityResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetEntityRequest>,
+  output: __S(566, __c35, 6) as any as S.Schema<GetEntityResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1662,8 +1662,8 @@ export const getMetadataTransferJob: API.OperationMethod<
   GetMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetMetadataTransferJobRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetMetadataTransferJobResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetMetadataTransferJobRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<GetMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1692,8 +1692,8 @@ export const getPricingPlan: API.OperationMethod<
   GetPricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetPricingPlanRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetPricingPlanResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetPricingPlanRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<GetPricingPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1728,8 +1728,8 @@ export const getPropertyValue: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetPropertyValueRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetPropertyValueResponse>,
+  input: __S(643, __c40, 3) as any as S.Schema<GetPropertyValueRequest>,
+  output: __S(649, __c40, 9) as any as S.Schema<GetPropertyValueResponse>,
   errors: [
     AccessDeniedException,
     ConnectorFailureException,
@@ -1774,8 +1774,8 @@ export const getPropertyValueHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetPropertyValueHistoryRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetPropertyValueHistoryResponse>,
+  input: __S(673, __c42, 1) as any as S.Schema<GetPropertyValueHistoryRequest>,
+  output: __S(676, __c42, 4) as any as S.Schema<GetPropertyValueHistoryResponse>,
   errors: [
     AccessDeniedException,
     ConnectorFailureException,
@@ -1812,8 +1812,8 @@ export const getScene: API.OperationMethod<
   GetSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetSceneRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetSceneResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetSceneRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1844,8 +1844,8 @@ export const getSyncJob: API.OperationMethod<
   GetSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetSyncJobRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetSyncJobResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetSyncJobRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetSyncJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1876,8 +1876,8 @@ export const getWorkspace: API.OperationMethod<
   GetWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetWorkspaceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1908,8 +1908,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListComponentsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListComponentsResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListComponentsRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<ListComponentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1944,8 +1944,8 @@ export const listComponentTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListComponentTypesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListComponentTypesResponse>,
+  input: __S(754, __c47, 2) as any as S.Schema<ListComponentTypesRequest>,
+  output: __S(757, __c47, 5) as any as S.Schema<ListComponentTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1979,8 +1979,8 @@ export const listEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListEntitiesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ListEntitiesResponse>,
+  input: __S(770, __c48, 2) as any as S.Schema<ListEntitiesRequest>,
+  output: __S(773, __c48, 5) as any as S.Schema<ListEntitiesResponse>,
   errors: [
     InternalServerException,
     ServiceQuotaExceededException,
@@ -2014,8 +2014,8 @@ export const listMetadataTransferJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListMetadataTransferJobsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListMetadataTransferJobsResponse>,
+  input: __S(786, __c49, 2) as any as S.Schema<ListMetadataTransferJobsRequest>,
+  output: __S(789, __c49, 5) as any as S.Schema<ListMetadataTransferJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2050,8 +2050,8 @@ export const listProperties: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListPropertiesRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListPropertiesResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListPropertiesRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<ListPropertiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2086,8 +2086,8 @@ export const listScenes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListScenesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListScenesResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListScenesRequest>,
+  output: __S(819, __c51, 3) as any as S.Schema<ListScenesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2122,8 +2122,8 @@ export const listSyncJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListSyncJobsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListSyncJobsResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListSyncJobsRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<ListSyncJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2159,8 +2159,8 @@ export const listSyncResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListSyncResourcesRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListSyncResourcesResponse>,
+  input: __S(850, __c53, 2) as any as S.Schema<ListSyncResourcesRequest>,
+  output: __S(853, __c53, 5) as any as S.Schema<ListSyncResourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2192,8 +2192,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2217,8 +2217,8 @@ export const listWorkspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListWorkspacesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListWorkspacesResponse>,
   errors: [
     InternalServerException,
     ServiceQuotaExceededException,
@@ -2250,8 +2250,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<TagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2269,8 +2269,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2295,8 +2295,8 @@ export const updateComponentType: API.OperationMethod<
   UpdateComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<UpdateComponentTypeRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<UpdateComponentTypeResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdateComponentTypeRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<UpdateComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2329,8 +2329,8 @@ export const updateEntity: API.OperationMethod<
   UpdateEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateEntityRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<UpdateEntityResponse>,
+  input: __S(949, __c59, 5) as any as S.Schema<UpdateEntityRequest>,
+  output: __S(950, __c59, 6) as any as S.Schema<UpdateEntityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2361,8 +2361,8 @@ export const updatePricingPlan: API.OperationMethod<
   UpdatePricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdatePricingPlanRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<UpdatePricingPlanResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<UpdatePricingPlanRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<UpdatePricingPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2391,8 +2391,8 @@ export const updateScene: API.OperationMethod<
   UpdateSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateSceneRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<UpdateSceneResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<UpdateSceneRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2423,8 +2423,8 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2443,83 +2443,19 @@ export const updateWorkspace: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          componentName: S.optional(S.String),
-          componentPath: S.optional(S.String),
-          externalIdProperty: S.optional(__S(0, __c0, 0)),
-          entityId: S.optional(S.String),
-          propertyName: S.String,
-        }),
-      ).annotate({ identifier: "EntityPropertyReference" });
-    case 2:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5, __c0, 5)).annotate({
-          identifier: "DataValue",
-        }),
-      );
-    case 3:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5, __c0, 5))
-          .annotate({ identifier: "DataValue" })
-          .pipe(S.optional),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetEntityId: S.optional(S.String),
-          targetComponentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelationshipValue" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          booleanValue: S.optional(S.Boolean),
-          doubleValue: S.optional(S.Number),
-          integerValue: S.optional(S.Number),
-          longValue: S.optional(S.Number),
-          stringValue: S.optional(S.String),
-          listValue: S.optional(
-            S.suspend(() => __S(2, __c0, 2)).annotate({ identifier: "DataValueList" }),
-          ),
-          mapValue: S.optional(
-            S.suspend(() => __S(3, __c0, 3)).annotate({ identifier: "DataValueMap" }),
-          ),
-          relationshipValue: S.optional(__S(4, __c0, 4)),
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataValue" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          value: __S(5, __c0, 5),
-          time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PropertyValue" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entityPropertyReference: __S(1, __c0, 1),
-          propertyValues: S.optional(__S(7, __c0, 7)),
+          entityPropertyReference: __S(48, __c3, 0),
+          propertyValues: S.optional(__S(65, __c4, 1)),
         }),
       ).annotate({ identifier: "PropertyValueEntry" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          entries: __S(9, __c1, 1),
+          entries: __S(1, __c0, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entity-properties" }),
@@ -2535,23 +2471,99 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ errorCode: S.String, errorMessage: S.String, entry: __S(8, __c1, 0) }),
+        S.Struct({ errorCode: S.String, errorMessage: S.String, entry: __S(0, __c0, 0) }),
       ).annotate({ identifier: "BatchPutPropertyError" });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.suspend(() => S.Struct({ errors: __S(12, __c1, 4) })).annotate({
+      return S.suspend(() => S.Struct({ errors: __S(4, __c0, 4) })).annotate({
         identifier: "BatchPutPropertyErrorEntry",
       });
     case 6:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.suspend(() => S.Struct({ errorEntries: __S(14, __c1, 6) })).annotate({
+      return S.suspend(() => S.Struct({ errorEntries: __S(6, __c0, 6) })).annotate({
         identifier: "BatchPutPropertyValuesResponse",
       });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(35, __c2, 3)).annotate({
+          identifier: "DataValue",
+        }),
+      );
+    case 1:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(35, __c2, 3))
+          .annotate({ identifier: "DataValue" })
+          .pipe(S.optional),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetEntityId: S.optional(S.String),
+          targetComponentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelationshipValue" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          booleanValue: S.optional(S.Boolean),
+          doubleValue: S.optional(S.Number),
+          integerValue: S.optional(S.Number),
+          longValue: S.optional(S.Number),
+          stringValue: S.optional(S.String),
+          listValue: S.optional(
+            S.suspend(() => __S(32, __c2, 0)).annotate({ identifier: "DataValueList" }),
+          ),
+          mapValue: S.optional(
+            S.suspend(() => __S(33, __c2, 1)).annotate({ identifier: "DataValueMap" }),
+          ),
+          relationshipValue: S.optional(__S(34, __c2, 2)),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataValue" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.optional(S.String),
+          componentPath: S.optional(S.String),
+          externalIdProperty: S.optional(__S(16, __c1, 0)),
+          entityId: S.optional(S.String),
+          propertyName: S.String,
+        }),
+      ).annotate({ identifier: "EntityPropertyReference" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          value: __S(35, __c2, 3),
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PropertyValue" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2575,19 +2587,43 @@ function __c2(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({
+          metadataTransferJobId: S.String,
+          arn: S.String,
+          updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: __S(112, __c7, 0),
+          progress: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "CancelMetadataTransferJobResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorDetails" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          error: S.optional(__S(17, __c2, 1)),
+          error: S.optional(__S(96, __c6, 0)),
           queuedPosition: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "MetadataTransferJobStatus",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           totalCount: S.optional(S.Number),
@@ -2598,114 +2634,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MetadataTransferJobProgress",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metadataTransferJobId: S.String,
-          arn: S.String,
-          updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(18, __c2, 2),
-          progress: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "CancelMetadataTransferJobResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetComponentTypeId: S.optional(S.String),
-          relationshipType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Relationship" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          nestedType: S.optional(
-            S.suspend((): S.Schema<DataType> => __S(22, __c2, 6)).annotate({
-              identifier: "DataType",
-            }),
-          ),
-          allowedValues: S.optional(
-            S.suspend(() => __S(2, __c0, 2)).annotate({ identifier: "DataValueList" }),
-          ),
-          unitOfMeasure: S.optional(S.String),
-          relationship: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "DataType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(__S(22, __c2, 6)),
-          isRequiredInEntity: S.optional(S.Boolean),
-          isExternalId: S.optional(S.Boolean),
-          isStoredExternally: S.optional(S.Boolean),
-          isTimeSeries: S.optional(S.Boolean),
-          defaultValue: S.optional(__S(5, __c0, 5)),
-          configuration: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyDefinitionRequest",
-      });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(23, __c2, 7).pipe(S.optional));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "LambdaFunction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ lambda: S.optional(__S(26, __c3, 2)), isNative: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "DataConnector" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requiredProperties: S.optional(__S(25, __c3, 1)),
-          scope: S.optional(S.String),
-          implementedBy: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "FunctionRequest" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(28, __c3, 4).pipe(S.optional));
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ groupType: S.optional(S.String), propertyNames: S.optional(__S(25, __c3, 1)) }),
-      ).annotate({ identifier: "PropertyGroupRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(31, __c3, 7).pipe(S.optional));
-    case 1:
-      return S.suspend(() => S.Struct({ componentTypeId: S.optional(S.String) })).annotate({
-        identifier: "CompositeComponentTypeRequest",
-      });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(33, __c4, 1).pipe(S.optional));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String.pipe(T.HttpLabel("componentTypeId")),
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(__S(24, __c3, 0)),
-          extendsFrom: S.optional(__S(25, __c3, 1)),
-          functions: S.optional(__S(29, __c3, 5)),
-          tags: S.optional(__S(30, __c3, 6)),
-          propertyGroups: S.optional(__S(32, __c4, 0)),
+          propertyDefinitions: S.optional(__S(240, __c15, 0)),
+          extendsFrom: S.optional(__S(176, __c11, 0)),
+          functions: S.optional(__S(242, __c15, 2)),
+          tags: S.optional(__S(160, __c10, 0)),
+          propertyGroups: S.optional(__S(244, __c15, 4)),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(__S(34, __c4, 2)),
+          compositeComponentTypes: S.optional(__S(246, __c15, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -2722,7 +2668,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateComponentTypeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2732,66 +2678,145 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateComponentTypeResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(__S(23, __c2, 7)),
-          value: S.optional(__S(5, __c0, 5)),
-          updateType: S.optional(S.String),
+          targetComponentTypeId: S.optional(S.String),
+          relationshipType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PropertyRequest" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(37, __c4, 5).pipe(S.optional));
-    case 7:
+      ).annotate({ identifier: "Relationship" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupType: S.optional(S.String),
-          propertyNames: S.optional(__S(25, __c3, 1)),
-          updateType: S.optional(S.String),
+          type: S.String,
+          nestedType: S.optional(
+            S.suspend((): S.Schema<DataType> => __S(193, __c12, 1)).annotate({
+              identifier: "DataType",
+            }),
+          ),
+          allowedValues: S.optional(
+            S.suspend(() => __S(32, __c2, 0)).annotate({ identifier: "DataValueList" }),
+          ),
+          unitOfMeasure: S.optional(S.String),
+          relationship: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DataType" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(__S(193, __c12, 1)),
+          isRequiredInEntity: S.optional(S.Boolean),
+          isExternalId: S.optional(S.Boolean),
+          isStoredExternally: S.optional(S.Boolean),
+          isTimeSeries: S.optional(S.Boolean),
+          defaultValue: S.optional(__S(35, __c2, 3)),
+          configuration: S.optional(__S(16, __c1, 0)),
+          displayName: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ComponentPropertyGroupRequest",
+        identifier: "PropertyDefinitionRequest",
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(39, __c4, 7).pipe(S.optional));
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "LambdaFunction",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ lambda: S.optional(__S(224, __c14, 0)), isNative: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "DataConnector" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(208, __c13, 0).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requiredProperties: S.optional(__S(176, __c11, 0)),
+          scope: S.optional(S.String),
+          implementedBy: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({ identifier: "FunctionRequest" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(241, __c15, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          groupType: S.optional(S.String),
+          propertyNames: S.optional(__S(176, __c11, 0)),
+        }),
+      ).annotate({ identifier: "PropertyGroupRequest" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(243, __c15, 3).pipe(S.optional));
+    case 5:
+      return S.suspend(() => S.Struct({ componentTypeId: S.optional(S.String) })).annotate({
+        identifier: "CompositeComponentTypeRequest",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ __S(245, __c15, 5).pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          properties: S.optional(__S(38, __c4, 6)),
-          propertyGroups: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(273, __c17, 1)),
+          propertyGroups: S.optional(__S(275, __c17, 3)),
         }),
       ).annotate({ identifier: "ComponentRequest" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(256, __c16, 0).pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(41, __c5, 1).pipe(S.optional));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          properties: S.optional(__S(38, __c4, 6)),
-          propertyGroups: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(273, __c17, 1)),
+          propertyGroups: S.optional(__S(275, __c17, 3)),
         }),
       ).annotate({
         identifier: "CompositeComponentRequest",
       });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(258, __c16, 2).pipe(S.optional));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(43, __c5, 3).pipe(S.optional));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           entityId: S.optional(S.String),
           entityName: S.String,
           description: S.optional(S.String),
-          components: S.optional(__S(42, __c5, 2)),
-          compositeComponents: S.optional(__S(44, __c5, 4)),
+          components: S.optional(__S(257, __c16, 1)),
+          compositeComponents: S.optional(__S(259, __c16, 3)),
           parentEntityId: S.optional(S.String),
-          tags: S.optional(__S(30, __c3, 6)),
+          tags: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entities" }),
@@ -2803,7 +2828,7 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateEntityRequest" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           entityId: S.String,
@@ -2812,105 +2837,43 @@ function __c5(j: number): any {
           state: S.String,
         }),
       ).annotate({ identifier: "CreateEntityResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({ location: S.String })).annotate({
-        identifier: "S3SourceConfiguration",
-      });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assetModelId: S.optional(S.String),
-          assetModelExternalId: S.optional(S.String),
-          includeOffspring: S.optional(S.Boolean),
-          includeAssets: S.optional(S.Boolean),
+          definition: S.optional(__S(208, __c13, 0)),
+          value: S.optional(__S(35, __c2, 3)),
+          updateType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "FilterByAssetModel" });
+      ).annotate({ identifier: "PropertyRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String),
-          assetExternalId: S.optional(S.String),
-          includeOffspring: S.optional(S.Boolean),
-          includeAssetModel: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FilterByAsset" });
+      return S.Record(S.String, /*@__PURE__*/ __S(272, __c17, 0).pipe(S.optional));
     case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ filterByAssetModel: __S(48, __c6, 0) }),
-        /*@__PURE__*/ S.Struct({ filterByAsset: __S(49, __c6, 1) }),
-      ]);
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ filters: S.optional(__S(51, __c6, 3)) })).annotate({
-        identifier: "IotSiteWiseSourceConfiguration",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ componentTypeId: S.String })).annotate({
-        identifier: "FilterByComponentType",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ entityId: S.String })).annotate({
-        identifier: "FilterByEntity",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ filterByComponentType: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ filterByEntity: __S(54, __c6, 6) }),
-      ]);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          workspace: S.String,
-          filters: S.optional(__S(56, __c7, 0)),
+          groupType: S.optional(S.String),
+          propertyNames: S.optional(__S(176, __c11, 0)),
+          updateType: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "IotTwinMakerSourceConfiguration",
+        identifier: "ComponentPropertyGroupRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          s3Configuration: S.optional(__S(47, __c5, 7)),
-          iotSiteWiseConfiguration: S.optional(__S(52, __c6, 4)),
-          iotTwinMakerConfiguration: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "SourceConfiguration" });
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ location: S.String })).annotate({
-        identifier: "S3DestinationConfiguration",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ workspace: S.String })).annotate({
-        identifier: "IotTwinMakerDestinationConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          s3Configuration: S.optional(__S(60, __c7, 4)),
-          iotTwinMakerConfiguration: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "DestinationConfiguration" });
-    case 7:
+      return S.Record(S.String, /*@__PURE__*/ __S(274, __c17, 2).pipe(S.optional));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metadataTransferJobId: S.optional(S.String),
           description: S.optional(S.String),
-          sources: __S(59, __c7, 3),
-          destination: __S(62, __c7, 6),
+          sources: __S(316, __c19, 12),
+          destination: __S(319, __c19, 15),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/metadata-transfer-jobs" }),
@@ -2924,31 +2887,116 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateMetadataTransferJobRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metadataTransferJobId: S.String,
           arn: S.String,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(18, __c2, 2),
+          status: __S(112, __c7, 0),
         }),
       ).annotate({
         identifier: "CreateMetadataTransferJobResponse",
       });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ location: S.String })).annotate({
+        identifier: "S3SourceConfiguration",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.optional(S.String),
+          assetModelExternalId: S.optional(S.String),
+          includeOffspring: S.optional(S.Boolean),
+          includeAssets: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FilterByAssetModel" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+          assetExternalId: S.optional(S.String),
+          includeOffspring: S.optional(S.Boolean),
+          includeAssetModel: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FilterByAsset" });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ filterByAssetModel: __S(305, __c19, 1) }),
+        /*@__PURE__*/ S.Struct({ filterByAsset: __S(306, __c19, 2) }),
+      ]);
+    case 4:
+      return S.Array(__S(307, __c19, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ filters: S.optional(__S(308, __c19, 4)) })).annotate({
+        identifier: "IotSiteWiseSourceConfiguration",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ componentTypeId: S.String })).annotate({
+        identifier: "FilterByComponentType",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ entityId: S.String })).annotate({
+        identifier: "FilterByEntity",
+      });
+    case 8:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ filterByComponentType: __S(310, __c19, 6) }),
+        /*@__PURE__*/ S.Struct({ filterByEntity: __S(311, __c19, 7) }),
+      ]);
+    case 9:
+      return S.Array(__S(312, __c19, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ workspace: S.String, filters: S.optional(__S(313, __c19, 9)) }),
+      ).annotate({
+        identifier: "IotTwinMakerSourceConfiguration",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          s3Configuration: S.optional(__S(304, __c19, 0)),
+          iotSiteWiseConfiguration: S.optional(__S(309, __c19, 5)),
+          iotTwinMakerConfiguration: S.optional(__S(314, __c19, 10)),
+        }),
+      ).annotate({ identifier: "SourceConfiguration" });
+    case 12:
+      return S.Array(__S(315, __c19, 11));
+    case 13:
+      return S.suspend(() => S.Struct({ location: S.String })).annotate({
+        identifier: "S3DestinationConfiguration",
+      });
+    case 14:
+      return S.suspend(() => S.Struct({ workspace: S.String })).annotate({
+        identifier: "IotTwinMakerDestinationConfiguration",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          s3Configuration: S.optional(__S(317, __c19, 13)),
+          iotTwinMakerConfiguration: S.optional(__S(318, __c19, 14)),
+        }),
+      ).annotate({ identifier: "DestinationConfiguration" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           sceneId: S.String,
           contentLocation: S.String,
           description: S.optional(S.String),
-          capabilities: S.optional(__S(25, __c3, 1)),
-          tags: S.optional(__S(30, __c3, 6)),
-          sceneMetadata: S.optional(__S(0, __c0, 0)),
+          capabilities: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
+          sceneMetadata: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/scenes" }),
@@ -2960,20 +3008,28 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSceneRequest" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CreateSceneResponse" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           syncSource: S.String.pipe(T.HttpLabel("syncSource")),
           syncRole: S.String,
-          tags: S.optional(__S(30, __c3, 6)),
+          tags: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/sync-jobs/{syncSource}" }),
@@ -2985,7 +3041,7 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSyncJobRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2993,14 +3049,18 @@ function __c8(j: number): any {
           state: S.String,
         }),
       ).annotate({ identifier: "CreateSyncJobResponse" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           description: S.optional(S.String),
           s3Location: S.optional(S.String),
           role: S.optional(S.String),
-          tags: S.optional(__S(30, __c3, 6)),
+          tags: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}" }),
@@ -3012,7 +3072,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateWorkspaceRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3033,13 +3097,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteComponentTypeRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ state: S.String })).annotate({
         identifier: "DeleteComponentTypeResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3058,11 +3122,19 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEntityRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ state: S.String })).annotate({
         identifier: "DeleteEntityResponse",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3078,11 +3150,19 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSceneRequest" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSceneResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3098,7 +3178,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSyncJobRequest" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
           T.all(
@@ -3111,11 +3195,15 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
         identifier: "DeleteWorkspaceResponse",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
@@ -3133,33 +3221,33 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ExecuteQueryRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "ColumnDescription" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
-      return S.Array(S.Any);
+      return S.Array(__S(497, __c31, 1));
     case 3:
-      return S.suspend(() => S.Struct({ rowData: S.optional(__S(82, __c10, 2)) })).annotate({
+      return S.Array(S.Any);
+    case 4:
+      return S.suspend(() => S.Struct({ rowData: S.optional(__S(499, __c31, 3)) })).annotate({
         identifier: "Row",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
     case 5:
+      return S.Array(__S(500, __c31, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          columnDescriptions: S.optional(__S(81, __c10, 1)),
-          rows: S.optional(__S(84, __c10, 4)),
+          columnDescriptions: S.optional(__S(498, __c31, 2)),
+          rows: S.optional(__S(501, __c31, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecuteQueryResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3178,51 +3266,29 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetComponentTypeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: __S(22, __c2, 6),
-          isTimeSeries: S.Boolean,
-          isRequiredInEntity: S.Boolean,
-          isExternalId: S.Boolean,
-          isStoredExternally: S.Boolean,
-          isImported: S.Boolean,
-          isFinal: S.Boolean,
-          isInherited: S.Boolean,
-          defaultValue: S.optional(__S(5, __c0, 5)),
-          configuration: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyDefinitionResponse",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(87, __c10, 7).pipe(S.optional));
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(544, __c34, 0).pipe(S.optional));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requiredProperties: S.optional(__S(25, __c3, 1)),
+          requiredProperties: S.optional(__S(176, __c11, 0)),
           scope: S.optional(S.String),
-          implementedBy: S.optional(__S(27, __c3, 3)),
+          implementedBy: S.optional(__S(225, __c14, 1)),
           isInherited: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FunctionResponse" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(89, __c11, 1).pipe(S.optional));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ state: S.optional(S.String), error: S.optional(__S(17, __c2, 1)) }),
-      ).annotate({ identifier: "Status" });
+      return S.Record(S.String, /*@__PURE__*/ __S(514, __c32, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
-        S.Struct({ groupType: S.String, propertyNames: __S(25, __c3, 1), isInherited: S.Boolean }),
+        S.Struct({
+          groupType: S.String,
+          propertyNames: __S(176, __c11, 0),
+          isInherited: S.Boolean,
+        }),
       ).annotate({ identifier: "PropertyGroupResponse" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(92, __c11, 4).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(516, __c32, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({ componentTypeId: S.optional(S.String), isInherited: S.optional(S.Boolean) }),
@@ -3230,34 +3296,64 @@ function __c11(j: number): any {
         identifier: "CompositeComponentTypeResponse",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(94, __c11, 6).pipe(S.optional));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(518, __c32, 6).pipe(S.optional));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String,
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(__S(88, __c11, 0)),
-          extendsFrom: S.optional(__S(25, __c3, 1)),
-          functions: S.optional(__S(90, __c11, 2)),
+          propertyDefinitions: S.optional(__S(513, __c32, 1)),
+          extendsFrom: S.optional(__S(176, __c11, 0)),
+          functions: S.optional(__S(515, __c32, 3)),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           arn: S.String,
           isAbstract: S.optional(S.Boolean),
           isSchemaInitialized: S.optional(S.Boolean),
-          status: S.optional(__S(91, __c11, 3)),
-          propertyGroups: S.optional(__S(93, __c11, 5)),
+          status: S.optional(__S(528, __c33, 0)),
+          propertyGroups: S.optional(__S(517, __c32, 5)),
           syncSource: S.optional(S.String),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(__S(95, __c11, 7)),
+          compositeComponentTypes: S.optional(__S(519, __c32, 7)),
         }),
       ).annotate({ identifier: "GetComponentTypeResponse" });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ state: S.optional(S.String), error: S.optional(__S(96, __c6, 0)) }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: __S(193, __c12, 1),
+          isTimeSeries: S.Boolean,
+          isRequiredInEntity: S.Boolean,
+          isExternalId: S.Boolean,
+          isStoredExternally: S.Boolean,
+          isImported: S.Boolean,
+          isFinal: S.Boolean,
+          isInherited: S.Boolean,
+          defaultValue: S.optional(__S(35, __c2, 3)),
+          configuration: S.optional(__S(16, __c1, 0)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PropertyDefinitionResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3273,71 +3369,46 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEntityRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(__S(87, __c10, 7)),
-          value: S.optional(__S(5, __c0, 5)),
+          definition: S.optional(__S(544, __c34, 0)),
+          value: S.optional(__S(35, __c2, 3)),
           areAllPropertyValuesReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PropertyResponse" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(561, __c35, 1).pipe(S.optional));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(98, __c12, 2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(578, __c36, 2).pipe(S.optional));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ groupType: S.String, propertyNames: __S(25, __c3, 1), isInherited: S.Boolean }),
-      ).annotate({
-        identifier: "ComponentPropertyGroupResponse",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(100, __c12, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          componentName: S.String,
-          componentTypeId: S.String,
-          definedIn: S.optional(S.String),
-          description: S.optional(S.String),
-          propertyGroups: S.optional(__S(101, __c12, 5)),
-          status: __S(91, __c11, 3),
-          syncSource: S.optional(S.String),
-          componentPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComponentSummary" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(102, __c12, 6).pipe(S.optional));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           componentName: S.optional(S.String),
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          status: S.optional(__S(91, __c11, 3)),
+          status: S.optional(__S(528, __c33, 0)),
           definedIn: S.optional(S.String),
-          properties: S.optional(__S(99, __c12, 3)),
-          propertyGroups: S.optional(__S(101, __c12, 5)),
+          properties: S.optional(__S(562, __c35, 2)),
+          propertyGroups: S.optional(__S(577, __c36, 1)),
           syncSource: S.optional(S.String),
           areAllPropertiesReturned: S.optional(S.Boolean),
-          compositeComponents: S.optional(__S(103, __c12, 7)),
+          compositeComponents: S.optional(__S(563, __c35, 3)),
           areAllCompositeComponentsReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ComponentResponse" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(104, __c13, 0).pipe(S.optional));
-    case 2:
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ __S(564, __c35, 4).pipe(S.optional));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           entityId: S.String,
           entityName: S.String,
           arn: S.String,
-          status: __S(91, __c11, 3),
+          status: __S(528, __c33, 0),
           workspaceId: S.String,
           description: S.optional(S.String),
-          components: S.optional(__S(105, __c13, 1)),
+          components: S.optional(__S(565, __c35, 5)),
           parentEntityId: S.String,
           hasChildEntities: S.Boolean,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3346,7 +3417,40 @@ function __c13(j: number): any {
           areAllComponentsReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetEntityResponse" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupType: S.String,
+          propertyNames: __S(176, __c11, 0),
+          isInherited: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ComponentPropertyGroupResponse",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(576, __c36, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.String,
+          componentTypeId: S.String,
+          definedIn: S.optional(S.String),
+          description: S.optional(S.String),
+          propertyGroups: S.optional(__S(577, __c36, 1)),
+          status: __S(528, __c33, 0),
+          syncSource: S.optional(S.String),
+          componentPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentSummary" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metadataTransferJobId: S.String.pipe(T.HttpLabel("metadataTransferJobId")),
@@ -3363,39 +3467,54 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetMetadataTransferJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metadataTransferJobId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          sources: __S(59, __c7, 3),
-          destination: __S(62, __c7, 6),
+          sources: __S(316, __c19, 12),
+          destination: __S(319, __c19, 15),
           metadataTransferJobRole: S.String,
           reportUrl: S.optional(S.String),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(18, __c2, 2),
-          progress: S.optional(__S(19, __c2, 3)),
+          status: __S(112, __c7, 0),
+          progress: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({
         identifier: "GetMetadataTransferJobResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/pricingplan" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPricingPlanRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ bundleNames: __S(25, __c3, 1), pricingTier: S.optional(S.String) }),
+        S.Struct({
+          currentPricingPlan: __S(625, __c39, 1),
+          pendingPricingPlan: S.optional(__S(625, __c39, 1)),
+        }),
+      ).annotate({ identifier: "GetPricingPlanResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bundleNames: __S(176, __c11, 0), pricingTier: S.optional(S.String) }),
       ).annotate({ identifier: "BundleInformation" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billableEntityCount: S.optional(S.Number),
-          bundleInformation: S.optional(__S(110, __c13, 6)),
+          bundleInformation: S.optional(__S(624, __c39, 0)),
           effectiveDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           pricingMode: S.String,
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3404,51 +3523,34 @@ function __c13(j: number): any {
       ).annotate({ identifier: "PricingPlan" });
   }
 }
-function __c14(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          currentPricingPlan: __S(111, __c13, 7),
-          pendingPricingPlan: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "GetPricingPlanResponse" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({ order: S.optional(S.String), propertyName: S.String }),
       ).annotate({ identifier: "OrderBy" });
+    case 1:
+      return S.Array(__S(640, __c40, 0));
     case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          propertyName: S.optional(S.String),
-          operator: S.optional(S.String),
-          value: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "PropertyFilter" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(__S(114, __c14, 2)),
-          propertyFilters: S.optional(__S(116, __c14, 4)),
+          orderBy: S.optional(__S(641, __c40, 1)),
+          propertyFilters: S.optional(__S(657, __c41, 1)),
         }),
       ).annotate({ identifier: "TabularConditions" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           componentName: S.optional(S.String),
           componentPath: S.optional(S.String),
           componentTypeId: S.optional(S.String),
           entityId: S.optional(S.String),
-          selectedProperties: __S(25, __c3, 1),
+          selectedProperties: __S(176, __c11, 0),
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           propertyGroupName: S.optional(S.String),
-          tabularConditions: S.optional(__S(117, __c14, 5)),
+          tabularConditions: S.optional(__S(642, __c40, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entity-properties/value" }),
@@ -3460,46 +3562,60 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPropertyValueRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          propertyReference: __S(1, __c0, 1),
-          propertyValue: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "PropertyLatestValue" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(119, __c14, 7).pipe(S.optional));
-    case 1:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5, __c0, 5))
-          .annotate({ identifier: "DataValue" })
-          .pipe(S.optional),
-      );
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          propertyValues: S.optional(__S(120, __c15, 0)),
+          propertyReference: __S(48, __c3, 0),
+          propertyValue: S.optional(__S(35, __c2, 3)),
+        }),
+      ).annotate({ identifier: "PropertyLatestValue" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ __S(644, __c40, 4).pipe(S.optional));
+    case 6:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(35, __c2, 3))
+          .annotate({ identifier: "DataValue" })
+          .pipe(S.optional),
+      );
+    case 7:
+      return S.Array(__S(646, __c40, 6));
+    case 8:
+      return S.Array(__S(647, __c40, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          propertyValues: S.optional(__S(645, __c40, 5)),
           nextToken: S.optional(S.String),
-          tabularPropertyValues: S.optional(__S(123, __c15, 3)),
+          tabularPropertyValues: S.optional(__S(648, __c40, 8)),
         }),
       ).annotate({ identifier: "GetPropertyValueResponse" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          propertyName: S.optional(S.String),
+          operator: S.optional(S.String),
+          value: S.optional(__S(35, __c2, 3)),
+        }),
+      ).annotate({ identifier: "PropertyFilter" });
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           interpolationType: S.optional(S.String),
           intervalInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InterpolationParameters" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3507,11 +3623,11 @@ function __c15(j: number): any {
           componentName: S.optional(S.String),
           componentPath: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          selectedProperties: __S(25, __c3, 1),
-          propertyFilters: S.optional(__S(116, __c14, 4)),
+          selectedProperties: __S(176, __c11, 0),
+          propertyFilters: S.optional(__S(657, __c41, 1)),
           startDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          interpolation: S.optional(__S(125, __c15, 5)),
+          interpolation: S.optional(__S(672, __c42, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           orderByTime: S.optional(S.String),
@@ -3530,23 +3646,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetPropertyValueHistoryRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ entityPropertyReference: __S(1, __c0, 1), values: S.optional(__S(7, __c0, 7)) }),
+        S.Struct({
+          entityPropertyReference: __S(48, __c3, 0),
+          values: S.optional(__S(65, __c4, 1)),
+        }),
       ).annotate({ identifier: "PropertyValueHistory" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(674, __c42, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ propertyValues: __S(128, __c16, 0), nextToken: S.optional(S.String) }),
+        S.Struct({ propertyValues: __S(675, __c42, 3), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetPropertyValueHistoryResponse",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3562,7 +3681,7 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSceneRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
@@ -3572,13 +3691,17 @@ function __c16(j: number): any {
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           description: S.optional(S.String),
-          capabilities: S.optional(__S(25, __c3, 1)),
-          sceneMetadata: S.optional(__S(0, __c0, 0)),
-          generatedSceneMetadata: S.optional(__S(0, __c0, 0)),
-          error: S.optional(__S(17, __c2, 1)),
+          capabilities: S.optional(__S(176, __c11, 0)),
+          sceneMetadata: S.optional(__S(16, __c1, 0)),
+          generatedSceneMetadata: S.optional(__S(16, __c1, 0)),
+          error: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetSceneResponse" });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           syncSource: S.String.pipe(T.HttpLabel("syncSource")),
@@ -3594,19 +3717,23 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSyncJobRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           workspaceId: S.String,
           syncSource: S.String,
           syncRole: S.String,
-          status: __S(91, __c11, 3),
+          status: __S(528, __c33, 0),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "GetSyncJobResponse" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
           T.all(
@@ -3619,13 +3746,13 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          linkedServices: S.optional(__S(25, __c3, 1)),
+          linkedServices: S.optional(__S(176, __c11, 0)),
           s3Location: S.optional(S.String),
           role: S.optional(S.String),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3634,7 +3761,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetWorkspaceResponse" });
   }
 }
-function __c17(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3659,24 +3786,28 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListComponentsRequest" });
     case 1:
-      return S.Array(__S(102, __c12, 6));
+      return S.Array(__S(578, __c36, 2));
     case 2:
       return S.suspend(() =>
-        S.Struct({ componentSummaries: __S(137, __c17, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ componentSummaries: __S(737, __c46, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListComponentsResponse" });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ extendsFrom: S.String }),
         /*@__PURE__*/ S.Struct({ namespace: S.String }),
         /*@__PURE__*/ S.Struct({ isAbstract: S.Boolean }),
       ]);
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          filters: S.optional(__S(140, __c17, 4)),
+          filters: S.optional(__S(753, __c47, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3692,7 +3823,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListComponentTypesRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -3700,40 +3831,40 @@ function __c17(j: number): any {
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           description: S.optional(S.String),
-          status: S.optional(__S(91, __c11, 3)),
+          status: S.optional(__S(528, __c33, 0)),
           componentTypeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentTypeSummary" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(755, __c47, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
-          componentTypeSummaries: __S(143, __c17, 7),
+          componentTypeSummaries: __S(756, __c47, 4),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListComponentTypesResponse",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ parentEntityId: S.String }),
         /*@__PURE__*/ S.Struct({ componentTypeId: S.String }),
         /*@__PURE__*/ S.Struct({ externalId: S.String }),
       ]);
+    case 1:
+      return S.Array(__S(768, __c48, 0));
     case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          filters: S.optional(__S(146, __c18, 2)),
+          filters: S.optional(__S(769, __c48, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -3747,46 +3878,46 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListEntitiesRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           entityId: S.String,
           entityName: S.String,
           arn: S.String,
           parentEntityId: S.optional(S.String),
-          status: __S(91, __c11, 3),
+          status: __S(528, __c33, 0),
           description: S.optional(S.String),
           hasChildEntities: S.optional(S.Boolean),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "EntitySummary" });
+    case 4:
+      return S.Array(__S(771, __c48, 3));
     case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          entitySummaries: S.optional(__S(149, __c18, 5)),
+          entitySummaries: S.optional(__S(772, __c48, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEntitiesResponse" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ workspaceId: S.String }),
         /*@__PURE__*/ S.Struct({ state: S.String }),
       ]);
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
     case 1:
+      return S.Array(__S(784, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sourceType: S.String,
           destinationType: S.String,
-          filters: S.optional(__S(152, __c19, 0)),
+          filters: S.optional(__S(785, __c49, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3802,31 +3933,35 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListMetadataTransferJobsRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           metadataTransferJobId: S.String,
           arn: S.String,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(18, __c2, 2),
-          progress: S.optional(__S(19, __c2, 3)),
+          status: __S(112, __c7, 0),
+          progress: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({
         identifier: "MetadataTransferJobSummary",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
     case 4:
+      return S.Array(__S(787, __c49, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          metadataTransferJobSummaries: __S(155, __c19, 3),
+          metadataTransferJobSummaries: __S(788, __c49, 4),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMetadataTransferJobsResponse",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3846,26 +3981,26 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPropertiesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(__S(87, __c10, 7)),
+          definition: S.optional(__S(544, __c34, 0)),
           propertyName: S.String,
-          value: S.optional(__S(5, __c0, 5)),
+          value: S.optional(__S(35, __c2, 3)),
           areAllPropertyValuesReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PropertySummary" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
+    case 2:
+      return S.Array(__S(801, __c50, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ propertySummaries: __S(802, __c50, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPropertiesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ propertySummaries: __S(159, __c19, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListPropertiesResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3882,7 +4017,7 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListScenesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sceneId: S.String,
@@ -3893,16 +4028,20 @@ function __c20(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "SceneSummary" });
+    case 2:
+      return S.Array(__S(817, __c51, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          sceneSummaries: S.optional(__S(163, __c20, 3)),
+          sceneSummaries: S.optional(__S(818, __c51, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListScenesResponse" });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -3919,45 +4058,45 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSyncJobsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           workspaceId: S.optional(S.String),
           syncSource: S.optional(S.String),
-          status: S.optional(__S(91, __c11, 3)),
+          status: S.optional(__S(528, __c33, 0)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncJobSummary" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          syncJobSummaries: S.optional(__S(167, __c20, 7)),
+          syncJobSummaries: S.optional(__S(834, __c52, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSyncJobsResponse" });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ state: S.String }),
         /*@__PURE__*/ S.Struct({ resourceType: S.String }),
         /*@__PURE__*/ S.Struct({ resourceId: S.String }),
         /*@__PURE__*/ S.Struct({ externalId: S.String }),
       ]);
+    case 1:
+      return S.Array(__S(848, __c53, 0));
     case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           syncSource: S.String.pipe(T.HttpLabel("syncSource")),
-          filters: S.optional(__S(170, __c21, 2)),
+          filters: S.optional(__S(849, __c53, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -3974,28 +4113,32 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSyncResourcesRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
           externalId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          status: S.optional(__S(91, __c11, 3)),
+          status: S.optional(__S(528, __c33, 0)),
           updateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncResourceSummary" });
+    case 4:
+      return S.Array(__S(851, __c53, 3));
     case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          syncResources: S.optional(__S(173, __c21, 5)),
+          syncResources: S.optional(__S(852, __c53, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSyncResourcesResponse",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String,
@@ -4005,68 +4148,80 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(30, __c3, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ tags: S.optional(__S(160, __c10, 0)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/workspaces-list" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          linkedServices: S.optional(__S(25, __c3, 1)),
+          linkedServices: S.optional(__S(176, __c11, 0)),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "WorkspaceSummary" });
+    case 2:
+      return S.Array(__S(881, __c55, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          workspaceSummaries: S.optional(__S(179, __c22, 3)),
+          workspaceSummaries: S.optional(__S(882, __c55, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tags: __S(30, __c3, 6) }).pipe(
+        S.Struct({ resourceARN: S.String, tags: __S(160, __c10, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpQuery("resourceARN")),
-          tagKeys: __S(25, __c3, 1).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(176, __c11, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String.pipe(T.HttpLabel("componentTypeId")),
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(__S(24, __c3, 0)),
-          extendsFrom: S.optional(__S(25, __c3, 1)),
-          functions: S.optional(__S(29, __c3, 5)),
-          propertyGroups: S.optional(__S(32, __c4, 0)),
+          propertyDefinitions: S.optional(__S(240, __c15, 0)),
+          extendsFrom: S.optional(__S(176, __c11, 0)),
+          functions: S.optional(__S(242, __c15, 2)),
+          propertyGroups: S.optional(__S(244, __c15, 4)),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(__S(34, __c4, 2)),
+          compositeComponentTypes: S.optional(__S(246, __c15, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -4083,11 +4238,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateComponentTypeRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
@@ -4098,47 +4249,51 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateComponentTypeResponse",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateType: S.optional(S.String),
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          propertyUpdates: S.optional(__S(38, __c4, 6)),
-          propertyGroupUpdates: S.optional(__S(40, __c5, 0)),
+          propertyUpdates: S.optional(__S(273, __c17, 1)),
+          propertyGroupUpdates: S.optional(__S(275, __c17, 3)),
         }),
       ).annotate({ identifier: "ComponentUpdateRequest" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(944, __c59, 0).pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(185, __c23, 1).pipe(S.optional));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           updateType: S.optional(S.String),
           description: S.optional(S.String),
-          propertyUpdates: S.optional(__S(38, __c4, 6)),
-          propertyGroupUpdates: S.optional(__S(40, __c5, 0)),
+          propertyUpdates: S.optional(__S(273, __c17, 1)),
+          propertyGroupUpdates: S.optional(__S(275, __c17, 3)),
         }),
       ).annotate({
         identifier: "CompositeComponentUpdateRequest",
       });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(946, __c59, 2).pipe(S.optional));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(187, __c23, 3).pipe(S.optional));
-    case 5:
       return S.suspend(() =>
         S.Struct({ updateType: S.String, parentEntityId: S.optional(S.String) }),
       ).annotate({
         identifier: "ParentEntityUpdateRequest",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           entityId: S.String.pipe(T.HttpLabel("entityId")),
           entityName: S.optional(S.String),
           description: S.optional(S.String),
-          componentUpdates: S.optional(__S(186, __c23, 2)),
-          compositeComponentUpdates: S.optional(__S(188, __c23, 4)),
-          parentEntityUpdate: S.optional(__S(189, __c23, 5)),
+          componentUpdates: S.optional(__S(945, __c59, 1)),
+          compositeComponentUpdates: S.optional(__S(947, __c59, 3)),
+          parentEntityUpdate: S.optional(__S(948, __c59, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceId}/entities/{entityId}" }),
@@ -4150,7 +4305,7 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateEntityRequest" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4159,32 +4314,36 @@ function __c23(j: number): any {
       ).annotate({ identifier: "UpdateEntityResponse" });
   }
 }
-function __c24(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ pricingMode: S.String, bundleNames: S.optional(__S(25, __c3, 1)) }).pipe(
+        S.Struct({ pricingMode: S.String, bundleNames: S.optional(__S(176, __c11, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pricingplan" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdatePricingPlanRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currentPricingPlan: __S(111, __c13, 7),
-          pendingPricingPlan: S.optional(__S(111, __c13, 7)),
+          currentPricingPlan: __S(625, __c39, 1),
+          pendingPricingPlan: S.optional(__S(625, __c39, 1)),
         }),
       ).annotate({
         identifier: "UpdatePricingPlanResponse",
       });
-    case 2:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           sceneId: S.String.pipe(T.HttpLabel("sceneId")),
           contentLocation: S.optional(S.String),
           description: S.optional(S.String),
-          capabilities: S.optional(__S(25, __c3, 1)),
-          sceneMetadata: S.optional(__S(0, __c0, 0)),
+          capabilities: S.optional(__S(176, __c11, 0)),
+          sceneMetadata: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceId}/scenes/{sceneId}" }),
@@ -4196,11 +4355,19 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateSceneRequest" });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
       ).annotate({ identifier: "UpdateSceneResponse" });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -4220,7 +4387,6 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

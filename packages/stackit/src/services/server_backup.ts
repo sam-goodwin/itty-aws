@@ -311,8 +311,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateBackupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BackupJob>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateBackupRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<BackupJob>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -326,8 +326,8 @@ export const createBackupSchedule: API.OperationMethod<
   CreateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateBackupScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BackupSchedule>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateBackupScheduleRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<BackupSchedule>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -341,8 +341,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteBackupResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteBackupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteBackupResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -356,8 +356,8 @@ export const deleteBackupSchedule: API.OperationMethod<
   DeleteBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteBackupScheduleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteBackupScheduleResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteBackupScheduleRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteBackupScheduleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const deleteVolumeBackup: API.OperationMethod<
   DeleteVolumeBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteVolumeBackupRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteVolumeBackupResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteVolumeBackupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteVolumeBackupResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const disableServiceResource: API.OperationMethod<
   DisableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DisableServiceResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DisableServiceResourceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DisableServiceResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DisableServiceResourceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const enableServiceResource: API.OperationMethod<
   EnableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<EnableServiceResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EnableServiceResourceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<EnableServiceResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<EnableServiceResourceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetBackupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Backup>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetBackupRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Backup>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -432,7 +432,7 @@ export const getBackupSchedule: API.OperationMethod<
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<GetBackupScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BackupSchedule>,
+  output: __S(105, __c13, 1) as any as S.Schema<BackupSchedule>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const getServiceResource: API.OperationMethod<
   GetServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetServiceResourceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetBackupServiceResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetServiceResourceRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetBackupServiceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const listBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetBackupPoliciesResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListBackupPoliciesRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetBackupPoliciesResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListBackupsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetBackupsListResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListBackupsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetBackupsListResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const listBackupSchedules: API.OperationMethod<
   ListBackupSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListBackupSchedulesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetBackupSchedulesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListBackupSchedulesRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetBackupSchedulesResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -506,8 +506,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RestoreBackupResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<RestoreBackupResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const restoreVolumeBackup: API.OperationMethod<
   RestoreVolumeBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<RestoreVolumeBackupRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RestoreVolumeBackupResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<RestoreVolumeBackupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<RestoreVolumeBackupResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -536,8 +536,8 @@ export const updateBackupSchedule: API.OperationMethod<
   UpdateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateBackupScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BackupSchedule>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateBackupScheduleRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<BackupSchedule>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -547,169 +547,6 @@ export const updateBackupSchedule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          name: S.String,
-          retentionPeriod: S.Number,
-          volumeIds: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateBackupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "BackupJob" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          retentionPeriod: S.Number,
-          volumeIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BackupProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupProperties: S.optional(__S(3, __c0, 3)),
-          enabled: S.Boolean,
-          name: S.String,
-          rrule: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backup-schedules",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBackupScheduleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          backupProperties: S.optional(__S(3, __c0, 3)),
-          enabled: S.Boolean,
-          id: S.Number,
-          name: S.String,
-          rrule: S.String,
-        }),
-      ).annotate({ identifier: "BackupSchedule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupId: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups/{backupId}",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBackupRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBackupResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupScheduleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backup-schedules/{backupScheduleId}",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBackupScheduleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupId: S.String.pipe(T.Label()),
-          volumeBackupId: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups/{backupId}/volume-backups/{volumeBackupId}",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteVolumeBackupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableServiceResourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupPolicyId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
-            code: 200,
-            baseUrl: "https://server-backup.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableServiceResourceRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -725,7 +562,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -736,9 +577,9 @@ function __c1(j: number): any {
           volumeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupVolumeBackupsItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
@@ -748,7 +589,7 @@ function __c1(j: number): any {
           name: S.String,
           size: S.optional(S.Number),
           status: S.String,
-          volumeBackups: S.optional(__S(14, __c1, 6)),
+          volumeBackups: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "Backup" });
   }
@@ -771,7 +612,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupScheduleRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -788,13 +633,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetServiceResourceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetBackupServiceResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -809,7 +658,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListBackupPoliciesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -818,10 +667,10 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BackupPolicyBackupProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          backupProperties: S.optional(__S(20, __c2, 4)),
+          backupProperties: S.optional(__S(33, __c4, 1)),
           default: S.optional(S.Boolean),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
@@ -830,19 +679,19 @@ function __c2(j: number): any {
           rrule: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPolicy" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(22, __c2, 6)),
+          items: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "GetBackupPoliciesResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -860,14 +709,18 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(10, __c1, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(25, __c3, 1)),
+          items: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "GetBackupsListResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -884,17 +737,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListBackupSchedulesRequest",
       });
-    case 4:
-      return S.Array(__S(5, __c0, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(105, __c13, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(28, __c3, 4)),
+          items: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "GetBackupSchedulesResponse",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -902,7 +759,7 @@ function __c3(j: number): any {
           serverId: S.String.pipe(T.Label()),
           backupId: S.String.pipe(T.Label()),
           startServerAfterRestore: S.Boolean,
-          volumeIds: S.optional(__S(0, __c0, 0)),
+          volumeIds: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -912,7 +769,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreBackupRequest" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -934,7 +795,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -943,7 +804,7 @@ function __c4(j: number): any {
           region: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
           backupScheduleId: S.String.pipe(T.Label()),
-          backupProperties: S.optional(__S(3, __c0, 3)),
+          backupProperties: S.optional(__S(104, __c13, 0)),
           enabled: S.Boolean,
           name: S.String,
           rrule: S.String,
@@ -960,7 +821,205 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          name: S.String,
+          retentionPeriod: S.Number,
+          volumeIds: S.optional(__S(88, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateBackupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "BackupJob" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupProperties: S.optional(__S(104, __c13, 0)),
+          enabled: S.Boolean,
+          name: S.String,
+          rrule: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backup-schedules",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBackupScheduleRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          retentionPeriod: S.Number,
+          volumeIds: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({ identifier: "BackupProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          backupProperties: S.optional(__S(104, __c13, 0)),
+          enabled: S.Boolean,
+          id: S.Number,
+          name: S.String,
+          rrule: S.String,
+        }),
+      ).annotate({ identifier: "BackupSchedule" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupId: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups/{backupId}",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBackupRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteBackupResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupScheduleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backup-schedules/{backupScheduleId}",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBackupScheduleRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupId: S.String.pipe(T.Label()),
+          volumeBackupId: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/backups/{backupId}/volume-backups/{volumeBackupId}",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteVolumeBackupRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableServiceResourceRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupPolicyId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
+            code: 200,
+            baseUrl: "https://server-backup.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableServiceResourceRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

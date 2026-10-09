@@ -373,7 +373,7 @@ export const GenerateOfferAccessToken: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GenerateOfferAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DiskAccessToken>,
+  output: __S(16, __c1, 0) as any as S.Schema<DiskAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -387,8 +387,8 @@ export const GetOffer: API.OperationMethod<
   GetOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetOfferRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetOfferResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetOfferRequest>,
+  output: __S(75, __c4, 11) as any as S.Schema<GetOfferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const GetOfferAccessToken: API.OperationMethod<
   GetOfferAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetOfferAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DiskAccessToken>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetOfferAccessTokenRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DiskAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const GetPublisher: API.OperationMethod<
   GetPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetPublisherRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetPublisherResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPublisherRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<GetPublisherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const ListOfferBySubscription: API.OperationMethod<
   ListOfferBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListOfferBySubscriptionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<OfferListResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListOfferBySubscriptionRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<OfferListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +447,8 @@ export const ListOffers: API.OperationMethod<
   ListOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListOffersRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<OfferListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListOffersRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<OfferListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +462,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +477,8 @@ export const ListPublisherBySubscription: API.OperationMethod<
   ListPublisherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListPublisherBySubscriptionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublisherListResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListPublisherBySubscriptionRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -492,8 +492,8 @@ export const ListPublishers: API.OperationMethod<
   ListPublishersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListPublishersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublisherListResult>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListPublishersRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -526,7 +526,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateOfferAccessTokenRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           diskId: S.optional(S.String),
@@ -534,7 +538,11 @@ function __c0(j: number): any {
           accessToken: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "DiskAccessToken" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -548,7 +556,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOfferRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -559,14 +571,18 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisherId: S.String,
           publisherDisplayName: S.String,
         }),
       ).annotate({ identifier: "OfferPublisher" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           small: S.optional(S.String),
@@ -575,7 +591,7 @@ function __c0(j: number): any {
           large: S.optional(S.String),
         }),
       ).annotate({ identifier: "IconFileUris" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           legalTermsUri: S.optional(S.String),
@@ -583,13 +599,9 @@ function __c0(j: number): any {
           privacyPolicyUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "TermsAndConditions" });
-    case 7:
+    case 3:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
@@ -600,16 +612,16 @@ function __c1(j: number): any {
           offerType: S.optional(S.String),
           supportUri: S.optional(S.String),
           popularity: S.optional(S.Number),
-          offerPublisher: S.optional(__S(4, __c0, 4)),
+          offerPublisher: S.optional(__S(64, __c4, 0)),
           availability: S.optional(S.String),
           releaseType: S.optional(S.String),
-          iconFileUris: S.optional(__S(5, __c0, 5)),
-          termsAndConditions: S.optional(__S(6, __c0, 6)),
-          categoryIds: S.optional(__S(7, __c0, 7)),
-          operatingSystems: S.optional(__S(7, __c0, 7)),
+          iconFileUris: S.optional(__S(65, __c4, 1)),
+          termsAndConditions: S.optional(__S(66, __c4, 2)),
+          categoryIds: S.optional(__S(67, __c4, 3)),
+          operatingSystems: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "OfferContent" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           family: S.optional(S.String),
@@ -617,7 +629,7 @@ function __c1(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "SkuOperatingSystem" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -627,9 +639,9 @@ function __c1(j: number): any {
           launchType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketplaceSkuVersion" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(70, __c4, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           catalogPlanId: S.String,
@@ -641,35 +653,35 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           generation: S.optional(S.String),
           displayRank: S.optional(S.Number),
-          operatingSystem: S.optional(__S(9, __c1, 1)),
-          marketplaceSkuVersions: S.optional(__S(11, __c1, 3)),
+          operatingSystem: S.optional(__S(69, __c4, 5)),
+          marketplaceSkuVersions: S.optional(__S(71, __c4, 7)),
         }),
       ).annotate({ identifier: "MarketplaceSku" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(72, __c4, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           contentVersion: S.optional(S.String),
           contentUrl: S.optional(S.String),
-          offerContent: __S(8, __c1, 0),
+          offerContent: __S(68, __c4, 4),
           provisioningState: S.optional(S.String),
-          marketplaceSkus: S.optional(__S(13, __c1, 5)),
+          marketplaceSkus: S.optional(__S(73, __c4, 9)),
         }),
       ).annotate({ identifier: "OfferProperties" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(74, __c4, 10)),
         }),
       ).annotate({ identifier: "GetOfferResponse" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -688,7 +700,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOfferAccessTokenRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -702,23 +718,31 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPublisherRequest" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "GetPublisherResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -733,16 +757,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListOfferBySubscriptionRequest",
       });
-    case 5:
-      return S.Array(__S(15, __c1, 7));
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(75, __c4, 11));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(21, __c2, 5),
+          value: __S(144, __c9, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferListResult" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -762,7 +794,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListOffersRequest" });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -789,21 +821,25 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(25, __c3, 1)),
+          display: S.optional(__S(177, __c11, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(178, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(27, __c3, 3)),
+          value: S.optional(__S(179, __c11, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -818,18 +854,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListPublisherBySubscriptionRequest",
       });
-    case 6:
-      return S.Array(__S(19, __c2, 3));
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(113, __c7, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(30, __c3, 6),
+          value: __S(208, __c13, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherListResult" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -851,7 +891,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "ListPublishersRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -4234,11 +4234,15 @@ export const analyzeContentProjectsConversationsParticipants: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    8480,
+    __c265,
+    0,
   ) as any as S.Schema<AnalyzeContentProjectsConversationsParticipantsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1AnalyzeContentResponse>,
+  output: __S(
+    8524,
+    __c266,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1AnalyzeContentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4257,11 +4261,15 @@ export const analyzeContentProjectsLocationsConversationsParticipants: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    206,
-    __c25,
-    6,
+    10144,
+    __c317,
+    0,
   ) as any as S.Schema<AnalyzeContentProjectsLocationsConversationsParticipantsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1AnalyzeContentResponse>,
+  output: __S(
+    8524,
+    __c266,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1AnalyzeContentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4279,8 +4287,12 @@ export const batchCreateProjectsAgentEntityTypesEntities: API.OperationMethod<
   BatchCreateProjectsAgentEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<BatchCreateProjectsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    10560,
+    __c330,
+    0,
+  ) as any as S.Schema<BatchCreateProjectsAgentEntityTypesEntitiesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4298,11 +4310,11 @@ export const batchCreateProjectsConversationsMessages: API.OperationMethod<
   BatchCreateProjectsConversationsMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<BatchCreateProjectsConversationsMessagesRequest>,
+  input: __S(11040, __c345, 0) as any as S.Schema<BatchCreateProjectsConversationsMessagesRequest>,
   output: __S(
-    215,
-    __c26,
-    7,
+    11075,
+    __c346,
+    3,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4322,11 +4334,11 @@ export const batchCreateProjectsLocationsAgentEntityTypesEntities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    216,
-    __c27,
+    11456,
+    __c358,
     0,
   ) as any as S.Schema<BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4345,14 +4357,14 @@ export const batchCreateProjectsLocationsConversationsMessages: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
-    1,
+    11808,
+    __c369,
+    0,
   ) as any as S.Schema<BatchCreateProjectsLocationsConversationsMessagesRequest>,
   output: __S(
-    215,
-    __c26,
-    7,
+    11075,
+    __c346,
+    3,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4371,8 +4383,8 @@ export const batchDeleteProjectsAgentEntityTypes: API.OperationMethod<
   BatchDeleteProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<BatchDeleteProjectsAgentEntityTypesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchDeleteProjectsAgentEntityTypesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4390,8 +4402,8 @@ export const batchDeleteProjectsAgentEntityTypesEntities: API.OperationMethod<
   BatchDeleteProjectsAgentEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<BatchDeleteProjectsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(512, __c16, 0) as any as S.Schema<BatchDeleteProjectsAgentEntityTypesEntitiesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4409,8 +4421,8 @@ export const batchDeleteProjectsAgentIntents: API.OperationMethod<
   BatchDeleteProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<BatchDeleteProjectsAgentIntentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(992, __c31, 0) as any as S.Schema<BatchDeleteProjectsAgentIntentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4428,8 +4440,12 @@ export const batchDeleteProjectsLocationsAgentEntityTypes: API.OperationMethod<
   BatchDeleteProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<BatchDeleteProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    1440,
+    __c45,
+    0,
+  ) as any as S.Schema<BatchDeleteProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4448,11 +4464,11 @@ export const batchDeleteProjectsLocationsAgentEntityTypesEntities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4470,8 +4486,8 @@ export const batchDeleteProjectsLocationsAgentIntents: API.OperationMethod<
   BatchDeleteProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<BatchDeleteProjectsLocationsAgentIntentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2176, __c68, 0) as any as S.Schema<BatchDeleteProjectsLocationsAgentIntentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4489,8 +4505,8 @@ export const batchUpdateProjectsAgentEntityTypes: API.OperationMethod<
   BatchUpdateProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<BatchUpdateProjectsAgentEntityTypesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2624, __c82, 0) as any as S.Schema<BatchUpdateProjectsAgentEntityTypesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4508,8 +4524,12 @@ export const batchUpdateProjectsAgentEntityTypesEntities: API.OperationMethod<
   BatchUpdateProjectsAgentEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<BatchUpdateProjectsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    3232,
+    __c101,
+    0,
+  ) as any as S.Schema<BatchUpdateProjectsAgentEntityTypesEntitiesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4547,8 @@ export const batchUpdateProjectsAgentIntents: API.OperationMethod<
   BatchUpdateProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<BatchUpdateProjectsAgentIntentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3872, __c121, 0) as any as S.Schema<BatchUpdateProjectsAgentIntentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4546,8 +4566,12 @@ export const batchUpdateProjectsLocationsAgentEntityTypes: API.OperationMethod<
   BatchUpdateProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<BatchUpdateProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    4288,
+    __c134,
+    0,
+  ) as any as S.Schema<BatchUpdateProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4566,11 +4590,11 @@ export const batchUpdateProjectsLocationsAgentEntityTypesEntities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    238,
-    __c29,
-    6,
+    4640,
+    __c145,
+    0,
   ) as any as S.Schema<BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4588,8 +4612,8 @@ export const batchUpdateProjectsLocationsAgentIntents: API.OperationMethod<
   BatchUpdateProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<BatchUpdateProjectsLocationsAgentIntentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5056, __c158, 0) as any as S.Schema<BatchUpdateProjectsLocationsAgentIntentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4607,8 +4631,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(5408, __c169, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4626,8 +4650,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CancelProjectsOperationsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(5792, __c181, 0) as any as S.Schema<CancelProjectsOperationsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4646,11 +4670,11 @@ export const clearSuggestionFeatureConfigProjectsConversationProfiles: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    244,
-    __c30,
-    4,
+    6144,
+    __c192,
+    0,
   ) as any as S.Schema<ClearSuggestionFeatureConfigProjectsConversationProfilesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4669,11 +4693,11 @@ export const clearSuggestionFeatureConfigProjectsLocationsConversationProfiles: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    245,
-    __c30,
-    5,
+    6624,
+    __c207,
+    0,
   ) as any as S.Schema<ClearSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4692,14 +4716,14 @@ export const compileProjectsConversationsParticipantsSuggestions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    247,
-    __c30,
-    7,
+    7073,
+    __c221,
+    1,
   ) as any as S.Schema<CompileProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    251,
-    __c31,
-    3,
+    7074,
+    __c221,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1CompileSuggestionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4718,8 +4742,8 @@ export const completeProjectsConversations: API.OperationMethod<
   CompleteProjectsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<CompleteProjectsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(7584, __c237, 0) as any as S.Schema<CompleteProjectsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4737,8 +4761,8 @@ export const completeProjectsLocationsConversations: API.OperationMethod<
   CompleteProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<CompleteProjectsLocationsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(7936, __c248, 0) as any as S.Schema<CompleteProjectsLocationsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4756,8 +4780,8 @@ export const createProjectsAgentEntityTypes: API.OperationMethod<
   CreateProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<CreateProjectsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(7968, __c249, 0) as any as S.Schema<CreateProjectsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4775,8 +4799,8 @@ export const createProjectsAgentEnvironments: API.OperationMethod<
   CreateProjectsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<CreateProjectsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(8000, __c250, 0) as any as S.Schema<CreateProjectsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4795,11 +4819,11 @@ export const createProjectsAgentEnvironmentsUsersSessionsContexts: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    302,
-    __c37,
-    6,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<CreateProjectsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4818,11 +4842,11 @@ export const createProjectsAgentEnvironmentsUsersSessionsEntityTypes: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    303,
-    __c37,
-    7,
+    8128,
+    __c254,
+    0,
   ) as any as S.Schema<CreateProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4840,8 +4864,8 @@ export const createProjectsAgentIntents: API.OperationMethod<
   CreateProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<CreateProjectsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(8160, __c255, 0) as any as S.Schema<CreateProjectsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4859,8 +4883,8 @@ export const createProjectsAgentKnowledgeBases: API.OperationMethod<
   CreateProjectsAgentKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<CreateProjectsAgentKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(8192, __c256, 0) as any as S.Schema<CreateProjectsAgentKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4878,8 +4902,8 @@ export const createProjectsAgentKnowledgeBasesDocuments: API.OperationMethod<
   CreateProjectsAgentKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<CreateProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(8256, __c258, 0) as any as S.Schema<CreateProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4897,8 +4921,8 @@ export const createProjectsAgentSessionsContexts: API.OperationMethod<
   CreateProjectsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<CreateProjectsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(8320, __c260, 0) as any as S.Schema<CreateProjectsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4916,8 +4940,8 @@ export const createProjectsAgentSessionsEntityTypes: API.OperationMethod<
   CreateProjectsAgentSessionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<CreateProjectsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  input: __S(8352, __c261, 0) as any as S.Schema<CreateProjectsAgentSessionsEntityTypesRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4935,8 +4959,8 @@ export const createProjectsAgentVersions: API.OperationMethod<
   CreateProjectsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<CreateProjectsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(8384, __c262, 0) as any as S.Schema<CreateProjectsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4954,8 +4978,8 @@ export const createProjectsConversationProfiles: API.OperationMethod<
   CreateProjectsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<CreateProjectsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(8448, __c264, 0) as any as S.Schema<CreateProjectsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4973,8 +4997,8 @@ export const createProjectsConversations: API.OperationMethod<
   CreateProjectsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<CreateProjectsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(9728, __c304, 0) as any as S.Schema<CreateProjectsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4992,8 +5016,8 @@ export const createProjectsConversationsParticipants: API.OperationMethod<
   CreateProjectsConversationsParticipantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<CreateProjectsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  input: __S(9760, __c305, 0) as any as S.Schema<CreateProjectsConversationsParticipantsRequest>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5011,8 +5035,8 @@ export const createProjectsGenerators: API.OperationMethod<
   CreateProjectsGeneratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<CreateProjectsGeneratorsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
+  input: __S(9824, __c307, 0) as any as S.Schema<CreateProjectsGeneratorsRequest>,
+  output: __S(9902, __c309, 14) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5030,8 +5054,8 @@ export const createProjectsKnowledgeBases: API.OperationMethod<
   CreateProjectsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<CreateProjectsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(9920, __c310, 0) as any as S.Schema<CreateProjectsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5049,8 +5073,8 @@ export const createProjectsKnowledgeBasesDocuments: API.OperationMethod<
   CreateProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<CreateProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9952, __c311, 0) as any as S.Schema<CreateProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5068,8 +5092,8 @@ export const createProjectsLocationsAgentEntityTypes: API.OperationMethod<
   CreateProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<CreateProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(9984, __c312, 0) as any as S.Schema<CreateProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5087,8 +5111,8 @@ export const createProjectsLocationsAgentEnvironments: API.OperationMethod<
   CreateProjectsLocationsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<CreateProjectsLocationsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(10016, __c313, 0) as any as S.Schema<CreateProjectsLocationsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5107,11 +5131,11 @@ export const createProjectsLocationsAgentEnvironmentsUsersSessionsContexts: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    343,
-    __c42,
-    7,
+    10048,
+    __c314,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5130,11 +5154,11 @@ export const createProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypes: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    344,
-    __c43,
+    10080,
+    __c315,
     0,
   ) as any as S.Schema<CreateProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5152,8 +5176,8 @@ export const createProjectsLocationsAgentIntents: API.OperationMethod<
   CreateProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<CreateProjectsLocationsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(10112, __c316, 0) as any as S.Schema<CreateProjectsLocationsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5171,8 +5195,12 @@ export const createProjectsLocationsAgentSessionsContexts: API.OperationMethod<
   CreateProjectsLocationsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<CreateProjectsLocationsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(
+    10176,
+    __c318,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5191,11 +5219,11 @@ export const createProjectsLocationsAgentSessionsEntityTypes: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    347,
-    __c43,
-    3,
+    10208,
+    __c319,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5213,8 +5241,8 @@ export const createProjectsLocationsAgentVersions: API.OperationMethod<
   CreateProjectsLocationsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<CreateProjectsLocationsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(10240, __c320, 0) as any as S.Schema<CreateProjectsLocationsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5232,8 +5260,8 @@ export const createProjectsLocationsCompanionAgents: API.OperationMethod<
   CreateProjectsLocationsCompanionAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<CreateProjectsLocationsCompanionAgentsRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
+  input: __S(10272, __c321, 0) as any as S.Schema<CreateProjectsLocationsCompanionAgentsRequest>,
+  output: __S(10308, __c322, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5251,8 +5279,12 @@ export const createProjectsLocationsConversationProfiles: API.OperationMethod<
   CreateProjectsLocationsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<CreateProjectsLocationsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(
+    10336,
+    __c323,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5270,8 +5302,8 @@ export const createProjectsLocationsConversations: API.OperationMethod<
   CreateProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<CreateProjectsLocationsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(10368, __c324, 0) as any as S.Schema<CreateProjectsLocationsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5290,11 +5322,11 @@ export const createProjectsLocationsConversationsParticipants: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    357,
-    __c44,
-    5,
+    10400,
+    __c325,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5312,8 +5344,8 @@ export const createProjectsLocationsGenerators: API.OperationMethod<
   CreateProjectsLocationsGeneratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<CreateProjectsLocationsGeneratorsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
+  input: __S(10432, __c326, 0) as any as S.Schema<CreateProjectsLocationsGeneratorsRequest>,
+  output: __S(9902, __c309, 14) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5331,8 +5363,12 @@ export const createProjectsLocationsGeneratorsEvaluations: API.OperationMethod<
   CreateProjectsLocationsGeneratorsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<CreateProjectsLocationsGeneratorsEvaluationsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    10464,
+    __c327,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsGeneratorsEvaluationsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5350,8 +5386,8 @@ export const createProjectsLocationsKnowledgeBases: API.OperationMethod<
   CreateProjectsLocationsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<CreateProjectsLocationsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(10528, __c329, 0) as any as S.Schema<CreateProjectsLocationsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5370,11 +5406,11 @@ export const createProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    389,
-    __c48,
-    5,
+    10656,
+    __c333,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5392,8 +5428,8 @@ export const createProjectsLocationsSipTrunks: API.OperationMethod<
   CreateProjectsLocationsSipTrunksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<CreateProjectsLocationsSipTrunksRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
+  input: __S(10688, __c334, 0) as any as S.Schema<CreateProjectsLocationsSipTrunksRequest>,
+  output: __S(10727, __c335, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5411,8 +5447,8 @@ export const createProjectsLocationsTools: API.OperationMethod<
   CreateProjectsLocationsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<CreateProjectsLocationsToolsRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
+  input: __S(10752, __c336, 0) as any as S.Schema<CreateProjectsLocationsToolsRequest>,
+  output: __S(10801, __c337, 17) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5425,8 +5461,8 @@ export const deleteAgentProjects: API.OperationMethod<
   DeleteAgentProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<DeleteAgentProjectsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(10816, __c338, 0) as any as S.Schema<DeleteAgentProjectsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5444,8 +5480,8 @@ export const deleteAgentProjectsLocations: API.OperationMethod<
   DeleteAgentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<DeleteAgentProjectsLocationsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(10848, __c339, 0) as any as S.Schema<DeleteAgentProjectsLocationsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5464,11 +5500,11 @@ export const deleteContextsProjectsAgentEnvironmentsUsersSessions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    420,
-    __c52,
-    4,
+    10880,
+    __c340,
+    0,
   ) as any as S.Schema<DeleteContextsProjectsAgentEnvironmentsUsersSessionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5486,8 +5522,8 @@ export const deleteContextsProjectsAgentSessions: API.OperationMethod<
   DeleteContextsProjectsAgentSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<DeleteContextsProjectsAgentSessionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(10912, __c341, 0) as any as S.Schema<DeleteContextsProjectsAgentSessionsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5506,11 +5542,11 @@ export const deleteContextsProjectsLocationsAgentEnvironmentsUsersSessions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    422,
-    __c52,
-    6,
+    10944,
+    __c342,
+    0,
   ) as any as S.Schema<DeleteContextsProjectsLocationsAgentEnvironmentsUsersSessionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5528,8 +5564,12 @@ export const deleteContextsProjectsLocationsAgentSessions: API.OperationMethod<
   DeleteContextsProjectsLocationsAgentSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<DeleteContextsProjectsLocationsAgentSessionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(
+    10976,
+    __c343,
+    0,
+  ) as any as S.Schema<DeleteContextsProjectsLocationsAgentSessionsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5547,8 +5587,8 @@ export const deleteProjectsAgentEntityTypes: API.OperationMethod<
   DeleteProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<DeleteProjectsAgentEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11008, __c344, 0) as any as S.Schema<DeleteProjectsAgentEntityTypesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5566,8 +5606,8 @@ export const deleteProjectsAgentEnvironments: API.OperationMethod<
   DeleteProjectsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<DeleteProjectsAgentEnvironmentsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11136, __c348, 0) as any as S.Schema<DeleteProjectsAgentEnvironmentsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5586,11 +5626,11 @@ export const deleteProjectsAgentEnvironmentsUsersSessionsContexts: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    426,
-    __c53,
-    2,
+    11168,
+    __c349,
+    0,
   ) as any as S.Schema<DeleteProjectsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5609,11 +5649,11 @@ export const deleteProjectsAgentEnvironmentsUsersSessionsEntityTypes: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    427,
-    __c53,
-    3,
+    11200,
+    __c350,
+    0,
   ) as any as S.Schema<DeleteProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5631,8 +5671,8 @@ export const deleteProjectsAgentIntents: API.OperationMethod<
   DeleteProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<DeleteProjectsAgentIntentsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11232, __c351, 0) as any as S.Schema<DeleteProjectsAgentIntentsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5650,8 +5690,8 @@ export const deleteProjectsAgentKnowledgeBases: API.OperationMethod<
   DeleteProjectsAgentKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<DeleteProjectsAgentKnowledgeBasesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11264, __c352, 0) as any as S.Schema<DeleteProjectsAgentKnowledgeBasesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5669,8 +5709,12 @@ export const deleteProjectsAgentKnowledgeBasesDocuments: API.OperationMethod<
   DeleteProjectsAgentKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<DeleteProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    11296,
+    __c353,
+    0,
+  ) as any as S.Schema<DeleteProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5688,8 +5732,8 @@ export const deleteProjectsAgentSessionsContexts: API.OperationMethod<
   DeleteProjectsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<DeleteProjectsAgentSessionsContextsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11328, __c354, 0) as any as S.Schema<DeleteProjectsAgentSessionsContextsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5707,8 +5751,8 @@ export const deleteProjectsAgentSessionsEntityTypes: API.OperationMethod<
   DeleteProjectsAgentSessionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<DeleteProjectsAgentSessionsEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11360, __c355, 0) as any as S.Schema<DeleteProjectsAgentSessionsEntityTypesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5726,8 +5770,8 @@ export const deleteProjectsAgentVersions: API.OperationMethod<
   DeleteProjectsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<DeleteProjectsAgentVersionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11392, __c356, 0) as any as S.Schema<DeleteProjectsAgentVersionsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5745,8 +5789,8 @@ export const deleteProjectsConversationProfiles: API.OperationMethod<
   DeleteProjectsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<DeleteProjectsConversationProfilesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11424, __c357, 0) as any as S.Schema<DeleteProjectsConversationProfilesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5764,8 +5808,8 @@ export const deleteProjectsKnowledgeBases: API.OperationMethod<
   DeleteProjectsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<DeleteProjectsKnowledgeBasesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11488, __c359, 0) as any as S.Schema<DeleteProjectsKnowledgeBasesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5783,8 +5827,8 @@ export const deleteProjectsKnowledgeBasesDocuments: API.OperationMethod<
   DeleteProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<DeleteProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(11520, __c360, 0) as any as S.Schema<DeleteProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5802,8 +5846,8 @@ export const deleteProjectsLocationsAgentEntityTypes: API.OperationMethod<
   DeleteProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<DeleteProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11552, __c361, 0) as any as S.Schema<DeleteProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5821,8 +5865,8 @@ export const deleteProjectsLocationsAgentEnvironments: API.OperationMethod<
   DeleteProjectsLocationsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<DeleteProjectsLocationsAgentEnvironmentsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11584, __c362, 0) as any as S.Schema<DeleteProjectsLocationsAgentEnvironmentsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5841,11 +5885,11 @@ export const deleteProjectsLocationsAgentEnvironmentsUsersSessionsContexts: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    439,
-    __c54,
-    7,
+    11616,
+    __c363,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5864,11 +5908,11 @@ export const deleteProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypes: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    440,
-    __c55,
+    11648,
+    __c364,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5886,8 +5930,8 @@ export const deleteProjectsLocationsAgentIntents: API.OperationMethod<
   DeleteProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<DeleteProjectsLocationsAgentIntentsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11680, __c365, 0) as any as S.Schema<DeleteProjectsLocationsAgentIntentsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5905,8 +5949,12 @@ export const deleteProjectsLocationsAgentSessionsContexts: API.OperationMethod<
   DeleteProjectsLocationsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<DeleteProjectsLocationsAgentSessionsContextsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(
+    11712,
+    __c366,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsAgentSessionsContextsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5925,11 +5973,11 @@ export const deleteProjectsLocationsAgentSessionsEntityTypes: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    443,
-    __c55,
-    3,
+    11744,
+    __c367,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsAgentSessionsEntityTypesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5947,8 +5995,8 @@ export const deleteProjectsLocationsAgentVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<DeleteProjectsLocationsAgentVersionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11776, __c368, 0) as any as S.Schema<DeleteProjectsLocationsAgentVersionsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5966,8 +6014,8 @@ export const deleteProjectsLocationsCompanionAgents: API.OperationMethod<
   DeleteProjectsLocationsCompanionAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<DeleteProjectsLocationsCompanionAgentsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11840, __c370, 0) as any as S.Schema<DeleteProjectsLocationsCompanionAgentsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5985,8 +6033,12 @@ export const deleteProjectsLocationsConversationProfiles: API.OperationMethod<
   DeleteProjectsLocationsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<DeleteProjectsLocationsConversationProfilesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(
+    11872,
+    __c371,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsConversationProfilesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6004,8 +6056,8 @@ export const deleteProjectsLocationsGenerators: API.OperationMethod<
   DeleteProjectsLocationsGeneratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<DeleteProjectsLocationsGeneratorsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11904, __c372, 0) as any as S.Schema<DeleteProjectsLocationsGeneratorsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6023,8 +6075,12 @@ export const deleteProjectsLocationsGeneratorsEvaluations: API.OperationMethod<
   DeleteProjectsLocationsGeneratorsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<DeleteProjectsLocationsGeneratorsEvaluationsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(
+    11936,
+    __c373,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsGeneratorsEvaluationsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6042,8 +6098,8 @@ export const deleteProjectsLocationsKnowledgeBases: API.OperationMethod<
   DeleteProjectsLocationsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<DeleteProjectsLocationsKnowledgeBasesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11968, __c374, 0) as any as S.Schema<DeleteProjectsLocationsKnowledgeBasesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6062,11 +6118,11 @@ export const deleteProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    450,
-    __c56,
-    2,
+    12000,
+    __c375,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6084,8 +6140,8 @@ export const deleteProjectsLocationsPhoneNumbers: API.OperationMethod<
   DeleteProjectsLocationsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<DeleteProjectsLocationsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(12032, __c376, 0) as any as S.Schema<DeleteProjectsLocationsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6103,8 +6159,8 @@ export const deleteProjectsLocationsSipTrunks: API.OperationMethod<
   DeleteProjectsLocationsSipTrunksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<DeleteProjectsLocationsSipTrunksRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(12096, __c378, 0) as any as S.Schema<DeleteProjectsLocationsSipTrunksRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6122,8 +6178,8 @@ export const deleteProjectsLocationsTools: API.OperationMethod<
   DeleteProjectsLocationsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<DeleteProjectsLocationsToolsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(12128, __c379, 0) as any as S.Schema<DeleteProjectsLocationsToolsRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6141,8 +6197,8 @@ export const deleteProjectsPhoneNumbers: API.OperationMethod<
   DeleteProjectsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<DeleteProjectsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(12160, __c380, 0) as any as S.Schema<DeleteProjectsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6161,11 +6217,15 @@ export const detectIntentProjectsAgentEnvironmentsUsersSessions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    460,
-    __c57,
-    4,
+    64,
+    __c2,
+    0,
   ) as any as S.Schema<DetectIntentProjectsAgentEnvironmentsUsersSessionsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
+  output: __S(
+    8556,
+    __c267,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6183,8 +6243,12 @@ export const detectIntentProjectsAgentSessions: API.OperationMethod<
   DetectIntentProjectsAgentSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<DetectIntentProjectsAgentSessionsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DetectIntentProjectsAgentSessionsRequest>,
+  output: __S(
+    8556,
+    __c267,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6203,11 +6267,15 @@ export const detectIntentProjectsLocationsAgentEnvironmentsUsersSessions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    462,
-    __c57,
-    6,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<DetectIntentProjectsLocationsAgentEnvironmentsUsersSessionsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
+  output: __S(
+    8556,
+    __c267,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6225,8 +6293,12 @@ export const detectIntentProjectsLocationsAgentSessions: API.OperationMethod<
   DetectIntentProjectsLocationsAgentSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<DetectIntentProjectsLocationsAgentSessionsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DetectIntentProjectsLocationsAgentSessionsRequest>,
+  output: __S(
+    8556,
+    __c267,
+    12,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1DetectIntentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6239,8 +6311,8 @@ export const exportProjectsAgent: API.OperationMethod<
   ExportProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<ExportProjectsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(224, __c7, 0) as any as S.Schema<ExportProjectsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6258,8 +6330,8 @@ export const exportProjectsLocationsAgent: API.OperationMethod<
   ExportProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<ExportProjectsLocationsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(288, __c9, 0) as any as S.Schema<ExportProjectsLocationsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6277,11 +6349,11 @@ export const generateProjectsConversationsSuggestions: API.OperationMethod<
   GenerateProjectsConversationsSuggestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GenerateProjectsConversationsSuggestionsRequest>,
+  input: __S(320, __c10, 0) as any as S.Schema<GenerateProjectsConversationsSuggestionsRequest>,
   output: __S(
-    133,
-    __c16,
-    5,
+    8674,
+    __c271,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6301,14 +6373,14 @@ export const generateProjectsLocationsConversationsSuggestions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    469,
-    __c58,
-    5,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<GenerateProjectsLocationsConversationsSuggestionsRequest>,
   output: __S(
-    133,
-    __c16,
-    5,
+    8674,
+    __c271,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6327,11 +6399,11 @@ export const generateProjectsLocationsStatelessSuggestion: API.OperationMethod<
   GenerateProjectsLocationsStatelessSuggestionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GenerateProjectsLocationsStatelessSuggestionRequest>,
+  input: __S(417, __c13, 1) as any as S.Schema<GenerateProjectsLocationsStatelessSuggestionRequest>,
   output: __S(
-    472,
-    __c59,
-    0,
+    418,
+    __c13,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6351,14 +6423,14 @@ export const generateStatelessSummaryProjectsLocationsSuggestions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    475,
-    __c59,
-    3,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<GenerateStatelessSummaryProjectsLocationsSuggestionsRequest>,
   output: __S(
-    477,
-    __c59,
-    5,
+    483,
+    __c15,
+    3,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6377,11 +6449,11 @@ export const generateStatelessSummaryProjectsSuggestions: API.OperationMethod<
   GenerateStatelessSummaryProjectsSuggestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<GenerateStatelessSummaryProjectsSuggestionsRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<GenerateStatelessSummaryProjectsSuggestionsRequest>,
   output: __S(
-    477,
-    __c59,
-    5,
+    483,
+    __c15,
+    3,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6395,8 +6467,8 @@ export const getAgentProjects: API.OperationMethod<
   GetAgentProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<GetAgentProjectsRequest>,
-  output: __S(480, __c60, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetAgentProjectsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6409,8 +6481,8 @@ export const getAgentProjectsLocations: API.OperationMethod<
   GetAgentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<GetAgentProjectsLocationsRequest>,
-  output: __S(480, __c60, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetAgentProjectsLocationsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6423,8 +6495,8 @@ export const getEncryptionSpecProjectsLocations: API.OperationMethod<
   GetEncryptionSpecProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<GetEncryptionSpecProjectsLocationsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1EncryptionSpec>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetEncryptionSpecProjectsLocationsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EncryptionSpec>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6437,8 +6509,8 @@ export const getFulfillmentProjectsAgent: API.OperationMethod<
   GetFulfillmentProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<GetFulfillmentProjectsAgentRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetFulfillmentProjectsAgentRequest>,
+  output: __S(8034, __c251, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6451,8 +6523,8 @@ export const getFulfillmentProjectsLocationsAgent: API.OperationMethod<
   GetFulfillmentProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<GetFulfillmentProjectsLocationsAgentRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetFulfillmentProjectsLocationsAgentRequest>,
+  output: __S(8034, __c251, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6466,8 +6538,8 @@ export const getHistoryProjectsAgentEnvironments: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1EnvironmentHistory
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<GetHistoryProjectsAgentEnvironmentsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1EnvironmentHistory>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetHistoryProjectsAgentEnvironmentsRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1EnvironmentHistory>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6482,8 +6554,8 @@ export const getHistoryProjectsLocationsAgentEnvironments: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudDialogflowV2beta1EnvironmentHistory
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<GetHistoryProjectsLocationsAgentEnvironmentsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1EnvironmentHistory>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetHistoryProjectsLocationsAgentEnvironmentsRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1EnvironmentHistory>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6497,8 +6569,8 @@ export const getProjectsAgentEntityTypes: API.OperationMethod<
   GetProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<GetProjectsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetProjectsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6511,8 +6583,8 @@ export const getProjectsAgentEnvironments: API.OperationMethod<
   GetProjectsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<GetProjectsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetProjectsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6529,11 +6601,11 @@ export const getProjectsAgentEnvironmentsUsersSessionsContexts: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    493,
-    __c61,
-    5,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<GetProjectsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6550,11 +6622,11 @@ export const getProjectsAgentEnvironmentsUsersSessionsEntityTypes: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    494,
-    __c61,
-    6,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<GetProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6567,8 +6639,8 @@ export const getProjectsAgentIntents: API.OperationMethod<
   GetProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<GetProjectsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetProjectsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6581,8 +6653,8 @@ export const getProjectsAgentKnowledgeBases: API.OperationMethod<
   GetProjectsAgentKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<GetProjectsAgentKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetProjectsAgentKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6595,8 +6667,8 @@ export const getProjectsAgentKnowledgeBasesDocuments: API.OperationMethod<
   GetProjectsAgentKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<GetProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(8290, __c259, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6609,8 +6681,8 @@ export const getProjectsAgentSessionsContexts: API.OperationMethod<
   GetProjectsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<GetProjectsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetProjectsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6623,8 +6695,8 @@ export const getProjectsAgentSessionsEntityTypes: API.OperationMethod<
   GetProjectsAgentSessionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<GetProjectsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetProjectsAgentSessionsEntityTypesRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6637,8 +6709,8 @@ export const getProjectsAgentVersions: API.OperationMethod<
   GetProjectsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<GetProjectsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetProjectsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6651,8 +6723,8 @@ export const getProjectsAnswerRecords: API.OperationMethod<
   GetProjectsAnswerRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<GetProjectsAnswerRecordsRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetProjectsAnswerRecordsRequest>,
+  output: __S(1382, __c43, 6) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6665,8 +6737,8 @@ export const getProjectsConversationProfiles: API.OperationMethod<
   GetProjectsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<GetProjectsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetProjectsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6679,8 +6751,8 @@ export const getProjectsConversations: API.OperationMethod<
   GetProjectsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<GetProjectsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetProjectsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6693,8 +6765,8 @@ export const getProjectsConversationsParticipants: API.OperationMethod<
   GetProjectsConversationsParticipantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<GetProjectsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetProjectsConversationsParticipantsRequest>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6707,8 +6779,8 @@ export const getProjectsKnowledgeBases: API.OperationMethod<
   GetProjectsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<GetProjectsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetProjectsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6721,8 +6793,8 @@ export const getProjectsKnowledgeBasesDocuments: API.OperationMethod<
   GetProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<GetProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(8290, __c259, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6735,8 +6807,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(515, __c64, 3) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GoogleCloudLocationLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6749,8 +6821,8 @@ export const getProjectsLocationsAgentEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<GetProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6763,8 +6835,8 @@ export const getProjectsLocationsAgentEnvironments: API.OperationMethod<
   GetProjectsLocationsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<GetProjectsLocationsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetProjectsLocationsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6781,11 +6853,11 @@ export const getProjectsLocationsAgentEnvironmentsUsersSessionsContexts: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    518,
-    __c64,
-    6,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<GetProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6802,11 +6874,11 @@ export const getProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypes: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    519,
-    __c64,
-    7,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<GetProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6819,8 +6891,8 @@ export const getProjectsLocationsAgentIntents: API.OperationMethod<
   GetProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<GetProjectsLocationsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetProjectsLocationsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6833,8 +6905,8 @@ export const getProjectsLocationsAgentSessionsContexts: API.OperationMethod<
   GetProjectsLocationsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<GetProjectsLocationsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetProjectsLocationsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6847,8 +6919,12 @@ export const getProjectsLocationsAgentSessionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentSessionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<GetProjectsLocationsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  input: __S(
+    1888,
+    __c59,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsAgentSessionsEntityTypesRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6861,8 +6937,8 @@ export const getProjectsLocationsAgentVersions: API.OperationMethod<
   GetProjectsLocationsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<GetProjectsLocationsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetProjectsLocationsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6875,8 +6951,8 @@ export const getProjectsLocationsAnswerRecords: API.OperationMethod<
   GetProjectsLocationsAnswerRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetProjectsLocationsAnswerRecordsRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetProjectsLocationsAnswerRecordsRequest>,
+  output: __S(1382, __c43, 6) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6889,8 +6965,8 @@ export const getProjectsLocationsCompanionAgents: API.OperationMethod<
   GetProjectsLocationsCompanionAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<GetProjectsLocationsCompanionAgentsRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetProjectsLocationsCompanionAgentsRequest>,
+  output: __S(10308, __c322, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6903,8 +6979,8 @@ export const getProjectsLocationsConversationProfiles: API.OperationMethod<
   GetProjectsLocationsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<GetProjectsLocationsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetProjectsLocationsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6917,8 +6993,8 @@ export const getProjectsLocationsConversations: API.OperationMethod<
   GetProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<GetProjectsLocationsConversationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetProjectsLocationsConversationsRequest>,
+  output: __S(7752, __c242, 8) as any as S.Schema<GoogleCloudDialogflowV2beta1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6932,11 +7008,11 @@ export const getProjectsLocationsConversationsParticipants: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    528,
-    __c66,
+    2080,
+    __c65,
     0,
   ) as any as S.Schema<GetProjectsLocationsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6949,8 +7025,8 @@ export const getProjectsLocationsGenerators: API.OperationMethod<
   GetProjectsLocationsGeneratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<GetProjectsLocationsGeneratorsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetProjectsLocationsGeneratorsRequest>,
+  output: __S(9902, __c309, 14) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6963,8 +7039,12 @@ export const getProjectsLocationsGeneratorsEvaluations: API.OperationMethod<
   GetProjectsLocationsGeneratorsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<GetProjectsLocationsGeneratorsEvaluationsRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1GeneratorEvaluation>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetProjectsLocationsGeneratorsEvaluationsRequest>,
+  output: __S(
+    10523,
+    __c328,
+    27,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1GeneratorEvaluation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6977,8 +7057,8 @@ export const getProjectsLocationsKnowledgeBases: API.OperationMethod<
   GetProjectsLocationsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetProjectsLocationsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetProjectsLocationsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6991,8 +7071,8 @@ export const getProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod<
   GetProjectsLocationsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<GetProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetProjectsLocationsKnowledgeBasesDocumentsRequest>,
+  output: __S(8290, __c259, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7005,8 +7085,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7019,8 +7099,8 @@ export const getProjectsLocationsSipTrunks: API.OperationMethod<
   GetProjectsLocationsSipTrunksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<GetProjectsLocationsSipTrunksRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetProjectsLocationsSipTrunksRequest>,
+  output: __S(10727, __c335, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7033,8 +7113,8 @@ export const getProjectsLocationsTools: API.OperationMethod<
   GetProjectsLocationsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<GetProjectsLocationsToolsRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetProjectsLocationsToolsRequest>,
+  output: __S(10801, __c337, 17) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7047,8 +7127,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7061,8 +7141,8 @@ export const getValidationResultProjectsAgent: API.OperationMethod<
   GetValidationResultProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<GetValidationResultProjectsAgentRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ValidationResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetValidationResultProjectsAgentRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1ValidationResult>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7075,8 +7155,8 @@ export const getValidationResultProjectsLocationsAgent: API.OperationMethod<
   GetValidationResultProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<GetValidationResultProjectsLocationsAgentRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ValidationResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetValidationResultProjectsLocationsAgentRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1ValidationResult>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7089,8 +7169,8 @@ export const importProjectsAgent: API.OperationMethod<
   ImportProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<ImportProjectsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ImportProjectsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7108,8 +7188,8 @@ export const importProjectsKnowledgeBasesDocuments: API.OperationMethod<
   ImportProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<ImportProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ImportProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7127,8 +7207,8 @@ export const importProjectsLocationsAgent: API.OperationMethod<
   ImportProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<ImportProjectsLocationsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ImportProjectsLocationsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7147,11 +7227,11 @@ export const importProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    549,
-    __c68,
-    5,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7170,14 +7250,14 @@ export const ingestContextReferencesProjectsLocationsConversations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    551,
-    __c68,
-    7,
+    2817,
+    __c88,
+    1,
   ) as any as S.Schema<IngestContextReferencesProjectsLocationsConversationsRequest>,
   output: __S(
-    552,
-    __c69,
-    0,
+    2818,
+    __c88,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1IngestContextReferencesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7196,8 +7276,8 @@ export const initializeProjectsLocationsEncryptionSpec: API.OperationMethod<
   InitializeProjectsLocationsEncryptionSpecError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<InitializeProjectsLocationsEncryptionSpecRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2849, __c89, 1) as any as S.Schema<InitializeProjectsLocationsEncryptionSpecRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7211,11 +7291,11 @@ export const listProjectsAgentEntityTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<ListProjectsAgentEntityTypesRequest>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListProjectsAgentEntityTypesRequest>,
   output: __S(
-    556,
-    __c69,
-    4,
+    2912,
+    __c91,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7231,11 +7311,11 @@ export const listProjectsAgentEnvironments: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<ListProjectsAgentEnvironmentsRequest>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListProjectsAgentEnvironmentsRequest>,
   output: __S(
-    559,
-    __c69,
-    7,
+    2977,
+    __c93,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7251,8 +7331,8 @@ export const listProjectsAgentEnvironmentsIntents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListIntentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<ListProjectsAgentEnvironmentsIntentsRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListProjectsAgentEnvironmentsIntentsRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7271,11 +7351,11 @@ export const listProjectsAgentEnvironmentsUsersSessionsContexts: API.PaginatedOp
   GoogleCloudDialogflowV2beta1ListContextsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    562,
-    __c70,
-    2,
+    3072,
+    __c96,
+    0,
   ) as any as S.Schema<ListProjectsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
+  output: __S(3104, __c97, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7294,14 +7374,14 @@ export const listProjectsAgentEnvironmentsUsersSessionsEntityTypes: API.Paginate
   GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    564,
-    __c70,
-    4,
+    3136,
+    __c98,
+    0,
   ) as any as S.Schema<ListProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
   output: __S(
-    565,
-    __c70,
-    5,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7317,8 +7397,8 @@ export const listProjectsAgentIntents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListIntentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<ListProjectsAgentIntentsRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListProjectsAgentIntentsRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7333,10 +7413,10 @@ export const listProjectsAgentKnowledgeBases: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<ListProjectsAgentKnowledgeBasesRequest>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListProjectsAgentKnowledgeBasesRequest>,
   output: __S(
-    569,
-    __c71,
+    3329,
+    __c104,
     1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7353,8 +7433,12 @@ export const listProjectsAgentKnowledgeBasesDocuments: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<ListProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(
+    3393,
+    __c106,
+    1,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7369,8 +7453,8 @@ export const listProjectsAgentSessionsContexts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListContextsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<ListProjectsAgentSessionsContextsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListProjectsAgentSessionsContextsRequest>,
+  output: __S(3104, __c97, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7385,11 +7469,11 @@ export const listProjectsAgentSessionsEntityTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<ListProjectsAgentSessionsEntityTypesRequest>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListProjectsAgentSessionsEntityTypesRequest>,
   output: __S(
-    565,
-    __c70,
-    5,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7405,8 +7489,8 @@ export const listProjectsAgentVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<ListProjectsAgentVersionsRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListVersionsResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListProjectsAgentVersionsRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7421,11 +7505,11 @@ export const listProjectsAnswerRecords: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<ListProjectsAnswerRecordsRequest>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListProjectsAnswerRecordsRequest>,
   output: __S(
-    580,
-    __c72,
-    4,
+    3585,
+    __c112,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7441,11 +7525,11 @@ export const listProjectsConversationProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListConversationProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<ListProjectsConversationProfilesRequest>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListProjectsConversationProfilesRequest>,
   output: __S(
-    583,
-    __c72,
-    7,
+    3649,
+    __c114,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListConversationProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7461,11 +7545,11 @@ export const listProjectsConversations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<ListProjectsConversationsRequest>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ListProjectsConversationsRequest>,
   output: __S(
-    586,
-    __c73,
-    2,
+    3713,
+    __c116,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7481,8 +7565,8 @@ export const listProjectsConversationsMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<ListProjectsConversationsMessagesRequest>,
-  output: __S(588, __c73, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ListMessagesResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListProjectsConversationsMessagesRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7497,11 +7581,11 @@ export const listProjectsConversationsParticipants: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListParticipantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<ListProjectsConversationsParticipantsRequest>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListProjectsConversationsParticipantsRequest>,
   output: __S(
-    591,
-    __c73,
-    7,
+    3841,
+    __c120,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListParticipantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7521,13 +7605,13 @@ export const listProjectsConversationsParticipantsSuggestions: API.PaginatedOper
   GoogleCloudDialogflowV2beta1ListSuggestionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    592,
-    __c74,
+    3936,
+    __c123,
     0,
   ) as any as S.Schema<ListProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    594,
-    __c74,
+    3938,
+    __c123,
     2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSuggestionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7544,8 +7628,12 @@ export const listProjectsGenerators: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListGeneratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<ListProjectsGeneratorsRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1ListGeneratorsResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListProjectsGeneratorsRequest>,
+  output: __S(
+    4001,
+    __c125,
+    1,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListGeneratorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7560,10 +7648,10 @@ export const listProjectsKnowledgeBases: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<ListProjectsKnowledgeBasesRequest>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListProjectsKnowledgeBasesRequest>,
   output: __S(
-    569,
-    __c71,
+    3329,
+    __c104,
     1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7580,8 +7668,12 @@ export const listProjectsKnowledgeBasesDocuments: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<ListProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ListProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(
+    3393,
+    __c106,
+    1,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7596,8 +7688,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(4098, __c128, 2) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7612,11 +7704,11 @@ export const listProjectsLocationsAgentEntityTypes: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<ListProjectsLocationsAgentEntityTypesRequest>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ListProjectsLocationsAgentEntityTypesRequest>,
   output: __S(
-    556,
-    __c69,
-    4,
+    2912,
+    __c91,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7632,11 +7724,11 @@ export const listProjectsLocationsAgentEnvironments: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<ListProjectsLocationsAgentEnvironmentsRequest>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ListProjectsLocationsAgentEnvironmentsRequest>,
   output: __S(
-    559,
-    __c69,
-    7,
+    2977,
+    __c93,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7653,11 +7745,11 @@ export const listProjectsLocationsAgentEnvironmentsIntents: API.PaginatedOperati
   GoogleCloudDialogflowV2beta1ListIntentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    605,
-    __c75,
-    5,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAgentEnvironmentsIntentsRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7676,11 +7768,11 @@ export const listProjectsLocationsAgentEnvironmentsUsersSessionsContexts: API.Pa
   GoogleCloudDialogflowV2beta1ListContextsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    606,
-    __c75,
-    6,
+    4224,
+    __c132,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
+  output: __S(3104, __c97, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7699,14 +7791,14 @@ export const listProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypes: API
   GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    607,
-    __c75,
-    7,
+    4256,
+    __c133,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
   output: __S(
-    565,
-    __c70,
-    5,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7722,8 +7814,8 @@ export const listProjectsLocationsAgentIntents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListIntentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<ListProjectsLocationsAgentIntentsRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListProjectsLocationsAgentIntentsRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListIntentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7738,8 +7830,8 @@ export const listProjectsLocationsAgentSessionsContexts: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListContextsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(609, __c76, 1) as any as S.Schema<ListProjectsLocationsAgentSessionsContextsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListProjectsLocationsAgentSessionsContextsRequest>,
+  output: __S(3104, __c97, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListContextsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7755,14 +7847,14 @@ export const listProjectsLocationsAgentSessionsEntityTypes: API.PaginatedOperati
   GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    610,
-    __c76,
-    2,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAgentSessionsEntityTypesRequest>,
   output: __S(
-    565,
-    __c70,
-    5,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7778,8 +7870,8 @@ export const listProjectsLocationsAgentVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<ListProjectsLocationsAgentVersionsRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListVersionsResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<ListProjectsLocationsAgentVersionsRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7794,11 +7886,11 @@ export const listProjectsLocationsAnswerRecords: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<ListProjectsLocationsAnswerRecordsRequest>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ListProjectsLocationsAnswerRecordsRequest>,
   output: __S(
-    580,
-    __c72,
-    4,
+    3585,
+    __c112,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7814,11 +7906,11 @@ export const listProjectsLocationsCompanionAgents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<ListProjectsLocationsCompanionAgentsRequest>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListProjectsLocationsCompanionAgentsRequest>,
   output: __S(
-    615,
-    __c76,
-    7,
+    4482,
+    __c140,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7834,11 +7926,11 @@ export const listProjectsLocationsConversationProfiles: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListConversationProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<ListProjectsLocationsConversationProfilesRequest>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListProjectsLocationsConversationProfilesRequest>,
   output: __S(
-    583,
-    __c72,
-    7,
+    3649,
+    __c114,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListConversationProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7854,11 +7946,11 @@ export const listProjectsLocationsConversations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(617, __c77, 1) as any as S.Schema<ListProjectsLocationsConversationsRequest>,
+  input: __S(4544, __c142, 0) as any as S.Schema<ListProjectsLocationsConversationsRequest>,
   output: __S(
-    586,
-    __c73,
-    2,
+    3713,
+    __c116,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7874,8 +7966,8 @@ export const listProjectsLocationsConversationsMessages: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<ListProjectsLocationsConversationsMessagesRequest>,
-  output: __S(588, __c73, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ListMessagesResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListProjectsLocationsConversationsMessagesRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7891,14 +7983,14 @@ export const listProjectsLocationsConversationsParticipants: API.PaginatedOperat
   GoogleCloudDialogflowV2beta1ListParticipantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    619,
-    __c77,
-    3,
+    4608,
+    __c144,
+    0,
   ) as any as S.Schema<ListProjectsLocationsConversationsParticipantsRequest>,
   output: __S(
-    591,
-    __c73,
-    7,
+    3841,
+    __c120,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListParticipantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7914,8 +8006,12 @@ export const listProjectsLocationsGenerators: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListGeneratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<ListProjectsLocationsGeneratorsRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1ListGeneratorsResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<ListProjectsLocationsGeneratorsRequest>,
+  output: __S(
+    4001,
+    __c125,
+    1,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListGeneratorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7930,11 +8026,11 @@ export const listProjectsLocationsGeneratorsEvaluations: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<ListProjectsLocationsGeneratorsEvaluationsRequest>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListProjectsLocationsGeneratorsEvaluationsRequest>,
   output: __S(
-    623,
-    __c77,
-    7,
+    4706,
+    __c147,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7950,10 +8046,10 @@ export const listProjectsLocationsKnowledgeBases: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<ListProjectsLocationsKnowledgeBasesRequest>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListProjectsLocationsKnowledgeBasesRequest>,
   output: __S(
-    569,
-    __c71,
+    3329,
+    __c104,
     1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7970,8 +8066,16 @@ export const listProjectsLocationsKnowledgeBasesDocuments: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<ListProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
+  input: __S(
+    4768,
+    __c149,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsKnowledgeBasesDocumentsRequest>,
+  output: __S(
+    3393,
+    __c106,
+    1,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7986,8 +8090,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(626, __c78, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(4833, __c151, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8002,11 +8106,11 @@ export const listProjectsLocationsPhoneNumbers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<ListProjectsLocationsPhoneNumbersRequest>,
+  input: __S(4864, __c152, 0) as any as S.Schema<ListProjectsLocationsPhoneNumbersRequest>,
   output: __S(
-    631,
-    __c78,
-    7,
+    4897,
+    __c153,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8022,8 +8126,12 @@ export const listProjectsLocationsSipTrunks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListSipTrunksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<ListProjectsLocationsSipTrunksRequest>,
-  output: __S(634, __c79, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSipTrunksResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ListProjectsLocationsSipTrunksRequest>,
+  output: __S(
+    4930,
+    __c154,
+    2,
+  ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListSipTrunksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8038,8 +8146,8 @@ export const listProjectsLocationsTools: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<ListProjectsLocationsToolsRequest>,
-  output: __S(637, __c79, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1ListToolsResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListProjectsLocationsToolsRequest>,
+  output: __S(4962, __c155, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1ListToolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8054,8 +8162,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(638, __c79, 6) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(4833, __c151, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8070,11 +8178,11 @@ export const listProjectsPhoneNumbers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(639, __c79, 7) as any as S.Schema<ListProjectsPhoneNumbersRequest>,
+  input: __S(5024, __c157, 0) as any as S.Schema<ListProjectsPhoneNumbersRequest>,
   output: __S(
-    631,
-    __c78,
-    7,
+    4897,
+    __c153,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8094,8 +8202,8 @@ export const patchProjectsAgentEntityTypes: API.OperationMethod<
   PatchProjectsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<PatchProjectsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(5088, __c159, 0) as any as S.Schema<PatchProjectsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8113,8 +8221,8 @@ export const patchProjectsAgentEnvironments: API.OperationMethod<
   PatchProjectsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<PatchProjectsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(5120, __c160, 0) as any as S.Schema<PatchProjectsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8133,11 +8241,11 @@ export const patchProjectsAgentEnvironmentsUsersSessionsContexts: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    642,
-    __c80,
-    2,
+    5152,
+    __c161,
+    0,
   ) as any as S.Schema<PatchProjectsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8156,11 +8264,11 @@ export const patchProjectsAgentEnvironmentsUsersSessionsEntityTypes: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    643,
-    __c80,
-    3,
+    5184,
+    __c162,
+    0,
   ) as any as S.Schema<PatchProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8178,8 +8286,8 @@ export const patchProjectsAgentIntents: API.OperationMethod<
   PatchProjectsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(644, __c80, 4) as any as S.Schema<PatchProjectsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(5216, __c163, 0) as any as S.Schema<PatchProjectsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8197,8 +8305,8 @@ export const patchProjectsAgentKnowledgeBases: API.OperationMethod<
   PatchProjectsAgentKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645, __c80, 5) as any as S.Schema<PatchProjectsAgentKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(5248, __c164, 0) as any as S.Schema<PatchProjectsAgentKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8216,8 +8324,8 @@ export const patchProjectsAgentKnowledgeBasesDocuments: API.OperationMethod<
   PatchProjectsAgentKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646, __c80, 6) as any as S.Schema<PatchProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5280, __c165, 0) as any as S.Schema<PatchProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8235,8 +8343,8 @@ export const patchProjectsAgentSessionsContexts: API.OperationMethod<
   PatchProjectsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647, __c80, 7) as any as S.Schema<PatchProjectsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(5312, __c166, 0) as any as S.Schema<PatchProjectsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8254,8 +8362,8 @@ export const patchProjectsAgentSessionsEntityTypes: API.OperationMethod<
   PatchProjectsAgentSessionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<PatchProjectsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  input: __S(5344, __c167, 0) as any as S.Schema<PatchProjectsAgentSessionsEntityTypesRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8273,8 +8381,8 @@ export const patchProjectsAgentVersions: API.OperationMethod<
   PatchProjectsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<PatchProjectsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(5376, __c168, 0) as any as S.Schema<PatchProjectsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8292,8 +8400,8 @@ export const patchProjectsAnswerRecords: API.OperationMethod<
   PatchProjectsAnswerRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<PatchProjectsAnswerRecordsRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
+  input: __S(5472, __c171, 0) as any as S.Schema<PatchProjectsAnswerRecordsRequest>,
+  output: __S(1382, __c43, 6) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8311,8 +8419,8 @@ export const patchProjectsConversationProfiles: API.OperationMethod<
   PatchProjectsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651, __c81, 3) as any as S.Schema<PatchProjectsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(5504, __c172, 0) as any as S.Schema<PatchProjectsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8330,8 +8438,8 @@ export const patchProjectsConversationsParticipants: API.OperationMethod<
   PatchProjectsConversationsParticipantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652, __c81, 4) as any as S.Schema<PatchProjectsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  input: __S(5536, __c173, 0) as any as S.Schema<PatchProjectsConversationsParticipantsRequest>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8349,8 +8457,8 @@ export const patchProjectsKnowledgeBases: API.OperationMethod<
   PatchProjectsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<PatchProjectsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(5568, __c174, 0) as any as S.Schema<PatchProjectsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8368,8 +8476,8 @@ export const patchProjectsKnowledgeBasesDocuments: API.OperationMethod<
   PatchProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<PatchProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5600, __c175, 0) as any as S.Schema<PatchProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8387,8 +8495,8 @@ export const patchProjectsLocationsAgentEntityTypes: API.OperationMethod<
   PatchProjectsLocationsAgentEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<PatchProjectsLocationsAgentEntityTypesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
+  input: __S(5632, __c176, 0) as any as S.Schema<PatchProjectsLocationsAgentEntityTypesRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1EntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8406,8 +8514,8 @@ export const patchProjectsLocationsAgentEnvironments: API.OperationMethod<
   PatchProjectsLocationsAgentEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<PatchProjectsLocationsAgentEnvironmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
+  input: __S(5664, __c177, 0) as any as S.Schema<PatchProjectsLocationsAgentEnvironmentsRequest>,
+  output: __S(8066, __c252, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8426,11 +8534,11 @@ export const patchProjectsLocationsAgentEnvironmentsUsersSessionsContexts: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    657,
-    __c82,
-    1,
+    5696,
+    __c178,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8449,11 +8557,11 @@ export const patchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypes: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    658,
-    __c82,
-    2,
+    5728,
+    __c179,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8471,8 +8579,8 @@ export const patchProjectsLocationsAgentIntents: API.OperationMethod<
   PatchProjectsLocationsAgentIntentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659, __c82, 3) as any as S.Schema<PatchProjectsLocationsAgentIntentsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
+  input: __S(5760, __c180, 0) as any as S.Schema<PatchProjectsLocationsAgentIntentsRequest>,
+  output: __S(8890, __c277, 26) as any as S.Schema<GoogleCloudDialogflowV2beta1Intent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8490,8 +8598,12 @@ export const patchProjectsLocationsAgentSessionsContexts: API.OperationMethod<
   PatchProjectsLocationsAgentSessionsContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<PatchProjectsLocationsAgentSessionsContextsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
+  input: __S(
+    5824,
+    __c182,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsAgentSessionsContextsRequest>,
+  output: __S(8736, __c273, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Context>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8510,11 +8622,11 @@ export const patchProjectsLocationsAgentSessionsEntityTypes: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    661,
-    __c82,
-    5,
+    5856,
+    __c183,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsAgentSessionsEntityTypesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8532,8 +8644,8 @@ export const patchProjectsLocationsAgentVersions: API.OperationMethod<
   PatchProjectsLocationsAgentVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<PatchProjectsLocationsAgentVersionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
+  input: __S(5888, __c184, 0) as any as S.Schema<PatchProjectsLocationsAgentVersionsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8551,8 +8663,8 @@ export const patchProjectsLocationsAnswerRecords: API.OperationMethod<
   PatchProjectsLocationsAnswerRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663, __c82, 7) as any as S.Schema<PatchProjectsLocationsAnswerRecordsRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
+  input: __S(5920, __c185, 0) as any as S.Schema<PatchProjectsLocationsAnswerRecordsRequest>,
+  output: __S(1382, __c43, 6) as any as S.Schema<GoogleCloudDialogflowV2beta1AnswerRecord>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8570,8 +8682,8 @@ export const patchProjectsLocationsCompanionAgents: API.OperationMethod<
   PatchProjectsLocationsCompanionAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664, __c83, 0) as any as S.Schema<PatchProjectsLocationsCompanionAgentsRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
+  input: __S(5952, __c186, 0) as any as S.Schema<PatchProjectsLocationsCompanionAgentsRequest>,
+  output: __S(10308, __c322, 4) as any as S.Schema<GoogleCloudDialogflowV2beta1CompanionAgent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8589,8 +8701,8 @@ export const patchProjectsLocationsConversationProfiles: API.OperationMethod<
   PatchProjectsLocationsConversationProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665, __c83, 1) as any as S.Schema<PatchProjectsLocationsConversationProfilesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
+  input: __S(5984, __c187, 0) as any as S.Schema<PatchProjectsLocationsConversationProfilesRequest>,
+  output: __S(7660, __c239, 12) as any as S.Schema<GoogleCloudDialogflowV2beta1ConversationProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8609,11 +8721,11 @@ export const patchProjectsLocationsConversationsParticipants: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    666,
-    __c83,
-    2,
+    6016,
+    __c188,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsConversationsParticipantsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
+  output: __S(9792, __c306, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Participant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8631,8 +8743,8 @@ export const patchProjectsLocationsGenerators: API.OperationMethod<
   PatchProjectsLocationsGeneratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<PatchProjectsLocationsGeneratorsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
+  input: __S(6048, __c189, 0) as any as S.Schema<PatchProjectsLocationsGeneratorsRequest>,
+  output: __S(9902, __c309, 14) as any as S.Schema<GoogleCloudDialogflowV2beta1Generator>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8650,8 +8762,8 @@ export const patchProjectsLocationsKnowledgeBases: API.OperationMethod<
   PatchProjectsLocationsKnowledgeBasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<PatchProjectsLocationsKnowledgeBasesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
+  input: __S(6080, __c190, 0) as any as S.Schema<PatchProjectsLocationsKnowledgeBasesRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1KnowledgeBase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8670,11 +8782,11 @@ export const patchProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    669,
-    __c83,
-    5,
+    6112,
+    __c191,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8692,8 +8804,8 @@ export const patchProjectsLocationsPhoneNumbers: API.OperationMethod<
   PatchProjectsLocationsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(670, __c83, 6) as any as S.Schema<PatchProjectsLocationsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(6208, __c194, 0) as any as S.Schema<PatchProjectsLocationsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8711,8 +8823,8 @@ export const patchProjectsLocationsSipTrunks: API.OperationMethod<
   PatchProjectsLocationsSipTrunksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<PatchProjectsLocationsSipTrunksRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
+  input: __S(6240, __c195, 0) as any as S.Schema<PatchProjectsLocationsSipTrunksRequest>,
+  output: __S(10727, __c335, 7) as any as S.Schema<GoogleCloudDialogflowV2beta1SipTrunk>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8730,8 +8842,8 @@ export const patchProjectsLocationsTools: API.OperationMethod<
   PatchProjectsLocationsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<PatchProjectsLocationsToolsRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
+  input: __S(6272, __c196, 0) as any as S.Schema<PatchProjectsLocationsToolsRequest>,
+  output: __S(10801, __c337, 17) as any as S.Schema<GoogleCloudDialogflowV2beta1Tool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8749,8 +8861,8 @@ export const patchProjectsPhoneNumbers: API.OperationMethod<
   PatchProjectsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c84, 1) as any as S.Schema<PatchProjectsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(6304, __c197, 0) as any as S.Schema<PatchProjectsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8768,8 +8880,8 @@ export const reloadProjectsAgentKnowledgeBasesDocuments: API.OperationMethod<
   ReloadProjectsAgentKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(675, __c84, 3) as any as S.Schema<ReloadProjectsAgentKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6336, __c198, 0) as any as S.Schema<ReloadProjectsAgentKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8787,8 +8899,8 @@ export const reloadProjectsKnowledgeBasesDocuments: API.OperationMethod<
   ReloadProjectsKnowledgeBasesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<ReloadProjectsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6400, __c200, 0) as any as S.Schema<ReloadProjectsKnowledgeBasesDocumentsRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8807,11 +8919,11 @@ export const reloadProjectsLocationsKnowledgeBasesDocuments: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    677,
-    __c84,
-    5,
+    6432,
+    __c201,
+    0,
   ) as any as S.Schema<ReloadProjectsLocationsKnowledgeBasesDocumentsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8824,8 +8936,8 @@ export const restoreProjectsAgent: API.OperationMethod<
   RestoreProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(679, __c84, 7) as any as S.Schema<RestoreProjectsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6464, __c202, 0) as any as S.Schema<RestoreProjectsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8843,8 +8955,8 @@ export const restoreProjectsLocationsAgent: API.OperationMethod<
   RestoreProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<RestoreProjectsLocationsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6528, __c204, 0) as any as S.Schema<RestoreProjectsLocationsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8863,14 +8975,14 @@ export const searchKnowledgeProjectsConversationsSuggestions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    694,
-    __c86,
-    6,
+    6560,
+    __c205,
+    0,
   ) as any as S.Schema<SearchKnowledgeProjectsConversationsSuggestionsRequest>,
   output: __S(
-    701,
-    __c87,
-    5,
+    6611,
+    __c206,
+    19,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchKnowledgeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8890,14 +9002,14 @@ export const searchKnowledgeProjectsLocationsConversationsSuggestions: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    702,
-    __c87,
-    6,
+    6656,
+    __c208,
+    0,
   ) as any as S.Schema<SearchKnowledgeProjectsLocationsConversationsSuggestionsRequest>,
   output: __S(
-    701,
-    __c87,
-    5,
+    6611,
+    __c206,
+    19,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchKnowledgeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8916,11 +9028,15 @@ export const searchKnowledgeProjectsLocationsSuggestions: API.OperationMethod<
   SearchKnowledgeProjectsLocationsSuggestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<SearchKnowledgeProjectsLocationsSuggestionsRequest>,
+  input: __S(
+    6688,
+    __c209,
+    0,
+  ) as any as S.Schema<SearchKnowledgeProjectsLocationsSuggestionsRequest>,
   output: __S(
-    701,
-    __c87,
-    5,
+    6611,
+    __c206,
+    19,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchKnowledgeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8939,11 +9055,11 @@ export const searchKnowledgeProjectsSuggestions: API.OperationMethod<
   SearchKnowledgeProjectsSuggestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<SearchKnowledgeProjectsSuggestionsRequest>,
+  input: __S(6720, __c210, 0) as any as S.Schema<SearchKnowledgeProjectsSuggestionsRequest>,
   output: __S(
-    701,
-    __c87,
-    5,
+    6611,
+    __c206,
+    19,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchKnowledgeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8958,8 +9074,8 @@ export const searchProjectsAgent: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1SearchAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<SearchProjectsAgentRequest>,
-  output: __S(707, __c88, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchAgentsResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<SearchProjectsAgentRequest>,
+  output: __S(6785, __c212, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchAgentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8974,8 +9090,8 @@ export const searchProjectsLocationsAgent: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDialogflowV2beta1SearchAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(708, __c88, 4) as any as S.Schema<SearchProjectsLocationsAgentRequest>,
-  output: __S(707, __c88, 3) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchAgentsResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<SearchProjectsLocationsAgentRequest>,
+  output: __S(6785, __c212, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1SearchAgentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8989,8 +9105,8 @@ export const setAgentProjects: API.OperationMethod<
   SetAgentProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709, __c88, 5) as any as S.Schema<SetAgentProjectsRequest>,
-  output: __S(480, __c60, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
+  input: __S(6848, __c214, 0) as any as S.Schema<SetAgentProjectsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9008,8 +9124,8 @@ export const setAgentProjectsLocations: API.OperationMethod<
   SetAgentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(710, __c88, 6) as any as S.Schema<SetAgentProjectsLocationsRequest>,
-  output: __S(480, __c60, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
+  input: __S(6880, __c215, 0) as any as S.Schema<SetAgentProjectsLocationsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GoogleCloudDialogflowV2beta1Agent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9028,11 +9144,11 @@ export const setSuggestionFeatureConfigProjectsConversationProfiles: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    712,
-    __c89,
+    6912,
+    __c216,
     0,
   ) as any as S.Schema<SetSuggestionFeatureConfigProjectsConversationProfilesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9051,11 +9167,11 @@ export const setSuggestionFeatureConfigProjectsLocationsConversationProfiles: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    713,
-    __c89,
-    1,
+    6976,
+    __c218,
+    0,
   ) as any as S.Schema<SetSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9074,14 +9190,14 @@ export const suggestArticlesProjectsConversationsParticipantsSuggestions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    715,
-    __c89,
-    3,
+    7008,
+    __c219,
+    0,
   ) as any as S.Schema<SuggestArticlesProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    9024,
+    __c282,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestArticlesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9101,14 +9217,14 @@ export const suggestArticlesProjectsLocationsConversationsParticipantsSuggestion
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    716,
-    __c89,
-    4,
+    7136,
+    __c223,
+    0,
   ) as any as S.Schema<SuggestArticlesProjectsLocationsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    9024,
+    __c282,
+    0,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestArticlesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9128,14 +9244,14 @@ export const suggestConversationSummaryProjectsConversationsSuggestions: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    718,
-    __c89,
-    6,
+    7168,
+    __c224,
+    0,
   ) as any as S.Schema<SuggestConversationSummaryProjectsConversationsSuggestionsRequest>,
   output: __S(
-    720,
-    __c90,
-    0,
+    7202,
+    __c225,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9155,14 +9271,14 @@ export const suggestConversationSummaryProjectsLocationsConversationsSuggestions
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    721,
-    __c90,
-    1,
+    7232,
+    __c226,
+    0,
   ) as any as S.Schema<SuggestConversationSummaryProjectsLocationsConversationsSuggestionsRequest>,
   output: __S(
-    720,
-    __c90,
-    0,
+    7202,
+    __c225,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9182,14 +9298,14 @@ export const suggestFaqAnswersProjectsConversationsParticipantsSuggestions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    723,
-    __c90,
-    3,
+    7264,
+    __c227,
+    0,
   ) as any as S.Schema<SuggestFaqAnswersProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    156,
-    __c19,
-    4,
+    9185,
+    __c287,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9209,14 +9325,14 @@ export const suggestFaqAnswersProjectsLocationsConversationsParticipantsSuggesti
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    724,
-    __c90,
-    4,
+    7328,
+    __c229,
+    0,
   ) as any as S.Schema<SuggestFaqAnswersProjectsLocationsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    156,
-    __c19,
-    4,
+    9185,
+    __c287,
+    1,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9236,14 +9352,14 @@ export const suggestKnowledgeAssistProjectsConversationsParticipantsSuggestions:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    726,
-    __c90,
-    6,
+    7360,
+    __c230,
+    0,
   ) as any as S.Schema<SuggestKnowledgeAssistProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    181,
-    __c22,
-    5,
+    9231,
+    __c288,
+    15,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9263,14 +9379,14 @@ export const suggestKnowledgeAssistProjectsLocationsConversationsParticipantsSug
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    727,
-    __c90,
-    7,
+    7424,
+    __c232,
+    0,
   ) as any as S.Schema<SuggestKnowledgeAssistProjectsLocationsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    181,
-    __c22,
-    5,
+    9231,
+    __c288,
+    15,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9290,14 +9406,14 @@ export const suggestSmartRepliesProjectsConversationsParticipantsSuggestions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    729,
-    __c91,
-    1,
+    7456,
+    __c233,
+    0,
   ) as any as S.Schema<SuggestSmartRepliesProjectsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    159,
-    __c19,
-    7,
+    9250,
+    __c289,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9317,14 +9433,14 @@ export const suggestSmartRepliesProjectsLocationsConversationsParticipantsSugges
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    730,
-    __c91,
-    2,
+    7520,
+    __c235,
+    0,
   ) as any as S.Schema<SuggestSmartRepliesProjectsLocationsConversationsParticipantsSuggestionsRequest>,
   output: __S(
-    159,
-    __c19,
-    7,
+    9250,
+    __c289,
+    2,
   ) as any as S.Schema<GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9338,8 +9454,8 @@ export const trainProjectsAgent: API.OperationMethod<
   TrainProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731, __c91, 3) as any as S.Schema<TrainProjectsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7552, __c236, 0) as any as S.Schema<TrainProjectsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9357,8 +9473,8 @@ export const trainProjectsLocationsAgent: API.OperationMethod<
   TrainProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(732, __c91, 4) as any as S.Schema<TrainProjectsLocationsAgentRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7776, __c243, 0) as any as S.Schema<TrainProjectsLocationsAgentRequest>,
+  output: __S(10624, __c332, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9376,8 +9492,8 @@ export const undeleteProjectsLocationsPhoneNumbers: API.OperationMethod<
   UndeleteProjectsLocationsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(733, __c91, 5) as any as S.Schema<UndeleteProjectsLocationsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(7808, __c244, 0) as any as S.Schema<UndeleteProjectsLocationsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9395,8 +9511,8 @@ export const undeleteProjectsPhoneNumbers: API.OperationMethod<
   UndeleteProjectsPhoneNumbersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(734, __c91, 6) as any as S.Schema<UndeleteProjectsPhoneNumbersRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
+  input: __S(7840, __c245, 0) as any as S.Schema<UndeleteProjectsPhoneNumbersRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1PhoneNumber>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9414,8 +9530,8 @@ export const updateFulfillmentProjectsAgent: API.OperationMethod<
   UpdateFulfillmentProjectsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(735, __c91, 7) as any as S.Schema<UpdateFulfillmentProjectsAgentRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
+  input: __S(7872, __c246, 0) as any as S.Schema<UpdateFulfillmentProjectsAgentRequest>,
+  output: __S(8034, __c251, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9433,8 +9549,8 @@ export const updateFulfillmentProjectsLocationsAgent: API.OperationMethod<
   UpdateFulfillmentProjectsLocationsAgentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<UpdateFulfillmentProjectsLocationsAgentRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
+  input: __S(7904, __c247, 0) as any as S.Schema<UpdateFulfillmentProjectsLocationsAgentRequest>,
+  output: __S(8034, __c251, 2) as any as S.Schema<GoogleCloudDialogflowV2beta1Fulfillment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9446,41 +9562,18 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          intent: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentInput",
+        identifier: "BatchDeleteProjectsAgentEntityTypesRequest",
       });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lifespanCount: S.optional(S.Number),
-          parameters: S.optional(__S(1, __c0, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Context",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          synonyms: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EntityTypeEntity",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -9488,241 +9581,5673 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entityOverrideMode: S.optional(S.String),
-          name: S.optional(S.String),
-          entities: S.optional(__S(7, __c0, 7)),
+          entityTypeNames: S.optional(__S(9504, __c297, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SessionEntityType",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.String),
-          project: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SubAgent",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeLatLng" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          analyzeQueryTextSentiment: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contexts: S.optional(__S(3, __c0, 3)),
-          resetContexts: S.optional(S.Boolean),
-          webhookHeaders: S.optional(__S(4, __c0, 4)),
-          platform: S.optional(S.String),
-          sessionEntityTypes: S.optional(__S(9, __c1, 1)),
-          knowledgeBaseNames: S.optional(__S(5, __c0, 5)),
-          timeZone: S.optional(S.String),
-          subAgents: S.optional(__S(11, __c1, 3)),
-          geoLocation: S.optional(__S(12, __c1, 4)),
-          payload: S.optional(__S(1, __c0, 1)),
-          sentimentAnalysisRequestConfig: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1QueryParameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boost: S.optional(S.Number),
-          phrases: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SpeechContext",
+        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          noBargeInDuration: S.optional(S.String),
-          totalDuration: S.optional(S.String),
-        }),
+          session: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+session}:detectIntent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BargeInConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          silenceDurationMs: S.optional(S.Number),
-          endOfSpeechSensitivity: S.optional(S.String),
-          prefixPaddingMs: S.optional(S.Number),
-          modelId: S.optional(S.String),
-          startOfSpeechSensitivity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          speechContexts: S.optional(__S(16, __c2, 0)),
-          languageCode: S.optional(S.String),
-          bargeInConfig: S.optional(__S(17, __c2, 1)),
-          phraseSets: S.optional(__S(5, __c0, 5)),
-          defaultNoSpeechTimeout: S.optional(S.String),
-          phraseHints: S.optional(__S(5, __c0, 5)),
-          enableVoiceActivityEvents: S.optional(S.Boolean),
-          disableNoSpeechRecognizedEvent: S.optional(S.Boolean),
-          optOutConformerModelMigration: S.optional(S.Boolean),
-          geminiAsrConfig: S.optional(__S(18, __c2, 2)),
-          model: S.optional(S.String),
-          enableWordInfo: S.optional(S.Boolean),
-          audioEncoding: S.optional(S.String),
-          sampleRateHertz: S.optional(S.Number),
-          useGeminiAsr: S.optional(S.Boolean),
-          enableAutomaticPunctuation: S.optional(S.Boolean),
-          singleUtterance: S.optional(S.Boolean),
-          modelVariant: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1InputAudioConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(19, __c2, 3)),
-          audio: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AudioInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1TextInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ssmlGender: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1VoiceSelectionParams",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          phoneticEncoding: S.optional(S.String),
-          pronunciation: S.optional(S.String),
-          phrase: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CustomPronunciationParams",
+        identifier: "DetectIntentProjectsAgentEnvironmentsUsersSessionsRequest",
       });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.suspend(() =>
+        S.Struct({
+          dtmfEvents: S.optional(__S(8704, __c272, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1TelephonyDtmfEvents",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          effectsProfileId: S.optional(__S(5, __c0, 5)),
-          voice: S.optional(__S(22, __c2, 6)),
-          pronunciations: S.optional(__S(24, __c3, 0)),
-          volumeGainDb: S.optional(S.Number),
-          pitch: S.optional(S.Number),
-          speakingRate: S.optional(S.Number),
+          event: S.optional(__S(8554, __c267, 10)),
+          text: S.optional(__S(8640, __c270, 0)),
+          dtmf: S.optional(__S(96, __c3, 0)),
+          audioConfig: S.optional(__S(8552, __c267, 8)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig",
+        identifier: "GoogleCloudDialogflowV2beta1QueryInput",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sampleRateHertz: S.optional(S.Number),
-          audioEncoding: S.optional(S.String),
-          synthesizeSpeechConfig: S.optional(__S(25, __c3, 1)),
+          outputAudioConfigMask: S.optional(S.String),
+          queryInput: S.optional(__S(97, __c3, 1)),
+          inputAudio: S.optional(S.String),
+          queryParams: S.optional(__S(8548, __c267, 4)),
+          outputAudioConfig: S.optional(__S(8553, __c267, 9)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1OutputAudioConfig",
+        identifier: "GoogleCloudDialogflowV2beta1DetectIntentRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+session}:detectIntent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectIntentProjectsAgentSessionsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+session}:detectIntent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectIntentProjectsLocationsAgentEnvironmentsUsersSessionsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+session}:detectIntent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectIntentProjectsLocationsAgentSessionsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:export",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportProjectsAgentRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ExportAgentRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:export",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:generate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateProjectsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          triggerEvents: S.optional(__S(8704, __c272, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:generate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateProjectsLocationsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextReferences: S.optional(__S(7715, __c241, 3)),
+          generator: S.optional(__S(9902, __c309, 14)),
+          generatorName: S.optional(S.String),
+          triggerEvents: S.optional(__S(8704, __c272, 0)),
+          securitySettings: S.optional(S.String),
+          conversationContext: S.optional(__S(9893, __c309, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/statelessSuggestion:generate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateProjectsLocationsStatelessSuggestionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          generatorSuggestion: S.optional(__S(9398, __c293, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(481, __c15, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:generateStatelessSummary",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateStatelessSummaryProjectsLocationsSuggestionsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(11104, __c347, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxContextSize: S.optional(S.Number),
+          statelessConversation: S.optional(__S(480, __c15, 0)),
+          latestMessage: S.optional(S.String),
+          conversationProfile: S.optional(__S(7660, __c239, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          textSections: S.optional(__S(9152, __c286, 0)),
+          baselineModelVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponseSummary",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          parameters: S.optional(__S(1, __c0, 1)),
+          latestMessage: S.optional(S.String),
+          summary: S.optional(__S(482, __c15, 2)),
+          contextSize: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EventInput",
+        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          entityValues: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(481, __c15, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:generateStatelessSummary",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateStatelessSummaryProjectsSuggestionsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAgentProjectsRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchMode: S.optional(S.String),
+          avatarUri: S.optional(S.String),
+          defaultLanguageCode: S.optional(S.String),
+          apiVersion: S.optional(S.String),
+          supportedLanguageCodes: S.optional(__S(9504, __c297, 0)),
+          timeZone: S.optional(S.String),
+          tier: S.optional(S.String),
+          classificationThreshold: S.optional(S.Number),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          parent: S.optional(S.String),
+          enableLogging: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Agent",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentProjectsLocationsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEncryptionSpecProjectsLocationsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EncryptionSpec",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFulfillmentProjectsAgentRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFulfillmentProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/history",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHistoryProjectsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentVersion: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry",
+      });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          entries: S.optional(__S(865, __c27, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EnvironmentHistory",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/history",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHistoryProjectsLocationsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/intents:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intents: S.optional(__S(1056, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8890, __c277, 26));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intentView: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentKnowledgeBasesRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAgentVersionsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAnswerRecordsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          textSections: S.optional(__S(9152, __c286, 0)),
+          summaryText: S.optional(S.String),
+          submitTimestamp: S.optional(S.String),
+          startTimestamp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedbackSummarizationFeedback",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clickedUris: S.optional(__S(9504, __c297, 0)),
+          answerCopied: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeSearchFeedback",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          summarizationFeedback: S.optional(__S(1376, __c43, 0)),
+          knowledgeSearchFeedback: S.optional(__S(1377, __c43, 1)),
+          documentCorrectness: S.optional(S.String),
+          companionFeedback: S.optional(__S(9664, __c302, 0)),
+          answerRelevance: S.optional(S.String),
+          documentEfficiency: S.optional(S.String),
+          knowledgeAssistFeedback: S.optional(__S(1377, __c43, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedback",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayed: S.optional(S.Boolean),
+          agentAssistantDetailFeedback: S.optional(__S(1378, __c43, 2)),
+          clickTime: S.optional(S.String),
+          displayTime: S.optional(S.String),
+          correctnessLevel: S.optional(S.String),
+          clicked: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AnswerFeedback",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
-          intentInput: S.optional(__S(0, __c0, 0)),
-          answerRecord: S.optional(S.String),
-          sendTime: S.optional(S.String),
-          parameters: S.optional(__S(1, __c0, 1)),
-          textOverride: S.optional(__S(21, __c2, 5)),
+          response: S.optional(S.String),
+          groundingMetadata: S.optional(__S(8938, __c279, 10)),
+          toolCalls: S.optional(__S(8942, __c279, 14)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestionInput",
+        identifier:
+          "GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          documentsMetadataFilters: S.optional(__S(4, __c0, 4)),
+          reactiveCompanionSuggestion: S.optional(__S(1380, __c43, 4)),
+          dialogflowAssistAnswer: S.optional(__S(8929, __c279, 1)),
+          companionSuggestion: S.optional(__S(8945, __c279, 17)),
+          faqAnswer: S.optional(__S(8960, __c280, 0)),
+          generatorSuggestion: S.optional(__S(9398, __c293, 22)),
+          articleSuggestionAnswer: S.optional(__S(9088, __c284, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AssistQueryParameters",
+        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantRecord",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          intentInput: S.optional(__S(0, __c0, 0)),
-          queryParams: S.optional(__S(14, __c1, 6)),
-          audioInput: S.optional(__S(20, __c2, 4)),
-          textInput: S.optional(__S(21, __c2, 5)),
-          cxCurrentPage: S.optional(S.String),
-          replyAudioConfig: S.optional(__S(26, __c3, 2)),
-          messageSendTime: S.optional(S.String),
-          cxParameters: S.optional(__S(1, __c0, 1)),
-          eventInput: S.optional(__S(27, __c3, 3)),
-          requestId: S.optional(S.String),
-          suggestionInput: S.optional(__S(28, __c3, 4)),
-          assistQueryParams: S.optional(__S(29, __c3, 5)),
+          name: S.optional(S.String),
+          answerFeedback: S.optional(__S(1379, __c43, 3)),
+          agentAssistantRecord: S.optional(__S(1381, __c43, 5)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AnalyzeContentRequest",
+        identifier: "GoogleCloudDialogflowV2beta1AnswerRecord",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsLocationsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsConversationsRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(9152, __c286, 0)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          locationId: S.optional(S.String),
+          metadata: S.optional(__S(9472, __c296, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationLocation",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentIntentsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAgentVersionsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAnswerRecordsRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsCompanionAgentsRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConversationProfilesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConversationsRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGeneratorsRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGeneratorsEvaluationsRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/intents:batchDelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsLocationsAgentIntentsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsSipTrunksRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsToolsRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsOperationsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent/validationResult",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetValidationResultProjectsAgentRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.String),
+          entries: S.optional(__S(9504, __c297, 0)),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ValidationError",
+      });
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          validationErrors: S.optional(__S(2433, __c76, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ValidationResult",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent/validationResult",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetValidationResultProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:import",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsAgentRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentContent: S.optional(S.String),
+          agentUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ImportAgentRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2594, __c81, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/documents:import",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeTypes: S.optional(__S(8704, __c272, 0)),
+          mimeType: S.optional(S.String),
+          metadata: S.optional(__S(9152, __c286, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ImportDocumentTemplate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uris: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GcsSources",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          documentTemplate: S.optional(__S(2592, __c81, 0)),
+          gcsSource: S.optional(__S(2593, __c81, 1)),
+          importGcsCustomMetadata: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ImportDocumentsRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2657, __c83, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityTypes: S.optional(__S(2688, __c84, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EntityTypeBatch",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entityTypeBatchInline: S.optional(__S(2656, __c83, 0)),
+          updateMask: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          entityTypeBatchUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2720, __c85, 0));
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableFuzzyExtraction: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          autoExpansionMode: S.optional(S.String),
+          name: S.optional(S.String),
+          kind: S.optional(S.String),
+          entities: S.optional(__S(9569, __c299, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EntityType",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:import",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2594, __c81, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/documents:import",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextReferences: S.optional(__S(7715, __c241, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IngestContextReferencesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}:ingestContextReferences",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "IngestContextReferencesProjectsLocationsConversationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ingestedContextReferences: S.optional(__S(7715, __c241, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IngestContextReferencesResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionSpec: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:initialize",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InitializeProjectsLocationsEncryptionSpecRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          entityTypes: S.optional(__S(2688, __c84, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListEntityTypesResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/environments",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8066, __c252, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          environments: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListEnvironmentsResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/intents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentEnvironmentsIntentsRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intents: S.optional(__S(1056, __c33, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListIntentsResponse",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contexts: S.optional(__S(8800, __c275, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListContextsResponse",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionEntityTypes: S.optional(__S(8608, __c269, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/intents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          entities: S.optional(__S(9569, __c299, 1)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/knowledgeBases",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentKnowledgeBasesRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8224, __c257, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          knowledgeBases: S.optional(__S(3328, __c104, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/documents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8290, __c259, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          documents: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListDocumentsResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/versions",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAgentVersionsRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8416, __c263, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          versions: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListVersionsResponse",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/answerRecords",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAnswerRecordsRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1382, __c43, 6));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          answerRecords: S.optional(__S(3584, __c112, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/conversationProfiles",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7660, __c239, 12));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conversationProfiles: S.optional(__S(3648, __c114, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListConversationProfilesResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/conversations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsConversationsRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7752, __c242, 8));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conversations: S.optional(__S(3712, __c116, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListConversationsResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/messages",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsConversationsMessagesRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          messages: S.optional(__S(11104, __c347, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListMessagesResponse",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/participants",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9792, __c306, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          participants: S.optional(__S(3840, __c120, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListParticipantsResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3904, __c122, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/intents:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          intentBatchUri: S.optional(S.String),
+          intentBatchInline: S.optional(__S(1024, __c32, 0)),
+          intentView: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/suggestions",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsConversationsParticipantsSuggestionsRequest",
+      });
+    case 1:
+      return S.Array(__S(7106, __c222, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          suggestions: S.optional(__S(3937, __c123, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListSuggestionsResponse",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/generators",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsGeneratorsRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9902, __c309, 14));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          generators: S.optional(__S(4000, __c125, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListGeneratorsResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/knowledgeBases",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/documents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(9504, __c297, 0).pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}/locations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(4097, __c128, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudLocationListLocationsResponse",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/environments",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intentView: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/intents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentEnvironmentsIntentsRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2657, __c83, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsLocationsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          intentView: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/intents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentIntentsRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/versions",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAgentVersionsRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/answerRecords",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAnswerRecordsRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/companionAgents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsCompanionAgentsRequest",
+      });
+    case 1:
+      return S.Array(__S(10308, __c322, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          companionAgents: S.optional(__S(4481, __c140, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/conversationProfiles",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConversationProfilesRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/conversations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConversationsRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/messages",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConversationsMessagesRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/participants",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/generators",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGeneratorsRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/evaluations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGeneratorsEvaluationsRequest",
+      });
+    case 1:
+      return S.Array(__S(10523, __c328, 27));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          generatorEvaluations: S.optional(__S(4705, __c147, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/knowledgeBases",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/documents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}/operations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10624, __c332, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(4832, __c151, 0)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningListOperationsResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/phoneNumbers",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsPhoneNumbersRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12065, __c377, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          phoneNumbers: S.optional(__S(4896, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/sipTrunks",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsSipTrunksRequest",
+      });
+    case 1:
+      return S.Array(__S(10727, __c335, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          sipTrunks: S.optional(__S(4929, __c154, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListSipTrunksResponse",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/tools",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsToolsRequest",
+      });
+    case 1:
+      return S.Array(__S(10801, __c337, 17));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tools: S.optional(__S(4961, __c155, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ListToolsResponse",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+name}/operations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsOperationsRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/phoneNumbers",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsPhoneNumbersRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3904, __c122, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/intents:batchUpdate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsLocationsAgentIntentsRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          allowLoadToDraftAndDiscardChanges: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(8066, __c252, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8890, __c277, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentKnowledgeBasesRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAgentVersionsRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:cancel",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1382, __c43, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAnswerRecordsRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(7660, __c239, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9792, __c306, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          allowLoadToDraftAndDiscardChanges: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8066, __c252, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8890, __c277, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentIntentsRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:cancel",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsOperationsRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAgentVersionsRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1382, __c43, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAnswerRecordsRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10308, __c322, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsCompanionAgentsRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(7660, __c239, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsConversationProfilesRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9792, __c306, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(9902, __c309, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsGeneratorsRequest",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsKnowledgeBasesRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversationProfile: S.String.pipe(T.Label()),
+          body: S.optional(__S(6176, __c193, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversationProfile}:clearSuggestionFeatureConfig",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearSuggestionFeatureConfigProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          participantRole: S.optional(S.String),
+          suggestionFeatureType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(12065, __c377, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsPhoneNumbersRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(10727, __c335, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsSipTrunksRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10801, __c337, 17).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsToolsRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(12065, __c377, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsPhoneNumbersRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6368, __c199, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:reload",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReloadProjectsAgentKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importGcsCustomMetadata: S.optional(S.Boolean),
+          gcsSource: S.optional(__S(8896, __c278, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ReloadDocumentRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6368, __c199, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:reload",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReloadProjectsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(6368, __c199, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:reload",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReloadProjectsLocationsKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6496, __c203, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:restore",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreProjectsAgentRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentUri: S.optional(S.String),
+          agentContent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1RestoreAgentRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6496, __c203, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:restore",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(6604, __c206, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:searchKnowledge",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchKnowledgeProjectsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataStores: S.optional(__S(9504, __c297, 0)),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs",
+      });
+    case 1:
+      return S.Array(__S(6592, __c206, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attributeValue: S.optional(S.String),
+          boostAmount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
+      });
+    case 3:
+      return S.Array(__S(6594, __c206, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          controlPoints: S.optional(__S(6595, __c206, 3)),
+          attributeType: S.optional(S.String),
+          interpolationType: S.optional(S.String),
+          fieldName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          boostControlSpec: S.optional(__S(6596, __c206, 4)),
+          condition: S.optional(S.String),
+          boost: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec",
+      });
+    case 6:
+      return S.Array(__S(6597, __c206, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          conditionBoostSpecs: S.optional(__S(6598, __c206, 6)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec",
+      });
+    case 8:
+      return S.Array(__S(6599, __c206, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(6600, __c206, 8)),
+          dataStores: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs",
+      });
+    case 10:
+      return S.Array(__S(6601, __c206, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          filterSpecs: S.optional(__S(6593, __c206, 1)),
+          boostSpecs: S.optional(__S(6602, __c206, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          parent: S.optional(S.String),
+          querySource: S.optional(S.String),
+          endUserMetadata: S.optional(__S(9472, __c296, 0)),
+          exactSearch: S.optional(S.Boolean),
+          sessionId: S.optional(S.String),
+          conversationProfile: S.optional(S.String),
+          searchConfig: S.optional(__S(6603, __c206, 11)),
+          query: S.optional(__S(8640, __c270, 0)),
+          conversation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequest",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          answerGenerationRewriterOn: S.optional(S.Boolean),
+          thirdPartyConnectorAllowed: S.optional(S.Boolean),
+          endUserMetadataIncluded: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfoSearchKnowledgeBehavior",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreResponseReason: S.optional(S.String),
+          cesDebugInfo: S.optional(__S(9472, __c296, 0)),
+          ingestedContextReferenceDebugInfo: S.optional(__S(8997, __c281, 5)),
+          searchKnowledgeBehavior: S.optional(__S(6605, __c206, 13)),
+          serviceLatency: S.optional(__S(8994, __c281, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(9472, __c296, 0)),
+          snippet: S.optional(S.String),
+          title: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeAnswerAnswerSource",
+      });
+    case 16:
+      return S.Array(__S(6607, __c206, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          answerSources: S.optional(__S(6608, __c206, 16)),
+          answerRecord: S.optional(S.String),
+          answer: S.optional(S.String),
+          answerType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer",
+      });
+    case 18:
+      return S.Array(__S(6609, __c206, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          rewrittenQuery: S.optional(S.String),
+          searchKnowledgeDebugInfo: S.optional(__S(6606, __c206, 14)),
+          answers: S.optional(__S(6610, __c206, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeResponse",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversationProfile: S.String.pipe(T.Label()),
+          body: S.optional(__S(6176, __c193, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversationProfile}:clearSuggestionFeatureConfig",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(6604, __c206, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:searchKnowledge",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchKnowledgeProjectsLocationsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6604, __c206, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:searchKnowledge",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchKnowledgeProjectsLocationsSuggestionsRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6604, __c206, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:searchKnowledge",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchKnowledgeProjectsSuggestionsRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent:search",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchProjectsAgentRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c20, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          agents: S.optional(__S(6784, __c212, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SearchAgentsResponse",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta1/{+parent}/agent:search",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SetAgentProjectsRequest" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetAgentProjectsLocationsRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversationProfile: S.String.pipe(T.Label()),
+          body: S.optional(__S(6944, __c217, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversationProfile}:setSuggestionFeatureConfig",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetSuggestionFeatureConfigProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          participantRole: S.optional(S.String),
+          suggestionFeatureConfig: S.optional(__S(7692, __c240, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversationProfile: S.String.pipe(T.Label()),
+          body: S.optional(__S(6944, __c217, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversationProfile}:setSuggestionFeatureConfig",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7040, __c220, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestArticles",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestArticlesProjectsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          contextSize: S.optional(S.Number),
+          assistQueryParams: S.optional(__S(9056, __c283, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestArticlesRequest",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextSize: S.optional(S.Number),
+          latestMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CompileSuggestionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7072, __c221, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:compile",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompileProjectsConversationsParticipantsSuggestionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(__S(7106, __c222, 2)),
+          latestMessage: S.optional(S.String),
+          contextSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CompileSuggestionResponse",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          answerRecord: S.optional(S.String),
+          answer: S.optional(S.String),
+          source: S.optional(S.String),
+          question: S.optional(S.String),
+          metadata: S.optional(__S(9152, __c286, 0)),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestionFaqAnswer",
+      });
+    case 1:
+      return S.Array(__S(7104, __c222, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          faqAnswers: S.optional(__S(7105, __c222, 1)),
+          articles: S.optional(__S(9120, __c285, 0)),
+          name: S.optional(S.String),
+          latestMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Suggestion",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7040, __c220, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestArticles",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestArticlesProjectsLocationsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(7200, __c225, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:suggestConversationSummary",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestConversationSummaryProjectsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assistQueryParams: S.optional(__S(9056, __c283, 0)),
+          latestMessage: S.optional(S.String),
+          contextSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          baselineModelVersion: S.optional(S.String),
+          sortedTextSections: S.optional(__S(9409, __c294, 1)),
+          answerRecord: S.optional(S.String),
+          textSections: S.optional(__S(9152, __c286, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          summary: S.optional(__S(7201, __c225, 1)),
+          contextSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.String.pipe(T.Label()),
+          body: S.optional(__S(7200, __c225, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+conversation}/suggestions:suggestConversationSummary",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestConversationSummaryProjectsLocationsConversationsSuggestionsRequest",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7296, __c228, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestFaqAnswers",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestFaqAnswersProjectsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextSize: S.optional(S.Number),
+          latestMessage: S.optional(S.String),
+          assistQueryParams: S.optional(__S(9056, __c283, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7296, __c228, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestFaqAnswers",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestFaqAnswersProjectsLocationsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7392, __c231, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestKnowledgeAssist",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestKnowledgeAssistProjectsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          contextSize: S.optional(S.Number),
+          previousSuggestedQuery: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7392, __c231, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestKnowledgeAssist",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SuggestKnowledgeAssistProjectsLocationsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7488, __c234, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestSmartReplies",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuggestSmartRepliesProjectsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextSize: S.optional(S.Number),
+          latestMessage: S.optional(S.String),
+          currentTextInput: S.optional(__S(8640, __c270, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestSmartRepliesRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7488, __c234, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/suggestions:suggestSmartReplies",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SuggestSmartRepliesProjectsLocationsConversationsParticipantsSuggestionsRequest",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:train",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TrainProjectsAgentRequest",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:complete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteProjectsConversationsRequest",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestionFeature",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.optional(S.String),
+          messageFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1NotificationConfig",
+      });
+    case 1:
+      return S.Array(__S(7692, __c240, 12));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enableAsyncToolCall: S.optional(S.Boolean),
+          useUnredactedConversationData: S.optional(S.Boolean),
+          featureConfigs: S.optional(__S(7649, __c239, 1)),
+          companionAgent: S.optional(S.String),
+          generators: S.optional(__S(9504, __c297, 0)),
+          skipEmptyEventBasedSuggestion: S.optional(S.Boolean),
+          groupSuggestionResponses: S.optional(S.Boolean),
+          disableHighLatencyFeaturesSyncDelivery: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enableSentimentAnalysis: S.optional(S.Boolean),
+          enableSentimentAnalysisV3: S.optional(S.Boolean),
+          enableEntityExtraction: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          notificationConfig: S.optional(__S(7648, __c239, 0)),
+          humanAgentSuggestionConfig: S.optional(__S(7650, __c239, 2)),
+          messageAnalysisConfig: S.optional(__S(7651, __c239, 3)),
+          endUserSuggestionConfig: S.optional(__S(7650, __c239, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          organizationId: S.optional(S.String),
+          buttonId: S.optional(S.String),
+          endpointDomain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accountNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
+          salesforceLiveAgentConfig: S.optional(__S(7653, __c239, 5)),
+          livePersonConfig: S.optional(__S(7654, __c239, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          sessionTtl: S.optional(S.String),
+          agent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AutomatedAgentConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          speechModelVariant: S.optional(S.String),
+          useTimeoutBasedEndpointing: S.optional(S.Boolean),
+          sampleRateHertz: S.optional(S.Number),
+          useGeminiAsr: S.optional(S.Boolean),
+          audioEncoding: S.optional(S.String),
+          geminiAsrConfig: S.optional(__S(9312, __c291, 0)),
+          enableWordInfo: S.optional(S.Boolean),
+          languageCode: S.optional(S.String),
+          phraseSets: S.optional(__S(9504, __c297, 0)),
+          model: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SpeechToTextConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          inactiveStart: S.optional(S.Boolean),
+          createConversationOnTheFly: S.optional(S.Boolean),
+          allowVirtualAgentInteraction: S.optional(S.Boolean),
+          ignoreReinviteMediaDirection: S.optional(S.Boolean),
+          keepConversationRunning: S.optional(S.Boolean),
+          copyInboundCallLegHeaders: S.optional(__S(9504, __c297, 0)),
+          maxAudioRecordingDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SipConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          enableStackdriverLogging: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1LoggingConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          securitySettings: S.optional(S.String),
+          notificationConfig: S.optional(__S(7648, __c239, 0)),
+          ttsConfig: S.optional(__S(9283, __c290, 3)),
+          humanAgentAssistantConfig: S.optional(__S(7652, __c239, 4)),
+          humanAgentHandoffConfig: S.optional(__S(7655, __c239, 7)),
+          newMessageEventNotificationConfig: S.optional(__S(7648, __c239, 0)),
+          updateTime: S.optional(S.String),
+          useBidiStreaming: S.optional(S.Boolean),
+          newRecognitionResultNotificationConfig: S.optional(__S(7648, __c239, 0)),
+          automatedAgentConfig: S.optional(__S(7656, __c239, 8)),
+          sttConfig: S.optional(__S(7657, __c239, 9)),
+          name: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sipConfig: S.optional(__S(7658, __c239, 10)),
+          loggingConfig: S.optional(__S(7659, __c239, 11)),
+          createTime: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationProfile",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          sensitivityLevel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1RaiSettingsRaiCategoryConfig",
+      });
+    case 1:
+      return S.Array(__S(7680, __c240, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          raiCategoryConfigs: S.optional(__S(7681, __c240, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1RaiSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBases: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sectionTypes: S.optional(__S(8704, __c272, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dropVirtualAgentMessages: S.optional(S.Boolean),
+          dropHandoffMessages: S.optional(S.Boolean),
+          dropIvrMessages: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          agent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          humanAgentSideConfig: S.optional(__S(7686, __c240, 6)),
+          agent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          documents: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseQuerySource: S.optional(__S(7683, __c240, 3)),
+          sections: S.optional(__S(7684, __c240, 4)),
+          contextFilterSettings: S.optional(__S(7685, __c240, 5)),
+          dialogflowQuerySource: S.optional(__S(7687, __c240, 7)),
+          documentQuerySource: S.optional(__S(7688, __c240, 8)),
+          confidenceThreshold: S.optional(S.Number),
+          contextSize: S.optional(S.Number),
+          maxResults: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          noSmallTalk: S.optional(S.Boolean),
+          onlyEndUser: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          recentSentencesCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          raiSettings: S.optional(__S(7682, __c240, 2)),
+          queryConfig: S.optional(__S(7689, __c240, 9)),
+          suggestionTriggerSettings: S.optional(__S(7690, __c240, 10)),
+          enableEventBasedSuggestion: S.optional(S.Boolean),
+          enableResponseDebugInfo: S.optional(S.Boolean),
+          disableAgentQueryLogging: S.optional(S.Boolean),
+          suggestionFeature: S.optional(__S(7616, __c238, 0)),
+          conversationProcessConfig: S.optional(__S(7691, __c240, 11)),
+          enableConversationAugmentedQuery: S.optional(S.Boolean),
+          disableQuerySearchContext: S.optional(S.Boolean),
+          enableQuerySuggestionWhenNoAnswer: S.optional(S.Boolean),
+          enableQuerySuggestionOnly: S.optional(S.Boolean),
+          suggestionTriggerEvent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentFormat: S.optional(S.String),
+          answerRecord: S.optional(S.String),
+          ingestionTime: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent",
+      });
+    case 1:
+      return S.Array(__S(7712, __c241, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateMode: S.optional(S.String),
+          createTime: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          contextContents: S.optional(__S(7713, __c241, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationContextReference",
+      });
+    case 3:
+      return S.Record(S.String, __S(7714, __c241, 2));
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          countryCode: S.optional(S.Number),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationPhoneNumber",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          generatorType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationGeneratorContext",
+      });
+    case 2:
+      return S.Record(S.String, __S(7745, __c242, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader",
+      });
+    case 4:
+      return S.Array(__S(7747, __c242, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent",
+      });
+    case 6:
+      return S.Array(__S(7749, __c242, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sipHeaders: S.optional(__S(7748, __c242, 4)),
+          extraMimeContents: S.optional(__S(7750, __c242, 6)),
+          sdp: S.optional(S.String),
+          dialedNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ingestedContextReferences: S.optional(__S(7715, __c241, 3)),
+          phoneNumber: S.optional(__S(7744, __c242, 0)),
+          conversationStage: S.optional(S.String),
+          initialGeneratorContexts: S.optional(__S(7746, __c242, 2)),
+          endTime: S.optional(S.String),
+          telephonyConnectionInfo: S.optional(__S(7751, __c242, 7)),
+          startTime: S.optional(S.String),
+          lifecycleState: S.optional(S.String),
+          conversationProfile: S.optional(S.String),
+          name: S.optional(S.String),
+          initialConversationProfile: S.optional(__S(7660, __c239, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Conversation",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/agent:train",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TrainProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:undelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsPhoneNumbersRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:undelete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsPhoneNumbersRequest",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8034, __c251, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFulfillmentProjectsAgentRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8034, __c251, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2beta1/{+name}",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFulfillmentProjectsLocationsAgentRequest",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+name}:complete",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteProjectsLocationsConversationsRequest",
+      });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentEntityTypesRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8066, __c252, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/environments",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentEnvironmentsRequest",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7616, __c238, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isCloudFunction: S.optional(S.Boolean),
+          requestHeaders: S.optional(__S(9152, __c286, 0)),
+          username: S.optional(S.String),
+          password: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1FulfillmentGenericWebService",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(8032, __c251, 0)),
+          enabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          genericWebService: S.optional(__S(8033, __c251, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Fulfillment",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(9283, __c290, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enableTextToSpeech: S.optional(S.Boolean),
+          outputAudioEncoding: S.optional(S.String),
+          synthesizeSpeechConfigs: S.optional(__S(8064, __c252, 0)),
+          sampleRateHertz: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1TextToSpeechSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          fulfillment: S.optional(__S(8034, __c251, 2)),
+          textToSpeechSettings: S.optional(__S(8065, __c252, 1)),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          agentVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Environment",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentEnvironmentsUsersSessionsContextsRequest",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          intentView: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8890, __c277, 26).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/intents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentIntentsRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/knowledgeBases",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentKnowledgeBasesRequest",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1KnowledgeBase",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          importGcsCustomMetadata: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/documents",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentKnowledgeBasesDocumentsRequest",
+      });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.optional(S.String),
+          status: S.optional(__S(9537, __c298, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1DocumentReloadStatus",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rawContent: S.optional(S.String),
+          content: S.optional(S.String),
+          metadata: S.optional(__S(9152, __c286, 0)),
+          state: S.optional(S.String),
+          latestReloadStatus: S.optional(__S(8288, __c259, 0)),
+          knowledgeTypes: S.optional(__S(8289, __c259, 1)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          contentUri: S.optional(S.String),
+          enableAutoReload: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Document",
+      });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/contexts",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentSessionsContextsRequest",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entityTypes",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentSessionsEntityTypesRequest",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/versions",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentVersionsRequest",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          versionNumber: S.optional(S.Number),
+          description: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Version",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7660, __c239, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/conversationProfiles",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsConversationProfilesRequest",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           participant: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(8515, __c266, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9735,567 +15260,281 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c266(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          followupIntentName: S.optional(S.String),
-          parentFollowupIntentName: S.optional(S.String),
+          intent: S.optional(S.String),
+          languageCode: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          defaultValue: S.optional(S.String),
-          entityTypeDisplayName: S.optional(S.String),
-          mandatory: S.optional(S.Boolean),
-          prompts: S.optional(__S(5, __c0, 5)),
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-          isList: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentParameter",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userDefined: S.optional(S.Boolean),
-          alias: S.optional(S.String),
-          text: S.optional(S.String),
-          entityType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timesAddedCount: S.optional(S.Number),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          parts: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrase",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ssml: S.optional(S.String),
-          displayText: S.optional(S.String),
-          textToSpeech: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          simpleResponses: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          ssml: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          openUriAction: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dividerAfter: S.optional(S.Boolean),
-          cells: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(S.String),
-          horizontalAlignment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          imageUri: S.optional(S.String),
-          accessibilityText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageImage",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          buttons: S.optional(__S(47, __c5, 7)),
-          rows: S.optional(__S(51, __c6, 3)),
-          columnProperties: S.optional(__S(53, __c6, 5)),
-          image: S.optional(__S(54, __c6, 6)),
-          subtitle: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCard",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          audioUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio",
+        identifier: "GoogleCloudDialogflowV2beta1IntentInput",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          postbackData: S.optional(S.String),
-          text: S.optional(S.String),
+          config: S.optional(__S(8552, __c267, 8)),
+          audio: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          shareLocation: S.optional(__S(58, __c7, 2)),
-          openUrl: S.optional(__S(45, __c5, 5)),
-          dial: S.optional(__S(59, __c7, 3)),
-          postbackData: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reply: S.optional(__S(57, __c7, 1)),
-          action: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.String),
-          fileUri: S.optional(S.String),
-          thumbnailUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          suggestions: S.optional(__S(62, __c7, 6)),
-          title: S.optional(S.String),
-          media: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cardWidth: S.optional(S.String),
-          cardContents: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          quickReplies: S.optional(__S(5, __c0, 5)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageQuickReplies",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rbmSuggestion: S.optional(__S(62, __c7, 6)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmText",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageText",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          icon: S.optional(__S(54, __c6, 6)),
-          largeImage: S.optional(__S(54, __c6, 6)),
-          contentUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject",
-      });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mediaType: S.optional(S.String),
-          mediaObjects: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageMediaContent",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destinationName: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion",
+        identifier: "GoogleCloudDialogflowV2beta1AudioInput",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestion",
-      });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          suggestions: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          synonyms: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          info: S.optional(__S(77, __c9, 5)),
-          description: S.optional(S.String),
-          image: S.optional(__S(54, __c6, 6)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelectItem",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          title: S.optional(S.String),
-          items: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelect",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          thumbnailImageAlignment: S.optional(S.String),
-          cardContent: S.optional(__S(64, __c8, 0)),
-          cardOrientation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          urlTypeHint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          footer: S.optional(S.String),
-          openUriAction: S.optional(__S(82, __c10, 2)),
-          image: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imageDisplayOptions: S.optional(S.String),
-          items: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          postback: S.optional(S.String),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCardButton",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          subtitle: S.optional(S.String),
-          imageUri: S.optional(S.String),
-          buttons: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCard",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          buttons: S.optional(__S(47, __c5, 7)),
-          formattedText: S.optional(S.String),
-          title: S.optional(S.String),
-          image: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCard",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(54, __c6, 6)),
-          title: S.optional(S.String),
-          info: S.optional(__S(77, __c9, 5)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          simpleResponses: S.optional(__S(43, __c5, 3)),
-          telephonySynthesizeSpeech: S.optional(__S(44, __c5, 4)),
-          tableCard: S.optional(__S(55, __c6, 7)),
-          image: S.optional(__S(54, __c6, 6)),
-          payload: S.optional(__S(1, __c0, 1)),
-          telephonyPlayAudio: S.optional(__S(56, __c7, 0)),
-          rbmCarouselRichCard: S.optional(__S(66, __c8, 2)),
-          quickReplies: S.optional(__S(67, __c8, 3)),
-          platform: S.optional(S.String),
-          telephonyTransferCall: S.optional(__S(59, __c7, 3)),
-          rbmText: S.optional(__S(68, __c8, 4)),
-          text: S.optional(__S(69, __c8, 5)),
-          mediaContent: S.optional(__S(72, __c9, 0)),
-          linkOutSuggestion: S.optional(__S(73, __c9, 1)),
-          suggestions: S.optional(__S(76, __c9, 4)),
-          listSelect: S.optional(__S(80, __c10, 0)),
-          rbmStandaloneRichCard: S.optional(__S(81, __c10, 1)),
-          browseCarouselCard: S.optional(__S(85, __c10, 5)),
-          card: S.optional(__S(88, __c11, 0)),
-          basicCard: S.optional(__S(89, __c11, 1)),
-          carouselSelect: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IntentMessage",
-      });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.optional(S.Number),
-          mlEnabled: S.optional(S.Boolean),
           action: S.optional(S.String),
-          endInteraction: S.optional(S.Boolean),
-          parentFollowupIntentName: S.optional(S.String),
-          followupIntentInfo: S.optional(__S(33, __c4, 1)),
-          name: S.optional(S.String),
-          outputContexts: S.optional(__S(3, __c0, 3)),
-          isFallback: S.optional(S.Boolean),
-          defaultResponsePlatforms: S.optional(__S(34, __c4, 2)),
-          inputContextNames: S.optional(__S(5, __c0, 5)),
-          parameters: S.optional(__S(36, __c4, 4)),
-          trainingPhrases: S.optional(__S(40, __c5, 0)),
-          displayName: S.optional(S.String),
-          rootFollowupIntentName: S.optional(S.String),
-          messages: S.optional(__S(94, __c11, 6)),
-          events: S.optional(__S(5, __c0, 5)),
-          webhookState: S.optional(S.String),
-          resetContexts: S.optional(S.Boolean),
-          liveAgentHandoff: S.optional(S.Boolean),
-          mlDisabled: S.optional(S.Boolean),
+          intentInput: S.optional(__S(8512, __c266, 0)),
+          answerRecord: S.optional(S.String),
+          sendTime: S.optional(S.String),
+          parameters: S.optional(__S(9472, __c296, 0)),
+          textOverride: S.optional(__S(8640, __c270, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Intent",
+        identifier: "GoogleCloudDialogflowV2beta1SuggestionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          intentInput: S.optional(__S(8512, __c266, 0)),
+          queryParams: S.optional(__S(8548, __c267, 4)),
+          audioInput: S.optional(__S(8513, __c266, 1)),
+          textInput: S.optional(__S(8640, __c270, 0)),
+          cxCurrentPage: S.optional(S.String),
+          replyAudioConfig: S.optional(__S(8553, __c267, 9)),
+          messageSendTime: S.optional(S.String),
+          cxParameters: S.optional(__S(9472, __c296, 0)),
+          eventInput: S.optional(__S(8554, __c267, 10)),
+          requestId: S.optional(S.String),
+          suggestionInput: S.optional(__S(8514, __c266, 2)),
+          assistQueryParams: S.optional(__S(9056, __c283, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AnalyzeContentRequest",
+      });
+    case 4:
+      return S.Array(__S(8929, __c279, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contextSize: S.optional(S.Number),
+          latestMessage: S.optional(S.String),
+          dialogflowAssistAnswers: S.optional(__S(8516, __c266, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          answerRecord: S.optional(S.String),
+          suggestionIndex: S.optional(S.Number),
+          companionSuggestion: S.optional(__S(8945, __c279, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          suggestDialogflowAssistsResponse: S.optional(__S(8517, __c266, 5)),
+          generateSuggestionsResponse: S.optional(__S(8674, __c271, 2)),
+          generateCompanionSuggestionsResponse: S.optional(__S(8518, __c266, 6)),
+          suggestFaqAnswersResponse: S.optional(__S(9185, __c287, 1)),
+          suggestEntityExtractionResponse: S.optional(__S(8517, __c266, 5)),
+          suggestSmartRepliesResponse: S.optional(__S(9250, __c289, 2)),
+          suggestKnowledgeAssistResponse: S.optional(__S(9231, __c288, 15)),
+          error: S.optional(__S(9537, __c298, 1)),
+          suggestArticlesResponse: S.optional(__S(9024, __c282, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestionResult",
+      });
+    case 8:
+      return S.Array(__S(8519, __c266, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(8553, __c267, 9)),
+          audio: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1OutputAudio",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          detectIntentResponse: S.optional(__S(8556, __c267, 12)),
+          cxSessionParameters: S.optional(__S(9472, __c296, 0)),
+          allowCancellation: S.optional(S.Boolean),
+          intent: S.optional(S.String),
+          event: S.optional(S.String),
+          matchConfidence: S.optional(S.Number),
+          responseMessages: S.optional(__S(9641, __c301, 9)),
+          cxCurrentPage: S.optional(S.String),
+          parameters: S.optional(__S(9472, __c296, 0)),
+          callCompanionAuthCode: S.optional(S.String),
+          automatedAgentReplyType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AutomatedAgentReply",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          acceptsDtmfInput: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1DtmfParameters",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          endUserSuggestionResults: S.optional(__S(8520, __c266, 8)),
+          replyAudio: S.optional(__S(8521, __c266, 9)),
+          replyText: S.optional(S.String),
+          humanAgentSuggestionResults: S.optional(__S(8520, __c266, 8)),
+          message: S.optional(__S(9642, __c301, 10)),
+          automatedAgentReply: S.optional(__S(8522, __c266, 10)),
+          dtmfParameters: S.optional(__S(8523, __c266, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AnalyzeContentResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c267(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          magnitude: S.optional(S.Number),
-          score: S.optional(S.Number),
+          environment: S.optional(S.String),
+          project: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Sentiment",
+        identifier: "GoogleCloudDialogflowV2beta1SubAgent",
       });
     case 1:
+      return S.Array(__S(8544, __c267, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          queryTextSentiment: S.optional(__S(96, __c12, 0)),
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeLatLng" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          analyzeQueryTextSentiment: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisResult",
+        identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig",
       });
-    case 2:
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contexts: S.optional(__S(8800, __c275, 0)),
+          resetContexts: S.optional(S.Boolean),
+          webhookHeaders: S.optional(__S(9152, __c286, 0)),
+          platform: S.optional(S.String),
+          sessionEntityTypes: S.optional(__S(8608, __c269, 0)),
+          knowledgeBaseNames: S.optional(__S(9504, __c297, 0)),
+          timeZone: S.optional(S.String),
+          subAgents: S.optional(__S(8545, __c267, 1)),
+          geoLocation: S.optional(__S(8546, __c267, 2)),
+          payload: S.optional(__S(9472, __c296, 0)),
+          sentimentAnalysisRequestConfig: S.optional(__S(8547, __c267, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1QueryParameters",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          boost: S.optional(S.Number),
+          phrases: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SpeechContext",
+      });
+    case 6:
+      return S.Array(__S(8549, __c267, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          noBargeInDuration: S.optional(S.String),
+          totalDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BargeInConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          speechContexts: S.optional(__S(8550, __c267, 6)),
+          languageCode: S.optional(S.String),
+          bargeInConfig: S.optional(__S(8551, __c267, 7)),
+          phraseSets: S.optional(__S(9504, __c297, 0)),
+          defaultNoSpeechTimeout: S.optional(S.String),
+          phraseHints: S.optional(__S(9504, __c297, 0)),
+          enableVoiceActivityEvents: S.optional(S.Boolean),
+          disableNoSpeechRecognizedEvent: S.optional(S.Boolean),
+          optOutConformerModelMigration: S.optional(S.Boolean),
+          geminiAsrConfig: S.optional(__S(9312, __c291, 0)),
+          model: S.optional(S.String),
+          enableWordInfo: S.optional(S.Boolean),
+          audioEncoding: S.optional(S.String),
+          sampleRateHertz: S.optional(S.Number),
+          useGeminiAsr: S.optional(S.Boolean),
+          enableAutomaticPunctuation: S.optional(S.Boolean),
+          singleUtterance: S.optional(S.Boolean),
+          modelVariant: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1InputAudioConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sampleRateHertz: S.optional(S.Number),
+          audioEncoding: S.optional(S.String),
+          synthesizeSpeechConfig: S.optional(__S(9283, __c290, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1OutputAudioConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          parameters: S.optional(__S(9472, __c296, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1EventInput",
+      });
+    case 11:
+      return S.Array(__S(8579, __c268, 3));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          outputAudio: S.optional(S.String),
+          outputAudioConfig: S.optional(__S(8553, __c267, 9)),
+          webhookStatus: S.optional(__S(9537, __c298, 1)),
+          queryResult: S.optional(__S(8579, __c268, 3)),
+          responseId: S.optional(S.String),
+          alternativeQueryResults: S.optional(__S(8555, __c267, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1DetectIntentResponse",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
@@ -10307,41 +15546,626 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer",
       });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(8576, __c268, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          answers: S.optional(__S(99, __c12, 3)),
+          answers: S.optional(__S(8577, __c268, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAnswers",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           webhookSource: S.optional(S.String),
-          intent: S.optional(__S(95, __c11, 7)),
+          intent: S.optional(__S(8890, __c277, 26)),
           queryText: S.optional(S.String),
           languageCode: S.optional(S.String),
           speechRecognitionConfidence: S.optional(S.Number),
-          outputContexts: S.optional(__S(3, __c0, 3)),
-          diagnosticInfo: S.optional(__S(1, __c0, 1)),
+          outputContexts: S.optional(__S(8800, __c275, 0)),
+          diagnosticInfo: S.optional(__S(9472, __c296, 0)),
           cancelsSlotFilling: S.optional(S.Boolean),
-          fulfillmentMessages: S.optional(__S(94, __c11, 6)),
+          fulfillmentMessages: S.optional(__S(8889, __c277, 25)),
           allRequiredParamsPresent: S.optional(S.Boolean),
-          sentimentAnalysisResult: S.optional(__S(97, __c12, 1)),
+          sentimentAnalysisResult: S.optional(__S(9601, __c300, 1)),
           action: S.optional(S.String),
           fulfillmentText: S.optional(S.String),
-          knowledgeAnswers: S.optional(__S(100, __c12, 4)),
-          webhookPayload: S.optional(__S(1, __c0, 1)),
-          parameters: S.optional(__S(1, __c0, 1)),
+          knowledgeAnswers: S.optional(__S(8578, __c268, 2)),
+          webhookPayload: S.optional(__S(9472, __c296, 0)),
+          parameters: S.optional(__S(9472, __c296, 0)),
           intentDetectionConfidence: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1QueryResult",
       });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9344, __c292, 0));
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1TextInput",
+      });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceGenerator: S.optional(S.String),
+          answerRecord: S.optional(S.String),
+          generatorSuggestion: S.optional(__S(9398, __c293, 22)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer",
+      });
+    case 1:
+      return S.Array(__S(8672, __c271, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          generatorSuggestionAnswers: S.optional(__S(8673, __c271, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lifespanCount: S.optional(S.Number),
+          parameters: S.optional(__S(9472, __c296, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Context",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell",
+      });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8736, __c273, 0));
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          followupIntentName: S.optional(S.String),
+          parentFollowupIntentName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo",
+      });
+    case 1:
+      return S.Array(__S(8832, __c276, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          defaultValue: S.optional(S.String),
+          entityTypeDisplayName: S.optional(S.String),
+          mandatory: S.optional(S.Boolean),
+          prompts: S.optional(__S(9504, __c297, 0)),
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+          isList: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentParameter",
+      });
+    case 3:
+      return S.Array(__S(8834, __c276, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userDefined: S.optional(S.Boolean),
+          alias: S.optional(S.String),
+          text: S.optional(S.String),
+          entityType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart",
+      });
+    case 5:
+      return S.Array(__S(8836, __c276, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timesAddedCount: S.optional(S.Number),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          parts: S.optional(__S(8837, __c276, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrase",
+      });
+    case 7:
+      return S.Array(__S(8838, __c276, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ssml: S.optional(S.String),
+          displayText: S.optional(S.String),
+          textToSpeech: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse",
+      });
+    case 9:
+      return S.Array(__S(8840, __c276, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          simpleResponses: S.optional(__S(8841, __c276, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          ssml: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          openUriAction: S.optional(__S(8896, __c278, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton",
+      });
+    case 13:
+      return S.Array(__S(8844, __c276, 12));
+    case 14:
+      return S.Array(__S(8768, __c274, 0));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          dividerAfter: S.optional(S.Boolean),
+          cells: S.optional(__S(8846, __c276, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow",
+      });
+    case 16:
+      return S.Array(__S(8847, __c276, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(S.String),
+          horizontalAlignment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties",
+      });
+    case 18:
+      return S.Array(__S(8849, __c276, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          imageUri: S.optional(S.String),
+          accessibilityText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageImage",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          buttons: S.optional(__S(8845, __c276, 13)),
+          rows: S.optional(__S(8848, __c276, 16)),
+          columnProperties: S.optional(__S(8850, __c276, 18)),
+          image: S.optional(__S(8851, __c276, 19)),
+          subtitle: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCard",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          audioUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          postbackData: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          shareLocation: S.optional(__S(9664, __c302, 0)),
+          openUrl: S.optional(__S(8896, __c278, 0)),
+          dial: S.optional(__S(8855, __c276, 23)),
+          postbackData: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          reply: S.optional(__S(8854, __c276, 22)),
+          action: S.optional(__S(8856, __c276, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion",
+      });
+    case 26:
+      return S.Array(__S(8857, __c276, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.String),
+          fileUri: S.optional(S.String),
+          thumbnailUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          suggestions: S.optional(__S(8858, __c276, 26)),
+          title: S.optional(S.String),
+          media: S.optional(__S(8859, __c276, 27)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent",
+      });
+    case 29:
+      return S.Array(__S(8860, __c276, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          cardWidth: S.optional(S.String),
+          cardContents: S.optional(__S(8861, __c276, 29)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          quickReplies: S.optional(__S(9504, __c297, 0)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageQuickReplies",
+      });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rbmSuggestion: S.optional(__S(8858, __c276, 26)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmText",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          icon: S.optional(__S(8851, __c276, 19)),
+          largeImage: S.optional(__S(8851, __c276, 19)),
+          contentUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject",
+      });
+    case 2:
+      return S.Array(__S(8865, __c277, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          mediaType: S.optional(S.String),
+          mediaObjects: S.optional(__S(8866, __c277, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageMediaContent",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          destinationName: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestion",
+      });
+    case 6:
+      return S.Array(__S(8869, __c277, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          suggestions: S.optional(__S(8870, __c277, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestions",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          synonyms: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          info: S.optional(__S(8872, __c277, 8)),
+          description: S.optional(S.String),
+          image: S.optional(__S(8851, __c276, 19)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelectItem",
+      });
+    case 10:
+      return S.Array(__S(8873, __c277, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          title: S.optional(S.String),
+          items: S.optional(__S(8874, __c277, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelect",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          thumbnailImageAlignment: S.optional(S.String),
+          cardContent: S.optional(__S(8860, __c276, 28)),
+          cardOrientation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          urlTypeHint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+          footer: S.optional(S.String),
+          openUriAction: S.optional(__S(8877, __c277, 13)),
+          image: S.optional(__S(8851, __c276, 19)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
+      });
+    case 15:
+      return S.Array(__S(8878, __c277, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          imageDisplayOptions: S.optional(S.String),
+          items: S.optional(__S(8879, __c277, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          postback: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCardButton",
+      });
+    case 18:
+      return S.Array(__S(8881, __c277, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          subtitle: S.optional(S.String),
+          imageUri: S.optional(S.String),
+          buttons: S.optional(__S(8882, __c277, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCard",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          buttons: S.optional(__S(8845, __c276, 13)),
+          formattedText: S.optional(S.String),
+          title: S.optional(S.String),
+          image: S.optional(__S(8851, __c276, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCard",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(8851, __c276, 19)),
+          title: S.optional(S.String),
+          info: S.optional(__S(8872, __c277, 8)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem",
+      });
+    case 22:
+      return S.Array(__S(8885, __c277, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(8886, __c277, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          simpleResponses: S.optional(__S(8842, __c276, 10)),
+          telephonySynthesizeSpeech: S.optional(__S(8843, __c276, 11)),
+          tableCard: S.optional(__S(8852, __c276, 20)),
+          image: S.optional(__S(8851, __c276, 19)),
+          payload: S.optional(__S(9472, __c296, 0)),
+          telephonyPlayAudio: S.optional(__S(8853, __c276, 21)),
+          rbmCarouselRichCard: S.optional(__S(8862, __c276, 30)),
+          quickReplies: S.optional(__S(8863, __c276, 31)),
+          platform: S.optional(S.String),
+          telephonyTransferCall: S.optional(__S(8855, __c276, 23)),
+          rbmText: S.optional(__S(8864, __c277, 0)),
+          text: S.optional(__S(9696, __c303, 0)),
+          mediaContent: S.optional(__S(8867, __c277, 3)),
+          linkOutSuggestion: S.optional(__S(8868, __c277, 4)),
+          suggestions: S.optional(__S(8871, __c277, 7)),
+          listSelect: S.optional(__S(8875, __c277, 11)),
+          rbmStandaloneRichCard: S.optional(__S(8876, __c277, 12)),
+          browseCarouselCard: S.optional(__S(8880, __c277, 16)),
+          card: S.optional(__S(8883, __c277, 19)),
+          basicCard: S.optional(__S(8884, __c277, 20)),
+          carouselSelect: S.optional(__S(8887, __c277, 23)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessage",
+      });
+    case 25:
+      return S.Array(__S(8888, __c277, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.optional(S.Number),
+          mlEnabled: S.optional(S.Boolean),
+          action: S.optional(S.String),
+          endInteraction: S.optional(S.Boolean),
+          parentFollowupIntentName: S.optional(S.String),
+          followupIntentInfo: S.optional(__S(8833, __c276, 1)),
+          name: S.optional(S.String),
+          outputContexts: S.optional(__S(8800, __c275, 0)),
+          isFallback: S.optional(S.Boolean),
+          defaultResponsePlatforms: S.optional(__S(8704, __c272, 0)),
+          inputContextNames: S.optional(__S(9504, __c297, 0)),
+          parameters: S.optional(__S(8835, __c276, 3)),
+          trainingPhrases: S.optional(__S(8839, __c276, 7)),
+          displayName: S.optional(S.String),
+          rootFollowupIntentName: S.optional(S.String),
+          messages: S.optional(__S(8889, __c277, 25)),
+          events: S.optional(__S(9504, __c297, 0)),
+          webhookState: S.optional(S.String),
+          resetContexts: S.optional(S.Boolean),
+          liveAgentHandoff: S.optional(S.Boolean),
+          mlDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Intent",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -10351,263 +16175,17 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1IntentSuggestion",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           answerRecord: S.optional(S.String),
-          queryResult: S.optional(__S(101, __c12, 5)),
-          intentSuggestion: S.optional(__S(102, __c12, 6)),
+          queryResult: S.optional(__S(8579, __c268, 3)),
+          intentSuggestion: S.optional(__S(8928, __c279, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contextSize: S.optional(S.Number),
-          latestMessage: S.optional(S.String),
-          dialogflowAssistAnswers: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
-      });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          section: S.optional(S.String),
-          summary: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection",
-      });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          summarySections: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SummarySuggestion",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1FreeFormSuggestion",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          toolDisplayName: S.optional(S.String),
-          inputParameters: S.optional(__S(1, __c0, 1)),
-          action: S.optional(S.String),
-          cesApp: S.optional(S.String),
-          createTime: S.optional(S.String),
-          cesToolset: S.optional(S.String),
-          state: S.optional(S.String),
-          answerRecord: S.optional(S.String),
-          toolDisplayDetails: S.optional(S.String),
-          tool: S.optional(S.String),
-          cesTool: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolCall",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          retryable: S.optional(S.Boolean),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolCallResultError",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rawContent: S.optional(S.String),
-          tool: S.optional(S.String),
-          createTime: S.optional(S.String),
-          cesToolset: S.optional(S.String),
-          error: S.optional(__S(111, __c13, 7)),
-          action: S.optional(S.String),
-          cesTool: S.optional(S.String),
-          answerRecord: S.optional(S.String),
-          cesApp: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolCallResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          toolCall: S.optional(__S(110, __c13, 6)),
-          toolCallResult: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          answerRecord: S.optional(S.String),
-          similarityScore: S.optional(S.Number),
-          suggestionIndex: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion",
-      });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          duplicateSuggestions: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          agentAction: S.optional(S.String),
-          duplicateCheckResult: S.optional(__S(117, __c14, 5)),
-          displayName: S.optional(S.String),
-          condition: S.optional(S.String),
-          systemAction: S.optional(S.String),
-          displayDetails: S.optional(S.String),
-          triggeringEvent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingInstruction",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          instructionIndexes: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          answerRecord: S.optional(S.String),
-          similarityScore: S.optional(S.Number),
-          sources: S.optional(__S(121, __c15, 1)),
-          suggestionIndex: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion",
-      });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          duplicateSuggestions: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          duplicateCheckResult: S.optional(__S(124, __c15, 4)),
-          responseText: S.optional(S.String),
-          sources: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          agentAction: S.optional(S.String),
-          duplicateCheckResult: S.optional(__S(124, __c15, 4)),
-          sources: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicableInstructions: S.optional(__S(119, __c14, 7)),
-          sampleResponses: S.optional(__S(126, __c15, 6)),
-          agentActionSuggestions: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestion",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          summarySuggestion: S.optional(__S(108, __c13, 4)),
-          freeFormSuggestion: S.optional(__S(109, __c13, 5)),
-          toolCallInfo: S.optional(__S(114, __c14, 2)),
-          agentCoachingSuggestion: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestion",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceGenerator: S.optional(S.String),
-          answerRecord: S.optional(S.String),
-          generatorSuggestion: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer",
-      });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          generatorSuggestionAnswers: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -10617,7 +16195,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -10627,22 +16205,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GroundingChunkWeb",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          retrievedContext: S.optional(__S(134, __c16, 6)),
-          web: S.optional(__S(135, __c16, 7)),
+          retrievedContext: S.optional(__S(8930, __c279, 2)),
+          web: S.optional(__S(8931, __c279, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GroundingChunk",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(8932, __c279, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           endIndex: S.optional(S.Number),
@@ -10652,18 +16226,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1Segment",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          segment: S.optional(__S(138, __c17, 2)),
-          groundingChunkIndices: S.optional(__S(120, __c15, 0)),
+          segment: S.optional(__S(8934, __c279, 6)),
+          groundingChunkIndices: S.optional(__S(9388, __c293, 12)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GroundingSupport",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(8935, __c279, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           renderedContent: S.optional(S.String),
@@ -10671,18 +16245,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SearchEntryPoint",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          groundingChunks: S.optional(__S(137, __c17, 1)),
-          groundingSupports: S.optional(__S(140, __c17, 4)),
-          webSearchQueries: S.optional(__S(5, __c0, 5)),
-          searchEntryPoint: S.optional(__S(141, __c17, 5)),
+          groundingChunks: S.optional(__S(8933, __c279, 5)),
+          groundingSupports: S.optional(__S(8936, __c279, 8)),
+          webSearchQueries: S.optional(__S(9504, __c297, 0)),
+          searchEntryPoint: S.optional(__S(8937, __c279, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GroundingMetadata",
       });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           knowledgeSnippet: S.optional(S.String),
@@ -10692,91 +16266,53 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 12:
+      return S.Array(__S(8939, __c279, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           textUpdate: S.optional(S.String),
-          toolCallInfo: S.optional(__S(113, __c14, 1)),
+          toolCallInfo: S.optional(__S(9381, __c293, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ToolCallSuggestion",
       });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(8941, __c279, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GuidanceInstructionAction",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          triggerEvent: S.optional(S.String),
-          actions: S.optional(__S(148, __c18, 4)),
-          condition: S.optional(S.String),
-          displayDetails: S.optional(S.String),
-          displayName: S.optional(S.String),
-          disableSuggestedReply: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GuidanceInstruction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groundingMetadata: S.optional(__S(142, __c17, 6)),
+          groundingMetadata: S.optional(__S(8938, __c279, 10)),
           suggestedReply: S.optional(S.String),
-          knowledgeSources: S.optional(__S(144, __c18, 0)),
+          knowledgeSources: S.optional(__S(8940, __c279, 12)),
           suggestedAction: S.optional(S.String),
           explanation: S.optional(S.String),
-          toolCalls: S.optional(__S(146, __c18, 2)),
-          triggeringToolCallAnswerRecords: S.optional(__S(5, __c0, 5)),
-          instructionSource: S.optional(__S(149, __c18, 5)),
+          toolCalls: S.optional(__S(8942, __c279, 14)),
+          triggeringToolCallAnswerRecords: S.optional(__S(9504, __c297, 0)),
+          instructionSource: S.optional(__S(9442, __c295, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
+      return S.Array(__S(8943, __c279, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          guidances: S.optional(__S(151, __c18, 7)),
+          guidances: S.optional(__S(8944, __c279, 16)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1CompanionSuggestion",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          answerRecord: S.optional(S.String),
-          suggestionIndex: S.optional(S.Number),
-          companionSuggestion: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse",
-      });
-    case 2:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(9152, __c286, 0)),
           confidence: S.optional(S.Number),
           answer: S.optional(S.String),
           source: S.optional(S.String),
@@ -10785,43 +16321,126 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1FaqAnswer",
       });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latencyMs: S.optional(S.Number),
+          completeTime: S.optional(S.String),
+          step: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency",
+      });
+    case 1:
+      return S.Array(__S(8992, __c281, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          internalServiceLatencies: S.optional(__S(8993, __c281, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ServiceLatency",
+      });
     case 3:
-      return S.Array(__S(154, __c19, 2));
+      return S.suspend(() =>
+        S.Struct({
+          parameter: S.optional(S.String),
+          ingestionStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo",
+      });
     case 4:
+      return S.Array(__S(8995, __c281, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ingestedParametersDebugInfo: S.optional(__S(8996, __c281, 4)),
+          projectNotAllowlisted: S.optional(S.Boolean),
+          contextReferenceRetrieved: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latestMessage: S.optional(S.String),
+          articleAnswers: S.optional(__S(9120, __c285, 0)),
+          contextSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestArticlesResponse",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          documentsMetadataFilters: S.optional(__S(9152, __c286, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AssistQueryParameters",
+      });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(9152, __c286, 0)),
+          answerRecord: S.optional(S.String),
+          snippets: S.optional(__S(9504, __c297, 0)),
+          title: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ArticleAnswer",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9088, __c284, 0));
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8960, __c280, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           latestMessage: S.optional(S.String),
           contextSize: S.optional(S.Number),
-          faqAnswers: S.optional(__S(155, __c19, 3)),
+          faqAnswers: S.optional(__S(9184, __c287, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          answerRecord: S.optional(S.String),
-          reply: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SmartReplyAnswer",
-      });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          smartReplyAnswers: S.optional(__S(158, __c19, 6)),
-          latestMessage: S.optional(S.String),
-          contextSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse",
-      });
   }
 }
-function __c20(j: number): any {
+function __c288(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10833,12 +16452,12 @@ function __c20(j: number): any {
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext",
       });
     case 1:
-      return S.Array(__S(160, __c20, 0));
+      return S.Array(__S(9216, __c288, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           queryText: S.optional(S.String),
-          searchContexts: S.optional(__S(161, __c20, 1)),
+          searchContexts: S.optional(__S(9217, __c288, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery",
@@ -10847,14 +16466,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           answerRecord: S.optional(S.String),
-          suggestedQuery: S.optional(__S(162, __c20, 2)),
+          suggestedQuery: S.optional(__S(9218, __c288, 2)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult",
       });
     case 4:
-      return S.Array(__S(163, __c20, 3));
+      return S.Array(__S(9219, __c288, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -10882,31 +16501,6 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          latencyMs: S.optional(S.Number),
-          completeTime: S.optional(S.String),
-          step: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency",
-      });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          internalServiceLatencies: S.optional(__S(167, __c20, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ServiceLatency",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           similarityToLastQueryThreshold: S.optional(S.Number),
           candidatesTokenCount: S.optional(S.Number),
           thinkingLevel: S.optional(S.String),
@@ -10918,80 +16512,54 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          parameter: S.optional(S.String),
-          ingestionStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo",
-      });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ingestedParametersDebugInfo: S.optional(__S(171, __c21, 3)),
-          projectNotAllowlisted: S.optional(S.Boolean),
-          contextReferenceRetrieved: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeAssistBehavior: S.optional(__S(165, __c20, 5)),
-          serviceLatency: S.optional(__S(168, __c21, 0)),
+          knowledgeAssistBehavior: S.optional(__S(9221, __c288, 5)),
+          serviceLatency: S.optional(__S(8994, __c281, 2)),
           datastoreResponseReason: S.optional(S.String),
-          cesDebugInfo: S.optional(__S(1, __c0, 1)),
-          queryGenerationDebugInfo: S.optional(__S(169, __c21, 1)),
+          cesDebugInfo: S.optional(__S(9472, __c296, 0)),
+          queryGenerationDebugInfo: S.optional(__S(9222, __c288, 6)),
           queryCategorizationFailureReason: S.optional(S.String),
-          ingestedContextReferenceDebugInfo: S.optional(__S(172, __c21, 4)),
+          ingestedContextReferenceDebugInfo: S.optional(__S(8997, __c281, 5)),
           queryGenerationFailureReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
           title: S.optional(S.String),
           text: S.optional(S.String),
-          metadata: S.optional(__S(1, __c0, 1)),
+          metadata: S.optional(__S(9472, __c296, 0)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(9224, __c288, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          snippets: S.optional(__S(175, __c21, 7)),
+          snippets: S.optional(__S(9225, __c288, 9)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          snippets: S.optional(__S(176, __c22, 0)),
+          snippets: S.optional(__S(9226, __c288, 10)),
           event: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
@@ -10999,106 +16567,432 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           answerText: S.optional(S.String),
-          playbookSource: S.optional(__S(176, __c22, 0)),
-          eventSource: S.optional(__S(177, __c22, 1)),
-          generativeSource: S.optional(__S(176, __c22, 0)),
-          faqSource: S.optional(__S(178, __c22, 2)),
+          playbookSource: S.optional(__S(9226, __c288, 10)),
+          eventSource: S.optional(__S(9227, __c288, 11)),
+          generativeSource: S.optional(__S(9226, __c288, 10)),
+          faqSource: S.optional(__S(9228, __c288, 12)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          suggestedQuery: S.optional(__S(162, __c20, 2)),
+          suggestedQuery: S.optional(__S(9218, __c288, 2)),
           answerRecord: S.optional(S.String),
-          knowledgeAssistDebugInfo: S.optional(__S(173, __c21, 5)),
-          suggestedQueryAnswer: S.optional(__S(179, __c22, 3)),
+          knowledgeAssistDebugInfo: S.optional(__S(9223, __c288, 7)),
+          suggestedQueryAnswer: S.optional(__S(9229, __c288, 13)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          additionalSuggestedQueryResults: S.optional(__S(164, __c20, 4)),
+          additionalSuggestedQueryResults: S.optional(__S(9220, __c288, 4)),
           latestMessage: S.optional(S.String),
-          knowledgeAssistAnswer: S.optional(__S(180, __c22, 4)),
+          knowledgeAssistAnswer: S.optional(__S(9230, __c288, 14)),
           contextSize: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse",
       });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          answerRecord: S.optional(S.String),
+          reply: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SmartReplyAnswer",
+      });
+    case 1:
+      return S.Array(__S(9248, __c289, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          smartReplyAnswers: S.optional(__S(9249, __c289, 1)),
+          latestMessage: S.optional(S.String),
+          contextSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ssmlGender: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1VoiceSelectionParams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          phoneticEncoding: S.optional(S.String),
+          pronunciation: S.optional(S.String),
+          phrase: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CustomPronunciationParams",
+      });
+    case 2:
+      return S.Array(__S(9281, __c290, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          effectsProfileId: S.optional(__S(9504, __c297, 0)),
+          voice: S.optional(__S(9280, __c290, 0)),
+          pronunciations: S.optional(__S(9282, __c290, 2)),
+          volumeGainDb: S.optional(S.Number),
+          pitch: S.optional(S.Number),
+          speakingRate: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          silenceDurationMs: S.optional(S.Number),
+          endOfSpeechSensitivity: S.optional(S.String),
+          prefixPaddingMs: S.optional(S.Number),
+          modelId: S.optional(S.String),
+          startOfSpeechSensitivity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityOverrideMode: S.optional(S.String),
+          name: S.optional(S.String),
+          entities: S.optional(__S(9569, __c299, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SessionEntityType",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summarySections: S.optional(__S(9409, __c294, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SummarySuggestion",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1FreeFormSuggestion",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          toolDisplayName: S.optional(S.String),
+          inputParameters: S.optional(__S(9472, __c296, 0)),
+          action: S.optional(S.String),
+          cesApp: S.optional(S.String),
+          createTime: S.optional(S.String),
+          cesToolset: S.optional(S.String),
+          state: S.optional(S.String),
+          answerRecord: S.optional(S.String),
+          toolDisplayDetails: S.optional(S.String),
+          tool: S.optional(S.String),
+          cesTool: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolCall",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          retryable: S.optional(S.Boolean),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolCallResultError",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rawContent: S.optional(S.String),
+          tool: S.optional(S.String),
+          createTime: S.optional(S.String),
+          cesToolset: S.optional(S.String),
+          error: S.optional(__S(9379, __c293, 3)),
+          action: S.optional(S.String),
+          cesTool: S.optional(S.String),
+          answerRecord: S.optional(S.String),
+          cesApp: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolCallResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          toolCall: S.optional(__S(9378, __c293, 2)),
+          toolCallResult: S.optional(__S(9380, __c293, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo",
+      });
     case 6:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(9381, __c293, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(182, __c22, 6)),
+          answerRecord: S.optional(S.String),
+          similarityScore: S.optional(S.Number),
+          suggestionIndex: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion",
+      });
+    case 8:
+      return S.Array(__S(9383, __c293, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          duplicateSuggestions: S.optional(__S(9384, __c293, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          agentAction: S.optional(S.String),
+          duplicateCheckResult: S.optional(__S(9385, __c293, 9)),
+          displayName: S.optional(S.String),
+          condition: S.optional(S.String),
+          systemAction: S.optional(S.String),
+          displayDetails: S.optional(S.String),
+          triggeringEvent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingInstruction",
+      });
+    case 11:
+      return S.Array(__S(9386, __c293, 10));
+    case 12:
+      return S.Array(S.Number);
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          instructionIndexes: S.optional(__S(9388, __c293, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          answerRecord: S.optional(S.String),
+          similarityScore: S.optional(S.Number),
+          sources: S.optional(__S(9389, __c293, 13)),
+          suggestionIndex: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion",
+      });
+    case 15:
+      return S.Array(__S(9390, __c293, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          duplicateSuggestions: S.optional(__S(9391, __c293, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          duplicateCheckResult: S.optional(__S(9392, __c293, 16)),
+          responseText: S.optional(S.String),
+          sources: S.optional(__S(9389, __c293, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse",
+      });
+    case 18:
+      return S.Array(__S(9393, __c293, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          agentAction: S.optional(S.String),
+          duplicateCheckResult: S.optional(__S(9392, __c293, 16)),
+          sources: S.optional(__S(9389, __c293, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion",
+      });
+    case 20:
+      return S.Array(__S(9395, __c293, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          applicableInstructions: S.optional(__S(9387, __c293, 11)),
+          sampleResponses: S.optional(__S(9394, __c293, 18)),
+          agentActionSuggestions: S.optional(__S(9396, __c293, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestion",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          summarySuggestion: S.optional(__S(9376, __c293, 0)),
+          freeFormSuggestion: S.optional(__S(9377, __c293, 1)),
+          toolCallInfo: S.optional(__S(9382, __c293, 6)),
+          agentCoachingSuggestion: S.optional(__S(9397, __c293, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestion",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          section: S.optional(S.String),
+          summary: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection",
+      });
+    case 1:
+      return S.Array(__S(9408, __c294, 0));
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GuidanceInstructionAction",
+      });
+    case 1:
+      return S.Array(__S(9440, __c295, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          triggerEvent: S.optional(S.String),
+          actions: S.optional(__S(9441, __c295, 1)),
+          condition: S.optional(S.String),
+          displayDetails: S.optional(S.String),
+          displayName: S.optional(S.String),
+          disableSuggestedReply: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1GuidanceInstruction",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9472, __c296, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(9536, __c298, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
   }
 }
-function __c23(j: number): any {
+function __c299(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          answerRecord: S.optional(S.String),
-          snippets: S.optional(__S(5, __c0, 5)),
-          title: S.optional(S.String),
-          uri: S.optional(S.String),
+          value: S.optional(S.String),
+          synonyms: S.optional(__S(9504, __c297, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ArticleAnswer",
+        identifier: "GoogleCloudDialogflowV2beta1EntityTypeEntity",
       });
     case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+      return S.Array(__S(9568, __c299, 0));
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          latestMessage: S.optional(S.String),
-          articleAnswers: S.optional(__S(185, __c23, 1)),
-          contextSize: S.optional(S.Number),
+          magnitude: S.optional(S.Number),
+          score: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestArticlesResponse",
+        identifier: "GoogleCloudDialogflowV2beta1Sentiment",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          suggestDialogflowAssistsResponse: S.optional(__S(105, __c13, 1)),
-          generateSuggestionsResponse: S.optional(__S(133, __c16, 5)),
-          generateCompanionSuggestionsResponse: S.optional(__S(153, __c19, 1)),
-          suggestFaqAnswersResponse: S.optional(__S(156, __c19, 4)),
-          suggestEntityExtractionResponse: S.optional(__S(105, __c13, 1)),
-          suggestSmartRepliesResponse: S.optional(__S(159, __c19, 7)),
-          suggestKnowledgeAssistResponse: S.optional(__S(181, __c22, 5)),
-          error: S.optional(__S(183, __c22, 7)),
-          suggestArticlesResponse: S.optional(__S(186, __c23, 2)),
+          queryTextSentiment: S.optional(__S(9600, __c300, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestionResult",
+        identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisResult",
       });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(26, __c3, 2)),
-          audio: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1OutputAudio",
-      });
-    case 6:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -11108,30 +17002,26 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1AnnotatedMessagePart",
       });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(9632, __c301, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           containEntities: S.optional(S.Boolean),
-          parts: S.optional(__S(191, __c23, 7)),
+          parts: S.optional(__S(9633, __c301, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1MessageAnnotation",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(1, __c0, 1)),
+          metadata: S.optional(__S(9472, __c296, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           allowPlaybackInterruption: S.optional(S.Boolean),
@@ -11141,17 +17031,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment",
       });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(9636, __c301, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          segments: S.optional(__S(195, __c24, 3)),
+          segments: S.optional(__S(9637, __c301, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           phoneNumber: S.optional(S.String),
@@ -11160,1365 +17050,69 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          liveAgentHandoff: S.optional(__S(193, __c24, 1)),
-          payload: S.optional(__S(1, __c0, 1)),
-          text: S.optional(__S(69, __c8, 5)),
-          endInteraction: S.optional(__S(58, __c7, 2)),
-          mixedAudio: S.optional(__S(196, __c24, 4)),
-          telephonyTransferCall: S.optional(__S(197, __c24, 5)),
+          liveAgentHandoff: S.optional(__S(9635, __c301, 3)),
+          payload: S.optional(__S(9472, __c296, 0)),
+          text: S.optional(__S(9696, __c303, 0)),
+          endInteraction: S.optional(__S(9664, __c302, 0)),
+          mixedAudio: S.optional(__S(9638, __c301, 6)),
+          telephonyTransferCall: S.optional(__S(9639, __c301, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1ResponseMessage",
       });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(9640, __c301, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           participantRole: S.optional(S.String),
           languageCode: S.optional(S.String),
-          messageAnnotation: S.optional(__S(192, __c24, 0)),
-          sentimentAnalysis: S.optional(__S(97, __c12, 1)),
+          messageAnnotation: S.optional(__S(9634, __c301, 2)),
+          sentimentAnalysis: S.optional(__S(9601, __c300, 1)),
           name: S.optional(S.String),
           sendTime: S.optional(S.String),
           createTime: S.optional(S.String),
           participant: S.optional(S.String),
-          responseMessages: S.optional(__S(199, __c24, 7)),
+          responseMessages: S.optional(__S(9641, __c301, 9)),
           content: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1Message",
       });
-    case 1:
-      return S.Array(__S(101, __c12, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          outputAudio: S.optional(S.String),
-          outputAudioConfig: S.optional(__S(26, __c3, 2)),
-          webhookStatus: S.optional(__S(183, __c22, 7)),
-          queryResult: S.optional(__S(101, __c12, 5)),
-          responseId: S.optional(S.String),
-          alternativeQueryResults: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1DetectIntentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          detectIntentResponse: S.optional(__S(202, __c25, 2)),
-          cxSessionParameters: S.optional(__S(1, __c0, 1)),
-          allowCancellation: S.optional(S.Boolean),
-          intent: S.optional(S.String),
-          event: S.optional(S.String),
-          matchConfidence: S.optional(S.Number),
-          responseMessages: S.optional(__S(199, __c24, 7)),
-          cxCurrentPage: S.optional(S.String),
-          parameters: S.optional(__S(1, __c0, 1)),
-          callCompanionAuthCode: S.optional(S.String),
-          automatedAgentReplyType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AutomatedAgentReply",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          acceptsDtmfInput: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1DtmfParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endUserSuggestionResults: S.optional(__S(188, __c23, 4)),
-          replyAudio: S.optional(__S(189, __c23, 5)),
-          replyText: S.optional(S.String),
-          humanAgentSuggestionResults: S.optional(__S(188, __c23, 4)),
-          message: S.optional(__S(200, __c25, 0)),
-          automatedAgentReply: S.optional(__S(203, __c25, 3)),
-          dtmfParameters: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AnalyzeContentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          participant: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+participant}:analyzeContent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnalyzeContentProjectsLocationsConversationsParticipantsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entities: S.optional(__S(7, __c0, 7)),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest",
-      });
   }
 }
-function __c26(j: number): any {
+function __c302(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchCreate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsAgentEntityTypesEntitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(1, __c0, 1)),
-          error: S.optional(__S(183, __c22, 7)),
-          response: S.optional(__S(1, __c0, 1)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          message: S.optional(__S(200, __c25, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CreateMessageRequest",
-      });
-    case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(211, __c26, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(212, __c26, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/messages:batchCreate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsConversationsMessagesRequest",
-      });
-    case 6:
-      return S.Array(__S(200, __c25, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchCreate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(212, __c26, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/messages:batchCreate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsConversationsMessagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entityTypeNames: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsAgentEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          entityValues: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsAgentEntityTypesEntitiesRequest",
-      });
-    case 6:
-      return S.Array(__S(95, __c11, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          intents: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(223, __c27, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/intents:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsAgentIntentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsLocationsAgentEntityTypesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(223, __c27, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/intents:batchDelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsLocationsAgentIntentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enableFuzzyExtraction: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          autoExpansionMode: S.optional(S.String),
-          name: S.optional(S.String),
-          kind: S.optional(S.String),
-          entities: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EntityType",
-      });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entityTypes: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EntityTypeBatch",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entityTypeBatchInline: S.optional(__S(230, __c28, 6)),
-          updateMask: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          entityTypeBatchUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(231, __c28, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsAgentEntityTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          entities: S.optional(__S(7, __c0, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsAgentEntityTypesEntitiesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          intentBatchUri: S.optional(S.String),
-          intentBatchInline: S.optional(__S(223, __c27, 7)),
-          intentView: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/intents:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsAgentIntentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(231, __c28, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsLocationsAgentEntityTypesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entities:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/intents:batchUpdate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsLocationsAgentIntentsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:cancel",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 1:
       return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:cancel",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          participantRole: S.optional(S.String),
-          suggestionFeatureType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conversationProfile: S.String.pipe(T.Label()),
-          body: S.optional(__S(243, __c30, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversationProfile}:clearSuggestionFeatureConfig",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearSuggestionFeatureConfigProjectsConversationProfilesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conversationProfile: S.String.pipe(T.Label()),
-          body: S.optional(__S(243, __c30, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversationProfile}:clearSuggestionFeatureConfig",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contextSize: S.optional(S.Number),
-          latestMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CompileSuggestionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(246, __c30, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:compile",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompileProjectsConversationsParticipantsSuggestionsRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          answerRecord: S.optional(S.String),
-          answer: S.optional(S.String),
-          source: S.optional(S.String),
-          question: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestionFaqAnswer",
-      });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          faqAnswers: S.optional(__S(249, __c31, 1)),
-          articles: S.optional(__S(185, __c23, 1)),
-          name: S.optional(S.String),
-          latestMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Suggestion",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          suggestion: S.optional(__S(250, __c31, 2)),
-          latestMessage: S.optional(S.String),
-          contextSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CompileSuggestionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:complete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteProjectsConversationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contentFormat: S.optional(S.String),
-          answerRecord: S.optional(S.String),
-          ingestionTime: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent",
-      });
-    case 6:
-      return S.Array(__S(253, __c31, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMode: S.optional(S.String),
-          createTime: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          contextContents: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationContextReference",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(255, __c31, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          countryCode: S.optional(S.Number),
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationPhoneNumber",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          generatorType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationGeneratorContext",
-      });
-    case 3:
-      return S.Record(S.String, __S(258, __c32, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader",
-      });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent",
-      });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sipHeaders: S.optional(__S(261, __c32, 5)),
-          extraMimeContents: S.optional(__S(263, __c32, 7)),
-          sdp: S.optional(S.String),
-          dialedNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          topic: S.optional(S.String),
-          messageFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1NotificationConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          sensitivityLevel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1RaiSettingsRaiCategoryConfig",
-      });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          raiCategoryConfigs: S.optional(__S(267, __c33, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1RaiSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBases: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
         identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sectionTypes: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dropVirtualAgentMessages: S.optional(S.Boolean),
-          dropHandoffMessages: S.optional(S.Boolean),
-          dropIvrMessages: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings",
+          "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation",
       });
   }
 }
-function __c34(j: number): any {
+function __c303(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agent: S.optional(S.String),
+          text: S.optional(__S(9504, __c297, 0)),
         }),
       ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          humanAgentSideConfig: S.optional(__S(272, __c34, 0)),
-          agent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          documents: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseQuerySource: S.optional(__S(269, __c33, 5)),
-          sections: S.optional(__S(270, __c33, 6)),
-          contextFilterSettings: S.optional(__S(271, __c33, 7)),
-          dialogflowQuerySource: S.optional(__S(273, __c34, 1)),
-          documentQuerySource: S.optional(__S(274, __c34, 2)),
-          confidenceThreshold: S.optional(S.Number),
-          contextSize: S.optional(S.Number),
-          maxResults: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          noSmallTalk: S.optional(S.Boolean),
-          onlyEndUser: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestionFeature",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recentSentencesCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          raiSettings: S.optional(__S(268, __c33, 4)),
-          queryConfig: S.optional(__S(275, __c34, 3)),
-          suggestionTriggerSettings: S.optional(__S(276, __c34, 4)),
-          enableEventBasedSuggestion: S.optional(S.Boolean),
-          enableResponseDebugInfo: S.optional(S.Boolean),
-          disableAgentQueryLogging: S.optional(S.Boolean),
-          suggestionFeature: S.optional(__S(277, __c34, 5)),
-          conversationProcessConfig: S.optional(__S(278, __c34, 6)),
-          enableConversationAugmentedQuery: S.optional(S.Boolean),
-          disableQuerySearchContext: S.optional(S.Boolean),
-          enableQuerySuggestionWhenNoAnswer: S.optional(S.Boolean),
-          enableQuerySuggestionOnly: S.optional(S.Boolean),
-          suggestionTriggerEvent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig",
+        identifier: "GoogleCloudDialogflowV2beta1IntentMessageText",
       });
   }
 }
-function __c35(j: number): any {
+function __c304(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enableAsyncToolCall: S.optional(S.Boolean),
-          useUnredactedConversationData: S.optional(S.Boolean),
-          featureConfigs: S.optional(__S(280, __c35, 0)),
-          companionAgent: S.optional(S.String),
-          generators: S.optional(__S(5, __c0, 5)),
-          skipEmptyEventBasedSuggestion: S.optional(S.Boolean),
-          groupSuggestionResponses: S.optional(S.Boolean),
-          disableHighLatencyFeaturesSyncDelivery: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableSentimentAnalysis: S.optional(S.Boolean),
-          enableSentimentAnalysisV3: S.optional(S.Boolean),
-          enableEntityExtraction: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          notificationConfig: S.optional(__S(265, __c33, 1)),
-          humanAgentSuggestionConfig: S.optional(__S(281, __c35, 1)),
-          messageAnalysisConfig: S.optional(__S(282, __c35, 2)),
-          endUserSuggestionConfig: S.optional(__S(281, __c35, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.optional(S.String),
-          organizationId: S.optional(S.String),
-          buttonId: S.optional(S.String),
-          endpointDomain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          salesforceLiveAgentConfig: S.optional(__S(284, __c35, 4)),
-          livePersonConfig: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sessionTtl: S.optional(S.String),
-          agent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AutomatedAgentConfig",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          speechModelVariant: S.optional(S.String),
-          useTimeoutBasedEndpointing: S.optional(S.Boolean),
-          sampleRateHertz: S.optional(S.Number),
-          useGeminiAsr: S.optional(S.Boolean),
-          audioEncoding: S.optional(S.String),
-          geminiAsrConfig: S.optional(__S(18, __c2, 2)),
-          enableWordInfo: S.optional(S.Boolean),
-          languageCode: S.optional(S.String),
-          phraseSets: S.optional(__S(5, __c0, 5)),
-          model: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SpeechToTextConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inactiveStart: S.optional(S.Boolean),
-          createConversationOnTheFly: S.optional(S.Boolean),
-          allowVirtualAgentInteraction: S.optional(S.Boolean),
-          ignoreReinviteMediaDirection: S.optional(S.Boolean),
-          keepConversationRunning: S.optional(S.Boolean),
-          copyInboundCallLegHeaders: S.optional(__S(5, __c0, 5)),
-          maxAudioRecordingDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SipConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableStackdriverLogging: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1LoggingConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          securitySettings: S.optional(S.String),
-          notificationConfig: S.optional(__S(265, __c33, 1)),
-          ttsConfig: S.optional(__S(25, __c3, 1)),
-          humanAgentAssistantConfig: S.optional(__S(283, __c35, 3)),
-          humanAgentHandoffConfig: S.optional(__S(286, __c35, 6)),
-          newMessageEventNotificationConfig: S.optional(__S(265, __c33, 1)),
-          updateTime: S.optional(S.String),
-          useBidiStreaming: S.optional(S.Boolean),
-          newRecognitionResultNotificationConfig: S.optional(__S(265, __c33, 1)),
-          automatedAgentConfig: S.optional(__S(287, __c35, 7)),
-          sttConfig: S.optional(__S(288, __c36, 0)),
-          name: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sipConfig: S.optional(__S(289, __c36, 1)),
-          loggingConfig: S.optional(__S(290, __c36, 2)),
-          createTime: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationProfile",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ingestedContextReferences: S.optional(__S(256, __c32, 0)),
-          phoneNumber: S.optional(__S(257, __c32, 1)),
-          conversationStage: S.optional(S.String),
-          initialGeneratorContexts: S.optional(__S(259, __c32, 3)),
-          endTime: S.optional(S.String),
-          telephonyConnectionInfo: S.optional(__S(264, __c33, 0)),
-          startTime: S.optional(S.String),
-          lifecycleState: S.optional(S.String),
-          conversationProfile: S.optional(S.String),
-          name: S.optional(S.String),
-          initialConversationProfile: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Conversation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:complete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteProjectsLocationsConversationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(228, __c28, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentEntityTypesRequest",
-      });
-    case 7:
-      return S.Array(__S(277, __c34, 5));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isCloudFunction: S.optional(S.Boolean),
-          requestHeaders: S.optional(__S(4, __c0, 4)),
-          username: S.optional(S.String),
-          password: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1FulfillmentGenericWebService",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(295, __c36, 7)),
-          enabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          genericWebService: S.optional(__S(296, __c37, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Fulfillment",
-      });
-    case 2:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableTextToSpeech: S.optional(S.Boolean),
-          outputAudioEncoding: S.optional(S.String),
-          synthesizeSpeechConfigs: S.optional(__S(298, __c37, 2)),
-          sampleRateHertz: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1TextToSpeechSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          fulfillment: S.optional(__S(297, __c37, 1)),
-          textToSpeechSettings: S.optional(__S(299, __c37, 3)),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          agentVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Environment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/environments",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentEnvironmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/intents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentIntentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1KnowledgeBase",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/knowledgeBases",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentKnowledgeBasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.optional(S.String),
-          status: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1DocumentReloadStatus",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rawContent: S.optional(S.String),
-          content: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          state: S.optional(S.String),
-          latestReloadStatus: S.optional(__S(307, __c38, 3)),
-          knowledgeTypes: S.optional(__S(308, __c38, 4)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          contentUri: S.optional(S.String),
-          enableAutoReload: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Document",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          importGcsCustomMetadata: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/documents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentKnowledgeBasesDocumentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentSessionsContextsRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentSessionsEntityTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          versionNumber: S.optional(S.Number),
-          description: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Version",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/versions",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/conversationProfiles",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsConversationProfilesRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           conversationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(292, __c36, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(7752, __c242, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12529,23 +17123,15 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "CreateProjectsConversationsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documentsMetadataFilters: S.optional(__S(4, __c0, 4)),
-          role: S.optional(S.String),
-          obfuscatedExternalUserId: S.optional(S.String),
-          name: S.optional(S.String),
-          agentDesktopSource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Participant",
-      });
-    case 6:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(317, __c39, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(9792, __c306, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12556,178 +17142,32 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "CreateProjectsConversationsParticipantsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          topK: S.optional(S.Number),
-          maxOutputTokens: S.optional(S.Number),
-          topP: S.optional(S.Number),
-          temperature: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1InferenceParameter",
-      });
   }
 }
-function __c40(j: number): any {
+function __c306(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          definition: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SummarizationSection",
-      });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
+          documentsMetadataFilters: S.optional(__S(9152, __c286, 0)),
           role: S.optional(S.String),
-          text: S.optional(S.String),
-          createTime: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1MessageEntry",
-      });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          messageEntries: S.optional(__S(323, __c40, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConversationContext",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          summarizationSections: S.optional(__S(321, __c40, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SummarizationSectionList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversationContext: S.optional(__S(324, __c40, 4)),
-          output: S.optional(__S(130, __c16, 2)),
-          summarizationSectionList: S.optional(__S(325, __c40, 5)),
-          extraInfo: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1FewShotExample",
-      });
-    case 7:
-      return S.Array(__S(326, __c40, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          summarizationSections: S.optional(__S(321, __c40, 1)),
-          fewShotExamples: S.optional(__S(327, __c40, 7)),
-          outputLanguageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SummarizationContext",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enableDeduping: S.optional(S.Boolean),
-          similarityThreshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestionDedupingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          confirmationRequirement: S.optional(S.String),
-          toolset: S.optional(S.String),
-          operationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolsetTool",
-      });
-    case 3:
-      return S.Array(__S(330, __c41, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          instructions: S.optional(__S(119, __c14, 7)),
-          overarchingGuidance: S.optional(S.String),
-          version: S.optional(S.String),
-          outputLanguageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingContext",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reactiveEnabled: S.optional(S.Boolean),
-          cesApp: S.optional(S.String),
-          proactiveEnabled: S.optional(S.Boolean),
-          confirmationRequirement: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CesAppSpec",
-      });
-    case 6:
-      return S.Array(__S(333, __c41, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          confirmationRequirement: S.optional(S.String),
-          cesTool: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CesToolSpec",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          inferenceParameter: S.optional(__S(319, __c39, 7)),
-          updateTime: S.optional(S.String),
-          triggerEvent: S.optional(S.String),
-          tools: S.optional(__S(5, __c0, 5)),
-          summarizationContext: S.optional(__S(328, __c41, 0)),
-          suggestionDedupingConfig: S.optional(__S(329, __c41, 1)),
-          toolsetTools: S.optional(__S(331, __c41, 3)),
-          publishedModel: S.optional(S.String),
-          agentCoachingContext: S.optional(__S(332, __c41, 4)),
-          cesAppSpecs: S.optional(__S(334, __c41, 6)),
-          createTime: S.optional(S.String),
-          cesToolSpecs: S.optional(__S(336, __c42, 0)),
+          obfuscatedExternalUserId: S.optional(S.String),
           name: S.optional(S.String),
-          freeFormContext: S.optional(__S(48, __c6, 0)),
+          agentDesktopSource: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Generator",
+        identifier: "GoogleCloudDialogflowV2beta1Participant",
       });
-    case 2:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           generatorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(9902, __c309, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12738,11 +17178,177 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateProjectsGeneratorsRequest",
       });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          confirmationRequirement: S.optional(S.String),
+          toolset: S.optional(S.String),
+          operationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolsetTool",
+      });
+    case 1:
+      return S.Array(__S(9856, __c308, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          confirmationRequirement: S.optional(S.String),
+          cesTool: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CesToolSpec",
+      });
+    case 3:
+      return S.Array(__S(9858, __c308, 2));
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topK: S.optional(S.Number),
+          maxOutputTokens: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1InferenceParameter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          definition: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SummarizationSection",
+      });
+    case 2:
+      return S.Array(__S(9889, __c309, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          role: S.optional(S.String),
+          text: S.optional(S.String),
+          createTime: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1MessageEntry",
+      });
+    case 4:
+      return S.Array(__S(9891, __c309, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          messageEntries: S.optional(__S(9892, __c309, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ConversationContext",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          summarizationSections: S.optional(__S(9890, __c309, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SummarizationSectionList",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          conversationContext: S.optional(__S(9893, __c309, 5)),
+          output: S.optional(__S(9398, __c293, 22)),
+          summarizationSectionList: S.optional(__S(9894, __c309, 6)),
+          extraInfo: S.optional(__S(9152, __c286, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1FewShotExample",
+      });
+    case 8:
+      return S.Array(__S(9895, __c309, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          summarizationSections: S.optional(__S(9890, __c309, 2)),
+          fewShotExamples: S.optional(__S(9896, __c309, 8)),
+          outputLanguageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SummarizationContext",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enableDeduping: S.optional(S.Boolean),
+          similarityThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SuggestionDedupingConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          instructions: S.optional(__S(9387, __c293, 11)),
+          overarchingGuidance: S.optional(S.String),
+          version: S.optional(S.String),
+          outputLanguageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1AgentCoachingContext",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          reactiveEnabled: S.optional(S.Boolean),
+          cesApp: S.optional(S.String),
+          proactiveEnabled: S.optional(S.Boolean),
+          confirmationRequirement: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CesAppSpec",
+      });
+    case 13:
+      return S.Array(__S(9900, __c309, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          inferenceParameter: S.optional(__S(9888, __c309, 0)),
+          updateTime: S.optional(S.String),
+          triggerEvent: S.optional(S.String),
+          tools: S.optional(__S(9504, __c297, 0)),
+          summarizationContext: S.optional(__S(9897, __c309, 9)),
+          suggestionDedupingConfig: S.optional(__S(9898, __c309, 10)),
+          toolsetTools: S.optional(__S(9857, __c308, 1)),
+          publishedModel: S.optional(S.String),
+          agentCoachingContext: S.optional(__S(9899, __c309, 11)),
+          cesAppSpecs: S.optional(__S(9901, __c309, 13)),
+          createTime: S.optional(S.String),
+          cesToolSpecs: S.optional(__S(9859, __c308, 3)),
+          name: S.optional(S.String),
+          freeFormContext: S.optional(__S(8768, __c274, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Generator",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12753,12 +17359,16 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateProjectsKnowledgeBasesRequest",
       });
-    case 4:
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           importGcsCustomMetadata: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12769,12 +17379,16 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateProjectsKnowledgeBasesDocumentsRequest",
       });
-    case 5:
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(228, __c28, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12785,12 +17399,16 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentEntityTypesRequest",
       });
-    case 6:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(8066, __c252, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12801,11 +17419,15 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentEnvironmentsRequest",
       });
-    case 7:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12818,13 +17440,13 @@ function __c42(j: number): any {
       });
   }
 }
-function __c43(j: number): any {
+function __c315(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12835,13 +17457,17 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
       });
-    case 1:
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           intentView: S.optional(S.String.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(8890, __c277, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12852,11 +17478,34 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentIntentsRequest",
       });
-    case 2:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          participant: S.String.pipe(T.Label()),
+          body: S.optional(__S(8515, __c266, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+participant}:analyzeContent",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnalyzeContentProjectsLocationsConversationsParticipantsRequest",
+      });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8736, __c273, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12867,11 +17516,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentSessionsContextsRequest",
       });
-    case 3:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(9344, __c292, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12882,11 +17535,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentSessionsEntityTypesRequest",
       });
-    case 4:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12897,54 +17554,16 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAgentVersionsRequest",
       });
-    case 5:
-      return S.Array(__S(149, __c18, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          overarchingGuidance: S.optional(S.String),
-          guidanceInstructions: S.optional(__S(349, __c43, 5)),
-          knowledgeSource: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          skillTriggeringEvent: S.optional(S.String),
-          guidanceSkillConfig: S.optional(__S(350, __c43, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig",
-      });
   }
 }
-function __c44(j: number): any {
+function __c321(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          cesToolSpecs: S.optional(__S(336, __c42, 0)),
-          name: S.optional(S.String),
-          toolsetTools: S.optional(__S(331, __c41, 3)),
-          skillConfigs: S.optional(__S(352, __c44, 0)),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1CompanionAgent",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           companionAgentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(353, __c44, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10308, __c322, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12955,11 +17574,57 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCompanionAgentsRequest",
       });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9442, __c295, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          overarchingGuidance: S.optional(S.String),
+          guidanceInstructions: S.optional(__S(10304, __c322, 0)),
+          knowledgeSource: S.optional(__S(9664, __c302, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          skillTriggeringEvent: S.optional(S.String),
+          guidanceSkillConfig: S.optional(__S(10305, __c322, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig",
+      });
     case 3:
+      return S.Array(__S(10306, __c322, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          cesToolSpecs: S.optional(__S(9859, __c308, 3)),
+          name: S.optional(S.String),
+          toolsetTools: S.optional(__S(9857, __c308, 1)),
+          skillConfigs: S.optional(__S(10307, __c322, 3)),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CompanionAgent",
+      });
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(7660, __c239, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12970,12 +17635,16 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConversationProfilesRequest",
       });
-    case 4:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           conversationId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(292, __c36, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(7752, __c242, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12986,11 +17655,15 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConversationsRequest",
       });
-    case 5:
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(317, __c39, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(9792, __c306, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13001,12 +17674,16 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConversationsParticipantsRequest",
       });
-    case 6:
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           generatorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(9902, __c309, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13017,7 +17694,30 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsGeneratorsRequest",
       });
-    case 7:
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10523, __c328, 27).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/evaluations",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGeneratorsEvaluationsRequest",
+      });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
@@ -13027,11 +17727,7 @@ function __c44(j: number): any {
         identifier:
           "GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataset: S.optional(S.String),
@@ -13039,22 +17735,22 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          agentAssistInputDataConfig: S.optional(__S(359, __c44, 7)),
+          agentAssistInputDataConfig: S.optional(__S(10496, __c328, 0)),
           summaryGenerationOption: S.optional(S.String),
           sampleSize: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          datasetInputDataConfig: S.optional(__S(360, __c45, 0)),
+          datasetInputDataConfig: S.optional(__S(10497, __c328, 1)),
           inputDataSourceType: S.optional(S.String),
           isSummaryGenerationAllowed: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enableCompletenessEvaluation: S.optional(S.Boolean),
@@ -13066,17 +17762,17 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           outputGcsBucketPath: S.optional(S.String),
-          inputDataConfig: S.optional(__S(361, __c45, 1)),
-          summarizationConfig: S.optional(__S(362, __c45, 2)),
+          inputDataConfig: S.optional(__S(10498, __c328, 2)),
+          summarizationConfig: S.optional(__S(10499, __c328, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           tokenCount: S.optional(S.String),
@@ -13085,9 +17781,9 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken",
       });
-    case 5:
-      return S.Array(__S(364, __c45, 4));
     case 6:
+      return S.Array(__S(10501, __c328, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           point: S.optional(S.String),
@@ -13098,7 +17794,7 @@ function __c45(j: number): any {
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
@@ -13107,11 +17803,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
@@ -13121,19 +17813,19 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          accuracyDecomposition: S.optional(__S(366, __c45, 6)),
-          completenessRubric: S.optional(__S(367, __c45, 7)),
-          adherenceRubric: S.optional(__S(368, __c46, 0)),
+          accuracyDecomposition: S.optional(__S(10503, __c328, 7)),
+          completenessRubric: S.optional(__S(10504, __c328, 8)),
+          adherenceRubric: S.optional(__S(10505, __c328, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult",
       });
-    case 2:
-      return S.Array(__S(369, __c46, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(10506, __c328, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           point: S.optional(S.String),
@@ -13144,39 +17836,35 @@ function __c46(j: number): any {
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          adherenceDecomposition: S.optional(__S(371, __c46, 3)),
-          accuracyDecomposition: S.optional(__S(366, __c45, 6)),
+          adherenceDecomposition: S.optional(__S(10508, __c328, 12)),
+          accuracyDecomposition: S.optional(__S(10503, __c328, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition",
       });
-    case 5:
-      return S.Array(__S(372, __c46, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(10509, __c328, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
           sectionSummary: S.optional(S.String),
-          evaluationResults: S.optional(__S(370, __c46, 2)),
+          evaluationResults: S.optional(__S(10507, __c328, 11)),
           sessionId: S.optional(S.String),
           section: S.optional(S.String),
-          decompositions: S.optional(__S(373, __c46, 5)),
+          decompositions: S.optional(__S(10510, __c328, 14)),
           metric: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult",
       });
-    case 7:
-      return S.Array(__S(374, __c46, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
+      return S.Array(__S(10511, __c328, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           metric: S.optional(S.String),
@@ -13185,13 +17873,13 @@ function __c47(j: number): any {
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric",
       });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
-    case 2:
+    case 18:
+      return S.Array(__S(10513, __c328, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           sectionSummary: S.optional(S.String),
-          evaluationResults: S.optional(__S(370, __c46, 2)),
+          evaluationResults: S.optional(__S(10507, __c328, 11)),
           score: S.optional(S.Number),
           section: S.optional(S.String),
         }),
@@ -13199,96 +17887,81 @@ function __c47(j: number): any {
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail",
       });
-    case 3:
-      return S.Array(__S(378, __c47, 2));
-    case 4:
+    case 20:
+      return S.Array(__S(10515, __c328, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
           metric: S.optional(S.String),
-          sectionDetails: S.optional(__S(379, __c47, 3)),
+          sectionDetails: S.optional(__S(10516, __c328, 20)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail",
       });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 22:
+      return S.Array(__S(10517, __c328, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          sectionTokens: S.optional(__S(365, __c45, 5)),
-          messageEntries: S.optional(__S(323, __c40, 3)),
-          summarySections: S.optional(__S(107, __c13, 3)),
-          metricDetails: S.optional(__S(381, __c47, 5)),
+          sectionTokens: S.optional(__S(10502, __c328, 6)),
+          messageEntries: S.optional(__S(9892, __c309, 4)),
+          summarySections: S.optional(__S(9409, __c294, 1)),
+          metricDetails: S.optional(__S(10518, __c328, 22)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail",
       });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
+      return S.Array(__S(10519, __c328, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          overallSectionTokens: S.optional(__S(365, __c45, 5)),
-          summarizationEvaluationResults: S.optional(__S(375, __c46, 7)),
-          overallMetrics: S.optional(__S(377, __c47, 1)),
-          conversationDetails: S.optional(__S(383, __c47, 7)),
+          overallSectionTokens: S.optional(__S(10502, __c328, 6)),
+          summarizationEvaluationResults: S.optional(__S(10512, __c328, 16)),
+          overallMetrics: S.optional(__S(10514, __c328, 18)),
+          conversationDetails: S.optional(__S(10520, __c328, 24)),
           summarizationEvaluationMergedResultsUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics",
       });
-    case 1:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          pipelineStatus: S.optional(__S(183, __c22, 7)),
+          pipelineStatus: S.optional(__S(9537, __c298, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1EvaluationStatus",
       });
-    case 2:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          generatorEvaluationConfig: S.optional(__S(363, __c45, 3)),
-          initialGenerator: S.optional(__S(337, __c42, 1)),
+          generatorEvaluationConfig: S.optional(__S(10500, __c328, 4)),
+          initialGenerator: S.optional(__S(9902, __c309, 14)),
           satisfiesPzi: S.optional(S.Boolean),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          summarizationMetrics: S.optional(__S(384, __c48, 0)),
+          summarizationMetrics: S.optional(__S(10521, __c328, 25)),
           satisfiesPzs: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          evaluationStatus: S.optional(__S(385, __c48, 1)),
+          evaluationStatus: S.optional(__S(10522, __c328, 26)),
           completeTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1GeneratorEvaluation",
       });
-    case 3:
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(386, __c48, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/evaluations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGeneratorsEvaluationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8224, __c257, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13299,12 +17972,64 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsKnowledgeBasesRequest",
       });
-    case 5:
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10592, __c331, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchCreate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entities: S.optional(__S(9569, __c299, 1)),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest",
+      });
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(9472, __c296, 0)),
+          error: S.optional(__S(9537, __c298, 1)),
+          response: S.optional(__S(9472, __c296, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           importGcsCustomMetadata: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8290, __c259, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13315,85 +18040,15 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsKnowledgeBasesDocumentsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.String),
-          certificateState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ConnectionErrorDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          errorDetails: S.optional(__S(390, __c48, 6)),
-          state: S.optional(S.String),
-          connectionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Connection",
-      });
   }
 }
-function __c49(j: number): any {
+function __c334(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(391, __c48, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          certificateState: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          initTime: S.optional(S.String),
-          probeStatus: S.optional(S.String),
-          optionsLatency: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ProbeDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pingInterval: S.optional(S.String),
-          errorDetails: S.optional(__S(393, __c49, 1)),
-          peerSocketAddress: S.optional(S.String),
-          connectionState: S.optional(S.String),
-          probeDetails: S.optional(__S(394, __c49, 2)),
-          enabledSipPing: S.optional(S.Boolean),
-          peerHostname: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SipHostname",
-      });
-    case 4:
-      return S.Array(__S(395, __c49, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          expectedHostname: S.optional(__S(5, __c0, 5)),
-          googleRootCertFile: S.optional(S.String),
-          connections: S.optional(__S(392, __c49, 0)),
-          displayName: S.optional(S.String),
-          peerHostnames: S.optional(__S(396, __c49, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SipTrunk",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(397, __c49, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(10727, __c335, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13404,185 +18059,90 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSipTrunksRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestLocation: S.optional(S.String),
-          secretVersionForApiKey: S.optional(S.String),
-          keyName: S.optional(S.String),
-          apiKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig",
-      });
   }
 }
-function __c50(j: number): any {
+function __c335(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(5, __c0, 5)),
-          secretVersionForClientSecret: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-          oauthGrantType: S.optional(S.String),
-          tokenEndpoint: S.optional(S.String),
-          clientId: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          certificateState: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig",
+        identifier: "GoogleCloudDialogflowV2beta1ConnectionErrorDetails",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceAgentAuth: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          secretVersionForToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiKeyConfig: S.optional(__S(399, __c49, 7)),
-          oauthConfig: S.optional(__S(400, __c50, 0)),
-          serviceAgentAuthConfig: S.optional(__S(401, __c50, 1)),
-          bearerTokenConfig: S.optional(__S(402, __c50, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolAuthentication",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cert: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolTLSConfigCACert",
-      });
-    case 5:
-      return S.Array(__S(404, __c50, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          caCerts: S.optional(__S(405, __c50, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolTLSConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.optional(__S(403, __c50, 3)),
-          tlsConfig: S.optional(__S(406, __c50, 6)),
-          serviceDirectoryConfig: S.optional(__S(407, __c50, 7)),
-          textSchema: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolOpenApiTool",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entityOperation: S.optional(__S(409, __c51, 1)),
-          connectionActionId: S.optional(S.String),
-          inputFields: S.optional(__S(5, __c0, 5)),
-          outputFields: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorToolAction",
-      });
-    case 3:
-      return S.Array(__S(410, __c51, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          actions: S.optional(__S(411, __c51, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorTool",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolExtensionTool",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inputSchema: S.optional(__S(1, __c0, 1)),
-          methodType: S.optional(S.String),
-          outputSchema: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ToolFunctionTool",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          openApiSpec: S.optional(__S(408, __c51, 0)),
           updateTime: S.optional(S.String),
-          connectorSpec: S.optional(__S(412, __c51, 4)),
-          satisfiesPzi: S.optional(S.Boolean),
-          actionConfirmationRequirement: S.optional(__S(413, __c51, 5)),
-          satisfiesPzs: S.optional(S.Boolean),
-          extensionSpec: S.optional(__S(414, __c51, 6)),
-          name: S.optional(S.String),
-          toolKey: S.optional(S.String),
-          functionSpec: S.optional(__S(415, __c51, 7)),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
+          errorDetails: S.optional(__S(10720, __c335, 0)),
+          state: S.optional(S.String),
+          connectionId: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Tool",
+        identifier: "GoogleCloudDialogflowV2beta1Connection",
       });
-    case 1:
+    case 2:
+      return S.Array(__S(10721, __c335, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          certificateState: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          initTime: S.optional(S.String),
+          probeStatus: S.optional(S.String),
+          optionsLatency: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ProbeDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pingInterval: S.optional(S.String),
+          errorDetails: S.optional(__S(10723, __c335, 3)),
+          peerSocketAddress: S.optional(S.String),
+          connectionState: S.optional(S.String),
+          probeDetails: S.optional(__S(10724, __c335, 4)),
+          enabledSipPing: S.optional(S.Boolean),
+          peerHostname: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SipHostname",
+      });
+    case 6:
+      return S.Array(__S(10725, __c335, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          expectedHostname: S.optional(__S(9504, __c297, 0)),
+          googleRootCertFile: S.optional(S.String),
+          connections: S.optional(__S(10722, __c335, 2)),
+          displayName: S.optional(S.String),
+          peerHostnames: S.optional(__S(10726, __c335, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1SipTrunk",
+      });
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           toolId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(10801, __c337, 17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13593,7 +18153,176 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsToolsRequest",
       });
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestLocation: S.optional(S.String),
+          secretVersionForApiKey: S.optional(S.String),
+          keyName: S.optional(S.String),
+          apiKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(9504, __c297, 0)),
+          secretVersionForClientSecret: S.optional(S.String),
+          clientSecret: S.optional(S.String),
+          oauthGrantType: S.optional(S.String),
+          tokenEndpoint: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAgentAuth: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          secretVersionForToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiKeyConfig: S.optional(__S(10784, __c337, 0)),
+          oauthConfig: S.optional(__S(10785, __c337, 1)),
+          serviceAgentAuthConfig: S.optional(__S(10786, __c337, 2)),
+          bearerTokenConfig: S.optional(__S(10787, __c337, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolAuthentication",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cert: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolTLSConfigCACert",
+      });
+    case 6:
+      return S.Array(__S(10789, __c337, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          caCerts: S.optional(__S(10790, __c337, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolTLSConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.optional(__S(10788, __c337, 4)),
+          tlsConfig: S.optional(__S(10791, __c337, 7)),
+          serviceDirectoryConfig: S.optional(__S(10792, __c337, 8)),
+          textSchema: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolOpenApiTool",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          entityOperation: S.optional(__S(10794, __c337, 10)),
+          connectionActionId: S.optional(S.String),
+          inputFields: S.optional(__S(9504, __c297, 0)),
+          outputFields: S.optional(__S(9504, __c297, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorToolAction",
+      });
+    case 12:
+      return S.Array(__S(10795, __c337, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          actions: S.optional(__S(10796, __c337, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolConnectorTool",
+      });
+    case 14:
+      return S.Record(S.String, S.String);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolExtensionTool",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          inputSchema: S.optional(__S(9472, __c296, 0)),
+          methodType: S.optional(S.String),
+          outputSchema: S.optional(__S(9472, __c296, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1ToolFunctionTool",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          openApiSpec: S.optional(__S(10793, __c337, 9)),
+          updateTime: S.optional(S.String),
+          connectorSpec: S.optional(__S(10797, __c337, 13)),
+          satisfiesPzi: S.optional(S.Boolean),
+          actionConfirmationRequirement: S.optional(__S(10798, __c337, 14)),
+          satisfiesPzs: S.optional(S.Boolean),
+          extensionSpec: S.optional(__S(10799, __c337, 15)),
+          name: S.optional(S.String),
+          toolKey: S.optional(S.String),
+          functionSpec: S.optional(__S(10800, __c337, 16)),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1Tool",
+      });
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13607,7 +18336,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DeleteAgentProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13621,7 +18354,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DeleteAgentProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13635,7 +18372,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DeleteContextsProjectsAgentEnvironmentsUsersSessionsRequest",
       });
-    case 5:
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13649,7 +18390,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DeleteContextsProjectsAgentSessionsRequest",
       });
-    case 6:
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13663,7 +18408,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DeleteContextsProjectsLocationsAgentEnvironmentsUsersSessionsRequest",
       });
-    case 7:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -13679,7 +18428,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c344(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13695,7 +18444,67 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentEntityTypesRequest",
       });
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(11074, __c346, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/messages:batchCreate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsConversationsMessagesRequest",
+      });
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          message: S.optional(__S(9642, __c301, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1CreateMessageRequest",
+      });
     case 1:
+      return S.Array(__S(11072, __c346, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(11073, __c346, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(11104, __c347, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse",
+      });
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9642, __c301, 10));
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13709,7 +18518,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentEnvironmentsRequest",
       });
-    case 2:
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13723,7 +18536,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentEnvironmentsUsersSessionsContextsRequest",
       });
-    case 3:
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13737,7 +18554,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
       });
-    case 4:
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13751,7 +18572,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentIntentsRequest",
       });
-    case 5:
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13766,7 +18591,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentKnowledgeBasesRequest",
       });
-    case 6:
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13780,7 +18609,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentKnowledgeBasesDocumentsRequest",
       });
-    case 7:
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13796,7 +18629,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c355(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13812,7 +18645,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentSessionsEntityTypesRequest",
       });
-    case 1:
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13826,7 +18663,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAgentVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13840,7 +18681,30 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsConversationProfilesRequest",
       });
-    case 3:
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10592, __c331, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/entities:batchCreate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13855,7 +18719,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsKnowledgeBasesRequest",
       });
-    case 4:
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13869,7 +18737,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsKnowledgeBasesDocumentsRequest",
       });
-    case 5:
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13883,7 +18755,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentEntityTypesRequest",
       });
-    case 6:
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13897,7 +18773,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentEnvironmentsRequest",
       });
-    case 7:
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13913,7 +18793,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c364(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13929,7 +18809,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
       });
-    case 1:
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13943,7 +18827,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentIntentsRequest",
       });
-    case 2:
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13957,7 +18845,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentSessionsContextsRequest",
       });
-    case 3:
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13971,7 +18863,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentSessionsEntityTypesRequest",
       });
-    case 4:
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13985,7 +18881,30 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAgentVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(11074, __c346, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta1/{+parent}/messages:batchCreate",
+            baseUrl: "https://dialogflow.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsConversationsMessagesRequest",
+      });
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -13999,7 +18918,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCompanionAgentsRequest",
       });
-    case 6:
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14013,7 +18936,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConversationProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14029,7 +18956,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c373(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14045,7 +18972,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGeneratorsEvaluationsRequest",
       });
-    case 1:
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14060,7 +18991,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsKnowledgeBasesRequest",
       });
-    case 2:
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14074,7 +19009,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsKnowledgeBasesDocumentsRequest",
       });
-    case 3:
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14088,29 +19027,37 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsPhoneNumbersRequest",
       });
-    case 4:
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sipTrunks: S.optional(__S(5, __c0, 5)),
-          carrierIds: S.optional(__S(5, __c0, 5)),
+          sipTrunks: S.optional(__S(9504, __c297, 0)),
+          carrierIds: S.optional(__S(9504, __c297, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1PhoneNumberAllowedSipTrunks",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           purgeTime: S.optional(S.String),
           phoneNumber: S.optional(S.String),
           conversationProfile: S.optional(S.String),
           lifecycleState: S.optional(S.String),
-          allowedSipTrunks: S.optional(__S(452, __c56, 4)),
+          allowedSipTrunks: S.optional(__S(12064, __c377, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDialogflowV2beta1PhoneNumber",
       });
-    case 6:
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14124,7 +19071,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSipTrunksRequest",
       });
-    case 7:
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -14140,7 +19091,7 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c380(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14156,3692 +19107,8 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsPhoneNumbersRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dtmfEvents: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1TelephonyDtmfEvents",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(__S(27, __c3, 3)),
-          text: S.optional(__S(21, __c2, 5)),
-          dtmf: S.optional(__S(457, __c57, 1)),
-          audioConfig: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1QueryInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outputAudioConfigMask: S.optional(S.String),
-          queryInput: S.optional(__S(458, __c57, 2)),
-          inputAudio: S.optional(S.String),
-          queryParams: S.optional(__S(14, __c1, 6)),
-          outputAudioConfig: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1DetectIntentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.String.pipe(T.Label()),
-          body: S.optional(__S(459, __c57, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+session}:detectIntent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectIntentProjectsAgentEnvironmentsUsersSessionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.String.pipe(T.Label()),
-          body: S.optional(__S(459, __c57, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+session}:detectIntent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectIntentProjectsAgentSessionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.String.pipe(T.Label()),
-          body: S.optional(__S(459, __c57, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+session}:detectIntent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectIntentProjectsLocationsAgentEnvironmentsUsersSessionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.String.pipe(T.Label()),
-          body: S.optional(__S(459, __c57, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+session}:detectIntent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectIntentProjectsLocationsAgentSessionsRequest",
-      });
   }
 }
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          agentUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ExportAgentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(464, __c58, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:export",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportProjectsAgentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(464, __c58, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:export",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportProjectsLocationsAgentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          triggerEvents: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(467, __c58, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:generate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateProjectsConversationsSuggestionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(467, __c58, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:generate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateProjectsLocationsConversationsSuggestionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contextReferences: S.optional(__S(256, __c32, 0)),
-          generator: S.optional(__S(337, __c42, 1)),
-          generatorName: S.optional(S.String),
-          triggerEvents: S.optional(__S(34, __c4, 2)),
-          securitySettings: S.optional(S.String),
-          conversationContext: S.optional(__S(324, __c40, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(470, __c58, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/statelessSuggestion:generate",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateProjectsLocationsStatelessSuggestionRequest",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          generatorSuggestion: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxContextSize: S.optional(S.Number),
-          statelessConversation: S.optional(__S(473, __c59, 1)),
-          latestMessage: S.optional(S.String),
-          conversationProfile: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(474, __c59, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:generateStatelessSummary",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateStatelessSummaryProjectsLocationsSuggestionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          textSections: S.optional(__S(4, __c0, 4)),
-          baselineModelVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponseSummary",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          summary: S.optional(__S(476, __c59, 4)),
-          contextSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(474, __c59, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:generateStatelessSummary",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateStatelessSummaryProjectsSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAgentProjectsRequest" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          matchMode: S.optional(S.String),
-          avatarUri: S.optional(S.String),
-          defaultLanguageCode: S.optional(S.String),
-          apiVersion: S.optional(S.String),
-          supportedLanguageCodes: S.optional(__S(5, __c0, 5)),
-          timeZone: S.optional(S.String),
-          tier: S.optional(S.String),
-          classificationThreshold: S.optional(S.Number),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          parent: S.optional(S.String),
-          enableLogging: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1Agent",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentProjectsLocationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEncryptionSpecProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKey: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EncryptionSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFulfillmentProjectsAgentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFulfillmentProjectsLocationsAgentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/history",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHistoryProjectsAgentEnvironmentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          agentVersion: S.optional(S.String),
-          createTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry",
-      });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(487, __c60, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          entries: S.optional(__S(488, __c61, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1EnvironmentHistory",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/history",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHistoryProjectsLocationsAgentEnvironmentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentEnvironmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          intentView: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentIntentsRequest",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentKnowledgeBasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentKnowledgeBasesDocumentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentSessionsContextsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentSessionsEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAgentVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAnswerRecordsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          textSections: S.optional(__S(4, __c0, 4)),
-          summaryText: S.optional(S.String),
-          submitTimestamp: S.optional(S.String),
-          startTimestamp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedbackSummarizationFeedback",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clickedUris: S.optional(__S(5, __c0, 5)),
-          answerCopied: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeSearchFeedback",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          summarizationFeedback: S.optional(__S(502, __c62, 6)),
-          knowledgeSearchFeedback: S.optional(__S(503, __c62, 7)),
-          documentCorrectness: S.optional(S.String),
-          companionFeedback: S.optional(__S(58, __c7, 2)),
-          answerRelevance: S.optional(S.String),
-          documentEfficiency: S.optional(S.String),
-          knowledgeAssistFeedback: S.optional(__S(503, __c62, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantFeedback",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayed: S.optional(S.Boolean),
-          agentAssistantDetailFeedback: S.optional(__S(504, __c63, 0)),
-          clickTime: S.optional(S.String),
-          displayTime: S.optional(S.String),
-          correctnessLevel: S.optional(S.String),
-          clicked: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AnswerFeedback",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(S.String),
-          groundingMetadata: S.optional(__S(142, __c17, 6)),
-          toolCalls: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reactiveCompanionSuggestion: S.optional(__S(506, __c63, 2)),
-          dialogflowAssistAnswer: S.optional(__S(103, __c12, 7)),
-          companionSuggestion: S.optional(__S(152, __c19, 0)),
-          faqAnswer: S.optional(__S(154, __c19, 2)),
-          generatorSuggestion: S.optional(__S(130, __c16, 2)),
-          articleSuggestionAnswer: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AgentAssistantRecord",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          answerFeedback: S.optional(__S(505, __c63, 1)),
-          agentAssistantRecord: S.optional(__S(507, __c63, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1AnswerRecord",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsConversationProfilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsConversationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsConversationsParticipantsRequest",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsKnowledgeBasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsKnowledgeBasesDocumentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(4, __c0, 4)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          locationId: S.optional(S.String),
-          metadata: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationLocation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentEntityTypesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentEnvironmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentIntentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentSessionsContextsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentSessionsEntityTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAgentVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAnswerRecordsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsCompanionAgentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConversationProfilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConversationsRequest",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConversationsParticipantsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGeneratorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGeneratorsEvaluationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsKnowledgeBasesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsKnowledgeBasesDocumentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsSipTrunksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsToolsRequest",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent/validationResult",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetValidationResultProjectsAgentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.String),
-          entries: S.optional(__S(5, __c0, 5)),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ValidationError",
-      });
-    case 3:
-      return S.Array(__S(538, __c67, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          validationErrors: S.optional(__S(539, __c67, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ValidationResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent/validationResult",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetValidationResultProjectsLocationsAgentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          agentContent: S.optional(S.String),
-          agentUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ImportAgentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(542, __c67, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:import",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsAgentRequest",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeTypes: S.optional(__S(34, __c4, 2)),
-          mimeType: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ImportDocumentTemplate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uris: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1GcsSources",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          documentTemplate: S.optional(__S(544, __c68, 0)),
-          gcsSource: S.optional(__S(545, __c68, 1)),
-          importGcsCustomMetadata: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ImportDocumentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(546, __c68, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/documents:import",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsKnowledgeBasesDocumentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(542, __c67, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:import",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsAgentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(546, __c68, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/documents:import",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsKnowledgeBasesDocumentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contextReferences: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IngestContextReferencesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(550, __c68, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}:ingestContextReferences",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "IngestContextReferencesProjectsLocationsConversationsRequest",
-      });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ingestedContextReferences: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1IngestContextReferencesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionSpec: S.optional(__S(483, __c60, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(553, __c69, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:initialize",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InitializeProjectsLocationsEncryptionSpecRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          entityTypes: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListEntityTypesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/environments",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentEnvironmentsRequest",
-      });
-    case 6:
-      return S.Array(__S(300, __c37, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          environments: S.optional(__S(558, __c69, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListEnvironmentsResponse",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/intents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentEnvironmentsIntentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          intents: S.optional(__S(222, __c27, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListIntentsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contexts: S.optional(__S(3, __c0, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListContextsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sessionEntityTypes: S.optional(__S(9, __c1, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/intents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentIntentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/knowledgeBases",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentKnowledgeBasesRequest",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(305, __c38, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          knowledgeBases: S.optional(__S(568, __c71, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/documents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentKnowledgeBasesDocumentsRequest",
-      });
-    case 3:
-      return S.Array(__S(309, __c38, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          documents: S.optional(__S(571, __c71, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListDocumentsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentSessionsContextsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentSessionsEntityTypesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/versions",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAgentVersionsRequest",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(313, __c39, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          versions: S.optional(__S(576, __c72, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListVersionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/answerRecords",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAnswerRecordsRequest",
-      });
-    case 3:
-      return S.Array(__S(508, __c63, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          answerRecords: S.optional(__S(579, __c72, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/conversationProfiles",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsConversationProfilesRequest",
-      });
-    case 6:
-      return S.Array(__S(291, __c36, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversationProfiles: S.optional(__S(582, __c72, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListConversationProfilesResponse",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/conversations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsConversationsRequest",
-      });
-    case 1:
-      return S.Array(__S(292, __c36, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conversations: S.optional(__S(585, __c73, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListConversationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/messages",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsConversationsMessagesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          messages: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListMessagesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/participants",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsConversationsParticipantsRequest",
-      });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          participants: S.optional(__S(590, __c73, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListParticipantsResponse",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/suggestions",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsConversationsParticipantsSuggestionsRequest",
-      });
-    case 1:
-      return S.Array(__S(250, __c31, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          suggestions: S.optional(__S(593, __c74, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListSuggestionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/generators",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsGeneratorsRequest",
-      });
-    case 4:
-      return S.Array(__S(337, __c42, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          generators: S.optional(__S(596, __c74, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListGeneratorsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/knowledgeBases",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsKnowledgeBasesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/documents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsKnowledgeBasesDocumentsRequest",
-      });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(5, __c0, 5).pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}/locations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsRequest",
-      });
-    case 1:
-      return S.Array(__S(515, __c64, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(601, __c75, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudLocationListLocationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/environments",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentEnvironmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          intentView: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/intents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentEnvironmentsIntentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          intentView: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/intents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentIntentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/contexts",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentSessionsContextsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/entityTypes",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentSessionsEntityTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/versions",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAgentVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/answerRecords",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAnswerRecordsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/companionAgents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsCompanionAgentsRequest",
-      });
-    case 6:
-      return S.Array(__S(353, __c44, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          companionAgents: S.optional(__S(614, __c76, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse",
-      });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/conversationProfiles",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConversationProfilesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/conversations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConversationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/messages",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConversationsMessagesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/participants",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConversationsParticipantsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/generators",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGeneratorsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/evaluations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGeneratorsEvaluationsRequest",
-      });
-    case 6:
-      return S.Array(__S(386, __c48, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          generatorEvaluations: S.optional(__S(622, __c77, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse",
-      });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/knowledgeBases",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsKnowledgeBasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/documents",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsKnowledgeBasesDocumentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}/operations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.Array(__S(209, __c26, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(627, __c78, 3)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningListOperationsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/phoneNumbers",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsPhoneNumbersRequest",
-      });
-    case 6:
-      return S.Array(__S(453, __c56, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          phoneNumbers: S.optional(__S(630, __c78, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/sipTrunks",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsSipTrunksRequest",
-      });
-    case 1:
-      return S.Array(__S(397, __c49, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          sipTrunks: S.optional(__S(633, __c79, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListSipTrunksResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/tools",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsToolsRequest",
-      });
-    case 4:
-      return S.Array(__S(416, __c52, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tools: S.optional(__S(636, __c79, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ListToolsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+name}/operations",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/phoneNumbers",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsPhoneNumbersRequest",
-      });
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(228, __c28, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentEntityTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          allowLoadToDraftAndDiscardChanges: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentEnvironmentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentIntentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentKnowledgeBasesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentKnowledgeBasesDocumentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentSessionsContextsRequest",
-      });
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentSessionsEntityTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAgentVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(508, __c63, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAnswerRecordsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsConversationProfilesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(317, __c39, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsConversationsParticipantsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsKnowledgeBasesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsKnowledgeBasesDocumentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(228, __c28, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentEntityTypesRequest",
-      });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          allowLoadToDraftAndDiscardChanges: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentEnvironmentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          intentView: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentIntentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentSessionsContextsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentSessionsEntityTypesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(313, __c39, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAgentVersionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(508, __c63, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAnswerRecordsRequest",
-      });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(353, __c44, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsCompanionAgentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(291, __c36, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsConversationProfilesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(317, __c39, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsConversationsParticipantsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsGeneratorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsKnowledgeBasesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(309, __c38, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsKnowledgeBasesDocumentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsPhoneNumbersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(397, __c49, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsSipTrunksRequest",
-      });
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsToolsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(453, __c56, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsPhoneNumbersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          importGcsCustomMetadata: S.optional(S.Boolean),
-          gcsSource: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1ReloadDocumentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(674, __c84, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:reload",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReloadProjectsAgentKnowledgeBasesDocumentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(674, __c84, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:reload",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReloadProjectsKnowledgeBasesDocumentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(674, __c84, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:reload",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReloadProjectsLocationsKnowledgeBasesDocumentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          agentUri: S.optional(S.String),
-          agentContent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1RestoreAgentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(678, __c84, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:restore",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreProjectsAgentRequest",
-      });
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(678, __c84, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:restore",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreProjectsLocationsAgentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataStores: S.optional(__S(5, __c0, 5)),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs",
-      });
-    case 2:
-      return S.Array(__S(681, __c85, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributeValue: S.optional(S.String),
-          boostAmount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
-      });
-    case 4:
-      return S.Array(__S(683, __c85, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          controlPoints: S.optional(__S(684, __c85, 4)),
-          attributeType: S.optional(S.String),
-          interpolationType: S.optional(S.String),
-          fieldName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          boostControlSpec: S.optional(__S(685, __c85, 5)),
-          condition: S.optional(S.String),
-          boost: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec",
-      });
-    case 7:
-      return S.Array(__S(686, __c85, 6));
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conditionBoostSpecs: S.optional(__S(687, __c85, 7)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec",
-      });
-    case 1:
-      return S.Array(__S(688, __c86, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(689, __c86, 1)),
-          dataStores: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs",
-      });
-    case 3:
-      return S.Array(__S(690, __c86, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filterSpecs: S.optional(__S(682, __c85, 2)),
-          boostSpecs: S.optional(__S(691, __c86, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          parent: S.optional(S.String),
-          querySource: S.optional(S.String),
-          endUserMetadata: S.optional(__S(1, __c0, 1)),
-          exactSearch: S.optional(S.Boolean),
-          sessionId: S.optional(S.String),
-          conversationProfile: S.optional(S.String),
-          searchConfig: S.optional(__S(692, __c86, 4)),
-          query: S.optional(__S(21, __c2, 5)),
-          conversation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(693, __c86, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:searchKnowledge",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchKnowledgeProjectsConversationsSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          answerGenerationRewriterOn: S.optional(S.Boolean),
-          thirdPartyConnectorAllowed: S.optional(S.Boolean),
-          endUserMetadataIncluded: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfoSearchKnowledgeBehavior",
-      });
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreResponseReason: S.optional(S.String),
-          cesDebugInfo: S.optional(__S(1, __c0, 1)),
-          ingestedContextReferenceDebugInfo: S.optional(__S(172, __c21, 4)),
-          searchKnowledgeBehavior: S.optional(__S(695, __c86, 7)),
-          serviceLatency: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(1, __c0, 1)),
-          snippet: S.optional(S.String),
-          title: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeAnswerAnswerSource",
-      });
-    case 2:
-      return S.Array(__S(697, __c87, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          answerSources: S.optional(__S(698, __c87, 2)),
-          answerRecord: S.optional(S.String),
-          answer: S.optional(S.String),
-          answerType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer",
-      });
-    case 4:
-      return S.Array(__S(699, __c87, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rewrittenQuery: S.optional(S.String),
-          searchKnowledgeDebugInfo: S.optional(__S(696, __c87, 0)),
-          answers: S.optional(__S(700, __c87, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchKnowledgeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(693, __c86, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:searchKnowledge",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchKnowledgeProjectsLocationsConversationsSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(693, __c86, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:searchKnowledge",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchKnowledgeProjectsLocationsSuggestionsRequest",
-      });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(693, __c86, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:searchKnowledge",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchKnowledgeProjectsSuggestionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent:search",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchProjectsAgentRequest",
-      });
-    case 2:
-      return S.Array(__S(480, __c60, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          agents: S.optional(__S(706, __c88, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SearchAgentsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta1/{+parent}/agent:search",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchProjectsLocationsAgentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(480, __c60, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SetAgentProjectsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(480, __c60, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetAgentProjectsLocationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          participantRole: S.optional(S.String),
-          suggestionFeatureConfig: S.optional(__S(279, __c34, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigRequest",
-      });
-  }
-}
-function __c89(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conversationProfile: S.String.pipe(T.Label()),
-          body: S.optional(__S(711, __c88, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversationProfile}:setSuggestionFeatureConfig",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetSuggestionFeatureConfigProjectsConversationProfilesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conversationProfile: S.String.pipe(T.Label()),
-          body: S.optional(__S(711, __c88, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversationProfile}:setSuggestionFeatureConfig",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetSuggestionFeatureConfigProjectsLocationsConversationProfilesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          contextSize: S.optional(S.Number),
-          assistQueryParams: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestArticlesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(714, __c89, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestArticles",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestArticlesProjectsConversationsParticipantsSuggestionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(714, __c89, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestArticles",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestArticlesProjectsLocationsConversationsParticipantsSuggestionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assistQueryParams: S.optional(__S(29, __c3, 5)),
-          latestMessage: S.optional(S.String),
-          contextSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(717, __c89, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:suggestConversationSummary",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestConversationSummaryProjectsConversationsSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          baselineModelVersion: S.optional(S.String),
-          sortedTextSections: S.optional(__S(107, __c13, 3)),
-          answerRecord: S.optional(S.String),
-          textSections: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary",
-      });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          summary: S.optional(__S(719, __c89, 7)),
-          contextSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(717, __c89, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+conversation}/suggestions:suggestConversationSummary",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestConversationSummaryProjectsLocationsConversationsSuggestionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contextSize: S.optional(S.Number),
-          latestMessage: S.optional(S.String),
-          assistQueryParams: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(722, __c90, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestFaqAnswers",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestFaqAnswersProjectsConversationsParticipantsSuggestionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(722, __c90, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestFaqAnswers",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestFaqAnswersProjectsLocationsConversationsParticipantsSuggestionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latestMessage: S.optional(S.String),
-          contextSize: S.optional(S.Number),
-          previousSuggestedQuery: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(725, __c90, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestKnowledgeAssist",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestKnowledgeAssistProjectsConversationsParticipantsSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(725, __c90, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestKnowledgeAssist",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SuggestKnowledgeAssistProjectsLocationsConversationsParticipantsSuggestionsRequest",
-      });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contextSize: S.optional(S.Number),
-          latestMessage: S.optional(S.String),
-          currentTextInput: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDialogflowV2beta1SuggestSmartRepliesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(728, __c91, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestSmartReplies",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuggestSmartRepliesProjectsConversationsParticipantsSuggestionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(728, __c91, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/suggestions:suggestSmartReplies",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SuggestSmartRepliesProjectsLocationsConversationsParticipantsSuggestionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:train",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TrainProjectsAgentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+parent}/agent:train",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TrainProjectsLocationsAgentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:undelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsPhoneNumbersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta1/{+name}:undelete",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsPhoneNumbersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFulfillmentProjectsAgentRequest",
-      });
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2beta1/{+name}",
-            baseUrl: "https://dialogflow.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFulfillmentProjectsLocationsAgentRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

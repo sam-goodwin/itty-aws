@@ -3739,8 +3739,8 @@ export const addAssetsProjectsLocationsGroups: API.OperationMethod<
   AddAssetsProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddAssetsProjectsLocationsGroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1313, __c41, 1) as any as S.Schema<AddAssetsProjectsLocationsGroupsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3759,8 +3759,8 @@ export const aggregateValuesProjectsLocationsAssets: API.OperationMethod<
   AggregateValuesProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<AggregateValuesProjectsLocationsAssetsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AggregateAssetsValuesResponse>,
+  input: __S(1957, __c61, 5) as any as S.Schema<AggregateValuesProjectsLocationsAssetsRequest>,
+  output: __S(1966, __c61, 14) as any as S.Schema<AggregateAssetsValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3779,8 +3779,8 @@ export const batchDeleteProjectsLocationsAssets: API.OperationMethod<
   BatchDeleteProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<BatchDeleteProjectsLocationsAssetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(2371, __c74, 3) as any as S.Schema<BatchDeleteProjectsLocationsAssetsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3799,8 +3799,8 @@ export const batchUpdateProjectsLocationsAssets: API.OperationMethod<
   BatchUpdateProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<BatchUpdateProjectsLocationsAssetsRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<BatchUpdateAssetsResponse>,
+  input: __S(2723, __c85, 3) as any as S.Schema<BatchUpdateProjectsLocationsAssetsRequest>,
+  output: __S(2724, __c85, 4) as any as S.Schema<BatchUpdateAssetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3819,8 +3819,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3839,8 +3839,8 @@ export const createProjectsLocationsAssetsExportJobs: API.OperationMethod<
   CreateProjectsLocationsAssetsExportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<CreateProjectsLocationsAssetsExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3200, __c100, 0) as any as S.Schema<CreateProjectsLocationsAssetsExportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3859,8 +3859,8 @@ export const createProjectsLocationsDiscoveryClients: API.OperationMethod<
   CreateProjectsLocationsDiscoveryClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<CreateProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsDiscoveryClientsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3879,8 +3879,8 @@ export const createProjectsLocationsGroups: API.OperationMethod<
   CreateProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<CreateProjectsLocationsGroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateProjectsLocationsGroupsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3899,8 +3899,8 @@ export const createProjectsLocationsImportJobs: API.OperationMethod<
   CreateProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<CreateProjectsLocationsImportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateProjectsLocationsImportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3920,11 +3920,11 @@ export const createProjectsLocationsImportJobsImportDataFiles: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsImportJobsImportDataFilesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3943,8 +3943,8 @@ export const createProjectsLocationsPreferenceSets: API.OperationMethod<
   CreateProjectsLocationsPreferenceSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<CreateProjectsLocationsPreferenceSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateProjectsLocationsPreferenceSetsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3963,8 +3963,8 @@ export const createProjectsLocationsReportConfigs: API.OperationMethod<
   CreateProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3983,8 +3983,8 @@ export const createProjectsLocationsReportConfigsReports: API.OperationMethod<
   CreateProjectsLocationsReportConfigsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4004,11 +4004,11 @@ export const createProjectsLocationsReportConfigsReportsReportExportJobs: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    270,
-    __c33,
-    6,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4027,8 +4027,8 @@ export const createProjectsLocationsSources: API.OperationMethod<
   CreateProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<CreateProjectsLocationsSourcesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateProjectsLocationsSourcesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4047,8 +4047,8 @@ export const deleteProjectsLocationsAssets: API.OperationMethod<
   DeleteProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<DeleteProjectsLocationsAssetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteProjectsLocationsAssetsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4067,8 +4067,8 @@ export const deleteProjectsLocationsAssetsExportJobs: API.OperationMethod<
   DeleteProjectsLocationsAssetsExportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<DeleteProjectsLocationsAssetsExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteProjectsLocationsAssetsExportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4087,8 +4087,8 @@ export const deleteProjectsLocationsDiscoveryClients: API.OperationMethod<
   DeleteProjectsLocationsDiscoveryClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeleteProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteProjectsLocationsDiscoveryClientsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4107,8 +4107,8 @@ export const deleteProjectsLocationsGroups: API.OperationMethod<
   DeleteProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4127,8 +4127,8 @@ export const deleteProjectsLocationsImportJobs: API.OperationMethod<
   DeleteProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<DeleteProjectsLocationsImportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteProjectsLocationsImportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4148,11 +4148,11 @@ export const deleteProjectsLocationsImportJobsImportDataFiles: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    278,
-    __c34,
-    6,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsImportJobsImportDataFilesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4171,8 +4171,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4191,8 +4191,8 @@ export const deleteProjectsLocationsPreferenceSets: API.OperationMethod<
   DeleteProjectsLocationsPreferenceSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteProjectsLocationsPreferenceSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteProjectsLocationsPreferenceSetsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4211,8 +4211,8 @@ export const deleteProjectsLocationsReportConfigs: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4231,8 +4231,8 @@ export const deleteProjectsLocationsReportConfigsReports: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4252,11 +4252,11 @@ export const deleteProjectsLocationsReportConfigsReportsReportExportJobs: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    283,
-    __c35,
-    3,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4275,8 +4275,8 @@ export const deleteProjectsLocationsSources: API.OperationMethod<
   DeleteProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4290,8 +4290,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<Location>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4305,8 +4305,8 @@ export const getProjectsLocationsAssets: API.OperationMethod<
   GetProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetProjectsLocationsAssetsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<Asset>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetProjectsLocationsAssetsRequest>,
+  output: __S(2906, __c90, 26) as any as S.Schema<Asset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4320,8 +4320,8 @@ export const getProjectsLocationsAssetsExportJobs: API.OperationMethod<
   GetProjectsLocationsAssetsExportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetProjectsLocationsAssetsExportJobsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<AssetsExportJob>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetProjectsLocationsAssetsExportJobsRequest>,
+  output: __S(3269, __c102, 5) as any as S.Schema<AssetsExportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4335,8 +4335,8 @@ export const getProjectsLocationsDiscoveryClients: API.OperationMethod<
   GetProjectsLocationsDiscoveryClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<GetProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DiscoveryClient>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetProjectsLocationsDiscoveryClientsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<DiscoveryClient>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4350,8 +4350,8 @@ export const getProjectsLocationsGroups: API.OperationMethod<
   GetProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<GetProjectsLocationsGroupsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<Group>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetProjectsLocationsGroupsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4365,8 +4365,8 @@ export const getProjectsLocationsImportJobs: API.OperationMethod<
   GetProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetProjectsLocationsImportJobsRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<ImportJob>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetProjectsLocationsImportJobsRequest>,
+  output: __S(207, __c6, 15) as any as S.Schema<ImportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4381,11 +4381,11 @@ export const getProjectsLocationsImportJobsImportDataFiles: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    292,
-    __c36,
-    4,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<GetProjectsLocationsImportJobsImportDataFilesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ImportDataFile>,
+  output: __S(257, __c8, 1) as any as S.Schema<ImportDataFile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4399,8 +4399,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4414,8 +4414,8 @@ export const getProjectsLocationsPreferenceSets: API.OperationMethod<
   GetProjectsLocationsPreferenceSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<GetProjectsLocationsPreferenceSetsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<PreferenceSet>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetProjectsLocationsPreferenceSetsRequest>,
+  output: __S(341, __c10, 21) as any as S.Schema<PreferenceSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4429,8 +4429,8 @@ export const getProjectsLocationsRelations: API.OperationMethod<
   GetProjectsLocationsRelationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetProjectsLocationsRelationsRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<Relation>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetProjectsLocationsRelationsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<Relation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4444,8 +4444,8 @@ export const getProjectsLocationsReportConfigs: API.OperationMethod<
   GetProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<ReportConfig>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ReportConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4459,8 +4459,8 @@ export const getProjectsLocationsReportConfigsReports: API.OperationMethod<
   GetProjectsLocationsReportConfigsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetProjectsLocationsReportConfigsReportsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<Report>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetProjectsLocationsReportConfigsReportsRequest>,
+  output: __S(474, __c14, 26) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4478,11 +4478,11 @@ export const getProjectsLocationsReportConfigsReportsReportExportJobs: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    299,
-    __c37,
-    3,
+    1632,
+    __c51,
+    0,
   ) as any as S.Schema<GetProjectsLocationsReportConfigsReportsReportExportJobsRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<ReportExportJob>,
+  output: __S(515, __c16, 3) as any as S.Schema<ReportExportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4496,8 +4496,8 @@ export const getProjectsLocationsSources: API.OperationMethod<
   GetProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetProjectsLocationsSourcesRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<Source>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetProjectsLocationsSourcesRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4511,8 +4511,8 @@ export const getProjectsLocationsSourcesErrorFrames: API.OperationMethod<
   GetProjectsLocationsSourcesErrorFramesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetProjectsLocationsSourcesErrorFramesRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ErrorFrame>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetProjectsLocationsSourcesErrorFramesRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ErrorFrame>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4526,8 +4526,8 @@ export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<Settings>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4542,8 +4542,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4559,8 +4559,8 @@ export const listProjectsLocationsAssets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<ListProjectsLocationsAssetsRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<ListAssetsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListProjectsLocationsAssetsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<ListAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4576,8 +4576,8 @@ export const listProjectsLocationsAssetsExportJobs: API.PaginatedOperationMethod
   GcpOpContext,
   ListAssetsExportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<ListProjectsLocationsAssetsExportJobsRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<ListAssetsExportJobsResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListProjectsLocationsAssetsExportJobsRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<ListAssetsExportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4593,8 +4593,8 @@ export const listProjectsLocationsDiscoveryClients: API.PaginatedOperationMethod
   GcpOpContext,
   ListDiscoveryClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<ListProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<ListDiscoveryClientsResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListProjectsLocationsDiscoveryClientsRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ListDiscoveryClientsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4610,8 +4610,8 @@ export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<ListProjectsLocationsGroupsRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<ListGroupsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListProjectsLocationsGroupsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4627,8 +4627,8 @@ export const listProjectsLocationsImportJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListImportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<ListProjectsLocationsImportJobsRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<ListImportJobsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListProjectsLocationsImportJobsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListImportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4645,11 +4645,11 @@ export const listProjectsLocationsImportJobsImportDataFiles: API.PaginatedOperat
   ListImportDataFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    330,
-    __c41,
-    2,
+    2144,
+    __c67,
+    0,
   ) as any as S.Schema<ListProjectsLocationsImportJobsImportDataFilesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<ListImportDataFilesResponse>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListImportDataFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4665,8 +4665,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4682,8 +4682,8 @@ export const listProjectsLocationsPreferenceSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPreferenceSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListProjectsLocationsPreferenceSetsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<ListPreferenceSetsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListProjectsLocationsPreferenceSetsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ListPreferenceSetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4699,8 +4699,8 @@ export const listProjectsLocationsRelations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRelationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListProjectsLocationsRelationsRequest>,
-  output: __S(341, __c42, 5) as any as S.Schema<ListRelationsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListProjectsLocationsRelationsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<ListRelationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4716,8 +4716,8 @@ export const listProjectsLocationsReportConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ListReportConfigsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<ListReportConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4733,8 @@ export const listProjectsLocationsReportConfigsReports: API.PaginatedOperationMe
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListProjectsLocationsReportConfigsReportsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<ListReportsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListProjectsLocationsReportConfigsReportsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4754,11 +4754,11 @@ export const listProjectsLocationsReportConfigsReportsReportExportJobs: API.Pagi
   ListReportExportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    348,
-    __c43,
-    4,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<ListProjectsLocationsReportConfigsReportsReportExportJobsRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<ListReportExportJobsResponse>,
+  output: __S(2338, __c73, 2) as any as S.Schema<ListReportExportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4774,8 +4774,8 @@ export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ListProjectsLocationsSourcesRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<ListSourcesResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListProjectsLocationsSourcesRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4791,8 +4791,8 @@ export const listProjectsLocationsSourcesErrorFrames: API.PaginatedOperationMeth
   GcpOpContext,
   ListErrorFramesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListProjectsLocationsSourcesErrorFramesRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ListErrorFramesResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListProjectsLocationsSourcesErrorFramesRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ListErrorFramesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4812,8 +4812,8 @@ export const patchProjectsLocationsAssets: API.OperationMethod<
   PatchProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<PatchProjectsLocationsAssetsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<Asset>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchProjectsLocationsAssetsRequest>,
+  output: __S(2906, __c90, 26) as any as S.Schema<Asset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4832,8 +4832,8 @@ export const patchProjectsLocationsDiscoveryClients: API.OperationMethod<
   PatchProjectsLocationsDiscoveryClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<PatchProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PatchProjectsLocationsDiscoveryClientsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4852,8 +4852,8 @@ export const patchProjectsLocationsGroups: API.OperationMethod<
   PatchProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<PatchProjectsLocationsGroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2528, __c79, 0) as any as S.Schema<PatchProjectsLocationsGroupsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4872,8 +4872,8 @@ export const patchProjectsLocationsImportJobs: API.OperationMethod<
   PatchProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PatchProjectsLocationsImportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2560, __c80, 0) as any as S.Schema<PatchProjectsLocationsImportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4892,8 +4892,8 @@ export const patchProjectsLocationsPreferenceSets: API.OperationMethod<
   PatchProjectsLocationsPreferenceSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<PatchProjectsLocationsPreferenceSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchProjectsLocationsPreferenceSetsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4912,8 +4912,8 @@ export const patchProjectsLocationsSources: API.OperationMethod<
   PatchProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<PatchProjectsLocationsSourcesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2624, __c82, 0) as any as S.Schema<PatchProjectsLocationsSourcesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4932,8 +4932,8 @@ export const removeAssetsProjectsLocationsGroups: API.OperationMethod<
   RemoveAssetsProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<RemoveAssetsProjectsLocationsGroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2657, __c83, 1) as any as S.Schema<RemoveAssetsProjectsLocationsGroupsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4952,8 +4952,8 @@ export const reportAssetFramesProjectsLocationsAssets: API.OperationMethod<
   ReportAssetFramesProjectsLocationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<ReportAssetFramesProjectsLocationsAssetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ReportAssetFramesResponse>,
+  input: __S(2690, __c84, 2) as any as S.Schema<ReportAssetFramesProjectsLocationsAssetsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<ReportAssetFramesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4972,8 +4972,8 @@ export const runProjectsLocationsAssetsExportJobs: API.OperationMethod<
   RunProjectsLocationsAssetsExportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<RunProjectsLocationsAssetsExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2944, __c92, 0) as any as S.Schema<RunProjectsLocationsAssetsExportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4992,8 +4992,8 @@ export const runProjectsLocationsImportJobs: API.OperationMethod<
   RunProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<RunProjectsLocationsImportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3008, __c94, 0) as any as S.Schema<RunProjectsLocationsImportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5013,11 +5013,11 @@ export const runProjectsLocationsReportConfigsReportsReportExportJobs: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    371,
-    __c46,
-    3,
+    3040,
+    __c95,
+    0,
   ) as any as S.Schema<RunProjectsLocationsReportConfigsReportsReportExportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5037,11 +5037,11 @@ export const sendHeartbeatProjectsLocationsDiscoveryClients: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    373,
-    __c46,
-    5,
+    3073,
+    __c96,
+    1,
   ) as any as S.Schema<SendHeartbeatProjectsLocationsDiscoveryClientsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5060,8 +5060,8 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5080,8 +5080,8 @@ export const validateProjectsLocationsImportJobs: API.OperationMethod<
   ValidateProjectsLocationsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ValidateProjectsLocationsImportJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ValidateProjectsLocationsImportJobsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5091,1548 +5091,25 @@ export const validateProjectsLocationsImportJobs: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          assetIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AssetList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowExisting: S.optional(S.Boolean),
-          requestId: S.optional(S.String),
-          assets: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AddAssetsToGroupRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          parent: S.String.pipe(T.Label()),
+          discoveryClientId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1alpha1/{+group}:addAssets",
+            uri: "v1alpha1/{+parent}/discoveryClients",
             baseUrl: "https://migrationcenter.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "AddAssetsProjectsLocationsGroupsRequest",
+        identifier: "CreateProjectsLocationsDiscoveryClientsRequest",
       });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          response: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Operation" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AggregationCount",
-      });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lowerBounds: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AggregationHistogram" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(__S(8, __c1, 0)),
-          field: S.optional(S.String),
-          sum: S.optional(__S(8, __c1, 0)),
-          histogram: S.optional(__S(10, __c1, 2)),
-          frequency: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Aggregation" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          showHidden: S.optional(S.Boolean),
-          aggregations: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "AggregateAssetsValuesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/assets:aggregateValues",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AggregateValuesProjectsLocationsAssetsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AggregationResultSum" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AggregationResultCount" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "AggregationResultFrequency",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          upperBound: S.optional(S.Number),
-          count: S.optional(S.String),
-          lowerBound: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AggregationResultHistogramBucket",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buckets: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "AggregationResultHistogram",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          sum: S.optional(__S(15, __c1, 7)),
-          count: S.optional(__S(16, __c2, 0)),
-          frequency: S.optional(__S(18, __c2, 2)),
-          histogram: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "AggregationResult" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "AggregateAssetsValuesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cascadeLogicalDbs: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "CascadingRule" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(0, __c0, 0)),
-          cascadingRules: S.optional(__S(26, __c3, 2)),
-          allowMissing: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BatchDeleteAssetsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/assets:batchDelete",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsLocationsAssetsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AwsS3BucketDetailsVersioning",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          totalBytes: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AwsS3BucketDetailsStorageClass",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AwsS3BucketDetailsObjectsMetadataTotalObjects",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalObjects: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "AwsS3BucketDetailsObjectsMetadata",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          versioning: S.optional(__S(29, __c3, 5)),
-          storageClasses: S.optional(__S(31, __c3, 7)),
-          objectsMetadata: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "AwsS3BucketDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          messageId: S.optional(S.String),
-          additionalInformation: S.optional(__S(0, __c0, 0)),
-          defaultMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenericInsight" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          softwareFamily: S.optional(S.String),
-          softwareName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DetectedSoftware" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          detectedSoftware: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "SoftwareInsight" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          sizeGb: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ComputeStorageDescriptor" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneAvailability: S.optional(S.String),
-          version: S.optional(S.String),
-          storage: S.optional(__S(38, __c4, 6)),
-          logicalCoreCount: S.optional(S.Number),
-          backupStorageGb: S.optional(S.Number),
-          egressGbPerMonth: S.optional(S.String),
-          smtEnabled: S.optional(S.Boolean),
-          edition: S.optional(S.String),
-          memoryMb: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CloudSqlForSqlServerShape",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          memoryMb: S.optional(S.Number),
-          version: S.optional(S.String),
-          storage: S.optional(__S(38, __c4, 6)),
-          egressGbPerMonth: S.optional(S.String),
-          zoneAvailability: S.optional(S.String),
-          edition: S.optional(S.String),
-          logicalCoreCount: S.optional(S.Number),
-          backupStorageGb: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CloudSqlForPostgreSqlShape",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          logicalCoreCount: S.optional(S.Number),
-          storage: S.optional(__S(38, __c4, 6)),
-          version: S.optional(S.String),
-          edition: S.optional(S.String),
-          zoneAvailability: S.optional(S.String),
-          memoryMb: S.optional(S.Number),
-          backupStorageGb: S.optional(S.Number),
-          egressGbPerMonth: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudSqlForMySqlShape" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cloudSqlShape: S.optional(__S(39, __c4, 7)),
-          cloudSqlForPostgresqlShape: S.optional(__S(40, __c5, 0)),
-          cloudSqlForMysqlShape: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "CloudDatabaseMigrationTarget",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          associatedObjectType: S.optional(S.String),
-          associatedValue: S.optional(S.String),
-          category: S.optional(S.String),
-          associatedObject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueCompatibilityIssue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          compatibilityIssue: S.optional(__S(43, __c5, 3)),
-          issueCode: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Issue" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fitLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FitDescriptor" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          logicalCoreCount: S.optional(S.Number),
-          machineType: S.optional(S.String),
-          physicalCoreCount: S.optional(S.Number),
-          storage: S.optional(__S(47, __c5, 7)),
-          smtEnabled: S.optional(S.Boolean),
-          series: S.optional(S.String),
-          memoryMb: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineShapeDescriptor",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          shape: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineMigrationTarget",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          computeEngineSoleTenantTarget: S.optional(__S(8, __c1, 0)),
-          cloudDatabaseTarget: S.optional(__S(42, __c5, 2)),
-          vmwareEngineTarget: S.optional(__S(8, __c1, 0)),
-          issues: S.optional(__S(45, __c5, 5)),
-          gkeTarget: S.optional(__S(8, __c1, 0)),
-          fit: S.optional(__S(46, __c5, 6)),
-          computeEngineTarget: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "MigrationInsight" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          genericInsight: S.optional(__S(35, __c4, 3)),
-          softwareInsight: S.optional(__S(37, __c4, 5)),
-          migrationInsight: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "Insight" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          insights: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "InsightList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceLocation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owningAccountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingProviderDetailsAws",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          location: S.optional(__S(54, __c6, 6)),
-          aws: S.optional(__S(55, __c6, 7)),
-          originalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingProviderDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          median: S.optional(S.Number),
-          peak: S.optional(S.Number),
-          average: S.optional(S.Number),
-          ninteyFifthPercentile: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DailyResourceUsageAggregationStats",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          utilizationPercentage: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "DailyResourceUsageAggregationMemory",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ingressBps: S.optional(__S(57, __c7, 1)),
-          egressBps: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "DailyResourceUsageAggregationNetwork",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Migrationcenter_Date" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          iops: S.optional(__S(57, __c7, 1)),
-          writeIops: S.optional(__S(57, __c7, 1)),
-          readIops: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "DailyResourceUsageAggregationDisk",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          memory: S.optional(__S(58, __c7, 2)),
-          network: S.optional(__S(59, __c7, 3)),
-          date: S.optional(__S(60, __c7, 4)),
-          disk: S.optional(__S(61, __c7, 5)),
-          cpu: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "DailyResourceUsageAggregation",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dailyResourceUsageAggregations: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "AssetPerformanceData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assignment: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          bcast: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-          fqdn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkAddress" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: S.optional(__S(66, __c8, 2)),
-          entries: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "NetworkAddressList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: S.optional(__S(67, __c8, 3)),
-          macAddress: S.optional(S.String),
-          adapterType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkAdapterDetails" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(69, __c8, 5)),
-          networkAdapters: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "NetworkAdapterList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultGw: S.optional(S.String),
-          primaryMacAddress: S.optional(S.String),
-          networkAdapters: S.optional(__S(70, __c8, 6)),
-          publicIpAddress: S.optional(S.String),
-          primaryIpAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkDetails",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          biosManufacturer: S.optional(S.String),
-          biosVersion: S.optional(S.String),
-          smbiosUuid: S.optional(S.String),
-          biosName: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          biosReleaseDate: S.optional(S.String),
-          version: S.optional(S.String),
-          releaseTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BiosDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cpuSocketCount: S.optional(S.Number),
-          hyperthreading: S.optional(S.String),
-          cpuName: S.optional(S.String),
-          cpuThreadCount: S.optional(S.Number),
-          bios: S.optional(__S(72, __c9, 0)),
-          firmware: S.optional(S.String),
-          cpuManufacturer: S.optional(S.String),
-          cpuArchitecture: S.optional(S.String),
-          vendor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineArchitectureDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          uuid: S.optional(S.String),
-          freeBytes: S.optional(S.String),
-          fileSystem: S.optional(S.String),
-          subPartitions: S.optional(S.suspend(() => __S(76, __c9, 4))),
-          capacityBytes: S.optional(S.String),
-          mountPoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskPartition" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "DiskPartitionList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          partitions: S.optional(__S(76, __c9, 4)),
-          totalCapacityBytes: S.optional(S.String),
-          freeSpaceBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskPartitionDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          diskLabelType: S.optional(S.String),
-          totalCapacityBytes: S.optional(S.String),
-          interfaceType: S.optional(S.String),
-          diskLabel: S.optional(S.String),
-          hwAddress: S.optional(S.String),
-          freeSpaceBytes: S.optional(S.String),
-          partitions: S.optional(__S(76, __c9, 4)),
-          totalFreeBytes: S.optional(S.String),
-          status: S.optional(S.String),
-          capacityBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskEntry" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "DiskEntryList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hddTotalCapacityBytes: S.optional(S.String),
-          hddTotalFreeBytes: S.optional(S.String),
-          disks: S.optional(__S(80, __c10, 0)),
-          lsblkJson: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineDiskDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pid: S.optional(S.String),
-          serviceName: S.optional(S.String),
-          startMode: S.optional(S.String),
-          cmdline: S.optional(S.String),
-          exePath: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RunningService" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(83, __c10, 3)),
-          entries: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "RunningServiceList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cmdline: S.optional(S.String),
-          pid: S.optional(S.String),
-          user: S.optional(S.String),
-          attributes: S.optional(__S(17, __c2, 1)),
-          exePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RunningProcess" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(86, __c10, 6)),
-          processes: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "RunningProcessList" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          timeZone: S.optional(__S(88, __c11, 0)),
-          nanos: S.optional(S.Number),
-          utcOffset: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DateTime" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pid: S.optional(S.String),
-          processName: S.optional(S.String),
-          localIpAddress: S.optional(S.String),
-          remoteIpAddress: S.optional(S.String),
-          protocol: S.optional(S.String),
-          state: S.optional(S.String),
-          remotePort: S.optional(S.Number),
-          localPort: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NetworkConnection" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({ identifier: "NetworkConnectionList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scanTime: S.optional(S.String),
-          netstatTime: S.optional(__S(89, __c11, 1)),
-          rawScanResult: S.optional(S.String),
-          connections: S.optional(__S(92, __c11, 4)),
-          netstat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeNetworkInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          command: S.optional(S.String),
-          fileType: S.optional(S.String),
-          filePath: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpenFileDetails" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "OpenFileList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vendor: S.optional(S.String),
-          name: S.optional(S.String),
-          applicationName: S.optional(S.String),
-          installTime: S.optional(S.String),
-          licenses: S.optional(__S(0, __c0, 0)),
-          time: S.optional(S.String),
-          path: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuestInstalledApplication",
-      });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({
-        identifier: "GuestInstalledApplicationList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastBootTime: S.optional(S.String),
-          services: S.optional(__S(84, __c10, 4)),
-          machineName: S.optional(S.String),
-          processes: S.optional(__S(87, __c10, 7)),
-          networkInfo: S.optional(__S(93, __c11, 5)),
-          openFileList: S.optional(__S(96, __c12, 0)),
-          lastUptime: S.optional(__S(60, __c7, 4)),
-          domain: S.optional(S.String),
-          installedApps: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "GuestRuntimeDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(S.String),
-          hostNames: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "HostsEntry" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({ identifier: "HostsEntryList" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          passno: S.optional(S.Number),
-          vfstype: S.optional(S.String),
-          freq: S.optional(S.Number),
-          mntops: S.optional(S.String),
-          file: S.optional(S.String),
-          spec: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FstabEntry" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({ identifier: "FstabEntryList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hosts: S.optional(__S(0, __c0, 0)),
-          exportDirectory: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NfsExport" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "NfsExportList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Selinux" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hosts: S.optional(__S(103, __c12, 7)),
-          selinuxMode: S.optional(S.String),
-          fstab: S.optional(__S(106, __c13, 2)),
-          nfsExports: S.optional(__S(109, __c13, 5)),
-          issue: S.optional(S.String),
-          selinux: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "GuestConfigDetails" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          runtime: S.optional(__S(100, __c12, 4)),
-          config: S.optional(__S(111, __c13, 7)),
-          osName: S.optional(S.String),
-          version: S.optional(S.String),
-          family: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GuestOsDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          hyperthreading: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenericPlatformDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hyperthreading: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhysicalPlatformDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hyperthreading: S.optional(S.String),
-          machineTypeLabel: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsEc2PlatformDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          esxHyperthreading: S.optional(S.String),
-          osid: S.optional(S.String),
-          esxVersion: S.optional(S.String),
-          vcenterVersion: S.optional(S.String),
-          vcenterFolder: S.optional(S.String),
-          vcenterUri: S.optional(S.String),
-          vcenterVmId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmwarePlatformDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          machineTypeLabel: S.optional(S.String),
-          location: S.optional(S.String),
-          hyperthreading: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureVmPlatformDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          genericDetails: S.optional(__S(113, __c14, 1)),
-          physicalDetails: S.optional(__S(114, __c14, 2)),
-          awsEc2Details: S.optional(__S(115, __c14, 3)),
-          vmwareDetails: S.optional(__S(116, __c14, 4)),
-          azureVmDetails: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "PlatformDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vcenterFolder: S.optional(S.String),
-          vmNetwork: S.optional(__S(71, __c8, 7)),
-          vcenterUrl: S.optional(S.String),
-          vmArchitecture: S.optional(__S(73, __c9, 1)),
-          osName: S.optional(S.String),
-          vmName: S.optional(S.String),
-          coreCount: S.optional(S.Number),
-          createTime: S.optional(S.String),
-          diskPartitions: S.optional(__S(77, __c9, 5)),
-          osVersion: S.optional(S.String),
-          vmDisks: S.optional(__S(81, __c10, 1)),
-          guestOs: S.optional(__S(112, __c14, 0)),
-          osFamily: S.optional(S.String),
-          platform: S.optional(__S(118, __c14, 6)),
-          memoryMb: S.optional(S.Number),
-          powerState: S.optional(S.String),
-          vmUuid: S.optional(S.String),
-          vcenterVmId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachineDetails" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bios: S.optional(__S(72, __c9, 0)),
-          hyperthreading: S.optional(S.String),
-          cpuName: S.optional(S.String),
-          cpuArchitecture: S.optional(S.String),
-          cpuManufacturer: S.optional(S.String),
-          firmwareType: S.optional(S.String),
-          cpuSocketCount: S.optional(S.Number),
-          vendor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MachineArchitectureDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalCapacityBytes: S.optional(S.String),
-          disks: S.optional(__S(80, __c10, 0)),
-          rawScanResult: S.optional(S.String),
-          totalFreeBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineDiskDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          publicIpAddress: S.optional(S.String),
-          networkAdapters: S.optional(__S(70, __c8, 6)),
-          primaryIpAddress: S.optional(S.String),
-          defaultGateway: S.optional(S.String),
-          primaryMacAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineNetworkDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guestOs: S.optional(__S(112, __c14, 0)),
-          architecture: S.optional(__S(120, __c15, 0)),
-          diskPartitions: S.optional(__S(77, __c9, 5)),
-          machineName: S.optional(S.String),
-          disks: S.optional(__S(121, __c15, 1)),
-          coreCount: S.optional(S.Number),
-          platform: S.optional(__S(118, __c14, 6)),
-          network: S.optional(__S(122, __c15, 2)),
-          createTime: S.optional(S.String),
-          memoryMb: S.optional(S.Number),
-          powerState: S.optional(S.String),
-          uuid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String),
-          traceFlagName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SqlServerTraceFlag" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          featureName: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SqlServerFeature" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          valueInUse: S.optional(S.String),
-          serverFlagName: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SqlServerServerFlag" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          traceFlags: S.optional(__S(125, __c15, 5)),
-          features: S.optional(__S(127, __c15, 7)),
-          serverFlags: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({
-        identifier: "SqlServerDatabaseDeployment",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hostNames: S.optional(__S(0, __c0, 0)),
-          primaryMacAddress: S.optional(S.String),
-          ipAddresses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DatabaseInstanceNetwork" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          instanceName: S.optional(S.String),
-          network: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "DatabaseInstance" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          coreLimit: S.optional(S.Number),
-          physicalCoreCount: S.optional(S.Number),
-          diskUsedBytes: S.optional(S.String),
-          coreCount: S.optional(S.Number),
-          instances: S.optional(__S(133, __c16, 5)),
-          diskAllocatedBytes: S.optional(S.String),
-          memoryLimitBytes: S.optional(S.String),
-          memoryBytes: S.optional(S.String),
-          physicalCoreLimit: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeploymentTopology",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          category: S.optional(S.String),
-          variable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MySqlVariable" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          plugin: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MySqlPlugin" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          numericValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MySqlProperty" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          variables: S.optional(__S(136, __c17, 0)),
-          resourceGroupsCount: S.optional(S.Number),
-          plugins: S.optional(__S(138, __c17, 2)),
-          properties: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({ identifier: "MysqlDatabaseDeployment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          stringValue: S.optional(S.String),
-          setting: S.optional(S.String),
-          boolValue: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          realValue: S.optional(S.Number),
-          intValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostgreSqlSetting" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          settings: S.optional(__S(143, __c17, 7)),
-          properties: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({
-        identifier: "PostgreSqlDatabaseDeployment",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          databaseCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeploymentDetailsAggregatedStats",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          sqlServer: S.optional(__S(130, __c16, 2)),
-          topology: S.optional(__S(134, __c16, 6)),
-          mysql: S.optional(__S(141, __c17, 5)),
-          manualUniqueId: S.optional(S.String),
-          awsRds: S.optional(__S(8, __c1, 0)),
-          postgresql: S.optional(__S(144, __c18, 0)),
-          generatedId: S.optional(S.String),
-          edition: S.optional(S.String),
-          aggregatedStats: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeploymentDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          engine: S.optional(S.String),
-          encryptedTableCount: S.optional(S.Number),
-          tableCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MySqlStorageEngineDetails",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          storageEngines: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({ identifier: "MySqlSchemaDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clrObjectCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SqlServerSchemaDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.String),
-          category: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseObjects" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          extension: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostgreSqlExtension" });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          foreignTablesCount: S.optional(S.Number),
-          postgresqlExtensions: S.optional(__S(154, __c19, 2)),
-        }),
-      ).annotate({ identifier: "PostgreSqlSchemaDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tablesSizeBytes: S.optional(S.String),
-          mysql: S.optional(__S(149, __c18, 5)),
-          sqlServer: S.optional(__S(150, __c18, 6)),
-          objects: S.optional(__S(152, __c19, 0)),
-          schemaName: S.optional(S.String),
-          postgresql: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "DatabaseSchema" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          generatedId: S.optional(S.String),
-          manualUniqueId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseDetailsParentDatabaseDeployment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schemas: S.optional(__S(157, __c19, 5)),
-          databaseName: S.optional(S.String),
-          allocatedStorageBytes: S.optional(S.String),
-          parentDatabaseDeployment: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "DatabaseDetails" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          awsS3BucketDetails: S.optional(__S(34, __c4, 2)),
-          awsEcrRepositoryDetails: S.optional(__S(8, __c1, 0)),
-          awsSnsTopicDetails: S.optional(__S(8, __c1, 0)),
-          awsCloudFrontDistributionDetails: S.optional(__S(8, __c1, 0)),
-          awsEbsVolumeDetails: S.optional(__S(8, __c1, 0)),
-          awsKinesisStreamDetails: S.optional(__S(8, __c1, 0)),
-          insightList: S.optional(__S(53, __c6, 5)),
-          hostingProviderDetails: S.optional(__S(56, __c7, 0)),
-          awsAthenaWorkGroupDetails: S.optional(__S(8, __c1, 0)),
-          hidden: S.optional(S.Boolean),
-          awsRedshiftDetails: S.optional(__S(8, __c1, 0)),
-          structuredAttributes: S.optional(__S(4, __c0, 4)),
-          awsAutoscalingGroupDetails: S.optional(__S(8, __c1, 0)),
-          updateTime: S.optional(S.String),
-          awsElasticIpAddressDetails: S.optional(__S(8, __c1, 0)),
-          sources: S.optional(__S(0, __c0, 0)),
-          hideTime: S.optional(S.String),
-          awsBatchComputeEnvironmentDetails: S.optional(__S(8, __c1, 0)),
-          awsDynamodbTableDetails: S.optional(__S(8, __c1, 0)),
-          awsEksClusterDetails: S.optional(__S(8, __c1, 0)),
-          awsEcsClusterDetails: S.optional(__S(8, __c1, 0)),
-          awsInternetGatewayDetails: S.optional(__S(8, __c1, 0)),
-          awsApiGatewayRestApiDetails: S.optional(__S(8, __c1, 0)),
-          awsElbLoadBalancerDetails: S.optional(__S(8, __c1, 0)),
-          awsApplicationLoadBalancerDetails: S.optional(__S(8, __c1, 0)),
-          performanceData: S.optional(__S(64, __c8, 0)),
-          virtualMachineDetails: S.optional(__S(119, __c14, 7)),
-          awsAppSyncGraphqlApiDetails: S.optional(__S(8, __c1, 0)),
-          awsLambdaFunctionDetails: S.optional(__S(8, __c1, 0)),
-          awsElasticNetworkInterfaceDetails: S.optional(__S(8, __c1, 0)),
-          title: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-          awsEfsFileSystemDetails: S.optional(__S(8, __c1, 0)),
-          hideReason: S.optional(S.String),
-          machineDetails: S.optional(__S(123, __c15, 3)),
-          awsGlueJobDetails: S.optional(__S(8, __c1, 0)),
-          awsNatGatewayDetails: S.optional(__S(8, __c1, 0)),
-          awsEmrClusterDetails: S.optional(__S(8, __c1, 0)),
-          attributes: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-          awsRoute53HostedZoneDetails: S.optional(__S(8, __c1, 0)),
-          awsElasticacheClusterDetails: S.optional(__S(8, __c1, 0)),
-          assignedGroups: S.optional(__S(0, __c0, 0)),
-          databaseDeploymentDetails: S.optional(__S(146, __c18, 2)),
-          awsFirehoseDetails: S.optional(__S(8, __c1, 0)),
-          databaseDetails: S.optional(__S(159, __c19, 7)),
-          createTime: S.optional(S.String),
-          awsVpcDetails: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Asset" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          asset: S.optional(__S(160, __c20, 0)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateAssetRequest" });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "BatchUpdateAssetsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/assets:batchUpdate",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsLocationsAssetsRequest",
-      });
-    case 5:
-      return S.Array(__S(160, __c20, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateAssetsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+name}:cancel",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fileFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignedUriDestination" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssetsExportJobExportCondition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          file: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignedUri" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columnsCount: S.optional(S.Number),
-          signedUri: S.optional(__S(170, __c21, 2)),
-          rowCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CsvOutputFile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          signedUri: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({ identifier: "XlsxOutputFile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          csvOutputFile: S.optional(__S(171, __c21, 3)),
-          xlsxOutputFile: S.optional(__S(172, __c21, 4)),
-          fileSizeBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OutputFile" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "OutputFileList" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(170, __c21, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          signedUris: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({ identifier: "SignedUris" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(6, __c0, 6)),
-          outputFiles: S.optional(__S(175, __c21, 7)),
-          signedUris: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({
-        identifier: "AssetsExportJobExecutionResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          requestedAssetCount: S.optional(S.Number),
-          result: S.optional(__S(178, __c22, 2)),
-          expireTime: S.optional(S.String),
-          executionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetsExportJobExecution" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AssetsExportJobPerformanceData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          signedUriDestination: S.optional(__S(168, __c21, 0)),
-          name: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-          condition: S.optional(__S(169, __c21, 1)),
-          networkDependencies: S.optional(__S(8, __c1, 0)),
-          recentExecutions: S.optional(__S(180, __c22, 4)),
-          updateTime: S.optional(S.String),
-          showHidden: S.optional(S.Boolean),
-          performanceData: S.optional(__S(181, __c22, 5)),
-          inventory: S.optional(__S(8, __c1, 0)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetsExportJob" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetsExportJobId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(182, __c22, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/assetsExportJobs",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAssetsExportJobsRequest",
-      });
-  }
-}
-function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6644,15 +5121,13 @@ function __c23(j: number): any {
         identifier: "DiscoveryClientDiscoveryClientRecommendedVersion",
       });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          recommendedVersions: S.optional(__S(185, __c23, 1)),
+          recommendedVersions: S.optional(__S(33, __c1, 1)),
           ttl: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(2016, __c63, 0)),
           heartbeatTime: S.optional(S.String),
           version: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -6665,44 +5140,26 @@ function __c23(j: number): any {
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           source: S.optional(S.String),
-          errors: S.optional(__S(186, __c23, 2)),
+          errors: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "DiscoveryClient" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          discoveryClientId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(187, __c23, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/discoveryClients",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDiscoveryClientsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1441, __c45, 1));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           groupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6713,138 +5170,32 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsGroupsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rowNumber: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ImportRowErrorCsvErrorDetails",
-      });
   }
 }
-function __c24(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rowNumber: S.optional(S.Number),
-          sheet: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ImportRowErrorXlsxErrorDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filePath: S.optional(S.String),
-          csvError: S.optional(__S(191, __c23, 7)),
-        }),
-      ).annotate({
-        identifier: "ImportRowErrorArchiveErrorDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          errorDetails: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportError" });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          csvError: S.optional(__S(191, __c23, 7)),
-          xlsxError: S.optional(__S(192, __c24, 0)),
-          assetTitle: S.optional(S.String),
-          archiveError: S.optional(__S(193, __c24, 1)),
-          errors: S.optional(__S(195, __c24, 3)),
-          vmName: S.optional(S.String),
-          vmUuid: S.optional(S.String),
-          rowNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ImportRowError" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          partialReport: S.optional(S.Boolean),
-          rowErrors: S.optional(__S(197, __c24, 5)),
-          fileName: S.optional(S.String),
-          fileErrors: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({ identifier: "FileValidationReport" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fileValidations: S.optional(__S(199, __c24, 7)),
-          jobErrors: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({ identifier: "ValidationReport" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jobErrors: S.optional(__S(195, __c24, 3)),
-          framesReported: S.optional(S.Number),
-          totalRowsCount: S.optional(S.Number),
-          executionErrors: S.optional(__S(200, __c25, 0)),
-        }),
-      ).annotate({ identifier: "ExecutionReport" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PayloadFile" });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(__S(203, __c25, 3)),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InlinePayloadInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GCSPayloadInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          validationReport: S.optional(__S(200, __c25, 0)),
           createTime: S.optional(S.String),
-          executionReport: S.optional(__S(201, __c25, 1)),
-          assetSource: S.optional(S.String),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-          inlinePayload: S.optional(__S(204, __c25, 4)),
           displayName: S.optional(S.String),
-          completeTime: S.optional(S.String),
-          gcsPayload: S.optional(__S(205, __c25, 5)),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
         }),
-      ).annotate({ identifier: "ImportJob" });
-    case 7:
+      ).annotate({ identifier: "Group" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           importJobId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(206, __c25, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(207, __c6, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6857,34 +5208,136 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          signedUri: S.optional(S.String),
-          headers: S.optional(__S(17, __c2, 1)),
-          uriExpirationTime: S.optional(S.String),
+          rowNumber: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "UploadFileInfo" });
+      ).annotate({
+        identifier: "ImportRowErrorCsvErrorDetails",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          uploadFileInfo: S.optional(__S(208, __c26, 0)),
-          state: S.optional(S.String),
+          rowNumber: S.optional(S.Number),
+          sheet: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ImportRowErrorXlsxErrorDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          filePath: S.optional(S.String),
+          csvError: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "ImportRowErrorArchiveErrorDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          errorDetails: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportError" });
+    case 4:
+      return S.Array(__S(195, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          csvError: S.optional(__S(192, __c6, 0)),
+          xlsxError: S.optional(__S(193, __c6, 1)),
+          assetTitle: S.optional(S.String),
+          archiveError: S.optional(__S(194, __c6, 2)),
+          errors: S.optional(__S(196, __c6, 4)),
+          vmName: S.optional(S.String),
+          vmUuid: S.optional(S.String),
+          rowNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ImportRowError" });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          partialReport: S.optional(S.Boolean),
+          rowErrors: S.optional(__S(198, __c6, 6)),
+          fileName: S.optional(S.String),
+          fileErrors: S.optional(__S(196, __c6, 4)),
+        }),
+      ).annotate({ identifier: "FileValidationReport" });
+    case 8:
+      return S.Array(__S(199, __c6, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          fileValidations: S.optional(__S(200, __c6, 8)),
+          jobErrors: S.optional(__S(196, __c6, 4)),
+        }),
+      ).annotate({ identifier: "ValidationReport" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          jobErrors: S.optional(__S(196, __c6, 4)),
+          framesReported: S.optional(S.Number),
+          totalRowsCount: S.optional(S.Number),
+          executionErrors: S.optional(__S(201, __c6, 9)),
+        }),
+      ).annotate({ identifier: "ExecutionReport" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
           name: S.optional(S.String),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PayloadFile" });
+    case 12:
+      return S.Array(__S(203, __c6, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(__S(204, __c6, 12)),
           format: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ImportDataFile" });
-    case 2:
+      ).annotate({ identifier: "InlinePayloadInfo" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GCSPayloadInfo" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          validationReport: S.optional(__S(201, __c6, 9)),
+          createTime: S.optional(S.String),
+          executionReport: S.optional(__S(202, __c6, 10)),
+          assetSource: S.optional(S.String),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
+          inlinePayload: S.optional(__S(205, __c6, 13)),
+          displayName: S.optional(S.String),
+          completeTime: S.optional(S.String),
+          gcsPayload: S.optional(__S(206, __c6, 14)),
+        }),
+      ).annotate({ identifier: "ImportJob" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           importDataFileId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(209, __c26, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(257, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6895,219 +5348,40 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsImportJobsImportDataFilesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          preferredRegions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "RegionPreferences" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          licenseType: S.optional(S.String),
-          commitmentPlan: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperatingSystemPricingPreferencesOperatingSystemPricing",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slesForSap: S.optional(__S(212, __c26, 4)),
-          rhel: S.optional(__S(212, __c26, 4)),
-          windows: S.optional(__S(212, __c26, 4)),
-          sles: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({
-        identifier: "OperatingSystemPricingPreferences",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nodeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SoleTenantNodeType" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
   }
 }
-function __c27(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          osPricingPreferences: S.optional(__S(213, __c26, 5)),
-          hostMaintenancePolicy: S.optional(S.String),
-          cpuOvercommitRatio: S.optional(S.Number),
-          nodeTypes: S.optional(__S(215, __c26, 7)),
-          commitmentPlan: S.optional(S.String),
+          signedUri: S.optional(S.String),
+          headers: S.optional(__S(2016, __c63, 0)),
+          uriExpirationTime: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SoleTenancyPreferences" });
+      ).annotate({ identifier: "UploadFileInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineSeries" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allowedMachineSeries: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({ identifier: "MachinePreferences" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          licenseType: S.optional(S.String),
-          multithreading: S.optional(S.String),
-          osPricingPreferences: S.optional(__S(213, __c26, 5)),
-          persistentDiskType: S.optional(S.String),
-          machinePreferences: S.optional(__S(219, __c27, 3)),
-        }),
-      ).annotate({ identifier: "ComputeEnginePreferences" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedMachineSeries: S.optional(__S(218, __c27, 2)),
-          storageOnlyNodes: S.optional(S.String),
-          protectedNodes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VMwareEngineMachinePreferences",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          machinePreferences: S.optional(__S(221, __c27, 5)),
-          memoryOvercommitRatio: S.optional(S.Number),
-          commitmentPlan: S.optional(S.String),
-          licenseDiscountPercentage: S.optional(S.Number),
-          storageDeduplicationCompressionRatio: S.optional(S.Number),
-          serviceType: S.optional(S.String),
-          cpuOvercommitRatio: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "VmwareEnginePreferences" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cpuUsagePercentage: S.optional(S.Number),
-          memoryUsagePercentage: S.optional(S.Number),
-          storageMultiplier: S.optional(S.Number),
-          aggregationMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePreferencesSizingOptimizationCustomParameters",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedEgressTrafficPercentage: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePreferencesNetworkCostParameters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedCpuPercentage: S.optional(S.Number),
-          estimatedDiskPercentage: S.optional(S.Number),
-          estimatedMemoryPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EstimatedUsage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          soleTenancyPreferences: S.optional(__S(216, __c27, 0)),
-          targetProduct: S.optional(S.String),
-          computeEnginePreferences: S.optional(__S(220, __c27, 4)),
-          vmwareEnginePreferences: S.optional(__S(222, __c27, 6)),
-          sizingOptimizationStrategy: S.optional(S.String),
-          sizingOptimizationCustomParameters: S.optional(__S(223, __c27, 7)),
-          networkCostParameters: S.optional(__S(224, __c28, 0)),
-          estimatedUsage: S.optional(__S(225, __c28, 1)),
-          regionPreferences: S.optional(__S(211, __c26, 3)),
-          commitmentPlan: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePreferences",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          backupMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabasePreferencesCloudSqlCommonBackup",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneAvailability: S.optional(S.String),
-          sizingOptimizationStrategy: S.optional(S.String),
-          backup: S.optional(__S(227, __c28, 3)),
-          edition: S.optional(S.String),
-          commitmentPlan: S.optional(S.String),
-          persistentDiskType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabasePreferencesCloudSqlCommon",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          common: S.optional(__S(228, __c28, 4)),
-          multithreading: S.optional(S.String),
-          versionType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabasePreferencesCloudSqlSqlServer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          common: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({
-        identifier: "DatabasePreferencesCloudSqlPostgreSql",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mssqlToCloudSqlForSqlServerPreferences: S.optional(__S(229, __c28, 5)),
-          postgresqlToCloudSqlForPostgresqlPreferences: S.optional(__S(230, __c28, 6)),
-          mysqlToCloudSqlForMysqlPreferences: S.optional(__S(230, __c28, 6)),
-        }),
-      ).annotate({ identifier: "DatabasePreferences" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          regionPreferences: S.optional(__S(211, __c26, 3)),
-          virtualMachinePreferences: S.optional(__S(226, __c28, 2)),
-          displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          databasePreferences: S.optional(__S(231, __c28, 7)),
+          displayName: S.optional(S.String),
+          uploadFileInfo: S.optional(__S(256, __c8, 0)),
+          state: S.optional(S.String),
           name: S.optional(S.String),
+          format: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PreferenceSet" });
-    case 1:
+      ).annotate({ identifier: "ImportDataFile" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           preferenceSetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(341, __c10, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7118,35 +5392,215 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsPreferenceSetsRequest",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preferredRegions: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "RegionPreferences" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          licenseType: S.optional(S.String),
+          commitmentPlan: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperatingSystemPricingPreferencesOperatingSystemPricing",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(S.String),
-          preferenceSet: S.optional(S.String),
+          slesForSap: S.optional(__S(321, __c10, 1)),
+          rhel: S.optional(__S(321, __c10, 1)),
+          windows: S.optional(__S(321, __c10, 1)),
+          sles: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
-        identifier: "ReportConfigGroupPreferenceSetAssignment",
+        identifier: "OperatingSystemPricingPreferences",
       });
     case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          groupPreferencesetAssignments: S.optional(__S(235, __c29, 3)),
+          nodeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SoleTenantNodeType" });
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          osPricingPreferences: S.optional(__S(322, __c10, 2)),
+          hostMaintenancePolicy: S.optional(S.String),
+          cpuOvercommitRatio: S.optional(S.Number),
+          nodeTypes: S.optional(__S(324, __c10, 4)),
+          commitmentPlan: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SoleTenancyPreferences" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineSeries" });
+    case 7:
+      return S.Array(__S(326, __c10, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          allowedMachineSeries: S.optional(__S(327, __c10, 7)),
+        }),
+      ).annotate({ identifier: "MachinePreferences" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          licenseType: S.optional(S.String),
+          multithreading: S.optional(S.String),
+          osPricingPreferences: S.optional(__S(322, __c10, 2)),
+          persistentDiskType: S.optional(S.String),
+          machinePreferences: S.optional(__S(328, __c10, 8)),
+        }),
+      ).annotate({ identifier: "ComputeEnginePreferences" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          allowedMachineSeries: S.optional(__S(327, __c10, 7)),
+          storageOnlyNodes: S.optional(S.String),
+          protectedNodes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VMwareEngineMachinePreferences",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          machinePreferences: S.optional(__S(330, __c10, 10)),
+          memoryOvercommitRatio: S.optional(S.Number),
+          commitmentPlan: S.optional(S.String),
+          licenseDiscountPercentage: S.optional(S.Number),
+          storageDeduplicationCompressionRatio: S.optional(S.Number),
+          serviceType: S.optional(S.String),
+          cpuOvercommitRatio: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VmwareEnginePreferences" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          cpuUsagePercentage: S.optional(S.Number),
+          memoryUsagePercentage: S.optional(S.Number),
+          storageMultiplier: S.optional(S.Number),
+          aggregationMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePreferencesSizingOptimizationCustomParameters",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedEgressTrafficPercentage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePreferencesNetworkCostParameters",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedCpuPercentage: S.optional(S.Number),
+          estimatedDiskPercentage: S.optional(S.Number),
+          estimatedMemoryPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EstimatedUsage" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          soleTenancyPreferences: S.optional(__S(325, __c10, 5)),
+          targetProduct: S.optional(S.String),
+          computeEnginePreferences: S.optional(__S(329, __c10, 9)),
+          vmwareEnginePreferences: S.optional(__S(331, __c10, 11)),
+          sizingOptimizationStrategy: S.optional(S.String),
+          sizingOptimizationCustomParameters: S.optional(__S(332, __c10, 12)),
+          networkCostParameters: S.optional(__S(333, __c10, 13)),
+          estimatedUsage: S.optional(__S(334, __c10, 14)),
+          regionPreferences: S.optional(__S(320, __c10, 0)),
+          commitmentPlan: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePreferences",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          backupMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabasePreferencesCloudSqlCommonBackup",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          zoneAvailability: S.optional(S.String),
+          sizingOptimizationStrategy: S.optional(S.String),
+          backup: S.optional(__S(336, __c10, 16)),
+          edition: S.optional(S.String),
+          commitmentPlan: S.optional(S.String),
+          persistentDiskType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabasePreferencesCloudSqlCommon",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          common: S.optional(__S(337, __c10, 17)),
+          multithreading: S.optional(S.String),
+          versionType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabasePreferencesCloudSqlSqlServer",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          common: S.optional(__S(337, __c10, 17)),
+        }),
+      ).annotate({
+        identifier: "DatabasePreferencesCloudSqlPostgreSql",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          mssqlToCloudSqlForSqlServerPreferences: S.optional(__S(338, __c10, 18)),
+          postgresqlToCloudSqlForPostgresqlPreferences: S.optional(__S(339, __c10, 19)),
+          mysqlToCloudSqlForMysqlPreferences: S.optional(__S(339, __c10, 19)),
+        }),
+      ).annotate({ identifier: "DatabasePreferences" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
+          regionPreferences: S.optional(__S(320, __c10, 0)),
+          virtualMachinePreferences: S.optional(__S(335, __c10, 15)),
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          databasePreferences: S.optional(__S(340, __c10, 20)),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ReportConfig" });
-    case 5:
+      ).annotate({ identifier: "PreferenceSet" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           reportConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(236, __c29, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(386, __c12, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7157,261 +5611,43 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsReportConfigsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          totalAssetsUsingEstimatedUsage: S.optional(S.String),
-          totalVirtualMachinesUsingEstimatedUsage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryAssetAggregateStatsEstimatedUsageStats",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryChartDataDataPoint",
-      });
   }
 }
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataPoints: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({ identifier: "ReportSummaryChartData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lowerBound: S.optional(S.String),
-          count: S.optional(S.String),
-          upperBound: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryHistogramChartDataBucket",
-      });
-    case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buckets: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryHistogramChartData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          used: S.optional(S.String),
-          free: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryUtilizationChartData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedUsageStats: S.optional(__S(238, __c29, 6)),
-          operatingSystem: S.optional(__S(241, __c30, 1)),
-          databaseTypes: S.optional(__S(241, __c30, 1)),
-          totalStorageBytes: S.optional(S.String),
-          assetAge: S.optional(__S(241, __c30, 1)),
-          storageBytesHistogram: S.optional(__S(244, __c30, 4)),
-          memoryUtilizationChart: S.optional(__S(245, __c30, 5)),
-          totalCores: S.optional(S.String),
-          softwareInstances: S.optional(__S(241, __c30, 1)),
-          memoryUtilization: S.optional(__S(241, __c30, 1)),
-          storageUtilization: S.optional(__S(241, __c30, 1)),
-          totalAssets: S.optional(S.String),
-          coreCountHistogram: S.optional(__S(244, __c30, 4)),
-          totalMemoryBytes: S.optional(S.String),
-          memoryBytesHistogram: S.optional(__S(244, __c30, 4)),
-          storageUtilizationChart: S.optional(__S(245, __c30, 5)),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryAssetAggregateStats",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          nanos: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-  }
-}
-function __c31(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nodeCount: S.optional(S.String),
-          node: S.optional(__S(214, __c26, 6)),
-          allocatedAssetCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummarySoleTenantNodeAllocation",
-      });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allocatedAssetCount: S.optional(S.String),
-          allocatedRegions: S.optional(__S(0, __c0, 0)),
-          nodeAllocations: S.optional(__S(249, __c31, 1)),
-        }),
-      ).annotate({
-        identifier: "ReportSummarySoleTenantFinding",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vmwareNode: S.optional(__S(217, __c27, 1)),
-          nodeCount: S.optional(S.String),
-          allocatedAssetCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryVMWareNodeAllocation",
-      });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allocatedRegions: S.optional(__S(0, __c0, 0)),
-          allocatedAssetCount: S.optional(S.String),
-          nodeAllocations: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryVMWareEngineFinding",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          totalAssets: S.optional(S.String),
-          allocatedAssetCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryDatabaseFinding",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          machineSeries: S.optional(__S(217, __c27, 1)),
-          allocatedAssetCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryMachineSeriesAllocation",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allocatedAssetCount: S.optional(S.String),
-          machineSeriesAllocations: S.optional(__S(256, __c32, 0)),
-          allocatedRegions: S.optional(__S(0, __c0, 0)),
-          allocatedDiskTypes: S.optional(__S(257, __c32, 1)),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryMachineFinding",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          monthlyCostTotal: S.optional(__S(247, __c30, 7)),
-          preferredRegion: S.optional(S.String),
-          machinePreferences: S.optional(__S(226, __c28, 2)),
-          soleTenantFinding: S.optional(__S(250, __c31, 2)),
-          monthlyCostNetworkEgress: S.optional(__S(247, __c30, 7)),
-          displayName: S.optional(S.String),
-          vmwareEngineFinding: S.optional(__S(253, __c31, 5)),
-          monthlyCostGcveProtected: S.optional(__S(247, __c30, 7)),
-          monthlyCostPortableVmwareLicense: S.optional(__S(247, __c30, 7)),
-          topPriority: S.optional(S.String),
-          monthlyCostOsLicense: S.optional(__S(247, __c30, 7)),
-          databaseFinding: S.optional(__S(254, __c31, 6)),
-          monthlyCostStorage: S.optional(__S(247, __c30, 7)),
-          monthlyCostDatabaseLicensing: S.optional(__S(247, __c30, 7)),
-          monthlyCostCompute: S.optional(__S(247, __c30, 7)),
-          preferenceSet: S.optional(__S(232, __c29, 0)),
-          machineFinding: S.optional(__S(258, __c32, 2)),
-          monthlyCostDatabaseBackup: S.optional(__S(247, __c30, 7)),
-          monthlyCostOther: S.optional(__S(247, __c30, 7)),
-          pricingTrack: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReportSummaryGroupPreferenceSetFinding",
-      });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          databaseType: S.optional(S.String),
-          assetType: S.optional(S.String),
           group: S.optional(S.String),
-          assetAggregateStats: S.optional(__S(246, __c30, 6)),
-          preferenceSetFindings: S.optional(__S(260, __c32, 4)),
-          description: S.optional(S.String),
-          overlappingAssetCount: S.optional(S.String),
+          preferenceSet: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ReportSummaryGroupFinding",
+        identifier: "ReportConfigGroupPreferenceSetAssignment",
       });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groupFindings: S.optional(__S(262, __c32, 6)),
-          databaseStats: S.optional(__S(246, __c30, 6)),
-          virtualMachineStats: S.optional(__S(246, __c30, 6)),
-          allAssetsStats: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({ identifier: "ReportSummary" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(__S(263, __c32, 7)),
+          displayName: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          type: S.optional(S.String),
-          displayName: S.optional(S.String),
+          groupPreferencesetAssignments: S.optional(__S(385, __c12, 1)),
           updateTime: S.optional(S.String),
+          description: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Report" });
-    case 1:
+      ).annotate({ identifier: "ReportConfig" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           reportId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(474, __c14, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7422,44 +5658,253 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsReportConfigsReportsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          outputFiles: S.optional(__S(175, __c21, 7)),
-          error: S.optional(__S(6, __c0, 6)),
-          signedUris: S.optional(__S(177, __c22, 1)),
+          totalAssetsUsingEstimatedUsage: S.optional(S.String),
+          totalVirtualMachinesUsingEstimatedUsage: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ReportExportExecutionResult",
+        identifier: "ReportSummaryAssetAggregateStatsEstimatedUsageStats",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryChartDataDataPoint",
+      });
+    case 2:
+      return S.Array(__S(449, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          progressPercentage: S.optional(S.Number),
-          expireTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          result: S.optional(__S(266, __c33, 2)),
-          endTime: S.optional(S.String),
-          executionId: S.optional(S.String),
+          dataPoints: S.optional(__S(450, __c14, 2)),
         }),
-      ).annotate({ identifier: "ReportExportExecution" });
+      ).annotate({ identifier: "ReportSummaryChartData" });
     case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          signedUriDestination: S.optional(__S(168, __c21, 0)),
-          name: S.optional(S.String),
-          recentExecutions: S.optional(__S(268, __c33, 4)),
+          lowerBound: S.optional(S.String),
+          count: S.optional(S.String),
+          upperBound: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ReportExportJob" });
+      ).annotate({
+        identifier: "ReportSummaryHistogramChartDataBucket",
+      });
+    case 5:
+      return S.Array(__S(452, __c14, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: S.optional(__S(453, __c14, 5)),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryHistogramChartData",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          used: S.optional(S.String),
+          free: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryUtilizationChartData",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedUsageStats: S.optional(__S(448, __c14, 0)),
+          operatingSystem: S.optional(__S(451, __c14, 3)),
+          databaseTypes: S.optional(__S(451, __c14, 3)),
+          totalStorageBytes: S.optional(S.String),
+          assetAge: S.optional(__S(451, __c14, 3)),
+          storageBytesHistogram: S.optional(__S(454, __c14, 6)),
+          memoryUtilizationChart: S.optional(__S(455, __c14, 7)),
+          totalCores: S.optional(S.String),
+          softwareInstances: S.optional(__S(451, __c14, 3)),
+          memoryUtilization: S.optional(__S(451, __c14, 3)),
+          storageUtilization: S.optional(__S(451, __c14, 3)),
+          totalAssets: S.optional(S.String),
+          coreCountHistogram: S.optional(__S(454, __c14, 6)),
+          totalMemoryBytes: S.optional(S.String),
+          memoryBytesHistogram: S.optional(__S(454, __c14, 6)),
+          storageUtilizationChart: S.optional(__S(455, __c14, 7)),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryAssetAggregateStats",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          nanos: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          nodeCount: S.optional(S.String),
+          node: S.optional(__S(323, __c10, 3)),
+          allocatedAssetCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummarySoleTenantNodeAllocation",
+      });
+    case 11:
+      return S.Array(__S(458, __c14, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          allocatedAssetCount: S.optional(S.String),
+          allocatedRegions: S.optional(__S(1344, __c42, 0)),
+          nodeAllocations: S.optional(__S(459, __c14, 11)),
+        }),
+      ).annotate({
+        identifier: "ReportSummarySoleTenantFinding",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          vmwareNode: S.optional(__S(326, __c10, 6)),
+          nodeCount: S.optional(S.String),
+          allocatedAssetCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryVMWareNodeAllocation",
+      });
+    case 14:
+      return S.Array(__S(461, __c14, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          allocatedRegions: S.optional(__S(1344, __c42, 0)),
+          allocatedAssetCount: S.optional(S.String),
+          nodeAllocations: S.optional(__S(462, __c14, 14)),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryVMWareEngineFinding",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          totalAssets: S.optional(S.String),
+          allocatedAssetCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryDatabaseFinding",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          machineSeries: S.optional(__S(326, __c10, 6)),
+          allocatedAssetCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryMachineSeriesAllocation",
+      });
+    case 18:
+      return S.Array(__S(465, __c14, 17));
+    case 19:
+      return S.Array(S.String);
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          allocatedAssetCount: S.optional(S.String),
+          machineSeriesAllocations: S.optional(__S(466, __c14, 18)),
+          allocatedRegions: S.optional(__S(1344, __c42, 0)),
+          allocatedDiskTypes: S.optional(__S(467, __c14, 19)),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryMachineFinding",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          monthlyCostTotal: S.optional(__S(457, __c14, 9)),
+          preferredRegion: S.optional(S.String),
+          machinePreferences: S.optional(__S(335, __c10, 15)),
+          soleTenantFinding: S.optional(__S(460, __c14, 12)),
+          monthlyCostNetworkEgress: S.optional(__S(457, __c14, 9)),
+          displayName: S.optional(S.String),
+          vmwareEngineFinding: S.optional(__S(463, __c14, 15)),
+          monthlyCostGcveProtected: S.optional(__S(457, __c14, 9)),
+          monthlyCostPortableVmwareLicense: S.optional(__S(457, __c14, 9)),
+          topPriority: S.optional(S.String),
+          monthlyCostOsLicense: S.optional(__S(457, __c14, 9)),
+          databaseFinding: S.optional(__S(464, __c14, 16)),
+          monthlyCostStorage: S.optional(__S(457, __c14, 9)),
+          monthlyCostDatabaseLicensing: S.optional(__S(457, __c14, 9)),
+          monthlyCostCompute: S.optional(__S(457, __c14, 9)),
+          preferenceSet: S.optional(__S(341, __c10, 21)),
+          machineFinding: S.optional(__S(468, __c14, 20)),
+          monthlyCostDatabaseBackup: S.optional(__S(457, __c14, 9)),
+          monthlyCostOther: S.optional(__S(457, __c14, 9)),
+          pricingTrack: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryGroupPreferenceSetFinding",
+      });
+    case 22:
+      return S.Array(__S(469, __c14, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          databaseType: S.optional(S.String),
+          assetType: S.optional(S.String),
+          group: S.optional(S.String),
+          assetAggregateStats: S.optional(__S(456, __c14, 8)),
+          preferenceSetFindings: S.optional(__S(470, __c14, 22)),
+          description: S.optional(S.String),
+          overlappingAssetCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReportSummaryGroupFinding",
+      });
+    case 24:
+      return S.Array(__S(471, __c14, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          groupFindings: S.optional(__S(472, __c14, 24)),
+          databaseStats: S.optional(__S(456, __c14, 8)),
+          virtualMachineStats: S.optional(__S(456, __c14, 8)),
+          allAssetsStats: S.optional(__S(456, __c14, 8)),
+        }),
+      ).annotate({ identifier: "ReportSummary" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(__S(473, __c14, 25)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Report" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           reportExportJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(269, __c33, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(515, __c16, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7470,7 +5915,67 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          outputFiles: S.optional(__S(3238, __c101, 6)),
+          error: S.optional(__S(1441, __c45, 1)),
+          signedUris: S.optional(__S(3240, __c101, 8)),
+        }),
+      ).annotate({
+        identifier: "ReportExportExecutionResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          progressPercentage: S.optional(S.Number),
+          expireTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          result: S.optional(__S(512, __c16, 0)),
+          endTime: S.optional(S.String),
+          executionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportExportExecution" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          signedUriDestination: S.optional(__S(3232, __c101, 0)),
+          name: S.optional(S.String),
+          recentExecutions: S.optional(__S(514, __c16, 2)),
+        }),
+      ).annotate({ identifier: "ReportExportJob" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          sourceId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/sources",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsSourcesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -7488,26 +5993,9 @@ function __c33(j: number): any {
       ).annotate({ identifier: "Source" });
   }
 }
-function __c34(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          sourceId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(271, __c33, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/sources",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSourcesRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -7522,7 +6010,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAssetsRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7536,7 +6028,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAssetsExportJobsRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7551,7 +6047,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDiscoveryClientsRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -7566,7 +6066,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGroupsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -7582,7 +6086,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsImportJobsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7597,7 +6105,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsImportJobsImportDataFilesRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7613,7 +6125,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7630,7 +6142,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsPreferenceSetsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -7646,7 +6162,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsReportConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7661,7 +6181,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsReportConfigsReportsRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7676,7 +6200,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -7691,7 +6219,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7705,17 +6237,25 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(1408, __c44, 0)),
           name: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7729,6 +6269,42 @@ function __c35(j: number): any {
         ),
       ).annotate({
         identifier: "GetProjectsLocationsAssetsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAssetsExportJobsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsDiscoveryClientsRequest",
       });
   }
 }
@@ -7746,37 +6322,13 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetProjectsLocationsAssetsExportJobsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsDiscoveryClientsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://migrationcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "GetProjectsLocationsGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7791,7 +6343,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsImportJobsRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7805,7 +6361,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsImportJobsImportDataFilesRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7819,7 +6379,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7833,7 +6397,88 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPreferenceSetsRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowExisting: S.optional(S.Boolean),
+          requestId: S.optional(S.String),
+          assets: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "AddAssetsToGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.String.pipe(T.Label()),
+          body: S.optional(__S(1312, __c41, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+group}:addAssets",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddAssetsProjectsLocationsGroupsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetIds: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "AssetList" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1408, __c44, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1440, __c45, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1408, __c44, 0)),
+          name: S.optional(S.String),
+          response: S.optional(__S(1408, __c44, 0)),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(1441, __c45, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7849,7 +6494,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7861,7 +6506,11 @@ function __c37(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Relation" });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7875,7 +6524,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsReportConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7890,7 +6543,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsReportConfigsReportsRequest",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7904,7 +6561,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsReportConfigsReportsReportExportJobsRequest",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7918,7 +6579,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesRequest",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7933,18 +6598,31 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesErrorFramesRequest",
       });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
           violation: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrameViolationEntry" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          violations: S.optional(__S(1729, __c54, 1)),
+          ingestionTime: S.optional(S.String),
+          originalFrame: S.optional(__S(1765, __c55, 5)),
+        }),
+      ).annotate({ identifier: "ErrorFrame" });
   }
 }
-function __c38(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7970,71 +6648,66 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          disk: S.optional(__S(304, __c38, 0)),
-          network: S.optional(__S(305, __c38, 1)),
-          memory: S.optional(__S(306, __c38, 2)),
+          disk: S.optional(__S(1760, __c55, 0)),
+          network: S.optional(__S(1761, __c55, 1)),
+          memory: S.optional(__S(1762, __c55, 2)),
           sampleTime: S.optional(S.String),
-          cpu: S.optional(__S(306, __c38, 2)),
+          cpu: S.optional(__S(1762, __c55, 2)),
         }),
       ).annotate({ identifier: "PerformanceSample" });
     case 4:
-      return S.Array(__S(307, __c38, 3));
+      return S.Array(__S(1763, __c55, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          structuredAttributes: S.optional(__S(4, __c0, 4)),
-          awsElasticNetworkInterfaceDetails: S.optional(__S(8, __c1, 0)),
-          awsKinesisStreamDetails: S.optional(__S(8, __c1, 0)),
-          awsRedshiftDetails: S.optional(__S(8, __c1, 0)),
-          databaseDeploymentDetails: S.optional(__S(146, __c18, 2)),
-          awsEksClusterDetails: S.optional(__S(8, __c1, 0)),
-          awsEcsClusterDetails: S.optional(__S(8, __c1, 0)),
-          virtualMachineDetails: S.optional(__S(119, __c14, 7)),
-          awsApplicationLoadBalancerDetails: S.optional(__S(8, __c1, 0)),
-          awsEcrRepositoryDetails: S.optional(__S(8, __c1, 0)),
-          awsLambdaFunctionDetails: S.optional(__S(8, __c1, 0)),
-          awsInternetGatewayDetails: S.optional(__S(8, __c1, 0)),
+          structuredAttributes: S.optional(__S(1408, __c44, 0)),
+          awsElasticNetworkInterfaceDetails: S.optional(__S(1984, __c62, 0)),
+          awsKinesisStreamDetails: S.optional(__S(1984, __c62, 0)),
+          awsRedshiftDetails: S.optional(__S(1984, __c62, 0)),
+          databaseDeploymentDetails: S.optional(__S(2843, __c88, 27)),
+          awsEksClusterDetails: S.optional(__S(1984, __c62, 0)),
+          awsEcsClusterDetails: S.optional(__S(1984, __c62, 0)),
+          virtualMachineDetails: S.optional(__S(2816, __c88, 0)),
+          awsApplicationLoadBalancerDetails: S.optional(__S(1984, __c62, 0)),
+          awsEcrRepositoryDetails: S.optional(__S(1984, __c62, 0)),
+          awsLambdaFunctionDetails: S.optional(__S(1984, __c62, 0)),
+          awsInternetGatewayDetails: S.optional(__S(1984, __c62, 0)),
           traceToken: S.optional(S.String),
-          awsS3BucketDetails: S.optional(__S(34, __c4, 2)),
-          awsDynamodbTableDetails: S.optional(__S(8, __c1, 0)),
-          awsGlueJobDetails: S.optional(__S(8, __c1, 0)),
-          awsElbLoadBalancerDetails: S.optional(__S(8, __c1, 0)),
-          awsElasticacheClusterDetails: S.optional(__S(8, __c1, 0)),
-          awsSnsTopicDetails: S.optional(__S(8, __c1, 0)),
-          awsCloudFrontDistributionDetails: S.optional(__S(8, __c1, 0)),
+          awsS3BucketDetails: S.optional(__S(2757, __c86, 5)),
+          awsDynamodbTableDetails: S.optional(__S(1984, __c62, 0)),
+          awsGlueJobDetails: S.optional(__S(1984, __c62, 0)),
+          awsElbLoadBalancerDetails: S.optional(__S(1984, __c62, 0)),
+          awsElasticacheClusterDetails: S.optional(__S(1984, __c62, 0)),
+          awsSnsTopicDetails: S.optional(__S(1984, __c62, 0)),
+          awsCloudFrontDistributionDetails: S.optional(__S(1984, __c62, 0)),
           collectionType: S.optional(S.String),
-          hostingProviderDetails: S.optional(__S(56, __c7, 0)),
-          awsAthenaWorkGroupDetails: S.optional(__S(8, __c1, 0)),
-          awsApiGatewayRestApiDetails: S.optional(__S(8, __c1, 0)),
-          awsElasticIpAddressDetails: S.optional(__S(8, __c1, 0)),
+          hostingProviderDetails: S.optional(__S(2760, __c86, 8)),
+          awsAthenaWorkGroupDetails: S.optional(__S(1984, __c62, 0)),
+          awsApiGatewayRestApiDetails: S.optional(__S(1984, __c62, 0)),
+          awsElasticIpAddressDetails: S.optional(__S(1984, __c62, 0)),
           reportTime: S.optional(S.String),
-          awsEbsVolumeDetails: S.optional(__S(8, __c1, 0)),
-          awsEmrClusterDetails: S.optional(__S(8, __c1, 0)),
-          awsNatGatewayDetails: S.optional(__S(8, __c1, 0)),
-          awsEfsFileSystemDetails: S.optional(__S(8, __c1, 0)),
-          awsFirehoseDetails: S.optional(__S(8, __c1, 0)),
-          databaseDetails: S.optional(__S(159, __c19, 7)),
-          attributes: S.optional(__S(17, __c2, 1)),
-          machineDetails: S.optional(__S(123, __c15, 3)),
-          labels: S.optional(__S(17, __c2, 1)),
-          awsAppSyncGraphqlApiDetails: S.optional(__S(8, __c1, 0)),
-          awsAutoscalingGroupDetails: S.optional(__S(8, __c1, 0)),
-          awsBatchComputeEnvironmentDetails: S.optional(__S(8, __c1, 0)),
-          awsVpcDetails: S.optional(__S(8, __c1, 0)),
-          awsRoute53HostedZoneDetails: S.optional(__S(8, __c1, 0)),
-          performanceSamples: S.optional(__S(308, __c38, 4)),
+          awsEbsVolumeDetails: S.optional(__S(1984, __c62, 0)),
+          awsEmrClusterDetails: S.optional(__S(1984, __c62, 0)),
+          awsNatGatewayDetails: S.optional(__S(1984, __c62, 0)),
+          awsEfsFileSystemDetails: S.optional(__S(1984, __c62, 0)),
+          awsFirehoseDetails: S.optional(__S(1984, __c62, 0)),
+          databaseDetails: S.optional(__S(2856, __c89, 8)),
+          attributes: S.optional(__S(2016, __c63, 0)),
+          machineDetails: S.optional(__S(2820, __c88, 4)),
+          labels: S.optional(__S(2016, __c63, 0)),
+          awsAppSyncGraphqlApiDetails: S.optional(__S(1984, __c62, 0)),
+          awsAutoscalingGroupDetails: S.optional(__S(1984, __c62, 0)),
+          awsBatchComputeEnvironmentDetails: S.optional(__S(1984, __c62, 0)),
+          awsVpcDetails: S.optional(__S(1984, __c62, 0)),
+          awsRoute53HostedZoneDetails: S.optional(__S(1984, __c62, 0)),
+          performanceSamples: S.optional(__S(1764, __c55, 4)),
         }),
       ).annotate({ identifier: "AssetFrame" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          violations: S.optional(__S(303, __c37, 7)),
-          ingestionTime: S.optional(S.String),
-          originalFrame: S.optional(__S(309, __c38, 5)),
-        }),
-      ).annotate({ identifier: "ErrorFrame" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8050,7 +6723,7 @@ function __c38(j: number): any {
       });
   }
 }
-function __c39(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8061,13 +6734,17 @@ function __c39(j: number): any {
           customerConsentForGoogleSalesToAccessMigrationCenter: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Settings" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1344, __c42, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -8079,16 +6756,20 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
     case 2:
-      return S.Array(__S(286, __c35, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(314, __c39, 2)),
+          locations: S.optional(__S(1857, __c58, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8108,15 +6789,19 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAssetsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assets: S.optional(__S(165, __c20, 5)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          assets: S.optional(__S(2912, __c91, 0)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "ListAssetsResponse" });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8132,22 +6817,145 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAssetsExportJobsRequest",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3269, __c102, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          assetsExportJobs: S.optional(__S(319, __c39, 7)),
+          assetsExportJobs: S.optional(__S(1921, __c60, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssetsExportJobsResponse",
       });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lowerBounds: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "AggregationHistogram" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(__S(1984, __c62, 0)),
+          field: S.optional(S.String),
+          sum: S.optional(__S(1984, __c62, 0)),
+          histogram: S.optional(__S(1953, __c61, 1)),
+          frequency: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "Aggregation" });
+    case 3:
+      return S.Array(__S(1954, __c61, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          showHidden: S.optional(S.Boolean),
+          aggregations: S.optional(__S(1955, __c61, 3)),
+        }),
+      ).annotate({
+        identifier: "AggregateAssetsValuesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1956, __c61, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/assets:aggregateValues",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AggregateValuesProjectsLocationsAssetsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AggregationResultSum" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AggregationResultCount" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "AggregationResultFrequency",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          upperBound: S.optional(S.Number),
+          count: S.optional(S.String),
+          lowerBound: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AggregationResultHistogramBucket",
+      });
+    case 10:
+      return S.Array(__S(1961, __c61, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: S.optional(__S(1962, __c61, 10)),
+        }),
+      ).annotate({
+        identifier: "AggregationResultHistogram",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          sum: S.optional(__S(1958, __c61, 6)),
+          count: S.optional(__S(1959, __c61, 7)),
+          frequency: S.optional(__S(1960, __c61, 8)),
+          histogram: S.optional(__S(1963, __c61, 11)),
+        }),
+      ).annotate({ identifier: "AggregationResult" });
+    case 13:
+      return S.Array(__S(1964, __c61, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(1965, __c61, 13)),
+        }),
+      ).annotate({
+        identifier: "AggregateAssetsValuesResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AggregationCount",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8165,19 +6973,23 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDiscoveryClientsRequest",
       });
+    case 1:
+      return S.Array(__S(34, __c1, 2));
     case 2:
-      return S.Array(__S(187, __c23, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          discoveryClients: S.optional(__S(322, __c40, 2)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          discoveryClients: S.optional(__S(2049, __c64, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDiscoveryClientsResponse",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8195,17 +7007,21 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGroupsRequest",
       });
-    case 5:
-      return S.Array(__S(189, __c23, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(325, __c40, 5)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          groups: S.optional(__S(2081, __c65, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8224,21 +7040,21 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsImportJobsRequest",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(206, __c25, 6));
     case 1:
+      return S.Array(__S(207, __c6, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
-          importJobs: S.optional(__S(328, __c41, 0)),
+          importJobs: S.optional(__S(2113, __c66, 1)),
         }),
       ).annotate({ identifier: "ListImportJobsResponse" });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8256,19 +7072,23 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsImportJobsImportDataFilesRequest",
       });
-    case 3:
-      return S.Array(__S(209, __c26, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(257, __c8, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          importDataFiles: S.optional(__S(331, __c41, 3)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
+          importDataFiles: S.optional(__S(2145, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImportDataFilesResponse",
       });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8286,19 +7106,19 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 6:
-      return S.Array(__S(7, __c0, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(334, __c41, 6)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          operations: S.optional(__S(2177, __c68, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c42(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8318,18 +7138,22 @@ function __c42(j: number): any {
         identifier: "ListProjectsLocationsPreferenceSetsRequest",
       });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(341, __c10, 21));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          preferenceSets: S.optional(__S(337, __c42, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
+          preferenceSets: S.optional(__S(2209, __c69, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPreferenceSetsResponse",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8347,16 +7171,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRelationsRequest",
       });
-    case 4:
-      return S.Array(__S(296, __c37, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          relations: S.optional(__S(340, __c42, 4)),
+          relations: S.optional(__S(2241, __c70, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRelationsResponse" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8374,23 +7202,23 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsReportConfigsRequest",
       });
-    case 7:
-      return S.Array(__S(236, __c29, 4));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(386, __c12, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          reportConfigs: S.optional(__S(343, __c42, 7)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          reportConfigs: S.optional(__S(2273, __c71, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListReportConfigsResponse",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8409,17 +7237,21 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsReportConfigsReportsRequest",
       });
+    case 1:
+      return S.Array(__S(474, __c14, 26));
     case 2:
-      return S.Array(__S(264, __c33, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
-          reports: S.optional(__S(346, __c43, 2)),
+          reports: S.optional(__S(2305, __c72, 1)),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
-    case 4:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8435,18 +7267,57 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsReportConfigsReportsReportExportJobsRequest",
       });
-    case 5:
-      return S.Array(__S(269, __c33, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(515, __c16, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          reportExportJobs: S.optional(__S(349, __c43, 5)),
+          reportExportJobs: S.optional(__S(2337, __c73, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListReportExportJobsResponse",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cascadeLogicalDbs: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "CascadingRule" });
+    case 1:
+      return S.Array(__S(2368, __c74, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(1344, __c42, 0)),
+          cascadingRules: S.optional(__S(2369, __c74, 1)),
+          allowMissing: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BatchDeleteAssetsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2370, __c74, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/assets:batchDelete",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsLocationsAssetsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8464,21 +7335,21 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesRequest",
       });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
     case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(352, __c44, 0)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          sources: S.optional(__S(2401, __c75, 1)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSourcesResponse" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8495,23 +7366,27 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesErrorFramesRequest",
       });
-    case 3:
-      return S.Array(__S(310, __c38, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1730, __c54, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          errorFrames: S.optional(__S(355, __c44, 3)),
+          unreachable: S.optional(__S(1344, __c42, 0)),
+          errorFrames: S.optional(__S(2433, __c76, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListErrorFramesResponse" });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2906, __c90, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8522,13 +7397,17 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsAssetsRequest",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(187, __c23, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8539,13 +7418,17 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDiscoveryClientsRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8558,7 +7441,7 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8566,7 +7449,7 @@ function __c45(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(206, __c25, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(207, __c6, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8577,13 +7460,17 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsImportJobsRequest",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(341, __c10, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8594,13 +7481,17 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPreferenceSetsRequest",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(271, __c33, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8611,21 +7502,25 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSourcesRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean),
-          assets: S.optional(__S(1, __c0, 1)),
+          assets: S.optional(__S(1376, __c43, 0)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveAssetsFromGroupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           group: S.String.pipe(T.Label()),
-          body: S.optional(__S(363, __c45, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8636,20 +7531,24 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "RemoveAssetsProjectsLocationsGroupsRequest",
       });
-    case 5:
-      return S.Array(__S(309, __c38, 5));
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1765, __c55, 5));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          framesData: S.optional(__S(365, __c45, 5)),
+          framesData: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "Frames" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           source: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(366, __c45, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2689, __c84, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8662,21 +7561,1160 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
+          asset: S.optional(__S(2906, __c90, 26)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateAssetRequest" });
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2721, __c85, 1)),
+        }),
+      ).annotate({ identifier: "BatchUpdateAssetsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2722, __c85, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/assets:batchUpdate",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsLocationsAssetsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(2912, __c91, 0)),
         }),
       ).annotate({
-        identifier: "RunAssetsExportJobRequest",
+        identifier: "BatchUpdateAssetsResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AwsS3BucketDetailsVersioning",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          totalBytes: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AwsS3BucketDetailsStorageClass",
+      });
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AwsS3BucketDetailsObjectsMetadataTotalObjects",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          totalObjects: S.optional(__S(2755, __c86, 3)),
+        }),
+      ).annotate({
+        identifier: "AwsS3BucketDetailsObjectsMetadata",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          versioning: S.optional(__S(2752, __c86, 0)),
+          storageClasses: S.optional(__S(2754, __c86, 2)),
+          objectsMetadata: S.optional(__S(2756, __c86, 4)),
+        }),
+      ).annotate({ identifier: "AwsS3BucketDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceLocation" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          owningAccountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingProviderDetailsAws",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          location: S.optional(__S(2758, __c86, 6)),
+          aws: S.optional(__S(2759, __c86, 7)),
+          originalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingProviderDetails" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Migrationcenter_Date" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          assignment: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          bcast: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+          fqdn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkAddress" });
+    case 11:
+      return S.Array(__S(2762, __c86, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: S.optional(__S(2763, __c86, 11)),
+          entries: S.optional(__S(2763, __c86, 11)),
+        }),
+      ).annotate({ identifier: "NetworkAddressList" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: S.optional(__S(2764, __c86, 12)),
+          macAddress: S.optional(S.String),
+          adapterType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkAdapterDetails" });
+    case 14:
+      return S.Array(__S(2765, __c86, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2766, __c86, 14)),
+          networkAdapters: S.optional(__S(2766, __c86, 14)),
+        }),
+      ).annotate({ identifier: "NetworkAdapterList" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          defaultGw: S.optional(S.String),
+          primaryMacAddress: S.optional(S.String),
+          networkAdapters: S.optional(__S(2767, __c86, 15)),
+          publicIpAddress: S.optional(S.String),
+          primaryIpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkDetails",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          biosManufacturer: S.optional(S.String),
+          biosVersion: S.optional(S.String),
+          smbiosUuid: S.optional(S.String),
+          biosName: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          biosReleaseDate: S.optional(S.String),
+          version: S.optional(S.String),
+          releaseTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BiosDetails" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          cpuSocketCount: S.optional(S.Number),
+          hyperthreading: S.optional(S.String),
+          cpuName: S.optional(S.String),
+          cpuThreadCount: S.optional(S.Number),
+          bios: S.optional(__S(2769, __c86, 17)),
+          firmware: S.optional(S.String),
+          cpuManufacturer: S.optional(S.String),
+          cpuArchitecture: S.optional(S.String),
+          vendor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineArchitectureDetails",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          uuid: S.optional(S.String),
+          freeBytes: S.optional(S.String),
+          fileSystem: S.optional(S.String),
+          subPartitions: S.optional(S.suspend(() => __S(2773, __c86, 21))),
+          capacityBytes: S.optional(S.String),
+          mountPoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskPartition" });
+    case 20:
+      return S.Array(__S(2771, __c86, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2772, __c86, 20)),
+        }),
+      ).annotate({ identifier: "DiskPartitionList" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          partitions: S.optional(__S(2773, __c86, 21)),
+          totalCapacityBytes: S.optional(S.String),
+          freeSpaceBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskPartitionDetails" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          diskLabelType: S.optional(S.String),
+          totalCapacityBytes: S.optional(S.String),
+          interfaceType: S.optional(S.String),
+          diskLabel: S.optional(S.String),
+          hwAddress: S.optional(S.String),
+          freeSpaceBytes: S.optional(S.String),
+          partitions: S.optional(__S(2773, __c86, 21)),
+          totalFreeBytes: S.optional(S.String),
+          status: S.optional(S.String),
+          capacityBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskEntry" });
+    case 24:
+      return S.Array(__S(2775, __c86, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2776, __c86, 24)),
+        }),
+      ).annotate({ identifier: "DiskEntryList" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          hddTotalCapacityBytes: S.optional(S.String),
+          hddTotalFreeBytes: S.optional(S.String),
+          disks: S.optional(__S(2777, __c86, 25)),
+          lsblkJson: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineDiskDetails",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          pid: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          startMode: S.optional(S.String),
+          cmdline: S.optional(S.String),
+          exePath: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RunningService" });
+    case 28:
+      return S.Array(__S(2779, __c86, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(2780, __c86, 28)),
+          entries: S.optional(__S(2780, __c86, 28)),
+        }),
+      ).annotate({ identifier: "RunningServiceList" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          cmdline: S.optional(S.String),
+          pid: S.optional(S.String),
+          user: S.optional(S.String),
+          attributes: S.optional(__S(2016, __c63, 0)),
+          exePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RunningProcess" });
+    case 31:
+      return S.Array(__S(2782, __c86, 30));
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2783, __c86, 31)),
+          processes: S.optional(__S(2783, __c86, 31)),
+        }),
+      ).annotate({ identifier: "RunningProcessList" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          timeZone: S.optional(__S(2785, __c87, 1)),
+          nanos: S.optional(S.Number),
+          utcOffset: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DateTime" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pid: S.optional(S.String),
+          processName: S.optional(S.String),
+          localIpAddress: S.optional(S.String),
+          remoteIpAddress: S.optional(S.String),
+          protocol: S.optional(S.String),
+          state: S.optional(S.String),
+          remotePort: S.optional(S.Number),
+          localPort: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NetworkConnection" });
+    case 4:
+      return S.Array(__S(2787, __c87, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2788, __c87, 4)),
+        }),
+      ).annotate({ identifier: "NetworkConnectionList" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          scanTime: S.optional(S.String),
+          netstatTime: S.optional(__S(2786, __c87, 2)),
+          rawScanResult: S.optional(S.String),
+          connections: S.optional(__S(2789, __c87, 5)),
+          netstat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeNetworkInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          command: S.optional(S.String),
+          fileType: S.optional(S.String),
+          filePath: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpenFileDetails" });
+    case 8:
+      return S.Array(__S(2791, __c87, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2792, __c87, 8)),
+        }),
+      ).annotate({ identifier: "OpenFileList" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          vendor: S.optional(S.String),
+          name: S.optional(S.String),
+          applicationName: S.optional(S.String),
+          installTime: S.optional(S.String),
+          licenses: S.optional(__S(1344, __c42, 0)),
+          time: S.optional(S.String),
+          path: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuestInstalledApplication",
+      });
+    case 11:
+      return S.Array(__S(2794, __c87, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2795, __c87, 11)),
+        }),
+      ).annotate({
+        identifier: "GuestInstalledApplicationList",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          lastBootTime: S.optional(S.String),
+          services: S.optional(__S(2781, __c86, 29)),
+          machineName: S.optional(S.String),
+          processes: S.optional(__S(2784, __c87, 0)),
+          networkInfo: S.optional(__S(2790, __c87, 6)),
+          openFileList: S.optional(__S(2793, __c87, 9)),
+          lastUptime: S.optional(__S(2761, __c86, 9)),
+          domain: S.optional(S.String),
+          installedApps: S.optional(__S(2796, __c87, 12)),
+        }),
+      ).annotate({ identifier: "GuestRuntimeDetails" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.String),
+          hostNames: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "HostsEntry" });
+    case 15:
+      return S.Array(__S(2798, __c87, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2799, __c87, 15)),
+        }),
+      ).annotate({ identifier: "HostsEntryList" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          passno: S.optional(S.Number),
+          vfstype: S.optional(S.String),
+          freq: S.optional(S.Number),
+          mntops: S.optional(S.String),
+          file: S.optional(S.String),
+          spec: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FstabEntry" });
+    case 18:
+      return S.Array(__S(2801, __c87, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2802, __c87, 18)),
+        }),
+      ).annotate({ identifier: "FstabEntryList" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hosts: S.optional(__S(1344, __c42, 0)),
+          exportDirectory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NfsExport" });
+    case 21:
+      return S.Array(__S(2804, __c87, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2805, __c87, 21)),
+        }),
+      ).annotate({ identifier: "NfsExportList" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Selinux" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          hosts: S.optional(__S(2800, __c87, 16)),
+          selinuxMode: S.optional(S.String),
+          fstab: S.optional(__S(2803, __c87, 19)),
+          nfsExports: S.optional(__S(2806, __c87, 22)),
+          issue: S.optional(S.String),
+          selinux: S.optional(__S(2807, __c87, 23)),
+        }),
+      ).annotate({ identifier: "GuestConfigDetails" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          runtime: S.optional(__S(2797, __c87, 13)),
+          config: S.optional(__S(2808, __c87, 24)),
+          osName: S.optional(S.String),
+          version: S.optional(S.String),
+          family: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GuestOsDetails" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          hyperthreading: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenericPlatformDetails" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          hyperthreading: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhysicalPlatformDetails" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          hyperthreading: S.optional(S.String),
+          machineTypeLabel: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsEc2PlatformDetails" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          esxHyperthreading: S.optional(S.String),
+          osid: S.optional(S.String),
+          esxVersion: S.optional(S.String),
+          vcenterVersion: S.optional(S.String),
+          vcenterFolder: S.optional(S.String),
+          vcenterUri: S.optional(S.String),
+          vcenterVmId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmwarePlatformDetails" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          machineTypeLabel: S.optional(S.String),
+          location: S.optional(S.String),
+          hyperthreading: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureVmPlatformDetails" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          genericDetails: S.optional(__S(2810, __c87, 26)),
+          physicalDetails: S.optional(__S(2811, __c87, 27)),
+          awsEc2Details: S.optional(__S(2812, __c87, 28)),
+          vmwareDetails: S.optional(__S(2813, __c87, 29)),
+          azureVmDetails: S.optional(__S(2814, __c87, 30)),
+        }),
+      ).annotate({ identifier: "PlatformDetails" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vcenterFolder: S.optional(S.String),
+          vmNetwork: S.optional(__S(2768, __c86, 16)),
+          vcenterUrl: S.optional(S.String),
+          vmArchitecture: S.optional(__S(2770, __c86, 18)),
+          osName: S.optional(S.String),
+          vmName: S.optional(S.String),
+          coreCount: S.optional(S.Number),
+          createTime: S.optional(S.String),
+          diskPartitions: S.optional(__S(2774, __c86, 22)),
+          osVersion: S.optional(S.String),
+          vmDisks: S.optional(__S(2778, __c86, 26)),
+          guestOs: S.optional(__S(2809, __c87, 25)),
+          osFamily: S.optional(S.String),
+          platform: S.optional(__S(2815, __c87, 31)),
+          memoryMb: S.optional(S.Number),
+          powerState: S.optional(S.String),
+          vmUuid: S.optional(S.String),
+          vcenterVmId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachineDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bios: S.optional(__S(2769, __c86, 17)),
+          hyperthreading: S.optional(S.String),
+          cpuName: S.optional(S.String),
+          cpuArchitecture: S.optional(S.String),
+          cpuManufacturer: S.optional(S.String),
+          firmwareType: S.optional(S.String),
+          cpuSocketCount: S.optional(S.Number),
+          vendor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MachineArchitectureDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          totalCapacityBytes: S.optional(S.String),
+          disks: S.optional(__S(2777, __c86, 25)),
+          rawScanResult: S.optional(S.String),
+          totalFreeBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineDiskDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          publicIpAddress: S.optional(S.String),
+          networkAdapters: S.optional(__S(2767, __c86, 15)),
+          primaryIpAddress: S.optional(S.String),
+          defaultGateway: S.optional(S.String),
+          primaryMacAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineNetworkDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          guestOs: S.optional(__S(2809, __c87, 25)),
+          architecture: S.optional(__S(2817, __c88, 1)),
+          diskPartitions: S.optional(__S(2774, __c86, 22)),
+          machineName: S.optional(S.String),
+          disks: S.optional(__S(2818, __c88, 2)),
+          coreCount: S.optional(S.Number),
+          platform: S.optional(__S(2815, __c87, 31)),
+          network: S.optional(__S(2819, __c88, 3)),
+          createTime: S.optional(S.String),
+          memoryMb: S.optional(S.Number),
+          powerState: S.optional(S.String),
+          uuid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(S.String),
+          traceFlagName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SqlServerTraceFlag" });
+    case 6:
+      return S.Array(__S(2821, __c88, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          featureName: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SqlServerFeature" });
+    case 8:
+      return S.Array(__S(2823, __c88, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          valueInUse: S.optional(S.String),
+          serverFlagName: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SqlServerServerFlag" });
+    case 10:
+      return S.Array(__S(2825, __c88, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          traceFlags: S.optional(__S(2822, __c88, 6)),
+          features: S.optional(__S(2824, __c88, 8)),
+          serverFlags: S.optional(__S(2826, __c88, 10)),
+        }),
+      ).annotate({
+        identifier: "SqlServerDatabaseDeployment",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          hostNames: S.optional(__S(1344, __c42, 0)),
+          primaryMacAddress: S.optional(S.String),
+          ipAddresses: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "DatabaseInstanceNetwork" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          instanceName: S.optional(S.String),
+          network: S.optional(__S(2828, __c88, 12)),
+        }),
+      ).annotate({ identifier: "DatabaseInstance" });
+    case 14:
+      return S.Array(__S(2829, __c88, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          coreLimit: S.optional(S.Number),
+          physicalCoreCount: S.optional(S.Number),
+          diskUsedBytes: S.optional(S.String),
+          coreCount: S.optional(S.Number),
+          instances: S.optional(__S(2830, __c88, 14)),
+          diskAllocatedBytes: S.optional(S.String),
+          memoryLimitBytes: S.optional(S.String),
+          memoryBytes: S.optional(S.String),
+          physicalCoreLimit: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeploymentTopology",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          category: S.optional(S.String),
+          variable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MySqlVariable" });
+    case 17:
+      return S.Array(__S(2832, __c88, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          plugin: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MySqlPlugin" });
+    case 19:
+      return S.Array(__S(2834, __c88, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          numericValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MySqlProperty" });
+    case 21:
+      return S.Array(__S(2836, __c88, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          variables: S.optional(__S(2833, __c88, 17)),
+          resourceGroupsCount: S.optional(S.Number),
+          plugins: S.optional(__S(2835, __c88, 19)),
+          properties: S.optional(__S(2837, __c88, 21)),
+        }),
+      ).annotate({ identifier: "MysqlDatabaseDeployment" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          stringValue: S.optional(S.String),
+          setting: S.optional(S.String),
+          boolValue: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          realValue: S.optional(S.Number),
+          intValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostgreSqlSetting" });
+    case 24:
+      return S.Array(__S(2839, __c88, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          settings: S.optional(__S(2840, __c88, 24)),
+          properties: S.optional(__S(2837, __c88, 21)),
+        }),
+      ).annotate({
+        identifier: "PostgreSqlDatabaseDeployment",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          databaseCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeploymentDetailsAggregatedStats",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          sqlServer: S.optional(__S(2827, __c88, 11)),
+          topology: S.optional(__S(2831, __c88, 15)),
+          mysql: S.optional(__S(2838, __c88, 22)),
+          manualUniqueId: S.optional(S.String),
+          awsRds: S.optional(__S(1984, __c62, 0)),
+          postgresql: S.optional(__S(2841, __c88, 25)),
+          generatedId: S.optional(S.String),
+          edition: S.optional(S.String),
+          aggregatedStats: S.optional(__S(2842, __c88, 26)),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeploymentDetails",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          engine: S.optional(S.String),
+          encryptedTableCount: S.optional(S.Number),
+          tableCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MySqlStorageEngineDetails",
+      });
+    case 29:
+      return S.Array(__S(2844, __c88, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          storageEngines: S.optional(__S(2845, __c88, 29)),
+        }),
+      ).annotate({ identifier: "MySqlSchemaDetails" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          clrObjectCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SqlServerSchemaDetails" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.String),
+          category: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseObjects" });
+    case 1:
+      return S.Array(__S(2848, __c89, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          extension: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostgreSqlExtension" });
+    case 3:
+      return S.Array(__S(2850, __c89, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          foreignTablesCount: S.optional(S.Number),
+          postgresqlExtensions: S.optional(__S(2851, __c89, 3)),
+        }),
+      ).annotate({ identifier: "PostgreSqlSchemaDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          tablesSizeBytes: S.optional(S.String),
+          mysql: S.optional(__S(2846, __c88, 30)),
+          sqlServer: S.optional(__S(2847, __c88, 31)),
+          objects: S.optional(__S(2849, __c89, 1)),
+          schemaName: S.optional(S.String),
+          postgresql: S.optional(__S(2852, __c89, 4)),
+        }),
+      ).annotate({ identifier: "DatabaseSchema" });
+    case 6:
+      return S.Array(__S(2853, __c89, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          generatedId: S.optional(S.String),
+          manualUniqueId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseDetailsParentDatabaseDeployment",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          schemas: S.optional(__S(2854, __c89, 6)),
+          databaseName: S.optional(S.String),
+          allocatedStorageBytes: S.optional(S.String),
+          parentDatabaseDeployment: S.optional(__S(2855, __c89, 7)),
+        }),
+      ).annotate({ identifier: "DatabaseDetails" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.optional(S.String),
+          additionalInformation: S.optional(__S(1344, __c42, 0)),
+          defaultMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenericInsight" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          softwareFamily: S.optional(S.String),
+          softwareName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DetectedSoftware" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          detectedSoftware: S.optional(__S(2881, __c90, 1)),
+        }),
+      ).annotate({ identifier: "SoftwareInsight" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          sizeGb: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ComputeStorageDescriptor" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          zoneAvailability: S.optional(S.String),
+          version: S.optional(S.String),
+          storage: S.optional(__S(2883, __c90, 3)),
+          logicalCoreCount: S.optional(S.Number),
+          backupStorageGb: S.optional(S.Number),
+          egressGbPerMonth: S.optional(S.String),
+          smtEnabled: S.optional(S.Boolean),
+          edition: S.optional(S.String),
+          memoryMb: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudSqlForSqlServerShape",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          memoryMb: S.optional(S.Number),
+          version: S.optional(S.String),
+          storage: S.optional(__S(2883, __c90, 3)),
+          egressGbPerMonth: S.optional(S.String),
+          zoneAvailability: S.optional(S.String),
+          edition: S.optional(S.String),
+          logicalCoreCount: S.optional(S.Number),
+          backupStorageGb: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudSqlForPostgreSqlShape",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          logicalCoreCount: S.optional(S.Number),
+          storage: S.optional(__S(2883, __c90, 3)),
+          version: S.optional(S.String),
+          edition: S.optional(S.String),
+          zoneAvailability: S.optional(S.String),
+          memoryMb: S.optional(S.Number),
+          backupStorageGb: S.optional(S.Number),
+          egressGbPerMonth: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudSqlForMySqlShape" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cloudSqlShape: S.optional(__S(2884, __c90, 4)),
+          cloudSqlForPostgresqlShape: S.optional(__S(2885, __c90, 5)),
+          cloudSqlForMysqlShape: S.optional(__S(2886, __c90, 6)),
+        }),
+      ).annotate({
+        identifier: "CloudDatabaseMigrationTarget",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          associatedObjectType: S.optional(S.String),
+          associatedValue: S.optional(S.String),
+          category: S.optional(S.String),
+          associatedObject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueCompatibilityIssue" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          compatibilityIssue: S.optional(__S(2888, __c90, 8)),
+          issueCode: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Issue" });
+    case 10:
+      return S.Array(__S(2889, __c90, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          fitLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FitDescriptor" });
+    case 12:
+      return S.Array(__S(2883, __c90, 3));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          logicalCoreCount: S.optional(S.Number),
+          machineType: S.optional(S.String),
+          physicalCoreCount: S.optional(S.Number),
+          storage: S.optional(__S(2892, __c90, 12)),
+          smtEnabled: S.optional(S.Boolean),
+          series: S.optional(S.String),
+          memoryMb: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineShapeDescriptor",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          shape: S.optional(__S(2893, __c90, 13)),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineMigrationTarget",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          computeEngineSoleTenantTarget: S.optional(__S(1984, __c62, 0)),
+          cloudDatabaseTarget: S.optional(__S(2887, __c90, 7)),
+          vmwareEngineTarget: S.optional(__S(1984, __c62, 0)),
+          issues: S.optional(__S(2890, __c90, 10)),
+          gkeTarget: S.optional(__S(1984, __c62, 0)),
+          fit: S.optional(__S(2891, __c90, 11)),
+          computeEngineTarget: S.optional(__S(2894, __c90, 14)),
+        }),
+      ).annotate({ identifier: "MigrationInsight" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          genericInsight: S.optional(__S(2880, __c90, 0)),
+          softwareInsight: S.optional(__S(2882, __c90, 2)),
+          migrationInsight: S.optional(__S(2895, __c90, 15)),
+        }),
+      ).annotate({ identifier: "Insight" });
+    case 17:
+      return S.Array(__S(2896, __c90, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          insights: S.optional(__S(2897, __c90, 17)),
+        }),
+      ).annotate({ identifier: "InsightList" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          median: S.optional(S.Number),
+          peak: S.optional(S.Number),
+          average: S.optional(S.Number),
+          ninteyFifthPercentile: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DailyResourceUsageAggregationStats",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          utilizationPercentage: S.optional(__S(2899, __c90, 19)),
+        }),
+      ).annotate({
+        identifier: "DailyResourceUsageAggregationMemory",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          ingressBps: S.optional(__S(2899, __c90, 19)),
+          egressBps: S.optional(__S(2899, __c90, 19)),
+        }),
+      ).annotate({
+        identifier: "DailyResourceUsageAggregationNetwork",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          iops: S.optional(__S(2899, __c90, 19)),
+          writeIops: S.optional(__S(2899, __c90, 19)),
+          readIops: S.optional(__S(2899, __c90, 19)),
+        }),
+      ).annotate({
+        identifier: "DailyResourceUsageAggregationDisk",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          memory: S.optional(__S(2900, __c90, 20)),
+          network: S.optional(__S(2901, __c90, 21)),
+          date: S.optional(__S(2761, __c86, 9)),
+          disk: S.optional(__S(2902, __c90, 22)),
+          cpu: S.optional(__S(2900, __c90, 20)),
+        }),
+      ).annotate({
+        identifier: "DailyResourceUsageAggregation",
+      });
+    case 24:
+      return S.Array(__S(2903, __c90, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          dailyResourceUsageAggregations: S.optional(__S(2904, __c90, 24)),
+        }),
+      ).annotate({ identifier: "AssetPerformanceData" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          awsS3BucketDetails: S.optional(__S(2757, __c86, 5)),
+          awsEcrRepositoryDetails: S.optional(__S(1984, __c62, 0)),
+          awsSnsTopicDetails: S.optional(__S(1984, __c62, 0)),
+          awsCloudFrontDistributionDetails: S.optional(__S(1984, __c62, 0)),
+          awsEbsVolumeDetails: S.optional(__S(1984, __c62, 0)),
+          awsKinesisStreamDetails: S.optional(__S(1984, __c62, 0)),
+          insightList: S.optional(__S(2898, __c90, 18)),
+          hostingProviderDetails: S.optional(__S(2760, __c86, 8)),
+          awsAthenaWorkGroupDetails: S.optional(__S(1984, __c62, 0)),
+          hidden: S.optional(S.Boolean),
+          awsRedshiftDetails: S.optional(__S(1984, __c62, 0)),
+          structuredAttributes: S.optional(__S(1408, __c44, 0)),
+          awsAutoscalingGroupDetails: S.optional(__S(1984, __c62, 0)),
+          updateTime: S.optional(S.String),
+          awsElasticIpAddressDetails: S.optional(__S(1984, __c62, 0)),
+          sources: S.optional(__S(1344, __c42, 0)),
+          hideTime: S.optional(S.String),
+          awsBatchComputeEnvironmentDetails: S.optional(__S(1984, __c62, 0)),
+          awsDynamodbTableDetails: S.optional(__S(1984, __c62, 0)),
+          awsEksClusterDetails: S.optional(__S(1984, __c62, 0)),
+          awsEcsClusterDetails: S.optional(__S(1984, __c62, 0)),
+          awsInternetGatewayDetails: S.optional(__S(1984, __c62, 0)),
+          awsApiGatewayRestApiDetails: S.optional(__S(1984, __c62, 0)),
+          awsElbLoadBalancerDetails: S.optional(__S(1984, __c62, 0)),
+          awsApplicationLoadBalancerDetails: S.optional(__S(1984, __c62, 0)),
+          performanceData: S.optional(__S(2905, __c90, 25)),
+          virtualMachineDetails: S.optional(__S(2816, __c88, 0)),
+          awsAppSyncGraphqlApiDetails: S.optional(__S(1984, __c62, 0)),
+          awsLambdaFunctionDetails: S.optional(__S(1984, __c62, 0)),
+          awsElasticNetworkInterfaceDetails: S.optional(__S(1984, __c62, 0)),
+          title: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
+          awsEfsFileSystemDetails: S.optional(__S(1984, __c62, 0)),
+          hideReason: S.optional(S.String),
+          machineDetails: S.optional(__S(2820, __c88, 4)),
+          awsGlueJobDetails: S.optional(__S(1984, __c62, 0)),
+          awsNatGatewayDetails: S.optional(__S(1984, __c62, 0)),
+          awsEmrClusterDetails: S.optional(__S(1984, __c62, 0)),
+          attributes: S.optional(__S(2016, __c63, 0)),
+          name: S.optional(S.String),
+          awsRoute53HostedZoneDetails: S.optional(__S(1984, __c62, 0)),
+          awsElasticacheClusterDetails: S.optional(__S(1984, __c62, 0)),
+          assignedGroups: S.optional(__S(1344, __c42, 0)),
+          databaseDeploymentDetails: S.optional(__S(2843, __c88, 27)),
+          awsFirehoseDetails: S.optional(__S(1984, __c62, 0)),
+          databaseDetails: S.optional(__S(2856, __c89, 8)),
+          createTime: S.optional(S.String),
+          awsVpcDetails: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "Asset" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2906, __c90, 26));
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(368, __c46, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2976, __c93, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8687,11 +8725,27 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsAssetsExportJobsRequest",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RunAssetsExportJobRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(368, __c46, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2976, __c93, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8702,11 +8756,15 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsImportJobsRequest",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(368, __c46, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2976, __c93, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8717,20 +8775,24 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsReportConfigsReportsReportExportJobsRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          errors: S.optional(__S(186, __c23, 2)),
+          errors: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "SendDiscoveryClientHeartbeatRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(372, __c46, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3072, __c96, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8741,13 +8803,17 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "SendHeartbeatProjectsLocationsDiscoveryClientsRequest",
       });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8758,11 +8824,15 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UpdateSettingsProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(368, __c46, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2976, __c93, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8775,7 +8845,160 @@ function __c46(j: number): any {
       });
   }
 }
-
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+name}:cancel",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetsExportJobId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3269, __c102, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/assetsExportJobs",
+            baseUrl: "https://migrationcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAssetsExportJobsRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignedUriDestination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          file: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignedUri" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          columnsCount: S.optional(S.Number),
+          signedUri: S.optional(__S(3233, __c101, 1)),
+          rowCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CsvOutputFile" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          signedUri: S.optional(__S(3233, __c101, 1)),
+        }),
+      ).annotate({ identifier: "XlsxOutputFile" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          csvOutputFile: S.optional(__S(3234, __c101, 2)),
+          xlsxOutputFile: S.optional(__S(3235, __c101, 3)),
+          fileSizeBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OutputFile" });
+    case 5:
+      return S.Array(__S(3236, __c101, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(3237, __c101, 5)),
+        }),
+      ).annotate({ identifier: "OutputFileList" });
+    case 7:
+      return S.Array(__S(3233, __c101, 1));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          signedUris: S.optional(__S(3239, __c101, 7)),
+        }),
+      ).annotate({ identifier: "SignedUris" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetsExportJobExportCondition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(1441, __c45, 1)),
+          outputFiles: S.optional(__S(3238, __c101, 6)),
+          signedUris: S.optional(__S(3240, __c101, 8)),
+        }),
+      ).annotate({
+        identifier: "AssetsExportJobExecutionResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          requestedAssetCount: S.optional(S.Number),
+          result: S.optional(__S(3265, __c102, 1)),
+          expireTime: S.optional(S.String),
+          executionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetsExportJobExecution" });
+    case 3:
+      return S.Array(__S(3266, __c102, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AssetsExportJobPerformanceData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          signedUriDestination: S.optional(__S(3232, __c101, 0)),
+          name: S.optional(S.String),
+          labels: S.optional(__S(2016, __c63, 0)),
+          condition: S.optional(__S(3264, __c102, 0)),
+          networkDependencies: S.optional(__S(1984, __c62, 0)),
+          recentExecutions: S.optional(__S(3267, __c102, 3)),
+          updateTime: S.optional(S.String),
+          showHidden: S.optional(S.Boolean),
+          performanceData: S.optional(__S(3268, __c102, 4)),
+          inventory: S.optional(__S(1984, __c62, 0)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetsExportJob" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -158,7 +158,7 @@ export const createDeposit: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateDepositRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateDepositResponse>,
+  output: __S(10, __c0, 10) as any as S.Schema<CreateDepositResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -225,34 +225,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDepositResponseMethodsCryptoItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           bank: S.NullOr(__S(4, __c0, 4)),
-          crypto: __S(8, __c1, 0),
+          crypto: __S(8, __c0, 8),
         }),
       ).annotate({
         identifier: "CreateDepositResponseMethods",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
           amount: S.optional(S.String),
           hosted_url: S.NullOr(S.String),
-          methods: __S(9, __c1, 1),
+          methods: __S(9, __c0, 9),
           object: S.String,
         }),
       ).annotate({ identifier: "CreateDepositResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

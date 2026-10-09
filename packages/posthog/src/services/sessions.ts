@@ -60,8 +60,8 @@ export const getSessionsValue: API.OperationMethod<
   GetSessionsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSessionsValueRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetSessionsValueResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetSessionsValueRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetSessionsValueResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -88,7 +88,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetSessionsPropertyDefinitionResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -96,13 +100,12 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/sessions/values/", code: 200 }),
         ),
       ).annotate({ identifier: "GetSessionsValueRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetSessionsValueResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -507,8 +507,8 @@ export const createSavingsPlan: API.OperationMethod<
   CreateSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateSavingsPlanRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateSavingsPlanResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateSavingsPlanRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateSavingsPlanResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -535,8 +535,8 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
   DeleteQueuedSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteQueuedSavingsPlanRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteQueuedSavingsPlanResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteQueuedSavingsPlanRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteQueuedSavingsPlanResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -562,8 +562,8 @@ export const describeSavingsPlanRates: API.OperationMethod<
   DescribeSavingsPlanRatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DescribeSavingsPlanRatesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DescribeSavingsPlanRatesResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DescribeSavingsPlanRatesRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<DescribeSavingsPlanRatesResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -583,8 +583,8 @@ export const describeSavingsPlans: API.OperationMethod<
   DescribeSavingsPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DescribeSavingsPlansRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DescribeSavingsPlansResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DescribeSavingsPlansRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<DescribeSavingsPlansResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -604,8 +604,8 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   DescribeSavingsPlansOfferingRatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DescribeSavingsPlansOfferingRatesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DescribeSavingsPlansOfferingRatesRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -625,8 +625,8 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   DescribeSavingsPlansOfferingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DescribeSavingsPlansOfferingsResponse>,
+  input: __S(129, __c16, 1) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DescribeSavingsPlansOfferingsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -647,8 +647,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -670,8 +670,8 @@ export const returnSavingsPlan: API.OperationMethod<
   ReturnSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ReturnSavingsPlanRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ReturnSavingsPlanResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ReturnSavingsPlanRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ReturnSavingsPlanResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -698,8 +698,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -725,8 +725,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -737,8 +737,77 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
     case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(56, __c7, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          savingsPlanId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ReturnSavingsPlan" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ReturnSavingsPlanRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: __S(56, __c7, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: __S(88, __c11, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           savingsPlanOfferingId: S.String,
@@ -746,7 +815,7 @@ function __c0(j: number): any {
           upfrontPaymentAmount: S.optional(S.String),
           purchaseTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateSavingsPlan" }),
@@ -758,11 +827,25 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSavingsPlanRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ savingsPlanId: S.optional(S.String) })).annotate({
         identifier: "CreateSavingsPlanResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ savingsPlanId: S.String }).pipe(
           T.all(
@@ -777,30 +860,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteQueuedSavingsPlanRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteQueuedSavingsPlanResponse",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "SavingsPlanRateFilter" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           savingsPlanId: S.String,
-          filters: S.optional(__S(7, __c0, 7)),
+          filters: S.optional(__S(81, __c10, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -821,7 +893,7 @@ function __c1(j: number): any {
         S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "SavingsPlanRateProperty" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -832,32 +904,50 @@ function __c1(j: number): any {
           serviceCode: S.optional(S.String),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "SavingsPlanRate" });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           savingsPlanId: S.optional(S.String),
-          searchResults: S.optional(__S(12, __c1, 4)),
+          searchResults: S.optional(__S(76, __c9, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeSavingsPlanRatesResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(88, __c11, 0)) }),
+      ).annotate({ identifier: "SavingsPlanRateFilter" });
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          savingsPlanArns: S.optional(__S(5, __c0, 5)),
-          savingsPlanIds: S.optional(__S(5, __c0, 5)),
+          savingsPlanArns: S.optional(__S(88, __c11, 0)),
+          savingsPlanIds: S.optional(__S(88, __c11, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          states: S.optional(__S(14, __c1, 6)),
-          filters: S.optional(__S(7, __c0, 7)),
+          states: S.optional(__S(104, __c13, 0)),
+          filters: S.optional(__S(81, __c10, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/DescribeSavingsPlans" }),
@@ -871,11 +961,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeSavingsPlansRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           offeringId: S.optional(S.String),
@@ -889,46 +975,45 @@ function __c2(j: number): any {
           ec2InstanceFamily: S.optional(S.String),
           savingsPlanType: S.optional(S.String),
           paymentOption: S.optional(S.String),
-          productTypes: S.optional(__S(14, __c1, 6)),
+          productTypes: S.optional(__S(104, __c13, 0)),
           currency: S.optional(S.String),
           commitment: S.optional(S.String),
           upfrontPaymentAmount: S.optional(S.String),
           recurringPaymentAmount: S.optional(S.String),
           termDurationInSeconds: S.optional(S.Number),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
           returnableUntil: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlan" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ savingsPlans: S.optional(__S(17, __c2, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ savingsPlans: S.optional(__S(98, __c12, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSavingsPlansResponse",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "SavingsPlanOfferingRateFilterElement",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          savingsPlanOfferingIds: S.optional(__S(5, __c0, 5)),
-          savingsPlanPaymentOptions: S.optional(__S(14, __c1, 6)),
-          savingsPlanTypes: S.optional(__S(14, __c1, 6)),
-          products: S.optional(__S(14, __c1, 6)),
-          serviceCodes: S.optional(__S(14, __c1, 6)),
-          usageTypes: S.optional(__S(5, __c0, 5)),
-          operations: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(20, __c2, 4)),
+          savingsPlanOfferingIds: S.optional(__S(88, __c11, 0)),
+          savingsPlanPaymentOptions: S.optional(__S(104, __c13, 0)),
+          savingsPlanTypes: S.optional(__S(104, __c13, 0)),
+          products: S.optional(__S(104, __c13, 0)),
+          serviceCodes: S.optional(__S(104, __c13, 0)),
+          usageTypes: S.optional(__S(88, __c11, 0)),
+          operations: S.optional(__S(88, __c11, 0)),
+          filters: S.optional(__S(121, __c15, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -944,7 +1029,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DescribeSavingsPlansOfferingRatesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           offeringId: S.optional(S.String),
@@ -957,58 +1042,73 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ParentSavingsPlanOffering",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({
         identifier: "SavingsPlanOfferingRateProperty",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(114, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          savingsPlanOffering: S.optional(__S(22, __c2, 6)),
+          savingsPlanOffering: S.optional(__S(113, __c14, 1)),
           rate: S.optional(S.String),
           unit: S.optional(S.String),
           productType: S.optional(S.String),
           serviceCode: S.optional(S.String),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "SavingsPlanOfferingRate" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(116, __c14, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(__S(26, __c3, 2)),
+          searchResults: S.optional(__S(117, __c14, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeSavingsPlansOfferingRatesResponse",
       });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          offeringIds: S.optional(__S(5, __c0, 5)),
-          paymentOptions: S.optional(__S(14, __c1, 6)),
+          name: S.optional(S.String),
+          values: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "SavingsPlanOfferingRateFilterElement",
+      });
+    case 1:
+      return S.Array(__S(120, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          offeringIds: S.optional(__S(88, __c11, 0)),
+          paymentOptions: S.optional(__S(104, __c13, 0)),
           productType: S.optional(S.String),
-          planTypes: S.optional(__S(14, __c1, 6)),
-          durations: S.optional(__S(28, __c3, 4)),
-          currencies: S.optional(__S(14, __c1, 6)),
-          descriptions: S.optional(__S(5, __c0, 5)),
-          serviceCodes: S.optional(__S(5, __c0, 5)),
-          usageTypes: S.optional(__S(5, __c0, 5)),
-          operations: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(20, __c2, 4)),
+          planTypes: S.optional(__S(104, __c13, 0)),
+          durations: S.optional(__S(128, __c16, 0)),
+          currencies: S.optional(__S(104, __c13, 0)),
+          descriptions: S.optional(__S(88, __c11, 0)),
+          serviceCodes: S.optional(__S(88, __c11, 0)),
+          usageTypes: S.optional(__S(88, __c11, 0)),
+          operations: S.optional(__S(88, __c11, 0)),
+          filters: S.optional(__S(121, __c15, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -1024,23 +1124,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeSavingsPlansOfferingsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({
         identifier: "SavingsPlanOfferingProperty",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(130, __c16, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           offeringId: S.optional(S.String),
-          productTypes: S.optional(__S(14, __c1, 6)),
+          productTypes: S.optional(__S(104, __c13, 0)),
           planType: S.optional(S.String),
           description: S.optional(S.String),
           paymentOption: S.optional(S.String),
@@ -1049,78 +1145,22 @@ function __c4(j: number): any {
           serviceCode: S.optional(S.String),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
+          properties: S.optional(__S(131, __c16, 3)),
         }),
       ).annotate({ identifier: "SavingsPlanOffering" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(132, __c16, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(__S(33, __c4, 1)),
+          searchResults: S.optional(__S(133, __c16, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeSavingsPlansOfferingsResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          savingsPlanId: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/ReturnSavingsPlan" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ReturnSavingsPlanRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(5, __c0, 5) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

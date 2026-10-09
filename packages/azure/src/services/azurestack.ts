@@ -678,8 +678,8 @@ export const CreateCustomerSubscription: API.OperationMethod<
   CreateCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateCustomerSubscriptionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateCustomerSubscriptionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCustomerSubscriptionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCustomerSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const CreateDeploymentLicense: API.OperationMethod<
   CreateDeploymentLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateDeploymentLicenseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeploymentLicenseResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateDeploymentLicenseRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<DeploymentLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const DeleteCustomerSubscription: API.OperationMethod<
   DeleteCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteCustomerSubscriptionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteCustomerSubscriptionResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteCustomerSubscriptionRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteCustomerSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const DeleteRegistration: API.OperationMethod<
   DeleteRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteRegistrationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteRegistrationResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteRegistrationRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DeleteRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -738,8 +738,8 @@ export const EnableRegistrationRemoteManagement: API.OperationMethod<
   EnableRegistrationRemoteManagementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<EnableRegistrationRemoteManagementRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EnableRegistrationRemoteManagementResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<EnableRegistrationRemoteManagementRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<EnableRegistrationRemoteManagementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,8 @@ export const GetCloudManifestFile: API.OperationMethod<
   GetCloudManifestFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetCloudManifestFileRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCloudManifestFileResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetCloudManifestFileRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<GetCloudManifestFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const GetCustomerSubscription: API.OperationMethod<
   GetCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetCustomerSubscriptionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetCustomerSubscriptionResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetCustomerSubscriptionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCustomerSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -783,8 +783,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetProductRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetProductResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetProductRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -798,8 +798,8 @@ export const GetProductProduct: API.OperationMethod<
   GetProductProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetProductProductRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetProductProductResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetProductProductRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetProductProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -813,8 +813,8 @@ export const GetProductProducts: API.OperationMethod<
   GetProductProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetProductProductsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ProductList>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetProductProductsRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<ProductList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -828,8 +828,8 @@ export const GetRegistration: API.OperationMethod<
   GetRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetRegistrationRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetRegistrationResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetRegistrationRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -843,8 +843,8 @@ export const GetRegistrationActivationKey: API.OperationMethod<
   GetRegistrationActivationKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetRegistrationActivationKeyRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ActivationKeyResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetRegistrationActivationKeyRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ActivationKeyResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const ListCloudManifestFile: API.OperationMethod<
   ListCloudManifestFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListCloudManifestFileRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListCloudManifestFileResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListCloudManifestFileRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListCloudManifestFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -873,8 +873,8 @@ export const ListCustomerSubscriptions: API.OperationMethod<
   ListCustomerSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListCustomerSubscriptionsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CustomerSubscriptionList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListCustomerSubscriptionsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<CustomerSubscriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -888,8 +888,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OperationList>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -903,8 +903,8 @@ export const ListProductDetails: API.OperationMethod<
   ListProductDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListProductDetailsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ExtendedProduct>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListProductDetailsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ExtendedProduct>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -918,8 +918,8 @@ export const ListProductProducts: API.OperationMethod<
   ListProductProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListProductProductsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ProductList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListProductProductsRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<ProductList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const ListProducts: API.OperationMethod<
   ListProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListProductsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ProductList>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListProductsRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<ProductList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const ListRegistrationBySubscription: API.OperationMethod<
   ListRegistrationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListRegistrationBySubscriptionRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<RegistrationList>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListRegistrationBySubscriptionRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<RegistrationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,8 @@ export const ListRegistrations: API.OperationMethod<
   ListRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListRegistrationsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<RegistrationList>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListRegistrationsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<RegistrationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const RegistrationsCreateOrUpdate: API.OperationMethod<
   RegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<RegistrationsCreateOrUpdateRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RegistrationsCreateOrUpdateResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<RegistrationsCreateOrUpdateRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<RegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const UpdateRegistration: API.OperationMethod<
   UpdateRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateRegistrationRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateRegistrationResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateRegistrationRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<UpdateRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const UploadProductLog: API.OperationMethod<
   UploadProductLogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UploadProductLogRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ProductLog>,
+  input: __S(168, __c21, 0) as any as S.Schema<UploadProductLogRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ProductLog>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1021,20 +1021,12 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerSubscriptionProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           registrationName: S.String.pipe(T.Label()),
           customerSubscriptionName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1046,19 +1038,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCustomerSubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "CreateCustomerSubscriptionResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerSubscriptionProperties",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1074,18 +1086,363 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDeploymentLicenseRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          temporaryLicenseChain: S.optional(__S(4, __c0, 4)),
+          temporaryLicenseChain: S.optional(__S(25, __c3, 1)),
           signature: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeploymentLicenseResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRegistrationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(40, __c5, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({ identifier: "GetRegistrationResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String),
+          cloudId: S.optional(S.String),
+          billingModel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegistrationProperties" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/getactivationkey",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRegistrationActivationKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activationKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivationKeyResult" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AzureStack/cloudManifestFiles",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCloudManifestFileRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCustomerSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({ identifier: "CustomerSubscription" });
+    case 2:
+      return S.Array(__S(65, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(66, __c8, 2)),
+        }),
+      ).annotate({ identifier: "CustomerSubscriptionList" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AzureStack/operations",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Display" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(73, __c9, 1)),
+          origin: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(75, __c9, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationList" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listDetails",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProductDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Uri" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          operatingSystem: S.optional(S.String),
+          sourceBlobSasUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OsDiskImage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lun: S.optional(S.Number),
+          sourceBlobSasUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataDiskImage" });
+    case 4:
+      return S.Array(__S(83, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          computeRole: S.optional(S.String),
+          isSystemExtension: S.optional(S.Boolean),
+          sourceBlob: S.optional(__S(81, __c10, 1)),
+          supportMultipleExtensions: S.optional(S.Boolean),
+          version: S.optional(S.String),
+          vmOsType: S.optional(S.String),
+          vmScaleSetEnabled: S.optional(S.Boolean),
+          osDiskImage: S.optional(__S(82, __c10, 2)),
+          dataDiskImages: S.optional(__S(84, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "ExtendedProductProperties",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          galleryPackageBlobSasUri: S.optional(S.String),
+          productKind: S.optional(S.String),
+          properties: S.optional(__S(85, __c10, 5)),
+        }),
+      ).annotate({ identifier: "ExtendedProduct" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listProducts",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProductProductsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListProductsRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/registrations",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegistrationBySubscriptionRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(40, __c5, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({ identifier: "Registration" });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(113, __c14, 1)),
+        }),
+      ).annotate({ identifier: "RegistrationList" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListRegistrationsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1103,13 +1460,139 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteCustomerSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCustomerSubscriptionResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+          properties: __S(152, __c19, 0),
+          location: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegistrationsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(40, __c5, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({
+        identifier: "RegistrationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registrationToken: S.String,
+        }),
+      ).annotate({
+        identifier: "RegistrationParameterProperties",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+          properties: __S(152, __c19, 0),
+          location: S.String,
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRegistrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(40, __c5, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateRegistrationResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          registrationName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UploadProductLogRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          productId: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          registrationName: S.optional(S.String),
+          resourceGroupName: S.optional(S.String),
+          operation: S.optional(S.String),
+          startDate: S.optional(S.String),
+          endDate: S.optional(S.String),
+          status: S.optional(S.String),
+          error: S.optional(S.String),
+          details: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductLog" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1132,7 +1615,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRegistrationResponse",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1149,7 +1636,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EnableRegistrationRemoteManagementRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           verificationVersion: S.String.pipe(T.Label()),
@@ -1165,7 +1656,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCloudManifestFileRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customCloudArmEndpoint: S.optional(S.String),
@@ -1174,40 +1669,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudManifestFileEnvironmentEndpoints",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           externalDsmsCertificates: S.optional(S.String),
           customCloudVerificationKey: S.optional(S.String),
-          customEnvironmentEndpoints: S.optional(__S(12, __c1, 4)),
+          customEnvironmentEndpoints: S.optional(__S(200, __c25, 0)),
         }),
       ).annotate({
         identifier: "CloudManifestFileDeploymentData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deploymentData: S.optional(__S(13, __c1, 5)),
+          deploymentData: S.optional(__S(201, __c25, 1)),
           signature: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CloudManifestFileProperties",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(202, __c25, 2)),
         }),
       ).annotate({
         identifier: "GetCloudManifestFileResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1227,7 +1722,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetCustomerSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1243,7 +1742,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProductRequest" });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           large: S.optional(S.String),
@@ -1253,37 +1756,33 @@ function __c2(j: number): any {
           hero: S.optional(S.String),
         }),
       ).annotate({ identifier: "IconUris" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductLink" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductProperties" });
-    case 6:
+    case 4:
       return S.Array(S.String);
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           isCompatible: S.optional(S.Boolean),
           message: S.optional(S.String),
           description: S.optional(S.String),
-          issues: S.optional(__S(22, __c2, 6)),
+          issues: S.optional(__S(228, __c28, 4)),
         }),
       ).annotate({ identifier: "Compatibility" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -1296,27 +1795,35 @@ function __c3(j: number): any {
           billingPartNumber: S.optional(S.String),
           vmExtensionType: S.optional(S.String),
           galleryItemIdentity: S.optional(S.String),
-          iconUris: S.optional(__S(18, __c2, 2)),
-          links: S.optional(__S(20, __c2, 4)),
+          iconUris: S.optional(__S(224, __c28, 0)),
+          links: S.optional(__S(226, __c28, 2)),
           legalTerms: S.optional(S.String),
           privacyPolicy: S.optional(S.String),
           payloadLength: S.optional(S.Number),
           productKind: S.optional(S.String),
-          productProperties: S.optional(__S(21, __c2, 5)),
-          compatibility: S.optional(__S(23, __c2, 7)),
+          productProperties: S.optional(__S(227, __c28, 3)),
+          compatibility: S.optional(__S(229, __c28, 5)),
         }),
       ).annotate({ identifier: "ProductNestedProperties" });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(230, __c28, 6)),
         }),
       ).annotate({ identifier: "GetProductResponse" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1332,19 +1839,23 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProductProductRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(230, __c28, 6)),
         }),
       ).annotate({
         identifier: "GetProductProductResponse",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1362,437 +1873,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProductProductsRequest",
       });
-    case 5:
-      return S.Array(__S(25, __c3, 1));
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(232, __c29, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(29, __c3, 5)),
+          value: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "ProductList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRegistrationRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.String),
-          cloudId: S.optional(S.String),
-          billingModel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegistrationProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32, __c4, 0)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "GetRegistrationResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/getactivationkey",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRegistrationActivationKeyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activationKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivationKeyResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AzureStack/cloudManifestFiles",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCloudManifestFileRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCustomerSubscriptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CustomerSubscription" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "CustomerSubscriptionList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AzureStack/operations",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Display" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(43, __c5, 3)),
-          origin: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(45, __c5, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listDetails",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProductDetailsRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Uri" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operatingSystem: S.optional(S.String),
-          sourceBlobSasUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OsDiskImage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lun: S.optional(S.Number),
-          sourceBlobSasUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataDiskImage" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          computeRole: S.optional(S.String),
-          isSystemExtension: S.optional(S.Boolean),
-          sourceBlob: S.optional(__S(48, __c6, 0)),
-          supportMultipleExtensions: S.optional(S.Boolean),
-          version: S.optional(S.String),
-          vmOsType: S.optional(S.String),
-          vmScaleSetEnabled: S.optional(S.Boolean),
-          osDiskImage: S.optional(__S(49, __c6, 1)),
-          dataDiskImages: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "ExtendedProductProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          galleryPackageBlobSasUri: S.optional(S.String),
-          productKind: S.optional(S.String),
-          properties: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "ExtendedProduct" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listProducts",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProductProductsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListProductsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/registrations",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegistrationBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32, __c4, 0)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Registration" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "RegistrationList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRegistrationsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          registrationToken: S.String,
-        }),
-      ).annotate({
-        identifier: "RegistrationParameterProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-          properties: __S(61, __c7, 5),
-          location: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegistrationsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32, __c4, 0)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "RegistrationsCreateOrUpdateResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-          properties: __S(61, __c7, 5),
-          location: S.String,
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRegistrationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32, __c4, 0)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateRegistrationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          registrationName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UploadProductLogRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          productId: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          registrationName: S.optional(S.String),
-          resourceGroupName: S.optional(S.String),
-          operation: S.optional(S.String),
-          startDate: S.optional(S.String),
-          endDate: S.optional(S.String),
-          status: S.optional(S.String),
-          error: S.optional(S.String),
-          details: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductLog" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

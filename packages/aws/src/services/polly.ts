@@ -205,7 +205,7 @@ export class ThrottlingException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       throttlingReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(33, __c4, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "ThrottlingReasonList",
         }),
       ),
@@ -236,7 +236,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(31, __c3, 7)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(17, __c1, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -683,8 +683,8 @@ export const deleteLexicon: API.OperationMethod<
   DeleteLexiconError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteLexiconInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteLexiconOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteLexiconInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteLexiconOutput>,
   errors: [LexiconNotFoundException, ServiceFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -723,8 +723,8 @@ export const describeVoices: API.OperationMethod<
   DescribeVoicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DescribeVoicesInput>,
-  output: __S(6, __c0, 6) as any as S.Schema<DescribeVoicesOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<DescribeVoicesInput>,
+  output: __S(67, __c4, 3) as any as S.Schema<DescribeVoicesOutput>,
   errors: [InvalidNextTokenException, ServiceFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -742,8 +742,8 @@ export const getLexicon: API.OperationMethod<
   GetLexiconError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetLexiconInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetLexiconOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetLexiconInput>,
+  output: __S(98, __c6, 2) as any as S.Schema<GetLexiconOutput>,
   errors: [LexiconNotFoundException, ServiceFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -767,8 +767,8 @@ export const getSpeechSynthesisTask: API.OperationMethod<
   GetSpeechSynthesisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetSpeechSynthesisTaskInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetSpeechSynthesisTaskOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetSpeechSynthesisTaskInput>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetSpeechSynthesisTaskOutput>,
   errors: [InvalidTaskIdException, ServiceFailureException, SynthesisTaskNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -785,8 +785,8 @@ export const listLexicons: API.OperationMethod<
   ListLexiconsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListLexiconsInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListLexiconsOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListLexiconsInput>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListLexiconsOutput>,
   errors: [InvalidNextTokenException, ServiceFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -809,8 +809,8 @@ export const listSpeechSynthesisTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListSpeechSynthesisTasksInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListSpeechSynthesisTasksOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListSpeechSynthesisTasksInput>,
+  output: __S(210, __c13, 2) as any as S.Schema<ListSpeechSynthesisTasksOutput>,
   errors: [InvalidNextTokenException, ServiceFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -846,8 +846,8 @@ export const putLexicon: API.OperationMethod<
   PutLexiconError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<PutLexiconInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutLexiconOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<PutLexiconInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<PutLexiconOutput>,
   errors: [
     InvalidLexiconException,
     LexiconSizeExceededException,
@@ -883,8 +883,8 @@ export const startSpeechSynthesisStream: API.OperationMethod<
   StartSpeechSynthesisStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<StartSpeechSynthesisStreamInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<StartSpeechSynthesisStreamOutput>,
+  input: __S(244, __c15, 4) as any as S.Schema<StartSpeechSynthesisStreamInput>,
+  output: __S(248, __c15, 8) as any as S.Schema<StartSpeechSynthesisStreamOutput>,
   errors: [
     ServiceFailureException,
     ServiceQuotaExceededException,
@@ -928,8 +928,8 @@ export const startSpeechSynthesisTask: API.OperationMethod<
   StartSpeechSynthesisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<StartSpeechSynthesisTaskInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<StartSpeechSynthesisTaskOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<StartSpeechSynthesisTaskInput>,
+  output: __S(176, __c11, 0) as any as S.Schema<StartSpeechSynthesisTaskOutput>,
   errors: [
     EngineNotSupportedException,
     InvalidS3BucketException,
@@ -973,8 +973,8 @@ export const synthesizeSpeech: API.OperationMethod<
   SynthesizeSpeechError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SynthesizeSpeechInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<SynthesizeSpeechOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<SynthesizeSpeechInput>,
+  output: __S(273, __c17, 1) as any as S.Schema<SynthesizeSpeechOutput>,
   errors: [
     EngineNotSupportedException,
     InvalidSampleRateException,
@@ -996,6 +996,26 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+      ).annotate({ identifier: "ThrottlingReason" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
             ns,
@@ -1008,11 +1028,19 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteLexiconInput" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLexiconOutput",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String).pipe(T.HttpQuery("Engine")),
@@ -1025,9 +1053,7 @@ function __c0(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/v1/voices" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeVoicesInput" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Gender: S.optional(S.String),
@@ -1035,17 +1061,29 @@ function __c0(j: number): any {
           LanguageCode: S.optional(S.String),
           LanguageName: S.optional(S.String),
           Name: S.optional(S.String),
-          AdditionalLanguageCodes: S.optional(__S(3, __c0, 3)),
-          SupportedEngines: S.optional(__S(3, __c0, 3)),
+          AdditionalLanguageCodes: S.optional(__S(80, __c5, 0)),
+          SupportedEngines: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "Voice" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Voices: S.optional(__S(5, __c0, 5)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Voices: S.optional(__S(66, __c4, 2)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "DescribeVoicesOutput" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
@@ -1059,15 +1097,22 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetLexiconInput" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Content: S.optional(SensitiveString), Name: S.optional(S.String) }),
       ).annotate({ identifier: "Lexicon" });
-    case 1:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Lexicon: S.optional(__S(97, __c6, 1)),
+          LexiconAttributes: S.optional(__S(112, __c7, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetLexiconOutput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Alphabet: S.optional(S.String),
@@ -1078,14 +1123,11 @@ function __c1(j: number): any {
           Size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LexiconAttributes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Lexicon: S.optional(__S(8, __c1, 0)),
-          LexiconAttributes: S.optional(__S(9, __c1, 1)),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetLexiconOutput" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TaskId: S.String.pipe(T.HttpLabel("TaskId")) }).pipe(
           T.all(
@@ -1101,9 +1143,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSpeechSynthesisTaskInput",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -1114,45 +1164,53 @@ function __c1(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           RequestCharacters: S.optional(S.Number),
           SnsTopicArn: S.optional(S.String),
-          LexiconNames: S.optional(__S(12, __c1, 4)),
+          LexiconNames: S.optional(__S(144, __c9, 0)),
           OutputFormat: S.optional(S.String),
           SampleRate: S.optional(S.String),
-          SpeechMarkTypes: S.optional(__S(3, __c0, 3)),
+          SpeechMarkTypes: S.optional(__S(80, __c5, 0)),
           TextType: S.optional(S.String),
           VoiceId: S.optional(S.String),
           LanguageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SynthesisTask" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ SynthesisTask: S.optional(__S(13, __c1, 5)) }).pipe(ns),
+        S.Struct({ SynthesisTask: S.optional(__S(160, __c10, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetSpeechSynthesisTaskOutput",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")) }).pipe(
           T.all(ns, T.Http({ method: "GET", uri: "/v1/lexicons" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListLexiconsInput" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Attributes: S.optional(__S(9, __c1, 1)) }),
-      ).annotate({ identifier: "LexiconDescription" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Attributes: S.optional(__S(112, __c7, 0)) }),
+      ).annotate({ identifier: "LexiconDescription" });
     case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Lexicons: S.optional(__S(17, __c2, 1)),
+          Lexicons: S.optional(__S(194, __c12, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListLexiconsOutput" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -1172,18 +1230,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListSpeechSynthesisTasksInput",
       });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          SynthesisTasks: S.optional(__S(20, __c2, 4)),
+          SynthesisTasks: S.optional(__S(209, __c13, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListSpeechSynthesisTasksOutput",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")), Content: SensitiveString }).pipe(
           T.all(
@@ -1197,43 +1259,43 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutLexiconInput" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Force: S.optional(S.Boolean) })).annotate({
         identifier: "FlushStreamConfiguration",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Text: S.String,
           TextType: S.optional(S.String),
-          FlushStreamConfiguration: S.optional(__S(23, __c2, 7)),
+          FlushStreamConfiguration: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "TextEvent" });
-    case 1:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CloseStreamEvent",
       });
-    case 2:
+    case 3:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ TextEvent: __S(24, __c3, 0) }),
-          /*@__PURE__*/ S.Struct({ CloseStreamEvent: __S(25, __c3, 1) }),
+          /*@__PURE__*/ S.Struct({ TextEvent: __S(241, __c15, 1) }),
+          /*@__PURE__*/ S.Struct({ CloseStreamEvent: __S(242, __c15, 2) }),
         ]),
       );
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Engine: S.String.pipe(T.HttpHeader("x-amzn-Engine")),
           LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-LanguageCode")),
-          LexiconNames: S.optional(__S(12, __c1, 4)).pipe(T.HttpHeader("x-amzn-LexiconNames")),
+          LexiconNames: S.optional(__S(144, __c9, 0)).pipe(T.HttpHeader("x-amzn-LexiconNames")),
           OutputFormat: S.String.pipe(T.HttpHeader("x-amzn-OutputFormat")),
           SampleRate: S.optional(S.String).pipe(T.HttpHeader("x-amzn-SampleRate")),
           VoiceId: S.String.pipe(T.HttpHeader("x-amzn-VoiceId")),
-          ActionStream: S.optional(__S(26, __c3, 2)).pipe(T.HttpPayload()),
+          ActionStream: S.optional(__S(243, __c15, 3)).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             ns,
@@ -1248,35 +1310,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "StartSpeechSynthesisStreamInput",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
       ).annotate({ identifier: "AudioEvent" });
-    case 5:
+    case 6:
       return S.suspend(() => S.Struct({ RequestCharacters: S.optional(S.Number) })).annotate({
         identifier: "StreamClosedEvent",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
     case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
-      ).annotate({ identifier: "ThrottlingReason" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ AudioEvent: __S(28, __c3, 4) }),
-          /*@__PURE__*/ S.Struct({ StreamClosedEvent: __S(29, __c3, 5) }),
+          /*@__PURE__*/ S.Struct({ AudioEvent: __S(245, __c15, 5) }),
+          /*@__PURE__*/ S.Struct({ StreamClosedEvent: __S(246, __c15, 6) }),
           /*@__PURE__*/ S.Struct({
             ValidationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
               identifier: "ValidationException",
@@ -1303,26 +1349,30 @@ function __c4(j: number): any {
           }),
         ]),
       );
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          EventStream: S.optional(__S(34, __c4, 2)).pipe(T.HttpPayload()),
+          EventStream: S.optional(__S(247, __c15, 7)).pipe(T.HttpPayload()),
         }).pipe(ns),
       ).annotate({
         identifier: "StartSpeechSynthesisStreamOutput",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           LanguageCode: S.optional(S.String),
-          LexiconNames: S.optional(__S(12, __c1, 4)),
+          LexiconNames: S.optional(__S(144, __c9, 0)),
           OutputFormat: S.String,
           OutputS3BucketName: S.String,
           OutputS3KeyPrefix: S.optional(S.String),
           SampleRate: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
-          SpeechMarkTypes: S.optional(__S(3, __c0, 3)),
+          SpeechMarkTypes: S.optional(__S(80, __c5, 0)),
           Text: S.String,
           TextType: S.optional(S.String),
           VoiceId: S.String,
@@ -1340,15 +1390,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StartSpeechSynthesisTaskInput",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           LanguageCode: S.optional(S.String),
-          LexiconNames: S.optional(__S(12, __c1, 4)),
+          LexiconNames: S.optional(__S(144, __c9, 0)),
           OutputFormat: S.String,
           SampleRate: S.optional(S.String),
-          SpeechMarkTypes: S.optional(__S(3, __c0, 3)),
+          SpeechMarkTypes: S.optional(__S(80, __c5, 0)),
           Text: S.String,
           TextType: S.optional(S.String),
           VoiceId: S.String,
@@ -1356,7 +1410,7 @@ function __c4(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/v1/speech" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SynthesizeSpeechInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AudioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -1366,7 +1420,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SynthesizeSpeechOutput" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

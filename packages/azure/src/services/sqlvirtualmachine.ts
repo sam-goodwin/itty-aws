@@ -1090,8 +1090,8 @@ export const AvailabilityGroupListenersCreateOrUpdate: API.OperationMethod<
   AvailabilityGroupListenersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateRequest>,
+  output: __S(74, __c2, 10) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1105,8 @@ export const DeleteAvailabilityGroupListener: API.OperationMethod<
   DeleteAvailabilityGroupListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteAvailabilityGroupListenerRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteAvailabilityGroupListenerResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteAvailabilityGroupListenerRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteAvailabilityGroupListenerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1120,8 +1120,8 @@ export const DeleteSqlVirtualMachine: API.OperationMethod<
   DeleteSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteSqlVirtualMachineRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlVirtualMachineResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteSqlVirtualMachineRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<DeleteSqlVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1135,8 +1135,8 @@ export const DeleteSqlVirtualMachineGroup: API.OperationMethod<
   DeleteSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteSqlVirtualMachineGroupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteSqlVirtualMachineGroupRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1150,8 @@ export const FetchSqlVirtualMachineDCAssessment: API.OperationMethod<
   FetchSqlVirtualMachineDCAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1165,8 @@ export const GetAvailabilityGroupListener: API.OperationMethod<
   GetAvailabilityGroupListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAvailabilityGroupListenerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetAvailabilityGroupListenerResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetAvailabilityGroupListenerRequest>,
+  output: __S(74, __c2, 10) as any as S.Schema<GetAvailabilityGroupListenerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1180,8 @@ export const GetSqlVirtualMachine: API.OperationMethod<
   GetSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetSqlVirtualMachineRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetSqlVirtualMachineResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetSqlVirtualMachineRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetSqlVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1195,8 @@ export const GetSqlVirtualMachineGroup: API.OperationMethod<
   GetSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetSqlVirtualMachineGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetSqlVirtualMachineGroupResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetSqlVirtualMachineGroupRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetSqlVirtualMachineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1210,8 @@ export const ListAvailabilityGroupListenerByGroup: API.OperationMethod<
   ListAvailabilityGroupListenerByGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListAvailabilityGroupListenerByGroupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<AvailabilityGroupListenerListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListAvailabilityGroupListenerByGroupRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<AvailabilityGroupListenerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1225,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<OperationListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1029, __c32, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1240,8 @@ export const ListSqlVirtualMachineByResourceGroup: API.OperationMethod<
   ListSqlVirtualMachineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListSqlVirtualMachineByResourceGroupRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListSqlVirtualMachineByResourceGroupRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1255,8 @@ export const ListSqlVirtualMachineBySqlVmGroup: API.OperationMethod<
   ListSqlVirtualMachineBySqlVmGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListSqlVirtualMachineBySqlVmGroupRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListSqlVirtualMachineBySqlVmGroupRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1270,8 +1270,8 @@ export const ListSqlVirtualMachineGroupByResourceGroup: API.OperationMethod<
   ListSqlVirtualMachineGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListSqlVirtualMachineGroupByResourceGroupRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<SqlVirtualMachineGroupListResult>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListSqlVirtualMachineGroupByResourceGroupRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<SqlVirtualMachineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1285,8 +1285,8 @@ export const ListSqlVirtualMachineGroups: API.OperationMethod<
   ListSqlVirtualMachineGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListSqlVirtualMachineGroupsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<SqlVirtualMachineGroupListResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListSqlVirtualMachineGroupsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<SqlVirtualMachineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1300,8 +1300,8 @@ export const ListSqlVirtualMachines: API.OperationMethod<
   ListSqlVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListSqlVirtualMachinesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListSqlVirtualMachinesRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1315,8 @@ export const RedeploySqlVirtualMachine: API.OperationMethod<
   RedeploySqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<RedeploySqlVirtualMachineRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<RedeploySqlVirtualMachineResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<RedeploySqlVirtualMachineRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RedeploySqlVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1330,8 @@ export const SqlVirtualMachineGroupsCreateOrUpdate: API.OperationMethod<
   SqlVirtualMachineGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1345,8 @@ export const SqlVirtualMachinesCreateOrUpdate: API.OperationMethod<
   SqlVirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>,
+  input: __S(450, __c14, 2) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1360,8 @@ export const SqlVirtualMachineTroubleshootTroubleshoot: API.OperationMethod<
   SqlVirtualMachineTroubleshootTroubleshootError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<SqlVirtualMachineTroubleshootTroubleshootRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<SqlVmTroubleshooting>,
+  input: __S(480, __c15, 0) as any as S.Schema<SqlVirtualMachineTroubleshootTroubleshootRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<SqlVmTroubleshooting>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1375,8 @@ export const StartSqlVirtualMachineAssessment: API.OperationMethod<
   StartSqlVirtualMachineAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<StartSqlVirtualMachineAssessmentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<StartSqlVirtualMachineAssessmentRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1390,8 @@ export const UpdateSqlVirtualMachine: API.OperationMethod<
   UpdateSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateSqlVirtualMachineRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateSqlVirtualMachineResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<UpdateSqlVirtualMachineRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<UpdateSqlVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1405,8 @@ export const UpdateSqlVirtualMachineGroup: API.OperationMethod<
   UpdateSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateSqlVirtualMachineGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<UpdateSqlVirtualMachineGroupRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1414,6 +1414,57 @@ export const UpdateSqlVirtualMachineGroup: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityGroupName: S.optional(S.String),
+          loadBalancerConfigurations: S.optional(__S(67, __c2, 3)),
+          multiSubnetIpConfigurations: S.optional(__S(69, __c2, 5)),
+          createDefaultAvailabilityGroupIfNotExist: S.optional(S.Boolean),
+          port: S.optional(S.Number),
+          availabilityGroupConfiguration: S.optional(__S(72, __c2, 8)),
+        }),
+      ).annotate({
+        identifier: "AvailabilityGroupListenerPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+          availabilityGroupListenerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(0, __c0, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AvailabilityGroupListenersCreateOrUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1427,28 +1478,28 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateIpAddress: S.optional(__S(0, __c0, 0)),
+          privateIpAddress: S.optional(__S(64, __c2, 0)),
           publicIpAddressResourceId: S.optional(S.String),
           loadBalancerResourceId: S.optional(S.String),
           probePort: S.optional(S.Number),
-          sqlVirtualMachineInstances: S.optional(__S(1, __c0, 1)),
+          sqlVirtualMachineInstances: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({
         identifier: "LoadBalancerConfiguration",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(66, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateIpAddress: __S(0, __c0, 0),
+          privateIpAddress: __S(64, __c2, 0),
           sqlVirtualMachineInstance: S.String,
         }),
       ).annotate({
         identifier: "MultiSubnetIpConfiguration",
       });
     case 5:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(68, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1460,87 +1511,44 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AgReplica" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          replicas: S.optional(__S(7, __c0, 7)),
+          replicas: S.optional(__S(71, __c2, 7)),
         }),
       ).annotate({ identifier: "AgConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityGroupName: S.optional(S.String),
-          loadBalancerConfigurations: S.optional(__S(3, __c0, 3)),
-          multiSubnetIpConfigurations: S.optional(__S(5, __c0, 5)),
-          createDefaultAvailabilityGroupIfNotExist: S.optional(S.Boolean),
-          port: S.optional(S.Number),
-          availabilityGroupConfiguration: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "AvailabilityGroupListenerPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-          availabilityGroupListenerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AvailabilityGroupListenersCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           availabilityGroupName: S.optional(S.String),
-          loadBalancerConfigurations: S.optional(__S(3, __c0, 3)),
-          multiSubnetIpConfigurations: S.optional(__S(5, __c0, 5)),
+          loadBalancerConfigurations: S.optional(__S(67, __c2, 3)),
+          multiSubnetIpConfigurations: S.optional(__S(69, __c2, 5)),
           createDefaultAvailabilityGroupIfNotExist: S.optional(S.Boolean),
           port: S.optional(S.Number),
-          availabilityGroupConfiguration: S.optional(__S(8, __c1, 0)),
+          availabilityGroupConfiguration: S.optional(__S(72, __c2, 8)),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenerProperties",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(12, __c1, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(73, __c2, 9)),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenersCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1558,13 +1566,337 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteAvailabilityGroupListenerRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAvailabilityGroupListenerResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSqlVirtualMachineByResourceGroupRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(864, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(820, __c25, 20)),
+          identity: S.optional(__S(821, __c25, 21)),
+        }),
+      ).annotate({ identifier: "SqlVirtualMachine" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(193, __c6, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlVirtualMachineListResult",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSqlVirtualMachineBySqlVmGroupRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSqlVirtualMachineGroupByResourceGroupRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(864, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(929, __c29, 1)),
+        }),
+      ).annotate({ identifier: "SqlVirtualMachineGroup" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(289, __c9, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlVirtualMachineGroupListResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSqlVirtualMachineGroupsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSqlVirtualMachinesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RedeploySqlVirtualMachineRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sqlImageOffer: S.optional(S.String),
+          sqlImageSku: S.optional(S.String),
+          wsfcDomainProfile: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "SqlVirtualMachineGroupPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(864, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(416, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SqlVirtualMachineGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineResourceId: S.optional(S.String),
+          sqlImageOffer: S.optional(S.String),
+          sqlServerLicenseType: S.optional(S.String),
+          sqlManagement: S.optional(S.String),
+          leastPrivilegeMode: S.optional(S.String),
+          sqlImageSku: S.optional(S.String),
+          sqlVirtualMachineGroupResourceId: S.optional(S.String),
+          wsfcDomainCredentials: S.optional(__S(800, __c25, 0)),
+          wsfcStaticIp: S.optional(S.String),
+          autoPatchingSettings: S.optional(__S(801, __c25, 1)),
+          autoBackupSettings: S.optional(__S(803, __c25, 3)),
+          keyVaultCredentialSettings: S.optional(__S(804, __c25, 4)),
+          serverConfigurationsManagementSettings: S.optional(__S(811, __c25, 11)),
+          storageConfigurationSettings: S.optional(__S(815, __c25, 15)),
+          assessmentSettings: S.optional(__S(818, __c25, 18)),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+          virtualMachineIdentitySettings: S.optional(__S(819, __c25, 19)),
+        }),
+      ).annotate({
+        identifier: "SqlVirtualMachinePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceIdentityInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(864, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(448, __c14, 0)),
+          identity: S.optional(__S(449, __c14, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SqlVirtualMachinesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+          startTimeUtc: S.optional(S.String),
+          endTimeUtc: S.optional(S.String),
+          troubleshootingScenario: S.optional(S.String),
+          properties: S.optional(__S(769, __c24, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SqlVirtualMachineTroubleshootTroubleshootRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTimeUtc: S.optional(S.String),
+          endTimeUtc: S.optional(S.String),
+          troubleshootingScenario: S.optional(S.String),
+          properties: S.optional(__S(769, __c24, 1)),
+          virtualMachineResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SqlVmTroubleshooting" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartSqlVirtualMachineAssessmentRequest",
+      });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1587,7 +1919,55 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSqlVirtualMachineResponse",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(864, __c27, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSqlVirtualMachineRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(864, __c27, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+            code: 200,
+            apiVersion: "2023-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSqlVirtualMachineGroupRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1604,7 +1984,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteSqlVirtualMachineGroupRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1622,7 +2006,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FetchSqlVirtualMachineDCAssessmentRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1641,7 +2029,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAvailabilityGroupListenerRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1659,9 +2051,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetSqlVirtualMachineRequest",
       });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityGroupName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnhealthyReplicaInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unhealthyReplicaInfo: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "TroubleshootingAdditionalProperties",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clusterBootstrapAccountPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1669,11 +2081,7 @@ function __c2(j: number): any {
           sqlServiceAccountPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "WsfcDomainCredentials" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
@@ -1683,9 +2091,9 @@ function __c3(j: number): any {
           additionalVmPatch: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoPatchingSettings" });
-    case 1:
-      return S.Array(S.String);
     case 2:
+      return S.Array(S.String);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
@@ -1698,13 +2106,13 @@ function __c3(j: number): any {
           backupSystemDbs: S.optional(S.Boolean),
           backupScheduleType: S.optional(S.String),
           fullBackupFrequency: S.optional(S.String),
-          daysOfWeek: S.optional(__S(25, __c3, 1)),
+          daysOfWeek: S.optional(__S(802, __c25, 2)),
           fullBackupStartTime: S.optional(S.Number),
           fullBackupWindowHours: S.optional(S.Number),
           logBackupFrequency: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoBackupSettings" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
@@ -1716,7 +2124,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "KeyVaultCredentialSettings",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           connectivityType: S.optional(S.String),
@@ -1727,7 +2135,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SqlConnectivityUpdateSettings",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           sqlWorkloadType: S.optional(S.String),
@@ -1735,7 +2143,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SqlWorkloadTypeUpdateSettings",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           diskCount: S.optional(S.Number),
@@ -1743,7 +2151,7 @@ function __c3(j: number): any {
           diskConfigurationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlStorageUpdateSettings" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           isRServicesEnabled: S.optional(S.Boolean),
@@ -1751,11 +2159,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AdditionalFeaturesServerConfigurations",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           collation: S.optional(S.String),
@@ -1767,7 +2171,7 @@ function __c4(j: number): any {
           isIfiEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SQLInstanceSettings" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -1775,30 +2179,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AADAuthenticationSettings",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          sqlConnectivityUpdateSettings: S.optional(__S(28, __c3, 4)),
-          sqlWorkloadTypeUpdateSettings: S.optional(__S(29, __c3, 5)),
-          sqlStorageUpdateSettings: S.optional(__S(30, __c3, 6)),
-          additionalFeaturesServerConfigurations: S.optional(__S(31, __c3, 7)),
-          sqlInstanceSettings: S.optional(__S(32, __c4, 0)),
-          azureAdAuthenticationSettings: S.optional(__S(33, __c4, 1)),
+          sqlConnectivityUpdateSettings: S.optional(__S(805, __c25, 5)),
+          sqlWorkloadTypeUpdateSettings: S.optional(__S(806, __c25, 6)),
+          sqlStorageUpdateSettings: S.optional(__S(807, __c25, 7)),
+          additionalFeaturesServerConfigurations: S.optional(__S(808, __c25, 8)),
+          sqlInstanceSettings: S.optional(__S(809, __c25, 9)),
+          azureAdAuthenticationSettings: S.optional(__S(810, __c25, 10)),
         }),
       ).annotate({
         identifier: "ServerConfigurationsManagementSettings",
       });
-    case 3:
+    case 12:
       return S.Array(S.Number);
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          luns: S.optional(__S(35, __c4, 3)),
+          luns: S.optional(__S(812, __c25, 12)),
           defaultFilePath: S.optional(S.String),
           useStoragePool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SQLStorageSettings" });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           dataFileSize: S.optional(S.Number),
@@ -1808,17 +2212,17 @@ function __c4(j: number): any {
           dataFileCount: S.optional(S.Number),
           persistFolder: S.optional(S.Boolean),
           persistFolderPath: S.optional(S.String),
-          luns: S.optional(__S(35, __c4, 3)),
+          luns: S.optional(__S(812, __c25, 12)),
           defaultFilePath: S.optional(S.String),
           useStoragePool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SQLTempDbSettings" });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          sqlDataSettings: S.optional(__S(36, __c4, 4)),
-          sqlLogSettings: S.optional(__S(36, __c4, 4)),
-          sqlTempDbSettings: S.optional(__S(37, __c4, 5)),
+          sqlDataSettings: S.optional(__S(813, __c25, 13)),
+          sqlLogSettings: S.optional(__S(813, __c25, 13)),
+          sqlTempDbSettings: S.optional(__S(814, __c25, 14)),
           sqlSystemDbOnDataDisk: S.optional(S.Boolean),
           diskConfigurationType: S.optional(S.String),
           storageWorkloadType: S.optional(S.String),
@@ -1827,25 +2231,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StorageConfigurationSettings",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityGroupName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UnhealthyReplicaInfo" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unhealthyReplicaInfo: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "TroubleshootingAdditionalProperties",
-      });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           rootCause: S.optional(S.String),
@@ -1853,10 +2239,10 @@ function __c5(j: number): any {
           startTimeUtc: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
           troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(769, __c24, 1)),
         }),
       ).annotate({ identifier: "TroubleshootingStatus" });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
@@ -1866,22 +2252,22 @@ function __c5(j: number): any {
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schedule" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
           runImmediately: S.optional(S.Boolean),
-          schedule: S.optional(__S(42, __c5, 2)),
+          schedule: S.optional(__S(817, __c25, 17)),
         }),
       ).annotate({ identifier: "AssessmentSettings" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineIdentity" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           virtualMachineResourceId: S.optional(S.String),
@@ -1892,24 +2278,24 @@ function __c5(j: number): any {
           leastPrivilegeMode: S.optional(S.String),
           sqlImageSku: S.optional(S.String),
           sqlVirtualMachineGroupResourceId: S.optional(S.String),
-          wsfcDomainCredentials: S.optional(__S(23, __c2, 7)),
+          wsfcDomainCredentials: S.optional(__S(800, __c25, 0)),
           wsfcStaticIp: S.optional(S.String),
-          autoPatchingSettings: S.optional(__S(24, __c3, 0)),
-          autoBackupSettings: S.optional(__S(26, __c3, 2)),
-          keyVaultCredentialSettings: S.optional(__S(27, __c3, 3)),
-          serverConfigurationsManagementSettings: S.optional(__S(34, __c4, 2)),
-          storageConfigurationSettings: S.optional(__S(38, __c4, 6)),
-          troubleshootingStatus: S.optional(__S(41, __c5, 1)),
-          assessmentSettings: S.optional(__S(43, __c5, 3)),
+          autoPatchingSettings: S.optional(__S(801, __c25, 1)),
+          autoBackupSettings: S.optional(__S(803, __c25, 3)),
+          keyVaultCredentialSettings: S.optional(__S(804, __c25, 4)),
+          serverConfigurationsManagementSettings: S.optional(__S(811, __c25, 11)),
+          storageConfigurationSettings: S.optional(__S(815, __c25, 15)),
+          troubleshootingStatus: S.optional(__S(816, __c25, 16)),
+          assessmentSettings: S.optional(__S(818, __c25, 18)),
           enableAutomaticUpgrade: S.optional(S.Boolean),
           additionalVmPatch: S.optional(S.String),
-          virtualMachineIdentitySettings: S.optional(__S(44, __c5, 4)),
+          virtualMachineIdentitySettings: S.optional(__S(819, __c25, 19)),
           osType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlVirtualMachineProperties",
       });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -1917,24 +2303,34 @@ function __c5(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdentity" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(864, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(46, __c5, 6)),
+          properties: S.optional(__S(820, __c25, 20)),
+          identity: S.optional(__S(821, __c25, 21)),
         }),
       ).annotate({
         identifier: "GetSqlVirtualMachineResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1953,7 +2349,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetSqlVirtualMachineGroupRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainFqdn: S.optional(S.String),
@@ -1968,7 +2368,7 @@ function __c6(j: number): any {
           clusterSubnetType: S.optional(S.String),
         }),
       ).annotate({ identifier: "WsfcDomainProfile" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -1977,26 +2377,34 @@ function __c6(j: number): any {
           scaleType: S.optional(S.String),
           clusterManagerType: S.optional(S.String),
           clusterConfiguration: S.optional(S.String),
-          wsfcDomainProfile: S.optional(__S(49, __c6, 1)),
+          wsfcDomainProfile: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({
         identifier: "SqlVirtualMachineGroupProperties",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(864, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(50, __c6, 2)),
+          properties: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({
         identifier: "GetSqlVirtualMachineGroupResponse",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2013,18 +2421,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAvailabilityGroupListenerByGroupRequest",
       });
-    case 5:
-      return S.Array(__S(13, __c1, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(74, __c2, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(53, __c6, 5),
+          value: __S(993, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenerListResult",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2035,11 +2447,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2048,349 +2456,28 @@ function __c7(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
     case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(56, __c7, 0)),
+          display: S.optional(__S(1025, __c32, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(57, __c7, 1)),
+          properties: S.optional(__S(1026, __c32, 2)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
     case 4:
+      return S.Array(__S(1027, __c32, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59, __c7, 3),
+          value: __S(1028, __c32, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSqlVirtualMachineByResourceGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(22, __c2, 6)),
-          location: S.String,
-          properties: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "SqlVirtualMachine" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(63, __c7, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlVirtualMachineListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSqlVirtualMachineBySqlVmGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSqlVirtualMachineGroupByResourceGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(22, __c2, 6)),
-          location: S.String,
-          properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "SqlVirtualMachineGroup" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(68, __c8, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlVirtualMachineGroupListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSqlVirtualMachineGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSqlVirtualMachinesRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RedeploySqlVirtualMachineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sqlImageOffer: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
-          wsfcDomainProfile: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "SqlVirtualMachineGroupPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22, __c2, 6)),
-          location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SqlVirtualMachineGroupsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineResourceId: S.optional(S.String),
-          sqlImageOffer: S.optional(S.String),
-          sqlServerLicenseType: S.optional(S.String),
-          sqlManagement: S.optional(S.String),
-          leastPrivilegeMode: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
-          sqlVirtualMachineGroupResourceId: S.optional(S.String),
-          wsfcDomainCredentials: S.optional(__S(23, __c2, 7)),
-          wsfcStaticIp: S.optional(S.String),
-          autoPatchingSettings: S.optional(__S(24, __c3, 0)),
-          autoBackupSettings: S.optional(__S(26, __c3, 2)),
-          keyVaultCredentialSettings: S.optional(__S(27, __c3, 3)),
-          serverConfigurationsManagementSettings: S.optional(__S(34, __c4, 2)),
-          storageConfigurationSettings: S.optional(__S(38, __c4, 6)),
-          assessmentSettings: S.optional(__S(43, __c5, 3)),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-          virtualMachineIdentitySettings: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "SqlVirtualMachinePropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceIdentityInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22, __c2, 6)),
-          location: S.String,
-          properties: S.optional(__S(75, __c9, 3)),
-          identity: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SqlVirtualMachinesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-          startTimeUtc: S.optional(S.String),
-          endTimeUtc: S.optional(S.String),
-          troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SqlVirtualMachineTroubleshootTroubleshootRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTimeUtc: S.optional(S.String),
-          endTimeUtc: S.optional(S.String),
-          troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-          virtualMachineResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SqlVmTroubleshooting" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartSqlVirtualMachineAssessmentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSqlVirtualMachineRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
-            code: 200,
-            apiVersion: "2023-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSqlVirtualMachineGroupRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

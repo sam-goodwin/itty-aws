@@ -567,7 +567,7 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateServiceQuotaTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateServiceQuotaTemplateResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociateServiceQuotaTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -603,8 +603,8 @@ export const createSupportCase: API.OperationMethod<
   CreateSupportCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateSupportCaseRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateSupportCaseResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateSupportCaseRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateSupportCaseResponse>,
   errors: [
     AccessDeniedException,
     DependencyAccessDeniedException,
@@ -641,8 +641,8 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   DeleteServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -680,8 +680,8 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
   DisassociateServiceQuotaTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DisassociateServiceQuotaTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateServiceQuotaTemplateResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DisassociateServiceQuotaTemplateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociateServiceQuotaTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -716,8 +716,8 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
   GetAssociationForServiceQuotaTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetAssociationForServiceQuotaTemplateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAssociationForServiceQuotaTemplateResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAssociationForServiceQuotaTemplateRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetAssociationForServiceQuotaTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -750,8 +750,8 @@ export const getAutoManagementConfiguration: API.OperationMethod<
   GetAutoManagementConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAutoManagementConfigurationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetAutoManagementConfigurationResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAutoManagementConfigurationRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<GetAutoManagementConfigurationResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -781,8 +781,8 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
   GetAWSDefaultServiceQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAWSDefaultServiceQuotaRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAWSDefaultServiceQuotaResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAWSDefaultServiceQuotaRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetAWSDefaultServiceQuotaResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -823,8 +823,8 @@ export const getQuotaUtilizationReport: API.OperationMethod<
   GetQuotaUtilizationReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetQuotaUtilizationReportRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetQuotaUtilizationReportResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetQuotaUtilizationReportRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetQuotaUtilizationReportResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -854,8 +854,8 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
   GetRequestedServiceQuotaChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetRequestedServiceQuotaChangeRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetRequestedServiceQuotaChangeResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetRequestedServiceQuotaChangeRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetRequestedServiceQuotaChangeResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -886,8 +886,8 @@ export const getServiceQuota: API.OperationMethod<
   GetServiceQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetServiceQuotaRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetServiceQuotaResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetServiceQuotaRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetServiceQuotaResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -921,8 +921,8 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   GetServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -958,8 +958,8 @@ export const listAWSDefaultServiceQuotas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuota
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListAWSDefaultServiceQuotasRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListAWSDefaultServiceQuotasResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListAWSDefaultServiceQuotasRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListAWSDefaultServiceQuotasResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -999,8 +999,8 @@ export const listRequestedServiceQuotaChangeHistory: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   RequestedServiceQuotaChange
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1039,11 +1039,15 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.PaginatedOperati
   Credentials | HttpClient.HttpClient,
   RequestedServiceQuotaChange
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaRequest>,
+  input: __S(
+    184,
+    __c23,
+    0,
+  ) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    177,
+    __c22,
+    1,
   ) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaResponse>,
   errors: [
     AccessDeniedException,
@@ -1084,8 +1088,8 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   ServiceQuotaIncreaseRequestInTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -1128,8 +1132,8 @@ export const listServiceQuotas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuota
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListServiceQuotasRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListServiceQuotasResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListServiceQuotasRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListServiceQuotasResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1166,8 +1170,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListServicesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListServicesResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListServicesResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1202,8 +1206,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1237,8 +1241,8 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
   PutServiceQuotaIncreaseRequestIntoTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -1277,8 +1281,8 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
   RequestServiceQuotaIncreaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<RequestServiceQuotaIncreaseRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<RequestServiceQuotaIncreaseResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<RequestServiceQuotaIncreaseRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RequestServiceQuotaIncreaseResponse>,
   errors: [
     AccessDeniedException,
     DependencyAccessDeniedException,
@@ -1313,8 +1317,8 @@ export const startAutoManagement: API.OperationMethod<
   StartAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<StartAutoManagementRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartAutoManagementResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<StartAutoManagementRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<StartAutoManagementResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1350,8 +1354,8 @@ export const startQuotaUtilizationReport: API.OperationMethod<
   StartQuotaUtilizationReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<StartQuotaUtilizationReportRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<StartQuotaUtilizationReportResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<StartQuotaUtilizationReportRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<StartQuotaUtilizationReportResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1383,8 +1387,8 @@ export const stopAutoManagement: API.OperationMethod<
   StopAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<StopAutoManagementRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StopAutoManagementResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<StopAutoManagementRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<StopAutoManagementResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1416,8 +1420,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1449,8 +1453,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1481,8 +1485,8 @@ export const updateAutoManagement: API.OperationMethod<
   UpdateAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateAutoManagementRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateAutoManagementResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateAutoManagementRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateAutoManagementResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1506,21 +1510,37 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateServiceQuotaTemplateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateServiceQuotaTemplateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateSupportCaseRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateSupportCaseResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServiceCode: S.String, QuotaCode: S.String, AwsRegion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1528,7 +1548,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteServiceQuotaIncreaseRequestFromTemplateRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1536,7 +1560,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DisassociateServiceQuotaTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1544,7 +1572,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAssociationForServiceQuotaTemplateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ServiceQuotaTemplateAssociationStatus: S.optional(S.String),
@@ -1554,7 +1582,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1569,9 +1597,9 @@ function __c1(j: number): any {
         S.Struct({ QuotaCode: S.optional(S.String), QuotaName: S.optional(S.String) }),
       ).annotate({ identifier: "QuotaInfo" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10, __c1, 2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(58, __c7, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1579,12 +1607,16 @@ function __c1(j: number): any {
           OptInType: S.optional(S.String),
           NotificationArn: S.optional(S.String),
           OptInStatus: S.optional(S.String),
-          ExclusionList: S.optional(__S(11, __c1, 3)),
+          ExclusionList: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "GetAutoManagementConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServiceCode: S.String, QuotaCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1592,30 +1624,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAWSDefaultServiceQuotaRequest",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MetricNamespace: S.optional(S.String),
-          MetricName: S.optional(S.String),
-          MetricDimensions: S.optional(__S(14, __c1, 6)),
-          MetricStatisticRecommendation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricInfo" });
+    case 1:
+      return S.suspend(() => S.Struct({ Quota: S.optional(__S(84, __c10, 4)) })).annotate({
+        identifier: "GetAWSDefaultServiceQuotaResponse",
+      });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ PeriodValue: S.optional(S.Number), PeriodUnit: S.optional(S.String) }),
-      ).annotate({ identifier: "QuotaPeriod" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorReason" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ContextScope: S.optional(S.String),
@@ -1624,7 +1641,30 @@ function __c2(j: number): any {
           AdjustableAtLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaContextInfo" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MetricNamespace: S.optional(S.String),
+          MetricName: S.optional(S.String),
+          MetricDimensions: S.optional(__S(80, __c10, 0)),
+          MetricStatisticRecommendation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ PeriodValue: S.optional(S.Number), PeriodUnit: S.optional(S.String) }),
+      ).annotate({ identifier: "QuotaPeriod" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorReason" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.optional(S.String),
@@ -1636,19 +1676,19 @@ function __c2(j: number): any {
           Unit: S.optional(S.String),
           Adjustable: S.optional(S.Boolean),
           GlobalQuota: S.optional(S.Boolean),
-          UsageMetric: S.optional(__S(15, __c1, 7)),
-          Period: S.optional(__S(16, __c2, 0)),
-          ErrorReason: S.optional(__S(17, __c2, 1)),
+          UsageMetric: S.optional(__S(81, __c10, 1)),
+          Period: S.optional(__S(82, __c10, 2)),
+          ErrorReason: S.optional(__S(83, __c10, 3)),
           QuotaAppliedAtLevel: S.optional(S.String),
-          QuotaContext: S.optional(__S(18, __c2, 2)),
+          QuotaContext: S.optional(__S(72, __c9, 0)),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceQuota" });
-    case 4:
-      return S.suspend(() => S.Struct({ Quota: S.optional(__S(19, __c2, 3)) })).annotate({
-        identifier: "GetAWSDefaultServiceQuotaResponse",
-      });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.String,
@@ -1658,7 +1698,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetQuotaUtilizationReportRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           QuotaCode: S.optional(S.String),
@@ -1672,20 +1712,16 @@ function __c2(j: number): any {
           Adjustable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QuotaUtilizationInfo" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String),
           Status: S.optional(S.String),
           GeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TotalCount: S.optional(S.Number),
-          Quotas: S.optional(__S(23, __c2, 7)),
+          Quotas: S.optional(__S(90, __c11, 2)),
           NextToken: S.optional(S.String),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
@@ -1693,7 +1729,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetQuotaUtilizationReportResponse",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1701,7 +1741,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRequestedServiceQuotaChangeRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -1720,16 +1764,26 @@ function __c3(j: number): any {
           GlobalQuota: S.optional(S.Boolean),
           Unit: S.optional(S.String),
           QuotaRequestedAtLevel: S.optional(S.String),
-          QuotaContext: S.optional(__S(18, __c2, 2)),
+          QuotaContext: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "RequestedServiceQuotaChange",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ RequestedQuota: S.optional(__S(26, __c3, 2)) })).annotate({
-        identifier: "GetRequestedServiceQuotaChangeResponse",
-      });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RequestedQuota: S.optional(__S(104, __c13, 0)) })).annotate(
+        {
+          identifier: "GetRequestedServiceQuotaChangeResponse",
+        },
+      );
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -1737,11 +1791,15 @@ function __c3(j: number): any {
           ContextId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetServiceQuotaRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ Quota: S.optional(__S(19, __c2, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Quota: S.optional(__S(84, __c10, 4)) })).annotate({
         identifier: "GetServiceQuotaResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServiceCode: S.String, QuotaCode: S.String, AwsRegion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1749,7 +1807,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetServiceQuotaIncreaseRequestFromTemplateRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.optional(S.String),
@@ -1766,17 +1828,21 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ServiceQuotaIncreaseRequestInTemplate: S.optional(__S(31, __c3, 7)),
+          ServiceQuotaIncreaseRequestInTemplate: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({
         identifier: "GetServiceQuotaIncreaseRequestFromTemplateResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -1786,18 +1852,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAWSDefaultServiceQuotasRequest",
       });
-    case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(84, __c10, 4));
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          Quotas: S.optional(__S(34, __c4, 2)),
-        }),
+        S.Struct({ NextToken: S.optional(S.String), Quotas: S.optional(__S(160, __c20, 0)) }),
       ).annotate({
         identifier: "ListAWSDefaultServiceQuotasResponse",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.optional(S.String),
@@ -1809,18 +1880,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRequestedServiceQuotaChangeHistoryRequest",
       });
-    case 5:
-      return S.Array(__S(26, __c3, 2));
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(104, __c13, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RequestedQuotas: S.optional(__S(37, __c4, 5)),
+          RequestedQuotas: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({
         identifier: "ListRequestedServiceQuotaChangeHistoryResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -1835,7 +1914,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1849,17 +1928,21 @@ function __c5(j: number): any {
         identifier: "ListServiceQuotaIncreaseRequestsInTemplateRequest",
       });
     case 1:
-      return S.Array(__S(31, __c3, 7));
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ServiceQuotaIncreaseRequestInTemplateList: S.optional(__S(41, __c5, 1)),
+          ServiceQuotaIncreaseRequestInTemplateList: S.optional(__S(193, __c24, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceQuotaIncreaseRequestsInTemplateResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -1869,28 +1952,29 @@ function __c5(j: number): any {
           QuotaAppliedAtLevel: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListServiceQuotasRequest" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ServiceCode: S.optional(S.String), ServiceName: S.optional(S.String) }),
       ).annotate({ identifier: "ServiceInfo" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(209, __c26, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          Services: S.optional(__S(46, __c5, 6)),
-        }),
+        S.Struct({ NextToken: S.optional(S.String), Services: S.optional(__S(210, __c26, 2)) }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
 }
-function __c6(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1901,16 +1985,24 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(225, __c28, 1)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(50, __c6, 2)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 4:
+    case 1:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QuotaCode: S.String,
@@ -1921,7 +2013,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PutServiceQuotaIncreaseRequestIntoTemplateRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
@@ -1933,13 +2029,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RequestServiceQuotaIncreaseRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(54, __c6, 6).pipe(S.optional));
   }
 }
-function __c7(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1947,12 +2039,28 @@ function __c7(j: number): any {
           OptInLevel: S.String,
           OptInType: S.String,
           NotificationArn: S.optional(S.String),
-          ExclusionList: S.optional(__S(55, __c6, 7)),
+          ExclusionList: S.optional(__S(264, __c33, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartAutoManagementRequest",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(256, __c32, 0).pipe(S.optional));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1960,7 +2068,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StartQuotaUtilizationReportRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String),
@@ -1970,7 +2078,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StartQuotaUtilizationReportResponse",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1978,31 +2090,42 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopAutoManagementRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(50, __c6, 2) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(225, __c28, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(54, __c6, 6) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(256, __c32, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OptInType: S.optional(S.String),
           NotificationArn: S.optional(S.String),
-          ExclusionList: S.optional(__S(55, __c6, 7)),
+          ExclusionList: S.optional(__S(264, __c33, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAutoManagementRequest",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

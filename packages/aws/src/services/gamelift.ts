@@ -3351,8 +3351,8 @@ export const acceptMatch: API.OperationMethod<
   AcceptMatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcceptMatchInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcceptMatchOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<AcceptMatchInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<AcceptMatchOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -3418,8 +3418,8 @@ export const claimGameServer: API.OperationMethod<
   ClaimGameServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ClaimGameServerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<ClaimGameServerOutput>,
+  input: __S(673, __c42, 1) as any as S.Schema<ClaimGameServerInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<ClaimGameServerOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3471,8 +3471,8 @@ export const createAlias: API.OperationMethod<
   CreateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAliasInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateAliasOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateAliasInput>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateAliasOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3539,8 +3539,8 @@ export const createBuild: API.OperationMethod<
   CreateBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateBuildInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateBuildOutput>,
+  input: __S(800, __c50, 0) as any as S.Schema<CreateBuildInput>,
+  output: __S(801, __c50, 1) as any as S.Schema<CreateBuildOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3645,8 +3645,8 @@ export const createContainerFleet: API.OperationMethod<
   CreateContainerFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateContainerFleetInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateContainerFleetOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<CreateContainerFleetInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<CreateContainerFleetOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3771,8 +3771,8 @@ export const createContainerGroupDefinition: API.OperationMethod<
   CreateContainerGroupDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateContainerGroupDefinitionInput>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateContainerGroupDefinitionOutput>,
+  input: __S(976, __c61, 0) as any as S.Schema<CreateContainerGroupDefinitionInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<CreateContainerGroupDefinitionOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3880,8 +3880,8 @@ export const createFleet: API.OperationMethod<
   CreateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateFleetInput>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreateFleetOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<CreateFleetInput>,
+  output: __S(1041, __c65, 1) as any as S.Schema<CreateFleetOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -3943,8 +3943,8 @@ export const createFleetLocations: API.OperationMethod<
   CreateFleetLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateFleetLocationsInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreateFleetLocationsOutput>,
+  input: __S(1136, __c71, 0) as any as S.Schema<CreateFleetLocationsInput>,
+  output: __S(1152, __c72, 0) as any as S.Schema<CreateFleetLocationsOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -4014,8 +4014,8 @@ export const createGameServerGroup: API.OperationMethod<
   CreateGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateGameServerGroupOutput>,
+  input: __S(1171, __c73, 3) as any as S.Schema<CreateGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<CreateGameServerGroupOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -4090,8 +4090,8 @@ export const createGameSession: API.OperationMethod<
   CreateGameSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateGameSessionInput>,
-  output: __S(78, __c9, 6) as any as S.Schema<CreateGameSessionOutput>,
+  input: __S(1216, __c76, 0) as any as S.Schema<CreateGameSessionInput>,
+  output: __S(1232, __c77, 0) as any as S.Schema<CreateGameSessionOutput>,
   errors: [
     ConflictException,
     FleetCapacityExceededException,
@@ -4201,8 +4201,8 @@ export const createGameSessionQueue: API.OperationMethod<
   CreateGameSessionQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateGameSessionQueueInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<CreateGameSessionQueueOutput>,
+  input: __S(1280, __c80, 0) as any as S.Schema<CreateGameSessionQueueInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<CreateGameSessionQueueOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4236,8 +4236,8 @@ export const createLocation: API.OperationMethod<
   CreateLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateLocationInput>,
-  output: __S(92, __c11, 4) as any as S.Schema<CreateLocationOutput>,
+  input: __S(1328, __c83, 0) as any as S.Schema<CreateLocationInput>,
+  output: __S(1329, __c83, 1) as any as S.Schema<CreateLocationOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -4295,8 +4295,8 @@ export const createMatchmakingConfiguration: API.OperationMethod<
   CreateMatchmakingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateMatchmakingConfigurationInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<CreateMatchmakingConfigurationOutput>,
+  input: __S(1360, __c85, 0) as any as S.Schema<CreateMatchmakingConfigurationInput>,
+  output: __S(1376, __c86, 0) as any as S.Schema<CreateMatchmakingConfigurationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4348,8 +4348,8 @@ export const createMatchmakingRuleSet: API.OperationMethod<
   CreateMatchmakingRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateMatchmakingRuleSetInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<CreateMatchmakingRuleSetOutput>,
+  input: __S(1408, __c88, 0) as any as S.Schema<CreateMatchmakingRuleSetInput>,
+  output: __S(1409, __c88, 1) as any as S.Schema<CreateMatchmakingRuleSetOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4400,8 +4400,8 @@ export const createPlayerSession: API.OperationMethod<
   CreatePlayerSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreatePlayerSessionInput>,
-  output: __S(101, __c12, 5) as any as S.Schema<CreatePlayerSessionOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<CreatePlayerSessionInput>,
+  output: __S(1441, __c90, 1) as any as S.Schema<CreatePlayerSessionOutput>,
   errors: [
     GameSessionFullException,
     InternalServiceException,
@@ -4454,8 +4454,8 @@ export const createPlayerSessions: API.OperationMethod<
   CreatePlayerSessionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CreatePlayerSessionsInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<CreatePlayerSessionsOutput>,
+  input: __S(1473, __c92, 1) as any as S.Schema<CreatePlayerSessionsInput>,
+  output: __S(1474, __c92, 2) as any as S.Schema<CreatePlayerSessionsOutput>,
   errors: [
     GameSessionFullException,
     InternalServiceException,
@@ -4519,8 +4519,8 @@ export const createScript: API.OperationMethod<
   CreateScriptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateScriptInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<CreateScriptOutput>,
+  input: __S(1504, __c94, 0) as any as S.Schema<CreateScriptInput>,
+  output: __S(1536, __c96, 0) as any as S.Schema<CreateScriptOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -4593,8 +4593,8 @@ export const createVpcPeeringAuthorization: API.OperationMethod<
   CreateVpcPeeringAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<CreateVpcPeeringAuthorizationInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<CreateVpcPeeringAuthorizationOutput>,
+  input: __S(1552, __c97, 0) as any as S.Schema<CreateVpcPeeringAuthorizationInput>,
+  output: __S(1553, __c97, 1) as any as S.Schema<CreateVpcPeeringAuthorizationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4661,8 +4661,8 @@ export const createVpcPeeringConnection: API.OperationMethod<
   CreateVpcPeeringConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateVpcPeeringConnectionInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateVpcPeeringConnectionOutput>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateVpcPeeringConnectionInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<CreateVpcPeeringConnectionOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4698,8 +4698,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteAliasInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteAliasResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<DeleteAliasInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteAliasResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4741,8 +4741,8 @@ export const deleteBuild: API.OperationMethod<
   DeleteBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteBuildInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteBuildResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<DeleteBuildInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteBuildResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4784,8 +4784,8 @@ export const deleteContainerFleet: API.OperationMethod<
   DeleteContainerFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteContainerFleetInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteContainerFleetOutput>,
+  input: __S(1648, __c103, 0) as any as S.Schema<DeleteContainerFleetInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteContainerFleetOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4846,8 +4846,8 @@ export const deleteContainerGroupDefinition: API.OperationMethod<
   DeleteContainerGroupDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteContainerGroupDefinitionInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteContainerGroupDefinitionOutput>,
+  input: __S(1664, __c104, 0) as any as S.Schema<DeleteContainerGroupDefinitionInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteContainerGroupDefinitionOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4895,8 +4895,8 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteFleetInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteFleetResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeleteFleetInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteFleetResponse>,
   errors: [
     InternalServiceException,
     InvalidFleetStatusException,
@@ -4941,8 +4941,8 @@ export const deleteFleetLocations: API.OperationMethod<
   DeleteFleetLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteFleetLocationsInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteFleetLocationsOutput>,
+  input: __S(1696, __c106, 0) as any as S.Schema<DeleteFleetLocationsInput>,
+  output: __S(1152, __c72, 0) as any as S.Schema<DeleteFleetLocationsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -4999,8 +4999,8 @@ export const deleteGameServerGroup: API.OperationMethod<
   DeleteGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteGameServerGroupOutput>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DeleteGameServerGroupOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5031,8 +5031,8 @@ export const deleteGameSessionQueue: API.OperationMethod<
   DeleteGameSessionQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteGameSessionQueueInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteGameSessionQueueOutput>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteGameSessionQueueInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteGameSessionQueueOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5066,8 +5066,8 @@ export const deleteLocation: API.OperationMethod<
   DeleteLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteLocationInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteLocationOutput>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteLocationInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteLocationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5100,8 +5100,8 @@ export const deleteMatchmakingConfiguration: API.OperationMethod<
   DeleteMatchmakingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteMatchmakingConfigurationInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteMatchmakingConfigurationOutput>,
+  input: __S(1760, __c110, 0) as any as S.Schema<DeleteMatchmakingConfigurationInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteMatchmakingConfigurationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5139,8 +5139,8 @@ export const deleteMatchmakingRuleSet: API.OperationMethod<
   DeleteMatchmakingRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteMatchmakingRuleSetInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteMatchmakingRuleSetOutput>,
+  input: __S(1776, __c111, 0) as any as S.Schema<DeleteMatchmakingRuleSetInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteMatchmakingRuleSetOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5176,8 +5176,8 @@ export const deleteScalingPolicy: API.OperationMethod<
   DeleteScalingPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteScalingPolicyInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteScalingPolicyResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<DeleteScalingPolicyInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteScalingPolicyResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5223,8 +5223,8 @@ export const deleteScript: API.OperationMethod<
   DeleteScriptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteScriptInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteScriptResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<DeleteScriptInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteScriptResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5259,8 +5259,8 @@ export const deleteVpcPeeringAuthorization: API.OperationMethod<
   DeleteVpcPeeringAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteVpcPeeringAuthorizationInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteVpcPeeringAuthorizationOutput>,
+  input: __S(1824, __c114, 0) as any as S.Schema<DeleteVpcPeeringAuthorizationInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteVpcPeeringAuthorizationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5298,8 +5298,8 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   DeleteVpcPeeringConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteVpcPeeringConnectionInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteVpcPeeringConnectionOutput>,
+  input: __S(1840, __c115, 0) as any as S.Schema<DeleteVpcPeeringConnectionInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteVpcPeeringConnectionOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5335,8 +5335,8 @@ export const deregisterCompute: API.OperationMethod<
   DeregisterComputeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DeregisterComputeInput>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeregisterComputeOutput>,
+  input: __S(1856, __c116, 0) as any as S.Schema<DeregisterComputeInput>,
+  output: __S(1857, __c116, 1) as any as S.Schema<DeregisterComputeOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5377,8 +5377,8 @@ export const deregisterGameServer: API.OperationMethod<
   DeregisterGameServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeregisterGameServerInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeregisterGameServerResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<DeregisterGameServerInput>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeregisterGameServerResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5415,8 +5415,8 @@ export const describeAlias: API.OperationMethod<
   DescribeAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DescribeAliasInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<DescribeAliasOutput>,
+  input: __S(1888, __c118, 0) as any as S.Schema<DescribeAliasInput>,
+  output: __S(768, __c48, 0) as any as S.Schema<DescribeAliasOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5453,8 +5453,8 @@ export const describeBuild: API.OperationMethod<
   DescribeBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DescribeBuildInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<DescribeBuildOutput>,
+  input: __S(1904, __c119, 0) as any as S.Schema<DescribeBuildInput>,
+  output: __S(1920, __c120, 0) as any as S.Schema<DescribeBuildOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5512,8 +5512,8 @@ export const describeCompute: API.OperationMethod<
   DescribeComputeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DescribeComputeInput>,
-  output: __S(139, __c17, 3) as any as S.Schema<DescribeComputeOutput>,
+  input: __S(1936, __c121, 0) as any as S.Schema<DescribeComputeInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DescribeComputeOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5559,8 +5559,8 @@ export const describeContainerFleet: API.OperationMethod<
   DescribeContainerFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DescribeContainerFleetInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<DescribeContainerFleetOutput>,
+  input: __S(2000, __c125, 0) as any as S.Schema<DescribeContainerFleetInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<DescribeContainerFleetOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5609,8 +5609,8 @@ export const describeContainerGroupDefinition: API.OperationMethod<
   DescribeContainerGroupDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DescribeContainerGroupDefinitionInput>,
-  output: __S(52, __c6, 4) as any as S.Schema<DescribeContainerGroupDefinitionOutput>,
+  input: __S(2016, __c126, 0) as any as S.Schema<DescribeContainerGroupDefinitionInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DescribeContainerGroupDefinitionOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5674,8 +5674,8 @@ export const describeContainerGroupPortMappings: API.OperationMethod<
   DescribeContainerGroupPortMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<DescribeContainerGroupPortMappingsInput>,
-  output: __S(147, __c18, 3) as any as S.Schema<DescribeContainerGroupPortMappingsOutput>,
+  input: __S(2032, __c127, 0) as any as S.Schema<DescribeContainerGroupPortMappingsInput>,
+  output: __S(2037, __c127, 5) as any as S.Schema<DescribeContainerGroupPortMappingsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5755,8 +5755,8 @@ export const describeEC2InstanceLimits: API.OperationMethod<
   DescribeEC2InstanceLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<DescribeEC2InstanceLimitsInput>,
-  output: __S(151, __c18, 7) as any as S.Schema<DescribeEC2InstanceLimitsOutput>,
+  input: __S(2048, __c128, 0) as any as S.Schema<DescribeEC2InstanceLimitsInput>,
+  output: __S(2051, __c128, 3) as any as S.Schema<DescribeEC2InstanceLimitsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5808,8 +5808,8 @@ export const describeFleetAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetAttributes
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DescribeFleetAttributesInput>,
-  output: __S(154, __c19, 2) as any as S.Schema<DescribeFleetAttributesOutput>,
+  input: __S(2064, __c129, 0) as any as S.Schema<DescribeFleetAttributesInput>,
+  output: __S(2066, __c129, 2) as any as S.Schema<DescribeFleetAttributesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5877,8 +5877,8 @@ export const describeFleetCapacity: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetCapacity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DescribeFleetCapacityInput>,
-  output: __S(161, __c20, 1) as any as S.Schema<DescribeFleetCapacityOutput>,
+  input: __S(2080, __c130, 0) as any as S.Schema<DescribeFleetCapacityInput>,
+  output: __S(2082, __c130, 2) as any as S.Schema<DescribeFleetCapacityOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5927,8 +5927,8 @@ export const describeFleetDeployment: API.OperationMethod<
   DescribeFleetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DescribeFleetDeploymentInput>,
-  output: __S(167, __c20, 7) as any as S.Schema<DescribeFleetDeploymentOutput>,
+  input: __S(2128, __c133, 0) as any as S.Schema<DescribeFleetDeploymentInput>,
+  output: __S(2131, __c133, 3) as any as S.Schema<DescribeFleetDeploymentOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -5973,8 +5973,8 @@ export const describeFleetEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DescribeFleetEventsInput>,
-  output: __S(171, __c21, 3) as any as S.Schema<DescribeFleetEventsOutput>,
+  input: __S(2176, __c136, 0) as any as S.Schema<DescribeFleetEventsInput>,
+  output: __S(2179, __c136, 3) as any as S.Schema<DescribeFleetEventsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6034,8 +6034,8 @@ export const describeFleetLocationAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DescribeFleetLocationAttributesInput>,
-  output: __S(175, __c21, 7) as any as S.Schema<DescribeFleetLocationAttributesOutput>,
+  input: __S(2192, __c137, 0) as any as S.Schema<DescribeFleetLocationAttributesInput>,
+  output: __S(2195, __c137, 3) as any as S.Schema<DescribeFleetLocationAttributesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6088,8 +6088,8 @@ export const describeFleetLocationCapacity: API.OperationMethod<
   DescribeFleetLocationCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DescribeFleetLocationCapacityInput>,
-  output: __S(177, __c22, 1) as any as S.Schema<DescribeFleetLocationCapacityOutput>,
+  input: __S(2208, __c138, 0) as any as S.Schema<DescribeFleetLocationCapacityInput>,
+  output: __S(2209, __c138, 1) as any as S.Schema<DescribeFleetLocationCapacityOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6138,8 +6138,8 @@ export const describeFleetLocationUtilization: API.OperationMethod<
   DescribeFleetLocationUtilizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DescribeFleetLocationUtilizationInput>,
-  output: __S(180, __c22, 4) as any as S.Schema<DescribeFleetLocationUtilizationOutput>,
+  input: __S(2224, __c139, 0) as any as S.Schema<DescribeFleetLocationUtilizationInput>,
+  output: __S(2225, __c139, 1) as any as S.Schema<DescribeFleetLocationUtilizationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6191,8 +6191,8 @@ export const describeFleetPortSettings: API.OperationMethod<
   DescribeFleetPortSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DescribeFleetPortSettingsInput>,
-  output: __S(182, __c22, 6) as any as S.Schema<DescribeFleetPortSettingsOutput>,
+  input: __S(2256, __c141, 0) as any as S.Schema<DescribeFleetPortSettingsInput>,
+  output: __S(2257, __c141, 1) as any as S.Schema<DescribeFleetPortSettingsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6252,8 +6252,8 @@ export const describeFleetUtilization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetUtilization
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DescribeFleetUtilizationInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<DescribeFleetUtilizationOutput>,
+  input: __S(2272, __c142, 0) as any as S.Schema<DescribeFleetUtilizationInput>,
+  output: __S(2274, __c142, 2) as any as S.Schema<DescribeFleetUtilizationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6298,8 +6298,8 @@ export const describeGameServer: API.OperationMethod<
   DescribeGameServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DescribeGameServerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<DescribeGameServerOutput>,
+  input: __S(2288, __c143, 0) as any as S.Schema<DescribeGameServerInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<DescribeGameServerOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6340,8 +6340,8 @@ export const describeGameServerGroup: API.OperationMethod<
   DescribeGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DescribeGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<DescribeGameServerGroupOutput>,
+  input: __S(2304, __c144, 0) as any as S.Schema<DescribeGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DescribeGameServerGroupOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6390,8 +6390,8 @@ export const describeGameServerInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameServerInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DescribeGameServerInstancesInput>,
-  output: __S(191, __c23, 7) as any as S.Schema<DescribeGameServerInstancesOutput>,
+  input: __S(2320, __c145, 0) as any as S.Schema<DescribeGameServerInstancesInput>,
+  output: __S(2323, __c145, 3) as any as S.Schema<DescribeGameServerInstancesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6458,8 +6458,8 @@ export const describeGameSessionDetails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameSessionDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DescribeGameSessionDetailsInput>,
-  output: __S(195, __c24, 3) as any as S.Schema<DescribeGameSessionDetailsOutput>,
+  input: __S(2336, __c146, 0) as any as S.Schema<DescribeGameSessionDetailsInput>,
+  output: __S(2339, __c146, 3) as any as S.Schema<DescribeGameSessionDetailsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6507,8 +6507,8 @@ export const describeGameSessionPlacement: API.OperationMethod<
   DescribeGameSessionPlacementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DescribeGameSessionPlacementInput>,
-  output: __S(203, __c25, 3) as any as S.Schema<DescribeGameSessionPlacementOutput>,
+  input: __S(2352, __c147, 0) as any as S.Schema<DescribeGameSessionPlacementInput>,
+  output: __S(2372, __c148, 4) as any as S.Schema<DescribeGameSessionPlacementOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6545,8 +6545,8 @@ export const describeGameSessionQueues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameSessionQueue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<DescribeGameSessionQueuesInput>,
-  output: __S(206, __c25, 6) as any as S.Schema<DescribeGameSessionQueuesOutput>,
+  input: __S(2400, __c150, 0) as any as S.Schema<DescribeGameSessionQueuesInput>,
+  output: __S(2402, __c150, 2) as any as S.Schema<DescribeGameSessionQueuesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6620,8 +6620,8 @@ export const describeGameSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameSession
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DescribeGameSessionsInput>,
-  output: __S(209, __c26, 1) as any as S.Schema<DescribeGameSessionsOutput>,
+  input: __S(2416, __c151, 0) as any as S.Schema<DescribeGameSessionsInput>,
+  output: __S(2417, __c151, 1) as any as S.Schema<DescribeGameSessionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6693,8 +6693,8 @@ export const describeInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DescribeInstancesInput>,
-  output: __S(213, __c26, 5) as any as S.Schema<DescribeInstancesOutput>,
+  input: __S(2448, __c153, 0) as any as S.Schema<DescribeInstancesInput>,
+  output: __S(2451, __c153, 3) as any as S.Schema<DescribeInstancesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6747,8 +6747,8 @@ export const describeMatchmaking: API.OperationMethod<
   DescribeMatchmakingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<DescribeMatchmakingInput>,
-  output: __S(224, __c28, 0) as any as S.Schema<DescribeMatchmakingOutput>,
+  input: __S(2464, __c154, 0) as any as S.Schema<DescribeMatchmakingInput>,
+  output: __S(2466, __c154, 2) as any as S.Schema<DescribeMatchmakingOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnsupportedRegionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6784,8 +6784,8 @@ export const describeMatchmakingConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MatchmakingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<DescribeMatchmakingConfigurationsInput>,
-  output: __S(227, __c28, 3) as any as S.Schema<DescribeMatchmakingConfigurationsOutput>,
+  input: __S(2496, __c156, 0) as any as S.Schema<DescribeMatchmakingConfigurationsInput>,
+  output: __S(2498, __c156, 2) as any as S.Schema<DescribeMatchmakingConfigurationsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnsupportedRegionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6824,8 +6824,8 @@ export const describeMatchmakingRuleSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MatchmakingRuleSet
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<DescribeMatchmakingRuleSetsInput>,
-  output: __S(230, __c28, 6) as any as S.Schema<DescribeMatchmakingRuleSetsOutput>,
+  input: __S(2512, __c157, 0) as any as S.Schema<DescribeMatchmakingRuleSetsInput>,
+  output: __S(2514, __c157, 2) as any as S.Schema<DescribeMatchmakingRuleSetsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6884,8 +6884,8 @@ export const describePlayerSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PlayerSession
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<DescribePlayerSessionsInput>,
-  output: __S(232, __c29, 0) as any as S.Schema<DescribePlayerSessionsOutput>,
+  input: __S(2528, __c158, 0) as any as S.Schema<DescribePlayerSessionsInput>,
+  output: __S(2529, __c158, 1) as any as S.Schema<DescribePlayerSessionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6938,8 +6938,8 @@ export const describeRuntimeConfiguration: API.OperationMethod<
   DescribeRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<DescribeRuntimeConfigurationInput>,
-  output: __S(234, __c29, 2) as any as S.Schema<DescribeRuntimeConfigurationOutput>,
+  input: __S(2544, __c159, 0) as any as S.Schema<DescribeRuntimeConfigurationInput>,
+  output: __S(2560, __c160, 0) as any as S.Schema<DescribeRuntimeConfigurationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -6978,8 +6978,8 @@ export const describeScalingPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScalingPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<DescribeScalingPoliciesInput>,
-  output: __S(239, __c29, 7) as any as S.Schema<DescribeScalingPoliciesOutput>,
+  input: __S(2576, __c161, 0) as any as S.Schema<DescribeScalingPoliciesInput>,
+  output: __S(2579, __c161, 3) as any as S.Schema<DescribeScalingPoliciesOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7026,8 +7026,8 @@ export const describeScript: API.OperationMethod<
   DescribeScriptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DescribeScriptInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<DescribeScriptOutput>,
+  input: __S(2608, __c163, 0) as any as S.Schema<DescribeScriptInput>,
+  output: __S(1536, __c96, 0) as any as S.Schema<DescribeScriptOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7061,8 +7061,8 @@ export const describeVpcPeeringAuthorizations: API.OperationMethod<
   DescribeVpcPeeringAuthorizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<DescribeVpcPeeringAuthorizationsInput>,
-  output: __S(243, __c30, 3) as any as S.Schema<DescribeVpcPeeringAuthorizationsOutput>,
+  input: __S(2624, __c164, 0) as any as S.Schema<DescribeVpcPeeringAuthorizationsInput>,
+  output: __S(2626, __c164, 2) as any as S.Schema<DescribeVpcPeeringAuthorizationsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7097,8 +7097,8 @@ export const describeVpcPeeringConnections: API.OperationMethod<
   DescribeVpcPeeringConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<DescribeVpcPeeringConnectionsInput>,
-  output: __S(248, __c31, 0) as any as S.Schema<DescribeVpcPeeringConnectionsOutput>,
+  input: __S(2640, __c165, 0) as any as S.Schema<DescribeVpcPeeringConnectionsInput>,
+  output: __S(2644, __c165, 4) as any as S.Schema<DescribeVpcPeeringConnectionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7151,8 +7151,8 @@ export const getComputeAccess: API.OperationMethod<
   GetComputeAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<GetComputeAccessInput>,
-  output: __S(250, __c31, 2) as any as S.Schema<GetComputeAccessOutput>,
+  input: __S(2656, __c166, 0) as any as S.Schema<GetComputeAccessInput>,
+  output: __S(2657, __c166, 1) as any as S.Schema<GetComputeAccessOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7210,8 +7210,8 @@ export const getComputeAuthToken: API.OperationMethod<
   GetComputeAuthTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GetComputeAuthTokenInput>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetComputeAuthTokenOutput>,
+  input: __S(2672, __c167, 0) as any as S.Schema<GetComputeAuthTokenInput>,
+  output: __S(2673, __c167, 1) as any as S.Schema<GetComputeAuthTokenOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7249,8 +7249,8 @@ export const getGameSessionLogUrl: API.OperationMethod<
   GetGameSessionLogUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetGameSessionLogUrlInput>,
-  output: __S(254, __c31, 6) as any as S.Schema<GetGameSessionLogUrlOutput>,
+  input: __S(2688, __c168, 0) as any as S.Schema<GetGameSessionLogUrlInput>,
+  output: __S(2689, __c168, 1) as any as S.Schema<GetGameSessionLogUrlOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7308,8 +7308,8 @@ export const getInstanceAccess: API.OperationMethod<
   GetInstanceAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetInstanceAccessInput>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetInstanceAccessOutput>,
+  input: __S(2704, __c169, 0) as any as S.Schema<GetInstanceAccessInput>,
+  output: __S(2707, __c169, 3) as any as S.Schema<GetInstanceAccessOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7351,8 +7351,8 @@ export const getPlayerConnectionDetails: API.OperationMethod<
   GetPlayerConnectionDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetPlayerConnectionDetailsInput>,
-  output: __S(264, __c33, 0) as any as S.Schema<GetPlayerConnectionDetailsOutput>,
+  input: __S(2720, __c170, 0) as any as S.Schema<GetPlayerConnectionDetailsInput>,
+  output: __S(2725, __c170, 5) as any as S.Schema<GetPlayerConnectionDetailsOutput>,
   errors: [
     InternalServiceException,
     InvalidGameSessionStatusException,
@@ -7392,8 +7392,8 @@ export const listAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Alias
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListAliasesInput>,
-  output: __S(267, __c33, 3) as any as S.Schema<ListAliasesOutput>,
+  input: __S(2736, __c171, 0) as any as S.Schema<ListAliasesInput>,
+  output: __S(2738, __c171, 2) as any as S.Schema<ListAliasesOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7434,8 +7434,8 @@ export const listBuilds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Build
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListBuildsInput>,
-  output: __S(270, __c33, 6) as any as S.Schema<ListBuildsOutput>,
+  input: __S(2752, __c172, 0) as any as S.Schema<ListBuildsInput>,
+  output: __S(2754, __c172, 2) as any as S.Schema<ListBuildsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7489,8 +7489,8 @@ export const listCompute: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Compute
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListComputeInput>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListComputeOutput>,
+  input: __S(2768, __c173, 0) as any as S.Schema<ListComputeInput>,
+  output: __S(2770, __c173, 2) as any as S.Schema<ListComputeOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7547,8 +7547,8 @@ export const listContainerFleets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContainerFleet
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListContainerFleetsInput>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListContainerFleetsOutput>,
+  input: __S(2784, __c174, 0) as any as S.Schema<ListContainerFleetsInput>,
+  output: __S(2786, __c174, 2) as any as S.Schema<ListContainerFleetsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7602,8 +7602,8 @@ export const listContainerGroupDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContainerGroupDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListContainerGroupDefinitionsInput>,
-  output: __S(279, __c34, 7) as any as S.Schema<ListContainerGroupDefinitionsOutput>,
+  input: __S(2800, __c175, 0) as any as S.Schema<ListContainerGroupDefinitionsInput>,
+  output: __S(2817, __c176, 1) as any as S.Schema<ListContainerGroupDefinitionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7659,8 +7659,8 @@ export const listContainerGroupDefinitionVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContainerGroupDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListContainerGroupDefinitionVersionsInput>,
-  output: __S(279, __c34, 7) as any as S.Schema<ListContainerGroupDefinitionVersionsOutput>,
+  input: __S(2832, __c177, 0) as any as S.Schema<ListContainerGroupDefinitionVersionsInput>,
+  output: __S(2817, __c176, 1) as any as S.Schema<ListContainerGroupDefinitionVersionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7713,8 +7713,8 @@ export const listFleetDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetDeployment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ListFleetDeploymentsInput>,
-  output: __S(283, __c35, 3) as any as S.Schema<ListFleetDeploymentsOutput>,
+  input: __S(2848, __c178, 0) as any as S.Schema<ListFleetDeploymentsInput>,
+  output: __S(2850, __c178, 2) as any as S.Schema<ListFleetDeploymentsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7773,8 +7773,8 @@ export const listFleets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<ListFleetsInput>,
-  output: __S(285, __c35, 5) as any as S.Schema<ListFleetsOutput>,
+  input: __S(2864, __c179, 0) as any as S.Schema<ListFleetsInput>,
+  output: __S(2865, __c179, 1) as any as S.Schema<ListFleetsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -7809,8 +7809,8 @@ export const listGameServerGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameServerGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListGameServerGroupsInput>,
-  output: __S(288, __c36, 0) as any as S.Schema<ListGameServerGroupsOutput>,
+  input: __S(2880, __c180, 0) as any as S.Schema<ListGameServerGroupsInput>,
+  output: __S(2882, __c180, 2) as any as S.Schema<ListGameServerGroupsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7848,8 +7848,8 @@ export const listGameServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListGameServersInput>,
-  output: __S(291, __c36, 3) as any as S.Schema<ListGameServersOutput>,
+  input: __S(2896, __c181, 0) as any as S.Schema<ListGameServersInput>,
+  output: __S(2898, __c181, 2) as any as S.Schema<ListGameServersOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7886,8 +7886,8 @@ export const listLocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LocationModel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<ListLocationsInput>,
-  output: __S(294, __c36, 6) as any as S.Schema<ListLocationsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListLocationsInput>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListLocationsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7926,8 +7926,8 @@ export const listScripts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Script
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<ListScriptsInput>,
-  output: __S(297, __c37, 1) as any as S.Schema<ListScriptsOutput>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListScriptsInput>,
+  output: __S(18, __c1, 2) as any as S.Schema<ListScriptsOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7973,8 +7973,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8072,8 +8072,8 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<PutScalingPolicyInput>,
-  output: __S(301, __c37, 5) as any as S.Schema<PutScalingPolicyOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<PutScalingPolicyInput>,
+  output: __S(49, __c3, 1) as any as S.Schema<PutScalingPolicyOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8133,8 +8133,8 @@ export const registerCompute: API.OperationMethod<
   RegisterComputeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<RegisterComputeInput>,
-  output: __S(139, __c17, 3) as any as S.Schema<RegisterComputeOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<RegisterComputeInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<RegisterComputeOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -8186,8 +8186,8 @@ export const registerGameServer: API.OperationMethod<
   RegisterGameServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<RegisterGameServerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<RegisterGameServerOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<RegisterGameServerInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<RegisterGameServerOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -8229,8 +8229,8 @@ export const requestUploadCredentials: API.OperationMethod<
   RequestUploadCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<RequestUploadCredentialsInput>,
-  output: __S(305, __c38, 1) as any as S.Schema<RequestUploadCredentialsOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<RequestUploadCredentialsInput>,
+  output: __S(97, __c6, 1) as any as S.Schema<RequestUploadCredentialsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8269,8 +8269,8 @@ export const resolveAlias: API.OperationMethod<
   ResolveAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<ResolveAliasInput>,
-  output: __S(307, __c38, 3) as any as S.Schema<ResolveAliasOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<ResolveAliasInput>,
+  output: __S(128, __c8, 0) as any as S.Schema<ResolveAliasOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8315,8 +8315,8 @@ export const resumeGameServerGroup: API.OperationMethod<
   ResumeGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<ResumeGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<ResumeGameServerGroupOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<ResumeGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<ResumeGameServerGroupOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8416,8 +8416,8 @@ export const searchGameSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GameSession
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<SearchGameSessionsInput>,
-  output: __S(310, __c38, 6) as any as S.Schema<SearchGameSessionsOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<SearchGameSessionsInput>,
+  output: __S(161, __c10, 1) as any as S.Schema<SearchGameSessionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8474,8 +8474,8 @@ export const startFleetActions: API.OperationMethod<
   StartFleetActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<StartFleetActionsInput>,
-  output: __S(307, __c38, 3) as any as S.Schema<StartFleetActionsOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<StartFleetActionsInput>,
+  output: __S(128, __c8, 0) as any as S.Schema<StartFleetActionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8581,8 +8581,8 @@ export const startGameSessionPlacement: API.OperationMethod<
   StartGameSessionPlacementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<StartGameSessionPlacementInput>,
-  output: __S(203, __c25, 3) as any as S.Schema<StartGameSessionPlacementOutput>,
+  input: __S(194, __c12, 2) as any as S.Schema<StartGameSessionPlacementInput>,
+  output: __S(2372, __c148, 4) as any as S.Schema<StartGameSessionPlacementOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8647,8 +8647,8 @@ export const startMatchBackfill: API.OperationMethod<
   StartMatchBackfillError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<StartMatchBackfillInput>,
-  output: __S(316, __c39, 4) as any as S.Schema<StartMatchBackfillOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<StartMatchBackfillInput>,
+  output: __S(224, __c14, 0) as any as S.Schema<StartMatchBackfillOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8702,8 +8702,8 @@ export const startMatchmaking: API.OperationMethod<
   StartMatchmakingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<StartMatchmakingInput>,
-  output: __S(316, __c39, 4) as any as S.Schema<StartMatchmakingOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<StartMatchmakingInput>,
+  output: __S(224, __c14, 0) as any as S.Schema<StartMatchmakingOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8757,8 +8757,8 @@ export const stopFleetActions: API.OperationMethod<
   StopFleetActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<StopFleetActionsInput>,
-  output: __S(307, __c38, 3) as any as S.Schema<StopFleetActionsOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<StopFleetActionsInput>,
+  output: __S(128, __c8, 0) as any as S.Schema<StopFleetActionsOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8798,8 +8798,8 @@ export const stopGameSessionPlacement: API.OperationMethod<
   StopGameSessionPlacementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<StopGameSessionPlacementInput>,
-  output: __S(203, __c25, 3) as any as S.Schema<StopGameSessionPlacementOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<StopGameSessionPlacementInput>,
+  output: __S(2372, __c148, 4) as any as S.Schema<StopGameSessionPlacementOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8843,8 +8843,8 @@ export const stopMatchmaking: API.OperationMethod<
   StopMatchmakingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<StopMatchmakingInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopMatchmakingOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<StopMatchmakingInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<StopMatchmakingOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8894,8 +8894,8 @@ export const suspendGameServerGroup: API.OperationMethod<
   SuspendGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<SuspendGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<SuspendGameServerGroupOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<SuspendGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<SuspendGameServerGroupOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -8943,8 +8943,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9018,8 +9018,8 @@ export const terminateGameSession: API.OperationMethod<
   TerminateGameSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<TerminateGameSessionInput>,
-  output: __S(324, __c40, 4) as any as S.Schema<TerminateGameSessionOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<TerminateGameSessionInput>,
+  output: __S(337, __c21, 1) as any as S.Schema<TerminateGameSessionOutput>,
   errors: [
     InternalServiceException,
     InvalidGameSessionStatusException,
@@ -9068,8 +9068,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9107,8 +9107,8 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<UpdateAliasInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateAliasOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<UpdateAliasInput>,
+  output: __S(768, __c48, 0) as any as S.Schema<UpdateAliasOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9146,8 +9146,8 @@ export const updateBuild: API.OperationMethod<
   UpdateBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<UpdateBuildInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<UpdateBuildOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<UpdateBuildInput>,
+  output: __S(1920, __c120, 0) as any as S.Schema<UpdateBuildOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9226,8 +9226,8 @@ export const updateContainerFleet: API.OperationMethod<
   UpdateContainerFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<UpdateContainerFleetInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateContainerFleetOutput>,
+  input: __S(401, __c25, 1) as any as S.Schema<UpdateContainerFleetInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<UpdateContainerFleetOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9296,8 +9296,8 @@ export const updateContainerGroupDefinition: API.OperationMethod<
   UpdateContainerGroupDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<UpdateContainerGroupDefinitionInput>,
-  output: __S(52, __c6, 4) as any as S.Schema<UpdateContainerGroupDefinitionOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateContainerGroupDefinitionInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<UpdateContainerGroupDefinitionOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9347,8 +9347,8 @@ export const updateFleetAttributes: API.OperationMethod<
   UpdateFleetAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<UpdateFleetAttributesInput>,
-  output: __S(332, __c41, 4) as any as S.Schema<UpdateFleetAttributesOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateFleetAttributesInput>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateFleetAttributesOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -9432,8 +9432,8 @@ export const updateFleetCapacity: API.OperationMethod<
   UpdateFleetCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<UpdateFleetCapacityInput>,
-  output: __S(334, __c41, 6) as any as S.Schema<UpdateFleetCapacityOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<UpdateFleetCapacityInput>,
+  output: __S(465, __c29, 1) as any as S.Schema<UpdateFleetCapacityOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -9486,8 +9486,8 @@ export const updateFleetPortSettings: API.OperationMethod<
   UpdateFleetPortSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<UpdateFleetPortSettingsInput>,
-  output: __S(332, __c41, 4) as any as S.Schema<UpdateFleetPortSettingsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateFleetPortSettingsInput>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateFleetPortSettingsOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -9547,8 +9547,8 @@ export const updateGameServer: API.OperationMethod<
   UpdateGameServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateGameServerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateGameServerOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<UpdateGameServerInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<UpdateGameServerOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9596,8 +9596,8 @@ export const updateGameServerGroup: API.OperationMethod<
   UpdateGameServerGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<UpdateGameServerGroupInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateGameServerGroupOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<UpdateGameServerGroupInput>,
+  output: __S(1184, __c74, 0) as any as S.Schema<UpdateGameServerGroupOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9636,8 +9636,8 @@ export const updateGameSession: API.OperationMethod<
   UpdateGameSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<UpdateGameSessionInput>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdateGameSessionOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateGameSessionInput>,
+  output: __S(1232, __c77, 0) as any as S.Schema<UpdateGameSessionOutput>,
   errors: [
     ConflictException,
     InternalServiceException,
@@ -9676,8 +9676,8 @@ export const updateGameSessionQueue: API.OperationMethod<
   UpdateGameSessionQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<UpdateGameSessionQueueInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateGameSessionQueueOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<UpdateGameSessionQueueInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<UpdateGameSessionQueueOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9713,8 +9713,8 @@ export const updateMatchmakingConfiguration: API.OperationMethod<
   UpdateMatchmakingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<UpdateMatchmakingConfigurationInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<UpdateMatchmakingConfigurationOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateMatchmakingConfigurationInput>,
+  output: __S(1376, __c86, 0) as any as S.Schema<UpdateMatchmakingConfigurationOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9764,8 +9764,8 @@ export const updateRuntimeConfiguration: API.OperationMethod<
   UpdateRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<UpdateRuntimeConfigurationInput>,
-  output: __S(234, __c29, 2) as any as S.Schema<UpdateRuntimeConfigurationOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<UpdateRuntimeConfigurationInput>,
+  output: __S(2560, __c160, 0) as any as S.Schema<UpdateRuntimeConfigurationOutput>,
   errors: [
     InternalServiceException,
     InvalidFleetStatusException,
@@ -9816,8 +9816,8 @@ export const updateScript: API.OperationMethod<
   UpdateScriptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<UpdateScriptInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<UpdateScriptOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateScriptInput>,
+  output: __S(1536, __c96, 0) as any as S.Schema<UpdateScriptOutput>,
   errors: [
     InternalServiceException,
     InvalidRequestException,
@@ -9852,8 +9852,8 @@ export const validateMatchmakingRuleSet: API.OperationMethod<
   ValidateMatchmakingRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ValidateMatchmakingRuleSetInput>,
-  output: __S(344, __c43, 0) as any as S.Schema<ValidateMatchmakingRuleSetOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<ValidateMatchmakingRuleSetInput>,
+  output: __S(609, __c38, 1) as any as S.Schema<ValidateMatchmakingRuleSetOutput>,
   errors: [InternalServiceException, InvalidRequestException, UnsupportedRegionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9864,35 +9864,676 @@ export const validateMatchmakingRuleSet: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SensitiveString);
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(688, __c43, 0)),
+          Limit: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListLocationsInput" });
+    case 1:
+      return S.Array(__S(1346, __c84, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Locations: S.optional(__S(1, __c0, 1)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListLocationsOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Limit: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListScriptsInput" });
+    case 1:
+      return S.Array(__S(1520, __c95, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Scripts: S.optional(__S(17, __c1, 1)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListScriptsOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(753, __c47, 1)) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          FleetId: S.optional(S.String),
+          ScalingAdjustment: S.optional(S.Number),
+          ScalingAdjustmentType: S.optional(S.String),
+          Threshold: S.optional(S.Number),
+          ComparisonOperator: S.optional(S.String),
+          EvaluationPeriods: S.optional(S.Number),
+          MetricName: S.optional(S.String),
+          PolicyType: S.optional(S.String),
+          TargetConfiguration: S.optional(__S(2592, __c162, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutScalingPolicyInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "PutScalingPolicyOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          ComputeName: S.optional(S.String),
+          CertificatePath: S.optional(S.String),
+          DnsName: S.optional(S.String),
+          IpAddress: S.optional(SensitiveString),
+          Location: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RegisterComputeInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameServerGroupName: S.optional(S.String),
+          GameServerId: S.optional(S.String),
+          InstanceId: S.optional(S.String),
+          ConnectionInfo: S.optional(S.String),
+          GameServerData: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RegisterGameServerInput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BuildId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RequestUploadCredentialsInput",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TicketId: S.optional(S.String),
-          PlayerIds: S.optional(__S(0, __c0, 0)),
-          AcceptanceType: S.optional(S.String),
+          UploadCredentials: S.optional(__S(848, __c53, 0)),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "RequestUploadCredentialsOutput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AliasId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResolveAliasInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FleetId: S.optional(S.String), FleetArn: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ResolveAliasOutput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameServerGroupName: S.optional(S.String),
+          ResumeActions: S.optional(__S(688, __c43, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AcceptMatchInput" });
+      ).annotate({
+        identifier: "ResumeGameServerGroupInput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          AliasId: S.optional(S.String),
+          Location: S.optional(S.String),
+          FilterExpression: S.optional(S.String),
+          SortExpression: S.optional(S.String),
+          Limit: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SearchGameSessionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GameSessions: S.optional(__S(2432, __c152, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "SearchGameSessionsOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          Actions: S.optional(__S(688, __c43, 0)),
+          Location: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartFleetActionsInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PlayerId: S.optional(SensitiveString),
+          PlayerData: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "DesiredPlayerSession" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
     case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AcceptMatchOutput",
+      return S.suspend(() =>
+        S.Struct({
+          PlacementId: S.optional(S.String),
+          GameSessionQueueName: S.optional(S.String),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
+          MaximumPlayerSessionCount: S.optional(S.Number),
+          GameSessionName: S.optional(S.String),
+          PlayerLatencies: S.optional(__S(2369, __c148, 1)),
+          DesiredPlayerSessions: S.optional(__S(193, __c12, 1)),
+          GameSessionData: S.optional(SensitiveString),
+          PriorityConfigurationOverride: S.optional(__S(2370, __c148, 2)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartGameSessionPlacementInput",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TicketId: S.optional(S.String),
+          ConfigurationName: S.optional(S.String),
+          GameSessionArn: S.optional(S.String),
+          Players: S.optional(__S(2485, __c155, 5)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartMatchBackfillInput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MatchmakingTicket: S.optional(__S(2487, __c155, 7)) }).pipe(ns),
+      ).annotate({ identifier: "StartMatchBackfillOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TicketId: S.optional(S.String),
+          ConfigurationName: S.optional(S.String),
+          Players: S.optional(__S(2485, __c155, 5)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartMatchmakingInput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          Actions: S.optional(__S(688, __c43, 0)),
+          Location: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StopFleetActionsInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PlacementId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StopGameSessionPlacementInput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TicketId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopMatchmakingInput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameServerGroupName: S.optional(S.String),
+          SuspendActions: S.optional(__S(688, __c43, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SuspendGameServerGroupInput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.optional(S.String), Tags: S.optional(__S(753, __c47, 1)) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameSessionId: S.optional(S.String),
+          TerminationMode: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "TerminateGameSessionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GameSession: S.optional(__S(1264, __c79, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "TerminateGameSessionOutput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceARN: S.optional(S.String),
+          TagKeys: S.optional(__S(880, __c55, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AliasId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          RoutingStrategy: S.optional(__S(784, __c49, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateAliasInput" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BuildId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Version: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateBuildInput" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
-      return S.suspend(() => S.Struct({ InstanceStatuses: S.optional(__S(3, __c0, 3)) })).annotate({
-        identifier: "ClaimFilterOption",
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          GameServerContainerGroupDefinitionName: S.optional(S.String),
+          PerInstanceContainerGroupDefinitionName: S.optional(S.String),
+          GameServerContainerGroupsPerInstance: S.optional(S.Number),
+          InstanceConnectionPortRange: S.optional(__S(960, __c60, 0)),
+          InstanceInboundPermissionAuthorizations: S.optional(__S(929, __c58, 1)),
+          InstanceInboundPermissionRevocations: S.optional(__S(929, __c58, 1)),
+          DeploymentConfiguration: S.optional(__S(2160, __c135, 0)),
+          Description: S.optional(S.String),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
+          NewGameSessionProtectionPolicy: S.optional(S.String),
+          GameSessionCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
+          LogConfiguration: S.optional(__S(961, __c60, 1)),
+          RemoveAttributes: S.optional(__S(400, __c25, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateContainerFleetInput",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          GameServerContainerDefinition: S.optional(__S(992, __c62, 0)),
+          SupportContainerDefinitions: S.optional(__S(994, __c62, 2)),
+          TotalMemoryLimitMebibytes: S.optional(S.Number),
+          TotalVcpuLimit: S.optional(S.Number),
+          VersionDescription: S.optional(S.String),
+          SourceVersionNumber: S.optional(S.Number),
+          OperatingSystem: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateContainerGroupDefinitionInput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          NewGameSessionProtectionPolicy: S.optional(S.String),
+          ResourceCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
+          AnywhereConfiguration: S.optional(__S(1104, __c69, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateFleetAttributesInput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FleetId: S.optional(S.String), FleetArn: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateFleetAttributesOutput",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          DesiredInstances: S.optional(S.Number),
+          MinSize: S.optional(S.Number),
+          MaxSize: S.optional(S.Number),
+          Location: S.optional(S.String),
+          ManagedCapacityConfiguration: S.optional(__S(2112, __c132, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateFleetCapacityInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          FleetArn: S.optional(S.String),
+          Location: S.optional(S.String),
+          ManagedCapacityConfiguration: S.optional(__S(2112, __c132, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateFleetCapacityOutput",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          InboundPermissionAuthorizations: S.optional(__S(929, __c58, 1)),
+          InboundPermissionRevocations: S.optional(__S(929, __c58, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateFleetPortSettingsInput",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
           GameServerId: S.optional(S.String),
           GameServerData: S.optional(SensitiveString),
-          FilterOption: S.optional(__S(4, __c0, 4)),
+          UtilizationStatus: S.optional(S.String),
+          HealthCheck: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateGameServerInput" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameServerGroupName: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          InstanceDefinitions: S.optional(__S(1201, __c75, 1)),
+          GameServerProtectionPolicy: S.optional(S.String),
+          BalancingStrategy: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateGameServerGroupInput",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GameSessionId: S.optional(S.String),
+          MaximumPlayerSessionCount: S.optional(S.Number),
+          Name: S.optional(S.String),
+          PlayerSessionCreationPolicy: S.optional(S.String),
+          ProtectionPolicy: S.optional(S.String),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateGameSessionInput" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          TimeoutInSeconds: S.optional(S.Number),
+          PlayerLatencyPolicies: S.optional(__S(1313, __c82, 1)),
+          Destinations: S.optional(__S(1315, __c82, 3)),
+          FilterConfiguration: S.optional(__S(1316, __c82, 4)),
+          PriorityConfiguration: S.optional(__S(1317, __c82, 5)),
+          CustomEventData: S.optional(SensitiveString),
+          NotificationTarget: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateGameSessionQueueInput",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          GameSessionQueueArns: S.optional(__S(880, __c55, 0)),
+          RequestTimeoutSeconds: S.optional(S.Number),
+          AcceptanceTimeoutSeconds: S.optional(S.Number),
+          AcceptanceRequired: S.optional(S.Boolean),
+          RuleSetName: S.optional(S.String),
+          NotificationTarget: S.optional(S.String),
+          AdditionalPlayerCount: S.optional(S.Number),
+          CustomEventData: S.optional(SensitiveString),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
+          GameSessionData: S.optional(SensitiveString),
+          BackfillMode: S.optional(S.String),
+          FlexMatchMode: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateMatchmakingConfigurationInput",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          RuntimeConfiguration: S.optional(__S(1122, __c70, 2)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateRuntimeConfigurationInput",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ScriptId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Version: S.optional(S.String),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
+          ZipFile: S.optional(T.Blob),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateScriptInput" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleSetBody: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ValidateMatchmakingRuleSetInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Valid: S.optional(S.Boolean) }).pipe(ns)).annotate({
+        identifier: "ValidateMatchmakingRuleSetOutput",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TicketId: S.optional(S.String),
+          PlayerIds: S.optional(__S(640, __c40, 0)),
+          AcceptanceType: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AcceptMatchInput" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AcceptMatchOutput",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InstanceStatuses: S.optional(__S(688, __c43, 0)) }),
+      ).annotate({ identifier: "ClaimFilterOption" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GameServerGroupName: S.optional(S.String),
+          GameServerId: S.optional(S.String),
+          GameServerData: S.optional(SensitiveString),
+          FilterOption: S.optional(__S(672, __c42, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ClaimGameServerInput" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GameServer: S.optional(__S(720, __c45, 0)) }).pipe(ns),
+      ).annotate({ identifier: "ClaimGameServerOutput" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
@@ -9908,15 +10549,40 @@ function __c0(j: number): any {
           LastHealthCheckTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GameServer" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ GameServer: S.optional(__S(6, __c0, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "ClaimGameServerOutput",
-      });
   }
 }
-function __c1(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          RoutingStrategy: S.optional(__S(784, __c49, 0)),
+          Tags: S.optional(__S(753, __c47, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAliasInput" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Alias: S.optional(__S(785, __c49, 1)) }).pipe(ns)).annotate(
+        { identifier: "CreateAliasOutput" },
+      );
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9928,36 +10594,44 @@ function __c1(j: number): any {
       ).annotate({ identifier: "RoutingStrategy" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          RoutingStrategy: S.optional(__S(8, __c1, 0)),
-          Tags: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAliasInput" });
-    case 4:
-      return S.suspend(() =>
         S.Struct({
           AliasId: S.optional(S.String),
           Name: S.optional(S.String),
           AliasArn: S.optional(S.String),
           Description: S.optional(S.String),
-          RoutingStrategy: S.optional(__S(8, __c1, 0)),
+          RoutingStrategy: S.optional(__S(784, __c49, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Alias" });
-    case 5:
-      return S.suspend(() => S.Struct({ Alias: S.optional(__S(12, __c1, 4)) }).pipe(ns)).annotate({
-        identifier: "CreateAliasOutput",
-      });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Version: S.optional(S.String),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
+          OperatingSystem: S.optional(S.String),
+          Tags: S.optional(__S(753, __c47, 1)),
+          ServerSdkVersion: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateBuildInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Build: S.optional(__S(832, __c52, 0)),
+          UploadCredentials: S.optional(__S(848, __c53, 0)),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateBuildOutput" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.optional(S.String),
@@ -9966,20 +10640,9 @@ function __c1(j: number): any {
           ObjectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Location" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Version: S.optional(S.String),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
-          OperatingSystem: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
-          ServerSdkVersion: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateBuildInput" });
   }
 }
-function __c2(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9995,7 +10658,11 @@ function __c2(j: number): any {
           ServerSdkVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Build" });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessKeyId: S.optional(S.String),
@@ -10003,42 +10670,54 @@ function __c2(j: number): any {
           SessionToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsCredentials" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Build: S.optional(__S(16, __c2, 0)),
-          UploadCredentials: S.optional(__S(17, __c2, 1)),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateBuildOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
-      ).annotate({ identifier: "ConnectionPortRange" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FromPort: S.optional(S.Number),
-          ToPort: S.optional(S.Number),
-          IpRange: S.optional(SensitiveString),
-          Protocol: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpPermission" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Location: S.optional(S.String) })).annotate({
-        identifier: "LocationConfiguration",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FleetRoleArn: S.optional(S.String),
+          Description: S.optional(S.String),
+          GameServerContainerGroupDefinitionName: S.optional(S.String),
+          PerInstanceContainerGroupDefinitionName: S.optional(S.String),
+          InstanceConnectionPortRange: S.optional(__S(960, __c60, 0)),
+          InstanceInboundPermissions: S.optional(__S(929, __c58, 1)),
+          GameServerContainerGroupsPerInstance: S.optional(S.Number),
+          InstanceType: S.optional(S.String),
+          BillingType: S.optional(S.String),
+          Locations: S.optional(__S(897, __c56, 1)),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
+          NewGameSessionProtectionPolicy: S.optional(S.String),
+          GameSessionCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
+          LogConfiguration: S.optional(__S(961, __c60, 1)),
+          Tags: S.optional(__S(753, __c47, 1)),
+          PlayerGatewayMode: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateContainerFleetInput",
+      });
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Location: S.optional(S.String) })).annotate({
+        identifier: "LocationConfiguration",
+      });
     case 1:
+      return S.Array(__S(896, __c56, 0));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NewGameSessionsPerCreator: S.optional(S.Number),
@@ -10047,7 +10726,40 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GameSessionCreationLimitPolicy",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FromPort: S.optional(S.Number),
+          ToPort: S.optional(S.Number),
+          IpRange: S.optional(SensitiveString),
+          Protocol: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpPermission" });
+    case 1:
+      return S.Array(__S(928, __c58, 0));
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ContainerFleet: S.optional(__S(965, __c60, 5)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateContainerFleetOutput",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
+      ).annotate({ identifier: "ConnectionPortRange" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LogDestination: S.optional(S.String),
@@ -10055,34 +10767,11 @@ function __c3(j: number): any {
           LogGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          FleetRoleArn: S.optional(S.String),
-          Description: S.optional(S.String),
-          GameServerContainerGroupDefinitionName: S.optional(S.String),
-          PerInstanceContainerGroupDefinitionName: S.optional(S.String),
-          InstanceConnectionPortRange: S.optional(__S(19, __c2, 3)),
-          InstanceInboundPermissions: S.optional(__S(21, __c2, 5)),
-          GameServerContainerGroupsPerInstance: S.optional(S.Number),
-          InstanceType: S.optional(S.String),
-          BillingType: S.optional(S.String),
-          Locations: S.optional(__S(23, __c2, 7)),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
-          NewGameSessionProtectionPolicy: S.optional(S.String),
-          GameSessionCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
-          LogConfiguration: S.optional(__S(26, __c3, 2)),
-          Tags: S.optional(__S(10, __c1, 2)),
-          PlayerGatewayMode: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateContainerFleetInput",
-      });
-    case 4:
+    case 2:
       return S.suspend(() => S.Struct({ LatestDeploymentId: S.optional(S.String) })).annotate({
         identifier: "DeploymentDetails",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String),
@@ -10092,9 +10781,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFleetLocationAttributes",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(963, __c60, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -10104,44 +10793,107 @@ function __c3(j: number): any {
           GameServerContainerGroupDefinitionArn: S.optional(S.String),
           PerInstanceContainerGroupDefinitionName: S.optional(S.String),
           PerInstanceContainerGroupDefinitionArn: S.optional(S.String),
-          InstanceConnectionPortRange: S.optional(__S(19, __c2, 3)),
-          InstanceInboundPermissions: S.optional(__S(21, __c2, 5)),
+          InstanceConnectionPortRange: S.optional(__S(960, __c60, 0)),
+          InstanceInboundPermissions: S.optional(__S(929, __c58, 1)),
           GameServerContainerGroupsPerInstance: S.optional(S.Number),
           MaximumGameServerContainerGroupsPerInstance: S.optional(S.Number),
           InstanceType: S.optional(S.String),
           BillingType: S.optional(S.String),
           Description: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
           NewGameSessionProtectionPolicy: S.optional(S.String),
-          GameSessionCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
+          GameSessionCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
           Status: S.optional(S.String),
-          DeploymentDetails: S.optional(__S(28, __c3, 4)),
-          LogConfiguration: S.optional(__S(26, __c3, 2)),
-          LocationAttributes: S.optional(__S(30, __c3, 6)),
+          DeploymentDetails: S.optional(__S(962, __c60, 2)),
+          LogConfiguration: S.optional(__S(961, __c60, 1)),
+          LocationAttributes: S.optional(__S(964, __c60, 4)),
           PlayerGatewayMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerFleet" });
   }
 }
-function __c4(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ContainerFleet: S.optional(__S(31, __c3, 7)) }).pipe(ns),
+        S.Struct({
+          Name: S.optional(S.String),
+          ContainerGroupType: S.optional(S.String),
+          TotalMemoryLimitMebibytes: S.optional(S.Number),
+          TotalVcpuLimit: S.optional(S.Number),
+          GameServerContainerDefinition: S.optional(__S(992, __c62, 0)),
+          SupportContainerDefinitions: S.optional(__S(994, __c62, 2)),
+          OperatingSystem: S.optional(S.String),
+          VersionDescription: S.optional(S.String),
+          Tags: S.optional(__S(753, __c47, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "CreateContainerFleetOutput",
+        identifier: "CreateContainerGroupDefinitionInput",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ContainerName: S.optional(S.String),
+          DependsOn: S.optional(__S(1025, __c64, 1)),
+          MountPoints: S.optional(__S(1027, __c64, 3)),
+          EnvironmentOverride: S.optional(__S(1029, __c64, 5)),
+          ImageUri: S.optional(S.String),
+          PortConfiguration: S.optional(__S(1032, __c64, 8)),
+          ServerSdkVersion: S.optional(S.String),
+          LinuxCapabilities: S.optional(__S(1033, __c64, 9)),
+        }),
+      ).annotate({
+        identifier: "GameServerContainerDefinitionInput",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ContainerName: S.optional(S.String),
+          DependsOn: S.optional(__S(1025, __c64, 1)),
+          MountPoints: S.optional(__S(1027, __c64, 3)),
+          EnvironmentOverride: S.optional(__S(1029, __c64, 5)),
+          Essential: S.optional(S.Boolean),
+          HealthCheck: S.optional(__S(1034, __c64, 10)),
+          ImageUri: S.optional(S.String),
+          MemoryHardLimitMebibytes: S.optional(S.Number),
+          PortConfiguration: S.optional(__S(1032, __c64, 8)),
+          Vcpu: S.optional(S.Number),
+          LinuxCapabilities: S.optional(__S(1033, __c64, 9)),
+        }),
+      ).annotate({
+        identifier: "SupportContainerDefinitionInput",
+      });
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ContainerGroupDefinition: S.optional(__S(1038, __c64, 14)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateContainerGroupDefinitionOutput",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContainerName: S.optional(S.String),
           Condition: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerDependency" });
+    case 1:
+      return S.Array(__S(1024, __c64, 0));
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           InstancePath: S.optional(S.String),
@@ -10149,15 +10901,15 @@ function __c4(j: number): any {
           AccessLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerMountPoint" });
+    case 3:
+      return S.Array(__S(1026, __c64, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "ContainerEnvironment" });
+    case 5:
+      return S.Array(__S(1028, __c64, 4));
     case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           FromPort: S.optional(S.Number),
@@ -10165,125 +10917,66 @@ function __c4(j: number): any {
           Protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerPortRange" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(1030, __c64, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({ ContainerPortRanges: S.optional(__S(40, __c5, 0)) }),
+        S.Struct({ ContainerPortRanges: S.optional(__S(1031, __c64, 7)) }),
       ).annotate({
         identifier: "ContainerPortConfiguration",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ Include: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ Include: S.optional(__S(688, __c43, 0)) })).annotate({
         identifier: "LinuxCapabilities",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          ContainerName: S.optional(S.String),
-          DependsOn: S.optional(__S(34, __c4, 2)),
-          MountPoints: S.optional(__S(36, __c4, 4)),
-          EnvironmentOverride: S.optional(__S(38, __c4, 6)),
-          ImageUri: S.optional(S.String),
-          PortConfiguration: S.optional(__S(41, __c5, 1)),
-          ServerSdkVersion: S.optional(S.String),
-          LinuxCapabilities: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GameServerContainerDefinitionInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Command: S.optional(__S(24, __c3, 0)),
+          Command: S.optional(__S(880, __c55, 0)),
           Interval: S.optional(S.Number),
           Retries: S.optional(S.Number),
           StartPeriod: S.optional(S.Number),
           Timeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerHealthCheck" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           ContainerName: S.optional(S.String),
-          DependsOn: S.optional(__S(34, __c4, 2)),
-          MountPoints: S.optional(__S(36, __c4, 4)),
-          EnvironmentOverride: S.optional(__S(38, __c4, 6)),
-          Essential: S.optional(S.Boolean),
-          HealthCheck: S.optional(__S(44, __c5, 4)),
+          DependsOn: S.optional(__S(1025, __c64, 1)),
+          MountPoints: S.optional(__S(1027, __c64, 3)),
+          EnvironmentOverride: S.optional(__S(1029, __c64, 5)),
           ImageUri: S.optional(S.String),
-          MemoryHardLimitMebibytes: S.optional(S.Number),
-          PortConfiguration: S.optional(__S(41, __c5, 1)),
-          Vcpu: S.optional(S.Number),
-          LinuxCapabilities: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "SupportContainerDefinitionInput",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          ContainerGroupType: S.optional(S.String),
-          TotalMemoryLimitMebibytes: S.optional(S.Number),
-          TotalVcpuLimit: S.optional(S.Number),
-          GameServerContainerDefinition: S.optional(__S(43, __c5, 3)),
-          SupportContainerDefinitions: S.optional(__S(46, __c5, 6)),
-          OperatingSystem: S.optional(S.String),
-          VersionDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateContainerGroupDefinitionInput",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ContainerName: S.optional(S.String),
-          DependsOn: S.optional(__S(34, __c4, 2)),
-          MountPoints: S.optional(__S(36, __c4, 4)),
-          EnvironmentOverride: S.optional(__S(38, __c4, 6)),
-          ImageUri: S.optional(S.String),
-          PortConfiguration: S.optional(__S(41, __c5, 1)),
+          PortConfiguration: S.optional(__S(1032, __c64, 8)),
           ResolvedImageDigest: S.optional(S.String),
           ServerSdkVersion: S.optional(S.String),
-          LinuxCapabilities: S.optional(__S(42, __c5, 2)),
+          LinuxCapabilities: S.optional(__S(1033, __c64, 9)),
         }),
       ).annotate({
         identifier: "GameServerContainerDefinition",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           ContainerName: S.optional(S.String),
-          DependsOn: S.optional(__S(34, __c4, 2)),
-          MountPoints: S.optional(__S(36, __c4, 4)),
-          EnvironmentOverride: S.optional(__S(38, __c4, 6)),
+          DependsOn: S.optional(__S(1025, __c64, 1)),
+          MountPoints: S.optional(__S(1027, __c64, 3)),
+          EnvironmentOverride: S.optional(__S(1029, __c64, 5)),
           Essential: S.optional(S.Boolean),
-          HealthCheck: S.optional(__S(44, __c5, 4)),
+          HealthCheck: S.optional(__S(1034, __c64, 10)),
           ImageUri: S.optional(S.String),
           MemoryHardLimitMebibytes: S.optional(S.Number),
-          PortConfiguration: S.optional(__S(41, __c5, 1)),
+          PortConfiguration: S.optional(__S(1032, __c64, 8)),
           ResolvedImageDigest: S.optional(S.String),
           Vcpu: S.optional(S.Number),
-          LinuxCapabilities: S.optional(__S(42, __c5, 2)),
+          LinuxCapabilities: S.optional(__S(1033, __c64, 9)),
         }),
       ).annotate({
         identifier: "SupportContainerDefinition",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(1036, __c64, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           ContainerGroupDefinitionArn: S.optional(S.String),
@@ -10293,57 +10986,19 @@ function __c6(j: number): any {
           ContainerGroupType: S.optional(S.String),
           TotalMemoryLimitMebibytes: S.optional(S.Number),
           TotalVcpuLimit: S.optional(S.Number),
-          GameServerContainerDefinition: S.optional(__S(48, __c6, 0)),
-          SupportContainerDefinitions: S.optional(__S(50, __c6, 2)),
+          GameServerContainerDefinition: S.optional(__S(1035, __c64, 11)),
+          SupportContainerDefinitions: S.optional(__S(1037, __c64, 13)),
           VersionNumber: S.optional(S.Number),
           VersionDescription: S.optional(S.String),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerGroupDefinition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ContainerGroupDefinition: S.optional(__S(51, __c6, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateContainerGroupDefinitionOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          LaunchPath: S.optional(S.String),
-          Parameters: S.optional(S.String),
-          ConcurrentExecutions: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ServerProcess" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ServerProcesses: S.optional(__S(54, __c6, 6)),
-          MaxConcurrentGameSessionActivations: S.optional(S.Number),
-          GameSessionActivationTimeoutSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RuntimeConfiguration" });
   }
 }
-function __c7(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CertificateType: S.optional(S.String) })).annotate({
-        identifier: "CertificateConfiguration",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Cost: S.optional(S.String) })).annotate({
-        identifier: "AnywhereConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ GameServerIpProtocolSupported: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PlayerGatewayConfiguration",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -10352,28 +11007,67 @@ function __c7(j: number): any {
           ScriptId: S.optional(S.String),
           ServerLaunchPath: S.optional(S.String),
           ServerLaunchParameters: S.optional(S.String),
-          LogPaths: S.optional(__S(24, __c3, 0)),
+          LogPaths: S.optional(__S(880, __c55, 0)),
           EC2InstanceType: S.optional(S.String),
-          EC2InboundPermissions: S.optional(__S(21, __c2, 5)),
+          EC2InboundPermissions: S.optional(__S(929, __c58, 1)),
           NewGameSessionProtectionPolicy: S.optional(S.String),
-          RuntimeConfiguration: S.optional(__S(55, __c6, 7)),
-          ResourceCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
+          RuntimeConfiguration: S.optional(__S(1122, __c70, 2)),
+          ResourceCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
           PeerVpcAwsAccountId: S.optional(S.String),
           PeerVpcId: S.optional(S.String),
           FleetType: S.optional(S.String),
           InstanceRoleArn: S.optional(S.String),
-          CertificateConfiguration: S.optional(__S(56, __c7, 0)),
-          Locations: S.optional(__S(23, __c2, 7)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          CertificateConfiguration: S.optional(__S(1088, __c68, 0)),
+          Locations: S.optional(__S(897, __c56, 1)),
+          Tags: S.optional(__S(753, __c47, 1)),
           ComputeType: S.optional(S.String),
-          AnywhereConfiguration: S.optional(__S(57, __c7, 1)),
+          AnywhereConfiguration: S.optional(__S(1104, __c69, 0)),
           InstanceRoleCredentialsProvider: S.optional(S.String),
           PlayerGatewayMode: S.optional(S.String),
-          PlayerGatewayConfiguration: S.optional(__S(58, __c7, 2)),
+          PlayerGatewayConfiguration: S.optional(__S(1089, __c68, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFleetInput" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FleetAttributes: S.optional(__S(1090, __c68, 2)),
+          LocationStates: S.optional(__S(1056, __c66, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateFleetOutput" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1072, __c67, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Location: S.optional(S.String),
+          Status: S.optional(S.String),
+          PlayerGatewayStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocationState" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ CertificateType: S.optional(S.String) })).annotate({
+        identifier: "CertificateConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GameServerIpProtocolSupported: S.optional(S.String) }),
+      ).annotate({
+        identifier: "PlayerGatewayConfiguration",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -10391,62 +11085,83 @@ function __c7(j: number): any {
           ScriptArn: S.optional(S.String),
           ServerLaunchPath: S.optional(S.String),
           ServerLaunchParameters: S.optional(S.String),
-          LogPaths: S.optional(__S(24, __c3, 0)),
+          LogPaths: S.optional(__S(880, __c55, 0)),
           NewGameSessionProtectionPolicy: S.optional(S.String),
           OperatingSystem: S.optional(S.String),
-          ResourceCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
-          StoppedActions: S.optional(__S(3, __c0, 3)),
+          ResourceCreationLimitPolicy: S.optional(__S(912, __c57, 0)),
+          MetricGroups: S.optional(__S(880, __c55, 0)),
+          StoppedActions: S.optional(__S(688, __c43, 0)),
           InstanceRoleArn: S.optional(S.String),
-          CertificateConfiguration: S.optional(__S(56, __c7, 0)),
+          CertificateConfiguration: S.optional(__S(1088, __c68, 0)),
           ComputeType: S.optional(S.String),
-          AnywhereConfiguration: S.optional(__S(57, __c7, 1)),
+          AnywhereConfiguration: S.optional(__S(1104, __c69, 0)),
           InstanceRoleCredentialsProvider: S.optional(S.String),
           PlayerGatewayMode: S.optional(S.String),
-          PlayerGatewayConfiguration: S.optional(__S(58, __c7, 2)),
+          PlayerGatewayConfiguration: S.optional(__S(1089, __c68, 1)),
         }),
       ).annotate({ identifier: "FleetAttributes" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Location: S.optional(S.String),
-          Status: S.optional(S.String),
-          PlayerGatewayStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocationState" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FleetAttributes: S.optional(__S(60, __c7, 4)),
-          LocationStates: S.optional(__S(62, __c7, 6)),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateFleetOutput" });
   }
 }
-function __c8(j: number): any {
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Cost: S.optional(S.String) })).annotate({
+        identifier: "AnywhereConfiguration",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LaunchPath: S.optional(S.String),
+          Parameters: S.optional(S.String),
+          ConcurrentExecutions: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ServerProcess" });
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ServerProcesses: S.optional(__S(1121, __c70, 1)),
+          MaxConcurrentGameSessionActivations: S.optional(S.Number),
+          GameSessionActivationTimeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RuntimeConfiguration" });
+  }
+}
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
-          Locations: S.optional(__S(23, __c2, 7)),
+          Locations: S.optional(__S(897, __c56, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateFleetLocationsInput",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           FleetArn: S.optional(S.String),
-          LocationStates: S.optional(__S(62, __c7, 6)),
+          LocationStates: S.optional(__S(1056, __c66, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateFleetLocationsOutput",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LaunchTemplateId: S.optional(S.String),
@@ -10456,87 +11171,89 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "LaunchTemplateSpecification",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          InstanceType: S.optional(S.String),
-          WeightedCapacity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceDefinition" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ TargetValue: S.optional(S.Number) })).annotate({
         identifier: "TargetTrackingConfiguration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EstimatedInstanceWarmup: S.optional(S.Number),
-          TargetTrackingConfiguration: S.optional(__S(69, __c8, 5)),
+          TargetTrackingConfiguration: S.optional(__S(1169, __c73, 1)),
         }),
       ).annotate({
         identifier: "GameServerGroupAutoScalingPolicy",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
           RoleArn: S.optional(S.String),
           MinSize: S.optional(S.Number),
           MaxSize: S.optional(S.Number),
-          LaunchTemplate: S.optional(__S(66, __c8, 2)),
-          InstanceDefinitions: S.optional(__S(68, __c8, 4)),
-          AutoScalingPolicy: S.optional(__S(70, __c8, 6)),
+          LaunchTemplate: S.optional(__S(1168, __c73, 0)),
+          InstanceDefinitions: S.optional(__S(1201, __c75, 1)),
+          AutoScalingPolicy: S.optional(__S(1170, __c73, 2)),
           BalancingStrategy: S.optional(S.String),
           GameServerProtectionPolicy: S.optional(S.String),
-          VpcSubnets: S.optional(__S(24, __c3, 0)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          VpcSubnets: S.optional(__S(880, __c55, 0)),
+          Tags: S.optional(__S(753, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateGameServerGroupInput",
       });
   }
 }
-function __c9(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ GameServerGroup: S.optional(__S(1202, __c75, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateGameServerGroupOutput",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceType: S.optional(S.String),
+          WeightedCapacity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceDefinition" });
+    case 1:
+      return S.Array(__S(1200, __c75, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
           GameServerGroupArn: S.optional(S.String),
           RoleArn: S.optional(S.String),
-          InstanceDefinitions: S.optional(__S(68, __c8, 4)),
+          InstanceDefinitions: S.optional(__S(1201, __c75, 1)),
           BalancingStrategy: S.optional(S.String),
           GameServerProtectionPolicy: S.optional(S.String),
           AutoScalingGroupArn: S.optional(S.String),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
-          SuspendedActions: S.optional(__S(3, __c0, 3)),
+          SuspendedActions: S.optional(__S(688, __c43, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GameServerGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ GameServerGroup: S.optional(__S(72, __c9, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGameServerGroupOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "GameProperty" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           AliasId: S.optional(S.String),
           MaximumPlayerSessionCount: S.optional(S.Number),
           Name: S.optional(S.String),
-          GameProperties: S.optional(__S(75, __c9, 3)),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
           CreatorId: S.optional(S.String),
           GameSessionId: S.optional(S.String),
           IdempotencyToken: S.optional(S.String),
@@ -10544,7 +11261,29 @@ function __c9(j: number): any {
           Location: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGameSessionInput" });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GameSession: S.optional(__S(1264, __c79, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateGameSessionOutput" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "GameProperty" });
+    case 1:
+      return S.Array(__S(1248, __c78, 0));
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameSessionId: S.optional(S.String),
@@ -10557,7 +11296,7 @@ function __c9(j: number): any {
           MaximumPlayerSessionCount: S.optional(S.Number),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
-          GameProperties: S.optional(__S(75, __c9, 3)),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
           IpAddress: S.optional(SensitiveString),
           DnsName: S.optional(S.String),
           Port: S.optional(S.Number),
@@ -10570,118 +11309,124 @@ function __c9(j: number): any {
           PlayerGatewayStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GameSession" });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ GameSession: S.optional(__S(77, __c9, 5)) }).pipe(ns),
+        S.Struct({
+          Name: S.optional(S.String),
+          TimeoutInSeconds: S.optional(S.Number),
+          PlayerLatencyPolicies: S.optional(__S(1313, __c82, 1)),
+          Destinations: S.optional(__S(1315, __c82, 3)),
+          FilterConfiguration: S.optional(__S(1316, __c82, 4)),
+          PriorityConfiguration: S.optional(__S(1317, __c82, 5)),
+          CustomEventData: S.optional(SensitiveString),
+          NotificationTarget: S.optional(S.String),
+          Tags: S.optional(__S(753, __c47, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "CreateGameSessionOutput",
+        identifier: "CreateGameSessionQueueInput",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GameSessionQueue: S.optional(__S(1318, __c82, 6)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateGameSessionQueueOutput",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaximumIndividualPlayerLatencyMilliseconds: S.optional(S.Number),
           PolicyDurationSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlayerLatencyPolicy" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(1312, __c82, 0));
+    case 2:
       return S.suspend(() => S.Struct({ DestinationArn: S.optional(S.String) })).annotate({
         identifier: "GameSessionQueueDestination",
       });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
     case 3:
-      return S.suspend(() => S.Struct({ AllowedLocations: S.optional(__S(24, __c3, 0)) })).annotate(
-        {
-          identifier: "FilterConfiguration",
-        },
-      );
+      return S.Array(__S(1314, __c82, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          PriorityOrder: S.optional(__S(3, __c0, 3)),
-          LocationOrder: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "PriorityConfiguration" });
+        S.Struct({ AllowedLocations: S.optional(__S(880, __c55, 0)) }),
+      ).annotate({ identifier: "FilterConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(S.String),
-          TimeoutInSeconds: S.optional(S.Number),
-          PlayerLatencyPolicies: S.optional(__S(80, __c10, 0)),
-          Destinations: S.optional(__S(82, __c10, 2)),
-          FilterConfiguration: S.optional(__S(83, __c10, 3)),
-          PriorityConfiguration: S.optional(__S(84, __c10, 4)),
-          CustomEventData: S.optional(SensitiveString),
-          NotificationTarget: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateGameSessionQueueInput",
-      });
+          PriorityOrder: S.optional(__S(688, __c43, 0)),
+          LocationOrder: S.optional(__S(880, __c55, 0)),
+        }),
+      ).annotate({ identifier: "PriorityConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           GameSessionQueueArn: S.optional(S.String),
           TimeoutInSeconds: S.optional(S.Number),
-          PlayerLatencyPolicies: S.optional(__S(80, __c10, 0)),
-          Destinations: S.optional(__S(82, __c10, 2)),
-          FilterConfiguration: S.optional(__S(83, __c10, 3)),
-          PriorityConfiguration: S.optional(__S(84, __c10, 4)),
+          PlayerLatencyPolicies: S.optional(__S(1313, __c82, 1)),
+          Destinations: S.optional(__S(1315, __c82, 3)),
+          FilterConfiguration: S.optional(__S(1316, __c82, 4)),
+          PriorityConfiguration: S.optional(__S(1317, __c82, 5)),
           CustomEventData: S.optional(SensitiveString),
           NotificationTarget: S.optional(S.String),
         }),
       ).annotate({ identifier: "GameSessionQueue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ GameSessionQueue: S.optional(__S(86, __c10, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGameSessionQueueOutput",
-      });
   }
 }
-function __c11(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ LocationName: S.optional(S.String), Tags: S.optional(__S(10, __c1, 2)) }).pipe(
+        S.Struct({ LocationName: S.optional(S.String), Tags: S.optional(__S(753, __c47, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateLocationInput" });
     case 1:
       return S.suspend(() =>
+        S.Struct({ Location: S.optional(__S(1346, __c84, 2)) }).pipe(ns),
+      ).annotate({ identifier: "CreateLocationOutput" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ Domain: S.optional(S.String), Port: S.optional(S.Number) }),
       ).annotate({ identifier: "UDPEndpoint" });
-    case 2:
-      return S.suspend(() => S.Struct({ UDPEndpoint: S.optional(__S(89, __c11, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ UDPEndpoint: S.optional(__S(1344, __c84, 0)) })).annotate({
         identifier: "PingBeacon",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           LocationName: S.optional(S.String),
           LocationArn: S.optional(S.String),
-          PingBeacon: S.optional(__S(90, __c11, 2)),
+          PingBeacon: S.optional(__S(1345, __c84, 1)),
         }),
       ).annotate({ identifier: "LocationModel" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Location: S.optional(__S(91, __c11, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocationOutput",
-      });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          GameSessionQueueArns: S.optional(__S(24, __c3, 0)),
+          GameSessionQueueArns: S.optional(__S(880, __c55, 0)),
           RequestTimeoutSeconds: S.optional(S.Number),
           AcceptanceTimeoutSeconds: S.optional(S.Number),
           AcceptanceRequired: S.optional(S.Boolean),
@@ -10689,22 +11434,36 @@ function __c11(j: number): any {
           NotificationTarget: S.optional(S.String),
           AdditionalPlayerCount: S.optional(S.Number),
           CustomEventData: S.optional(SensitiveString),
-          GameProperties: S.optional(__S(75, __c9, 3)),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
           GameSessionData: S.optional(SensitiveString),
           BackfillMode: S.optional(S.String),
           FlexMatchMode: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(753, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMatchmakingConfigurationInput",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Configuration: S.optional(__S(1392, __c87, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateMatchmakingConfigurationOutput",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           ConfigurationArn: S.optional(S.String),
           Description: S.optional(S.String),
-          GameSessionQueueArns: S.optional(__S(24, __c3, 0)),
+          GameSessionQueueArns: S.optional(__S(880, __c55, 0)),
           RequestTimeoutSeconds: S.optional(S.Number),
           AcceptanceTimeoutSeconds: S.optional(S.Number),
           AcceptanceRequired: S.optional(S.Boolean),
@@ -10714,33 +11473,37 @@ function __c11(j: number): any {
           AdditionalPlayerCount: S.optional(S.Number),
           CustomEventData: S.optional(SensitiveString),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          GameProperties: S.optional(__S(75, __c9, 3)),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
           GameSessionData: S.optional(SensitiveString),
           BackfillMode: S.optional(S.String),
           FlexMatchMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MatchmakingConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Configuration: S.optional(__S(94, __c11, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMatchmakingConfigurationOutput",
-      });
   }
 }
-function __c12(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           RuleSetBody: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(753, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMatchmakingRuleSetInput",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ RuleSet: S.optional(__S(1424, __c89, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateMatchmakingRuleSetOutput",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RuleSetName: S.optional(S.String),
@@ -10749,13 +11512,11 @@ function __c12(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MatchmakingRuleSet" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ RuleSet: S.optional(__S(97, __c12, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMatchmakingRuleSetOutput",
-      });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameSessionId: S.optional(S.String),
@@ -10763,7 +11524,17 @@ function __c12(j: number): any {
           PlayerData: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePlayerSessionInput" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PlayerSession: S.optional(__S(1456, __c91, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreatePlayerSessionOutput",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PlayerSessionId: S.optional(S.String),
@@ -10780,48 +11551,54 @@ function __c12(j: number): any {
           PlayerData: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "PlayerSession" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ PlayerSession: S.optional(__S(100, __c12, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePlayerSessionOutput",
-      });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GameSessionId: S.optional(S.String),
-          PlayerIds: S.optional(__S(0, __c0, 0)),
-          PlayerDataMap: S.optional(__S(102, __c12, 6)),
+          PlayerIds: S.optional(__S(640, __c40, 0)),
+          PlayerDataMap: S.optional(__S(1472, __c92, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePlayerSessionsInput",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(100, __c12, 4));
-    case 1:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ PlayerSessions: S.optional(__S(104, __c13, 0)) }).pipe(ns),
+        S.Struct({ PlayerSessions: S.optional(__S(1488, __c93, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreatePlayerSessionsOutput",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1456, __c91, 0));
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Version: S.optional(S.String),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
           ZipFile: S.optional(T.Blob),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(753, __c47, 1)),
           NodeJsVersion: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScriptInput" });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ScriptId: S.optional(S.String),
@@ -10830,17 +11607,23 @@ function __c13(j: number): any {
           Version: S.optional(S.String),
           SizeOnDisk: S.optional(S.Number),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
+          StorageLocation: S.optional(__S(816, __c51, 0)),
           NodeJsVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Script" });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Script: S.optional(__S(107, __c13, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateScriptOutput",
-      });
-    case 5:
+        S.Struct({ Script: S.optional(__S(1520, __c95, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateScriptOutput" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameLiftAwsAccountId: S.optional(S.String),
@@ -10849,7 +11632,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateVpcPeeringAuthorizationInput",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ VpcPeeringAuthorization: S.optional(__S(1568, __c98, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateVpcPeeringAuthorizationOutput",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameLiftAwsAccountId: S.optional(S.String),
@@ -10859,15 +11652,9 @@ function __c13(j: number): any {
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "VpcPeeringAuthorization" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ VpcPeeringAuthorization: S.optional(__S(110, __c13, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcPeeringAuthorizationOutput",
-      });
   }
 }
-function __c14(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10879,23 +11666,39 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateVpcPeeringConnectionInput",
       });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateVpcPeeringConnectionOutput",
       });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AliasId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAliasInput" });
-    case 3:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BuildId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteBuildInput" });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10903,7 +11706,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteContainerFleetInput",
       });
-    case 5:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -10913,15 +11720,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteContainerGroupDefinitionInput",
       });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteFleetInput" });
-    case 7:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ FleetId: S.optional(S.String), Locations: S.optional(__S(24, __c3, 0)) }).pipe(
+        S.Struct({ FleetId: S.optional(S.String), Locations: S.optional(__S(880, __c55, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -10929,7 +11744,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10940,7 +11755,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteGameServerGroupInput",
       });
-    case 1:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10948,13 +11767,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteGameSessionQueueInput",
       });
-    case 2:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LocationName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteLocationInput" });
-    case 3:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10962,7 +11789,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteMatchmakingConfigurationInput",
       });
-    case 4:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10970,19 +11801,31 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteMatchmakingRuleSetInput",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteScalingPolicyInput" });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ScriptId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteScriptInput" });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameLiftAwsAccountId: S.optional(S.String),
@@ -10993,7 +11836,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11004,17 +11847,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteVpcPeeringConnectionInput",
       });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), ComputeName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeregisterComputeInput" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeregisterComputeOutput",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
@@ -11023,23 +11874,39 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeregisterGameServerInput",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AliasId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeAliasInput" });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BuildId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeBuildInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ Build: S.optional(__S(16, __c2, 0)) }).pipe(ns)).annotate({
-        identifier: "DescribeBuildOutput",
-      });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Build: S.optional(__S(832, __c52, 0)) }).pipe(ns)).annotate(
+        { identifier: "DescribeBuildOutput" },
+      );
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), ComputeName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11047,15 +11914,27 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DescribeComputeInput" });
   }
 }
-function __c17(j: number): any {
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Compute: S.optional(__S(1984, __c124, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeComputeOutput" });
+  }
+}
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ContainerName: S.optional(S.String), ContainerRuntimeId: S.optional(S.String) }),
       ).annotate({ identifier: "ContainerAttribute" });
     case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+      return S.Array(__S(1968, __c123, 0));
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11072,17 +11951,15 @@ function __c17(j: number): any {
           GameLiftServiceSdkEndpoint: S.optional(S.String),
           GameLiftAgentEndpoint: S.optional(S.String),
           InstanceId: S.optional(S.String),
-          ContainerAttributes: S.optional(__S(137, __c17, 1)),
+          ContainerAttributes: S.optional(__S(1969, __c123, 1)),
           GameServerContainerGroupDefinitionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Compute" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Compute: S.optional(__S(138, __c17, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeComputeOutput",
-      });
-    case 4:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11090,7 +11967,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeContainerFleetInput",
       });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), VersionNumber: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11098,7 +11979,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeContainerGroupDefinitionInput",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11110,7 +11995,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeContainerGroupPortMappingsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContainerPort: S.optional(S.Number),
@@ -11118,25 +12003,21 @@ function __c17(j: number): any {
           Protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerPortMapping" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2033, __c127, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ContainerName: S.optional(S.String),
           ContainerRuntimeId: S.optional(S.String),
-          ContainerPortMappings: S.optional(__S(144, __c18, 0)),
+          ContainerPortMappings: S.optional(__S(2034, __c127, 2)),
         }),
       ).annotate({
         identifier: "ContainerGroupPortMapping",
       });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(2035, __c127, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11146,21 +12027,24 @@ function __c18(j: number): any {
           ContainerGroupType: S.optional(S.String),
           ComputeName: S.optional(S.String),
           InstanceId: S.optional(S.String),
-          ContainerGroupPortMappings: S.optional(__S(146, __c18, 2)),
+          ContainerGroupPortMappings: S.optional(__S(2036, __c127, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeContainerGroupPortMappingsOutput",
       });
-    case 4:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          EC2InstanceType: S.optional(S.String),
-          Location: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ EC2InstanceType: S.optional(S.String), Location: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "DescribeEC2InstanceLimitsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EC2InstanceType: S.optional(S.String),
@@ -11169,22 +12053,22 @@ function __c18(j: number): any {
           Location: S.optional(S.String),
         }),
       ).annotate({ identifier: "EC2InstanceLimit" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2049, __c128, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ EC2InstanceLimits: S.optional(__S(150, __c18, 6)) }).pipe(ns),
+        S.Struct({ EC2InstanceLimits: S.optional(__S(2050, __c128, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeEC2InstanceLimitsOutput",
       });
   }
 }
-function __c19(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FleetIds: S.optional(__S(24, __c3, 0)),
+          FleetIds: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -11192,27 +12076,46 @@ function __c19(j: number): any {
         identifier: "DescribeFleetAttributesInput",
       });
     case 1:
-      return S.Array(__S(60, __c7, 4));
+      return S.Array(__S(1090, __c68, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FleetAttributes: S.optional(__S(153, __c19, 1)),
+          FleetAttributes: S.optional(__S(2065, __c129, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeFleetAttributesOutput",
       });
-    case 3:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          FleetIds: S.optional(__S(24, __c3, 0)),
+          FleetIds: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeFleetCapacityInput",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(2098, __c131, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          FleetCapacity: S.optional(__S(2081, __c130, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeFleetCapacityOutput",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DESIRED: S.optional(S.Number),
@@ -11224,7 +12127,7 @@ function __c19(j: number): any {
           TERMINATING: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EC2InstanceCounts" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PENDING: S.optional(S.Number),
@@ -11235,7 +12138,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GameServerContainerGroupCounts",
       });
-    case 6:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          FleetId: S.optional(S.String),
+          FleetArn: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          InstanceCounts: S.optional(__S(2096, __c131, 0)),
+          Location: S.optional(S.String),
+          GameServerContainerGroupCounts: S.optional(__S(2097, __c131, 1)),
+          ManagedCapacityConfiguration: S.optional(__S(2112, __c132, 0)),
+        }),
+      ).annotate({ identifier: "FleetCapacity" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ZeroCapacityStrategy: S.optional(S.String),
@@ -11244,34 +12163,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ManagedCapacityConfiguration",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          FleetArn: S.optional(S.String),
-          InstanceType: S.optional(S.String),
-          InstanceCounts: S.optional(__S(156, __c19, 4)),
-          Location: S.optional(S.String),
-          GameServerContainerGroupCounts: S.optional(__S(157, __c19, 5)),
-          ManagedCapacityConfiguration: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "FleetCapacity" });
   }
 }
-function __c20(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FleetCapacity: S.optional(__S(160, __c20, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetCapacityOutput",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), DeploymentId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11279,15 +12175,26 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DescribeFleetDeploymentInput",
       });
+    case 1:
+      return S.suspend(() => S.Struct({ DeploymentStatus: S.optional(S.String) })).annotate({
+        identifier: "LocationalDeployment",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(2129, __c133, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProtectionStrategy: S.optional(S.String),
-          MinimumHealthyPercentage: S.optional(S.Number),
-          ImpairmentStrategy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentConfiguration" });
-    case 4:
+          FleetDeployment: S.optional(__S(2144, __c134, 0)),
+          LocationalDeployments: S.optional(__S(2130, __c133, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeFleetDeploymentOutput",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DeploymentId: S.optional(S.String),
@@ -11297,28 +12204,25 @@ function __c20(j: number): any {
           PerInstanceBinaryArn: S.optional(S.String),
           RollbackPerInstanceBinaryArn: S.optional(S.String),
           DeploymentStatus: S.optional(S.String),
-          DeploymentConfiguration: S.optional(__S(163, __c20, 3)),
+          DeploymentConfiguration: S.optional(__S(2160, __c135, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "FleetDeployment" });
-    case 5:
-      return S.suspend(() => S.Struct({ DeploymentStatus: S.optional(S.String) })).annotate({
-        identifier: "LocationalDeployment",
-      });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(165, __c20, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FleetDeployment: S.optional(__S(164, __c20, 4)),
-          LocationalDeployments: S.optional(__S(166, __c20, 6)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetDeploymentOutput",
-      });
   }
 }
-function __c21(j: number): any {
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ProtectionStrategy: S.optional(S.String),
+          MinimumHealthyPercentage: S.optional(S.Number),
+          ImpairmentStrategy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentConfiguration" });
+  }
+}
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11343,42 +12247,47 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(2177, __c136, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Events: S.optional(__S(170, __c21, 2)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Events: S.optional(__S(2178, __c136, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeFleetEventsOutput",
       });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
-          Locations: S.optional(__S(24, __c3, 0)),
+          Locations: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeFleetLocationAttributesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          LocationState: S.optional(__S(61, __c7, 5)),
-          StoppedActions: S.optional(__S(3, __c0, 3)),
+          LocationState: S.optional(__S(1072, __c67, 0)),
+          StoppedActions: S.optional(__S(688, __c43, 0)),
           UpdateStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocationAttributes" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2193, __c137, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           FleetArn: S.optional(S.String),
-          LocationAttributes: S.optional(__S(174, __c21, 6)),
+          LocationAttributes: S.optional(__S(2194, __c137, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11386,7 +12295,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11398,11 +12307,15 @@ function __c22(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ FleetCapacity: S.optional(__S(159, __c19, 7)) }).pipe(ns),
+        S.Struct({ FleetCapacity: S.optional(__S(2098, __c131, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeFleetLocationCapacityOutput",
       });
-    case 2:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), Location: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11410,7 +12323,17 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DescribeFleetLocationUtilizationInput",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FleetUtilization: S.optional(__S(2240, __c140, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeFleetLocationUtilizationOutput",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11422,13 +12345,11 @@ function __c22(j: number): any {
           Location: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetUtilization" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ FleetUtilization: S.optional(__S(179, __c22, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetLocationUtilizationOutput",
-      });
-    case 5:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), Location: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11436,51 +12357,59 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DescribeFleetPortSettingsInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           FleetArn: S.optional(S.String),
-          InboundPermissions: S.optional(__S(21, __c2, 5)),
+          InboundPermissions: S.optional(__S(929, __c58, 1)),
           UpdateStatus: S.optional(S.String),
           Location: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeFleetPortSettingsOutput",
       });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          FleetIds: S.optional(__S(24, __c3, 0)),
+          FleetIds: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeFleetUtilizationInput",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(179, __c22, 3));
     case 1:
+      return S.Array(__S(2240, __c140, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          FleetUtilization: S.optional(__S(184, __c23, 0)),
+          FleetUtilization: S.optional(__S(2273, __c142, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeFleetUtilizationOutput",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
           GameServerId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeGameServerInput" });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GameServerGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11488,18 +12417,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DescribeGameServerGroupInput",
       });
-    case 4:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
-          InstanceIds: S.optional(__S(24, __c3, 0)),
+          InstanceIds: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeGameServerInstancesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
@@ -11508,12 +12441,12 @@ function __c23(j: number): any {
           InstanceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GameServerInstance" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2321, __c145, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          GameServerInstances: S.optional(__S(190, __c23, 6)),
+          GameServerInstances: S.optional(__S(2322, __c145, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11521,7 +12454,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11540,22 +12473,26 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GameSession: S.optional(__S(77, __c9, 5)),
+          GameSession: S.optional(__S(1264, __c79, 0)),
           ProtectionPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "GameSessionDetail" });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(2337, __c146, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          GameSessionDetails: S.optional(__S(194, __c24, 2)),
+          GameSessionDetails: S.optional(__S(2338, __c146, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeGameSessionDetailsOutput",
       });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PlacementId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11563,7 +12500,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DescribeGameSessionPlacementInput",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PlayerId: S.optional(SensitiveString),
@@ -11571,80 +12512,88 @@ function __c24(j: number): any {
           LatencyInMilliseconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlayerLatency" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ PlayerId: S.optional(SensitiveString), PlayerSessionId: S.optional(S.String) }),
-      ).annotate({ identifier: "PlacedPlayerSession" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
     case 1:
+      return S.Array(__S(2368, __c148, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           PlacementFallbackStrategy: S.optional(S.String),
-          LocationOrder: S.optional(__S(24, __c3, 0)),
+          LocationOrder: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({
         identifier: "PriorityConfigurationOverride",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           PlacementId: S.optional(S.String),
           GameSessionQueueName: S.optional(S.String),
           Status: S.optional(S.String),
-          GameProperties: S.optional(__S(75, __c9, 3)),
+          GameProperties: S.optional(__S(1249, __c78, 1)),
           MaximumPlayerSessionCount: S.optional(S.Number),
           GameSessionName: S.optional(S.String),
           GameSessionId: S.optional(S.String),
           GameSessionArn: S.optional(S.String),
           GameSessionRegion: S.optional(S.String),
-          PlayerLatencies: S.optional(__S(198, __c24, 6)),
+          PlayerLatencies: S.optional(__S(2369, __c148, 1)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IpAddress: S.optional(SensitiveString),
           DnsName: S.optional(S.String),
           Port: S.optional(S.Number),
-          PlacedPlayerSessions: S.optional(__S(200, __c25, 0)),
+          PlacedPlayerSessions: S.optional(__S(2385, __c149, 1)),
           GameSessionData: S.optional(SensitiveString),
           MatchmakerData: S.optional(SensitiveString),
-          PriorityConfigurationOverride: S.optional(__S(201, __c25, 1)),
+          PriorityConfigurationOverride: S.optional(__S(2370, __c148, 2)),
           PlayerGatewayStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GameSessionPlacement" });
-    case 3:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ GameSessionPlacement: S.optional(__S(202, __c25, 2)) }).pipe(ns),
+        S.Struct({ GameSessionPlacement: S.optional(__S(2371, __c148, 3)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeGameSessionPlacementOutput",
       });
-    case 4:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PlayerId: S.optional(SensitiveString), PlayerSessionId: S.optional(S.String) }),
+      ).annotate({ identifier: "PlacedPlayerSession" });
+    case 1:
+      return S.Array(__S(2384, __c149, 0));
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(24, __c3, 0)),
+          Names: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeGameSessionQueuesInput",
       });
-    case 5:
-      return S.Array(__S(86, __c10, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(1318, __c82, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          GameSessionQueues: S.optional(__S(205, __c25, 5)),
+          GameSessionQueues: S.optional(__S(2401, __c150, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeGameSessionQueuesOutput",
       });
-    case 7:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11658,22 +12607,26 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DescribeGameSessionsInput",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(77, __c9, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GameSessions: S.optional(__S(208, __c26, 0)),
+          GameSessions: S.optional(__S(2432, __c152, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeGameSessionsOutput",
       });
-    case 2:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1264, __c79, 0));
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11683,7 +12636,7 @@ function __c26(j: number): any {
           Location: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeInstancesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11698,65 +12651,77 @@ function __c26(j: number): any {
           Location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2449, __c153, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Instances: S.optional(__S(212, __c26, 4)),
+          Instances: S.optional(__S(2450, __c153, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeInstancesOutput" });
-    case 6:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ TicketIds: S.optional(__S(24, __c3, 0)) }).pipe(
+        S.Struct({ TicketIds: S.optional(__S(880, __c55, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeMatchmakingInput" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 1:
+      return S.Array(__S(2487, __c155, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TicketList: S.optional(__S(2465, __c154, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeMatchmakingOutput",
+      });
   }
 }
-function __c27(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           S: S.optional(S.String),
           N: S.optional(S.Number),
-          SL: S.optional(__S(24, __c3, 0)),
-          SDM: S.optional(__S(215, __c26, 7)),
+          SL: S.optional(__S(880, __c55, 0)),
+          SDM: S.optional(__S(2480, __c155, 0)),
         }),
       ).annotate({ identifier: "AttributeValue" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(216, __c27, 0).pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2481, __c155, 1).pipe(S.optional));
     case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           PlayerId: S.optional(SensitiveString),
-          PlayerAttributes: S.optional(__S(217, __c27, 1)),
+          PlayerAttributes: S.optional(__S(2482, __c155, 2)),
           Team: S.optional(S.String),
-          LatencyInMs: S.optional(__S(218, __c27, 2)),
+          LatencyInMs: S.optional(__S(2483, __c155, 3)),
         }),
       ).annotate({ identifier: "Player" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
     case 5:
+      return S.Array(__S(2484, __c155, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           GameSessionArn: S.optional(S.String),
           IpAddress: S.optional(SensitiveString),
           DnsName: S.optional(S.String),
           Port: S.optional(S.Number),
-          MatchedPlayerSessions: S.optional(__S(200, __c25, 0)),
+          MatchedPlayerSessions: S.optional(__S(2385, __c149, 1)),
           PlayerGatewayStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GameSessionConnectionInfo",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           TicketId: S.optional(S.String),
@@ -11767,27 +12732,19 @@ function __c27(j: number): any {
           StatusMessage: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Players: S.optional(__S(220, __c27, 4)),
-          GameSessionConnectionInfo: S.optional(__S(221, __c27, 5)),
+          Players: S.optional(__S(2485, __c155, 5)),
+          GameSessionConnectionInfo: S.optional(__S(2486, __c155, 6)),
           EstimatedWaitTime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MatchmakingTicket" });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
   }
 }
-function __c28(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TicketList: S.optional(__S(223, __c27, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMatchmakingOutput",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(24, __c3, 0)),
+          Names: S.optional(__S(880, __c55, 0)),
           RuleSetName: S.optional(S.String),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -11795,39 +12752,47 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DescribeMatchmakingConfigurationsInput",
       });
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
     case 2:
-      return S.Array(__S(94, __c11, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          Configurations: S.optional(__S(226, __c28, 2)),
+          Configurations: S.optional(__S(2497, __c156, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeMatchmakingConfigurationsOutput",
       });
-    case 4:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(24, __c3, 0)),
+          Names: S.optional(__S(880, __c55, 0)),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeMatchmakingRuleSetsInput",
       });
-    case 5:
-      return S.Array(__S(97, __c12, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(1424, __c89, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RuleSets: S.optional(__S(229, __c28, 5)),
+          RuleSets: S.optional(__S(2513, __c157, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeMatchmakingRuleSetsOutput",
       });
-    case 7:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameSessionId: S.optional(S.String),
@@ -11840,20 +12805,20 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DescribePlayerSessionsInput",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          PlayerSessions: S.optional(__S(104, __c13, 0)),
+          PlayerSessions: S.optional(__S(1488, __c93, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribePlayerSessionsOutput",
       });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11861,13 +12826,21 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DescribeRuntimeConfigurationInput",
       });
-    case 2:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ RuntimeConfiguration: S.optional(__S(55, __c6, 7)) }).pipe(ns),
+        S.Struct({ RuntimeConfiguration: S.optional(__S(1122, __c70, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeRuntimeConfigurationOutput",
       });
-    case 3:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11879,11 +12852,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DescribeScalingPoliciesInput",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ TargetValue: S.optional(S.Number) })).annotate({
-        identifier: "TargetConfiguration",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -11897,17 +12866,17 @@ function __c29(j: number): any {
           EvaluationPeriods: S.optional(S.Number),
           MetricName: S.optional(S.String),
           PolicyType: S.optional(S.String),
-          TargetConfiguration: S.optional(__S(236, __c29, 4)),
+          TargetConfiguration: S.optional(__S(2592, __c162, 0)),
           UpdateStatus: S.optional(S.String),
           Location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScalingPolicy" });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2577, __c161, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ScalingPolicies: S.optional(__S(238, __c29, 6)),
+          ScalingPolicies: S.optional(__S(2578, __c161, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11915,7 +12884,15 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ TargetValue: S.optional(S.Number) })).annotate({
+        identifier: "TargetConfiguration",
+      });
+  }
+}
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11923,7 +12900,11 @@ function __c30(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeScriptInput" });
-    case 1:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11931,15 +12912,19 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "DescribeVpcPeeringAuthorizationsInput",
       });
+    case 1:
+      return S.Array(__S(1568, __c98, 0));
     case 2:
-      return S.Array(__S(110, __c13, 6));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ VpcPeeringAuthorizations: S.optional(__S(242, __c30, 2)) }).pipe(ns),
+        S.Struct({ VpcPeeringAuthorizations: S.optional(__S(2625, __c164, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeVpcPeeringAuthorizationsOutput",
       });
-    case 4:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11947,61 +12932,65 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "DescribeVpcPeeringConnectionsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({
         identifier: "VpcPeeringConnectionStatus",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           FleetArn: S.optional(S.String),
           IpV4CidrBlock: S.optional(S.String),
           VpcPeeringConnectionId: S.optional(S.String),
-          Status: S.optional(__S(245, __c30, 5)),
+          Status: S.optional(__S(2641, __c165, 1)),
           PeerVpcId: S.optional(S.String),
           GameLiftVpcId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcPeeringConnection" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2642, __c165, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ VpcPeeringConnections: S.optional(__S(247, __c30, 7)) }).pipe(ns),
+        S.Struct({ VpcPeeringConnections: S.optional(__S(2643, __c165, 3)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeVpcPeeringConnectionsOutput",
       });
-    case 1:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), ComputeName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetComputeAccessInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           FleetArn: S.optional(S.String),
           ComputeName: S.optional(S.String),
           ComputeArn: S.optional(S.String),
-          Credentials: S.optional(__S(17, __c2, 1)),
+          Credentials: S.optional(__S(848, __c53, 0)),
           Target: S.optional(S.String),
-          ContainerIdentifiers: S.optional(__S(137, __c17, 1)),
+          ContainerIdentifiers: S.optional(__S(1969, __c123, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "GetComputeAccessOutput" });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), ComputeName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetComputeAuthTokenInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -12014,7 +13003,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetComputeAuthTokenOutput",
       });
-    case 5:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GameSessionId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12022,78 +13015,82 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetGameSessionLogUrlInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ PreSignedUrl: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetGameSessionLogUrlOutput",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FleetId: S.optional(S.String), InstanceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetInstanceAccessInput" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ UserName: S.optional(S.String), Secret: S.optional(S.String) }),
       ).annotate({ identifier: "InstanceCredentials" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
           InstanceId: S.optional(S.String),
           IpAddress: S.optional(SensitiveString),
           OperatingSystem: S.optional(S.String),
-          Credentials: S.optional(__S(256, __c32, 0)),
+          Credentials: S.optional(__S(2705, __c169, 1)),
         }),
       ).annotate({ identifier: "InstanceAccess" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ InstanceAccess: S.optional(__S(257, __c32, 1)) }).pipe(ns),
-      ).annotate({ identifier: "GetInstanceAccessOutput" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          GameSessionId: S.optional(S.String),
-          PlayerIds: S.optional(__S(0, __c0, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetPlayerConnectionDetailsInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ IpAddress: S.optional(SensitiveString), Port: S.optional(S.Number) }),
-      ).annotate({ identifier: "PlayerConnectionEndpoint" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          PlayerId: S.optional(SensitiveString),
-          Endpoints: S.optional(__S(261, __c32, 5)),
-          PlayerGatewayToken: S.optional(S.String),
-          Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "PlayerConnectionDetail" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
+        S.Struct({ InstanceAccess: S.optional(__S(2706, __c169, 2)) }).pipe(ns),
+      ).annotate({ identifier: "GetInstanceAccessOutput" });
   }
 }
-function __c33(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           GameSessionId: S.optional(S.String),
-          PlayerConnectionDetails: S.optional(__S(263, __c32, 7)),
+          PlayerIds: S.optional(__S(640, __c40, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetPlayerConnectionDetailsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ IpAddress: S.optional(SensitiveString), Port: S.optional(S.Number) }),
+      ).annotate({ identifier: "PlayerConnectionEndpoint" });
+    case 2:
+      return S.Array(__S(2721, __c170, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          PlayerId: S.optional(SensitiveString),
+          Endpoints: S.optional(__S(2722, __c170, 2)),
+          PlayerGatewayToken: S.optional(S.String),
+          Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "PlayerConnectionDetail" });
+    case 4:
+      return S.Array(__S(2723, __c170, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GameSessionId: S.optional(S.String),
+          PlayerConnectionDetails: S.optional(__S(2724, __c170, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPlayerConnectionDetailsOutput",
       });
-    case 1:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RoutingStrategyType: S.optional(S.String),
@@ -12102,15 +13099,20 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAliasesInput" });
+    case 1:
+      return S.Array(__S(785, __c49, 1));
     case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Aliases: S.optional(__S(266, __c33, 2)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Aliases: S.optional(__S(2737, __c171, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListAliasesOutput" });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -12118,15 +13120,20 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListBuildsInput" });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(832, __c52, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Builds: S.optional(__S(269, __c33, 5)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Builds: S.optional(__S(2753, __c172, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListBuildsOutput" });
-    case 7:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -12137,20 +13144,20 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListComputeInput" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(138, __c17, 2));
     case 1:
+      return S.Array(__S(1984, __c124, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ComputeList: S.optional(__S(272, __c34, 0)),
+          ComputeList: S.optional(__S(2769, __c173, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListComputeOutput" });
-    case 2:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContainerGroupDefinitionName: S.optional(S.String),
@@ -12158,18 +13165,22 @@ function __c34(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListContainerFleetsInput" });
-    case 3:
-      return S.Array(__S(31, __c3, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(965, __c60, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ContainerFleets: S.optional(__S(275, __c34, 3)),
+          ContainerFleets: S.optional(__S(2785, __c174, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListContainerFleetsOutput",
       });
-    case 5:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContainerGroupType: S.optional(S.String),
@@ -12179,12 +13190,16 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListContainerGroupDefinitionsInput",
       });
-    case 6:
-      return S.Array(__S(51, __c6, 3));
-    case 7:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1038, __c64, 14));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ContainerGroupDefinitions: S.optional(__S(278, __c34, 6)),
+          ContainerGroupDefinitions: S.optional(__S(2816, __c176, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12192,7 +13207,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12204,7 +13219,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListContainerGroupDefinitionVersionsInput",
       });
-    case 1:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FleetId: S.optional(S.String),
@@ -12214,18 +13233,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListFleetDeploymentsInput",
       });
+    case 1:
+      return S.Array(__S(2144, __c134, 0));
     case 2:
-      return S.Array(__S(164, __c20, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          FleetDeployments: S.optional(__S(282, __c35, 2)),
+          FleetDeployments: S.optional(__S(2849, __c178, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListFleetDeploymentsOutput",
       });
-    case 4:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BuildId: S.optional(S.String),
@@ -12234,13 +13257,18 @@ function __c35(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFleetsInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ FleetIds: S.optional(__S(24, __c3, 0)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          FleetIds: S.optional(__S(880, __c55, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListFleetsOutput" });
-    case 6:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Limit: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12248,22 +13276,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListGameServerGroupsInput",
       });
-    case 7:
-      return S.Array(__S(72, __c9, 0));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1202, __c75, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          GameServerGroups: S.optional(__S(287, __c35, 7)),
+          GameServerGroups: S.optional(__S(2881, __c180, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListGameServerGroupsOutput",
       });
-    case 1:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GameServerGroupName: S.optional(S.String),
@@ -12272,503 +13300,17 @@ function __c36(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListGameServersInput" });
+    case 1:
+      return S.Array(__S(720, __c45, 0));
     case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          GameServers: S.optional(__S(290, __c36, 2)),
+          GameServers: S.optional(__S(2897, __c181, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListGameServersOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3, __c0, 3)),
-          Limit: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListLocationsInput" });
-    case 5:
-      return S.Array(__S(91, __c11, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Locations: S.optional(__S(293, __c36, 5)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListLocationsOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Limit: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListScriptsInput" });
   }
 }
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(107, __c13, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Scripts: S.optional(__S(296, __c37, 0)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({ identifier: "ListScriptsOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(10, __c1, 2)) }).pipe(ns)).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          FleetId: S.optional(S.String),
-          ScalingAdjustment: S.optional(S.Number),
-          ScalingAdjustmentType: S.optional(S.String),
-          Threshold: S.optional(S.Number),
-          ComparisonOperator: S.optional(S.String),
-          EvaluationPeriods: S.optional(S.Number),
-          MetricName: S.optional(S.String),
-          PolicyType: S.optional(S.String),
-          TargetConfiguration: S.optional(__S(236, __c29, 4)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutScalingPolicyInput" });
-    case 5:
-      return S.suspend(() => S.Struct({ Name: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "PutScalingPolicyOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          ComputeName: S.optional(S.String),
-          CertificatePath: S.optional(S.String),
-          DnsName: S.optional(S.String),
-          IpAddress: S.optional(SensitiveString),
-          Location: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "RegisterComputeInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          GameServerGroupName: S.optional(S.String),
-          GameServerId: S.optional(S.String),
-          InstanceId: S.optional(S.String),
-          ConnectionInfo: S.optional(S.String),
-          GameServerData: S.optional(SensitiveString),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "RegisterGameServerInput" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ BuildId: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "RequestUploadCredentialsInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          UploadCredentials: S.optional(__S(17, __c2, 1)),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "RequestUploadCredentialsOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AliasId: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ResolveAliasInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ FleetId: S.optional(S.String), FleetArn: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "ResolveAliasOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          GameServerGroupName: S.optional(S.String),
-          ResumeActions: S.optional(__S(3, __c0, 3)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResumeGameServerGroupInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          AliasId: S.optional(S.String),
-          Location: S.optional(S.String),
-          FilterExpression: S.optional(S.String),
-          SortExpression: S.optional(S.String),
-          Limit: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "SearchGameSessionsInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          GameSessions: S.optional(__S(208, __c26, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "SearchGameSessionsOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          Actions: S.optional(__S(3, __c0, 3)),
-          Location: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StartFleetActionsInput" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          PlayerId: S.optional(SensitiveString),
-          PlayerData: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "DesiredPlayerSession" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PlacementId: S.optional(S.String),
-          GameSessionQueueName: S.optional(S.String),
-          GameProperties: S.optional(__S(75, __c9, 3)),
-          MaximumPlayerSessionCount: S.optional(S.Number),
-          GameSessionName: S.optional(S.String),
-          PlayerLatencies: S.optional(__S(198, __c24, 6)),
-          DesiredPlayerSessions: S.optional(__S(313, __c39, 1)),
-          GameSessionData: S.optional(SensitiveString),
-          PriorityConfigurationOverride: S.optional(__S(201, __c25, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartGameSessionPlacementInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TicketId: S.optional(S.String),
-          ConfigurationName: S.optional(S.String),
-          GameSessionArn: S.optional(S.String),
-          Players: S.optional(__S(220, __c27, 4)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StartMatchBackfillInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ MatchmakingTicket: S.optional(__S(222, __c27, 6)) }).pipe(ns),
-      ).annotate({ identifier: "StartMatchBackfillOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          TicketId: S.optional(S.String),
-          ConfigurationName: S.optional(S.String),
-          Players: S.optional(__S(220, __c27, 4)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StartMatchmakingInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          Actions: S.optional(__S(3, __c0, 3)),
-          Location: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StopFleetActionsInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ PlacementId: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "StopGameSessionPlacementInput",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ TicketId: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StopMatchmakingInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          GameServerGroupName: S.optional(S.String),
-          SuspendActions: S.optional(__S(3, __c0, 3)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SuspendGameServerGroupInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), Tags: S.optional(__S(10, __c1, 2)) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          GameSessionId: S.optional(S.String),
-          TerminationMode: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateGameSessionInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ GameSession: S.optional(__S(77, __c9, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "TerminateGameSessionOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), TagKeys: S.optional(__S(24, __c3, 0)) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AliasId: S.optional(S.String),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          RoutingStrategy: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateAliasInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          BuildId: S.optional(S.String),
-          Name: S.optional(S.String),
-          Version: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateBuildInput" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          GameServerContainerGroupDefinitionName: S.optional(S.String),
-          PerInstanceContainerGroupDefinitionName: S.optional(S.String),
-          GameServerContainerGroupsPerInstance: S.optional(S.Number),
-          InstanceConnectionPortRange: S.optional(__S(19, __c2, 3)),
-          InstanceInboundPermissionAuthorizations: S.optional(__S(21, __c2, 5)),
-          InstanceInboundPermissionRevocations: S.optional(__S(21, __c2, 5)),
-          DeploymentConfiguration: S.optional(__S(163, __c20, 3)),
-          Description: S.optional(S.String),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
-          NewGameSessionProtectionPolicy: S.optional(S.String),
-          GameSessionCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
-          LogConfiguration: S.optional(__S(26, __c3, 2)),
-          RemoveAttributes: S.optional(__S(328, __c41, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateContainerFleetInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          GameServerContainerDefinition: S.optional(__S(43, __c5, 3)),
-          SupportContainerDefinitions: S.optional(__S(46, __c5, 6)),
-          TotalMemoryLimitMebibytes: S.optional(S.Number),
-          TotalVcpuLimit: S.optional(S.Number),
-          VersionDescription: S.optional(S.String),
-          SourceVersionNumber: S.optional(S.Number),
-          OperatingSystem: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateContainerGroupDefinitionInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          NewGameSessionProtectionPolicy: S.optional(S.String),
-          ResourceCreationLimitPolicy: S.optional(__S(25, __c3, 1)),
-          MetricGroups: S.optional(__S(24, __c3, 0)),
-          AnywhereConfiguration: S.optional(__S(57, __c7, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFleetAttributesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ FleetId: S.optional(S.String), FleetArn: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateFleetAttributesOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          DesiredInstances: S.optional(S.Number),
-          MinSize: S.optional(S.Number),
-          MaxSize: S.optional(S.Number),
-          Location: S.optional(S.String),
-          ManagedCapacityConfiguration: S.optional(__S(158, __c19, 6)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateFleetCapacityInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          FleetArn: S.optional(S.String),
-          Location: S.optional(S.String),
-          ManagedCapacityConfiguration: S.optional(__S(158, __c19, 6)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateFleetCapacityOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          InboundPermissionAuthorizations: S.optional(__S(21, __c2, 5)),
-          InboundPermissionRevocations: S.optional(__S(21, __c2, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFleetPortSettingsInput",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          GameServerGroupName: S.optional(S.String),
-          GameServerId: S.optional(S.String),
-          GameServerData: S.optional(SensitiveString),
-          UtilizationStatus: S.optional(S.String),
-          HealthCheck: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateGameServerInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          GameServerGroupName: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          InstanceDefinitions: S.optional(__S(68, __c8, 4)),
-          GameServerProtectionPolicy: S.optional(S.String),
-          BalancingStrategy: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateGameServerGroupInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          GameSessionId: S.optional(S.String),
-          MaximumPlayerSessionCount: S.optional(S.Number),
-          Name: S.optional(S.String),
-          PlayerSessionCreationPolicy: S.optional(S.String),
-          ProtectionPolicy: S.optional(S.String),
-          GameProperties: S.optional(__S(75, __c9, 3)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateGameSessionInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          TimeoutInSeconds: S.optional(S.Number),
-          PlayerLatencyPolicies: S.optional(__S(80, __c10, 0)),
-          Destinations: S.optional(__S(82, __c10, 2)),
-          FilterConfiguration: S.optional(__S(83, __c10, 3)),
-          PriorityConfiguration: S.optional(__S(84, __c10, 4)),
-          CustomEventData: S.optional(SensitiveString),
-          NotificationTarget: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateGameSessionQueueInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          GameSessionQueueArns: S.optional(__S(24, __c3, 0)),
-          RequestTimeoutSeconds: S.optional(S.Number),
-          AcceptanceTimeoutSeconds: S.optional(S.Number),
-          AcceptanceRequired: S.optional(S.Boolean),
-          RuleSetName: S.optional(S.String),
-          NotificationTarget: S.optional(S.String),
-          AdditionalPlayerCount: S.optional(S.Number),
-          CustomEventData: S.optional(SensitiveString),
-          GameProperties: S.optional(__S(75, __c9, 3)),
-          GameSessionData: S.optional(SensitiveString),
-          BackfillMode: S.optional(S.String),
-          FlexMatchMode: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateMatchmakingConfigurationInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FleetId: S.optional(S.String),
-          RuntimeConfiguration: S.optional(__S(55, __c6, 7)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRuntimeConfigurationInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ScriptId: S.optional(S.String),
-          Name: S.optional(S.String),
-          Version: S.optional(S.String),
-          StorageLocation: S.optional(__S(14, __c1, 6)),
-          ZipFile: S.optional(T.Blob),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateScriptInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ RuleSetBody: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ValidateMatchmakingRuleSetInput",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Valid: S.optional(S.Boolean) }).pipe(ns)).annotate({
-        identifier: "ValidateMatchmakingRuleSetOutput",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

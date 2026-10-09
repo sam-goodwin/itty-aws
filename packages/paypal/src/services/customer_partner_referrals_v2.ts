@@ -894,8 +894,8 @@ export const createPartnerReferral: API.OperationMethod<
   CreatePartnerReferralError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreatePartnerReferralRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CreateReferralDataResponse>,
+  input: __S(10, __c0, 10) as any as S.Schema<CreatePartnerReferralRequest>,
+  output: __S(11, __c0, 11) as any as S.Schema<CreateReferralDataResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -909,8 +909,8 @@ export const readPartnerReferral: API.OperationMethod<
   ReadPartnerReferralError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ReadPartnerReferralRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ReferralDataResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ReadPartnerReferralRequest>,
+  output: __S(108, __c3, 12) as any as S.Schema<ReferralDataResponse>,
   errors: [Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -918,6 +918,129 @@ export const readPartnerReferral: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(40, __c1, 8)),
+          name: S.optional(S.String),
+          identification_number: S.optional(S.String),
+          issue_date: S.optional(S.String),
+          expiry_date: S.optional(S.String),
+          issuing_country_code: S.optional(S.String),
+          files: S.optional(__S(42, __c1, 10)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PersonDocumentInput" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(33, __c1, 1)),
+          citizenship: S.optional(S.String),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          birth_details: S.optional(__S(39, __c1, 7)),
+          documents: S.optional(__S(1, __c0, 1)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IndividualOwnerInput" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(33, __c1, 1)),
+          citizenship: S.optional(S.String),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          birth_details: S.optional(__S(39, __c1, 7)),
+          documents: S.optional(__S(1, __c0, 1)),
+          percentage_of_ownership: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IndividualBeneficialOwnerInput",
+      });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          business_type: S.optional(__S(43, __c1, 11)),
+          business_industry: S.optional(__S(44, __c1, 12)),
+          business_incorporation: S.optional(__S(45, __c1, 13)),
+          names: S.optional(__S(47, __c1, 15)),
+          emails: S.optional(__S(49, __c1, 17)),
+          website: S.optional(S.String),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          documents: S.optional(__S(1, __c0, 1)),
+          percentage_of_ownership: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BusinessBeneficialOwnerInput",
+      });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          individual_beneficial_owners: S.optional(__S(5, __c0, 5)),
+          business_beneficial_owners: S.optional(__S(7, __c0, 7)),
+        }),
+      ).annotate({ identifier: "BeneficialOwnersInput" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          business_type: S.optional(__S(43, __c1, 11)),
+          business_industry: S.optional(__S(44, __c1, 12)),
+          business_incorporation: S.optional(__S(45, __c1, 13)),
+          names: S.optional(__S(47, __c1, 15)),
+          emails: S.optional(__S(49, __c1, 17)),
+          website: S.optional(S.String),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          documents: S.optional(__S(1, __c0, 1)),
+          beneficial_owners: S.optional(__S(8, __c0, 8)),
+          annual_sales_volume_range: S.optional(__S(51, __c1, 19)),
+          average_monthly_volume_range: S.optional(__S(51, __c1, 19)),
+          purpose_code: S.optional(S.Unknown),
+          business_description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BusinessEntityInput" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          individual_owners: S.optional(__S(3, __c0, 3)),
+          business_entity: S.optional(__S(9, __c0, 9)),
+          email: S.optional(S.String),
+          preferred_language_code: S.optional(S.String),
+          tracking_id: S.optional(S.String),
+          partner_config_override: S.optional(__S(52, __c1, 20)),
+          financial_instruments: S.optional(__S(59, __c1, 27)),
+          operations: __S(68, __c2, 4),
+          products: S.optional(__S(69, __c2, 5)),
+          capabilities: S.optional(__S(60, __c1, 28)),
+          outside_process_dependencies: S.optional(__S(70, __c2, 6)),
+          legal_consents: __S(72, __c2, 8),
+          payout_attributes: S.optional(__S(78, __c2, 14)),
+          legal_country_code: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/customer/partner-referrals", code: 200 })),
+      ).annotate({
+        identifier: "CreatePartnerReferralRequest",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(80, __c2, 16)),
+        }),
+      ).annotate({
+        identifier: "CreateReferralDataResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -932,7 +1055,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PersonName" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -956,12 +1079,12 @@ function __c0(j: number): any {
           admin_area_1: S.optional(S.String),
           postal_code: S.optional(S.String),
           country_code: S.String,
-          address_details: S.optional(__S(2, __c0, 2)),
+          address_details: S.optional(__S(34, __c1, 2)),
           type: S.String,
         }),
       ).annotate({ identifier: "PersonAddressDetail" });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(35, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -972,20 +1095,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PersonPhoneDetail" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(37, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           date_of_birth: S.String,
         }),
       ).annotate({ identifier: "BirthDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(S.String);
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -995,49 +1114,16 @@ function __c1(j: number): any {
           size: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileReference" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(8, __c1, 0)),
-          name: S.optional(S.String),
-          identification_number: S.optional(S.String),
-          issue_date: S.optional(S.String),
-          expiry_date: S.optional(S.String),
-          issuing_country_code: S.optional(S.String),
-          files: S.optional(__S(10, __c1, 2)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PersonDocumentInput" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(1, __c0, 1)),
-          citizenship: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          birth_details: S.optional(__S(7, __c0, 7)),
-          documents: S.optional(__S(12, __c1, 4)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IndividualOwnerInput" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(41, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           subtype: S.optional(S.String),
         }),
       ).annotate({ identifier: "BusinessTypeInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -1045,7 +1131,7 @@ function __c2(j: number): any {
           subcategory: S.String,
         }),
       ).annotate({ identifier: "BusinessIndustry" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           incorporation_country_code: S.optional(S.String),
@@ -1054,104 +1140,39 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BusinessEntityInputBusinessIncorporation",
       });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           business_name: S.optional(S.String),
           type: S.String,
         }),
       ).annotate({ identifier: "BusinessNameDetail" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 15:
+      return S.Array(__S(46, __c1, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           email: S.String,
         }),
       ).annotate({ identifier: "Email" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(1, __c0, 1)),
-          citizenship: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          birth_details: S.optional(__S(7, __c0, 7)),
-          documents: S.optional(__S(12, __c1, 4)),
-          percentage_of_ownership: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IndividualBeneficialOwnerInput",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          business_type: S.optional(__S(15, __c1, 7)),
-          business_industry: S.optional(__S(16, __c2, 0)),
-          business_incorporation: S.optional(__S(17, __c2, 1)),
-          names: S.optional(__S(19, __c2, 3)),
-          emails: S.optional(__S(21, __c2, 5)),
-          website: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          documents: S.optional(__S(12, __c1, 4)),
-          percentage_of_ownership: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BusinessBeneficialOwnerInput",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          individual_beneficial_owners: S.optional(__S(23, __c2, 7)),
-          business_beneficial_owners: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "BeneficialOwnersInput" });
-    case 3:
+    case 17:
+      return S.Array(__S(48, __c1, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           currency_code: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "Money" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          minimum_amount: S.optional(__S(27, __c3, 3)),
-          maximum_amount: S.optional(__S(27, __c3, 3)),
+          minimum_amount: S.optional(__S(50, __c1, 18)),
+          maximum_amount: S.optional(__S(50, __c1, 18)),
         }),
       ).annotate({ identifier: "CurrencyRange" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          business_type: S.optional(__S(15, __c1, 7)),
-          business_industry: S.optional(__S(16, __c2, 0)),
-          business_incorporation: S.optional(__S(17, __c2, 1)),
-          names: S.optional(__S(19, __c2, 3)),
-          emails: S.optional(__S(21, __c2, 5)),
-          website: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          documents: S.optional(__S(12, __c1, 4)),
-          beneficial_owners: S.optional(__S(26, __c3, 2)),
-          annual_sales_volume_range: S.optional(__S(28, __c3, 4)),
-          average_monthly_volume_range: S.optional(__S(28, __c3, 4)),
-          purpose_code: S.optional(S.Unknown),
-          business_description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BusinessEntityInput" });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           return_url: S.optional(S.String),
@@ -1159,20 +1180,16 @@ function __c3(j: number): any {
           show_add_credit_card: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PartnerConfigOverride" });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identifier" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 22:
+      return S.Array(__S(53, __c1, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           address_line_1: S.optional(S.String),
@@ -1183,70 +1200,70 @@ function __c4(j: number): any {
           country_code: S.String,
         }),
       ).annotate({ identifier: "BankBranchLocation" });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           accepted: S.Boolean,
         }),
       ).annotate({ identifier: "Mandate" });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           nick_name: S.optional(S.String),
           account_number: S.String,
           account_type: S.String,
           currency_code: S.optional(S.String),
-          identifiers: S.optional(__S(32, __c4, 0)),
-          branch_location: S.optional(__S(33, __c4, 1)),
-          mandate: S.optional(__S(34, __c4, 2)),
+          identifiers: S.optional(__S(54, __c1, 22)),
+          branch_location: S.optional(__S(55, __c1, 23)),
+          mandate: S.optional(__S(56, __c1, 24)),
         }),
       ).annotate({ identifier: "Bank" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 26:
+      return S.Array(__S(57, __c1, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          banks: S.optional(__S(36, __c4, 4)),
+          banks: S.optional(__S(58, __c1, 26)),
         }),
       ).annotate({ identifier: "FinancialInstruments" });
-    case 6:
+    case 28:
       return S.Array(S.String);
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          features: __S(38, __c4, 6),
+          features: __S(60, __c1, 28),
           seller_nonce: S.String,
         }),
       ).annotate({ identifier: "FirstPartyDetails" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(38, __c4, 6)),
+          features: S.optional(__S(60, __c1, 28)),
           signup_mode: S.optional(S.String),
           organization: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThirdPartyDetails" });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           integration_method: S.optional(S.String),
           integration_type: S.String,
-          first_party_details: S.optional(__S(39, __c4, 7)),
-          third_party_details: S.optional(__S(40, __c5, 0)),
+          first_party_details: S.optional(__S(61, __c1, 29)),
+          third_party_details: S.optional(__S(62, __c1, 30)),
         }),
       ).annotate({ identifier: "RestApiIntegration" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           classic_api_integration: S.optional(S.Unknown),
-          rest_api_integration: S.optional(__S(41, __c5, 1)),
+          rest_api_integration: S.optional(__S(63, __c1, 31)),
         }),
       ).annotate({ identifier: "IntegrationDetails" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           experience_id: S.optional(S.String),
@@ -1255,100 +1272,71 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "BillingExperiencePreference",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          billing_experience_preference: S.optional(__S(43, __c5, 3)),
+          billing_experience_preference: S.optional(__S(65, __c2, 1)),
           merchant_custom_data: S.optional(S.String),
           approval_url: S.optional(S.String),
           ec_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingAgreement" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           operation: S.String,
-          api_integration_preference: S.optional(__S(42, __c5, 2)),
+          api_integration_preference: S.optional(__S(64, __c2, 0)),
           offline_onboarding_preference: S.optional(S.Unknown),
-          billing_agreement: S.optional(__S(44, __c5, 4)),
+          billing_agreement: S.optional(__S(66, __c2, 2)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
       return S.Array(S.String);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Array(S.Unknown);
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           granted: S.Boolean,
         }),
       ).annotate({ identifier: "LegalConsent" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
       return S.Array(S.String);
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           transfer_method_type: S.optional(S.String),
-          currencies: S.optional(__S(51, __c6, 3)),
+          currencies: S.optional(__S(73, __c2, 9)),
         }),
       ).annotate({ identifier: "TransferMethod" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(74, __c2, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          transfer_methods: S.optional(__S(53, __c6, 5)),
+          transfer_methods: S.optional(__S(75, __c2, 11)),
         }),
       ).annotate({
         identifier: "CountryTransferMethodCurrencySelection",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(76, __c2, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           marketplace: S.optional(S.Boolean),
           kyc_required: S.optional(S.Boolean),
-          country_transfer_method_currency_selection: S.optional(__S(55, __c6, 7)),
+          country_transfer_method_currency_selection: S.optional(__S(77, __c2, 13)),
         }),
       ).annotate({ identifier: "PayoutAttributes" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          individual_owners: S.optional(__S(14, __c1, 6)),
-          business_entity: S.optional(__S(29, __c3, 5)),
-          email: S.optional(S.String),
-          preferred_language_code: S.optional(S.String),
-          tracking_id: S.optional(S.String),
-          partner_config_override: S.optional(__S(30, __c3, 6)),
-          financial_instruments: S.optional(__S(37, __c4, 5)),
-          operations: __S(46, __c5, 6),
-          products: S.optional(__S(47, __c5, 7)),
-          capabilities: S.optional(__S(38, __c4, 6)),
-          outside_process_dependencies: S.optional(__S(48, __c6, 0)),
-          legal_consents: __S(50, __c6, 2),
-          payout_attributes: S.optional(__S(56, __c7, 0)),
-          legal_country_code: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/customer/partner-referrals", code: 200 })),
-      ).annotate({
-        identifier: "CreatePartnerReferralRequest",
-      });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -1356,17 +1344,13 @@ function __c7(j: number): any {
           method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateReferralDataResponse",
-      });
-    case 5:
+    case 16:
+      return S.Array(__S(79, __c2, 15));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partner_referral_id: S.String.pipe(T.Label()),
@@ -1380,138 +1364,129 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReadPartnerReferralRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          labels: S.optional(__S(8, __c1, 0)),
+          labels: S.optional(__S(40, __c1, 8)),
           name: S.optional(S.String),
           identification_number: S.optional(S.String),
           issue_date: S.optional(S.String),
           expiry_date: S.optional(S.String),
           issuing_country_code: S.optional(S.String),
-          files: S.optional(__S(10, __c1, 2)),
-          links: S.optional(__S(59, __c7, 3)),
+          files: S.optional(__S(42, __c1, 10)),
+          links: S.optional(__S(80, __c2, 16)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PersonDocument" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          names: S.optional(__S(1, __c0, 1)),
+          names: S.optional(__S(33, __c1, 1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          birth_details: S.optional(__S(7, __c0, 7)),
-          documents: S.optional(__S(63, __c7, 7)),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          birth_details: S.optional(__S(39, __c1, 7)),
+          documents: S.optional(__S(98, __c3, 2)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndividualOwner" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(99, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          names: S.optional(__S(1, __c0, 1)),
+          names: S.optional(__S(33, __c1, 1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          birth_details: S.optional(__S(7, __c0, 7)),
-          documents: S.optional(__S(63, __c7, 7)),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          birth_details: S.optional(__S(39, __c1, 7)),
+          documents: S.optional(__S(98, __c3, 2)),
           percentage_of_ownership: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IndividualBeneficialOwner",
       });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          business_type: S.optional(__S(15, __c1, 7)),
-          business_industry: S.optional(__S(16, __c2, 0)),
-          business_incorporation: S.optional(__S(17, __c2, 1)),
-          names: S.optional(__S(19, __c2, 3)),
-          emails: S.optional(__S(21, __c2, 5)),
-          website: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          documents: S.optional(__S(63, __c7, 7)),
-          percentage_of_ownership: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BusinessBeneficialOwner" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          individual_beneficial_owners: S.optional(__S(67, __c8, 3)),
-          business_beneficial_owners: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "BeneficialOwners" });
+      return S.Array(__S(101, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          business_type: S.optional(__S(15, __c1, 7)),
-          business_industry: S.optional(__S(16, __c2, 0)),
-          business_incorporation: S.optional(__S(17, __c2, 1)),
-          names: S.optional(__S(19, __c2, 3)),
-          emails: S.optional(__S(21, __c2, 5)),
+          business_type: S.optional(__S(43, __c1, 11)),
+          business_industry: S.optional(__S(44, __c1, 12)),
+          business_incorporation: S.optional(__S(45, __c1, 13)),
+          names: S.optional(__S(47, __c1, 15)),
+          emails: S.optional(__S(49, __c1, 17)),
           website: S.optional(S.String),
-          addresses: S.optional(__S(4, __c0, 4)),
-          phones: S.optional(__S(6, __c0, 6)),
-          documents: S.optional(__S(63, __c7, 7)),
-          beneficial_owners: S.optional(__S(70, __c8, 6)),
-          annual_sales_volume_range: S.optional(__S(28, __c3, 4)),
-          average_monthly_volume_range: S.optional(__S(28, __c3, 4)),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          documents: S.optional(__S(98, __c3, 2)),
+          percentage_of_ownership: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BusinessBeneficialOwner" });
+    case 8:
+      return S.Array(__S(103, __c3, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          individual_beneficial_owners: S.optional(__S(102, __c3, 6)),
+          business_beneficial_owners: S.optional(__S(104, __c3, 8)),
+        }),
+      ).annotate({ identifier: "BeneficialOwners" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          business_type: S.optional(__S(43, __c1, 11)),
+          business_industry: S.optional(__S(44, __c1, 12)),
+          business_incorporation: S.optional(__S(45, __c1, 13)),
+          names: S.optional(__S(47, __c1, 15)),
+          emails: S.optional(__S(49, __c1, 17)),
+          website: S.optional(S.String),
+          addresses: S.optional(__S(36, __c1, 4)),
+          phones: S.optional(__S(38, __c1, 6)),
+          documents: S.optional(__S(98, __c3, 2)),
+          beneficial_owners: S.optional(__S(105, __c3, 9)),
+          annual_sales_volume_range: S.optional(__S(51, __c1, 19)),
+          average_monthly_volume_range: S.optional(__S(51, __c1, 19)),
           purpose_code: S.optional(S.Unknown),
           business_description: S.optional(S.String),
         }),
       ).annotate({ identifier: "BusinessEntity" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          individual_owners: S.optional(__S(65, __c8, 1)),
-          business_entity: S.optional(__S(71, __c8, 7)),
+          individual_owners: S.optional(__S(100, __c3, 4)),
+          business_entity: S.optional(__S(106, __c3, 10)),
           email: S.optional(S.String),
           preferred_language_code: S.optional(S.String),
           tracking_id: S.optional(S.String),
-          partner_config_override: S.optional(__S(30, __c3, 6)),
-          financial_instruments: S.optional(__S(37, __c4, 5)),
-          operations: __S(46, __c5, 6),
-          products: S.optional(__S(47, __c5, 7)),
-          capabilities: S.optional(__S(38, __c4, 6)),
-          outside_process_dependencies: S.optional(__S(48, __c6, 0)),
-          legal_consents: __S(50, __c6, 2),
-          payout_attributes: S.optional(__S(56, __c7, 0)),
+          partner_config_override: S.optional(__S(52, __c1, 20)),
+          financial_instruments: S.optional(__S(59, __c1, 27)),
+          operations: __S(68, __c2, 4),
+          products: S.optional(__S(69, __c2, 5)),
+          capabilities: S.optional(__S(60, __c1, 28)),
+          outside_process_dependencies: S.optional(__S(70, __c2, 6)),
+          legal_consents: __S(72, __c2, 8),
+          payout_attributes: S.optional(__S(78, __c2, 14)),
           legal_country_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReferralData" });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           partner_referral_id: S.optional(S.String),
           submitter_payer_id: S.optional(S.String),
           submitter_client_id: S.optional(S.String),
-          referral_data: S.optional(__S(72, __c9, 0)),
-          links: S.optional(__S(59, __c7, 3)),
+          referral_data: S.optional(__S(107, __c3, 11)),
+          links: S.optional(__S(80, __c2, 16)),
         }),
       ).annotate({ identifier: "ReferralDataResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

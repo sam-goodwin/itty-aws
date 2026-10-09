@@ -586,8 +586,8 @@ export const createAppInstance: API.OperationMethod<
   CreateAppInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAppInstanceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateAppInstanceResponse>,
+  input: __S(156, __c39, 0) as any as S.Schema<CreateAppInstanceRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<CreateAppInstanceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -632,8 +632,8 @@ export const createAppInstanceAdmin: API.OperationMethod<
   CreateAppInstanceAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateAppInstanceAdminRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateAppInstanceAdminResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAppInstanceAdminRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateAppInstanceAdminResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -669,8 +669,8 @@ export const createAppInstanceBot: API.OperationMethod<
   CreateAppInstanceBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAppInstanceBotRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAppInstanceBotResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateAppInstanceBotRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<CreateAppInstanceBotResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -706,8 +706,8 @@ export const createAppInstanceUser: API.OperationMethod<
   CreateAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateAppInstanceUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateAppInstanceUserResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateAppInstanceUserRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<CreateAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -741,8 +741,8 @@ export const deleteAppInstance: API.OperationMethod<
   DeleteAppInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteAppInstanceRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppInstanceResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteAppInstanceRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteAppInstanceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -778,8 +778,8 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
   DeleteAppInstanceAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAppInstanceAdminRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppInstanceAdminResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteAppInstanceAdminRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteAppInstanceAdminResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -814,8 +814,8 @@ export const deleteAppInstanceBot: API.OperationMethod<
   DeleteAppInstanceBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteAppInstanceBotRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppInstanceBotResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteAppInstanceBotRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteAppInstanceBotResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -850,8 +850,8 @@ export const deleteAppInstanceUser: API.OperationMethod<
   DeleteAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAppInstanceUserRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppInstanceUserResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DeleteAppInstanceUserRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -884,8 +884,8 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
   DeregisterAppInstanceUserEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeregisterAppInstanceUserEndpointRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeregisterAppInstanceUserEndpointResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<DeregisterAppInstanceUserEndpointRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<DeregisterAppInstanceUserEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -916,8 +916,8 @@ export const describeAppInstance: API.OperationMethod<
   DescribeAppInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DescribeAppInstanceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DescribeAppInstanceResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<DescribeAppInstanceRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<DescribeAppInstanceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -948,8 +948,8 @@ export const describeAppInstanceAdmin: API.OperationMethod<
   DescribeAppInstanceAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DescribeAppInstanceAdminRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DescribeAppInstanceAdminResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<DescribeAppInstanceAdminRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<DescribeAppInstanceAdminResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -981,8 +981,8 @@ export const describeAppInstanceBot: API.OperationMethod<
   DescribeAppInstanceBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DescribeAppInstanceBotRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeAppInstanceBotResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<DescribeAppInstanceBotRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<DescribeAppInstanceBotResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1014,8 +1014,8 @@ export const describeAppInstanceUser: API.OperationMethod<
   DescribeAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DescribeAppInstanceUserRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DescribeAppInstanceUserResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<DescribeAppInstanceUserRequest>,
+  output: __S(70, __c17, 2) as any as S.Schema<DescribeAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1046,8 +1046,8 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
   DescribeAppInstanceUserEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DescribeAppInstanceUserEndpointRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeAppInstanceUserEndpointResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<DescribeAppInstanceUserEndpointRequest>,
+  output: __S(74, __c18, 2) as any as S.Schema<DescribeAppInstanceUserEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1078,8 +1078,8 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
   GetAppInstanceRetentionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetAppInstanceRetentionSettingsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetAppInstanceRetentionSettingsResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<GetAppInstanceRetentionSettingsRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<GetAppInstanceRetentionSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1112,8 +1112,8 @@ export const listAppInstanceAdmins: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListAppInstanceAdminsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListAppInstanceAdminsResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<ListAppInstanceAdminsRequest>,
+  output: __S(95, __c23, 3) as any as S.Schema<ListAppInstanceAdminsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1152,8 +1152,8 @@ export const listAppInstanceBots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListAppInstanceBotsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListAppInstanceBotsResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<ListAppInstanceBotsRequest>,
+  output: __S(99, __c24, 3) as any as S.Schema<ListAppInstanceBotsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1192,8 +1192,8 @@ export const listAppInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListAppInstancesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListAppInstancesResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<ListAppInstancesRequest>,
+  output: __S(103, __c25, 3) as any as S.Schema<ListAppInstancesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1230,8 +1230,8 @@ export const listAppInstanceUserEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListAppInstanceUserEndpointsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListAppInstanceUserEndpointsResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<ListAppInstanceUserEndpointsRequest>,
+  output: __S(107, __c26, 3) as any as S.Schema<ListAppInstanceUserEndpointsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1269,8 +1269,8 @@ export const listAppInstanceUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListAppInstanceUsersRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListAppInstanceUsersResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListAppInstanceUsersRequest>,
+  output: __S(111, __c27, 3) as any as S.Schema<ListAppInstanceUsersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1306,8 +1306,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(113, __c28, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1339,8 +1339,8 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
   PutAppInstanceRetentionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PutAppInstanceRetentionSettingsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PutAppInstanceRetentionSettingsResponse>,
+  input: __S(116, __c29, 0) as any as S.Schema<PutAppInstanceRetentionSettingsRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<PutAppInstanceRetentionSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1378,8 +1378,8 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
   PutAppInstanceUserExpirationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PutAppInstanceUserExpirationSettingsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PutAppInstanceUserExpirationSettingsResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<PutAppInstanceUserExpirationSettingsRequest>,
+  output: __S(121, __c30, 1) as any as S.Schema<PutAppInstanceUserExpirationSettingsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1413,8 +1413,8 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
   RegisterAppInstanceUserEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<RegisterAppInstanceUserEndpointRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<RegisterAppInstanceUserEndpointResponse>,
+  input: __S(124, __c31, 0) as any as S.Schema<RegisterAppInstanceUserEndpointRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<RegisterAppInstanceUserEndpointResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1448,8 +1448,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1481,8 +1481,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(137, __c34, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1514,8 +1514,8 @@ export const updateAppInstance: API.OperationMethod<
   UpdateAppInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateAppInstanceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateAppInstanceResponse>,
+  input: __S(140, __c35, 0) as any as S.Schema<UpdateAppInstanceRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<UpdateAppInstanceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1549,8 +1549,8 @@ export const updateAppInstanceBot: API.OperationMethod<
   UpdateAppInstanceBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateAppInstanceBotRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateAppInstanceBotResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<UpdateAppInstanceBotRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<UpdateAppInstanceBotResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1586,8 +1586,8 @@ export const updateAppInstanceUser: API.OperationMethod<
   UpdateAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateAppInstanceUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateAppInstanceUserResponse>,
+  input: __S(148, __c37, 0) as any as S.Schema<UpdateAppInstanceUserRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<UpdateAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1621,8 +1621,8 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
   UpdateAppInstanceUserEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UpdateAppInstanceUserEndpointRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<UpdateAppInstanceUserEndpointResponse>,
+  input: __S(152, __c38, 0) as any as S.Schema<UpdateAppInstanceUserEndpointRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<UpdateAppInstanceUserEndpointResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1641,27 +1641,6 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: SensitiveString,
-          Metadata: S.optional(SensitiveString),
-          ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/app-instances" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateAppInstanceRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ AppInstanceArn: S.optional(S.String) })).annotate({
-        identifier: "CreateAppInstanceResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           AppInstanceAdminArn: S.String,
@@ -1679,50 +1658,36 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAppInstanceAdminRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Name: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "Identity" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AppInstanceAdmin: S.optional(__S(5, __c0, 5)),
+          AppInstanceAdmin: S.optional(__S(4, __c1, 0)),
           AppInstanceArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateAppInstanceAdminResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ StandardMessages: S.String, TargetedMessages: S.String }),
-      ).annotate({ identifier: "InvokedBy" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          RespondsTo: S.optional(S.String),
-          InvokedBy: S.optional(__S(7, __c0, 7)),
-          LexBotAliasArn: S.String,
-          LocaleId: S.String,
-          WelcomeIntent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LexConfiguration" });
-    case 1:
-      return S.suspend(() => S.Struct({ Lex: __S(8, __c1, 0) })).annotate({
-        identifier: "Configuration",
-      });
-    case 2:
+        S.Struct({ Arn: S.optional(S.String), Name: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "Identity" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String,
           Name: S.optional(SensitiveString),
           Metadata: S.optional(SensitiveString),
           ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1, __c0, 1)),
-          Configuration: __S(9, __c1, 1),
+          Tags: S.optional(__S(161, __c40, 1)),
+          Configuration: __S(14, __c3, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/app-instance-bots" }),
@@ -1736,15 +1701,41 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAppInstanceBotRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ StandardMessages: S.String, TargetedMessages: S.String }),
+      ).annotate({ identifier: "InvokedBy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RespondsTo: S.optional(S.String),
+          InvokedBy: S.optional(__S(12, __c3, 0)),
+          LexBotAliasArn: S.String,
+          LocaleId: S.String,
+          WelcomeIntent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LexConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ Lex: __S(13, __c3, 1) })).annotate({
+        identifier: "Configuration",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ AppInstanceBotArn: S.optional(S.String) })).annotate({
         identifier: "CreateAppInstanceBotResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ExpirationDays: S.Number, ExpirationCriterion: S.String }),
-      ).annotate({ identifier: "ExpirationSettings" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String,
@@ -1752,8 +1743,8 @@ function __c1(j: number): any {
           Name: SensitiveString,
           Metadata: S.optional(SensitiveString),
           ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1, __c0, 1)),
-          ExpirationSettings: S.optional(__S(12, __c1, 4)),
+          Tags: S.optional(__S(161, __c40, 1)),
+          ExpirationSettings: S.optional(__S(24, __c6, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/app-instance-users" }),
@@ -1767,11 +1758,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAppInstanceUserRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExpirationDays: S.Number, ExpirationCriterion: S.String }),
+      ).annotate({ identifier: "ExpirationSettings" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ AppInstanceUserArn: S.optional(S.String) })).annotate({
         identifier: "CreateAppInstanceUserResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")) }).pipe(
           T.all(
@@ -1786,13 +1793,17 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteAppInstanceRequest" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAppInstanceResponse",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceAdminArn: S.String.pipe(T.HttpLabel("AppInstanceAdminArn")),
@@ -1813,7 +1824,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAppInstanceAdminRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")) }).pipe(
           T.all(
@@ -1828,7 +1843,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAppInstanceBotRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")) }).pipe(
           T.all(
@@ -1843,7 +1862,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAppInstanceUserRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
@@ -1864,11 +1887,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeregisterAppInstanceUserEndpointRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeregisterAppInstanceUserEndpointResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")) }).pipe(
           T.all(
@@ -1883,7 +1910,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DescribeAppInstanceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.optional(S.String),
@@ -1893,15 +1920,15 @@ function __c2(j: number): any {
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "AppInstance" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ AppInstance: S.optional(__S(23, __c2, 7)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ AppInstance: S.optional(__S(57, __c14, 1)) })).annotate({
         identifier: "DescribeAppInstanceResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceAdminArn: S.String.pipe(T.HttpLabel("AppInstanceAdminArn")),
@@ -1922,21 +1949,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeAppInstanceAdminRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Admin: S.optional(__S(5, __c0, 5)),
+          Admin: S.optional(__S(4, __c1, 0)),
           AppInstanceArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AppInstanceAdmin" });
-    case 3:
-      return S.suspend(() => S.Struct({ AppInstanceAdmin: S.optional(__S(26, __c3, 2)) })).annotate(
-        {
-          identifier: "DescribeAppInstanceAdminResponse",
-        },
-      );
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AppInstanceAdmin: S.optional(__S(61, __c15, 1)) }),
+      ).annotate({
+        identifier: "DescribeAppInstanceAdminResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")) }).pipe(
           T.all(
@@ -1951,22 +1982,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeAppInstanceBotRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceBotArn: S.optional(S.String),
           Name: S.optional(SensitiveString),
-          Configuration: S.optional(__S(9, __c1, 1)),
+          Configuration: S.optional(__S(14, __c3, 2)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "AppInstanceBot" });
-    case 6:
-      return S.suspend(() => S.Struct({ AppInstanceBot: S.optional(__S(29, __c3, 5)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ AppInstanceBot: S.optional(__S(65, __c16, 1)) })).annotate({
         identifier: "DescribeAppInstanceBotResponse",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")) }).pipe(
           T.all(
@@ -1981,11 +2016,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeAppInstanceUserRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
@@ -1993,14 +2024,20 @@ function __c4(j: number): any {
           Metadata: S.optional(SensitiveString),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpirationSettings: S.optional(__S(12, __c1, 4)),
+          ExpirationSettings: S.optional(__S(24, __c6, 0)),
         }),
       ).annotate({ identifier: "AppInstanceUser" });
-    case 1:
-      return S.suspend(() => S.Struct({ AppInstanceUser: S.optional(__S(32, __c4, 0)) })).annotate({
-        identifier: "DescribeAppInstanceUserResponse",
-      });
     case 2:
+      return S.suspend(() => S.Struct({ AppInstanceUser: S.optional(__S(69, __c17, 1)) })).annotate(
+        {
+          identifier: "DescribeAppInstanceUserResponse",
+        },
+      );
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
@@ -2021,15 +2058,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeAppInstanceUserEndpointRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DeviceToken: SensitiveString, VoipDeviceToken: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "EndpointAttributes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Status: S.String, StatusReason: S.optional(S.String) }),
-      ).annotate({ identifier: "EndpointState" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
@@ -2037,20 +2066,40 @@ function __c4(j: number): any {
           Name: S.optional(SensitiveString),
           Type: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          EndpointAttributes: S.optional(__S(35, __c4, 3)),
+          EndpointAttributes: S.optional(__S(80, __c20, 0)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AllowMessages: S.optional(S.String),
-          EndpointState: S.optional(__S(36, __c4, 4)),
+          EndpointState: S.optional(__S(76, __c19, 0)),
         }),
       ).annotate({ identifier: "AppInstanceUserEndpoint" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ AppInstanceUserEndpoint: S.optional(__S(37, __c4, 5)) }),
+        S.Struct({ AppInstanceUserEndpoint: S.optional(__S(73, __c18, 1)) }),
       ).annotate({
         identifier: "DescribeAppInstanceUserEndpointResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Status: S.String, StatusReason: S.optional(S.String) }),
+      ).annotate({ identifier: "EndpointState" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DeviceToken: SensitiveString, VoipDeviceToken: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "EndpointAttributes" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")) }).pipe(
           T.all(
@@ -2067,7 +2116,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RetentionDays: S.optional(S.Number) })).annotate({
@@ -2075,20 +2124,24 @@ function __c5(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelRetentionSettings: S.optional(__S(40, __c5, 0)) }),
+        S.Struct({ ChannelRetentionSettings: S.optional(__S(88, __c22, 0)) }),
       ).annotate({
         identifier: "AppInstanceRetentionSettings",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AppInstanceRetentionSettings: S.optional(__S(41, __c5, 1)),
+          AppInstanceRetentionSettings: S.optional(__S(89, __c22, 1)),
           InitiateDeletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "GetAppInstanceRetentionSettingsResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
@@ -2107,23 +2160,27 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAppInstanceAdminsRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Admin: S.optional(__S(5, __c0, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Admin: S.optional(__S(4, __c1, 0)) })).annotate({
         identifier: "AppInstanceAdminSummary",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(93, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.optional(S.String),
-          AppInstanceAdmins: S.optional(__S(45, __c5, 5)),
+          AppInstanceAdmins: S.optional(__S(94, __c23, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ListAppInstanceAdminsResponse",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
@@ -2135,11 +2192,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAppInstanceBotsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceBotArn: S.optional(S.String),
@@ -2147,19 +2200,23 @@ function __c6(j: number): any {
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "AppInstanceBotSummary" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(97, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.optional(S.String),
-          AppInstanceBots: S.optional(__S(49, __c6, 1)),
+          AppInstanceBots: S.optional(__S(98, __c24, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ListAppInstanceBotsResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
@@ -2168,7 +2225,7 @@ function __c6(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/app-instances" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAppInstancesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.optional(S.String),
@@ -2176,16 +2233,20 @@ function __c6(j: number): any {
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "AppInstanceSummary" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(101, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AppInstances: S.optional(__S(53, __c6, 5)),
+          AppInstances: S.optional(__S(102, __c25, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListAppInstancesResponse" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: SensitiveString.pipe(T.HttpLabel("AppInstanceUserArn")),
@@ -2204,11 +2265,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAppInstanceUserEndpointsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
@@ -2216,23 +2273,27 @@ function __c7(j: number): any {
           Name: S.optional(SensitiveString),
           Type: S.optional(S.String),
           AllowMessages: S.optional(S.String),
-          EndpointState: S.optional(__S(36, __c4, 4)),
+          EndpointState: S.optional(__S(76, __c19, 0)),
         }),
       ).annotate({
         identifier: "AppInstanceUserEndpointSummary",
       });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
+      return S.Array(__S(105, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AppInstanceUserEndpoints: S.optional(__S(57, __c7, 1)),
+          AppInstanceUserEndpoints: S.optional(__S(106, __c26, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ListAppInstanceUserEndpointsResponse",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
@@ -2251,7 +2312,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAppInstanceUsersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
@@ -2259,19 +2320,23 @@ function __c7(j: number): any {
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "AppInstanceUserSummary" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(109, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.optional(S.String),
-          AppInstanceUsers: S.optional(__S(61, __c7, 5)),
+          AppInstanceUsers: S.optional(__S(110, __c27, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ListAppInstanceUsersResponse",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
@@ -2279,19 +2344,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(161, __c40, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-          AppInstanceRetentionSettings: __S(41, __c5, 1),
+          AppInstanceRetentionSettings: __S(89, __c22, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/app-instances/{AppInstanceArn}/retention-settings" }),
@@ -2305,11 +2370,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PutAppInstanceRetentionSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
-          ExpirationSettings: S.optional(__S(12, __c1, 4)),
+          ExpirationSettings: S.optional(__S(24, __c6, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2326,23 +2395,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PutAppInstanceUserExpirationSettingsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
-          ExpirationSettings: S.optional(__S(12, __c1, 4)),
+          ExpirationSettings: S.optional(__S(24, __c6, 0)),
         }),
       ).annotate({
         identifier: "PutAppInstanceUserExpirationSettingsResponse",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: SensitiveString.pipe(T.HttpLabel("AppInstanceUserArn")),
           Name: S.optional(SensitiveString),
           Type: S.String,
           ResourceArn: S.String,
-          EndpointAttributes: __S(35, __c4, 3),
+          EndpointAttributes: __S(80, __c20, 0),
           ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
           AllowMessages: S.optional(S.String),
         }).pipe(
@@ -2358,15 +2431,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RegisterAppInstanceUserEndpointRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceUserArn: S.optional(S.String), EndpointId: S.optional(S.String) }),
       ).annotate({
         identifier: "RegisterAppInstanceUserEndpointResponse",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(161, __c40, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
             svc,
@@ -2377,15 +2458,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
-      return S.Array(SensitiveString);
   }
 }
-function __c9(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(SensitiveString);
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(71, __c8, 7) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(136, __c34, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
             svc,
@@ -2396,7 +2477,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
@@ -2413,13 +2498,17 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAppInstanceRequest" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")),
           Name: SensitiveString,
           Metadata: SensitiveString,
-          Configuration: S.optional(__S(9, __c1, 1)),
+          Configuration: S.optional(__S(14, __c3, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/app-instance-bots/{AppInstanceBotArn}" }),
@@ -2433,7 +2522,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateAppInstanceBotRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
@@ -2452,7 +2545,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateAppInstanceUserRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
@@ -2477,7 +2574,39 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: SensitiveString,
+          Metadata: S.optional(SensitiveString),
+          ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(161, __c40, 1)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/app-instances" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAppInstanceRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(160, __c40, 0));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AppInstanceArn: S.optional(S.String) })).annotate({
+        identifier: "CreateAppInstanceResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

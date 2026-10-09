@@ -176,11 +176,11 @@ export const getProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   GetProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
+  input: __S(10, __c1, 2) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
   output: __S(
-    9,
+    14,
     __c1,
-    1,
+    6,
   ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -219,24 +219,28 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
           forceRefreshToken: S.optional(S.String),
-          scopes: S.optional(__S(3, __c0, 3)),
+          scopes: S.optional(__S(8, __c1, 0)),
           continueUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -247,11 +251,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAuthProvidersCredentialsRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_Pending",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           authorizationUri: S.optional(S.String),
@@ -261,35 +265,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_UriConsentRequired",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           header: S.optional(S.String),
           expireTime: S.optional(S.String),
-          scopes: S.optional(__S(3, __c0, 3)),
+          scopes: S.optional(__S(8, __c1, 0)),
           token: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_Success",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          pending: S.optional(__S(6, __c0, 6)),
-          consentRejected: S.optional(__S(6, __c0, 6)),
-          uriConsentRequired: S.optional(__S(7, __c0, 7)),
-          success: S.optional(__S(8, __c1, 0)),
+          pending: S.optional(__S(11, __c1, 3)),
+          consentRejected: S.optional(__S(11, __c1, 3)),
+          uriConsentRequired: S.optional(__S(12, __c1, 4)),
+          success: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

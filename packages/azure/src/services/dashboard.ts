@@ -1315,8 +1315,8 @@ export const ApprovePrivateEndpointConnection: API.OperationMethod<
   ApprovePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApprovePrivateEndpointConnectionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ApprovePrivateEndpointConnectionResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ApprovePrivateEndpointConnectionRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<ApprovePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1330,8 @@ export const CheckGrafanaEnterpriseDetails: API.OperationMethod<
   CheckGrafanaEnterpriseDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CheckGrafanaEnterpriseDetailsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<EnterpriseDetails>,
+  input: __S(160, __c5, 0) as any as S.Schema<CheckGrafanaEnterpriseDetailsRequest>,
+  output: __S(164, __c5, 4) as any as S.Schema<EnterpriseDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1345,8 @@ export const CreateGrafana: API.OperationMethod<
   CreateGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateGrafanaRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateGrafanaResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<CreateGrafanaRequest>,
+  output: __S(689, __c21, 17) as any as S.Schema<CreateGrafanaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1360,8 @@ export const CreateIntegrationFabric: API.OperationMethod<
   CreateIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateIntegrationFabricRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateIntegrationFabricResponse>,
+  input: __S(1121, __c35, 1) as any as S.Schema<CreateIntegrationFabricRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<CreateIntegrationFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1375,8 @@ export const CreateManagedDashboard: API.OperationMethod<
   CreateManagedDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateManagedDashboardRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateManagedDashboardResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateManagedDashboardRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<CreateManagedDashboardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1390,8 @@ export const CreateManagedPrivateEndpoint: API.OperationMethod<
   CreateManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateManagedPrivateEndpointRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateManagedPrivateEndpointResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<CreateManagedPrivateEndpointRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<CreateManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1405,8 @@ export const DeleteGrafana: API.OperationMethod<
   DeleteGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteGrafanaRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteGrafanaResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteGrafanaRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeleteGrafanaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1420,8 @@ export const DeleteIntegrationFabric: API.OperationMethod<
   DeleteIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteIntegrationFabricRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DeleteIntegrationFabricResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteIntegrationFabricRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<DeleteIntegrationFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1435,8 @@ export const DeleteManagedDashboard: API.OperationMethod<
   DeleteManagedDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteManagedDashboardRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteManagedDashboardResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteManagedDashboardRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeleteManagedDashboardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1450,8 @@ export const DeleteManagedPrivateEndpoint: API.OperationMethod<
   DeleteManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteManagedPrivateEndpointRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteManagedPrivateEndpointResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteManagedPrivateEndpointRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1465,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1480,8 @@ export const FetchGrafanaAvailablePlugins: API.OperationMethod<
   FetchGrafanaAvailablePluginsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<FetchGrafanaAvailablePluginsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GrafanaAvailablePluginListResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<FetchGrafanaAvailablePluginsRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<GrafanaAvailablePluginListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1495,8 +1495,8 @@ export const GetDashboard: API.OperationMethod<
   GetDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetDashboardRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetDashboardResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetDashboardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1510,8 +1510,8 @@ export const GetGrafana: API.OperationMethod<
   GetGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetGrafanaRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetGrafanaResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetGrafanaRequest>,
+  output: __S(689, __c21, 17) as any as S.Schema<GetGrafanaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1525,8 +1525,8 @@ export const GetIntegrationFabric: API.OperationMethod<
   GetIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetIntegrationFabricRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetIntegrationFabricResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetIntegrationFabricRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<GetIntegrationFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1540,8 @@ export const GetManagedPrivateEndpoint: API.OperationMethod<
   GetManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetManagedPrivateEndpointRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetManagedPrivateEndpointResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetManagedPrivateEndpointRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<GetManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1555,8 +1555,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1570,8 +1570,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1585,8 +1585,8 @@ export const ListDashboardBySubscription: API.OperationMethod<
   ListDashboardBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListDashboardBySubscriptionRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ManagedDashboardListResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListDashboardBySubscriptionRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ManagedDashboardListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1600,8 +1600,8 @@ export const ListDashboards: API.OperationMethod<
   ListDashboardsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListDashboardsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ManagedDashboardListResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ManagedDashboardListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1615,8 +1615,8 @@ export const ListGrafana: API.OperationMethod<
   ListGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListGrafanaRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ManagedGrafanaListResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListGrafanaRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ManagedGrafanaListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1630,8 +1630,8 @@ export const ListGrafanaByResourceGroup: API.OperationMethod<
   ListGrafanaByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListGrafanaByResourceGroupRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ManagedGrafanaListResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListGrafanaByResourceGroupRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ManagedGrafanaListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1645,8 +1645,8 @@ export const ListIntegrationFabrics: API.OperationMethod<
   ListIntegrationFabricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListIntegrationFabricsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IntegrationFabricListResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListIntegrationFabricsRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<IntegrationFabricListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1660,8 +1660,8 @@ export const ListManagedPrivateEndpoints: API.OperationMethod<
   ListManagedPrivateEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListManagedPrivateEndpointsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ManagedPrivateEndpointModelListResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListManagedPrivateEndpointsRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<ManagedPrivateEndpointModelListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1675,8 +1675,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(932, __c29, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1690,8 +1690,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1705,8 +1705,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1720,8 +1720,8 @@ export const RefreshManagedPrivateEndpoint: API.OperationMethod<
   RefreshManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<RefreshManagedPrivateEndpointRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<RefreshManagedPrivateEndpointResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<RefreshManagedPrivateEndpointRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RefreshManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1735,8 +1735,8 @@ export const UpdateGrafana: API.OperationMethod<
   UpdateGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UpdateGrafanaRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateGrafanaResponse>,
+  input: __S(1058, __c33, 2) as any as S.Schema<UpdateGrafanaRequest>,
+  output: __S(689, __c21, 17) as any as S.Schema<UpdateGrafanaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1750,8 +1750,8 @@ export const UpdateIntegrationFabric: API.OperationMethod<
   UpdateIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UpdateIntegrationFabricRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateIntegrationFabricResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<UpdateIntegrationFabricRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<UpdateIntegrationFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1765,8 +1765,8 @@ export const UpdateManagedDashboard: API.OperationMethod<
   UpdateManagedDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdateManagedDashboardRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateManagedDashboardResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateManagedDashboardRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<UpdateManagedDashboardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1780,8 +1780,8 @@ export const UpdateManagedPrivateEndpoint: API.OperationMethod<
   UpdateManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateManagedPrivateEndpointRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateManagedPrivateEndpointResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<UpdateManagedPrivateEndpointRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<UpdateManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1791,39 +1791,23 @@ export const UpdateManagedPrivateEndpoint: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInputPrivateEndpoint",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(0, __c0, 0)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
-          groupIds: S.optional(__S(2, __c0, 2)),
+          privateEndpoint: S.optional(__S(128, __c4, 0)),
+          privateLinkServiceConnectionState: __S(32, __c1, 0),
+          groupIds: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1835,7 +1819,56 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApprovePrivateEndpointConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesPrivateEndpoint",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(33, __c1, 1)),
+          privateLinkServiceConnectionState: __S(32, __c1, 0),
+          groupIds: S.optional(__S(96, __c3, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(34, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ApprovePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1846,42 +1879,25 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesPrivateEndpoint",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(6, __c0, 6)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
-          groupIds: S.optional(__S(2, __c0, 2)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInputPrivateEndpoint",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "ApprovePrivateEndpointConnectionResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1898,7 +1914,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckGrafanaEnterpriseDetailsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           termUnit: S.optional(S.String),
@@ -1906,16 +1922,16 @@ function __c1(j: number): any {
           endDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionTerm" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           planId: S.optional(S.String),
           offerId: S.optional(S.String),
           publisherId: S.optional(S.String),
-          term: S.optional(__S(10, __c1, 2)),
+          term: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "SaasSubscriptionDetails" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           availablePromotion: S.optional(S.String),
@@ -1924,477 +1940,16 @@ function __c1(j: number): any {
           trialEndAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketplaceTrialQuota" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          saasSubscriptionDetails: S.optional(__S(11, __c1, 3)),
-          marketplaceTrialQuota: S.optional(__S(12, __c1, 4)),
+          saasSubscriptionDetails: S.optional(__S(162, __c5, 2)),
+          marketplaceTrialQuota: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "EnterpriseDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          azureMonitorWorkspaceResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureMonitorWorkspaceIntegration",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          azureMonitorWorkspaceIntegrations: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "GrafanaIntegrations" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          marketplacePlanId: S.optional(S.String),
-          marketplaceAutoRenew: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnterpriseConfigurations" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          host: S.optional(S.String),
-          user: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          fromAddress: S.optional(S.String),
-          fromName: S.optional(S.String),
-          startTLSPolicy: S.optional(S.String),
-          skipVerify: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Smtp" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          externalEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Snapshots" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          viewersCanEdit: S.optional(S.Boolean),
-          editorsCanAdmin: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Users" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          csrfAlwaysCheck: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Security" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          captureEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "UnifiedAlertingScreenshots",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          smtp: S.optional(__S(18, __c2, 2)),
-          snapshots: S.optional(__S(19, __c2, 3)),
-          users: S.optional(__S(20, __c2, 4)),
-          security: S.optional(__S(21, __c2, 5)),
-          unifiedAlertingScreenshots: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "GrafanaConfigurations" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          zoneRedundancy: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          creatorCanAdmin: S.optional(S.String),
-          deterministicOutboundIP: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
-          grafanaIntegrations: S.optional(__S(16, __c2, 0)),
-          enterpriseConfigurations: S.optional(__S(17, __c2, 1)),
-          grafanaConfigurations: S.optional(__S(23, __c2, 7)),
-          grafanaPlugins: S.optional(__S(24, __c3, 0)),
-          grafanaMajorVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedGrafanaPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          size: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceSku" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(24, __c3, 0))),
-        }),
-      ).annotate({
-        identifier: "CreateGrafanaRequestIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25, __c3, 1)),
-          sku: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(28, __c3, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateGrafanaRequest" });
-    case 6:
-      return S.Array(__S(8, __c1, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pluginId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GrafanaPlugin" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          grafanaVersion: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          zoneRedundancy: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          creatorCanAdmin: S.optional(S.String),
-          deterministicOutboundIP: S.optional(S.String),
-          outboundIPs: S.optional(__S(2, __c0, 2)),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
-          grafanaIntegrations: S.optional(__S(16, __c2, 0)),
-          enterpriseConfigurations: S.optional(__S(17, __c2, 1)),
-          grafanaConfigurations: S.optional(__S(23, __c2, 7)),
-          grafanaPlugins: S.optional(__S(32, __c4, 0)),
-          grafanaMajorVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedGrafanaProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 3:
-      return S.Record(S.String, __S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(35, __c4, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateGrafanaResponseIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(33, __c4, 1)),
-          sku: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "CreateGrafanaResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetResourceId: S.optional(S.String),
-          dataSourceResourceId: S.optional(S.String),
-          scenarios: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "IntegrationFabricPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(38, __c4, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationFabricRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          targetResourceId: S.optional(S.String),
-          dataSourceResourceId: S.optional(S.String),
-          scenarios: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "IntegrationFabricProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateIntegrationFabricResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dashboardName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateManagedDashboardRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedDashboardProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateManagedDashboardResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          privateLinkResourceId: S.optional(S.String),
-          privateLinkResourceRegion: S.optional(S.String),
-          groupIds: S.optional(__S(2, __c0, 2)),
-          requestMessage: S.optional(S.String),
-          privateLinkServiceUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedPrivateEndpointModelPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          managedPrivateEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(45, __c5, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateManagedPrivateEndpointRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedPrivateEndpointConnectionState",
-      });
   }
 }
 function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateLinkResourceId: S.optional(S.String),
-          privateLinkResourceRegion: S.optional(S.String),
-          groupIds: S.optional(__S(2, __c0, 2)),
-          requestMessage: S.optional(S.String),
-          connectionState: S.optional(__S(47, __c5, 7)),
-          privateLinkServiceUrl: S.optional(S.String),
-          privateLinkServicePrivateIP: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedPrivateEndpointModelProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(27, __c3, 3)),
-          location: S.String,
-          properties: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateManagedPrivateEndpointResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGrafanaRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteGrafanaResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIntegrationFabricRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIntegrationFabricResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dashboardName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedDashboardRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          managedPrivateEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedPrivateEndpointRequest",
-      });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2414,7 +1969,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2431,7 +1990,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "FetchGrafanaAvailablePluginsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pluginId: S.optional(S.String),
@@ -2440,18 +1999,22 @@ function __c7(j: number): any {
           author: S.optional(S.String),
         }),
       ).annotate({ identifier: "GrafanaAvailablePlugin" });
+    case 2:
+      return S.Array(__S(225, __c7, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(59, __c7, 3)),
+          value: S.optional(__S(226, __c7, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GrafanaAvailablePluginListResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2466,19 +2029,27 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDashboardRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
           location: S.String,
-          properties: S.optional(__S(43, __c5, 3)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "GetDashboardResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2495,7 +2066,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetGrafanaRequest" });
   }
 }
-function __c8(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2515,7 +2086,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetIntegrationFabricRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2533,7 +2108,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetManagedPrivateEndpointRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2551,7 +2130,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2569,30 +2152,38 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(2, __c0, 2)),
-          requiredZoneNames: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(96, __c3, 0)),
+          requiredZoneNames: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2607,22 +2198,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListDashboardBySubscriptionRequest",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c9(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(288, __c9, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(71, __c8, 7),
+          value: __S(544, __c17, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedDashboardListResponse",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2636,7 +2231,227 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDashboardsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicNetworkAccess: S.optional(S.String),
+          zoneRedundancy: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          creatorCanAdmin: S.optional(S.String),
+          deterministicOutboundIP: S.optional(S.String),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          grafanaIntegrations: S.optional(__S(674, __c21, 2)),
+          enterpriseConfigurations: S.optional(__S(675, __c21, 3)),
+          grafanaConfigurations: S.optional(__S(681, __c21, 9)),
+          grafanaPlugins: S.optional(__S(704, __c22, 0)),
+          grafanaMajorVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedGrafanaPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(608, __c19, 0)),
+          sku: S.optional(__S(682, __c21, 10)),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(705, __c22, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateGrafanaRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(35, __c1, 3));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureMonitorWorkspaceResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureMonitorWorkspaceIntegration",
+      });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          azureMonitorWorkspaceIntegrations: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({ identifier: "GrafanaIntegrations" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          marketplacePlanId: S.optional(S.String),
+          marketplaceAutoRenew: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnterpriseConfigurations" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          host: S.optional(S.String),
+          user: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          fromAddress: S.optional(S.String),
+          fromName: S.optional(S.String),
+          startTLSPolicy: S.optional(S.String),
+          skipVerify: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Smtp" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          externalEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Snapshots" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          viewersCanEdit: S.optional(S.Boolean),
+          editorsCanAdmin: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Users" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          csrfAlwaysCheck: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Security" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          captureEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UnifiedAlertingScreenshots",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          smtp: S.optional(__S(676, __c21, 4)),
+          snapshots: S.optional(__S(677, __c21, 5)),
+          users: S.optional(__S(678, __c21, 6)),
+          security: S.optional(__S(679, __c21, 7)),
+          unifiedAlertingScreenshots: S.optional(__S(680, __c21, 8)),
+        }),
+      ).annotate({ identifier: "GrafanaConfigurations" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          size: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceSku" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          pluginId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GrafanaPlugin" });
+    case 12:
+      return S.Record(S.String, __S(683, __c21, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          grafanaVersion: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          zoneRedundancy: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          creatorCanAdmin: S.optional(S.String),
+          deterministicOutboundIP: S.optional(S.String),
+          outboundIPs: S.optional(__S(96, __c3, 0)),
+          privateEndpointConnections: S.optional(__S(640, __c20, 0)),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          grafanaIntegrations: S.optional(__S(674, __c21, 2)),
+          enterpriseConfigurations: S.optional(__S(675, __c21, 3)),
+          grafanaConfigurations: S.optional(__S(681, __c21, 9)),
+          grafanaPlugins: S.optional(__S(684, __c21, 12)),
+          grafanaMajorVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedGrafanaProperties" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 15:
+      return S.Record(S.String, __S(686, __c21, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(687, __c21, 15))),
+        }),
+      ).annotate({
+        identifier: "CreateGrafanaResponseIdentity",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(685, __c21, 13)),
+          sku: S.optional(__S(682, __c21, 10)),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(688, __c21, 16)),
+        }),
+      ).annotate({ identifier: "CreateGrafanaResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(128, __c4, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(704, __c22, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateGrafanaRequestIdentity",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2649,18 +2464,26 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGrafanaRequest" });
-    case 3:
-      return S.Array(__S(37, __c4, 5));
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(689, __c21, 17));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75, __c9, 3),
+          value: __S(800, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedGrafanaListResponse",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2676,7 +2499,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListGrafanaByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2693,34 +2520,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListIntegrationFabricsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
           location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({ identifier: "IntegrationFabric" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(80, __c10, 0),
+          value: __S(866, __c27, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IntegrationFabricListResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2737,18 +2564,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListManagedPrivateEndpointsRequest",
       });
-    case 3:
-      return S.Array(__S(49, __c6, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(1410, __c44, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(83, __c10, 3),
+          value: __S(897, __c28, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedPrivateEndpointModelListResponse",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2759,7 +2590,7 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2768,30 +2599,30 @@ function __c10(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(86, __c10, 6)),
+          display: S.optional(__S(929, __c29, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(930, __c29, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(88, __c11, 0)),
+          value: S.optional(__S(931, __c29, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2808,16 +2639,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(30, __c3, 6),
+          value: __S(640, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2834,22 +2669,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(94, __c11, 6),
+          value: __S(994, __c31, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2857,7 +2692,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2876,9 +2711,13 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "RefreshManagedPrivateEndpointRequest",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(128, __c4, 0));
     case 1:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneRedundancy: S.optional(S.String),
@@ -2886,25 +2725,25 @@ function __c12(j: number): any {
           creatorCanAdmin: S.optional(S.String),
           deterministicOutboundIP: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          grafanaIntegrations: S.optional(__S(16, __c2, 0)),
-          enterpriseConfigurations: S.optional(__S(17, __c2, 1)),
-          grafanaConfigurations: S.optional(__S(23, __c2, 7)),
-          grafanaPlugins: S.optional(__S(97, __c12, 1)),
+          grafanaIntegrations: S.optional(__S(674, __c21, 2)),
+          enterpriseConfigurations: S.optional(__S(675, __c21, 3)),
+          grafanaConfigurations: S.optional(__S(681, __c21, 9)),
+          grafanaPlugins: S.optional(__S(1056, __c33, 0)),
           grafanaMajorVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedGrafanaPropertiesUpdateParametersInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(26, __c3, 2)),
-          identity: S.optional(__S(28, __c3, 4)),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(98, __c12, 2)),
+          sku: S.optional(__S(682, __c21, 10)),
+          identity: S.optional(__S(705, __c22, 1)),
+          tags: S.optional(__S(736, __c23, 0)),
+          properties: S.optional(__S(1057, __c33, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2914,23 +2753,27 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGrafanaRequest" });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          scenarios: S.optional(__S(2, __c0, 2)),
+          scenarios: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "IntegrationFabricPropertiesUpdateParameters",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           integrationFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(100, __c12, 4)),
+          tags: S.optional(__S(736, __c23, 0)),
+          properties: S.optional(__S(1088, __c34, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2942,13 +2785,85 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationFabricRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetResourceId: S.optional(S.String),
+          dataSourceResourceId: S.optional(S.String),
+          scenarios: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "IntegrationFabricPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationFabricName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(1120, __c35, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationFabricRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          targetResourceId: S.optional(S.String),
+          dataSourceResourceId: S.optional(S.String),
+          scenarios: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "IntegrationFabricProperties",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateIntegrationFabricResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dashboardName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
+          tags: S.optional(__S(736, __c23, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2960,14 +2875,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateManagedDashboardRequest",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           managedPrivateEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(27, __c3, 3)),
+          tags: S.optional(__S(736, __c23, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2981,7 +2900,235 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dashboardName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(128, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateManagedDashboardRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedDashboardProperties",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(1312, __c41, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateManagedDashboardResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateLinkResourceId: S.optional(S.String),
+          privateLinkResourceRegion: S.optional(S.String),
+          groupIds: S.optional(__S(96, __c3, 0)),
+          requestMessage: S.optional(S.String),
+          privateLinkServiceUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedPrivateEndpointModelPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          managedPrivateEndpointName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(1376, __c43, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateManagedPrivateEndpointRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedPrivateEndpointConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateLinkResourceId: S.optional(S.String),
+          privateLinkResourceRegion: S.optional(S.String),
+          groupIds: S.optional(__S(96, __c3, 0)),
+          requestMessage: S.optional(S.String),
+          connectionState: S.optional(__S(1408, __c44, 0)),
+          privateLinkServiceUrl: S.optional(S.String),
+          privateLinkServicePrivateIP: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedPrivateEndpointModelProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(1409, __c44, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateManagedPrivateEndpointResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGrafanaRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteGrafanaResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIntegrationFabricRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIntegrationFabricResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dashboardName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedDashboardRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          managedPrivateEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedPrivateEndpointRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

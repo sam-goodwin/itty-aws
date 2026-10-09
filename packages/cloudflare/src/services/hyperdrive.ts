@@ -874,8 +874,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateConfigRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateConfigResponse>,
+  input: __S(25, __c3, 1) as any as S.Schema<CreateConfigRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreateConfigResponse>,
   errors: [
     PrivateHostNotAllowed,
     InvalidHyperdriveConfig,
@@ -901,8 +901,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteConfigRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConfigResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteConfigRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteConfigResponse>,
   errors: [
     PrivateHostNotAllowed,
     HyperdriveConfigNotFound,
@@ -927,8 +927,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetConfigRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetConfigResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetConfigRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetConfigResponse>,
   errors: [
     PrivateHostNotAllowed,
     HyperdriveConfigNotFound,
@@ -950,8 +950,8 @@ export const listConfigs: API.PaginatedOperationMethod<
   ConfigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(13, __c1, 5) as any as S.Schema<ListConfigsRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<ListConfigsResponse>,
+    input: __S(64, __c8, 0) as any as S.Schema<ListConfigsRequest>,
+    output: __S(68, __c8, 4) as any as S.Schema<ListConfigsResponse>,
     errors: [
       PrivateHostNotAllowed,
       InvalidObjectIdentifier,
@@ -979,8 +979,8 @@ export const patchConfig: API.OperationMethod<
   PatchConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<PatchConfigRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PatchConfigResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<PatchConfigRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PatchConfigResponse>,
   errors: [
     PrivateHostNotAllowed,
     HyperdriveConfigNotFound,
@@ -1002,8 +1002,8 @@ export const restartConfig: API.OperationMethod<
   RestartConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<RestartConfigRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<RestartConfigResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<RestartConfigRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<RestartConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateConfigRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UpdateConfigResponse>,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateConfigRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UpdateConfigResponse>,
   errors: [
     PrivateHostNotAllowed,
     HyperdriveConfigNotFound,
@@ -1043,6 +1043,189 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+      );
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "password", "scheme", "user"],
+          ["host", "port"],
+          ["accessClientId", "accessClientSecret", "host"],
+          ["serviceId"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
+          caching: S.optional(__S(0, __c0, 0)),
+          mtls: S.optional(__S(32, __c4, 0)),
+          name: S.optional(S.String),
+          origin: S.optional(__S(1, __c0, 1)),
+          originConnectionLimit: S.optional(S.Number.pipe(T.Body("origin_connection_limit"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchConfigRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "host", "port", "scheme", "user"],
+          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
+          ["database", "scheme", "serviceId", "user"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          caching: __S(40, __c5, 0),
+          name: S.String,
+          origin: __S(3, __c0, 3),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
+          originConnectionLimit: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+          ),
+          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchConfigResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}/restart",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RestartConfigRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "host", "password", "port", "scheme", "user"],
+          [
+            "accessClientId",
+            "accessClientSecret",
+            "database",
+            "host",
+            "password",
+            "scheme",
+            "user",
+          ],
+          ["database", "password", "scheme", "serviceId", "user"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          caching: __S(40, __c5, 0),
+          name: S.String,
+          origin: __S(9, __c1, 1),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
+          originConnectionLimit: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+          ),
+          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RestartConfigResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "host", "password", "port", "scheme", "user"],
+          [
+            "accessClientId",
+            "accessClientSecret",
+            "database",
+            "host",
+            "password",
+            "scheme",
+            "user",
+          ],
+          ["database", "password", "scheme", "serviceId", "user"],
+        ]),
+      );
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
+          name: S.String,
+          origin: __S(16, __c2, 0),
+          caching: S.optional(__S(17, __c2, 1)),
+          mtls: S.optional(__S(32, __c4, 0)),
+          originConnectionLimit: S.optional(S.Number.pipe(T.Body("origin_connection_limit"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateConfigRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "host", "port", "scheme", "user"],
+          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
+          ["database", "scheme", "serviceId", "user"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          caching: __S(40, __c5, 0),
+          name: S.String,
+          origin: __S(19, __c2, 3),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
+          originConnectionLimit: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+          ),
+          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateConfigResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["disabled", "maxAge", "staleWhileRevalidate"],
           ["disabled", "maxAge", "staleWhileRevalidate"],
@@ -1051,20 +1234,12 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
-          mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
-          sslmode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigsCreateRequestMtls" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           origin: S.optional(S.Unknown),
-          caching: S.optional(__S(0, __c0, 0)),
+          caching: S.optional(__S(24, __c3, 0)),
           integration: S.optional(S.Unknown),
-          mtls: S.optional(__S(1, __c0, 1)),
+          mtls: S.optional(__S(32, __c4, 0)),
           originConnectionLimit: S.optional(S.Number.pipe(T.Body("origin_connection_limit"))),
         })
           .pipe(
@@ -1072,7 +1247,48 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateConfigRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["database", "host", "port", "scheme", "user"],
+          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
+          ["database", "scheme", "serviceId", "user"],
+        ]),
+      );
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          caching: __S(40, __c5, 0),
+          name: S.String,
+          origin: __S(26, __c3, 2),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
+          originConnectionLimit: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+          ),
+          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateConfigResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+          mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+          sslmode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigsCreateRequestMtls" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           disabled: S.Boolean,
@@ -1084,15 +1300,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigsCreateResponseCaching",
       });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "host", "port", "scheme", "user"],
-          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
-          ["database", "scheme", "serviceId", "user"],
-        ]),
-      );
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
@@ -1105,7 +1313,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigsCreateResponseIntegration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           caCertificateId: S.optional(S.NullOr(S.String).pipe(T.Body("ca_certificate_id"))),
@@ -1115,26 +1323,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigsCreateResponseMtls",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          caching: __S(3, __c0, 3),
-          name: S.String,
-          origin: __S(4, __c0, 4),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
-          originConnectionLimit: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
-          ),
-          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateConfigResponse" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1155,7 +1346,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteConfigResponse" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1170,7 +1365,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["database", "host", "port", "scheme", "user"],
@@ -1178,24 +1373,28 @@ function __c1(j: number): any {
           ["database", "scheme", "serviceId", "user"],
         ]),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          caching: __S(3, __c0, 3),
+          caching: __S(40, __c5, 0),
           name: S.String,
-          origin: __S(11, __c1, 3),
+          origin: __S(57, __c7, 1),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
           originConnectionLimit: S.optional(
             S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
           ),
           restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1207,7 +1406,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConfigsRequest" });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["database", "host", "port", "scheme", "user"],
@@ -1215,214 +1414,34 @@ function __c1(j: number): any {
           ["database", "scheme", "serviceId", "user"],
         ]),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          caching: __S(3, __c0, 3),
+          caching: __S(40, __c5, 0),
           name: S.String,
-          origin: __S(14, __c1, 6),
+          origin: __S(65, __c8, 1),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
+          integration: S.optional(S.NullOr(__S(41, __c5, 1))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
+          mtls: S.optional(S.NullOr(__S(42, __c5, 2))),
           originConnectionLimit: S.optional(
             S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
           ),
           restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
         }),
       ).annotate({ identifier: "ConfigsListResultItem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(16, __c2, 0).pipe(T.EnvelopePayload()),
+          result: __S(67, __c8, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConfigsResponse" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
-      );
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "password", "scheme", "user"],
-          ["host", "port"],
-          ["accessClientId", "accessClientSecret", "host"],
-          ["serviceId"],
-        ]),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-          caching: S.optional(__S(18, __c2, 2)),
-          mtls: S.optional(__S(1, __c0, 1)),
-          name: S.optional(S.String),
-          origin: S.optional(__S(19, __c2, 3)),
-          originConnectionLimit: S.optional(S.Number.pipe(T.Body("origin_connection_limit"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchConfigRequest" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "host", "port", "scheme", "user"],
-          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
-          ["database", "scheme", "serviceId", "user"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          caching: __S(3, __c0, 3),
-          name: S.String,
-          origin: __S(21, __c2, 5),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
-          originConnectionLimit: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
-          ),
-          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchConfigResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}/restart",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RestartConfigRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "host", "password", "port", "scheme", "user"],
-          [
-            "accessClientId",
-            "accessClientSecret",
-            "database",
-            "host",
-            "password",
-            "scheme",
-            "user",
-          ],
-          ["database", "password", "scheme", "serviceId", "user"],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          caching: __S(3, __c0, 3),
-          name: S.String,
-          origin: __S(24, __c3, 0),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
-          originConnectionLimit: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
-          ),
-          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RestartConfigResponse" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "host", "password", "port", "scheme", "user"],
-          [
-            "accessClientId",
-            "accessClientSecret",
-            "database",
-            "host",
-            "password",
-            "scheme",
-            "user",
-          ],
-          ["database", "password", "scheme", "serviceId", "user"],
-        ]),
-      );
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-          name: S.String,
-          origin: __S(26, __c3, 2),
-          caching: S.optional(__S(27, __c3, 3)),
-          mtls: S.optional(__S(1, __c0, 1)),
-          originConnectionLimit: S.optional(S.Number.pipe(T.Body("origin_connection_limit"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateConfigRequest" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["database", "host", "port", "scheme", "user"],
-          ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
-          ["database", "scheme", "serviceId", "user"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          caching: __S(3, __c0, 3),
-          name: S.String,
-          origin: __S(29, __c3, 5),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          integration: S.optional(S.NullOr(__S(5, __c0, 5))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          mtls: S.optional(S.NullOr(__S(6, __c0, 6))),
-          originConnectionLimit: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
-          ),
-          restartedOn: S.optional(S.NullOr(S.String).pipe(T.Body("restarted_on"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateConfigResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

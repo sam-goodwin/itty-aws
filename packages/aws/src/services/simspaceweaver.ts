@@ -395,8 +395,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateSnapshotInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateSnapshotOutput>,
+  input: __S(273, __c17, 1) as any as S.Schema<CreateSnapshotInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreateSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -425,8 +425,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteAppInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteAppOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteAppInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -458,8 +458,8 @@ export const deleteSimulation: API.OperationMethod<
   DeleteSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteSimulationInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteSimulationOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteSimulationInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -487,8 +487,8 @@ export const describeApp: API.OperationMethod<
   DescribeAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DescribeAppInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<DescribeAppOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeAppInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<DescribeAppOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -515,8 +515,8 @@ export const describeSimulation: API.OperationMethod<
   DescribeSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DescribeSimulationInput>,
-  output: __S(23, __c2, 7) as any as S.Schema<DescribeSimulationOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<DescribeSimulationInput>,
+  output: __S(58, __c3, 10) as any as S.Schema<DescribeSimulationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -544,8 +544,8 @@ export const listApps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAppsInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListAppsOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListAppsInput>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListAppsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -577,8 +577,8 @@ export const listSimulations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListSimulationsInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListSimulationsOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListSimulationsInput>,
+  output: __S(99, __c6, 3) as any as S.Schema<ListSimulationsOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -603,8 +603,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(113, __c7, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -627,8 +627,8 @@ export const startApp: API.OperationMethod<
   StartAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<StartAppInput>,
-  output: __S(36, __c4, 4) as any as S.Schema<StartAppOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<StartAppInput>,
+  output: __S(145, __c9, 1) as any as S.Schema<StartAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -657,8 +657,8 @@ export const startClock: API.OperationMethod<
   StartClockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<StartClockInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<StartClockOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<StartClockInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<StartClockOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -692,8 +692,8 @@ export const startSimulation: API.OperationMethod<
   StartSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<StartSimulationInput>,
-  output: __S(39, __c4, 7) as any as S.Schema<StartSimulationOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<StartSimulationInput>,
+  output: __S(177, __c11, 1) as any as S.Schema<StartSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -722,8 +722,8 @@ export const stopApp: API.OperationMethod<
   StopAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<StopAppInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopAppOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<StopAppInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<StopAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -752,8 +752,8 @@ export const stopClock: API.OperationMethod<
   StopClockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<StopClockInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopClockOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<StopClockInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<StopClockOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -785,8 +785,8 @@ export const stopSimulation: API.OperationMethod<
   StopSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<StopSimulationInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopSimulationOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<StopSimulationInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<StopSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -814,8 +814,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<TagResourceInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<TagResourceOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<TagResourceOutput>,
   errors: [ResourceNotFoundException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -833,8 +833,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UntagResourceInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<UntagResourceOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -846,47 +846,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
-      ).annotate({ identifier: "S3Destination" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Simulation: S.String, Destination: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/createsnapshot" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateSnapshotInput",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateSnapshotOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Simulation: S.String.pipe(T.HttpQuery("simulation")),
-          Domain: S.String.pipe(T.HttpQuery("domain")),
-          App: S.String.pipe(T.HttpQuery("app")),
-        }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/deleteapp" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteAppInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/deletesimulation" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteSimulationInput",
-      });
-    case 5:
-      return S.suspend(() =>
         S.Struct({
           Simulation: S.String.pipe(T.HttpQuery("simulation")),
           Domain: S.String.pipe(T.HttpQuery("domain")),
@@ -897,34 +856,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeAppInput",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() => S.Struct({ LaunchCommands: S.optional(__S(6, __c0, 6)) })).annotate({
-        identifier: "LaunchOverrides",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Declared: S.optional(S.Number), Actual: S.optional(S.Number) }),
       ).annotate({
         identifier: "SimulationAppPortMapping",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          IngressPortMappings: S.optional(__S(9, __c1, 1)),
+          IngressPortMappings: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "SimulationAppEndpointInfo",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -932,14 +881,32 @@ function __c1(j: number): any {
           Domain: S.optional(S.String),
           Status: S.optional(S.String),
           TargetStatus: S.optional(S.String),
-          LaunchOverrides: S.optional(__S(7, __c0, 7)),
+          LaunchOverrides: S.optional(__S(16, __c1, 0)),
           Description: S.optional(S.String),
-          EndpointInfo: S.optional(__S(10, __c1, 2)),
+          EndpointInfo: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "DescribeAppOutput",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LaunchCommands: S.optional(__S(32, __c2, 0)) })).annotate({
+        identifier: "LaunchOverrides",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
           T.all(
@@ -954,35 +921,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeSimulationInput",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ BucketName: S.String, ObjectKey: S.String })).annotate({
-        identifier: "S3Location",
-      });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ LogGroupArn: S.optional(S.String) })).annotate({
         identifier: "CloudWatchLogsLogGroup",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ CloudWatchLogsLogGroup: S.optional(__S(14, __c1, 6)) }),
+        S.Struct({ CloudWatchLogsLogGroup: S.optional(__S(49, __c3, 1)) }),
       ).annotate({ identifier: "LogDestination" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ Destinations: S.optional(__S(16, __c2, 0)) })).annotate({
+    case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ Destinations: S.optional(__S(51, __c3, 3)) })).annotate({
         identifier: "LoggingConfiguration",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Lifecycle: S.optional(S.String) }),
       ).annotate({ identifier: "Domain" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(53, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -991,18 +950,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SimulationClock",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(55, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Domains: S.optional(__S(19, __c2, 3)),
-          Clocks: S.optional(__S(21, __c2, 5)),
+          Domains: S.optional(__S(54, __c3, 6)),
+          Clocks: S.optional(__S(56, __c3, 8)),
         }),
       ).annotate({
         identifier: "LiveSimulationState",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1013,12 +972,12 @@ function __c2(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
           TargetStatus: S.optional(S.String),
-          SchemaS3Location: S.optional(__S(13, __c1, 5)),
+          SchemaS3Location: S.optional(__S(64, __c4, 0)),
           SchemaError: S.optional(S.String),
-          LoggingConfiguration: S.optional(__S(17, __c2, 1)),
-          LiveSimulationState: S.optional(__S(22, __c2, 6)),
+          LoggingConfiguration: S.optional(__S(52, __c3, 4)),
+          LiveSimulationState: S.optional(__S(57, __c3, 9)),
           MaximumDuration: S.optional(S.String),
-          SnapshotS3Location: S.optional(__S(13, __c1, 5)),
+          SnapshotS3Location: S.optional(__S(64, __c4, 0)),
           StartError: S.optional(S.String),
         }),
       ).annotate({
@@ -1026,7 +985,15 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ BucketName: S.String, ObjectKey: S.String })).annotate({
+        identifier: "S3Location",
+      });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1050,15 +1017,19 @@ function __c3(j: number): any {
         identifier: "SimulationAppMetadata",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(81, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Apps: S.optional(__S(26, __c3, 2)),
+          Apps: S.optional(__S(82, __c5, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAppsOutput" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1069,7 +1040,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListSimulationsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1081,12 +1052,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SimulationMetadata",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Simulations: S.optional(__S(30, __c3, 6)),
+          Simulations: S.optional(__S(98, __c6, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1094,7 +1065,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1112,12 +1083,20 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceInput",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(33, __c4, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(128, __c8, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
@@ -1125,10 +1104,10 @@ function __c4(j: number): any {
           Domain: S.String,
           Name: S.String,
           Description: S.optional(S.String),
-          LaunchOverrides: S.optional(__S(7, __c0, 7)),
+          LaunchOverrides: S.optional(__S(16, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/startapp" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartAppInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1136,7 +1115,11 @@ function __c4(j: number): any {
           Simulation: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartAppOutput" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Simulation: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startclock" }), svc, auth, proto, ver, rules),
@@ -1144,24 +1127,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StartClockInput",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
           Name: S.String,
           Description: S.optional(S.String),
           RoleArn: S.String,
-          SchemaS3Location: S.optional(__S(13, __c1, 5)),
+          SchemaS3Location: S.optional(__S(64, __c4, 0)),
           MaximumDuration: S.optional(S.String),
-          Tags: S.optional(__S(33, __c4, 1)),
-          SnapshotS3Location: S.optional(__S(13, __c1, 5)),
+          Tags: S.optional(__S(128, __c8, 0)),
+          SnapshotS3Location: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startsimulation" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "StartSimulationInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1173,7 +1160,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1181,13 +1168,21 @@ function __c5(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/stopapp" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopAppInput" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Simulation: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/stopclock" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopClockInput" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Simulation: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/stopsimulation" }), svc, auth, proto, ver, rules),
@@ -1195,11 +1190,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StopSimulationInput",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(33, __c4, 1),
+          Tags: __S(128, __c8, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -1213,11 +1212,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TagResourceInput",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(6, __c0, 6).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(32, __c2, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1233,7 +1236,63 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Destination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String, Destination: __S(272, __c17, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/createsnapshot" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateSnapshotInput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateSnapshotOutput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Simulation: S.String.pipe(T.HttpQuery("simulation")),
+          Domain: S.String.pipe(T.HttpQuery("domain")),
+          App: S.String.pipe(T.HttpQuery("app")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/deleteapp" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteAppInput" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/deletesimulation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSimulationInput",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -436,8 +436,8 @@ export const findClosestBuildingInsights: API.OperationMethod<
   FindClosestBuildingInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<FindClosestBuildingInsightsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<BuildingInsights>,
+  input: __S(0, __c0, 0) as any as S.Schema<FindClosestBuildingInsightsRequest>,
+  output: __S(25, __c0, 25) as any as S.Schema<BuildingInsights>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,8 +451,8 @@ export const getDataLayers: API.OperationMethod<
   GetDataLayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDataLayersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DataLayers>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetDataLayersRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<DataLayers>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const getGeoTiff: API.OperationMethod<
   GetGeoTiffError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetGeoTiffRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<HttpBody>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetGeoTiffRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,16 +477,14 @@ export const getGeoTiff: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           requiredQuality: S.optional(S.String.pipe(T.Query())),
           "location.latitude": S.optional(S.Number.pipe(T.Query())),
           "location.longitude": S.optional(S.Number.pipe(T.Query())),
-          experiments: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          experiments: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           exactQualityRequired: S.optional(S.Boolean.pipe(T.Query())),
-          additionalInsights: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          additionalInsights: S.optional(__S(32, __c1, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -497,78 +495,64 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FindClosestBuildingInsightsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Solar_Date" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           detectionStatus: S.optional(S.String),
-          latestCaptureDate: S.optional(__S(2, __c0, 2)),
+          latestCaptureDate: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "BuildingInsightsDetectedArrays",
       });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          polygonGeojson: S.optional(__S(4, __c0, 4)),
+          polygonGeojson: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "Obstacle" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           longitude: S.optional(S.Number),
           latitude: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LatLng" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          sw: S.optional(__S(7, __c0, 7)),
-          ne: S.optional(__S(7, __c0, 7)),
+          sw: S.optional(__S(4, __c0, 4)),
+          ne: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "LatLngBox" });
-    case 1:
+    case 6:
       return S.Array(S.Number);
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           areaMeters2: S.optional(S.Number),
-          sunshineQuantiles: S.optional(__S(9, __c1, 1)),
+          sunshineQuantiles: S.optional(__S(6, __c0, 6)),
           groundAreaMeters2: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SizeAndSunshineStats" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           pitchDegrees: S.optional(S.Number),
-          center: S.optional(__S(7, __c0, 7)),
-          boundingBox: S.optional(__S(8, __c1, 0)),
+          center: S.optional(__S(4, __c0, 4)),
+          boundingBox: S.optional(__S(5, __c0, 5)),
           planeHeightAtCenterMeters: S.optional(S.Number),
-          stats: S.optional(__S(10, __c1, 2)),
+          stats: S.optional(__S(7, __c0, 7)),
           azimuthDegrees: S.optional(S.Number),
-          polygonGeojson: S.optional(__S(4, __c0, 4)),
+          polygonGeojson: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "RoofSegmentSizeAndSunshineStats",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
@@ -576,80 +560,76 @@ function __c1(j: number): any {
           nanos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Money" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           initialAcKwhPerYear: S.optional(S.Number),
           netMeteringAllowed: S.optional(S.Boolean),
           solarPercentage: S.optional(S.Number),
           percentageExportedToGrid: S.optional(S.Number),
-          stateIncentive: S.optional(__S(13, __c1, 5)),
-          remainingLifetimeUtilityBill: S.optional(__S(13, __c1, 5)),
-          costOfElectricityWithoutSolar: S.optional(__S(13, __c1, 5)),
-          federalIncentive: S.optional(__S(13, __c1, 5)),
-          lifetimeSrecTotal: S.optional(__S(13, __c1, 5)),
-          utilityIncentive: S.optional(__S(13, __c1, 5)),
+          stateIncentive: S.optional(__S(10, __c0, 10)),
+          remainingLifetimeUtilityBill: S.optional(__S(10, __c0, 10)),
+          costOfElectricityWithoutSolar: S.optional(__S(10, __c0, 10)),
+          federalIncentive: S.optional(__S(10, __c0, 10)),
+          lifetimeSrecTotal: S.optional(__S(10, __c0, 10)),
+          utilityIncentive: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "FinancialDetails" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          savingsYear1: S.optional(__S(13, __c1, 5)),
-          savingsLifetime: S.optional(__S(13, __c1, 5)),
+          savingsYear1: S.optional(__S(10, __c0, 10)),
+          savingsLifetime: S.optional(__S(10, __c0, 10)),
           financiallyViable: S.optional(S.Boolean),
-          presentValueOfSavingsYear20: S.optional(__S(13, __c1, 5)),
-          savingsYear20: S.optional(__S(13, __c1, 5)),
-          presentValueOfSavingsLifetime: S.optional(__S(13, __c1, 5)),
+          presentValueOfSavingsYear20: S.optional(__S(10, __c0, 10)),
+          savingsYear20: S.optional(__S(10, __c0, 10)),
+          presentValueOfSavingsLifetime: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "SavingsOverTime" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           loanInterestRate: S.optional(S.Number),
-          annualLoanPayment: S.optional(__S(13, __c1, 5)),
-          savings: S.optional(__S(15, __c1, 7)),
-          rebateValue: S.optional(__S(13, __c1, 5)),
+          annualLoanPayment: S.optional(__S(10, __c0, 10)),
+          savings: S.optional(__S(12, __c0, 12)),
+          rebateValue: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "FinancedPurchaseSavings" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           leasesSupported: S.optional(S.Boolean),
           leasesAllowed: S.optional(S.Boolean),
-          savings: S.optional(__S(15, __c1, 7)),
-          annualLeasingCost: S.optional(__S(13, __c1, 5)),
+          savings: S.optional(__S(12, __c0, 12)),
+          annualLeasingCost: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "LeasingSavings" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          upfrontCost: S.optional(__S(13, __c1, 5)),
-          rebateValue: S.optional(__S(13, __c1, 5)),
-          savings: S.optional(__S(15, __c1, 7)),
-          outOfPocketCost: S.optional(__S(13, __c1, 5)),
+          upfrontCost: S.optional(__S(10, __c0, 10)),
+          rebateValue: S.optional(__S(10, __c0, 10)),
+          savings: S.optional(__S(12, __c0, 12)),
+          outOfPocketCost: S.optional(__S(10, __c0, 10)),
           paybackYears: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CashPurchaseSavings" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          monthlyBill: S.optional(__S(13, __c1, 5)),
+          monthlyBill: S.optional(__S(10, __c0, 10)),
           panelConfigIndex: S.optional(S.Number),
           averageKwhPerMonth: S.optional(S.Number),
           defaultBill: S.optional(S.Boolean),
-          financialDetails: S.optional(__S(14, __c1, 6)),
-          financedPurchaseSavings: S.optional(__S(16, __c2, 0)),
-          leasingSavings: S.optional(__S(17, __c2, 1)),
-          cashPurchaseSavings: S.optional(__S(18, __c2, 2)),
+          financialDetails: S.optional(__S(11, __c0, 11)),
+          financedPurchaseSavings: S.optional(__S(13, __c0, 13)),
+          leasingSavings: S.optional(__S(14, __c0, 14)),
+          cashPurchaseSavings: S.optional(__S(15, __c0, 15)),
         }),
       ).annotate({ identifier: "FinancialAnalysis" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 17:
+      return S.Array(__S(16, __c0, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           pitchDegrees: S.optional(S.Number),
@@ -659,75 +639,95 @@ function __c2(j: number): any {
           panelsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoofSegmentSummary" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(18, __c0, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           yearlyEnergyDcKwh: S.optional(S.Number),
           panelsCount: S.optional(S.Number),
-          roofSegmentSummaries: S.optional(__S(22, __c2, 6)),
+          roofSegmentSummaries: S.optional(__S(19, __c0, 19)),
         }),
       ).annotate({ identifier: "SolarPanelConfig" });
+    case 21:
+      return S.Array(__S(20, __c0, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          yearlyEnergyDcKwh: S.optional(S.Number),
+          orientation: S.optional(S.String),
+          center: S.optional(__S(4, __c0, 4)),
+          segmentIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SolarPanel" });
+    case 23:
+      return S.Array(__S(22, __c0, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          carbonOffsetFactorKgPerMwh: S.optional(S.Number),
+          maxSunshineHoursPerYear: S.optional(S.Number),
+          obstacles: S.optional(__S(3, __c0, 3)),
+          roofSegmentStats: S.optional(__S(9, __c0, 9)),
+          panelLifetimeYears: S.optional(S.Number),
+          panelHeightMeters: S.optional(S.Number),
+          maxArrayPanelsCount: S.optional(S.Number),
+          buildingStats: S.optional(__S(7, __c0, 7)),
+          financialAnalyses: S.optional(__S(17, __c0, 17)),
+          panelWidthMeters: S.optional(S.Number),
+          maxArrayAreaMeters2: S.optional(S.Number),
+          panelCapacityWatts: S.optional(S.Number),
+          solarPanelConfigs: S.optional(__S(21, __c0, 21)),
+          wholeRoofStats: S.optional(__S(7, __c0, 7)),
+          solarPanels: S.optional(__S(23, __c0, 23)),
+        }),
+      ).annotate({ identifier: "SolarPotential" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          imageryQuality: S.optional(S.String),
+          detectedArrays: S.optional(__S(1, __c0, 1)),
+          solarPotential: S.optional(__S(24, __c0, 24)),
+          statisticalArea: S.optional(S.String),
+          imageryDate: S.optional(__S(33, __c1, 1)),
+          name: S.optional(S.String),
+          boundingBox: S.optional(__S(5, __c0, 5)),
+          imageryProcessedDate: S.optional(__S(33, __c1, 1)),
+          postalCode: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          center: S.optional(__S(4, __c0, 4)),
+          administrativeArea: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildingInsights" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Solar_Date" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          yearlyEnergyDcKwh: S.optional(S.Number),
-          orientation: S.optional(S.String),
-          center: S.optional(__S(7, __c0, 7)),
-          segmentIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SolarPanel" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          carbonOffsetFactorKgPerMwh: S.optional(S.Number),
-          maxSunshineHoursPerYear: S.optional(S.Number),
-          obstacles: S.optional(__S(6, __c0, 6)),
-          roofSegmentStats: S.optional(__S(12, __c1, 4)),
-          panelLifetimeYears: S.optional(S.Number),
-          panelHeightMeters: S.optional(S.Number),
-          maxArrayPanelsCount: S.optional(S.Number),
-          buildingStats: S.optional(__S(10, __c1, 2)),
-          financialAnalyses: S.optional(__S(20, __c2, 4)),
-          panelWidthMeters: S.optional(S.Number),
-          maxArrayAreaMeters2: S.optional(S.Number),
-          panelCapacityWatts: S.optional(S.Number),
-          solarPanelConfigs: S.optional(__S(24, __c3, 0)),
-          wholeRoofStats: S.optional(__S(10, __c1, 2)),
-          solarPanels: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "SolarPotential" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageryQuality: S.optional(S.String),
-          detectedArrays: S.optional(__S(3, __c0, 3)),
-          solarPotential: S.optional(__S(27, __c3, 3)),
-          statisticalArea: S.optional(S.String),
-          imageryDate: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          boundingBox: S.optional(__S(8, __c1, 0)),
-          imageryProcessedDate: S.optional(__S(2, __c0, 2)),
-          postalCode: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          center: S.optional(__S(7, __c0, 7)),
-          administrativeArea: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildingInsights" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           "location.latitude": S.optional(S.Number.pipe(T.Query())),
-          experiments: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          experiments: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           requiredQuality: S.optional(S.String.pipe(T.Query())),
           view: S.optional(S.String.pipe(T.Query())),
           "location.longitude": S.optional(S.Number.pipe(T.Query())),
@@ -742,16 +742,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataLayersRequest" });
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          hourlyShadeUrls: S.optional(__S(30, __c3, 6)),
+          hourlyShadeUrls: S.optional(__S(97, __c3, 1)),
           monthlyFluxUrl: S.optional(S.String),
           imageryQuality: S.optional(S.String),
-          imageryProcessedDate: S.optional(__S(2, __c0, 2)),
-          imageryDate: S.optional(__S(2, __c0, 2)),
+          imageryProcessedDate: S.optional(__S(33, __c1, 1)),
+          imageryDate: S.optional(__S(33, __c1, 1)),
           dsmUrl: S.optional(S.String),
           annualFluxUrl: S.optional(S.String),
           maskUrl: S.optional(S.String),
@@ -775,18 +775,17 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetGeoTiffRequest" });
     case 1:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(64, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
           contentType: S.optional(S.String),
-          extensions: S.optional(__S(33, __c4, 1)),
+          extensions: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "HttpBody" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

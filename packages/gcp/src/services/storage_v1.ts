@@ -2222,8 +2222,8 @@ export const advanceRelocateBucketOperations: API.OperationMethod<
   AdvanceRelocateBucketOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AdvanceRelocateBucketOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>,
+  input: __S(2529, __c79, 1) as any as S.Schema<AdvanceRelocateBucketOperationsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2237,8 +2237,8 @@ export const bulkRestoreObjects: API.OperationMethod<
   BulkRestoreObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BulkRestoreObjectsRequest_>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2913, __c91, 1) as any as S.Schema<BulkRestoreObjectsRequest_>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CancelOperationsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<CancelOperationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2267,8 +2267,8 @@ export const composeObjects: API.OperationMethod<
   ComposeObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ComposeObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(4, __c0, 4) as any as S.Schema<ComposeObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2282,8 +2282,8 @@ export const copyObjects: API.OperationMethod<
   CopyObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CopyObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(224, __c7, 0) as any as S.Schema<CopyObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2297,8 +2297,8 @@ export const createProjectsHmacKeys: API.OperationMethod<
   CreateProjectsHmacKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateProjectsHmacKeysRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<HmacKey>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateProjectsHmacKeysRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<HmacKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2317,8 +2317,8 @@ export const deleteBucketAccessControls: API.OperationMethod<
   DeleteBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteBucketAccessControlsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteBucketAccessControlsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteBucketAccessControlsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<DeleteBucketAccessControlsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2332,8 +2332,8 @@ export const deleteBuckets: API.OperationMethod<
   DeleteBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteBucketsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteBucketsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteBucketsRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteBucketsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2352,8 +2352,8 @@ export const deleteDefaultObjectAccessControls: API.OperationMethod<
   DeleteDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2367,8 +2367,8 @@ export const deleteFolders: API.OperationMethod<
   DeleteFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteFoldersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteFoldersResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteFoldersRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteFoldersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2382,8 +2382,8 @@ export const deleteManagedFolders: API.OperationMethod<
   DeleteManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteManagedFoldersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteManagedFoldersResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteManagedFoldersRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteManagedFoldersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2397,8 +2397,8 @@ export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteNotificationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteNotificationsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteNotificationsRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteNotificationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2418,8 +2418,8 @@ export const deleteObjectAccessControls: API.OperationMethod<
   DeleteObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteObjectAccessControlsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteObjectAccessControlsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteObjectAccessControlsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<DeleteObjectAccessControlsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ObjectOwnerAclRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2433,8 +2433,8 @@ export const deleteObjects: API.OperationMethod<
   DeleteObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteObjectsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteObjectsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteObjectsRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteObjectsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2448,8 +2448,8 @@ export const deleteProjectsHmacKeys: API.OperationMethod<
   DeleteProjectsHmacKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteProjectsHmacKeysRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsHmacKeysResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsHmacKeysRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<DeleteProjectsHmacKeysResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2463,8 +2463,8 @@ export const deleteRecursiveFolders: API.OperationMethod<
   DeleteRecursiveFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteRecursiveFoldersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteRecursiveFoldersRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2478,8 +2478,8 @@ export const disableAnywhereCaches: API.OperationMethod<
   DisableAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DisableAnywhereCachesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AnywhereCache>,
+  input: __S(640, __c20, 0) as any as S.Schema<DisableAnywhereCachesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<AnywhereCache>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2493,8 +2493,8 @@ export const disableRapidCaches: API.OperationMethod<
   DisableRapidCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DisableRapidCachesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(704, __c22, 0) as any as S.Schema<DisableRapidCachesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2508,8 +2508,8 @@ export const getAnywhereCaches: API.OperationMethod<
   GetAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetAnywhereCachesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AnywhereCache>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetAnywhereCachesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<AnywhereCache>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2523,8 +2523,8 @@ export const getBucketAccessControls: API.OperationMethod<
   GetBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetBucketAccessControlsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<BucketAccessControl>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetBucketAccessControlsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<BucketAccessControl>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2538,8 @@ export const getBuckets: API.OperationMethod<
   GetBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2553,8 @@ export const getDefaultObjectAccessControls: API.OperationMethod<
   GetDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetDefaultObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetDefaultObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2568,8 +2568,8 @@ export const getFolders: API.OperationMethod<
   GetFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetFoldersRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<Folder>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetFoldersRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2583,8 +2583,8 @@ export const getIamPolicyBuckets: API.OperationMethod<
   GetIamPolicyBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetIamPolicyBucketsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetIamPolicyBucketsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2598,8 +2598,8 @@ export const getIamPolicyManagedFolders: API.OperationMethod<
   GetIamPolicyManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetIamPolicyManagedFoldersRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetIamPolicyManagedFoldersRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2613,8 +2613,8 @@ export const getIamPolicyObjects: API.OperationMethod<
   GetIamPolicyObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetIamPolicyObjectsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetIamPolicyObjectsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2628,8 +2628,8 @@ export const getManagedFolders: API.OperationMethod<
   GetManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetManagedFoldersRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ManagedFolder>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetManagedFoldersRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ManagedFolder>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const getNotifications: API.OperationMethod<
   GetNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetNotificationsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<Notification>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetNotificationsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Notification>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2658,8 +2658,8 @@ export const getObjectAccessControls: API.OperationMethod<
   GetObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2673,8 +2673,8 @@ export const getObjects: API.OperationMethod<
   GetObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2688,8 +2688,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2703,8 +2703,8 @@ export const getProjectsHmacKeys: API.OperationMethod<
   GetProjectsHmacKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetProjectsHmacKeysRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<HmacKeyMetadata>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetProjectsHmacKeysRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<HmacKeyMetadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2718,8 +2718,8 @@ export const getProjectsServiceAccount: API.OperationMethod<
   GetProjectsServiceAccountError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetProjectsServiceAccountRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ServiceAccount>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetProjectsServiceAccountRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2733,8 +2733,8 @@ export const getRapidCaches: API.OperationMethod<
   GetRapidCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetRapidCachesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<RapidCache>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetRapidCachesRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<RapidCache>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2748,8 +2748,8 @@ export const getStorageLayoutBuckets: API.OperationMethod<
   GetStorageLayoutBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetStorageLayoutBucketsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<BucketStorageLayout>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetStorageLayoutBucketsRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<BucketStorageLayout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2763,8 +2763,8 @@ export const insertAnywhereCaches: API.OperationMethod<
   InsertAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<InsertAnywhereCachesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1600, __c50, 0) as any as S.Schema<InsertAnywhereCachesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2783,8 @@ export const insertBucketAccessControls: API.OperationMethod<
   InsertBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<InsertBucketAccessControlsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<BucketAccessControl>,
+  input: __S(1632, __c51, 0) as any as S.Schema<InsertBucketAccessControlsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<BucketAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2798,8 @@ export const insertBuckets: API.OperationMethod<
   InsertBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<InsertBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(1664, __c52, 0) as any as S.Schema<InsertBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2818,8 +2818,8 @@ export const insertDefaultObjectAccessControls: API.OperationMethod<
   InsertDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<InsertDefaultObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(1696, __c53, 0) as any as S.Schema<InsertDefaultObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2833,8 @@ export const insertFolders: API.OperationMethod<
   InsertFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<InsertFoldersRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<Folder>,
+  input: __S(1728, __c54, 0) as any as S.Schema<InsertFoldersRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2848,8 @@ export const insertManagedFolders: API.OperationMethod<
   InsertManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<InsertManagedFoldersRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ManagedFolder>,
+  input: __S(1760, __c55, 0) as any as S.Schema<InsertManagedFoldersRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ManagedFolder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2869,8 @@ export const insertNotifications: API.OperationMethod<
   InsertNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<InsertNotificationsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<Notification>,
+  input: __S(1792, __c56, 0) as any as S.Schema<InsertNotificationsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Notification>,
   errors: [
     NotFound,
     Forbidden,
@@ -2896,8 +2896,8 @@ export const insertObjectAccessControls: API.OperationMethod<
   InsertObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<InsertObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(1824, __c57, 0) as any as S.Schema<InsertObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2911,8 +2911,8 @@ export const insertObjects: API.OperationMethod<
   InsertObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<InsertObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(1856, __c58, 0) as any as S.Schema<InsertObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2926,8 +2926,8 @@ export const insertRapidCaches: API.OperationMethod<
   InsertRapidCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<InsertRapidCachesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1888, __c59, 0) as any as S.Schema<InsertRapidCachesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2942,8 +2942,8 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
   GcpOpContext,
   AnywhereCache
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListAnywhereCachesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<AnywhereCaches>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListAnywhereCachesRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<AnywhereCaches>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2958,8 +2958,8 @@ export const listBucketAccessControls: API.OperationMethod<
   ListBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListBucketAccessControlsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<BucketAccessControls>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListBucketAccessControlsRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<BucketAccessControls>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2974,8 @@ export const listBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListBucketsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Buckets>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListBucketsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<Buckets>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2990,8 @@ export const listDefaultObjectAccessControls: API.OperationMethod<
   ListDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListDefaultObjectAccessControlsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ObjectAccessControls>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListDefaultObjectAccessControlsRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ObjectAccessControls>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3006,8 +3006,8 @@ export const listFolders: API.PaginatedOperationMethod<
   GcpOpContext,
   Folder
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListFoldersRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<Folders>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListFoldersRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<Folders>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3023,8 +3023,8 @@ export const listManagedFolders: API.PaginatedOperationMethod<
   GcpOpContext,
   ManagedFolder
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListManagedFoldersRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ManagedFolders>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListManagedFoldersRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ManagedFolders>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3039,8 +3039,8 @@ export const listNotifications: API.OperationMethod<
   ListNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListNotificationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<Notifications>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListNotificationsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<Notifications>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3054,8 +3054,8 @@ export const listObjectAccessControls: API.OperationMethod<
   ListObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListObjectAccessControlsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ObjectAccessControls>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListObjectAccessControlsRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ObjectAccessControls>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3070,8 @@ export const listObjects: API.PaginatedOperationMethod<
   GcpOpContext,
   Storage_Object
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListObjectsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Objects>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListObjectsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Objects>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3087,8 +3087,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3104,8 +3104,8 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   HmacKeyMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListProjectsHmacKeysRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<HmacKeysMetadata>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListProjectsHmacKeysRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<HmacKeysMetadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3121,8 +3121,8 @@ export const listRapidCaches: API.PaginatedOperationMethod<
   GcpOpContext,
   RapidCache
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListRapidCachesRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<RapidCaches>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListRapidCachesRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<RapidCaches>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3142,8 +3142,8 @@ export const lockRetentionPolicyBuckets: API.OperationMethod<
   LockRetentionPolicyBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<LockRetentionPolicyBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(2336, __c73, 0) as any as S.Schema<LockRetentionPolicyBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3157,8 +3157,8 @@ export const moveObjects: API.OperationMethod<
   MoveObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<MoveObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(2368, __c74, 0) as any as S.Schema<MoveObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3177,8 +3177,8 @@ export const patchBucketAccessControls: API.OperationMethod<
   PatchBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PatchBucketAccessControlsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<BucketAccessControl>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchBucketAccessControlsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<BucketAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3192,8 +3192,8 @@ export const patchBuckets: API.OperationMethod<
   PatchBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +3212,8 @@ export const patchDefaultObjectAccessControls: API.OperationMethod<
   PatchDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<PatchDefaultObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchDefaultObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3232,8 +3232,8 @@ export const patchObjectAccessControls: API.OperationMethod<
   PatchObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PatchObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PatchObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3247,8 +3247,8 @@ export const patchObjects: API.OperationMethod<
   PatchObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PatchObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3262,8 +3262,8 @@ export const pauseAnywhereCaches: API.OperationMethod<
   PauseAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<PauseAnywhereCachesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AnywhereCache>,
+  input: __S(2624, __c82, 0) as any as S.Schema<PauseAnywhereCachesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<AnywhereCache>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3277,8 +3277,8 @@ export const relocateBuckets: API.OperationMethod<
   RelocateBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<RelocateBucketsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2657, __c83, 1) as any as S.Schema<RelocateBucketsRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3292,8 +3292,8 @@ export const renameFolders: API.OperationMethod<
   RenameFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<RenameFoldersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2688, __c84, 0) as any as S.Schema<RenameFoldersRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3307,8 +3307,8 @@ export const restoreBuckets: API.OperationMethod<
   RestoreBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<RestoreBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(2720, __c85, 0) as any as S.Schema<RestoreBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3322,8 +3322,8 @@ export const restoreObjects: API.OperationMethod<
   RestoreObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<RestoreObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(2752, __c86, 0) as any as S.Schema<RestoreObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3337,8 +3337,8 @@ export const resumeAnywhereCaches: API.OperationMethod<
   ResumeAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ResumeAnywhereCachesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AnywhereCache>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ResumeAnywhereCachesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<AnywhereCache>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3352,8 +3352,8 @@ export const rewriteObjects: API.OperationMethod<
   RewriteObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<RewriteObjectsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<RewriteResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<RewriteObjectsRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<RewriteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3373,8 +3373,8 @@ export const setIamPolicyBuckets: API.OperationMethod<
   SetIamPolicyBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<SetIamPolicyBucketsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(2848, __c89, 0) as any as S.Schema<SetIamPolicyBucketsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, IamPolicyEtagMismatch, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3393,8 +3393,8 @@ export const setIamPolicyManagedFolders: API.OperationMethod<
   SetIamPolicyManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<SetIamPolicyManagedFoldersRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(2880, __c90, 0) as any as S.Schema<SetIamPolicyManagedFoldersRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3408,8 @@ export const setIamPolicyObjects: API.OperationMethod<
   SetIamPolicyObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<SetIamPolicyObjectsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<Policy>,
+  input: __S(3040, __c95, 0) as any as S.Schema<SetIamPolicyObjectsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3423,8 +3423,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<StopChannelsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<StopChannelsResponse>,
+  input: __S(3073, __c96, 1) as any as S.Schema<StopChannelsRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3438,8 +3438,8 @@ export const testIamPermissionsBuckets: API.OperationMethod<
   TestIamPermissionsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<TestIamPermissionsBucketsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<TestIamPermissionsBucketsRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3453,8 +3453,8 @@ export const testIamPermissionsManagedFolders: API.OperationMethod<
   TestIamPermissionsManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<TestIamPermissionsManagedFoldersRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<TestIamPermissionsManagedFoldersRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3468,8 @@ export const testIamPermissionsObjects: API.OperationMethod<
   TestIamPermissionsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<TestIamPermissionsObjectsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<TestIamPermissionsObjectsRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3483,8 +3483,8 @@ export const updateAnywhereCaches: API.OperationMethod<
   UpdateAnywhereCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateAnywhereCachesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3232, __c101, 0) as any as S.Schema<UpdateAnywhereCachesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3503,8 +3503,8 @@ export const updateBucketAccessControls: API.OperationMethod<
   UpdateBucketAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateBucketAccessControlsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<BucketAccessControl>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateBucketAccessControlsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<BucketAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3518,8 +3518,8 @@ export const updateBuckets: API.OperationMethod<
   UpdateBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UpdateBucketsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Bucket>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UpdateBucketsRequest>,
+  output: __S(984, __c30, 24) as any as S.Schema<Bucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3538,8 +3538,8 @@ export const updateDefaultObjectAccessControls: API.OperationMethod<
   UpdateDefaultObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdateDefaultObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(3328, __c104, 0) as any as S.Schema<UpdateDefaultObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3553,8 +3553,8 @@ export const updateManagedFolders: API.OperationMethod<
   UpdateManagedFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateManagedFoldersRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ManagedFolder>,
+  input: __S(3360, __c105, 0) as any as S.Schema<UpdateManagedFoldersRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ManagedFolder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3573,8 +3573,8 @@ export const updateObjectAccessControls: API.OperationMethod<
   UpdateObjectAccessControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UpdateObjectAccessControlsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ObjectAccessControl>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UpdateObjectAccessControlsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ObjectAccessControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3588,8 +3588,8 @@ export const updateObjects: API.OperationMethod<
   UpdateObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateObjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Storage_Object>,
+  input: __S(3488, __c109, 0) as any as S.Schema<UpdateObjectsRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Storage_Object>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3603,8 +3603,8 @@ export const updateProjectsHmacKeys: API.OperationMethod<
   UpdateProjectsHmacKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateProjectsHmacKeysRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<HmacKeyMetadata>,
+  input: __S(3520, __c110, 0) as any as S.Schema<UpdateProjectsHmacKeysRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<HmacKeyMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3618,8 +3618,8 @@ export const updateRapidCaches: API.OperationMethod<
   UpdateRapidCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateRapidCachesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3552, __c111, 0) as any as S.Schema<UpdateRapidCachesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3633,8 +3633,8 @@ export const viewFullContextObjects: API.OperationMethod<
   ViewFullContextObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ViewFullContextObjectsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ObjectFullContext>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ViewFullContextObjectsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<ObjectFullContext>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3646,111 +3646,57 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ttl: S.optional(S.String),
-          expireTime: S.optional(S.String),
+          ifGenerationMatch: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "AdvanceRelocateBucketOperationRequest",
+        identifier: "ComposeRequestSourceObjectsItemObjectPreconditions",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bucket: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "b/{bucket}/operations/{operationId}/advanceRelocateBucket",
-            baseUrl: "https://storage.googleapis.com/storage/v1/",
-          }),
-        ),
+          generation: S.optional(S.String),
+          name: S.optional(S.String),
+          objectPreconditions: S.optional(__S(0, __c0, 0)),
+        }),
       ).annotate({
-        identifier: "AdvanceRelocateBucketOperationsRequest",
+        identifier: "ComposeRequestSourceObjectsItem",
       });
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AdvanceRelocateBucketOperationsResponse",
-      });
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(__S(197, __c6, 5)),
+          kind: S.optional(S.String),
+          sourceObjects: S.optional(__S(2, __c0, 2)),
+          deleteSourceObjects: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ComposeRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allowOverwrite: S.optional(S.Boolean),
-          softDeletedAfterTime: S.optional(S.String),
-          softDeletedBeforeTime: S.optional(S.String),
-          matchGlobs: S.optional(__S(3, __c0, 3)),
-          copySourceAcl: S.optional(S.Boolean),
-          createdAfterTime: S.optional(S.String),
-          createdBeforeTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BulkRestoreObjectsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          destinationBucket: S.String.pipe(T.Label()),
+          destinationObject: S.String.pipe(T.Label()),
+          destinationPredefinedAcl: S.optional(S.String.pipe(T.Query())),
+          dropContextGroups: S.optional(__S(2944, __c92, 0).pipe(T.Query())),
+          ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+          ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+          kmsKeyName: S.optional(S.String.pipe(T.Query())),
+          userProject: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "b/{bucket}/o/bulkRestore",
+            uri: "b/{destinationBucket}/o/{destinationObject}/compose",
             baseUrl: "https://storage.googleapis.com/storage/v1/",
           }),
         ),
-      ).annotate({
-        identifier: "BulkRestoreObjectsRequest_",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+      ).annotate({ identifier: "ComposeObjectsRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(7, __c0, 7)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(8, __c1, 0)),
-          metadata: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          response: S.optional(__S(6, __c0, 6)),
-          selfLink: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "b/{bucket}/operations/{operationId}/cancel",
-            baseUrl: "https://storage.googleapis.com/storage/v1/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationsResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           projectNumber: S.optional(S.String),
@@ -3759,7 +3705,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ObjectAccessControlProjectTeam",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -3772,14 +3722,39 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           kind: S.optional(S.String),
           object: S.optional(S.String),
-          projectTeam: S.optional(__S(12, __c1, 4)),
+          projectTeam: S.optional(__S(32, __c1, 0)),
           role: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectAccessControl" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.optional(S.String),
+          entityId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Storage_ObjectOwner" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           encryptionAlgorithm: S.optional(S.String),
@@ -3788,12 +3763,6 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "Storage_ObjectCustomerEncryption",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3806,31 +3775,24 @@ function __c2(j: number): any {
         identifier: "ObjectCustomContextPayload",
       });
     case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
+      return S.Record(S.String, __S(193, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          custom: S.optional(__S(18, __c2, 2)),
+          custom: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({ identifier: "Storage_ObjectContexts" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entity: S.optional(S.String),
-          entityId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Storage_ObjectOwner" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           retainUntilTime: S.optional(S.String),
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Storage_ObjectRetention" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(__S(14, __c1, 6)),
+          acl: S.optional(__S(128, __c4, 0)),
           bucket: S.optional(S.String),
           cacheControl: S.optional(S.String),
           componentCount: S.optional(S.Number),
@@ -3840,7 +3802,7 @@ function __c2(j: number): any {
           contentType: S.optional(S.String),
           crc32c: S.optional(S.String),
           customTime: S.optional(S.String),
-          customerEncryption: S.optional(__S(15, __c1, 7)),
+          customerEncryption: S.optional(__S(192, __c6, 0)),
           etag: S.optional(S.String),
           eventBasedHold: S.optional(S.Boolean),
           generation: S.optional(S.String),
@@ -3849,14 +3811,14 @@ function __c2(j: number): any {
           kmsKeyName: S.optional(S.String),
           md5Hash: S.optional(S.String),
           mediaLink: S.optional(S.String),
-          metadata: S.optional(__S(16, __c2, 0)),
-          contexts: S.optional(__S(19, __c2, 3)),
+          metadata: S.optional(__S(96, __c3, 0)),
+          contexts: S.optional(__S(195, __c6, 3)),
           restoreToken: S.optional(S.String),
           metageneration: S.optional(S.String),
           name: S.optional(S.String),
-          owner: S.optional(__S(20, __c2, 4)),
+          owner: S.optional(__S(160, __c5, 0)),
           retentionExpirationTime: S.optional(S.String),
-          retention: S.optional(__S(21, __c2, 5)),
+          retention: S.optional(__S(196, __c6, 4)),
           selfLink: S.optional(S.String),
           size: S.optional(S.String),
           storageClass: S.optional(S.String),
@@ -3870,60 +3832,11 @@ function __c2(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "Storage_Object" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ifGenerationMatch: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComposeRequestSourceObjectsItemObjectPreconditions",
-      });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          generation: S.optional(S.String),
-          name: S.optional(S.String),
-          objectPreconditions: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "ComposeRequestSourceObjectsItem",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(__S(22, __c2, 6)),
-          kind: S.optional(S.String),
-          sourceObjects: S.optional(__S(25, __c3, 1)),
-          deleteSourceObjects: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ComposeRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destinationBucket: S.String.pipe(T.Label()),
-          destinationObject: S.String.pipe(T.Label()),
-          destinationPredefinedAcl: S.optional(S.String.pipe(T.Query())),
-          dropContextGroups: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
-          ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
-          kmsKeyName: S.optional(S.String.pipe(T.Query())),
-          userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "b/{destinationBucket}/o/{destinationObject}/compose",
-            baseUrl: "https://storage.googleapis.com/storage/v1/",
-          }),
-        ),
-      ).annotate({ identifier: "ComposeObjectsRequest" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           destinationBucket: S.String.pipe(T.Label()),
@@ -3943,7 +3856,7 @@ function __c3(j: number): any {
           sourceGeneration: S.optional(S.String.pipe(T.Query())),
           sourceObject: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(197, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3952,7 +3865,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CopyObjectsRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -3968,7 +3885,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateProjectsHmacKeysRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(288, __c9, 0)),
+          secret: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HmacKey" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessId: S.optional(S.String),
@@ -3983,17 +3912,9 @@ function __c3(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "HmacKeyMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(30, __c3, 6)),
-          secret: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HmacKey" });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4011,7 +3932,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteBucketAccessControlsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4026,7 +3951,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBucketsRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4042,7 +3971,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteDefaultObjectAccessControlsRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4057,7 +3990,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteFoldersRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4075,7 +4012,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteManagedFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4091,7 +4032,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteNotificationsRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4109,7 +4054,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteObjectAccessControlsRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4130,7 +4079,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteObjectsRequest" });
   }
 }
-function __c5(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4148,7 +4097,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsHmacKeysRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4165,7 +4118,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteRecursiveFoldersRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4180,7 +4137,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DisableAnywhereCachesRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -4198,7 +4159,11 @@ function __c5(j: number): any {
           ingestOnWrite: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AnywhereCache" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4213,7 +4178,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DisableRapidCachesRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4226,7 +4195,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAnywhereCachesRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4242,7 +4215,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBucketAccessControlsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -4253,14 +4230,14 @@ function __c5(j: number): any {
           etag: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          projectTeam: S.optional(__S(12, __c1, 4)),
+          projectTeam: S.optional(__S(32, __c1, 0)),
           role: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketAccessControl" });
   }
 }
-function __c6(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4280,54 +4257,21 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBucketsRequest" });
-    case 1:
-      return S.Array(__S(47, __c5, 7));
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          requesterPays: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BucketBilling" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxAgeSeconds: S.optional(S.Number),
-          method: S.optional(__S(3, __c0, 3)),
-          origin: S.optional(__S(3, __c0, 3)),
-          responseHeader: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "BucketCorsItem" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataLocations: S.optional(__S(3, __c0, 3)),
+          dataLocations: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({
         identifier: "BucketCustomPlacementConfig",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restrictionMode: S.optional(S.String),
-          effectiveTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BucketEncryptionGoogleManagedEncryptionEnforcementConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultKmsKeyName: S.optional(S.String),
-          googleManagedEncryptionEnforcementConfig: S.optional(__S(54, __c6, 6)),
-          customerManagedEncryptionEnforcementConfig: S.optional(__S(54, __c6, 6)),
-          customerSuppliedEncryptionEnforcementConfig: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "BucketEncryption" });
   }
 }
-function __c7(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4337,7 +4281,52 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BucketHierarchicalNamespace",
       });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(800, __c25, 0));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requesterPays: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BucketBilling" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxAgeSeconds: S.optional(S.Number),
+          method: S.optional(__S(2944, __c92, 0)),
+          origin: S.optional(__S(2944, __c92, 0)),
+          responseHeader: S.optional(__S(2944, __c92, 0)),
+        }),
+      ).annotate({ identifier: "BucketCorsItem" });
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          restrictionMode: S.optional(S.String),
+          effectiveTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BucketEncryptionGoogleManagedEncryptionEnforcementConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          defaultKmsKeyName: S.optional(S.String),
+          googleManagedEncryptionEnforcementConfig: S.optional(__S(963, __c30, 3)),
+          customerManagedEncryptionEnforcementConfig: S.optional(__S(963, __c30, 3)),
+          customerSuppliedEncryptionEnforcementConfig: S.optional(__S(963, __c30, 3)),
+        }),
+      ).annotate({ identifier: "BucketEncryption" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4346,44 +4335,44 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BucketIamConfigurationBucketPolicyOnly",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          bucketPolicyOnly: S.optional(__S(57, __c7, 1)),
-          uniformBucketLevelAccess: S.optional(__S(57, __c7, 1)),
+          bucketPolicyOnly: S.optional(__S(965, __c30, 5)),
+          uniformBucketLevelAccess: S.optional(__S(965, __c30, 5)),
           publicAccessPrevention: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketIamConfiguration" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          allowedIpCidrRanges: S.optional(__S(3, __c0, 3)),
+          allowedIpCidrRanges: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({
         identifier: "BucketIpFilterPublicNetworkSource",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
-          allowedIpCidrRanges: S.optional(__S(3, __c0, 3)),
+          allowedIpCidrRanges: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({
         identifier: "BucketIpFilterVpcNetworkSourcesItem",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(968, __c30, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          publicNetworkSource: S.optional(__S(59, __c7, 3)),
-          vpcNetworkSources: S.optional(__S(61, __c7, 5)),
+          publicNetworkSource: S.optional(__S(967, __c30, 7)),
+          vpcNetworkSources: S.optional(__S(969, __c30, 9)),
           allowCrossOrgVpcs: S.optional(S.Boolean),
           allowAllServiceAgentAccess: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BucketIpFilter" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           storageClass: S.optional(S.String),
@@ -4392,11 +4381,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BucketLifecycleRuleItemAction",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           age: S.optional(S.Number),
@@ -4406,9 +4391,9 @@ function __c8(j: number): any {
           daysSinceNoncurrentTime: S.optional(S.Number),
           isLive: S.optional(S.Boolean),
           matchesPattern: S.optional(S.String),
-          matchesPrefix: S.optional(__S(3, __c0, 3)),
-          matchesSuffix: S.optional(__S(3, __c0, 3)),
-          matchesStorageClass: S.optional(__S(3, __c0, 3)),
+          matchesPrefix: S.optional(__S(2944, __c92, 0)),
+          matchesSuffix: S.optional(__S(2944, __c92, 0)),
+          matchesStorageClass: S.optional(__S(2944, __c92, 0)),
           noncurrentTimeBefore: S.optional(S.String),
           sizeAboveBytes: S.optional(S.String),
           sizeBelowBytes: S.optional(S.String),
@@ -4417,22 +4402,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "BucketLifecycleRuleItemCondition",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(63, __c7, 7)),
-          condition: S.optional(__S(64, __c8, 0)),
+          action: S.optional(__S(971, __c30, 11)),
+          condition: S.optional(__S(972, __c30, 12)),
         }),
       ).annotate({ identifier: "BucketLifecycleRuleItem" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(973, __c30, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(__S(66, __c8, 2)),
+          rule: S.optional(__S(974, __c30, 14)),
         }),
       ).annotate({ identifier: "BucketLifecycle" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4441,14 +4426,14 @@ function __c8(j: number): any {
           terminalStorageClassUpdateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketAutoclass" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           logBucket: S.optional(S.String),
           logObjectPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketLogging" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           effectiveTime: S.optional(S.String),
@@ -4456,17 +4441,13 @@ function __c8(j: number): any {
           retentionPeriod: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketRetentionPolicy" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketObjectRetention" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4475,71 +4456,75 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "BucketSoftDeletePolicyHardDeletePause",
       });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           retentionDurationSeconds: S.optional(S.String),
           effectiveTime: S.optional(S.String),
-          hardDeletePause: S.optional(__S(72, __c9, 0)),
+          hardDeletePause: S.optional(__S(980, __c30, 20)),
         }),
       ).annotate({ identifier: "BucketSoftDeletePolicy" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BucketVersioning" });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           mainPageSuffix: S.optional(S.String),
           notFoundPage: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketWebsite" });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(__S(49, __c6, 1)),
-          billing: S.optional(__S(50, __c6, 2)),
-          cors: S.optional(__S(52, __c6, 4)),
-          customPlacementConfig: S.optional(__S(53, __c6, 5)),
+          acl: S.optional(__S(928, __c29, 0)),
+          billing: S.optional(__S(960, __c30, 0)),
+          cors: S.optional(__S(962, __c30, 2)),
+          customPlacementConfig: S.optional(__S(864, __c27, 0)),
           defaultEventBasedHold: S.optional(S.Boolean),
-          defaultObjectAcl: S.optional(__S(14, __c1, 6)),
-          encryption: S.optional(__S(55, __c6, 7)),
+          defaultObjectAcl: S.optional(__S(128, __c4, 0)),
+          encryption: S.optional(__S(964, __c30, 4)),
           etag: S.optional(S.String),
-          hierarchicalNamespace: S.optional(__S(56, __c7, 0)),
-          iamConfiguration: S.optional(__S(58, __c7, 2)),
+          hierarchicalNamespace: S.optional(__S(896, __c28, 0)),
+          iamConfiguration: S.optional(__S(966, __c30, 6)),
           id: S.optional(S.String),
-          ipFilter: S.optional(__S(62, __c7, 6)),
+          ipFilter: S.optional(__S(970, __c30, 10)),
           kind: S.optional(S.String),
-          labels: S.optional(__S(16, __c2, 0)),
-          lifecycle: S.optional(__S(67, __c8, 3)),
-          autoclass: S.optional(__S(68, __c8, 4)),
+          labels: S.optional(__S(96, __c3, 0)),
+          lifecycle: S.optional(__S(975, __c30, 15)),
+          autoclass: S.optional(__S(976, __c30, 16)),
           location: S.optional(S.String),
           locationType: S.optional(S.String),
-          logging: S.optional(__S(69, __c8, 5)),
+          logging: S.optional(__S(977, __c30, 17)),
           generation: S.optional(S.String),
           metageneration: S.optional(S.String),
           name: S.optional(S.String),
-          owner: S.optional(__S(20, __c2, 4)),
+          owner: S.optional(__S(160, __c5, 0)),
           projectNumber: S.optional(S.String),
-          retentionPolicy: S.optional(__S(70, __c8, 6)),
-          objectRetention: S.optional(__S(71, __c8, 7)),
+          retentionPolicy: S.optional(__S(978, __c30, 18)),
+          objectRetention: S.optional(__S(979, __c30, 19)),
           rpo: S.optional(S.String),
           selfLink: S.optional(S.String),
-          softDeletePolicy: S.optional(__S(73, __c9, 1)),
+          softDeletePolicy: S.optional(__S(981, __c30, 21)),
           storageClass: S.optional(S.String),
           timeCreated: S.optional(S.String),
           updated: S.optional(S.String),
           softDeleteTime: S.optional(S.String),
           hardDeleteTime: S.optional(S.String),
-          versioning: S.optional(__S(74, __c9, 2)),
-          website: S.optional(__S(75, __c9, 3)),
+          versioning: S.optional(__S(982, __c30, 22)),
+          website: S.optional(__S(983, __c30, 23)),
           satisfiesPZS: S.optional(S.Boolean),
           satisfiesPZI: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Bucket" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4555,7 +4540,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDefaultObjectAccessControlsRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4570,17 +4559,17 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFoldersRequest" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FolderPendingRenameInfo" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -4591,10 +4580,14 @@ function __c10(j: number): any {
           selfLink: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          pendingRenameInfo: S.optional(__S(79, __c9, 7)),
+          pendingRenameInfo: S.optional(__S(1056, __c33, 0)),
         }),
       ).annotate({ identifier: "Folder" });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4610,7 +4603,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyBucketsRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4619,27 +4616,31 @@ function __c10(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(82, __c10, 2)),
-          members: S.optional(__S(3, __c0, 3)),
+          condition: S.optional(__S(1120, __c35, 0)),
+          members: S.optional(__S(2944, __c92, 0)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyBindingsItem" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(84, __c10, 4)),
+          bindings: S.optional(__S(1122, __c35, 2)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           resourceId: S.optional(S.String),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4656,7 +4657,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyManagedFoldersRequest",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4675,7 +4680,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4692,22 +4697,26 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetManagedFoldersRequest" });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rapidCacheId: S.optional(S.String),
           ingestOnWrite: S.optional(S.String),
         }),
       ).annotate({ identifier: "RapidCachePolicy" });
+    case 1:
+      return S.Record(S.String, __S(1248, __c39, 0));
     case 2:
-      return S.Record(S.String, __S(89, __c11, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(90, __c11, 2)),
+          policies: S.optional(__S(1249, __c39, 1)),
         }),
       ).annotate({ identifier: "RapidCacheConfig" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -4718,10 +4727,14 @@ function __c11(j: number): any {
           selfLink: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          rapidCacheConfig: S.optional(__S(91, __c11, 3)),
+          rapidCacheConfig: S.optional(__S(1250, __c39, 2)),
         }),
       ).annotate({ identifier: "ManagedFolder" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4735,12 +4748,16 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNotificationsRequest" });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          custom_attributes: S.optional(__S(16, __c2, 0)),
+          custom_attributes: S.optional(__S(96, __c3, 0)),
           etag: S.optional(S.String),
-          event_types: S.optional(__S(3, __c0, 3)),
+          event_types: S.optional(__S(2944, __c92, 0)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
           object_name_prefix: S.optional(S.String),
@@ -4749,7 +4766,11 @@ function __c11(j: number): any {
           topic: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notification" });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4769,7 +4790,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4793,7 +4814,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetObjectsRequest" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4806,7 +4831,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessId: S.String.pipe(T.Label()),
@@ -4822,7 +4851,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsHmacKeysRequest",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4837,14 +4870,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsServiceAccountRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email_address: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccount" });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4857,7 +4894,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRapidCachesRequest" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -4876,7 +4917,11 @@ function __c12(j: number): any {
           cacheType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RapidCache" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -4891,26 +4936,26 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetStorageLayoutBucketsRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
-          customPlacementConfig: S.optional(__S(53, __c6, 5)),
-          hierarchicalNamespace: S.optional(__S(56, __c7, 0)),
+          customPlacementConfig: S.optional(__S(864, __c27, 0)),
+          hierarchicalNamespace: S.optional(__S(896, __c28, 0)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
           locationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketStorageLayout" });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4921,12 +4966,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertAnywhereCachesRequest",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4937,7 +4986,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertBucketAccessControlsRequest",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           predefinedAcl: S.optional(S.String.pipe(T.Query())),
@@ -4946,7 +4999,7 @@ function __c13(j: number): any {
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
           enableObjectRetention: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(984, __c30, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4955,12 +5008,16 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertBucketsRequest" });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4971,12 +5028,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertDefaultObjectAccessControlsRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           recursive: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1057, __c33, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4985,11 +5046,15 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertFoldersRequest" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1251, __c39, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5000,12 +5065,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertManagedFoldersRequest",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1312, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5018,7 +5087,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5027,7 +5096,7 @@ function __c14(j: number): any {
           generation: S.optional(S.String.pipe(T.Query())),
           object: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5038,7 +5107,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InsertObjectAccessControlsRequest",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5052,7 +5125,7 @@ function __c14(j: number): any {
           predefinedAcl: S.optional(S.String.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(197, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5061,11 +5134,15 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertObjectsRequest" });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1536, __c48, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5074,7 +5151,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertRapidCachesRequest" });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5090,17 +5171,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAnywhereCachesRequest",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(116, __c14, 4),
+          items: __S(1921, __c60, 1),
         }),
       ).annotate({ identifier: "AnywhereCaches" });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5115,16 +5200,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListBucketAccessControlsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(49, __c6, 1)),
+          items: S.optional(__S(928, __c29, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketAccessControls" });
   }
 }
-function __c15(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5146,17 +5231,21 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListBucketsRequest" });
     case 1:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(984, __c30, 24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(121, __c15, 1),
+          items: __S(1985, __c62, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
+          unreachable: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({ identifier: "Buckets" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5173,14 +5262,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListDefaultObjectAccessControlsRequest",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(14, __c1, 6)),
+          items: S.optional(__S(128, __c4, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectAccessControls" });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5198,19 +5295,19 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFoldersRequest" });
-    case 6:
-      return S.Array(__S(80, __c10, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(1057, __c33, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(126, __c15, 6),
+          items: __S(2081, __c65, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Folders" });
   }
 }
-function __c16(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5230,16 +5327,20 @@ function __c16(j: number): any {
         identifier: "ListManagedFoldersRequest",
       });
     case 1:
-      return S.Array(__S(92, __c11, 4));
+      return S.Array(__S(1251, __c39, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(129, __c16, 1),
+          items: __S(2113, __c66, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedFolders" });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5252,16 +5353,20 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNotificationsRequest" });
-    case 4:
-      return S.Array(__S(94, __c11, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(132, __c16, 4)),
+          items: S.optional(__S(2145, __c67, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notifications" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5278,7 +5383,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListObjectAccessControlsRequest",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5304,22 +5413,22 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListObjectsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
     case 1:
+      return S.Array(__S(197, __c6, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(136, __c17, 0),
+          items: __S(2209, __c69, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          prefixes: S.optional(__S(3, __c0, 3)),
+          prefixes: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({ identifier: "Objects" });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5334,19 +5443,23 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.Array(__S(9, __c1, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(2978, __c93, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(139, __c17, 3)),
+          operations: S.optional(__S(2241, __c70, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5365,19 +5478,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsHmacKeysRequest",
       });
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(142, __c17, 6),
+          items: __S(2273, __c71, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "HmacKeysMetadata" });
   }
 }
-function __c18(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5394,16 +5507,20 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListRapidCachesRequest" });
     case 1:
-      return S.Array(__S(102, __c12, 6));
+      return S.Array(__S(1536, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(145, __c18, 1),
+          items: __S(2305, __c72, 1),
         }),
       ).annotate({ identifier: "RapidCaches" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5419,7 +5536,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LockRetentionPolicyBucketsRequest",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5443,13 +5564,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveObjectsRequest" });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           entity: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5460,7 +5585,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchBucketAccessControlsRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5470,7 +5599,7 @@ function __c18(j: number): any {
           predefinedDefaultObjectAcl: S.optional(S.String.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(984, __c30, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5479,13 +5608,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchBucketsRequest" });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           entity: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5498,7 +5631,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5508,7 +5641,7 @@ function __c19(j: number): any {
           generation: S.optional(S.String.pipe(T.Query())),
           object: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5519,7 +5652,48 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchObjectAccessControlsRequest",
       });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ttl: S.optional(S.String),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdvanceRelocateBucketOperationRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "b/{bucket}/operations/{operationId}/advanceRelocateBucket",
+            baseUrl: "https://storage.googleapis.com/storage/v1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AdvanceRelocateBucketOperationsRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AdvanceRelocateBucketOperationsResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5533,7 +5707,7 @@ function __c19(j: number): any {
           predefinedAcl: S.optional(S.String.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(197, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5542,7 +5716,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchObjectsRequest" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5557,20 +5735,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PauseAnywhereCachesRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationLocation: S.optional(S.String),
-          destinationCustomPlacementConfig: S.optional(__S(53, __c6, 5)),
+          destinationCustomPlacementConfig: S.optional(__S(864, __c27, 0)),
           validateOnly: S.optional(S.Boolean),
           destinationKmsKeyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelocateBucketRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5579,7 +5761,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RelocateBucketsRequest" });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5595,7 +5781,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenameFoldersRequest" });
-    case 6:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5610,7 +5800,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreBucketsRequest" });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5634,7 +5828,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "RestoreObjectsRequest" });
   }
 }
-function __c20(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5651,14 +5845,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ResumeAnywhereCachesRequest",
       });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationBucket: S.String.pipe(T.Label()),
           destinationKmsKeyName: S.optional(S.String.pipe(T.Query())),
           destinationObject: S.String.pipe(T.Label()),
           destinationPredefinedAcl: S.optional(S.String.pipe(T.Query())),
-          dropContextGroups: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          dropContextGroups: S.optional(__S(2944, __c92, 0).pipe(T.Query())),
           ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
           ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
           ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
@@ -5674,7 +5872,7 @@ function __c20(j: number): any {
           sourceGeneration: S.optional(S.String.pipe(T.Query())),
           sourceObject: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(197, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5683,23 +5881,27 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RewriteObjectsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
           kind: S.optional(S.String),
           objectSize: S.optional(S.String),
-          resource: S.optional(__S(22, __c2, 6)),
+          resource: S.optional(__S(197, __c6, 5)),
           rewriteToken: S.optional(S.String),
           totalBytesRewritten: S.optional(S.String),
         }),
       ).annotate({ identifier: "RewriteResponse" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5710,13 +5912,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyBucketsRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           managedFolder: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5727,14 +5933,91 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyManagedFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowOverwrite: S.optional(S.Boolean),
+          softDeletedAfterTime: S.optional(S.String),
+          softDeletedBeforeTime: S.optional(S.String),
+          matchGlobs: S.optional(__S(2944, __c92, 0)),
+          copySourceAcl: S.optional(S.Boolean),
+          createdAfterTime: S.optional(S.String),
+          createdBeforeTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BulkRestoreObjectsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String.pipe(T.Label()),
+          body: S.optional(__S(2912, __c91, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "b/{bucket}/o/bulkRestore",
+            baseUrl: "https://storage.googleapis.com/storage/v1/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkRestoreObjectsRequest_",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3008, __c94, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(2976, __c93, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(2977, __c93, 1)),
+          metadata: S.optional(__S(3008, __c94, 0)),
+          name: S.optional(S.String),
+          response: S.optional(__S(3008, __c94, 0)),
+          selfLink: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           generation: S.optional(S.String.pipe(T.Query())),
           object: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5745,14 +6028,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyObjectsRequest",
       });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
           expiration: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          params: S.optional(__S(16, __c2, 0)),
+          params: S.optional(__S(96, __c3, 0)),
           payload: S.optional(S.Boolean),
           resourceId: S.optional(S.String),
           resourceUri: S.optional(S.String),
@@ -5760,10 +6047,10 @@ function __c20(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3072, __c96, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5774,13 +6061,13 @@ function __c20(j: number): any {
       ).annotate({ identifier: "StopChannelsRequest" });
   }
 }
-function __c21(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
-          permissions: __S(3, __c0, 3).pipe(T.Query()),
+          permissions: __S(2944, __c92, 0).pipe(T.Query()),
           userProject: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -5792,21 +6079,29 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsBucketsRequest",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          permissions: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsResponse",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           managedFolder: S.String.pipe(T.Label()),
-          permissions: __S(3, __c0, 3).pipe(T.Query()),
+          permissions: __S(2944, __c92, 0).pipe(T.Query()),
           userProject: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -5818,13 +6113,17 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsManagedFoldersRequest",
       });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           generation: S.optional(S.String.pipe(T.Query())),
           object: S.String.pipe(T.Label()),
-          permissions: __S(3, __c0, 3).pipe(T.Query()),
+          permissions: __S(2944, __c92, 0).pipe(T.Query()),
           userProject: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -5836,12 +6135,16 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsObjectsRequest",
       });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           anywhereCacheId: S.String.pipe(T.Label()),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5852,13 +6155,17 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateAnywhereCachesRequest",
       });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           entity: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5869,7 +6176,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateBucketAccessControlsRequest",
       });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5879,7 +6190,7 @@ function __c21(j: number): any {
           predefinedDefaultObjectAcl: S.optional(S.String.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(984, __c30, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5888,13 +6199,17 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBucketsRequest" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           entity: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5907,7 +6222,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5916,7 +6231,7 @@ function __c22(j: number): any {
           managedFolder: S.String.pipe(T.Label()),
           ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
           ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1251, __c39, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5927,7 +6242,36 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateManagedFoldersRequest",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "b/{bucket}/operations/{operationId}/cancel",
+            baseUrl: "https://storage.googleapis.com/storage/v1/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationsResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5935,7 +6279,7 @@ function __c22(j: number): any {
           generation: S.optional(S.String.pipe(T.Query())),
           object: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5946,7 +6290,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateObjectAccessControlsRequest",
       });
-    case 2:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -5960,7 +6308,7 @@ function __c22(j: number): any {
           predefinedAcl: S.optional(S.String.pipe(T.Query())),
           projection: S.optional(S.String.pipe(T.Query())),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(197, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5969,13 +6317,17 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateObjectsRequest" });
-    case 3:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           userProject: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5986,12 +6338,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsHmacKeysRequest",
       });
-    case 4:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
           rapidCacheId: S.String.pipe(T.Label()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1536, __c48, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6000,7 +6356,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRapidCachesRequest" });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String.pipe(T.Label()),
@@ -6018,7 +6378,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ViewFullContextObjectsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -6027,12 +6387,11 @@ function __c22(j: number): any {
           value: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          extendedData: S.optional(__S(6, __c0, 6)),
+          extendedData: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "ObjectFullContext" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

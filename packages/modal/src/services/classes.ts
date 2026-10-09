@@ -155,8 +155,8 @@ export const createClass: API.OperationMethod<
   CreateClassError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateClassRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateClassResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateClassRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateClassResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -169,8 +169,8 @@ export const getClass: API.OperationMethod<
   GetClassError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetClassRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetClassResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetClassRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<GetClassResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -180,12 +180,34 @@ export const getClass: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)));
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          existingClassId: S.optional(S.String),
+          methods: S.optional(__S(27, __c1, 11)),
+          onlyClassFunction: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClassCreate", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateClassRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          classId: S.optional(S.String),
+          handleMetadata: S.optional(__S(28, __c1, 12)),
+        }),
+      ).annotate({ identifier: "CreateClassResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(17, __c1, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           baseType: S.optional(S.String),
-          subTypes: S.optional(__S(0, __c0, 0)),
+          subTypes: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GenericPayloadType" });
     case 2:
@@ -199,40 +221,36 @@ function __c0(j: number): any {
           pickleDefault: S.optional(S.String),
           bytesDefault: S.optional(S.String),
           boolDefault: S.optional(S.Boolean),
-          fullType: S.optional(__S(1, __c0, 1)),
+          fullType: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "ClassParameterSpec" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(18, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
-          schema: S.optional(__S(3, __c0, 3)),
+          schema: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "ClassParameterInfo" });
     case 5:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(9, __c1, 1)),
+        /*@__PURE__*/ S.suspend(() => __S(25, __c1, 9)),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           schemaType: S.optional(S.String),
-          arguments: S.optional(__S(3, __c0, 3)),
-          returnType: S.optional(__S(1, __c0, 1)),
+          arguments: S.optional(__S(19, __c1, 3)),
+          returnType: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "FunctionSchema" });
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(S.String);
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
@@ -241,57 +259,43 @@ function __c1(j: number): any {
           isMethod: S.optional(S.Boolean),
           useMethodName: S.optional(S.String),
           definitionId: S.optional(S.String),
-          classParameterInfo: S.optional(__S(4, __c0, 4)),
-          methodHandleMetadata: S.optional(__S(5, __c0, 5)),
-          functionSchema: S.optional(__S(6, __c0, 6)),
+          classParameterInfo: S.optional(__S(20, __c1, 4)),
+          methodHandleMetadata: S.optional(__S(21, __c1, 5)),
+          functionSchema: S.optional(__S(22, __c1, 6)),
           inputPlaneUrl: S.optional(S.String),
           inputPlaneRegion: S.optional(S.String),
           maxObjectSizeBytes: S.optional(S.String),
           maxAsyncObjectSizeBytes: S.optional(S.String),
-          ExperimentalFlashUrls: S.optional(__S(7, __c0, 7)),
-          supportedInputFormats: S.optional(__S(8, __c1, 0)),
-          supportedOutputFormats: S.optional(__S(8, __c1, 0)),
+          ExperimentalFlashUrls: S.optional(__S(23, __c1, 7)),
+          supportedInputFormats: S.optional(__S(24, __c1, 8)),
+          supportedOutputFormats: S.optional(__S(24, __c1, 8)),
           appId: S.optional(S.String),
           baseFunctionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionHandleMetadata" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
           functionId: S.optional(S.String),
-          functionHandleMetadata: S.optional(__S(9, __c1, 1)),
+          functionHandleMetadata: S.optional(__S(25, __c1, 9)),
         }),
       ).annotate({ identifier: "ClassMethod" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(26, __c1, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          appId: S.optional(S.String),
-          existingClassId: S.optional(S.String),
-          methods: S.optional(__S(11, __c1, 3)),
-          onlyClassFunction: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClassCreate", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateClassRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          methods: S.optional(__S(11, __c1, 3)),
+          methods: S.optional(__S(27, __c1, 11)),
           classFunctionId: S.optional(S.String),
-          classFunctionMetadata: S.optional(__S(9, __c1, 1)),
+          classFunctionMetadata: S.optional(__S(25, __c1, 9)),
         }),
       ).annotate({ identifier: "ClassHandleMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          classId: S.optional(S.String),
-          handleMetadata: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CreateClassResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appName: S.optional(S.String),
@@ -301,30 +305,25 @@ function __c1(j: number): any {
           appVersion: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClassGet", code: 200 })),
       ).annotate({ identifier: "GetClassRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warning" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String),
-          handleMetadata: S.optional(__S(13, __c1, 5)),
-          serverWarnings: S.optional(__S(17, __c2, 1)),
+          handleMetadata: S.optional(__S(28, __c1, 12)),
+          serverWarnings: S.optional(__S(34, __c2, 2)),
         }),
       ).annotate({ identifier: "GetClassResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

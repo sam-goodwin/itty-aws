@@ -326,8 +326,8 @@ export const createEnvironmentEC2: API.OperationMethod<
   CreateEnvironmentEC2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEnvironmentEC2Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateEnvironmentEC2Result>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateEnvironmentEC2Request>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateEnvironmentEC2Result>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -364,8 +364,8 @@ export const createEnvironmentMembership: API.OperationMethod<
   CreateEnvironmentMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateEnvironmentMembershipRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateEnvironmentMembershipResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateEnvironmentMembershipRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CreateEnvironmentMembershipResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -403,7 +403,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteEnvironmentRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteEnvironmentRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteEnvironmentResult>,
   errors: [
     BadRequestException,
@@ -441,8 +441,8 @@ export const deleteEnvironmentMembership: API.OperationMethod<
   DeleteEnvironmentMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteEnvironmentMembershipRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteEnvironmentMembershipResult>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteEnvironmentMembershipRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteEnvironmentMembershipResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -480,8 +480,8 @@ export const describeEnvironmentMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DescribeEnvironmentMembershipsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DescribeEnvironmentMembershipsResult>,
+  input: __S(25, __c3, 1) as any as S.Schema<DescribeEnvironmentMembershipsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DescribeEnvironmentMembershipsResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -523,8 +523,8 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DescribeEnvironmentsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DescribeEnvironmentsResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<DescribeEnvironmentsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<DescribeEnvironmentsResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -561,8 +561,8 @@ export const describeEnvironmentStatus: API.OperationMethod<
   DescribeEnvironmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DescribeEnvironmentStatusRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DescribeEnvironmentStatusResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<DescribeEnvironmentStatusRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DescribeEnvironmentStatusResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -604,8 +604,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListEnvironmentsResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListEnvironmentsResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -643,8 +643,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException, InternalServerErrorException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -673,7 +673,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<TagResourceRequest>,
+  input: __S(72, __c9, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
@@ -705,7 +705,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UntagResourceRequest>,
+  input: __S(81, __c10, 1) as any as S.Schema<UntagResourceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
@@ -740,7 +740,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UpdateEnvironmentRequest>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateEnvironmentRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<UpdateEnvironmentResult>,
   errors: [
     BadRequestException,
@@ -779,8 +779,8 @@ export const updateEnvironmentMembership: API.OperationMethod<
   UpdateEnvironmentMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<UpdateEnvironmentMembershipRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateEnvironmentMembershipResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateEnvironmentMembershipRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<UpdateEnvironmentMembershipResult>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -799,58 +799,6 @@ export const updateEnvironmentMembership: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(SensitiveString),
-          clientRequestToken: S.optional(S.String),
-          instanceType: S.String,
-          subnetId: S.optional(S.String),
-          imageId: S.String,
-          automaticStopTimeMinutes: S.optional(S.Number),
-          ownerArn: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          connectionType: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEnvironmentEC2Request",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ environmentId: S.optional(S.String) })).annotate({
-        identifier: "CreateEnvironmentEC2Result",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String,
-          userArn: S.String,
-          permissions: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEnvironmentMembershipRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.String,
-          userId: S.String,
-          userArn: S.String,
-          environmentId: S.String,
-          lastAccess: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "EnvironmentMember" });
-    case 6:
-      return S.suspend(() => S.Struct({ membership: __S(5, __c0, 5) })).annotate({
-        identifier: "CreateEnvironmentMembershipResult",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({ environmentId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -864,7 +812,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEnvironmentResult",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ environmentId: S.String, userArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -872,44 +824,43 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteEnvironmentMembershipRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEnvironmentMembershipResult",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userArn: S.optional(S.String),
           environmentId: S.optional(S.String),
-          permissions: S.optional(__S(11, __c1, 3)),
+          permissions: S.optional(__S(24, __c3, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEnvironmentMembershipsRequest",
       });
-    case 5:
-      return S.Array(__S(5, __c0, 5));
-    case 6:
+    case 2:
+      return S.Array(__S(128, __c16, 0));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          memberships: S.optional(__S(13, __c1, 5)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ memberships: S.optional(__S(26, __c3, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeEnvironmentMembershipsResult",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ environmentIds: __S(15, __c1, 7) }).pipe(
+        S.Struct({ environmentIds: __S(40, __c5, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -933,17 +884,27 @@ function __c2(j: number): any {
           connectionType: S.optional(S.String),
           arn: S.String,
           ownerArn: S.String,
-          lifecycle: S.optional(__S(17, __c2, 1)),
+          lifecycle: S.optional(__S(33, __c4, 1)),
           managedCredentialsStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Environment" });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
-      return S.suspend(() => S.Struct({ environments: S.optional(__S(19, __c2, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ environments: S.optional(__S(35, __c4, 3)) })).annotate({
         identifier: "DescribeEnvironmentsResult",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ environmentId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -951,28 +912,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DescribeEnvironmentStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ status: S.String, message: S.String })).annotate({
         identifier: "DescribeEnvironmentStatusResult",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), environmentIds: S.optional(__S(40, __c5, 0)) }),
+      ).annotate({ identifier: "ListEnvironmentsResult" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          environmentIds: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ListEnvironmentsResult" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -980,25 +942,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(113, __c14, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(113, __c14, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(SensitiveString);
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(28, __c3, 4) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(80, __c10, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String,
@@ -1007,27 +981,90 @@ function __c3(j: number): any {
           managedCredentialsAction: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String,
-          userArn: S.String,
-          permissions: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ environmentId: S.String, userArn: S.String, permissions: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "UpdateEnvironmentMembershipRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ membership: S.optional(__S(5, __c0, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ membership: S.optional(__S(128, __c16, 0)) })).annotate({
         identifier: "UpdateEnvironmentMembershipResult",
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String),
+          instanceType: S.String,
+          subnetId: S.optional(S.String),
+          imageId: S.String,
+          automaticStopTimeMinutes: S.optional(S.Number),
+          ownerArn: S.optional(S.String),
+          tags: S.optional(__S(113, __c14, 1)),
+          connectionType: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentEC2Request",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ environmentId: S.optional(S.String) })).annotate({
+        identifier: "CreateEnvironmentEC2Result",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String, userArn: S.String, permissions: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateEnvironmentMembershipRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ membership: __S(128, __c16, 0) })).annotate({
+        identifier: "CreateEnvironmentMembershipResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.String,
+          userId: S.String,
+          userArn: S.String,
+          environmentId: S.String,
+          lastAccess: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "EnvironmentMember" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

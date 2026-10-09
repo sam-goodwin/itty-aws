@@ -363,8 +363,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateTokenRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateTokenResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationPendingException,
@@ -412,8 +412,8 @@ export const createTokenWithIAM: API.OperationMethod<
   CreateTokenWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateTokenWithIAMRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateTokenWithIAMResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateTokenWithIAMRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<CreateTokenWithIAMResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationPendingException,
@@ -453,8 +453,8 @@ export const registerClient: API.OperationMethod<
   RegisterClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RegisterClientRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RegisterClientResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<RegisterClientRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<RegisterClientResponse>,
   errors: [
     InternalServerException,
     InvalidClientMetadataException,
@@ -486,8 +486,8 @@ export const startDeviceAuthorization: API.OperationMethod<
   StartDeviceAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<StartDeviceAuthorizationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<StartDeviceAuthorizationResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<StartDeviceAuthorizationRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<StartDeviceAuthorizationResponse>,
   errors: [
     InternalServerException,
     InvalidClientException,
@@ -504,8 +504,6 @@ export const startDeviceAuthorization: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
@@ -514,12 +512,12 @@ function __c0(j: number): any {
           deviceCode: S.optional(S.String),
           code: S.optional(S.String),
           refreshToken: S.optional(SensitiveString),
-          scope: S.optional(__S(0, __c0, 0)),
+          scope: S.optional(__S(4, __c1, 0)),
           redirectUri: S.optional(S.String),
           codeVerifier: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/token" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(SensitiveString),
@@ -529,7 +527,17 @@ function __c0(j: number): any {
           idToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "CreateTokenResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
@@ -537,7 +545,7 @@ function __c0(j: number): any {
           code: S.optional(S.String),
           refreshToken: S.optional(SensitiveString),
           assertion: S.optional(SensitiveString),
-          scope: S.optional(__S(0, __c0, 0)),
+          scope: S.optional(__S(4, __c1, 0)),
           redirectUri: S.optional(S.String),
           subjectToken: S.optional(SensitiveString),
           subjectTokenType: S.optional(S.String),
@@ -549,11 +557,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateTokenWithIAMRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ identityContext: S.optional(S.String) })).annotate({
         identifier: "AwsAdditionalDetails",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(SensitiveString),
@@ -562,27 +570,31 @@ function __c0(j: number): any {
           refreshToken: S.optional(SensitiveString),
           idToken: S.optional(SensitiveString),
           issuedTokenType: S.optional(S.String),
-          scope: S.optional(__S(0, __c0, 0)),
-          awsAdditionalDetails: S.optional(__S(4, __c0, 4)),
+          scope: S.optional(__S(4, __c1, 0)),
+          awsAdditionalDetails: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateTokenWithIAMResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientName: S.String,
           clientType: S.String,
-          scopes: S.optional(__S(0, __c0, 0)),
-          redirectUris: S.optional(__S(0, __c0, 0)),
-          grantTypes: S.optional(__S(0, __c0, 0)),
+          scopes: S.optional(__S(4, __c1, 0)),
+          redirectUris: S.optional(__S(4, __c1, 0)),
+          grantTypes: S.optional(__S(4, __c1, 0)),
           issuerUrl: S.optional(S.String),
           entitledApplicationArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/client/register" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RegisterClientRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -595,7 +607,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RegisterClientResponse" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -627,7 +639,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

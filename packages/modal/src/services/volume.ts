@@ -246,8 +246,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -260,8 +260,8 @@ export const listVolume: API.OperationMethod<
   ListVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListVolumeRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListVolumeResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<ListVolumeRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<ListVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -274,8 +274,8 @@ export const renameVolume: API.OperationMethod<
   RenameVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<RenameVolumeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RenameVolumeResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<RenameVolumeRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RenameVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -288,8 +288,8 @@ export const volumeCopyFiles: API.OperationMethod<
   VolumeCopyFilesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<VolumeCopyFilesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeCopyFilesResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<VolumeCopyFilesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeCopyFilesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -302,8 +302,8 @@ export const volumeCopyFiles2: API.OperationMethod<
   VolumeCopyFiles2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<VolumeCopyFiles2Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeCopyFiles2Response>,
+  input: __S(112, __c14, 0) as any as S.Schema<VolumeCopyFiles2Request>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeCopyFiles2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const volumeGetById: API.OperationMethod<
   VolumeGetByIdError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<VolumeGetByIdRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<VolumeGetByIdResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<VolumeGetByIdRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<VolumeGetByIdResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const volumeGetFile: API.OperationMethod<
   VolumeGetFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<VolumeGetFileRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<VolumeGetFileResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<VolumeGetFileRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<VolumeGetFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -344,8 +344,8 @@ export const volumeGetFile2: API.OperationMethod<
   VolumeGetFile2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<VolumeGetFile2Request>,
-  output: __S(20, __c2, 4) as any as S.Schema<VolumeGetFile2Response>,
+  input: __S(136, __c17, 0) as any as S.Schema<VolumeGetFile2Request>,
+  output: __S(137, __c17, 1) as any as S.Schema<VolumeGetFile2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -358,8 +358,8 @@ export const volumeGetOrCreate: API.OperationMethod<
   VolumeGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<VolumeGetOrCreateRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<VolumeGetOrCreateResponse>,
+  input: __S(146, __c18, 2) as any as S.Schema<VolumeGetOrCreateRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<VolumeGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -372,8 +372,8 @@ export const volumeHeartbeat: API.OperationMethod<
   VolumeHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<VolumeHeartbeatRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeHeartbeatResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<VolumeHeartbeatRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const volumePutFiles: API.OperationMethod<
   VolumePutFilesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<VolumePutFilesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumePutFilesResponse>,
+  input: __S(34, __c4, 2) as any as S.Schema<VolumePutFilesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumePutFilesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -400,8 +400,8 @@ export const volumePutFiles2: API.OperationMethod<
   VolumePutFiles2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<VolumePutFiles2Request>,
-  output: __S(36, __c4, 4) as any as S.Schema<VolumePutFiles2Response>,
+  input: __S(44, __c5, 4) as any as S.Schema<VolumePutFiles2Request>,
+  output: __S(47, __c5, 7) as any as S.Schema<VolumePutFiles2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const volumeReload: API.OperationMethod<
   VolumeReloadError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<VolumeReloadRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeReloadResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<VolumeReloadRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeReloadResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -428,8 +428,8 @@ export const volumeRemoveFile: API.OperationMethod<
   VolumeRemoveFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<VolumeRemoveFileRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeRemoveFileResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<VolumeRemoveFileRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeRemoveFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -442,8 +442,8 @@ export const volumeRemoveFile2: API.OperationMethod<
   VolumeRemoveFile2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<VolumeRemoveFile2Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumeRemoveFile2Response>,
+  input: __S(64, __c8, 0) as any as S.Schema<VolumeRemoveFile2Request>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeRemoveFile2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -467,7 +467,11 @@ function __c0(j: number): any {
           skipReload: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CommitVolumeResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -476,176 +480,14 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeDelete", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteVolumeResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxObjects: S.optional(S.Number),
-          createdBefore: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ListPagination" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environmentName: S.optional(S.String),
-          pagination: S.optional(__S(4, __c0, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeList", code: 200 })),
-      ).annotate({ identifier: "ListVolumeRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.Number),
-          createdBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreationInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          name: S.optional(S.String),
-          creationInfo: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "VolumeMetadata" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          volumeId: S.optional(S.String),
-          createdAt: S.optional(S.Number),
-          metadata: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "VolumeListItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(9, __c1, 1)),
-          environmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListVolumeResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeRename", code: 200 }),
-        ),
-      ).annotate({ identifier: "RenameVolumeRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          srcPaths: S.optional(__S(12, __c1, 4)),
-          dstPath: S.optional(S.String),
-          recursive: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeCopyFiles", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeCopyFilesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          srcPaths: S.optional(__S(12, __c1, 4)),
-          dstPath: S.optional(S.String),
-          recursive: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeCopyFiles2", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeCopyFiles2Request" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetById", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeGetByIdRequest" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "VolumeGetByIdResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          path: S.optional(S.String),
-          start: S.optional(S.String),
-          len: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetFile", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeGetFileRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          dataBlobId: S.optional(S.String),
-          size: S.optional(S.String),
-          start: S.optional(S.String),
-          len: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeGetFileResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          path: S.optional(S.String),
-          start: S.optional(S.String),
-          len: S.optional(S.String),
-          clientPadsBlocks: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetFile2", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeGetFile2Request" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          getUrls: S.optional(__S(12, __c1, 4)),
-          size: S.optional(S.String),
-          start: S.optional(S.String),
-          len: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeGetFile2Response" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          experimentalOptions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "VolumeCreateOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentName: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          objectCreationType: S.optional(S.String),
-          appId: S.optional(S.String),
-          version: S.optional(S.String),
-          createOptions: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetOrCreate", code: 200 }),
-        ),
-      ).annotate({ identifier: "VolumeGetOrCreateRequest" });
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteVolumeResponse",
+      });
   }
 }
 function __c3(j: number): any {
@@ -654,21 +496,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          version: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "VolumeGetOrCreateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeHeartbeat", code: 200 }),
         ),
       ).annotate({ identifier: "VolumeHeartbeatRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -677,19 +513,23 @@ function __c3(j: number): any {
           mode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MountFile" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          files: S.optional(__S(27, __c3, 3)),
+          files: S.optional(__S(33, __c4, 1)),
           disallowOverwriteExistingFiles: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumePutFiles", code: 200 }),
         ),
       ).annotate({ identifier: "VolumePutFilesRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentsSha256: S.optional(S.String),
@@ -698,36 +538,32 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "VolumePutFiles2RequestBlock",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           size: S.optional(S.String),
-          blocks: S.optional(__S(30, __c3, 6)),
+          blocks: S.optional(__S(41, __c5, 1)),
           mode: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "VolumePutFiles2RequestFile",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          files: S.optional(__S(32, __c4, 0)),
+          files: S.optional(__S(43, __c5, 3)),
           disallowOverwriteExistingFiles: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumePutFiles2", code: 200 }),
         ),
       ).annotate({ identifier: "VolumePutFiles2Request" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fileIndex: S.optional(S.String),
@@ -737,15 +573,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "VolumePutFiles2ResponseMissingBlock",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(45, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          missingBlocks: S.optional(__S(35, __c4, 3)),
+          missingBlocks: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "VolumePutFiles2Response" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -753,7 +593,11 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeReload", code: 200 }),
         ),
       ).annotate({ identifier: "VolumeReloadRequest" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -763,7 +607,11 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeRemoveFile", code: 200 }),
         ),
       ).annotate({ identifier: "VolumeRemoveFileRequest" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -775,7 +623,214 @@ function __c4(j: number): any {
       ).annotate({ identifier: "VolumeRemoveFile2Request" });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxObjects: S.optional(S.Number),
+          createdBefore: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ListPagination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environmentName: S.optional(S.String),
+          pagination: S.optional(__S(72, __c9, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeList", code: 200 })),
+      ).annotate({ identifier: "ListVolumeRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          volumeId: S.optional(S.String),
+          createdAt: S.optional(S.Number),
+          metadata: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({ identifier: "VolumeListItem" });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(75, __c9, 3)),
+          environmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListVolumeResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.Number),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreationInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          name: S.optional(S.String),
+          creationInfo: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({ identifier: "VolumeMetadata" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeRename", code: 200 }),
+        ),
+      ).annotate({ identifier: "RenameVolumeRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          srcPaths: S.optional(__S(104, __c13, 0)),
+          dstPath: S.optional(S.String),
+          recursive: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeCopyFiles", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeCopyFilesRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          srcPaths: S.optional(__S(104, __c13, 0)),
+          dstPath: S.optional(S.String),
+          recursive: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeCopyFiles2", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeCopyFiles2Request" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetById", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeGetByIdRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          metadata: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({ identifier: "VolumeGetByIdResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          path: S.optional(S.String),
+          start: S.optional(S.String),
+          len: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetFile", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeGetFileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          dataBlobId: S.optional(S.String),
+          size: S.optional(S.String),
+          start: S.optional(S.String),
+          len: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeGetFileResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          path: S.optional(S.String),
+          start: S.optional(S.String),
+          len: S.optional(S.String),
+          clientPadsBlocks: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetFile2", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeGetFile2Request" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          getUrls: S.optional(__S(104, __c13, 0)),
+          size: S.optional(S.String),
+          start: S.optional(S.String),
+          len: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeGetFile2Response" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          experimentalOptions: S.optional(__S(144, __c18, 0)),
+        }),
+      ).annotate({ identifier: "VolumeCreateOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentName: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          objectCreationType: S.optional(S.String),
+          appId: S.optional(S.String),
+          version: S.optional(S.String),
+          createOptions: S.optional(__S(145, __c18, 1)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetOrCreate", code: 200 }),
+        ),
+      ).annotate({ identifier: "VolumeGetOrCreateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          version: S.optional(S.String),
+          metadata: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "VolumeGetOrCreateResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

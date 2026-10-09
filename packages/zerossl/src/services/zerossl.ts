@@ -1120,7 +1120,7 @@ export const cancelCertificate: API.OperationMethod<
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelCertificateResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelCertificateResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1190,8 +1190,8 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCertificateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCertificateResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateCertificateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateCertificateResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1261,8 +1261,8 @@ export const downloadCertificateInline: API.OperationMethod<
   DownloadCertificateInlineError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DownloadCertificateInlineRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DownloadCertificateInlineResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DownloadCertificateInlineRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DownloadCertificateInlineResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1301,8 +1301,8 @@ export const generateEabCredentials: API.OperationMethod<
   GenerateEabCredentialsError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GenerateEabCredentialsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<EabCredentials>,
+  input: __S(56, __c7, 0) as any as S.Schema<GenerateEabCredentialsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<EabCredentials>,
   errors: [
     InvalidAccessKey,
     FailedCreatingEabAccount,
@@ -1339,8 +1339,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetCertificateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCertificateResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetCertificateResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1385,8 +1385,8 @@ export const getVerificationStatus: API.OperationMethod<
   GetVerificationStatusError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetVerificationStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetVerificationStatusResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetVerificationStatusRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetVerificationStatusResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1431,8 +1431,8 @@ export const listCertificates: API.OperationMethod<
   ListCertificatesError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListCertificatesResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListCertificatesRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<ListCertificatesResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1477,8 +1477,8 @@ export const resendVerification: API.OperationMethod<
   ResendVerificationError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ResendVerificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResendVerificationResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ResendVerificationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ResendVerificationResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1528,8 +1528,8 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<RevokeCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RevokeCertificateResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<RevokeCertificateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RevokeCertificateResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1578,8 +1578,8 @@ export const validateCsr: API.OperationMethod<
   ValidateCsrError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ValidateCsrRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ValidateCsrResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ValidateCsrRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ValidateCsrResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1640,8 +1640,8 @@ export const verifyDomains: API.OperationMethod<
   VerifyDomainsError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<VerifyDomainsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<VerifyDomainsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<VerifyDomainsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<VerifyDomainsResponse>,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1688,7 +1688,11 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/certificates/{id}/cancel", code: 200 })),
       ).annotate({ identifier: "CancelCertificateRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           success: S.Number,
@@ -1696,7 +1700,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelCertificateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificate_domains: S.String,
@@ -1706,39 +1714,6 @@ function __c0(j: number): any {
           replacement_for_certificate: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
       ).annotate({ identifier: "CreateCertificateRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          file_validation_url_http: S.String,
-          file_validation_url_https: S.String,
-          file_validation_content: __S(5, __c0, 5),
-          cname_validation_p1: S.String,
-          cname_validation_p2: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateCertificateResponseValidationOtherMethodsValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email_validation: __S(4, __c0, 4),
-          other_methods: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "CreateCertificateResponseValidation",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1755,12 +1730,57 @@ function __c1(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.optional(S.NullOr(S.String)),
-          validation: __S(8, __c1, 0),
+          validation: __S(27, __c3, 3),
         }),
       ).annotate({
         identifier: "CreateCertificateResponse",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(40, __c5, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          file_validation_url_http: S.String,
+          file_validation_url_https: S.String,
+          file_validation_content: __S(32, __c4, 0),
+          cname_validation_p1: S.String,
+          cname_validation_p2: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCertificateResponseValidationOtherMethodsValue",
+      });
     case 2:
+      return S.Record(S.String, __S(25, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          email_validation: __S(24, __c3, 0),
+          other_methods: __S(26, __c3, 2),
+        }),
+      ).annotate({
+        identifier: "CreateCertificateResponseValidation",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1769,7 +1789,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DownloadCertificateInlineRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           "certificate.crt": S.String,
@@ -1778,13 +1798,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DownloadCertificateInlineResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/acme/eab-credentials", code: 200 })),
       ).annotate({
         identifier: "GenerateEabCredentialsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
@@ -1792,13 +1816,17 @@ function __c1(j: number): any {
           eab_hmac_key: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "EabCredentials" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/certificates/{id}", code: 200 })),
       ).annotate({ identifier: "GetCertificateRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1814,12 +1842,12 @@ function __c1(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.String,
-          validation: __S(8, __c1, 0),
+          validation: __S(27, __c3, 3),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1839,52 +1867,52 @@ function __c2(j: number): any {
         identifier: "GetVerificationStatusResponseDetailsValue",
       });
     case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
+      return S.Record(S.String, __S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           validation_completed: S.Number,
-          details: __S(18, __c2, 2),
+          details: __S(74, __c9, 2),
         }),
       ).annotate({
         identifier: "GetVerificationStatusResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificate_status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
       ).annotate({ identifier: "ListCertificatesRequest" });
-    case 5:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 6:
+    case 1:
+      return S.Record(S.String, __S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           file_validation_url_http: S.String,
           file_validation_url_https: S.String,
-          file_validation_content: __S(5, __c0, 5),
+          file_validation_content: __S(32, __c4, 0),
           cname_validation_p1: S.String,
           cname_validation_p2: S.String,
         }),
       ).annotate({
         identifier: "ListCertificatesResponseResultsItemValidationOtherMethodsValue",
       });
-    case 7:
-      return S.Record(S.String, __S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Record(S.String, __S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          email_validation: __S(21, __c2, 5),
-          other_methods: __S(23, __c2, 7),
+          email_validation: __S(81, __c10, 1),
+          other_methods: __S(83, __c10, 3),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseResultsItemValidation",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1900,14 +1928,14 @@ function __c3(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.String,
-          validation: __S(24, __c3, 0),
+          validation: __S(84, __c10, 4),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseResultsItem",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(85, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
@@ -1916,10 +1944,14 @@ function __c3(j: number): any {
           limit: S.Number,
           acmeUsageLevel: S.String,
           isAcmeLocked: S.Boolean,
-          results: __S(26, __c3, 2),
+          results: __S(86, __c10, 6),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1927,30 +1959,38 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ResendVerificationRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           reason: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/certificates/{id}/revoke", code: 200 })),
       ).annotate({ identifier: "RevokeCertificateRequest" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           csr: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/validation/csr", code: 200 })),
       ).annotate({ identifier: "ValidateCsrRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
           error: S.optional(S.NullOr(S.String)),
-          csrResponse: __S(3, __c0, 3),
+          csrResponse: __S(40, __c5, 0),
         }),
       ).annotate({ identifier: "ValidateCsrResponse" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1973,15 +2013,15 @@ function __c4(j: number): any {
         identifier: "VerifyDomainsResponseErrorDetailsValueValue",
       });
     case 2:
-      return S.Record(S.String, __S(33, __c4, 1));
+      return S.Record(S.String, __S(113, __c14, 1));
     case 3:
-      return S.Record(S.String, __S(34, __c4, 2));
+      return S.Record(S.String, __S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.Number,
           type: S.String,
-          details: __S(35, __c4, 3),
+          details: __S(115, __c14, 3),
         }),
       ).annotate({
         identifier: "VerifyDomainsResponseError",
@@ -1990,12 +2030,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          error: __S(36, __c4, 4),
+          error: __S(116, __c14, 4),
         }),
       ).annotate({ identifier: "VerifyDomainsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

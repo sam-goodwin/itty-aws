@@ -74,7 +74,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(77, __c9, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(97, __c12, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -596,8 +596,8 @@ export const batchGetMemberAccountDetails: API.OperationMethod<
   BatchGetMemberAccountDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetMemberAccountDetailsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchGetMemberAccountDetailsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<BatchGetMemberAccountDetailsRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<BatchGetMemberAccountDetailsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -614,8 +614,8 @@ export const cancelMembership: API.OperationMethod<
   CancelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CancelMembershipRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CancelMembershipResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<CancelMembershipRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<CancelMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -632,8 +632,8 @@ export const closeCase: API.OperationMethod<
   CloseCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CloseCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CloseCaseResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CloseCaseRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<CloseCaseResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -650,8 +650,8 @@ export const createCase: API.OperationMethod<
   CreateCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateCaseRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateCaseResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateCaseRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<CreateCaseResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -668,8 +668,8 @@ export const createCaseComment: API.OperationMethod<
   CreateCaseCommentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateCaseCommentRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateCaseCommentResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateCaseCommentRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<CreateCaseCommentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -686,8 +686,8 @@ export const createMembership: API.OperationMethod<
   CreateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateMembershipRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateMembershipResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateMembershipRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<CreateMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -704,8 +704,8 @@ export const getCase: API.OperationMethod<
   GetCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetCaseRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetCaseResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetCaseRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<GetCaseResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -722,8 +722,8 @@ export const getCaseAttachmentDownloadUrl: API.OperationMethod<
   GetCaseAttachmentDownloadUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetCaseAttachmentDownloadUrlRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetCaseAttachmentDownloadUrlResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCaseAttachmentDownloadUrlRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCaseAttachmentDownloadUrlResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -740,8 +740,8 @@ export const getCaseAttachmentUploadUrl: API.OperationMethod<
   GetCaseAttachmentUploadUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetCaseAttachmentUploadUrlRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetCaseAttachmentUploadUrlResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetCaseAttachmentUploadUrlRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCaseAttachmentUploadUrlResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -758,8 +758,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetMembershipRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetMembershipResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetMembershipRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -777,8 +777,8 @@ export const listCaseEdits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CaseEditItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListCaseEditsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListCaseEditsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListCaseEditsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListCaseEditsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -802,8 +802,8 @@ export const listCases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListCasesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListCasesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListCasesResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListCasesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListCasesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -852,8 +852,8 @@ export const listInvestigations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InvestigationAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListInvestigationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListInvestigationsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListInvestigationsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListInvestigationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -877,8 +877,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListMembershipItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListMembershipsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListMembershipsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListMembershipsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListMembershipsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -905,8 +905,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(73, __c9, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -923,8 +923,8 @@ export const sendFeedback: API.OperationMethod<
   SendFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<SendFeedbackRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SendFeedbackResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<SendFeedbackRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<SendFeedbackResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -945,8 +945,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(88, __c11, 0) as any as S.Schema<TagResourceOutput>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -967,8 +967,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(88, __c11, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -985,8 +985,8 @@ export const updateCase: API.OperationMethod<
   UpdateCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UpdateCaseRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateCaseResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateCaseRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateCaseResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1003,8 +1003,8 @@ export const updateCaseComment: API.OperationMethod<
   UpdateCaseCommentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UpdateCaseCommentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<UpdateCaseCommentResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateCaseCommentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<UpdateCaseCommentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1041,8 +1041,8 @@ export const updateCaseStatus: API.OperationMethod<
   UpdateCaseStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateCaseStatusRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UpdateCaseStatusResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateCaseStatusRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<UpdateCaseStatusResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1059,8 +1059,8 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateMembershipRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateMembershipResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<UpdateMembershipRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1079,8 +1079,8 @@ export const updateResolverType: API.OperationMethod<
   UpdateResolverTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateResolverTypeRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<UpdateResolverTypeResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<UpdateResolverTypeRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<UpdateResolverTypeResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1091,264 +1091,6 @@ export const updateResolverType: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          membershipId: S.String.pipe(T.HttpLabel("membershipId")),
-          accountIds: __S(0, __c0, 0),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/membership/{membershipId}/batch-member-details" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetMemberAccountDetailsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          relationshipStatus: S.optional(S.String),
-          relationshipType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetMembershipAccountDetailItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ accountId: S.String, error: S.String, message: S.String }),
-      ).annotate({
-        identifier: "GetMembershipAccountDetailError",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(3, __c0, 3)),
-          errors: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchGetMemberAccountDetailsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ membershipId: S.String.pipe(T.HttpLabel("membershipId")) }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/membership/{membershipId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CancelMembershipRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ membershipId: S.String })).annotate({
-        identifier: "CancelMembershipResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/cases/{caseId}/close-case" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CloseCaseRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          caseStatus: S.optional(S.String),
-          closedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "CloseCaseResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email: SensitiveString,
-          name: S.optional(SensitiveString),
-          jobTitle: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Watcher" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ipAddress: SensitiveString, userAgent: S.optional(S.String) }),
-      ).annotate({ identifier: "ThreatActorIp" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ region: S.String })).annotate({
-        identifier: "ImpactedAwsRegion",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          resolverType: S.String,
-          title: SensitiveString,
-          description: SensitiveString,
-          engagementType: S.String,
-          reportedIncidentStartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          impactedAccounts: __S(0, __c0, 0),
-          watchers: __S(12, __c1, 4),
-          threatActorIpAddresses: S.optional(__S(14, __c1, 6)),
-          impactedServices: S.optional(__S(0, __c0, 0)),
-          impactedAwsRegions: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v1/create-case" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateCaseRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ caseId: S.String })).annotate({
-        identifier: "CreateCaseResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          caseId: S.String.pipe(T.HttpLabel("caseId")),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          body: SensitiveString,
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/cases/{caseId}/create-comment" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateCaseCommentRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ commentId: S.String })).annotate({
-        identifier: "CreateCaseCommentResponse",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: SensitiveString,
-          jobTitle: SensitiveString,
-          email: SensitiveString,
-          communicationPreferences: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "IncidentResponder" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ featureName: S.String, isEnabled: S.Boolean })).annotate({
-        identifier: "OptInFeature",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          membershipName: SensitiveString,
-          incidentResponseTeam: __S(24, __c3, 0),
-          optInFeatures: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(17, __c2, 1)),
-          coverEntireOrganization: S.optional(S.Boolean),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v1/membership" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateMembershipRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/v1/cases/{caseId}/get-case" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetCaseRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attachmentId: S.String,
-          fileName: SensitiveString,
-          attachmentStatus: S.String,
-          creator: S.String,
-          createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "CaseAttachmentAttributes" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "CaseMetadataEntry",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(SensitiveString),
-          caseArn: S.optional(S.String),
-          description: S.optional(SensitiveString),
-          caseStatus: S.optional(S.String),
-          engagementType: S.optional(S.String),
-          reportedIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          actualIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          impactedAwsRegions: S.optional(__S(16, __c2, 0)),
-          threatActorIpAddresses: S.optional(__S(14, __c1, 6)),
-          pendingAction: S.optional(S.String),
-          impactedAccounts: S.optional(__S(0, __c0, 0)),
-          watchers: S.optional(__S(12, __c1, 4)),
-          createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          closureCode: S.optional(S.String),
-          resolverType: S.optional(S.String),
-          impactedServices: S.optional(__S(0, __c0, 0)),
-          caseAttachments: S.optional(__S(30, __c3, 6)),
-          closedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          caseMetadata: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "GetCaseResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1366,11 +1108,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCaseAttachmentDownloadUrlRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ attachmentPresignedUrl: SensitiveString })).annotate({
         identifier: "GetCaseAttachmentDownloadUrlResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1390,7 +1140,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCaseAttachmentUploadUrlRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ membershipId: S.String.pipe(T.HttpLabel("membershipId")) }).pipe(
           T.all(
@@ -1403,16 +1157,16 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMembershipRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           coverEntireOrganization: S.optional(S.Boolean),
-          organizationalUnits: S.optional(__S(0, __c0, 0)),
+          organizationalUnits: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({
         identifier: "MembershipAccountsConfigurations",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String,
@@ -1429,14 +1183,14 @@ function __c4(j: number): any {
           ),
           customerType: S.optional(S.String),
           numberOfAccountsCovered: S.optional(S.Number),
-          incidentResponseTeam: S.optional(__S(24, __c3, 0)),
-          optInFeatures: S.optional(__S(26, __c3, 2)),
-          membershipAccountsConfigurations: S.optional(__S(38, __c4, 6)),
+          incidentResponseTeam: S.optional(__S(242, __c30, 2)),
+          optInFeatures: S.optional(__S(244, __c30, 4)),
+          membershipAccountsConfigurations: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "GetMembershipResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1465,22 +1219,26 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "CaseEditItem" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(__S(42, __c5, 2)),
+          items: S.optional(__S(34, __c4, 2)),
           total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListCaseEditsResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/list-cases" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCasesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String,
@@ -1495,13 +1253,13 @@ function __c5(j: number): any {
           pendingAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCasesItem" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(__S(46, __c5, 6)),
+          items: S.optional(__S(42, __c5, 2)),
           total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListCasesResponse" });
@@ -1547,7 +1305,11 @@ function __c6(j: number): any {
           total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListCommentsResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1566,7 +1328,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListInvestigationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           usefulness: S.optional(S.String),
@@ -1574,7 +1336,7 @@ function __c6(j: number): any {
           submittedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "InvestigationFeedback" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           investigationId: S.String,
@@ -1583,31 +1345,28 @@ function __c6(j: number): any {
           content: S.String,
           status: S.String,
           lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          feedback: S.optional(__S(53, __c6, 5)),
+          feedback: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "InvestigationAction" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          investigationActions: __S(55, __c6, 7),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), investigationActions: __S(59, __c7, 3) }),
       ).annotate({
         identifier: "ListInvestigationsResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/memberships" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMembershipsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String,
@@ -1617,13 +1376,17 @@ function __c7(j: number): any {
           membershipStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMembershipItem" });
+    case 2:
+      return S.Array(__S(65, __c8, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(59, __c7, 3)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(66, __c8, 2)) }),
       ).annotate({ identifier: "ListMembershipsResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1636,11 +1399,15 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ tags: __S(17, __c2, 1) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: __S(208, __c26, 0) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1660,17 +1427,31 @@ function __c7(j: number): any {
       ).annotate({ identifier: "SendFeedbackRequest" });
   }
 }
-function __c8(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SendFeedbackResponse",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
     case 1:
+      return S.Array(__S(96, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(17, __c2, 1),
+          tags: __S(208, __c26, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceArn}" }),
@@ -1682,11 +1463,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(168, __c21, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{resourceArn}" }),
@@ -1698,7 +1483,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1707,17 +1496,17 @@ function __c8(j: number): any {
           reportedIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           actualIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           engagementType: S.optional(S.String),
-          watchersToAdd: S.optional(__S(12, __c1, 4)),
-          watchersToDelete: S.optional(__S(12, __c1, 4)),
-          threatActorIpAddressesToAdd: S.optional(__S(14, __c1, 6)),
-          threatActorIpAddressesToDelete: S.optional(__S(14, __c1, 6)),
-          impactedServicesToAdd: S.optional(__S(0, __c0, 0)),
-          impactedServicesToDelete: S.optional(__S(0, __c0, 0)),
-          impactedAwsRegionsToAdd: S.optional(__S(16, __c2, 0)),
-          impactedAwsRegionsToDelete: S.optional(__S(16, __c2, 0)),
-          impactedAccountsToAdd: S.optional(__S(0, __c0, 0)),
-          impactedAccountsToDelete: S.optional(__S(0, __c0, 0)),
-          caseMetadata: S.optional(__S(32, __c4, 0)),
+          watchersToAdd: S.optional(__S(217, __c27, 1)),
+          watchersToDelete: S.optional(__S(217, __c27, 1)),
+          threatActorIpAddressesToAdd: S.optional(__S(219, __c27, 3)),
+          threatActorIpAddressesToDelete: S.optional(__S(219, __c27, 3)),
+          impactedServicesToAdd: S.optional(__S(168, __c21, 0)),
+          impactedServicesToDelete: S.optional(__S(168, __c21, 0)),
+          impactedAwsRegionsToAdd: S.optional(__S(221, __c27, 5)),
+          impactedAwsRegionsToDelete: S.optional(__S(221, __c27, 5)),
+          impactedAccountsToAdd: S.optional(__S(168, __c21, 0)),
+          impactedAccountsToDelete: S.optional(__S(168, __c21, 0)),
+          caseMetadata: S.optional(__S(257, __c32, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/cases/{caseId}/update-case" }),
@@ -1729,7 +1518,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateCaseRequest" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1746,13 +1539,17 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateCaseCommentRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ commentId: S.String, body: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "UpdateCaseCommentResponse",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String.pipe(T.HttpLabel("caseId")),
@@ -1768,20 +1565,20 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateCaseStatusRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ caseStatus: S.optional(S.String) })).annotate({
         identifier: "UpdateCaseStatusResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           coverEntireOrganization: S.optional(S.Boolean),
-          organizationalUnitsToAdd: S.optional(__S(0, __c0, 0)),
-          organizationalUnitsToRemove: S.optional(__S(0, __c0, 0)),
+          organizationalUnitsToAdd: S.optional(__S(168, __c21, 0)),
+          organizationalUnitsToRemove: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({
         identifier: "MembershipAccountsConfigurationsUpdate",
@@ -1791,9 +1588,9 @@ function __c9(j: number): any {
         S.Struct({
           membershipId: S.String.pipe(T.HttpLabel("membershipId")),
           membershipName: S.optional(SensitiveString),
-          incidentResponseTeam: S.optional(__S(24, __c3, 0)),
-          optInFeatures: S.optional(__S(26, __c3, 2)),
-          membershipAccountsConfigurationsUpdate: S.optional(__S(72, __c9, 0)),
+          incidentResponseTeam: S.optional(__S(242, __c30, 2)),
+          optInFeatures: S.optional(__S(244, __c30, 4)),
+          membershipAccountsConfigurationsUpdate: S.optional(__S(144, __c18, 0)),
           undoMembershipCancellation: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -1806,7 +1603,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateMembershipRequest" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")), resolverType: S.String }).pipe(
           T.all(
@@ -1821,7 +1622,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateResolverTypeRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           caseId: S.String,
@@ -1831,15 +1632,302 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateResolverTypeResponse",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipId: S.String.pipe(T.HttpLabel("membershipId")),
+          accountIds: __S(168, __c21, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/membership/{membershipId}/batch-member-details" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetMemberAccountDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          relationshipStatus: S.optional(S.String),
+          relationshipType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetMembershipAccountDetailItem",
+      });
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ accountId: S.String, error: S.String, message: S.String }),
+      ).annotate({
+        identifier: "GetMembershipAccountDetailError",
+      });
+    case 4:
+      return S.Array(__S(163, __c20, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(162, __c20, 2)),
+          errors: S.optional(__S(164, __c20, 4)),
+        }),
+      ).annotate({
+        identifier: "BatchGetMemberAccountDetailsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ membershipId: S.String.pipe(T.HttpLabel("membershipId")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/membership/{membershipId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelMembershipRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ membershipId: S.String })).annotate({
+        identifier: "CancelMembershipResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/cases/{caseId}/close-case" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CloseCaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          caseStatus: S.optional(S.String),
+          closedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "CloseCaseResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          resolverType: S.String,
+          title: SensitiveString,
+          description: SensitiveString,
+          engagementType: S.String,
+          reportedIncidentStartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          impactedAccounts: __S(168, __c21, 0),
+          watchers: __S(217, __c27, 1),
+          threatActorIpAddresses: S.optional(__S(219, __c27, 3)),
+          impactedServices: S.optional(__S(168, __c21, 0)),
+          impactedAwsRegions: S.optional(__S(221, __c27, 5)),
+          tags: S.optional(__S(208, __c26, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/create-case" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateCaseRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ caseId: S.String })).annotate({
+        identifier: "CreateCaseResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: SensitiveString,
+          name: S.optional(SensitiveString),
+          jobTitle: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Watcher" });
+    case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ipAddress: SensitiveString, userAgent: S.optional(S.String) }),
+      ).annotate({ identifier: "ThreatActorIp" });
+    case 3:
+      return S.Array(__S(218, __c27, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ region: S.String })).annotate({
+        identifier: "ImpactedAwsRegion",
+      });
+    case 5:
+      return S.Array(__S(220, __c27, 4));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          caseId: S.String.pipe(T.HttpLabel("caseId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          body: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/cases/{caseId}/create-comment" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateCaseCommentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ commentId: S.String })).annotate({
+        identifier: "CreateCaseCommentResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          membershipName: SensitiveString,
+          incidentResponseTeam: __S(242, __c30, 2),
+          optInFeatures: S.optional(__S(244, __c30, 4)),
+          tags: S.optional(__S(208, __c26, 0)),
+          coverEntireOrganization: S.optional(S.Boolean),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/membership" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateMembershipRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          jobTitle: SensitiveString,
+          email: SensitiveString,
+          communicationPreferences: S.optional(__S(240, __c30, 0)),
+        }),
+      ).annotate({ identifier: "IncidentResponder" });
+    case 2:
+      return S.Array(__S(241, __c30, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ featureName: S.String, isEnabled: S.Boolean })).annotate({
+        identifier: "OptInFeature",
+      });
+    case 4:
+      return S.Array(__S(243, __c30, 3));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/cases/{caseId}/get-case" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attachmentId: S.String,
+          fileName: SensitiveString,
+          attachmentStatus: S.String,
+          creator: S.String,
+          createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "CaseAttachmentAttributes" });
+    case 2:
+      return S.Array(__S(249, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(SensitiveString),
+          caseArn: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          caseStatus: S.optional(S.String),
+          engagementType: S.optional(S.String),
+          reportedIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          actualIncidentStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          impactedAwsRegions: S.optional(__S(221, __c27, 5)),
+          threatActorIpAddresses: S.optional(__S(219, __c27, 3)),
+          pendingAction: S.optional(S.String),
+          impactedAccounts: S.optional(__S(168, __c21, 0)),
+          watchers: S.optional(__S(217, __c27, 1)),
+          createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          closureCode: S.optional(S.String),
+          resolverType: S.optional(S.String),
+          impactedServices: S.optional(__S(168, __c21, 0)),
+          caseAttachments: S.optional(__S(250, __c31, 2)),
+          closedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          caseMetadata: S.optional(__S(257, __c32, 1)),
+        }),
+      ).annotate({ identifier: "GetCaseResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "CaseMetadataEntry",
+      });
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

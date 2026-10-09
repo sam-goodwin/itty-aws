@@ -408,8 +408,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(104, __c13, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -428,8 +428,8 @@ export const createProjectsLocationsNodes: API.OperationMethod<
   CreateProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateProjectsLocationsNodesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateProjectsLocationsNodesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const deleteProjectsLocationsNodes: API.OperationMethod<
   DeleteProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteProjectsLocationsNodesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteProjectsLocationsNodesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -483,8 +483,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Location>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -498,8 +498,8 @@ export const getProjectsLocationsAcceleratorTypes: API.OperationMethod<
   GetProjectsLocationsAcceleratorTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AcceleratorType>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<AcceleratorType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const getProjectsLocationsNodes: API.OperationMethod<
   GetProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetProjectsLocationsNodesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Node>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsNodesRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<Node>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -543,8 +543,8 @@ export const getProjectsLocationsTensorflowVersions: API.OperationMethod<
   GetProjectsLocationsTensorflowVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetProjectsLocationsTensorflowVersionsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<TensorFlowVersion>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetProjectsLocationsTensorflowVersionsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TensorFlowVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListLocationsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod
   GcpOpContext,
   ListAcceleratorTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListAcceleratorTypesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListAcceleratorTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const listProjectsLocationsNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListProjectsLocationsNodesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListNodesResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListProjectsLocationsNodesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListNodesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -610,8 +610,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const listProjectsLocationsTensorflowVersions: API.PaginatedOperationMeth
   GcpOpContext,
   ListTensorFlowVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListTensorFlowVersionsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListTensorFlowVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const reimageProjectsLocationsNodes: API.OperationMethod<
   ReimageProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ReimageProjectsLocationsNodesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(81, __c10, 1) as any as S.Schema<ReimageProjectsLocationsNodesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const startProjectsLocationsNodes: API.OperationMethod<
   StartProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<StartProjectsLocationsNodesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(88, __c11, 0) as any as S.Schema<StartProjectsLocationsNodesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const stopProjectsLocationsNodes: API.OperationMethod<
   StopProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<StopProjectsLocationsNodesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(96, __c12, 0) as any as S.Schema<StopProjectsLocationsNodesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -704,47 +704,14 @@ function __c0(j: number): any {
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+name}:cancel",
+            method: "GET",
+            uri: "v1alpha1/{+name}",
             baseUrl: "https://tpu.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
+        identifier: "GetProjectsLocationsNodesRequest",
       });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkEndpoint" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reserved: S.optional(S.Boolean),
-          preemptible: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SchedulingConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(S.String),
-          createTime: S.optional(S.String),
-          symptomType: S.optional(S.String),
-          workerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Symptom" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -752,94 +719,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(2, __c0, 2)),
-          state: S.optional(S.String),
-          networkEndpoints: S.optional(__S(4, __c0, 4)),
-          schedulingConfig: S.optional(__S(5, __c0, 5)),
-          useServiceNetworking: S.optional(S.Boolean),
-          acceleratorType: S.optional(S.String),
-          name: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          health: S.optional(S.String),
-          symptoms: S.optional(__S(7, __c0, 7)),
-          port: S.optional(S.String),
-          healthDescription: S.optional(S.String),
-          createTime: S.optional(S.String),
-          cidrBlock: S.optional(S.String),
-          apiVersion: S.optional(S.String),
-          network: S.optional(S.String),
-          tensorflowVersion: S.optional(S.String),
-          description: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Node" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          nodeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/nodes",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsNodesRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(11, __c1, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(10, __c1, 2)),
-          metadata: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          error: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
-            method: "DELETE",
+            method: "GET",
             uri: "v1alpha1/{+name}",
             baseUrl: "https://tpu.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "DeleteProjectsLocationsNodesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
+        identifier: "GetProjectsLocationsOperationsRequest",
       });
   }
 }
@@ -857,82 +746,13 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAcceleratorTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AcceleratorType" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNodesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://tpu.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "GetProjectsLocationsTensorflowVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -941,18 +761,16 @@ function __c2(j: number): any {
       ).annotate({ identifier: "TensorFlowVersion" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(40, __c5, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -963,16 +781,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
+    case 1:
+      return S.Array(__S(184, __c23, 0));
     case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(26, __c3, 2)),
+          locations: S.optional(__S(33, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -990,19 +818,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAcceleratorTypesRequest",
       });
-    case 5:
-      return S.Array(__S(19, __c2, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          acceleratorTypes: S.optional(__S(29, __c3, 5)),
-          unreachable: S.optional(__S(24, __c3, 0)),
+          acceleratorTypes: S.optional(__S(49, __c6, 1)),
+          unreachable: S.optional(__S(40, __c5, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAcceleratorTypesResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1018,21 +850,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNodesRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(8, __c1, 0));
     case 1:
+      return S.Array(__S(133, __c16, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(__S(32, __c4, 0)),
-          unreachable: S.optional(__S(24, __c3, 0)),
+          nodes: S.optional(__S(57, __c7, 1)),
+          unreachable: S.optional(__S(40, __c5, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNodesResponse" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1050,17 +882,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(13, __c1, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(138, __c17, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(35, __c4, 3)),
+          operations: S.optional(__S(65, __c8, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(24, __c3, 0)),
+          unreachable: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1078,21 +914,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTensorflowVersionsRequest",
       });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(24, __c3, 0)),
-          tensorflowVersions: S.optional(__S(38, __c4, 6)),
+          unreachable: S.optional(__S(40, __c5, 0)),
+          tensorflowVersions: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "ListTensorFlowVersionsResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1104,7 +940,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1115,11 +951,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReimageProjectsLocationsNodesRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1130,11 +970,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StartProjectsLocationsNodesRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1147,7 +991,242 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+name}:cancel",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          nodeId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(133, __c16, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/nodes",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsNodesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkEndpoint" });
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reserved: S.optional(S.Boolean),
+          preemptible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SchedulingConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(S.String),
+          createTime: S.optional(S.String),
+          symptomType: S.optional(S.String),
+          workerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Symptom" });
+    case 4:
+      return S.Array(__S(131, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(152, __c19, 0)),
+          state: S.optional(S.String),
+          networkEndpoints: S.optional(__S(129, __c16, 1)),
+          schedulingConfig: S.optional(__S(130, __c16, 2)),
+          useServiceNetworking: S.optional(S.Boolean),
+          acceleratorType: S.optional(S.String),
+          name: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          health: S.optional(S.String),
+          symptoms: S.optional(__S(132, __c16, 4)),
+          port: S.optional(S.String),
+          healthDescription: S.optional(S.String),
+          createTime: S.optional(S.String),
+          cidrBlock: S.optional(S.String),
+          apiVersion: S.optional(S.String),
+          network: S.optional(S.String),
+          tensorflowVersion: S.optional(S.String),
+          description: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Node" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(144, __c18, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(136, __c17, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(144, __c18, 0)),
+          metadata: S.optional(__S(144, __c18, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(137, __c17, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsNodesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(152, __c19, 0)),
+          metadata: S.optional(__S(144, __c18, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          locationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://tpu.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAcceleratorTypesRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcceleratorType" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

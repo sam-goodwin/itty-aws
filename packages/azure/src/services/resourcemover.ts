@@ -639,8 +639,8 @@ export const CommitMoveCollection: API.OperationMethod<
   CommitMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CommitMoveCollectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(0, __c0, 0) as any as S.Schema<CommitMoveCollectionRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -654,8 +654,8 @@ export const CreateMoveCollection: API.OperationMethod<
   CreateMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateMoveCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
+  input: __S(49, __c3, 1) as any as S.Schema<CreateMoveCollectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -669,8 +669,8 @@ export const CreateMoveResource: API.OperationMethod<
   CreateMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateMoveResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MoveResource>,
+  input: __S(257, __c16, 1) as any as S.Schema<CreateMoveResourceRequest>,
+  output: __S(282, __c17, 10) as any as S.Schema<MoveResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -684,8 +684,8 @@ export const DeleteMoveCollection: API.OperationMethod<
   DeleteMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteMoveCollectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteMoveCollectionRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -699,8 +699,8 @@ export const DeleteMoveResource: API.OperationMethod<
   DeleteMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteMoveResourceRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteMoveResourceRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -714,8 +714,8 @@ export const GetMoveCollection: API.OperationMethod<
   GetMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetMoveCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetMoveCollectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const GetMoveResource: API.OperationMethod<
   GetMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetMoveResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MoveResource>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetMoveResourceRequest>,
+  output: __S(282, __c17, 10) as any as S.Schema<MoveResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const GetOperationsDiscovery: API.OperationMethod<
   GetOperationsDiscoveryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetOperationsDiscoveryRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<OperationsDiscoveryCollection>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetOperationsDiscoveryRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<OperationsDiscoveryCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const GetUnresolvedDependency: API.OperationMethod<
   GetUnresolvedDependencyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetUnresolvedDependencyRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UnresolvedDependencyCollection>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetUnresolvedDependencyRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<UnresolvedDependencyCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const ListMoveCollectionRequiredFor: API.OperationMethod<
   ListMoveCollectionRequiredForError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListMoveCollectionRequiredForRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<RequiredForResourcesCollection>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListMoveCollectionRequiredForRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<RequiredForResourcesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const ListMoveResources: API.OperationMethod<
   ListMoveResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListMoveResourcesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<MoveResourceCollection>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListMoveResourcesRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<MoveResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -803,8 +803,8 @@ export const MoveCollectionsBulkRemove: API.OperationMethod<
   MoveCollectionsBulkRemoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<MoveCollectionsBulkRemoveRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(112, __c7, 0) as any as S.Schema<MoveCollectionsBulkRemoveRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const MoveCollectionsDiscard: API.OperationMethod<
   MoveCollectionsDiscardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<MoveCollectionsDiscardRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(128, __c8, 0) as any as S.Schema<MoveCollectionsDiscardRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const MoveCollectionsInitiateMove: API.OperationMethod<
   MoveCollectionsInitiateMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<MoveCollectionsInitiateMoveRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(144, __c9, 0) as any as S.Schema<MoveCollectionsInitiateMoveRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -849,11 +849,11 @@ export const MoveCollectionsListMoveCollectionsByResourceGroup: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<MoveCollectionResultList>,
+  output: __S(177, __c11, 1) as any as S.Schema<MoveCollectionResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -868,11 +868,11 @@ export const MoveCollectionsListMoveCollectionsBySubscription: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    192,
+    __c12,
+    0,
   ) as any as S.Schema<MoveCollectionsListMoveCollectionsBySubscriptionRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<MoveCollectionResultList>,
+  output: __S(177, __c11, 1) as any as S.Schema<MoveCollectionResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -886,8 +886,8 @@ export const MoveCollectionsPrepare: API.OperationMethod<
   MoveCollectionsPrepareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<MoveCollectionsPrepareRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(208, __c13, 0) as any as S.Schema<MoveCollectionsPrepareRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const MoveCollectionsResolveDependencies: API.OperationMethod<
   MoveCollectionsResolveDependenciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
+  input: __S(224, __c14, 0) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const UpdateMoveCollection: API.OperationMethod<
   UpdateMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateMoveCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateMoveCollectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -927,15 +927,13 @@ export const UpdateMoveCollection: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: __S(0, __c0, 0),
+          moveResources: __S(32, __c2, 0),
           moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -948,51 +946,51 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CommitMoveCollectionRequest",
       });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(9, __c1, 1)));
-    case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4, __c0, 4)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          sourceId: S.optional(S.String),
-          moveResources: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AffectedMoveResource" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          moveResources: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "MoveErrorInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "OperationErrorAdditionalInfo",
-      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(23, __c1, 7)));
     case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(18, __c1, 2)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          sourceId: S.optional(S.String),
+          moveResources: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({ identifier: "AffectedMoveResource" });
+    case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          moveResources: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "MoveErrorInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(__S(20, __c1, 4)),
+        }),
+      ).annotate({
+        identifier: "OperationErrorAdditionalInfo",
+      });
+    case 6:
+      return S.Array(__S(21, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(__S(2, __c0, 2)),
-          additionalInfo: S.optional(__S(8, __c1, 0)),
+          details: S.optional(__S(16, __c1, 0)),
+          additionalInfo: S.optional(__S(22, __c1, 6)),
         }),
       ).annotate({ identifier: "OperationStatusError" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1000,21 +998,21 @@ function __c1(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(9, __c1, 1)),
+          error: S.optional(__S(23, __c1, 7)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationStatus" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Identity" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceRegion: S.optional(S.String),
@@ -1026,16 +1024,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MoveCollectionPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(80, __c5, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(13, __c1, 5)),
+          identity: S.optional(__S(81, __c5, 1)),
+          properties: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1047,39 +1045,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateMoveCollectionRequest",
       });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(16, __c2, 0)));
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(65, __c4, 1)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(15, __c1, 7)),
+          details: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "MoveResourceErrorBody" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "MoveResourceError" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceRegion: S.optional(S.String),
-          targetRegion: S.optional(S.String),
-          moveRegion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          version: S.optional(S.String),
-          moveType: S.optional(S.String),
-          errors: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(65, __c4, 1)),
         }),
-      ).annotate({ identifier: "MoveCollectionProperties" });
+      ).annotate({ identifier: "MoveResourceError" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1091,50 +1077,280 @@ function __c2(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveCollectionSystemData" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Identity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceRegion: S.optional(S.String),
+          targetRegion: S.optional(S.String),
+          moveRegion: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          version: S.optional(S.String),
+          moveType: S.optional(S.String),
+          errors: S.optional(__S(66, __c4, 2)),
+        }),
+      ).annotate({ identifier: "MoveCollectionProperties" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(80, __c5, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(19, __c2, 3)),
+          identity: S.optional(__S(81, __c5, 1)),
+          properties: S.optional(__S(82, __c5, 2)),
+          systemData: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "MoveCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.String,
-          targetResourceName: S.optional(S.String),
-          targetResourceGroupName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          targetId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MoveResourceDependencyOverride",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListMoveResourcesRequest" });
+    case 1:
+      return S.Array(__S(282, __c17, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(97, __c6, 1)),
+          nextLink: S.optional(S.String),
+          summaryCollection: S.optional(__S(386, __c24, 2)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MoveResourceCollection" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean),
+          moveResources: S.optional(__S(32, __c2, 0)),
+          moveResourceInputType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsBulkRemoveRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean),
+          moveResources: __S(32, __c2, 0),
+          moveResourceInputType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsDiscardRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean),
+          moveResources: __S(32, __c2, 0),
+          moveResourceInputType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsInitiateMoveRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsListMoveCollectionsByResourceGroupRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(83, __c5, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(176, __c11, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MoveCollectionResultList" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsListMoveCollectionsBySubscriptionRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean),
+          moveResources: __S(32, __c2, 0),
+          moveResourceInputType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsPrepareRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveCollectionsResolveDependenciesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          moveCollectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(80, __c5, 0)),
+          identity: S.optional(__S(81, __c5, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+            code: 200,
+            apiVersion: "2023-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateMoveCollectionRequest",
+      });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceId: S.String,
           existingTargetId: S.optional(S.String),
-          resourceSettings: S.optional(__S(21, __c2, 5)),
-          dependsOnOverrides: S.optional(__S(23, __c2, 7)),
+          resourceSettings: S.optional(__S(272, __c17, 0)),
+          dependsOnOverrides: S.optional(__S(274, __c17, 2)),
         }),
       ).annotate({
         identifier: "MoveResourcePropertiesInput",
@@ -1146,7 +1362,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           moveResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(256, __c16, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1158,22 +1374,45 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateMoveResourceRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          targetResourceName: S.optional(S.String),
+          targetResourceGroupName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          targetId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MoveResourceDependencyOverride",
+      });
     case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           jobName: S.optional(S.String),
           jobProgress: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobStatus" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           moveState: S.optional(S.String),
-          jobStatus: S.optional(__S(26, __c3, 2)),
-          errors: S.optional(__S(17, __c2, 1)),
+          jobStatus: S.optional(__S(275, __c17, 3)),
+          errors: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({ identifier: "MoveResourceStatus" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           targetId: S.optional(S.String),
@@ -1181,7 +1420,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ManualResolutionProperties",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           moveResourceId: S.optional(S.String),
@@ -1189,51 +1428,51 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AutomaticResolutionProperties",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           resolutionStatus: S.optional(S.String),
           resolutionType: S.optional(S.String),
           dependencyType: S.optional(S.String),
-          manualResolution: S.optional(__S(28, __c3, 4)),
-          automaticResolution: S.optional(__S(29, __c3, 5)),
+          manualResolution: S.optional(__S(277, __c17, 5)),
+          automaticResolution: S.optional(__S(278, __c17, 6)),
           isOptional: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveResourceDependency" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(279, __c17, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           sourceId: S.String,
           targetId: S.optional(S.String),
           existingTargetId: S.optional(S.String),
-          resourceSettings: S.optional(__S(21, __c2, 5)),
-          sourceResourceSettings: S.optional(__S(21, __c2, 5)),
-          moveStatus: S.optional(__S(27, __c3, 3)),
-          dependsOn: S.optional(__S(31, __c3, 7)),
-          dependsOnOverrides: S.optional(__S(23, __c2, 7)),
+          resourceSettings: S.optional(__S(272, __c17, 0)),
+          sourceResourceSettings: S.optional(__S(272, __c17, 0)),
+          moveStatus: S.optional(__S(276, __c17, 4)),
+          dependsOn: S.optional(__S(280, __c17, 8)),
+          dependsOnOverrides: S.optional(__S(274, __c17, 2)),
           isResolveRequired: S.optional(S.Boolean),
-          errors: S.optional(__S(17, __c2, 1)),
+          errors: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({ identifier: "MoveResourceProperties" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(32, __c4, 0)),
-          systemData: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(281, __c17, 9)),
+          systemData: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "MoveResource" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1250,7 +1489,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteMoveCollectionRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1268,7 +1511,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteMoveResourceRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1283,7 +1530,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMoveCollectionRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1299,7 +1550,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMoveResourceRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1312,7 +1567,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetOperationsDiscoveryRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1321,32 +1576,32 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Display" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(39, __c4, 7)),
+          display: S.optional(__S(353, __c22, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationsDiscovery" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(41, __c5, 1)),
+          value: S.optional(__S(355, __c22, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OperationsDiscoveryCollection",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1366,47 +1621,51 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetUnresolvedDependencyRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnresolvedDependency" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(370, __c23, 2)),
+          nextLink: S.optional(S.String),
+          summaryCollection: S.optional(__S(386, __c24, 2)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "UnresolvedDependencyCollection",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           item: S.optional(S.String),
         }),
       ).annotate({ identifier: "Summary" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           fieldName: S.optional(S.String),
-          summary: S.optional(__S(47, __c5, 7)),
+          summary: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({ identifier: "SummaryCollection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(45, __c5, 5)),
-          nextLink: S.optional(S.String),
-          summaryCollection: S.optional(__S(48, __c6, 0)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UnresolvedDependencyCollection",
-      });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1424,208 +1683,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListMoveCollectionRequiredForRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sourceIds: S.optional(__S(0, __c0, 0)),
+          sourceIds: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "RequiredForResourcesCollection",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListMoveResourcesRequest" });
-    case 5:
-      return S.Array(__S(33, __c4, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(53, __c6, 5)),
-          nextLink: S.optional(S.String),
-          summaryCollection: S.optional(__S(48, __c6, 0)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MoveResourceCollection" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean),
-          moveResources: S.optional(__S(0, __c0, 0)),
-          moveResourceInputType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsBulkRemoveRequest",
-      });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean),
-          moveResources: __S(0, __c0, 0),
-          moveResourceInputType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsDiscardRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean),
-          moveResources: __S(0, __c0, 0),
-          moveResourceInputType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsInitiateMoveRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsListMoveCollectionsByResourceGroupRequest",
-      });
-    case 3:
-      return S.Array(__S(20, __c2, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(59, __c7, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MoveCollectionResultList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsListMoveCollectionsBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean),
-          moveResources: __S(0, __c0, 0),
-          moveResourceInputType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsPrepareRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveCollectionsResolveDependenciesRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          moveCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
-            code: 200,
-            apiVersion: "2023-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateMoveCollectionRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

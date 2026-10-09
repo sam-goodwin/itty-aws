@@ -110,8 +110,8 @@ export const getSecurityTxt: API.OperationMethod<
   GetSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSecurityTxtRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetSecurityTxtResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetSecurityTxtRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<GetSecurityTxtResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -125,8 +125,8 @@ export const putSecurityTxt: API.OperationMethod<
   PutSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<PutSecurityTxtRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PutSecurityTxtResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<PutSecurityTxtRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PutSecurityTxtResponse>,
   errors: [Forbidden, SecurityTxtInvalid, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -153,7 +153,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteSecurityTxtResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -167,38 +171,46 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSecurityTxtRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          acknowledgments: S.optional(S.NullOr(__S(3, __c0, 3))),
-          canonical: S.optional(S.NullOr(__S(3, __c0, 3))),
-          contact: S.optional(S.NullOr(__S(3, __c0, 3))),
+          acknowledgments: S.optional(S.NullOr(__S(8, __c2, 0))),
+          canonical: S.optional(S.NullOr(__S(8, __c2, 0))),
+          contact: S.optional(S.NullOr(__S(8, __c2, 0))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          encryption: S.optional(S.NullOr(__S(3, __c0, 3))),
+          encryption: S.optional(S.NullOr(__S(8, __c2, 0))),
           expires: S.optional(S.NullOr(S.String)),
-          hiring: S.optional(S.NullOr(__S(3, __c0, 3))),
-          policy: S.optional(S.NullOr(__S(3, __c0, 3))),
+          hiring: S.optional(S.NullOr(__S(8, __c2, 0))),
+          policy: S.optional(S.NullOr(__S(8, __c2, 0))),
           preferredLanguages: S.optional(S.NullOr(S.String).pipe(T.Body("preferred_languages"))),
         }),
       ).annotate({ identifier: "SecurityTxtFile" });
-    case 5:
+    case 2:
       return S.suspend(() =>
-        __S(4, __c0, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(5, __c1, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSecurityTxtResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          acknowledgments: S.optional(__S(3, __c0, 3)),
-          canonical: S.optional(__S(3, __c0, 3)),
-          contact: S.optional(__S(3, __c0, 3)),
+          acknowledgments: S.optional(__S(8, __c2, 0)),
+          canonical: S.optional(__S(8, __c2, 0)),
+          contact: S.optional(__S(8, __c2, 0)),
           enabled: S.optional(S.Boolean),
-          encryption: S.optional(__S(3, __c0, 3)),
+          encryption: S.optional(__S(8, __c2, 0)),
           expires: S.optional(S.String),
-          hiring: S.optional(__S(3, __c0, 3)),
-          policy: S.optional(__S(3, __c0, 3)),
+          hiring: S.optional(__S(8, __c2, 0)),
+          policy: S.optional(__S(8, __c2, 0)),
           preferredLanguages: S.optional(S.String.pipe(T.Body("preferred_languages"))),
         })
           .pipe(
@@ -210,13 +222,12 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSecurityTxtRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "PutSecurityTxtResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

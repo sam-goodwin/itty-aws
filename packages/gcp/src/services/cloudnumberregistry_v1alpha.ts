@@ -910,8 +910,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(408, __c51, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(424, __c53, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -951,11 +951,11 @@ export const checkAvailabilityProjectsLocationsIpamAdminScopes: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    432,
+    __c54,
+    0,
   ) as any as S.Schema<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CheckAvailabilityIpamAdminScopesResponse>,
+  output: __S(435, __c54, 3) as any as S.Schema<CheckAvailabilityIpamAdminScopesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -975,8 +975,8 @@ export const cleanupProjectsLocationsIpamAdminScopes: API.OperationMethod<
   CleanupProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(448, __c56, 0) as any as S.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -997,11 +997,11 @@ export const createOrganizationsLocationsOrgNumberRegistries: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    16,
-    __c2,
+    480,
+    __c60,
     0,
   ) as any as S.Schema<CreateOrganizationsLocationsOrgNumberRegistriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1021,8 +1021,8 @@ export const createProjectsLocationsCustomRanges: API.OperationMethod<
   CreateProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateProjectsLocationsCustomRangesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsCustomRangesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1042,8 @@ export const createProjectsLocationsIpamAdminScopes: API.OperationMethod<
   CreateProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1063,8 @@ export const createProjectsLocationsRealms: API.OperationMethod<
   CreateProjectsLocationsRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateProjectsLocationsRealmsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsLocationsRealmsRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1084,8 @@ export const createProjectsLocationsRegistryBooks: API.OperationMethod<
   CreateProjectsLocationsRegistryBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectsLocationsRegistryBooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateProjectsLocationsRegistryBooksRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1105,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1127,11 +1127,11 @@ export const deleteOrganizationsLocationsOrgNumberRegistries: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    96,
+    __c12,
+    0,
   ) as any as S.Schema<DeleteOrganizationsLocationsOrgNumberRegistriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1151,8 +1151,8 @@ export const deleteProjectsLocationsCustomRanges: API.OperationMethod<
   DeleteProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteProjectsLocationsCustomRangesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteProjectsLocationsCustomRangesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1172,8 @@ export const deleteProjectsLocationsIpamAdminScopes: API.OperationMethod<
   DeleteProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1193,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1214,8 +1214,8 @@ export const deleteProjectsLocationsRealms: API.OperationMethod<
   DeleteProjectsLocationsRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteProjectsLocationsRealmsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectsLocationsRealmsRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const deleteProjectsLocationsRegistryBooks: API.OperationMethod<
   DeleteProjectsLocationsRegistryBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteProjectsLocationsRegistryBooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteProjectsLocationsRegistryBooksRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1256,8 +1256,8 @@ export const disableProjectsLocationsIpamAdminScopes: API.OperationMethod<
   DisableProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DisableProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(144, __c18, 0) as any as S.Schema<DisableProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,12 @@ export const findFreeIpRangesProjectsLocationsCustomRanges: API.OperationMethod<
   FindFreeIpRangesProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<FindFreeIpRangesProjectsLocationsCustomRangesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<FindCustomRangeFreeIpRangesResponse>,
+  input: __S(
+    152,
+    __c19,
+    0,
+  ) as any as S.Schema<FindFreeIpRangesProjectsLocationsCustomRangesRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<FindCustomRangeFreeIpRangesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1295,11 +1299,11 @@ export const findFreeIpRangesProjectsLocationsDiscoveredRanges: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    168,
+    __c21,
+    0,
   ) as any as S.Schema<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<FindDiscoveredRangeFreeIpRangesResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<FindDiscoveredRangeFreeIpRangesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1321,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1336,8 +1340,8 @@ export const getOrganizationsLocationsOrgNumberRegistries: API.OperationMethod<
   GetOrganizationsLocationsOrgNumberRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetOrganizationsLocationsOrgNumberRegistriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<OrgNumberRegistry>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetOrganizationsLocationsOrgNumberRegistriesRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<OrgNumberRegistry>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1355,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Location>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1374,8 @@ export const getProjectsLocationsCustomRanges: API.OperationMethod<
   GetProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsLocationsCustomRangesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CustomRange>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetProjectsLocationsCustomRangesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CustomRange>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1393,8 @@ export const getProjectsLocationsDiscoveredRanges: API.OperationMethod<
   GetProjectsLocationsDiscoveredRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetProjectsLocationsDiscoveredRangesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DiscoveredRange>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetProjectsLocationsDiscoveredRangesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<DiscoveredRange>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1412,8 @@ export const getProjectsLocationsIpamAdminScopes: API.OperationMethod<
   GetProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IpamAdminScope>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<IpamAdminScope>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1431,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1446,8 @@ export const getProjectsLocationsRealms: API.OperationMethod<
   GetProjectsLocationsRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsRealmsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Realm>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetProjectsLocationsRealmsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Realm>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1465,8 @@ export const getProjectsLocationsRegistryBooks: API.OperationMethod<
   GetProjectsLocationsRegistryBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsRegistryBooksRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<RegistryBook>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetProjectsLocationsRegistryBooksRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<RegistryBook>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1476,8 +1480,8 @@ export const getUtilizationProjectsLocationsCustomRanges: API.OperationMethod<
   GetUtilizationProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetUtilizationProjectsLocationsCustomRangesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ShowCustomRangeUtilizationResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetUtilizationProjectsLocationsCustomRangesRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<ShowCustomRangeUtilizationResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1495,11 +1499,11 @@ export const getUtilizationProjectsLocationsDiscoveredRanges: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    280,
+    __c35,
+    0,
   ) as any as S.Schema<GetUtilizationProjectsLocationsDiscoveredRangesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>,
+  output: __S(281, __c35, 1) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1522,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1539,8 +1543,12 @@ export const listOrganizationsLocationsOrgNumberRegistries: API.PaginatedOperati
   GcpOpContext,
   ListOrgNumberRegistriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListOrganizationsLocationsOrgNumberRegistriesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListOrgNumberRegistriesResponse>,
+  input: __S(
+    304,
+    __c38,
+    0,
+  ) as any as S.Schema<ListOrganizationsLocationsOrgNumberRegistriesRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<ListOrgNumberRegistriesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1564,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1585,8 @@ export const listProjectsLocationsCustomRanges: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomRangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListCustomRangesResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListCustomRangesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1598,8 +1606,8 @@ export const listProjectsLocationsDiscoveredRanges: API.PaginatedOperationMethod
   GcpOpContext,
   ListDiscoveredRangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListDiscoveredRangesResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<ListDiscoveredRangesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1627,8 @@ export const listProjectsLocationsIpamAdminScopes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListIpamAdminScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListIpamAdminScopesResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListIpamAdminScopesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1648,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1665,8 @@ export const listProjectsLocationsRealms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRealmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListProjectsLocationsRealmsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListRealmsResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListProjectsLocationsRealmsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<ListRealmsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1686,8 @@ export const listProjectsLocationsRegistryBooks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegistryBooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListRegistryBooksResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<ListRegistryBooksResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1708,8 @@ export const patchProjectsLocationsCustomRanges: API.OperationMethod<
   PatchProjectsLocationsCustomRangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<PatchProjectsLocationsCustomRangesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(368, __c46, 0) as any as S.Schema<PatchProjectsLocationsCustomRangesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1729,8 @@ export const patchProjectsLocationsIpamAdminScopes: API.OperationMethod<
   PatchProjectsLocationsIpamAdminScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PatchProjectsLocationsIpamAdminScopesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(376, __c47, 0) as any as S.Schema<PatchProjectsLocationsIpamAdminScopesRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1750,8 @@ export const patchProjectsLocationsRealms: API.OperationMethod<
   PatchProjectsLocationsRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<PatchProjectsLocationsRealmsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(384, __c48, 0) as any as S.Schema<PatchProjectsLocationsRealmsRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1763,8 +1771,8 @@ export const patchProjectsLocationsRegistryBooks: API.OperationMethod<
   PatchProjectsLocationsRegistryBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PatchProjectsLocationsRegistryBooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(392, __c49, 0) as any as S.Schema<PatchProjectsLocationsRegistryBooksRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1785,11 +1793,11 @@ export const searchIpResourcesProjectsLocationsRegistryBooks: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    90,
-    __c11,
-    2,
+    401,
+    __c50,
+    1,
   ) as any as S.Schema<SearchIpResourcesProjectsLocationsRegistryBooksRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<SearchIpResourcesResponse>,
+  output: __S(406, __c50, 6) as any as S.Schema<SearchIpResourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1799,189 +1807,12 @@ export const searchIpResourcesProjectsLocationsRegistryBooks: API.OperationMetho
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:cancel",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:cancel",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckAvailabilityProjectsLocationsIpamAdminScopesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adminProject: S.optional(S.String),
-          scope: S.optional(S.String),
-          availability: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpamAdminScopeAvailability",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scopeAvailabilities: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "CheckAvailabilityIpamAdminScopesResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CleanupIpamAdminScopeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:cleanup",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CleanupProjectsLocationsIpamAdminScopesRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(11, __c1, 3)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(12, __c1, 4)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          response: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adminProject: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          updateTime: S.optional(S.String),
-          targetScopes: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "OrgNumberRegistry" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orgNumberRegistryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/orgNumberRegistries",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsOrgNumberRegistriesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attribute" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ipv4CidrRange: S.optional(S.String),
-          attributes: S.optional(__S(18, __c2, 2)),
-          description: S.optional(S.String),
-          ipv6CidrRange: S.optional(S.String),
-          parentRange: S.optional(S.String),
-          realm: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          registryBook: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomRange" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           customRangeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1992,27 +1823,48 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCustomRangesRequest",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(14, __c1, 6)),
-          createTime: S.optional(S.String),
-          enabledAddonPlatforms: S.optional(__S(21, __c2, 5)),
-          scopes: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
         }),
-      ).annotate({ identifier: "IpamAdminScope" });
-    case 7:
+      ).annotate({ identifier: "Attribute" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ipv4CidrRange: S.optional(S.String),
+          attributes: S.optional(__S(9, __c1, 1)),
+          description: S.optional(S.String),
+          ipv6CidrRange: S.optional(S.String),
+          parentRange: S.optional(S.String),
+          realm: S.optional(S.String),
+          labels: S.optional(__S(488, __c61, 0)),
+          registryBook: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomRange" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ipamAdminScopeId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2025,16 +1877,52 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          discoveredRangesCount: S.optional(S.Number),
-          customRangesCount: S.optional(S.Number),
+          labels: S.optional(__S(488, __c61, 0)),
+          createTime: S.optional(S.String),
+          enabledAddonPlatforms: S.optional(__S(40, __c5, 0)),
+          scopes: S.optional(__S(440, __c55, 0)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RealmAggregatedData" });
-    case 1:
+      ).annotate({ identifier: "IpamAdminScope" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          realmId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/realms",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRealmsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -2047,74 +1935,35 @@ function __c3(j: number): any {
           sourceSubId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          aggregatedData: S.optional(__S(24, __c3, 0)),
-          trafficType: S.optional(S.String),
-          managementType: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          updateTime: S.optional(S.String),
-          registryBook: S.optional(S.String),
-          ipVersion: S.optional(S.String),
-          discoveryMetadata: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "Realm" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          realmId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/realms",
-            baseUrl: "https://cloudnumberregistry.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRealmsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScopeInfo" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           discoveredRangesCount: S.optional(S.Number),
-          uniqueScopesCount: S.optional(S.Number),
           customRangesCount: S.optional(S.Number),
-          discoveredRealmsCount: S.optional(S.Number),
-          customRealmsCount: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "AggregatedData" });
-    case 7:
+      ).annotate({ identifier: "RealmAggregatedData" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          updateTime: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          claimedScopesInfo: S.optional(__S(29, __c3, 5)),
-          createTime: S.optional(S.String),
           name: S.optional(S.String),
-          aggregatedData: S.optional(__S(30, __c3, 6)),
-          labels: S.optional(__S(14, __c1, 6)),
-          claimedScopes: S.optional(__S(3, __c0, 3)),
+          createTime: S.optional(S.String),
+          aggregatedData: S.optional(__S(64, __c8, 0)),
+          trafficType: S.optional(S.String),
+          managementType: S.optional(S.String),
+          labels: S.optional(__S(488, __c61, 0)),
+          updateTime: S.optional(S.String),
+          registryBook: S.optional(S.String),
+          ipVersion: S.optional(S.String),
+          discoveryMetadata: S.optional(__S(56, __c7, 0)),
         }),
-      ).annotate({ identifier: "RegistryBook" });
+      ).annotate({ identifier: "Realm" });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2122,7 +1971,7 @@ function __c4(j: number): any {
           registryBookId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2133,7 +1982,48 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsRegistryBooksRequest",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScopeInfo" });
     case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          discoveredRangesCount: S.optional(S.Number),
+          uniqueScopesCount: S.optional(S.Number),
+          customRangesCount: S.optional(S.Number),
+          discoveredRealmsCount: S.optional(S.Number),
+          customRealmsCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AggregatedData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          claimedScopesInfo: S.optional(__S(81, __c10, 1)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          aggregatedData: S.optional(__S(82, __c10, 2)),
+          labels: S.optional(__S(488, __c61, 0)),
+          claimedScopes: S.optional(__S(440, __c55, 0)),
+        }),
+      ).annotate({ identifier: "RegistryBook" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2147,7 +2037,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -2162,7 +2056,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsOrgNumberRegistriesRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2178,7 +2076,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCustomRangesRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -2194,7 +2096,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsIpamAdminScopesRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2208,7 +2114,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -2224,7 +2134,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsRealmsRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -2242,13 +2156,13 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(456, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2259,7 +2173,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DisableProjectsLocationsIpamAdminScopesRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rangeCount: S.optional(S.Number.pipe(T.Query())),
@@ -2276,15 +2194,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "FindFreeIpRangesProjectsLocationsCustomRangesRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          freeIpCidrRanges: S.optional(__S(3, __c0, 3)),
+          freeIpCidrRanges: S.optional(__S(440, __c55, 0)),
         }),
       ).annotate({
         identifier: "FindCustomRangeFreeIpRangesResponse",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -2301,7 +2227,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2315,7 +2245,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2329,7 +2263,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsOrgNumberRegistriesRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2343,19 +2281,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(__S(10, __c1, 2)),
+          metadata: S.optional(__S(464, __c58, 0)),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
+          labels: S.optional(__S(488, __c61, 0)),
         }),
       ).annotate({ identifier: "Location" });
   }
 }
-function __c6(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2371,7 +2313,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCustomRangesRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2385,16 +2331,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDiscoveredRangesRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          discoveryMetadata: S.optional(__S(25, __c3, 1)),
+          discoveryMetadata: S.optional(__S(56, __c7, 0)),
           realm: S.optional(S.String),
           ipv6CidrRange: S.optional(S.String),
           description: S.optional(S.String),
-          attributes: S.optional(__S(18, __c2, 2)),
+          attributes: S.optional(__S(9, __c1, 1)),
           ipv4CidrRange: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
+          labels: S.optional(__S(488, __c61, 0)),
           parentRange: S.optional(S.String),
           name: S.optional(S.String),
           registryBook: S.optional(S.String),
@@ -2403,7 +2353,11 @@ function __c6(j: number): any {
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveredRange" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2417,7 +2371,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIpamAdminScopesRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2431,7 +2389,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2446,7 +2408,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRealmsRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2461,7 +2427,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRegistryBooksRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2475,9 +2445,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetUtilizationProjectsLocationsCustomRangesRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rangeUtilization: S.optional(__S(272, __c34, 0)),
+          customRange: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "ShowCustomRangeUtilizationResponse",
+      });
   }
 }
-function __c7(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2487,16 +2466,11 @@ function __c7(j: number): any {
           usage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RangeUtilization" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rangeUtilization: S.optional(__S(56, __c7, 0)),
-          customRange: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "ShowCustomRangeUtilizationResponse",
-      });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2510,16 +2484,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetUtilizationProjectsLocationsDiscoveredRangesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          rangeUtilization: S.optional(__S(56, __c7, 0)),
-          discoveredRange: S.optional(__S(50, __c6, 2)),
+          rangeUtilization: S.optional(__S(272, __c34, 0)),
+          discoveredRange: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({
         identifier: "ShowDiscoveredRangeUtilizationResponse",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2537,17 +2515,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
-    case 5:
-      return S.Array(__S(13, __c1, 5));
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(474, __c59, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
-          operations: S.optional(__S(61, __c7, 5)),
+          unreachable: S.optional(__S(440, __c55, 0)),
+          operations: S.optional(__S(296, __c37, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2565,27 +2551,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsOrgNumberRegistriesRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(496, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          orgNumberRegistries: S.optional(__S(64, __c8, 0)),
+          unreachable: S.optional(__S(440, __c55, 0)),
+          orgNumberRegistries: S.optional(__S(305, __c38, 1)),
         }),
       ).annotate({
         identifier: "ListOrgNumberRegistriesResponse",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(440, __c55, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2599,16 +2585,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(47, __c5, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(67, __c8, 3)),
+          locations: S.optional(__S(313, __c39, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2626,19 +2616,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCustomRangesRequest",
       });
-    case 6:
-      return S.Array(__S(19, __c2, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customRanges: S.optional(__S(70, __c8, 6)),
+          customRanges: S.optional(__S(321, __c40, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
+          unreachable: S.optional(__S(440, __c55, 0)),
         }),
       ).annotate({ identifier: "ListCustomRangesResponse" });
   }
 }
-function __c9(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2659,18 +2649,22 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsDiscoveredRangesRequest",
       });
     case 1:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          discoveredRanges: S.optional(__S(73, __c9, 1)),
+          unreachable: S.optional(__S(440, __c55, 0)),
+          discoveredRanges: S.optional(__S(329, __c41, 1)),
         }),
       ).annotate({
         identifier: "ListDiscoveredRangesResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2688,19 +2682,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIpamAdminScopesRequest",
       });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
+          unreachable: S.optional(__S(440, __c55, 0)),
           nextPageToken: S.optional(S.String),
-          ipamAdminScopes: S.optional(__S(76, __c9, 4)),
+          ipamAdminScopes: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({
         identifier: "ListIpamAdminScopesResponse",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2718,7 +2716,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -2737,21 +2739,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRealmsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(26, __c3, 2));
     case 1:
+      return S.Array(__S(65, __c8, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          realms: S.optional(__S(80, __c10, 0)),
+          unreachable: S.optional(__S(440, __c55, 0)),
+          realms: S.optional(__S(353, __c44, 1)),
         }),
       ).annotate({ identifier: "ListRealmsResponse" });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2770,25 +2772,29 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRegistryBooksRequest",
       });
-    case 3:
-      return S.Array(__S(31, __c3, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(83, __c10, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          registryBooks: S.optional(__S(83, __c10, 3)),
-          unreachable: S.optional(__S(3, __c0, 3)),
+          registryBooks: S.optional(__S(361, __c45, 1)),
+          unreachable: S.optional(__S(440, __c55, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRegistryBooksResponse",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2799,13 +2805,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCustomRangesRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2816,13 +2826,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsIpamAdminScopesRequest",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2835,7 +2849,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2843,7 +2857,7 @@ function __c11(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2854,22 +2868,26 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRegistryBooksRequest",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showUtilization: S.optional(S.Boolean),
           orderBy: S.optional(S.String),
-          searchResourceTypes: S.optional(__S(21, __c2, 5)),
+          searchResourceTypes: S.optional(__S(40, __c5, 0)),
           query: S.optional(S.String),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchIpResourcesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2880,39 +2898,232 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SearchIpResourcesProjectsLocationsRegistryBooksRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          discoveredRange: S.optional(__S(50, __c6, 2)),
-          customRange: S.optional(__S(19, __c2, 3)),
-          utilization: S.optional(__S(56, __c7, 0)),
+          discoveredRange: S.optional(__S(224, __c28, 0)),
+          customRange: S.optional(__S(16, __c2, 0)),
+          utilization: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "Range" });
+    case 3:
+      return S.Array(__S(402, __c50, 2));
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(91, __c11, 3)),
-          realm: S.optional(__S(26, __c3, 2)),
+          range: S.optional(__S(402, __c50, 2)),
+          realm: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "SearchIpResourcesResult" });
+    case 5:
+      return S.Array(__S(404, __c50, 4));
     case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          ranges: S.optional(__S(92, __c11, 4)),
-          results: S.optional(__S(94, __c11, 6)),
+          ranges: S.optional(__S(403, __c50, 3)),
+          results: S.optional(__S(405, __c50, 5)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
+          unreachable: S.optional(__S(440, __c55, 0)),
         }),
       ).annotate({
         identifier: "SearchIpResourcesResponse",
       });
   }
 }
-
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(440, __c55, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckAvailabilityProjectsLocationsIpamAdminScopesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adminProject: S.optional(S.String),
+          scope: S.optional(S.String),
+          availability: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpamAdminScopeAvailability",
+      });
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scopeAvailabilities: S.optional(__S(434, __c54, 2)),
+        }),
+      ).annotate({
+        identifier: "CheckAvailabilityIpamAdminScopesResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(456, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cleanup",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CleanupProjectsLocationsIpamAdminScopesRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CleanupIpamAdminScopeRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(464, __c58, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(472, __c59, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(473, __c59, 1)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(464, __c58, 0)),
+          name: S.optional(S.String),
+          response: S.optional(__S(464, __c58, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orgNumberRegistryId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(496, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/orgNumberRegistries",
+            baseUrl: "https://cloudnumberregistry.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsOrgNumberRegistriesRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminProject: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          labels: S.optional(__S(488, __c61, 0)),
+          updateTime: S.optional(S.String),
+          targetScopes: S.optional(__S(440, __c55, 0)),
+        }),
+      ).annotate({ identifier: "OrgNumberRegistry" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

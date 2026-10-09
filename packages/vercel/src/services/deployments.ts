@@ -9932,8 +9932,8 @@ export const cancelDeployment: API.OperationMethod<
   CancelDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelDeploymentRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CancelDeploymentResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CancelDeploymentRequest>,
+  output: __S(269, __c8, 13) as any as S.Schema<CancelDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -9953,8 +9953,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateDeploymentRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateDeploymentResponse>,
+  input: __S(355, __c11, 3) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<CreateDeploymentResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -9968,8 +9968,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -9983,8 +9983,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetDeploymentResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -9998,8 +9998,8 @@ export const getDeploymentEvents: API.OperationMethod<
   GetDeploymentEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetDeploymentEventsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetDeploymentEventsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDeploymentEventsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetDeploymentEventsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10013,8 +10013,8 @@ export const getDeploymentFileContents: API.OperationMethod<
   GetDeploymentFileContentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetDeploymentFileContentsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetDeploymentFileContentsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetDeploymentFileContentsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GetDeploymentFileContentsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10033,8 +10033,8 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetDeploymentsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetDeploymentsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(111, __c3, 15) as any as S.Schema<GetDeploymentsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10048,8 +10048,8 @@ export const listDeploymentFiles: API.OperationMethod<
   ListDeploymentFilesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListDeploymentFilesRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListDeploymentFilesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListDeploymentFilesRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<ListDeploymentFilesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10067,8 +10067,8 @@ export const updateIntegrationDeploymentAction: API.OperationMethod<
   UpdateIntegrationDeploymentActionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateIntegrationDeploymentActionResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateIntegrationDeploymentActionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10082,8 +10082,8 @@ export const uploadFile: API.OperationMethod<
   UploadFileError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UploadFileRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<UploadFileResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<UploadFileRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<UploadFileResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10093,710 +10093,6 @@ export const uploadFile: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v12/deployments/{id}/cancel", code: 200 })),
-      ).annotate({ identifier: "CancelDeploymentRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAliasError",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          code: S.String,
-          link: S.optional(S.String),
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAliasWarning",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          isVerified: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAttributionCommitMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Unknown,
-          login: S.String,
-          provider: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAttributionGitUser",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          teamRoles: S.optional(__S(1, __c0, 1)),
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAttributionVercelUser",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          commitMeta: S.optional(__S(6, __c0, 6)),
-          gitUser: S.optional(__S(7, __c0, 7)),
-          vercelUser: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseAttribution",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          env: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseBuild",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(11, __c1, 3)),
-          src: S.optional(S.String),
-          use: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseBuildsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completedAt: S.optional(S.Number),
-          startedAt: S.Number,
-          state: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseChecksDeploymentAlias",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deployment_alias: __S(14, __c1, 6).pipe(T.Body("deployment-alias")),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseChecks",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseConfigResourceConfigBuildQueue",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          purchaseType: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseConfigResourceConfigBuildMachine",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          buildQueue: S.optional(__S(16, __c2, 0)),
-          elasticConcurrency: S.optional(S.String),
-          buildMachine: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseConfigResourceConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          functionMemoryType: S.String,
-          functionTimeout: S.NullOr(S.Number),
-          functionType: S.String,
-          isUsingActiveCPU: S.optional(S.Boolean),
-          resourceConfig: S.optional(__S(18, __c2, 2)),
-          secureComputeFallbackRegion: S.NullOr(S.String),
-          secureComputePrimaryRegion: S.NullOr(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.optional(S.String),
-          type: S.optional(S.String),
-          uid: S.String,
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseCreator",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          schedule: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseCronsItem",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.Number),
-          endTimeCapped: S.optional(S.Number),
-          startTime: S.optional(S.Number),
-          timeForBilling: S.optional(S.Number),
-          timeToContainerExit: S.optional(S.Number),
-          timeToContainerExitCapped: S.optional(S.Number),
-          timeToReady: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseDuration",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseFunctionsValueAffinity",
-      });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          affinity: S.optional(__S(24, __c3, 0)),
-          architecture: S.optional(S.String),
-          excludeFiles: S.optional(S.String),
-          experimentalTriggers: S.optional(__S(25, __c3, 1)),
-          functionFailoverRegions: S.optional(__S(4, __c0, 4)),
-          includeFiles: S.optional(S.String),
-          maxConcurrency: S.optional(S.Number),
-          maxDuration: S.optional(S.Unknown),
-          memory: S.optional(S.Number),
-          regions: S.optional(__S(1, __c0, 1)),
-          runtime: S.optional(S.String),
-          supportsCancellation: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseFunctionsValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pathname: S.optional(S.String),
-          search: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseImagesLocalPatternsItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.String,
-          pathname: S.optional(S.String),
-          port: S.optional(S.String),
-          protocol: S.optional(S.String),
-          search: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseImagesRemotePatternsItem",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contentDispositionType: S.optional(S.String),
-          contentSecurityPolicy: S.optional(S.String),
-          dangerouslyAllowSVG: S.optional(S.Boolean),
-          domains: S.optional(__S(1, __c0, 1)),
-          formats: S.optional(__S(5, __c0, 5)),
-          localPatterns: S.optional(__S(29, __c3, 5)),
-          minimumCacheTTL: S.optional(S.Number),
-          qualities: S.optional(__S(30, __c3, 6)),
-          remotePatterns: S.optional(__S(32, __c4, 0)),
-          sizes: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseImages",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          claimedAt: S.optional(S.Number),
-          completedAt: S.optional(S.Number),
-          skippedAt: S.optional(S.Number),
-          skippedBy: S.optional(S.String),
-          startedAt: S.Number,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseIntegrations",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          functionName: S.String,
-          path: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseLambdasItemOutputItem",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.Number),
-          entrypoint: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          readyState: S.optional(S.String),
-          readyStateAt: S.optional(S.Number),
-          output: __S(
-            36,
-            __c4,
-            4,
-          ) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputList>,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseLambdasItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          completedAt: S.optional(S.Number),
-          state: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseManualProvisioning",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          custom_environment_id: S.optional(S.String),
-          deployment_id: S.optional(S.String),
-          environment: S.String,
-          iss: S.String,
-          mfe_group_ids: S.optional(__S(1, __c0, 1)),
-          owner: S.String,
-          owner_id: S.String,
-          plan: S.optional(S.String),
-          project: S.String,
-          project_id: S.String,
-          scope: S.String,
-          sub: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseOidcTokenClaims",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.optional(S.String),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponsePlatformCreator",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponsePlatformOrigin",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponsePlatformSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creator: __S(42, __c5, 2),
-          meta: S.optional(__S(40, __c5, 0)),
-          origin: __S(43, __c5, 3),
-          source: __S(44, __c5, 4),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponsePlatform",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          framework: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseProject",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          canceledAt: S.optional(S.Number),
-          dataReceivedAt: S.optional(S.Number),
-          disabledAt: S.optional(S.Number),
-          enabledAt: S.optional(S.Number),
-          hasData: S.optional(S.Boolean),
-          id: S.String,
-          paidAt: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseProjectSettingsSpeedInsights",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          canceledAt: S.optional(S.Number),
-          disabledAt: S.optional(S.Number),
-          enabledAt: S.optional(S.Number),
-          hasData: S.optional(S.Boolean),
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseProjectSettingsWebAnalytics",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          buildCommand: S.optional(S.NullOr(S.String)),
-          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-          devCommand: S.optional(S.NullOr(S.String)),
-          framework: S.optional(S.NullOr(S.String)),
-          installCommand: S.optional(S.NullOr(S.String)),
-          nodeVersion: S.optional(S.String),
-          outputDirectory: S.optional(S.NullOr(S.String)),
-          speedInsights: S.optional(__S(47, __c5, 7)),
-          webAnalytics: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseProjectSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cores: S.optional(S.Number),
-          defaultPurchaseType: S.optional(S.String),
-          machineSelectionType: S.optional(S.String),
-          memory: S.optional(S.Number),
-          purchaseType: S.optional(S.String),
-          selectionSource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseResourceConfigBuildMachine",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildMachine: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseResourceConfig",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          blockCode: S.String,
-          gitProvider: S.optional(S.String),
-          gitUserId: S.optional(S.Unknown),
-          isVerified: S.optional(S.Boolean),
-          userId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseSeatBlock",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelDeploymentResponseTeam",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(__S(1, __c0, 1)),
-          aliasAssigned: S.Boolean,
-          aliasAssignedAt: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(2, __c0, 2))),
-          aliasFinal: S.optional(S.NullOr(S.String)),
-          aliasWarning: S.optional(S.NullOr(__S(3, __c0, 3))),
-          alwaysRefuseToBuild: S.optional(S.Boolean),
-          atproto: S.optional(S.Unknown),
-          attribution: S.optional(__S(9, __c1, 1)),
-          autoAssignCustomDomains: S.optional(S.Boolean),
-          automaticAliases: S.optional(__S(1, __c0, 1)),
-          bootedAt: S.Number,
-          build: __S(10, __c1, 2),
-          buildArtifactUrls: S.optional(__S(1, __c0, 1)),
-          buildContainerFinishedAt: S.optional(S.Number),
-          buildErrorAt: S.optional(S.Number),
-          buildingAt: S.Number,
-          builds: S.optional(__S(13, __c1, 5)),
-          buildSkipped: S.Boolean,
-          canceledAt: S.optional(S.Number),
-          checks: S.optional(__S(15, __c1, 7)),
-          checksConclusion: S.optional(S.String),
-          checksState: S.optional(S.String),
-          config: S.optional(__S(19, __c2, 3)),
-          connectBuildsEnabled: S.optional(S.Boolean),
-          connectConfigurationId: S.optional(S.String),
-          createdAt: S.Number,
-          createdIn: S.String,
-          creator: __S(20, __c2, 4),
-          crons: S.optional(__S(22, __c2, 6)),
-          customEnvironment: S.optional(S.Unknown),
-          defaultRoute: S.optional(S.String),
-          deletedAt: S.optional(S.NullOr(S.Number)),
-          duration: __S(23, __c2, 7),
-          env: __S(1, __c0, 1),
-          errorCode: S.optional(S.String),
-          errorLink: S.optional(S.String),
-          errorMessage: S.optional(S.NullOr(S.String)),
-          errorStep: S.optional(S.String),
-          flags: S.optional(S.Unknown),
-          functions: S.optional(S.NullOr(__S(27, __c3, 3))),
-          gitRepo: S.optional(S.NullOr(S.Unknown)),
-          gitSource: S.optional(S.Unknown),
-          id: S.String,
-          images: S.optional(__S(33, __c4, 1)),
-          initReadyAt: S.optional(S.Number),
-          inspectorUrl: S.NullOr(S.String),
-          integrations: S.optional(__S(34, __c4, 2)),
-          isFirstBranchDeployment: S.optional(S.Boolean),
-          isInConcurrentBuildsQueue: S.Boolean,
-          isInstantStatic: S.optional(S.Boolean),
-          isInSystemBuildsQueue: S.Boolean,
-          lambdas: S.optional(__S(38, __c4, 6)),
-          manualProvisioning: S.optional(__S(39, __c4, 7)),
-          meta: __S(40, __c5, 0),
-          microfrontends: S.optional(S.Unknown),
-          monorepoManager: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          nodeVersion: S.optional(S.String),
-          oidcTokenClaims: S.optional(__S(41, __c5, 1)),
-          oomReport: S.optional(S.String),
-          originCacheRegion: S.optional(S.String),
-          ownerId: S.String,
-          passiveConnectConfigurationId: S.optional(S.String),
-          passiveRegions: S.optional(__S(1, __c0, 1)),
-          plan: S.String,
-          platform: S.optional(__S(45, __c5, 5)),
-          prebuilt: S.optional(S.Boolean),
-          previewCommentsEnabled: S.optional(S.Boolean),
-          project: S.optional(__S(46, __c5, 6)),
-          projectId: S.String,
-          projectSettings: __S(49, __c6, 1),
-          public: S.Boolean,
-          ready: S.optional(S.Number),
-          readyState: S.String,
-          readyStateReason: S.optional(S.String),
-          readySubstate: S.optional(S.String),
-          regions: __S(1, __c0, 1),
-          resourceConfig: S.optional(__S(51, __c6, 3)),
-          routes: S.NullOr(__S(52, __c6, 4)),
-          seatBlock: S.optional(__S(53, __c6, 5)),
-          services: S.optional(__S(54, __c6, 6)),
-          softDeletedByRetention: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          status: S.String,
-          target: S.optional(S.NullOr(S.String)),
-          team: S.optional(__S(55, __c6, 7)),
-          ttyBuildLogs: S.optional(S.Boolean),
-          type: S.String,
-          undeletedAt: S.optional(S.Number),
-          url: S.String,
-          userAliases: S.optional(__S(1, __c0, 1)),
-          userConfiguredDeploymentId: S.optional(S.String),
-          version: S.Number,
-        }),
-      ).annotate({ identifier: "CancelDeploymentResponse" });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          remoteUrl: S.optional(S.String),
-          commitAuthorName: S.optional(S.String),
-          commitAuthorEmail: S.optional(S.String),
-          commitMessage: S.optional(S.String),
-          commitRef: S.optional(S.String),
-          commitSha: S.optional(S.String),
-          dirty: S.optional(S.Boolean),
-          ci: S.optional(S.Boolean),
-          ciType: S.optional(S.String),
-          ciGitProviderUsername: S.optional(S.String),
-          ciGitRepoVisibility: S.optional(S.String),
-          rootDirectory: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDeploymentRequestGitMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildCommand: S.optional(S.NullOr(S.String)),
-          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-          devCommand: S.optional(S.NullOr(S.String)),
-          framework: S.optional(S.NullOr(S.String)),
-          installCommand: S.optional(S.NullOr(S.String)),
-          nodeVersion: S.optional(S.String),
-          outputDirectory: S.optional(S.NullOr(S.String)),
-          rootDirectory: S.optional(S.NullOr(S.String)),
-          serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
-          skipGitConnectDuringLink: S.optional(S.Boolean),
-          sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateDeploymentRequestProjectSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          forceNew: S.optional(S.String.pipe(T.Query())),
-          skipAutoDetectionConfirmation: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          buildMachine: S.optional(S.String),
-          customEnvironmentSlugOrId: S.optional(S.String),
-          deploymentId: S.optional(S.String),
-          files: S.optional(__S(57, __c7, 1)),
-          gitAccessToken: S.optional(S.String),
-          gitMetadata: S.optional(__S(58, __c7, 2)),
-          gitSource: S.optional(S.Unknown),
-          meta: S.optional(__S(40, __c5, 0)),
-          monorepoManager: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          project: S.optional(S.String),
-          projectSettings: S.optional(__S(59, __c7, 3)),
-          target: S.optional(S.String),
-          withLatestCommit: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v13/deployments", code: 200 })),
-      ).annotate({ identifier: "CreateDeploymentRequest" });
-    case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDeploymentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          url: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v13/deployments/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteDeploymentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          uid: S.String,
-        }),
-      ).annotate({ identifier: "DeleteDeploymentResponse" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idOrUrl: S.String.pipe(T.Label()),
-          withGitRepoInfo: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v13/deployments/{idOrUrl}", code: 200 })),
-      ).annotate({ identifier: "GetDeploymentRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetDeploymentResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           idOrUrl: S.String.pipe(T.Label()),
@@ -10815,13 +10111,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetDeploymentEventsRequest",
       });
-    case 3:
+    case 1:
       return S.Array(/*@__PURE__*/ S.NullOr(S.Unknown));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDeploymentEventsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -10833,18 +10133,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetDeploymentFileContentsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetDeploymentFileContentsResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
-          projectIds: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          projectIds: S.optional(__S(288, __c9, 0).pipe(T.Query())),
           target: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.Number.pipe(T.Query())),
           users: S.optional(S.String.pipe(T.Query())),
@@ -10858,11 +10166,7 @@ function __c8(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v7/deployments", code: 200 })),
       ).annotate({ identifier: "GetDeploymentsRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Unknown,
@@ -10873,27 +10177,27 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemAttributionGitUser",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          teamRoles: S.optional(__S(4, __c0, 4)),
+          teamRoles: S.optional(__S(290, __c9, 2)),
           username: S.String,
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemAttributionVercelUser",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          commitMeta: S.optional(__S(6, __c0, 6)),
-          gitUser: S.optional(__S(72, __c9, 0)),
-          vercelUser: S.optional(__S(73, __c9, 1)),
+          commitMeta: S.optional(__S(291, __c9, 3)),
+          gitUser: S.optional(__S(97, __c3, 1)),
+          vercelUser: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemAttribution",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           completedAt: S.optional(S.Number),
@@ -10903,15 +10207,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          deployment_alias: __S(75, __c9, 3).pipe(T.Body("deployment-alias")),
+          deployment_alias: __S(100, __c3, 4).pipe(T.Body("deployment-alias")),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemChecks",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -10924,7 +10228,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemCreator",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10933,22 +10237,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemCustomEnvironment",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          creator: __S(42, __c5, 2),
-          meta: S.optional(__S(40, __c5, 0)),
-          origin: __S(43, __c5, 3),
-          source: __S(44, __c5, 4),
+          creator: __S(293, __c9, 5),
+          meta: S.optional(__S(320, __c10, 0)),
+          origin: __S(294, __c9, 6),
+          source: __S(295, __c9, 7),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemPlatform",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           onCommit: S.Boolean,
@@ -10957,7 +10257,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           buildCommand: S.optional(S.NullOr(S.String)),
@@ -10966,7 +10266,7 @@ function __c10(j: number): any {
           customerSupportCodeVisibility: S.optional(S.Boolean),
           devCommand: S.optional(S.NullOr(S.String)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(80, __c10, 0)),
+          gitComments: S.optional(__S(105, __c3, 9)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
           installCommand: S.optional(S.NullOr(S.String)),
@@ -10975,13 +10275,13 @@ function __c10(j: number): any {
           rootDirectory: S.optional(S.NullOr(S.String)),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(47, __c5, 7)),
-          webAnalytics: S.optional(__S(48, __c6, 0)),
+          speedInsights: S.optional(__S(296, __c9, 8)),
+          webAnalytics: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemProjectSettings",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           blockCode: S.String,
@@ -10993,22 +10293,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemSeatBlock",
       });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(2, __c0, 2))),
-          attribution: S.optional(__S(74, __c9, 2)),
+          aliasError: S.optional(S.NullOr(__S(289, __c9, 1))),
+          attribution: S.optional(__S(99, __c3, 3)),
           buildingAt: S.optional(S.Number),
-          checks: S.optional(__S(76, __c9, 4)),
+          checks: S.optional(__S(101, __c3, 5)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           created: S.Number,
           createdAt: S.Number,
-          creator: __S(77, __c9, 5),
-          customEnvironment: S.optional(__S(78, __c9, 6)),
+          creator: __S(102, __c3, 6),
+          customEnvironment: S.optional(__S(103, __c3, 7)),
           defaultRoute: S.optional(S.String),
           deleted: S.optional(S.Number),
           errorCode: S.optional(S.String),
@@ -11016,20 +10316,20 @@ function __c10(j: number): any {
           expiration: S.optional(S.Number),
           inspectorUrl: S.NullOr(S.String),
           isRollbackCandidate: S.optional(S.NullOr(S.Boolean)),
-          manualProvisioning: S.optional(__S(39, __c4, 7)),
-          meta: S.optional(__S(40, __c5, 0)),
+          manualProvisioning: S.optional(__S(292, __c9, 4)),
+          meta: S.optional(__S(320, __c10, 0)),
           name: S.String,
           oomReport: S.optional(S.String),
           passiveConnectConfigurationId: S.optional(S.String),
-          platform: S.optional(__S(79, __c9, 7)),
+          platform: S.optional(__S(104, __c3, 8)),
           prebuilt: S.optional(S.Boolean),
           projectId: S.String,
-          projectSettings: S.optional(__S(81, __c10, 1)),
+          projectSettings: S.optional(__S(106, __c3, 10)),
           proposedExpiration: S.optional(S.Number),
           ready: S.optional(S.Number),
           readyState: S.String,
           readySubstate: S.optional(S.String),
-          seatBlock: S.optional(__S(82, __c10, 2)),
+          seatBlock: S.optional(__S(107, __c3, 11)),
           softDeletedByRetention: S.optional(S.Boolean),
           source: S.optional(S.String),
           state: S.optional(S.String),
@@ -11042,9 +10342,9 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItem",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 13:
+      return S.Array(__S(108, __c3, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -11052,14 +10352,18 @@ function __c10(j: number): any {
           prev: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Pagination" });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          deployments: __S(84, __c10, 4),
-          pagination: __S(85, __c10, 5),
+          deployments: __S(109, __c3, 13),
+          pagination: __S(110, __c3, 14),
         }),
       ).annotate({ identifier: "GetDeploymentsResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -11069,16 +10373,12 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDeploymentFilesRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(89, __c11, 1)));
     case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(130, __c4, 2)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          children: S.optional(__S(88, __c11, 0)),
+          children: S.optional(__S(129, __c4, 1)),
           contentType: S.optional(S.String),
           mode: S.Number,
           name: S.String,
@@ -11086,15 +10386,19 @@ function __c11(j: number): any {
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileTree" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
     case 3:
-      return S.suspend(() => __S(90, __c11, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(130, __c4, 2));
+    case 4:
+      return S.suspend(() => __S(131, __c4, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeploymentFilesResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String.pipe(T.Label()),
@@ -11104,7 +10408,7 @@ function __c11(j: number): any {
           status: S.optional(S.String),
           statusText: S.optional(S.String),
           statusUrl: S.optional(S.String),
-          outcomes: S.optional(__S(92, __c11, 4)),
+          outcomes: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11115,7 +10419,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationDeploymentActionRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -11126,13 +10434,712 @@ function __c11(j: number): any {
           xNowSize: S.optional(S.Number.pipe(T.Header("x-now-size"))),
         }).pipe(T.Http({ method: "POST", uri: "/v2/files", code: 200 })),
       ).annotate({ identifier: "UploadFileRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UploadFileResponse",
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v12/deployments/{id}/cancel", code: 200 })),
+      ).annotate({ identifier: "CancelDeploymentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          code: S.String,
+          link: S.optional(S.String),
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAliasWarning",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Unknown,
+          login: S.String,
+          provider: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAttributionGitUser",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          teamRoles: S.optional(__S(288, __c9, 0)),
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAttributionVercelUser",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          commitMeta: S.optional(__S(291, __c9, 3)),
+          gitUser: S.optional(__S(227, __c7, 3)),
+          vercelUser: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAttribution",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          env: __S(288, __c9, 0),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseBuild",
+      });
+    case 7:
+      return S.Record(S.String, S.Unknown);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(231, __c7, 7)),
+          src: S.optional(S.String),
+          use: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseBuildsItem",
+      });
+    case 9:
+      return S.Array(__S(232, __c7, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          completedAt: S.optional(S.Number),
+          startedAt: S.Number,
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseChecksDeploymentAlias",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          deployment_alias: __S(234, __c7, 10).pipe(T.Body("deployment-alias")),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseChecks",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseConfigResourceConfigBuildQueue",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          purchaseType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseConfigResourceConfigBuildMachine",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          buildQueue: S.optional(__S(236, __c7, 12)),
+          elasticConcurrency: S.optional(S.String),
+          buildMachine: S.optional(__S(237, __c7, 13)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseConfigResourceConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          functionMemoryType: S.String,
+          functionTimeout: S.NullOr(S.Number),
+          functionType: S.String,
+          isUsingActiveCPU: S.optional(S.Boolean),
+          resourceConfig: S.optional(__S(238, __c7, 14)),
+          secureComputeFallbackRegion: S.NullOr(S.String),
+          secureComputePrimaryRegion: S.NullOr(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseConfig",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.optional(S.String),
+          type: S.optional(S.String),
+          uid: S.String,
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseCreator",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          schedule: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseCronsItem",
+      });
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.Number),
+          endTimeCapped: S.optional(S.Number),
+          startTime: S.optional(S.Number),
+          timeForBilling: S.optional(S.Number),
+          timeToContainerExit: S.optional(S.Number),
+          timeToContainerExitCapped: S.optional(S.Number),
+          timeToReady: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseDuration",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseFunctionsValueAffinity",
+      });
+    case 21:
+      return S.Array(S.Unknown);
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          affinity: S.optional(__S(244, __c7, 20)),
+          architecture: S.optional(S.String),
+          excludeFiles: S.optional(S.String),
+          experimentalTriggers: S.optional(__S(245, __c7, 21)),
+          functionFailoverRegions: S.optional(__S(290, __c9, 2)),
+          includeFiles: S.optional(S.String),
+          maxConcurrency: S.optional(S.Number),
+          maxDuration: S.optional(S.Unknown),
+          memory: S.optional(S.Number),
+          regions: S.optional(__S(288, __c9, 0)),
+          runtime: S.optional(S.String),
+          supportsCancellation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseFunctionsValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(246, __c7, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          pathname: S.optional(S.String),
+          search: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseImagesLocalPatternsItem",
+      });
+    case 25:
+      return S.Array(__S(248, __c7, 24));
+    case 26:
+      return S.Array(S.Number);
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.String,
+          pathname: S.optional(S.String),
+          port: S.optional(S.String),
+          protocol: S.optional(S.String),
+          search: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseImagesRemotePatternsItem",
+      });
+    case 28:
+      return S.Array(__S(251, __c7, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          contentDispositionType: S.optional(S.String),
+          contentSecurityPolicy: S.optional(S.String),
+          dangerouslyAllowSVG: S.optional(S.Boolean),
+          domains: S.optional(__S(288, __c9, 0)),
+          formats: S.optional(__S(226, __c7, 2)),
+          localPatterns: S.optional(__S(249, __c7, 25)),
+          minimumCacheTTL: S.optional(S.Number),
+          qualities: S.optional(__S(250, __c7, 26)),
+          remotePatterns: S.optional(__S(252, __c7, 28)),
+          sizes: S.optional(__S(250, __c7, 26)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseImages",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          claimedAt: S.optional(S.Number),
+          completedAt: S.optional(S.Number),
+          skippedAt: S.optional(S.Number),
+          skippedBy: S.optional(S.String),
+          startedAt: S.Number,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseIntegrations",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          functionName: S.String,
+          path: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseLambdasItemOutputItem",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(255, __c7, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.Number),
+          entrypoint: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          readyState: S.optional(S.String),
+          readyStateAt: S.optional(S.Number),
+          output: __S(
+            256,
+            __c8,
+            0,
+          ) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputList>,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseLambdasItem",
+      });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          custom_environment_id: S.optional(S.String),
+          deployment_id: S.optional(S.String),
+          environment: S.String,
+          iss: S.String,
+          mfe_group_ids: S.optional(__S(288, __c9, 0)),
+          owner: S.String,
+          owner_id: S.String,
+          plan: S.optional(S.String),
+          project: S.String,
+          project_id: S.String,
+          scope: S.String,
+          sub: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseOidcTokenClaims",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creator: __S(293, __c9, 5),
+          meta: S.optional(__S(320, __c10, 0)),
+          origin: __S(294, __c9, 6),
+          source: __S(295, __c9, 7),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponsePlatform",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          framework: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseProject",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          buildCommand: S.optional(S.NullOr(S.String)),
+          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
+          devCommand: S.optional(S.NullOr(S.String)),
+          framework: S.optional(S.NullOr(S.String)),
+          installCommand: S.optional(S.NullOr(S.String)),
+          nodeVersion: S.optional(S.String),
+          outputDirectory: S.optional(S.NullOr(S.String)),
+          speedInsights: S.optional(__S(296, __c9, 8)),
+          webAnalytics: S.optional(__S(297, __c9, 9)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseProjectSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cores: S.optional(S.Number),
+          defaultPurchaseType: S.optional(S.String),
+          machineSelectionType: S.optional(S.String),
+          memory: S.optional(S.Number),
+          purchaseType: S.optional(S.String),
+          selectionSource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseResourceConfigBuildMachine",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          buildMachine: S.optional(__S(263, __c8, 7)),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseResourceConfig",
+      });
+    case 9:
+      return S.Array(S.Unknown);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          blockCode: S.String,
+          gitProvider: S.optional(S.String),
+          gitUserId: S.optional(S.Unknown),
+          isVerified: S.optional(S.Boolean),
+          userId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseSeatBlock",
+      });
+    case 11:
+      return S.Array(S.Unknown);
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseTeam",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(__S(288, __c9, 0)),
+          aliasAssigned: S.Boolean,
+          aliasAssignedAt: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(289, __c9, 1))),
+          aliasFinal: S.optional(S.NullOr(S.String)),
+          aliasWarning: S.optional(S.NullOr(__S(225, __c7, 1))),
+          alwaysRefuseToBuild: S.optional(S.Boolean),
+          atproto: S.optional(S.Unknown),
+          attribution: S.optional(__S(229, __c7, 5)),
+          autoAssignCustomDomains: S.optional(S.Boolean),
+          automaticAliases: S.optional(__S(288, __c9, 0)),
+          bootedAt: S.Number,
+          build: __S(230, __c7, 6),
+          buildArtifactUrls: S.optional(__S(288, __c9, 0)),
+          buildContainerFinishedAt: S.optional(S.Number),
+          buildErrorAt: S.optional(S.Number),
+          buildingAt: S.Number,
+          builds: S.optional(__S(233, __c7, 9)),
+          buildSkipped: S.Boolean,
+          canceledAt: S.optional(S.Number),
+          checks: S.optional(__S(235, __c7, 11)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
+          config: S.optional(__S(239, __c7, 15)),
+          connectBuildsEnabled: S.optional(S.Boolean),
+          connectConfigurationId: S.optional(S.String),
+          createdAt: S.Number,
+          createdIn: S.String,
+          creator: __S(240, __c7, 16),
+          crons: S.optional(__S(242, __c7, 18)),
+          customEnvironment: S.optional(S.Unknown),
+          defaultRoute: S.optional(S.String),
+          deletedAt: S.optional(S.NullOr(S.Number)),
+          duration: __S(243, __c7, 19),
+          env: __S(288, __c9, 0),
+          errorCode: S.optional(S.String),
+          errorLink: S.optional(S.String),
+          errorMessage: S.optional(S.NullOr(S.String)),
+          errorStep: S.optional(S.String),
+          flags: S.optional(S.Unknown),
+          functions: S.optional(S.NullOr(__S(247, __c7, 23))),
+          gitRepo: S.optional(S.NullOr(S.Unknown)),
+          gitSource: S.optional(S.Unknown),
+          id: S.String,
+          images: S.optional(__S(253, __c7, 29)),
+          initReadyAt: S.optional(S.Number),
+          inspectorUrl: S.NullOr(S.String),
+          integrations: S.optional(__S(254, __c7, 30)),
+          isFirstBranchDeployment: S.optional(S.Boolean),
+          isInConcurrentBuildsQueue: S.Boolean,
+          isInstantStatic: S.optional(S.Boolean),
+          isInSystemBuildsQueue: S.Boolean,
+          lambdas: S.optional(__S(258, __c8, 2)),
+          manualProvisioning: S.optional(__S(292, __c9, 4)),
+          meta: __S(320, __c10, 0),
+          microfrontends: S.optional(S.Unknown),
+          monorepoManager: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          nodeVersion: S.optional(S.String),
+          oidcTokenClaims: S.optional(__S(259, __c8, 3)),
+          oomReport: S.optional(S.String),
+          originCacheRegion: S.optional(S.String),
+          ownerId: S.String,
+          passiveConnectConfigurationId: S.optional(S.String),
+          passiveRegions: S.optional(__S(288, __c9, 0)),
+          plan: S.String,
+          platform: S.optional(__S(260, __c8, 4)),
+          prebuilt: S.optional(S.Boolean),
+          previewCommentsEnabled: S.optional(S.Boolean),
+          project: S.optional(__S(261, __c8, 5)),
+          projectId: S.String,
+          projectSettings: __S(262, __c8, 6),
+          public: S.Boolean,
+          ready: S.optional(S.Number),
+          readyState: S.String,
+          readyStateReason: S.optional(S.String),
+          readySubstate: S.optional(S.String),
+          regions: __S(288, __c9, 0),
+          resourceConfig: S.optional(__S(264, __c8, 8)),
+          routes: S.NullOr(__S(265, __c8, 9)),
+          seatBlock: S.optional(__S(266, __c8, 10)),
+          services: S.optional(__S(267, __c8, 11)),
+          softDeletedByRetention: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          status: S.String,
+          target: S.optional(S.NullOr(S.String)),
+          team: S.optional(__S(268, __c8, 12)),
+          ttyBuildLogs: S.optional(S.Boolean),
+          type: S.String,
+          undeletedAt: S.optional(S.Number),
+          url: S.String,
+          userAliases: S.optional(__S(288, __c9, 0)),
+          userConfiguredDeploymentId: S.optional(S.String),
+          version: S.Number,
+        }),
+      ).annotate({ identifier: "CancelDeploymentResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAliasError",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          isVerified: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseAttributionCommitMeta",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          completedAt: S.optional(S.Number),
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseManualProvisioning",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.optional(S.String),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponsePlatformCreator",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponsePlatformOrigin",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponsePlatformSource",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          canceledAt: S.optional(S.Number),
+          dataReceivedAt: S.optional(S.Number),
+          disabledAt: S.optional(S.Number),
+          enabledAt: S.optional(S.Number),
+          hasData: S.optional(S.Boolean),
+          id: S.String,
+          paidAt: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseProjectSettingsSpeedInsights",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          canceledAt: S.optional(S.Number),
+          disabledAt: S.optional(S.Number),
+          enabledAt: S.optional(S.Number),
+          hasData: S.optional(S.Boolean),
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelDeploymentResponseProjectSettingsWebAnalytics",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          remoteUrl: S.optional(S.String),
+          commitAuthorName: S.optional(S.String),
+          commitAuthorEmail: S.optional(S.String),
+          commitMessage: S.optional(S.String),
+          commitRef: S.optional(S.String),
+          commitSha: S.optional(S.String),
+          dirty: S.optional(S.Boolean),
+          ci: S.optional(S.Boolean),
+          ciType: S.optional(S.String),
+          ciGitProviderUsername: S.optional(S.String),
+          ciGitRepoVisibility: S.optional(S.String),
+          rootDirectory: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDeploymentRequestGitMetadata",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          buildCommand: S.optional(S.NullOr(S.String)),
+          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
+          devCommand: S.optional(S.NullOr(S.String)),
+          framework: S.optional(S.NullOr(S.String)),
+          installCommand: S.optional(S.NullOr(S.String)),
+          nodeVersion: S.optional(S.String),
+          outputDirectory: S.optional(S.NullOr(S.String)),
+          rootDirectory: S.optional(S.NullOr(S.String)),
+          serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
+          skipGitConnectDuringLink: S.optional(S.Boolean),
+          sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateDeploymentRequestProjectSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          forceNew: S.optional(S.String.pipe(T.Query())),
+          skipAutoDetectionConfirmation: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          buildMachine: S.optional(S.String),
+          customEnvironmentSlugOrId: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+          files: S.optional(__S(352, __c11, 0)),
+          gitAccessToken: S.optional(S.String),
+          gitMetadata: S.optional(__S(353, __c11, 1)),
+          gitSource: S.optional(S.Unknown),
+          meta: S.optional(__S(320, __c10, 0)),
+          monorepoManager: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          project: S.optional(S.String),
+          projectSettings: S.optional(__S(354, __c11, 2)),
+          target: S.optional(S.String),
+          withLatestCommit: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v13/deployments", code: 200 })),
+      ).annotate({ identifier: "CreateDeploymentRequest" });
+    case 4:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDeploymentResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          url: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v13/deployments/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteDeploymentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          uid: S.String,
+        }),
+      ).annotate({ identifier: "DeleteDeploymentResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrUrl: S.String.pipe(T.Label()),
+          withGitRepoInfo: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v13/deployments/{idOrUrl}", code: 200 })),
+      ).annotate({ identifier: "GetDeploymentRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDeploymentResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

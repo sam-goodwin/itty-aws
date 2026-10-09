@@ -2708,8 +2708,8 @@ export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
   BatchDeleteUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteUsersDataTypesDataPointsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(833, __c26, 1) as any as S.Schema<BatchDeleteUsersDataTypesDataPointsRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2728,8 +2728,8 @@ export const createProjectsSubscribers: API.OperationMethod<
   CreateProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateProjectsSubscribersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(961, __c30, 1) as any as S.Schema<CreateProjectsSubscribersRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2748,8 +2748,8 @@ export const createProjectsSubscribersSubscriptions: API.OperationMethod<
   CreateProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateProjectsSubscribersSubscriptionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Subscription>,
+  input: __S(1025, __c32, 1) as any as S.Schema<CreateProjectsSubscribersSubscriptionsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const createUsersDataTypesDataPoints: API.OperationMethod<
   CreateUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateUsersDataTypesDataPointsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateUsersDataTypesDataPointsRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2788,8 +2788,8 @@ export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
   DailyRollUpUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DailyRollUpUsersDataTypesDataPointsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DailyRollUpDataPointsResponse>,
+  input: __S(1314, __c41, 2) as any as S.Schema<DailyRollUpUsersDataTypesDataPointsRequest>,
+  output: __S(1319, __c41, 7) as any as S.Schema<DailyRollUpDataPointsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2808,8 @@ export const deleteProjectsSubscribers: API.OperationMethod<
   DeleteProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DeleteProjectsSubscribersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteProjectsSubscribersRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2828,8 @@ export const deleteProjectsSubscribersSubscriptions: API.OperationMethod<
   DeleteProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteProjectsSubscribersSubscriptionsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsSubscribersSubscriptionsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2843,8 @@ export const exportExerciseTcxUsersDataTypesDataPoints: API.OperationMethod<
   ExportExerciseTcxUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ExportExerciseTcxResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<ExportExerciseTcxResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2858,8 @@ export const getIdentityUsers: API.OperationMethod<
   GetIdentityUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetIdentityUsersRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<Identity>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetIdentityUsersRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<Identity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2873,8 @@ export const getIrnProfileUsers: API.OperationMethod<
   GetIrnProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetIrnProfileUsersRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<IrnProfile>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetIrnProfileUsersRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<IrnProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2888,8 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetProfileUsersRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Profile>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProfileUsersRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const getSettingsUsers: API.OperationMethod<
   GetSettingsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetSettingsUsersRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<Settings>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetSettingsUsersRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2918,8 @@ export const getShlManifestShlM: API.OperationMethod<
   GetShlManifestShlMError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetShlManifestShlMRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<HttpBody>,
+  input: __S(257, __c8, 1) as any as S.Schema<GetShlManifestShlMRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2929,8 +2929,8 @@ export type GetShlRError = NotFound | Forbidden | GcpOpError;
 /** Forward a resource request for a given SHL */
 export const getShlR: API.OperationMethod<GetShlRRequest, HttpBody, GetShlRError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(170, __c21, 2) as any as S.Schema<GetShlRRequest>,
-    output: __S(169, __c21, 1) as any as S.Schema<HttpBody>,
+    input: __S(320, __c10, 0) as any as S.Schema<GetShlRRequest>,
+    output: __S(288, __c9, 0) as any as S.Schema<HttpBody>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2944,8 +2944,8 @@ export const getUsersDataTypesDataPoints: API.OperationMethod<
   GetUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetUsersDataTypesDataPointsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<DataPoint>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetUsersDataTypesDataPointsRequest>,
+  output: __S(1140, __c35, 20) as any as S.Schema<DataPoint>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2959,8 +2959,8 @@ export const getUsersPairedDevices: API.OperationMethod<
   GetUsersPairedDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetUsersPairedDevicesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<PairedDevice>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetUsersPairedDevicesRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<PairedDevice>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2975,8 @@ export const listProjectsSubscribers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListProjectsSubscribersRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<ListSubscribersResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListProjectsSubscribersRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<ListSubscribersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2992,8 +2992,8 @@ export const listProjectsSubscribersSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListProjectsSubscribersSubscriptionsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListProjectsSubscribersSubscriptionsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3009,8 +3009,8 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListUsersDataTypesDataPointsRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<ListDataPointsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListUsersDataTypesDataPointsRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ListDataPointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3026,8 +3026,8 @@ export const listUsersPairedDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPairedDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListUsersPairedDevicesRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListPairedDevicesResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListUsersPairedDevicesRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<ListPairedDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3047,8 +3047,8 @@ export const patchProjectsSubscribers: API.OperationMethod<
   PatchProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<PatchProjectsSubscribersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(608, __c19, 0) as any as S.Schema<PatchProjectsSubscribersRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3067,8 +3067,8 @@ export const patchProjectsSubscribersSubscriptions: API.OperationMethod<
   PatchProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<PatchProjectsSubscribersSubscriptionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Subscription>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchProjectsSubscribersSubscriptionsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3087,8 +3087,8 @@ export const patchUsersDataTypesDataPoints: API.OperationMethod<
   PatchUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<PatchUsersDataTypesDataPointsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(672, __c21, 0) as any as S.Schema<PatchUsersDataTypesDataPointsRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3103,8 +3103,8 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   GcpOpContext,
   ReconcileDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ReconcileUsersDataTypesDataPointsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ReconcileDataPointsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ReconcileUsersDataTypesDataPointsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ReconcileDataPointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const rollUpUsersDataTypesDataPoints: API.OperationMethod<
   RollUpUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<RollUpUsersDataTypesDataPointsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<RollUpDataPointsResponse>,
+  input: __S(738, __c23, 2) as any as S.Schema<RollUpUsersDataTypesDataPointsRequest>,
+  output: __S(741, __c23, 5) as any as S.Schema<RollUpDataPointsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const updateProfileUsers: API.OperationMethod<
   UpdateProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpdateProfileUsersRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Profile>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdateProfileUsersRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const updateSettingsUsers: API.OperationMethod<
   UpdateSettingsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateSettingsUsersRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<Settings>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateSettingsUsersRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3165,1359 +3165,6 @@ export const updateSettingsUsers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteDataPointsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4beta/{+parent}/dataPoints:batchDelete",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteUsersDataTypesDataPointsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          response: S.optional(__S(3, __c0, 3)),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionCreatePolicy: S.optional(S.String),
-          dataTypes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "SubscriberConfig" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          secretSet: S.optional(S.Boolean),
-          secret: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointAuthorization" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriberConfigs: S.optional(__S(8, __c1, 0)),
-          endpointAuthorization: S.optional(__S(9, __c1, 1)),
-          endpointUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateSubscriberPayload" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          subscriberId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4beta/{+parent}/subscribers",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSubscribersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(S.String),
-          dataTypes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateSubscriptionPayload",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4beta/{+parent}/subscriptions",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSubscribersSubscriptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(S.String),
-          dataTypes: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Health_Date" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(__S(15, __c1, 7)),
-          time: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "CivilDateTime" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startUtcOffset: S.optional(S.String),
-          civilStartTime: S.optional(__S(17, __c2, 1)),
-          startTime: S.optional(S.String),
-          endUtcOffset: S.optional(S.String),
-          endTime: S.optional(S.String),
-          civilEndTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ObservationTimeInterval" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          heartRateZone: S.optional(S.String),
-          activeZoneMinutes: S.optional(S.String),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ActiveZoneMinutes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          utcOffset: S.optional(S.String),
-          physicalTime: S.optional(S.String),
-          civilTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ObservationSampleTime" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          measurementLocation: S.optional(S.String),
-          sensorType: S.optional(S.String),
-          measurementState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SensorMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(21, __c2, 5)),
-          temperatureCelsius: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SensorData" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          sensorData: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "SkinTemperatureSensors" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          count: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Steps" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          breathsPerMinute: S.optional(S.Number),
-          date: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "DailyRespiratoryRate" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          notes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MenstrualPeriod" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.optional(S.Number),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "BodyFat" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          symptoms: S.optional(__S(29, __c3, 5)),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Symptoms" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          standardDeviation: S.optional(S.Number),
-          signalToNoise: S.optional(S.Number),
-          breathsPerMinute: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RespiratoryRateSleepSummaryStatistics",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          deepSleepStats: S.optional(__S(31, __c3, 7)),
-          lightSleepStats: S.optional(__S(31, __c3, 7)),
-          remSleepStats: S.optional(__S(31, __c3, 7)),
-          fullSleepStats: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "RespiratoryRateSleepSummary",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activityLevelType: S.optional(S.String),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ActivityLevel" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          startUtcOffset: S.optional(S.String),
-          endUtcOffset: S.optional(S.String),
-          civilStartTime: S.optional(__S(17, __c2, 1)),
-          civilEndTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "SessionTimeInterval" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userProvidedUnit: S.optional(S.String),
-          milliliters: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "VolumeQuantity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(34, __c4, 2)),
-          amountConsumed: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "HydrationLog" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          multiplier: S.optional(S.Number),
-          foodMeasurementUnitDisplayName: S.optional(S.String),
-          amount: S.optional(S.Number),
-          foodMeasurementUnitDisplayNamePlural: S.optional(S.String),
-          foodMeasurementUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FoodServing" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userProvidedUnit: S.optional(S.String),
-          kcal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EnergyQuantity" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userProvidedUnit: S.optional(S.String),
-          grams: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WeightQuantity" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(__S(40, __c5, 0)),
-          nutrient: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NutrientQuantity" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          servings: S.optional(__S(38, __c4, 6)),
-          energyAvg: S.optional(__S(39, __c4, 7)),
-          accessLevel: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          energyMin: S.optional(__S(39, __c4, 7)),
-          totalFat: S.optional(__S(40, __c5, 0)),
-          totalCarbohydrate: S.optional(__S(40, __c5, 0)),
-          defaultServing: S.optional(__S(37, __c4, 5)),
-          brand: S.optional(S.String),
-          description: S.optional(S.String),
-          nutrients: S.optional(__S(42, __c5, 2)),
-          energyMax: S.optional(__S(39, __c4, 7)),
-          mealType: S.optional(S.String),
-          energyFromFat: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "Food" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          weightGrams: S.optional(S.Number),
-          notes: S.optional(S.String),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Weight" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.String),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "Floors" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          measurementLocation: S.optional(S.String),
-          measurementState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkinTemperatureMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          temperatureCelsius: S.optional(S.Number),
-          metadata: S.optional(__S(46, __c5, 6)),
-          baselineTemperatureCelsius: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SkinTemperature" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          heartRateZoneType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeInHeartRateZone" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          runVo2Max: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RunVO2Max" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          vo2Max: S.optional(S.Number),
-          measurementMethod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VO2Max" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(__S(15, __c1, 7)),
-          averageHeartRateVariabilityMilliseconds: S.optional(S.Number),
-          nonRemHeartRateBeatsPerMinute: S.optional(S.String),
-          entropy: S.optional(S.Number),
-          deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DailyHeartRateVariability",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deviceModel: S.optional(S.String),
-          serviceVersion: S.optional(S.String),
-          algorithmVersion: S.optional(S.String),
-          firmwareVersion: S.optional(S.String),
-          featureVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MedicalDeviceInfo" });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          samplingFrequencyHertz: S.optional(S.Number),
-          resultClassification: S.optional(S.String),
-          beatsPerMinuteAvg: S.optional(S.String),
-          medicalDeviceInfo: S.optional(__S(52, __c6, 4)),
-          millivoltsScalingFactor: S.optional(S.Number),
-          waveformSamples: S.optional(__S(53, __c6, 5)),
-          interval: S.optional(__S(34, __c4, 2)),
-          leadNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Electrocardiogram" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          strokeCount: S.optional(S.String),
-          swimStrokeType: S.optional(S.String),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SwimLengthsData" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          percentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OxygenSaturation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SedentaryPeriod" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          relativeNightlyStddev30dCelsius: S.optional(S.Number),
-          date: S.optional(__S(15, __c1, 7)),
-          nightlyTemperatureCelsius: S.optional(S.Number),
-          baselineTemperatureCelsius: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DailySleepTemperatureDerivations",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          calculationMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DailyRestingHeartRateMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          beatsPerMinute: S.optional(S.String),
-          dailyRestingHeartRateMetadata: S.optional(__S(59, __c7, 3)),
-          date: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "DailyRestingHeartRate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          physicalTime: S.optional(S.String),
-          utcOffset: S.optional(S.String),
-          beatsPerMinute: S.optional(S.Number),
-          civilTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "HeartBeat" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          positive: S.optional(S.Boolean),
-          heartBeats: S.optional(__S(62, __c7, 6)),
-          startTime: S.optional(S.String),
-          civilEndTime: S.optional(__S(17, __c2, 1)),
-          startUtcOffset: S.optional(S.String),
-          endTime: S.optional(S.String),
-          endUtcOffset: S.optional(S.String),
-          civilStartTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AlertWindow" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alertWindows: S.optional(__S(64, __c8, 0)),
-          interval: S.optional(__S(34, __c4, 2)),
-          medicalDeviceInfo: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "IrregularRhythmNotification",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webClientId: S.optional(S.String),
-          packageName: S.optional(S.String),
-          googleWebClientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Application" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          formFactor: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Device" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.optional(__S(66, __c8, 2)),
-          platform: S.optional(S.String),
-          device: S.optional(__S(67, __c8, 3)),
-          recordingMethod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          avgCadenceStepsPerMinute: S.optional(S.Number),
-          avgVerticalOscillationMillimeters: S.optional(S.String),
-          avgGroundContactTimeDuration: S.optional(S.String),
-          avgVerticalRatio: S.optional(S.Number),
-          avgStrideLengthMillimeters: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobilityMetrics" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          moderateTime: S.optional(S.String),
-          lightTime: S.optional(S.String),
-          peakTime: S.optional(S.String),
-          vigorousTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeInHeartRateZones" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          totalSwimLengths: S.optional(S.Number),
-          elevationGainMillimeters: S.optional(S.Number),
-          averagePaceSecondsPerMeter: S.optional(S.Number),
-          averageHeartRateBeatsPerMinute: S.optional(S.String),
-          runVo2Max: S.optional(S.Number),
-          mobilityMetrics: S.optional(__S(69, __c8, 5)),
-          activeZoneMinutes: S.optional(S.String),
-          averageSpeedMillimetersPerSecond: S.optional(S.Number),
-          steps: S.optional(S.String),
-          caloriesKcal: S.optional(S.Number),
-          heartRateZoneDurations: S.optional(__S(70, __c8, 6)),
-          distanceMillimeters: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricsSummary" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startUtcOffset: S.optional(S.String),
-          endUtcOffset: S.optional(S.String),
-          startTime: S.optional(S.String),
-          metricsSummary: S.optional(__S(71, __c8, 7)),
-          endTime: S.optional(S.String),
-          splitType: S.optional(S.String),
-          activeDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SplitSummary" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hasGps: S.optional(S.Boolean),
-          poolLengthMillimeters: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExerciseMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          exerciseEventType: S.optional(S.String),
-          eventUtcOffset: S.optional(S.String),
-          eventTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExerciseEvent" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exerciseType: S.optional(S.String),
-          interval: S.optional(__S(34, __c4, 2)),
-          splits: S.optional(__S(73, __c9, 1)),
-          metricsSummary: S.optional(__S(71, __c8, 7)),
-          exerciseMetadata: S.optional(__S(74, __c9, 2)),
-          notes: S.optional(S.String),
-          activeDuration: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          splitSummaries: S.optional(__S(73, __c9, 1)),
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          exerciseEvents: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "Exercise" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          pluralDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FoodMeasurementUnit" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bloodGlucoseMilligramsPerDeciliter: S.optional(S.Number),
-          notes: S.optional(S.String),
-          measurementSource: S.optional(S.String),
-          mealType: S.optional(S.String),
-          specimen: S.optional(S.String),
-          measurementTiming: S.optional(S.String),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "BloodGlucose" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minBeatsPerMinute: S.optional(S.String),
-          maxBeatsPerMinute: S.optional(S.String),
-          heartRateZoneType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeartRateZone" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          heartRateZones: S.optional(__S(81, __c10, 1)),
-          date: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "DailyHeartRateZones" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          foodMeasurementUnit: S.optional(S.String),
-          foodMeasurementUnitDisplayName: S.optional(S.String),
-          amount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Serving" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          foodDisplayName: S.optional(S.String),
-          interval: S.optional(__S(34, __c4, 2)),
-          serving: S.optional(__S(83, __c10, 3)),
-          energyFromFat: S.optional(__S(39, __c4, 7)),
-          totalFat: S.optional(__S(40, __c5, 0)),
-          totalCarbohydrate: S.optional(__S(40, __c5, 0)),
-          mealType: S.optional(S.String),
-          food: S.optional(S.String),
-          energy: S.optional(__S(39, __c4, 7)),
-          nutrients: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "NutritionLog" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          kcal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BasalEnergyBurned" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          upperBoundPercentage: S.optional(S.Number),
-          date: S.optional(__S(15, __c1, 7)),
-          averagePercentage: S.optional(S.Number),
-          standardDeviationPercentage: S.optional(S.Number),
-          lowerBoundPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DailyOxygenSaturation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activityLevel: S.optional(S.String),
-          activeMinutes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveMinutesByActivityLevel",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activeMinutesByActivityLevel: S.optional(__S(88, __c11, 0)),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ActiveMinutes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          result: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OvulationTest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          valences: S.optional(__S(29, __c3, 5)),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          moods: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "Moods" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          gainMillimeters: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Altitude" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          minutes: S.optional(S.String),
-          count: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StageSummary" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minutesAsleep: S.optional(S.String),
-          minutesAwake: S.optional(S.String),
-          stagesSummary: S.optional(__S(94, __c11, 6)),
-          minutesInSleepPeriod: S.optional(S.String),
-          minutesAfterWakeUp: S.optional(S.String),
-          minutesToFallAsleep: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SleepSummary" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nap: S.optional(S.Boolean),
-          mainSleep: S.optional(S.Boolean),
-          externalId: S.optional(S.String),
-          processed: S.optional(S.Boolean),
-          manuallyEdited: S.optional(S.Boolean),
-          stagesStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SleepMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endUtcOffset: S.optional(S.String),
-          endTime: S.optional(S.String),
-          startUtcOffset: S.optional(S.String),
-          createTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SleepStage" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endUtcOffset: S.optional(S.String),
-          startTime: S.optional(S.String),
-          startUtcOffset: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OutOfBedSegment" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          type: S.optional(S.String),
-          summary: S.optional(__S(95, __c11, 7)),
-          metadata: S.optional(__S(96, __c12, 0)),
-          shortAwakenings: S.optional(__S(98, __c12, 2)),
-          outOfBedSegments: S.optional(__S(100, __c12, 4)),
-          interval: S.optional(__S(34, __c4, 2)),
-          stages: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({ identifier: "Sleep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lowFrequencyPower: S.optional(S.Number),
-          highFrequencyPower: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "HeartRateVariabilityMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
-          standardDeviationMilliseconds: S.optional(S.Number),
-          metadata: S.optional(__S(102, __c12, 6)),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "HeartRateVariability" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vo2MaxCovariance: S.optional(S.Number),
-          cardioFitnessLevel: S.optional(S.String),
-          date: S.optional(__S(15, __c1, 7)),
-          vo2Max: S.optional(S.Number),
-          estimated: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DailyVO2Max" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          heightMillimeters: S.optional(S.String),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Height" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          motionContext: S.optional(S.String),
-          sensorLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeartRateMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(20, __c2, 4)),
-          metadata: S.optional(__S(106, __c13, 2)),
-          beatsPerMinute: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeartRate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          temperatureCelsius: S.optional(S.Number),
-          measurementLocation: S.optional(S.String),
-          sampleTime: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "CoreBodyTemperature" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(18, __c2, 2)),
-          millimeters: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Distance" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kcal: S.optional(S.Number),
-          interval: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ActiveEnergyBurned" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activeZoneMinutes: S.optional(__S(19, __c2, 3)),
-          skinTemperatureSensors: S.optional(__S(24, __c3, 0)),
-          steps: S.optional(__S(25, __c3, 1)),
-          dailyRespiratoryRate: S.optional(__S(26, __c3, 2)),
-          menstrualPeriod: S.optional(__S(27, __c3, 3)),
-          bodyFat: S.optional(__S(28, __c3, 4)),
-          symptoms: S.optional(__S(30, __c3, 6)),
-          respiratoryRateSleepSummary: S.optional(__S(32, __c4, 0)),
-          activityLevel: S.optional(__S(33, __c4, 1)),
-          hydrationLog: S.optional(__S(36, __c4, 4)),
-          food: S.optional(__S(43, __c5, 3)),
-          weight: S.optional(__S(44, __c5, 4)),
-          floors: S.optional(__S(45, __c5, 5)),
-          skinTemperature: S.optional(__S(47, __c5, 7)),
-          timeInHeartRateZone: S.optional(__S(48, __c6, 0)),
-          runVo2Max: S.optional(__S(49, __c6, 1)),
-          vo2Max: S.optional(__S(50, __c6, 2)),
-          dailyHeartRateVariability: S.optional(__S(51, __c6, 3)),
-          electrocardiogram: S.optional(__S(54, __c6, 6)),
-          name: S.optional(S.String),
-          swimLengthsData: S.optional(__S(55, __c6, 7)),
-          oxygenSaturation: S.optional(__S(56, __c7, 0)),
-          sedentaryPeriod: S.optional(__S(57, __c7, 1)),
-          dailySleepTemperatureDerivations: S.optional(__S(58, __c7, 2)),
-          dailyRestingHeartRate: S.optional(__S(60, __c7, 4)),
-          irregularRhythmNotification: S.optional(__S(65, __c8, 1)),
-          dataSource: S.optional(__S(68, __c8, 4)),
-          exercise: S.optional(__S(77, __c9, 5)),
-          foodMeasurementUnit: S.optional(__S(78, __c9, 6)),
-          bloodGlucose: S.optional(__S(79, __c9, 7)),
-          dailyHeartRateZones: S.optional(__S(82, __c10, 2)),
-          nutritionLog: S.optional(__S(84, __c10, 4)),
-          basalEnergyBurned: S.optional(__S(85, __c10, 5)),
-          dailyOxygenSaturation: S.optional(__S(86, __c10, 6)),
-          activeMinutes: S.optional(__S(89, __c11, 1)),
-          ovulationTest: S.optional(__S(90, __c11, 2)),
-          moods: S.optional(__S(91, __c11, 3)),
-          altitude: S.optional(__S(92, __c11, 4)),
-          sleep: S.optional(__S(101, __c12, 5)),
-          heartRateVariability: S.optional(__S(103, __c12, 7)),
-          dailyVo2Max: S.optional(__S(104, __c13, 0)),
-          height: S.optional(__S(105, __c13, 1)),
-          heartRate: S.optional(__S(107, __c13, 3)),
-          coreBodyTemperature: S.optional(__S(108, __c13, 4)),
-          distance: S.optional(__S(109, __c13, 5)),
-          activeEnergyBurned: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "DataPoint" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4beta/{+parent}/dataPoints",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersDataTypesDataPointsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(__S(17, __c2, 1)),
-          end: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CivilTimeInterval" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          windowSizeDays: S.optional(S.Number),
-          pageSize: S.optional(S.Number),
-          range: S.optional(__S(113, __c14, 1)),
-          pageToken: S.optional(S.String),
-          dataSourceFamily: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DailyRollUpDataPointsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4beta/{+parent}/dataPoints:dailyRollUp",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DailyRollUpUsersDataTypesDataPointsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          temperatureCelsiusMax: S.optional(S.Number),
-          temperatureCelsiusMin: S.optional(S.Number),
-          temperatureCelsiusAvg: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CoreBodyTemperatureRollupValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bodyFatPercentageAvg: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BodyFatRollupValue" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          millilitersSum: S.optional(S.Number),
-          userProvidedUnitLast: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeQuantityRollup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amountConsumed: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({ identifier: "HydrationLogRollupValue" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          beatsPerMinuteMin: S.optional(S.Number),
-          beatsPerMinuteAvg: S.optional(S.Number),
-          beatsPerMinuteMax: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HeartRateRollupValue" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activityLevelType: S.optional(S.String),
-          totalDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActivityLevelRollupByActivityLevelType",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activityLevelRollupsByActivityLevelType: S.optional(__S(122, __c15, 2)),
-        }),
-      ).annotate({ identifier: "ActivityLevelRollupValue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          beatsPerMinuteMin: S.optional(S.Number),
-          beatsPerMinuteMax: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RestingHeartRatePersonalRangeRollupValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bloodGlucoseMilligramsPerDeciliterAvg: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BloodGlucoseRollupValue" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          heartRateZone: S.optional(S.String),
-          duration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeInHeartRateZoneValue" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeInHeartRateZones: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "TimeInHeartRateZoneRollupValue",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          countSum: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FloorsRollupValue" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          heartRateZone: S.optional(S.String),
-          kcal: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CaloriesInHeartRateZoneValue",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          caloriesInHeartRateZones: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "CaloriesInHeartRateZoneRollupValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          weightGramsAvg: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WeightRollupValue" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userProvidedUnitLast: S.optional(S.String),
-          kcalSum: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EnergyQuantityRollup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userProvidedUnitLast: S.optional(S.String),
-          gramsSum: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WeightQuantityRollup" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(__S(135, __c16, 7)),
-          nutrient: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NutrientQuantityRollup" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          energyFromFat: S.optional(__S(134, __c16, 6)),
-          totalFat: S.optional(__S(135, __c16, 7)),
-          nutrients: S.optional(__S(137, __c17, 1)),
-          energy: S.optional(__S(134, __c16, 6)),
-          totalCarbohydrate: S.optional(__S(135, __c16, 7)),
-        }),
-      ).annotate({ identifier: "NutritionLogRollupValue" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kcalSum: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TotalCaloriesRollupValue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          durationSum: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SedentaryPeriodRollupValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          strokeCountSum: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SwimLengthsDataRollupValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rateMax: S.optional(S.Number),
-          rateAvg: S.optional(S.Number),
-          rateMin: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RunVO2MaxRollupValue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          millimetersSum: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DistanceRollupValue" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          averageHeartRateVariabilityMillisecondsMin: S.optional(S.Number),
-          averageHeartRateVariabilityMillisecondsMax: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "HeartRateVariabilityPersonalRangeRollupValue",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activityLevel: S.optional(S.String),
-          activeMinutesSum: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveMinutesRollupByActivityLevel",
-      });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activeMinutesRollupByActivityLevel: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({ identifier: "ActiveMinutesRollupValue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gainMillimetersSum: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AltitudeRollupValue" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kcalSum: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ActiveEnergyBurnedRollupValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sumInCardioHeartZone: S.optional(S.String),
-          sumInFatBurnHeartZone: S.optional(S.String),
-          sumInPeakHeartZone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveZoneMinutesRollupValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          coreBodyTemperature: S.optional(__S(116, __c14, 4)),
-          bodyFat: S.optional(__S(117, __c14, 5)),
-          civilStartTime: S.optional(__S(17, __c2, 1)),
-          hydrationLog: S.optional(__S(119, __c14, 7)),
-          heartRate: S.optional(__S(120, __c15, 0)),
-          activityLevel: S.optional(__S(123, __c15, 3)),
-          civilEndTime: S.optional(__S(17, __c2, 1)),
-          restingHeartRatePersonalRange: S.optional(__S(124, __c15, 4)),
-          skinTemperature: S.optional(__S(116, __c14, 4)),
-          bloodGlucose: S.optional(__S(125, __c15, 5)),
-          timeInHeartRateZone: S.optional(__S(128, __c16, 0)),
-          floors: S.optional(__S(129, __c16, 1)),
-          caloriesInHeartRateZone: S.optional(__S(132, __c16, 4)),
-          weight: S.optional(__S(133, __c16, 5)),
-          nutritionLog: S.optional(__S(138, __c17, 2)),
-          totalCalories: S.optional(__S(139, __c17, 3)),
-          sedentaryPeriod: S.optional(__S(140, __c17, 4)),
-          swimLengthsData: S.optional(__S(141, __c17, 5)),
-          runVo2Max: S.optional(__S(142, __c17, 6)),
-          steps: S.optional(__S(129, __c16, 1)),
-          distance: S.optional(__S(143, __c17, 7)),
-          heartRateVariabilityPersonalRange: S.optional(__S(144, __c18, 0)),
-          activeMinutes: S.optional(__S(147, __c18, 3)),
-          altitude: S.optional(__S(148, __c18, 4)),
-          activeEnergyBurned: S.optional(__S(149, __c18, 5)),
-          activeZoneMinutes: S.optional(__S(150, __c18, 6)),
-        }),
-      ).annotate({ identifier: "DailyRollupDataPoint" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rollupDataPoints: S.optional(__S(152, __c19, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DailyRollUpDataPointsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v4beta/{+name}",
-            baseUrl: "https://health.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsSubscribersRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4531,11 +3178,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSubscribersSubscriptionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4550,7 +3201,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ExportExerciseTcxUsersDataTypesDataPointsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tcxData: S.optional(S.String),
@@ -4558,7 +3209,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ExportExerciseTcxResponse",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4570,11 +3225,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIdentityUsersRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           legacyUserId: S.optional(S.String),
@@ -4582,7 +3233,11 @@ function __c20(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4596,7 +3251,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetIrnProfileUsersRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4605,7 +3260,11 @@ function __c20(j: number): any {
           enrollmentStatus: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IrnProfile" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4617,11 +3276,15 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProfileUsersRequest" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autoWalkingStrideLengthMm: S.optional(S.Number),
-          membershipStartDate: S.optional(__S(15, __c1, 7)),
+          membershipStartDate: S.optional(__S(1248, __c39, 0)),
           autoRunningStrideLengthMm: S.optional(S.Number),
           name: S.optional(S.String),
           userConfiguredWalkingStrideLengthMm: S.optional(S.Number),
@@ -4629,7 +3292,11 @@ function __c20(j: number): any {
           age: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Profile" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4641,7 +3308,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSettingsUsersRequest" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           utcOffset: S.optional(S.String),
@@ -4661,7 +3332,11 @@ function __c20(j: number): any {
           strideLengthWalkingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Settings" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recipient: S.optional(S.String),
@@ -4669,15 +3344,11 @@ function __c20(j: number): any {
           passcode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManifestParams" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           externalShlId: S.String.pipe(T.Label()),
-          body: S.optional(__S(167, __c20, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4688,15 +3359,23 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetShlManifestShlMRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          extensions: S.optional(__S(4, __c0, 4)),
+          extensions: S.optional(__S(897, __c28, 1)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           externalShlId: S.String.pipe(T.Label()),
@@ -4709,7 +3388,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetShlRRequest" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4723,7 +3406,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetUsersDataTypesDataPointsRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4737,20 +3424,28 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetUsersPairedDevicesRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           batteryStatus: S.optional(S.String),
           deviceVersion: S.optional(S.String),
           name: S.optional(S.String),
-          features: S.optional(__S(0, __c0, 0)),
+          features: S.optional(__S(864, __c27, 0)),
           macAddress: S.optional(S.String),
           deviceType: S.optional(S.String),
           batteryLevel: S.optional(S.Number),
           lastSyncTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PairedDevice" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4766,11 +3461,25 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsSubscribersRequest",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          endpointAuthorization: S.optional(__S(9, __c1, 1)),
-          subscriberConfigs: S.optional(__S(8, __c1, 0)),
+          totalSize: S.optional(S.Number),
+          subscribers: S.optional(__S(449, __c14, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListSubscribersResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointAuthorization: S.optional(__S(994, __c31, 2)),
+          subscriberConfigs: S.optional(__S(993, __c31, 1)),
           name: S.optional(S.String),
           state: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -4780,19 +3489,9 @@ function __c21(j: number): any {
       ).annotate({ identifier: "Subscriber" });
   }
 }
-function __c22(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalSize: S.optional(S.Number),
-          subscribers: S.optional(__S(176, __c22, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListSubscribersResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4809,18 +3508,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsSubscribersSubscriptionsRequest",
       });
-    case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: S.optional(__S(179, __c22, 3)),
+          subscriptions: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4838,18 +3541,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListUsersDataTypesDataPointsRequest",
       });
-    case 6:
-      return S.Array(__S(111, __c13, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1140, __c35, 20));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dataPoints: S.optional(__S(182, __c22, 6)),
+          dataPoints: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({ identifier: "ListDataPointsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4868,22 +3571,26 @@ function __c23(j: number): any {
         identifier: "ListUsersPairedDevicesRequest",
       });
     case 1:
-      return S.Array(__S(173, __c21, 5));
+      return S.Array(__S(416, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          pairedDevices: S.optional(__S(185, __c23, 1)),
+          pairedDevices: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({
         identifier: "ListPairedDevicesResponse",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4894,12 +3601,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSubscribersRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4910,11 +3621,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSubscribersSubscriptionsRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1140, __c35, 20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4925,7 +3640,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PatchUsersDataTypesDataPointsRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4943,85 +3662,85 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ReconcileUsersDataTypesDataPointsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nutritionLog: S.optional(__S(84, __c10, 4)),
-          respiratoryRateSleepSummary: S.optional(__S(32, __c4, 0)),
-          vo2Max: S.optional(__S(50, __c6, 2)),
-          bloodGlucose: S.optional(__S(79, __c9, 7)),
-          dailyVo2Max: S.optional(__S(104, __c13, 0)),
-          floors: S.optional(__S(45, __c5, 5)),
-          dailyHeartRateZones: S.optional(__S(82, __c10, 2)),
-          weight: S.optional(__S(44, __c5, 4)),
-          dataPointName: S.optional(S.String),
-          dailyRestingHeartRate: S.optional(__S(60, __c7, 4)),
-          sleep: S.optional(__S(101, __c12, 5)),
-          dailySleepTemperatureDerivations: S.optional(__S(58, __c7, 2)),
-          heartRate: S.optional(__S(107, __c13, 3)),
-          coreBodyTemperature: S.optional(__S(108, __c13, 4)),
-          activeZoneMinutes: S.optional(__S(19, __c2, 3)),
-          heartRateVariability: S.optional(__S(103, __c12, 7)),
-          activityLevel: S.optional(__S(33, __c4, 1)),
-          steps: S.optional(__S(25, __c3, 1)),
-          skinTemperatureSensors: S.optional(__S(24, __c3, 0)),
-          hydrationLog: S.optional(__S(36, __c4, 4)),
-          dailyOxygenSaturation: S.optional(__S(86, __c10, 6)),
-          distance: S.optional(__S(109, __c13, 5)),
-          dailyRespiratoryRate: S.optional(__S(26, __c3, 2)),
-          height: S.optional(__S(105, __c13, 1)),
-          altitude: S.optional(__S(92, __c11, 4)),
-          dailyHeartRateVariability: S.optional(__S(51, __c6, 3)),
-          bodyFat: S.optional(__S(28, __c3, 4)),
-          sedentaryPeriod: S.optional(__S(57, __c7, 1)),
-          basalEnergyBurned: S.optional(__S(85, __c10, 5)),
-          swimLengthsData: S.optional(__S(55, __c6, 7)),
-          activeEnergyBurned: S.optional(__S(110, __c13, 6)),
-          timeInHeartRateZone: S.optional(__S(48, __c6, 0)),
-          activeMinutes: S.optional(__S(89, __c11, 1)),
-          skinTemperature: S.optional(__S(47, __c5, 7)),
-          runVo2Max: S.optional(__S(49, __c6, 1)),
-          oxygenSaturation: S.optional(__S(56, __c7, 0)),
-          exercise: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({ identifier: "ReconciledDataPoint" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
+          nutritionLog: S.optional(__S(1200, __c37, 16)),
+          respiratoryRateSleepSummary: S.optional(__S(1163, __c36, 11)),
+          vo2Max: S.optional(__S(1178, __c36, 26)),
+          bloodGlucose: S.optional(__S(1195, __c37, 11)),
+          dailyVo2Max: S.optional(__S(1218, __c38, 2)),
+          floors: S.optional(__S(1173, __c36, 21)),
+          dailyHeartRateZones: S.optional(__S(1198, __c37, 14)),
+          weight: S.optional(__S(1172, __c36, 20)),
+          dataPointName: S.optional(S.String),
+          dailyRestingHeartRate: S.optional(__S(1185, __c37, 1)),
+          sleep: S.optional(__S(1215, __c37, 31)),
+          dailySleepTemperatureDerivations: S.optional(__S(1183, __c36, 31)),
+          heartRate: S.optional(__S(1221, __c38, 5)),
+          coreBodyTemperature: S.optional(__S(1222, __c38, 6)),
+          activeZoneMinutes: S.optional(__S(1153, __c36, 1)),
+          heartRateVariability: S.optional(__S(1217, __c38, 1)),
+          activityLevel: S.optional(__S(1164, __c36, 12)),
+          steps: S.optional(__S(1159, __c36, 7)),
+          skinTemperatureSensors: S.optional(__S(1158, __c36, 6)),
+          hydrationLog: S.optional(__S(1167, __c36, 15)),
+          dailyOxygenSaturation: S.optional(__S(1202, __c37, 18)),
+          distance: S.optional(__S(1223, __c38, 7)),
+          dailyRespiratoryRate: S.optional(__S(1160, __c36, 8)),
+          height: S.optional(__S(1219, __c38, 3)),
+          altitude: S.optional(__S(1206, __c37, 22)),
+          dailyHeartRateVariability: S.optional(__S(1179, __c36, 27)),
+          bodyFat: S.optional(__S(1161, __c36, 9)),
+          sedentaryPeriod: S.optional(__S(1182, __c36, 30)),
+          basalEnergyBurned: S.optional(__S(1201, __c37, 17)),
+          swimLengthsData: S.optional(__S(1180, __c36, 28)),
+          activeEnergyBurned: S.optional(__S(1224, __c38, 8)),
+          timeInHeartRateZone: S.optional(__S(1176, __c36, 24)),
+          activeMinutes: S.optional(__S(1205, __c37, 21)),
+          skinTemperature: S.optional(__S(1175, __c36, 23)),
+          runVo2Max: S.optional(__S(1177, __c36, 25)),
+          oxygenSaturation: S.optional(__S(1181, __c36, 29)),
+          exercise: S.optional(__S(1194, __c37, 10)),
+        }),
+      ).annotate({ identifier: "ReconciledDataPoint" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           nextPageToken: S.optional(S.String),
-          dataPoints: S.optional(__S(192, __c24, 0)),
+          dataPoints: S.optional(__S(706, __c22, 2)),
         }),
       ).annotate({
         identifier: "ReconcileDataPointsResponse",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(194, __c24, 2)),
+          range: S.optional(__S(736, __c23, 0)),
           dataSourceFamily: S.optional(S.String),
           windowSize: S.optional(S.String),
           pageSize: S.optional(S.Number),
           pageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RollUpDataPointsRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(195, __c24, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(737, __c23, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5032,54 +3751,54 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RollUpUsersDataTypesDataPointsRequest",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          altitude: S.optional(__S(1374, __c42, 30)),
+          activeMinutes: S.optional(__S(1373, __c42, 29)),
+          runVo2Max: S.optional(__S(1369, __c42, 25)),
+          heartRate: S.optional(__S(1348, __c42, 4)),
+          activeZoneMinutes: S.optional(__S(1376, __c43, 0)),
+          activityLevel: S.optional(__S(1351, __c42, 7)),
+          distance: S.optional(__S(1370, __c42, 26)),
+          bodyFat: S.optional(__S(1345, __c42, 1)),
+          steps: S.optional(__S(1356, __c42, 12)),
+          bloodGlucose: S.optional(__S(1352, __c42, 8)),
+          skinTemperature: S.optional(__S(1344, __c42, 0)),
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          totalCalories: S.optional(__S(1366, __c42, 22)),
+          weight: S.optional(__S(1360, __c42, 16)),
+          timeInHeartRateZone: S.optional(__S(1355, __c42, 11)),
+          floors: S.optional(__S(1356, __c42, 12)),
+          nutritionLog: S.optional(__S(1365, __c42, 21)),
+          caloriesInHeartRateZone: S.optional(__S(1359, __c42, 15)),
+          sedentaryPeriod: S.optional(__S(1367, __c42, 23)),
+          swimLengthsData: S.optional(__S(1368, __c42, 24)),
+          hydrationLog: S.optional(__S(1347, __c42, 3)),
+          coreBodyTemperature: S.optional(__S(1344, __c42, 0)),
+          activeEnergyBurned: S.optional(__S(1375, __c42, 31)),
+        }),
+      ).annotate({ identifier: "RollupDataPoint" });
+    case 4:
+      return S.Array(__S(739, __c23, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          altitude: S.optional(__S(148, __c18, 4)),
-          activeMinutes: S.optional(__S(147, __c18, 3)),
-          runVo2Max: S.optional(__S(142, __c17, 6)),
-          heartRate: S.optional(__S(120, __c15, 0)),
-          activeZoneMinutes: S.optional(__S(150, __c18, 6)),
-          activityLevel: S.optional(__S(123, __c15, 3)),
-          distance: S.optional(__S(143, __c17, 7)),
-          bodyFat: S.optional(__S(117, __c14, 5)),
-          steps: S.optional(__S(129, __c16, 1)),
-          bloodGlucose: S.optional(__S(125, __c15, 5)),
-          skinTemperature: S.optional(__S(116, __c14, 4)),
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          totalCalories: S.optional(__S(139, __c17, 3)),
-          weight: S.optional(__S(133, __c16, 5)),
-          timeInHeartRateZone: S.optional(__S(128, __c16, 0)),
-          floors: S.optional(__S(129, __c16, 1)),
-          nutritionLog: S.optional(__S(138, __c17, 2)),
-          caloriesInHeartRateZone: S.optional(__S(132, __c16, 4)),
-          sedentaryPeriod: S.optional(__S(140, __c17, 4)),
-          swimLengthsData: S.optional(__S(141, __c17, 5)),
-          hydrationLog: S.optional(__S(119, __c14, 7)),
-          coreBodyTemperature: S.optional(__S(116, __c14, 4)),
-          activeEnergyBurned: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({ identifier: "RollupDataPoint" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rollupDataPoints: S.optional(__S(198, __c24, 6)),
+          rollupDataPoints: S.optional(__S(740, __c23, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RollUpDataPointsResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(164, __c20, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5090,12 +3809,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateProfileUsersRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5108,7 +3831,1359 @@ function __c25(j: number): any {
       });
   }
 }
-
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteDataPointsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(832, __c26, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4beta/{+parent}/dataPoints:batchDelete",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteUsersDataTypesDataPointsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(897, __c28, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(896, __c28, 0)),
+          response: S.optional(__S(896, __c28, 0)),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriberConfigs: S.optional(__S(993, __c31, 1)),
+          endpointAuthorization: S.optional(__S(994, __c31, 2)),
+          endpointUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateSubscriberPayload" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          subscriberId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4beta/{+parent}/subscribers",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSubscribersRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionCreatePolicy: S.optional(S.String),
+          dataTypes: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "SubscriberConfig" });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          secretSet: S.optional(S.Boolean),
+          secret: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointAuthorization" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(S.String),
+          dataTypes: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSubscriptionPayload",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4beta/{+parent}/subscriptions",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSubscribersSubscriptionsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(S.String),
+          dataTypes: S.optional(__S(864, __c27, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Subscription" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1140, __c35, 20).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4beta/{+parent}/dataPoints",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersDataTypesDataPointsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          notes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MenstrualPeriod" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          symptoms: S.optional(__S(1121, __c35, 1)),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "Symptoms" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          multiplier: S.optional(S.Number),
+          foodMeasurementUnitDisplayName: S.optional(S.String),
+          amount: S.optional(S.Number),
+          foodMeasurementUnitDisplayNamePlural: S.optional(S.String),
+          foodMeasurementUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FoodServing" });
+    case 4:
+      return S.Array(__S(1123, __c35, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          servings: S.optional(__S(1124, __c35, 4)),
+          energyAvg: S.optional(__S(1168, __c36, 16)),
+          accessLevel: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          energyMin: S.optional(__S(1168, __c36, 16)),
+          totalFat: S.optional(__S(1169, __c36, 17)),
+          totalCarbohydrate: S.optional(__S(1169, __c36, 17)),
+          defaultServing: S.optional(__S(1123, __c35, 3)),
+          brand: S.optional(S.String),
+          description: S.optional(S.String),
+          nutrients: S.optional(__S(1171, __c36, 19)),
+          energyMax: S.optional(__S(1168, __c36, 16)),
+          mealType: S.optional(S.String),
+          energyFromFat: S.optional(__S(1168, __c36, 16)),
+        }),
+      ).annotate({ identifier: "Food" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deviceModel: S.optional(S.String),
+          serviceVersion: S.optional(S.String),
+          algorithmVersion: S.optional(S.String),
+          firmwareVersion: S.optional(S.String),
+          featureVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MedicalDeviceInfo" });
+    case 7:
+      return S.Array(S.Number);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          samplingFrequencyHertz: S.optional(S.Number),
+          resultClassification: S.optional(S.String),
+          beatsPerMinuteAvg: S.optional(S.String),
+          medicalDeviceInfo: S.optional(__S(1126, __c35, 6)),
+          millivoltsScalingFactor: S.optional(S.Number),
+          waveformSamples: S.optional(__S(1127, __c35, 7)),
+          interval: S.optional(__S(1165, __c36, 13)),
+          leadNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Electrocardiogram" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          physicalTime: S.optional(S.String),
+          utcOffset: S.optional(S.String),
+          beatsPerMinute: S.optional(S.Number),
+          civilTime: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "HeartBeat" });
+    case 10:
+      return S.Array(__S(1129, __c35, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          positive: S.optional(S.Boolean),
+          heartBeats: S.optional(__S(1130, __c35, 10)),
+          startTime: S.optional(S.String),
+          civilEndTime: S.optional(__S(1281, __c40, 1)),
+          startUtcOffset: S.optional(S.String),
+          endTime: S.optional(S.String),
+          endUtcOffset: S.optional(S.String),
+          civilStartTime: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "AlertWindow" });
+    case 12:
+      return S.Array(__S(1131, __c35, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          alertWindows: S.optional(__S(1132, __c35, 12)),
+          interval: S.optional(__S(1165, __c36, 13)),
+          medicalDeviceInfo: S.optional(__S(1126, __c35, 6)),
+        }),
+      ).annotate({
+        identifier: "IrregularRhythmNotification",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          webClientId: S.optional(S.String),
+          packageName: S.optional(S.String),
+          googleWebClientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Application" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          formFactor: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Device" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.optional(__S(1134, __c35, 14)),
+          platform: S.optional(S.String),
+          device: S.optional(__S(1135, __c35, 15)),
+          recordingMethod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSource" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          pluralDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FoodMeasurementUnit" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          result: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OvulationTest" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          valences: S.optional(__S(1121, __c35, 1)),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          moods: S.optional(__S(1121, __c35, 1)),
+        }),
+      ).annotate({ identifier: "Moods" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          activeZoneMinutes: S.optional(__S(1153, __c36, 1)),
+          skinTemperatureSensors: S.optional(__S(1158, __c36, 6)),
+          steps: S.optional(__S(1159, __c36, 7)),
+          dailyRespiratoryRate: S.optional(__S(1160, __c36, 8)),
+          menstrualPeriod: S.optional(__S(1120, __c35, 0)),
+          bodyFat: S.optional(__S(1161, __c36, 9)),
+          symptoms: S.optional(__S(1122, __c35, 2)),
+          respiratoryRateSleepSummary: S.optional(__S(1163, __c36, 11)),
+          activityLevel: S.optional(__S(1164, __c36, 12)),
+          hydrationLog: S.optional(__S(1167, __c36, 15)),
+          food: S.optional(__S(1125, __c35, 5)),
+          weight: S.optional(__S(1172, __c36, 20)),
+          floors: S.optional(__S(1173, __c36, 21)),
+          skinTemperature: S.optional(__S(1175, __c36, 23)),
+          timeInHeartRateZone: S.optional(__S(1176, __c36, 24)),
+          runVo2Max: S.optional(__S(1177, __c36, 25)),
+          vo2Max: S.optional(__S(1178, __c36, 26)),
+          dailyHeartRateVariability: S.optional(__S(1179, __c36, 27)),
+          electrocardiogram: S.optional(__S(1128, __c35, 8)),
+          name: S.optional(S.String),
+          swimLengthsData: S.optional(__S(1180, __c36, 28)),
+          oxygenSaturation: S.optional(__S(1181, __c36, 29)),
+          sedentaryPeriod: S.optional(__S(1182, __c36, 30)),
+          dailySleepTemperatureDerivations: S.optional(__S(1183, __c36, 31)),
+          dailyRestingHeartRate: S.optional(__S(1185, __c37, 1)),
+          irregularRhythmNotification: S.optional(__S(1133, __c35, 13)),
+          dataSource: S.optional(__S(1136, __c35, 16)),
+          exercise: S.optional(__S(1194, __c37, 10)),
+          foodMeasurementUnit: S.optional(__S(1137, __c35, 17)),
+          bloodGlucose: S.optional(__S(1195, __c37, 11)),
+          dailyHeartRateZones: S.optional(__S(1198, __c37, 14)),
+          nutritionLog: S.optional(__S(1200, __c37, 16)),
+          basalEnergyBurned: S.optional(__S(1201, __c37, 17)),
+          dailyOxygenSaturation: S.optional(__S(1202, __c37, 18)),
+          activeMinutes: S.optional(__S(1205, __c37, 21)),
+          ovulationTest: S.optional(__S(1138, __c35, 18)),
+          moods: S.optional(__S(1139, __c35, 19)),
+          altitude: S.optional(__S(1206, __c37, 22)),
+          sleep: S.optional(__S(1215, __c37, 31)),
+          heartRateVariability: S.optional(__S(1217, __c38, 1)),
+          dailyVo2Max: S.optional(__S(1218, __c38, 2)),
+          height: S.optional(__S(1219, __c38, 3)),
+          heartRate: S.optional(__S(1221, __c38, 5)),
+          coreBodyTemperature: S.optional(__S(1222, __c38, 6)),
+          distance: S.optional(__S(1223, __c38, 7)),
+          activeEnergyBurned: S.optional(__S(1224, __c38, 8)),
+        }),
+      ).annotate({ identifier: "DataPoint" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startUtcOffset: S.optional(S.String),
+          civilStartTime: S.optional(__S(1281, __c40, 1)),
+          startTime: S.optional(S.String),
+          endUtcOffset: S.optional(S.String),
+          endTime: S.optional(S.String),
+          civilEndTime: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "ObservationTimeInterval" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          heartRateZone: S.optional(S.String),
+          activeZoneMinutes: S.optional(S.String),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ActiveZoneMinutes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          utcOffset: S.optional(S.String),
+          physicalTime: S.optional(S.String),
+          civilTime: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "ObservationSampleTime" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          measurementLocation: S.optional(S.String),
+          sensorType: S.optional(S.String),
+          measurementState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SensorMetadata" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1155, __c36, 3)),
+          temperatureCelsius: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SensorData" });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          sensorData: S.optional(__S(1157, __c36, 5)),
+        }),
+      ).annotate({ identifier: "SkinTemperatureSensors" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          count: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Steps" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          breathsPerMinute: S.optional(S.Number),
+          date: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "DailyRespiratoryRate" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.optional(S.Number),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "BodyFat" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          standardDeviation: S.optional(S.Number),
+          signalToNoise: S.optional(S.Number),
+          breathsPerMinute: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RespiratoryRateSleepSummaryStatistics",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          deepSleepStats: S.optional(__S(1162, __c36, 10)),
+          lightSleepStats: S.optional(__S(1162, __c36, 10)),
+          remSleepStats: S.optional(__S(1162, __c36, 10)),
+          fullSleepStats: S.optional(__S(1162, __c36, 10)),
+        }),
+      ).annotate({
+        identifier: "RespiratoryRateSleepSummary",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          activityLevelType: S.optional(S.String),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ActivityLevel" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          startUtcOffset: S.optional(S.String),
+          endUtcOffset: S.optional(S.String),
+          civilStartTime: S.optional(__S(1281, __c40, 1)),
+          civilEndTime: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "SessionTimeInterval" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          userProvidedUnit: S.optional(S.String),
+          milliliters: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VolumeQuantity" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1165, __c36, 13)),
+          amountConsumed: S.optional(__S(1166, __c36, 14)),
+        }),
+      ).annotate({ identifier: "HydrationLog" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          userProvidedUnit: S.optional(S.String),
+          kcal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EnergyQuantity" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          userProvidedUnit: S.optional(S.String),
+          grams: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WeightQuantity" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(__S(1169, __c36, 17)),
+          nutrient: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NutrientQuantity" });
+    case 19:
+      return S.Array(__S(1170, __c36, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          weightGrams: S.optional(S.Number),
+          notes: S.optional(S.String),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "Weight" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.String),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "Floors" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          measurementLocation: S.optional(S.String),
+          measurementState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SkinTemperatureMetadata" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          temperatureCelsius: S.optional(S.Number),
+          metadata: S.optional(__S(1174, __c36, 22)),
+          baselineTemperatureCelsius: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SkinTemperature" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          heartRateZoneType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeInHeartRateZone" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          runVo2Max: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunVO2Max" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          vo2Max: S.optional(S.Number),
+          measurementMethod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VO2Max" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(__S(1248, __c39, 0)),
+          averageHeartRateVariabilityMilliseconds: S.optional(S.Number),
+          nonRemHeartRateBeatsPerMinute: S.optional(S.String),
+          entropy: S.optional(S.Number),
+          deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DailyHeartRateVariability",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          strokeCount: S.optional(S.String),
+          swimStrokeType: S.optional(S.String),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "SwimLengthsData" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          percentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OxygenSaturation" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "SedentaryPeriod" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          relativeNightlyStddev30dCelsius: S.optional(S.Number),
+          date: S.optional(__S(1248, __c39, 0)),
+          nightlyTemperatureCelsius: S.optional(S.Number),
+          baselineTemperatureCelsius: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DailySleepTemperatureDerivations",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calculationMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DailyRestingHeartRateMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          beatsPerMinute: S.optional(S.String),
+          dailyRestingHeartRateMetadata: S.optional(__S(1184, __c37, 0)),
+          date: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "DailyRestingHeartRate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          avgCadenceStepsPerMinute: S.optional(S.Number),
+          avgVerticalOscillationMillimeters: S.optional(S.String),
+          avgGroundContactTimeDuration: S.optional(S.String),
+          avgVerticalRatio: S.optional(S.Number),
+          avgStrideLengthMillimeters: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobilityMetrics" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          moderateTime: S.optional(S.String),
+          lightTime: S.optional(S.String),
+          peakTime: S.optional(S.String),
+          vigorousTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeInHeartRateZones" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          totalSwimLengths: S.optional(S.Number),
+          elevationGainMillimeters: S.optional(S.Number),
+          averagePaceSecondsPerMeter: S.optional(S.Number),
+          averageHeartRateBeatsPerMinute: S.optional(S.String),
+          runVo2Max: S.optional(S.Number),
+          mobilityMetrics: S.optional(__S(1186, __c37, 2)),
+          activeZoneMinutes: S.optional(S.String),
+          averageSpeedMillimetersPerSecond: S.optional(S.Number),
+          steps: S.optional(S.String),
+          caloriesKcal: S.optional(S.Number),
+          heartRateZoneDurations: S.optional(__S(1187, __c37, 3)),
+          distanceMillimeters: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricsSummary" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          startUtcOffset: S.optional(S.String),
+          endUtcOffset: S.optional(S.String),
+          startTime: S.optional(S.String),
+          metricsSummary: S.optional(__S(1188, __c37, 4)),
+          endTime: S.optional(S.String),
+          splitType: S.optional(S.String),
+          activeDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SplitSummary" });
+    case 6:
+      return S.Array(__S(1189, __c37, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hasGps: S.optional(S.Boolean),
+          poolLengthMillimeters: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExerciseMetadata" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          exerciseEventType: S.optional(S.String),
+          eventUtcOffset: S.optional(S.String),
+          eventTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExerciseEvent" });
+    case 9:
+      return S.Array(__S(1192, __c37, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          exerciseType: S.optional(S.String),
+          interval: S.optional(__S(1165, __c36, 13)),
+          splits: S.optional(__S(1190, __c37, 6)),
+          metricsSummary: S.optional(__S(1188, __c37, 4)),
+          exerciseMetadata: S.optional(__S(1191, __c37, 7)),
+          notes: S.optional(S.String),
+          activeDuration: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          splitSummaries: S.optional(__S(1190, __c37, 6)),
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          exerciseEvents: S.optional(__S(1193, __c37, 9)),
+        }),
+      ).annotate({ identifier: "Exercise" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          bloodGlucoseMilligramsPerDeciliter: S.optional(S.Number),
+          notes: S.optional(S.String),
+          measurementSource: S.optional(S.String),
+          mealType: S.optional(S.String),
+          specimen: S.optional(S.String),
+          measurementTiming: S.optional(S.String),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "BloodGlucose" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          minBeatsPerMinute: S.optional(S.String),
+          maxBeatsPerMinute: S.optional(S.String),
+          heartRateZoneType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeartRateZone" });
+    case 13:
+      return S.Array(__S(1196, __c37, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          heartRateZones: S.optional(__S(1197, __c37, 13)),
+          date: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "DailyHeartRateZones" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          foodMeasurementUnit: S.optional(S.String),
+          foodMeasurementUnitDisplayName: S.optional(S.String),
+          amount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Serving" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          foodDisplayName: S.optional(S.String),
+          interval: S.optional(__S(1165, __c36, 13)),
+          serving: S.optional(__S(1199, __c37, 15)),
+          energyFromFat: S.optional(__S(1168, __c36, 16)),
+          totalFat: S.optional(__S(1169, __c36, 17)),
+          totalCarbohydrate: S.optional(__S(1169, __c36, 17)),
+          mealType: S.optional(S.String),
+          food: S.optional(S.String),
+          energy: S.optional(__S(1168, __c36, 16)),
+          nutrients: S.optional(__S(1171, __c36, 19)),
+        }),
+      ).annotate({ identifier: "NutritionLog" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          kcal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BasalEnergyBurned" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          upperBoundPercentage: S.optional(S.Number),
+          date: S.optional(__S(1248, __c39, 0)),
+          averagePercentage: S.optional(S.Number),
+          standardDeviationPercentage: S.optional(S.Number),
+          lowerBoundPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DailyOxygenSaturation" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          activityLevel: S.optional(S.String),
+          activeMinutes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveMinutesByActivityLevel",
+      });
+    case 20:
+      return S.Array(__S(1203, __c37, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          activeMinutesByActivityLevel: S.optional(__S(1204, __c37, 20)),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ActiveMinutes" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          gainMillimeters: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Altitude" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          minutes: S.optional(S.String),
+          count: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StageSummary" });
+    case 24:
+      return S.Array(__S(1207, __c37, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          minutesAsleep: S.optional(S.String),
+          minutesAwake: S.optional(S.String),
+          stagesSummary: S.optional(__S(1208, __c37, 24)),
+          minutesInSleepPeriod: S.optional(S.String),
+          minutesAfterWakeUp: S.optional(S.String),
+          minutesToFallAsleep: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SleepSummary" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          nap: S.optional(S.Boolean),
+          mainSleep: S.optional(S.Boolean),
+          externalId: S.optional(S.String),
+          processed: S.optional(S.Boolean),
+          manuallyEdited: S.optional(S.Boolean),
+          stagesStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SleepMetadata" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          endUtcOffset: S.optional(S.String),
+          endTime: S.optional(S.String),
+          startUtcOffset: S.optional(S.String),
+          createTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SleepStage" });
+    case 28:
+      return S.Array(__S(1211, __c37, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          endUtcOffset: S.optional(S.String),
+          startTime: S.optional(S.String),
+          startUtcOffset: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OutOfBedSegment" });
+    case 30:
+      return S.Array(__S(1213, __c37, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          type: S.optional(S.String),
+          summary: S.optional(__S(1209, __c37, 25)),
+          metadata: S.optional(__S(1210, __c37, 26)),
+          shortAwakenings: S.optional(__S(1212, __c37, 28)),
+          outOfBedSegments: S.optional(__S(1214, __c37, 30)),
+          interval: S.optional(__S(1165, __c36, 13)),
+          stages: S.optional(__S(1212, __c37, 28)),
+        }),
+      ).annotate({ identifier: "Sleep" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lowFrequencyPower: S.optional(S.Number),
+          highFrequencyPower: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "HeartRateVariabilityMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
+          standardDeviationMilliseconds: S.optional(S.Number),
+          metadata: S.optional(__S(1216, __c38, 0)),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "HeartRateVariability" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          vo2MaxCovariance: S.optional(S.Number),
+          cardioFitnessLevel: S.optional(S.String),
+          date: S.optional(__S(1248, __c39, 0)),
+          vo2Max: S.optional(S.Number),
+          estimated: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DailyVO2Max" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          heightMillimeters: S.optional(S.String),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "Height" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          motionContext: S.optional(S.String),
+          sensorLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeartRateMetadata" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+          metadata: S.optional(__S(1220, __c38, 4)),
+          beatsPerMinute: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeartRate" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          temperatureCelsius: S.optional(S.Number),
+          measurementLocation: S.optional(S.String),
+          sampleTime: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({ identifier: "CoreBodyTemperature" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1152, __c36, 0)),
+          millimeters: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Distance" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          kcal: S.optional(S.Number),
+          interval: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ActiveEnergyBurned" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Health_Date" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(__S(1248, __c39, 0)),
+          time: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "CivilDateTime" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(__S(1281, __c40, 1)),
+          end: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({ identifier: "CivilTimeInterval" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          windowSizeDays: S.optional(S.Number),
+          pageSize: S.optional(S.Number),
+          range: S.optional(__S(1312, __c41, 0)),
+          pageToken: S.optional(S.String),
+          dataSourceFamily: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DailyRollUpDataPointsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1313, __c41, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4beta/{+parent}/dataPoints:dailyRollUp",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DailyRollUpUsersDataTypesDataPointsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          beatsPerMinuteMin: S.optional(S.Number),
+          beatsPerMinuteMax: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RestingHeartRatePersonalRangeRollupValue",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          averageHeartRateVariabilityMillisecondsMin: S.optional(S.Number),
+          averageHeartRateVariabilityMillisecondsMax: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "HeartRateVariabilityPersonalRangeRollupValue",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          coreBodyTemperature: S.optional(__S(1344, __c42, 0)),
+          bodyFat: S.optional(__S(1345, __c42, 1)),
+          civilStartTime: S.optional(__S(1281, __c40, 1)),
+          hydrationLog: S.optional(__S(1347, __c42, 3)),
+          heartRate: S.optional(__S(1348, __c42, 4)),
+          activityLevel: S.optional(__S(1351, __c42, 7)),
+          civilEndTime: S.optional(__S(1281, __c40, 1)),
+          restingHeartRatePersonalRange: S.optional(__S(1315, __c41, 3)),
+          skinTemperature: S.optional(__S(1344, __c42, 0)),
+          bloodGlucose: S.optional(__S(1352, __c42, 8)),
+          timeInHeartRateZone: S.optional(__S(1355, __c42, 11)),
+          floors: S.optional(__S(1356, __c42, 12)),
+          caloriesInHeartRateZone: S.optional(__S(1359, __c42, 15)),
+          weight: S.optional(__S(1360, __c42, 16)),
+          nutritionLog: S.optional(__S(1365, __c42, 21)),
+          totalCalories: S.optional(__S(1366, __c42, 22)),
+          sedentaryPeriod: S.optional(__S(1367, __c42, 23)),
+          swimLengthsData: S.optional(__S(1368, __c42, 24)),
+          runVo2Max: S.optional(__S(1369, __c42, 25)),
+          steps: S.optional(__S(1356, __c42, 12)),
+          distance: S.optional(__S(1370, __c42, 26)),
+          heartRateVariabilityPersonalRange: S.optional(__S(1316, __c41, 4)),
+          activeMinutes: S.optional(__S(1373, __c42, 29)),
+          altitude: S.optional(__S(1374, __c42, 30)),
+          activeEnergyBurned: S.optional(__S(1375, __c42, 31)),
+          activeZoneMinutes: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "DailyRollupDataPoint" });
+    case 6:
+      return S.Array(__S(1317, __c41, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          rollupDataPoints: S.optional(__S(1318, __c41, 6)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DailyRollUpDataPointsResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          temperatureCelsiusMax: S.optional(S.Number),
+          temperatureCelsiusMin: S.optional(S.Number),
+          temperatureCelsiusAvg: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CoreBodyTemperatureRollupValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bodyFatPercentageAvg: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BodyFatRollupValue" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          millilitersSum: S.optional(S.Number),
+          userProvidedUnitLast: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeQuantityRollup" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          amountConsumed: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({ identifier: "HydrationLogRollupValue" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          beatsPerMinuteMin: S.optional(S.Number),
+          beatsPerMinuteAvg: S.optional(S.Number),
+          beatsPerMinuteMax: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HeartRateRollupValue" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          activityLevelType: S.optional(S.String),
+          totalDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActivityLevelRollupByActivityLevelType",
+      });
+    case 6:
+      return S.Array(__S(1349, __c42, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          activityLevelRollupsByActivityLevelType: S.optional(__S(1350, __c42, 6)),
+        }),
+      ).annotate({ identifier: "ActivityLevelRollupValue" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          bloodGlucoseMilligramsPerDeciliterAvg: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BloodGlucoseRollupValue" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          heartRateZone: S.optional(S.String),
+          duration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeInHeartRateZoneValue" });
+    case 10:
+      return S.Array(__S(1353, __c42, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          timeInHeartRateZones: S.optional(__S(1354, __c42, 10)),
+        }),
+      ).annotate({
+        identifier: "TimeInHeartRateZoneRollupValue",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          countSum: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FloorsRollupValue" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          heartRateZone: S.optional(S.String),
+          kcal: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CaloriesInHeartRateZoneValue",
+      });
+    case 14:
+      return S.Array(__S(1357, __c42, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          caloriesInHeartRateZones: S.optional(__S(1358, __c42, 14)),
+        }),
+      ).annotate({
+        identifier: "CaloriesInHeartRateZoneRollupValue",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          weightGramsAvg: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WeightRollupValue" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          userProvidedUnitLast: S.optional(S.String),
+          kcalSum: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EnergyQuantityRollup" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          userProvidedUnitLast: S.optional(S.String),
+          gramsSum: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WeightQuantityRollup" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(__S(1362, __c42, 18)),
+          nutrient: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NutrientQuantityRollup" });
+    case 20:
+      return S.Array(__S(1363, __c42, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          energyFromFat: S.optional(__S(1361, __c42, 17)),
+          totalFat: S.optional(__S(1362, __c42, 18)),
+          nutrients: S.optional(__S(1364, __c42, 20)),
+          energy: S.optional(__S(1361, __c42, 17)),
+          totalCarbohydrate: S.optional(__S(1362, __c42, 18)),
+        }),
+      ).annotate({ identifier: "NutritionLogRollupValue" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          kcalSum: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TotalCaloriesRollupValue" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          durationSum: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SedentaryPeriodRollupValue",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          strokeCountSum: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SwimLengthsDataRollupValue",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          rateMax: S.optional(S.Number),
+          rateAvg: S.optional(S.Number),
+          rateMin: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunVO2MaxRollupValue" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          millimetersSum: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DistanceRollupValue" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          activityLevel: S.optional(S.String),
+          activeMinutesSum: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveMinutesRollupByActivityLevel",
+      });
+    case 28:
+      return S.Array(__S(1371, __c42, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          activeMinutesRollupByActivityLevel: S.optional(__S(1372, __c42, 28)),
+        }),
+      ).annotate({ identifier: "ActiveMinutesRollupValue" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          gainMillimetersSum: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AltitudeRollupValue" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          kcalSum: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ActiveEnergyBurnedRollupValue",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sumInCardioHeartZone: S.optional(S.String),
+          sumInFatBurnHeartZone: S.optional(S.String),
+          sumInPeakHeartZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveZoneMinutesRollupValue",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v4beta/{+name}",
+            baseUrl: "https://health.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsSubscribersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

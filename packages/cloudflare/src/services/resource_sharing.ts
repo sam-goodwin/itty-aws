@@ -871,8 +871,8 @@ export const createRecipient: API.OperationMethod<
   CreateRecipientError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateRecipientRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateRecipientResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateRecipientRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<CreateRecipientResponse>,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -886,8 +886,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<CreateResourceResponse>,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const createResourceSharing: API.OperationMethod<
   CreateResourceSharingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateResourceSharingRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateResourceSharingResponse>,
+  input: __S(108, __c13, 4) as any as S.Schema<CreateResourceSharingRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<CreateResourceSharingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const deleteRecipient: API.OperationMethod<
   DeleteRecipientError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteRecipientRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteRecipientResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteRecipientRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteRecipientResponse>,
   errors: [ShareRecipientNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteResourceResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteResourceResponse>,
   errors: [ShareResourceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const deleteResourceSharing: API.OperationMethod<
   DeleteResourceSharingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteResourceSharingRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteResourceSharingResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteResourceSharingRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteResourceSharingResponse>,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -961,8 +961,8 @@ export const getRecipient: API.OperationMethod<
   GetRecipientError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetRecipientRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetRecipientResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRecipientRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetRecipientResponse>,
   errors: [ShareRecipientNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetResourceResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetResourceResponse>,
   errors: [ShareResourceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const getResourceSharing: API.OperationMethod<
   GetResourceSharingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetResourceSharingRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetResourceSharingResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetResourceSharingRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetResourceSharingResponse>,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const listRecipients: API.PaginatedOperationMethod<
   RecipientsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListRecipientsRequest>,
-    output: __S(28, __c3, 4) as any as S.Schema<ListRecipientsResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListRecipientsRequest>,
+    output: __S(35, __c4, 3) as any as S.Schema<ListRecipientsResponse>,
     errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1034,8 +1034,8 @@ export const listResources: API.PaginatedOperationMethod<
   ResourcesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(29, __c3, 5) as any as S.Schema<ListResourcesRequest>,
-    output: __S(30, __c3, 6) as any as S.Schema<ListResourcesResponse>,
+    input: __S(40, __c5, 0) as any as S.Schema<ListResourcesRequest>,
+    output: __S(41, __c5, 1) as any as S.Schema<ListResourcesResponse>,
     errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1060,8 +1060,8 @@ export const listResourceSharings: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListResourceSharingsRequest>,
-    output: __S(36, __c4, 4) as any as S.Schema<ListResourceSharingsResponse>,
+    input: __S(50, __c6, 2) as any as S.Schema<ListResourceSharingsRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListResourceSharingsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1084,8 +1084,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateResourceResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateResourceResponse>,
   errors: [ShareResourceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1099,8 @@ export const updateResourceSharing: API.OperationMethod<
   UpdateResourceSharingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateResourceSharingRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateResourceSharingResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateResourceSharingRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<UpdateResourceSharingResponse>,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1108,6 +1108,306 @@ export const updateResourceSharing: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          recipientId: S.String.pipe(T.Label("recipient_id")),
+          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRecipientRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          associationStatus: S.String.pipe(T.Body("association_status")),
+          created: S.String,
+          modified: S.String,
+          resources: S.optional(S.NullOr(__S(81, __c10, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRecipientResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          shareResourceId: S.String.pipe(T.Label("share_resource_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetResourceRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          includeRecipientCounts: S.optional(S.Boolean.pipe(T.Query("include_recipient_counts"))),
+          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/shares/{share_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetResourceSharingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          accountName: S.String.pipe(T.Body("account_name")),
+          created: S.String,
+          modified: S.String,
+          name: S.String,
+          organizationId: S.String.pipe(T.Body("organization_id")),
+          status: S.String,
+          targetType: S.String.pipe(T.Body("target_type")),
+          associatedRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
+          ),
+          associatingRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
+          ),
+          disassociatedRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
+          ),
+          disassociatingRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
+          ),
+          kind: S.optional(S.NullOr(S.String)),
+          resources: S.optional(S.NullOr(__S(25, __c3, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetResourceSharingResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created: S.String,
+          meta: S.Unknown,
+          modified: S.String,
+          resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+          resourceId: S.String.pipe(T.Body("resource_id")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          resourceVersion: S.Number.pipe(T.Body("resource_version")),
+          status: S.String,
+        }),
+      ).annotate({ identifier: "GetResponseResourcesItem" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/shares/{share_id}/recipients",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListRecipientsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          associationStatus: S.String.pipe(T.Body("association_status")),
+          created: S.String,
+          modified: S.String,
+          resources: S.optional(S.NullOr(__S(81, __c10, 1))),
+        }),
+      ).annotate({ identifier: "RecipientsListResultItem" });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListRecipientsResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          resourceType: S.optional(S.String.pipe(T.Query("resource_type"))),
+          status: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/shares/{share_id}/resources",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListResourcesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(25, __c3, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListResourcesResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          direction: S.optional(S.String.pipe(T.Query())),
+          includeRecipientCounts: S.optional(S.Boolean.pipe(T.Query("include_recipient_counts"))),
+          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
+          kind: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          resourceTypes: S.optional(__S(48, __c6, 0).pipe(T.Query("resource_types"))),
+          status: S.optional(S.String.pipe(T.Query())),
+          tag: S.optional(__S(49, __c6, 1).pipe(T.Query())),
+          targetType: S.optional(S.String.pipe(T.Query("target_type"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/shares", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListResourceSharingsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          accountName: S.String.pipe(T.Body("account_name")),
+          created: S.String,
+          modified: S.String,
+          name: S.String,
+          organizationId: S.String.pipe(T.Body("organization_id")),
+          status: S.String,
+          targetType: S.String.pipe(T.Body("target_type")),
+          associatedRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
+          ),
+          associatingRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
+          ),
+          disassociatedRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
+          ),
+          disassociatingRecipientCount: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
+          ),
+          kind: S.optional(S.NullOr(S.String)),
+          resources: S.optional(S.NullOr(__S(113, __c14, 1))),
+        }),
+      ).annotate({ identifier: "ListResultItem" });
+    case 4:
+      return S.Array(__S(51, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(52, __c6, 4).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListResourceSharingsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          shareResourceId: S.String.pipe(T.Label("share_resource_id")),
+          meta: S.Unknown,
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateResourceRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          shareId: S.String.pipe(T.Label("share_id")),
+          name: S.String,
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/accounts/{account_id}/shares/{share_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateResourceSharingRequest",
+      });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1129,6 +1429,21 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          associationStatus: S.String.pipe(T.Body("association_status")),
+          created: S.String,
+          modified: S.String,
+          resources: S.optional(S.NullOr(__S(81, __c10, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRecipientResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           error: S.String,
           resourceId: S.String.pipe(T.Body("resource_id")),
           resourceVersion: S.Number.pipe(T.Body("resource_version")),
@@ -1137,20 +1452,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RecipientsCreateResponseResourcesItem",
       });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          associationStatus: S.String.pipe(T.Body("association_status")),
-          created: S.String,
-          modified: S.String,
-          resources: S.optional(S.NullOr(__S(2, __c0, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRecipientResponse" });
-    case 4:
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1169,7 +1477,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateResourceRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1183,7 +1495,11 @@ function __c0(j: number): any {
           status: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateResourceResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String.pipe(T.Body("account_id"))),
@@ -1193,13 +1509,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateRequestRecipientsItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           meta: S.Unknown,
@@ -1210,22 +1522,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateRequestResourcesItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          recipients: __S(7, __c0, 7),
-          resources: __S(9, __c1, 1),
+          recipients: __S(105, __c13, 1),
+          resources: __S(107, __c13, 3),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/shares", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateResourceSharingRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1241,9 +1557,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateResponseResourcesItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1268,12 +1588,16 @@ function __c1(j: number): any {
             S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
           ),
           kind: S.optional(S.NullOr(S.String)),
-          resources: S.optional(S.NullOr(__S(12, __c1, 4))),
+          resources: S.optional(S.NullOr(__S(113, __c14, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateResourceSharingResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1289,7 +1613,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRecipientRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1297,12 +1621,12 @@ function __c1(j: number): any {
           associationStatus: S.String.pipe(T.Body("association_status")),
           created: S.String,
           modified: S.String,
-          resources: S.optional(S.NullOr(__S(2, __c0, 2))),
+          resources: S.optional(S.NullOr(__S(81, __c10, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRecipientResponse" });
   }
 }
-function __c2(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1320,7 +1644,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteResourceRequest" });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1337,281 +1665,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteResourceSharingRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          recipientId: S.String.pipe(T.Label("recipient_id")),
-          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRecipientRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          associationStatus: S.String.pipe(T.Body("association_status")),
-          created: S.String,
-          modified: S.String,
-          resources: S.optional(S.NullOr(__S(2, __c0, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRecipientResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          shareResourceId: S.String.pipe(T.Label("share_resource_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          includeRecipientCounts: S.optional(S.Boolean.pipe(T.Query("include_recipient_counts"))),
-          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/shares/{share_id}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetResourceSharingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created: S.String,
-          meta: S.Unknown,
-          modified: S.String,
-          resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-          resourceId: S.String.pipe(T.Body("resource_id")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          resourceVersion: S.Number.pipe(T.Body("resource_version")),
-          status: S.String,
-        }),
-      ).annotate({ identifier: "GetResponseResourcesItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          accountName: S.String.pipe(T.Body("account_name")),
-          created: S.String,
-          modified: S.String,
-          name: S.String,
-          organizationId: S.String.pipe(T.Body("organization_id")),
-          status: S.String,
-          targetType: S.String.pipe(T.Body("target_type")),
-          associatedRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
-          ),
-          associatingRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
-          ),
-          disassociatedRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
-          ),
-          disassociatingRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
-          ),
-          kind: S.optional(S.NullOr(S.String)),
-          resources: S.optional(S.NullOr(__S(23, __c2, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetResourceSharingResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/shares/{share_id}/recipients",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListRecipientsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          associationStatus: S.String.pipe(T.Body("association_status")),
-          created: S.String,
-          modified: S.String,
-          resources: S.optional(S.NullOr(__S(2, __c0, 2))),
-        }),
-      ).annotate({ identifier: "RecipientsListResultItem" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListRecipientsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          resourceType: S.optional(S.String.pipe(T.Query("resource_type"))),
-          status: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/shares/{share_id}/resources",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListResourcesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(23, __c2, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListResourcesResponse" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(S.String.pipe(T.Query())),
-          includeRecipientCounts: S.optional(S.Boolean.pipe(T.Query("include_recipient_counts"))),
-          includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-          kind: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          resourceTypes: S.optional(__S(31, __c3, 7).pipe(T.Query("resource_types"))),
-          status: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(__S(32, __c4, 0).pipe(T.Query())),
-          targetType: S.optional(S.String.pipe(T.Query("target_type"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/shares", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListResourceSharingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          accountName: S.String.pipe(T.Body("account_name")),
-          created: S.String,
-          modified: S.String,
-          name: S.String,
-          organizationId: S.String.pipe(T.Body("organization_id")),
-          status: S.String,
-          targetType: S.String.pipe(T.Body("target_type")),
-          associatedRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
-          ),
-          associatingRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
-          ),
-          disassociatedRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
-          ),
-          disassociatingRecipientCount: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
-          ),
-          kind: S.optional(S.NullOr(S.String)),
-          resources: S.optional(S.NullOr(__S(12, __c1, 4))),
-        }),
-      ).annotate({ identifier: "ListResultItem" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(35, __c4, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListResourceSharingsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          shareResourceId: S.String.pipe(T.Label("share_resource_id")),
-          meta: S.Unknown,
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          shareId: S.String.pipe(T.Label("share_id")),
-          name: S.String,
-        })
-          .pipe(
-            T.Http({ method: "PUT", uri: "/accounts/{account_id}/shares/{share_id}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateResourceSharingRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

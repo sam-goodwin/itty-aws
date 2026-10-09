@@ -134,8 +134,8 @@ export const createAccountsNotificationsubscriptions: API.OperationMethod<
   CreateAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<NotificationSubscription>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<NotificationSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -154,8 +154,8 @@ export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
   DeleteAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -169,8 +169,8 @@ export const getAccountsNotificationsubscriptions: API.OperationMethod<
   GetAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<NotificationSubscription>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<NotificationSubscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,8 +185,8 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
   GcpOpContext,
   ListNotificationSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListNotificationSubscriptionsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListNotificationSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -206,8 +206,8 @@ export const patchAccountsNotificationsubscriptions: API.OperationMethod<
   PatchAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<NotificationSubscription>,
+  input: __S(20, __c5, 0) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<NotificationSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -219,18 +219,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targetAccount: S.optional(S.String),
-          allManagedAccounts: S.optional(S.Boolean),
-          callBackUri: S.optional(S.String),
-          name: S.optional(S.String),
-          registeredEvent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NotificationSubscription" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -241,7 +231,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAccountsNotificationsubscriptionsRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetAccount: S.optional(S.String),
+          allManagedAccounts: S.optional(S.Boolean),
+          callBackUri: S.optional(S.String),
+          name: S.optional(S.String),
+          registeredEvent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotificationSubscription" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -255,11 +263,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsNotificationsubscriptionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -273,7 +285,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountsNotificationsubscriptionsRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -289,12 +305,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAccountsNotificationsubscriptionsRequest",
       });
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          notificationSubscriptions: S.optional(__S(6, __c0, 6)),
+          notificationSubscriptions: S.optional(__S(17, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -302,14 +318,14 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -322,7 +338,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -613,8 +613,8 @@ export const createProjectsLocationsAuthProviders: API.OperationMethod<
   CreateProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const deleteProjectsLocationsAuthProviders: API.OperationMethod<
   DeleteProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsLocationsAuthProvidersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteProjectsLocationsAuthProvidersRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -654,11 +654,11 @@ export const deleteProjectsLocationsAuthProvidersAuthorizations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  output: __S(480, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const disableProjectsLocationsAuthProviders: API.OperationMethod<
   DisableProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DisableProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(512, __c32, 0) as any as S.Schema<DisableProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -697,8 +697,8 @@ export const enableProjectsLocationsAuthProviders: API.OperationMethod<
   EnableProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<EnableProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(544, __c34, 0) as any as S.Schema<EnableProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +712,8 @@ export const getIamPolicyProjectsLocationsAuthProviders: API.OperationMethod<
   GetIamPolicyProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Policy>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersRequest>,
+  output: __S(583, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -731,11 +731,11 @@ export const getIamPolicyProjectsLocationsAuthProvidersAuthorizations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    32,
-    __c4,
+    0,
+    __c0,
     0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Policy>,
+  output: __S(583, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -749,8 +749,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Location>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -764,8 +764,8 @@ export const getProjectsLocationsAccessSummaries: API.OperationMethod<
   GetProjectsLocationsAccessSummariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetProjectsLocationsAccessSummariesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AccessSummary>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsLocationsAccessSummariesRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<AccessSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -779,8 +779,8 @@ export const getProjectsLocationsAuthProviders: API.OperationMethod<
   GetProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -798,11 +798,11 @@ export const getProjectsLocationsAuthProvidersAuthorizations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    96,
+    __c6,
+    0,
   ) as any as S.Schema<GetProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Authorization>,
+  output: __S(112, __c7, 0) as any as S.Schema<Authorization>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,8 +817,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const listProjectsLocationsAccessSummaries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccessSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListAccessSummariesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<ListAccessSummariesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -851,8 +851,8 @@ export const listProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListAuthProvidersResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<ListAuthProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -872,11 +872,11 @@ export const listProjectsLocationsAuthProvidersAuthorizations: API.PaginatedOper
   ListAuthorizationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    176,
+    __c11,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListAuthorizationsResponse>,
+  output: __S(178, __c11, 2) as any as S.Schema<ListAuthorizationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -896,8 +896,8 @@ export const patchProjectsLocationsAuthProviders: API.OperationMethod<
   PatchProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PatchProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(192, __c12, 0) as any as S.Schema<PatchProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -912,8 +912,8 @@ export const queryProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   GcpOpContext,
   QueryAuthProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<QueryProjectsLocationsAuthProvidersRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<QueryAuthProvidersResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<QueryProjectsLocationsAuthProvidersRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<QueryAuthProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -929,8 +929,8 @@ export const queryWorkloadsProjectsLocationsAuthProviders: API.PaginatedOperatio
   GcpOpContext,
   QueryWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<QueryWorkloadsProjectsLocationsAuthProvidersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<QueryWorkloadsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<QueryWorkloadsProjectsLocationsAuthProvidersRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<QueryWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -951,11 +951,11 @@ export const resolveAuthorizationProjectsLocationsAuthProviders: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    241,
+    __c15,
+    1,
   ) as any as S.Schema<ResolveAuthorizationProjectsLocationsAuthProvidersRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ResolveAuthorizationResponse>,
+  output: __S(242, __c15, 2) as any as S.Schema<ResolveAuthorizationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -975,11 +975,11 @@ export const revokeAuthorizationProjectsLocationsAuthProviders: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    257,
+    __c16,
+    1,
   ) as any as S.Schema<RevokeAuthorizationProjectsLocationsAuthProvidersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<RevokeAuthorizationResponse>,
+  output: __S(480, __c30, 0) as any as S.Schema<RevokeAuthorizationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -998,8 +998,8 @@ export const setIamPolicyProjectsLocationsAuthProviders: API.OperationMethod<
   SetIamPolicyProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Policy>,
+  input: __S(272, __c17, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersRequest>,
+  output: __S(583, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1019,11 +1019,11 @@ export const setIamPolicyProjectsLocationsAuthProvidersAuthorizations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    304,
+    __c19,
     0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Policy>,
+  output: __S(583, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1043,11 +1043,11 @@ export const testIamPermissionsProjectsLocationsAuthProviders: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    320,
+    __c20,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthProvidersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(336, __c21, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1067,11 +1067,11 @@ export const testIamPermissionsProjectsLocationsAuthProvidersAuthorizations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(336, __c21, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1090,8 @@ export const undeleteProjectsLocationsAuthProviders: API.OperationMethod<
   UndeleteProjectsLocationsAuthProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UndeleteProjectsLocationsAuthProvidersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthProvider>,
+  input: __S(368, __c23, 0) as any as S.Schema<UndeleteProjectsLocationsAuthProvidersRequest>,
+  output: __S(444, __c27, 12) as any as S.Schema<AuthProvider>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1099,290 +1099,6 @@ export const undeleteProjectsLocationsAuthProviders: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connector: S.optional(S.String),
-          authorizationDetails: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "ConnectorReferenceAuthProvider",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tokenUrl: S.optional(S.String),
-          clientId: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TwoLeggedOAuth" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GeminiEnterpriseAuthProviderParams",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          redirectUrl: S.optional(S.String),
-          authorizationUrl: S.optional(S.String),
-          tokenUrl: S.optional(S.String),
-          defaultContinueUri: S.optional(S.String),
-          enablePkce: S.optional(S.Boolean),
-          clientSecret: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThreeLeggedOAuth" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tokenUrl: S.optional(S.String),
-          issuer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomIssuer" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientSecretAuth" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          idJagAdditionalClaims: S.optional(__S(1, __c0, 1)),
-          idJagAuthProvider: S.optional(S.String),
-          agentIdentityPool: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "IdTokenProcessingConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientAssertionJwtAuth" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          additionalParameters: S.optional(__S(0, __c0, 0)),
-          customIssuer: S.optional(__S(7, __c0, 7)),
-          idJagInput: S.optional(__S(5, __c0, 5)),
-          clientSecretAuth: S.optional(__S(8, __c1, 0)),
-          idTokenInput: S.optional(__S(9, __c1, 1)),
-          workforceIdentityFederation: S.optional(__S(5, __c0, 5)),
-          googleAccount: S.optional(__S(5, __c0, 5)),
-          clientAssertionJwtAuth: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "CrossAppAccessAuthProvider",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiKeyParams" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          connectorReferenceAuthProvider: S.optional(__S(3, __c0, 3)),
-          twoLeggedOauth: S.optional(__S(4, __c0, 4)),
-          geAuthProvider: S.optional(__S(5, __c0, 5)),
-          threeLeggedOauth: S.optional(__S(6, __c0, 6)),
-          xaaAuthProvider: S.optional(__S(11, __c1, 3)),
-          apiKey: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AuthProviderTypeParams" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
-          description: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          authProviderTypeParams: S.optional(__S(13, __c1, 5)),
-          workloadIds: S.optional(__S(14, __c1, 6)),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          allowedScopes: S.optional(__S(14, __c1, 6)),
-          blockedScopes: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "AuthProvider" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          authProviderId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/authProviders",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAuthProvidersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAuthProvidersRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAuthProvidersAuthorizationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DisableAuthProviderRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:disable",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableProjectsLocationsAuthProvidersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:enable",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableProjectsLocationsAuthProvidersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+resource}:getIamPolicy",
-            baseUrl: "https://agentidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsAuthProvidersRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          auditLogConfigs: S.optional(__S(25, __c3, 1)),
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(__S(28, __c3, 4)),
-          role: S.optional(S.String),
-          members: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(27, __c3, 3)),
-          version: S.optional(S.Number),
-          bindings: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "Policy" });
-  }
-}
-function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1399,7 +1115,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1413,17 +1133,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(1, __c0, 1)),
+          metadata: S.optional(__S(416, __c26, 0)),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1437,23 +1165,31 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAccessSummariesRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           workloadId: S.optional(S.String),
           userId: S.optional(S.String),
           tokenUrl: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(400, __c25, 0)),
           authProviderType: S.optional(S.String),
           authProvider: S.optional(S.String),
           lastAccessTime: S.optional(S.String),
           firstAccessTime: S.optional(S.String),
-          scopes: S.optional(__S(14, __c1, 6)),
+          scopes: S.optional(__S(448, __c28, 0)),
           purgeTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessSummary" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1467,7 +1203,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAuthProvidersRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1481,12 +1221,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAuthProvidersAuthorizationsRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           clientUserId: S.optional(S.String),
-          scopes: S.optional(__S(14, __c1, 6)),
+          scopes: S.optional(__S(448, __c28, 0)),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           state: S.optional(S.String),
@@ -1494,12 +1238,12 @@ function __c4(j: number): any {
       ).annotate({ identifier: "Authorization" });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(448, __c28, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1515,15 +1259,19 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(32, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(41, __c5, 1)),
+          locations: S.optional(__S(129, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1541,19 +1289,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAccessSummariesRequest",
       });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accessSummaries: S.optional(__S(44, __c5, 4)),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          accessSummaries: S.optional(__S(145, __c9, 1)),
+          unreachable: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({
         identifier: "ListAccessSummariesResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1572,23 +1324,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAuthProvidersRequest",
       });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(444, __c27, 12));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14, __c1, 6)),
-          authProviders: S.optional(__S(47, __c5, 7)),
+          unreachable: S.optional(__S(448, __c28, 0)),
+          authProviders: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({
         identifier: "ListAuthProvidersResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1606,25 +1358,29 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAuthProvidersAuthorizationsRequest",
       });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
     case 2:
-      return S.Array(__S(39, __c4, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(__S(50, __c6, 2)),
+          authorizations: S.optional(__S(177, __c11, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          unreachable: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({
         identifier: "ListAuthorizationsResponse",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(444, __c27, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1635,7 +1391,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsAuthProvidersRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1652,16 +1412,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "QueryProjectsLocationsAuthProvidersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authProviderNames: S.optional(__S(14, __c1, 6)),
+          authProviderNames: S.optional(__S(448, __c28, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "QueryAuthProvidersResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1677,18 +1441,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "QueryWorkloadsProjectsLocationsAuthProvidersRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          workloadIds: S.optional(__S(14, __c1, 6)),
+          workloadIds: S.optional(__S(448, __c28, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryWorkloadsResponse" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientUserId: S.optional(S.String),
@@ -1696,11 +1460,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResolveAuthorizationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1711,7 +1475,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResolveAuthorizationProjectsLocationsAuthProvidersRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authorization: S.optional(S.String),
@@ -1719,7 +1483,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResolveAuthorizationResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
@@ -1727,11 +1495,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "RevokeAuthorizationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1742,18 +1510,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "RevokeAuthorizationProjectsLocationsAuthProvidersRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(31, __c3, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1766,13 +1531,24 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(583, __c36, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1783,19 +1559,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1806,11 +1578,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAuthProvidersRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1821,11 +1609,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1838,7 +1630,326 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          authProviderId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(444, __c27, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/authProviders",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAuthProvidersRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(416, __c26, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connector: S.optional(S.String),
+          authorizationDetails: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectorReferenceAuthProvider",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tokenUrl: S.optional(S.String),
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TwoLeggedOAuth" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GeminiEnterpriseAuthProviderParams",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          redirectUrl: S.optional(S.String),
+          authorizationUrl: S.optional(S.String),
+          tokenUrl: S.optional(S.String),
+          defaultContinueUri: S.optional(S.String),
+          enablePkce: S.optional(S.Boolean),
+          clientSecret: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThreeLeggedOAuth" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          tokenUrl: S.optional(S.String),
+          issuer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomIssuer" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientSecretAuth" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          idJagAdditionalClaims: S.optional(__S(416, __c26, 0)),
+          idJagAuthProvider: S.optional(S.String),
+          agentIdentityPool: S.optional(__S(435, __c27, 3)),
+        }),
+      ).annotate({ identifier: "IdTokenProcessingConfig" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientAssertionJwtAuth" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          additionalParameters: S.optional(__S(400, __c25, 0)),
+          customIssuer: S.optional(__S(437, __c27, 5)),
+          idJagInput: S.optional(__S(435, __c27, 3)),
+          clientSecretAuth: S.optional(__S(438, __c27, 6)),
+          idTokenInput: S.optional(__S(439, __c27, 7)),
+          workforceIdentityFederation: S.optional(__S(435, __c27, 3)),
+          googleAccount: S.optional(__S(435, __c27, 3)),
+          clientAssertionJwtAuth: S.optional(__S(440, __c27, 8)),
+        }),
+      ).annotate({
+        identifier: "CrossAppAccessAuthProvider",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiKeyParams" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          connectorReferenceAuthProvider: S.optional(__S(433, __c27, 1)),
+          twoLeggedOauth: S.optional(__S(434, __c27, 2)),
+          geAuthProvider: S.optional(__S(435, __c27, 3)),
+          threeLeggedOauth: S.optional(__S(436, __c27, 4)),
+          xaaAuthProvider: S.optional(__S(441, __c27, 9)),
+          apiKey: S.optional(__S(442, __c27, 10)),
+        }),
+      ).annotate({ identifier: "AuthProviderTypeParams" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(400, __c25, 0)),
+          description: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          authProviderTypeParams: S.optional(__S(443, __c27, 11)),
+          workloadIds: S.optional(__S(448, __c28, 0)),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          allowedScopes: S.optional(__S(448, __c28, 0)),
+          blockedScopes: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({ identifier: "AuthProvider" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAuthProvidersRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAuthProvidersAuthorizationsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:disable",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableProjectsLocationsAuthProvidersRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DisableAuthProviderRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:enable",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableProjectsLocationsAuthProvidersRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+resource}:getIamPolicy",
+            baseUrl: "https://agentidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsAuthProvidersRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auditLogConfigs: S.optional(__S(577, __c36, 1)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 3:
+      return S.Array(__S(578, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(__S(580, __c36, 4)),
+          role: S.optional(S.String),
+          members: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 6:
+      return S.Array(__S(581, __c36, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          auditConfigs: S.optional(__S(579, __c36, 3)),
+          version: S.optional(S.Number),
+          bindings: S.optional(__S(582, __c36, 6)),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

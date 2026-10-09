@@ -420,8 +420,8 @@ export const createProjectsScanConfigs: API.OperationMethod<
   CreateProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsScanConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ScanConfig>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectsScanConfigsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<ScanConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -440,8 +440,8 @@ export const deleteProjectsScanConfigs: API.OperationMethod<
   DeleteProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteProjectsScanConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteProjectsScanConfigsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const getProjectsScanConfigs: API.OperationMethod<
   GetProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetProjectsScanConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ScanConfig>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetProjectsScanConfigsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<ScanConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const getProjectsScanConfigsScanRuns: API.OperationMethod<
   GetProjectsScanConfigsScanRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ScanRun>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ScanRun>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,8 +485,8 @@ export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
   GetProjectsScanConfigsScanRunsFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<Finding>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<Finding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScanConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsScanConfigsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListScanConfigsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListProjectsScanConfigsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListScanConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -518,8 +518,8 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScanRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListScanRunsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListScanRunsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -535,8 +535,8 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
   GcpOpContext,
   ListCrawledUrlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListCrawledUrlsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListCrawledUrlsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   GcpOpContext,
   ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListFindingsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListFindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -572,11 +572,11 @@ export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    35,
-    __c4,
-    3,
+    24,
+    __c3,
+    0,
   ) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListFindingTypeStatsResponse>,
+  output: __S(27, __c3, 3) as any as S.Schema<ListFindingTypeStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const patchProjectsScanConfigs: API.OperationMethod<
   PatchProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PatchProjectsScanConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ScanConfig>,
+  input: __S(32, __c4, 0) as any as S.Schema<PatchProjectsScanConfigsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<ScanConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -616,7 +616,7 @@ export const startProjectsScanConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<StartProjectsScanConfigsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ScanRun>,
+  output: __S(64, __c8, 0) as any as S.Schema<ScanRun>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -635,8 +635,8 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   StopProjectsScanConfigsScanRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ScanRun>,
+  input: __S(48, __c6, 0) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ScanRun>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,6 +644,238 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/scanRuns",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsScanConfigsScanRunsRequest",
+      });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scanRuns: S.optional(__S(1, __c0, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListScanRunsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/crawledUrls",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsScanConfigsScanRunsCrawledUrlsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          httpMethod: S.optional(S.String),
+          body: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CrawledUrl" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          crawledUrls: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({ identifier: "ListCrawledUrlsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/findings",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
+      });
+    case 1:
+      return S.Array(__S(135, __c16, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          findings: S.optional(__S(17, __c2, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListFindingsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/findingTypeStats",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsScanConfigsScanRunsFindingTypeStatsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          findingCount: S.optional(S.Number),
+          findingType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FindingTypeStats" });
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          findingTypeStats: S.optional(__S(26, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "ListFindingTypeStatsResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsScanConfigsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:start",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartProjectsScanConfigsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:stop",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StopProjectsScanConfigsScanRunsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/scanConfigs",
+            baseUrl: "https://websecurityscanner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsScanConfigsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          progressPercent: S.optional(S.Number),
+          executionState: S.optional(S.String),
+          hasVulnerabilities: S.optional(S.Boolean),
+          startTime: S.optional(S.String),
+          urlsCrawledCount: S.optional(S.String),
+          endTime: S.optional(S.String),
+          name: S.optional(S.String),
+          resultState: S.optional(S.String),
+          urlsTestedCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScanRun" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -670,63 +902,32 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          googleAccount: S.optional(__S(1, __c0, 1)),
-          customAccount: S.optional(__S(2, __c0, 2)),
+          googleAccount: S.optional(__S(81, __c10, 1)),
+          customAccount: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "Authentication" });
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(S.String);
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          progressPercent: S.optional(S.Number),
-          executionState: S.optional(S.String),
-          hasVulnerabilities: S.optional(S.Boolean),
-          startTime: S.optional(S.String),
-          urlsCrawledCount: S.optional(S.String),
-          endTime: S.optional(S.String),
-          name: S.optional(S.String),
-          resultState: S.optional(S.String),
-          urlsTestedCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScanRun" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schedule: S.optional(__S(0, __c0, 0)),
+          schedule: S.optional(__S(80, __c10, 0)),
           userAgent: S.optional(S.String),
-          authentication: S.optional(__S(3, __c0, 3)),
+          authentication: S.optional(__S(83, __c10, 3)),
           name: S.optional(S.String),
           maxQps: S.optional(S.Number),
-          startingUrls: S.optional(__S(4, __c0, 4)),
-          blacklistPatterns: S.optional(__S(4, __c0, 4)),
-          targetPlatforms: S.optional(__S(5, __c0, 5)),
+          startingUrls: S.optional(__S(72, __c9, 0)),
+          blacklistPatterns: S.optional(__S(72, __c9, 0)),
+          targetPlatforms: S.optional(__S(84, __c10, 4)),
           displayName: S.optional(S.String),
-          latestRun: S.optional(__S(6, __c0, 6)),
+          latestRun: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "ScanConfig" });
   }
 }
-function __c1(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/scanConfigs",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsScanConfigsRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -740,11 +941,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsScanConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -758,7 +967,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProjectsScanConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -772,7 +985,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProjectsScanConfigsScanRunsRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -786,75 +1003,79 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProjectsScanConfigsScanRunsFindingsRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Header" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          missingHeaders: S.optional(__S(15, __c1, 7)),
-          headers: S.optional(__S(15, __c1, 7)),
+          missingHeaders: S.optional(__S(129, __c16, 1)),
+          headers: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "VulnerableHeaders" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          parameterNames: S.optional(__S(4, __c0, 4)),
+          parameterNames: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "VulnerableParameters" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           libraryName: S.optional(S.String),
           version: S.optional(S.String),
-          learnMoreUrls: S.optional(__S(4, __c0, 4)),
+          learnMoreUrls: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "OutdatedLibrary" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
           resourceUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViolatingResource" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          stackTraces: S.optional(__S(4, __c0, 4)),
+          stackTraces: S.optional(__S(72, __c9, 0)),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Xss" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           frameUrl: S.optional(S.String),
           trackingId: S.optional(S.String),
-          vulnerableHeaders: S.optional(__S(16, __c2, 0)),
-          vulnerableParameters: S.optional(__S(17, __c2, 1)),
+          vulnerableHeaders: S.optional(__S(130, __c16, 2)),
+          vulnerableParameters: S.optional(__S(131, __c16, 3)),
           fuzzedUrl: S.optional(S.String),
           finalUrl: S.optional(S.String),
           description: S.optional(S.String),
-          outdatedLibrary: S.optional(__S(18, __c2, 2)),
-          violatingResource: S.optional(__S(19, __c2, 3)),
+          outdatedLibrary: S.optional(__S(132, __c16, 4)),
+          violatingResource: S.optional(__S(133, __c16, 5)),
           body: S.optional(S.String),
           reproductionUrl: S.optional(S.String),
           findingType: S.optional(S.String),
           httpMethod: S.optional(S.String),
           name: S.optional(S.String),
-          xss: S.optional(__S(20, __c2, 4)),
+          xss: S.optional(__S(134, __c16, 6)),
         }),
       ).annotate({ identifier: "Finding" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -870,191 +1091,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsScanConfigsRequest",
       });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(85, __c10, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          scanConfigs: S.optional(__S(23, __c2, 7)),
+          scanConfigs: S.optional(__S(137, __c17, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListScanConfigsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/scanRuns",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsScanConfigsScanRunsRequest",
-      });
-    case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scanRuns: S.optional(__S(26, __c3, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListScanRunsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/crawledUrls",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsScanConfigsScanRunsCrawledUrlsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          httpMethod: S.optional(S.String),
-          body: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CrawledUrl" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          crawledUrls: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "ListCrawledUrlsResponse" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/findings",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
-      });
-    case 1:
-      return S.Array(__S(21, __c2, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          findings: S.optional(__S(33, __c4, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListFindingsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/findingTypeStats",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsScanConfigsScanRunsFindingTypeStatsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          findingCount: S.optional(S.Number),
-          findingType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FindingTypeStats" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          findingTypeStats: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "ListFindingTypeStatsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsScanConfigsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:start",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartProjectsScanConfigsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:stop",
-            baseUrl: "https://websecurityscanner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StopProjectsScanConfigsScanRunsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

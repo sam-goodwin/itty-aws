@@ -1235,8 +1235,12 @@ export const addIpOverrideProjectsKeys: API.OperationMethod<
   AddIpOverrideProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddIpOverrideProjectsKeysRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<AddIpOverrideProjectsKeysRequest>,
+  output: __S(
+    896,
+    __c28,
+    0,
+  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1255,11 +1259,11 @@ export const annotateProjectsAssessments: API.OperationMethod<
   AnnotateProjectsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AnnotateProjectsAssessmentsRequest>,
+  input: __S(931, __c29, 3) as any as S.Schema<AnnotateProjectsAssessmentsRequest>,
   output: __S(
-    9,
-    __c1,
-    1,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1280,8 +1284,8 @@ export const createProjectsAssessments: API.OperationMethod<
   CreateProjectsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateProjectsAssessmentsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Assessment>,
+  input: __S(1063, __c33, 7) as any as S.Schema<CreateProjectsAssessmentsRequest>,
+  output: __S(1062, __c33, 6) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InvalidSiteKey, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1305,8 @@ export const createProjectsFirewallpolicies: API.OperationMethod<
   CreateProjectsFirewallpoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectsFirewallpoliciesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateProjectsFirewallpoliciesRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
   errors: [
     NotFound,
     Forbidden,
@@ -1323,8 +1327,8 @@ export const createProjectsKeys: API.OperationMethod<
   CreateProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateProjectsKeysRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsKeysRequest>,
+  output: __S(73, __c2, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1344,8 +1348,8 @@ export const deleteProjectsFirewallpolicies: API.OperationMethod<
   DeleteProjectsFirewallpoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteProjectsFirewallpoliciesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectsFirewallpoliciesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -1366,8 +1370,8 @@ export const deleteProjectsKeys: API.OperationMethod<
   DeleteProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteProjectsKeysRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsKeysRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1381,10 +1385,10 @@ export const getLegacySecretKeyProjectsKeys: API.OperationMethod<
   GetLegacySecretKeyProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetLegacySecretKeyProjectsKeysRequest>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetLegacySecretKeyProjectsKeysRequest>,
   output: __S(
-    73,
-    __c9,
+    193,
+    __c6,
     1,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1400,8 +1404,8 @@ export const getMetricsProjectsKeys: API.OperationMethod<
   GetMetricsProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetMetricsProjectsKeysRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Metrics>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetMetricsProjectsKeysRequest>,
+  output: __S(231, __c7, 7) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Metrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1419,8 @@ export const getPolicyProjectsKeys: API.OperationMethod<
   GetPolicyProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetPolicyProjectsKeysRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetPolicyProjectsKeysRequest>,
+  output: __S(297, __c9, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1438,8 @@ export const getProjectsFirewallpolicies: API.OperationMethod<
   GetProjectsFirewallpoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetProjectsFirewallpoliciesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetProjectsFirewallpoliciesRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
   errors: [NotFound, Forbidden, FirewallPolicyApiUnavailable, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1453,8 @@ export const getProjectsKeys: API.OperationMethod<
   GetProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetProjectsKeysRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsKeysRequest>,
+  output: __S(73, __c2, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1465,11 +1469,11 @@ export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListIpOverridesProjectsKeysRequest>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListIpOverridesProjectsKeysRequest>,
   output: __S(
-    97,
+    386,
     __c12,
-    1,
+    2,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1490,11 +1494,11 @@ export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListProjectsFirewallpoliciesRequest>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListProjectsFirewallpoliciesRequest>,
   output: __S(
-    100,
-    __c12,
-    4,
+    418,
+    __c13,
+    2,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>,
   errors: [NotFound, Forbidden, FirewallPolicyApiUnavailable, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1511,8 +1515,8 @@ export const listProjectsKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRecaptchaenterpriseV1ListKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListProjectsKeysRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListKeysResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListProjectsKeysRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1528,10 +1532,10 @@ export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListProjectsRelatedaccountgroupsRequest>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListProjectsRelatedaccountgroupsRequest>,
   output: __S(
-    107,
-    __c13,
+    483,
+    __c15,
     3,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1549,11 +1553,11 @@ export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    546,
+    __c17,
+    2,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1569,8 +1573,8 @@ export const migrateProjectsKeys: API.OperationMethod<
   MigrateProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<MigrateProjectsKeysRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
+  input: __S(577, __c18, 1) as any as S.Schema<MigrateProjectsKeysRequest>,
+  output: __S(73, __c2, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1590,8 +1594,8 @@ export const patchProjectsFirewallpolicies: API.OperationMethod<
   PatchProjectsFirewallpoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<PatchProjectsFirewallpoliciesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
+  input: __S(608, __c19, 0) as any as S.Schema<PatchProjectsFirewallpoliciesRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>,
   errors: [
     NotFound,
     Forbidden,
@@ -1612,8 +1616,8 @@ export const patchProjectsKeys: API.OperationMethod<
   PatchProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<PatchProjectsKeysRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchProjectsKeysRequest>,
+  output: __S(73, __c2, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1632,11 +1636,11 @@ export const removeIpOverrideProjectsKeys: API.OperationMethod<
   RemoveIpOverrideProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<RemoveIpOverrideProjectsKeysRequest>,
+  input: __S(672, __c21, 0) as any as S.Schema<RemoveIpOverrideProjectsKeysRequest>,
   output: __S(
-    9,
-    __c1,
-    1,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1657,11 +1661,11 @@ export const reorderProjectsFirewallpolicies: API.OperationMethod<
   ReorderProjectsFirewallpoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ReorderProjectsFirewallpoliciesRequest>,
+  input: __S(705, __c22, 1) as any as S.Schema<ReorderProjectsFirewallpoliciesRequest>,
   output: __S(
-    119,
-    __c14,
-    7,
+    706,
+    __c22,
+    2,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse>,
   errors: [
     NotFound,
@@ -1688,11 +1692,11 @@ export const searchProjectsRelatedaccountgroupmemberships: API.OperationMethod<
   SearchProjectsRelatedaccountgroupmembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<SearchProjectsRelatedaccountgroupmembershipsRequest>,
+  input: __S(737, __c23, 1) as any as S.Schema<SearchProjectsRelatedaccountgroupmembershipsRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    546,
+    __c17,
+    2,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1712,8 +1716,8 @@ export const updatePolicyProjectsKeys: API.OperationMethod<
   UpdatePolicyProjectsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<UpdatePolicyProjectsKeysRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdatePolicyProjectsKeysRequest>,
+  output: __S(297, __c9, 9) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,668 +1729,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ip: S.optional(S.String),
-          overrideType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1IpOverrideData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipOverrideData: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:addIpOverride",
-            baseUrl: "https://recaptchaenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddIpOverrideProjectsKeysRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          eventTime: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          eventTime: S.optional(S.String),
-          value: S.optional(S.Number),
-          eventType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionEvent",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          phoneAuthenticationEvent: S.optional(__S(4, __c0, 4)),
-          accountId: S.optional(S.String),
-          reasons: S.optional(__S(5, __c0, 5)),
-          transactionEvent: S.optional(__S(6, __c0, 6)),
-          hashedAccountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:annotate",
-            baseUrl: "https://recaptchaenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnnotateProjectsAssessmentsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userAgent: S.optional(S.String),
-          userIpAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientProperties: S.optional(__S(10, __c1, 2)),
-          androidPackageName: S.optional(S.String),
-          clientSignalsFailed: S.optional(S.Boolean),
-          valid: S.optional(S.Boolean),
-          action: S.optional(S.String),
-          invalidReason: S.optional(S.String),
-          iosBundleId: S.optional(S.String),
-          hostname: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TokenProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1UserId",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createAccountTime: S.optional(S.String),
-          userIds: S.optional(__S(13, __c1, 5)),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1UserInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayResponseCode: S.optional(S.String),
-          avsResponseCode: S.optional(S.String),
-          name: S.optional(S.String),
-          cvvResponseCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-          phoneVerified: S.optional(S.Boolean),
-          creationMs: S.optional(S.String),
-          emailVerified: S.optional(S.Boolean),
-          accountId: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataUser",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          merchantAccountId: S.optional(S.String),
-          value: S.optional(S.Number),
-          name: S.optional(S.String),
-          quantity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataItem",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          administrativeArea: S.optional(S.String),
-          recipient: S.optional(S.String),
-          locality: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          address: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataAddress",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayInfo: S.optional(__S(15, __c1, 7)),
-          cardLastFour: S.optional(S.String),
-          transactionId: S.optional(S.String),
-          value: S.optional(S.Number),
-          user: S.optional(__S(16, __c2, 0)),
-          merchants: S.optional(__S(17, __c2, 1)),
-          cardBin: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          paymentMethod: S.optional(S.String),
-          items: S.optional(__S(19, __c2, 3)),
-          billingAddress: S.optional(__S(21, __c2, 5)),
-          shippingValue: S.optional(S.Number),
-          shippingAddress: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userIpAddress: S.optional(S.String),
-          token: S.optional(S.String),
-          ja3: S.optional(S.String),
-          requestedUri: S.optional(S.String),
-          fraudPrevention: S.optional(S.String),
-          userInfo: S.optional(__S(14, __c1, 6)),
-          siteKey: S.optional(S.String),
-          expectedAction: S.optional(S.String),
-          wafTokenAssessment: S.optional(S.Boolean),
-          userAgent: S.optional(S.String),
-          transactionData: S.optional(__S(22, __c2, 6)),
-          firewallPolicyEvaluation: S.optional(S.Boolean),
-          hashedAccountId: S.optional(S.String),
-          express: S.optional(S.Boolean),
-          headers: S.optional(__S(20, __c2, 4)),
-          ja4: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1Event",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          client: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          challengeRuleEvaluation: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1PolicyEvaluation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reencryptedUserCredentialsHash: S.optional(S.String),
-          lookupHashPrefix: S.optional(S.String),
-          encryptedUserCredentialsHash: S.optional(S.String),
-          encryptedLeakMatchPrefixes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trustReasons: S.optional(__S(28, __c3, 4)),
-          risk: S.optional(S.Number),
-          riskReasons: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountTakeoverVerdict: S.optional(__S(29, __c3, 5)),
-          labels: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-          emailAddress: S.optional(S.String),
-          requestToken: S.optional(S.String),
-          lastVerificationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(32, __c4, 0)),
-          latestVerificationResult: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          syntheticRisk: S.optional(S.Number),
-          activeDaysLowerBound: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cardLabels: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userSignals: S.optional(__S(34, __c4, 2)),
-          cardSignals: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignals",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          botType: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1Bot",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          extendedVerdictReasons: S.optional(__S(20, __c2, 4)),
-          lastChallengeType: S.optional(S.String),
-          verifiedBots: S.optional(__S(38, __c4, 6)),
-          reasons: S.optional(__S(5, __c0, 5)),
-          score: S.optional(S.Number),
-          challenge: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1RiskAnalysis",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          risk: S.optional(S.Number),
-          reasons: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          smsTollFraudVerdict: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allow: S.optional(__S(3, __c0, 3)),
-          substitute: S.optional(__S(42, __c5, 2)),
-          includeRecaptchaScript: S.optional(__S(3, __c0, 3)),
-          setHeader: S.optional(__S(43, __c5, 3)),
-          block: S.optional(__S(3, __c0, 3)),
-          redirect: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallAction",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          path: S.optional(S.String),
-          actions: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicy",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(48, __c6, 0)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          firewallPolicy: S.optional(__S(46, __c5, 6)),
-          error: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          risk: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          trust: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stolenInstrumentVerdict: S.optional(__S(51, __c6, 3)),
-          cardTestingVerdict: S.optional(__S(51, __c6, 3)),
-          transactionRisk: S.optional(S.Number),
-          riskReasons: S.optional(__S(28, __c3, 4)),
-          behavioralTrustVerdict: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tokenProperties: S.optional(__S(11, __c1, 3)),
-          event: S.optional(__S(23, __c2, 7)),
-          assessmentEnvironment: S.optional(__S(24, __c3, 0)),
-          name: S.optional(S.String),
-          policyEvaluation: S.optional(__S(25, __c3, 1)),
-          privatePasswordLeakVerification: S.optional(__S(26, __c3, 2)),
-          accountDefenderAssessment: S.optional(__S(30, __c3, 6)),
-          accountVerification: S.optional(__S(33, __c4, 1)),
-          fraudSignals: S.optional(__S(36, __c4, 4)),
-          riskAnalysis: S.optional(__S(39, __c4, 7)),
-          phoneFraudAssessment: S.optional(__S(41, __c5, 1)),
-          firewallPolicyAssessment: S.optional(__S(50, __c6, 2)),
-          fraudPreventionAssessment: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1Assessment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/assessments",
-            baseUrl: "https://recaptchaenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAssessmentsRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/firewallpolicies",
-            baseUrl: "https://recaptchaenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsFirewallpoliciesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          wafService: S.optional(S.String),
-          wafFeature: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1WafSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          supportNonGoogleAppStoreDistribution: S.optional(S.Boolean),
-          allowedPackageNames: S.optional(__S(20, __c2, 4)),
-          allowAllPackageNames: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AndroidKeySettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateKey: S.optional(S.String),
-          teamId: S.optional(S.String),
-          keyId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1AppleDeveloperId",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedBundleIds: S.optional(__S(20, __c2, 4)),
-          allowAllBundleIds: S.optional(S.Boolean),
-          appleDeveloperId: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1IOSKeySettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scoreThreshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings",
-      });
-    case 6:
-      return S.Record(S.String, __S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actionSettings: S.optional(__S(62, __c7, 6)),
-          defaultSettings: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowAmpTraffic: S.optional(S.Boolean),
-          allowAllDomains: S.optional(S.Boolean),
-          challengeSecurityPreference: S.optional(S.String),
-          integrationType: S.optional(S.String),
-          challengeSettings: S.optional(__S(63, __c7, 7)),
-          allowedDomains: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          testingChallenge: S.optional(S.String),
-          testingScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1TestingOptions",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          wafSettings: S.optional(__S(57, __c7, 1)),
-          createTime: S.optional(S.String),
-          universalSettings: S.optional(__S(3, __c0, 3)),
-          androidSettings: S.optional(__S(58, __c7, 2)),
-          iosSettings: S.optional(__S(60, __c7, 4)),
-          expressSettings: S.optional(__S(3, __c0, 3)),
-          webSettings: S.optional(__S(64, __c8, 0)),
-          name: S.optional(S.String),
-          testingOptions: S.optional(__S(65, __c8, 1)),
-          labels: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecaptchaenterpriseV1Key",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c2, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2397,7 +1741,119 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsKeysRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          wafService: S.optional(S.String),
+          wafFeature: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1WafSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          supportNonGoogleAppStoreDistribution: S.optional(S.Boolean),
+          allowedPackageNames: S.optional(__S(1088, __c34, 0)),
+          allowAllPackageNames: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AndroidKeySettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateKey: S.optional(S.String),
+          teamId: S.optional(S.String),
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AppleDeveloperId",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          allowedBundleIds: S.optional(__S(1088, __c34, 0)),
+          allowAllBundleIds: S.optional(S.Boolean),
+          appleDeveloperId: S.optional(__S(66, __c2, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1IOSKeySettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          scoreThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings",
+      });
     case 5:
+      return S.Record(S.String, __S(68, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          actionSettings: S.optional(__S(69, __c2, 5)),
+          defaultSettings: S.optional(__S(68, __c2, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allowAmpTraffic: S.optional(S.Boolean),
+          allowAllDomains: S.optional(S.Boolean),
+          challengeSecurityPreference: S.optional(S.String),
+          integrationType: S.optional(S.String),
+          challengeSettings: S.optional(__S(70, __c2, 6)),
+          allowedDomains: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettings",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          testingChallenge: S.optional(S.String),
+          testingScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TestingOptions",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          wafSettings: S.optional(__S(64, __c2, 0)),
+          createTime: S.optional(S.String),
+          universalSettings: S.optional(__S(896, __c28, 0)),
+          androidSettings: S.optional(__S(65, __c2, 1)),
+          iosSettings: S.optional(__S(67, __c2, 3)),
+          expressSettings: S.optional(__S(896, __c28, 0)),
+          webSettings: S.optional(__S(71, __c2, 7)),
+          name: S.optional(S.String),
+          testingOptions: S.optional(__S(72, __c2, 8)),
+          labels: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1Key",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2411,11 +1867,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsFirewallpoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2431,7 +1895,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2453,7 +1917,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2467,28 +1935,28 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetMetricsProjectsKeysRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          scoreBuckets: S.optional(__S(66, __c8, 2)),
+          scoreBuckets: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ScoreDistribution",
       });
-    case 4:
-      return S.Record(S.String, __S(75, __c9, 3));
-    case 5:
+    case 2:
+      return S.Record(S.String, __S(225, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          overallMetrics: S.optional(__S(75, __c9, 3)),
-          actionMetrics: S.optional(__S(76, __c9, 4)),
+          overallMetrics: S.optional(__S(225, __c7, 1)),
+          actionMetrics: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ScoreMetrics",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           nocaptchaCount: S.optional(S.String),
@@ -2499,24 +1967,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeMetrics",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(229, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          scoreMetrics: S.optional(__S(78, __c9, 6)),
+          scoreMetrics: S.optional(__S(228, __c7, 4)),
           name: S.optional(S.String),
           startTime: S.optional(S.String),
-          challengeMetrics: S.optional(__S(80, __c10, 0)),
+          challengeMetrics: S.optional(__S(230, __c7, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1Metrics",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2530,7 +1998,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPolicyProjectsKeysRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -2539,27 +2011,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          protectedEndpoints: S.optional(__S(84, __c10, 4)),
+          protectedEndpoints: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          protectedEndpointGroup: S.optional(__S(85, __c10, 5)),
-          allowedDomains: S.optional(__S(20, __c2, 4)),
+          protectedEndpointGroup: S.optional(__S(290, __c9, 2)),
+          allowedDomains: S.optional(__S(1088, __c34, 0)),
           allowAllDomains: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ClientSettings",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           difficulty: S.optional(S.String),
@@ -2567,44 +2039,44 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          noChallenge: S.optional(__S(3, __c0, 3)),
+          noChallenge: S.optional(__S(896, __c28, 0)),
           condition: S.optional(S.String),
-          challenge: S.optional(__S(87, __c10, 7)),
+          challenge: S.optional(__S(292, __c9, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRule",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(293, __c9, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(20, __c2, 4)),
-          challengeRules: S.optional(__S(89, __c11, 1)),
+          actions: S.optional(__S(1088, __c34, 0)),
+          challengeRules: S.optional(__S(294, __c9, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(295, __c9, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          clientSettings: S.optional(__S(86, __c10, 6)),
-          challengeRuleGroups: S.optional(__S(91, __c11, 3)),
+          clientSettings: S.optional(__S(291, __c9, 3)),
+          challengeRuleGroups: S.optional(__S(296, __c9, 8)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1Policy",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2618,7 +2090,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsFirewallpoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2630,7 +2106,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsKeysRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2646,22 +2126,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListIpOverridesProjectsKeysRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(0, __c0, 0));
     case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          ipOverrides: S.optional(__S(96, __c12, 0)),
+          ipOverrides: S.optional(__S(385, __c12, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2677,18 +2157,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsFirewallpoliciesRequest",
       });
-    case 3:
-      return S.Array(__S(46, __c5, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1124, __c35, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          firewallPolicies: S.optional(__S(99, __c12, 3)),
+          firewallPolicies: S.optional(__S(417, __c13, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2702,12 +2186,12 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsKeysRequest" });
-    case 6:
-      return S.Array(__S(67, __c8, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(73, __c2, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(102, __c12, 6)),
+          keys: S.optional(__S(449, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2715,7 +2199,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2742,17 +2226,21 @@ function __c13(j: number): any {
         identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup",
       });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(481, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          relatedAccountGroups: S.optional(__S(106, __c13, 2)),
+          relatedAccountGroups: S.optional(__S(482, __c15, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2768,7 +2256,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsRelatedaccountgroupsMembershipsRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2778,12 +2270,12 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          relatedAccountGroupMemberships: S.optional(__S(110, __c13, 6)),
+          relatedAccountGroupMemberships: S.optional(__S(545, __c17, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2791,7 +2283,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2805,7 +2297,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2816,12 +2308,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "MigrateProjectsKeysRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1124, __c35, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2832,12 +2328,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchProjectsFirewallpoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c2, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2846,11 +2346,15 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchProjectsKeysRequest" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2861,19 +2365,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "RemoveIpOverrideProjectsKeysRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(20, __c2, 4)),
+          names: S.optional(__S(1088, __c34, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2884,13 +2392,13 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReorderProjectsFirewallpoliciesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2907,7 +2415,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2918,12 +2426,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SearchProjectsRelatedaccountgroupmembershipsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(297, __c9, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2936,7 +2448,582 @@ function __c15(j: number): any {
       });
   }
 }
-
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:addIpOverride",
+            baseUrl: "https://recaptchaenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddIpOverrideProjectsKeysRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.String),
+          overrideType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1IpOverrideData",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipOverrideData: S.optional(__S(832, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventTime: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          eventTime: S.optional(S.String),
+          value: S.optional(S.Number),
+          eventType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionEvent",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          phoneAuthenticationEvent: S.optional(__S(928, __c29, 0)),
+          accountId: S.optional(S.String),
+          reasons: S.optional(__S(992, __c31, 0)),
+          transactionEvent: S.optional(__S(929, __c29, 1)),
+          hashedAccountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(930, __c29, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:annotate",
+            baseUrl: "https://recaptchaenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnnotateProjectsAssessmentsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userAgent: S.optional(S.String),
+          userIpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientProperties: S.optional(__S(1024, __c32, 0)),
+          androidPackageName: S.optional(S.String),
+          clientSignalsFailed: S.optional(S.Boolean),
+          valid: S.optional(S.Boolean),
+          action: S.optional(S.String),
+          invalidReason: S.optional(S.String),
+          iosBundleId: S.optional(S.String),
+          hostname: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TokenProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1UserId",
+      });
+    case 3:
+      return S.Array(__S(1026, __c32, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createAccountTime: S.optional(S.String),
+          userIds: S.optional(__S(1027, __c32, 3)),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1UserInfo",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayResponseCode: S.optional(S.String),
+          avsResponseCode: S.optional(S.String),
+          name: S.optional(S.String),
+          cvvResponseCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+          phoneVerified: S.optional(S.Boolean),
+          creationMs: S.optional(S.String),
+          emailVerified: S.optional(S.Boolean),
+          accountId: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataUser",
+      });
+    case 7:
+      return S.Array(__S(1030, __c32, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          merchantAccountId: S.optional(S.String),
+          value: S.optional(S.Number),
+          name: S.optional(S.String),
+          quantity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataItem",
+      });
+    case 9:
+      return S.Array(__S(1032, __c32, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          administrativeArea: S.optional(S.String),
+          recipient: S.optional(S.String),
+          locality: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          address: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataAddress",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayInfo: S.optional(__S(1029, __c32, 5)),
+          cardLastFour: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          value: S.optional(S.Number),
+          user: S.optional(__S(1030, __c32, 6)),
+          merchants: S.optional(__S(1031, __c32, 7)),
+          cardBin: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          paymentMethod: S.optional(S.String),
+          items: S.optional(__S(1033, __c32, 9)),
+          billingAddress: S.optional(__S(1034, __c32, 10)),
+          shippingValue: S.optional(S.Number),
+          shippingAddress: S.optional(__S(1034, __c32, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1TransactionData",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          userIpAddress: S.optional(S.String),
+          token: S.optional(S.String),
+          ja3: S.optional(S.String),
+          requestedUri: S.optional(S.String),
+          fraudPrevention: S.optional(S.String),
+          userInfo: S.optional(__S(1028, __c32, 4)),
+          siteKey: S.optional(S.String),
+          expectedAction: S.optional(S.String),
+          wafTokenAssessment: S.optional(S.Boolean),
+          userAgent: S.optional(S.String),
+          transactionData: S.optional(__S(1035, __c32, 11)),
+          firewallPolicyEvaluation: S.optional(S.Boolean),
+          hashedAccountId: S.optional(S.String),
+          express: S.optional(S.Boolean),
+          headers: S.optional(__S(1088, __c34, 0)),
+          ja4: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1Event",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          client: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          challengeRuleEvaluation: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1PolicyEvaluation",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          reencryptedUserCredentialsHash: S.optional(S.String),
+          lookupHashPrefix: S.optional(S.String),
+          encryptedUserCredentialsHash: S.optional(S.String),
+          encryptedLeakMatchPrefixes: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason",
+      });
+    case 17:
+      return S.Array(__S(1040, __c32, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          trustReasons: S.optional(__S(1041, __c32, 17)),
+          risk: S.optional(S.Number),
+          riskReasons: S.optional(__S(1041, __c32, 17)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          accountTakeoverVerdict: S.optional(__S(1042, __c32, 18)),
+          labels: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+          requestToken: S.optional(S.String),
+          lastVerificationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo",
+      });
+    case 21:
+      return S.Array(__S(1044, __c32, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(1045, __c32, 21)),
+          latestVerificationResult: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          syntheticRisk: S.optional(S.Number),
+          activeDaysLowerBound: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          cardLabels: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          userSignals: S.optional(__S(1047, __c32, 23)),
+          cardSignals: S.optional(__S(1048, __c32, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignals",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          botType: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1Bot",
+      });
+    case 27:
+      return S.Array(__S(1050, __c32, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          extendedVerdictReasons: S.optional(__S(1088, __c34, 0)),
+          lastChallengeType: S.optional(S.String),
+          verifiedBots: S.optional(__S(1051, __c32, 27)),
+          reasons: S.optional(__S(992, __c31, 0)),
+          score: S.optional(S.Number),
+          challenge: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1RiskAnalysis",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          risk: S.optional(S.Number),
+          reasons: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          smsTollFraudVerdict: S.optional(__S(1053, __c32, 29)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment",
+      });
+    case 31:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1055, __c32, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1056, __c33, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firewallPolicy: S.optional(__S(1124, __c35, 4)),
+          error: S.optional(__S(1057, __c33, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          risk: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          trust: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          stolenInstrumentVerdict: S.optional(__S(1059, __c33, 3)),
+          cardTestingVerdict: S.optional(__S(1059, __c33, 3)),
+          transactionRisk: S.optional(S.Number),
+          riskReasons: S.optional(__S(1041, __c32, 17)),
+          behavioralTrustVerdict: S.optional(__S(1060, __c33, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          tokenProperties: S.optional(__S(1025, __c32, 1)),
+          event: S.optional(__S(1036, __c32, 12)),
+          assessmentEnvironment: S.optional(__S(1037, __c32, 13)),
+          name: S.optional(S.String),
+          policyEvaluation: S.optional(__S(1038, __c32, 14)),
+          privatePasswordLeakVerification: S.optional(__S(1039, __c32, 15)),
+          accountDefenderAssessment: S.optional(__S(1043, __c32, 19)),
+          accountVerification: S.optional(__S(1046, __c32, 22)),
+          fraudSignals: S.optional(__S(1049, __c32, 25)),
+          riskAnalysis: S.optional(__S(1052, __c32, 28)),
+          phoneFraudAssessment: S.optional(__S(1054, __c32, 30)),
+          firewallPolicyAssessment: S.optional(__S(1058, __c33, 2)),
+          fraudPreventionAssessment: S.optional(__S(1061, __c33, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1Assessment",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1062, __c33, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/assessments",
+            baseUrl: "https://recaptchaenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAssessmentsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allow: S.optional(__S(896, __c28, 0)),
+          substitute: S.optional(__S(1120, __c35, 0)),
+          includeRecaptchaScript: S.optional(__S(896, __c28, 0)),
+          setHeader: S.optional(__S(1121, __c35, 1)),
+          block: S.optional(__S(896, __c28, 0)),
+          redirect: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallAction",
+      });
+    case 3:
+      return S.Array(__S(1122, __c35, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          path: S.optional(S.String),
+          actions: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicy",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1124, __c35, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/firewallpolicies",
+            baseUrl: "https://recaptchaenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsFirewallpoliciesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

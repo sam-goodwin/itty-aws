@@ -426,8 +426,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateNetworkResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -441,8 +441,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteNetworkResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -456,8 +456,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetNetworkRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetNetworkResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetNetworkRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -473,8 +473,8 @@ export const listNetworkMembers: API.PaginatedOperationMethod<
   ListNetworkMembersResponseMembersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListNetworkMembersRequest>,
-    output: __S(24, __c3, 0) as any as S.Schema<ListNetworkMembersResponse>,
+    input: __S(33, __c4, 1) as any as S.Schema<ListNetworkMembersRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListNetworkMembersResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksResponseNetworksItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListNetworksRequest>,
-    output: __S(28, __c3, 4) as any as S.Schema<ListNetworksResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListNetworksRequest>,
+    output: __S(51, __c6, 3) as any as S.Schema<ListNetworksResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -523,8 +523,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateNetworkResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateNetworkRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<UpdateNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -534,8 +534,6 @@ export const updateNetwork: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -546,9 +544,50 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNetworkRequestSubnetsItem",
       });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ip_range: S.String,
+          labels: S.optional(__S(8, __c1, 0)),
+          subnets: S.optional(__S(1, __c0, 1)),
+          routes: S.optional(__S(10, __c1, 2)),
+          expose_routes_to_vswitch: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/networks", code: 200 })),
+      ).annotate({ identifier: "CreateNetworkRequest" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          ip_range: S.String,
+          subnets: __S(12, __c1, 4),
+          routes: __S(10, __c1, 2),
+          servers: __S(13, __c1, 5),
+          load_balancers: S.optional(__S(13, __c1, 5)),
+          protection: __S(14, __c1, 6),
+          labels: __S(8, __c1, 0),
+          created: S.String,
+          expose_routes_to_vswitch: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateNetworkResponseNetwork",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({ identifier: "CreateNetworkResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           destination: S.String,
@@ -557,20 +596,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNetworkRequestRoutesItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ip_range: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          subnets: S.optional(__S(2, __c0, 2)),
-          routes: S.optional(__S(4, __c0, 4)),
-          expose_routes_to_vswitch: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/networks", code: 200 })),
-      ).annotate({ identifier: "CreateNetworkRequest" });
-    case 6:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -582,79 +610,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNetworkResponseNetworkSubnetsItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
       return S.Array(S.Number);
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
         }),
       ).annotate({
         identifier: "CreateNetworkResponseNetworkProtection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          ip_range: S.String,
-          subnets: __S(7, __c0, 7),
-          routes: __S(4, __c0, 4),
-          servers: __S(8, __c1, 0),
-          load_balancers: S.optional(__S(8, __c1, 0)),
-          protection: __S(9, __c1, 1),
-          labels: __S(0, __c0, 0),
-          created: S.String,
-          expose_routes_to_vswitch: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateNetworkResponseNetwork",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/networks/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteNetworkRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNetworkResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/networks/{id}", code: 200 })),
-      ).annotate({ identifier: "GetNetworkRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          ip_range: S.String,
-          subnets: __S(7, __c0, 7),
-          routes: __S(4, __c0, 4),
-          servers: __S(8, __c1, 0),
-          load_balancers: S.optional(__S(8, __c1, 0)),
-          protection: __S(9, __c1, 1),
-          labels: __S(0, __c0, 0),
-          created: S.String,
-          expose_routes_to_vswitch: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetNetworkResponseNetwork",
       });
   }
 }
@@ -663,43 +629,98 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "GetNetworkResponse" });
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/networks/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteNetworkRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteNetworkResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          subnet: S.optional(__S(18, __c2, 2).pipe(T.Query())),
-          status: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          sort: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/networks/{id}", code: 200 })),
+      ).annotate({ identifier: "GetNetworkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          ip_range: S.String,
+          subnets: __S(12, __c1, 4),
+          routes: __S(10, __c1, 2),
+          servers: __S(13, __c1, 5),
+          load_balancers: S.optional(__S(13, __c1, 5)),
+          protection: __S(14, __c1, 6),
+          labels: __S(8, __c1, 0),
+          created: S.String,
+          expose_routes_to_vswitch: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetNetworkResponseNetwork",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "GetNetworkResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          type: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          subnet: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          status: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          sort: S.optional(__S(40, __c5, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks/{id}/members", code: 200 })),
       ).annotate({
         identifier: "ListNetworkMembersRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           id: S.Number,
           ip: S.String,
           status: S.String,
-          alias_ips: __S(18, __c2, 2),
+          alias_ips: __S(32, __c4, 0),
           subnet: S.String,
         }),
       ).annotate({
         identifier: "ListNetworkMembersResponseMembersItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          members: __S(35, __c4, 3),
+          meta: __S(42, __c5, 2),
+        }),
+      ).annotate({
+        identifier: "ListNetworkMembersResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -712,100 +733,94 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListNetworkMembersResponseMetaPagination",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(22, __c2, 6),
+          pagination: __S(41, __c5, 1),
         }),
       ).annotate({
         identifier: "ListNetworkMembersResponseMeta",
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          members: __S(21, __c2, 5),
-          meta: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMembersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sort: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          sort: S.optional(__S(40, __c5, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks", code: 200 })),
       ).annotate({ identifier: "ListNetworksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7, __c0, 7),
-          routes: __S(4, __c0, 4),
-          servers: __S(8, __c1, 0),
-          load_balancers: S.optional(__S(8, __c1, 0)),
-          protection: __S(9, __c1, 1),
-          labels: __S(0, __c0, 0),
+          subnets: __S(12, __c1, 4),
+          routes: __S(10, __c1, 2),
+          servers: __S(13, __c1, 5),
+          load_balancers: S.optional(__S(13, __c1, 5)),
+          protection: __S(14, __c1, 6),
+          labels: __S(8, __c1, 0),
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
       ).annotate({
         identifier: "ListNetworksResponseNetworksItem",
       });
+    case 2:
+      return S.Array(__S(49, __c6, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          networks: __S(27, __c3, 3),
-          meta: __S(23, __c2, 7),
+          networks: __S(50, __c6, 2),
+          meta: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "ListNetworksResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
           expose_routes_to_vswitch: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/networks/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateNetworkRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7, __c0, 7),
-          routes: __S(4, __c0, 4),
-          servers: __S(8, __c1, 0),
-          load_balancers: S.optional(__S(8, __c1, 0)),
-          protection: __S(9, __c1, 1),
-          labels: __S(0, __c0, 0),
+          subnets: __S(12, __c1, 4),
+          routes: __S(10, __c1, 2),
+          servers: __S(13, __c1, 5),
+          load_balancers: S.optional(__S(13, __c1, 5)),
+          protection: __S(14, __c1, 6),
+          labels: __S(8, __c1, 0),
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
       ).annotate({
         identifier: "UpdateNetworkResponseNetwork",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(30, __c3, 6)),
+          network: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "UpdateNetworkResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1313,8 +1313,8 @@ export const approvePlanExecutionStep: API.OperationMethod<
   ApprovePlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ApprovePlanExecutionStepRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApprovePlanExecutionStepResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ApprovePlanExecutionStepRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<ApprovePlanExecutionStepResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1336,8 +1336,8 @@ export const cancelPlanExecution: API.OperationMethod<
   CancelPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelPlanExecutionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelPlanExecutionResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<CancelPlanExecutionRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<CancelPlanExecutionResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreatePlanRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreatePlanResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreatePlanRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreatePlanResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1376,8 +1376,8 @@ export const deletePlan: API.OperationMethod<
   DeletePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeletePlanRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePlanResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeletePlanRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeletePlanResponse>,
   errors: [IllegalStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1394,8 +1394,8 @@ export const getPlan: API.OperationMethod<
   GetPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetPlanRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetPlanResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPlanRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<GetPlanResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1416,8 +1416,8 @@ export const getPlanEvaluationStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceWarning
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPlanEvaluationStatusRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetPlanEvaluationStatusResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetPlanEvaluationStatusRequest>,
+  output: __S(36, __c1, 4) as any as S.Schema<GetPlanEvaluationStatusResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1444,8 +1444,8 @@ export const getPlanExecution: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StepState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetPlanExecutionRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetPlanExecutionResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetPlanExecutionRequest>,
+  output: __S(72, __c2, 8) as any as S.Schema<GetPlanExecutionResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1468,8 +1468,8 @@ export const getPlanInRegion: API.OperationMethod<
   GetPlanInRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetPlanInRegionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetPlanInRegionResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetPlanInRegionRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<GetPlanInRegionResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1490,8 +1490,8 @@ export const listPlanExecutionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListPlanExecutionEventsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListPlanExecutionEventsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListPlanExecutionEventsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<ListPlanExecutionEventsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1518,8 +1518,8 @@ export const listPlanExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListPlanExecutionsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListPlanExecutionsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListPlanExecutionsRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<ListPlanExecutionsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +1543,8 @@ export const listPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListPlansRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListPlansResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<ListPlansResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1568,8 +1568,8 @@ export const listPlansInRegion: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListPlansInRegionRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListPlansInRegionResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListPlansInRegionRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<ListPlansInRegionResponse>,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1598,8 +1598,8 @@ export const listRoute53HealthChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListRoute53HealthChecksRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListRoute53HealthChecksResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListRoute53HealthChecksRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListRoute53HealthChecksResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1633,8 +1633,8 @@ export const listRoute53HealthChecksInRegion: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListRoute53HealthChecksInRegionRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListRoute53HealthChecksInRegionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListRoute53HealthChecksInRegionRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListRoute53HealthChecksInRegionResponse>,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1668,8 +1668,8 @@ export const listServiceQuotaWarnings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuotaWarningSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListServiceQuotaWarningsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListServiceQuotaWarningsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListServiceQuotaWarningsRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<ListServiceQuotaWarningsResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1695,8 +1695,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1721,8 +1721,8 @@ export const startPlanExecution: API.OperationMethod<
   StartPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<StartPlanExecutionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StartPlanExecutionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<StartPlanExecutionRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<StartPlanExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1745,8 +1745,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1763,8 +1763,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1781,8 +1781,8 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UpdatePlanRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdatePlanResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<UpdatePlanRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<UpdatePlanResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1803,8 +1803,8 @@ export const updatePlanExecution: API.OperationMethod<
   UpdatePlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UpdatePlanExecutionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdatePlanExecutionResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<UpdatePlanExecutionRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<UpdatePlanExecutionResponse>,
   errors: [AccessDeniedException, IllegalStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1824,8 +1824,8 @@ export const updatePlanExecutionStep: API.OperationMethod<
   UpdatePlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<UpdatePlanExecutionStepRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<UpdatePlanExecutionStepResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<UpdatePlanExecutionStepRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<UpdatePlanExecutionStepResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1836,536 +1836,6 @@ export const updatePlanExecutionStep: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          planArn: S.String,
-          executionId: S.String,
-          stepName: S.String,
-          approval: S.String,
-          comment: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ApprovePlanExecutionStepRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApprovePlanExecutionStepResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ planArn: S.String, executionId: S.String, comment: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CancelPlanExecutionRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelPlanExecutionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          arn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Lambdas" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
-        identifier: "LambdaUngraceful",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          lambdas: __S(5, __c0, 5),
-          retryIntervalMinutes: S.Number,
-          regionToRun: S.String,
-          ungraceful: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "CustomActionLambdaConfiguration",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ minimumSuccessPercentage: S.Number })).annotate({
-        identifier: "Ec2Ungraceful",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          asgs: __S(5, __c0, 5),
-          ungraceful: S.optional(__S(8, __c1, 0)),
-          targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
-          waitELBTargetGroupHealthy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Ec2AsgCapacityIncreaseConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ timeoutMinutes: S.optional(S.Number), approvalRole: S.String }),
-      ).annotate({
-        identifier: "ExecutionApprovalConfiguration",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ routingControlArn: S.String, state: S.String })).annotate({
-        identifier: "ArcRoutingControlState",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12, __c1, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          regionAndRoutingControls: __S(13, __c1, 5),
-        }),
-      ).annotate({
-        identifier: "ArcRoutingControlConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ ungraceful: S.optional(S.String) })).annotate({
-        identifier: "GlobalAuroraUngraceful",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15, __c1, 7)),
-          globalClusterIdentifier: S.String,
-          databaseClusterArns: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "GlobalAuroraConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ steps: S.suspend(() => __S(48, __c6, 0)).annotate({ identifier: "Steps" }) }),
-      ).annotate({
-        identifier: "ParallelExecutionBlockConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          arn: S.String,
-        }),
-      ).annotate({
-        identifier: "RegionSwitchPlanConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          clusterArn: S.optional(S.String),
-          serviceArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Service" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          services: __S(21, __c2, 5),
-          ungraceful: S.optional(__S(8, __c1, 0)),
-          targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
-          waitELBTargetGroupHealthy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EcsCapacityIncreaseConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ apiVersion: S.String, kind: S.String })).annotate({
-        identifier: "KubernetesResourceType",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ namespace: S.String, name: S.String, hpaName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "KubernetesScalingResource",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(24, __c3, 0).pipe(S.optional));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(25, __c3, 1).pipe(S.optional));
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          clusterArn: S.String,
-        }),
-      ).annotate({ identifier: "EksCluster" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ minimumSuccessPercentage: S.Number })).annotate({
-        identifier: "EksResourceScalingUngraceful",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          kubernetesResourceType: __S(23, __c2, 7),
-          scalingResources: S.optional(__S(27, __c3, 3)),
-          eksClusters: S.optional(__S(29, __c3, 5)),
-          ungraceful: S.optional(__S(30, __c3, 6)),
-          targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EksResourceScalingConfiguration",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ recordSetIdentifier: S.optional(S.String), region: S.optional(S.String) }),
-      ).annotate({ identifier: "Route53ResourceRecordSet" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          hostedZoneId: S.String,
-          recordName: S.String,
-          recordSets: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "Route53HealthCheckConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15, __c1, 7)),
-          globalClusterIdentifier: S.String,
-          databaseClusterArns: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "DocumentDbConfiguration" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          dbInstanceArnMap: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "RdsPromoteReadReplicaConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          arn: S.String,
-        }),
-      ).annotate({ identifier: "EventSourceMapping" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(38, __c4, 6).pipe(S.optional));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
-        identifier: "LambdaEventSourceMappingUngraceful",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          action: S.String,
-          regionEventSourceMappings: __S(39, __c4, 7),
-          ungraceful: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "LambdaEventSourceMappingConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36, __c4, 4),
-          targetPercent: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AuroraServerlessScalingConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36, __c4, 4),
-          instanceArns: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "AuroraProvisionedScalingConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15, __c1, 7)),
-          globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "NeptuneGlobalDatabaseConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutMinutes: S.optional(S.Number),
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          dbInstanceArnMap: __S(36, __c4, 4),
-          ungraceful: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "RdsSwitchoverReadReplicaConfiguration",
-      });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ customActionLambdaConfig: __S(7, __c0, 7) }),
-        /*@__PURE__*/ S.Struct({
-          ec2AsgCapacityIncreaseConfig: __S(9, __c1, 1),
-        }),
-        /*@__PURE__*/ S.Struct({ executionApprovalConfig: __S(10, __c1, 2) }),
-        /*@__PURE__*/ S.Struct({ arcRoutingControlConfig: __S(14, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({ globalAuroraConfig: __S(17, __c2, 1) }),
-        /*@__PURE__*/ S.Struct({
-          parallelConfig: /*@__PURE__*/ S.suspend(
-            (): S.Schema<ParallelExecutionBlockConfiguration> => __S(18, __c2, 2),
-          ).annotate({ identifier: "ParallelExecutionBlockConfiguration" }),
-        }),
-        /*@__PURE__*/ S.Struct({ regionSwitchPlanConfig: __S(19, __c2, 3) }),
-        /*@__PURE__*/ S.Struct({ ecsCapacityIncreaseConfig: __S(22, __c2, 6) }),
-        /*@__PURE__*/ S.Struct({ eksResourceScalingConfig: __S(31, __c3, 7) }),
-        /*@__PURE__*/ S.Struct({ route53HealthCheckConfig: __S(34, __c4, 2) }),
-        /*@__PURE__*/ S.Struct({ documentDbConfig: __S(35, __c4, 3) }),
-        /*@__PURE__*/ S.Struct({ rdsPromoteReadReplicaConfig: __S(37, __c4, 5) }),
-        /*@__PURE__*/ S.Struct({
-          rdsCreateCrossRegionReadReplicaConfig: __S(37, __c4, 5),
-        }),
-        /*@__PURE__*/ S.Struct({
-          lambdaEventSourceMappingConfig: __S(41, __c5, 1),
-        }),
-        /*@__PURE__*/ S.Struct({
-          auroraServerlessScalingConfig: __S(42, __c5, 2),
-        }),
-        /*@__PURE__*/ S.Struct({
-          auroraProvisionedScalingConfig: __S(43, __c5, 3),
-        }),
-        /*@__PURE__*/ S.Struct({ neptuneGlobalDatabaseConfig: __S(44, __c5, 4) }),
-        /*@__PURE__*/ S.Struct({
-          rdsSwitchoverReadReplicaConfig: __S(45, __c5, 5),
-        }),
-      ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          executionBlockConfiguration: S.suspend(() => __S(46, __c5, 6)).annotate({
-            identifier: "ExecutionBlockConfiguration",
-          }),
-          executionBlockType: S.String,
-        }),
-      ).annotate({ identifier: "Step" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Step> => __S(47, __c5, 7)).annotate({
-          identifier: "Step",
-        }),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(48, __c6, 0)),
-          workflowTargetAction: S.String,
-          workflowTargetRegion: S.optional(S.String),
-          workflowDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Workflow" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          crossAccountRole: S.optional(S.String),
-          externalId: S.optional(S.String),
-          resourceIdentifier: S.String,
-          alarmType: S.String,
-        }),
-      ).annotate({ identifier: "AssociatedAlarm" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(51, __c6, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ associatedAlarmName: S.String, condition: S.String }),
-      ).annotate({ identifier: "TriggerCondition" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          targetRegion: S.String,
-          action: S.String,
-          conditions: __S(54, __c6, 6),
-          minDelayMinutesBetweenExecutions: S.Number,
-        }),
-      ).annotate({ identifier: "Trigger" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ bucketPath: S.optional(S.String), bucketOwner: S.optional(S.String) }),
-      ).annotate({
-        identifier: "S3ReportOutputConfiguration",
-      });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3Configuration: __S(57, __c7, 1) })]);
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ reportOutput: S.optional(__S(59, __c7, 3)) })).annotate({
-        identifier: "ReportConfiguration",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          workflows: __S(50, __c6, 2),
-          executionRole: S.String,
-          recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52, __c6, 4)),
-          triggers: S.optional(__S(56, __c7, 0)),
-          reportConfiguration: S.optional(__S(60, __c7, 4)),
-          serviceQuotaChecksEnabled: S.optional(S.Boolean),
-          name: S.String,
-          regions: __S(16, __c2, 0),
-          recoveryApproach: S.String,
-          primaryRegion: S.optional(S.String),
-          tags: S.optional(__S(61, __c7, 5)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "CreatePlanRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          description: S.optional(S.String),
-          workflows: __S(50, __c6, 2),
-          executionRole: S.String,
-          recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52, __c6, 4)),
-          triggers: S.optional(__S(56, __c7, 0)),
-          reportConfiguration: S.optional(__S(60, __c7, 4)),
-          serviceQuotaChecksEnabled: S.optional(S.Boolean),
-          name: S.String,
-          regions: __S(16, __c2, 0),
-          recoveryApproach: S.String,
-          primaryRegion: S.optional(S.String),
-          owner: S.String,
-          version: S.optional(S.String),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "Plan" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ plan: S.optional(__S(63, __c7, 7)) })).annotate({
-        identifier: "CreatePlanResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "DeletePlanRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(
@@ -2379,7 +1849,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPlanRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2389,14 +1863,14 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPlanEvaluationStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ action: S.optional(S.String), name: S.optional(S.String) }),
       ).annotate({ identifier: "MinimalWorkflow" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workflow: S.optional(__S(68, __c8, 4)),
+          workflow: S.optional(__S(33, __c1, 1)),
           version: S.String,
           stepName: S.optional(S.String),
           resourceArn: S.optional(S.String),
@@ -2405,9 +1879,9 @@ function __c8(j: number): any {
           warningMessage: S.String,
         }),
       ).annotate({ identifier: "ResourceWarning" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2415,7 +1889,7 @@ function __c8(j: number): any {
           lastEvaluatedVersion: S.optional(S.String),
           region: S.optional(S.String),
           evaluationState: S.optional(S.String),
-          warnings: S.optional(__S(70, __c8, 6)),
+          warnings: S.optional(__S(35, __c1, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2423,7 +1897,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2445,37 +1919,30 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "StepState" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(65, __c2, 1));
     case 3:
       return S.suspend(() => S.Struct({ s3ObjectKey: S.optional(S.String) })).annotate({
         identifier: "S3ReportOutput",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
+        S.Struct({ errorCode: S.optional(S.String), errorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "FailedReportOutput" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3ReportOutput: __S(75, __c9, 3) }),
-        /*@__PURE__*/ S.Struct({ failedReportOutput: __S(76, __c9, 4) }),
+        /*@__PURE__*/ S.Struct({ s3ReportOutput: __S(67, __c2, 3) }),
+        /*@__PURE__*/ S.Struct({ failedReportOutput: __S(68, __c2, 4) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           reportGenerationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          reportOutput: S.optional(__S(77, __c9, 5)),
+          reportOutput: S.optional(__S(69, __c2, 5)),
         }),
       ).annotate({ identifier: "GeneratedReport" });
     case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2490,20 +1957,28 @@ function __c10(j: number): any {
           executionAction: S.String,
           executionRegion: S.String,
           recoveryExecutionId: S.optional(S.String),
-          stepStates: S.optional(__S(74, __c9, 2)),
-          plan: S.optional(__S(63, __c7, 7)),
+          stepStates: S.optional(__S(66, __c2, 2)),
+          plan: S.optional(__S(856, __c26, 24)),
           actualRecoveryTime: S.optional(S.String),
-          generatedReportDetails: S.optional(__S(79, __c9, 7)),
+          generatedReportDetails: S.optional(__S(71, __c2, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPlanExecutionResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPlanInRegionRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2515,29 +1990,33 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPlanExecutionEventsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           type: S.optional(S.String),
           stepName: S.optional(S.String),
           executionBlockType: S.optional(S.String),
-          resources: S.optional(__S(16, __c2, 0)),
+          resources: S.optional(__S(768, __c24, 0)),
           error: S.optional(S.String),
           description: S.optional(S.String),
           eventId: S.String,
           previousEventId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionEvent" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(84, __c10, 4)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(130, __c4, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlanExecutionEventsResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2548,7 +2027,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPlanExecutionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2566,19 +2045,19 @@ function __c10(j: number): any {
           actualRecoveryTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AbbreviatedExecution" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(88, __c11, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(162, __c5, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlanExecutionsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2592,13 +2071,21 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPlansRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ plans: S.optional(__S(225, __c7, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPlansResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           owner: S.String,
           name: S.String,
-          regions: __S(16, __c2, 0),
+          regions: __S(768, __c24, 0),
           recoveryApproach: S.String,
           primaryRegion: S.optional(S.String),
           version: S.optional(S.String),
@@ -2609,27 +2096,27 @@ function __c11(j: number): any {
           recoveryTimeObjectiveMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AbbreviatedPlan" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ plans: S.optional(__S(92, __c11, 4)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListPlansResponse" });
-    case 6:
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPlansInRegionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ plans: S.optional(__S(92, __c11, 4)), nextToken: S.optional(S.String) }),
+        S.Struct({ plans: S.optional(__S(225, __c7, 1)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlansInRegionResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2653,7 +2140,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListRoute53HealthChecksRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hostedZoneId: S.String,
@@ -2663,18 +2154,19 @@ function __c12(j: number): any {
           region: S.String,
         }),
       ).annotate({ identifier: "Route53HealthCheck" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
     case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({
-          healthChecks: S.optional(__S(98, __c12, 2)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ healthChecks: S.optional(__S(321, __c10, 1)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRoute53HealthChecksResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2686,17 +2178,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListRoute53HealthChecksInRegionRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          planArns: S.optional(__S(16, __c2, 0)),
+          planArns: S.optional(__S(768, __c24, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListServiceQuotaWarningsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
@@ -2715,22 +2211,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ServiceQuotaWarningSummary",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceQuotaWarningSummaries: __S(103, __c12, 7),
+          serviceQuotaWarningSummaries: __S(386, __c12, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceQuotaWarningsResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(
@@ -2746,11 +2242,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(61, __c7, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(896, __c28, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2765,7 +2265,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "StartPlanExecutionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionId: S.optional(S.String),
@@ -2777,9 +2277,13 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "StartPlanExecutionResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, tags: __S(61, __c7, 5) }).pipe(
+        S.Struct({ arn: S.String, tags: __S(896, __c28, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -2791,9 +2295,13 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, resourceTagKeys: __S(16, __c2, 0) }).pipe(
+        S.Struct({ arn: S.String, resourceTagKeys: __S(768, __c24, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -2805,17 +2313,21 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           description: S.optional(S.String),
-          workflows: __S(50, __c6, 2),
+          workflows: __S(845, __c26, 13),
           executionRole: S.String,
           recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52, __c6, 4)),
-          triggers: S.optional(__S(56, __c7, 0)),
-          reportConfiguration: S.optional(__S(60, __c7, 4)),
+          associatedAlarms: S.optional(__S(847, __c26, 15)),
+          triggers: S.optional(__S(851, __c26, 19)),
+          reportConfiguration: S.optional(__S(855, __c26, 23)),
           serviceQuotaChecksEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -2831,7 +2343,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "UpdatePlanRequest" });
   }
 }
-function __c14(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2844,7 +2356,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdatePlanExecutionRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planArn: S.String,
@@ -2856,13 +2372,540 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdatePlanExecutionStepRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdatePlanExecutionStepResponse",
       });
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          planArn: S.String,
+          executionId: S.String,
+          stepName: S.String,
+          approval: S.String,
+          comment: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ApprovePlanExecutionStepRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApprovePlanExecutionStepResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ planArn: S.String, executionId: S.String, comment: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelPlanExecutionRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelPlanExecutionResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          workflows: __S(845, __c26, 13),
+          executionRole: S.String,
+          recoveryTimeObjectiveMinutes: S.optional(S.Number),
+          associatedAlarms: S.optional(__S(847, __c26, 15)),
+          triggers: S.optional(__S(851, __c26, 19)),
+          reportConfiguration: S.optional(__S(855, __c26, 23)),
+          serviceQuotaChecksEnabled: S.optional(S.Boolean),
+          name: S.String,
+          regions: __S(768, __c24, 0),
+          recoveryApproach: S.String,
+          primaryRegion: S.optional(S.String),
+          tags: S.optional(__S(896, __c28, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "CreatePlanRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          arn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Lambdas" });
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
+        identifier: "LambdaUngraceful",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          lambdas: __S(801, __c25, 1),
+          retryIntervalMinutes: S.Number,
+          regionToRun: S.String,
+          ungraceful: S.optional(__S(802, __c25, 2)),
+        }),
+      ).annotate({
+        identifier: "CustomActionLambdaConfiguration",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ minimumSuccessPercentage: S.Number })).annotate({
+        identifier: "Ec2Ungraceful",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          asgs: __S(801, __c25, 1),
+          ungraceful: S.optional(__S(804, __c25, 4)),
+          targetPercent: S.optional(S.Number),
+          capacityMonitoringApproach: S.optional(S.String),
+          waitELBTargetGroupHealthy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Ec2AsgCapacityIncreaseConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ timeoutMinutes: S.optional(S.Number), approvalRole: S.String }),
+      ).annotate({
+        identifier: "ExecutionApprovalConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ routingControlArn: S.String, state: S.String })).annotate({
+        identifier: "ArcRoutingControlState",
+      });
+    case 8:
+      return S.Array(__S(807, __c25, 7));
+    case 9:
+      return S.Record(S.String, /*@__PURE__*/ __S(808, __c25, 8).pipe(S.optional));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          regionAndRoutingControls: __S(809, __c25, 9),
+        }),
+      ).annotate({
+        identifier: "ArcRoutingControlConfiguration",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({ ungraceful: S.optional(S.String) })).annotate({
+        identifier: "GlobalAuroraUngraceful",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          behavior: S.String,
+          ungraceful: S.optional(__S(811, __c25, 11)),
+          globalClusterIdentifier: S.String,
+          databaseClusterArns: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "GlobalAuroraConfiguration",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ steps: S.suspend(() => __S(843, __c26, 11)).annotate({ identifier: "Steps" }) }),
+      ).annotate({
+        identifier: "ParallelExecutionBlockConfiguration",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          arn: S.String,
+        }),
+      ).annotate({
+        identifier: "RegionSwitchPlanConfiguration",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 16:
+      return S.Array(__S(815, __c25, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          services: __S(816, __c25, 16),
+          ungraceful: S.optional(__S(804, __c25, 4)),
+          targetPercent: S.optional(S.Number),
+          capacityMonitoringApproach: S.optional(S.String),
+          waitELBTargetGroupHealthy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EcsCapacityIncreaseConfiguration",
+      });
+    case 18:
+      return S.suspend(() => S.Struct({ apiVersion: S.String, kind: S.String })).annotate({
+        identifier: "KubernetesResourceType",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ namespace: S.String, name: S.String, hpaName: S.optional(S.String) }),
+      ).annotate({
+        identifier: "KubernetesScalingResource",
+      });
+    case 20:
+      return S.Record(S.String, /*@__PURE__*/ __S(819, __c25, 19).pipe(S.optional));
+    case 21:
+      return S.Record(S.String, /*@__PURE__*/ __S(820, __c25, 20).pipe(S.optional));
+    case 22:
+      return S.Array(__S(821, __c25, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          clusterArn: S.String,
+        }),
+      ).annotate({ identifier: "EksCluster" });
+    case 24:
+      return S.Array(__S(823, __c25, 23));
+    case 25:
+      return S.suspend(() => S.Struct({ minimumSuccessPercentage: S.Number })).annotate({
+        identifier: "EksResourceScalingUngraceful",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          kubernetesResourceType: __S(818, __c25, 18),
+          scalingResources: S.optional(__S(822, __c25, 22)),
+          eksClusters: S.optional(__S(824, __c25, 24)),
+          ungraceful: S.optional(__S(825, __c25, 25)),
+          targetPercent: S.optional(S.Number),
+          capacityMonitoringApproach: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EksResourceScalingConfiguration",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ recordSetIdentifier: S.optional(S.String), region: S.optional(S.String) }),
+      ).annotate({ identifier: "Route53ResourceRecordSet" });
+    case 28:
+      return S.Array(__S(827, __c25, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          hostedZoneId: S.String,
+          recordName: S.String,
+          recordSets: S.optional(__S(828, __c25, 28)),
+        }),
+      ).annotate({
+        identifier: "Route53HealthCheckConfiguration",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          behavior: S.String,
+          ungraceful: S.optional(__S(811, __c25, 11)),
+          globalClusterIdentifier: S.String,
+          databaseClusterArns: __S(768, __c24, 0),
+        }),
+      ).annotate({ identifier: "DocumentDbConfiguration" });
+    case 31:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          dbInstanceArnMap: __S(831, __c25, 31),
+        }),
+      ).annotate({
+        identifier: "RdsPromoteReadReplicaConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          arn: S.String,
+        }),
+      ).annotate({ identifier: "EventSourceMapping" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(833, __c26, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
+        identifier: "LambdaEventSourceMappingUngraceful",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          action: S.String,
+          regionEventSourceMappings: __S(834, __c26, 2),
+          ungraceful: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({
+        identifier: "LambdaEventSourceMappingConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          globalClusterIdentifier: S.String,
+          regionDatabaseClusterArns: __S(831, __c25, 31),
+          targetPercent: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AuroraServerlessScalingConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          globalClusterIdentifier: S.String,
+          regionDatabaseClusterArns: __S(831, __c25, 31),
+          instanceArns: __S(831, __c25, 31),
+        }),
+      ).annotate({
+        identifier: "AuroraProvisionedScalingConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          behavior: S.String,
+          ungraceful: S.optional(__S(811, __c25, 11)),
+          globalClusterIdentifier: S.String,
+          regionDatabaseClusterArns: __S(831, __c25, 31),
+        }),
+      ).annotate({
+        identifier: "NeptuneGlobalDatabaseConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutMinutes: S.optional(S.Number),
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          dbInstanceArnMap: __S(831, __c25, 31),
+          ungraceful: S.optional(__S(811, __c25, 11)),
+        }),
+      ).annotate({
+        identifier: "RdsSwitchoverReadReplicaConfiguration",
+      });
+    case 9:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ customActionLambdaConfig: __S(803, __c25, 3) }),
+        /*@__PURE__*/ S.Struct({ ec2AsgCapacityIncreaseConfig: __S(805, __c25, 5) }),
+        /*@__PURE__*/ S.Struct({ executionApprovalConfig: __S(806, __c25, 6) }),
+        /*@__PURE__*/ S.Struct({ arcRoutingControlConfig: __S(810, __c25, 10) }),
+        /*@__PURE__*/ S.Struct({ globalAuroraConfig: __S(812, __c25, 12) }),
+        /*@__PURE__*/ S.Struct({
+          parallelConfig: /*@__PURE__*/ S.suspend(
+            (): S.Schema<ParallelExecutionBlockConfiguration> => __S(813, __c25, 13),
+          ).annotate({ identifier: "ParallelExecutionBlockConfiguration" }),
+        }),
+        /*@__PURE__*/ S.Struct({ regionSwitchPlanConfig: __S(814, __c25, 14) }),
+        /*@__PURE__*/ S.Struct({ ecsCapacityIncreaseConfig: __S(817, __c25, 17) }),
+        /*@__PURE__*/ S.Struct({ eksResourceScalingConfig: __S(826, __c25, 26) }),
+        /*@__PURE__*/ S.Struct({ route53HealthCheckConfig: __S(829, __c25, 29) }),
+        /*@__PURE__*/ S.Struct({ documentDbConfig: __S(830, __c25, 30) }),
+        /*@__PURE__*/ S.Struct({ rdsPromoteReadReplicaConfig: __S(832, __c26, 0) }),
+        /*@__PURE__*/ S.Struct({
+          rdsCreateCrossRegionReadReplicaConfig: __S(832, __c26, 0),
+        }),
+        /*@__PURE__*/ S.Struct({ lambdaEventSourceMappingConfig: __S(836, __c26, 4) }),
+        /*@__PURE__*/ S.Struct({ auroraServerlessScalingConfig: __S(837, __c26, 5) }),
+        /*@__PURE__*/ S.Struct({ auroraProvisionedScalingConfig: __S(838, __c26, 6) }),
+        /*@__PURE__*/ S.Struct({ neptuneGlobalDatabaseConfig: __S(839, __c26, 7) }),
+        /*@__PURE__*/ S.Struct({ rdsSwitchoverReadReplicaConfig: __S(840, __c26, 8) }),
+      ]);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          executionBlockConfiguration: S.suspend(() => __S(841, __c26, 9)).annotate({
+            identifier: "ExecutionBlockConfiguration",
+          }),
+          executionBlockType: S.String,
+        }),
+      ).annotate({ identifier: "Step" });
+    case 11:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Step> => __S(842, __c26, 10)).annotate({
+          identifier: "Step",
+        }),
+      );
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(843, __c26, 11)),
+          workflowTargetAction: S.String,
+          workflowTargetRegion: S.optional(S.String),
+          workflowDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Workflow" });
+    case 13:
+      return S.Array(__S(844, __c26, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          crossAccountRole: S.optional(S.String),
+          externalId: S.optional(S.String),
+          resourceIdentifier: S.String,
+          alarmType: S.String,
+        }),
+      ).annotate({ identifier: "AssociatedAlarm" });
+    case 15:
+      return S.Record(S.String, /*@__PURE__*/ __S(846, __c26, 14).pipe(S.optional));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({ associatedAlarmName: S.String, condition: S.String }),
+      ).annotate({ identifier: "TriggerCondition" });
+    case 17:
+      return S.Array(__S(848, __c26, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          targetRegion: S.String,
+          action: S.String,
+          conditions: __S(849, __c26, 17),
+          minDelayMinutesBetweenExecutions: S.Number,
+        }),
+      ).annotate({ identifier: "Trigger" });
+    case 19:
+      return S.Array(__S(850, __c26, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({ bucketPath: S.optional(S.String), bucketOwner: S.optional(S.String) }),
+      ).annotate({
+        identifier: "S3ReportOutputConfiguration",
+      });
+    case 21:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3Configuration: __S(852, __c26, 20) })]);
+    case 22:
+      return S.Array(__S(853, __c26, 21));
+    case 23:
+      return S.suspend(() => S.Struct({ reportOutput: S.optional(__S(854, __c26, 22)) })).annotate({
+        identifier: "ReportConfiguration",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          description: S.optional(S.String),
+          workflows: __S(845, __c26, 13),
+          executionRole: S.String,
+          recoveryTimeObjectiveMinutes: S.optional(S.Number),
+          associatedAlarms: S.optional(__S(847, __c26, 15)),
+          triggers: S.optional(__S(851, __c26, 19)),
+          reportConfiguration: S.optional(__S(855, __c26, 23)),
+          serviceQuotaChecksEnabled: S.optional(S.Boolean),
+          name: S.String,
+          regions: __S(768, __c24, 0),
+          recoveryApproach: S.String,
+          primaryRegion: S.optional(S.String),
+          owner: S.String,
+          version: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Plan" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ plan: S.optional(__S(856, __c26, 24)) })).annotate({
+        identifier: "CreatePlanResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "DeletePlanRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

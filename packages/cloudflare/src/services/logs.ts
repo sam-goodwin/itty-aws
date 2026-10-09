@@ -449,8 +449,8 @@ export const createControlCmbConfig: API.OperationMethod<
   CreateControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateControlCmbConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateControlCmbConfigResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateControlCmbConfigRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<CreateControlCmbConfigResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const createControlRetention: API.OperationMethod<
   CreateControlRetentionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateControlRetentionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateControlRetentionResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateControlRetentionRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<CreateControlRetentionResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const createLogExplorerDatasetForAccount: API.OperationMethod<
   CreateLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateLogExplorerDatasetResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<CreateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -494,8 +494,8 @@ export const createLogExplorerDatasetForZone: API.OperationMethod<
   CreateLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateLogExplorerDatasetResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<CreateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const deleteControlCmbConfig: API.OperationMethod<
   DeleteControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteControlCmbConfigRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteControlCmbConfigResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DeleteControlCmbConfigRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<DeleteControlCmbConfigResponse>,
   errors: [
     LogsControlNotAuthorized,
     CmbConfigNotFound,
@@ -538,8 +538,8 @@ export const getControlCmbConfig: API.OperationMethod<
   GetControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetControlCmbConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetControlCmbConfigResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetControlCmbConfigRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetControlCmbConfigResponse>,
   errors: [
     LogsControlNotAuthorized,
     CmbConfigNotFound,
@@ -559,8 +559,8 @@ export const getControlRetention: API.OperationMethod<
   GetControlRetentionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetControlRetentionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetControlRetentionResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetControlRetentionRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<GetControlRetentionResponse>,
   errors: [LogsControlNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const getLogExplorerDatasetForAccount: API.OperationMethod<
   GetLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetLogExplorerDatasetResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const getLogExplorerDatasetForZone: API.OperationMethod<
   GetLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetLogExplorerDatasetResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const getRayid: API.OperationMethod<
   GetRayidError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetRayidRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetRayidResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetRayidRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetRayidResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const getReceived: API.OperationMethod<
   GetReceivedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetReceivedRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetReceivedResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetReceivedRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetReceivedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const getReceivedField: API.OperationMethod<
   GetReceivedFieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetReceivedFieldRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetReceivedFieldResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetReceivedFieldRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetReceivedFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationM
   LogExplorerDatasetsAvailableListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
+    input: __S(56, __c7, 0) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>,
+    output: __S(68, __c8, 4) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -671,8 +671,8 @@ export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMeth
   LogExplorerDatasetsAvailableListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
+    input: __S(80, __c10, 0) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>,
+    output: __S(68, __c8, 4) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -691,8 +691,8 @@ export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
   LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(29, __c3, 5) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<ListLogExplorerDatasetsResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>,
+    output: __S(98, __c12, 2) as any as S.Schema<ListLogExplorerDatasetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -711,8 +711,8 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
   LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<ListLogExplorerDatasetsResponse>,
+    input: __S(104, __c13, 0) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>,
+    output: __S(98, __c12, 2) as any as S.Schema<ListLogExplorerDatasetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const logExplorerDatasetsDeleteForAccount: API.OperationMethod<
   LogExplorerDatasetsDeleteForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<LogExplorerDatasetsDeleteForAccountRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<LogExplorerDatasetsDeleteForAccountRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const logExplorerDatasetsDeleteForZone: API.OperationMethod<
   LogExplorerDatasetsDeleteForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<LogExplorerDatasetsDeleteForZoneRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<LogExplorerDatasetsDeleteForZoneRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<LogExplorerDatasetsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -761,8 +761,8 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
   LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(37, __c4, 5) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>,
-    output: __S(39, __c4, 7) as any as S.Schema<SqlLogExplorerQueryResponse>,
+    input: __S(136, __c17, 0) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>,
+    output: __S(145, __c18, 1) as any as S.Schema<SqlLogExplorerQueryResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
   LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(40, __c5, 0) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>,
-    output: __S(39, __c4, 7) as any as S.Schema<SqlLogExplorerQueryResponse>,
+    input: __S(152, __c19, 0) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>,
+    output: __S(145, __c18, 1) as any as S.Schema<SqlLogExplorerQueryResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const updateLogExplorerDatasetForAccount: API.OperationMethod<
   UpdateLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const updateLogExplorerDatasetForZone: API.OperationMethod<
   UpdateLogExplorerDatasetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateLogExplorerDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -823,6 +823,476 @@ export const updateLogExplorerDatasetForZone: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetLogExplorerDatasetForAccountRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          dataset: S.String,
+          datasetId: S.String.pipe(T.Body("dataset_id")),
+          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
+          enabled: S.Boolean,
+          fields: __S(233, __c29, 1),
+          objectId: S.String.pipe(T.Body("object_id")),
+          objectType: S.String.pipe(T.Body("object_type")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          filter: S.optional(S.NullOr(S.String)),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetLogExplorerDatasetResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetLogExplorerDatasetForZoneRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          rayId: S.String.pipe(T.Label("ray_id")),
+          fields: S.optional(S.String.pipe(T.Query())),
+          timestamps: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/rayids/{ray_id}", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRayidRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "GetRayidResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          end: S.String.pipe(T.Query()),
+          count: S.optional(S.Number.pipe(T.Query())),
+          fields: S.optional(S.String.pipe(T.Query())),
+          sample: S.optional(S.Number.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          timestamps: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetReceivedRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received/fields", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetReceivedFieldRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetReceivedFieldResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logs/explorer/datasets/available",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(S.NullOr(__S(72, __c9, 0))),
+          required: S.optional(S.NullOr(__S(64, __c8, 0))),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "LogExplorerDatasetsAvailableListResultItemSchema",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String,
+          objectType: S.String.pipe(T.Body("object_type")),
+          schema: __S(65, __c8, 1),
+          timestampField: S.String.pipe(T.Body("timestamp_field")),
+        }),
+      ).annotate({
+        identifier: "LogExplorerDatasetsAvailableListResultItem",
+      });
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(67, __c8, 3).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetAvailablesResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/logs/explorer/datasets/available",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetAvailablesForZoneRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logs/explorer/datasets",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetsForAccountRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          dataset: S.String,
+          datasetId: S.String.pipe(T.Body("dataset_id")),
+          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
+          enabled: S.Boolean,
+          objectId: S.String.pipe(T.Body("object_id")),
+          objectType: S.String.pipe(T.Body("object_type")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+        }),
+      ).annotate({
+        identifier: "LogExplorerDatasetsListResultItem",
+      });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(97, __c12, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetsResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/explorer/datasets", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListLogExplorerDatasetsForZoneRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "LogExplorerDatasetsDeleteForAccountRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          dataset: S.String,
+          datasetId: S.String.pipe(T.Body("dataset_id")),
+          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
+          enabled: S.Boolean,
+          fields: __S(233, __c29, 1),
+          objectId: S.String.pipe(T.Body("object_id")),
+          objectType: S.String.pipe(T.Body("object_type")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          filter: S.optional(S.NullOr(S.String)),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "LogExplorerDatasetsDeleteResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "LogExplorerDatasetsDeleteForZoneRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/logs/explorer/query/sql",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SqlLogExplorerQueryForAccountRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(72, __c9, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(144, __c18, 0).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SqlLogExplorerQueryResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/logs/explorer/query/sql", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SqlLogExplorerQueryForZoneRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+          enabled: S.Boolean,
+          deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
+          fields: S.optional(__S(233, __c29, 1)),
+          filter: S.optional(S.String),
+          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateLogExplorerDatasetForAccountRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          dataset: S.String,
+          datasetId: S.String.pipe(T.Body("dataset_id")),
+          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
+          enabled: S.Boolean,
+          fields: __S(233, __c29, 1),
+          objectId: S.String.pipe(T.Body("object_id")),
+          objectType: S.String.pipe(T.Body("object_type")),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          filter: S.optional(S.NullOr(S.String)),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateLogExplorerDatasetResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+          enabled: S.Boolean,
+          deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
+          fields: S.optional(__S(233, __c29, 1)),
+          filter: S.optional(S.String),
+          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateLogExplorerDatasetForZoneRequest",
+      });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -842,7 +1312,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateControlCmbConfigRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowOutOfRegionAccess: S.optional(
@@ -853,7 +1327,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateControlCmbConfigResponse",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -870,7 +1348,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateControlRetentionRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           flag: S.optional(S.NullOr(S.Boolean)),
@@ -878,23 +1360,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateControlRetentionResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "LogExplorerDatasetsCreateRequestFieldsItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String,
-          fields: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(233, __c29, 1)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -909,7 +1384,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateLogExplorerDatasetForAccountRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -917,7 +1396,7 @@ function __c0(j: number): any {
           datasetId: S.String.pipe(T.Body("dataset_id")),
           deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
           enabled: S.Boolean,
-          fields: __S(5, __c0, 5),
+          fields: __S(233, __c29, 1),
           objectId: S.String.pipe(T.Body("object_id")),
           objectType: S.String.pipe(T.Body("object_type")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
@@ -931,14 +1410,29 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "LogExplorerDatasetsCreateRequestFieldsItem",
+      });
+    case 1:
+      return S.Array(__S(232, __c29, 0));
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           dataset: S.String,
-          fields: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(233, __c29, 1)),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
         })
@@ -949,7 +1443,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLogExplorerDatasetForZoneRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -965,13 +1463,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteControlCmbConfigRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteControlCmbConfigResponse",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -987,7 +1489,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetControlCmbConfigRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1003,403 +1509,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetControlRetentionRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetLogExplorerDatasetForAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String.pipe(T.Body("created_at")),
-          dataset: S.String,
-          datasetId: S.String.pipe(T.Body("dataset_id")),
-          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
-          enabled: S.Boolean,
-          fields: __S(5, __c0, 5),
-          objectId: S.String.pipe(T.Body("object_id")),
-          objectType: S.String.pipe(T.Body("object_type")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          filter: S.optional(S.NullOr(S.String)),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetLogExplorerDatasetResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetLogExplorerDatasetForZoneRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          rayId: S.String.pipe(T.Label("ray_id")),
-          fields: S.optional(S.String.pipe(T.Query())),
-          timestamps: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/rayids/{ray_id}", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRayidRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "GetRayidResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          end: S.String.pipe(T.Query()),
-          count: S.optional(S.Number.pipe(T.Query())),
-          fields: S.optional(S.String.pipe(T.Query())),
-          sample: S.optional(S.Number.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          timestamps: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetReceivedRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received/fields", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetReceivedFieldRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetReceivedFieldResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logs/explorer/datasets/available",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(S.NullOr(__S(22, __c2, 6))),
-          required: S.optional(S.NullOr(__S(23, __c2, 7))),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "LogExplorerDatasetsAvailableListResultItemSchema",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.String,
-          objectType: S.String.pipe(T.Body("object_type")),
-          schema: __S(24, __c3, 0),
-          timestampField: S.String.pipe(T.Body("timestamp_field")),
-        }),
-      ).annotate({
-        identifier: "LogExplorerDatasetsAvailableListResultItem",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetAvailablesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/logs/explorer/datasets/available",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetAvailablesForZoneRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logs/explorer/datasets",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetsForAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String.pipe(T.Body("created_at")),
-          dataset: S.String,
-          datasetId: S.String.pipe(T.Body("dataset_id")),
-          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
-          enabled: S.Boolean,
-          objectId: S.String.pipe(T.Body("object_id")),
-          objectType: S.String.pipe(T.Body("object_type")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-        }),
-      ).annotate({
-        identifier: "LogExplorerDatasetsListResultItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(31, __c3, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/explorer/datasets", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListLogExplorerDatasetsForZoneRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "LogExplorerDatasetsDeleteForAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String.pipe(T.Body("created_at")),
-          dataset: S.String,
-          datasetId: S.String.pipe(T.Body("dataset_id")),
-          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
-          enabled: S.Boolean,
-          fields: __S(5, __c0, 5),
-          objectId: S.String.pipe(T.Body("object_id")),
-          objectType: S.String.pipe(T.Body("object_type")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          filter: S.optional(S.NullOr(S.String)),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "LogExplorerDatasetsDeleteResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "LogExplorerDatasetsDeleteForZoneRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/logs/explorer/query/sql",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SqlLogExplorerQueryForAccountRequest",
-      });
-    case 6:
-      return S.Array(__S(22, __c2, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(38, __c4, 6).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SqlLogExplorerQueryResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/logs/explorer/query/sql", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SqlLogExplorerQueryForZoneRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-          enabled: S.Boolean,
-          deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
-          fields: S.optional(__S(5, __c0, 5)),
-          filter: S.optional(S.String),
-          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateLogExplorerDatasetForAccountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String.pipe(T.Body("created_at")),
-          dataset: S.String,
-          datasetId: S.String.pipe(T.Body("dataset_id")),
-          deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
-          enabled: S.Boolean,
-          fields: __S(5, __c0, 5),
-          objectId: S.String.pipe(T.Body("object_id")),
-          objectType: S.String.pipe(T.Body("object_type")),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          filter: S.optional(S.NullOr(S.String)),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateLogExplorerDatasetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-          enabled: S.Boolean,
-          deletionProtection: S.optional(S.Boolean.pipe(T.Body("deletion_protection"))),
-          fields: S.optional(__S(5, __c0, 5)),
-          filter: S.optional(S.String),
-          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateLogExplorerDatasetForZoneRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

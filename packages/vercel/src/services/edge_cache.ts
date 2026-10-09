@@ -110,8 +110,8 @@ export const dangerouslyDeleteBySrcImages: API.OperationMethod<
   DangerouslyDeleteBySrcImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<DangerouslyDeleteBySrcImagesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DangerouslyDeleteBySrcImagesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -125,8 +125,8 @@ export const dangerouslyDeleteByTags: API.OperationMethod<
   DangerouslyDeleteByTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DangerouslyDeleteByTagsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DangerouslyDeleteByTagsResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<DangerouslyDeleteByTagsRequest>,
+  output: __S(5, __c2, 1) as any as S.Schema<DangerouslyDeleteByTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -145,8 +145,8 @@ export const invalidateBySrcImages: API.OperationMethod<
   InvalidateBySrcImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<InvalidateBySrcImagesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<InvalidateBySrcImagesResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<InvalidateBySrcImagesRequest>,
+  output: __S(8, __c4, 0) as any as S.Schema<InvalidateBySrcImagesResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -160,8 +160,8 @@ export const invalidateByTags: API.OperationMethod<
   InvalidateByTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<InvalidateByTagsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<InvalidateByTagsResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<InvalidateByTagsRequest>,
+  output: __S(8, __c4, 0) as any as S.Schema<InvalidateByTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -171,15 +171,13 @@ export const invalidateByTags: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Query()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           revalidationDeadlineSeconds: S.optional(S.Number),
-          srcImages: __S(0, __c0, 0),
+          srcImages: __S(2, __c1, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -190,11 +188,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DangerouslyDeleteBySrcImagesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DangerouslyDeleteBySrcImagesResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Query()),
@@ -209,28 +217,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DangerouslyDeleteByTagsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DangerouslyDeleteByTagsResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Query()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          srcImages: __S(0, __c0, 0),
+          srcImages: __S(2, __c1, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/edge-cache/invalidate-by-src-images", code: 200 }),
         ),
       ).annotate({
         identifier: "InvalidateBySrcImagesRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "InvalidateBySrcImagesResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Query()),
@@ -242,7 +262,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "InvalidateByTagsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

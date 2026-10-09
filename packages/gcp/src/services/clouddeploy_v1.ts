@@ -2552,11 +2552,11 @@ export const abandonProjectsLocationsDeliveryPipelinesReleases: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1,
-    __c0,
-    1,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<AbandonProjectsLocationsDeliveryPipelinesReleasesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<AbandonReleaseResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<AbandonReleaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2576,11 +2576,11 @@ export const advanceProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    2177,
+    __c68,
+    1,
   ) as any as S.Schema<AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<AdvanceRolloutResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<AdvanceRolloutResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2600,11 +2600,11 @@ export const approveProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    6,
-    __c0,
-    6,
+    2593,
+    __c81,
+    1,
   ) as any as S.Schema<ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<ApproveRolloutResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<ApproveRolloutResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2624,11 +2624,11 @@ export const cancelProjectsLocationsDeliveryPipelinesAutomationRuns: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<CancelAutomationRunResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CancelAutomationRunResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2648,11 +2648,11 @@ export const cancelProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9,
-    __c1,
-    1,
+    2848,
+    __c89,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<CancelRolloutResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CancelRolloutResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2671,8 +2671,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(2912, __c91, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2691,8 +2691,8 @@ export const createProjectsLocationsCustomTargetTypes: API.OperationMethod<
   CreateProjectsLocationsCustomTargetTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsCustomTargetTypesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2711,8 @@ export const createProjectsLocationsDeliveryPipelines: API.OperationMethod<
   CreateProjectsLocationsDeliveryPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,11 +2732,11 @@ export const createProjectsLocationsDeliveryPipelinesAutomations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
+    320,
     __c10,
     0,
   ) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesAutomationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2756,11 +2756,11 @@ export const createProjectsLocationsDeliveryPipelinesReleases: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesReleasesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2780,11 +2780,11 @@ export const createProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2803,8 +2803,8 @@ export const createProjectsLocationsDeployPolicies: API.OperationMethod<
   CreateProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateProjectsLocationsDeployPoliciesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(768, __c24, 0) as any as S.Schema<CreateProjectsLocationsDeployPoliciesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2823,8 +2823,8 @@ export const createProjectsLocationsTargets: API.OperationMethod<
   CreateProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CreateProjectsLocationsTargetsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateProjectsLocationsTargetsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2843,8 @@ export const deleteProjectsLocationsCustomTargetTypes: API.OperationMethod<
   DeleteProjectsLocationsCustomTargetTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeleteProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteProjectsLocationsCustomTargetTypesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2863,8 @@ export const deleteProjectsLocationsDeliveryPipelines: API.OperationMethod<
   DeleteProjectsLocationsDeliveryPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<DeleteProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteProjectsLocationsDeliveryPipelinesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2884,11 +2884,11 @@ export const deleteProjectsLocationsDeliveryPipelinesAutomations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    146,
-    __c18,
-    2,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2907,8 +2907,8 @@ export const deleteProjectsLocationsDeployPolicies: API.OperationMethod<
   DeleteProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DeleteProjectsLocationsDeployPoliciesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteProjectsLocationsDeployPoliciesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2927,8 +2927,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2947,8 @@ export const deleteProjectsLocationsTargets: API.OperationMethod<
   DeleteProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<DeleteProjectsLocationsTargetsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteProjectsLocationsTargetsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2962,8 +2962,8 @@ export const getConfigProjectsLocations: API.OperationMethod<
   GetConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetConfigProjectsLocationsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<Config>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetConfigProjectsLocationsRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2978,11 +2978,11 @@ export const getIamPolicyProjectsLocationsCustomTargetTypes: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2997,11 +2997,11 @@ export const getIamPolicyProjectsLocationsDeliveryPipelines: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    163,
-    __c20,
-    3,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3015,8 +3015,8 @@ export const getIamPolicyProjectsLocationsDeployPolicies: API.OperationMethod<
   GetIamPolicyProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetIamPolicyProjectsLocationsDeployPoliciesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDeployPoliciesRequest>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3030,8 @@ export const getIamPolicyProjectsLocationsTargets: API.OperationMethod<
   GetIamPolicyProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetIamPolicyProjectsLocationsTargetsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetIamPolicyProjectsLocationsTargetsRequest>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3045,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Location>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3060,8 +3060,8 @@ export const getProjectsLocationsCustomTargetTypes: API.OperationMethod<
   GetProjectsLocationsCustomTargetTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CustomTargetType>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetProjectsLocationsCustomTargetTypesRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<CustomTargetType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3075,8 +3075,8 @@ export const getProjectsLocationsDeliveryPipelines: API.OperationMethod<
   GetProjectsLocationsDeliveryPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<DeliveryPipeline>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesRequest>,
+  output: __S(311, __c9, 23) as any as S.Schema<DeliveryPipeline>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3094,11 +3094,11 @@ export const getProjectsLocationsDeliveryPipelinesAutomationRuns: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<AutomationRun>,
+  output: __S(1453, __c45, 13) as any as S.Schema<AutomationRun>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3116,11 +3116,11 @@ export const getProjectsLocationsDeliveryPipelinesAutomations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    185,
-    __c23,
-    1,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesAutomationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Automation>,
+  output: __S(400, __c12, 16) as any as S.Schema<Automation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3135,11 +3135,11 @@ export const getProjectsLocationsDeliveryPipelinesReleases: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    186,
-    __c23,
-    2,
+    1504,
+    __c47,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<Release>,
+  output: __S(623, __c19, 15) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3157,11 +3157,11 @@ export const getProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    1536,
+    __c48,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<Rollout>,
+  output: __S(744, __c23, 8) as any as S.Schema<Rollout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3179,11 +3179,11 @@ export const getProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRuns: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    188,
-    __c23,
-    4,
+    1568,
+    __c49,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<JobRun>,
+  output: __S(1617, __c50, 17) as any as S.Schema<JobRun>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3197,8 +3197,8 @@ export const getProjectsLocationsDeployPolicies: API.OperationMethod<
   GetProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetProjectsLocationsDeployPoliciesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<DeployPolicy>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetProjectsLocationsDeployPoliciesRequest>,
+  output: __S(844, __c26, 12) as any as S.Schema<DeployPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +3212,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3227,8 +3227,8 @@ export const getProjectsLocationsTargets: API.OperationMethod<
   GetProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetProjectsLocationsTargetsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<Target>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetProjectsLocationsTargetsRequest>,
+  output: __S(525, __c16, 13) as any as S.Schema<Target>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3248,11 +3248,11 @@ export const ignoreJobProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    211,
-    __c26,
-    3,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<IgnoreJobResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<IgnoreJobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3267,8 +3267,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3284,8 +3284,8 @@ export const listProjectsLocationsCustomTargetTypes: API.PaginatedOperationMetho
   GcpOpContext,
   ListCustomTargetTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<ListProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<ListCustomTargetTypesResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListProjectsLocationsCustomTargetTypesRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<ListCustomTargetTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3301,8 +3301,8 @@ export const listProjectsLocationsDeliveryPipelines: API.PaginatedOperationMetho
   GcpOpContext,
   ListDeliveryPipelinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListDeliveryPipelinesResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<ListDeliveryPipelinesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3322,11 +3322,11 @@ export const listProjectsLocationsDeliveryPipelinesAutomationRuns: API.Paginated
   ListAutomationRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    220,
-    __c27,
-    4,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListAutomationRunsResponse>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ListAutomationRunsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3346,11 +3346,11 @@ export const listProjectsLocationsDeliveryPipelinesAutomations: API.PaginatedOpe
   ListAutomationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    1984,
+    __c62,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListAutomationsResponse>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListAutomationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3367,11 +3367,11 @@ export const listProjectsLocationsDeliveryPipelinesReleases: API.PaginatedOperat
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    2016,
+    __c63,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<ListReleasesResponse>,
+  output: __S(2018, __c63, 2) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3391,11 +3391,11 @@ export const listProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Paginat
   ListRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    229,
-    __c28,
-    5,
+    2048,
+    __c64,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<ListRolloutsResponse>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ListRolloutsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3415,11 +3415,11 @@ export const listProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRuns: API.
   ListJobRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    232,
-    __c29,
+    2080,
+    __c65,
     0,
   ) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<ListJobRunsResponse>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListJobRunsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const listProjectsLocationsDeployPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeployPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListProjectsLocationsDeployPoliciesRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<ListDeployPoliciesResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListProjectsLocationsDeployPoliciesRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListDeployPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3452,8 +3452,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3469,8 +3469,8 @@ export const listProjectsLocationsTargets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTargetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListProjectsLocationsTargetsRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<ListTargetsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListProjectsLocationsTargetsRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ListTargetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3490,8 +3490,8 @@ export const patchProjectsLocationsCustomTargetTypes: API.OperationMethod<
   PatchProjectsLocationsCustomTargetTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<PatchProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PatchProjectsLocationsCustomTargetTypesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3510,8 +3510,8 @@ export const patchProjectsLocationsDeliveryPipelines: API.OperationMethod<
   PatchProjectsLocationsDeliveryPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<PatchProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PatchProjectsLocationsDeliveryPipelinesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3531,11 +3531,11 @@ export const patchProjectsLocationsDeliveryPipelinesAutomations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    245,
-    __c30,
-    5,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDeliveryPipelinesAutomationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3554,8 +3554,8 @@ export const patchProjectsLocationsDeployPolicies: API.OperationMethod<
   PatchProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<PatchProjectsLocationsDeployPoliciesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PatchProjectsLocationsDeployPoliciesRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3574,8 +3574,8 @@ export const patchProjectsLocationsTargets: API.OperationMethod<
   PatchProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<PatchProjectsLocationsTargetsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchProjectsLocationsTargetsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3595,11 +3595,11 @@ export const retryJobProjectsLocationsDeliveryPipelinesReleasesRollouts: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    248,
-    __c31,
+    2432,
+    __c76,
     0,
   ) as any as S.Schema<RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<RetryJobResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<RetryJobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3619,11 +3619,11 @@ export const rollbackTargetProjectsLocationsDeliveryPipelines: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    251,
-    __c31,
-    3,
+    2466,
+    __c77,
+    2,
   ) as any as S.Schema<RollbackTargetProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<RollbackTargetResponse>,
+  output: __S(2467, __c77, 3) as any as S.Schema<RollbackTargetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3643,11 +3643,11 @@ export const setIamPolicyProjectsLocationsCustomTargetTypes: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    254,
-    __c31,
-    6,
+    2496,
+    __c78,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsCustomTargetTypesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3667,11 +3667,11 @@ export const setIamPolicyProjectsLocationsDeliveryPipelines: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    255,
-    __c31,
-    7,
+    2560,
+    __c80,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3690,8 +3690,8 @@ export const setIamPolicyProjectsLocationsDeployPolicies: API.OperationMethod<
   SetIamPolicyProjectsLocationsDeployPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDeployPoliciesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  input: __S(2624, __c82, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDeployPoliciesRequest>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3710,8 +3710,8 @@ export const setIamPolicyProjectsLocationsTargets: API.OperationMethod<
   SetIamPolicyProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<SetIamPolicyProjectsLocationsTargetsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<Policy>,
+  input: __S(2656, __c83, 0) as any as S.Schema<SetIamPolicyProjectsLocationsTargetsRequest>,
+  output: __S(1159, __c36, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3731,11 +3731,11 @@ export const terminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRuns:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    258,
-    __c32,
-    2,
+    2688,
+    __c84,
+    0,
   ) as any as S.Schema<TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<TerminateJobRunResponse>,
+  output: __S(1824, __c57, 0) as any as S.Schema<TerminateJobRunResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3755,11 +3755,11 @@ export const testIamPermissionsProjectsLocationsDeliveryPipelines: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    260,
-    __c32,
-    4,
+    2720,
+    __c85,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(2752, __c86, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3778,8 +3778,8 @@ export const testIamPermissionsProjectsLocationsTargets: API.OperationMethod<
   TestIamPermissionsProjectsLocationsTargetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<TestIamPermissionsProjectsLocationsTargetsRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsTargetsRequest>,
+  output: __S(2752, __c86, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3789,221 +3789,13 @@ export const testIamPermissionsProjectsLocationsTargets: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AbandonReleaseRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:abandon",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AbandonProjectsLocationsDeliveryPipelinesReleasesRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2)),
-          phaseId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdvanceRolloutRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:advance",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2)),
-          approved: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApproveRolloutRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approve",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "CancelRolloutRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkaffoldGCSSource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          ref: S.optional(S.String),
-          repo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkaffoldGitSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.optional(S.String),
-          path: S.optional(S.String),
-          repository: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkaffoldGCBRepoSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          googleCloudStorage: S.optional(__S(11, __c1, 3)),
-          git: S.optional(__S(12, __c1, 4)),
-          configs: S.optional(__S(2, __c0, 2)),
-          googleCloudBuildRepo: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "SkaffoldModules" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deployAction: S.optional(S.String),
-          includeSkaffoldModules: S.optional(__S(15, __c1, 7)),
-          renderAction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomTargetSkaffoldActions",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          command: S.optional(__S(2, __c0, 2)),
-          args: S.optional(__S(2, __c0, 2)),
-          image: S.optional(S.String),
-          env: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ContainerTask" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "Task" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          render: S.optional(__S(19, __c2, 3)),
-          deploy: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "CustomTargetTasks" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customActions: S.optional(__S(16, __c2, 0)),
-          annotations: S.optional(__S(17, __c2, 1)),
-          labels: S.optional(__S(17, __c2, 1)),
-          updateTime: S.optional(S.String),
-          customTargetTypeId: S.optional(S.String),
-          etag: S.optional(S.String),
-          createTime: S.optional(S.String),
-          tasks: S.optional(__S(20, __c2, 4)),
-          uid: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomTargetType" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           customTargetTypeId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(167, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4014,18 +3806,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCustomTargetTypesRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(__S(32, __c1, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(24, __c3, 0)),
+          details: S.optional(__S(64, __c2, 0)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -4035,158 +3831,107 @@ function __c3(j: number): any {
         S.Struct({
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          response: S.optional(__S(23, __c2, 7)),
-          error: S.optional(__S(25, __c3, 1)),
-          metadata: S.optional(__S(23, __c2, 7)),
+          response: S.optional(__S(32, __c1, 0)),
+          error: S.optional(__S(65, __c2, 1)),
+          metadata: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchTargetLabels: S.optional(__S(17, __c2, 1)),
-          values: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "DeployParameters" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          frequency: S.optional(S.String),
-          task: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "CustomCheck" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          alertPolicies: S.optional(__S(2, __c0, 2)),
-          labels: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AlertPolicyCheck" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
+      return S.suspend(() =>
+        S.Struct({
+          command: S.optional(__S(2208, __c69, 0)),
+          args: S.optional(__S(2208, __c69, 0)),
+          image: S.optional(S.String),
+          env: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "ContainerTask" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          alertPolicyChecks: S.optional(__S(32, __c4, 0)),
+          container: S.optional(__S(128, __c4, 0)),
         }),
-      ).annotate({ identifier: "GoogleCloudAnalysis" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customChecks: S.optional(__S(30, __c3, 6)),
-          duration: S.optional(S.String),
-          googleCloud: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Analysis" });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tasks: S.optional(__S(35, __c4, 3)),
-          actions: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Postdeploy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tasks: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "Verify" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(2, __c0, 2)),
-          tasks: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "Predeploy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          analysis: S.optional(__S(34, __c4, 2)),
-          postdeploy: S.optional(__S(36, __c4, 4)),
-          verifyConfig: S.optional(__S(37, __c4, 5)),
-          predeploy: S.optional(__S(38, __c4, 6)),
-          verify: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Standard" });
+      ).annotate({ identifier: "Task" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SkaffoldGCSSource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          predeploy: S.optional(__S(38, __c4, 6)),
-          analysis: S.optional(__S(34, __c4, 2)),
-          percentages: S.optional(__S(40, __c5, 0)),
-          verify: S.optional(S.Boolean),
-          postdeploy: S.optional(__S(36, __c4, 4)),
-          verifyConfig: S.optional(__S(37, __c4, 5)),
+          path: S.optional(S.String),
+          ref: S.optional(S.String),
+          repo: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CanaryDeployment" });
+      ).annotate({ identifier: "SkaffoldGitSource" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          priorRevisionTags: S.optional(__S(2, __c0, 2)),
-          stableRevisionTags: S.optional(__S(2, __c0, 2)),
-          automaticTrafficControl: S.optional(S.Boolean),
-          canaryRevisionTags: S.optional(__S(2, __c0, 2)),
+          ref: S.optional(S.String),
+          path: S.optional(S.String),
+          repository: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CloudRunConfig" });
+      ).annotate({ identifier: "SkaffoldGCBRepoSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deployment: S.optional(S.String),
-          service: S.optional(S.String),
-          podSelectorLabel: S.optional(S.String),
-          disablePodOverprovisioning: S.optional(S.Boolean),
+          googleCloudStorage: S.optional(__S(160, __c5, 0)),
+          git: S.optional(__S(161, __c5, 1)),
+          configs: S.optional(__S(2208, __c69, 0)),
+          googleCloudBuildRepo: S.optional(__S(162, __c5, 2)),
         }),
-      ).annotate({ identifier: "ServiceNetworking" });
+      ).annotate({ identifier: "SkaffoldModules" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          propagateService: S.optional(S.Boolean),
-          destinationIds: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "RouteDestinations" });
+      return S.Array(__S(163, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          service: S.optional(S.String),
-          stableCutbackDuration: S.optional(S.String),
-          routeUpdateWaitTime: S.optional(S.String),
-          httpRoute: S.optional(S.String),
-          podSelectorLabel: S.optional(S.String),
-          routeDestinations: S.optional(__S(44, __c5, 4)),
-          deployment: S.optional(S.String),
+          deployAction: S.optional(S.String),
+          includeSkaffoldModules: S.optional(__S(164, __c5, 4)),
+          renderAction: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GatewayServiceMesh" });
+      ).annotate({
+        identifier: "CustomTargetSkaffoldActions",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceNetworking: S.optional(__S(43, __c5, 3)),
-          gatewayServiceMesh: S.optional(__S(45, __c5, 5)),
+          render: S.optional(__S(129, __c4, 1)),
+          deploy: S.optional(__S(129, __c4, 1)),
         }),
-      ).annotate({ identifier: "KubernetesConfig" });
+      ).annotate({ identifier: "CustomTargetTasks" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudRun: S.optional(__S(42, __c5, 2)),
-          kubernetes: S.optional(__S(46, __c5, 6)),
+          customActions: S.optional(__S(165, __c5, 5)),
+          annotations: S.optional(__S(96, __c3, 0)),
+          labels: S.optional(__S(96, __c3, 0)),
+          updateTime: S.optional(S.String),
+          customTargetTypeId: S.optional(S.String),
+          etag: S.optional(S.String),
+          createTime: S.optional(S.String),
+          tasks: S.optional(__S(166, __c5, 6)),
+          uid: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RuntimeConfig" });
+      ).annotate({ identifier: "CustomTargetType" });
   }
 }
 function __c6(j: number): any {
@@ -4194,114 +3939,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          verify: S.optional(S.Boolean),
-          analysis: S.optional(__S(34, __c4, 2)),
-          phaseId: S.optional(S.String),
-          postdeploy: S.optional(__S(36, __c4, 4)),
-          predeploy: S.optional(__S(38, __c4, 6)),
-          profiles: S.optional(__S(2, __c0, 2)),
-          percentage: S.optional(S.Number),
-          verifyConfig: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "PhaseConfig" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          phaseConfigs: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "CustomCanaryDeployment" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canaryDeployment: S.optional(__S(41, __c5, 1)),
-          runtimeConfig: S.optional(__S(47, __c5, 7)),
-          customCanaryDeployment: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "Canary" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          standard: S.optional(__S(39, __c4, 7)),
-          canary: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "Strategy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetId: S.optional(S.String),
-          profiles: S.optional(__S(2, __c0, 2)),
-          deployParameters: S.optional(__S(28, __c3, 4)),
-          strategy: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "Stage" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          stages: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "SerialPipeline" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PipelineReadyCondition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.Boolean),
-          missingTargets: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetsPresentCondition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.Boolean),
-          errorDetails: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetsTypeCondition" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineReadyCondition: S.optional(__S(56, __c7, 0)),
-          targetsPresentCondition: S.optional(__S(57, __c7, 1)),
-          targetsTypeCondition: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "PipelineCondition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serialPipeline: S.optional(__S(55, __c6, 7)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          condition: S.optional(__S(59, __c7, 3)),
-          description: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          uid: S.optional(S.String),
-          suspended: S.optional(S.Boolean),
-          annotations: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "DeliveryPipeline" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           deliveryPipelineId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(311, __c9, 23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4312,15 +3954,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          status: S.optional(S.Boolean),
+          missingTargets: S.optional(__S(2208, __c69, 0)),
+          updateTime: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TargetAttribute" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
+      ).annotate({ identifier: "TargetsPresentCondition" });
   }
 }
 function __c8(j: number): any {
@@ -4328,132 +3973,237 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targets: S.optional(__S(63, __c7, 7)),
+          id: S.optional(S.String),
+          frequency: S.optional(S.String),
+          task: S.optional(__S(129, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "AutomationResourceSelector",
-      });
+      ).annotate({ identifier: "CustomCheck" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destinationTargetId: S.optional(S.String),
-          sourceTargetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Targets" });
+      return S.Array(__S(256, __c8, 0));
     case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          nextPromotionTime: S.optional(S.String),
-          targetsList: S.optional(__S(66, __c8, 2)),
+          id: S.optional(S.String),
+          alertPolicies: S.optional(__S(2208, __c69, 0)),
+          labels: S.optional(__S(96, __c3, 0)),
         }),
-      ).annotate({
-        identifier: "TimedPromoteReleaseCondition",
-      });
+      ).annotate({ identifier: "AlertPolicyCheck" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targetsPresentCondition: S.optional(__S(57, __c7, 1)),
-          timedPromoteReleaseCondition: S.optional(__S(67, __c8, 3)),
+          alertPolicyChecks: S.optional(__S(259, __c8, 3)),
         }),
-      ).annotate({ identifier: "AutomationRuleCondition" });
+      ).annotate({ identifier: "GoogleCloudAnalysis" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          wait: S.optional(S.String),
-          backoffMode: S.optional(S.String),
-          attempts: S.optional(S.String),
+          customChecks: S.optional(__S(257, __c8, 1)),
+          duration: S.optional(S.String),
+          googleCloud: S.optional(__S(260, __c8, 4)),
         }),
-      ).annotate({ identifier: "Clouddeploy_Retry" });
+      ).annotate({ identifier: "Analysis" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disableRollbackIfRolloutPending: S.optional(S.Boolean),
-          destinationPhase: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Rollback" });
+      return S.Array(__S(129, __c4, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          retry: S.optional(__S(69, __c8, 5)),
-          rollback: S.optional(__S(70, __c8, 6)),
+          tasks: S.optional(__S(262, __c8, 6)),
         }),
-      ).annotate({ identifier: "RepairPhaseConfig" });
+      ).annotate({ identifier: "Verify" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(2208, __c69, 0)),
+          tasks: S.optional(__S(262, __c8, 6)),
+        }),
+      ).annotate({ identifier: "Predeploy" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(68, __c8, 4)),
-          jobs: S.optional(__S(2, __c0, 2)),
-          phases: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          repairPhases: S.optional(__S(72, __c9, 0)),
+          matchTargetLabels: S.optional(__S(96, __c3, 0)),
+          values: S.optional(__S(96, __c3, 0)),
         }),
-      ).annotate({ identifier: "RepairRolloutRule" });
+      ).annotate({ identifier: "DeployParameters" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          wait: S.optional(S.String),
-          condition: S.optional(__S(68, __c8, 4)),
-          sourcePhases: S.optional(__S(2, __c0, 2)),
+          tasks: S.optional(__S(262, __c8, 6)),
+          actions: S.optional(__S(2208, __c69, 0)),
         }),
-      ).annotate({ identifier: "AdvanceRolloutRule" });
+      ).annotate({ identifier: "Postdeploy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          wait: S.optional(S.String),
-          destinationPhase: S.optional(S.String),
-          condition: S.optional(__S(68, __c8, 4)),
-          id: S.optional(S.String),
-          destinationTargetId: S.optional(S.String),
+          analysis: S.optional(__S(261, __c8, 5)),
+          postdeploy: S.optional(__S(290, __c9, 2)),
+          verifyConfig: S.optional(__S(263, __c8, 7)),
+          predeploy: S.optional(__S(264, __c8, 8)),
+          verify: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "PromoteReleaseRule" });
+      ).annotate({ identifier: "Standard" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destinationPhase: S.optional(S.String),
-          destinationTargetId: S.optional(S.String),
-          condition: S.optional(__S(68, __c8, 4)),
-          id: S.optional(S.String),
-          schedule: S.optional(S.String),
-          timeZone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimedPromoteReleaseRule" });
+      return S.Array(S.Number);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repairRolloutRule: S.optional(__S(73, __c9, 1)),
-          advanceRolloutRule: S.optional(__S(74, __c9, 2)),
-          promoteReleaseRule: S.optional(__S(75, __c9, 3)),
-          timedPromoteReleaseRule: S.optional(__S(76, __c9, 4)),
+          predeploy: S.optional(__S(264, __c8, 8)),
+          analysis: S.optional(__S(261, __c8, 5)),
+          percentages: S.optional(__S(292, __c9, 4)),
+          verify: S.optional(S.Boolean),
+          postdeploy: S.optional(__S(290, __c9, 2)),
+          verifyConfig: S.optional(__S(263, __c8, 7)),
         }),
-      ).annotate({ identifier: "AutomationRule" });
+      ).annotate({ identifier: "CanaryDeployment" });
     case 6:
-      return S.Array(__S(77, __c9, 5));
+      return S.suspend(() =>
+        S.Struct({
+          priorRevisionTags: S.optional(__S(2208, __c69, 0)),
+          stableRevisionTags: S.optional(__S(2208, __c69, 0)),
+          automaticTrafficControl: S.optional(S.Boolean),
+          canaryRevisionTags: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "CloudRunConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          selector: S.optional(__S(64, __c8, 0)),
-          rules: S.optional(__S(78, __c9, 6)),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
-          updateTime: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          suspended: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          annotations: S.optional(__S(17, __c2, 1)),
-          createTime: S.optional(S.String),
-          uid: S.optional(S.String),
+          deployment: S.optional(S.String),
+          service: S.optional(S.String),
+          podSelectorLabel: S.optional(S.String),
+          disablePodOverprovisioning: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "Automation" });
+      ).annotate({ identifier: "ServiceNetworking" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          propagateService: S.optional(S.Boolean),
+          destinationIds: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "RouteDestinations" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          stableCutbackDuration: S.optional(S.String),
+          routeUpdateWaitTime: S.optional(S.String),
+          httpRoute: S.optional(S.String),
+          podSelectorLabel: S.optional(S.String),
+          routeDestinations: S.optional(__S(296, __c9, 8)),
+          deployment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GatewayServiceMesh" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          serviceNetworking: S.optional(__S(295, __c9, 7)),
+          gatewayServiceMesh: S.optional(__S(297, __c9, 9)),
+        }),
+      ).annotate({ identifier: "KubernetesConfig" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          cloudRun: S.optional(__S(294, __c9, 6)),
+          kubernetes: S.optional(__S(298, __c9, 10)),
+        }),
+      ).annotate({ identifier: "RuntimeConfig" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          verify: S.optional(S.Boolean),
+          analysis: S.optional(__S(261, __c8, 5)),
+          phaseId: S.optional(S.String),
+          postdeploy: S.optional(__S(290, __c9, 2)),
+          predeploy: S.optional(__S(264, __c8, 8)),
+          profiles: S.optional(__S(2208, __c69, 0)),
+          percentage: S.optional(S.Number),
+          verifyConfig: S.optional(__S(263, __c8, 7)),
+        }),
+      ).annotate({ identifier: "PhaseConfig" });
+    case 13:
+      return S.Array(__S(300, __c9, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          phaseConfigs: S.optional(__S(301, __c9, 13)),
+        }),
+      ).annotate({ identifier: "CustomCanaryDeployment" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          canaryDeployment: S.optional(__S(293, __c9, 5)),
+          runtimeConfig: S.optional(__S(299, __c9, 11)),
+          customCanaryDeployment: S.optional(__S(302, __c9, 14)),
+        }),
+      ).annotate({ identifier: "Canary" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          standard: S.optional(__S(291, __c9, 3)),
+          canary: S.optional(__S(303, __c9, 15)),
+        }),
+      ).annotate({ identifier: "Strategy" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          targetId: S.optional(S.String),
+          profiles: S.optional(__S(2208, __c69, 0)),
+          deployParameters: S.optional(__S(289, __c9, 1)),
+          strategy: S.optional(__S(304, __c9, 16)),
+        }),
+      ).annotate({ identifier: "Stage" });
+    case 18:
+      return S.Array(__S(305, __c9, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          stages: S.optional(__S(306, __c9, 18)),
+        }),
+      ).annotate({ identifier: "SerialPipeline" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineReadyCondition" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.Boolean),
+          errorDetails: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetsTypeCondition" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineReadyCondition: S.optional(__S(308, __c9, 20)),
+          targetsPresentCondition: S.optional(__S(224, __c7, 0)),
+          targetsTypeCondition: S.optional(__S(309, __c9, 21)),
+        }),
+      ).annotate({ identifier: "PipelineCondition" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          serialPipeline: S.optional(__S(307, __c9, 19)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          condition: S.optional(__S(310, __c9, 22)),
+          description: S.optional(S.String),
+          labels: S.optional(__S(96, __c3, 0)),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+          suspended: S.optional(S.Boolean),
+          annotations: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "DeliveryPipeline" });
   }
 }
 function __c10(j: number): any {
@@ -4465,7 +4215,7 @@ function __c10(j: number): any {
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           automationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c12, 16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4476,50 +4226,190 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDeliveryPipelinesAutomationsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          tag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildArtifact" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          docker: S.optional(S.String),
-          skaffold: S.optional(S.String),
-          kubectl: S.optional(S.String),
-          helm: S.optional(S.String),
-          kpt: S.optional(S.String),
-          kustomize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolVersions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jobManifestsPath: S.optional(S.String),
-          manifestPath: S.optional(S.String),
-          skaffoldConfigPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhaseArtifact" });
-    case 5:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          skaffoldConfigPath: S.optional(S.String),
-          artifactUri: S.optional(S.String),
-          phaseArtifacts: S.optional(__S(85, __c10, 5)),
-          manifestPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetArtifact" });
-    case 7:
-      return S.Record(S.String, __S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          labels: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "TargetAttribute" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(352, __c11, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targets: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "AutomationResourceSelector",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          destinationTargetId: S.optional(S.String),
+          sourceTargetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Targets" });
+    case 3:
+      return S.Array(__S(386, __c12, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextPromotionTime: S.optional(S.String),
+          targetsList: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({
+        identifier: "TimedPromoteReleaseCondition",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          targetsPresentCondition: S.optional(__S(224, __c7, 0)),
+          timedPromoteReleaseCondition: S.optional(__S(388, __c12, 4)),
+        }),
+      ).annotate({ identifier: "AutomationRuleCondition" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          wait: S.optional(S.String),
+          backoffMode: S.optional(S.String),
+          attempts: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Clouddeploy_Retry" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          disableRollbackIfRolloutPending: S.optional(S.Boolean),
+          destinationPhase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rollback" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          retry: S.optional(__S(390, __c12, 6)),
+          rollback: S.optional(__S(391, __c12, 7)),
+        }),
+      ).annotate({ identifier: "RepairPhaseConfig" });
+    case 9:
+      return S.Array(__S(392, __c12, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(__S(389, __c12, 5)),
+          jobs: S.optional(__S(2208, __c69, 0)),
+          phases: S.optional(__S(2208, __c69, 0)),
+          id: S.optional(S.String),
+          repairPhases: S.optional(__S(393, __c12, 9)),
+        }),
+      ).annotate({ identifier: "RepairRolloutRule" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          wait: S.optional(S.String),
+          condition: S.optional(__S(389, __c12, 5)),
+          sourcePhases: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "AdvanceRolloutRule" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          wait: S.optional(S.String),
+          destinationPhase: S.optional(S.String),
+          condition: S.optional(__S(389, __c12, 5)),
+          id: S.optional(S.String),
+          destinationTargetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PromoteReleaseRule" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          destinationPhase: S.optional(S.String),
+          destinationTargetId: S.optional(S.String),
+          condition: S.optional(__S(389, __c12, 5)),
+          id: S.optional(S.String),
+          schedule: S.optional(S.String),
+          timeZone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimedPromoteReleaseRule" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          repairRolloutRule: S.optional(__S(394, __c12, 10)),
+          advanceRolloutRule: S.optional(__S(395, __c12, 11)),
+          promoteReleaseRule: S.optional(__S(396, __c12, 12)),
+          timedPromoteReleaseRule: S.optional(__S(397, __c12, 13)),
+        }),
+      ).annotate({ identifier: "AutomationRule" });
+    case 15:
+      return S.Array(__S(398, __c12, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(__S(385, __c12, 1)),
+          rules: S.optional(__S(399, __c12, 15)),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(96, __c3, 0)),
+          updateTime: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          suspended: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          annotations: S.optional(__S(96, __c3, 0)),
+          createTime: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Automation" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
+          releaseId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(623, __c19, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/releases",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "CustomMetadata" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4537,8 +4427,6 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "GkeCluster" });
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
@@ -4546,95 +4434,138 @@ function __c11(j: number): any {
           workerPool: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivatePool" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           artifactStorage: S.optional(S.String),
           serviceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultPool" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           artifactStorage: S.optional(S.String),
           verbose: S.optional(S.Boolean),
-          usages: S.optional(__S(90, __c11, 2)),
+          usages: S.optional(__S(480, __c15, 0)),
           workerPool: S.optional(S.String),
-          privatePool: S.optional(__S(91, __c11, 3)),
+          privatePool: S.optional(__S(514, __c16, 2)),
           executionTimeout: S.optional(S.String),
-          defaultPool: S.optional(__S(92, __c11, 4)),
+          defaultPool: S.optional(__S(515, __c16, 3)),
           serviceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionConfig" });
+    case 5:
+      return S.Array(__S(516, __c16, 4));
     case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           membership: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnthosCluster" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.Array(__S(89, __c11, 1));
-    case 2:
+    case 7:
+      return S.Array(__S(518, __c16, 6));
+    case 8:
+      return S.Array(__S(513, __c16, 1));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          anthosClusters: S.optional(__S(96, __c12, 0)),
-          gkeClusters: S.optional(__S(97, __c12, 1)),
+          anthosClusters: S.optional(__S(519, __c16, 7)),
+          gkeClusters: S.optional(__S(520, __c16, 8)),
         }),
       ).annotate({ identifier: "AssociatedEntities" });
-    case 3:
-      return S.Record(S.String, __S(98, __c12, 2));
-    case 4:
+    case 10:
+      return S.Record(S.String, __S(521, __c16, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunLocation" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          targetIds: S.optional(__S(2, __c0, 2)),
+          targetIds: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "MultiTarget" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
           targetId: S.optional(S.String),
           createTime: S.optional(S.String),
-          customTarget: S.optional(__S(88, __c11, 0)),
-          gke: S.optional(__S(89, __c11, 1)),
+          customTarget: S.optional(__S(512, __c16, 0)),
+          gke: S.optional(__S(513, __c16, 1)),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(17, __c2, 1)),
-          executionConfigs: S.optional(__S(94, __c11, 6)),
+          annotations: S.optional(__S(96, __c3, 0)),
+          executionConfigs: S.optional(__S(517, __c16, 5)),
           requireApproval: S.optional(S.Boolean),
-          anthosCluster: S.optional(__S(95, __c11, 7)),
-          associatedEntities: S.optional(__S(99, __c12, 3)),
-          deployParameters: S.optional(__S(17, __c2, 1)),
+          anthosCluster: S.optional(__S(518, __c16, 6)),
+          associatedEntities: S.optional(__S(522, __c16, 10)),
+          deployParameters: S.optional(__S(96, __c3, 0)),
           name: S.optional(S.String),
           description: S.optional(S.String),
           etag: S.optional(S.String),
-          run: S.optional(__S(100, __c12, 4)),
+          run: S.optional(__S(523, __c16, 11)),
           updateTime: S.optional(S.String),
-          multiTarget: S.optional(__S(101, __c12, 5)),
+          multiTarget: S.optional(__S(524, __c16, 12)),
         }),
       ).annotate({ identifier: "Target" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(21, __c2, 5));
+      return S.suspend(() =>
+        S.Struct({
+          docker: S.optional(S.String),
+          skaffold: S.optional(S.String),
+          kubectl: S.optional(S.String),
+          helm: S.optional(S.String),
+          kpt: S.optional(S.String),
+          kustomize: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolVersions" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(167, __c5, 7));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          tag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildArtifact" });
     case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobManifestsPath: S.optional(S.String),
+          manifestPath: S.optional(S.String),
+          skaffoldConfigPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhaseArtifact" });
+    case 3:
+      return S.Record(S.String, __S(610, __c19, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          skaffoldConfigPath: S.optional(S.String),
+          artifactUri: S.optional(S.String),
+          phaseArtifacts: S.optional(__S(611, __c19, 3)),
+          manifestPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetArtifact" });
+    case 5:
+      return S.Record(S.String, __S(612, __c19, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           canaryDeployment: S.optional(S.String),
@@ -4642,7 +4573,7 @@ function __c13(j: number): any {
           kubernetesNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "KubernetesRenderMetadata" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           job: S.optional(S.String),
@@ -4651,33 +4582,27 @@ function __c13(j: number): any {
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunRenderMetadata" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CustomMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kubernetes: S.optional(__S(105, __c13, 1)),
-          cloudRun: S.optional(__S(106, __c13, 2)),
-          custom: S.optional(__S(107, __c13, 3)),
+          kubernetes: S.optional(__S(614, __c19, 6)),
+          cloudRun: S.optional(__S(615, __c19, 7)),
+          custom: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "RenderMetadata" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           renderingBuild: S.optional(S.String),
-          metadata: S.optional(__S(108, __c13, 4)),
+          metadata: S.optional(__S(616, __c19, 8)),
           renderingState: S.optional(S.String),
           failureMessage: S.optional(S.String),
           failureCause: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetRender" });
-    case 6:
-      return S.Record(S.String, __S(109, __c13, 5));
-    case 7:
+    case 10:
+      return S.Record(S.String, __S(617, __c19, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           toolVersionSupportState: S.optional(S.String),
@@ -4688,11 +4613,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ToolVersionSupportedCondition",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           skaffoldSupportState: S.optional(S.String),
@@ -4703,153 +4624,168 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SkaffoldSupportedCondition",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReleaseReadyCondition" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          kptVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
-          dockerVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
-          skaffoldSupportedCondition: S.optional(__S(112, __c14, 0)),
-          releaseReadyCondition: S.optional(__S(113, __c14, 1)),
-          helmVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
-          kustomizeVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
-          skaffoldVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
-          kubectlVersionSupportedCondition: S.optional(__S(111, __c13, 7)),
+          kptVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
+          dockerVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
+          skaffoldSupportedCondition: S.optional(__S(620, __c19, 12)),
+          releaseReadyCondition: S.optional(__S(621, __c19, 13)),
+          helmVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
+          kustomizeVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
+          skaffoldVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
+          kubectlVersionSupportedCondition: S.optional(__S(619, __c19, 11)),
         }),
       ).annotate({ identifier: "ReleaseCondition" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           renderStartTime: S.optional(S.String),
           abandoned: S.optional(S.Boolean),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
           description: S.optional(S.String),
-          buildArtifacts: S.optional(__S(82, __c10, 2)),
-          toolVersions: S.optional(__S(83, __c10, 3)),
-          targetArtifacts: S.optional(__S(87, __c10, 7)),
-          targetSnapshots: S.optional(__S(103, __c12, 7)),
+          buildArtifacts: S.optional(__S(609, __c19, 1)),
+          toolVersions: S.optional(__S(544, __c17, 0)),
+          targetArtifacts: S.optional(__S(613, __c19, 5)),
+          targetSnapshots: S.optional(__S(640, __c20, 0)),
           uid: S.optional(S.String),
-          deployParameters: S.optional(__S(17, __c2, 1)),
+          deployParameters: S.optional(__S(96, __c3, 0)),
           skaffoldVersion: S.optional(S.String),
-          deliveryPipelineSnapshot: S.optional(__S(60, __c7, 4)),
-          customTargetTypeSnapshots: S.optional(__S(104, __c13, 0)),
-          targetRenders: S.optional(__S(110, __c13, 6)),
+          deliveryPipelineSnapshot: S.optional(__S(311, __c9, 23)),
+          customTargetTypeSnapshots: S.optional(__S(576, __c18, 0)),
+          targetRenders: S.optional(__S(618, __c19, 10)),
           renderEndTime: S.optional(S.String),
-          condition: S.optional(__S(114, __c14, 2)),
+          condition: S.optional(__S(622, __c19, 14)),
           skaffoldConfigPath: S.optional(S.String),
           etag: S.optional(S.String),
           renderState: S.optional(S.String),
-          annotations: S.optional(__S(17, __c2, 1)),
+          annotations: S.optional(__S(96, __c3, 0)),
           createTime: S.optional(S.String),
           skaffoldConfigUri: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Release" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          releaseId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/releases",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          postdeployJob: S.optional(__S(38, __c4, 6)),
-          predeployJob: S.optional(__S(38, __c4, 6)),
-          id: S.optional(S.String),
-          jobRun: S.optional(S.String),
-          analysisJob: S.optional(__S(34, __c4, 2)),
-          createChildRolloutJob: S.optional(__S(0, __c0, 0)),
-          skipMessage: S.optional(S.String),
-          state: S.optional(S.String),
-          deployJob: S.optional(__S(0, __c0, 0)),
-          advanceChildRolloutJob: S.optional(__S(0, __c0, 0)),
-          verifyJob: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createRolloutJobs: S.optional(__S(118, __c14, 6)),
-          advanceRolloutJobs: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({ identifier: "ChildRolloutJobs" });
   }
 }
-function __c15(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(525, __c16, 13));
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          verifyJob: S.optional(__S(117, __c14, 5)),
-          deployJob: S.optional(__S(117, __c14, 5)),
-          predeployJob: S.optional(__S(117, __c14, 5)),
-          postdeployJob: S.optional(__S(117, __c14, 5)),
-          analysisJob: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "DeploymentJobs" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          childRolloutJobs: S.optional(__S(119, __c14, 7)),
-          skipMessage: S.optional(S.String),
-          state: S.optional(S.String),
-          id: S.optional(S.String),
-          deploymentJobs: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({ identifier: "Phase" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          rolloutId: S.optional(S.String.pipe(T.Query())),
+          startingPhaseId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(744, __c23, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/rollouts",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
           previousRevision: S.optional(S.String),
-          serviceUrls: S.optional(__S(2, __c0, 2)),
+          serviceUrls: S.optional(__S(2208, __c69, 0)),
           job: S.optional(S.String),
           revision: S.optional(S.String),
           workerPool: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunMetadata" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postdeployJob: S.optional(__S(264, __c8, 8)),
+          predeployJob: S.optional(__S(264, __c8, 8)),
+          id: S.optional(S.String),
+          jobRun: S.optional(S.String),
+          analysisJob: S.optional(__S(261, __c8, 5)),
+          createChildRolloutJob: S.optional(__S(1824, __c57, 0)),
+          skipMessage: S.optional(S.String),
+          state: S.optional(S.String),
+          deployJob: S.optional(__S(1824, __c57, 0)),
+          advanceChildRolloutJob: S.optional(__S(1824, __c57, 0)),
+          verifyJob: S.optional(__S(263, __c8, 7)),
+        }),
+      ).annotate({ identifier: "Job" });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createRolloutJobs: S.optional(__S(737, __c23, 1)),
+          advanceRolloutJobs: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "ChildRolloutJobs" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          verifyJob: S.optional(__S(736, __c23, 0)),
+          deployJob: S.optional(__S(736, __c23, 0)),
+          predeployJob: S.optional(__S(736, __c23, 0)),
+          postdeployJob: S.optional(__S(736, __c23, 0)),
+          analysisJob: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({ identifier: "DeploymentJobs" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          childRolloutJobs: S.optional(__S(738, __c23, 2)),
+          skipMessage: S.optional(S.String),
+          state: S.optional(S.String),
+          id: S.optional(S.String),
+          deploymentJobs: S.optional(__S(739, __c23, 3)),
+        }),
+      ).annotate({ identifier: "Phase" });
+    case 5:
+      return S.Array(__S(740, __c23, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
           promoteAutomationRun: S.optional(S.String),
-          repairAutomationRuns: S.optional(__S(2, __c0, 2)),
-          advanceAutomationRuns: S.optional(__S(2, __c0, 2)),
+          repairAutomationRuns: S.optional(__S(2208, __c69, 0)),
+          advanceAutomationRuns: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({
         identifier: "AutomationRolloutMetadata",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudRun: S.optional(__S(123, __c15, 3)),
-          automation: S.optional(__S(124, __c15, 4)),
-          custom: S.optional(__S(107, __c13, 3)),
+          cloudRun: S.optional(__S(704, __c22, 0)),
+          automation: S.optional(__S(742, __c23, 6)),
+          custom: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "Metadata" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4863,43 +4799,57 @@ function __c15(j: number): any {
           failureReason: S.optional(S.String),
           deployStartTime: S.optional(S.String),
           name: S.optional(S.String),
-          phases: S.optional(__S(122, __c15, 2)),
+          phases: S.optional(__S(741, __c23, 5)),
           deployEndTime: S.optional(S.String),
           approveTime: S.optional(S.String),
           controllerRollout: S.optional(S.String),
           activeRepairAutomationRun: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
           enqueueTime: S.optional(S.String),
           approvalState: S.optional(S.String),
-          annotations: S.optional(__S(17, __c2, 1)),
-          metadata: S.optional(__S(125, __c15, 5)),
-          rolledBackByRollouts: S.optional(__S(2, __c0, 2)),
+          annotations: S.optional(__S(96, __c3, 0)),
+          metadata: S.optional(__S(743, __c23, 7)),
+          rolledBackByRollouts: S.optional(__S(2208, __c69, 0)),
           deployingBuild: S.optional(S.String),
         }),
       ).annotate({ identifier: "Rollout" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          rolloutId: S.optional(S.String.pipe(T.Query())),
-          startingPhaseId: S.optional(S.String.pipe(T.Query())),
+          deployPolicyId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(126, __c15, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(844, __c26, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/rollouts",
+            uri: "v1/{+parent}/deployPolicies",
             baseUrl: "https://clouddeploy.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+        identifier: "CreateProjectsLocationsDeployPoliciesRequest",
       });
   }
 }
-function __c16(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Clouddeploy_Date" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4913,123 +4863,97 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(90, __c11, 2)),
-          endTime: S.optional(__S(128, __c16, 0)),
-          startTime: S.optional(__S(128, __c16, 0)),
+          daysOfWeek: S.optional(__S(480, __c15, 0)),
+          endTime: S.optional(__S(832, __c26, 0)),
+          startTime: S.optional(__S(832, __c26, 0)),
         }),
       ).annotate({ identifier: "WeeklyWindow" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(833, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Clouddeploy_Date" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(__S(128, __c16, 0)),
-          endTime: S.optional(__S(128, __c16, 0)),
-          endDate: S.optional(__S(131, __c16, 3)),
-          startDate: S.optional(__S(131, __c16, 3)),
+          startTime: S.optional(__S(832, __c26, 0)),
+          endTime: S.optional(__S(832, __c26, 0)),
+          endDate: S.optional(__S(800, __c25, 0)),
+          startDate: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "OneTimeWindow" });
+    case 4:
+      return S.Array(__S(835, __c26, 3));
     case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          weeklyWindows: S.optional(__S(130, __c16, 2)),
-          oneTimeWindows: S.optional(__S(133, __c16, 5)),
+          weeklyWindows: S.optional(__S(834, __c26, 2)),
+          oneTimeWindows: S.optional(__S(836, __c26, 4)),
           timeZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeWindows" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timeWindows: S.optional(__S(837, __c26, 5)),
+          id: S.optional(S.String),
+          actions: S.optional(__S(480, __c15, 0)),
+          invokers: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "RolloutRestriction" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          timeWindows: S.optional(__S(134, __c16, 6)),
-          id: S.optional(S.String),
-          actions: S.optional(__S(90, __c11, 2)),
-          invokers: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "RolloutRestriction" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rolloutRestriction: S.optional(__S(135, __c16, 7)),
+          rolloutRestriction: S.optional(__S(838, __c26, 6)),
         }),
       ).annotate({ identifier: "PolicyRule" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(839, __c26, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "DeliveryPipelineAttribute",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          deliveryPipeline: S.optional(__S(138, __c17, 2)),
-          target: S.optional(__S(62, __c7, 6)),
+          deliveryPipeline: S.optional(__S(841, __c26, 9)),
+          target: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({
         identifier: "DeployPolicyResourceSelector",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(842, __c26, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
           suspended: S.optional(S.Boolean),
-          annotations: S.optional(__S(17, __c2, 1)),
+          annotations: S.optional(__S(96, __c3, 0)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(__S(137, __c17, 1)),
+          rules: S.optional(__S(840, __c26, 8)),
           uid: S.optional(S.String),
-          selectors: S.optional(__S(140, __c17, 4)),
+          selectors: S.optional(__S(843, __c26, 11)),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeployPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          deployPolicyId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/deployPolicies",
-            baseUrl: "https://clouddeploy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDeployPoliciesRequest",
-      });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           targetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(525, __c16, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5042,7 +4966,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5062,7 +4986,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCustomTargetTypesRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -5081,7 +5009,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -5099,7 +5031,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -5117,7 +5053,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDeployPoliciesRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5131,7 +5071,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5149,7 +5093,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTargetsRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5163,31 +5111,31 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetConfigProjectsLocationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           supportExpirationTime: S.optional(S.String),
-          supportEndDate: S.optional(__S(131, __c16, 3)),
+          supportEndDate: S.optional(__S(800, __c25, 0)),
           version: S.optional(S.String),
           maintenanceModeTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkaffoldVersion" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          defaultToolVersions: S.optional(__S(83, __c10, 3)),
+          defaultToolVersions: S.optional(__S(544, __c17, 0)),
           defaultSkaffoldVersion: S.optional(S.String),
-          supportedVersions: S.optional(__S(152, __c19, 0)),
+          supportedVersions: S.optional(__S(1090, __c34, 2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Config" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -5202,25 +5150,29 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCustomTargetTypesRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(2, __c0, 2)),
+          exemptedMembers: S.optional(__S(2208, __c69, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(156, __c19, 4)),
+          auditLogConfigs: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "AuditConfig" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5229,30 +5181,30 @@ function __c19(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(2, __c0, 2)),
+          members: S.optional(__S(2208, __c69, 0)),
           role: S.optional(S.String),
-          condition: S.optional(__S(159, __c19, 7)),
+          condition: S.optional(__S(1156, __c36, 4)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1157, __c36, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(158, __c19, 6)),
-          bindings: S.optional(__S(161, __c20, 1)),
+          auditConfigs: S.optional(__S(1155, __c36, 3)),
+          bindings: S.optional(__S(1158, __c36, 6)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -5267,7 +5219,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -5282,7 +5238,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDeployPoliciesRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -5297,7 +5257,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsTargetsRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5311,19 +5275,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
+          metadata: S.optional(__S(32, __c1, 0)),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(17, __c2, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "Location" });
   }
 }
-function __c21(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5339,7 +5307,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCustomTargetTypesRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5353,7 +5325,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5367,7 +5343,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           phase: S.optional(S.String),
@@ -5376,7 +5356,7 @@ function __c21(j: number): any {
           wait: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromoteReleaseOperation" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateDesc: S.optional(S.String),
@@ -5385,17 +5365,17 @@ function __c21(j: number): any {
           wait: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetryAttempt" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           totalAttempts: S.optional(S.String),
           backoffMode: S.optional(S.String),
-          attempts: S.optional(__S(173, __c21, 5)),
+          attempts: S.optional(__S(1442, __c45, 2)),
         }),
       ).annotate({ identifier: "RetryPhase" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           disableRollbackIfRolloutPending: S.optional(S.Boolean),
@@ -5405,30 +5385,26 @@ function __c21(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "RollbackAttempt" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          retry: S.optional(__S(174, __c21, 6)),
-          rollback: S.optional(__S(175, __c21, 7)),
+          retry: S.optional(__S(1443, __c45, 3)),
+          rollback: S.optional(__S(1444, __c45, 4)),
         }),
       ).annotate({ identifier: "RepairPhase" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          repairPhases: S.optional(__S(177, __c22, 1)),
+          repairPhases: S.optional(__S(1446, __c45, 6)),
           currentRepairPhaseIndex: S.optional(S.String),
           phaseId: S.optional(S.String),
           jobId: S.optional(S.String),
           rollout: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepairRolloutOperation" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           release: S.optional(S.String),
@@ -5438,7 +5414,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "TimedPromoteReleaseOperation",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           wait: S.optional(S.String),
@@ -5447,7 +5423,7 @@ function __c22(j: number): any {
           rollout: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdvanceRolloutOperation" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.optional(S.String),
@@ -5455,43 +5431,43 @@ function __c22(j: number): any {
           failureMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyViolationDetails" });
-    case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(1450, __c45, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          policyViolationDetails: S.optional(__S(182, __c22, 6)),
+          policyViolationDetails: S.optional(__S(1451, __c45, 11)),
         }),
       ).annotate({ identifier: "PolicyViolation" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.optional(S.String),
           updateTime: S.optional(S.String),
           expireTime: S.optional(S.String),
           automationId: S.optional(S.String),
-          promoteReleaseOperation: S.optional(__S(171, __c21, 3)),
-          repairRolloutOperation: S.optional(__S(178, __c22, 2)),
-          timedPromoteReleaseOperation: S.optional(__S(179, __c22, 3)),
+          promoteReleaseOperation: S.optional(__S(1440, __c45, 0)),
+          repairRolloutOperation: S.optional(__S(1447, __c45, 7)),
+          timedPromoteReleaseOperation: S.optional(__S(1448, __c45, 8)),
           state: S.optional(S.String),
           waitUntilTime: S.optional(S.String),
           targetId: S.optional(S.String),
-          advanceRolloutOperation: S.optional(__S(180, __c22, 4)),
+          advanceRolloutOperation: S.optional(__S(1449, __c45, 9)),
           etag: S.optional(S.String),
           stateDescription: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          policyViolation: S.optional(__S(183, __c22, 7)),
+          policyViolation: S.optional(__S(1452, __c45, 12)),
           uid: S.optional(S.String),
-          automationSnapshot: S.optional(__S(79, __c9, 7)),
+          automationSnapshot: S.optional(__S(400, __c12, 16)),
         }),
       ).annotate({ identifier: "AutomationRun" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5505,7 +5481,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesAutomationsRequest",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5519,7 +5499,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRequest",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5533,7 +5517,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5547,35 +5535,35 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          custom: S.optional(__S(107, __c13, 3)),
+          custom: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "PredeployJobRunMetadata" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           failureCause: S.optional(S.String),
-          metadata: S.optional(__S(189, __c23, 5)),
+          metadata: S.optional(__S(1600, __c50, 0)),
           failureMessage: S.optional(S.String),
           build: S.optional(S.String),
         }),
       ).annotate({ identifier: "PredeployJobRun" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           failureCause: S.optional(S.String),
-          metadata: S.optional(__S(189, __c23, 5)),
+          metadata: S.optional(__S(1600, __c50, 0)),
           failureMessage: S.optional(S.String),
           build: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostdeployJobRun" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           skipMessage: S.optional(S.String),
@@ -5583,89 +5571,85 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CustomTargetDeployMetadata",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudRun: S.optional(__S(123, __c15, 3)),
-          custom: S.optional(__S(107, __c13, 3)),
-          customTarget: S.optional(__S(192, __c24, 0)),
+          cloudRun: S.optional(__S(704, __c22, 0)),
+          custom: S.optional(__S(448, __c14, 0)),
+          customTarget: S.optional(__S(1603, __c50, 3)),
         }),
       ).annotate({ identifier: "DeployJobRunMetadata" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          manifestPaths: S.optional(__S(2, __c0, 2)),
+          manifestPaths: S.optional(__S(2208, __c69, 0)),
           artifactUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeployArtifact" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           failureCause: S.optional(S.String),
           failureMessage: S.optional(S.String),
           build: S.optional(S.String),
-          metadata: S.optional(__S(193, __c24, 1)),
-          artifact: S.optional(__S(194, __c24, 2)),
+          metadata: S.optional(__S(1604, __c50, 4)),
+          artifact: S.optional(__S(1605, __c50, 5)),
         }),
       ).annotate({ identifier: "DeployJobRun" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           alertPolicy: S.optional(S.String),
-          alerts: S.optional(__S(2, __c0, 2)),
+          alerts: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "FailedAlertPolicy" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1607, __c50, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          failedAlertPolicies: S.optional(__S(197, __c24, 5)),
+          failedAlertPolicies: S.optional(__S(1608, __c50, 8)),
           failureMessage: S.optional(S.String),
-          alertPolicies: S.optional(__S(2, __c0, 2)),
-          labels: S.optional(__S(17, __c2, 1)),
+          alertPolicies: S.optional(__S(2208, __c69, 0)),
+          labels: S.optional(__S(96, __c3, 0)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertPolicyCheckStatus" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(1609, __c50, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           failureCause: S.optional(S.String),
           failureMessage: S.optional(S.String),
           latestBuild: S.optional(S.String),
-          metadata: S.optional(__S(107, __c13, 3)),
+          metadata: S.optional(__S(448, __c14, 0)),
           id: S.optional(S.String),
-          task: S.optional(__S(19, __c2, 3)),
+          task: S.optional(__S(129, __c4, 1)),
           frequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCheckStatus" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(1611, __c50, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          alertPolicyAnalyses: S.optional(__S(199, __c24, 7)),
-          customCheckAnalyses: S.optional(__S(201, __c25, 1)),
+          alertPolicyAnalyses: S.optional(__S(1610, __c50, 10)),
+          customCheckAnalyses: S.optional(__S(1612, __c50, 12)),
           failedCheckId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalysisJobRun" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           rollout: S.optional(S.String),
           rolloutPhaseId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateChildRolloutJobRun" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(189, __c23, 5)),
+          metadata: S.optional(__S(1600, __c50, 0)),
           artifactUri: S.optional(S.String),
           failureMessage: S.optional(S.String),
           build: S.optional(S.String),
@@ -5673,7 +5657,7 @@ function __c25(j: number): any {
           failureCause: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyJobRun" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           rolloutPhaseId: S.optional(S.String),
@@ -5682,28 +5666,32 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "AdvanceChildRolloutJobRun",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
-          predeployJobRun: S.optional(__S(190, __c23, 6)),
+          predeployJobRun: S.optional(__S(1601, __c50, 1)),
           name: S.optional(S.String),
-          postdeployJobRun: S.optional(__S(191, __c23, 7)),
-          deployJobRun: S.optional(__S(195, __c24, 3)),
-          analysisJobRun: S.optional(__S(202, __c25, 2)),
-          createChildRolloutJobRun: S.optional(__S(203, __c25, 3)),
+          postdeployJobRun: S.optional(__S(1602, __c50, 2)),
+          deployJobRun: S.optional(__S(1606, __c50, 6)),
+          analysisJobRun: S.optional(__S(1613, __c50, 13)),
+          createChildRolloutJobRun: S.optional(__S(1614, __c50, 14)),
           etag: S.optional(S.String),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          verifyJobRun: S.optional(__S(204, __c25, 4)),
+          verifyJobRun: S.optional(__S(1615, __c50, 15)),
           phaseId: S.optional(S.String),
-          advanceChildRolloutJobRun: S.optional(__S(205, __c25, 5)),
+          advanceChildRolloutJobRun: S.optional(__S(1616, __c50, 16)),
           state: S.optional(S.String),
           jobId: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobRun" });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5719,7 +5707,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5735,7 +5723,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5749,19 +5741,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTargetsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.optional(S.String),
-          phaseId: S.optional(S.String),
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "IgnoreJobRequest" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rollout: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5772,14 +5760,57 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String),
+          phaseId: S.optional(S.String),
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "IgnoreJobRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:abandon",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AbandonProjectsLocationsDeliveryPipelinesReleasesRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AbandonReleaseRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5790,16 +5821,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 5:
-      return S.Array(__S(167, __c20, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(213, __c26, 5)),
+          locations: S.optional(__S(1857, __c58, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5817,21 +5852,21 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCustomTargetTypesRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customTargetTypes: S.optional(__S(104, __c13, 0)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          customTargetTypes: S.optional(__S(576, __c18, 0)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({
         identifier: "ListCustomTargetTypesResponse",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5849,19 +5884,23 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeliveryPipelinesRequest",
       });
+    case 1:
+      return S.Array(__S(311, __c9, 23));
     case 2:
-      return S.Array(__S(60, __c7, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          deliveryPipelines: S.optional(__S(218, __c27, 2)),
+          deliveryPipelines: S.optional(__S(1921, __c60, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({
         identifier: "ListDeliveryPipelinesResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5879,19 +5918,23 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
       });
-    case 5:
-      return S.Array(__S(184, __c23, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(1453, __c45, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
-          automationRuns: S.optional(__S(221, __c27, 5)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
+          automationRuns: S.optional(__S(1953, __c61, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutomationRunsResponse",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5909,21 +5952,21 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeliveryPipelinesAutomationsRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(400, __c12, 16));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
           nextPageToken: S.optional(S.String),
-          automations: S.optional(__S(224, __c28, 0)),
+          automations: S.optional(__S(1985, __c62, 1)),
         }),
       ).annotate({ identifier: "ListAutomationsResponse" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5941,17 +5984,21 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRequest",
       });
-    case 3:
-      return S.Array(__S(115, __c14, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(623, __c19, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          releases: S.optional(__S(227, __c28, 3)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          releases: S.optional(__S(2017, __c63, 1)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5969,19 +6016,19 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
       });
-    case 6:
-      return S.Array(__S(126, __c15, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(744, __c23, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rollouts: S.optional(__S(230, __c28, 6)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          rollouts: S.optional(__S(2049, __c64, 1)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "ListRolloutsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6002,16 +6049,20 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
       });
     case 1:
-      return S.Array(__S(206, __c25, 6));
+      return S.Array(__S(1617, __c50, 17));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobRuns: S.optional(__S(233, __c29, 1)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          jobRuns: S.optional(__S(2081, __c65, 1)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobRunsResponse" });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -6029,19 +6080,23 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDeployPoliciesRequest",
       });
-    case 4:
-      return S.Array(__S(141, __c17, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(844, __c26, 12));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
           nextPageToken: S.optional(S.String),
-          deployPolicies: S.optional(__S(236, __c29, 4)),
+          deployPolicies: S.optional(__S(2113, __c66, 1)),
         }),
       ).annotate({
         identifier: "ListDeployPoliciesResponse",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6059,21 +6114,53 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(26, __c3, 2));
+    case 1:
+      return S.Array(__S(66, __c2, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          operations: S.optional(__S(2145, __c67, 1)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(239, __c29, 7)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0)),
+          phaseId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ListOperationsResponse" });
+      ).annotate({ identifier: "AdvanceRolloutRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:advance",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6091,15 +6178,19 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTargetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          targets: S.optional(__S(103, __c12, 7)),
-          unreachable: S.optional(__S(2, __c0, 2)),
+          targets: S.optional(__S(640, __c20, 0)),
+          unreachable: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "ListTargetsResponse" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -6107,7 +6198,7 @@ function __c30(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(167, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6118,7 +6209,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCustomTargetTypesRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -6126,7 +6221,7 @@ function __c30(j: number): any {
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(311, __c9, 23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6137,7 +6232,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6145,7 +6244,7 @@ function __c30(j: number): any {
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c12, 16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6156,7 +6255,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDeliveryPipelinesAutomationsRequest",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -6164,7 +6267,7 @@ function __c30(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(844, __c26, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6175,7 +6278,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDeployPoliciesRequest",
       });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6183,7 +6290,7 @@ function __c30(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(525, __c16, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6196,13 +6303,13 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           rollout: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6213,30 +6320,34 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startingPhaseId: S.optional(S.String),
-          rollout: S.optional(__S(126, __c15, 6)),
+          rollout: S.optional(__S(744, __c23, 8)),
         }),
       ).annotate({ identifier: "RollbackTargetConfig" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          rollbackConfig: S.optional(__S(249, __c31, 1)),
+          rollbackConfig: S.optional(__S(2464, __c77, 0)),
           rolloutId: S.optional(S.String),
           rolloutToRollBack: S.optional(S.String),
           releaseId: S.optional(S.String),
           targetId: S.optional(S.String),
-          overrideDeployPolicy: S.optional(__S(2, __c0, 2)),
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RollbackTargetRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(250, __c31, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2465, __c77, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6247,24 +6358,21 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "RollbackTargetProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          rollbackConfig: S.optional(__S(249, __c31, 1)),
+          rollbackConfig: S.optional(__S(2464, __c77, 0)),
         }),
       ).annotate({ identifier: "RollbackTargetResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6275,11 +6383,26 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsCustomTargetTypesRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(1159, __c36, 7)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6292,13 +6415,39 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0)),
+          approved: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApproveRolloutRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+      });
+  }
+}
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6309,11 +6458,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDeployPoliciesRequest",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6324,11 +6477,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsTargetsRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6339,19 +6496,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(259, __c32, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2752, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6362,11 +6515,27 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(259, __c32, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2752, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6379,7 +6548,73 @@ function __c32(j: number): any {
       });
   }
 }
-
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overrideDeployPolicy: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "CancelRolloutRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://clouddeploy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

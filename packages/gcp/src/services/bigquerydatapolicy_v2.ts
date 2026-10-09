@@ -300,8 +300,8 @@ export const addGranteesProjectsLocationsDataPolicies: API.OperationMethod<
   AddGranteesProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddGranteesProjectsLocationsDataPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataPolicy>,
+  input: __S(32, __c4, 0) as any as S.Schema<AddGranteesProjectsLocationsDataPoliciesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -320,8 +320,8 @@ export const createProjectsLocationsDataPolicies: API.OperationMethod<
   CreateProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateProjectsLocationsDataPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataPolicy>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateProjectsLocationsDataPoliciesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -340,8 +340,8 @@ export const deleteProjectsLocationsDataPolicies: API.OperationMethod<
   DeleteProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteProjectsLocationsDataPoliciesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsLocationsDataPoliciesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const getIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Policy>,
+  input: __S(82, __c10, 2) as any as S.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -375,8 +375,8 @@ export const getProjectsLocationsDataPolicies: API.OperationMethod<
   GetProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetProjectsLocationsDataPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataPolicy>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsLocationsDataPoliciesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -391,8 +391,8 @@ export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListDataPoliciesResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ListDataPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,8 +412,8 @@ export const patchProjectsLocationsDataPolicies: API.OperationMethod<
   PatchProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PatchProjectsLocationsDataPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataPolicy>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchProjectsLocationsDataPoliciesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const removeGranteesProjectsLocationsDataPolicies: API.OperationMethod<
   RemoveGranteesProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<RemoveGranteesProjectsLocationsDataPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataPolicy>,
+  input: __S(8, __c1, 0) as any as S.Schema<RemoveGranteesProjectsLocationsDataPoliciesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -452,8 +452,8 @@ export const setIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<SetIamPolicyProjectsLocationsDataPoliciesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Policy>,
+  input: __S(17, __c2, 1) as any as S.Schema<SetIamPolicyProjectsLocationsDataPoliciesRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -473,11 +473,11 @@ export const testIamPermissionsProjectsLocationsDataPolicies: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
+    25,
     __c3,
-    6,
+    1,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDataPoliciesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(24, __c3, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -487,18 +487,103 @@ export const testIamPermissionsProjectsLocationsDataPolicies: API.OperationMetho
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          grantees: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AddGranteesRequest" });
-    case 2:
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2/{+name}",
+            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDataPoliciesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataPolicy: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+dataPolicy}:removeGrantees",
+            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveGranteesProjectsLocationsDataPoliciesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(95, __c11, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+resource}:setIamPolicy",
+            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDataPoliciesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+resource}:testIamPermissions",
+            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDataPoliciesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataPolicy: S.String.pipe(T.Label()),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -509,46 +594,70 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddGranteesProjectsLocationsDataPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          grantees: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({ identifier: "AddGranteesRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataGovernanceTag" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           routine: S.optional(S.String),
           predefinedExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataMaskingPolicy" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dataPolicyType: S.optional(S.String),
           name: S.optional(S.String),
           dataPolicyId: S.optional(S.String),
           version: S.optional(S.String),
-          grantees: S.optional(__S(0, __c0, 0)),
-          dataGovernanceTag: S.optional(__S(3, __c0, 3)),
+          grantees: S.optional(__S(48, __c6, 0)),
+          dataGovernanceTag: S.optional(__S(56, __c7, 0)),
           etag: S.optional(S.String),
-          dataMaskingPolicy: S.optional(__S(4, __c0, 4)),
+          dataMaskingPolicy: S.optional(__S(57, __c7, 1)),
           policyTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataPolicy" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPolicy: S.optional(__S(5, __c0, 5)),
+          dataPolicy: S.optional(__S(58, __c7, 2)),
           dataPolicyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateDataPolicyRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -561,7 +670,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -581,23 +690,27 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestedPolicyVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetPolicyOptions" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(10, __c1, 2)),
+          options: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -608,29 +721,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDataPoliciesRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(0, __c0, 0)),
+          exemptedMembers: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(14, __c1, 6)),
+          auditLogConfigs: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "AuditConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -639,26 +752,30 @@ function __c2(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(0, __c0, 0)),
+          members: S.optional(__S(48, __c6, 0)),
           role: S.optional(S.String),
-          condition: S.optional(__S(17, __c2, 1)),
+          condition: S.optional(__S(92, __c11, 4)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(93, __c11, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(16, __c2, 0)),
-          bindings: S.optional(__S(19, __c2, 3)),
+          auditConfigs: S.optional(__S(91, __c11, 3)),
+          bindings: S.optional(__S(94, __c11, 6)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -672,7 +789,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataPoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -689,99 +810,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataPoliciesRequest",
       });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dataPolicies: S.optional(__S(23, __c2, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDataPoliciesResponse" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2/{+name}",
-            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDataPoliciesRequest",
-      });
+      return S.Array(__S(58, __c7, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataPolicy: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+dataPolicy}:removeGrantees",
-            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveGranteesProjectsLocationsDataPoliciesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(20, __c2, 4)),
-          updateMask: S.optional(S.String),
+          dataPolicies: S.optional(__S(105, __c13, 1)),
+          nextPageToken: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+resource}:setIamPolicy",
-            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDataPoliciesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+resource}:testIamPermissions",
-            baseUrl: "https://bigquerydatapolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDataPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListDataPoliciesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

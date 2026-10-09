@@ -820,8 +820,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Job>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -840,8 +840,8 @@ export const createProjectsLocationsJobTemplates: API.OperationMethod<
   CreateProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<JobTemplate>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<JobTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -860,8 +860,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
   DeleteProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +895,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetProjectsLocationsJobsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Job>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const getProjectsLocationsJobTemplates: API.OperationMethod<
   GetProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<JobTemplate>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<JobTemplate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,8 +926,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListProjectsLocationsJobsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListJobsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -943,8 +943,8 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListJobTemplatesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ListJobTemplatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,6 +953,97 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/jobs",
+            baseUrl: "https://transcoder.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(195, __c6, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          jobs: S.optional(__S(1, __c0, 1)),
+          unreachable: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "ListJobsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/jobTemplates",
+            baseUrl: "https://transcoder.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsJobTemplatesRequest",
+      });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(130, __c4, 2)),
+          nextPageToken: S.optional(S.String),
+          jobTemplates: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({ identifier: "ListJobTemplatesResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/jobs",
+            baseUrl: "https://transcoder.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsJobsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Playready",
+      });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -973,16 +1064,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           container: S.optional(S.String),
-          fmp4: S.optional(__S(0, __c0, 0)),
+          fmp4: S.optional(__S(128, __c4, 0)),
           key: S.optional(S.String),
           encryptionId: S.optional(S.String),
-          segmentSettings: S.optional(__S(1, __c0, 1)),
-          elementaryStreams: S.optional(__S(2, __c0, 2)),
+          segmentSettings: S.optional(__S(129, __c4, 1)),
+          elementaryStreams: S.optional(__S(130, __c4, 2)),
           fileName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MuxStream" });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(131, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -990,81 +1081,69 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SecretManagerSource" });
     case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Playready",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          playready: S.optional(__S(6, __c0, 6)),
-          widevine: S.optional(__S(6, __c0, 6)),
-          fairplay: S.optional(__S(6, __c0, 6)),
-          clearkey: S.optional(__S(6, __c0, 6)),
+          playready: S.optional(__S(96, __c3, 0)),
+          widevine: S.optional(__S(96, __c3, 0)),
+          fairplay: S.optional(__S(96, __c3, 0)),
+          clearkey: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "DrmSystems" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           scheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "MpegCommonEncryption" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          secretManagerKeySource: S.optional(__S(5, __c0, 5)),
-          drmSystems: S.optional(__S(7, __c0, 7)),
-          aes128: S.optional(__S(6, __c0, 6)),
-          mpegCenc: S.optional(__S(8, __c1, 0)),
-          sampleAes: S.optional(__S(6, __c0, 6)),
+          secretManagerKeySource: S.optional(__S(133, __c4, 5)),
+          drmSystems: S.optional(__S(134, __c4, 6)),
+          aes128: S.optional(__S(96, __c3, 0)),
+          mpegCenc: S.optional(__S(135, __c4, 7)),
+          sampleAes: S.optional(__S(96, __c3, 0)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Encryption" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(136, __c4, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(2, __c0, 2)),
+          inputs: S.optional(__S(130, __c4, 2)),
           endTimeOffset: S.optional(S.String),
           startTimeOffset: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditAtom" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(138, __c4, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           inputTrack: S.optional(S.Number),
           detectLanguages: S.optional(S.Boolean),
-          languages: S.optional(__S(2, __c0, 2)),
-          detectedLanguages: S.optional(__S(2, __c0, 2)),
+          languages: S.optional(__S(130, __c4, 2)),
+          detectedLanguages: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "TrackDefinition" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 13:
+      return S.Array(__S(140, __c4, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          trackDefinitions: S.optional(__S(14, __c1, 6)),
+          trackDefinitions: S.optional(__S(141, __c4, 13)),
         }),
       ).annotate({ identifier: "InputAttributes" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           tune: S.optional(S.String),
           strength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Denoise" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           rightPixels: S.optional(S.Number),
@@ -1073,7 +1152,7 @@ function __c2(j: number): any {
           leftPixels: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Crop" });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           leftPixels: S.optional(S.Number),
@@ -1082,7 +1161,7 @@ function __c2(j: number): any {
           bottomPixels: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Pad" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
@@ -1090,7 +1169,7 @@ function __c2(j: number): any {
           parity: S.optional(S.String),
         }),
       ).annotate({ identifier: "BwdifConfig" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           disableSpatialInterlacing: S.optional(S.Boolean),
@@ -1099,14 +1178,14 @@ function __c2(j: number): any {
           parity: S.optional(S.String),
         }),
       ).annotate({ identifier: "YadifConfig" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          bwdif: S.optional(__S(19, __c2, 3)),
-          yadif: S.optional(__S(20, __c2, 4)),
+          bwdif: S.optional(__S(146, __c4, 18)),
+          yadif: S.optional(__S(147, __c4, 19)),
         }),
       ).annotate({ identifier: "Deinterlace" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           brightness: S.optional(S.Number),
@@ -1114,18 +1193,14 @@ function __c2(j: number): any {
           saturation: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Color" });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           strength: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Deblock" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           lufs: S.optional(S.Number),
@@ -1133,36 +1208,36 @@ function __c3(j: number): any {
           highBoost: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Audio" });
-    case 1:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          denoise: S.optional(__S(16, __c2, 0)),
-          crop: S.optional(__S(17, __c2, 1)),
-          pad: S.optional(__S(18, __c2, 2)),
-          deinterlace: S.optional(__S(21, __c2, 5)),
-          color: S.optional(__S(22, __c2, 6)),
-          deblock: S.optional(__S(23, __c2, 7)),
-          audio: S.optional(__S(24, __c3, 0)),
+          denoise: S.optional(__S(143, __c4, 15)),
+          crop: S.optional(__S(144, __c4, 16)),
+          pad: S.optional(__S(145, __c4, 17)),
+          deinterlace: S.optional(__S(148, __c4, 20)),
+          color: S.optional(__S(149, __c4, 21)),
+          deblock: S.optional(__S(150, __c4, 22)),
+          audio: S.optional(__S(151, __c4, 23)),
         }),
       ).annotate({ identifier: "PreprocessingConfig" });
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
+          attributes: S.optional(__S(142, __c4, 14)),
           uri: S.optional(S.String),
-          preprocessingConfig: S.optional(__S(25, __c3, 1)),
+          preprocessingConfig: S.optional(__S(152, __c4, 24)),
         }),
       ).annotate({ identifier: "Input" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 26:
+      return S.Array(__S(153, __c4, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Output" });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           columnCount: S.optional(S.Number),
@@ -1178,9 +1253,9 @@ function __c3(j: number): any {
           endTimeOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpriteSheet" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 29:
+      return S.Array(__S(156, __c4, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           tune: S.optional(S.String),
@@ -1192,14 +1267,14 @@ function __c3(j: number): any {
           allowOpenGop: S.optional(S.Boolean),
           widthPixels: S.optional(S.Number),
           gopDuration: S.optional(S.String),
-          hlg: S.optional(__S(6, __c0, 6)),
+          hlg: S.optional(__S(96, __c3, 0)),
           crfLevel: S.optional(S.Number),
           bitrateBps: S.optional(S.Number),
           frameRateConversionStrategy: S.optional(S.String),
           heightPixels: S.optional(S.Number),
           bFrameCount: S.optional(S.Number),
           enableTwoPass: S.optional(S.Boolean),
-          sdr: S.optional(__S(6, __c0, 6)),
+          sdr: S.optional(__S(96, __c3, 0)),
           pixelFormat: S.optional(S.String),
           profile: S.optional(S.String),
           frameRate: S.optional(S.Number),
@@ -1208,15 +1283,11 @@ function __c3(j: number): any {
           bPyramid: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "H264CodecSettings" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           pixelFormat: S.optional(S.String),
-          hlg: S.optional(__S(6, __c0, 6)),
+          hlg: S.optional(__S(96, __c3, 0)),
           profile: S.optional(S.String),
           crfLevel: S.optional(S.Number),
           widthPixels: S.optional(S.Number),
@@ -1227,13 +1298,17 @@ function __c4(j: number): any {
           frameRate: S.optional(S.Number),
           frameRateConversionStrategy: S.optional(S.String),
           bitrateBps: S.optional(S.Number),
-          sdr: S.optional(__S(6, __c0, 6)),
+          sdr: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "Vp9CodecSettings" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          hlg: S.optional(__S(6, __c0, 6)),
+          hlg: S.optional(__S(96, __c3, 0)),
           enableTwoPass: S.optional(S.Boolean),
           profile: S.optional(S.String),
           rateControlMode: S.optional(S.String),
@@ -1247,26 +1322,26 @@ function __c4(j: number): any {
           gopFrameCount: S.optional(S.Number),
           vbvFullnessBits: S.optional(S.Number),
           frameRateConversionStrategy: S.optional(S.String),
-          hdr10: S.optional(__S(6, __c0, 6)),
+          hdr10: S.optional(__S(96, __c3, 0)),
           allowOpenGop: S.optional(S.Boolean),
           aqStrength: S.optional(S.Number),
           vbvSizeBits: S.optional(S.Number),
           widthPixels: S.optional(S.Number),
           gopDuration: S.optional(S.String),
-          sdr: S.optional(__S(6, __c0, 6)),
+          sdr: S.optional(__S(96, __c3, 0)),
           crfLevel: S.optional(S.Number),
           frameRate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "H265CodecSettings" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          h264: S.optional(__S(31, __c3, 7)),
-          vp9: S.optional(__S(32, __c4, 0)),
-          h265: S.optional(__S(33, __c4, 1)),
+          h264: S.optional(__S(158, __c4, 30)),
+          vp9: S.optional(__S(159, __c4, 31)),
+          h265: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "VideoStream" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           inputKey: S.optional(S.String),
@@ -1274,18 +1349,18 @@ function __c4(j: number): any {
           inputTrack: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TextMapping" });
+    case 3:
+      return S.Array(__S(162, __c5, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          mapping: S.optional(__S(36, __c4, 4)),
+          mapping: S.optional(__S(163, __c5, 3)),
           languageCode: S.optional(S.String),
           codec: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextStream" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           inputChannel: S.optional(S.Number),
@@ -1296,115 +1371,168 @@ function __c4(j: number): any {
           atomKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudioMapping" });
+    case 6:
+      return S.Array(__S(165, __c5, 5));
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           sampleRateHertz: S.optional(S.Number),
-          mapping: S.optional(__S(39, __c4, 7)),
+          mapping: S.optional(__S(166, __c5, 6)),
           codec: S.optional(S.String),
           languageCode: S.optional(S.String),
           bitrateBps: S.optional(S.Number),
           channelCount: S.optional(S.Number),
-          channelLayout: S.optional(__S(2, __c0, 2)),
+          channelLayout: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "AudioStream" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          videoStream: S.optional(__S(34, __c4, 2)),
-          textStream: S.optional(__S(37, __c4, 5)),
+          videoStream: S.optional(__S(161, __c5, 1)),
+          textStream: S.optional(__S(164, __c5, 4)),
           key: S.optional(S.String),
-          audioStream: S.optional(__S(40, __c5, 0)),
+          audioStream: S.optional(__S(167, __c5, 7)),
         }),
       ).annotate({ identifier: "ElementaryStream" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           startTimeOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdBreak" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(170, __c5, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           y: S.optional(S.Number),
           x: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NormalizedCoordinate" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          resolution: S.optional(__S(45, __c5, 5)),
+          resolution: S.optional(__S(172, __c5, 12)),
           alpha: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Image" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          xy: S.optional(__S(45, __c5, 5)),
+          xy: S.optional(__S(172, __c5, 12)),
           fadeType: S.optional(S.String),
           endTimeOffset: S.optional(S.String),
           startTimeOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnimationFade" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           startTimeOffset: S.optional(S.String),
-          xy: S.optional(__S(45, __c5, 5)),
+          xy: S.optional(__S(172, __c5, 12)),
         }),
       ).annotate({ identifier: "AnimationStatic" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          animationFade: S.optional(__S(47, __c5, 7)),
-          animationStatic: S.optional(__S(48, __c6, 0)),
-          animationEnd: S.optional(__S(43, __c5, 3)),
+          animationFade: S.optional(__S(174, __c5, 14)),
+          animationStatic: S.optional(__S(175, __c5, 15)),
+          animationEnd: S.optional(__S(170, __c5, 10)),
         }),
       ).annotate({ identifier: "Animation" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 17:
+      return S.Array(__S(176, __c5, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(46, __c5, 6)),
-          animations: S.optional(__S(50, __c6, 2)),
+          image: S.optional(__S(173, __c5, 13)),
+          animations: S.optional(__S(177, __c5, 17)),
         }),
       ).annotate({ identifier: "Overlay" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 19:
+      return S.Array(__S(178, __c5, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           segmentReferenceScheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "DashConfig" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          muxStreams: S.optional(__S(2, __c0, 2)),
+          muxStreams: S.optional(__S(130, __c4, 2)),
           type: S.optional(S.String),
           fileName: S.optional(S.String),
-          dash: S.optional(__S(53, __c6, 5)),
+          dash: S.optional(__S(180, __c5, 20)),
         }),
       ).annotate({ identifier: "Manifest" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+    case 22:
+      return S.Array(__S(181, __c5, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PubsubDestination" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          muxStreams: S.optional(__S(132, __c4, 4)),
+          encryptions: S.optional(__S(137, __c4, 9)),
+          editList: S.optional(__S(139, __c4, 11)),
+          inputs: S.optional(__S(154, __c4, 26)),
+          output: S.optional(__S(155, __c4, 27)),
+          spriteSheets: S.optional(__S(157, __c4, 29)),
+          elementaryStreams: S.optional(__S(169, __c5, 9)),
+          adBreaks: S.optional(__S(171, __c5, 11)),
+          overlays: S.optional(__S(179, __c5, 19)),
+          manifests: S.optional(__S(182, __c5, 22)),
+          pubsubDestination: S.optional(__S(183, __c5, 23)),
+        }),
+      ).annotate({ identifier: "JobConfig" });
+    case 25:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          outputUri: S.optional(S.String),
+          ttlAfterCompletionDays: S.optional(S.Number),
+          config: S.optional(__S(184, __c5, 24)),
+          state: S.optional(S.String),
+          inputUri: S.optional(S.String),
+          batchModePriority: S.optional(S.Number),
+          optimization: S.optional(S.String),
+          fillContentGaps: S.optional(S.Boolean),
+          mode: S.optional(S.String),
+          labels: S.optional(__S(185, __c5, 25)),
+          name: S.optional(S.String),
+          startTime: S.optional(S.String),
+          error: S.optional(__S(194, __c6, 2)),
+          templateId: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Job" });
   }
 }
 function __c7(j: number): any {
@@ -1412,93 +1540,9 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          topic: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PubsubDestination" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          muxStreams: S.optional(__S(4, __c0, 4)),
-          encryptions: S.optional(__S(10, __c1, 2)),
-          editList: S.optional(__S(12, __c1, 4)),
-          inputs: S.optional(__S(27, __c3, 3)),
-          output: S.optional(__S(28, __c3, 4)),
-          spriteSheets: S.optional(__S(30, __c3, 6)),
-          elementaryStreams: S.optional(__S(42, __c5, 2)),
-          adBreaks: S.optional(__S(44, __c5, 4)),
-          overlays: S.optional(__S(52, __c6, 4)),
-          manifests: S.optional(__S(55, __c6, 7)),
-          pubsubDestination: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "JobConfig" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          outputUri: S.optional(S.String),
-          ttlAfterCompletionDays: S.optional(S.Number),
-          config: S.optional(__S(57, __c7, 1)),
-          state: S.optional(S.String),
-          inputUri: S.optional(S.String),
-          batchModePriority: S.optional(S.Number),
-          optimization: S.optional(S.String),
-          fillContentGaps: S.optional(S.Boolean),
-          mode: S.optional(S.String),
-          labels: S.optional(__S(58, __c7, 2)),
-          name: S.optional(S.String),
-          startTime: S.optional(S.String),
-          error: S.optional(__S(61, __c7, 5)),
-          templateId: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/jobs",
-            baseUrl: "https://transcoder.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsJobsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          config: S.optional(__S(57, __c7, 1)),
-          labels: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "JobTemplate" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           jobTemplateId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1509,7 +1553,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsJobTemplatesRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          config: S.optional(__S(184, __c5, 24)),
+          labels: S.optional(__S(185, __c5, 25)),
+        }),
+      ).annotate({ identifier: "JobTemplate" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1524,7 +1584,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsJobsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -1539,7 +1603,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsJobTemplatesRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1553,7 +1621,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1567,69 +1639,8 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobTemplatesRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/jobs",
-            baseUrl: "https://transcoder.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsJobsRequest",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(71, __c8, 7)),
-          unreachable: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ListJobsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/jobTemplates",
-            baseUrl: "https://transcoder.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsJobTemplatesRequest",
-      });
-    case 2:
-      return S.Array(__S(64, __c8, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
-          nextPageToken: S.optional(S.String),
-          jobTemplates: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "ListJobTemplatesResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

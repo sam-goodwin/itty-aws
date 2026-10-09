@@ -450,8 +450,8 @@ export const completeCredentialsRotation: API.OperationMethod<
   CompleteCredentialsRotationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CompleteCredentialsRotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CompleteCredentialsRotationResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<CompleteCredentialsRotationRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<CompleteCredentialsRotationResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -465,8 +465,8 @@ export const createKubeconfig: API.OperationMethod<
   CreateKubeconfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateKubeconfigRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Kubeconfig>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateKubeconfigRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<Kubeconfig>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -480,8 +480,8 @@ export const createOrUpdateCluster: API.OperationMethod<
   CreateOrUpdateClusterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateOrUpdateClusterRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Cluster>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateOrUpdateClusterRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Cluster>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -495,8 +495,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -510,8 +510,8 @@ export const getCluster: API.OperationMethod<
   GetClusterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetClusterRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Cluster>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Cluster>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -525,8 +525,8 @@ export const getIDPKubeconfig: API.OperationMethod<
   GetIDPKubeconfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetIDPKubeconfigRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<IDPKubeconfig>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetIDPKubeconfigRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<IDPKubeconfig>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -540,8 +540,8 @@ export const getLoginKubeconfig: API.OperationMethod<
   GetLoginKubeconfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetLoginKubeconfigRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<LoginKubeconfig>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetLoginKubeconfigRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<LoginKubeconfig>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -555,8 +555,8 @@ export const listClusters: API.OperationMethod<
   ListClustersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListClustersRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListClustersResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<ListClustersResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -570,8 +570,8 @@ export const listProviderOptions: API.OperationMethod<
   ListProviderOptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListProviderOptionsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ProviderOptions>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProviderOptionsRequest>,
+  output: __S(12, __c0, 12) as any as S.Schema<ProviderOptions>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -585,8 +585,8 @@ export const startCredentialsRotation: API.OperationMethod<
   StartCredentialsRotationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<StartCredentialsRotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartCredentialsRotationResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<StartCredentialsRotationRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StartCredentialsRotationResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -600,8 +600,8 @@ export const triggerHibernate: API.OperationMethod<
   TriggerHibernateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<TriggerHibernateRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<TriggerHibernateResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<TriggerHibernateRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<TriggerHibernateResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -615,8 +615,8 @@ export const triggerMaintenance: API.OperationMethod<
   TriggerMaintenanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<TriggerMaintenanceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TriggerMaintenanceResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<TriggerMaintenanceRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<TriggerMaintenanceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -630,8 +630,8 @@ export const triggerReconcile: API.OperationMethod<
   TriggerReconcileError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<TriggerReconcileRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<TriggerReconcileResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<TriggerReconcileRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<TriggerReconcileResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -645,8 +645,8 @@ export const triggerWakeup: API.OperationMethod<
   TriggerWakeupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<TriggerWakeupRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<TriggerWakeupResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<TriggerWakeupRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<TriggerWakeupResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -654,6 +654,188 @@ export const triggerWakeup: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.String.pipe(T.Label()),
+          versionState: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/regions/{region}/provider-options",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProviderOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AvailabilityZone" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          featureGates: S.optional(__S(385, __c12, 1)),
+          state: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KubernetesVersion" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.Array(__S(386, __c12, 2));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cri: S.optional(__S(5, __c0, 5)),
+          expirationDate: S.optional(S.String),
+          state: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineImageVersion" });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          versions: S.optional(__S(7, __c0, 7)),
+        }),
+      ).annotate({ identifier: "MachineImage" });
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          architecture: S.optional(S.String),
+          cpu: S.optional(S.Number),
+          gpu: S.optional(S.Number),
+          memory: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MachineType" });
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZones: S.optional(__S(2, __c0, 2)),
+          kubernetesVersions: S.optional(__S(4, __c0, 4)),
+          machineImages: S.optional(__S(9, __c0, 9)),
+          machineTypes: S.optional(__S(11, __c0, 11)),
+          volumeTypes: S.optional(__S(2, __c0, 2)),
+        }),
+      ).annotate({ identifier: "ProviderOptions" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/start-credentials-rotation",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartCredentialsRotationRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/hibernate",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerHibernateRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/maintenance",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerMaintenanceRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/reconcile",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerReconcileRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/wakeup",
+            code: 200,
+            baseUrl: "https://ske.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerWakeupRequest" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -672,11 +854,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteCredentialsRotationRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CompleteCredentialsRotationResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -692,306 +882,33 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateKubeconfigRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationTimestamp: S.optional(S.String),
           kubeconfig: S.optional(S.String),
         }),
       ).annotate({ identifier: "Kubeconfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "IDP" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          idp: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Access" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "Audit" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCidrs: __S(7, __c0, 7),
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "ACL" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          gatewayApi: S.optional(S.Boolean),
-          zones: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "DNS" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          instanceId: S.String,
-        }),
-      ).annotate({ identifier: "Observability" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          acl: S.optional(__S(8, __c1, 0)),
-          applicationLoadBalancer: S.optional(__S(6, __c0, 6)),
-          dns: S.optional(__S(10, __c1, 2)),
-          observability: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "Extension" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          end: S.String,
-          start: S.String,
-          timezone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HibernationSchedule" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schedules: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "Hibernation" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.String,
-        }),
-      ).annotate({ identifier: "Kubernetes" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kubernetesVersion: S.optional(S.Boolean),
-          machineImageVersion: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MaintenanceAutoUpdate" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          end: S.String,
-          start: S.String,
-        }),
-      ).annotate({ identifier: "TimeWindow" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoUpdate: S.optional(__S(18, __c2, 2)),
-          timeWindow: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Maintenance" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          calico: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "CNI" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessScope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V2ControlPlaneNetwork" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cni: S.optional(__S(21, __c2, 5)),
-          controlPlane: S.optional(__S(22, __c2, 6)),
-          id: S.optional(S.String),
-          podAddressRanges: S.optional(__S(7, __c0, 7)),
-          serviceAddressRanges: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Network" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kata: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CRI" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NodepoolKubernetes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          version: S.String,
-        }),
-      ).annotate({ identifier: "Image" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          image: __S(26, __c3, 2),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Machine" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          effect: S.String,
-          key: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Taint" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.Number,
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Volume" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowSystemComponents: S.optional(S.Boolean),
-          availabilityZones: __S(7, __c0, 7),
-          cri: S.optional(__S(24, __c3, 0)),
-          kubernetes: S.optional(__S(25, __c3, 1)),
-          labels: S.optional(__S(17, __c2, 1)),
-          machine: __S(27, __c3, 3),
-          maxSurge: S.optional(S.Number),
-          maxUnavailable: S.optional(S.Number),
-          maximum: S.Number,
-          minimum: S.Number,
-          name: S.String,
-          taints: S.optional(__S(29, __c3, 5)),
-          volume: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "Nodepool" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastCompletionTime: S.optional(S.String),
-          lastInitiationTime: S.optional(S.String),
-          phase: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CredentialsRotationState" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          details: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeError" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterError" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExpirationStatusKubernetes",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kubernetesExpirationDate: S.optional(S.String),
-          kubernetesVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          osExpirationDate: S.optional(S.String),
-          osName: S.optional(S.String),
-          osVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExpirationStatusNodepool" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kubernetes: S.optional(__S(37, __c4, 5)),
-          nodepools: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "ExpirationStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aggregated: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          credentialsRotation: S.optional(__S(33, __c4, 1)),
-          egressAddressRanges: S.optional(__S(7, __c0, 7)),
-          error: S.optional(__S(34, __c4, 2)),
-          errors: S.optional(__S(36, __c4, 4)),
-          expiration: S.optional(__S(40, __c5, 0)),
-          hibernated: S.optional(S.Boolean),
-          identity: S.optional(S.String),
-          nodeAddressRanges: S.optional(__S(7, __c0, 7)),
-          podAddressRanges: S.optional(__S(7, __c0, 7)),
-          serviceAccountIssuer: S.optional(S.String),
-          serviceAddressRanges: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ClusterStatus" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          access: S.optional(__S(5, __c0, 5)),
-          audit: S.optional(__S(6, __c0, 6)),
-          extensions: S.optional(__S(12, __c1, 4)),
-          hibernation: S.optional(__S(15, __c1, 7)),
-          kubernetes: __S(16, __c2, 0),
-          labels: S.optional(__S(17, __c2, 1)),
-          maintenance: S.optional(__S(20, __c2, 4)),
-          network: S.optional(__S(23, __c2, 7)),
-          nodepools: __S(32, __c4, 0),
-          status: S.optional(__S(41, __c5, 1)),
+          access: S.optional(__S(321, __c10, 1)),
+          audit: S.optional(__S(384, __c12, 0)),
+          extensions: S.optional(__S(327, __c10, 7)),
+          hibernation: S.optional(__S(330, __c10, 10)),
+          kubernetes: __S(331, __c10, 11),
+          labels: S.optional(__S(385, __c12, 1)),
+          maintenance: S.optional(__S(334, __c10, 14)),
+          network: S.optional(__S(337, __c10, 17)),
+          nodepools: __S(345, __c10, 25),
+          status: S.optional(__S(354, __c11, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1003,23 +920,296 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateOrUpdateClusterRequest",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "IDP" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          idp: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "Access" });
+    case 2:
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(__S(5, __c0, 5)),
-          audit: S.optional(__S(6, __c0, 6)),
-          extensions: S.optional(__S(12, __c1, 4)),
-          hibernation: S.optional(__S(15, __c1, 7)),
-          kubernetes: __S(16, __c2, 0),
-          labels: S.optional(__S(17, __c2, 1)),
-          maintenance: S.optional(__S(20, __c2, 4)),
+          allowedCidrs: __S(322, __c10, 2),
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "ACL" });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          gatewayApi: S.optional(S.Boolean),
+          zones: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({ identifier: "DNS" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          instanceId: S.String,
+        }),
+      ).annotate({ identifier: "Observability" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          acl: S.optional(__S(323, __c10, 3)),
+          applicationLoadBalancer: S.optional(__S(384, __c12, 0)),
+          dns: S.optional(__S(325, __c10, 5)),
+          observability: S.optional(__S(326, __c10, 6)),
+        }),
+      ).annotate({ identifier: "Extension" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          end: S.String,
+          start: S.String,
+          timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HibernationSchedule" });
+    case 9:
+      return S.Array(__S(328, __c10, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          schedules: __S(329, __c10, 9),
+        }),
+      ).annotate({ identifier: "Hibernation" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+        }),
+      ).annotate({ identifier: "Kubernetes" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          kubernetesVersion: S.optional(S.Boolean),
+          machineImageVersion: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MaintenanceAutoUpdate" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          end: S.String,
+          start: S.String,
+        }),
+      ).annotate({ identifier: "TimeWindow" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          autoUpdate: S.optional(__S(332, __c10, 12)),
+          timeWindow: S.optional(__S(333, __c10, 13)),
+        }),
+      ).annotate({ identifier: "Maintenance" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          calico: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CNI" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          accessScope: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V2ControlPlaneNetwork" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          cni: S.optional(__S(335, __c10, 15)),
+          controlPlane: S.optional(__S(336, __c10, 16)),
+          id: S.optional(S.String),
+          podAddressRanges: S.optional(__S(322, __c10, 2)),
+          serviceAddressRanges: S.optional(__S(322, __c10, 2)),
+        }),
+      ).annotate({ identifier: "Network" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NodepoolKubernetes" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          version: S.String,
+        }),
+      ).annotate({ identifier: "Image" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          image: __S(339, __c10, 19),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Machine" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          effect: S.String,
+          key: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Taint" });
+    case 22:
+      return S.Array(__S(341, __c10, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.Number,
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Volume" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          allowSystemComponents: S.optional(S.Boolean),
+          availabilityZones: __S(322, __c10, 2),
+          cri: S.optional(__S(386, __c12, 2)),
+          kubernetes: S.optional(__S(338, __c10, 18)),
+          labels: S.optional(__S(385, __c12, 1)),
+          machine: __S(340, __c10, 20),
+          maxSurge: S.optional(S.Number),
+          maxUnavailable: S.optional(S.Number),
+          maximum: S.Number,
+          minimum: S.Number,
+          name: S.String,
+          taints: S.optional(__S(342, __c10, 22)),
+          volume: __S(343, __c10, 23),
+        }),
+      ).annotate({ identifier: "Nodepool" });
+    case 25:
+      return S.Array(__S(344, __c10, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          lastCompletionTime: S.optional(S.String),
+          lastInitiationTime: S.optional(S.String),
+          phase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialsRotationState" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          details: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeError" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterError" });
+    case 29:
+      return S.Array(__S(348, __c10, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExpirationStatusKubernetes",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          kubernetesExpirationDate: S.optional(S.String),
+          kubernetesVersion: S.optional(S.String),
           name: S.optional(S.String),
-          network: S.optional(__S(23, __c2, 7)),
-          nodepools: __S(32, __c4, 0),
-          status: S.optional(__S(41, __c5, 1)),
+          osExpirationDate: S.optional(S.String),
+          osName: S.optional(S.String),
+          osVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExpirationStatusNodepool" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(351, __c10, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kubernetes: S.optional(__S(350, __c10, 30)),
+          nodepools: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "ExpirationStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          aggregated: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          credentialsRotation: S.optional(__S(346, __c10, 26)),
+          egressAddressRanges: S.optional(__S(322, __c10, 2)),
+          error: S.optional(__S(347, __c10, 27)),
+          errors: S.optional(__S(349, __c10, 29)),
+          expiration: S.optional(__S(353, __c11, 1)),
+          hibernated: S.optional(S.Boolean),
+          identity: S.optional(S.String),
+          nodeAddressRanges: S.optional(__S(322, __c10, 2)),
+          podAddressRanges: S.optional(__S(322, __c10, 2)),
+          serviceAccountIssuer: S.optional(S.String),
+          serviceAddressRanges: S.optional(__S(322, __c10, 2)),
+        }),
+      ).annotate({ identifier: "ClusterStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          access: S.optional(__S(321, __c10, 1)),
+          audit: S.optional(__S(384, __c12, 0)),
+          extensions: S.optional(__S(327, __c10, 7)),
+          hibernation: S.optional(__S(330, __c10, 10)),
+          kubernetes: __S(331, __c10, 11),
+          labels: S.optional(__S(385, __c12, 1)),
+          maintenance: S.optional(__S(334, __c10, 14)),
+          name: S.optional(S.String),
+          network: S.optional(__S(337, __c10, 17)),
+          nodepools: __S(345, __c10, 25),
+          status: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({ identifier: "Cluster" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "Audit" });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kata: S.optional(__S(384, __c12, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CRI" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1034,11 +1224,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteClusterResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1053,7 +1251,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1070,7 +1272,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetIDPKubeconfigRequest" });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1078,7 +1280,11 @@ function __c6(j: number): any {
           kubeconfig: S.optional(S.String),
         }),
       ).annotate({ identifier: "IDPKubeconfig" });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1095,7 +1301,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetLoginKubeconfigRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1109,183 +1319,16 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 3:
-      return S.Array(__S(43, __c5, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(355, __c11, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(51, __c6, 3)),
+          items: S.optional(__S(609, __c19, 1)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.String.pipe(T.Label()),
-          versionState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/regions/{region}/provider-options",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProviderOptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AvailabilityZone" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          featureGates: S.optional(__S(17, __c2, 1)),
-          state: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KubernetesVersion" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.Array(__S(24, __c3, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cri: S.optional(__S(58, __c7, 2)),
-          expirationDate: S.optional(S.String),
-          state: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineImageVersion" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          versions: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "MachineImage" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          architecture: S.optional(S.String),
-          cpu: S.optional(S.Number),
-          gpu: S.optional(S.Number),
-          memory: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MachineType" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZones: S.optional(__S(55, __c6, 7)),
-          kubernetesVersions: S.optional(__S(57, __c7, 1)),
-          machineImages: S.optional(__S(62, __c7, 6)),
-          machineTypes: S.optional(__S(64, __c8, 0)),
-          volumeTypes: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "ProviderOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/start-credentials-rotation",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartCredentialsRotationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/hibernate",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerHibernateRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/maintenance",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerMaintenanceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/reconcile",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerReconcileRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/clusters/{clusterName}/wakeup",
-            code: 200,
-            baseUrl: "https://ske.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerWakeupRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -503,11 +503,11 @@ export const createAuthorizationV1NamespacedLocalSubjectAccessReview: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    16,
-    __c2,
+    0,
+    __c0,
     0,
   ) as any as S.Schema<CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiAuthorizationV1LocalSubjectAccessReview>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiAuthorizationV1LocalSubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -524,8 +524,8 @@ export const createAuthorizationV1SelfSubjectAccessReview: API.OperationMethod<
   CreateAuthorizationV1SelfSubjectAccessReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAuthorizationV1SelfSubjectAccessReviewRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectAccessReview>,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateAuthorizationV1SelfSubjectAccessReviewRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const createAuthorizationV1SelfSubjectRulesReview: API.OperationMethod<
   CreateAuthorizationV1SelfSubjectRulesReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateAuthorizationV1SelfSubjectRulesReviewRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectRulesReview>,
+  input: __S(54, __c6, 6) as any as S.Schema<CreateAuthorizationV1SelfSubjectRulesReviewRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectRulesReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -560,8 +560,8 @@ export const createAuthorizationV1SubjectAccessReview: API.OperationMethod<
   CreateAuthorizationV1SubjectAccessReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateAuthorizationV1SubjectAccessReviewRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateAuthorizationV1SubjectAccessReviewRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -575,8 +575,8 @@ export const getAuthorizationAPIGroup: API.OperationMethod<
   GetAuthorizationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAuthorizationAPIGroupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAuthorizationAPIGroupRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -590,8 +590,8 @@ export const getAuthorizationV1APIResources: API.OperationMethod<
   GetAuthorizationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetAuthorizationV1APIResourcesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetAuthorizationV1APIResourcesRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -601,10 +601,35 @@ export const getAuthorizationV1APIResources: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(33, __c4, 1),
+          status: S.optional(__S(30, __c3, 6)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
@@ -618,9 +643,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.String,
@@ -633,23 +658,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
+          annotations: S.optional(__S(8, __c1, 0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
+          finalizers: S.optional(__S(16, __c2, 0)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(8, __c1, 0)),
+          managedFields: S.optional(__S(10, __c1, 2)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
+          ownerReferences: S.optional(__S(12, __c1, 4)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -657,11 +682,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
       });
-    case 7:
-      return S.Record(S.String, __S(1, __c0, 1));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -679,18 +708,18 @@ function __c1(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(__S(9, __c1, 1)),
+          values: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement",
       });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           rawSelector: S.optional(S.String),
-          requirements: S.optional(__S(11, __c1, 3)),
+          requirements: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1FieldSelectorAttributes",
@@ -698,9 +727,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldSelector: S.optional(__S(12, __c1, 4)),
+          fieldSelector: S.optional(__S(28, __c3, 4)),
           group: S.optional(S.String),
-          labelSelector: S.optional(__S(12, __c1, 4)),
+          labelSelector: S.optional(__S(28, __c3, 4)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
           resource: S.optional(S.String),
@@ -714,19 +743,6 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extra: S.optional(__S(7, __c0, 7)),
-          groups: S.optional(__S(1, __c0, 1)),
-          nonResourceAttributes: S.optional(__S(8, __c1, 0)),
-          resourceAttributes: S.optional(__S(13, __c1, 5)),
-          uid: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAuthorizationV1SubjectAccessReviewSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           allowed: S.optional(S.Boolean),
           denied: S.optional(S.Boolean),
           evaluationError: S.optional(S.String),
@@ -737,53 +753,49 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(14, __c1, 6),
-          status: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest",
-      });
+      return S.Record(S.String, __S(16, __c2, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(14, __c1, 6),
-          status: S.optional(__S(15, __c1, 7)),
+          extra: S.optional(__S(32, __c4, 0)),
+          groups: S.optional(__S(16, __c2, 0)),
+          nonResourceAttributes: S.optional(__S(24, __c3, 0)),
+          resourceAttributes: S.optional(__S(29, __c3, 5)),
+          uid: S.optional(S.String),
+          user: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "IoK8sApiAuthorizationV1LocalSubjectAccessReview",
+        identifier: "IoK8sApiAuthorizationV1SubjectAccessReviewSpec",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nonResourceAttributes: S.optional(__S(8, __c1, 0)),
-          resourceAttributes: S.optional(__S(13, __c1, 5)),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(33, __c4, 1),
+          status: S.optional(__S(30, __c3, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAuthorizationV1LocalSubjectAccessReview",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nonResourceAttributes: S.optional(__S(24, __c3, 0)),
+          resourceAttributes: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dryRun: S.optional(S.String.pipe(T.Query())),
@@ -792,9 +804,9 @@ function __c2(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(18, __c2, 2),
-          status: S.optional(__S(15, __c1, 7)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(40, __c5, 0),
+          status: S.optional(__S(30, __c3, 6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -805,19 +817,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAuthorizationV1SelfSubjectAccessReviewRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(18, __c2, 2),
-          status: S.optional(__S(15, __c1, 7)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(40, __c5, 0),
+          status: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectAccessReview",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String,
@@ -825,46 +841,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          nonResourceURLs: S.optional(__S(1, __c0, 1)),
-          verbs: S.optional(__S(1, __c0, 1)),
+          nonResourceURLs: S.optional(__S(16, __c2, 0)),
+          verbs: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1NonResourceRule",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          apiGroups: S.optional(__S(1, __c0, 1)),
-          resourceNames: S.optional(__S(1, __c0, 1)),
-          resources: S.optional(__S(1, __c0, 1)),
-          verbs: S.optional(__S(1, __c0, 1)),
+          apiGroups: S.optional(__S(16, __c2, 0)),
+          resourceNames: S.optional(__S(16, __c2, 0)),
+          resources: S.optional(__S(16, __c2, 0)),
+          verbs: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1ResourceRule",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(51, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           evaluationError: S.optional(S.String),
           incomplete: S.optional(S.Boolean),
-          nonResourceRules: S.optional(__S(23, __c2, 7)),
-          resourceRules: S.optional(__S(25, __c3, 1)),
+          nonResourceRules: S.optional(__S(50, __c6, 2)),
+          resourceRules: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SubjectRulesReviewStatus",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           dryRun: S.optional(S.String.pipe(T.Query())),
@@ -873,9 +885,9 @@ function __c3(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(21, __c2, 5),
-          status: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(48, __c6, 0),
+          status: S.optional(__S(53, __c6, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -886,19 +898,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAuthorizationV1SelfSubjectRulesReviewRequest",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(21, __c2, 5),
-          status: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(48, __c6, 0),
+          status: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectRulesReview",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dryRun: S.optional(S.String.pipe(T.Query())),
@@ -907,9 +923,9 @@ function __c3(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(14, __c1, 6),
-          status: S.optional(__S(15, __c1, 7)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(33, __c4, 1),
+          status: S.optional(__S(30, __c3, 6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -920,13 +936,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAuthorizationV1SubjectAccessReviewRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/authorization.k8s.io/", code: 200 })),
       ).annotate({
         identifier: "GetAuthorizationAPIGroupRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -935,11 +955,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -948,24 +964,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Array(__S(31, __c3, 7));
     case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
+      return S.Array(__S(65, __c8, 1));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(31, __c3, 7)),
-          serverAddressByClientCIDRs: S.optional(__S(33, __c4, 1)),
-          versions: __S(34, __c4, 2),
+          preferredVersion: S.optional(__S(65, __c8, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(67, __c8, 3)),
+          versions: __S(68, __c8, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/authorization.k8s.io/v1/", code: 200 }),
@@ -973,39 +993,38 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAuthorizationV1APIResourcesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(16, __c2, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(16, __c2, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(16, __c2, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(38, __c4, 6),
+          resources: __S(74, __c9, 2),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

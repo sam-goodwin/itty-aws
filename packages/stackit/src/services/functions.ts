@@ -311,8 +311,8 @@ export const createFunction: API.OperationMethod<
   CreateFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateFunctionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Function>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateFunctionRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -326,8 +326,8 @@ export const createFunctionRevision: API.OperationMethod<
   CreateFunctionRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateFunctionRevisionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Revision>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateFunctionRevisionRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -341,8 +341,8 @@ export const createPullCredential: API.OperationMethod<
   CreatePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreatePullCredentialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PullCredential>,
+  input: __S(40, __c10, 0) as any as S.Schema<CreatePullCredentialRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -356,8 +356,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteFunctionResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<DeleteFunctionResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const deletePullCredential: API.OperationMethod<
   DeletePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeletePullCredentialRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeletePullCredentialResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<DeletePullCredentialRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<DeletePullCredentialResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const deleteRevision: API.OperationMethod<
   DeleteRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteRevisionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteRevisionResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<DeleteRevisionRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<DeleteRevisionResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetFunctionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Function>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetFunctionRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const getPullCredential: API.OperationMethod<
   GetPullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetPullCredentialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PullCredential>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetPullCredentialRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -431,8 +431,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetRevisionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Revision>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetRevisionRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const listFunctions2: API.OperationMethod<
   ListFunctions2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListFunctionsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListFunctions>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListFunctionsRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<ListFunctions>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const listPullCredentials2: API.OperationMethod<
   ListPullCredentials2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListPullCredentialsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListPullCredentials>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListPullCredentialsRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ListPullCredentials>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const listRevisions2: API.OperationMethod<
   ListRevisions2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListRevisionsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListRevisions>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListRevisionsRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<ListRevisions>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateFunctionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Function>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateFunctionRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -506,8 +506,8 @@ export const updatePullCredential: API.OperationMethod<
   UpdatePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdatePullCredentialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PullCredential>,
+  input: __S(32, __c8, 0) as any as S.Schema<UpdatePullCredentialRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const updateRevision: API.OperationMethod<
   UpdateRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UpdateRevisionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Revision>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateRevisionRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -532,22 +532,20 @@ export const updateRevision: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           created_at: S.optional(S.String),
           current_revision: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4, __c1, 0)),
           name: S.String,
           state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          url: S.optional(__S(1, __c0, 1)),
+          url: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -557,42 +555,35 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFunctionRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           current_revision: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4, __c1, 0)),
           name: S.String,
           state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          url: S.optional(__S(3, __c0, 3)),
+          url: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({ identifier: "Function" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          concurrency: S.Number,
-          plan: S.String,
-        }),
-      ).annotate({ identifier: "ResourceLimits" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.optional(S.NullOr(S.String)),
-          vault_reference: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RevisionVariable" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -603,8 +594,8 @@ function __c1(j: number): any {
           digest: S.optional(S.String),
           function_id: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          limits: __S(5, __c0, 5),
+          labels: S.optional(__S(4, __c1, 0)),
+          limits: __S(16, __c4, 0),
           message: S.optional(S.String),
           name: S.optional(S.String),
           oci_pull_credential_id: S.optional(S.String),
@@ -612,7 +603,7 @@ function __c1(j: number): any {
           state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          variables: S.optional(__S(7, __c0, 7)),
+          variables: S.optional(__S(18, __c4, 2)),
           version: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -625,15 +616,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateFunctionRevisionRequest",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          concurrency: S.Number,
+          plan: S.String,
+        }),
+      ).annotate({ identifier: "ResourceLimits" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.optional(S.NullOr(S.String)),
+          vault_reference: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RevisionVariable" });
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           digest: S.optional(S.String),
           function_id: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          limits: __S(5, __c0, 5),
+          labels: S.optional(__S(4, __c1, 0)),
+          limits: __S(16, __c4, 0),
           message: S.optional(S.String),
           name: S.optional(S.String),
           oci_pull_credential_id: S.optional(S.String),
@@ -641,17 +653,143 @@ function __c1(j: number): any {
           state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          variables: S.optional(__S(7, __c0, 7)),
+          variables: S.optional(__S(18, __c4, 2)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Revision" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/pull-credentials",
+            code: 200,
+            baseUrl: "https://functions.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPullCredentialsRequest",
+      });
+    case 1:
+      return S.Array(__S(44, __c11, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          next_page_token: S.optional(S.String),
+          pull_credentials: S.optional(__S(21, __c5, 1)),
+        }),
+      ).annotate({ identifier: "ListPullCredentials" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          functionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/functions/{functionId}/revisions",
+            code: 200,
+            baseUrl: "https://functions.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListRevisionsRequest" });
+    case 1:
+      return S.Array(__S(19, __c4, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxItems: S.optional(S.Number),
+          next_page_token: S.optional(S.String),
+          revisionList: S.optional(__S(25, __c6, 1)),
+        }),
+      ).annotate({ identifier: "ListRevisions" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          functionId: S.String.pipe(T.Label()),
+          labels: S.optional(__S(4, __c1, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1alpha/projects/{projectId}/functions/{functionId}",
+            code: 200,
+            baseUrl: "https://functions.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateFunctionRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          pullCredentialId: S.String.pipe(T.Label()),
+          address: S.optional(S.String),
+          labels: S.optional(__S(4, __c1, 0)),
+          name: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          username: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1alpha/projects/{projectId}/pull-credentials/{pullCredentialId}",
+            code: 200,
+            baseUrl: "https://functions.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePullCredentialRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          functionId: S.String.pipe(T.Label()),
+          revisionId: S.String.pipe(T.Label()),
+          labels: S.optional(__S(4, __c1, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1alpha/projects/{projectId}/functions/{functionId}/revisions/{revisionId}",
+            code: 200,
+            baseUrl: "https://functions.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRevisionRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           address: S.String,
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4, __c1, 0)),
           name: S.optional(S.String),
           password: S.String.pipe(T.SensitiveValue({})),
           username: S.String,
@@ -666,18 +804,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePullCredentialRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.String,
           id: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4, __c1, 0)),
           name: S.optional(S.String),
           password: S.String.pipe(T.SensitiveValue({})),
           username: S.String,
         }),
       ).annotate({ identifier: "PullCredential" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -691,11 +837,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteFunctionRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFunctionResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -711,7 +865,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeletePullCredentialRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -728,7 +886,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteRevisionRequest" });
   }
 }
-function __c2(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -744,7 +902,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFunctionRequest" });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -758,7 +920,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPullCredentialRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -773,7 +939,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRevisionRequest" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -786,124 +956,17 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFunctionsRequest" });
-    case 4:
-      return S.Array(__S(4, __c0, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(9, __c2, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          functions: S.optional(__S(20, __c2, 4)),
+          functions: S.optional(__S(77, __c19, 1)),
           next_page_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFunctions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/pull-credentials",
-            code: 200,
-            baseUrl: "https://functions.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPullCredentialsRequest",
-      });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          next_page_token: S.optional(S.String),
-          pull_credentials: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "ListPullCredentials" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          functionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/functions/{functionId}/revisions",
-            code: 200,
-            baseUrl: "https://functions.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListRevisionsRequest" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxItems: S.optional(S.Number),
-          next_page_token: S.optional(S.String),
-          revisionList: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "ListRevisions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          functionId: S.String.pipe(T.Label()),
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1alpha/projects/{projectId}/functions/{functionId}",
-            code: 200,
-            baseUrl: "https://functions.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateFunctionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          pullCredentialId: S.String.pipe(T.Label()),
-          address: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          username: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1alpha/projects/{projectId}/pull-credentials/{pullCredentialId}",
-            code: 200,
-            baseUrl: "https://functions.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePullCredentialRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          functionId: S.String.pipe(T.Label()),
-          revisionId: S.String.pipe(T.Label()),
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1alpha/projects/{projectId}/functions/{functionId}/revisions/{revisionId}",
-            code: 200,
-            baseUrl: "https://functions.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRevisionRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -584,8 +584,8 @@ export const cancelProjectsLocationsJobs: API.OperationMethod<
   CancelProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsJobsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelJobResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<CancelProjectsLocationsJobsRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<CancelJobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -624,8 +624,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,8 +644,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Location>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetProjectsLocationsJobsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Job>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(453, __c14, 5) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const getProjectsLocationsJobsBucketOperations: API.OperationMethod<
   GetProjectsLocationsJobsBucketOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetProjectsLocationsJobsBucketOperationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<BucketOperation>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetProjectsLocationsJobsBucketOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<BucketOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -740,8 +740,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -757,8 +757,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsJobsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListJobsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -774,8 +774,8 @@ export const listProjectsLocationsJobsBucketOperations: API.PaginatedOperationMe
   GcpOpContext,
   ListBucketOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListBucketOperationsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListBucketOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -791,8 +791,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -803,372 +803,6 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CancelJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsJobsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelJobResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          retentionMode: S.optional(S.String),
-          retainUntilTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectRetention" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contentLanguage: S.optional(S.String),
-          customMetadata: S.optional(__S(4, __c0, 4)),
-          objectRetention: S.optional(__S(5, __c0, 5)),
-          cacheControl: S.optional(S.String),
-          contentDisposition: S.optional(S.String),
-          contentEncoding: S.optional(S.String),
-          customTime: S.optional(S.String),
-          contentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PutMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permanentObjectDeletionEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DeleteObject" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          storageClass: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RewriteObject" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ObjectCustomContextPayload",
-      });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keysToClear: S.optional(__S(9, __c1, 1)),
-          updates: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CustomContextUpdates" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clearAll: S.optional(S.Boolean),
-          customContextUpdates: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateObjectCustomContext",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          logActions: S.optional(__S(14, __c1, 6)),
-          logActionStates: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "LoggingConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          eventBasedHold: S.optional(S.String),
-          temporaryHold: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PutObjectHold" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entity: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectAccessControl" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          grants: S.optional(__S(18, __c2, 2)),
-          removeEntities: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AccessControlsUpdates" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessControlsUpdates: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "SetObjectAcls" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotTime: S.optional(S.String),
-          locations: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "TargetLocations" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          insightsDatasetConfig: S.optional(S.String),
-          bucketFilters: S.optional(__S(21, __c2, 5)),
-          targetLocations: S.optional(__S(22, __c2, 6)),
-          project: S.optional(S.String),
-          dryRunJobId: S.optional(S.String),
-          objectFilters: S.optional(__S(21, __c2, 5)),
-          snapshotTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectSource" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          objectCustomContextsDeleted: S.optional(S.String),
-          objectCustomContextsUpdated: S.optional(S.String),
-          succeededObjectCount: S.optional(S.String),
-          totalBytesFound: S.optional(S.String),
-          failedObjectCount: S.optional(S.String),
-          totalObjectCount: S.optional(S.String),
-          objectCustomContextsCreated: S.optional(S.String),
-          totalBytesTransformed: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Counters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectUri: S.optional(S.String),
-          errorDetails: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "ErrorLogEntry" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          errorLogEntries: S.optional(__S(26, __c3, 2)),
-          errorCount: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorSummary" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          manifestLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Manifest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includedObjectPrefixes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "PrefixList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          manifest: S.optional(__S(29, __c3, 5)),
-          bucket: S.optional(S.String),
-          prefixList: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "Bucket" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          buckets: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "BucketList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          putMetadata: S.optional(__S(6, __c0, 6)),
-          state: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-          scheduleTime: S.optional(S.String),
-          deleteObject: S.optional(__S(7, __c0, 7)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          rewriteObject: S.optional(__S(8, __c1, 0)),
-          updateObjectCustomContext: S.optional(__S(13, __c1, 5)),
-          loggingConfig: S.optional(__S(15, __c1, 7)),
-          completeTime: S.optional(S.String),
-          putObjectHold: S.optional(__S(16, __c2, 0)),
-          setObjectAcls: S.optional(__S(20, __c2, 4)),
-          isMultiBucketJob: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          projectSource: S.optional(__S(23, __c2, 7)),
-          counters: S.optional(__S(24, __c3, 0)),
-          errorSummaries: S.optional(__S(28, __c3, 4)),
-          bucketList: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          jobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/jobs",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsJobsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(38, __c4, 6)),
-          response: S.optional(__S(36, __c4, 4)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(36, __c4, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsJobsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://storagebatchoperations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1182,7 +816,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1196,29 +834,37 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsJobsBucketOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucketName: S.optional(S.String),
           name: S.optional(S.String),
           completeTime: S.optional(S.String),
-          errorSummaries: S.optional(__S(28, __c3, 4)),
-          updateObjectCustomContext: S.optional(__S(13, __c1, 5)),
-          rewriteObject: S.optional(__S(8, __c1, 0)),
+          errorSummaries: S.optional(__S(436, __c13, 20)),
+          updateObjectCustomContext: S.optional(__S(423, __c13, 7)),
+          rewriteObject: S.optional(__S(419, __c13, 3)),
           createTime: S.optional(S.String),
-          manifest: S.optional(__S(29, __c3, 5)),
-          counters: S.optional(__S(24, __c3, 0)),
-          putObjectHold: S.optional(__S(16, __c2, 0)),
-          setObjectAcls: S.optional(__S(20, __c2, 4)),
-          prefixList: S.optional(__S(30, __c3, 6)),
-          putMetadata: S.optional(__S(6, __c0, 6)),
+          manifest: S.optional(__S(437, __c13, 21)),
+          counters: S.optional(__S(432, __c13, 16)),
+          putObjectHold: S.optional(__S(424, __c13, 8)),
+          setObjectAcls: S.optional(__S(428, __c13, 12)),
+          prefixList: S.optional(__S(438, __c13, 22)),
+          putMetadata: S.optional(__S(417, __c13, 1)),
           startTime: S.optional(S.String),
-          deleteObject: S.optional(__S(7, __c0, 7)),
-          projectSource: S.optional(__S(23, __c2, 7)),
+          deleteObject: S.optional(__S(418, __c13, 2)),
+          projectSource: S.optional(__S(431, __c13, 15)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketOperation" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1234,7 +880,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1242,7 +888,7 @@ function __c6(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(384, __c12, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1255,15 +901,19 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(43, __c5, 3));
+      return S.Array(__S(672, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(49, __c6, 1)),
+          locations: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1281,17 +931,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsJobsRequest",
       });
-    case 4:
-      return S.Array(__S(34, __c4, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(453, __c14, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(__S(52, __c6, 4)),
-          unreachable: S.optional(__S(9, __c1, 1)),
+          jobs: S.optional(__S(161, __c5, 1)),
+          unreachable: S.optional(__S(384, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1309,23 +963,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsJobsBucketOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(384, __c12, 0)),
+          nextPageToken: S.optional(S.String),
+          bucketOperations: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({
+        identifier: "ListBucketOperationsResponse",
+      });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(9, __c1, 1)),
-          nextPageToken: S.optional(S.String),
-          bucketOperations: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "ListBucketOperationsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1343,19 +997,420 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
+    case 1:
+      return S.Array(__S(482, __c15, 2));
     case 2:
-      return S.Array(__S(39, __c4, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(58, __c7, 2)),
-          unreachable: S.optional(__S(9, __c1, 1)),
+          operations: S.optional(__S(225, __c7, 1)),
+          unreachable: S.optional(__S(384, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CancelJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsJobsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelJobResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          jobId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(453, __c14, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/jobs",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsJobsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retentionMode: S.optional(S.String),
+          retainUntilTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectRetention" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contentLanguage: S.optional(S.String),
+          customMetadata: S.optional(__S(512, __c16, 0)),
+          objectRetention: S.optional(__S(416, __c13, 0)),
+          cacheControl: S.optional(S.String),
+          contentDisposition: S.optional(S.String),
+          contentEncoding: S.optional(S.String),
+          customTime: S.optional(S.String),
+          contentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          permanentObjectDeletionEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DeleteObject" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          storageClass: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RewriteObject" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ObjectCustomContextPayload",
+      });
+    case 5:
+      return S.Record(S.String, __S(420, __c13, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          keysToClear: S.optional(__S(384, __c12, 0)),
+          updates: S.optional(__S(421, __c13, 5)),
+        }),
+      ).annotate({ identifier: "CustomContextUpdates" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clearAll: S.optional(S.Boolean),
+          customContextUpdates: S.optional(__S(422, __c13, 6)),
+        }),
+      ).annotate({
+        identifier: "UpdateObjectCustomContext",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          eventBasedHold: S.optional(S.String),
+          temporaryHold: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutObjectHold" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectAccessControl" });
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          grants: S.optional(__S(426, __c13, 10)),
+          removeEntities: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "AccessControlsUpdates" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          accessControlsUpdates: S.optional(__S(427, __c13, 11)),
+        }),
+      ).annotate({ identifier: "SetObjectAcls" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotTime: S.optional(S.String),
+          locations: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "TargetLocations" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          insightsDatasetConfig: S.optional(S.String),
+          bucketFilters: S.optional(__S(429, __c13, 13)),
+          targetLocations: S.optional(__S(430, __c13, 14)),
+          project: S.optional(S.String),
+          dryRunJobId: S.optional(S.String),
+          objectFilters: S.optional(__S(429, __c13, 13)),
+          snapshotTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectSource" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          objectCustomContextsDeleted: S.optional(S.String),
+          objectCustomContextsUpdated: S.optional(S.String),
+          succeededObjectCount: S.optional(S.String),
+          totalBytesFound: S.optional(S.String),
+          failedObjectCount: S.optional(S.String),
+          totalObjectCount: S.optional(S.String),
+          objectCustomContextsCreated: S.optional(S.String),
+          totalBytesTransformed: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Counters" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          objectUri: S.optional(S.String),
+          errorDetails: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "ErrorLogEntry" });
+    case 18:
+      return S.Array(__S(433, __c13, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          errorLogEntries: S.optional(__S(434, __c13, 18)),
+          errorCount: S.optional(S.String),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorSummary" });
+    case 20:
+      return S.Array(__S(435, __c13, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          manifestLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Manifest" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          includedObjectPrefixes: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "PrefixList" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          logActions: S.optional(__S(448, __c14, 0)),
+          logActionStates: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "LoggingConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          manifest: S.optional(__S(437, __c13, 21)),
+          bucket: S.optional(S.String),
+          prefixList: S.optional(__S(438, __c13, 22)),
+        }),
+      ).annotate({ identifier: "Bucket" });
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: S.optional(__S(451, __c14, 3)),
+        }),
+      ).annotate({ identifier: "BucketList" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          putMetadata: S.optional(__S(417, __c13, 1)),
+          state: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+          scheduleTime: S.optional(S.String),
+          deleteObject: S.optional(__S(418, __c13, 2)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          rewriteObject: S.optional(__S(419, __c13, 3)),
+          updateObjectCustomContext: S.optional(__S(423, __c13, 7)),
+          loggingConfig: S.optional(__S(449, __c14, 1)),
+          completeTime: S.optional(S.String),
+          putObjectHold: S.optional(__S(424, __c13, 8)),
+          setObjectAcls: S.optional(__S(428, __c13, 12)),
+          isMultiBucketJob: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          projectSource: S.optional(__S(431, __c13, 15)),
+          counters: S.optional(__S(432, __c13, 16)),
+          errorSummaries: S.optional(__S(436, __c13, 20)),
+          bucketList: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "Job" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(544, __c17, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(481, __c15, 1)),
+          response: S.optional(__S(544, __c17, 0)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(544, __c17, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsJobsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://storagebatchoperations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(512, __c16, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

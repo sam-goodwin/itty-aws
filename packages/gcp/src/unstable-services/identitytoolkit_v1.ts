@@ -1483,8 +1483,8 @@ export const accountsProjects: API.OperationMethod<
   AccountsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AccountsProjectsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<AccountsProjectsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const accountsProjectsTenants: API.OperationMethod<
   AccountsProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AccountsProjectsTenantsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<AccountsProjectsTenantsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1523,8 @@ export const batchCreateProjectsAccounts: API.OperationMethod<
   BatchCreateProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<BatchCreateProjectsAccountsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<BatchCreateProjectsAccountsRequest>,
+  output: __S(372, __c46, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1543,8 +1543,8 @@ export const batchCreateProjectsTenantsAccounts: API.OperationMethod<
   BatchCreateProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BatchCreateProjectsTenantsAccountsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<BatchCreateProjectsTenantsAccountsRequest>,
+  output: __S(372, __c46, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1563,11 +1563,11 @@ export const batchDeleteProjectsAccounts: API.OperationMethod<
   BatchDeleteProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<BatchDeleteProjectsAccountsRequest>,
+  input: __S(416, __c52, 0) as any as S.Schema<BatchDeleteProjectsAccountsRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    427,
+    __c53,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1587,11 +1587,11 @@ export const batchDeleteProjectsTenantsAccounts: API.OperationMethod<
   BatchDeleteProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<BatchDeleteProjectsTenantsAccountsRequest>,
+  input: __S(440, __c55, 0) as any as S.Schema<BatchDeleteProjectsTenantsAccountsRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    427,
+    __c53,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1606,8 +1606,8 @@ export const batchGetProjectsAccounts: API.OperationMethod<
   BatchGetProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<BatchGetProjectsAccountsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchGetProjectsAccountsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const batchGetProjectsTenantsAccounts: API.OperationMethod<
   BatchGetProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<BatchGetProjectsTenantsAccountsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<BatchGetProjectsTenantsAccountsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const createAuthUriAccounts: API.OperationMethod<
   CreateAuthUriAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateAuthUriAccountsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateAuthUriAccountsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1656,11 +1656,11 @@ export const createSessionCookieProjects: API.OperationMethod<
   CreateSessionCookieProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateSessionCookieProjectsRequest>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateSessionCookieProjectsRequest>,
   output: __S(
-    37,
-    __c4,
-    5,
+    41,
+    __c5,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1680,11 +1680,11 @@ export const createSessionCookieProjectsTenants: API.OperationMethod<
   CreateSessionCookieProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateSessionCookieProjectsTenantsRequest>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateSessionCookieProjectsTenantsRequest>,
   output: __S(
-    37,
-    __c4,
-    5,
+    41,
+    __c5,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1699,8 +1699,8 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteAccountsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteAccountsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1714,8 +1714,8 @@ export const deleteProjectsAccounts: API.OperationMethod<
   DeleteProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteProjectsAccountsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsAccountsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1734,8 +1734,8 @@ export const deleteProjectsTenantsAccounts: API.OperationMethod<
   DeleteProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteProjectsTenantsAccountsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteProjectsTenantsAccountsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1749,8 +1749,12 @@ export const getProjectsV1: API.OperationMethod<
   GetProjectsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetProjectsV1Request>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetProjectConfigResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetProjectsV1Request>,
+  output: __S(
+    92,
+    __c11,
+    4,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetProjectConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1764,8 +1768,8 @@ export const getPublicKeysV1: API.OperationMethod<
   GetPublicKeysV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetPublicKeysV1Request>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetPublicKeysV1Response>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetPublicKeysV1Request>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetPublicKeysV1Response>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1779,11 +1783,11 @@ export const getRecaptchaParamsV1: API.OperationMethod<
   GetRecaptchaParamsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetRecaptchaParamsV1Request>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetRecaptchaParamsV1Request>,
   output: __S(
-    52,
-    __c6,
-    4,
+    105,
+    __c13,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1798,11 +1802,11 @@ export const getSessionCookiePublicKeysV1: API.OperationMethod<
   GetSessionCookiePublicKeysV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetSessionCookiePublicKeysV1Request>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetSessionCookiePublicKeysV1Request>,
   output: __S(
-    56,
-    __c7,
-    0,
+    115,
+    __c14,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1822,11 +1826,11 @@ export const issueSamlResponseAccounts: API.OperationMethod<
   IssueSamlResponseAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<IssueSamlResponseAccountsRequest>,
+  input: __S(121, __c15, 1) as any as S.Schema<IssueSamlResponseAccountsRequest>,
   output: __S(
-    59,
-    __c7,
-    3,
+    122,
+    __c15,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1841,8 +1845,8 @@ export const lookupAccounts: API.OperationMethod<
   LookupAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<LookupAccountsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<LookupAccountsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1860,8 @@ export const lookupProjectsAccounts: API.OperationMethod<
   LookupProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<LookupProjectsAccountsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<LookupProjectsAccountsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1880,8 @@ export const lookupProjectsTenantsAccounts: API.OperationMethod<
   LookupProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<LookupProjectsTenantsAccountsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<LookupProjectsTenantsAccountsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1895,8 @@ export const queryAccountsProjects: API.OperationMethod<
   QueryAccountsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<QueryAccountsProjectsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<QueryAccountsProjectsRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1910,8 @@ export const queryProjectsAccounts: API.OperationMethod<
   QueryProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<QueryProjectsAccountsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<QueryProjectsAccountsRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1926,8 +1930,8 @@ export const queryProjectsTenantsAccounts: API.OperationMethod<
   QueryProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<QueryProjectsTenantsAccountsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<QueryProjectsTenantsAccountsRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1945,8 @@ export const resetPasswordAccounts: API.OperationMethod<
   ResetPasswordAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ResetPasswordAccountsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<ResetPasswordAccountsRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1960,8 @@ export const sendOobCodeAccounts: API.OperationMethod<
   SendOobCodeAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<SendOobCodeAccountsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<SendOobCodeAccountsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1980,8 @@ export const sendOobCodeProjectsAccounts: API.OperationMethod<
   SendOobCodeProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<SendOobCodeProjectsAccountsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<SendOobCodeProjectsAccountsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2000,8 @@ export const sendOobCodeProjectsTenantsAccounts: API.OperationMethod<
   SendOobCodeProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<SendOobCodeProjectsTenantsAccountsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<SendOobCodeProjectsTenantsAccountsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2016,11 +2020,11 @@ export const sendVerificationCodeAccounts: API.OperationMethod<
   SendVerificationCodeAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<SendVerificationCodeAccountsRequest>,
+  input: __S(234, __c29, 2) as any as S.Schema<SendVerificationCodeAccountsRequest>,
   output: __S(
-    85,
-    __c10,
-    5,
+    235,
+    __c29,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2040,11 +2044,11 @@ export const signInWithCustomTokenAccounts: API.OperationMethod<
   SignInWithCustomTokenAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<SignInWithCustomTokenAccountsRequest>,
+  input: __S(241, __c30, 1) as any as S.Schema<SignInWithCustomTokenAccountsRequest>,
   output: __S(
-    88,
-    __c11,
-    0,
+    242,
+    __c30,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2064,11 +2068,11 @@ export const signInWithEmailLinkAccounts: API.OperationMethod<
   SignInWithEmailLinkAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<SignInWithEmailLinkAccountsRequest>,
+  input: __S(249, __c31, 1) as any as S.Schema<SignInWithEmailLinkAccountsRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    250,
+    __c31,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2088,11 +2092,11 @@ export const signInWithGameCenterAccounts: API.OperationMethod<
   SignInWithGameCenterAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<SignInWithGameCenterAccountsRequest>,
+  input: __S(257, __c32, 1) as any as S.Schema<SignInWithGameCenterAccountsRequest>,
   output: __S(
-    94,
-    __c11,
-    6,
+    258,
+    __c32,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2107,8 +2111,8 @@ export const signInWithIdpAccounts: API.OperationMethod<
   SignInWithIdpAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<SignInWithIdpAccountsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse>,
+  input: __S(265, __c33, 1) as any as S.Schema<SignInWithIdpAccountsRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2127,11 +2131,11 @@ export const signInWithPasswordAccounts: API.OperationMethod<
   SignInWithPasswordAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<SignInWithPasswordAccountsRequest>,
+  input: __S(273, __c34, 1) as any as S.Schema<SignInWithPasswordAccountsRequest>,
   output: __S(
-    102,
-    __c12,
-    6,
+    276,
+    __c34,
+    4,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2151,11 +2155,11 @@ export const signInWithPhoneNumberAccounts: API.OperationMethod<
   SignInWithPhoneNumberAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<SignInWithPhoneNumberAccountsRequest>,
+  input: __S(281, __c35, 1) as any as S.Schema<SignInWithPhoneNumberAccountsRequest>,
   output: __S(
-    105,
-    __c13,
-    1,
+    282,
+    __c35,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2170,8 +2174,8 @@ export const signUpAccounts: API.OperationMethod<
   SignUpAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<SignUpAccountsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<SignUpAccountsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2189,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<UpdateAccountsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateAccountsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2204,8 @@ export const updateProjectsAccounts: API.OperationMethod<
   UpdateProjectsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UpdateProjectsAccountsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdateProjectsAccountsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2224,8 @@ export const updateProjectsTenantsAccounts: API.OperationMethod<
   UpdateProjectsTenantsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<UpdateProjectsTenantsAccountsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateProjectsTenantsAccountsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2240,11 +2244,11 @@ export const verifyIosClientAccounts: API.OperationMethod<
   VerifyIosClientAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<VerifyIosClientAccountsRequest>,
+  input: __S(345, __c43, 1) as any as S.Schema<VerifyIosClientAccountsRequest>,
   output: __S(
-    116,
-    __c14,
-    4,
+    346,
+    __c43,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV1VerifyIosClientResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2255,328 +2259,6 @@ export const verifyIosClientAccounts: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          phoneInfo: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1MfaFactor",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instanceId: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-          clientType: S.optional(S.String),
-          localId: S.optional(S.String),
-          captchaChallenge: S.optional(S.String),
-          photoUrl: S.optional(S.String),
-          captchaResponse: S.optional(S.String),
-          idToken: S.optional(S.String),
-          email: S.optional(S.String),
-          recaptchaVersion: S.optional(S.String),
-          mfaInfo: S.optional(__S(1, __c0, 1)),
-          emailVerified: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          phoneNumber: S.optional(S.String),
-          password: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1SignUpRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/accounts",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AccountsProjectsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          expiresIn: S.optional(S.String),
-          email: S.optional(S.String),
-          idToken: S.optional(S.String),
-          localId: S.optional(S.String),
-          kind: S.optional(S.String),
-          refreshToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1SignUpResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetProjectId: S.String.pipe(T.Label()),
-          tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccountsProjectsTenantsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          emailAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1EmailInfo",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1TotpInfo",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enrolledAt: S.optional(S.String),
-          emailInfo: S.optional(__S(6, __c0, 6)),
-          mfaEnrollmentId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          phoneInfo: S.optional(S.String),
-          totpInfo: S.optional(__S(7, __c0, 7)),
-          unobfuscatedPhoneInfo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1MfaEnrollment",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          rawId: S.optional(S.String),
-          federatedId: S.optional(S.String),
-          photoUrl: S.optional(S.String),
-          email: S.optional(S.String),
-          screenName: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          providerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1ProviderUserInfo",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          dateOfBirth: S.optional(S.String),
-          language: S.optional(S.String),
-          displayName: S.optional(S.String),
-          customAuth: S.optional(S.Boolean),
-          createdAt: S.optional(S.String),
-          rawPassword: S.optional(S.String),
-          localId: S.optional(S.String),
-          lastLoginAt: S.optional(S.String),
-          mfaInfo: S.optional(__S(9, __c1, 1)),
-          validSince: S.optional(S.String),
-          email: S.optional(S.String),
-          emailLinkSignin: S.optional(S.Boolean),
-          initialEmail: S.optional(S.String),
-          passwordUpdatedAt: S.optional(S.Number),
-          phoneNumber: S.optional(S.String),
-          providerUserInfo: S.optional(__S(11, __c1, 3)),
-          version: S.optional(S.Number),
-          salt: S.optional(S.String),
-          customAttributes: S.optional(S.String),
-          lastRefreshAt: S.optional(S.String),
-          screenName: S.optional(S.String),
-          emailVerified: S.optional(S.Boolean),
-          photoUrl: S.optional(S.String),
-          passwordHash: S.optional(S.String),
-          timeZone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1UserInfo",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          memoryCostKib: S.optional(S.Number),
-          associatedData: S.optional(S.String),
-          hashLengthBytes: S.optional(S.Number),
-          iterations: S.optional(S.Number),
-          parallelism: S.optional(S.Number),
-          hashType: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1Argon2Parameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rounds: S.optional(S.Number),
-          tenantId: S.optional(S.String),
-          parallelization: S.optional(S.Number),
-          saltSeparator: S.optional(S.String),
-          sanityCheck: S.optional(S.Boolean),
-          users: S.optional(__S(13, __c1, 5)),
-          delegatedProjectNumber: S.optional(S.String),
-          dkLen: S.optional(S.Number),
-          blockSize: S.optional(S.Number),
-          memoryCost: S.optional(S.Number),
-          cpuMemCost: S.optional(S.Number),
-          signerKey: S.optional(S.String),
-          hashAlgorithm: S.optional(S.String),
-          passwordHashOrder: S.optional(S.String),
-          allowOverwrite: S.optional(S.Boolean),
-          argon2Parameters: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1UploadAccountRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/accounts:batchCreate",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsAccountsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1ErrorInfo",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(18, __c2, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1UploadAccountResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.String.pipe(T.Label()),
-          targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchCreate",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsTenantsAccountsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          localIds: S.optional(__S(21, __c2, 5)),
-          tenantId: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/accounts:batchDelete",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsAccountsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          localId: S.optional(S.String),
-          index: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetProjectId: S.String.pipe(T.Label()),
-          tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchDelete",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsTenantsAccountsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           delegatedProjectNumber: S.optional(S.String.pipe(T.Query())),
@@ -2594,17 +2276,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "BatchGetProjectsAccountsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          users: S.optional(__S(13, __c1, 5)),
+          users: S.optional(__S(377, __c47, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1DownloadAccountResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
@@ -2622,13 +2312,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "BatchGetProjectsTenantsAccountsRequest",
       });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           providerId: S.optional(S.String),
@@ -2641,7 +2331,7 @@ function __c4(j: number): any {
           authFlowType: S.optional(S.String),
           identifier: S.optional(S.String),
           hostedDomain: S.optional(S.String),
-          customParameter: S.optional(__S(31, __c3, 7)),
+          customParameter: S.optional(__S(24, __c3, 0)),
           otaApp: S.optional(S.String),
           sessionId: S.optional(S.String),
           oauthScope: S.optional(S.String),
@@ -2649,10 +2339,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1CreateAuthUriRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2663,37 +2353,31 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateAuthUriAccountsRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           authUri: S.optional(S.String),
           registered: S.optional(S.Boolean),
-          allProviders: S.optional(__S(21, __c2, 5)),
+          allProviders: S.optional(__S(432, __c54, 0)),
           captchaRequired: S.optional(S.Boolean),
           providerId: S.optional(S.String),
-          signinMethods: S.optional(__S(21, __c2, 5)),
+          signinMethods: S.optional(__S(432, __c54, 0)),
           sessionId: S.optional(S.String),
           forExistingProvider: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1CreateAuthUriResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idToken: S.optional(S.String),
-          validDuration: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest",
-      });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2704,7 +2388,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSessionCookieProjectsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idToken: S.optional(S.String),
+          validDuration: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sessionCookie: S.optional(S.String),
@@ -2712,12 +2410,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
           tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2728,7 +2430,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSessionCookieProjectsTenantsRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/accounts:delete",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAccountsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.optional(S.String),
@@ -2740,22 +2462,6 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1DeleteAccountRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/accounts:delete",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAccountsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2764,11 +2470,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1DeleteAccountResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2779,12 +2489,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAccountsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
           tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2795,7 +2509,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsTenantsAccountsRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           iosBundleId: S.optional(S.String.pipe(T.Query())),
@@ -2814,7 +2532,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsV1Request" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fromLocalPart: S.optional(S.String),
@@ -2831,10 +2549,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1EmailTemplate",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          whitelistedAudiences: S.optional(__S(21, __c2, 5)),
+          whitelistedAudiences: S.optional(__S(432, __c54, 0)),
           clientId: S.optional(S.String),
           experimentPercent: S.optional(S.Number),
           secret: S.optional(S.String),
@@ -2844,33 +2562,33 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1IdpConfig",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
-          changeEmailTemplate: S.optional(__S(45, __c5, 5)),
+          changeEmailTemplate: S.optional(__S(89, __c11, 1)),
           apiKey: S.optional(S.String),
           enableAnonymousUser: S.optional(S.Boolean),
-          revertSecondFactorAdditionTemplate: S.optional(__S(45, __c5, 5)),
-          legacyResetPasswordTemplate: S.optional(__S(45, __c5, 5)),
-          resetPasswordTemplate: S.optional(__S(45, __c5, 5)),
-          authorizedDomains: S.optional(__S(21, __c2, 5)),
-          idpConfig: S.optional(__S(47, __c5, 7)),
+          revertSecondFactorAdditionTemplate: S.optional(__S(89, __c11, 1)),
+          legacyResetPasswordTemplate: S.optional(__S(89, __c11, 1)),
+          resetPasswordTemplate: S.optional(__S(89, __c11, 1)),
+          authorizedDomains: S.optional(__S(432, __c54, 0)),
+          idpConfig: S.optional(__S(91, __c11, 3)),
           useEmailSending: S.optional(S.Boolean),
           allowPasswordUser: S.optional(S.Boolean),
-          verifyEmailTemplate: S.optional(__S(45, __c5, 5)),
+          verifyEmailTemplate: S.optional(__S(89, __c11, 1)),
           dynamicLinksDomain: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1GetProjectConfigResponse",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2880,11 +2598,15 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPublicKeysV1Request" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetPublicKeysV1Response",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2896,7 +2618,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRecaptchaParamsV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recaptchaSiteKey: S.optional(S.String),
@@ -2907,7 +2629,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2919,7 +2645,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetSessionCookiePublicKeysV1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kty: S.optional(S.String),
@@ -2932,21 +2658,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1OpenIdConnectKey",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(55, __c6, 7)),
+          keys: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idToken: S.optional(S.String),
@@ -2956,10 +2682,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2970,7 +2696,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IssueSamlResponseAccountsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lastName: S.optional(S.String),
@@ -2984,37 +2710,14 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          providerId: S.optional(S.String),
-          rawId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1FederatedUserIdentifier",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          initialEmail: S.optional(__S(21, __c2, 5)),
-          idToken: S.optional(S.String),
-          email: S.optional(__S(21, __c2, 5)),
-          phoneNumber: S.optional(__S(21, __c2, 5)),
-          federatedUserId: S.optional(__S(61, __c7, 5)),
-          tenantId: S.optional(S.String),
-          localId: S.optional(__S(21, __c2, 5)),
-          delegatedProjectNumber: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1GetAccountInfoRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3025,22 +2728,53 @@ function __c7(j: number): any {
       ).annotate({ identifier: "LookupAccountsRequest" });
   }
 }
-function __c8(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(13, __c1, 5)),
+          providerId: S.optional(S.String),
+          rawId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1FederatedUserIdentifier",
+      });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          initialEmail: S.optional(__S(432, __c54, 0)),
+          idToken: S.optional(S.String),
+          email: S.optional(__S(432, __c54, 0)),
+          phoneNumber: S.optional(__S(432, __c54, 0)),
+          federatedUserId: S.optional(__S(137, __c17, 1)),
+          tenantId: S.optional(S.String),
+          localId: S.optional(__S(432, __c54, 0)),
+          delegatedProjectNumber: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1GetAccountInfoRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          users: S.optional(__S(377, __c47, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1GetAccountInfoResponse",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3051,12 +2785,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "LookupProjectsAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String.pipe(T.Label()),
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3067,37 +2805,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "LookupProjectsTenantsAccountsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumber: S.optional(S.String),
-          userId: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1SqlExpression",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          order: S.optional(S.String),
-          sortBy: S.optional(S.String),
-          offset: S.optional(S.String),
-          returnUserInfo: S.optional(S.Boolean),
-          tenantId: S.optional(S.String),
-          expression: S.optional(__S(68, __c8, 4)),
-          limit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1QueryUserInfoRequest",
-      });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3108,24 +2824,54 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "QueryAccountsProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumber: S.optional(S.String),
+          userId: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1SqlExpression",
+      });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          order: S.optional(S.String),
+          sortBy: S.optional(S.String),
+          offset: S.optional(S.String),
+          returnUserInfo: S.optional(S.Boolean),
+          tenantId: S.optional(S.String),
+          expression: S.optional(__S(169, __c21, 1)),
+          limit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1QueryUserInfoRequest",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recordsCount: S.optional(S.String),
-          userInfo: S.optional(__S(13, __c1, 5)),
+          userInfo: S.optional(__S(377, __c47, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1QueryUserInfoResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3136,12 +2882,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "QueryProjectsAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
           tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3152,7 +2902,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "QueryProjectsTenantsAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           oldPassword: S.optional(S.String),
@@ -3164,10 +2918,10 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1ResetPasswordRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3178,19 +2932,41 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ResetPasswordAccountsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           requestType: S.optional(S.String),
           newEmail: S.optional(S.String),
-          mfaInfo: S.optional(__S(8, __c1, 0)),
+          mfaInfo: S.optional(__S(386, __c48, 2)),
           email: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1ResetPasswordResponse",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/accounts:sendOobCode",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SendOobCodeAccountsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -3218,21 +2994,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1GetOobCodeRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/accounts:sendOobCode",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SendOobCodeAccountsRequest",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -3245,13 +3007,13 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3262,12 +3024,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SendOobCodeProjectsAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String.pipe(T.Label()),
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3278,7 +3044,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SendOobCodeProjectsTenantsAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appSignatureHash: S.optional(S.String),
@@ -3286,7 +3056,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1AutoRetrievalInfo",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           playIntegrityToken: S.optional(S.String),
@@ -3296,7 +3066,7 @@ function __c10(j: number): any {
           iosReceipt: S.optional(S.String),
           iosSecret: S.optional(S.String),
           phoneNumber: S.optional(S.String),
-          autoRetrievalInfo: S.optional(__S(82, __c10, 2)),
+          autoRetrievalInfo: S.optional(__S(232, __c29, 0)),
           recaptchaToken: S.optional(S.String),
           captchaResponse: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -3304,10 +3074,10 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(233, __c29, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3318,7 +3088,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SendVerificationCodeAccountsRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sessionInfo: S.optional(S.String),
@@ -3326,7 +3096,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnSecureToken: S.optional(S.Boolean),
@@ -3338,10 +3112,10 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(86, __c10, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3352,11 +3126,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SignInWithCustomTokenAccountsRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           idToken: S.optional(S.String),
@@ -3368,7 +3138,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -3379,10 +3153,10 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(248, __c31, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3393,14 +3167,14 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SignInWithEmailLinkAccountsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           mfaPendingCredential: S.optional(S.String),
           kind: S.optional(S.String),
           localId: S.optional(S.String),
           expiresIn: S.optional(S.String),
-          mfaInfo: S.optional(__S(9, __c1, 1)),
+          mfaInfo: S.optional(__S(392, __c49, 0)),
           refreshToken: S.optional(S.String),
           isNewUser: S.optional(S.Boolean),
           email: S.optional(S.String),
@@ -3409,7 +3183,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -3426,10 +3204,10 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3440,7 +3218,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SignInWithGameCenterAccountsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           refreshToken: S.optional(S.String),
@@ -3456,7 +3234,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnRefreshToken: S.optional(S.Boolean),
@@ -3475,14 +3257,10 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithIdpRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3493,7 +3271,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SignInWithIdpAccountsRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           emailRecycled: S.optional(S.Boolean),
@@ -3515,10 +3293,10 @@ function __c12(j: number): any {
           refreshToken: S.optional(S.String),
           firstName: S.optional(S.String),
           needConfirmation: S.optional(S.Boolean),
-          verifiedProvider: S.optional(__S(21, __c2, 5)),
+          verifiedProvider: S.optional(__S(432, __c54, 0)),
           isNewUser: S.optional(S.Boolean),
           oauthTokenSecret: S.optional(S.String),
-          mfaInfo: S.optional(__S(9, __c1, 1)),
+          mfaInfo: S.optional(__S(392, __c49, 0)),
           oauthAuthorizationCode: S.optional(S.String),
           dateOfBirth: S.optional(S.String),
           providerId: S.optional(S.String),
@@ -3539,7 +3317,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithIdpResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.optional(S.String),
@@ -3558,10 +3340,10 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c34, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3572,7 +3354,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SignInWithPasswordAccountsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           notificationMessage: S.optional(S.String),
@@ -3581,9 +3363,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1UserNotification",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(274, __c34, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           expiresIn: S.optional(S.String),
@@ -3592,10 +3374,10 @@ function __c12(j: number): any {
           idToken: S.optional(S.String),
           oauthAuthorizationCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          mfaInfo: S.optional(__S(9, __c1, 1)),
+          mfaInfo: S.optional(__S(392, __c49, 0)),
           email: S.optional(S.String),
           localId: S.optional(S.String),
-          userNotifications: S.optional(__S(101, __c12, 5)),
+          userNotifications: S.optional(__S(275, __c34, 3)),
           oauthAccessToken: S.optional(S.String),
           kind: S.optional(S.String),
           profilePicture: S.optional(S.String),
@@ -3605,7 +3387,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           temporaryProof: S.optional(S.String),
@@ -3620,14 +3406,10 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3638,7 +3420,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SignInWithPhoneNumberAccountsRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           phoneNumber: S.optional(S.String),
@@ -3655,10 +3437,84 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse",
       });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetProjectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/accounts",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AccountsProjectsRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phoneInfo: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1MfaFactor",
+      });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          instanceId: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+          clientType: S.optional(S.String),
+          localId: S.optional(S.String),
+          captchaChallenge: S.optional(S.String),
+          photoUrl: S.optional(S.String),
+          captchaResponse: S.optional(S.String),
+          idToken: S.optional(S.String),
+          email: S.optional(S.String),
+          recaptchaVersion: S.optional(S.String),
+          mfaInfo: S.optional(__S(297, __c37, 1)),
+          emailVerified: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          phoneNumber: S.optional(S.String),
+          password: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1SignUpRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          expiresIn: S.optional(S.String),
+          email: S.optional(S.String),
+          idToken: S.optional(S.String),
+          localId: S.optional(S.String),
+          kind: S.optional(S.String),
+          refreshToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1SignUpResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3667,54 +3523,14 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SignUpAccountsRequest" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          enrollments: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1MfaInfo",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          photoUrl: S.optional(S.String),
-          disableUser: S.optional(S.Boolean),
-          returnSecureToken: S.optional(S.Boolean),
-          provider: S.optional(__S(21, __c2, 5)),
-          captchaResponse: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          delegatedProjectNumber: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-          oobCode: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          idToken: S.optional(S.String),
-          captchaChallenge: S.optional(S.String),
-          linkProviderUserInfo: S.optional(__S(10, __c1, 2)),
-          validSince: S.optional(S.String),
-          mfa: S.optional(__S(107, __c13, 3)),
-          localId: S.optional(S.String),
-          upgradeToFederatedLogin: S.optional(S.Boolean),
-          emailVerified: S.optional(S.Boolean),
-          deleteAttribute: S.optional(__S(108, __c13, 4)),
-          displayName: S.optional(S.String),
-          customAttributes: S.optional(S.String),
-          password: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          deleteProvider: S.optional(__S(21, __c2, 5)),
-          email: S.optional(S.String),
-          lastLoginAt: S.optional(S.String),
-          instanceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV1SetAccountInfoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(109, __c13, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3723,7 +3539,55 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccountsRequest" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enrollments: S.optional(__S(392, __c49, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1MfaInfo",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          photoUrl: S.optional(S.String),
+          disableUser: S.optional(S.Boolean),
+          returnSecureToken: S.optional(S.Boolean),
+          provider: S.optional(__S(432, __c54, 0)),
+          captchaResponse: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          delegatedProjectNumber: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+          oobCode: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          idToken: S.optional(S.String),
+          captchaChallenge: S.optional(S.String),
+          linkProviderUserInfo: S.optional(__S(400, __c50, 0)),
+          validSince: S.optional(S.String),
+          mfa: S.optional(__S(320, __c40, 0)),
+          localId: S.optional(S.String),
+          upgradeToFederatedLogin: S.optional(S.Boolean),
+          emailVerified: S.optional(S.Boolean),
+          deleteAttribute: S.optional(__S(321, __c40, 1)),
+          displayName: S.optional(S.String),
+          customAttributes: S.optional(S.String),
+          password: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          deleteProvider: S.optional(__S(432, __c54, 0)),
+          email: S.optional(S.String),
+          lastLoginAt: S.optional(S.String),
+          instanceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1SetAccountInfoRequest",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -3735,7 +3599,7 @@ function __c13(j: number): any {
           newEmail: S.optional(S.String),
           photoUrl: S.optional(S.String),
           passwordHash: S.optional(S.String),
-          providerUserInfo: S.optional(__S(11, __c1, 3)),
+          providerUserInfo: S.optional(__S(401, __c50, 1)),
           idToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3744,13 +3608,13 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(109, __c13, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3761,12 +3625,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetProjectId: S.String.pipe(T.Label()),
           tenantId: S.String.pipe(T.Label()),
-          body: S.optional(__S(109, __c13, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3777,7 +3645,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsTenantsAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appToken: S.optional(S.String),
@@ -3786,10 +3658,10 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV1VerifyIosClientRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(344, __c43, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3800,7 +3672,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VerifyIosClientAccountsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           suggestedTimeout: S.optional(S.String),
@@ -3811,7 +3683,302 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetProjectId: S.String.pipe(T.Label()),
+          tenantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccountsProjectsTenantsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetProjectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(369, __c46, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/accounts:batchCreate",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsAccountsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memoryCostKib: S.optional(S.Number),
+          associatedData: S.optional(S.String),
+          hashLengthBytes: S.optional(S.Number),
+          iterations: S.optional(S.Number),
+          parallelism: S.optional(S.Number),
+          hashType: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1Argon2Parameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rounds: S.optional(S.Number),
+          tenantId: S.optional(S.String),
+          parallelization: S.optional(S.Number),
+          saltSeparator: S.optional(S.String),
+          sanityCheck: S.optional(S.Boolean),
+          users: S.optional(__S(377, __c47, 1)),
+          delegatedProjectNumber: S.optional(S.String),
+          dkLen: S.optional(S.Number),
+          blockSize: S.optional(S.Number),
+          memoryCost: S.optional(S.Number),
+          cpuMemCost: S.optional(S.Number),
+          signerKey: S.optional(S.String),
+          hashAlgorithm: S.optional(S.String),
+          passwordHashOrder: S.optional(S.String),
+          allowOverwrite: S.optional(S.Boolean),
+          argon2Parameters: S.optional(__S(368, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1UploadAccountRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1ErrorInfo",
+      });
+    case 3:
+      return S.Array(__S(370, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(371, __c46, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1UploadAccountResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          dateOfBirth: S.optional(S.String),
+          language: S.optional(S.String),
+          displayName: S.optional(S.String),
+          customAuth: S.optional(S.Boolean),
+          createdAt: S.optional(S.String),
+          rawPassword: S.optional(S.String),
+          localId: S.optional(S.String),
+          lastLoginAt: S.optional(S.String),
+          mfaInfo: S.optional(__S(392, __c49, 0)),
+          validSince: S.optional(S.String),
+          email: S.optional(S.String),
+          emailLinkSignin: S.optional(S.Boolean),
+          initialEmail: S.optional(S.String),
+          passwordUpdatedAt: S.optional(S.Number),
+          phoneNumber: S.optional(S.String),
+          providerUserInfo: S.optional(__S(401, __c50, 1)),
+          version: S.optional(S.Number),
+          salt: S.optional(S.String),
+          customAttributes: S.optional(S.String),
+          lastRefreshAt: S.optional(S.String),
+          screenName: S.optional(S.String),
+          emailVerified: S.optional(S.Boolean),
+          photoUrl: S.optional(S.String),
+          passwordHash: S.optional(S.String),
+          timeZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1UserInfo",
+      });
+    case 1:
+      return S.Array(__S(376, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emailAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1EmailInfo",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1TotpInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enrolledAt: S.optional(S.String),
+          emailInfo: S.optional(__S(384, __c48, 0)),
+          mfaEnrollmentId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          phoneInfo: S.optional(S.String),
+          totpInfo: S.optional(__S(385, __c48, 1)),
+          unobfuscatedPhoneInfo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1MfaEnrollment",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(386, __c48, 2));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          rawId: S.optional(S.String),
+          federatedId: S.optional(S.String),
+          photoUrl: S.optional(S.String),
+          email: S.optional(S.String),
+          screenName: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          providerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1ProviderUserInfo",
+      });
+    case 1:
+      return S.Array(__S(400, __c50, 0));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.String.pipe(T.Label()),
+          targetProjectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(369, __c46, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchCreate",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsTenantsAccountsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetProjectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(424, __c53, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/accounts:batchDelete",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsAccountsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          localIds: S.optional(__S(432, __c54, 0)),
+          tenantId: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          localId: S.optional(S.String),
+          index: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo",
+      });
+    case 2:
+      return S.Array(__S(425, __c53, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(426, __c53, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetProjectId: S.String.pipe(T.Label()),
+          tenantId: S.String.pipe(T.Label()),
+          body: S.optional(__S(424, __c53, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchDelete",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsTenantsAccountsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

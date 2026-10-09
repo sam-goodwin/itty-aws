@@ -270,8 +270,8 @@ export const searchContext: API.OperationMethod<
   SearchContextError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<SearchContextRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SearchContextResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<SearchContextRequest>,
+  output: __S(15, __c0, 15) as any as S.Schema<SearchContextResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const searchInfo: API.OperationMethod<
   SearchInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<SearchInfoRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<SearchInfoResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<SearchInfoRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<SearchInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const setStatus: API.OperationMethod<
   SetStatusError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<SetStatusRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SetStatusResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<SetStatusRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SetStatusResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const setSuggestedPrompts: API.OperationMethod<
   SetSuggestedPromptsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<SetSuggestedPromptsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SetSuggestedPromptsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<SetSuggestedPromptsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<SetSuggestedPromptsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const setTitle: API.OperationMethod<
   SetTitleError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<SetTitleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SetTitleResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<SetTitleRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SetTitleResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,6 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.String,
@@ -363,26 +361,26 @@ function __c0(j: number): any {
           sort_dir: S.optional(S.String),
           include_message_blocks: S.optional(S.Boolean),
           highlight: S.optional(S.Boolean),
-          term_clauses: S.optional(__S(1, __c0, 1)),
+          term_clauses: S.optional(__S(16, __c1, 0)),
           modifiers: S.optional(S.String),
           include_archived_channels: S.optional(S.Boolean),
           disable_semantic_search: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/assistant.search.context", code: 200 })),
       ).annotate({ identifier: "SearchContextRequest" });
-    case 3:
+    case 2:
       return S.Array(S.Unknown);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          before: S.optional(__S(3, __c0, 3)),
-          after: S.optional(__S(3, __c0, 3)),
+          before: S.optional(__S(2, __c0, 2)),
+          after: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "SearchContextResponseResultsMessagesItemContextMessages",
       });
-    case 5:
+    case 4:
       return S.Array(S.Unknown);
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           author_name: S.String,
@@ -395,20 +393,16 @@ function __c0(j: number): any {
           content: S.String,
           is_author_bot: S.Boolean,
           permalink: S.String,
-          context_messages: S.optional(__S(4, __c0, 4)),
-          blocks: S.optional(__S(5, __c0, 5)),
+          context_messages: S.optional(__S(3, __c0, 3)),
+          blocks: S.optional(__S(4, __c0, 4)),
           reply_count: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SearchContextResponseResultsMessagesItem",
       });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           author_name: S.String,
@@ -428,9 +422,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchContextResponseResultsFilesItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(7, __c0, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
@@ -447,9 +441,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchContextResponseResultsChannelsItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(9, __c0, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -463,21 +457,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchContextResponseResultsUsersItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(7, __c0, 7)),
-          files: S.optional(__S(9, __c1, 1)),
-          enterprise: S.optional(__S(5, __c0, 5)),
-          channels: S.optional(__S(11, __c1, 3)),
-          users: S.optional(__S(13, __c1, 5)),
+          messages: S.optional(__S(6, __c0, 6)),
+          files: S.optional(__S(8, __c0, 8)),
+          enterprise: S.optional(__S(4, __c0, 4)),
+          channels: S.optional(__S(10, __c0, 10)),
+          users: S.optional(__S(12, __c0, 12)),
         }),
       ).annotate({
         identifier: "SearchContextResponseResults",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           next_cursor: S.optional(S.String),
@@ -485,48 +479,66 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchContextResponseResponseMetadata",
       });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          results: __S(13, __c0, 13),
+          response_metadata: S.optional(__S(14, __c0, 14)),
+        }),
+      ).annotate({ identifier: "SearchContextResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          results: __S(14, __c1, 6),
-          response_metadata: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "SearchContextResponse" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/assistant.search.info", code: 200 })),
       ).annotate({ identifier: "SearchInfoRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           is_ai_search_enabled: S.Boolean,
         }),
       ).annotate({ identifier: "SearchInfoResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
           thread_ts: S.String,
           status: S.String,
-          loading_messages: S.optional(__S(1, __c0, 1)),
+          loading_messages: S.optional(__S(16, __c1, 0)),
           icon_emoji: S.optional(S.String),
           icon_url: S.optional(S.String),
           username: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/assistant.threads.setStatus", code: 200 })),
       ).annotate({ identifier: "SetStatusRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "SetStatusResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -539,7 +551,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SetSuggestedPromptsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -547,7 +559,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SetSuggestedPromptsResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -557,7 +573,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "SetTitleRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

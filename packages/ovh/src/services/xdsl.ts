@@ -3057,7 +3057,7 @@ export const addDHCPStaticAddress: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddDHCPStaticAddressRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<XdslDHCPStaticAddress>,
+  output: __S(16, __c1, 0) as any as S.Schema<XdslDHCPStaticAddress>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3071,8 +3071,8 @@ export const addMonitoringNotification: API.OperationMethod<
   AddMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddMonitoringNotificationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<XdslMonitoringNotification>,
+  input: __S(32, __c2, 0) as any as S.Schema<AddMonitoringNotificationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<XdslMonitoringNotification>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3086,8 +3086,8 @@ export const addPortMapping: API.OperationMethod<
   AddPortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AddPortMappingRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<XdslPortMapping>,
+  input: __S(960, __c60, 0) as any as S.Schema<AddPortMappingRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<XdslPortMapping>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3101,8 +3101,8 @@ export const applyTemplateModem: API.OperationMethod<
   ApplyTemplateModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ApplyTemplateModemRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ApplyTemplateModemRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3116,8 +3116,8 @@ export const archiveXdslTask: API.OperationMethod<
   ArchiveXdslTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ArchiveXdslTaskRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ArchiveXdslTaskResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ArchiveXdslTaskRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<ArchiveXdslTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3131,8 +3131,8 @@ export const bookMeeting: API.OperationMethod<
   BookMeetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BookMeetingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BookMeetingResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<BookMeetingRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<BookMeetingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3146,8 +3146,8 @@ export const cancelXdslLinesDiagnostic: API.OperationMethod<
   CancelXdslLinesDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelXdslLinesDiagnosticRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CancelXdslLinesDiagnosticResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<CancelXdslLinesDiagnosticRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<CancelXdslLinesDiagnosticResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3161,8 +3161,8 @@ export const cancelXdslResiliation: API.OperationMethod<
   CancelXdslResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CancelXdslResiliationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CancelXdslResiliationResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<CancelXdslResiliationRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<CancelXdslResiliationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3176,8 +3176,8 @@ export const changeContact: API.OperationMethod<
   ChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ChangeContactRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ChangeContactResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<ChangeContactRequest>,
+  output: __S(2368, __c148, 0) as any as S.Schema<ChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3191,8 +3191,8 @@ export const changeEmailPassword: API.OperationMethod<
   ChangeEmailPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ChangeEmailPasswordRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<XdslEmailProTask>,
+  input: __S(2544, __c159, 0) as any as S.Schema<ChangeEmailPasswordRequest>,
+  output: __S(2545, __c159, 1) as any as S.Schema<XdslEmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3206,8 +3206,8 @@ export const changeLineDSLAMProfile: API.OperationMethod<
   ChangeLineDSLAMProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ChangeLineDSLAMProfileRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(64, __c4, 0) as any as S.Schema<ChangeLineDSLAMProfileRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3221,8 +3221,8 @@ export const createModemTemplate: API.OperationMethod<
   CreateModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateModemTemplateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<XdslTemplateModem>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateModemTemplateRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<XdslTemplateModem>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3236,8 +3236,8 @@ export const createXdslAddressMoveExtraIpRangeMove: API.OperationMethod<
   CreateXdslAddressMoveExtraIpRangeMoveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateXdslAddressMoveExtraIpRangeMoveRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateXdslAddressMoveExtraIpRangeMoveRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3251,8 +3251,8 @@ export const createXdslDiagnostic: API.OperationMethod<
   CreateXdslDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateXdslDiagnosticRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(656, __c41, 0) as any as S.Schema<CreateXdslDiagnosticRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3266,8 +3266,8 @@ export const createXdslIps: API.OperationMethod<
   CreateXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateXdslIpsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(832, __c52, 0) as any as S.Schema<CreateXdslIpsRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3281,8 +3281,8 @@ export const createXdslModemReconfigureVoip: API.OperationMethod<
   CreateXdslModemReconfigureVoipError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateXdslModemReconfigureVoipResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<CreateXdslModemReconfigureVoipResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3296,8 +3296,8 @@ export const createXdslRequestPPPLoginMail: API.OperationMethod<
   CreateXdslRequestPPPLoginMailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3311,8 +3311,8 @@ export const createXdslSpareReturnMerchandise: API.OperationMethod<
   CreateXdslSpareReturnMerchandiseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3326,8 @@ export const deleteModemTemplate: API.OperationMethod<
   DeleteModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteModemTemplateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteModemTemplateResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteModemTemplateRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteModemTemplateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3341,8 +3341,8 @@ export const deleteXdslEmailPro: API.OperationMethod<
   DeleteXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteXdslEmailProRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteXdslEmailProResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteXdslEmailProRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteXdslEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3356,8 +3356,8 @@ export const deleteXdslIps: API.OperationMethod<
   DeleteXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteXdslIpsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteXdslIpsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteXdslIpsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteXdslIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3371,8 +3371,8 @@ export const deleteXdslRma: API.OperationMethod<
   DeleteXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteXdslRmaRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteXdslRmaResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteXdslRmaRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteXdslRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3386,8 +3386,8 @@ export const deleteXdslSpare: API.OperationMethod<
   DeleteXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteXdslSpareRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteXdslSpareResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteXdslSpareRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteXdslSpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3401,8 +3401,8 @@ export const getAccessModemReplacement: API.OperationMethod<
   GetAccessModemReplacementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetAccessModemReplacementRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<XdslModemExchangeInfo>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetAccessModemReplacementRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<XdslModemExchangeInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3416,8 +3416,8 @@ export const getBlocIPStatus: API.OperationMethod<
   GetBlocIPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetBlocIPStatusRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetBlocIPStatusResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<GetBlocIPStatusRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetBlocIPStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3431,8 +3431,8 @@ export const getContentSharingStatus: API.OperationMethod<
   GetContentSharingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetContentSharingStatusRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetContentSharingStatusResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetContentSharingStatusRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetContentSharingStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3446,8 +3446,8 @@ export const getDHCPStaticAddress: API.OperationMethod<
   GetDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetDHCPStaticAddressRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<XdslDHCPStaticAddress>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetDHCPStaticAddressRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<XdslDHCPStaticAddress>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3461,8 +3461,8 @@ export const getDHCPStaticAddresses: API.OperationMethod<
   GetDHCPStaticAddressesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetDHCPStaticAddressesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetDHCPStaticAddressesResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetDHCPStaticAddressesRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<GetDHCPStaticAddressesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3476,8 +3476,8 @@ export const getFirmwareVersion: API.OperationMethod<
   GetFirmwareVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetFirmwareVersionRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetFirmwareVersionResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetFirmwareVersionRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<GetFirmwareVersionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3491,8 +3491,8 @@ export const getFTPStatus: API.OperationMethod<
   GetFTPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetFTPStatusRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetFTPStatusResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetFTPStatusRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetFTPStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3506,8 +3506,8 @@ export const getIpsecAlgStatus: API.OperationMethod<
   GetIpsecAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIpsecAlgStatusRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetIpsecAlgStatusResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetIpsecAlgStatusRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetIpsecAlgStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3521,8 +3521,8 @@ export const getModemCallWaitingStatus: API.OperationMethod<
   GetModemCallWaitingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetModemCallWaitingStatusRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetModemCallWaitingStatusResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetModemCallWaitingStatusRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetModemCallWaitingStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3536,8 @@ export const getModemTemplate: API.OperationMethod<
   GetModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetModemTemplateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<XdslTemplateModem>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetModemTemplateRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<XdslTemplateModem>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3551,8 +3551,8 @@ export const getModemTemplates: API.OperationMethod<
   GetModemTemplatesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetModemTemplatesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetModemTemplatesResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<GetModemTemplatesRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<GetModemTemplatesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3566,8 +3566,8 @@ export const getMonitoringNotification: API.OperationMethod<
   GetMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetMonitoringNotificationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<XdslMonitoringNotification>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetMonitoringNotificationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<XdslMonitoringNotification>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3581,8 @@ export const getMonitoringNotifications: API.OperationMethod<
   GetMonitoringNotificationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetMonitoringNotificationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetMonitoringNotificationsResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetMonitoringNotificationsRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<GetMonitoringNotificationsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3596,8 +3596,8 @@ export const getPortMapping: API.OperationMethod<
   GetPortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetPortMappingRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<XdslPortMapping>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetPortMappingRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<XdslPortMapping>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3611,8 +3611,8 @@ export const getPortMappings: API.OperationMethod<
   GetPortMappingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetPortMappingsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetPortMappingsResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetPortMappingsRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<GetPortMappingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3626,8 +3626,8 @@ export const getSipAlgStatus: API.OperationMethod<
   GetSipAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetSipAlgStatusRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetSipAlgStatusResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<GetSipAlgStatusRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetSipAlgStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3641,8 +3641,8 @@ export const getUpnpStatus: API.OperationMethod<
   GetUpnpStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetUpnpStatusRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetUpnpStatusResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetUpnpStatusRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetUpnpStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3656,8 +3656,8 @@ export const getWifiMeshStatus: API.OperationMethod<
   GetWifiMeshStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetWifiMeshStatusRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetWifiMeshStatusResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetWifiMeshStatusRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetWifiMeshStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3671,8 +3671,8 @@ export const getWifiOneSsidStatus: API.OperationMethod<
   GetWifiOneSsidStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetWifiOneSsidStatusRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetWifiOneSsidStatusResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetWifiOneSsidStatusRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetWifiOneSsidStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3686,8 +3686,8 @@ export const getXdsl: API.OperationMethod<
   GetXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetXdslRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<XdslAccessWithIAM>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetXdslRequest>,
+  output: __S(1523, __c95, 3) as any as S.Schema<XdslAccessWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3701,8 +3701,8 @@ export const getXdslAddressMoveExtraIpRange: API.OperationMethod<
   GetXdslAddressMoveExtraIpRangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetXdslAddressMoveExtraIpRangeRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<XdslExtraIpRangeMove>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetXdslAddressMoveExtraIpRangeRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<XdslExtraIpRangeMove>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3716,8 +3716,8 @@ export const getXdslAntiSpam: API.OperationMethod<
   GetXdslAntiSpamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetXdslAntiSpamRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<XdslAntiSpam>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetXdslAntiSpamRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<XdslAntiSpam>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3731,8 +3731,8 @@ export const getXdslCanCancelResiliation: API.OperationMethod<
   GetXdslCanCancelResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetXdslCanCancelResiliationRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetXdslCanCancelResiliationResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<GetXdslCanCancelResiliationRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<GetXdslCanCancelResiliationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3746,8 +3746,8 @@ export const getXdslDiagnostic: API.OperationMethod<
   GetXdslDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetXdslDiagnosticRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<XdslAccessDiagnostic>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetXdslDiagnosticRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<XdslAccessDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3761,8 +3761,8 @@ export const getXdslEmailPro: API.OperationMethod<
   GetXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetXdslEmailProRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<XdslXdslEmailProWithIAM>,
+  input: __S(1616, __c101, 0) as any as S.Schema<GetXdslEmailProRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<XdslXdslEmailProWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3776,8 +3776,8 @@ export const getXdslFiberEligibility: API.OperationMethod<
   GetXdslFiberEligibilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetXdslFiberEligibilityRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<XdslFiberEligibility>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetXdslFiberEligibilityRequest>,
+  output: __S(1635, __c102, 3) as any as S.Schema<XdslFiberEligibility>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3791,8 +3791,8 @@ export const getXdslIncident: API.OperationMethod<
   GetXdslIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetXdslIncidentRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<XdslIncident>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetXdslIncidentRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<XdslIncident>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3806,8 +3806,8 @@ export const getXdslIncident2: API.OperationMethod<
   GetXdslIncident2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetXdslIncidentRequest2>,
-  output: __S(96, __c12, 0) as any as S.Schema<XdslIncident>,
+  input: __S(1712, __c107, 0) as any as S.Schema<GetXdslIncidentRequest2>,
+  output: __S(1680, __c105, 0) as any as S.Schema<XdslIncident>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3821,8 +3821,8 @@ export const getXdslIps: API.OperationMethod<
   GetXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetXdslIpsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<XdslIP>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetXdslIpsRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<XdslIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3836,8 +3836,8 @@ export const getXdslLine: API.OperationMethod<
   GetXdslLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetXdslLineRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<XdslLine>,
+  input: __S(1744, __c109, 0) as any as S.Schema<GetXdslLineRequest>,
+  output: __S(1748, __c109, 4) as any as S.Schema<XdslLine>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3851,8 +3851,8 @@ export const getXdslLineDslamPort: API.OperationMethod<
   GetXdslLineDslamPortError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetXdslLineDslamPortRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<XdslDslamPort>,
+  input: __S(1760, __c110, 0) as any as S.Schema<GetXdslLineDslamPortRequest>,
+  output: __S(1761, __c110, 1) as any as S.Schema<XdslDslamPort>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3866,8 +3866,8 @@ export const getXdslModem: API.OperationMethod<
   GetXdslModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetXdslModemRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<XdslModem>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetXdslModemRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<XdslModem>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3881,8 +3881,8 @@ export const getXdslModemConnectedDevice: API.OperationMethod<
   GetXdslModemConnectedDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetXdslModemConnectedDeviceRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<XdslConnectedDevice>,
+  input: __S(1808, __c113, 0) as any as S.Schema<GetXdslModemConnectedDeviceRequest>,
+  output: __S(1809, __c113, 1) as any as S.Schema<XdslConnectedDevice>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3896,8 +3896,8 @@ export const getXdslModemInfo: API.OperationMethod<
   GetXdslModemInfoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetXdslModemInfoRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<XdslAsyncTaskXdslModemInfo>,
+  input: __S(1824, __c114, 0) as any as S.Schema<GetXdslModemInfoRequest>,
+  output: __S(1828, __c114, 4) as any as S.Schema<XdslAsyncTaskXdslModemInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3911,8 +3911,8 @@ export const getXdslModemLan: API.OperationMethod<
   GetXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetXdslModemLanRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<XdslLAN>,
+  input: __S(1840, __c115, 0) as any as S.Schema<GetXdslModemLanRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<XdslLAN>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3926,8 +3926,8 @@ export const getXdslModemLanDhcp: API.OperationMethod<
   GetXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetXdslModemLanDhcpRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<XdslDHCP>,
+  input: __S(1856, __c116, 0) as any as S.Schema<GetXdslModemLanDhcpRequest>,
+  output: __S(1857, __c116, 1) as any as S.Schema<XdslDHCP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3941,8 +3941,8 @@ export const getXdslModemWifi: API.OperationMethod<
   GetXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetXdslModemWifiRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<XdslWLAN>,
+  input: __S(1872, __c117, 0) as any as S.Schema<GetXdslModemWifiRequest>,
+  output: __S(1873, __c117, 1) as any as S.Schema<XdslWLAN>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3956,8 +3956,8 @@ export const getXdslModemWifiQrCode: API.OperationMethod<
   GetXdslModemWifiQrCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetXdslModemWifiQrCodeRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetXdslModemWifiQrCodeResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<GetXdslModemWifiQrCodeRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<GetXdslModemWifiQrCodeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3971,8 +3971,8 @@ export const getXdslModemWifiRadio: API.OperationMethod<
   GetXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetXdslModemWifiRadioRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<XdslWifiRadio>,
+  input: __S(1936, __c121, 0) as any as S.Schema<GetXdslModemWifiRadioRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<XdslWifiRadio>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3986,8 +3986,8 @@ export const getXdslOnt: API.OperationMethod<
   GetXdslOntError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetXdslOntRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<XdslOnt>,
+  input: __S(1952, __c122, 0) as any as S.Schema<GetXdslOntRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<XdslOnt>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4001,8 +4001,8 @@ export const getXdslPendingAction: API.OperationMethod<
   GetXdslPendingActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetXdslPendingActionRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<XdslPendingAction>,
+  input: __S(1968, __c123, 0) as any as S.Schema<GetXdslPendingActionRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<XdslPendingAction>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4016,8 +4016,8 @@ export const getXdslResiliationFollowup: API.OperationMethod<
   GetXdslResiliationFollowupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetXdslResiliationFollowupRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<XdslResiliationFollowUpDetail>,
+  input: __S(1984, __c124, 0) as any as S.Schema<GetXdslResiliationFollowupRequest>,
+  output: __S(2000, __c125, 0) as any as S.Schema<XdslResiliationFollowUpDetail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4031,8 +4031,8 @@ export const getXdslResiliationTerms: API.OperationMethod<
   GetXdslResiliationTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetXdslResiliationTermsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<XdslResiliationTerms>,
+  input: __S(2016, __c126, 0) as any as S.Schema<GetXdslResiliationTermsRequest>,
+  output: __S(2017, __c126, 1) as any as S.Schema<XdslResiliationTerms>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4046,8 +4046,8 @@ export const getXdslRma: API.OperationMethod<
   GetXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetXdslRmaRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<TelephonyRma>,
+  input: __S(2032, __c127, 0) as any as S.Schema<GetXdslRmaRequest>,
+  output: __S(2035, __c127, 3) as any as S.Schema<TelephonyRma>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4061,8 +4061,8 @@ export const getXdslServiceInfos: API.OperationMethod<
   GetXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetXdslServiceInfosRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ServicesService>,
+  input: __S(2064, __c129, 0) as any as S.Schema<GetXdslServiceInfosRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4076,8 +4076,8 @@ export const getXdslSpare: API.OperationMethod<
   GetXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetXdslSpareRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<SpareXdslXdslSpareWithIAM>,
+  input: __S(2112, __c132, 0) as any as S.Schema<GetXdslSpareRequest>,
+  output: __S(2113, __c132, 1) as any as S.Schema<SpareXdslXdslSpareWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4091,8 +4091,8 @@ export const getXdslSpareServiceInfos: API.OperationMethod<
   GetXdslSpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetXdslSpareServiceInfosRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ServicesService>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetXdslSpareServiceInfosRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4106,8 +4106,8 @@ export const getXdslTask: API.OperationMethod<
   GetXdslTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetXdslTaskRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(2160, __c135, 0) as any as S.Schema<GetXdslTaskRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4121,8 +4121,8 @@ export const getXdslTotalDeconsolidationTerms: API.OperationMethod<
   GetXdslTotalDeconsolidationTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetXdslTotalDeconsolidationTermsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<XdslDeconsolidationTerms>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetXdslTotalDeconsolidationTermsRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<XdslDeconsolidationTerms>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4136,8 +4136,8 @@ export const installFrimware: API.OperationMethod<
   InstallFrimwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<InstallFrimwareRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(2192, __c137, 0) as any as S.Schema<InstallFrimwareRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4151,8 +4151,8 @@ export const listXdsl: API.OperationMethod<
   ListXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListXdslRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListXdslRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4166,8 +4166,8 @@ export const listXdslAntiSpamEvidences: API.OperationMethod<
   ListXdslAntiSpamEvidencesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListXdslAntiSpamEvidencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<XdslAntiSpamEvidencesInfo>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListXdslAntiSpamEvidencesRequest>,
+  output: __S(2243, __c140, 3) as any as S.Schema<XdslAntiSpamEvidencesInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4181,8 +4181,8 @@ export const listXdslAntiSpams: API.OperationMethod<
   ListXdslAntiSpamsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListXdslAntiSpamsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslAntiSpamsResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListXdslAntiSpamsRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslAntiSpamsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4196,8 +4196,8 @@ export const listXdslEmailPro: API.OperationMethod<
   ListXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListXdslEmailProRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslEmailProResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<ListXdslEmailProRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4211,8 +4211,8 @@ export const listXdslFiberEligibilities: API.OperationMethod<
   ListXdslFiberEligibilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListXdslFiberEligibilitiesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListXdslFiberEligibilitiesResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<ListXdslFiberEligibilitiesRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<ListXdslFiberEligibilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4226,8 +4226,8 @@ export const listXdslIncidents: API.OperationMethod<
   ListXdslIncidentsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListXdslIncidentsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListXdslIncidentsResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<ListXdslIncidentsRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<ListXdslIncidentsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4241,8 +4241,8 @@ export const listXdslIps: API.OperationMethod<
   ListXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListXdslIpsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslIpsResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<ListXdslIpsRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4256,8 +4256,8 @@ export const listXdslLineDslamPortAvailableProfiles: API.OperationMethod<
   ListXdslLineDslamPortAvailableProfilesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesRequest>,
+  output: __S(2386, __c149, 2) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4271,8 +4271,8 @@ export const listXdslLineDslamPortLogs: API.OperationMethod<
   ListXdslLineDslamPortLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListXdslLineDslamPortLogsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListXdslLineDslamPortLogsResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<ListXdslLineDslamPortLogsRequest>,
+  output: __S(2403, __c150, 3) as any as S.Schema<ListXdslLineDslamPortLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4286,8 +4286,8 @@ export const listXdslLines: API.OperationMethod<
   ListXdslLinesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListXdslLinesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslLinesResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<ListXdslLinesRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslLinesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4301,8 +4301,8 @@ export const listXdslLineStatistics: API.OperationMethod<
   ListXdslLineStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListXdslLineStatisticsRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValue>,
+  input: __S(2432, __c152, 0) as any as S.Schema<ListXdslLineStatisticsRequest>,
+  output: __S(2435, __c152, 3) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4316,8 +4316,8 @@ export const listXdslModemAvailableACSBackend: API.OperationMethod<
   ListXdslModemAvailableACSBackendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemAvailableACSBackendResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemAvailableACSBackendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4331,8 +4331,8 @@ export const listXdslModemAvailableWLANChannel: API.OperationMethod<
   ListXdslModemAvailableWLANChannelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4346,8 +4346,8 @@ export const listXdslModemConnectedDevices: API.OperationMethod<
   ListXdslModemConnectedDevicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListXdslModemConnectedDevicesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemConnectedDevicesResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<ListXdslModemConnectedDevicesRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemConnectedDevicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4361,8 +4361,8 @@ export const listXdslModemFirmwareAvailable: API.OperationMethod<
   ListXdslModemFirmwareAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemFirmwareAvailableResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemFirmwareAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4376,8 +4376,8 @@ export const listXdslModemLan: API.OperationMethod<
   ListXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListXdslModemLanRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslModemLanResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<ListXdslModemLanRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslModemLanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4391,8 +4391,8 @@ export const listXdslModemLanDhcp: API.OperationMethod<
   ListXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListXdslModemLanDhcpRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemLanDhcpResponse>,
+  input: __S(2528, __c158, 0) as any as S.Schema<ListXdslModemLanDhcpRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemLanDhcpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4406,8 +4406,8 @@ export const listXdslModemWifi: API.OperationMethod<
   ListXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListXdslModemWifiRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemWifiResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<ListXdslModemWifiRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemWifiResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4421,8 +4421,8 @@ export const listXdslModemWifiRadio: API.OperationMethod<
   ListXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListXdslModemWifiRadioRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslModemWifiRadioResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<ListXdslModemWifiRadioRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslModemWifiRadioResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4436,8 +4436,8 @@ export const listXdslOrderFollowup: API.OperationMethod<
   ListXdslOrderFollowupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListXdslOrderFollowupRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<ListXdslOrderFollowupResponse>,
+  input: __S(2592, __c162, 0) as any as S.Schema<ListXdslOrderFollowupRequest>,
+  output: __S(2595, __c162, 3) as any as S.Schema<ListXdslOrderFollowupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4451,8 +4451,8 @@ export const listXdslRadiusConnectionLogs: API.OperationMethod<
   ListXdslRadiusConnectionLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListXdslRadiusConnectionLogsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListXdslRadiusConnectionLogsResponse>,
+  input: __S(2608, __c163, 0) as any as S.Schema<ListXdslRadiusConnectionLogsRequest>,
+  output: __S(2611, __c163, 3) as any as S.Schema<ListXdslRadiusConnectionLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4466,8 +4466,8 @@ export const listXdslRma: API.OperationMethod<
   ListXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListXdslRmaRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslRmaResponse>,
+  input: __S(2624, __c164, 0) as any as S.Schema<ListXdslRmaRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4481,8 +4481,8 @@ export const listXdslSpare: API.OperationMethod<
   ListXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListXdslSpareRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListXdslSpareResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<ListXdslSpareRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListXdslSpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4496,8 +4496,8 @@ export const listXdslSpareBrands: API.OperationMethod<
   ListXdslSpareBrandsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListXdslSpareBrandsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslSpareBrandsResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<ListXdslSpareBrandsRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslSpareBrandsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4511,8 +4511,8 @@ export const listXdslSpareCompatibleReplacement: API.OperationMethod<
   ListXdslSpareCompatibleReplacementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4526,8 +4526,8 @@ export const listXdslStatistics: API.OperationMethod<
   ListXdslStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListXdslStatisticsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatency>,
+  input: __S(2688, __c168, 0) as any as S.Schema<ListXdslStatisticsRequest>,
+  output: __S(2691, __c168, 3) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatency>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4541,8 +4541,8 @@ export const listXdslTasks: API.OperationMethod<
   ListXdslTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListXdslTasksRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListXdslTasksResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<ListXdslTasksRequest>,
+  output: __S(2368, __c148, 0) as any as S.Schema<ListXdslTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4556,8 +4556,8 @@ export const putXdsl: API.OperationMethod<
   PutXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<PutXdslRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<PutXdslRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4571,8 +4571,8 @@ export const putXdslEmailPro: API.OperationMethod<
   PutXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<PutXdslEmailProRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslEmailProResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PutXdslEmailProRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4586,8 +4586,8 @@ export const putXdslModem: API.OperationMethod<
   PutXdslModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PutXdslModemRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslModemResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<PutXdslModemRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslModemResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4601,8 +4601,8 @@ export const putXdslModemLan: API.OperationMethod<
   PutXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<PutXdslModemLanRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslModemLanResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PutXdslModemLanRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslModemLanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4616,8 +4616,8 @@ export const putXdslModemLanDhcp: API.OperationMethod<
   PutXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<PutXdslModemLanDhcpRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslModemLanDhcpResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<PutXdslModemLanDhcpRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslModemLanDhcpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4631,8 +4631,8 @@ export const putXdslModemWifi: API.OperationMethod<
   PutXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PutXdslModemWifiRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslModemWifiResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<PutXdslModemWifiRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslModemWifiResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4646,8 +4646,8 @@ export const putXdslModemWifiRadio: API.OperationMethod<
   PutXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<PutXdslModemWifiRadioRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(176, __c11, 0) as any as S.Schema<PutXdslModemWifiRadioRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4661,8 +4661,8 @@ export const putXdslRma: API.OperationMethod<
   PutXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PutXdslRmaRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslRmaResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<PutXdslRmaRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4676,8 +4676,8 @@ export const putXdslServiceInfos: API.OperationMethod<
   PutXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<PutXdslServiceInfosRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutXdslServiceInfosResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<PutXdslServiceInfosRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PutXdslServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4691,8 +4691,8 @@ export const putXdslSpareServiceInfos: API.OperationMethod<
   PutXdslSpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<PutXdslSpareServiceInfosRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PutXdslSpareServiceInfosResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<PutXdslSpareServiceInfosRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<PutXdslSpareServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4706,8 +4706,8 @@ export const rebootModem: API.OperationMethod<
   RebootModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<RebootModemRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(304, __c19, 0) as any as S.Schema<RebootModemRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4721,8 +4721,8 @@ export const refreshXdslModemConnectedDevices: API.OperationMethod<
   RefreshXdslModemConnectedDevicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<RefreshXdslModemConnectedDevicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(320, __c20, 0) as any as S.Schema<RefreshXdslModemConnectedDevicesRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4736,8 +4736,8 @@ export const removeDHCPStaticAddress: API.OperationMethod<
   RemoveDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<RemoveDHCPStaticAddressRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(336, __c21, 0) as any as S.Schema<RemoveDHCPStaticAddressRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4751,8 +4751,8 @@ export const removeMonitoringNotification: API.OperationMethod<
   RemoveMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<RemoveMonitoringNotificationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RemoveMonitoringNotificationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<RemoveMonitoringNotificationRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<RemoveMonitoringNotificationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4766,8 +4766,8 @@ export const removePortMapping: API.OperationMethod<
   RemovePortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<RemovePortMappingRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(368, __c23, 0) as any as S.Schema<RemovePortMappingRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4781,8 +4781,8 @@ export const replaceAccessModem: API.OperationMethod<
   ReplaceAccessModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ReplaceAccessModemRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<OrderOrder>,
+  input: __S(384, __c24, 0) as any as S.Schema<ReplaceAccessModemRequest>,
+  output: __S(392, __c24, 8) as any as S.Schema<OrderOrder>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4796,8 +4796,8 @@ export const replaceModemBySpare: API.OperationMethod<
   ReplaceModemBySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ReplaceModemBySpareRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ReplaceModemBySpareResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ReplaceModemBySpareRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<ReplaceModemBySpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4811,8 +4811,8 @@ export const requestTotalDeconsolidation: API.OperationMethod<
   RequestTotalDeconsolidationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<RequestTotalDeconsolidationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(416, __c26, 0) as any as S.Schema<RequestTotalDeconsolidationRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4826,8 +4826,8 @@ export const resetModemConfiguration: API.OperationMethod<
   ResetModemConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ResetModemConfigurationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(432, __c27, 0) as any as S.Schema<ResetModemConfigurationRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4841,8 +4841,8 @@ export const resetXdslLinesDslamPort: API.OperationMethod<
   ResetXdslLinesDslamPortError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ResetXdslLinesDslamPortRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(448, __c28, 0) as any as S.Schema<ResetXdslLinesDslamPortRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4856,8 +4856,8 @@ export const resetXdslModemPortMappingConfig: API.OperationMethod<
   ResetXdslModemPortMappingConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ResetXdslModemPortMappingConfigResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<ResetXdslModemPortMappingConfigResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4871,8 +4871,8 @@ export const resiliateAccess: API.OperationMethod<
   ResiliateAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ResiliateAccessRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<XdslResiliationFollowUpDetail>,
+  input: __S(496, __c31, 0) as any as S.Schema<ResiliateAccessRequest>,
+  output: __S(2000, __c125, 0) as any as S.Schema<XdslResiliationFollowUpDetail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4886,8 +4886,8 @@ export const searchXdslOrderMeetings: API.OperationMethod<
   SearchXdslOrderMeetingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<SearchXdslOrderMeetingsRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<XdslAsyncTaskConnectivityEligibilityMeetings>,
+  input: __S(512, __c32, 0) as any as S.Schema<SearchXdslOrderMeetingsRequest>,
+  output: __S(517, __c32, 5) as any as S.Schema<XdslAsyncTaskConnectivityEligibilityMeetings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4901,8 +4901,8 @@ export const sendXdslOrderToProvider: API.OperationMethod<
   SendXdslOrderToProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<SendXdslOrderToProviderRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<SendXdslOrderToProviderResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<SendXdslOrderToProviderRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<SendXdslOrderToProviderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4916,8 +4916,8 @@ export const setWifiMeshStatus: API.OperationMethod<
   SetWifiMeshStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<SetWifiMeshStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(560, __c35, 0) as any as S.Schema<SetWifiMeshStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4931,8 +4931,8 @@ export const setWifiOneSsidStatus: API.OperationMethod<
   SetWifiOneSsidStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<SetWifiOneSsidStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(576, __c36, 0) as any as S.Schema<SetWifiOneSsidStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4946,8 +4946,8 @@ export const updateBlocIPStatus: API.OperationMethod<
   UpdateBlocIPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<UpdateBlocIPStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateBlocIPStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4961,8 +4961,8 @@ export const updateContentSharingStatus: API.OperationMethod<
   UpdateContentSharingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UpdateContentSharingStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(608, __c38, 0) as any as S.Schema<UpdateContentSharingStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4976,8 +4976,8 @@ export const updateDHCPStaticAddress: API.OperationMethod<
   UpdateDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<UpdateDHCPStaticAddressRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<UpdateDHCPStaticAddressResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<UpdateDHCPStaticAddressRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<UpdateDHCPStaticAddressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4991,8 +4991,8 @@ export const updateFTPStatus: API.OperationMethod<
   UpdateFTPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<UpdateFTPStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(640, __c40, 0) as any as S.Schema<UpdateFTPStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5002,8 +5002,8 @@ export type UpdateIpError = OvhOpError;
 /** Change the status of the IPv6 for this access */
 export const updateIp: API.OperationMethod<UpdateIpRequest, XdslTask, UpdateIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(243, __c30, 3) as any as S.Schema<UpdateIpRequest>,
-    output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+    input: __S(672, __c42, 0) as any as S.Schema<UpdateIpRequest>,
+    output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -5017,8 +5017,8 @@ export const updateIpsecAlgStatus: API.OperationMethod<
   UpdateIpsecAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<UpdateIpsecAlgStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(688, __c43, 0) as any as S.Schema<UpdateIpsecAlgStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5032,8 +5032,8 @@ export const updateLineDiagnostic: API.OperationMethod<
   UpdateLineDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<UpdateLineDiagnosticRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<XdslLineDiagnosticDiagnostic>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateLineDiagnosticRequest>,
+  output: __S(719, __c44, 15) as any as S.Schema<XdslLineDiagnosticDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5047,8 +5047,8 @@ export const updateMailSending: API.OperationMethod<
   UpdateMailSendingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<UpdateMailSendingRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(720, __c45, 0) as any as S.Schema<UpdateMailSendingRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5062,8 +5062,8 @@ export const updateModemCallWaiting: API.OperationMethod<
   UpdateModemCallWaitingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<UpdateModemCallWaitingRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(736, __c46, 0) as any as S.Schema<UpdateModemCallWaitingRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5077,8 +5077,8 @@ export const updateModemTemplate: API.OperationMethod<
   UpdateModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<UpdateModemTemplateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateModemTemplateResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateModemTemplateRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UpdateModemTemplateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5092,8 +5092,8 @@ export const updateMonitoringNotification: API.OperationMethod<
   UpdateMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateMonitoringNotificationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateMonitoringNotificationResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateMonitoringNotificationRequest>,
+  output: __S(1904, __c119, 0) as any as S.Schema<UpdateMonitoringNotificationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5107,8 +5107,8 @@ export const updatePortMapping: API.OperationMethod<
   UpdatePortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<UpdatePortMappingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdatePortMappingResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdatePortMappingRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UpdatePortMappingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5122,8 +5122,8 @@ export const updateRIO: API.OperationMethod<
   UpdateRIOError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<UpdateRIORequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateRIOResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateRIORequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UpdateRIOResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5137,8 +5137,8 @@ export const updateRMAType: API.OperationMethod<
   UpdateRMATypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<UpdateRMATypeRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateRMATypeResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateRMATypeRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UpdateRMATypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5152,8 +5152,8 @@ export const updateSipAlgStatus: API.OperationMethod<
   UpdateSipAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<UpdateSipAlgStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateSipAlgStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5167,8 +5167,8 @@ export const updateUpnpStatus: API.OperationMethod<
   UpdateUpnpStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<UpdateUpnpStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<XdslTask>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateUpnpStatusRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<XdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5196,7 +5196,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddDHCPStaticAddressRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IPAddress: S.optional(S.String),
@@ -5205,7 +5209,11 @@ function __c0(j: number): any {
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "XdslDHCPStaticAddress" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5222,7 +5230,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddMonitoringNotificationRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowIncident: S.optional(S.Boolean),
@@ -5238,155 +5250,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "XdslMonitoringNotification",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          allowedRemoteIp: S.optional(S.String),
-          description: S.optional(S.String),
-          externalPortEnd: S.optional(S.Number),
-          externalPortStart: S.Number,
-          internalClient: S.String,
-          internalPort: S.Number,
-          internalPortEnd: S.optional(S.Number),
-          name: S.String,
-          protocol: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 }),
-        ),
-      ).annotate({ identifier: "AddPortMappingRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedRemoteIp: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          externalPortEnd: S.optional(S.NullOr(S.Number)),
-          externalPortStart: S.optional(S.Number),
-          id: S.optional(S.Number),
-          internalClient: S.optional(S.String),
-          internalPort: S.optional(S.Number),
-          internalPortEnd: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.String),
-          protocol: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslPortMapping" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          templateName: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/applyTemplateToModem", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ApplyTemplateModemRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          status: S.optional(S.String),
-          todoDate: S.optional(S.String),
-          updateDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslTask" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/tasks/{id}/archive", code: 200 }),
-        ),
-      ).annotate({ identifier: "ArchiveXdslTaskRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ArchiveXdslTaskResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          endDate: S.String,
-          startDate: S.String,
-          uiCode: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/orderMeeting", code: 200 })),
-      ).annotate({ identifier: "BookMeetingRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelXdslLinesDiagnosticRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelXdslLinesDiagnosticResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/cancelResiliation", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CancelXdslResiliationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/changeContact", code: 200 })),
-      ).annotate({ identifier: "ChangeContactRequest" });
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ChangeContactResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/email/pro/{email}/changePassword", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ChangeEmailPasswordRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          finishDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          status: S.optional(S.String),
-          todoDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslEmailProTask" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5402,1718 +5270,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ChangeLineDSLAMProfileRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          serviceName: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/templateModem", code: 200 })),
-      ).annotate({
-        identifier: "CreateModemTemplateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          defaultGateway: S.optional(S.String),
-          dhcpName: S.optional(S.String),
-          domainName: S.optional(S.String),
-          endAddress: S.optional(S.String),
-          leaseTime: S.optional(S.Number),
-          primaryDNS: S.optional(S.String),
-          secondaryDNS: S.optional(S.NullOr(S.String)),
-          serverEnabled: S.optional(S.Boolean),
-          startAddress: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslTemplateModemDHCP" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          IPAddress: S.optional(S.String),
-          addressingType: S.optional(S.String),
-          lanName: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslTemplateModemLAN" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          SSID: S.optional(S.String),
-          SSIDAdvertisementEnabled: S.optional(S.Boolean),
-          bandSteering: S.optional(S.Boolean),
-          channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
-          guest: S.optional(S.Boolean),
-          securityKey: S.optional(S.String),
-          securityType: S.optional(S.String),
-          wifiName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslTemplateModemWLAN" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LANandDHCP: S.optional(S.NullOr(S.Boolean)),
-          WLANList: S.optional(S.NullOr(__S(27, __c3, 3))),
-          dmzIP: S.optional(S.NullOr(S.Boolean)),
-          mtuSize: S.optional(S.NullOr(S.Boolean)),
-          portMappingList: S.optional(S.NullOr(__S(27, __c3, 3))),
-        }),
-      ).annotate({
-        identifier: "XdslTemplateModemParametersToIgnore",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedRemoteIp: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          externalPortEnd: S.optional(S.NullOr(S.Number)),
-          externalPortStart: S.optional(S.Number),
-          internalClient: S.optional(S.String),
-          internalPort: S.optional(S.Number),
-          name: S.optional(S.String),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslTemplateModemPortMapping",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DHCP: S.optional(__S(22, __c2, 6)),
-          LAN: S.optional(__S(24, __c3, 0)),
-          WLAN: S.optional(__S(26, __c3, 2)),
-          capabilities: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          dmzIP: S.optional(S.NullOr(S.String)),
-          mtuSize: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.String),
-          parametersToIgnore: S.optional(S.NullOr(__S(28, __c3, 4))),
-          portMapping: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "XdslTemplateModem" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/xdsl/{serviceName}/addressMove/extraIpRangeMove",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateXdslAddressMoveExtraIpRangeMoveRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
-      ).annotate({
-        identifier: "CreateXdslDiagnosticRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/ips", code: 200 })),
-      ).annotate({ identifier: "CreateXdslIpsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/reconfigureVoip", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateXdslModemReconfigureVoipRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/requestPPPLoginMail", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateXdslRequestPPPLoginMailRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          spare: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/spare/{spare}/returnMerchandise", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateXdslSpareReturnMerchandiseRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/templateModem/{name}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteModemTemplateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/email/pro/{email}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteXdslEmailProRequest",
-      });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/{serviceName}/ips/{ip}", code: 200 })),
-      ).annotate({ identifier: "DeleteXdslIpsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteXdslRmaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          spare: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/spare/{spare}", code: 200 })),
-      ).annotate({ identifier: "DeleteXdslSpareRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/comfortExchange", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetAccessModemReplacementRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          priceInUcents: S.optional(S.NullOr(S.Number)),
-          text: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OrderPrice" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canExchange: S.optional(S.Boolean),
-          newModel: S.optional(S.String),
-          price: S.optional(__S(44, __c5, 4)),
-          priceWithTax: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "XdslModemExchangeInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/blocIp", code: 200 })),
-      ).annotate({ identifier: "GetBlocIPStatusRequest" });
-    case 7:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetBlocIPStatusResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/contentSharing", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetContentSharingStatusRequest",
-      });
-    case 1:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetContentSharingStatusResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          lanName: S.String.pipe(T.Label()),
-          dhcpName: S.String.pipe(T.Label()),
-          MACAddress: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDHCPStaticAddressRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          lanName: S.String.pipe(T.Label()),
-          dhcpName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDHCPStaticAddressesRequest",
-      });
-    case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetDHCPStaticAddressesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
-      ).annotate({
-        identifier: "GetFirmwareVersionRequest",
-      });
-    case 6:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetFirmwareVersionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ftp", code: 200 })),
-      ).annotate({ identifier: "GetFTPStatusRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ipsecAlg", code: 200 })),
-      ).annotate({ identifier: "GetIpsecAlgStatusRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/callWaiting", code: 200 })),
-      ).annotate({
-        identifier: "GetModemCallWaitingStatusRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem/{name}", code: 200 })),
-      ).annotate({ identifier: "GetModemTemplateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem", code: 200 })),
-      ).annotate({ identifier: "GetModemTemplatesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/monitoringNotifications/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMonitoringNotificationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/monitoringNotifications", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetMonitoringNotificationsRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetMonitoringNotificationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/portMappings/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetPortMappingRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetPortMappingsRequest" });
-    case 1:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetPortMappingsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/sipAlg", code: 200 })),
-      ).annotate({ identifier: "GetSipAlgStatusRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/upnp", code: 200 })),
-      ).annotate({ identifier: "GetUpnpStatusRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/mesh", code: 200 })),
-      ).annotate({ identifier: "GetWifiMeshStatusRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/onessid", code: 200 })),
-      ).annotate({
-        identifier: "GetWifiOneSsidStatusRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}", code: 200 })),
-      ).annotate({ identifier: "GetXdslRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          building: S.optional(S.NullOr(S.String)),
-          city: S.optional(S.String),
-          door: S.optional(S.NullOr(S.String)),
-          firstName: S.optional(S.String),
-          floor: S.optional(S.NullOr(S.String)),
-          inseeCode: S.optional(S.String),
-          lastName: S.optional(S.String),
-          numberStreet: S.optional(S.String),
-          residence: S.optional(S.NullOr(S.String)),
-          rivoliCode: S.optional(S.String),
-          stairs: S.optional(S.NullOr(S.String)),
-          street: S.optional(S.String),
-          zipCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslAddressDetail" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          canApplyLnsRateLimit: S.optional(S.Boolean),
-          canChangeDslamProfile: S.optional(S.Boolean),
-          canChangeLns: S.optional(S.Boolean),
-          canGetRadiusConnectionLogs: S.optional(S.Boolean),
-          canResetDslamPort: S.optional(S.Boolean),
-          hasDslamPort: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "XdslAccessCapabilities" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(73, __c9, 1))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accessName: S.optional(S.String),
-          accessType: S.optional(S.String),
-          address: S.optional(__S(71, __c8, 7)),
-          capabilities: S.optional(__S(72, __c9, 0)),
-          description: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(74, __c9, 2))),
-          ipv6Enabled: S.optional(S.Boolean),
-          lnsRateLimit: S.optional(S.NullOr(S.Number)),
-          mailSending: S.optional(S.NullOr(S.String)),
-          monitoring: S.optional(S.Boolean),
-          nra: S.optional(S.String),
-          packName: S.optional(S.NullOr(S.String)),
-          pairsNumber: S.optional(S.Number),
-          provider: S.optional(S.String),
-          providerInfra: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslAccessWithIAM" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/addressMove/extraIpRange", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetXdslAddressMoveExtraIpRangeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          ipRange: S.optional(S.String),
-          moveTo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslExtraIpRangeMove" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams/{ip}", code: 200 })),
-      ).annotate({ identifier: "GetXdslAntiSpamRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          ip: S.optional(S.String),
-          lastSpamDetected: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslAntiSpam" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/canCancelResiliation", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetXdslCanCancelResiliationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetXdslCanCancelResiliationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
-      ).annotate({ identifier: "GetXdslDiagnosticRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          incident: S.optional(S.Boolean),
-          isActiveOnLns: S.optional(S.Boolean),
-          isModemConnected: S.optional(S.Boolean),
-          lineTest: S.optional(S.Boolean),
-          ping: S.optional(S.Boolean),
-          proposedProfileId: S.optional(S.Boolean),
-          sync: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "XdslAccessDiagnosticCapabilities",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lineTest: S.optional(S.NullOr(S.String)),
-          lineTestTime: S.optional(S.NullOr(S.String)),
-          number: S.optional(S.String),
-          proposedProfileId: S.optional(S.NullOr(S.Number)),
-          sync: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "XdslLineDiagnostic" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          capabilities: S.optional(__S(83, __c10, 3)),
-          diagnosticTime: S.optional(S.String),
-          incident: S.optional(S.NullOr(S.Boolean)),
-          isActiveOnLns: S.optional(S.NullOr(S.Boolean)),
-          isModemConnected: S.optional(S.NullOr(S.Boolean)),
-          lineDetails: S.optional(S.NullOr(__S(85, __c10, 5))),
-          maintenance: S.optional(S.NullOr(S.Boolean)),
-          ping: S.optional(S.NullOr(S.Boolean)),
-          remaining: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "XdslAccessDiagnostic" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro/{email}", code: 200 })),
-      ).annotate({ identifier: "GetXdslEmailProRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValueDouble",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentUsage: S.optional(__S(88, __c11, 0)),
-          displayName: S.optional(S.NullOr(S.String)),
-          domain: S.optional(S.String),
-          firstName: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(74, __c9, 2))),
-          id: S.optional(S.Number),
-          initial: S.optional(S.NullOr(S.String)),
-          lastLogoffDate: S.optional(S.NullOr(S.String)),
-          lastLogonDate: S.optional(S.NullOr(S.String)),
-          lastName: S.optional(S.NullOr(S.String)),
-          login: S.optional(S.String),
-          passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          primaryEmailAddress: S.optional(S.String),
-          quota: S.optional(__S(88, __c11, 0)),
-          state: S.optional(S.String),
-          taskPendingId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslXdslEmailProWithIAM" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/fiberEligibilities/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetXdslFiberEligibilityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commercialClosureAnnouncementDate: S.optional(S.NullOr(S.String)),
-          commercialClosureDate: S.optional(S.NullOr(S.String)),
-          commercialClosureInitialDate: S.optional(S.NullOr(S.String)),
-          departmentCode: S.optional(S.String),
-          departmentName: S.optional(S.NullOr(S.String)),
-          ftthZone: S.optional(S.NullOr(S.String)),
-          inseeCode: S.optional(S.String),
-          lot: S.optional(S.NullOr(S.String)),
-          municipalityName: S.optional(S.String),
-          oiCode: S.optional(S.NullOr(S.String)),
-          oiName: S.optional(S.NullOr(S.String)),
-          technicalClosureAnnouncementDate: S.optional(S.NullOr(S.String)),
-          technicalClosureDate: S.optional(S.NullOr(S.String)),
-          technicalClosureInitialDate: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "XdslCopperGridClosureTrajectory",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslOffer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityDate: S.optional(S.NullOr(S.String)),
-          buildingName: S.optional(S.NullOr(S.String)),
-          buildingReference: S.optional(S.NullOr(S.String)),
-          buildingSeqId: S.optional(S.NullOr(S.Number)),
-          copperGridClosureTrajectory: S.optional(S.NullOr(__S(91, __c11, 3))),
-          firstEligibleDate: S.optional(S.NullOr(S.String)),
-          grts: S.optional(S.NullOr(__S(92, __c11, 4))),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.String),
-          offer: S.optional(S.NullOr(__S(93, __c11, 5))),
-          provider: S.optional(S.NullOr(__S(93, __c11, 5))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslFiberEligibility" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/incidents/{id}", code: 200 })),
-      ).annotate({ identifier: "GetXdslIncidentRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          departments: S.optional(__S(27, __c3, 3)),
-          endDate: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.Number),
-          nra: S.optional(__S(27, __c3, 3)),
-          operators: S.optional(__S(92, __c11, 4)),
-          taskId: S.optional(S.NullOr(S.Number)),
-          taskReference: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "XdslIncident" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/incident", code: 200 })),
-      ).annotate({ identifier: "GetXdslIncidentRequest2" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ips/{ip}", code: 200 })),
-      ).annotate({ identifier: "GetXdslIpsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dnsList: S.optional(__S(27, __c3, 3)),
-          ip: S.optional(S.String),
-          range: S.optional(S.Number),
-          status: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslIP" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines/{number}", code: 200 })),
-      ).annotate({ identifier: "GetXdslLineRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lineHead: S.optional(S.String),
-          lineInitialSection: S.optional(S.Number),
-          lineInitialSectionPair: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "XdslLandlineConcentrationPoint",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          diameter: S.optional(S.Number),
-          length: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "XdslLineSectionLength" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          concentrationPoint: S.optional(S.NullOr(__S(101, __c12, 5))),
-          deconsolidation: S.optional(S.String),
-          directDistribution: S.optional(S.NullOr(S.Boolean)),
-          distance: S.optional(S.Number),
-          faultRepairTime: S.optional(S.String),
-          lineSectionsLength: S.optional(__S(103, __c12, 7)),
-          mitigation: S.optional(S.Number),
-          number: S.optional(S.String),
-          originalNumber: S.optional(S.NullOr(S.String)),
-          portability: S.optional(S.Boolean),
-          syncDown: S.optional(S.NullOr(S.Number)),
-          syncUp: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslLine" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines/{number}/dslamPort", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetXdslLineDslamPortRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          isCurrent: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslDslamLineProfile" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lastDesyncDate: S.optional(S.NullOr(S.String)),
-          lastSyncDate: S.optional(S.NullOr(S.String)),
-          profile: S.optional(S.NullOr(__S(106, __c13, 2))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslDslamPort" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem", code: 200 })),
-      ).annotate({ identifier: "GetXdslModemRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canBeManagedByOvh: S.optional(S.Boolean),
-          canChangeACS: S.optional(S.Boolean),
-          canChangeBridgeMode: S.optional(S.Boolean),
-          canChangeDHCP: S.optional(S.Boolean),
-          canChangeDMZ: S.optional(S.Boolean),
-          canChangeEasyFirewallLevel: S.optional(S.Boolean),
-          canChangeFirmware: S.optional(S.Boolean),
-          canChangeLAN: S.optional(S.Boolean),
-          canChangeManagement: S.optional(S.Boolean),
-          canChangeMtu: S.optional(S.Boolean),
-          canChangePortMapping: S.optional(S.Boolean),
-          canChangeWLAN: S.optional(S.Boolean),
-          canChangeWifiRadio: S.optional(S.Boolean),
-          canChangeWifiSSID: S.optional(S.Boolean),
-          canReboot: S.optional(S.Boolean),
-          canReconfigureVoip: S.optional(S.Boolean),
-          canRefreshConnectedDevices: S.optional(S.Boolean),
-          canReset: S.optional(S.Boolean),
-          canUseWifiRadio: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "XdslModemCapabilities" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          acsBackend: S.optional(S.String),
-          acsVersion: S.optional(S.NullOr(S.String)),
-          brandName: S.optional(S.String),
-          capabilities: S.optional(__S(109, __c13, 5)),
-          dmzIP: S.optional(S.NullOr(S.String)),
-          easyFirewallLevel: S.optional(S.NullOr(S.String)),
-          ipv6Support: S.optional(S.Boolean),
-          isBridged: S.optional(S.Boolean),
-          lastCwmpRequestDate: S.optional(S.NullOr(S.String)),
-          macAddress: S.optional(S.String),
-          managedByOvh: S.optional(S.Boolean),
-          model: S.optional(S.String),
-          mtuSize: S.optional(S.NullOr(S.Number)),
-          serialNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslModem" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          macAddress: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetXdslModemConnectedDeviceRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          addressSource: S.optional(S.String),
-          hostName: S.optional(S.String),
-          informationDate: S.optional(S.String),
-          interfaceType: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          leaseTimeRemaining: S.optional(S.Number),
-          macAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslConnectedDevice" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/retrieveInfo", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetXdslModemInfoRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          brand: S.optional(S.String),
-          ip: S.optional(S.String),
-          lastUpdate: S.optional(S.String),
-          macAddress: S.optional(S.String),
-          model: S.optional(S.String),
-          oui: S.optional(S.String),
-          overEthernet: S.optional(S.NullOr(S.String)),
-          pppLogin: S.optional(S.NullOr(S.String)),
-          serial: S.optional(S.String),
-          softVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslDeviceModemInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connectionUptime: S.optional(S.Number),
-          crcError: S.optional(S.Number),
-          deviceUptime: S.optional(S.Number),
-          downstreamAttenuation: S.optional(S.Number),
-          downstreamMargin: S.optional(S.Number),
-          downstreamSync: S.optional(S.Number),
-          fecError: S.optional(S.Number),
-          hecError: S.optional(S.Number),
-          lastUpdate: S.optional(S.String),
-          modulation: S.optional(S.String),
-          quarterHourStart: S.optional(S.Number),
-          syncUptime: S.optional(S.Number),
-          upstreamAttenuation: S.optional(S.Number),
-          upstreamMargin: S.optional(S.Number),
-          upstreamSync: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "XdslStatsModemInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          device: S.optional(__S(114, __c14, 2)),
-          statistics: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({ identifier: "XdslModemInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(__S(116, __c14, 4))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslAsyncTaskXdslModemInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          lanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan/{lanName}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetXdslModemLanRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          IPAddress: S.optional(S.String),
-          addressingType: S.optional(S.String),
-          lanName: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslLAN" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          lanName: S.String.pipe(T.Label()),
-          dhcpName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetXdslModemLanDhcpRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          defaultGateway: S.optional(S.String),
-          dhcpName: S.optional(S.String),
-          domainName: S.optional(S.String),
-          endAddress: S.optional(S.String),
-          leaseTime: S.optional(S.Number),
-          primaryDNS: S.optional(S.String),
-          secondaryDNS: S.optional(S.NullOr(S.String)),
-          serverEnabled: S.optional(S.Boolean),
-          startAddress: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslDHCP" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          wifiName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetXdslModemWifiRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SSID: S.optional(S.String),
-          SSIDAdvertisementEnabled: S.optional(S.Boolean),
-          bandSteering: S.optional(S.Boolean),
-          channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
-          guest: S.optional(S.Boolean),
-          securityKey: S.optional(S.String),
-          securityType: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          wifiName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslWLAN" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          wifiName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}/qrCode",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetXdslModemWifiQrCodeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          radioName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/wifiRadio/{radioName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetXdslModemWifiRadioRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.Number),
-          channelBandwidth: S.optional(S.String),
-          channelMode: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
-          maxBitRate: S.optional(S.Number),
-          radioName: S.optional(S.String),
-          standards: S.optional(S.String),
-          supportedChannels: S.optional(__S(15, __c1, 7)),
-          supportedPowers: S.optional(__S(15, __c1, 7)),
-          supportedStandards: S.optional(__S(27, __c3, 3)),
-          transmitPower: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "XdslWifiRadio" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ont", code: 200 })),
-      ).annotate({ identifier: "GetXdslOntRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mac: S.optional(S.String),
-          serial: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslOnt" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/pendingAction", code: 200 })),
-      ).annotate({
-        identifier: "GetXdslPendingActionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          dateTodo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslPendingAction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/resiliationFollowup", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetXdslResiliationFollowupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dateTodo: S.optional(S.String),
-          needModemReturn: S.optional(S.Boolean),
-          registrationDate: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslResiliationFollowUpDetail",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          resiliationDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/resiliationTerms", code: 200 })),
-      ).annotate({
-        identifier: "GetXdslResiliationTermsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          due: S.optional(__S(44, __c5, 4)),
-          engageDate: S.optional(S.NullOr(S.String)),
-          minResiliationDate: S.optional(S.String),
-          resiliationDate: S.optional(S.String),
-          resiliationReasons: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "XdslResiliationTerms" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
-      ).annotate({ identifier: "GetXdslRmaRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.NullOr(S.String)),
-          city: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          firstname: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          organisation: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          zip: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TelephonyContact" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          doneDate: S.optional(S.NullOr(S.String)),
-          infos: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TelephonyRmaStep" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cancellable: S.optional(S.Boolean),
-          creationDatetime: S.optional(S.String),
-          equipmentReference: S.optional(S.String),
-          id: S.optional(S.String),
-          newMerchandise: S.optional(S.NullOr(S.String)),
-          offerTypeNew: S.optional(S.NullOr(S.String)),
-          offerTypeOld: S.optional(S.String),
-          process: S.optional(S.String),
-          receptionDatetime: S.optional(S.NullOr(S.String)),
-          shippingContact: S.optional(__S(136, __c17, 0)),
-          status: S.optional(S.String),
-          steps: S.optional(__S(138, __c17, 2)),
-          terminationDatetime: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TelephonyRma" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "GetXdslServiceInfosRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteAtExpiration: S.optional(S.Boolean),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-          creation: S.optional(S.String),
-          domain: S.optional(S.String),
-          engagedUpTo: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(15, __c1, 7))),
-          renew: S.optional(S.NullOr(__S(141, __c17, 5))),
-          renewalType: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicesService" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          spare: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}", code: 200 })),
-      ).annotate({ identifier: "GetXdslSpareRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          brand: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(74, __c9, 2))),
-          macAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SpareXdslXdslSpareWithIAM",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          spare: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "GetXdslSpareServiceInfosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/tasks/{id}", code: 200 })),
-      ).annotate({ identifier: "GetXdslTaskRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/totalDeconsolidationTerms",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetXdslTotalDeconsolidationTermsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          engagement: S.optional(S.Number),
-          monthlyPrice: S.optional(__S(44, __c5, 4)),
-          price: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "XdslDeconsolidationTerms" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          firmware: S.String,
-          todoDate: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
-      ).annotate({ identifier: "InstallFrimwareRequest" });
-    case 6:
-      return S.Array(__S(9, __c1, 1));
-    case 7:
-      return S.Record(S.String, __S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(151, __c18, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl", code: 200 })),
-      ).annotate({ identifier: "ListXdslRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams/{ip}/evidences", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslAntiSpamEvidencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          filename: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslAntiSpamEvidencesInfoDetail",
-      });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(__S(155, __c19, 3))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslAntiSpamEvidencesInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams", code: 200 })),
-      ).annotate({ identifier: "ListXdslAntiSpamsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(151, __c18, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro", code: 200 })),
-      ).annotate({ identifier: "ListXdslEmailProRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/fiberEligibilities", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslFiberEligibilitiesRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String.pipe(T.Query())),
-          endDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/incidents", code: 200 })),
-      ).annotate({ identifier: "ListXdslIncidentsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ips", code: 200 })),
-      ).annotate({ identifier: "ListXdslIpsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListXdslLineDslamPortAvailableProfilesRequest",
-      });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() => __S(163, __c20, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListXdslLineDslamPortAvailableProfilesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-          limit: S.Number.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/lines/{number}/dslamPort/logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListXdslLineDslamPortLogsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          lastOccurrenceDate: S.optional(S.String),
-          message: S.optional(S.String),
-          numberOfOccurrences: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "XdslDslamPortLog" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(167, __c20, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListXdslLineDslamPortLogsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines", code: 200 })),
-      ).annotate({ identifier: "ListXdslLinesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          number: S.String.pipe(T.Label()),
-          period: S.String.pipe(T.Query()),
-          type: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/lines/{number}/statistics",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListXdslLineStatisticsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.Number),
-          value: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "XdslTimestampAndValue" });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          values: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValuesXdslTimestampAndValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/availableACSBackend",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListXdslModemAvailableACSBackendRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frequency: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/xdsl/{serviceName}/modem/availableWLANChannel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListXdslModemAvailableWLANChannelRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/connectedDevices", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslModemConnectedDevicesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmwareAvailable", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslModemFirmwareAvailableRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan", code: 200 })),
-      ).annotate({ identifier: "ListXdslModemLanRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          lanName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslModemLanDhcpRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifi", code: 200 })),
-      ).annotate({ identifier: "ListXdslModemWifiRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifiRadio", code: 200 })),
-      ).annotate({
-        identifier: "ListXdslModemWifiRadioRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/orderFollowup", code: 200 })),
-      ).annotate({
-        identifier: "ListXdslOrderFollowupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          comments: S.optional(__S(27, __c3, 3)),
-          doneDate: S.optional(S.NullOr(S.String)),
-          durationUnit: S.optional(S.String),
-          expectedDuration: S.optional(S.Number),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslOrderFollowupStep" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
-      return S.suspend(() => __S(184, __c23, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListXdslOrderFollowupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/radiusConnectionLogs", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslRadiusConnectionLogsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          login: S.optional(S.String),
-          message: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "XdslRadiusConnectionLog" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() => __S(188, __c23, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListXdslRadiusConnectionLogsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/rma", code: 200 })),
-      ).annotate({ identifier: "ListXdslRmaRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(151, __c18, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare", code: 200 })),
-      ).annotate({ identifier: "ListXdslSpareRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/brands", code: 200 })),
-      ).annotate({
-        identifier: "ListXdslSpareBrandsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          spare: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/compatibleReplacement", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListXdslSpareCompatibleReplacementRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          period: S.String.pipe(T.Query()),
-          type: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/statistics", code: 200 })),
-      ).annotate({
-        identifier: "ListXdslStatisticsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          loss: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.Number)),
-          timestamp: S.optional(S.Number),
-          value: S.optional(S.NullOr(S.Number)),
-          verboseStatus: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "XdslAccessLatency" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          values: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValuesXdslAccessLatency",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/tasks", code: 200 })),
-      ).annotate({ identifier: "ListXdslTasksRequest" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7124,7 +5285,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "PutXdslRequest" });
   }
 }
-function __c25(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7136,7 +5297,11 @@ function __c25(j: number): any {
           lastName: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/email/pro/{email}", code: 200 })),
       ).annotate({ identifier: "PutXdslEmailProRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7147,7 +5312,11 @@ function __c25(j: number): any {
           mtuSize: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem", code: 200 })),
       ).annotate({ identifier: "PutXdslModemRequest" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7159,7 +5328,11 @@ function __c25(j: number): any {
           T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/lan/{lanName}", code: 200 }),
         ),
       ).annotate({ identifier: "PutXdslModemLanRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7184,7 +5357,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutXdslModemLanDhcpRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7200,7 +5377,11 @@ function __c25(j: number): any {
           T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}", code: 200 }),
         ),
       ).annotate({ identifier: "PutXdslModemWifiRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7217,45 +5398,178 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutXdslModemWifiRadioRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           process: S.optional(S.String),
-          shippingContact: S.optional(__S(136, __c17, 0)),
+          shippingContact: S.optional(__S(2048, __c128, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
       ).annotate({ identifier: "PutXdslRmaRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(141, __c17, 5))),
+          renew: S.optional(S.NullOr(__S(2096, __c131, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutXdslServiceInfosRequest",
       });
   }
 }
-function __c26(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           spare: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(141, __c17, 5))),
+          renew: S.optional(S.NullOr(__S(2096, __c131, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/spare/{spare}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutXdslSpareServiceInfosRequest",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          serviceName: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/templateModem", code: 200 })),
+      ).annotate({
+        identifier: "CreateModemTemplateRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultGateway: S.optional(S.String),
+          dhcpName: S.optional(S.String),
+          domainName: S.optional(S.String),
+          endAddress: S.optional(S.String),
+          leaseTime: S.optional(S.Number),
+          primaryDNS: S.optional(S.String),
+          secondaryDNS: S.optional(S.NullOr(S.String)),
+          serverEnabled: S.optional(S.Boolean),
+          startAddress: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslTemplateModemDHCP" });
     case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IPAddress: S.optional(S.String),
+          addressingType: S.optional(S.String),
+          lanName: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslTemplateModemLAN" });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SSID: S.optional(S.String),
+          SSIDAdvertisementEnabled: S.optional(S.Boolean),
+          bandSteering: S.optional(S.Boolean),
+          channel: S.optional(S.Number),
+          channelMode: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          frequency: S.optional(S.String),
+          guest: S.optional(S.Boolean),
+          securityKey: S.optional(S.String),
+          securityType: S.optional(S.String),
+          wifiName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslTemplateModemWLAN" });
+    case 5:
+      return S.Array(__S(276, __c17, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedRemoteIp: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          externalPortEnd: S.optional(S.NullOr(S.Number)),
+          externalPortStart: S.optional(S.Number),
+          internalClient: S.optional(S.String),
+          internalPort: S.optional(S.Number),
+          name: S.optional(S.String),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslTemplateModemPortMapping",
+      });
+    case 7:
+      return S.Array(__S(278, __c17, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          DHCP: S.optional(__S(273, __c17, 1)),
+          LAN: S.optional(__S(275, __c17, 3)),
+          WLAN: S.optional(__S(277, __c17, 5)),
+          capabilities: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          dmzIP: S.optional(S.NullOr(S.String)),
+          mtuSize: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.String),
+          parametersToIgnore: S.optional(S.NullOr(__S(288, __c18, 0))),
+          portMapping: S.optional(__S(279, __c17, 7)),
+        }),
+      ).annotate({ identifier: "XdslTemplateModem" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LANandDHCP: S.optional(S.NullOr(S.Boolean)),
+          WLANList: S.optional(S.NullOr(__S(256, __c16, 0))),
+          dmzIP: S.optional(S.NullOr(S.Boolean)),
+          mtuSize: S.optional(S.NullOr(S.Boolean)),
+          portMappingList: S.optional(S.NullOr(__S(256, __c16, 0))),
+        }),
+      ).annotate({
+        identifier: "XdslTemplateModemParametersToIgnore",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           todoDate: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/reboot", code: 200 })),
       ).annotate({ identifier: "RebootModemRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7269,7 +5583,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RefreshXdslModemConnectedDevicesRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7286,7 +5604,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RemoveDHCPStaticAddressRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7301,7 +5623,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RemoveMonitoringNotificationRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7314,7 +5640,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemovePortMappingRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7325,7 +5655,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ReplaceAccessModemRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -7333,63 +5663,63 @@ function __c26(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderContract" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
           description: S.optional(S.String),
-          price: S.optional(__S(44, __c5, 4)),
+          price: S.optional(__S(1056, __c66, 0)),
           reductionDescription: S.optional(S.String),
           type: S.optional(S.String),
-          value: S.optional(__S(44, __c5, 4)),
+          value: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "OrderReduction" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(387, __c24, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           cartItemID: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.String),
           detailType: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
-          originalTotalPrice: S.optional(__S(44, __c5, 4)),
+          originalTotalPrice: S.optional(__S(1056, __c66, 0)),
           quantity: S.optional(S.Number),
-          reductionTotalPrice: S.optional(__S(44, __c5, 4)),
-          reductions: S.optional(__S(218, __c27, 2)),
-          totalPrice: S.optional(__S(44, __c5, 4)),
-          unitPrice: S.optional(__S(44, __c5, 4)),
+          reductionTotalPrice: S.optional(__S(1056, __c66, 0)),
+          reductions: S.optional(__S(388, __c24, 4)),
+          totalPrice: S.optional(__S(1056, __c66, 0)),
+          unitPrice: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "OrderOrderDetail" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(389, __c24, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          originalWithoutTax: S.optional(S.NullOr(__S(44, __c5, 4))),
-          reduction: S.optional(S.NullOr(__S(44, __c5, 4))),
-          tax: S.optional(__S(44, __c5, 4)),
-          withTax: S.optional(__S(44, __c5, 4)),
-          withoutTax: S.optional(__S(44, __c5, 4)),
+          originalWithoutTax: S.optional(S.NullOr(__S(1056, __c66, 0))),
+          reduction: S.optional(S.NullOr(__S(1056, __c66, 0))),
+          tax: S.optional(__S(1056, __c66, 0)),
+          withTax: S.optional(__S(1056, __c66, 0)),
+          withoutTax: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "OrderOrderPrices" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          contracts: S.optional(__S(216, __c27, 0)),
-          details: S.optional(__S(220, __c27, 4)),
+          contracts: S.optional(__S(386, __c24, 2)),
+          details: S.optional(__S(390, __c24, 6)),
           orderId: S.optional(S.NullOr(S.Number)),
-          prices: S.optional(__S(221, __c27, 5)),
+          prices: S.optional(__S(391, __c24, 7)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "OrderOrder" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spare: S.String.pipe(T.Label()),
@@ -7400,7 +5730,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7418,7 +5748,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "RequestTotalDeconsolidationRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7427,7 +5761,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ResetModemConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7442,7 +5780,29 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ResetXdslLinesDslamPortRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/xdsl/{serviceName}/addressMove/extraIpRangeMove",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateXdslAddressMoveExtraIpRangeMoveRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7456,15 +5816,23 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ResetXdslModemPortMappingConfigRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           resiliationDate: S.optional(S.String),
-          resiliationSurvey: __S(9, __c1, 1),
+          resiliationSurvey: __S(1472, __c92, 0),
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/resiliate", code: 200 })),
       ).annotate({ identifier: "ResiliateAccessRequest" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7474,7 +5842,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "SearchXdslOrderMeetingsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eRdv: S.optional(S.Boolean),
@@ -7483,7 +5851,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ConnectivityEligibilityMeetingCapacities",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           endDate: S.optional(S.String),
@@ -7494,33 +5862,33 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ConnectivityEligibilityMeetingSlot",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           canBookFakeMeeting: S.optional(S.Boolean),
-          capacities: S.optional(__S(230, __c28, 6)),
-          meetingSlots: S.optional(__S(232, __c29, 0)),
+          capacities: S.optional(__S(513, __c32, 1)),
+          meetingSlots: S.optional(__S(515, __c32, 3)),
         }),
       ).annotate({
         identifier: "ConnectivityEligibilityMeetings",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
-          result: S.optional(__S(233, __c29, 1)),
+          result: S.optional(__S(516, __c32, 4)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "XdslAsyncTaskConnectivityEligibilityMeetings",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7530,18 +5898,30 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "SendXdslOrderToProviderRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SendXdslOrderToProviderResponse",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           wifiMesh: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/mesh", code: 200 })),
       ).annotate({ identifier: "SetWifiMeshStatusRequest" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7550,7 +5930,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "SetWifiOneSsidStatusRequest",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7561,7 +5945,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7574,7 +5958,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateContentSharingStatusRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7593,21 +5981,45 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateDHCPStaticAddressRequest",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           ftp: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/ftp", code: 200 })),
       ).annotate({ identifier: "UpdateFTPStatusRequest" });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
+      ).annotate({
+        identifier: "CreateXdslDiagnosticRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           enabled: S.Boolean,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/ipv6", code: 200 })),
       ).annotate({ identifier: "UpdateIpRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7616,13 +6028,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateIpsecAlgStatusRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           number: S.String.pipe(T.Label()),
-          actionsDone: S.optional(__S(92, __c11, 4)),
-          answers: S.optional(__S(9, __c1, 1)),
+          actionsDone: S.optional(__S(1648, __c103, 0)),
+          answers: S.optional(__S(1472, __c92, 0)),
           faultType: S.String,
         }).pipe(
           T.Http({
@@ -7634,7 +6050,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateLineDiagnosticRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -7643,13 +6059,9 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticCustomerActionToDo",
       });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(705, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bandwidthTestUnit: S.optional(S.NullOr(S.String)),
@@ -7683,7 +6095,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticAnswers",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           crcError: S.optional(S.NullOr(S.Number)),
@@ -7699,7 +6111,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticConnectionInformations",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           down: S.optional(S.NullOr(S.Number)),
@@ -7710,7 +6122,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticLineCapabilities",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.Number),
@@ -7719,31 +6131,31 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticSection",
       });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(710, __c44, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accessName: S.optional(S.String),
           accessPing: S.optional(S.NullOr(S.Boolean)),
           address: S.optional(S.NullOr(S.String)),
-          connectionInfo: S.optional(S.NullOr(__S(249, __c31, 1))),
+          connectionInfo: S.optional(S.NullOr(__S(708, __c44, 4))),
           contactPhone: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           dslamIsSynchronized: S.optional(S.NullOr(S.Boolean)),
           gtr: S.optional(S.Boolean),
           length: S.optional(S.Number),
-          lineCapabilities: S.optional(S.NullOr(__S(250, __c31, 2))),
+          lineCapabilities: S.optional(S.NullOr(__S(709, __c44, 5))),
           lineType: S.optional(S.String),
           nra: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
           operator: S.optional(S.String),
-          sections: S.optional(S.NullOr(__S(252, __c31, 4))),
+          sections: S.optional(S.NullOr(__S(711, __c44, 7))),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticLineDetails",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
@@ -7755,7 +6167,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticSeltResult",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
@@ -7765,52 +6177,48 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticPossibleValue",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(714, __c44, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          enumValues: S.optional(S.NullOr(__S(27, __c3, 3))),
+          enumValues: S.optional(S.NullOr(__S(256, __c16, 0))),
           name: S.optional(S.String),
-          possibleValues: S.optional(S.NullOr(__S(256, __c32, 0))),
+          possibleValues: S.optional(S.NullOr(__S(715, __c44, 11))),
           required: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticQuestion",
       });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(716, __c44, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          actionsDone: S.optional(__S(92, __c11, 4)),
-          actionsToDo: S.optional(__S(247, __c30, 7)),
-          answers: S.optional(__S(248, __c31, 0)),
+          actionsDone: S.optional(__S(1648, __c103, 0)),
+          actionsToDo: S.optional(__S(706, __c44, 2)),
+          answers: S.optional(__S(707, __c44, 3)),
           comment: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
           diagnosticDoneDate: S.optional(S.NullOr(S.String)),
           error: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          lineDetails: S.optional(__S(253, __c31, 5)),
+          lineDetails: S.optional(__S(712, __c44, 8)),
           robotAction: S.optional(S.NullOr(S.String)),
-          seltTest: S.optional(__S(254, __c31, 6)),
+          seltTest: S.optional(__S(713, __c44, 9)),
           timeout: S.optional(S.Number),
-          toAnswer: S.optional(__S(258, __c32, 2)),
+          toAnswer: S.optional(__S(717, __c44, 13)),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticDiagnosticData",
       });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(259, __c32, 3)),
+          data: S.optional(__S(718, __c44, 14)),
           faultType: S.optional(S.String),
           id: S.optional(S.Number),
           status: S.optional(S.String),
@@ -7818,14 +6226,22 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "XdslLineDiagnosticDiagnostic",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           status: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/mailSending", code: 200 })),
       ).annotate({ identifier: "UpdateMailSendingRequest" });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7836,18 +6252,22 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UpdateModemCallWaitingRequest",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          parametersToIgnore: S.optional(S.NullOr(__S(28, __c3, 4))),
+          parametersToIgnore: S.optional(S.NullOr(__S(288, __c18, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/templateModem/{name}", code: 200 })),
       ).annotate({
         identifier: "UpdateModemTemplateRequest",
       });
   }
 }
-function __c33(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7870,7 +6290,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateMonitoringNotificationRequest",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7891,7 +6315,11 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePortMappingRequest" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7905,7 +6333,11 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRIORequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7915,7 +6347,21 @@ function __c33(j: number): any {
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/rma/{id}/changeType", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateRMATypeRequest" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/ips", code: 200 })),
+      ).annotate({ identifier: "CreateXdslIpsRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7924,7 +6370,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateSipAlgStatusRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7933,7 +6383,2100 @@ function __c33(j: number): any {
       ).annotate({ identifier: "UpdateUpnpStatusRequest" });
   }
 }
-
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/reconfigureVoip", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateXdslModemReconfigureVoipRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/requestPPPLoginMail", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateXdslRequestPPPLoginMailRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spare: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/spare/{spare}/returnMerchandise", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateXdslSpareReturnMerchandiseRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/templateModem/{name}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteModemTemplateRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/email/pro/{email}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteXdslEmailProRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          allowedRemoteIp: S.optional(S.String),
+          description: S.optional(S.String),
+          externalPortEnd: S.optional(S.Number),
+          externalPortStart: S.Number,
+          internalClient: S.String,
+          internalPort: S.Number,
+          internalPortEnd: S.optional(S.Number),
+          name: S.String,
+          protocol: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 }),
+        ),
+      ).annotate({ identifier: "AddPortMappingRequest" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedRemoteIp: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          externalPortEnd: S.optional(S.NullOr(S.Number)),
+          externalPortStart: S.optional(S.Number),
+          id: S.optional(S.Number),
+          internalClient: S.optional(S.String),
+          internalPort: S.optional(S.Number),
+          internalPortEnd: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.String),
+          protocol: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslPortMapping" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/{serviceName}/ips/{ip}", code: 200 })),
+      ).annotate({ identifier: "DeleteXdslIpsRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteXdslRmaRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spare: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/spare/{spare}", code: 200 })),
+      ).annotate({ identifier: "DeleteXdslSpareRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/comfortExchange", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetAccessModemReplacementRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canExchange: S.optional(S.Boolean),
+          newModel: S.optional(S.String),
+          price: S.optional(__S(1056, __c66, 0)),
+          priceWithTax: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({ identifier: "XdslModemExchangeInfo" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          priceInUcents: S.optional(S.NullOr(S.Number)),
+          text: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OrderPrice" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/blocIp", code: 200 })),
+      ).annotate({ identifier: "GetBlocIPStatusRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetBlocIPStatusResponse",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/contentSharing", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetContentSharingStatusRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetContentSharingStatusResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          lanName: S.String.pipe(T.Label()),
+          dhcpName: S.String.pipe(T.Label()),
+          MACAddress: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDHCPStaticAddressRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          lanName: S.String.pipe(T.Label()),
+          dhcpName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDHCPStaticAddressesRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(256, __c16, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDHCPStaticAddressesResponse",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
+      ).annotate({
+        identifier: "GetFirmwareVersionRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetFirmwareVersionResponse",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ftp", code: 200 })),
+      ).annotate({ identifier: "GetFTPStatusRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          templateName: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/applyTemplateToModem", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ApplyTemplateModemRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          status: S.optional(S.String),
+          todoDate: S.optional(S.String),
+          updateDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslTask" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ipsecAlg", code: 200 })),
+      ).annotate({ identifier: "GetIpsecAlgStatusRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/callWaiting", code: 200 })),
+      ).annotate({
+        identifier: "GetModemCallWaitingStatusRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem/{name}", code: 200 })),
+      ).annotate({ identifier: "GetModemTemplateRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem", code: 200 })),
+      ).annotate({ identifier: "GetModemTemplatesRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/monitoringNotifications/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMonitoringNotificationRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/monitoringNotifications", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetMonitoringNotificationsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2352, __c147, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetMonitoringNotificationsResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/portMappings/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetPortMappingRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetPortMappingsRequest" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(256, __c16, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetPortMappingsResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/sipAlg", code: 200 })),
+      ).annotate({ identifier: "GetSipAlgStatusRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/upnp", code: 200 })),
+      ).annotate({ identifier: "GetUpnpStatusRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/tasks/{id}/archive", code: 200 }),
+        ),
+      ).annotate({ identifier: "ArchiveXdslTaskRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ArchiveXdslTaskResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/mesh", code: 200 })),
+      ).annotate({ identifier: "GetWifiMeshStatusRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/onessid", code: 200 })),
+      ).annotate({
+        identifier: "GetWifiOneSsidStatusRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}", code: 200 })),
+      ).annotate({ identifier: "GetXdslRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          building: S.optional(S.NullOr(S.String)),
+          city: S.optional(S.String),
+          door: S.optional(S.NullOr(S.String)),
+          firstName: S.optional(S.String),
+          floor: S.optional(S.NullOr(S.String)),
+          inseeCode: S.optional(S.String),
+          lastName: S.optional(S.String),
+          numberStreet: S.optional(S.String),
+          residence: S.optional(S.NullOr(S.String)),
+          rivoliCode: S.optional(S.String),
+          stairs: S.optional(S.NullOr(S.String)),
+          street: S.optional(S.String),
+          zipCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslAddressDetail" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canApplyLnsRateLimit: S.optional(S.Boolean),
+          canChangeDslamProfile: S.optional(S.Boolean),
+          canChangeLns: S.optional(S.Boolean),
+          canGetRadiusConnectionLogs: S.optional(S.Boolean),
+          canResetDslamPort: S.optional(S.Boolean),
+          hasDslamPort: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "XdslAccessCapabilities" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessName: S.optional(S.String),
+          accessType: S.optional(S.String),
+          address: S.optional(__S(1521, __c95, 1)),
+          capabilities: S.optional(__S(1522, __c95, 2)),
+          description: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(1537, __c96, 1))),
+          ipv6Enabled: S.optional(S.Boolean),
+          lnsRateLimit: S.optional(S.NullOr(S.Number)),
+          mailSending: S.optional(S.NullOr(S.String)),
+          monitoring: S.optional(S.Boolean),
+          nra: S.optional(S.String),
+          packName: S.optional(S.NullOr(S.String)),
+          pairsNumber: S.optional(S.Number),
+          provider: S.optional(S.String),
+          providerInfra: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslAccessWithIAM" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(1536, __c96, 0))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/addressMove/extraIpRange", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetXdslAddressMoveExtraIpRangeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          ipRange: S.optional(S.String),
+          moveTo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslExtraIpRangeMove" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams/{ip}", code: 200 })),
+      ).annotate({ identifier: "GetXdslAntiSpamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          ip: S.optional(S.String),
+          lastSpamDetected: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslAntiSpam" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/canCancelResiliation", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetXdslCanCancelResiliationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetXdslCanCancelResiliationResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
+      ).annotate({ identifier: "GetXdslDiagnosticRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          incident: S.optional(S.Boolean),
+          isActiveOnLns: S.optional(S.Boolean),
+          isModemConnected: S.optional(S.Boolean),
+          lineTest: S.optional(S.Boolean),
+          ping: S.optional(S.Boolean),
+          proposedProfileId: S.optional(S.Boolean),
+          sync: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "XdslAccessDiagnosticCapabilities",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lineTest: S.optional(S.NullOr(S.String)),
+          lineTestTime: S.optional(S.NullOr(S.String)),
+          number: S.optional(S.String),
+          proposedProfileId: S.optional(S.NullOr(S.Number)),
+          sync: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "XdslLineDiagnostic" });
+    case 3:
+      return S.Array(__S(1602, __c100, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.optional(__S(1601, __c100, 1)),
+          diagnosticTime: S.optional(S.String),
+          incident: S.optional(S.NullOr(S.Boolean)),
+          isActiveOnLns: S.optional(S.NullOr(S.Boolean)),
+          isModemConnected: S.optional(S.NullOr(S.Boolean)),
+          lineDetails: S.optional(S.NullOr(__S(1603, __c100, 3))),
+          maintenance: S.optional(S.NullOr(S.Boolean)),
+          ping: S.optional(S.NullOr(S.Boolean)),
+          remaining: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "XdslAccessDiagnostic" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro/{email}", code: 200 })),
+      ).annotate({ identifier: "GetXdslEmailProRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValueDouble",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          currentUsage: S.optional(__S(1617, __c101, 1)),
+          displayName: S.optional(S.NullOr(S.String)),
+          domain: S.optional(S.String),
+          firstName: S.optional(S.NullOr(S.String)),
+          iam: S.optional(S.NullOr(__S(1537, __c96, 1))),
+          id: S.optional(S.Number),
+          initial: S.optional(S.NullOr(S.String)),
+          lastLogoffDate: S.optional(S.NullOr(S.String)),
+          lastLogonDate: S.optional(S.NullOr(S.String)),
+          lastName: S.optional(S.NullOr(S.String)),
+          login: S.optional(S.String),
+          passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          primaryEmailAddress: S.optional(S.String),
+          quota: S.optional(__S(1617, __c101, 1)),
+          state: S.optional(S.String),
+          taskPendingId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslXdslEmailProWithIAM" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/fiberEligibilities/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetXdslFiberEligibilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commercialClosureAnnouncementDate: S.optional(S.NullOr(S.String)),
+          commercialClosureDate: S.optional(S.NullOr(S.String)),
+          commercialClosureInitialDate: S.optional(S.NullOr(S.String)),
+          departmentCode: S.optional(S.String),
+          departmentName: S.optional(S.NullOr(S.String)),
+          ftthZone: S.optional(S.NullOr(S.String)),
+          inseeCode: S.optional(S.String),
+          lot: S.optional(S.NullOr(S.String)),
+          municipalityName: S.optional(S.String),
+          oiCode: S.optional(S.NullOr(S.String)),
+          oiName: S.optional(S.NullOr(S.String)),
+          technicalClosureAnnouncementDate: S.optional(S.NullOr(S.String)),
+          technicalClosureDate: S.optional(S.NullOr(S.String)),
+          technicalClosureInitialDate: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "XdslCopperGridClosureTrajectory",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslOffer" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityDate: S.optional(S.NullOr(S.String)),
+          buildingName: S.optional(S.NullOr(S.String)),
+          buildingReference: S.optional(S.NullOr(S.String)),
+          buildingSeqId: S.optional(S.NullOr(S.Number)),
+          copperGridClosureTrajectory: S.optional(S.NullOr(__S(1633, __c102, 1))),
+          firstEligibleDate: S.optional(S.NullOr(S.String)),
+          grts: S.optional(S.NullOr(__S(1648, __c103, 0))),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.String),
+          offer: S.optional(S.NullOr(__S(1634, __c102, 2))),
+          provider: S.optional(S.NullOr(__S(1634, __c102, 2))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslFiberEligibility" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/incidents/{id}", code: 200 })),
+      ).annotate({ identifier: "GetXdslIncidentRequest" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          departments: S.optional(__S(256, __c16, 0)),
+          endDate: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.Number),
+          nra: S.optional(__S(256, __c16, 0)),
+          operators: S.optional(__S(1648, __c103, 0)),
+          taskId: S.optional(S.NullOr(S.Number)),
+          taskReference: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "XdslIncident" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          endDate: S.String,
+          startDate: S.String,
+          uiCode: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/orderMeeting", code: 200 })),
+      ).annotate({ identifier: "BookMeetingRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/incident", code: 200 })),
+      ).annotate({ identifier: "GetXdslIncidentRequest2" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ips/{ip}", code: 200 })),
+      ).annotate({ identifier: "GetXdslIpsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dnsList: S.optional(__S(256, __c16, 0)),
+          ip: S.optional(S.String),
+          range: S.optional(S.Number),
+          status: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslIP" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines/{number}", code: 200 })),
+      ).annotate({ identifier: "GetXdslLineRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lineHead: S.optional(S.String),
+          lineInitialSection: S.optional(S.Number),
+          lineInitialSectionPair: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "XdslLandlineConcentrationPoint",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          diameter: S.optional(S.Number),
+          length: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "XdslLineSectionLength" });
+    case 3:
+      return S.Array(__S(1746, __c109, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          concentrationPoint: S.optional(S.NullOr(__S(1745, __c109, 1))),
+          deconsolidation: S.optional(S.String),
+          directDistribution: S.optional(S.NullOr(S.Boolean)),
+          distance: S.optional(S.Number),
+          faultRepairTime: S.optional(S.String),
+          lineSectionsLength: S.optional(__S(1747, __c109, 3)),
+          mitigation: S.optional(S.Number),
+          number: S.optional(S.String),
+          originalNumber: S.optional(S.NullOr(S.String)),
+          portability: S.optional(S.Boolean),
+          syncDown: S.optional(S.NullOr(S.Number)),
+          syncUp: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslLine" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines/{number}/dslamPort", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetXdslLineDslamPortRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lastDesyncDate: S.optional(S.NullOr(S.String)),
+          lastSyncDate: S.optional(S.NullOr(S.String)),
+          profile: S.optional(S.NullOr(__S(1776, __c111, 0))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslDslamPort" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          isCurrent: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslDslamLineProfile" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem", code: 200 })),
+      ).annotate({ identifier: "GetXdslModemRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canBeManagedByOvh: S.optional(S.Boolean),
+          canChangeACS: S.optional(S.Boolean),
+          canChangeBridgeMode: S.optional(S.Boolean),
+          canChangeDHCP: S.optional(S.Boolean),
+          canChangeDMZ: S.optional(S.Boolean),
+          canChangeEasyFirewallLevel: S.optional(S.Boolean),
+          canChangeFirmware: S.optional(S.Boolean),
+          canChangeLAN: S.optional(S.Boolean),
+          canChangeManagement: S.optional(S.Boolean),
+          canChangeMtu: S.optional(S.Boolean),
+          canChangePortMapping: S.optional(S.Boolean),
+          canChangeWLAN: S.optional(S.Boolean),
+          canChangeWifiRadio: S.optional(S.Boolean),
+          canChangeWifiSSID: S.optional(S.Boolean),
+          canReboot: S.optional(S.Boolean),
+          canReconfigureVoip: S.optional(S.Boolean),
+          canRefreshConnectedDevices: S.optional(S.Boolean),
+          canReset: S.optional(S.Boolean),
+          canUseWifiRadio: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "XdslModemCapabilities" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          acsBackend: S.optional(S.String),
+          acsVersion: S.optional(S.NullOr(S.String)),
+          brandName: S.optional(S.String),
+          capabilities: S.optional(__S(1793, __c112, 1)),
+          dmzIP: S.optional(S.NullOr(S.String)),
+          easyFirewallLevel: S.optional(S.NullOr(S.String)),
+          ipv6Support: S.optional(S.Boolean),
+          isBridged: S.optional(S.Boolean),
+          lastCwmpRequestDate: S.optional(S.NullOr(S.String)),
+          macAddress: S.optional(S.String),
+          managedByOvh: S.optional(S.Boolean),
+          model: S.optional(S.String),
+          mtuSize: S.optional(S.NullOr(S.Number)),
+          serialNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslModem" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          macAddress: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetXdslModemConnectedDeviceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          addressSource: S.optional(S.String),
+          hostName: S.optional(S.String),
+          informationDate: S.optional(S.String),
+          interfaceType: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          leaseTimeRemaining: S.optional(S.Number),
+          macAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslConnectedDevice" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/retrieveInfo", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetXdslModemInfoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          brand: S.optional(S.String),
+          ip: S.optional(S.String),
+          lastUpdate: S.optional(S.String),
+          macAddress: S.optional(S.String),
+          model: S.optional(S.String),
+          oui: S.optional(S.String),
+          overEthernet: S.optional(S.NullOr(S.String)),
+          pppLogin: S.optional(S.NullOr(S.String)),
+          serial: S.optional(S.String),
+          softVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslDeviceModemInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connectionUptime: S.optional(S.Number),
+          crcError: S.optional(S.Number),
+          deviceUptime: S.optional(S.Number),
+          downstreamAttenuation: S.optional(S.Number),
+          downstreamMargin: S.optional(S.Number),
+          downstreamSync: S.optional(S.Number),
+          fecError: S.optional(S.Number),
+          hecError: S.optional(S.Number),
+          lastUpdate: S.optional(S.String),
+          modulation: S.optional(S.String),
+          quarterHourStart: S.optional(S.Number),
+          syncUptime: S.optional(S.Number),
+          upstreamAttenuation: S.optional(S.Number),
+          upstreamMargin: S.optional(S.Number),
+          upstreamSync: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "XdslStatsModemInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          device: S.optional(__S(1825, __c114, 1)),
+          statistics: S.optional(__S(1826, __c114, 2)),
+        }),
+      ).annotate({ identifier: "XdslModemInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.NullOr(__S(1827, __c114, 3))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslAsyncTaskXdslModemInfo",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          lanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan/{lanName}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetXdslModemLanRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IPAddress: S.optional(S.String),
+          addressingType: S.optional(S.String),
+          lanName: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslLAN" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          lanName: S.String.pipe(T.Label()),
+          dhcpName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetXdslModemLanDhcpRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          defaultGateway: S.optional(S.String),
+          dhcpName: S.optional(S.String),
+          domainName: S.optional(S.String),
+          endAddress: S.optional(S.String),
+          leaseTime: S.optional(S.Number),
+          primaryDNS: S.optional(S.String),
+          secondaryDNS: S.optional(S.NullOr(S.String)),
+          serverEnabled: S.optional(S.Boolean),
+          startAddress: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslDHCP" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          wifiName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetXdslModemWifiRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SSID: S.optional(S.String),
+          SSIDAdvertisementEnabled: S.optional(S.Boolean),
+          bandSteering: S.optional(S.Boolean),
+          channel: S.optional(S.Number),
+          channelMode: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          frequency: S.optional(S.String),
+          guest: S.optional(S.Boolean),
+          securityKey: S.optional(S.String),
+          securityType: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          wifiName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslWLAN" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelXdslLinesDiagnosticRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelXdslLinesDiagnosticResponse",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          wifiName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}/qrCode",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetXdslModemWifiQrCodeRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          radioName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/wifiRadio/{radioName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetXdslModemWifiRadioRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.Number),
+          channelBandwidth: S.optional(S.String),
+          channelMode: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          frequency: S.optional(S.String),
+          maxBitRate: S.optional(S.Number),
+          radioName: S.optional(S.String),
+          standards: S.optional(S.String),
+          supportedChannels: S.optional(__S(2352, __c147, 0)),
+          supportedPowers: S.optional(__S(2352, __c147, 0)),
+          supportedStandards: S.optional(__S(256, __c16, 0)),
+          transmitPower: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "XdslWifiRadio" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ont", code: 200 })),
+      ).annotate({ identifier: "GetXdslOntRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mac: S.optional(S.String),
+          serial: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslOnt" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/pendingAction", code: 200 })),
+      ).annotate({
+        identifier: "GetXdslPendingActionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          dateTodo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslPendingAction" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/resiliationFollowup", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetXdslResiliationFollowupRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateTodo: S.optional(S.String),
+          needModemReturn: S.optional(S.Boolean),
+          registrationDate: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslResiliationFollowUpDetail",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          resiliationDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/resiliationTerms", code: 200 })),
+      ).annotate({
+        identifier: "GetXdslResiliationTermsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          due: S.optional(__S(1056, __c66, 0)),
+          engageDate: S.optional(S.NullOr(S.String)),
+          minResiliationDate: S.optional(S.String),
+          resiliationDate: S.optional(S.String),
+          resiliationReasons: S.optional(__S(1648, __c103, 0)),
+        }),
+      ).annotate({ identifier: "XdslResiliationTerms" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
+      ).annotate({ identifier: "GetXdslRmaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          doneDate: S.optional(S.NullOr(S.String)),
+          infos: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TelephonyRmaStep" });
+    case 2:
+      return S.Array(__S(2033, __c127, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cancellable: S.optional(S.Boolean),
+          creationDatetime: S.optional(S.String),
+          equipmentReference: S.optional(S.String),
+          id: S.optional(S.String),
+          newMerchandise: S.optional(S.NullOr(S.String)),
+          offerTypeNew: S.optional(S.NullOr(S.String)),
+          offerTypeOld: S.optional(S.String),
+          process: S.optional(S.String),
+          receptionDatetime: S.optional(S.NullOr(S.String)),
+          shippingContact: S.optional(__S(2048, __c128, 0)),
+          status: S.optional(S.String),
+          steps: S.optional(__S(2034, __c127, 2)),
+          terminationDatetime: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TelephonyRma" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.NullOr(S.String)),
+          city: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          firstname: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          organisation: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          zip: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TelephonyContact" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "GetXdslServiceInfosRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteAtExpiration: S.optional(S.Boolean),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+          creation: S.optional(S.String),
+          domain: S.optional(S.String),
+          engagedUpTo: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(2352, __c147, 0))),
+          renew: S.optional(S.NullOr(__S(2096, __c131, 0))),
+          renewalType: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicesService" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spare: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}", code: 200 })),
+      ).annotate({ identifier: "GetXdslSpareRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          brand: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(1537, __c96, 1))),
+          macAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SpareXdslXdslSpareWithIAM",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spare: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "GetXdslSpareServiceInfosRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/{serviceName}/cancelResiliation", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CancelXdslResiliationRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/tasks/{id}", code: 200 })),
+      ).annotate({ identifier: "GetXdslTaskRequest" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/totalDeconsolidationTerms",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetXdslTotalDeconsolidationTermsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          engagement: S.optional(S.Number),
+          monthlyPrice: S.optional(__S(1056, __c66, 0)),
+          price: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({ identifier: "XdslDeconsolidationTerms" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          firmware: S.String,
+          todoDate: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
+      ).annotate({ identifier: "InstallFrimwareRequest" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(2225, __c139, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl", code: 200 })),
+      ).annotate({ identifier: "ListXdslRequest" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1472, __c92, 0));
+    case 1:
+      return S.Record(S.String, __S(2224, __c139, 0));
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams/{ip}/evidences", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslAntiSpamEvidencesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          filename: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslAntiSpamEvidencesInfoDetail",
+      });
+    case 2:
+      return S.Array(__S(2241, __c140, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.NullOr(__S(2242, __c140, 2))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslAntiSpamEvidencesInfo",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams", code: 200 })),
+      ).annotate({ identifier: "ListXdslAntiSpamsRequest" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(2225, __c139, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro", code: 200 })),
+      ).annotate({ identifier: "ListXdslEmailProRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/fiberEligibilities", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslFiberEligibilitiesRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String.pipe(T.Query())),
+          endDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/incidents", code: 200 })),
+      ).annotate({ identifier: "ListXdslIncidentsRequest" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ips", code: 200 })),
+      ).annotate({ identifier: "ListXdslIpsRequest" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/changeContact", code: 200 })),
+      ).annotate({ identifier: "ChangeContactRequest" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2352, __c147, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ChangeContactResponse",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListXdslLineDslamPortAvailableProfilesRequest",
+      });
+    case 1:
+      return S.Array(__S(1776, __c111, 0));
+    case 2:
+      return S.suspend(() => __S(2385, __c149, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListXdslLineDslamPortAvailableProfilesResponse",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+          limit: S.Number.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/lines/{number}/dslamPort/logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListXdslLineDslamPortLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          lastOccurrenceDate: S.optional(S.String),
+          message: S.optional(S.String),
+          numberOfOccurrences: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "XdslDslamPortLog" });
+    case 2:
+      return S.Array(__S(2401, __c150, 1));
+    case 3:
+      return S.suspend(() => __S(2402, __c150, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListXdslLineDslamPortLogsResponse",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines", code: 200 })),
+      ).annotate({ identifier: "ListXdslLinesRequest" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          number: S.String.pipe(T.Label()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/lines/{number}/statistics",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListXdslLineStatisticsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.Number),
+          value: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "XdslTimestampAndValue" });
+    case 2:
+      return S.Array(__S(2433, __c152, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          values: S.optional(__S(2434, __c152, 2)),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValuesXdslTimestampAndValue",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/availableACSBackend",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListXdslModemAvailableACSBackendRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frequency: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/xdsl/{serviceName}/modem/availableWLANChannel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListXdslModemAvailableWLANChannelRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/connectedDevices", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslModemConnectedDevicesRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmwareAvailable", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslModemFirmwareAvailableRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan", code: 200 })),
+      ).annotate({ identifier: "ListXdslModemLanRequest" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          lanName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslModemLanDhcpRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/xdsl/email/pro/{email}/changePassword", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ChangeEmailPasswordRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          finishDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          status: S.optional(S.String),
+          todoDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslEmailProTask" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifi", code: 200 })),
+      ).annotate({ identifier: "ListXdslModemWifiRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifiRadio", code: 200 })),
+      ).annotate({
+        identifier: "ListXdslModemWifiRadioRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/orderFollowup", code: 200 })),
+      ).annotate({
+        identifier: "ListXdslOrderFollowupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          comments: S.optional(__S(256, __c16, 0)),
+          doneDate: S.optional(S.NullOr(S.String)),
+          durationUnit: S.optional(S.String),
+          expectedDuration: S.optional(S.Number),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslOrderFollowupStep" });
+    case 2:
+      return S.Array(__S(2593, __c162, 1));
+    case 3:
+      return S.suspend(() => __S(2594, __c162, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListXdslOrderFollowupResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/{serviceName}/radiusConnectionLogs", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslRadiusConnectionLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          login: S.optional(S.String),
+          message: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "XdslRadiusConnectionLog" });
+    case 2:
+      return S.Array(__S(2609, __c163, 1));
+    case 3:
+      return S.suspend(() => __S(2610, __c163, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListXdslRadiusConnectionLogsResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/rma", code: 200 })),
+      ).annotate({ identifier: "ListXdslRmaRequest" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(2225, __c139, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare", code: 200 })),
+      ).annotate({ identifier: "ListXdslSpareRequest" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/brands", code: 200 })),
+      ).annotate({
+        identifier: "ListXdslSpareBrandsRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spare: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/compatibleReplacement", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListXdslSpareCompatibleReplacementRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/statistics", code: 200 })),
+      ).annotate({
+        identifier: "ListXdslStatisticsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          loss: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.Number)),
+          timestamp: S.optional(S.Number),
+          value: S.optional(S.NullOr(S.Number)),
+          verboseStatus: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "XdslAccessLatency" });
+    case 2:
+      return S.Array(__S(2689, __c168, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          values: S.optional(__S(2690, __c168, 2)),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValuesXdslAccessLatency",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/tasks", code: 200 })),
+      ).annotate({ identifier: "ListXdslTasksRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

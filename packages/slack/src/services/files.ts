@@ -379,7 +379,7 @@ export const addRemote: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddRemoteRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddRemoteResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddRemoteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const completeUploadExternal: API.OperationMethod<
   CompleteUploadExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CompleteUploadExternalRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CompleteUploadExternalResponse>,
+  input: __S(19, __c2, 3) as any as S.Schema<CompleteUploadExternalRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<CompleteUploadExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteCommentResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteCommentResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const deleteFile: API.OperationMethod<
   DeleteFileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteFileRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteFileResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteFileRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteFileResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -440,8 +440,8 @@ export const filesInfo: API.PaginatedOperationMethod<
   FilesInfoResponseCommentsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<FilesInfoRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<FilesInfoResponse>,
+    input: __S(112, __c14, 0) as any as S.Schema<FilesInfoRequest>,
+    output: __S(116, __c14, 4) as any as S.Schema<FilesInfoResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const getUploadURLExternal: API.OperationMethod<
   GetUploadURLExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetUploadURLExternalRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetUploadURLExternalResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetUploadURLExternalRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetUploadURLExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListFilesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListFilesResponse>,
+  input: __S(138, __c17, 2) as any as S.Schema<ListFilesRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ListFilesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const listRemote: API.PaginatedOperationMethod<
   ListRemoteResponseFilesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(31, __c3, 7) as any as S.Schema<ListRemoteRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<ListRemoteResponse>,
+    input: __S(152, __c19, 0) as any as S.Schema<ListRemoteRequest>,
+    output: __S(154, __c19, 2) as any as S.Schema<ListRemoteResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -520,8 +520,8 @@ export const remoteInfo: API.OperationMethod<
   RemoteInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<RemoteInfoRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<RemoteInfoResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<RemoteInfoRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<RemoteInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -535,8 +535,8 @@ export const removeRemote: API.OperationMethod<
   RemoveRemoteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<RemoveRemoteRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<RemoveRemoteResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<RemoveRemoteRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<RemoveRemoteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -550,7 +550,7 @@ export const revokePublicURL: API.OperationMethod<
   RevokePublicURLError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<RevokePublicURLRequest>,
+  input: __S(24, __c3, 0) as any as S.Schema<RevokePublicURLRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<RevokePublicURLResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
@@ -565,8 +565,8 @@ export const sharedPublicURL: API.OperationMethod<
   SharedPublicURLError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<SharedPublicURLRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<SharedPublicURLResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<SharedPublicURLRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<SharedPublicURLResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const shareRemote: API.OperationMethod<
   ShareRemoteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ShareRemoteRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ShareRemoteResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ShareRemoteRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ShareRemoteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const updateRemote: API.OperationMethod<
   UpdateRemoteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateRemoteRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateRemoteResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateRemoteRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateRemoteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -610,7 +610,7 @@ export const uploadFile: API.OperationMethod<
   UploadFileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UploadFileRequest>,
+  input: __S(80, __c10, 0) as any as S.Schema<UploadFileRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<UploadFileResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
@@ -639,10 +639,8 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "AddRemoteRequest" });
     case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
       return S.Array(S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -667,23 +665,33 @@ function __c0(j: number): any {
           permalink: S.optional(S.String),
           comments_count: S.optional(S.Number),
           is_starred: S.optional(S.Boolean),
-          shares: S.optional(__S(1, __c0, 1)),
-          channels: S.optional(__S(2, __c0, 2)),
-          groups: S.optional(__S(2, __c0, 2)),
-          ims: S.optional(__S(2, __c0, 2)),
+          shares: S.optional(__S(8, __c1, 0)),
+          channels: S.optional(__S(1, __c0, 1)),
+          groups: S.optional(__S(1, __c0, 1)),
+          ims: S.optional(__S(1, __c0, 1)),
           external_id: S.optional(S.String),
           external_url: S.optional(S.String),
           has_rich_preview: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AddRemoteResponseFile" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          file: __S(3, __c0, 3),
+          file: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "AddRemoteResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -693,25 +701,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteUploadExternalRequestFilesItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(__S(1, __c0, 1));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          files: __S(6, __c0, 6),
+          files: __S(17, __c2, 1),
           channel_id: S.optional(S.String),
           thread_ts: S.optional(S.String),
           channels: S.optional(S.String),
           initial_comment: S.optional(S.String),
-          blocks: S.optional(__S(8, __c1, 0)),
+          blocks: S.optional(__S(18, __c2, 2)),
           username: S.optional(S.NullOr(S.String)),
           icon_url: S.optional(S.NullOr(S.String)),
           icon_emoji: S.optional(S.NullOr(S.String)),
@@ -719,7 +721,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CompleteUploadExternalRequest",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -730,31 +732,169 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CompleteUploadExternalResponseFilesItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(20, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          files: __S(11, __c1, 3),
+          files: __S(21, __c2, 5),
         }),
       ).annotate({
         identifier: "CompleteUploadExternalResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/files.revokePublicURL", code: 200 })),
+      ).annotate({ identifier: "RevokePublicURLRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          created: S.optional(S.Number),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RevokePublicURLResponseFile",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          file: __S(32, __c4, 0),
+        }),
+      ).annotate({ identifier: "RevokePublicURLResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8, __c1, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          file: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/files.sharedPublicURL", code: 200 })),
+      ).annotate({ identifier: "SharedPublicURLRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          file: __S(32, __c4, 0),
+          comment: S.optional(__S(48, __c6, 0)),
+          paging: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "SharedPublicURLResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channels: S.String.pipe(T.Query()),
+          external_id: S.optional(S.String.pipe(T.Query())),
+          file: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/files.remote.share", code: 200 })),
+      ).annotate({ identifier: "ShareRemoteRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          file: S.optional(__S(160, __c20, 0)),
+        }),
+      ).annotate({ identifier: "ShareRemoteResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.optional(S.String),
+          external_url: S.optional(S.String),
+          file: S.optional(S.String),
+          filetype: S.optional(S.String),
+          indexable_file_contents: S.optional(S.Unknown),
+          preview_image: S.optional(S.Unknown),
+          title: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/files.remote.update",
+            code: 200,
+            contentType: "form-urlencoded",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRemoteRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channels: S.optional(S.String),
+          content: S.optional(S.String),
+          file: S.optional(S.Unknown),
+          filename: S.optional(S.String),
+          filetype: S.optional(S.String),
+          initial_comment: S.optional(S.String),
+          thread_ts: S.optional(S.String),
+          title: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/files.upload",
+            code: 200,
+            contentType: "form-urlencoded",
+          }),
+        ),
+      ).annotate({ identifier: "UploadFileRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           file: S.String,
           id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/files.comments.delete", code: 200 })),
       ).annotate({ identifier: "DeleteCommentRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteCommentResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           file: S.String,
@@ -762,7 +902,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteFileRequest" });
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -794,8 +934,24 @@ function __c2(j: number): any {
         identifier: "FilesInfoResponseCommentsItem",
       });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(114, __c14, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          file: __S(113, __c14, 1),
+          comments: __S(115, __c14, 3),
+          content: S.optional(S.String),
+          content_html: S.optional(S.Unknown),
+          content_highlight_html: S.optional(S.Unknown),
+          response_metadata: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "FilesInfoResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           next_cursor: S.optional(S.String),
@@ -803,19 +959,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FilesInfoResponseResponseMetadata",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          file: __S(17, __c2, 1),
-          comments: __S(19, __c2, 3),
-          content: S.optional(S.String),
-          content_html: S.optional(S.Unknown),
-          content_highlight_html: S.optional(S.Unknown),
-          response_metadata: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "FilesInfoResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           length: S.Number,
@@ -833,7 +981,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetUploadURLExternalRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -845,7 +993,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
@@ -855,8 +1003,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String.pipe(T.Query())),
-          count: S.optional(__S(24, __c3, 0).pipe(T.Query())),
-          page: S.optional(__S(25, __c3, 1).pipe(T.Query())),
+          count: S.optional(__S(136, __c17, 0).pipe(T.Query())),
+          page: S.optional(__S(137, __c17, 1).pipe(T.Query())),
           show_files_hidden_by_limit: S.optional(S.Boolean.pipe(T.Query())),
           team_id: S.optional(S.String.pipe(T.Query())),
           ts_from: S.optional(S.String.pipe(T.Query())),
@@ -866,6 +1014,29 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/files.list", code: 200 })),
       ).annotate({ identifier: "ListFilesRequest" });
     case 3:
+      return S.Array(__S(144, __c18, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          total: S.Number,
+          page: S.Number,
+          pages: S.Number,
+        }),
+      ).annotate({ identifier: "ListFilesResponsePaging" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          files: __S(139, __c17, 3),
+          paging: S.optional(__S(140, __c17, 4)),
+        }),
+      ).annotate({ identifier: "ListFilesResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -875,26 +1046,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFilesResponseFilesItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          total: S.Number,
-          page: S.Number,
-          pages: S.Number,
-        }),
-      ).annotate({ identifier: "ListFilesResponsePaging" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          files: __S(28, __c3, 4),
-          paging: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "ListFilesResponse" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String.pipe(T.Query())),
@@ -904,9 +1060,19 @@ function __c3(j: number): any {
           ts_to: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/files.remote.list", code: 200 })),
       ).annotate({ identifier: "ListRemoteRequest" });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          files: __S(153, __c19, 1),
+          response_metadata: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "ListRemoteResponse" });
   }
 }
-function __c4(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -916,31 +1082,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRemoteResponseFilesItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          files: __S(33, __c4, 1),
-          response_metadata: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ListRemoteResponse" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_id: S.optional(S.String.pipe(T.Query())),
           file: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/files.remote.info", code: 200 })),
       ).annotate({ identifier: "RemoteInfoRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          file: __S(27, __c3, 3),
+          file: __S(144, __c18, 0),
         }),
       ).annotate({ identifier: "RemoteInfoResponse" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_id: S.optional(S.String),
@@ -954,105 +1118,8 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveRemoteRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          file: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/files.revokePublicURL", code: 200 })),
-      ).annotate({ identifier: "RevokePublicURLRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          created: S.optional(S.Number),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RevokePublicURLResponseFile",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          file: __S(39, __c4, 7),
-        }),
-      ).annotate({ identifier: "RevokePublicURLResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          file: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/files.sharedPublicURL", code: 200 })),
-      ).annotate({ identifier: "SharedPublicURLRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          file: __S(39, __c4, 7),
-          comment: S.optional(__S(7, __c0, 7)),
-          paging: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "SharedPublicURLResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channels: S.String.pipe(T.Query()),
-          external_id: S.optional(S.String.pipe(T.Query())),
-          file: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/files.remote.share", code: 200 })),
-      ).annotate({ identifier: "ShareRemoteRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          file: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "ShareRemoteResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.optional(S.String),
-          external_url: S.optional(S.String),
-          file: S.optional(S.String),
-          filetype: S.optional(S.String),
-          indexable_file_contents: S.optional(S.Unknown),
-          preview_image: S.optional(S.Unknown),
-          title: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/files.remote.update",
-            code: 200,
-            contentType: "form-urlencoded",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRemoteRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channels: S.optional(S.String),
-          content: S.optional(S.String),
-          file: S.optional(S.Unknown),
-          filename: S.optional(S.String),
-          filetype: S.optional(S.String),
-          initial_comment: S.optional(S.String),
-          thread_ts: S.optional(S.String),
-          title: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/files.upload",
-            code: 200,
-            contentType: "form-urlencoded",
-          }),
-        ),
-      ).annotate({ identifier: "UploadFileRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

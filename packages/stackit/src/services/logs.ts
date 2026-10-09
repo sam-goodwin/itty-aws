@@ -334,8 +334,8 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateAccessPolicyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccessPolicy>,
+  input: __S(44, __c11, 0) as any as S.Schema<CreateAccessPolicyRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<AccessPolicy>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateAccessTokenRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AccessToken>,
+  input: __S(56, __c14, 0) as any as S.Schema<CreateAccessTokenRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<AccessToken>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const createLogsInstance: API.OperationMethod<
   CreateLogsInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateLogsInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<LogsInstance>,
+  input: __S(64, __c16, 0) as any as S.Schema<CreateLogsInstanceRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<LogsInstance>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteAccessTokenRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteAccessTokenResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<DeleteAccessTokenRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DeleteAccessTokenResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const deleteAllAccessPolicies: API.OperationMethod<
   DeleteAllAccessPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteAllAccessPoliciesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AccessPolicyList>,
+  input: __S(84, __c21, 0) as any as S.Schema<DeleteAllAccessPoliciesRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<AccessPolicyList>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const deleteAllAccessTokens: API.OperationMethod<
   DeleteAllAccessTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteAllAccessTokensRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AccessTokenList>,
+  input: __S(92, __c23, 0) as any as S.Schema<DeleteAllAccessTokensRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<AccessTokenList>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const deleteAllExpiredAccessTokens: API.OperationMethod<
   DeleteAllExpiredAccessTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAllExpiredAccessTokensRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AccessTokenList>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteAllExpiredAccessTokensRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<AccessTokenList>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const deleteLogsInstance: API.OperationMethod<
   DeleteLogsInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteLogsInstanceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteLogsInstanceResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteLogsInstanceRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<DeleteLogsInstanceResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const getAccessPolicy: API.OperationMethod<
   GetAccessPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccessPolicy>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetAccessPolicyRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<AccessPolicy>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAccessTokenRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AccessToken>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetAccessTokenRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<AccessToken>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const getLogsInstance: API.OperationMethod<
   GetLogsInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetLogsInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<LogsInstance>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetLogsInstanceRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<LogsInstance>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const listAccessPolicies: API.OperationMethod<
   ListAccessPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListAccessPoliciesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AccessPolicyList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListAccessPoliciesRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<AccessPolicyList>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const listAccessTokens: API.OperationMethod<
   ListAccessTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAccessTokensRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AccessTokenList>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListAccessTokensRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<AccessTokenList>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const listLogsInstances: API.OperationMethod<
   ListLogsInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListLogsInstancesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<LogsInstancesList>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListLogsInstancesRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<LogsInstancesList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateAccessPolicyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccessPolicy>,
+  input: __S(32, __c8, 0) as any as S.Schema<UpdateAccessPolicyRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<AccessPolicy>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const updateAccessToken: API.OperationMethod<
   UpdateAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateAccessTokenRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateAccessTokenResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateAccessTokenRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<UpdateAccessTokenResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const updateLogsInstance: API.OperationMethod<
   UpdateLogsInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateLogsInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<LogsInstance>,
+  input: __S(40, __c10, 0) as any as S.Schema<UpdateLogsInstanceRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<LogsInstance>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -600,8 +600,244 @@ export const updateLogsInstance: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/expired",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAllExpiredAccessTokensRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLogsInstanceRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          pId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies/{pId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccessPolicyRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          tId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/{tId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccessTokenRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetLogsInstanceRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccessPoliciesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccessTokensRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListLogsInstancesRequest" });
     case 1:
+      return S.Array(__S(69, __c17, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instances: __S(29, __c7, 1),
+        }),
+      ).annotate({ identifier: "LogsInstancesList" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          pId: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          permissions: S.optional(__S(48, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies/{pId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAccessPolicyRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          tId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/{tId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccessTokenRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          acl: S.optional(__S(68, __c17, 0)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://logs.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateLogsInstanceRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -609,7 +845,7 @@ function __c0(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           email: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(48, __c12, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -621,16 +857,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAccessPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           email: S.String,
           id: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(48, __c12, 0),
         }),
       ).annotate({ identifier: "AccessPolicy" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -639,7 +889,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           lifetime: S.optional(S.Number),
-          permissions: __S(0, __c0, 0),
+          permissions: __S(48, __c12, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -649,7 +899,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAccessTokenRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -658,19 +912,21 @@ function __c0(j: number): any {
           displayName: S.String,
           expires: S.Boolean,
           id: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(48, __c12, 0),
           status: S.String,
           validUntil: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessToken" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
-          acl: S.optional(__S(5, __c0, 5)),
+          acl: S.optional(__S(68, __c17, 0)),
           description: S.optional(S.String),
           displayName: S.String,
           retentionDays: S.Number,
@@ -685,10 +941,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateLogsInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(__S(5, __c0, 5)),
+          acl: S.optional(__S(68, __c17, 0)),
           created: S.String,
           datasourceUrl: S.optional(S.String),
           description: S.optional(S.String),
@@ -704,7 +966,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "LogsInstance" });
   }
 }
-function __c1(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -724,11 +986,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessPolicyResponse",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -744,7 +1014,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccessTokenRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -761,15 +1035,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteAllAccessPoliciesRequest",
       });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(52, __c13, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          policies: __S(12, __c1, 4),
+          policies: __S(88, __c22, 0),
         }),
       ).annotate({ identifier: "AccessPolicyList" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -786,219 +1068,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteAllAccessTokensRequest",
       });
-    case 7:
-      return S.Array(__S(4, __c0, 4));
   }
 }
-function __c2(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(60, __c15, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tokens: __S(15, __c1, 7),
+          tokens: __S(96, __c24, 0),
         }),
       ).annotate({ identifier: "AccessTokenList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/expired",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAllExpiredAccessTokensRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLogsInstanceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          pId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies/{pId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccessPolicyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          tId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/{tId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccessTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetLogsInstanceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccessPoliciesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccessTokensRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListLogsInstancesRequest" });
-    case 1:
-      return S.Array(__S(7, __c0, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instances: __S(25, __c3, 1),
-        }),
-      ).annotate({ identifier: "LogsInstancesList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          pId: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-policies/{pId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAccessPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          tId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/access-tokens/{tId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccessTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          acl: S.optional(__S(5, __c0, 5)),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://logs.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateLogsInstanceRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -142,7 +142,7 @@ export const getConfigControllerConfig: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetConfigControllerConfigRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DaytonaConfiguration>,
+  output: __S(9, __c0, 9) as any as S.Schema<DaytonaConfiguration>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -200,11 +200,7 @@ function __c0(j: number): any {
           limit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RateLimitEntry" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           failedAuth: S.optional(__S(7, __c0, 7)),
@@ -214,7 +210,7 @@ function __c1(j: number): any {
           sandboxList: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "RateLimitConfig" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -242,12 +238,11 @@ function __c1(j: number): any {
           sshGatewayPort: S.optional(S.Number),
           sshGatewayHostKeys: S.optional(__S(4, __c0, 4)),
           sshGatewayHostKeyFingerprints: S.optional(__S(4, __c0, 4)),
-          rateLimit: S.optional(__S(8, __c1, 0)),
+          rateLimit: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({ identifier: "DaytonaConfiguration" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

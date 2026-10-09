@@ -113,7 +113,7 @@ export const createSandboxCustomImage: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateSandboxCustomImageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SandboxCustomImageDTO>,
+  output: __S(6, __c1, 2) as any as S.Schema<SandboxCustomImageDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -127,8 +127,8 @@ export const createSandboxCustomImagesBuild: API.OperationMethod<
   CreateSandboxCustomImagesBuildError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateSandboxCustomImagesBuildRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateSandboxCustomImagesBuildRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SandboxCustomImageDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +142,8 @@ export const createSandboxCustomImagesBuilderTask: API.OperationMethod<
   CreateSandboxCustomImagesBuilderTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateSandboxCustomImagesBuilderTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateSandboxCustomImagesBuilderTaskRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SandboxCustomImageDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const getSandboxCustomImage: API.OperationMethod<
   GetSandboxCustomImageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetSandboxCustomImageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetSandboxCustomImageRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SandboxCustomImageDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -172,8 +172,8 @@ export const listSandboxCustomImages: API.OperationMethod<
   ListSandboxCustomImagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListSandboxCustomImagesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PaginatedSandboxCustomImageDTOList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListSandboxCustomImagesRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<PaginatedSandboxCustomImageDTOList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -187,8 +187,8 @@ export const sandboxCustomImagesDestroy: API.OperationMethod<
   SandboxCustomImagesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<SandboxCustomImagesDestroyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<SandboxCustomImagesDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<SandboxCustomImagesDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<SandboxCustomImagesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -202,8 +202,8 @@ export const updateSandboxCustomImagesPartial: API.OperationMethod<
   UpdateSandboxCustomImagesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UpdateSandboxCustomImagesPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateSandboxCustomImagesPartialRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SandboxCustomImageDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -230,9 +230,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateSandboxCustomImageRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -242,11 +246,11 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -257,18 +261,22 @@ function __c0(j: number): any {
           status: S.String,
           version: S.Number,
           modal_image_name: S.String,
-          spec: S.optional(__S(1, __c0, 1)),
+          spec: S.optional(__S(4, __c1, 0)),
           spec_yaml: S.optional(S.String),
-          scan_result: S.optional(__S(1, __c0, 1)),
+          scan_result: S.optional(__S(4, __c1, 0)),
           build_log: S.optional(S.String),
           error: S.String,
           builder_task_id: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
+          created_by: S.optional(S.NullOr(__S(5, __c1, 1))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SandboxCustomImageDTO" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -284,7 +292,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateSandboxCustomImagesBuildRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -299,7 +311,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateSandboxCustomImagesBuilderTaskRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -314,7 +330,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetSandboxCustomImageRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -330,24 +350,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListSandboxCustomImagesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(8, __c1, 0),
+          results: __S(21, __c5, 1),
         }),
       ).annotate({
         identifier: "PaginatedSandboxCustomImageDTOList",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -362,11 +382,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SandboxCustomImagesDestroyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SandboxCustomImagesDestroyResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -385,7 +409,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

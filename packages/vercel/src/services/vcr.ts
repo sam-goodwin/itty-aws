@@ -689,8 +689,8 @@ export const addRepositoryPermission: API.OperationMethod<
   AddRepositoryPermissionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddRepositoryPermissionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddRepositoryPermissionResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<AddRepositoryPermissionRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<AddRepositoryPermissionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -704,8 +704,8 @@ export const clearRepositoryPermissions: API.OperationMethod<
   ClearRepositoryPermissionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ClearRepositoryPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ClearRepositoryPermissionsResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<ClearRepositoryPermissionsRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<ClearRepositoryPermissionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -725,14 +725,14 @@ export const createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads: API.Oper
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5,
-    __c0,
-    5,
+    112,
+    __c28,
+    0,
   ) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    116,
+    __c29,
+    0,
   ) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -753,8 +753,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateRepositoryRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateRepositoryResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<CreateRepositoryRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<CreateRepositoryResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const deleteBlob: API.OperationMethod<
   DeleteBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteBlobRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteBlobResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<DeleteBlobRequest>,
+  output: __S(136, __c34, 0) as any as S.Schema<DeleteBlobResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const deleteBlobsUpload: API.OperationMethod<
   DeleteBlobsUploadError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteBlobsUploadRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteBlobsUploadResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteBlobsUploadRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<DeleteBlobsUploadResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -808,8 +808,8 @@ export const deleteManifest: API.OperationMethod<
   DeleteManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteManifestRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteManifestResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteManifestRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteManifestResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -823,8 +823,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteRepositoryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteRepositoryResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteRepositoryRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteRepositoryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const deleteRepositoryImage: API.OperationMethod<
   DeleteRepositoryImageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteRepositoryImageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteRepositoryImageResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteRepositoryImageRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<DeleteRepositoryImageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -853,8 +853,8 @@ export const getBlob: API.OperationMethod<
   GetBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetBlobRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetBlobResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetBlobRequest>,
+  output: __S(136, __c34, 0) as any as S.Schema<GetBlobResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -873,8 +873,8 @@ export const getBlobsUpload: API.OperationMethod<
   GetBlobsUploadError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetBlobsUploadRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetBlobsUploadResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetBlobsUploadRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<GetBlobsUploadResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -888,8 +888,8 @@ export const getManifest: API.OperationMethod<
   GetManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetManifestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetManifestResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetManifestRequest>,
+  output: __S(136, __c34, 0) as any as S.Schema<GetManifestResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -903,8 +903,8 @@ export const getRepository: API.OperationMethod<
   GetRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetRepositoryRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetRepositoryResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetRepositoryRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetRepositoryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -918,8 +918,8 @@ export const getRepositoryImage: API.OperationMethod<
   GetRepositoryImageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetRepositoryImageRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetRepositoryImageResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetRepositoryImageRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<GetRepositoryImageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const getRepositoryTag: API.OperationMethod<
   GetRepositoryTagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetRepositoryTagRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetRepositoryTagResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetRepositoryTagRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<GetRepositoryTagResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const getRoot: API.OperationMethod<
   GetRootError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetRootRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetRootResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetRootRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<GetRootResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,8 @@ export const getTagsList: API.OperationMethod<
   GetTagsListError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetTagsListRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetTagsListResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetTagsListRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<GetTagsListResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const headBlob: API.OperationMethod<
   HeadBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<HeadBlobRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<HeadBlobResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<HeadBlobRequest>,
+  output: __S(136, __c34, 0) as any as S.Schema<HeadBlobResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const headManifest: API.OperationMethod<
   HeadManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<HeadManifestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<HeadManifestResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<HeadManifestRequest>,
+  output: __S(136, __c34, 0) as any as S.Schema<HeadManifestResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const listRepositories: API.OperationMethod<
   ListRepositoriesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListRepositoriesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<VcrRepositoryList>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListRepositoriesRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<VcrRepositoryList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const listRepositoryImages: API.OperationMethod<
   ListRepositoryImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListRepositoryImagesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<VcrImageList>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListRepositoryImagesRequest>,
+  output: __S(71, __c17, 3) as any as S.Schema<VcrImageList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1038,8 @@ export const listRepositoryPermissions: API.OperationMethod<
   ListRepositoryPermissionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListRepositoryPermissionsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<VcrRepositoryPermissionList>,
+  input: __S(72, __c18, 0) as any as S.Schema<ListRepositoryPermissionsRequest>,
+  output: __S(74, __c18, 2) as any as S.Schema<VcrRepositoryPermissionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1053,8 @@ export const listRepositoryTags: API.OperationMethod<
   ListRepositoryTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListRepositoryTagsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListRepositoryTagsResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListRepositoryTagsRequest>,
+  output: __S(79, __c19, 3) as any as S.Schema<ListRepositoryTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const removeRepositoryPermission: API.OperationMethod<
   RemoveRepositoryPermissionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RemoveRepositoryPermissionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RemoveRepositoryPermissionResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<RemoveRepositoryPermissionRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<RemoveRepositoryPermissionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1089,14 +1089,14 @@ export const replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid: A
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    84,
+    __c21,
+    0,
   ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    116,
+    __c29,
+    0,
   ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1117,14 +1117,14 @@ export const replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference:
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    88,
+    __c22,
+    0,
   ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    116,
+    __c29,
+    0,
   ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1145,14 +1145,14 @@ export const updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid: AP
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    51,
-    __c6,
-    3,
+    92,
+    __c23,
+    0,
   ) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    116,
+    __c29,
+    0,
   ) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1163,129 +1163,6 @@ export const updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid: AP
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          teamSlug: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/vcr/repository/{idOrName}/permissions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddRepositoryPermissionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          repositoryId: S.String,
-          teamId: S.String,
-          teamSlug: S.String,
-        }),
-      ).annotate({ identifier: "VcrRepositoryPermission" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          permission: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "AddRepositoryPermissionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/vcr/repository/{idOrName}/permissions/all",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearRepositoryPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ClearRepositoryPermissionsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamSlug: S.String.pipe(T.Label()),
-          projectSlug: S.String.pipe(T.Label()),
-          repositoryName: S.String.pipe(T.Label()),
-          mount: S.optional(S.String.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String,
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/vcr/repository", code: 200 })),
-      ).annotate({ identifier: "CreateRepositoryRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          id: S.String,
-          name: S.String,
-          projectId: S.String,
-          public: S.Boolean,
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "VcrRepository" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repository: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "CreateRepositoryResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          teamSlug: S.String.pipe(T.Label()),
-          projectSlug: S.String.pipe(T.Label()),
-          repositoryName: S.String.pipe(T.Label()),
-          digest: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/{digest}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBlobRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBlobResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1300,7 +1177,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBlobsUploadRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1315,11 +1196,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteManifestRequest" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteManifestResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1330,7 +1219,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteRepositoryRequest" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1350,7 +1239,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteRepositoryImageRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1365,7 +1258,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBlobRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1380,7 +1277,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBlobsUploadRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1395,7 +1296,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetManifestRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1404,7 +1309,11 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/vcr/repository/{idOrName}", code: 200 })),
       ).annotate({ identifier: "GetRepositoryRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1422,40 +1331,44 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetRepositoryImageRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           arch: S.optional(S.String),
           createdAt: S.String,
           id: S.String,
           kind: S.String,
-          layers: __S(23, __c2, 7),
+          layers: __S(37, __c9, 1),
           manifestDigest: S.String,
           platform: S.optional(S.String),
           pushedBy: S.optional(S.String),
           repositoryId: S.String,
           sizeInBytes: S.Number,
           status: S.NullOr(S.String),
-          tags: __S(22, __c2, 6),
+          tags: __S(40, __c10, 0),
         }),
       ).annotate({ identifier: "VcrImageDetail" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          image: __S(24, __c3, 0),
+          image: __S(38, __c9, 2),
         }),
       ).annotate({
         identifier: "GetRepositoryImageResponse",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1467,7 +1380,7 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/v1/vcr/repository/{idOrName}/tags/{tag}", code: 200 }),
         ),
       ).annotate({ identifier: "GetRepositoryTagRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arch: S.optional(S.String),
@@ -1483,17 +1396,25 @@ function __c3(j: number): any {
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "VcrTag" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tag: __S(27, __c3, 3),
+          tag: __S(45, __c11, 1),
         }),
       ).annotate({ identifier: "GetRepositoryTagResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/", code: 200 })),
       ).annotate({ identifier: "GetRootRequest" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1509,16 +1430,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTagsListRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tags: __S(22, __c2, 6),
+          tags: __S(40, __c10, 0),
         }),
       ).annotate({ identifier: "GetTagsListResponse" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1535,7 +1456,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HeadBlobRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1550,7 +1475,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HeadManifestRequest" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -1560,16 +1489,20 @@ function __c4(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/vcr/repository", code: 200 })),
       ).annotate({ identifier: "ListRepositoriesRequest" });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(128, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          repositories: __S(35, __c4, 3),
+          repositories: __S(65, __c16, 1),
         }),
       ).annotate({ identifier: "VcrRepositoryList" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1583,7 +1516,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRepositoryImagesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arch: S.optional(S.String),
@@ -1596,23 +1529,23 @@ function __c4(j: number): any {
           repositoryId: S.String,
           sizeInBytes: S.Number,
           status: S.NullOr(S.String),
-          tags: __S(22, __c2, 6),
+          tags: __S(40, __c10, 0),
         }),
       ).annotate({ identifier: "VcrImageListItem" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(69, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          images: __S(39, __c4, 7),
+          images: __S(70, __c17, 2),
           nextCursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "VcrImageList" });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1627,18 +1560,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRepositoryPermissionsRequest",
       });
+    case 1:
+      return S.Array(__S(100, __c25, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          permissions: __S(42, __c5, 2),
+          permissions: __S(73, __c18, 1),
         }),
       ).annotate({
         identifier: "VcrRepositoryPermissionList",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1653,7 +1590,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRepositoryTagsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arch: S.optional(S.String),
@@ -1671,20 +1608,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRepositoryTagsResponseTagsItem",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(77, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          tags: __S(46, __c5, 6),
+          tags: __S(78, __c19, 2),
         }),
       ).annotate({
         identifier: "ListRepositoryTagsResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1700,7 +1637,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RemoveRepositoryPermissionRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1718,7 +1659,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1735,7 +1680,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamSlug: S.String.pipe(T.Label()),
@@ -1754,7 +1703,169 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          teamSlug: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/vcr/repository/{idOrName}/permissions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddRepositoryPermissionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          permission: __S(100, __c25, 0),
+        }),
+      ).annotate({
+        identifier: "AddRepositoryPermissionResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          repositoryId: S.String,
+          teamId: S.String,
+          teamSlug: S.String,
+        }),
+      ).annotate({ identifier: "VcrRepositoryPermission" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/vcr/repository/{idOrName}/permissions/all",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearRepositoryPermissionsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ClearRepositoryPermissionsResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamSlug: S.String.pipe(T.Label()),
+          projectSlug: S.String.pipe(T.Label()),
+          repositoryName: S.String.pipe(T.Label()),
+          mount: S.optional(S.String.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String,
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/vcr/repository", code: 200 })),
+      ).annotate({ identifier: "CreateRepositoryRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository: __S(128, __c32, 0),
+        }),
+      ).annotate({ identifier: "CreateRepositoryResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          id: S.String,
+          name: S.String,
+          projectId: S.String,
+          public: S.Boolean,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "VcrRepository" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamSlug: S.String.pipe(T.Label()),
+          projectSlug: S.String.pipe(T.Label()),
+          repositoryName: S.String.pipe(T.Label()),
+          digest: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/{digest}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBlobRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteBlobResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

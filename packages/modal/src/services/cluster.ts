@@ -40,7 +40,7 @@ export const getCluster: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetClusterRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetClusterResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -53,8 +53,8 @@ export const listCluster: API.OperationMethod<
   ListClusterError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListClusterRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListClusterResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListClusterRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListClusterResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -70,23 +70,31 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClusterGet", code: 200 })),
       ).annotate({ identifier: "GetClusterRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(__S(5, __c1, 1)),
+        }),
+      ).annotate({ identifier: "GetClusterResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
-          taskIds: S.optional(__S(1, __c0, 1)),
+          taskIds: S.optional(__S(4, __c1, 0)),
           clusterId: S.optional(S.String),
           startedAt: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClusterStats" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cluster: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "GetClusterResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
@@ -94,17 +102,16 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClusterList", code: 200 }),
         ),
       ).annotate({ identifier: "ListClusterRequest" });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          clusters: S.optional(__S(5, __c0, 5)),
+          clusters: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ListClusterResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

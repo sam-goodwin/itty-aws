@@ -462,8 +462,8 @@ export const applyParametersProjectsLocationsInstances: API.OperationMethod<
   ApplyParametersProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ApplyParametersProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(177, __c11, 1) as any as S.Schema<ApplyParametersProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -482,8 +482,12 @@ export const applySoftwareUpdateProjectsLocationsInstances: API.OperationMethod<
   ApplySoftwareUpdateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ApplySoftwareUpdateProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(
+    241,
+    __c15,
+    1,
+  ) as any as S.Schema<ApplySoftwareUpdateProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -502,8 +506,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(256, __c16, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -522,8 +526,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +546,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -562,8 +566,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -577,8 +581,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Location>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -592,8 +596,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Instance>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(330, __c20, 10) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -607,8 +611,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -623,8 +627,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -640,8 +644,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListInstancesResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -657,8 +661,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -678,8 +682,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(112, __c7, 0) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -699,11 +703,11 @@ export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    129,
+    __c8,
+    1,
   ) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -722,8 +726,8 @@ export const updateParametersProjectsLocationsInstances: API.OperationMethod<
   UpdateParametersProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateParametersProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(145, __c9, 1) as any as S.Schema<UpdateParametersProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -742,8 +746,8 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
   UpgradeProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(161, __c10, 1) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -753,260 +757,6 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nodeIds: S.optional(__S(0, __c0, 0)),
-          applyAll: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApplyParametersRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+name}:applyParameters",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyParametersProjectsLocationsInstancesRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(3, __c0, 3)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          error: S.optional(__S(5, __c0, 5)),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applyAll: S.optional(S.Boolean),
-          nodeIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ApplySoftwareUpdateRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instance: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+instance}:applySoftwareUpdate",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplySoftwareUpdateProjectsLocationsInstancesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+name}:cancel",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          scheduleDeadlineTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MaintenanceSchedule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          memorySizeMb: S.optional(S.Number),
-          cpuCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NodeConfig" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          params: S.optional(__S(13, __c1, 5)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MemcacheParameters" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateAvailable: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          memcacheFullVersion: S.optional(S.String),
-          host: S.optional(S.String),
-          memcacheVersion: S.optional(S.String),
-          port: S.optional(S.Number),
-          parameters: S.optional(__S(14, __c1, 6)),
-          zone: S.optional(S.String),
-          nodeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Node" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceMessage" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          hours: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-          day: S.optional(S.String),
-          startTime: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "WeeklyMaintenanceWindow" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          weeklyMaintenanceWindow: S.optional(__S(21, __c2, 5)),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudMemcacheV1beta2MaintenancePolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceSchedule: S.optional(__S(11, __c1, 3)),
-          effectiveMaintenanceVersion: S.optional(S.String),
-          reservedIpRangeId: S.optional(__S(0, __c0, 0)),
-          memcacheFullVersion: S.optional(S.String),
-          nodeConfig: S.optional(__S(12, __c1, 4)),
-          availableMaintenanceVersions: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-          satisfiesPzi: S.optional(S.Boolean),
-          memcacheNodes: S.optional(__S(16, __c2, 0)),
-          instanceMessages: S.optional(__S(18, __c2, 2)),
-          satisfiesPzs: S.optional(S.Boolean),
-          nodeCount: S.optional(S.Number),
-          labels: S.optional(__S(13, __c1, 5)),
-          state: S.optional(S.String),
-          zones: S.optional(__S(0, __c0, 0)),
-          memcacheVersion: S.optional(S.String),
-          authorizedNetwork: S.optional(S.String),
-          discoveryEndpoint: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateAvailable: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
-          maintenancePolicy: S.optional(__S(22, __c2, 6)),
-          maintenanceVersion: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+parent}/instances",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta2/{+name}",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsInstancesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta2/{+name}",
-            baseUrl: "https://memcache.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1020,17 +770,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(208, __c13, 0)),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(__S(13, __c1, 5)),
+          labels: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1044,7 +802,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1058,12 +820,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(192, __c12, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1076,20 +842,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(28, __c3, 4));
     case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(32, __c4, 0)),
+          locations: S.optional(__S(65, __c4, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1107,17 +873,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesRequest",
       });
-    case 3:
-      return S.Array(__S(23, __c2, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(330, __c20, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          resources: S.optional(__S(35, __c4, 3)),
+          unreachable: S.optional(__S(192, __c12, 0)),
+          resources: S.optional(__S(81, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1135,26 +905,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(226, __c14, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(38, __c4, 6)),
+          unreachable: S.optional(__S(192, __c12, 0)),
+          operations: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(330, __c20, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1165,7 +935,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rescheduleType: S.optional(S.String),
@@ -1174,11 +948,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RescheduleMaintenanceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instance: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1189,18 +963,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RescheduleMaintenanceProjectsLocationsInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
+          parameters: S.optional(__S(336, __c21, 0)),
         }),
       ).annotate({ identifier: "UpdateParametersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1211,7 +989,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateParametersProjectsLocationsInstancesRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           memcacheVersion: S.optional(S.String),
@@ -1219,11 +1001,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudMemcacheV1beta2UpgradeInstanceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1236,7 +1018,300 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nodeIds: S.optional(__S(192, __c12, 0)),
+          applyAll: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApplyParametersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+name}:applyParameters",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyParametersProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(208, __c13, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(208, __c13, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          error: S.optional(__S(225, __c14, 1)),
+          metadata: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applyAll: S.optional(S.Boolean),
+          nodeIds: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplySoftwareUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instance: S.String.pipe(T.Label()),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+instance}:applySoftwareUpdate",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplySoftwareUpdateProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(272, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+name}:cancel",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          instanceId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(330, __c20, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+parent}/instances",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          scheduleDeadlineTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MaintenanceSchedule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          memorySizeMb: S.optional(S.Number),
+          cpuCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NodeConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateAvailable: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          memcacheFullVersion: S.optional(S.String),
+          host: S.optional(S.String),
+          memcacheVersion: S.optional(S.String),
+          port: S.optional(S.Number),
+          parameters: S.optional(__S(336, __c21, 0)),
+          zone: S.optional(S.String),
+          nodeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Node" });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceMessage" });
+    case 5:
+      return S.Array(__S(324, __c20, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          hours: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+          day: S.optional(S.String),
+          startTime: S.optional(__S(326, __c20, 6)),
+        }),
+      ).annotate({ identifier: "WeeklyMaintenanceWindow" });
+    case 8:
+      return S.Array(__S(327, __c20, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          weeklyMaintenanceWindow: S.optional(__S(328, __c20, 8)),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudMemcacheV1beta2MaintenancePolicy",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceSchedule: S.optional(__S(320, __c20, 0)),
+          effectiveMaintenanceVersion: S.optional(S.String),
+          reservedIpRangeId: S.optional(__S(192, __c12, 0)),
+          memcacheFullVersion: S.optional(S.String),
+          nodeConfig: S.optional(__S(321, __c20, 1)),
+          availableMaintenanceVersions: S.optional(__S(192, __c12, 0)),
+          displayName: S.optional(S.String),
+          satisfiesPzi: S.optional(S.Boolean),
+          memcacheNodes: S.optional(__S(323, __c20, 3)),
+          instanceMessages: S.optional(__S(325, __c20, 5)),
+          satisfiesPzs: S.optional(S.Boolean),
+          nodeCount: S.optional(S.Number),
+          labels: S.optional(__S(304, __c19, 0)),
+          state: S.optional(S.String),
+          zones: S.optional(__S(192, __c12, 0)),
+          memcacheVersion: S.optional(S.String),
+          authorizedNetwork: S.optional(S.String),
+          discoveryEndpoint: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateAvailable: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          parameters: S.optional(__S(336, __c21, 0)),
+          maintenancePolicy: S.optional(__S(329, __c20, 9)),
+          maintenanceVersion: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          params: S.optional(__S(304, __c19, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MemcacheParameters" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta2/{+name}",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta2/{+name}",
+            baseUrl: "https://memcache.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

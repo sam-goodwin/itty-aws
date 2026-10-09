@@ -526,8 +526,8 @@ export const createPersonsBatchByDistinctIds: API.OperationMethod<
   CreatePersonsBatchByDistinctIdsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreatePersonsBatchByDistinctIdsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePersonsBatchByDistinctIdsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreatePersonsBatchByDistinctIdsRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<CreatePersonsBatchByDistinctIdsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -541,8 +541,8 @@ export const createPersonsBatchByUuid: API.OperationMethod<
   CreatePersonsBatchByUuidError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreatePersonsBatchByUuidRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePersonsBatchByUuidResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreatePersonsBatchByUuidRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<CreatePersonsBatchByUuidResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,8 @@ export const createPersonsSplit: API.OperationMethod<
   CreatePersonsSplitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreatePersonsSplitRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PersonSplitResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreatePersonsSplitRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<PersonSplitResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const getPerson: API.OperationMethod<
   GetPersonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetPersonRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PersonRecord>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetPersonRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<PersonRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -586,8 +586,8 @@ export const getPersonsActivity: API.OperationMethod<
   GetPersonsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetPersonsActivityRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPersonsActivityResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetPersonsActivityRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetPersonsActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -601,8 +601,8 @@ export const getPersonsAllActivity: API.OperationMethod<
   GetPersonsAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetPersonsAllActivityRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPersonsAllActivityResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetPersonsAllActivityRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetPersonsAllActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -616,8 +616,8 @@ export const getPersonsCohort: API.OperationMethod<
   GetPersonsCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPersonsCohortRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PersonCohortsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetPersonsCohortRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<PersonCohortsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -631,8 +631,8 @@ export const getPersonsPropertiesAtTime: API.OperationMethod<
   GetPersonsPropertiesAtTimeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetPersonsPropertiesAtTimeRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PersonPropertiesAtTimeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPersonsPropertiesAtTimeRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PersonPropertiesAtTimeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -646,8 +646,8 @@ export const getPersonsPropertiesTimeline: API.OperationMethod<
   GetPersonsPropertiesTimelineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetPersonsPropertiesTimelineRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPersonsPropertiesTimelineResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetPersonsPropertiesTimelineRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetPersonsPropertiesTimelineResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -661,8 +661,8 @@ export const getPersonsValue: API.OperationMethod<
   GetPersonsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetPersonsValueRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPersonsValueResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetPersonsValueRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetPersonsValueResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -676,8 +676,8 @@ export const listPersons: API.OperationMethod<
   ListPersonsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListPersonsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<PaginatedPersonListRecordList>,
+  input: __S(52, __c3, 4) as any as S.Schema<ListPersonsRequest>,
+  output: __S(56, __c3, 8) as any as S.Schema<PaginatedPersonListRecordList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -691,8 +691,8 @@ export const listPersonsDeletionStatus: API.OperationMethod<
   ListPersonsDeletionStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListPersonsDeletionStatusRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PaginatedAsyncDeletionStatusList>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListPersonsDeletionStatusRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<PaginatedAsyncDeletionStatusList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -706,8 +706,8 @@ export const listPersonsEmails: API.OperationMethod<
   ListPersonsEmailsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListPersonsEmailsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListPersonsEmailsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListPersonsEmailsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListPersonsEmailsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -721,8 +721,8 @@ export const listPersonsPushNotifications: API.OperationMethod<
   ListPersonsPushNotificationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListPersonsPushNotificationsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListPersonsPushNotificationsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListPersonsPushNotificationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListPersonsPushNotificationsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const personsBulkDeleteCreate: API.OperationMethod<
   PersonsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PersonsBulkDeleteCreateRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<PersonsBulkDeleteCreateResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PersonsBulkDeleteCreateRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<PersonsBulkDeleteCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export const personsDeletePropertyCreate: API.OperationMethod<
   PersonsDeletePropertyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<PersonsDeletePropertyCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PersonsDeletePropertyCreateResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<PersonsDeletePropertyCreateRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<PersonsDeletePropertyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -770,8 +770,8 @@ export const personsResetPersonDistinctIdCreate: API.OperationMethod<
   PersonsResetPersonDistinctIdCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<PersonsResetPersonDistinctIdCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PersonsResetPersonDistinctIdCreateResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<PersonsResetPersonDistinctIdCreateRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<PersonsResetPersonDistinctIdCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const personsUpdatePropertyCreate: API.OperationMethod<
   PersonsUpdatePropertyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<PersonsUpdatePropertyCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PersonsUpdatePropertyCreateResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<PersonsUpdatePropertyCreateRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<PersonsUpdatePropertyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -800,8 +800,8 @@ export const updatePerson: API.OperationMethod<
   UpdatePersonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdatePersonRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PersonRecord>,
+  input: __S(192, __c12, 0) as any as S.Schema<UpdatePersonRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<PersonRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -815,8 +815,8 @@ export const updatePersonsPartial: API.OperationMethod<
   UpdatePersonsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdatePersonsPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PersonRecord>,
+  input: __S(208, __c13, 0) as any as S.Schema<UpdatePersonsPartialRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<PersonRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -826,151 +826,6 @@ export const updatePersonsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/persons/batch_by_distinct_ids/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePersonsBatchByDistinctIdsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreatePersonsBatchByDistinctIdsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/persons/batch_by_uuids/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePersonsBatchByUuidRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          main_distinct_id: S.optional(S.NullOr(S.String)),
-          distinct_ids_to_split: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/persons/{id}/split/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePersonsSplitRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-        }),
-      ).annotate({ identifier: "PersonSplitResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetPersonRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          distinct_ids: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          uuid: S.optional(S.String),
-          last_seen_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "PersonRecord" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/persons/{id}/activity/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPersonsActivityRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetPersonsActivityResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/activity/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetPersonsAllActivityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          person_id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/cohorts/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetPersonsCohortRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.optional(S.NullOr(S.String)),
-          count: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "CohortMinimal" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(13, __c1, 5),
-        }),
-      ).annotate({ identifier: "PersonCohortsResponse" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -989,13 +844,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPersonsPropertiesAtTimeRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           queried_timestamp: S.optional(S.String),
@@ -1003,28 +854,32 @@ function __c2(j: number): any {
           distinct_id_used: S.optional(S.NullOr(S.String)),
           person_id_used: S.optional(S.NullOr(S.String)),
           query_mode: S.optional(S.String),
-          distinct_ids_queried: S.optional(__S(3, __c0, 3)),
+          distinct_ids_queried: S.optional(__S(288, __c18, 0)),
           distinct_ids_count: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PersonPropertiesAtTimeMetadata",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          distinct_ids: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(16, __c2, 0)),
+          distinct_ids: S.optional(__S(288, __c18, 0)),
+          properties: S.optional(__S(1, __c0, 1)),
           created_at: S.optional(S.String),
           uuid: S.optional(S.String),
           last_seen_at: S.optional(S.NullOr(S.String)),
-          point_in_time_metadata: S.optional(__S(17, __c2, 1)),
+          point_in_time_metadata: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "PersonPropertiesAtTimeResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1040,7 +895,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPersonsPropertiesTimelineRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1051,7 +910,11 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/values/", code: 200 }),
         ),
       ).annotate({ identifier: "GetPersonsValueRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1060,22 +923,18 @@ function __c2(j: number): any {
           type: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "PropertyItem" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(22, __c2, 6)),
+          values: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "Property" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1086,39 +945,43 @@ function __c3(j: number): any {
           include_matched_fields: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          properties: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          properties: S.optional(__S(51, __c3, 3).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/", code: 200 })),
       ).annotate({ identifier: "ListPersonsRequest" });
-    case 2:
+    case 5:
       return S.Array(S.String);
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          distinct_ids: __S(3, __c0, 3),
+          distinct_ids: __S(288, __c18, 0),
           properties: S.optional(S.Unknown),
           created_at: S.String,
           uuid: S.String,
           last_seen_at: S.NullOr(S.String),
-          matched_fields: S.optional(__S(26, __c3, 2)),
+          matched_fields: S.optional(__S(53, __c3, 5)),
         }),
       ).annotate({ identifier: "PersonListRecord" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(54, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
           count: S.optional(S.Number),
-          results: S.optional(__S(28, __c3, 4)),
+          results: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({
         identifier: "PaginatedPersonListRecordList",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1137,7 +1000,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListPersonsDeletionStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           person_uuid: S.optional(S.String),
@@ -1146,24 +1009,24 @@ function __c3(j: number): any {
           delete_verified_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AsyncDeletionStatus" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
           count: S.optional(S.Number),
-          results: S.optional(__S(32, __c4, 0)),
+          results: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({
         identifier: "PaginatedAsyncDeletionStatusList",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1181,7 +1044,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPersonsEmailsRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invocation_id: S.String,
@@ -1198,13 +1065,17 @@ function __c4(j: number): any {
           sent_at: S.String,
         }),
       ).annotate({ identifier: "MessageAsset" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() => __S(36, __c4, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() => __S(97, __c6, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPersonsEmailsResponse",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1224,13 +1095,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPersonsPushNotificationsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(3, __c0, 3)),
-          distinct_ids: S.optional(__S(3, __c0, 3)),
+          ids: S.optional(__S(288, __c18, 0)),
+          distinct_ids: S.optional(__S(288, __c18, 0)),
           delete_events: S.optional(S.Boolean),
           delete_recordings: S.optional(S.Boolean),
           keep_person: S.optional(S.Boolean),
@@ -1244,15 +1119,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PersonsBulkDeleteCreateRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PersonsBulkDeleteCreateResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1269,7 +1144,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PersonsDeletePropertyCreateRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1285,7 +1164,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PersonsResetPersonDistinctIdCreateRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1303,7 +1186,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PersonsUpdatePropertyCreateRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1314,7 +1201,11 @@ function __c5(j: number): any {
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/persons/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdatePersonRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1329,7 +1220,191 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/persons/batch_by_distinct_ids/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePersonsBatchByDistinctIdsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreatePersonsBatchByDistinctIdsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/persons/batch_by_uuids/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePersonsBatchByUuidRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          main_distinct_id: S.optional(S.NullOr(S.String)),
+          distinct_ids_to_split: S.optional(S.NullOr(__S(288, __c18, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/persons/{id}/split/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePersonsSplitRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+        }),
+      ).annotate({ identifier: "PersonSplitResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetPersonRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          distinct_ids: S.optional(__S(288, __c18, 0)),
+          properties: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          uuid: S.optional(S.String),
+          last_seen_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "PersonRecord" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/persons/{id}/activity/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPersonsActivityRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetPersonsActivityResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/activity/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetPersonsAllActivityRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          person_id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/persons/cohorts/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetPersonsCohortRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.optional(S.NullOr(S.String)),
+          count: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CohortMinimal" });
+    case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(386, __c24, 2),
+        }),
+      ).annotate({ identifier: "PersonCohortsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

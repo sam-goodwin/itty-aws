@@ -244,8 +244,8 @@ export const getOrganizationsLocationsNotifications: API.OperationMethod<
   GetOrganizationsLocationsNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetOrganizationsLocationsNotificationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Notification>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetOrganizationsLocationsNotificationsRequest>,
+  output: __S(58, __c3, 10) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Notification>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const getProjectsLocationsNotifications: API.OperationMethod<
   GetProjectsLocationsNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetProjectsLocationsNotificationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Notification>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetProjectsLocationsNotificationsRequest>,
+  output: __S(58, __c3, 10) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Notification>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -274,8 +274,8 @@ export const getSettingsOrganizationsLocations: API.OperationMethod<
   GetSettingsOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -305,11 +305,11 @@ export const listOrganizationsLocationsNotifications: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListOrganizationsLocationsNotificationsRequest>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListOrganizationsLocationsNotificationsRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    145,
+    __c9,
+    1,
   ) as any as S.Schema<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -326,11 +326,11 @@ export const listProjectsLocationsNotifications: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListProjectsLocationsNotificationsRequest>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProjectsLocationsNotificationsRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    145,
+    __c9,
+    1,
   ) as any as S.Schema<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -351,8 +351,8 @@ export const updateSettingsOrganizationsLocations: API.OperationMethod<
   UpdateSettingsOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
+  input: __S(16, __c1, 0) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,6 +380,44 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c6, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://advisorynotifications.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSettingsOrganizationsLocationsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(98, __c6, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://advisorynotifications.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSettingsProjectsLocationsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -396,7 +434,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsNotificationsRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           localizedText: S.optional(S.String),
@@ -406,76 +448,76 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Text",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(__S(1, __c0, 1)),
+          text: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Subject",
       });
-    case 3:
+    case 2:
       return S.Array(S.String);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(3, __c0, 3)),
+          entries: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1CsvCsvRow",
       });
+    case 4:
+      return S.Array(__S(51, __c3, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(3, __c0, 3)),
-          dataRows: S.optional(__S(5, __c0, 5)),
+          headers: S.optional(__S(50, __c3, 2)),
+          dataRows: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Csv",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          csv: S.optional(__S(6, __c0, 6)),
+          csv: S.optional(__S(53, __c3, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Attachment",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(54, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(__S(8, __c1, 0)),
+          attachments: S.optional(__S(55, __c3, 7)),
           localizationTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          body: S.optional(__S(2, __c0, 2)),
+          body: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Message",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(56, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          subject: S.optional(__S(2, __c0, 2)),
+          subject: S.optional(__S(49, __c3, 1)),
           notificationType: S.optional(S.String),
           name: S.optional(S.String),
-          messages: S.optional(__S(10, __c1, 2)),
+          messages: S.optional(__S(57, __c3, 9)),
           createTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Notification",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -490,7 +532,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsNotificationsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -504,7 +550,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSettingsOrganizationsLocationsRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -512,23 +562,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1NotificationSettings",
       });
-    case 7:
-      return S.Record(S.String, __S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(96, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          notificationSettings: S.optional(__S(15, __c1, 7)),
+          notificationSettings: S.optional(__S(97, __c6, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1Settings",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -542,7 +592,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetSettingsProjectsLocationsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -560,19 +614,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsNotificationsRequest",
       });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(58, __c3, 10));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          notifications: S.optional(__S(19, __c2, 3)),
+          notifications: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudAdvisorynotificationsV1ListNotificationsResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -590,39 +652,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsNotificationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://advisorynotifications.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSettingsOrganizationsLocationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://advisorynotifications.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSettingsProjectsLocationsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

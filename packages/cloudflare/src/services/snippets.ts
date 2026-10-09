@@ -206,8 +206,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     SnippetRulesNotFound,
     Forbidden,
@@ -227,8 +227,8 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteSnippetRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSnippetResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteSnippetRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DeleteSnippetResponse>,
   errors: [SnippetNotFound, SnippetInUse, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -242,8 +242,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetContentRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetContentResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetContentRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -257,8 +257,8 @@ export const getSnippet: API.OperationMethod<
   GetSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetSnippetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetSnippetResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetSnippetRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetSnippetResponse>,
   errors: [SnippetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListRulesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ListRulesResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListRulesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListRulesResponse>,
   errors: [SnippetRulesNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<ListSnippetsRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<ListSnippetsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListSnippetsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListSnippetsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const putRule: API.OperationMethod<
   PutRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<PutRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutRuleResponse>,
+  input: __S(6, __c1, 2) as any as S.Schema<PutRuleRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PutRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const putSnippet: API.OperationMethod<
   PutSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<PutSnippetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PutSnippetResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<PutSnippetRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<PutSnippetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -342,111 +342,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          expression: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          snippetName: S.String.pipe(T.Body("snippet_name")),
-          description: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "RulesDeleteResultItem" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        __S(2, __c0, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          snippetName: S.String.pipe(T.Label("snippet_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/snippets/{snippet_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteSnippetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteSnippetResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          snippetName: S.String.pipe(T.Label("snippet_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/snippets/{snippet_name}/content",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetContentRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "GetContentResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          snippetName: S.String.pipe(T.Label("snippet_name")),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets/{snippet_name}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSnippetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdOn: S.String.pipe(T.Body("created_on")),
-          snippetName: S.String.pipe(T.Body("snippet_name")),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSnippetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListRulesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSnippetsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.String.pipe(T.Body("created_on")),
@@ -454,16 +356,20 @@ function __c1(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(13, __c1, 5).pipe(T.EnvelopePayload()),
+          result: __S(2, __c0, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSnippetsResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
@@ -474,24 +380,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RulesUpdateRequestRulesItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          rules: __S(16, __c2, 0),
+          rules: __S(5, __c1, 1),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutRuleRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -511,7 +417,128 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PutSnippetRequest" });
   }
 }
-
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          expression: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          snippetName: S.String.pipe(T.Body("snippet_name")),
+          description: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "RulesDeleteResultItem" });
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        __S(17, __c4, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          snippetName: S.String.pipe(T.Label("snippet_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/snippets/{snippet_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteSnippetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteSnippetResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          snippetName: S.String.pipe(T.Label("snippet_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/snippets/{snippet_name}/content",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetContentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "GetContentResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          snippetName: S.String.pipe(T.Label("snippet_name")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets/{snippet_name}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSnippetRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdOn: S.String.pipe(T.Body("created_on")),
+          snippetName: S.String.pipe(T.Body("snippet_name")),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSnippetResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListRulesRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

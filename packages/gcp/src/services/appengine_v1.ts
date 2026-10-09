@@ -1619,8 +1619,8 @@ export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
   BatchUpdateAppsFirewallIngressRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchUpdateAppsFirewallIngressRulesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BatchUpdateIngressRulesResponse>,
+  input: __S(1665, __c52, 1) as any as S.Schema<BatchUpdateAppsFirewallIngressRulesRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<BatchUpdateIngressRulesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1640,8 @@ export const createApps: API.OperationMethod<
   CreateAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAppsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateAppsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1661,8 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
   CreateAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(2336, __c73, 0) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1682,8 +1682,8 @@ export const createAppsDomainMappings: API.OperationMethod<
   CreateAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateAppsDomainMappingsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1703,8 +1703,8 @@ export const createAppsFirewallIngressRules: API.OperationMethod<
   CreateAppsFirewallIngressRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateAppsFirewallIngressRulesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<FirewallRule>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreateAppsFirewallIngressRulesRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<FirewallRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1724,8 @@ export const createAppsServicesVersions: API.OperationMethod<
   CreateAppsServicesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateAppsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAppsServicesVersionsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1746,11 +1746,11 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1771,11 +1771,11 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    160,
+    __c5,
     0,
   ) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1795,8 +1795,8 @@ export const debugAppsServicesVersionsInstances: API.OperationMethod<
   DebugAppsServicesVersionsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DebugAppsServicesVersionsInstancesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<DebugAppsServicesVersionsInstancesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1817,11 +1817,11 @@ export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
+    256,
     __c8,
-    3,
+    0,
   ) as any as S.Schema<DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1841,8 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   DeleteAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1862,8 @@ export const deleteAppsDomainMappings: API.OperationMethod<
   DeleteAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteAppsDomainMappingsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1883,8 +1883,8 @@ export const deleteAppsFirewallIngressRules: API.OperationMethod<
   DeleteAppsFirewallIngressRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteAppsFirewallIngressRulesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Empty>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteAppsFirewallIngressRulesRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1904,8 +1904,8 @@ export const deleteAppsServices: API.OperationMethod<
   DeleteAppsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteAppsServicesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteAppsServicesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1925,8 +1925,8 @@ export const deleteAppsServicesVersions: API.OperationMethod<
   DeleteAppsServicesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteAppsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteAppsServicesVersionsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1946,8 @@ export const deleteAppsServicesVersionsInstances: API.OperationMethod<
   DeleteAppsServicesVersionsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteAppsServicesVersionsInstancesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteAppsServicesVersionsInstancesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1968,11 +1968,11 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    75,
-    __c9,
-    3,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Empty>,
+  output: __S(320, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1993,11 +1993,11 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2017,8 +2017,8 @@ export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2039,11 +2039,11 @@ export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2064,11 +2064,11 @@ export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2088,8 @@ export const exportAppImageAppsServicesVersions: API.OperationMethod<
   ExportAppImageAppsServicesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ExportAppImageAppsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(672, __c21, 0) as any as S.Schema<ExportAppImageAppsServicesVersionsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2110,11 +2110,11 @@ export const exportAppImageProjectsLocationsApplicationsServicesVersions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    736,
+    __c23,
+    0,
   ) as any as S.Schema<ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2124,8 +2124,8 @@ export type GetAppsError = NotFound | Forbidden | ServiceDisabled | GcpOpError;
 /** Gets information about an application. */
 export const getApps: API.OperationMethod<GetAppsRequest, Application, GetAppsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(83, __c10, 3) as any as S.Schema<GetAppsRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<Application>,
+    input: __S(768, __c24, 0) as any as S.Schema<GetAppsRequest>,
+    output: __S(2116, __c66, 4) as any as S.Schema<Application>,
     errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2143,8 +2143,8 @@ export const getAppsAuthorizedCertificates: API.OperationMethod<
   GetAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2158,8 @@ export const getAppsDomainMappings: API.OperationMethod<
   GetAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetAppsDomainMappingsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DomainMapping>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetAppsDomainMappingsRequest>,
+  output: __S(2467, __c77, 3) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2173,8 @@ export const getAppsFirewallIngressRules: API.OperationMethod<
   GetAppsFirewallIngressRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetAppsFirewallIngressRulesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<FirewallRule>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAppsFirewallIngressRulesRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<FirewallRule>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2188,8 @@ export const getAppsLocations: API.OperationMethod<
   GetAppsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetAppsLocationsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<Location>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAppsLocationsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2203,8 @@ export const getAppsOperations: API.OperationMethod<
   GetAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetAppsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetAppsOperationsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const getAppsServices: API.OperationMethod<
   GetAppsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetAppsServicesRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<Service>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAppsServicesRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2233,8 +2233,8 @@ export const getAppsServicesVersions: API.OperationMethod<
   GetAppsServicesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetAppsServicesVersionsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<Version>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetAppsServicesVersionsRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export const getAppsServicesVersionsInstances: API.OperationMethod<
   GetAppsServicesVersionsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetAppsServicesVersionsInstancesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<Instance>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetAppsServicesVersionsInstancesRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2272,11 +2272,11 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    1152,
+    __c36,
+    0,
   ) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2295,11 +2295,11 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    99,
-    __c12,
-    3,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DomainMapping>,
+  output: __S(2467, __c77, 3) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListAuthorizedCertificatesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2335,8 +2335,8 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListAppsAuthorizedDomainsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListAppsAuthorizedDomainsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2352,8 +2352,8 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListAppsDomainMappingsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListDomainMappingsResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListAppsDomainMappingsRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2369,8 +2369,8 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
   GcpOpContext,
   ListIngressRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListAppsFirewallIngressRulesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListIngressRulesResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListAppsFirewallIngressRulesRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<ListIngressRulesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2386,8 +2386,8 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListAppsLocationsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListAppsLocationsRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2403,8 +2403,8 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListAppsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListAppsOperationsRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2420,8 +2420,8 @@ export const listAppsServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListAppsServicesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ListServicesResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListAppsServicesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2437,8 +2437,8 @@ export const listAppsServicesVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListAppsServicesVersionsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListVersionsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListAppsServicesVersionsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2458,8 +2458,8 @@ export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListInstancesResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2480,11 +2480,11 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    1600,
+    __c50,
+    0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListAuthorizedCertificatesResponse>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2505,11 +2505,11 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    128,
-    __c16,
+    1632,
+    __c51,
     0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  output: __S(1314, __c41, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2530,11 +2530,11 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListDomainMappingsResponse>,
+  output: __S(1377, __c43, 1) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2549,8 +2549,8 @@ export const listRuntimesApps: API.OperationMethod<
   ListRuntimesAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListRuntimesAppsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListRuntimesResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListRuntimesAppsRequest>,
+  output: __S(1796, __c56, 4) as any as S.Schema<ListRuntimesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2570,8 +2570,8 @@ export const patchApps: API.OperationMethod<
   PatchAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<PatchAppsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1824, __c57, 0) as any as S.Schema<PatchAppsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2591,8 +2591,8 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   PatchAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(1856, __c58, 0) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2612,8 +2612,8 @@ export const patchAppsDomainMappings: API.OperationMethod<
   PatchAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<PatchAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1888, __c59, 0) as any as S.Schema<PatchAppsDomainMappingsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const patchAppsFirewallIngressRules: API.OperationMethod<
   PatchAppsFirewallIngressRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<PatchAppsFirewallIngressRulesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<FirewallRule>,
+  input: __S(1920, __c60, 0) as any as S.Schema<PatchAppsFirewallIngressRulesRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<FirewallRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2654,8 +2654,8 @@ export const patchAppsServices: API.OperationMethod<
   PatchAppsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<PatchAppsServicesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1952, __c61, 0) as any as S.Schema<PatchAppsServicesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2675,8 +2675,8 @@ export const patchAppsServicesVersions: API.OperationMethod<
   PatchAppsServicesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<PatchAppsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<PatchAppsServicesVersionsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2696,8 +2696,8 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
   PatchProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(2016, __c63, 0) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2718,11 +2718,11 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    2048,
+    __c64,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(2402, __c75, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2743,11 +2743,11 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    143,
-    __c17,
-    7,
+    2208,
+    __c69,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2767,8 +2767,8 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   PatchProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(2240, __c70, 0) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2789,11 +2789,11 @@ export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    2272,
+    __c71,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsApplicationsServicesVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2813,8 @@ export const repairApps: API.OperationMethod<
   RepairAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<RepairAppsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(2304, __c72, 0) as any as S.Schema<RepairAppsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2826,233 +2826,30 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-          sourceRange: S.optional(S.String),
-          action: S.optional(S.String),
-          priority: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FirewallRule" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ingressRules: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateIngressRulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          servicesId: S.String.pipe(T.Label()),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/apps/{appsId}/firewall/ingressRules:batchUpdate",
+            uri: "v1/apps/{appsId}/services/{servicesId}/versions",
             baseUrl: "https://appengine.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "BatchUpdateAppsFirewallIngressRulesRequest",
+        identifier: "CreateAppsServicesVersionsRequest",
       });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          path: S.optional(S.String),
-          domain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UrlDispatchRule" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2ClientSecretSha256: S.optional(S.String),
-          oauth2ClientSecret: S.optional(S.String),
-          oauth2ClientId: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "IdentityAwareProxy" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          useContainerOptimizedOs: S.optional(S.Boolean),
-          splitHealthChecks: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FeatureSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          codeBucket: S.optional(S.String),
-          defaultHostname: S.optional(S.String),
-          databaseType: S.optional(S.String),
-          sslPolicy: S.optional(S.String),
-          name: S.optional(S.String),
-          locationId: S.optional(S.String),
-          generatedCustomerMetadata: S.optional(__S(4, __c0, 4)),
-          defaultBucket: S.optional(S.String),
-          defaultCookieExpiration: S.optional(S.String),
-          dispatchRules: S.optional(__S(6, __c0, 6)),
-          iap: S.optional(__S(7, __c0, 7)),
-          authDomain: S.optional(S.String),
-          gcrDomain: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          servingStatus: S.optional(S.String),
-          featureSettings: S.optional(__S(8, __c1, 0)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Application" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "v1/apps", baseUrl: "https://appengine.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "CreateAppsRequest" });
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(11, __c1, 3)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(4, __c0, 4)),
-          metadata: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          error: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          lastRenewalTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedCertificate" });
-    case 7:
-      return S.Array(S.String);
+      return S.Record(S.String, S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          publicCertificate: S.optional(S.String),
-          privateKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateRawData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          managedCertificate: S.optional(__S(14, __c1, 6)),
-          expireTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          visibleDomainMappings: S.optional(__S(15, __c1, 7)),
-          certificateRawData: S.optional(__S(16, __c2, 0)),
-          name: S.optional(S.String),
-          domainNames: S.optional(__S(15, __c1, 7)),
-          id: S.optional(S.String),
-          domainMappingsCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AuthorizedCertificate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/apps/{appsId}/authorizedCertificates",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsAuthorizedCertificatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sslManagementType: S.optional(S.String),
-          certificateId: S.optional(S.String),
-          pendingManagedCertificateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SslSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          rrdata: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceRecord" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sslSettings: S.optional(__S(19, __c2, 3)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          resourceRecords: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "DomainMapping" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          overrideStrategy: S.optional(S.String.pipe(T.Query())),
-          appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/apps/{appsId}/domainMappings",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsDomainMappingsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/apps/{appsId}/firewall/ingressRules",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsFirewallIngressRulesRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -3064,7 +2861,7 @@ function __c3(j: number): any {
           appStartTimeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReadinessCheck" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sizeGb: S.optional(S.Number),
@@ -3072,26 +2869,26 @@ function __c3(j: number): any {
           volumeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volume" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           diskGb: S.optional(S.Number),
           kmsKeyReference: S.optional(S.String),
           cpu: S.optional(S.Number),
-          volumes: S.optional(__S(28, __c3, 4)),
+          volumes: S.optional(__S(66, __c2, 2)),
           memoryGb: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Resources" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           runtimeVersion: S.optional(S.String),
           operatingSystem: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlexibleRuntimeSettings" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           healthyThreshold: S.optional(S.Number),
@@ -3103,30 +2900,26 @@ function __c3(j: number): any {
           host: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthCheck" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           instances: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ManualScaling" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerInfo" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sourceUrl: S.optional(S.String),
           filesCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ZipInfo" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           mimeType: S.optional(S.String),
@@ -3134,25 +2927,25 @@ function __c4(j: number): any {
           sha1Sum: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileInfo" });
-    case 4:
-      return S.Record(S.String, __S(35, __c4, 3));
-    case 5:
+    case 10:
+      return S.Record(S.String, __S(73, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           cloudBuildTimeout: S.optional(S.String),
           appYamlPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudBuildOptions" });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          container: S.optional(__S(33, __c4, 1)),
-          zip: S.optional(__S(34, __c4, 2)),
-          files: S.optional(__S(36, __c4, 4)),
-          cloudBuildOptions: S.optional(__S(37, __c4, 5)),
+          container: S.optional(__S(71, __c2, 7)),
+          zip: S.optional(__S(72, __c2, 8)),
+          files: S.optional(__S(74, __c2, 10)),
+          cloudBuildOptions: S.optional(__S(75, __c2, 11)),
         }),
       ).annotate({ identifier: "Deployment" });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           staticFile: S.optional(S.String),
@@ -3160,20 +2953,16 @@ function __c4(j: number): any {
           errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorHandler" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           maxInstances: S.optional(S.Number),
           idleTimeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "BasicScaling" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           minInstances: S.optional(S.Number),
@@ -3184,14 +2973,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StandardSchedulerSettings",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           aggregationWindowLength: S.optional(S.String),
           targetUtilization: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CpuUtilization" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           targetReceivedBytesPerSecond: S.optional(S.Number),
@@ -3200,14 +2989,14 @@ function __c5(j: number): any {
           targetSentBytesPerSecond: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NetworkUtilization" });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           targetConcurrentRequests: S.optional(S.Number),
           targetRequestCountPerSecond: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RequestUtilization" });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           targetReadOpsPerSecond: S.optional(S.Number),
@@ -3216,37 +3005,33 @@ function __c5(j: number): any {
           targetReadBytesPerSecond: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DiskUtilization" });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          standardSchedulerSettings: S.optional(__S(42, __c5, 2)),
+          standardSchedulerSettings: S.optional(__S(80, __c2, 16)),
           minPendingLatency: S.optional(S.String),
           maxTotalInstances: S.optional(S.Number),
-          cpuUtilization: S.optional(__S(43, __c5, 3)),
+          cpuUtilization: S.optional(__S(81, __c2, 17)),
           maxPendingLatency: S.optional(S.String),
-          networkUtilization: S.optional(__S(44, __c5, 4)),
+          networkUtilization: S.optional(__S(82, __c2, 18)),
           minTotalInstances: S.optional(S.Number),
           maxConcurrentRequests: S.optional(S.Number),
-          requestUtilization: S.optional(__S(45, __c5, 5)),
+          requestUtilization: S.optional(__S(83, __c2, 19)),
           maxIdleInstances: S.optional(S.Number),
           coolDownPeriod: S.optional(S.String),
-          diskUtilization: S.optional(__S(46, __c5, 6)),
+          diskUtilization: S.optional(__S(84, __c2, 20)),
           minIdleInstances: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutomaticScaling" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.Array(S.String);
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           shell: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entrypoint" });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.String),
@@ -3258,23 +3043,23 @@ function __c6(j: number): any {
           successThreshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LivenessCheck" });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           egressSetting: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcAccessConnector" });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Library" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 27:
+      return S.Array(__S(90, __c2, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           login: S.optional(S.String),
@@ -3284,7 +3069,7 @@ function __c6(j: number): any {
           securityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiConfigHandler" });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           configId: S.optional(S.String),
@@ -3293,21 +3078,17 @@ function __c6(j: number): any {
           rolloutStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointsApiService" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           scriptPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptHandler" });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           applicationReadable: S.optional(S.Boolean),
-          httpHeaders: S.optional(__S(25, __c3, 1)),
+          httpHeaders: S.optional(__S(32, __c1, 0)),
           uploadPathRegex: S.optional(S.String),
           expiration: S.optional(S.String),
           path: S.optional(S.String),
@@ -3315,103 +3096,95 @@ function __c7(j: number): any {
           requireMatchingFile: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StaticFilesHandler" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authFailAction: S.optional(S.String),
           redirectHttpResponseCode: S.optional(S.String),
           login: S.optional(S.String),
-          script: S.optional(__S(56, __c7, 0)),
+          script: S.optional(__S(94, __c2, 30)),
           securityLevel: S.optional(S.String),
-          staticFiles: S.optional(__S(57, __c7, 1)),
+          staticFiles: S.optional(__S(95, __c2, 31)),
           urlRegex: S.optional(S.String),
-          apiEndpoint: S.optional(__S(56, __c7, 0)),
+          apiEndpoint: S.optional(__S(94, __c2, 30)),
         }),
       ).annotate({ identifier: "UrlMap" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           subnetworkName: S.optional(S.String),
           sessionAffinity: S.optional(S.Boolean),
-          forwardedPorts: S.optional(__S(15, __c1, 7)),
+          forwardedPorts: S.optional(__S(2368, __c74, 0)),
           instanceIpMode: S.optional(S.String),
           instanceTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Network" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          buildEnvVariables: S.optional(__S(25, __c3, 1)),
+          buildEnvVariables: S.optional(__S(32, __c1, 0)),
           versionUrl: S.optional(S.String),
-          readinessCheck: S.optional(__S(26, __c3, 2)),
-          resources: S.optional(__S(29, __c3, 5)),
+          readinessCheck: S.optional(__S(64, __c2, 0)),
+          resources: S.optional(__S(67, __c2, 3)),
           appEngineApis: S.optional(S.Boolean),
-          flexibleRuntimeSettings: S.optional(__S(30, __c3, 6)),
-          healthCheck: S.optional(__S(31, __c3, 7)),
+          flexibleRuntimeSettings: S.optional(__S(68, __c2, 4)),
+          healthCheck: S.optional(__S(69, __c2, 5)),
           runtimeChannel: S.optional(S.String),
           createTime: S.optional(S.String),
           env: S.optional(S.String),
           diskUsageBytes: S.optional(S.String),
-          manualScaling: S.optional(__S(32, __c4, 0)),
-          deployment: S.optional(__S(38, __c4, 6)),
+          manualScaling: S.optional(__S(70, __c2, 6)),
+          deployment: S.optional(__S(76, __c2, 12)),
           serviceAccount: S.optional(S.String),
-          errorHandlers: S.optional(__S(40, __c5, 0)),
-          basicScaling: S.optional(__S(41, __c5, 1)),
-          automaticScaling: S.optional(__S(47, __c5, 7)),
+          errorHandlers: S.optional(__S(78, __c2, 14)),
+          basicScaling: S.optional(__S(79, __c2, 15)),
+          automaticScaling: S.optional(__S(85, __c2, 21)),
           nobuildFilesRegex: S.optional(S.String),
           runtime: S.optional(S.String),
-          inboundServices: S.optional(__S(48, __c6, 0)),
+          inboundServices: S.optional(__S(86, __c2, 22)),
           servingStatus: S.optional(S.String),
-          entrypoint: S.optional(__S(49, __c6, 1)),
+          entrypoint: S.optional(__S(87, __c2, 23)),
           vm: S.optional(S.Boolean),
           instanceClass: S.optional(S.String),
-          livenessCheck: S.optional(__S(50, __c6, 2)),
+          livenessCheck: S.optional(__S(88, __c2, 24)),
           id: S.optional(S.String),
-          vpcAccessConnector: S.optional(__S(51, __c6, 3)),
-          betaSettings: S.optional(__S(25, __c3, 1)),
-          zones: S.optional(__S(15, __c1, 7)),
-          appEngineBundledServices: S.optional(__S(48, __c6, 0)),
-          libraries: S.optional(__S(53, __c6, 5)),
+          vpcAccessConnector: S.optional(__S(89, __c2, 25)),
+          betaSettings: S.optional(__S(32, __c1, 0)),
+          zones: S.optional(__S(2368, __c74, 0)),
+          appEngineBundledServices: S.optional(__S(86, __c2, 22)),
+          libraries: S.optional(__S(91, __c2, 27)),
           defaultExpiration: S.optional(S.String),
-          apiConfig: S.optional(__S(54, __c6, 6)),
-          generatedCustomerMetadata: S.optional(__S(4, __c0, 4)),
+          apiConfig: S.optional(__S(92, __c2, 28)),
+          generatedCustomerMetadata: S.optional(__S(2144, __c67, 0)),
           createdBy: S.optional(S.String),
-          endpointsApiService: S.optional(__S(55, __c6, 7)),
-          envVariables: S.optional(__S(25, __c3, 1)),
-          handlers: S.optional(__S(59, __c7, 3)),
+          endpointsApiService: S.optional(__S(93, __c2, 29)),
+          envVariables: S.optional(__S(32, __c1, 0)),
+          handlers: S.optional(__S(97, __c3, 1)),
           runtimeMainExecutablePath: S.optional(S.String),
           runtimeApiVersion: S.optional(S.String),
-          network: S.optional(__S(60, __c7, 4)),
+          network: S.optional(__S(98, __c3, 2)),
           name: S.optional(S.String),
           threadsafe: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Version" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          servicesId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/apps/{appsId}/services/{servicesId}/versions",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsServicesVersionsRequest",
-      });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationsId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
           locationsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2402, __c75, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3424,7 +3197,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3433,7 +3206,7 @@ function __c8(j: number): any {
           overrideStrategy: S.optional(S.String.pipe(T.Query())),
           applicationsId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2467, __c77, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3444,20 +3217,18 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sshKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DebugInstanceRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           instancesId: S.String.pipe(T.Label()),
           servicesId: S.String.pipe(T.Label()),
           versionsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3468,7 +3239,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DebugAppsServicesVersionsInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sshKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DebugInstanceRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationsId: S.String.pipe(T.Label()),
@@ -3477,7 +3262,7 @@ function __c8(j: number): any {
           projectsId: S.String.pipe(T.Label()),
           servicesId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3488,7 +3273,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3503,11 +3292,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteAppsAuthorizedCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3522,7 +3319,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteAppsDomainMappingsRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3539,7 +3340,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3556,7 +3357,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAppsServicesRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionsId: S.String.pipe(T.Label()),
@@ -3572,7 +3377,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAppsServicesVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servicesId: S.String.pipe(T.Label()),
@@ -3589,7 +3398,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAppsServicesVersionsInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authorizedCertificatesId: S.String.pipe(T.Label()),
@@ -3606,7 +3419,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectsId: S.String.pipe(T.Label()),
@@ -3623,7 +3440,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectsId: S.String.pipe(T.Label()),
@@ -3640,7 +3461,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsServicesRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionsId: S.String.pipe(T.Label()),
@@ -3658,7 +3483,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsServicesVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionsId: S.String.pipe(T.Label()),
@@ -3679,21 +3508,15 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          destinationRepository: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportAppImageRequest" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           versionsId: S.String.pipe(T.Label()),
           servicesId: S.String.pipe(T.Label()),
-          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3704,7 +3527,21 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExportAppImageAppsServicesVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destinationRepository: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportAppImageRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionsId: S.String.pipe(T.Label()),
@@ -3712,7 +3549,7 @@ function __c10(j: number): any {
           servicesId: S.String.pipe(T.Label()),
           locationsId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3723,7 +3560,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3736,7 +3577,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppsRequest" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authorizedCertificatesId: S.String.pipe(T.Label()),
@@ -3752,7 +3597,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAppsAuthorizedCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainMappingsId: S.String.pipe(T.Label()),
@@ -3767,7 +3616,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAppsDomainMappingsRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3782,7 +3635,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAppsFirewallIngressRulesRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3797,19 +3654,23 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetAppsLocationsRequest" });
   }
 }
-function __c11(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          labels: S.optional(__S(25, __c3, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(2144, __c67, 0)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -3822,7 +3683,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppsOperationsRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servicesId: S.String.pipe(T.Label()),
@@ -3835,33 +3700,41 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppsServicesRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ingressTrafficAllowed: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSettings" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.Number);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allocations: S.optional(__S(92, __c11, 4)),
+          allocations: S.optional(__S(1025, __c32, 1)),
           shardBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrafficSplit" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          networkSettings: S.optional(__S(91, __c11, 3)),
-          labels: S.optional(__S(25, __c3, 1)),
-          split: S.optional(__S(93, __c11, 5)),
+          networkSettings: S.optional(__S(1024, __c32, 0)),
+          labels: S.optional(__S(32, __c1, 0)),
+          split: S.optional(__S(1026, __c32, 2)),
           id: S.optional(S.String),
-          generatedCustomerMetadata: S.optional(__S(4, __c0, 4)),
+          generatedCustomerMetadata: S.optional(__S(2144, __c67, 0)),
         }),
       ).annotate({ identifier: "Service" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionsId: S.String.pipe(T.Label()),
@@ -3880,7 +3753,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3899,7 +3772,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetAppsServicesVersionsInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vmIp: S.optional(S.String),
@@ -3921,7 +3798,11 @@ function __c12(j: number): any {
           vmLiveness: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationsId: S.String.pipe(T.Label()),
@@ -3939,7 +3820,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationsId: S.String.pipe(T.Label()),
@@ -3956,7 +3841,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -3973,18 +3862,26 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAppsAuthorizedCertificatesRequest",
       });
-    case 5:
-      return S.Array(__S(17, __c2, 1));
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2402, __c75, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          certificates: S.optional(__S(101, __c12, 5)),
+          certificates: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "ListAuthorizedCertificatesResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4002,7 +3899,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4012,17 +3909,21 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedDomain" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(1312, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(105, __c13, 1)),
+          domains: S.optional(__S(1313, __c41, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAuthorizedDomainsResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4038,18 +3939,26 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppsDomainMappingsRequest",
       });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2467, __c77, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          domainMappings: S.optional(__S(108, __c13, 4)),
+          domainMappings: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "ListDomainMappingsResponse",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matchingAddress: S.optional(S.String.pipe(T.Query())),
@@ -4066,21 +3975,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppsFirewallIngressRulesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ingressRules: S.optional(__S(1, __c0, 1)),
+          ingressRules: S.optional(__S(1696, __c53, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListIngressRulesResponse" });
   }
 }
-function __c14(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4094,15 +4003,19 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListAppsLocationsRequest" });
     case 1:
-      return S.Array(__S(88, __c11, 0));
+      return S.Array(__S(928, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(113, __c14, 1)),
+          locations: S.optional(__S(1441, __c45, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4120,17 +4033,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAppsOperationsRequest",
       });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(2178, __c68, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(116, __c14, 4)),
+          operations: S.optional(__S(1473, __c46, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(2368, __c74, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4144,20 +4061,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAppsServicesRequest" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1027, __c32, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          services: S.optional(__S(119, __c14, 7)),
+          services: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -4175,16 +4092,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAppsServicesVersionsRequest",
       });
+    case 1:
+      return S.Array(__S(99, __c3, 3));
     case 2:
-      return S.Array(__S(61, __c7, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(122, __c15, 2)),
+          versions: S.optional(__S(1537, __c48, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4202,16 +4123,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAppsServicesVersionsInstancesRequest",
       });
-    case 5:
-      return S.Array(__S(97, __c12, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(__S(125, __c15, 5)),
+          instances: S.optional(__S(1569, __c49, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -4232,7 +4157,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4252,7 +4177,57 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest",
       });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ingressRules: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateIngressRulesRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1664, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/apps/{appsId}/firewall/ingressRules:batchUpdate",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateAppsFirewallIngressRulesRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1728, __c54, 0));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          sourceRange: S.optional(S.String),
+          action: S.optional(S.String),
+          priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FirewallRule" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4270,7 +4245,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environment: S.optional(S.String.pipe(T.Query())),
@@ -4283,7 +4262,7 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRuntimesAppsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           day: S.optional(S.Number),
@@ -4291,35 +4270,39 @@ function __c16(j: number): any {
           month: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Appengine_Date" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           stage: S.optional(S.String),
-          decommissionedDate: S.optional(__S(131, __c16, 3)),
-          warnings: S.optional(__S(15, __c1, 7)),
-          supportedOperatingSystems: S.optional(__S(15, __c1, 7)),
-          deprecationDate: S.optional(__S(131, __c16, 3)),
+          decommissionedDate: S.optional(__S(1793, __c56, 1)),
+          warnings: S.optional(__S(2368, __c74, 0)),
+          supportedOperatingSystems: S.optional(__S(2368, __c74, 0)),
+          deprecationDate: S.optional(__S(1793, __c56, 1)),
           name: S.optional(S.String),
           environment: S.optional(S.String),
           displayName: S.optional(S.String),
-          endOfSupportDate: S.optional(__S(131, __c16, 3)),
+          endOfSupportDate: S.optional(__S(1793, __c56, 1)),
         }),
       ).annotate({ identifier: "Runtime" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1794, __c56, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          runtimes: S.optional(__S(133, __c16, 5)),
+          runtimes: S.optional(__S(1795, __c56, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRuntimesResponse" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2116, __c66, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4330,7 +4313,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "PatchAppsRequest" });
   }
 }
-function __c17(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4338,7 +4321,7 @@ function __c17(j: number): any {
           appsId: S.String.pipe(T.Label()),
           authorizedCertificatesId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2402, __c75, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4349,13 +4332,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAppsAuthorizedCertificatesRequest",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           appsId: S.String.pipe(T.Label()),
           domainMappingsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2467, __c77, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4366,13 +4353,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAppsDomainMappingsRequest",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           ingressRulesId: S.String.pipe(T.Label()),
           appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4383,14 +4374,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAppsFirewallIngressRulesRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           migrateTraffic: S.optional(S.Boolean.pipe(T.Query())),
           servicesId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1027, __c32, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4399,14 +4394,18 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAppsServicesRequest" });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           servicesId: S.String.pipe(T.Label()),
           versionsId: S.String.pipe(T.Label()),
           appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4417,14 +4416,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchAppsServicesVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationsId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2116, __c66, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4435,7 +4438,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApplicationsRequest",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectsId: S.String.pipe(T.Label()),
@@ -4443,7 +4450,7 @@ function __c17(j: number): any {
           authorizedCertificatesId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           locationsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2402, __c75, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4454,7 +4461,105 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2116, __c66, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "v1/apps", baseUrl: "https://appengine.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "CreateAppsRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          path: S.optional(S.String),
+          domain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UrlDispatchRule" });
+    case 1:
+      return S.Array(__S(2112, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          oauth2ClientSecretSha256: S.optional(S.String),
+          oauth2ClientSecret: S.optional(S.String),
+          oauth2ClientId: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "IdentityAwareProxy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          useContainerOptimizedOs: S.optional(S.Boolean),
+          splitHealthChecks: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FeatureSettings" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          codeBucket: S.optional(S.String),
+          defaultHostname: S.optional(S.String),
+          databaseType: S.optional(S.String),
+          sslPolicy: S.optional(S.String),
+          name: S.optional(S.String),
+          locationId: S.optional(S.String),
+          generatedCustomerMetadata: S.optional(__S(2144, __c67, 0)),
+          defaultBucket: S.optional(S.String),
+          defaultCookieExpiration: S.optional(S.String),
+          dispatchRules: S.optional(__S(2113, __c66, 1)),
+          iap: S.optional(__S(2114, __c66, 2)),
+          authDomain: S.optional(S.String),
+          gcrDomain: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          servingStatus: S.optional(S.String),
+          featureSettings: S.optional(__S(2115, __c66, 3)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Application" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2144, __c67, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(2176, __c68, 0)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(2144, __c67, 0)),
+          metadata: S.optional(__S(2144, __c67, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4462,7 +4567,7 @@ function __c17(j: number): any {
           locationsId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2467, __c77, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4475,7 +4580,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4486,7 +4591,7 @@ function __c18(j: number): any {
           migrateTraffic: S.optional(S.Boolean.pipe(T.Query())),
           projectsId: S.String.pipe(T.Label()),
           servicesId: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1027, __c32, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4497,7 +4602,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApplicationsServicesRequest",
       });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectsId: S.String.pipe(T.Label()),
@@ -4506,7 +4615,7 @@ function __c18(j: number): any {
           locationsId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           versionsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4517,11 +4626,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApplicationsServicesVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4532,7 +4645,133 @@ function __c18(j: number): any {
       ).annotate({ identifier: "RepairAppsRequest" });
   }
 }
-
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2402, __c75, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/apps/{appsId}/authorizedCertificates",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAppsAuthorizedCertificatesRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          lastRenewalTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedCertificate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          publicCertificate: S.optional(S.String),
+          privateKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateRawData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          managedCertificate: S.optional(__S(2400, __c75, 0)),
+          expireTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          visibleDomainMappings: S.optional(__S(2368, __c74, 0)),
+          certificateRawData: S.optional(__S(2401, __c75, 1)),
+          name: S.optional(S.String),
+          domainNames: S.optional(__S(2368, __c74, 0)),
+          id: S.optional(S.String),
+          domainMappingsCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AuthorizedCertificate" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overrideStrategy: S.optional(S.String.pipe(T.Query())),
+          appsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2467, __c77, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/apps/{appsId}/domainMappings",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAppsDomainMappingsRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sslManagementType: S.optional(S.String),
+          certificateId: S.optional(S.String),
+          pendingManagedCertificateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SslSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          rrdata: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceRecord" });
+    case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sslSettings: S.optional(__S(2464, __c77, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          resourceRecords: S.optional(__S(2466, __c77, 2)),
+        }),
+      ).annotate({ identifier: "DomainMapping" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/apps/{appsId}/firewall/ingressRules",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAppsFirewallIngressRulesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

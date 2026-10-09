@@ -1619,8 +1619,8 @@ export const cancelPlanning: API.OperationMethod<
   CancelPlanningError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelPlanningRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelPlanningResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelPlanningRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CancelPlanningResponse>,
   errors: [NoSuchNamespaceException, NoSuchPlanIdException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CommitTransactionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CommitTransactionResponse>,
+  input: __S(98, __c3, 2) as any as S.Schema<CommitTransactionRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<CommitTransactionResponse>,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1656,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateNamespaceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateNamespaceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateNamespaceRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<CreateNamespaceResponse>,
   errors: [AlreadyExistsException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1671,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateTableRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<LoadTableResult>,
+  input: __S(290, __c9, 2) as any as S.Schema<CreateTableRequest>,
+  output: __S(516, __c16, 4) as any as S.Schema<LoadTableResult>,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const createView: API.OperationMethod<
   CreateViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateViewRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<LoadViewResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateViewRequest>,
+  output: __S(647, __c20, 7) as any as S.Schema<LoadViewResult>,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1704,8 +1704,8 @@ export const dropNamespace: API.OperationMethod<
   DropNamespaceError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DropNamespaceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DropNamespaceResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DropNamespaceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DropNamespaceResponse>,
   errors: [NamespaceNotEmptyException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1719,8 +1719,8 @@ export const dropTable: API.OperationMethod<
   DropTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DropTableRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DropTableResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DropTableRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DropTableResponse>,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1734,8 +1734,8 @@ export const dropView: API.OperationMethod<
   DropViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DropViewRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DropViewResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DropViewRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DropViewResponse>,
   errors: [NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1753,8 @@ export const fetchPlanningResult: API.OperationMethod<
   FetchPlanningResultError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<FetchPlanningResultRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<FetchPlanningResultResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<FetchPlanningResultRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<FetchPlanningResultResponse>,
   errors: [NoSuchNamespaceException, NoSuchPlanIdException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1772,8 @@ export const fetchScanTasks: API.OperationMethod<
   FetchScanTasksError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<FetchScanTasksRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<FetchScanTasksResponse>,
+  input: __S(809, __c25, 9) as any as S.Schema<FetchScanTasksRequest>,
+  output: __S(810, __c25, 10) as any as S.Schema<FetchScanTasksResponse>,
   errors: [NoSuchNamespaceException, NoSuchPlanTaskException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1787,8 +1787,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetConfigRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CatalogConfig>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetConfigRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<CatalogConfig>,
   errors: [NoSuchWarehouseException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1804,8 +1804,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   CatalogObjectIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(89, __c11, 1) as any as S.Schema<ListFunctionsRequest>,
-    output: __S(91, __c11, 3) as any as S.Schema<ListFunctionsResponse>,
+    input: __S(864, __c27, 0) as any as S.Schema<ListFunctionsRequest>,
+    output: __S(866, __c27, 2) as any as S.Schema<ListFunctionsResponse>,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1830,8 +1830,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Namespace
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(92, __c11, 4) as any as S.Schema<ListNamespacesRequest>,
-    output: __S(94, __c11, 6) as any as S.Schema<ListNamespacesResponse>,
+    input: __S(896, __c28, 0) as any as S.Schema<ListNamespacesRequest>,
+    output: __S(898, __c28, 2) as any as S.Schema<ListNamespacesResponse>,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1856,8 +1856,8 @@ export const listTables: API.PaginatedOperationMethod<
   TableIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(95, __c11, 7) as any as S.Schema<ListTablesRequest>,
-    output: __S(97, __c12, 1) as any as S.Schema<ListTablesResponse>,
+    input: __S(928, __c29, 0) as any as S.Schema<ListTablesRequest>,
+    output: __S(961, __c30, 1) as any as S.Schema<ListTablesResponse>,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1882,8 +1882,8 @@ export const listViews: API.PaginatedOperationMethod<
   TableIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(98, __c12, 2) as any as S.Schema<ListViewsRequest>,
-    output: __S(97, __c12, 1) as any as S.Schema<ListTablesResponse>,
+    input: __S(992, __c31, 0) as any as S.Schema<ListViewsRequest>,
+    output: __S(961, __c30, 1) as any as S.Schema<ListTablesResponse>,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1906,8 +1906,8 @@ export const loadCredentials: API.OperationMethod<
   LoadCredentialsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<LoadCredentialsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<LoadCredentialsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<LoadCredentialsRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<LoadCredentialsResponse>,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1921,8 @@ export const loadFunction: API.OperationMethod<
   LoadFunctionError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<LoadFunctionRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<LoadFunctionResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<LoadFunctionRequest>,
+  output: __S(1070, __c33, 14) as any as S.Schema<LoadFunctionResult>,
   errors: [NoSuchFunctionException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1936,8 @@ export const loadNamespaceMetadata: API.OperationMethod<
   LoadNamespaceMetadataError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<LoadNamespaceMetadataRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<LoadNamespaceMetadataRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<GetNamespaceResponse>,
   errors: [NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1951,8 @@ export const loadTable: API.OperationMethod<
   LoadTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<LoadTableRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<LoadTableResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<LoadTableRequest>,
+  output: __S(516, __c16, 4) as any as S.Schema<LoadTableResult>,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1966,8 @@ export const loadView: API.OperationMethod<
   LoadViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<LoadViewRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<LoadViewResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<LoadViewRequest>,
+  output: __S(647, __c20, 7) as any as S.Schema<LoadViewResult>,
   errors: [NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1981,8 +1981,8 @@ export const namespaceExists: API.OperationMethod<
   NamespaceExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<NamespaceExistsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<NamespaceExistsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<NamespaceExistsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<NamespaceExistsResponse>,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2000,8 @@ export const planTableScan: API.OperationMethod<
   PlanTableScanError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<PlanTableScanRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PlanTableScanResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<PlanTableScanRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<PlanTableScanResponse>,
   errors: [NoSuchNamespaceException, NoSuchTableException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2015,8 @@ export const registerTable: API.OperationMethod<
   RegisterTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<RegisterTableRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<LoadTableResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<RegisterTableRequest>,
+  output: __S(516, __c16, 4) as any as S.Schema<LoadTableResult>,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2030,8 @@ export const registerView: API.OperationMethod<
   RegisterViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<RegisterViewRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<LoadViewResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<RegisterViewRequest>,
+  output: __S(647, __c20, 7) as any as S.Schema<LoadViewResult>,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2049,8 +2049,8 @@ export const renameTable: API.OperationMethod<
   RenameTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<RenameTableRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RenameTableResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<RenameTableRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<RenameTableResponse>,
   errors: [NoSuchNamespaceException, NoSuchTableException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2068,8 @@ export const renameView: API.OperationMethod<
   RenameViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<RenameViewRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RenameViewResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<RenameViewRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<RenameViewResponse>,
   errors: [NoSuchNamespaceException, NoSuchViewException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2087,8 @@ export const replaceView: API.OperationMethod<
   ReplaceViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ReplaceViewRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<LoadViewResult>,
+  input: __S(1379, __c43, 3) as any as S.Schema<ReplaceViewRequest>,
+  output: __S(647, __c20, 7) as any as S.Schema<LoadViewResult>,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2102,8 +2102,8 @@ export const reportMetrics: API.OperationMethod<
   ReportMetricsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ReportMetricsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ReportMetricsResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ReportMetricsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ReportMetricsResponse>,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2117,8 +2117,8 @@ export const signRequest: API.OperationMethod<
   SignRequestError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<SignRequestRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<RemoteSignResult>,
+  input: __S(1440, __c45, 0) as any as S.Schema<SignRequestRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<RemoteSignResult>,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2132,8 +2132,8 @@ export const tableExists: API.OperationMethod<
   TableExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<TableExistsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TableExistsResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<TableExistsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<TableExistsResponse>,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2147,8 @@ export const unregisterTable: API.OperationMethod<
   UnregisterTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UnregisterTableRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<UnregisterTableResult>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UnregisterTableRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<UnregisterTableResult>,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2166,8 @@ export const updateProperties: API.OperationMethod<
   UpdatePropertiesError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdatePropertiesRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<UpdateNamespacePropertiesResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdatePropertiesRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<UpdateNamespacePropertiesResponse>,
   errors: [NoSuchNamespaceException, UnprocessableEntityException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2185,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<UpdateTableRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<CommitTableResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateTableRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<CommitTableResponse>,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2200,8 @@ export const viewExists: API.OperationMethod<
   ViewExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ViewExistsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ViewExistsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ViewExistsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ViewExistsResponse>,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2211,15 +2211,13 @@ export const viewExists: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           plan_id: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         })
@@ -2232,28 +2230,183 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CancelPlanningRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "CancelPlanningResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(3, __c0, 3),
+          identifier: S.optional(__S(160, __c5, 0)),
+          requirements: __S(193, __c6, 1),
+          updates: __S(194, __c6, 2),
+        }),
+      ).annotate({ identifier: "CommitTableRequestInput" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+          table_changes: __S(97, __c3, 1).pipe(T.Body("table-changes")),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/transactions/commit", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CommitTransactionRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "CommitTransactionResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: __S(128, __c4, 0),
           name: S.String,
         }),
       ).annotate({ identifier: "TableIdentifier" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
         }),
       ).annotate({ identifier: "TableRequirement" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.Array(S.Unknown);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+          namespace: __S(128, __c4, 0),
+          properties: S.optional(__S(256, __c8, 0)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/namespaces", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateNamespaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: __S(128, __c4, 0),
+          properties: S.optional(__S(256, __c8, 0)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateNamespaceResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fields: __S(577, __c18, 1),
+        }),
+      ).annotate({ identifier: "PartitionSpecInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fields: __S(579, __c18, 3),
+        }),
+      ).annotate({ identifier: "SortOrderInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          xIcebergAccessDelegation: S.optional(
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+          ),
+          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+          name: S.String,
+          location: S.optional(S.String),
+          schema: __S(320, __c10, 0),
+          partition_spec: S.optional(__S(288, __c9, 0).pipe(T.Body("partition-spec"))),
+          write_order: S.optional(__S(289, __c9, 1).pipe(T.Body("write-order"))),
+          stage_create: S.optional(S.Boolean.pipe(T.Body("stage-create"))),
+          properties: S.optional(__S(256, __c8, 0)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/tables", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateTableRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          fields: __S(417, __c13, 1),
+          identifier_field_ids: S.optional(__S(352, __c11, 0).pipe(T.Body("identifier-field-ids"))),
+        }),
+      ).annotate({ identifier: "SchemaInput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_id: S.Number.pipe(T.Body("field-id")),
+          labels: __S(256, __c8, 0),
+        }),
+      ).annotate({ identifier: "FieldLabels" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object_labels: S.optional(__S(256, __c8, 0).pipe(T.Body("object-labels"))),
+          fields: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "Labels" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2265,23 +2418,92 @@ function __c0(j: number): any {
           write_default: S.optional(S.Unknown.pipe(T.Body("write-default"))),
         }),
       ).annotate({ identifier: "StructField" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.Array(S.Number);
+      return S.Array(__S(416, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          fields: __S(8, __c1, 0),
-          identifier_field_ids: S.optional(__S(9, __c1, 1).pipe(T.Body("identifier-field-ids"))),
+          fields: __S(417, __c13, 1),
+          schema_id: S.optional(S.Number.pipe(T.Body("schema-id"))),
+          identifier_field_ids: S.optional(__S(352, __c11, 0).pipe(T.Body("identifier-field-ids"))),
         }),
-      ).annotate({ identifier: "SchemaInput" });
+      ).annotate({ identifier: "Schema" });
     case 3:
+      return S.Array(__S(418, __c13, 2));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.String,
+          config: __S(256, __c8, 0),
+        }),
+      ).annotate({ identifier: "StorageCredential" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(256, __c8, 0)),
+          headers: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "RemoteSigningConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          field_id: S.Number.pipe(T.Body("field-id")),
+        }),
+      ).annotate({ identifier: "Action" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          required_column_projections: S.optional(
+            __S(514, __c16, 2).pipe(T.Body("required-column-projections")),
+          ),
+          required_row_filter: S.optional(S.Unknown.pipe(T.Body("required-row-filter"))),
+        }),
+      ).annotate({ identifier: "ReadRestrictions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metadata_location: S.optional(S.NullOr(S.String).pipe(T.Body("metadata-location"))),
+          metadata: __S(601, __c18, 25),
+          config: S.optional(__S(256, __c8, 0)),
+          storage_credentials: S.optional(__S(481, __c15, 1).pipe(T.Body("storage-credentials"))),
+          remote_signing_config: S.optional(
+            __S(512, __c16, 0).pipe(T.Body("remote-signing-config")),
+          ),
+          read_restrictions: S.optional(__S(515, __c16, 3).pipe(T.Body("read-restrictions"))),
+          labels: S.optional(__S(386, __c12, 2)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LoadTableResult" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(448, __c14, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           field_id: S.optional(S.Number.pipe(T.Body("field-id"))),
@@ -2290,15 +2512,9 @@ function __c1(j: number): any {
           transform: S.String,
         }),
       ).annotate({ identifier: "PartitionField" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fields: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "PartitionSpecInput" });
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           source_id: S.Number.pipe(T.Body("source-id")),
@@ -2307,25 +2523,15 @@ function __c1(j: number): any {
           null_order: S.String.pipe(T.Body("null-order")),
         }),
       ).annotate({ identifier: "SortField" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fields: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "SortOrderInput" });
-    case 1:
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           operation: S.String,
         }),
       ).annotate({ identifier: "SnapshotSummary" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
@@ -2335,41 +2541,33 @@ function __c2(j: number): any {
           manifest_list: S.String.pipe(T.Body("manifest-list")),
           first_row_id: S.optional(S.Number.pipe(T.Body("first-row-id"))),
           added_rows: S.optional(S.Number.pipe(T.Body("added-rows"))),
-          summary: __S(17, __c2, 1),
+          summary: __S(580, __c18, 4),
           schema_id: S.optional(S.Number.pipe(T.Body("schema-id"))),
         }),
       ).annotate({ identifier: "Snapshot" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
           sequence_number: S.Number.pipe(T.Body("sequence-number")),
-          fields: __S(9, __c1, 1),
-          properties: S.optional(__S(19, __c2, 3)),
+          fields: __S(352, __c11, 0),
+          properties: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "BlobMetadata" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
     case 7:
+      return S.Array(__S(582, __c18, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
           statistics_path: S.String.pipe(T.Body("statistics-path")),
           file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
           file_footer_size_in_bytes: S.Number.pipe(T.Body("file-footer-size-in-bytes")),
-          blob_metadata: __S(22, __c2, 6).pipe(T.Body("blob-metadata")),
+          blob_metadata: __S(583, __c18, 7).pipe(T.Body("blob-metadata")),
         }),
       ).annotate({ identifier: "StatisticsFile" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
@@ -2377,118 +2575,38 @@ function __c3(j: number): any {
           file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
         }),
       ).annotate({ identifier: "PartitionStatisticsFile" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           key_id: S.String.pipe(T.Body("key-id")),
           encrypted_key_metadata: S.String.pipe(T.Body("encrypted-key-metadata")),
           encrypted_by_id: S.optional(S.String.pipe(T.Body("encrypted-by-id"))),
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "EncryptedKey" });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(__S(4, __c0, 4)),
-          requirements: __S(6, __c0, 6),
-          updates: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "CommitTableRequestInput" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          table_changes: __S(28, __c3, 4).pipe(T.Body("table-changes")),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/transactions/commit", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CommitTransactionRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "CommitTransactionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          namespace: __S(3, __c0, 3),
-          properties: S.optional(__S(19, __c2, 3)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/namespaces", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateNamespaceRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: __S(3, __c0, 3),
-          properties: S.optional(__S(19, __c2, 3)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateNamespaceResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
-          ),
-          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          name: S.String,
-          location: S.optional(S.String),
-          schema: __S(10, __c1, 2),
-          partition_spec: S.optional(__S(13, __c1, 5).pipe(T.Body("partition-spec"))),
-          write_order: S.optional(__S(16, __c2, 0).pipe(T.Body("write-order"))),
-          stage_create: S.optional(S.Boolean.pipe(T.Body("stage-create"))),
-          properties: S.optional(__S(19, __c2, 3)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/tables", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateTableRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          fields: __S(8, __c1, 0),
-          schema_id: S.optional(S.Number.pipe(T.Body("schema-id"))),
-          identifier_field_ids: S.optional(__S(9, __c1, 1).pipe(T.Body("identifier-field-ids"))),
-        }),
-      ).annotate({ identifier: "Schema" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           spec_id: S.optional(S.Number.pipe(T.Body("spec-id"))),
-          fields: __S(12, __c1, 4),
+          fields: __S(577, __c18, 1),
         }),
       ).annotate({ identifier: "PartitionSpec" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(587, __c18, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Body("order-id")),
-          fields: __S(15, __c1, 7),
+          fields: __S(579, __c18, 3),
         }),
       ).annotate({ identifier: "SortOrder" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(25, __c3, 1));
-    case 1:
-      return S.Array(__S(18, __c2, 2));
-    case 2:
+    case 14:
+      return S.Array(__S(589, __c18, 13));
+    case 15:
+      return S.Array(__S(586, __c18, 10));
+    case 16:
+      return S.Array(__S(581, __c18, 5));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2498,35 +2616,31 @@ function __c5(j: number): any {
           min_snapshots_to_keep: S.optional(S.Number.pipe(T.Body("min-snapshots-to-keep"))),
         }),
       ).annotate({ identifier: "SnapshotReference" });
-    case 3:
-      return S.Record(S.String, __S(42, __c5, 2));
-    case 4:
+    case 18:
+      return S.Record(S.String, __S(593, __c18, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
         }),
       ).annotate({ identifier: "SnapshotLogItem" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 20:
+      return S.Array(__S(595, __c18, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           metadata_file: S.String.pipe(T.Body("metadata-file")),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
         }),
       ).annotate({ identifier: "MetadataLogItem" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 22:
+      return S.Array(__S(597, __c18, 21));
+    case 23:
+      return S.Array(__S(584, __c18, 8));
+    case 24:
+      return S.Array(__S(585, __c18, 9));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           format_version: S.Number.pipe(T.Body("format-version")),
@@ -2534,97 +2648,50 @@ function __c6(j: number): any {
           location: S.optional(S.String),
           last_updated_ms: S.optional(S.Number.pipe(T.Body("last-updated-ms"))),
           next_row_id: S.optional(S.Number.pipe(T.Body("next-row-id"))),
-          properties: S.optional(__S(19, __c2, 3)),
-          schemas: S.optional(__S(35, __c4, 3)),
+          properties: S.optional(__S(256, __c8, 0)),
+          schemas: S.optional(__S(419, __c13, 3)),
           current_schema_id: S.optional(S.Number.pipe(T.Body("current-schema-id"))),
           last_column_id: S.optional(S.Number.pipe(T.Body("last-column-id"))),
-          partition_specs: S.optional(__S(37, __c4, 5).pipe(T.Body("partition-specs"))),
+          partition_specs: S.optional(__S(588, __c18, 12).pipe(T.Body("partition-specs"))),
           default_spec_id: S.optional(S.Number.pipe(T.Body("default-spec-id"))),
           last_partition_id: S.optional(S.Number.pipe(T.Body("last-partition-id"))),
-          sort_orders: S.optional(__S(39, __c4, 7).pipe(T.Body("sort-orders"))),
+          sort_orders: S.optional(__S(590, __c18, 14).pipe(T.Body("sort-orders"))),
           default_sort_order_id: S.optional(S.Number.pipe(T.Body("default-sort-order-id"))),
-          encryption_keys: S.optional(__S(40, __c5, 0).pipe(T.Body("encryption-keys"))),
-          snapshots: S.optional(__S(41, __c5, 1)),
-          refs: S.optional(__S(43, __c5, 3)),
+          encryption_keys: S.optional(__S(591, __c18, 15).pipe(T.Body("encryption-keys"))),
+          snapshots: S.optional(__S(592, __c18, 16)),
+          refs: S.optional(__S(594, __c18, 18)),
           current_snapshot_id: S.optional(S.Number.pipe(T.Body("current-snapshot-id"))),
           last_sequence_number: S.optional(S.Number.pipe(T.Body("last-sequence-number"))),
-          snapshot_log: S.optional(__S(45, __c5, 5).pipe(T.Body("snapshot-log"))),
-          metadata_log: S.optional(__S(47, __c5, 7).pipe(T.Body("metadata-log"))),
-          statistics: S.optional(__S(48, __c6, 0)),
-          partition_statistics: S.optional(__S(49, __c6, 1).pipe(T.Body("partition-statistics"))),
+          snapshot_log: S.optional(__S(596, __c18, 20).pipe(T.Body("snapshot-log"))),
+          metadata_log: S.optional(__S(598, __c18, 22).pipe(T.Body("metadata-log"))),
+          statistics: S.optional(__S(599, __c18, 23)),
+          partition_statistics: S.optional(
+            __S(600, __c18, 24).pipe(T.Body("partition-statistics")),
+          ),
         }),
       ).annotate({ identifier: "TableMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.String,
-          config: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "StorageCredential" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.Record(S.String, __S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(19, __c2, 3)),
-          headers: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "RemoteSigningConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          field_id: S.Number.pipe(T.Body("field-id")),
-        }),
-      ).annotate({ identifier: "Action" });
   }
 }
-function __c7(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          required_column_projections: S.optional(
-            __S(56, __c7, 0).pipe(T.Body("required-column-projections")),
-          ),
-          required_row_filter: S.optional(S.Unknown.pipe(T.Body("required-row-filter"))),
-        }),
-      ).annotate({ identifier: "ReadRestrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field_id: S.Number.pipe(T.Body("field-id")),
-          labels: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "FieldLabels" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object_labels: S.optional(__S(19, __c2, 3).pipe(T.Body("object-labels"))),
-          fields: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "Labels" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata_location: S.optional(S.NullOr(S.String).pipe(T.Body("metadata-location"))),
-          metadata: __S(50, __c6, 2),
-          config: S.optional(__S(19, __c2, 3)),
-          storage_credentials: S.optional(__S(52, __c6, 4).pipe(T.Body("storage-credentials"))),
-          remote_signing_config: S.optional(__S(54, __c6, 6).pipe(T.Body("remote-signing-config"))),
-          read_restrictions: S.optional(__S(58, __c7, 2).pipe(T.Body("read-restrictions"))),
-          labels: S.optional(__S(61, __c7, 5)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "LoadTableResult" });
-    case 7:
+          namespace: S.String.pipe(T.Label()),
+          name: S.String,
+          location: S.optional(S.String),
+          schema: __S(320, __c10, 0),
+          view_version: __S(642, __c20, 2).pipe(T.Body("view-version")),
+          properties: __S(256, __c8, 0),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/views", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateViewRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2632,39 +2699,22 @@ function __c7(j: number): any {
           dialect: S.String,
         }),
       ).annotate({ identifier: "SQLViewRepresentation" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
     case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number.pipe(T.Body("version-id")),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
           schema_id: S.Number.pipe(T.Body("schema-id")),
-          summary: __S(19, __c2, 3),
-          representations: __S(64, __c8, 0),
+          summary: __S(256, __c8, 0),
+          representations: __S(641, __c20, 1),
           default_catalog: S.optional(S.String.pipe(T.Body("default-catalog"))),
-          default_namespace: __S(3, __c0, 3).pipe(T.Body("default-namespace")),
+          default_namespace: __S(128, __c4, 0).pipe(T.Body("default-namespace")),
         }),
       ).annotate({ identifier: "ViewVersion" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String,
-          location: S.optional(S.String),
-          schema: __S(10, __c1, 2),
-          view_version: __S(65, __c8, 1).pipe(T.Body("view-version")),
-          properties: __S(19, __c2, 3),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/views", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateViewRequest" });
     case 3:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(642, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2673,7 +2723,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ViewHistoryEntry" });
     case 5:
-      return S.Array(__S(68, __c8, 4));
+      return S.Array(__S(644, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2681,24 +2731,24 @@ function __c8(j: number): any {
           format_version: S.Number.pipe(T.Body("format-version")),
           location: S.String,
           current_version_id: S.Number.pipe(T.Body("current-version-id")),
-          versions: __S(67, __c8, 3),
-          version_log: __S(69, __c8, 5).pipe(T.Body("version-log")),
-          schemas: __S(35, __c4, 3),
-          properties: S.optional(__S(19, __c2, 3)),
+          versions: __S(643, __c20, 3),
+          version_log: __S(645, __c20, 5).pipe(T.Body("version-log")),
+          schemas: __S(419, __c13, 3),
+          properties: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "ViewMetadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.String.pipe(T.Body("metadata-location")),
-          metadata: __S(70, __c8, 6),
-          config: S.optional(__S(19, __c2, 3)),
-          labels: S.optional(__S(61, __c7, 5)),
+          metadata: __S(646, __c20, 6),
+          config: S.optional(__S(256, __c8, 0)),
+          labels: S.optional(__S(386, __c12, 2)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadViewResult" });
   }
 }
-function __c9(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2709,7 +2759,11 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "DELETE", uri: "/namespaces/{namespace}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DropNamespaceRequest" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2722,7 +2776,11 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DropTableRequest" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2734,14 +2792,18 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DropViewRequest" });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           plan_id: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
           ),
         })
           .pipe(
@@ -2755,76 +2817,78 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "FetchPlanningResultRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "FetchPlanningResultResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           avg_value_size_in_bytes: S.optional(S.Number.pipe(T.Body("avg-value-size-in-bytes"))),
         }),
       ).annotate({ identifier: "FieldStatistics" });
-    case 5:
-      return S.Record(S.String, __S(76, __c9, 4));
-    case 6:
+    case 2:
+      return S.Record(S.String, __S(801, __c25, 1));
+    case 3:
       return S.Array(S.Unknown);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(9, __c1, 1)),
-          values: S.optional(__S(9, __c1, 1)),
+          keys: S.optional(__S(352, __c11, 0)),
+          values: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "CountMap" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(9, __c1, 1)),
-          values: S.optional(__S(57, __c7, 1)),
+          keys: S.optional(__S(352, __c11, 0)),
+          values: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "ValueMap" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
           file_path: S.String.pipe(T.Body("file-path")),
           file_format: S.String.pipe(T.Body("file-format")),
           spec_id: S.Number.pipe(T.Body("spec-id")),
-          partition: __S(57, __c7, 1),
+          partition: __S(800, __c25, 0),
           file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
           record_count: S.Number.pipe(T.Body("record-count")),
           key_metadata: S.optional(S.String.pipe(T.Body("key-metadata"))),
-          split_offsets: S.optional(__S(9, __c1, 1).pipe(T.Body("split-offsets"))),
+          split_offsets: S.optional(__S(352, __c11, 0).pipe(T.Body("split-offsets"))),
           sort_order_id: S.optional(S.Number.pipe(T.Body("sort-order-id"))),
-          content_stats: S.optional(__S(77, __c9, 5).pipe(T.Body("content-stats"))),
+          content_stats: S.optional(__S(802, __c25, 2).pipe(T.Body("content-stats"))),
           first_row_id: S.optional(S.Number.pipe(T.Body("first-row-id"))),
-          column_sizes: S.optional(__S(79, __c9, 7).pipe(T.Body("column-sizes"))),
-          value_counts: S.optional(__S(79, __c9, 7).pipe(T.Body("value-counts"))),
-          null_value_counts: S.optional(__S(79, __c9, 7).pipe(T.Body("null-value-counts"))),
-          nan_value_counts: S.optional(__S(79, __c9, 7).pipe(T.Body("nan-value-counts"))),
-          lower_bounds: S.optional(__S(80, __c10, 0).pipe(T.Body("lower-bounds"))),
-          upper_bounds: S.optional(__S(80, __c10, 0).pipe(T.Body("upper-bounds"))),
+          column_sizes: S.optional(__S(804, __c25, 4).pipe(T.Body("column-sizes"))),
+          value_counts: S.optional(__S(804, __c25, 4).pipe(T.Body("value-counts"))),
+          null_value_counts: S.optional(__S(804, __c25, 4).pipe(T.Body("null-value-counts"))),
+          nan_value_counts: S.optional(__S(804, __c25, 4).pipe(T.Body("nan-value-counts"))),
+          lower_bounds: S.optional(__S(805, __c25, 5).pipe(T.Body("lower-bounds"))),
+          upper_bounds: S.optional(__S(805, __c25, 5).pipe(T.Body("upper-bounds"))),
         }),
       ).annotate({ identifier: "DataFile" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          data_file: __S(81, __c10, 1).pipe(T.Body("data-file")),
+          data_file: __S(806, __c25, 6).pipe(T.Body("data-file")),
           delete_file_references: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("delete-file-references")),
+            __S(352, __c11, 0).pipe(T.Body("delete-file-references")),
           ),
           residual_filter: S.optional(S.Unknown.pipe(T.Body("residual-filter"))),
         }),
       ).annotate({ identifier: "FileScanTask" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "FetchPlanningResultResponse",
-      });
-    case 5:
+    case 8:
+      return S.Array(__S(807, __c25, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2841,15 +2905,19 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "FetchScanTasksRequest" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          delete_files: S.optional(__S(78, __c9, 6).pipe(T.Body("delete-files"))),
-          file_scan_tasks: S.optional(__S(83, __c10, 3).pipe(T.Body("file-scan-tasks"))),
-          plan_tasks: S.optional(__S(20, __c2, 4).pipe(T.Body("plan-tasks"))),
+          delete_files: S.optional(__S(803, __c25, 3).pipe(T.Body("delete-files"))),
+          file_scan_tasks: S.optional(__S(808, __c25, 8).pipe(T.Body("file-scan-tasks"))),
+          plan_tasks: S.optional(__S(448, __c14, 0).pipe(T.Body("plan-tasks"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "FetchScanTasksResponse" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           warehouse: S.optional(S.String.pipe(T.Query())),
@@ -2857,20 +2925,20 @@ function __c10(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          overrides: __S(19, __c2, 3),
-          defaults: __S(19, __c2, 3),
-          endpoints: S.optional(__S(20, __c2, 4)),
+          overrides: __S(256, __c8, 0),
+          defaults: __S(256, __c8, 0),
+          endpoints: S.optional(__S(448, __c14, 0)),
           idempotency_key_lifetime: S.optional(S.String.pipe(T.Body("idempotency-key-lifetime"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CatalogConfig" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2880,16 +2948,20 @@ function __c11(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/namespaces/{namespace}/functions", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFunctionsRequest" });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
     case 2:
-      return S.Array(__S(20, __c2, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          identifiers: __S(90, __c11, 2),
+          identifiers: __S(865, __c27, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFunctionsResponse" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2899,16 +2971,20 @@ function __c11(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/namespaces", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesRequest" });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          namespaces: __S(93, __c11, 5),
+          namespaces: __S(897, __c28, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2920,18 +2996,22 @@ function __c11(j: number): any {
       ).annotate({ identifier: "ListTablesRequest" });
   }
 }
-function __c12(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(160, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          identifiers: __S(96, __c12, 0),
+          identifiers: __S(960, __c30, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTablesResponse" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2941,7 +3021,11 @@ function __c12(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/namespaces/{namespace}/views", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListViewsRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2958,13 +3042,17 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadCredentialsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          storage_credentials: __S(52, __c6, 4).pipe(T.Body("storage-credentials")),
+          storage_credentials: __S(481, __c15, 1).pipe(T.Body("storage-credentials")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadCredentialsResponse" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2979,7 +3067,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadFunctionRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.Unknown,
@@ -2987,13 +3075,9 @@ function __c12(j: number): any {
           doc: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionParameter" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1057, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -3003,13 +3087,13 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "FunctionSQLRepresentation",
       });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1059, __c33, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number.pipe(T.Body("version-id")),
-          representations: __S(105, __c13, 1),
+          representations: __S(1060, __c33, 4),
           deterministic: S.optional(S.Boolean),
           on_null_input: S.optional(S.String.pipe(T.Body("on-null-input"))),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
@@ -3017,25 +3101,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "FunctionDefinitionVersion",
       });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(1061, __c33, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           definition_id: S.String.pipe(T.Body("definition-id")),
           specific_name: S.optional(S.String.pipe(T.Body("specific-name"))),
-          parameters: __S(103, __c12, 7),
+          parameters: __S(1058, __c33, 2),
           return_type: S.Unknown.pipe(T.Body("return-type")),
           return_nullable: S.optional(S.Boolean.pipe(T.Body("return-nullable"))),
-          versions: __S(107, __c13, 3),
+          versions: __S(1062, __c33, 6),
           current_version_id: S.Number.pipe(T.Body("current-version-id")),
           function_type: S.String.pipe(T.Body("function-type")),
           doc: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionDefinition" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1063, __c33, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           definition_id: S.String.pipe(T.Body("definition-id")),
@@ -3044,44 +3128,44 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "FunctionDefinitionVersionRef",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(1065, __c33, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
-          definition_versions: __S(111, __c13, 7).pipe(T.Body("definition-versions")),
+          definition_versions: __S(1066, __c33, 10).pipe(T.Body("definition-versions")),
         }),
       ).annotate({
         identifier: "FunctionDefinitionLogEntry",
       });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(1067, __c33, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           function_uuid: S.String.pipe(T.Body("function-uuid")),
           format_version: S.Number.pipe(T.Body("format-version")),
-          definitions: __S(109, __c13, 5),
-          definition_log: __S(113, __c14, 1).pipe(T.Body("definition-log")),
+          definitions: __S(1064, __c33, 8),
+          definition_log: __S(1068, __c33, 12).pipe(T.Body("definition-log")),
           location: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(256, __c8, 0)),
           secure: S.optional(S.Boolean),
           doc: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionMetadata" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.optional(S.String.pipe(T.Body("metadata-location"))),
-          metadata: __S(114, __c14, 2),
+          metadata: __S(1069, __c33, 13),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadFunctionResult" });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3091,14 +3175,18 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "LoadNamespaceMetadataRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(3, __c0, 3),
-          properties: S.optional(S.NullOr(__S(19, __c2, 3))),
+          namespace: __S(128, __c4, 0),
+          properties: S.optional(S.NullOr(__S(256, __c8, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetNamespaceResponse" });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3106,14 +3194,18 @@ function __c14(j: number): any {
           snapshots: S.optional(S.String.pipe(T.Query())),
           referenced_by: S.optional(S.String.pipe(T.Query("referenced-by"))),
           xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
           ),
           ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/namespaces/{namespace}/tables/{table}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadTableRequest" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3125,7 +3217,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "LoadViewRequest" });
   }
 }
-function __c15(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3135,24 +3227,28 @@ function __c15(j: number): any {
           .pipe(T.Http({ method: "HEAD", uri: "/namespaces/{namespace}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "NamespaceExistsRequest" });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           snapshot_id: S.optional(S.Number.pipe(T.Body("snapshot-id"))),
-          select: S.optional(__S(20, __c2, 4)),
+          select: S.optional(__S(448, __c14, 0)),
           filter: S.optional(S.Unknown),
           min_rows_requested: S.optional(S.Number.pipe(T.Body("min-rows-requested"))),
           case_sensitive: S.optional(S.Boolean.pipe(T.Body("case-sensitive"))),
           use_snapshot_schema: S.optional(S.Boolean.pipe(T.Body("use-snapshot-schema"))),
           start_snapshot_id: S.optional(S.Number.pipe(T.Body("start-snapshot-id"))),
           end_snapshot_id: S.optional(S.Number.pipe(T.Body("end-snapshot-id"))),
-          stats_fields: S.optional(__S(20, __c2, 4).pipe(T.Body("stats-fields"))),
+          stats_fields: S.optional(__S(448, __c14, 0).pipe(T.Body("stats-fields"))),
         })
           .pipe(
             T.Http({
@@ -3163,16 +3259,20 @@ function __c15(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PlanTableScanRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PlanTableScanResponse" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0, __c0, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            __S(32, __c1, 0).pipe(T.Header("X-Iceberg-Access-Delegation")),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           name: S.String,
@@ -3182,7 +3282,11 @@ function __c15(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/register", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RegisterTableRequest" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3193,55 +3297,67 @@ function __c15(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/register-view", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RegisterViewRequest" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          source: __S(4, __c0, 4),
-          destination: __S(4, __c0, 4),
+          source: __S(160, __c5, 0),
+          destination: __S(160, __c5, 0),
         })
           .pipe(T.Http({ method: "POST", uri: "/tables/rename", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RenameTableRequest" });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          source: __S(4, __c0, 4),
-          destination: __S(4, __c0, 4),
+          source: __S(160, __c5, 0),
+          destination: __S(160, __c5, 0),
         })
           .pipe(T.Http({ method: "POST", uri: "/views/rename", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RenameViewRequest" });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           uuid: S.String,
         }),
       ).annotate({ identifier: "AssertViewUUID" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(__S(1376, __c43, 0));
     case 2:
+      return S.Array(S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           view: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          identifier: S.optional(__S(4, __c0, 4)),
-          requirements: S.optional(__S(128, __c16, 0)),
-          updates: __S(129, __c16, 1),
+          identifier: S.optional(__S(160, __c5, 0)),
+          requirements: S.optional(__S(1377, __c43, 1)),
+          updates: __S(1378, __c43, 2),
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/views/{view}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReplaceViewRequest" });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3257,7 +3373,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReportMetricsRequest" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3265,8 +3385,8 @@ function __c16(j: number): any {
           region: S.String,
           uri: S.String,
           method: S.String,
-          headers: __S(53, __c6, 5),
-          properties: S.optional(__S(19, __c2, 3)),
+          headers: __S(544, __c17, 0),
+          properties: S.optional(__S(256, __c8, 0)),
           body: S.optional(S.String),
           provider: S.optional(S.String),
         })
@@ -3279,14 +3399,18 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SignRequestRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uri: S.String,
-          headers: __S(53, __c6, 5),
+          headers: __S(544, __c17, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RemoteSignResult" });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3297,7 +3421,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TableExistsRequest" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3315,52 +3443,64 @@ function __c16(j: number): any {
       ).annotate({ identifier: "UnregisterTableRequest" });
   }
 }
-function __c17(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.String.pipe(T.Body("metadata-location")),
-          metadata: __S(50, __c6, 2),
+          metadata: __S(601, __c18, 25),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UnregisterTableResult" });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          removals: S.optional(__S(20, __c2, 4)),
-          updates: S.optional(__S(19, __c2, 3)),
+          removals: S.optional(__S(448, __c14, 0)),
+          updates: S.optional(__S(256, __c8, 0)),
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/properties", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePropertiesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          updated: __S(20, __c2, 4),
-          removed: __S(20, __c2, 4),
-          missing: S.optional(S.NullOr(__S(20, __c2, 4))),
+          updated: __S(448, __c14, 0),
+          removed: __S(448, __c14, 0),
+          missing: S.optional(S.NullOr(__S(448, __c14, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateNamespacePropertiesResponse",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          identifier: S.optional(__S(4, __c0, 4)),
-          requirements: __S(6, __c0, 6),
-          updates: __S(26, __c3, 2),
+          identifier: S.optional(__S(160, __c5, 0)),
+          requirements: __S(193, __c6, 1),
+          updates: __S(194, __c6, 2),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/namespaces/{namespace}/tables/{table}", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTableRequest" });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3371,7 +3511,6 @@ function __c17(j: number): any {
       ).annotate({ identifier: "ViewExistsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

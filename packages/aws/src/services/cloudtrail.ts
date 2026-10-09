@@ -2017,8 +2017,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddTagsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddTagsResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<AddTagsRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<AddTagsResponse>,
   errors: [
     ChannelARNInvalidException,
     ChannelNotFoundException,
@@ -2070,8 +2070,8 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelQueryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CancelQueryResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<CancelQueryRequest>,
+  output: __S(473, __c59, 1) as any as S.Schema<CancelQueryResponse>,
   errors: [
     ConflictException,
     EventDataStoreARNInvalidException,
@@ -2116,8 +2116,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateChannelRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateChannelResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<CreateChannelRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<CreateChannelResponse>,
   errors: [
     ChannelAlreadyExistsException,
     ChannelMaxLimitExceededException,
@@ -2174,8 +2174,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateDashboardResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<CreateDashboardResponse>,
   errors: [
     ConflictException,
     EventDataStoreNotFoundException,
@@ -2224,8 +2224,8 @@ export const createEventDataStore: API.OperationMethod<
   CreateEventDataStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateEventDataStoreRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateEventDataStoreResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<CreateEventDataStoreRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<CreateEventDataStoreResponse>,
   errors: [
     CloudTrailAccessNotEnabledException,
     ConflictException,
@@ -2297,8 +2297,8 @@ export const createTrail: API.OperationMethod<
   CreateTrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateTrailRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateTrailResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreateTrailRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<CreateTrailResponse>,
   errors: [
     CloudTrailAccessNotEnabledException,
     CloudTrailInvalidClientTokenIdException,
@@ -2356,8 +2356,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [
     ChannelARNInvalidException,
     ChannelNotFoundException,
@@ -2385,8 +2385,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteDashboardResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(577, __c72, 1) as any as S.Schema<DeleteDashboardResponse>,
   errors: [ConflictException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2431,8 +2431,8 @@ export const deleteEventDataStore: API.OperationMethod<
   DeleteEventDataStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteEventDataStoreRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteEventDataStoreResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<DeleteEventDataStoreRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeleteEventDataStoreResponse>,
   errors: [
     ChannelExistsForEDSException,
     ConflictException,
@@ -2472,8 +2472,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     ConflictException,
     OperationNotPermittedException,
@@ -2522,8 +2522,8 @@ export const deleteTrail: API.OperationMethod<
   DeleteTrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteTrailRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteTrailResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<DeleteTrailRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeleteTrailResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -2565,8 +2565,8 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
   DeregisterOrganizationDelegatedAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeregisterOrganizationDelegatedAdminRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>,
   errors: [
     AccountNotFoundException,
     AccountNotRegisteredException,
@@ -2613,8 +2613,8 @@ export const describeQuery: API.OperationMethod<
   DescribeQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DescribeQueryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeQueryResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<DescribeQueryRequest>,
+  output: __S(626, __c78, 2) as any as S.Schema<DescribeQueryResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -2647,8 +2647,8 @@ export const describeTrails: API.OperationMethod<
   DescribeTrailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DescribeTrailsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DescribeTrailsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeTrailsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DescribeTrailsResponse>,
   errors: [
     CloudTrailARNInvalidException,
     InvalidTrailNameException,
@@ -2692,8 +2692,8 @@ export const disableFederation: API.OperationMethod<
   DisableFederationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DisableFederationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DisableFederationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DisableFederationRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DisableFederationResponse>,
   errors: [
     AccessDeniedException,
     CloudTrailAccessNotEnabledException,
@@ -2754,8 +2754,8 @@ export const enableFederation: API.OperationMethod<
   EnableFederationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<EnableFederationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<EnableFederationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<EnableFederationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<EnableFederationResponse>,
   errors: [
     AccessDeniedException,
     CloudTrailAccessNotEnabledException,
@@ -2814,8 +2814,8 @@ export const generateQuery: API.OperationMethod<
   GenerateQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GenerateQueryRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GenerateQueryResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GenerateQueryRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GenerateQueryResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -2848,8 +2848,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetChannelRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetChannelResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetChannelResponse>,
   errors: [
     ChannelARNInvalidException,
     ChannelNotFoundException,
@@ -2876,8 +2876,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetDashboardRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetDashboardResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetDashboardResponse>,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2907,8 +2907,8 @@ export const getEventConfiguration: API.OperationMethod<
   GetEventConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetEventConfigurationRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetEventConfigurationResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetEventConfigurationRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetEventConfigurationResponse>,
   errors: [
     CloudTrailARNInvalidException,
     EventDataStoreARNInvalidException,
@@ -2948,8 +2948,8 @@ export const getEventDataStore: API.OperationMethod<
   GetEventDataStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetEventDataStoreRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetEventDataStoreResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetEventDataStoreRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<GetEventDataStoreResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -3001,8 +3001,8 @@ export const getEventSelectors: API.OperationMethod<
   GetEventSelectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetEventSelectorsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetEventSelectorsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetEventSelectorsRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<GetEventSelectorsResponse>,
   errors: [
     CloudTrailARNInvalidException,
     InvalidTrailNameException,
@@ -3033,8 +3033,8 @@ export const getImport: API.OperationMethod<
   GetImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetImportRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetImportResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetImportRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetImportResponse>,
   errors: [
     ImportNotFoundException,
     InvalidParameterException,
@@ -3076,8 +3076,8 @@ export const getInsightSelectors: API.OperationMethod<
   GetInsightSelectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetInsightSelectorsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetInsightSelectorsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetInsightSelectorsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<GetInsightSelectorsResponse>,
   errors: [
     CloudTrailARNInvalidException,
     InsightNotEnabledException,
@@ -3121,8 +3121,8 @@ export const getQueryResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetQueryResultsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetQueryResultsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetQueryResultsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetQueryResultsResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -3159,8 +3159,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     OperationNotPermittedException,
     ResourceARNNotValidException,
@@ -3190,8 +3190,8 @@ export const getTrail: API.OperationMethod<
   GetTrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetTrailRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetTrailResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetTrailRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetTrailResponse>,
   errors: [
     CloudTrailARNInvalidException,
     InvalidTrailNameException,
@@ -3224,8 +3224,8 @@ export const getTrailStatus: API.OperationMethod<
   GetTrailStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetTrailStatusRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetTrailStatusResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetTrailStatusRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetTrailStatusResponse>,
   errors: [
     CloudTrailARNInvalidException,
     InvalidTrailNameException,
@@ -3255,8 +3255,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListChannelsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListChannelsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [
     InvalidNextTokenException,
     OperationNotPermittedException,
@@ -3284,8 +3284,8 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListDashboardsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListDashboardsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<ListDashboardsResponse>,
   errors: [UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3312,8 +3312,8 @@ export const listEventDataStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListEventDataStoresRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListEventDataStoresResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListEventDataStoresRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListEventDataStoresResponse>,
   errors: [
     InvalidMaxResultsException,
     InvalidNextTokenException,
@@ -3349,8 +3349,8 @@ export const listImportFailures: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportFailureListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListImportFailuresRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListImportFailuresResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListImportFailuresRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListImportFailuresResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -3388,8 +3388,8 @@ export const listImports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportsListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListImportsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListImportsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListImportsRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListImportsResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     InvalidNextTokenException,
@@ -3443,8 +3443,8 @@ export const listInsightsData: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListInsightsDataRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListInsightsDataResponse>,
+  input: __S(225, __c28, 1) as any as S.Schema<ListInsightsDataRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<ListInsightsDataResponse>,
   errors: [
     InvalidParameterException,
     OperationNotPermittedException,
@@ -3501,8 +3501,8 @@ export const listInsightsMetricData: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListInsightsMetricDataRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListInsightsMetricDataResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListInsightsMetricDataRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<ListInsightsMetricDataResponse>,
   errors: [
     InvalidParameterException,
     InvalidTrailNameException,
@@ -3542,8 +3542,8 @@ export const listPublicKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PublicKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListPublicKeysRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListPublicKeysResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListPublicKeysRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<ListPublicKeysResponse>,
   errors: [
     InvalidTimeRangeException,
     InvalidTokenException,
@@ -3591,8 +3591,8 @@ export const listQueries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListQueriesRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListQueriesResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListQueriesRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<ListQueriesResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -3640,8 +3640,8 @@ export const listTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListTagsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListTagsResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListTagsRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<ListTagsResponse>,
   errors: [
     ChannelARNInvalidException,
     CloudTrailARNInvalidException,
@@ -3680,8 +3680,8 @@ export const listTrails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrailInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListTrailsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListTrailsResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListTrailsRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<ListTrailsResponse>,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3745,8 +3745,8 @@ export const lookupEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<LookupEventsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<LookupEventsResponse>,
+  input: __S(282, __c35, 2) as any as S.Schema<LookupEventsRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<LookupEventsResponse>,
   errors: [
     InvalidEventCategoryException,
     InvalidLookupAttributesException,
@@ -3797,8 +3797,8 @@ export const putEventConfiguration: API.OperationMethod<
   PutEventConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<PutEventConfigurationRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PutEventConfigurationResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<PutEventConfigurationRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<PutEventConfigurationResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -3903,8 +3903,8 @@ export const putEventSelectors: API.OperationMethod<
   PutEventSelectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<PutEventSelectorsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PutEventSelectorsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<PutEventSelectorsRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<PutEventSelectorsResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -3978,8 +3978,8 @@ export const putInsightSelectors: API.OperationMethod<
   PutInsightSelectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<PutInsightSelectorsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PutInsightSelectorsResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<PutInsightSelectorsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<PutInsightSelectorsResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -4024,8 +4024,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     ConflictException,
     OperationNotPermittedException,
@@ -4065,8 +4065,8 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
   RegisterOrganizationDelegatedAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<RegisterOrganizationDelegatedAdminRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>,
   errors: [
     AccountNotFoundException,
     AccountRegisteredException,
@@ -4114,8 +4114,8 @@ export const removeTags: API.OperationMethod<
   RemoveTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<RemoveTagsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RemoveTagsResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<RemoveTagsRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<RemoveTagsResponse>,
   errors: [
     ChannelARNInvalidException,
     ChannelNotFoundException,
@@ -4167,8 +4167,8 @@ export const restoreEventDataStore: API.OperationMethod<
   RestoreEventDataStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<RestoreEventDataStoreRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<RestoreEventDataStoreResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<RestoreEventDataStoreRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<RestoreEventDataStoreResponse>,
   errors: [
     CloudTrailAccessNotEnabledException,
     EventDataStoreARNInvalidException,
@@ -4206,8 +4206,8 @@ export const searchSampleQueries: API.OperationMethod<
   SearchSampleQueriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<SearchSampleQueriesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<SearchSampleQueriesResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<SearchSampleQueriesRequest>,
+  output: __S(347, __c43, 3) as any as S.Schema<SearchSampleQueriesResponse>,
   errors: [
     InvalidParameterException,
     OperationNotPermittedException,
@@ -4239,8 +4239,8 @@ export const startDashboardRefresh: API.OperationMethod<
   StartDashboardRefreshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<StartDashboardRefreshRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<StartDashboardRefreshResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<StartDashboardRefreshRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<StartDashboardRefreshResponse>,
   errors: [
     EventDataStoreNotFoundException,
     InactiveEventDataStoreException,
@@ -4278,8 +4278,8 @@ export const startEventDataStoreIngestion: API.OperationMethod<
   StartEventDataStoreIngestionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<StartEventDataStoreIngestionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<StartEventDataStoreIngestionResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<StartEventDataStoreIngestionRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<StartEventDataStoreIngestionResponse>,
   errors: [
     ConflictException,
     EventDataStoreARNInvalidException,
@@ -4340,8 +4340,8 @@ export const startImport: API.OperationMethod<
   StartImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<StartImportRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<StartImportResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<StartImportRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<StartImportResponse>,
   errors: [
     AccountHasOngoingImportException,
     EventDataStoreARNInvalidException,
@@ -4386,8 +4386,8 @@ export const startLogging: API.OperationMethod<
   StartLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<StartLoggingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartLoggingResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<StartLoggingRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<StartLoggingResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -4439,8 +4439,8 @@ export const startQuery: API.OperationMethod<
   StartQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<StartQueryRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<StartQueryResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<StartQueryRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<StartQueryResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -4487,8 +4487,8 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
   StopEventDataStoreIngestionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<StopEventDataStoreIngestionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<StopEventDataStoreIngestionResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<StopEventDataStoreIngestionRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<StopEventDataStoreIngestionResponse>,
   errors: [
     ConflictException,
     EventDataStoreARNInvalidException,
@@ -4524,8 +4524,8 @@ export const stopImport: API.OperationMethod<
   StopImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<StopImportRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<StopImportResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<StopImportRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<StopImportResponse>,
   errors: [
     ImportNotFoundException,
     InvalidParameterException,
@@ -4565,8 +4565,8 @@ export const stopLogging: API.OperationMethod<
   StopLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<StopLoggingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StopLoggingResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<StopLoggingRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<StopLoggingResponse>,
   errors: [
     CloudTrailARNInvalidException,
     ConflictException,
@@ -4608,8 +4608,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     ChannelAlreadyExistsException,
     ChannelARNInvalidException,
@@ -4655,8 +4655,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<UpdateDashboardResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<UpdateDashboardResponse>,
   errors: [
     ConflictException,
     EventDataStoreNotFoundException,
@@ -4718,8 +4718,8 @@ export const updateEventDataStore: API.OperationMethod<
   UpdateEventDataStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateEventDataStoreRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<UpdateEventDataStoreResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<UpdateEventDataStoreRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<UpdateEventDataStoreResponse>,
   errors: [
     CloudTrailAccessNotEnabledException,
     ConflictException,
@@ -4798,8 +4798,8 @@ export const updateTrail: API.OperationMethod<
   UpdateTrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateTrailRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateTrailResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<UpdateTrailRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<UpdateTrailResponse>,
   errors: [
     CloudTrailAccessNotEnabledException,
     CloudTrailARNInvalidException,
@@ -4844,327 +4844,21 @@ export const updateTrail: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagsList: __S(1, __c0, 1) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AddTagsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddTagsResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          EventDataStore: S.optional(S.String),
-          QueryId: S.String,
-          EventDataStoreOwnerAccountId: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CancelQueryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          QueryId: S.String,
-          QueryStatus: S.String,
-          EventDataStoreOwnerAccountId: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "CancelQueryResponse" });
-    case 6:
-      return S.suspend(() => S.Struct({ Type: S.String, Location: S.String })).annotate({
-        identifier: "Destination",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Source: S.String,
-          Destinations: __S(7, __c0, 7),
-          Tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelArn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Source: S.optional(S.String),
-          Destinations: S.optional(__S(7, __c0, 7)),
-          Tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateChannelResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Unit: S.optional(S.String), Value: S.optional(S.Number) }),
-      ).annotate({ identifier: "RefreshScheduleFrequency" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Frequency: S.optional(__S(10, __c1, 2)),
-          Status: S.optional(S.String),
-          TimeOfDay: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RefreshSchedule" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          QueryStatement: S.String,
-          QueryParameters: S.optional(__S(12, __c1, 4)),
-          ViewProperties: __S(13, __c1, 5),
-        }),
-      ).annotate({ identifier: "RequestWidget" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          RefreshSchedule: S.optional(__S(11, __c1, 3)),
-          TagsList: S.optional(__S(1, __c0, 1)),
-          TerminationProtectionEnabled: S.optional(S.Boolean),
-          Widgets: S.optional(__S(15, __c1, 7)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDashboardRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          QueryAlias: S.optional(S.String),
-          QueryStatement: S.optional(S.String),
-          QueryParameters: S.optional(__S(12, __c1, 4)),
-          ViewProperties: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "Widget" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DashboardArn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Type: S.optional(S.String),
-          Widgets: S.optional(__S(18, __c2, 2)),
-          TagsList: S.optional(__S(1, __c0, 1)),
-          RefreshSchedule: S.optional(__S(11, __c1, 3)),
-          TerminationProtectionEnabled: S.optional(S.Boolean),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateDashboardResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Field: S.String,
-          Equals: S.optional(__S(12, __c1, 4)),
-          StartsWith: S.optional(__S(12, __c1, 4)),
-          EndsWith: S.optional(__S(12, __c1, 4)),
-          NotEquals: S.optional(__S(12, __c1, 4)),
-          NotStartsWith: S.optional(__S(12, __c1, 4)),
-          NotEndsWith: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AdvancedFieldSelector" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), FieldSelectors: __S(21, __c2, 5) }),
-      ).annotate({ identifier: "AdvancedEventSelector" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
-          MultiRegionEnabled: S.optional(S.Boolean),
-          OrganizationEnabled: S.optional(S.Boolean),
-          RetentionPeriod: S.optional(S.Number),
-          TerminationProtectionEnabled: S.optional(S.Boolean),
-          TagsList: S.optional(__S(1, __c0, 1)),
-          KmsKeyId: S.optional(S.String),
-          StartIngestion: S.optional(S.Boolean),
-          BillingMode: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEventDataStoreRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EventDataStoreArn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
-          MultiRegionEnabled: S.optional(S.Boolean),
-          OrganizationEnabled: S.optional(S.Boolean),
-          RetentionPeriod: S.optional(S.Number),
-          TerminationProtectionEnabled: S.optional(S.Boolean),
-          TagsList: S.optional(__S(1, __c0, 1)),
-          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          KmsKeyId: S.optional(S.String),
-          BillingMode: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEventDataStoreResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          S3BucketName: S.String,
-          S3KeyPrefix: S.optional(S.String),
-          SnsTopicName: S.optional(S.String),
-          IncludeGlobalServiceEvents: S.optional(S.Boolean),
-          IsMultiRegionTrail: S.optional(S.Boolean),
-          EnableLogFileValidation: S.optional(S.Boolean),
-          CloudWatchLogsLogGroupArn: S.optional(S.String),
-          CloudWatchLogsRoleArn: S.optional(S.String),
-          KmsKeyId: S.optional(S.String),
-          IsOrganizationTrail: S.optional(S.Boolean),
-          TagsList: S.optional(__S(1, __c0, 1)),
-          RecursiveLogging: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTrailRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          S3BucketName: S.optional(S.String),
-          S3KeyPrefix: S.optional(S.String),
-          SnsTopicName: S.optional(S.String),
-          SnsTopicARN: S.optional(S.String),
-          IncludeGlobalServiceEvents: S.optional(S.Boolean),
-          IsMultiRegionTrail: S.optional(S.Boolean),
-          TrailARN: S.optional(S.String),
-          LogFileValidationEnabled: S.optional(S.Boolean),
-          CloudWatchLogsLogGroupArn: S.optional(S.String),
-          CloudWatchLogsRoleArn: S.optional(S.String),
-          KmsKeyId: S.optional(S.String),
-          IsOrganizationTrail: S.optional(S.Boolean),
-          RecursiveLogging: S.optional(S.Boolean),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateTrailResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Channel: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteChannelRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DashboardId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteDashboardRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteDashboardResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ EventDataStore: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteEventDataStoreRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteEventDataStoreResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteTrailRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DelegatedAdminAccountId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeregisterOrganizationDelegatedAdminRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EventDataStore: S.optional(S.String),
-          QueryId: S.optional(S.String),
-          QueryAlias: S.optional(S.String),
-          RefreshId: S.optional(S.String),
-          EventDataStoreOwnerAccountId: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DescribeQueryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EventsMatched: S.optional(S.Number),
-          EventsScanned: S.optional(S.Number),
-          BytesScanned: S.optional(S.Number),
-          ExecutionTimeInMillis: S.optional(S.Number),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "QueryStatisticsForDescribeQuery",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          QueryId: S.optional(S.String),
-          QueryString: S.optional(S.String),
-          QueryStatus: S.optional(S.String),
-          QueryStatistics: S.optional(__S(37, __c4, 5)),
-          ErrorMessage: S.optional(S.String),
-          DeliveryS3Uri: S.optional(S.String),
-          DeliveryStatus: S.optional(S.String),
-          Prompt: S.optional(S.String),
-          EventDataStoreOwnerAccountId: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "DescribeQueryResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trailNameList: S.optional(__S(12, __c1, 4)),
+          trailNameList: S.optional(__S(528, __c66, 0)),
           includeShadowTrails: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeTrailsRequest" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ trailList: S.optional(__S(1, __c0, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeTrailsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5188,21 +4882,17 @@ function __c5(j: number): any {
           RecursiveLogging: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Trail" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ trailList: S.optional(__S(41, __c5, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrailsResponse",
-      });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DisableFederationRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
@@ -5211,13 +4901,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DisableFederationResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String, FederationRoleArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "EnableFederationRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
@@ -5225,17 +4919,17 @@ function __c5(j: number): any {
           FederationRoleArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "EnableFederationResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ EventDataStores: __S(12, __c1, 4), Prompt: S.String }).pipe(
+        S.Struct({ EventDataStores: __S(528, __c66, 0), Prompt: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GenerateQueryRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           QueryStatement: S.optional(S.String),
@@ -5243,20 +4937,24 @@ function __c6(j: number): any {
           EventDataStoreOwnerAccountId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GenerateQueryResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Channel: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetChannelRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplyToAllRegions: S.optional(S.Boolean),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
         }),
       ).annotate({ identifier: "SourceConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           LatestIngestionSuccessTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5266,31 +4964,35 @@ function __c6(j: number): any {
           LatestIngestionAttemptEventID: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionStatus" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           Name: S.optional(S.String),
           Source: S.optional(S.String),
-          SourceConfig: S.optional(__S(50, __c6, 2)),
-          Destinations: S.optional(__S(7, __c0, 7)),
-          IngestionStatus: S.optional(__S(51, __c6, 3)),
+          SourceConfig: S.optional(__S(41, __c5, 1)),
+          Destinations: S.optional(__S(489, __c61, 1)),
+          IngestionStatus: S.optional(__S(42, __c5, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "GetChannelResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DashboardId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDashboardRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DashboardArn: S.optional(S.String),
           Type: S.optional(S.String),
           Status: S.optional(S.String),
-          Widgets: S.optional(__S(18, __c2, 2)),
-          RefreshSchedule: S.optional(__S(11, __c1, 3)),
+          Widgets: S.optional(__S(515, __c64, 3)),
+          RefreshSchedule: S.optional(__S(513, __c64, 1)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastRefreshId: S.optional(S.String),
@@ -5298,7 +5000,11 @@ function __c6(j: number): any {
           TerminationProtectionEnabled: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({ identifier: "GetDashboardResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TrailName: S.optional(S.String), EventDataStore: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5308,57 +5014,61 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Type: S.String, Equals: __S(12, __c1, 4) })).annotate({
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Type: S.String, Equals: __S(528, __c66, 0) })).annotate({
         identifier: "ContextKeySelector",
       });
     case 1:
-      return S.Array(__S(56, __c7, 0));
+      return S.Array(__S(72, __c9, 0));
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Templates: __S(58, __c7, 2), EventCategory: S.String }),
+        S.Struct({ Templates: __S(64, __c8, 0), EventCategory: S.String }),
       ).annotate({ identifier: "AggregationConfiguration" });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           TrailARN: S.optional(S.String),
           EventDataStoreArn: S.optional(S.String),
           MaxEventSize: S.optional(S.String),
-          ContextKeySelectors: S.optional(__S(57, __c7, 1)),
-          AggregationConfigurations: S.optional(__S(60, __c7, 4)),
+          ContextKeySelectors: S.optional(__S(73, __c9, 1)),
+          AggregationConfigurations: S.optional(__S(75, __c9, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetEventConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetEventDataStoreRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Name: S.String, Type: S.String })).annotate({
         identifier: "PartitionKey",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
           MultiRegionEnabled: S.optional(S.Boolean),
           OrganizationEnabled: S.optional(S.Boolean),
           RetentionPeriod: S.optional(S.Number),
@@ -5369,47 +5079,55 @@ function __c8(j: number): any {
           BillingMode: S.optional(S.String),
           FederationStatus: S.optional(S.String),
           FederationRoleArn: S.optional(S.String),
-          PartitionKeys: S.optional(__S(64, __c8, 0)),
+          PartitionKeys: S.optional(__S(82, __c10, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetEventDataStoreResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TrailName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetEventSelectorsRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Values: S.optional(__S(12, __c1, 4)) }),
+        S.Struct({ Type: S.optional(S.String), Values: S.optional(__S(528, __c66, 0)) }),
       ).annotate({ identifier: "DataResource" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ReadWriteType: S.optional(S.String),
           IncludeManagementEvents: S.optional(S.Boolean),
-          DataResources: S.optional(__S(68, __c8, 4)),
-          ExcludeManagementEventSources: S.optional(__S(12, __c1, 4)),
+          DataResources: S.optional(__S(97, __c12, 1)),
+          ExcludeManagementEventSources: S.optional(__S(528, __c66, 0)),
         }),
       ).annotate({ identifier: "EventSelector" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(98, __c12, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           TrailARN: S.optional(S.String),
-          EventSelectors: S.optional(__S(70, __c8, 6)),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          EventSelectors: S.optional(__S(99, __c12, 3)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetEventSelectorsResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5420,16 +5138,38 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          ImportId: S.optional(S.String),
+          Destinations: S.optional(__S(528, __c66, 0)),
+          ImportSource: S.optional(__S(113, __c14, 1)),
+          StartEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ImportStatus: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ImportStatistics: S.optional(__S(120, __c15, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetImportResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           S3LocationUri: S.String,
           S3BucketRegion: S.String,
           S3BucketAccessRoleArn: S.String,
         }),
       ).annotate({ identifier: "S3ImportSource" });
-    case 2:
-      return S.suspend(() => S.Struct({ S3: __S(73, __c9, 1) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ S3: __S(112, __c14, 0) })).annotate({
         identifier: "ImportSource",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PrefixesFound: S.optional(S.Number),
@@ -5439,21 +5179,11 @@ function __c9(j: number): any {
           FailedEntries: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImportStatistics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ImportId: S.optional(S.String),
-          Destinations: S.optional(__S(12, __c1, 4)),
-          ImportSource: S.optional(__S(74, __c9, 2)),
-          StartEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImportStatus: S.optional(S.String),
-          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImportStatistics: S.optional(__S(75, __c9, 3)),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetImportResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TrailName: S.optional(S.String), EventDataStore: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5461,31 +5191,35 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetInsightSelectorsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          InsightType: S.optional(S.String),
-          EventCategories: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "InsightSelector" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
   }
 }
-function __c10(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          InsightType: S.optional(S.String),
+          EventCategories: S.optional(__S(64, __c8, 0)),
+        }),
+      ).annotate({ identifier: "InsightSelector" });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           TrailARN: S.optional(S.String),
-          InsightSelectors: S.optional(__S(79, __c9, 7)),
+          InsightSelectors: S.optional(__S(137, __c17, 1)),
           EventDataStoreArn: S.optional(S.String),
           InsightsDestination: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetInsightSelectorsResponse",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EventDataStore: S.optional(S.String),
@@ -5495,7 +5229,7 @@ function __c10(j: number): any {
           EventDataStoreOwnerAccountId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetQueryResultsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResultsCount: S.optional(S.Number),
@@ -5503,27 +5237,35 @@ function __c10(j: number): any {
           BytesScanned: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryStatistics" });
+    case 2:
+      return S.Array(__S(504, __c63, 0));
     case 3:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(146, __c18, 2));
     case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           QueryStatus: S.optional(S.String),
-          QueryStatistics: S.optional(__S(82, __c10, 2)),
-          QueryResultRows: S.optional(__S(84, __c10, 4)),
+          QueryStatistics: S.optional(__S(145, __c18, 1)),
+          QueryResultRows: S.optional(__S(147, __c18, 3)),
           NextToken: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetQueryResultsResponse" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetResourcePolicyRequest" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -5535,7 +5277,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5544,16 +5286,20 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetTrailRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Trail: S.optional(__S(40, __c5, 0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Trail: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
         identifier: "GetTrailResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTrailStatusRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IsLogging: S.optional(S.Boolean),
@@ -5577,27 +5323,32 @@ function __c11(j: number): any {
           TimeLoggingStopped: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetTrailStatusResponse" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListChannelsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ChannelArn: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "Channel" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Channels: S.optional(__S(94, __c11, 6)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Channels: S.optional(__S(186, __c23, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5613,15 +5364,19 @@ function __c12(j: number): any {
         S.Struct({ DashboardArn: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "DashboardDetail" });
     case 2:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Dashboards: S.optional(__S(98, __c12, 2)),
+          Dashboards: S.optional(__S(194, __c24, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDashboardsResponse" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5629,14 +5384,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListEventDataStoresRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
           Name: S.optional(S.String),
           TerminationProtectionEnabled: S.optional(S.Boolean),
           Status: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
           MultiRegionEnabled: S.optional(S.Boolean),
           OrganizationEnabled: S.optional(S.Boolean),
           RetentionPeriod: S.optional(S.Number),
@@ -5644,12 +5399,12 @@ function __c12(j: number): any {
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EventDataStore" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(201, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          EventDataStores: S.optional(__S(102, __c12, 6)),
+          EventDataStores: S.optional(__S(202, __c25, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5657,7 +5412,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5680,17 +5435,21 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ImportFailureListItem" });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Failures: S.optional(__S(106, __c13, 2)),
+          Failures: S.optional(__S(210, __c26, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListImportFailuresResponse",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -5699,27 +5458,27 @@ function __c13(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListImportsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ImportId: S.optional(S.String),
           ImportStatus: S.optional(S.String),
-          Destinations: S.optional(__S(12, __c1, 4)),
+          Destinations: S.optional(__S(528, __c66, 0)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ImportsListItem" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(217, __c27, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Imports: S.optional(__S(110, __c13, 6)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Imports: S.optional(__S(218, __c27, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListImportsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -5728,20 +5487,24 @@ function __c14(j: number): any {
         S.Struct({
           InsightSource: S.String,
           DataType: S.String,
-          Dimensions: S.optional(__S(112, __c14, 0)),
+          Dimensions: S.optional(__S(224, __c28, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListInsightsDataRequest" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceType: S.optional(S.String), ResourceName: S.optional(S.String) }),
       ).annotate({ identifier: "Resource" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(232, __c29, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EventId: S.optional(S.String),
@@ -5751,19 +5514,23 @@ function __c14(j: number): any {
           EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventSource: S.optional(S.String),
           Username: S.optional(S.String),
-          Resources: S.optional(__S(115, __c14, 3)),
+          Resources: S.optional(__S(233, __c29, 1)),
           CloudTrailEvent: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(234, __c29, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Events: S.optional(__S(117, __c14, 5)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Events: S.optional(__S(235, __c29, 3)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListInsightsDataResponse" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TrailName: S.optional(S.String),
@@ -5781,15 +5548,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListInsightsMetricDataRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
     case 1:
-      return S.Array(S.Number);
+      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
     case 2:
+      return S.Array(S.Number);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           TrailARN: S.optional(S.String),
@@ -5797,14 +5560,18 @@ function __c15(j: number): any {
           EventName: S.optional(S.String),
           InsightType: S.optional(S.String),
           ErrorCode: S.optional(S.String),
-          Timestamps: S.optional(__S(120, __c15, 0)),
-          Values: S.optional(__S(121, __c15, 1)),
+          Timestamps: S.optional(__S(241, __c30, 1)),
+          Values: S.optional(__S(242, __c30, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListInsightsMetricDataResponse",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5812,7 +5579,7 @@ function __c15(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPublicKeysRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(T.Blob),
@@ -5821,16 +5588,20 @@ function __c15(j: number): any {
           Fingerprint: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicKey" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(249, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          PublicKeyList: S.optional(__S(125, __c15, 5)),
+          PublicKeyList: S.optional(__S(250, __c31, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListPublicKeysResponse" });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EventDataStore: S.String,
@@ -5841,11 +5612,7 @@ function __c15(j: number): any {
           QueryStatus: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListQueriesRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           QueryId: S.optional(S.String),
@@ -5853,44 +5620,48 @@ function __c16(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Query" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
+      return S.Array(__S(257, __c32, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Queries: S.optional(__S(129, __c16, 1)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Queries: S.optional(__S(258, __c32, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListQueriesResponse" });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceIdList: __S(12, __c1, 4), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ ResourceIdList: __S(528, __c66, 0), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.optional(S.String), TagsList: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ ResourceId: S.optional(S.String), TagsList: S.optional(__S(457, __c57, 1)) }),
       ).annotate({ identifier: "ResourceTag" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(265, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceTagList: S.optional(__S(133, __c16, 5)),
+          ResourceTagList: S.optional(__S(266, __c33, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListTagsResponse" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTrailsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TrailARN: S.optional(S.String),
@@ -5898,24 +5669,28 @@ function __c17(j: number): any {
           HomeRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrailInfo" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(273, __c34, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Trails: S.optional(__S(137, __c17, 1)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Trails: S.optional(__S(274, __c34, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListTrailsResponse" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AttributeKey: S.String, AttributeValue: S.String }),
       ).annotate({ identifier: "LookupAttribute" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(280, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          LookupAttributes: S.optional(__S(140, __c17, 4)),
+          LookupAttributes: S.optional(__S(281, __c35, 1)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventCategory: S.optional(S.String),
@@ -5923,48 +5698,64 @@ function __c17(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "LookupEventsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TrailName: S.optional(S.String),
-          EventDataStore: S.optional(S.String),
-          MaxEventSize: S.optional(S.String),
-          ContextKeySelectors: S.optional(__S(57, __c7, 1)),
-          AggregationConfigurations: S.optional(__S(60, __c7, 4)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutEventConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TrailName: S.String,
-          EventSelectors: S.optional(__S(70, __c8, 6)),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutEventSelectorsRequest" });
   }
 }
-function __c18(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           TrailName: S.optional(S.String),
-          InsightSelectors: __S(79, __c9, 7),
+          EventDataStore: S.optional(S.String),
+          MaxEventSize: S.optional(S.String),
+          ContextKeySelectors: S.optional(__S(73, __c9, 1)),
+          AggregationConfigurations: S.optional(__S(75, __c9, 3)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutEventConfigurationRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TrailName: S.String,
+          EventSelectors: S.optional(__S(99, __c12, 3)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutEventSelectorsRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TrailName: S.optional(S.String),
+          InsightSelectors: __S(137, __c17, 1),
           EventDataStore: S.optional(S.String),
           InsightsDestination: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutInsightSelectorsRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, ResourcePolicy: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MemberAccountId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5972,13 +5763,21 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RegisterOrganizationDelegatedAdminRequest",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagsList: __S(1, __c0, 1) }).pipe(
+        S.Struct({ ResourceId: S.String, TagsList: __S(457, __c57, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RemoveTagsRequest" });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5986,13 +5785,13 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RestoreEventDataStoreRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
           MultiRegionEnabled: S.optional(S.Boolean),
           OrganizationEnabled: S.optional(S.Boolean),
           RetentionPeriod: S.optional(S.Number),
@@ -6005,7 +5804,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RestoreEventDataStoreResponse",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SearchPhrase: S.String,
@@ -6015,7 +5818,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SearchSampleQueriesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -6026,35 +5829,39 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SearchSampleQueriesSearchResult",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(345, __c43, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          SearchResults: S.optional(__S(152, __c19, 0)),
+          SearchResults: S.optional(__S(346, __c43, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "SearchSampleQueriesResponse",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DashboardId: S.String,
-          QueryParameterValues: S.optional(__S(13, __c1, 5)),
+          QueryParameterValues: S.optional(__S(504, __c63, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDashboardRefreshRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ RefreshId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "StartDashboardRefreshResponse",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6062,22 +5869,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "StartEventDataStoreIngestionRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Destinations: S.optional(__S(12, __c1, 4)),
-          ImportSource: S.optional(__S(74, __c9, 2)),
+          Destinations: S.optional(__S(528, __c66, 0)),
+          ImportSource: S.optional(__S(113, __c14, 1)),
           StartEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImportId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartImportRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ImportId: S.optional(S.String),
-          Destinations: S.optional(__S(12, __c1, 4)),
-          ImportSource: S.optional(__S(74, __c9, 2)),
+          Destinations: S.optional(__S(528, __c66, 0)),
+          ImportSource: S.optional(__S(113, __c14, 1)),
           StartEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImportStatus: S.optional(S.String),
@@ -6085,7 +5896,11 @@ function __c19(j: number): any {
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "StartImportResponse" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6093,7 +5908,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "StartLoggingRequest" });
   }
 }
-function __c20(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6101,7 +5916,7 @@ function __c20(j: number): any {
           QueryStatement: S.optional(S.String),
           DeliveryS3Uri: S.optional(S.String),
           QueryAlias: S.optional(S.String),
-          QueryParameters: S.optional(__S(12, __c1, 4)),
+          QueryParameters: S.optional(__S(528, __c66, 0)),
           EventDataStoreOwnerAccountId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartQueryRequest" });
@@ -6112,7 +5927,11 @@ function __c20(j: number): any {
           EventDataStoreOwnerAccountId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "StartQueryResponse" });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6120,59 +5939,71 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "StopEventDataStoreIngestionRequest",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ImportId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopImportRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ImportId: S.optional(S.String),
-          ImportSource: S.optional(__S(74, __c9, 2)),
-          Destinations: S.optional(__S(12, __c1, 4)),
+          ImportSource: S.optional(__S(113, __c14, 1)),
+          Destinations: S.optional(__S(528, __c66, 0)),
           ImportStatus: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImportStatistics: S.optional(__S(75, __c9, 3)),
+          ImportStatistics: S.optional(__S(120, __c15, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "StopImportResponse" });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopLoggingRequest" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Channel: S.String,
-          Destinations: S.optional(__S(7, __c0, 7)),
+          Destinations: S.optional(__S(489, __c61, 1)),
           Name: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateChannelRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           Name: S.optional(S.String),
           Source: S.optional(S.String),
-          Destinations: S.optional(__S(7, __c0, 7)),
+          Destinations: S.optional(__S(489, __c61, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateChannelResponse" });
   }
 }
-function __c21(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DashboardId: S.String,
-          Widgets: S.optional(__S(15, __c1, 7)),
-          RefreshSchedule: S.optional(__S(11, __c1, 3)),
+          Widgets: S.optional(__S(521, __c65, 1)),
+          RefreshSchedule: S.optional(__S(513, __c64, 1)),
           TerminationProtectionEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDashboardRequest" });
@@ -6182,19 +6013,23 @@ function __c21(j: number): any {
           DashboardArn: S.optional(S.String),
           Name: S.optional(S.String),
           Type: S.optional(S.String),
-          Widgets: S.optional(__S(18, __c2, 2)),
-          RefreshSchedule: S.optional(__S(11, __c1, 3)),
+          Widgets: S.optional(__S(515, __c64, 3)),
+          RefreshSchedule: S.optional(__S(513, __c64, 1)),
           TerminationProtectionEnabled: S.optional(S.Boolean),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateDashboardResponse" });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EventDataStore: S.String,
           Name: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
           MultiRegionEnabled: S.optional(S.Boolean),
           OrganizationEnabled: S.optional(S.Boolean),
           RetentionPeriod: S.optional(S.Number),
@@ -6205,13 +6040,13 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateEventDataStoreRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventDataStoreArn: S.optional(S.String),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          AdvancedEventSelectors: S.optional(__S(23, __c2, 7)),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
           MultiRegionEnabled: S.optional(S.Boolean),
           OrganizationEnabled: S.optional(S.Boolean),
           RetentionPeriod: S.optional(S.Number),
@@ -6226,7 +6061,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateEventDataStoreResponse",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -6245,7 +6084,394 @@ function __c21(j: number): any {
       ).annotate({ identifier: "UpdateTrailRequest" });
   }
 }
-
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, TagsList: __S(457, __c57, 1) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AddTagsRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(456, __c57, 0));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddTagsResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EventDataStore: S.optional(S.String),
+          QueryId: S.String,
+          EventDataStoreOwnerAccountId: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CancelQueryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          QueryId: S.String,
+          QueryStatus: S.String,
+          EventDataStoreOwnerAccountId: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CancelQueryResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Source: S.String,
+          Destinations: __S(489, __c61, 1),
+          Tags: S.optional(__S(457, __c57, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Source: S.optional(S.String),
+          Destinations: S.optional(__S(489, __c61, 1)),
+          Tags: S.optional(__S(457, __c57, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateChannelResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Type: S.String, Location: S.String })).annotate({
+        identifier: "Destination",
+      });
+    case 1:
+      return S.Array(__S(488, __c61, 0));
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          RefreshSchedule: S.optional(__S(513, __c64, 1)),
+          TagsList: S.optional(__S(457, __c57, 1)),
+          TerminationProtectionEnabled: S.optional(S.Boolean),
+          Widgets: S.optional(__S(521, __c65, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DashboardArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          Widgets: S.optional(__S(515, __c64, 3)),
+          TagsList: S.optional(__S(457, __c57, 1)),
+          RefreshSchedule: S.optional(__S(513, __c64, 1)),
+          TerminationProtectionEnabled: S.optional(S.Boolean),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateDashboardResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Unit: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "RefreshScheduleFrequency" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Frequency: S.optional(__S(512, __c64, 0)),
+          Status: S.optional(S.String),
+          TimeOfDay: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RefreshSchedule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          QueryAlias: S.optional(S.String),
+          QueryStatement: S.optional(S.String),
+          QueryParameters: S.optional(__S(528, __c66, 0)),
+          ViewProperties: S.optional(__S(504, __c63, 0)),
+        }),
+      ).annotate({ identifier: "Widget" });
+    case 3:
+      return S.Array(__S(514, __c64, 2));
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QueryStatement: S.String,
+          QueryParameters: S.optional(__S(528, __c66, 0)),
+          ViewProperties: __S(504, __c63, 0),
+        }),
+      ).annotate({ identifier: "RequestWidget" });
+    case 1:
+      return S.Array(__S(520, __c65, 0));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
+          MultiRegionEnabled: S.optional(S.Boolean),
+          OrganizationEnabled: S.optional(S.Boolean),
+          RetentionPeriod: S.optional(S.Number),
+          TerminationProtectionEnabled: S.optional(S.Boolean),
+          TagsList: S.optional(__S(457, __c57, 1)),
+          KmsKeyId: S.optional(S.String),
+          StartIngestion: S.optional(S.Boolean),
+          BillingMode: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEventDataStoreRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EventDataStoreArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
+          MultiRegionEnabled: S.optional(S.Boolean),
+          OrganizationEnabled: S.optional(S.Boolean),
+          RetentionPeriod: S.optional(S.Number),
+          TerminationProtectionEnabled: S.optional(S.Boolean),
+          TagsList: S.optional(__S(457, __c57, 1)),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          KmsKeyId: S.optional(S.String),
+          BillingMode: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateEventDataStoreResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Field: S.String,
+          Equals: S.optional(__S(528, __c66, 0)),
+          StartsWith: S.optional(__S(528, __c66, 0)),
+          EndsWith: S.optional(__S(528, __c66, 0)),
+          NotEquals: S.optional(__S(528, __c66, 0)),
+          NotStartsWith: S.optional(__S(528, __c66, 0)),
+          NotEndsWith: S.optional(__S(528, __c66, 0)),
+        }),
+      ).annotate({ identifier: "AdvancedFieldSelector" });
+    case 1:
+      return S.Array(__S(544, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), FieldSelectors: __S(545, __c68, 1) }),
+      ).annotate({ identifier: "AdvancedEventSelector" });
+    case 3:
+      return S.Array(__S(546, __c68, 2));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          S3BucketName: S.String,
+          S3KeyPrefix: S.optional(S.String),
+          SnsTopicName: S.optional(S.String),
+          IncludeGlobalServiceEvents: S.optional(S.Boolean),
+          IsMultiRegionTrail: S.optional(S.Boolean),
+          EnableLogFileValidation: S.optional(S.Boolean),
+          CloudWatchLogsLogGroupArn: S.optional(S.String),
+          CloudWatchLogsRoleArn: S.optional(S.String),
+          KmsKeyId: S.optional(S.String),
+          IsOrganizationTrail: S.optional(S.Boolean),
+          TagsList: S.optional(__S(457, __c57, 1)),
+          RecursiveLogging: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTrailRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          S3BucketName: S.optional(S.String),
+          S3KeyPrefix: S.optional(S.String),
+          SnsTopicName: S.optional(S.String),
+          SnsTopicARN: S.optional(S.String),
+          IncludeGlobalServiceEvents: S.optional(S.Boolean),
+          IsMultiRegionTrail: S.optional(S.Boolean),
+          TrailARN: S.optional(S.String),
+          LogFileValidationEnabled: S.optional(S.Boolean),
+          CloudWatchLogsLogGroupArn: S.optional(S.String),
+          CloudWatchLogsRoleArn: S.optional(S.String),
+          KmsKeyId: S.optional(S.String),
+          IsOrganizationTrail: S.optional(S.Boolean),
+          RecursiveLogging: S.optional(S.Boolean),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateTrailResponse" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Channel: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteChannelRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DashboardId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDashboardRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteDashboardResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EventDataStore: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEventDataStoreRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteEventDataStoreResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteTrailRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DelegatedAdminAccountId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterOrganizationDelegatedAdminRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EventDataStore: S.optional(S.String),
+          QueryId: S.optional(S.String),
+          QueryAlias: S.optional(S.String),
+          RefreshId: S.optional(S.String),
+          EventDataStoreOwnerAccountId: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeQueryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EventsMatched: S.optional(S.Number),
+          EventsScanned: S.optional(S.Number),
+          BytesScanned: S.optional(S.Number),
+          ExecutionTimeInMillis: S.optional(S.Number),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "QueryStatisticsForDescribeQuery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          QueryId: S.optional(S.String),
+          QueryString: S.optional(S.String),
+          QueryStatus: S.optional(S.String),
+          QueryStatistics: S.optional(__S(625, __c78, 1)),
+          ErrorMessage: S.optional(S.String),
+          DeliveryS3Uri: S.optional(S.String),
+          DeliveryStatus: S.optional(S.String),
+          Prompt: S.optional(S.String),
+          EventDataStoreOwnerAccountId: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeQueryResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

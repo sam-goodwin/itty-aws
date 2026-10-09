@@ -881,8 +881,8 @@ export const checkUserAccess: API.OperationMethod<
   CheckUserAccessError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CheckUserAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckUserAccessResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<CheckUserAccessRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<CheckUserAccessResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -896,8 +896,8 @@ export const createOauthGrant: API.OperationMethod<
   CreateOauthGrantError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateOauthGrantRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<OauthGrant>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateOauthGrantRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<OauthGrant>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -911,8 +911,8 @@ export const createPasskey: API.OperationMethod<
   CreatePasskeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreatePasskeyRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Passkey>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreatePasskeyRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<Passkey>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const createPasskeyChallenge: API.OperationMethod<
   CreatePasskeyChallengeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreatePasskeyChallengeRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreatePasskeyChallengeResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreatePasskeyChallengeRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<CreatePasskeyChallengeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const deletePasskey: API.OperationMethod<
   DeletePasskeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeletePasskeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeletePasskeyResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeletePasskeyRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<DeletePasskeyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -957,8 +957,8 @@ export type GetUserError = NotFound | WhopOpError;
 /** Retrieve User Retrieves a user by `user_` tag or username, or the authenticated user with the reserved id `me`. Profiles include linked social accounts -- reading your own profile returns every linked account, other profiles only what is public on Whop (the primary Discord and the X account). The self-only fields are populated only when the id is `me`: `email` (email-read scope), `staff` (Whop staff only, staff-read scope), `balance` and `earnings_usd` (balance-read scope), and the opt-in `balance_history`. They are always `null` when addressing a user by tag or username. */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(11, __c1, 3) as any as S.Schema<GetUserRequest>,
-    output: __S(46, __c5, 6) as any as S.Schema<User>,
+    input: __S(672, __c21, 0) as any as S.Schema<GetUserRequest>,
+    output: __S(738, __c23, 2) as any as S.Schema<User>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -972,8 +972,8 @@ export const getUserPreferences: API.OperationMethod<
   GetUserPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetUserPreferencesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UserPreferences>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUserPreferencesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UserPreferences>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -989,8 +989,8 @@ export const listOauthGrants: API.PaginatedOperationMethod<
   OauthGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(49, __c6, 1) as any as S.Schema<ListOauthGrantsRequest>,
-    output: __S(52, __c6, 4) as any as S.Schema<ListOauthGrantsResponse>,
+    input: __S(64, __c2, 0) as any as S.Schema<ListOauthGrantsRequest>,
+    output: __S(66, __c2, 2) as any as S.Schema<ListOauthGrantsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1016,8 +1016,8 @@ export const listPasskeys: API.PaginatedOperationMethod<
   Passkey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(53, __c6, 5) as any as S.Schema<ListPasskeysRequest>,
-    output: __S(55, __c6, 7) as any as S.Schema<ListPasskeysResponse>,
+    input: __S(128, __c4, 0) as any as S.Schema<ListPasskeysRequest>,
+    output: __S(130, __c4, 2) as any as S.Schema<ListPasskeysResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1043,8 +1043,8 @@ export const listUserNotificationExperiencePreferences: API.PaginatedOperationMe
   ExperienceNotificationPreference
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(56, __c7, 0) as any as S.Schema<ListUserNotificationExperiencePreferencesRequest>,
-    output: __S(60, __c7, 4) as any as S.Schema<ListUserNotificationExperiencePreferencesResponse>,
+    input: __S(160, __c5, 0) as any as S.Schema<ListUserNotificationExperiencePreferencesRequest>,
+    output: __S(163, __c5, 3) as any as S.Schema<ListUserNotificationExperiencePreferencesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1070,8 +1070,8 @@ export const listUserNotificationTopicPreferences: API.PaginatedOperationMethod<
   UserNotificationPreference
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(61, __c7, 5) as any as S.Schema<ListUserNotificationTopicPreferencesRequest>,
-    output: __S(64, __c8, 0) as any as S.Schema<ListUserNotificationTopicPreferencesResponse>,
+    input: __S(224, __c7, 0) as any as S.Schema<ListUserNotificationTopicPreferencesRequest>,
+    output: __S(227, __c7, 3) as any as S.Schema<ListUserNotificationTopicPreferencesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1095,8 +1095,8 @@ export const listUserRecommendedActions: API.OperationMethod<
   ListUserRecommendedActionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListUserRecommendedActionsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListUserRecommendedActionsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListUserRecommendedActionsRequest>,
+  output: __S(259, __c8, 3) as any as S.Schema<ListUserRecommendedActionsResponse>,
   errors: [Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1112,8 @@ export const listUsers: API.PaginatedOperationMethod<
   User
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(69, __c8, 5) as any as S.Schema<ListUsersRequest>,
-    output: __S(71, __c8, 7) as any as S.Schema<ListUsersResponse>,
+    input: __S(288, __c9, 0) as any as S.Schema<ListUsersRequest>,
+    output: __S(290, __c9, 2) as any as S.Schema<ListUsersResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1137,8 +1137,8 @@ export const setUserNotificationPreferences: API.OperationMethod<
   SetUserNotificationPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<SetUserNotificationPreferencesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<SetUserNotificationPreferencesResponse>,
+  input: __S(323, __c10, 3) as any as S.Schema<SetUserNotificationPreferencesRequest>,
+  output: __S(326, __c10, 6) as any as S.Schema<SetUserNotificationPreferencesResponse>,
   errors: [BadRequest, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1152,8 +1152,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UpdateUserRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<User>,
+  input: __S(353, __c11, 1) as any as S.Schema<UpdateUserRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<User>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1167,8 @@ export const updateUserPreferences: API.OperationMethod<
   UpdateUserPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateUserPreferencesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UserPreferences>,
+  input: __S(384, __c12, 0) as any as S.Schema<UpdateUserPreferencesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UserPreferences>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1179,449 +1179,13 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          resource_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{id}/access/{resource_id}", code: 200 })),
-      ).annotate({ identifier: "CheckUserAccessRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          access_level: S.String,
-          has_access: S.Boolean,
-        }),
-      ).annotate({ identifier: "CheckUserAccessResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String),
-          client_id: S.String,
-          code_challenge: S.String,
-          code_challenge_method: S.String,
-          consent_shown: S.optional(S.Boolean),
-          nonce: S.optional(S.String),
-          redirect_uri: S.String,
-          requested_scopes: __S(2, __c0, 2),
-          response_type: S.optional(S.String),
-          state: S.optional(S.String),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/users/me/oauth_grants", code: 200 })),
-      ).annotate({ identifier: "CreateOauthGrantRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.NullOr(S.String),
-          app_id: S.String,
-          authorized_at: S.NullOr(S.String),
-          created_at: S.String,
-          id: S.String,
-          redirect_url: S.optional(S.String),
-          revoked_at: S.NullOr(S.String),
-          scopes: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "OauthGrant" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attestation_object: S.String,
-          client_data_json: S.String,
-          credential_id: S.String,
-          nickname: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/users/me/passkeys", code: 200 })),
-      ).annotate({ identifier: "CreatePasskeyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          credential_id: S.String,
-          id: S.String,
-          last_used_at: S.NullOr(S.String),
-          nickname: S.String,
-        }),
-      ).annotate({ identifier: "Passkey" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          challenge_type: S.String,
-          passkey_id: S.optional(S.String),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/users/me/passkeys/challenge", code: 200 })),
-      ).annotate({
-        identifier: "CreatePasskeyChallengeRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          challenge: S.String,
-        }),
-      ).annotate({
-        identifier: "CreatePasskeyChallengeResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          authenticator_data: S.String,
-          client_data_json: S.String,
-          signature: S.String,
-        }).pipe(T.Http({ method: "DELETE", uri: "/users/me/passkeys/{id}", code: 200 })),
-      ).annotate({ identifier: "DeletePasskeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Boolean,
-          id: S.String,
-        }),
-      ).annotate({ identifier: "DeletePasskeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          include_trading: S.optional(S.Boolean.pipe(T.Query())),
-          account_id: S.optional(S.String.pipe(T.Query())),
-          include_balance: S.optional(S.Boolean.pipe(T.Query())),
-          include_balance_history: S.optional(S.Boolean.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
-          time_zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{id}", code: 200 })),
-      ).annotate({ identifier: "GetUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          balance_usd: S.String,
-          id: S.String,
-          logo_url: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "UserBalanceBusiness" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          balance: S.Number,
-          balance_usd: S.Number,
-          currency: S.String,
-          in_transit_balance_usd: S.Number,
-          pending_balance_usd: S.Number,
-          price_usd: S.NullOr(S.Number),
-          reserve_balance_usd: S.Number,
-          total_withdrawable_balance: S.Number,
-        }),
-      ).annotate({ identifier: "UserBalanceCash" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          date: S.String,
-        }),
-      ).annotate({ identifier: "AccountBalanceSettlement" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          available: S.String,
-          in_transit: S.String,
-          pending: S.String,
-          pending_settlements: __S(17, __c2, 1),
-          reserve: S.String,
-        }),
-      ).annotate({ identifier: "AccountBalanceBreakdown" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          balance: S.String,
-          breakdown: __S(18, __c2, 2),
-          icon_url: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          price_usd: S.NullOr(S.Number),
-          symbol: S.String,
-          value_usd: S.Number,
-        }),
-      ).annotate({ identifier: "UserBalanceToken" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          businesses: __S(13, __c1, 5),
-          businesses_total_usd: S.String,
-          cash: __S(15, __c1, 7),
-          cash_usd: S.String,
-          crypto: __S(20, __c2, 4),
-          crypto_usd: S.String,
-          pending_usd: S.String,
-          total_usd: S.String,
-          treasury_pending_usd: S.String,
-        }),
-      ).annotate({ identifier: "UserBalance" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          t: S.Number,
-          v: S.Number,
-        }),
-      ).annotate({ identifier: "UserBalanceHistoryPoint" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(23, __c2, 7),
-          last: S.Number,
-          max: S.Number,
-          min: S.Number,
-        }),
-      ).annotate({ identifier: "UserBalanceHistory" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({ identifier: "UserBanner" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          last_24_hours: S.String,
-          last_30_days: S.String,
-          last_7_days: S.String,
-          lifetime: S.String,
-        }),
-      ).annotate({ identifier: "UserEarningsAmount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          first_earned_at: S.NullOr(S.String),
-          owned_accounts: __S(26, __c3, 2),
-          partners: __S(26, __c3, 2),
-          personal: __S(26, __c3, 2),
-          total: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "UserEarnings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          platform: S.String,
-          profile_picture_url: S.NullOr(S.String),
-          username: S.NullOr(S.String),
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "SocialAccountParent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.NullOr(S.String),
-          external_id: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          parent_social_account: S.NullOr(__S(28, __c3, 4)),
-          platform: S.String,
-          profile_picture_url: S.NullOr(S.String),
-          scopes: __S(2, __c0, 2),
-          url: S.NullOr(S.String),
-          username: S.NullOr(S.String),
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "SocialAccount" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          admin: S.Boolean,
-          investigation_access: S.Boolean,
-          manager: S.Boolean,
-          support: S.Boolean,
-        }),
-      ).annotate({ identifier: "UserStaffAccess" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          currency: S.String,
-          decimals: S.Number,
-          display_decimals: S.Number,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account_value: __S(32, __c4, 0),
-          total_margin_used: __S(32, __c4, 0),
-          total_position_notional: __S(32, __c4, 0),
-          total_raw_usd: __S(32, __c4, 0),
-          withdrawable: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "TradingMarginSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "TradingWebsocketSubscription",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.String,
-          builder_fee_bps: S.NullOr(S.String),
-          margin_summary: __S(33, __c4, 1),
-          websocket_subscriptions: __S(35, __c4, 3),
-          websocket_url: S.String,
-        }),
-      ).annotate({
-        identifier: "TradingHyperliquidAccount",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reduce_only: S.NullOr(S.Boolean),
-          trigger_price: S.NullOr(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "TradingHyperliquidOrder" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          client_order_id: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          hyperliquid: S.NullOr(__S(37, __c4, 5)),
-          id: S.String,
-          market: S.String,
-          object: S.String,
-          order_type: S.String,
-          original_size: S.NullOr(S.String),
-          price: __S(32, __c4, 0),
-          provider_order_id: S.NullOr(S.String),
-          side: S.String,
-          size: S.String,
-          status: S.String,
-          status_updated_at: S.NullOr(S.String),
-          time_in_force: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TradingOrder" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          all_time: S.NullOr(__S(32, __c4, 0)),
-          since_change: S.NullOr(__S(32, __c4, 0)),
-          since_open: S.NullOr(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "TradingCumulativeFunding" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.Number,
-        }),
-      ).annotate({ identifier: "TradingPositionLeverage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cumulative_funding: __S(40, __c5, 0),
-          leverage: __S(41, __c5, 1),
-          liquidation_price: S.NullOr(__S(32, __c4, 0)),
-          margin_used: __S(32, __c4, 0),
-          return_on_equity: S.String,
-        }),
-      ).annotate({
-        identifier: "TradingHyperliquidPosition",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entry_price: S.NullOr(__S(32, __c4, 0)),
-          hyperliquid: S.NullOr(__S(42, __c5, 2)),
-          id: S.String,
-          market: S.String,
-          object: S.String,
-          position_value: __S(32, __c4, 0),
-          side: S.String,
-          size: S.String,
-          unrealized_pnl: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "TradingPosition" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.NullOr(S.String),
-          hyperliquid: S.NullOr(__S(36, __c4, 4)),
-          id: S.String,
-          object: S.String,
-          open_orders: __S(39, __c4, 7),
-          positions: __S(44, __c5, 4),
-          provider: S.String,
-          user_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TradingAccount" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          balance: S.NullOr(__S(21, __c2, 5)),
-          balance_history: S.NullOr(__S(24, __c3, 0)),
-          banner: S.NullOr(__S(25, __c3, 1)),
-          bio: S.NullOr(S.String),
-          created_at: S.String,
-          earnings_usd: S.NullOr(__S(27, __c3, 3)),
-          email: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          profile_picture: __S(25, __c3, 1),
-          social_accounts: __S(30, __c3, 6),
-          staff: S.NullOr(__S(31, __c3, 7)),
-          trading: S.NullOr(__S(45, __c5, 5)),
-          username: S.String,
-          verification: S.Unknown,
-          whop_partner_enabled_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-    case 7:
-      return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me/preferences", code: 200 })),
       ).annotate({
         identifier: "GetUserPreferencesRequest",
       });
   }
 }
-function __c6(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1632,7 +1196,11 @@ function __c6(j: number): any {
           terms_accepted_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UserPreferences" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.optional(S.String.pipe(T.Query())),
@@ -1644,9 +1212,20 @@ function __c6(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/me/oauth_grants", code: 200 })),
       ).annotate({ identifier: "ListOauthGrantsRequest" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
     case 2:
-      return S.Array(__S(4, __c0, 4));
-    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(65, __c2, 1),
+          page_info: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "ListOauthGrantsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1657,14 +1236,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListOauthGrantsResponsePageInfo",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(50, __c6, 2),
-          page_info: __S(51, __c6, 3),
-        }),
-      ).annotate({ identifier: "ListOauthGrantsResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           first: S.optional(S.Number.pipe(T.Query())),
@@ -1675,18 +1251,18 @@ function __c6(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/me/passkeys", code: 200 })),
       ).annotate({ identifier: "ListPasskeysRequest" });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(54, __c6, 6),
-          page_info: __S(51, __c6, 3),
+          data: __S(129, __c4, 1),
+          page_info: __S(96, __c3, 0),
         }),
       ).annotate({ identifier: "ListPasskeysResponse" });
   }
 }
-function __c7(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1706,6 +1282,31 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          level: S.String,
+          object: S.String,
+          scope: __S(192, __c6, 0),
+        }),
+      ).annotate({
+        identifier: "ExperienceNotificationPreference",
+      });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(162, __c5, 2),
+          page_info: __S(96, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "ListUserNotificationExperiencePreferencesResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           account_id: S.NullOr(S.String),
           channel: S.NullOr(S.String),
           experience_id: S.NullOr(S.String),
@@ -1715,28 +1316,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "NotificationPreferenceScope",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          level: S.String,
-          object: S.String,
-          scope: __S(57, __c7, 1),
-        }),
-      ).annotate({
-        identifier: "ExperienceNotificationPreference",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(59, __c7, 3),
-          page_info: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "ListUserNotificationExperiencePreferencesResponse",
-      });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String.pipe(T.Query())),
@@ -1752,21 +1336,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListUserNotificationTopicPreferencesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           id: S.String,
           level: S.String,
           object: S.String,
-          scope: __S(57, __c7, 1),
+          scope: __S(192, __c6, 0),
           updated_at: S.String,
         }),
       ).annotate({
         identifier: "UserNotificationPreference",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
+    case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(226, __c7, 2),
+          page_info: __S(96, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "ListUserNotificationTopicPreferencesResponse",
+      });
   }
 }
 function __c8(j: number): any {
@@ -1774,27 +1367,18 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(63, __c7, 7),
-          page_info: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "ListUserNotificationTopicPreferencesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/users/{id}/recommend_actions", code: 200 })),
       ).annotate({
         identifier: "ListUserRecommendedActionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
           account_name: S.NullOr(S.String),
           action: S.String,
-          blocked_capabilities: __S(2, __c0, 2),
+          blocked_capabilities: __S(512, __c16, 0),
           cta: S.String,
           cta_label: S.String,
           description: S.String,
@@ -1805,17 +1389,21 @@ function __c8(j: number): any {
           title: S.String,
         }),
       ).annotate({ identifier: "UserRecommendedAction" });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(67, __c8, 3),
+          data: __S(258, __c8, 2),
         }),
       ).annotate({
         identifier: "ListUserRecommendedActionsResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -1825,18 +1413,18 @@ function __c8(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 6:
-      return S.Array(__S(46, __c5, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(738, __c23, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(70, __c8, 6),
-          page_info: __S(51, __c6, 3),
+          data: __S(289, __c9, 1),
+          page_info: __S(96, __c3, 0),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1854,17 +1442,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           level: S.NullOr(S.String),
-          scope: __S(72, __c9, 0),
+          scope: __S(320, __c10, 0),
         }),
       ).annotate({
         identifier: "SetUserNotificationPreferencesRequestPreferencesItem",
       });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(321, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          preferences: __S(74, __c9, 2),
+          preferences: __S(322, __c10, 2),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/me/preferences/notifications", code: 200 })),
       ).annotate({
         identifier: "SetUserNotificationPreferencesRequest",
@@ -1874,45 +1462,49 @@ function __c9(j: number): any {
         S.Struct({
           level: S.NullOr(S.String),
           object: S.String,
-          scope: __S(57, __c7, 1),
+          scope: __S(192, __c6, 0),
         }),
       ).annotate({
         identifier: "NotificationPreferenceState",
       });
     case 5:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(324, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(77, __c9, 5),
+          data: __S(325, __c10, 5),
         }),
       ).annotate({
         identifier: "SetUserNotificationPreferencesResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           direct_upload_id: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateUserRequestBanner" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          banner: S.optional(S.NullOr(__S(79, __c9, 7))),
+          banner: S.optional(S.NullOr(__S(352, __c11, 0))),
           bio: S.optional(S.String),
           name: S.optional(S.String),
-          profile_picture: S.optional(__S(79, __c9, 7)),
+          profile_picture: S.optional(__S(352, __c11, 0)),
           username: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bounty_worker_onboarding_dismissed: S.optional(S.Boolean),
@@ -1924,7 +1516,466 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          resource_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{id}/access/{resource_id}", code: 200 })),
+      ).annotate({ identifier: "CheckUserAccessRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_level: S.String,
+          has_access: S.Boolean,
+        }),
+      ).annotate({ identifier: "CheckUserAccessResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String),
+          client_id: S.String,
+          code_challenge: S.String,
+          code_challenge_method: S.String,
+          consent_shown: S.optional(S.Boolean),
+          nonce: S.optional(S.String),
+          redirect_uri: S.String,
+          requested_scopes: __S(512, __c16, 0),
+          response_type: S.optional(S.String),
+          state: S.optional(S.String),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/users/me/oauth_grants", code: 200 })),
+      ).annotate({ identifier: "CreateOauthGrantRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.NullOr(S.String),
+          app_id: S.String,
+          authorized_at: S.NullOr(S.String),
+          created_at: S.String,
+          id: S.String,
+          redirect_url: S.optional(S.String),
+          revoked_at: S.NullOr(S.String),
+          scopes: __S(512, __c16, 0),
+        }),
+      ).annotate({ identifier: "OauthGrant" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attestation_object: S.String,
+          client_data_json: S.String,
+          credential_id: S.String,
+          nickname: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/users/me/passkeys", code: 200 })),
+      ).annotate({ identifier: "CreatePasskeyRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          credential_id: S.String,
+          id: S.String,
+          last_used_at: S.NullOr(S.String),
+          nickname: S.String,
+        }),
+      ).annotate({ identifier: "Passkey" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          challenge_type: S.String,
+          passkey_id: S.optional(S.String),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/users/me/passkeys/challenge", code: 200 })),
+      ).annotate({
+        identifier: "CreatePasskeyChallengeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          challenge: S.String,
+        }),
+      ).annotate({
+        identifier: "CreatePasskeyChallengeResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          authenticator_data: S.String,
+          client_data_json: S.String,
+          signature: S.String,
+        }).pipe(T.Http({ method: "DELETE", uri: "/users/me/passkeys/{id}", code: 200 })),
+      ).annotate({ identifier: "DeletePasskeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Boolean,
+          id: S.String,
+        }),
+      ).annotate({ identifier: "DeletePasskeyResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          include_trading: S.optional(S.Boolean.pipe(T.Query())),
+          account_id: S.optional(S.String.pipe(T.Query())),
+          include_balance: S.optional(S.Boolean.pipe(T.Query())),
+          include_balance_history: S.optional(S.Boolean.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
+          time_zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{id}", code: 200 })),
+      ).annotate({ identifier: "GetUserRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          balance_usd: S.String,
+          id: S.String,
+          logo_url: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "UserBalanceBusiness" });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          balance: S.Number,
+          balance_usd: S.Number,
+          currency: S.String,
+          in_transit_balance_usd: S.Number,
+          pending_balance_usd: S.Number,
+          price_usd: S.NullOr(S.Number),
+          reserve_balance_usd: S.Number,
+          total_withdrawable_balance: S.Number,
+        }),
+      ).annotate({ identifier: "UserBalanceCash" });
+    case 3:
+      return S.Array(__S(706, __c22, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          date: S.String,
+        }),
+      ).annotate({ identifier: "AccountBalanceSettlement" });
+    case 5:
+      return S.Array(__S(708, __c22, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          available: S.String,
+          in_transit: S.String,
+          pending: S.String,
+          pending_settlements: __S(709, __c22, 5),
+          reserve: S.String,
+        }),
+      ).annotate({ identifier: "AccountBalanceBreakdown" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          balance: S.String,
+          breakdown: __S(710, __c22, 6),
+          icon_url: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          price_usd: S.NullOr(S.Number),
+          symbol: S.String,
+          value_usd: S.Number,
+        }),
+      ).annotate({ identifier: "UserBalanceToken" });
+    case 8:
+      return S.Array(__S(711, __c22, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          businesses: __S(705, __c22, 1),
+          businesses_total_usd: S.String,
+          cash: __S(707, __c22, 3),
+          cash_usd: S.String,
+          crypto: __S(712, __c22, 8),
+          crypto_usd: S.String,
+          pending_usd: S.String,
+          total_usd: S.String,
+          treasury_pending_usd: S.String,
+        }),
+      ).annotate({ identifier: "UserBalance" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          t: S.Number,
+          v: S.Number,
+        }),
+      ).annotate({ identifier: "UserBalanceHistoryPoint" });
+    case 11:
+      return S.Array(__S(714, __c22, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(715, __c22, 11),
+          last: S.Number,
+          max: S.Number,
+          min: S.Number,
+        }),
+      ).annotate({ identifier: "UserBalanceHistory" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({ identifier: "UserBanner" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          last_24_hours: S.String,
+          last_30_days: S.String,
+          last_7_days: S.String,
+          lifetime: S.String,
+        }),
+      ).annotate({ identifier: "UserEarningsAmount" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          first_earned_at: S.NullOr(S.String),
+          owned_accounts: __S(718, __c22, 14),
+          partners: __S(718, __c22, 14),
+          personal: __S(718, __c22, 14),
+          total: __S(718, __c22, 14),
+        }),
+      ).annotate({ identifier: "UserEarnings" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          platform: S.String,
+          profile_picture_url: S.NullOr(S.String),
+          username: S.NullOr(S.String),
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "SocialAccountParent" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.NullOr(S.String),
+          external_id: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          parent_social_account: S.NullOr(__S(720, __c22, 16)),
+          platform: S.String,
+          profile_picture_url: S.NullOr(S.String),
+          scopes: __S(512, __c16, 0),
+          url: S.NullOr(S.String),
+          username: S.NullOr(S.String),
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "SocialAccount" });
+    case 18:
+      return S.Array(__S(721, __c22, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          admin: S.Boolean,
+          investigation_access: S.Boolean,
+          manager: S.Boolean,
+          support: S.Boolean,
+        }),
+      ).annotate({ identifier: "UserStaffAccess" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          currency: S.String,
+          decimals: S.Number,
+          display_decimals: S.Number,
+        }),
+      ).annotate({ identifier: "Money" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          account_value: __S(724, __c22, 20),
+          total_margin_used: __S(724, __c22, 20),
+          total_position_notional: __S(724, __c22, 20),
+          total_raw_usd: __S(724, __c22, 20),
+          withdrawable: __S(724, __c22, 20),
+        }),
+      ).annotate({ identifier: "TradingMarginSummary" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "TradingWebsocketSubscription",
+      });
+    case 23:
+      return S.Array(__S(726, __c22, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.String,
+          builder_fee_bps: S.NullOr(S.String),
+          margin_summary: __S(725, __c22, 21),
+          websocket_subscriptions: __S(727, __c22, 23),
+          websocket_url: S.String,
+        }),
+      ).annotate({
+        identifier: "TradingHyperliquidAccount",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          reduce_only: S.NullOr(S.Boolean),
+          trigger_price: S.NullOr(__S(724, __c22, 20)),
+        }),
+      ).annotate({ identifier: "TradingHyperliquidOrder" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          client_order_id: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          hyperliquid: S.NullOr(__S(729, __c22, 25)),
+          id: S.String,
+          market: S.String,
+          object: S.String,
+          order_type: S.String,
+          original_size: S.NullOr(S.String),
+          price: __S(724, __c22, 20),
+          provider_order_id: S.NullOr(S.String),
+          side: S.String,
+          size: S.String,
+          status: S.String,
+          status_updated_at: S.NullOr(S.String),
+          time_in_force: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TradingOrder" });
+    case 27:
+      return S.Array(__S(730, __c22, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          all_time: S.NullOr(__S(724, __c22, 20)),
+          since_change: S.NullOr(__S(724, __c22, 20)),
+          since_open: S.NullOr(__S(724, __c22, 20)),
+        }),
+      ).annotate({ identifier: "TradingCumulativeFunding" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.Number,
+        }),
+      ).annotate({ identifier: "TradingPositionLeverage" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          cumulative_funding: __S(732, __c22, 28),
+          leverage: __S(733, __c22, 29),
+          liquidation_price: S.NullOr(__S(724, __c22, 20)),
+          margin_used: __S(724, __c22, 20),
+          return_on_equity: S.String,
+        }),
+      ).annotate({
+        identifier: "TradingHyperliquidPosition",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          entry_price: S.NullOr(__S(724, __c22, 20)),
+          hyperliquid: S.NullOr(__S(734, __c22, 30)),
+          id: S.String,
+          market: S.String,
+          object: S.String,
+          position_value: __S(724, __c22, 20),
+          side: S.String,
+          size: S.String,
+          unrealized_pnl: __S(724, __c22, 20),
+        }),
+      ).annotate({ identifier: "TradingPosition" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(735, __c22, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.NullOr(S.String),
+          hyperliquid: S.NullOr(__S(728, __c22, 24)),
+          id: S.String,
+          object: S.String,
+          open_orders: __S(731, __c22, 27),
+          positions: __S(736, __c23, 0),
+          provider: S.String,
+          user_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TradingAccount" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          balance: S.NullOr(__S(713, __c22, 9)),
+          balance_history: S.NullOr(__S(716, __c22, 12)),
+          banner: S.NullOr(__S(717, __c22, 13)),
+          bio: S.NullOr(S.String),
+          created_at: S.String,
+          earnings_usd: S.NullOr(__S(719, __c22, 15)),
+          email: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          profile_picture: __S(717, __c22, 13),
+          social_accounts: __S(722, __c22, 18),
+          staff: S.NullOr(__S(723, __c22, 19)),
+          trading: S.NullOr(__S(737, __c23, 1)),
+          username: S.String,
+          verification: S.Unknown,
+          whop_partner_enabled_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

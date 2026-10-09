@@ -6871,7 +6871,7 @@ export const addGroupDmUser: API.OperationMethod<
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddGroupDmUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddGroupDmUserResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AddGroupDmUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6884,8 +6884,8 @@ export const addGuildMember: API.OperationMethod<
   AddGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AddGuildMemberRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<AddGuildMemberRequest>,
+  output: __S(4640, __c145, 0) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6898,8 +6898,8 @@ export const addGuildMemberRole: API.OperationMethod<
   AddGuildMemberRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddGuildMemberRoleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AddGuildMemberRoleResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<AddGuildMemberRoleRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<AddGuildMemberRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6913,8 +6913,8 @@ export const addInviteTargetUser: API.OperationMethod<
   AddInviteTargetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<AddInviteTargetUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AddInviteTargetUserResponse>,
+  input: __S(7328, __c229, 0) as any as S.Schema<AddInviteTargetUserRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<AddInviteTargetUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6927,8 +6927,8 @@ export const addLobbyMember: API.OperationMethod<
   AddLobbyMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AddLobbyMemberRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<LobbyMemberResponse>,
+  input: __S(8224, __c257, 0) as any as S.Schema<AddLobbyMemberRequest>,
+  output: __S(8288, __c259, 0) as any as S.Schema<LobbyMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6941,8 +6941,8 @@ export const addMyMessageReaction: API.OperationMethod<
   AddMyMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AddMyMessageReactionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AddMyMessageReactionResponse>,
+  input: __S(8640, __c270, 0) as any as S.Schema<AddMyMessageReactionRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<AddMyMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6955,8 +6955,8 @@ export const addThreadMember: API.OperationMethod<
   AddThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AddThreadMemberRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AddThreadMemberResponse>,
+  input: __S(8992, __c281, 0) as any as S.Schema<AddThreadMemberRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<AddThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6969,8 +6969,8 @@ export const banUserFromGuild: API.OperationMethod<
   BanUserFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BanUserFromGuildRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BanUserFromGuildResponse>,
+  input: __S(9344, __c292, 0) as any as S.Schema<BanUserFromGuildRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<BanUserFromGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6983,8 +6983,8 @@ export const botPartnerSdkToken: API.OperationMethod<
   BotPartnerSdkTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<BotPartnerSdkTokenRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ProvisionalTokenResponse>,
+  input: __S(9728, __c304, 0) as any as S.Schema<BotPartnerSdkTokenRequest>,
+  output: __S(9760, __c305, 0) as any as S.Schema<ProvisionalTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -6997,8 +6997,8 @@ export const botPartnerSdkUnmergeProvisionalAccount: API.OperationMethod<
   BotPartnerSdkUnmergeProvisionalAccountError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7012,8 +7012,8 @@ export const bulkAddInviteTargetUsers: API.OperationMethod<
   BulkAddInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BulkAddInviteTargetUsersRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BulkAddInviteTargetUsersResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<BulkAddInviteTargetUsersRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<BulkAddInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7026,8 +7026,8 @@ export const bulkBanUsersFromGuild: API.OperationMethod<
   BulkBanUsersFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<BulkBanUsersFromGuildRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<BulkBanUsersResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<BulkBanUsersFromGuildRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<BulkBanUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7040,8 +7040,8 @@ export const bulkDeleteMessages: API.OperationMethod<
   BulkDeleteMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<BulkDeleteMessagesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BulkDeleteMessagesResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<BulkDeleteMessagesRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<BulkDeleteMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7055,8 +7055,8 @@ export const bulkRemoveInviteTargetUsers: API.OperationMethod<
   BulkRemoveInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<BulkRemoveInviteTargetUsersRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BulkRemoveInviteTargetUsersResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<BulkRemoveInviteTargetUsersRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<BulkRemoveInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7069,8 +7069,8 @@ export const bulkSetApplicationCommands: API.OperationMethod<
   BulkSetApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<BulkSetApplicationCommandsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<BulkSetApplicationCommandsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<BulkSetApplicationCommandsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<BulkSetApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7083,8 +7083,8 @@ export const bulkSetGuildApplicationCommands: API.OperationMethod<
   BulkSetGuildApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<BulkSetGuildApplicationCommandsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<BulkSetGuildApplicationCommandsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<BulkSetGuildApplicationCommandsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<BulkSetGuildApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7097,8 +7097,8 @@ export const bulkUpdateGuildChannels: API.OperationMethod<
   BulkUpdateGuildChannelsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<BulkUpdateGuildChannelsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<BulkUpdateGuildChannelsResponse>,
+  input: __S(3202, __c100, 2) as any as S.Schema<BulkUpdateGuildChannelsRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<BulkUpdateGuildChannelsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7111,8 +7111,8 @@ export const bulkUpdateGuildRoles: API.OperationMethod<
   BulkUpdateGuildRolesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<BulkUpdateGuildRolesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<BulkUpdateGuildRolesResponse>,
+  input: __S(3650, __c114, 2) as any as S.Schema<BulkUpdateGuildRolesRequest>,
+  output: __S(3651, __c114, 3) as any as S.Schema<BulkUpdateGuildRolesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7125,8 +7125,8 @@ export const bulkUpdateLobbyMembers: API.OperationMethod<
   BulkUpdateLobbyMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<BulkUpdateLobbyMembersRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<BulkUpdateLobbyMembersResponse>,
+  input: __S(4130, __c129, 2) as any as S.Schema<BulkUpdateLobbyMembersRequest>,
+  output: __S(4131, __c129, 3) as any as S.Schema<BulkUpdateLobbyMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7139,8 +7139,8 @@ export const consumeEntitlement: API.OperationMethod<
   ConsumeEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ConsumeEntitlementRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ConsumeEntitlementResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ConsumeEntitlementRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<ConsumeEntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7154,8 +7154,8 @@ export const countGuildScheduledEventUsers: API.OperationMethod<
   CountGuildScheduledEventUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CountGuildScheduledEventUsersRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ScheduledEventUserCountResponse>,
+  input: __S(5057, __c158, 1) as any as S.Schema<CountGuildScheduledEventUsersRequest>,
+  output: __S(5059, __c158, 3) as any as S.Schema<ScheduledEventUserCountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7168,8 +7168,8 @@ export const createApplicationCommand: API.OperationMethod<
   CreateApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(5442, __c170, 2) as any as S.Schema<CreateApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7182,8 +7182,8 @@ export const createApplicationEmoji: API.OperationMethod<
   CreateApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateApplicationEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<CreateApplicationEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7196,8 +7196,8 @@ export const createAutoModerationRule: API.OperationMethod<
   CreateAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateAutoModerationRuleRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateAutoModerationRuleResponse>,
+  input: __S(6177, __c193, 1) as any as S.Schema<CreateAutoModerationRuleRequest>,
+  output: __S(6179, __c193, 3) as any as S.Schema<CreateAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7210,8 +7210,8 @@ export const createChannelInvite: API.OperationMethod<
   CreateChannelInviteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateChannelInviteRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<CreateChannelInviteResponse>,
+  input: __S(6433, __c201, 1) as any as S.Schema<CreateChannelInviteRequest>,
+  output: __S(6435, __c201, 3) as any as S.Schema<CreateChannelInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7224,8 +7224,8 @@ export const createDeprecatedPin: API.OperationMethod<
   CreateDeprecatedPinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateDeprecatedPinRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateDeprecatedPinResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<CreateDeprecatedPinRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<CreateDeprecatedPinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7238,8 +7238,8 @@ export const createDm: API.OperationMethod<
   CreateDmError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateDmRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CreateDmResponse>,
+  input: __S(6497, __c203, 1) as any as S.Schema<CreateDmRequest>,
+  output: __S(6499, __c203, 3) as any as S.Schema<CreateDmResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7252,8 +7252,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateEntitlementRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<EntitlementResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<CreateEntitlementRequest>,
+  output: __S(6560, __c205, 0) as any as S.Schema<EntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7266,8 +7266,8 @@ export const createGuildApplicationCommand: API.OperationMethod<
   CreateGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateGuildApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(6594, __c206, 2) as any as S.Schema<CreateGuildApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7280,8 +7280,8 @@ export const createGuildChannel: API.OperationMethod<
   CreateGuildChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateGuildChannelRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GuildChannelResponse>,
+  input: __S(6725, __c210, 5) as any as S.Schema<CreateGuildChannelRequest>,
+  output: __S(6786, __c212, 2) as any as S.Schema<GuildChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7294,8 +7294,8 @@ export const createGuildEmoji: API.OperationMethod<
   CreateGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<CreateGuildEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<CreateGuildEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7308,8 +7308,8 @@ export const createGuildRole: API.OperationMethod<
   CreateGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<CreateGuildRoleRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<CreateGuildRoleRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7322,8 +7322,8 @@ export const createGuildScheduledEvent: API.OperationMethod<
   CreateGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateGuildScheduledEventRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateGuildScheduledEventResponse>,
+  input: __S(6945, __c217, 1) as any as S.Schema<CreateGuildScheduledEventRequest>,
+  output: __S(6947, __c217, 3) as any as S.Schema<CreateGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7337,8 +7337,8 @@ export const createGuildScheduledEventException: API.OperationMethod<
   CreateGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateGuildScheduledEventExceptionRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GuildScheduledEventExceptionResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<CreateGuildScheduledEventExceptionRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<GuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7351,8 +7351,8 @@ export const createGuildSoundboardSound: API.OperationMethod<
   CreateGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateGuildSoundboardSoundRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
+  input: __S(7040, __c220, 0) as any as S.Schema<CreateGuildSoundboardSoundRequest>,
+  output: __S(7072, __c221, 0) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7365,8 +7365,8 @@ export const createGuildSticker: API.OperationMethod<
   CreateGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<CreateGuildStickerRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
+  input: __S(7104, __c222, 0) as any as S.Schema<CreateGuildStickerRequest>,
+  output: __S(7136, __c223, 0) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7379,8 +7379,8 @@ export const createGuildTemplate: API.OperationMethod<
   CreateGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<CreateGuildTemplateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<CreateGuildTemplateRequest>,
+  output: __S(7207, __c225, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7393,8 +7393,8 @@ export const createInteractionResponse: API.OperationMethod<
   CreateInteractionResponseError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<CreateInteractionResponseRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<InteractionCallbackResponse>,
+  input: __S(7233, __c226, 1) as any as S.Schema<CreateInteractionResponseRequest>,
+  output: __S(7236, __c226, 4) as any as S.Schema<InteractionCallbackResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7407,8 +7407,8 @@ export const createLinkedLobbyGuildInviteForSelf: API.OperationMethod<
   CreateLinkedLobbyGuildInviteForSelfError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<CreateLinkedLobbyGuildInviteForSelfRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<LobbyGuildInviteResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<CreateLinkedLobbyGuildInviteForSelfRequest>,
+  output: __S(7296, __c228, 0) as any as S.Schema<LobbyGuildInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7421,8 +7421,8 @@ export const createLinkedLobbyGuildInviteForUser: API.OperationMethod<
   CreateLinkedLobbyGuildInviteForUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<CreateLinkedLobbyGuildInviteForUserRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<LobbyGuildInviteResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<CreateLinkedLobbyGuildInviteForUserRequest>,
+  output: __S(7296, __c228, 0) as any as S.Schema<LobbyGuildInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7435,8 +7435,8 @@ export const createLobby: API.OperationMethod<
   CreateLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<CreateLobbyRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<CreateLobbyRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7449,8 +7449,8 @@ export const createLobbyMessage: API.OperationMethod<
   CreateLobbyMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CreateLobbyMessageRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<LobbyMessageResponse>,
+  input: __S(7491, __c234, 3) as any as S.Schema<CreateLobbyMessageRequest>,
+  output: __S(7520, __c235, 0) as any as S.Schema<LobbyMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7463,8 +7463,8 @@ export const createMessage: API.OperationMethod<
   CreateMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<CreateMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(7683, __c240, 3) as any as S.Schema<CreateMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7477,8 +7477,8 @@ export const createOrJoinLobby: API.OperationMethod<
   CreateOrJoinLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateOrJoinLobbyRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
+  input: __S(8000, __c250, 0) as any as S.Schema<CreateOrJoinLobbyRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7491,8 +7491,8 @@ export const createPin: API.OperationMethod<
   CreatePinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<CreatePinRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreatePinResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<CreatePinRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<CreatePinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7505,8 +7505,8 @@ export const createStageInstance: API.OperationMethod<
   CreateStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CreateStageInstanceRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
+  input: __S(8064, __c252, 0) as any as S.Schema<CreateStageInstanceRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7519,8 +7519,8 @@ export const createThread: API.OperationMethod<
   CreateThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<CreateThreadRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<CreatedThreadResponse>,
+  input: __S(8129, __c254, 1) as any as S.Schema<CreateThreadRequest>,
+  output: __S(7745, __c242, 1) as any as S.Schema<CreatedThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7533,8 +7533,8 @@ export const createThreadFromMessage: API.OperationMethod<
   CreateThreadFromMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<CreateThreadFromMessageRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ThreadResponse>,
+  input: __S(8160, __c255, 0) as any as S.Schema<CreateThreadFromMessageRequest>,
+  output: __S(7745, __c242, 1) as any as S.Schema<ThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7547,8 +7547,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<GuildIncomingWebhookResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(8193, __c256, 1) as any as S.Schema<GuildIncomingWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7561,8 +7561,8 @@ export const crosspostMessage: API.OperationMethod<
   CrosspostMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CrosspostMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(8320, __c260, 0) as any as S.Schema<CrosspostMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7575,8 +7575,8 @@ export const deleteAllMessageReactions: API.OperationMethod<
   DeleteAllMessageReactionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<DeleteAllMessageReactionsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteAllMessageReactionsResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<DeleteAllMessageReactionsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteAllMessageReactionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7589,8 +7589,8 @@ export const deleteAllMessageReactionsByEmoji: API.OperationMethod<
   DeleteAllMessageReactionsByEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<DeleteAllMessageReactionsByEmojiRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteAllMessageReactionsByEmojiResponse>,
+  input: __S(8384, __c262, 0) as any as S.Schema<DeleteAllMessageReactionsByEmojiRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteAllMessageReactionsByEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7603,8 +7603,8 @@ export const deleteApplicationCommand: API.OperationMethod<
   DeleteApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<DeleteApplicationCommandRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteApplicationCommandResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<DeleteApplicationCommandRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7617,8 +7617,8 @@ export const deleteApplicationEmoji: API.OperationMethod<
   DeleteApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<DeleteApplicationEmojiRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteApplicationEmojiResponse>,
+  input: __S(8448, __c264, 0) as any as S.Schema<DeleteApplicationEmojiRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteApplicationEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7631,8 +7631,8 @@ export const deleteApplicationUserRoleConnection: API.OperationMethod<
   DeleteApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<DeleteApplicationUserRoleConnectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteApplicationUserRoleConnectionResponse>,
+  input: __S(8480, __c265, 0) as any as S.Schema<DeleteApplicationUserRoleConnectionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7645,8 +7645,8 @@ export const deleteAutoModerationRule: API.OperationMethod<
   DeleteAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<DeleteAutoModerationRuleRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteAutoModerationRuleResponse>,
+  input: __S(8512, __c266, 0) as any as S.Schema<DeleteAutoModerationRuleRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7659,8 +7659,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(8546, __c267, 2) as any as S.Schema<DeleteChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7673,8 +7673,8 @@ export const deleteChannelPermissionOverwrite: API.OperationMethod<
   DeleteChannelPermissionOverwriteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<DeleteChannelPermissionOverwriteRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteChannelPermissionOverwriteResponse>,
+  input: __S(8576, __c268, 0) as any as S.Schema<DeleteChannelPermissionOverwriteRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteChannelPermissionOverwriteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7687,8 +7687,8 @@ export const deleteDeprecatedPin: API.OperationMethod<
   DeleteDeprecatedPinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<DeleteDeprecatedPinRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteDeprecatedPinResponse>,
+  input: __S(8608, __c269, 0) as any as S.Schema<DeleteDeprecatedPinRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteDeprecatedPinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7701,8 +7701,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<DeleteEntitlementRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteEntitlementResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<DeleteEntitlementRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteEntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7715,8 +7715,8 @@ export const deleteGroupDmUser: API.OperationMethod<
   DeleteGroupDmUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<DeleteGroupDmUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGroupDmUserResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<DeleteGroupDmUserRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGroupDmUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7729,8 +7729,8 @@ export const deleteGuildApplicationCommand: API.OperationMethod<
   DeleteGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<DeleteGuildApplicationCommandRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildApplicationCommandResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<DeleteGuildApplicationCommandRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteGuildApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7743,8 +7743,8 @@ export const deleteGuildEmoji: API.OperationMethod<
   DeleteGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DeleteGuildEmojiRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildEmojiResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<DeleteGuildEmojiRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7757,8 +7757,8 @@ export const deleteGuildIntegration: API.OperationMethod<
   DeleteGuildIntegrationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<DeleteGuildIntegrationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildIntegrationResponse>,
+  input: __S(8800, __c275, 0) as any as S.Schema<DeleteGuildIntegrationRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildIntegrationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7771,8 +7771,8 @@ export const deleteGuildMember: API.OperationMethod<
   DeleteGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<DeleteGuildMemberRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildMemberResponse>,
+  input: __S(8832, __c276, 0) as any as S.Schema<DeleteGuildMemberRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7785,8 +7785,8 @@ export const deleteGuildMemberRole: API.OperationMethod<
   DeleteGuildMemberRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<DeleteGuildMemberRoleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildMemberRoleResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<DeleteGuildMemberRoleRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildMemberRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7799,8 +7799,8 @@ export const deleteGuildRole: API.OperationMethod<
   DeleteGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<DeleteGuildRoleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildRoleResponse>,
+  input: __S(8896, __c278, 0) as any as S.Schema<DeleteGuildRoleRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7813,8 +7813,8 @@ export const deleteGuildScheduledEvent: API.OperationMethod<
   DeleteGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<DeleteGuildScheduledEventRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildScheduledEventResponse>,
+  input: __S(8928, __c279, 0) as any as S.Schema<DeleteGuildScheduledEventRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7828,8 +7828,8 @@ export const deleteGuildScheduledEventException: API.OperationMethod<
   DeleteGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<DeleteGuildScheduledEventExceptionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildScheduledEventExceptionResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<DeleteGuildScheduledEventExceptionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteGuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7842,8 +7842,8 @@ export const deleteGuildSoundboardSound: API.OperationMethod<
   DeleteGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DeleteGuildSoundboardSoundRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildSoundboardSoundResponse>,
+  input: __S(9024, __c282, 0) as any as S.Schema<DeleteGuildSoundboardSoundRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteGuildSoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7856,8 +7856,8 @@ export const deleteGuildSticker: API.OperationMethod<
   DeleteGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DeleteGuildStickerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildStickerResponse>,
+  input: __S(9056, __c283, 0) as any as S.Schema<DeleteGuildStickerRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteGuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7870,8 +7870,8 @@ export const deleteGuildTemplate: API.OperationMethod<
   DeleteGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<DeleteGuildTemplateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
+  input: __S(9088, __c284, 0) as any as S.Schema<DeleteGuildTemplateRequest>,
+  output: __S(7207, __c225, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7885,8 +7885,8 @@ export const deleteLobby: API.OperationMethod<
   DeleteLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<DeleteLobbyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteLobbyResponse>,
+  input: __S(9120, __c285, 0) as any as S.Schema<DeleteLobbyRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteLobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7899,8 +7899,8 @@ export const deleteLobbyMember: API.OperationMethod<
   DeleteLobbyMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeleteLobbyMemberRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteLobbyMemberResponse>,
+  input: __S(9152, __c286, 0) as any as S.Schema<DeleteLobbyMemberRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteLobbyMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7913,8 +7913,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<DeleteMessageRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteMessageResponse>,
+  input: __S(9184, __c287, 0) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7927,8 +7927,8 @@ export const deleteMyMessageReaction: API.OperationMethod<
   DeleteMyMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<DeleteMyMessageReactionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteMyMessageReactionResponse>,
+  input: __S(9216, __c288, 0) as any as S.Schema<DeleteMyMessageReactionRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<DeleteMyMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7941,8 +7941,8 @@ export const deleteOriginalWebhookMessage: API.OperationMethod<
   DeleteOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DeleteOriginalWebhookMessageRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteOriginalWebhookMessageResponse>,
+  input: __S(9248, __c289, 0) as any as S.Schema<DeleteOriginalWebhookMessageRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteOriginalWebhookMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7955,8 +7955,8 @@ export const deletePin: API.OperationMethod<
   DeletePinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeletePinRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeletePinResponse>,
+  input: __S(9280, __c290, 0) as any as S.Schema<DeletePinRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeletePinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7969,8 +7969,8 @@ export const deleteStageInstance: API.OperationMethod<
   DeleteStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteStageInstanceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteStageInstanceResponse>,
+  input: __S(9312, __c291, 0) as any as S.Schema<DeleteStageInstanceRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteStageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7983,8 +7983,8 @@ export const deleteThreadMember: API.OperationMethod<
   DeleteThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DeleteThreadMemberRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteThreadMemberResponse>,
+  input: __S(9376, __c293, 0) as any as S.Schema<DeleteThreadMemberRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -7997,8 +7997,8 @@ export const deleteUserMessageReaction: API.OperationMethod<
   DeleteUserMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<DeleteUserMessageReactionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteUserMessageReactionResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<DeleteUserMessageReactionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteUserMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8011,8 +8011,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(9440, __c295, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8025,8 +8025,8 @@ export const deleteWebhookByToken: API.OperationMethod<
   DeleteWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DeleteWebhookByTokenRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookByTokenResponse>,
+  input: __S(9472, __c296, 0) as any as S.Schema<DeleteWebhookByTokenRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8039,8 +8039,8 @@ export const deleteWebhookMessage: API.OperationMethod<
   DeleteWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<DeleteWebhookMessageRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookMessageResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<DeleteWebhookMessageRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<DeleteWebhookMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8053,8 +8053,8 @@ export const editLobby: API.OperationMethod<
   EditLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<EditLobbyRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
+  input: __S(9536, __c298, 0) as any as S.Schema<EditLobbyRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8067,8 +8067,8 @@ export const editLobbyChannelLink: API.OperationMethod<
   EditLobbyChannelLinkError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<EditLobbyChannelLinkRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<EditLobbyChannelLinkRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8081,8 +8081,8 @@ export const executeGithubCompatibleWebhook: API.OperationMethod<
   ExecuteGithubCompatibleWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ExecuteGithubCompatibleWebhookRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ExecuteGithubCompatibleWebhookResponse>,
+  input: __S(9615, __c300, 15) as any as S.Schema<ExecuteGithubCompatibleWebhookRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ExecuteGithubCompatibleWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8095,8 +8095,8 @@ export const executeSlackCompatibleWebhook: API.OperationMethod<
   ExecuteSlackCompatibleWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ExecuteSlackCompatibleWebhookRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ExecuteSlackCompatibleWebhookResponse>,
+  input: __S(9668, __c302, 4) as any as S.Schema<ExecuteSlackCompatibleWebhookRequest>,
+  output: __S(9669, __c302, 5) as any as S.Schema<ExecuteSlackCompatibleWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8109,8 +8109,8 @@ export const executeWebhook: API.OperationMethod<
   ExecuteWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ExecuteWebhookRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(9697, __c303, 1) as any as S.Schema<ExecuteWebhookRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8123,8 +8123,8 @@ export const followChannel: API.OperationMethod<
   FollowChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<FollowChannelRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ChannelFollowerResponse>,
+  input: __S(9792, __c306, 0) as any as S.Schema<FollowChannelRequest>,
+  output: __S(9793, __c306, 1) as any as S.Schema<ChannelFollowerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8137,8 +8137,8 @@ export const getActiveGuildThreads: API.OperationMethod<
   GetActiveGuildThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<GetActiveGuildThreadsRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
+  input: __S(9824, __c307, 0) as any as S.Schema<GetActiveGuildThreadsRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8151,8 +8151,8 @@ export const getAnswerVoters: API.OperationMethod<
   GetAnswerVotersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetAnswerVotersRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<PollAnswerDetailsResponse>,
+  input: __S(9984, __c312, 0) as any as S.Schema<GetAnswerVotersRequest>,
+  output: __S(9985, __c312, 1) as any as S.Schema<PollAnswerDetailsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8165,8 +8165,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetApplicationRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
+  input: __S(10016, __c313, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(10051, __c314, 3) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8179,8 +8179,8 @@ export const getApplicationActivityInstance: API.OperationMethod<
   GetApplicationActivityInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<GetApplicationActivityInstanceRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<EmbeddedActivityInstance>,
+  input: __S(10080, __c315, 0) as any as S.Schema<GetApplicationActivityInstanceRequest>,
+  output: __S(10082, __c315, 2) as any as S.Schema<EmbeddedActivityInstance>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8193,8 +8193,8 @@ export const getApplicationCommand: API.OperationMethod<
   GetApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<GetApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(10112, __c316, 0) as any as S.Schema<GetApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8207,8 +8207,8 @@ export const getApplicationEmoji: API.OperationMethod<
   GetApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetApplicationEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(10144, __c317, 0) as any as S.Schema<GetApplicationEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8221,8 +8221,8 @@ export const getApplicationRoleConnectionsMetadata: API.OperationMethod<
   GetApplicationRoleConnectionsMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<GetApplicationRoleConnectionsMetadataRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<GetApplicationRoleConnectionsMetadataResponse>,
+  input: __S(10176, __c318, 0) as any as S.Schema<GetApplicationRoleConnectionsMetadataRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<GetApplicationRoleConnectionsMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8235,8 +8235,8 @@ export const getApplicationUserRoleConnection: API.OperationMethod<
   GetApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetApplicationUserRoleConnectionRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
+  input: __S(10240, __c320, 0) as any as S.Schema<GetApplicationUserRoleConnectionRequest>,
+  output: __S(10272, __c321, 0) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8249,8 +8249,8 @@ export const getAutoModerationRule: API.OperationMethod<
   GetAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<GetAutoModerationRuleRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<GetAutoModerationRuleResponse>,
+  input: __S(10304, __c322, 0) as any as S.Schema<GetAutoModerationRuleRequest>,
+  output: __S(10306, __c322, 2) as any as S.Schema<GetAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8263,8 +8263,8 @@ export const getBotGateway: API.OperationMethod<
   GetBotGatewayError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<GetBotGatewayRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<GatewayBotResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetBotGatewayRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<GatewayBotResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8277,8 +8277,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetChannelRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GetChannelResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<GetChannelResponse>,
   errors: [NotFound, UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8291,8 +8291,8 @@ export const getCurrentUserApplicationEntitlements: API.OperationMethod<
   GetCurrentUserApplicationEntitlementsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetCurrentUserApplicationEntitlementsRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<GetCurrentUserApplicationEntitlementsResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<GetCurrentUserApplicationEntitlementsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<GetCurrentUserApplicationEntitlementsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8305,8 +8305,8 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetEntitlementRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<EntitlementResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetEntitlementRequest>,
+  output: __S(6560, __c205, 0) as any as S.Schema<EntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8319,8 +8319,8 @@ export const getEntitlements: API.OperationMethod<
   GetEntitlementsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<GetEntitlementsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<GetEntitlementsResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<GetEntitlementsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<GetEntitlementsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8333,8 +8333,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<GetGatewayRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<GatewayResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetGatewayRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GatewayResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8347,8 +8347,8 @@ export const getGuild: API.OperationMethod<
   GetGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<GetGuildRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GuildWithCountsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetGuildRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<GuildWithCountsResponse>,
   errors: [NotFound, UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8361,8 +8361,8 @@ export const getGuildApplicationCommand: API.OperationMethod<
   GetGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<GetGuildApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetGuildApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8375,8 +8375,8 @@ export const getGuildApplicationCommandPermissions: API.OperationMethod<
   GetGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<GetGuildApplicationCommandPermissionsRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<CommandPermissionsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetGuildApplicationCommandPermissionsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<CommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8389,8 +8389,8 @@ export const getGuildBan: API.OperationMethod<
   GetGuildBanError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<GetGuildBanRequest>,
-  output: __S(368, __c46, 0) as any as S.Schema<GuildBanResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetGuildBanRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<GuildBanResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8403,8 +8403,8 @@ export const getGuildEmoji: API.OperationMethod<
   GetGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<GetGuildEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetGuildEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8418,8 +8418,8 @@ export const getGuildJoinRequests: API.OperationMethod<
   GetGuildJoinRequestsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<GetGuildJoinRequestsRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<GuildJoinRequestsListResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetGuildJoinRequestsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<GuildJoinRequestsListResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8432,8 +8432,8 @@ export const getGuildMember: API.OperationMethod<
   GetGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetGuildMemberRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetGuildMemberRequest>,
+  output: __S(4640, __c145, 0) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8446,8 +8446,8 @@ export const getGuildNewMemberWelcome: API.OperationMethod<
   GetGuildNewMemberWelcomeError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<GetGuildNewMemberWelcomeRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<GuildHomeSettingsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetGuildNewMemberWelcomeRequest>,
+  output: __S(774, __c24, 6) as any as S.Schema<GuildHomeSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8460,8 +8460,8 @@ export const getGuildPreview: API.OperationMethod<
   GetGuildPreviewError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<GetGuildPreviewRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<GuildPreviewResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetGuildPreviewRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<GuildPreviewResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8474,8 @@ export const getGuildRole: API.OperationMethod<
   GetGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<GetGuildRoleRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetGuildRoleRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8488,8 +8488,8 @@ export const getGuildScheduledEvent: API.OperationMethod<
   GetGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<GetGuildScheduledEventRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<GetGuildScheduledEventResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetGuildScheduledEventRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<GetGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8502,8 +8502,8 @@ export const getGuildsOnboarding: API.OperationMethod<
   GetGuildsOnboardingError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<GetGuildsOnboardingRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<UserGuildOnboardingResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetGuildsOnboardingRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<UserGuildOnboardingResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8516,8 +8516,8 @@ export const getGuildSoundboardSound: API.OperationMethod<
   GetGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<GetGuildSoundboardSoundRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetGuildSoundboardSoundRequest>,
+  output: __S(7072, __c221, 0) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8530,8 +8530,8 @@ export const getGuildSticker: API.OperationMethod<
   GetGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<GetGuildStickerRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetGuildStickerRequest>,
+  output: __S(7136, __c223, 0) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8544,8 +8544,8 @@ export const getGuildTemplate: API.OperationMethod<
   GetGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<GetGuildTemplateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetGuildTemplateRequest>,
+  output: __S(7207, __c225, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8558,8 +8558,8 @@ export const getGuildVanityUrl: API.OperationMethod<
   GetGuildVanityUrlError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<GetGuildVanityUrlRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<VanityURLResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetGuildVanityUrlRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<VanityURLResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8572,8 +8572,8 @@ export const getGuildWebhooks: API.OperationMethod<
   GetGuildWebhooksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetGuildWebhooksRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<GetGuildWebhooksResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetGuildWebhooksRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<GetGuildWebhooksResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8586,8 +8586,8 @@ export const getGuildWelcomeScreen: API.OperationMethod<
   GetGuildWelcomeScreenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<GetGuildWelcomeScreenRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetGuildWelcomeScreenRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8600,8 +8600,8 @@ export const getGuildWidget: API.OperationMethod<
   GetGuildWidgetError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<GetGuildWidgetRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<WidgetResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetGuildWidgetRequest>,
+  output: __S(1253, __c39, 5) as any as S.Schema<WidgetResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8614,8 +8614,8 @@ export const getGuildWidgetPng: API.OperationMethod<
   GetGuildWidgetPngError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<GetGuildWidgetPngRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetGuildWidgetPngResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetGuildWidgetPngRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<GetGuildWidgetPngResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8628,8 +8628,8 @@ export const getGuildWidgetSettings: API.OperationMethod<
   GetGuildWidgetSettingsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetGuildWidgetSettingsRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<WidgetSettingsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetGuildWidgetSettingsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<WidgetSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8643,8 +8643,8 @@ export const getInviteTargetUsers: API.OperationMethod<
   GetInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<GetInviteTargetUsersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetInviteTargetUsersResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetInviteTargetUsersRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<GetInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8658,8 +8658,8 @@ export const getInviteTargetUsersJobStatus: API.OperationMethod<
   GetInviteTargetUsersJobStatusError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<GetInviteTargetUsersJobStatusRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<TargetUsersJobStatusResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetInviteTargetUsersJobStatusRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<TargetUsersJobStatusResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8672,8 +8672,8 @@ export const getLobby: API.OperationMethod<
   GetLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<GetLobbyRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetLobbyRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8686,8 +8686,8 @@ export const getLobbyMessages: API.OperationMethod<
   GetLobbyMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<GetLobbyMessagesRequest>,
-  output: __S(426, __c53, 2) as any as S.Schema<GetLobbyMessagesResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetLobbyMessagesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<GetLobbyMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8700,8 +8700,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<GetMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8714,8 +8714,8 @@ export const getMyApplication: API.OperationMethod<
   GetMyApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<GetMyApplicationRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetMyApplicationRequest>,
+  output: __S(10051, __c314, 3) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8728,8 +8728,8 @@ export const getMyGuildMember: API.OperationMethod<
   GetMyGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<GetMyGuildMemberRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<PrivateGuildMemberResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetMyGuildMemberRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<PrivateGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8742,8 +8742,8 @@ export const getMyOauth2Application: API.OperationMethod<
   GetMyOauth2ApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<GetMyOauth2ApplicationRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetMyOauth2ApplicationRequest>,
+  output: __S(10051, __c314, 3) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8756,8 +8756,8 @@ export const getMyOauth2Authorization: API.OperationMethod<
   GetMyOauth2AuthorizationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<GetMyOauth2AuthorizationRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<OAuth2GetAuthorizationResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetMyOauth2AuthorizationRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<OAuth2GetAuthorizationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8770,8 +8770,8 @@ export const getMyUser: API.OperationMethod<
   GetMyUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<GetMyUserRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<UserPIIResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetMyUserRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<UserPIIResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8784,8 +8784,8 @@ export const getOpenidConnectUserinfo: API.OperationMethod<
   GetOpenidConnectUserinfoError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<GetOpenidConnectUserinfoRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<OAuth2GetOpenIDConnectUserInfoResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetOpenidConnectUserinfoRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<OAuth2GetOpenIDConnectUserInfoResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8798,8 +8798,8 @@ export const getOriginalWebhookMessage: API.OperationMethod<
   GetOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<GetOriginalWebhookMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetOriginalWebhookMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8812,8 +8812,8 @@ export const getPublicKeys: API.OperationMethod<
   GetPublicKeysError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<GetPublicKeysRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<OAuth2GetKeys>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetPublicKeysRequest>,
+  output: __S(1859, __c58, 3) as any as S.Schema<OAuth2GetKeys>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8826,8 +8826,8 @@ export const getSelfVoiceState: API.OperationMethod<
   GetSelfVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<GetSelfVoiceStateRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<VoiceStateResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetSelfVoiceStateRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<VoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8841,8 +8841,8 @@ export const getSkuSubscription: API.OperationMethod<
   GetSkuSubscriptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetSkuSubscriptionRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<SubscriptionResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetSkuSubscriptionRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<SubscriptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8856,8 +8856,8 @@ export const getSkuSubscriptions: API.OperationMethod<
   GetSkuSubscriptionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<GetSkuSubscriptionsRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<GetSkuSubscriptionsResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetSkuSubscriptionsRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<GetSkuSubscriptionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8870,8 +8870,8 @@ export const getSoundboardDefaultSounds: API.OperationMethod<
   GetSoundboardDefaultSoundsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<GetSoundboardDefaultSoundsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<GetSoundboardDefaultSoundsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetSoundboardDefaultSoundsRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<GetSoundboardDefaultSoundsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8884,8 +8884,8 @@ export const getStageInstance: API.OperationMethod<
   GetStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<GetStageInstanceRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetStageInstanceRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8898,8 +8898,8 @@ export const getSticker: API.OperationMethod<
   GetStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetStickerRequest>,
-  output: __S(456, __c57, 0) as any as S.Schema<GetStickerResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetStickerRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<GetStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8912,8 +8912,8 @@ export const getStickerPack: API.OperationMethod<
   GetStickerPackError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<GetStickerPackRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<StickerPackResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetStickerPackRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<StickerPackResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8926,8 +8926,8 @@ export const getThreadMember: API.OperationMethod<
   GetThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<GetThreadMemberRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<ThreadMemberResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetThreadMemberRequest>,
+  output: __S(7712, __c241, 0) as any as S.Schema<ThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8940,8 +8940,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<GetUserRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UserResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<UserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8954,8 +8954,8 @@ export const getVoiceState: API.OperationMethod<
   GetVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<GetVoiceStateRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<VoiceStateResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetVoiceStateRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<VoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8968,8 +8968,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetWebhookRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GetWebhookResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<GetWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8982,8 +8982,8 @@ export const getWebhookByToken: API.OperationMethod<
   GetWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<GetWebhookByTokenRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<GetWebhookByTokenResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetWebhookByTokenRequest>,
+  output: __S(2562, __c80, 2) as any as S.Schema<GetWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -8996,8 +8996,8 @@ export const getWebhookMessage: API.OperationMethod<
   GetWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetWebhookMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetWebhookMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9010,8 +9010,8 @@ export const guildRoleMemberCounts: API.OperationMethod<
   GuildRoleMemberCountsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<GuildRoleMemberCountsRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<GuildRoleMemberCountsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GuildRoleMemberCountsRequest>,
+  output: __S(2626, __c82, 2) as any as S.Schema<GuildRoleMemberCountsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9024,8 +9024,8 @@ export const inviteResolve: API.OperationMethod<
   InviteResolveError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<InviteResolveRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<InviteResolveResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<InviteResolveRequest>,
+  output: __S(2658, __c83, 2) as any as S.Schema<InviteResolveResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9039,8 +9039,8 @@ export const joinActionGuildRequest: API.OperationMethod<
   JoinActionGuildRequestError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<JoinActionGuildRequestRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GuildJoinRequestResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<JoinActionGuildRequestRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<GuildJoinRequestResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9053,8 +9053,8 @@ export const joinThread: API.OperationMethod<
   JoinThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<JoinThreadRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<JoinThreadResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<JoinThreadRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<JoinThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9067,8 +9067,8 @@ export const leaveGuild: API.OperationMethod<
   LeaveGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<LeaveGuildRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaveGuildResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<LeaveGuildRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LeaveGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9081,8 +9081,8 @@ export const leaveLobby: API.OperationMethod<
   LeaveLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<LeaveLobbyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaveLobbyResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<LeaveLobbyRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LeaveLobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9095,8 +9095,8 @@ export const leaveThread: API.OperationMethod<
   LeaveThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<LeaveThreadRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaveThreadResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<LeaveThreadRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LeaveThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9109,8 +9109,8 @@ export const listApplicationCommands: API.OperationMethod<
   ListApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<ListApplicationCommandsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListApplicationCommandsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListApplicationCommandsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9123,8 +9123,8 @@ export const listApplicationEmojis: API.OperationMethod<
   ListApplicationEmojisError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<ListApplicationEmojisRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<ListApplicationEmojisResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListApplicationEmojisRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<ListApplicationEmojisResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9137,8 +9137,8 @@ export const listAutoModerationRules: API.OperationMethod<
   ListAutoModerationRulesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListAutoModerationRulesRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<ListAutoModerationRulesResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListAutoModerationRulesRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<ListAutoModerationRulesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9151,8 +9151,8 @@ export const listChannelInvites: API.OperationMethod<
   ListChannelInvitesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListChannelInvitesRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<ListChannelInvitesResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListChannelInvitesRequest>,
+  output: __S(2979, __c93, 3) as any as S.Schema<ListChannelInvitesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9165,8 +9165,8 @@ export const listChannelWebhooks: API.OperationMethod<
   ListChannelWebhooksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<ListChannelWebhooksRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<ListChannelWebhooksResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListChannelWebhooksRequest>,
+  output: __S(3011, __c94, 3) as any as S.Schema<ListChannelWebhooksResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9179,8 +9179,8 @@ export const listDeprecatedPins: API.OperationMethod<
   ListDeprecatedPinsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListDeprecatedPinsRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<ListDeprecatedPinsResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListDeprecatedPinsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<ListDeprecatedPinsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9193,8 +9193,8 @@ export const listGuildApplicationCommandPermissions: API.OperationMethod<
   ListGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<ListGuildApplicationCommandPermissionsRequest>,
-  output: __S(500, __c62, 4) as any as S.Schema<ListGuildApplicationCommandPermissionsResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListGuildApplicationCommandPermissionsRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<ListGuildApplicationCommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9207,8 +9207,8 @@ export const listGuildApplicationCommands: API.OperationMethod<
   ListGuildApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<ListGuildApplicationCommandsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListGuildApplicationCommandsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListGuildApplicationCommandsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListGuildApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9221,8 +9221,8 @@ export const listGuildAuditLogEntries: API.OperationMethod<
   ListGuildAuditLogEntriesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<ListGuildAuditLogEntriesRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<GuildAuditLogResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListGuildAuditLogEntriesRequest>,
+  output: __S(3149, __c98, 13) as any as S.Schema<GuildAuditLogResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9235,8 +9235,8 @@ export const listGuildBans: API.OperationMethod<
   ListGuildBansError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<ListGuildBansRequest>,
-  output: __S(519, __c64, 7) as any as S.Schema<ListGuildBansResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListGuildBansRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<ListGuildBansResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9249,8 +9249,8 @@ export const listGuildChannels: API.OperationMethod<
   ListGuildChannelsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<ListGuildChannelsRequest>,
-  output: __S(523, __c65, 3) as any as S.Schema<ListGuildChannelsResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListGuildChannelsRequest>,
+  output: __S(3267, __c102, 3) as any as S.Schema<ListGuildChannelsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9263,8 +9263,8 @@ export const listGuildEmojis: API.OperationMethod<
   ListGuildEmojisError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<ListGuildEmojisRequest>,
-  output: __S(525, __c65, 5) as any as S.Schema<ListGuildEmojisResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListGuildEmojisRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<ListGuildEmojisResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9277,8 +9277,8 @@ export const listGuildIntegrations: API.OperationMethod<
   ListGuildIntegrationsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<ListGuildIntegrationsRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<ListGuildIntegrationsResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ListGuildIntegrationsRequest>,
+  output: __S(3331, __c104, 3) as any as S.Schema<ListGuildIntegrationsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9291,8 +9291,8 @@ export const listGuildInvites: API.OperationMethod<
   ListGuildInvitesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<ListGuildInvitesRequest>,
-  output: __S(533, __c66, 5) as any as S.Schema<ListGuildInvitesResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListGuildInvitesRequest>,
+  output: __S(3363, __c105, 3) as any as S.Schema<ListGuildInvitesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9305,8 +9305,8 @@ export const listGuildMembers: API.OperationMethod<
   ListGuildMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<ListGuildMembersRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<ListGuildMembersResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListGuildMembersRequest>,
+  output: __S(3393, __c106, 1) as any as S.Schema<ListGuildMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9319,8 +9319,8 @@ export const listGuildRoles: API.OperationMethod<
   ListGuildRolesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<ListGuildRolesRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<ListGuildRolesResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListGuildRolesRequest>,
+  output: __S(3457, __c108, 1) as any as S.Schema<ListGuildRolesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9334,8 +9334,8 @@ export const listGuildScheduledEventExceptionUsers: API.OperationMethod<
   ListGuildScheduledEventExceptionUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<ListGuildScheduledEventExceptionUsersRequest>,
-  output: __S(541, __c67, 5) as any as S.Schema<ListGuildScheduledEventExceptionUsersResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListGuildScheduledEventExceptionUsersRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<ListGuildScheduledEventExceptionUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9348,8 +9348,8 @@ export const listGuildScheduledEvents: API.OperationMethod<
   ListGuildScheduledEventsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<ListGuildScheduledEventsRequest>,
-  output: __S(545, __c68, 1) as any as S.Schema<ListGuildScheduledEventsResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListGuildScheduledEventsRequest>,
+  output: __S(3555, __c111, 3) as any as S.Schema<ListGuildScheduledEventsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9362,8 +9362,8 @@ export const listGuildScheduledEventUsers: API.OperationMethod<
   ListGuildScheduledEventUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<ListGuildScheduledEventUsersRequest>,
-  output: __S(541, __c67, 5) as any as S.Schema<ListGuildScheduledEventUsersResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListGuildScheduledEventUsersRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<ListGuildScheduledEventUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9376,8 +9376,8 @@ export const listGuildSoundboardSounds: API.OperationMethod<
   ListGuildSoundboardSoundsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<ListGuildSoundboardSoundsRequest>,
-  output: __S(548, __c68, 4) as any as S.Schema<ListGuildSoundboardSoundsResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListGuildSoundboardSoundsRequest>,
+  output: __S(3617, __c113, 1) as any as S.Schema<ListGuildSoundboardSoundsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9390,8 +9390,8 @@ export const listGuildStickers: API.OperationMethod<
   ListGuildStickersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<ListGuildStickersRequest>,
-  output: __S(550, __c68, 6) as any as S.Schema<ListGuildStickersResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListGuildStickersRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<ListGuildStickersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9404,8 +9404,8 @@ export const listGuildTemplates: API.OperationMethod<
   ListGuildTemplatesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<ListGuildTemplatesRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<ListGuildTemplatesResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListGuildTemplatesRequest>,
+  output: __S(3810, __c119, 2) as any as S.Schema<ListGuildTemplatesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9418,8 +9418,8 @@ export const listGuildVoiceRegions: API.OperationMethod<
   ListGuildVoiceRegionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<ListGuildVoiceRegionsRequest>,
-  output: __S(557, __c69, 5) as any as S.Schema<ListGuildVoiceRegionsResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListGuildVoiceRegionsRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<ListGuildVoiceRegionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9432,8 +9432,8 @@ export const listMessageReactionsByEmoji: API.OperationMethod<
   ListMessageReactionsByEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<ListMessageReactionsByEmojiRequest>,
-  output: __S(559, __c69, 7) as any as S.Schema<ListMessageReactionsByEmojiResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListMessageReactionsByEmojiRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<ListMessageReactionsByEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9446,8 +9446,8 @@ export const listMessages: API.OperationMethod<
   ListMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<ListMessagesRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<ListMessagesResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListMessagesRequest>,
+  output: __S(3937, __c123, 1) as any as S.Schema<ListMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9460,8 +9460,8 @@ export const listMyConnections: API.OperationMethod<
   ListMyConnectionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562, __c70, 2) as any as S.Schema<ListMyConnectionsRequest>,
-  output: __S(568, __c71, 0) as any as S.Schema<ListMyConnectionsResponse>,
+  input: __S(3969, __c124, 1) as any as S.Schema<ListMyConnectionsRequest>,
+  output: __S(3975, __c124, 7) as any as S.Schema<ListMyConnectionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9474,8 +9474,8 @@ export const listMyGuilds: API.OperationMethod<
   ListMyGuildsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(569, __c71, 1) as any as S.Schema<ListMyGuildsRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<ListMyGuildsResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListMyGuildsRequest>,
+  output: __S(4003, __c125, 3) as any as S.Schema<ListMyGuildsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9488,8 +9488,8 @@ export const listMyPrivateArchivedThreads: API.OperationMethod<
   ListMyPrivateArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<ListMyPrivateArchivedThreadsRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListMyPrivateArchivedThreadsRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9502,8 +9502,8 @@ export const listPins: API.OperationMethod<
   ListPinsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<ListPinsRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<PinnedMessagesResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ListPinsRequest>,
+  output: __S(4067, __c127, 3) as any as S.Schema<PinnedMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9516,8 +9516,8 @@ export const listPrivateArchivedThreads: API.OperationMethod<
   ListPrivateArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<ListPrivateArchivedThreadsRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ListPrivateArchivedThreadsRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9530,8 +9530,8 @@ export const listPublicArchivedThreads: API.OperationMethod<
   ListPublicArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<ListPublicArchivedThreadsRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ListPublicArchivedThreadsRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9544,8 +9544,8 @@ export const listStickerPacks: API.OperationMethod<
   ListStickerPacksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<ListStickerPacksRequest>,
-  output: __S(582, __c72, 6) as any as S.Schema<StickerPackCollectionResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListStickerPacksRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<StickerPackCollectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9558,8 +9558,8 @@ export const listThreadMembers: API.OperationMethod<
   ListThreadMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<ListThreadMembersRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<ListThreadMembersResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListThreadMembersRequest>,
+  output: __S(4257, __c133, 1) as any as S.Schema<ListThreadMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9572,8 +9572,8 @@ export const listVoiceRegions: API.OperationMethod<
   ListVoiceRegionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<ListVoiceRegionsRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<ListVoiceRegionsResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListVoiceRegionsRequest>,
+  output: __S(4289, __c134, 1) as any as S.Schema<ListVoiceRegionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9586,8 +9586,8 @@ export const partnerSdkToken: API.OperationMethod<
   PartnerSdkTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<PartnerSdkTokenRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ProvisionalTokenResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<PartnerSdkTokenRequest>,
+  output: __S(9760, __c305, 0) as any as S.Schema<ProvisionalTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9600,8 +9600,8 @@ export const partnerSdkUnmergeProvisionalAccount: API.OperationMethod<
   PartnerSdkUnmergeProvisionalAccountError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9614,8 +9614,8 @@ export const pollExpire: API.OperationMethod<
   PollExpireError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<PollExpireRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<PollExpireRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9628,8 +9628,8 @@ export const previewPruneGuild: API.OperationMethod<
   PreviewPruneGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<PreviewPruneGuildRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<GuildPruneResponse>,
+  input: __S(4417, __c138, 1) as any as S.Schema<PreviewPruneGuildRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<GuildPruneResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9642,8 +9642,8 @@ export const pruneGuild: API.OperationMethod<
   PruneGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<PruneGuildRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<GuildPruneResponse>,
+  input: __S(4481, __c140, 1) as any as S.Schema<PruneGuildRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<GuildPruneResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9656,8 +9656,8 @@ export const putGuildsOnboarding: API.OperationMethod<
   PutGuildsOnboardingError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<PutGuildsOnboardingRequest>,
-  output: __S(600, __c75, 0) as any as S.Schema<GuildOnboardingResponse>,
+  input: __S(4516, __c141, 4) as any as S.Schema<PutGuildsOnboardingRequest>,
+  output: __S(4517, __c141, 5) as any as S.Schema<GuildOnboardingResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9671,8 +9671,8 @@ export const removeInviteTargetUser: API.OperationMethod<
   RemoveInviteTargetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<RemoveInviteTargetUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RemoveInviteTargetUserResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<RemoveInviteTargetUserRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<RemoveInviteTargetUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9685,8 +9685,8 @@ export const revokeInvite: API.OperationMethod<
   RevokeInviteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<RevokeInviteRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<RevokeInviteResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<RevokeInviteRequest>,
+  output: __S(4770, __c149, 2) as any as S.Schema<RevokeInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9699,8 +9699,8 @@ export const searchGuild: API.OperationMethod<
   SearchGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<SearchGuildRequest>,
-  output: __S(615, __c76, 7) as any as S.Schema<GuildSearchResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<SearchGuildRequest>,
+  output: __S(4810, __c150, 10) as any as S.Schema<GuildSearchResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9713,8 +9713,8 @@ export const searchGuildMembers: API.OperationMethod<
   SearchGuildMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<SearchGuildMembersRequest>,
-  output: __S(617, __c77, 1) as any as S.Schema<SearchGuildMembersResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<SearchGuildMembersRequest>,
+  output: __S(4833, __c151, 1) as any as S.Schema<SearchGuildMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9727,8 +9727,8 @@ export const searchThread: API.OperationMethod<
   SearchThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<SearchThreadRequest>,
-  output: __S(620, __c77, 4) as any as S.Schema<ThreadSearchResponse>,
+  input: __S(4865, __c152, 1) as any as S.Schema<SearchThreadRequest>,
+  output: __S(4866, __c152, 2) as any as S.Schema<ThreadSearchResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9741,8 +9741,8 @@ export const sendSoundboardSound: API.OperationMethod<
   SendSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<SendSoundboardSoundRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<SendSoundboardSoundResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<SendSoundboardSoundRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<SendSoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9755,8 +9755,8 @@ export const setChannelPermissionOverwrite: API.OperationMethod<
   SetChannelPermissionOverwriteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<SetChannelPermissionOverwriteRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<SetChannelPermissionOverwriteResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<SetChannelPermissionOverwriteRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<SetChannelPermissionOverwriteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9769,8 +9769,8 @@ export const setGuildApplicationCommandPermissions: API.OperationMethod<
   SetGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623, __c77, 7) as any as S.Schema<SetGuildApplicationCommandPermissionsRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<CommandPermissionsResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<SetGuildApplicationCommandPermissionsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<CommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9783,8 +9783,8 @@ export const syncGuildTemplate: API.OperationMethod<
   SyncGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<SyncGuildTemplateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<SyncGuildTemplateRequest>,
+  output: __S(7207, __c225, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9797,8 +9797,8 @@ export const triggerTypingIndicator: API.OperationMethod<
   TriggerTypingIndicatorError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<TriggerTypingIndicatorRequest>,
-  output: __S(626, __c78, 2) as any as S.Schema<TriggerTypingIndicatorResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<TriggerTypingIndicatorRequest>,
+  output: __S(5025, __c157, 1) as any as S.Schema<TriggerTypingIndicatorResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9811,8 +9811,8 @@ export const unbanUserFromGuild: API.OperationMethod<
   UnbanUserFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(627, __c78, 3) as any as S.Schema<UnbanUserFromGuildRequest2>,
-  output: __S(13, __c1, 5) as any as S.Schema<UnbanUserFromGuildResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<UnbanUserFromGuildRequest2>,
+  output: __S(6688, __c209, 0) as any as S.Schema<UnbanUserFromGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9825,8 +9825,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(10051, __c314, 3) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9839,8 +9839,8 @@ export const updateApplicationCommand: API.OperationMethod<
   UpdateApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<UpdateApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(5186, __c162, 2) as any as S.Schema<UpdateApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9853,8 +9853,8 @@ export const updateApplicationEmoji: API.OperationMethod<
   UpdateApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<UpdateApplicationEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<UpdateApplicationEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9867,8 +9867,12 @@ export const updateApplicationRoleConnectionsMetadata: API.OperationMethod<
   UpdateApplicationRoleConnectionsMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataResponse>,
+  input: __S(5251, __c164, 3) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataRequest>,
+  output: __S(
+    10210,
+    __c319,
+    2,
+  ) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9881,8 +9885,8 @@ export const updateApplicationUserRoleConnection: API.OperationMethod<
   UpdateApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<UpdateApplicationUserRoleConnectionRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<UpdateApplicationUserRoleConnectionRequest>,
+  output: __S(10272, __c321, 0) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9895,8 +9899,8 @@ export const updateAutoModerationRule: API.OperationMethod<
   UpdateAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(643, __c80, 3) as any as S.Schema<UpdateAutoModerationRuleRequest>,
-  output: __S(645, __c80, 5) as any as S.Schema<UpdateAutoModerationRuleResponse>,
+  input: __S(5313, __c166, 1) as any as S.Schema<UpdateAutoModerationRuleRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<UpdateAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9909,8 +9913,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647, __c80, 7) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(649, __c81, 1) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(5345, __c167, 1) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(5347, __c167, 3) as any as S.Schema<UpdateChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9923,8 +9927,8 @@ export const updateGuild: API.OperationMethod<
   UpdateGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<UpdateGuildRequest>,
-  output: __S(651, __c81, 3) as any as S.Schema<GuildResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<UpdateGuildRequest>,
+  output: __S(5377, __c168, 1) as any as S.Schema<GuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9937,8 +9941,8 @@ export const updateGuildApplicationCommand: API.OperationMethod<
   UpdateGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<UpdateGuildApplicationCommandRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
+  input: __S(5410, __c169, 2) as any as S.Schema<UpdateGuildApplicationCommandRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9951,8 +9955,8 @@ export const updateGuildEmoji: API.OperationMethod<
   UpdateGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<UpdateGuildEmojiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<UpdateGuildEmojiRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9966,8 +9970,8 @@ export const updateGuildIncidentActions: API.OperationMethod<
   UpdateGuildIncidentActionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<UpdateGuildIncidentActionsRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<GuildIncidentsDataResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<UpdateGuildIncidentActionsRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<GuildIncidentsDataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9980,8 +9984,8 @@ export const updateGuildMember: API.OperationMethod<
   UpdateGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c82, 1) as any as S.Schema<UpdateGuildMemberRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<UpdateGuildMemberRequest>,
+  output: __S(4640, __c145, 0) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -9994,8 +9998,8 @@ export const updateGuildRole: API.OperationMethod<
   UpdateGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658, __c82, 2) as any as S.Schema<UpdateGuildRoleRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<UpdateGuildRoleRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10008,8 +10012,8 @@ export const updateGuildScheduledEvent: API.OperationMethod<
   UpdateGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<UpdateGuildScheduledEventRequest>,
-  output: __S(662, __c82, 6) as any as S.Schema<UpdateGuildScheduledEventResponse>,
+  input: __S(5601, __c175, 1) as any as S.Schema<UpdateGuildScheduledEventRequest>,
+  output: __S(5603, __c175, 3) as any as S.Schema<UpdateGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10023,8 +10027,8 @@ export const updateGuildScheduledEventException: API.OperationMethod<
   UpdateGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663, __c82, 7) as any as S.Schema<UpdateGuildScheduledEventExceptionRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GuildScheduledEventExceptionResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<UpdateGuildScheduledEventExceptionRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<GuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10037,8 +10041,8 @@ export const updateGuildSoundboardSound: API.OperationMethod<
   UpdateGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664, __c83, 0) as any as S.Schema<UpdateGuildSoundboardSoundRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<UpdateGuildSoundboardSoundRequest>,
+  output: __S(7072, __c221, 0) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10051,8 +10055,8 @@ export const updateGuildSticker: API.OperationMethod<
   UpdateGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665, __c83, 1) as any as S.Schema<UpdateGuildStickerRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<UpdateGuildStickerRequest>,
+  output: __S(7136, __c223, 0) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10065,8 +10069,8 @@ export const updateGuildTemplate: API.OperationMethod<
   UpdateGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(666, __c83, 2) as any as S.Schema<UpdateGuildTemplateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<UpdateGuildTemplateRequest>,
+  output: __S(7207, __c225, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10079,8 +10083,8 @@ export const updateGuildWelcomeScreen: API.OperationMethod<
   UpdateGuildWelcomeScreenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669, __c83, 5) as any as S.Schema<UpdateGuildWelcomeScreenRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
+  input: __S(5762, __c180, 2) as any as S.Schema<UpdateGuildWelcomeScreenRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10093,8 +10097,8 @@ export const updateGuildWidgetSettings: API.OperationMethod<
   UpdateGuildWidgetSettingsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(670, __c83, 6) as any as S.Schema<UpdateGuildWidgetSettingsRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<WidgetSettingsResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<UpdateGuildWidgetSettingsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<WidgetSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10108,8 +10112,8 @@ export const updateInviteTargetUsers: API.OperationMethod<
   UpdateInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<UpdateInviteTargetUsersRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateInviteTargetUsersResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<UpdateInviteTargetUsersRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<UpdateInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10123,8 +10127,12 @@ export const updateLobbyMessageExternalModerationMetadata: API.OperationMethod<
   UpdateLobbyMessageExternalModerationMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataResponse>,
+  input: __S(
+    5920,
+    __c185,
+    0,
+  ) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10137,8 +10145,8 @@ export const updateMessage: API.OperationMethod<
   UpdateMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(675, __c84, 3) as any as S.Schema<UpdateMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(5954, __c186, 2) as any as S.Schema<UpdateMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10151,8 +10159,8 @@ export const updateMyApplication: API.OperationMethod<
   UpdateMyApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<UpdateMyApplicationRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<UpdateMyApplicationRequest>,
+  output: __S(10051, __c314, 3) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10165,8 +10173,8 @@ export const updateMyGuildMember: API.OperationMethod<
   UpdateMyGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<UpdateMyGuildMemberRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<PrivateGuildMemberResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<UpdateMyGuildMemberRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<PrivateGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10179,8 +10187,8 @@ export const updateMyUser: API.OperationMethod<
   UpdateMyUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<UpdateMyUserRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<UserPIIResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<UpdateMyUserRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<UserPIIResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10193,8 +10201,8 @@ export const updateOriginalWebhookMessage: API.OperationMethod<
   UpdateOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<UpdateOriginalWebhookMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(6082, __c190, 2) as any as S.Schema<UpdateOriginalWebhookMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10207,8 +10215,8 @@ export const updateSelfVoiceState: API.OperationMethod<
   UpdateSelfVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682, __c85, 2) as any as S.Schema<UpdateSelfVoiceStateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateSelfVoiceStateResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<UpdateSelfVoiceStateRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<UpdateSelfVoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10221,8 +10229,8 @@ export const updateStageInstance: API.OperationMethod<
   UpdateStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683, __c85, 3) as any as S.Schema<UpdateStageInstanceRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
+  input: __S(6144, __c192, 0) as any as S.Schema<UpdateStageInstanceRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10236,8 +10244,12 @@ export const updateUserMessageExternalModerationMetadata: API.OperationMethod<
   UpdateUserMessageExternalModerationMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684, __c85, 4) as any as S.Schema<UpdateUserMessageExternalModerationMetadataRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateUserMessageExternalModerationMetadataResponse>,
+  input: __S(
+    6208,
+    __c194,
+    0,
+  ) as any as S.Schema<UpdateUserMessageExternalModerationMetadataRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateUserMessageExternalModerationMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10251,8 +10263,8 @@ export const updateVoiceChannelStatus: API.OperationMethod<
   UpdateVoiceChannelStatusError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685, __c85, 5) as any as S.Schema<UpdateVoiceChannelStatusRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateVoiceChannelStatusResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<UpdateVoiceChannelStatusRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateVoiceChannelStatusResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10265,8 +10277,8 @@ export const updateVoiceState: API.OperationMethod<
   UpdateVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<UpdateVoiceStateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateVoiceStateResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<UpdateVoiceStateRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<UpdateVoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10279,8 +10291,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(687, __c85, 7) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(689, __c86, 1) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(6306, __c197, 2) as any as S.Schema<UpdateWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10293,8 +10305,8 @@ export const updateWebhookByToken: API.OperationMethod<
   UpdateWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(690, __c86, 2) as any as S.Schema<UpdateWebhookByTokenRequest>,
-  output: __S(692, __c86, 4) as any as S.Schema<UpdateWebhookByTokenResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<UpdateWebhookByTokenRequest>,
+  output: __S(6338, __c198, 2) as any as S.Schema<UpdateWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10307,8 +10319,8 @@ export const updateWebhookMessage: API.OperationMethod<
   UpdateWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695, __c86, 7) as any as S.Schema<UpdateWebhookMessageRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
+  input: __S(6370, __c199, 2) as any as S.Schema<UpdateWebhookMessageRequest>,
+  output: __S(7878, __c246, 6) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10321,8 +10333,8 @@ export const uploadApplicationAttachment: API.OperationMethod<
   UploadApplicationAttachmentError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<UploadApplicationAttachmentRequest>,
-  output: __S(698, __c87, 2) as any as S.Schema<ActivitiesAttachmentResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<UploadApplicationAttachmentRequest>,
+  output: __S(6402, __c200, 2) as any as S.Schema<ActivitiesAttachmentResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10343,60 +10355,6 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "AddGroupDmUserRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          asset: S.String,
-          sku_id: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "UserAvatarDecorationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sku_id: S.NullOr(S.String),
-          asset: S.String,
-          label: S.String,
-          palette: S.String,
-        }),
-      ).annotate({ identifier: "UserNameplateResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nameplate: S.NullOr(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "UserCollectiblesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          identity_guild_id: S.NullOr(S.String),
-          identity_enabled: S.NullOr(S.Boolean),
-          tag: S.NullOr(S.String),
-          badge: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "UserPrimaryGuildResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          username: S.String,
-          avatar: S.NullOr(S.String),
-          discriminator: S.String,
-          public_flags: S.Number,
-          flags: S.Number,
-          bot: S.optional(S.Boolean),
-          system: S.optional(S.Boolean),
-          banner: S.optional(S.NullOr(S.String)),
-          accent_color: S.optional(S.NullOr(S.Number)),
-          global_name: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
-          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
-          primary_guild: S.NullOr(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "UserResponse" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
@@ -10415,166 +10373,15 @@ function __c0(j: number): any {
           ],
         ]),
       );
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddGroupDmUserResponse",
+      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddGroupDmUserResponse",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          nick: S.optional(S.NullOr(S.String)),
-          roles: S.optional(S.NullOr(__S(9, __c1, 1))),
-          mute: S.optional(S.NullOr(S.Boolean)),
-          deaf: S.optional(S.NullOr(S.Boolean)),
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          flags: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 })),
-      ).annotate({ identifier: "AddGuildMemberRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
-          banner: S.NullOr(S.String),
-          communication_disabled_until: S.NullOr(S.String),
-          flags: S.Number,
-          joined_at: S.String,
-          nick: S.NullOr(S.String),
-          pending: S.Boolean,
-          premium_since: S.NullOr(S.String),
-          roles: __S(9, __c1, 1),
-          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
-          user: __S(5, __c0, 5),
-          mute: S.Boolean,
-          deaf: S.Boolean,
-        }),
-      ).annotate({ identifier: "GuildMemberResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          role_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/guilds/{guild_id}/members/{user_id}/roles/{role_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddGuildMemberRoleRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddGuildMemberRoleResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/invites/{code}/target-users/{user_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddInviteTargetUserRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          flags: S.optional(S.NullOr(S.Number)),
-          additional_name: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PUT", uri: "/lobbies/{lobby_id}/members/{user_id}", code: 200 })),
-      ).annotate({ identifier: "AddLobbyMemberRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadata: S.NullOr(__S(15, __c1, 7)),
-          flags: S.Number,
-          additional_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LobbyMemberResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          emoji_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddMyMessageReactionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/channels/{channel_id}/thread-members/{user_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "AddThreadMemberRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          delete_message_seconds: S.optional(S.NullOr(S.Number)),
-          delete_message_days: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/bans/{user_id}", code: 200 })),
-      ).annotate({ identifier: "BanUserFromGuildRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisional_user_id: S.optional(S.NullOr(S.String)),
-          external_user_id: S.String,
-          preferred_global_name: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/partner-sdk/token/bot", code: 200 })),
-      ).annotate({
-        identifier: "BotPartnerSdkTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          token_type: S.String,
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          expires_in: S.Number,
-          scope: S.String,
-          id_token: S.String,
-          refresh_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          scopes: S.optional(S.NullOr(__S(9, __c1, 1))),
-          expires_at_s: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ProvisionalTokenResponse" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           external_user_id: S.String,
@@ -10590,4214 +10397,21 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "BotPartnerSdkUnmergeProvisionalAccountResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String.pipe(T.Label()),
-          user_ids: __S(9, __c1, 1),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-add", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BulkAddInviteTargetUsersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_ids: __S(9, __c1, 1),
-          delete_message_seconds: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/bulk-ban", code: 200 })),
-      ).annotate({
-        identifier: "BulkBanUsersFromGuildRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          banned_users: __S(9, __c1, 1),
-          failed_users: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "BulkBanUsersResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          messages: __S(9, __c1, 1),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/channels/{channel_id}/messages/bulk-delete", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BulkDeleteMessagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String.pipe(T.Label()),
-          user_ids: __S(9, __c1, 1),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-delete", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BulkRemoveInviteTargetUsersRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "file_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "channel_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "min_length",
-            "max_length",
-            "choices",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-        ]),
-      );
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          options: S.optional(S.NullOr(__S(33, __c4, 1))),
-          default_member_permissions: S.optional(S.NullOr(S.Number)),
-          dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
-          handler: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.Number)),
-          id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ApplicationCommandUpdateRequest",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          body: S.NullOr(__S(35, __c4, 3)).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/applications/{application_id}/commands", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BulkSetApplicationCommandsRequest",
-      });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "file_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "channel_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_length",
-            "max_length",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localized",
-            "name_localizations",
-            "description",
-            "description_localized",
-            "description_localizations",
-            "required",
-          ],
-        ]),
-      );
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          application_id: S.String,
-          version: S.String,
-          default_member_permissions: S.NullOr(S.String),
-          type: S.Number,
-          name: S.String,
-          name_localized: S.optional(S.String),
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          description: S.String,
-          description_localized: S.optional(S.String),
-          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          guild_id: S.optional(S.String),
-          dm_permission: S.optional(S.Boolean),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(__S(30, __c3, 6)),
-          options: S.optional(__S(38, __c4, 6)),
-          nsfw: S.optional(S.Boolean),
-          handler: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ApplicationCommandResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() => __S(40, __c5, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BulkSetApplicationCommandsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          guild_id: S.String.pipe(T.Label()),
-          body: S.NullOr(__S(35, __c4, 3)).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/applications/{application_id}/guilds/{guild_id}/commands",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkSetGuildApplicationCommandsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          position: S.optional(S.NullOr(S.Number)),
-          parent_id: S.optional(S.NullOr(S.String)),
-          lock_permissions: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "BulkUpdateGuildChannelsRequestBodyItem",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          body: __S(44, __c5, 4).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/channels", code: 200 })),
-      ).annotate({
-        identifier: "BulkUpdateGuildChannelsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BulkUpdateGuildChannelsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          position: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "UpdateRolePositionsRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          body: __S(48, __c6, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/roles", code: 200 })),
-      ).annotate({
-        identifier: "BulkUpdateGuildRolesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          primary_color: S.Number,
-          secondary_color: S.NullOr(S.Number),
-          tertiary_color: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "GuildRoleColorsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          premium_subscriber: S.optional(S.NullOr(S.Unknown)),
-          bot_id: S.optional(S.String),
-          integration_id: S.optional(S.String),
-          subscription_listing_id: S.optional(S.String),
-          available_for_purchase: S.optional(S.NullOr(S.Unknown)),
-          guild_connections: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "GuildRoleTagsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          permissions: S.String,
-          position: S.Number,
-          color: S.Number,
-          colors: __S(50, __c6, 2),
-          hoist: S.Boolean,
-          managed: S.Boolean,
-          mentionable: S.Boolean,
-          icon: S.NullOr(S.String),
-          unicode_emoji: S.NullOr(S.String),
-          tags: S.optional(__S(51, __c6, 3)),
-          flags: S.Number,
-        }),
-      ).annotate({ identifier: "GuildRoleResponse" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BulkUpdateGuildRolesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          flags: S.optional(S.NullOr(S.Number)),
-          additional_name: S.optional(S.NullOr(S.String)),
-          remove_member: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "BulkLobbyMemberRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          body: S.NullOr(__S(56, __c7, 0)).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/members/bulk", code: 200 })),
-      ).annotate({
-        identifier: "BulkUpdateLobbyMembersRequest",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BulkUpdateLobbyMembersResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          entitlement_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/applications/{application_id}/entitlements/{entitlement_id}/consume",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ConsumeEntitlementRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_exception_ids: S.optional(__S(61, __c7, 5).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/users/counts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CountGuildScheduledEventUsersRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Number);
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_scheduled_event_count: S.Number,
-          guild_scheduled_event_exception_counts: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "ScheduledEventUserCountResponse",
-      });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "file_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "channel_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "min_length",
-            "max_length",
-            "choices",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-        ]),
-      );
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          name: S.String,
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          options: S.optional(S.NullOr(__S(66, __c8, 2))),
-          default_member_permissions: S.optional(S.NullOr(S.Number)),
-          dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
-          handler: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/applications/{application_id}/commands", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateApplicationCommandRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          name: S.String,
-          image: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/applications/{application_id}/emojis", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateApplicationEmojiRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          user: S.optional(__S(5, __c0, 5)),
-          roles: __S(9, __c1, 1),
-          require_colons: S.Boolean,
-          managed: S.Boolean,
-          animated: S.Boolean,
-          available: S.Boolean,
-        }),
-      ).annotate({ identifier: "EmojiResponse" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "name",
-            "event_type",
-            "actions",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_type",
-            "trigger_metadata",
-          ],
-          [
-            "name",
-            "event_type",
-            "actions",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_type",
-            "trigger_metadata",
-          ],
-          [
-            "name",
-            "event_type",
-            "actions",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_type",
-            "trigger_metadata",
-          ],
-          [
-            "name",
-            "event_type",
-            "actions",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_type",
-            "trigger_metadata",
-          ],
-          [
-            "name",
-            "event_type",
-            "actions",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_type",
-            "trigger_metadata",
-          ],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          body: __S(70, __c8, 6).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/guilds/{guild_id}/auto-moderation/rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateAutoModerationRuleRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-        ]),
-      );
-    case 1:
-      return S.suspend(() => __S(72, __c9, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateAutoModerationRuleResponse",
-      });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["max_age"],
-          [
-            "max_age",
-            "temporary",
-            "max_uses",
-            "unique",
-            "target_user_id",
-            "target_application_id",
-            "target_type",
-            "role_ids",
-            "target_user_ids",
-          ],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          body: __S(74, __c9, 2).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/invites", code: 200 })),
-      ).annotate({
-        identifier: "CreateChannelInviteRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: __S(76, __c9, 4),
-          permissions: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationOAuth2InstallParamsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2_install_params: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ApplicationIntegrationTypeConfigurationResponse",
-      });
-    case 7:
-      return S.Record(S.String, __S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_scheduled_event_id: S.String,
-          guild_scheduled_event_exception_id: S.optional(S.NullOr(S.String)),
-          user_id: S.String,
-          user: S.optional(__S(5, __c0, 5)),
-          member: S.optional(__S(11, __c1, 3)),
-          response: S.Number,
-        }),
-      ).annotate({
-        identifier: "ScheduledEventUserResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          event_id: S.String,
-          event_exception_id: S.String,
-          scheduled_start_time: S.NullOr(S.String),
-          scheduled_end_time: S.NullOr(S.String),
-          is_canceled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GuildScheduledEventExceptionResponse",
-      });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "type",
-            "code",
-            "inviter",
-            "max_age",
-            "created_at",
-            "expires_at",
-            "friends_count",
-            "channel",
-            "is_contact",
-            "uses",
-            "max_uses",
-            "flags",
-          ],
-          [
-            "type",
-            "code",
-            "inviter",
-            "max_age",
-            "created_at",
-            "expires_at",
-            "channel",
-            "approximate_member_count",
-          ],
-          [
-            "type",
-            "code",
-            "inviter",
-            "max_age",
-            "created_at",
-            "expires_at",
-            "is_contact",
-            "flags",
-            "guild",
-            "guild_id",
-            "channel",
-            "target_type",
-            "target_user",
-            "target_application",
-            "guild_scheduled_event",
-            "target_channel_id",
-            "target_message_id",
-            "uses",
-            "max_uses",
-            "temporary",
-            "approximate_member_count",
-            "approximate_presence_count",
-            "is_nickname_changeable",
-            "roles",
-          ],
-        ]),
-      );
-    case 3:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateChannelInviteResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/channels/{channel_id}/pins/{message_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDeprecatedPinRequest",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recipient_id: S.optional(S.NullOr(S.String)),
-          access_tokens: S.optional(S.NullOr(__S(9, __c1, 1))),
-          nicks: S.optional(S.NullOr(__S(85, __c10, 5))),
-        }).pipe(T.Http({ method: "POST", uri: "/users/@me/channels", code: 200 })),
-      ).annotate({ identifier: "CreateDmRequest" });
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "recipients",
-            "name",
-            "icon",
-            "owner_id",
-            "managed",
-            "application_id",
-          ],
-        ]),
-      );
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(87, __c10, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDmResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          sku_id: S.String,
-          owner_id: S.String,
-          owner_type: S.Number,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/applications/{application_id}/entitlements", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateEntitlementRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          sku_id: S.String,
-          application_id: S.String,
-          user_id: S.String,
-          guild_id: S.optional(S.NullOr(S.String)),
-          deleted: S.Boolean,
-          starts_at: S.NullOr(S.String),
-          ends_at: S.NullOr(S.String),
-          type: S.Number,
-          fulfilled_at: S.optional(S.NullOr(S.String)),
-          fulfillment_status: S.optional(S.NullOr(S.Number)),
-          consumed: S.optional(S.Boolean),
-          gifter_user_id: S.optional(S.NullOr(S.String)),
-          parent_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "EntitlementResponse" });
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "file_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "channel_types",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "choices",
-            "min_value",
-            "max_value",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "autocomplete",
-            "min_length",
-            "max_length",
-            "choices",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-            "options",
-          ],
-          [
-            "type",
-            "name",
-            "name_localizations",
-            "description",
-            "description_localizations",
-            "required",
-          ],
-        ]),
-      );
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          guild_id: S.String.pipe(T.Label()),
-          name: S.String,
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
-          options: S.optional(S.NullOr(__S(92, __c11, 4))),
-          default_member_permissions: S.optional(S.NullOr(S.Number)),
-          dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
-          handler: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/applications/{application_id}/guilds/{guild_id}/commands",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGuildApplicationCommandRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.optional(S.NullOr(S.Number)),
-          allow: S.optional(S.NullOr(S.Number)),
-          deny: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ChannelPermissionOverwriteRequest",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          emoji_id: S.optional(S.NullOr(S.String)),
-          emoji_name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "UpdateDefaultReactionEmojiRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          emoji_id: S.optional(S.NullOr(S.String)),
-          emoji_name: S.optional(S.NullOr(S.String)),
-          moderated: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "CreateOrUpdateThreadTagRequest",
-      });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(97, __c12, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          type: S.optional(S.NullOr(S.Number)),
-          name: S.String,
-          position: S.optional(S.NullOr(S.Number)),
-          topic: S.optional(S.NullOr(S.String)),
-          bitrate: S.optional(S.NullOr(S.Number)),
-          user_limit: S.optional(S.NullOr(S.Number)),
-          nsfw: S.optional(S.NullOr(S.Boolean)),
-          rate_limit_per_user: S.optional(S.NullOr(S.Number)),
-          parent_id: S.optional(S.NullOr(S.String)),
-          permission_overwrites: S.optional(S.NullOr(__S(95, __c11, 7))),
-          rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(S.NullOr(S.Number)),
-          default_auto_archive_duration: S.optional(S.NullOr(S.Number)),
-          default_reaction_emoji: S.optional(S.NullOr(__S(96, __c12, 0))),
-          default_thread_rate_limit_per_user: S.optional(S.NullOr(S.Number)),
-          default_sort_order: S.optional(S.NullOr(S.Number)),
-          default_forum_layout: S.optional(S.NullOr(S.Number)),
-          default_tag_setting: S.optional(S.NullOr(S.String)),
-          available_tags: S.optional(S.NullOr(__S(98, __c12, 2))),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/channels", code: 200 })),
-      ).annotate({
-        identifier: "CreateGuildChannelRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          allow: S.String,
-          deny: S.String,
-        }),
-      ).annotate({
-        identifier: "ChannelPermissionOverwriteResponse",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          moderated: S.Boolean,
-          emoji_id: S.NullOr(S.String),
-          emoji_name: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ForumTagResponse" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          emoji_id: S.NullOr(S.String),
-          emoji_name: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultReactionEmojiResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          last_message_id: S.optional(S.NullOr(S.String)),
-          flags: S.Number,
-          last_pin_timestamp: S.optional(S.NullOr(S.String)),
-          guild_id: S.String,
-          name: S.String,
-          parent_id: S.optional(S.NullOr(S.String)),
-          rate_limit_per_user: S.optional(S.Number),
-          bitrate: S.optional(S.Number),
-          user_limit: S.optional(S.Number),
-          rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(S.Number),
-          permissions: S.optional(S.String),
-          topic: S.optional(S.NullOr(S.String)),
-          default_auto_archive_duration: S.optional(S.Number),
-          default_thread_rate_limit_per_user: S.optional(S.Number),
-          position: S.Number,
-          permission_overwrites: S.optional(__S(101, __c12, 5)),
-          nsfw: S.optional(S.Boolean),
-          available_tags: S.optional(__S(103, __c12, 7)),
-          default_reaction_emoji: S.optional(S.NullOr(__S(104, __c13, 0))),
-          default_sort_order: S.optional(S.NullOr(S.Number)),
-          default_forum_layout: S.optional(S.Number),
-          default_tag_setting: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GuildChannelResponse" });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          name: S.String,
-          image: S.String,
-          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/emojis", code: 200 })),
-      ).annotate({ identifier: "CreateGuildEmojiRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primary_color: S.optional(S.NullOr(S.Number)),
-          secondary_color: S.optional(S.NullOr(S.Number)),
-          tertiary_color: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "RoleColors" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(S.Number)),
-          color: S.optional(S.NullOr(S.Number)),
-          colors: S.optional(S.NullOr(__S(108, __c13, 4))),
-          hoist: S.optional(S.NullOr(S.Boolean)),
-          mentionable: S.optional(S.NullOr(S.Boolean)),
-          icon: S.optional(S.NullOr(S.String)),
-          unicode_emoji: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/roles", code: 200 })),
-      ).annotate({ identifier: "CreateGuildRoleRequest" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "name",
-            "description",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "privacy_level",
-            "entity_type",
-            "channel_id",
-            "recurrence_rule",
-            "entity_metadata",
-          ],
-          [
-            "name",
-            "description",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "privacy_level",
-            "entity_type",
-            "channel_id",
-            "recurrence_rule",
-            "entity_metadata",
-          ],
-          [
-            "name",
-            "description",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "privacy_level",
-            "entity_type",
-            "channel_id",
-            "recurrence_rule",
-            "entity_metadata",
-          ],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          body: __S(110, __c13, 6).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/scheduled-events", code: 200 })),
-      ).annotate({
-        identifier: "CreateGuildScheduledEventRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "guild_id",
-            "name",
-            "description",
-            "channel_id",
-            "creator_id",
-            "creator",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "status",
-            "entity_type",
-            "entity_id",
-            "recurrence_rule",
-            "user_count",
-            "privacy_level",
-            "user_rsvp",
-            "guild_scheduled_event_exceptions",
-            "entity_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "name",
-            "description",
-            "channel_id",
-            "creator_id",
-            "creator",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "status",
-            "entity_type",
-            "entity_id",
-            "recurrence_rule",
-            "user_count",
-            "privacy_level",
-            "user_rsvp",
-            "guild_scheduled_event_exceptions",
-            "entity_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "name",
-            "description",
-            "channel_id",
-            "creator_id",
-            "creator",
-            "image",
-            "scheduled_start_time",
-            "scheduled_end_time",
-            "status",
-            "entity_type",
-            "entity_id",
-            "recurrence_rule",
-            "user_count",
-            "privacy_level",
-            "user_rsvp",
-            "guild_scheduled_event_exceptions",
-            "entity_metadata",
-          ],
-        ]),
-      );
-    case 1:
-      return S.suspend(() => __S(112, __c14, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateGuildScheduledEventResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_id: S.String.pipe(T.Label()),
-          scheduled_start_time: S.optional(S.NullOr(S.String)),
-          scheduled_end_time: S.optional(S.NullOr(S.String)),
-          original_scheduled_start_time: S.String,
-          is_canceled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/exceptions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGuildScheduledEventExceptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          name: S.String,
-          volume: S.optional(S.NullOr(S.Number)),
-          emoji_id: S.optional(S.NullOr(S.String)),
-          emoji_name: S.optional(S.NullOr(S.String)),
-          sound: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/soundboard-sounds", code: 200 })),
-      ).annotate({
-        identifier: "CreateGuildSoundboardSoundRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          sound_id: S.String,
-          volume: S.Number,
-          emoji_id: S.NullOr(S.String),
-          emoji_name: S.NullOr(S.String),
-          guild_id: S.optional(S.String),
-          available: S.Boolean,
-          user: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "SoundboardSoundResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          name: S.String,
-          tags: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          file: S.Unknown.pipe(T.FormDataFile()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/guilds/{guild_id}/stickers",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGuildStickerRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          tags: S.String,
-          type: S.Number,
-          format_type: S.NullOr(S.Number),
-          description: S.NullOr(S.String),
-          available: S.Boolean,
-          guild_id: S.String,
-          user: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "GuildStickerResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/templates", code: 200 })),
-      ).annotate({
-        identifier: "CreateGuildTemplateRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          permissions: S.String,
-          color: S.Number,
-          colors: S.NullOr(__S(50, __c6, 2)),
-          hoist: S.Boolean,
-          mentionable: S.Boolean,
-          icon: S.NullOr(S.String),
-          unicode_emoji: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GuildTemplateRoleResponse",
-      });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.NullOr(S.Number),
-          name: S.String,
-          emoji_id: S.NullOr(S.String),
-          emoji_name: S.NullOr(S.String),
-          moderated: S.NullOr(S.Boolean),
-        }),
-      ).annotate({ identifier: "GuildTemplateChannelTags" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.NullOr(S.Number),
-          type: S.Number,
-          name: S.NullOr(S.String),
-          position: S.NullOr(S.Number),
-          topic: S.NullOr(S.String),
-          bitrate: S.Number,
-          user_limit: S.Number,
-          nsfw: S.Boolean,
-          rate_limit_per_user: S.Number,
-          parent_id: S.NullOr(S.String),
-          default_auto_archive_duration: S.NullOr(S.Number),
-          permission_overwrites: __S(101, __c12, 5),
-          available_tags: S.NullOr(__S(123, __c15, 3)),
-          template: S.String,
-          default_reaction_emoji: S.NullOr(__S(104, __c13, 0)),
-          default_thread_rate_limit_per_user: S.NullOr(S.Number),
-          default_sort_order: S.NullOr(S.Number),
-          default_forum_layout: S.NullOr(S.Number),
-          default_tag_setting: S.NullOr(S.String),
-          theme_color: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GuildTemplateChannelResponse",
-      });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.NullOr(S.String),
-          region: S.NullOr(S.String),
-          verification_level: S.Number,
-          default_message_notifications: S.Number,
-          explicit_content_filter: S.Number,
-          preferred_locale: S.String,
-          afk_channel_id: S.NullOr(S.String),
-          afk_timeout: S.Number,
-          system_channel_id: S.NullOr(S.String),
-          system_channel_flags: S.Number,
-          roles: __S(121, __c15, 1),
-          channels: __S(125, __c15, 5),
-        }),
-      ).annotate({
-        identifier: "GuildTemplateSnapshotResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          name: S.String,
-          description: S.NullOr(S.String),
-          usage_count: S.Number,
-          creator_id: S.String,
-          creator: S.NullOr(__S(5, __c0, 5)),
-          created_at: S.String,
-          updated_at: S.String,
-          source_guild_id: S.String,
-          serialized_source_guild: __S(126, __c15, 6),
-          is_dirty: S.NullOr(S.Boolean),
-        }),
-      ).annotate({ identifier: "GuildTemplateResponse" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          icon_url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RichEmbedAuthor" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.NullOr(S.String)),
-          width: S.optional(S.NullOr(S.Number)),
-          height: S.optional(S.NullOr(S.Number)),
-          placeholder: S.optional(S.NullOr(S.String)),
-          placeholder_version: S.optional(S.NullOr(S.Number)),
-          is_animated: S.optional(S.NullOr(S.Boolean)),
-          description: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RichEmbedImage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.NullOr(S.String)),
-          icon_url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RichEmbedFooter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-          inline: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "RichEmbedField" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RichEmbedProvider" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          title: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(S.Number)),
-          timestamp: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          author: S.optional(S.NullOr(__S(128, __c16, 0))),
-          image: S.optional(S.NullOr(__S(129, __c16, 1))),
-          thumbnail: S.optional(S.NullOr(__S(129, __c16, 1))),
-          footer: S.optional(S.NullOr(__S(130, __c16, 2))),
-          fields: S.optional(S.NullOr(__S(132, __c16, 4))),
-          provider: S.optional(S.NullOr(__S(133, __c16, 5))),
-          video: S.optional(S.NullOr(__S(129, __c16, 1))),
-        }),
-      ).annotate({ identifier: "RichEmbed" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parse: S.optional(S.NullOr(__S(136, __c17, 0))),
-          users: S.optional(S.NullOr(__S(106, __c13, 2))),
-          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
-          replied_user: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "MessageAllowedMentionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          filename: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          duration_secs: S.optional(S.NullOr(S.Number)),
-          waveform: S.optional(S.NullOr(S.String)),
-          title: S.optional(S.NullOr(S.String)),
-          is_spoiler: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "MessageAttachmentRequest" });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          animated: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "PollEmoji" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.NullOr(S.String)),
-          emoji: S.optional(S.NullOr(__S(140, __c17, 4))),
-        }),
-      ).annotate({ identifier: "PollMedia" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          poll_media: __S(141, __c17, 5),
-        }),
-      ).annotate({ identifier: "PollAnswerCreateRequest" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          question: __S(141, __c17, 5),
-          answers: __S(143, __c17, 7),
-          allow_multiselect: S.optional(S.NullOr(S.Boolean)),
-          layout_type: S.optional(S.NullOr(S.Number)),
-          duration: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "PollCreateRequest" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "data"],
-          ["type", "data"],
-          ["type"],
-          ["type", "data"],
-          ["type"],
-          ["type", "data"],
-          ["type", "data"],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          interaction_id: S.String.pipe(T.Label()),
-          interaction_token: S.String.pipe(T.Label()),
-          with_response: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(145, __c18, 1).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/interactions/{interaction_id}/{interaction_token}/callback",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInteractionResponseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          activity_instance_id: S.optional(S.NullOr(S.String)),
-          response_message_id: S.optional(S.String),
-          response_message_loading: S.optional(S.Boolean),
-          response_message_ephemeral: S.optional(S.Boolean),
-          channel_id: S.optional(S.String),
-          guild_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InteractionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          icon: S.NullOr(S.String),
-          description: S.String,
-          type: S.NullOr(S.Number),
-          cover_image: S.optional(S.String),
-          primary_sku_id: S.optional(S.String),
-          flags: S.Number,
-          flags_new: S.String,
-          bot: S.optional(__S(5, __c0, 5)),
-          slug: S.optional(S.String),
-          vibegrations_project_id: S.optional(S.String),
-          guild_id: S.optional(S.String),
-          rpc_origins: S.optional(__S(9, __c1, 1)),
-          bot_public: S.optional(S.Boolean),
-          bot_require_code_grant: S.optional(S.Boolean),
-          terms_of_service_url: S.optional(S.String),
-          privacy_policy_url: S.optional(S.String),
-          custom_install_url: S.optional(S.String),
-          install_params: S.optional(__S(77, __c9, 5)),
-          integration_types_config: S.optional(__S(79, __c9, 7)),
-          verify_key: S.String,
-          max_participants: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "ApplicationResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          filename: S.String,
-          size: S.Number,
-          url: S.String,
-          proxy_url: S.String,
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          duration_secs: S.optional(S.Number),
-          waveform: S.optional(S.String),
-          description: S.optional(S.String),
-          content_type: S.optional(S.String),
-          ephemeral: S.optional(S.Boolean),
-          flags: S.optional(S.Number),
-          placeholder: S.optional(S.String),
-          placeholder_version: S.optional(S.Number),
-          title: S.optional(S.NullOr(S.String)),
-          application: S.optional(__S(148, __c18, 4)),
-          clip_created_at: S.optional(S.String),
-          clip_participants: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "MessageAttachmentResponse",
-      });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-          inline: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "MessageEmbedFieldResponse",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          url: S.optional(S.String),
-          icon_url: S.optional(S.String),
-          proxy_icon_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MessageEmbedAuthorResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MessageEmbedProviderResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          proxy_url: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          content_type: S.optional(S.String),
-          placeholder: S.optional(S.String),
-          placeholder_version: S.optional(S.Number),
-          description: S.optional(S.String),
-          flags: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MessageEmbedImageResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.String,
-          icon_url: S.optional(S.String),
-          proxy_icon_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MessageEmbedFooterResponse",
-      });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "file", "name", "size", "spoiler"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          id: S.Number,
-          accent_color: S.NullOr(S.Number),
-          components: __S(158, __c19, 6),
-          spoiler: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ContainerComponentResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          url: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          color: S.optional(S.Number),
-          timestamp: S.optional(S.String),
-          fields: S.optional(__S(152, __c19, 0)),
-          author: S.optional(__S(153, __c19, 1)),
-          provider: S.optional(__S(154, __c19, 2)),
-          image: S.optional(__S(155, __c19, 3)),
-          thumbnail: S.optional(__S(155, __c19, 3)),
-          video: S.optional(__S(155, __c19, 3)),
-          footer: S.optional(__S(156, __c19, 4)),
-          flags: S.optional(S.NullOr(S.Number)),
-          components: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({ identifier: "MessageEmbedResponse" });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "accent_color", "components", "spoiler"],
-          ["type", "id", "file", "name", "size", "spoiler"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          tags: S.String,
-          type: S.Number,
-          format_type: S.NullOr(S.Number),
-          description: S.NullOr(S.String),
-          pack_id: S.String,
-          sort_value: S.Number,
-        }),
-      ).annotate({ identifier: "StandardStickerResponse" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "name",
-            "tags",
-            "type",
-            "format_type",
-            "description",
-            "available",
-            "guild_id",
-            "user",
-          ],
-          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
-        ]),
-      );
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          format_type: S.Number,
-        }),
-      ).annotate({
-        identifier: "MessageStickerItemResponse",
-      });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ended_timestamp: S.optional(S.NullOr(S.String)),
-          participants: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "MessageCallResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          party_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessageActivityResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          icon: S.NullOr(S.String),
-          description: S.String,
-          type: S.NullOr(S.Number),
-          cover_image: S.optional(S.String),
-          primary_sku_id: S.optional(S.String),
-          flags: S.Number,
-          flags_new: S.String,
-          bot: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BasicApplicationResponseWithBot",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          name: S.String,
-          user: S.optional(__S(5, __c0, 5)),
-          name_localized: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MessageInteractionResponse",
-      });
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          channel_id: S.String,
-          message_id: S.optional(S.String),
-          guild_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessageReferenceResponse" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          archived: S.Boolean,
-          archive_timestamp: S.NullOr(S.String),
-          auto_archive_duration: S.Number,
-          locked: S.Boolean,
-          create_timestamp: S.optional(S.String),
-          invitable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ThreadMetadataResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          user_id: S.String,
-          join_timestamp: S.String,
-          flags: S.Number,
-          member: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ThreadMemberResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          last_message_id: S.optional(S.NullOr(S.String)),
-          flags: S.Number,
-          last_pin_timestamp: S.optional(S.NullOr(S.String)),
-          guild_id: S.String,
-          name: S.String,
-          parent_id: S.optional(S.NullOr(S.String)),
-          rate_limit_per_user: S.optional(S.Number),
-          bitrate: S.optional(S.Number),
-          user_limit: S.optional(S.Number),
-          rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(S.Number),
-          permissions: S.optional(S.String),
-          owner_id: S.String,
-          thread_metadata: __S(176, __c22, 0),
-          message_count: S.Number,
-          member_count: S.Number,
-          total_message_sent: S.Number,
-          applied_tags: S.optional(__S(9, __c1, 1)),
-          member: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "ThreadResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          type: S.Number,
-          guild_id: S.String,
-        }),
-      ).annotate({
-        identifier: "MessageMentionChannelResponse",
-      });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          role_subscription_listing_id: S.String,
-          tier_name: S.String,
-          total_months_subscribed: S.Number,
-          is_renewal: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "MessageRoleSubscriptionDataResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          listing_id: S.String,
-          product_name: S.String,
-        }),
-      ).annotate({
-        identifier: "GuildProductPurchaseResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          guild_product_purchase: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "PurchaseNotificationResponse",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
-          banner: S.NullOr(S.String),
-          communication_disabled_until: S.NullOr(S.String),
-          flags: S.Number,
-          joined_at: S.String,
-          nick: S.NullOr(S.String),
-          pending: S.Boolean,
-          premium_since: S.NullOr(S.String),
-          roles: __S(9, __c1, 1),
-          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({ identifier: "BasicGuildMemberResponse" });
-    case 2:
-      return S.Record(S.String, __S(185, __c23, 1));
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "guild_id",
-            "name",
-            "parent_id",
-            "rate_limit_per_user",
-            "bitrate",
-            "user_limit",
-            "rtc_region",
-            "video_quality_mode",
-            "permissions",
-            "topic",
-            "default_auto_archive_duration",
-            "default_thread_rate_limit_per_user",
-            "position",
-            "permission_overwrites",
-            "nsfw",
-            "available_tags",
-            "default_reaction_emoji",
-            "default_sort_order",
-            "default_forum_layout",
-            "default_tag_setting",
-          ],
-          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "recipients",
-            "name",
-            "icon",
-            "owner_id",
-            "managed",
-            "application_id",
-          ],
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "guild_id",
-            "name",
-            "parent_id",
-            "rate_limit_per_user",
-            "bitrate",
-            "user_limit",
-            "rtc_region",
-            "video_quality_mode",
-            "permissions",
-            "owner_id",
-            "thread_metadata",
-            "message_count",
-            "member_count",
-            "total_message_sent",
-            "applied_tags",
-            "member",
-          ],
-        ]),
-      );
-    case 4:
-      return S.Record(S.String, __S(187, __c23, 3));
-    case 5:
-      return S.Record(S.String, __S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          users: S.optional(S.NullOr(__S(184, __c23, 0))),
-          members: S.optional(S.NullOr(__S(186, __c23, 2))),
-          channels: S.optional(S.NullOr(__S(188, __c23, 4))),
-          roles: S.optional(S.NullOr(__S(189, __c23, 5))),
-        }),
-      ).annotate({ identifier: "ResolvedObjectsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          animated: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "MessageReactionEmojiResponse",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          emoji: S.optional(__S(191, __c23, 7)),
-        }),
-      ).annotate({ identifier: "PollMediaResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          answer_id: S.Number,
-          poll_media: __S(192, __c24, 0),
-        }),
-      ).annotate({ identifier: "PollAnswerResponse" });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          count: S.Number,
-          me_voted: S.Boolean,
-        }),
-      ).annotate({ identifier: "PollResultsEntryResponse" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          answer_counts: __S(196, __c24, 4),
-          is_finalized: S.Boolean,
-        }),
-      ).annotate({ identifier: "PollResultsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          question: __S(192, __c24, 0),
-          answers: __S(194, __c24, 2),
-          expiry: S.String,
-          allow_multiselect: S.Boolean,
-          layout_type: S.Number,
-          results: __S(197, __c24, 5),
-        }),
-      ).annotate({ identifier: "PollResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          colors: __S(9, __c1, 1),
-          gradient_angle: S.Number,
-          base_mix: S.Number,
-          base_theme: S.Number,
-        }),
-      ).annotate({
-        identifier: "CustomClientThemeResponse",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "target_user",
-            "target_message_id",
-          ],
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "interacted_message_id",
-          ],
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "triggering_interaction_metadata",
-          ],
-        ]),
-      );
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "accent_color", "components", "spoiler"],
-          ["type", "id", "file", "name", "size", "spoiler"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "name",
-            "tags",
-            "type",
-            "format_type",
-            "description",
-            "available",
-            "guild_id",
-            "user",
-          ],
-          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
-        ]),
-      );
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          content: S.String,
-          mentions: __S(6, __c0, 6),
-          mention_roles: __S(9, __c1, 1),
-          attachments: __S(150, __c18, 6),
-          embeds: __S(162, __c20, 2),
-          timestamp: S.String,
-          edited_timestamp: S.NullOr(S.String),
-          flags: S.Number,
-          components: __S(202, __c25, 2),
-          stickers: S.optional(__S(204, __c25, 4)),
-          sticker_items: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "MinimalContentMessageResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: __S(205, __c25, 5),
-        }),
-      ).annotate({ identifier: "MessageSnapshotResponse" });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          additional_name: S.String,
-        }),
-      ).annotate({
-        identifier: "MessageLobbyMemberResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          burst: S.Number,
-          normal: S.Number,
-        }),
-      ).annotate({
-        identifier: "MessageReactionCountDetailsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          emoji: __S(191, __c23, 7),
-          count: S.Number,
-          count_details: __S(209, __c26, 1),
-          burst_colors: __S(9, __c1, 1),
-          me_burst: S.Boolean,
-          me: S.Boolean,
-        }),
-      ).annotate({ identifier: "MessageReactionResponse" });
-    case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "accent_color", "components", "spoiler"],
-          ["type", "id", "file", "name", "size", "spoiler"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "name",
-            "tags",
-            "type",
-            "format_type",
-            "description",
-            "available",
-            "guild_id",
-            "user",
-          ],
-          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
-        ]),
-      );
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "target_user",
-            "target_message_id",
-          ],
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "interacted_message_id",
-          ],
-          [
-            "id",
-            "type",
-            "user",
-            "authorizing_integration_owners",
-            "original_response_message_id",
-            "triggering_interaction_metadata",
-          ],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          content: S.String,
-          mentions: __S(6, __c0, 6),
-          mention_roles: __S(9, __c1, 1),
-          attachments: __S(150, __c18, 6),
-          embeds: __S(162, __c20, 2),
-          timestamp: S.String,
-          edited_timestamp: S.NullOr(S.String),
-          flags: S.Number,
-          components: __S(213, __c26, 5),
-          stickers: S.optional(__S(215, __c26, 7)),
-          sticker_items: S.optional(__S(169, __c21, 1)),
-          id: S.String,
-          channel_id: S.String,
-          author: __S(5, __c0, 5),
-          pinned: S.Boolean,
-          mention_everyone: S.Boolean,
-          tts: S.Boolean,
-          call: S.optional(__S(170, __c21, 2)),
-          activity: S.optional(__S(171, __c21, 3)),
-          application: S.optional(__S(172, __c21, 4)),
-          application_id: S.optional(S.String),
-          interaction: S.optional(__S(173, __c21, 5)),
-          nonce: S.optional(__S(216, __c27, 0)),
-          webhook_id: S.optional(S.String),
-          message_reference: S.optional(__S(175, __c21, 7)),
-          thread: S.optional(__S(178, __c22, 2)),
-          mention_channels: S.optional(__S(180, __c22, 4)),
-          role_subscription_data: S.optional(__S(181, __c22, 5)),
-          purchase_notification: S.optional(__S(183, __c22, 7)),
-          position: S.optional(S.Number),
-          resolved: S.optional(__S(190, __c23, 6)),
-          poll: S.optional(__S(198, __c24, 6)),
-          shared_client_theme: S.optional(__S(199, __c24, 7)),
-          interaction_metadata: S.optional(__S(217, __c27, 1)),
-          message_snapshots: S.optional(__S(207, __c25, 7)),
-          lobby_member: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({ identifier: "BasicMessageResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          content: S.String,
-          mentions: __S(6, __c0, 6),
-          mention_roles: __S(9, __c1, 1),
-          attachments: __S(150, __c18, 6),
-          embeds: __S(162, __c20, 2),
-          timestamp: S.String,
-          edited_timestamp: S.NullOr(S.String),
-          flags: S.Number,
-          components: __S(164, __c20, 4),
-          stickers: S.optional(__S(167, __c20, 7)),
-          sticker_items: S.optional(__S(169, __c21, 1)),
-          id: S.String,
-          channel_id: S.String,
-          author: __S(5, __c0, 5),
-          pinned: S.Boolean,
-          mention_everyone: S.Boolean,
-          tts: S.Boolean,
-          call: S.optional(__S(170, __c21, 2)),
-          activity: S.optional(__S(171, __c21, 3)),
-          application: S.optional(__S(172, __c21, 4)),
-          application_id: S.optional(S.String),
-          interaction: S.optional(__S(173, __c21, 5)),
-          nonce: S.optional(__S(174, __c21, 6)),
-          webhook_id: S.optional(S.String),
-          message_reference: S.optional(__S(175, __c21, 7)),
-          thread: S.optional(__S(178, __c22, 2)),
-          mention_channels: S.optional(__S(180, __c22, 4)),
-          role_subscription_data: S.optional(__S(181, __c22, 5)),
-          purchase_notification: S.optional(__S(183, __c22, 7)),
-          position: S.optional(S.Number),
-          resolved: S.optional(__S(190, __c23, 6)),
-          poll: S.optional(__S(198, __c24, 6)),
-          shared_client_theme: S.optional(__S(199, __c24, 7)),
-          interaction_metadata: S.optional(__S(200, __c25, 0)),
-          message_snapshots: S.optional(__S(207, __c25, 7)),
-          lobby_member: S.optional(__S(208, __c26, 0)),
-          reactions: S.optional(__S(211, __c26, 3)),
-          referenced_message: S.optional(S.NullOr(__S(218, __c27, 2))),
-        }),
-      ).annotate({ identifier: "MessageResponse" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "message"],
-          ["type", "activity_instance"],
-          ["type", "message"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          interaction: __S(147, __c18, 3),
-          resource: S.optional(__S(220, __c27, 4)),
-        }),
-      ).annotate({
-        identifier: "InteractionCallbackResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/members/@me/invites", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateLinkedLobbyGuildInviteForSelfRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-        }),
-      ).annotate({ identifier: "LobbyGuildInviteResponse" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/lobbies/{lobby_id}/members/{user_id}/invites",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLinkedLobbyGuildInviteForUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          flags: S.optional(S.NullOr(S.Number)),
-          additional_name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LobbyMemberRequest" });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          members: S.optional(S.NullOr(__S(226, __c28, 2))),
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          flags: S.optional(S.NullOr(S.Number)),
-          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/lobbies", code: 200 })),
-      ).annotate({ identifier: "CreateLobbyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          application_id: S.String,
-          metadata: S.NullOr(__S(15, __c1, 7)),
-          members: __S(58, __c7, 2),
-          linked_channel: S.optional(__S(105, __c13, 1)),
-          flags: S.Number,
-          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LobbyResponse" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "accent_color", "components", "spoiler"],
-          ["type", "id", "spoiler", "file"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          colors: __S(9, __c1, 1),
-          gradient_angle: S.Number,
-          base_mix: S.Number,
-          base_theme: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CustomClientThemeShareRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.optional(S.NullOr(S.String)),
-          channel_id: S.optional(S.NullOr(S.String)),
-          message_id: S.String,
-          fail_if_not_exists: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "MessageReferenceRequest" });
-    case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
-          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          components: S.optional(S.NullOr(__S(230, __c28, 6))),
-          flags: S.optional(S.NullOr(S.Number)),
-          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
-          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
-          shared_client_theme: S.optional(S.NullOr(__S(231, __c28, 7))),
-          message_reference: S.optional(S.NullOr(__S(232, __c29, 0))),
-          nonce: S.optional(S.NullOr(__S(233, __c29, 1))),
-          enforce_nonce: S.optional(S.NullOr(S.Boolean)),
-          tts: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/messages", code: 200 })),
-      ).annotate({
-        identifier: "CreateLobbyMessageRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.Number,
-          content: S.String,
-          lobby_id: S.String,
-          channel_id: S.String,
-          author: __S(5, __c0, 5),
-          lobby_member: S.optional(__S(208, __c26, 0)),
-          metadata: S.optional(__S(15, __c1, 7)),
-          moderation_metadata: S.optional(__S(15, __c1, 7)),
-          flags: S.Number,
-          application_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LobbyMessageResponse" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["type", "id", "components"],
-          ["type", "id", "accent_color", "components", "spoiler"],
-          ["type", "id", "spoiler", "file"],
-          ["type", "id", "items"],
-          ["type", "id", "components", "accessory"],
-          ["type", "id", "spacing", "divider"],
-          ["type", "id", "content"],
-        ]),
-      );
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
-          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          components: S.optional(S.NullOr(__S(237, __c29, 5))),
-          flags: S.optional(S.NullOr(S.Number)),
-          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
-          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
-          shared_client_theme: S.optional(S.NullOr(__S(231, __c28, 7))),
-          message_reference: S.optional(S.NullOr(__S(232, __c29, 0))),
-          nonce: S.optional(S.NullOr(__S(238, __c29, 6))),
-          enforce_nonce: S.optional(S.NullOr(S.Boolean)),
-          tts: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/messages", code: 200 })),
-      ).annotate({ identifier: "CreateMessageRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          lobby_metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          member_metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          secret: S.String.pipe(T.SensitiveValue({})),
-          flags: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/lobbies", code: 200 })),
-      ).annotate({ identifier: "CreateOrJoinLobbyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/channels/{channel_id}/messages/pins/{message_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreatePinRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          topic: S.String,
-          channel_id: S.String,
-          privacy_level: S.optional(S.NullOr(S.Number)),
-          guild_scheduled_event_id: S.optional(S.NullOr(S.String)),
-          send_start_notification: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/stage-instances", code: 200 })),
-      ).annotate({
-        identifier: "CreateStageInstanceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String,
-          channel_id: S.String,
-          topic: S.String,
-          privacy_level: S.Number,
-          id: S.String,
-          discoverable_disabled: S.Boolean,
-          guild_scheduled_event_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "StageInstanceResponse" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["name", "auto_archive_duration", "rate_limit_per_user", "applied_tags", "message"],
-          ["name", "auto_archive_duration", "rate_limit_per_user", "type", "invitable"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          body: __S(244, __c30, 4).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/threads", code: 200 })),
-      ).annotate({ identifier: "CreateThreadRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          name: S.String,
-          auto_archive_duration: S.optional(S.NullOr(S.Number)),
-          rate_limit_per_user: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/channels/{channel_id}/messages/{message_id}/threads",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateThreadFromMessageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          name: S.String,
-          avatar: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.NullOr(S.String),
-          avatar: S.NullOr(S.String),
-          channel_id: S.NullOr(S.String),
-          guild_id: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          name: S.String,
-          type: S.Number,
-          user: S.optional(__S(5, __c0, 5)),
-          token: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuildIncomingWebhookResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/channels/{channel_id}/messages/{message_id}/crosspost",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CrosspostMessageRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/{message_id}/reactions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAllMessageReactionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          emoji_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAllMessageReactionsByEmojiRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          command_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/applications/{application_id}/commands/{command_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationCommandRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          emoji_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/applications/{application_id}/emojis/{emoji_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationEmojiRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/@me/applications/{application_id}/role-connection",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationUserRoleConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          rule_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/auto-moderation/rules/{rule_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutoModerationRuleRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/channels/{channel_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteChannelRequest" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "guild_id",
-            "name",
-            "parent_id",
-            "rate_limit_per_user",
-            "bitrate",
-            "user_limit",
-            "rtc_region",
-            "video_quality_mode",
-            "permissions",
-            "topic",
-            "default_auto_archive_duration",
-            "default_thread_rate_limit_per_user",
-            "position",
-            "permission_overwrites",
-            "nsfw",
-            "available_tags",
-            "default_reaction_emoji",
-            "default_sort_order",
-            "default_forum_layout",
-            "default_tag_setting",
-          ],
-          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "recipients",
-            "name",
-            "icon",
-            "owner_id",
-            "managed",
-            "application_id",
-          ],
-          [
-            "id",
-            "type",
-            "last_message_id",
-            "flags",
-            "last_pin_timestamp",
-            "guild_id",
-            "name",
-            "parent_id",
-            "rate_limit_per_user",
-            "bitrate",
-            "user_limit",
-            "rtc_region",
-            "video_quality_mode",
-            "permissions",
-            "owner_id",
-            "thread_metadata",
-            "message_count",
-            "member_count",
-            "total_message_sent",
-            "applied_tags",
-            "member",
-          ],
-        ]),
-      );
-    case 2:
-      return S.suspend(() => __S(257, __c32, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteChannelResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          overwrite_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/permissions/{overwrite_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteChannelPermissionOverwriteRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/channels/{channel_id}/pins/{message_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDeprecatedPinRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          entitlement_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/applications/{application_id}/entitlements/{entitlement_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEntitlementRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/recipients/{user_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupDmUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          guild_id: S.String.pipe(T.Label()),
-          command_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildApplicationCommandRequest",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          emoji_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/emojis/{emoji_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteGuildEmojiRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          integration_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/integrations/{integration_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildIntegrationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteGuildMemberRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          role_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/members/{user_id}/roles/{role_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildMemberRoleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          role_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/roles/{role_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteGuildRoleRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildScheduledEventRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_id: S.String.pipe(T.Label()),
-          exception_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/exceptions/{exception_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildScheduledEventExceptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          sound_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/guilds/{guild_id}/soundboard-sounds/{sound_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildSoundboardSoundRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          sticker_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/stickers/{sticker_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildStickerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          code: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/templates/{code}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteGuildTemplateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/lobbies/{lobby_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteLobbyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/lobbies/{lobby_id}/members/{user_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteLobbyMemberRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/{message_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteMessageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          emoji_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMyMessageReactionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-          thread_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/webhooks/{webhook_id}/{webhook_token}/messages/@original",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOriginalWebhookMessageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/pins/{message_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeletePinRequest" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/stage-instances/{channel_id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteStageInstanceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/thread-members/{user_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteThreadMemberRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          emoji_name: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/{user_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUserMessageReactionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhook_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteWebhookByTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          thread_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWebhookMessageRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
-          members: S.optional(S.NullOr(__S(226, __c28, 2))),
-          flags: S.optional(S.NullOr(S.Number)),
-          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/lobbies/{lobby_id}", code: 200 })),
-      ).annotate({ identifier: "EditLobbyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lobby_id: S.String.pipe(T.Label()),
-          channel_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/lobbies/{lobby_id}/channel-linking", code: 200 })),
-      ).annotate({
-        identifier: "EditLobbyChannelLinkRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          login: S.String,
-          html_url: S.String,
-          avatar_url: S.String,
-        }),
-      ).annotate({ identifier: "GithubUser" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          html_url: S.String,
-          user: __S(288, __c36, 0),
-          commit_id: S.optional(S.NullOr(S.String)),
-          body: S.String,
-        }),
-      ).annotate({ identifier: "GithubComment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          number: S.Number,
-          html_url: S.String,
-          user: __S(288, __c36, 0),
-          title: S.String,
-          body: S.optional(S.NullOr(S.String)),
-          pull_request: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "GithubIssue" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          html_url: S.String,
-          name: S.String,
-          full_name: S.String,
-        }),
-      ).annotate({ identifier: "GithubRepository" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          tag_name: S.String,
-          html_url: S.String,
-          author: __S(288, __c36, 0),
-        }),
-      ).annotate({ identifier: "GithubRelease" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.NullOr(S.String)),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GithubAuthor" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-          message: S.String,
-          author: __S(293, __c36, 5),
-        }),
-      ).annotate({ identifier: "GithubCommit" });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user: __S(288, __c36, 0),
-          body: S.optional(S.NullOr(S.String)),
-          html_url: S.String,
-          state: S.String,
-        }),
-      ).annotate({ identifier: "GithubReview" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.Number,
-        }),
-      ).annotate({ identifier: "GithubCheckPullRequest" });
-    case 2:
-      return S.Array(__S(297, __c37, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GithubCheckApp" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conclusion: S.optional(S.NullOr(S.String)),
-          head_branch: S.optional(S.NullOr(S.String)),
-          head_sha: S.String,
-          pull_requests: S.optional(S.NullOr(__S(298, __c37, 2))),
-          app: __S(299, __c37, 3),
-        }),
-      ).annotate({ identifier: "GithubCheckSuite" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.NullOr(S.String)),
-          summary: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GithubCheckRunOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conclusion: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          html_url: S.String,
-          check_suite: __S(300, __c37, 4),
-          details_url: S.optional(S.NullOr(S.String)),
-          output: S.optional(S.NullOr(__S(301, __c37, 5))),
-          pull_requests: S.optional(S.NullOr(__S(298, __c37, 2))),
-        }),
-      ).annotate({ identifier: "GithubCheckRun" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          number: S.Number,
-          html_url: S.String,
-          answer_html_url: S.optional(S.NullOr(S.String)),
-          body: S.optional(S.NullOr(S.String)),
-          user: __S(288, __c36, 0),
-        }),
-      ).annotate({ identifier: "GithubDiscussion" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-          wait: S.optional(S.Boolean.pipe(T.Query())),
-          thread_id: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(S.NullOr(S.String)),
-          ref: S.optional(S.NullOr(S.String)),
-          ref_type: S.optional(S.NullOr(S.String)),
-          comment: S.optional(S.NullOr(__S(289, __c36, 1))),
-          issue: S.optional(S.NullOr(__S(290, __c36, 2))),
-          pull_request: S.optional(S.NullOr(__S(290, __c36, 2))),
-          repository: S.optional(S.NullOr(__S(291, __c36, 3))),
-          forkee: S.optional(S.NullOr(__S(291, __c36, 3))),
-          sender: __S(288, __c36, 0),
-          member: S.optional(S.NullOr(__S(288, __c36, 0))),
-          release: S.optional(S.NullOr(__S(292, __c36, 4))),
-          head_commit: S.optional(S.NullOr(__S(294, __c36, 6))),
-          commits: S.optional(S.NullOr(__S(295, __c36, 7))),
-          forced: S.optional(S.NullOr(S.Boolean)),
-          compare: S.optional(S.NullOr(S.String)),
-          review: S.optional(S.NullOr(__S(296, __c37, 0))),
-          check_run: S.optional(S.NullOr(__S(302, __c37, 6))),
-          check_suite: S.optional(S.NullOr(__S(300, __c37, 4))),
-          discussion: S.optional(S.NullOr(__S(303, __c37, 7))),
-          answer: S.optional(S.NullOr(__S(289, __c36, 1))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/webhooks/{webhook_id}/{webhook_token}/github",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteGithubCompatibleWebhookRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-          inline: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "WebhookSlackEmbedField" });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.NullOr(S.String)),
-          title_link: S.optional(S.NullOr(S.String)),
-          text: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(S.String)),
-          ts: S.optional(S.NullOr(S.Number)),
-          pretext: S.optional(S.NullOr(S.String)),
-          footer: S.optional(S.NullOr(S.String)),
-          footer_icon: S.optional(S.NullOr(S.String)),
-          author_name: S.optional(S.NullOr(S.String)),
-          author_link: S.optional(S.NullOr(S.String)),
-          author_icon: S.optional(S.NullOr(S.String)),
-          image_url: S.optional(S.NullOr(S.String)),
-          thumb_url: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(__S(306, __c38, 2))),
-        }),
-      ).annotate({ identifier: "WebhookSlackEmbed" });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-          wait: S.optional(S.Boolean.pipe(T.Query())),
-          thread_id: S.optional(S.String.pipe(T.Query())),
-          text: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          icon_url: S.optional(S.NullOr(S.String)),
-          attachments: S.optional(S.NullOr(__S(308, __c38, 4))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/webhooks/{webhook_id}/{webhook_token}/slack",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteSlackCompatibleWebhookRequest",
-      });
-    case 6:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ExecuteSlackCompatibleWebhookResponse",
-      });
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "content",
-            "embeds",
-            "allowed_mentions",
-            "components",
-            "attachments",
-            "poll",
-            "tts",
-            "flags",
-            "username",
-            "avatar_url",
-            "thread_name",
-            "applied_tags",
-          ],
-          ["content", "embeds", "allowed_mentions", "components", "attachments", "poll", "flags"],
-        ]),
-      );
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.String.pipe(T.Label()),
-          webhook_token: S.String.pipe(T.Label()),
-          wait: S.optional(S.Boolean.pipe(T.Query())),
-          thread_id: S.optional(S.String.pipe(T.Query())),
-          with_components: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(311, __c38, 7).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
-        ),
-      ).annotate({ identifier: "ExecuteWebhookRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          webhook_channel_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/followers", code: 200 })),
-      ).annotate({ identifier: "FollowChannelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          webhook_id: S.String,
-        }),
-      ).annotate({ identifier: "ChannelFollowerResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/threads/active", code: 200 })),
-      ).annotate({
-        identifier: "GetActiveGuildThreadsRequest",
-      });
-    case 4:
-      return S.Array(__S(178, __c22, 2));
-    case 5:
-      return S.Array(__S(177, __c22, 1));
-    case 6:
-      return S.Array(__S(219, __c27, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          threads: __S(316, __c39, 4),
-          members: __S(317, __c39, 5),
-          has_more: S.Boolean,
-          first_messages: S.optional(__S(318, __c39, 6)),
-        }),
-      ).annotate({ identifier: "ThreadsResponse" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String.pipe(T.Label()),
-          message_id: S.String.pipe(T.Label()),
-          answer_id: S.Number.pipe(T.Label()),
-          after: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/channels/{channel_id}/polls/{message_id}/answers/{answer_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAnswerVotersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          users: __S(6, __c0, 6),
-        }),
-      ).annotate({
-        identifier: "PollAnswerDetailsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/applications/{application_id}", code: 200 })),
-      ).annotate({ identifier: "GetApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          user: __S(5, __c0, 5),
-          team_id: S.String,
-          membership_state: S.Number,
-          role: S.String,
-          permissions: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "TeamMemberResponse" });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          icon: S.NullOr(S.String),
-          name: S.String,
-          owner_user_id: S.String,
-          members: __S(324, __c40, 4),
-        }),
-      ).annotate({ identifier: "TeamResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          icon: S.NullOr(S.String),
-          description: S.String,
-          type: S.NullOr(S.Number),
-          cover_image: S.optional(S.String),
-          primary_sku_id: S.optional(S.String),
-          flags: S.Number,
-          flags_new: S.String,
-          bot: S.optional(__S(5, __c0, 5)),
-          slug: S.optional(S.String),
-          vibegrations_project_id: S.optional(S.String),
-          guild_id: S.optional(S.String),
-          rpc_origins: S.optional(__S(9, __c1, 1)),
-          bot_public: S.optional(S.Boolean),
-          bot_require_code_grant: S.optional(S.Boolean),
-          terms_of_service_url: S.optional(S.String),
-          privacy_policy_url: S.optional(S.String),
-          custom_install_url: S.optional(S.String),
-          install_params: S.optional(__S(77, __c9, 5)),
-          integration_types_config: S.optional(__S(79, __c9, 7)),
-          verify_key: S.String,
-          max_participants: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(9, __c1, 1)),
-          redirect_uris: __S(9, __c1, 1),
-          interactions_endpoint_url: S.NullOr(S.String),
-          role_connections_verification_url: S.NullOr(S.String),
-          owner: __S(5, __c0, 5),
-          approximate_guild_count: S.Number,
-          approximate_user_install_count: S.Number,
-          approximate_user_authorization_count: S.Number,
-          event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_status: S.optional(S.Number),
-          event_webhooks_types: S.optional(__S(76, __c9, 4)),
-          explicit_content_filter: S.Number,
-          team: S.NullOr(__S(325, __c40, 5)),
-          eligible_oauth2_scopes: __S(76, __c9, 4),
-        }),
-      ).annotate({
-        identifier: "PrivateApplicationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          instance_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/applications/{application_id}/activity-instances/{instance_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationActivityInstanceRequest",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["id", "kind", "channel_id", "guild_id"],
-          ["id", "kind", "channel_id"],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String,
-          instance_id: S.String,
-          launch_id: S.String,
-          location: __S(328, __c41, 0),
-          users: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "EmbeddedActivityInstance" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          command_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/applications/{application_id}/commands/{command_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationCommandRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-          emoji_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/applications/{application_id}/emojis/{emoji_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationEmojiRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/applications/{application_id}/role-connections/metadata",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationRoleConnectionsMetadataRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Number,
-          key: S.String,
-          name: S.String,
-          name_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
-          description: S.String,
-          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
-        }),
-      ).annotate({
-        identifier: "ApplicationRoleConnectionsMetadataItemResponse",
-      });
-    case 6:
-      return S.Array(__S(333, __c41, 5));
-    case 7:
-      return S.suspend(() => __S(334, __c41, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetApplicationRoleConnectionsMetadataResponse",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          application_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/@me/applications/{application_id}/role-connection",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationUserRoleConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          platform_name: S.optional(S.String),
-          platform_username: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "ApplicationUserRoleConnectionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String.pipe(T.Label()),
-          rule_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/guilds/{guild_id}/auto-moderation/rules/{rule_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAutoModerationRuleRequest",
-      });
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-          [
-            "id",
-            "guild_id",
-            "creator_id",
-            "name",
-            "event_type",
-            "actions",
-            "trigger_type",
-            "enabled",
-            "exempt_roles",
-            "exempt_channels",
-            "trigger_metadata",
-          ],
-        ]),
-      );
-    case 4:
-      return S.suspend(() => __S(339, __c42, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAutoModerationRuleResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gateway/bot", code: 200 })),
       ).annotate({ identifier: "GetBotGatewayRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           max_concurrency: S.Number,
@@ -14808,17 +10422,17 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GatewayBotSessionStartLimitResponse",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          session_start_limit: __S(342, __c42, 6),
+          session_start_limit: __S(97, __c3, 1),
           shards: S.Number,
         }),
       ).annotate({ identifier: "GatewayBotResponse" });
   }
 }
-function __c43(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14896,16 +10510,20 @@ function __c43(j: number): any {
         ]),
       );
     case 2:
-      return S.suspend(() => __S(345, __c43, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(129, __c4, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetChannelResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          sku_ids: S.optional(__S(347, __c43, 3).pipe(T.Query())),
+          sku_ids: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           exclude_consumed: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -14917,13 +10535,21 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetCurrentUserApplicationEntitlementsRequest",
       });
-    case 5:
-      return S.Array(__S(90, __c11, 2));
-    case 6:
-      return S.suspend(() => __S(349, __c43, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(192, __c6, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCurrentUserApplicationEntitlementsResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6560, __c205, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -14938,7 +10564,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetEntitlementRequest" });
   }
 }
-function __c44(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
@@ -14947,7 +10573,7 @@ function __c44(j: number): any {
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           user_id: S.optional(S.String.pipe(T.Query())),
-          sku_ids: S.optional(__S(352, __c44, 0).pipe(T.Query())),
+          sku_ids: S.optional(__S(256, __c8, 0).pipe(T.Query())),
           guild_id: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -14960,43 +10586,34 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "GetEntitlementsRequest" });
     case 2:
-      return S.suspend(() => __S(349, __c43, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(192, __c6, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEntitlementsResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gateway", code: 200 })),
       ).annotate({ identifier: "GetGatewayRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "GatewayResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           with_counts: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}", code: 200 })),
       ).annotate({ identifier: "GetGuildRequest" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          invites_disabled_until: S.NullOr(S.String),
-          dms_disabled_until: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GuildIncidentsDataResponse",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15007,7 +10624,7 @@ function __c45(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: __S(76, __c9, 4),
+          features: __S(7936, __c248, 0),
           banner: S.NullOr(S.String),
           owner_id: S.String,
           application_id: S.NullOr(S.String),
@@ -15019,7 +10636,7 @@ function __c45(j: number): any {
           widget_enabled: S.Boolean,
           widget_channel_id: S.NullOr(S.String),
           verification_level: S.Number,
-          roles: __S(53, __c6, 5),
+          roles: __S(3680, __c115, 0),
           default_message_notifications: S.Number,
           mfa_level: S.Number,
           explicit_content_filter: S.Number,
@@ -15038,14 +10655,43 @@ function __c45(j: number): any {
           premium_progress_bar_enabled_user_updated_at: S.optional(S.NullOr(S.String)),
           nsfw: S.Boolean,
           nsfw_level: S.Number,
-          emojis: __S(358, __c44, 6),
-          stickers: __S(359, __c44, 7),
-          incidents_data: S.NullOr(__S(360, __c45, 0)),
+          emojis: __S(352, __c11, 0),
+          stickers: __S(384, __c12, 0),
+          incidents_data: S.NullOr(__S(416, __c13, 0)),
           approximate_member_count: S.optional(S.NullOr(S.Number)),
           approximate_presence_count: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GuildWithCountsResponse" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5824, __c182, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7136, __c223, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invites_disabled_until: S.NullOr(S.String),
+          dms_disabled_until: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GuildIncidentsDataResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -15061,7 +10707,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetGuildApplicationCommandRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -15077,7 +10727,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetGuildApplicationCommandPermissionsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15087,20 +10741,24 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "CommandPermissionResponse",
       });
-    case 5:
-      return S.Array(__S(364, __c45, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           application_id: S.String,
           guild_id: S.String,
-          permissions: __S(365, __c45, 5),
+          permissions: __S(513, __c16, 1),
         }),
       ).annotate({
         identifier: "CommandPermissionsResponse",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15109,23 +10767,46 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetGuildBanRequest" });
   }
 }
-function __c46(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          user: __S(5, __c0, 5),
+          user: __S(4608, __c144, 0),
           reason: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GuildBanResponse" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String.pipe(T.Label()),
+          user_ids: __S(4672, __c146, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-add", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BulkAddInviteTargetUsersRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           emoji_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/emojis/{emoji_id}", code: 200 })),
       ).annotate({ identifier: "GetGuildEmojiRequest" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15137,7 +10818,22 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetGuildJoinRequestsRequest",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(706, __c22, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.optional(S.Number),
+          guild_join_requests: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "GuildJoinRequestsListResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["field_type", "label", "description", "required", "choices", "response"],
@@ -15146,9 +10842,9 @@ function __c46(j: number): any {
           ["field_type", "label", "description", "required", "placeholder", "response"],
         ]),
       );
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15158,25 +10854,14 @@ function __c46(j: number): any {
           rejection_reason: S.NullOr(S.String),
           guild_id: S.String,
           user_id: S.String,
-          user: S.optional(S.NullOr(__S(5, __c0, 5))),
-          form_responses: S.optional(S.NullOr(__S(372, __c46, 4))),
-          actioned_by_user: S.optional(S.NullOr(__S(5, __c0, 5))),
+          user: S.optional(S.NullOr(__S(4608, __c144, 0))),
+          form_responses: S.optional(S.NullOr(__S(705, __c22, 1))),
+          actioned_by_user: S.optional(S.NullOr(__S(4608, __c144, 0))),
         }),
       ).annotate({ identifier: "GuildJoinRequestResponse" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.optional(S.Number),
-          guild_join_requests: S.optional(__S(374, __c46, 6)),
-        }),
-      ).annotate({
-        identifier: "GuildJoinRequestsListResponse",
-      });
   }
 }
-function __c47(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15185,7 +10870,11 @@ function __c47(j: number): any {
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 })),
       ).annotate({ identifier: "GetGuildMemberRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15193,14 +10882,55 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetGuildNewMemberWelcomeRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          author_ids: __S(9, __c1, 1),
+          author_ids: __S(4672, __c146, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "WelcomeMessageResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          action_type: S.Number,
+          title: S.String,
+          description: S.String,
+          emoji: S.optional(__S(800, __c25, 0)),
+          icon: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewMemberActionResponse" });
     case 3:
+      return S.Array(__S(770, __c24, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          title: S.String,
+          emoji: S.optional(__S(800, __c25, 0)),
+          icon: S.optional(S.String),
+          description: S.String,
+        }),
+      ).annotate({ identifier: "ResourceChannelResponse" });
+    case 5:
+      return S.Array(__S(772, __c24, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String,
+          enabled: S.Boolean,
+          welcome_message: S.optional(__S(769, __c24, 1)),
+          new_member_actions: __S(771, __c24, 3),
+          resource_channels: __S(773, __c24, 5),
+        }),
+      ).annotate({
+        identifier: "GuildHomeSettingsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -15208,54 +10938,17 @@ function __c47(j: number): any {
           animated: S.Boolean,
         }),
       ).annotate({ identifier: "SettingsEmojiResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          action_type: S.Number,
-          title: S.String,
-          description: S.String,
-          emoji: S.optional(__S(379, __c47, 3)),
-          icon: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewMemberActionResponse" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          title: S.String,
-          emoji: S.optional(__S(379, __c47, 3)),
-          icon: S.optional(S.String),
-          description: S.String,
-        }),
-      ).annotate({ identifier: "ResourceChannelResponse" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
   }
 }
-function __c48(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String,
-          enabled: S.Boolean,
-          welcome_message: S.optional(__S(378, __c47, 2)),
-          new_member_actions: __S(381, __c47, 5),
-          resource_channels: __S(383, __c47, 7),
-        }),
-      ).annotate({
-        identifier: "GuildHomeSettingsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/preview", code: 200 })),
       ).annotate({ identifier: "GetGuildPreviewRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15265,21 +10958,29 @@ function __c48(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: __S(76, __c9, 4),
+          features: __S(7936, __c248, 0),
           approximate_member_count: S.Number,
           approximate_presence_count: S.Number,
-          emojis: __S(358, __c44, 6),
-          stickers: __S(359, __c44, 7),
+          emojis: __S(352, __c11, 0),
+          stickers: __S(384, __c12, 0),
         }),
       ).annotate({ identifier: "GuildPreviewResponse" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           role_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/roles/{role_id}", code: 200 })),
       ).annotate({ identifier: "GetGuildRoleRequest" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15295,7 +10996,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetGuildScheduledEventRequest",
       });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -15363,11 +11064,15 @@ function __c48(j: number): any {
           ],
         ]),
       );
-    case 6:
-      return S.suspend(() => __S(389, __c48, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(897, __c28, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGuildScheduledEventResponse",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15375,9 +11080,21 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetGuildsOnboardingRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String,
+          prompts: __S(963, __c30, 3),
+          default_channel_ids: __S(4672, __c146, 0),
+          enabled: S.Boolean,
+          mode: S.Number,
+        }),
+      ).annotate({
+        identifier: "UserGuildOnboardingResponse",
+      });
   }
 }
-function __c49(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15385,21 +11102,21 @@ function __c49(j: number): any {
           id: S.String,
           title: S.String,
           description: S.String,
-          emoji: __S(379, __c47, 3),
-          role_ids: __S(9, __c1, 1),
-          channel_ids: __S(9, __c1, 1),
+          emoji: __S(800, __c25, 0),
+          role_ids: __S(4672, __c146, 0),
+          channel_ids: __S(4672, __c146, 0),
         }),
       ).annotate({
         identifier: "OnboardingPromptOptionResponse",
       });
     case 1:
-      return S.Array(__S(392, __c49, 0));
+      return S.Array(__S(960, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
-          options: __S(393, __c49, 1),
+          options: __S(961, __c30, 1),
           single_select: S.Boolean,
           required: S.Boolean,
           in_onboarding: S.Boolean,
@@ -15407,20 +11124,12 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "OnboardingPromptResponse" });
     case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          guild_id: S.String,
-          prompts: __S(395, __c49, 3),
-          default_channel_ids: __S(9, __c1, 1),
-          enabled: S.Boolean,
-          mode: S.Number,
-        }),
-      ).annotate({
-        identifier: "UserGuildOnboardingResponse",
-      });
-    case 5:
+      return S.Array(__S(962, __c30, 2));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15435,7 +11144,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetGuildSoundboardSoundRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15444,7 +11157,32 @@ function __c49(j: number): any {
           T.Http({ method: "GET", uri: "/guilds/{guild_id}/stickers/{sticker_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetGuildStickerRequest" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_ids: __S(4672, __c146, 0),
+          delete_message_seconds: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/bulk-ban", code: 200 })),
+      ).annotate({
+        identifier: "BulkBanUsersFromGuildRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          banned_users: __S(4672, __c146, 0),
+          failed_users: __S(4672, __c146, 0),
+        }),
+      ).annotate({ identifier: "BulkBanUsersResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -15452,7 +11190,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetGuildTemplateRequest" });
   }
 }
-function __c50(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15472,16 +11210,20 @@ function __c50(j: number): any {
         S.Struct({
           code: S.NullOr(S.String),
           uses: S.Number,
-          error: S.optional(S.NullOr(__S(401, __c50, 1))),
+          error: S.optional(S.NullOr(__S(1121, __c35, 1))),
         }),
       ).annotate({ identifier: "VanityURLResponse" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/webhooks", code: 200 })),
       ).annotate({ identifier: "GetGuildWebhooksRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -15511,13 +11253,17 @@ function __c50(j: number): any {
           ],
         ]),
       );
-    case 5:
-      return S.Array(__S(404, __c50, 4));
-    case 6:
-      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() => __S(1154, __c36, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGuildWebhooksResponse",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15527,7 +11273,7 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15541,23 +11287,27 @@ function __c51(j: number): any {
         identifier: "GuildWelcomeScreenChannelResponse",
       });
     case 1:
-      return S.Array(__S(408, __c51, 0));
+      return S.Array(__S(1216, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.NullOr(S.String),
-          welcome_channels: __S(409, __c51, 1),
+          welcome_channels: __S(1217, __c38, 1),
         }),
       ).annotate({
         identifier: "GuildWelcomeScreenResponse",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/widget.json", code: 200 })),
       ).annotate({ identifier: "GetGuildWidgetRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15565,9 +11315,9 @@ function __c51(j: number): any {
           position: S.Number,
         }),
       ).annotate({ identifier: "WidgetChannel" });
-    case 5:
-      return S.Array(__S(412, __c51, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15576,7 +11326,7 @@ function __c51(j: number): any {
           avatar: S.NullOr(S.Unknown),
           status: S.String,
           avatar_url: S.String,
-          activity: S.optional(__S(299, __c37, 3)),
+          activity: S.optional(__S(9632, __c301, 0)),
           deaf: S.optional(S.Boolean),
           mute: S.optional(S.Boolean),
           self_deaf: S.optional(S.Boolean),
@@ -15585,31 +11335,35 @@ function __c51(j: number): any {
           channel_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "WidgetMember" });
-    case 7:
-      return S.Array(__S(414, __c51, 6));
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1251, __c39, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           instant_invite: S.NullOr(S.String),
-          channels: __S(413, __c51, 5),
-          members: __S(415, __c51, 7),
+          channels: __S(1250, __c39, 2),
+          members: __S(1252, __c39, 4),
           presence_count: S.Number,
         }),
       ).annotate({ identifier: "WidgetResponse" });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           style: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/widget.png", code: 200 })),
       ).annotate({ identifier: "GetGuildWidgetPngRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -15617,14 +11371,22 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetGuildWidgetSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
           channel_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "WidgetSettingsResponse" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -15632,7 +11394,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetInviteTargetUsersRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -15642,7 +11408,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetInviteTargetUsersJobStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.Number,
@@ -15655,7 +11421,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "TargetUsersJobStatusResponse",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
@@ -15663,7 +11433,22 @@ function __c52(j: number): any {
       ).annotate({ identifier: "GetLobbyRequest" });
   }
 }
-function __c53(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          messages: __S(4672, __c146, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/channels/{channel_id}/messages/bulk-delete", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BulkDeleteMessagesRequest",
+      });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15673,12 +11458,16 @@ function __c53(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/lobbies/{lobby_id}/messages", code: 200 })),
       ).annotate({ identifier: "GetLobbyMessagesRequest" });
     case 1:
-      return S.Array(__S(235, __c29, 3));
+      return S.Array(__S(7520, __c235, 0));
     case 2:
-      return S.suspend(() => __S(425, __c53, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1505, __c47, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLobbyMessagesResponse",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -15687,21 +11476,33 @@ function __c53(j: number): any {
           T.Http({ method: "GET", uri: "/channels/{channel_id}/messages/{message_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetMessageRequest" });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/applications/@me", code: 200 })),
       ).annotate({ identifier: "GetMyApplicationRequest" });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/users/@me/guilds/{guild_id}/member", code: 200 })),
       ).annotate({ identifier: "GetMyGuildMemberRequest" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
+          avatar_decoration_data: S.optional(S.NullOr(__S(4576, __c143, 0))),
           banner: S.NullOr(S.String),
           communication_disabled_until: S.NullOr(S.String),
           flags: S.Number,
@@ -15709,9 +11510,9 @@ function __c53(j: number): any {
           nick: S.NullOr(S.String),
           pending: S.Boolean,
           premium_since: S.NullOr(S.String),
-          roles: __S(9, __c1, 1),
-          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
-          user: __S(5, __c0, 5),
+          roles: __S(4672, __c146, 0),
+          collectibles: S.optional(S.NullOr(__S(4578, __c143, 2))),
+          user: __S(4608, __c144, 0),
           mute: S.Boolean,
           deaf: S.Boolean,
           permissions: S.optional(S.String),
@@ -15719,7 +11520,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "PrivateGuildMemberResponse",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/oauth2/applications/@me", code: 200 })),
       ).annotate({
@@ -15727,7 +11532,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15738,19 +11543,27 @@ function __c54(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          application: __S(148, __c18, 4),
+          application: __S(7776, __c243, 0),
           expires: S.String,
-          scopes: __S(76, __c9, 4),
-          user: S.optional(__S(5, __c0, 5)),
+          scopes: __S(7936, __c248, 0),
+          user: S.optional(__S(4608, __c144, 0)),
         }),
       ).annotate({
         identifier: "OAuth2GetAuthorizationResponse",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/@me", code: 200 })),
       ).annotate({ identifier: "GetMyUserRequest" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -15764,9 +11577,9 @@ function __c54(j: number): any {
           banner: S.optional(S.NullOr(S.String)),
           accent_color: S.optional(S.NullOr(S.Number)),
           global_name: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
-          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
-          primary_guild: S.optional(S.NullOr(__S(4, __c0, 4))),
+          avatar_decoration_data: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          collectibles: S.optional(S.NullOr(__S(4578, __c143, 2))),
+          primary_guild: S.optional(S.NullOr(__S(4579, __c143, 3))),
           mfa_enabled: S.Boolean,
           locale: S.String,
           premium_type: S.optional(S.Number),
@@ -15774,13 +11587,17 @@ function __c54(j: number): any {
           verified: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserPIIResponse" });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/oauth2/userinfo", code: 200 })),
       ).annotate({
         identifier: "GetOpenidConnectUserinfoRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
@@ -15794,7 +11611,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "OAuth2GetOpenIDConnectUserInfoResponse",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -15810,15 +11631,15 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetOriginalWebhookMessageRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/oauth2/keys", code: 200 })),
       ).annotate({ identifier: "GetPublicKeysRequest" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kty: S.String,
@@ -15829,27 +11650,50 @@ function __c55(j: number): any {
           alg: S.String,
         }),
       ).annotate({ identifier: "OAuth2Key" });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
     case 2:
+      return S.Array(__S(1857, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(441, __c55, 1),
+          keys: __S(1858, __c58, 2),
         }),
       ).annotate({ identifier: "OAuth2GetKeys" });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String.pipe(T.Label()),
+          user_ids: __S(4672, __c146, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-delete", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BulkRemoveInviteTargetUsersRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/voice-states/@me", code: 200 })),
       ).annotate({ identifier: "GetSelfVoiceStateRequest" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.NullOr(S.String),
           deaf: S.Boolean,
           guild_id: S.NullOr(S.String),
-          member: S.optional(__S(11, __c1, 3)),
+          member: S.optional(__S(4640, __c145, 0)),
           mute: S.Boolean,
           request_to_speak_timestamp: S.NullOr(S.String),
           suppress: S.Boolean,
@@ -15861,7 +11705,11 @@ function __c55(j: number): any {
           user_id: S.String,
         }),
       ).annotate({ identifier: "VoiceStateResponse" });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sku_id: S.String.pipe(T.Label()),
@@ -15877,14 +11725,18 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetSkuSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           user_id: S.String,
-          sku_ids: __S(9, __c1, 1),
-          renewal_sku_ids: S.NullOr(__S(9, __c1, 1)),
-          entitlement_ids: __S(9, __c1, 1),
+          sku_ids: __S(4672, __c146, 0),
+          renewal_sku_ids: S.NullOr(__S(4672, __c146, 0)),
+          entitlement_ids: __S(4672, __c146, 0),
           current_period_start: S.String,
           current_period_end: S.String,
           status: S.Number,
@@ -15892,7 +11744,11 @@ function __c55(j: number): any {
           country: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SubscriptionResponse" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sku_id: S.String.pipe(T.Label()),
@@ -15904,41 +11760,53 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetSkuSubscriptionsRequest",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(446, __c55, 6));
     case 1:
-      return S.suspend(() => __S(448, __c56, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
+      return S.suspend(() => __S(2049, __c64, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSkuSubscriptionsResponse",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/soundboard-default-sounds", code: 200 })),
       ).annotate({
         identifier: "GetSoundboardDefaultSoundsRequest",
       });
-    case 3:
-      return S.Array(__S(116, __c14, 4));
-    case 4:
-      return S.suspend(() => __S(451, __c56, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(2112, __c66, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSoundboardDefaultSoundsResponse",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7072, __c221, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/stage-instances/{channel_id}", code: 200 })),
       ).annotate({ identifier: "GetStageInstanceRequest" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sticker_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/stickers/{sticker_id}", code: 200 })),
       ).annotate({ identifier: "GetStickerRequest" });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -15955,35 +11823,56 @@ function __c56(j: number): any {
           ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
         ]),
       );
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(455, __c56, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2177, __c68, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetStickerResponse",
       });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pack_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/sticker-packs/{pack_id}", code: 200 })),
       ).annotate({ identifier: "GetStickerPackRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          tags: S.String,
+          type: S.Number,
+          format_type: S.NullOr(S.Number),
+          description: S.NullOr(S.String),
+          pack_id: S.String,
+          sort_value: S.Number,
+        }),
+      ).annotate({ identifier: "StandardStickerResponse" });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
     case 2:
-      return S.Array(__S(165, __c20, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           sku_id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          stickers: __S(458, __c57, 2),
+          stickers: __S(2241, __c70, 1),
           cover_sticker_id: S.optional(S.String),
           banner_asset_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "StickerPackResponse" });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -15997,13 +11886,21 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetThreadMemberRequest" });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16012,17 +11909,346 @@ function __c57(j: number): any {
           T.Http({ method: "GET", uri: "/guilds/{guild_id}/voice-states/{user_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetVoiceStateRequest" });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          body: S.NullOr(__S(2403, __c75, 3)).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/applications/{application_id}/commands", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BulkSetApplicationCommandsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "file_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "channel_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "min_length",
+            "max_length",
+            "choices",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(2400, __c75, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          description_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          options: S.optional(S.NullOr(__S(2401, __c75, 1))),
+          default_member_permissions: S.optional(S.NullOr(S.Number)),
+          dm_permission: S.optional(S.NullOr(S.Boolean)),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
+          id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ApplicationCommandUpdateRequest",
+      });
+    case 3:
+      return S.Array(__S(2402, __c75, 2));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2464, __c77, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BulkSetApplicationCommandsResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2499, __c78, 3));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "file_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "channel_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_length",
+            "max_length",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localized",
+            "name_localizations",
+            "description",
+            "description_localized",
+            "description_localizations",
+            "required",
+          ],
+        ]),
+      );
+    case 2:
+      return S.Array(__S(2497, __c78, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          application_id: S.String,
+          version: S.String,
+          default_member_permissions: S.NullOr(S.String),
+          type: S.Number,
+          name: S.String,
+          name_localized: S.optional(S.String),
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          description: S.String,
+          description_localized: S.optional(S.String),
+          description_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          guild_id: S.optional(S.String),
+          dm_permission: S.optional(S.Boolean),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(__S(2496, __c78, 0)),
+          options: S.optional(__S(2498, __c78, 2)),
+          nsfw: S.optional(S.Boolean),
+          handler: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ApplicationCommandResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhook_id}", code: 200 })),
       ).annotate({ identifier: "GetWebhookRequest" });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -16052,11 +12278,15 @@ function __c58(j: number): any {
           ],
         ]),
       );
-    case 1:
-      return S.suspend(() => __S(464, __c58, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2529, __c79, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebhookResponse",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -16065,7 +12295,7 @@ function __c58(j: number): any {
           T.Http({ method: "GET", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
         ),
       ).annotate({ identifier: "GetWebhookByTokenRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -16095,11 +12325,15 @@ function __c58(j: number): any {
           ],
         ]),
       );
-    case 4:
-      return S.suspend(() => __S(467, __c58, 3).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2561, __c80, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebhookByTokenResponse",
       });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -16114,7 +12348,11 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWebhookMessageRequest" });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16124,17 +12362,17 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GuildRoleMemberCountsRequest",
       });
-    case 7:
+    case 1:
       return S.Record(S.String, S.Number);
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(471, __c58, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2625, __c82, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GuildRoleMemberCountsResponse",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -16144,7 +12382,7 @@ function __c59(j: number): any {
           target_message_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/invites/{code}", code: 200 })),
       ).annotate({ identifier: "InviteResolveRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -16199,11 +12437,15 @@ function __c59(j: number): any {
           ],
         ]),
       );
-    case 3:
-      return S.suspend(() => __S(474, __c59, 2).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2657, __c83, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "InviteResolveResponse",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16216,7 +12458,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "JoinActionGuildRequestRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -16224,13 +12470,21 @@ function __c59(j: number): any {
           T.Http({ method: "PUT", uri: "/channels/{channel_id}/thread-members/@me", code: 200 }),
         ),
       ).annotate({ identifier: "JoinThreadRequest" });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/users/@me/guilds/{guild_id}", code: 200 })),
       ).annotate({ identifier: "LeaveGuildRequest" });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
@@ -16238,7 +12492,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "LeaveLobbyRequest" });
   }
 }
-function __c60(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16248,7 +12502,31 @@ function __c60(j: number): any {
           T.Http({ method: "DELETE", uri: "/channels/{channel_id}/thread-members/@me", code: 200 }),
         ),
       ).annotate({ identifier: "LeaveThreadRequest" });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          guild_id: S.String.pipe(T.Label()),
+          body: S.NullOr(__S(2403, __c75, 3)).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/applications/{application_id}/guilds/{guild_id}/commands",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkSetGuildApplicationCommandsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -16259,7 +12537,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListApplicationCommandsRequest",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -16267,15 +12549,19 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListApplicationEmojisRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(358, __c44, 6),
+          items: __S(352, __c11, 0),
         }),
       ).annotate({
         identifier: "ListApplicationEmojisResponse",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16285,7 +12571,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListAutoModerationRulesRequest",
       });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -16355,15 +12641,15 @@ function __c60(j: number): any {
           ],
         ]),
       );
-    case 6:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(485, __c60, 5)));
-    case 7:
-      return S.suspend(() => __S(486, __c60, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(2945, __c92, 1)));
+    case 3:
+      return S.suspend(() => __S(2946, __c92, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAutoModerationRulesResponse",
       });
   }
 }
-function __c61(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16429,12 +12715,16 @@ function __c61(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(489, __c61, 1)));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(2977, __c93, 1)));
     case 3:
-      return S.suspend(() => __S(490, __c61, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2978, __c93, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListChannelInvitesResponse",
       });
-    case 4:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -16442,7 +12732,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListChannelWebhooksRequest",
       });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -16472,15 +12762,15 @@ function __c61(j: number): any {
           ],
         ]),
       );
-    case 6:
-      return S.Array(__S(493, __c61, 5));
-    case 7:
-      return S.suspend(() => __S(494, __c61, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(3009, __c94, 1));
+    case 3:
+      return S.suspend(() => __S(3010, __c94, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListChannelWebhooksResponse",
       });
   }
 }
-function __c62(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16491,10 +12781,14 @@ function __c62(j: number): any {
         identifier: "ListDeprecatedPinsRequest",
       });
     case 1:
-      return S.suspend(() => __S(318, __c39, 6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(9856, __c308, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeprecatedPinsResponse",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -16509,13 +12803,17 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListGuildApplicationCommandPermissionsRequest",
       });
-    case 3:
-      return S.Array(__S(366, __c45, 6));
-    case 4:
-      return S.suspend(() => __S(499, __c62, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(514, __c16, 2));
+    case 2:
+      return S.suspend(() => __S(3073, __c96, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildApplicationCommandPermissionsResponse",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -16531,7 +12829,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListGuildApplicationCommandsRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16545,7 +12847,7 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListGuildAuditLogEntriesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.NullOr(S.String),
@@ -16555,34 +12857,23 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "AuditLogObjectChangeResponse",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(503, __c62, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3137, __c98, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           action_type: S.Number,
           user_id: S.NullOr(S.String),
           target_id: S.NullOr(S.String),
-          changes: S.optional(__S(504, __c63, 0)),
-          options: S.optional(__S(15, __c1, 7)),
+          changes: S.optional(__S(3138, __c98, 2)),
+          options: S.optional(__S(8256, __c258, 0)),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogEntryResponse" });
-    case 2:
-      return S.Array(__S(505, __c63, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AccountResponse" });
     case 4:
+      return S.Array(__S(3139, __c98, 3));
+    case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "type", "name", "account", "application_id"],
@@ -16590,9 +12881,9 @@ function __c63(j: number): any {
           ["id", "type", "name", "account"],
         ]),
       );
-    case 5:
-      return S.Array(__S(508, __c63, 4));
     case 6:
+      return S.Array(__S(3141, __c98, 5));
+    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -16622,13 +12913,9 @@ function __c63(j: number): any {
           ],
         ]),
       );
-    case 7:
-      return S.Array(__S(510, __c63, 6));
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(3143, __c98, 7));
+    case 9:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -16696,9 +12983,9 @@ function __c64(j: number): any {
           ],
         ]),
       );
-    case 1:
-      return S.Array(__S(512, __c64, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(3145, __c98, 9));
+    case 11:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -16768,22 +13055,26 @@ function __c64(j: number): any {
           ],
         ]),
       );
-    case 3:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(514, __c64, 2)));
-    case 4:
+    case 12:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(3147, __c98, 11)));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          audit_log_entries: __S(506, __c63, 2),
-          users: __S(6, __c0, 6),
-          integrations: __S(509, __c63, 5),
-          webhooks: __S(511, __c63, 7),
-          guild_scheduled_events: __S(513, __c64, 1),
-          threads: __S(316, __c39, 4),
-          application_commands: __S(40, __c5, 0),
-          auto_moderation_rules: __S(515, __c64, 3),
+          audit_log_entries: __S(3140, __c98, 4),
+          users: __S(7904, __c247, 0),
+          integrations: __S(3142, __c98, 6),
+          webhooks: __S(3144, __c98, 8),
+          guild_scheduled_events: __S(3146, __c98, 10),
+          threads: __S(9888, __c309, 0),
+          application_commands: __S(2464, __c77, 0),
+          auto_moderation_rules: __S(3148, __c98, 12),
         }),
       ).annotate({ identifier: "GuildAuditLogResponse" });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16792,15 +13083,49 @@ function __c64(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/bans", code: 200 })),
       ).annotate({ identifier: "ListGuildBansRequest" });
-    case 6:
-      return S.Array(__S(368, __c46, 0));
-    case 7:
-      return S.suspend(() => __S(518, __c64, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() => __S(3169, __c99, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildBansResponse",
       });
   }
 }
-function __c65(j: number): any {
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          position: S.optional(S.NullOr(S.Number)),
+          parent_id: S.optional(S.NullOr(S.String)),
+          lock_permissions: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "BulkUpdateGuildChannelsRequestBodyItem",
+      });
+    case 1:
+      return S.Array(__S(3200, __c100, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          body: __S(3201, __c100, 1).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/channels", code: 200 })),
+      ).annotate({
+        identifier: "BulkUpdateGuildChannelsRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BulkUpdateGuildChannelsResponse",
+      });
+  }
+}
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16878,22 +13203,30 @@ function __c65(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(521, __c65, 1));
+      return S.Array(__S(3265, __c102, 1));
     case 3:
-      return S.suspend(() => __S(522, __c65, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3266, __c102, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildChannelsResponse",
       });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/emojis", code: 200 })),
       ).annotate({ identifier: "ListGuildEmojisRequest" });
-    case 5:
-      return S.suspend(() => __S(358, __c44, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(352, __c11, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildEmojisResponse",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -16901,7 +13234,7 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListGuildIntegrationsRequest",
       });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "name", "account", "enabled", "id", "application", "scopes", "user"],
@@ -16924,23 +13257,23 @@ function __c65(j: number): any {
           ["type", "name", "account", "enabled", "id"],
         ]),
       );
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(527, __c65, 7));
-    case 1:
-      return S.suspend(() => __S(528, __c66, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(3329, __c104, 1));
+    case 3:
+      return S.suspend(() => __S(3330, __c104, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildIntegrationsResponse",
       });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/invites", code: 200 })),
       ).annotate({ identifier: "ListGuildInvitesRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -16995,13 +13328,17 @@ function __c66(j: number): any {
           ],
         ]),
       );
-    case 4:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(531, __c66, 3)));
-    case 5:
-      return S.suspend(() => __S(532, __c66, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(3361, __c105, 1)));
+    case 3:
+      return S.suspend(() => __S(3362, __c105, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildInvitesResponse",
       });
-    case 6:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17009,27 +13346,35 @@ function __c66(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/members", code: 200 })),
       ).annotate({ identifier: "ListGuildMembersRequest" });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(535, __c66, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3424, __c107, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildMembersResponse",
       });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4640, __c145, 0));
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/roles", code: 200 })),
       ).annotate({ identifier: "ListGuildRolesRequest" });
-    case 2:
-      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3680, __c115, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildRolesResponse",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17049,13 +13394,34 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListGuildScheduledEventExceptionUsersRequest",
       });
-    case 4:
-      return S.Array(__S(80, __c10, 0));
-    case 5:
-      return S.suspend(() => __S(540, __c67, 4).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_scheduled_event_id: S.String,
+          guild_scheduled_event_exception_id: S.optional(S.NullOr(S.String)),
+          user_id: S.String,
+          user: S.optional(__S(4608, __c144, 0)),
+          member: S.optional(__S(4640, __c145, 0)),
+          response: S.Number,
+        }),
+      ).annotate({
+        identifier: "ScheduledEventUserResponse",
+      });
+    case 1:
+      return S.Array(__S(3520, __c110, 0));
+    case 2:
+      return S.suspend(() => __S(3521, __c110, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildScheduledEventExceptionUsersResponse",
       });
-    case 6:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17064,7 +13430,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListGuildScheduledEventsRequest",
       });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -17132,17 +13498,17 @@ function __c67(j: number): any {
           ],
         ]),
       );
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(543, __c67, 7));
-    case 1:
-      return S.suspend(() => __S(544, __c68, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(3553, __c111, 1));
+    case 3:
+      return S.suspend(() => __S(3554, __c111, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildScheduledEventsResponse",
       });
-    case 2:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17161,7 +13527,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListGuildScheduledEventUsersRequest",
       });
-    case 3:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17169,25 +13539,112 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListGuildSoundboardSoundsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(451, __c56, 3),
+          items: __S(2112, __c66, 0),
         }),
       ).annotate({
         identifier: "ListGuildSoundboardSoundsResponse",
       });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          position: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "UpdateRolePositionsRequest",
+      });
+    case 1:
+      return S.Array(__S(3648, __c114, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          body: __S(3649, __c114, 1).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/roles", code: 200 })),
+      ).annotate({
+        identifier: "BulkUpdateGuildRolesRequest",
+      });
+    case 3:
+      return S.suspend(() => __S(3680, __c115, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BulkUpdateGuildRolesResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3745, __c117, 1));
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primary_color: S.Number,
+          secondary_color: S.NullOr(S.Number),
+          tertiary_color: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "GuildRoleColorsResponse" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          premium_subscriber: S.optional(S.NullOr(S.Unknown)),
+          bot_id: S.optional(S.String),
+          integration_id: S.optional(S.String),
+          subscription_listing_id: S.optional(S.String),
+          available_for_purchase: S.optional(S.NullOr(S.Unknown)),
+          guild_connections: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "GuildRoleTagsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          permissions: S.String,
+          position: S.Number,
+          color: S.Number,
+          colors: __S(3712, __c116, 0),
+          hoist: S.Boolean,
+          managed: S.Boolean,
+          mentionable: S.Boolean,
+          icon: S.NullOr(S.String),
+          unicode_emoji: S.NullOr(S.String),
+          tags: S.optional(__S(3744, __c117, 0)),
+          flags: S.Number,
+        }),
+      ).annotate({ identifier: "GuildRoleResponse" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/stickers", code: 200 })),
       ).annotate({ identifier: "ListGuildStickersRequest" });
-    case 6:
-      return S.suspend(() => __S(359, __c44, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(384, __c12, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildStickersResponse",
       });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17195,17 +13652,17 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListGuildTemplatesRequest",
       });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
     case 1:
-      return S.suspend(() => __S(552, __c69, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(7207, __c225, 7));
+    case 2:
+      return S.suspend(() => __S(3809, __c119, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildTemplatesResponse",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17213,7 +13670,15 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListGuildVoiceRegionsRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() => __S(3873, __c121, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListGuildVoiceRegionsResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -17223,13 +13688,13 @@ function __c69(j: number): any {
           optimal: S.Boolean,
         }),
       ).annotate({ identifier: "VoiceRegionResponse" });
-    case 4:
-      return S.Array(__S(555, __c69, 3));
-    case 5:
-      return S.suspend(() => __S(556, __c69, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListGuildVoiceRegionsResponse",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(3872, __c121, 0));
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17248,13 +13713,13 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListMessageReactionsByEmojiRequest",
       });
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(7904, __c247, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMessageReactionsByEmojiResponse",
       });
   }
 }
-function __c70(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17267,14 +13732,25 @@ function __c70(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/messages", code: 200 })),
       ).annotate({ identifier: "ListMessagesRequest" });
     case 1:
-      return S.suspend(() => __S(318, __c39, 6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(9856, __c308, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMessagesResponse",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AccountResponse" });
+    case 1:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/@me/connections", code: 200 })),
       ).annotate({ identifier: "ListMyConnectionsRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -17284,27 +13760,27 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ConnectedAccountGuildResponse",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
-          account: __S(507, __c63, 3),
-          guild: __S(563, __c70, 3),
+          account: __S(3968, __c124, 0),
+          guild: __S(3970, __c124, 2),
         }),
       ).annotate({
         identifier: "ConnectedAccountIntegrationResponse",
       });
+    case 4:
+      return S.Array(__S(3971, __c124, 3));
     case 5:
-      return S.Array(__S(564, __c70, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
           type: S.String,
           friend_sync: S.Boolean,
-          integrations: S.optional(__S(565, __c70, 5)),
+          integrations: S.optional(__S(3972, __c124, 4)),
           show_activity: S.Boolean,
           two_way_link: S.Boolean,
           verified: S.Boolean,
@@ -17312,17 +13788,17 @@ function __c70(j: number): any {
           revoked: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConnectedAccountResponse" });
+    case 6:
+      return S.Array(__S(3973, __c124, 5));
     case 7:
-      return S.Array(__S(566, __c70, 6));
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(567, __c70, 7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3974, __c124, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMyConnectionsResponse",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           before: S.optional(S.String.pipe(T.Query())),
@@ -17332,7 +13808,7 @@ function __c71(j: number): any {
           with_counts: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/@me/guilds", code: 200 })),
       ).annotate({ identifier: "ListMyGuildsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -17341,18 +13817,22 @@ function __c71(j: number): any {
           banner: S.NullOr(S.String),
           owner: S.Boolean,
           permissions: S.String,
-          features: __S(76, __c9, 4),
+          features: __S(7936, __c248, 0),
           approximate_member_count: S.optional(S.NullOr(S.Number)),
           approximate_presence_count: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "MyGuildResponse" });
+    case 2:
+      return S.Array(__S(4001, __c125, 1));
     case 3:
-      return S.Array(__S(570, __c71, 2));
-    case 4:
-      return S.suspend(() => __S(571, __c71, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(4002, __c125, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMyGuildsResponse",
       });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17368,7 +13848,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListMyPrivateArchivedThreadsRequest",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17376,27 +13860,27 @@ function __c71(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/messages/pins", code: 200 })),
       ).annotate({ identifier: "ListPinsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pinned_at: S.String,
-          message: __S(219, __c27, 3),
-        }),
-      ).annotate({ identifier: "PinnedMessageResponse" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(575, __c71, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(576, __c72, 0),
+          pinned_at: S.String,
+          message: __S(7878, __c246, 6),
+        }),
+      ).annotate({ identifier: "PinnedMessageResponse" });
+    case 2:
+      return S.Array(__S(4065, __c127, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(4066, __c127, 2),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "PinnedMessagesResponse" });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17412,7 +13896,46 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListPrivateArchivedThreadsRequest",
       });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          flags: S.optional(S.NullOr(S.Number)),
+          additional_name: S.optional(S.NullOr(S.String)),
+          remove_member: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "BulkLobbyMemberRequest" });
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          body: S.NullOr(__S(4129, __c129, 1)).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/members/bulk", code: 200 })),
+      ).annotate({
+        identifier: "BulkUpdateLobbyMembersRequest",
+      });
     case 3:
+      return S.suspend(() => __S(4160, __c130, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BulkUpdateLobbyMembersResponse",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8288, __c259, 0));
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17428,21 +13951,29 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListPublicArchivedThreadsRequest",
       });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/sticker-packs", code: 200 })),
       ).annotate({ identifier: "ListStickerPacksRequest" });
-    case 5:
-      return S.Array(__S(459, __c57, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(2242, __c70, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sticker_packs: __S(581, __c72, 5),
+          sticker_packs: __S(4225, __c132, 1),
         }),
       ).annotate({
         identifier: "StickerPackCollectionResponse",
       });
-    case 7:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17451,23 +13982,27 @@ function __c72(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/thread-members", code: 200 })),
       ).annotate({ identifier: "ListThreadMembersRequest" });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(317, __c39, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(9952, __c311, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListThreadMembersResponse",
       });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/voice/regions", code: 200 })),
       ).annotate({ identifier: "ListVoiceRegionsRequest" });
-    case 2:
-      return S.suspend(() => __S(556, __c69, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3873, __c121, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVoiceRegionsResponse",
       });
-    case 3:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
@@ -17476,7 +14011,11 @@ function __c73(j: number): any {
           external_auth_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/partner-sdk/token", code: 200 })),
       ).annotate({ identifier: "PartnerSdkTokenRequest" });
-    case 4:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
@@ -17489,7 +14028,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "PartnerSdkUnmergeProvisionalAccountRequest",
       });
-    case 5:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17502,19 +14045,23 @@ function __c73(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PollExpireRequest" });
-    case 6:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           days: S.optional(S.Number.pipe(T.Query())),
-          include_roles: S.optional(__S(590, __c73, 6).pipe(T.Query())),
+          include_roles: S.optional(__S(4416, __c138, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/prune", code: 200 })),
       ).annotate({ identifier: "PreviewPruneGuildRequest" });
   }
 }
-function __c74(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17522,18 +14069,26 @@ function __c74(j: number): any {
           pruned: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "GuildPruneResponse" });
-    case 1:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           days: S.optional(S.NullOr(S.Number)),
           compute_prune_count: S.optional(S.NullOr(S.Boolean)),
-          include_roles: S.optional(S.NullOr(__S(593, __c74, 1))),
+          include_roles: S.optional(S.NullOr(__S(4480, __c140, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/prune", code: 200 })),
       ).annotate({ identifier: "PruneGuildRequest" });
-    case 3:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -17542,19 +14097,19 @@ function __c74(j: number): any {
           emoji_id: S.optional(S.NullOr(S.String)),
           emoji_name: S.optional(S.NullOr(S.String)),
           emoji_animated: S.optional(S.NullOr(S.Boolean)),
-          role_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          channel_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          role_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          channel_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
         }),
       ).annotate({
         identifier: "OnboardingPromptOptionRequest",
       });
-    case 4:
-      return S.Array(__S(595, __c74, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(4512, __c141, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
-          options: __S(596, __c74, 4),
+          options: __S(4513, __c141, 1),
           single_select: S.optional(S.NullOr(S.Boolean)),
           required: S.optional(S.NullOr(S.Boolean)),
           in_onboarding: S.optional(S.NullOr(S.Boolean)),
@@ -17564,35 +14119,160 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "UpdateOnboardingPromptRequest",
       });
-    case 6:
-      return S.Array(__S(597, __c74, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(4514, __c141, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          prompts: S.optional(S.NullOr(__S(598, __c74, 6))),
+          prompts: S.optional(S.NullOr(__S(4515, __c141, 3))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          default_channel_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          default_channel_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
           mode: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/onboarding", code: 200 })),
       ).annotate({
         identifier: "PutGuildsOnboardingRequest",
       });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String,
-          prompts: __S(395, __c49, 3),
-          default_channel_ids: __S(9, __c1, 1),
+          prompts: __S(963, __c30, 3),
+          default_channel_ids: __S(4672, __c146, 0),
           enabled: S.Boolean,
           mode: S.Number,
         }),
       ).annotate({ identifier: "GuildOnboardingResponse" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          nick: S.optional(S.NullOr(S.String)),
+          roles: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          mute: S.optional(S.NullOr(S.Boolean)),
+          deaf: S.optional(S.NullOr(S.Boolean)),
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          flags: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 })),
+      ).annotate({ identifier: "AddGuildMemberRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.String,
+          sku_id: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "UserAvatarDecorationResponse",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sku_id: S.NullOr(S.String),
+          asset: S.String,
+          label: S.String,
+          palette: S.String,
+        }),
+      ).annotate({ identifier: "UserNameplateResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nameplate: S.NullOr(__S(4577, __c143, 1)),
+        }),
+      ).annotate({ identifier: "UserCollectiblesResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identity_guild_id: S.NullOr(S.String),
+          identity_enabled: S.NullOr(S.Boolean),
+          tag: S.NullOr(S.String),
+          badge: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "UserPrimaryGuildResponse" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          username: S.String,
+          avatar: S.NullOr(S.String),
+          discriminator: S.String,
+          public_flags: S.Number,
+          flags: S.Number,
+          bot: S.optional(S.Boolean),
+          system: S.optional(S.Boolean),
+          banner: S.optional(S.NullOr(S.String)),
+          accent_color: S.optional(S.NullOr(S.Number)),
+          global_name: S.NullOr(S.String),
+          avatar_decoration_data: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          collectibles: S.optional(S.NullOr(__S(4578, __c143, 2))),
+          primary_guild: S.NullOr(__S(4579, __c143, 3)),
+        }),
+      ).annotate({ identifier: "UserResponse" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.NullOr(S.String),
+          avatar_decoration_data: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          banner: S.NullOr(S.String),
+          communication_disabled_until: S.NullOr(S.String),
+          flags: S.Number,
+          joined_at: S.String,
+          nick: S.NullOr(S.String),
+          pending: S.Boolean,
+          premium_since: S.NullOr(S.String),
+          roles: __S(4672, __c146, 0),
+          collectibles: S.optional(S.NullOr(__S(4578, __c143, 2))),
+          user: __S(4608, __c144, 0),
+          mute: S.Boolean,
+          deaf: S.Boolean,
+        }),
+      ).annotate({ identifier: "GuildMemberResponse" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          entitlement_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/applications/{application_id}/entitlements/{entitlement_id}/consume",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ConsumeEntitlementRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -17603,13 +14283,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "RemoveInviteTargetUserRequest",
       });
-    case 2:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/invites/{code}", code: 200 })),
       ).annotate({ identifier: "RevokeInviteRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -17664,11 +14348,15 @@ function __c75(j: number): any {
           ],
         ]),
       );
-    case 4:
-      return S.suspend(() => __S(603, __c75, 3).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(4769, __c149, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "RevokeInviteResponse",
       });
-    case 5:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17676,29 +14364,29 @@ function __c75(j: number): any {
           sort_order: S.optional(S.String.pipe(T.Query())),
           content: S.optional(S.String.pipe(T.Query())),
           slop: S.optional(S.Number.pipe(T.Query())),
-          author_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          author_type: S.optional(__S(76, __c9, 4).pipe(T.Query())),
-          mentions: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          mentions_role_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          replied_to_user_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          replied_to_message_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          author_id: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          author_type: S.optional(__S(7936, __c248, 0).pipe(T.Query())),
+          mentions: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          mentions_role_id: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          replied_to_user_id: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          replied_to_message_id: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
           mention_everyone: S.optional(S.Boolean.pipe(T.Query())),
           min_id: S.optional(S.String.pipe(T.Query())),
           max_id: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          has: S.optional(__S(76, __c9, 4).pipe(T.Query())),
-          link_hostname: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          embed_provider: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          embed_type: S.optional(__S(76, __c9, 4).pipe(T.Query())),
-          attachment_extension: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          attachment_filename: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          has: S.optional(__S(7936, __c248, 0).pipe(T.Query())),
+          link_hostname: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          embed_provider: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          embed_type: S.optional(__S(7936, __c248, 0).pipe(T.Query())),
+          attachment_extension: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
+          attachment_filename: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
           pinned: S.optional(S.Boolean.pipe(T.Query())),
           include_nsfw: S.optional(S.Boolean.pipe(T.Query())),
-          channel_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          channel_id: S.optional(__S(4672, __c146, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/messages/search", code: 200 })),
       ).annotate({ identifier: "SearchGuildRequest" });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "id", "components"],
@@ -17710,13 +14398,9 @@ function __c75(j: number): any {
           ["type", "id", "content"],
         ]),
       );
-    case 7:
-      return S.Array(__S(606, __c75, 6));
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(4801, __c150, 1));
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -17733,11 +14417,11 @@ function __c76(j: number): any {
           ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
         ]),
       );
-    case 1:
-      return S.Array(__S(608, __c76, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(4803, __c150, 3));
+    case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
+    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -17767,70 +14451,70 @@ function __c76(j: number): any {
           ],
         ]),
       );
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.Number,
           content: S.String,
-          mentions: __S(6, __c0, 6),
-          mention_roles: __S(9, __c1, 1),
-          attachments: __S(150, __c18, 6),
-          embeds: __S(162, __c20, 2),
+          mentions: __S(7904, __c247, 0),
+          mention_roles: __S(4672, __c146, 0),
+          attachments: __S(7809, __c244, 1),
+          embeds: __S(7821, __c244, 13),
           timestamp: S.String,
           edited_timestamp: S.NullOr(S.String),
           flags: S.Number,
-          components: __S(607, __c75, 7),
-          stickers: S.optional(__S(609, __c76, 1)),
-          sticker_items: S.optional(__S(169, __c21, 1)),
+          components: __S(4802, __c150, 2),
+          stickers: S.optional(__S(4804, __c150, 4)),
+          sticker_items: S.optional(__S(7823, __c244, 15)),
           id: S.String,
           channel_id: S.String,
-          author: __S(5, __c0, 5),
+          author: __S(4608, __c144, 0),
           pinned: S.Boolean,
           mention_everyone: S.Boolean,
           tts: S.Boolean,
-          call: S.optional(__S(170, __c21, 2)),
-          activity: S.optional(__S(171, __c21, 3)),
-          application: S.optional(__S(172, __c21, 4)),
+          call: S.optional(__S(7824, __c244, 16)),
+          activity: S.optional(__S(7825, __c244, 17)),
+          application: S.optional(__S(7826, __c244, 18)),
           application_id: S.optional(S.String),
-          interaction: S.optional(__S(173, __c21, 5)),
-          nonce: S.optional(__S(610, __c76, 2)),
+          interaction: S.optional(__S(7827, __c244, 19)),
+          nonce: S.optional(__S(4805, __c150, 5)),
           webhook_id: S.optional(S.String),
-          message_reference: S.optional(__S(175, __c21, 7)),
-          thread: S.optional(__S(178, __c22, 2)),
-          mention_channels: S.optional(__S(180, __c22, 4)),
-          role_subscription_data: S.optional(__S(181, __c22, 5)),
-          purchase_notification: S.optional(__S(183, __c22, 7)),
+          message_reference: S.optional(__S(7828, __c244, 20)),
+          thread: S.optional(__S(7745, __c242, 1)),
+          mention_channels: S.optional(__S(7830, __c244, 22)),
+          role_subscription_data: S.optional(__S(7831, __c244, 23)),
+          purchase_notification: S.optional(__S(7833, __c244, 25)),
           position: S.optional(S.Number),
-          resolved: S.optional(__S(190, __c23, 6)),
-          poll: S.optional(__S(198, __c24, 6)),
-          shared_client_theme: S.optional(__S(199, __c24, 7)),
-          interaction_metadata: S.optional(__S(611, __c76, 3)),
-          message_snapshots: S.optional(__S(207, __c25, 7)),
-          lobby_member: S.optional(__S(208, __c26, 0)),
-          reactions: S.optional(__S(211, __c26, 3)),
-          referenced_message: S.optional(S.NullOr(__S(218, __c27, 2))),
+          resolved: S.optional(__S(7840, __c245, 0)),
+          poll: S.optional(__S(7848, __c245, 8)),
+          shared_client_theme: S.optional(__S(7849, __c245, 9)),
+          interaction_metadata: S.optional(__S(4806, __c150, 6)),
+          message_snapshots: S.optional(__S(7856, __c245, 16)),
+          lobby_member: S.optional(__S(7648, __c239, 0)),
+          reactions: S.optional(__S(7859, __c245, 19)),
+          referenced_message: S.optional(S.NullOr(__S(7866, __c245, 26))),
           hit: S.Boolean,
           restriction_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchMessageResponse" });
-    case 5:
-      return S.Array(__S(612, __c76, 4));
-    case 6:
-      return S.Array(__S(613, __c76, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(4807, __c150, 7));
+    case 9:
+      return S.Array(__S(4808, __c150, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          messages: __S(614, __c76, 6),
+          messages: __S(4809, __c150, 9),
           doing_deep_historical_index: S.Boolean,
           total_results: S.Number,
-          threads: S.optional(S.NullOr(__S(316, __c39, 4))),
-          members: S.optional(S.NullOr(__S(317, __c39, 5))),
+          threads: S.optional(S.NullOr(__S(9888, __c309, 0))),
+          members: S.optional(S.NullOr(__S(9952, __c311, 0))),
           documents_indexed: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GuildSearchResponse" });
   }
 }
-function __c77(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17843,12 +14527,16 @@ function __c77(j: number): any {
         identifier: "SearchGuildMembersRequest",
       });
     case 1:
-      return S.suspend(() => __S(535, __c66, 7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3424, __c107, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchGuildMembersResponse",
       });
-    case 2:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17856,7 +14544,7 @@ function __c77(j: number): any {
           slop: S.optional(S.Number.pipe(T.Query())),
           min_id: S.optional(S.String.pipe(T.Query())),
           max_id: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(__S(618, __c77, 2).pipe(T.Query())),
+          tag: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
           tag_setting: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           sort_by: S.optional(S.String.pipe(T.Query())),
@@ -17865,17 +14553,21 @@ function __c77(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/threads/search", code: 200 })),
       ).annotate({ identifier: "SearchThreadRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          threads: __S(316, __c39, 4),
-          members: __S(317, __c39, 5),
+          threads: __S(9888, __c309, 0),
+          members: __S(9952, __c311, 0),
           has_more: S.Boolean,
-          first_messages: S.optional(__S(318, __c39, 6)),
+          first_messages: S.optional(__S(9856, __c308, 0)),
           total_results: S.Number,
         }),
       ).annotate({ identifier: "ThreadSearchResponse" });
-    case 5:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17891,7 +14583,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "SendSoundboardSoundRequest",
       });
-    case 6:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17909,13 +14605,17 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "SetChannelPermissionOverwriteRequest",
       });
-    case 7:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           guild_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
-          permissions: S.optional(S.NullOr(__S(365, __c45, 5))),
+          permissions: S.optional(S.NullOr(__S(513, __c16, 1))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17928,7 +14628,7 @@ function __c77(j: number): any {
       });
   }
 }
-function __c78(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17937,7 +14637,11 @@ function __c78(j: number): any {
           code: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/templates/{code}", code: 200 })),
       ).annotate({ identifier: "SyncGuildTemplateRequest" });
-    case 1:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -17945,11 +14649,48 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "TriggerTypingIndicatorRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "TriggerTypingIndicatorResponse",
       });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          guild_scheduled_event_id: S.String.pipe(T.Label()),
+          guild_scheduled_event_exception_ids: S.optional(__S(5056, __c158, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/users/counts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CountGuildScheduledEventUsersRequest",
+      });
+    case 2:
+      return S.Record(S.String, S.Number);
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          guild_scheduled_event_count: S.Number,
+          guild_scheduled_event_exception_counts: __S(5058, __c158, 2),
+        }),
+      ).annotate({
+        identifier: "ScheduledEventUserCountResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -17958,43 +14699,15 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "UnbanUserFromGuildRequest2",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.String,
-          localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-        }),
-      ).annotate({
-        identifier: "UpdateApplicationRequestDescription",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(S.NullOr(__S(76, __c9, 4))),
-          permissions: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ApplicationOAuth2InstallParams",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2_install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
-        }),
-      ).annotate({
-        identifier: "ApplicationIntegrationTypeConfiguration",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(630, __c78, 6)));
   }
 }
-function __c79(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(__S(628, __c78, 4))),
+          description: S.optional(S.NullOr(__S(5152, __c161, 0))),
           icon: S.optional(S.NullOr(S.String)),
           cover_image: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.String)),
@@ -18003,17 +14716,53 @@ function __c79(j: number): any {
           explicit_content_filter: S.optional(S.NullOr(S.Number)),
           max_participants: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(S.NullOr(__S(9, __c1, 1))),
+          tags: S.optional(S.NullOr(__S(4672, __c146, 0))),
           custom_install_url: S.optional(S.NullOr(S.String)),
-          install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
+          install_params: S.optional(S.NullOr(__S(5153, __c161, 1))),
           role_connections_verification_url: S.optional(S.NullOr(S.String)),
-          integration_types_config: S.optional(S.NullOr(__S(631, __c78, 7))),
+          integration_types_config: S.optional(S.NullOr(__S(5155, __c161, 3))),
           event_webhooks_status: S.optional(S.NullOr(S.Number)),
           event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_types: S.optional(S.NullOr(__S(76, __c9, 4))),
+          event_webhooks_types: S.optional(S.NullOr(__S(7936, __c248, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/applications/{application_id}", code: 200 })),
       ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.String,
+          localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+        }),
+      ).annotate({
+        identifier: "UpdateApplicationRequestDescription",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(S.NullOr(__S(7936, __c248, 0))),
+          permissions: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ApplicationOAuth2InstallParams",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          oauth2_install_params: S.optional(S.NullOr(__S(5153, __c161, 1))),
+        }),
+      ).annotate({
+        identifier: "ApplicationIntegrationTypeConfiguration",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(5154, __c161, 2)));
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18122,22 +14871,22 @@ function __c79(j: number): any {
           ],
         ]),
       );
+    case 1:
+      return S.Array(__S(5184, __c162, 0));
     case 2:
-      return S.Array(__S(633, __c79, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
-          options: S.optional(S.NullOr(__S(634, __c79, 2))),
+          description_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          options: S.optional(S.NullOr(__S(5185, __c162, 1))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(S.NullOr(__S(2496, __c78, 0))),
           handler: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -18149,7 +14898,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationCommandRequest",
       });
-    case 4:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
@@ -18165,32 +14918,32 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationEmojiRequest",
       });
-    case 5:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.Number,
           key: S.String,
           name: S.String,
-          name_localizations: S.optional(S.NullOr(__S(637, __c79, 5))),
+          name_localizations: S.optional(S.NullOr(__S(5248, __c164, 0))),
           description: S.String,
-          description_localizations: S.optional(S.NullOr(__S(637, __c79, 5))),
+          description_localizations: S.optional(S.NullOr(__S(5248, __c164, 0))),
         }),
       ).annotate({
         identifier: "ApplicationRoleConnectionsMetadataItemRequest",
       });
-    case 7:
-      return S.Array(__S(638, __c79, 6));
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5249, __c164, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          body: S.NullOr(__S(639, __c79, 7)).pipe(T.HttpBody()),
+          body: S.NullOr(__S(5250, __c164, 2)).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18201,13 +14954,17 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationRoleConnectionsMetadataRequest",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           platform_name: S.optional(S.NullOr(S.String)),
           platform_username: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18218,7 +14975,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationUserRoleConnectionRequest",
       });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18273,12 +15034,12 @@ function __c80(j: number): any {
           ],
         ]),
       );
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           rule_id: S.String.pipe(T.Label()),
-          body: __S(642, __c80, 2).pipe(T.HttpBody()),
+          body: __S(5312, __c166, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18289,7 +15050,7 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "UpdateAutoModerationRuleRequest",
       });
-    case 4:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18359,11 +15120,15 @@ function __c80(j: number): any {
           ],
         ]),
       );
-    case 5:
-      return S.suspend(() => __S(644, __c80, 4).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(5314, __c166, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateAutoModerationRuleResponse",
       });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["name"],
@@ -18406,18 +15171,14 @@ function __c80(j: number): any {
           ],
         ]),
       );
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
-          body: __S(646, __c80, 6).pipe(T.HttpBody()),
+          body: __S(5344, __c167, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/channels/{channel_id}", code: 200 })),
       ).annotate({ identifier: "UpdateChannelRequest" });
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18486,11 +15247,15 @@ function __c81(j: number): any {
           ],
         ]),
       );
-    case 1:
-      return S.suspend(() => __S(648, __c81, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(5346, __c167, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateChannelResponse",
       });
-    case 2:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18508,7 +15273,7 @@ function __c81(j: number): any {
           splash: S.optional(S.NullOr(S.String)),
           banner: S.optional(S.NullOr(S.String)),
           system_channel_flags: S.optional(S.NullOr(S.Number)),
-          features: S.optional(S.NullOr(__S(106, __c13, 2))),
+          features: S.optional(S.NullOr(__S(6848, __c214, 0))),
           discovery_splash: S.optional(S.NullOr(S.String)),
           home_header: S.optional(S.NullOr(S.String)),
           rules_channel_id: S.optional(S.NullOr(S.String)),
@@ -18517,7 +15282,7 @@ function __c81(j: number): any {
           premium_progress_bar_enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}", code: 200 })),
       ).annotate({ identifier: "UpdateGuildRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -18527,7 +15292,7 @@ function __c81(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: __S(76, __c9, 4),
+          features: __S(7936, __c248, 0),
           banner: S.NullOr(S.String),
           owner_id: S.String,
           application_id: S.NullOr(S.String),
@@ -18539,7 +15304,7 @@ function __c81(j: number): any {
           widget_enabled: S.Boolean,
           widget_channel_id: S.NullOr(S.String),
           verification_level: S.Number,
-          roles: __S(53, __c6, 5),
+          roles: __S(3680, __c115, 0),
           default_message_notifications: S.Number,
           mfa_level: S.Number,
           explicit_content_filter: S.Number,
@@ -18558,12 +15323,16 @@ function __c81(j: number): any {
           premium_progress_bar_enabled_user_updated_at: S.optional(S.NullOr(S.String)),
           nsfw: S.Boolean,
           nsfw_level: S.Number,
-          emojis: __S(358, __c44, 6),
-          stickers: __S(359, __c44, 7),
-          incidents_data: S.NullOr(__S(360, __c45, 0)),
+          emojis: __S(352, __c11, 0),
+          stickers: __S(384, __c12, 0),
+          incidents_data: S.NullOr(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "GuildResponse" });
-    case 4:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18672,23 +15441,23 @@ function __c81(j: number): any {
           ],
         ]),
       );
-    case 5:
-      return S.Array(__S(652, __c81, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(5408, __c169, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           guild_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
-          options: S.optional(S.NullOr(__S(653, __c81, 5))),
+          description_localizations: S.optional(S.NullOr(__S(6624, __c207, 0))),
+          options: S.optional(S.NullOr(__S(5409, __c169, 1))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
-          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(S.NullOr(__S(2496, __c78, 0))),
           handler: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -18700,20 +15469,160 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "UpdateGuildApplicationCommandRequest",
       });
-    case 7:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "file_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "channel_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "min_length",
+            "max_length",
+            "choices",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(5440, __c170, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          name: S.String,
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          description_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          options: S.optional(S.NullOr(__S(5441, __c170, 1))),
+          default_member_permissions: S.optional(S.NullOr(S.Number)),
+          dm_permission: S.optional(S.NullOr(S.Boolean)),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/applications/{application_id}/commands", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateApplicationCommandRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           emoji_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
+          roles: S.optional(S.NullOr(__S(6848, __c214, 0))),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/emojis/{emoji_id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateGuildEmojiRequest" });
   }
 }
-function __c82(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18725,13 +15634,17 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "UpdateGuildIncidentActionsRequest",
       });
-    case 1:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           user_id: S.String.pipe(T.Label()),
           nick: S.optional(S.NullOr(S.String)),
-          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
+          roles: S.optional(S.NullOr(__S(6848, __c214, 0))),
           mute: S.optional(S.NullOr(S.Boolean)),
           deaf: S.optional(S.NullOr(S.Boolean)),
           channel_id: S.optional(S.NullOr(S.String)),
@@ -18741,7 +15654,11 @@ function __c82(j: number): any {
           T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateGuildMemberRequest" });
-    case 2:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18749,14 +15666,18 @@ function __c82(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           permissions: S.optional(S.NullOr(S.Number)),
           color: S.optional(S.NullOr(S.Number)),
-          colors: S.optional(S.NullOr(__S(108, __c13, 4))),
+          colors: S.optional(S.NullOr(__S(6912, __c216, 0))),
           hoist: S.optional(S.NullOr(S.Boolean)),
           mentionable: S.optional(S.NullOr(S.Boolean)),
           icon: S.optional(S.NullOr(S.String)),
           unicode_emoji: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/roles/{role_id}", code: 200 })),
       ).annotate({ identifier: "UpdateGuildRoleRequest" });
-    case 3:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18800,12 +15721,12 @@ function __c82(j: number): any {
           ],
         ]),
       );
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           guild_scheduled_event_id: S.String.pipe(T.Label()),
-          body: __S(659, __c82, 3).pipe(T.HttpBody()),
+          body: __S(5600, __c175, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18816,7 +15737,7 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "UpdateGuildScheduledEventRequest",
       });
-    case 5:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -18884,11 +15805,15 @@ function __c82(j: number): any {
           ],
         ]),
       );
-    case 6:
-      return S.suspend(() => __S(661, __c82, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(5602, __c175, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateGuildScheduledEventResponse",
       });
-    case 7:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18909,7 +15834,7 @@ function __c82(j: number): any {
       });
   }
 }
-function __c83(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18930,7 +15855,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "UpdateGuildSoundboardSoundRequest",
       });
-    case 1:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18944,7 +15873,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "UpdateGuildStickerRequest",
       });
-    case 2:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18955,7 +15888,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "UpdateGuildTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -18964,20 +15901,57 @@ function __c83(j: number): any {
           emoji_name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GuildWelcomeChannel" });
-    case 4:
-      return S.Array(__S(667, __c83, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(5760, __c180, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          welcome_channels: S.optional(S.NullOr(__S(668, __c83, 4))),
+          welcome_channels: S.optional(S.NullOr(__S(5761, __c180, 1))),
           enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/welcome-screen", code: 200 })),
       ).annotate({
         identifier: "UpdateGuildWelcomeScreenRequest",
       });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          name: S.String,
+          image: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/applications/{application_id}/emojis", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateApplicationEmojiRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          user: S.optional(__S(4608, __c144, 0)),
+          roles: __S(4672, __c146, 0),
+          require_colons: S.Boolean,
+          managed: S.Boolean,
+          animated: S.Boolean,
+          available: S.Boolean,
+        }),
+      ).annotate({ identifier: "EmojiResponse" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -18987,7 +15961,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "UpdateGuildWidgetSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -19005,14 +15983,14 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
-          body: __S(15, __c1, 7).pipe(T.HttpBody()),
+          body: __S(8256, __c258, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19023,7 +16001,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateLobbyMessageExternalModerationMetadataRequest",
       });
-    case 1:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "id", "components"],
@@ -19035,20 +16017,20 @@ function __c84(j: number): any {
           ["type", "id", "content"],
         ]),
       );
+    case 1:
+      return S.Array(__S(5952, __c186, 0));
     case 2:
-      return S.Array(__S(673, __c84, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
+          embeds: S.optional(S.NullOr(__S(7591, __c237, 7))),
           flags: S.optional(S.NullOr(S.Number)),
-          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
-          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          components: S.optional(S.NullOr(__S(674, __c84, 2))),
-          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
+          allowed_mentions: S.optional(S.NullOr(__S(7593, __c237, 9))),
+          sticker_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          components: S.optional(S.NullOr(__S(5953, __c186, 1))),
+          attachments: S.optional(S.NullOr(__S(7595, __c237, 11))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19057,10 +16039,14 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMessageRequest" });
-    case 4:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.NullOr(__S(628, __c78, 4))),
+          description: S.optional(S.NullOr(__S(5152, __c161, 0))),
           icon: S.optional(S.NullOr(S.String)),
           cover_image: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.String)),
@@ -19069,19 +16055,23 @@ function __c84(j: number): any {
           explicit_content_filter: S.optional(S.NullOr(S.Number)),
           max_participants: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(S.NullOr(__S(9, __c1, 1))),
+          tags: S.optional(S.NullOr(__S(4672, __c146, 0))),
           custom_install_url: S.optional(S.NullOr(S.String)),
-          install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
+          install_params: S.optional(S.NullOr(__S(5153, __c161, 1))),
           role_connections_verification_url: S.optional(S.NullOr(S.String)),
-          integration_types_config: S.optional(S.NullOr(__S(631, __c78, 7))),
+          integration_types_config: S.optional(S.NullOr(__S(5155, __c161, 3))),
           event_webhooks_status: S.optional(S.NullOr(S.Number)),
           event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_types: S.optional(S.NullOr(__S(76, __c9, 4))),
+          event_webhooks_types: S.optional(S.NullOr(__S(7936, __c248, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/applications/@me", code: 200 })),
       ).annotate({
         identifier: "UpdateMyApplicationRequest",
       });
-    case 5:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -19093,7 +16083,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateMyGuildMemberRequest",
       });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
@@ -19101,7 +16095,11 @@ function __c84(j: number): any {
           banner: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/@me", code: 200 })),
       ).annotate({ identifier: "UpdateMyUserRequest" });
-    case 7:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "id", "components"],
@@ -19113,13 +16111,9 @@ function __c84(j: number): any {
           ["type", "id", "content"],
         ]),
       );
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(679, __c84, 7));
     case 1:
+      return S.Array(__S(6080, __c190, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -19127,11 +16121,11 @@ function __c85(j: number): any {
           thread_id: S.optional(S.String.pipe(T.Query())),
           with_components: S.optional(S.Boolean.pipe(T.Query())),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
-          components: S.optional(S.NullOr(__S(680, __c85, 0))),
-          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
-          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
+          embeds: S.optional(S.NullOr(__S(7591, __c237, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(7593, __c237, 9))),
+          components: S.optional(S.NullOr(__S(6081, __c190, 1))),
+          attachments: S.optional(S.NullOr(__S(7595, __c237, 11))),
+          poll: S.optional(S.NullOr(__S(7620, __c238, 4))),
           flags: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -19143,7 +16137,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateOriginalWebhookMessageRequest",
       });
-    case 2:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -19154,7 +16152,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateSelfVoiceStateRequest",
       });
-    case 3:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -19164,13 +16166,161 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateStageInstanceRequest",
       });
-    case 4:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "name",
+            "event_type",
+            "actions",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_type",
+            "trigger_metadata",
+          ],
+          [
+            "name",
+            "event_type",
+            "actions",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_type",
+            "trigger_metadata",
+          ],
+          [
+            "name",
+            "event_type",
+            "actions",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_type",
+            "trigger_metadata",
+          ],
+          [
+            "name",
+            "event_type",
+            "actions",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_type",
+            "trigger_metadata",
+          ],
+          [
+            "name",
+            "event_type",
+            "actions",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_type",
+            "trigger_metadata",
+          ],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          body: __S(6176, __c193, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/guilds/{guild_id}/auto-moderation/rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateAutoModerationRuleRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+        ]),
+      );
+    case 3:
+      return S.suspend(() => __S(6178, __c193, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateAutoModerationRuleResponse",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id_1: S.String.pipe(T.Label()),
           user_id_2: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
-          body: __S(15, __c1, 7).pipe(T.HttpBody()),
+          body: __S(8256, __c258, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19181,7 +16331,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateUserMessageExternalModerationMetadataRequest",
       });
-    case 5:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
@@ -19190,7 +16344,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateVoiceChannelStatusRequest",
       });
-    case 6:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
@@ -19201,7 +16359,11 @@ function __c85(j: number): any {
           T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/voice-states/{user_id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateVoiceStateRequest" });
-    case 7:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -19210,11 +16372,7 @@ function __c85(j: number): any {
           channel_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhook_id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -19244,11 +16402,15 @@ function __c86(j: number): any {
           ],
         ]),
       );
-    case 1:
-      return S.suspend(() => __S(688, __c86, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(6305, __c197, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateWebhookResponse",
       });
-    case 2:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -19261,7 +16423,7 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "UpdateWebhookByTokenRequest",
       });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
@@ -19291,11 +16453,15 @@ function __c86(j: number): any {
           ],
         ]),
       );
-    case 4:
-      return S.suspend(() => __S(691, __c86, 3).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(6337, __c198, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateWebhookByTokenResponse",
       });
-    case 5:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "id", "components"],
@@ -19307,9 +16473,9 @@ function __c86(j: number): any {
           ["type", "id", "content"],
         ]),
       );
-    case 6:
-      return S.Array(__S(693, __c86, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(6368, __c199, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
@@ -19318,11 +16484,11 @@ function __c86(j: number): any {
           thread_id: S.optional(S.String.pipe(T.Query())),
           with_components: S.optional(S.Boolean.pipe(T.Query())),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
-          components: S.optional(S.NullOr(__S(694, __c86, 6))),
-          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
-          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
+          embeds: S.optional(S.NullOr(__S(7591, __c237, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(7593, __c237, 9))),
+          components: S.optional(S.NullOr(__S(6369, __c199, 1))),
+          attachments: S.optional(S.NullOr(__S(7595, __c237, 11))),
+          poll: S.optional(S.NullOr(__S(7620, __c238, 4))),
           flags: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -19336,7 +16502,7 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19373,22 +16539,3807 @@ function __c87(j: number): any {
           placeholder: S.optional(S.String),
           placeholder_version: S.optional(S.Number),
           title: S.optional(S.NullOr(S.String)),
-          application: S.optional(__S(148, __c18, 4)),
+          application: S.optional(__S(7776, __c243, 0)),
           clip_created_at: S.optional(S.String),
-          clip_participants: S.optional(__S(6, __c0, 6)),
+          clip_participants: S.optional(__S(7904, __c247, 0)),
         }),
       ).annotate({ identifier: "AttachmentResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachment: __S(697, __c87, 1),
+          attachment: __S(6401, __c200, 1),
         }),
       ).annotate({
         identifier: "ActivitiesAttachmentResponse",
       });
   }
 }
-
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["max_age"],
+          [
+            "max_age",
+            "temporary",
+            "max_uses",
+            "unique",
+            "target_user_id",
+            "target_application_id",
+            "target_type",
+            "role_ids",
+            "target_user_ids",
+          ],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          body: __S(6432, __c201, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/invites", code: 200 })),
+      ).annotate({
+        identifier: "CreateChannelInviteRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "type",
+            "code",
+            "inviter",
+            "max_age",
+            "created_at",
+            "expires_at",
+            "friends_count",
+            "channel",
+            "is_contact",
+            "uses",
+            "max_uses",
+            "flags",
+          ],
+          [
+            "type",
+            "code",
+            "inviter",
+            "max_age",
+            "created_at",
+            "expires_at",
+            "channel",
+            "approximate_member_count",
+          ],
+          [
+            "type",
+            "code",
+            "inviter",
+            "max_age",
+            "created_at",
+            "expires_at",
+            "is_contact",
+            "flags",
+            "guild",
+            "guild_id",
+            "channel",
+            "target_type",
+            "target_user",
+            "target_application",
+            "guild_scheduled_event",
+            "target_channel_id",
+            "target_message_id",
+            "uses",
+            "max_uses",
+            "temporary",
+            "approximate_member_count",
+            "approximate_presence_count",
+            "is_nickname_changeable",
+            "roles",
+          ],
+        ]),
+      );
+    case 3:
+      return S.suspend(() => __S(6434, __c201, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateChannelInviteResponse",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/channels/{channel_id}/pins/{message_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDeprecatedPinRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recipient_id: S.optional(S.NullOr(S.String)),
+          access_tokens: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          nicks: S.optional(S.NullOr(__S(6496, __c203, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/users/@me/channels", code: 200 })),
+      ).annotate({ identifier: "CreateDmRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "recipients",
+            "name",
+            "icon",
+            "owner_id",
+            "managed",
+            "application_id",
+          ],
+        ]),
+      );
+    case 3:
+      return S.suspend(() => __S(6498, __c203, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDmResponse",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          sku_id: S.String,
+          owner_id: S.String,
+          owner_type: S.Number,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/applications/{application_id}/entitlements", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateEntitlementRequest" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          sku_id: S.String,
+          application_id: S.String,
+          user_id: S.String,
+          guild_id: S.optional(S.NullOr(S.String)),
+          deleted: S.Boolean,
+          starts_at: S.NullOr(S.String),
+          ends_at: S.NullOr(S.String),
+          type: S.Number,
+          fulfilled_at: S.optional(S.NullOr(S.String)),
+          fulfillment_status: S.optional(S.NullOr(S.Number)),
+          consumed: S.optional(S.Boolean),
+          gifter_user_id: S.optional(S.NullOr(S.String)),
+          parent_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "EntitlementResponse" });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "file_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "channel_types",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "choices",
+            "min_value",
+            "max_value",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "autocomplete",
+            "min_length",
+            "max_length",
+            "choices",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+            "options",
+          ],
+          [
+            "type",
+            "name",
+            "name_localizations",
+            "description",
+            "description_localizations",
+            "required",
+          ],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(6592, __c206, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          guild_id: S.String.pipe(T.Label()),
+          name: S.String,
+          name_localizations: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          description_localizations: S.optional(S.NullOr(__S(6624, __c207, 0))),
+          options: S.optional(S.NullOr(__S(6593, __c206, 1))),
+          default_member_permissions: S.optional(S.NullOr(S.Number)),
+          dm_permission: S.optional(S.NullOr(S.Boolean)),
+          contexts: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          integration_types: S.optional(S.NullOr(__S(2496, __c78, 0))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/applications/{application_id}/guilds/{guild_id}/commands",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGuildApplicationCommandRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          role_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/guilds/{guild_id}/members/{user_id}/roles/{role_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddGuildMemberRoleRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddGuildMemberRoleResponse",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.optional(S.NullOr(S.Number)),
+          allow: S.optional(S.NullOr(S.Number)),
+          deny: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ChannelPermissionOverwriteRequest",
+      });
+    case 1:
+      return S.Array(__S(6720, __c210, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          emoji_id: S.optional(S.NullOr(S.String)),
+          emoji_name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "UpdateDefaultReactionEmojiRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          emoji_id: S.optional(S.NullOr(S.String)),
+          emoji_name: S.optional(S.NullOr(S.String)),
+          moderated: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "CreateOrUpdateThreadTagRequest",
+      });
+    case 4:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(6723, __c210, 3)));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          type: S.optional(S.NullOr(S.Number)),
+          name: S.String,
+          position: S.optional(S.NullOr(S.Number)),
+          topic: S.optional(S.NullOr(S.String)),
+          bitrate: S.optional(S.NullOr(S.Number)),
+          user_limit: S.optional(S.NullOr(S.Number)),
+          nsfw: S.optional(S.NullOr(S.Boolean)),
+          rate_limit_per_user: S.optional(S.NullOr(S.Number)),
+          parent_id: S.optional(S.NullOr(S.String)),
+          permission_overwrites: S.optional(S.NullOr(__S(6721, __c210, 1))),
+          rtc_region: S.optional(S.NullOr(S.String)),
+          video_quality_mode: S.optional(S.NullOr(S.Number)),
+          default_auto_archive_duration: S.optional(S.NullOr(S.Number)),
+          default_reaction_emoji: S.optional(S.NullOr(__S(6722, __c210, 2))),
+          default_thread_rate_limit_per_user: S.optional(S.NullOr(S.Number)),
+          default_sort_order: S.optional(S.NullOr(S.Number)),
+          default_forum_layout: S.optional(S.NullOr(S.Number)),
+          default_tag_setting: S.optional(S.NullOr(S.String)),
+          available_tags: S.optional(S.NullOr(__S(6724, __c210, 4))),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/channels", code: 200 })),
+      ).annotate({
+        identifier: "CreateGuildChannelRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          allow: S.String,
+          deny: S.String,
+        }),
+      ).annotate({
+        identifier: "ChannelPermissionOverwriteResponse",
+      });
+    case 1:
+      return S.Array(__S(6752, __c211, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          emoji_id: S.NullOr(S.String),
+          emoji_name: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultReactionEmojiResponse",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          moderated: S.Boolean,
+          emoji_id: S.NullOr(S.String),
+          emoji_name: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ForumTagResponse" });
+    case 1:
+      return S.Array(__S(6784, __c212, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          last_message_id: S.optional(S.NullOr(S.String)),
+          flags: S.Number,
+          last_pin_timestamp: S.optional(S.NullOr(S.String)),
+          guild_id: S.String,
+          name: S.String,
+          parent_id: S.optional(S.NullOr(S.String)),
+          rate_limit_per_user: S.optional(S.Number),
+          bitrate: S.optional(S.Number),
+          user_limit: S.optional(S.Number),
+          rtc_region: S.optional(S.NullOr(S.String)),
+          video_quality_mode: S.optional(S.Number),
+          permissions: S.optional(S.String),
+          topic: S.optional(S.NullOr(S.String)),
+          default_auto_archive_duration: S.optional(S.Number),
+          default_thread_rate_limit_per_user: S.optional(S.Number),
+          position: S.Number,
+          permission_overwrites: S.optional(__S(6753, __c211, 1)),
+          nsfw: S.optional(S.Boolean),
+          available_tags: S.optional(__S(6785, __c212, 1)),
+          default_reaction_emoji: S.optional(S.NullOr(__S(6754, __c211, 2))),
+          default_sort_order: S.optional(S.NullOr(S.Number)),
+          default_forum_layout: S.optional(S.Number),
+          default_tag_setting: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GuildChannelResponse" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          name: S.String,
+          image: S.String,
+          roles: S.optional(S.NullOr(__S(6848, __c214, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/emojis", code: 200 })),
+      ).annotate({ identifier: "CreateGuildEmojiRequest" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          permissions: S.optional(S.NullOr(S.Number)),
+          color: S.optional(S.NullOr(S.Number)),
+          colors: S.optional(S.NullOr(__S(6912, __c216, 0))),
+          hoist: S.optional(S.NullOr(S.Boolean)),
+          mentionable: S.optional(S.NullOr(S.Boolean)),
+          icon: S.optional(S.NullOr(S.String)),
+          unicode_emoji: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/roles", code: 200 })),
+      ).annotate({ identifier: "CreateGuildRoleRequest" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primary_color: S.optional(S.NullOr(S.Number)),
+          secondary_color: S.optional(S.NullOr(S.Number)),
+          tertiary_color: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "RoleColors" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "name",
+            "description",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "privacy_level",
+            "entity_type",
+            "channel_id",
+            "recurrence_rule",
+            "entity_metadata",
+          ],
+          [
+            "name",
+            "description",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "privacy_level",
+            "entity_type",
+            "channel_id",
+            "recurrence_rule",
+            "entity_metadata",
+          ],
+          [
+            "name",
+            "description",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "privacy_level",
+            "entity_type",
+            "channel_id",
+            "recurrence_rule",
+            "entity_metadata",
+          ],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          body: __S(6944, __c217, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/scheduled-events", code: 200 })),
+      ).annotate({
+        identifier: "CreateGuildScheduledEventRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "guild_id",
+            "name",
+            "description",
+            "channel_id",
+            "creator_id",
+            "creator",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "status",
+            "entity_type",
+            "entity_id",
+            "recurrence_rule",
+            "user_count",
+            "privacy_level",
+            "user_rsvp",
+            "guild_scheduled_event_exceptions",
+            "entity_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "name",
+            "description",
+            "channel_id",
+            "creator_id",
+            "creator",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "status",
+            "entity_type",
+            "entity_id",
+            "recurrence_rule",
+            "user_count",
+            "privacy_level",
+            "user_rsvp",
+            "guild_scheduled_event_exceptions",
+            "entity_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "name",
+            "description",
+            "channel_id",
+            "creator_id",
+            "creator",
+            "image",
+            "scheduled_start_time",
+            "scheduled_end_time",
+            "status",
+            "entity_type",
+            "entity_id",
+            "recurrence_rule",
+            "user_count",
+            "privacy_level",
+            "user_rsvp",
+            "guild_scheduled_event_exceptions",
+            "entity_metadata",
+          ],
+        ]),
+      );
+    case 3:
+      return S.suspend(() => __S(6946, __c217, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateGuildScheduledEventResponse",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          guild_scheduled_event_id: S.String.pipe(T.Label()),
+          scheduled_start_time: S.optional(S.NullOr(S.String)),
+          scheduled_end_time: S.optional(S.NullOr(S.String)),
+          original_scheduled_start_time: S.String,
+          is_canceled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/exceptions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGuildScheduledEventExceptionRequest",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          event_id: S.String,
+          event_exception_id: S.String,
+          scheduled_start_time: S.NullOr(S.String),
+          scheduled_end_time: S.NullOr(S.String),
+          is_canceled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GuildScheduledEventExceptionResponse",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          name: S.String,
+          volume: S.optional(S.NullOr(S.Number)),
+          emoji_id: S.optional(S.NullOr(S.String)),
+          emoji_name: S.optional(S.NullOr(S.String)),
+          sound: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/soundboard-sounds", code: 200 })),
+      ).annotate({
+        identifier: "CreateGuildSoundboardSoundRequest",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          sound_id: S.String,
+          volume: S.Number,
+          emoji_id: S.NullOr(S.String),
+          emoji_name: S.NullOr(S.String),
+          guild_id: S.optional(S.String),
+          available: S.Boolean,
+          user: S.optional(__S(4608, __c144, 0)),
+        }),
+      ).annotate({ identifier: "SoundboardSoundResponse" });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          name: S.String,
+          tags: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          file: S.Unknown.pipe(T.FormDataFile()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/guilds/{guild_id}/stickers",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGuildStickerRequest",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          tags: S.String,
+          type: S.Number,
+          format_type: S.NullOr(S.Number),
+          description: S.NullOr(S.String),
+          available: S.Boolean,
+          guild_id: S.String,
+          user: S.optional(__S(4608, __c144, 0)),
+        }),
+      ).annotate({ identifier: "GuildStickerResponse" });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/templates", code: 200 })),
+      ).annotate({
+        identifier: "CreateGuildTemplateRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          permissions: S.String,
+          color: S.Number,
+          colors: S.NullOr(__S(3712, __c116, 0)),
+          hoist: S.Boolean,
+          mentionable: S.Boolean,
+          icon: S.NullOr(S.String),
+          unicode_emoji: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GuildTemplateRoleResponse",
+      });
+    case 1:
+      return S.Array(__S(7200, __c225, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.NullOr(S.Number),
+          name: S.String,
+          emoji_id: S.NullOr(S.String),
+          emoji_name: S.NullOr(S.String),
+          moderated: S.NullOr(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuildTemplateChannelTags" });
+    case 3:
+      return S.Array(__S(7202, __c225, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.NullOr(S.Number),
+          type: S.Number,
+          name: S.NullOr(S.String),
+          position: S.NullOr(S.Number),
+          topic: S.NullOr(S.String),
+          bitrate: S.Number,
+          user_limit: S.Number,
+          nsfw: S.Boolean,
+          rate_limit_per_user: S.Number,
+          parent_id: S.NullOr(S.String),
+          default_auto_archive_duration: S.NullOr(S.Number),
+          permission_overwrites: __S(6753, __c211, 1),
+          available_tags: S.NullOr(__S(7203, __c225, 3)),
+          template: S.String,
+          default_reaction_emoji: S.NullOr(__S(6754, __c211, 2)),
+          default_thread_rate_limit_per_user: S.NullOr(S.Number),
+          default_sort_order: S.NullOr(S.Number),
+          default_forum_layout: S.NullOr(S.Number),
+          default_tag_setting: S.NullOr(S.String),
+          theme_color: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GuildTemplateChannelResponse",
+      });
+    case 5:
+      return S.Array(__S(7204, __c225, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.NullOr(S.String),
+          region: S.NullOr(S.String),
+          verification_level: S.Number,
+          default_message_notifications: S.Number,
+          explicit_content_filter: S.Number,
+          preferred_locale: S.String,
+          afk_channel_id: S.NullOr(S.String),
+          afk_timeout: S.Number,
+          system_channel_id: S.NullOr(S.String),
+          system_channel_flags: S.Number,
+          roles: __S(7201, __c225, 1),
+          channels: __S(7205, __c225, 5),
+        }),
+      ).annotate({
+        identifier: "GuildTemplateSnapshotResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          name: S.String,
+          description: S.NullOr(S.String),
+          usage_count: S.Number,
+          creator_id: S.String,
+          creator: S.NullOr(__S(4608, __c144, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          source_guild_id: S.String,
+          serialized_source_guild: __S(7206, __c225, 6),
+          is_dirty: S.NullOr(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuildTemplateResponse" });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "data"],
+          ["type", "data"],
+          ["type"],
+          ["type", "data"],
+          ["type"],
+          ["type", "data"],
+          ["type", "data"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          interaction_id: S.String.pipe(T.Label()),
+          interaction_token: S.String.pipe(T.Label()),
+          with_response: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(7232, __c226, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/interactions/{interaction_id}/{interaction_token}/callback",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInteractionResponseRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          activity_instance_id: S.optional(S.NullOr(S.String)),
+          response_message_id: S.optional(S.String),
+          response_message_loading: S.optional(S.Boolean),
+          response_message_ephemeral: S.optional(S.Boolean),
+          channel_id: S.optional(S.String),
+          guild_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InteractionResponse" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "message"],
+          ["type", "activity_instance"],
+          ["type", "message"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          interaction: __S(7234, __c226, 2),
+          resource: S.optional(__S(7235, __c226, 3)),
+        }),
+      ).annotate({
+        identifier: "InteractionCallbackResponse",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/members/@me/invites", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateLinkedLobbyGuildInviteForSelfRequest",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+        }),
+      ).annotate({ identifier: "LobbyGuildInviteResponse" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/invites/{code}/target-users/{user_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddInviteTargetUserRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/lobbies/{lobby_id}/members/{user_id}/invites",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLinkedLobbyGuildInviteForUserRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+          members: S.optional(S.NullOr(__S(7457, __c233, 1))),
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          flags: S.optional(S.NullOr(S.Number)),
+          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/lobbies", code: 200 })),
+      ).annotate({ identifier: "CreateLobbyRequest" });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          application_id: S.String,
+          metadata: S.NullOr(__S(8256, __c258, 0)),
+          members: __S(4160, __c130, 0),
+          linked_channel: S.optional(__S(6786, __c212, 2)),
+          flags: S.Number,
+          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LobbyResponse" });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          flags: S.optional(S.NullOr(S.Number)),
+          additional_name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LobbyMemberRequest" });
+    case 1:
+      return S.Array(__S(7456, __c233, 0));
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "accent_color", "components", "spoiler"],
+          ["type", "id", "spoiler", "file"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(7488, __c234, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          content: S.optional(S.NullOr(S.String)),
+          embeds: S.optional(S.NullOr(__S(7591, __c237, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(7593, __c237, 9))),
+          sticker_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          components: S.optional(S.NullOr(__S(7489, __c234, 1))),
+          flags: S.optional(S.NullOr(S.Number)),
+          attachments: S.optional(S.NullOr(__S(7595, __c237, 11))),
+          poll: S.optional(S.NullOr(__S(7620, __c238, 4))),
+          shared_client_theme: S.optional(S.NullOr(__S(7552, __c236, 0))),
+          message_reference: S.optional(S.NullOr(__S(7553, __c236, 1))),
+          nonce: S.optional(S.NullOr(__S(7490, __c234, 2))),
+          enforce_nonce: S.optional(S.NullOr(S.Boolean)),
+          tts: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/messages", code: 200 })),
+      ).annotate({
+        identifier: "CreateLobbyMessageRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          content: S.String,
+          lobby_id: S.String,
+          channel_id: S.String,
+          author: __S(4608, __c144, 0),
+          lobby_member: S.optional(__S(7648, __c239, 0)),
+          metadata: S.optional(__S(8256, __c258, 0)),
+          moderation_metadata: S.optional(__S(8256, __c258, 0)),
+          flags: S.Number,
+          application_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LobbyMessageResponse" });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          colors: __S(4672, __c146, 0),
+          gradient_angle: S.Number,
+          base_mix: S.Number,
+          base_theme: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CustomClientThemeShareRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.optional(S.NullOr(S.String)),
+          channel_id: S.optional(S.NullOr(S.String)),
+          message_id: S.String,
+          fail_if_not_exists: S.optional(S.NullOr(S.Boolean)),
+          type: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "MessageReferenceRequest" });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          icon_url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RichEmbedAuthor" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.NullOr(S.String)),
+          width: S.optional(S.NullOr(S.Number)),
+          height: S.optional(S.NullOr(S.Number)),
+          placeholder: S.optional(S.NullOr(S.String)),
+          placeholder_version: S.optional(S.NullOr(S.Number)),
+          is_animated: S.optional(S.NullOr(S.Boolean)),
+          description: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RichEmbedImage" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.NullOr(S.String)),
+          icon_url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RichEmbedFooter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+          inline: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "RichEmbedField" });
+    case 4:
+      return S.Array(__S(7587, __c237, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RichEmbedProvider" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          title: S.optional(S.NullOr(S.String)),
+          color: S.optional(S.NullOr(S.Number)),
+          timestamp: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          author: S.optional(S.NullOr(__S(7584, __c237, 0))),
+          image: S.optional(S.NullOr(__S(7585, __c237, 1))),
+          thumbnail: S.optional(S.NullOr(__S(7585, __c237, 1))),
+          footer: S.optional(S.NullOr(__S(7586, __c237, 2))),
+          fields: S.optional(S.NullOr(__S(7588, __c237, 4))),
+          provider: S.optional(S.NullOr(__S(7589, __c237, 5))),
+          video: S.optional(S.NullOr(__S(7585, __c237, 1))),
+        }),
+      ).annotate({ identifier: "RichEmbed" });
+    case 7:
+      return S.Array(__S(7590, __c237, 6));
+    case 8:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          parse: S.optional(S.NullOr(__S(7592, __c237, 8))),
+          users: S.optional(S.NullOr(__S(6848, __c214, 0))),
+          roles: S.optional(S.NullOr(__S(6848, __c214, 0))),
+          replied_user: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "MessageAllowedMentionsRequest",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          filename: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          duration_secs: S.optional(S.NullOr(S.Number)),
+          waveform: S.optional(S.NullOr(S.String)),
+          title: S.optional(S.NullOr(S.String)),
+          is_spoiler: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "MessageAttachmentRequest" });
+    case 11:
+      return S.Array(__S(7594, __c237, 10));
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          animated: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "PollEmoji" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.NullOr(S.String)),
+          emoji: S.optional(S.NullOr(__S(7616, __c238, 0))),
+        }),
+      ).annotate({ identifier: "PollMedia" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          poll_media: __S(7617, __c238, 1),
+        }),
+      ).annotate({ identifier: "PollAnswerCreateRequest" });
+    case 3:
+      return S.Array(__S(7618, __c238, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          question: __S(7617, __c238, 1),
+          answers: __S(7619, __c238, 3),
+          allow_multiselect: S.optional(S.NullOr(S.Boolean)),
+          layout_type: S.optional(S.NullOr(S.Number)),
+          duration: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "PollCreateRequest" });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          additional_name: S.String,
+        }),
+      ).annotate({
+        identifier: "MessageLobbyMemberResponse",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "accent_color", "components", "spoiler"],
+          ["type", "id", "spoiler", "file"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(7680, __c240, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          content: S.optional(S.NullOr(S.String)),
+          embeds: S.optional(S.NullOr(__S(7591, __c237, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(7593, __c237, 9))),
+          sticker_ids: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          components: S.optional(S.NullOr(__S(7681, __c240, 1))),
+          flags: S.optional(S.NullOr(S.Number)),
+          attachments: S.optional(S.NullOr(__S(7595, __c237, 11))),
+          poll: S.optional(S.NullOr(__S(7620, __c238, 4))),
+          shared_client_theme: S.optional(S.NullOr(__S(7552, __c236, 0))),
+          message_reference: S.optional(S.NullOr(__S(7553, __c236, 1))),
+          nonce: S.optional(S.NullOr(__S(7682, __c240, 2))),
+          enforce_nonce: S.optional(S.NullOr(S.Boolean)),
+          tts: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/messages", code: 200 })),
+      ).annotate({ identifier: "CreateMessageRequest" });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          user_id: S.String,
+          join_timestamp: S.String,
+          flags: S.Number,
+          member: S.optional(__S(4640, __c145, 0)),
+        }),
+      ).annotate({ identifier: "ThreadMemberResponse" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          archived: S.Boolean,
+          archive_timestamp: S.NullOr(S.String),
+          auto_archive_duration: S.Number,
+          locked: S.Boolean,
+          create_timestamp: S.optional(S.String),
+          invitable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ThreadMetadataResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          last_message_id: S.optional(S.NullOr(S.String)),
+          flags: S.Number,
+          last_pin_timestamp: S.optional(S.NullOr(S.String)),
+          guild_id: S.String,
+          name: S.String,
+          parent_id: S.optional(S.NullOr(S.String)),
+          rate_limit_per_user: S.optional(S.Number),
+          bitrate: S.optional(S.Number),
+          user_limit: S.optional(S.Number),
+          rtc_region: S.optional(S.NullOr(S.String)),
+          video_quality_mode: S.optional(S.Number),
+          permissions: S.optional(S.String),
+          owner_id: S.String,
+          thread_metadata: __S(7744, __c242, 0),
+          message_count: S.Number,
+          member_count: S.Number,
+          total_message_sent: S.Number,
+          applied_tags: S.optional(__S(4672, __c146, 0)),
+          member: S.optional(__S(7712, __c241, 0)),
+        }),
+      ).annotate({ identifier: "ThreadResponse" });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          icon: S.NullOr(S.String),
+          description: S.String,
+          type: S.NullOr(S.Number),
+          cover_image: S.optional(S.String),
+          primary_sku_id: S.optional(S.String),
+          flags: S.Number,
+          flags_new: S.String,
+          bot: S.optional(__S(4608, __c144, 0)),
+          slug: S.optional(S.String),
+          vibegrations_project_id: S.optional(S.String),
+          guild_id: S.optional(S.String),
+          rpc_origins: S.optional(__S(4672, __c146, 0)),
+          bot_public: S.optional(S.Boolean),
+          bot_require_code_grant: S.optional(S.Boolean),
+          terms_of_service_url: S.optional(S.String),
+          privacy_policy_url: S.optional(S.String),
+          custom_install_url: S.optional(S.String),
+          install_params: S.optional(__S(7968, __c249, 0)),
+          integration_types_config: S.optional(__S(7970, __c249, 2)),
+          verify_key: S.String,
+          max_participants: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(__S(4672, __c146, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationResponse" });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          filename: S.String,
+          size: S.Number,
+          url: S.String,
+          proxy_url: S.String,
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          duration_secs: S.optional(S.Number),
+          waveform: S.optional(S.String),
+          description: S.optional(S.String),
+          content_type: S.optional(S.String),
+          ephemeral: S.optional(S.Boolean),
+          flags: S.optional(S.Number),
+          placeholder: S.optional(S.String),
+          placeholder_version: S.optional(S.Number),
+          title: S.optional(S.NullOr(S.String)),
+          application: S.optional(__S(7776, __c243, 0)),
+          clip_created_at: S.optional(S.String),
+          clip_participants: S.optional(__S(7904, __c247, 0)),
+        }),
+      ).annotate({
+        identifier: "MessageAttachmentResponse",
+      });
+    case 1:
+      return S.Array(__S(7808, __c244, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+          inline: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "MessageEmbedFieldResponse",
+      });
+    case 3:
+      return S.Array(__S(7810, __c244, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          url: S.optional(S.String),
+          icon_url: S.optional(S.String),
+          proxy_icon_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MessageEmbedAuthorResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MessageEmbedProviderResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          proxy_url: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          content_type: S.optional(S.String),
+          placeholder: S.optional(S.String),
+          placeholder_version: S.optional(S.Number),
+          description: S.optional(S.String),
+          flags: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MessageEmbedImageResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.String,
+          icon_url: S.optional(S.String),
+          proxy_icon_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MessageEmbedFooterResponse",
+      });
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "file", "name", "size", "spoiler"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 9:
+      return S.Array(__S(7816, __c244, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          id: S.Number,
+          accent_color: S.NullOr(S.Number),
+          components: __S(7817, __c244, 9),
+          spoiler: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ContainerComponentResponse",
+      });
+    case 11:
+      return S.Array(__S(7818, __c244, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          url: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          color: S.optional(S.Number),
+          timestamp: S.optional(S.String),
+          fields: S.optional(__S(7811, __c244, 3)),
+          author: S.optional(__S(7812, __c244, 4)),
+          provider: S.optional(__S(7813, __c244, 5)),
+          image: S.optional(__S(7814, __c244, 6)),
+          thumbnail: S.optional(__S(7814, __c244, 6)),
+          video: S.optional(__S(7814, __c244, 6)),
+          footer: S.optional(__S(7815, __c244, 7)),
+          flags: S.optional(S.NullOr(S.Number)),
+          components: S.optional(__S(7819, __c244, 11)),
+        }),
+      ).annotate({ identifier: "MessageEmbedResponse" });
+    case 13:
+      return S.Array(__S(7820, __c244, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          format_type: S.Number,
+        }),
+      ).annotate({
+        identifier: "MessageStickerItemResponse",
+      });
+    case 15:
+      return S.Array(__S(7822, __c244, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ended_timestamp: S.optional(S.NullOr(S.String)),
+          participants: __S(4672, __c146, 0),
+        }),
+      ).annotate({ identifier: "MessageCallResponse" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          party_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageActivityResponse" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          icon: S.NullOr(S.String),
+          description: S.String,
+          type: S.NullOr(S.Number),
+          cover_image: S.optional(S.String),
+          primary_sku_id: S.optional(S.String),
+          flags: S.Number,
+          flags_new: S.String,
+          bot: S.optional(__S(4608, __c144, 0)),
+        }),
+      ).annotate({
+        identifier: "BasicApplicationResponseWithBot",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.Number,
+          name: S.String,
+          user: S.optional(__S(4608, __c144, 0)),
+          name_localized: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MessageInteractionResponse",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          channel_id: S.String,
+          message_id: S.optional(S.String),
+          guild_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageReferenceResponse" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          type: S.Number,
+          guild_id: S.String,
+        }),
+      ).annotate({
+        identifier: "MessageMentionChannelResponse",
+      });
+    case 22:
+      return S.Array(__S(7829, __c244, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          role_subscription_listing_id: S.String,
+          tier_name: S.String,
+          total_months_subscribed: S.Number,
+          is_renewal: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "MessageRoleSubscriptionDataResponse",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          listing_id: S.String,
+          product_name: S.String,
+        }),
+      ).annotate({
+        identifier: "GuildProductPurchaseResponse",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          guild_product_purchase: S.optional(__S(7832, __c244, 24)),
+        }),
+      ).annotate({
+        identifier: "PurchaseNotificationResponse",
+      });
+    case 26:
+      return S.Record(S.String, __S(4608, __c144, 0));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.NullOr(S.String),
+          avatar_decoration_data: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          banner: S.NullOr(S.String),
+          communication_disabled_until: S.NullOr(S.String),
+          flags: S.Number,
+          joined_at: S.String,
+          nick: S.NullOr(S.String),
+          pending: S.Boolean,
+          premium_since: S.NullOr(S.String),
+          roles: __S(4672, __c146, 0),
+          collectibles: S.optional(S.NullOr(__S(4578, __c143, 2))),
+        }),
+      ).annotate({ identifier: "BasicGuildMemberResponse" });
+    case 28:
+      return S.Record(S.String, __S(7835, __c244, 27));
+    case 29:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "guild_id",
+            "name",
+            "parent_id",
+            "rate_limit_per_user",
+            "bitrate",
+            "user_limit",
+            "rtc_region",
+            "video_quality_mode",
+            "permissions",
+            "topic",
+            "default_auto_archive_duration",
+            "default_thread_rate_limit_per_user",
+            "position",
+            "permission_overwrites",
+            "nsfw",
+            "available_tags",
+            "default_reaction_emoji",
+            "default_sort_order",
+            "default_forum_layout",
+            "default_tag_setting",
+          ],
+          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "recipients",
+            "name",
+            "icon",
+            "owner_id",
+            "managed",
+            "application_id",
+          ],
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "guild_id",
+            "name",
+            "parent_id",
+            "rate_limit_per_user",
+            "bitrate",
+            "user_limit",
+            "rtc_region",
+            "video_quality_mode",
+            "permissions",
+            "owner_id",
+            "thread_metadata",
+            "message_count",
+            "member_count",
+            "total_message_sent",
+            "applied_tags",
+            "member",
+          ],
+        ]),
+      );
+    case 30:
+      return S.Record(S.String, __S(7837, __c244, 29));
+    case 31:
+      return S.Record(S.String, __S(3745, __c117, 1));
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          users: S.optional(S.NullOr(__S(7834, __c244, 26))),
+          members: S.optional(S.NullOr(__S(7836, __c244, 28))),
+          channels: S.optional(S.NullOr(__S(7838, __c244, 30))),
+          roles: S.optional(S.NullOr(__S(7839, __c244, 31))),
+        }),
+      ).annotate({ identifier: "ResolvedObjectsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          animated: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "MessageReactionEmojiResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          emoji: S.optional(__S(7841, __c245, 1)),
+        }),
+      ).annotate({ identifier: "PollMediaResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          answer_id: S.Number,
+          poll_media: __S(7842, __c245, 2),
+        }),
+      ).annotate({ identifier: "PollAnswerResponse" });
+    case 4:
+      return S.Array(__S(7843, __c245, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          count: S.Number,
+          me_voted: S.Boolean,
+        }),
+      ).annotate({ identifier: "PollResultsEntryResponse" });
+    case 6:
+      return S.Array(__S(7845, __c245, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          answer_counts: __S(7846, __c245, 6),
+          is_finalized: S.Boolean,
+        }),
+      ).annotate({ identifier: "PollResultsResponse" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          question: __S(7842, __c245, 2),
+          answers: __S(7844, __c245, 4),
+          expiry: S.String,
+          allow_multiselect: S.Boolean,
+          layout_type: S.Number,
+          results: __S(7847, __c245, 7),
+        }),
+      ).annotate({ identifier: "PollResponse" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          colors: __S(4672, __c146, 0),
+          gradient_angle: S.Number,
+          base_mix: S.Number,
+          base_theme: S.Number,
+        }),
+      ).annotate({
+        identifier: "CustomClientThemeResponse",
+      });
+    case 10:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "accent_color", "components", "spoiler"],
+          ["type", "id", "file", "name", "size", "spoiler"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 11:
+      return S.Array(__S(7850, __c245, 10));
+    case 12:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "name",
+            "tags",
+            "type",
+            "format_type",
+            "description",
+            "available",
+            "guild_id",
+            "user",
+          ],
+          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
+        ]),
+      );
+    case 13:
+      return S.Array(__S(7852, __c245, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          content: S.String,
+          mentions: __S(7904, __c247, 0),
+          mention_roles: __S(4672, __c146, 0),
+          attachments: __S(7809, __c244, 1),
+          embeds: __S(7821, __c244, 13),
+          timestamp: S.String,
+          edited_timestamp: S.NullOr(S.String),
+          flags: S.Number,
+          components: __S(7851, __c245, 11),
+          stickers: S.optional(__S(7853, __c245, 13)),
+          sticker_items: S.optional(__S(7823, __c244, 15)),
+        }),
+      ).annotate({
+        identifier: "MinimalContentMessageResponse",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          message: __S(7854, __c245, 14),
+        }),
+      ).annotate({ identifier: "MessageSnapshotResponse" });
+    case 16:
+      return S.Array(__S(7855, __c245, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          burst: S.Number,
+          normal: S.Number,
+        }),
+      ).annotate({
+        identifier: "MessageReactionCountDetailsResponse",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          emoji: __S(7841, __c245, 1),
+          count: S.Number,
+          count_details: __S(7857, __c245, 17),
+          burst_colors: __S(4672, __c146, 0),
+          me_burst: S.Boolean,
+          me: S.Boolean,
+        }),
+      ).annotate({ identifier: "MessageReactionResponse" });
+    case 19:
+      return S.Array(__S(7858, __c245, 18));
+    case 20:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "accent_color", "components", "spoiler"],
+          ["type", "id", "file", "name", "size", "spoiler"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 21:
+      return S.Array(__S(7860, __c245, 20));
+    case 22:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "name",
+            "tags",
+            "type",
+            "format_type",
+            "description",
+            "available",
+            "guild_id",
+            "user",
+          ],
+          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
+        ]),
+      );
+    case 23:
+      return S.Array(__S(7862, __c245, 22));
+    case 24:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 25:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "target_user",
+            "target_message_id",
+          ],
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "interacted_message_id",
+          ],
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "triggering_interaction_metadata",
+          ],
+        ]),
+      );
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          content: S.String,
+          mentions: __S(7904, __c247, 0),
+          mention_roles: __S(4672, __c146, 0),
+          attachments: __S(7809, __c244, 1),
+          embeds: __S(7821, __c244, 13),
+          timestamp: S.String,
+          edited_timestamp: S.NullOr(S.String),
+          flags: S.Number,
+          components: __S(7861, __c245, 21),
+          stickers: S.optional(__S(7863, __c245, 23)),
+          sticker_items: S.optional(__S(7823, __c244, 15)),
+          id: S.String,
+          channel_id: S.String,
+          author: __S(4608, __c144, 0),
+          pinned: S.Boolean,
+          mention_everyone: S.Boolean,
+          tts: S.Boolean,
+          call: S.optional(__S(7824, __c244, 16)),
+          activity: S.optional(__S(7825, __c244, 17)),
+          application: S.optional(__S(7826, __c244, 18)),
+          application_id: S.optional(S.String),
+          interaction: S.optional(__S(7827, __c244, 19)),
+          nonce: S.optional(__S(7864, __c245, 24)),
+          webhook_id: S.optional(S.String),
+          message_reference: S.optional(__S(7828, __c244, 20)),
+          thread: S.optional(__S(7745, __c242, 1)),
+          mention_channels: S.optional(__S(7830, __c244, 22)),
+          role_subscription_data: S.optional(__S(7831, __c244, 23)),
+          purchase_notification: S.optional(__S(7833, __c244, 25)),
+          position: S.optional(S.Number),
+          resolved: S.optional(__S(7840, __c245, 0)),
+          poll: S.optional(__S(7848, __c245, 8)),
+          shared_client_theme: S.optional(__S(7849, __c245, 9)),
+          interaction_metadata: S.optional(__S(7865, __c245, 25)),
+          message_snapshots: S.optional(__S(7856, __c245, 16)),
+          lobby_member: S.optional(__S(7648, __c239, 0)),
+        }),
+      ).annotate({ identifier: "BasicMessageResponse" });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "id", "components"],
+          ["type", "id", "accent_color", "components", "spoiler"],
+          ["type", "id", "file", "name", "size", "spoiler"],
+          ["type", "id", "items"],
+          ["type", "id", "components", "accessory"],
+          ["type", "id", "spacing", "divider"],
+          ["type", "id", "content"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(7872, __c246, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "name",
+            "tags",
+            "type",
+            "format_type",
+            "description",
+            "available",
+            "guild_id",
+            "user",
+          ],
+          ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
+        ]),
+      );
+    case 3:
+      return S.Array(__S(7874, __c246, 2));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "target_user",
+            "target_message_id",
+          ],
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "interacted_message_id",
+          ],
+          [
+            "id",
+            "type",
+            "user",
+            "authorizing_integration_owners",
+            "original_response_message_id",
+            "triggering_interaction_metadata",
+          ],
+        ]),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          content: S.String,
+          mentions: __S(7904, __c247, 0),
+          mention_roles: __S(4672, __c146, 0),
+          attachments: __S(7809, __c244, 1),
+          embeds: __S(7821, __c244, 13),
+          timestamp: S.String,
+          edited_timestamp: S.NullOr(S.String),
+          flags: S.Number,
+          components: __S(7873, __c246, 1),
+          stickers: S.optional(__S(7875, __c246, 3)),
+          sticker_items: S.optional(__S(7823, __c244, 15)),
+          id: S.String,
+          channel_id: S.String,
+          author: __S(4608, __c144, 0),
+          pinned: S.Boolean,
+          mention_everyone: S.Boolean,
+          tts: S.Boolean,
+          call: S.optional(__S(7824, __c244, 16)),
+          activity: S.optional(__S(7825, __c244, 17)),
+          application: S.optional(__S(7826, __c244, 18)),
+          application_id: S.optional(S.String),
+          interaction: S.optional(__S(7827, __c244, 19)),
+          nonce: S.optional(__S(7876, __c246, 4)),
+          webhook_id: S.optional(S.String),
+          message_reference: S.optional(__S(7828, __c244, 20)),
+          thread: S.optional(__S(7745, __c242, 1)),
+          mention_channels: S.optional(__S(7830, __c244, 22)),
+          role_subscription_data: S.optional(__S(7831, __c244, 23)),
+          purchase_notification: S.optional(__S(7833, __c244, 25)),
+          position: S.optional(S.Number),
+          resolved: S.optional(__S(7840, __c245, 0)),
+          poll: S.optional(__S(7848, __c245, 8)),
+          shared_client_theme: S.optional(__S(7849, __c245, 9)),
+          interaction_metadata: S.optional(__S(7877, __c246, 5)),
+          message_snapshots: S.optional(__S(7856, __c245, 16)),
+          lobby_member: S.optional(__S(7648, __c239, 0)),
+          reactions: S.optional(__S(7859, __c245, 19)),
+          referenced_message: S.optional(S.NullOr(__S(7866, __c245, 26))),
+        }),
+      ).annotate({ identifier: "MessageResponse" });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4608, __c144, 0));
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: __S(7936, __c248, 0),
+          permissions: S.String,
+        }),
+      ).annotate({
+        identifier: "ApplicationOAuth2InstallParamsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          oauth2_install_params: S.optional(__S(7968, __c249, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplicationIntegrationTypeConfigurationResponse",
+      });
+    case 2:
+      return S.Record(S.String, __S(7969, __c249, 1));
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+          lobby_metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          member_metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          secret: S.String.pipe(T.SensitiveValue({})),
+          flags: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/lobbies", code: 200 })),
+      ).annotate({ identifier: "CreateOrJoinLobbyRequest" });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/channels/{channel_id}/messages/pins/{message_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreatePinRequest" });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.String,
+          channel_id: S.String,
+          privacy_level: S.optional(S.NullOr(S.Number)),
+          guild_scheduled_event_id: S.optional(S.NullOr(S.String)),
+          send_start_notification: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/stage-instances", code: 200 })),
+      ).annotate({
+        identifier: "CreateStageInstanceRequest",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String,
+          channel_id: S.String,
+          topic: S.String,
+          privacy_level: S.Number,
+          id: S.String,
+          discoverable_disabled: S.Boolean,
+          guild_scheduled_event_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "StageInstanceResponse" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["name", "auto_archive_duration", "rate_limit_per_user", "applied_tags", "message"],
+          ["name", "auto_archive_duration", "rate_limit_per_user", "type", "invitable"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          body: __S(8128, __c254, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/threads", code: 200 })),
+      ).annotate({ identifier: "CreateThreadRequest" });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          name: S.String,
+          auto_archive_duration: S.optional(S.NullOr(S.Number)),
+          rate_limit_per_user: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/channels/{channel_id}/messages/{message_id}/threads",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateThreadFromMessageRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          name: S.String,
+          avatar: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.NullOr(S.String),
+          avatar: S.NullOr(S.String),
+          channel_id: S.NullOr(S.String),
+          guild_id: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          name: S.String,
+          type: S.Number,
+          user: S.optional(__S(4608, __c144, 0)),
+          token: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuildIncomingWebhookResponse",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          flags: S.optional(S.NullOr(S.Number)),
+          additional_name: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PUT", uri: "/lobbies/{lobby_id}/members/{user_id}", code: 200 })),
+      ).annotate({ identifier: "AddLobbyMemberRequest" });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadata: S.NullOr(__S(8256, __c258, 0)),
+          flags: S.Number,
+          additional_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LobbyMemberResponse" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/channels/{channel_id}/messages/{message_id}/crosspost",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CrosspostMessageRequest" });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/{message_id}/reactions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAllMessageReactionsRequest",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          emoji_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAllMessageReactionsByEmojiRequest",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          command_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/applications/{application_id}/commands/{command_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationCommandRequest",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          emoji_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/applications/{application_id}/emojis/{emoji_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationEmojiRequest",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/@me/applications/{application_id}/role-connection",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationUserRoleConnectionRequest",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          rule_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/auto-moderation/rules/{rule_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutoModerationRuleRequest",
+      });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/channels/{channel_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteChannelRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "guild_id",
+            "name",
+            "parent_id",
+            "rate_limit_per_user",
+            "bitrate",
+            "user_limit",
+            "rtc_region",
+            "video_quality_mode",
+            "permissions",
+            "topic",
+            "default_auto_archive_duration",
+            "default_thread_rate_limit_per_user",
+            "position",
+            "permission_overwrites",
+            "nsfw",
+            "available_tags",
+            "default_reaction_emoji",
+            "default_sort_order",
+            "default_forum_layout",
+            "default_tag_setting",
+          ],
+          ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "recipients",
+            "name",
+            "icon",
+            "owner_id",
+            "managed",
+            "application_id",
+          ],
+          [
+            "id",
+            "type",
+            "last_message_id",
+            "flags",
+            "last_pin_timestamp",
+            "guild_id",
+            "name",
+            "parent_id",
+            "rate_limit_per_user",
+            "bitrate",
+            "user_limit",
+            "rtc_region",
+            "video_quality_mode",
+            "permissions",
+            "owner_id",
+            "thread_metadata",
+            "message_count",
+            "member_count",
+            "total_message_sent",
+            "applied_tags",
+            "member",
+          ],
+        ]),
+      );
+    case 2:
+      return S.suspend(() => __S(8545, __c267, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteChannelResponse",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          overwrite_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/permissions/{overwrite_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteChannelPermissionOverwriteRequest",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/channels/{channel_id}/pins/{message_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDeprecatedPinRequest",
+      });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          emoji_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddMyMessageReactionRequest",
+      });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          entitlement_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/applications/{application_id}/entitlements/{entitlement_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEntitlementRequest" });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/recipients/{user_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupDmUserRequest" });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          guild_id: S.String.pipe(T.Label()),
+          command_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildApplicationCommandRequest",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          emoji_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/emojis/{emoji_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteGuildEmojiRequest" });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          integration_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/integrations/{integration_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildIntegrationRequest",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/members/{user_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteGuildMemberRequest" });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          role_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/members/{user_id}/roles/{role_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildMemberRoleRequest",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          role_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/roles/{role_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteGuildRoleRequest" });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          guild_scheduled_event_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildScheduledEventRequest",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          guild_scheduled_event_id: S.String.pipe(T.Label()),
+          exception_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/exceptions/{exception_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildScheduledEventExceptionRequest",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/channels/{channel_id}/thread-members/{user_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddThreadMemberRequest" });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          sound_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/guilds/{guild_id}/soundboard-sounds/{sound_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildSoundboardSoundRequest",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          sticker_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/stickers/{sticker_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildStickerRequest",
+      });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          code: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/guilds/{guild_id}/templates/{code}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteGuildTemplateRequest",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/lobbies/{lobby_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteLobbyRequest" });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/lobbies/{lobby_id}/members/{user_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteLobbyMemberRequest" });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/{message_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteMessageRequest" });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          emoji_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMyMessageReactionRequest",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+          thread_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/webhooks/{webhook_id}/{webhook_token}/messages/@original",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOriginalWebhookMessageRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/pins/{message_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeletePinRequest" });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/stage-instances/{channel_id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteStageInstanceRequest",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          delete_message_seconds: S.optional(S.NullOr(S.Number)),
+          delete_message_days: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/bans/{user_id}", code: 200 })),
+      ).annotate({ identifier: "BanUserFromGuildRequest" });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/thread-members/{user_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteThreadMemberRequest",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          emoji_name: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/{user_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUserMessageReactionRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteWebhookByTokenRequest",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          thread_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWebhookMessageRequest",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+          metadata: S.optional(S.NullOr(__S(8256, __c258, 0))),
+          members: S.optional(S.NullOr(__S(7457, __c233, 1))),
+          flags: S.optional(S.NullOr(S.Number)),
+          override_event_webhooks_url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/lobbies/{lobby_id}", code: 200 })),
+      ).annotate({ identifier: "EditLobbyRequest" });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lobby_id: S.String.pipe(T.Label()),
+          channel_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/lobbies/{lobby_id}/channel-linking", code: 200 })),
+      ).annotate({
+        identifier: "EditLobbyChannelLinkRequest",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          login: S.String,
+          html_url: S.String,
+          avatar_url: S.String,
+        }),
+      ).annotate({ identifier: "GithubUser" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          html_url: S.String,
+          user: __S(9600, __c300, 0),
+          commit_id: S.optional(S.NullOr(S.String)),
+          body: S.String,
+        }),
+      ).annotate({ identifier: "GithubComment" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          number: S.Number,
+          html_url: S.String,
+          user: __S(9600, __c300, 0),
+          title: S.String,
+          body: S.optional(S.NullOr(S.String)),
+          pull_request: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "GithubIssue" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          html_url: S.String,
+          name: S.String,
+          full_name: S.String,
+        }),
+      ).annotate({ identifier: "GithubRepository" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          tag_name: S.String,
+          html_url: S.String,
+          author: __S(9600, __c300, 0),
+        }),
+      ).annotate({ identifier: "GithubRelease" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.NullOr(S.String)),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GithubAuthor" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+          message: S.String,
+          author: __S(9605, __c300, 5),
+        }),
+      ).annotate({ identifier: "GithubCommit" });
+    case 7:
+      return S.Array(__S(9606, __c300, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          user: __S(9600, __c300, 0),
+          body: S.optional(S.NullOr(S.String)),
+          html_url: S.String,
+          state: S.String,
+        }),
+      ).annotate({ identifier: "GithubReview" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.Number,
+        }),
+      ).annotate({ identifier: "GithubCheckPullRequest" });
+    case 10:
+      return S.Array(__S(9609, __c300, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          conclusion: S.optional(S.NullOr(S.String)),
+          head_branch: S.optional(S.NullOr(S.String)),
+          head_sha: S.String,
+          pull_requests: S.optional(S.NullOr(__S(9610, __c300, 10))),
+          app: __S(9632, __c301, 0),
+        }),
+      ).annotate({ identifier: "GithubCheckSuite" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.NullOr(S.String)),
+          summary: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GithubCheckRunOutput" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          conclusion: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          html_url: S.String,
+          check_suite: __S(9611, __c300, 11),
+          details_url: S.optional(S.NullOr(S.String)),
+          output: S.optional(S.NullOr(__S(9612, __c300, 12))),
+          pull_requests: S.optional(S.NullOr(__S(9610, __c300, 10))),
+        }),
+      ).annotate({ identifier: "GithubCheckRun" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          number: S.Number,
+          html_url: S.String,
+          answer_html_url: S.optional(S.NullOr(S.String)),
+          body: S.optional(S.NullOr(S.String)),
+          user: __S(9600, __c300, 0),
+        }),
+      ).annotate({ identifier: "GithubDiscussion" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+          wait: S.optional(S.Boolean.pipe(T.Query())),
+          thread_id: S.optional(S.String.pipe(T.Query())),
+          action: S.optional(S.NullOr(S.String)),
+          ref: S.optional(S.NullOr(S.String)),
+          ref_type: S.optional(S.NullOr(S.String)),
+          comment: S.optional(S.NullOr(__S(9601, __c300, 1))),
+          issue: S.optional(S.NullOr(__S(9602, __c300, 2))),
+          pull_request: S.optional(S.NullOr(__S(9602, __c300, 2))),
+          repository: S.optional(S.NullOr(__S(9603, __c300, 3))),
+          forkee: S.optional(S.NullOr(__S(9603, __c300, 3))),
+          sender: __S(9600, __c300, 0),
+          member: S.optional(S.NullOr(__S(9600, __c300, 0))),
+          release: S.optional(S.NullOr(__S(9604, __c300, 4))),
+          head_commit: S.optional(S.NullOr(__S(9606, __c300, 6))),
+          commits: S.optional(S.NullOr(__S(9607, __c300, 7))),
+          forced: S.optional(S.NullOr(S.Boolean)),
+          compare: S.optional(S.NullOr(S.String)),
+          review: S.optional(S.NullOr(__S(9608, __c300, 8))),
+          check_run: S.optional(S.NullOr(__S(9613, __c300, 13))),
+          check_suite: S.optional(S.NullOr(__S(9611, __c300, 11))),
+          discussion: S.optional(S.NullOr(__S(9614, __c300, 14))),
+          answer: S.optional(S.NullOr(__S(9601, __c300, 1))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/webhooks/{webhook_id}/{webhook_token}/github",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteGithubCompatibleWebhookRequest",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GithubCheckApp" });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+          inline: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "WebhookSlackEmbedField" });
+    case 1:
+      return S.Array(__S(9664, __c302, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.NullOr(S.String)),
+          title_link: S.optional(S.NullOr(S.String)),
+          text: S.optional(S.NullOr(S.String)),
+          color: S.optional(S.NullOr(S.String)),
+          ts: S.optional(S.NullOr(S.Number)),
+          pretext: S.optional(S.NullOr(S.String)),
+          footer: S.optional(S.NullOr(S.String)),
+          footer_icon: S.optional(S.NullOr(S.String)),
+          author_name: S.optional(S.NullOr(S.String)),
+          author_link: S.optional(S.NullOr(S.String)),
+          author_icon: S.optional(S.NullOr(S.String)),
+          image_url: S.optional(S.NullOr(S.String)),
+          thumb_url: S.optional(S.NullOr(S.String)),
+          fields: S.optional(S.NullOr(__S(9665, __c302, 1))),
+        }),
+      ).annotate({ identifier: "WebhookSlackEmbed" });
+    case 3:
+      return S.Array(__S(9666, __c302, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+          wait: S.optional(S.Boolean.pipe(T.Query())),
+          thread_id: S.optional(S.String.pipe(T.Query())),
+          text: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          icon_url: S.optional(S.NullOr(S.String)),
+          attachments: S.optional(S.NullOr(__S(9667, __c302, 3))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/webhooks/{webhook_id}/{webhook_token}/slack",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteSlackCompatibleWebhookRequest",
+      });
+    case 5:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ExecuteSlackCompatibleWebhookResponse",
+      });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "content",
+            "embeds",
+            "allowed_mentions",
+            "components",
+            "attachments",
+            "poll",
+            "tts",
+            "flags",
+            "username",
+            "avatar_url",
+            "thread_name",
+            "applied_tags",
+          ],
+          ["content", "embeds", "allowed_mentions", "components", "attachments", "poll", "flags"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          webhook_token: S.String.pipe(T.Label()),
+          wait: S.optional(S.Boolean.pipe(T.Query())),
+          thread_id: S.optional(S.String.pipe(T.Query())),
+          with_components: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(9696, __c303, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
+        ),
+      ).annotate({ identifier: "ExecuteWebhookRequest" });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisional_user_id: S.optional(S.NullOr(S.String)),
+          external_user_id: S.String,
+          preferred_global_name: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/partner-sdk/token/bot", code: 200 })),
+      ).annotate({
+        identifier: "BotPartnerSdkTokenRequest",
+      });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token_type: S.String,
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          expires_in: S.Number,
+          scope: S.String,
+          id_token: S.String,
+          refresh_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          scopes: S.optional(S.NullOr(__S(4672, __c146, 0))),
+          expires_at_s: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ProvisionalTokenResponse" });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          webhook_channel_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/followers", code: 200 })),
+      ).annotate({ identifier: "FollowChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          webhook_id: S.String,
+        }),
+      ).annotate({ identifier: "ChannelFollowerResponse" });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/threads/active", code: 200 })),
+      ).annotate({
+        identifier: "GetActiveGuildThreadsRequest",
+      });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7878, __c246, 6));
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7745, __c242, 1));
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          threads: __S(9888, __c309, 0),
+          members: __S(9952, __c311, 0),
+          has_more: S.Boolean,
+          first_messages: S.optional(__S(9856, __c308, 0)),
+        }),
+      ).annotate({ identifier: "ThreadsResponse" });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7712, __c241, 0));
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String.pipe(T.Label()),
+          message_id: S.String.pipe(T.Label()),
+          answer_id: S.Number.pipe(T.Label()),
+          after: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/channels/{channel_id}/polls/{message_id}/answers/{answer_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAnswerVotersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          users: __S(7904, __c247, 0),
+        }),
+      ).annotate({
+        identifier: "PollAnswerDetailsResponse",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/applications/{application_id}", code: 200 })),
+      ).annotate({ identifier: "GetApplicationRequest" });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: __S(4608, __c144, 0),
+          team_id: S.String,
+          membership_state: S.Number,
+          role: S.String,
+          permissions: __S(4672, __c146, 0),
+        }),
+      ).annotate({ identifier: "TeamMemberResponse" });
+    case 1:
+      return S.Array(__S(10048, __c314, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          icon: S.NullOr(S.String),
+          name: S.String,
+          owner_user_id: S.String,
+          members: __S(10049, __c314, 1),
+        }),
+      ).annotate({ identifier: "TeamResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          icon: S.NullOr(S.String),
+          description: S.String,
+          type: S.NullOr(S.Number),
+          cover_image: S.optional(S.String),
+          primary_sku_id: S.optional(S.String),
+          flags: S.Number,
+          flags_new: S.String,
+          bot: S.optional(__S(4608, __c144, 0)),
+          slug: S.optional(S.String),
+          vibegrations_project_id: S.optional(S.String),
+          guild_id: S.optional(S.String),
+          rpc_origins: S.optional(__S(4672, __c146, 0)),
+          bot_public: S.optional(S.Boolean),
+          bot_require_code_grant: S.optional(S.Boolean),
+          terms_of_service_url: S.optional(S.String),
+          privacy_policy_url: S.optional(S.String),
+          custom_install_url: S.optional(S.String),
+          install_params: S.optional(__S(7968, __c249, 0)),
+          integration_types_config: S.optional(__S(7970, __c249, 2)),
+          verify_key: S.String,
+          max_participants: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(__S(4672, __c146, 0)),
+          redirect_uris: __S(4672, __c146, 0),
+          interactions_endpoint_url: S.NullOr(S.String),
+          role_connections_verification_url: S.NullOr(S.String),
+          owner: __S(4608, __c144, 0),
+          approximate_guild_count: S.Number,
+          approximate_user_install_count: S.Number,
+          approximate_user_authorization_count: S.Number,
+          event_webhooks_url: S.optional(S.NullOr(S.String)),
+          event_webhooks_status: S.optional(S.Number),
+          event_webhooks_types: S.optional(__S(7936, __c248, 0)),
+          explicit_content_filter: S.Number,
+          team: S.NullOr(__S(10050, __c314, 2)),
+          eligible_oauth2_scopes: __S(7936, __c248, 0),
+        }),
+      ).annotate({
+        identifier: "PrivateApplicationResponse",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          instance_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/applications/{application_id}/activity-instances/{instance_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationActivityInstanceRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["id", "kind", "channel_id", "guild_id"],
+          ["id", "kind", "channel_id"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String,
+          instance_id: S.String,
+          launch_id: S.String,
+          location: __S(10081, __c315, 1),
+          users: __S(4672, __c146, 0),
+        }),
+      ).annotate({ identifier: "EmbeddedActivityInstance" });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          command_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/applications/{application_id}/commands/{command_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationCommandRequest",
+      });
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+          emoji_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/applications/{application_id}/emojis/{emoji_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationEmojiRequest",
+      });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/applications/{application_id}/role-connections/metadata",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationRoleConnectionsMetadataRequest",
+      });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Number,
+          key: S.String,
+          name: S.String,
+          name_localizations: S.optional(S.NullOr(__S(6624, __c207, 0))),
+          description: S.String,
+          description_localizations: S.optional(S.NullOr(__S(6624, __c207, 0))),
+        }),
+      ).annotate({
+        identifier: "ApplicationRoleConnectionsMetadataItemResponse",
+      });
+    case 1:
+      return S.Array(__S(10208, __c319, 0));
+    case 2:
+      return S.suspend(() => __S(10209, __c319, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetApplicationRoleConnectionsMetadataResponse",
+      });
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/@me/applications/{application_id}/role-connection",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationUserRoleConnectionRequest",
+      });
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          platform_name: S.optional(S.String),
+          platform_username: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(__S(8256, __c258, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplicationUserRoleConnectionResponse",
+      });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guild_id: S.String.pipe(T.Label()),
+          rule_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/guilds/{guild_id}/auto-moderation/rules/{rule_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAutoModerationRuleRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+          [
+            "id",
+            "guild_id",
+            "creator_id",
+            "name",
+            "event_type",
+            "actions",
+            "trigger_type",
+            "enabled",
+            "exempt_roles",
+            "exempt_channels",
+            "trigger_metadata",
+          ],
+        ]),
+      );
+    case 2:
+      return S.suspend(() => __S(10305, __c322, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAutoModerationRuleResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

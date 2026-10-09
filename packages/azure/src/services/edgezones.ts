@@ -196,7 +196,7 @@ export const GetExtendedZone: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetExtendedZoneRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetExtendedZoneResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -210,8 +210,8 @@ export const ListExtendedZoneBySubscription: API.OperationMethod<
   ListExtendedZoneBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListExtendedZoneBySubscriptionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExtendedZoneListResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListExtendedZoneBySubscriptionRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ExtendedZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const RegisterExtendedZone: API.OperationMethod<
   RegisterExtendedZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<RegisterExtendedZoneRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RegisterExtendedZoneResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<RegisterExtendedZoneRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<RegisterExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const UnregisterExtendedZone: API.OperationMethod<
   UnregisterExtendedZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UnregisterExtendedZoneRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UnregisterExtendedZoneResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UnregisterExtendedZoneRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UnregisterExtendedZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -279,7 +279,25 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExtendedZoneRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetExtendedZoneResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -290,7 +308,7 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -306,17 +324,11 @@ function __c0(j: number): any {
           homeLocation: S.String,
         }),
       ).annotate({ identifier: "ExtendedZoneProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "GetExtendedZoneResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -331,16 +343,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListExtendedZoneBySubscriptionRequest",
       });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(5, __c0, 5),
+          value: __S(25, __c3, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedZoneListResult" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -351,11 +367,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -364,26 +376,30 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(8, __c1, 0)),
+          display: S.optional(__S(33, __c4, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10, __c1, 2)),
+          value: S.optional(__S(35, __c4, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -399,19 +415,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RegisterExtendedZoneRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "RegisterExtendedZoneResponse",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -429,7 +453,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

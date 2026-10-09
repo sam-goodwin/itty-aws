@@ -144,8 +144,8 @@ export const retryAttempt: API.OperationMethod<
   RetryAttemptError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<RetryAttemptRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<RetryAttemptResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<RetryAttemptRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<RetryAttemptResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const startAttempt: API.OperationMethod<
   StartAttemptError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<StartAttemptRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<StartAttemptResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<StartAttemptRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<StartAttemptResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -212,36 +212,6 @@ function __c0(j: number): any {
           output: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "AttemptAwaitResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          args: S.optional(S.String),
-          argsBlobId: S.optional(S.String),
-          finalInput: S.optional(S.Boolean),
-          dataFormat: S.optional(S.String),
-          methodName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FunctionInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          blobId: S.optional(S.String),
-          outcome: S.optional(S.String),
-          throughputBytesS: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BlobUploadResult" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idx: S.optional(S.Number),
-          input: S.optional(__S(4, __c0, 4)),
-          r2Failed: S.optional(S.Boolean),
-          r2ThroughputBytesS: S.optional(S.String),
-          blobUploadResults: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "FunctionPutInputsItem" });
   }
 }
 function __c1(j: number): any {
@@ -251,7 +221,7 @@ function __c1(j: number): any {
         S.Struct({
           functionId: S.optional(S.String),
           parentInputId: S.optional(S.String),
-          input: S.optional(__S(7, __c0, 7)),
+          input: S.optional(__S(11, __c2, 3)),
           attemptToken: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AttemptRetry", code: 200 }),
@@ -263,18 +233,56 @@ function __c1(j: number): any {
           attemptToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetryAttemptResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          args: S.optional(S.String),
+          argsBlobId: S.optional(S.String),
+          finalInput: S.optional(S.Boolean),
+          dataFormat: S.optional(S.String),
+          methodName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FunctionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          blobId: S.optional(S.String),
+          outcome: S.optional(S.String),
+          throughputBytesS: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlobUploadResult" });
     case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          idx: S.optional(S.Number),
+          input: S.optional(__S(8, __c2, 0)),
+          r2Failed: S.optional(S.Boolean),
+          r2ThroughputBytesS: S.optional(S.String),
+          blobUploadResults: S.optional(__S(10, __c2, 2)),
+        }),
+      ).annotate({ identifier: "FunctionPutInputsItem" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
           parentInputId: S.optional(S.String),
-          input: S.optional(__S(7, __c0, 7)),
+          input: S.optional(__S(11, __c2, 3)),
           proxied: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AttemptStart", code: 200 }),
         ),
       ).annotate({ identifier: "StartAttemptRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           backoffCoefficient: S.optional(S.Number),
@@ -283,16 +291,15 @@ function __c1(j: number): any {
           retries: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FunctionRetryPolicy" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attemptToken: S.optional(S.String),
-          retryPolicy: S.optional(__S(11, __c1, 3)),
+          retryPolicy: S.optional(__S(13, __c3, 1)),
         }),
       ).annotate({ identifier: "StartAttemptResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

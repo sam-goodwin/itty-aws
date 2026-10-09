@@ -248,8 +248,8 @@ export const createProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
   CreateProjectsDatabasesCollectionGroupsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -268,8 +268,8 @@ export const deleteProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
   DeleteProjectsDatabasesCollectionGroupsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -288,8 +288,8 @@ export const exportDocumentsProjectsDatabases: API.OperationMethod<
   ExportDocumentsProjectsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ExportDocumentsProjectsDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(29, __c7, 1) as any as S.Schema<ExportDocumentsProjectsDatabasesRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const getProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   GetProjectsDatabasesCollectionGroupsFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleFirestoreAdminV1beta2Field>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<GoogleFirestoreAdminV1beta2Field>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const getProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
   GetProjectsDatabasesCollectionGroupsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleFirestoreAdminV1beta2Index>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<GoogleFirestoreAdminV1beta2Index>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const importDocumentsProjectsDatabases: API.OperationMethod<
   ImportDocumentsProjectsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ImportDocumentsProjectsDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(53, __c13, 1) as any as S.Schema<ImportDocumentsProjectsDatabasesRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
   GcpOpContext,
   GoogleFirestoreAdminV1beta2ListFieldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleFirestoreAdminV1beta2ListFieldsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleFirestoreAdminV1beta2ListFieldsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
   GcpOpContext,
   GoogleFirestoreAdminV1beta2ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GoogleFirestoreAdminV1beta2ListIndexesResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<GoogleFirestoreAdminV1beta2ListIndexesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -392,8 +392,8 @@ export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   PatchProjectsDatabasesCollectionGroupsFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(8, __c2, 0) as any as S.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -401,6 +401,135 @@ export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+parent}/fields",
+            baseUrl: "https://firestore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsDatabasesCollectionGroupsFieldsRequest",
+      });
+    case 1:
+      return S.Array(__S(45, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(1, __c0, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirestoreAdminV1beta2ListFieldsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta2/{+parent}/indexes",
+            baseUrl: "https://firestore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsDatabasesCollectionGroupsIndexesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          indexes: S.optional(__S(40, __c10, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleFirestoreAdminV1beta2ListIndexesResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(45, __c11, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta2/{+name}",
+            baseUrl: "https://firestore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsDatabasesCollectionGroupsFieldsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(22, __c5, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+parent}/indexes",
+            baseUrl: "https://firestore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsDatabasesCollectionGroupsIndexesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(17, __c4, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(18, __c4, 2)),
+          response: S.optional(__S(16, __c4, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(16, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -413,60 +542,21 @@ function __c0(j: number): any {
         identifier: "GoogleFirestoreAdminV1beta2IndexField",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(20, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           name: S.optional(S.String),
           queryScope: S.optional(S.String),
-          fields: S.optional(__S(1, __c0, 1)),
+          fields: S.optional(__S(21, __c5, 1)),
         }),
       ).annotate({
         identifier: "GoogleFirestoreAdminV1beta2Index",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+parent}/indexes",
-            baseUrl: "https://firestore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsDatabasesCollectionGroupsIndexesRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(6, __c0, 6)),
-          response: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -486,22 +576,24 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          collectionIds: S.optional(__S(10, __c1, 2)),
+          collectionIds: S.optional(__S(32, __c8, 0)),
           outputUriPrefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirestoreAdminV1beta2ExportDocumentsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -512,7 +604,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ExportDocumentsProjectsDatabasesRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -526,12 +628,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProjectsDatabasesCollectionGroupsFieldsRequest",
       });
-    case 6:
-      return S.Array(__S(2, __c0, 2));
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(22, __c5, 2));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          indexes: S.optional(__S(14, __c1, 6)),
+          indexes: S.optional(__S(40, __c10, 0)),
           ancestorField: S.optional(S.String),
           usesAncestorConfig: S.optional(S.Boolean),
           reverting: S.optional(S.Boolean),
@@ -539,20 +649,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleFirestoreAdminV1beta2IndexConfig",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          indexConfig: S.optional(__S(15, __c1, 7)),
+          indexConfig: S.optional(__S(44, __c11, 0)),
         }),
       ).annotate({
         identifier: "GoogleFirestoreAdminV1beta2Field",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -566,20 +676,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsDatabasesCollectionGroupsIndexesRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          collectionIds: S.optional(__S(10, __c1, 2)),
+          collectionIds: S.optional(__S(32, __c8, 0)),
           inputUriPrefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirestoreAdminV1beta2ImportDocumentsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(52, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -590,83 +704,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImportDocumentsProjectsDatabasesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+parent}/fields",
-            baseUrl: "https://firestore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsDatabasesCollectionGroupsFieldsRequest",
-      });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(21, __c2, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirestoreAdminV1beta2ListFieldsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta2/{+parent}/indexes",
-            baseUrl: "https://firestore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsDatabasesCollectionGroupsIndexesRequest",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          indexes: S.optional(__S(14, __c1, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleFirestoreAdminV1beta2ListIndexesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta2/{+name}",
-            baseUrl: "https://firestore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsDatabasesCollectionGroupsFieldsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

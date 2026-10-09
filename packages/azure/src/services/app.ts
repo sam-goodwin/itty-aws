@@ -7766,7 +7766,7 @@ export const ActivateContainerAppsRevisionRevision: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateContainerAppsRevisionRevisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateContainerAppsRevisionRevisionResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<ActivateContainerAppsRevisionRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7780,8 +7780,8 @@ export const AgentsConnectorsCreateOrUpdate: API.OperationMethod<
   AgentsConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AgentsConnectorsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AgentsConnectorsCreateOrUpdateResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<AgentsConnectorsCreateOrUpdateRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<AgentsConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7795,8 +7795,8 @@ export const AgentsCreateOrUpdate: API.OperationMethod<
   AgentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<AgentsCreateOrUpdateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AgentsCreateOrUpdateResponse>,
+  input: __S(4899, __c153, 3) as any as S.Schema<AgentsCreateOrUpdateRequest>,
+  output: __S(4901, __c153, 5) as any as S.Schema<AgentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7810,8 +7810,8 @@ export const CertificatesCreateOrUpdate: API.OperationMethod<
   CertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CertificatesCreateOrUpdateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CertificatesCreateOrUpdateResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<CertificatesCreateOrUpdateRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<CertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7825,8 +7825,12 @@ export const CheckConnectedEnvironmentNameAvailability: API.OperationMethod<
   CheckConnectedEnvironmentNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CheckConnectedEnvironmentNameAvailabilityRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CheckConnectedEnvironmentNameAvailabilityResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<CheckConnectedEnvironmentNameAvailabilityRequest>,
+  output: __S(
+    5952,
+    __c186,
+    0,
+  ) as any as S.Schema<CheckConnectedEnvironmentNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7840,8 +7844,12 @@ export const CheckManagedEnvironmentMigrationEligibility: API.OperationMethod<
   CheckManagedEnvironmentMigrationEligibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CheckManagedEnvironmentMigrationEligibilityRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CheckMigrationEligibilityResponse>,
+  input: __S(
+    6432,
+    __c201,
+    0,
+  ) as any as S.Schema<CheckManagedEnvironmentMigrationEligibilityRequest>,
+  output: __S(6435, __c201, 3) as any as S.Schema<CheckMigrationEligibilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7855,8 +7863,8 @@ export const CheckNamespaceNameAvailability: API.OperationMethod<
   CheckNamespaceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CheckNamespaceNameAvailabilityResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<CheckNamespaceNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7871,13 +7879,13 @@ export const ConnectedEnvironmentsCertificatesCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
+    7584,
+    __c237,
     0,
   ) as any as S.Schema<ConnectedEnvironmentsCertificatesCreateOrUpdateRequest>,
   output: __S(
-    42,
-    __c5,
+    7586,
+    __c237,
     2,
   ) as any as S.Schema<ConnectedEnvironmentsCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -7893,8 +7901,8 @@ export const ConnectedEnvironmentsCreateOrUpdate: API.OperationMethod<
   ConnectedEnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ConnectedEnvironmentsCreateOrUpdateRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ConnectedEnvironmentsCreateOrUpdateResponse>,
+  input: __S(8225, __c257, 1) as any as S.Schema<ConnectedEnvironmentsCreateOrUpdateRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<ConnectedEnvironmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7909,13 +7917,13 @@ export const ConnectedEnvironmentsDaprComponentsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    8992,
+    __c281,
+    0,
   ) as any as S.Schema<ConnectedEnvironmentsDaprComponentsCreateOrUpdateRequest>,
   output: __S(
-    57,
-    __c7,
+    8993,
+    __c281,
     1,
   ) as any as S.Schema<ConnectedEnvironmentsDaprComponentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -7931,8 +7939,8 @@ export const ConnectedEnvironmentsStoragesCreateOrUpdate: API.OperationMethod<
   ConnectedEnvironmentsStoragesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ConnectedEnvironmentsStoragesCreateOrUpdateRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ConnectedEnvironmentsStoragesCreateOrUpdateResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<ConnectedEnvironmentsStoragesCreateOrUpdateRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<ConnectedEnvironmentsStoragesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7947,14 +7955,14 @@ export const ContainerAppPrivateEndpointConnectionsCreateOrUpdate: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<ContainerAppPrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    69,
-    __c8,
-    5,
+    769,
+    __c24,
+    1,
   ) as any as S.Schema<ContainerAppPrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7969,8 +7977,8 @@ export const ContainerAppsAuthConfigsCreateOrUpdate: API.OperationMethod<
   ContainerAppsAuthConfigsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ContainerAppsAuthConfigsCreateOrUpdateRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ContainerAppsAuthConfigsCreateOrUpdateResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ContainerAppsAuthConfigsCreateOrUpdateRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<ContainerAppsAuthConfigsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7984,8 +7992,8 @@ export const ContainerAppsCreateOrUpdate: API.OperationMethod<
   ContainerAppsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ContainerAppsCreateOrUpdateRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ContainerAppsCreateOrUpdateResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ContainerAppsCreateOrUpdateRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<ContainerAppsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7999,8 +8007,8 @@ export const ContainerAppsSessionPoolsCreateOrUpdate: API.OperationMethod<
   ContainerAppsSessionPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateResponse>,
+  input: __S(2753, __c86, 1) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8014,8 +8022,12 @@ export const ContainerAppsSourceControlsCreateOrUpdate: API.OperationMethod<
   ContainerAppsSourceControlsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ContainerAppsSourceControlsCreateOrUpdateRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ContainerAppsSourceControlsCreateOrUpdateResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ContainerAppsSourceControlsCreateOrUpdateRequest>,
+  output: __S(
+    3296,
+    __c103,
+    0,
+  ) as any as S.Schema<ContainerAppsSourceControlsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8030,14 +8042,14 @@ export const DaprComponentResiliencyPoliciesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    203,
-    __c25,
-    3,
+    3712,
+    __c116,
+    0,
   ) as any as S.Schema<DaprComponentResiliencyPoliciesCreateOrUpdateRequest>,
   output: __S(
-    204,
-    __c25,
-    4,
+    3750,
+    __c117,
+    6,
   ) as any as S.Schema<DaprComponentResiliencyPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8052,8 +8064,8 @@ export const DaprComponentsCreateOrUpdate: API.OperationMethod<
   DaprComponentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DaprComponentsCreateOrUpdateRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<DaprComponentsCreateOrUpdateResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DaprComponentsCreateOrUpdateRequest>,
+  output: __S(4224, __c132, 0) as any as S.Schema<DaprComponentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8067,8 +8079,8 @@ export const DeactivateContainerAppsRevisionRevision: API.OperationMethod<
   DeactivateContainerAppsRevisionRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeactivateContainerAppsRevisionRevisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeactivateContainerAppsRevisionRevisionResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DeactivateContainerAppsRevisionRevisionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeactivateContainerAppsRevisionRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8082,8 +8094,8 @@ export const DeleteAgent: API.OperationMethod<
   DeleteAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteAgentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAgentResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DeleteAgentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8097,8 +8109,8 @@ export const DeleteAgentsConnector: API.OperationMethod<
   DeleteAgentsConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteAgentsConnectorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAgentsConnectorResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<DeleteAgentsConnectorRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteAgentsConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8112,8 +8124,8 @@ export const DeleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8127,8 +8139,8 @@ export const DeleteConnectedEnvironment: API.OperationMethod<
   DeleteConnectedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteConnectedEnvironmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectedEnvironmentResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DeleteConnectedEnvironmentRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteConnectedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8142,8 +8154,8 @@ export const DeleteConnectedEnvironmentsCertificate: API.OperationMethod<
   DeleteConnectedEnvironmentsCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<DeleteConnectedEnvironmentsCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectedEnvironmentsCertificateResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<DeleteConnectedEnvironmentsCertificateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteConnectedEnvironmentsCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8157,8 +8169,8 @@ export const DeleteConnectedEnvironmentsDaprComponent: API.OperationMethod<
   DeleteConnectedEnvironmentsDaprComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<DeleteConnectedEnvironmentsDaprComponentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectedEnvironmentsDaprComponentResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<DeleteConnectedEnvironmentsDaprComponentRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteConnectedEnvironmentsDaprComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8172,8 +8184,8 @@ export const DeleteConnectedEnvironmentsStorage: API.OperationMethod<
   DeleteConnectedEnvironmentsStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<DeleteConnectedEnvironmentsStorageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectedEnvironmentsStorageResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DeleteConnectedEnvironmentsStorageRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteConnectedEnvironmentsStorageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8187,8 +8199,8 @@ export const DeleteContainerApp: API.OperationMethod<
   DeleteContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<DeleteContainerAppRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteContainerAppResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<DeleteContainerAppRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteContainerAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8202,8 +8214,12 @@ export const DeleteContainerAppPrivateEndpointConnection: API.OperationMethod<
   DeleteContainerAppPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteContainerAppPrivateEndpointConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerAppPrivateEndpointConnectionResponse>,
+  input: __S(
+    5344,
+    __c167,
+    0,
+  ) as any as S.Schema<DeleteContainerAppPrivateEndpointConnectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteContainerAppPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8217,8 +8233,8 @@ export const DeleteContainerAppsAuthConfig: API.OperationMethod<
   DeleteContainerAppsAuthConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<DeleteContainerAppsAuthConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerAppsAuthConfigResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<DeleteContainerAppsAuthConfigRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteContainerAppsAuthConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8232,8 +8248,12 @@ export const DeleteContainerAppsLabelHistoryLabelHistory: API.OperationMethod<
   DeleteContainerAppsLabelHistoryLabelHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<DeleteContainerAppsLabelHistoryLabelHistoryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerAppsLabelHistoryLabelHistoryResponse>,
+  input: __S(
+    5408,
+    __c169,
+    0,
+  ) as any as S.Schema<DeleteContainerAppsLabelHistoryLabelHistoryRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteContainerAppsLabelHistoryLabelHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8247,8 +8267,8 @@ export const DeleteContainerAppsSessionPool: API.OperationMethod<
   DeleteContainerAppsSessionPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<DeleteContainerAppsSessionPoolRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerAppsSessionPoolResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<DeleteContainerAppsSessionPoolRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteContainerAppsSessionPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8262,8 +8282,8 @@ export const DeleteContainerAppsSourceControl: API.OperationMethod<
   DeleteContainerAppsSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DeleteContainerAppsSourceControlRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerAppsSourceControlResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<DeleteContainerAppsSourceControlRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteContainerAppsSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8277,8 +8297,8 @@ export const DeleteDaprComponent: API.OperationMethod<
   DeleteDaprComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<DeleteDaprComponentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteDaprComponentResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<DeleteDaprComponentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteDaprComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8292,8 +8312,8 @@ export const DeleteDaprComponentResiliencyPolicy: API.OperationMethod<
   DeleteDaprComponentResiliencyPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<DeleteDaprComponentResiliencyPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDaprComponentResiliencyPolicyResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<DeleteDaprComponentResiliencyPolicyRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteDaprComponentResiliencyPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8307,8 +8327,8 @@ export const DeleteDotNetComponent: API.OperationMethod<
   DeleteDotNetComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<DeleteDotNetComponentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteDotNetComponentResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<DeleteDotNetComponentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteDotNetComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8322,8 +8342,8 @@ export const DeleteHttpRouteConfig: API.OperationMethod<
   DeleteHttpRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DeleteHttpRouteConfigRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteHttpRouteConfigResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<DeleteHttpRouteConfigRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteHttpRouteConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8337,8 +8357,8 @@ export const DeleteJavaComponent: API.OperationMethod<
   DeleteJavaComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<DeleteJavaComponentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteJavaComponentResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<DeleteJavaComponentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteJavaComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8352,8 +8372,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<DeleteJobRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteJobResponse>,
+  input: __S(5824, __c182, 0) as any as S.Schema<DeleteJobRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8367,8 +8387,8 @@ export const DeleteLogicApp: API.OperationMethod<
   DeleteLogicAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<DeleteLogicAppRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteLogicAppResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<DeleteLogicAppRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteLogicAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8382,8 +8402,8 @@ export const DeleteMaintenanceConfiguration: API.OperationMethod<
   DeleteMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8397,8 +8417,8 @@ export const DeleteManagedCertificate: API.OperationMethod<
   DeleteManagedCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<DeleteManagedCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedCertificateResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<DeleteManagedCertificateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteManagedCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8412,8 +8432,8 @@ export const DeleteManagedEnvironment: API.OperationMethod<
   DeleteManagedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<DeleteManagedEnvironmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedEnvironmentResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteManagedEnvironmentRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteManagedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8428,14 +8448,14 @@ export const DeleteManagedEnvironmentPrivateEndpointConnection: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    231,
-    __c28,
-    7,
+    6048,
+    __c189,
+    0,
   ) as any as S.Schema<DeleteManagedEnvironmentPrivateEndpointConnectionRequest>,
   output: __S(
-    232,
-    __c29,
-    0,
+    6049,
+    __c189,
+    1,
   ) as any as S.Schema<DeleteManagedEnvironmentPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8450,8 +8470,8 @@ export const DeleteManagedEnvironmentsStorage: API.OperationMethod<
   DeleteManagedEnvironmentsStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<DeleteManagedEnvironmentsStorageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedEnvironmentsStorageResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<DeleteManagedEnvironmentsStorageRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteManagedEnvironmentsStorageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8465,8 +8485,8 @@ export const DeleteSandboxGroup: API.OperationMethod<
   DeleteSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<DeleteSandboxGroupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteSandboxGroupResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<DeleteSandboxGroupRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8480,8 +8500,8 @@ export const DeleteVnetConnection: API.OperationMethod<
   DeleteVnetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<DeleteVnetConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteVnetConnectionResponse>,
+  input: __S(6144, __c192, 0) as any as S.Schema<DeleteVnetConnectionRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteVnetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8495,8 +8515,8 @@ export const DotNetComponentsCreateOrUpdate: API.OperationMethod<
   DotNetComponentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<DotNetComponentsCreateOrUpdateRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<DotNetComponentsCreateOrUpdateResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<DotNetComponentsCreateOrUpdateRequest>,
+  output: __S(6240, __c195, 0) as any as S.Schema<DotNetComponentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8510,8 +8530,8 @@ export const GetAgent: API.OperationMethod<
   GetAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<GetAgentRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<GetAgentResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetAgentRequest>,
+  output: __S(6337, __c198, 1) as any as S.Schema<GetAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8525,8 +8545,8 @@ export const GetAgentsConnector: API.OperationMethod<
   GetAgentsConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<GetAgentsConnectorRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAgentsConnectorResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<GetAgentsConnectorRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<GetAgentsConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8540,8 +8560,8 @@ export const GetAvailableWorkloadProfile: API.OperationMethod<
   GetAvailableWorkloadProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetAvailableWorkloadProfileRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<AvailableWorkloadProfilesCollection>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetAvailableWorkloadProfileRequest>,
+  output: __S(6404, __c200, 4) as any as S.Schema<AvailableWorkloadProfilesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8555,8 +8575,8 @@ export const GetBillingMeter: API.OperationMethod<
   GetBillingMeterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<GetBillingMeterRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<BillingMeterCollection>,
+  input: __S(6464, __c202, 0) as any as S.Schema<GetBillingMeterRequest>,
+  output: __S(6468, __c202, 4) as any as S.Schema<BillingMeterCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8570,8 +8590,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<GetCertificateRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetCertificateResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8585,8 +8605,8 @@ export const GetConnectedEnvironment: API.OperationMethod<
   GetConnectedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetConnectedEnvironmentRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetConnectedEnvironmentResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<GetConnectedEnvironmentRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<GetConnectedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8600,8 +8620,8 @@ export const GetConnectedEnvironmentsCertificate: API.OperationMethod<
   GetConnectedEnvironmentsCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetConnectedEnvironmentsCertificateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetConnectedEnvironmentsCertificateResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<GetConnectedEnvironmentsCertificateRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<GetConnectedEnvironmentsCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8615,8 +8635,8 @@ export const GetConnectedEnvironmentsDaprComponent: API.OperationMethod<
   GetConnectedEnvironmentsDaprComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<GetConnectedEnvironmentsDaprComponentRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetConnectedEnvironmentsDaprComponentResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<GetConnectedEnvironmentsDaprComponentRequest>,
+  output: __S(4224, __c132, 0) as any as S.Schema<GetConnectedEnvironmentsDaprComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8630,8 +8650,8 @@ export const GetConnectedEnvironmentsStorage: API.OperationMethod<
   GetConnectedEnvironmentsStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<GetConnectedEnvironmentsStorageRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GetConnectedEnvironmentsStorageResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<GetConnectedEnvironmentsStorageRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GetConnectedEnvironmentsStorageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8645,8 +8665,8 @@ export const GetContainerApp: API.OperationMethod<
   GetContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetContainerAppRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<GetContainerAppResponse>,
+  input: __S(6688, __c209, 0) as any as S.Schema<GetContainerAppRequest>,
+  output: __S(6720, __c210, 0) as any as S.Schema<GetContainerAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8660,8 +8680,8 @@ export const GetContainerAppAuthToken: API.OperationMethod<
   GetContainerAppAuthTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetContainerAppAuthTokenRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GetContainerAppAuthTokenResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetContainerAppAuthTokenRequest>,
+  output: __S(6785, __c212, 1) as any as S.Schema<GetContainerAppAuthTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8675,8 +8695,8 @@ export const GetContainerAppPrivateEndpointConnection: API.OperationMethod<
   GetContainerAppPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<GetContainerAppPrivateEndpointConnectionRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<GetContainerAppPrivateEndpointConnectionResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetContainerAppPrivateEndpointConnectionRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<GetContainerAppPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8690,8 +8710,8 @@ export const GetContainerAppPrivateLinkResource: API.OperationMethod<
   GetContainerAppPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetContainerAppPrivateLinkResourceRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<GetContainerAppPrivateLinkResourceResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<GetContainerAppPrivateLinkResourceRequest>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GetContainerAppPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8705,8 +8725,8 @@ export const GetContainerAppsAuthConfig: API.OperationMethod<
   GetContainerAppsAuthConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetContainerAppsAuthConfigRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetContainerAppsAuthConfigResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetContainerAppsAuthConfigRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<GetContainerAppsAuthConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8720,8 +8740,8 @@ export const GetContainerAppsDiagnosticDetector: API.OperationMethod<
   GetContainerAppsDiagnosticDetectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetContainerAppsDiagnosticDetectorRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<GetContainerAppsDiagnosticDetectorResponse>,
+  input: __S(7040, __c220, 0) as any as S.Schema<GetContainerAppsDiagnosticDetectorRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<GetContainerAppsDiagnosticDetectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8735,8 +8755,8 @@ export const GetContainerAppsDiagnosticRevision: API.OperationMethod<
   GetContainerAppsDiagnosticRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetContainerAppsDiagnosticRevisionRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<GetContainerAppsDiagnosticRevisionResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<GetContainerAppsDiagnosticRevisionRequest>,
+  output: __S(7168, __c224, 0) as any as S.Schema<GetContainerAppsDiagnosticRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8750,8 +8770,8 @@ export const GetContainerAppsDiagnosticRoot: API.OperationMethod<
   GetContainerAppsDiagnosticRootError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<GetContainerAppsDiagnosticRootRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<GetContainerAppsDiagnosticRootResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<GetContainerAppsDiagnosticRootRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<GetContainerAppsDiagnosticRootResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8765,8 +8785,8 @@ export const GetContainerAppsFunction: API.OperationMethod<
   GetContainerAppsFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetContainerAppsFunctionRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GetContainerAppsFunctionResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<GetContainerAppsFunctionRequest>,
+  output: __S(7296, __c228, 0) as any as S.Schema<GetContainerAppsFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8780,8 +8800,8 @@ export const GetContainerAppsLabelHistoryLabelHistory: API.OperationMethod<
   GetContainerAppsLabelHistoryLabelHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetContainerAppsLabelHistoryLabelHistoryRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<GetContainerAppsLabelHistoryLabelHistoryResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<GetContainerAppsLabelHistoryLabelHistoryRequest>,
+  output: __S(7361, __c230, 1) as any as S.Schema<GetContainerAppsLabelHistoryLabelHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8795,8 +8815,8 @@ export const GetContainerAppsRevisionFunction: API.OperationMethod<
   GetContainerAppsRevisionFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<GetContainerAppsRevisionFunctionRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GetContainerAppsRevisionFunctionResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetContainerAppsRevisionFunctionRequest>,
+  output: __S(7296, __c228, 0) as any as S.Schema<GetContainerAppsRevisionFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8810,8 +8830,8 @@ export const GetContainerAppsRevisionReplicasReplica: API.OperationMethod<
   GetContainerAppsRevisionReplicasReplicaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetContainerAppsRevisionReplicasReplicaRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<GetContainerAppsRevisionReplicasReplicaResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetContainerAppsRevisionReplicasReplicaRequest>,
+  output: __S(7457, __c233, 1) as any as S.Schema<GetContainerAppsRevisionReplicasReplicaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8825,8 +8845,8 @@ export const GetContainerAppsRevisionRevision: API.OperationMethod<
   GetContainerAppsRevisionRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetContainerAppsRevisionRevisionRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<GetContainerAppsRevisionRevisionResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetContainerAppsRevisionRevisionRequest>,
+  output: __S(7168, __c224, 0) as any as S.Schema<GetContainerAppsRevisionRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8840,8 +8860,8 @@ export const GetContainerAppsSessionPool: API.OperationMethod<
   GetContainerAppsSessionPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetContainerAppsSessionPoolRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetContainerAppsSessionPoolResponse>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetContainerAppsSessionPoolRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<GetContainerAppsSessionPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8855,8 +8875,8 @@ export const GetContainerAppsSourceControl: API.OperationMethod<
   GetContainerAppsSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetContainerAppsSourceControlRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GetContainerAppsSourceControlResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetContainerAppsSourceControlRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<GetContainerAppsSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8870,8 +8890,8 @@ export const GetCustomDomainVerificationId: API.OperationMethod<
   GetCustomDomainVerificationIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetCustomDomainVerificationIdRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GetCustomDomainVerificationIdResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetCustomDomainVerificationIdRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetCustomDomainVerificationIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8885,8 +8905,8 @@ export const GetDaprComponent: API.OperationMethod<
   GetDaprComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetDaprComponentRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<GetDaprComponentResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<GetDaprComponentRequest>,
+  output: __S(7744, __c242, 0) as any as S.Schema<GetDaprComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8900,8 +8920,8 @@ export const GetDaprComponentResiliencyPolicy: API.OperationMethod<
   GetDaprComponentResiliencyPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetDaprComponentResiliencyPolicyRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GetDaprComponentResiliencyPolicyResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<GetDaprComponentResiliencyPolicyRequest>,
+  output: __S(3750, __c117, 6) as any as S.Schema<GetDaprComponentResiliencyPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8915,8 +8935,8 @@ export const GetDotNetComponent: API.OperationMethod<
   GetDotNetComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetDotNetComponentRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<GetDotNetComponentResponse>,
+  input: __S(7808, __c244, 0) as any as S.Schema<GetDotNetComponentRequest>,
+  output: __S(6240, __c195, 0) as any as S.Schema<GetDotNetComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8930,8 +8950,8 @@ export const GetHttpRouteConfig: API.OperationMethod<
   GetHttpRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<GetHttpRouteConfigRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<GetHttpRouteConfigResponse>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetHttpRouteConfigRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<GetHttpRouteConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8945,8 +8965,8 @@ export const GetJavaComponent: API.OperationMethod<
   GetJavaComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetJavaComponentRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<GetJavaComponentResponse>,
+  input: __S(7936, __c248, 0) as any as S.Schema<GetJavaComponentRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<GetJavaComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8960,8 +8980,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<GetJobRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<GetJobResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(8064, __c252, 0) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8975,8 +8995,8 @@ export const GetJobDetector: API.OperationMethod<
   GetJobDetectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetJobDetectorRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<GetJobDetectorResponse>,
+  input: __S(8128, __c254, 0) as any as S.Schema<GetJobDetectorRequest>,
+  output: __S(8160, __c255, 0) as any as S.Schema<GetJobDetectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8990,8 +9010,8 @@ export const GetJobsProxy: API.OperationMethod<
   GetJobsProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetJobsProxyRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<GetJobsProxyResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<GetJobsProxyRequest>,
+  output: __S(8064, __c252, 0) as any as S.Schema<GetJobsProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9005,8 +9025,8 @@ export const GetLogicApp: API.OperationMethod<
   GetLogicAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<GetLogicAppRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<GetLogicAppResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<GetLogicAppRequest>,
+  output: __S(8417, __c263, 1) as any as S.Schema<GetLogicAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9020,8 +9040,8 @@ export const GetLogicAppWorkflow: API.OperationMethod<
   GetLogicAppWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetLogicAppWorkflowRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<GetLogicAppWorkflowResponse>,
+  input: __S(8448, __c264, 0) as any as S.Schema<GetLogicAppWorkflowRequest>,
+  output: __S(8512, __c266, 0) as any as S.Schema<GetLogicAppWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9035,8 +9055,8 @@ export const GetMaintenanceConfiguration: API.OperationMethod<
   GetMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<GetMaintenanceConfigurationRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetMaintenanceConfigurationResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<GetMaintenanceConfigurationRequest>,
+  output: __S(8579, __c268, 3) as any as S.Schema<GetMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9050,8 +9070,8 @@ export const GetManagedCertificate: API.OperationMethod<
   GetManagedCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<GetManagedCertificateRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<GetManagedCertificateResponse>,
+  input: __S(8608, __c269, 0) as any as S.Schema<GetManagedCertificateRequest>,
+  output: __S(8672, __c271, 0) as any as S.Schema<GetManagedCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9065,8 +9085,8 @@ export const GetManagedEnvironment: API.OperationMethod<
   GetManagedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<GetManagedEnvironmentRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<GetManagedEnvironmentResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<GetManagedEnvironmentRequest>,
+  output: __S(8800, __c275, 0) as any as S.Schema<GetManagedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9080,8 +9100,8 @@ export const GetManagedEnvironmentAuthToken: API.OperationMethod<
   GetManagedEnvironmentAuthTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<GetManagedEnvironmentAuthTokenRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GetManagedEnvironmentAuthTokenResponse>,
+  input: __S(8832, __c276, 0) as any as S.Schema<GetManagedEnvironmentAuthTokenRequest>,
+  output: __S(6785, __c212, 1) as any as S.Schema<GetManagedEnvironmentAuthTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9095,8 +9115,8 @@ export const GetManagedEnvironmentDiagnosticDetector: API.OperationMethod<
   GetManagedEnvironmentDiagnosticDetectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetManagedEnvironmentDiagnosticDetectorRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<GetManagedEnvironmentDiagnosticDetectorResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<GetManagedEnvironmentDiagnosticDetectorRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<GetManagedEnvironmentDiagnosticDetectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9111,14 +9131,14 @@ export const GetManagedEnvironmentPrivateEndpointConnection: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    393,
-    __c49,
-    1,
+    8896,
+    __c278,
+    0,
   ) as any as S.Schema<GetManagedEnvironmentPrivateEndpointConnectionRequest>,
   output: __S(
-    269,
-    __c33,
-    5,
+    6848,
+    __c214,
+    0,
   ) as any as S.Schema<GetManagedEnvironmentPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9133,8 +9153,8 @@ export const GetManagedEnvironmentPrivateLinkResource: API.OperationMethod<
   GetManagedEnvironmentPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetManagedEnvironmentPrivateLinkResourceRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<GetManagedEnvironmentPrivateLinkResourceResponse>,
+  input: __S(8928, __c279, 0) as any as S.Schema<GetManagedEnvironmentPrivateLinkResourceRequest>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GetManagedEnvironmentPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9148,8 +9168,8 @@ export const GetManagedEnvironmentsDiagnosticRoot: API.OperationMethod<
   GetManagedEnvironmentsDiagnosticRootError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetManagedEnvironmentsDiagnosticRootRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<GetManagedEnvironmentsDiagnosticRootResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<GetManagedEnvironmentsDiagnosticRootRequest>,
+  output: __S(8800, __c275, 0) as any as S.Schema<GetManagedEnvironmentsDiagnosticRootResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9163,8 +9183,8 @@ export const GetManagedEnvironmentsStorage: API.OperationMethod<
   GetManagedEnvironmentsStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<GetManagedEnvironmentsStorageRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<GetManagedEnvironmentsStorageResponse>,
+  input: __S(9152, __c286, 0) as any as S.Schema<GetManagedEnvironmentsStorageRequest>,
+  output: __S(9186, __c287, 2) as any as S.Schema<GetManagedEnvironmentsStorageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9178,8 +9198,8 @@ export const GetSandboxGroup: API.OperationMethod<
   GetSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<GetSandboxGroupRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GetSandboxGroupResponse>,
+  input: __S(9216, __c288, 0) as any as S.Schema<GetSandboxGroupRequest>,
+  output: __S(9248, __c289, 0) as any as S.Schema<GetSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9193,8 +9213,8 @@ export const GetVnetConnection: API.OperationMethod<
   GetVnetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetVnetConnectionRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<GetVnetConnectionResponse>,
+  input: __S(9312, __c291, 0) as any as S.Schema<GetVnetConnectionRequest>,
+  output: __S(9376, __c293, 0) as any as S.Schema<GetVnetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9208,8 +9228,8 @@ export const HttpRouteConfigCreateOrUpdate: API.OperationMethod<
   HttpRouteConfigCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<HttpRouteConfigCreateOrUpdateRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<HttpRouteConfigCreateOrUpdateResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<HttpRouteConfigCreateOrUpdateRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<HttpRouteConfigCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9223,8 +9243,8 @@ export const InvokeFunctionsExtensionFunctionsHost: API.OperationMethod<
   InvokeFunctionsExtensionFunctionsHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<InvokeFunctionsExtensionFunctionsHostRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<InvokeFunctionsExtensionFunctionsHostResponse>,
+  input: __S(9472, __c296, 0) as any as S.Schema<InvokeFunctionsExtensionFunctionsHostRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<InvokeFunctionsExtensionFunctionsHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9238,8 +9258,8 @@ export const JavaComponentsCreateOrUpdate: API.OperationMethod<
   JavaComponentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<JavaComponentsCreateOrUpdateRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<JavaComponentsCreateOrUpdateResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<JavaComponentsCreateOrUpdateRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<JavaComponentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9253,8 +9273,8 @@ export const JobExecution2: API.OperationMethod<
   JobExecution2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<JobExecutionRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<JobExecutionResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<JobExecutionRequest>,
+  output: __S(9609, __c300, 9) as any as S.Schema<JobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9268,8 +9288,8 @@ export const JobsCreateOrUpdate: API.OperationMethod<
   JobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<JobsCreateOrUpdateRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<JobsCreateOrUpdateResponse>,
+  input: __S(9633, __c301, 1) as any as S.Schema<JobsCreateOrUpdateRequest>,
+  output: __S(9634, __c301, 2) as any as S.Schema<JobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9283,8 +9303,8 @@ export const ListAgentByResourceGroup: API.OperationMethod<
   ListAgentByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<ListAgentByResourceGroupRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<AgentListResult>,
+  input: __S(9696, __c303, 0) as any as S.Schema<ListAgentByResourceGroupRequest>,
+  output: __S(9729, __c304, 1) as any as S.Schema<AgentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9298,8 +9318,8 @@ export const ListAgentBySubscription: API.OperationMethod<
   ListAgentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<ListAgentBySubscriptionRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<AgentListResult>,
+  input: __S(9760, __c305, 0) as any as S.Schema<ListAgentBySubscriptionRequest>,
+  output: __S(9729, __c304, 1) as any as S.Schema<AgentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9313,8 +9333,8 @@ export const ListAgentsConnectorByAgent: API.OperationMethod<
   ListAgentsConnectorByAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<ListAgentsConnectorByAgentRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<AgentConnectorListResult>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListAgentsConnectorByAgentRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<AgentConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9328,8 +9348,8 @@ export const ListAgentsConnectorSecrets: API.OperationMethod<
   ListAgentsConnectorSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<ListAgentsConnectorSecretsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListAgentsConnectorSecretsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListAgentsConnectorSecretsRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<ListAgentsConnectorSecretsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9343,8 +9363,8 @@ export const ListAgentsConnectorWithSecretsByAgent: API.OperationMethod<
   ListAgentsConnectorWithSecretsByAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ListAgentsConnectorWithSecretsByAgentRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<AgentConnectorCollection>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListAgentsConnectorWithSecretsByAgentRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<AgentConnectorCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9358,8 +9378,8 @@ export const ListAvailableEnvironmentModes: API.OperationMethod<
   ListAvailableEnvironmentModesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ListAvailableEnvironmentModesRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<AvailableEnvironmentModesCollection>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAvailableEnvironmentModesRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<AvailableEnvironmentModesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9373,8 +9393,8 @@ export const ListCertificates: API.OperationMethod<
   ListCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(443, __c55, 3) as any as S.Schema<CertificateCollection>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListCertificatesRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9388,8 +9408,8 @@ export const ListConnectedEnvironmentByResourceGroup: API.OperationMethod<
   ListConnectedEnvironmentByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<ListConnectedEnvironmentByResourceGroupRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<ConnectedEnvironmentCollection>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListConnectedEnvironmentByResourceGroupRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ConnectedEnvironmentCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9403,8 +9423,8 @@ export const ListConnectedEnvironmentBySubscription: API.OperationMethod<
   ListConnectedEnvironmentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<ListConnectedEnvironmentBySubscriptionRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<ConnectedEnvironmentCollection>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListConnectedEnvironmentBySubscriptionRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ConnectedEnvironmentCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9418,8 +9438,8 @@ export const ListConnectedEnvironmentsCertificates: API.OperationMethod<
   ListConnectedEnvironmentsCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<ListConnectedEnvironmentsCertificatesRequest>,
-  output: __S(443, __c55, 3) as any as S.Schema<CertificateCollection>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListConnectedEnvironmentsCertificatesRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9433,8 +9453,8 @@ export const ListConnectedEnvironmentsDaprComponents: API.OperationMethod<
   ListConnectedEnvironmentsDaprComponentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<ListConnectedEnvironmentsDaprComponentsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<DaprComponentsCollection>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListConnectedEnvironmentsDaprComponentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<DaprComponentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9449,11 +9469,11 @@ export const ListConnectedEnvironmentsDaprComponentSecrets: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    453,
-    __c56,
-    5,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<ListConnectedEnvironmentsDaprComponentSecretsRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<DaprSecretsCollection>,
+  output: __S(736, __c23, 0) as any as S.Schema<DaprSecretsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9467,8 +9487,8 @@ export const ListConnectedEnvironmentsStorages: API.OperationMethod<
   ListConnectedEnvironmentsStoragesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ListConnectedEnvironmentsStoragesRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<ConnectedEnvironmentStoragesCollection>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListConnectedEnvironmentsStoragesRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ConnectedEnvironmentStoragesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9482,8 +9502,8 @@ export const ListContainerAppByResourceGroup: API.OperationMethod<
   ListContainerAppByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<ListContainerAppByResourceGroupRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<ContainerAppCollection>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListContainerAppByResourceGroupRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<ContainerAppCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9497,8 +9517,8 @@ export const ListContainerAppBySubscription: API.OperationMethod<
   ListContainerAppBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<ListContainerAppBySubscriptionRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<ContainerAppCollection>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListContainerAppBySubscriptionRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<ContainerAppCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9512,8 +9532,8 @@ export const ListContainerAppCustomHostNameAnalysis: API.OperationMethod<
   ListContainerAppCustomHostNameAnalysisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<ListContainerAppCustomHostNameAnalysisRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<CustomHostnameAnalysisResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListContainerAppCustomHostNameAnalysisRequest>,
+  output: __S(996, __c31, 4) as any as S.Schema<CustomHostnameAnalysisResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9527,8 +9547,8 @@ export const ListContainerAppPrivateEndpointConnections: API.OperationMethod<
   ListContainerAppPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListContainerAppPrivateEndpointConnectionsRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListContainerAppPrivateEndpointConnectionsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9542,8 +9562,8 @@ export const ListContainerAppPrivateLinkResources: API.OperationMethod<
   ListContainerAppPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<ListContainerAppPrivateLinkResourcesRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListContainerAppPrivateLinkResourcesRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9557,8 +9577,8 @@ export const ListContainerAppsAuthConfigByContainerApp: API.OperationMethod<
   ListContainerAppsAuthConfigByContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<ListContainerAppsAuthConfigByContainerAppRequest>,
-  output: __S(476, __c59, 4) as any as S.Schema<AuthConfigCollection>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListContainerAppsAuthConfigByContainerAppRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<AuthConfigCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9572,8 +9592,8 @@ export const ListContainerAppsDiagnosticDetectors: API.OperationMethod<
   ListContainerAppsDiagnosticDetectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<ListContainerAppsDiagnosticDetectorsRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<DiagnosticsCollection>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListContainerAppsDiagnosticDetectorsRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<DiagnosticsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9587,8 +9607,8 @@ export const ListContainerAppsDiagnosticRevisions: API.OperationMethod<
   ListContainerAppsDiagnosticRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListContainerAppsDiagnosticRevisionsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<RevisionCollection>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListContainerAppsDiagnosticRevisionsRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<RevisionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9602,8 +9622,8 @@ export const ListContainerAppSecrets: API.OperationMethod<
   ListContainerAppSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListContainerAppSecretsRequest>,
-  output: __S(485, __c60, 5) as any as S.Schema<SecretsCollection>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListContainerAppSecretsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<SecretsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9617,8 +9637,8 @@ export const ListContainerAppsFunctions: API.OperationMethod<
   ListContainerAppsFunctionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<ListContainerAppsFunctionsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<ContainerAppsFunctionCollection>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListContainerAppsFunctionsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<ContainerAppsFunctionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9632,8 +9652,8 @@ export const ListContainerAppsLabelHistoryLabelHistory: API.OperationMethod<
   ListContainerAppsLabelHistoryLabelHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<ListContainerAppsLabelHistoryLabelHistoryRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<LabelHistoryCollection>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListContainerAppsLabelHistoryLabelHistoryRequest>,
+  output: __S(1571, __c49, 3) as any as S.Schema<LabelHistoryCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9647,8 +9667,8 @@ export const ListContainerAppsRevisionFunctions: API.OperationMethod<
   ListContainerAppsRevisionFunctionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ListContainerAppsRevisionFunctionsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<ContainerAppsFunctionCollection>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListContainerAppsRevisionFunctionsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<ContainerAppsFunctionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9662,8 +9682,8 @@ export const ListContainerAppsRevisionReplicasReplicas: API.OperationMethod<
   ListContainerAppsRevisionReplicasReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<ListContainerAppsRevisionReplicasReplicasRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<ReplicaCollection>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListContainerAppsRevisionReplicasReplicasRequest>,
+  output: __S(1635, __c51, 3) as any as S.Schema<ReplicaCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9677,8 +9697,8 @@ export const ListContainerAppsRevisionRevisions: API.OperationMethod<
   ListContainerAppsRevisionRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<ListContainerAppsRevisionRevisionsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<RevisionCollection>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListContainerAppsRevisionRevisionsRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<RevisionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9692,8 +9712,8 @@ export const ListContainerAppsSessionPoolByResourceGroup: API.OperationMethod<
   ListContainerAppsSessionPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<ListContainerAppsSessionPoolByResourceGroupRequest>,
-  output: __S(503, __c62, 7) as any as S.Schema<SessionPoolCollection>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListContainerAppsSessionPoolByResourceGroupRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<SessionPoolCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9707,8 +9727,8 @@ export const ListContainerAppsSessionPoolBySubscription: API.OperationMethod<
   ListContainerAppsSessionPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<ListContainerAppsSessionPoolBySubscriptionRequest>,
-  output: __S(503, __c62, 7) as any as S.Schema<SessionPoolCollection>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListContainerAppsSessionPoolBySubscriptionRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<SessionPoolCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9722,8 +9742,12 @@ export const ListContainerAppsSourceControlByContainerApp: API.OperationMethod<
   ListContainerAppsSourceControlByContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<ListContainerAppsSourceControlByContainerAppRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<SourceControlCollection>,
+  input: __S(
+    1792,
+    __c56,
+    0,
+  ) as any as S.Schema<ListContainerAppsSourceControlByContainerAppRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<SourceControlCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9737,8 +9761,8 @@ export const ListDaprComponentResiliencyPolicies: API.OperationMethod<
   ListDaprComponentResiliencyPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<ListDaprComponentResiliencyPoliciesRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<DaprComponentResiliencyPoliciesCollection>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListDaprComponentResiliencyPoliciesRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<DaprComponentResiliencyPoliciesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9752,8 +9776,8 @@ export const ListDaprComponents: API.OperationMethod<
   ListDaprComponentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListDaprComponentsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<DaprComponentsCollection>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDaprComponentsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<DaprComponentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9767,8 +9791,8 @@ export const ListDaprComponentSecrets: API.OperationMethod<
   ListDaprComponentSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<ListDaprComponentSecretsRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<DaprSecretsCollection>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListDaprComponentSecretsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DaprSecretsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9782,8 +9806,8 @@ export const ListDotNetComponents: API.OperationMethod<
   ListDotNetComponentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<ListDotNetComponentsRequest>,
-  output: __S(517, __c64, 5) as any as S.Schema<DotNetComponentsCollection>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListDotNetComponentsRequest>,
+  output: __S(2403, __c75, 3) as any as S.Schema<DotNetComponentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9797,8 +9821,8 @@ export const ListHttpRouteConfig: API.OperationMethod<
   ListHttpRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<ListHttpRouteConfigRequest>,
-  output: __S(521, __c65, 1) as any as S.Schema<HttpRouteConfigCollection>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListHttpRouteConfigRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<HttpRouteConfigCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9812,8 +9836,8 @@ export const ListJavaComponents: API.OperationMethod<
   ListJavaComponentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<ListJavaComponentsRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<JavaComponentsCollection>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListJavaComponentsRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<JavaComponentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9827,8 +9851,8 @@ export const ListJobByResourceGroup: API.OperationMethod<
   ListJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<ListJobByResourceGroupRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<JobsCollection>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListJobByResourceGroupRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<JobsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9842,8 +9866,8 @@ export const ListJobBySubscription: API.OperationMethod<
   ListJobBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<ListJobBySubscriptionRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<JobsCollection>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListJobBySubscriptionRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<JobsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9857,8 +9881,8 @@ export const ListJobDetectors: API.OperationMethod<
   ListJobDetectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<ListJobDetectorsRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<DiagnosticsCollection>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListJobDetectorsRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<DiagnosticsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9872,8 +9896,8 @@ export const ListJobSecrets: API.OperationMethod<
   ListJobSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<ListJobSecretsRequest>,
-  output: __S(485, __c60, 5) as any as S.Schema<JobSecretsCollection>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListJobSecretsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<JobSecretsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9887,8 +9911,8 @@ export const ListJobsExecutions: API.OperationMethod<
   ListJobsExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<ListJobsExecutionsRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<ContainerAppJobExecutions>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListJobsExecutionsRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<ContainerAppJobExecutions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9902,8 +9926,8 @@ export const ListLogicAppWorkflows: API.OperationMethod<
   ListLogicAppWorkflowsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListLogicAppWorkflowsRequest>,
-  output: __S(539, __c67, 3) as any as S.Schema<WorkflowEnvelopeCollection>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListLogicAppWorkflowsRequest>,
+  output: __S(2723, __c85, 3) as any as S.Schema<WorkflowEnvelopeCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9917,8 +9941,8 @@ export const ListLogicAppWorkflowsConnections: API.OperationMethod<
   ListLogicAppWorkflowsConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<ListLogicAppWorkflowsConnectionsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ListLogicAppWorkflowsConnectionsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListLogicAppWorkflowsConnectionsRequest>,
+  output: __S(8512, __c266, 0) as any as S.Schema<ListLogicAppWorkflowsConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9932,8 +9956,8 @@ export const ListMaintenanceConfigurations: API.OperationMethod<
   ListMaintenanceConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
-  output: __S(543, __c67, 7) as any as S.Schema<MaintenanceConfigurationCollection>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<MaintenanceConfigurationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9947,8 +9971,8 @@ export const ListManagedCertificates: API.OperationMethod<
   ListManagedCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<ListManagedCertificatesRequest>,
-  output: __S(547, __c68, 3) as any as S.Schema<ManagedCertificateCollection>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListManagedCertificatesRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<ManagedCertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9962,8 +9986,8 @@ export const ListManagedEnvironmentByResourceGroup: API.OperationMethod<
   ListManagedEnvironmentByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<ListManagedEnvironmentByResourceGroupRequest>,
-  output: __S(551, __c68, 7) as any as S.Schema<ManagedEnvironmentsCollection>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListManagedEnvironmentByResourceGroupRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<ManagedEnvironmentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9977,8 +10001,8 @@ export const ListManagedEnvironmentBySubscription: API.OperationMethod<
   ListManagedEnvironmentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<ListManagedEnvironmentBySubscriptionRequest>,
-  output: __S(551, __c68, 7) as any as S.Schema<ManagedEnvironmentsCollection>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListManagedEnvironmentBySubscriptionRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<ManagedEnvironmentsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9992,8 +10016,8 @@ export const ListManagedEnvironmentDiagnosticDetectors: API.OperationMethod<
   ListManagedEnvironmentDiagnosticDetectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<ListManagedEnvironmentDiagnosticDetectorsRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<DiagnosticsCollection>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListManagedEnvironmentDiagnosticDetectorsRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<DiagnosticsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10008,11 +10032,11 @@ export const ListManagedEnvironmentPrivateEndpointConnections: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    554,
-    __c69,
-    2,
+    3104,
+    __c97,
+    0,
   ) as any as S.Schema<ListManagedEnvironmentPrivateEndpointConnectionsRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(1056, __c33, 0) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10026,8 +10050,8 @@ export const ListManagedEnvironmentPrivateLinkResources: API.OperationMethod<
   ListManagedEnvironmentPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<ListManagedEnvironmentPrivateLinkResourcesRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListManagedEnvironmentPrivateLinkResourcesRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10041,8 +10065,8 @@ export const ListManagedEnvironmentsStorages: API.OperationMethod<
   ListManagedEnvironmentsStoragesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<ListManagedEnvironmentsStoragesRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<ManagedEnvironmentStoragesCollection>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListManagedEnvironmentsStoragesRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<ManagedEnvironmentStoragesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10056,8 +10080,8 @@ export const ListManagedEnvironmentUsages: API.OperationMethod<
   ListManagedEnvironmentUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<ListManagedEnvironmentUsagesRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<ListUsagesResult>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListManagedEnvironmentUsagesRequest>,
+  output: __S(3235, __c101, 3) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10071,8 +10095,12 @@ export const ListManagedEnvironmentWorkloadProfileStates: API.OperationMethod<
   ListManagedEnvironmentWorkloadProfileStatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<ListManagedEnvironmentWorkloadProfileStatesRequest>,
-  output: __S(568, __c71, 0) as any as S.Schema<WorkloadProfileStatesCollection>,
+  input: __S(
+    3360,
+    __c105,
+    0,
+  ) as any as S.Schema<ListManagedEnvironmentWorkloadProfileStatesRequest>,
+  output: __S(3364, __c105, 4) as any as S.Schema<WorkloadProfileStatesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10086,8 +10114,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(569, __c71, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(573, __c71, 5) as any as S.Schema<AvailableOperations>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(3396, __c106, 4) as any as S.Schema<AvailableOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10101,8 +10129,8 @@ export const ListSandboxGroupByResourceGroup: API.OperationMethod<
   ListSandboxGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
-  output: __S(576, __c72, 0) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
+  output: __S(3457, __c108, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10116,8 +10144,8 @@ export const ListSandboxGroupBySubscription: API.OperationMethod<
   ListSandboxGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
-  output: __S(576, __c72, 0) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
+  output: __S(3457, __c108, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10131,8 +10159,8 @@ export const ListSupportedAgentModelByLocation: API.OperationMethod<
   ListSupportedAgentModelByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<ListSupportedAgentModelByLocationRequest>,
-  output: __S(582, __c72, 6) as any as S.Schema<SupportedAgentModelListResult>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListSupportedAgentModelByLocationRequest>,
+  output: __S(3524, __c110, 4) as any as S.Schema<SupportedAgentModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10146,8 +10174,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<ListUsagesRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<ListUsagesResult>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(3235, __c101, 3) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10161,8 +10189,8 @@ export const ListVnetConnectionBySandboxGroup: API.OperationMethod<
   ListVnetConnectionBySandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<ListVnetConnectionBySandboxGroupRequest>,
-  output: __S(587, __c73, 3) as any as S.Schema<VnetConnectionListResult>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListVnetConnectionBySandboxGroupRequest>,
+  output: __S(3587, __c112, 3) as any as S.Schema<VnetConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10176,8 +10204,8 @@ export const LogicAppsCreateOrUpdate: API.OperationMethod<
   LogicAppsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<LogicAppsCreateOrUpdateRequest>,
-  output: __S(589, __c73, 5) as any as S.Schema<LogicAppsCreateOrUpdateResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<LogicAppsCreateOrUpdateRequest>,
+  output: __S(3617, __c113, 1) as any as S.Schema<LogicAppsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10191,8 +10219,8 @@ export const MaintenanceConfigurationsCreateOrUpdate: API.OperationMethod<
   MaintenanceConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
+  output: __S(8579, __c268, 3) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10206,8 +10234,8 @@ export const ManagedCertificatesCreateOrUpdate: API.OperationMethod<
   ManagedCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<ManagedCertificatesCreateOrUpdateRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<ManagedCertificatesCreateOrUpdateResponse>,
+  input: __S(3681, __c115, 1) as any as S.Schema<ManagedCertificatesCreateOrUpdateRequest>,
+  output: __S(8672, __c271, 0) as any as S.Schema<ManagedCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10222,14 +10250,14 @@ export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdate: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    593,
-    __c74,
-    1,
+    3776,
+    __c118,
+    0,
   ) as any as S.Schema<ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    594,
-    __c74,
-    2,
+    3777,
+    __c118,
+    1,
   ) as any as S.Schema<ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10244,8 +10272,8 @@ export const ManagedEnvironmentsCreateOrUpdate: API.OperationMethod<
   ManagedEnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateRequest>,
+  output: __S(8800, __c275, 0) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10259,8 +10287,12 @@ export const ManagedEnvironmentsStoragesCreateOrUpdate: API.OperationMethod<
   ManagedEnvironmentsStoragesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<ManagedEnvironmentsStoragesCreateOrUpdateRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<ManagedEnvironmentsStoragesCreateOrUpdateResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ManagedEnvironmentsStoragesCreateOrUpdateRequest>,
+  output: __S(
+    9186,
+    __c287,
+    2,
+  ) as any as S.Schema<ManagedEnvironmentsStoragesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10274,8 +10306,8 @@ export const RestartContainerAppsRevisionRevision: API.OperationMethod<
   RestartContainerAppsRevisionRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<RestartContainerAppsRevisionRevisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RestartContainerAppsRevisionRevisionResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<RestartContainerAppsRevisionRevisionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RestartContainerAppsRevisionRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10289,8 +10321,8 @@ export const ResumeJob: API.OperationMethod<
   ResumeJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<ResumeJobRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ResumeJobResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ResumeJobRequest>,
+  output: __S(8064, __c252, 0) as any as S.Schema<ResumeJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10304,8 +10336,8 @@ export const SandboxGroupsCreateOrUpdate: API.OperationMethod<
   SandboxGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
+  output: __S(4001, __c125, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10319,8 +10351,8 @@ export const StartAgent: API.OperationMethod<
   StartAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<StartAgentRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<StartAgentResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<StartAgentRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<StartAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10334,8 +10366,8 @@ export const StartContainerApp: API.OperationMethod<
   StartContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<StartContainerAppRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<StartContainerAppResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<StartContainerAppRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<StartContainerAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10349,8 +10381,8 @@ export const StartJob: API.OperationMethod<
   StartJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<StartJobRequest>,
-  output: __S(609, __c76, 1) as any as S.Schema<JobExecutionBase>,
+  input: __S(4130, __c129, 2) as any as S.Schema<StartJobRequest>,
+  output: __S(4131, __c129, 3) as any as S.Schema<JobExecutionBase>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10364,8 +10396,8 @@ export const StopAgent: API.OperationMethod<
   StopAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<StopAgentRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<StopAgentResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<StopAgentRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<StopAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10379,8 +10411,8 @@ export const StopContainerApp: API.OperationMethod<
   StopContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<StopContainerAppRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<StopContainerAppResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<StopContainerAppRequest>,
+  output: __S(6720, __c210, 0) as any as S.Schema<StopContainerAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10394,8 +10426,8 @@ export const StopJobExecution: API.OperationMethod<
   StopJobExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<StopJobExecutionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<StopJobExecutionResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<StopJobExecutionRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<StopJobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10409,8 +10441,8 @@ export const StopJobMultipleExecutions: API.OperationMethod<
   StopJobMultipleExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<StopJobMultipleExecutionsRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<ContainerAppJobExecutions>,
+  input: __S(4320, __c135, 0) as any as S.Schema<StopJobMultipleExecutionsRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<ContainerAppJobExecutions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10424,8 +10456,8 @@ export const SuspendJob: API.OperationMethod<
   SuspendJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<SuspendJobRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<SuspendJobResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<SuspendJobRequest>,
+  output: __S(8064, __c252, 0) as any as S.Schema<SuspendJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10439,8 +10471,8 @@ export const UpdateAgent: API.OperationMethod<
   UpdateAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(617, __c77, 1) as any as S.Schema<UpdateAgentRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<UpdateAgentResponse>,
+  input: __S(4386, __c137, 2) as any as S.Schema<UpdateAgentRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<UpdateAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10454,8 +10486,8 @@ export const UpdateCertificate: API.OperationMethod<
   UpdateCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<UpdateCertificateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateCertificateResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<UpdateCertificateRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<UpdateCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10469,8 +10501,8 @@ export const UpdateConnectedEnvironment: API.OperationMethod<
   UpdateConnectedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<UpdateConnectedEnvironmentRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateConnectedEnvironmentResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<UpdateConnectedEnvironmentRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<UpdateConnectedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10484,8 +10516,8 @@ export const UpdateConnectedEnvironmentsCertificate: API.OperationMethod<
   UpdateConnectedEnvironmentsCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<UpdateConnectedEnvironmentsCertificateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateConnectedEnvironmentsCertificateResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<UpdateConnectedEnvironmentsCertificateRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<UpdateConnectedEnvironmentsCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10499,8 +10531,8 @@ export const UpdateContainerApp: API.OperationMethod<
   UpdateContainerAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<UpdateContainerAppRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<UpdateContainerAppResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<UpdateContainerAppRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<UpdateContainerAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10514,8 +10546,8 @@ export const UpdateContainerAppsSessionPool: API.OperationMethod<
   UpdateContainerAppsSessionPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623, __c77, 7) as any as S.Schema<UpdateContainerAppsSessionPoolRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<UpdateContainerAppsSessionPoolResponse>,
+  input: __S(4545, __c142, 1) as any as S.Schema<UpdateContainerAppsSessionPoolRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<UpdateContainerAppsSessionPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10529,8 +10561,8 @@ export const UpdateDotNetComponent: API.OperationMethod<
   UpdateDotNetComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<UpdateDotNetComponentRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<UpdateDotNetComponentResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<UpdateDotNetComponentRequest>,
+  output: __S(6240, __c195, 0) as any as S.Schema<UpdateDotNetComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10544,8 +10576,8 @@ export const UpdateHttpRouteConfig: API.OperationMethod<
   UpdateHttpRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<UpdateHttpRouteConfigRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<UpdateHttpRouteConfigResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<UpdateHttpRouteConfigRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<UpdateHttpRouteConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10559,8 +10591,8 @@ export const UpdateJavaComponent: API.OperationMethod<
   UpdateJavaComponentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(626, __c78, 2) as any as S.Schema<UpdateJavaComponentRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<UpdateJavaComponentResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<UpdateJavaComponentRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<UpdateJavaComponentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10574,8 +10606,8 @@ export const UpdateJob: API.OperationMethod<
   UpdateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(628, __c78, 4) as any as S.Schema<UpdateJobRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<UpdateJobResponse>,
+  input: __S(4705, __c147, 1) as any as S.Schema<UpdateJobRequest>,
+  output: __S(8064, __c252, 0) as any as S.Schema<UpdateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10589,8 +10621,8 @@ export const UpdateManagedCertificate: API.OperationMethod<
   UpdateManagedCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<UpdateManagedCertificateRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<UpdateManagedCertificateResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<UpdateManagedCertificateRequest>,
+  output: __S(8672, __c271, 0) as any as S.Schema<UpdateManagedCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10604,8 +10636,8 @@ export const UpdateManagedEnvironment: API.OperationMethod<
   UpdateManagedEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(630, __c78, 6) as any as S.Schema<UpdateManagedEnvironmentRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<UpdateManagedEnvironmentResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<UpdateManagedEnvironmentRequest>,
+  output: __S(8800, __c275, 0) as any as S.Schema<UpdateManagedEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10619,8 +10651,8 @@ export const UpdateSandboxGroup: API.OperationMethod<
   UpdateSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<UpdateSandboxGroupRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<UpdateSandboxGroupResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<UpdateSandboxGroupRequest>,
+  output: __S(4001, __c125, 1) as any as S.Schema<UpdateSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10634,8 +10666,8 @@ export const VnetConnectionsCreateOrUpdate: API.OperationMethod<
   VnetConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<VnetConnectionsCreateOrUpdateRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<VnetConnectionsCreateOrUpdateResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<VnetConnectionsCreateOrUpdateRequest>,
+  output: __S(9376, __c293, 0) as any as S.Schema<VnetConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10662,32 +10694,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateContainerAppsRevisionRevisionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ActivateContainerAppsRevisionRevisionResponse",
       });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
           dataSource: S.optional(S.String),
           identity: S.optional(S.String),
-          extendedProperties: S.optional(__S(2, __c0, 2)),
+          extendedProperties: S.optional(__S(128, __c4, 0)),
           dataConnectorType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AgentConnectorPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           agentName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10699,7 +10737,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AgentsConnectorsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -10710,7 +10752,13 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -10718,128 +10766,4395 @@ function __c0(j: number): any {
           identity: S.optional(S.String),
           provisioningState: S.optional(S.String),
           deploymentError: S.optional(S.String),
-          extendedProperties: S.optional(__S(2, __c0, 2)),
+          extendedProperties: S.optional(__S(128, __c4, 0)),
           dataConnectorType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentConnectorProperties" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({
         identifier: "AgentsConnectorsCreateOrUpdateResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.suspend(() =>
+        S.Struct({
+          azureFile: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentStoragePropertiesInput",
+      });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(S.String),
-          managedResources: S.optional(__S(9, __c1, 1)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          storageName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(192, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
       ).annotate({
-        identifier: "KnowledgeGraphConfiguration",
+        identifier: "ConnectedEnvironmentsStoragesCreateOrUpdateRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          mode: S.optional(S.String),
-          accessLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "ApplicationInsightsConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationInsightsConfiguration: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "LogConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          connectionName: S.optional(S.String),
-          connectionUrl: S.optional(S.String),
-          connectionKey: S.optional(S.String),
-          oboUser: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IncidentManagementConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          initialSponsorGroupId: S.String,
-        }),
-      ).annotate({ identifier: "AgentIdentityInput" });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(S.String),
-          name: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          deploymentErrors: S.optional(S.String),
+          azureFile: S.optional(__S(257, __c8, 1)),
         }),
-      ).annotate({ identifier: "DefaultModel" });
+      ).annotate({
+        identifier: "ConnectedEnvironmentStorageProperties",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          knowledgeGraphConfiguration: S.optional(__S(10, __c1, 2)),
-          actionConfiguration: S.optional(__S(11, __c1, 3)),
-          logConfiguration: S.optional(__S(13, __c1, 5)),
-          incidentManagementConfiguration: S.optional(__S(14, __c1, 6)),
-          upgradeChannel: S.optional(S.String),
-          agentIdentity: S.optional(__S(15, __c1, 7)),
-          defaultModel: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "AgentPropertiesInput" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(18, __c2, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
-        identifier: "AgentsCreateOrUpdateRequestIdentity",
+        identifier: "ConnectedEnvironmentsStoragesCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          keyVaultUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretKeyVaultProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountName: S.optional(S.String),
+          accountKey: S.optional(S.String),
+          accountKeyVaultProperties: S.optional(__S(256, __c8, 0)),
+          accessMode: S.optional(S.String),
+          shareName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureFileProperties" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           agentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentsConnectorByAgentRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "AgentConnector" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(321, __c10, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentConnectorListResult" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}/listSecrets",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentsConnectorSecretsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/listConnectorsWithSecrets",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAgentsConnectorWithSecretsByAgentRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsModes",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAvailableEnvironmentModesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableEnvironmentModeProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({ identifier: "AvailableEnvironmentMode" });
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(419, __c13, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableEnvironmentModesCollection",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListCertificatesRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6528, __c204, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(480, __c15, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateCollection" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentByResourceGroupRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
+          properties: S.optional(__S(8320, __c260, 0)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+        }),
+      ).annotate({ identifier: "ConnectedEnvironment" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(545, __c17, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentCollection",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/connectedEnvironments",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentBySubscriptionRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentsCertificatesRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentsDaprComponentsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7744, __c242, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(672, __c21, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DaprComponentsCollection" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}/listSecrets",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentsDaprComponentSecretsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2785, __c87, 1),
+        }),
+      ).annotate({ identifier: "DaprSecretsCollection" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(800, __c25, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerAppPrivateEndpointConnectionsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppPrivateEndpointConnectionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(4928, __c154, 0)),
+          privateLinkServiceConnectionState: __S(832, __c26, 0),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(5056, __c158, 0)),
+          privateEndpoint: S.optional(__S(833, __c26, 1)),
+          privateLinkServiceConnectionState: __S(832, __c26, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectedEnvironmentsStoragesRequest",
+      });
+    case 1:
+      return S.Array(__S(225, __c7, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(865, __c27, 1),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentStoragesCollection",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppByResourceGroupRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6720, __c210, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(928, __c29, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerAppCollection" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/containerApps",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppBySubscriptionRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          customHostname: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/listCustomHostNameAnalysis",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppCustomHostNameAnalysisRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem",
+      });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(994, __c31, 2)),
+        }),
+      ).annotate({
+        identifier: "CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hostName: S.optional(S.String),
+          isHostnameAlreadyVerified: S.optional(S.Boolean),
+          customDomainVerificationTest: S.optional(S.String),
+          customDomainVerificationFailureInfo: S.optional(__S(995, __c31, 3)),
+          hasConflictOnManagedEnvironment: S.optional(S.Boolean),
+          conflictWithEnvironmentCustomDomain: S.optional(S.Boolean),
+          conflictingContainerAppResourceId: S.optional(S.String),
+          cNameRecords: S.optional(__S(5056, __c158, 0)),
+          txtRecords: S.optional(__S(5056, __c158, 0)),
+          aRecords: S.optional(__S(5056, __c158, 0)),
+          alternateCNameRecords: S.optional(__S(5056, __c158, 0)),
+          alternateTxtRecords: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "CustomHostnameAnalysisResult",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppPrivateEndpointConnectionsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(8736, __c273, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppPrivateLinkResourcesRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(6944, __c217, 0)),
+        }),
+      ).annotate({ identifier: "PrivateLinkResource" });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1121, __c35, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResult",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsAuthConfigByContainerAppRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1477, __c46, 5)),
+        }),
+      ).annotate({ identifier: "AuthConfig" });
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1154, __c36, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthConfigCollection" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectors",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsDiagnosticDetectorsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8160, __c255, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1216, __c38, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiagnosticsCollection" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectorProperties/revisionsApi/revisions/",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsDiagnosticRevisionsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7200, __c225, 0)),
+        }),
+      ).annotate({ identifier: "Revision" });
+    case 1:
+      return S.Array(__S(1280, __c40, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1281, __c40, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RevisionCollection" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/listSecrets",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppSecretsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(9057, __c283, 1),
+        }),
+      ).annotate({ identifier: "SecretsCollection" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          authConfigName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1477, __c46, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerAppsAuthConfigsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1477, __c46, 5)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsAuthConfigsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          runtimeVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthPlatform" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unauthenticatedClientAction: S.optional(S.String),
+          redirectToProvider: S.optional(S.String),
+          excludedPaths: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({ identifier: "GlobalValidation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          openIdIssuer: S.optional(S.String),
+          clientId: S.optional(S.String),
+          clientSecretSettingName: S.optional(S.String),
+          clientSecretCertificateThumbprint: S.optional(S.String),
+          clientSecretCertificateSubjectAlternativeName: S.optional(S.String),
+          clientSecretCertificateIssuer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureActiveDirectoryRegistration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          loginParameters: S.optional(__S(5056, __c158, 0)),
+          disableWWWAuthenticate: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AzureActiveDirectoryLogin",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          allowedGroups: S.optional(__S(5056, __c158, 0)),
+          allowedClientApplications: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({ identifier: "JwtClaimChecks" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(5056, __c158, 0)),
+          identities: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({ identifier: "AllowedPrincipals" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedPrincipals: S.optional(__S(1445, __c45, 5)),
+          allowedApplications: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "DefaultAuthorizationPolicy",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jwtClaimChecks: S.optional(__S(1444, __c45, 4)),
+          allowedAudiences: S.optional(__S(5056, __c158, 0)),
+          defaultAuthorizationPolicy: S.optional(__S(1446, __c45, 6)),
+        }),
+      ).annotate({
+        identifier: "AzureActiveDirectoryValidation",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1442, __c45, 2)),
+          login: S.optional(__S(1443, __c45, 3)),
+          validation: S.optional(__S(1447, __c45, 7)),
+          isAutoProvisioned: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AzureActiveDirectory" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          appSecretSettingName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppRegistration" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({ identifier: "LoginScopes" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1449, __c45, 9)),
+          graphApiVersion: S.optional(S.String),
+          login: S.optional(__S(1450, __c45, 10)),
+        }),
+      ).annotate({ identifier: "Facebook" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          clientSecretSettingName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientRegistration" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1452, __c45, 12)),
+          login: S.optional(__S(1450, __c45, 10)),
+        }),
+      ).annotate({ identifier: "GitHub" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAudiences: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "AllowedAudiencesValidation",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1452, __c45, 12)),
+          login: S.optional(__S(1450, __c45, 10)),
+          validation: S.optional(__S(1454, __c45, 14)),
+        }),
+      ).annotate({ identifier: "Google" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          consumerKey: S.optional(S.String),
+          consumerSecretSettingName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TwitterRegistration" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1456, __c45, 16)),
+        }),
+      ).annotate({ identifier: "Twitter" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureStaticWebAppsRegistration",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1458, __c45, 18)),
+        }),
+      ).annotate({ identifier: "AzureStaticWebApps" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          clientSecretSettingName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectClientCredential",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationEndpoint: S.optional(S.String),
+          tokenEndpoint: S.optional(S.String),
+          issuer: S.optional(S.String),
+          certificationUri: S.optional(S.String),
+          wellKnownOpenIdConfiguration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpenIdConnectConfig" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          clientCredential: S.optional(__S(1460, __c45, 20)),
+          openIdConnectConfiguration: S.optional(__S(1461, __c45, 21)),
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectRegistration",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          nameClaimType: S.optional(S.String),
+          scopes: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({ identifier: "OpenIdConnectLogin" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          registration: S.optional(__S(1462, __c45, 22)),
+          login: S.optional(__S(1463, __c45, 23)),
+        }),
+      ).annotate({
+        identifier: "CustomOpenIdConnectProvider",
+      });
+    case 25:
+      return S.Record(S.String, __S(1464, __c45, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          azureActiveDirectory: S.optional(__S(1448, __c45, 8)),
+          facebook: S.optional(__S(1451, __c45, 11)),
+          gitHub: S.optional(__S(1453, __c45, 13)),
+          google: S.optional(__S(1455, __c45, 15)),
+          twitter: S.optional(__S(1457, __c45, 17)),
+          apple: S.optional(__S(1453, __c45, 13)),
+          azureStaticWebApps: S.optional(__S(1459, __c45, 19)),
+          customOpenIdConnectProviders: S.optional(__S(1465, __c45, 25)),
+        }),
+      ).annotate({ identifier: "IdentityProviders" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          logoutEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoginRoutes" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          sasUrlSettingName: S.optional(S.String),
+          blobContainerUri: S.optional(S.String),
+          clientId: S.optional(S.String),
+          managedIdentityResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlobStorageTokenStore" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          tokenRefreshExtensionHours: S.optional(S.Number),
+          azureBlobStorage: S.optional(__S(1468, __c45, 28)),
+        }),
+      ).annotate({ identifier: "TokenStore" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          convention: S.optional(S.String),
+          timeToExpiration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CookieExpiration" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          validateNonce: S.optional(S.Boolean),
+          nonceExpirationInterval: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Nonce" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          routes: S.optional(__S(1467, __c45, 27)),
+          tokenStore: S.optional(__S(1469, __c45, 29)),
+          preserveUrlFragmentsForLogins: S.optional(S.Boolean),
+          allowedExternalRedirectUrls: S.optional(__S(5056, __c158, 0)),
+          cookieExpiration: S.optional(__S(1470, __c45, 30)),
+          nonce: S.optional(__S(1471, __c45, 31)),
+        }),
+      ).annotate({ identifier: "Login" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpSettingsRoutes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          convention: S.optional(S.String),
+          customHostHeaderName: S.optional(S.String),
+          customProtoHeaderName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardProxy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requireHttps: S.optional(S.Boolean),
+          routes: S.optional(__S(1473, __c46, 1)),
+          forwardProxy: S.optional(__S(1474, __c46, 2)),
+        }),
+      ).annotate({ identifier: "HttpSettings" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          containerAppAuthEncryptionSecretName: S.optional(S.String),
+          containerAppAuthSigningSecretName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          platform: S.optional(__S(1440, __c45, 0)),
+          globalValidation: S.optional(__S(1441, __c45, 1)),
+          identityProviders: S.optional(__S(1466, __c45, 26)),
+          login: S.optional(__S(1472, __c46, 0)),
+          httpSettings: S.optional(__S(1475, __c46, 3)),
+          encryptionSettings: S.optional(__S(1476, __c46, 4)),
+        }),
+      ).annotate({ identifier: "AuthConfigProperties" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/functions",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsFunctionsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7328, __c229, 0)),
+        }),
+      ).annotate({ identifier: "ContainerAppsFunction" });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1537, __c48, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsFunctionCollection",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/labelHistories",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsLabelHistoryLabelHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7394, __c231, 2)),
+        }),
+      ).annotate({ identifier: "LabelHistory" });
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1570, __c49, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LabelHistoryCollection" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          revisionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/functions",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsRevisionFunctionsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          revisionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsRevisionReplicasReplicasRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7490, __c234, 2)),
+        }),
+      ).annotate({ identifier: "Replica" });
+    case 2:
+      return S.Array(__S(1633, __c51, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1634, __c51, 2),
+        }),
+      ).annotate({ identifier: "ReplicaCollection" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsRevisionRevisionsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsSessionPoolByResourceGroupRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2827, __c88, 11)),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "SessionPool" });
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1729, __c54, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionPoolCollection" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/sessionPools",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsSessionPoolBySubscriptionRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContainerAppsSourceControlByContainerAppRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3331, __c104, 3)),
+        }),
+      ).annotate({ identifier: "SourceControl" });
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1794, __c56, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceControlCollection" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDaprComponentResiliencyPoliciesRequest",
+      });
+    case 1:
+      return S.Array(__S(3750, __c117, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1825, __c57, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPoliciesCollection",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDaprComponentsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2083, __c65, 3)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerAppsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "ContainerAppProbeHttpGetHttpHeadersItem",
+      });
+    case 1:
+      return S.Array(__S(1920, __c60, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          httpHeaders: S.optional(__S(1921, __c60, 1)),
+          path: S.optional(S.String),
+          port: S.Number,
+          scheme: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerAppProbeHttpGet" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          port: S.Number,
+        }),
+      ).annotate({
+        identifier: "ContainerAppProbeTcpSocket",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(4961, __c155, 1)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsCreateOrUpdateResponseIdentity",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.String,
+          lifecycle: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentitySettings" });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cpu: S.optional(S.Number),
+          memory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerResourcesInput" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(4992, __c156, 0)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external: S.optional(S.Boolean),
+          targetPort: S.optional(S.Number),
+          exposedPort: S.optional(S.Number),
+          transport: S.optional(S.String),
+          traffic: S.optional(__S(2210, __c69, 2)),
+          customDomains: S.optional(__S(2241, __c70, 1)),
+          allowInsecure: S.optional(S.Boolean),
+          ipSecurityRestrictions: S.optional(__S(2212, __c69, 4)),
+          stickySessions: S.optional(__S(2213, __c69, 5)),
+          clientCertificateMode: S.optional(S.String),
+          corsPolicy: S.optional(__S(2214, __c69, 6)),
+          additionalPortMappings: S.optional(__S(2216, __c69, 8)),
+        }),
+      ).annotate({ identifier: "IngressInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secrets: S.optional(__S(9057, __c283, 1)),
+          activeRevisionsMode: S.optional(S.String),
+          ingress: S.optional(__S(2080, __c65, 0)),
+          registries: S.optional(__S(2273, __c71, 1)),
+          dapr: S.optional(__S(2218, __c69, 10)),
+          runtime: S.optional(__S(2220, __c69, 12)),
+          maxInactiveRevisions: S.optional(S.Number),
+          service: S.optional(__S(2221, __c69, 13)),
+          identitySettings: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({ identifier: "ConfigurationInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          revisionSuffix: S.optional(S.String),
+          terminationGracePeriodSeconds: S.optional(S.Number),
+          initContainers: S.optional(__S(2337, __c73, 1)),
+          containers: S.optional(__S(2339, __c73, 3)),
+          scale: S.optional(__S(2117, __c66, 5)),
+          volumes: S.optional(__S(2185, __c68, 9)),
+          serviceBinds: S.optional(__S(2119, __c66, 7)),
+        }),
+      ).annotate({ identifier: "TemplateInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          managedEnvironmentId: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          networking: S.optional(__S(2208, __c69, 0)),
+          workloadProfileName: S.optional(S.String),
+          configuration: S.optional(__S(2081, __c65, 1)),
+          template: S.optional(__S(2082, __c65, 2)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppPropertiesInput",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountName: S.optional(S.String),
+          queueName: S.optional(S.String),
+          queueLength: S.optional(S.Number),
+          auth: S.optional(__S(2181, __c68, 5)),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueueScaleRule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metadata: S.optional(__S(5024, __c157, 0)),
+          auth: S.optional(__S(2181, __c68, 5)),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomScaleRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(5024, __c157, 0)),
+          auth: S.optional(__S(2181, __c68, 5)),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpScaleRule" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          azureQueue: S.optional(__S(2112, __c66, 0)),
+          custom: S.optional(__S(2113, __c66, 1)),
+          http: S.optional(__S(2114, __c66, 2)),
+          tcp: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "ScaleRule" });
+    case 4:
+      return S.Array(__S(2115, __c66, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          minReplicas: S.optional(S.Number),
+          maxReplicas: S.optional(S.Number),
+          cooldownPeriod: S.optional(S.Number),
+          pollingInterval: S.optional(S.Number),
+          allowScalingRuleOverride: S.optional(S.Boolean),
+          rules: S.optional(__S(2116, __c66, 4)),
+        }),
+      ).annotate({ identifier: "Scale" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceBind" });
+    case 7:
+      return S.Array(__S(2118, __c66, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          revisionSuffix: S.optional(S.String),
+          terminationGracePeriodSeconds: S.optional(S.Number),
+          initContainers: S.optional(__S(2187, __c68, 11)),
+          containers: S.optional(__S(2189, __c68, 13)),
+          scale: S.optional(__S(2117, __c66, 5)),
+          volumes: S.optional(__S(2185, __c68, 9)),
+          serviceBinds: S.optional(__S(2119, __c66, 7)),
+        }),
+      ).annotate({ identifier: "Template" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cpu: S.optional(S.Number),
+          memory: S.optional(S.String),
+          ephemeralStorage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerResources" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeName: S.optional(S.String),
+          mountPath: S.optional(S.String),
+          subPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeMount" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failureThreshold: S.optional(S.Number),
+          httpGet: S.optional(__S(1922, __c60, 2)),
+          initialDelaySeconds: S.optional(S.Number),
+          periodSeconds: S.optional(S.Number),
+          successThreshold: S.optional(S.Number),
+          tcpSocket: S.optional(__S(1923, __c60, 3)),
+          terminationGracePeriodSeconds: S.optional(S.Number),
+          timeoutSeconds: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerAppProbe" });
+    case 3:
+      return S.Array(__S(2178, __c68, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          secretRef: S.optional(S.String),
+          triggerParameter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScaleRuleAuth" });
+    case 5:
+      return S.Array(__S(2180, __c68, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          secretRef: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretVolumeItem" });
+    case 7:
+      return S.Array(__S(2182, __c68, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          storageType: S.optional(S.String),
+          storageName: S.optional(S.String),
+          secrets: S.optional(__S(2183, __c68, 7)),
+          mountOptions: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Volume" });
+    case 9:
+      return S.Array(__S(2184, __c68, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2144, __c67, 0)),
+          volumeMounts: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({ identifier: "BaseContainer" });
+    case 11:
+      return S.Array(__S(2186, __c68, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2144, __c67, 0)),
+          volumeMounts: S.optional(__S(2177, __c68, 1)),
+          probes: S.optional(__S(2179, __c68, 3)),
+        }),
+      ).annotate({ identifier: "Container" });
+    case 13:
+      return S.Array(__S(2188, __c68, 12));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          outboundVnetSubnetId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerAppNetworkingConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          revisionName: S.optional(S.String),
+          weight: S.optional(S.Number),
+          latestRevision: S.optional(S.Boolean),
+          label: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrafficWeight" });
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          ipAddressRange: S.String,
+          action: S.String,
+        }),
+      ).annotate({
+        identifier: "IpSecurityRestrictionRule",
+      });
+    case 4:
+      return S.Array(__S(2211, __c69, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          affinity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IngressStickySessions" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: __S(5056, __c158, 0),
+          allowedMethods: S.optional(__S(5056, __c158, 0)),
+          allowedHeaders: S.optional(__S(5056, __c158, 0)),
+          exposeHeaders: S.optional(__S(5056, __c158, 0)),
+          maxAge: S.optional(S.Number),
+          allowCredentials: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CorsPolicy" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          external: S.Boolean,
+          targetPort: S.Number,
+          exposedPort: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IngressPortMapping" });
+    case 8:
+      return S.Array(__S(2215, __c69, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          path: S.optional(S.String),
+          probeIntervalSeconds: S.optional(S.Number),
+          probeTimeoutMilliseconds: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DaprAppHealth" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          appId: S.optional(S.String),
+          appProtocol: S.optional(S.String),
+          appPort: S.optional(S.Number),
+          httpReadBufferSize: S.optional(S.Number),
+          httpMaxRequestSize: S.optional(S.Number),
+          logLevel: S.optional(S.String),
+          enableApiLogging: S.optional(S.Boolean),
+          appHealth: S.optional(__S(2217, __c69, 9)),
+          maxConcurrency: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Dapr" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          enableMetrics: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RuntimeJava" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          java: S.optional(__S(2219, __c69, 11)),
+        }),
+      ).annotate({ identifier: "Runtime" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Service" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          fqdn: S.optional(S.String),
+          external: S.optional(S.Boolean),
+          targetPort: S.optional(S.Number),
+          exposedPort: S.optional(S.Number),
+          transport: S.optional(S.String),
+          traffic: S.optional(__S(2210, __c69, 2)),
+          customDomains: S.optional(__S(2241, __c70, 1)),
+          allowInsecure: S.optional(S.Boolean),
+          ipSecurityRestrictions: S.optional(__S(2212, __c69, 4)),
+          stickySessions: S.optional(__S(2213, __c69, 5)),
+          clientCertificateMode: S.optional(S.String),
+          corsPolicy: S.optional(__S(2214, __c69, 6)),
+          additionalPortMappings: S.optional(__S(2216, __c69, 8)),
+        }),
+      ).annotate({ identifier: "Ingress" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          secrets: S.optional(__S(9057, __c283, 1)),
+          activeRevisionsMode: S.optional(S.String),
+          ingress: S.optional(__S(2222, __c69, 14)),
+          registries: S.optional(__S(2273, __c71, 1)),
+          dapr: S.optional(__S(2218, __c69, 10)),
+          runtime: S.optional(__S(2220, __c69, 12)),
+          maxInactiveRevisions: S.optional(S.Number),
+          service: S.optional(__S(2221, __c69, 13)),
+          identitySettings: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({ identifier: "Configuration" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          runningStatus: S.optional(S.String),
+          managedEnvironmentId: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          networking: S.optional(__S(2208, __c69, 0)),
+          workloadProfileName: S.optional(S.String),
+          latestRevisionName: S.optional(S.String),
+          latestReadyRevisionName: S.optional(S.String),
+          latestRevisionFqdn: S.optional(S.String),
+          customDomainVerificationId: S.optional(S.String),
+          configuration: S.optional(__S(2223, __c69, 15)),
+          template: S.optional(__S(2120, __c66, 8)),
+          outboundIpAddresses: S.optional(__S(5056, __c158, 0)),
+          eventStreamEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerAppProperties" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          bindingType: S.optional(S.String),
+          certificateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomDomain" });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.optional(S.String),
+          username: S.optional(S.String),
+          passwordSecretRef: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegistryCredentials" });
+    case 1:
+      return S.Array(__S(2272, __c71, 0));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2224, __c69, 16)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+          identity: S.optional(__S(1952, __c61, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2016, __c63, 0)),
+          volumeMounts: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({ identifier: "BaseContainerInput" });
+    case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2016, __c63, 0)),
+          volumeMounts: S.optional(__S(2177, __c68, 1)),
+          probes: S.optional(__S(2179, __c68, 3)),
+        }),
+      ).annotate({ identifier: "ContainerInput" });
+    case 3:
+      return S.Array(__S(2338, __c73, 2));
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/listSecrets",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDaprComponentSecretsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDotNetComponentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(6208, __c194, 0)),
+        }),
+      ).annotate({ identifier: "DotNetComponent" });
+    case 2:
+      return S.Array(__S(2401, __c75, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2402, __c75, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DotNetComponentsCollection",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHttpRouteConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7882, __c246, 10)),
+        }),
+      ).annotate({ identifier: "HttpRouteConfig" });
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2434, __c76, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HttpRouteConfigCollection",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJavaComponentsRequest",
+      });
+    case 1:
+      return S.Array(__S(7968, __c249, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2465, __c77, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JavaComponentsCollection" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJobByResourceGroupRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(2528, __c79, 0)),
+          location: S.String,
+          properties: S.optional(__S(8104, __c253, 8)),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "Job" });
+    case 2:
+      return S.Array(__S(2529, __c79, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2530, __c79, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobsCollection" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/jobs",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJobBySubscriptionRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/detectors",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobDetectorsRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/listSecrets",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobSecretsRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJobsExecutionsRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9609, __c300, 9));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2688, __c84, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerAppJobExecutions",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          logicAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}/workflows",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLogicAppWorkflowsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(8483, __c265, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowEnvelope" });
+    case 2:
+      return S.Array(__S(2721, __c85, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2722, __c85, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkflowEnvelopeCollection",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          containerType: S.optional(S.String),
+          poolManagementType: S.optional(S.String),
+          scaleConfiguration: S.optional(__S(2816, __c88, 0)),
+          secrets: S.optional(__S(2785, __c87, 1)),
+          dynamicPoolConfiguration: S.optional(__S(2818, __c88, 2)),
+          customContainerTemplate: S.optional(__S(2825, __c88, 9)),
+          sessionNetworkConfiguration: S.optional(__S(2826, __c88, 10)),
+          managedIdentitySettings: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({
+        identifier: "SessionPoolPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sessionPoolName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2752, __c86, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerAppsSessionPoolsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionPoolSecret" });
+    case 1:
+      return S.Array(__S(2784, __c87, 0));
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxConcurrentSessions: S.optional(S.Number),
+          readySessionInstances: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScaleConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleType: S.optional(S.String),
+          cooldownPeriodInSeconds: S.optional(S.Number),
+          maxAlivePeriodInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LifecycleConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleConfiguration: S.optional(__S(2817, __c88, 1)),
+        }),
+      ).annotate({ identifier: "DynamicPoolConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.optional(S.String),
+          username: S.optional(S.String),
+          passwordSecretRef: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SessionRegistryCredentials",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          httpGet: S.optional(__S(1922, __c60, 2)),
+          tcpSocket: S.optional(__S(1923, __c60, 3)),
+          failureThreshold: S.optional(S.Number),
+          initialDelaySeconds: S.optional(S.Number),
+          periodSeconds: S.optional(S.Number),
+          successThreshold: S.optional(S.Number),
+          terminationGracePeriodSeconds: S.optional(S.Number),
+          timeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SessionProbe" });
+    case 5:
+      return S.Array(__S(2820, __c88, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2016, __c63, 0)),
+          probes: S.optional(__S(2821, __c88, 5)),
+        }),
+      ).annotate({ identifier: "SessionContainer" });
+    case 7:
+      return S.Array(__S(2822, __c88, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          targetPort: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SessionIngress" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          registryCredentials: S.optional(__S(2819, __c88, 3)),
+          containers: S.optional(__S(2823, __c88, 7)),
+          ingress: S.optional(__S(2824, __c88, 8)),
+        }),
+      ).annotate({ identifier: "CustomContainerTemplate" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SessionNetworkConfiguration",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          containerType: S.optional(S.String),
+          poolManagementType: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          scaleConfiguration: S.optional(__S(2816, __c88, 0)),
+          secrets: S.optional(__S(2785, __c87, 1)),
+          dynamicPoolConfiguration: S.optional(__S(2818, __c88, 2)),
+          customContainerTemplate: S.optional(__S(2825, __c88, 9)),
+          sessionNetworkConfiguration: S.optional(__S(2826, __c88, 10)),
+          poolManagementEndpoint: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          managedIdentitySettings: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({ identifier: "SessionPoolProperties" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2827, __c88, 11)),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsSessionPoolsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          logicAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}/listWorkflowsConnections",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLogicAppWorkflowsConnectionsRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMaintenanceConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(8579, __c268, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2913, __c91, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaintenanceConfigurationCollection",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedCertificatesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(8640, __c270, 0)),
+        }),
+      ).annotate({ identifier: "ManagedCertificate" });
+    case 2:
+      return S.Array(__S(2945, __c92, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2946, __c92, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedCertificateCollection",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentByResourceGroupRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(8790, __c274, 22)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "ManagedEnvironment" });
+    case 1:
+      return S.Array(__S(3008, __c94, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3009, __c94, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedEnvironmentsCollection",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/managedEnvironments",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentBySubscriptionRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/detectors",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentDiagnosticDetectorsRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentPrivateEndpointConnectionsRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentPrivateLinkResourcesRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentsStoragesRequest",
+      });
+    case 1:
+      return S.Array(__S(9186, __c287, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3169, __c99, 1),
+        }),
+      ).annotate({
+        identifier: "ManagedEnvironmentStoragesCollection",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/usages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentUsagesRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageName" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.String,
+          currentValue: S.Number,
+          limit: S.Number,
+          name: __S(3232, __c101, 0),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 2:
+      return S.Array(__S(3233, __c101, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3234, __c101, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListUsagesResult" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3331, __c104, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerAppsSourceControlsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3331, __c104, 3)),
+        }),
+      ).annotate({
+        identifier: "ContainerAppsSourceControlsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registryUrl: S.optional(S.String),
+          registryUserName: S.optional(S.String),
+          registryPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "RegistryInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          tenantId: S.optional(S.String),
+          kind: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureCredentials" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          registryInfo: S.optional(__S(3328, __c104, 0)),
+          azureCredentials: S.optional(__S(3329, __c104, 1)),
+          contextPath: S.optional(S.String),
+          githubPersonalAccessToken: S.optional(S.String),
+          image: S.optional(S.String),
+          publishType: S.optional(S.String),
+          os: S.optional(S.String),
+          runtimeStack: S.optional(S.String),
+          runtimeVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GithubActionConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          operationState: S.optional(S.String),
+          repoUrl: S.optional(S.String),
+          branch: S.optional(S.String),
+          githubActionConfiguration: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({ identifier: "SourceControlProperties" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/workloadProfileStates",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListManagedEnvironmentWorkloadProfileStatesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minimumCount: S.optional(S.Number),
+          maximumCount: S.optional(S.Number),
+          currentCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "WorkloadProfileStatesProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3361, __c105, 1)),
+        }),
+      ).annotate({ identifier: "WorkloadProfileStates" });
+    case 3:
+      return S.Array(__S(3362, __c105, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3363, __c105, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkloadProfileStatesCollection",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.App/operations",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(3393, __c106, 1)),
+          origin: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDetail" });
+    case 3:
+      return S.Array(__S(3394, __c106, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3395, __c106, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AvailableOperations" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSandboxGroupByResourceGroupRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9248, __c289, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3456, __c108, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SandboxGroupListResult" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/sandboxGroups",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSandboxGroupBySubscriptionRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/supportedAgentModels",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSupportedAgentModelByLocationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          providerDisplayName: S.optional(S.String),
+          model: S.String,
+          modelDisplayName: S.optional(S.String),
+          multiplier: S.optional(S.String),
+          default: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "SupportedAgentModelProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3521, __c110, 1)),
+        }),
+      ).annotate({ identifier: "SupportedAgentModel" });
+    case 3:
+      return S.Array(__S(3522, __c110, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3523, __c110, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SupportedAgentModelListResult",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/usages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListUsagesRequest" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVnetConnectionBySandboxGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9344, __c292, 0)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VnetConnection" });
+    case 2:
+      return S.Array(__S(3585, __c112, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3586, __c112, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VnetConnectionListResult" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          logicAppName: S.String.pipe(T.Label()),
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "LogicAppsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "LogicAppsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          configName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(8578, __c268, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations/{configName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MaintenanceConfigurationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subjectName: S.optional(S.String),
+          domainControlValidation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedCertificatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          managedCertificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(3680, __c115, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ManagedCertificatesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3749, __c117, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies/{name}",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initialDelayInMilliseconds: S.optional(S.Number),
+          maxIntervalInMilliseconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxRetries: S.optional(S.Number),
+          retryBackOff: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          responseTimeoutInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyTimeoutPolicyConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          consecutiveErrors: S.optional(S.Number),
+          timeoutInSeconds: S.optional(S.Number),
+          intervalInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          httpRetryPolicy: S.optional(__S(3745, __c117, 1)),
+          timeoutPolicy: S.optional(__S(3746, __c117, 2)),
+          circuitBreakerPolicy: S.optional(__S(3747, __c117, 3)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          inboundPolicy: S.optional(__S(3748, __c117, 4)),
+          outboundPolicy: S.optional(__S(3748, __c117, 4)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPolicyProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(3749, __c117, 5)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentResiliencyPoliciesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(800, __c25, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(3840, __c120, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(2048, __c64, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ManagedEnvironmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          daprAIInstrumentationKey: S.optional(S.String),
+          daprAIConnectionString: S.optional(S.String),
+          vnetConfiguration: S.optional(__S(8768, __c274, 0)),
+          appLogsConfiguration: S.optional(__S(8770, __c274, 2)),
+          appInsightsConfiguration: S.optional(__S(8771, __c274, 3)),
+          openTelemetryConfiguration: S.optional(__S(8781, __c274, 13)),
+          zoneRedundant: S.optional(S.Boolean),
+          customDomainConfiguration: S.optional(__S(8288, __c259, 0)),
+          workloadProfiles: S.optional(__S(8783, __c274, 15)),
+          kedaConfiguration: S.optional(__S(4928, __c154, 0)),
+          daprConfiguration: S.optional(__S(4928, __c154, 0)),
+          infrastructureResourceGroup: S.optional(S.String),
+          peerAuthentication: S.optional(__S(8786, __c274, 18)),
+          peerTrafficConfiguration: S.optional(__S(8788, __c274, 20)),
+          ingressConfiguration: S.optional(__S(8789, __c274, 21)),
+          environmentMode: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedEnvironmentPropertiesInput",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          storageName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(9185, __c287, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ManagedEnvironmentsStoragesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          revisionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/restart",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartContainerAppsRevisionRevisionRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/resume",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ResumeJobRequest" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(4000, __c125, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SandboxGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SandboxGroupPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(9280, __c290, 0)),
+        }),
+      ).annotate({
+        identifier: "SandboxGroupsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/start",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "StartAgentRequest" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5095, __c159, 7)),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "StartAgentResponse" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/start",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "StartContainerAppRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "JobExecutionContainerInput",
+      });
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          containers: S.optional(__S(4129, __c129, 1)),
+          initContainers: S.optional(__S(4129, __c129, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/start",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "StartJobRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobExecutionBase" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/stop",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "StopAgentRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(9088, __c284, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DaprComponentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9120, __c285, 0)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/stop",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "StopContainerAppRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          jobExecutionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions/{jobExecutionName}/stop",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "StopJobExecutionRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/stop",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StopJobMultipleExecutionsRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/suspend",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "SuspendJobRequest" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initialSponsorGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentIdentityPatch" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeGraphConfiguration: S.optional(__S(5088, __c159, 0)),
+          actionConfiguration: S.optional(__S(5089, __c159, 1)),
+          logConfiguration: S.optional(__S(5091, __c159, 3)),
+          incidentManagementConfiguration: S.optional(__S(5092, __c159, 4)),
+          upgradeChannel: S.optional(S.String),
+          agentIdentity: S.optional(__S(4384, __c137, 0)),
+          defaultModel: S.optional(__S(5093, __c159, 5)),
+        }),
+      ).annotate({ identifier: "AgentPatchProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
+          properties: S.optional(__S(4385, __c137, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAgentRequest" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCertificateRequest" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateConnectedEnvironmentRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateConnectedEnvironmentsCertificateRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2083, __c65, 3)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContainerAppRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scaleConfiguration: S.optional(__S(2816, __c88, 0)),
+          secrets: S.optional(__S(2785, __c87, 1)),
+          dynamicPoolConfiguration: S.optional(__S(2818, __c88, 2)),
+          customContainerTemplate: S.optional(__S(2825, __c88, 9)),
+          sessionNetworkConfiguration: S.optional(__S(2826, __c88, 10)),
+        }),
+      ).annotate({
+        identifier: "SessionPoolUpdatablePropertiesProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sessionPoolName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
+          properties: S.optional(__S(4544, __c142, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContainerAppsSessionPoolRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          revisionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/deactivate",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeactivateContainerAppsRevisionRevisionRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(6208, __c194, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDotNetComponentRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          httpRouteName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(9440, __c295, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs/{httpRouteName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateHttpRouteConfigRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(8001, __c250, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateJavaComponentRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          configuration: S.optional(__S(8102, __c253, 6)),
+          template: S.optional(__S(9664, __c302, 0)),
+          outboundIpAddresses: S.optional(__S(5056, __c158, 0)),
+          eventStreamEndpoint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "JobPatchPropertiesPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(2048, __c64, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          properties: S.optional(__S(4704, __c147, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateJobRequest" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          managedCertificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateManagedCertificateRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(3840, __c120, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(2048, __c64, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateManagedEnvironmentRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          properties: S.optional(__S(4000, __c125, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSandboxGroupRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+          vnetConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(9344, __c292, 0)),
+          location: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections/{vnetConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VnetConnectionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAgentRequest" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initialSponsorGroupId: S.String,
+        }),
+      ).annotate({ identifier: "AgentIdentityInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeGraphConfiguration: S.optional(__S(5088, __c159, 0)),
+          actionConfiguration: S.optional(__S(5089, __c159, 1)),
+          logConfiguration: S.optional(__S(5091, __c159, 3)),
+          incidentManagementConfiguration: S.optional(__S(5092, __c159, 4)),
+          upgradeChannel: S.optional(S.String),
+          agentIdentity: S.optional(__S(4896, __c153, 0)),
+          defaultModel: S.optional(__S(5093, __c159, 5)),
+        }),
+      ).annotate({ identifier: "AgentPropertiesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(4992, __c156, 0)),
+        }),
+      ).annotate({
+        identifier: "AgentsCreateOrUpdateRequestIdentity",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(4897, __c153, 1)),
+          identity: S.optional(__S(4898, __c153, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10851,6 +15166,126 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AgentsCreateOrUpdateRequest",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(4961, __c155, 1)),
+        }),
+      ).annotate({
+        identifier: "AgentsCreateOrUpdateResponseIdentity",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5095, __c159, 7)),
+          identity: S.optional(__S(4900, __c153, 4)),
+        }),
+      ).annotate({
+        identifier: "AgentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(4960, __c155, 0)));
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(4928, __c154, 0)));
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          managedResources: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "KnowledgeGraphConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          mode: S.optional(S.String),
+          accessLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "ApplicationInsightsConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applicationInsightsConfiguration: S.optional(__S(5090, __c159, 2)),
+        }),
+      ).annotate({ identifier: "LogConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          connectionName: S.optional(S.String),
+          connectionUrl: S.optional(S.String),
+          connectionKey: S.optional(S.String),
+          oboUser: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IncidentManagementConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DefaultModel" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10866,83 +15301,245 @@ function __c2(j: number): any {
           agentEndpoint: S.optional(S.String),
           runningState: S.optional(S.String),
           powerState: S.optional(S.String),
-          knowledgeGraphConfiguration: S.optional(__S(10, __c1, 2)),
-          actionConfiguration: S.optional(__S(11, __c1, 3)),
-          logConfiguration: S.optional(__S(13, __c1, 5)),
-          incidentManagementConfiguration: S.optional(__S(14, __c1, 6)),
+          knowledgeGraphConfiguration: S.optional(__S(5088, __c159, 0)),
+          actionConfiguration: S.optional(__S(5089, __c159, 1)),
+          logConfiguration: S.optional(__S(5091, __c159, 3)),
+          incidentManagementConfiguration: S.optional(__S(5092, __c159, 4)),
           upgradeChannel: S.optional(S.String),
-          agentIdentity: S.optional(__S(22, __c2, 6)),
-          defaultModel: S.optional(__S(16, __c2, 0)),
+          agentIdentity: S.optional(__S(5094, __c159, 6)),
+          defaultModel: S.optional(__S(5093, __c159, 5)),
         }),
       ).annotate({ identifier: "AgentProperties" });
   }
 }
-function __c3(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(24, __c3, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(25, __c3, 1)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
       ).annotate({
-        identifier: "AgentsCreateOrUpdateResponseIdentity",
+        identifier: "DeleteAgentsConnectorRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "AgentsCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          keyVaultUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificateKeyVaultProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          certificateKeyVaultProperties: S.optional(__S(28, __c3, 4)),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificatePropertiesInput",
-      });
-    case 6:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCertificateRequest" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectedEnvironmentRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectedEnvironmentsCertificateRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectedEnvironmentsDaprComponentRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          storageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectedEnvironmentsStorageRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          authConfigName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppsAuthConfigRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          labelName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/labelHistories/{labelName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppsLabelHistoryLabelHistoryRequest",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(29, __c3, 5)),
+          properties: S.optional(__S(5504, __c172, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10954,15 +15551,51 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CertificatesCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5536, __c173, 0)),
+        }),
+      ).annotate({
+        identifier: "CertificatesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateKeyVaultProperties: S.optional(__S(5568, __c174, 0)),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CertificatePropertiesInput",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           deploymentErrors: S.optional(S.String),
-          certificateKeyVaultProperties: S.optional(__S(28, __c3, 4)),
+          certificateKeyVaultProperties: S.optional(__S(5568, __c174, 0)),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           subjectName: S.optional(S.String),
-          subjectAlternativeNames: S.optional(__S(9, __c1, 1)),
+          subjectAlternativeNames: S.optional(__S(5056, __c158, 0)),
           value: S.optional(S.String),
           issuer: S.optional(S.String),
           issueDate: S.optional(S.String),
@@ -10974,23 +15607,237 @@ function __c3(j: number): any {
       ).annotate({ identifier: "CertificateProperties" });
   }
 }
-function __c4(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(31, __c3, 7)),
+          identity: S.optional(S.String),
+          keyVaultUrl: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CertificatesCreateOrUpdateResponse",
+        identifier: "CertificateKeyVaultProperties",
       });
-    case 1:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sessionPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppsSessionPoolRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerAppsSourceControlRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDaprComponentRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies/{name}",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDaprComponentResiliencyPolicyRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDotNetComponentRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          httpRouteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs/{httpRouteName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHttpRouteConfigRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteJavaComponentRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteJobRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          logicAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLogicAppRequest" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          configName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations/{configName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMaintenanceConfigurationRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11009,7 +15856,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CheckConnectedEnvironmentNameAvailabilityRequest",
       });
-    case 2:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -11019,7 +15870,347 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CheckConnectedEnvironmentNameAvailabilityResponse",
       });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          managedCertificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedCertificateRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedEnvironmentRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedEnvironmentPrivateEndpointConnectionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteManagedEnvironmentPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          storageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedEnvironmentsStorageRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSandboxGroupRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+          vnetConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections/{vnetConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteVnetConnectionRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(6208, __c194, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
+            code: 200,
+            apiVersion: "2026-03-02-preview",
+          }),
+        ),
+      ).annotate({
+        identifier: "DotNetComponentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          componentType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          configurations: S.optional(__S(6273, __c196, 1)),
+          serviceBinds: S.optional(__S(6275, __c196, 3)),
+        }),
+      ).annotate({
+        identifier: "DotNetComponentProperties",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(6208, __c194, 0)),
+        }),
+      ).annotate({
+        identifier: "DotNetComponentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          propertyName: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DotNetComponentConfigurationProperty",
+      });
+    case 1:
+      return S.Array(__S(6272, __c196, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          serviceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DotNetComponentServiceBind",
+      });
     case 3:
+      return S.Array(__S(6274, __c196, 2));
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAgentRequest" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(4961, __c155, 1)),
+        }),
+      ).annotate({ identifier: "GetAgentResponseIdentity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5095, __c159, 7)),
+          identity: S.optional(__S(6336, __c198, 0)),
+        }),
+      ).annotate({ identifier: "GetAgentResponse" });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          agentName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2026-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentsConnectorRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsWorkloadProfileTypes",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAvailableWorkloadProfileRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          applicability: S.optional(S.String),
+          cores: S.optional(S.Number),
+          memoryGiB: S.optional(S.Number),
+          gpus: S.optional(S.Number),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableWorkloadProfileProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(6401, __c200, 1)),
+        }),
+      ).annotate({ identifier: "AvailableWorkloadProfile" });
+    case 3:
+      return S.Array(__S(6402, __c200, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(6403, __c200, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableWorkloadProfilesCollection",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11037,7 +16228,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CheckManagedEnvironmentMigrationEligibilityRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -11046,21 +16237,370 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "MigrationEligibilityFailureReason",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(6433, __c201, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           isEligible: S.Boolean,
           environmentName: S.String,
           currentMode: S.String,
           targetMode: S.String,
-          failureReasons: __S(37, __c4, 5),
+          failureReasons: __S(6434, __c201, 2),
         }),
       ).annotate({
         identifier: "CheckMigrationEligibilityResponse",
       });
-    case 7:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/billingMeters",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetBillingMeterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          meterType: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingMeterProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(6465, __c202, 1)),
+        }),
+      ).annotate({ identifier: "BillingMeter" });
+    case 3:
+      return S.Array(__S(6466, __c202, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(6467, __c202, 3),
+        }),
+      ).annotate({ identifier: "BillingMeterCollection" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCertificateRequest" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5536, __c173, 0)),
+        }),
+      ).annotate({ identifier: "GetCertificateResponse" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConnectedEnvironmentRequest",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConnectedEnvironmentsCertificateRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConnectedEnvironmentsDaprComponentRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          storageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConnectedEnvironmentsStorageRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetContainerAppRequest" });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(2224, __c69, 16)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+          identity: S.optional(__S(1952, __c61, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetContainerAppResponse" });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/getAuthtoken",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContainerAppAuthTokenRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          expires: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerAppAuthTokenProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(6784, __c212, 0)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppAuthTokenResponse",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContainerAppPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerAppName: S.String.pipe(T.Label()),
+          privateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateLinkResources/{privateLinkResourceName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContainerAppPrivateLinkResourceRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(6944, __c217, 0)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(5056, __c158, 0)),
+          requiredZoneNames: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11081,2642 +16621,9 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c219(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsCertificatesCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(41, __c5, 1)),
-          location: S.String,
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsCertificatesCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dnsSuffix: S.optional(S.String),
-          certificateKeyVaultProperties: S.optional(__S(28, __c3, 4)),
-          certificateValue: S.optional(S.String),
-          certificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "CustomDomainConfigurationInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          staticIp: S.optional(S.String),
-          daprAIConnectionString: S.optional(S.String),
-          customDomainConfiguration: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExtendedLocation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(44, __c5, 4)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customDomainVerificationId: S.optional(S.String),
-          dnsSuffix: S.optional(S.String),
-          certificateKeyVaultProperties: S.optional(__S(28, __c3, 4)),
-          certificateValue: S.optional(S.String),
-          certificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          expirationDate: S.optional(S.String),
-          thumbprint: S.optional(S.String),
-          subjectName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomDomainConfiguration",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          deploymentErrors: S.optional(S.String),
-          defaultDomain: S.optional(S.String),
-          staticIp: S.optional(S.String),
-          daprAIConnectionString: S.optional(S.String),
-          customDomainConfiguration: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(48, __c6, 0)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          identity: S.optional(S.String),
-          keyVaultUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Secret" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          secretRef: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DaprMetadata" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          componentType: S.optional(S.String),
-          version: S.optional(S.String),
-          ignoreErrors: S.optional(S.Boolean),
-          initTimeout: S.optional(S.String),
-          secrets: S.optional(__S(51, __c6, 3)),
-          secretStoreComponent: S.optional(S.String),
-          metadata: S.optional(__S(53, __c6, 5)),
-          scopes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsDaprComponentsCreateOrUpdateRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          componentType: S.optional(S.String),
-          version: S.optional(S.String),
-          ignoreErrors: S.optional(S.Boolean),
-          initTimeout: S.optional(S.String),
-          secrets: S.optional(__S(51, __c6, 3)),
-          secretStoreComponent: S.optional(S.String),
-          metadata: S.optional(__S(53, __c6, 5)),
-          scopes: S.optional(__S(9, __c1, 1)),
-          provisioningState: S.optional(S.String),
-          deploymentErrors: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DaprComponentProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsDaprComponentsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          keyVaultUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretKeyVaultProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountName: S.optional(S.String),
-          accountKey: S.optional(S.String),
-          accountKeyVaultProperties: S.optional(__S(58, __c7, 2)),
-          accessMode: S.optional(S.String),
-          shareName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureFileProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          azureFile: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentStoragePropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          storageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(60, __c7, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsStoragesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          deploymentErrors: S.optional(S.String),
-          azureFile: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentStorageProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentsStoragesCreateOrUpdateResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(18, __c2, 2)),
-          privateLinkServiceConnectionState: __S(64, __c8, 0),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(65, __c8, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerAppPrivateEndpointConnectionsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(9, __c1, 1)),
-          privateEndpoint: S.optional(__S(67, __c8, 3)),
-          privateLinkServiceConnectionState: __S(64, __c8, 0),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppPrivateEndpointConnectionsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          runtimeVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthPlatform" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unauthenticatedClientAction: S.optional(S.String),
-          redirectToProvider: S.optional(S.String),
-          excludedPaths: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "GlobalValidation" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          openIdIssuer: S.optional(S.String),
-          clientId: S.optional(S.String),
-          clientSecretSettingName: S.optional(S.String),
-          clientSecretCertificateThumbprint: S.optional(S.String),
-          clientSecretCertificateSubjectAlternativeName: S.optional(S.String),
-          clientSecretCertificateIssuer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureActiveDirectoryRegistration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          loginParameters: S.optional(__S(9, __c1, 1)),
-          disableWWWAuthenticate: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AzureActiveDirectoryLogin",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedGroups: S.optional(__S(9, __c1, 1)),
-          allowedClientApplications: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "JwtClaimChecks" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(9, __c1, 1)),
-          identities: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AllowedPrincipals" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedPrincipals: S.optional(__S(75, __c9, 3)),
-          allowedApplications: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "DefaultAuthorizationPolicy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jwtClaimChecks: S.optional(__S(74, __c9, 2)),
-          allowedAudiences: S.optional(__S(9, __c1, 1)),
-          defaultAuthorizationPolicy: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "AzureActiveDirectoryValidation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(72, __c9, 0)),
-          login: S.optional(__S(73, __c9, 1)),
-          validation: S.optional(__S(77, __c9, 5)),
-          isAutoProvisioned: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AzureActiveDirectory" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          appSecretSettingName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppRegistration" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LoginScopes" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(79, __c9, 7)),
-          graphApiVersion: S.optional(S.String),
-          login: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "Facebook" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          clientSecretSettingName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientRegistration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(82, __c10, 2)),
-          login: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "GitHub" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAudiences: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "AllowedAudiencesValidation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(82, __c10, 2)),
-          login: S.optional(__S(80, __c10, 0)),
-          validation: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "Google" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          consumerKey: S.optional(S.String),
-          consumerSecretSettingName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TwitterRegistration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "Twitter" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureStaticWebAppsRegistration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "AzureStaticWebApps" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          clientSecretSettingName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OpenIdConnectClientCredential",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationEndpoint: S.optional(S.String),
-          tokenEndpoint: S.optional(S.String),
-          issuer: S.optional(S.String),
-          certificationUri: S.optional(S.String),
-          wellKnownOpenIdConfiguration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpenIdConnectConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          clientCredential: S.optional(__S(90, __c11, 2)),
-          openIdConnectConfiguration: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({
-        identifier: "OpenIdConnectRegistration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nameClaimType: S.optional(S.String),
-          scopes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "OpenIdConnectLogin" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          registration: S.optional(__S(92, __c11, 4)),
-          login: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "CustomOpenIdConnectProvider",
-      });
-    case 7:
-      return S.Record(S.String, __S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          azureActiveDirectory: S.optional(__S(78, __c9, 6)),
-          facebook: S.optional(__S(81, __c10, 1)),
-          gitHub: S.optional(__S(83, __c10, 3)),
-          google: S.optional(__S(85, __c10, 5)),
-          twitter: S.optional(__S(87, __c10, 7)),
-          apple: S.optional(__S(83, __c10, 3)),
-          azureStaticWebApps: S.optional(__S(89, __c11, 1)),
-          customOpenIdConnectProviders: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "IdentityProviders" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          logoutEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoginRoutes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sasUrlSettingName: S.optional(S.String),
-          blobContainerUri: S.optional(S.String),
-          clientId: S.optional(S.String),
-          managedIdentityResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BlobStorageTokenStore" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          tokenRefreshExtensionHours: S.optional(S.Number),
-          azureBlobStorage: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({ identifier: "TokenStore" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          convention: S.optional(S.String),
-          timeToExpiration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CookieExpiration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          validateNonce: S.optional(S.Boolean),
-          nonceExpirationInterval: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Nonce" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          routes: S.optional(__S(97, __c12, 1)),
-          tokenStore: S.optional(__S(99, __c12, 3)),
-          preserveUrlFragmentsForLogins: S.optional(S.Boolean),
-          allowedExternalRedirectUrls: S.optional(__S(9, __c1, 1)),
-          cookieExpiration: S.optional(__S(100, __c12, 4)),
-          nonce: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "Login" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpSettingsRoutes" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          convention: S.optional(S.String),
-          customHostHeaderName: S.optional(S.String),
-          customProtoHeaderName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardProxy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requireHttps: S.optional(S.Boolean),
-          routes: S.optional(__S(103, __c12, 7)),
-          forwardProxy: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "HttpSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          containerAppAuthEncryptionSecretName: S.optional(S.String),
-          containerAppAuthSigningSecretName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          platform: S.optional(__S(70, __c8, 6)),
-          globalValidation: S.optional(__S(71, __c8, 7)),
-          identityProviders: S.optional(__S(96, __c12, 0)),
-          login: S.optional(__S(102, __c12, 6)),
-          httpSettings: S.optional(__S(105, __c13, 1)),
-          encryptionSettings: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "AuthConfigProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          authConfigName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(107, __c13, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerAppsAuthConfigsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsAuthConfigsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          outboundVnetSubnetId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerAppNetworkingConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          revisionName: S.optional(S.String),
-          weight: S.optional(S.Number),
-          latestRevision: S.optional(S.Boolean),
-          label: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrafficWeight" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          bindingType: S.optional(S.String),
-          certificateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomDomain" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          ipAddressRange: S.String,
-          action: S.String,
-        }),
-      ).annotate({
-        identifier: "IpSecurityRestrictionRule",
-      });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          affinity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IngressStickySessions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: __S(9, __c1, 1),
-          allowedMethods: S.optional(__S(9, __c1, 1)),
-          allowedHeaders: S.optional(__S(9, __c1, 1)),
-          exposeHeaders: S.optional(__S(9, __c1, 1)),
-          maxAge: S.optional(S.Number),
-          allowCredentials: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CorsPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          external: S.Boolean,
-          targetPort: S.Number,
-          exposedPort: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IngressPortMapping" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          external: S.optional(S.Boolean),
-          targetPort: S.optional(S.Number),
-          exposedPort: S.optional(S.Number),
-          transport: S.optional(S.String),
-          traffic: S.optional(__S(112, __c14, 0)),
-          customDomains: S.optional(__S(114, __c14, 2)),
-          allowInsecure: S.optional(S.Boolean),
-          ipSecurityRestrictions: S.optional(__S(116, __c14, 4)),
-          stickySessions: S.optional(__S(117, __c14, 5)),
-          clientCertificateMode: S.optional(S.String),
-          corsPolicy: S.optional(__S(118, __c14, 6)),
-          additionalPortMappings: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({ identifier: "IngressInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          server: S.optional(S.String),
-          username: S.optional(S.String),
-          passwordSecretRef: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegistryCredentials" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          path: S.optional(S.String),
-          probeIntervalSeconds: S.optional(S.Number),
-          probeTimeoutMilliseconds: S.optional(S.Number),
-          threshold: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DaprAppHealth" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          appId: S.optional(S.String),
-          appProtocol: S.optional(S.String),
-          appPort: S.optional(S.Number),
-          httpReadBufferSize: S.optional(S.Number),
-          httpMaxRequestSize: S.optional(S.Number),
-          logLevel: S.optional(S.String),
-          enableApiLogging: S.optional(S.Boolean),
-          appHealth: S.optional(__S(124, __c15, 4)),
-          maxConcurrency: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Dapr" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enableMetrics: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RuntimeJava" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          java: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "Runtime" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Service" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.String,
-          lifecycle: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentitySettings" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          secrets: S.optional(__S(51, __c6, 3)),
-          activeRevisionsMode: S.optional(S.String),
-          ingress: S.optional(__S(121, __c15, 1)),
-          registries: S.optional(__S(123, __c15, 3)),
-          dapr: S.optional(__S(125, __c15, 5)),
-          runtime: S.optional(__S(127, __c15, 7)),
-          maxInactiveRevisions: S.optional(S.Number),
-          service: S.optional(__S(128, __c16, 0)),
-          identitySettings: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({ identifier: "ConfigurationInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cpu: S.optional(S.Number),
-          memory: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerResourcesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          volumeName: S.optional(S.String),
-          mountPath: S.optional(S.String),
-          subPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeMount" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(132, __c16, 4)),
-          volumeMounts: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({ identifier: "BaseContainerInput" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "ContainerAppProbeHttpGetHttpHeadersItem",
-      });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          httpHeaders: S.optional(__S(138, __c17, 2)),
-          path: S.optional(S.String),
-          port: S.Number,
-          scheme: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerAppProbeHttpGet" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          port: S.Number,
-        }),
-      ).annotate({
-        identifier: "ContainerAppProbeTcpSocket",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failureThreshold: S.optional(S.Number),
-          httpGet: S.optional(__S(139, __c17, 3)),
-          initialDelaySeconds: S.optional(S.Number),
-          periodSeconds: S.optional(S.Number),
-          successThreshold: S.optional(S.Number),
-          tcpSocket: S.optional(__S(140, __c17, 4)),
-          terminationGracePeriodSeconds: S.optional(S.Number),
-          timeoutSeconds: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerAppProbe" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(132, __c16, 4)),
-          volumeMounts: S.optional(__S(134, __c16, 6)),
-          probes: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "ContainerInput" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          secretRef: S.optional(S.String),
-          triggerParameter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScaleRuleAuth" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountName: S.optional(S.String),
-          queueName: S.optional(S.String),
-          queueLength: S.optional(S.Number),
-          auth: S.optional(__S(146, __c18, 2)),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueueScaleRule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
-          auth: S.optional(__S(146, __c18, 2)),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomScaleRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(8, __c1, 0)),
-          auth: S.optional(__S(146, __c18, 2)),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpScaleRule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          azureQueue: S.optional(__S(147, __c18, 3)),
-          custom: S.optional(__S(148, __c18, 4)),
-          http: S.optional(__S(149, __c18, 5)),
-          tcp: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({ identifier: "ScaleRule" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minReplicas: S.optional(S.Number),
-          maxReplicas: S.optional(S.Number),
-          cooldownPeriod: S.optional(S.Number),
-          pollingInterval: S.optional(S.Number),
-          allowScalingRuleOverride: S.optional(S.Boolean),
-          rules: S.optional(__S(151, __c18, 7)),
-        }),
-      ).annotate({ identifier: "Scale" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          secretRef: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretVolumeItem" });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          storageType: S.optional(S.String),
-          storageName: S.optional(S.String),
-          secrets: S.optional(__S(154, __c19, 2)),
-          mountOptions: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Volume" });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceBind" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          revisionSuffix: S.optional(S.String),
-          terminationGracePeriodSeconds: S.optional(S.Number),
-          initContainers: S.optional(__S(136, __c17, 0)),
-          containers: S.optional(__S(144, __c18, 0)),
-          scale: S.optional(__S(152, __c19, 0)),
-          volumes: S.optional(__S(156, __c19, 4)),
-          serviceBinds: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "TemplateInput" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          managedEnvironmentId: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          networking: S.optional(__S(110, __c13, 6)),
-          workloadProfileName: S.optional(S.String),
-          configuration: S.optional(__S(131, __c16, 3)),
-          template: S.optional(__S(159, __c19, 7)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsCreateOrUpdateRequestIdentity",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(160, __c20, 0)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(161, __c20, 1)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerAppsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fqdn: S.optional(S.String),
-          external: S.optional(S.Boolean),
-          targetPort: S.optional(S.Number),
-          exposedPort: S.optional(S.Number),
-          transport: S.optional(S.String),
-          traffic: S.optional(__S(112, __c14, 0)),
-          customDomains: S.optional(__S(114, __c14, 2)),
-          allowInsecure: S.optional(S.Boolean),
-          ipSecurityRestrictions: S.optional(__S(116, __c14, 4)),
-          stickySessions: S.optional(__S(117, __c14, 5)),
-          clientCertificateMode: S.optional(S.String),
-          corsPolicy: S.optional(__S(118, __c14, 6)),
-          additionalPortMappings: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({ identifier: "Ingress" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          secrets: S.optional(__S(51, __c6, 3)),
-          activeRevisionsMode: S.optional(S.String),
-          ingress: S.optional(__S(163, __c20, 3)),
-          registries: S.optional(__S(123, __c15, 3)),
-          dapr: S.optional(__S(125, __c15, 5)),
-          runtime: S.optional(__S(127, __c15, 7)),
-          maxInactiveRevisions: S.optional(S.Number),
-          service: S.optional(__S(128, __c16, 0)),
-          identitySettings: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({ identifier: "Configuration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cpu: S.optional(S.Number),
-          memory: S.optional(S.String),
-          ephemeralStorage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerResources" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(165, __c20, 5)),
-          volumeMounts: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({ identifier: "BaseContainer" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(165, __c20, 5)),
-          volumeMounts: S.optional(__S(134, __c16, 6)),
-          probes: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "Container" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          revisionSuffix: S.optional(S.String),
-          terminationGracePeriodSeconds: S.optional(S.Number),
-          initContainers: S.optional(__S(167, __c20, 7)),
-          containers: S.optional(__S(169, __c21, 1)),
-          scale: S.optional(__S(152, __c19, 0)),
-          volumes: S.optional(__S(156, __c19, 4)),
-          serviceBinds: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "Template" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          runningStatus: S.optional(S.String),
-          managedEnvironmentId: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          networking: S.optional(__S(110, __c13, 6)),
-          workloadProfileName: S.optional(S.String),
-          latestRevisionName: S.optional(S.String),
-          latestReadyRevisionName: S.optional(S.String),
-          latestRevisionFqdn: S.optional(S.String),
-          customDomainVerificationId: S.optional(S.String),
-          configuration: S.optional(__S(164, __c20, 4)),
-          template: S.optional(__S(170, __c21, 2)),
-          outboundIpAddresses: S.optional(__S(9, __c1, 1)),
-          eventStreamEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerAppProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsCreateOrUpdateResponseIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(171, __c21, 3)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(172, __c21, 4)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxConcurrentSessions: S.optional(S.Number),
-          readySessionInstances: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScaleConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionPoolSecret" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lifecycleType: S.optional(S.String),
-          cooldownPeriodInSeconds: S.optional(S.Number),
-          maxAlivePeriodInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LifecycleConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lifecycleConfiguration: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "DynamicPoolConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          server: S.optional(S.String),
-          username: S.optional(S.String),
-          passwordSecretRef: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SessionRegistryCredentials",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          httpGet: S.optional(__S(139, __c17, 3)),
-          tcpSocket: S.optional(__S(140, __c17, 4)),
-          failureThreshold: S.optional(S.Number),
-          initialDelaySeconds: S.optional(S.Number),
-          periodSeconds: S.optional(S.Number),
-          successThreshold: S.optional(S.Number),
-          terminationGracePeriodSeconds: S.optional(S.Number),
-          timeoutSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SessionProbe" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(132, __c16, 4)),
-          probes: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({ identifier: "SessionContainer" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          targetPort: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SessionIngress" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          registryCredentials: S.optional(__S(179, __c22, 3)),
-          containers: S.optional(__S(183, __c22, 7)),
-          ingress: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "CustomContainerTemplate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SessionNetworkConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          containerType: S.optional(S.String),
-          poolManagementType: S.optional(S.String),
-          scaleConfiguration: S.optional(__S(174, __c21, 6)),
-          secrets: S.optional(__S(176, __c22, 0)),
-          dynamicPoolConfiguration: S.optional(__S(178, __c22, 2)),
-          customContainerTemplate: S.optional(__S(185, __c23, 1)),
-          sessionNetworkConfiguration: S.optional(__S(186, __c23, 2)),
-          managedIdentitySettings: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "SessionPoolPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sessionPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(187, __c23, 3)),
-          identity: S.optional(__S(161, __c20, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerAppsSessionPoolsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          containerType: S.optional(S.String),
-          poolManagementType: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          scaleConfiguration: S.optional(__S(174, __c21, 6)),
-          secrets: S.optional(__S(176, __c22, 0)),
-          dynamicPoolConfiguration: S.optional(__S(178, __c22, 2)),
-          customContainerTemplate: S.optional(__S(185, __c23, 1)),
-          sessionNetworkConfiguration: S.optional(__S(186, __c23, 2)),
-          poolManagementEndpoint: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          managedIdentitySettings: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({ identifier: "SessionPoolProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(189, __c23, 5)),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsSessionPoolsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          registryUrl: S.optional(S.String),
-          registryUserName: S.optional(S.String),
-          registryPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "RegistryInfo" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          tenantId: S.optional(S.String),
-          kind: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureCredentials" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          registryInfo: S.optional(__S(191, __c23, 7)),
-          azureCredentials: S.optional(__S(192, __c24, 0)),
-          contextPath: S.optional(S.String),
-          githubPersonalAccessToken: S.optional(S.String),
-          image: S.optional(S.String),
-          publishType: S.optional(S.String),
-          os: S.optional(S.String),
-          runtimeStack: S.optional(S.String),
-          runtimeVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GithubActionConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operationState: S.optional(S.String),
-          repoUrl: S.optional(S.String),
-          branch: S.optional(S.String),
-          githubActionConfiguration: S.optional(__S(193, __c24, 1)),
-        }),
-      ).annotate({ identifier: "SourceControlProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(194, __c24, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerAppsSourceControlsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsSourceControlsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          initialDelayInMilliseconds: S.optional(S.Number),
-          maxIntervalInMilliseconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxRetries: S.optional(S.Number),
-          retryBackOff: S.optional(__S(197, __c24, 5)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responseTimeoutInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyTimeoutPolicyConfiguration",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          consecutiveErrors: S.optional(S.Number),
-          timeoutInSeconds: S.optional(S.Number),
-          intervalInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          httpRetryPolicy: S.optional(__S(198, __c24, 6)),
-          timeoutPolicy: S.optional(__S(199, __c24, 7)),
-          circuitBreakerPolicy: S.optional(__S(200, __c25, 0)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inboundPolicy: S.optional(__S(201, __c25, 1)),
-          outboundPolicy: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPolicyProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(202, __c25, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies/{name}",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPoliciesCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(202, __c25, 2)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPoliciesCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DaprComponentsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "DaprComponentsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          revisionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/deactivate",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeactivateContainerAppsRevisionRevisionRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAgentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAgentsConnectorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCertificateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectedEnvironmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectedEnvironmentsCertificateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectedEnvironmentsDaprComponentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          storageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectedEnvironmentsStorageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppPrivateEndpointConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          authConfigName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppsAuthConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          labelName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/labelHistories/{labelName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppsLabelHistoryLabelHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sessionPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppsSessionPoolRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerAppsSourceControlRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDaprComponentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies/{name}",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDaprComponentResiliencyPolicyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDotNetComponentRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          httpRouteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs/{httpRouteName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHttpRouteConfigRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteJavaComponentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteJobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          logicAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLogicAppRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          configName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations/{configName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMaintenanceConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          managedCertificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedCertificateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedEnvironmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedEnvironmentPrivateEndpointConnectionRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteManagedEnvironmentPrivateEndpointConnectionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          storageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedEnvironmentsStorageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSandboxGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-          vnetConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections/{vnetConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteVnetConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          propertyName: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DotNetComponentConfigurationProperty",
-      });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          serviceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DotNetComponentServiceBind",
-      });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          componentType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          configurations: S.optional(__S(237, __c29, 5)),
-          serviceBinds: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({
-        identifier: "DotNetComponentProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(240, __c30, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "DotNetComponentsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({
-        identifier: "DotNetComponentsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAgentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "GetAgentResponseIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(244, __c30, 4)),
-        }),
-      ).annotate({ identifier: "GetAgentResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentsConnectorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsWorkloadProfileTypes",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAvailableWorkloadProfileRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          applicability: S.optional(S.String),
-          cores: S.optional(S.Number),
-          memoryGiB: S.optional(S.Number),
-          gpus: S.optional(S.Number),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableWorkloadProfileProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({ identifier: "AvailableWorkloadProfile" });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(250, __c31, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableWorkloadProfilesCollection",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/billingMeters",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetBillingMeterRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          meterType: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingMeterProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(253, __c31, 5)),
-        }),
-      ).annotate({ identifier: "BillingMeter" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(255, __c31, 7),
-        }),
-      ).annotate({ identifier: "BillingMeterCollection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCertificateRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "GetCertificateResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConnectedEnvironmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConnectedEnvironmentsCertificateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConnectedEnvironmentsDaprComponentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          storageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConnectedEnvironmentsStorageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetContainerAppRequest" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(171, __c21, 3)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(172, __c21, 4)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetContainerAppResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/getAuthtoken",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContainerAppAuthTokenRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          expires: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerAppAuthTokenProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(266, __c33, 2)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppAuthTokenResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContainerAppPrivateEndpointConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppPrivateEndpointConnectionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          privateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateLinkResources/{privateLinkResourceName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContainerAppPrivateLinkResourceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(9, __c1, 1)),
-          requiredZoneNames: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(271, __c33, 7)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppPrivateLinkResourceResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13734,7 +16641,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsAuthConfigRequest",
       });
-    case 2:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13752,16 +16663,20 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsDiagnosticDetectorRequest",
       });
-    case 3:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           pesId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiagnosticSupportTopic" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(7072, __c221, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13769,13 +16684,13 @@ function __c34(j: number): any {
           description: S.optional(S.String),
           author: S.optional(S.String),
           category: S.optional(S.String),
-          supportTopicList: S.optional(__S(276, __c34, 4)),
-          analysisTypes: S.optional(__S(9, __c1, 1)),
+          supportTopicList: S.optional(__S(7073, __c221, 1)),
+          analysisTypes: S.optional(__S(5056, __c158, 0)),
           type: S.optional(S.String),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DiagnosticsDefinition" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           columnName: S.optional(S.String),
@@ -13785,25 +16700,21 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DiagnosticDataTableResponseColumn",
       });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(7075, __c221, 3));
+    case 5:
       return S.Array(S.Unknown);
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           tableName: S.optional(S.String),
-          columns: S.optional(__S(279, __c34, 7)),
-          rows: S.optional(__S(280, __c35, 0)),
+          columns: S.optional(__S(7076, __c221, 4)),
+          rows: S.optional(__S(7077, __c221, 5)),
         }),
       ).annotate({
         identifier: "DiagnosticDataTableResponseObject",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.Number),
@@ -13812,25 +16723,25 @@ function __c35(j: number): any {
           isVisible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DiagnosticRendering" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          table: S.optional(__S(281, __c35, 1)),
-          renderingProperties: S.optional(__S(282, __c35, 2)),
+          table: S.optional(__S(7078, __c221, 6)),
+          renderingProperties: S.optional(__S(7079, __c221, 7)),
         }),
       ).annotate({
         identifier: "DiagnosticsDataApiResponse",
       });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(7080, __c221, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           statusId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DiagnosticsStatus" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -13839,43 +16750,47 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DiagnosticDataProviderMetadataPropertyBagItem",
       });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(7083, __c221, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           providerName: S.optional(S.String),
-          propertyBag: S.optional(__S(287, __c35, 7)),
+          propertyBag: S.optional(__S(7084, __c221, 12)),
         }),
       ).annotate({
         identifier: "DiagnosticDataProviderMetadata",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(277, __c34, 5)),
-          dataset: S.optional(__S(284, __c35, 4)),
-          status: S.optional(__S(285, __c35, 5)),
-          dataProviderMetadata: S.optional(__S(288, __c36, 0)),
+          metadata: S.optional(__S(7074, __c221, 2)),
+          dataset: S.optional(__S(7081, __c221, 9)),
+          status: S.optional(__S(7082, __c221, 10)),
+          dataProviderMetadata: S.optional(__S(7085, __c221, 13)),
         }),
       ).annotate({ identifier: "DiagnosticsProperties" });
-    case 2:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(289, __c36, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7086, __c221, 14)),
         }),
       ).annotate({
         identifier: "GetContainerAppsDiagnosticDetectorResponse",
       });
-    case 3:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13893,13 +16808,33 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsDiagnosticRevisionRequest",
       });
-    case 4:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7200, __c225, 0)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppsDiagnosticRevisionResponse",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdTime: S.optional(S.String),
           lastActiveTime: S.optional(S.String),
           fqdn: S.optional(S.String),
-          template: S.optional(__S(170, __c21, 2)),
+          template: S.optional(__S(2120, __c66, 8)),
           active: S.optional(S.Boolean),
           replicas: S.optional(S.Number),
           trafficWeight: S.optional(S.Number),
@@ -13909,19 +16844,11 @@ function __c36(j: number): any {
           runningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevisionProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(292, __c36, 4)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppsDiagnosticRevisionResponse",
-      });
-    case 6:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13938,7 +16865,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsDiagnosticRootRequest",
       });
-    case 7:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13958,7 +16889,23 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7328, __c229, 0)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppsFunctionResponse",
+      });
+  }
+}
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13972,19 +16919,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ContainerAppsFunctionProperties",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(296, __c37, 0)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppsFunctionResponse",
-      });
-    case 2:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14002,7 +16941,23 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsLabelHistoryLabelHistoryRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7394, __c231, 2)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppsLabelHistoryLabelHistoryResponse",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.String),
@@ -14011,27 +16966,19 @@ function __c37(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelHistoryRecordItem" });
-    case 4:
-      return S.Array(__S(299, __c37, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(7392, __c231, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(300, __c37, 4)),
+          records: S.optional(__S(7393, __c231, 1)),
         }),
       ).annotate({ identifier: "LabelHistoryProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppsLabelHistoryLabelHistoryResponse",
-      });
-    case 7:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14052,7 +16999,7 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14076,6 +17023,22 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7490, __c234, 2)),
+        }),
+      ).annotate({
+        identifier: "GetContainerAppsRevisionReplicasReplicaResponse",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.optional(S.String),
           containerId: S.optional(S.String),
           ready: S.optional(S.Boolean),
@@ -14088,31 +17051,23 @@ function __c38(j: number): any {
           debugEndpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaContainer" });
+    case 1:
+      return S.Array(__S(7488, __c234, 0));
     case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           createdTime: S.optional(S.String),
           runningState: S.optional(S.String),
           runningStateDetails: S.optional(S.String),
-          containers: S.optional(__S(306, __c38, 2)),
-          initContainers: S.optional(__S(306, __c38, 2)),
+          containers: S.optional(__S(7489, __c234, 1)),
+          initContainers: S.optional(__S(7489, __c234, 1)),
         }),
       ).annotate({ identifier: "ReplicaProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({
-        identifier: "GetContainerAppsRevisionReplicasReplicaResponse",
-      });
-    case 5:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14130,7 +17085,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsRevisionRevisionRequest",
       });
-    case 6:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14147,7 +17106,52 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetContainerAppsSessionPoolRequest",
       });
-    case 7:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(5504, __c172, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsCertificatesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(7585, __c237, 1)),
+          location: S.String,
+          properties: S.optional(__S(5536, __c173, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsCertificatesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14167,7 +17171,7 @@ function __c38(j: number): any {
       });
   }
 }
-function __c39(j: number): any {
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14184,11 +17188,19 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetCustomDomainVerificationIdRequest",
       });
-    case 1:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCustomDomainVerificationIdResponse",
       });
-    case 2:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14204,17 +17216,25 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDaprComponentRequest" });
-    case 3:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9120, __c285, 0)),
         }),
       ).annotate({ identifier: "GetDaprComponentResponse" });
-    case 4:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14233,7 +17253,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetDaprComponentResiliencyPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14251,7 +17275,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetDotNetComponentRequest",
       });
-    case 6:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14269,7 +17297,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetHttpRouteConfigRequest",
       });
-    case 7:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
@@ -14278,13 +17310,9 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "HttpRouteProvisioningErrors",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(319, __c39, 7));
     case 1:
+      return S.Array(__S(7872, __c246, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           containerApp: S.String,
@@ -14292,9 +17320,9 @@ function __c40(j: number): any {
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRouteTarget" });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
     case 3:
+      return S.Array(__S(7874, __c246, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -14303,60 +17331,64 @@ function __c40(j: number): any {
           caseSensitive: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HttpRouteMatch" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           prefixRewrite: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRouteAction" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          match: S.optional(__S(323, __c40, 3)),
-          action: S.optional(__S(324, __c40, 4)),
+          match: S.optional(__S(7876, __c246, 4)),
+          action: S.optional(__S(7877, __c246, 5)),
         }),
       ).annotate({ identifier: "HttpRoute" });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
     case 7:
+      return S.Array(__S(7878, __c246, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          targets: S.optional(__S(322, __c40, 2)),
-          routes: S.optional(__S(326, __c40, 6)),
+          targets: S.optional(__S(7875, __c246, 3)),
+          routes: S.optional(__S(7879, __c246, 7)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRouteRule" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(7880, __c246, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningErrors: S.optional(__S(320, __c40, 0)),
+          provisioningErrors: S.optional(__S(7873, __c246, 1)),
           fqdn: S.optional(S.String),
-          customDomains: S.optional(__S(114, __c14, 2)),
-          rules: S.optional(__S(328, __c41, 0)),
+          customDomains: S.optional(__S(2241, __c70, 1)),
+          rules: S.optional(__S(7881, __c246, 9)),
         }),
       ).annotate({
         identifier: "HttpRouteConfigProperties",
       });
-    case 2:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(329, __c41, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7882, __c246, 10)),
         }),
       ).annotate({
         identifier: "GetHttpRouteConfigResponse",
       });
-    case 3:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14372,7 +17404,25 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJavaComponentRequest" });
-    case 4:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(8001, __c250, 1)),
+        }),
+      ).annotate({ identifier: "GetJavaComponentResponse" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           minReplicas: S.optional(S.Number),
@@ -14381,27 +17431,21 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "JavaComponentPropertiesScale",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           componentType: S.String,
           provisioningState: S.optional(S.String),
-          configurations: S.optional(__S(237, __c29, 5)),
-          scale: S.optional(__S(332, __c41, 4)),
-          serviceBinds: S.optional(__S(239, __c29, 7)),
+          configurations: S.optional(__S(6273, __c196, 1)),
+          scale: S.optional(__S(8000, __c250, 0)),
+          serviceBinds: S.optional(__S(6275, __c196, 3)),
         }),
       ).annotate({ identifier: "JavaComponentProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(333, __c41, 5)),
-        }),
-      ).annotate({ identifier: "GetJavaComponentResponse" });
-    case 7:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14418,7 +17462,24 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetJobRequest" });
   }
 }
-function __c42(j: number): any {
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(8104, __c253, 8)),
+          identity: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c253(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14445,19 +17506,19 @@ function __c42(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          auth: S.optional(__S(146, __c18, 2)),
+          auth: S.optional(__S(2181, __c68, 5)),
           identity: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobScaleRule" });
     case 3:
-      return S.Array(__S(338, __c42, 2));
+      return S.Array(__S(8098, __c253, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           pollingInterval: S.optional(S.Number),
           minExecutions: S.optional(S.Number),
           maxExecutions: S.optional(S.Number),
-          rules: S.optional(__S(339, __c42, 3)),
+          rules: S.optional(__S(8099, __c253, 3)),
         }),
       ).annotate({ identifier: "JobScale" });
     case 5:
@@ -14465,7 +17526,7 @@ function __c42(j: number): any {
         S.Struct({
           replicaCompletionCount: S.optional(S.Number),
           parallelism: S.optional(S.Number),
-          scale: S.optional(__S(340, __c42, 4)),
+          scale: S.optional(__S(8100, __c253, 4)),
         }),
       ).annotate({
         identifier: "JobConfigurationEventTriggerConfig",
@@ -14473,56 +17534,43 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(__S(51, __c6, 3)),
+          secrets: S.optional(__S(9057, __c283, 1)),
           triggerType: S.String,
           replicaTimeout: S.Number,
           replicaRetryLimit: S.optional(S.Number),
-          manualTriggerConfig: S.optional(__S(336, __c42, 0)),
-          scheduleTriggerConfig: S.optional(__S(337, __c42, 1)),
-          eventTriggerConfig: S.optional(__S(341, __c42, 5)),
-          registries: S.optional(__S(123, __c15, 3)),
-          identitySettings: S.optional(__S(130, __c16, 2)),
+          manualTriggerConfig: S.optional(__S(8096, __c253, 0)),
+          scheduleTriggerConfig: S.optional(__S(8097, __c253, 1)),
+          eventTriggerConfig: S.optional(__S(8101, __c253, 5)),
+          registries: S.optional(__S(2273, __c71, 1)),
+          identitySettings: S.optional(__S(1985, __c62, 1)),
         }),
       ).annotate({ identifier: "JobConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          initContainers: S.optional(__S(167, __c20, 7)),
-          containers: S.optional(__S(169, __c21, 1)),
-          volumes: S.optional(__S(156, __c19, 4)),
+          initContainers: S.optional(__S(2187, __c68, 11)),
+          containers: S.optional(__S(2189, __c68, 13)),
+          volumes: S.optional(__S(2185, __c68, 9)),
         }),
       ).annotate({ identifier: "JobTemplate" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           runningState: S.optional(S.String),
           environmentId: S.optional(S.String),
           workloadProfileName: S.optional(S.String),
-          configuration: S.optional(__S(342, __c42, 6)),
-          template: S.optional(__S(343, __c42, 7)),
-          outboundIpAddresses: S.optional(__S(9, __c1, 1)),
+          configuration: S.optional(__S(8102, __c253, 6)),
+          template: S.optional(__S(8103, __c253, 7)),
+          outboundIpAddresses: S.optional(__S(5056, __c158, 0)),
           eventStreamEndpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(344, __c43, 0)),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "GetJobResponse" });
-    case 2:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14538,17 +17586,25 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobDetectorRequest" });
-    case 3:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(289, __c36, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(7086, __c221, 14)),
         }),
       ).annotate({ identifier: "GetJobDetectorResponse" });
-    case 4:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14564,7 +17620,127 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobsProxyRequest" });
-    case 5:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          staticIp: S.optional(S.String),
+          daprAIConnectionString: S.optional(S.String),
+          customDomainConfiguration: S.optional(__S(8288, __c259, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(8224, __c257, 0)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedLocation" });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsSuffix: S.optional(S.String),
+          certificateKeyVaultProperties: S.optional(__S(5568, __c174, 0)),
+          certificateValue: S.optional(S.String),
+          certificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "CustomDomainConfigurationInput",
+      });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          deploymentErrors: S.optional(S.String),
+          defaultDomain: S.optional(S.String),
+          staticIp: S.optional(S.String),
+          daprAIConnectionString: S.optional(S.String),
+          customDomainConfiguration: S.optional(__S(8384, __c262, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentProperties",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(8320, __c260, 0)),
+          extendedLocation: S.optional(__S(8256, __c258, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customDomainVerificationId: S.optional(S.String),
+          dnsSuffix: S.optional(S.String),
+          certificateKeyVaultProperties: S.optional(__S(5568, __c174, 0)),
+          certificateValue: S.optional(S.String),
+          certificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          expirationDate: S.optional(S.String),
+          thumbprint: S.optional(S.String),
+          subjectName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomDomainConfiguration",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14580,17 +17756,21 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLogicAppRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(96, __c3, 0)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "GetLogicAppResponse" });
-    case 7:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14611,18 +17791,18 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c265(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(353, __c44, 1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(8481, __c265, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           extendedCode: S.optional(S.String),
           messageTemplate: S.optional(S.String),
-          parameters: S.optional(__S(9, __c1, 1)),
-          innerErrors: S.optional(__S(352, __c44, 0)),
-          details: S.optional(__S(352, __c44, 0)),
+          parameters: S.optional(__S(5056, __c158, 0)),
+          innerErrors: S.optional(__S(8480, __c265, 0)),
+          details: S.optional(__S(8480, __c265, 0)),
           target: S.optional(S.String),
           code: S.optional(S.String),
           message: S.optional(S.String),
@@ -14632,7 +17812,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.String,
-          error: S.optional(__S(353, __c44, 1)),
+          error: S.optional(__S(8481, __c265, 1)),
         }),
       ).annotate({ identifier: "WorkflowHealth" });
     case 3:
@@ -14640,25 +17820,33 @@ function __c44(j: number): any {
         S.Struct({
           files: S.optional(S.Unknown),
           flowState: S.optional(S.String),
-          health: S.optional(__S(354, __c44, 2)),
+          health: S.optional(__S(8482, __c265, 2)),
         }),
       ).annotate({
         identifier: "WorkflowEnvelopeProperties",
       });
-    case 4:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(355, __c44, 3)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(8483, __c265, 3)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetLogicAppWorkflowResponse",
       });
-    case 5:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14676,7 +17864,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetMaintenanceConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           weekDay: S.String,
@@ -14684,31 +17876,31 @@ function __c44(j: number): any {
           durationHours: S.Number,
         }),
       ).annotate({ identifier: "ScheduledEntry" });
-    case 7:
-      return S.Array(__S(358, __c44, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8576, __c268, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          scheduledEntries: __S(359, __c44, 7),
+          scheduledEntries: __S(8577, __c268, 1),
         }),
       ).annotate({ identifier: "ScheduledEntries" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(360, __c45, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(8578, __c268, 2)),
         }),
       ).annotate({
         identifier: "GetMaintenanceConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14726,7 +17918,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetManagedCertificateRequest",
       });
-    case 3:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -14738,21 +17934,29 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ManagedCertificateProperties",
       });
-    case 4:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(363, __c45, 3)),
+          properties: S.optional(__S(8640, __c270, 0)),
         }),
       ).annotate({
         identifier: "GetManagedCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14769,7 +17973,17 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentRequest",
       });
-    case 6:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6848, __c214, 0));
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           internal: S.optional(S.Boolean),
@@ -14779,7 +17993,7 @@ function __c45(j: number): any {
           platformReservedDnsIP: S.optional(S.String),
         }),
       ).annotate({ identifier: "VnetConfiguration" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String),
@@ -14788,95 +18002,87 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "LogAnalyticsConfiguration",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           destination: S.optional(S.String),
-          logAnalyticsConfiguration: S.optional(__S(367, __c45, 7)),
+          logAnalyticsConfiguration: S.optional(__S(8769, __c274, 1)),
         }),
       ).annotate({ identifier: "AppLogsConfiguration" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "AppInsightsConfiguration" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           site: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataDogConfiguration" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Header" });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(8773, __c274, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           endpoint: S.optional(S.String),
           insecure: S.optional(S.Boolean),
-          headers: S.optional(__S(372, __c46, 4)),
+          headers: S.optional(__S(8774, __c274, 6)),
         }),
       ).annotate({ identifier: "OtlpConfiguration" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(8775, __c274, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          dataDogConfiguration: S.optional(__S(370, __c46, 2)),
-          otlpConfigurations: S.optional(__S(374, __c46, 6)),
+          dataDogConfiguration: S.optional(__S(8772, __c274, 4)),
+          otlpConfigurations: S.optional(__S(8776, __c274, 8)),
         }),
       ).annotate({
         identifier: "DestinationsConfiguration",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           includeDapr: S.optional(S.Boolean),
-          destinations: S.optional(__S(9, __c1, 1)),
+          destinations: S.optional(__S(5056, __c158, 0)),
         }),
       ).annotate({ identifier: "TracesConfiguration" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(9, __c1, 1)),
+          destinations: S.optional(__S(5056, __c158, 0)),
         }),
       ).annotate({ identifier: "LogsConfiguration" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           includeKeda: S.optional(S.Boolean),
-          destinations: S.optional(__S(9, __c1, 1)),
+          destinations: S.optional(__S(5056, __c158, 0)),
         }),
       ).annotate({ identifier: "MetricsConfiguration" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          destinationsConfiguration: S.optional(__S(375, __c46, 7)),
-          tracesConfiguration: S.optional(__S(376, __c47, 0)),
-          logsConfiguration: S.optional(__S(377, __c47, 1)),
-          metricsConfiguration: S.optional(__S(378, __c47, 2)),
+          destinationsConfiguration: S.optional(__S(8777, __c274, 9)),
+          tracesConfiguration: S.optional(__S(8778, __c274, 10)),
+          logsConfiguration: S.optional(__S(8779, __c274, 11)),
+          metricsConfiguration: S.optional(__S(8780, __c274, 12)),
         }),
       ).annotate({
         identifier: "OpenTelemetryConfiguration",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -14885,33 +18091,29 @@ function __c47(j: number): any {
           maximumCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkloadProfile" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 15:
+      return S.Array(__S(8782, __c274, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "KedaConfiguration" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Mtls" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          mtls: S.optional(__S(383, __c47, 7)),
+          mtls: S.optional(__S(8785, __c274, 17)),
         }),
       ).annotate({
         identifier: "ManagedEnvironmentPropertiesPeerAuthentication",
       });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -14919,15 +18121,15 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ManagedEnvironmentPropertiesPeerTrafficConfigurationEncryption",
       });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(385, __c48, 1)),
+          encryption: S.optional(__S(8787, __c274, 19)),
         }),
       ).annotate({
         identifier: "ManagedEnvironmentPropertiesPeerTrafficConfiguration",
       });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           workloadProfileName: S.optional(S.String),
@@ -14936,55 +18138,61 @@ function __c48(j: number): any {
           requestIdleTimeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IngressConfiguration" });
-    case 4:
-      return S.Array(__S(269, __c33, 5));
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           daprAIInstrumentationKey: S.optional(S.String),
           daprAIConnectionString: S.optional(S.String),
-          vnetConfiguration: S.optional(__S(366, __c45, 6)),
+          vnetConfiguration: S.optional(__S(8768, __c274, 0)),
           deploymentErrors: S.optional(S.String),
           defaultDomain: S.optional(S.String),
           staticIp: S.optional(S.String),
-          appLogsConfiguration: S.optional(__S(368, __c46, 0)),
-          appInsightsConfiguration: S.optional(__S(369, __c46, 1)),
-          openTelemetryConfiguration: S.optional(__S(379, __c47, 3)),
+          appLogsConfiguration: S.optional(__S(8770, __c274, 2)),
+          appInsightsConfiguration: S.optional(__S(8771, __c274, 3)),
+          openTelemetryConfiguration: S.optional(__S(8781, __c274, 13)),
           zoneRedundant: S.optional(S.Boolean),
-          customDomainConfiguration: S.optional(__S(47, __c5, 7)),
+          customDomainConfiguration: S.optional(__S(8384, __c262, 0)),
           eventStreamEndpoint: S.optional(S.String),
-          workloadProfiles: S.optional(__S(381, __c47, 5)),
-          kedaConfiguration: S.optional(__S(382, __c47, 6)),
-          daprConfiguration: S.optional(__S(382, __c47, 6)),
+          workloadProfiles: S.optional(__S(8783, __c274, 15)),
+          kedaConfiguration: S.optional(__S(8784, __c274, 16)),
+          daprConfiguration: S.optional(__S(8784, __c274, 16)),
           infrastructureResourceGroup: S.optional(S.String),
-          peerAuthentication: S.optional(__S(384, __c48, 0)),
-          peerTrafficConfiguration: S.optional(__S(386, __c48, 2)),
-          ingressConfiguration: S.optional(__S(387, __c48, 3)),
+          peerAuthentication: S.optional(__S(8786, __c274, 18)),
+          peerTrafficConfiguration: S.optional(__S(8788, __c274, 20)),
+          ingressConfiguration: S.optional(__S(8789, __c274, 21)),
           environmentMode: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(388, __c48, 4)),
+          privateEndpointConnections: S.optional(__S(8736, __c273, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedEnvironmentProperties",
       });
-    case 6:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(389, __c48, 5)),
+          properties: S.optional(__S(8790, __c274, 22)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(172, __c21, 4)),
+          identity: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({
         identifier: "GetManagedEnvironmentResponse",
       });
-    case 7:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15003,7 +18211,7 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15023,7 +18231,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentDiagnosticDetectorRequest",
       });
-    case 1:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15041,7 +18253,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentPrivateEndpointConnectionRequest",
       });
-    case 2:
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15059,7 +18275,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentPrivateLinkResourceRequest",
       });
-    case 3:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15076,7 +18296,113 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentsDiagnosticRootRequest",
       });
-    case 4:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectedEnvironmentName: S.String.pipe(T.Label()),
+          componentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(9088, __c284, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsDaprComponentsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9120, __c285, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedEnvironmentsDaprComponentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          secretRef: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DaprMetadata" });
+    case 1:
+      return S.Array(__S(9024, __c282, 0));
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          identity: S.optional(S.String),
+          keyVaultUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Secret" });
+    case 1:
+      return S.Array(__S(9056, __c283, 0));
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          componentType: S.optional(S.String),
+          version: S.optional(S.String),
+          ignoreErrors: S.optional(S.Boolean),
+          initTimeout: S.optional(S.String),
+          secrets: S.optional(__S(9057, __c283, 1)),
+          secretStoreComponent: S.optional(S.String),
+          metadata: S.optional(__S(9025, __c282, 1)),
+          scopes: S.optional(__S(5056, __c158, 0)),
+        }),
+      ).annotate({
+        identifier: "DaprComponentPropertiesInput",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          componentType: S.optional(S.String),
+          version: S.optional(S.String),
+          ignoreErrors: S.optional(S.Boolean),
+          initTimeout: S.optional(S.String),
+          secrets: S.optional(__S(9057, __c283, 1)),
+          secretStoreComponent: S.optional(S.String),
+          metadata: S.optional(__S(9025, __c282, 1)),
+          scopes: S.optional(__S(5056, __c158, 0)),
+          provisioningState: S.optional(S.String),
+          deploymentErrors: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DaprComponentProperties" });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15094,7 +18420,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetManagedEnvironmentsStorageRequest",
       });
-    case 5:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           server: S.optional(S.String),
@@ -15102,30 +18432,30 @@ function __c49(j: number): any {
           shareName: S.optional(S.String),
         }),
       ).annotate({ identifier: "NfsAzureFileProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          azureFile: S.optional(__S(59, __c7, 3)),
-          nfsAzureFile: S.optional(__S(397, __c49, 5)),
+          azureFile: S.optional(__S(257, __c8, 1)),
+          nfsAzureFile: S.optional(__S(9184, __c287, 0)),
         }),
       ).annotate({
         identifier: "ManagedEnvironmentStorageProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(398, __c49, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9185, __c287, 1)),
         }),
       ).annotate({
         identifier: "GetManagedEnvironmentsStorageResponse",
       });
   }
 }
-function __c50(j: number): any {
+function __c288(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15142,7 +18472,27 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSandboxGroupRequest" });
-    case 1:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
+          location: S.String,
+          properties: S.optional(__S(9280, __c290, 0)),
+        }),
+      ).annotate({ identifier: "GetSandboxGroupResponse" });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -15152,19 +18502,11 @@ function __c50(j: number): any {
           enableDetailedMetrics: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SandboxGroupProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(401, __c50, 1)),
-        }),
-      ).annotate({ identifier: "GetSandboxGroupResponse" });
-    case 3:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15180,43 +18522,46 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVnetConnectionRequest" });
-    case 4:
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           subnetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VnetConnectionProperties" });
-    case 5:
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(404, __c50, 4)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9344, __c292, 0)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVnetConnectionResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customDomains: S.optional(__S(114, __c14, 2)),
-          rules: S.optional(__S(328, __c41, 0)),
-        }),
-      ).annotate({
-        identifier: "HttpRouteConfigPropertiesInput",
-      });
-    case 7:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           httpRouteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(406, __c50, 6)),
+          properties: S.optional(__S(9440, __c295, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15230,7 +18575,20 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customDomains: S.optional(__S(2241, __c70, 1)),
+          rules: S.optional(__S(7881, __c246, 9)),
+        }),
+      ).annotate({
+        identifier: "HttpRouteConfigPropertiesInput",
+      });
+  }
+}
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15251,14 +18609,18 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "InvokeFunctionsExtensionFunctionsHostRequest",
       });
-    case 1:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(333, __c41, 5)),
+          properties: S.optional(__S(8001, __c250, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15270,19 +18632,27 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "JavaComponentsCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(333, __c41, 5)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(8001, __c250, 1)),
         }),
       ).annotate({
         identifier: "JavaComponentsCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15298,27 +18668,31 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "JobExecutionRequest" });
-    case 4:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
           name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(165, __c20, 5)),
+          command: S.optional(__S(5056, __c158, 0)),
+          args: S.optional(__S(5056, __c158, 0)),
+          env: S.optional(__S(9025, __c282, 1)),
+          resources: S.optional(__S(2144, __c67, 0)),
         }),
       ).annotate({ identifier: "JobExecutionContainer" });
-    case 5:
-      return S.Array(__S(412, __c51, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(9600, __c300, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(__S(413, __c51, 5)),
-          initContainers: S.optional(__S(413, __c51, 5)),
+          containers: S.optional(__S(9601, __c300, 1)),
+          initContainers: S.optional(__S(9601, __c300, 1)),
         }),
       ).annotate({ identifier: "JobExecutionTemplate" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -15327,80 +18701,68 @@ function __c51(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerExecutionStatus" });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(415, __c51, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(9603, __c300, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          containers: S.optional(__S(416, __c52, 0)),
+          containers: S.optional(__S(9604, __c300, 4)),
         }),
       ).annotate({ identifier: "ReplicaExecutionStatus" });
-    case 2:
-      return S.Array(__S(417, __c52, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(9605, __c300, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          replicas: S.optional(__S(418, __c52, 2)),
+          replicas: S.optional(__S(9606, __c300, 6)),
         }),
       ).annotate({ identifier: "ExecutionStatus" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          template: S.optional(__S(414, __c51, 6)),
-          detailedStatus: S.optional(__S(419, __c52, 3)),
+          template: S.optional(__S(9602, __c300, 2)),
+          detailedStatus: S.optional(__S(9607, __c300, 7)),
           reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobExecutionProperties" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(420, __c52, 4)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(9608, __c300, 8)),
         }),
       ).annotate({ identifier: "JobExecutionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          initContainers: S.optional(__S(136, __c17, 0)),
-          containers: S.optional(__S(144, __c18, 0)),
-          volumes: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({ identifier: "JobTemplateInput" });
-    case 7:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
           workloadProfileName: S.optional(S.String),
-          configuration: S.optional(__S(342, __c42, 6)),
-          template: S.optional(__S(422, __c52, 6)),
+          configuration: S.optional(__S(8102, __c253, 6)),
+          template: S.optional(__S(9664, __c302, 0)),
         }),
       ).annotate({ identifier: "JobPropertiesInput" });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(423, __c52, 7)),
-          identity: S.optional(__S(161, __c20, 1)),
+          properties: S.optional(__S(9632, __c301, 0)),
+          identity: S.optional(__S(2048, __c64, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15412,22 +18774,38 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "JobsCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(5024, __c157, 0)),
           location: S.String,
-          properties: S.optional(__S(344, __c43, 0)),
-          identity: S.optional(__S(172, __c21, 4)),
+          properties: S.optional(__S(8104, __c253, 8)),
+          identity: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({
         identifier: "JobsCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initContainers: S.optional(__S(2337, __c73, 1)),
+          containers: S.optional(__S(2339, __c73, 3)),
+          volumes: S.optional(__S(2185, __c68, 9)),
+        }),
+      ).annotate({ identifier: "JobTemplateInput" });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15443,16 +18821,24 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ListAgentByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(245, __c30, 5));
-    case 4:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6337, __c198, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(427, __c53, 3),
+          value: __S(9728, __c304, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentListResult" });
-    case 5:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15467,2459 +18853,8 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ListAgentBySubscriptionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentsConnectorByAgentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AgentConnector" });
   }
 }
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(431, __c53, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(432, __c54, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentConnectorListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}/listSecrets",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentsConnectorSecretsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/listConnectorsWithSecrets",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAgentsConnectorWithSecretsByAgentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsModes",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAvailableEnvironmentModesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableEnvironmentModeProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(437, __c54, 5)),
-        }),
-      ).annotate({ identifier: "AvailableEnvironmentMode" });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(439, __c54, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableEnvironmentModesCollection",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListCertificatesRequest" });
-    case 2:
-      return S.Array(__S(258, __c32, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(442, __c55, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateCollection" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(48, __c6, 0)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "ConnectedEnvironment" });
-    case 6:
-      return S.Array(__S(445, __c55, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(446, __c55, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentCollection",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/connectedEnvironments",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentsCertificatesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentsDaprComponentsRequest",
-      });
-    case 3:
-      return S.Array(__S(315, __c39, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(451, __c56, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DaprComponentsCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}/listSecrets",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentsDaprComponentSecretsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(176, __c22, 0),
-        }),
-      ).annotate({ identifier: "DaprSecretsCollection" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectedEnvironmentsStoragesRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(456, __c57, 0),
-        }),
-      ).annotate({
-        identifier: "ConnectedEnvironmentStoragesCollection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppByResourceGroupRequest",
-      });
-    case 3:
-      return S.Array(__S(264, __c33, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(459, __c57, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerAppCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/containerApps",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          customHostname: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/listCustomHostNameAnalysis",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppCustomHostNameAnalysisRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(464, __c58, 0)),
-        }),
-      ).annotate({
-        identifier: "CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hostName: S.optional(S.String),
-          isHostnameAlreadyVerified: S.optional(S.Boolean),
-          customDomainVerificationTest: S.optional(S.String),
-          customDomainVerificationFailureInfo: S.optional(__S(465, __c58, 1)),
-          hasConflictOnManagedEnvironment: S.optional(S.Boolean),
-          conflictWithEnvironmentCustomDomain: S.optional(S.Boolean),
-          conflictingContainerAppResourceId: S.optional(S.String),
-          cNameRecords: S.optional(__S(9, __c1, 1)),
-          txtRecords: S.optional(__S(9, __c1, 1)),
-          aRecords: S.optional(__S(9, __c1, 1)),
-          alternateCNameRecords: S.optional(__S(9, __c1, 1)),
-          alternateTxtRecords: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CustomHostnameAnalysisResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppPrivateEndpointConnectionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(388, __c48, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppPrivateLinkResourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(271, __c33, 7)),
-        }),
-      ).annotate({ identifier: "PrivateLinkResource" });
-    case 7:
-      return S.Array(__S(470, __c58, 6));
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(471, __c58, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsAuthConfigByContainerAppRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({ identifier: "AuthConfig" });
-    case 3:
-      return S.Array(__S(474, __c59, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(475, __c59, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthConfigCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectors",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsDiagnosticDetectorsRequest",
-      });
-    case 6:
-      return S.Array(__S(347, __c43, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(478, __c59, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiagnosticsCollection" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectorProperties/revisionsApi/revisions/",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsDiagnosticRevisionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(292, __c36, 4)),
-        }),
-      ).annotate({ identifier: "Revision" });
-    case 2:
-      return S.Array(__S(481, __c60, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(482, __c60, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RevisionCollection" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/listSecrets",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppSecretsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(51, __c6, 3),
-        }),
-      ).annotate({ identifier: "SecretsCollection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/functions",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsFunctionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(296, __c37, 0)),
-        }),
-      ).annotate({ identifier: "ContainerAppsFunction" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(487, __c60, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(488, __c61, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerAppsFunctionCollection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/labelHistories",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsLabelHistoryLabelHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "LabelHistory" });
-    case 4:
-      return S.Array(__S(491, __c61, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(492, __c61, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LabelHistoryCollection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          revisionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/functions",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsRevisionFunctionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          revisionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsRevisionReplicasReplicasRequest",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({ identifier: "Replica" });
-    case 1:
-      return S.Array(__S(496, __c62, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(497, __c62, 1),
-        }),
-      ).annotate({ identifier: "ReplicaCollection" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsRevisionRevisionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsSessionPoolByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(189, __c23, 5)),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "SessionPool" });
-    case 6:
-      return S.Array(__S(501, __c62, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(502, __c62, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionPoolCollection" });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/sessionPools",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsSessionPoolBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContainerAppsSourceControlByContainerAppRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({ identifier: "SourceControl" });
-    case 3:
-      return S.Array(__S(506, __c63, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(507, __c63, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceControlCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDaprComponentResiliencyPoliciesRequest",
-      });
-    case 6:
-      return S.Array(__S(204, __c25, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(510, __c63, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DaprComponentResiliencyPoliciesCollection",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDaprComponentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          componentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/listSecrets",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDaprComponentSecretsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDotNetComponentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({ identifier: "DotNetComponent" });
-    case 4:
-      return S.Array(__S(515, __c64, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(516, __c64, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DotNetComponentsCollection",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHttpRouteConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(329, __c41, 1)),
-        }),
-      ).annotate({ identifier: "HttpRouteConfig" });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(519, __c64, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(520, __c65, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HttpRouteConfigCollection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJavaComponentsRequest",
-      });
-    case 3:
-      return S.Array(__S(334, __c41, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(523, __c65, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JavaComponentsCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJobByResourceGroupRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(526, __c65, 6)),
-          location: S.String,
-          properties: S.optional(__S(344, __c43, 0)),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "Job" });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(527, __c65, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(528, __c66, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobsCollection" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/jobs",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJobBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/detectors",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobDetectorsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/listSecrets",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobSecretsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJobsExecutionsRequest",
-      });
-    case 6:
-      return S.Array(__S(421, __c52, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(534, __c66, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerAppJobExecutions",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          logicAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}/workflows",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLogicAppWorkflowsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(355, __c44, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowEnvelope" });
-    case 2:
-      return S.Array(__S(537, __c67, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(538, __c67, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkflowEnvelopeCollection",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          logicAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}/listWorkflowsConnections",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLogicAppWorkflowsConnectionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMaintenanceConfigurationsRequest",
-      });
-    case 6:
-      return S.Array(__S(361, __c45, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(542, __c67, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaintenanceConfigurationCollection",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedCertificatesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(363, __c45, 3)),
-        }),
-      ).annotate({ identifier: "ManagedCertificate" });
-    case 2:
-      return S.Array(__S(545, __c68, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(546, __c68, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedCertificateCollection",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(389, __c48, 5)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "ManagedEnvironment" });
-    case 6:
-      return S.Array(__S(549, __c68, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(550, __c68, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedEnvironmentsCollection",
-      });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/managedEnvironments",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/detectors",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentDiagnosticDetectorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentPrivateEndpointConnectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentPrivateLinkResourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentsStoragesRequest",
-      });
-    case 5:
-      return S.Array(__S(399, __c49, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(557, __c69, 5),
-        }),
-      ).annotate({
-        identifier: "ManagedEnvironmentStoragesCollection",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/usages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentUsagesRequest",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsageName" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.String,
-          currentValue: S.Number,
-          limit: S.Number,
-          name: __S(560, __c70, 0),
-        }),
-      ).annotate({ identifier: "Usage" });
-    case 2:
-      return S.Array(__S(561, __c70, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(562, __c70, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListUsagesResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/workloadProfileStates",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedEnvironmentWorkloadProfileStatesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimumCount: S.optional(S.Number),
-          maximumCount: S.optional(S.Number),
-          currentCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "WorkloadProfileStatesProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(565, __c70, 5)),
-        }),
-      ).annotate({ identifier: "WorkloadProfileStates" });
-    case 7:
-      return S.Array(__S(566, __c70, 6));
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(567, __c70, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkloadProfileStatesCollection",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.App/operations",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(570, __c71, 2)),
-          origin: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDetail" });
-    case 4:
-      return S.Array(__S(571, __c71, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(572, __c71, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AvailableOperations" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSandboxGroupByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(402, __c50, 2));
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(575, __c71, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SandboxGroupListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/sandboxGroups",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSandboxGroupBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/supportedAgentModels",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSupportedAgentModelByLocationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.String,
-          providerDisplayName: S.optional(S.String),
-          model: S.String,
-          modelDisplayName: S.optional(S.String),
-          multiplier: S.optional(S.String),
-          default: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "SupportedAgentModelProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(579, __c72, 3)),
-        }),
-      ).annotate({ identifier: "SupportedAgentModel" });
-    case 5:
-      return S.Array(__S(580, __c72, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(581, __c72, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SupportedAgentModelListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/usages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListUsagesRequest" });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVnetConnectionBySandboxGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(404, __c50, 4)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VnetConnection" });
-    case 2:
-      return S.Array(__S(585, __c73, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(586, __c73, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VnetConnectionListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          logicAppName: S.String.pipe(T.Label()),
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "LogicAppsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "LogicAppsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          configName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(360, __c45, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations/{configName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MaintenanceConfigurationsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subjectName: S.optional(S.String),
-          domainControlValidation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedCertificatePropertiesInput",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          managedCertificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(591, __c73, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ManagedCertificatesCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(65, __c8, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          daprAIInstrumentationKey: S.optional(S.String),
-          daprAIConnectionString: S.optional(S.String),
-          vnetConfiguration: S.optional(__S(366, __c45, 6)),
-          appLogsConfiguration: S.optional(__S(368, __c46, 0)),
-          appInsightsConfiguration: S.optional(__S(369, __c46, 1)),
-          openTelemetryConfiguration: S.optional(__S(379, __c47, 3)),
-          zoneRedundant: S.optional(S.Boolean),
-          customDomainConfiguration: S.optional(__S(43, __c5, 3)),
-          workloadProfiles: S.optional(__S(381, __c47, 5)),
-          kedaConfiguration: S.optional(__S(18, __c2, 2)),
-          daprConfiguration: S.optional(__S(18, __c2, 2)),
-          infrastructureResourceGroup: S.optional(S.String),
-          peerAuthentication: S.optional(__S(384, __c48, 0)),
-          peerTrafficConfiguration: S.optional(__S(386, __c48, 2)),
-          ingressConfiguration: S.optional(__S(387, __c48, 3)),
-          environmentMode: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedEnvironmentPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(595, __c74, 3)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(161, __c20, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ManagedEnvironmentsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          storageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(398, __c49, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ManagedEnvironmentsStoragesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          revisionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/restart",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartContainerAppsRevisionRevisionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/resume",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ResumeJobRequest" });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SandboxGroupPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(600, __c75, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SandboxGroupsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(401, __c50, 1)),
-        }),
-      ).annotate({
-        identifier: "SandboxGroupsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/start",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "StartAgentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "StartAgentResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/start",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "StartContainerAppRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          command: S.optional(__S(9, __c1, 1)),
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(53, __c6, 5)),
-          resources: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "JobExecutionContainerInput",
-      });
-    case 7:
-      return S.Array(__S(606, __c75, 6));
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          containers: S.optional(__S(607, __c75, 7)),
-          initContainers: S.optional(__S(607, __c75, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/start",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "StartJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobExecutionBase" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/stop",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "StopAgentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/stop",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "StopContainerAppRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          jobExecutionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions/{jobExecutionName}/stop",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "StopJobExecutionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/stop",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StopJobMultipleExecutionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/suspend",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "SuspendJobRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          initialSponsorGroupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentIdentityPatch" });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeGraphConfiguration: S.optional(__S(10, __c1, 2)),
-          actionConfiguration: S.optional(__S(11, __c1, 3)),
-          logConfiguration: S.optional(__S(13, __c1, 5)),
-          incidentManagementConfiguration: S.optional(__S(14, __c1, 6)),
-          upgradeChannel: S.optional(S.String),
-          agentIdentity: S.optional(__S(615, __c76, 7)),
-          defaultModel: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "AgentPatchProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          agentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          identity: S.optional(__S(161, __c20, 1)),
-          properties: S.optional(__S(616, __c77, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
-            code: 200,
-            apiVersion: "2026-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAgentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCertificateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateConnectedEnvironmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectedEnvironmentName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateConnectedEnvironmentsCertificateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerAppName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(160, __c20, 0)),
-          extendedLocation: S.optional(__S(45, __c5, 5)),
-          identity: S.optional(__S(161, __c20, 1)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContainerAppRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scaleConfiguration: S.optional(__S(174, __c21, 6)),
-          secrets: S.optional(__S(176, __c22, 0)),
-          dynamicPoolConfiguration: S.optional(__S(178, __c22, 2)),
-          customContainerTemplate: S.optional(__S(185, __c23, 1)),
-          sessionNetworkConfiguration: S.optional(__S(186, __c23, 2)),
-        }),
-      ).annotate({
-        identifier: "SessionPoolUpdatablePropertiesProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sessionPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          identity: S.optional(__S(161, __c20, 1)),
-          properties: S.optional(__S(622, __c77, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools/{sessionPoolName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContainerAppsSessionPoolRequest",
-      });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(240, __c30, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents/{name}",
-            code: 200,
-            apiVersion: "2026-03-02-preview",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDotNetComponentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          httpRouteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(406, __c50, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs/{httpRouteName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateHttpRouteConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(333, __c41, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents/{name}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateJavaComponentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          configuration: S.optional(__S(342, __c42, 6)),
-          template: S.optional(__S(422, __c52, 6)),
-          outboundIpAddresses: S.optional(__S(9, __c1, 1)),
-          eventStreamEndpoint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "JobPatchPropertiesPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(161, __c20, 1)),
-          tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(627, __c78, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateJobRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          managedCertificateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateManagedCertificateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(595, __c74, 3)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(161, __c20, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateManagedEnvironmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(600, __c75, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSandboxGroupRequest",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-          vnetConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(404, __c50, 4)),
-          location: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections/{vnetConnectionName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VnetConnectionsCreateOrUpdateRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

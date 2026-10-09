@@ -1368,8 +1368,8 @@ export const CheckNamespaceAvailability: API.OperationMethod<
   CheckNamespaceAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckNamespaceAvailabilityRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CheckNamespaceAvailabilityResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckNamespaceAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNamespaceAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1383,11 +1383,15 @@ export const CheckNotificationHubNotificationHubAvailability: API.OperationMetho
   CheckNotificationHubNotificationHubAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CheckNotificationHubNotificationHubAvailabilityRequest>,
+  input: __S(
+    64,
+    __c4,
+    0,
+  ) as any as S.Schema<CheckNotificationHubNotificationHubAvailabilityRequest>,
   output: __S(
-    7,
-    __c0,
-    7,
+    65,
+    __c4,
+    1,
   ) as any as S.Schema<CheckNotificationHubNotificationHubAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1402,8 +1406,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1421,8 @@ export const DeleteNamespaceAuthorizationRule: API.OperationMethod<
   DeleteNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1436,8 @@ export const DeleteNotificationHub: API.OperationMethod<
   DeleteNotificationHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteNotificationHubRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteNotificationHubResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteNotificationHubRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteNotificationHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1451,8 @@ export const DeleteNotificationHubAuthorizationRule: API.OperationMethod<
   DeleteNotificationHubAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteNotificationHubAuthorizationRuleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteNotificationHubAuthorizationRuleResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteNotificationHubAuthorizationRuleRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteNotificationHubAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1466,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1481,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<GetNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1496,8 @@ export const GetNamespaceAuthorizationRule: API.OperationMethod<
   GetNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1511,8 @@ export const GetNamespacePnsCredentials: API.OperationMethod<
   GetNamespacePnsCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetNamespacePnsCredentialsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetNamespacePnsCredentialsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetNamespacePnsCredentialsRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<GetNamespacePnsCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1522,8 +1526,8 @@ export const GetNotificationHub: API.OperationMethod<
   GetNotificationHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetNotificationHubRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetNotificationHubResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetNotificationHubRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetNotificationHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1537,8 +1541,8 @@ export const GetNotificationHubAuthorizationRule: API.OperationMethod<
   GetNotificationHubAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetNotificationHubAuthorizationRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetNotificationHubAuthorizationRuleResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetNotificationHubAuthorizationRuleRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<GetNotificationHubAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1556,8 @@ export const GetNotificationHubPnsCredentials: API.OperationMethod<
   GetNotificationHubPnsCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetNotificationHubPnsCredentialsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetNotificationHubPnsCredentialsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetNotificationHubPnsCredentialsRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<GetNotificationHubPnsCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1571,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1586,8 @@ export const GetPrivateEndpointConnectionGroupId: API.OperationMethod<
   GetPrivateEndpointConnectionGroupIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetPrivateEndpointConnectionGroupIdRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetPrivateEndpointConnectionGroupIdResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionGroupIdRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GetPrivateEndpointConnectionGroupIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1601,8 @@ export const ListNamespaceAll: API.OperationMethod<
   ListNamespaceAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListNamespaceAllRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<NamespaceListResult>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListNamespaceAllRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1616,8 @@ export const ListNamespaceAuthorizationRules: API.OperationMethod<
   ListNamespaceAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SharedAccessAuthorizationRuleListResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<SharedAccessAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1631,8 @@ export const ListNamespaceKeys: API.OperationMethod<
   ListNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListNamespaceKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ResourceListKeys>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListNamespaceKeysRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ResourceListKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1646,8 @@ export const ListNamespaces: API.OperationMethod<
   ListNamespacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<NamespaceListResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1661,8 @@ export const ListNotificationHubAuthorizationRules: API.OperationMethod<
   ListNotificationHubAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListNotificationHubAuthorizationRulesRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SharedAccessAuthorizationRuleListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListNotificationHubAuthorizationRulesRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<SharedAccessAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1676,8 @@ export const ListNotificationHubKeys: API.OperationMethod<
   ListNotificationHubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListNotificationHubKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ResourceListKeys>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListNotificationHubKeysRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ResourceListKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1691,8 @@ export const ListNotificationHubs: API.OperationMethod<
   ListNotificationHubsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListNotificationHubsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<NotificationHubListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListNotificationHubsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<NotificationHubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1702,8 +1706,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<OperationListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(428, __c26, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1717,8 +1721,8 @@ export const ListPrivateEndpointConnectionGroupIds: API.OperationMethod<
   ListPrivateEndpointConnectionGroupIdsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListPrivateEndpointConnectionGroupIdsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListPrivateEndpointConnectionGroupIdsRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1732,8 +1736,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1747,8 +1751,8 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   NamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1762,8 +1766,8 @@ export const NamespacesCreateOrUpdateAuthorizationRule: API.OperationMethod<
   NamespacesCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1777,8 +1781,8 @@ export const NotificationHubsCreateOrUpdate: API.OperationMethod<
   NotificationHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<NotificationHubsCreateOrUpdateRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<NotificationHubsCreateOrUpdateResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<NotificationHubsCreateOrUpdateRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<NotificationHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1793,14 +1797,14 @@ export const NotificationHubsCreateOrUpdateAuthorizationRule: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    560,
+    __c35,
+    0,
   ) as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleRequest>,
   output: __S(
-    103,
-    __c12,
-    7,
+    561,
+    __c35,
+    1,
   ) as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1815,8 +1819,8 @@ export const RegenerateNamespaceKeys: API.OperationMethod<
   RegenerateNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<RegenerateNamespaceKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ResourceListKeys>,
+  input: __S(576, __c36, 0) as any as S.Schema<RegenerateNamespaceKeysRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ResourceListKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1834,8 @@ export const RegenerateNotificationHubKeys: API.OperationMethod<
   RegenerateNotificationHubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<RegenerateNotificationHubKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ResourceListKeys>,
+  input: __S(624, __c39, 0) as any as S.Schema<RegenerateNotificationHubKeysRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ResourceListKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1849,8 @@ export const SendNotificationHubsDebug: API.OperationMethod<
   SendNotificationHubsDebugError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<SendNotificationHubsDebugRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<SendNotificationHubsDebugResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<SendNotificationHubsDebugRequest>,
+  output: __S(644, __c40, 4) as any as S.Schema<SendNotificationHubsDebugResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1864,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1879,8 @@ export const UpdateNotificationHub: API.OperationMethod<
   UpdateNotificationHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UpdateNotificationHubRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateNotificationHubResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<UpdateNotificationHubRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateNotificationHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1890,8 +1894,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(690, __c43, 2) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,26 +1905,14 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          size: S.optional(S.String),
-          family: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           isAvailiable: S.optional(S.Boolean),
-          sku: S.optional(__S(1, __c0, 1)),
+          sku: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1932,7 +1924,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNamespaceAvailabilityRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          isAvailiable: S.optional(S.Boolean),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "CheckNamespaceAvailabilityResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          size: S.optional(S.String),
+          family: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1943,22 +1968,17 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          isAvailiable: S.optional(S.Boolean),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CheckNamespaceAvailabilityResponse",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1966,9 +1986,9 @@ function __c0(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           name: S.String,
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           isAvailiable: S.optional(S.Boolean),
-          sku: S.optional(__S(1, __c0, 1)),
+          sku: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1980,483 +2000,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNotificationHubNotificationHubAvailabilityRequest",
       });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(32, __c2, 0)),
           isAvailiable: S.optional(S.Boolean),
           location: S.optional(S.String),
-          tags: S.optional(__S(6, __c0, 6)),
-          sku: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(80, __c5, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "CheckNotificationHubNotificationHubAvailabilityResponse",
       });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteNamespaceRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNamespaceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          authorizationRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNamespaceAuthorizationRuleRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNamespaceAuthorizationRuleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          notificationHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNotificationHubRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          notificationHubName: S.String.pipe(T.Label()),
-          authorizationRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNotificationHubAuthorizationRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetNamespaceRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipMask: S.String,
-          rights: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "IpRule" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rights: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "PublicInternetAuthorizationRule",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ipRules: S.optional(__S(18, __c2, 2)),
-          publicNetworkRule: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "NetworkAcls" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.String,
-          clientSecret: S.String.pipe(T.SensitiveValue({})),
-          authTokenUrl: S.String,
-        }),
-      ).annotate({ identifier: "AdmCredentialProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "AdmCredential" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apnsCertificate: S.optional(S.String),
-          certificateKey: S.optional(S.String),
-          endpoint: S.String,
-          thumbprint: S.optional(S.String),
-          keyId: S.optional(S.String),
-          appName: S.optional(S.String),
-          appId: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApnsCredentialProperties" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "ApnsCredential" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          baiduApiKey: S.String,
-          baiduEndPoint: S.String,
-          baiduSecretKey: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "BaiduCredentialProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(25, __c3, 1),
-        }),
-      ).annotate({ identifier: "BaiduCredential" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.String,
-          vapidPrivateKey: S.String,
-          vapidPublicKey: S.String,
-        }),
-      ).annotate({
-        identifier: "BrowserCredentialProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(27, __c3, 3),
-        }),
-      ).annotate({ identifier: "BrowserCredential" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gcmEndpoint: S.optional(S.String),
-          googleApiKey: S.String,
-        }),
-      ).annotate({ identifier: "GcmCredentialProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(29, __c3, 5),
-        }),
-      ).annotate({ identifier: "GcmCredential" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mpnsCertificate: S.String,
-          certificateKey: S.String,
-          thumbprint: S.String,
-        }),
-      ).annotate({ identifier: "MpnsCredentialProperties" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(31, __c3, 7),
-        }),
-      ).annotate({ identifier: "MpnsCredential" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageSid: S.optional(S.String),
-          secretKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          windowsLiveEndpoint: S.optional(S.String),
-          certificateKey: S.optional(S.String),
-          wnsCertificate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WnsCredentialProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(33, __c4, 1),
-        }),
-      ).annotate({ identifier: "WnsCredential" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appSecret: S.optional(S.String),
-          endpoint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XiaomiCredentialProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(35, __c4, 3),
-        }),
-      ).annotate({ identifier: "XiaomiCredential" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          admCredential: S.optional(__S(22, __c2, 6)),
-          apnsCredential: S.optional(__S(24, __c3, 0)),
-          baiduCredential: S.optional(__S(26, __c3, 2)),
-          browserCredential: S.optional(__S(28, __c3, 4)),
-          gcmCredential: S.optional(__S(30, __c3, 6)),
-          mpnsCredential: S.optional(__S(32, __c4, 0)),
-          wnsCredential: S.optional(__S(34, __c4, 2)),
-          xiaomiCredential: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "PnsCredentials" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RemotePrivateEndpointConnection",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RemotePrivateLinkServiceConnectionState",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(38, __c4, 6)),
-          groupIds: S.optional(__S(39, __c4, 7)),
-          privateLinkServiceConnectionState: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionResource",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          critical: S.optional(S.Boolean),
-          subscriptionId: S.optional(S.String),
-          region: S.optional(S.String),
-          metricId: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          namespaceType: S.optional(S.String),
-          replicationRegion: S.optional(S.String),
-          zoneRedundancy: S.optional(S.String),
-          networkAcls: S.optional(__S(20, __c2, 4)),
-          pnsCredentials: S.optional(__S(37, __c4, 5)),
-          serviceBusEndpoint: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(43, __c5, 3)),
-          scaleUnit: S.optional(S.String),
-          dataCenter: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: __S(1, __c0, 1),
-          properties: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "GetNamespaceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          authorizationRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespaceAuthorizationRuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rights: __S(16, __c2, 0),
-          primaryKey: S.optional(S.String),
-          secondaryKey: S.optional(S.String),
-          keyName: S.optional(S.String),
-          modifiedTime: S.optional(S.String),
-          createdTime: S.optional(S.String),
-          claimType: S.optional(S.String),
-          claimValue: S.optional(S.String),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SharedAccessAuthorizationRuleProperties",
-      });
+      return S.Record(S.String, S.String);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(47, __c5, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceAuthorizationRuleResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
-            code: 200,
-            apiVersion: "2023-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespacePnsCredentialsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(37, __c4, 5)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetNamespacePnsCredentialsResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2474,43 +2043,55 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetNotificationHubRequest",
       });
-    case 4:
-      return S.Array(__S(47, __c5, 7));
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(912, __c57, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           registrationTtl: S.optional(S.String),
-          authorizationRules: S.optional(__S(52, __c6, 4)),
-          apnsCredential: S.optional(__S(24, __c3, 0)),
-          wnsCredential: S.optional(__S(34, __c4, 2)),
-          gcmCredential: S.optional(__S(30, __c3, 6)),
-          mpnsCredential: S.optional(__S(32, __c4, 0)),
-          admCredential: S.optional(__S(22, __c2, 6)),
-          baiduCredential: S.optional(__S(26, __c3, 2)),
-          browserCredential: S.optional(__S(28, __c3, 4)),
-          xiaomiCredential: S.optional(__S(36, __c4, 4)),
+          authorizationRules: S.optional(__S(112, __c7, 0)),
+          apnsCredential: S.optional(__S(867, __c54, 3)),
+          wnsCredential: S.optional(__S(877, __c54, 13)),
+          gcmCredential: S.optional(__S(873, __c54, 9)),
+          mpnsCredential: S.optional(__S(875, __c54, 11)),
+          admCredential: S.optional(__S(865, __c54, 1)),
+          baiduCredential: S.optional(__S(869, __c54, 5)),
+          browserCredential: S.optional(__S(871, __c54, 7)),
+          xiaomiCredential: S.optional(__S(879, __c54, 15)),
           dailyMaxActiveDevices: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "NotificationHubProperties",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
-          sku: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(113, __c7, 1)),
+          sku: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "GetNotificationHubResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2531,7 +2112,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2551,7 +2132,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetNotificationHubPnsCredentialsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2569,7 +2154,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2587,29 +2176,37 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionGroupIdRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(39, __c4, 7)),
-          requiredZoneNames: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(59, __c7, 3)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionGroupIdResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(768, __c48, 0)),
+          requiredZoneNames: S.optional(__S(768, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2624,18 +2221,22 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNamespaceAllRequest" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(832, __c52, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(62, __c7, 6)),
+          value: S.optional(__S(240, __c15, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceListResult" });
   }
 }
-function __c8(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2654,18 +2255,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListNamespaceAuthorizationRulesRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(928, __c58, 0));
     case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(65, __c8, 1)),
+          value: S.optional(__S(272, __c17, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SharedAccessAuthorizationRuleListResult",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2681,7 +2290,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNamespaceKeysRequest" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primaryConnectionString: S.optional(S.String),
@@ -2691,7 +2304,11 @@ function __c8(j: number): any {
           keyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceListKeys" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2707,7 +2324,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNamespacesRequest" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2725,7 +2346,38 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListNotificationHubAuthorizationRulesRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteNamespaceRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteNamespaceResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2746,7 +2398,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2773,25 +2425,29 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
-          sku: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(113, __c7, 1)),
+          sku: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "NotificationHubResource" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(401, __c25, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
+          value: S.optional(__S(402, __c25, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NotificationHubListResult",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2802,7 +2458,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2811,7 +2467,7 @@ function __c9(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2819,22 +2475,18 @@ function __c9(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           timeGrain: S.optional(S.String),
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "Availability" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(420, __c26, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2842,49 +2494,49 @@ function __c10(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          availabilities: S.optional(__S(81, __c10, 1)),
+          availabilities: S.optional(__S(421, __c26, 5)),
           metricFilterPattern: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(422, __c26, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(79, __c9, 7)),
-          metricSpecifications: S.optional(__S(83, __c10, 3)),
+          logSpecifications: S.optional(__S(419, __c26, 3)),
+          metricSpecifications: S.optional(__S(423, __c26, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(84, __c10, 4)),
+          serviceSpecification: S.optional(__S(424, __c26, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(77, __c9, 5)),
-          properties: S.optional(__S(85, __c10, 5)),
+          display: S.optional(__S(417, __c26, 1)),
+          properties: S.optional(__S(425, __c26, 9)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(426, __c26, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(87, __c10, 7)),
+          value: S.optional(__S(427, __c26, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2901,28 +2553,32 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionGroupIdsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(59, __c7, 3)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
+    case 2:
+      return S.Array(__S(433, __c27, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(91, __c11, 3)),
+          value: S.optional(__S(434, __c27, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2939,33 +2595,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: S.optional(__S(800, __c50, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionResourceListResult",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          namespaceType: S.optional(S.String),
-          replicationRegion: S.optional(S.String),
-          zoneRedundancy: S.optional(S.String),
-          networkAcls: S.optional(__S(20, __c2, 4)),
-          pnsCredentials: S.optional(__S(37, __c4, 5)),
-          scaleUnit: S.optional(S.String),
-          dataCenter: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespacePropertiesInput" });
   }
 }
-function __c12(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2973,10 +2614,10 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          sku: __S(1, __c0, 1),
-          properties: S.optional(__S(95, __c11, 7)),
+          sku: __S(16, __c1, 0),
+          properties: S.optional(__S(480, __c30, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2994,35 +2635,48 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          sku: __S(1, __c0, 1),
-          properties: S.optional(__S(44, __c5, 4)),
+          sku: __S(16, __c1, 0),
+          properties: S.optional(__S(820, __c51, 4)),
         }),
       ).annotate({
         identifier: "NamespacesCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          rights: __S(16, __c2, 0),
-          primaryKey: S.optional(S.String),
-          secondaryKey: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          namespaceType: S.optional(S.String),
+          replicationRegion: S.optional(S.String),
+          zoneRedundancy: S.optional(S.String),
+          networkAcls: S.optional(__S(819, __c51, 3)),
+          pnsCredentials: S.optional(__S(880, __c55, 0)),
+          scaleUnit: S.optional(S.String),
+          dataCenter: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SharedAccessAuthorizationRulePropertiesInput",
-      });
-    case 3:
+      ).annotate({ identifier: "NamespacePropertiesInput" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(98, __c12, 2)),
+          properties: S.optional(__S(512, __c32, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3034,34 +2688,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "NamespacesCreateOrUpdateAuthorizationRuleRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          registrationTtl: S.optional(S.String),
-          apnsCredential: S.optional(__S(24, __c3, 0)),
-          wnsCredential: S.optional(__S(34, __c4, 2)),
-          gcmCredential: S.optional(__S(30, __c3, 6)),
-          mpnsCredential: S.optional(__S(32, __c4, 0)),
-          admCredential: S.optional(__S(22, __c2, 6)),
-          baiduCredential: S.optional(__S(26, __c3, 2)),
-          browserCredential: S.optional(__S(28, __c3, 4)),
-          xiaomiCredential: S.optional(__S(36, __c4, 4)),
+          rights: __S(848, __c53, 0),
+          primaryKey: S.optional(S.String),
+          secondaryKey: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "NotificationHubPropertiesInput",
+        identifier: "SharedAccessAuthorizationRulePropertiesInput",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           notificationHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(100, __c12, 4)),
-          sku: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(544, __c34, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3073,7 +2728,32 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "NotificationHubsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          registrationTtl: S.optional(S.String),
+          apnsCredential: S.optional(__S(867, __c54, 3)),
+          wnsCredential: S.optional(__S(877, __c54, 13)),
+          gcmCredential: S.optional(__S(873, __c54, 9)),
+          mpnsCredential: S.optional(__S(875, __c54, 11)),
+          admCredential: S.optional(__S(865, __c54, 1)),
+          baiduCredential: S.optional(__S(869, __c54, 5)),
+          browserCredential: S.optional(__S(871, __c54, 7)),
+          xiaomiCredential: S.optional(__S(879, __c54, 15)),
+        }),
+      ).annotate({
+        identifier: "NotificationHubPropertiesInput",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3081,9 +2761,9 @@ function __c12(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           notificationHubName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(98, __c12, 2)),
+          properties: S.optional(__S(512, __c32, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3095,23 +2775,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "NotificationHubsCreateOrUpdateAuthorizationRuleRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(47, __c5, 7)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(912, __c57, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "NotificationHubsCreateOrUpdateAuthorizationRuleResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3132,7 +2812,41 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RegenerateNamespaceKeysRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          authorizationRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNamespaceAuthorizationRuleRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteNamespaceAuthorizationRuleResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3152,7 +2866,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RegenerateNotificationHubKeysRequest",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3170,7 +2888,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SendNotificationHubsDebugRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationPlatform: S.optional(S.String),
@@ -3179,39 +2897,43 @@ function __c13(j: number): any {
           outcome: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationResult" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           success: S.optional(S.Number),
           failure: S.optional(S.Number),
-          results: S.optional(__S(108, __c13, 4)),
+          results: S.optional(__S(642, __c40, 2)),
         }),
       ).annotate({ identifier: "DebugSendResult" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(109, __c13, 5)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(643, __c40, 3)),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "SendNotificationHubsDebugResponse",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(95, __c11, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(480, __c30, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3223,7 +2945,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "UpdateNamespaceRequest" });
   }
 }
-function __c14(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3232,9 +2954,9 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           notificationHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(100, __c12, 4)),
-          sku: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(544, __c34, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3246,7 +2968,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateNotificationHubRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -3254,24 +2980,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "RemotePrivateLinkServiceConnectionStateInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(11, __c1, 3)),
-          privateLinkServiceConnectionState: S.optional(__S(113, __c14, 1)),
+          privateEndpoint: S.optional(__S(608, __c38, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(688, __c43, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(114, __c14, 2)),
+          properties: S.optional(__S(689, __c43, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3285,7 +3011,468 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          notificationHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNotificationHubRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          notificationHubName: S.String.pipe(T.Label()),
+          authorizationRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNotificationHubAuthorizationRuleRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetNamespaceRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RemotePrivateEndpointConnection",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RemotePrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(784, __c49, 0)),
+          groupIds: S.optional(__S(768, __c48, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(785, __c49, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(786, __c49, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionResource",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(787, __c49, 3));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipMask: S.String,
+          rights: __S(848, __c53, 0),
+        }),
+      ).annotate({ identifier: "IpRule" });
+    case 1:
+      return S.Array(__S(816, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rights: __S(848, __c53, 0),
+        }),
+      ).annotate({
+        identifier: "PublicInternetAuthorizationRule",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ipRules: S.optional(__S(817, __c51, 1)),
+          publicNetworkRule: S.optional(__S(818, __c51, 2)),
+        }),
+      ).annotate({ identifier: "NetworkAcls" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          critical: S.optional(S.Boolean),
+          subscriptionId: S.optional(S.String),
+          region: S.optional(S.String),
+          metricId: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          namespaceType: S.optional(S.String),
+          replicationRegion: S.optional(S.String),
+          zoneRedundancy: S.optional(S.String),
+          networkAcls: S.optional(__S(819, __c51, 3)),
+          pnsCredentials: S.optional(__S(880, __c55, 0)),
+          serviceBusEndpoint: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(800, __c50, 0)),
+          scaleUnit: S.optional(S.String),
+          dataCenter: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceProperties" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          sku: __S(16, __c1, 0),
+          properties: S.optional(__S(820, __c51, 4)),
+        }),
+      ).annotate({ identifier: "GetNamespaceResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          clientSecret: S.String.pipe(T.SensitiveValue({})),
+          authTokenUrl: S.String,
+        }),
+      ).annotate({ identifier: "AdmCredentialProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(864, __c54, 0),
+        }),
+      ).annotate({ identifier: "AdmCredential" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apnsCertificate: S.optional(S.String),
+          certificateKey: S.optional(S.String),
+          endpoint: S.String,
+          thumbprint: S.optional(S.String),
+          keyId: S.optional(S.String),
+          appName: S.optional(S.String),
+          appId: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApnsCredentialProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(866, __c54, 2),
+        }),
+      ).annotate({ identifier: "ApnsCredential" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          baiduApiKey: S.String,
+          baiduEndPoint: S.String,
+          baiduSecretKey: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "BaiduCredentialProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(868, __c54, 4),
+        }),
+      ).annotate({ identifier: "BaiduCredential" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.String,
+          vapidPrivateKey: S.String,
+          vapidPublicKey: S.String,
+        }),
+      ).annotate({
+        identifier: "BrowserCredentialProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(870, __c54, 6),
+        }),
+      ).annotate({ identifier: "BrowserCredential" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          gcmEndpoint: S.optional(S.String),
+          googleApiKey: S.String,
+        }),
+      ).annotate({ identifier: "GcmCredentialProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(872, __c54, 8),
+        }),
+      ).annotate({ identifier: "GcmCredential" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          mpnsCertificate: S.String,
+          certificateKey: S.String,
+          thumbprint: S.String,
+        }),
+      ).annotate({ identifier: "MpnsCredentialProperties" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(874, __c54, 10),
+        }),
+      ).annotate({ identifier: "MpnsCredential" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          packageSid: S.optional(S.String),
+          secretKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          windowsLiveEndpoint: S.optional(S.String),
+          certificateKey: S.optional(S.String),
+          wnsCertificate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WnsCredentialProperties" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(876, __c54, 12),
+        }),
+      ).annotate({ identifier: "WnsCredential" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          appSecret: S.optional(S.String),
+          endpoint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XiaomiCredentialProperties",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(878, __c54, 14),
+        }),
+      ).annotate({ identifier: "XiaomiCredential" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          admCredential: S.optional(__S(865, __c54, 1)),
+          apnsCredential: S.optional(__S(867, __c54, 3)),
+          baiduCredential: S.optional(__S(869, __c54, 5)),
+          browserCredential: S.optional(__S(871, __c54, 7)),
+          gcmCredential: S.optional(__S(873, __c54, 9)),
+          mpnsCredential: S.optional(__S(875, __c54, 11)),
+          wnsCredential: S.optional(__S(877, __c54, 13)),
+          xiaomiCredential: S.optional(__S(879, __c54, 15)),
+        }),
+      ).annotate({ identifier: "PnsCredentials" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          authorizationRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespaceAuthorizationRuleRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rights: __S(848, __c53, 0),
+          primaryKey: S.optional(S.String),
+          secondaryKey: S.optional(S.String),
+          keyName: S.optional(S.String),
+          modifiedTime: S.optional(S.String),
+          createdTime: S.optional(S.String),
+          claimType: S.optional(S.String),
+          claimValue: S.optional(S.String),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SharedAccessAuthorizationRuleProperties",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(912, __c57, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceAuthorizationRuleResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
+            code: 200,
+            apiVersion: "2023-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespacePnsCredentialsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(880, __c55, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "GetNamespacePnsCredentialsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

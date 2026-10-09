@@ -1493,8 +1493,8 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetAccountsProductsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<Product>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetAccountsProductsRequest>,
+  output: __S(134, __c4, 6) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1513,8 +1513,8 @@ export const insertAccountsProductInputs: API.OperationMethod<
   InsertAccountsProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<InsertAccountsProductInputsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ProductInput>,
+  input: __S(160, __c5, 0) as any as S.Schema<InsertAccountsProductInputsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<ProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1529,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListAccountsProductsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListProductsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListAccountsProductsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1550,8 +1550,8 @@ export const patchAccountsProductInputs: API.OperationMethod<
   PatchAccountsProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<PatchAccountsProductInputsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ProductInput>,
+  input: __S(256, __c8, 0) as any as S.Schema<PatchAccountsProductInputsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<ProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1579,7 +1579,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1593,32 +1597,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountsProductsRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => __S(4, __c0, 4))),
+          groupValues: S.optional(S.suspend(() => __S(65, __c2, 1))),
         }),
       ).annotate({ identifier: "CustomAttribute" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.Array(S.String);
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Array(S.String);
-    case 7:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           attributeName: S.optional(S.String),
@@ -1626,23 +1630,23 @@ function __c1(j: number): any {
           sectionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductDetail" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(69, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EnergyConsumption" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Number),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingWeight" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           certificationCode: S.optional(S.String),
@@ -1653,9 +1657,9 @@ function __c1(j: number): any {
           certificationLabelLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductCertification" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           pointsValue: S.optional(S.String),
@@ -1663,148 +1667,136 @@ function __c1(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyPoints" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           amountMicros: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Price" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          price: S.optional(__S(15, __c1, 7)),
+          price: S.optional(__S(76, __c2, 12)),
           service: S.optional(S.String),
           surface: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductMinimumOrderValue" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Number),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "FuelConsumption" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          priceThreshold: S.optional(__S(15, __c1, 7)),
+          priceThreshold: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "FreeShippingThreshold" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 17:
+      return S.Array(__S(80, __c2, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UnitPricingMeasure" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Co2Emissions" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          totalAmount: S.optional(__S(15, __c1, 7)),
+          totalAmount: S.optional(__S(76, __c2, 12)),
           creditType: S.optional(S.String),
-          amount: S.optional(__S(15, __c1, 7)),
-          mileageAllowance: S.optional(__S(22, __c2, 6)),
+          amount: S.optional(__S(76, __c2, 12)),
+          mileageAllowance: S.optional(__S(83, __c2, 19)),
           annualPercentageRate: S.optional(S.Number),
-          downpayment: S.optional(__S(15, __c1, 7)),
+          downpayment: S.optional(__S(76, __c2, 12)),
           months: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductInstallment" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VariantOption" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 22:
+      return S.Array(__S(85, __c2, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           periodLength: S.optional(S.String),
           period: S.optional(S.String),
-          amount: S.optional(__S(15, __c1, 7)),
+          amount: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "SubscriptionCost" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
           answer: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuestionAndAnswer" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 25:
+      return S.Array(__S(88, __c2, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           windowDays: S.optional(S.String),
           restockingPercentageFee: S.optional(S.Number),
           shippingFeeType: S.optional(S.String),
-          methods: S.optional(__S(5, __c0, 5)),
-          itemConditions: S.optional(__S(5, __c0, 5)),
-          countries: S.optional(__S(6, __c0, 6)),
-          shippingFee: S.optional(__S(15, __c1, 7)),
-          restockingFee: S.optional(__S(15, __c1, 7)),
+          methods: S.optional(__S(66, __c2, 2)),
+          itemConditions: S.optional(__S(66, __c2, 2)),
+          countries: S.optional(__S(67, __c2, 3)),
+          shippingFee: S.optional(__S(76, __c2, 12)),
+          restockingFee: S.optional(__S(76, __c2, 12)),
           windowType: S.optional(S.String),
-          outcomes: S.optional(__S(5, __c0, 5)),
+          outcomes: S.optional(__S(66, __c2, 2)),
           policyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Returns" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 27:
+      return S.Array(__S(90, __c2, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           tierLabel: S.optional(S.String),
           programLabel: S.optional(S.String),
           loyaltyPoints: S.optional(S.String),
           shippingLabel: S.optional(S.String),
-          cashbackForFutureUse: S.optional(__S(15, __c1, 7)),
-          memberPriceEffectiveDate: S.optional(__S(7, __c0, 7)),
-          price: S.optional(__S(15, __c1, 7)),
+          cashbackForFutureUse: S.optional(__S(76, __c2, 12)),
+          memberPriceEffectiveDate: S.optional(__S(68, __c2, 4)),
+          price: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "LoyaltyProgram" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 29:
+      return S.Array(__S(92, __c2, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           digitalSourceType: S.optional(S.String),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "StructuredDescription" });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          flatPrice: S.optional(__S(15, __c1, 7)),
+          flatPrice: S.optional(__S(76, __c2, 12)),
           country: S.optional(S.String),
           carrierTransitTime: S.optional(S.String),
           minHandlingTime: S.optional(S.String),
@@ -1815,31 +1807,35 @@ function __c4(j: number): any {
           originPostalCode: S.optional(S.String),
           carrierPricePercentageAdjustment: S.optional(S.Number),
           postalCode: S.optional(S.String),
-          carrierPriceFlatAdjustment: S.optional(__S(15, __c1, 7)),
+          carrierPriceFlatAdjustment: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "CarrierShipping" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(95, __c2, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          amount: S.optional(__S(15, __c1, 7)),
+          amount: S.optional(__S(76, __c2, 12)),
           percentage: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ProductSustainabilityIncentive",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
           digitalSourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "StructuredTitle" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
@@ -1848,13 +1844,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ShippingBusinessDaysConfig",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           cutoffTimezone: S.optional(S.String),
@@ -1863,24 +1855,24 @@ function __c5(j: number): any {
           cutoffTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "HandlingCutoffTime" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(102, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
           durationUnit: S.optional(S.String),
-          mileage: S.optional(__S(22, __c2, 6)),
+          mileage: S.optional(__S(83, __c2, 19)),
         }),
       ).annotate({ identifier: "Warranty" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          flatRate: S.optional(__S(15, __c1, 7)),
-          freeThreshold: S.optional(__S(15, __c1, 7)),
+          flatRate: S.optional(__S(76, __c2, 12)),
+          freeThreshold: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "PickupCost" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           streetName: S.optional(S.String),
@@ -1890,14 +1882,14 @@ function __c5(j: number): any {
           postalCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DisplayAddress" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          petTypes: S.optional(__S(5, __c0, 5)),
+          petTypes: S.optional(__S(66, __c2, 2)),
           petsAllowed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PetPolicy" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           loyaltyProgramLabel: S.optional(S.String),
@@ -1914,35 +1906,31 @@ function __c5(j: number): any {
           handlingCutoffTime: S.optional(S.String),
           maxHandlingTime: S.optional(S.String),
           maxTransitTime: S.optional(S.String),
-          price: S.optional(__S(15, __c1, 7)),
+          price: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "Shipping" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(108, __c3, 12));
+    case 14:
       return S.Array(S.Number);
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           minValue: S.optional(S.Number),
-          intValue: S.optional(__S(6, __c0, 6)),
+          intValue: S.optional(__S(67, __c2, 3)),
           unitCode: S.optional(S.String),
-          floatValue: S.optional(__S(49, __c6, 1)),
+          floatValue: S.optional(__S(110, __c3, 14)),
           propertyName: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
           maxValue: S.optional(S.Number),
-          textValue: S.optional(__S(6, __c0, 6)),
+          textValue: S.optional(__S(67, __c2, 3)),
         }),
       ).annotate({
         identifier: "CloudExportAdditionalProperties",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 16:
+      return S.Array(__S(111, __c3, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           idType: S.optional(S.String),
@@ -1950,9 +1938,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedProduct" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 18:
+      return S.Array(__S(113, __c3, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           durationUnit: S.optional(S.String),
@@ -1960,35 +1948,31 @@ function __c6(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "LeaseTerm" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          amount: S.optional(__S(15, __c1, 7)),
+          amount: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "ProductFee" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 21:
+      return S.Array(__S(116, __c3, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitPricingBaseMeasure" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           vin: S.optional(S.String),
           propertyName: S.optional(S.String),
-          includedDestinations: S.optional(__S(5, __c0, 5)),
-          productTypes: S.optional(__S(6, __c0, 6)),
-          salePriceEffectiveDate: S.optional(__S(7, __c0, 7)),
-          productDetails: S.optional(__S(9, __c1, 1)),
+          includedDestinations: S.optional(__S(66, __c2, 2)),
+          productTypes: S.optional(__S(67, __c2, 3)),
+          salePriceEffectiveDate: S.optional(__S(68, __c2, 4)),
+          productDetails: S.optional(__S(70, __c2, 6)),
           virtualModelLink: S.optional(S.String),
           trim: S.optional(S.String),
           adsRedirect: S.optional(S.String),
@@ -1996,200 +1980,200 @@ function __c7(j: number): any {
           displayAdsValue: S.optional(S.Number),
           emissionsStandard: S.optional(S.String),
           itemGroupId: S.optional(S.String),
-          energyConsumption: S.optional(__S(10, __c1, 2)),
+          energyConsumption: S.optional(__S(71, __c2, 7)),
           dateFirstRegistered: S.optional(S.String),
           title: S.optional(S.String),
-          shippingWeight: S.optional(__S(11, __c1, 3)),
-          displayAdsSimilarIds: S.optional(__S(6, __c0, 6)),
-          lifestyleImageLinks: S.optional(__S(6, __c0, 6)),
+          shippingWeight: S.optional(__S(72, __c2, 8)),
+          displayAdsSimilarIds: S.optional(__S(67, __c2, 3)),
+          lifestyleImageLinks: S.optional(__S(67, __c2, 3)),
           link: S.optional(S.String),
           propertyType: S.optional(S.String),
-          adsLabels: S.optional(__S(6, __c0, 6)),
-          certifications: S.optional(__S(13, __c1, 5)),
-          loyaltyPoints: S.optional(__S(14, __c1, 6)),
-          shippingWidth: S.optional(__S(11, __c1, 3)),
+          adsLabels: S.optional(__S(67, __c2, 3)),
+          certifications: S.optional(__S(74, __c2, 10)),
+          loyaltyPoints: S.optional(__S(75, __c2, 11)),
+          shippingWidth: S.optional(__S(72, __c2, 8)),
           mobileLink: S.optional(S.String),
-          minimumOrderValues: S.optional(__S(17, __c2, 1)),
-          fuelConsumption: S.optional(__S(18, __c2, 2)),
-          freeShippingThreshold: S.optional(__S(20, __c2, 4)),
+          minimumOrderValues: S.optional(__S(78, __c2, 14)),
+          fuelConsumption: S.optional(__S(79, __c2, 15)),
+          freeShippingThreshold: S.optional(__S(81, __c2, 17)),
           linkTemplate: S.optional(S.String),
-          productHighlights: S.optional(__S(6, __c0, 6)),
-          promotionIds: S.optional(__S(6, __c0, 6)),
-          unitPricingMeasure: S.optional(__S(21, __c2, 5)),
+          productHighlights: S.optional(__S(67, __c2, 3)),
+          promotionIds: S.optional(__S(67, __c2, 3)),
+          unitPricingMeasure: S.optional(__S(82, __c2, 18)),
           canonicalLink: S.optional(S.String),
-          co2Emissions: S.optional(__S(22, __c2, 6)),
+          co2Emissions: S.optional(__S(83, __c2, 19)),
           year: S.optional(S.String),
           sizeSystem: S.optional(S.String),
-          unitArea: S.optional(__S(10, __c1, 2)),
-          installment: S.optional(__S(23, __c2, 7)),
+          unitArea: S.optional(__S(71, __c2, 7)),
+          installment: S.optional(__S(84, __c2, 20)),
           maxHandlingTime: S.optional(S.String),
           pickupSla: S.optional(S.String),
           expirationDate: S.optional(S.String),
-          variantOptions: S.optional(__S(25, __c3, 1)),
+          variantOptions: S.optional(__S(86, __c2, 22)),
           mobileLinkTemplate: S.optional(S.String),
-          subscriptionCost: S.optional(__S(26, __c3, 2)),
+          subscriptionCost: S.optional(__S(87, __c2, 23)),
           engine: S.optional(S.String),
-          questionsAndAnswers: S.optional(__S(28, __c3, 4)),
+          questionsAndAnswers: S.optional(__S(89, __c2, 25)),
           availabilityDate: S.optional(S.String),
-          utilitiesIncluded: S.optional(__S(5, __c0, 5)),
+          utilitiesIncluded: S.optional(__S(66, __c2, 2)),
           energyEfficiencyClass: S.optional(S.String),
           customLabel4: S.optional(S.String),
           model: S.optional(S.String),
-          vehicleAllInPrice: S.optional(__S(15, __c1, 7)),
+          vehicleAllInPrice: S.optional(__S(76, __c2, 12)),
           color: S.optional(S.String),
           numberOfBedrooms: S.optional(S.Number),
           certifiedPreOwned: S.optional(S.Boolean),
-          returns: S.optional(__S(30, __c3, 6)),
-          sizeTypes: S.optional(__S(5, __c0, 5)),
+          returns: S.optional(__S(91, __c2, 27)),
+          sizeTypes: S.optional(__S(66, __c2, 2)),
           shippingLabel: S.optional(S.String),
-          loyaltyPrograms: S.optional(__S(32, __c4, 0)),
+          loyaltyPrograms: S.optional(__S(93, __c2, 29)),
           ageGroup: S.optional(S.String),
           description: S.optional(S.String),
-          structuredDescription: S.optional(__S(33, __c4, 1)),
-          carrierShipping: S.optional(__S(35, __c4, 3)),
+          structuredDescription: S.optional(__S(94, __c2, 30)),
+          carrierShipping: S.optional(__S(96, __c3, 0)),
           customLabel2: S.optional(S.String),
           size: S.optional(S.String),
           numberOfBathrooms: S.optional(S.Number),
           customLabel0: S.optional(S.String),
-          vehicleExpenses: S.optional(__S(15, __c1, 7)),
+          vehicleExpenses: S.optional(__S(76, __c2, 12)),
           displayAdsLink: S.optional(S.String),
-          sustainabilityIncentives: S.optional(__S(37, __c4, 5)),
-          structuredTitle: S.optional(__S(38, __c4, 6)),
-          productLength: S.optional(__S(21, __c2, 5)),
-          electricRange: S.optional(__S(22, __c2, 6)),
-          productHeight: S.optional(__S(21, __c2, 5)),
+          sustainabilityIncentives: S.optional(__S(98, __c3, 2)),
+          structuredTitle: S.optional(__S(99, __c3, 3)),
+          productLength: S.optional(__S(82, __c2, 18)),
+          electricRange: S.optional(__S(83, __c2, 19)),
+          productHeight: S.optional(__S(82, __c2, 18)),
           externalSellerId: S.optional(S.String),
           displayAdsId: S.optional(S.String),
           customLabel3: S.optional(S.String),
           returnPolicyLabel: S.optional(S.String),
           pause: S.optional(S.String),
-          shippingHandlingBusinessDays: S.optional(__S(40, __c5, 0)),
-          mileage: S.optional(__S(22, __c2, 6)),
-          shoppingAdsExcludedCountries: S.optional(__S(6, __c0, 6)),
-          productWeight: S.optional(__S(11, __c1, 3)),
+          shippingHandlingBusinessDays: S.optional(__S(101, __c3, 5)),
+          mileage: S.optional(__S(83, __c2, 19)),
+          shoppingAdsExcludedCountries: S.optional(__S(67, __c2, 3)),
+          productWeight: S.optional(__S(72, __c2, 8)),
           googleProductCategory: S.optional(S.String),
           brand: S.optional(S.String),
-          shippingHeight: S.optional(__S(11, __c1, 3)),
+          shippingHeight: S.optional(__S(72, __c2, 8)),
           availability: S.optional(S.String),
-          handlingCutoffTimes: S.optional(__S(42, __c5, 2)),
+          handlingCutoffTimes: S.optional(__S(103, __c3, 7)),
           numberOfUnits: S.optional(S.String),
           sellOnGoogleQuantity: S.optional(S.String),
-          documentLinks: S.optional(__S(6, __c0, 6)),
+          documentLinks: S.optional(__S(67, __c2, 3)),
           adult: S.optional(S.Boolean),
-          maximumRetailPrice: S.optional(__S(15, __c1, 7)),
+          maximumRetailPrice: S.optional(__S(76, __c2, 12)),
           vehiclePriceType: S.optional(S.String),
           pickupMethod: S.optional(S.String),
           customLabel1: S.optional(S.String),
-          warranty: S.optional(__S(43, __c5, 3)),
-          costOfGoodsSold: S.optional(__S(15, __c1, 7)),
-          videoLinks: S.optional(__S(6, __c0, 6)),
+          warranty: S.optional(__S(104, __c3, 8)),
+          costOfGoodsSold: S.optional(__S(76, __c2, 12)),
+          videoLinks: S.optional(__S(67, __c2, 3)),
           bodyStyle: S.optional(S.String),
-          additionalImageLinks: S.optional(__S(6, __c0, 6)),
+          additionalImageLinks: S.optional(__S(67, __c2, 3)),
           disclosureDate: S.optional(S.String),
-          price: S.optional(__S(15, __c1, 7)),
+          price: S.optional(__S(76, __c2, 12)),
           multipack: S.optional(S.String),
-          pickupCost: S.optional(__S(44, __c5, 4)),
-          displayAddress: S.optional(__S(45, __c5, 5)),
+          pickupCost: S.optional(__S(105, __c3, 9)),
+          displayAddress: S.optional(__S(106, __c3, 10)),
           popularityRank: S.optional(S.Number),
           vehicleMandatoryInspectionIncluded: S.optional(S.Boolean),
           material: S.optional(S.String),
           neighborhood: S.optional(S.String),
           imageLink: S.optional(S.String),
-          amenityFeature: S.optional(__S(5, __c0, 5)),
+          amenityFeature: S.optional(__S(66, __c2, 2)),
           itemGroupTitle: S.optional(S.String),
-          autoPricingMinPrice: S.optional(__S(15, __c1, 7)),
-          petPolicy: S.optional(__S(46, __c5, 6)),
+          autoPricingMinPrice: S.optional(__S(76, __c2, 12)),
+          petPolicy: S.optional(__S(107, __c3, 11)),
           identifierExists: S.optional(S.Boolean),
           maxEnergyEfficiencyClass: S.optional(S.String),
           latitude: S.optional(S.Number),
           pattern: S.optional(S.String),
-          fuelConsumptionDischargedBattery: S.optional(__S(18, __c2, 2)),
-          gtins: S.optional(__S(6, __c0, 6)),
+          fuelConsumptionDischargedBattery: S.optional(__S(79, __c2, 15)),
+          gtins: S.optional(__S(67, __c2, 3)),
           isBundle: S.optional(S.Boolean),
           minEnergyEfficiencyClass: S.optional(S.String),
-          shipping: S.optional(__S(48, __c6, 0)),
-          cloudExportAdditionalProperties: S.optional(__S(51, __c6, 3)),
-          relatedProducts: S.optional(__S(53, __c6, 5)),
-          leaseTerm: S.optional(__S(54, __c6, 6)),
-          vehicleMsrp: S.optional(__S(15, __c1, 7)),
+          shipping: S.optional(__S(109, __c3, 13)),
+          cloudExportAdditionalProperties: S.optional(__S(112, __c3, 16)),
+          relatedProducts: S.optional(__S(114, __c3, 18)),
+          leaseTerm: S.optional(__S(115, __c3, 19)),
+          vehicleMsrp: S.optional(__S(76, __c2, 12)),
           shortTitle: S.optional(S.String),
-          shippingLength: S.optional(__S(11, __c1, 3)),
+          shippingLength: S.optional(__S(72, __c2, 8)),
           gender: S.optional(S.String),
-          excludedDestinations: S.optional(__S(5, __c0, 5)),
+          excludedDestinations: S.optional(__S(66, __c2, 2)),
           longitude: S.optional(S.Number),
           specialtyHousingType: S.optional(S.String),
           mpn: S.optional(S.String),
-          salePrice: S.optional(__S(15, __c1, 7)),
-          shippingTransitBusinessDays: S.optional(__S(40, __c5, 0)),
-          productWidth: S.optional(__S(21, __c2, 5)),
-          productFee: S.optional(__S(56, __c7, 0)),
+          salePrice: S.optional(__S(76, __c2, 12)),
+          shippingTransitBusinessDays: S.optional(__S(101, __c3, 5)),
+          productWidth: S.optional(__S(82, __c2, 18)),
+          productFee: S.optional(__S(117, __c3, 21)),
           adsGrouping: S.optional(S.String),
           minHandlingTime: S.optional(S.String),
-          unitPricingBaseMeasure: S.optional(__S(57, __c7, 1)),
+          unitPricingBaseMeasure: S.optional(__S(118, __c3, 22)),
           condition: S.optional(S.String),
           transitTimeLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductAttributes" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attribute: S.optional(S.String),
           description: S.optional(S.String),
           severity: S.optional(S.String),
           code: S.optional(S.String),
-          applicableCountries: S.optional(__S(6, __c0, 6)),
+          applicableCountries: S.optional(__S(67, __c2, 3)),
           reportingContext: S.optional(S.String),
           detail: S.optional(S.String),
           documentation: S.optional(S.String),
           resolution: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemLevelIssue" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          approvedCountries: S.optional(__S(6, __c0, 6)),
+          approvedCountries: S.optional(__S(67, __c2, 3)),
           reportingContext: S.optional(S.String),
-          pendingCountries: S.optional(__S(6, __c0, 6)),
-          disapprovedCountries: S.optional(__S(6, __c0, 6)),
+          pendingCountries: S.optional(__S(67, __c2, 3)),
+          disapprovedCountries: S.optional(__S(67, __c2, 3)),
         }),
       ).annotate({ identifier: "DestinationStatus" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          itemLevelIssues: S.optional(__S(60, __c7, 4)),
+          itemLevelIssues: S.optional(__S(129, __c4, 1)),
           creationDate: S.optional(S.String),
-          destinationStatuses: S.optional(__S(62, __c7, 6)),
+          destinationStatuses: S.optional(__S(131, __c4, 3)),
           lastUpdateDate: S.optional(S.String),
           googleExpirationDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductStatus" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          priorPriceProgressive: S.optional(__S(15, __c1, 7)),
-          priorPrice: S.optional(__S(15, __c1, 7)),
-          gadPrice: S.optional(__S(15, __c1, 7)),
+          priorPriceProgressive: S.optional(__S(76, __c2, 12)),
+          priorPrice: S.optional(__S(76, __c2, 12)),
+          gadPrice: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "AutomatedDiscounts" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           legacyLocal: S.optional(S.Boolean),
           offerId: S.optional(S.String),
           contentLanguage: S.optional(S.String),
-          customAttributes: S.optional(__S(4, __c0, 4)),
-          productAttributes: S.optional(__S(58, __c7, 2)),
+          customAttributes: S.optional(__S(65, __c2, 1)),
+          productAttributes: S.optional(__S(119, __c3, 23)),
           dataSource: S.optional(S.String),
-          productStatus: S.optional(__S(63, __c7, 7)),
-          automatedDiscounts: S.optional(__S(64, __c8, 0)),
+          productStatus: S.optional(__S(132, __c4, 4)),
+          automatedDiscounts: S.optional(__S(133, __c4, 5)),
           versionNumber: S.optional(S.String),
           feedLabel: S.optional(S.String),
           archived: S.optional(S.Boolean),
@@ -2197,28 +2181,16 @@ function __c8(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contentLanguage: S.optional(S.String),
-          feedLabel: S.optional(S.String),
-          product: S.optional(S.String),
-          legacyLocal: S.optional(S.Boolean),
-          base64EncodedName: S.optional(S.String),
-          name: S.optional(S.String),
-          base64EncodedProduct: S.optional(S.String),
-          productAttributes: S.optional(__S(58, __c7, 2)),
-          versionNumber: S.optional(S.String),
-          customAttributes: S.optional(__S(4, __c0, 4)),
-          offerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductInput" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSource: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2229,7 +2201,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsertAccountsProductInputsRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentLanguage: S.optional(S.String),
+          feedLabel: S.optional(S.String),
+          product: S.optional(S.String),
+          legacyLocal: S.optional(S.Boolean),
+          base64EncodedName: S.optional(S.String),
+          name: S.optional(S.String),
+          base64EncodedProduct: S.optional(S.String),
+          productAttributes: S.optional(__S(119, __c3, 23)),
+          versionNumber: S.optional(S.String),
+          customAttributes: S.optional(__S(65, __c2, 1)),
+          offerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductInput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2245,22 +2241,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListAccountsProductsRequest",
       });
-    case 5:
-      return S.Array(__S(65, __c8, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(134, __c4, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(69, __c8, 5)),
+          products: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSource: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2273,7 +2273,6 @@ function __c8(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

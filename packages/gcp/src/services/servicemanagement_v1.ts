@@ -1500,8 +1500,8 @@ export const createServices: API.OperationMethod<
   CreateServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateServicesRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceSoftDeleted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1521,8 +1521,8 @@ export const createServicesConfigs: API.OperationMethod<
   CreateServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<CreateServicesConfigsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<Service>,
+  input: __S(896, __c28, 0) as any as S.Schema<CreateServicesConfigsRequest>,
+  output: __S(1070, __c33, 14) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const createServicesRollouts: API.OperationMethod<
   CreateServicesRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<CreateServicesRolloutsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateServicesRolloutsRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1557,8 +1557,8 @@ export const deleteServices: API.OperationMethod<
   DeleteServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteServicesRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1577,8 @@ export const generateConfigReportServices: API.OperationMethod<
   GenerateConfigReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GenerateConfigReportServicesRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GenerateConfigReportResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<GenerateConfigReportServicesRequest>,
+  output: __S(42, __c1, 10) as any as S.Schema<GenerateConfigReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1592,8 @@ export const getConfigServices: API.OperationMethod<
   GetConfigServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetConfigServicesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<Service>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetConfigServicesRequest>,
+  output: __S(1070, __c33, 14) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1607,8 @@ export const getIamPolicyServices: API.OperationMethod<
   GetIamPolicyServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetIamPolicyServicesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Policy>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetIamPolicyServicesRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1627,8 @@ export const getIamPolicyServicesConsumers: API.OperationMethod<
   GetIamPolicyServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetIamPolicyServicesConsumersRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Policy>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetIamPolicyServicesConsumersRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1642,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1657,8 @@ export const getServices: API.OperationMethod<
   GetServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetServicesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<ManagedService>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetServicesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ManagedService>,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1672,8 @@ export const getServicesConfigs: API.OperationMethod<
   GetServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetServicesConfigsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<Service>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetServicesConfigsRequest>,
+  output: __S(1070, __c33, 14) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1687,8 @@ export const getServicesRollouts: API.OperationMethod<
   GetServicesRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetServicesRolloutsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Rollout>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetServicesRolloutsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<Rollout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1703,8 +1703,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1720,8 +1720,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListServicesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListServicesResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1737,8 +1737,8 @@ export const listServicesConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListServicesConfigsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListServiceConfigsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListServicesConfigsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ListServiceConfigsResponse>,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1754,8 @@ export const listServicesRollouts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListServicesRolloutsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListServiceRolloutsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListServicesRolloutsRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<ListServiceRolloutsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1770,8 +1770,8 @@ export const setIamPolicyServices: API.OperationMethod<
   SetIamPolicyServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<SetIamPolicyServicesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Policy>,
+  input: __S(480, __c15, 0) as any as S.Schema<SetIamPolicyServicesRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1790,8 +1790,8 @@ export const setIamPolicyServicesConsumers: API.OperationMethod<
   SetIamPolicyServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<SetIamPolicyServicesConsumersRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Policy>,
+  input: __S(544, __c17, 0) as any as S.Schema<SetIamPolicyServicesConsumersRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1805,8 @@ export const submitServicesConfigs: API.OperationMethod<
   SubmitServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<SubmitServicesConfigsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(580, __c18, 4) as any as S.Schema<SubmitServicesConfigsRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1825,8 +1825,8 @@ export const testIamPermissionsServices: API.OperationMethod<
   TestIamPermissionsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<TestIamPermissionsServicesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<TestIamPermissionsServicesRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const testIamPermissionsServicesConsumers: API.OperationMethod<
   TestIamPermissionsServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<TestIamPermissionsServicesConsumersRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<TestIamPermissionsServicesConsumersRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1867,8 +1867,8 @@ export const undeleteServices: API.OperationMethod<
   UndeleteServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UndeleteServicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<UndeleteServicesRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -1888,898 +1888,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          producerProjectId: S.optional(S.String),
-          serviceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedService" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/services",
-            baseUrl: "https://servicemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateServicesRequest" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(3, __c0, 3)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          response: S.optional(__S(2, __c0, 2)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(2, __c0, 2)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesResourceHierarchyLevel: S.optional(__S(7, __c0, 7)),
-          samplePeriod: S.optional(S.String),
-          launchStage: S.optional(S.String),
-          ingestDelay: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricDescriptorMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          valueType: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LabelDescriptor" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          monitoredResourceTypes: S.optional(__S(6, __c0, 6)),
-          metadata: S.optional(__S(8, __c1, 0)),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          launchStage: S.optional(S.String),
-          unit: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          valueType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          metricKind: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricDescriptor" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Option" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          number: S.optional(S.Number),
-          options: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "EnumValue" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fileName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceContext" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          enumvalue: S.optional(__S(16, __c2, 0)),
-          syntax: S.optional(S.String),
-          options: S.optional(__S(14, __c1, 6)),
-          sourceContext: S.optional(__S(17, __c2, 1)),
-          edition: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Enum" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-          allowUnregisteredCalls: S.optional(S.Boolean),
-          skipServiceControl: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UsageRule" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requirements: S.optional(__S(6, __c0, 6)),
-          rules: S.optional(__S(21, __c2, 5)),
-          producerNotificationChannel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Usage" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          monitoredResource: S.optional(S.String),
-          logs: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "LoggingDestination" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          consumerDestinations: S.optional(__S(24, __c3, 0)),
-          producerDestinations: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "Logging" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-          isErrorType: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CustomErrorRule" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          types: S.optional(__S(6, __c0, 6)),
-          rules: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CustomError" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          methods: S.optional(__S(6, __c0, 6)),
-          generateOmittedAsInternal: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SelectiveGapicGeneration" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selectiveGapicGeneration: S.optional(__S(29, __c3, 5)),
-          destinations: S.optional(__S(30, __c3, 6)),
-          referenceDocsUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommonLanguageSettings" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          libraryPackage: S.optional(S.String),
-          common: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "PhpSettings" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          renamedResources: S.optional(__S(33, __c4, 1)),
-          renamedServices: S.optional(__S(33, __c4, 1)),
-          ignoredResources: S.optional(__S(6, __c0, 6)),
-          forcedNamespaceAliases: S.optional(__S(6, __c0, 6)),
-          common: S.optional(__S(31, __c3, 7)),
-          handwrittenSignatures: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "DotnetSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          common: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "RubySettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          common: S.optional(__S(31, __c3, 7)),
-          renamedServices: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "GoSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          restAsyncIoEnabled: S.optional(S.Boolean),
-          protobufPythonicTypesEnabled: S.optional(S.Boolean),
-          unversionedPackageDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ExperimentalFeatures" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          common: S.optional(__S(31, __c3, 7)),
-          experimentalFeatures: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "PythonSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceClassNames: S.optional(__S(33, __c4, 1)),
-          common: S.optional(__S(31, __c3, 7)),
-          libraryPackage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JavaSettings" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          phpSettings: S.optional(__S(32, __c4, 0)),
-          dotnetSettings: S.optional(__S(34, __c4, 2)),
-          restNumericEnums: S.optional(S.Boolean),
-          rubySettings: S.optional(__S(35, __c4, 3)),
-          nodeSettings: S.optional(__S(35, __c4, 3)),
-          goSettings: S.optional(__S(36, __c4, 4)),
-          launchStage: S.optional(S.String),
-          cppSettings: S.optional(__S(35, __c4, 3)),
-          pythonSettings: S.optional(__S(38, __c4, 6)),
-          javaSettings: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "ClientLibrarySettings" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          flowControlElementLimit: S.optional(S.Number),
-          requestByteThreshold: S.optional(S.String),
-          flowControlByteLimit: S.optional(S.Number),
-          flowControlLimitExceededBehavior: S.optional(S.String),
-          delayThreshold: S.optional(S.String),
-          elementCountThreshold: S.optional(S.Number),
-          elementCountLimit: S.optional(S.Number),
-          requestByteLimit: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BatchingSettingsProto" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          batchedField: S.optional(S.String),
-          subresponseField: S.optional(S.String),
-          discriminatorFields: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "BatchingDescriptorProto" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          thresholds: S.optional(__S(42, __c5, 2)),
-          batchDescriptor: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "BatchingConfigProto" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          initialPollDelay: S.optional(S.String),
-          totalPollTimeout: S.optional(S.String),
-          pollDelayMultiplier: S.optional(S.Number),
-          maxPollDelay: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LongRunning" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-          batching: S.optional(__S(44, __c5, 4)),
-          longRunning: S.optional(__S(45, __c5, 5)),
-          autoPopulatedFields: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "MethodSettings" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiShortName: S.optional(S.String),
-          librarySettings: S.optional(__S(41, __c5, 1)),
-          organization: S.optional(S.String),
-          newIssueUri: S.optional(S.String),
-          codeownerGithubTeams: S.optional(__S(6, __c0, 6)),
-          docTagPrefix: S.optional(S.String),
-          protoReferenceDocumentationUri: S.optional(S.String),
-          restReferenceDocumentationUri: S.optional(S.String),
-          githubLabel: S.optional(S.String),
-          methodSettings: S.optional(__S(47, __c5, 7)),
-          documentationUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Publishing" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(6, __c0, 6)),
-          monitoredResource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MonitoringDestination" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          consumerDestinations: S.optional(__S(50, __c6, 2)),
-          producerDestinations: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "Monitoring" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requestStreaming: S.optional(S.Boolean),
-          responseStreaming: S.optional(S.Boolean),
-          responseTypeUrl: S.optional(S.String),
-          edition: S.optional(S.String),
-          options: S.optional(__S(14, __c1, 6)),
-          syntax: S.optional(S.String),
-          requestTypeUrl: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Method" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          root: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Mixin" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          edition: S.optional(S.String),
-          name: S.optional(S.String),
-          syntax: S.optional(S.String),
-          options: S.optional(__S(14, __c1, 6)),
-          version: S.optional(S.String),
-          sourceContext: S.optional(__S(17, __c2, 1)),
-          methods: S.optional(__S(53, __c6, 5)),
-          mixins: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "Api" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceFiles: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "SourceInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          subpages: S.optional(S.suspend(() => __S(60, __c7, 4))),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Page" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deprecationDescription: S.optional(S.String),
-          description: S.optional(S.String),
-          disableReplacementWords: S.optional(S.String),
-          selector: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DocumentationRule" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pages: S.optional(__S(60, __c7, 4)),
-          rules: S.optional(__S(62, __c7, 6)),
-          sectionOverrides: S.optional(__S(60, __c7, 4)),
-          overview: S.optional(S.String),
-          summary: S.optional(S.String),
-          documentationRootUrl: S.optional(S.String),
-          additionalIamInfo: S.optional(S.String),
-          serviceRootUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Documentation" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          packed: S.optional(S.Boolean),
-          typeUrl: S.optional(S.String),
-          jsonName: S.optional(S.String),
-          defaultValue: S.optional(S.String),
-          oneofIndex: S.optional(S.Number),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          options: S.optional(__S(14, __c1, 6)),
-          cardinality: S.optional(S.String),
-          number: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          oneofs: S.optional(__S(6, __c0, 6)),
-          edition: S.optional(S.String),
-          sourceContext: S.optional(__S(17, __c2, 1)),
-          options: S.optional(__S(14, __c1, 6)),
-          syntax: S.optional(S.String),
-          fields: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "Type" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canonicalScopes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthRequirements" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          audiences: S.optional(S.String),
-          providerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthRequirement" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          oauth: S.optional(__S(68, __c8, 4)),
-          selector: S.optional(S.String),
-          requirements: S.optional(__S(70, __c8, 6)),
-          allowWithoutCredential: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AuthenticationRule" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          header: S.optional(S.String),
-          cookie: S.optional(S.String),
-          valuePrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JwtLocation" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          audiences: S.optional(S.String),
-          jwksUri: S.optional(S.String),
-          authorizationUrl: S.optional(S.String),
-          id: S.optional(S.String),
-          issuer: S.optional(S.String),
-          jwtLocations: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "AuthProvider" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(72, __c9, 0)),
-          providers: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "Authentication" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          urlQueryParameter: S.optional(S.String),
-          httpHeader: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemParameter" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(79, __c9, 7)),
-          selector: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemParameterRule" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "SystemParameters" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomHttpPattern" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          post: S.optional(S.String),
-          patch: S.optional(S.String),
-          custom: S.optional(__S(83, __c10, 3)),
-          responseBody: S.optional(S.String),
-          delete: S.optional(S.String),
-          body: S.optional(S.String),
-          get: S.optional(S.String),
-          additionalBindings: S.optional(S.suspend(() => __S(85, __c10, 5))),
-          selector: S.optional(S.String),
-          put: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpRule" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(85, __c10, 5)),
-          fullyDecodeReservedExpansion: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Http" });
-    case 7:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(88, __c11, 0)),
-      );
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minDeadline: S.optional(S.Number),
-          jwtAudience: S.optional(S.String),
-          address: S.optional(S.String),
-          selector: S.optional(S.String),
-          protocol: S.optional(S.String),
-          disableAuth: S.optional(S.Boolean),
-          overridesByRequestProtocol: S.optional(__S(87, __c10, 7)),
-          pathTranslation: S.optional(S.String),
-          loadBalancingPolicy: S.optional(S.String),
-          operationDeadline: S.optional(S.Number),
-          deadline: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BackendRule" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "Backend" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allowedResponseExtensions: S.optional(__S(6, __c0, 6)),
-          selector: S.optional(S.String),
-          allowedRequestExtensions: S.optional(__S(6, __c0, 6)),
-          provided: S.optional(__S(6, __c0, 6)),
-          requested: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ContextRule" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "Context" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          monitoredResource: S.optional(S.String),
-          metrics: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "BillingDestination" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          consumerDestinations: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "Billing" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          launchStage: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MonitoredResourceDescriptor",
-      });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          labels: S.optional(__S(10, __c1, 2)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogDescriptor" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(S.String),
-          name: S.optional(S.String),
-          allowCors: S.optional(S.Boolean),
-          aliases: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-          config: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "AspectRule" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(2, __c0, 2)),
-          rules: S.optional(__S(104, __c13, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Aspect" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourcePermission: S.optional(S.String),
-          selector: S.optional(S.String),
-          resourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FieldPolicy" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(S.String),
-          requestPolicies: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "MethodPolicy" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          methodPolicies: S.optional(__S(110, __c13, 6)),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Control" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(33, __c4, 1)),
-          unit: S.optional(S.String),
-          displayName: S.optional(S.String),
-          duration: S.optional(S.String),
-          description: S.optional(S.String),
-          trafficSource: S.optional(S.String),
-          defaultLimit: S.optional(S.String),
-          name: S.optional(S.String),
-          maxLimit: S.optional(S.String),
-          freeTier: S.optional(S.String),
-          metric: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaLimit" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metricCosts: S.optional(__S(33, __c4, 1)),
-          selector: S.optional(S.String),
-          nonagenticMetricCosts: S.optional(__S(33, __c4, 1)),
-          agenticMetricCosts: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "MetricRule" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          limits: S.optional(__S(113, __c14, 1)),
-          metricRules: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({ identifier: "Quota" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(12, __c1, 4)),
-          enums: S.optional(__S(19, __c2, 3)),
-          usage: S.optional(__S(22, __c2, 6)),
-          logging: S.optional(__S(25, __c3, 1)),
-          customError: S.optional(__S(28, __c3, 4)),
-          producerProjectId: S.optional(S.String),
-          publishing: S.optional(__S(48, __c6, 0)),
-          monitoring: S.optional(__S(51, __c6, 3)),
-          apis: S.optional(__S(57, __c7, 1)),
-          sourceInfo: S.optional(__S(58, __c7, 2)),
-          id: S.optional(S.String),
-          documentation: S.optional(__S(63, __c7, 7)),
-          systemTypes: S.optional(__S(67, __c8, 3)),
-          title: S.optional(S.String),
-          authentication: S.optional(__S(77, __c9, 5)),
-          systemParameters: S.optional(__S(82, __c10, 2)),
-          types: S.optional(__S(67, __c8, 3)),
-          http: S.optional(__S(86, __c10, 6)),
-          backend: S.optional(__S(90, __c11, 2)),
-          context: S.optional(__S(93, __c11, 5)),
-          billing: S.optional(__S(96, __c12, 0)),
-          monitoredResources: S.optional(__S(98, __c12, 2)),
-          logs: S.optional(__S(100, __c12, 4)),
-          name: S.optional(S.String),
-          endpoints: S.optional(__S(102, __c12, 6)),
-          aspects: S.optional(__S(106, __c13, 2)),
-          control: S.optional(__S(111, __c13, 7)),
-          quota: S.optional(__S(116, __c14, 4)),
-          configVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Service" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/services/{serviceName}/configs",
-            baseUrl: "https://servicemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServicesConfigsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Number);
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          percentages: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "TrafficPercentStrategy" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteServiceStrategy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          serviceName: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          rolloutId: S.optional(S.String),
-          trafficPercentStrategy: S.optional(__S(120, __c15, 0)),
-          deleteServiceStrategy: S.optional(__S(121, __c15, 1)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Rollout" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/services/{serviceName}/rollouts",
-            baseUrl: "https://servicemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServicesRolloutsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2789,19 +1897,23 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServicesRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          newConfig: S.optional(__S(2, __c0, 2)),
-          oldConfig: S.optional(__S(2, __c0, 2)),
+          newConfig: S.optional(__S(800, __c25, 0)),
+          oldConfig: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({
         identifier: "GenerateConfigReportRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2812,7 +1924,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GenerateConfigReportServicesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -2820,54 +1932,50 @@ function __c15(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Diagnostic" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Advice" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(36, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          advices: S.optional(__S(130, __c16, 2)),
+          advices: S.optional(__S(37, __c1, 5)),
           changeType: S.optional(S.String),
           newValue: S.optional(S.String),
           oldValue: S.optional(S.String),
           element: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigChange" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          configChanges: S.optional(__S(132, __c16, 4)),
+          configChanges: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "ChangeReport" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(40, __c1, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
           id: S.optional(S.String),
-          diagnostics: S.optional(__S(128, __c16, 0)),
-          changeReports: S.optional(__S(134, __c16, 6)),
+          diagnostics: S.optional(__S(35, __c1, 3)),
+          changeReports: S.optional(__S(41, __c1, 9)),
         }),
       ).annotate({
         identifier: "GenerateConfigReportResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2883,23 +1991,15 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConfigServicesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2910,29 +2010,45 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyServicesRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(6, __c0, 6)),
+          exemptedMembers: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(141, __c17, 5)),
+          auditLogConfigs: S.optional(__S(161, __c5, 1)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -2941,30 +2057,34 @@ function __c18(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(144, __c18, 0)),
-          members: S.optional(__S(6, __c0, 6)),
+          condition: S.optional(__S(164, __c5, 4)),
+          members: S.optional(__S(928, __c29, 0)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(165, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(143, __c17, 7)),
+          auditConfigs: S.optional(__S(163, __c5, 3)),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(146, __c18, 2)),
+          bindings: S.optional(__S(166, __c5, 6)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2975,7 +2095,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyServicesConsumersRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2987,7 +2111,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2999,7 +2127,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServicesRequest" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configId: S.String.pipe(T.Label()),
@@ -3017,7 +2149,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3034,7 +2166,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetServicesRolloutsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -3050,17 +2186,21 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.Array(__S(865, __c27, 1));
     case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(154, __c19, 2)),
+          operations: S.optional(__S(353, __c11, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           producerProjectId: S.optional(S.String.pipe(T.Query())),
@@ -3075,16 +2215,20 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(157, __c19, 5)),
+          services: S.optional(__S(385, __c12, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3100,22 +2244,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListServicesConfigsRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(117, __c14, 5));
     case 1:
+      return S.Array(__S(1070, __c33, 14));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          serviceConfigs: S.optional(__S(160, __c20, 0)),
+          serviceConfigs: S.optional(__S(417, __c13, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceConfigsResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3132,29 +2276,26 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListServicesRolloutsRequest",
       });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1123, __c35, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rollouts: S.optional(__S(163, __c20, 3)),
+          rollouts: S.optional(__S(449, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceRolloutsResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(147, __c18, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(165, __c20, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3165,11 +2306,26 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyServicesRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(167, __c5, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(165, __c20, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3182,7 +2338,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3193,18 +2349,18 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ConfigFile" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(576, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          files: S.optional(__S(169, __c21, 1)),
+          files: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "ConfigSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configSource: S.optional(__S(170, __c21, 2)),
+          configSource: S.optional(__S(578, __c18, 2)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3214,7 +2370,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(579, __c18, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3225,19 +2381,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SubmitServicesConfigsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3248,11 +2400,27 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsServicesRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3281,7 +2449,890 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UndeleteServicesRequest" });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/services",
+            baseUrl: "https://servicemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateServicesRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          producerProjectId: S.optional(S.String),
+          serviceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedService" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(800, __c25, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(832, __c26, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          response: S.optional(__S(800, __c25, 0)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(800, __c25, 0)),
+          error: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1070, __c33, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/services/{serviceName}/configs",
+            baseUrl: "https://servicemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServicesConfigsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesResourceHierarchyLevel: S.optional(__S(960, __c30, 0)),
+          samplePeriod: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          ingestDelay: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricDescriptorMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          valueType: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LabelDescriptor" });
+    case 3:
+      return S.Array(__S(962, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          monitoredResourceTypes: S.optional(__S(928, __c29, 0)),
+          metadata: S.optional(__S(961, __c30, 1)),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          unit: S.optional(S.String),
+          labels: S.optional(__S(963, __c30, 3)),
+          valueType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          metricKind: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricDescriptor" });
+    case 5:
+      return S.Array(__S(964, __c30, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(800, __c25, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Option" });
+    case 7:
+      return S.Array(__S(966, __c30, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          number: S.optional(S.Number),
+          options: S.optional(__S(967, __c30, 7)),
+        }),
+      ).annotate({ identifier: "EnumValue" });
+    case 9:
+      return S.Array(__S(968, __c30, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          fileName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceContext" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          enumvalue: S.optional(__S(969, __c30, 9)),
+          syntax: S.optional(S.String),
+          options: S.optional(__S(967, __c30, 7)),
+          sourceContext: S.optional(__S(970, __c30, 10)),
+          edition: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Enum" });
+    case 12:
+      return S.Array(__S(971, __c30, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+          allowUnregisteredCalls: S.optional(S.Boolean),
+          skipServiceControl: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UsageRule" });
+    case 14:
+      return S.Array(__S(973, __c30, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          requirements: S.optional(__S(928, __c29, 0)),
+          rules: S.optional(__S(974, __c30, 14)),
+          producerNotificationChannel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          monitoredResource: S.optional(S.String),
+          logs: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "LoggingDestination" });
+    case 17:
+      return S.Array(__S(976, __c30, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          consumerDestinations: S.optional(__S(977, __c30, 17)),
+          producerDestinations: S.optional(__S(977, __c30, 17)),
+        }),
+      ).annotate({ identifier: "Logging" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+          isErrorType: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomErrorRule" });
+    case 20:
+      return S.Array(__S(979, __c30, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          types: S.optional(__S(928, __c29, 0)),
+          rules: S.optional(__S(980, __c30, 20)),
+        }),
+      ).annotate({ identifier: "CustomError" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          methods: S.optional(__S(928, __c29, 0)),
+          generateOmittedAsInternal: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SelectiveGapicGeneration" });
+    case 23:
+      return S.Array(S.String);
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          selectiveGapicGeneration: S.optional(__S(982, __c30, 22)),
+          destinations: S.optional(__S(983, __c30, 23)),
+          referenceDocsUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommonLanguageSettings" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          libraryPackage: S.optional(S.String),
+          common: S.optional(__S(984, __c30, 24)),
+        }),
+      ).annotate({ identifier: "PhpSettings" });
+    case 26:
+      return S.Record(S.String, S.String);
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          renamedResources: S.optional(__S(986, __c30, 26)),
+          renamedServices: S.optional(__S(986, __c30, 26)),
+          ignoredResources: S.optional(__S(928, __c29, 0)),
+          forcedNamespaceAliases: S.optional(__S(928, __c29, 0)),
+          common: S.optional(__S(984, __c30, 24)),
+          handwrittenSignatures: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "DotnetSettings" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          common: S.optional(__S(984, __c30, 24)),
+        }),
+      ).annotate({ identifier: "RubySettings" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          common: S.optional(__S(984, __c30, 24)),
+          renamedServices: S.optional(__S(986, __c30, 26)),
+        }),
+      ).annotate({ identifier: "GoSettings" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          restAsyncIoEnabled: S.optional(S.Boolean),
+          protobufPythonicTypesEnabled: S.optional(S.Boolean),
+          unversionedPackageDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ExperimentalFeatures" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          common: S.optional(__S(984, __c30, 24)),
+          experimentalFeatures: S.optional(__S(990, __c30, 30)),
+        }),
+      ).annotate({ identifier: "PythonSettings" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceClassNames: S.optional(__S(986, __c30, 26)),
+          common: S.optional(__S(984, __c30, 24)),
+          libraryPackage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JavaSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          phpSettings: S.optional(__S(985, __c30, 25)),
+          dotnetSettings: S.optional(__S(987, __c30, 27)),
+          restNumericEnums: S.optional(S.Boolean),
+          rubySettings: S.optional(__S(988, __c30, 28)),
+          nodeSettings: S.optional(__S(988, __c30, 28)),
+          goSettings: S.optional(__S(989, __c30, 29)),
+          launchStage: S.optional(S.String),
+          cppSettings: S.optional(__S(988, __c30, 28)),
+          pythonSettings: S.optional(__S(991, __c30, 31)),
+          javaSettings: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "ClientLibrarySettings" });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          flowControlElementLimit: S.optional(S.Number),
+          requestByteThreshold: S.optional(S.String),
+          flowControlByteLimit: S.optional(S.Number),
+          flowControlLimitExceededBehavior: S.optional(S.String),
+          delayThreshold: S.optional(S.String),
+          elementCountThreshold: S.optional(S.Number),
+          elementCountLimit: S.optional(S.Number),
+          requestByteLimit: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BatchingSettingsProto" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          batchedField: S.optional(S.String),
+          subresponseField: S.optional(S.String),
+          discriminatorFields: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "BatchingDescriptorProto" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          thresholds: S.optional(__S(995, __c31, 3)),
+          batchDescriptor: S.optional(__S(996, __c31, 4)),
+        }),
+      ).annotate({ identifier: "BatchingConfigProto" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          initialPollDelay: S.optional(S.String),
+          totalPollTimeout: S.optional(S.String),
+          pollDelayMultiplier: S.optional(S.Number),
+          maxPollDelay: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LongRunning" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+          batching: S.optional(__S(997, __c31, 5)),
+          longRunning: S.optional(__S(998, __c31, 6)),
+          autoPopulatedFields: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "MethodSettings" });
+    case 8:
+      return S.Array(__S(999, __c31, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          apiShortName: S.optional(S.String),
+          librarySettings: S.optional(__S(994, __c31, 2)),
+          organization: S.optional(S.String),
+          newIssueUri: S.optional(S.String),
+          codeownerGithubTeams: S.optional(__S(928, __c29, 0)),
+          docTagPrefix: S.optional(S.String),
+          protoReferenceDocumentationUri: S.optional(S.String),
+          restReferenceDocumentationUri: S.optional(S.String),
+          githubLabel: S.optional(S.String),
+          methodSettings: S.optional(__S(1000, __c31, 8)),
+          documentationUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Publishing" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(928, __c29, 0)),
+          monitoredResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MonitoringDestination" });
+    case 11:
+      return S.Array(__S(1002, __c31, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          consumerDestinations: S.optional(__S(1003, __c31, 11)),
+          producerDestinations: S.optional(__S(1003, __c31, 11)),
+        }),
+      ).annotate({ identifier: "Monitoring" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          requestStreaming: S.optional(S.Boolean),
+          responseStreaming: S.optional(S.Boolean),
+          responseTypeUrl: S.optional(S.String),
+          edition: S.optional(S.String),
+          options: S.optional(__S(967, __c30, 7)),
+          syntax: S.optional(S.String),
+          requestTypeUrl: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Method" });
+    case 14:
+      return S.Array(__S(1005, __c31, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          root: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Mixin" });
+    case 16:
+      return S.Array(__S(1007, __c31, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          edition: S.optional(S.String),
+          name: S.optional(S.String),
+          syntax: S.optional(S.String),
+          options: S.optional(__S(967, __c30, 7)),
+          version: S.optional(S.String),
+          sourceContext: S.optional(__S(970, __c30, 10)),
+          methods: S.optional(__S(1006, __c31, 14)),
+          mixins: S.optional(__S(1008, __c31, 16)),
+        }),
+      ).annotate({ identifier: "Api" });
+    case 18:
+      return S.Array(__S(1009, __c31, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          sourceFiles: S.optional(__S(832, __c26, 0)),
+        }),
+      ).annotate({ identifier: "SourceInfo" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          subpages: S.optional(S.suspend(() => __S(1013, __c31, 21))),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Page" });
+    case 21:
+      return S.Array(__S(1012, __c31, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          deprecationDescription: S.optional(S.String),
+          description: S.optional(S.String),
+          disableReplacementWords: S.optional(S.String),
+          selector: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DocumentationRule" });
+    case 23:
+      return S.Array(__S(1014, __c31, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          pages: S.optional(__S(1013, __c31, 21)),
+          rules: S.optional(__S(1015, __c31, 23)),
+          sectionOverrides: S.optional(__S(1013, __c31, 21)),
+          overview: S.optional(S.String),
+          summary: S.optional(S.String),
+          documentationRootUrl: S.optional(S.String),
+          additionalIamInfo: S.optional(S.String),
+          serviceRootUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Documentation" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          packed: S.optional(S.Boolean),
+          typeUrl: S.optional(S.String),
+          jsonName: S.optional(S.String),
+          defaultValue: S.optional(S.String),
+          oneofIndex: S.optional(S.Number),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          options: S.optional(__S(967, __c30, 7)),
+          cardinality: S.optional(S.String),
+          number: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 26:
+      return S.Array(__S(1017, __c31, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          oneofs: S.optional(__S(928, __c29, 0)),
+          edition: S.optional(S.String),
+          sourceContext: S.optional(__S(970, __c30, 10)),
+          options: S.optional(__S(967, __c30, 7)),
+          syntax: S.optional(S.String),
+          fields: S.optional(__S(1018, __c31, 26)),
+        }),
+      ).annotate({ identifier: "Type" });
+    case 28:
+      return S.Array(__S(1019, __c31, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          canonicalScopes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthRequirements" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          audiences: S.optional(S.String),
+          providerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthRequirement" });
+    case 31:
+      return S.Array(__S(1022, __c31, 30));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth: S.optional(__S(1021, __c31, 29)),
+          selector: S.optional(S.String),
+          requirements: S.optional(__S(1023, __c31, 31)),
+          allowWithoutCredential: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AuthenticationRule" });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          header: S.optional(S.String),
+          cookie: S.optional(S.String),
+          valuePrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JwtLocation" });
+    case 3:
+      return S.Array(__S(1026, __c32, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          audiences: S.optional(S.String),
+          jwksUri: S.optional(S.String),
+          authorizationUrl: S.optional(S.String),
+          id: S.optional(S.String),
+          issuer: S.optional(S.String),
+          jwtLocations: S.optional(__S(1027, __c32, 3)),
+        }),
+      ).annotate({ identifier: "AuthProvider" });
+    case 5:
+      return S.Array(__S(1028, __c32, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1025, __c32, 1)),
+          providers: S.optional(__S(1029, __c32, 5)),
+        }),
+      ).annotate({ identifier: "Authentication" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          urlQueryParameter: S.optional(S.String),
+          httpHeader: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemParameter" });
+    case 8:
+      return S.Array(__S(1031, __c32, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(1032, __c32, 8)),
+          selector: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemParameterRule" });
+    case 10:
+      return S.Array(__S(1033, __c32, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1034, __c32, 10)),
+        }),
+      ).annotate({ identifier: "SystemParameters" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomHttpPattern" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          post: S.optional(S.String),
+          patch: S.optional(S.String),
+          custom: S.optional(__S(1036, __c32, 12)),
+          responseBody: S.optional(S.String),
+          delete: S.optional(S.String),
+          body: S.optional(S.String),
+          get: S.optional(S.String),
+          additionalBindings: S.optional(S.suspend(() => __S(1038, __c32, 14))),
+          selector: S.optional(S.String),
+          put: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpRule" });
+    case 14:
+      return S.Array(__S(1037, __c32, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1038, __c32, 14)),
+          fullyDecodeReservedExpansion: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Http" });
+    case 16:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(1041, __c32, 17)),
+      );
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          minDeadline: S.optional(S.Number),
+          jwtAudience: S.optional(S.String),
+          address: S.optional(S.String),
+          selector: S.optional(S.String),
+          protocol: S.optional(S.String),
+          disableAuth: S.optional(S.Boolean),
+          overridesByRequestProtocol: S.optional(__S(1040, __c32, 16)),
+          pathTranslation: S.optional(S.String),
+          loadBalancingPolicy: S.optional(S.String),
+          operationDeadline: S.optional(S.Number),
+          deadline: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BackendRule" });
+    case 18:
+      return S.Array(__S(1041, __c32, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1042, __c32, 18)),
+        }),
+      ).annotate({ identifier: "Backend" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          allowedResponseExtensions: S.optional(__S(928, __c29, 0)),
+          selector: S.optional(S.String),
+          allowedRequestExtensions: S.optional(__S(928, __c29, 0)),
+          provided: S.optional(__S(928, __c29, 0)),
+          requested: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "ContextRule" });
+    case 21:
+      return S.Array(__S(1044, __c32, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1045, __c32, 21)),
+        }),
+      ).annotate({ identifier: "Context" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          monitoredResource: S.optional(S.String),
+          metrics: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "BillingDestination" });
+    case 24:
+      return S.Array(__S(1047, __c32, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          consumerDestinations: S.optional(__S(1048, __c32, 24)),
+        }),
+      ).annotate({ identifier: "Billing" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          launchStage: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(963, __c30, 3)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MonitoredResourceDescriptor",
+      });
+    case 27:
+      return S.Array(__S(1050, __c32, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          labels: S.optional(__S(963, __c30, 3)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogDescriptor" });
+    case 29:
+      return S.Array(__S(1052, __c32, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(S.String),
+          name: S.optional(S.String),
+          allowCors: S.optional(S.Boolean),
+          aliases: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+    case 31:
+      return S.Array(__S(1054, __c32, 30));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+          config: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({ identifier: "AspectRule" });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(800, __c25, 0)),
+          rules: S.optional(__S(1057, __c33, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Aspect" });
+    case 3:
+      return S.Array(__S(1058, __c33, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourcePermission: S.optional(S.String),
+          selector: S.optional(S.String),
+          resourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FieldPolicy" });
+    case 5:
+      return S.Array(__S(1060, __c33, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(S.String),
+          requestPolicies: S.optional(__S(1061, __c33, 5)),
+        }),
+      ).annotate({ identifier: "MethodPolicy" });
+    case 7:
+      return S.Array(__S(1062, __c33, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          methodPolicies: S.optional(__S(1063, __c33, 7)),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Control" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(986, __c30, 26)),
+          unit: S.optional(S.String),
+          displayName: S.optional(S.String),
+          duration: S.optional(S.String),
+          description: S.optional(S.String),
+          trafficSource: S.optional(S.String),
+          defaultLimit: S.optional(S.String),
+          name: S.optional(S.String),
+          maxLimit: S.optional(S.String),
+          freeTier: S.optional(S.String),
+          metric: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaLimit" });
+    case 10:
+      return S.Array(__S(1065, __c33, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          metricCosts: S.optional(__S(986, __c30, 26)),
+          selector: S.optional(S.String),
+          nonagenticMetricCosts: S.optional(__S(986, __c30, 26)),
+          agenticMetricCosts: S.optional(__S(986, __c30, 26)),
+        }),
+      ).annotate({ identifier: "MetricRule" });
+    case 12:
+      return S.Array(__S(1067, __c33, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          limits: S.optional(__S(1066, __c33, 10)),
+          metricRules: S.optional(__S(1068, __c33, 12)),
+        }),
+      ).annotate({ identifier: "Quota" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(965, __c30, 5)),
+          enums: S.optional(__S(972, __c30, 12)),
+          usage: S.optional(__S(975, __c30, 15)),
+          logging: S.optional(__S(978, __c30, 18)),
+          customError: S.optional(__S(981, __c30, 21)),
+          producerProjectId: S.optional(S.String),
+          publishing: S.optional(__S(1001, __c31, 9)),
+          monitoring: S.optional(__S(1004, __c31, 12)),
+          apis: S.optional(__S(1010, __c31, 18)),
+          sourceInfo: S.optional(__S(1011, __c31, 19)),
+          id: S.optional(S.String),
+          documentation: S.optional(__S(1016, __c31, 24)),
+          systemTypes: S.optional(__S(1020, __c31, 28)),
+          title: S.optional(S.String),
+          authentication: S.optional(__S(1030, __c32, 6)),
+          systemParameters: S.optional(__S(1035, __c32, 11)),
+          types: S.optional(__S(1020, __c31, 28)),
+          http: S.optional(__S(1039, __c32, 15)),
+          backend: S.optional(__S(1043, __c32, 19)),
+          context: S.optional(__S(1046, __c32, 22)),
+          billing: S.optional(__S(1049, __c32, 25)),
+          monitoredResources: S.optional(__S(1051, __c32, 27)),
+          logs: S.optional(__S(1053, __c32, 29)),
+          name: S.optional(S.String),
+          endpoints: S.optional(__S(1055, __c32, 31)),
+          aspects: S.optional(__S(1059, __c33, 3)),
+          control: S.optional(__S(1064, __c33, 8)),
+          quota: S.optional(__S(1069, __c33, 13)),
+          configVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Service" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1123, __c35, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/services/{serviceName}/rollouts",
+            baseUrl: "https://servicemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServicesRolloutsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          percentages: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({ identifier: "TrafficPercentStrategy" });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteServiceStrategy",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          rolloutId: S.optional(S.String),
+          trafficPercentStrategy: S.optional(__S(1121, __c35, 1)),
+          deleteServiceStrategy: S.optional(__S(1122, __c35, 2)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rollout" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

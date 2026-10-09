@@ -366,8 +366,8 @@ export const createAccessKey: API.OperationMethod<
   CreateAccessKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAccessKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAccessKeyResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<CreateAccessKeyRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<CreateAccessKeyResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateBucketRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateBucketResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<CreateBucketRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<CreateBucketResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const createComplianceLock: API.OperationMethod<
   CreateComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateComplianceLockRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ComplianceLockResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<CreateComplianceLockRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<ComplianceLockResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const createCredentialsGroup: API.OperationMethod<
   CreateCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateCredentialsGroupRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateCredentialsGroupResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<CreateCredentialsGroupRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<CreateCredentialsGroupResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -431,8 +431,8 @@ export const deleteAccessKey: API.OperationMethod<
   DeleteAccessKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteAccessKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteAccessKeyResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<DeleteAccessKeyRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<DeleteAccessKeyResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBucketResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DeleteBucketResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const deleteComplianceLock: API.OperationMethod<
   DeleteComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteComplianceLockRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ComplianceLockResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteComplianceLockRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<ComplianceLockResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const deleteCredentialsGroup: API.OperationMethod<
   DeleteCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteCredentialsGroupRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteCredentialsGroupResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteCredentialsGroupRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteCredentialsGroupResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const deleteDefaultRetention: API.OperationMethod<
   DeleteDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteDefaultRetentionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteDefaultRetentionResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteDefaultRetentionRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteDefaultRetentionResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const disableService: API.OperationMethod<
   DisableServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DisableServiceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ProjectStatus>,
+  input: __S(16, __c4, 0) as any as S.Schema<DisableServiceRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ProjectStatus>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const enableService: API.OperationMethod<
   EnableServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<EnableServiceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ProjectStatus>,
+  input: __S(24, __c6, 0) as any as S.Schema<EnableServiceRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ProjectStatus>,
   errors: [Forbidden, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetBucketRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetBucketResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetBucketRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetBucketResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const getComplianceLock: API.OperationMethod<
   GetComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetComplianceLockRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ComplianceLockResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetComplianceLockRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<ComplianceLockResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -572,8 +572,8 @@ export const getCredentialsGroup: API.OperationMethod<
   GetCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetCredentialsGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetCredentialsGroupResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetCredentialsGroupRequest>,
+  output: __S(42, __c10, 2) as any as S.Schema<GetCredentialsGroupResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -587,8 +587,8 @@ export const getDefaultRetention: API.OperationMethod<
   GetDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetDefaultRetentionRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DefaultRetentionResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetDefaultRetentionRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<DefaultRetentionResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const getServiceStatus: API.OperationMethod<
   GetServiceStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetServiceStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ProjectStatus>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetServiceStatusRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ProjectStatus>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const listAccessKeys: API.OperationMethod<
   ListAccessKeysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAccessKeysRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListAccessKeysResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListAccessKeysRequest>,
+  output: __S(59, __c14, 3) as any as S.Schema<ListAccessKeysResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -632,8 +632,8 @@ export const listBuckets: API.OperationMethod<
   ListBucketsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListBucketsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListBucketsResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListBucketsRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ListBucketsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -647,8 +647,8 @@ export const listCredentialsGroups: API.OperationMethod<
   ListCredentialsGroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListCredentialsGroupsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListCredentialsGroupsResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListCredentialsGroupsRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<ListCredentialsGroupsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const setDefaultRetention: API.OperationMethod<
   SetDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<SetDefaultRetentionRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DefaultRetentionResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<SetDefaultRetentionRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<DefaultRetentionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ProjectStatus>,
+  input: __S(72, __c18, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ProjectStatus>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -686,6 +686,440 @@ export const updateService: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBucketRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/project/{projectId}/regions/{region}/compliance-lock",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteComplianceLockRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          groupId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/project/{projectId}/regions/{region}/credentials-group/{groupId}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCredentialsGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsGroupId: S.String,
+          project: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteCredentialsGroupResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDefaultRetentionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          project: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteDefaultRetentionResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/project/{projectId}/regions/{region}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DisableServiceRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(20, __c5, 0)),
+          project: S.String,
+          scope: S.String,
+        }),
+      ).annotate({ identifier: "ProjectStatus" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/project/{projectId}/regions/{region}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "EnableServiceRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetBucketRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: __S(32, __c8, 0),
+          project: S.String,
+        }),
+      ).annotate({ identifier: "GetBucketResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          objectLockEnabled: S.Boolean,
+          region: S.String,
+          urlPathStyle: S.String,
+          urlVirtualHostedStyle: S.String,
+        }),
+      ).annotate({ identifier: "Bucket" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/compliance-lock",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetComplianceLockRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          groupId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/credentials-group/{groupId}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCredentialsGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsGroupId: S.String,
+          displayName: S.String,
+          urn: S.String,
+          userUrn: S.String,
+        }),
+      ).annotate({ identifier: "CredentialsGroupExtended" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsGroup: __S(41, __c10, 1),
+          project: S.String,
+        }),
+      ).annotate({
+        identifier: "GetCredentialsGroupResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDefaultRetentionRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          days: S.Number,
+          mode: S.String,
+          project: S.String,
+        }),
+      ).annotate({ identifier: "DefaultRetentionResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceStatusRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          credentials_group: S.optional(S.String.pipe(T.Query("credentials-group"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/access-keys",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccessKeysRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          expires: S.NullOr(S.String),
+          keyId: S.String,
+        }),
+      ).annotate({ identifier: "AccessKey" });
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeys: __S(58, __c14, 2),
+          project: S.String,
+        }),
+      ).annotate({ identifier: "ListAccessKeysResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/buckets",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListBucketsRequest" });
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: __S(61, __c15, 1),
+          project: S.String,
+        }),
+      ).annotate({ identifier: "ListBucketsResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/project/{projectId}/regions/{region}/credentials-groups",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCredentialsGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(100, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsGroups: __S(65, __c16, 1),
+          project: S.String,
+        }),
+      ).annotate({
+        identifier: "ListCredentialsGroupsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+          days: S.Number,
+          mode: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetDefaultRetentionRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          labels: __S(20, __c5, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v2/project/{projectId}/regions/{region}",
+            code: 200,
+            baseUrl: "https://object-storage.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -714,7 +1148,11 @@ function __c0(j: number): any {
           secretAccessKey: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "CreateAccessKeyResponse" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -730,14 +1168,22 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateBucketRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String,
           project: S.String,
         }),
       ).annotate({ identifier: "CreateBucketResponse" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -753,14 +1199,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateComplianceLockRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxRetentionDays: S.Number,
           project: S.String,
         }),
       ).annotate({ identifier: "ComplianceLockResponse" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -777,7 +1231,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCredentialsGroupRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsGroup: __S(100, __c25, 0),
+          project: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCredentialsGroupResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           credentialsGroupId: S.String,
@@ -787,18 +1254,9 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CredentialsGroup" });
   }
 }
-function __c1(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsGroup: __S(7, __c0, 7),
-          project: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateCredentialsGroupResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -814,390 +1272,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccessKeyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
           project: S.String,
         }),
       ).annotate({ identifier: "DeleteAccessKeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBucketRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/project/{projectId}/regions/{region}/compliance-lock",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteComplianceLockRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          groupId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/project/{projectId}/regions/{region}/credentials-group/{groupId}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCredentialsGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsGroupId: S.String,
-          project: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteCredentialsGroupResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDefaultRetentionRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          project: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteDefaultRetentionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/project/{projectId}/regions/{region}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DisableServiceRequest" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(18, __c2, 2)),
-          project: S.String,
-          scope: S.String,
-        }),
-      ).annotate({ identifier: "ProjectStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/project/{projectId}/regions/{region}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "EnableServiceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetBucketRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          objectLockEnabled: S.Boolean,
-          region: S.String,
-          urlPathStyle: S.String,
-          urlVirtualHostedStyle: S.String,
-        }),
-      ).annotate({ identifier: "Bucket" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: __S(22, __c2, 6),
-          project: S.String,
-        }),
-      ).annotate({ identifier: "GetBucketResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/compliance-lock",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetComplianceLockRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          groupId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/credentials-group/{groupId}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCredentialsGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsGroupId: S.String,
-          displayName: S.String,
-          urn: S.String,
-          userUrn: S.String,
-        }),
-      ).annotate({ identifier: "CredentialsGroupExtended" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsGroup: __S(26, __c3, 2),
-          project: S.String,
-        }),
-      ).annotate({
-        identifier: "GetCredentialsGroupResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDefaultRetentionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          days: S.Number,
-          mode: S.String,
-          project: S.String,
-        }),
-      ).annotate({ identifier: "DefaultRetentionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceStatusRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          credentials_group: S.optional(S.String.pipe(T.Query("credentials-group"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/access-keys",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccessKeysRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          expires: S.NullOr(S.String),
-          keyId: S.String,
-        }),
-      ).annotate({ identifier: "AccessKey" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessKeys: __S(33, __c4, 1),
-          project: S.String,
-        }),
-      ).annotate({ identifier: "ListAccessKeysResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/buckets",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListBucketsRequest" });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buckets: __S(36, __c4, 4),
-          project: S.String,
-        }),
-      ).annotate({ identifier: "ListBucketsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/project/{projectId}/regions/{region}/credentials-groups",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCredentialsGroupsRequest",
-      });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsGroups: __S(39, __c4, 7),
-          project: S.String,
-        }),
-      ).annotate({
-        identifier: "ListCredentialsGroupsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-          days: S.Number,
-          mode: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v2/project/{projectId}/regions/{region}/bucket/{bucketName}/default-retention",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetDefaultRetentionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          labels: __S(18, __c2, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v2/project/{projectId}/regions/{region}",
-            code: 200,
-            baseUrl: "https://object-storage.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

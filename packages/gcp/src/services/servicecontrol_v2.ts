@@ -278,8 +278,8 @@ export const checkServices: API.OperationMethod<
   CheckServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CheckServicesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CheckResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<CheckServicesRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -293,8 +293,8 @@ export const reportServices: API.OperationMethod<
   ReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ReportServicesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ReportResponse>,
+  input: __S(34, __c2, 2) as any as S.Schema<ReportServicesRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<ReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -304,12 +304,66 @@ export const reportServices: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          container: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceInfo" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(27, __c1, 11)),
+          serviceConfigId: S.optional(S.String),
+          flags: S.optional(S.String),
+          resources: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "CheckRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/services/{serviceName}:check",
+            baseUrl: "https://servicecontrol.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CheckServicesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(19, __c1, 3)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(4, __c0, 4)),
+          dynamicMetadata: S.optional(__S(18, __c1, 2)),
+          headers: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "CheckResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           port: S.optional(S.String),
           ip: S.optional(S.String),
           principal: S.optional(S.String),
@@ -318,14 +372,14 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(18, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           backendLatency: S.optional(S.String),
           size: S.optional(S.String),
           time: S.optional(S.String),
-          headers: S.optional(__S(0, __c0, 0)),
+          headers: S.optional(__S(16, __c1, 0)),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "Response" });
@@ -335,14 +389,14 @@ function __c0(j: number): any {
           location: S.optional(S.String),
           service: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          annotations: S.optional(__S(0, __c0, 0)),
+          annotations: S.optional(__S(16, __c1, 0)),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
           uid: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
@@ -354,30 +408,26 @@ function __c0(j: number): any {
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Oauth" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           credentialId: S.optional(S.String),
-          audiences: S.optional(__S(6, __c0, 6)),
+          audiences: S.optional(__S(22, __c1, 6)),
           presenter: S.optional(S.String),
-          claims: S.optional(__S(2, __c0, 2)),
-          oauth: S.optional(__S(7, __c0, 7)),
-          accessLevels: S.optional(__S(6, __c0, 6)),
+          claims: S.optional(__S(18, __c1, 2)),
+          oauth: S.optional(__S(23, __c1, 7)),
+          accessLevels: S.optional(__S(22, __c1, 6)),
           principal: S.optional(S.String),
         }),
       ).annotate({ identifier: "Auth" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           scheme: S.optional(S.String),
-          headers: S.optional(__S(0, __c0, 0)),
+          headers: S.optional(__S(16, __c1, 0)),
           origin: S.optional(S.String),
-          auth: S.optional(__S(8, __c1, 0)),
+          auth: S.optional(__S(24, __c1, 8)),
           size: S.optional(S.String),
           path: S.optional(S.String),
           reason: S.optional(S.String),
@@ -388,7 +438,7 @@ function __c1(j: number): any {
           method: S.optional(S.String),
         }),
       ).annotate({ identifier: "Request" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
@@ -397,87 +447,37 @@ function __c1(j: number): any {
           protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "Api" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          origin: S.optional(__S(1, __c0, 1)),
-          destination: S.optional(__S(1, __c0, 1)),
-          extensions: S.optional(__S(3, __c0, 3)),
-          response: S.optional(__S(4, __c0, 4)),
-          resource: S.optional(__S(5, __c0, 5)),
-          request: S.optional(__S(9, __c1, 1)),
-          source: S.optional(__S(1, __c0, 1)),
-          api: S.optional(__S(10, __c1, 2)),
+          origin: S.optional(__S(17, __c1, 1)),
+          destination: S.optional(__S(17, __c1, 1)),
+          extensions: S.optional(__S(19, __c1, 3)),
+          response: S.optional(__S(20, __c1, 4)),
+          resource: S.optional(__S(21, __c1, 5)),
+          request: S.optional(__S(25, __c1, 9)),
+          source: S.optional(__S(17, __c1, 1)),
+          api: S.optional(__S(26, __c1, 10)),
         }),
       ).annotate({ identifier: "AttributeContext" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          container: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceInfo" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(11, __c1, 3)),
-          serviceConfigId: S.optional(S.String),
-          flags: S.optional(S.String),
-          resources: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CheckRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/services/{serviceName}:check",
-            baseUrl: "https://servicecontrol.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CheckServicesRequest" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(3, __c0, 3)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
+      return S.Array(__S(27, __c1, 11));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(16, __c2, 0)),
-          dynamicMetadata: S.optional(__S(2, __c0, 2)),
-          headers: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CheckResponse" });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(18, __c2, 2)),
+          operations: S.optional(__S(32, __c2, 0)),
           serviceConfigId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -486,15 +486,14 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ReportServicesRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(2, __c0, 2)),
+          extensions: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "ReportResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

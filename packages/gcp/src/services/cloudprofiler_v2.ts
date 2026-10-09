@@ -170,8 +170,8 @@ export const createOfflineProjectsProfiles: API.OperationMethod<
   CreateOfflineProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateOfflineProjectsProfilesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Profile>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateOfflineProjectsProfilesRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,8 +185,8 @@ export const createProjectsProfiles: API.OperationMethod<
   CreateProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateProjectsProfilesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Profile>,
+  input: __S(10, __c2, 2) as any as S.Schema<CreateProjectsProfilesRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -201,8 +201,8 @@ export const listProjectsProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListProjectsProfilesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListProfilesResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListProjectsProfilesRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -217,8 +217,8 @@ export const patchProjectsProfiles: API.OperationMethod<
   PatchProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<PatchProjectsProfilesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Profile>,
+  input: __S(16, __c4, 0) as any as S.Schema<PatchProjectsProfilesRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -228,32 +228,10 @@ export const patchProjectsProfiles: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-          target: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Deployment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
-          profileType: S.optional(S.String),
-          duration: S.optional(S.String),
-          profileBytes: S.optional(S.String),
-          startTime: S.optional(S.String),
-          deployment: S.optional(__S(1, __c0, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Profile" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -264,20 +242,50 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOfflineProjectsProfilesRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          profileType: S.optional(__S(4, __c0, 4)),
-          deployment: S.optional(__S(1, __c0, 1)),
+          projectId: S.optional(S.String),
+          target: S.optional(S.String),
+          labels: S.optional(__S(4, __c1, 0)),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(4, __c1, 0)),
+          profileType: S.optional(S.String),
+          duration: S.optional(S.String),
+          profileBytes: S.optional(S.String),
+          startTime: S.optional(S.String),
+          deployment: S.optional(__S(5, __c1, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Profile" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          profileType: S.optional(__S(8, __c2, 0)),
+          deployment: S.optional(__S(5, __c1, 1)),
         }),
       ).annotate({ identifier: "CreateProfileRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -288,7 +296,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProjectsProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -304,26 +316,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListProjectsProfilesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2, __c0, 2));
     case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          profiles: S.optional(__S(8, __c1, 0)),
+          profiles: S.optional(__S(13, __c3, 1)),
           nextPageToken: S.optional(S.String),
           skippedProfiles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListProfilesResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -336,7 +348,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

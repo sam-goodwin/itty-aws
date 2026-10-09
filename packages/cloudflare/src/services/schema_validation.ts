@@ -354,8 +354,8 @@ export const bulkPatchSettingOperations: API.OperationMethod<
   BulkPatchSettingOperationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BulkPatchSettingOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BulkPatchSettingOperationsResponse>,
+  input: __S(90, __c11, 2) as any as S.Schema<BulkPatchSettingOperationsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<BulkPatchSettingOperationsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -369,8 +369,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateSchemaRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateSchemaResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateSchemaRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateSchemaResponse>,
   errors: [InvalidSchema, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteSchemaResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeleteSchemaResponse>,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const deleteSettingOperation: API.OperationMethod<
   DeleteSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteSettingOperationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteSettingOperationResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteSettingOperationRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteSettingOperationResponse>,
   errors: [OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const getSchema: API.OperationMethod<
   GetSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSchemaRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetSchemaResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSchemaRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetSchemaResponse>,
   errors: [SchemaNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetSettingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetSettingResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -444,8 +444,8 @@ export const getSettingOperation: API.OperationMethod<
   GetSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetSettingOperationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetSettingOperationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetSettingOperationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetSettingOperationResponse>,
   errors: [OperationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   SchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListSchemasRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListSchemasResponse>,
+    input: __S(40, __c5, 0) as any as S.Schema<ListSchemasRequest>,
+    output: __S(43, __c5, 3) as any as S.Schema<ListSchemasResponse>,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -487,8 +487,8 @@ export const listSettingOperations: API.PaginatedOperationMethod<
   SettingsOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ListSettingOperationsRequest>,
-    output: __S(24, __c3, 0) as any as S.Schema<ListSettingOperationsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListSettingOperationsRequest>,
+    output: __S(51, __c6, 3) as any as S.Schema<ListSettingOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -511,8 +511,8 @@ export const patchSchema: API.OperationMethod<
   PatchSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PatchSchemaRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PatchSchemaResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<PatchSchemaRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<PatchSchemaResponse>,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -526,8 +526,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<PatchSettingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PatchSettingResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchSettingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PatchSettingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -541,8 +541,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PutSettingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PutSettingResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<PutSettingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PutSettingResponse>,
   errors: [UnentitledMitigationAction, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const putSettingOperation: API.OperationMethod<
   PutSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PutSettingOperationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PutSettingOperationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<PutSettingOperationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PutSettingOperationResponse>,
   errors: [OperationNotFound, UnentitledMitigationAction, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -572,18 +572,275 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          schemaId: S.String.pipe(T.Label("schema_id")),
+          omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSchemaRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/schema_validation/settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSettingRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validationDefaultMitigationAction: S.String.pipe(
+            T.Body("validation_default_mitigation_action"),
+          ),
+          validationOverrideMitigationAction: S.optional(
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSettingResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          operationId: S.String.pipe(T.Label("operation_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetSettingOperationRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
+          operationId: S.String.pipe(T.Body("operation_id")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetSettingOperationResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          validationEnabled: S.optional(S.Boolean.pipe(T.Query("validation_enabled"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/schema_validation/schemas", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListSchemasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String.pipe(T.Body("created_at")),
+          kind: S.String,
+          name: S.String,
+          schemaId: S.String.pipe(T.Body("schema_id")),
+          source: S.String,
+          validationEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("validation_enabled"))),
+        }),
+      ).annotate({ identifier: "SchemasListResultItem" });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(42, __c5, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListSchemasResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/schema_validation/settings/operations",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingOperationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
+          operationId: S.String.pipe(T.Body("operation_id")),
+        }),
+      ).annotate({
+        identifier: "SettingsOperationsListResultItem",
+      });
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(50, __c6, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingOperationsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          schemaId: S.String.pipe(T.Label("schema_id")),
+          validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchSchemaRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          validationDefaultMitigationAction: S.optional(
+            S.String.pipe(T.Body("validation_default_mitigation_action")),
+          ),
+          validationOverrideMitigationAction: S.optional(
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
+          ),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/schema_validation/settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchSettingRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          validationDefaultMitigationAction: S.String.pipe(
+            T.Body("validation_default_mitigation_action"),
+          ),
+          validationOverrideMitigationAction: S.optional(
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
+          ),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/schema_validation/settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutSettingRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          operationId: S.String.pipe(T.Label("operation_id")),
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PutSettingOperationRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           mitigationAction: S.optional(S.String.pipe(T.Body("mitigation_action"))),
         }),
       ).annotate({
         identifier: "SettingsOperationsBulkEditRequestBodyValue",
       });
     case 1:
-      return S.Record(S.String, __S(0, __c0, 0));
+      return S.Record(S.String, __S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(1, __c0, 1).pipe(T.HttpBody()),
+          body: __S(89, __c11, 1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -605,14 +862,18 @@ function __c0(j: number): any {
         identifier: "SettingsOperationsBulkEditResultValue",
       });
     case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
+      return S.Record(S.String, __S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
-        __S(4, __c0, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(92, __c11, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkPatchSettingOperationsResponse",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -630,7 +891,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateSchemaRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -643,7 +908,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateSchemaResponse" });
   }
 }
-function __c1(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -664,7 +929,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteSchemaResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -681,7 +950,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteSettingOperationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.NullOr(S.String).pipe(T.Body("operation_id"))),
@@ -689,230 +958,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteSettingOperationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          schemaId: S.String.pipe(T.Label("schema_id")),
-          omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSchemaRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/schema_validation/settings",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSettingRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validationDefaultMitigationAction: S.String.pipe(
-            T.Body("validation_default_mitigation_action"),
-          ),
-          validationOverrideMitigationAction: S.optional(
-            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSettingResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          operationId: S.String.pipe(T.Label("operation_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetSettingOperationRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
-          operationId: S.String.pipe(T.Body("operation_id")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetSettingOperationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          validationEnabled: S.optional(S.Boolean.pipe(T.Query("validation_enabled"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/schema_validation/schemas", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListSchemasRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String.pipe(T.Body("created_at")),
-          kind: S.String,
-          name: S.String,
-          schemaId: S.String.pipe(T.Body("schema_id")),
-          source: S.String,
-          validationEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("validation_enabled"))),
-        }),
-      ).annotate({ identifier: "SchemasListResultItem" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(19, __c2, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListSchemasResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/schema_validation/settings/operations",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
-          operationId: S.String.pipe(T.Body("operation_id")),
-        }),
-      ).annotate({
-        identifier: "SettingsOperationsListResultItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(23, __c2, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingOperationsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          schemaId: S.String.pipe(T.Label("schema_id")),
-          validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchSchemaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          validationDefaultMitigationAction: S.optional(
-            S.String.pipe(T.Body("validation_default_mitigation_action")),
-          ),
-          validationOverrideMitigationAction: S.optional(
-            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
-          ),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/zones/{zone_id}/schema_validation/settings",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchSettingRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          validationDefaultMitigationAction: S.String.pipe(
-            T.Body("validation_default_mitigation_action"),
-          ),
-          validationOverrideMitigationAction: S.optional(
-            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
-          ),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/zones/{zone_id}/schema_validation/settings",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutSettingRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          operationId: S.String.pipe(T.Label("operation_id")),
-          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PutSettingOperationRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

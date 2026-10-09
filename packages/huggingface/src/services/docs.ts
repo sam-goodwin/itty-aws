@@ -165,8 +165,8 @@ export const listDocs: API.OperationMethod<
   ListDocsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListDocsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListDocsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListDocsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListDocsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const searchDocs: API.OperationMethod<
   SearchDocsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<SearchDocsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SearchDocsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<SearchDocsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<SearchDocsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -245,11 +245,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FullTextSearchDocsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/docs", code: 200 })),
       ).annotate({ identifier: "ListDocsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -257,17 +261,17 @@ function __c0(j: number): any {
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDocsResponseBodyItem" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDocsResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -275,21 +279,21 @@ function __c1(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/docs/search", code: 200 })),
       ).annotate({ identifier: "SearchDocsRequest" });
-    case 2:
+    case 1:
       return S.Array(S.Number);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          embeddings: __S(10, __c1, 2),
+          embeddings: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "SearchDocsResponseBodyItemVectors",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          _vectors: __S(11, __c1, 3),
+          _vectors: __S(18, __c2, 2),
           heading1: S.String,
           text: S.String,
           product: S.String,
@@ -303,15 +307,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchDocsResponseBodyItem",
       });
+    case 4:
+      return S.Array(__S(19, __c2, 3));
     case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(20, __c2, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchDocsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

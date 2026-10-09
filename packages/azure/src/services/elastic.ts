@@ -1281,7 +1281,7 @@ export const AssociateTrafficFilterAssociate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateTrafficFilterAssociateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateTrafficFilterAssociateResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociateTrafficFilterAssociateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1295,8 @@ export const CreateCreateAndAssociateIPFilter: API.OperationMethod<
   CreateCreateAndAssociateIPFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCreateAndAssociateIPFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCreateAndAssociateIPFilterResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateCreateAndAssociateIPFilterRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateCreateAndAssociateIPFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1310,8 @@ export const CreateCreateAndAssociatePLFilter: API.OperationMethod<
   CreateCreateAndAssociatePLFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateCreateAndAssociatePLFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCreateAndAssociatePLFilterResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateCreateAndAssociatePLFilterRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateCreateAndAssociatePLFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1325,8 @@ export const CreateMonitor: API.OperationMethod<
   CreateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateMonitorResponse>,
+  input: __S(531, __c33, 3) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<CreateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1340,8 @@ export const DeleteDetachAndDeleteTrafficFilter: API.OperationMethod<
   DeleteDetachAndDeleteTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const DeleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteMonitorRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteMonitorResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const DeleteMonitoredSubscription: API.OperationMethod<
   DeleteMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteMonitoredSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMonitoredSubscriptionResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteMonitoredSubscriptionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const DeleteOpenAI: API.OperationMethod<
   DeleteOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteOpenAIRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteOpenAIResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteOpenAIRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteOpenAIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const DeleteTagRule: API.OperationMethod<
   DeleteTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteTagRuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteTagRuleResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeleteTagRuleRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteTagRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1415,8 @@ export const DeleteTrafficFilter: API.OperationMethod<
   DeleteTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteTrafficFilterRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteTrafficFilterResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteTrafficFilterRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const ExternalUserCreateOrUpdate: API.OperationMethod<
   ExternalUserCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ExternalUserCreateOrUpdateRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ExternalUserCreationResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ExternalUserCreateOrUpdateRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ExternalUserCreationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1445,8 @@ export const GetBillingInfo: API.OperationMethod<
   GetBillingInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetBillingInfoRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<BillingInfoResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetBillingInfoRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<BillingInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1460,8 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetMonitorRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetMonitorResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetMonitorRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1475,8 @@ export const GetMonitoredSubscription: API.OperationMethod<
   GetMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetMonitoredSubscriptionRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetMonitoredSubscriptionResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetMonitoredSubscriptionRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<GetMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1490,8 @@ export const GetOpenAI: API.OperationMethod<
   GetOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetOpenAIRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetOpenAIResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetOpenAIRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<GetOpenAIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1505,8 @@ export const GetOpenAIStatus: API.OperationMethod<
   GetOpenAIStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetOpenAIStatusRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<OpenAIIntegrationStatusResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetOpenAIStatusRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<OpenAIIntegrationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1520,8 @@ export const GetOrganizationApiKey: API.OperationMethod<
   GetOrganizationApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetOrganizationApiKeyRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UserApiKeyResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetOrganizationApiKeyRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<UserApiKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1536,14 +1536,14 @@ export const GetOrganizationElasticToAzureSubscriptionMapping: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<GetOrganizationElasticToAzureSubscriptionMappingRequest>,
   output: __S(
-    57,
-    __c7,
-    1,
+    258,
+    __c16,
+    2,
   ) as any as S.Schema<ElasticOrganizationToAzureSubscriptionMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1558,8 +1558,8 @@ export const GetTagRule: API.OperationMethod<
   GetTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetTagRuleRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetTagRuleResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetTagRuleRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetTagRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1573,8 @@ export const ListAllTrafficFilters: API.OperationMethod<
   ListAllTrafficFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListAllTrafficFiltersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ElasticTrafficFilterResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListAllTrafficFiltersRequest>,
+  output: __S(324, __c20, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1588,8 @@ export const ListConnectedPartnerResources: API.OperationMethod<
   ListConnectedPartnerResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListConnectedPartnerResourcesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ConnectedPartnerResourcesListResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListConnectedPartnerResourcesRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<ConnectedPartnerResourcesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1603,8 +1603,8 @@ export const ListDeploymentInfo: API.OperationMethod<
   ListDeploymentInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListDeploymentInfoRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeploymentInfoResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListDeploymentInfoRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<DeploymentInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1618,8 +1618,8 @@ export const ListElasticVersions: API.OperationMethod<
   ListElasticVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListElasticVersionsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ElasticVersionsListResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListElasticVersionsRequest>,
+  output: __S(388, __c24, 4) as any as S.Schema<ElasticVersionsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1633,8 +1633,8 @@ export const ListListAssociatedTrafficFilters: API.OperationMethod<
   ListListAssociatedTrafficFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListListAssociatedTrafficFiltersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ElasticTrafficFilterResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListListAssociatedTrafficFiltersRequest>,
+  output: __S(324, __c20, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1648,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListMonitorByResourceGroupRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1663,8 @@ export const ListMonitoredResources: API.OperationMethod<
   ListMonitoredResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListMonitoredResourcesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<MonitoredResourceListResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListMonitoredResourcesRequest>,
+  output: __S(451, __c28, 3) as any as S.Schema<MonitoredResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1678,8 @@ export const ListMonitoredSubscriptions: API.OperationMethod<
   ListMonitoredSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<MonitoredSubscriptionPropertiesList>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<MonitoredSubscriptionPropertiesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1693,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListMonitorsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1708,8 @@ export const ListOpenAI: API.OperationMethod<
   ListOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListOpenAIRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<OpenAIIntegrationRPModelListResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListOpenAIRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<OpenAIIntegrationRPModelListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1723,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<OperationListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1738,8 @@ export const ListTagRules: API.OperationMethod<
   ListTagRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListTagRulesRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<MonitoringTagRulesListResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListTagRulesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<MonitoringTagRulesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1753,8 @@ export const ListVMHost: API.OperationMethod<
   ListVMHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListVMHostRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<VMHostListResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListVMHostRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<VMHostListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1768,8 @@ export const MonitorUpgrade: API.OperationMethod<
   MonitorUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<MonitorUpgradeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<MonitorUpgradeResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<MonitorUpgradeRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<MonitorUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const OpenAICreateOrUpdate: API.OperationMethod<
   OpenAICreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<OpenAICreateOrUpdateRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<OpenAICreateOrUpdateResponse>,
+  input: __S(657, __c41, 1) as any as S.Schema<OpenAICreateOrUpdateRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<OpenAICreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1798,8 @@ export const OrganizationsResubscribe: API.OperationMethod<
   OrganizationsResubscribeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<OrganizationsResubscribeRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<OrganizationsResubscribeResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<OrganizationsResubscribeRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<OrganizationsResubscribeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1813,8 @@ export const TagRulesCreateOrUpdate: API.OperationMethod<
   TagRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1828,8 @@ export const UpdateDetachTrafficFilter: API.OperationMethod<
   UpdateDetachTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<UpdateDetachTrafficFilterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateDetachTrafficFilterResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateDetachTrafficFilterRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateDetachTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1843,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateMonitorResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1858,8 @@ export const UpdateMonitoredSubscription: API.OperationMethod<
   UpdateMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1873,8 @@ export const UpdateMonitoredSubscriptionsCreateor: API.OperationMethod<
   UpdateMonitoredSubscriptionsCreateorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,8 @@ export const UpdateVMCollection: API.OperationMethod<
   UpdateVMCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<UpdateVMCollectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateVMCollectionResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateVMCollectionRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<UpdateVMCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1903,8 @@ export const UpgradableVersionsDetails: API.OperationMethod<
   UpgradableVersionsDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<UpgradableVersionsDetailsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<UpgradableVersionsList>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpgradableVersionsDetailsRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<UpgradableVersionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1918,8 @@ export const VMIngestionDetails: API.OperationMethod<
   VMIngestionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<VMIngestionDetailsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<VMIngestionDetailsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<VMIngestionDetailsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<VMIngestionDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,11 +1946,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateTrafficFilterAssociateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateTrafficFilterAssociateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1969,7 +1977,469 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCreateAndAssociateIPFilterRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          userName: S.optional(S.String),
+          fullName: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          emailId: S.optional(S.String),
+          roles: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExternalUserCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ExternalUserCreationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/getBillingInfo",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetBillingInfoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          partnerEntityUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerBillingEntity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          marketplaceSaasInfo: S.optional(__S(97, __c6, 1)),
+          partnerBillingEntity: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "BillingInfoResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          offerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MarketplaceSaaSInfoMarketplaceSubscription",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          marketplaceSubscription: S.optional(__S(96, __c6, 0)),
+          marketplaceName: S.optional(S.String),
+          marketplaceResourceId: S.optional(S.String),
+          marketplaceStatus: S.optional(S.String),
+          billedAzureSubscriptionId: S.optional(S.String),
+          subscribed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MarketplaceSaaSInfo" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetMonitorRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMonitoredSubscriptionRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FilteringTag" });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sendAadLogs: S.optional(S.Boolean),
+          sendSubscriptionLogs: S.optional(S.Boolean),
+          sendActivityLogs: S.optional(S.Boolean),
+          filteringTags: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({ identifier: "LogRules" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          logRules: S.optional(__S(146, __c9, 2)),
+        }),
+      ).annotate({
+        identifier: "MonitoringTagRulesProperties",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String,
+          status: S.optional(S.String),
+          error: S.optional(S.String),
+          tagRules: S.optional(__S(147, __c9, 3)),
+        }),
+      ).annotate({ identifier: "MonitoredSubscription" });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.optional(S.String),
+          monitoredSubscriptionList: S.optional(__S(161, __c10, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionList" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(544, __c34, 0)),
+          properties: S.optional(__S(162, __c10, 2)),
+        }),
+      ).annotate({
+        identifier: "GetMonitoredSubscriptionResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          integrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetOpenAIRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(544, __c34, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "GetOpenAIResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          openAIResourceId: S.optional(S.String),
+          openAIResourceEndpoint: S.optional(S.String),
+          openAIConnectorId: S.optional(S.String),
+          key: S.optional(S.String),
+          lastRefreshAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OpenAIIntegrationProperties",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          integrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}/getStatus",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetOpenAIStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OpenAIIntegrationStatusResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "OpenAIIntegrationStatusResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          emailId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationApiKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "UserApiKeyResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(241, __c15, 1)),
+        }),
+      ).annotate({ identifier: "UserApiKeyResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationElasticToAzureSubscriptionMappingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billedAzureSubscriptionId: S.optional(S.String),
+          marketplaceSaasInfo: S.optional(__S(97, __c6, 1)),
+          elasticOrganizationId: S.optional(S.String),
+          elasticOrganizationName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ElasticOrganizationToAzureSubscriptionMappingResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(257, __c16, 1)),
+        }),
+      ).annotate({
+        identifier: "ElasticOrganizationToAzureSubscriptionMappingResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          ruleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetTagRuleRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(544, __c34, 0)),
+          properties: S.optional(__S(147, __c9, 3)),
+        }),
+      ).annotate({ identifier: "GetTagRuleResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAllTrafficFilters",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAllTrafficFiltersRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          description: S.optional(S.String),
+          azureEndpointGuid: S.optional(S.String),
+          azureEndpointName: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ElasticTrafficFilterRule" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          region: S.optional(S.String),
+          type: S.optional(S.String),
+          includeByDefault: S.optional(S.Boolean),
+          rules: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({ identifier: "ElasticTrafficFilter" });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rulesets: S.optional(__S(323, __c20, 3)),
+        }),
+      ).annotate({
+        identifier: "ElasticTrafficFilterResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1989,707 +2459,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCreateAndAssociatePLFilterRequest",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ElasticCloudUserInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          elasticCloudUser: S.optional(__S(5, __c0, 5)),
-          elasticCloudDeployment: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "ElasticPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          business: S.optional(S.String),
-          employeesNumber: S.optional(S.String),
-          state: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompanyInfo" });
   }
 }
-function __c1(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          companyName: S.optional(S.String),
-          emailAddress: S.optional(S.String),
-          companyInfo: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "UserInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          offerID: S.optional(S.String),
-          publisherID: S.optional(S.String),
-          termID: S.optional(S.String),
-          planID: S.optional(S.String),
-          planName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectType: S.optional(S.String),
-          configurationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          monitoringStatus: S.optional(S.String),
-          elasticProperties: S.optional(__S(6, __c0, 6)),
-          userInfo: S.optional(__S(8, __c1, 0)),
-          planDetails: S.optional(__S(9, __c1, 1)),
-          version: S.optional(S.String),
-          subscriptionState: S.optional(S.String),
-          saaSAzureSubscriptionStatus: S.optional(S.String),
-          sourceCampaignName: S.optional(S.String),
-          sourceCampaignId: S.optional(S.String),
-          generateApiKey: S.optional(S.Boolean),
-          hostingType: S.optional(S.String),
-          projectDetails: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "MonitorPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ResourceSku" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityPropertiesInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateMonitorRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          emailAddress: S.optional(S.String),
-          id: S.optional(S.String),
-          elasticCloudSsoDefaultUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ElasticCloudUser" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          deploymentId: S.optional(S.String),
-          azureSubscriptionId: S.optional(S.String),
-          elasticsearchRegion: S.optional(S.String),
-          elasticsearchServiceUrl: S.optional(S.String),
-          kibanaServiceUrl: S.optional(S.String),
-          kibanaSsoUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ElasticCloudDeployment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          elasticCloudUser: S.optional(__S(16, __c2, 0)),
-          elasticCloudDeployment: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ElasticProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          monitoringStatus: S.optional(S.String),
-          elasticProperties: S.optional(__S(18, __c2, 2)),
-          userInfo: S.optional(__S(8, __c1, 0)),
-          planDetails: S.optional(__S(9, __c1, 1)),
-          version: S.optional(S.String),
-          subscriptionState: S.optional(S.String),
-          saaSAzureSubscriptionStatus: S.optional(S.String),
-          sourceCampaignName: S.optional(S.String),
-          sourceCampaignId: S.optional(S.String),
-          liftrResourceCategory: S.optional(S.String),
-          liftrResourcePreference: S.optional(S.Number),
-          generateApiKey: S.optional(S.Boolean),
-          hostingType: S.optional(S.String),
-          projectDetails: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "MonitorProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "CreateMonitorResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          rulesetId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachAndDeleteTrafficFilter",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDetachAndDeleteTrafficFilterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteMonitorRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMonitoredSubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          integrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOpenAIRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          ruleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTagRuleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          rulesetId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/deleteTrafficFilter",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTrafficFilterRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          userName: S.optional(S.String),
-          fullName: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          emailId: S.optional(S.String),
-          roles: S.optional(__S(28, __c3, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExternalUserCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ExternalUserCreationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/getBillingInfo",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetBillingInfoRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          offerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MarketplaceSaaSInfoMarketplaceSubscription",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          marketplaceSubscription: S.optional(__S(32, __c4, 0)),
-          marketplaceName: S.optional(S.String),
-          marketplaceResourceId: S.optional(S.String),
-          marketplaceStatus: S.optional(S.String),
-          billedAzureSubscriptionId: S.optional(S.String),
-          subscribed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MarketplaceSaaSInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          partnerEntityUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerBillingEntity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          marketplaceSaasInfo: S.optional(__S(33, __c4, 1)),
-          partnerBillingEntity: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "BillingInfoResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetMonitorRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMonitoredSubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FilteringTag" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sendAadLogs: S.optional(S.Boolean),
-          sendSubscriptionLogs: S.optional(S.Boolean),
-          sendActivityLogs: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "LogRules" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          logRules: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "MonitoringTagRulesProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String,
-          status: S.optional(S.String),
-          error: S.optional(S.String),
-          tagRules: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "MonitoredSubscription" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(43, __c5, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GetMonitoredSubscriptionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          integrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetOpenAIRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          openAIResourceId: S.optional(S.String),
-          openAIResourceEndpoint: S.optional(S.String),
-          openAIConnectorId: S.optional(S.String),
-          key: S.optional(S.String),
-          lastRefreshAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OpenAIIntegrationProperties",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "GetOpenAIResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          integrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}/getStatus",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetOpenAIStatusRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OpenAIIntegrationStatusResponseProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "OpenAIIntegrationStatusResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          emailId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationApiKeyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "UserApiKeyResponseProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "UserApiKeyResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationElasticToAzureSubscriptionMappingRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billedAzureSubscriptionId: S.optional(S.String),
-          marketplaceSaasInfo: S.optional(__S(33, __c4, 1)),
-          elasticOrganizationId: S.optional(S.String),
-          elasticOrganizationName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ElasticOrganizationToAzureSubscriptionMappingResponseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "ElasticOrganizationToAzureSubscriptionMappingResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          ruleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetTagRuleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "GetTagRuleResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAllTrafficFilters",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAllTrafficFiltersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          description: S.optional(S.String),
-          azureEndpointGuid: S.optional(S.String),
-          azureEndpointName: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ElasticTrafficFilterRule" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          region: S.optional(S.String),
-          type: S.optional(S.String),
-          includeByDefault: S.optional(S.Boolean),
-          rules: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "ElasticTrafficFilter" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rulesets: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ElasticTrafficFilterResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2706,7 +2480,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListConnectedPartnerResourcesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           partnerDeploymentName: S.optional(S.String),
@@ -2718,26 +2492,30 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ConnectedPartnerResourceProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(67, __c8, 3)),
+          properties: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({
         identifier: "ConnectedPartnerResourcesListFormat",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(69, __c8, 5),
+          value: __S(355, __c22, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectedPartnerResourcesListResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2754,11 +2532,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListDeploymentInfoRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -2767,12 +2541,16 @@ function __c9(j: number): any {
           diskCapacity: S.optional(S.String),
           elasticsearchEndPoint: S.optional(S.String),
           deploymentUrl: S.optional(S.String),
-          marketplaceSaasInfo: S.optional(__S(33, __c4, 1)),
+          marketplaceSaasInfo: S.optional(__S(97, __c6, 1)),
           projectType: S.optional(S.String),
           configurationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentInfoResponse" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2788,7 +2566,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListElasticVersionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -2796,24 +2574,28 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ElasticVersionListProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({ identifier: "ElasticVersionListFormat" });
+    case 3:
+      return S.Array(__S(386, __c24, 2));
     case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(76, __c9, 4),
+          value: __S(387, __c24, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ElasticVersionsListResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2830,7 +2612,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListListAssociatedTrafficFiltersRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2848,20 +2634,24 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(576, __c36, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(80, __c10, 0),
+          value: __S(432, __c27, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ElasticMonitorResourceListResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2878,7 +2668,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListMonitoredResourcesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2886,18 +2676,22 @@ function __c10(j: number): any {
           reasonForLogsStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoredResource" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(449, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(84, __c10, 4),
+          value: __S(450, __c28, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoredResourceListResponse",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2914,22 +2708,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListMonitoredSubscriptionsRequest",
       });
-    case 7:
-      return S.Array(__S(45, __c5, 5));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(163, __c10, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(87, __c10, 7),
+          value: __S(465, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoredSubscriptionPropertiesList",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2942,7 +2736,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMonitorsRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2957,18 +2755,22 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOpenAIRequest" });
-    case 3:
-      return S.Array(__S(48, __c6, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(91, __c11, 3),
+          value: __S(497, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OpenAIIntegrationRPModelListResponse",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2979,7 +2781,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2988,29 +2790,230 @@ function __c11(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(94, __c11, 6)),
+          display: S.optional(__S(513, __c32, 1)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResult" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(96, __c12, 0),
+          value: __S(515, __c32, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          elasticCloudUser: S.optional(__S(592, __c37, 0)),
+          elasticCloudDeployment: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({ identifier: "ElasticPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          monitoringStatus: S.optional(S.String),
+          elasticProperties: S.optional(__S(528, __c33, 0)),
+          userInfo: S.optional(__S(562, __c35, 2)),
+          planDetails: S.optional(__S(563, __c35, 3)),
+          version: S.optional(S.String),
+          subscriptionState: S.optional(S.String),
+          saaSAzureSubscriptionStatus: S.optional(S.String),
+          sourceCampaignName: S.optional(S.String),
+          sourceCampaignId: S.optional(S.String),
+          generateApiKey: S.optional(S.Boolean),
+          hostingType: S.optional(S.String),
+          projectDetails: S.optional(__S(564, __c35, 4)),
+        }),
+      ).annotate({ identifier: "MonitorPropertiesInput" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityPropertiesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(560, __c35, 0)),
+          location: S.String,
+          properties: S.optional(__S(529, __c33, 1)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(565, __c35, 5)),
+          identity: S.optional(__S(530, __c33, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateMonitorRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          business: S.optional(S.String),
+          employeesNumber: S.optional(S.String),
+          state: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompanyInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          companyName: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+          companyInfo: S.optional(__S(561, __c35, 1)),
+        }),
+      ).annotate({ identifier: "UserInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          offerID: S.optional(S.String),
+          publisherID: S.optional(S.String),
+          termID: S.optional(S.String),
+          planID: S.optional(S.String),
+          planName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlanDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          projectType: S.optional(S.String),
+          configurationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ResourceSku" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          emailAddress: S.optional(S.String),
+          id: S.optional(S.String),
+          elasticCloudSsoDefaultUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ElasticCloudUser" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+          azureSubscriptionId: S.optional(S.String),
+          elasticsearchRegion: S.optional(S.String),
+          elasticsearchServiceUrl: S.optional(S.String),
+          kibanaServiceUrl: S.optional(S.String),
+          kibanaSsoUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ElasticCloudDeployment" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          elasticCloudUser: S.optional(__S(566, __c35, 6)),
+          elasticCloudDeployment: S.optional(__S(567, __c35, 7)),
+        }),
+      ).annotate({ identifier: "ElasticProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          monitoringStatus: S.optional(S.String),
+          elasticProperties: S.optional(__S(568, __c35, 8)),
+          userInfo: S.optional(__S(562, __c35, 2)),
+          planDetails: S.optional(__S(563, __c35, 3)),
+          version: S.optional(S.String),
+          subscriptionState: S.optional(S.String),
+          saaSAzureSubscriptionStatus: S.optional(S.String),
+          sourceCampaignName: S.optional(S.String),
+          sourceCampaignId: S.optional(S.String),
+          liftrResourceCategory: S.optional(S.String),
+          liftrResourcePreference: S.optional(S.Number),
+          generateApiKey: S.optional(S.Boolean),
+          hostingType: S.optional(S.String),
+          projectDetails: S.optional(__S(564, __c35, 4)),
+        }),
+      ).annotate({ identifier: "MonitorProperties" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityProperties" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(544, __c34, 0)),
+          tags: S.optional(__S(560, __c35, 0)),
+          location: S.String,
+          properties: S.optional(__S(569, __c35, 9)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(565, __c35, 5)),
+          identity: S.optional(__S(570, __c35, 10)),
+        }),
+      ).annotate({ identifier: "CreateMonitorResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ElasticCloudUserInput",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3025,18 +3028,22 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTagRulesRequest" });
-    case 3:
-      return S.Array(__S(59, __c7, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(99, __c12, 3),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoringTagRulesListResponse",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3051,26 +3058,26 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVMHostRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           vmResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VMResources" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103, __c12, 7),
+          value: __S(626, __c39, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VMHostListResponse" });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3086,7 +3093,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MonitorUpgradeRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           openAIResourceId: S.optional(S.String),
@@ -3097,14 +3108,14 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "OpenAIIntegrationPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           integrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(106, __c13, 2)),
+          properties: S.optional(__S(656, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3116,19 +3127,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "OpenAICreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(47, __c5, 7)),
+          systemData: S.optional(__S(544, __c34, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({
         identifier: "OpenAICreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3149,31 +3164,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "OrganizationsResubscribeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(544, __c34, 0)),
+          tags: S.optional(__S(560, __c35, 0)),
           location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(569, __c35, 9)),
           kind: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(20, __c2, 4)),
+          sku: S.optional(__S(565, __c35, 5)),
+          identity: S.optional(__S(570, __c35, 10)),
         }),
       ).annotate({
         identifier: "OrganizationsResubscribeResponse",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(41, __c5, 1)),
+          properties: S.optional(__S(147, __c9, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3185,23 +3204,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TagRulesCreateOrUpdateRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(41, __c5, 1)),
+          systemData: S.optional(__S(544, __c34, 0)),
+          properties: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({
         identifier: "TagRulesCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3219,13 +3238,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateDetachTrafficFilterRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(560, __c35, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3235,14 +3258,18 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMonitorRequest" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(162, __c10, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3254,14 +3281,18 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateMonitoredSubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(162, __c10, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3273,7 +3304,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateMonitoredSubscriptionsCreateorRequest",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          rulesetId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachAndDeleteTrafficFilter",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDetachAndDeleteTrafficFilterRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3292,7 +3349,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateVMCollectionRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3309,16 +3370,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpgradableVersionsDetailsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentVersion: S.optional(S.String),
-          upgradableVersions: S.optional(__S(28, __c3, 4)),
+          upgradableVersions: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "UpgradableVersionsList" });
   }
 }
-function __c15(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3348,7 +3409,109 @@ function __c15(j: number): any {
       });
   }
 }
-
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteMonitorRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMonitoredSubscriptionRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          integrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOpenAIRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          ruleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTagRuleRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          rulesetId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/deleteTrafficFilter",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTrafficFilterRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

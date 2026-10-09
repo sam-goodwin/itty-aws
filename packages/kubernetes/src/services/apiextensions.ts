@@ -843,11 +843,11 @@ export const createApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   CreateApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateApiextensionsV1CustomResourceDefinitionRequest>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateApiextensionsV1CustomResourceDefinitionRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -863,11 +863,11 @@ export const deleteApiextensionsV1CollectionCustomResourceDefinition: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    37,
-    __c4,
-    5,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(420, __c13, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -884,8 +884,12 @@ export const deleteApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   DeleteApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteApiextensionsV1CustomResourceDefinitionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(
+    480,
+    __c15,
+    0,
+  ) as any as S.Schema<DeleteApiextensionsV1CustomResourceDefinitionRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -899,8 +903,8 @@ export const getApiextensionsAPIGroup: API.OperationMethod<
   GetApiextensionsAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetApiextensionsAPIGroupRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetApiextensionsAPIGroupRequest>,
+  output: __S(517, __c16, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -914,8 +918,8 @@ export const getApiextensionsV1APIResources: API.OperationMethod<
   GetApiextensionsV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetApiextensionsV1APIResourcesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetApiextensionsV1APIResourcesRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -929,11 +933,11 @@ export const listApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   ListApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListApiextensionsV1CustomResourceDefinitionRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListApiextensionsV1CustomResourceDefinitionRequest>,
   output: __S(
-    57,
-    __c7,
-    1,
+    578,
+    __c18,
+    2,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -952,11 +956,11 @@ export const patchApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   PatchApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<PatchApiextensionsV1CustomResourceDefinitionRequest>,
+  input: __S(608, __c19, 0) as any as S.Schema<PatchApiextensionsV1CustomResourceDefinitionRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -976,14 +980,14 @@ export const patchApiextensionsV1CustomResourceDefinitionStatus: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<PatchApiextensionsV1CustomResourceDefinitionStatusRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -998,11 +1002,11 @@ export const readApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   ReadApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ReadApiextensionsV1CustomResourceDefinitionRequest>,
+  input: __S(32, __c1, 0) as any as S.Schema<ReadApiextensionsV1CustomResourceDefinitionRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1018,14 +1022,14 @@ export const readApiextensionsV1CustomResourceDefinitionStatus: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    64,
+    __c2,
+    0,
   ) as any as S.Schema<ReadApiextensionsV1CustomResourceDefinitionStatusRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1044,11 +1048,11 @@ export const replaceApiextensionsV1CustomResourceDefinition: API.OperationMethod
   ReplaceApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ReplaceApiextensionsV1CustomResourceDefinitionRequest>,
+  input: __S(96, __c3, 0) as any as S.Schema<ReplaceApiextensionsV1CustomResourceDefinitionRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1068,14 +1072,14 @@ export const replaceApiextensionsV1CustomResourceDefinitionStatus: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    353,
+    __c11,
+    1,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1090,8 +1094,8 @@ export const watchApiextensionsV1CustomResourceDefinition: API.OperationMethod<
   WatchApiextensionsV1CustomResourceDefinitionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<WatchApiextensionsV1CustomResourceDefinitionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(160, __c5, 0) as any as S.Schema<WatchApiextensionsV1CustomResourceDefinitionRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1106,11 +1110,11 @@ export const watchApiextensionsV1CustomResourceDefinitionList: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<WatchApiextensionsV1CustomResourceDefinitionListRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(192, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1120,649 +1124,6 @@ export const watchApiextensionsV1CustomResourceDefinitionList: API.OperationMeth
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          namespace: S.String,
-          path: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          caBundle: S.optional(S.String),
-          service: S.optional(__S(7, __c0, 7)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clientConfig: S.optional(__S(8, __c1, 0)),
-          conversionReviewVersions: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          strategy: S.String,
-          webhook: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(9, __c1, 1)),
-          kind: S.String,
-          listKind: S.optional(S.String),
-          plural: S.String,
-          shortNames: S.optional(__S(9, __c1, 1)),
-          singular: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          format: S.optional(S.String),
-          jsonPath: S.String,
-          name: S.String,
-          priority: S.optional(S.Number),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(22, __c2, 6)));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(22, __c2, 6)),
-      );
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fieldPath: S.optional(S.String),
-          message: S.optional(S.String),
-          messageExpression: S.optional(S.String),
-          optionalOldSelf: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          rule: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
-          _schema: S.optional(S.String.pipe(T.Body("$schema"))),
-          additionalItems: S.optional(S.Unknown),
-          additionalProperties: S.optional(S.Unknown),
-          allOf: S.optional(__S(15, __c1, 7)),
-          anyOf: S.optional(__S(15, __c1, 7)),
-          default: S.optional(S.Unknown),
-          definitions: S.optional(__S(16, __c2, 0)),
-          dependencies: S.optional(__S(17, __c2, 1)),
-          description: S.optional(S.String),
-          enum: S.optional(__S(18, __c2, 2)),
-          example: S.optional(S.Unknown),
-          exclusiveMaximum: S.optional(S.Boolean),
-          exclusiveMinimum: S.optional(S.Boolean),
-          externalDocs: S.optional(__S(19, __c2, 3)),
-          format: S.optional(S.String),
-          id: S.optional(S.String),
-          items: S.optional(S.Unknown),
-          maxItems: S.optional(S.Number),
-          maxLength: S.optional(S.Number),
-          maxProperties: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          minItems: S.optional(S.Number),
-          minLength: S.optional(S.Number),
-          minProperties: S.optional(S.Number),
-          minimum: S.optional(S.Number),
-          multipleOf: S.optional(S.Number),
-          not: S.optional(__S(22, __c2, 6)),
-          nullable: S.optional(S.Boolean),
-          oneOf: S.optional(__S(15, __c1, 7)),
-          pattern: S.optional(S.String),
-          patternProperties: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(16, __c2, 0)),
-          required: S.optional(__S(9, __c1, 1)),
-          title: S.optional(S.String),
-          type: S.optional(S.String),
-          uniqueItems: S.optional(S.Boolean),
-          x_kubernetes_embedded_resource: S.optional(
-            S.Boolean.pipe(T.Body("x-kubernetes-embedded-resource")),
-          ),
-          x_kubernetes_int_or_string: S.optional(
-            S.Boolean.pipe(T.Body("x-kubernetes-int-or-string")),
-          ),
-          x_kubernetes_list_map_keys: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("x-kubernetes-list-map-keys")),
-          ),
-          x_kubernetes_list_type: S.optional(S.String.pipe(T.Body("x-kubernetes-list-type"))),
-          x_kubernetes_map_type: S.optional(S.String.pipe(T.Body("x-kubernetes-map-type"))),
-          x_kubernetes_preserve_unknown_fields: S.optional(
-            S.Boolean.pipe(T.Body("x-kubernetes-preserve-unknown-fields")),
-          ),
-          x_kubernetes_validations: S.optional(
-            __S(21, __c2, 5).pipe(T.Body("x-kubernetes-validations")),
-          ),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          openAPIV3Schema: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jsonPath: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          labelSelectorPath: S.optional(S.String),
-          specReplicasPath: S.String,
-          statusReplicasPath: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scale: S.optional(__S(26, __c3, 2)),
-          status: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalPrinterColumns: S.optional(__S(14, __c1, 6)),
-          deprecated: S.optional(S.Boolean),
-          deprecationWarning: S.optional(S.String),
-          name: S.String,
-          schema: S.optional(__S(23, __c2, 7)),
-          selectableFields: S.optional(__S(25, __c3, 1)),
-          served: S.Boolean,
-          storage: S.Boolean,
-          subresources: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversion: S.optional(__S(11, __c1, 3)),
-          group: S.String,
-          names: __S(12, __c1, 4),
-          preserveUnknownFields: S.optional(S.Boolean),
-          scope: S.String,
-          versions: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          reason: S.optional(S.String),
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acceptedNames: S.optional(__S(12, __c1, 4)),
-          conditions: S.optional(__S(32, __c4, 0)),
-          observedGeneration: S.optional(S.Number),
-          storedVersions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier:
-          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(30, __c3, 6),
-          status: S.optional(__S(33, __c4, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateApiextensionsV1CustomResourceDefinitionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(30, __c3, 6),
-          status: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(39, __c4, 7)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(40, __c5, 0)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(42, __c5, 2)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApiextensionsV1CustomResourceDefinitionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/", code: 200 })),
-      ).annotate({
-        identifier: "GetApiextensionsAPIGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.Array(__S(46, __c5, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(46, __c5, 6)),
-          serverAddressByClientCIDRs: S.optional(__S(48, __c6, 0)),
-          versions: __S(49, __c6, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/v1/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetApiextensionsV1APIResourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(53, __c6, 5),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApiextensionsV1CustomResourceDefinitionRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(56, __c7, 0),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchApiextensionsV1CustomResourceDefinitionRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1781,7 +1142,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchApiextensionsV1CustomResourceDefinitionStatusRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1796,7 +1161,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReadApiextensionsV1CustomResourceDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1811,7 +1180,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReadApiextensionsV1CustomResourceDefinitionStatusRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1821,9 +1194,9 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(30, __c3, 6),
-          status: S.optional(__S(33, __c4, 1)),
+          metadata: S.optional(__S(325, __c10, 5)),
+          spec: __S(349, __c10, 29),
+          status: S.optional(__S(352, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1834,7 +1207,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReplaceApiextensionsV1CustomResourceDefinitionRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1844,9 +1221,9 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(30, __c3, 6),
-          status: S.optional(__S(33, __c4, 1)),
+          metadata: S.optional(__S(325, __c10, 5)),
+          spec: __S(349, __c10, 29),
+          status: S.optional(__S(352, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1859,7 +1236,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1887,7 +1264,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "WatchApiextensionsV1CustomResourceDefinitionRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1896,7 +1277,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1923,7 +1308,669 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(325, __c10, 5)),
+          spec: __S(349, __c10, 29),
+          status: S.optional(__S(352, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateApiextensionsV1CustomResourceDefinitionRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(321, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(320, __c10, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(288, __c9, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(320, __c10, 0)),
+          managedFields: S.optional(__S(322, __c10, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(324, __c10, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          namespace: S.String,
+          path: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          caBundle: S.optional(S.String),
+          service: S.optional(__S(326, __c10, 6)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig",
+      });
+    case 8:
+      return S.Array(S.String);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          clientConfig: S.optional(__S(327, __c10, 7)),
+          conversionReviewVersions: __S(328, __c10, 8),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          strategy: S.String,
+          webhook: S.optional(__S(329, __c10, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(328, __c10, 8)),
+          kind: S.String,
+          listKind: S.optional(S.String),
+          plural: S.String,
+          shortNames: S.optional(__S(328, __c10, 8)),
+          singular: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          format: S.optional(S.String),
+          jsonPath: S.String,
+          name: S.String,
+          priority: S.optional(S.Number),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition",
+      });
+    case 13:
+      return S.Array(__S(332, __c10, 12));
+    case 14:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(341, __c10, 21)));
+    case 15:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(341, __c10, 21)),
+      );
+    case 16:
+      return S.Record(S.String, S.Unknown);
+    case 17:
+      return S.Array(S.Unknown);
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          fieldPath: S.optional(S.String),
+          message: S.optional(S.String),
+          messageExpression: S.optional(S.String),
+          optionalOldSelf: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          rule: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule",
+      });
+    case 20:
+      return S.Array(__S(339, __c10, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
+          _schema: S.optional(S.String.pipe(T.Body("$schema"))),
+          additionalItems: S.optional(S.Unknown),
+          additionalProperties: S.optional(S.Unknown),
+          allOf: S.optional(__S(334, __c10, 14)),
+          anyOf: S.optional(__S(334, __c10, 14)),
+          default: S.optional(S.Unknown),
+          definitions: S.optional(__S(335, __c10, 15)),
+          dependencies: S.optional(__S(336, __c10, 16)),
+          description: S.optional(S.String),
+          enum: S.optional(__S(337, __c10, 17)),
+          example: S.optional(S.Unknown),
+          exclusiveMaximum: S.optional(S.Boolean),
+          exclusiveMinimum: S.optional(S.Boolean),
+          externalDocs: S.optional(__S(338, __c10, 18)),
+          format: S.optional(S.String),
+          id: S.optional(S.String),
+          items: S.optional(S.Unknown),
+          maxItems: S.optional(S.Number),
+          maxLength: S.optional(S.Number),
+          maxProperties: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          minItems: S.optional(S.Number),
+          minLength: S.optional(S.Number),
+          minProperties: S.optional(S.Number),
+          minimum: S.optional(S.Number),
+          multipleOf: S.optional(S.Number),
+          not: S.optional(__S(341, __c10, 21)),
+          nullable: S.optional(S.Boolean),
+          oneOf: S.optional(__S(334, __c10, 14)),
+          pattern: S.optional(S.String),
+          patternProperties: S.optional(__S(335, __c10, 15)),
+          properties: S.optional(__S(335, __c10, 15)),
+          required: S.optional(__S(328, __c10, 8)),
+          title: S.optional(S.String),
+          type: S.optional(S.String),
+          uniqueItems: S.optional(S.Boolean),
+          x_kubernetes_embedded_resource: S.optional(
+            S.Boolean.pipe(T.Body("x-kubernetes-embedded-resource")),
+          ),
+          x_kubernetes_int_or_string: S.optional(
+            S.Boolean.pipe(T.Body("x-kubernetes-int-or-string")),
+          ),
+          x_kubernetes_list_map_keys: S.optional(
+            __S(328, __c10, 8).pipe(T.Body("x-kubernetes-list-map-keys")),
+          ),
+          x_kubernetes_list_type: S.optional(S.String.pipe(T.Body("x-kubernetes-list-type"))),
+          x_kubernetes_map_type: S.optional(S.String.pipe(T.Body("x-kubernetes-map-type"))),
+          x_kubernetes_preserve_unknown_fields: S.optional(
+            S.Boolean.pipe(T.Body("x-kubernetes-preserve-unknown-fields")),
+          ),
+          x_kubernetes_validations: S.optional(
+            __S(340, __c10, 20).pipe(T.Body("x-kubernetes-validations")),
+          ),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          openAPIV3Schema: S.optional(__S(341, __c10, 21)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          jsonPath: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField",
+      });
+    case 24:
+      return S.Array(__S(343, __c10, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          labelSelectorPath: S.optional(S.String),
+          specReplicasPath: S.String,
+          statusReplicasPath: S.String,
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          scale: S.optional(__S(345, __c10, 25)),
+          status: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          additionalPrinterColumns: S.optional(__S(333, __c10, 13)),
+          deprecated: S.optional(S.Boolean),
+          deprecationWarning: S.optional(S.String),
+          name: S.String,
+          schema: S.optional(__S(342, __c10, 22)),
+          selectableFields: S.optional(__S(344, __c10, 24)),
+          served: S.Boolean,
+          storage: S.Boolean,
+          subresources: S.optional(__S(346, __c10, 26)),
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion",
+      });
+    case 28:
+      return S.Array(__S(347, __c10, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          conversion: S.optional(__S(330, __c10, 10)),
+          group: S.String,
+          names: __S(331, __c10, 11),
+          preserveUnknownFields: S.optional(S.Boolean),
+          scope: S.String,
+          versions: __S(348, __c10, 28),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+          reason: S.optional(S.String),
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition",
+      });
+    case 31:
+      return S.Array(__S(350, __c10, 30));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acceptedNames: S.optional(__S(331, __c10, 11)),
+          conditions: S.optional(__S(351, __c10, 31)),
+          observedGeneration: S.optional(S.Number),
+          storedVersions: S.optional(__S(328, __c10, 8)),
+        }),
+      ).annotate({
+        identifier:
+          "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(325, __c10, 5)),
+          spec: __S(349, __c10, 29),
+          status: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(416, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(418, __c13, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(419, __c13, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(449, __c14, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(416, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApiextensionsV1CustomResourceDefinitionRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/", code: 200 })),
+      ).annotate({
+        identifier: "GetApiextensionsAPIGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+    case 4:
+      return S.Array(__S(513, __c16, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(513, __c16, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(515, __c16, 3)),
+          versions: __S(516, __c16, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/v1/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetApiextensionsV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(288, __c9, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(288, __c9, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(288, __c9, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(546, __c17, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApiextensionsV1CustomResourceDefinitionRequest",
+      });
+    case 1:
+      return S.Array(__S(353, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(577, __c18, 1),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchApiextensionsV1CustomResourceDefinitionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -6755,8 +6755,12 @@ export const activateOrganizationsInstancesNatAddresses: API.OperationMethod<
   ActivateOrganizationsInstancesNatAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ActivateOrganizationsInstancesNatAddressesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    12832,
+    __c401,
+    0,
+  ) as any as S.Schema<ActivateOrganizationsInstancesNatAddressesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6776,8 +6780,8 @@ export const adjustOrganizationsAppgroupsBalance: API.OperationMethod<
   AdjustOrganizationsAppgroupsBalanceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AdjustOrganizationsAppgroupsBalanceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
+  input: __S(13536, __c423, 0) as any as S.Schema<AdjustOrganizationsAppgroupsBalanceRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6797,8 +6801,8 @@ export const adjustOrganizationsDevelopersBalance: API.OperationMethod<
   AdjustOrganizationsDevelopersBalanceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AdjustOrganizationsDevelopersBalanceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
+  input: __S(14336, __c448, 0) as any as S.Schema<AdjustOrganizationsDevelopersBalanceRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6819,11 +6823,11 @@ export const attachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooks: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14,
-    __c1,
-    6,
+    14752,
+    __c461,
+    0,
   ) as any as S.Schema<AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
+  output: __S(14784, __c462, 0) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6843,8 +6847,8 @@ export const attributesOrganizationsApiproducts: API.OperationMethod<
   AttributesOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AttributesOrganizationsApiproductsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(15200, __c475, 0) as any as S.Schema<AttributesOrganizationsApiproductsRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6864,8 +6868,8 @@ export const attributesOrganizationsDevelopers: API.OperationMethod<
   AttributesOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AttributesOrganizationsDevelopersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(0, __c0, 0) as any as S.Schema<AttributesOrganizationsDevelopersRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6885,8 +6889,8 @@ export const attributesOrganizationsDevelopersApps: API.OperationMethod<
   AttributesOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<AttributesOrganizationsDevelopersAppsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(352, __c11, 0) as any as S.Schema<AttributesOrganizationsDevelopersAppsRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6907,14 +6911,14 @@ export const batchComputeOrganizationsSecurityAssessmentResults: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    707,
+    __c22,
+    3,
   ) as any as S.Schema<BatchComputeOrganizationsSecurityAssessmentResultsRequest>,
   output: __S(
-    40,
-    __c5,
-    0,
+    719,
+    __c22,
+    15,
   ) as any as S.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6936,14 +6940,14 @@ export const batchUpdateOrganizationsEnvironmentsSecurityIncidents: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    1251,
+    __c39,
+    3,
   ) as any as S.Schema<BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest>,
   output: __S(
-    47,
-    __c5,
-    7,
+    1252,
+    __c39,
+    4,
   ) as any as S.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6965,11 +6969,15 @@ export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    1699,
+    __c53,
+    3,
   ) as any as S.Schema<ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse>,
+  output: __S(
+    1709,
+    __c53,
+    13,
+  ) as any as S.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6989,8 +6997,8 @@ export const createOrganizations: API.OperationMethod<
   CreateOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateOrganizationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateOrganizationsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7010,8 +7018,8 @@ export const createOrganizationsAnalyticsDatastores: API.OperationMethod<
   CreateOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CreateOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7031,8 +7039,8 @@ export const createOrganizationsApimServiceExtensions: API.OperationMethod<
   CreateOrganizationsApimServiceExtensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateOrganizationsApimServiceExtensionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3136, __c98, 0) as any as S.Schema<CreateOrganizationsApimServiceExtensionsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7052,8 +7060,8 @@ export const createOrganizationsApiproducts: API.OperationMethod<
   CreateOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<CreateOrganizationsApiproductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
+  input: __S(3584, __c112, 0) as any as S.Schema<CreateOrganizationsApiproductsRequest>,
+  output: __S(3641, __c113, 25) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7073,8 +7081,8 @@ export const createOrganizationsApiproductsRateplans: API.OperationMethod<
   CreateOrganizationsApiproductsRateplansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateOrganizationsApiproductsRateplansRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
+  input: __S(3968, __c124, 0) as any as S.Schema<CreateOrganizationsApiproductsRateplansRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7094,8 +7102,8 @@ export const createOrganizationsApis: API.OperationMethod<
   CreateOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateOrganizationsApisRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
+  input: __S(4416, __c138, 0) as any as S.Schema<CreateOrganizationsApisRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7115,8 +7123,8 @@ export const createOrganizationsApisKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsApisKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<CreateOrganizationsApisKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(4992, __c156, 0) as any as S.Schema<CreateOrganizationsApisKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7136,8 +7144,8 @@ export const createOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   CreateOrganizationsApisKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<CreateOrganizationsApisKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(5376, __c168, 0) as any as S.Schema<CreateOrganizationsApisKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7157,8 +7165,8 @@ export const createOrganizationsAppgroups: API.OperationMethod<
   CreateOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateOrganizationsAppgroupsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
+  input: __S(5760, __c180, 0) as any as S.Schema<CreateOrganizationsAppgroupsRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7178,8 +7186,8 @@ export const createOrganizationsAppgroupsApps: API.OperationMethod<
   CreateOrganizationsAppgroupsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateOrganizationsAppgroupsAppsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
+  input: __S(6272, __c196, 0) as any as S.Schema<CreateOrganizationsAppgroupsAppsRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7199,8 +7207,8 @@ export const createOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   CreateOrganizationsAppgroupsAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateOrganizationsAppgroupsAppsKeysRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
+  input: __S(6720, __c210, 0) as any as S.Schema<CreateOrganizationsAppgroupsAppsKeysRequest>,
+  output: __S(6754, __c211, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7220,8 +7228,8 @@ export const createOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   CreateOrganizationsAppgroupsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreateOrganizationsAppgroupsSubscriptionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
+  input: __S(7168, __c224, 0) as any as S.Schema<CreateOrganizationsAppgroupsSubscriptionsRequest>,
+  output: __S(7200, __c225, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7241,8 +7249,8 @@ export const createOrganizationsDatacollectors: API.OperationMethod<
   CreateOrganizationsDatacollectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<CreateOrganizationsDatacollectorsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
+  input: __S(7552, __c236, 0) as any as S.Schema<CreateOrganizationsDatacollectorsRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7262,8 +7270,8 @@ export const createOrganizationsDevelopers: API.OperationMethod<
   CreateOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateOrganizationsDevelopersRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GoogleCloudApigeeV1Developer>,
+  input: __S(8000, __c250, 0) as any as S.Schema<CreateOrganizationsDevelopersRequest>,
+  output: __S(8032, __c251, 0) as any as S.Schema<GoogleCloudApigeeV1Developer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7283,8 +7291,8 @@ export const createOrganizationsDevelopersApps: API.OperationMethod<
   CreateOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateOrganizationsDevelopersAppsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
+  input: __S(8384, __c262, 0) as any as S.Schema<CreateOrganizationsDevelopersAppsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7304,8 +7312,8 @@ export const createOrganizationsDevelopersAppsKeys: API.OperationMethod<
   CreateOrganizationsDevelopersAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateOrganizationsDevelopersAppsKeysRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  input: __S(8800, __c275, 0) as any as S.Schema<CreateOrganizationsDevelopersAppsKeysRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7325,8 +7333,12 @@ export const createOrganizationsDevelopersAppsKeysCreate: API.OperationMethod<
   CreateOrganizationsDevelopersAppsKeysCreateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<CreateOrganizationsDevelopersAppsKeysCreateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  input: __S(
+    9248,
+    __c289,
+    0,
+  ) as any as S.Schema<CreateOrganizationsDevelopersAppsKeysCreateRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7346,8 +7358,8 @@ export const createOrganizationsDevelopersSubscriptions: API.OperationMethod<
   CreateOrganizationsDevelopersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<CreateOrganizationsDevelopersSubscriptionsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
+  input: __S(9600, __c300, 0) as any as S.Schema<CreateOrganizationsDevelopersSubscriptionsRequest>,
+  output: __S(9632, __c301, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7367,8 +7379,8 @@ export const createOrganizationsDnsZones: API.OperationMethod<
   CreateOrganizationsDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateOrganizationsDnsZonesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10048, __c314, 0) as any as S.Schema<CreateOrganizationsDnsZonesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7388,8 +7400,8 @@ export const createOrganizationsEndpointAttachments: API.OperationMethod<
   CreateOrganizationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<CreateOrganizationsEndpointAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10496, __c328, 0) as any as S.Schema<CreateOrganizationsEndpointAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7409,8 +7421,8 @@ export const createOrganizationsEnvgroups: API.OperationMethod<
   CreateOrganizationsEnvgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<CreateOrganizationsEnvgroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10880, __c340, 0) as any as S.Schema<CreateOrganizationsEnvgroupsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7430,8 +7442,8 @@ export const createOrganizationsEnvgroupsAttachments: API.OperationMethod<
   CreateOrganizationsEnvgroupsAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<CreateOrganizationsEnvgroupsAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(11264, __c352, 0) as any as S.Schema<CreateOrganizationsEnvgroupsAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7451,8 +7463,8 @@ export const createOrganizationsEnvironments: API.OperationMethod<
   CreateOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateOrganizationsEnvironmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(11648, __c364, 0) as any as S.Schema<CreateOrganizationsEnvironmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7473,11 +7485,11 @@ export const createOrganizationsEnvironmentsAnalyticsExports: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    167,
-    __c20,
-    7,
+    12002,
+    __c375,
+    2,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsAnalyticsExportsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GoogleCloudApigeeV1Export>,
+  output: __S(12032, __c376, 0) as any as S.Schema<GoogleCloudApigeeV1Export>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7498,11 +7510,11 @@ export const createOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    12064,
+    __c377,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GoogleCloudApigeeV1DebugSession>,
+  output: __S(12096, __c378, 0) as any as S.Schema<GoogleCloudApigeeV1DebugSession>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7523,11 +7535,11 @@ export const createOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    12128,
+    __c379,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7547,8 +7559,8 @@ export const createOrganizationsEnvironmentsKeystores: API.OperationMethod<
   CreateOrganizationsEnvironmentsKeystoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<CreateOrganizationsEnvironmentsKeystoresRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
+  input: __S(12192, __c381, 0) as any as S.Schema<CreateOrganizationsEnvironmentsKeystoresRequest>,
+  output: __S(12224, __c382, 0) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7569,11 +7581,11 @@ export const createOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    12256,
+    __c383,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
+  output: __S(12291, __c384, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7593,8 +7605,12 @@ export const createOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsEnvironmentsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(
+    12320,
+    __c385,
+    0,
+  ) as any as S.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7615,11 +7631,11 @@ export const createOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    12352,
+    __c386,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7639,8 +7655,8 @@ export const createOrganizationsEnvironmentsQueries: API.OperationMethod<
   CreateOrganizationsEnvironmentsQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateOrganizationsEnvironmentsQueriesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
+  input: __S(12384, __c387, 0) as any as S.Schema<CreateOrganizationsEnvironmentsQueriesRequest>,
+  output: __S(12512, __c391, 0) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7660,8 +7676,8 @@ export const createOrganizationsEnvironmentsReferences: API.OperationMethod<
   CreateOrganizationsEnvironmentsReferencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<CreateOrganizationsEnvironmentsReferencesRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GoogleCloudApigeeV1Reference>,
+  input: __S(12544, __c392, 0) as any as S.Schema<CreateOrganizationsEnvironmentsReferencesRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<GoogleCloudApigeeV1Reference>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7681,8 +7697,12 @@ export const createOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   CreateOrganizationsEnvironmentsResourcefilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<CreateOrganizationsEnvironmentsResourcefilesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
+  input: __S(
+    12608,
+    __c394,
+    0,
+  ) as any as S.Schema<CreateOrganizationsEnvironmentsResourcefilesRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7703,11 +7723,11 @@ export const createOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    198,
-    __c24,
-    6,
+    12640,
+    __c395,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
+  output: __S(12677, __c396, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7728,11 +7748,11 @@ export const createOrganizationsEnvironmentsSecurityReports: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    202,
-    __c25,
-    2,
+    12704,
+    __c397,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsSecurityReportsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
+  output: __S(12800, __c400, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7752,8 +7772,12 @@ export const createOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   CreateOrganizationsEnvironmentsTargetserversError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<CreateOrganizationsEnvironmentsTargetserversRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
+  input: __S(
+    12992,
+    __c406,
+    0,
+  ) as any as S.Schema<CreateOrganizationsEnvironmentsTargetserversRequest>,
+  output: __S(13026, __c407, 2) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7774,11 +7798,11 @@ export const createOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    211,
-    __c26,
-    3,
+    13056,
+    __c408,
+    0,
   ) as any as S.Schema<CreateOrganizationsEnvironmentsTraceConfigOverridesRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
+  output: __S(13120, __c410, 0) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7798,8 +7822,8 @@ export const createOrganizationsHostQueries: API.OperationMethod<
   CreateOrganizationsHostQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<CreateOrganizationsHostQueriesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
+  input: __S(13152, __c411, 0) as any as S.Schema<CreateOrganizationsHostQueriesRequest>,
+  output: __S(12512, __c391, 0) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7819,8 +7843,8 @@ export const createOrganizationsHostSecurityReports: API.OperationMethod<
   CreateOrganizationsHostSecurityReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<CreateOrganizationsHostSecurityReportsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
+  input: __S(13184, __c412, 0) as any as S.Schema<CreateOrganizationsHostSecurityReportsRequest>,
+  output: __S(12800, __c400, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7840,8 +7864,8 @@ export const createOrganizationsInstances: API.OperationMethod<
   CreateOrganizationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<CreateOrganizationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(13216, __c413, 0) as any as S.Schema<CreateOrganizationsInstancesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7861,8 +7885,8 @@ export const createOrganizationsInstancesAttachments: API.OperationMethod<
   CreateOrganizationsInstancesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<CreateOrganizationsInstancesAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(13280, __c415, 0) as any as S.Schema<CreateOrganizationsInstancesAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7883,11 +7907,11 @@ export const createOrganizationsInstancesCanaryevaluations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    13344,
+    __c417,
+    0,
   ) as any as S.Schema<CreateOrganizationsInstancesCanaryevaluationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7907,8 +7931,8 @@ export const createOrganizationsInstancesNatAddresses: API.OperationMethod<
   CreateOrganizationsInstancesNatAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<CreateOrganizationsInstancesNatAddressesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(13408, __c419, 0) as any as S.Schema<CreateOrganizationsInstancesNatAddressesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7928,8 +7952,8 @@ export const createOrganizationsKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<CreateOrganizationsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(13472, __c421, 0) as any as S.Schema<CreateOrganizationsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7949,8 +7973,8 @@ export const createOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   CreateOrganizationsKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<CreateOrganizationsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(13504, __c422, 0) as any as S.Schema<CreateOrganizationsKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7970,8 +7994,8 @@ export const createOrganizationsReports: API.OperationMethod<
   CreateOrganizationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CreateOrganizationsReportsRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
+  input: __S(13664, __c427, 0) as any as S.Schema<CreateOrganizationsReportsRequest>,
+  output: __S(13700, __c428, 4) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7991,8 +8015,8 @@ export const createOrganizationsSecurityFeedback: API.OperationMethod<
   CreateOrganizationsSecurityFeedbackError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateOrganizationsSecurityFeedbackRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
+  input: __S(13728, __c429, 0) as any as S.Schema<CreateOrganizationsSecurityFeedbackRequest>,
+  output: __S(13762, __c430, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8013,11 +8037,11 @@ export const createOrganizationsSecurityMonitoringConditions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    242,
-    __c30,
-    2,
+    13792,
+    __c431,
+    0,
   ) as any as S.Schema<CreateOrganizationsSecurityMonitoringConditionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
+  output: __S(13824, __c432, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8037,8 +8061,8 @@ export const createOrganizationsSecurityProfiles: API.OperationMethod<
   CreateOrganizationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<CreateOrganizationsSecurityProfilesRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
+  input: __S(13856, __c433, 0) as any as S.Schema<CreateOrganizationsSecurityProfilesRequest>,
+  output: __S(13895, __c434, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8059,14 +8083,14 @@ export const createOrganizationsSecurityProfilesEnvironments: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    253,
-    __c31,
-    5,
+    13921,
+    __c435,
+    1,
   ) as any as S.Schema<CreateOrganizationsSecurityProfilesEnvironmentsRequest>,
   output: __S(
-    252,
-    __c31,
-    4,
+    13920,
+    __c435,
+    0,
   ) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8087,8 +8111,8 @@ export const createOrganizationsSecurityProfilesV2: API.OperationMethod<
   CreateOrganizationsSecurityProfilesV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<CreateOrganizationsSecurityProfilesV2Request>,
-  output: __S(257, __c32, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
+  input: __S(13952, __c436, 0) as any as S.Schema<CreateOrganizationsSecurityProfilesV2Request>,
+  output: __S(13987, __c437, 3) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8108,8 +8132,8 @@ export const createOrganizationsSharedflows: API.OperationMethod<
   CreateOrganizationsSharedflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<CreateOrganizationsSharedflowsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
+  input: __S(14016, __c438, 0) as any as S.Schema<CreateOrganizationsSharedflowsRequest>,
+  output: __S(14048, __c439, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8129,8 +8153,8 @@ export const createOrganizationsSitesApicategories: API.OperationMethod<
   CreateOrganizationsSitesApicategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<CreateOrganizationsSitesApicategoriesRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
+  input: __S(14080, __c440, 0) as any as S.Schema<CreateOrganizationsSitesApicategoriesRequest>,
+  output: __S(14144, __c442, 0) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8150,8 +8174,8 @@ export const createOrganizationsSitesApidocs: API.OperationMethod<
   CreateOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<CreateOrganizationsSitesApidocsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
+  input: __S(14176, __c443, 0) as any as S.Schema<CreateOrganizationsSitesApidocsRequest>,
+  output: __S(14240, __c445, 0) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8171,8 +8195,8 @@ export const createOrganizationsSpaces: API.OperationMethod<
   CreateOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<CreateOrganizationsSpacesRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudApigeeV1Space>,
+  input: __S(14272, __c446, 0) as any as S.Schema<CreateOrganizationsSpacesRequest>,
+  output: __S(14304, __c447, 0) as any as S.Schema<GoogleCloudApigeeV1Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8192,8 +8216,8 @@ export const creditOrganizationsAppgroupsBalance: API.OperationMethod<
   CreditOrganizationsAppgroupsBalanceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<CreditOrganizationsAppgroupsBalanceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
+  input: __S(14368, __c449, 0) as any as S.Schema<CreditOrganizationsAppgroupsBalanceRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8213,8 +8237,8 @@ export const creditOrganizationsDevelopersBalance: API.OperationMethod<
   CreditOrganizationsDevelopersBalanceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<CreditOrganizationsDevelopersBalanceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
+  input: __S(14432, __c451, 0) as any as S.Schema<CreditOrganizationsDevelopersBalanceRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8232,8 +8256,12 @@ export const csrOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
   CsrOrganizationsEnvironmentsKeystoresAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<CsrOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(
+    14464,
+    __c452,
+    0,
+  ) as any as S.Schema<CsrOrganizationsEnvironmentsKeystoresAliasesRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8254,11 +8282,11 @@ export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    273,
-    __c34,
-    1,
+    14496,
+    __c453,
+    0,
   ) as any as S.Schema<DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8278,8 +8306,8 @@ export const deleteOrganizations: API.OperationMethod<
   DeleteOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeleteOrganizationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(14560, __c455, 0) as any as S.Schema<DeleteOrganizationsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8299,8 +8327,8 @@ export const deleteOrganizationsAnalyticsDatastores: API.OperationMethod<
   DeleteOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<DeleteOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(14592, __c456, 0) as any as S.Schema<DeleteOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8320,8 +8348,8 @@ export const deleteOrganizationsApimServiceExtensions: API.OperationMethod<
   DeleteOrganizationsApimServiceExtensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<DeleteOrganizationsApimServiceExtensionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(14624, __c457, 0) as any as S.Schema<DeleteOrganizationsApimServiceExtensionsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8341,8 +8369,8 @@ export const deleteOrganizationsApiproducts: API.OperationMethod<
   DeleteOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DeleteOrganizationsApiproductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
+  input: __S(14656, __c458, 0) as any as S.Schema<DeleteOrganizationsApiproductsRequest>,
+  output: __S(3641, __c113, 25) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8362,8 +8390,8 @@ export const deleteOrganizationsApiproductsAttributes: API.OperationMethod<
   DeleteOrganizationsApiproductsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeleteOrganizationsApiproductsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(14688, __c459, 0) as any as S.Schema<DeleteOrganizationsApiproductsAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8383,8 +8411,8 @@ export const deleteOrganizationsApiproductsRateplans: API.OperationMethod<
   DeleteOrganizationsApiproductsRateplansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteOrganizationsApiproductsRateplansRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
+  input: __S(14720, __c460, 0) as any as S.Schema<DeleteOrganizationsApiproductsRateplansRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8404,8 +8432,8 @@ export const deleteOrganizationsApis: API.OperationMethod<
   DeleteOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DeleteOrganizationsApisRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
+  input: __S(14816, __c463, 0) as any as S.Schema<DeleteOrganizationsApisRequest>,
+  output: __S(14880, __c465, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8425,8 +8453,8 @@ export const deleteOrganizationsApisKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsApisKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DeleteOrganizationsApisKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(14912, __c466, 0) as any as S.Schema<DeleteOrganizationsApisKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8446,8 +8474,12 @@ export const deleteOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   DeleteOrganizationsApisKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<DeleteOrganizationsApisKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(
+    14944,
+    __c467,
+    0,
+  ) as any as S.Schema<DeleteOrganizationsApisKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8467,8 +8499,8 @@ export const deleteOrganizationsApisRevisions: API.OperationMethod<
   DeleteOrganizationsApisRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<DeleteOrganizationsApisRevisionsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
+  input: __S(14976, __c468, 0) as any as S.Schema<DeleteOrganizationsApisRevisionsRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8488,8 +8520,8 @@ export const deleteOrganizationsAppgroups: API.OperationMethod<
   DeleteOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<DeleteOrganizationsAppgroupsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
+  input: __S(15008, __c469, 0) as any as S.Schema<DeleteOrganizationsAppgroupsRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8509,8 +8541,8 @@ export const deleteOrganizationsAppgroupsApps: API.OperationMethod<
   DeleteOrganizationsAppgroupsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DeleteOrganizationsAppgroupsAppsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
+  input: __S(15040, __c470, 0) as any as S.Schema<DeleteOrganizationsAppgroupsAppsRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8530,8 +8562,8 @@ export const deleteOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   DeleteOrganizationsAppgroupsAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<DeleteOrganizationsAppgroupsAppsKeysRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
+  input: __S(15072, __c471, 0) as any as S.Schema<DeleteOrganizationsAppgroupsAppsKeysRequest>,
+  output: __S(6754, __c211, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8552,11 +8584,11 @@ export const deleteOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    290,
-    __c36,
-    2,
+    15104,
+    __c472,
+    0,
   ) as any as S.Schema<DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
+  output: __S(6754, __c211, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8576,8 +8608,8 @@ export const deleteOrganizationsDatacollectors: API.OperationMethod<
   DeleteOrganizationsDatacollectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<DeleteOrganizationsDatacollectorsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(15136, __c473, 0) as any as S.Schema<DeleteOrganizationsDatacollectorsRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8597,8 +8629,8 @@ export const deleteOrganizationsDevelopers: API.OperationMethod<
   DeleteOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<DeleteOrganizationsDevelopersRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GoogleCloudApigeeV1Developer>,
+  input: __S(15168, __c474, 0) as any as S.Schema<DeleteOrganizationsDevelopersRequest>,
+  output: __S(8032, __c251, 0) as any as S.Schema<GoogleCloudApigeeV1Developer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8618,8 +8650,8 @@ export const deleteOrganizationsDevelopersApps: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<DeleteOrganizationsDevelopersAppsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
+  input: __S(15328, __c479, 0) as any as S.Schema<DeleteOrganizationsDevelopersAppsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8639,8 +8671,12 @@ export const deleteOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<DeleteOrganizationsDevelopersAppsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(
+    15360,
+    __c480,
+    0,
+  ) as any as S.Schema<DeleteOrganizationsDevelopersAppsAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8660,8 +8696,8 @@ export const deleteOrganizationsDevelopersAppsKeys: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<DeleteOrganizationsDevelopersAppsKeysRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  input: __S(15392, __c481, 0) as any as S.Schema<DeleteOrganizationsDevelopersAppsKeysRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8682,11 +8718,11 @@ export const deleteOrganizationsDevelopersAppsKeysApiproducts: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    296,
-    __c37,
+    15424,
+    __c482,
     0,
   ) as any as S.Schema<DeleteOrganizationsDevelopersAppsKeysApiproductsRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8706,8 +8742,8 @@ export const deleteOrganizationsDevelopersAttributes: API.OperationMethod<
   DeleteOrganizationsDevelopersAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<DeleteOrganizationsDevelopersAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(15456, __c483, 0) as any as S.Schema<DeleteOrganizationsDevelopersAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8727,8 +8763,8 @@ export const deleteOrganizationsDnsZones: API.OperationMethod<
   DeleteOrganizationsDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<DeleteOrganizationsDnsZonesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(15488, __c484, 0) as any as S.Schema<DeleteOrganizationsDnsZonesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8748,8 +8784,8 @@ export const deleteOrganizationsEndpointAttachments: API.OperationMethod<
   DeleteOrganizationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DeleteOrganizationsEndpointAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(15520, __c485, 0) as any as S.Schema<DeleteOrganizationsEndpointAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8769,8 +8805,8 @@ export const deleteOrganizationsEnvgroups: API.OperationMethod<
   DeleteOrganizationsEnvgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<DeleteOrganizationsEnvgroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(15552, __c486, 0) as any as S.Schema<DeleteOrganizationsEnvgroupsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8790,8 +8826,8 @@ export const deleteOrganizationsEnvgroupsAttachments: API.OperationMethod<
   DeleteOrganizationsEnvgroupsAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<DeleteOrganizationsEnvgroupsAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(15584, __c487, 0) as any as S.Schema<DeleteOrganizationsEnvgroupsAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8811,8 +8847,8 @@ export const deleteOrganizationsEnvironments: API.OperationMethod<
   DeleteOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<DeleteOrganizationsEnvironmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(15616, __c488, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8833,11 +8869,11 @@ export const deleteOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    303,
-    __c37,
-    7,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8857,8 +8893,8 @@ export const deleteOrganizationsEnvironmentsCaches: API.OperationMethod<
   DeleteOrganizationsEnvironmentsCachesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsCachesRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsCachesRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8878,8 +8914,8 @@ export const deleteOrganizationsEnvironmentsKeystores: API.OperationMethod<
   DeleteOrganizationsEnvironmentsKeystoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<DeleteOrganizationsEnvironmentsKeystoresRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsKeystoresRequest>,
+  output: __S(12224, __c382, 0) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8900,11 +8936,11 @@ export const deleteOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    306,
-    __c38,
-    2,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<DeleteOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
+  output: __S(12291, __c384, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8924,8 +8960,8 @@ export const deleteOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsEnvironmentsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8946,11 +8982,11 @@ export const deleteOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    308,
-    __c38,
-    4,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8970,8 +9006,8 @@ export const deleteOrganizationsEnvironmentsReferences: API.OperationMethod<
   DeleteOrganizationsEnvironmentsReferencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<DeleteOrganizationsEnvironmentsReferencesRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GoogleCloudApigeeV1Reference>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsReferencesRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<GoogleCloudApigeeV1Reference>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8991,8 +9027,8 @@ export const deleteOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   DeleteOrganizationsEnvironmentsResourcefilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<DeleteOrganizationsEnvironmentsResourcefilesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsResourcefilesRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9013,11 +9049,11 @@ export const deleteOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    311,
-    __c38,
-    7,
+    288,
+    __c9,
+    0,
   ) as any as S.Schema<DeleteOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9037,8 +9073,8 @@ export const deleteOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   DeleteOrganizationsEnvironmentsTargetserversError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsTargetserversRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteOrganizationsEnvironmentsTargetserversRequest>,
+  output: __S(13026, __c407, 2) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9059,11 +9095,11 @@ export const deleteOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    313,
-    __c39,
-    1,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9083,8 +9119,8 @@ export const deleteOrganizationsInstances: API.OperationMethod<
   DeleteOrganizationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<DeleteOrganizationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteOrganizationsInstancesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9104,8 +9140,8 @@ export const deleteOrganizationsInstancesAttachments: API.OperationMethod<
   DeleteOrganizationsInstancesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<DeleteOrganizationsInstancesAttachmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteOrganizationsInstancesAttachmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9125,8 +9161,8 @@ export const deleteOrganizationsInstancesNatAddresses: API.OperationMethod<
   DeleteOrganizationsInstancesNatAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<DeleteOrganizationsInstancesNatAddressesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteOrganizationsInstancesNatAddressesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9146,8 +9182,8 @@ export const deleteOrganizationsKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<DeleteOrganizationsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteOrganizationsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9167,8 +9203,8 @@ export const deleteOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   DeleteOrganizationsKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<DeleteOrganizationsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteOrganizationsKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9188,8 +9224,8 @@ export const deleteOrganizationsReports: API.OperationMethod<
   DeleteOrganizationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<DeleteOrganizationsReportsRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<GoogleCloudApigeeV1DeleteCustomReportResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteOrganizationsReportsRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GoogleCloudApigeeV1DeleteCustomReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9209,8 +9245,8 @@ export const deleteOrganizationsSecurityFeedback: API.OperationMethod<
   DeleteOrganizationsSecurityFeedbackError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<DeleteOrganizationsSecurityFeedbackRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteOrganizationsSecurityFeedbackRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9231,11 +9267,11 @@ export const deleteOrganizationsSecurityMonitoringConditions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    322,
-    __c40,
-    2,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<DeleteOrganizationsSecurityMonitoringConditionsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9255,8 +9291,8 @@ export const deleteOrganizationsSecurityProfiles: API.OperationMethod<
   DeleteOrganizationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<DeleteOrganizationsSecurityProfilesRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteOrganizationsSecurityProfilesRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9277,11 +9313,11 @@ export const deleteOrganizationsSecurityProfilesEnvironments: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    324,
-    __c40,
-    4,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<DeleteOrganizationsSecurityProfilesEnvironmentsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9301,8 +9337,8 @@ export const deleteOrganizationsSecurityProfilesV2: API.OperationMethod<
   DeleteOrganizationsSecurityProfilesV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<DeleteOrganizationsSecurityProfilesV2Request>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteOrganizationsSecurityProfilesV2Request>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9322,8 +9358,8 @@ export const deleteOrganizationsSharedflows: API.OperationMethod<
   DeleteOrganizationsSharedflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<DeleteOrganizationsSharedflowsRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteOrganizationsSharedflowsRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9343,8 +9379,8 @@ export const deleteOrganizationsSharedflowsRevisions: API.OperationMethod<
   DeleteOrganizationsSharedflowsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DeleteOrganizationsSharedflowsRevisionsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteOrganizationsSharedflowsRevisionsRequest>,
+  output: __S(14048, __c439, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9364,8 +9400,8 @@ export const deleteOrganizationsSitesApicategories: API.OperationMethod<
   DeleteOrganizationsSitesApicategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<DeleteOrganizationsSitesApicategoriesRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<GoogleCloudApigeeV1DeleteResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteOrganizationsSitesApicategoriesRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<GoogleCloudApigeeV1DeleteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9385,8 +9421,8 @@ export const deleteOrganizationsSitesApidocs: API.OperationMethod<
   DeleteOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<DeleteOrganizationsSitesApidocsRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<GoogleCloudApigeeV1DeleteResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteOrganizationsSitesApidocsRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<GoogleCloudApigeeV1DeleteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9406,8 +9442,8 @@ export const deleteOrganizationsSpaces: API.OperationMethod<
   DeleteOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<DeleteOrganizationsSpacesRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteOrganizationsSpacesRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9427,8 +9463,12 @@ export const deployOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
   DeployOrganizationsEnvironmentsApisRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<DeployOrganizationsEnvironmentsApisRevisionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
+  input: __S(
+    1088,
+    __c34,
+    0,
+  ) as any as S.Schema<DeployOrganizationsEnvironmentsApisRevisionsRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9449,11 +9489,11 @@ export const deployOrganizationsEnvironmentsSharedflowsRevisions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    347,
-    __c43,
-    3,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
+  output: __S(1161, __c36, 9) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9474,11 +9514,11 @@ export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    348,
-    __c43,
-    4,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
+  output: __S(14784, __c462, 0) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9499,11 +9539,11 @@ export const disableOrganizationsEnvironmentsSecurityActions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    349,
-    __c43,
-    5,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<DisableOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
+  output: __S(12677, __c396, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9524,11 +9564,11 @@ export const enableOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    350,
+    1376,
     __c43,
-    6,
+    0,
   ) as any as S.Schema<EnableOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
+  output: __S(12677, __c396, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9548,8 +9588,8 @@ export const expireOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   ExpireOrganizationsAppgroupsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ExpireOrganizationsAppgroupsSubscriptionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ExpireOrganizationsAppgroupsSubscriptionsRequest>,
+  output: __S(7200, __c225, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9569,8 +9609,8 @@ export const expireOrganizationsDevelopersSubscriptions: API.OperationMethod<
   ExpireOrganizationsDevelopersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ExpireOrganizationsDevelopersSubscriptionsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ExpireOrganizationsDevelopersSubscriptionsRequest>,
+  output: __S(9632, __c301, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9591,11 +9631,11 @@ export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    353,
-    __c44,
-    1,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReport>,
+  output: __S(1509, __c47, 5) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9616,11 +9656,11 @@ export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    360,
-    __c45,
+    1536,
+    __c48,
     0,
   ) as any as S.Schema<GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GoogleCloudApigeeV1GenerateDownloadUrlResponse>,
+  output: __S(1537, __c48, 1) as any as S.Schema<GoogleCloudApigeeV1GenerateDownloadUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9641,11 +9681,11 @@ export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    362,
-    __c45,
-    2,
+    1568,
+    __c49,
+    0,
   ) as any as S.Schema<GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9666,11 +9706,11 @@ export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    363,
-    __c45,
-    3,
+    1600,
+    __c50,
+    0,
   ) as any as S.Schema<GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReport>,
+  output: __S(1509, __c47, 5) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9691,11 +9731,11 @@ export const generateUploadUrlOrganizationsEnvironmentsArchiveDeployments: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    364,
-    __c45,
-    4,
+    1632,
+    __c51,
+    0,
   ) as any as S.Schema<GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<GoogleCloudApigeeV1GenerateUploadUrlResponse>,
+  output: __S(1633, __c51, 1) as any as S.Schema<GoogleCloudApigeeV1GenerateUploadUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9713,8 +9753,8 @@ export const getAddonsConfigOrganizationsEnvironments: API.OperationMethod<
   GetAddonsConfigOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<GetAddonsConfigOrganizationsEnvironmentsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GoogleCloudApigeeV1AddonsConfig>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetAddonsConfigOrganizationsEnvironmentsRequest>,
+  output: __S(2243, __c70, 3) as any as S.Schema<GoogleCloudApigeeV1AddonsConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9733,11 +9773,11 @@ export const getApiSecurityRuntimeConfigOrganizationsEnvironments: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    367,
-    __c45,
-    7,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest>,
-  output: __S(368, __c46, 0) as any as S.Schema<GoogleCloudApigeeV1ApiSecurityRuntimeConfig>,
+  output: __S(1761, __c55, 1) as any as S.Schema<GoogleCloudApigeeV1ApiSecurityRuntimeConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9755,8 +9795,8 @@ export const getBalanceOrganizationsAppgroups: API.OperationMethod<
   GetBalanceOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<GetBalanceOrganizationsAppgroupsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetBalanceOrganizationsAppgroupsRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalance>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9774,8 +9814,8 @@ export const getBalanceOrganizationsDevelopers: API.OperationMethod<
   GetBalanceOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<GetBalanceOrganizationsDevelopersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetBalanceOrganizationsDevelopersRequest>,
+  output: __S(13634, __c426, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9794,11 +9834,11 @@ export const getCertificateOrganizationsEnvironmentsKeystoresAliases: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    371,
-    __c46,
-    3,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9816,8 +9856,8 @@ export const getControlPlaneAccessOrganizations: API.OperationMethod<
   GetControlPlaneAccessOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<GetControlPlaneAccessOrganizationsRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GoogleCloudApigeeV1ControlPlaneAccess>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetControlPlaneAccessOrganizationsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudApigeeV1ControlPlaneAccess>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9835,8 +9875,8 @@ export const getDebugmaskOrganizationsEnvironments: API.OperationMethod<
   GetDebugmaskOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetDebugmaskOrganizationsEnvironmentsRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<GoogleCloudApigeeV1DebugMask>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetDebugmaskOrganizationsEnvironmentsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudApigeeV1DebugMask>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9854,8 +9894,8 @@ export const getDeployedConfigOrganizationsEnvironments: API.OperationMethod<
   GetDeployedConfigOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetDeployedConfigOrganizationsEnvironmentsRequest>,
-  output: __S(407, __c50, 7) as any as S.Schema<GoogleCloudApigeeV1EnvironmentConfig>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetDeployedConfigOrganizationsEnvironmentsRequest>,
+  output: __S(2047, __c63, 31) as any as S.Schema<GoogleCloudApigeeV1EnvironmentConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9873,8 +9913,8 @@ export const getDeployedIngressConfigOrganizations: API.OperationMethod<
   GetDeployedIngressConfigOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetDeployedIngressConfigOrganizationsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<GoogleCloudApigeeV1IngressConfig>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetDeployedIngressConfigOrganizationsRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<GoogleCloudApigeeV1IngressConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9893,11 +9933,11 @@ export const getDeployedIngressConfigOrganizationsEnvgroups: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    416,
-    __c52,
+    2112,
+    __c66,
     0,
   ) as any as S.Schema<GetDeployedIngressConfigOrganizationsEnvgroupsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig>,
+  output: __S(2084, __c65, 4) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9916,11 +9956,11 @@ export const getDeploymentsOrganizationsEnvironmentsApisRevisions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    417,
-    __c52,
-    1,
+    2144,
+    __c67,
+    0,
   ) as any as S.Schema<GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
+  output: __S(1161, __c36, 9) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9939,11 +9979,11 @@ export const getDeploymentsOrganizationsEnvironmentsSharedflowsRevisions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    418,
-    __c52,
-    2,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
+  output: __S(1161, __c36, 9) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9961,8 +10001,8 @@ export const getDocumentationOrganizationsSitesApidocs: API.OperationMethod<
   GetDocumentationOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<GetDocumentationOrganizationsSitesApidocsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetDocumentationOrganizationsSitesApidocsRequest>,
+  output: __S(2405, __c75, 5) as any as S.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9980,8 +10020,8 @@ export const getIamPolicyOrganizationsEnvironments: API.OperationMethod<
   GetIamPolicyOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<GetIamPolicyOrganizationsEnvironmentsRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetIamPolicyOrganizationsEnvironmentsRequest>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10000,11 +10040,11 @@ export const getIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    435,
-    __c54,
-    3,
+    2496,
+    __c78,
+    0,
   ) as any as S.Schema<GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10022,8 +10062,8 @@ export const getIamPolicyOrganizationsSpaces: API.OperationMethod<
   GetIamPolicyOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<GetIamPolicyOrganizationsSpacesRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetIamPolicyOrganizationsSpacesRequest>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10041,8 +10081,8 @@ export const getMcpServerConfigOrganizations: API.OperationMethod<
   GetMcpServerConfigOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<GetMcpServerConfigOrganizationsRequest>,
-  output: __S(438, __c54, 6) as any as S.Schema<GoogleCloudApigeeV1McpServerConfig>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetMcpServerConfigOrganizationsRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<GoogleCloudApigeeV1McpServerConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10060,8 +10100,8 @@ export const getMonetizationConfigOrganizationsAppgroups: API.OperationMethod<
   GetMonetizationConfigOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<GetMonetizationConfigOrganizationsAppgroupsRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetMonetizationConfigOrganizationsAppgroupsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10079,8 +10119,12 @@ export const getMonetizationConfigOrganizationsDevelopers: API.OperationMethod<
   GetMonetizationConfigOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<GetMonetizationConfigOrganizationsDevelopersRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>,
+  input: __S(
+    2656,
+    __c83,
+    0,
+  ) as any as S.Schema<GetMonetizationConfigOrganizationsDevelopersRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10094,8 +10138,8 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<GetOrganizationsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GoogleCloudApigeeV1Organization>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetOrganizationsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<GoogleCloudApigeeV1Organization>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10113,8 +10157,8 @@ export const getOrganizationsAnalyticsDatastores: API.OperationMethod<
   GetOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<GetOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10132,8 +10176,8 @@ export const getOrganizationsApimServiceExtensions: API.OperationMethod<
   GetOrganizationsApimServiceExtensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<GetOrganizationsApimServiceExtensionsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudApigeeV1ApimServiceExtension>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetOrganizationsApimServiceExtensionsRequest>,
+  output: __S(3172, __c99, 4) as any as S.Schema<GoogleCloudApigeeV1ApimServiceExtension>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10151,8 +10195,8 @@ export const getOrganizationsApiproducts: API.OperationMethod<
   GetOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetOrganizationsApiproductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetOrganizationsApiproductsRequest>,
+  output: __S(3641, __c113, 25) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10170,8 +10214,8 @@ export const getOrganizationsApiproductsAttributes: API.OperationMethod<
   GetOrganizationsApiproductsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetOrganizationsApiproductsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetOrganizationsApiproductsAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10189,8 +10233,8 @@ export const getOrganizationsApiproductsRateplans: API.OperationMethod<
   GetOrganizationsApiproductsRateplansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<GetOrganizationsApiproductsRateplansRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetOrganizationsApiproductsRateplansRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10204,8 +10248,8 @@ export const getOrganizationsApis: API.OperationMethod<
   GetOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<GetOrganizationsApisRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetOrganizationsApisRequest>,
+  output: __S(14880, __c465, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10223,8 +10267,8 @@ export const getOrganizationsApisKeyvaluemaps: API.OperationMethod<
   GetOrganizationsApisKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<GetOrganizationsApisKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetOrganizationsApisKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10242,8 +10286,8 @@ export const getOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   GetOrganizationsApisKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<GetOrganizationsApisKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetOrganizationsApisKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10261,8 +10305,8 @@ export const getOrganizationsApisRevisions: API.OperationMethod<
   GetOrganizationsApisRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<GetOrganizationsApisRevisionsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetOrganizationsApisRevisionsRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10280,8 +10324,8 @@ export const getOrganizationsAppgroups: API.OperationMethod<
   GetOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<GetOrganizationsAppgroupsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetOrganizationsAppgroupsRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10299,8 +10343,8 @@ export const getOrganizationsAppgroupsApps: API.OperationMethod<
   GetOrganizationsAppgroupsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<GetOrganizationsAppgroupsAppsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetOrganizationsAppgroupsAppsRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10318,8 +10362,8 @@ export const getOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   GetOrganizationsAppgroupsAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetOrganizationsAppgroupsAppsKeysRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetOrganizationsAppgroupsAppsKeysRequest>,
+  output: __S(6754, __c211, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10337,8 +10381,8 @@ export const getOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   GetOrganizationsAppgroupsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<GetOrganizationsAppgroupsSubscriptionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetOrganizationsAppgroupsSubscriptionsRequest>,
+  output: __S(7200, __c225, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupSubscription>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10352,8 +10396,8 @@ export const getOrganizationsApps: API.OperationMethod<
   GetOrganizationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<GetOrganizationsAppsRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<GoogleCloudApigeeV1App>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetOrganizationsAppsRequest>,
+  output: __S(3328, __c104, 0) as any as S.Schema<GoogleCloudApigeeV1App>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10371,8 +10415,8 @@ export const getOrganizationsDatacollectors: API.OperationMethod<
   GetOrganizationsDatacollectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<GetOrganizationsDatacollectorsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetOrganizationsDatacollectorsRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10390,8 +10434,8 @@ export const getOrganizationsDevelopers: API.OperationMethod<
   GetOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<GetOrganizationsDevelopersRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GoogleCloudApigeeV1Developer>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetOrganizationsDevelopersRequest>,
+  output: __S(8032, __c251, 0) as any as S.Schema<GoogleCloudApigeeV1Developer>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10409,8 +10453,8 @@ export const getOrganizationsDevelopersApps: API.OperationMethod<
   GetOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<GetOrganizationsDevelopersAppsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetOrganizationsDevelopersAppsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10428,8 +10472,8 @@ export const getOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   GetOrganizationsDevelopersAppsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<GetOrganizationsDevelopersAppsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetOrganizationsDevelopersAppsAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10447,8 +10491,8 @@ export const getOrganizationsDevelopersAppsKeys: API.OperationMethod<
   GetOrganizationsDevelopersAppsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<GetOrganizationsDevelopersAppsKeysRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  input: __S(3488, __c109, 0) as any as S.Schema<GetOrganizationsDevelopersAppsKeysRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10466,8 +10510,8 @@ export const getOrganizationsDevelopersAttributes: API.OperationMethod<
   GetOrganizationsDevelopersAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetOrganizationsDevelopersAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetOrganizationsDevelopersAttributesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10485,8 +10529,8 @@ export const getOrganizationsDevelopersSubscriptions: API.OperationMethod<
   GetOrganizationsDevelopersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<GetOrganizationsDevelopersSubscriptionsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetOrganizationsDevelopersSubscriptionsRequest>,
+  output: __S(9632, __c301, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperSubscription>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10504,8 +10548,8 @@ export const getOrganizationsDnsZones: API.OperationMethod<
   GetOrganizationsDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<GetOrganizationsDnsZonesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudApigeeV1DnsZone>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetOrganizationsDnsZonesRequest>,
+  output: __S(10081, __c315, 1) as any as S.Schema<GoogleCloudApigeeV1DnsZone>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10523,8 +10567,8 @@ export const getOrganizationsEndpointAttachments: API.OperationMethod<
   GetOrganizationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<GetOrganizationsEndpointAttachmentsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GoogleCloudApigeeV1EndpointAttachment>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetOrganizationsEndpointAttachmentsRequest>,
+  output: __S(10528, __c329, 0) as any as S.Schema<GoogleCloudApigeeV1EndpointAttachment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10542,8 +10586,8 @@ export const getOrganizationsEnvgroups: API.OperationMethod<
   GetOrganizationsEnvgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<GetOrganizationsEnvgroupsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroup>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetOrganizationsEnvgroupsRequest>,
+  output: __S(10912, __c341, 0) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroup>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10561,8 +10605,8 @@ export const getOrganizationsEnvgroupsAttachments: API.OperationMethod<
   GetOrganizationsEnvgroupsAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GetOrganizationsEnvgroupsAttachmentsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupAttachment>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetOrganizationsEnvgroupsAttachmentsRequest>,
+  output: __S(11296, __c353, 0) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupAttachment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10580,8 +10624,8 @@ export const getOrganizationsEnvironments: API.OperationMethod<
   GetOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetOrganizationsEnvironmentsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetOrganizationsEnvironmentsRequest>,
+  output: __S(11683, __c365, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10599,8 +10643,12 @@ export const getOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
   GetOrganizationsEnvironmentsAnalyticsExportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<GetOrganizationsEnvironmentsAnalyticsExportsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GoogleCloudApigeeV1Export>,
+  input: __S(
+    3808,
+    __c119,
+    0,
+  ) as any as S.Schema<GetOrganizationsEnvironmentsAnalyticsExportsRequest>,
+  output: __S(12032, __c376, 0) as any as S.Schema<GoogleCloudApigeeV1Export>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10619,11 +10667,11 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    471,
-    __c58,
-    7,
+    3840,
+    __c120,
+    0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GoogleCloudApigeeV1DebugSession>,
+  output: __S(12096, __c378, 0) as any as S.Schema<GoogleCloudApigeeV1DebugSession>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10642,11 +10690,11 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessionsData: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    472,
-    __c59,
+    3872,
+    __c121,
     0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<GoogleCloudApigeeV1DebugSessionTransaction>,
+  output: __S(3881, __c121, 9) as any as S.Schema<GoogleCloudApigeeV1DebugSessionTransaction>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10665,11 +10713,11 @@ export const getOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    482,
-    __c60,
-    2,
+    3904,
+    __c122,
+    0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudApigeeV1ArchiveDeployment>,
+  output: __S(12160, __c380, 0) as any as S.Schema<GoogleCloudApigeeV1ArchiveDeployment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10687,8 +10735,8 @@ export const getOrganizationsEnvironmentsDeployments: API.OperationMethod<
   GetOrganizationsEnvironmentsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<GetOrganizationsEnvironmentsDeploymentsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetOrganizationsEnvironmentsDeploymentsRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<GoogleCloudApigeeV1Deployment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10706,8 +10754,8 @@ export const getOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
   GetOrganizationsEnvironmentsFlowhooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<GetOrganizationsEnvironmentsFlowhooksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetOrganizationsEnvironmentsFlowhooksRequest>,
+  output: __S(14784, __c462, 0) as any as S.Schema<GoogleCloudApigeeV1FlowHook>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10725,8 +10773,8 @@ export const getOrganizationsEnvironmentsKeystores: API.OperationMethod<
   GetOrganizationsEnvironmentsKeystoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<GetOrganizationsEnvironmentsKeystoresRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetOrganizationsEnvironmentsKeystoresRequest>,
+  output: __S(12224, __c382, 0) as any as S.Schema<GoogleCloudApigeeV1Keystore>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10744,8 +10792,12 @@ export const getOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
   GetOrganizationsEnvironmentsKeystoresAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<GetOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
+  input: __S(
+    4096,
+    __c128,
+    0,
+  ) as any as S.Schema<GetOrganizationsEnvironmentsKeystoresAliasesRequest>,
+  output: __S(12291, __c384, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10763,8 +10815,8 @@ export const getOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   GetOrganizationsEnvironmentsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<GetOrganizationsEnvironmentsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetOrganizationsEnvironmentsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10783,11 +10835,11 @@ export const getOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    488,
-    __c61,
+    4160,
+    __c130,
     0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10805,8 +10857,8 @@ export const getOrganizationsEnvironmentsOptimizedStats: API.OperationMethod<
   GetOrganizationsEnvironmentsOptimizedStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<GetOrganizationsEnvironmentsOptimizedStatsRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<GoogleCloudApigeeV1OptimizedStats>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetOrganizationsEnvironmentsOptimizedStatsRequest>,
+  output: __S(4258, __c133, 2) as any as S.Schema<GoogleCloudApigeeV1OptimizedStats>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10824,8 +10876,8 @@ export const getOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetOrganizationsEnvironmentsQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<GetOrganizationsEnvironmentsQueriesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetOrganizationsEnvironmentsQueriesRequest>,
+  output: __S(12512, __c391, 0) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10843,8 +10895,8 @@ export const getOrganizationsEnvironmentsReferences: API.OperationMethod<
   GetOrganizationsEnvironmentsReferencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<GetOrganizationsEnvironmentsReferencesRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GoogleCloudApigeeV1Reference>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetOrganizationsEnvironmentsReferencesRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<GoogleCloudApigeeV1Reference>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10862,8 +10914,8 @@ export const getOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   GetOrganizationsEnvironmentsResourcefilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<GetOrganizationsEnvironmentsResourcefilesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetOrganizationsEnvironmentsResourcefilesRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10881,8 +10933,12 @@ export const getOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
   GetOrganizationsEnvironmentsSecurityActionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<GetOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
+  input: __S(
+    4384,
+    __c137,
+    0,
+  ) as any as S.Schema<GetOrganizationsEnvironmentsSecurityActionsRequest>,
+  output: __S(12677, __c396, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10901,11 +10957,11 @@ export const getOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    498,
-    __c62,
-    2,
+    4640,
+    __c145,
+    0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsSecurityIncidentsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10923,8 +10979,12 @@ export const getOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
   GetOrganizationsEnvironmentsSecurityReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<GetOrganizationsEnvironmentsSecurityReportsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
+  input: __S(
+    4672,
+    __c146,
+    0,
+  ) as any as S.Schema<GetOrganizationsEnvironmentsSecurityReportsRequest>,
+  output: __S(12800, __c400, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10942,8 +11002,8 @@ export const getOrganizationsEnvironmentsStats: API.OperationMethod<
   GetOrganizationsEnvironmentsStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<GetOrganizationsEnvironmentsStatsRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<GoogleCloudApigeeV1Stats>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetOrganizationsEnvironmentsStatsRequest>,
+  output: __S(4744, __c148, 8) as any as S.Schema<GoogleCloudApigeeV1Stats>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10961,8 +11021,8 @@ export const getOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   GetOrganizationsEnvironmentsTargetserversError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<GetOrganizationsEnvironmentsTargetserversRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetOrganizationsEnvironmentsTargetserversRequest>,
+  output: __S(13026, __c407, 2) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10981,11 +11041,11 @@ export const getOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    511,
-    __c63,
-    7,
+    4800,
+    __c150,
+    0,
   ) as any as S.Schema<GetOrganizationsEnvironmentsTraceConfigOverridesRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
+  output: __S(13120, __c410, 0) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11003,8 +11063,8 @@ export const getOrganizationsHostQueries: API.OperationMethod<
   GetOrganizationsHostQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<GetOrganizationsHostQueriesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetOrganizationsHostQueriesRequest>,
+  output: __S(12512, __c391, 0) as any as S.Schema<GoogleCloudApigeeV1AsyncQuery>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11022,8 +11082,8 @@ export const getOrganizationsHostSecurityReports: API.OperationMethod<
   GetOrganizationsHostSecurityReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<GetOrganizationsHostSecurityReportsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetOrganizationsHostSecurityReportsRequest>,
+  output: __S(12800, __c400, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReport>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11041,8 +11101,8 @@ export const getOrganizationsHostStats: API.OperationMethod<
   GetOrganizationsHostStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<GetOrganizationsHostStatsRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<GoogleCloudApigeeV1Stats>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetOrganizationsHostStatsRequest>,
+  output: __S(4744, __c148, 8) as any as S.Schema<GoogleCloudApigeeV1Stats>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11060,8 +11120,8 @@ export const getOrganizationsInstances: API.OperationMethod<
   GetOrganizationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<GetOrganizationsInstancesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GoogleCloudApigeeV1Instance>,
+  input: __S(4928, __c154, 0) as any as S.Schema<GetOrganizationsInstancesRequest>,
+  output: __S(13254, __c414, 6) as any as S.Schema<GoogleCloudApigeeV1Instance>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11079,8 +11139,8 @@ export const getOrganizationsInstancesAttachments: API.OperationMethod<
   GetOrganizationsInstancesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<GetOrganizationsInstancesAttachmentsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<GoogleCloudApigeeV1InstanceAttachment>,
+  input: __S(4960, __c155, 0) as any as S.Schema<GetOrganizationsInstancesAttachmentsRequest>,
+  output: __S(13312, __c416, 0) as any as S.Schema<GoogleCloudApigeeV1InstanceAttachment>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11098,8 +11158,8 @@ export const getOrganizationsInstancesCanaryevaluations: API.OperationMethod<
   GetOrganizationsInstancesCanaryevaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<GetOrganizationsInstancesCanaryevaluationsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<GoogleCloudApigeeV1CanaryEvaluation>,
+  input: __S(5056, __c158, 0) as any as S.Schema<GetOrganizationsInstancesCanaryevaluationsRequest>,
+  output: __S(13377, __c418, 1) as any as S.Schema<GoogleCloudApigeeV1CanaryEvaluation>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11117,8 +11177,8 @@ export const getOrganizationsInstancesNatAddresses: API.OperationMethod<
   GetOrganizationsInstancesNatAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<GetOrganizationsInstancesNatAddressesRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GoogleCloudApigeeV1NatAddress>,
+  input: __S(5088, __c159, 0) as any as S.Schema<GetOrganizationsInstancesNatAddressesRequest>,
+  output: __S(13440, __c420, 0) as any as S.Schema<GoogleCloudApigeeV1NatAddress>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11136,8 +11196,8 @@ export const getOrganizationsKeyvaluemaps: API.OperationMethod<
   GetOrganizationsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<GetOrganizationsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(5120, __c160, 0) as any as S.Schema<GetOrganizationsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11155,8 +11215,8 @@ export const getOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   GetOrganizationsKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<GetOrganizationsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetOrganizationsKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11174,8 +11234,8 @@ export const getOrganizationsOperations: API.OperationMethod<
   GetOrganizationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<GetOrganizationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetOrganizationsOperationsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11193,8 +11253,8 @@ export const getOrganizationsOptimizedHostStats: API.OperationMethod<
   GetOrganizationsOptimizedHostStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<GetOrganizationsOptimizedHostStatsRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<GoogleCloudApigeeV1OptimizedStats>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetOrganizationsOptimizedHostStatsRequest>,
+  output: __S(4258, __c133, 2) as any as S.Schema<GoogleCloudApigeeV1OptimizedStats>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11212,8 +11272,8 @@ export const getOrganizationsReports: API.OperationMethod<
   GetOrganizationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<GetOrganizationsReportsRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetOrganizationsReportsRequest>,
+  output: __S(13700, __c428, 4) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11231,8 +11291,8 @@ export const getOrganizationsSecurityFeedback: API.OperationMethod<
   GetOrganizationsSecurityFeedbackError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetOrganizationsSecurityFeedbackRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetOrganizationsSecurityFeedbackRequest>,
+  output: __S(13762, __c430, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11250,8 +11310,12 @@ export const getOrganizationsSecurityMonitoringConditions: API.OperationMethod<
   GetOrganizationsSecurityMonitoringConditionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<GetOrganizationsSecurityMonitoringConditionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
+  input: __S(
+    5312,
+    __c166,
+    0,
+  ) as any as S.Schema<GetOrganizationsSecurityMonitoringConditionsRequest>,
+  output: __S(13824, __c432, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11269,8 +11333,8 @@ export const getOrganizationsSecurityProfiles: API.OperationMethod<
   GetOrganizationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<GetOrganizationsSecurityProfilesRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetOrganizationsSecurityProfilesRequest>,
+  output: __S(13895, __c434, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11288,8 +11352,8 @@ export const getOrganizationsSecurityProfilesV2: API.OperationMethod<
   GetOrganizationsSecurityProfilesV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<GetOrganizationsSecurityProfilesV2Request>,
-  output: __S(257, __c32, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetOrganizationsSecurityProfilesV2Request>,
+  output: __S(13987, __c437, 3) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11307,8 +11371,8 @@ export const getOrganizationsSharedflows: API.OperationMethod<
   GetOrganizationsSharedflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<GetOrganizationsSharedflowsRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetOrganizationsSharedflowsRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11326,8 +11390,8 @@ export const getOrganizationsSharedflowsRevisions: API.OperationMethod<
   GetOrganizationsSharedflowsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<GetOrganizationsSharedflowsRevisionsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetOrganizationsSharedflowsRevisionsRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11345,8 +11409,8 @@ export const getOrganizationsSitesApicategories: API.OperationMethod<
   GetOrganizationsSitesApicategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<GetOrganizationsSitesApicategoriesRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetOrganizationsSitesApicategoriesRequest>,
+  output: __S(14144, __c442, 0) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11364,8 +11428,8 @@ export const getOrganizationsSitesApidocs: API.OperationMethod<
   GetOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetOrganizationsSitesApidocsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetOrganizationsSitesApidocsRequest>,
+  output: __S(14240, __c445, 0) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11383,8 +11447,8 @@ export const getOrganizationsSpaces: API.OperationMethod<
   GetOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<GetOrganizationsSpacesRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudApigeeV1Space>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetOrganizationsSpacesRequest>,
+  output: __S(14304, __c447, 0) as any as S.Schema<GoogleCloudApigeeV1Space>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11402,8 +11466,8 @@ export const getProjectMappingOrganizations: API.OperationMethod<
   GetProjectMappingOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<GetProjectMappingOrganizationsRequest>,
-  output: __S(534, __c66, 6) as any as S.Schema<GoogleCloudApigeeV1OrganizationProjectMapping>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetProjectMappingOrganizationsRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<GoogleCloudApigeeV1OrganizationProjectMapping>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11421,8 +11485,8 @@ export const getResultOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetResultOrganizationsEnvironmentsQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<GetResultOrganizationsEnvironmentsQueriesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(5664, __c177, 0) as any as S.Schema<GetResultOrganizationsEnvironmentsQueriesRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11441,11 +11505,11 @@ export const getResultOrganizationsEnvironmentsSecurityReports: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    536,
-    __c67,
+    5696,
+    __c178,
     0,
   ) as any as S.Schema<GetResultOrganizationsEnvironmentsSecurityReportsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11463,8 +11527,8 @@ export const getResultOrganizationsHostQueries: API.OperationMethod<
   GetResultOrganizationsHostQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<GetResultOrganizationsHostQueriesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetResultOrganizationsHostQueriesRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11482,8 +11546,8 @@ export const getResultOrganizationsHostSecurityReports: API.OperationMethod<
   GetResultOrganizationsHostSecurityReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<GetResultOrganizationsHostSecurityReportsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(5824, __c182, 0) as any as S.Schema<GetResultOrganizationsHostSecurityReportsRequest>,
+  output: __S(4480, __c140, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11501,8 +11565,16 @@ export const getResulturlOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetResulturlOrganizationsEnvironmentsQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<GetResulturlOrganizationsEnvironmentsQueriesRequest>,
-  output: __S(542, __c67, 6) as any as S.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse>,
+  input: __S(
+    5856,
+    __c183,
+    0,
+  ) as any as S.Schema<GetResulturlOrganizationsEnvironmentsQueriesRequest>,
+  output: __S(
+    5859,
+    __c183,
+    3,
+  ) as any as S.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11521,11 +11593,11 @@ export const getResultViewOrganizationsEnvironmentsSecurityReports: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    543,
-    __c67,
-    7,
+    5888,
+    __c184,
+    0,
   ) as any as S.Schema<GetResultViewOrganizationsEnvironmentsSecurityReportsRequest>,
-  output: __S(544, __c68, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultView>,
+  output: __S(5920, __c185, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultView>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11542,8 +11614,8 @@ export const getResultViewOrganizationsHostQueries: API.OperationMethod<
   GetResultViewOrganizationsHostQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<GetResultViewOrganizationsHostQueriesRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<GoogleCloudApigeeV1AsyncQueryResultView>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetResultViewOrganizationsHostQueriesRequest>,
+  output: __S(5953, __c186, 1) as any as S.Schema<GoogleCloudApigeeV1AsyncQueryResultView>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11562,11 +11634,11 @@ export const getResultViewOrganizationsHostSecurityReports: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    547,
-    __c68,
-    3,
+    5984,
+    __c187,
+    0,
   ) as any as S.Schema<GetResultViewOrganizationsHostSecurityReportsRequest>,
-  output: __S(544, __c68, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultView>,
+  output: __S(5920, __c185, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultView>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11584,8 +11656,8 @@ export const getRuntimeConfigOrganizations: API.OperationMethod<
   GetRuntimeConfigOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<GetRuntimeConfigOrganizationsRequest>,
-  output: __S(549, __c68, 5) as any as S.Schema<GoogleCloudApigeeV1RuntimeConfig>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetRuntimeConfigOrganizationsRequest>,
+  output: __S(6017, __c188, 1) as any as S.Schema<GoogleCloudApigeeV1RuntimeConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11604,11 +11676,11 @@ export const getSchemav2OrganizationsEnvironmentsAnalyticsAdmin: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    550,
-    __c68,
-    6,
+    6048,
+    __c189,
+    0,
   ) as any as S.Schema<GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest>,
-  output: __S(554, __c69, 2) as any as S.Schema<GoogleCloudApigeeV1Schema>,
+  output: __S(6052, __c189, 4) as any as S.Schema<GoogleCloudApigeeV1Schema>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11627,11 +11699,11 @@ export const getSecurityActionsConfigOrganizationsEnvironments: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    555,
-    __c69,
-    3,
+    6080,
+    __c190,
+    0,
   ) as any as S.Schema<GetSecurityActionsConfigOrganizationsEnvironmentsRequest>,
-  output: __S(556, __c69, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityActionsConfig>,
+  output: __S(6112, __c191, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityActionsConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11649,8 +11721,8 @@ export const getSecuritySettingsOrganizations: API.OperationMethod<
   GetSecuritySettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<GetSecuritySettingsOrganizationsRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<GoogleCloudApigeeV1SecuritySettings>,
+  input: __S(6144, __c192, 0) as any as S.Schema<GetSecuritySettingsOrganizationsRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<GoogleCloudApigeeV1SecuritySettings>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11670,8 +11742,8 @@ export const getSyncAuthorizationOrganizations: API.OperationMethod<
   GetSyncAuthorizationOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<GetSyncAuthorizationOrganizationsRequest>,
-  output: __S(560, __c70, 0) as any as S.Schema<GoogleCloudApigeeV1SyncAuthorization>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetSyncAuthorizationOrganizationsRequest>,
+  output: __S(6240, __c195, 0) as any as S.Schema<GoogleCloudApigeeV1SyncAuthorization>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11689,8 +11761,8 @@ export const getTraceConfigOrganizationsEnvironments: API.OperationMethod<
   GetTraceConfigOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<GetTraceConfigOrganizationsEnvironmentsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudApigeeV1TraceConfig>,
+  input: __S(6368, __c199, 0) as any as S.Schema<GetTraceConfigOrganizationsEnvironmentsRequest>,
+  output: __S(6401, __c200, 1) as any as S.Schema<GoogleCloudApigeeV1TraceConfig>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11709,14 +11781,14 @@ export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    564,
-    __c70,
-    4,
+    6432,
+    __c201,
+    0,
   ) as any as S.Schema<ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest>,
   output: __S(
-    120,
-    __c15,
-    0,
+    4545,
+    __c142,
+    1,
   ) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11731,8 +11803,8 @@ export const listHybridIssuers: API.OperationMethod<
   ListHybridIssuersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(565, __c70, 5) as any as S.Schema<ListHybridIssuersRequest>,
-  output: __S(568, __c71, 0) as any as S.Schema<GoogleCloudApigeeV1ListHybridIssuersResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<ListHybridIssuersRequest>,
+  output: __S(6467, __c202, 3) as any as S.Schema<GoogleCloudApigeeV1ListHybridIssuersResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11746,8 +11818,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(569, __c71, 1) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(571, __c71, 3) as any as S.Schema<GoogleCloudApigeeV1ListOrganizationsResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(6498, __c203, 2) as any as S.Schema<GoogleCloudApigeeV1ListOrganizationsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11765,8 +11837,8 @@ export const listOrganizationsAnalyticsDatastores: API.OperationMethod<
   ListOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<ListOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(574, __c71, 6) as any as S.Schema<GoogleCloudApigeeV1ListDatastoresResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<ListOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(6530, __c204, 2) as any as S.Schema<GoogleCloudApigeeV1ListDatastoresResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11785,11 +11857,11 @@ export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudApigeeV1ListApimServiceExtensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<ListOrganizationsApimServiceExtensionsRequest>,
+  input: __S(6560, __c205, 0) as any as S.Schema<ListOrganizationsApimServiceExtensionsRequest>,
   output: __S(
-    577,
-    __c72,
-    1,
+    6562,
+    __c205,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListApimServiceExtensionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11809,8 +11881,8 @@ export const listOrganizationsApiproducts: API.OperationMethod<
   ListOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<ListOrganizationsApiproductsRequest>,
-  output: __S(580, __c72, 4) as any as S.Schema<GoogleCloudApigeeV1ListApiProductsResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<ListOrganizationsApiproductsRequest>,
+  output: __S(6594, __c206, 2) as any as S.Schema<GoogleCloudApigeeV1ListApiProductsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11828,8 +11900,8 @@ export const listOrganizationsApiproductsAttributes: API.OperationMethod<
   ListOrganizationsApiproductsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<ListOrganizationsApiproductsAttributesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(6624, __c207, 0) as any as S.Schema<ListOrganizationsApiproductsAttributesRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11847,8 +11919,8 @@ export const listOrganizationsApiproductsRateplans: API.OperationMethod<
   ListOrganizationsApiproductsRateplansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<ListOrganizationsApiproductsRateplansRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<GoogleCloudApigeeV1ListRatePlansResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<ListOrganizationsApiproductsRateplansRequest>,
+  output: __S(6658, __c208, 2) as any as S.Schema<GoogleCloudApigeeV1ListRatePlansResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11862,8 +11934,8 @@ export const listOrganizationsApis: API.OperationMethod<
   ListOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<ListOrganizationsApisRequest>,
-  output: __S(587, __c73, 3) as any as S.Schema<GoogleCloudApigeeV1ListApiProxiesResponse>,
+  input: __S(6688, __c209, 0) as any as S.Schema<ListOrganizationsApisRequest>,
+  output: __S(6690, __c209, 2) as any as S.Schema<GoogleCloudApigeeV1ListApiProxiesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11882,8 +11954,8 @@ export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListApiDebugSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<ListOrganizationsApisDebugsessionsRequest>,
-  output: __S(591, __c73, 7) as any as S.Schema<GoogleCloudApigeeV1ListApiDebugSessionsResponse>,
+  input: __S(6784, __c212, 0) as any as S.Schema<ListOrganizationsApisDebugsessionsRequest>,
+  output: __S(6787, __c212, 3) as any as S.Schema<GoogleCloudApigeeV1ListApiDebugSessionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11902,8 +11974,8 @@ export const listOrganizationsApisDeployments: API.OperationMethod<
   ListOrganizationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<ListOrganizationsApisDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<ListOrganizationsApisDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11922,8 +11994,8 @@ export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>,
-  output: __S(596, __c74, 4) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11942,8 +12014,8 @@ export const listOrganizationsApisRevisionsDeployments: API.OperationMethod<
   ListOrganizationsApisRevisionsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<ListOrganizationsApisRevisionsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<ListOrganizationsApisRevisionsDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11962,8 +12034,8 @@ export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListAppGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<ListOrganizationsAppgroupsRequest>,
-  output: __S(600, __c75, 0) as any as S.Schema<GoogleCloudApigeeV1ListAppGroupsResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<ListOrganizationsAppgroupsRequest>,
+  output: __S(6978, __c218, 2) as any as S.Schema<GoogleCloudApigeeV1ListAppGroupsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11983,8 +12055,8 @@ export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListAppGroupAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<ListOrganizationsAppgroupsAppsRequest>,
-  output: __S(603, __c75, 3) as any as S.Schema<GoogleCloudApigeeV1ListAppGroupAppsResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<ListOrganizationsAppgroupsAppsRequest>,
+  output: __S(7010, __c219, 2) as any as S.Schema<GoogleCloudApigeeV1ListAppGroupAppsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12004,11 +12076,11 @@ export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<ListOrganizationsAppgroupsSubscriptionsRequest>,
+  input: __S(7040, __c220, 0) as any as S.Schema<ListOrganizationsAppgroupsSubscriptionsRequest>,
   output: __S(
-    606,
-    __c75,
-    6,
+    7042,
+    __c220,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12025,8 +12097,8 @@ export const listOrganizationsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<ListOrganizationsAppsRequest>,
-  output: __S(609, __c76, 1) as any as S.Schema<GoogleCloudApigeeV1ListAppsResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<ListOrganizationsAppsRequest>,
+  output: __S(7074, __c221, 2) as any as S.Schema<GoogleCloudApigeeV1ListAppsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12046,8 +12118,8 @@ export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListDataCollectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<ListOrganizationsDatacollectorsRequest>,
-  output: __S(612, __c76, 4) as any as S.Schema<GoogleCloudApigeeV1ListDataCollectorsResponse>,
+  input: __S(7104, __c222, 0) as any as S.Schema<ListOrganizationsDatacollectorsRequest>,
+  output: __S(7106, __c222, 2) as any as S.Schema<GoogleCloudApigeeV1ListDataCollectorsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12066,8 +12138,8 @@ export const listOrganizationsDeployments: API.OperationMethod<
   ListOrganizationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<ListOrganizationsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<ListOrganizationsDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12085,8 +12157,8 @@ export const listOrganizationsDevelopers: API.OperationMethod<
   ListOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<ListOrganizationsDevelopersRequest>,
-  output: __S(616, __c77, 0) as any as S.Schema<GoogleCloudApigeeV1ListOfDevelopersResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<ListOrganizationsDevelopersRequest>,
+  output: __S(7234, __c226, 2) as any as S.Schema<GoogleCloudApigeeV1ListOfDevelopersResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12104,8 +12176,8 @@ export const listOrganizationsDevelopersApps: API.OperationMethod<
   ListOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(617, __c77, 1) as any as S.Schema<ListOrganizationsDevelopersAppsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleCloudApigeeV1ListDeveloperAppsResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<ListOrganizationsDevelopersAppsRequest>,
+  output: __S(7266, __c227, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeveloperAppsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12123,8 +12195,8 @@ export const listOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   ListOrganizationsDevelopersAppsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<ListOrganizationsDevelopersAppsAttributesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(7296, __c228, 0) as any as S.Schema<ListOrganizationsDevelopersAppsAttributesRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12142,8 +12214,8 @@ export const listOrganizationsDevelopersAttributes: API.OperationMethod<
   ListOrganizationsDevelopersAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<ListOrganizationsDevelopersAttributesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
+  input: __S(7328, __c229, 0) as any as S.Schema<ListOrganizationsDevelopersAttributesRequest>,
+  output: __S(15296, __c478, 0) as any as S.Schema<GoogleCloudApigeeV1Attributes>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12161,11 +12233,11 @@ export const listOrganizationsDevelopersSubscriptions: API.OperationMethod<
   ListOrganizationsDevelopersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<ListOrganizationsDevelopersSubscriptionsRequest>,
+  input: __S(7360, __c230, 0) as any as S.Schema<ListOrganizationsDevelopersSubscriptionsRequest>,
   output: __S(
-    624,
-    __c78,
-    0,
+    7362,
+    __c230,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12185,8 +12257,8 @@ export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListDnsZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<ListOrganizationsDnsZonesRequest>,
-  output: __S(627, __c78, 3) as any as S.Schema<GoogleCloudApigeeV1ListDnsZonesResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<ListOrganizationsDnsZonesRequest>,
+  output: __S(7394, __c231, 2) as any as S.Schema<GoogleCloudApigeeV1ListDnsZonesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12206,8 +12278,12 @@ export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListEndpointAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(628, __c78, 4) as any as S.Schema<ListOrganizationsEndpointAttachmentsRequest>,
-  output: __S(630, __c78, 6) as any as S.Schema<GoogleCloudApigeeV1ListEndpointAttachmentsResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<ListOrganizationsEndpointAttachmentsRequest>,
+  output: __S(
+    7426,
+    __c232,
+    2,
+  ) as any as S.Schema<GoogleCloudApigeeV1ListEndpointAttachmentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12227,8 +12303,8 @@ export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<ListOrganizationsEnvgroupsRequest>,
-  output: __S(633, __c79, 1) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentGroupsResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<ListOrganizationsEnvgroupsRequest>,
+  output: __S(7458, __c233, 2) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentGroupsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12248,11 +12324,11 @@ export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(634, __c79, 2) as any as S.Schema<ListOrganizationsEnvgroupsAttachmentsRequest>,
+  input: __S(7488, __c234, 0) as any as S.Schema<ListOrganizationsEnvgroupsAttachmentsRequest>,
   output: __S(
-    636,
-    __c79,
-    4,
+    7490,
+    __c234,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12273,11 +12349,11 @@ export const listOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    637,
-    __c79,
-    5,
+    7520,
+    __c235,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsAnalyticsExportsRequest>,
-  output: __S(639, __c79, 7) as any as S.Schema<GoogleCloudApigeeV1ListExportsResponse>,
+  output: __S(7522, __c235, 2) as any as S.Schema<GoogleCloudApigeeV1ListExportsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12295,8 +12371,12 @@ export const listOrganizationsEnvironmentsApisDeployments: API.OperationMethod<
   ListOrganizationsEnvironmentsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<ListOrganizationsEnvironmentsApisDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(
+    7616,
+    __c238,
+    0,
+  ) as any as S.Schema<ListOrganizationsEnvironmentsApisDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12316,11 +12396,11 @@ export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Pagina
   GoogleCloudApigeeV1ListDebugSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    641,
-    __c80,
-    1,
+    7648,
+    __c239,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>,
-  output: __S(644, __c80, 4) as any as S.Schema<GoogleCloudApigeeV1ListDebugSessionsResponse>,
+  output: __S(7651, __c239, 3) as any as S.Schema<GoogleCloudApigeeV1ListDebugSessionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12341,11 +12421,15 @@ export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOpera
   GoogleCloudApigeeV1ListArchiveDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    645,
-    __c80,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(647, __c80, 7) as any as S.Schema<GoogleCloudApigeeV1ListArchiveDeploymentsResponse>,
+  output: __S(
+    7682,
+    __c240,
+    2,
+  ) as any as S.Schema<GoogleCloudApigeeV1ListArchiveDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12364,8 +12448,8 @@ export const listOrganizationsEnvironmentsDeployments: API.OperationMethod<
   ListOrganizationsEnvironmentsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<ListOrganizationsEnvironmentsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<ListOrganizationsEnvironmentsDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12385,11 +12469,11 @@ export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOper
   GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    649,
-    __c81,
-    1,
+    7744,
+    __c242,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>,
-  output: __S(596, __c74, 4) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12408,8 +12492,8 @@ export const listOrganizationsEnvironmentsQueries: API.OperationMethod<
   ListOrganizationsEnvironmentsQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<ListOrganizationsEnvironmentsQueriesRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<ListOrganizationsEnvironmentsQueriesRequest>,
+  output: __S(7809, __c244, 1) as any as S.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12427,11 +12511,11 @@ export const listOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   ListOrganizationsEnvironmentsResourcefilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<ListOrganizationsEnvironmentsResourcefilesRequest>,
+  input: __S(7840, __c245, 0) as any as S.Schema<ListOrganizationsEnvironmentsResourcefilesRequest>,
   output: __S(
-    120,
-    __c15,
-    0,
+    4545,
+    __c142,
+    1,
   ) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12451,8 +12535,12 @@ export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<ListOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(656, __c82, 0) as any as S.Schema<GoogleCloudApigeeV1ListSecurityActionsResponse>,
+  input: __S(
+    7872,
+    __c246,
+    0,
+  ) as any as S.Schema<ListOrganizationsEnvironmentsSecurityActionsRequest>,
+  output: __S(7874, __c246, 2) as any as S.Schema<GoogleCloudApigeeV1ListSecurityActionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12473,11 +12561,11 @@ export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperat
   GoogleCloudApigeeV1ListSecurityIncidentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    657,
-    __c82,
-    1,
+    7904,
+    __c247,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsSecurityIncidentsRequest>,
-  output: __S(658, __c82, 2) as any as S.Schema<GoogleCloudApigeeV1ListSecurityIncidentsResponse>,
+  output: __S(7905, __c247, 1) as any as S.Schema<GoogleCloudApigeeV1ListSecurityIncidentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12497,8 +12585,12 @@ export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(659, __c82, 3) as any as S.Schema<ListOrganizationsEnvironmentsSecurityReportsRequest>,
-  output: __S(661, __c82, 5) as any as S.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse>,
+  input: __S(
+    7936,
+    __c248,
+    0,
+  ) as any as S.Schema<ListOrganizationsEnvironmentsSecurityReportsRequest>,
+  output: __S(7969, __c249, 1) as any as S.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12518,11 +12610,11 @@ export const listOrganizationsEnvironmentsSharedflowsDeployments: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    662,
-    __c82,
-    6,
+    8064,
+    __c252,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12542,14 +12634,14 @@ export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOpe
   GoogleCloudApigeeV1ListTraceConfigOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    663,
-    __c82,
-    7,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<ListOrganizationsEnvironmentsTraceConfigOverridesRequest>,
   output: __S(
-    665,
-    __c83,
-    1,
+    8098,
+    __c253,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListTraceConfigOverridesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12569,8 +12661,8 @@ export const listOrganizationsHostQueries: API.OperationMethod<
   ListOrganizationsHostQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(666, __c83, 2) as any as S.Schema<ListOrganizationsHostQueriesRequest>,
-  output: __S(652, __c81, 4) as any as S.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse>,
+  input: __S(8128, __c254, 0) as any as S.Schema<ListOrganizationsHostQueriesRequest>,
+  output: __S(7809, __c244, 1) as any as S.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12589,8 +12681,8 @@ export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<ListOrganizationsHostSecurityReportsRequest>,
-  output: __S(661, __c82, 5) as any as S.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse>,
+  input: __S(8160, __c255, 0) as any as S.Schema<ListOrganizationsHostSecurityReportsRequest>,
+  output: __S(7969, __c249, 1) as any as S.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12610,8 +12702,8 @@ export const listOrganizationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<ListOrganizationsInstancesRequest>,
-  output: __S(670, __c83, 6) as any as S.Schema<GoogleCloudApigeeV1ListInstancesResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<ListOrganizationsInstancesRequest>,
+  output: __S(8194, __c256, 2) as any as S.Schema<GoogleCloudApigeeV1ListInstancesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12631,8 +12723,12 @@ export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<ListOrganizationsInstancesAttachmentsRequest>,
-  output: __S(673, __c84, 1) as any as S.Schema<GoogleCloudApigeeV1ListInstanceAttachmentsResponse>,
+  input: __S(8224, __c257, 0) as any as S.Schema<ListOrganizationsInstancesAttachmentsRequest>,
+  output: __S(
+    8226,
+    __c257,
+    2,
+  ) as any as S.Schema<GoogleCloudApigeeV1ListInstanceAttachmentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12652,8 +12748,8 @@ export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudApigeeV1ListNatAddressesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(674, __c84, 2) as any as S.Schema<ListOrganizationsInstancesNatAddressesRequest>,
-  output: __S(676, __c84, 4) as any as S.Schema<GoogleCloudApigeeV1ListNatAddressesResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<ListOrganizationsInstancesNatAddressesRequest>,
+  output: __S(8258, __c258, 2) as any as S.Schema<GoogleCloudApigeeV1ListNatAddressesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12673,8 +12769,8 @@ export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<ListOrganizationsKeyvaluemapsEntriesRequest>,
-  output: __S(596, __c74, 4) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
+  input: __S(8288, __c259, 0) as any as S.Schema<ListOrganizationsKeyvaluemapsEntriesRequest>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12694,8 +12790,8 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<ListOrganizationsOperationsRequest>,
-  output: __S(680, __c85, 0) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(8320, __c260, 0) as any as S.Schema<ListOrganizationsOperationsRequest>,
+  output: __S(8322, __c260, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12714,8 +12810,8 @@ export const listOrganizationsReports: API.OperationMethod<
   ListOrganizationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<ListOrganizationsReportsRequest>,
-  output: __S(683, __c85, 3) as any as S.Schema<GoogleCloudApigeeV1ListCustomReportsResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<ListOrganizationsReportsRequest>,
+  output: __S(8354, __c261, 2) as any as S.Schema<GoogleCloudApigeeV1ListCustomReportsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12734,8 +12830,8 @@ export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityFeedbackResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(684, __c85, 4) as any as S.Schema<ListOrganizationsSecurityFeedbackRequest>,
-  output: __S(686, __c85, 6) as any as S.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse>,
+  input: __S(8448, __c264, 0) as any as S.Schema<ListOrganizationsSecurityFeedbackRequest>,
+  output: __S(8450, __c264, 2) as any as S.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12756,14 +12852,14 @@ export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperati
   GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    687,
-    __c85,
-    7,
+    8480,
+    __c265,
+    0,
   ) as any as S.Schema<ListOrganizationsSecurityMonitoringConditionsRequest>,
   output: __S(
-    689,
-    __c86,
-    1,
+    8482,
+    __c265,
+    2,
   ) as any as S.Schema<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12784,8 +12880,8 @@ export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(690, __c86, 2) as any as S.Schema<ListOrganizationsSecurityProfilesRequest>,
-  output: __S(692, __c86, 4) as any as S.Schema<GoogleCloudApigeeV1ListSecurityProfilesResponse>,
+  input: __S(8512, __c266, 0) as any as S.Schema<ListOrganizationsSecurityProfilesRequest>,
+  output: __S(8513, __c266, 1) as any as S.Schema<GoogleCloudApigeeV1ListSecurityProfilesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12805,8 +12901,12 @@ export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityProfilesV2Response
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<ListOrganizationsSecurityProfilesV2Request>,
-  output: __S(695, __c86, 7) as any as S.Schema<GoogleCloudApigeeV1ListSecurityProfilesV2Response>,
+  input: __S(8576, __c268, 0) as any as S.Schema<ListOrganizationsSecurityProfilesV2Request>,
+  output: __S(
+    8578,
+    __c268,
+    2,
+  ) as any as S.Schema<GoogleCloudApigeeV1ListSecurityProfilesV2Response>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12825,8 +12925,8 @@ export const listOrganizationsSharedflows: API.OperationMethod<
   ListOrganizationsSharedflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<ListOrganizationsSharedflowsRequest>,
-  output: __S(698, __c87, 2) as any as S.Schema<GoogleCloudApigeeV1ListSharedFlowsResponse>,
+  input: __S(8608, __c269, 0) as any as S.Schema<ListOrganizationsSharedflowsRequest>,
+  output: __S(8610, __c269, 2) as any as S.Schema<GoogleCloudApigeeV1ListSharedFlowsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12844,8 +12944,8 @@ export const listOrganizationsSharedflowsDeployments: API.OperationMethod<
   ListOrganizationsSharedflowsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(699, __c87, 3) as any as S.Schema<ListOrganizationsSharedflowsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  input: __S(8640, __c270, 0) as any as S.Schema<ListOrganizationsSharedflowsDeploymentsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12864,11 +12964,11 @@ export const listOrganizationsSharedflowsRevisionsDeployments: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    700,
-    __c87,
-    4,
+    8672,
+    __c271,
+    0,
   ) as any as S.Schema<ListOrganizationsSharedflowsRevisionsDeploymentsRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
+  output: __S(6849, __c214, 1) as any as S.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12886,8 +12986,8 @@ export const listOrganizationsSitesApicategories: API.OperationMethod<
   ListOrganizationsSitesApicategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701, __c87, 5) as any as S.Schema<ListOrganizationsSitesApicategoriesRequest>,
-  output: __S(703, __c87, 7) as any as S.Schema<GoogleCloudApigeeV1ListApiCategoriesResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<ListOrganizationsSitesApicategoriesRequest>,
+  output: __S(8706, __c272, 2) as any as S.Schema<GoogleCloudApigeeV1ListApiCategoriesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12906,8 +13006,8 @@ export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListApiDocsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<ListOrganizationsSitesApidocsRequest>,
-  output: __S(706, __c88, 2) as any as S.Schema<GoogleCloudApigeeV1ListApiDocsResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<ListOrganizationsSitesApidocsRequest>,
+  output: __S(8738, __c273, 2) as any as S.Schema<GoogleCloudApigeeV1ListApiDocsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12927,8 +13027,8 @@ export const listOrganizationsSpaces: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApigeeV1ListSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(707, __c88, 3) as any as S.Schema<ListOrganizationsSpacesRequest>,
-  output: __S(709, __c88, 5) as any as S.Schema<GoogleCloudApigeeV1ListSpacesResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<ListOrganizationsSpacesRequest>,
+  output: __S(8770, __c274, 2) as any as S.Schema<GoogleCloudApigeeV1ListSpacesResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12948,11 +13048,11 @@ export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(710, __c88, 6) as any as S.Schema<ListRevisionsOrganizationsSecurityProfilesRequest>,
+  input: __S(8896, __c278, 0) as any as S.Schema<ListRevisionsOrganizationsSecurityProfilesRequest>,
   output: __S(
-    711,
-    __c88,
-    7,
+    8897,
+    __c278,
+    1,
   ) as any as S.Schema<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse>,
   errors: [NotFound, Forbidden, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12974,8 +13074,8 @@ export const modifyEnvironmentOrganizationsEnvironments: API.OperationMethod<
   ModifyEnvironmentOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<ModifyEnvironmentOrganizationsEnvironmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(8928, __c279, 0) as any as S.Schema<ModifyEnvironmentOrganizationsEnvironmentsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12995,8 +13095,8 @@ export const moveOrganizationsApiproducts: API.OperationMethod<
   MoveOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(714, __c89, 2) as any as S.Schema<MoveOrganizationsApiproductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
+  input: __S(8960, __c280, 0) as any as S.Schema<MoveOrganizationsApiproductsRequest>,
+  output: __S(3641, __c113, 25) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13016,8 +13116,8 @@ export const moveOrganizationsApis: API.OperationMethod<
   MoveOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(715, __c89, 3) as any as S.Schema<MoveOrganizationsApisRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
+  input: __S(9024, __c282, 0) as any as S.Schema<MoveOrganizationsApisRequest>,
+  output: __S(14880, __c465, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13037,8 +13137,8 @@ export const moveOrganizationsSharedflows: API.OperationMethod<
   MoveOrganizationsSharedflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(716, __c89, 4) as any as S.Schema<MoveOrganizationsSharedflowsRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
+  input: __S(9056, __c283, 0) as any as S.Schema<MoveOrganizationsSharedflowsRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlow>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13058,8 +13158,8 @@ export const patchOrganizationsApimServiceExtensions: API.OperationMethod<
   PatchOrganizationsApimServiceExtensionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(717, __c89, 5) as any as S.Schema<PatchOrganizationsApimServiceExtensionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9088, __c284, 0) as any as S.Schema<PatchOrganizationsApimServiceExtensionsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13079,8 +13179,8 @@ export const patchOrganizationsApis: API.OperationMethod<
   PatchOrganizationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718, __c89, 6) as any as S.Schema<PatchOrganizationsApisRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
+  input: __S(9120, __c285, 0) as any as S.Schema<PatchOrganizationsApisRequest>,
+  output: __S(14880, __c465, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13100,8 +13200,8 @@ export const patchOrganizationsDatacollectors: API.OperationMethod<
   PatchOrganizationsDatacollectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(719, __c89, 7) as any as S.Schema<PatchOrganizationsDatacollectorsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
+  input: __S(9152, __c286, 0) as any as S.Schema<PatchOrganizationsDatacollectorsRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<GoogleCloudApigeeV1DataCollector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13121,8 +13221,8 @@ export const patchOrganizationsEnvgroups: API.OperationMethod<
   PatchOrganizationsEnvgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c90, 0) as any as S.Schema<PatchOrganizationsEnvgroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9184, __c287, 0) as any as S.Schema<PatchOrganizationsEnvgroupsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13143,11 +13243,11 @@ export const patchOrganizationsEnvironmentsArchiveDeployments: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    721,
-    __c90,
-    1,
+    9216,
+    __c288,
+    0,
   ) as any as S.Schema<PatchOrganizationsEnvironmentsArchiveDeploymentsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudApigeeV1ArchiveDeployment>,
+  output: __S(12160, __c380, 0) as any as S.Schema<GoogleCloudApigeeV1ArchiveDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13168,11 +13268,11 @@ export const patchOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    722,
-    __c90,
-    2,
+    9280,
+    __c290,
+    0,
   ) as any as S.Schema<PatchOrganizationsEnvironmentsSecurityActionsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
+  output: __S(12677, __c396, 5) as any as S.Schema<GoogleCloudApigeeV1SecurityAction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13193,11 +13293,11 @@ export const patchOrganizationsEnvironmentsSecurityIncidents: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    723,
-    __c90,
-    3,
+    9312,
+    __c291,
+    0,
   ) as any as S.Schema<PatchOrganizationsEnvironmentsSecurityIncidentsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13218,11 +13318,11 @@ export const patchOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    724,
-    __c90,
-    4,
+    9344,
+    __c292,
+    0,
   ) as any as S.Schema<PatchOrganizationsEnvironmentsTraceConfigOverridesRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
+  output: __S(13120, __c410, 0) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverride>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13242,8 +13342,8 @@ export const patchOrganizationsInstances: API.OperationMethod<
   PatchOrganizationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(725, __c90, 5) as any as S.Schema<PatchOrganizationsInstancesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9376, __c293, 0) as any as S.Schema<PatchOrganizationsInstancesRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13263,8 +13363,8 @@ export const patchOrganizationsSecurityFeedback: API.OperationMethod<
   PatchOrganizationsSecurityFeedbackError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(726, __c90, 6) as any as S.Schema<PatchOrganizationsSecurityFeedbackRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
+  input: __S(9408, __c294, 0) as any as S.Schema<PatchOrganizationsSecurityFeedbackRequest>,
+  output: __S(13762, __c430, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedback>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13285,11 +13385,11 @@ export const patchOrganizationsSecurityMonitoringConditions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    727,
-    __c90,
-    7,
+    9440,
+    __c295,
+    0,
   ) as any as S.Schema<PatchOrganizationsSecurityMonitoringConditionsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
+  output: __S(13824, __c432, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13309,8 +13409,8 @@ export const patchOrganizationsSecurityProfiles: API.OperationMethod<
   PatchOrganizationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<PatchOrganizationsSecurityProfilesRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
+  input: __S(9472, __c296, 0) as any as S.Schema<PatchOrganizationsSecurityProfilesRequest>,
+  output: __S(13895, __c434, 7) as any as S.Schema<GoogleCloudApigeeV1SecurityProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13330,8 +13430,8 @@ export const patchOrganizationsSecurityProfilesV2: API.OperationMethod<
   PatchOrganizationsSecurityProfilesV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(729, __c91, 1) as any as S.Schema<PatchOrganizationsSecurityProfilesV2Request>,
-  output: __S(257, __c32, 1) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
+  input: __S(9504, __c297, 0) as any as S.Schema<PatchOrganizationsSecurityProfilesV2Request>,
+  output: __S(13987, __c437, 3) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13351,8 +13451,8 @@ export const patchOrganizationsSitesApicategories: API.OperationMethod<
   PatchOrganizationsSitesApicategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(730, __c91, 2) as any as S.Schema<PatchOrganizationsSitesApicategoriesRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
+  input: __S(9536, __c298, 0) as any as S.Schema<PatchOrganizationsSitesApicategoriesRequest>,
+  output: __S(14144, __c442, 0) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13372,8 +13472,8 @@ export const patchOrganizationsSpaces: API.OperationMethod<
   PatchOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731, __c91, 3) as any as S.Schema<PatchOrganizationsSpacesRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudApigeeV1Space>,
+  input: __S(9568, __c299, 0) as any as S.Schema<PatchOrganizationsSpacesRequest>,
+  output: __S(14304, __c447, 0) as any as S.Schema<GoogleCloudApigeeV1Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13393,8 +13493,8 @@ export const provisionOrganizationProjects: API.OperationMethod<
   ProvisionOrganizationProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(733, __c91, 5) as any as S.Schema<ProvisionOrganizationProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9665, __c302, 1) as any as S.Schema<ProvisionOrganizationProjectsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13415,11 +13515,11 @@ export const queryTabularStatsOrganizationsEnvironmentsSecurityStats: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    737,
-    __c92,
+    9697,
+    __c303,
     1,
   ) as any as S.Schema<QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest>,
-  output: __S(739, __c92, 3) as any as S.Schema<GoogleCloudApigeeV1QueryTabularStatsResponse>,
+  output: __S(9698, __c303, 2) as any as S.Schema<GoogleCloudApigeeV1QueryTabularStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13440,11 +13540,11 @@ export const queryTimeSeriesStatsOrganizationsEnvironmentsSecurityStats: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    741,
-    __c92,
-    5,
+    9761,
+    __c305,
+    1,
   ) as any as S.Schema<QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest>,
-  output: __S(744, __c93, 0) as any as S.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse>,
+  output: __S(9764, __c305, 4) as any as S.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13465,11 +13565,11 @@ export const replaceDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    745,
-    __c93,
-    1,
+    9792,
+    __c306,
+    0,
   ) as any as S.Schema<ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13489,8 +13589,8 @@ export const reportStatusOrganizationsInstances: API.OperationMethod<
   ReportStatusOrganizationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753, __c94, 1) as any as S.Schema<ReportStatusOrganizationsInstancesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse>,
+  input: __S(9831, __c307, 7) as any as S.Schema<ReportStatusOrganizationsInstancesRequest>,
+  output: __S(12928, __c404, 0) as any as S.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13511,11 +13611,11 @@ export const setAddonEnablementOrganizationsEnvironmentsAddonsConfig: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    755,
-    __c94,
-    3,
+    9857,
+    __c308,
+    1,
   ) as any as S.Schema<SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13535,8 +13635,8 @@ export const setAddonsOrganizations: API.OperationMethod<
   SetAddonsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(757, __c94, 5) as any as S.Schema<SetAddonsOrganizationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9889, __c309, 1) as any as S.Schema<SetAddonsOrganizationsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13556,8 +13656,8 @@ export const setDeveloperStatusOrganizationsDevelopers: API.OperationMethod<
   SetDeveloperStatusOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(758, __c94, 6) as any as S.Schema<SetDeveloperStatusOrganizationsDevelopersRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(9920, __c310, 0) as any as S.Schema<SetDeveloperStatusOrganizationsDevelopersRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13577,8 +13677,8 @@ export const setIamPolicyOrganizationsEnvironments: API.OperationMethod<
   SetIamPolicyOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(760, __c95, 0) as any as S.Schema<SetIamPolicyOrganizationsEnvironmentsRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(9952, __c311, 0) as any as S.Schema<SetIamPolicyOrganizationsEnvironmentsRequest>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13599,11 +13699,11 @@ export const setIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    761,
-    __c95,
-    1,
+    10016,
+    __c313,
+    0,
   ) as any as S.Schema<SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13623,8 +13723,8 @@ export const setIamPolicyOrganizationsSpaces: API.OperationMethod<
   SetIamPolicyOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(762, __c95, 2) as any as S.Schema<SetIamPolicyOrganizationsSpacesRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(10112, __c316, 0) as any as S.Schema<SetIamPolicyOrganizationsSpacesRequest>,
+  output: __S(2471, __c77, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13644,8 +13744,8 @@ export const setSyncAuthorizationOrganizations: API.OperationMethod<
   SetSyncAuthorizationOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(763, __c95, 3) as any as S.Schema<SetSyncAuthorizationOrganizationsRequest>,
-  output: __S(560, __c70, 0) as any as S.Schema<GoogleCloudApigeeV1SyncAuthorization>,
+  input: __S(10144, __c317, 0) as any as S.Schema<SetSyncAuthorizationOrganizationsRequest>,
+  output: __S(6240, __c195, 0) as any as S.Schema<GoogleCloudApigeeV1SyncAuthorization>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13665,8 +13765,8 @@ export const subscribeOrganizationsEnvironments: API.OperationMethod<
   SubscribeOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(764, __c95, 4) as any as S.Schema<SubscribeOrganizationsEnvironmentsRequest>,
-  output: __S(765, __c95, 5) as any as S.Schema<GoogleCloudApigeeV1Subscription>,
+  input: __S(10176, __c318, 0) as any as S.Schema<SubscribeOrganizationsEnvironmentsRequest>,
+  output: __S(10208, __c319, 0) as any as S.Schema<GoogleCloudApigeeV1Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13686,8 +13786,12 @@ export const testIamPermissionsOrganizationsEnvironments: API.OperationMethod<
   TestIamPermissionsOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(767, __c95, 7) as any as S.Schema<TestIamPermissionsOrganizationsEnvironmentsRequest>,
-  output: __S(766, __c95, 6) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(
+    10240,
+    __c320,
+    0,
+  ) as any as S.Schema<TestIamPermissionsOrganizationsEnvironmentsRequest>,
+  output: __S(10272, __c321, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13708,11 +13812,11 @@ export const testIamPermissionsOrganizationsEnvironmentsDeployments: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    768,
-    __c96,
+    10304,
+    __c322,
     0,
   ) as any as S.Schema<TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest>,
-  output: __S(766, __c95, 6) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(10272, __c321, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13732,8 +13836,8 @@ export const testIamPermissionsOrganizationsSpaces: API.OperationMethod<
   TestIamPermissionsOrganizationsSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(769, __c96, 1) as any as S.Schema<TestIamPermissionsOrganizationsSpacesRequest>,
-  output: __S(766, __c95, 6) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(10336, __c323, 0) as any as S.Schema<TestIamPermissionsOrganizationsSpacesRequest>,
+  output: __S(10272, __c321, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13753,8 +13857,8 @@ export const testOrganizationsAnalyticsDatastores: API.OperationMethod<
   TestOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(770, __c96, 2) as any as S.Schema<TestOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(771, __c96, 3) as any as S.Schema<GoogleCloudApigeeV1TestDatastoreResponse>,
+  input: __S(10368, __c324, 0) as any as S.Schema<TestOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(10369, __c324, 1) as any as S.Schema<GoogleCloudApigeeV1TestDatastoreResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13775,11 +13879,11 @@ export const undeployOrganizationsEnvironmentsApisRevisions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    772,
-    __c96,
-    4,
+    10400,
+    __c325,
+    0,
   ) as any as S.Schema<UndeployOrganizationsEnvironmentsApisRevisionsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13800,11 +13904,11 @@ export const undeployOrganizationsEnvironmentsSharedflowsRevisions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    773,
-    __c96,
-    5,
+    10432,
+    __c326,
+    0,
   ) as any as S.Schema<UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13824,8 +13928,8 @@ export const unsubscribeOrganizationsEnvironments: API.OperationMethod<
   UnsubscribeOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(774, __c96, 6) as any as S.Schema<UnsubscribeOrganizationsEnvironmentsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(10464, __c327, 0) as any as S.Schema<UnsubscribeOrganizationsEnvironmentsRequest>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13846,11 +13950,11 @@ export const updateApiProductAttributeOrganizationsApiproductsAttributes: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    775,
-    __c96,
-    7,
+    10560,
+    __c330,
+    0,
   ) as any as S.Schema<UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13871,11 +13975,11 @@ export const updateApiProxyRevisionOrganizationsApisRevisions: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    776,
-    __c97,
+    10592,
+    __c331,
     0,
   ) as any as S.Schema<UpdateApiProxyRevisionOrganizationsApisRevisionsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
+  output: __S(4608, __c144, 0) as any as S.Schema<GoogleCloudApigeeV1ApiProxyRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13896,11 +14000,11 @@ export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    777,
-    __c97,
-    1,
+    10624,
+    __c332,
+    0,
   ) as any as S.Schema<UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13921,11 +14025,11 @@ export const updateAppGroupAppKeyOrganizationsAppgroupsAppsKeys: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    779,
-    __c97,
-    3,
+    10657,
+    __c333,
+    1,
   ) as any as S.Schema<UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
+  output: __S(6754, __c211, 2) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13945,8 +14049,8 @@ export const updateControlPlaneAccessOrganizations: API.OperationMethod<
   UpdateControlPlaneAccessOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(780, __c97, 4) as any as S.Schema<UpdateControlPlaneAccessOrganizationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10688, __c334, 0) as any as S.Schema<UpdateControlPlaneAccessOrganizationsRequest>,
+  output: __S(12960, __c405, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13966,8 +14070,8 @@ export const updateDebugmaskOrganizationsEnvironments: API.OperationMethod<
   UpdateDebugmaskOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(781, __c97, 5) as any as S.Schema<UpdateDebugmaskOrganizationsEnvironmentsRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<GoogleCloudApigeeV1DebugMask>,
+  input: __S(10720, __c335, 0) as any as S.Schema<UpdateDebugmaskOrganizationsEnvironmentsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudApigeeV1DebugMask>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13988,11 +14092,11 @@ export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    782,
-    __c97,
-    6,
+    10752,
+    __c336,
+    0,
   ) as any as S.Schema<UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14013,11 +14117,11 @@ export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    783,
-    __c97,
-    7,
+    10784,
+    __c337,
+    0,
   ) as any as S.Schema<UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(14528, __c454, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14038,11 +14142,11 @@ export const updateDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    784,
-    __c98,
+    10816,
+    __c338,
     0,
   ) as any as S.Schema<UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14063,11 +14167,11 @@ export const updateDeveloperAttributeOrganizationsDevelopersAttributes: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    785,
-    __c98,
-    1,
+    10848,
+    __c339,
+    0,
   ) as any as S.Schema<UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1Attribute>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14087,8 +14191,12 @@ export const updateDocumentationOrganizationsSitesApidocs: API.OperationMethod<
   UpdateDocumentationOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(786, __c98, 2) as any as S.Schema<UpdateDocumentationOrganizationsSitesApidocsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse>,
+  input: __S(
+    10944,
+    __c342,
+    0,
+  ) as any as S.Schema<UpdateDocumentationOrganizationsSitesApidocsRequest>,
+  output: __S(2405, __c75, 5) as any as S.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14108,8 +14216,12 @@ export const updateEnvironmentOrganizationsEnvironments: API.OperationMethod<
   UpdateEnvironmentOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(787, __c98, 3) as any as S.Schema<UpdateEnvironmentOrganizationsEnvironmentsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
+  input: __S(
+    10976,
+    __c343,
+    0,
+  ) as any as S.Schema<UpdateEnvironmentOrganizationsEnvironmentsRequest>,
+  output: __S(11683, __c365, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14130,11 +14242,11 @@ export const updateMonetizationConfigOrganizationsAppgroups: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    788,
-    __c98,
-    4,
+    11008,
+    __c344,
+    0,
   ) as any as S.Schema<UpdateMonetizationConfigOrganizationsAppgroupsRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14155,11 +14267,11 @@ export const updateMonetizationConfigOrganizationsDevelopers: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    789,
-    __c98,
-    5,
+    11040,
+    __c345,
+    0,
   ) as any as S.Schema<UpdateMonetizationConfigOrganizationsDevelopersRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14179,8 +14291,8 @@ export const updateOrganizations: API.OperationMethod<
   UpdateOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(790, __c98, 6) as any as S.Schema<UpdateOrganizationsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GoogleCloudApigeeV1Organization>,
+  input: __S(11072, __c346, 0) as any as S.Schema<UpdateOrganizationsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<GoogleCloudApigeeV1Organization>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14200,8 +14312,8 @@ export const updateOrganizationsAnalyticsDatastores: API.OperationMethod<
   UpdateOrganizationsAnalyticsDatastoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(791, __c98, 7) as any as S.Schema<UpdateOrganizationsAnalyticsDatastoresRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
+  input: __S(11104, __c347, 0) as any as S.Schema<UpdateOrganizationsAnalyticsDatastoresRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GoogleCloudApigeeV1Datastore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14221,8 +14333,8 @@ export const updateOrganizationsApiproducts: API.OperationMethod<
   UpdateOrganizationsApiproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(792, __c99, 0) as any as S.Schema<UpdateOrganizationsApiproductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
+  input: __S(11136, __c348, 0) as any as S.Schema<UpdateOrganizationsApiproductsRequest>,
+  output: __S(3641, __c113, 25) as any as S.Schema<GoogleCloudApigeeV1ApiProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14242,8 +14354,8 @@ export const updateOrganizationsApiproductsRateplans: API.OperationMethod<
   UpdateOrganizationsApiproductsRateplansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(793, __c99, 1) as any as S.Schema<UpdateOrganizationsApiproductsRateplansRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
+  input: __S(11168, __c349, 0) as any as S.Schema<UpdateOrganizationsApiproductsRateplansRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<GoogleCloudApigeeV1RatePlan>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14263,8 +14375,8 @@ export const updateOrganizationsApisKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsApisKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(794, __c99, 2) as any as S.Schema<UpdateOrganizationsApisKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(11200, __c350, 0) as any as S.Schema<UpdateOrganizationsApisKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14284,8 +14396,12 @@ export const updateOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   UpdateOrganizationsApisKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(795, __c99, 3) as any as S.Schema<UpdateOrganizationsApisKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(
+    11232,
+    __c351,
+    0,
+  ) as any as S.Schema<UpdateOrganizationsApisKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14305,8 +14421,8 @@ export const updateOrganizationsAppgroups: API.OperationMethod<
   UpdateOrganizationsAppgroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(796, __c99, 4) as any as S.Schema<UpdateOrganizationsAppgroupsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
+  input: __S(11328, __c354, 0) as any as S.Schema<UpdateOrganizationsAppgroupsRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14326,8 +14442,8 @@ export const updateOrganizationsAppgroupsApps: API.OperationMethod<
   UpdateOrganizationsAppgroupsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(797, __c99, 5) as any as S.Schema<UpdateOrganizationsAppgroupsAppsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
+  input: __S(11360, __c355, 0) as any as S.Schema<UpdateOrganizationsAppgroupsAppsRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<GoogleCloudApigeeV1AppGroupApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14347,8 +14463,8 @@ export const updateOrganizationsDevelopers: API.OperationMethod<
   UpdateOrganizationsDevelopersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(798, __c99, 6) as any as S.Schema<UpdateOrganizationsDevelopersRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GoogleCloudApigeeV1Developer>,
+  input: __S(11392, __c356, 0) as any as S.Schema<UpdateOrganizationsDevelopersRequest>,
+  output: __S(8032, __c251, 0) as any as S.Schema<GoogleCloudApigeeV1Developer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14368,8 +14484,8 @@ export const updateOrganizationsDevelopersApps: API.OperationMethod<
   UpdateOrganizationsDevelopersAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(799, __c99, 7) as any as S.Schema<UpdateOrganizationsDevelopersAppsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
+  input: __S(11424, __c357, 0) as any as S.Schema<UpdateOrganizationsDevelopersAppsRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudApigeeV1DeveloperApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14389,8 +14505,8 @@ export const updateOrganizationsEnvironments: API.OperationMethod<
   UpdateOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<UpdateOrganizationsEnvironmentsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
+  input: __S(11456, __c358, 0) as any as S.Schema<UpdateOrganizationsEnvironmentsRequest>,
+  output: __S(11683, __c365, 3) as any as S.Schema<GoogleCloudApigeeV1Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14411,11 +14527,11 @@ export const updateOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    801,
-    __c100,
-    1,
+    11488,
+    __c359,
+    0,
   ) as any as S.Schema<UpdateOrganizationsEnvironmentsKeystoresAliasesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
+  output: __S(12291, __c384, 3) as any as S.Schema<GoogleCloudApigeeV1Alias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14435,8 +14551,12 @@ export const updateOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsEnvironmentsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(802, __c100, 2) as any as S.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(
+    11520,
+    __c360,
+    0,
+  ) as any as S.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14457,11 +14577,11 @@ export const updateOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    803,
-    __c100,
-    3,
+    11552,
+    __c361,
+    0,
   ) as any as S.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14481,8 +14601,8 @@ export const updateOrganizationsEnvironmentsReferences: API.OperationMethod<
   UpdateOrganizationsEnvironmentsReferencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(804, __c100, 4) as any as S.Schema<UpdateOrganizationsEnvironmentsReferencesRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GoogleCloudApigeeV1Reference>,
+  input: __S(11584, __c362, 0) as any as S.Schema<UpdateOrganizationsEnvironmentsReferencesRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<GoogleCloudApigeeV1Reference>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14503,11 +14623,11 @@ export const updateOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    805,
-    __c100,
-    5,
+    11616,
+    __c363,
+    0,
   ) as any as S.Schema<UpdateOrganizationsEnvironmentsResourcefilesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14528,11 +14648,11 @@ export const updateOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    806,
-    __c100,
-    6,
+    11712,
+    __c366,
+    0,
   ) as any as S.Schema<UpdateOrganizationsEnvironmentsTargetserversRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
+  output: __S(13026, __c407, 2) as any as S.Schema<GoogleCloudApigeeV1TargetServer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14552,8 +14672,8 @@ export const updateOrganizationsKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsKeyvaluemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(807, __c100, 7) as any as S.Schema<UpdateOrganizationsKeyvaluemapsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
+  input: __S(11744, __c367, 0) as any as S.Schema<UpdateOrganizationsKeyvaluemapsRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14573,8 +14693,8 @@ export const updateOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   UpdateOrganizationsKeyvaluemapsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(808, __c101, 0) as any as S.Schema<UpdateOrganizationsKeyvaluemapsEntriesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
+  input: __S(11776, __c368, 0) as any as S.Schema<UpdateOrganizationsKeyvaluemapsEntriesRequest>,
+  output: __S(15232, __c476, 0) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14594,8 +14714,8 @@ export const updateOrganizationsReports: API.OperationMethod<
   UpdateOrganizationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<UpdateOrganizationsReportsRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
+  input: __S(11808, __c369, 0) as any as S.Schema<UpdateOrganizationsReportsRequest>,
+  output: __S(13700, __c428, 4) as any as S.Schema<GoogleCloudApigeeV1CustomReport>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14615,8 +14735,8 @@ export const updateOrganizationsSitesApidocs: API.OperationMethod<
   UpdateOrganizationsSitesApidocsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(810, __c101, 2) as any as S.Schema<UpdateOrganizationsSitesApidocsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
+  input: __S(11840, __c370, 0) as any as S.Schema<UpdateOrganizationsSitesApidocsRequest>,
+  output: __S(14240, __c445, 0) as any as S.Schema<GoogleCloudApigeeV1ApiDocResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14637,11 +14757,11 @@ export const updateSecurityActionsConfigOrganizationsEnvironments: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    811,
-    __c101,
-    3,
+    11872,
+    __c371,
+    0,
   ) as any as S.Schema<UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest>,
-  output: __S(556, __c69, 4) as any as S.Schema<GoogleCloudApigeeV1SecurityActionsConfig>,
+  output: __S(6112, __c191, 0) as any as S.Schema<GoogleCloudApigeeV1SecurityActionsConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14661,8 +14781,8 @@ export const updateSecuritySettingsOrganizations: API.OperationMethod<
   UpdateSecuritySettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(812, __c101, 4) as any as S.Schema<UpdateSecuritySettingsOrganizationsRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<GoogleCloudApigeeV1SecuritySettings>,
+  input: __S(11904, __c372, 0) as any as S.Schema<UpdateSecuritySettingsOrganizationsRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<GoogleCloudApigeeV1SecuritySettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14683,11 +14803,11 @@ export const updateSharedFlowRevisionOrganizationsSharedflowsRevisions: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    813,
-    __c101,
-    5,
+    11936,
+    __c373,
+    0,
   ) as any as S.Schema<UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
+  output: __S(14048, __c439, 0) as any as S.Schema<GoogleCloudApigeeV1SharedFlowRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14707,8 +14827,12 @@ export const updateTraceConfigOrganizationsEnvironments: API.OperationMethod<
   UpdateTraceConfigOrganizationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(814, __c101, 6) as any as S.Schema<UpdateTraceConfigOrganizationsEnvironmentsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<GoogleCloudApigeeV1TraceConfig>,
+  input: __S(
+    11968,
+    __c374,
+    0,
+  ) as any as S.Schema<UpdateTraceConfigOrganizationsEnvironmentsRequest>,
+  output: __S(6401, __c200, 1) as any as S.Schema<GoogleCloudApigeeV1TraceConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApigeeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14718,182 +14842,10 @@ export const updateTraceConfigOrganizationsEnvironments: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudApigeeV1ActivateNatAddressRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:activate",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateOrganizationsInstancesNatAddressesRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeMoney" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adjustment: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AdjustAppGroupBalanceRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:adjust",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AdjustOrganizationsAppgroupsBalanceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          balance: S.optional(__S(6, __c0, 6)),
-          lastCreditTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroupBalanceWallet",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          wallets: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroupBalance",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:adjust",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AdjustOrganizationsDevelopersBalanceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          flowHookPoint: S.optional(S.String),
-          continueOnError: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          sharedFlow: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1FlowHook",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Attribute",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attribute: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Attributes",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/attributes",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AttributesOrganizationsApiproductsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(15296, __c478, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14904,3397 +14856,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AttributesOrganizationsDevelopersRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/attributes",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AttributesOrganizationsDevelopersAppsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apis: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource",
-      });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gateways: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String),
-          apiHubApis: S.optional(__S(22, __c2, 6)),
-          pageSize: S.optional(S.Number),
-          include: S.optional(__S(25, __c3, 1)),
-          apiHubGateways: S.optional(__S(26, __c3, 2)),
-          includeAllResources: S.optional(__S(0, __c0, 0)),
-          profile: S.optional(S.String),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:batchCompute",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchComputeOrganizationsSecurityAssessmentResultsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gateway: S.optional(S.String),
-          gatewayType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-          sourceProject: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceRevisionId: S.optional(S.String),
-          apiHubGatewayType: S.optional(S.String),
-          name: S.optional(S.String),
-          apiHubDeploymentDetails: S.optional(__S(29, __c3, 5)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultResource",
-      });
-    case 7:
-      return S.Record(S.String, S.Number);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          link: S.optional(__S(32, __c4, 0)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          displayName: S.optional(S.String),
-          recommendations: S.optional(__S(34, __c4, 2)),
-          weight: S.optional(S.String),
-          scoreImpact: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation",
-      });
-    case 4:
-      return S.Record(S.String, __S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failedAssessmentPerWeight: S.optional(__S(31, __c3, 7)),
-          severity: S.optional(S.String),
-          dataUpdateTime: S.optional(S.String),
-          score: S.optional(S.Number),
-          assessmentRecommendations: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultScoringResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          resource: S.optional(__S(30, __c3, 6)),
-          error: S.optional(__S(4, __c0, 4)),
-          scoringResult: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityAssessmentResult",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          securityAssessmentResults: S.optional(__S(39, __c4, 7)),
-          nextPageToken: S.optional(S.String),
-          assessmentTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          detectionTypes: S.optional(__S(21, __c2, 5)),
-          firstDetectedTime: S.optional(S.String),
-          riskLevel: S.optional(S.String),
-          name: S.optional(S.String),
-          trafficCount: S.optional(S.String),
-          observability: S.optional(S.String),
-          displayName: S.optional(S.String),
-          lastDetectedTime: S.optional(S.String),
-          lastObservabilityChangeTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityIncident",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          securityIncident: S.optional(__S(41, __c5, 1)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityIncidents:batchUpdate",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest",
-      });
-    case 6:
-      return S.Array(__S(41, __c5, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          securityIncidents: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeInterval" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scorePath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String),
-          timeRange: S.optional(__S(48, __c6, 0)),
-          filters: S.optional(__S(50, __c6, 2)),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileEnvironment: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+profileEnvironment}:computeEnvironmentScores",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documentationLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          actionContext: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendationAction",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          actions: S.optional(__S(55, __c6, 7)),
-          title: S.optional(S.String),
-          impact: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendation",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          scorePath: S.optional(S.String),
-          recommendations: S.optional(__S(57, __c7, 1)),
-          dataCaptureTime: S.optional(S.String),
-          drilldownPaths: S.optional(__S(21, __c2, 5)),
-          calculateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ScoreComponent",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          component: S.optional(__S(58, __c7, 2)),
-          timeRange: S.optional(__S(48, __c6, 0)),
-          subcomponents: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "GoogleCloudApigeeV1Score" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scores: S.optional(__S(61, __c7, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Properties",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          expiresAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ConnectorsPlatformConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          expireTimeMillis: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AnalyticsConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          expiresAt: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiSecurityConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advancedApiOpsConfig: S.optional(__S(64, __c8, 0)),
-          monetizationConfig: S.optional(__S(64, __c8, 0)),
-          connectorsPlatformConfig: S.optional(__S(65, __c8, 1)),
-          analyticsConfig: S.optional(__S(66, __c8, 2)),
-          integrationConfig: S.optional(__S(64, __c8, 0)),
-          apiSecurityConfig: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AddonsConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionType: S.optional(S.String),
-          caCertificate: S.optional(S.String),
-          name: S.optional(S.String),
-          disableVpcPeering: S.optional(S.Boolean),
-          runtimeType: S.optional(S.String),
-          runtimeDatabaseEncryptionKeyName: S.optional(S.String),
-          apigeeProjectId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          caCertificates: S.optional(__S(21, __c2, 5)),
-          type: S.optional(S.String),
-          customerName: S.optional(S.String),
-          apiConsumerDataLocation: S.optional(S.String),
-          networkEgressRestricted: S.optional(S.Boolean),
-          lastModifiedAt: S.optional(S.String),
-          state: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
-          addonsConfig: S.optional(__S(68, __c8, 4)),
-          controlPlaneEncryptionKeyName: S.optional(S.String),
-          environments: S.optional(__S(21, __c2, 5)),
-          expiresAt: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          portalDisabled: S.optional(S.Boolean),
-          analyticsRegion: S.optional(S.String),
-          billingType: S.optional(S.String),
-          authorizedNetwork: S.optional(S.String),
-          subscriptionPlan: S.optional(S.String),
-          projectId: S.optional(S.String),
-          apiConsumerDataEncryptionKeyName: S.optional(S.String),
-          attributes: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Organization",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/organizations",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tablePrefix: S.optional(S.String),
-          bucketName: S.optional(S.String),
-          path: S.optional(S.String),
-          projectId: S.optional(S.String),
-          datasetName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DatastoreConfig",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          targetType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-          datastoreConfig: S.optional(__S(71, __c8, 7)),
-          createTime: S.optional(S.String),
-          self: S.optional(S.String),
-          org: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Datastore",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/analytics/datastores",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAnalyticsDatastoresRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchCondition: S.optional(S.String),
-          supportedEvents: S.optional(__S(74, __c9, 2)),
-          hostname: S.optional(S.String),
-          failOpen: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApimServiceExtensionExtension",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          subnet: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(76, __c9, 4)),
-          name: S.optional(S.String),
-          extensionProcessor: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          networkConfigs: S.optional(__S(78, __c9, 6)),
-          state: S.optional(S.String),
-          lbForwardingRule: S.optional(S.String),
-          network: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApimServiceExtension",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          apimServiceExtensionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apimServiceExtensions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApimServiceExtensionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeUnit: S.optional(S.String),
-          limit: S.optional(S.String),
-          interval: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudApigeeV1Quota" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operationTypes: S.optional(__S(21, __c2, 5)),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1GraphQLOperation",
-      });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quota: S.optional(__S(81, __c10, 1)),
-          attributes: S.optional(__S(16, __c2, 0)),
-          apiSource: S.optional(S.String),
-          operations: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1GraphQLOperationConfig",
-      });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          operationConfigs: S.optional(__S(85, __c10, 5)),
-          operationConfigType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1GraphQLOperationGroup",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          methods: S.optional(__S(21, __c2, 5)),
-          resource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Operation",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          quota: S.optional(__S(81, __c10, 1)),
-          apiSource: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          operations: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1OperationConfig",
-      });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          operationConfigType: S.optional(S.String),
-          operationConfigs: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1OperationGroup",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiSource: S.optional(S.String),
-          service: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          methods: S.optional(__S(21, __c2, 5)),
-          quota: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1GrpcOperationConfig",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          operationConfigs: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1GrpcOperationGroup",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-          model: S.optional(S.String),
-          methods: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1LlmOperation",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeUnit: S.optional(S.String),
-          limit: S.optional(S.String),
-          interval: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1LlmTokenQuota",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          llmOperations: S.optional(__S(96, __c12, 0)),
-          apiSource: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          llmTokenQuota: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1LlmOperationConfig",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operationConfigs: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1LlmOperationGroup",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1PayloadOperation",
-      });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(16, __c2, 0)),
-          apiSource: S.optional(S.String),
-          quota: S.optional(__S(81, __c10, 1)),
-          operations: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1PayloadOperationConfig",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operationConfigs: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1PayloadOperationGroup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lastModifiedAt: S.optional(S.String),
-          name: S.optional(S.String),
-          approvalType: S.optional(S.String),
-          quotaCounterScope: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          graphqlOperationGroup: S.optional(__S(86, __c10, 6)),
-          quotaTimeUnit: S.optional(S.String),
-          environments: S.optional(__S(21, __c2, 5)),
-          proxies: S.optional(__S(21, __c2, 5)),
-          operationGroup: S.optional(__S(91, __c11, 3)),
-          apiResources: S.optional(__S(21, __c2, 5)),
-          llmQuotaInterval: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          scopes: S.optional(__S(21, __c2, 5)),
-          grpcOperationGroup: S.optional(__S(94, __c11, 6)),
-          quota: S.optional(S.String),
-          displayName: S.optional(S.String),
-          llmQuotaTimeUnit: S.optional(S.String),
-          llmOperationGroup: S.optional(__S(100, __c12, 4)),
-          llmQuota: S.optional(S.String),
-          space: S.optional(S.String),
-          quotaInterval: S.optional(S.String),
-          payloadOperationGroup: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiProduct",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apiproducts",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApiproductsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sharePercentage: S.optional(S.Number),
-          end: S.optional(S.String),
-          start: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1RevenueShareRange",
-      });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fee: S.optional(__S(6, __c0, 6)),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1RateRange",
-      });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiproduct: S.optional(S.String),
-          endTime: S.optional(S.String),
-          consumptionPricingType: S.optional(S.String),
-          revenueShareRates: S.optional(__S(109, __c13, 5)),
-          consumptionPricingRates: S.optional(__S(111, __c13, 7)),
-          fixedFeeFrequency: S.optional(S.Number),
-          lastModifiedAt: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          startTime: S.optional(S.String),
-          billingPeriod: S.optional(S.String),
-          fixedRecurringFee: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          setupFee: S.optional(__S(6, __c0, 6)),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          paymentFundingModel: S.optional(S.String),
-          revenueShareType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1RatePlan",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/rateplans",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApiproductsRateplansRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          contentType: S.optional(S.String),
-          extensions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "GoogleApiHttpBody" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String.pipe(T.Query())),
-          validate: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          space: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apis",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApisRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minorVersion: S.optional(S.Number),
-          majorVersion: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ConfigVersion",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ResourceFile",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceFile: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ResourceFiles",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contextInfo: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          description: S.optional(S.String),
-          targetEndpoints: S.optional(__S(21, __c2, 5)),
-          createdAt: S.optional(S.String),
-          policies: S.optional(__S(21, __c2, 5)),
-          configurationVersion: S.optional(__S(116, __c14, 4)),
-          teams: S.optional(__S(21, __c2, 5)),
-          targets: S.optional(__S(21, __c2, 5)),
-          integrationEndpoints: S.optional(__S(21, __c2, 5)),
-          proxyEndpoints: S.optional(__S(21, __c2, 5)),
-          targetServers: S.optional(__S(21, __c2, 5)),
-          archive: S.optional(S.String),
-          type: S.optional(S.String),
-          mcp: S.optional(S.Boolean),
-          entityMetaDataAsProperties: S.optional(__S(117, __c14, 5)),
-          sharedFlows: S.optional(__S(21, __c2, 5)),
-          hasExtensiblePolicy: S.optional(S.Boolean),
-          resourceFiles: S.optional(__S(120, __c15, 0)),
-          basepaths: S.optional(__S(21, __c2, 5)),
-          displayName: S.optional(S.String),
-          spec: S.optional(S.String),
-          name: S.optional(S.String),
-          proxies: S.optional(__S(21, __c2, 5)),
-          resources: S.optional(__S(21, __c2, 5)),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiProxyRevision",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maskedValues: S.optional(S.Boolean),
-          encrypted: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1KeyValueMap",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keyvaluemaps",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApisKeyvaluemapsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entries",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsApisKeyvaluemapsEntriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(16, __c2, 0)),
-          lastModifiedAt: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          channelId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          organization: S.optional(S.String),
-          email: S.optional(S.String),
-          channelUri: S.optional(S.String),
-          status: S.optional(S.String),
-          name: S.optional(S.String),
-          appGroupId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroup",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/appgroups",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAppgroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          apiproduct: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiProductRef",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          consumerKey: S.optional(S.String),
-          issuedAt: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          apiProducts: S.optional(__S(128, __c16, 0)),
-          status: S.optional(S.String),
-          scopes: S.optional(__S(21, __c2, 5)),
-          consumerSecret: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Credential",
-      });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(21, __c2, 5)),
-          name: S.optional(S.String),
-          callbackUrl: S.optional(S.String),
-          keyExpiresIn: S.optional(S.String),
-          appGroup: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          credentials: S.optional(__S(130, __c16, 2)),
-          status: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          appId: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          apiProducts: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroupApp",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(131, __c16, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apps",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAppgroupsAppsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiproduct: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1APIProductAssociation",
-      });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          consumerKey: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-          issuedAt: S.optional(S.String),
-          status: S.optional(S.String),
-          apiProducts: S.optional(__S(134, __c16, 6)),
-          consumerSecret: S.optional(S.String),
-          scopes: S.optional(__S(21, __c2, 5)),
-          attributes: S.optional(__S(16, __c2, 0)),
-          expiresInSeconds: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroupAppKey",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keys",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAppgroupsAppsKeysRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          apiproduct: S.optional(S.String),
-          startTime: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AppGroupSubscription",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/subscriptions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAppgroupsSubscriptionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DataCollector",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          dataCollectorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/datacollectors",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDatacollectorsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          apps: S.optional(__S(21, __c2, 5)),
-          attributes: S.optional(__S(16, __c2, 0)),
-          createdAt: S.optional(S.String),
-          developerId: S.optional(S.String),
-          email: S.optional(S.String),
-          organizationName: S.optional(S.String),
-          firstName: S.optional(S.String),
-          accessType: S.optional(S.String),
-          companies: S.optional(__S(21, __c2, 5)),
-          lastModifiedAt: S.optional(S.String),
-          userName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          appFamily: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Developer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/developers",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDevelopersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(16, __c2, 0)),
-          keyExpiresIn: S.optional(S.String),
-          credentials: S.optional(__S(130, __c16, 2)),
-          apiProducts: S.optional(__S(21, __c2, 5)),
-          status: S.optional(S.String),
-          appFamily: S.optional(S.String),
-          scopes: S.optional(__S(21, __c2, 5)),
-          name: S.optional(S.String),
-          appId: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          callbackUrl: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          developerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeveloperApp",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apps",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDevelopersAppsRequest",
-      });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expiresInSeconds: S.optional(S.String),
-          issuedAt: S.optional(S.String),
-          status: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-          consumerKey: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
-          apiProducts: S.optional(__S(145, __c18, 1)),
-          scopes: S.optional(__S(21, __c2, 5)),
-          consumerSecret: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeveloperAppKey",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keys",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDevelopersAppsKeysRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keys/create",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDevelopersAppsKeysCreateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          name: S.optional(S.String),
-          apiproduct: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeveloperSubscription",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(149, __c18, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/subscriptions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDevelopersSubscriptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetNetworkId: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DnsZonePeeringConfig",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          description: S.optional(S.String),
-          domain: S.optional(S.String),
-          peeringConfig: S.optional(__S(151, __c18, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DnsZone",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          dnsZoneId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dnsZones",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsDnsZonesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          connectionState: S.optional(S.String),
-          state: S.optional(S.String),
-          serviceAttachment: S.optional(S.String),
-          host: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EndpointAttachment",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          endpointAttachmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/endpointAttachments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEndpointAttachmentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          hostnames: S.optional(__S(21, __c2, 5)),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EnvironmentGroup",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/envgroups",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvgroupsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          environment: S.optional(S.String),
-          environmentGroupId: S.optional(S.String),
-          createdAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EnvironmentGroupAttachment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/attachments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvgroupsAttachmentsRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ipHeaderName: S.optional(S.String),
-          ipHeaderIndex: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          headerIndexAlgorithm: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          minNodeCount: S.optional(S.String),
-          currentAggregateNodeCount: S.optional(S.String),
-          maxNodeCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1NodeConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          forwardProxyUri: S.optional(S.String),
-          hasAttachedFlowHooks: S.optional(S.Boolean),
-          deploymentType: S.optional(S.String),
-          state: S.optional(S.String),
-          clientIpResolutionConfig: S.optional(__S(161, __c20, 1)),
-          type: S.optional(S.String),
-          displayName: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
-          nodeConfig: S.optional(__S(162, __c20, 2)),
-          createdAt: S.optional(S.String),
-          apiProxyType: S.optional(S.String),
-          name: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Environment",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/environments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          end: S.optional(S.String),
-          start: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DateRange",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreName: S.optional(S.String),
-          description: S.optional(S.String),
-          outputFormat: S.optional(S.String),
-          csvDelimiter: S.optional(S.String),
-          dateRange: S.optional(__S(165, __c20, 5)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ExportRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/analytics/exports",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsAnalyticsExportsRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreName: S.optional(S.String),
-          self: S.optional(S.String),
-          error: S.optional(S.String),
-          state: S.optional(S.String),
-          updated: S.optional(S.String),
-          executionTime: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          created: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Export",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          timeout: S.optional(S.String),
-          filter: S.optional(S.String),
-          validity: S.optional(S.Number),
-          tracesize: S.optional(S.Number),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DebugSession",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          timeout: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(169, __c21, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/debugsessions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          gcsUri: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          operation: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          labels: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ArchiveDeployment",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/archiveDeployments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsArchiveDeploymentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          aliases: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Keystore",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keystores",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsKeystoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String.pipe(T.Query())),
-          ignoreNewlineValidation: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-          _password: S.optional(S.String.pipe(T.Query())),
-          ignoreExpiryValidation: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/aliases",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsKeystoresAliasesRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.optional(S.String),
-          isValid: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          publicKey: S.optional(S.String),
-          validFrom: S.optional(S.String),
-          sigAlgName: S.optional(S.String),
-          basicConstraints: S.optional(S.String),
-          expiryDate: S.optional(S.String),
-          subjectAlternativeNames: S.optional(__S(21, __c2, 5)),
-          version: S.optional(S.Number),
-          issuer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CertInfo",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          certInfo: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Certificate",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String),
-          certsInfo: S.optional(__S(178, __c22, 2)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudApigeeV1Alias" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keyvaluemaps",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsKeyvaluemapsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entries",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          function: S.optional(S.String),
-          value: S.optional(S.String),
-          operator: S.optional(S.String),
-          alias: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1QueryMetric",
-      });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          outputFormat: S.optional(S.String),
-          limit: S.optional(S.Number),
-          timeRange: S.optional(S.Unknown),
-          metrics: S.optional(__S(183, __c22, 7)),
-          csvDelimiter: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
-          filter: S.optional(S.String),
-          envgroupHostname: S.optional(S.String),
-          reportDefinitionId: S.optional(S.String),
-          groupByTimeUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudApigeeV1Query" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(184, __c23, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/queries",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsQueriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          self: S.optional(S.String),
-          expires: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AsyncQueryResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeUnit: S.optional(S.String),
-          startTimestamp: S.optional(S.String),
-          endTimestamp: S.optional(S.String),
-          outputFormat: S.optional(S.String),
-          metrics: S.optional(__S(21, __c2, 5)),
-          dimensions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1QueryMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportDefinitionId: S.optional(S.String),
-          created: S.optional(S.String),
-          executionTime: S.optional(S.String),
-          result: S.optional(__S(186, __c23, 2)),
-          resultRows: S.optional(S.String),
-          envgroupHostname: S.optional(S.String),
-          updated: S.optional(S.String),
-          resultFileSize: S.optional(S.String),
-          name: S.optional(S.String),
-          self: S.optional(S.String),
-          queryParams: S.optional(__S(187, __c23, 3)),
-          error: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AsyncQuery",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          refers: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Reference",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/references",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsReferencesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/resourcefiles",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsResourcefilesRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userAgents: S.optional(__S(21, __c2, 5)),
-          ipAddressRanges: S.optional(__S(21, __c2, 5)),
-          asns: S.optional(__S(21, __c2, 5)),
-          apiKeys: S.optional(__S(21, __c2, 5)),
-          botReasons: S.optional(__S(21, __c2, 5)),
-          accessTokens: S.optional(__S(21, __c2, 5)),
-          apiProducts: S.optional(__S(21, __c2, 5)),
-          regionCodes: S.optional(__S(21, __c2, 5)),
-          developerApps: S.optional(__S(21, __c2, 5)),
-          developers: S.optional(__S(21, __c2, 5)),
-          httpMethods: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityActionConditionConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityActionHttpHeader",
-      });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityActionFlag",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          responseCode: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityActionDeny",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          apiProxies: S.optional(__S(21, __c2, 5)),
-          name: S.optional(S.String),
-          allow: S.optional(__S(0, __c0, 0)),
-          ttl: S.optional(S.String),
-          conditionConfig: S.optional(__S(192, __c24, 0)),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          state: S.optional(S.String),
-          flag: S.optional(__S(195, __c24, 3)),
-          deny: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          securityActionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(197, __c24, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityActions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsSecurityActionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          aggregationFunction: S.optional(S.String),
-          operator: S.optional(S.String),
-          alias: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityReportQueryMetric",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(21, __c2, 5)),
-          mimeType: S.optional(S.String),
-          filter: S.optional(S.String),
-          metrics: S.optional(__S(200, __c25, 0)),
-          timeRange: S.optional(S.Unknown),
-          displayName: S.optional(S.String),
-          reportDefinitionId: S.optional(S.String),
-          csvDelimiter: S.optional(S.String),
-          envgroupHostname: S.optional(S.String),
-          groupByTimeUnit: S.optional(S.String),
-          limit: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityReportQuery",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(201, __c25, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityReports",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsSecurityReportsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endTimestamp: S.optional(S.String),
-          metrics: S.optional(__S(21, __c2, 5)),
-          timeUnit: S.optional(S.String),
-          startTimestamp: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityReportMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(__S(186, __c23, 2)),
-          state: S.optional(S.String),
-          reportDefinitionId: S.optional(S.String),
-          error: S.optional(S.String),
-          envgroupHostname: S.optional(S.String),
-          self: S.optional(S.String),
-          updated: S.optional(S.String),
-          executionTime: S.optional(S.String),
-          resultRows: S.optional(S.String),
-          created: S.optional(S.String),
-          displayName: S.optional(S.String),
-          queryParams: S.optional(__S(203, __c25, 3)),
-          resultFileSize: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityReport",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          wildcardMatch: S.optional(S.Boolean),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1TlsInfoCommonName",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          clientAuthEnabled: S.optional(S.Boolean),
-          enforce: S.optional(S.Boolean),
-          commonName: S.optional(__S(205, __c25, 5)),
-          keyStore: S.optional(S.String),
-          protocols: S.optional(__S(21, __c2, 5)),
-          ciphers: S.optional(__S(21, __c2, 5)),
-          ignoreValidationErrors: S.optional(S.Boolean),
-          trustStore: S.optional(S.String),
-          keyAlias: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1TlsInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sSLInfo: S.optional(__S(206, __c25, 6)),
-          name: S.optional(S.String),
-          isEnabled: S.optional(S.Boolean),
-          protocol: S.optional(S.String),
-          host: S.optional(S.String),
-          port: S.optional(S.Number),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1TargetServer",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/targetservers",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsTargetserversRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          samplingRate: S.optional(S.Number),
-          sampler: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1TraceSamplingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          samplingConfig: S.optional(__S(209, __c26, 1)),
-          apiProxy: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1TraceConfigOverride",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/overrides",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsEnvironmentsTraceConfigOverridesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(184, __c23, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/hostQueries",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsHostQueriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(201, __c25, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/hostSecurityReports",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsHostSecurityReportsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeTimeOfDay" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(__S(214, __c26, 6)),
-          day: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceWindows: S.optional(__S(216, __c27, 0)),
-          maintenanceChannel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1AccessLoggingConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ScheduledMaintenance",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAttachment: S.optional(S.String),
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-          maintenanceUpdatePolicy: S.optional(__S(217, __c27, 1)),
-          runtimeVersion: S.optional(S.String),
-          consumerAcceptList: S.optional(__S(21, __c2, 5)),
-          diskEncryptionKeyName: S.optional(S.String),
-          peeringCidrRange: S.optional(S.String),
-          port: S.optional(S.String),
-          accessLoggingConfig: S.optional(__S(218, __c27, 2)),
-          displayName: S.optional(S.String),
-          ipRange: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          name: S.optional(S.String),
-          scheduledMaintenance: S.optional(__S(219, __c27, 3)),
-          isVersionLocked: S.optional(S.Boolean),
-          host: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Instance",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/instances",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsInstancesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.String),
-          name: S.optional(S.String),
-          createdAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1InstanceAttachment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(222, __c27, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/attachments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsInstancesAttachmentsRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instance_id: S.optional(S.String),
-          env: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CanaryEvaluationMetricLabels",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          metricLabels: S.optional(__S(224, __c28, 0)),
-          verdict: S.optional(S.String),
-          createTime: S.optional(S.String),
-          treatment: S.optional(S.String),
-          endTime: S.optional(S.String),
-          control: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CanaryEvaluation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/canaryevaluations",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsInstancesCanaryevaluationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1NatAddress",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(227, __c28, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/natAddresses",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsInstancesNatAddressesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keyvaluemaps",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsKeyvaluemapsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/entries",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsKeyvaluemapsEntriesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          function: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CustomReportMetric",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
-          property: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ReportProperty",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeUnit: S.optional(S.String),
-          metrics: S.optional(__S(232, __c29, 0)),
-          displayName: S.optional(S.String),
-          limit: S.optional(S.String),
-          toTime: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          topk: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          chartType: S.optional(S.String),
-          environment: S.optional(S.String),
-          fromTime: S.optional(S.String),
-          organization: S.optional(S.String),
-          name: S.optional(S.String),
-          sortByCols: S.optional(__S(21, __c2, 5)),
-          sortOrder: S.optional(S.String),
-          properties: S.optional(__S(234, __c29, 2)),
-          lastViewedAt: S.optional(S.String),
-          offset: S.optional(S.String),
-          filter: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(21, __c2, 5)),
-          comments: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CustomReport",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/reports",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsReportsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(21, __c2, 5)),
-          attribute: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityFeedbackFeedbackContext",
-      });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          feedbackType: S.optional(S.String),
-          name: S.optional(S.String),
-          reason: S.optional(S.String),
-          createTime: S.optional(S.String),
-          comment: S.optional(S.String),
-          feedbackContexts: S.optional(__S(238, __c29, 6)),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityFeedback",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          securityFeedbackId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(239, __c29, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityFeedback",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSecurityFeedbackRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          riskAssessmentType: S.optional(S.String),
-          totalMonitoredResources: S.optional(S.Number),
-          include: S.optional(__S(25, __c3, 1)),
-          profile: S.optional(S.String),
-          apiHubGateway: S.optional(S.String),
-          createTime: S.optional(S.String),
-          scope: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          includeAllResources: S.optional(__S(0, __c0, 0)),
-          totalDeployedResources: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityMonitoringCondition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          securityMonitoringConditionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityMonitoringConditions",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSecurityMonitoringConditionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.String),
-          attachTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfileEnvironment",
-      });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          threat: S.optional(__S(0, __c0, 0)),
-          abuse: S.optional(__S(0, __c0, 0)),
-          mediation: S.optional(__S(0, __c0, 0)),
-          mtls: S.optional(__S(0, __c0, 0)),
-          cors: S.optional(__S(0, __c0, 0)),
-          authorization: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ProfileConfigCategory",
-      });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ProfileConfig",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          scorePath: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfileScoringConfig",
-      });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environments: S.optional(__S(244, __c30, 4)),
-          profileConfig: S.optional(__S(247, __c30, 7)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          revisionPublishTime: S.optional(S.String),
-          minScore: S.optional(S.Number),
-          displayName: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          scoringConfigs: S.optional(__S(249, __c31, 1)),
-          revisionUpdateTime: S.optional(S.String),
-          revisionCreateTime: S.optional(S.String),
-          maxScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfile",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          securityProfileId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(250, __c31, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityProfiles",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSecurityProfilesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          securityProfileRevisionId: S.optional(S.String),
-          attachTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(252, __c31, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/environments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSecurityProfilesEnvironmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayTypes: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          include: S.optional(__S(254, __c31, 6)),
-          weight: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(255, __c31, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          googleDefined: S.optional(S.Boolean),
-          profileAssessmentConfigs: S.optional(__S(256, __c32, 0)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          riskAssessmentType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SecurityProfileV2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          securityProfileV2Id: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(257, __c32, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/securityProfilesV2",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSecurityProfilesV2Request",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          action: S.optional(S.String.pipe(T.Query())),
-          space: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sharedflows",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSharedflowsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          entityMetaDataAsProperties: S.optional(__S(117, __c14, 5)),
-          revision: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sharedFlows: S.optional(__S(21, __c2, 5)),
-          configurationVersion: S.optional(__S(116, __c14, 4)),
-          description: S.optional(S.String),
-          resourceFiles: S.optional(__S(120, __c15, 0)),
-          contextInfo: S.optional(S.String),
-          name: S.optional(S.String),
-          policies: S.optional(__S(21, __c2, 5)),
-          lastModifiedAt: S.optional(S.String),
-          resources: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1SharedFlowRevision",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          siteId: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiCategory",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(261, __c32, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apicategories",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSitesApicategoriesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          requestId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          data: S.optional(__S(261, __c32, 5)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiCategoryResponse",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          graphqlEndpointUrl: S.optional(S.String),
-          requireCallbackUrl: S.optional(S.Boolean),
-          graphqlSchema: S.optional(S.String),
-          visibility: S.optional(S.Boolean),
-          specId: S.optional(S.String),
-          description: S.optional(S.String),
-          edgeAPIProductName: S.optional(S.String),
-          graphqlSchemaDisplayName: S.optional(S.String),
-          anonAllowed: S.optional(S.Boolean),
-          apiProductName: S.optional(S.String),
-          published: S.optional(S.Boolean),
-          modified: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          categoryIds: S.optional(__S(21, __c2, 5)),
-          id: S.optional(S.String),
-          siteId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiDoc",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apidocs",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSitesApidocsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          status: S.optional(S.String),
-          data: S.optional(__S(264, __c33, 0)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiDocResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudApigeeV1Space" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          spaceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/spaces",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSpacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          transactionId: S.optional(S.String),
-          transactionAmount: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1CreditAppGroupBalanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(269, __c33, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:credit",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreditOrganizationsAppgroupsBalanceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(269, __c33, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:credit",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreditOrganizationsDevelopersBalanceRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/csr",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CsrOrganizationsEnvironmentsKeystoresAliasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}/data",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          retention: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAnalyticsDatastoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApimServiceExtensionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApiproductsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApiproductsAttributesRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApiproductsRateplansRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApisRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lastModifiedAt: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          subType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1EntityMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          readOnly: S.optional(S.Boolean),
-          apiProxyType: S.optional(S.String),
-          name: S.optional(S.String),
-          metaData: S.optional(__S(282, __c35, 2)),
-          space: S.optional(S.String),
-          revision: S.optional(__S(21, __c2, 5)),
-          labels: S.optional(__S(117, __c14, 5)),
-          latestRevisionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1ApiProxy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApisKeyvaluemapsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApisKeyvaluemapsEntriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsApisRevisionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAppgroupsRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAppgroupsAppsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAppgroupsAppsKeysRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDatacollectorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersAppsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersAppsAttributesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersAppsKeysRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersAppsKeysApiproductsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDevelopersAttributesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsDnsZonesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEndpointAttachmentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvgroupsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvgroupsAttachmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18307,6 +14873,862 @@ function __c37(j: number): any {
         ),
       ).annotate({
         identifier: "DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsCachesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsKeystoresRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsKeystoresAliasesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsKeyvaluemapsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsReferencesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+parent}/resourcefiles/{type}/{name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsResourcefilesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsSecurityActionsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsTargetserversRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(15296, __c478, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/attributes",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AttributesOrganizationsDevelopersAppsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsInstancesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsInstancesAttachmentsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsInstancesNatAddressesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsKeyvaluemapsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsReportsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSecurityFeedbackRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          riskAssessmentType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSecurityMonitoringConditionsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSecurityProfilesRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apis: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gateways: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String),
+          apiHubApis: S.optional(__S(704, __c22, 0)),
+          pageSize: S.optional(S.Number),
+          include: S.optional(__S(770, __c24, 2)),
+          apiHubGateways: S.optional(__S(705, __c22, 1)),
+          includeAllResources: S.optional(__S(12928, __c404, 0)),
+          profile: S.optional(S.String),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(706, __c22, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:batchCompute",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchComputeOrganizationsSecurityAssessmentResultsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          gateway: S.optional(S.String),
+          gatewayType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+          sourceProject: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceRevisionId: S.optional(S.String),
+          apiHubGatewayType: S.optional(S.String),
+          name: S.optional(S.String),
+          apiHubDeploymentDetails: S.optional(__S(708, __c22, 4)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultResource",
+      });
+    case 6:
+      return S.Record(S.String, S.Number);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          link: S.optional(__S(711, __c22, 7)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation",
+      });
+    case 9:
+      return S.Array(__S(712, __c22, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          displayName: S.optional(S.String),
+          recommendations: S.optional(__S(713, __c22, 9)),
+          weight: S.optional(S.String),
+          scoreImpact: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation",
+      });
+    case 11:
+      return S.Record(S.String, __S(714, __c22, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          failedAssessmentPerWeight: S.optional(__S(710, __c22, 6)),
+          severity: S.optional(S.String),
+          dataUpdateTime: S.optional(S.String),
+          score: S.optional(S.Number),
+          assessmentRecommendations: S.optional(__S(715, __c22, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityAssessmentResultScoringResult",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          resource: S.optional(__S(709, __c22, 5)),
+          error: S.optional(__S(12896, __c403, 0)),
+          scoringResult: S.optional(__S(716, __c22, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityAssessmentResult",
+      });
+    case 14:
+      return S.Array(__S(717, __c22, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          securityAssessmentResults: S.optional(__S(718, __c22, 14)),
+          nextPageToken: S.optional(S.String),
+          assessmentTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource",
+      });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSecurityProfilesEnvironmentsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          riskAssessmentType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSecurityProfilesV2Request",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSharedflowsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          space: S.optional(S.String),
+          latestRevisionId: S.optional(S.String),
+          metaData: S.optional(__S(14848, __c464, 0)),
+          revision: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SharedFlow",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSharedflowsRevisionsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSitesApicategoriesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcpResource: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          requestId: S.optional(S.String),
+          message: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeleteResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSitesApidocsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSpacesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          override: S.optional(S.Boolean.pipe(T.Query())),
+          sequencedRollout: S.optional(S.Boolean.pipe(T.Query())),
+          serviceAccount: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/deployments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployOrganizationsEnvironmentsApisRevisionsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basepath: S.optional(S.String),
+          environment: S.optional(S.String),
+          apiProxy: S.optional(S.String),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conflictingDeployment: S.optional(__S(1120, __c35, 0)),
+          description: S.optional(S.String),
+          environmentGroup: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict",
+      });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envgroup: S.optional(S.String),
+          basepath: S.optional(S.String),
+          percentage: S.optional(S.Number),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute",
+      });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.optional(S.Number),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision",
+      });
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deployedRoutes: S.optional(__S(1153, __c36, 1)),
+          deployedRevisions: S.optional(__S(1155, __c36, 3)),
+          instance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatus",
+      });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          appVersion: S.optional(S.String),
+          statusCode: S.optional(S.String),
+          statusCodeDetails: S.optional(S.String),
+          podStatusTime: S.optional(S.String),
+          deploymentStatus: S.optional(S.String),
+          podName: S.optional(S.String),
+          deploymentStatusTime: S.optional(S.String),
+          podStatus: S.optional(S.String),
+          deploymentTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1PodStatus",
+      });
+    case 7:
+      return S.Array(__S(1158, __c36, 6));
+    case 8:
+      return S.Array(__S(12896, __c403, 0));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          proxyDeploymentType: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          environment: S.optional(S.String),
+          apiProxy: S.optional(S.String),
+          routeConflicts: S.optional(__S(1122, __c35, 2)),
+          state: S.optional(S.String),
+          deployStartTime: S.optional(S.String),
+          revision: S.optional(S.String),
+          instances: S.optional(__S(1157, __c36, 5)),
+          pods: S.optional(__S(1159, __c36, 7)),
+          errors: S.optional(__S(1160, __c36, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Deployment",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(S.String.pipe(T.Query())),
+          override: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/deployments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest",
       });
   }
 }
@@ -18324,107 +15746,7 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsCachesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsKeystoresRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsKeystoresAliasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsKeyvaluemapsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsReferencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+parent}/resourcefiles/{type}/{name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsResourcefilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsSecurityActionsRequest",
+        identifier: "DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest",
       });
   }
 }
@@ -18433,114 +15755,44 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
+          securityIncident: S.optional(__S(1280, __c40, 0)),
+          updateMask: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsTargetserversRequest",
+        identifier: "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest",
-      });
+      return S.Array(__S(1248, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
+          requests: S.optional(__S(1249, __c39, 1)),
+        }),
       ).annotate({
-        identifier: "DeleteOrganizationsInstancesRequest",
+        identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1250, __c39, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
+            method: "POST",
+            uri: "v1/{+parent}/securityIncidents:batchUpdate",
             baseUrl: "https://apigee.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "DeleteOrganizationsInstancesAttachmentsRequest",
+        identifier: "BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
+          securityIncidents: S.optional(__S(1312, __c41, 0)),
+        }),
       ).annotate({
-        identifier: "DeleteOrganizationsInstancesNatAddressesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsKeyvaluemapsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsKeyvaluemapsEntriesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsReportsRequest",
+        identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
       });
   }
 }
@@ -18549,338 +15801,34 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSecurityFeedbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          riskAssessmentType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSecurityMonitoringConditionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSecurityProfilesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSecurityProfilesEnvironmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          riskAssessmentType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSecurityProfilesV2Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSharedflowsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
+          detectionTypes: S.optional(__S(736, __c23, 0)),
+          firstDetectedTime: S.optional(S.String),
+          riskLevel: S.optional(S.String),
           name: S.optional(S.String),
-          space: S.optional(S.String),
-          latestRevisionId: S.optional(S.String),
-          metaData: S.optional(__S(282, __c35, 2)),
-          revision: S.optional(__S(21, __c2, 5)),
+          trafficCount: S.optional(S.String),
+          observability: S.optional(S.String),
+          displayName: S.optional(S.String),
+          lastDetectedTime: S.optional(S.String),
+          lastObservabilityChangeTime: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudApigeeV1SharedFlow",
+        identifier: "GoogleCloudApigeeV1SecurityIncident",
       });
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSharedflowsRevisionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSitesApicategoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gcpResource: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          requestId: S.optional(S.String),
-          message: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeleteResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSitesApidocsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSpacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          override: S.optional(S.Boolean.pipe(T.Query())),
-          sequencedRollout: S.optional(S.Boolean.pipe(T.Query())),
-          serviceAccount: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/deployments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployOrganizationsEnvironmentsApisRevisionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          basepath: S.optional(S.String),
-          environment: S.optional(S.String),
-          apiProxy: S.optional(S.String),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conflictingDeployment: S.optional(__S(334, __c41, 6)),
-          description: S.optional(S.String),
-          environmentGroup: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict",
-      });
+      return S.Array(__S(1280, __c40, 0));
   }
 }
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          envgroup: S.optional(S.String),
-          basepath: S.optional(S.String),
-          percentage: S.optional(S.Number),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute",
-      });
-    case 2:
-      return S.Array(__S(337, __c42, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.optional(S.Number),
-          revision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision",
-      });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deployedRoutes: S.optional(__S(338, __c42, 2)),
-          deployedRevisions: S.optional(__S(340, __c42, 4)),
-          instance: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1InstanceDeploymentStatus",
-      });
-    case 6:
-      return S.Array(__S(341, __c42, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          appVersion: S.optional(S.String),
-          statusCode: S.optional(S.String),
-          statusCodeDetails: S.optional(S.String),
-          podStatusTime: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
-          podName: S.optional(S.String),
-          deploymentStatusTime: S.optional(S.String),
-          podStatus: S.optional(S.String),
-          deploymentTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1PodStatus",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
-      return S.Array(__S(4, __c0, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          proxyDeploymentType: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          environment: S.optional(S.String),
-          apiProxy: S.optional(S.String),
-          routeConflicts: S.optional(__S(336, __c42, 0)),
-          state: S.optional(S.String),
-          deployStartTime: S.optional(S.String),
-          revision: S.optional(S.String),
-          instances: S.optional(__S(342, __c42, 6)),
-          pods: S.optional(__S(344, __c43, 0)),
-          errors: S.optional(__S(345, __c43, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1Deployment",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(S.String.pipe(T.Query())),
-          override: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/deployments",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigee.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18891,11 +15839,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "DisableOrganizationsEnvironmentsSecurityActionsRequest",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18906,11 +15858,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "EnableOrganizationsEnvironmentsSecurityActionsRequest",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18923,13 +15879,13 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18940,7 +15896,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ExpireOrganizationsDevelopersSubscriptionsRequest",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18956,21 +15916,25 @@ function __c44(j: number): any {
         identifier:
           "GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          toDeployment: S.optional(__S(334, __c41, 6)),
+          toDeployment: S.optional(__S(1120, __c35, 0)),
           description: S.optional(S.String),
-          fromDeployment: S.optional(__S(334, __c41, 6)),
+          fromDeployment: S.optional(__S(1120, __c35, 0)),
           shouldSequenceRollout: S.optional(S.Boolean),
           environmentGroup: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingChange",
       });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subject: S.optional(S.String),
@@ -18980,35 +15944,35 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GoogleRpcPreconditionFailureViolation",
       });
-    case 5:
-      return S.Array(__S(356, __c44, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1506, __c47, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          violations: S.optional(__S(357, __c44, 5)),
+          violations: S.optional(__S(1507, __c47, 3)),
         }),
       ).annotate({
         identifier: "GoogleRpcPreconditionFailure",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          routingConflicts: S.optional(__S(336, __c42, 0)),
-          routingChanges: S.optional(__S(355, __c44, 3)),
-          validationErrors: S.optional(__S(358, __c44, 6)),
+          routingConflicts: S.optional(__S(1122, __c35, 2)),
+          routingChanges: S.optional(__S(1505, __c47, 1)),
+          validationErrors: S.optional(__S(1508, __c47, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DeploymentChangeReport",
       });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19027,19 +15991,27 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1GenerateDownloadUrlResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19054,11 +16026,15 @@ function __c45(j: number): any {
         identifier:
           "GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19069,7 +16045,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uploadUri: S.optional(S.String),
@@ -19077,7 +16053,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1GenerateUploadUrlResponse",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19087,7 +16067,128 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAddonsConfigOrganizationsEnvironmentsRequest",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scorePath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter",
+      });
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String),
+          timeRange: S.optional(__S(1728, __c54, 0)),
+          filters: S.optional(__S(1697, __c53, 1)),
+          pageSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          profileEnvironment: S.String.pipe(T.Label()),
+          body: S.optional(__S(1698, __c53, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+profileEnvironment}:computeEnvironmentScores",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          documentationLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          actionContext: S.optional(__S(1700, __c53, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendationAction",
+      });
+    case 6:
+      return S.Array(__S(1701, __c53, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          actions: S.optional(__S(1702, __c53, 6)),
+          title: S.optional(S.String),
+          impact: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ScoreComponentRecommendation",
+      });
+    case 8:
+      return S.Array(__S(1703, __c53, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          scorePath: S.optional(S.String),
+          recommendations: S.optional(__S(1704, __c53, 8)),
+          dataCaptureTime: S.optional(S.String),
+          drilldownPaths: S.optional(__S(736, __c23, 0)),
+          calculateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ScoreComponent",
+      });
+    case 10:
+      return S.Array(__S(1705, __c53, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          component: S.optional(__S(1705, __c53, 9)),
+          timeRange: S.optional(__S(1728, __c54, 0)),
+          subcomponents: S.optional(__S(1706, __c53, 10)),
+        }),
+      ).annotate({ identifier: "GoogleCloudApigeeV1Score" });
+    case 12:
+      return S.Array(__S(1707, __c53, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          scores: S.optional(__S(1708, __c53, 12)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeInterval" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19097,23 +16198,23 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           revisionId: S.optional(S.String),
           updateTime: S.optional(S.String),
           uid: S.optional(S.String),
-          location: S.optional(__S(21, __c2, 5)),
+          location: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ApiSecurityRuntimeConfig",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19123,7 +16224,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetBalanceOrganizationsAppgroupsRequest",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19133,7 +16238,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetBalanceOrganizationsDevelopersRequest",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19147,7 +16256,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19157,18 +16270,26 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetControlPlaneAccessOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          analyticsPublisherIdentities: S.optional(__S(21, __c2, 5)),
-          synchronizerIdentities: S.optional(__S(21, __c2, 5)),
+          analyticsPublisherIdentities: S.optional(__S(736, __c23, 0)),
+          synchronizerIdentities: S.optional(__S(736, __c23, 0)),
           name: S.optional(S.String),
-          watcherIdentities: S.optional(__S(21, __c2, 5)),
+          watcherIdentities: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ControlPlaneAccess",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19178,25 +16299,29 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetDebugmaskOrganizationsEnvironmentsRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          responseXPaths: S.optional(__S(21, __c2, 5)),
-          namespaces: S.optional(__S(117, __c14, 5)),
+          responseXPaths: S.optional(__S(736, __c23, 0)),
+          namespaces: S.optional(__S(4448, __c139, 0)),
           name: S.optional(S.String),
-          responseJSONPaths: S.optional(__S(21, __c2, 5)),
-          requestXPaths: S.optional(__S(21, __c2, 5)),
-          faultJSONPaths: S.optional(__S(21, __c2, 5)),
-          faultXPaths: S.optional(__S(21, __c2, 5)),
-          requestJSONPaths: S.optional(__S(21, __c2, 5)),
-          variables: S.optional(__S(21, __c2, 5)),
+          responseJSONPaths: S.optional(__S(736, __c23, 0)),
+          requestXPaths: S.optional(__S(736, __c23, 0)),
+          faultJSONPaths: S.optional(__S(736, __c23, 0)),
+          faultXPaths: S.optional(__S(736, __c23, 0)),
+          requestJSONPaths: S.optional(__S(736, __c23, 0)),
+          variables: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DebugMask",
       });
   }
 }
-function __c47(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19219,7 +16344,7 @@ function __c47(j: number): any {
         identifier: "GoogleCloudApigeeV1FlowHookConfig",
       });
     case 2:
-      return S.Array(__S(377, __c47, 1));
+      return S.Array(__S(2017, __c63, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19242,15 +16367,15 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyAlias: S.optional(S.String),
-          protocols: S.optional(__S(21, __c2, 5)),
-          commonName: S.optional(__S(379, __c47, 3)),
-          ciphers: S.optional(__S(21, __c2, 5)),
+          protocols: S.optional(__S(736, __c23, 0)),
+          commonName: S.optional(__S(2019, __c63, 3)),
+          ciphers: S.optional(__S(736, __c23, 0)),
           ignoreValidationErrors: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
           trustStore: S.optional(S.String),
           clientAuthEnabled: S.optional(S.Boolean),
           enforce: S.optional(S.Boolean),
-          keyAliasReference: S.optional(__S(380, __c47, 4)),
+          keyAliasReference: S.optional(__S(2020, __c63, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1TlsInfoConfig",
@@ -19261,7 +16386,7 @@ function __c47(j: number): any {
           host: S.optional(S.String),
           name: S.optional(S.String),
           protocol: S.optional(S.String),
-          tlsInfo: S.optional(__S(381, __c47, 5)),
+          tlsInfo: S.optional(__S(2021, __c63, 5)),
           port: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
         }),
@@ -19269,12 +16394,8 @@ function __c47(j: number): any {
         identifier: "GoogleCloudApigeeV1TargetServerConfig",
       });
     case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(2022, __c63, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -19284,20 +16405,20 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1AliasRevisionConfig",
       });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(2024, __c63, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          aliases: S.optional(__S(385, __c48, 1)),
+          aliases: S.optional(__S(2025, __c63, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1KeystoreConfig",
       });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(2026, __c63, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -19306,9 +16427,9 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1DataCollectorConfig",
       });
-    case 5:
-      return S.Array(__S(388, __c48, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(2028, __c63, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -19317,13 +16438,9 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ResourceConfig",
       });
-    case 7:
-      return S.Array(__S(390, __c48, 6));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(2030, __c63, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
@@ -19334,31 +16451,31 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1DeploymentGroupConfig",
       });
-    case 1:
-      return S.Array(__S(392, __c49, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(2032, __c63, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           basePath: S.optional(S.String),
           uid: S.optional(S.String),
           proxyUid: S.optional(S.String),
-          deploymentGroups: S.optional(__S(21, __c2, 5)),
-          endpoints: S.optional(__S(117, __c14, 5)),
+          deploymentGroups: S.optional(__S(736, __c23, 0)),
+          endpoints: S.optional(__S(4448, __c139, 0)),
           location: S.optional(S.String),
           name: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          attributes: S.optional(__S(117, __c14, 5)),
+          attributes: S.optional(__S(4448, __c139, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DeploymentConfig",
       });
-    case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(2034, __c63, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
-          samplingConfig: S.optional(__S(209, __c26, 1)),
+          samplingConfig: S.optional(__S(13088, __c409, 0)),
           apiProxy: S.optional(S.String),
           traceProtocol: S.optional(S.String),
           revisionCreateTime: S.optional(S.String),
@@ -19370,19 +16487,19 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeTraceConfigOverride",
       });
-    case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(2036, __c63, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           keyAlias: S.optional(S.String),
-          keyAliasReference: S.optional(__S(380, __c47, 4)),
+          keyAliasReference: S.optional(__S(2020, __c63, 4)),
           trustStore: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig",
       });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -19390,22 +16507,18 @@ function __c49(j: number): any {
           openTelemetryProtocolEnabled: S.optional(S.Boolean),
           revisionId: S.optional(S.String),
           spanSemantics: S.optional(S.String),
-          samplingConfig: S.optional(__S(209, __c26, 1)),
+          samplingConfig: S.optional(__S(13088, __c409, 0)),
           traceProtocol: S.optional(S.String),
           exporter: S.optional(S.String),
           endpoint: S.optional(S.String),
           revisionCreateTime: S.optional(S.String),
-          overrides: S.optional(__S(397, __c49, 5)),
-          mTlsConfig: S.optional(__S(398, __c49, 6)),
+          overrides: S.optional(__S(2037, __c63, 21)),
+          mTlsConfig: S.optional(__S(2038, __c63, 22)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeTraceConfig",
       });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -19414,9 +16527,9 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ReferenceConfig",
       });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(2040, __c63, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           apiObservationsPubsubTopic: S.optional(S.String),
@@ -19428,7 +16541,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig",
       });
-    case 3:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           billingPipelineEnabled: S.optional(S.Boolean),
@@ -19437,20 +16550,20 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeAnalyticsConfig",
       });
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          apiSecurityConfig: S.optional(__S(64, __c8, 0)),
+          apiSecurityConfig: S.optional(__S(2208, __c69, 0)),
           revisionId: S.optional(S.String),
-          specGenerationConfig: S.optional(__S(402, __c50, 2)),
-          analyticsConfig: S.optional(__S(403, __c50, 3)),
+          specGenerationConfig: S.optional(__S(2042, __c63, 26)),
+          analyticsConfig: S.optional(__S(2043, __c63, 27)),
           uid: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeAddonsConfig",
       });
-    case 5:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           ipHeaderIndex: S.optional(S.Number),
@@ -19460,38 +16573,38 @@ function __c50(j: number): any {
         identifier:
           "GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm",
       });
-    case 6:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          headerIndexAlgorithm: S.optional(__S(405, __c50, 5)),
+          headerIndexAlgorithm: S.optional(__S(2045, __c63, 29)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig",
       });
-    case 7:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           sequenceNumber: S.optional(S.String),
-          featureFlags: S.optional(__S(117, __c14, 5)),
-          flowhooks: S.optional(__S(378, __c47, 2)),
+          featureFlags: S.optional(__S(4448, __c139, 0)),
+          flowhooks: S.optional(__S(2018, __c63, 2)),
           pubsubTopic: S.optional(S.String),
           provider: S.optional(S.String),
-          targets: S.optional(__S(383, __c47, 7)),
-          keystores: S.optional(__S(387, __c48, 3)),
+          targets: S.optional(__S(2023, __c63, 7)),
+          keystores: S.optional(__S(2027, __c63, 11)),
           envScopedRevisionId: S.optional(S.String),
           uid: S.optional(S.String),
           gatewayConfigLocation: S.optional(S.String),
           revisionId: S.optional(S.String),
-          debugMask: S.optional(__S(375, __c46, 7)),
-          dataCollectors: S.optional(__S(389, __c48, 5)),
-          resources: S.optional(__S(391, __c48, 7)),
-          deploymentGroups: S.optional(__S(393, __c49, 1)),
+          debugMask: S.optional(__S(1984, __c62, 0)),
+          dataCollectors: S.optional(__S(2029, __c63, 13)),
+          resources: S.optional(__S(2031, __c63, 15)),
+          deploymentGroups: S.optional(__S(2033, __c63, 17)),
           arcConfigLocation: S.optional(S.String),
-          deployments: S.optional(__S(395, __c49, 3)),
-          traceConfig: S.optional(__S(399, __c49, 7)),
-          resourceReferences: S.optional(__S(401, __c50, 1)),
-          addonsConfig: S.optional(__S(404, __c50, 4)),
-          clientIpResolutionConfig: S.optional(__S(406, __c50, 6)),
+          deployments: S.optional(__S(2035, __c63, 19)),
+          traceConfig: S.optional(__S(2039, __c63, 23)),
+          resourceReferences: S.optional(__S(2041, __c63, 25)),
+          addonsConfig: S.optional(__S(2044, __c63, 28)),
+          clientIpResolutionConfig: S.optional(__S(2046, __c63, 30)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           forwardProxyUri: S.optional(S.String),
@@ -19501,7 +16614,7 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19515,6 +16628,24 @@ function __c51(j: number): any {
         identifier: "GetDeployedIngressConfigOrganizationsRequest",
       });
     case 1:
+      return S.Array(__S(2084, __c65, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          revisionCreateTime: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          name: S.optional(S.String),
+          environmentGroups: S.optional(__S(2049, __c64, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1IngressConfig",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentGroup: S.optional(S.String),
@@ -19522,56 +16653,42 @@ function __c51(j: number): any {
           envGroupRevision: S.optional(S.String),
           receiver: S.optional(S.String),
           updateTime: S.optional(S.String),
-          otherTargets: S.optional(__S(21, __c2, 5)),
+          otherTargets: S.optional(__S(736, __c23, 0)),
           basepath: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1RoutingRule",
       });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
     case 2:
-      return S.Array(__S(409, __c51, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           deploymentGroup: S.optional(S.String),
-          proxyIds: S.optional(__S(21, __c2, 5)),
+          proxyIds: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1EndpointChainingRule",
       });
+    case 3:
+      return S.Array(__S(2082, __c65, 2));
     case 4:
-      return S.Array(__S(411, __c51, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
           uid: S.optional(S.String),
-          hostnames: S.optional(__S(21, __c2, 5)),
+          hostnames: S.optional(__S(736, __c23, 0)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          routingRules: S.optional(__S(410, __c51, 2)),
-          endpointChainingRules: S.optional(__S(412, __c51, 4)),
+          routingRules: S.optional(__S(2081, __c65, 1)),
+          endpointChainingRules: S.optional(__S(2083, __c65, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1EnvironmentGroupConfig",
       });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          revisionCreateTime: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          name: S.optional(S.String),
-          environmentGroups: S.optional(__S(414, __c51, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1IngressConfig",
-      });
   }
 }
-function __c52(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19584,7 +16701,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDeployedIngressConfigOrganizationsEnvgroupsRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19598,7 +16719,141 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest",
       });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/organizations",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          expiresAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ConnectorsPlatformConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          expireTimeMillis: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AnalyticsConfig",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          expiresAt: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiSecurityConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          advancedApiOpsConfig: S.optional(__S(2208, __c69, 0)),
+          monetizationConfig: S.optional(__S(2208, __c69, 0)),
+          connectorsPlatformConfig: S.optional(__S(2240, __c70, 0)),
+          analyticsConfig: S.optional(__S(2241, __c70, 1)),
+          integrationConfig: S.optional(__S(2208, __c69, 0)),
+          apiSecurityConfig: S.optional(__S(2242, __c70, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AddonsConfig",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionType: S.optional(S.String),
+          caCertificate: S.optional(S.String),
+          name: S.optional(S.String),
+          disableVpcPeering: S.optional(S.Boolean),
+          runtimeType: S.optional(S.String),
+          runtimeDatabaseEncryptionKeyName: S.optional(S.String),
+          apigeeProjectId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          caCertificates: S.optional(__S(736, __c23, 0)),
+          type: S.optional(S.String),
+          customerName: S.optional(S.String),
+          apiConsumerDataLocation: S.optional(S.String),
+          networkEgressRestricted: S.optional(S.Boolean),
+          lastModifiedAt: S.optional(S.String),
+          state: S.optional(S.String),
+          properties: S.optional(__S(2304, __c72, 0)),
+          addonsConfig: S.optional(__S(2243, __c70, 3)),
+          controlPlaneEncryptionKeyName: S.optional(S.String),
+          environments: S.optional(__S(736, __c23, 0)),
+          expiresAt: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          portalDisabled: S.optional(S.Boolean),
+          analyticsRegion: S.optional(S.String),
+          billingType: S.optional(S.String),
+          authorizedNetwork: S.optional(S.String),
+          subscriptionPlan: S.optional(S.String),
+          projectId: S.optional(S.String),
+          apiConsumerDataEncryptionKeyName: S.optional(S.String),
+          attributes: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Organization",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.optional(__S(15264, __c477, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Properties",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19612,7 +16867,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19622,7 +16881,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDocumentationOrganizationsSitesApidocsRequest",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contents: S.optional(S.String),
@@ -19631,59 +16894,59 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1DocumentationFile",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(420, __c52, 4)),
+          spec: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1AsyncApiDocumentation",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
-          spec: S.optional(__S(420, __c52, 4)),
+          spec: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1OASDocumentation",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           endpointUri: S.optional(S.String),
-          schema: S.optional(__S(420, __c52, 4)),
+          schema: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1GraphqlDocumentation",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          asyncApiDocumentation: S.optional(__S(421, __c52, 5)),
-          oasDocumentation: S.optional(__S(422, __c52, 6)),
-          graphqlDocumentation: S.optional(__S(423, __c52, 7)),
+          asyncApiDocumentation: S.optional(__S(2401, __c75, 1)),
+          oasDocumentation: S.optional(__S(2402, __c75, 2)),
+          graphqlDocumentation: S.optional(__S(2403, __c75, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ApiDocDocumentation",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           message: S.optional(S.String),
           requestId: S.optional(S.String),
           errorCode: S.optional(S.String),
-          data: S.optional(__S(424, __c53, 0)),
+          data: S.optional(__S(2404, __c75, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ApiDocDocumentationResponse",
       });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -19698,7 +16961,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyOrganizationsEnvironmentsRequest",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expression: S.optional(S.String),
@@ -19707,50 +16974,50 @@ function __c53(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeExpr" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(21, __c2, 5)),
-          condition: S.optional(__S(427, __c53, 3)),
+          members: S.optional(__S(736, __c23, 0)),
+          condition: S.optional(__S(2464, __c77, 0)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 5:
-      return S.Array(__S(428, __c53, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(21, __c2, 5)),
+          exemptedMembers: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
-    case 7:
-      return S.Array(__S(430, __c53, 6));
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(2467, __c77, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(431, __c53, 7)),
+          auditLogConfigs: S.optional(__S(2468, __c77, 4)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-    case 1:
-      return S.Array(__S(432, __c54, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(2469, __c77, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          bindings: S.optional(__S(429, __c53, 5)),
-          auditConfigs: S.optional(__S(433, __c54, 1)),
+          bindings: S.optional(__S(2466, __c77, 2)),
+          auditConfigs: S.optional(__S(2470, __c77, 6)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -19765,7 +17032,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -19780,7 +17051,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyOrganizationsSpacesRequest",
       });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19790,7 +17065,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetMcpServerConfigOrganizationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
@@ -19802,7 +17077,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1McpServerConfig",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19814,7 +17093,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19824,7 +17103,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1AppGroupMonetizationConfig",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19834,7 +17117,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetMonetizationConfigOrganizationsDevelopersRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19842,7 +17129,11 @@ function __c55(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetOrganizationsRequest" });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19852,7 +17143,60 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAnalyticsDatastoresRequest",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2785, __c87, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/analytics/datastores",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAnalyticsDatastoresRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tablePrefix: S.optional(S.String),
+          bucketName: S.optional(S.String),
+          path: S.optional(S.String),
+          projectId: S.optional(S.String),
+          datasetName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DatastoreConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+          datastoreConfig: S.optional(__S(2784, __c87, 0)),
+          createTime: S.optional(S.String),
+          self: S.optional(S.String),
+          org: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Datastore",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19862,7 +17206,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApimServiceExtensionsRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19872,7 +17220,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApiproductsRequest",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19882,7 +17234,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApiproductsAttributesRequest",
       });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19894,7 +17250,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19906,7 +17262,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApisRequest",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19916,7 +17276,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApisKeyvaluemapsRequest",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19926,7 +17290,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApisKeyvaluemapsEntriesRequest",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19937,7 +17305,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsApisRevisionsRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19947,7 +17319,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAppgroupsRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19957,7 +17333,82 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAppgroupsAppsRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          apimServiceExtensionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3172, __c99, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apimServiceExtensions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApimServiceExtensionsRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchCondition: S.optional(S.String),
+          supportedEvents: S.optional(__S(3200, __c100, 0)),
+          hostname: S.optional(S.String),
+          failOpen: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApimServiceExtensionExtension",
+      });
+    case 1:
+      return S.Array(__S(3168, __c99, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          subnet: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig",
+      });
+    case 3:
+      return S.Array(__S(3170, __c99, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(3169, __c99, 1)),
+          name: S.optional(S.String),
+          extensionProcessor: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          networkConfigs: S.optional(__S(3171, __c99, 3)),
+          state: S.optional(S.String),
+          lbForwardingRule: S.optional(S.String),
+          network: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApimServiceExtension",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19967,7 +17418,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAppgroupsAppsKeysRequest",
       });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19979,7 +17434,7 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19991,7 +17446,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAppsRequest",
       });
-    case 1:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -20000,18 +17459,22 @@ function __c57(j: number): any {
           developerId: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
           callbackUrl: S.optional(S.String),
-          apiProducts: S.optional(__S(128, __c16, 0)),
+          apiProducts: S.optional(__S(6305, __c197, 1)),
           keyExpiresIn: S.optional(S.String),
-          credentials: S.optional(__S(130, __c16, 2)),
+          credentials: S.optional(__S(6307, __c197, 3)),
           appGroup: S.optional(S.String),
-          scopes: S.optional(__S(21, __c2, 5)),
+          scopes: S.optional(__S(736, __c23, 0)),
           name: S.optional(S.String),
           companyName: S.optional(S.String),
           developerEmail: S.optional(S.String),
-          attributes: S.optional(__S(16, __c2, 0)),
+          attributes: S.optional(__S(15264, __c477, 0)),
         }),
       ).annotate({ identifier: "GoogleCloudApigeeV1App" });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20021,7 +17484,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDatacollectorsRequest",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20032,7 +17499,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDevelopersRequest",
       });
-    case 4:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.optional(S.String.pipe(T.Query())),
@@ -20044,7 +17515,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDevelopersAppsRequest",
       });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20054,7 +17529,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDevelopersAppsAttributesRequest",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20064,7 +17543,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDevelopersAppsKeysRequest",
       });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20076,7 +17559,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20088,7 +17571,235 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDevelopersSubscriptionsRequest",
       });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3641, __c113, 25).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apiproducts",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApiproductsRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeUnit: S.optional(S.String),
+          limit: S.optional(S.String),
+          interval: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudApigeeV1Quota" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operationTypes: S.optional(__S(736, __c23, 0)),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1GraphQLOperation",
+      });
+    case 2:
+      return S.Array(__S(3617, __c113, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          quota: S.optional(__S(3616, __c113, 0)),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          apiSource: S.optional(S.String),
+          operations: S.optional(__S(3618, __c113, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1GraphQLOperationConfig",
+      });
+    case 4:
+      return S.Array(__S(3619, __c113, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          operationConfigs: S.optional(__S(3620, __c113, 4)),
+          operationConfigType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1GraphQLOperationGroup",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          methods: S.optional(__S(736, __c23, 0)),
+          resource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Operation",
+      });
+    case 7:
+      return S.Array(__S(3622, __c113, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          quota: S.optional(__S(3616, __c113, 0)),
+          apiSource: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          operations: S.optional(__S(3623, __c113, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1OperationConfig",
+      });
+    case 9:
+      return S.Array(__S(3624, __c113, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          operationConfigType: S.optional(S.String),
+          operationConfigs: S.optional(__S(3625, __c113, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1OperationGroup",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          apiSource: S.optional(S.String),
+          service: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          methods: S.optional(__S(736, __c23, 0)),
+          quota: S.optional(__S(3616, __c113, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1GrpcOperationConfig",
+      });
+    case 12:
+      return S.Array(__S(3627, __c113, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          operationConfigs: S.optional(__S(3628, __c113, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1GrpcOperationGroup",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+          model: S.optional(S.String),
+          methods: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1LlmOperation",
+      });
+    case 15:
+      return S.Array(__S(3630, __c113, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          timeUnit: S.optional(S.String),
+          limit: S.optional(S.String),
+          interval: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1LlmTokenQuota",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          llmOperations: S.optional(__S(3631, __c113, 15)),
+          apiSource: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          llmTokenQuota: S.optional(__S(3632, __c113, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1LlmOperationConfig",
+      });
+    case 18:
+      return S.Array(__S(3633, __c113, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          operationConfigs: S.optional(__S(3634, __c113, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1LlmOperationGroup",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1PayloadOperation",
+      });
+    case 21:
+      return S.Array(__S(3636, __c113, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(15264, __c477, 0)),
+          apiSource: S.optional(S.String),
+          quota: S.optional(__S(3616, __c113, 0)),
+          operations: S.optional(__S(3637, __c113, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1PayloadOperationConfig",
+      });
+    case 23:
+      return S.Array(__S(3638, __c113, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          operationConfigs: S.optional(__S(3639, __c113, 23)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1PayloadOperationGroup",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          lastModifiedAt: S.optional(S.String),
+          name: S.optional(S.String),
+          approvalType: S.optional(S.String),
+          quotaCounterScope: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          graphqlOperationGroup: S.optional(__S(3621, __c113, 5)),
+          quotaTimeUnit: S.optional(S.String),
+          environments: S.optional(__S(736, __c23, 0)),
+          proxies: S.optional(__S(736, __c23, 0)),
+          operationGroup: S.optional(__S(3626, __c113, 10)),
+          apiResources: S.optional(__S(736, __c23, 0)),
+          llmQuotaInterval: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          scopes: S.optional(__S(736, __c23, 0)),
+          grpcOperationGroup: S.optional(__S(3629, __c113, 13)),
+          quota: S.optional(S.String),
+          displayName: S.optional(S.String),
+          llmQuotaTimeUnit: S.optional(S.String),
+          llmOperationGroup: S.optional(__S(3635, __c113, 19)),
+          llmQuota: S.optional(S.String),
+          space: S.optional(S.String),
+          quotaInterval: S.optional(S.String),
+          payloadOperationGroup: S.optional(__S(3640, __c113, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiProduct",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20098,7 +17809,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsDnsZonesRequest",
       });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20108,7 +17823,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEndpointAttachmentsRequest",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20118,7 +17837,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvgroupsRequest",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20128,7 +17851,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvgroupsAttachmentsRequest",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20138,7 +17865,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsRequest",
       });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20148,7 +17879,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsAnalyticsExportsRequest",
       });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20160,7 +17895,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20194,15 +17929,15 @@ function __c59(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Get: S.optional(__S(15, __c1, 7)),
-          Remove: S.optional(__S(473, __c59, 1)),
-          Set: S.optional(__S(474, __c59, 2)),
+          Get: S.optional(__S(15232, __c476, 0)),
+          Remove: S.optional(__S(3873, __c121, 1)),
+          Set: S.optional(__S(3874, __c121, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1Access",
       });
     case 4:
-      return S.Array(__S(475, __c59, 3));
+      return S.Array(__S(3875, __c121, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20210,41 +17945,41 @@ function __c59(j: number): any {
           statusCode: S.optional(S.String),
           ActionResult: S.optional(S.String),
           verb: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(2304, __c72, 0)),
           timestamp: S.optional(S.String),
           reasonPhrase: S.optional(S.String),
-          accessList: S.optional(__S(476, __c59, 4)),
-          headers: S.optional(__S(16, __c2, 0)),
+          accessList: S.optional(__S(3876, __c121, 4)),
+          headers: S.optional(__S(15264, __c477, 0)),
           content: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1Result",
       });
     case 6:
-      return S.Array(__S(477, __c59, 5));
+      return S.Array(__S(3877, __c121, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          results: S.optional(__S(478, __c59, 6)),
+          results: S.optional(__S(3878, __c121, 6)),
         }),
       ).annotate({ identifier: "GoogleCloudApigeeV1Point" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(479, __c59, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(3879, __c121, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           completed: S.optional(S.Boolean),
-          point: S.optional(__S(480, __c60, 0)),
+          point: S.optional(__S(3880, __c121, 8)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DebugSessionTransaction",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20254,7 +17989,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsArchiveDeploymentsRequest",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20264,7 +18003,84 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsDeploymentsRequest",
       });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4004, __c125, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/rateplans",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApiproductsRateplansRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sharePercentage: S.optional(S.Number),
+          end: S.optional(S.String),
+          start: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1RevenueShareRange",
+      });
+    case 1:
+      return S.Array(__S(4000, __c125, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fee: S.optional(__S(13600, __c425, 0)),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1RateRange",
+      });
+    case 3:
+      return S.Array(__S(4002, __c125, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiproduct: S.optional(S.String),
+          endTime: S.optional(S.String),
+          consumptionPricingType: S.optional(S.String),
+          revenueShareRates: S.optional(__S(4001, __c125, 1)),
+          consumptionPricingRates: S.optional(__S(4003, __c125, 3)),
+          fixedFeeFrequency: S.optional(S.Number),
+          lastModifiedAt: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          startTime: S.optional(S.String),
+          billingPeriod: S.optional(S.String),
+          fixedRecurringFee: S.optional(__S(13600, __c425, 0)),
+          name: S.optional(S.String),
+          setupFee: S.optional(__S(13600, __c425, 0)),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          paymentFundingModel: S.optional(S.String),
+          revenueShareType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1RatePlan",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20274,7 +18090,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsFlowhooksRequest",
       });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20284,7 +18104,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsKeystoresRequest",
       });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20294,7 +18118,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsKeystoresAliasesRequest",
       });
-    case 7:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20306,7 +18134,7 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20318,7 +18146,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortby: S.optional(S.String.pipe(T.Query())),
@@ -20343,43 +18175,55 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsOptimizedStatsRequest",
       });
-    case 2:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(21, __c2, 5)),
-          notices: S.optional(__S(21, __c2, 5)),
+          errors: S.optional(__S(736, __c23, 0)),
+          notices: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1Metadata",
       });
-    case 3:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(145, __c18, 1)),
+          data: S.optional(__S(8832, __c276, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1OptimizedStatsNode",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resultTruncated: S.optional(S.Boolean),
-          TimeUnit: S.optional(__S(21, __c2, 5)),
-          metaData: S.optional(__S(490, __c61, 2)),
-          stats: S.optional(__S(491, __c61, 3)),
+          TimeUnit: S.optional(__S(736, __c23, 0)),
+          metaData: S.optional(__S(4224, __c132, 0)),
+          stats: S.optional(__S(4256, __c133, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1OptimizedStatsResponse",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Response: S.optional(__S(492, __c61, 4)),
+          Response: S.optional(__S(4257, __c133, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1OptimizedStats",
       });
-    case 6:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20389,7 +18233,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsQueriesRequest",
       });
-    case 7:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20401,7 +18249,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20419,7 +18267,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsResourcefilesRequest",
       });
-    case 1:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20429,7 +18281,129 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsSecurityActionsRequest",
       });
-    case 2:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String.pipe(T.Query())),
+          validate: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          space: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apis",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApisRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          contentType: S.optional(S.String),
+          extensions: S.optional(__S(12865, __c402, 1)),
+        }),
+      ).annotate({ identifier: "GoogleApiHttpBody" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ResourceFile",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4512, __c141, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceFile: S.optional(__S(4544, __c142, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ResourceFiles",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minorVersion: S.optional(S.Number),
+          majorVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ConfigVersion",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextInfo: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          description: S.optional(S.String),
+          targetEndpoints: S.optional(__S(736, __c23, 0)),
+          createdAt: S.optional(S.String),
+          policies: S.optional(__S(736, __c23, 0)),
+          configurationVersion: S.optional(__S(4576, __c143, 0)),
+          teams: S.optional(__S(736, __c23, 0)),
+          targets: S.optional(__S(736, __c23, 0)),
+          integrationEndpoints: S.optional(__S(736, __c23, 0)),
+          proxyEndpoints: S.optional(__S(736, __c23, 0)),
+          targetServers: S.optional(__S(736, __c23, 0)),
+          archive: S.optional(S.String),
+          type: S.optional(S.String),
+          mcp: S.optional(S.Boolean),
+          entityMetaDataAsProperties: S.optional(__S(4448, __c139, 0)),
+          sharedFlows: S.optional(__S(736, __c23, 0)),
+          hasExtensiblePolicy: S.optional(S.Boolean),
+          resourceFiles: S.optional(__S(4545, __c142, 1)),
+          basepaths: S.optional(__S(736, __c23, 0)),
+          displayName: S.optional(S.String),
+          spec: S.optional(S.String),
+          name: S.optional(S.String),
+          proxies: S.optional(__S(736, __c23, 0)),
+          resources: S.optional(__S(736, __c23, 0)),
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiProxyRevision",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20439,7 +18413,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsSecurityIncidentsRequest",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20449,7 +18427,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsSecurityReportsRequest",
       });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sort: S.optional(S.String.pipe(T.Query())),
@@ -20474,66 +18456,70 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsStatsRequest",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          values: S.optional(__S(145, __c18, 1)),
+          values: S.optional(__S(8832, __c276, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1Metric",
       });
-    case 6:
-      return S.Array(__S(501, __c62, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(4736, __c148, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metrics: S.optional(__S(502, __c62, 6)),
-          individualNames: S.optional(__S(21, __c2, 5)),
+          metrics: S.optional(__S(4737, __c148, 1)),
+          individualNames: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1DimensionMetric",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(503, __c62, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(4738, __c148, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(502, __c62, 6)),
-          dimensions: S.optional(__S(504, __c63, 0)),
+          metrics: S.optional(__S(4737, __c148, 1)),
+          dimensions: S.optional(__S(4739, __c148, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1StatsEnvironmentStats",
       });
-    case 2:
-      return S.Array(__S(505, __c63, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(4740, __c148, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(502, __c62, 6)),
+          metrics: S.optional(__S(4737, __c148, 1)),
           name: S.optional(S.String),
-          dimensions: S.optional(__S(504, __c63, 0)),
+          dimensions: S.optional(__S(4739, __c148, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1StatsHostStats",
       });
-    case 4:
-      return S.Array(__S(507, __c63, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(4742, __c148, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          environments: S.optional(__S(506, __c63, 2)),
-          hosts: S.optional(__S(508, __c63, 4)),
-          metaData: S.optional(__S(490, __c61, 2)),
+          environments: S.optional(__S(4741, __c148, 5)),
+          hosts: S.optional(__S(4743, __c148, 7)),
+          metaData: S.optional(__S(4224, __c132, 0)),
         }),
       ).annotate({ identifier: "GoogleCloudApigeeV1Stats" });
-    case 6:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20543,7 +18529,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsEnvironmentsTargetserversRequest",
       });
-    case 7:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20555,7 +18545,7 @@ function __c63(j: number): any {
       });
   }
 }
-function __c64(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20567,7 +18557,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsHostQueriesRequest",
       });
-    case 1:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20577,7 +18571,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsHostSecurityReportsRequest",
       });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20601,7 +18599,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsHostStatsRequest",
       });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20611,7 +18613,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsInstancesRequest",
       });
-    case 4:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20621,7 +18627,44 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsInstancesAttachmentsRequest",
       });
-    case 5:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keyvaluemaps",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApisKeyvaluemapsRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maskedValues: S.optional(S.Boolean),
+          encrypted: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1KeyValueMap",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20631,7 +18674,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsInstancesCanaryevaluationsRequest",
       });
-    case 6:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20641,7 +18688,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsInstancesNatAddressesRequest",
       });
-    case 7:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20653,7 +18704,7 @@ function __c64(j: number): any {
       });
   }
 }
-function __c65(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20665,7 +18716,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsKeyvaluemapsEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20675,7 +18730,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topk: S.optional(S.String.pipe(T.Query())),
@@ -20699,7 +18758,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsOptimizedHostStatsRequest",
       });
-    case 3:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20709,7 +18772,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsReportsRequest",
       });
-    case 4:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20719,7 +18786,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSecurityFeedbackRequest",
       });
-    case 5:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           riskAssessmentType: S.optional(S.String.pipe(T.Query())),
@@ -20730,7 +18801,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSecurityMonitoringConditionsRequest",
       });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20740,7 +18815,30 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSecurityProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entries",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsApisKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20753,7 +18851,7 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20765,7 +18863,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSharedflowsRequest",
       });
-    case 1:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String.pipe(T.Query())),
@@ -20776,7 +18878,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSharedflowsRevisionsRequest",
       });
-    case 2:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20786,7 +18892,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSitesApicategoriesRequest",
       });
-    case 3:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20796,7 +18906,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSitesApidocsRequest",
       });
-    case 4:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20806,7 +18920,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsSpacesRequest",
       });
-    case 5:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20820,18 +18938,26 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectMappingOrganizationsRequest",
       });
-    case 6:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.optional(S.String),
           location: S.optional(S.String),
           projectId: S.optional(S.String),
-          projectIds: S.optional(__S(21, __c2, 5)),
+          projectIds: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1OrganizationProjectMapping",
       });
-    case 7:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20843,7 +18969,7 @@ function __c66(j: number): any {
       });
   }
 }
-function __c67(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20855,7 +18981,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetResultOrganizationsEnvironmentsSecurityReportsRequest",
       });
-    case 1:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20865,7 +18995,52 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetResultOrganizationsHostQueriesRequest",
       });
-    case 2:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5792, __c181, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/appgroups",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAppgroupsRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(15264, __c477, 0)),
+          lastModifiedAt: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          channelId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          organization: S.optional(S.String),
+          email: S.optional(S.String),
+          channelUri: S.optional(S.String),
+          status: S.optional(S.String),
+          name: S.optional(S.String),
+          appGroupId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroup",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20875,7 +19050,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetResultOrganizationsHostSecurityReportsRequest",
       });
-    case 3:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20885,7 +19064,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetResulturlOrganizationsEnvironmentsQueriesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -20895,17 +19074,21 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo",
       });
-    case 5:
-      return S.Array(__S(540, __c67, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5857, __c183, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(__S(541, __c67, 5)),
+          urls: S.optional(__S(5858, __c183, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse",
       });
-    case 7:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20917,21 +19100,25 @@ function __c67(j: number): any {
       });
   }
 }
-function __c68(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(__S(145, __c18, 1)),
+          rows: S.optional(__S(8832, __c276, 0)),
           code: S.optional(S.Number),
           error: S.optional(S.String),
           state: S.optional(S.String),
-          metadata: S.optional(__S(203, __c25, 3)),
+          metadata: S.optional(__S(12768, __c399, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1SecurityReportResultView",
       });
-    case 1:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20941,19 +19128,23 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetResultViewOrganizationsHostQueriesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(187, __c23, 3)),
+          metadata: S.optional(__S(12480, __c390, 0)),
           code: S.optional(S.Number),
-          rows: S.optional(__S(145, __c18, 1)),
+          rows: S.optional(__S(8832, __c276, 0)),
           state: S.optional(S.String),
           error: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1AsyncQueryResultView",
       });
-    case 3:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20963,7 +19154,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetResultViewOrganizationsHostSecurityReportsRequest",
       });
-    case 4:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20973,7 +19168,7 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetRuntimeConfigOrganizationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           traceBucket: S.optional(S.String),
@@ -20984,7 +19179,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1RuntimeConfig",
       });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
@@ -20996,7 +19195,7 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -21006,32 +19205,32 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1SchemaSchemaProperty",
       });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(551, __c68, 7)),
+          properties: S.optional(__S(6049, __c189, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1SchemaSchemaElement",
       });
-    case 1:
-      return S.Array(__S(552, __c69, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(6050, __c189, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(553, __c69, 1)),
-          meta: S.optional(__S(21, __c2, 5)),
-          metrics: S.optional(__S(553, __c69, 1)),
+          dimensions: S.optional(__S(6051, __c189, 3)),
+          meta: S.optional(__S(736, __c23, 0)),
+          metrics: S.optional(__S(6051, __c189, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1Schema",
       });
-    case 3:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -21041,7 +19240,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetSecurityActionsConfigOrganizationsEnvironmentsRequest",
       });
-    case 4:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -21051,7 +19254,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1SecurityActionsConfig",
       });
-    case 5:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -21061,7 +19268,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetSecuritySettingsOrganizationsRequest",
       });
-    case 6:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -21070,11 +19281,15 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1SecuritySettings",
       });
-    case 7:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21087,18 +19302,96 @@ function __c69(j: number): any {
       });
   }
 }
-function __c70(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(21, __c2, 5)),
+          identities: S.optional(__S(736, __c23, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1SyncAuthorization",
       });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6336, __c198, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apps",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAppgroupsAppsRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          apiproduct: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiProductRef",
+      });
     case 1:
+      return S.Array(__S(6304, __c197, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consumerKey: S.optional(S.String),
+          issuedAt: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          apiProducts: S.optional(__S(6305, __c197, 1)),
+          status: S.optional(S.String),
+          scopes: S.optional(__S(736, __c23, 0)),
+          consumerSecret: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Credential",
+      });
+    case 3:
+      return S.Array(__S(6306, __c197, 2));
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(736, __c23, 0)),
+          name: S.optional(S.String),
+          callbackUrl: S.optional(S.String),
+          keyExpiresIn: S.optional(S.String),
+          appGroup: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          credentials: S.optional(__S(6307, __c197, 3)),
+          status: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          appId: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          apiProducts: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroupApp",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -21108,7 +19401,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetTraceConfigOrganizationsEnvironmentsRequest",
       });
-    case 2:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyStore: S.optional(S.String),
@@ -21118,7 +19415,7 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1TraceConfigOtelMtlsConfig",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           traceProtocol: S.optional(S.String),
@@ -21126,13 +19423,17 @@ function __c70(j: number): any {
           otelCollectorSecurityScheme: S.optional(S.String),
           exporter: S.optional(S.String),
           endpoint: S.optional(S.String),
-          samplingConfig: S.optional(__S(209, __c26, 1)),
-          mtlsConfig: S.optional(__S(562, __c70, 2)),
+          samplingConfig: S.optional(__S(13088, __c409, 0)),
+          mtlsConfig: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1TraceConfig",
       });
-    case 4:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21147,7 +19448,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest",
       });
-    case 5:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -21155,30 +19460,30 @@ function __c70(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListHybridIssuersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          emailIds: S.optional(__S(21, __c2, 5)),
+          emailIds: S.optional(__S(736, __c23, 0)),
           service: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ServiceIssuersMapping",
       });
-    case 7:
-      return S.Array(__S(566, __c70, 6));
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(6465, __c202, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          issuers: S.optional(__S(567, __c70, 7)),
+          issuers: S.optional(__S(6466, __c202, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListHybridIssuersResponse",
       });
-    case 1:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21186,17 +19491,21 @@ function __c71(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+parent}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListOrganizationsRequest" });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
     case 2:
-      return S.Array(__S(534, __c66, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          organizations: S.optional(__S(570, __c71, 2)),
+          organizations: S.optional(__S(6497, __c203, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListOrganizationsResponse",
       });
-    case 4:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21211,17 +19520,21 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAnalyticsDatastoresRequest",
       });
-    case 5:
-      return S.Array(__S(72, __c9, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(2785, __c87, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          datastores: S.optional(__S(573, __c71, 5)),
+          datastores: S.optional(__S(6529, __c204, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDatastoresResponse",
       });
-    case 7:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21237,22 +19550,22 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApimServiceExtensionsRequest",
       });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(3172, __c99, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          apimServiceExtensions: S.optional(__S(576, __c72, 0)),
+          apimServiceExtensions: S.optional(__S(6561, __c205, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListApimServiceExtensionsResponse",
       });
-    case 2:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String.pipe(T.Query())),
@@ -21272,17 +19585,21 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApiproductsRequest",
       });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3641, __c113, 25));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          apiProduct: S.optional(__S(579, __c72, 3)),
+          apiProduct: S.optional(__S(6593, __c206, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListApiProductsResponse",
       });
-    case 5:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21296,7 +19613,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApiproductsAttributesRequest",
       });
-    case 6:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -21315,22 +19636,22 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApiproductsRateplansRequest",
       });
-    case 7:
-      return S.Array(__S(112, __c14, 0));
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4004, __c125, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ratePlans: S.optional(__S(583, __c72, 7)),
+          ratePlans: S.optional(__S(6657, __c208, 1)),
           nextStartKey: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListRatePlansResponse",
       });
-    case 1:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           space: S.optional(S.String.pipe(T.Query())),
@@ -21347,17 +19668,71 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApisRequest",
       });
+    case 1:
+      return S.Array(__S(14880, __c465, 0));
     case 2:
-      return S.Array(__S(283, __c35, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          proxies: S.optional(__S(586, __c73, 2)),
+          proxies: S.optional(__S(6689, __c209, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListApiProxiesResponse",
       });
-    case 4:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(6754, __c211, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keys",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAppgroupsAppsKeysRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiproduct: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1APIProductAssociation",
+      });
+    case 1:
+      return S.Array(__S(6752, __c211, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consumerKey: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+          issuedAt: S.optional(S.String),
+          status: S.optional(S.String),
+          apiProducts: S.optional(__S(6753, __c211, 1)),
+          consumerSecret: S.optional(S.String),
+          scopes: S.optional(__S(736, __c23, 0)),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          expiresInSeconds: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroupAppKey",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21373,7 +19748,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApisDebugsessionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -21384,20 +19759,20 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ApiDebugSession",
       });
-    case 6:
-      return S.Array(__S(589, __c73, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(6785, __c212, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sessions: S.optional(__S(590, __c73, 6)),
+          sessions: S.optional(__S(6786, __c212, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListApiDebugSessionsResponse",
       });
   }
 }
-function __c74(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21413,17 +19788,25 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApisDeploymentsRequest",
       });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1161, __c36, 9));
     case 1:
-      return S.Array(__S(346, __c43, 2));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(593, __c74, 1)),
+          deployments: S.optional(__S(6848, __c214, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDeploymentsResponse",
       });
-    case 3:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21439,16 +19822,24 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApisKeyvaluemapsEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          keyValueEntries: S.optional(__S(16, __c2, 0)),
+          keyValueEntries: S.optional(__S(15264, __c477, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListKeyValueEntriesResponse",
       });
-    case 5:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21462,7 +19853,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsApisRevisionsDeploymentsRequest",
       });
-    case 6:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21479,23 +19874,23 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAppgroupsRequest",
       });
-    case 7:
-      return S.Array(__S(125, __c15, 5));
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(5792, __c181, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          appGroups: S.optional(__S(599, __c74, 7)),
+          appGroups: S.optional(__S(6977, __c218, 1)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListAppGroupsResponse",
       });
-    case 1:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21511,18 +19906,22 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAppgroupsAppsRequest",
       });
+    case 1:
+      return S.Array(__S(6336, __c198, 0));
     case 2:
-      return S.Array(__S(131, __c16, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          appGroupApps: S.optional(__S(602, __c75, 2)),
+          appGroupApps: S.optional(__S(7009, __c219, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListAppGroupAppsResponse",
       });
-    case 4:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21538,18 +19937,22 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAppgroupsSubscriptionsRequest",
       });
-    case 5:
-      return S.Array(__S(137, __c17, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(7200, __c225, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          appGroupSubscriptions: S.optional(__S(605, __c75, 5)),
+          appGroupSubscriptions: S.optional(__S(7041, __c220, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse",
       });
-    case 7:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -21575,23 +19978,23 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAppsRequest",
       });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(457, __c57, 1));
     case 1:
+      return S.Array(__S(3328, __c104, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(__S(608, __c76, 0)),
+          app: S.optional(__S(7073, __c221, 1)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListAppsResponse",
       });
-    case 2:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21607,18 +20010,22 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDatacollectorsRequest",
       });
-    case 3:
-      return S.Array(__S(139, __c17, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(7584, __c237, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dataCollectors: S.optional(__S(611, __c76, 3)),
+          dataCollectors: S.optional(__S(7105, __c222, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDataCollectorsResponse",
       });
-    case 5:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21633,7 +20040,47 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDeploymentsRequest",
       });
-    case 6:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7200, __c225, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/subscriptions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAppgroupsSubscriptionsRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          apiproduct: S.optional(S.String),
+          startTime: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroupSubscription",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.optional(S.String.pipe(T.Query())),
@@ -21653,21 +20100,21 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDevelopersRequest",
       });
-    case 7:
-      return S.Array(__S(141, __c17, 5));
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8032, __c251, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          developer: S.optional(__S(615, __c76, 7)),
+          developer: S.optional(__S(7233, __c226, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListOfDevelopersResponse",
       });
-    case 1:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21685,17 +20132,21 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDevelopersAppsRequest",
       });
+    case 1:
+      return S.Array(__S(8416, __c263, 0));
     case 2:
-      return S.Array(__S(143, __c17, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(__S(618, __c77, 2)),
+          app: S.optional(__S(7265, __c227, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDeveloperAppsResponse",
       });
-    case 4:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21709,7 +20160,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDevelopersAppsAttributesRequest",
       });
-    case 5:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21723,7 +20178,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDevelopersAttributesRequest",
       });
-    case 6:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startKey: S.optional(S.String.pipe(T.Query())),
@@ -21739,22 +20198,22 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDevelopersSubscriptionsRequest",
       });
-    case 7:
-      return S.Array(__S(149, __c18, 5));
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(9632, __c301, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextStartKey: S.optional(S.String),
-          developerSubscriptions: S.optional(__S(623, __c77, 7)),
+          developerSubscriptions: S.optional(__S(7361, __c230, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse",
       });
-    case 1:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21770,18 +20229,22 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsDnsZonesRequest",
       });
+    case 1:
+      return S.Array(__S(10081, __c315, 1));
     case 2:
-      return S.Array(__S(152, __c19, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          dnsZones: S.optional(__S(626, __c78, 2)),
+          dnsZones: S.optional(__S(7393, __c231, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDnsZonesResponse",
       });
-    case 4:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21797,18 +20260,22 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEndpointAttachmentsRequest",
       });
-    case 5:
-      return S.Array(__S(154, __c19, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(10528, __c329, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          endpointAttachments: S.optional(__S(629, __c78, 5)),
+          endpointAttachments: S.optional(__S(7425, __c232, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListEndpointAttachmentsResponse",
       });
-    case 7:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21824,22 +20291,22 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvgroupsRequest",
       });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(156, __c19, 4));
     case 1:
+      return S.Array(__S(10912, __c341, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          environmentGroups: S.optional(__S(632, __c79, 0)),
+          environmentGroups: S.optional(__S(7457, __c233, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListEnvironmentGroupsResponse",
       });
-    case 2:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21855,18 +20322,22 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvgroupsAttachmentsRequest",
       });
-    case 3:
-      return S.Array(__S(158, __c19, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(11296, __c353, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          environmentGroupAttachments: S.optional(__S(635, __c79, 3)),
+          environmentGroupAttachments: S.optional(__S(7489, __c234, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse",
       });
-    case 5:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21880,19 +20351,55 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsAnalyticsExportsRequest",
       });
-    case 6:
-      return S.Array(__S(168, __c21, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(12032, __c376, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          exports: S.optional(__S(638, __c79, 6)),
+          exports: S.optional(__S(7521, __c235, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListExportsResponse",
       });
   }
 }
-function __c80(j: number): any {
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          dataCollectorId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(7584, __c237, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/datacollectors",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDatacollectorsRequest",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DataCollector",
+      });
+  }
+}
+function __c238(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21908,7 +20415,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsApisDeploymentsRequest",
       });
-    case 1:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21924,7 +20435,7 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestampMs: S.optional(S.String),
@@ -21933,18 +20444,22 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1Session",
       });
+    case 2:
+      return S.Array(__S(7649, __c239, 1));
     case 3:
-      return S.Array(__S(642, __c80, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sessions: S.optional(__S(643, __c80, 3)),
+          sessions: S.optional(__S(7650, __c239, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListDebugSessionsResponse",
       });
-    case 5:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21961,12 +20476,12 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsArchiveDeploymentsRequest",
       });
-    case 6:
-      return S.Array(__S(171, __c21, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(12160, __c380, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          archiveDeployments: S.optional(__S(646, __c80, 6)),
+          archiveDeployments: S.optional(__S(7681, __c240, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21974,7 +20489,7 @@ function __c80(j: number): any {
       });
   }
 }
-function __c81(j: number): any {
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21991,7 +20506,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsDeploymentsRequest",
       });
-    case 1:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22007,7 +20526,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
       });
-    case 2:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           submittedBy: S.optional(S.String.pipe(T.Query())),
@@ -22027,17 +20550,25 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsQueriesRequest",
       });
-    case 3:
-      return S.Array(__S(188, __c23, 4));
-    case 4:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12512, __c391, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(651, __c81, 3)),
+          queries: S.optional(__S(7808, __c244, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListAsyncQueriesResponse",
       });
-    case 5:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22052,7 +20583,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsResourcefilesRequest",
       });
-    case 6:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -22069,22 +20604,22 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsSecurityActionsRequest",
       });
-    case 7:
-      return S.Array(__S(197, __c24, 5));
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12677, __c396, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          securityActions: S.optional(__S(655, __c81, 7)),
+          securityActions: S.optional(__S(7873, __c246, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityActionsResponse",
       });
-    case 1:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22101,16 +20636,20 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsSecurityIncidentsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityIncidents: S.optional(__S(46, __c5, 6)),
+          securityIncidents: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityIncidentsResponse",
       });
-    case 3:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22131,18 +20670,70 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsSecurityReportsRequest",
       });
-    case 4:
-      return S.Array(__S(204, __c25, 4));
-    case 5:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12800, __c400, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityReports: S.optional(__S(660, __c82, 4)),
+          securityReports: S.optional(__S(7968, __c249, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityReportsResponse",
       });
-    case 6:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8032, __c251, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/developers",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDevelopersRequest",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          apps: S.optional(__S(736, __c23, 0)),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          createdAt: S.optional(S.String),
+          developerId: S.optional(S.String),
+          email: S.optional(S.String),
+          organizationName: S.optional(S.String),
+          firstName: S.optional(S.String),
+          accessType: S.optional(S.String),
+          companies: S.optional(__S(736, __c23, 0)),
+          lastModifiedAt: S.optional(S.String),
+          userName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          appFamily: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Developer",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22156,7 +20747,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest",
       });
-    case 7:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -22172,22 +20767,22 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsEnvironmentsTraceConfigOverridesRequest",
       });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(210, __c26, 2));
     case 1:
+      return S.Array(__S(13120, __c410, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          traceConfigOverrides: S.optional(__S(664, __c83, 0)),
+          traceConfigOverrides: S.optional(__S(8097, __c253, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListTraceConfigOverridesResponse",
       });
-    case 2:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataset: S.optional(S.String.pipe(T.Query())),
@@ -22208,7 +20803,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsHostQueriesRequest",
       });
-    case 3:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -22230,7 +20829,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsHostSecurityReportsRequest",
       });
-    case 4:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22246,18 +20849,22 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsInstancesRequest",
       });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(13254, __c414, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          instances: S.optional(__S(669, __c83, 5)),
+          instances: S.optional(__S(8193, __c256, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListInstancesResponse",
       });
-    case 7:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22273,22 +20880,22 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsInstancesAttachmentsRequest",
       });
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(222, __c27, 6));
     case 1:
+      return S.Array(__S(13312, __c416, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(__S(672, __c84, 0)),
+          attachments: S.optional(__S(8225, __c257, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListInstanceAttachmentsResponse",
       });
-    case 2:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22304,18 +20911,22 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsInstancesNatAddressesRequest",
       });
-    case 3:
-      return S.Array(__S(227, __c28, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(13440, __c420, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          natAddresses: S.optional(__S(675, __c84, 3)),
+          natAddresses: S.optional(__S(8257, __c258, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListNatAddressesResponse",
       });
-    case 5:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22331,7 +20942,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsKeyvaluemapsEntriesRequest",
       });
-    case 6:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -22349,23 +20964,23 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12960, __c405, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(21, __c2, 5)),
-          operations: S.optional(__S(679, __c84, 7)),
+          unreachable: S.optional(__S(736, __c23, 0)),
+          operations: S.optional(__S(8321, __c260, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 1:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22380,17 +20995,64 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsReportsRequest",
       });
+    case 1:
+      return S.Array(__S(13700, __c428, 4));
     case 2:
-      return S.Array(__S(235, __c29, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          qualifier: S.optional(__S(682, __c85, 2)),
+          qualifier: S.optional(__S(8353, __c261, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListCustomReportsResponse",
       });
-    case 4:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apps",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDevelopersAppsRequest",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(15264, __c477, 0)),
+          keyExpiresIn: S.optional(S.String),
+          credentials: S.optional(__S(6307, __c197, 3)),
+          apiProducts: S.optional(__S(736, __c23, 0)),
+          status: S.optional(S.String),
+          appFamily: S.optional(S.String),
+          scopes: S.optional(__S(736, __c23, 0)),
+          name: S.optional(S.String),
+          appId: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          callbackUrl: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          developerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeveloperApp",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -22406,18 +21068,22 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSecurityFeedbackRequest",
       });
-    case 5:
-      return S.Array(__S(239, __c29, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(13762, __c430, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          securityFeedback: S.optional(__S(685, __c85, 5)),
+          securityFeedback: S.optional(__S(8449, __c264, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityFeedbackResponse",
       });
-    case 7:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22435,22 +21101,22 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSecurityMonitoringConditionsRequest",
       });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(241, __c30, 1));
     case 1:
+      return S.Array(__S(13824, __c432, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityMonitoringConditions: S.optional(__S(688, __c86, 0)),
+          securityMonitoringConditions: S.optional(__S(8481, __c265, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse",
       });
-    case 2:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22466,18 +21132,26 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSecurityProfilesRequest",
       });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          securityProfiles: S.optional(__S(691, __c86, 3)),
+          securityProfiles: S.optional(__S(8544, __c267, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityProfilesResponse",
       });
-    case 5:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(13895, __c434, 7));
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -22494,12 +21168,12 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSecurityProfilesV2Request",
       });
-    case 6:
-      return S.Array(__S(257, __c32, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(13987, __c437, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          securityProfilesV2: S.optional(__S(694, __c86, 6)),
+          securityProfilesV2: S.optional(__S(8577, __c268, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -22507,7 +21181,7 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22527,16 +21201,20 @@ function __c87(j: number): any {
         identifier: "ListOrganizationsSharedflowsRequest",
       });
     case 1:
-      return S.Array(__S(327, __c40, 7));
+      return S.Array(__S(896, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sharedFlows: S.optional(__S(697, __c87, 1)),
+          sharedFlows: S.optional(__S(8609, __c269, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSharedFlowsResponse",
       });
-    case 3:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22550,7 +21228,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSharedflowsDeploymentsRequest",
       });
-    case 4:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22564,7 +21246,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSharedflowsRevisionsDeploymentsRequest",
       });
-    case 5:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -22578,13 +21264,13 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSitesApicategoriesRequest",
       });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(14112, __c441, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          data: S.optional(__S(702, __c87, 6)),
+          data: S.optional(__S(8705, __c272, 1)),
           errorCode: S.optional(S.String),
           requestId: S.optional(S.String),
           message: S.optional(S.String),
@@ -22594,7 +21280,7 @@ function __c87(j: number): any {
       });
   }
 }
-function __c88(j: number): any {
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22613,11 +21299,11 @@ function __c88(j: number): any {
         identifier: "ListOrganizationsSitesApidocsRequest",
       });
     case 1:
-      return S.Array(__S(264, __c33, 0));
+      return S.Array(__S(14208, __c444, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(705, __c88, 1)),
+          data: S.optional(__S(8737, __c273, 1)),
           errorCode: S.optional(S.String),
           requestId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
@@ -22627,7 +21313,11 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListApiDocsResponse",
       });
-    case 3:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -22643,18 +21333,67 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSpacesRequest",
       });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(14304, __c447, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          spaces: S.optional(__S(708, __c88, 4)),
+          spaces: S.optional(__S(8769, __c274, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSpacesResponse",
       });
-    case 6:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8864, __c277, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keys",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDevelopersAppsKeysRequest",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expiresInSeconds: S.optional(S.String),
+          issuedAt: S.optional(S.String),
+          status: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+          consumerKey: S.optional(S.String),
+          attributes: S.optional(__S(15264, __c477, 0)),
+          apiProducts: S.optional(__S(8832, __c276, 0)),
+          scopes: S.optional(__S(736, __c23, 0)),
+          consumerSecret: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeveloperAppKey",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -22670,44 +21409,40 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListRevisionsOrganizationsSecurityProfilesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityProfiles: S.optional(__S(691, __c86, 3)),
+          securityProfiles: S.optional(__S(8544, __c267, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse",
       });
   }
 }
-function __c89(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(11683, __c365, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "ModifyEnvironmentOrganizationsEnvironmentsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          space: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1MoveApiProductRequest",
-      });
-    case 2:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(713, __c89, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8992, __c281, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22718,11 +21453,27 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "MoveOrganizationsApiproductsRequest",
       });
-    case 3:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          space: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1MoveApiProductRequest",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(713, __c89, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8992, __c281, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22733,11 +21484,15 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "MoveOrganizationsApisRequest",
       });
-    case 4:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(713, __c89, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8992, __c281, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22748,37 +21503,49 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "MoveOrganizationsSharedflowsRequest",
       });
-    case 5:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3172, __c99, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsApimServiceExtensionsRequest",
       });
-    case 6:
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(283, __c35, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(14880, __c465, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsApisRequest",
       });
-    case 7:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(7584, __c237, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -22787,98 +21554,145 @@ function __c89(j: number): any {
       });
   }
 }
-function __c90(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(10912, __c341, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsEnvgroupsRequest",
       });
-    case 1:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(12160, __c380, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsEnvironmentsArchiveDeploymentsRequest",
       });
-    case 2:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8864, __c277, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keys/create",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDevelopersAppsKeysCreateRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(197, __c24, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(12677, __c396, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsEnvironmentsSecurityActionsRequest",
       });
-    case 3:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1280, __c40, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsEnvironmentsSecurityIncidentsRequest",
       });
-    case 4:
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(13120, __c410, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsEnvironmentsTraceConfigOverridesRequest",
       });
-    case 5:
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(13254, __c414, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(239, __c29, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(13762, __c430, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsSecurityFeedbackRequest",
       });
-    case 7:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(13824, __c432, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -22887,56 +21701,108 @@ function __c90(j: number): any {
       });
   }
 }
-function __c91(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(250, __c31, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(13895, __c434, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsSecurityProfilesRequest",
       });
-    case 1:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(257, __c32, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(13987, __c437, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsSecurityProfilesV2Request",
       });
-    case 2:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(261, __c32, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(14112, __c441, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsSitesApicategoriesRequest",
       });
-    case 3:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(14304, __c447, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsSpacesRequest",
       });
-    case 4:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9632, __c301, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/subscriptions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDevelopersSubscriptionsRequest",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          name: S.optional(S.String),
+          apiproduct: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DeveloperSubscription",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authorizedNetwork: S.optional(S.String),
@@ -22947,11 +21813,11 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ProvisionOrganizationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(732, __c91, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22962,31 +21828,19 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "ProvisionOrganizationProjectsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aggregation: S.optional(S.String),
-          name: S.optional(S.String),
-          order: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudApigeeV1MetricAggregation",
-      });
-    case 7:
-      return S.Array(__S(734, __c91, 6));
   }
 }
-function __c92(j: number): any {
+function __c303(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(21, __c2, 5)),
+          dimensions: S.optional(__S(736, __c23, 0)),
           pageSize: S.optional(S.Number),
-          metrics: S.optional(__S(735, __c91, 7)),
+          metrics: S.optional(__S(9729, __c304, 1)),
           pageToken: S.optional(S.String),
           filter: S.optional(S.String),
-          timeRange: S.optional(__S(48, __c6, 0)),
+          timeRange: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1QueryTabularStatsRequest",
@@ -22995,7 +21849,7 @@ function __c92(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orgenv: S.String.pipe(T.Label()),
-          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(9696, __c303, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23007,37 +21861,57 @@ function __c92(j: number): any {
         identifier: "QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest",
       });
     case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(21, __c2, 5)),
-          values: S.optional(__S(738, __c92, 2)),
+          columns: S.optional(__S(736, __c23, 0)),
+          values: S.optional(__S(9730, __c304, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1QueryTabularStatsResponse",
       });
-    case 4:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aggregation: S.optional(S.String),
+          name: S.optional(S.String),
+          order: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1MetricAggregation",
+      });
+    case 1:
+      return S.Array(__S(9728, __c304, 0));
+    case 2:
+      return S.Array(__S(8832, __c276, 0));
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
+          dimensions: S.optional(__S(736, __c23, 0)),
           pageToken: S.optional(S.String),
           windowSize: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          timeRange: S.optional(__S(48, __c6, 0)),
+          timeRange: S.optional(__S(1728, __c54, 0)),
           timestampOrder: S.optional(S.String),
-          metrics: S.optional(__S(735, __c91, 7)),
+          metrics: S.optional(__S(9729, __c304, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           orgenv: S.String.pipe(T.Label()),
-          body: S.optional(__S(740, __c92, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(9760, __c305, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23048,43 +21922,47 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          points: S.optional(__S(738, __c92, 2)),
-          dimensions: S.optional(__S(117, __c14, 5)),
+          points: S.optional(__S(9730, __c304, 2)),
+          dimensions: S.optional(__S(4448, __c139, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence",
       });
-    case 7:
-      return S.Array(__S(742, __c92, 6));
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(9762, __c305, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(21, __c2, 5)),
+          columns: S.optional(__S(736, __c23, 0)),
           nextPageToken: S.optional(S.String),
-          values: S.optional(__S(743, __c92, 7)),
+          values: S.optional(__S(9763, __c305, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsResponse",
       });
-    case 1:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8864, __c277, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest",
       });
-    case 2:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -23095,25 +21973,25 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1UpdateError",
       });
-    case 3:
-      return S.Array(__S(746, __c93, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(9824, __c307, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           jsonSpec: S.optional(S.String),
-          errors: S.optional(__S(747, __c93, 3)),
+          errors: S.optional(__S(9825, __c307, 1)),
           replicas: S.optional(S.Number),
           revisionId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1RevisionStatus",
       });
-    case 5:
-      return S.Array(__S(748, __c93, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(9826, __c307, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          revisions: S.optional(__S(749, __c93, 5)),
+          revisions: S.optional(__S(9827, __c307, 3)),
           uid: S.optional(S.String),
           resource: S.optional(S.String),
           totalReplicas: S.optional(S.Number),
@@ -23121,27 +21999,23 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1ResourceStatus",
       });
-    case 7:
-      return S.Array(__S(750, __c93, 6));
-  }
-}
-function __c94(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(9828, __c307, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(751, __c93, 7)),
+          resources: S.optional(__S(9829, __c307, 5)),
           reportTime: S.optional(S.String),
           instanceUid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1ReportInstanceStatusRequest",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           instance: S.String.pipe(T.Label()),
-          body: S.optional(__S(752, __c94, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(9830, __c307, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23152,7 +22026,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "ReportStatusOrganizationsInstancesRequest",
       });
-    case 2:
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiSecurityEnabled: S.optional(S.Boolean),
@@ -23161,11 +22039,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1SetAddonEnablementRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(754, __c94, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(9856, __c308, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23176,19 +22054,23 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest",
       });
-    case 4:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          addonsConfig: S.optional(__S(68, __c8, 4)),
+          addonsConfig: S.optional(__S(2243, __c70, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1SetAddonsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          body: S.optional(__S(756, __c94, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(9888, __c309, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23199,7 +22081,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "SetAddonsOrganizationsRequest",
       });
-    case 6:
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -23210,24 +22096,15 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "SetDeveloperStatusOrganizationsDevelopersRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(434, __c54, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1SetIamPolicyRequest",
-      });
   }
 }
-function __c95(j: number): any {
+function __c311(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(759, __c94, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(9984, __c312, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23238,11 +22115,28 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyOrganizationsEnvironmentsRequest",
       });
-    case 1:
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(2471, __c77, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1SetIamPolicyRequest",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(759, __c94, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(9984, __c312, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23253,11 +22147,62 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest",
       });
-    case 2:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          dnsZoneId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10081, __c315, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dnsZones",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsDnsZonesRequest",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetNetworkId: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DnsZonePeeringConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+          domain: S.optional(S.String),
+          peeringConfig: S.optional(__S(10080, __c315, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DnsZone",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(759, __c94, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(9984, __c312, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23268,11 +22213,15 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyOrganizationsSpacesRequest",
       });
-    case 3:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(560, __c70, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(6240, __c195, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23283,7 +22232,11 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "SetSyncAuthorizationOrganizationsRequest",
       });
-    case 4:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -23297,7 +22250,11 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "SubscribeOrganizationsEnvironmentsRequest",
       });
-    case 5:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -23305,19 +22262,15 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1Subscription",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1TestIamPermissionsRequest",
-      });
-    case 7:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(766, __c95, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10272, __c321, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23330,13 +22283,25 @@ function __c95(j: number): any {
       });
   }
 }
-function __c96(j: number): any {
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1TestIamPermissionsRequest",
+      });
+  }
+}
+function __c322(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(766, __c95, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10272, __c321, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23347,11 +22312,15 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest",
       });
-    case 1:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(766, __c95, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10272, __c321, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23362,11 +22331,15 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsOrganizationsSpacesRequest",
       });
-    case 2:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2785, __c87, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23377,7 +22350,7 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "TestOrganizationsAnalyticsDatastoresRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
@@ -23386,7 +22359,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "GoogleCloudApigeeV1TestDatastoreResponse",
       });
-    case 4:
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sequencedRollout: S.optional(S.Boolean.pipe(T.Query())),
@@ -23401,7 +22378,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UndeployOrganizationsEnvironmentsApisRevisionsRequest",
       });
-    case 5:
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -23415,11 +22396,15 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest",
       });
-    case 6:
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(765, __c95, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(10208, __c319, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23430,11 +22415,52 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UnsubscribeOrganizationsEnvironmentsRequest",
       });
-    case 7:
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          endpointAttachmentId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10528, __c329, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/endpointAttachments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEndpointAttachmentsRequest",
+      });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectionState: S.optional(S.String),
+          state: S.optional(S.String),
+          serviceAttachment: S.optional(S.String),
+          host: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EndpointAttachment",
+      });
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -23443,21 +22469,25 @@ function __c96(j: number): any {
       });
   }
 }
-function __c97(j: number): any {
+function __c331(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           validate: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateApiProxyRevisionOrganizationsApisRevisionsRequest",
       });
-    case 1:
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -23469,64 +22499,84 @@ function __c97(j: number): any {
         identifier:
           "UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest",
       });
-    case 2:
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          apiProducts: S.optional(__S(21, __c2, 5)),
-          appGroupAppKey: S.optional(__S(135, __c16, 7)),
+          apiProducts: S.optional(__S(736, __c23, 0)),
+          appGroupAppKey: S.optional(__S(6754, __c211, 2)),
           action: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10656, __c333, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest",
       });
-    case 4:
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(373, __c46, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateControlPlaneAccessOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           replaceRepeatedFields: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(375, __c46, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateDebugmaskOrganizationsEnvironmentsRequest",
       });
-    case 6:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest",
       });
-    case 7:
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
@@ -23540,91 +22590,155 @@ function __c97(j: number): any {
       });
   }
 }
-function __c98(j: number): any {
+function __c338(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8864, __c277, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest",
       });
-    case 1:
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest",
       });
-    case 2:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10912, __c341, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/envgroups",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvgroupsRequest",
+      });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          hostnames: S.optional(__S(736, __c23, 0)),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EnvironmentGroup",
+      });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(424, __c53, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2404, __c75, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateDocumentationOrganizationsSitesApidocsRequest",
       });
-    case 3:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(11683, __c365, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateEnvironmentOrganizationsEnvironmentsRequest",
       });
-    case 4:
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(440, __c55, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateMonetizationConfigOrganizationsAppgroupsRequest",
       });
-    case 5:
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(440, __c55, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateMonetizationConfigOrganizationsDevelopersRequest",
       });
-    case 6:
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsRequest",
       });
-    case 7:
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2785, __c87, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -23633,92 +22747,154 @@ function __c98(j: number): any {
       });
   }
 }
-function __c99(j: number): any {
+function __c348(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3641, __c113, 25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsApiproductsRequest",
       });
-    case 1:
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(4004, __c125, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsApiproductsRateplansRequest",
       });
-    case 2:
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsApisKeyvaluemapsRequest",
       });
-    case 3:
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsApisKeyvaluemapsEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(11296, __c353, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/attachments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvgroupsAttachmentsRequest",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          environment: S.optional(S.String),
+          environmentGroupId: S.optional(S.String),
+          createdAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EnvironmentGroupAttachment",
+      });
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(5792, __c181, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsAppgroupsRequest",
       });
-    case 5:
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           action: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(131, __c16, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6336, __c198, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsAppgroupsAppsRequest",
       });
-    case 6:
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8032, __c251, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsDevelopersRequest",
       });
-    case 7:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -23727,72 +22903,92 @@ function __c99(j: number): any {
       });
   }
 }
-function __c100(j: number): any {
+function __c358(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(11683, __c365, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsRequest",
       });
-    case 1:
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ignoreNewlineValidation: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           ignoreExpiryValidation: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsKeystoresAliasesRequest",
       });
-    case 2:
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsKeyvaluemapsRequest",
       });
-    case 3:
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(12576, __c393, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsReferencesRequest",
       });
-    case 5:
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String.pipe(T.Label()),
           parent: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -23803,22 +22999,102 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsResourcefilesRequest",
       });
-    case 6:
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(11683, __c365, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/environments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsRequest",
+      });
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipHeaderName: S.optional(S.String),
+          ipHeaderIndex: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          headerIndexAlgorithm: S.optional(__S(11680, __c365, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          minNodeCount: S.optional(S.String),
+          currentAggregateNodeCount: S.optional(S.String),
+          maxNodeCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1NodeConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          forwardProxyUri: S.optional(S.String),
+          hasAttachedFlowHooks: S.optional(S.Boolean),
+          deploymentType: S.optional(S.String),
+          state: S.optional(S.String),
+          clientIpResolutionConfig: S.optional(__S(11681, __c365, 1)),
+          type: S.optional(S.String),
+          displayName: S.optional(S.String),
+          properties: S.optional(__S(2304, __c72, 0)),
+          nodeConfig: S.optional(__S(11682, __c365, 2)),
+          createdAt: S.optional(S.String),
+          apiProxyType: S.optional(S.String),
+          name: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Environment",
+      });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(13026, __c407, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsEnvironmentsTargetserversRequest",
       });
-    case 7:
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -23827,83 +23103,107 @@ function __c100(j: number): any {
       });
   }
 }
-function __c101(j: number): any {
+function __c368(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsKeyvaluemapsEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(13700, __c428, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsReportsRequest",
       });
-    case 2:
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(14208, __c444, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateOrganizationsSitesApidocsRequest",
       });
-    case 3:
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(556, __c69, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(6112, __c191, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest",
       });
-    case 4:
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(558, __c69, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(6176, __c193, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSecuritySettingsOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validate: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest",
       });
-    case 6:
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(563, __c70, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6401, __c200, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
         ),
@@ -23912,7 +23212,2378 @@ function __c101(j: number): any {
       });
   }
 }
-
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          end: S.optional(S.String),
+          start: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DateRange",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreName: S.optional(S.String),
+          description: S.optional(S.String),
+          outputFormat: S.optional(S.String),
+          csvDelimiter: S.optional(S.String),
+          dateRange: S.optional(__S(12000, __c375, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ExportRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12001, __c375, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/analytics/exports",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsAnalyticsExportsRequest",
+      });
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreName: S.optional(S.String),
+          self: S.optional(S.String),
+          error: S.optional(S.String),
+          state: S.optional(S.String),
+          updated: S.optional(S.String),
+          executionTime: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          created: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Export",
+      });
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          timeout: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(12096, __c378, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/debugsessions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          timeout: S.optional(S.String),
+          filter: S.optional(S.String),
+          validity: S.optional(S.Number),
+          tracesize: S.optional(S.Number),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1DebugSession",
+      });
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12160, __c380, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/archiveDeployments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsArchiveDeploymentsRequest",
+      });
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          gcsUri: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          operation: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          labels: S.optional(__S(4448, __c139, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ArchiveDeployment",
+      });
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(12224, __c382, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keystores",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsKeystoresRequest",
+      });
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          aliases: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Keystore",
+      });
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String.pipe(T.Query())),
+          ignoreNewlineValidation: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          _password: S.optional(S.String.pipe(T.Query())),
+          ignoreExpiryValidation: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/aliases",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsKeystoresAliasesRequest",
+      });
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.optional(S.String),
+          isValid: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          publicKey: S.optional(S.String),
+          validFrom: S.optional(S.String),
+          sigAlgName: S.optional(S.String),
+          basicConstraints: S.optional(S.String),
+          expiryDate: S.optional(S.String),
+          subjectAlternativeNames: S.optional(__S(736, __c23, 0)),
+          version: S.optional(S.Number),
+          issuer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CertInfo",
+      });
+    case 1:
+      return S.Array(__S(12288, __c384, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          certInfo: S.optional(__S(12289, __c384, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Certificate",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String),
+          certsInfo: S.optional(__S(12290, __c384, 2)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudApigeeV1Alias" });
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keyvaluemaps",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsKeyvaluemapsRequest",
+      });
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entries",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12450, __c389, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/queries",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsQueriesRequest",
+      });
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: S.optional(S.String),
+          expires: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AsyncQueryResult",
+      });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          function: S.optional(S.String),
+          value: S.optional(S.String),
+          operator: S.optional(S.String),
+          alias: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1QueryMetric",
+      });
+    case 1:
+      return S.Array(__S(12448, __c389, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          outputFormat: S.optional(S.String),
+          limit: S.optional(S.Number),
+          timeRange: S.optional(S.Unknown),
+          metrics: S.optional(__S(12449, __c389, 1)),
+          csvDelimiter: S.optional(S.String),
+          dimensions: S.optional(__S(736, __c23, 0)),
+          filter: S.optional(S.String),
+          envgroupHostname: S.optional(S.String),
+          reportDefinitionId: S.optional(S.String),
+          groupByTimeUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudApigeeV1Query" });
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeUnit: S.optional(S.String),
+          startTimestamp: S.optional(S.String),
+          endTimestamp: S.optional(S.String),
+          outputFormat: S.optional(S.String),
+          metrics: S.optional(__S(736, __c23, 0)),
+          dimensions: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1QueryMetadata",
+      });
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportDefinitionId: S.optional(S.String),
+          created: S.optional(S.String),
+          executionTime: S.optional(S.String),
+          result: S.optional(__S(12416, __c388, 0)),
+          resultRows: S.optional(S.String),
+          envgroupHostname: S.optional(S.String),
+          updated: S.optional(S.String),
+          resultFileSize: S.optional(S.String),
+          name: S.optional(S.String),
+          self: S.optional(S.String),
+          queryParams: S.optional(__S(12480, __c390, 0)),
+          error: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AsyncQuery",
+      });
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12576, __c393, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/references",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsReferencesRequest",
+      });
+  }
+}
+function __c393(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          refers: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Reference",
+      });
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          type: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/resourcefiles",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsResourcefilesRequest",
+      });
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          securityActionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(12677, __c396, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityActions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsSecurityActionsRequest",
+      });
+  }
+}
+function __c396(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userAgents: S.optional(__S(736, __c23, 0)),
+          ipAddressRanges: S.optional(__S(736, __c23, 0)),
+          asns: S.optional(__S(736, __c23, 0)),
+          apiKeys: S.optional(__S(736, __c23, 0)),
+          botReasons: S.optional(__S(736, __c23, 0)),
+          accessTokens: S.optional(__S(736, __c23, 0)),
+          apiProducts: S.optional(__S(736, __c23, 0)),
+          regionCodes: S.optional(__S(736, __c23, 0)),
+          developerApps: S.optional(__S(736, __c23, 0)),
+          developers: S.optional(__S(736, __c23, 0)),
+          httpMethods: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityActionConditionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityActionHttpHeader",
+      });
+    case 2:
+      return S.Array(__S(12673, __c396, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(12674, __c396, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityActionFlag",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          responseCode: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityActionDeny",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          apiProxies: S.optional(__S(736, __c23, 0)),
+          name: S.optional(S.String),
+          allow: S.optional(__S(12928, __c404, 0)),
+          ttl: S.optional(S.String),
+          conditionConfig: S.optional(__S(12672, __c396, 0)),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          state: S.optional(S.String),
+          flag: S.optional(__S(12675, __c396, 3)),
+          deny: S.optional(__S(12676, __c396, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityAction",
+      });
+  }
+}
+function __c397(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12738, __c398, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityReports",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsSecurityReportsRequest",
+      });
+  }
+}
+function __c398(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          aggregationFunction: S.optional(S.String),
+          operator: S.optional(S.String),
+          alias: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityReportQueryMetric",
+      });
+    case 1:
+      return S.Array(__S(12736, __c398, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(736, __c23, 0)),
+          mimeType: S.optional(S.String),
+          filter: S.optional(S.String),
+          metrics: S.optional(__S(12737, __c398, 1)),
+          timeRange: S.optional(S.Unknown),
+          displayName: S.optional(S.String),
+          reportDefinitionId: S.optional(S.String),
+          csvDelimiter: S.optional(S.String),
+          envgroupHostname: S.optional(S.String),
+          groupByTimeUnit: S.optional(S.String),
+          limit: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityReportQuery",
+      });
+  }
+}
+function __c399(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endTimestamp: S.optional(S.String),
+          metrics: S.optional(__S(736, __c23, 0)),
+          timeUnit: S.optional(S.String),
+          startTimestamp: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          dimensions: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityReportMetadata",
+      });
+  }
+}
+function __c400(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(__S(12416, __c388, 0)),
+          state: S.optional(S.String),
+          reportDefinitionId: S.optional(S.String),
+          error: S.optional(S.String),
+          envgroupHostname: S.optional(S.String),
+          self: S.optional(S.String),
+          updated: S.optional(S.String),
+          executionTime: S.optional(S.String),
+          resultRows: S.optional(S.String),
+          created: S.optional(S.String),
+          displayName: S.optional(S.String),
+          queryParams: S.optional(__S(12768, __c399, 0)),
+          resultFileSize: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityReport",
+      });
+  }
+}
+function __c401(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(12928, __c404, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:activate",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateOrganizationsInstancesNatAddressesRequest",
+      });
+  }
+}
+function __c402(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(12864, __c402, 0));
+  }
+}
+function __c403(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(12865, __c402, 1)),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+  }
+}
+function __c404(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudApigeeV1ActivateNatAddressRequest",
+      });
+  }
+}
+function __c405(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(12896, __c403, 0)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(12864, __c402, 0)),
+          metadata: S.optional(__S(12864, __c402, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(13026, __c407, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/targetservers",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsTargetserversRequest",
+      });
+  }
+}
+function __c407(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          wildcardMatch: S.optional(S.Boolean),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1TlsInfoCommonName",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          clientAuthEnabled: S.optional(S.Boolean),
+          enforce: S.optional(S.Boolean),
+          commonName: S.optional(__S(13024, __c407, 0)),
+          keyStore: S.optional(S.String),
+          protocols: S.optional(__S(736, __c23, 0)),
+          ciphers: S.optional(__S(736, __c23, 0)),
+          ignoreValidationErrors: S.optional(S.Boolean),
+          trustStore: S.optional(S.String),
+          keyAlias: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1TlsInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sSLInfo: S.optional(__S(13025, __c407, 1)),
+          name: S.optional(S.String),
+          isEnabled: S.optional(S.Boolean),
+          protocol: S.optional(S.String),
+          host: S.optional(S.String),
+          port: S.optional(S.Number),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1TargetServer",
+      });
+  }
+}
+function __c408(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13120, __c410, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/overrides",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsEnvironmentsTraceConfigOverridesRequest",
+      });
+  }
+}
+function __c409(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          samplingRate: S.optional(S.Number),
+          sampler: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1TraceSamplingConfig",
+      });
+  }
+}
+function __c410(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          samplingConfig: S.optional(__S(13088, __c409, 0)),
+          apiProxy: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1TraceConfigOverride",
+      });
+  }
+}
+function __c411(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12450, __c389, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/hostQueries",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsHostQueriesRequest",
+      });
+  }
+}
+function __c412(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(12738, __c398, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/hostSecurityReports",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsHostSecurityReportsRequest",
+      });
+  }
+}
+function __c413(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13254, __c414, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/instances",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsInstancesRequest",
+      });
+  }
+}
+function __c414(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeTimeOfDay" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(__S(13248, __c414, 0)),
+          day: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow",
+      });
+    case 2:
+      return S.Array(__S(13249, __c414, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceWindows: S.optional(__S(13250, __c414, 2)),
+          maintenanceChannel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AccessLoggingConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ScheduledMaintenance",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAttachment: S.optional(S.String),
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+          maintenanceUpdatePolicy: S.optional(__S(13251, __c414, 3)),
+          runtimeVersion: S.optional(S.String),
+          consumerAcceptList: S.optional(__S(736, __c23, 0)),
+          diskEncryptionKeyName: S.optional(S.String),
+          peeringCidrRange: S.optional(S.String),
+          port: S.optional(S.String),
+          accessLoggingConfig: S.optional(__S(13252, __c414, 4)),
+          displayName: S.optional(S.String),
+          ipRange: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          name: S.optional(S.String),
+          scheduledMaintenance: S.optional(__S(13253, __c414, 5)),
+          isVersionLocked: S.optional(S.Boolean),
+          host: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Instance",
+      });
+  }
+}
+function __c415(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13312, __c416, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/attachments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsInstancesAttachmentsRequest",
+      });
+  }
+}
+function __c416(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(S.String),
+          name: S.optional(S.String),
+          createdAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1InstanceAttachment",
+      });
+  }
+}
+function __c417(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13377, __c418, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/canaryevaluations",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsInstancesCanaryevaluationsRequest",
+      });
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instance_id: S.optional(S.String),
+          env: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CanaryEvaluationMetricLabels",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          metricLabels: S.optional(__S(13376, __c418, 0)),
+          verdict: S.optional(S.String),
+          createTime: S.optional(S.String),
+          treatment: S.optional(S.String),
+          endTime: S.optional(S.String),
+          control: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CanaryEvaluation",
+      });
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13440, __c420, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/natAddresses",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsInstancesNatAddressesRequest",
+      });
+  }
+}
+function __c420(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1NatAddress",
+      });
+  }
+}
+function __c421(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5024, __c157, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keyvaluemaps",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsKeyvaluemapsRequest",
+      });
+  }
+}
+function __c422(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(15232, __c476, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/entries",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(13568, __c424, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:adjust",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AdjustOrganizationsAppgroupsBalanceRequest",
+      });
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adjustment: S.optional(__S(13600, __c425, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AdjustAppGroupBalanceRequest",
+      });
+  }
+}
+function __c425(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeMoney" });
+  }
+}
+function __c426(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          balance: S.optional(__S(13600, __c425, 0)),
+          lastCreditTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroupBalanceWallet",
+      });
+    case 1:
+      return S.Array(__S(13632, __c426, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          wallets: S.optional(__S(13633, __c426, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1AppGroupBalance",
+      });
+  }
+}
+function __c427(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13700, __c428, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/reports",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsReportsRequest",
+      });
+  }
+}
+function __c428(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          function: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CustomReportMetric",
+      });
+    case 1:
+      return S.Array(__S(13696, __c428, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(15264, __c477, 0)),
+          property: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ReportProperty",
+      });
+    case 3:
+      return S.Array(__S(13698, __c428, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          timeUnit: S.optional(S.String),
+          metrics: S.optional(__S(13697, __c428, 1)),
+          displayName: S.optional(S.String),
+          limit: S.optional(S.String),
+          toTime: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          topk: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          chartType: S.optional(S.String),
+          environment: S.optional(S.String),
+          fromTime: S.optional(S.String),
+          organization: S.optional(S.String),
+          name: S.optional(S.String),
+          sortByCols: S.optional(__S(736, __c23, 0)),
+          sortOrder: S.optional(S.String),
+          properties: S.optional(__S(13699, __c428, 3)),
+          lastViewedAt: S.optional(S.String),
+          offset: S.optional(S.String),
+          filter: S.optional(S.String),
+          dimensions: S.optional(__S(736, __c23, 0)),
+          tags: S.optional(__S(736, __c23, 0)),
+          comments: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CustomReport",
+      });
+  }
+}
+function __c429(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          securityFeedbackId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(13762, __c430, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityFeedback",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSecurityFeedbackRequest",
+      });
+  }
+}
+function __c430(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(736, __c23, 0)),
+          attribute: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityFeedbackFeedbackContext",
+      });
+    case 1:
+      return S.Array(__S(13760, __c430, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          feedbackType: S.optional(S.String),
+          name: S.optional(S.String),
+          reason: S.optional(S.String),
+          createTime: S.optional(S.String),
+          comment: S.optional(S.String),
+          feedbackContexts: S.optional(__S(13761, __c430, 1)),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityFeedback",
+      });
+  }
+}
+function __c431(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityMonitoringConditionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13824, __c432, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityMonitoringConditions",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSecurityMonitoringConditionsRequest",
+      });
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          riskAssessmentType: S.optional(S.String),
+          totalMonitoredResources: S.optional(S.Number),
+          include: S.optional(__S(770, __c24, 2)),
+          profile: S.optional(S.String),
+          apiHubGateway: S.optional(S.String),
+          createTime: S.optional(S.String),
+          scope: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          includeAllResources: S.optional(__S(12928, __c404, 0)),
+          totalDeployedResources: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityMonitoringCondition",
+      });
+  }
+}
+function __c433(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityProfileId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13895, __c434, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityProfiles",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSecurityProfilesRequest",
+      });
+  }
+}
+function __c434(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(S.String),
+          attachTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfileEnvironment",
+      });
+    case 1:
+      return S.Array(__S(13888, __c434, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          threat: S.optional(__S(12928, __c404, 0)),
+          abuse: S.optional(__S(12928, __c404, 0)),
+          mediation: S.optional(__S(12928, __c404, 0)),
+          mtls: S.optional(__S(12928, __c404, 0)),
+          cors: S.optional(__S(12928, __c404, 0)),
+          authorization: S.optional(__S(12928, __c404, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ProfileConfigCategory",
+      });
+    case 3:
+      return S.Array(__S(13890, __c434, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(13891, __c434, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ProfileConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          scorePath: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfileScoringConfig",
+      });
+    case 6:
+      return S.Array(__S(13893, __c434, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          environments: S.optional(__S(13889, __c434, 1)),
+          profileConfig: S.optional(__S(13892, __c434, 4)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          revisionPublishTime: S.optional(S.String),
+          minScore: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          scoringConfigs: S.optional(__S(13894, __c434, 6)),
+          revisionUpdateTime: S.optional(S.String),
+          revisionCreateTime: S.optional(S.String),
+          maxScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfile",
+      });
+  }
+}
+function __c435(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          securityProfileRevisionId: S.optional(S.String),
+          attachTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(13920, __c435, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/environments",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSecurityProfilesEnvironmentsRequest",
+      });
+  }
+}
+function __c436(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          securityProfileV2Id: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(13987, __c437, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/securityProfilesV2",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSecurityProfilesV2Request",
+      });
+  }
+}
+function __c437(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayTypes: S.optional(__S(3200, __c100, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          include: S.optional(__S(13984, __c437, 0)),
+          weight: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig",
+      });
+    case 2:
+      return S.Record(S.String, __S(13985, __c437, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          googleDefined: S.optional(S.Boolean),
+          profileAssessmentConfigs: S.optional(__S(13986, __c437, 2)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          riskAssessmentType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SecurityProfileV2",
+      });
+  }
+}
+function __c438(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          action: S.optional(S.String.pipe(T.Query())),
+          space: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sharedflows",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSharedflowsRequest",
+      });
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          entityMetaDataAsProperties: S.optional(__S(4448, __c139, 0)),
+          revision: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sharedFlows: S.optional(__S(736, __c23, 0)),
+          configurationVersion: S.optional(__S(4576, __c143, 0)),
+          description: S.optional(S.String),
+          resourceFiles: S.optional(__S(4545, __c142, 1)),
+          contextInfo: S.optional(S.String),
+          name: S.optional(S.String),
+          policies: S.optional(__S(736, __c23, 0)),
+          lastModifiedAt: S.optional(S.String),
+          resources: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1SharedFlowRevision",
+      });
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(14112, __c441, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apicategories",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSitesApicategoriesRequest",
+      });
+  }
+}
+function __c441(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          siteId: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiCategory",
+      });
+  }
+}
+function __c442(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          requestId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          data: S.optional(__S(14112, __c441, 0)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiCategoryResponse",
+      });
+  }
+}
+function __c443(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(14208, __c444, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apidocs",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSitesApidocsRequest",
+      });
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          graphqlEndpointUrl: S.optional(S.String),
+          requireCallbackUrl: S.optional(S.Boolean),
+          graphqlSchema: S.optional(S.String),
+          visibility: S.optional(S.Boolean),
+          specId: S.optional(S.String),
+          description: S.optional(S.String),
+          edgeAPIProductName: S.optional(S.String),
+          graphqlSchemaDisplayName: S.optional(S.String),
+          anonAllowed: S.optional(S.Boolean),
+          apiProductName: S.optional(S.String),
+          published: S.optional(S.Boolean),
+          modified: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          categoryIds: S.optional(__S(736, __c23, 0)),
+          id: S.optional(S.String),
+          siteId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiDoc",
+      });
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          status: S.optional(S.String),
+          data: S.optional(__S(14208, __c444, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiDocResponse",
+      });
+  }
+}
+function __c446(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          spaceId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(14304, __c447, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/spaces",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSpacesRequest",
+      });
+  }
+}
+function __c447(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudApigeeV1Space" });
+  }
+}
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(13568, __c424, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:adjust",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AdjustOrganizationsDevelopersBalanceRequest",
+      });
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(14400, __c450, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:credit",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreditOrganizationsAppgroupsBalanceRequest",
+      });
+  }
+}
+function __c450(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactionId: S.optional(S.String),
+          transactionAmount: S.optional(__S(13600, __c425, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1CreditAppGroupBalanceRequest",
+      });
+  }
+}
+function __c451(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(14400, __c450, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:credit",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreditOrganizationsDevelopersBalanceRequest",
+      });
+  }
+}
+function __c452(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/csr",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CsrOrganizationsEnvironmentsKeystoresAliasesRequest",
+      });
+  }
+}
+function __c453(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}/data",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest",
+      });
+  }
+}
+function __c454(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c455(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          retention: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsRequest",
+      });
+  }
+}
+function __c456(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAnalyticsDatastoresRequest",
+      });
+  }
+}
+function __c457(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApimServiceExtensionsRequest",
+      });
+  }
+}
+function __c458(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApiproductsRequest",
+      });
+  }
+}
+function __c459(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApiproductsAttributesRequest",
+      });
+  }
+}
+function __c460(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApiproductsRateplansRequest",
+      });
+  }
+}
+function __c461(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(14784, __c462, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://apigee.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest",
+      });
+  }
+}
+function __c462(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          flowHookPoint: S.optional(S.String),
+          continueOnError: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          sharedFlow: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1FlowHook",
+      });
+  }
+}
+function __c463(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApisRequest",
+      });
+  }
+}
+function __c464(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastModifiedAt: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          subType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1EntityMetadata",
+      });
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readOnly: S.optional(S.Boolean),
+          apiProxyType: S.optional(S.String),
+          name: S.optional(S.String),
+          metaData: S.optional(__S(14848, __c464, 0)),
+          space: S.optional(S.String),
+          revision: S.optional(__S(736, __c23, 0)),
+          labels: S.optional(__S(4448, __c139, 0)),
+          latestRevisionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1ApiProxy",
+      });
+  }
+}
+function __c466(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApisKeyvaluemapsRequest",
+      });
+  }
+}
+function __c467(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApisKeyvaluemapsEntriesRequest",
+      });
+  }
+}
+function __c468(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsApisRevisionsRequest",
+      });
+  }
+}
+function __c469(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAppgroupsRequest",
+      });
+  }
+}
+function __c470(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAppgroupsAppsRequest",
+      });
+  }
+}
+function __c471(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAppgroupsAppsKeysRequest",
+      });
+  }
+}
+function __c472(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest",
+      });
+  }
+}
+function __c473(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDatacollectorsRequest",
+      });
+  }
+}
+function __c474(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersRequest",
+      });
+  }
+}
+function __c475(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(15296, __c478, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/attributes",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AttributesOrganizationsApiproductsRequest",
+      });
+  }
+}
+function __c476(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Attribute",
+      });
+  }
+}
+function __c477(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(15232, __c476, 0));
+  }
+}
+function __c478(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.optional(__S(15264, __c477, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudApigeeV1Attributes",
+      });
+  }
+}
+function __c479(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersAppsRequest",
+      });
+  }
+}
+function __c480(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersAppsAttributesRequest",
+      });
+  }
+}
+function __c481(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersAppsKeysRequest",
+      });
+  }
+}
+function __c482(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersAppsKeysApiproductsRequest",
+      });
+  }
+}
+function __c483(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDevelopersAttributesRequest",
+      });
+  }
+}
+function __c484(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsDnsZonesRequest",
+      });
+  }
+}
+function __c485(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEndpointAttachmentsRequest",
+      });
+  }
+}
+function __c486(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvgroupsRequest",
+      });
+  }
+}
+function __c487(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvgroupsAttachmentsRequest",
+      });
+  }
+}
+function __c488(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigee.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsEnvironmentsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

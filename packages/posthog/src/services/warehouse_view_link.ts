@@ -197,7 +197,7 @@ export const createWarehouseViewLink: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWarehouseViewLinkRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ViewLink>,
+  output: __S(10, __c1, 2) as any as S.Schema<ViewLink>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -211,8 +211,8 @@ export const getWarehouseViewLink: API.OperationMethod<
   GetWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetWarehouseViewLinkRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ViewLink>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetWarehouseViewLinkRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ViewLink>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -226,8 +226,8 @@ export const listWarehouseViewLink: API.OperationMethod<
   ListWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListWarehouseViewLinkRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PaginatedViewLinkList>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListWarehouseViewLinkRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<PaginatedViewLinkList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -241,8 +241,8 @@ export const updateWarehouseViewLink: API.OperationMethod<
   UpdateWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateWarehouseViewLinkRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ViewLink>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateWarehouseViewLinkRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ViewLink>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -256,8 +256,8 @@ export const updateWarehouseViewLinkPartial: API.OperationMethod<
   UpdateWarehouseViewLinkPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UpdateWarehouseViewLinkPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ViewLink>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateWarehouseViewLinkPartialRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ViewLink>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -271,8 +271,8 @@ export const warehouseViewLinkDestroy: API.OperationMethod<
   WarehouseViewLinkDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<WarehouseViewLinkDestroyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<WarehouseViewLinkDestroyResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<WarehouseViewLinkDestroyRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<WarehouseViewLinkDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -286,8 +286,8 @@ export const warehouseViewLinkValidateCreate: API.OperationMethod<
   WarehouseViewLinkValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<WarehouseViewLinkValidateCreateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ViewLinkValidationResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<WarehouseViewLinkValidateCreateRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ViewLinkValidationResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -317,9 +317,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWarehouseViewLinkRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -329,16 +333,16 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: __S(2, __c0, 2),
+          created_by: __S(9, __c1, 1),
           created_at: S.String,
           source_table_name: S.String,
           source_table_key: S.String,
@@ -348,7 +352,11 @@ function __c0(j: number): any {
           configuration: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ViewLink" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -363,7 +371,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWarehouseViewLinkRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -380,20 +392,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWarehouseViewLinkRequest",
       });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(10, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6, __c0, 6),
+          results: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "PaginatedViewLinkList" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -417,7 +429,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseViewLinkRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -439,7 +455,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseViewLinkPartialRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -454,11 +474,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "WarehouseViewLinkDestroyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WarehouseViewLinkDestroyResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -476,24 +500,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "WarehouseViewLinkValidateCreateRequest",
       });
-    case 5:
+    case 1:
       return S.Array(S.String);
-    case 6:
+    case 2:
       return S.Array(S.Unknown);
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           is_valid: S.Boolean,
           msg: S.NullOr(S.String),
           hogql: S.NullOr(S.String),
-          columns: __S(13, __c1, 5),
-          results: __S(15, __c1, 7),
+          columns: __S(57, __c7, 1),
+          results: __S(59, __c7, 3),
           total_rows: S.NullOr(S.Number),
           matched_rows: S.NullOr(S.Number),
           match_rate: S.NullOr(S.Number),
@@ -503,7 +523,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

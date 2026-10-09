@@ -1140,8 +1140,8 @@ export const AlertProcessingRulesCreateOrUpdate: API.OperationMethod<
   AlertProcessingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1155,8 @@ export const AlertsChangeState: API.OperationMethod<
   AlertsChangeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AlertsChangeStateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<AlertsChangeStateResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<AlertsChangeStateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<AlertsChangeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1170,8 @@ export const AlertsMetaData2: API.OperationMethod<
   AlertsMetaData2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AlertsMetaDataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<AlertsMetaData>,
+  input: __S(184, __c23, 0) as any as S.Schema<AlertsMetaDataRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<AlertsMetaData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1185,8 @@ export const DeleteAlertProcessingRule: API.OperationMethod<
   DeleteAlertProcessingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteAlertProcessingRuleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteAlertProcessingRuleResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DeleteAlertProcessingRuleRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<DeleteAlertProcessingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1200,8 +1200,8 @@ export const DeletePrometheusRuleGroup: API.OperationMethod<
   DeletePrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeletePrometheusRuleGroupRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeletePrometheusRuleGroupResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DeletePrometheusRuleGroupRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<DeletePrometheusRuleGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const DeleteSmartDetectorAlertRule: API.OperationMethod<
   DeleteSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteSmartDetectorAlertRuleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteSmartDetectorAlertRuleResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteSmartDetectorAlertRuleRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<DeleteSmartDetectorAlertRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const GetAlertAll: API.OperationMethod<
   GetAlertAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetAlertAllRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AlertsList>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetAlertAllRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<AlertsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const GetAlertById: API.OperationMethod<
   GetAlertByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetAlertByIdRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetAlertByIdResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetAlertByIdRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<GetAlertByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const GetAlertHistory: API.OperationMethod<
   GetAlertHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAlertHistoryRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetAlertHistoryResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetAlertHistoryRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<GetAlertHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const GetAlertProcessingRuleByName: API.OperationMethod<
   GetAlertProcessingRuleByNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetAlertProcessingRuleByNameRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetAlertProcessingRuleByNameResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetAlertProcessingRuleByNameRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetAlertProcessingRuleByNameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const GetAlertSummary: API.OperationMethod<
   GetAlertSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetAlertSummaryRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetAlertSummaryResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAlertSummaryRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetAlertSummaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const GetPrometheusRuleGroup: API.OperationMethod<
   GetPrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetPrometheusRuleGroupRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetPrometheusRuleGroupResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetPrometheusRuleGroupRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetPrometheusRuleGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const GetSmartDetectorAlertRule: API.OperationMethod<
   GetSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetSmartDetectorAlertRuleRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetSmartDetectorAlertRuleResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetSmartDetectorAlertRuleRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetSmartDetectorAlertRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const ListAlertProcessingRuleByResourceGroup: API.OperationMethod<
   ListAlertProcessingRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListAlertProcessingRuleByResourceGroupRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AlertProcessingRulesList>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListAlertProcessingRuleByResourceGroupRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<AlertProcessingRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const ListAlertProcessingRuleBySubscription: API.OperationMethod<
   ListAlertProcessingRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListAlertProcessingRuleBySubscriptionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AlertProcessingRulesList>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAlertProcessingRuleBySubscriptionRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<AlertProcessingRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<OperationsList>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1380,8 @@ export const ListPrometheusRuleGroupByResourceGroup: API.OperationMethod<
   ListPrometheusRuleGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListPrometheusRuleGroupByResourceGroupRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListPrometheusRuleGroupByResourceGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1395,8 +1395,8 @@ export const ListPrometheusRuleGroupBySubscription: API.OperationMethod<
   ListPrometheusRuleGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListPrometheusRuleGroupBySubscriptionRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListPrometheusRuleGroupBySubscriptionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1410,8 @@ export const ListSmartDetectorAlertRuleByResourceGroup: API.OperationMethod<
   ListSmartDetectorAlertRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListSmartDetectorAlertRuleByResourceGroupRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AlertRulesList>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListSmartDetectorAlertRuleByResourceGroupRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<AlertRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1425,8 @@ export const ListSmartDetectorAlertRules: API.OperationMethod<
   ListSmartDetectorAlertRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListSmartDetectorAlertRulesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AlertRulesList>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListSmartDetectorAlertRulesRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<AlertRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1440,8 +1440,8 @@ export const PatchSmartDetectorAlertRule: API.OperationMethod<
   PatchSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PatchSmartDetectorAlertRuleRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PatchSmartDetectorAlertRuleResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<PatchSmartDetectorAlertRuleRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<PatchSmartDetectorAlertRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1455,8 +1455,8 @@ export const PrometheusRuleGroupsCreateOrUpdate: API.OperationMethod<
   PrometheusRuleGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1470,8 @@ export const SmartDetectorAlertRulesCreateOrUpdate: API.OperationMethod<
   SmartDetectorAlertRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponse>,
+  input: __S(210, __c26, 2) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1485,8 @@ export const UpdateAlertProcessingRule: API.OperationMethod<
   UpdateAlertProcessingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UpdateAlertProcessingRuleRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateAlertProcessingRuleResponse>,
+  input: __S(217, __c27, 1) as any as S.Schema<UpdateAlertProcessingRuleRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateAlertProcessingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1500,8 @@ export const UpdatePrometheusRuleGroup: API.OperationMethod<
   UpdatePrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UpdatePrometheusRuleGroupRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdatePrometheusRuleGroupResponse>,
+  input: __S(225, __c28, 1) as any as S.Schema<UpdatePrometheusRuleGroupRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<UpdatePrometheusRuleGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,77 +1511,14 @@ export const UpdatePrometheusRuleGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          operator: S.optional(S.String),
-          values: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "Condition" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          recurrenceType: S.String,
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          daysOfWeek: S.optional(__S(1, __c0, 1)),
-          daysOfMonth: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Recurrence" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveFrom: S.optional(S.String),
-          effectiveUntil: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          recurrences: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Schedule" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionType: S.String,
-          actionGroupIds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: __S(1, __c0, 1),
-          conditions: S.optional(__S(3, __c0, 3)),
-          schedule: S.optional(__S(7, __c0, 7)),
-          actions: __S(9, __c1, 1),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AlertProcessingRuleProperties",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           alertProcessingRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(31, __c3, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1593,20 +1530,99 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AlertProcessingRulesCreateOrUpdateRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          operator: S.optional(S.String),
+          values: S.optional(__S(9, __c1, 1)),
+        }),
+      ).annotate({ identifier: "Condition" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recurrenceType: S.String,
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          daysOfWeek: S.optional(__S(9, __c1, 1)),
+          daysOfMonth: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Recurrence" });
+    case 3:
+      return S.Array(__S(26, __c3, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveFrom: S.optional(S.String),
+          effectiveUntil: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          recurrences: S.optional(__S(27, __c3, 3)),
+        }),
+      ).annotate({ identifier: "Schedule" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          actionType: S.String,
+          actionGroupIds: S.optional(__S(9, __c1, 1)),
+        }),
+      ).annotate({ identifier: "Action" });
+    case 6:
+      return S.Array(__S(29, __c3, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: __S(9, __c1, 1),
+          conditions: S.optional(__S(25, __c3, 1)),
+          schedule: S.optional(__S(28, __c3, 4)),
+          actions: __S(30, __c3, 6),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AlertProcessingRuleProperties",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "AlertProcessingRulesCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1622,13 +1638,28 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AlertsChangeStateRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "AlertsChangeStateResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isSuppressed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ActionStatus" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           severity: S.optional(S.String),
@@ -1648,34 +1679,504 @@ function __c1(j: number): any {
           lastModifiedDateTime: S.optional(S.String),
           monitorConditionResolvedDateTime: S.optional(S.String),
           lastModifiedUserName: S.optional(S.String),
-          actionStatus: S.optional(__S(14, __c1, 6)),
+          actionStatus: S.optional(__S(48, __c6, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Essentials" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          essentials: S.optional(__S(15, __c1, 7)),
+          essentials: S.optional(__S(49, __c6, 1)),
           context: S.optional(S.Unknown),
           egressConfig: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AlertProperties" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          groupby: S.String.pipe(T.Query()),
+          includeSmartGroupsCount: S.optional(S.Boolean.pipe(T.Query())),
+          targetResource: S.optional(S.String.pipe(T.Query())),
+          targetResourceType: S.optional(S.String.pipe(T.Query())),
+          targetResourceGroup: S.optional(S.String.pipe(T.Query())),
+          monitorService: S.optional(S.String.pipe(T.Query())),
+          monitorCondition: S.optional(S.String.pipe(T.Query())),
+          severity: S.optional(S.String.pipe(T.Query())),
+          alertState: S.optional(S.String.pipe(T.Query())),
+          alertRule: S.optional(S.String.pipe(T.Query())),
+          timeRange: S.optional(S.String.pipe(T.Query())),
+          customTimeRange: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.AlertsManagement/alertsSummary",
+            code: 200,
+            apiVersion: "2019-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAlertSummaryRequest" });
     case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(58, __c7, 2)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          count: S.optional(S.Number),
+          groupedby: S.optional(S.String),
+          values: S.optional(__S(57, __c7, 1)),
+        }),
+      ).annotate({ identifier: "AlertsSummaryGroupItem" });
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.optional(S.Number),
+          smartGroupsCount: S.optional(S.Number),
+          groupedby: S.optional(S.String),
+          values: S.optional(__S(59, __c7, 3)),
+        }),
+      ).annotate({ identifier: "AlertsSummaryGroup" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(60, __c7, 4)),
+        }),
+      ).annotate({ identifier: "GetAlertSummaryResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ruleGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+            code: 200,
+            apiVersion: "2023-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrometheusRuleGroupRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionGroupId: S.optional(S.String),
+          actionProperties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
-        identifier: "AlertsChangeStateResponse",
+        identifier: "PrometheusRuleGroupAction",
       });
     case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          autoResolved: S.optional(S.Boolean),
+          timeToResolve: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrometheusRuleResolveConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          record: S.optional(S.String),
+          alert: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          expression: S.String,
+          labels: S.optional(__S(8, __c1, 0)),
+          severity: S.optional(S.Number),
+          for: S.optional(S.String),
+          annotations: S.optional(__S(8, __c1, 0)),
+          actions: S.optional(__S(74, __c9, 2)),
+          resolveConfiguration: S.optional(__S(75, __c9, 3)),
+        }),
+      ).annotate({ identifier: "PrometheusRule" });
+    case 5:
+      return S.Array(__S(76, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          clusterName: S.optional(S.String),
+          scopes: __S(9, __c1, 1),
+          interval: S.optional(S.String),
+          rules: __S(77, __c9, 5),
+        }),
+      ).annotate({
+        identifier: "PrometheusRuleGroupProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(72, __c9, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: __S(78, __c9, 6),
+        }),
+      ).annotate({
+        identifier: "GetPrometheusRuleGroupResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          alertRuleName: S.String.pipe(T.Label()),
+          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+            code: 200,
+            apiVersion: "2021-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSmartDetectorAlertRuleRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+          isMandatory: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DetectorParameterDefinition",
+      });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          parameters: S.optional(__S(88, __c11, 0)),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          supportedResourceTypes: S.optional(__S(9, __c1, 1)),
+          imagePaths: S.optional(__S(9, __c1, 1)),
+          parameterDefinitions: S.optional(__S(90, __c11, 2)),
+          supportedCadences: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Detector" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          customEmailSubject: S.optional(S.String),
+          customWebhookPayload: S.optional(S.String),
+          groupIds: __S(9, __c1, 1),
+        }),
+      ).annotate({ identifier: "ActionGroupsInformation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThrottlingInformation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          state: S.String,
+          severity: S.String,
+          frequency: S.String,
+          detector: __S(91, __c11, 3),
+          scope: __S(9, __c1, 1),
+          actionGroups: __S(92, __c11, 4),
+          throttling: S.optional(__S(93, __c11, 5)),
+        }),
+      ).annotate({ identifier: "AlertRuleProperties" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(94, __c11, 6)),
+        }),
+      ).annotate({
+        identifier: "GetSmartDetectorAlertRuleResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules",
+            code: 200,
+            apiVersion: "2021-08-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAlertProcessingRuleByResourceGroupRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(31, __c3, 7)),
+        }),
+      ).annotate({ identifier: "AlertProcessingRule" });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(113, __c14, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertProcessingRulesList" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/actionRules",
+            code: 200,
+            apiVersion: "2021-08-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAlertProcessingRuleBySubscriptionRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AlertsManagement/operations",
+            code: 200,
+            apiVersion: "2019-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(130, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: __S(131, __c16, 3),
+        }),
+      ).annotate({ identifier: "OperationsList" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
+            code: 200,
+            apiVersion: "2023-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrometheusRuleGroupByResourceGroupRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(79, __c9, 7));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(144, __c18, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrometheusRuleGroupResourceCollection",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
+            code: 200,
+            apiVersion: "2023-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrometheusRuleGroupBySubscriptionRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
+            code: 200,
+            apiVersion: "2021-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSmartDetectorAlertRuleByResourceGroupRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(94, __c11, 6)),
+        }),
+      ).annotate({ identifier: "AlertRule" });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(169, __c21, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertRulesList" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
+            code: 200,
+            apiVersion: "2021-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSmartDetectorAlertRulesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String.pipe(T.Query()),
@@ -1688,19 +2189,185 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AlertsMetaDataRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metadataIdentifier: S.String,
         }),
       ).annotate({ identifier: "AlertsMetaDataProperties" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({ identifier: "AlertsMetaData" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          severity: S.optional(S.String),
+          frequency: S.optional(S.String),
+          actionGroups: S.optional(__S(92, __c11, 4)),
+          throttling: S.optional(__S(93, __c11, 5)),
+        }),
+      ).annotate({ identifier: "AlertRulePatchProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          alertRuleName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(192, __c24, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+            code: 200,
+            apiVersion: "2021-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchSmartDetectorAlertRuleRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ruleGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: __S(78, __c9, 6),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+            code: 200,
+            apiVersion: "2023-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PrometheusRuleGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          parameters: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({ identifier: "DetectorInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          state: S.String,
+          severity: S.String,
+          frequency: S.String,
+          detector: __S(208, __c26, 0),
+          scope: __S(9, __c1, 1),
+          actionGroups: __S(92, __c11, 4),
+          throttling: S.optional(__S(93, __c11, 5)),
+        }),
+      ).annotate({ identifier: "AlertRulePropertiesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          alertRuleName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(209, __c26, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+            code: 200,
+            apiVersion: "2021-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SmartDetectorAlertRulesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PatchProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          alertProcessingRuleName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(216, __c27, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
+            code: 200,
+            apiVersion: "2021-08-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAlertProcessingRuleRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "PrometheusRuleGroupResourcePatchParametersProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ruleGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(224, __c28, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+            code: 200,
+            apiVersion: "2023-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePrometheusRuleGroupRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1717,11 +2384,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAlertProcessingRuleRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAlertProcessingRuleResponse",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1740,7 +2415,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1759,7 +2434,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteSmartDetectorAlertRuleRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1789,25 +2468,33 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertAllRequest" });
+    case 1:
+      return S.Array(__S(272, __c34, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(265, __c33, 1)),
+        }),
+      ).annotate({ identifier: "AlertsList" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "Alert" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "AlertsList" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1821,7 +2508,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertByIdRequest" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1835,7 +2526,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertHistoryRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           modificationEvent: S.optional(S.String),
@@ -1847,31 +2538,31 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertModificationItem" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(289, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           alertId: S.optional(S.String),
-          modifications: S.optional(__S(32, __c4, 0)),
+          modifications: S.optional(__S(290, __c36, 2)),
         }),
       ).annotate({
         identifier: "AlertModificationProperties",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(291, __c36, 3)),
         }),
       ).annotate({ identifier: "GetAlertHistoryResponse" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1888,596 +2579,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAlertProcessingRuleByNameRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          groupby: S.String.pipe(T.Query()),
-          includeSmartGroupsCount: S.optional(S.Boolean.pipe(T.Query())),
-          targetResource: S.optional(S.String.pipe(T.Query())),
-          targetResourceType: S.optional(S.String.pipe(T.Query())),
-          targetResourceGroup: S.optional(S.String.pipe(T.Query())),
-          monitorService: S.optional(S.String.pipe(T.Query())),
-          monitorCondition: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
-          alertState: S.optional(S.String.pipe(T.Query())),
-          alertRule: S.optional(S.String.pipe(T.Query())),
-          timeRange: S.optional(S.String.pipe(T.Query())),
-          customTimeRange: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.AlertsManagement/alertsSummary",
-            code: 200,
-            apiVersion: "2019-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAlertSummaryRequest" });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(38, __c4, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          count: S.optional(S.Number),
-          groupedby: S.optional(S.String),
-          values: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "AlertsSummaryGroupItem" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.optional(S.Number),
-          smartGroupsCount: S.optional(S.Number),
-          groupedby: S.optional(S.String),
-          values: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "AlertsSummaryGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "GetAlertSummaryResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ruleGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
-            code: 200,
-            apiVersion: "2023-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrometheusRuleGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actionGroupId: S.optional(S.String),
-          actionProperties: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "PrometheusRuleGroupAction",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autoResolved: S.optional(S.Boolean),
-          timeToResolve: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrometheusRuleResolveConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          record: S.optional(S.String),
-          alert: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          expression: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          severity: S.optional(S.Number),
-          for: S.optional(S.String),
-          annotations: S.optional(__S(0, __c0, 0)),
-          actions: S.optional(__S(45, __c5, 5)),
-          resolveConfiguration: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "PrometheusRule" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          clusterName: S.optional(S.String),
-          scopes: __S(1, __c0, 1),
-          interval: S.optional(S.String),
-          rules: __S(48, __c6, 0),
-        }),
-      ).annotate({
-        identifier: "PrometheusRuleGroupProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(49, __c6, 1),
-        }),
-      ).annotate({
-        identifier: "GetPrometheusRuleGroupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          alertRuleName: S.String.pipe(T.Label()),
-          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
-            code: 200,
-            apiVersion: "2021-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSmartDetectorAlertRuleRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-          isMandatory: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DetectorParameterDefinition",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          parameters: S.optional(__S(52, __c6, 4)),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          supportedResourceTypes: S.optional(__S(1, __c0, 1)),
-          imagePaths: S.optional(__S(1, __c0, 1)),
-          parameterDefinitions: S.optional(__S(54, __c6, 6)),
-          supportedCadences: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Detector" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customEmailSubject: S.optional(S.String),
-          customWebhookPayload: S.optional(S.String),
-          groupIds: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "ActionGroupsInformation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThrottlingInformation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          state: S.String,
-          severity: S.String,
-          frequency: S.String,
-          detector: __S(55, __c6, 7),
-          scope: __S(1, __c0, 1),
-          actionGroups: __S(56, __c7, 0),
-          throttling: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "AlertRuleProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GetSmartDetectorAlertRuleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules",
-            code: 200,
-            apiVersion: "2021-08-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAlertProcessingRuleByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "AlertProcessingRule" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(62, __c7, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertProcessingRulesList" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/actionRules",
-            code: 200,
-            apiVersion: "2021-08-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAlertProcessingRuleBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AlertsManagement/operations",
-            code: 200,
-            apiVersion: "2019-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: __S(68, __c8, 4),
-        }),
-      ).annotate({ identifier: "OperationsList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
-            code: 200,
-            apiVersion: "2023-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrometheusRuleGroupByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(50, __c6, 2));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(71, __c8, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrometheusRuleGroupResourceCollection",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
-            code: 200,
-            apiVersion: "2023-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrometheusRuleGroupBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
-            code: 200,
-            apiVersion: "2021-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSmartDetectorAlertRuleByResourceGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "AlertRule" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(76, __c9, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertRulesList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          expandDetector: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
-            code: 200,
-            apiVersion: "2021-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSmartDetectorAlertRulesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          severity: S.optional(S.String),
-          frequency: S.optional(S.String),
-          actionGroups: S.optional(__S(56, __c7, 0)),
-          throttling: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "AlertRulePatchProperties" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          alertRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(79, __c9, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
-            code: 200,
-            apiVersion: "2021-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchSmartDetectorAlertRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ruleGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(49, __c6, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
-            code: 200,
-            apiVersion: "2023-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PrometheusRuleGroupsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          parameters: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "DetectorInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          state: S.String,
-          severity: S.String,
-          frequency: S.String,
-          detector: __S(82, __c10, 2),
-          scope: __S(1, __c0, 1),
-          actionGroups: __S(56, __c7, 0),
-          throttling: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "AlertRulePropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          alertRuleName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(83, __c10, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
-            code: 200,
-            apiVersion: "2021-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SmartDetectorAlertRulesCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PatchProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          alertProcessingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(85, __c10, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
-            code: 200,
-            apiVersion: "2021-08-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAlertProcessingRuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "PrometheusRuleGroupResourcePatchParametersProperties",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ruleGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(87, __c10, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
-            code: 200,
-            apiVersion: "2023-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePrometheusRuleGroupRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

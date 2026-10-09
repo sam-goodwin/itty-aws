@@ -594,8 +594,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateConnectionInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateConnectionOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateConnectionInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateConnectionOutput>,
   errors: [LimitExceededException, ResourceNotFoundException, ResourceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -618,8 +618,8 @@ export const createHost: API.OperationMethod<
   CreateHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateHostInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateHostOutput>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateHostInput>,
+  output: __S(9, __c2, 1) as any as S.Schema<CreateHostOutput>,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -644,8 +644,8 @@ export const createRepositoryLink: API.OperationMethod<
   CreateRepositoryLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateRepositoryLinkInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateRepositoryLinkOutput>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateRepositoryLinkInput>,
+  output: __S(28, __c7, 0) as any as S.Schema<CreateRepositoryLinkOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -680,8 +680,8 @@ export const createSyncConfiguration: API.OperationMethod<
   CreateSyncConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateSyncConfigurationInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateSyncConfigurationOutput>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateSyncConfigurationInput>,
+  output: __S(40, __c10, 0) as any as S.Schema<CreateSyncConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -706,8 +706,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteConnectionInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteConnectionOutput>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteConnectionInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteConnectionOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -729,8 +729,8 @@ export const deleteHost: API.OperationMethod<
   DeleteHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteHostInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteHostOutput>,
+  input: __S(52, __c13, 0) as any as S.Schema<DeleteHostInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteHostOutput>,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -756,8 +756,8 @@ export const deleteRepositoryLink: API.OperationMethod<
   DeleteRepositoryLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteRepositoryLinkInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteRepositoryLinkOutput>,
+  input: __S(56, __c14, 0) as any as S.Schema<DeleteRepositoryLinkInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteRepositoryLinkOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -790,8 +790,8 @@ export const deleteSyncConfiguration: API.OperationMethod<
   DeleteSyncConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteSyncConfigurationInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteSyncConfigurationOutput>,
+  input: __S(60, __c15, 0) as any as S.Schema<DeleteSyncConfigurationInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteSyncConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -818,8 +818,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetConnectionInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetConnectionOutput>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetConnectionInput>,
+  output: __S(65, __c16, 1) as any as S.Schema<GetConnectionOutput>,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -837,8 +837,8 @@ export const getHost: API.OperationMethod<
   GetHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetHostInput>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetHostOutput>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetHostInput>,
+  output: __S(73, __c18, 1) as any as S.Schema<GetHostOutput>,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -863,8 +863,8 @@ export const getRepositoryLink: API.OperationMethod<
   GetRepositoryLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetRepositoryLinkInput>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetRepositoryLinkOutput>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetRepositoryLinkInput>,
+  output: __S(77, __c19, 1) as any as S.Schema<GetRepositoryLinkOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -895,8 +895,8 @@ export const getRepositorySyncStatus: API.OperationMethod<
   GetRepositorySyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetRepositorySyncStatusInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetRepositorySyncStatusOutput>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetRepositorySyncStatusInput>,
+  output: __S(82, __c20, 2) as any as S.Schema<GetRepositorySyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -926,8 +926,8 @@ export const getResourceSyncStatus: API.OperationMethod<
   GetResourceSyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetResourceSyncStatusInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetResourceSyncStatusOutput>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetResourceSyncStatusInput>,
+  output: __S(91, __c22, 3) as any as S.Schema<GetResourceSyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -956,8 +956,8 @@ export const getSyncBlockerSummary: API.OperationMethod<
   GetSyncBlockerSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetSyncBlockerSummaryInput>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetSyncBlockerSummaryOutput>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetSyncBlockerSummaryInput>,
+  output: __S(95, __c23, 3) as any as S.Schema<GetSyncBlockerSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -986,8 +986,8 @@ export const getSyncConfiguration: API.OperationMethod<
   GetSyncConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetSyncConfigurationInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetSyncConfigurationOutput>,
+  input: __S(100, __c25, 0) as any as S.Schema<GetSyncConfigurationInput>,
+  output: __S(40, __c10, 0) as any as S.Schema<GetSyncConfigurationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1011,8 +1011,8 @@ export const listConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListConnectionsInput>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListConnectionsOutput>,
+  input: __S(104, __c26, 0) as any as S.Schema<ListConnectionsInput>,
+  output: __S(106, __c26, 2) as any as S.Schema<ListConnectionsOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1035,8 +1035,8 @@ export const listHosts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListHostsInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListHostsOutput>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListHostsInput>,
+  output: __S(111, __c27, 3) as any as S.Schema<ListHostsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1066,8 +1066,8 @@ export const listRepositoryLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListRepositoryLinksInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListRepositoryLinksOutput>,
+  input: __S(112, __c28, 0) as any as S.Schema<ListRepositoryLinksInput>,
+  output: __S(114, __c28, 2) as any as S.Schema<ListRepositoryLinksOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1102,8 +1102,8 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
   ListRepositorySyncDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListRepositorySyncDefinitionsInput>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListRepositorySyncDefinitionsOutput>,
+  input: __S(116, __c29, 0) as any as S.Schema<ListRepositorySyncDefinitionsInput>,
+  output: __S(119, __c29, 3) as any as S.Schema<ListRepositorySyncDefinitionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1133,8 +1133,8 @@ export const listSyncConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListSyncConfigurationsInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListSyncConfigurationsOutput>,
+  input: __S(120, __c30, 0) as any as S.Schema<ListSyncConfigurationsInput>,
+  output: __S(122, __c30, 2) as any as S.Schema<ListSyncConfigurationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1162,8 +1162,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(124, __c31, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(125, __c31, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1181,8 +1181,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<TagResourceOutput>,
+  input: __S(128, __c32, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<TagResourceOutput>,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1199,8 +1199,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UntagResourceInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<UntagResourceOutput>,
+  input: __S(132, __c33, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1222,8 +1222,8 @@ export const updateHost: API.OperationMethod<
   UpdateHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateHostInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateHostOutput>,
+  input: __S(136, __c34, 0) as any as S.Schema<UpdateHostInput>,
+  output: __S(48, __c12, 0) as any as S.Schema<UpdateHostOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1255,8 +1255,8 @@ export const updateRepositoryLink: API.OperationMethod<
   UpdateRepositoryLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<UpdateRepositoryLinkInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<UpdateRepositoryLinkOutput>,
+  input: __S(140, __c35, 0) as any as S.Schema<UpdateRepositoryLinkInput>,
+  output: __S(28, __c7, 0) as any as S.Schema<UpdateRepositoryLinkOutput>,
   errors: [
     AccessDeniedException,
     ConditionalCheckFailedException,
@@ -1289,8 +1289,8 @@ export const updateSyncBlocker: API.OperationMethod<
   UpdateSyncBlockerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateSyncBlockerInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateSyncBlockerOutput>,
+  input: __S(144, __c36, 0) as any as S.Schema<UpdateSyncBlockerInput>,
+  output: __S(145, __c36, 1) as any as S.Schema<UpdateSyncBlockerOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1323,8 +1323,8 @@ export const updateSyncConfiguration: API.OperationMethod<
   UpdateSyncConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateSyncConfigurationInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateSyncConfigurationOutput>,
+  input: __S(148, __c37, 0) as any as S.Schema<UpdateSyncConfigurationInput>,
+  output: __S(40, __c10, 0) as any as S.Schema<UpdateSyncConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1343,52 +1343,68 @@ export const updateSyncConfiguration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ProviderType: S.optional(S.String),
           ConnectionName: S.String,
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(5, __c1, 1)),
           HostArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ConnectionArn: S.String, Tags: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ ConnectionArn: S.String, Tags: S.optional(__S(5, __c1, 1)) }),
       ).annotate({ identifier: "CreateConnectionOutput" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          VpcId: S.String,
-          SubnetIds: __S(4, __c0, 4),
-          SecurityGroupIds: __S(4, __c0, 4),
-          TlsCertificate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpcConfiguration" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           ProviderType: S.String,
           ProviderEndpoint: S.String,
-          VpcConfiguration: S.optional(__S(5, __c0, 5)),
-          Tags: S.optional(__S(1, __c0, 1)),
+          VpcConfiguration: S.optional(__S(16, __c4, 0)),
+          Tags: S.optional(__S(5, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHostInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ HostArn: S.optional(S.String), Tags: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ HostArn: S.optional(S.String), Tags: S.optional(__S(5, __c1, 1)) }),
       ).annotate({ identifier: "CreateHostOutput" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VpcId: S.String,
+          SubnetIds: __S(12, __c3, 0),
+          SecurityGroupIds: __S(12, __c3, 0),
+          TlsCertificate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcConfiguration" });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1397,12 +1413,16 @@ function __c1(j: number): any {
           OwnerId: S.String,
           RepositoryName: S.String,
           EncryptionKeyArn: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(5, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateRepositoryLinkInput",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.String,
@@ -1414,11 +1434,19 @@ function __c1(j: number): any {
           RepositoryName: S.String,
         }),
       ).annotate({ identifier: "RepositoryLinkInfo" });
-    case 2:
-      return S.suspend(() => S.Struct({ RepositoryLinkInfo: __S(9, __c1, 1) })).annotate({
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RepositoryLinkInfo: __S(24, __c6, 0) })).annotate({
         identifier: "CreateRepositoryLinkOutput",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Branch: S.String,
@@ -1433,7 +1461,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateSyncConfigurationInput",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Branch: S.String,
@@ -1449,23 +1481,35 @@ function __c1(j: number): any {
           TriggerResourceUpdateOn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncConfiguration" });
-    case 5:
-      return S.suspend(() => S.Struct({ SyncConfiguration: __S(12, __c1, 4) })).annotate({
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SyncConfiguration: __S(36, __c9, 0) })).annotate({
         identifier: "CreateSyncConfigurationOutput",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteConnectionInput" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConnectionOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1473,7 +1517,11 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteHostInput" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RepositoryLinkId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1481,7 +1529,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteRepositoryLinkInput",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SyncType: S.String, ResourceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1489,13 +1541,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteSyncConfigurationInput",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetConnectionInput" });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ Connection: S.optional(__S(68, __c17, 0)) })).annotate({
+        identifier: "GetConnectionOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionName: S.optional(S.String),
@@ -1506,29 +1570,29 @@ function __c2(j: number): any {
           HostArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connection" });
-    case 5:
-      return S.suspend(() => S.Struct({ Connection: S.optional(__S(20, __c2, 4)) })).annotate({
-        identifier: "GetConnectionOutput",
-      });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ HostArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetHostInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           ProviderType: S.optional(S.String),
           ProviderEndpoint: S.optional(S.String),
-          VpcConfiguration: S.optional(__S(5, __c0, 5)),
+          VpcConfiguration: S.optional(__S(16, __c4, 0)),
         }),
       ).annotate({ identifier: "GetHostOutput" });
   }
 }
-function __c3(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1537,20 +1601,38 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "GetRepositoryLinkInput" });
     case 1:
-      return S.suspend(() => S.Struct({ RepositoryLinkInfo: __S(9, __c1, 1) })).annotate({
+      return S.suspend(() => S.Struct({ RepositoryLinkInfo: __S(24, __c6, 0) })).annotate({
         identifier: "GetRepositoryLinkOutput",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          Branch: S.String,
-          RepositoryLinkId: S.String,
-          SyncType: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ Branch: S.String, RepositoryLinkId: S.String, SyncType: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "GetRepositorySyncStatusInput",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Status: S.String,
+          Events: __S(85, __c21, 1),
+        }),
+      ).annotate({ identifier: "RepositorySyncAttempt" });
+    case 2:
+      return S.suspend(() => S.Struct({ LatestSync: __S(81, __c20, 1) })).annotate({
+        identifier: "GetRepositorySyncStatusOutput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Event: S.String,
@@ -1559,21 +1641,13 @@ function __c3(j: number): any {
           Type: S.String,
         }),
       ).annotate({ identifier: "RepositorySyncEvent" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: S.String,
-          Events: __S(28, __c3, 4),
-        }),
-      ).annotate({ identifier: "RepositorySyncAttempt" });
-    case 6:
-      return S.suspend(() => S.Struct({ LatestSync: __S(29, __c3, 5) })).annotate({
-        identifier: "GetRepositorySyncStatusOutput",
-      });
-    case 7:
+    case 1:
+      return S.Array(__S(84, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceName: S.String, SyncType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1581,11 +1655,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetResourceSyncStatusInput",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Branch: S.String,
@@ -1596,28 +1666,32 @@ function __c4(j: number): any {
           Sha: S.String,
         }),
       ).annotate({ identifier: "Revision" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Events: __S(28, __c3, 4),
-          InitialRevision: __S(32, __c4, 0),
-          StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: S.String,
-          TargetRevision: __S(32, __c4, 0),
-          Target: S.String,
-        }),
-      ).annotate({ identifier: "ResourceSyncAttempt" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DesiredState: S.optional(__S(32, __c4, 0)),
-          LatestSuccessfulSync: S.optional(__S(33, __c4, 1)),
-          LatestSync: __S(33, __c4, 1),
+          Events: __S(85, __c21, 1),
+          InitialRevision: __S(89, __c22, 1),
+          StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Status: S.String,
+          TargetRevision: __S(89, __c22, 1),
+          Target: S.String,
+        }),
+      ).annotate({ identifier: "ResourceSyncAttempt" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DesiredState: S.optional(__S(89, __c22, 1)),
+          LatestSuccessfulSync: S.optional(__S(90, __c22, 2)),
+          LatestSync: __S(90, __c22, 2),
         }),
       ).annotate({
         identifier: "GetResourceSyncStatusOutput",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SyncType: S.String, ResourceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1625,7 +1699,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetSyncBlockerSummaryInput",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(96, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceName: S.String,
+          ParentResourceName: S.optional(S.String),
+          LatestBlockers: S.optional(__S(93, __c23, 1)),
+        }),
+      ).annotate({ identifier: "SyncBlockerSummary" });
+    case 3:
+      return S.suspend(() => S.Struct({ SyncBlockerSummary: __S(94, __c23, 2) })).annotate({
+        identifier: "GetSyncBlockerSummaryOutput",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1633,28 +1725,14 @@ function __c4(j: number): any {
           Status: S.String,
           CreatedReason: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Contexts: S.optional(__S(1, __c0, 1)),
+          Contexts: S.optional(__S(5, __c1, 1)),
           ResolvedReason: S.optional(S.String),
           ResolvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncBlocker" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceName: S.String,
-          ParentResourceName: S.optional(S.String),
-          LatestBlockers: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "SyncBlockerSummary" });
-    case 7:
-      return S.suspend(() => S.Struct({ SyncBlockerSummary: __S(38, __c4, 6) })).annotate({
-        identifier: "GetSyncBlockerSummaryOutput",
-      });
   }
 }
-function __c5(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1664,7 +1742,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetSyncConfigurationInput",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProviderTypeFilter: S.optional(S.String),
@@ -1673,39 +1755,43 @@ function __c5(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectionsInput" });
+    case 1:
+      return S.Array(__S(68, __c17, 0));
     case 2:
-      return S.Array(__S(20, __c2, 4));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Connections: S.optional(__S(42, __c5, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Connections: S.optional(__S(105, __c26, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListConnectionsOutput" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListHostsInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           HostArn: S.optional(S.String),
           ProviderType: S.optional(S.String),
           ProviderEndpoint: S.optional(S.String),
-          VpcConfiguration: S.optional(__S(5, __c0, 5)),
+          VpcConfiguration: S.optional(__S(16, __c4, 0)),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Host" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(109, __c27, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Hosts: S.optional(__S(46, __c5, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Hosts: S.optional(__S(110, __c27, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHostsOutput" });
   }
 }
-function __c6(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1714,14 +1800,18 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListRepositoryLinksInput" });
     case 1:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(24, __c6, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ RepositoryLinks: __S(49, __c6, 1), NextToken: S.optional(S.String) }),
+        S.Struct({ RepositoryLinks: __S(113, __c28, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRepositoryLinksOutput",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RepositoryLinkId: S.String, SyncType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1729,22 +1819,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRepositorySyncDefinitionsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Branch: S.String, Directory: S.String, Parent: S.String, Target: S.String }),
       ).annotate({ identifier: "RepositorySyncDefinition" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(117, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RepositorySyncDefinitions: __S(53, __c6, 5),
+          RepositorySyncDefinitions: __S(118, __c29, 2),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRepositorySyncDefinitionsOutput",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -1755,49 +1849,65 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListSyncConfigurationsInput",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
     case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ SyncConfigurations: __S(56, __c7, 0), NextToken: S.optional(S.String) }),
+        S.Struct({ SyncConfigurations: __S(121, __c30, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSyncConfigurationsOutput",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(5, __c1, 1)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(5, __c1, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(4, __c0, 4) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(12, __c3, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HostArn: S.String,
           ProviderEndpoint: S.optional(S.String),
-          VpcConfiguration: S.optional(__S(5, __c0, 5)),
+          VpcConfiguration: S.optional(__S(16, __c4, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateHostInput" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
@@ -1809,7 +1919,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1825,10 +1935,14 @@ function __c8(j: number): any {
         S.Struct({
           ResourceName: S.String,
           ParentResourceName: S.optional(S.String),
-          SyncBlocker: __S(36, __c4, 4),
+          SyncBlocker: __S(96, __c24, 0),
         }),
       ).annotate({ identifier: "UpdateSyncBlockerOutput" });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Branch: S.optional(S.String),
@@ -1845,7 +1959,6 @@ function __c8(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

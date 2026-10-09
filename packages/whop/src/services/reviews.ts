@@ -195,7 +195,7 @@ export const getReview: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetReviewRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Review>,
+  output: __S(3, __c0, 3) as any as S.Schema<Review>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -211,8 +211,8 @@ export const listReview: API.PaginatedOperationMethod<
   ReviewListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<ListReviewRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListReviewResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListReviewRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListReviewResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -240,30 +240,53 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          content_type: S.NullOr(S.String),
-          filename: S.NullOr(S.String),
-          id: S.String,
-          url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ReviewAttachmentsItem" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String,
           route: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "ReviewCompany" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "ReviewProduct" });
-    case 5:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attachments: __S(9, __c1, 1),
+          company: __S(1, __c0, 1),
+          created_at: S.String,
+          description: S.NullOr(S.String),
+          id: S.String,
+          joined_at: S.NullOr(S.String),
+          paid_for_product: S.NullOr(S.Boolean),
+          product: __S(2, __c0, 2),
+          published_at: S.NullOr(S.String),
+          stars: S.Number,
+          status: S.String,
+          title: S.NullOr(S.String),
+          updated_at: S.String,
+          user: __S(10, __c1, 2),
+        }),
+      ).annotate({ identifier: "Review" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content_type: S.NullOr(S.String),
+          filename: S.NullOr(S.String),
+          id: S.String,
+          url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ReviewAttachmentsItem" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -271,26 +294,11 @@ function __c0(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "ReviewUser" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attachments: __S(2, __c0, 2),
-          company: __S(3, __c0, 3),
-          created_at: S.String,
-          description: S.NullOr(S.String),
-          id: S.String,
-          joined_at: S.NullOr(S.String),
-          paid_for_product: S.NullOr(S.Boolean),
-          product: __S(4, __c0, 4),
-          published_at: S.NullOr(S.String),
-          stars: S.Number,
-          status: S.String,
-          title: S.NullOr(S.String),
-          updated_at: S.String,
-          user: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "Review" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -304,14 +312,10 @@ function __c0(j: number): any {
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/reviews", code: 200 })),
       ).annotate({ identifier: "ListReviewRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          attachments: __S(2, __c0, 2),
+          attachments: __S(9, __c1, 1),
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
@@ -322,12 +326,12 @@ function __c1(j: number): any {
           status: S.String,
           title: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(5, __c0, 5),
+          user: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ReviewListItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -336,16 +340,15 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(9, __c1, 1),
-          page_info: __S(10, __c1, 2),
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "ListReviewResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

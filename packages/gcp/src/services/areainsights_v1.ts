@@ -192,8 +192,8 @@ export const computeInsightsV1: API.OperationMethod<
   ComputeInsightsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ComputeInsightsV1Request>,
-  output: __S(15, __c1, 7) as any as S.Schema<ComputeInsightsResponse>,
+  input: __S(13, __c0, 13) as any as S.Schema<ComputeInsightsV1Request>,
+  output: __S(15, __c0, 15) as any as S.Schema<ComputeInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -246,11 +246,7 @@ function __c0(j: number): any {
           latLng: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Circle" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(__S(2, __c0, 2)),
@@ -258,38 +254,38 @@ function __c1(j: number): any {
           circle: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LocationFilter" });
-    case 1:
+    case 9:
       return S.Array(S.String);
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          includedPrimaryTypes: S.optional(__S(9, __c1, 1)),
-          excludedPrimaryTypes: S.optional(__S(9, __c1, 1)),
-          includedTypes: S.optional(__S(9, __c1, 1)),
-          excludedTypes: S.optional(__S(9, __c1, 1)),
+          includedPrimaryTypes: S.optional(__S(9, __c0, 9)),
+          excludedPrimaryTypes: S.optional(__S(9, __c0, 9)),
+          includedTypes: S.optional(__S(9, __c0, 9)),
+          excludedTypes: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "TypeFilter" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           operatingStatus: S.optional(__S(0, __c0, 0)),
           ratingFilter: S.optional(__S(1, __c0, 1)),
-          locationFilter: S.optional(__S(8, __c1, 0)),
+          locationFilter: S.optional(__S(8, __c0, 8)),
           priceLevels: S.optional(__S(0, __c0, 0)),
-          typeFilter: S.optional(__S(10, __c1, 2)),
+          typeFilter: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "Filter" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           insights: S.optional(__S(0, __c0, 0)),
-          filter: S.optional(__S(11, __c1, 3)),
+          filter: S.optional(__S(11, __c0, 11)),
         }),
       ).annotate({ identifier: "ComputeInsightsRequest" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c0, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -298,18 +294,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ComputeInsightsV1Request" });
-    case 6:
+    case 14:
       return S.Array(__S(2, __c0, 2));
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          placeInsights: S.optional(__S(14, __c1, 6)),
+          placeInsights: S.optional(__S(14, __c0, 14)),
         }),
       ).annotate({ identifier: "ComputeInsightsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

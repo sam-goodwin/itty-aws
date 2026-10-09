@@ -406,8 +406,8 @@ export const computeDetailedFlightEmissionsFlights: API.OperationMethod<
   ComputeDetailedFlightEmissionsFlightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ComputeDetailedFlightEmissionsFlightsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ComputeDetailedFlightEmissionsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ComputeDetailedFlightEmissionsFlightsRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<ComputeDetailedFlightEmissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -426,8 +426,8 @@ export const computeFlightEmissionsFlights: API.OperationMethod<
   ComputeFlightEmissionsFlightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ComputeFlightEmissionsFlightsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ComputeFlightEmissionsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ComputeFlightEmissionsFlightsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ComputeFlightEmissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const computeScope3FlightEmissionsFlights: API.OperationMethod<
   ComputeScope3FlightEmissionsFlightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ComputeScope3FlightEmissionsFlightsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ComputeScope3FlightEmissionsResponse>,
+  input: __S(99, __c6, 3) as any as S.Schema<ComputeScope3FlightEmissionsFlightsRequest>,
+  output: __S(102, __c6, 6) as any as S.Schema<ComputeScope3FlightEmissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const computeTypicalFlightEmissionsFlights: API.OperationMethod<
   ComputeTypicalFlightEmissionsFlightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ComputeTypicalFlightEmissionsFlightsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ComputeTypicalFlightEmissionsResponse>,
+  input: __S(115, __c7, 3) as any as S.Schema<ComputeTypicalFlightEmissionsFlightsRequest>,
+  output: __S(118, __c7, 6) as any as S.Schema<ComputeTypicalFlightEmissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -479,35 +479,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Travelimpactmodel_Date" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          departureDate: S.optional(__S(0, __c0, 0)),
-          flightNumber: S.optional(S.Number),
-          operatingCarrierCode: S.optional(S.String),
-          origin: S.optional(S.String),
-          destination: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Flight" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          flights: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "ComputeDetailedFlightEmissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -518,16 +490,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ComputeDetailedFlightEmissionsFlightsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          major: S.optional(S.Number),
-          patch: S.optional(S.Number),
-          dated: S.optional(S.String),
-          minor: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ModelVersion" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           seatAreaRatioIataStrategy: S.optional(S.String),
@@ -545,8 +508,59 @@ function __c0(j: number): any {
           cargoMassFractionT100Strategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmissionsProvenanceEntry" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provenanceEntries: S.optional(__S(2, __c0, 2)),
+        }),
+      ).annotate({ identifier: "EmissionsProvenance" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          emissionsProvenance: S.optional(__S(3, __c0, 3)),
+          timWebsiteEmissionsCalculatorUrl: S.optional(S.String),
+          easaLabelMetadata: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "EmissionsMetadata" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          wttEmissionsGramsPerPax: S.optional(__S(64, __c4, 0)),
+          ttwEmissionsGramsPerPax: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "EmissionsBreakdown" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          emissionsGramsPerPax: S.optional(__S(64, __c4, 0)),
+          source: S.optional(S.String),
+          contrailsImpactBucket: S.optional(S.String),
+          emissionsBreakdown: S.optional(__S(5, __c0, 5)),
+        }),
+      ).annotate({ identifier: "FlightEmissionsDetails" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
+      return S.suspend(() =>
+        S.Struct({
+          emissionsMetadata: S.optional(__S(4, __c0, 4)),
+          flight: S.optional(__S(16, __c1, 0)),
+          flightEmissionsDetails: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({
+        identifier: "FlightWithDetailedEmissions",
+      });
+    case 8:
+      return S.Array(__S(7, __c0, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          modelVersion: S.optional(__S(48, __c3, 0)),
+          flightsWithDetailedEmissions: S.optional(__S(8, __c0, 8)),
+        }),
+      ).annotate({
+        identifier: "ComputeDetailedFlightEmissionsResponse",
+      });
   }
 }
 function __c1(j: number): any {
@@ -554,27 +568,62 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provenanceEntries: S.optional(__S(7, __c0, 7)),
+          departureDate: S.optional(__S(32, __c2, 0)),
+          flightNumber: S.optional(S.Number),
+          operatingCarrierCode: S.optional(S.String),
+          origin: S.optional(S.String),
+          destination: S.optional(S.String),
         }),
-      ).annotate({ identifier: "EmissionsProvenance" });
+      ).annotate({ identifier: "Flight" });
     case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          flights: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "ComputeDetailedFlightEmissionsRequest",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           safDiscountPercentage: S.optional(S.Number),
           labelVersion: S.optional(S.String),
-          labelExpiryDate: S.optional(__S(0, __c0, 0)),
-          labelIssueDate: S.optional(__S(0, __c0, 0)),
+          labelExpiryDate: S.optional(__S(32, __c2, 0)),
+          labelIssueDate: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "EasaLabelMetadata" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          emissionsProvenance: S.optional(__S(8, __c1, 0)),
-          timWebsiteEmissionsCalculatorUrl: S.optional(S.String),
-          easaLabelMetadata: S.optional(__S(9, __c1, 1)),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "EmissionsMetadata" });
-    case 3:
+      ).annotate({ identifier: "Travelimpactmodel_Date" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          major: S.optional(S.Number),
+          patch: S.optional(S.Number),
+          dated: S.optional(S.String),
+          minor: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ModelVersion" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           premiumEconomy: S.optional(S.Number),
@@ -583,51 +632,14 @@ function __c1(j: number): any {
           economy: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmissionsGramsPerPax" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          wttEmissionsGramsPerPax: S.optional(__S(11, __c1, 3)),
-          ttwEmissionsGramsPerPax: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "EmissionsBreakdown" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          emissionsGramsPerPax: S.optional(__S(11, __c1, 3)),
-          source: S.optional(S.String),
-          contrailsImpactBucket: S.optional(S.String),
-          emissionsBreakdown: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "FlightEmissionsDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          emissionsMetadata: S.optional(__S(10, __c1, 2)),
-          flight: S.optional(__S(1, __c0, 1)),
-          flightEmissionsDetails: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "FlightWithDetailedEmissions",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          modelVersion: S.optional(__S(5, __c0, 5)),
-          flightsWithDetailedEmissions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "ComputeDetailedFlightEmissionsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -638,28 +650,32 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ComputeFlightEmissionsFlightsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contrailsImpactBucket: S.optional(S.String),
-          flight: S.optional(__S(1, __c0, 1)),
-          emissionsGramsPerPax: S.optional(__S(11, __c1, 3)),
+          flight: S.optional(__S(16, __c1, 0)),
+          emissionsGramsPerPax: S.optional(__S(64, __c4, 0)),
           source: S.optional(S.String),
-          easaLabelMetadata: S.optional(__S(9, __c1, 1)),
+          easaLabelMetadata: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "FlightWithEmissions" });
+    case 2:
+      return S.Array(__S(81, __c5, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          flightEmissions: S.optional(__S(19, __c2, 3)),
-          modelVersion: S.optional(__S(5, __c0, 5)),
+          flightEmissions: S.optional(__S(82, __c5, 2)),
+          modelVersion: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "ComputeFlightEmissionsResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           origin: S.optional(S.String),
@@ -667,29 +683,25 @@ function __c2(j: number): any {
           cabinClass: S.optional(S.String),
           destination: S.optional(S.String),
           carrierCode: S.optional(S.String),
-          departureDate: S.optional(__S(0, __c0, 0)),
+          departureDate: S.optional(__S(32, __c2, 0)),
           distanceKm: S.optional(S.String),
         }),
       ).annotate({ identifier: "Scope3FlightSegment" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          flights: S.optional(__S(22, __c2, 6)),
-          modelVersion: S.optional(__S(5, __c0, 5)),
+          flights: S.optional(__S(97, __c6, 1)),
+          modelVersion: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "ComputeScope3FlightEmissionsRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(98, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -700,48 +712,52 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ComputeScope3FlightEmissionsFlightsRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
           wtwEmissionsGramsPerPax: S.optional(S.String),
           wttEmissionsGramsPerPax: S.optional(S.String),
-          flight: S.optional(__S(21, __c2, 5)),
+          flight: S.optional(__S(96, __c6, 0)),
           ttwEmissionsGramsPerPax: S.optional(S.String),
         }),
       ).annotate({ identifier: "Scope3FlightEmissions" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(100, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          modelVersion: S.optional(__S(5, __c0, 5)),
-          flightEmissions: S.optional(__S(26, __c3, 2)),
+          modelVersion: S.optional(__S(48, __c3, 0)),
+          flightEmissions: S.optional(__S(101, __c6, 5)),
         }),
       ).annotate({
         identifier: "ComputeScope3FlightEmissionsResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destination: S.optional(S.String),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Market" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          markets: S.optional(__S(29, __c3, 5)),
+          markets: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({
         identifier: "ComputeTypicalFlightEmissionsRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c7, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -752,31 +768,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ComputeTypicalFlightEmissionsFlightsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          market: S.optional(__S(28, __c3, 4)),
-          emissionsGramsPerPax: S.optional(__S(11, __c1, 3)),
+          market: S.optional(__S(112, __c7, 0)),
+          emissionsGramsPerPax: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "TypicalFlightEmissions" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(116, __c7, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          modelVersion: S.optional(__S(5, __c0, 5)),
-          typicalFlightEmissions: S.optional(__S(33, __c4, 1)),
+          modelVersion: S.optional(__S(48, __c3, 0)),
+          typicalFlightEmissions: S.optional(__S(117, __c7, 5)),
         }),
       ).annotate({
         identifier: "ComputeTypicalFlightEmissionsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

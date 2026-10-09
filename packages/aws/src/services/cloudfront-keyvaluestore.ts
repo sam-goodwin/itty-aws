@@ -267,8 +267,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteKeyResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -297,8 +297,8 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DescribeKeyValueStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeKeyValueStoreResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DescribeKeyValueStoreRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<DescribeKeyValueStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -325,8 +325,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetKeyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetKeyResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -355,8 +355,8 @@ export const listKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListKeysResponseListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListKeysRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListKeysResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListKeysRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<ListKeysResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -392,8 +392,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<PutKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutKeyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PutKeyRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<PutKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -424,8 +424,8 @@ export const updateKeys: API.OperationMethod<
   UpdateKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateKeysRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeysResponse>,
+  input: __S(6, __c1, 2) as any as S.Schema<UpdateKeysRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<UpdateKeysResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -445,6 +445,56 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          Value: SensitiveString,
+          KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
+          IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/key-value-stores/{KvsARN}/keys/{Key}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutKeyRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String })).annotate({
+        identifier: "DeleteKeyRequestListItem",
+      });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
+          IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          Puts: S.optional(__S(29, __c7, 1)),
+          Deletes: S.optional(__S(5, __c1, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/key-value-stores/{KvsARN}/keys" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateKeysRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
           Key: S.String.pipe(T.HttpLabel("Key")),
           IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
@@ -459,7 +509,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteKeyRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ItemCount: S.Number,
@@ -467,7 +521,11 @@ function __c0(j: number): any {
           ETag: S.String.pipe(T.HttpHeader("ETag")),
         }),
       ).annotate({ identifier: "DeleteKeyResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")) }).pipe(
           T.all(
@@ -482,7 +540,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeKeyValueStoreRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ItemCount: S.Number,
@@ -497,7 +555,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeKeyValueStoreResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
@@ -513,7 +575,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKeyRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
@@ -522,7 +584,11 @@ function __c0(j: number): any {
           TotalSizeInBytes: S.Number,
         }),
       ).annotate({ identifier: "GetKeyResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
@@ -539,65 +605,22 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKeysRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(29, __c7, 1)) }),
+      ).annotate({ identifier: "ListKeysResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: SensitiveString })).annotate({
         identifier: "ListKeysResponseListItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(8, __c1, 0)) }),
-      ).annotate({ identifier: "ListKeysResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          Value: SensitiveString,
-          KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
-          IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/key-value-stores/{KvsARN}/keys/{Key}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutKeyRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ Key: S.String })).annotate({
-        identifier: "DeleteKeyRequestListItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
-          IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
-          Puts: S.optional(__S(8, __c1, 0)),
-          Deletes: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/key-value-stores/{KvsARN}/keys" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateKeysRequest" });
+      return S.Array(__S(28, __c7, 0));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

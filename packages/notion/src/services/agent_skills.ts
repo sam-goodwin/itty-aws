@@ -63,7 +63,7 @@ export const getPluginDirectory: API.OperationMethod<
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPluginDirectoryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPluginDirectoryResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetPluginDirectoryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -77,8 +77,8 @@ export const getSkillDirectory: API.OperationMethod<
   GetSkillDirectoryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSkillDirectoryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetSkillDirectoryResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetSkillDirectoryRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetSkillDirectoryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -94,8 +94,8 @@ export const listPlugins: API.PaginatedOperationMethod<
   ListPluginsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3, __c0, 3) as any as S.Schema<ListPluginsRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<ListPluginsResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListPluginsRequest>,
+    output: __S(15, __c3, 3) as any as S.Schema<ListPluginsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -120,7 +120,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPluginDirectoryRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -130,20 +134,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPluginDirectoryResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/ai/skills/{id}", code: 200 })),
       ).annotate({ identifier: "GetSkillDirectoryRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_size: S.optional(S.Number.pipe(T.Query())),
           start_cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/ai/plugins", code: 200 })),
       ).annotate({ identifier: "ListPluginsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -154,13 +166,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPluginsResponseResultsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          results: __S(5, __c0, 5),
+          results: __S(14, __c3, 2),
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
           type: S.String,
@@ -168,7 +180,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ListPluginsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

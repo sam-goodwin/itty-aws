@@ -685,8 +685,8 @@ export const createOrganizationBudget: API.OperationMethod<
   CreateOrganizationBudgetError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOrganizationBudgetRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateBudget>,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateOrganizationBudgetRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CreateBudget>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const deleteBudgetOrg: API.OperationMethod<
   DeleteBudgetOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteBudgetOrgRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteBudget>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteBudgetOrgRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeleteBudget>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const getAllBudgetsOrg: API.OperationMethod<
   GetAllBudgetsOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAllBudgetsOrgRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAllBudgets>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetAllBudgetsOrgRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<GetAllBudgets>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -730,8 +730,8 @@ export const getBudgetOrg: API.OperationMethod<
   GetBudgetOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetBudgetOrgRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetBudget>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetBudgetOrgRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetBudget>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -749,8 +749,8 @@ export const getGithubBillingAiCreditUsageReportOrg: API.OperationMethod<
   GetGithubBillingAiCreditUsageReportOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetGithubBillingAiCreditUsageReportOrgRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<BillingAiCreditUsageReportOrg>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetGithubBillingAiCreditUsageReportOrgRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<BillingAiCreditUsageReportOrg>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const getGithubBillingAiCreditUsageReportUser: API.OperationMethod<
   GetGithubBillingAiCreditUsageReportUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetGithubBillingAiCreditUsageReportUserRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BillingAiCreditUsageReportUser>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetGithubBillingAiCreditUsageReportUserRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<BillingAiCreditUsageReportUser>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -787,8 +787,8 @@ export const getGithubBillingPremiumRequestUsageReportOrg: API.OperationMethod<
   GetGithubBillingPremiumRequestUsageReportOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetGithubBillingPremiumRequestUsageReportOrgRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<BillingPremiumRequestUsageReportOrg>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetGithubBillingPremiumRequestUsageReportOrgRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<BillingPremiumRequestUsageReportOrg>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -806,8 +806,8 @@ export const getGithubBillingPremiumRequestUsageReportUser: API.OperationMethod<
   GetGithubBillingPremiumRequestUsageReportUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetGithubBillingPremiumRequestUsageReportUserRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BillingPremiumRequestUsageReportUser>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetGithubBillingPremiumRequestUsageReportUserRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<BillingPremiumRequestUsageReportUser>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -821,8 +821,8 @@ export const getGithubBillingUsageReportOrg: API.OperationMethod<
   GetGithubBillingUsageReportOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetGithubBillingUsageReportOrgRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<BillingUsageReport>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetGithubBillingUsageReportOrgRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BillingUsageReport>,
   errors: [BadRequest, Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -836,8 +836,8 @@ export const getGithubBillingUsageReportUser: API.OperationMethod<
   GetGithubBillingUsageReportUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetGithubBillingUsageReportUserRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<BillingUsageReportUser>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetGithubBillingUsageReportUserRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<BillingUsageReportUser>,
   errors: [BadRequest, Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -851,8 +851,8 @@ export const getGithubBillingUsageSummaryReportOrg: API.OperationMethod<
   GetGithubBillingUsageSummaryReportOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetGithubBillingUsageSummaryReportOrgRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<BillingUsageSummaryReportOrg>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetGithubBillingUsageSummaryReportOrgRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<BillingUsageSummaryReportOrg>,
   errors: [BadRequest, Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -870,8 +870,8 @@ export const getGithubBillingUsageSummaryReportUser: API.OperationMethod<
   GetGithubBillingUsageSummaryReportUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetGithubBillingUsageSummaryReportUserRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<BillingUsageSummaryReportUser>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetGithubBillingUsageSummaryReportUserRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<BillingUsageSummaryReportUser>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -890,8 +890,8 @@ export const updateBudgetOrg: API.OperationMethod<
   UpdateBudgetOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateBudgetOrgRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateBudget>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateBudgetOrgRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<UpdateBudget>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -901,12 +901,285 @@ export const updateBudgetOrg: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+          user: S.optional(S.String.pipe(T.Query())),
+          model: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{org}/settings/billing/premium_request/usage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingPremiumRequestUsageReportOrgRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+          model: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/settings/billing/premium_request/usage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingPremiumRequestUsageReportUserRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organizations/{org}/settings/billing/usage", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingUsageReportOrgRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.String,
+          product: S.String,
+          sku: S.String,
+          quantity: S.Number,
+          unitType: S.String,
+          pricePerUnit: S.Number,
+          grossAmount: S.Number,
+          discountAmount: S.Number,
+          netAmount: S.Number,
+          organizationName: S.String,
+          repositoryName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingUsageReportUsageItemsItem",
+      });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usageItems: S.optional(__S(18, __c2, 2)),
+        }),
+      ).annotate({ identifier: "BillingUsageReport" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{username}/settings/billing/usage", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingUsageReportUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.String,
+          product: S.String,
+          sku: S.String,
+          quantity: S.Number,
+          unitType: S.String,
+          pricePerUnit: S.Number,
+          grossAmount: S.Number,
+          discountAmount: S.Number,
+          netAmount: S.Number,
+          repositoryName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingUsageReportUserUsageItemsItem",
+      });
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usageItems: S.optional(__S(26, __c3, 2)),
+        }),
+      ).annotate({ identifier: "BillingUsageReportUser" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+          repository: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
+          sku: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{org}/settings/billing/usage/summary",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingUsageSummaryReportOrgRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timePeriod: __S(136, __c17, 0),
+          organization: S.String,
+          repository: S.optional(S.String),
+          product: S.optional(S.String),
+          sku: S.optional(S.String),
+          usageItems: __S(41, __c5, 1),
+        }),
+      ).annotate({
+        identifier: "BillingUsageSummaryReportOrg",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.String,
+          sku: S.String,
+          unitType: S.String,
+          pricePerUnit: S.Number,
+          grossQuantity: S.Number,
+          grossAmount: S.Number,
+          discountQuantity: S.Number,
+          discountAmount: S.Number,
+          netQuantity: S.Number,
+          netAmount: S.Number,
+        }),
+      ).annotate({
+        identifier: "BillingUsageSummaryReportOrgUsageItemsItem",
+      });
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          year: S.optional(S.Number.pipe(T.Query())),
+          month: S.optional(S.Number.pipe(T.Query())),
+          day: S.optional(S.Number.pipe(T.Query())),
+          repository: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
+          sku: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/settings/billing/usage/summary",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGithubBillingUsageSummaryReportUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timePeriod: __S(136, __c17, 0),
+          user: S.String,
+          repository: S.optional(S.String),
+          product: S.optional(S.String),
+          sku: S.optional(S.String),
+          usageItems: __S(41, __c5, 1),
+        }),
+      ).annotate({
+        identifier: "BillingUsageSummaryReportUser",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          budget_id: S.String.pipe(T.Label()),
+          budget_amount: S.optional(S.Number),
+          prevent_further_usage: S.optional(S.Boolean),
+          budget_alerting: S.optional(__S(72, __c9, 0)),
+          expires_at: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{org}/settings/billing/budgets/{budget_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateBudgetOrgRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          budget_scope: S.optional(S.String),
+          budget_entity_name: S.optional(S.String),
+          user: S.optional(S.String),
+          consumed_amount: S.optional(S.Number),
+          budget_amount: S.optional(S.Number),
+          prevent_further_usage: S.optional(S.Boolean),
+          budget_product_sku: S.optional(S.String),
+          budget_type: S.optional(S.Unknown),
+          budget_alerting: S.optional(__S(72, __c9, 0)),
+          expires_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateBudgetBudget" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          budget: __S(57, __c7, 1),
+        }),
+      ).annotate({ identifier: "UpdateBudget" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           will_alert: S.optional(S.Boolean),
-          alert_recipients: S.optional(__S(0, __c0, 0)),
+          alert_recipients: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "CreateOrganizationBudgetRequestBudgetAlerting",
@@ -917,7 +1190,7 @@ function __c0(j: number): any {
           org: S.String.pipe(T.Label()),
           budget_amount: S.optional(S.Number),
           prevent_further_usage: S.optional(S.Boolean),
-          budget_alerting: S.optional(__S(1, __c0, 1)),
+          budget_alerting: S.optional(__S(65, __c8, 1)),
           budget_scope: S.optional(S.String),
           budget_entity_name: S.optional(S.String),
           budget_type: S.optional(S.Unknown),
@@ -935,17 +1208,6 @@ function __c0(j: number): any {
         identifier: "CreateOrganizationBudgetRequest",
       });
     case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          will_alert: S.optional(S.Boolean),
-          alert_recipients: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateBudgetBudgetBudgetAlerting",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -955,18 +1217,41 @@ function __c0(j: number): any {
           prevent_further_usage: S.optional(S.Boolean),
           budget_product_sku: S.optional(S.String),
           budget_type: S.optional(S.Unknown),
-          budget_alerting: S.optional(__S(4, __c0, 4)),
+          budget_alerting: S.optional(__S(72, __c9, 0)),
           expires_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateBudgetBudget" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          budget: __S(5, __c0, 5),
+          budget: __S(67, __c8, 3),
         }),
       ).annotate({ identifier: "CreateBudget" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          will_alert: S.optional(S.Boolean),
+          alert_recipients: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateBudgetBudgetBudgetAlerting",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -979,18 +1264,18 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBudgetOrgRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "DeleteBudget" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1006,14 +1291,14 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAllBudgetsOrgRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           will_alert: S.Boolean,
-          alert_recipients: __S(3, __c0, 3),
+          alert_recipients: __S(80, __c10, 0),
         }),
       ).annotate({ identifier: "BudgetBudgetAlerting" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1025,13 +1310,13 @@ function __c1(j: number): any {
           user: S.optional(S.String),
           consumed_amount: S.optional(S.Number),
           budget_product_sku: S.String,
-          budget_alerting: __S(10, __c1, 2),
+          budget_alerting: __S(97, __c12, 1),
           expires_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "Budget" });
+    case 3:
+      return S.Array(__S(98, __c12, 2));
     case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1041,17 +1326,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAllBudgetsEffectiveBudget",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          budgets: __S(12, __c1, 4),
+          budgets: __S(99, __c12, 3),
           user: S.optional(S.String),
-          effective_budget: S.optional(__S(13, __c1, 5)),
+          effective_budget: S.optional(__S(100, __c12, 4)),
           has_next_page: S.optional(S.Boolean),
           total_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetAllBudgets" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1064,18 +1353,14 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBudgetOrgRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           will_alert: S.optional(S.Boolean),
-          alert_recipients: S.optional(__S(3, __c0, 3)),
+          alert_recipients: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "GetBudgetBudgetAlerting" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1086,11 +1371,15 @@ function __c2(j: number): any {
           prevent_further_usage: S.Boolean,
           budget_product_sku: S.String,
           budget_type: S.Unknown,
-          budget_alerting: __S(16, __c2, 0),
+          budget_alerting: __S(105, __c13, 1),
           consumed_amount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetBudget" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1110,17 +1399,28 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetGithubBillingAiCreditUsageReportOrgRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          year: S.Number,
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
+          timePeriod: __S(136, __c17, 0),
+          organization: S.String,
+          user: S.optional(S.String),
+          product: S.optional(S.String),
+          model: S.optional(S.String),
+          usageItems: __S(129, __c16, 1),
         }),
       ).annotate({
-        identifier: "BillingAiCreditUsageReportOrgTimePeriod",
+        identifier: "BillingAiCreditUsageReportOrg",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           product: S.String,
@@ -1138,22 +1438,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BillingAiCreditUsageReportOrgUsageItemsItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          timePeriod: __S(19, __c2, 3),
-          organization: S.String,
-          user: S.optional(S.String),
-          product: S.optional(S.String),
-          model: S.optional(S.String),
-          usageItems: __S(21, __c2, 5),
+          year: S.Number,
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "BillingAiCreditUsageReportOrg",
+        identifier: "BillingAiCreditUsageReportOrgTimePeriod",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1174,272 +1479,22 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timePeriod: __S(19, __c2, 3),
+          timePeriod: __S(136, __c17, 0),
           user: S.String,
           product: S.optional(S.String),
           model: S.optional(S.String),
-          usageItems: __S(21, __c2, 5),
+          usageItems: __S(129, __c16, 1),
         }),
       ).annotate({
         identifier: "BillingAiCreditUsageReportUser",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-          user: S.optional(S.String.pipe(T.Query())),
-          model: S.optional(S.String.pipe(T.Query())),
-          product: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{org}/settings/billing/premium_request/usage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingPremiumRequestUsageReportOrgRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-          model: S.optional(S.String.pipe(T.Query())),
-          product: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/settings/billing/premium_request/usage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingPremiumRequestUsageReportUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organizations/{org}/settings/billing/usage", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingUsageReportOrgRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.String,
-          product: S.String,
-          sku: S.String,
-          quantity: S.Number,
-          unitType: S.String,
-          pricePerUnit: S.Number,
-          grossAmount: S.Number,
-          discountAmount: S.Number,
-          netAmount: S.Number,
-          organizationName: S.String,
-          repositoryName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingUsageReportUsageItemsItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          usageItems: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "BillingUsageReport" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{username}/settings/billing/usage", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingUsageReportUserRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.String,
-          product: S.String,
-          sku: S.String,
-          quantity: S.Number,
-          unitType: S.String,
-          pricePerUnit: S.Number,
-          grossAmount: S.Number,
-          discountAmount: S.Number,
-          netAmount: S.Number,
-          repositoryName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingUsageReportUserUsageItemsItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          usageItems: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "BillingUsageReportUser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-          repository: S.optional(S.String.pipe(T.Query())),
-          product: S.optional(S.String.pipe(T.Query())),
-          sku: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{org}/settings/billing/usage/summary",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingUsageSummaryReportOrgRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.String,
-          sku: S.String,
-          unitType: S.String,
-          pricePerUnit: S.Number,
-          grossQuantity: S.Number,
-          grossAmount: S.Number,
-          discountQuantity: S.Number,
-          discountAmount: S.Number,
-          netQuantity: S.Number,
-          netAmount: S.Number,
-        }),
-      ).annotate({
-        identifier: "BillingUsageSummaryReportOrgUsageItemsItem",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timePeriod: __S(19, __c2, 3),
-          organization: S.String,
-          repository: S.optional(S.String),
-          product: S.optional(S.String),
-          sku: S.optional(S.String),
-          usageItems: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "BillingUsageSummaryReportOrg",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          year: S.optional(S.Number.pipe(T.Query())),
-          month: S.optional(S.Number.pipe(T.Query())),
-          day: S.optional(S.Number.pipe(T.Query())),
-          repository: S.optional(S.String.pipe(T.Query())),
-          product: S.optional(S.String.pipe(T.Query())),
-          sku: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/settings/billing/usage/summary",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGithubBillingUsageSummaryReportUserRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timePeriod: __S(19, __c2, 3),
-          user: S.String,
-          repository: S.optional(S.String),
-          product: S.optional(S.String),
-          sku: S.optional(S.String),
-          usageItems: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "BillingUsageSummaryReportUser",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          budget_id: S.String.pipe(T.Label()),
-          budget_amount: S.optional(S.Number),
-          prevent_further_usage: S.optional(S.Boolean),
-          budget_alerting: S.optional(__S(4, __c0, 4)),
-          expires_at: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{org}/settings/billing/budgets/{budget_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateBudgetOrgRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          budget_scope: S.optional(S.String),
-          budget_entity_name: S.optional(S.String),
-          user: S.optional(S.String),
-          consumed_amount: S.optional(S.Number),
-          budget_amount: S.optional(S.Number),
-          prevent_further_usage: S.optional(S.Boolean),
-          budget_product_sku: S.optional(S.String),
-          budget_type: S.optional(S.Unknown),
-          budget_alerting: S.optional(__S(4, __c0, 4)),
-          expires_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateBudgetBudget" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          budget: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "UpdateBudget" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

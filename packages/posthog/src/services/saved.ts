@@ -255,8 +255,8 @@ export const createSaved: API.OperationMethod<
   CreateSavedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateSavedRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateSavedRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,8 +270,8 @@ export const createSavedCapture: API.OperationMethod<
   CreateSavedCaptureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateSavedCaptureRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateSavedCaptureRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const createSavedPreflight: API.OperationMethod<
   CreateSavedPreflightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateSavedPreflightRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<HeatmapPreflightResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateSavedPreflightRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<HeatmapPreflightResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const createSavedPrewarm: API.OperationMethod<
   CreateSavedPrewarmError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateSavedPrewarmRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateSavedPrewarmRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getSaved: API.OperationMethod<
   GetSavedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSavedRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetSavedRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const listSaved: API.OperationMethod<
   ListSavedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListSavedRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListSavedResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListSavedRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListSavedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -345,8 +345,8 @@ export const savedDestroy: API.OperationMethod<
   SavedDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SavedDestroyRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SavedDestroyResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<SavedDestroyRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<SavedDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const savedRegenerateCreate: API.OperationMethod<
   SavedRegenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<SavedRegenerateCreateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<SavedRegenerateCreateRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -375,8 +375,8 @@ export const updateSavedPartial: API.OperationMethod<
   UpdateSavedPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateSavedPartialRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapScreenshotResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateSavedPartialRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<HeatmapScreenshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -386,189 +386,6 @@ export const updateSavedPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          url: S.String,
-          data_url: S.optional(S.String),
-          widths: S.optional(__S(0, __c0, 0)),
-          type: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          block_consent_modals: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/", code: 200 })),
-      ).annotate({ identifier: "CreateSavedRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.Number,
-          has_content: S.Boolean,
-        }),
-      ).annotate({ identifier: "HeatmapSnapshotMetadata" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(4, __c0, 4))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          short_id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.String),
-          data_url: S.optional(S.String),
-          target_widths: S.optional(__S(0, __c0, 0)),
-          type: S.optional(S.String),
-          source: S.optional(S.String),
-          status: S.optional(S.String),
-          has_content: S.optional(S.Boolean),
-          snapshots: S.optional(__S(3, __c0, 3)),
-          deleted: S.optional(S.Boolean),
-          block_consent_modals: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(5, __c0, 5))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          exception: S.optional(S.NullOr(S.String)),
-          user_access_level: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "HeatmapScreenshotResponse",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          image: S.optional(S.NullOr(S.String)),
-          width: S.optional(S.Number),
-          images: S.optional(__S(7, __c0, 7)),
-          widths: S.optional(__S(0, __c0, 0)),
-          url: S.String,
-          data_url: S.optional(S.String),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/saved/capture/",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSavedCaptureRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          url: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/preflight/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateSavedPreflightRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          framing: S.String,
-          blocked_by: S.NullOr(S.String),
-          http_status: S.NullOr(S.Number),
-          body_excerpt: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "HeatmapPreflightResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          url: S.String,
-          block_consent_modals: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/prewarm/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateSavedPrewarmRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          short_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/saved/{short_id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetSavedRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          created_by: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/saved/", code: 200 })),
-      ).annotate({ identifier: "ListSavedRequest" });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(14, __c1, 6),
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "SavedHeatmapListResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSavedResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          short_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/saved/{short_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "SavedDestroyRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SavedDestroyResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -583,7 +400,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SavedRegenerateCreateRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -591,7 +412,7 @@ function __c2(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
           data_url: S.optional(S.String),
-          widths: S.optional(__S(0, __c0, 0)),
+          widths: S.optional(__S(24, __c3, 0)),
           type: S.optional(S.String),
           deleted: S.optional(S.Boolean),
           block_consent_modals: S.optional(S.Boolean),
@@ -607,7 +428,213 @@ function __c2(j: number): any {
       });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          url: S.String,
+          data_url: S.optional(S.String),
+          widths: S.optional(__S(24, __c3, 0)),
+          type: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          block_consent_modals: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/", code: 200 })),
+      ).annotate({ identifier: "CreateSavedRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.Number,
+          has_content: S.Boolean,
+        }),
+      ).annotate({ identifier: "HeatmapSnapshotMetadata" });
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(27, __c3, 3))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          short_id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.String),
+          data_url: S.optional(S.String),
+          target_widths: S.optional(__S(24, __c3, 0)),
+          type: S.optional(S.String),
+          source: S.optional(S.String),
+          status: S.optional(S.String),
+          has_content: S.optional(S.Boolean),
+          snapshots: S.optional(__S(26, __c3, 2)),
+          deleted: S.optional(S.Boolean),
+          block_consent_modals: S.optional(S.Boolean),
+          created_by: S.optional(S.NullOr(__S(28, __c3, 4))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          exception: S.optional(S.NullOr(S.String)),
+          user_access_level: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "HeatmapScreenshotResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          image: S.optional(S.NullOr(S.String)),
+          width: S.optional(S.Number),
+          images: S.optional(__S(32, __c4, 0)),
+          widths: S.optional(__S(24, __c3, 0)),
+          url: S.String,
+          data_url: S.optional(S.String),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/saved/capture/",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSavedCaptureRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          url: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/preflight/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateSavedPreflightRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          framing: S.String,
+          blocked_by: S.NullOr(S.String),
+          http_status: S.NullOr(S.Number),
+          body_excerpt: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "HeatmapPreflightResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          url: S.String,
+          block_consent_modals: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/saved/prewarm/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateSavedPrewarmRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          short_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/saved/{short_id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetSavedRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          created_by: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/saved/", code: 200 })),
+      ).annotate({ identifier: "ListSavedRequest" });
+    case 1:
+      return S.Array(__S(29, __c3, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(65, __c8, 1),
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "SavedHeatmapListResponse" });
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
+      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSavedResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          short_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/saved/{short_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SavedDestroyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SavedDestroyResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1541,8 +1541,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const ApplicationTypesCreateOrUpdate: API.OperationMethod<
   ApplicationTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1571,8 @@ export const ApplicationTypeVersionsCreateOrUpdate: API.OperationMethod<
   ApplicationTypeVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>,
+  input: __S(833, __c26, 1) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1586,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ClustersCreateOrUpdateRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ClustersCreateOrUpdateResponse>,
+  input: __S(1185, __c37, 1) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1601,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1616,8 @@ export const DeleteApplicationType: API.OperationMethod<
   DeleteApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteApplicationTypeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationTypeResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DeleteApplicationTypeRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1631,8 @@ export const DeleteApplicationTypeVersion: API.OperationMethod<
   DeleteApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteApplicationTypeVersionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteApplicationTypeVersionResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteApplicationTypeVersionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1646,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1661,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1676,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetApplicationRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetApplicationResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const GetApplicationType: API.OperationMethod<
   GetApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetApplicationTypeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetApplicationTypeResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetApplicationTypeRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const GetApplicationTypeVersion: API.OperationMethod<
   GetApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetApplicationTypeVersionRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GetApplicationTypeVersionResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetApplicationTypeVersionRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1721,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetClusterRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetClusterResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1736,8 @@ export const GetClusterVersion: API.OperationMethod<
   GetClusterVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetClusterVersionRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetClusterVersionRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1751,8 @@ export const GetClusterVersionByEnvironment: API.OperationMethod<
   GetClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetClusterVersionByEnvironmentRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetClusterVersionByEnvironmentRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1766,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetServiceRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetServiceResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1781,8 @@ export const ListApplications: API.OperationMethod<
   ListApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ApplicationResourceList>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ApplicationResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1796,8 @@ export const ListApplicationTypes: API.OperationMethod<
   ListApplicationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListApplicationTypesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ApplicationTypeResourceList>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListApplicationTypesRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ApplicationTypeResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1811,8 @@ export const ListApplicationTypeVersions: API.OperationMethod<
   ListApplicationTypeVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListApplicationTypeVersionsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ApplicationTypeVersionResourceList>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListApplicationTypeVersionsRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ApplicationTypeVersionResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1826,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ClusterListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1841,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListClustersRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ClusterListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1856,8 @@ export const ListClusterUpgradableVersions: API.OperationMethod<
   ListClusterUpgradableVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListClusterUpgradableVersionsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpgradableVersionPathResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListClusterUpgradableVersionsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<UpgradableVersionPathResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1871,8 @@ export const ListClusterVersionByEnvironment: API.OperationMethod<
   ListClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListClusterVersionByEnvironmentRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListClusterVersionByEnvironmentRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1886,8 @@ export const ListClusterVersions: API.OperationMethod<
   ListClusterVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListClusterVersionsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ClusterCodeVersionsListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListClusterVersionsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<ClusterCodeVersionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1901,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OperationListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(996, __c31, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1916,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListServicesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ServiceResourceList>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1931,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1946,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1961,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(1123, __c35, 3) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1976,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateServiceResponse>,
+  input: __S(1153, __c36, 1) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1987,21 +1987,79 @@ export const UpdateService: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.Record(S.String, __S(64, __c2, 0));
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 2:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(2, __c0, 2)),
+          userAssignedIdentities: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          typeVersion: S.optional(S.String),
+          parameters: S.optional(__S(32, __c1, 0)),
+          upgradePolicy: S.optional(__S(132, __c4, 4)),
+          minimumNodes: S.optional(S.Number),
+          maximumNodes: S.optional(S.Number),
+          removeApplicationCapacity: S.optional(S.Boolean),
+          metrics: S.optional(__S(134, __c4, 6)),
+          managedIdentities: S.optional(__S(136, __c4, 8)),
+          typeName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationResourcePropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          identity: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(2, __c0, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApplicationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           failureAction: S.optional(S.String),
@@ -2014,7 +2072,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ArmRollingUpgradeMonitoringPolicy",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxPercentUnhealthyServices: S.optional(S.Number),
@@ -2024,35 +2082,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ArmServiceTypeHealthPolicy",
       });
-    case 6:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(129, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           considerWarningAsError: S.optional(S.Boolean),
           maxPercentUnhealthyDeployedApplications: S.optional(S.Number),
-          defaultServiceTypeHealthPolicy: S.optional(__S(5, __c0, 5)),
-          serviceTypeHealthPolicyMap: S.optional(__S(6, __c0, 6)),
+          defaultServiceTypeHealthPolicy: S.optional(__S(129, __c4, 1)),
+          serviceTypeHealthPolicyMap: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({
         identifier: "ArmApplicationHealthPolicy",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           upgradeReplicaSetCheckTimeout: S.optional(S.String),
           forceRestart: S.optional(S.Boolean),
-          rollingUpgradeMonitoringPolicy: S.optional(__S(4, __c0, 4)),
-          applicationHealthPolicy: S.optional(__S(7, __c0, 7)),
+          rollingUpgradeMonitoringPolicy: S.optional(__S(128, __c4, 0)),
+          applicationHealthPolicy: S.optional(__S(131, __c4, 3)),
           upgradeMode: S.optional(S.String),
           recreateApplication: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ApplicationUpgradePolicy" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2063,9 +2117,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ApplicationMetricDescription",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(133, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2074,53 +2128,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ApplicationUserAssignedIdentity",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          typeVersion: S.optional(S.String),
-          parameters: S.optional(__S(0, __c0, 0)),
-          upgradePolicy: S.optional(__S(8, __c1, 0)),
-          minimumNodes: S.optional(S.Number),
-          maximumNodes: S.optional(S.Number),
-          removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(__S(10, __c1, 2)),
-          managedIdentities: S.optional(__S(12, __c1, 4)),
-          typeName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationResourcePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApplicationsCreateOrUpdateResponse",
-      });
+    case 8:
+      return S.Array(__S(135, __c4, 7));
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2130,8 +2142,8 @@ function __c2(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2143,7 +2155,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationTypesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "ApplicationTypesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationTypeResourceProperties",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2154,30 +2201,446 @@ function __c2(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationTypeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationTypeRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationTypeName: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationTypeVersionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
+          appPackageUrl: S.String,
+          defaultParameterList: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
-        identifier: "ApplicationTypeResourceProperties",
+        identifier: "ApplicationTypeVersionResourceProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({
-        identifier: "ApplicationTypesCreateOrUpdateResponse",
+        identifier: "GetApplicationTypeVersionResponse",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetClusterRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(1315, __c41, 3)),
+        }),
+      ).annotate({ identifier: "GetClusterResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          clusterVersion: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions/{clusterVersion}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetClusterVersionRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "ClusterCodeVersionsResult",
+      });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(481, __c15, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterCodeVersionsListResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
+          clusterVersion: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions/{clusterVersion}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetClusterVersionByEnvironmentRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          placementConstraints: S.optional(S.String),
+          correlationScheme: S.optional(__S(641, __c20, 1)),
+          serviceLoadMetrics: S.optional(__S(643, __c20, 3)),
+          servicePlacementPolicies: S.optional(__S(645, __c20, 5)),
+          defaultMoveCost: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          serviceKind: S.String,
+          serviceTypeName: S.optional(S.String),
+          partitionDescription: S.optional(__S(608, __c19, 0)),
+          servicePackageActivationMode: S.optional(S.String),
+          serviceDnsName: S.optional(S.String),
+          instanceCount: S.optional(S.Number),
+          instanceCloseDelayDuration: S.optional(S.String),
+          targetReplicaSetSize: S.optional(S.Number),
+          minReplicaSetSize: S.optional(S.Number),
+          replicaRestartWaitDuration: S.optional(S.String),
+          quorumLossWaitDuration: S.optional(S.String),
+          standByReplicaKeepDuration: S.optional(S.String),
+          hasPersistedState: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ServiceResourceProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "GetServiceResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partitionScheme: S.String,
+          count: S.optional(S.Number),
+          lowKey: S.optional(S.String),
+          highKey: S.optional(S.String),
+          names: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "PartitionSchemeDescription",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scheme: S.String,
+          serviceName: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceCorrelationDescription",
+      });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          weight: S.optional(S.String),
+          primaryDefaultLoad: S.optional(S.Number),
+          secondaryDefaultLoad: S.optional(S.Number),
+          defaultLoad: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ServiceLoadMetricDescription",
+      });
+    case 3:
+      return S.Array(__S(642, __c20, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ServicePlacementPolicyDescription",
+      });
+    case 5:
+      return S.Array(__S(644, __c20, 4));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+    case 1:
+      return S.Array(__S(1540, __c48, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(673, __c21, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationResourceList" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationTypesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationTypeResource" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(706, __c22, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationTypeResourceList",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationTypeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationTypeVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(353, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(737, __c23, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationTypeVersionResourceList",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListClusterByResourceGroupRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(416, __c13, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(800, __c25, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterListResult" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appPackageUrl: S.String,
@@ -2185,7 +2648,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationTypeVersionResourcePropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2194,8 +2657,8 @@ function __c2(j: number): any {
           applicationTypeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(832, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2207,9 +2670,451 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationTypeVersionsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/clusters",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListClustersRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          targetVersion: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/listUpgradableVersions",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListClusterUpgradableVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          supportedPath: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "UpgradableVersionPathResult",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListClusterVersionByEnvironmentRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListClusterVersionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ServiceFabric/operations",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableOperationDisplay",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(993, __c31, 1)),
+          origin: S.optional(S.String),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationResult" });
+    case 3:
+      return S.Array(__S(994, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(995, __c31, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationListResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListServicesRequest" });
+    case 1:
+      return S.Array(__S(577, __c18, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1025, __c32, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceResourceList" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          placementConstraints: S.optional(S.String),
+          correlationScheme: S.optional(__S(641, __c20, 1)),
+          serviceLoadMetrics: S.optional(__S(643, __c20, 3)),
+          servicePlacementPolicies: S.optional(__S(645, __c20, 5)),
+          defaultMoveCost: S.optional(S.String),
+          serviceKind: S.String,
+          serviceTypeName: S.optional(S.String),
+          partitionDescription: S.optional(__S(608, __c19, 0)),
+          servicePackageActivationMode: S.optional(S.String),
+          serviceDnsName: S.optional(S.String),
+          instanceCount: S.optional(S.Number),
+          instanceCloseDelayDuration: S.optional(S.String),
+          targetReplicaSetSize: S.optional(S.Number),
+          minReplicaSetSize: S.optional(S.Number),
+          replicaRestartWaitDuration: S.optional(S.String),
+          quorumLossWaitDuration: S.optional(S.String),
+          standByReplicaKeepDuration: S.optional(S.String),
+          hasPersistedState: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ServiceResourcePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1056, __c33, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServicesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          typeVersion: S.optional(S.String),
+          parameters: S.optional(__S(32, __c1, 0)),
+          upgradePolicy: S.optional(__S(132, __c4, 4)),
+          minimumNodes: S.optional(S.Number),
+          maximumNodes: S.optional(S.Number),
+          removeApplicationCapacity: S.optional(S.Boolean),
+          metrics: S.optional(__S(134, __c4, 6)),
+          managedIdentities: S.optional(__S(136, __c4, 8)),
+        }),
+      ).annotate({
+        identifier: "ApplicationResourceUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1088, __c34, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1286, __c40, 6));
+    case 1:
+      return S.Array(__S(1288, __c40, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          addOnFeatures: S.optional(__S(1280, __c40, 0)),
+          certificate: S.optional(__S(1282, __c40, 2)),
+          certificateCommonNames: S.optional(__S(1285, __c40, 5)),
+          clientCertificateCommonNames: S.optional(__S(1120, __c35, 0)),
+          clientCertificateThumbprints: S.optional(__S(1121, __c35, 1)),
+          clusterCodeVersion: S.optional(S.String),
+          eventStoreServiceEnabled: S.optional(S.Boolean),
+          fabricSettings: S.optional(__S(1294, __c40, 14)),
+          nodeTypes: S.optional(__S(1297, __c40, 17)),
+          reliabilityLevel: S.optional(S.String),
+          reverseProxyCertificate: S.optional(__S(1282, __c40, 2)),
+          upgradeDescription: S.optional(__S(1308, __c40, 28)),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(1309, __c40, 29)),
+          upgradeMode: S.optional(S.String),
+          sfZonalUpgradeMode: S.optional(S.String),
+          vmssZonalUpgradeMode: S.optional(S.String),
+          infrastructureServiceManager: S.optional(S.Boolean),
+          upgradeWave: S.optional(S.String),
+          upgradePauseStartTimestampUtc: S.optional(S.String),
+          upgradePauseEndTimestampUtc: S.optional(S.String),
+          waveUpgradePaused: S.optional(S.Boolean),
+          notifications: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({
+        identifier: "ClusterPropertiesUpdateParameters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1122, __c35, 2)),
+          tags: S.optional(__S(32, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateClusterRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          placementConstraints: S.optional(S.String),
+          correlationScheme: S.optional(__S(641, __c20, 1)),
+          serviceLoadMetrics: S.optional(__S(643, __c20, 3)),
+          servicePlacementPolicies: S.optional(__S(645, __c20, 5)),
+          defaultMoveCost: S.optional(S.String),
+          serviceKind: S.String,
+          instanceCount: S.optional(S.Number),
+          instanceCloseDelayDuration: S.optional(S.String),
+          targetReplicaSetSize: S.optional(S.Number),
+          minReplicaSetSize: S.optional(S.Number),
+          replicaRestartWaitDuration: S.optional(S.String),
+          quorumLossWaitDuration: S.optional(S.String),
+          standByReplicaKeepDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceResourceUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1152, __c36, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addOnFeatures: S.optional(__S(1280, __c40, 0)),
+          azureActiveDirectory: S.optional(__S(1281, __c40, 1)),
+          certificate: S.optional(__S(1282, __c40, 2)),
+          certificateCommonNames: S.optional(__S(1285, __c40, 5)),
+          clientCertificateCommonNames: S.optional(__S(1287, __c40, 7)),
+          clientCertificateThumbprints: S.optional(__S(1289, __c40, 9)),
+          clusterCodeVersion: S.optional(S.String),
+          diagnosticsStorageAccountConfig: S.optional(__S(1290, __c40, 10)),
+          eventStoreServiceEnabled: S.optional(S.Boolean),
+          fabricSettings: S.optional(__S(1294, __c40, 14)),
+          managementEndpoint: S.String,
+          nodeTypes: __S(1297, __c40, 17),
+          reliabilityLevel: S.optional(S.String),
+          reverseProxyCertificate: S.optional(__S(1282, __c40, 2)),
+          reverseProxyCertificateCommonNames: S.optional(__S(1285, __c40, 5)),
+          upgradeDescription: S.optional(__S(1308, __c40, 28)),
+          upgradeMode: S.optional(S.String),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(1309, __c40, 29)),
+          vmImage: S.optional(S.String),
+          sfZonalUpgradeMode: S.optional(S.String),
+          vmssZonalUpgradeMode: S.optional(S.String),
+          infrastructureServiceManager: S.optional(S.Boolean),
+          upgradeWave: S.optional(S.String),
+          upgradePauseStartTimestampUtc: S.optional(S.String),
+          upgradePauseEndTimestampUtc: S.optional(S.String),
+          waveUpgradePaused: S.optional(S.Boolean),
+          notifications: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "ClusterPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          location: S.String,
+          tags: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1184, __c37, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClustersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(1315, __c41, 3)),
+        }),
+      ).annotate({
+        identifier: "ClustersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          codeVersion: S.optional(S.String),
+          supportExpiryUtc: S.optional(S.String),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterVersionDetails" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -2217,11 +3122,7 @@ function __c2(j: number): any {
           clientApplication: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureActiveDirectory" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           thumbprint: S.String,
@@ -2229,7 +3130,7 @@ function __c3(j: number): any {
           x509StoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateDescription" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           certificateCommonName: S.String,
@@ -2238,18 +3139,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ServerCertificateCommonName",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1283, __c40, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          commonNames: S.optional(__S(26, __c3, 2)),
+          commonNames: S.optional(__S(1284, __c40, 4)),
           x509StoreName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerCertificateCommonNames",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           isAdmin: S.Boolean,
@@ -2259,9 +3160,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ClientCertificateCommonName",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(1286, __c40, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           isAdmin: S.Boolean,
@@ -2270,13 +3171,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ClientCertificateThumbprint",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(1288, __c40, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           storageAccountName: S.String,
@@ -2289,7 +3186,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DiagnosticsStorageAccountConfig",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2298,37 +3195,37 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SettingsParameterDescription",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(1291, __c40, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parameters: __S(34, __c4, 2),
+          parameters: __S(1292, __c40, 12),
         }),
       ).annotate({
         identifier: "SettingsSectionDescription",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(1293, __c40, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           startPort: S.Number,
           endPort: S.Number,
         }),
       ).annotate({ identifier: "EndpointRangeDescription" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          placementProperties: S.optional(__S(0, __c0, 0)),
-          capacities: S.optional(__S(0, __c0, 0)),
+          placementProperties: S.optional(__S(32, __c1, 0)),
+          capacities: S.optional(__S(32, __c1, 0)),
           clientConnectionEndpointPort: S.Number,
           httpGatewayEndpointPort: S.Number,
           durabilityLevel: S.optional(S.String),
-          applicationPorts: S.optional(__S(37, __c4, 5)),
-          ephemeralPorts: S.optional(__S(37, __c4, 5)),
+          applicationPorts: S.optional(__S(1295, __c40, 15)),
+          ephemeralPorts: S.optional(__S(1295, __c40, 15)),
           isPrimary: S.Boolean,
           vmInstanceCount: S.Number,
           reverseProxyEndpointPort: S.optional(S.Number),
@@ -2336,38 +3233,34 @@ function __c4(j: number): any {
           multipleAvailabilityZones: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NodeTypeDescription" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
+      return S.Array(__S(1296, __c40, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           maxPercentUnhealthyServices: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceTypeHealthPolicy" });
-    case 1:
-      return S.Record(S.String, __S(40, __c5, 0));
-    case 2:
+    case 19:
+      return S.Record(S.String, __S(1298, __c40, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          defaultServiceTypeHealthPolicy: S.optional(__S(40, __c5, 0)),
-          serviceTypeHealthPolicies: S.optional(__S(41, __c5, 1)),
+          defaultServiceTypeHealthPolicy: S.optional(__S(1298, __c40, 18)),
+          serviceTypeHealthPolicies: S.optional(__S(1299, __c40, 19)),
         }),
       ).annotate({ identifier: "ApplicationHealthPolicy" });
-    case 3:
-      return S.Record(S.String, __S(42, __c5, 2));
-    case 4:
+    case 21:
+      return S.Record(S.String, __S(1300, __c40, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           maxPercentUnhealthyNodes: S.optional(S.Number),
           maxPercentUnhealthyApplications: S.optional(S.Number),
-          applicationHealthPolicies: S.optional(__S(43, __c5, 3)),
+          applicationHealthPolicies: S.optional(__S(1301, __c40, 21)),
         }),
       ).annotate({ identifier: "ClusterHealthPolicy" });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           maxPercentDeltaUnhealthyServices: S.optional(S.Number),
@@ -2375,35 +3268,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ServiceTypeDeltaHealthPolicy",
       });
-    case 6:
-      return S.Record(S.String, __S(45, __c5, 5));
-    case 7:
+    case 24:
+      return S.Record(S.String, __S(1303, __c40, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          defaultServiceTypeDeltaHealthPolicy: S.optional(__S(45, __c5, 5)),
-          serviceTypeDeltaHealthPolicies: S.optional(__S(46, __c5, 6)),
+          defaultServiceTypeDeltaHealthPolicy: S.optional(__S(1303, __c40, 23)),
+          serviceTypeDeltaHealthPolicies: S.optional(__S(1304, __c40, 24)),
         }),
       ).annotate({
         identifier: "ApplicationDeltaHealthPolicy",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(47, __c5, 7));
-    case 1:
+    case 26:
+      return S.Record(S.String, __S(1305, __c40, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           maxPercentDeltaUnhealthyNodes: S.Number,
           maxPercentUpgradeDomainDeltaUnhealthyNodes: S.Number,
           maxPercentDeltaUnhealthyApplications: S.Number,
-          applicationDeltaHealthPolicies: S.optional(__S(48, __c6, 0)),
+          applicationDeltaHealthPolicies: S.optional(__S(1306, __c40, 26)),
         }),
       ).annotate({
         identifier: "ClusterUpgradeDeltaHealthPolicy",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           forceRestart: S.optional(S.Boolean),
@@ -2413,11 +3302,11 @@ function __c6(j: number): any {
           healthCheckRetryTimeout: S.String,
           upgradeTimeout: S.String,
           upgradeDomainTimeout: S.String,
-          healthPolicy: __S(44, __c5, 4),
-          deltaHealthPolicy: S.optional(__S(49, __c6, 1)),
+          healthPolicy: __S(1302, __c40, 22),
+          deltaHealthPolicy: S.optional(__S(1307, __c40, 27)),
         }),
       ).annotate({ identifier: "ClusterUpgradePolicy" });
-    case 3:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           maxUnusedVersionsToKeep: S.Number,
@@ -2425,120 +3314,58 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ApplicationTypeVersionsCleanupPolicy",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           notificationChannel: S.String,
-          receivers: __S(52, __c6, 4),
+          receivers: __S(1248, __c39, 0),
         }),
       ).annotate({ identifier: "NotificationTarget" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 31:
+      return S.Array(__S(1310, __c40, 30));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.Boolean,
           notificationCategory: S.String,
           notificationLevel: S.String,
-          notificationTargets: __S(54, __c6, 6),
+          notificationTargets: __S(1311, __c40, 31),
         }),
       ).annotate({ identifier: "Notification" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          addOnFeatures: S.optional(__S(22, __c2, 6)),
-          azureActiveDirectory: S.optional(__S(23, __c2, 7)),
-          certificate: S.optional(__S(24, __c3, 0)),
-          certificateCommonNames: S.optional(__S(27, __c3, 3)),
-          clientCertificateCommonNames: S.optional(__S(29, __c3, 5)),
-          clientCertificateThumbprints: S.optional(__S(31, __c3, 7)),
-          clusterCodeVersion: S.optional(S.String),
-          diagnosticsStorageAccountConfig: S.optional(__S(32, __c4, 0)),
-          eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(__S(36, __c4, 4)),
-          managementEndpoint: S.String,
-          nodeTypes: __S(39, __c4, 7),
-          reliabilityLevel: S.optional(S.String),
-          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
-          reverseProxyCertificateCommonNames: S.optional(__S(27, __c3, 3)),
-          upgradeDescription: S.optional(__S(50, __c6, 2)),
-          upgradeMode: S.optional(S.String),
-          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
-          vmImage: S.optional(S.String),
-          sfZonalUpgradeMode: S.optional(S.String),
-          vmssZonalUpgradeMode: S.optional(S.String),
-          infrastructureServiceManager: S.optional(S.Boolean),
-          upgradeWave: S.optional(S.String),
-          upgradePauseStartTimestampUtc: S.optional(S.String),
-          upgradePauseEndTimestampUtc: S.optional(S.String),
-          waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "ClusterPropertiesInput" });
+      return S.Array(__S(1312, __c41, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(57, __c7, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClustersCreateOrUpdateRequest",
-      });
+      return S.Array(__S(1216, __c38, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          codeVersion: S.optional(S.String),
-          supportExpiryUtc: S.optional(S.String),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterVersionDetails" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          addOnFeatures: S.optional(__S(22, __c2, 6)),
-          availableClusterVersions: S.optional(__S(60, __c7, 4)),
-          azureActiveDirectory: S.optional(__S(23, __c2, 7)),
-          certificate: S.optional(__S(24, __c3, 0)),
-          certificateCommonNames: S.optional(__S(27, __c3, 3)),
-          clientCertificateCommonNames: S.optional(__S(29, __c3, 5)),
-          clientCertificateThumbprints: S.optional(__S(31, __c3, 7)),
+          addOnFeatures: S.optional(__S(1280, __c40, 0)),
+          availableClusterVersions: S.optional(__S(1314, __c41, 2)),
+          azureActiveDirectory: S.optional(__S(1281, __c40, 1)),
+          certificate: S.optional(__S(1282, __c40, 2)),
+          certificateCommonNames: S.optional(__S(1285, __c40, 5)),
+          clientCertificateCommonNames: S.optional(__S(1287, __c40, 7)),
+          clientCertificateThumbprints: S.optional(__S(1289, __c40, 9)),
           clusterCodeVersion: S.optional(S.String),
           clusterEndpoint: S.optional(S.String),
           clusterId: S.optional(S.String),
           clusterState: S.optional(S.String),
-          diagnosticsStorageAccountConfig: S.optional(__S(32, __c4, 0)),
+          diagnosticsStorageAccountConfig: S.optional(__S(1290, __c40, 10)),
           eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(__S(36, __c4, 4)),
+          fabricSettings: S.optional(__S(1294, __c40, 14)),
           managementEndpoint: S.String,
-          nodeTypes: __S(39, __c4, 7),
+          nodeTypes: __S(1297, __c40, 17),
           provisioningState: S.optional(S.String),
           reliabilityLevel: S.optional(S.String),
-          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
-          reverseProxyCertificateCommonNames: S.optional(__S(27, __c3, 3)),
-          upgradeDescription: S.optional(__S(50, __c6, 2)),
+          reverseProxyCertificate: S.optional(__S(1282, __c40, 2)),
+          reverseProxyCertificateCommonNames: S.optional(__S(1285, __c40, 5)),
+          upgradeDescription: S.optional(__S(1308, __c40, 28)),
           upgradeMode: S.optional(S.String),
-          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(1309, __c40, 29)),
           vmImage: S.optional(S.String),
           sfZonalUpgradeMode: S.optional(S.String),
           vmssZonalUpgradeMode: S.optional(S.String),
@@ -2547,25 +3374,14 @@ function __c7(j: number): any {
           upgradePauseStartTimestampUtc: S.optional(S.String),
           upgradePauseEndTimestampUtc: S.optional(S.String),
           waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(__S(56, __c7, 0)),
+          notifications: S.optional(__S(1313, __c41, 1)),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "ClustersCreateOrUpdateResponse",
-      });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2583,7 +3399,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteApplicationRequest" });
   }
 }
-function __c8(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2603,7 +3419,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationTypeRequest",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2622,7 +3442,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationTypeVersionRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2637,7 +3461,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2654,7 +3482,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2670,766 +3502,61 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 6:
-      return S.Record(S.String, __S(69, __c8, 5));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(1536, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(70, __c8, 6)),
+          userAssignedIdentities: S.optional(__S(1537, __c48, 1)),
         }),
       ).annotate({ identifier: "ManagedIdentity" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           typeVersion: S.optional(S.String),
-          parameters: S.optional(__S(0, __c0, 0)),
-          upgradePolicy: S.optional(__S(8, __c1, 0)),
+          parameters: S.optional(__S(32, __c1, 0)),
+          upgradePolicy: S.optional(__S(132, __c4, 4)),
           minimumNodes: S.optional(S.Number),
           maximumNodes: S.optional(S.Number),
           removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(__S(10, __c1, 2)),
-          managedIdentities: S.optional(__S(12, __c1, 4)),
+          metrics: S.optional(__S(134, __c4, 6)),
+          managedIdentities: S.optional(__S(136, __c4, 8)),
           provisioningState: S.optional(S.String),
           typeName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApplicationResourceProperties",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(71, __c8, 7)),
-          properties: S.optional(__S(72, __c9, 0)),
+          systemData: S.optional(__S(256, __c8, 0)),
+          identity: S.optional(__S(1538, __c48, 2)),
+          properties: S.optional(__S(1539, __c48, 3)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationTypeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationTypeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationTypeName: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApplicationTypeVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          appPackageUrl: S.String,
-          defaultParameterList: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ApplicationTypeVersionResourceProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "GetApplicationTypeVersionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetClusterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "GetClusterResponse" });
   }
 }
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          clusterVersion: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions/{clusterVersion}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetClusterVersionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "ClusterCodeVersionsResult",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(82, __c10, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterCodeVersionsListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          environment: S.String.pipe(T.Label()),
-          clusterVersion: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions/{clusterVersion}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetClusterVersionByEnvironmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scheme: S.String,
-          serviceName: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceCorrelationDescription",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          weight: S.optional(S.String),
-          primaryDefaultLoad: S.optional(S.Number),
-          secondaryDefaultLoad: S.optional(S.Number),
-          defaultLoad: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ServiceLoadMetricDescription",
-      });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ServicePlacementPolicyDescription",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          partitionScheme: S.String,
-          count: S.optional(S.Number),
-          lowKey: S.optional(S.String),
-          highKey: S.optional(S.String),
-          names: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "PartitionSchemeDescription",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(__S(87, __c10, 7)),
-          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
-          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
-          defaultMoveCost: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          serviceKind: S.String,
-          serviceTypeName: S.optional(S.String),
-          partitionDescription: S.optional(__S(92, __c11, 4)),
-          servicePackageActivationMode: S.optional(S.String),
-          serviceDnsName: S.optional(S.String),
-          instanceCount: S.optional(S.Number),
-          instanceCloseDelayDuration: S.optional(S.String),
-          targetReplicaSetSize: S.optional(S.Number),
-          minReplicaSetSize: S.optional(S.Number),
-          replicaRestartWaitDuration: S.optional(S.String),
-          quorumLossWaitDuration: S.optional(S.String),
-          standByReplicaKeepDuration: S.optional(S.String),
-          hasPersistedState: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ServiceResourceProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "GetServiceResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListApplicationsRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(73, __c9, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(96, __c12, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationResourceList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ApplicationTypeResource" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(100, __c12, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationTypeResourceList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationTypeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationTypeVersionsRequest",
-      });
-    case 7:
-      return S.Array(__S(77, __c9, 5));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(103, __c12, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationTypeVersionResourceList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListClusterByResourceGroupRequest",
-      });
-    case 2:
-      return S.Array(__S(79, __c9, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(106, __c13, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/clusters",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListClustersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          targetVersion: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/listUpgradableVersions",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListClusterUpgradableVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          supportedPath: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "UpgradableVersionPathResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          environment: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListClusterVersionByEnvironmentRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListClusterVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ServiceFabric/operations",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableOperationDisplay",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(114, __c14, 2)),
-          origin: S.optional(S.String),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationResult" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(116, __c14, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServicesRequest" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(119, __c14, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceResourceList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(__S(87, __c10, 7)),
-          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
-          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
-          defaultMoveCost: S.optional(S.String),
-          serviceKind: S.String,
-          serviceTypeName: S.optional(S.String),
-          partitionDescription: S.optional(__S(92, __c11, 4)),
-          servicePackageActivationMode: S.optional(S.String),
-          serviceDnsName: S.optional(S.String),
-          instanceCount: S.optional(S.Number),
-          instanceCloseDelayDuration: S.optional(S.String),
-          targetReplicaSetSize: S.optional(S.Number),
-          minReplicaSetSize: S.optional(S.Number),
-          replicaRestartWaitDuration: S.optional(S.String),
-          quorumLossWaitDuration: S.optional(S.String),
-          standByReplicaKeepDuration: S.optional(S.String),
-          hasPersistedState: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ServiceResourcePropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(121, __c15, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServicesCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          typeVersion: S.optional(S.String),
-          parameters: S.optional(__S(0, __c0, 0)),
-          upgradePolicy: S.optional(__S(8, __c1, 0)),
-          minimumNodes: S.optional(S.Number),
-          maximumNodes: S.optional(S.Number),
-          removeApplicationCapacity: S.optional(S.Boolean),
-          metrics: S.optional(__S(10, __c1, 2)),
-          managedIdentities: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ApplicationResourceUpdateProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(123, __c15, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          addOnFeatures: S.optional(__S(22, __c2, 6)),
-          certificate: S.optional(__S(24, __c3, 0)),
-          certificateCommonNames: S.optional(__S(27, __c3, 3)),
-          clientCertificateCommonNames: S.optional(__S(125, __c15, 5)),
-          clientCertificateThumbprints: S.optional(__S(126, __c15, 6)),
-          clusterCodeVersion: S.optional(S.String),
-          eventStoreServiceEnabled: S.optional(S.Boolean),
-          fabricSettings: S.optional(__S(36, __c4, 4)),
-          nodeTypes: S.optional(__S(39, __c4, 7)),
-          reliabilityLevel: S.optional(S.String),
-          reverseProxyCertificate: S.optional(__S(24, __c3, 0)),
-          upgradeDescription: S.optional(__S(50, __c6, 2)),
-          applicationTypeVersionsCleanupPolicy: S.optional(__S(51, __c6, 3)),
-          upgradeMode: S.optional(S.String),
-          sfZonalUpgradeMode: S.optional(S.String),
-          vmssZonalUpgradeMode: S.optional(S.String),
-          infrastructureServiceManager: S.optional(S.Boolean),
-          upgradeWave: S.optional(S.String),
-          upgradePauseStartTimestampUtc: S.optional(S.String),
-          upgradePauseEndTimestampUtc: S.optional(S.String),
-          waveUpgradePaused: S.optional(S.Boolean),
-          notifications: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "ClusterPropertiesUpdateParameters",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(127, __c15, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateClusterRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(__S(87, __c10, 7)),
-          serviceLoadMetrics: S.optional(__S(89, __c11, 1)),
-          servicePlacementPolicies: S.optional(__S(91, __c11, 3)),
-          defaultMoveCost: S.optional(S.String),
-          serviceKind: S.String,
-          instanceCount: S.optional(S.Number),
-          instanceCloseDelayDuration: S.optional(S.String),
-          targetReplicaSetSize: S.optional(S.Number),
-          minReplicaSetSize: S.optional(S.Number),
-          replicaRestartWaitDuration: S.optional(S.String),
-          quorumLossWaitDuration: S.optional(S.String),
-          standByReplicaKeepDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceResourceUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(129, __c16, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

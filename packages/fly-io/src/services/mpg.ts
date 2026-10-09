@@ -265,8 +265,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateBackupRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateBackupResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateBackupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateBackupResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -280,8 +280,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateClusterRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateClusterResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<CreateClusterResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -295,8 +295,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateDatabaseResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -310,8 +310,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateUserRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateUserResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateUserResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -325,8 +325,8 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAttachmentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteAttachmentResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteAttachmentRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<DeleteAttachmentResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -340,8 +340,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteUserResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -355,8 +355,8 @@ export const destroyCluster: API.OperationMethod<
   DestroyClusterError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DestroyClusterRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DestroyClusterResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DestroyClusterRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DestroyClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const disableExtension: API.OperationMethod<
   DisableExtensionError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DisableExtensionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DisableExtensionResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DisableExtensionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisableExtensionResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -385,8 +385,8 @@ export const enableExtension: API.OperationMethod<
   EnableExtensionError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<EnableExtensionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<EnableExtensionResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<EnableExtensionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<EnableExtensionResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -401,7 +401,7 @@ export const getCluster: API.OperationMethod<
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<GetClusterRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetClusterResponse>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -415,8 +415,8 @@ export const getClusterById: API.OperationMethod<
   GetClusterByIdError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetClusterByIdRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetClusterResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetClusterByIdRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -430,8 +430,8 @@ export const getUserCredentials: API.OperationMethod<
   GetUserCredentialsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetUserCredentialsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetUserCredentialsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetUserCredentialsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetUserCredentialsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -445,8 +445,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListBackupsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListBackupsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListBackupsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -460,8 +460,8 @@ export const listClusters: API.OperationMethod<
   ListClustersError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListClustersResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListClustersResponse>,
   errors: [Forbidden, NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -475,8 +475,8 @@ export const listDatabases: API.OperationMethod<
   ListDatabasesError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListDatabasesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<ListDatabasesResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -490,8 +490,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListExtensionsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ListExtensionsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -505,8 +505,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListRegionsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListRegionsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListRegionsResponse>,
   errors: [],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -520,8 +520,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListUsersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListUsersResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -535,8 +535,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<RestoreBackupResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<RestoreBackupResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -550,8 +550,8 @@ export const updateUserRole: API.OperationMethod<
   UpdateUserRoleError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateUserRoleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateUserRoleResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateUserRoleRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateUserRoleResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -584,42 +584,6 @@ function __c0(j: number): any {
           data: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "CreateAttachmentResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          type: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/backups", code: 200 })),
-      ).annotate({ identifier: "CreateBackupRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateBackupResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          region: S.String,
-          plan: S.String,
-          pg_major_version: S.optional(S.String),
-          storage_in_gb: S.optional(S.Number),
-          postgis_enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v1/organizations/{org_slug}/postgresv2", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateClusterRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          raw_slug: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
 function __c1(j: number): any {
@@ -627,154 +591,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttachedApp" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          engine: S.optional(S.String),
-          plan: S.optional(S.String),
-          region: S.optional(S.String),
-          organization: S.optional(__S(6, __c0, 6)),
-          mpgd_cluster_id: S.optional(S.String),
-          disk: S.optional(S.Number),
-          replicas: S.optional(S.Number),
-          ip_assignments: S.optional(__S(7, __c0, 7)),
-          attached_apps: S.optional(__S(9, __c1, 1)),
-          postgis_enabled: S.optional(S.Boolean),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedCluster" });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.optional(S.Boolean),
-          data: S.optional(__S(10, __c1, 2)),
-          errors: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CreateClusterResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String.pipe(T.Label()),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/databases", code: 200 })),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          username: S.String,
-          role: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
-      ).annotate({ identifier: "CreateUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          username: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
+          type: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/backups", code: 200 })),
+      ).annotate({ identifier: "CreateBackupRequest" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CreateUserResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          app_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v1/postgresv2/{id}/attachments/{app_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAttachmentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteAttachmentResponseData",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateBackupResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "DeleteAttachmentResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/v1/postgresv2/{id}/users/{username}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org_slug: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v1/organizations/{org_slug}/postgresv2/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DestroyClusterRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/v1/postgresv2/{id}/databases/{database}/extensions/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DisableExtensionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          name: S.String,
-          schema: S.optional(S.String),
-          create_schema_if_needed: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/postgresv2/{id}/databases/{database}/extensions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "EnableExtensionRequest" });
   }
 }
 function __c3(j: number): any {
@@ -792,7 +620,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -802,20 +634,28 @@ function __c3(j: number): any {
           pgbouncer_uri: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "ClusterCredentials" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(10, __c1, 2)),
-          credentials: S.optional(__S(25, __c3, 1)),
+          data: S.optional(__S(124, __c15, 4)),
+          credentials: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}", code: 200 })),
       ).annotate({ identifier: "GetClusterByIdRequest" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -830,7 +670,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetUserCredentialsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -840,25 +680,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetUserCredentialsResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(29, __c3, 5)),
+          data: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "GetUserCredentialsResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/backups", code: 200 })),
       ).annotate({ identifier: "ListBackupsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -868,15 +708,19 @@ function __c4(j: number): any {
           stop: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterBackup" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(33, __c4, 1)),
+          data: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_slug: S.String.pipe(T.Label()),
@@ -884,39 +728,43 @@ function __c4(j: number): any {
           T.Http({ method: "GET", uri: "/api/v1/organizations/{org_slug}/postgresv2", code: 200 }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(124, __c15, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(36, __c4, 4)),
+          data: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/databases", code: 200 })),
       ).annotate({ identifier: "ListDatabasesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Database" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(40, __c5, 0)),
+          data: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -929,14 +777,14 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListExtensionsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstalledExtension" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -944,18 +792,22 @@ function __c5(j: number): any {
           docs_url: S.optional(S.String),
           default_version: S.optional(S.String),
           is_system: S.optional(S.Boolean),
-          installed: S.optional(__S(43, __c5, 3)),
+          installed: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "Extension" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(45, __c5, 5)),
+          data: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "ListExtensionsResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_slug: S.String.pipe(T.Label()),
@@ -967,40 +819,44 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRegionsRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           available: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Region" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(49, __c6, 1)),
+          data: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "ListRegionsResponse" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(52, __c6, 4)),
+          data: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1009,15 +865,86 @@ function __c6(j: number): any {
           pitr_time: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/restore", code: 200 })),
       ).annotate({ identifier: "RestoreBackupRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(10, __c1, 2)),
+          data: S.optional(__S(124, __c15, 4)),
         }),
       ).annotate({ identifier: "RestoreBackupResponse" });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          region: S.String,
+          plan: S.String,
+          pg_major_version: S.optional(S.String),
+          storage_in_gb: S.optional(S.Number),
+          postgis_enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v1/organizations/{org_slug}/postgresv2", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateClusterRequest" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.optional(S.Boolean),
+          data: S.optional(__S(124, __c15, 4)),
+          errors: S.optional(__S(113, __c14, 1)),
+        }),
+      ).annotate({ identifier: "CreateClusterResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          raw_slug: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Organization" });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttachedApp" });
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          engine: S.optional(S.String),
+          plan: S.optional(S.String),
+          region: S.optional(S.String),
+          organization: S.optional(__S(120, __c15, 0)),
+          mpgd_cluster_id: S.optional(S.String),
+          disk: S.optional(S.Number),
+          replicas: S.optional(S.Number),
+          ip_assignments: S.optional(__S(121, __c15, 1)),
+          attached_apps: S.optional(__S(123, __c15, 3)),
+          postgis_enabled: S.optional(S.Boolean),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedCluster" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1031,7 +958,147 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UpdateUserRoleRequest" });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/databases", code: 200 })),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          username: S.String,
+          role: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
+      ).annotate({ identifier: "CreateUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(152, __c19, 0)),
+        }),
+      ).annotate({ identifier: "CreateUserResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          username: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          app_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v1/postgresv2/{id}/attachments/{app_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAttachmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteAttachmentResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(161, __c20, 1)),
+        }),
+      ).annotate({ identifier: "DeleteAttachmentResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/v1/postgresv2/{id}/users/{username}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteUserRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_slug: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v1/organizations/{org_slug}/postgresv2/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DestroyClusterRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/v1/postgresv2/{id}/databases/{database}/extensions/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DisableExtensionRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          name: S.String,
+          schema: S.optional(S.String),
+          create_schema_if_needed: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/postgresv2/{id}/databases/{database}/extensions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "EnableExtensionRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

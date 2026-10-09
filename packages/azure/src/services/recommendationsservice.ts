@@ -1175,8 +1175,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1190,8 @@ export const CheckAccountNameAvailability: API.OperationMethod<
   CheckAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CheckAccountNameAvailabilityResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<CheckAccountNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1205,8 +1205,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1220,8 @@ export const DeleteModeling: API.OperationMethod<
   DeleteModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteModelingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteModelingResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteModelingRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const DeleteServiceEndpoint: API.OperationMethod<
   DeleteServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteServiceEndpointRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceEndpointResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteServiceEndpointRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1250,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetAccountRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetAccountResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1265,8 @@ export const GetAccountStatus: API.OperationMethod<
   GetAccountStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccountStatusRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AccountStatus>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetAccountStatusRequest>,
+  output: __S(357, __c22, 5) as any as S.Schema<AccountStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1280,8 +1280,8 @@ export const GetModeling: API.OperationMethod<
   GetModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetModelingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetModelingResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetModelingRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GetModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1295,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetOperationStatusResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(408, __c25, 8) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1310,8 @@ export const GetServiceEndpoint: API.OperationMethod<
   GetServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetServiceEndpointRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetServiceEndpointResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetServiceEndpointRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1325,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<AccountResourceList>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1340,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<AccountResourceList>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1355,8 @@ export const ListModelingByAccountResource: API.OperationMethod<
   ListModelingByAccountResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListModelingByAccountResourceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ModelingResourceList>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListModelingByAccountResourceRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ModelingResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const ListServiceEndpointByAccountResource: API.OperationMethod<
   ListServiceEndpointByAccountResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListServiceEndpointByAccountResourceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ServiceEndpointResourceList>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListServiceEndpointByAccountResourceRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<ServiceEndpointResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const ModelingCreateOrUpdate: API.OperationMethod<
   ModelingCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ModelingCreateOrUpdateRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ModelingCreateOrUpdateResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<ModelingCreateOrUpdateRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ModelingCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1415,8 @@ export const ServiceEndpointsCreateOrUpdate: API.OperationMethod<
   ServiceEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponse>,
+  input: __S(193, __c12, 1) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(209, __c13, 1) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1445,8 @@ export const UpdateModeling: API.OperationMethod<
   UpdateModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateModelingRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateModelingResponse>,
+  input: __S(241, __c15, 1) as any as S.Schema<UpdateModelingRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<UpdateModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1460,8 @@ export const UpdateServiceEndpoint: API.OperationMethod<
   UpdateServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateServiceEndpointRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UpdateServiceEndpointResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateServiceEndpointRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<UpdateServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1471,51 +1471,25 @@ export const UpdateServiceEndpoint: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aadTenantID: S.optional(S.String),
-          principalID: S.optional(S.String),
-          principalType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointAuthentication" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: __S(3, __c0, 3),
-          allowedMethods: S.optional(__S(3, __c0, 3)),
-          allowedHeaders: S.optional(__S(3, __c0, 3)),
-          exposedHeaders: S.optional(__S(3, __c0, 3)),
-          maxAgeInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CorsRule" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           configuration: S.optional(S.String),
-          endpointAuthentications: S.optional(__S(2, __c0, 2)),
-          cors: S.optional(__S(5, __c0, 5)),
+          endpointAuthentications: S.optional(__S(17, __c1, 1)),
+          cors: S.optional(__S(20, __c1, 4)),
           reportsConnectionString: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequestProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1527,6 +1501,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequest",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(21, __c1, 5)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponse",
+      });
   }
 }
 function __c1(j: number): any {
@@ -1534,16 +1522,50 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          aadTenantID: S.optional(S.String),
+          principalID: S.optional(S.String),
+          principalType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointAuthentication" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: __S(18, __c1, 2),
+          allowedMethods: S.optional(__S(18, __c1, 2)),
+          allowedHeaders: S.optional(__S(18, __c1, 2)),
+          exposedHeaders: S.optional(__S(18, __c1, 2)),
+          maxAgeInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CorsRule" });
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
           configuration: S.optional(S.String),
-          endpointAuthentications: S.optional(__S(2, __c0, 2)),
-          cors: S.optional(__S(5, __c0, 5)),
+          endpointAuthentications: S.optional(__S(17, __c1, 1)),
+          cors: S.optional(__S(20, __c1, 4)),
           reportsConnectionString: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponseProperties",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1556,21 +1578,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponseSystemData",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponse",
-      });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1587,7 +1599,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckAccountNameAvailabilityRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -1597,7 +1609,442 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckAccountNameAvailabilityResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountByResourceGroupRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(21, __c1, 5)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "AccountResource" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "AccountResourceList" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountBySubscriptionRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListModelingByAccountResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(385, __c24, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "ModelingResource" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(130, __c8, 2)),
+        }),
+      ).annotate({ identifier: "ModelingResourceList" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.RecommendationsService/operations",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(145, __c9, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(147, __c9, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceEndpointByAccountResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "ServiceEndpointResource" });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(162, __c10, 2)),
+        }),
+      ).annotate({
+        identifier: "ServiceEndpointResourceList",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(S.String),
+          frequency: S.optional(S.String),
+          size: S.optional(S.String),
+          inputData: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "ModelingCreateOrUpdateRequestProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          modelingName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ModelingCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(385, __c24, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "ModelingCreateOrUpdateResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preAllocatedCapacity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ServiceEndpointsCreateOrUpdateRequestProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          serviceEndpointName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(192, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServiceEndpointsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceEndpointsCreateOrUpdateResponseSystemData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          systemData: S.optional(__S(194, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "ServiceEndpointsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointAuthentications: S.optional(__S(17, __c1, 1)),
+          cors: S.optional(__S(20, __c1, 4)),
+          reportsConnectionString: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateAccountRequestProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c14, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccountRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(21, __c1, 5)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "UpdateAccountResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputData: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateModelingRequestProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          modelingName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c14, 0)),
+          properties: S.optional(__S(240, __c15, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateModelingRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(385, __c24, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "UpdateModelingResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          serviceEndpointName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c14, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+            code: 200,
+            apiVersion: "2022-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateServiceEndpointRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateServiceEndpointResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1612,11 +2059,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccountResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1634,7 +2089,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteModelingRequest" });
   }
 }
-function __c2(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1654,7 +2109,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteServiceEndpointRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1669,19 +2128,23 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(21, __c1, 5)),
+          systemData: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1696,7 +2159,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountStatusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stage: S.optional(S.String),
@@ -1704,28 +2167,28 @@ function __c2(j: number): any {
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "StageStatus" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(353, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
-          statuses: S.optional(__S(21, __c2, 5)),
+          statuses: S.optional(__S(354, __c22, 2)),
         }),
       ).annotate({ identifier: "ScopeStatuses" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(355, __c22, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          scopesStatuses: S.optional(__S(23, __c2, 7)),
+          scopesStatuses: S.optional(__S(356, __c22, 4)),
         }),
       ).annotate({ identifier: "AccountStatus" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1741,37 +2204,45 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetModelingRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "ModelingInputData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(S.String),
-          frequency: S.optional(S.String),
-          size: S.optional(S.String),
-          inputData: S.optional(__S(26, __c3, 2)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetModelingResponseProperties",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(385, __c24, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "GetModelingResponse" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "ModelingInputData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(S.String),
+          frequency: S.optional(S.String),
+          size: S.optional(S.String),
+          inputData: S.optional(__S(384, __c24, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetModelingResponseProperties",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
@@ -1787,34 +2258,30 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOperationStatusRequest",
       });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(35, __c4, 3)));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(34, __c4, 2)));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(406, __c25, 6)));
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(405, __c25, 5)));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(403, __c25, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(31, __c3, 7)),
-          additionalInfo: S.optional(__S(33, __c4, 1)),
+          details: S.optional(__S(402, __c25, 2)),
+          additionalInfo: S.optional(__S(404, __c25, 4)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1824,13 +2291,13 @@ function __c4(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(30, __c3, 6)),
-          error: S.optional(__S(34, __c4, 2)),
+          operations: S.optional(__S(401, __c25, 1)),
+          error: S.optional(__S(405, __c25, 5)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(406, __c25, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1840,14 +2307,18 @@ function __c4(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(36, __c4, 4)),
-          error: S.optional(__S(34, __c4, 2)),
+          operations: S.optional(__S(407, __c25, 7)),
+          error: S.optional(__S(405, __c25, 5)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GetOperationStatusResponse",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1865,7 +2336,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetServiceEndpointRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "GetServiceEndpointResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           preAllocatedCapacity: S.optional(S.Number),
@@ -1878,424 +2367,6 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GetServiceEndpointResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountByResourceGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AccountResource" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "AccountResourceList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListModelingByAccountResourceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "ModelingResource" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "ModelingResourceList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.RecommendationsService/operations",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(51, __c6, 3)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(53, __c6, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceEndpointByAccountResourceRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "ServiceEndpointResource" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "ServiceEndpointResourceList",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(S.String),
-          frequency: S.optional(S.String),
-          size: S.optional(S.String),
-          inputData: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "ModelingCreateOrUpdateRequestProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          modelingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(59, __c7, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ModelingCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ModelingCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preAllocatedCapacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ServiceEndpointsCreateOrUpdateRequestProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          serviceEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(62, __c7, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServiceEndpointsCreateOrUpdateRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceEndpointsCreateOrUpdateResponseSystemData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-          systemData: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ServiceEndpointsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpointAuthentications: S.optional(__S(2, __c0, 2)),
-          cors: S.optional(__S(5, __c0, 5)),
-          reportsConnectionString: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateAccountRequestProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(66, __c8, 2)),
-          properties: S.optional(__S(67, __c8, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccountRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "UpdateAccountResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inputData: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "UpdateModelingRequestProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          modelingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(66, __c8, 2)),
-          properties: S.optional(__S(70, __c8, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateModelingRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "UpdateModelingResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          serviceEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(66, __c8, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-            code: 200,
-            apiVersion: "2022-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateServiceEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-          systemData: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateServiceEndpointResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

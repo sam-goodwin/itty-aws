@@ -441,8 +441,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -456,8 +456,8 @@ export const CheckAccountNameAvailability: API.OperationMethod<
   CheckAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CheckAccountNameAvailabilityResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CheckAccountNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetAccountResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const GetAccountQuotas: API.OperationMethod<
   GetAccountQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetAccountQuotasRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetAccountQuotasResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAccountQuotasRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetAccountQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const GetQuotas: API.OperationMethod<
   GetQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetQuotasRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetQuotasResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetQuotasRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AccountListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AccountListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const ListAccountQuotasByAccount: API.OperationMethod<
   ListAccountQuotasByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAccountQuotasByAccountRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<AccountQuotaListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListAccountQuotasByAccountRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<AccountQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -591,8 +591,8 @@ export const ListQuotasBySubscription: API.OperationMethod<
   ListQuotasBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListQuotasBySubscriptionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<QuotaListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListQuotasBySubscriptionRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<QuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -606,8 +606,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -617,25 +617,14 @@ export const UpdateAccount: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          regionalAffinity: S.optional(S.String),
-          scalableExecution: S.optional(S.String),
-          reporting: S.optional(S.String),
-          localAuth: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountPropertiesInput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -647,7 +636,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionalAffinity: S.optional(S.String),
+          scalableExecution: S.optional(S.String),
+          reporting: S.optional(S.String),
+          localAuth: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountPropertiesInput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -658,7 +678,13 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dashboardUri: S.optional(S.String),
@@ -669,21 +695,11 @@ function __c0(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -700,7 +716,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckAccountNameAvailabilityRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -712,7 +728,57 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas",
+            code: 200,
+            apiVersion: "2024-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListQuotasBySubscriptionRequest",
+      });
+    case 1:
+      return S.Array(__S(106, __c13, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(41, __c5, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaListResult" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(8, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2024-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccountRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -733,7 +799,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccountResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -748,19 +818,27 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -776,7 +854,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountQuotasRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
@@ -788,26 +870,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AccountFreeTrialProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(13, __c1, 5)),
+          freeTrial: S.optional(__S(88, __c11, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountQuotaProperties" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "GetAccountQuotasResponse" });
   }
 }
-function __c2(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -824,32 +906,40 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQuotasRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
           state: S.String,
         }),
       ).annotate({ identifier: "FreeTrialProperties" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(17, __c2, 1)),
+          freeTrial: S.optional(__S(104, __c13, 0)),
           offeringType: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaProperties" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(105, __c13, 1)),
         }),
       ).annotate({ identifier: "GetQuotasResponse" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -865,16 +955,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAccountByResourceGroupRequest",
       });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(72, __c9, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(21, __c2, 5),
+          value: __S(120, __c15, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountListResult" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -891,7 +989,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -911,15 +1009,19 @@ function __c3(j: number): any {
         identifier: "ListAccountQuotasByAccountRequest",
       });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(90, __c11, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(25, __c3, 1),
+          value: __S(137, __c17, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountQuotaListResult" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -930,7 +1032,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -939,74 +1041,27 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(28, __c3, 4)),
+          display: S.optional(__S(145, __c18, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(146, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(30, __c3, 6)),
+          value: S.optional(__S(147, __c18, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas",
-            code: 200,
-            apiVersion: "2024-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListQuotasBySubscriptionRequest",
-      });
-    case 1:
-      return S.Array(__S(19, __c2, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(33, __c4, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2024-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccountRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

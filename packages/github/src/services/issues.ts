@@ -2815,8 +2815,8 @@ export const addAssignees: API.OperationMethod<
   AddAssigneesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddAssigneesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(1537, __c48, 1) as any as S.Schema<AddAssigneesRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2835,8 @@ export const addBlockedByDependency: API.OperationMethod<
   AddBlockedByDependencyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<AddBlockedByDependencyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(2112, __c66, 0) as any as S.Schema<AddBlockedByDependencyRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2855,8 +2855,8 @@ export const addIssueFieldValues: API.OperationMethod<
   AddIssueFieldValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<AddIssueFieldValuesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AddIssueFieldValuesResponse>,
+  input: __S(2338, __c73, 2) as any as S.Schema<AddIssueFieldValuesRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<AddIssueFieldValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2870,8 +2870,8 @@ export const addLabels: API.OperationMethod<
   AddLabelsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<AddLabelsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<AddLabelsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<AddLabelsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<AddLabelsResponse>,
   errors: [NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2885,8 +2885,8 @@ export const addRelatesTo: API.OperationMethod<
   AddRelatesToError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<AddRelatesToRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(2528, __c79, 0) as any as S.Schema<AddRelatesToRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2900,8 +2900,8 @@ export const addSubIssue: API.OperationMethod<
   AddSubIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<AddSubIssueRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddSubIssueRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2915,8 +2915,8 @@ export const approveSuggestion: API.OperationMethod<
   ApproveSuggestionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ApproveSuggestionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IssueSuggestion>,
+  input: __S(32, __c1, 0) as any as S.Schema<ApproveSuggestionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<IssueSuggestion>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2930,8 +2930,8 @@ export const checkUserCanBeAssigned: API.OperationMethod<
   CheckUserCanBeAssignedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CheckUserCanBeAssignedRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CheckUserCanBeAssignedResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CheckUserCanBeAssignedRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CheckUserCanBeAssignedResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2945,8 @@ export const checkUserCanBeAssignedToIssue: API.OperationMethod<
   CheckUserCanBeAssignedToIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CheckUserCanBeAssignedToIssueRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CheckUserCanBeAssignedToIssueResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<CheckUserCanBeAssignedToIssueRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<CheckUserCanBeAssignedToIssueResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2962,8 +2962,8 @@ export type CreateError =
 /** Create an issue Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/articles/disabling-issues/), the API returns a `410 Gone` status. This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)." This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const create: API.OperationMethod<CreateRequest, Issue, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(46, __c5, 6) as any as S.Schema<CreateRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+    input: __S(195, __c6, 3) as any as S.Schema<CreateRequest>,
+    output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
     errors: [BadRequest, Forbidden, NotFound, Gone, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -2977,8 +2977,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateCommentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IssueComment>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateCommentRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<IssueComment>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2992,8 +2992,8 @@ export const createLabel: API.OperationMethod<
   CreateLabelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateLabelRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Label>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateLabelRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<Label>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3007,8 +3007,8 @@ export const createMilestone: API.OperationMethod<
   CreateMilestoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateMilestoneRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Milestone>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateMilestoneRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Milestone>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3022,8 +3022,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteCommentResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3037,8 +3037,8 @@ export const deleteIssueFieldValue: API.OperationMethod<
   DeleteIssueFieldValueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteIssueFieldValueRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteIssueFieldValueResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteIssueFieldValueRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteIssueFieldValueResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3052,8 +3052,8 @@ export const deleteLabel: API.OperationMethod<
   DeleteLabelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteLabelRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteLabelResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteLabelRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteLabelResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3067,8 +3067,8 @@ export const deleteMilestone: API.OperationMethod<
   DeleteMilestoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteMilestoneRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteMilestoneResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteMilestoneRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteMilestoneResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3082,8 +3082,8 @@ export const dismissSuggestion: API.OperationMethod<
   DismissSuggestionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DismissSuggestionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<IssueSuggestion>,
+  input: __S(448, __c14, 0) as any as S.Schema<DismissSuggestionRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<IssueSuggestion>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3093,8 +3093,8 @@ export type GetError = NotFound | Gone | GithubOpError;
 /** Get an issue The API returns a [`301 Moved Permanently` status](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was [transferred](https://docs.github.com/articles/transferring-an-issue-to-another-repository/) to another repository. If the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook. > [!NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const get: API.OperationMethod<GetRequest, Issue, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(55, __c6, 7) as any as S.Schema<GetRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+    input: __S(480, __c15, 0) as any as S.Schema<GetRequest>,
+    output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
     errors: [NotFound, Gone],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -3108,8 +3108,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetCommentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IssueComment>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetCommentRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<IssueComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3123,8 +3123,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetEventRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IssueEvent>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(591, __c18, 15) as any as S.Schema<IssueEvent>,
   errors: [Forbidden, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3134,8 +3134,8 @@ export type GetLabelError = NotFound | GithubOpError;
 /** Get a label Gets a label using the given name. */
 export const getLabel: API.OperationMethod<GetLabelRequest, Label, GetLabelError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(74, __c9, 2) as any as S.Schema<GetLabelRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<Label>,
+    input: __S(608, __c19, 0) as any as S.Schema<GetLabelRequest>,
+    output: __S(2432, __c76, 0) as any as S.Schema<Label>,
     errors: [NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -3149,8 +3149,8 @@ export const getMilestone: API.OperationMethod<
   GetMilestoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetMilestoneRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Milestone>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetMilestoneRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Milestone>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3164,8 +3164,8 @@ export const getParent: API.OperationMethod<
   GetParentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetParentRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetParentRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3175,8 @@ export type ListError = NotFound | UnprocessableEntity | GithubOpError;
 /** List issues assigned to the authenticated user List issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not necessarily assigned to you. > [!NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(77, __c9, 5) as any as S.Schema<ListRequest>,
-    output: __S(79, __c9, 7) as any as S.Schema<ListResponse>,
+    input: __S(704, __c22, 0) as any as S.Schema<ListRequest>,
+    output: __S(768, __c24, 0) as any as S.Schema<ListResponse>,
     errors: [NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -3190,8 +3190,8 @@ export const listAssignees: API.OperationMethod<
   ListAssigneesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListAssigneesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListAssigneesResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListAssigneesRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ListAssigneesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3205,8 +3205,8 @@ export const listComments: API.OperationMethod<
   ListCommentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListCommentsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListCommentsResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListCommentsRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ListCommentsResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3220,8 +3220,8 @@ export const listCommentsForRepo: API.OperationMethod<
   ListCommentsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListCommentsForRepoRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListCommentsForRepoResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListCommentsForRepoRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<ListCommentsForRepoResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3235,8 +3235,8 @@ export const listDependenciesBlockedBy: API.OperationMethod<
   ListDependenciesBlockedByError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListDependenciesBlockedByRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListDependenciesBlockedByResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListDependenciesBlockedByRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<ListDependenciesBlockedByResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3250,8 @@ export const listDependenciesBlocking: API.OperationMethod<
   ListDependenciesBlockingError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListDependenciesBlockingRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListDependenciesBlockingResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListDependenciesBlockingRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<ListDependenciesBlockingResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3265,8 @@ export const listEvents: API.OperationMethod<
   ListEventsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListEventsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListEventsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListEventsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ListEventsResponse>,
   errors: [Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3280,8 +3280,8 @@ export const listEventsForRepo: API.OperationMethod<
   ListEventsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListEventsForRepoRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListEventsForRepoResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListEventsForRepoRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ListEventsForRepoResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3295,8 +3295,8 @@ export const listEventsForTimeline: API.OperationMethod<
   ListEventsForTimelineError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListEventsForTimelineRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListEventsForTimelineResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListEventsForTimelineRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListEventsForTimelineResponse>,
   errors: [BadRequest, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3310,8 +3310,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListForAuthenticatedUserRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListForAuthenticatedUserResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3325,8 +3325,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListForOrgRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListForOrgResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListForOrgRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ListForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3340,8 +3340,8 @@ export const listForRepo: API.OperationMethod<
   ListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListForRepoRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListForRepoResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListForRepoRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ListForRepoResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3355,8 +3355,8 @@ export const listIssueFieldValuesForIssue: API.OperationMethod<
   ListIssueFieldValuesForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListIssueFieldValuesForIssueRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListIssueFieldValuesForIssueResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListIssueFieldValuesForIssueRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<ListIssueFieldValuesForIssueResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3370,8 +3370,8 @@ export const listLabelsForMilestone: API.OperationMethod<
   ListLabelsForMilestoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListLabelsForMilestoneRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListLabelsForMilestoneResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListLabelsForMilestoneRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<ListLabelsForMilestoneResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3385,8 +3385,8 @@ export const listLabelsForRepo: API.OperationMethod<
   ListLabelsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListLabelsForRepoRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListLabelsForRepoResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListLabelsForRepoRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<ListLabelsForRepoResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3400,8 +3400,8 @@ export const listLabelsOnIssue: API.OperationMethod<
   ListLabelsOnIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListLabelsOnIssueRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListLabelsOnIssueResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListLabelsOnIssueRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<ListLabelsOnIssueResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3415,8 +3415,8 @@ export const listMilestones: API.OperationMethod<
   ListMilestonesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListMilestonesRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListMilestonesResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListMilestonesRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<ListMilestonesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3430,8 +3430,8 @@ export const listRelatesTo: API.OperationMethod<
   ListRelatesToError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListRelatesToRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListRelatesToResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListRelatesToRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ListRelatesToResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3445,8 +3445,8 @@ export const listSubIssues: API.OperationMethod<
   ListSubIssuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListSubIssuesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListSubIssuesResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListSubIssuesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ListSubIssuesResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3460,8 +3460,8 @@ export const listSuggestions: API.OperationMethod<
   ListSuggestionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListSuggestionsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListSuggestionsResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListSuggestionsRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<ListSuggestionsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3471,8 +3471,8 @@ export type LockError = Forbidden | NotFound | Gone | UnprocessableEntity | Gith
 /** Lock an issue Users with push access can lock an issue or pull request's conversation. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)." */
 export const lock: API.OperationMethod<LockRequest, LockResponse, LockError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(115, __c14, 3) as any as S.Schema<LockRequest>,
-    output: __S(40, __c5, 0) as any as S.Schema<LockResponse>,
+    input: __S(1504, __c47, 0) as any as S.Schema<LockRequest>,
+    output: __S(128, __c4, 0) as any as S.Schema<LockResponse>,
     errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -3486,8 +3486,8 @@ export const pinComment: API.OperationMethod<
   PinCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<PinCommentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IssueComment>,
+  input: __S(1792, __c56, 0) as any as S.Schema<PinCommentRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<IssueComment>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3501,8 +3501,8 @@ export const removeAllLabels: API.OperationMethod<
   RemoveAllLabelsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<RemoveAllLabelsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<RemoveAllLabelsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<RemoveAllLabelsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RemoveAllLabelsResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3516,8 +3516,8 @@ export const removeAssignees: API.OperationMethod<
   RemoveAssigneesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<RemoveAssigneesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(1856, __c58, 0) as any as S.Schema<RemoveAssigneesRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3536,8 @@ export const removeDependencyBlockedBy: API.OperationMethod<
   RemoveDependencyBlockedByError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<RemoveDependencyBlockedByRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(1888, __c59, 0) as any as S.Schema<RemoveDependencyBlockedByRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [BadRequest, Forbidden, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3551,8 +3551,8 @@ export const removeLabel: API.OperationMethod<
   RemoveLabelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<RemoveLabelRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<RemoveLabelResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RemoveLabelRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<RemoveLabelResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3566,8 +3566,8 @@ export const removeRelatesTo: API.OperationMethod<
   RemoveRelatesToError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<RemoveRelatesToRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(1952, __c61, 0) as any as S.Schema<RemoveRelatesToRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [BadRequest, Forbidden, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3581,8 @@ export const removeSubIssue: API.OperationMethod<
   RemoveSubIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<RemoveSubIssueRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(1984, __c62, 0) as any as S.Schema<RemoveSubIssueRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3596,8 +3596,8 @@ export const reprioritizeSubIssue: API.OperationMethod<
   ReprioritizeSubIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ReprioritizeSubIssueRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Issue>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ReprioritizeSubIssueRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<Issue>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3616,8 +3616,8 @@ export const setIssueFieldValues: API.OperationMethod<
   SetIssueFieldValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<SetIssueFieldValuesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<SetIssueFieldValuesResponse>,
+  input: __S(2050, __c64, 2) as any as S.Schema<SetIssueFieldValuesRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<SetIssueFieldValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3631,8 +3631,8 @@ export const setLabels: API.OperationMethod<
   SetLabelsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<SetLabelsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<SetLabelsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<SetLabelsRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<SetLabelsResponse>,
   errors: [NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3646,8 +3646,8 @@ export const unlock: API.OperationMethod<
   UnlockError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UnlockRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UnlockResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<UnlockRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UnlockResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3661,8 +3661,8 @@ export const unpinComment: API.OperationMethod<
   UnpinCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UnpinCommentRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UnpinCommentResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<UnpinCommentRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UnpinCommentResponse>,
   errors: [Forbidden, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3676,8 +3676,8 @@ export const update: API.OperationMethod<
   UpdateError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<UpdateRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<UpdateResponse>,
+  input: __S(2212, __c69, 4) as any as S.Schema<UpdateRequest>,
+  output: __S(2225, __c69, 17) as any as S.Schema<UpdateResponse>,
   errors: [Forbidden, NotFound, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3691,8 +3691,8 @@ export const updateComment: API.OperationMethod<
   UpdateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdateCommentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IssueComment>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UpdateCommentRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<IssueComment>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3706,8 +3706,8 @@ export const updateLabel: API.OperationMethod<
   UpdateLabelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<UpdateLabelRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Label>,
+  input: __S(2272, __c71, 0) as any as S.Schema<UpdateLabelRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<Label>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3721,8 @@ export const updateMilestone: API.OperationMethod<
   UpdateMilestoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<UpdateMilestoneRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Milestone>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UpdateMilestoneRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Milestone>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3732,6 +3732,1141 @@ export const updateMilestone: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          sub_issue_id: S.Number,
+          replace_parent: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/sub_issues",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddSubIssueRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          suggestion_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ApproveSuggestionRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          issue_id: S.Number,
+          action: S.String,
+          state: S.String,
+          target_id: S.NullOr(S.Number),
+          target_value: S.NullOr(S.Unknown),
+          rationale: S.NullOr(S.String),
+          confidence: S.NullOr(S.String),
+          actor_id: S.NullOr(S.Number),
+          issue_event_id: S.NullOr(S.Number),
+          resolved_by: S.NullOr(S.Number),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "IssueSuggestion" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          assignee: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/assignees/{assignee}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CheckUserCanBeAssignedRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CheckUserCanBeAssignedResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          assignee: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckUserCanBeAssignedToIssueRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CheckUserCanBeAssignedToIssueResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field_id: S.Number,
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateRequestIssueFieldValuesItem",
+      });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          title: S.Unknown,
+          body: S.optional(S.String),
+          assignee: S.optional(S.NullOr(S.String)),
+          milestone: S.optional(S.NullOr(S.Unknown)),
+          labels: S.optional(__S(192, __c6, 0)),
+          assignees: S.optional(__S(1632, __c51, 0)),
+          issue_field_values: S.optional(__S(194, __c6, 2)),
+          type: S.optional(S.NullOr(S.String)),
+          parent_issue_id: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
+      ).annotate({ identifier: "CreateRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          body: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/comments",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateCommentRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          name: S.String,
+          color: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
+      ).annotate({ identifier: "CreateLabelRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          title: S.String,
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          due_on: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
+      ).annotate({ identifier: "CreateMilestoneRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCommentRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          issue_field_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIssueFieldValueRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/labels/{name}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteLabelRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          milestone_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteMilestoneRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          suggestion_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DismissSuggestionRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{issue_number}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetCommentRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          event_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/events/{event_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetEventRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          repository_url: S.String,
+          labels_url: S.String,
+          comments_url: S.String,
+          events_url: S.String,
+          html_url: S.String,
+          number: S.Number,
+          state: S.String,
+          state_reason: S.optional(S.NullOr(S.String)),
+          title: S.String,
+          body: S.optional(S.NullOr(S.String)),
+          user: S.NullOr(__S(1600, __c50, 0)),
+          labels: __S(576, __c18, 0),
+          assignee: S.NullOr(__S(1600, __c50, 0)),
+          assignees: S.optional(__S(1696, __c53, 0)),
+          milestone: S.NullOr(__S(1664, __c52, 0)),
+          locked: S.Boolean,
+          active_lock_reason: S.optional(S.NullOr(S.String)),
+          comments: S.Number,
+          pull_request: S.optional(__S(1728, __c54, 0)),
+          closed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          draft: S.optional(S.Boolean),
+          closed_by: S.optional(S.NullOr(__S(1600, __c50, 0))),
+          body_html: S.optional(S.String),
+          body_text: S.optional(S.String),
+          timeline_url: S.optional(S.String),
+          type: S.optional(S.NullOr(__S(1729, __c54, 1))),
+          repository: S.optional(__S(1733, __c54, 5)),
+          performed_via_github_app: S.optional(S.NullOr(__S(1634, __c51, 2))),
+          author_association: S.optional(S.String),
+          reactions: S.optional(__S(1635, __c51, 3)),
+          sub_issues_summary: S.optional(__S(1734, __c54, 6)),
+          parent_issue_url: S.optional(S.NullOr(S.String)),
+          pinned_comment: S.optional(S.NullOr(__S(1638, __c51, 6))),
+          issue_dependencies_summary: S.optional(__S(1735, __c54, 7)),
+          issue_field_values: S.optional(__S(1571, __c49, 3)),
+        }),
+      ).annotate({ identifier: "NullableIssue" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.NullOr(S.String),
+          color: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "IssueEventLabel" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pull: S.Boolean,
+          triage: S.Boolean,
+          push: S.Boolean,
+          maintain: S.Boolean,
+          admin: S.Boolean,
+        }),
+      ).annotate({ identifier: "TeamPermissions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          members_url: S.String,
+          name: S.String,
+          description: S.NullOr(S.String),
+          permission: S.String,
+          privacy: S.optional(S.String),
+          notification_setting: S.optional(S.String),
+          html_url: S.String,
+          repositories_url: S.String,
+          slug: S.String,
+          ldap_dn: S.optional(S.String),
+          type: S.String,
+          organization_id: S.optional(S.Number),
+          enterprise_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NullableTeamSimple" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          slug: S.String,
+          description: S.NullOr(S.String),
+          privacy: S.optional(S.String),
+          notification_setting: S.optional(S.String),
+          permission: S.String,
+          permissions: S.optional(__S(579, __c18, 3)),
+          url: S.String,
+          html_url: S.String,
+          members_url: S.String,
+          repositories_url: S.String,
+          type: S.String,
+          access_source: S.optional(S.String),
+          organization_id: S.optional(S.Number),
+          enterprise_id: S.optional(S.Number),
+          parent: S.NullOr(__S(580, __c18, 4)),
+        }),
+      ).annotate({ identifier: "Team" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          review_id: S.Number,
+          dismissal_message: S.NullOr(S.String),
+          dismissal_commit_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "IssueEventDismissedReview",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+        }),
+      ).annotate({ identifier: "IssueEventMilestone" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          id: S.Number,
+          project_url: S.String,
+          project_id: S.Number,
+          column_name: S.String,
+          previous_column_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueEventProjectCard" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          to: S.String,
+        }),
+      ).annotate({ identifier: "IssueEventRename" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          color: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IssueTypeWebhook" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          owner: __S(1600, __c50, 0),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          hooks_url: S.String,
+        }),
+      ).annotate({ identifier: "SimpleRepository" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          color: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "NullableIssueReferenceIssueType",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.Number,
+          title: S.String,
+          state: S.String,
+          state_reason: S.optional(S.NullOr(S.String)),
+          repository: __S(587, __c18, 11),
+          issue_type: S.NullOr(__S(588, __c18, 12)),
+        }),
+      ).annotate({ identifier: "NullableIssueReference" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          rationale: S.optional(S.NullOr(S.String)),
+          confidence: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "NullableIssueEventIntent" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          actor: S.NullOr(__S(1600, __c50, 0)),
+          event: S.String,
+          commit_id: S.NullOr(S.String),
+          commit_url: S.NullOr(S.String),
+          created_at: S.String,
+          issue: S.optional(S.NullOr(__S(577, __c18, 1))),
+          label: S.optional(__S(578, __c18, 2)),
+          assignee: S.optional(S.NullOr(__S(1600, __c50, 0))),
+          assigner: S.optional(S.NullOr(__S(1600, __c50, 0))),
+          review_requester: S.optional(S.NullOr(__S(1600, __c50, 0))),
+          requested_reviewer: S.optional(S.NullOr(__S(1600, __c50, 0))),
+          requested_team: S.optional(__S(581, __c18, 5)),
+          dismissed_review: S.optional(__S(582, __c18, 6)),
+          milestone: S.optional(__S(583, __c18, 7)),
+          project_card: S.optional(__S(584, __c18, 8)),
+          rename: S.optional(__S(585, __c18, 9)),
+          issue_type: S.optional(S.NullOr(__S(586, __c18, 10))),
+          prev_issue_type: S.optional(S.NullOr(__S(586, __c18, 10))),
+          sub_issue: S.optional(S.NullOr(__S(589, __c18, 13))),
+          parent_issue: S.optional(S.NullOr(__S(589, __c18, 13))),
+          blocked_by: S.optional(S.NullOr(__S(589, __c18, 13))),
+          blocking: S.optional(S.NullOr(__S(589, __c18, 13))),
+          intent: S.optional(S.NullOr(__S(590, __c18, 14))),
+          author_association: S.optional(S.String),
+          lock_reason: S.optional(S.NullOr(S.String)),
+          performed_via_github_app: S.optional(S.NullOr(__S(1634, __c51, 2))),
+        }),
+      ).annotate({ identifier: "IssueEvent" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels/{name}", code: 200 })),
+      ).annotate({ identifier: "GetLabelRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          milestone_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetMilestoneRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/parent",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetParentRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          labels: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          collab: S.optional(S.Boolean.pipe(T.Query())),
+          orgs: S.optional(S.Boolean.pipe(T.Query())),
+          owned: S.optional(S.Boolean.pipe(T.Query())),
+          pulls: S.optional(S.Boolean.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/issues", code: 200 })),
+      ).annotate({ identifier: "ListRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1761, __c55, 1));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(736, __c23, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/assignees", code: 200 })),
+      ).annotate({ identifier: "ListAssigneesRequest" });
+    case 1:
+      return S.suspend(() => __S(1696, __c53, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAssigneesResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/comments",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListCommentsRequest" });
+    case 1:
+      return S.suspend(() => __S(864, __c27, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListCommentsResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1638, __c51, 6));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments", code: 200 })),
+      ).annotate({
+        identifier: "ListCommentsForRepoRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(864, __c27, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListCommentsForRepoResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDependenciesBlockedByRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(736, __c23, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDependenciesBlockedByResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDependenciesBlockingRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListEventsRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() => __S(1025, __c32, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListEventsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/events", code: 200 })),
+      ).annotate({ identifier: "ListEventsForRepoRequest" });
+    case 1:
+      return S.Array(__S(591, __c18, 15));
+    case 2:
+      return S.suspend(() => __S(1057, __c33, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListEventsForRepoResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          exclude: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/timeline",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEventsForTimelineRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() => __S(1089, __c34, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListEventsForTimelineResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          labels: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/issues", code: 200 })),
+      ).annotate({
+        identifier: "ListForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          labels: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issues", code: 200 })),
+      ).annotate({ identifier: "ListForOrgRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          milestone: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          assignee: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          creator: S.optional(S.String.pipe(T.Query())),
+          mentioned: S.optional(S.String.pipe(T.Query())),
+          issue_field_values: S.optional(S.String.pipe(T.Query())),
+          labels: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
+      ).annotate({ identifier: "ListForRepoRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIssueFieldValuesForIssueRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          milestone_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}/labels",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLabelsForMilestoneRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2464, __c77, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListLabelsForMilestoneResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
+      ).annotate({ identifier: "ListLabelsForRepoRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/labels",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListLabelsOnIssueRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          state: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
+      ).annotate({ identifier: "ListMilestonesRequest" });
+    case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
+      return S.suspend(() => __S(1377, __c43, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListMilestonesResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/relates_to",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListRelatesToRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/sub_issues",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListSubIssuesRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          state: S.optional(S.String.pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListSuggestionsRequest" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() => __S(1473, __c46, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSuggestionsResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          lock_reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/lock",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "LockRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
@@ -3739,7 +4874,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           issue_number: S.Number.pipe(T.Label()),
-          assignees: S.optional(__S(0, __c0, 0)),
+          assignees: S.optional(__S(1536, __c48, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3748,7 +4883,41 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddAssigneesRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          color: S.String,
+        }),
+      ).annotate({
+        identifier: "IssueFieldValueSingleSelectOption",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          issue_field_id: S.Number,
+          issue_field_name: S.optional(S.String),
+          node_id: S.String,
+          data_type: S.String,
+          value: S.NullOr(S.Unknown),
+          single_select_option: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          multi_select_options: S.optional(S.NullOr(__S(1569, __c49, 1))),
+        }),
+      ).annotate({ identifier: "IssueFieldValue" });
+    case 3:
+      return S.Array(__S(1570, __c49, 2));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -3775,11 +4944,101 @@ function __c0(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(S.String),
+          checks: S.optional(S.String),
+          metadata: S.optional(S.String),
+          contents: S.optional(S.String),
+          deployments: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NullableIntegrationPermissions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          slug: S.optional(S.String),
+          node_id: S.String,
+          client_id: S.optional(S.String),
+          owner: S.Unknown,
+          name: S.String,
+          description: S.NullOr(S.String),
+          external_url: S.String,
+          html_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          permissions: __S(1633, __c51, 1),
+          events: __S(1632, __c51, 0),
+          installations_count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NullableIntegration" });
     case 3:
-      return S.Array(S.Unknown);
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          total_count: S.Number,
+          _1: S.Number.pipe(T.Body("+1")),
+          _1_2: S.Number.pipe(T.Body("-1")),
+          laugh: S.Number,
+          confused: S.Number,
+          heart: S.Number,
+          hooray: S.Number,
+          eyes: S.Number,
+          rocket: S.Number,
+        }),
+      ).annotate({ identifier: "ReactionRollup" });
     case 4:
-      return S.Array(__S(2, __c0, 2));
+      return S.suspend(() =>
+        S.Struct({
+          pinned_at: S.String,
+          pinned_by: S.NullOr(__S(1600, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "NullablePinnedIssueComment",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "NullableIssueCommentMinimized",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          body: S.optional(S.String),
+          body_text: S.optional(S.String),
+          body_html: S.optional(S.String),
+          html_url: S.String,
+          user: S.NullOr(__S(1600, __c50, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          issue_url: S.String,
+          author_association: S.optional(S.String),
+          performed_via_github_app: S.optional(S.NullOr(__S(1634, __c51, 2))),
+          reactions: S.optional(__S(1635, __c51, 3)),
+          pin: S.optional(S.NullOr(__S(1636, __c51, 4))),
+          minimized: S.optional(S.NullOr(__S(1637, __c51, 5))),
+        }),
+      ).annotate({ identifier: "NullableIssueComment" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -3791,7 +5050,7 @@ function __c0(j: number): any {
           state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(__S(2, __c0, 2)),
+          creator: S.NullOr(__S(1600, __c50, 0)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -3800,7 +5059,17 @@ function __c0(j: number): any {
           due_on: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "NullableMilestone" });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1600, __c50, 0));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           merged_at: S.optional(S.NullOr(S.String)),
@@ -3810,7 +5079,7 @@ function __c0(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "IssuePullRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -3823,11 +5092,7 @@ function __c0(j: number): any {
           is_enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IssueType" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -3838,7 +5103,7 @@ function __c1(j: number): any {
           html_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableLicenseSimple" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           admin: S.Boolean,
@@ -3848,9 +5113,7 @@ function __c1(j: number): any {
           maintain: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RepositoryPermissions" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           lexical_search_ok: S.optional(S.Boolean),
@@ -3859,17 +5122,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RepositoryCodeSearchIndexStatus",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(8, __c1, 0)),
+          license: S.NullOr(__S(1730, __c54, 2)),
           forks: S.Number,
-          permissions: S.optional(__S(9, __c1, 1)),
-          owner: __S(2, __c0, 2),
+          permissions: S.optional(__S(1731, __c54, 3)),
+          owner: __S(1600, __c50, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -3925,7 +5188,7 @@ function __c1(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(10, __c1, 2)),
+          topics: S.optional(__S(1632, __c51, 0)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -3959,60 +5222,10 @@ function __c1(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(11, __c1, 3)),
+          code_search_index_status: S.optional(__S(1732, __c54, 4)),
         }),
       ).annotate({ identifier: "Repository" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(S.String),
-          checks: S.optional(S.String),
-          metadata: S.optional(S.String),
-          contents: S.optional(S.String),
-          deployments: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NullableIntegrationPermissions",
-      });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          slug: S.optional(S.String),
-          node_id: S.String,
-          client_id: S.optional(S.String),
-          owner: S.Unknown,
-          name: S.String,
-          description: S.NullOr(S.String),
-          external_url: S.String,
-          html_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          permissions: __S(13, __c1, 5),
-          events: __S(10, __c1, 2),
-          installations_count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NullableIntegration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          total_count: S.Number,
-          _1: S.Number.pipe(T.Body("+1")),
-          _1_2: S.Number.pipe(T.Body("-1")),
-          laugh: S.Number,
-          confused: S.Number,
-          heart: S.Number,
-          hooray: S.Number,
-          eyes: S.Number,
-          rocket: S.Number,
-        }),
-      ).annotate({ identifier: "ReactionRollup" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -4020,45 +5233,7 @@ function __c2(j: number): any {
           percent_completed: S.Number,
         }),
       ).annotate({ identifier: "SubIssuesSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pinned_at: S.String,
-          pinned_by: S.NullOr(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "NullablePinnedIssueComment",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "NullableIssueCommentMinimized",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          body: S.optional(S.String),
-          body_text: S.optional(S.String),
-          body_html: S.optional(S.String),
-          html_url: S.String,
-          user: S.NullOr(__S(2, __c0, 2)),
-          created_at: S.String,
-          updated_at: S.String,
-          issue_url: S.String,
-          author_association: S.optional(S.String),
-          performed_via_github_app: S.optional(S.NullOr(__S(14, __c1, 6))),
-          reactions: S.optional(__S(15, __c1, 7)),
-          pin: S.optional(S.NullOr(__S(17, __c2, 1))),
-          minimized: S.optional(S.NullOr(__S(18, __c2, 2))),
-        }),
-      ).annotate({ identifier: "NullableIssueComment" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           blocked_by: S.Number,
@@ -4067,36 +5242,12 @@ function __c2(j: number): any {
           total_blocking: S.Number,
         }),
       ).annotate({ identifier: "IssueDependenciesSummary" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          color: S.String,
-        }),
-      ).annotate({
-        identifier: "IssueFieldValueSingleSelectOption",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          issue_field_id: S.Number,
-          issue_field_name: S.optional(S.String),
-          node_id: S.String,
-          data_type: S.String,
-          value: S.NullOr(S.Unknown),
-          single_select_option: S.optional(S.NullOr(__S(21, __c2, 5))),
-          multi_select_options: S.optional(S.NullOr(__S(22, __c2, 6))),
-        }),
-      ).annotate({ identifier: "IssueFieldValue" });
   }
 }
-function __c3(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4113,1122 +5264,40 @@ function __c3(j: number): any {
           state_reason: S.optional(S.NullOr(S.String)),
           title: S.String,
           body: S.optional(S.NullOr(S.String)),
-          user: S.NullOr(__S(2, __c0, 2)),
-          labels: __S(3, __c0, 3),
-          assignee: S.NullOr(__S(2, __c0, 2)),
-          assignees: S.optional(__S(4, __c0, 4)),
-          milestone: S.NullOr(__S(5, __c0, 5)),
+          user: S.NullOr(__S(1600, __c50, 0)),
+          labels: __S(1760, __c55, 0),
+          assignee: S.NullOr(__S(1600, __c50, 0)),
+          assignees: S.optional(__S(1696, __c53, 0)),
+          milestone: S.NullOr(__S(1664, __c52, 0)),
           locked: S.Boolean,
           active_lock_reason: S.optional(S.NullOr(S.String)),
           comments: S.Number,
-          pull_request: S.optional(__S(6, __c0, 6)),
+          pull_request: S.optional(__S(1728, __c54, 0)),
           closed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
           draft: S.optional(S.Boolean),
-          closed_by: S.optional(S.NullOr(__S(2, __c0, 2))),
+          closed_by: S.optional(S.NullOr(__S(1600, __c50, 0))),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
           timeline_url: S.optional(S.String),
-          type: S.optional(S.NullOr(__S(7, __c0, 7))),
-          repository: S.optional(__S(12, __c1, 4)),
-          performed_via_github_app: S.optional(S.NullOr(__S(14, __c1, 6))),
+          type: S.optional(S.NullOr(__S(1729, __c54, 1))),
+          repository: S.optional(__S(1733, __c54, 5)),
+          performed_via_github_app: S.optional(S.NullOr(__S(1634, __c51, 2))),
           author_association: S.optional(S.String),
-          reactions: S.optional(__S(15, __c1, 7)),
-          sub_issues_summary: S.optional(__S(16, __c2, 0)),
+          reactions: S.optional(__S(1635, __c51, 3)),
+          sub_issues_summary: S.optional(__S(1734, __c54, 6)),
           parent_issue_url: S.optional(S.NullOr(S.String)),
-          pinned_comment: S.optional(S.NullOr(__S(19, __c2, 3))),
-          issue_dependencies_summary: S.optional(__S(20, __c2, 4)),
-          issue_field_values: S.optional(__S(24, __c3, 0)),
+          pinned_comment: S.optional(S.NullOr(__S(1638, __c51, 6))),
+          issue_dependencies_summary: S.optional(__S(1735, __c54, 7)),
+          issue_field_values: S.optional(__S(1571, __c49, 3)),
         }),
       ).annotate({ identifier: "Issue" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          issue_id: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddBlockedByDependencyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field_id: S.Number,
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "AddIssueFieldValuesRequestIssueFieldValuesItem",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          issue_field_values: S.optional(__S(28, __c3, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddIssueFieldValuesRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddIssueFieldValuesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/labels",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "AddLabelsRequest" });
   }
 }
-function __c4(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          name: S.String,
-          description: S.NullOr(S.String),
-          color: S.String,
-          default: S.Boolean,
-          archived_at: S.NullOr(S.String),
-          archived_by: S.NullOr(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddLabelsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          issue_id: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/relates_to",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "AddRelatesToRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          sub_issue_id: S.Number,
-          replace_parent: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/sub_issues",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "AddSubIssueRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          suggestion_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ApproveSuggestionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          issue_id: S.Number,
-          action: S.String,
-          state: S.String,
-          target_id: S.NullOr(S.Number),
-          target_value: S.NullOr(S.Unknown),
-          rationale: S.NullOr(S.String),
-          confidence: S.NullOr(S.String),
-          actor_id: S.NullOr(S.Number),
-          issue_event_id: S.NullOr(S.Number),
-          resolved_by: S.NullOr(S.Number),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "IssueSuggestion" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          assignee: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/assignees/{assignee}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CheckUserCanBeAssignedRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckUserCanBeAssignedResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          assignee: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckUserCanBeAssignedToIssueRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckUserCanBeAssignedToIssueResponse",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field_id: S.Number,
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateRequestIssueFieldValuesItem",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          title: S.Unknown,
-          body: S.optional(S.String),
-          assignee: S.optional(S.NullOr(S.String)),
-          milestone: S.optional(S.NullOr(S.Unknown)),
-          labels: S.optional(__S(43, __c5, 3)),
-          assignees: S.optional(__S(10, __c1, 2)),
-          issue_field_values: S.optional(__S(45, __c5, 5)),
-          type: S.optional(S.NullOr(S.String)),
-          parent_issue_id: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
-      ).annotate({ identifier: "CreateRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          body: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/comments",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateCommentRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          name: S.String,
-          color: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
-      ).annotate({ identifier: "CreateLabelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          title: S.String,
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          due_on: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
-      ).annotate({ identifier: "CreateMilestoneRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCommentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          issue_field_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIssueFieldValueRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/labels/{name}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteLabelRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          milestone_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteMilestoneRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          suggestion_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DismissSuggestionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/{issue_number}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/comments/{comment_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetCommentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          event_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/events/{event_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetEventRequest" });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          repository_url: S.String,
-          labels_url: S.String,
-          comments_url: S.String,
-          events_url: S.String,
-          html_url: S.String,
-          number: S.Number,
-          state: S.String,
-          state_reason: S.optional(S.NullOr(S.String)),
-          title: S.String,
-          body: S.optional(S.NullOr(S.String)),
-          user: S.NullOr(__S(2, __c0, 2)),
-          labels: __S(58, __c7, 2),
-          assignee: S.NullOr(__S(2, __c0, 2)),
-          assignees: S.optional(__S(4, __c0, 4)),
-          milestone: S.NullOr(__S(5, __c0, 5)),
-          locked: S.Boolean,
-          active_lock_reason: S.optional(S.NullOr(S.String)),
-          comments: S.Number,
-          pull_request: S.optional(__S(6, __c0, 6)),
-          closed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          draft: S.optional(S.Boolean),
-          closed_by: S.optional(S.NullOr(__S(2, __c0, 2))),
-          body_html: S.optional(S.String),
-          body_text: S.optional(S.String),
-          timeline_url: S.optional(S.String),
-          type: S.optional(S.NullOr(__S(7, __c0, 7))),
-          repository: S.optional(__S(12, __c1, 4)),
-          performed_via_github_app: S.optional(S.NullOr(__S(14, __c1, 6))),
-          author_association: S.optional(S.String),
-          reactions: S.optional(__S(15, __c1, 7)),
-          sub_issues_summary: S.optional(__S(16, __c2, 0)),
-          parent_issue_url: S.optional(S.NullOr(S.String)),
-          pinned_comment: S.optional(S.NullOr(__S(19, __c2, 3))),
-          issue_dependencies_summary: S.optional(__S(20, __c2, 4)),
-          issue_field_values: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "NullableIssue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.NullOr(S.String),
-          color: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "IssueEventLabel" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pull: S.Boolean,
-          triage: S.Boolean,
-          push: S.Boolean,
-          maintain: S.Boolean,
-          admin: S.Boolean,
-        }),
-      ).annotate({ identifier: "TeamPermissions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          members_url: S.String,
-          name: S.String,
-          description: S.NullOr(S.String),
-          permission: S.String,
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          html_url: S.String,
-          repositories_url: S.String,
-          slug: S.String,
-          ldap_dn: S.optional(S.String),
-          type: S.String,
-          organization_id: S.optional(S.Number),
-          enterprise_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NullableTeamSimple" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          slug: S.String,
-          description: S.NullOr(S.String),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          permission: S.String,
-          permissions: S.optional(__S(61, __c7, 5)),
-          url: S.String,
-          html_url: S.String,
-          members_url: S.String,
-          repositories_url: S.String,
-          type: S.String,
-          access_source: S.optional(S.String),
-          organization_id: S.optional(S.Number),
-          enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "Team" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          review_id: S.Number,
-          dismissal_message: S.NullOr(S.String),
-          dismissal_commit_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "IssueEventDismissedReview",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-        }),
-      ).annotate({ identifier: "IssueEventMilestone" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          id: S.Number,
-          project_url: S.String,
-          project_id: S.Number,
-          column_name: S.String,
-          previous_column_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueEventProjectCard" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.String,
-          to: S.String,
-        }),
-      ).annotate({ identifier: "IssueEventRename" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          color: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IssueTypeWebhook" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          owner: __S(2, __c0, 2),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          hooks_url: S.String,
-        }),
-      ).annotate({ identifier: "SimpleRepository" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          color: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "NullableIssueReferenceIssueType",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.Number,
-          title: S.String,
-          state: S.String,
-          state_reason: S.optional(S.NullOr(S.String)),
-          repository: __S(69, __c8, 5),
-          issue_type: S.NullOr(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "NullableIssueReference" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rationale: S.optional(S.NullOr(S.String)),
-          confidence: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "NullableIssueEventIntent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          url: S.String,
-          actor: S.NullOr(__S(2, __c0, 2)),
-          event: S.String,
-          commit_id: S.NullOr(S.String),
-          commit_url: S.NullOr(S.String),
-          created_at: S.String,
-          issue: S.optional(S.NullOr(__S(59, __c7, 3))),
-          label: S.optional(__S(60, __c7, 4)),
-          assignee: S.optional(S.NullOr(__S(2, __c0, 2))),
-          assigner: S.optional(S.NullOr(__S(2, __c0, 2))),
-          review_requester: S.optional(S.NullOr(__S(2, __c0, 2))),
-          requested_reviewer: S.optional(S.NullOr(__S(2, __c0, 2))),
-          requested_team: S.optional(__S(63, __c7, 7)),
-          dismissed_review: S.optional(__S(64, __c8, 0)),
-          milestone: S.optional(__S(65, __c8, 1)),
-          project_card: S.optional(__S(66, __c8, 2)),
-          rename: S.optional(__S(67, __c8, 3)),
-          issue_type: S.optional(S.NullOr(__S(68, __c8, 4))),
-          prev_issue_type: S.optional(S.NullOr(__S(68, __c8, 4))),
-          sub_issue: S.optional(S.NullOr(__S(71, __c8, 7))),
-          parent_issue: S.optional(S.NullOr(__S(71, __c8, 7))),
-          blocked_by: S.optional(S.NullOr(__S(71, __c8, 7))),
-          blocking: S.optional(S.NullOr(__S(71, __c8, 7))),
-          intent: S.optional(S.NullOr(__S(72, __c9, 0))),
-          author_association: S.optional(S.String),
-          lock_reason: S.optional(S.NullOr(S.String)),
-          performed_via_github_app: S.optional(S.NullOr(__S(14, __c1, 6))),
-        }),
-      ).annotate({ identifier: "IssueEvent" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels/{name}", code: 200 })),
-      ).annotate({ identifier: "GetLabelRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          milestone_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetMilestoneRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/parent",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetParentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          labels: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          collab: S.optional(S.Boolean.pipe(T.Query())),
-          orgs: S.optional(S.Boolean.pipe(T.Query())),
-          owned: S.optional(S.Boolean.pipe(T.Query())),
-          pulls: S.optional(S.Boolean.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/issues", code: 200 })),
-      ).annotate({ identifier: "ListRequest" });
-    case 6:
-      return S.Array(__S(25, __c3, 1));
-    case 7:
-      return S.suspend(() => __S(78, __c9, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListResponse",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/assignees", code: 200 })),
-      ).annotate({ identifier: "ListAssigneesRequest" });
-    case 1:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAssigneesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/comments",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListCommentsRequest" });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
-      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListCommentsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/comments", code: 200 })),
-      ).annotate({
-        identifier: "ListCommentsForRepoRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListCommentsForRepoResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDependenciesBlockedByRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(78, __c9, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDependenciesBlockedByResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDependenciesBlockingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListEventsRequest" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() => __S(91, __c11, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListEventsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues/events", code: 200 })),
-      ).annotate({ identifier: "ListEventsForRepoRequest" });
-    case 6:
-      return S.Array(__S(73, __c9, 1));
-    case 7:
-      return S.suspend(() => __S(94, __c11, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListEventsForRepoResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          exclude: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/timeline",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEventsForTimelineRequest",
-      });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() => __S(97, __c12, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListEventsForTimelineResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          labels: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/issues", code: 200 })),
-      ).annotate({
-        identifier: "ListForAuthenticatedUserRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          labels: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issues", code: 200 })),
-      ).annotate({ identifier: "ListForOrgRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          milestone: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          assignee: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          creator: S.optional(S.String.pipe(T.Query())),
-          mentioned: S.optional(S.String.pipe(T.Query())),
-          issue_field_values: S.optional(S.String.pipe(T.Query())),
-          labels: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
-      ).annotate({ identifier: "ListForRepoRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIssueFieldValuesForIssueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          milestone_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/milestones/{milestone_number}/labels",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLabelsForMilestoneRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListLabelsForMilestoneResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
-      ).annotate({ identifier: "ListLabelsForRepoRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/labels",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListLabelsOnIssueRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
-      ).annotate({ identifier: "ListMilestonesRequest" });
-    case 4:
-      return S.Array(__S(5, __c0, 5));
-    case 5:
-      return S.suspend(() => __S(108, __c13, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListMilestonesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/relates_to",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListRelatesToRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/sub_issues",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListSubIssuesRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/suggestions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListSuggestionsRequest" });
-    case 1:
-      return S.Array(__S(38, __c4, 6));
-    case 2:
-      return S.suspend(() => __S(113, __c14, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSuggestionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          issue_number: S.Number.pipe(T.Label()),
-          lock_reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/repos/{owner}/{repo}/issues/{issue_number}/lock",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "LockRequest" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5242,7 +5311,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PinCommentRequest" });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5256,13 +5329,17 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveAllLabelsRequest" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           issue_number: S.Number.pipe(T.Label()),
-          assignees: S.optional(__S(10, __c1, 2)),
+          assignees: S.optional(__S(1632, __c51, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5271,7 +5348,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveAssigneesRequest" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5290,7 +5371,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5307,7 +5388,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveLabelRequest" });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5322,7 +5407,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveRelatesToRequest" });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5337,7 +5426,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveSubIssueRequest" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5356,7 +5449,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ReprioritizeSubIssueRequest",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           field_id: S.Number,
@@ -5365,15 +5462,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SetIssueFieldValuesRequestIssueFieldValuesItem",
       });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(2048, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           issue_number: S.Number.pipe(T.Label()),
-          issue_field_values: S.optional(__S(125, __c15, 5)),
+          issue_field_values: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5384,7 +5481,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SetIssueFieldValuesRequest",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5401,7 +5502,28 @@ function __c15(j: number): any {
       ).annotate({ identifier: "SetLabelsRequest" });
   }
 }
-function __c16(j: number): any {
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          issue_id: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddBlockedByDependencyRequest",
+      });
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5417,7 +5539,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnlockRequest" });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5431,11 +5557,15 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnpinCommentRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(S.Unknown);
     case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           field_id: S.Number,
@@ -5447,9 +5577,9 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateRequestIssueFieldValuesItem",
       });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2210, __c69, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5462,9 +5592,9 @@ function __c16(j: number): any {
           state_reason: S.optional(S.NullOr(S.String)),
           duplicate_issue_id: S.optional(S.Number),
           milestone: S.optional(S.NullOr(S.Unknown)),
-          labels: S.optional(__S(130, __c16, 2)),
-          assignees: S.optional(__S(131, __c16, 3)),
-          issue_field_values: S.optional(__S(133, __c16, 5)),
+          labels: S.optional(__S(2208, __c69, 0)),
+          assignees: S.optional(__S(2209, __c69, 1)),
+          issue_field_values: S.optional(__S(2211, __c69, 3)),
           type: S.optional(S.NullOr(S.Unknown)),
         }).pipe(
           T.Http({
@@ -5474,13 +5604,9 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRequest" });
-    case 7:
+    case 5:
       return S.Array(S.Unknown);
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -5493,9 +5619,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSuggestionsTypeItem",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(2214, __c69, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           field_id: S.optional(S.Number),
@@ -5509,9 +5635,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSuggestionsIssueFieldValuesItem",
       });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(2216, __c69, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5524,9 +5650,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSuggestionsLabelsItem",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(2218, __c69, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           login: S.optional(S.String),
@@ -5539,13 +5665,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSuggestionsAssigneesItem",
       });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(2220, __c69, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -5560,21 +5682,21 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSuggestionsStateItem",
       });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
+    case 15:
+      return S.Array(__S(2222, __c69, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(137, __c17, 1)),
-          issue_field_values: S.optional(__S(139, __c17, 3)),
-          labels: S.optional(__S(141, __c17, 5)),
-          assignees: S.optional(__S(143, __c17, 7)),
-          state: S.optional(__S(145, __c18, 1)),
+          type: S.optional(__S(2215, __c69, 7)),
+          issue_field_values: S.optional(__S(2217, __c69, 9)),
+          labels: S.optional(__S(2219, __c69, 11)),
+          assignees: S.optional(__S(2221, __c69, 13)),
+          state: S.optional(__S(2223, __c69, 15)),
         }),
       ).annotate({
         identifier: "UpdateResponseSuggestions",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -5590,37 +5712,41 @@ function __c18(j: number): any {
           state_reason: S.optional(S.NullOr(S.String)),
           title: S.String,
           body: S.optional(S.NullOr(S.String)),
-          user: S.NullOr(__S(2, __c0, 2)),
-          labels: __S(135, __c16, 7),
-          assignee: S.NullOr(__S(2, __c0, 2)),
-          assignees: S.optional(__S(4, __c0, 4)),
-          milestone: S.NullOr(__S(5, __c0, 5)),
+          user: S.NullOr(__S(1600, __c50, 0)),
+          labels: __S(2213, __c69, 5),
+          assignee: S.NullOr(__S(1600, __c50, 0)),
+          assignees: S.optional(__S(1696, __c53, 0)),
+          milestone: S.NullOr(__S(1664, __c52, 0)),
           locked: S.Boolean,
           active_lock_reason: S.optional(S.NullOr(S.String)),
           comments: S.Number,
-          pull_request: S.optional(__S(6, __c0, 6)),
+          pull_request: S.optional(__S(1728, __c54, 0)),
           closed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
           draft: S.optional(S.Boolean),
-          closed_by: S.optional(S.NullOr(__S(2, __c0, 2))),
+          closed_by: S.optional(S.NullOr(__S(1600, __c50, 0))),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
           timeline_url: S.optional(S.String),
-          type: S.optional(S.NullOr(__S(7, __c0, 7))),
-          repository: S.optional(__S(12, __c1, 4)),
-          performed_via_github_app: S.optional(S.NullOr(__S(14, __c1, 6))),
+          type: S.optional(S.NullOr(__S(1729, __c54, 1))),
+          repository: S.optional(__S(1733, __c54, 5)),
+          performed_via_github_app: S.optional(S.NullOr(__S(1634, __c51, 2))),
           author_association: S.optional(S.String),
-          reactions: S.optional(__S(15, __c1, 7)),
-          sub_issues_summary: S.optional(__S(16, __c2, 0)),
+          reactions: S.optional(__S(1635, __c51, 3)),
+          sub_issues_summary: S.optional(__S(1734, __c54, 6)),
           parent_issue_url: S.optional(S.NullOr(S.String)),
-          pinned_comment: S.optional(S.NullOr(__S(19, __c2, 3))),
-          issue_dependencies_summary: S.optional(__S(20, __c2, 4)),
-          issue_field_values: S.optional(__S(24, __c3, 0)),
-          suggestions: S.optional(__S(146, __c18, 2)),
+          pinned_comment: S.optional(S.NullOr(__S(1638, __c51, 6))),
+          issue_dependencies_summary: S.optional(__S(1735, __c54, 7)),
+          issue_field_values: S.optional(__S(1571, __c49, 3)),
+          suggestions: S.optional(__S(2224, __c69, 16)),
         }),
       ).annotate({ identifier: "UpdateResponse" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5635,7 +5761,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCommentRequest" });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5647,7 +5777,11 @@ function __c18(j: number): any {
           archived: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/labels/{name}", code: 200 })),
       ).annotate({ identifier: "UpdateLabelRequest" });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -5667,7 +5801,116 @@ function __c18(j: number): any {
       ).annotate({ identifier: "UpdateMilestoneRequest" });
   }
 }
-
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_id: S.Number,
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "AddIssueFieldValuesRequestIssueFieldValuesItem",
+      });
+    case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          issue_field_values: S.optional(__S(2337, __c73, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddIssueFieldValuesRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1571, __c49, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddIssueFieldValuesResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/labels",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddLabelsRequest" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          url: S.String,
+          name: S.String,
+          description: S.NullOr(S.String),
+          color: S.String,
+          default: S.Boolean,
+          archived_at: S.NullOr(S.String),
+          archived_by: S.NullOr(__S(1600, __c50, 0)),
+        }),
+      ).annotate({ identifier: "Label" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2432, __c76, 0));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2464, __c77, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddLabelsResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          issue_number: S.Number.pipe(T.Label()),
+          issue_id: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/issues/{issue_number}/relates_to",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddRelatesToRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

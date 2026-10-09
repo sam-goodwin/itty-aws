@@ -409,8 +409,8 @@ export const copyBackupToRegion: API.OperationMethod<
   CopyBackupToRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CopyBackupToRegionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CopyBackupToRegionResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CopyBackupToRegionRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<CopyBackupToRegionResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -444,8 +444,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateClusterRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateClusterResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<CreateClusterResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -478,8 +478,8 @@ export const createHsm: API.OperationMethod<
   CreateHsmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateHsmRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateHsmResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateHsmRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<CreateHsmResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -512,8 +512,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteBackupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteBackupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteBackupResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -546,8 +546,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -581,8 +581,8 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteHsmRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteHsmResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteHsmRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteHsmResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -615,8 +615,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -655,8 +655,8 @@ export const describeBackups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DescribeBackupsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DescribeBackupsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DescribeBackupsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DescribeBackupsResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -700,8 +700,8 @@ export const describeClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DescribeClustersRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeClustersResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DescribeClustersRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DescribeClustersResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -737,8 +737,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -772,8 +772,8 @@ export const initializeCluster: API.OperationMethod<
   InitializeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<InitializeClusterRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<InitializeClusterResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<InitializeClusterRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<InitializeClusterResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -812,8 +812,8 @@ export const listTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListTagsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListTagsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListTagsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListTagsResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -850,8 +850,8 @@ export const modifyBackupAttributes: API.OperationMethod<
   ModifyBackupAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ModifyBackupAttributesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ModifyBackupAttributesResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ModifyBackupAttributesRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ModifyBackupAttributesResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -882,8 +882,8 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ModifyClusterRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ModifyClusterResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ModifyClusterRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<ModifyClusterResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -928,8 +928,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -962,8 +962,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<RestoreBackupResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RestoreBackupResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -996,8 +996,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -1031,8 +1031,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -1050,22 +1050,272 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
+      return S.suspend(() =>
+        S.Struct({ BackupId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteBackupRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupId: S.String,
+          BackupArn: S.optional(S.String),
+          BackupState: S.optional(S.String),
+          ClusterId: S.optional(S.String),
+          CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CopyTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NeverExpires: S.optional(S.Boolean),
+          SourceRegion: S.optional(S.String),
+          SourceBackup: S.optional(S.String),
+          SourceCluster: S.optional(S.String),
+          DeleteTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TagList: S.optional(__S(169, __c21, 1)),
+          HsmType: S.optional(S.String),
+          Mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Backup" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Backup: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "DeleteBackupResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClusterId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteClusterRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterId: S.String,
+          HsmId: S.optional(S.String),
+          EniId: S.optional(S.String),
+          EniIp: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteHsmRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ HsmId: S.optional(S.String) })).annotate({
+        identifier: "DeleteHsmResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeleteResourcePolicyResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          Filters: S.optional(__S(64, __c8, 0)),
+          Shared: S.optional(S.Boolean),
+          SortAscending: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeBackupsRequest" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Backups: S.optional(__S(57, __c7, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeBackupsResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(200, __c25, 0).pipe(S.optional));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(64, __c8, 0)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeClustersRequest" });
+    case 1:
+      return S.Array(__S(188, __c23, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Clusters: S.optional(__S(73, __c9, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeClustersResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
+        identifier: "GetResourcePolicyResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClusterId: S.String, SignedCert: S.String, TrustAnchor: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "InitializeClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ State: S.optional(S.String), StateMessage: S.optional(S.String) }),
+      ).annotate({
+        identifier: "InitializeClusterResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceId: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTagsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TagList: __S(169, __c21, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTagsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BackupId: S.String, NeverExpires: S.Boolean }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ModifyBackupAttributesRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
+      return S.suspend(() => S.Struct({ Backup: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "ModifyBackupAttributesResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HsmType: S.optional(S.String),
+          BackupRetentionPolicy: S.optional(__S(184, __c23, 0)),
+          ClusterId: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ModifyClusterRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BackupId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "RestoreBackupRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, TagList: __S(169, __c21, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, TagKeyList: __S(200, __c25, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DestinationRegion: S.String,
           BackupId: S.String,
-          TagList: S.optional(__S(1, __c0, 1)),
+          TagList: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CopyBackupToRegionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1074,51 +1324,48 @@ function __c0(j: number): any {
           SourceCluster: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationBackup" });
-    case 4:
-      return S.suspend(() => S.Struct({ DestinationBackup: S.optional(__S(3, __c0, 3)) })).annotate(
-        {
-          identifier: "CopyBackupToRegionResponse",
-        },
-      );
-    case 5:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "BackupRetentionPolicy" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+        S.Struct({ DestinationBackup: S.optional(__S(161, __c20, 1)) }),
+      ).annotate({
+        identifier: "CopyBackupToRegionResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          BackupRetentionPolicy: S.optional(__S(5, __c0, 5)),
+          BackupRetentionPolicy: S.optional(__S(184, __c23, 0)),
           HsmType: S.String,
           SourceBackupId: S.optional(S.String),
-          SubnetIds: __S(6, __c0, 6),
+          SubnetIds: __S(200, __c25, 0),
           NetworkType: S.optional(S.String),
-          TagList: S.optional(__S(1, __c0, 1)),
+          TagList: S.optional(__S(169, __c21, 1)),
           Mode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateClusterRequest" });
   }
 }
-function __c1(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          AvailabilityZone: S.optional(S.String),
-          ClusterId: S.optional(S.String),
-          SubnetId: S.optional(S.String),
-          EniId: S.optional(S.String),
-          EniIp: S.optional(S.String),
-          EniIpV6: S.optional(S.String),
-          HsmId: S.String,
-          HsmType: S.optional(S.String),
-          State: S.optional(S.String),
-          StateMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hsm" });
+        S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "BackupRetentionPolicy" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
@@ -1135,10 +1382,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BackupPolicy: S.optional(S.String),
-          BackupRetentionPolicy: S.optional(__S(5, __c0, 5)),
+          BackupRetentionPolicy: S.optional(__S(184, __c23, 0)),
           ClusterId: S.optional(S.String),
           CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Hsms: S.optional(__S(9, __c1, 1)),
+          Hsms: S.optional(__S(185, __c23, 1)),
           HsmType: S.optional(S.String),
           HsmTypeRollbackExpiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PreCoPassword: S.optional(S.String),
@@ -1146,19 +1393,52 @@ function __c1(j: number): any {
           SourceBackupId: S.optional(S.String),
           State: S.optional(S.String),
           StateMessage: S.optional(S.String),
-          SubnetMapping: S.optional(__S(10, __c1, 2)),
+          SubnetMapping: S.optional(__S(186, __c23, 2)),
           VpcId: S.optional(S.String),
           NetworkType: S.optional(S.String),
-          Certificates: S.optional(__S(11, __c1, 3)),
-          TagList: S.optional(__S(1, __c0, 1)),
+          Certificates: S.optional(__S(187, __c23, 3)),
+          TagList: S.optional(__S(169, __c21, 1)),
           Mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cluster" });
-    case 5:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(12, __c1, 4)) })).annotate({
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(188, __c23, 4)) })).annotate({
         identifier: "CreateClusterResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZone: S.optional(S.String),
+          ClusterId: S.optional(S.String),
+          SubnetId: S.optional(S.String),
+          EniId: S.optional(S.String),
+          EniIp: S.optional(S.String),
+          EniIpV6: S.optional(S.String),
+          HsmId: S.String,
+          HsmType: S.optional(S.String),
+          State: S.optional(S.String),
+          StateMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hsm" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String,
@@ -1166,205 +1446,12 @@ function __c1(j: number): any {
           IpAddress: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHsmRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ Hsm: S.optional(__S(8, __c1, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Hsm: S.optional(__S(208, __c26, 0)) })).annotate({
         identifier: "CreateHsmResponse",
       });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ BackupId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteBackupRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BackupId: S.String,
-          BackupArn: S.optional(S.String),
-          BackupState: S.optional(S.String),
-          ClusterId: S.optional(S.String),
-          CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CopyTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          NeverExpires: S.optional(S.Boolean),
-          SourceRegion: S.optional(S.String),
-          SourceBackup: S.optional(S.String),
-          SourceCluster: S.optional(S.String),
-          DeleteTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TagList: S.optional(__S(1, __c0, 1)),
-          HsmType: S.optional(S.String),
-          Mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Backup" });
-    case 2:
-      return S.suspend(() => S.Struct({ Backup: S.optional(__S(17, __c2, 1)) })).annotate({
-        identifier: "DeleteBackupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ClusterId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteClusterRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterId: S.String,
-          HsmId: S.optional(S.String),
-          EniId: S.optional(S.String),
-          EniIp: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DeleteHsmRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ HsmId: S.optional(S.String) })).annotate({
-        identifier: "DeleteHsmResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(6, __c0, 6).pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(24, __c3, 0)),
-          Shared: S.optional(S.Boolean),
-          SortAscending: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DescribeBackupsRequest" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Backups: S.optional(__S(26, __c3, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "DescribeBackupsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(24, __c3, 0)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DescribeClustersRequest" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Clusters: S.optional(__S(29, __c3, 5)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "DescribeClustersResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetResourcePolicyRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ClusterId: S.String, SignedCert: S.String, TrustAnchor: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "InitializeClusterRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ State: S.optional(S.String), StateMessage: S.optional(S.String) }),
-      ).annotate({
-        identifier: "InitializeClusterResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceId: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListTagsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ TagList: __S(1, __c0, 1), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTagsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ BackupId: S.String, NeverExpires: S.Boolean }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ModifyBackupAttributesRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Backup: S.optional(__S(17, __c2, 1)) })).annotate({
-        identifier: "ModifyBackupAttributesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          HsmType: S.optional(S.String),
-          BackupRetentionPolicy: S.optional(__S(5, __c0, 5)),
-          ClusterId: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ModifyClusterRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ BackupId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "RestoreBackupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagList: __S(1, __c0, 1) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagKeyList: __S(6, __c0, 6) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

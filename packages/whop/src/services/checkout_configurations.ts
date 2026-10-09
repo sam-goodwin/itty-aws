@@ -673,7 +673,7 @@ export const createCheckoutConfiguration: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4, __c0, 4) as any as S.Schema<CreateCheckoutConfigurationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCheckoutConfigurationResponse>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateCheckoutConfigurationResponse>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -687,8 +687,8 @@ export const deleteCheckoutConfiguration: API.OperationMethod<
   DeleteCheckoutConfigurationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteCheckoutConfigurationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteCheckoutConfigurationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteCheckoutConfigurationRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteCheckoutConfigurationResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -702,8 +702,8 @@ export const getCheckoutConfiguration: API.OperationMethod<
   GetCheckoutConfigurationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetCheckoutConfigurationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetCheckoutConfigurationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCheckoutConfigurationRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetCheckoutConfigurationResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -719,8 +719,8 @@ export const listCheckoutConfigurations: API.PaginatedOperationMethod<
   ListCheckoutConfigurationsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<ListCheckoutConfigurationsRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListCheckoutConfigurationsResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListCheckoutConfigurationsRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListCheckoutConfigurationsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -807,32 +807,53 @@ function __c0(j: number): any {
         identifier: "CreateCheckoutConfigurationRequest",
       });
     case 5:
-      return S.Array(S.String);
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(5, __c0, 5)),
-          enabled: S.optional(__S(5, __c0, 5)),
-          include_platform_defaults: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(__S(5, __c0, 5)),
-          enabled: S.optional(__S(5, __c0, 5)),
+          disabled: S.optional(__S(8, __c1, 0)),
+          enabled: S.optional(__S(8, __c1, 0)),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "CreateCheckoutConfigurationResponsePaymentMethodConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          affiliate_code: S.optional(S.NullOr(S.String)),
+          created_at: S.String,
+          currency: S.optional(S.NullOr(S.String)),
+          effective_payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
+          id: S.String,
+          metadata: S.optional(S.NullOr(S.Unknown)),
+          mode: S.String,
+          payment_method_configuration: S.optional(S.NullOr(__S(5, __c0, 5))),
+          plan: S.optional(S.NullOr(__S(10, __c1, 2))),
+          purchase_url: S.optional(S.NullOr(S.String)),
+          redirect_url: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(S.String)),
+          updated_at: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCheckoutConfigurationResponse",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(__S(8, __c1, 0)),
+          enabled: S.optional(__S(8, __c1, 0)),
+          include_platform_defaults: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           adaptive_pricing_enabled: S.Boolean,
@@ -851,28 +872,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateCheckoutConfigurationResponsePlan",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          affiliate_code: S.optional(S.NullOr(S.String)),
-          created_at: S.String,
-          currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
-          id: S.String,
-          metadata: S.optional(S.NullOr(S.Unknown)),
-          mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(7, __c0, 7))),
-          plan: S.optional(S.NullOr(__S(8, __c1, 0))),
-          purchase_url: S.optional(S.NullOr(S.String)),
-          redirect_url: S.optional(S.NullOr(S.String)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
-          updated_at: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateCheckoutConfigurationResponse",
-      });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -880,7 +884,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteCheckoutConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
@@ -889,7 +893,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteCheckoutConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -897,29 +905,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCheckoutConfigurationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(5, __c0, 5)),
-          enabled: S.optional(__S(5, __c0, 5)),
+          disabled: S.optional(__S(8, __c1, 0)),
+          enabled: S.optional(__S(8, __c1, 0)),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetCheckoutConfigurationResponsePaymentMethodConfiguration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           affiliate_code: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
+          effective_payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
           id: S.String,
           metadata: S.optional(S.NullOr(S.Unknown)),
           mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(13, __c1, 5))),
-          plan: S.optional(S.NullOr(__S(8, __c1, 0))),
+          payment_method_configuration: S.optional(S.NullOr(__S(25, __c3, 1))),
+          plan: S.optional(S.NullOr(__S(10, __c1, 2))),
           purchase_url: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
           three_ds_level: S.optional(S.NullOr(S.String)),
@@ -928,7 +936,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCheckoutConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
@@ -943,23 +955,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCheckoutConfigurationsRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           affiliate_code: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
+          effective_payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
           id: S.String,
           metadata: S.optional(S.NullOr(S.Unknown)),
           mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
-          plan: S.optional(S.NullOr(__S(8, __c1, 0))),
+          payment_method_configuration: S.optional(S.NullOr(__S(9, __c1, 1))),
+          plan: S.optional(S.NullOr(__S(10, __c1, 2))),
           purchase_url: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
           three_ds_level: S.optional(S.NullOr(S.String)),
@@ -968,9 +976,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCheckoutConfigurationsResponseDataItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -981,18 +989,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCheckoutConfigurationsResponsePageInfo",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(17, __c2, 1),
-          page_info: __S(18, __c2, 2),
+          data: __S(34, __c4, 2),
+          page_info: __S(35, __c4, 3),
         }),
       ).annotate({
         identifier: "ListCheckoutConfigurationsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

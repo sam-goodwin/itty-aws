@@ -135,7 +135,7 @@ export const createWarehouseExpression: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWarehouseExpressionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataWarehouseExpression>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataWarehouseExpression>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -149,8 +149,8 @@ export const getWarehouseExpression: API.OperationMethod<
   GetWarehouseExpressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetWarehouseExpressionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataWarehouseExpression>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetWarehouseExpressionRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataWarehouseExpression>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -164,8 +164,8 @@ export const listWarehouseExpressions: API.OperationMethod<
   ListWarehouseExpressionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListWarehouseExpressionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PaginatedDataWarehouseExpressionList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListWarehouseExpressionsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedDataWarehouseExpressionList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const updateWarehouseExpression: API.OperationMethod<
   UpdateWarehouseExpressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateWarehouseExpressionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataWarehouseExpression>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateWarehouseExpressionRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataWarehouseExpression>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -194,8 +194,8 @@ export const updateWarehouseExpressionsPartial: API.OperationMethod<
   UpdateWarehouseExpressionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UpdateWarehouseExpressionsPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataWarehouseExpression>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateWarehouseExpressionsPartialRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataWarehouseExpression>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -209,8 +209,8 @@ export const warehouseExpressionsDestroy: API.OperationMethod<
   WarehouseExpressionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<WarehouseExpressionsDestroyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<WarehouseExpressionsDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<WarehouseExpressionsDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<WarehouseExpressionsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,9 +238,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWarehouseExpressionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -250,16 +254,16 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: __S(2, __c0, 2),
+          created_by: __S(5, __c1, 1),
           created_at: S.String,
           table_name: S.String,
           field_name: S.String,
@@ -267,7 +271,11 @@ function __c0(j: number): any {
           connection_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DataWarehouseExpression" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -282,7 +290,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWarehouseExpressionRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -299,22 +311,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWarehouseExpressionsRequest",
       });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6, __c0, 6),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "PaginatedDataWarehouseExpressionList",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -336,7 +348,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseExpressionRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -356,7 +372,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseExpressionsPartialRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -371,13 +391,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "WarehouseExpressionsDestroyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WarehouseExpressionsDestroyResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

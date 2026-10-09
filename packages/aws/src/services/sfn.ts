@@ -1225,8 +1225,8 @@ export const createActivity: API.OperationMethod<
   CreateActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateActivityInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateActivityOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateActivityInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateActivityOutput>,
   errors: [
     ActivityAlreadyExists,
     ActivityLimitExceeded,
@@ -1288,8 +1288,8 @@ export const createStateMachine: API.OperationMethod<
   CreateStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateStateMachineInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateStateMachineOutput>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateStateMachineInput>,
+  output: __S(97, __c3, 1) as any as S.Schema<CreateStateMachineOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -1358,8 +1358,8 @@ export const createStateMachineAlias: API.OperationMethod<
   CreateStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateStateMachineAliasInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateStateMachineAliasOutput>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateStateMachineAliasInput>,
+  output: __S(161, __c5, 1) as any as S.Schema<CreateStateMachineAliasOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -1384,8 +1384,8 @@ export const deleteActivity: API.OperationMethod<
   DeleteActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteActivityInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteActivityOutput>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteActivityInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteActivityOutput>,
   errors: [InvalidArn],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1423,8 +1423,8 @@ export const deleteStateMachine: API.OperationMethod<
   DeleteStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteStateMachineInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteStateMachineOutput>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteStateMachineInput>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteStateMachineOutput>,
   errors: [InvalidArn, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1460,8 +1460,8 @@ export const deleteStateMachineAlias: API.OperationMethod<
   DeleteStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteStateMachineAliasInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteStateMachineAliasOutput>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteStateMachineAliasInput>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteStateMachineAliasOutput>,
   errors: [ConflictException, InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1494,8 +1494,8 @@ export const deleteStateMachineVersion: API.OperationMethod<
   DeleteStateMachineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteStateMachineVersionInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteStateMachineVersionOutput>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteStateMachineVersionInput>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteStateMachineVersionOutput>,
   errors: [ConflictException, InvalidArn, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1514,8 +1514,8 @@ export const describeActivity: API.OperationMethod<
   DescribeActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DescribeActivityInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<DescribeActivityOutput>,
+  input: __S(448, __c14, 0) as any as S.Schema<DescribeActivityInput>,
+  output: __S(449, __c14, 1) as any as S.Schema<DescribeActivityOutput>,
   errors: [ActivityDoesNotExist, InvalidArn],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1545,8 +1545,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DescribeExecutionInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<DescribeExecutionOutput>,
+  input: __S(480, __c15, 0) as any as S.Schema<DescribeExecutionInput>,
+  output: __S(481, __c15, 1) as any as S.Schema<DescribeExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -1569,8 +1569,8 @@ export const describeMapRun: API.OperationMethod<
   DescribeMapRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DescribeMapRunInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeMapRunOutput>,
+  input: __S(544, __c17, 0) as any as S.Schema<DescribeMapRunInput>,
+  output: __S(546, __c17, 2) as any as S.Schema<DescribeMapRunOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1618,8 +1618,8 @@ export const describeStateMachine: API.OperationMethod<
   DescribeStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DescribeStateMachineInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<DescribeStateMachineOutput>,
+  input: __S(576, __c18, 0) as any as S.Schema<DescribeStateMachineInput>,
+  output: __S(577, __c18, 1) as any as S.Schema<DescribeStateMachineOutput>,
   errors: [
     InvalidArn,
     KmsAccessDeniedException,
@@ -1656,8 +1656,8 @@ export const describeStateMachineAlias: API.OperationMethod<
   DescribeStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeStateMachineAliasInput>,
-  output: __S(36, __c4, 4) as any as S.Schema<DescribeStateMachineAliasOutput>,
+  input: __S(640, __c20, 0) as any as S.Schema<DescribeStateMachineAliasInput>,
+  output: __S(641, __c20, 1) as any as S.Schema<DescribeStateMachineAliasOutput>,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1687,8 +1687,8 @@ export const describeStateMachineForExecution: API.OperationMethod<
   DescribeStateMachineForExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DescribeStateMachineForExecutionInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeStateMachineForExecutionOutput>,
+  input: __S(672, __c21, 0) as any as S.Schema<DescribeStateMachineForExecutionInput>,
+  output: __S(673, __c21, 1) as any as S.Schema<DescribeStateMachineForExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -1730,8 +1730,8 @@ export const getActivityTask: API.OperationMethod<
   GetActivityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetActivityTaskInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetActivityTaskOutput>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetActivityTaskInput>,
+  output: __S(705, __c22, 1) as any as S.Schema<GetActivityTaskOutput>,
   errors: [
     ActivityDoesNotExist,
     ActivityWorkerLimitExceeded,
@@ -1770,8 +1770,8 @@ export const getExecutionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetExecutionHistoryInput>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetExecutionHistoryOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetExecutionHistoryInput>,
+  output: __S(762, __c23, 26) as any as S.Schema<GetExecutionHistoryOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -1807,8 +1807,8 @@ export const listActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivityListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListActivitiesInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListActivitiesOutput>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListActivitiesInput>,
+  output: __S(803, __c25, 3) as any as S.Schema<ListActivitiesOutput>,
   errors: [InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1850,8 +1850,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListExecutionsInput>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListExecutionsOutput>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListExecutionsInput>,
+  output: __S(835, __c26, 3) as any as S.Schema<ListExecutionsOutput>,
   errors: [
     InvalidArn,
     InvalidToken,
@@ -1882,8 +1882,8 @@ export const listMapRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MapRunListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListMapRunsInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListMapRunsOutput>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListMapRunsInput>,
+  output: __S(867, __c27, 3) as any as S.Schema<ListMapRunsOutput>,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1927,8 +1927,8 @@ export const listStateMachineAliases: API.OperationMethod<
   ListStateMachineAliasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListStateMachineAliasesInput>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListStateMachineAliasesOutput>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListStateMachineAliasesInput>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListStateMachineAliasesOutput>,
   errors: [
     InvalidArn,
     InvalidToken,
@@ -1957,8 +1957,8 @@ export const listStateMachines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StateMachineListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListStateMachinesInput>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListStateMachinesOutput>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListStateMachinesInput>,
+  output: __S(931, __c29, 3) as any as S.Schema<ListStateMachinesOutput>,
   errors: [InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1996,8 +1996,8 @@ export const listStateMachineVersions: API.OperationMethod<
   ListStateMachineVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListStateMachineVersionsInput>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListStateMachineVersionsOutput>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListStateMachineVersionsInput>,
+  output: __S(963, __c30, 3) as any as S.Schema<ListStateMachineVersionsOutput>,
   errors: [InvalidArn, InvalidToken, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2016,8 +2016,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2059,8 +2059,8 @@ export const publishStateMachineVersion: API.OperationMethod<
   PublishStateMachineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<PublishStateMachineVersionInput>,
-  output: __S(96, __c12, 0) as any as S.Schema<PublishStateMachineVersionOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<PublishStateMachineVersionInput>,
+  output: __S(1025, __c32, 1) as any as S.Schema<PublishStateMachineVersionOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -2108,8 +2108,8 @@ export const redriveExecution: API.OperationMethod<
   RedriveExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<RedriveExecutionInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<RedriveExecutionOutput>,
+  input: __S(1056, __c33, 0) as any as S.Schema<RedriveExecutionInput>,
+  output: __S(1057, __c33, 1) as any as S.Schema<RedriveExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     ExecutionLimitExceeded,
@@ -2144,8 +2144,8 @@ export const sendTaskFailure: API.OperationMethod<
   SendTaskFailureError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<SendTaskFailureInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<SendTaskFailureOutput>,
+  input: __S(1088, __c34, 0) as any as S.Schema<SendTaskFailureInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<SendTaskFailureOutput>,
   errors: [
     InvalidToken,
     KmsAccessDeniedException,
@@ -2182,8 +2182,8 @@ export const sendTaskHeartbeat: API.OperationMethod<
   SendTaskHeartbeatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<SendTaskHeartbeatInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<SendTaskHeartbeatOutput>,
+  input: __S(1120, __c35, 0) as any as S.Schema<SendTaskHeartbeatInput>,
+  output: __S(320, __c10, 0) as any as S.Schema<SendTaskHeartbeatOutput>,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2210,8 +2210,8 @@ export const sendTaskSuccess: API.OperationMethod<
   SendTaskSuccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<SendTaskSuccessInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<SendTaskSuccessOutput>,
+  input: __S(1152, __c36, 0) as any as S.Schema<SendTaskSuccessInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<SendTaskSuccessOutput>,
   errors: [
     InvalidOutput,
     InvalidToken,
@@ -2281,8 +2281,8 @@ export const startExecution: API.OperationMethod<
   StartExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<StartExecutionInput>,
-  output: __S(103, __c12, 7) as any as S.Schema<StartExecutionOutput>,
+  input: __S(1184, __c37, 0) as any as S.Schema<StartExecutionInput>,
+  output: __S(1185, __c37, 1) as any as S.Schema<StartExecutionOutput>,
   errors: [
     ExecutionAlreadyExists,
     ExecutionLimitExceeded,
@@ -2328,8 +2328,8 @@ export const startSyncExecution: API.OperationMethod<
   StartSyncExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<StartSyncExecutionInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<StartSyncExecutionOutput>,
+  input: __S(1216, __c38, 0) as any as S.Schema<StartSyncExecutionInput>,
+  output: __S(1218, __c38, 2) as any as S.Schema<StartSyncExecutionOutput>,
   errors: [
     InvalidArn,
     InvalidExecutionInput,
@@ -2370,8 +2370,8 @@ export const stopExecution: API.OperationMethod<
   StopExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<StopExecutionInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<StopExecutionOutput>,
+  input: __S(1248, __c39, 0) as any as S.Schema<StopExecutionInput>,
+  output: __S(1249, __c39, 1) as any as S.Schema<StopExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -2402,8 +2402,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<TagResourceInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<TagResourceOutput>,
+  input: __S(1280, __c40, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2452,8 +2452,8 @@ export const testState: API.OperationMethod<
   TestStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<TestStateInput>,
-  output: __S(117, __c14, 5) as any as S.Schema<TestStateOutput>,
+  input: __S(1314, __c41, 2) as any as S.Schema<TestStateInput>,
+  output: __S(1319, __c41, 7) as any as S.Schema<TestStateOutput>,
   errors: [InvalidArn, InvalidDefinition, InvalidExecutionInput, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2471,8 +2471,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<UntagResourceInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1345, __c42, 1) as any as S.Schema<UntagResourceInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2489,8 +2489,8 @@ export const updateMapRun: API.OperationMethod<
   UpdateMapRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UpdateMapRunInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateMapRunOutput>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateMapRunInput>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateMapRunOutput>,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2558,8 +2558,8 @@ export const updateStateMachine: API.OperationMethod<
   UpdateStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UpdateStateMachineInput>,
-  output: __S(122, __c15, 2) as any as S.Schema<UpdateStateMachineOutput>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UpdateStateMachineInput>,
+  output: __S(1409, __c44, 1) as any as S.Schema<UpdateStateMachineOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -2618,8 +2618,8 @@ export const updateStateMachineAlias: API.OperationMethod<
   UpdateStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<UpdateStateMachineAliasInput>,
-  output: __S(124, __c15, 4) as any as S.Schema<UpdateStateMachineAliasOutput>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateStateMachineAliasInput>,
+  output: __S(1441, __c45, 1) as any as S.Schema<UpdateStateMachineAliasOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -2673,8 +2673,8 @@ export const validateStateMachineDefinition: API.OperationMethod<
   ValidateStateMachineDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ValidateStateMachineDefinitionInput>,
-  output: __S(128, __c16, 0) as any as S.Schema<ValidateStateMachineDefinitionOutput>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ValidateStateMachineDefinitionInput>,
+  output: __S(1475, __c46, 3) as any as S.Schema<ValidateStateMachineDefinitionOutput>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2686,43 +2686,19 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyId: S.optional(S.String),
-          kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "EncryptionConfiguration" });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(65, __c2, 1)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateActivityInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activityArn: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }).pipe(ns),
       ).annotate({ identifier: "CreateActivityOutput" });
-    case 5:
-      return S.suspend(() => S.Struct({ logGroupArn: S.optional(S.String) })).annotate({
-        identifier: "CloudWatchLogsLogGroup",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ cloudWatchLogsLogGroup: S.optional(__S(5, __c0, 5)) }),
-      ).annotate({ identifier: "LogDestination" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2730,31 +2706,41 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(S.String),
-          includeExecutionData: S.optional(S.Boolean),
-          destinations: S.optional(__S(7, __c0, 7)),
+          kmsKeyId: S.optional(S.String),
+          kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
+          type: S.String,
         }),
-      ).annotate({ identifier: "LoggingConfiguration" });
+      ).annotate({ identifier: "EncryptionConfiguration" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
     case 1:
-      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "TracingConfiguration",
-      });
-    case 2:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           definition: SensitiveString,
           roleArn: S.String,
           type: S.optional(S.String),
-          loggingConfiguration: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(1, __c0, 1)),
-          tracingConfiguration: S.optional(__S(9, __c1, 1)),
+          loggingConfiguration: S.optional(__S(131, __c4, 3)),
+          tags: S.optional(__S(65, __c2, 1)),
+          tracingConfiguration: S.optional(__S(132, __c4, 4)),
           publish: S.optional(S.Boolean),
           versionDescription: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateStateMachineInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -2762,25 +2748,47 @@ function __c1(j: number): any {
           stateMachineVersionArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "CreateStateMachineOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ stateMachineVersionArn: S.String, weight: S.Number }),
-      ).annotate({
-        identifier: "RoutingConfigurationListItem",
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ logGroupArn: S.optional(S.String) })).annotate({
+        identifier: "CloudWatchLogsLogGroup",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ cloudWatchLogsLogGroup: S.optional(__S(128, __c4, 0)) }),
+      ).annotate({ identifier: "LogDestination" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.optional(S.String),
+          includeExecutionData: S.optional(S.Boolean),
+          destinations: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "LoggingConfiguration" });
+    case 4:
+      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "TracingConfiguration",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(SensitiveString),
           name: S.String,
-          routingConfiguration: __S(13, __c1, 5),
+          routingConfiguration: __S(193, __c6, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateStateMachineAliasInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineAliasArn: S.String,
@@ -2791,7 +2799,19 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ stateMachineVersionArn: S.String, weight: S.Number }),
+      ).annotate({
+        identifier: "RoutingConfigurationListItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2799,21 +2819,37 @@ function __c2(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteActivityInput" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteActivityOutput",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ stateMachineArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteStateMachineInput" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStateMachineOutput",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ stateMachineAliasArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2821,11 +2857,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteStateMachineAliasInput",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStateMachineAliasOutput",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ stateMachineVersionArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2833,36 +2877,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteStateMachineVersionInput",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ activityArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeActivityInput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activityArn: S.String,
           name: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeActivityOutput" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ executionArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeExecutionInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ included: S.optional(S.Boolean) })).annotate({
-        identifier: "CloudWatchEventsExecutionDataDetails",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -2872,9 +2916,9 @@ function __c3(j: number): any {
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(26, __c3, 2)),
+          inputDetails: S.optional(__S(512, __c16, 0)),
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(__S(26, __c3, 2)),
+          outputDetails: S.optional(__S(512, __c16, 0)),
           traceHeader: S.optional(S.String),
           mapRunArn: S.optional(S.String),
           error: S.optional(SensitiveString),
@@ -2887,13 +2931,25 @@ function __c3(j: number): any {
           redriveStatusReason: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeExecutionOutput" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ included: S.optional(S.Boolean) })).annotate({
+        identifier: "CloudWatchEventsExecutionDataDetails",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ mapRunArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeMapRunInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pending: S.Number,
@@ -2908,7 +2964,7 @@ function __c3(j: number): any {
           pendingRedrive: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MapRunItemCounts" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           mapRunArn: S.String,
@@ -2919,13 +2975,17 @@ function __c3(j: number): any {
           maxConcurrency: S.Number,
           toleratedFailurePercentage: S.Number,
           toleratedFailureCount: S.Number,
-          itemCounts: __S(29, __c3, 5),
-          executionCounts: __S(29, __c3, 5),
+          itemCounts: __S(545, __c17, 1),
+          executionCounts: __S(545, __c17, 1),
           redriveCount: S.optional(S.Number),
           redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeMapRunOutput" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ stateMachineArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2933,15 +2993,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeStateMachineInput",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(SensitiveString);
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(32, __c4, 0).pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -2951,18 +3003,30 @@ function __c4(j: number): any {
           roleArn: S.String,
           type: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          loggingConfiguration: S.optional(__S(8, __c1, 0)),
-          tracingConfiguration: S.optional(__S(9, __c1, 1)),
+          loggingConfiguration: S.optional(__S(131, __c4, 3)),
+          tracingConfiguration: S.optional(__S(132, __c4, 4)),
           label: S.optional(S.String),
           revisionId: S.optional(S.String),
           description: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
-          variableReferences: S.optional(__S(33, __c4, 1)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
+          variableReferences: S.optional(__S(609, __c19, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeStateMachineOutput",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(608, __c19, 0).pipe(S.optional));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ stateMachineAliasArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2970,20 +3034,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeStateMachineAliasInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineAliasArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
-          routingConfiguration: S.optional(__S(13, __c1, 5)),
+          routingConfiguration: S.optional(__S(193, __c6, 1)),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeStateMachineAliasOutput",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ executionArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2991,7 +3059,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeStateMachineForExecutionInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -2999,32 +3067,36 @@ function __c4(j: number): any {
           definition: SensitiveString,
           roleArn: S.String,
           updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          loggingConfiguration: S.optional(__S(8, __c1, 0)),
-          tracingConfiguration: S.optional(__S(9, __c1, 1)),
+          loggingConfiguration: S.optional(__S(131, __c4, 3)),
+          tracingConfiguration: S.optional(__S(132, __c4, 4)),
           mapRunArn: S.optional(S.String),
           label: S.optional(S.String),
           revisionId: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
-          variableReferences: S.optional(__S(33, __c4, 1)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
+          variableReferences: S.optional(__S(609, __c19, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeStateMachineForExecutionOutput",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ activityArn: S.String, workerName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetActivityTaskInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ taskToken: S.optional(S.String), input: S.optional(SensitiveString) }).pipe(ns),
       ).annotate({ identifier: "GetActivityTaskOutput" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3034,42 +3106,42 @@ function __c5(j: number): any {
           includeExecutionData: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetExecutionHistoryInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "ActivityFailedEventDetails",
       });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({ truncated: S.optional(S.Boolean) })).annotate({
         identifier: "HistoryEventExecutionDataDetails",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(43, __c5, 3)),
+          inputDetails: S.optional(__S(738, __c23, 2)),
           timeoutInSeconds: S.optional(S.Number),
           heartbeatInSeconds: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ActivityScheduledEventDetails",
       });
-    case 5:
+    case 4:
       return S.suspend(() => S.Struct({ workerName: S.optional(S.String) })).annotate({
         identifier: "ActivityStartedEventDetails",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(__S(43, __c5, 3)),
+          outputDetails: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({
         identifier: "ActivitySucceededEventDetails",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
@@ -3078,15 +3150,11 @@ function __c5(j: number): any {
           cause: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "TaskFailedEventDetails" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() => S.Struct({ roleArn: S.optional(S.String) })).annotate({
         identifier: "TaskCredentials",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
@@ -3095,12 +3163,12 @@ function __c6(j: number): any {
           parameters: SensitiveString,
           timeoutInSeconds: S.optional(S.Number),
           heartbeatInSeconds: S.optional(S.Number),
-          taskCredentials: S.optional(__S(48, __c6, 0)),
+          taskCredentials: S.optional(__S(743, __c23, 7)),
         }),
       ).annotate({
         identifier: "TaskScheduledEventDetails",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
@@ -3111,26 +3179,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "TaskStartFailedEventDetails",
       });
-    case 3:
+    case 10:
       return S.suspend(() => S.Struct({ resourceType: S.String, resource: S.String })).annotate({
         identifier: "TaskStartedEventDetails",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
           resource: S.String,
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(__S(43, __c5, 3)),
+          outputDetails: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({
         identifier: "TaskSubmittedEventDetails",
       });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(43, __c5, 3)),
+          inputDetails: S.optional(__S(738, __c23, 2)),
           roleArn: S.optional(S.String),
           stateMachineAliasArn: S.optional(S.String),
           stateMachineVersionArn: S.optional(S.String),
@@ -3138,77 +3206,65 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExecutionStartedEventDetails",
       });
-    case 6:
+    case 13:
       return S.suspend(() => S.Struct({ redriveCount: S.optional(S.Number) })).annotate({
         identifier: "ExecutionRedrivenEventDetails",
       });
-    case 7:
+    case 14:
       return S.suspend(() => S.Struct({ length: S.optional(S.Number) })).annotate({
         identifier: "MapStateStartedEventDetails",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), index: S.optional(S.Number) }),
       ).annotate({ identifier: "MapIterationEventDetails" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           resource: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(43, __c5, 3)),
+          inputDetails: S.optional(__S(738, __c23, 2)),
           timeoutInSeconds: S.optional(S.Number),
-          taskCredentials: S.optional(__S(48, __c6, 0)),
+          taskCredentials: S.optional(__S(743, __c23, 7)),
         }),
       ).annotate({
         identifier: "LambdaFunctionScheduledEventDetails",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(43, __c5, 3)),
+          inputDetails: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({ identifier: "StateEnteredEventDetails" });
-    case 3:
+    case 18:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 4:
+    case 19:
       return S.suspend(() => S.Struct({ truncated: S.optional(S.Boolean) })).annotate({
         identifier: "AssignedVariablesDetails",
       });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(__S(43, __c5, 3)),
-          assignedVariables: S.optional(__S(59, __c7, 3)),
-          assignedVariablesDetails: S.optional(__S(60, __c7, 4)),
+          outputDetails: S.optional(__S(738, __c23, 2)),
+          assignedVariables: S.optional(__S(754, __c23, 18)),
+          assignedVariablesDetails: S.optional(__S(755, __c23, 19)),
         }),
       ).annotate({ identifier: "StateExitedEventDetails" });
-    case 6:
+    case 21:
       return S.suspend(() => S.Struct({ mapRunArn: S.optional(S.String) })).annotate({
         identifier: "MapRunStartedEventDetails",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "MapRunFailedEventDetails" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({ mapRunArn: S.optional(S.String), redriveCount: S.optional(S.Number) }),
       ).annotate({
         identifier: "MapRunRedrivenEventDetails",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(SensitiveString),
@@ -3219,67 +3275,79 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EvaluationFailedEventDetails",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           type: S.String,
           id: S.Number,
           previousEventId: S.optional(S.Number),
-          activityFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          activityScheduleFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          activityScheduledEventDetails: S.optional(__S(44, __c5, 4)),
-          activityStartedEventDetails: S.optional(__S(45, __c5, 5)),
-          activitySucceededEventDetails: S.optional(__S(46, __c5, 6)),
-          activityTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
-          taskFailedEventDetails: S.optional(__S(47, __c5, 7)),
-          taskScheduledEventDetails: S.optional(__S(49, __c6, 1)),
-          taskStartFailedEventDetails: S.optional(__S(50, __c6, 2)),
-          taskStartedEventDetails: S.optional(__S(51, __c6, 3)),
-          taskSubmitFailedEventDetails: S.optional(__S(50, __c6, 2)),
-          taskSubmittedEventDetails: S.optional(__S(52, __c6, 4)),
-          taskSucceededEventDetails: S.optional(__S(52, __c6, 4)),
-          taskTimedOutEventDetails: S.optional(__S(47, __c5, 7)),
-          executionFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          executionStartedEventDetails: S.optional(__S(53, __c6, 5)),
-          executionSucceededEventDetails: S.optional(__S(46, __c5, 6)),
-          executionAbortedEventDetails: S.optional(__S(42, __c5, 2)),
-          executionTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
-          executionRedrivenEventDetails: S.optional(__S(54, __c6, 6)),
-          mapStateStartedEventDetails: S.optional(__S(55, __c6, 7)),
-          mapIterationStartedEventDetails: S.optional(__S(56, __c7, 0)),
-          mapIterationSucceededEventDetails: S.optional(__S(56, __c7, 0)),
-          mapIterationFailedEventDetails: S.optional(__S(56, __c7, 0)),
-          mapIterationAbortedEventDetails: S.optional(__S(56, __c7, 0)),
-          lambdaFunctionFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          lambdaFunctionScheduleFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          lambdaFunctionScheduledEventDetails: S.optional(__S(57, __c7, 1)),
-          lambdaFunctionStartFailedEventDetails: S.optional(__S(42, __c5, 2)),
-          lambdaFunctionSucceededEventDetails: S.optional(__S(46, __c5, 6)),
-          lambdaFunctionTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
-          stateEnteredEventDetails: S.optional(__S(58, __c7, 2)),
-          stateExitedEventDetails: S.optional(__S(61, __c7, 5)),
-          mapRunStartedEventDetails: S.optional(__S(62, __c7, 6)),
-          mapRunFailedEventDetails: S.optional(__S(63, __c7, 7)),
-          mapRunRedrivenEventDetails: S.optional(__S(64, __c8, 0)),
-          evaluationFailedEventDetails: S.optional(__S(65, __c8, 1)),
+          activityFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          activityScheduleFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          activityScheduledEventDetails: S.optional(__S(739, __c23, 3)),
+          activityStartedEventDetails: S.optional(__S(740, __c23, 4)),
+          activitySucceededEventDetails: S.optional(__S(741, __c23, 5)),
+          activityTimedOutEventDetails: S.optional(__S(737, __c23, 1)),
+          taskFailedEventDetails: S.optional(__S(742, __c23, 6)),
+          taskScheduledEventDetails: S.optional(__S(744, __c23, 8)),
+          taskStartFailedEventDetails: S.optional(__S(745, __c23, 9)),
+          taskStartedEventDetails: S.optional(__S(746, __c23, 10)),
+          taskSubmitFailedEventDetails: S.optional(__S(745, __c23, 9)),
+          taskSubmittedEventDetails: S.optional(__S(747, __c23, 11)),
+          taskSucceededEventDetails: S.optional(__S(747, __c23, 11)),
+          taskTimedOutEventDetails: S.optional(__S(742, __c23, 6)),
+          executionFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          executionStartedEventDetails: S.optional(__S(748, __c23, 12)),
+          executionSucceededEventDetails: S.optional(__S(741, __c23, 5)),
+          executionAbortedEventDetails: S.optional(__S(737, __c23, 1)),
+          executionTimedOutEventDetails: S.optional(__S(737, __c23, 1)),
+          executionRedrivenEventDetails: S.optional(__S(749, __c23, 13)),
+          mapStateStartedEventDetails: S.optional(__S(750, __c23, 14)),
+          mapIterationStartedEventDetails: S.optional(__S(751, __c23, 15)),
+          mapIterationSucceededEventDetails: S.optional(__S(751, __c23, 15)),
+          mapIterationFailedEventDetails: S.optional(__S(751, __c23, 15)),
+          mapIterationAbortedEventDetails: S.optional(__S(751, __c23, 15)),
+          lambdaFunctionFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          lambdaFunctionScheduleFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          lambdaFunctionScheduledEventDetails: S.optional(__S(752, __c23, 16)),
+          lambdaFunctionStartFailedEventDetails: S.optional(__S(737, __c23, 1)),
+          lambdaFunctionSucceededEventDetails: S.optional(__S(741, __c23, 5)),
+          lambdaFunctionTimedOutEventDetails: S.optional(__S(737, __c23, 1)),
+          stateEnteredEventDetails: S.optional(__S(753, __c23, 17)),
+          stateExitedEventDetails: S.optional(__S(756, __c23, 20)),
+          mapRunStartedEventDetails: S.optional(__S(757, __c23, 21)),
+          mapRunFailedEventDetails: S.optional(__S(768, __c24, 0)),
+          mapRunRedrivenEventDetails: S.optional(__S(758, __c23, 22)),
+          evaluationFailedEventDetails: S.optional(__S(759, __c23, 23)),
         }),
       ).annotate({ identifier: "HistoryEvent" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 25:
+      return S.Array(__S(760, __c23, 24));
+    case 26:
       return S.suspend(() =>
-        S.Struct({ events: __S(67, __c8, 3), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ events: __S(761, __c23, 25), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "GetExecutionHistoryOutput",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "MapRunFailedEventDetails" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListActivitiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activityArn: S.String,
@@ -3287,17 +3355,17 @@ function __c8(j: number): any {
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ActivityListItem" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ activities: __S(802, __c25, 2), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListActivitiesOutput" });
   }
 }
-function __c9(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ activities: __S(71, __c8, 7), nextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "ListActivitiesOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.optional(S.String),
@@ -3308,7 +3376,7 @@ function __c9(j: number): any {
           redriveFilter: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListExecutionsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3325,13 +3393,17 @@ function __c9(j: number): any {
           redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ExecutionListItem" });
+    case 2:
+      return S.Array(__S(833, __c26, 1));
     case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ executions: __S(75, __c9, 3), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ executions: __S(834, __c26, 2), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListExecutionsOutput" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3339,7 +3411,7 @@ function __c9(j: number): any {
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMapRunsInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3349,17 +3421,17 @@ function __c9(j: number): any {
           stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MapRunListItem" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ mapRuns: __S(866, __c27, 2), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListMapRunsOutput" });
   }
 }
-function __c10(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ mapRuns: __S(79, __c9, 7), nextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "ListMapRunsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -3369,7 +3441,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListStateMachineAliasesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineAliasArn: S.String,
@@ -3378,24 +3450,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StateMachineAliasListItem",
       });
+    case 2:
+      return S.Array(__S(897, __c28, 1));
     case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({
-          stateMachineAliases: __S(83, __c10, 3),
-          nextToken: S.optional(S.String),
-        }).pipe(ns),
+        S.Struct({ stateMachineAliases: __S(898, __c28, 2), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ListStateMachineAliasesOutput",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListStateMachinesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -3404,17 +3479,17 @@ function __c10(j: number): any {
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "StateMachineListItem" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
+    case 2:
+      return S.Array(__S(929, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ stateMachines: __S(930, __c29, 2), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListStateMachinesOutput" });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ stateMachines: __S(87, __c10, 7), nextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "ListStateMachinesOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -3424,7 +3499,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListStateMachineVersionsInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineVersionArn: S.String,
@@ -3433,28 +3508,36 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "StateMachineVersionListItem",
       });
+    case 2:
+      return S.Array(__S(961, __c30, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          stateMachineVersions: __S(91, __c11, 3),
+          stateMachineVersions: __S(962, __c30, 2),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListStateMachineVersionsOutput",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(65, __c2, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -3464,11 +3547,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PublishStateMachineVersionInput",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3477,18 +3556,26 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PublishStateMachineVersionOutput",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RedriveExecutionInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ redriveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
       ).annotate({ identifier: "RedriveExecutionOutput" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskToken: S.String,
@@ -3496,19 +3583,31 @@ function __c12(j: number): any {
           cause: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendTaskFailureInput" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ taskToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SendTaskHeartbeatInput" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ taskToken: S.String, output: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SendTaskSuccessInput" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
@@ -3517,7 +3616,7 @@ function __c12(j: number): any {
           traceHeader: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartExecutionInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3526,7 +3625,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "StartExecutionOutput" });
   }
 }
-function __c13(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3557,14 +3656,18 @@ function __c13(j: number): any {
           error: S.optional(SensitiveString),
           cause: S.optional(SensitiveString),
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(__S(26, __c3, 2)),
+          inputDetails: S.optional(__S(512, __c16, 0)),
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(__S(26, __c3, 2)),
+          outputDetails: S.optional(__S(512, __c16, 0)),
           traceHeader: S.optional(S.String),
-          billingDetails: S.optional(__S(105, __c13, 1)),
+          billingDetails: S.optional(__S(1217, __c38, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "StartSyncExecutionOutput" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           executionArn: S.String,
@@ -3572,25 +3675,33 @@ function __c13(j: number): any {
           cause: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StopExecutionInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
       ).annotate({ identifier: "StopExecutionOutput" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(65, __c2, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           result: S.optional(SensitiveString),
-          errorOutput: S.optional(__S(63, __c7, 7)),
+          errorOutput: S.optional(__S(768, __c24, 0)),
           fieldValidationMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MockInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           retrierRetryCount: S.optional(S.Number),
@@ -3599,11 +3710,7 @@ function __c13(j: number): any {
           mapItemReaderData: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "TestStateConfiguration" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           definition: SensitiveString,
@@ -3613,12 +3720,12 @@ function __c14(j: number): any {
           revealSecrets: S.optional(S.Boolean),
           variables: S.optional(SensitiveString),
           stateName: S.optional(SensitiveString),
-          mock: S.optional(__S(110, __c13, 6)),
+          mock: S.optional(__S(1312, __c41, 0)),
           context: S.optional(SensitiveString),
-          stateConfiguration: S.optional(__S(111, __c13, 7)),
+          stateConfiguration: S.optional(__S(1313, __c41, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TestStateInput" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           protocol: S.optional(S.String),
@@ -3628,7 +3735,7 @@ function __c14(j: number): any {
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "InspectionDataRequest" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           protocol: S.optional(S.String),
@@ -3638,7 +3745,7 @@ function __c14(j: number): any {
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "InspectionDataResponse" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           catchIndex: S.optional(S.Number),
@@ -3646,7 +3753,7 @@ function __c14(j: number): any {
           retryBackoffIntervalSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InspectionErrorDetails" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           input: S.optional(SensitiveString),
@@ -3656,10 +3763,10 @@ function __c14(j: number): any {
           result: S.optional(SensitiveString),
           afterResultSelector: S.optional(SensitiveString),
           afterResultPath: S.optional(SensitiveString),
-          request: S.optional(__S(113, __c14, 1)),
-          response: S.optional(__S(114, __c14, 2)),
+          request: S.optional(__S(1315, __c41, 3)),
+          response: S.optional(__S(1316, __c41, 4)),
           variables: S.optional(SensitiveString),
-          errorDetails: S.optional(__S(115, __c14, 3)),
+          errorDetails: S.optional(__S(1317, __c41, 5)),
           afterItemsPath: S.optional(SensitiveString),
           afterItemSelector: S.optional(SensitiveString),
           afterItemBatcher: S.optional(SensitiveString),
@@ -3669,28 +3776,32 @@ function __c14(j: number): any {
           maxConcurrency: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InspectionData" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           output: S.optional(SensitiveString),
           error: S.optional(SensitiveString),
           cause: S.optional(SensitiveString),
-          inspectionData: S.optional(__S(116, __c14, 4)),
+          inspectionData: S.optional(__S(1318, __c41, 6)),
           nextState: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "TestStateOutput" });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(118, __c14, 6) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(1344, __c42, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c15(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3701,20 +3812,24 @@ function __c15(j: number): any {
           toleratedFailureCount: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateMapRunInput" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
           definition: S.optional(SensitiveString),
           roleArn: S.optional(S.String),
-          loggingConfiguration: S.optional(__S(8, __c1, 0)),
-          tracingConfiguration: S.optional(__S(9, __c1, 1)),
+          loggingConfiguration: S.optional(__S(131, __c4, 3)),
+          tracingConfiguration: S.optional(__S(132, __c4, 4)),
           publish: S.optional(S.Boolean),
           versionDescription: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          encryptionConfiguration: S.optional(__S(32, __c1, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateStateMachineInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3722,23 +3837,31 @@ function __c15(j: number): any {
           stateMachineVersionArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateStateMachineOutput" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stateMachineAliasArn: S.String,
           description: S.optional(SensitiveString),
-          routingConfiguration: S.optional(__S(13, __c1, 5)),
+          routingConfiguration: S.optional(__S(193, __c6, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateStateMachineAliasInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
       ).annotate({
         identifier: "UpdateStateMachineAliasOutput",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           definition: SensitiveString,
@@ -3749,7 +3872,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ValidateStateMachineDefinitionInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           severity: S.String,
@@ -3760,17 +3883,13 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ValidateStateMachineDefinitionDiagnostic",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1473, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           result: S.String,
-          diagnostics: __S(127, __c15, 7),
+          diagnostics: __S(1474, __c46, 2),
           truncated: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({
@@ -3778,7 +3897,6 @@ function __c16(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

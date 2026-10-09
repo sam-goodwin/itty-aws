@@ -3143,7 +3143,7 @@ export const AddonsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddonsCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddonsCreateOrUpdateResponse>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddonsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3157,8 +3157,8 @@ export const BandwidthSchedulesCreateOrUpdate: API.OperationMethod<
   BandwidthSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3173,13 +3173,13 @@ export const CheckDeviceCapacityCheckResourceCreationFeasibility: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
+    340,
+    __c21,
     4,
   ) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityRequest>,
   output: __S(
-    13,
-    __c1,
+    341,
+    __c21,
     5,
   ) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityResponse>,
   errors: [UnknownAzureError],
@@ -3195,8 +3195,8 @@ export const ContainersCreateOrUpdate: API.OperationMethod<
   ContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ContainersCreateOrUpdateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ContainersCreateOrUpdateResponse>,
+  input: __S(609, __c38, 1) as any as S.Schema<ContainersCreateOrUpdateRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<ContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3210,8 @@ export const DeleteAddon: API.OperationMethod<
   DeleteAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAddonRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteAddonResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteAddonRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +3225,8 @@ export const DeleteBandwidthSchedule: API.OperationMethod<
   DeleteBandwidthScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteBandwidthScheduleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteBandwidthScheduleResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteBandwidthScheduleRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<DeleteBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +3240,8 @@ export const DeleteContainer: API.OperationMethod<
   DeleteContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteContainerRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteContainerResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<DeleteContainerRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +3255,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3270,8 @@ export const DeleteMonitoringConfig: API.OperationMethod<
   DeleteMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteMonitoringConfigRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteMonitoringConfigResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteMonitoringConfigRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +3285,8 @@ export const DeleteOrder: API.OperationMethod<
   DeleteOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteOrderRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteOrderResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteOrderRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3300,8 +3300,8 @@ export const DeleteRole: API.OperationMethod<
   DeleteRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteRoleResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3315,8 +3315,8 @@ export const DeleteShare: API.OperationMethod<
   DeleteShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteShareRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteShareResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteShareRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3330,8 +3330,8 @@ export const DeleteStorageAccount: API.OperationMethod<
   DeleteStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteStorageAccountRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteStorageAccountResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteStorageAccountRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3345,8 +3345,8 @@ export const DeleteStorageAccountCredentials: API.OperationMethod<
   DeleteStorageAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteStorageAccountCredentialsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteStorageAccountCredentialsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteStorageAccountCredentialsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3360,8 +3360,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteTriggerRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTriggerResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3375,8 +3375,8 @@ export const DeleteUser: API.OperationMethod<
   DeleteUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteUserResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,8 +3390,8 @@ export const DevicesCreateOrUpdate: API.OperationMethod<
   DevicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DevicesCreateOrUpdateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DevicesCreateOrUpdateResponse>,
+  input: __S(225, __c14, 1) as any as S.Schema<DevicesCreateOrUpdateRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<DevicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3405,8 @@ export const DevicesCreateOrUpdateSecuritySettings: API.OperationMethod<
   DevicesCreateOrUpdateSecuritySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3420,8 +3420,8 @@ export const DevicesGetUpdateSummary: API.OperationMethod<
   DevicesGetUpdateSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DevicesGetUpdateSummaryRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DevicesGetUpdateSummaryResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DevicesGetUpdateSummaryRequest>,
+  output: __S(308, __c19, 4) as any as S.Schema<DevicesGetUpdateSummaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const DevicesScanForUpdates: API.OperationMethod<
   DevicesScanForUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DevicesScanForUpdatesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DevicesScanForUpdatesResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DevicesScanForUpdatesRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DevicesScanForUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3450,8 @@ export const DownloadDeviceUpdates: API.OperationMethod<
   DownloadDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DownloadDeviceUpdatesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DownloadDeviceUpdatesResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DownloadDeviceUpdatesRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<DownloadDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3465,8 @@ export const GenerateDeviceCertificate: API.OperationMethod<
   GenerateDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GenerateDeviceCertificateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GenerateCertResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GenerateDeviceCertificateRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<GenerateCertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3480,8 @@ export const GetAddon: API.OperationMethod<
   GetAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetAddonRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetAddonResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetAddonRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3495,8 +3495,8 @@ export const GetAlert: API.OperationMethod<
   GetAlertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetAlertRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetAlertResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<GetAlertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3510,8 +3510,8 @@ export const GetBandwidthSchedule: API.OperationMethod<
   GetBandwidthScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetBandwidthScheduleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetBandwidthScheduleResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetBandwidthScheduleRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<GetBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3525,8 +3525,8 @@ export const GetContainer: API.OperationMethod<
   GetContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetContainerRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetContainerResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetContainerRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<GetContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3540,8 +3540,8 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetDeviceRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetDeviceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3555,8 +3555,8 @@ export const GetDeviceCapacityInfoDeviceCapacityInfo: API.OperationMethod<
   GetDeviceCapacityInfoDeviceCapacityInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>,
+  output: __S(557, __c34, 13) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3570,8 @@ export const GetDeviceExtendedInformation: API.OperationMethod<
   GetDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetDeviceExtendedInformationRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetDeviceExtendedInformationResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetDeviceExtendedInformationRequest>,
+  output: __S(580, __c36, 4) as any as S.Schema<GetDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3585,8 +3585,8 @@ export const GetDeviceNetworkSettings: API.OperationMethod<
   GetDeviceNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetDeviceNetworkSettingsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetDeviceNetworkSettingsResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetDeviceNetworkSettingsRequest>,
+  output: __S(599, __c37, 7) as any as S.Schema<GetDeviceNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3601,14 +3601,14 @@ export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    100,
-    __c12,
-    4,
+    656,
+    __c41,
+    0,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
   output: __S(
-    102,
-    __c12,
-    6,
+    673,
+    __c42,
+    1,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3624,14 +3624,14 @@ export const GetDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    103,
-    __c12,
-    7,
+    688,
+    __c43,
+    0,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
   output: __S(
-    107,
-    __c13,
-    3,
+    689,
+    __c43,
+    1,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3646,8 +3646,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetJobRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetJobResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3661,8 +3661,8 @@ export const GetMonitoringConfig: API.OperationMethod<
   GetMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetMonitoringConfigRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<GetMonitoringConfigResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetMonitoringConfigRequest>,
+  output: __S(777, __c48, 9) as any as S.Schema<GetMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3676,8 +3676,8 @@ export const GetOperationsStatus: API.OperationMethod<
   GetOperationsStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetOperationsStatusRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GetOperationsStatusResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetOperationsStatusRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<GetOperationsStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3691,8 +3691,8 @@ export const GetOrder: API.OperationMethod<
   GetOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetOrderRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetOrderResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<GetOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3706,8 +3706,8 @@ export const GetRole: API.OperationMethod<
   GetRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetRoleRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetRoleResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3721,8 @@ export const GetShare: API.OperationMethod<
   GetShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetShareRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetShareResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetShareRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<GetShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3736,8 +3736,8 @@ export const GetStorageAccount: API.OperationMethod<
   GetStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetStorageAccountRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<GetStorageAccountResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetStorageAccountRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<GetStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3751,8 +3751,8 @@ export const GetStorageAccountCredentials: API.OperationMethod<
   GetStorageAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetStorageAccountCredentialsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetStorageAccountCredentialsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetStorageAccountCredentialsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<GetStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3766,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetTriggerRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetTriggerResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetTriggerRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3781,8 +3781,8 @@ export const GetUser: API.OperationMethod<
   GetUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetUserRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<GetUserResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3796,8 @@ export const InstallDeviceUpdates: API.OperationMethod<
   InstallDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<InstallDeviceUpdatesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<InstallDeviceUpdatesResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<InstallDeviceUpdatesRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<InstallDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3811,8 +3811,8 @@ export const ListAddonByRole: API.OperationMethod<
   ListAddonByRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListAddonByRoleRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<AddonList>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListAddonByRoleRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3826,8 +3826,8 @@ export const ListAlertByDataBoxEdgeDevice: API.OperationMethod<
   ListAlertByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<AlertList>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
+  output: __S(1138, __c71, 2) as any as S.Schema<AlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3841,8 +3841,8 @@ export const ListAvailableSkus: API.OperationMethod<
   ListAvailableSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListAvailableSkusRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DataBoxEdgeSkuList>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListAvailableSkusRequest>,
+  output: __S(1161, __c72, 9) as any as S.Schema<DataBoxEdgeSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3856,8 +3856,8 @@ export const ListBandwidthScheduleByDataBoxEdgeDevice: API.OperationMethod<
   ListBandwidthScheduleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<BandwidthSchedulesList>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
+  output: __S(1171, __c73, 3) as any as S.Schema<BandwidthSchedulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3871,8 +3871,8 @@ export const ListContainerByStorageAccount: API.OperationMethod<
   ListContainerByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListContainerByStorageAccountRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ContainerList>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListContainerByStorageAccountRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<ContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3886,8 +3886,8 @@ export const ListDeviceByResourceGroup: API.OperationMethod<
   ListDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListDeviceByResourceGroupRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DataBoxEdgeDeviceList>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListDeviceByResourceGroupRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3901,8 @@ export const ListDeviceBySubscription: API.OperationMethod<
   ListDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListDeviceBySubscriptionRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DataBoxEdgeDeviceList>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListDeviceBySubscriptionRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3916,8 @@ export const ListMonitoringConfig: API.OperationMethod<
   ListMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListMonitoringConfigRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<MonitoringMetricConfigurationList>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListMonitoringConfigRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<MonitoringMetricConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3931,8 @@ export const ListNodeByDataBoxEdgeDevice: API.OperationMethod<
   ListNodeByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<NodeList>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
+  output: __S(1284, __c80, 4) as any as S.Schema<NodeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3946,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<OperationsList>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1306, __c81, 10) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3961,8 @@ export const ListOrderByDataBoxEdgeDevice: API.OperationMethod<
   ListOrderByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<OrderList>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<OrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3976,8 +3976,8 @@ export const ListOrderDCAccessCode: API.OperationMethod<
   ListOrderDCAccessCodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListOrderDCAccessCodeRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<DCAccessCode>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListOrderDCAccessCodeRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<DCAccessCode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3991,8 +3991,8 @@ export const ListRoleByDataBoxEdgeDevice: API.OperationMethod<
   ListRoleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<RoleList>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<RoleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4006,8 +4006,8 @@ export const ListShareByDataBoxEdgeDevice: API.OperationMethod<
   ListShareByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ShareList>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4021,8 +4021,8 @@ export const ListStorageAccountByDataBoxEdgeDevice: API.OperationMethod<
   ListStorageAccountByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<StorageAccountList>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
+  output: __S(1379, __c86, 3) as any as S.Schema<StorageAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4037,11 +4037,11 @@ export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    1392,
+    __c87,
     0,
   ) as any as S.Schema<ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<StorageAccountCredentialList>,
+  output: __S(1395, __c87, 3) as any as S.Schema<StorageAccountCredentialList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4055,8 +4055,8 @@ export const ListTriggerByDataBoxEdgeDevice: API.OperationMethod<
   ListTriggerByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<TriggerList>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4070,8 +4070,8 @@ export const ListUserByDataBoxEdgeDevice: API.OperationMethod<
   ListUserByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<UserList>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4085,8 +4085,8 @@ export const MonitoringConfigCreateOrUpdate: API.OperationMethod<
   MonitoringConfigCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>,
+  output: __S(777, __c48, 9) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4100,8 +4100,8 @@ export const OrdersCreateOrUpdate: API.OperationMethod<
   OrdersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<OrdersCreateOrUpdateRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<OrdersCreateOrUpdateResponse>,
+  input: __S(1473, __c92, 1) as any as S.Schema<OrdersCreateOrUpdateRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<OrdersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4115,8 +4115,8 @@ export const RefreshContainer: API.OperationMethod<
   RefreshContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<RefreshContainerRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RefreshContainerResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<RefreshContainerRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<RefreshContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4130,8 +4130,8 @@ export const RefreshShare: API.OperationMethod<
   RefreshShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<RefreshShareRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RefreshShareResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<RefreshShareRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<RefreshShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4145,8 +4145,8 @@ export const RolesCreateOrUpdate: API.OperationMethod<
   RolesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<RolesCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RolesCreateOrUpdateResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<RolesCreateOrUpdateRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<RolesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4160,8 +4160,8 @@ export const SharesCreateOrUpdate: API.OperationMethod<
   SharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<SharesCreateOrUpdateRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<SharesCreateOrUpdateResponse>,
+  input: __S(1537, __c96, 1) as any as S.Schema<SharesCreateOrUpdateRequest>,
+  output: __S(1538, __c96, 2) as any as S.Schema<SharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4175,8 +4175,8 @@ export const StorageAccountCredentialsCreateOrUpdate: API.OperationMethod<
   StorageAccountCredentialsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4190,8 +4190,8 @@ export const StorageAccountsCreateOrUpdate: API.OperationMethod<
   StorageAccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4205,8 +4205,8 @@ export const TriggersCreateOrUpdate: API.OperationMethod<
   TriggersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<TriggersCreateOrUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TriggersCreateOrUpdateResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<TriggersCreateOrUpdateRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<TriggersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4220,8 +4220,8 @@ export const TriggerSupportPackageSupportPackage: API.OperationMethod<
   TriggerSupportPackageSupportPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>,
+  input: __S(1617, __c101, 1) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4235,8 +4235,8 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<UpdateDeviceRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UpdateDeviceResponse>,
+  input: __S(1635, __c102, 3) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4250,8 +4250,8 @@ export const UpdateDeviceExtendedInformation: API.OperationMethod<
   UpdateDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<UpdateDeviceExtendedInformationRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<UpdateDeviceExtendedInformationResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<UpdateDeviceExtendedInformationRequest>,
+  output: __S(580, __c36, 4) as any as S.Schema<UpdateDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4266,14 +4266,14 @@ export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: A
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    255,
-    __c31,
-    7,
+    1664,
+    __c104,
+    0,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
   output: __S(
-    102,
-    __c12,
-    6,
+    673,
+    __c42,
+    1,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4289,13 +4289,13 @@ export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    256,
-    __c32,
+    1680,
+    __c105,
     0,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
   output: __S(
-    257,
-    __c32,
+    1681,
+    __c105,
     1,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
@@ -4311,8 +4311,8 @@ export const UploadDeviceCertificate: API.OperationMethod<
   UploadDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<UploadDeviceCertificateRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<UploadCertificateResponse>,
+  input: __S(1697, __c106, 1) as any as S.Schema<UploadDeviceCertificateRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<UploadCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4326,8 +4326,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<UsersCreateOrUpdateRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<UsersCreateOrUpdateResponse>,
+  input: __S(1713, __c107, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4356,7 +4356,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddonsCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4367,39 +4371,34 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
         }),
       ).annotate({
         identifier: "AddonsCreateOrUpdateResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.String,
-          stop: S.String,
-          rateInMbps: S.Number,
-          days: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "BandwidthScheduleProperties",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(4, __c0, 4),
+          properties: __S(96, __c6, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4411,242 +4410,48 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BandwidthSchedulesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(4, __c0, 4),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(96, __c6, 0),
         }),
       ).annotate({
         identifier: "BandwidthSchedulesCreateOrUpdateResponse",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vmSize: S.optional(__S(7, __c0, 7)),
-          isFeasible: S.optional(S.Boolean),
-          messageCode: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmPlacementRequestResult" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vmPlacementQuery: __S(8, __c1, 0),
-          vmPlacementResults: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "DeviceCapacityRequestInfoProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          capacityName: S.optional(S.String.pipe(T.Query())),
-          properties: __S(11, __c1, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataFormat: S.String,
-        }),
-      ).annotate({ identifier: "ContainerPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          storageAccountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          properties: __S(14, __c1, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainersCreateOrUpdateRequest",
-      });
-  }
-}
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inProgressRefreshJobId: S.optional(S.String),
-          lastCompletedRefreshJobTimeInUTC: S.optional(S.String),
-          errorManifestFile: S.optional(S.String),
-          lastJob: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RefreshDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          containerStatus: S.optional(S.String),
-          dataFormat: S.String,
-          refreshDetails: S.optional(__S(16, __c2, 0)),
-          createdDateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(17, __c2, 1),
+          start: S.String,
+          stop: S.String,
+          rateInMbps: S.Number,
+          days: __S(64, __c4, 0),
         }),
       ).annotate({
-        identifier: "ContainersCreateOrUpdateResponse",
+        identifier: "BandwidthScheduleProperties",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          roleName: S.String.pipe(T.Label()),
-          addonName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAddonRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAddonResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBandwidthScheduleRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBandwidthScheduleResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          storageAccountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteContainerRequest" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeviceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          roleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMonitoringConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrderRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4662,7 +4467,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRoleRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4678,7 +4487,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteShareRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4696,7 +4509,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteStorageAccountRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4714,13 +4531,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteStorageAccountCredentialsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteStorageAccountCredentialsResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4738,7 +4559,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTriggerRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4754,41 +4579,30 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataResidency" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataResidency: S.optional(__S(35, __c4, 3)),
+          dataResidency: S.optional(__S(256, __c16, 0)),
         }),
       ).annotate({
         identifier: "DataBoxEdgeDevicePropertiesInput",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(34, __c4, 2)),
+          tags: S.optional(__S(240, __c15, 0)),
           location: S.String,
-          properties: S.optional(__S(36, __c4, 4)),
-          sku: S.optional(__S(37, __c4, 5)),
+          properties: S.optional(__S(224, __c14, 0)),
+          sku: S.optional(__S(257, __c16, 1)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(35, __c4, 3)),
+          identity: S.optional(__S(256, __c16, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4800,7 +4614,48 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DevicesCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(240, __c15, 0)),
+          location: S.String,
+          properties: S.optional(__S(265, __c16, 9)),
+          sku: S.optional(__S(257, __c16, 1)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(266, __c16, 10)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DevicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataResidency" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4813,18 +4668,14 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DataBoxEdgeDevicePropertiesSystemData",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           operationInProgress: S.optional(S.String),
           operationInProgressLockTimeoutInUTC: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceMoveDetails" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4833,19 +4684,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SubscriptionRegisteredFeatures",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(260, __c16, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
           locationPlacementId: S.optional(S.String),
           quotaId: S.optional(S.String),
           serializedDetails: S.optional(S.String),
-          registeredFeatures: S.optional(__S(42, __c5, 2)),
+          registeredFeatures: S.optional(__S(261, __c16, 5)),
         }),
       ).annotate({ identifier: "SubscriptionProperties" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           registrationId: S.optional(S.String),
@@ -4853,19 +4704,19 @@ function __c5(j: number): any {
           state: S.optional(S.String),
           registrationDate: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          properties: S.optional(__S(43, __c5, 3)),
+          properties: S.optional(__S(262, __c16, 6)),
         }),
       ).annotate({ identifier: "EdgeProfileSubscription" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(__S(44, __c5, 4)),
+          subscription: S.optional(__S(263, __c16, 7)),
         }),
       ).annotate({ identifier: "EdgeProfile" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(258, __c16, 2)),
           dataBoxEdgeDeviceStatus: S.optional(S.String),
           serialNumber: S.optional(S.String),
           description: S.optional(S.String),
@@ -4878,17 +4729,17 @@ function __c5(j: number): any {
           deviceLocalCapacity: S.optional(S.Number),
           timeZone: S.optional(S.String),
           deviceHcsVersion: S.optional(S.String),
-          configuredRoleTypes: S.optional(__S(3, __c0, 3)),
+          configuredRoleTypes: S.optional(__S(64, __c4, 0)),
           nodeCount: S.optional(S.Number),
-          resourceMoveDetails: S.optional(__S(40, __c5, 0)),
-          edgeProfile: S.optional(__S(45, __c5, 5)),
-          dataResidency: S.optional(__S(35, __c4, 3)),
+          resourceMoveDetails: S.optional(__S(259, __c16, 3)),
+          edgeProfile: S.optional(__S(264, __c16, 8)),
+          dataResidency: S.optional(__S(256, __c16, 0)),
           kubernetesWorkloadProfile: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataBoxEdgeDeviceProperties",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -4898,51 +4749,23 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ResourceIdentity" });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(34, __c4, 2)),
-          location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-          sku: S.optional(__S(37, __c4, 5)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(47, __c5, 7)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DevicesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          encryptionCertThumbprint: S.optional(S.String),
-          encryptionAlgorithm: S.String,
-        }),
-      ).annotate({
-        identifier: "AsymmetricEncryptedSecret",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deviceAdminPassword: __S(49, __c6, 1),
+          deviceAdminPassword: __S(288, __c18, 0),
         }),
       ).annotate({
         identifier: "SecuritySettingsProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(50, __c6, 2),
+          properties: __S(272, __c17, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4954,7 +4777,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DevicesCreateOrUpdateSecuritySettingsRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          encryptionCertThumbprint: S.optional(S.String),
+          encryptionAlgorithm: S.String,
+        }),
+      ).annotate({
+        identifier: "AsymmetricEncryptedSecret",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4971,7 +4812,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DevicesGetUpdateSummaryRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           updateTitle: S.optional(S.String),
@@ -4985,9 +4826,9 @@ function __c6(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateDetails" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           deviceVersionNumber: S.optional(S.String),
@@ -5011,29 +4852,29 @@ function __c6(j: number): any {
           inProgressInstallJobId: S.optional(S.String),
           inProgressDownloadJobStartedDateTime: S.optional(S.String),
           inProgressInstallJobStartedDateTime: S.optional(S.String),
-          updateTitles: S.optional(__S(7, __c0, 7)),
-          updates: S.optional(__S(54, __c6, 6)),
+          updateTitles: S.optional(__S(352, __c22, 0)),
+          updates: S.optional(__S(306, __c19, 2)),
           totalUpdateSizeInBytes: S.optional(S.Number),
           totalTimeInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateSummaryProperties" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(55, __c6, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(307, __c19, 3)),
         }),
       ).annotate({
         identifier: "DevicesGetUpdateSummaryResponse",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5050,7 +4891,66 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DevicesScanForUpdatesRequest",
       });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(352, __c22, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          vmSize: S.optional(__S(352, __c22, 0)),
+          isFeasible: S.optional(S.Boolean),
+          messageCode: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmPlacementRequestResult" });
     case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          vmPlacementQuery: __S(336, __c21, 0),
+          vmPlacementResults: S.optional(__S(338, __c21, 2)),
+        }),
+      ).annotate({
+        identifier: "DeviceCapacityRequestInfoProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          capacityName: S.optional(S.String.pipe(T.Query())),
+          properties: __S(339, __c21, 3),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5067,7 +4967,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DownloadDeviceUpdatesRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5084,7 +4988,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GenerateDeviceCertificateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           publicKey: S.optional(S.String),
@@ -5092,7 +4996,11 @@ function __c7(j: number): any {
           expiryTimeInUTC: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenerateCertResponse" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5109,17 +5017,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAddonRequest" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
         }),
       ).annotate({ identifier: "GetAddonResponse" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5137,7 +5053,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetAlertRequest" });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5155,8 +5071,8 @@ function __c8(j: number): any {
           appearedAtDateTime: S.optional(S.String),
           recommendation: S.optional(S.String),
           severity: S.optional(S.String),
-          errorDetails: S.optional(__S(64, __c8, 0)),
-          detailedInformation: S.optional(__S(34, __c4, 2)),
+          errorDetails: S.optional(__S(448, __c28, 0)),
+          detailedInformation: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "AlertProperties" });
     case 2:
@@ -5165,11 +5081,15 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(65, __c8, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(449, __c28, 1)),
         }),
       ).annotate({ identifier: "GetAlertResponse" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5187,7 +5107,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetBandwidthScheduleRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5204,17 +5128,25 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContainerRequest" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(17, __c2, 1),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(640, __c40, 0),
         }),
       ).annotate({ identifier: "GetContainerResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5229,25 +5161,29 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(240, __c15, 0)),
           location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-          sku: S.optional(__S(37, __c4, 5)),
+          properties: S.optional(__S(265, __c16, 9)),
+          sku: S.optional(__S(257, __c16, 1)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(47, __c5, 7)),
+          identity: S.optional(__S(266, __c16, 10)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDeviceResponse" });
   }
 }
-function __c9(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5301,8 +5237,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
-          gpuCapacity: S.optional(__S(74, __c9, 2)),
-          memoryCapacity: S.optional(__S(75, __c9, 3)),
+          gpuCapacity: S.optional(__S(546, __c34, 2)),
+          memoryCapacity: S.optional(__S(547, __c34, 3)),
           lastRefreshedTime: S.optional(S.String),
           totalProvisionedNonHpnCores: S.optional(S.Number),
         }),
@@ -5315,64 +5251,64 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VmMemory" });
     case 6:
-      return S.Record(S.String, __S(77, __c9, 5));
+      return S.Record(S.String, __S(549, __c34, 5));
     case 7:
       return S.Array(S.Number);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           numaNodeIndex: S.optional(S.Number),
           totalMemoryInMb: S.optional(S.Number),
           logicalCoreCountPerCore: S.optional(S.Number),
           effectiveAvailableMemoryInMb: S.optional(S.Number),
-          freeVCpuIndexesForHpn: S.optional(__S(79, __c9, 7)),
-          vCpuIndexesForHpn: S.optional(__S(79, __c9, 7)),
-          vCpuIndexesForRoot: S.optional(__S(79, __c9, 7)),
+          freeVCpuIndexesForHpn: S.optional(__S(551, __c34, 7)),
+          vCpuIndexesForHpn: S.optional(__S(551, __c34, 7)),
+          vCpuIndexesForRoot: S.optional(__S(551, __c34, 7)),
         }),
       ).annotate({ identifier: "NumaNodeData" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(552, __c34, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           hostName: S.optional(S.String),
           effectiveAvailableMemoryMbOnHost: S.optional(S.Number),
           availableGpuCount: S.optional(S.Number),
-          vmUsedMemory: S.optional(__S(78, __c9, 6)),
+          vmUsedMemory: S.optional(__S(550, __c34, 6)),
           gpuType: S.optional(S.String),
-          numaNodesData: S.optional(__S(81, __c10, 1)),
+          numaNodesData: S.optional(__S(553, __c34, 9)),
         }),
       ).annotate({ identifier: "HostCapacity" });
-    case 3:
-      return S.Record(S.String, __S(82, __c10, 2));
-    case 4:
+    case 11:
+      return S.Record(S.String, __S(554, __c34, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           timeStamp: S.optional(S.String),
-          clusterStorageCapacityInfo: S.optional(__S(73, __c9, 1)),
-          clusterComputeCapacityInfo: S.optional(__S(76, __c9, 4)),
-          nodeCapacityInfos: S.optional(__S(83, __c10, 3)),
+          clusterStorageCapacityInfo: S.optional(__S(545, __c34, 1)),
+          clusterComputeCapacityInfo: S.optional(__S(548, __c34, 4)),
+          nodeCapacityInfos: S.optional(__S(555, __c34, 11)),
         }),
       ).annotate({
         identifier: "DeviceCapacityInfoProperties",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(84, __c10, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(556, __c34, 12)),
         }),
       ).annotate({
         identifier: "GetDeviceCapacityInfoDeviceCapacityInfoResponse",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5389,20 +5325,20 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDeviceExtendedInformationRequest",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptedSecret: S.optional(__S(49, __c6, 1)),
+          encryptedSecret: S.optional(__S(288, __c18, 0)),
           keyVaultId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Secret" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(87, __c10, 7));
     case 1:
+      return S.Record(S.String, __S(576, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           encryptionKeyThumbprint: S.optional(S.String),
@@ -5413,7 +5349,7 @@ function __c11(j: number): any {
           channelIntegrityKeyName: S.optional(S.String),
           channelIntegrityKeyVersion: S.optional(S.String),
           keyVaultSyncStatus: S.optional(S.String),
-          deviceSecrets: S.optional(__S(88, __c11, 0)),
+          deviceSecrets: S.optional(__S(577, __c36, 1)),
           clusterWitnessType: S.optional(S.String),
           fileShareWitnessLocation: S.optional(S.String),
           fileShareWitnessUsername: S.optional(S.String),
@@ -5424,7 +5360,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DataBoxEdgeDeviceExtendedInfoProperties",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -5437,19 +5373,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDeviceExtendedInformationResponseSystemData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(89, __c11, 1)),
-          systemData: S.optional(__S(90, __c11, 2)),
+          properties: S.optional(__S(578, __c36, 2)),
+          systemData: S.optional(__S(579, __c36, 3)),
         }),
       ).annotate({
         identifier: "GetDeviceExtendedInformationResponse",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5466,14 +5406,14 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDeviceNetworkSettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           networkGroup: S.optional(S.String),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NetworkAdapterPosition" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -5481,7 +5421,7 @@ function __c11(j: number): any {
           gateway: S.optional(S.String),
         }),
       ).annotate({ identifier: "Ipv4Config" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -5489,15 +5429,11 @@ function __c11(j: number): any {
           gateway: S.optional(S.String),
         }),
       ).annotate({ identifier: "Ipv6Config" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           adapterId: S.optional(S.String),
-          adapterPosition: S.optional(__S(93, __c11, 5)),
+          adapterPosition: S.optional(__S(593, __c37, 1)),
           index: S.optional(S.Number),
           nodeId: S.optional(S.String),
           networkAdapterName: S.optional(S.String),
@@ -5507,35 +5443,107 @@ function __c12(j: number): any {
           status: S.optional(S.String),
           rdmaStatus: S.optional(S.String),
           dhcpStatus: S.optional(S.String),
-          ipv4Configuration: S.optional(__S(94, __c11, 6)),
-          ipv6Configuration: S.optional(__S(95, __c11, 7)),
+          ipv4Configuration: S.optional(__S(594, __c37, 2)),
+          ipv6Configuration: S.optional(__S(595, __c37, 3)),
           ipv6LinkLocalAddress: S.optional(S.String),
-          dnsServers: S.optional(__S(7, __c0, 7)),
+          dnsServers: S.optional(__S(352, __c22, 0)),
         }),
       ).annotate({ identifier: "NetworkAdapter" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(596, __c37, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          networkAdapters: S.optional(__S(97, __c12, 1)),
+          networkAdapters: S.optional(__S(597, __c37, 5)),
         }),
       ).annotate({
         identifier: "NetworkSettingsProperties",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(98, __c12, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(598, __c37, 6)),
         }),
       ).annotate({
         identifier: "GetDeviceNetworkSettingsResponse",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataFormat: S.String,
+        }),
+      ).annotate({ identifier: "ContainerPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          storageAccountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          properties: __S(608, __c38, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(640, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "ContainersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inProgressRefreshJobId: S.optional(S.String),
+          lastCompletedRefreshJobTimeInUTC: S.optional(S.String),
+          errorManifestFile: S.optional(S.String),
+          lastJob: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RefreshDetails" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerStatus: S.optional(S.String),
+          dataFormat: S.String,
+          refreshDetails: S.optional(__S(624, __c39, 0)),
+          createdDateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerProperties" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5552,7 +5560,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userConsent: S.String,
@@ -5560,19 +5572,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ProactiveLogCollectionSettingsProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(101, __c12, 5),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(672, __c42, 0),
         }),
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5589,9 +5605,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(706, __c44, 2),
+        }),
+      ).annotate({
+        identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
+      });
   }
 }
-function __c13(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5602,28 +5630,20 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "RemoteSupportSettings" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(704, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          remoteSupportSettingsList: S.optional(__S(105, __c13, 1)),
+          remoteSupportSettingsList: S.optional(__S(705, __c44, 1)),
         }),
       ).annotate({
         identifier: "DiagnosticRemoteSupportSettingsProperties",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(106, __c13, 2),
-        }),
-      ).annotate({
-        identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
-      });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5639,7 +5659,26 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(738, __c46, 2)),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          percentComplete: S.optional(S.Number),
+          error: S.optional(__S(741, __c46, 5)),
+        }),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           downloadPhase: S.optional(S.String),
@@ -5650,7 +5689,7 @@ function __c13(j: number): any {
           numberOfUpdatesDownloaded: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateDownloadProgress" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           percentComplete: S.optional(S.Number),
@@ -5658,57 +5697,42 @@ function __c13(j: number): any {
           numberOfUpdatesInstalled: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateInstallProgress" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           jobType: S.optional(S.String),
           currentStage: S.optional(S.String),
-          downloadProgress: S.optional(__S(109, __c13, 5)),
-          installProgress: S.optional(__S(110, __c13, 6)),
+          downloadProgress: S.optional(__S(736, __c46, 0)),
+          installProgress: S.optional(__S(737, __c46, 1)),
           totalRefreshErrors: S.optional(S.Number),
           errorManifestFile: S.optional(S.String),
           refreshedEntityId: S.optional(S.String),
           folder: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobProperties" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(__S(7, __c0, 7)),
+          recommendations: S.optional(__S(352, __c22, 0)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobErrorItem" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(739, __c46, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          errorDetails: S.optional(__S(113, __c14, 1)),
+          errorDetails: S.optional(__S(740, __c46, 4)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobErrorDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(111, __c13, 7)),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          percentComplete: S.optional(S.Number),
-          error: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({ identifier: "GetJobResponse" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5726,70 +5750,74 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetMonitoringConfigRequest",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceType: S.String,
           sourceName: S.String,
         }),
       ).annotate({ identifier: "MetricDimension" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           instance: S.optional(S.String),
-          dimensionFilter: S.optional(__S(118, __c14, 6)),
-          additionalDimensions: S.optional(__S(118, __c14, 6)),
+          dimensionFilter: S.optional(__S(769, __c48, 1)),
+          additionalDimensions: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({ identifier: "MetricCounter" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(770, __c48, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          counters: __S(120, __c15, 0),
+          counters: __S(771, __c48, 3),
         }),
       ).annotate({ identifier: "MetricCounterSet" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(772, __c48, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
           mdmAccount: S.optional(S.String),
           metricNameSpace: S.optional(S.String),
-          counterSets: __S(122, __c15, 2),
+          counterSets: __S(773, __c48, 5),
         }),
       ).annotate({ identifier: "MetricConfiguration" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(774, __c48, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricConfigurations: __S(124, __c15, 4),
+          metricConfigurations: __S(775, __c48, 7),
         }),
       ).annotate({
         identifier: "MonitoringMetricConfigurationProperties",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(125, __c15, 5),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(776, __c48, 8),
         }),
       ).annotate({
         identifier: "GetMonitoringConfigResponse",
       });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5807,28 +5835,28 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetOperationsStatusRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(111, __c13, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(738, __c46, 2)),
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          error: S.optional(__S(114, __c14, 2)),
+          error: S.optional(__S(741, __c46, 5)),
         }),
       ).annotate({
         identifier: "GetOperationsStatusResponse",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5843,16 +5871,35 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrderRequest" });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(838, __c52, 6)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetOrderResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactPerson: S.String,
           companyName: S.String,
           phone: S.String,
-          emailList: __S(7, __c0, 7),
+          emailList: __S(352, __c22, 0),
         }),
       ).annotate({ identifier: "ContactDetails" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           addressLine1: S.optional(S.String),
@@ -5864,7 +5911,7 @@ function __c16(j: number): any {
           country: S.String,
         }),
       ).annotate({ identifier: "Address" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serialNumber: S.optional(S.String),
@@ -5873,50 +5920,39 @@ function __c16(j: number): any {
           trackingUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrackingInfo" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           updateDateTime: S.optional(S.String),
           comments: S.optional(S.String),
-          trackingInformation: S.optional(__S(132, __c16, 4)),
-          additionalOrderDetails: S.optional(__S(34, __c4, 2)),
+          trackingInformation: S.optional(__S(834, __c52, 2)),
+          additionalOrderDetails: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "OrderStatus" });
+    case 4:
+      return S.Array(__S(835, __c52, 3));
+    case 5:
+      return S.Array(__S(834, __c52, 2));
     case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.Array(__S(132, __c16, 4));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.optional(S.String),
-          contactInformation: __S(130, __c16, 2),
-          shippingAddress: S.optional(__S(131, __c16, 3)),
-          currentStatus: S.optional(__S(133, __c16, 5)),
-          orderHistory: S.optional(__S(134, __c16, 6)),
+          contactInformation: __S(832, __c52, 0),
+          shippingAddress: S.optional(__S(833, __c52, 1)),
+          currentStatus: S.optional(__S(835, __c52, 3)),
+          orderHistory: S.optional(__S(836, __c52, 4)),
           serialNumber: S.optional(S.String),
-          deliveryTrackingInfo: S.optional(__S(135, __c16, 7)),
-          returnTrackingInfo: S.optional(__S(135, __c16, 7)),
+          deliveryTrackingInfo: S.optional(__S(837, __c52, 5)),
+          returnTrackingInfo: S.optional(__S(837, __c52, 5)),
           shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(136, __c17, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetOrderResponse" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5932,7 +5968,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoleRequest" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5948,7 +5988,25 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetShareRequest" });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(903, __c56, 7),
+        }),
+      ).annotate({ identifier: "GetShareResponse" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storageAccountCredentialId: S.String,
@@ -5956,29 +6014,25 @@ function __c17(j: number): any {
           dataFormat: S.String,
         }),
       ).annotate({ identifier: "AzureContainerInfo" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.String,
           accessType: S.String,
         }),
       ).annotate({ identifier: "UserAccessRight" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(897, __c56, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           client: S.String,
           accessPermission: S.String,
         }),
       ).annotate({ identifier: "ClientAccessRight" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(899, __c56, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           shareId: S.String,
@@ -5988,34 +6042,28 @@ function __c18(j: number): any {
           roleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountPointMap" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(901, __c56, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           shareStatus: S.String,
           monitoringStatus: S.String,
-          azureContainerInfo: S.optional(__S(140, __c17, 4)),
+          azureContainerInfo: S.optional(__S(896, __c56, 0)),
           accessProtocol: S.String,
-          userAccessRights: S.optional(__S(142, __c17, 6)),
-          clientAccessRights: S.optional(__S(144, __c18, 0)),
-          refreshDetails: S.optional(__S(16, __c2, 0)),
-          shareMappings: S.optional(__S(146, __c18, 2)),
+          userAccessRights: S.optional(__S(898, __c56, 2)),
+          clientAccessRights: S.optional(__S(900, __c56, 4)),
+          refreshDetails: S.optional(__S(624, __c39, 0)),
+          shareMappings: S.optional(__S(902, __c56, 6)),
           dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(147, __c18, 3),
-        }),
-      ).annotate({ identifier: "GetShareResponse" });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6031,7 +6079,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStorageAccountRequest" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -6042,21 +6094,25 @@ function __c18(j: number): any {
           containerCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StorageAccountProperties" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(150, __c18, 6),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(928, __c58, 0),
         }),
       ).annotate({
         identifier: "GetStorageAccountResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6076,12 +6132,16 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetStorageAccountCredentialsRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           userName: S.optional(S.String),
-          accountKey: S.optional(__S(49, __c6, 1)),
+          accountKey: S.optional(__S(288, __c18, 0)),
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           sslStatus: S.String,
           blobDomainName: S.optional(S.String),
@@ -6091,19 +6151,56 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "StorageAccountCredentialProperties",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(153, __c19, 1),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(976, __c61, 0),
         }),
       ).annotate({
         identifier: "GetStorageAccountCredentialsResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          roleName: S.String.pipe(T.Label()),
+          addonName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAddonRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAddonResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6119,7 +6216,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTriggerRequest" });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6135,26 +6236,9 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          shareId: S.String,
-          accessType: S.String,
-        }),
-      ).annotate({ identifier: "ShareAccessRight" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryptedPassword: S.optional(__S(49, __c6, 1)),
-          shareAccessRights: S.optional(__S(158, __c19, 6)),
-          userType: S.String,
-        }),
-      ).annotate({ identifier: "UserProperties" });
   }
 }
-function __c20(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6162,11 +6246,36 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(159, __c19, 7),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1090, __c68, 2),
         }),
       ).annotate({ identifier: "GetUserResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          shareId: S.String,
+          accessType: S.String,
+        }),
+      ).annotate({ identifier: "ShareAccessRight" });
     case 1:
+      return S.Array(__S(1088, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          encryptedPassword: S.optional(__S(288, __c18, 0)),
+          shareAccessRights: S.optional(__S(1089, __c68, 1)),
+          userType: S.String,
+        }),
+      ).annotate({ identifier: "UserProperties" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6183,7 +6292,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InstallDeviceUpdatesRequest",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6199,16 +6312,20 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAddonByRoleRequest" });
-    case 3:
-      return S.Array(__S(62, __c7, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c20, 3),
+          value: __S(1121, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonList" });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6225,18 +6342,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListAlertByDataBoxEdgeDeviceRequest",
       });
-    case 6:
-      return S.Array(__S(66, __c8, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(450, __c28, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(166, __c20, 6),
+          value: __S(1137, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertList" });
   }
 }
-function __c21(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6255,12 +6372,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(__S(7, __c0, 7)),
-          sites: S.optional(__S(7, __c0, 7)),
+          zones: S.optional(__S(352, __c22, 0)),
+          sites: S.optional(__S(352, __c22, 0)),
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(1153, __c72, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6270,7 +6387,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SkuCost" });
     case 4:
-      return S.Array(__S(171, __c21, 3));
+      return S.Array(__S(1155, __c72, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6279,7 +6396,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 6:
-      return S.Array(__S(173, __c21, 5));
+      return S.Array(__S(1157, __c72, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6289,31 +6406,31 @@ function __c21(j: number): any {
           tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
-          locations: S.optional(__S(7, __c0, 7)),
-          apiVersions: S.optional(__S(7, __c0, 7)),
-          locationInfo: S.optional(__S(170, __c21, 2)),
-          costs: S.optional(__S(172, __c21, 4)),
+          locations: S.optional(__S(352, __c22, 0)),
+          apiVersions: S.optional(__S(352, __c22, 0)),
+          locationInfo: S.optional(__S(1154, __c72, 2)),
+          costs: S.optional(__S(1156, __c72, 4)),
           signupOption: S.optional(S.String),
           version: S.optional(S.String),
           availability: S.optional(S.String),
-          shipmentTypes: S.optional(__S(3, __c0, 3)),
-          capabilities: S.optional(__S(174, __c21, 6)),
+          shipmentTypes: S.optional(__S(64, __c4, 0)),
+          capabilities: S.optional(__S(1158, __c72, 6)),
         }),
       ).annotate({ identifier: "DataBoxEdgeSku" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(1159, __c72, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: __S(176, __c22, 0),
+          value: __S(1160, __c72, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeSkuList" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6330,26 +6447,30 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBandwidthScheduleByDataBoxEdgeDeviceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(4, __c0, 4),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(96, __c6, 0),
         }),
       ).annotate({ identifier: "BandwidthSchedule" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1169, __c73, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(180, __c22, 4),
+          value: __S(1170, __c73, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BandwidthSchedulesList" });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6367,20 +6488,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListContainerByStorageAccountRequest",
       });
-    case 7:
-      return S.Array(__S(69, __c8, 5));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(183, __c22, 7),
+          value: __S(1185, __c74, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerList" });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6397,16 +6518,24 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListDeviceByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(71, __c8, 7));
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(528, __c33, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(186, __c23, 2),
+          value: __S(1216, __c76, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeDeviceList" });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6422,7 +6551,37 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListDeviceBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBandwidthScheduleRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteBandwidthScheduleResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6440,12 +6599,12 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListMonitoringConfigRequest",
       });
-    case 6:
-      return S.Array(__S(126, __c15, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(777, __c48, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(190, __c23, 6),
+          value: __S(1265, __c79, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6453,7 +6612,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6490,19 +6649,23 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(193, __c24, 1)),
+          properties: S.optional(__S(1281, __c80, 1)),
         }),
       ).annotate({ identifier: "Node" });
     case 3:
-      return S.Array(__S(194, __c24, 2));
+      return S.Array(__S(1282, __c80, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(195, __c24, 3),
+          value: __S(1283, __c80, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeList" });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6513,7 +6676,7 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6522,7 +6685,7 @@ function __c24(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6530,13 +6693,9 @@ function __c24(j: number): any {
           toBeExportedForShoebox: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricDimensionV1" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1298, __c81, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6544,50 +6703,50 @@ function __c25(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(200, __c25, 0)),
+          dimensions: S.optional(__S(1299, __c81, 3)),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
-          supportedTimeGrainTypes: S.optional(__S(3, __c0, 3)),
-          supportedAggregationTypes: S.optional(__S(3, __c0, 3)),
+          supportedTimeGrainTypes: S.optional(__S(64, __c4, 0)),
+          supportedAggregationTypes: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "MetricSpecificationV1" });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(1300, __c81, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(202, __c25, 2)),
+          metricSpecifications: S.optional(__S(1301, __c81, 5)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(203, __c25, 3)),
+          serviceSpecification: S.optional(__S(1302, __c81, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(198, __c24, 6)),
+          display: S.optional(__S(1297, __c81, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1303, __c81, 7)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(1304, __c81, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(206, __c25, 6),
+          value: __S(1305, __c81, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsList" });
   }
 }
-function __c26(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6607,15 +6766,19 @@ function __c26(j: number): any {
         identifier: "ListOrderByDataBoxEdgeDeviceRequest",
       });
     case 1:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(816, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(209, __c26, 1),
+          value: __S(1313, __c82, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderList" });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6632,19 +6795,23 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListOrderDCAccessCodeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DCAccessCodeProperties" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(212, __c26, 4)),
+          properties: S.optional(__S(1329, __c83, 1)),
         }),
       ).annotate({ identifier: "DCAccessCode" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6661,20 +6828,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListRoleByDataBoxEdgeDeviceRequest",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(215, __c26, 7),
+          value: __S(1345, __c84, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleList" });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6691,16 +6858,20 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListShareByDataBoxEdgeDeviceRequest",
       });
+    case 1:
+      return S.Array(__S(880, __c55, 0));
     case 2:
-      return S.Array(__S(148, __c18, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(218, __c27, 2),
+          value: __S(1361, __c85, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareList" });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6717,28 +6888,28 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountByDataBoxEdgeDeviceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(150, __c18, 6),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(928, __c58, 0),
         }),
       ).annotate({ identifier: "StorageAccount" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1377, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(222, __c27, 6),
+          value: __S(1378, __c86, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountList" });
   }
 }
-function __c28(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6763,22 +6934,26 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(153, __c19, 1),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(976, __c61, 0),
         }),
       ).annotate({ identifier: "StorageAccountCredential" });
     case 2:
-      return S.Array(__S(225, __c28, 1));
+      return S.Array(__S(1393, __c87, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(226, __c28, 2),
+          value: __S(1394, __c87, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageAccountCredentialList",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6796,16 +6971,41 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListTriggerByDataBoxEdgeDeviceRequest",
       });
-    case 5:
-      return S.Array(__S(62, __c7, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(229, __c28, 5),
+          value: __S(1409, __c88, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerList" });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          storageAccountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteContainerRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6823,27 +7023,27 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListUserByDataBoxEdgeDeviceRequest",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(160, __c20, 0));
     case 1:
+      return S.Array(__S(1072, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(232, __c29, 0),
+          value: __S(1441, __c90, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserList" });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          properties: __S(125, __c15, 5),
+          properties: __S(776, __c48, 8),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6855,21 +7055,25 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "MonitoringConfigCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          contactInformation: __S(130, __c16, 2),
-          shippingAddress: S.optional(__S(131, __c16, 3)),
+          contactInformation: __S(832, __c52, 0),
+          shippingAddress: S.optional(__S(833, __c52, 1)),
           shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderPropertiesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(235, __c29, 3)),
+          properties: S.optional(__S(1472, __c92, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6881,20 +7085,24 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "OrdersCreateOrUpdateRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(136, __c17, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(838, __c52, 6)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OrdersCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6911,7 +7119,11 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RefreshContainerRequest" });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6929,7 +7141,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "RefreshShareRequest" });
   }
 }
-function __c30(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6950,28 +7162,32 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "RolesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           shareStatus: S.String,
           monitoringStatus: S.String,
-          azureContainerInfo: S.optional(__S(140, __c17, 4)),
+          azureContainerInfo: S.optional(__S(896, __c56, 0)),
           accessProtocol: S.String,
-          userAccessRights: S.optional(__S(142, __c17, 6)),
-          clientAccessRights: S.optional(__S(144, __c18, 0)),
-          refreshDetails: S.optional(__S(16, __c2, 0)),
+          userAccessRights: S.optional(__S(898, __c56, 2)),
+          clientAccessRights: S.optional(__S(900, __c56, 4)),
+          refreshDetails: S.optional(__S(624, __c39, 0)),
           dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharePropertiesInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(241, __c30, 1),
+          properties: __S(1536, __c96, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6983,26 +7199,30 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "SharesCreateOrUpdateRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(147, __c18, 3),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(903, __c56, 7),
         }),
       ).annotate({
         identifier: "SharesCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(153, __c19, 1),
+          properties: __S(976, __c61, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7014,7 +7234,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "StorageAccountCredentialsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -7025,14 +7249,14 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "StorageAccountPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
-          properties: __S(245, __c30, 5),
+          properties: __S(1568, __c98, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7044,7 +7268,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "StorageAccountsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7065,7 +7293,26 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeviceRequest" });
+  }
+}
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7083,7 +7330,7 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(248, __c31, 0),
+          properties: __S(1616, __c101, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7095,7 +7342,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "TriggerSupportPackageSupportPackageRequest",
       });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -7103,29 +7354,29 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "EdgeProfileSubscriptionPatch",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(__S(250, __c31, 2)),
+          subscription: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({ identifier: "EdgeProfilePatch" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          edgeProfile: S.optional(__S(251, __c31, 3)),
+          edgeProfile: S.optional(__S(1633, __c102, 1)),
         }),
       ).annotate({
         identifier: "DataBoxEdgeDevicePropertiesPatch",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(34, __c4, 2)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: S.optional(__S(252, __c31, 4)),
+          tags: S.optional(__S(240, __c15, 0)),
+          identity: S.optional(__S(256, __c16, 0)),
+          properties: S.optional(__S(1634, __c102, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7135,7 +7386,11 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeviceRequest" });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7157,13 +7412,17 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UpdateDeviceExtendedInformationRequest",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(101, __c12, 5),
+          properties: __S(672, __c42, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7177,7 +7436,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7185,7 +7444,7 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(106, __c13, 2),
+          properties: __S(706, __c44, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7203,26 +7462,30 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(106, __c13, 2),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(706, __c44, 2),
         }),
       ).annotate({
         identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
       });
-    case 2:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authenticationType: S.optional(S.String),
           certificate: S.String,
         }),
       ).annotate({ identifier: "RawCertificateData" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(258, __c32, 2),
+          properties: __S(1696, __c106, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7234,7 +7497,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UploadDeviceCertificateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authType: S.optional(S.String),
@@ -7249,21 +7512,25 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UploadCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptedPassword: S.optional(__S(49, __c6, 1)),
+          encryptedPassword: S.optional(__S(288, __c18, 0)),
           userType: S.String,
         }),
       ).annotate({ identifier: "UserPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(261, __c32, 5),
+          properties: __S(1712, __c107, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7275,21 +7542,61 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UsersCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: __S(159, __c19, 7),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1090, __c68, 2),
         }),
       ).annotate({
         identifier: "UsersCreateOrUpdateResponse",
       });
   }
 }
-
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          roleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMonitoringConfigRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrderRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2264,8 +2264,8 @@ export const authorizationsReauthorize: API.OperationMethod<
   AuthorizationsReauthorizeError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AuthorizationsReauthorizeRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AuthorizationsReauthorizeResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<AuthorizationsReauthorizeRequest>,
+  output: __S(133, __c4, 5) as any as S.Schema<AuthorizationsReauthorizeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2285,8 +2285,8 @@ export const captureAuthorization: API.OperationMethod<
   CaptureAuthorizationError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CaptureAuthorizationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CaptureAuthorizationResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<CaptureAuthorizationRequest>,
+  output: __S(358, __c11, 6) as any as S.Schema<CaptureAuthorizationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2300,8 +2300,8 @@ export const findEligibleMethods: API.OperationMethod<
   FindEligibleMethodsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<FindEligibleMethodsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<FindEligibleMethodsResponse>,
+  input: __S(455, __c14, 7) as any as S.Schema<FindEligibleMethodsRequest>,
+  output: __S(467, __c14, 19) as any as S.Schema<FindEligibleMethodsResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2315,8 +2315,8 @@ export const getAuthorization: API.OperationMethod<
   GetAuthorizationError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetAuthorizationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetAuthorizationResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetAuthorizationRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<GetAuthorizationResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2330,8 +2330,8 @@ export const getCapture: API.OperationMethod<
   GetCaptureError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetCaptureRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetCaptureResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetCaptureRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<GetCaptureResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2345,8 +2345,8 @@ export const getRefund: API.OperationMethod<
   GetRefundError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetRefundRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetRefundResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRefundRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetRefundResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2366,8 +2366,8 @@ export const refundCapture: API.OperationMethod<
   RefundCaptureError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<RefundCaptureRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<RefundCaptureResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<RefundCaptureRequest>,
+  output: __S(70, __c2, 6) as any as S.Schema<RefundCaptureResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2386,8 +2386,8 @@ export const voidAuthorization: API.OperationMethod<
   VoidAuthorizationError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<VoidAuthorizationRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<VoidAuthorizationResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<VoidAuthorizationRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<VoidAuthorizationResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2399,140 +2399,28 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          currency_code: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeRequestAmount",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          authorization_id: S.String.pipe(T.Label()),
-          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          refund_id: S.String.pipe(T.Label()),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          amount: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/payments/authorizations/{authorization_id}/reauthorize",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseStatusDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          item_total: S.optional(__S(0, __c0, 0)),
-          shipping: S.optional(__S(0, __c0, 0)),
-          handling: S.optional(__S(0, __c0, 0)),
-          tax_total: S.optional(__S(0, __c0, 0)),
-          insurance: S.optional(__S(0, __c0, 0)),
-          shipping_discount: S.optional(__S(0, __c0, 0)),
-          discount: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AmountBreakdown" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          currency_code: S.String,
-          value: S.String,
-          breakdown: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseAmount",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          date: S.optional(S.String),
-          network: S.optional(S.Unknown),
-          acquirer_reference_number: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTransaction" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          dispute_categories: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseSellerProtection",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
+        }).pipe(T.Http({ method: "GET", uri: "/v2/payments/refunds/{refund_id}", code: 200 })),
+      ).annotate({ identifier: "GetRefundRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          binaryEncoding: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseLinksItemSchemaMedia",
-      });
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          additionalItems: S.optional(S.Unknown),
-          dependencies: S.optional(S.Unknown),
-          items: S.optional(S.Unknown),
-          definitions: S.optional(S.Unknown),
-          patternProperties: S.optional(S.Unknown),
-          properties: S.optional(S.Unknown),
-          allOf: S.optional(__S(8, __c1, 0)),
-          anyOf: S.optional(__S(8, __c1, 0)),
-          oneOf: S.optional(__S(8, __c1, 0)),
-          not: S.optional(S.Unknown),
-          links: S.optional(__S(8, __c1, 0)),
-          fragmentResolution: S.optional(S.String),
-          media: S.optional(__S(9, __c1, 1)),
-          pathStart: S.optional(S.String),
+          gross_amount: S.optional(__S(224, __c7, 0)),
+          paypal_fee: S.optional(__S(224, __c7, 0)),
+          paypal_fee_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          net_amount: S.optional(__S(224, __c7, 0)),
+          net_amount_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          platform_fees: S.optional(__S(417, __c13, 1)),
+          net_amount_breakdown: S.optional(__S(1, __c0, 1)),
+          total_refunded_amount: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseLinksItemSchema",
+        identifier: "GetRefundResponseSellerPayableBreakdown",
       });
     case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalItems: S.optional(S.Unknown),
-          dependencies: S.optional(S.Unknown),
-          items: S.optional(S.Unknown),
-          definitions: S.optional(S.Unknown),
-          patternProperties: S.optional(S.Unknown),
-          properties: S.optional(S.Unknown),
-          allOf: S.optional(__S(11, __c1, 3)),
-          anyOf: S.optional(__S(11, __c1, 3)),
-          oneOf: S.optional(__S(11, __c1, 3)),
-          not: S.optional(S.Unknown),
-          links: S.optional(__S(11, __c1, 3)),
-          fragmentResolution: S.optional(S.String),
-          media: S.optional(__S(9, __c1, 1)),
-          pathStart: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseLinksItemTargetSchema",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -2541,23 +2429,45 @@ function __c1(j: number): any {
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(12, __c1, 4)),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseLinksItem",
+        identifier: "GetRefundResponseLinksItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          order_id: S.optional(S.String),
-          authorization_id: S.optional(S.String),
-          capture_id: S.optional(S.String),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(224, __c7, 0)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          acquirer_reference_number: S.optional(S.String),
+          note_to_payer: S.optional(S.String),
+          seller_payable_breakdown: S.optional(__S(2, __c0, 2)),
+          payer: S.optional(__S(228, __c7, 4)),
+          links: S.optional(__S(4, __c0, 4)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "GetRefundResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payable_amount: S.optional(__S(224, __c7, 0)),
+          converted_amount: S.optional(__S(224, __c7, 0)),
+          exchange_rate: S.optional(__S(418, __c13, 2)),
         }),
       ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseSupplementaryDataRelatedIds",
+        identifier: "GetRefundResponseSellerPayableBreakdownNetAmountBreakdownItem",
       });
   }
 }
@@ -2566,646 +2476,84 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          related_ids: S.optional(__S(15, __c1, 7)),
+          platform_fees: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({
-        identifier: "AuthorizationsReauthorizeResponseSupplementaryData",
+        identifier: "RefundCaptureRequestPaymentInstruction",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          email_address: S.optional(S.Unknown),
-          merchant_id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponsePayee",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(__S(5, __c0, 5)),
-          seller_protection: S.optional(__S(7, __c0, 7)),
-          expiration_time: S.optional(S.Unknown),
-          links: S.optional(__S(14, __c1, 6)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-          supplementary_data: S.optional(__S(16, __c2, 0)),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "AuthorizationsReauthorizeResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(0, __c0, 0),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          platform_fees: S.optional(__S(20, __c2, 4)),
-          disbursement_mode: S.optional(S.Unknown),
-          payee_pricing_tier_id: S.optional(S.String),
-          payee_receivable_fx_rate_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationRequestPaymentInstruction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authorization_id: S.String.pipe(T.Label()),
+          capture_id: S.String.pipe(T.Label()),
           payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
+          amount: S.optional(__S(224, __c7, 0)),
+          custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          amount: S.optional(__S(0, __c0, 0)),
-          final_capture: S.optional(S.Boolean),
-          payment_instruction: S.optional(__S(21, __c2, 5)),
-          soft_descriptor: S.optional(S.String),
+          payment_instruction: S.optional(__S(64, __c2, 0)),
         }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/payments/authorizations/{authorization_id}/capture",
-            code: 200,
-          }),
+          T.Http({ method: "POST", uri: "/v2/payments/captures/{capture_id}/refund", code: 200 }),
         ),
-      ).annotate({
-        identifier: "CaptureAuthorizationRequest",
-      });
-    case 7:
+      ).annotate({ identifier: "RefundCaptureRequest" });
+    case 2:
+      return S.Array(__S(32, __c1, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          source_currency: S.optional(S.Unknown),
-          target_currency: S.optional(S.Unknown),
-          value: S.optional(S.String),
+          gross_amount: S.optional(__S(224, __c7, 0)),
+          paypal_fee: S.optional(__S(224, __c7, 0)),
+          paypal_fee_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          net_amount: S.optional(__S(224, __c7, 0)),
+          net_amount_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          platform_fees: S.optional(__S(417, __c13, 1)),
+          net_amount_breakdown: S.optional(__S(66, __c2, 2)),
+          total_refunded_amount: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
-        identifier: "CaptureAuthorizationResponseSellerReceivableBreakdownExchangeRate",
+        identifier: "RefundCaptureResponseSellerPayableBreakdown",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "RefundCaptureResponseLinksItem",
+      });
+    case 5:
+      return S.Array(__S(68, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(224, __c7, 0)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          acquirer_reference_number: S.optional(S.String),
+          note_to_payer: S.optional(S.String),
+          seller_payable_breakdown: S.optional(__S(67, __c2, 3)),
+          payer: S.optional(__S(228, __c7, 4)),
+          links: S.optional(__S(69, __c2, 5)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "RefundCaptureResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(19, __c2, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gross_amount: __S(0, __c0, 0),
-          paypal_fee: S.optional(__S(0, __c0, 0)),
-          paypal_fee_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          net_amount: S.optional(__S(0, __c0, 0)),
-          receivable_amount: S.optional(__S(0, __c0, 0)),
-          exchange_rate: S.optional(__S(23, __c2, 7)),
-          platform_fees: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationResponseSellerReceivableBreakdown",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationResponseLinksItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          avs_code: S.optional(S.String),
-          cvv_code: S.optional(S.String),
-          response_code: S.optional(S.String),
-          payment_advice_code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationResponseProcessorResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(__S(5, __c0, 5)),
-          seller_protection: S.optional(__S(7, __c0, 7)),
-          final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(__S(25, __c3, 1)),
-          disbursement_mode: S.optional(S.String),
-          links: S.optional(__S(27, __c3, 3)),
-          processor_response: S.optional(__S(28, __c3, 4)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-          supplementary_data: S.optional(__S(16, __c2, 0)),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CaptureAuthorizationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          browser_type: S.optional(S.String),
-          client_os: S.optional(S.String),
-          device_type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequestCustomerChannel",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.String,
-          national_number: S.String,
-          extension_number: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequestCustomerPhone",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.optional(S.Unknown),
-          channel: S.optional(__S(30, __c3, 6)),
-          id: S.optional(S.String),
-          email: S.optional(S.String),
-          phone: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequestCustomer",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(4, __c0, 4)),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "EligibilityPurchaseUnitRequest",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          constraint_type: S.String,
-          payment_sources: __S(6, __c0, 6),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequestPreferencesPaymentSourceConstraint",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          payment_flow: S.optional(S.String),
-          include_account_details: S.optional(S.Boolean),
-          include_vault_tokens: S.optional(S.Boolean),
-          payment_source_constraint: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequestPreferences",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          userAgent: S.optional(S.String.pipe(T.Header("User-Agent"))),
-          payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
-          customer: S.optional(__S(32, __c4, 0)),
-          purchase_units: S.optional(__S(34, __c4, 2)),
-          preferences: S.optional(__S(36, __c4, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/payments/find-eligible-methods", code: 200 })),
-      ).annotate({
-        identifier: "FindEligibleMethodsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          can_be_vaulted: S.optional(S.Boolean),
-          country_code: S.optional(S.Unknown),
-          product_code: S.optional(S.Unknown),
-          eligible_in_paypal_network: S.optional(S.Boolean),
-          recommended: S.optional(S.Boolean),
-          recommended_priority: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponseEligibleMethodsPaypal",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          can_be_vaulted: S.optional(S.Boolean),
-          country_code: S.optional(S.Unknown),
-          product_code: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponseEligibleMethodsPaypalCredit",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          paypal: S.optional(__S(38, __c4, 6)),
-          venmo: S.optional(__S(38, __c4, 6)),
-          paypal_credit: S.optional(__S(39, __c4, 7)),
-          paypal_pay_later: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponseEligibleMethods",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(S.Unknown),
-          payer_id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponsePaymentTokensItemPaymentSourcePaypal",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VenmoPaymentTokenInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          paypal: S.optional(__S(41, __c5, 1)),
-          venmo: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponsePaymentTokensItemPaymentSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalItems: S.optional(S.Unknown),
-          dependencies: S.optional(S.Unknown),
-          items: S.optional(S.Unknown),
-          definitions: S.optional(S.Unknown),
-          patternProperties: S.optional(S.Unknown),
-          properties: S.optional(S.Unknown),
-          allOf: S.optional(__S(8, __c1, 0)),
-          anyOf: S.optional(__S(8, __c1, 0)),
-          oneOf: S.optional(__S(8, __c1, 0)),
-          not: S.optional(S.Unknown),
-          links: S.optional(__S(8, __c1, 0)),
-          fragmentResolution: S.optional(S.String),
-          media: S.optional(__S(9, __c1, 1)),
-          pathStart: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkDescriptionSchema" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(44, __c5, 4)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "LinkDescription" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          payment_source: S.optional(__S(43, __c5, 3)),
-          links: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponsePaymentTokensItem",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          eligible_methods: S.optional(__S(40, __c5, 0)),
-          payment_tokens: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "FindEligibleMethodsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authorization_id: S.String.pipe(T.Label()),
-          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/payments/authorizations/{authorization_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAuthorizationRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          dispute_categories: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "GetAuthorizationResponseSellerProtection",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GetAuthorizationResponseLinksItem",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(__S(5, __c0, 5)),
-          seller_protection: S.optional(__S(52, __c6, 4)),
-          expiration_time: S.optional(S.Unknown),
-          links: S.optional(__S(54, __c6, 6)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-          supplementary_data: S.optional(__S(16, __c2, 0)),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetAuthorizationResponse" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          capture_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/payments/captures/{capture_id}", code: 200 })),
-      ).annotate({ identifier: "GetCaptureRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gross_amount: __S(0, __c0, 0),
-          paypal_fee: S.optional(__S(0, __c0, 0)),
-          paypal_fee_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          net_amount: S.optional(__S(0, __c0, 0)),
-          receivable_amount: S.optional(__S(0, __c0, 0)),
-          exchange_rate: S.optional(__S(23, __c2, 7)),
-          platform_fees: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GetCaptureResponseSellerReceivableBreakdown",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GetCaptureResponseLinksItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(__S(5, __c0, 5)),
-          seller_protection: S.optional(__S(52, __c6, 4)),
-          final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(__S(57, __c7, 1)),
-          disbursement_mode: S.optional(S.String),
-          links: S.optional(__S(59, __c7, 3)),
-          processor_response: S.optional(__S(28, __c3, 4)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-          supplementary_data: S.optional(__S(16, __c2, 0)),
-          payee: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetCaptureResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          refund_id: S.String.pipe(T.Label()),
-          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/payments/refunds/{refund_id}", code: 200 })),
-      ).annotate({ identifier: "GetRefundRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          payable_amount: S.optional(__S(0, __c0, 0)),
-          converted_amount: S.optional(__S(0, __c0, 0)),
-          exchange_rate: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GetRefundResponseSellerPayableBreakdownNetAmountBreakdownItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gross_amount: S.optional(__S(0, __c0, 0)),
-          paypal_fee: S.optional(__S(0, __c0, 0)),
-          paypal_fee_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          net_amount: S.optional(__S(0, __c0, 0)),
-          net_amount_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          platform_fees: S.optional(__S(20, __c2, 4)),
-          net_amount_breakdown: S.optional(__S(63, __c7, 7)),
-          total_refunded_amount: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GetRefundResponseSellerPayableBreakdown",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GetRefundResponseLinksItem",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(0, __c0, 0)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          acquirer_reference_number: S.optional(S.String),
-          note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(__S(64, __c8, 0)),
-          payer: S.optional(__S(17, __c2, 1)),
-          links: S.optional(__S(66, __c8, 2)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "GetRefundResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          platform_fees: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "RefundCaptureRequestPaymentInstruction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          capture_id: S.String.pipe(T.Label()),
-          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          amount: S.optional(__S(0, __c0, 0)),
-          custom_id: S.optional(S.String),
-          invoice_id: S.optional(S.String),
-          note_to_payer: S.optional(S.String),
-          payment_instruction: S.optional(__S(68, __c8, 4)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/payments/captures/{capture_id}/refund", code: 200 }),
-        ),
-      ).annotate({ identifier: "RefundCaptureRequest" });
-    case 6:
-      return S.Array(__S(62, __c7, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gross_amount: S.optional(__S(0, __c0, 0)),
-          paypal_fee: S.optional(__S(0, __c0, 0)),
-          paypal_fee_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          net_amount: S.optional(__S(0, __c0, 0)),
-          net_amount_in_receivable_currency: S.optional(__S(0, __c0, 0)),
-          platform_fees: S.optional(__S(20, __c2, 4)),
-          net_amount_breakdown: S.optional(__S(70, __c8, 6)),
-          total_refunded_amount: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "RefundCaptureResponseSellerPayableBreakdown",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-          title: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "RefundCaptureResponseLinksItem",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          amount: S.optional(__S(0, __c0, 0)),
-          invoice_id: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          acquirer_reference_number: S.optional(S.String),
-          note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(__S(71, __c8, 7)),
-          payer: S.optional(__S(17, __c2, 1)),
-          links: S.optional(__S(73, __c9, 1)),
-          create_time: S.optional(S.Unknown),
-          update_time: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "RefundCaptureResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           authorization_id: S.String.pipe(T.Label()),
@@ -3220,6 +2568,323 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VoidAuthorizationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "VoidAuthorizationResponseLinksItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(257, __c8, 1)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          network_transaction_reference: S.optional(__S(320, __c10, 0)),
+          seller_protection: S.optional(__S(513, __c16, 1)),
+          expiration_time: S.optional(S.Unknown),
+          links: S.optional(__S(98, __c3, 2)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+          supplementary_data: S.optional(__S(322, __c10, 2)),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({
+        identifier: "VoidAuthorizationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorization_id: S.String.pipe(T.Label()),
+          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
+          amount: S.optional(__S(224, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/payments/authorizations/{authorization_id}/reauthorize",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          additionalItems: S.optional(S.Unknown),
+          dependencies: S.optional(S.Unknown),
+          items: S.optional(S.Unknown),
+          definitions: S.optional(S.Unknown),
+          patternProperties: S.optional(S.Unknown),
+          properties: S.optional(S.Unknown),
+          allOf: S.optional(__S(129, __c4, 1)),
+          anyOf: S.optional(__S(129, __c4, 1)),
+          oneOf: S.optional(__S(129, __c4, 1)),
+          not: S.optional(S.Unknown),
+          links: S.optional(__S(129, __c4, 1)),
+          fragmentResolution: S.optional(S.String),
+          media: S.optional(__S(226, __c7, 2)),
+          pathStart: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseLinksItemTargetSchema",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseLinksItem",
+      });
+    case 4:
+      return S.Array(__S(131, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(257, __c8, 1)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          network_transaction_reference: S.optional(__S(320, __c10, 0)),
+          seller_protection: S.optional(__S(160, __c5, 0)),
+          expiration_time: S.optional(S.Unknown),
+          links: S.optional(__S(132, __c4, 4)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+          supplementary_data: S.optional(__S(322, __c10, 2)),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          dispute_categories: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseSellerProtection",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency_code: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeRequestAmount",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          binaryEncoding: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseLinksItemSchemaMedia",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          additionalItems: S.optional(S.Unknown),
+          dependencies: S.optional(S.Unknown),
+          items: S.optional(S.Unknown),
+          definitions: S.optional(S.Unknown),
+          patternProperties: S.optional(S.Unknown),
+          properties: S.optional(S.Unknown),
+          allOf: S.optional(__S(225, __c7, 1)),
+          anyOf: S.optional(__S(225, __c7, 1)),
+          oneOf: S.optional(__S(225, __c7, 1)),
+          not: S.optional(S.Unknown),
+          links: S.optional(__S(225, __c7, 1)),
+          fragmentResolution: S.optional(S.String),
+          media: S.optional(__S(226, __c7, 2)),
+          pathStart: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseLinksItemSchema",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(S.Unknown),
+          merchant_id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponsePayee",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          item_total: S.optional(__S(224, __c7, 0)),
+          shipping: S.optional(__S(224, __c7, 0)),
+          handling: S.optional(__S(224, __c7, 0)),
+          tax_total: S.optional(__S(224, __c7, 0)),
+          insurance: S.optional(__S(224, __c7, 0)),
+          shipping_discount: S.optional(__S(224, __c7, 0)),
+          discount: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "AmountBreakdown" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currency_code: S.String,
+          value: S.String,
+          breakdown: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseAmount",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseStatusDetails",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          date: S.optional(S.String),
+          network: S.optional(S.Unknown),
+          acquirer_reference_number: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTransaction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          order_id: S.optional(S.String),
+          authorization_id: S.optional(S.String),
+          capture_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseSupplementaryDataRelatedIds",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          related_ids: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "AuthorizationsReauthorizeResponseSupplementaryData",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          platform_fees: S.optional(__S(417, __c13, 1)),
+          disbursement_mode: S.optional(S.Unknown),
+          payee_pricing_tier_id: S.optional(S.String),
+          payee_receivable_fx_rate_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CaptureAuthorizationRequestPaymentInstruction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authorization_id: S.String.pipe(T.Label()),
+          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
+          invoice_id: S.optional(S.String),
+          note_to_payer: S.optional(S.String),
+          amount: S.optional(__S(224, __c7, 0)),
+          final_capture: S.optional(S.Boolean),
+          payment_instruction: S.optional(__S(352, __c11, 0)),
+          soft_descriptor: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/payments/authorizations/{authorization_id}/capture",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CaptureAuthorizationRequest",
+      });
+    case 2:
+      return S.Array(__S(416, __c13, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          gross_amount: __S(224, __c7, 0),
+          paypal_fee: S.optional(__S(224, __c7, 0)),
+          paypal_fee_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          net_amount: S.optional(__S(224, __c7, 0)),
+          receivable_amount: S.optional(__S(224, __c7, 0)),
+          exchange_rate: S.optional(__S(418, __c13, 2)),
+          platform_fees: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({
+        identifier: "CaptureAuthorizationResponseSellerReceivableBreakdown",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3229,38 +2894,404 @@ function __c9(j: number): any {
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(__S(10, __c1, 2)),
-          targetSchema: S.optional(__S(10, __c1, 2)),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
-        identifier: "VoidAuthorizationResponseLinksItem",
+        identifier: "CaptureAuthorizationResponseLinksItem",
       });
     case 5:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(356, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          status_details: S.optional(__S(2, __c0, 2)),
+          status_details: S.optional(__S(288, __c9, 0)),
           id: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
+          amount: S.optional(__S(257, __c8, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(__S(5, __c0, 5)),
-          seller_protection: S.optional(__S(52, __c6, 4)),
-          expiration_time: S.optional(S.Unknown),
-          links: S.optional(__S(77, __c9, 5)),
+          network_transaction_reference: S.optional(__S(320, __c10, 0)),
+          seller_protection: S.optional(__S(160, __c5, 0)),
+          final_capture: S.optional(S.Boolean),
+          seller_receivable_breakdown: S.optional(__S(355, __c11, 3)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(357, __c11, 5)),
+          processor_response: S.optional(__S(384, __c12, 0)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          supplementary_data: S.optional(__S(16, __c2, 0)),
-          payee: S.optional(__S(17, __c2, 1)),
+          supplementary_data: S.optional(__S(322, __c10, 2)),
+          payee: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({
-        identifier: "VoidAuthorizationResponse",
+        identifier: "CaptureAuthorizationResponse",
       });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avs_code: S.optional(S.String),
+          cvv_code: S.optional(S.String),
+          response_code: S.optional(S.String),
+          payment_advice_code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CaptureAuthorizationResponseProcessorResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(224, __c7, 0),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({
+        identifier: "CaptureAuthorizationRequestPaymentInstructionPlatformFeesItem",
+      });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          source_currency: S.optional(S.Unknown),
+          target_currency: S.optional(S.Unknown),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CaptureAuthorizationResponseSellerReceivableBreakdownExchangeRate",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          browser_type: S.optional(S.String),
+          client_os: S.optional(S.String),
+          device_type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequestCustomerChannel",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.String,
+          national_number: S.String,
+          extension_number: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequestCustomerPhone",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.optional(S.Unknown),
+          channel: S.optional(__S(448, __c14, 0)),
+          id: S.optional(S.String),
+          email: S.optional(S.String),
+          phone: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequestCustomer",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(257, __c8, 1)),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({
+        identifier: "EligibilityPurchaseUnitRequest",
+      });
+    case 4:
+      return S.Array(__S(451, __c14, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          constraint_type: S.String,
+          payment_sources: __S(192, __c6, 0),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequestPreferencesPaymentSourceConstraint",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          payment_flow: S.optional(S.String),
+          include_account_details: S.optional(S.Boolean),
+          include_vault_tokens: S.optional(S.Boolean),
+          payment_source_constraint: S.optional(__S(453, __c14, 5)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequestPreferences",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
+          userAgent: S.optional(S.String.pipe(T.Header("User-Agent"))),
+          payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
+          customer: S.optional(__S(450, __c14, 2)),
+          purchase_units: S.optional(__S(452, __c14, 4)),
+          preferences: S.optional(__S(454, __c14, 6)),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/payments/find-eligible-methods", code: 200 })),
+      ).annotate({
+        identifier: "FindEligibleMethodsRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          can_be_vaulted: S.optional(S.Boolean),
+          country_code: S.optional(S.Unknown),
+          product_code: S.optional(S.Unknown),
+          eligible_in_paypal_network: S.optional(S.Boolean),
+          recommended: S.optional(S.Boolean),
+          recommended_priority: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponseEligibleMethodsPaypal",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          can_be_vaulted: S.optional(S.Boolean),
+          country_code: S.optional(S.Unknown),
+          product_code: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponseEligibleMethodsPaypalCredit",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          paypal: S.optional(__S(456, __c14, 8)),
+          venmo: S.optional(__S(456, __c14, 8)),
+          paypal_credit: S.optional(__S(457, __c14, 9)),
+          paypal_pay_later: S.optional(__S(457, __c14, 9)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponseEligibleMethods",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(S.Unknown),
+          payer_id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponsePaymentTokensItemPaymentSourcePaypal",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          user_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VenmoPaymentTokenInfo" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          paypal: S.optional(__S(459, __c14, 11)),
+          venmo: S.optional(__S(460, __c14, 12)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponsePaymentTokensItemPaymentSource",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          additionalItems: S.optional(S.Unknown),
+          dependencies: S.optional(S.Unknown),
+          items: S.optional(S.Unknown),
+          definitions: S.optional(S.Unknown),
+          patternProperties: S.optional(S.Unknown),
+          properties: S.optional(S.Unknown),
+          allOf: S.optional(__S(225, __c7, 1)),
+          anyOf: S.optional(__S(225, __c7, 1)),
+          oneOf: S.optional(__S(225, __c7, 1)),
+          not: S.optional(S.Unknown),
+          links: S.optional(__S(225, __c7, 1)),
+          fragmentResolution: S.optional(S.String),
+          media: S.optional(__S(226, __c7, 2)),
+          pathStart: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkDescriptionSchema" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(462, __c14, 14)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "LinkDescription" });
+    case 16:
+      return S.Array(__S(463, __c14, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          payment_source: S.optional(__S(461, __c14, 13)),
+          links: S.optional(__S(464, __c14, 16)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponsePaymentTokensItem",
+      });
+    case 18:
+      return S.Array(__S(465, __c14, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          eligible_methods: S.optional(__S(458, __c14, 10)),
+          payment_tokens: S.optional(__S(466, __c14, 18)),
+        }),
+      ).annotate({
+        identifier: "FindEligibleMethodsResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorization_id: S.String.pipe(T.Label()),
+          payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/payments/authorizations/{authorization_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAuthorizationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "GetAuthorizationResponseLinksItem",
+      });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(257, __c8, 1)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          network_transaction_reference: S.optional(__S(320, __c10, 0)),
+          seller_protection: S.optional(__S(513, __c16, 1)),
+          expiration_time: S.optional(S.Unknown),
+          links: S.optional(__S(482, __c15, 2)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+          supplementary_data: S.optional(__S(322, __c10, 2)),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({ identifier: "GetAuthorizationResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          dispute_categories: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "GetAuthorizationResponseSellerProtection",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          capture_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/payments/captures/{capture_id}", code: 200 })),
+      ).annotate({ identifier: "GetCaptureRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gross_amount: __S(224, __c7, 0),
+          paypal_fee: S.optional(__S(224, __c7, 0)),
+          paypal_fee_in_receivable_currency: S.optional(__S(224, __c7, 0)),
+          net_amount: S.optional(__S(224, __c7, 0)),
+          receivable_amount: S.optional(__S(224, __c7, 0)),
+          exchange_rate: S.optional(__S(418, __c13, 2)),
+          platform_fees: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "GetCaptureResponseSellerReceivableBreakdown",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+          title: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          encType: S.optional(S.String),
+          schema: S.optional(__S(227, __c7, 3)),
+          targetSchema: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "GetCaptureResponseLinksItem",
+      });
+    case 3:
+      return S.Array(__S(546, __c17, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_details: S.optional(__S(288, __c9, 0)),
+          id: S.optional(S.String),
+          amount: S.optional(__S(257, __c8, 1)),
+          invoice_id: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          network_transaction_reference: S.optional(__S(320, __c10, 0)),
+          seller_protection: S.optional(__S(513, __c16, 1)),
+          final_capture: S.optional(S.Boolean),
+          seller_receivable_breakdown: S.optional(__S(545, __c17, 1)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(547, __c17, 3)),
+          processor_response: S.optional(__S(384, __c12, 0)),
+          create_time: S.optional(S.Unknown),
+          update_time: S.optional(S.Unknown),
+          supplementary_data: S.optional(__S(322, __c10, 2)),
+          payee: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({ identifier: "GetCaptureResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

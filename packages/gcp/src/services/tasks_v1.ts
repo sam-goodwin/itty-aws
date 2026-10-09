@@ -294,8 +294,8 @@ export const clearTasks: API.OperationMethod<
   ClearTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ClearTasksRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearTasksResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ClearTasksRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ClearTasksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const deleteTasklists: API.OperationMethod<
   DeleteTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteTasklistsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTasklistsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteTasklistsRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteTasklistsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const deleteTasks: API.OperationMethod<
   DeleteTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteTasksRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTasksResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteTasksRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteTasksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -339,8 +339,8 @@ export const getTasklists: API.OperationMethod<
   GetTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetTasklistsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetTasklistsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -350,8 +350,8 @@ export type GetTasksError = NotFound | Forbidden | GcpOpError;
 /** Returns the specified task. */
 export const getTasks: API.OperationMethod<GetTasksRequest, Task, GetTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(6, __c0, 6) as any as S.Schema<GetTasksRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<Task>,
+    input: __S(112, __c14, 0) as any as S.Schema<GetTasksRequest>,
+    output: __S(125, __c15, 5) as any as S.Schema<Task>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -365,8 +365,8 @@ export const insertTasklists: API.OperationMethod<
   InsertTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<InsertTasklistsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
+  input: __S(128, __c16, 0) as any as S.Schema<InsertTasklistsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,8 +380,8 @@ export const insertTasks: API.OperationMethod<
   InsertTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<InsertTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(0, __c0, 0) as any as S.Schema<InsertTasksRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const listTasklists: API.PaginatedOperationMethod<
   GcpOpContext,
   TaskList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListTasklistsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<TaskLists>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListTasklistsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<TaskLists>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +413,8 @@ export const listTasks: API.PaginatedOperationMethod<
   GcpOpContext,
   Task
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListTasksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Tasks>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListTasksRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Tasks>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -425,8 +425,8 @@ export type MoveTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpO
 /** Moves the specified task to another position in the destination task list. If the destination list is not specified, the task is moved within its current list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000 subtasks per task. */
 export const moveTasks: API.OperationMethod<MoveTasksRequest, Task, MoveTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(21, __c2, 5) as any as S.Schema<MoveTasksRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<Task>,
+    input: __S(24, __c3, 0) as any as S.Schema<MoveTasksRequest>,
+    output: __S(125, __c15, 5) as any as S.Schema<Task>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -440,8 +440,8 @@ export const patchTasklists: API.OperationMethod<
   PatchTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<PatchTasklistsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
+  input: __S(32, __c4, 0) as any as S.Schema<PatchTasklistsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const patchTasks: API.OperationMethod<
   PatchTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(40, __c5, 0) as any as S.Schema<PatchTasksRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const updateTasklists: API.OperationMethod<
   UpdateTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateTasklistsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateTasklistsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,8 +485,8 @@ export const updateTasks: API.OperationMethod<
   UpdateTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateTasksRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -498,157 +498,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tasklist: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "tasks/v1/lists/{tasklist}/clear",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ClearTasksRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ClearTasksResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tasklist: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "tasks/v1/users/@me/lists/{tasklist}",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTasklistsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.String.pipe(T.Label()),
-          tasklist: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTasksRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tasklist: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "tasks/v1/users/@me/lists/{tasklist}",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetTasklistsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          title: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          updated: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tasklist: S.String.pipe(T.Label()),
-          task: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetTasksRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          driveFileId: S.optional(S.String),
-          resourceKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DriveResourceInfo" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          space: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SpaceInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          driveResourceInfo: S.optional(__S(7, __c0, 7)),
-          linkToTask: S.optional(S.String),
-          spaceInfo: S.optional(__S(8, __c1, 0)),
-          surfaceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssignmentInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-          link: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskLinksItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          completed: S.optional(S.String),
-          parent: S.optional(S.String),
-          assignmentInfo: S.optional(__S(9, __c1, 1)),
-          selfLink: S.optional(S.String),
-          position: S.optional(S.String),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          title: S.optional(S.String),
-          links: S.optional(__S(11, __c1, 3)),
-          status: S.optional(S.String),
-          webViewLink: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          notes: S.optional(S.String),
-          due: S.optional(S.String),
-          id: S.optional(S.String),
-          updated: S.optional(S.String),
-          hidden: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Task" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "tasks/v1/users/@me/lists",
-            baseUrl: "https://tasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertTasklistsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
           tasklist: S.String.pipe(T.Label()),
           previous: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -657,7 +510,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertTasksRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -670,22 +527,22 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTasklistsRequest" });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          items: __S(9, __c1, 1),
+          etag: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskLists" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5, __c0, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          items: __S(16, __c2, 0),
-          etag: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskLists" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           showAssigned: S.optional(S.Boolean.pipe(T.Query())),
@@ -708,18 +565,22 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTasksRequest" });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(125, __c15, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          items: __S(19, __c2, 3),
+          items: __S(17, __c2, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tasks" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationTasklist: S.optional(S.String.pipe(T.Query())),
@@ -735,11 +596,15 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveTasksRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -748,12 +613,16 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchTasklistsRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
           task: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -764,13 +633,13 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PatchTasksRequest" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -779,12 +648,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTasklistsRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
           task: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -795,7 +668,185 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateTasksRequest" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tasklist: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "tasks/v1/lists/{tasklist}/clear",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ClearTasksRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ClearTasksResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tasklist: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "tasks/v1/users/@me/lists/{tasklist}",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTasklistsRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.String.pipe(T.Label()),
+          tasklist: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTasksRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tasklist: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "tasks/v1/users/@me/lists/{tasklist}",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetTasklistsRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          title: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          updated: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskList" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tasklist: S.String.pipe(T.Label()),
+          task: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetTasksRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          driveFileId: S.optional(S.String),
+          resourceKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DriveResourceInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          space: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpaceInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          driveResourceInfo: S.optional(__S(120, __c15, 0)),
+          linkToTask: S.optional(S.String),
+          spaceInfo: S.optional(__S(121, __c15, 1)),
+          surfaceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssignmentInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+          link: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskLinksItem" });
+    case 4:
+      return S.Array(__S(123, __c15, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          completed: S.optional(S.String),
+          parent: S.optional(S.String),
+          assignmentInfo: S.optional(__S(122, __c15, 2)),
+          selfLink: S.optional(S.String),
+          position: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          title: S.optional(S.String),
+          links: S.optional(__S(124, __c15, 4)),
+          status: S.optional(S.String),
+          webViewLink: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          notes: S.optional(S.String),
+          due: S.optional(S.String),
+          id: S.optional(S.String),
+          updated: S.optional(S.String),
+          hidden: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Task" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "tasks/v1/users/@me/lists",
+            baseUrl: "https://tasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertTasklistsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

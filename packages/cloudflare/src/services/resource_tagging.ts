@@ -3903,8 +3903,8 @@ export const deleteAccountTag: API.OperationMethod<
   DeleteAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountTagRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAccountTagResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteAccountTagRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteAccountTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3918,8 +3918,8 @@ export const deleteZoneTag: API.OperationMethod<
   DeleteZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteZoneTagRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteZoneTagResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTagRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteZoneTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3933,8 +3933,8 @@ export const getAccountTag: API.OperationMethod<
   GetAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetAccountTagRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetAccountTagResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAccountTagRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetAccountTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3948,8 +3948,8 @@ export const getSummary: API.OperationMethod<
   GetSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetSummaryRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetSummaryResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetSummaryRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<GetSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3963,8 +3963,8 @@ export const getZoneTag: API.OperationMethod<
   GetZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetZoneTagRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetZoneTagResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetZoneTagRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetZoneTagResponse>,
   errors: [ZoneTagResourceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3980,8 +3980,8 @@ export const listKeys: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<ListKeysRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListKeysResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<ListKeysRequest>,
+    output: __S(96, __c12, 0) as any as S.Schema<ListKeysResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4005,8 +4005,8 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListResourceTaggingsRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<ListResourceTaggingsResponse>,
+    input: __S(105, __c13, 1) as any as S.Schema<ListResourceTaggingsRequest>,
+    output: __S(108, __c13, 4) as any as S.Schema<ListResourceTaggingsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4030,8 +4030,8 @@ export const listValues: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListValuesRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListValuesResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListValuesRequest>,
+    output: __S(96, __c12, 0) as any as S.Schema<ListValuesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4053,8 +4053,8 @@ export const putAccountTag: API.OperationMethod<
   PutAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PutAccountTagRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<PutAccountTagResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<PutAccountTagRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PutAccountTagResponse>,
   errors: [Forbidden, TagPreconditionFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4072,8 +4072,8 @@ export const putZoneTag: API.OperationMethod<
   PutZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<PutZoneTagRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutZoneTagResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<PutZoneTagRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<PutZoneTagResponse>,
   errors: [
     ZoneTagResourceNotFound,
     Forbidden,
@@ -4092,458 +4092,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
-          resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-          resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
-          workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-        })
-          .pipe(T.Http({ method: "DELETE", uri: "/accounts/{account_id}/tags", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAccountTagRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteAccountTagResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
-          resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-          resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
-          accessApplicationId: S.optional(S.String.pipe(T.Body("access_application_id"))),
-        })
-          .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteZoneTagRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          resourceId: S.String.pipe(T.Query("resource_id")),
-          resourceType: S.String.pipe(T.Query("resource_type")),
-          workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAccountTagRequest" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            [
-              "id",
-              "accessApplicationId",
-              "etag",
-              "name",
-              "tags",
-              "type",
-              "zoneId",
-              "tagsUpdatedAt",
-            ],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-          ],
-          {
-            key: "type",
-            values: [
-              "access_application",
-              "access_application_policy",
-              "access_group",
-              "account",
-              "account_ruleset",
-              "ai_gateway",
-              "alerting_policy",
-              "alerting_webhook",
-              "api_gateway_operation",
-              "cloudflared_tunnel",
-              "custom_certificate",
-              "custom_hostname",
-              "cws_deployment",
-              "cws_policy",
-              "cws_policy_set",
-              "cws_workload",
-              "d1_database",
-              "device",
-              "dns_record",
-              "durable_object_namespace",
-              "gateway_list",
-              "gateway_rule",
-              "healthcheck",
-              "image",
-              "infrastructure_target",
-              "kv_namespace",
-              "load_balancer",
-              "load_balancer_monitor",
-              "load_balancer_pool",
-              "managed_client_certificate",
-              "pages_project",
-              "queue",
-              "r2_bucket",
-              "resource_share",
-              "stream_live_input",
-              "stream_video",
-              "vectorize_index",
-              "worker",
-              "worker_route",
-              "worker_version",
-              "zone",
-              "zone_ruleset",
-            ],
-          },
-        ),
-      );
-    case 6:
-      return S.suspend(() =>
-        __S(5, __c0, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAccountTagResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/summary", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSummaryRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          values: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "GetSummaryResultItem" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        __S(10, __c1, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSummaryResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          resourceId: S.String.pipe(T.Query("resource_id")),
-          resourceType: S.String.pipe(T.Query("resource_type")),
-          accessApplicationId: S.optional(S.String.pipe(T.Query("access_application_id"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetZoneTagRequest" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            [
-              "id",
-              "accessApplicationId",
-              "etag",
-              "name",
-              "tags",
-              "type",
-              "zoneId",
-              "tagsUpdatedAt",
-            ],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-          ],
-          {
-            key: "type",
-            values: [
-              "access_application",
-              "access_application_policy",
-              "access_group",
-              "account",
-              "account_ruleset",
-              "ai_gateway",
-              "alerting_policy",
-              "alerting_webhook",
-              "api_gateway_operation",
-              "cloudflared_tunnel",
-              "custom_certificate",
-              "custom_hostname",
-              "cws_deployment",
-              "cws_policy",
-              "cws_policy_set",
-              "cws_workload",
-              "d1_database",
-              "device",
-              "dns_record",
-              "durable_object_namespace",
-              "gateway_list",
-              "gateway_rule",
-              "healthcheck",
-              "image",
-              "infrastructure_target",
-              "kv_namespace",
-              "load_balancer",
-              "load_balancer_monitor",
-              "load_balancer_pool",
-              "managed_client_certificate",
-              "pages_project",
-              "queue",
-              "r2_bucket",
-              "resource_share",
-              "stream_live_input",
-              "stream_video",
-              "vectorize_index",
-              "worker",
-              "worker_route",
-              "worker_version",
-              "zone",
-              "zone_ruleset",
-            ],
-          },
-        ),
-      );
-    case 6:
-      return S.suspend(() =>
-        __S(13, __c1, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetZoneTagResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/keys", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListKeysRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(8, __c1, 0).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListKeysResponse" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          caseInsensitive: S.optional(S.Boolean.pipe(T.Query("case_insensitive"))),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/resources", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListResourceTaggingsRequest",
-      });
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            [
-              "id",
-              "accessApplicationId",
-              "etag",
-              "name",
-              "tags",
-              "type",
-              "zoneId",
-              "tagsUpdatedAt",
-            ],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-          ],
-          {
-            key: "type",
-            values: [
-              "access_application",
-              "access_application_policy",
-              "access_group",
-              "account",
-              "account_ruleset",
-              "ai_gateway",
-              "alerting_policy",
-              "alerting_webhook",
-              "api_gateway_operation",
-              "cloudflared_tunnel",
-              "custom_certificate",
-              "custom_hostname",
-              "cws_deployment",
-              "cws_policy",
-              "cws_policy_set",
-              "cws_workload",
-              "d1_database",
-              "device",
-              "dns_record",
-              "durable_object_namespace",
-              "gateway_list",
-              "gateway_rule",
-              "healthcheck",
-              "image",
-              "infrastructure_target",
-              "kv_namespace",
-              "load_balancer",
-              "load_balancer_monitor",
-              "load_balancer_pool",
-              "managed_client_certificate",
-              "pages_project",
-              "queue",
-              "r2_bucket",
-              "resource_share",
-              "stream_live_input",
-              "stream_video",
-              "vectorize_index",
-              "worker",
-              "worker_route",
-              "worker_version",
-              "zone",
-              "zone_ruleset",
-            ],
-          },
-        ),
-      );
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(20, __c2, 4).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListResourceTaggingsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
           tagKey: S.String.pipe(T.Label("tag_key")),
           cursor: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
@@ -4557,24 +4105,24 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListValuesRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           resourceId: S.String.pipe(T.Body("resource_id")),
           resourceType: S.String.pipe(T.Body("resource_type")),
           workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(16, __c2, 0)),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutAccountTagRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4679,24 +4227,34 @@ function __c3(j: number): any {
           },
         ),
       );
-    case 1:
-      return S.suspend(() =>
-        __S(24, __c3, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutAccountTagResponse" });
     case 2:
+      return S.suspend(() =>
+        __S(9, __c1, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutAccountTagResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           resourceId: S.String.pipe(T.Body("resource_id")),
           resourceType: S.String.pipe(T.Body("resource_type")),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(16, __c2, 0)),
           accessApplicationId: S.optional(S.String.pipe(T.Body("access_application_id"))),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutZoneTagRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4801,13 +4359,494 @@ function __c3(j: number): any {
           },
         ),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
-        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(25, __c3, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutZoneTagResponse" });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
+          resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+          resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+          workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
+        })
+          .pipe(T.Http({ method: "DELETE", uri: "/accounts/{account_id}/tags", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAccountTagRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteAccountTagResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
+          resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+          resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+          accessApplicationId: S.optional(S.String.pipe(T.Body("access_application_id"))),
+        })
+          .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteZoneTagRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          resourceId: S.String.pipe(T.Query("resource_id")),
+          resourceType: S.String.pipe(T.Query("resource_type")),
+          workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAccountTagRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            [
+              "id",
+              "accessApplicationId",
+              "etag",
+              "name",
+              "tags",
+              "type",
+              "zoneId",
+              "tagsUpdatedAt",
+            ],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+          ],
+          {
+            key: "type",
+            values: [
+              "access_application",
+              "access_application_policy",
+              "access_group",
+              "account",
+              "account_ruleset",
+              "ai_gateway",
+              "alerting_policy",
+              "alerting_webhook",
+              "api_gateway_operation",
+              "cloudflared_tunnel",
+              "custom_certificate",
+              "custom_hostname",
+              "cws_deployment",
+              "cws_policy",
+              "cws_policy_set",
+              "cws_workload",
+              "d1_database",
+              "device",
+              "dns_record",
+              "durable_object_namespace",
+              "gateway_list",
+              "gateway_rule",
+              "healthcheck",
+              "image",
+              "infrastructure_target",
+              "kv_namespace",
+              "load_balancer",
+              "load_balancer_monitor",
+              "load_balancer_pool",
+              "managed_client_certificate",
+              "pages_project",
+              "queue",
+              "r2_bucket",
+              "resource_share",
+              "stream_live_input",
+              "stream_video",
+              "vectorize_index",
+              "worker",
+              "worker_route",
+              "worker_version",
+              "zone",
+              "zone_ruleset",
+            ],
+          },
+        ),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(57, __c7, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAccountTagResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/summary", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSummaryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          values: __S(72, __c9, 0),
+        }),
+      ).annotate({ identifier: "GetSummaryResultItem" });
+    case 2:
+      return S.Array(__S(65, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(66, __c8, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSummaryResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          resourceId: S.String.pipe(T.Query("resource_id")),
+          resourceType: S.String.pipe(T.Query("resource_type")),
+          accessApplicationId: S.optional(S.String.pipe(T.Query("access_application_id"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetZoneTagRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            [
+              "id",
+              "accessApplicationId",
+              "etag",
+              "name",
+              "tags",
+              "type",
+              "zoneId",
+              "tagsUpdatedAt",
+            ],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+          ],
+          {
+            key: "type",
+            values: [
+              "access_application",
+              "access_application_policy",
+              "access_group",
+              "account",
+              "account_ruleset",
+              "ai_gateway",
+              "alerting_policy",
+              "alerting_webhook",
+              "api_gateway_operation",
+              "cloudflared_tunnel",
+              "custom_certificate",
+              "custom_hostname",
+              "cws_deployment",
+              "cws_policy",
+              "cws_policy_set",
+              "cws_workload",
+              "d1_database",
+              "device",
+              "dns_record",
+              "durable_object_namespace",
+              "gateway_list",
+              "gateway_rule",
+              "healthcheck",
+              "image",
+              "infrastructure_target",
+              "kv_namespace",
+              "load_balancer",
+              "load_balancer_monitor",
+              "load_balancer_pool",
+              "managed_client_certificate",
+              "pages_project",
+              "queue",
+              "r2_bucket",
+              "resource_share",
+              "stream_live_input",
+              "stream_video",
+              "vectorize_index",
+              "worker",
+              "worker_route",
+              "worker_version",
+              "zone",
+              "zone_ruleset",
+            ],
+          },
+        ),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(81, __c10, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetZoneTagResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/keys", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListKeysRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(72, __c9, 0).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListKeysResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          caseInsensitive: S.optional(S.Boolean.pipe(T.Query("case_insensitive"))),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          tag: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          type: S.optional(__S(104, __c13, 0).pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/resources", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListResourceTaggingsRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            [
+              "id",
+              "accessApplicationId",
+              "etag",
+              "name",
+              "tags",
+              "type",
+              "zoneId",
+              "tagsUpdatedAt",
+            ],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "workerId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+          ],
+          {
+            key: "type",
+            values: [
+              "access_application",
+              "access_application_policy",
+              "access_group",
+              "account",
+              "account_ruleset",
+              "ai_gateway",
+              "alerting_policy",
+              "alerting_webhook",
+              "api_gateway_operation",
+              "cloudflared_tunnel",
+              "custom_certificate",
+              "custom_hostname",
+              "cws_deployment",
+              "cws_policy",
+              "cws_policy_set",
+              "cws_workload",
+              "d1_database",
+              "device",
+              "dns_record",
+              "durable_object_namespace",
+              "gateway_list",
+              "gateway_rule",
+              "healthcheck",
+              "image",
+              "infrastructure_target",
+              "kv_namespace",
+              "load_balancer",
+              "load_balancer_monitor",
+              "load_balancer_pool",
+              "managed_client_certificate",
+              "pages_project",
+              "queue",
+              "r2_bucket",
+              "resource_share",
+              "stream_live_input",
+              "stream_video",
+              "vectorize_index",
+              "worker",
+              "worker_route",
+              "worker_version",
+              "zone",
+              "zone_ruleset",
+            ],
+          },
+        ),
+      );
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(107, __c13, 3).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListResourceTaggingsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -515,8 +515,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const disable: API.OperationMethod<
   DisableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DisableRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisableResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DisableRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DisableResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const enable: API.OperationMethod<
   EnableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<EnableRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EnableResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<EnableRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<EnableResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,8 @@ export type GetError = CloudflareOpError;
 /** Retrieve detailed information about a specific Basin Catalog by bucket name. Returns catalog status, maintenance configuration, and credential status. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(7, __c0, 7) as any as S.Schema<GetRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<GetResponse>,
+    input: __S(64, __c8, 0) as any as S.Schema<GetRequest>,
+    output: __S(67, __c8, 3) as any as S.Schema<GetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const getMaintenanceConfig: API.OperationMethod<
   GetMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetMaintenanceConfigRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetMaintenanceConfigResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetMaintenanceConfigRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetMaintenanceConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -586,8 +586,8 @@ export const getNamespacesTablesMaintenanceConfig: API.OperationMethod<
   GetNamespacesTablesMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetNamespacesTablesMaintenanceConfigRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetNamespacesTablesMaintenanceConfigResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetNamespacesTablesMaintenanceConfigRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetNamespacesTablesMaintenanceConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export type ListError = CloudflareOpError;
 /** Returns a list of R2 buckets that have been enabled as Apache Iceberg catalogs for the specified account. Each catalog represents an R2 bucket configured to store Iceberg metadata and data files. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListResponse>,
+    input: __S(120, __c15, 0) as any as S.Schema<ListRequest>,
+    output: __S(123, __c15, 3) as any as S.Schema<ListResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListNamespacesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListNamespacesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const listNamespacesTables: API.OperationMethod<
   ListNamespacesTablesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListNamespacesTablesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListNamespacesTablesResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListNamespacesTablesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ListNamespacesTablesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -642,8 +642,8 @@ export const updateMaintenanceConfig: API.OperationMethod<
   UpdateMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UpdateMaintenanceConfigRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateMaintenanceConfigResponse>,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateMaintenanceConfigRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<UpdateMaintenanceConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -659,8 +659,8 @@ export const updateNamespacesTablesMaintenanceConfig: API.OperationMethod<
   UpdateNamespacesTablesMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigResponse>,
   errors: [CatalogSnapshotExpirationDisabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -687,316 +687,9 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "CreateCredentialsResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/delete",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/disable",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DisableRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/enable",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "EnableRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "EnableResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetRequest" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
-        }),
-      ).annotate({
-        identifier: "GetResponseMaintenanceConfigCompaction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
-        }),
-      ).annotate({
-        identifier: "GetResponseMaintenanceConfigSnapshotExpiration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(8, __c1, 0))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "GetResponseMaintenanceConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          bucket: S.String,
-          name: S.String,
-          status: S.String,
-          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
-          maintenanceConfig: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("maintenance_config")),
-          ),
-        }),
-      ).annotate({ identifier: "GetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMaintenanceConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
-        }),
-      ).annotate({
-        identifier: "GetMaintenanceConfigResponseMaintenanceConfigCompaction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
-        }),
-      ).annotate({
-        identifier: "GetMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(13, __c1, 5))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "GetMaintenanceConfigResponseMaintenanceConfig",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          credentialStatus: S.String.pipe(T.Body("credential_status")),
-          maintenanceConfig: __S(15, __c1, 7).pipe(T.Body("maintenance_config")),
-        }),
-      ).annotate({
-        identifier: "GetMaintenanceConfigResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-          namespace: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label("table_name")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespacesTablesMaintenanceConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
-          nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
-        }),
-      ).annotate({
-        identifier: "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfigCompaction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
-          nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
-        }),
-      ).annotate({
-        identifier:
-          "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(18, __c2, 2))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(19, __c2, 3)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceConfig: __S(20, __c2, 4).pipe(T.Body("maintenance_config")),
-        }),
-      ).annotate({
-        identifier: "GetNamespacesTablesMaintenanceConfigResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/basin-catalog", code: 200 })),
-      ).annotate({ identifier: "ListRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          bucket: S.String,
-          name: S.String,
-          status: S.String,
-          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
-          maintenanceConfig: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("maintenance_config")),
-          ),
-        }),
-      ).annotate({
-        identifier: "ListResponseWarehousesItem",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          warehouses: __S(24, __c3, 0),
-        }),
-      ).annotate({ identifier: "ListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-          parent: S.optional(S.String.pipe(T.Query())),
-          returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
-          returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/namespaces",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListNamespacesRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: __S(27, __c3, 3),
-          namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "ListNamespacesResponseDetailsItem",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespaces: __S(28, __c3, 4),
-          details: S.optional(S.NullOr(__S(30, __c3, 6))),
-          namespaceUuids: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("namespace_uuids"))),
-          nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
-        }),
-      ).annotate({ identifier: "ListNamespacesResponse" });
-  }
-}
-function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1022,17 +715,17 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          namespace: __S(27, __c3, 3),
+          namespace: __S(136, __c17, 0),
         }),
       ).annotate({
         identifier: "ListNamespacesTablesResponseIdentifiersItem",
       });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(33, __c4, 1),
+          identifier: __S(9, __c1, 1),
           tableUuid: S.String.pipe(T.Body("table_uuid")),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           location: S.optional(S.NullOr(S.String)),
@@ -1043,19 +736,23 @@ function __c4(j: number): any {
         identifier: "ListNamespacesTablesResponseDetailsItem",
       });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          identifiers: __S(34, __c4, 2),
-          details: S.optional(S.NullOr(__S(36, __c4, 4))),
+          identifiers: __S(10, __c1, 2),
+          details: S.optional(S.NullOr(__S(12, __c1, 4))),
           nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
-          tableUuids: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("table_uuids"))),
+          tableUuids: S.optional(S.NullOr(__S(136, __c17, 0)).pipe(T.Body("table_uuids"))),
         }),
       ).annotate({
         identifier: "ListNamespacesTablesResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1064,7 +761,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateMaintenanceConfigRequestCompaction",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
@@ -1074,17 +771,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateMaintenanceConfigRequestSnapshotExpiration",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          compaction: S.optional(__S(38, __c4, 6)),
-          snapshotExpiration: S.optional(__S(39, __c4, 7).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(__S(16, __c2, 0)),
+          snapshotExpiration: S.optional(__S(17, __c2, 1).pipe(T.Body("snapshot_expiration"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1095,19 +788,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateMaintenanceConfigRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(13, __c1, 5))),
+          compaction: S.optional(S.NullOr(__S(96, __c12, 0))),
           interval: S.optional(S.NullOr(S.String)),
           snapshotExpiration: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("snapshot_expiration")),
+            S.NullOr(__S(72, __c9, 0)).pipe(T.Body("snapshot_expiration")),
           ),
         }),
       ).annotate({
         identifier: "UpdateMaintenanceConfigResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1116,7 +813,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateNamespacesTablesMaintenanceConfigRequestCompaction",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
@@ -1126,15 +823,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateNamespacesTablesMaintenanceConfigRequestSnapshotExpiration",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           namespace: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label("table_name")),
-          compaction: S.optional(__S(42, __c5, 2)),
-          snapshotExpiration: S.optional(__S(43, __c5, 3).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(__S(24, __c3, 0)),
+          snapshotExpiration: S.optional(__S(25, __c3, 1).pipe(T.Body("snapshot_expiration"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1145,7 +842,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateNamespacesTablesMaintenanceConfigRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -1155,13 +852,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateNamespacesTablesMaintenanceConfigResponseCompaction",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(45, __c5, 5))),
+          compaction: S.optional(S.NullOr(__S(27, __c3, 3))),
           interval: S.optional(S.NullOr(S.String)),
           snapshotExpiration: S.optional(
-            S.NullOr(__S(19, __c2, 3)).pipe(T.Body("snapshot_expiration")),
+            S.NullOr(__S(112, __c14, 0)).pipe(T.Body("snapshot_expiration")),
           ),
         }),
       ).annotate({
@@ -1169,7 +866,357 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/delete",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/disable",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DisableRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/enable",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "EnableRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "EnableResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+        }),
+      ).annotate({
+        identifier: "GetResponseMaintenanceConfigCompaction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          compaction: S.optional(S.NullOr(__S(65, __c8, 1))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(72, __c9, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetResponseMaintenanceConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          bucket: S.String,
+          name: S.String,
+          status: S.String,
+          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
+          maintenanceConfig: S.optional(
+            S.NullOr(__S(66, __c8, 2)).pipe(T.Body("maintenance_config")),
+          ),
+        }),
+      ).annotate({ identifier: "GetResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
+          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "GetResponseMaintenanceConfigSnapshotExpiration",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMaintenanceConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credentialStatus: S.String.pipe(T.Body("credential_status")),
+          maintenanceConfig: __S(89, __c11, 1).pipe(T.Body("maintenance_config")),
+        }),
+      ).annotate({
+        identifier: "GetMaintenanceConfigResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
+          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "GetMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          compaction: S.optional(S.NullOr(__S(96, __c12, 0))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(88, __c11, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetMaintenanceConfigResponseMaintenanceConfig",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+        }),
+      ).annotate({
+        identifier: "GetMaintenanceConfigResponseMaintenanceConfigCompaction",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+          namespace: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label("table_name")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespacesTablesMaintenanceConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
+        }),
+      ).annotate({
+        identifier: "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfigCompaction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          compaction: S.optional(S.NullOr(__S(105, __c13, 1))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(112, __c14, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceConfig: __S(106, __c13, 2).pipe(T.Body("maintenance_config")),
+        }),
+      ).annotate({
+        identifier: "GetNamespacesTablesMaintenanceConfigResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
+          minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
+          state: S.String,
+          nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
+        }),
+      ).annotate({
+        identifier:
+          "GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/basin-catalog", code: 200 })),
+      ).annotate({ identifier: "ListRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          bucket: S.String,
+          name: S.String,
+          status: S.String,
+          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
+          maintenanceConfig: S.optional(
+            S.NullOr(__S(89, __c11, 1)).pipe(T.Body("maintenance_config")),
+          ),
+        }),
+      ).annotate({
+        identifier: "ListResponseWarehousesItem",
+      });
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          warehouses: __S(122, __c15, 2),
+        }),
+      ).annotate({ identifier: "ListResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+          parent: S.optional(S.String.pipe(T.Query())),
+          returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
+          returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/accounts/{account_id}/basin-catalog/{bucket_name}/namespaces",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListNamespacesRequest" });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: __S(136, __c17, 0),
+          namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "ListNamespacesResponseDetailsItem",
+      });
+    case 3:
+      return S.Array(__S(130, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          namespaces: __S(129, __c16, 1),
+          details: S.optional(S.NullOr(__S(131, __c16, 3))),
+          namespaceUuids: S.optional(S.NullOr(__S(136, __c17, 0)).pipe(T.Body("namespace_uuids"))),
+          nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
+        }),
+      ).annotate({ identifier: "ListNamespacesResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

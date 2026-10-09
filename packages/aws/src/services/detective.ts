@@ -154,7 +154,7 @@ export class ServiceQuotaExceededException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Resources: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(2, __c0, 2)).annotate({ identifier: "ResourceList" }),
+        /*@__PURE__*/ S.suspend(() => __S(464, __c29, 0)).annotate({ identifier: "ResourceList" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(402),
@@ -641,8 +641,8 @@ export const acceptInvitation: API.OperationMethod<
   AcceptInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptInvitationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptInvitationResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<AcceptInvitationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<AcceptInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -670,8 +670,8 @@ export const batchGetGraphMemberDatasources: API.OperationMethod<
   BatchGetGraphMemberDatasourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchGetGraphMemberDatasourcesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchGetGraphMemberDatasourcesResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<BatchGetGraphMemberDatasourcesRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BatchGetGraphMemberDatasourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -698,8 +698,8 @@ export const batchGetMembershipDatasources: API.OperationMethod<
   BatchGetMembershipDatasourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BatchGetMembershipDatasourcesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchGetMembershipDatasourcesResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<BatchGetMembershipDatasourcesRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<BatchGetMembershipDatasourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -737,8 +737,8 @@ export const createGraph: API.OperationMethod<
   CreateGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateGraphRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateGraphResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateGraphRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateGraphResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -796,8 +796,8 @@ export const createMembers: API.OperationMethod<
   CreateMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateMembersRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateMembersResponse>,
+  input: __S(34, __c2, 2) as any as S.Schema<CreateMembersRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<CreateMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -829,8 +829,8 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteGraphRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGraphResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteGraphRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteGraphResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -873,8 +873,8 @@ export const deleteMembers: API.OperationMethod<
   DeleteMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteMembersRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteMembersResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteMembersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<DeleteMembersResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -906,8 +906,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -942,8 +942,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   DisableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DisableOrganizationAdminAccountRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DisableOrganizationAdminAccountResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DisableOrganizationAdminAccountRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<DisableOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -977,8 +977,8 @@ export const disassociateMembership: API.OperationMethod<
   DisassociateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DisassociateMembershipRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateMembershipResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DisassociateMembershipRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DisassociateMembershipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1021,8 +1021,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   EnableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<EnableOrganizationAdminAccountRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EnableOrganizationAdminAccountResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<EnableOrganizationAdminAccountRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<EnableOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1050,8 +1050,8 @@ export const getInvestigation: API.OperationMethod<
   GetInvestigationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetInvestigationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetInvestigationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetInvestigationRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetInvestigationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1080,8 +1080,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetMembersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetMembersResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetMembersRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GetMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1109,8 +1109,8 @@ export const listDatasourcePackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListDatasourcePackagesRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListDatasourcePackagesResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListDatasourcePackagesRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<ListDatasourcePackagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1146,8 +1146,8 @@ export const listGraphs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListGraphsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListGraphsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListGraphsRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<ListGraphsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1175,8 +1175,8 @@ export const listIndicators: API.OperationMethod<
   ListIndicatorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListIndicatorsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListIndicatorsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListIndicatorsRequest>,
+  output: __S(252, __c15, 12) as any as S.Schema<ListIndicatorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1210,8 +1210,8 @@ export const listInvestigations: API.OperationMethod<
   ListInvestigationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListInvestigationsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListInvestigationsResponse>,
+  input: __S(260, __c16, 4) as any as S.Schema<ListInvestigationsRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<ListInvestigationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1246,8 +1246,8 @@ export const listInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListInvitationsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListInvitationsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<ListInvitationsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1282,8 +1282,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListMembersRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListMembersResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<ListMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1317,8 +1317,8 @@ export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListOrganizationAdminAccountsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListOrganizationAdminAccountsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListOrganizationAdminAccountsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListOrganizationAdminAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1350,8 +1350,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1385,8 +1385,8 @@ export const rejectInvitation: API.OperationMethod<
   RejectInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<RejectInvitationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectInvitationResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<RejectInvitationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<RejectInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1415,8 +1415,8 @@ export const startInvestigation: API.OperationMethod<
   StartInvestigationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<StartInvestigationRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<StartInvestigationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<StartInvestigationRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<StartInvestigationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1455,8 +1455,8 @@ export const startMonitoringMember: API.OperationMethod<
   StartMonitoringMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<StartMonitoringMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartMonitoringMemberResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<StartMonitoringMemberRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<StartMonitoringMemberResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1485,8 +1485,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1513,8 +1513,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1542,8 +1542,8 @@ export const updateDatasourcePackages: API.OperationMethod<
   UpdateDatasourcePackagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateDatasourcePackagesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateDatasourcePackagesResponse>,
+  input: __S(417, __c26, 1) as any as S.Schema<UpdateDatasourcePackagesRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateDatasourcePackagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1572,8 +1572,8 @@ export const updateInvestigationState: API.OperationMethod<
   UpdateInvestigationStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UpdateInvestigationStateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateInvestigationStateResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateInvestigationStateRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateInvestigationStateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1603,8 +1603,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1621,132 +1621,53 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ GraphArn: S.String }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/invitation" }), svc, auth, proto, ver, rules),
+        S.Struct({ Tags: S.optional(__S(16, __c1, 0)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/graph" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "AcceptInvitationRequest" });
+      ).annotate({ identifier: "CreateGraphRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptInvitationResponse",
+      return S.suspend(() => S.Struct({ GraphArn: S.optional(S.String) })).annotate({
+        identifier: "CreateGraphResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ GraphArn: S.String, AccountIds: __S(2, __c0, 2) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/graph/datasources/get" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetGraphMemberDatasourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
-      ).annotate({ identifier: "TimestampForCollection" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(4, __c0, 4).pipe(S.optional));
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(5, __c0, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          GraphArn: S.optional(S.String),
-          DatasourcePackageIngestHistory: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "MembershipDatasources" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Reason: S.optional(S.String) }),
-      ).annotate({ identifier: "UnprocessedAccount" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          MemberDatasources: S.optional(__S(8, __c1, 0)),
-          UnprocessedAccounts: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchGetGraphMemberDatasourcesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ GraphArns: __S(2, __c0, 2) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/membership/datasources/get" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetMembershipDatasourcesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ GraphArn: S.optional(S.String), Reason: S.optional(S.String) }),
-      ).annotate({ identifier: "UnprocessedGraph" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MembershipDatasources: S.optional(__S(8, __c1, 0)),
-          UnprocessedGraphs: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchGetMembershipDatasourcesResponse",
-      });
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(16, __c2, 0)) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/graph" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateGraphRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ GraphArn: S.optional(S.String) })).annotate({
-        identifier: "CreateGraphResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String, EmailAddress: SensitiveString }),
       ).annotate({ identifier: "Account" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.String,
           Message: S.optional(SensitiveString),
           DisableEmailNotification: S.optional(S.Boolean),
-          Accounts: __S(20, __c2, 4),
+          Accounts: __S(33, __c2, 1),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/graph/members" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMembersRequest" });
-    case 6:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Members: S.optional(__S(52, __c3, 4)),
+          UnprocessedAccounts: S.optional(__S(529, __c33, 1)),
+        }),
+      ).annotate({ identifier: "CreateMembersResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VolumeUsageInBytes: S.optional(S.Number),
@@ -1755,15 +1676,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DatasourcePackageUsageInfo",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(22, __c2, 6).pipe(S.optional));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(48, __c3, 0).pipe(S.optional));
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -1782,28 +1699,29 @@ function __c3(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
           InvitationType: S.optional(S.String),
-          VolumeUsageByDatasourcePackage: S.optional(__S(23, __c2, 7)),
-          DatasourcePackageIngestStates: S.optional(__S(24, __c3, 0)),
+          VolumeUsageByDatasourcePackage: S.optional(__S(49, __c3, 1)),
+          DatasourcePackageIngestStates: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "MemberDetail" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Members: S.optional(__S(26, __c3, 2)),
-          UnprocessedAccounts: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "CreateMembersResponse" });
     case 4:
+      return S.Array(__S(51, __c3, 3));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/graph/removal" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteGraphRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ GraphArn: S.String, AccountIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ GraphArn: S.String, AccountIds: __S(464, __c29, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/graph/members/removal" }),
             svc,
@@ -1814,14 +1732,18 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMembersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountIds: S.optional(__S(2, __c0, 2)),
-          UnprocessedAccounts: S.optional(__S(10, __c1, 2)),
+          AccountIds: S.optional(__S(464, __c29, 0)),
+          UnprocessedAccounts: S.optional(__S(529, __c33, 1)),
         }),
       ).annotate({ identifier: "DeleteMembersResponse" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String }).pipe(
           T.all(
@@ -1836,15 +1758,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeOrganizationConfigurationRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ AutoEnable: S.optional(S.Boolean) })).annotate({
         identifier: "DescribeOrganizationConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1859,11 +1781,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DisableOrganizationAdminAccountRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisableOrganizationAdminAccountResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String }).pipe(
           T.all(
@@ -1878,7 +1808,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DisassociateMembershipRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String }).pipe(
           T.all(
@@ -1893,7 +1827,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EnableOrganizationAdminAccountRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String, InvestigationId: S.String }).pipe(
           T.all(
@@ -1906,7 +1844,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetInvestigationRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.optional(S.String),
@@ -1921,9 +1859,13 @@ function __c4(j: number): any {
           State: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetInvestigationResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ GraphArn: S.String, AccountIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ GraphArn: S.String, AccountIds: __S(464, __c29, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/graph/members/get" }),
             svc,
@@ -1934,18 +1876,18 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMembersRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          MemberDetails: S.optional(__S(26, __c3, 2)),
-          UnprocessedAccounts: S.optional(__S(10, __c1, 2)),
+          MemberDetails: S.optional(__S(52, __c3, 4)),
+          UnprocessedAccounts: S.optional(__S(529, __c33, 1)),
         }),
       ).annotate({ identifier: "GetMembersResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.String,
@@ -1964,50 +1906,54 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListDatasourcePackagesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DatasourcePackageIngestState: S.optional(S.String),
-          LastIngestStateChange: S.optional(__S(5, __c0, 5)),
+          LastIngestStateChange: S.optional(__S(561, __c35, 1)),
         }),
       ).annotate({
         identifier: "DatasourcePackageIngestDetail",
       });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(209, __c13, 1).pipe(S.optional));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(42, __c5, 2).pipe(S.optional));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          DatasourcePackages: S.optional(__S(43, __c5, 3)),
+          DatasourcePackages: S.optional(__S(210, __c13, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDatasourcePackagesResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/graphs/list" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGraphsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Graph" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ GraphList: S.optional(__S(226, __c14, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListGraphsResponse" });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ GraphList: S.optional(__S(47, __c5, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListGraphsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.String,
@@ -2026,7 +1972,7 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListIndicatorsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Tactic: S.optional(S.String),
@@ -2038,7 +1984,7 @@ function __c6(j: number): any {
           APIFailureCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TTPsObservedDetail" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           StartingIpAddress: S.optional(S.String),
@@ -2048,11 +1994,11 @@ function __c6(j: number): any {
           HourlyTimeDelta: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImpossibleTravelDetail" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({ IpAddress: S.optional(S.String), Reason: S.optional(S.String) }),
       ).annotate({ identifier: "FlaggedIpAddressDetail" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String),
@@ -2060,19 +2006,15 @@ function __c6(j: number): any {
           IsNewForEntireAccount: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NewGeolocationDetail" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({ Aso: S.optional(S.String), IsNewForEntireAccount: S.optional(S.Boolean) }),
       ).annotate({ identifier: "NewAsoDetail" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({ UserAgent: S.optional(S.String), IsNewForEntireAccount: S.optional(S.Boolean) }),
       ).annotate({ identifier: "NewUserAgentDetail" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -2080,78 +2022,78 @@ function __c7(j: number): any {
           IpAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedFindingDetail" });
-    case 1:
+    case 8:
       return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
         identifier: "RelatedFindingGroupDetail",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          TTPsObservedDetail: S.optional(__S(50, __c6, 2)),
-          ImpossibleTravelDetail: S.optional(__S(51, __c6, 3)),
-          FlaggedIpAddressDetail: S.optional(__S(52, __c6, 4)),
-          NewGeolocationDetail: S.optional(__S(53, __c6, 5)),
-          NewAsoDetail: S.optional(__S(54, __c6, 6)),
-          NewUserAgentDetail: S.optional(__S(55, __c6, 7)),
-          RelatedFindingDetail: S.optional(__S(56, __c7, 0)),
-          RelatedFindingGroupDetail: S.optional(__S(57, __c7, 1)),
+          TTPsObservedDetail: S.optional(__S(241, __c15, 1)),
+          ImpossibleTravelDetail: S.optional(__S(242, __c15, 2)),
+          FlaggedIpAddressDetail: S.optional(__S(243, __c15, 3)),
+          NewGeolocationDetail: S.optional(__S(244, __c15, 4)),
+          NewAsoDetail: S.optional(__S(245, __c15, 5)),
+          NewUserAgentDetail: S.optional(__S(246, __c15, 6)),
+          RelatedFindingDetail: S.optional(__S(247, __c15, 7)),
+          RelatedFindingGroupDetail: S.optional(__S(248, __c15, 8)),
         }),
       ).annotate({ identifier: "IndicatorDetail" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           IndicatorType: S.optional(S.String),
-          IndicatorDetail: S.optional(__S(58, __c7, 2)),
+          IndicatorDetail: S.optional(__S(249, __c15, 9)),
         }),
       ).annotate({ identifier: "Indicator" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(250, __c15, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.optional(S.String),
           InvestigationId: S.optional(S.String),
           NextToken: S.optional(S.String),
-          Indicators: S.optional(__S(60, __c7, 4)),
+          Indicators: S.optional(__S(251, __c15, 11)),
         }),
       ).annotate({ identifier: "ListIndicatorsResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Value: S.String })).annotate({
         identifier: "StringFilter",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           StartInclusive: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndInclusive: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "DateFilter" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Severity: S.optional(__S(62, __c7, 6)),
-          Status: S.optional(__S(62, __c7, 6)),
-          State: S.optional(__S(62, __c7, 6)),
-          EntityArn: S.optional(__S(62, __c7, 6)),
-          CreatedTime: S.optional(__S(63, __c7, 7)),
+          Severity: S.optional(__S(256, __c16, 0)),
+          Status: S.optional(__S(256, __c16, 0)),
+          State: S.optional(__S(256, __c16, 0)),
+          EntityArn: S.optional(__S(256, __c16, 0)),
+          CreatedTime: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "FilterCriteria" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Field: S.optional(S.String), SortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "SortCriteria" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          FilterCriteria: S.optional(__S(64, __c8, 0)),
-          SortCriteria: S.optional(__S(65, __c8, 1)),
+          FilterCriteria: S.optional(__S(258, __c16, 2)),
+          SortCriteria: S.optional(__S(259, __c16, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/investigations/listInvestigations" }),
@@ -2165,7 +2107,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListInvestigationsRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           InvestigationId: S.optional(S.String),
@@ -2177,30 +2119,34 @@ function __c8(j: number): any {
           EntityType: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvestigationDetail" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(261, __c16, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          InvestigationDetails: S.optional(__S(68, __c8, 4)),
+          InvestigationDetails: S.optional(__S(262, __c16, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInvestigationsResponse",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/invitations/list" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListInvitationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Invitations: S.optional(__S(26, __c3, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Invitations: S.optional(__S(52, __c3, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInvitationsResponse" });
   }
 }
-function __c9(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2221,9 +2167,13 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListMembersRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ MemberDetails: S.optional(__S(26, __c3, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ MemberDetails: S.optional(__S(52, __c3, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMembersResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(
@@ -2238,7 +2188,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOrganizationAdminAccountsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -2246,18 +2196,22 @@ function __c9(j: number): any {
           DelegationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Administrator" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Administrators: S.optional(__S(76, __c9, 4)),
+          Administrators: S.optional(__S(306, __c19, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationAdminAccountsResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -2272,13 +2226,13 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(16, __c2, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2293,7 +2247,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RejectInvitationRequest" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GraphArn: S.String,
@@ -2313,11 +2271,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StartInvestigationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ InvestigationId: S.optional(S.String) })).annotate({
         identifier: "StartInvestigationResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String, AccountId: S.String }).pipe(
           T.all(
@@ -2332,11 +2294,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StartMonitoringMemberRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(16, __c2, 0),
+          Tags: __S(16, __c1, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -2348,11 +2314,15 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(464, __c29, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -2364,11 +2334,15 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GraphArn: S.String, DatasourcePackages: __S(86, __c10, 6) }).pipe(
+        S.Struct({ GraphArn: S.String, DatasourcePackages: __S(416, __c26, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/graph/datasources/update" }),
             svc,
@@ -2383,7 +2357,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2400,7 +2374,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateInvestigationStateRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GraphArn: S.String, AutoEnable: S.optional(S.Boolean) }).pipe(
           T.all(
@@ -2417,7 +2395,128 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GraphArn: S.String }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/invitation" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AcceptInvitationRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptInvitationResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GraphArn: S.String, AccountIds: __S(464, __c29, 0) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/graph/datasources/get" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetGraphMemberDatasourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MemberDatasources: S.optional(__S(546, __c34, 2)),
+          UnprocessedAccounts: S.optional(__S(529, __c33, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchGetGraphMemberDatasourcesResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), Reason: S.optional(S.String) }),
+      ).annotate({ identifier: "UnprocessedAccount" });
+    case 1:
+      return S.Array(__S(528, __c33, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(561, __c35, 1).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          GraphArn: S.optional(S.String),
+          DatasourcePackageIngestHistory: S.optional(__S(544, __c34, 0)),
+        }),
+      ).annotate({ identifier: "MembershipDatasources" });
+    case 2:
+      return S.Array(__S(545, __c34, 1));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
+      ).annotate({ identifier: "TimestampForCollection" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(560, __c35, 0).pipe(S.optional));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GraphArns: __S(464, __c29, 0) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/membership/datasources/get" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetMembershipDatasourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GraphArn: S.optional(S.String), Reason: S.optional(S.String) }),
+      ).annotate({ identifier: "UnprocessedGraph" });
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MembershipDatasources: S.optional(__S(546, __c34, 2)),
+          UnprocessedGraphs: S.optional(__S(578, __c36, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchGetMembershipDatasourcesResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

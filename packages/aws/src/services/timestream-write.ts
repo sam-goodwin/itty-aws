@@ -123,7 +123,9 @@ export class RejectedRecordsException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RejectedRecords: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(73, __c9, 1)).annotate({ identifier: "RejectedRecords" }),
+        /*@__PURE__*/ S.suspend(() => __S(433, __c27, 1)).annotate({
+          identifier: "RejectedRecords",
+        }),
       ),
     },
     /*@__PURE__*/ T.HttpError(419),
@@ -400,7 +402,7 @@ export interface Endpoint {
   Address: string;
   CachePeriodInMinutes: number;
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
 export interface DescribeEndpointsResponse {
   Endpoints: Endpoint[];
@@ -565,8 +567,8 @@ export const createBatchLoadTask: API.OperationMethod<
   CreateBatchLoadTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateBatchLoadTaskRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateBatchLoadTaskResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateBatchLoadTaskRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBatchLoadTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -603,8 +605,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateDatabaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -644,8 +646,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateTableRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateTableResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateTableRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<CreateTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -689,8 +691,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -729,8 +731,8 @@ export const deleteTable: API.OperationMethod<
   DeleteTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteTableRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteTableResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteTableRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteTableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -763,8 +765,8 @@ export const describeBatchLoadTask: API.OperationMethod<
   DescribeBatchLoadTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeBatchLoadTaskRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeBatchLoadTaskResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DescribeBatchLoadTaskRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<DescribeBatchLoadTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -797,8 +799,8 @@ export const describeDatabase: API.OperationMethod<
   DescribeDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DescribeDatabaseRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DescribeDatabaseResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DescribeDatabaseRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<DescribeDatabaseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +845,8 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DescribeEndpointsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DescribeEndpointsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DescribeEndpointsRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<DescribeEndpointsResponse>,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -876,8 +878,8 @@ export const describeTable: API.OperationMethod<
   DescribeTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DescribeTableRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DescribeTableResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DescribeTableRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DescribeTableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -910,8 +912,8 @@ export const listBatchLoadTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListBatchLoadTasksRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListBatchLoadTasksResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListBatchLoadTasksRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<ListBatchLoadTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -948,8 +950,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListDatabasesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListDatabasesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -987,8 +989,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListTablesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListTablesResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListTablesRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListTablesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1022,8 +1024,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InvalidEndpointException,
     ResourceNotFoundException,
@@ -1052,8 +1054,8 @@ export const resumeBatchLoadTask: API.OperationMethod<
   ResumeBatchLoadTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ResumeBatchLoadTaskRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ResumeBatchLoadTaskResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ResumeBatchLoadTaskRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ResumeBatchLoadTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1085,8 +1087,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidEndpointException,
     ResourceNotFoundException,
@@ -1115,8 +1117,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidEndpointException,
     ResourceNotFoundException,
@@ -1152,8 +1154,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1193,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateTableRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateTableResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateTableRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<UpdateTableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1266,8 +1268,8 @@ export const writeRecords: API.OperationMethod<
   WriteRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<WriteRecordsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<WriteRecordsResponse>,
+  input: __S(422, __c26, 6) as any as S.Schema<WriteRecordsRequest>,
+  output: __S(424, __c26, 8) as any as S.Schema<WriteRecordsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1287,10 +1289,40 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
+          DataModelConfiguration: S.optional(__S(41, __c2, 9)),
+          DataSourceConfiguration: __S(44, __c2, 12),
+          ReportConfiguration: __S(46, __c2, 14),
+          TargetDatabaseName: S.String,
+          TargetTableName: S.String,
+          RecordVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateBatchLoadTaskRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ TaskId: S.String })).annotate({
+        identifier: "CreateBatchLoadTaskResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Address: S.String, CachePeriodInMinutes: S.Number }),
+      ).annotate({ identifier: "Endpoint" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ SourceColumn: S.optional(S.String), DestinationColumn: S.optional(S.String) }),
       ).annotate({ identifier: "DimensionMapping" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(32, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1302,12 +1334,12 @@ function __c0(j: number): any {
         identifier: "MultiMeasureAttributeMapping",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(34, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           TargetMultiMeasureName: S.optional(S.String),
-          MultiMeasureAttributeMappings: __S(3, __c0, 3),
+          MultiMeasureAttributeMappings: __S(35, __c2, 3),
         }),
       ).annotate({ identifier: "MultiMeasureMappings" });
     case 5:
@@ -1317,44 +1349,40 @@ function __c0(j: number): any {
           SourceColumn: S.optional(S.String),
           TargetMeasureName: S.optional(S.String),
           MeasureValueType: S.String,
-          MultiMeasureAttributeMappings: S.optional(__S(3, __c0, 3)),
+          MultiMeasureAttributeMappings: S.optional(__S(35, __c2, 3)),
         }),
       ).annotate({ identifier: "MixedMeasureMapping" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(37, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           TimeColumn: S.optional(S.String),
           TimeUnit: S.optional(S.String),
-          DimensionMappings: __S(1, __c0, 1),
-          MultiMeasureMappings: S.optional(__S(4, __c0, 4)),
-          MixedMeasureMappings: S.optional(__S(6, __c0, 6)),
+          DimensionMappings: __S(33, __c2, 1),
+          MultiMeasureMappings: S.optional(__S(36, __c2, 4)),
+          MixedMeasureMappings: S.optional(__S(38, __c2, 6)),
           MeasureNameColumn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataModel" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({ BucketName: S.optional(S.String), ObjectKey: S.optional(S.String) }),
       ).annotate({ identifier: "DataModelS3Configuration" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          DataModel: S.optional(__S(7, __c0, 7)),
-          DataModelS3Configuration: S.optional(__S(8, __c1, 0)),
+          DataModel: S.optional(__S(39, __c2, 7)),
+          DataModelS3Configuration: S.optional(__S(40, __c2, 8)),
         }),
       ).annotate({ identifier: "DataModelConfiguration" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
       ).annotate({
         identifier: "DataSourceS3Configuration",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           ColumnSeparator: S.optional(S.String),
@@ -1364,15 +1392,15 @@ function __c1(j: number): any {
           TrimWhiteSpace: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CsvConfiguration" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          DataSourceS3Configuration: __S(10, __c1, 2),
-          CsvConfiguration: S.optional(__S(11, __c1, 3)),
+          DataSourceS3Configuration: __S(42, __c2, 10),
+          CsvConfiguration: S.optional(__S(43, __c2, 11)),
           DataFormat: S.String,
         }),
       ).annotate({ identifier: "DataSourceConfiguration" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           BucketName: S.String,
@@ -1381,47 +1409,37 @@ function __c1(j: number): any {
           KmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportS3Configuration" });
-    case 6:
+    case 14:
       return S.suspend(() =>
-        S.Struct({ ReportS3Configuration: S.optional(__S(13, __c1, 5)) }),
+        S.Struct({ ReportS3Configuration: S.optional(__S(45, __c2, 13)) }),
       ).annotate({ identifier: "ReportConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          DataModelConfiguration: S.optional(__S(9, __c1, 1)),
-          DataSourceConfiguration: __S(12, __c1, 4),
-          ReportConfiguration: __S(14, __c1, 6),
-          TargetDatabaseName: S.String,
-          TargetTableName: S.String,
-          RecordVersion: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchLoadTaskRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ TaskId: S.String })).annotate({
-        identifier: "CreateBatchLoadTaskResponse",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.String,
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(18, __c2, 2)),
+          Tags: S.optional(__S(65, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1432,18 +1450,41 @@ function __c2(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Database" });
-    case 5:
-      return S.suspend(() => S.Struct({ Database: S.optional(__S(20, __c2, 4)) })).annotate({
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Database: S.optional(__S(80, __c5, 0)) })).annotate({
         identifier: "CreateDatabaseResponse",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DatabaseName: S.String,
+          TableName: S.String,
+          RetentionProperties: S.optional(__S(128, __c8, 0)),
+          Tags: S.optional(__S(65, __c4, 1)),
+          MagneticStoreWriteProperties: S.optional(__S(131, __c8, 3)),
+          Schema: S.optional(__S(134, __c8, 6)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTableRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MemoryStoreRetentionPeriodInHours: S.Number,
           MagneticStoreRetentionPeriodInDays: S.Number,
         }),
       ).annotate({ identifier: "RetentionProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BucketName: S.optional(S.String),
@@ -1452,24 +1493,22 @@ function __c2(j: number): any {
           KmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Configuration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ S3Configuration: S.optional(__S(23, __c2, 7)) })).annotate({
-        identifier: "MagneticStoreRejectedDataLocation",
-      });
-    case 1:
+    case 2:
+      return S.suspend(() => S.Struct({ S3Configuration: S.optional(__S(129, __c8, 1)) })).annotate(
+        {
+          identifier: "MagneticStoreRejectedDataLocation",
+        },
+      );
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EnableMagneticStoreWrites: S.Boolean,
-          MagneticStoreRejectedDataLocation: S.optional(__S(24, __c3, 0)),
+          MagneticStoreRejectedDataLocation: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({
         identifier: "MagneticStoreWriteProperties",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Type: S.String,
@@ -1477,44 +1516,37 @@ function __c3(j: number): any {
           EnforcementInRecord: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartitionKey" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ CompositePartitionKey: S.optional(__S(27, __c3, 3)) }),
-      ).annotate({ identifier: "Schema" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DatabaseName: S.String,
-          TableName: S.String,
-          RetentionProperties: S.optional(__S(22, __c2, 6)),
-          Tags: S.optional(__S(18, __c2, 2)),
-          MagneticStoreWriteProperties: S.optional(__S(25, __c3, 1)),
-          Schema: S.optional(__S(28, __c3, 4)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTableRequest" });
+      return S.Array(__S(132, __c8, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({ CompositePartitionKey: S.optional(__S(133, __c8, 5)) }),
+      ).annotate({ identifier: "Schema" });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           TableName: S.optional(S.String),
           DatabaseName: S.optional(S.String),
           TableStatus: S.optional(S.String),
-          RetentionProperties: S.optional(__S(22, __c2, 6)),
+          RetentionProperties: S.optional(__S(128, __c8, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MagneticStoreWriteProperties: S.optional(__S(25, __c3, 1)),
-          Schema: S.optional(__S(28, __c3, 4)),
+          MagneticStoreWriteProperties: S.optional(__S(131, __c8, 3)),
+          Schema: S.optional(__S(134, __c8, 6)),
         }),
       ).annotate({ identifier: "Table" });
-    case 7:
-      return S.suspend(() => S.Struct({ Table: S.optional(__S(30, __c3, 6)) })).annotate({
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Table: S.optional(__S(135, __c8, 7)) })).annotate({
         identifier: "CreateTableResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1522,17 +1554,29 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDatabaseResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.String, TableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTableRequest" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TaskId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1540,7 +1584,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeBatchLoadTaskRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RecordsProcessed: S.optional(S.Number),
@@ -1551,15 +1595,15 @@ function __c4(j: number): any {
           BytesMetered: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BatchLoadProgressReport" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           TaskId: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
-          DataSourceConfiguration: S.optional(__S(12, __c1, 4)),
-          ProgressReport: S.optional(__S(36, __c4, 4)),
-          ReportConfiguration: S.optional(__S(14, __c1, 6)),
-          DataModelConfiguration: S.optional(__S(9, __c1, 1)),
+          DataSourceConfiguration: S.optional(__S(44, __c2, 12)),
+          ProgressReport: S.optional(__S(209, __c13, 1)),
+          ReportConfiguration: S.optional(__S(46, __c2, 14)),
+          DataModelConfiguration: S.optional(__S(41, __c2, 9)),
           TargetDatabaseName: S.optional(S.String),
           TargetTableName: S.optional(S.String),
           TaskStatus: S.optional(S.String),
@@ -1569,11 +1613,15 @@ function __c4(j: number): any {
           ResumableUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "BatchLoadTaskDescription" });
-    case 6:
-      return S.suspend(() => S.Struct({ BatchLoadTaskDescription: __S(37, __c4, 5) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ BatchLoadTaskDescription: __S(210, __c13, 2) })).annotate({
         identifier: "DescribeBatchLoadTaskResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1581,7 +1629,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DescribeDatabaseRequest" });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1590,22 +1638,26 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DescribeEndpointsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ Address: S.String, CachePeriodInMinutes: S.Number }),
-      ).annotate({ identifier: "Endpoint" });
-    case 2:
       return S.Array(Endpoint);
-    case 3:
-      return S.suspend(() => S.Struct({ Endpoints: __S(42, __c5, 2) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ Endpoints: __S(241, __c15, 1) })).annotate({
         identifier: "DescribeEndpointsResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.String, TableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeTableRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -1615,7 +1667,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListBatchLoadTasksRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TaskId: S.optional(S.String),
@@ -1627,34 +1679,38 @@ function __c5(j: number): any {
           ResumableUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "BatchLoadTask" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          BatchLoadTasks: S.optional(__S(47, __c5, 7)),
+          BatchLoadTasks: S.optional(__S(274, __c17, 2)),
         }),
       ).annotate({
         identifier: "ListBatchLoadTasksResponse",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDatabasesRequest" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
     case 2:
-      return S.Array(__S(20, __c2, 4));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Databases: S.optional(__S(50, __c6, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Databases: S.optional(__S(289, __c18, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatabasesResponse" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.optional(S.String),
@@ -1662,13 +1718,17 @@ function __c6(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTablesRequest" });
-    case 5:
-      return S.Array(__S(30, __c3, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(135, __c8, 7));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Tables: S.optional(__S(53, __c6, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tables: S.optional(__S(305, __c19, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1676,15 +1736,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(18, __c2, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(65, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TaskId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1692,81 +1752,93 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResumeBatchLoadTaskRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(18, __c2, 2) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(65, __c4, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(59, __c7, 3) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(368, __c23, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.String, KmsKeyId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.String,
           TableName: S.String,
-          RetentionProperties: S.optional(__S(22, __c2, 6)),
-          MagneticStoreWriteProperties: S.optional(__S(25, __c3, 1)),
-          Schema: S.optional(__S(28, __c3, 4)),
+          RetentionProperties: S.optional(__S(128, __c8, 0)),
+          MagneticStoreWriteProperties: S.optional(__S(131, __c8, 3)),
+          Schema: S.optional(__S(134, __c8, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTableRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Value: S.String,
-          DimensionValueType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Dimension" });
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Value: S.String, DimensionValueType: S.optional(S.String) }),
+      ).annotate({ identifier: "Dimension" });
     case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Value: S.String, Type: S.String }),
       ).annotate({ identifier: "MeasureValue" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
     case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(__S(64, __c8, 0)),
+          Dimensions: S.optional(__S(417, __c26, 1)),
           MeasureName: S.optional(S.String),
           MeasureValue: S.optional(S.String),
           MeasureValueType: S.optional(S.String),
           Time: S.optional(S.String),
           TimeUnit: S.optional(S.String),
           Version: S.optional(S.Number),
-          MeasureValues: S.optional(__S(66, __c8, 2)),
+          MeasureValues: S.optional(__S(419, __c26, 3)),
         }),
       ).annotate({ identifier: "Record" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
     case 5:
+      return S.Array(__S(420, __c26, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.String,
           TableName: S.String,
-          CommonAttributes: S.optional(__S(67, __c8, 3)),
-          Records: __S(68, __c8, 4),
+          CommonAttributes: S.optional(__S(420, __c26, 4)),
+          Records: __S(421, __c26, 5),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "WriteRecordsRequest" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Total: S.optional(S.Number),
@@ -1774,13 +1846,13 @@ function __c8(j: number): any {
           MagneticStore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RecordsIngested" });
-    case 7:
-      return S.suspend(() => S.Struct({ RecordsIngested: S.optional(__S(70, __c8, 6)) })).annotate({
-        identifier: "WriteRecordsResponse",
-      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ RecordsIngested: S.optional(__S(423, __c26, 7)) }),
+      ).annotate({ identifier: "WriteRecordsResponse" });
   }
 }
-function __c9(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1791,10 +1863,9 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "RejectedRecord" });
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(432, __c27, 0));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

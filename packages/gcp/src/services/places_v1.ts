@@ -1269,8 +1269,8 @@ export const autocompletePlaces: API.OperationMethod<
   AutocompletePlacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AutocompletePlacesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<AutocompletePlacesRequest>,
+  output: __S(12, __c0, 12) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1284,8 +1284,8 @@ export const getMediaPlacesPhotos: API.OperationMethod<
   GetMediaPlacesPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetMediaPlacesPhotosRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GoogleMapsPlacesV1PhotoMedia>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetMediaPlacesPhotosRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<GoogleMapsPlacesV1PhotoMedia>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1299,8 +1299,8 @@ export const getPlaces: API.OperationMethod<
   GetPlacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetPlacesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GoogleMapsPlacesV1Place>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetPlacesRequest>,
+  output: __S(222, __c6, 30) as any as S.Schema<GoogleMapsPlacesV1Place>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1314,8 +1314,8 @@ export const searchNearbyPlaces: API.OperationMethod<
   SearchNearbyPlacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<SearchNearbyPlacesRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GoogleMapsPlacesV1SearchNearbyResponse>,
+  input: __S(226, __c7, 2) as any as S.Schema<SearchNearbyPlacesRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<GoogleMapsPlacesV1SearchNearbyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1329,8 +1329,8 @@ export const searchTextPlaces: API.OperationMethod<
   SearchTextPlacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<SearchTextPlacesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleMapsPlacesV1SearchTextResponse>,
+  input: __S(295, __c9, 7) as any as S.Schema<SearchTextPlacesRequest>,
+  output: __S(305, __c9, 17) as any as S.Schema<GoogleMapsPlacesV1SearchTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1338,6 +1338,132 @@ export const searchTextPlaces: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rectangle: S.optional(__S(34, __c1, 2)),
+          circle: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          circle: S.optional(__S(64, __c2, 0)),
+          rectangle: S.optional(__S(34, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          includeFutureOpeningBusinesses: S.optional(S.Boolean),
+          includePureServiceAreaBusinesses: S.optional(S.Boolean),
+          includedPrimaryTypes: S.optional(__S(32, __c1, 0)),
+          sessionToken: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          origin: S.optional(__S(33, __c1, 1)),
+          input: S.optional(S.String),
+          inputOffset: S.optional(S.Number),
+          locationRestriction: S.optional(__S(0, __c0, 0)),
+          locationBias: S.optional(__S(1, __c0, 1)),
+          includeQueryPredictions: S.optional(S.Boolean),
+          includedRegionCodes: S.optional(__S(32, __c1, 0)),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/places:autocomplete",
+            baseUrl: "https://places.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutocompletePlacesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endOffset: S.optional(S.Number),
+          startOffset: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange",
+      });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          matches: S.optional(__S(5, __c0, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          mainText: S.optional(__S(6, __c0, 6)),
+          secondaryText: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(__S(6, __c0, 6)),
+          types: S.optional(__S(32, __c1, 0)),
+          distanceMeters: S.optional(S.Number),
+          structuredFormat: S.optional(__S(7, __c0, 7)),
+          placeId: S.optional(S.String),
+          place: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          structuredFormat: S.optional(__S(7, __c0, 7)),
+          text: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          placePrediction: S.optional(__S(8, __c0, 8)),
+          queryPrediction: S.optional(__S(9, __c0, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion",
+      });
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          suggestions: S.optional(__S(11, __c0, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -1351,135 +1477,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          high: S.optional(__S(1, __c0, 1)),
-          low: S.optional(__S(1, __c0, 1)),
+          high: S.optional(__S(33, __c1, 1)),
+          low: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "GoogleGeoTypeViewport" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          center: S.optional(__S(1, __c0, 1)),
-          radius: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleMapsPlacesV1Circle" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rectangle: S.optional(__S(2, __c0, 2)),
-          circle: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          circle: S.optional(__S(3, __c0, 3)),
-          rectangle: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includeFutureOpeningBusinesses: S.optional(S.Boolean),
-          includePureServiceAreaBusinesses: S.optional(S.Boolean),
-          includedPrimaryTypes: S.optional(__S(0, __c0, 0)),
-          sessionToken: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          origin: S.optional(__S(1, __c0, 1)),
-          input: S.optional(S.String),
-          inputOffset: S.optional(S.Number),
-          locationRestriction: S.optional(__S(4, __c0, 4)),
-          locationBias: S.optional(__S(5, __c0, 5)),
-          includeQueryPredictions: S.optional(S.Boolean),
-          includedRegionCodes: S.optional(__S(0, __c0, 0)),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/places:autocomplete",
-            baseUrl: "https://places.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutocompletePlacesRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endOffset: S.optional(S.Number),
-          startOffset: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          matches: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mainText: S.optional(__S(10, __c1, 2)),
-          secondaryText: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(__S(10, __c1, 2)),
-          types: S.optional(__S(0, __c0, 0)),
-          distanceMeters: S.optional(S.Number),
-          structuredFormat: S.optional(__S(11, __c1, 3)),
-          placeId: S.optional(S.String),
-          place: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          structuredFormat: S.optional(__S(11, __c1, 3)),
-          text: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          placePrediction: S.optional(__S(12, __c1, 4)),
-          queryPrediction: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1487,12 +1488,15 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(__S(15, __c1, 7)),
+          center: S.optional(__S(33, __c1, 1)),
+          radius: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1AutocompletePlacesResponse",
-      });
-    case 1:
+      ).annotate({ identifier: "GoogleMapsPlacesV1Circle" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1505,7 +1509,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMediaPlacesPhotosRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1514,7 +1518,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PhotoMedia",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String.pipe(T.Query())),
@@ -1525,7 +1533,11 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://places.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetPlacesRequest" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           year: S.optional(S.Number),
@@ -1533,20 +1545,20 @@ function __c2(j: number): any {
           month: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeDate" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(__S(20, __c2, 4)),
+          date: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(__S(20, __c2, 4)),
+          date: S.optional(__S(160, __c5, 0)),
           minute: S.optional(S.Number),
           truncated: S.optional(S.Boolean),
           day: S.optional(S.Number),
@@ -1555,36 +1567,32 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          open: S.optional(__S(23, __c2, 7)),
-          close: S.optional(__S(23, __c2, 7)),
+          open: S.optional(__S(163, __c5, 3)),
+          close: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriod",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          specialDays: S.optional(__S(22, __c2, 6)),
+          specialDays: S.optional(__S(162, __c5, 2)),
           nextCloseTime: S.optional(S.String),
           nextOpenTime: S.optional(S.String),
-          periods: S.optional(__S(25, __c3, 1)),
+          periods: S.optional(__S(165, __c5, 5)),
           openNow: S.optional(S.Boolean),
           secondaryHoursType: S.optional(S.String),
-          weekdayDescriptions: S.optional(__S(0, __c0, 0)),
+          weekdayDescriptions: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceOpeningHours",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           acceptsDebitCards: S.optional(S.Boolean),
@@ -1595,7 +1603,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlacePaymentOptions",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1604,9 +1612,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceAttribution",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1619,22 +1627,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(170, __c5, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           connectorCount: S.optional(S.Number),
-          connectorAggregation: S.optional(__S(31, __c3, 7)),
+          connectorAggregation: S.optional(__S(171, __c5, 11)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1EVChargeOptions",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1643,40 +1647,40 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceContainingPlace",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(173, __c5, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
           languageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeLocalizedText" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          disclosureText: S.optional(__S(35, __c4, 3)),
+          disclosureText: S.optional(__S(175, __c5, 15)),
           reviewsUri: S.optional(S.String),
-          text: S.optional(__S(35, __c4, 3)),
+          text: S.optional(__S(175, __c5, 15)),
           flagContentUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceReviewSummary",
       });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          overview: S.optional(__S(35, __c4, 3)),
+          overview: S.optional(__S(175, __c5, 15)),
           overviewFlagContentUri: S.optional(S.String),
-          disclosureText: S.optional(__S(35, __c4, 3)),
+          disclosureText: S.optional(__S(175, __c5, 15)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceGenerativeSummary",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(0, __c0, 0)),
+          types: S.optional(__S(32, __c1, 0)),
           shortText: S.optional(S.String),
           longText: S.optional(S.String),
           languageCode: S.optional(S.String),
@@ -1684,13 +1688,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceAddressComponent",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
+      return S.Array(__S(178, __c5, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           reviewsUri: S.optional(S.String),
@@ -1702,60 +1702,56 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceGoogleMapsLinks",
       });
-    case 1:
+    case 21:
       return S.Array(S.String);
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(__S(35, __c4, 3)),
-          travelModes: S.optional(__S(41, __c5, 1)),
-          usages: S.optional(__S(41, __c5, 1)),
-          location: S.optional(__S(1, __c0, 1)),
+          displayName: S.optional(__S(175, __c5, 15)),
+          travelModes: S.optional(__S(181, __c5, 21)),
+          usages: S.optional(__S(181, __c5, 21)),
+          location: S.optional(__S(33, __c1, 1)),
           navigationPointToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceNavigationPoint",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 23:
+      return S.Array(__S(182, __c5, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          referencedPlaces: S.optional(__S(0, __c0, 0)),
-          content: S.optional(__S(35, __c4, 3)),
+          referencedPlaces: S.optional(__S(32, __c1, 0)),
+          content: S.optional(__S(175, __c5, 15)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1ContentBlock",
       });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          restaurant: S.optional(__S(44, __c5, 4)),
-          store: S.optional(__S(44, __c5, 4)),
-          disclosureText: S.optional(__S(35, __c4, 3)),
+          restaurant: S.optional(__S(184, __c5, 24)),
+          store: S.optional(__S(184, __c5, 24)),
+          disclosureText: S.optional(__S(175, __c5, 15)),
           flagContentUri: S.optional(S.String),
-          coffee: S.optional(__S(44, __c5, 4)),
-          overview: S.optional(__S(44, __c5, 4)),
+          coffee: S.optional(__S(184, __c5, 24)),
+          overview: S.optional(__S(184, __c5, 24)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceEvChargeAmenitySummary",
       });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(41, __c5, 1)),
-          location: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(181, __c5, 21)),
+          location: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceEntrance",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
+      return S.Array(__S(186, __c5, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           nanos: S.optional(S.Number),
@@ -1763,47 +1759,51 @@ function __c6(j: number): any {
           units: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeMoney" });
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          endPrice: S.optional(__S(48, __c6, 0)),
-          startPrice: S.optional(__S(48, __c6, 0)),
+          endPrice: S.optional(__S(188, __c5, 28)),
+          startPrice: S.optional(__S(188, __c5, 28)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PriceRange",
       });
-    case 2:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(__S(48, __c6, 0)),
+          price: S.optional(__S(188, __c5, 28)),
           type: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1FuelOptionsFuelPrice",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 31:
+      return S.Array(__S(190, __c5, 30));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          fuelPrices: S.optional(__S(51, __c6, 3)),
+          fuelPrices: S.optional(__S(191, __c5, 31)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1FuelOptions",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          overview: S.optional(__S(44, __c5, 4)),
-          disclosureText: S.optional(__S(35, __c4, 3)),
-          description: S.optional(__S(44, __c5, 4)),
+          overview: S.optional(__S(184, __c5, 24)),
+          disclosureText: S.optional(__S(175, __c5, 15)),
+          description: S.optional(__S(184, __c5, 24)),
           flagContentUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceNeighborhoodSummary",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           paidParkingLot: S.optional(S.Boolean),
@@ -1817,7 +1817,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceParkingOptions",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           wheelchairAccessibleParking: S.optional(S.Boolean),
@@ -1828,27 +1828,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceAccessibilityOptions",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          signageText: S.optional(__S(35, __c4, 3)),
+          signageText: S.optional(__S(175, __c5, 15)),
           wheelchairAccessibleEntrance: S.optional(S.Boolean),
           id: S.optional(S.String),
-          location: S.optional(__S(1, __c0, 1)),
-          displayName: S.optional(__S(35, __c4, 3)),
-          stopCode: S.optional(__S(35, __c4, 3)),
-          platformCode: S.optional(__S(35, __c4, 3)),
+          location: S.optional(__S(33, __c1, 1)),
+          displayName: S.optional(__S(175, __c5, 15)),
+          stopCode: S.optional(__S(175, __c5, 15)),
+          platformCode: S.optional(__S(175, __c5, 15)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1TransitStop",
       });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -1857,53 +1853,49 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1TransitIcon",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          vehicleIcon: S.optional(__S(58, __c7, 2)),
-          displayName: S.optional(__S(35, __c4, 3)),
+          vehicleIcon: S.optional(__S(198, __c6, 6)),
+          displayName: S.optional(__S(175, __c5, 15)),
           id: S.optional(S.String),
-          icon: S.optional(__S(58, __c7, 2)),
+          icon: S.optional(__S(198, __c6, 6)),
           url: S.optional(S.String),
           textColor: S.optional(S.String),
-          shortDisplayName: S.optional(__S(35, __c4, 3)),
+          shortDisplayName: S.optional(__S(175, __c5, 15)),
           vehicleType: S.optional(S.String),
           backgroundColor: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1TransitLine",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(199, __c6, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           fareUrl: S.optional(S.String),
-          icon: S.optional(__S(58, __c7, 2)),
-          lines: S.optional(__S(60, __c7, 4)),
+          icon: S.optional(__S(198, __c6, 6)),
+          lines: S.optional(__S(200, __c6, 8)),
           url: S.optional(S.String),
-          displayName: S.optional(__S(35, __c4, 3)),
+          displayName: S.optional(__S(175, __c5, 15)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1TransitAgency",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(201, __c6, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(__S(35, __c4, 3)),
-          stops: S.optional(__S(57, __c7, 1)),
-          agencies: S.optional(__S(62, __c7, 6)),
+          displayName: S.optional(__S(175, __c5, 15)),
+          stops: S.optional(__S(197, __c6, 5)),
+          agencies: S.optional(__S(202, __c6, 10)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1TransitStation",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
@@ -1911,15 +1903,15 @@ function __c8(j: number): any {
           revision: S.optional(S.Number),
           organization: S.optional(S.String),
           administrativeArea: S.optional(S.String),
-          recipients: S.optional(__S(0, __c0, 0)),
-          addressLines: S.optional(__S(0, __c0, 0)),
+          recipients: S.optional(__S(32, __c1, 0)),
+          addressLines: S.optional(__S(32, __c1, 0)),
           postalCode: S.optional(S.String),
           regionCode: S.optional(S.String),
           locality: S.optional(S.String),
           sortingCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypePostalAddress" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1928,32 +1920,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink",
       });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          aboutLink: S.optional(__S(65, __c8, 1)),
+          aboutLink: S.optional(__S(205, __c6, 13)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceConsumerAlertDetails",
       });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
-          details: S.optional(__S(66, __c8, 2)),
+          details: S.optional(__S(206, __c6, 14)),
           overview: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlaceConsumerAlert",
       });
-    case 4:
-      return S.Array(__S(26, __c3, 2));
-    case 5:
+    case 16:
+      return S.Array(__S(166, __c5, 6));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(__S(35, __c4, 3)),
+          displayName: S.optional(__S(175, __c5, 15)),
           containment: S.optional(S.String),
           name: S.optional(S.String),
           placeId: S.optional(S.String),
@@ -1961,38 +1953,34 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1AddressDescriptorArea",
       });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 18:
+      return S.Array(__S(209, __c6, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(0, __c0, 0)),
+          types: S.optional(__S(32, __c1, 0)),
           name: S.optional(S.String),
           spatialRelationship: S.optional(S.String),
           travelDistanceMeters: S.optional(S.Number),
-          displayName: S.optional(__S(35, __c4, 3)),
+          displayName: S.optional(__S(175, __c5, 15)),
           straightLineDistanceMeters: S.optional(S.Number),
           placeId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1AddressDescriptorLandmark",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 20:
+      return S.Array(__S(211, __c6, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          areas: S.optional(__S(70, __c8, 6)),
-          landmarks: S.optional(__S(72, __c9, 0)),
+          areas: S.optional(__S(210, __c6, 18)),
+          landmarks: S.optional(__S(212, __c6, 20)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1AddressDescriptor",
       });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           photoUri: S.optional(S.String),
@@ -2002,31 +1990,31 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1AuthorAttribution",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           googleMapsUri: S.optional(S.String),
-          authorAttribution: S.optional(__S(74, __c9, 2)),
+          authorAttribution: S.optional(__S(214, __c6, 22)),
           flagContentUri: S.optional(S.String),
-          text: S.optional(__S(35, __c4, 3)),
-          visitDate: S.optional(__S(20, __c2, 4)),
+          text: S.optional(__S(175, __c5, 15)),
+          visitDate: S.optional(__S(160, __c5, 0)),
           publishTime: S.optional(S.String),
           relativePublishTimeDescription: S.optional(S.String),
           name: S.optional(S.String),
-          originalText: S.optional(__S(35, __c4, 3)),
+          originalText: S.optional(__S(175, __c5, 15)),
           rating: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleMapsPlacesV1Review" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 24:
+      return S.Array(__S(215, __c6, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeTimeZone" });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           globalCode: S.optional(S.String),
@@ -2035,162 +2023,140 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1PlacePlusCode",
       });
-    case 7:
-      return S.Array(__S(74, __c9, 2));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
+      return S.Array(__S(214, __c6, 22));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           heightPx: S.optional(S.Number),
           googleMapsUri: S.optional(S.String),
           flagContentUri: S.optional(S.String),
           widthPx: S.optional(S.Number),
-          authorAttributions: S.optional(__S(79, __c9, 7)),
+          authorAttributions: S.optional(__S(219, __c6, 27)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleMapsPlacesV1Photo" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 29:
+      return S.Array(__S(220, __c6, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           reservable: S.optional(S.Boolean),
-          regularOpeningHours: S.optional(__S(26, __c3, 2)),
+          regularOpeningHours: S.optional(__S(166, __c5, 6)),
           dineIn: S.optional(S.Boolean),
-          paymentOptions: S.optional(__S(27, __c3, 3)),
+          paymentOptions: S.optional(__S(167, __c5, 7)),
           liveMusic: S.optional(S.Boolean),
           curbsidePickup: S.optional(S.Boolean),
           servesCocktails: S.optional(S.Boolean),
-          attributions: S.optional(__S(29, __c3, 5)),
-          evChargeOptions: S.optional(__S(32, __c4, 0)),
-          types: S.optional(__S(0, __c0, 0)),
+          attributions: S.optional(__S(169, __c5, 9)),
+          evChargeOptions: S.optional(__S(172, __c5, 12)),
+          types: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
           websiteUri: S.optional(S.String),
           allowsDogs: S.optional(S.Boolean),
           priceLevel: S.optional(S.String),
-          containingPlaces: S.optional(__S(34, __c4, 2)),
+          containingPlaces: S.optional(__S(174, __c5, 14)),
           servesCoffee: S.optional(S.Boolean),
           name: S.optional(S.String),
-          reviewSummary: S.optional(__S(36, __c4, 4)),
+          reviewSummary: S.optional(__S(176, __c5, 16)),
           businessStatus: S.optional(S.String),
           formattedAddress: S.optional(S.String),
           servesBrunch: S.optional(S.Boolean),
           servesDinner: S.optional(S.Boolean),
           servesDessert: S.optional(S.Boolean),
           userRatingCount: S.optional(S.Number),
-          generativeSummary: S.optional(__S(37, __c4, 5)),
-          addressComponents: S.optional(__S(39, __c4, 7)),
+          generativeSummary: S.optional(__S(177, __c5, 17)),
+          addressComponents: S.optional(__S(179, __c5, 19)),
           servesLunch: S.optional(S.Boolean),
           iconMaskBaseUri: S.optional(S.String),
-          googleMapsLinks: S.optional(__S(40, __c5, 0)),
-          viewport: S.optional(__S(2, __c0, 2)),
-          navigationPoints: S.optional(__S(43, __c5, 3)),
-          currentOpeningHours: S.optional(__S(26, __c3, 2)),
+          googleMapsLinks: S.optional(__S(180, __c5, 20)),
+          viewport: S.optional(__S(34, __c1, 2)),
+          navigationPoints: S.optional(__S(183, __c5, 23)),
+          currentOpeningHours: S.optional(__S(166, __c5, 6)),
           primaryType: S.optional(S.String),
           rating: S.optional(S.Number),
-          evChargeAmenitySummary: S.optional(__S(45, __c5, 5)),
+          evChargeAmenitySummary: S.optional(__S(185, __c5, 25)),
           shortFormattedAddress: S.optional(S.String),
-          entrances: S.optional(__S(47, __c5, 7)),
-          subDestinations: S.optional(__S(34, __c4, 2)),
+          entrances: S.optional(__S(187, __c5, 27)),
+          subDestinations: S.optional(__S(174, __c5, 14)),
           servesVegetarianFood: S.optional(S.Boolean),
-          priceRange: S.optional(__S(49, __c6, 1)),
-          fuelOptions: S.optional(__S(52, __c6, 4)),
+          priceRange: S.optional(__S(189, __c5, 29)),
+          fuelOptions: S.optional(__S(192, __c6, 0)),
           goodForWatchingSports: S.optional(S.Boolean),
-          neighborhoodSummary: S.optional(__S(53, __c6, 5)),
+          neighborhoodSummary: S.optional(__S(193, __c6, 1)),
           iconBackgroundColor: S.optional(S.String),
           internationalPhoneNumber: S.optional(S.String),
-          location: S.optional(__S(1, __c0, 1)),
-          parkingOptions: S.optional(__S(54, __c6, 6)),
-          accessibilityOptions: S.optional(__S(55, __c6, 7)),
-          transitStation: S.optional(__S(63, __c7, 7)),
+          location: S.optional(__S(33, __c1, 1)),
+          parkingOptions: S.optional(__S(194, __c6, 2)),
+          accessibilityOptions: S.optional(__S(195, __c6, 3)),
+          transitStation: S.optional(__S(203, __c6, 11)),
           utcOffsetMinutes: S.optional(S.Number),
           goodForChildren: S.optional(S.Boolean),
           servesWine: S.optional(S.Boolean),
-          postalAddress: S.optional(__S(64, __c8, 0)),
+          postalAddress: S.optional(__S(204, __c6, 12)),
           servesBeer: S.optional(S.Boolean),
-          editorialSummary: S.optional(__S(35, __c4, 3)),
+          editorialSummary: S.optional(__S(175, __c5, 15)),
           restroom: S.optional(S.Boolean),
-          googleMapsTypeLabel: S.optional(__S(35, __c4, 3)),
+          googleMapsTypeLabel: S.optional(__S(175, __c5, 15)),
           menuForChildren: S.optional(S.Boolean),
           takeout: S.optional(S.Boolean),
           servesBreakfast: S.optional(S.Boolean),
-          consumerAlert: S.optional(__S(67, __c8, 3)),
+          consumerAlert: S.optional(__S(207, __c6, 15)),
           goodForGroups: S.optional(S.Boolean),
-          currentSecondaryOpeningHours: S.optional(__S(68, __c8, 4)),
+          currentSecondaryOpeningHours: S.optional(__S(208, __c6, 16)),
           googleMapsUri: S.optional(S.String),
-          addressDescriptor: S.optional(__S(73, __c9, 1)),
+          addressDescriptor: S.optional(__S(213, __c6, 21)),
           pureServiceAreaBusiness: S.optional(S.Boolean),
-          reviews: S.optional(__S(76, __c9, 4)),
+          reviews: S.optional(__S(216, __c6, 24)),
           movedPlace: S.optional(S.String),
-          displayName: S.optional(__S(35, __c4, 3)),
+          displayName: S.optional(__S(175, __c5, 15)),
           adrFormatAddress: S.optional(S.String),
-          regularSecondaryOpeningHours: S.optional(__S(68, __c8, 4)),
-          primaryTypeDisplayName: S.optional(__S(35, __c4, 3)),
-          timeZone: S.optional(__S(77, __c9, 5)),
-          plusCode: S.optional(__S(78, __c9, 6)),
-          openingDate: S.optional(__S(20, __c2, 4)),
+          regularSecondaryOpeningHours: S.optional(__S(208, __c6, 16)),
+          primaryTypeDisplayName: S.optional(__S(175, __c5, 15)),
+          timeZone: S.optional(__S(217, __c6, 25)),
+          plusCode: S.optional(__S(218, __c6, 26)),
+          openingDate: S.optional(__S(160, __c5, 0)),
           movedPlaceId: S.optional(S.String),
           delivery: S.optional(S.Boolean),
           outdoorSeating: S.optional(S.Boolean),
-          photos: S.optional(__S(81, __c10, 1)),
+          photos: S.optional(__S(221, __c6, 29)),
           nationalPhoneNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleMapsPlacesV1Place" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          avoidTolls: S.optional(S.Boolean),
-          avoidHighways: S.optional(S.Boolean),
-          avoidIndoor: S.optional(S.Boolean),
-          avoidFerries: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1RouteModifiers",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          routingPreference: S.optional(S.String),
-          travelMode: S.optional(S.String),
-          origin: S.optional(__S(1, __c0, 1)),
-          routeModifiers: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1RoutingParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          circle: S.optional(__S(3, __c0, 3)),
+          circle: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
           regionCode: S.optional(S.String),
-          excludedTypes: S.optional(__S(0, __c0, 0)),
+          excludedTypes: S.optional(__S(32, __c1, 0)),
           includeFutureOpeningBusinesses: S.optional(S.Boolean),
-          includedTypes: S.optional(__S(0, __c0, 0)),
-          excludedPrimaryTypes: S.optional(__S(0, __c0, 0)),
-          routingParameters: S.optional(__S(84, __c10, 4)),
+          includedTypes: S.optional(__S(32, __c1, 0)),
+          excludedPrimaryTypes: S.optional(__S(32, __c1, 0)),
+          routingParameters: S.optional(__S(257, __c8, 1)),
           maxResultCount: S.optional(S.Number),
-          locationRestriction: S.optional(__S(85, __c10, 5)),
-          includedPrimaryTypes: S.optional(__S(0, __c0, 0)),
+          locationRestriction: S.optional(__S(224, __c7, 0)),
+          includedPrimaryTypes: S.optional(__S(32, __c1, 0)),
           rankPreference: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchNearbyRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(86, __c10, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(225, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2201,11 +2167,42 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SearchNearbyPlacesRequest",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          routingSummaries: S.optional(__S(261, __c8, 5)),
+          places: S.optional(__S(262, __c8, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1SearchNearbyResponse",
+      });
   }
 }
-function __c11(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avoidTolls: S.optional(S.Boolean),
+          avoidHighways: S.optional(S.Boolean),
+          avoidIndoor: S.optional(S.Boolean),
+          avoidFerries: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1RouteModifiers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          routingPreference: S.optional(S.String),
+          travelMode: S.optional(S.String),
+          origin: S.optional(__S(33, __c1, 1)),
+          routeModifiers: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1RoutingParameters",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
@@ -2214,55 +2211,46 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1RoutingSummaryLeg",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           directionsUri: S.optional(S.String),
-          legs: S.optional(__S(89, __c11, 1)),
+          legs: S.optional(__S(259, __c8, 3)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1RoutingSummary",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.Array(__S(82, __c10, 2));
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          routingSummaries: S.optional(__S(91, __c11, 3)),
-          places: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1SearchNearbyResponse",
-      });
+      return S.Array(__S(260, __c8, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rectangle: S.optional(__S(2, __c0, 2)),
-          circle: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleMapsPlacesV1SearchTextRequestLocationBias",
-      });
-    case 7:
-      return S.Array(S.String);
+      return S.Array(__S(222, __c6, 30));
   }
 }
-function __c12(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          rectangle: S.optional(__S(34, __c1, 2)),
+          circle: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleMapsPlacesV1SearchTextRequestLocationBias",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           minimumChargingRateKw: S.optional(S.Number),
-          connectorTypes: S.optional(__S(95, __c11, 7)),
+          connectorTypes: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchTextRequestEVOptions",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           encodedPolyline: S.optional(S.String),
@@ -2270,52 +2258,52 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleMapsPlacesV1Polyline",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          polyline: S.optional(__S(97, __c12, 1)),
+          polyline: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          rectangle: S.optional(__S(2, __c0, 2)),
+          rectangle: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchTextRequestLocationRestriction",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           maxResultCount: S.optional(S.Number),
-          locationBias: S.optional(__S(94, __c11, 6)),
+          locationBias: S.optional(__S(288, __c9, 0)),
           includePureServiceAreaBusinesses: S.optional(S.Boolean),
-          evOptions: S.optional(__S(96, __c12, 0)),
+          evOptions: S.optional(__S(290, __c9, 2)),
           includedType: S.optional(S.String),
-          routingParameters: S.optional(__S(84, __c10, 4)),
+          routingParameters: S.optional(__S(257, __c8, 1)),
           regionCode: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          searchAlongRouteParameters: S.optional(__S(98, __c12, 2)),
+          searchAlongRouteParameters: S.optional(__S(292, __c9, 4)),
           textQuery: S.optional(S.String),
           openNow: S.optional(S.Boolean),
           pageToken: S.optional(S.String),
           strictTypeFiltering: S.optional(S.Boolean),
           rankPreference: S.optional(S.String),
           includeFutureOpeningBusinesses: S.optional(S.Boolean),
-          locationRestriction: S.optional(__S(99, __c12, 3)),
-          priceLevels: S.optional(__S(41, __c5, 1)),
+          locationRestriction: S.optional(__S(293, __c9, 5)),
+          priceLevels: S.optional(__S(181, __c5, 21)),
           languageCode: S.optional(S.String),
           minRating: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchTextRequest",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(294, __c9, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2324,7 +2312,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchTextPlacesRequest" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           dineIn: S.optional(S.Boolean),
@@ -2335,7 +2323,7 @@ function __c12(j: number): any {
         identifier:
           "GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number),
@@ -2345,69 +2333,64 @@ function __c12(j: number): any {
         identifier:
           "GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(297, __c9, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          highlightedTextRanges: S.optional(__S(104, __c13, 0)),
+          highlightedTextRanges: S.optional(__S(298, __c9, 10)),
           text: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          review: S.optional(__S(75, __c9, 3)),
-          highlightedText: S.optional(__S(105, __c13, 1)),
+          review: S.optional(__S(215, __c6, 23)),
+          highlightedText: S.optional(__S(299, __c9, 11)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1ContextualContentJustificationReviewJustification",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          businessAvailabilityAttributesJustification: S.optional(__S(102, __c12, 6)),
-          reviewJustification: S.optional(__S(106, __c13, 2)),
+          businessAvailabilityAttributesJustification: S.optional(__S(296, __c9, 8)),
+          reviewJustification: S.optional(__S(300, __c9, 12)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1ContextualContentJustification",
       });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          justifications: S.optional(__S(108, __c13, 4)),
-          reviews: S.optional(__S(76, __c9, 4)),
-          photos: S.optional(__S(81, __c10, 1)),
+          justifications: S.optional(__S(302, __c9, 14)),
+          reviews: S.optional(__S(216, __c6, 24)),
+          photos: S.optional(__S(221, __c6, 29)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1ContextualContent",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(303, __c9, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           searchUri: S.optional(S.String),
-          contextualContents: S.optional(__S(110, __c13, 6)),
+          contextualContents: S.optional(__S(304, __c9, 16)),
           nextPageToken: S.optional(S.String),
-          routingSummaries: S.optional(__S(91, __c11, 3)),
-          places: S.optional(__S(92, __c11, 4)),
+          routingSummaries: S.optional(__S(261, __c8, 5)),
+          places: S.optional(__S(262, __c8, 6)),
         }),
       ).annotate({
         identifier: "GoogleMapsPlacesV1SearchTextResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

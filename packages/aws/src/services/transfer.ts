@@ -1505,8 +1505,8 @@ export const createAccess: API.OperationMethod<
   CreateAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateAccessRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateAccessResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<CreateAccessRequest>,
+  output: __S(1488, __c93, 0) as any as S.Schema<CreateAccessResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1540,8 +1540,8 @@ export const createAgreement: API.OperationMethod<
   CreateAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAgreementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateAgreementResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAgreementRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<CreateAgreementResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1574,8 +1574,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1605,8 +1605,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateProfileRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateProfileResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CreateProfileResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1637,8 +1637,8 @@ export const createServer: API.OperationMethod<
   CreateServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateServerRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateServerResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateServerRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateServerResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1669,8 +1669,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateUserRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateUserResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateUserResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1701,8 +1701,8 @@ export const createWebApp: API.OperationMethod<
   CreateWebAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateWebAppRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateWebAppResponse>,
+  input: __S(276, __c17, 4) as any as S.Schema<CreateWebAppRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateWebAppResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1732,8 +1732,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateWorkflowResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateWorkflowRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<CreateWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1762,8 +1762,8 @@ export const deleteAccess: API.OperationMethod<
   DeleteAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteAccessRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteAccessResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteAccessRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteAccessResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1790,8 +1790,8 @@ export const deleteAgreement: API.OperationMethod<
   DeleteAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteAgreementRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteAgreementResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteAgreementRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteAgreementResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1818,8 +1818,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteCertificateResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1846,8 +1846,8 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteConnectorResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1875,8 +1875,8 @@ export const deleteHostKey: API.OperationMethod<
   DeleteHostKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteHostKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteHostKeyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteHostKeyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteHostKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1904,8 +1904,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteProfileResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteProfileResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1935,8 +1935,8 @@ export const deleteServer: API.OperationMethod<
   DeleteServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteServerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteServerResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteServerRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteServerResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1965,8 +1965,8 @@ export const deleteSshPublicKey: API.OperationMethod<
   DeleteSshPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteSshPublicKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteSshPublicKeyResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteSshPublicKeyRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteSshPublicKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1998,8 +1998,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteUserRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteUserResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2027,8 +2027,8 @@ export const deleteWebApp: API.OperationMethod<
   DeleteWebAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteWebAppRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteWebAppResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteWebAppRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteWebAppResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -2058,8 +2058,8 @@ export const deleteWebAppCustomization: API.OperationMethod<
   DeleteWebAppCustomizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteWebAppCustomizationRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<DeleteWebAppCustomizationResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteWebAppCustomizationRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<DeleteWebAppCustomizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2089,8 +2089,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -2120,8 +2120,8 @@ export const describeAccess: API.OperationMethod<
   DescribeAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DescribeAccessRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DescribeAccessResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DescribeAccessRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<DescribeAccessResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2148,8 +2148,8 @@ export const describeAgreement: API.OperationMethod<
   DescribeAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DescribeAgreementRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DescribeAgreementResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DescribeAgreementRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<DescribeAgreementResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2178,8 +2178,8 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DescribeCertificateRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DescribeCertificateResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DescribeCertificateRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<DescribeCertificateResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2206,8 +2206,8 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DescribeConnectorRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DescribeConnectorResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DescribeConnectorRequest>,
+  output: __S(626, __c39, 2) as any as S.Schema<DescribeConnectorResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2238,8 +2238,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DescribeExecutionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<DescribeExecutionResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DescribeExecutionRequest>,
+  output: __S(647, __c40, 7) as any as S.Schema<DescribeExecutionResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2266,8 +2266,8 @@ export const describeHostKey: API.OperationMethod<
   DescribeHostKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DescribeHostKeyRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<DescribeHostKeyResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DescribeHostKeyRequest>,
+  output: __S(674, __c42, 2) as any as S.Schema<DescribeHostKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2294,8 +2294,8 @@ export const describeProfile: API.OperationMethod<
   DescribeProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DescribeProfileRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DescribeProfileResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DescribeProfileRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<DescribeProfileResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2322,8 +2322,8 @@ export const describeSecurityPolicy: API.OperationMethod<
   DescribeSecurityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DescribeSecurityPolicyRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DescribeSecurityPolicyResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DescribeSecurityPolicyRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<DescribeSecurityPolicyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2352,8 +2352,8 @@ export const describeServer: API.OperationMethod<
   DescribeServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DescribeServerRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<DescribeServerResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DescribeServerRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<DescribeServerResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2382,8 +2382,8 @@ export const describeUser: API.OperationMethod<
   DescribeUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DescribeUserRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DescribeUserResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DescribeUserRequest>,
+  output: __S(740, __c46, 4) as any as S.Schema<DescribeUserResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2413,8 +2413,8 @@ export const describeWebApp: API.OperationMethod<
   DescribeWebAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DescribeWebAppRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<DescribeWebAppResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DescribeWebAppRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<DescribeWebAppResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -2443,8 +2443,8 @@ export const describeWebAppCustomization: API.OperationMethod<
   DescribeWebAppCustomizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DescribeWebAppCustomizationRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DescribeWebAppCustomizationResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DescribeWebAppCustomizationRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<DescribeWebAppCustomizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -2472,8 +2472,8 @@ export const describeWorkflow: API.OperationMethod<
   DescribeWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DescribeWorkflowRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DescribeWorkflowResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DescribeWorkflowRequest>,
+  output: __S(786, __c49, 2) as any as S.Schema<DescribeWorkflowResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2520,8 +2520,8 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ImportCertificateRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ImportCertificateResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ImportCertificateRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<ImportCertificateResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2550,8 +2550,8 @@ export const importHostKey: API.OperationMethod<
   ImportHostKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ImportHostKeyRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ImportHostKeyResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ImportHostKeyRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<ImportHostKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2584,8 +2584,8 @@ export const importSshPublicKey: API.OperationMethod<
   ImportSshPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ImportSshPublicKeyRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ImportSshPublicKeyResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ImportSshPublicKeyRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ImportSshPublicKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2616,8 +2616,8 @@ export const listAccesses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedAccess
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListAccessesRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListAccessesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListAccessesRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListAccessesResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2653,8 +2653,8 @@ export const listAgreements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedAgreement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListAgreementsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ListAgreementsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListAgreementsRequest>,
+  output: __S(899, __c56, 3) as any as S.Schema<ListAgreementsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2690,8 +2690,8 @@ export const listCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListCertificatesResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListCertificatesRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<ListCertificatesResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2727,8 +2727,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedConnector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ListConnectorsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2766,8 +2766,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListExecutionsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListExecutionsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListExecutionsRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ListExecutionsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2804,8 +2804,8 @@ export const listFileTransferResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectorFileTransferResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListFileTransferResultsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListFileTransferResultsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListFileTransferResultsRequest>,
+  output: __S(963, __c60, 3) as any as S.Schema<ListFileTransferResultsResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -2839,8 +2839,8 @@ export const listHostKeys: API.OperationMethod<
   ListHostKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListHostKeysRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListHostKeysResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListHostKeysRequest>,
+  output: __S(979, __c61, 3) as any as S.Schema<ListHostKeysResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2870,8 +2870,8 @@ export const listProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedProfile
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListProfilesRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListProfilesResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListProfilesRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListProfilesResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2906,8 +2906,8 @@ export const listSecurityPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityPolicyName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListSecurityPoliciesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListSecurityPoliciesResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListSecurityPoliciesRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<ListSecurityPoliciesResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2941,8 +2941,8 @@ export const listServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListServersRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListServersResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListServersRequest>,
+  output: __S(1027, __c64, 3) as any as S.Schema<ListServersResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -2976,8 +2976,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -3012,8 +3012,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedUser
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListUsersRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListUsersResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(1059, __c66, 3) as any as S.Schema<ListUsersResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -3050,8 +3050,8 @@ export const listWebApps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedWebApp
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListWebAppsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListWebAppsResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListWebAppsRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<ListWebAppsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -3085,8 +3085,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListedWorkflow
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(1091, __c68, 3) as any as S.Schema<ListWorkflowsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -3123,8 +3123,8 @@ export const sendWorkflowStepState: API.OperationMethod<
   SendWorkflowStepStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<SendWorkflowStepStateRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<SendWorkflowStepStateResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<SendWorkflowStepStateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<SendWorkflowStepStateResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -3168,8 +3168,8 @@ export const startDirectoryListing: API.OperationMethod<
   StartDirectoryListingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<StartDirectoryListingRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<StartDirectoryListingResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<StartDirectoryListingRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<StartDirectoryListingResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3206,8 +3206,8 @@ export const startFileTransfer: API.OperationMethod<
   StartFileTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<StartFileTransferRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<StartFileTransferResponse>,
+  input: __S(1138, __c71, 2) as any as S.Schema<StartFileTransferRequest>,
+  output: __S(1139, __c71, 3) as any as S.Schema<StartFileTransferResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3236,8 +3236,8 @@ export const startRemoteDelete: API.OperationMethod<
   StartRemoteDeleteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<StartRemoteDeleteRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<StartRemoteDeleteResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<StartRemoteDeleteRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<StartRemoteDeleteResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3266,8 +3266,8 @@ export const startRemoteMove: API.OperationMethod<
   StartRemoteMoveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<StartRemoteMoveRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<StartRemoteMoveResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<StartRemoteMoveRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<StartRemoteMoveResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3300,8 +3300,8 @@ export const startServer: API.OperationMethod<
   StartServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<StartServerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<StartServerResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<StartServerRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<StartServerResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3336,8 +3336,8 @@ export const stopServer: API.OperationMethod<
   StopServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<StopServerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<StopServerResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<StopServerRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<StopServerResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3367,8 +3367,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3395,8 +3395,8 @@ export const testConnection: API.OperationMethod<
   TestConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<TestConnectionRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<TestConnectionResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<TestConnectionRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<TestConnectionResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3445,8 +3445,8 @@ export const testIdentityProvider: API.OperationMethod<
   TestIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<TestIdentityProviderRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<TestIdentityProviderResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<TestIdentityProviderRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<TestIdentityProviderResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3475,8 +3475,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3505,8 +3505,8 @@ export const updateAccess: API.OperationMethod<
   UpdateAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateAccessRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateAccessResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateAccessRequest>,
+  output: __S(1488, __c93, 0) as any as S.Schema<UpdateAccessResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3541,8 +3541,8 @@ export const updateAgreement: API.OperationMethod<
   UpdateAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateAgreementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UpdateAgreementResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateAgreementRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateAgreementResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3572,8 +3572,8 @@ export const updateCertificate: API.OperationMethod<
   UpdateCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdateCertificateRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<UpdateCertificateResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<UpdateCertificateRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<UpdateCertificateResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3603,8 +3603,8 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateConnectorResponse>,
+  input: __S(1330, __c83, 2) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateConnectorResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3634,8 +3634,8 @@ export const updateHostKey: API.OperationMethod<
   UpdateHostKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateHostKeyRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateHostKeyResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<UpdateHostKeyRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<UpdateHostKeyResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3664,8 +3664,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateProfileResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3699,8 +3699,8 @@ export const updateServer: API.OperationMethod<
   UpdateServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateServerRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateServerResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<UpdateServerRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateServerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3740,8 +3740,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateUserRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateUserResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<UpdateUserResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -3773,8 +3773,8 @@ export const updateWebApp: API.OperationMethod<
   UpdateWebAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<UpdateWebAppRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateWebAppResponse>,
+  input: __S(1412, __c88, 4) as any as S.Schema<UpdateWebAppRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<UpdateWebAppResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3805,8 +3805,8 @@ export const updateWebAppCustomization: API.OperationMethod<
   UpdateWebAppCustomizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateWebAppCustomizationRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<UpdateWebAppCustomizationResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdateWebAppCustomizationRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<UpdateWebAppCustomizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3825,42 +3825,33 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Entry: S.String, Target: S.String, Type: S.optional(S.String) }),
-      ).annotate({ identifier: "HomeDirectoryMapEntry" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Uid: S.Number, Gid: S.Number, SecondaryGids: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "PosixProfile" });
-    case 4:
-      return S.suspend(() =>
         S.Struct({
-          HomeDirectory: S.optional(S.String),
-          HomeDirectoryType: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
-          Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
-          Role: S.String,
+          Description: S.optional(S.String),
           ServerId: S.String,
-          ExternalId: S.String,
+          LocalProfileId: S.String,
+          PartnerProfileId: S.String,
+          BaseDirectory: S.optional(S.String),
+          AccessRole: S.String,
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(17, __c1, 1)),
+          PreserveFilename: S.optional(S.String),
+          EnforceMessageSigning: S.optional(S.String),
+          CustomDirectories: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAccessRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ ServerId: S.String, ExternalId: S.String })).annotate({
-        identifier: "CreateAccessResponse",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+      ).annotate({ identifier: "CreateAgreementRequest" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3872,35 +3863,61 @@ function __c1(j: number): any {
           TemporaryFilesDirectory: S.String,
         }),
       ).annotate({ identifier: "CustomDirectoriesType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          ServerId: S.String,
-          LocalProfileId: S.String,
-          PartnerProfileId: S.String,
-          BaseDirectory: S.optional(S.String),
-          AccessRole: S.String,
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          PreserveFilename: S.optional(S.String),
-          EnforceMessageSigning: S.optional(S.String),
-          CustomDirectories: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAgreementRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ AgreementId: S.String })).annotate({
         identifier: "CreateAgreementResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Url: S.optional(S.String), ServerIds: S.optional(__S(11, __c1, 3)) }),
+        S.Struct({
+          Url: S.optional(S.String),
+          As2Config: S.optional(__S(113, __c7, 1)),
+          AccessRole: S.String,
+          LoggingRole: S.optional(S.String),
+          Tags: S.optional(__S(17, __c1, 1)),
+          SftpConfig: S.optional(__S(114, __c7, 2)),
+          SecurityPolicyName: S.optional(S.String),
+          EgressConfig: S.optional(__S(97, __c6, 1)),
+          IpAddressType: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateConnectorRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceConfigurationArn: S.String, PortNumber: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ConnectorVpcLatticeEgressConfig",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(96, __c6, 0) })]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Url: S.optional(S.String), ServerIds: S.optional(__S(80, __c5, 0)) }),
       ).annotate({
         identifier: "As2AsyncMdnConnectorConfig",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LocalProfileId: S.optional(S.String),
@@ -3913,72 +3930,95 @@ function __c1(j: number): any {
           MdnResponse: S.optional(S.String),
           BasicAuthSecretId: S.optional(S.String),
           PreserveContentType: S.optional(S.String),
-          AsyncMdnConfig: S.optional(__S(12, __c1, 4)),
+          AsyncMdnConfig: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "As2ConnectorConfig" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           UserSecretId: S.optional(S.String),
-          TrustedHostKeys: S.optional(__S(11, __c1, 3)),
+          TrustedHostKeys: S.optional(__S(80, __c5, 0)),
           MaxConcurrentConnections: S.optional(S.Number),
-          OrderedUserSecretVersionStages: S.optional(__S(11, __c1, 3)),
+          OrderedUserSecretVersionStages: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "SftpConnectorConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResourceConfigurationArn: S.String, PortNumber: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ConnectorVpcLatticeEgressConfig",
-      });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(15, __c1, 7) })]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Url: S.optional(S.String),
-          As2Config: S.optional(__S(13, __c1, 5)),
-          AccessRole: S.String,
-          LoggingRole: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          SftpConfig: S.optional(__S(14, __c1, 6)),
-          SecurityPolicyName: S.optional(S.String),
-          EgressConfig: S.optional(__S(16, __c2, 0)),
-          IpAddressType: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateConnectorRequest" });
-    case 2:
       return S.suspend(() => S.Struct({ ConnectorId: S.String })).annotate({
         identifier: "CreateConnectorResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           As2Id: S.String,
           ProfileType: S.String,
-          CertificateIds: S.optional(__S(11, __c1, 3)),
-          Tags: S.optional(__S(7, __c0, 7)),
+          CertificateIds: S.optional(__S(80, __c5, 0)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateProfileRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ProfileId: S.String })).annotate({
         identifier: "CreateProfileResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AddressAllocationIds: S.optional(__S(11, __c1, 3)),
-          SubnetIds: S.optional(__S(11, __c1, 3)),
+          Certificate: S.optional(S.String),
+          Domain: S.optional(S.String),
+          EndpointDetails: S.optional(__S(208, __c13, 0)),
+          EndpointType: S.optional(S.String),
+          HostKey: S.optional(SensitiveString),
+          IdentityProviderDetails: S.optional(__S(209, __c13, 1)),
+          IdentityProviderType: S.optional(S.String),
+          LoggingRole: S.optional(S.String),
+          PostAuthenticationLoginBanner: S.optional(S.String),
+          PreAuthenticationLoginBanner: S.optional(S.String),
+          Protocols: S.optional(__S(192, __c12, 0)),
+          ProtocolDetails: S.optional(__S(213, __c13, 5)),
+          SecurityPolicyName: S.optional(S.String),
+          Tags: S.optional(__S(17, __c1, 1)),
+          WorkflowDetails: S.optional(__S(216, __c13, 8)),
+          StructuredLogDestinations: S.optional(__S(80, __c5, 0)),
+          S3StorageOptions: S.optional(__S(217, __c13, 9)),
+          IpAddressType: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateServerRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AddressAllocationIds: S.optional(__S(80, __c5, 0)),
+          SubnetIds: S.optional(__S(80, __c5, 0)),
           VpcEndpointId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(11, __c1, 3)),
+          SecurityGroupIds: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "EndpointDetails" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Url: S.optional(S.String),
@@ -3988,165 +4028,178 @@ function __c2(j: number): any {
           SftpAuthenticationMethods: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityProviderDetails" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({ SftpPort: S.Number, CommunicationMode: S.optional(S.String) }),
       ).annotate({ identifier: "SftpPortWithOptions" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(210, __c13, 2));
+    case 4:
       return S.suspend(() => S.Struct({ SftpMode: S.optional(S.String) })).annotate({
         identifier: "ProxyConfig",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           PassiveIp: S.optional(S.String),
           TlsSessionResumptionMode: S.optional(S.String),
           SetStatOption: S.optional(S.String),
-          SftpPorts: S.optional(__S(25, __c3, 1)),
-          As2Transports: S.optional(__S(23, __c2, 7)),
-          ProxyConfig: S.optional(__S(26, __c3, 2)),
+          SftpPorts: S.optional(__S(211, __c13, 3)),
+          As2Transports: S.optional(__S(192, __c12, 0)),
+          ProxyConfig: S.optional(__S(212, __c13, 4)),
         }),
       ).annotate({ identifier: "ProtocolDetails" });
-    case 4:
+    case 6:
       return S.suspend(() => S.Struct({ WorkflowId: S.String, ExecutionRole: S.String })).annotate({
         identifier: "WorkflowDetail",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(214, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          OnUpload: S.optional(__S(29, __c3, 5)),
-          OnPartialUpload: S.optional(__S(29, __c3, 5)),
+          OnUpload: S.optional(__S(215, __c13, 7)),
+          OnPartialUpload: S.optional(__S(215, __c13, 7)),
         }),
       ).annotate({ identifier: "WorkflowDetails" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({ DirectoryListingOptimization: S.optional(S.String) }),
       ).annotate({ identifier: "S3StorageOptions" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Certificate: S.optional(S.String),
-          Domain: S.optional(S.String),
-          EndpointDetails: S.optional(__S(21, __c2, 5)),
-          EndpointType: S.optional(S.String),
-          HostKey: S.optional(SensitiveString),
-          IdentityProviderDetails: S.optional(__S(22, __c2, 6)),
-          IdentityProviderType: S.optional(S.String),
-          LoggingRole: S.optional(S.String),
-          PostAuthenticationLoginBanner: S.optional(S.String),
-          PreAuthenticationLoginBanner: S.optional(S.String),
-          Protocols: S.optional(__S(23, __c2, 7)),
-          ProtocolDetails: S.optional(__S(27, __c3, 3)),
-          SecurityPolicyName: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          WorkflowDetails: S.optional(__S(30, __c3, 6)),
-          StructuredLogDestinations: S.optional(__S(11, __c1, 3)),
-          S3StorageOptions: S.optional(__S(31, __c3, 7)),
-          IpAddressType: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateServerRequest" });
-    case 1:
       return S.suspend(() => S.Struct({ ServerId: S.String })).annotate({
         identifier: "CreateServerResponse",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HomeDirectory: S.optional(S.String),
           HomeDirectoryType: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
           Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
           Role: S.String,
           ServerId: S.String,
           SshPublicKeyBody: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
           UserName: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUserRequest" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ServerId: S.String, UserName: S.String })).annotate({
         identifier: "CreateUserResponse",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InstanceArn: S.optional(S.String), Role: S.optional(S.String) }),
       ).annotate({ identifier: "IdentityCenterConfig" });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(36, __c4, 4) })]);
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ Provisioned: S.Number })]);
-    case 7:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(272, __c17, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(11, __c1, 3)),
+          SubnetIds: S.optional(__S(80, __c5, 0)),
           VpcId: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(11, __c1, 3)),
+          SecurityGroupIds: S.optional(__S(80, __c5, 0)),
           IpAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebAppVpcConfig" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(39, __c4, 7) })]);
-    case 1:
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(274, __c17, 2) })]);
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          IdentityProviderDetails: __S(37, __c4, 5),
+          IdentityProviderDetails: __S(273, __c17, 1),
           AccessEndpoint: S.optional(S.String),
-          WebAppUnits: S.optional(__S(38, __c4, 6)),
-          Tags: S.optional(__S(7, __c0, 7)),
+          WebAppUnits: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(17, __c1, 1)),
           WebAppEndpointPolicy: S.optional(S.String),
-          EndpointDetails: S.optional(__S(40, __c5, 0)),
+          EndpointDetails: S.optional(__S(275, __c17, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/createWebApp" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateWebAppRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ Provisioned: S.Number })]);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ WebAppId: S.String })).annotate({
         identifier: "CreateWebAppResponse",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Bucket: S.optional(S.String), Key: S.optional(S.String) }),
-      ).annotate({ identifier: "S3InputFileLocation" });
-    case 4:
+        S.Struct({
+          Description: S.optional(S.String),
+          Steps: __S(360, __c22, 8),
+          OnExceptionSteps: S.optional(__S(360, __c22, 8)),
+          Tags: S.optional(__S(17, __c1, 1)),
+          StructuredLogDestinations: S.optional(__S(80, __c5, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateWorkflowRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ WorkflowId: S.String })).annotate({
+        identifier: "CreateWorkflowResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.optional(S.String), Path: S.optional(S.String) }),
       ).annotate({ identifier: "EfsFileLocation" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Bucket: S.optional(S.String), Key: S.optional(S.String) }),
+      ).annotate({ identifier: "S3InputFileLocation" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          S3FileLocation: S.optional(__S(43, __c5, 3)),
-          EfsFileLocation: S.optional(__S(44, __c5, 4)),
+          S3FileLocation: S.optional(__S(352, __c22, 0)),
+          EfsFileLocation: S.optional(__S(336, __c21, 0)),
         }),
       ).annotate({ identifier: "InputFileLocation" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          DestinationFileLocation: S.optional(__S(45, __c5, 5)),
+          DestinationFileLocation: S.optional(__S(353, __c22, 1)),
           OverwriteExisting: S.optional(S.String),
           SourceFileLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "CopyStepDetails" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4155,60 +4208,46 @@ function __c5(j: number): any {
           SourceFileLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomStepDetails" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), SourceFileLocation: S.optional(S.String) }),
       ).annotate({ identifier: "DeleteStepDetails" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
           SourceFileLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagStepDetails" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Type: S.String,
           SourceFileLocation: S.optional(S.String),
           OverwriteExisting: S.optional(S.String),
-          DestinationFileLocation: __S(45, __c5, 5),
+          DestinationFileLocation: __S(353, __c22, 1),
         }),
       ).annotate({ identifier: "DecryptStepDetails" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          CopyStepDetails: S.optional(__S(46, __c5, 6)),
-          CustomStepDetails: S.optional(__S(47, __c5, 7)),
-          DeleteStepDetails: S.optional(__S(48, __c6, 0)),
-          TagStepDetails: S.optional(__S(49, __c6, 1)),
-          DecryptStepDetails: S.optional(__S(50, __c6, 2)),
+          CopyStepDetails: S.optional(__S(354, __c22, 2)),
+          CustomStepDetails: S.optional(__S(355, __c22, 3)),
+          DeleteStepDetails: S.optional(__S(356, __c22, 4)),
+          TagStepDetails: S.optional(__S(357, __c22, 5)),
+          DecryptStepDetails: S.optional(__S(358, __c22, 6)),
         }),
       ).annotate({ identifier: "WorkflowStep" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          Steps: __S(52, __c6, 4),
-          OnExceptionSteps: S.optional(__S(52, __c6, 4)),
-          Tags: S.optional(__S(7, __c0, 7)),
-          StructuredLogDestinations: S.optional(__S(11, __c1, 3)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateWorkflowRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ WorkflowId: S.String })).annotate({
-        identifier: "CreateWorkflowResponse",
-      });
-    case 7:
+    case 8:
+      return S.Array(__S(359, __c22, 7));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, ExternalId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4216,49 +4255,77 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeleteAccessRequest" });
   }
 }
-function __c7(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessResponse",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AgreementId: S.String, ServerId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAgreementRequest" });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CertificateId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteCertificateRequest" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteConnectorRequest" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, HostKeyId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteHostKeyRequest" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProfileId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteProfileRequest" });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteServerRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, SshPublicKeyId: S.String, UserName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4268,7 +4335,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,13 +4343,21 @@ function __c8(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebAppId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/deleteWebApp" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWebAppRequest" });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebAppId: S.String }).pipe(
           T.all(
@@ -4297,41 +4372,49 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteWebAppCustomizationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWebAppCustomizationResponse",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WorkflowId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWorkflowRequest" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, ExternalId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeAccessRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           HomeDirectory: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
           HomeDirectoryType: S.optional(S.String),
           Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
           Role: S.optional(S.String),
           ExternalId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribedAccess" });
-    case 7:
-      return S.suspend(() => S.Struct({ ServerId: S.String, Access: __S(70, __c8, 6) })).annotate({
-        identifier: "DescribeAccessResponse",
-      });
+    case 2:
+      return S.suspend(() => S.Struct({ ServerId: S.String, Access: __S(577, __c36, 1) })).annotate(
+        { identifier: "DescribeAccessResponse" },
+      );
   }
 }
-function __c9(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4351,17 +4434,21 @@ function __c9(j: number): any {
           PartnerProfileId: S.optional(S.String),
           BaseDirectory: S.optional(S.String),
           AccessRole: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
           PreserveFilename: S.optional(S.String),
           EnforceMessageSigning: S.optional(S.String),
-          CustomDirectories: S.optional(__S(8, __c1, 0)),
+          CustomDirectories: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "DescribedAgreement" });
     case 2:
-      return S.suspend(() => S.Struct({ Agreement: __S(73, __c9, 1) })).annotate({
+      return S.suspend(() => S.Struct({ Agreement: __S(593, __c37, 1) })).annotate({
         identifier: "DescribeAgreementResponse",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CertificateId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4369,7 +4456,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribeCertificateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -4385,54 +4472,106 @@ function __c9(j: number): any {
           NotAfterDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Type: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "DescribedCertificate" });
-    case 5:
-      return S.suspend(() => S.Struct({ Certificate: __S(76, __c9, 4) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ Certificate: __S(609, __c38, 1) })).annotate({
         identifier: "DescribeCertificateResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeConnectorRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           ConnectorId: S.optional(S.String),
           Url: S.optional(S.String),
-          As2Config: S.optional(__S(13, __c1, 5)),
+          As2Config: S.optional(__S(113, __c7, 1)),
           AccessRole: S.optional(S.String),
           LoggingRole: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          SftpConfig: S.optional(__S(14, __c1, 6)),
-          ServiceManagedEgressIpAddresses: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(17, __c1, 1)),
+          SftpConfig: S.optional(__S(114, __c7, 2)),
+          ServiceManagedEgressIpAddresses: S.optional(__S(80, __c5, 0)),
           SecurityPolicyName: S.optional(S.String),
-          EgressConfig: S.optional(__S(16, __c2, 0)),
+          EgressConfig: S.optional(__S(97, __c6, 1)),
           EgressType: S.String,
           ErrorMessage: S.optional(S.String),
           Status: S.String,
           IpAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribedConnector" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Connector: __S(79, __c9, 7) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ Connector: __S(625, __c39, 1) })).annotate({
         identifier: "DescribeConnectorResponse",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ExecutionId: S.String, WorkflowId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeExecutionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ LoggingRole: S.optional(S.String), LogGroupName: S.optional(S.String) }),
+      ).annotate({ identifier: "LoggingConfiguration" });
     case 2:
+      return S.suspend(() => S.Struct({ Type: S.String, Message: S.String })).annotate({
+        identifier: "ExecutionError",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StepType: S.optional(S.String),
+          Outputs: S.optional(S.String),
+          Error: S.optional(__S(642, __c40, 2)),
+        }),
+      ).annotate({ identifier: "ExecutionStepResult" });
+    case 4:
+      return S.Array(__S(643, __c40, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Steps: S.optional(__S(644, __c40, 4)),
+          OnExceptionSteps: S.optional(__S(644, __c40, 4)),
+        }),
+      ).annotate({ identifier: "ExecutionResults" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ExecutionId: S.optional(S.String),
+          InitialFileLocation: S.optional(__S(657, __c41, 1)),
+          ServiceMetadata: S.optional(__S(659, __c41, 3)),
+          ExecutionRole: S.optional(S.String),
+          LoggingConfiguration: S.optional(__S(641, __c40, 1)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
+          Status: S.optional(S.String),
+          Results: S.optional(__S(645, __c40, 5)),
+        }),
+      ).annotate({ identifier: "DescribedExecution" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ WorkflowId: S.String, Execution: __S(646, __c40, 6) }),
+      ).annotate({
+        identifier: "DescribeExecutionResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.optional(S.String),
@@ -4441,76 +4580,32 @@ function __c10(j: number): any {
           Etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3FileLocation" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          S3FileLocation: S.optional(__S(82, __c10, 2)),
-          EfsFileLocation: S.optional(__S(44, __c5, 4)),
+          S3FileLocation: S.optional(__S(656, __c41, 0)),
+          EfsFileLocation: S.optional(__S(336, __c21, 0)),
         }),
       ).annotate({ identifier: "FileLocation" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({ UserName: S.String, ServerId: S.String, SessionId: S.optional(S.String) }),
       ).annotate({ identifier: "UserDetails" });
-    case 5:
-      return S.suspend(() => S.Struct({ UserDetails: __S(84, __c10, 4) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ UserDetails: __S(658, __c41, 2) })).annotate({
         identifier: "ServiceMetadata",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ LoggingRole: S.optional(S.String), LogGroupName: S.optional(S.String) }),
-      ).annotate({ identifier: "LoggingConfiguration" });
-    case 7:
-      return S.suspend(() => S.Struct({ Type: S.String, Message: S.String })).annotate({
-        identifier: "ExecutionError",
       });
   }
 }
-function __c11(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          StepType: S.optional(S.String),
-          Outputs: S.optional(S.String),
-          Error: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "ExecutionStepResult" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Steps: S.optional(__S(89, __c11, 1)),
-          OnExceptionSteps: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "ExecutionResults" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ExecutionId: S.optional(S.String),
-          InitialFileLocation: S.optional(__S(83, __c10, 3)),
-          ServiceMetadata: S.optional(__S(85, __c10, 5)),
-          ExecutionRole: S.optional(S.String),
-          LoggingConfiguration: S.optional(__S(86, __c10, 6)),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
-          Status: S.optional(S.String),
-          Results: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "DescribedExecution" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ WorkflowId: S.String, Execution: __S(91, __c11, 3) }),
-      ).annotate({
-        identifier: "DescribeExecutionResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, HostKeyId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeHostKeyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -4519,16 +4614,16 @@ function __c11(j: number): any {
           Description: S.optional(S.String),
           Type: S.optional(S.String),
           DateImported: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "DescribedHostKey" });
-    case 7:
-      return S.suspend(() => S.Struct({ HostKey: __S(94, __c11, 6) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ HostKey: __S(673, __c42, 1) })).annotate({
         identifier: "DescribeHostKeyResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4543,15 +4638,19 @@ function __c12(j: number): any {
           ProfileId: S.optional(S.String),
           ProfileType: S.optional(S.String),
           As2Id: S.optional(S.String),
-          CertificateIds: S.optional(__S(11, __c1, 3)),
-          Tags: S.optional(__S(7, __c0, 7)),
+          CertificateIds: S.optional(__S(80, __c5, 0)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "DescribedProfile" });
     case 2:
-      return S.suspend(() => S.Struct({ Profile: __S(97, __c12, 1) })).annotate({
+      return S.suspend(() => S.Struct({ Profile: __S(689, __c43, 1) })).annotate({
         identifier: "DescribeProfileResponse",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SecurityPolicyName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4559,73 +4658,77 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeSecurityPolicyRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Fips: S.optional(S.Boolean),
           SecurityPolicyName: S.String,
-          SshCiphers: S.optional(__S(11, __c1, 3)),
-          SshKexs: S.optional(__S(11, __c1, 3)),
-          SshMacs: S.optional(__S(11, __c1, 3)),
-          TlsCiphers: S.optional(__S(11, __c1, 3)),
-          SshHostKeyAlgorithms: S.optional(__S(11, __c1, 3)),
+          SshCiphers: S.optional(__S(80, __c5, 0)),
+          SshKexs: S.optional(__S(80, __c5, 0)),
+          SshMacs: S.optional(__S(80, __c5, 0)),
+          TlsCiphers: S.optional(__S(80, __c5, 0)),
+          SshHostKeyAlgorithms: S.optional(__S(80, __c5, 0)),
           Type: S.optional(S.String),
-          Protocols: S.optional(__S(23, __c2, 7)),
+          Protocols: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({ identifier: "DescribedSecurityPolicy" });
-    case 5:
-      return S.suspend(() => S.Struct({ SecurityPolicy: __S(100, __c12, 4) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ SecurityPolicy: __S(705, __c44, 1) })).annotate({
         identifier: "DescribeSecurityPolicyResponse",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeServerRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Certificate: S.optional(S.String),
-          ProtocolDetails: S.optional(__S(27, __c3, 3)),
+          ProtocolDetails: S.optional(__S(213, __c13, 5)),
           Domain: S.optional(S.String),
-          EndpointDetails: S.optional(__S(21, __c2, 5)),
+          EndpointDetails: S.optional(__S(208, __c13, 0)),
           EndpointType: S.optional(S.String),
           HostKeyFingerprint: S.optional(S.String),
-          IdentityProviderDetails: S.optional(__S(22, __c2, 6)),
+          IdentityProviderDetails: S.optional(__S(209, __c13, 1)),
           IdentityProviderType: S.optional(S.String),
           LoggingRole: S.optional(S.String),
           PostAuthenticationLoginBanner: S.optional(S.String),
           PreAuthenticationLoginBanner: S.optional(S.String),
-          Protocols: S.optional(__S(23, __c2, 7)),
+          Protocols: S.optional(__S(192, __c12, 0)),
           SecurityPolicyName: S.optional(S.String),
           ServerId: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
           UserCount: S.optional(S.Number),
-          WorkflowDetails: S.optional(__S(30, __c3, 6)),
-          StructuredLogDestinations: S.optional(__S(11, __c1, 3)),
-          S3StorageOptions: S.optional(__S(31, __c3, 7)),
-          As2ServiceManagedEgressIpAddresses: S.optional(__S(11, __c1, 3)),
+          WorkflowDetails: S.optional(__S(216, __c13, 8)),
+          StructuredLogDestinations: S.optional(__S(80, __c5, 0)),
+          S3StorageOptions: S.optional(__S(217, __c13, 9)),
+          As2ServiceManagedEgressIpAddresses: S.optional(__S(80, __c5, 0)),
           IpAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribedServer" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Server: __S(103, __c12, 7) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ Server: __S(721, __c45, 1) })).annotate({
         identifier: "DescribeServerResponse",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, UserName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeUserRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DateImported: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4633,34 +4736,38 @@ function __c13(j: number): any {
           SshPublicKeyId: S.String,
         }),
       ).annotate({ identifier: "SshPublicKey" });
+    case 2:
+      return S.Array(__S(737, __c46, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           HomeDirectory: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
           HomeDirectoryType: S.optional(S.String),
           Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
           Role: S.optional(S.String),
-          SshPublicKeys: S.optional(__S(107, __c13, 3)),
-          Tags: S.optional(__S(7, __c0, 7)),
+          SshPublicKeys: S.optional(__S(738, __c46, 2)),
+          Tags: S.optional(__S(17, __c1, 1)),
           UserName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribedUser" });
-    case 5:
-      return S.suspend(() => S.Struct({ ServerId: S.String, User: __S(108, __c13, 4) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ ServerId: S.String, User: __S(739, __c46, 3) })).annotate({
         identifier: "DescribeUserResponse",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebAppId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/describeWebApp" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeWebAppRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationArn: S.optional(S.String),
@@ -4670,42 +4777,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribedIdentityCenterConfig",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(111, __c13, 7) })]);
-    case 1:
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(753, __c47, 1) })]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(11, __c1, 3)),
+          SubnetIds: S.optional(__S(80, __c5, 0)),
           VpcId: S.optional(S.String),
           VpcEndpointId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribedWebAppVpcConfig" });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(113, __c14, 1) })]);
-    case 3:
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(755, __c47, 3) })]);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           WebAppId: S.String,
-          DescribedIdentityProviderDetails: S.optional(__S(112, __c14, 0)),
+          DescribedIdentityProviderDetails: S.optional(__S(754, __c47, 2)),
           AccessEndpoint: S.optional(S.String),
           WebAppEndpoint: S.optional(S.String),
-          WebAppUnits: S.optional(__S(38, __c4, 6)),
-          Tags: S.optional(__S(7, __c0, 7)),
+          WebAppUnits: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(17, __c1, 1)),
           WebAppEndpointPolicy: S.optional(S.String),
           EndpointType: S.optional(S.String),
-          DescribedEndpointDetails: S.optional(__S(114, __c14, 2)),
+          DescribedEndpointDetails: S.optional(__S(756, __c47, 4)),
         }),
       ).annotate({ identifier: "DescribedWebApp" });
-    case 4:
-      return S.suspend(() => S.Struct({ WebApp: __S(115, __c14, 3) })).annotate({
+    case 6:
+      return S.suspend(() => S.Struct({ WebApp: __S(757, __c47, 5) })).annotate({
         identifier: "DescribeWebAppResponse",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebAppId: S.String }).pipe(
           T.all(
@@ -4720,7 +4827,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DescribeWebAppCustomizationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -4732,13 +4839,13 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DescribedWebAppCustomization",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ WebAppCustomization: __S(118, __c14, 6) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ WebAppCustomization: __S(769, __c48, 1) })).annotate({
         identifier: "DescribeWebAppCustomizationResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4751,18 +4858,22 @@ function __c15(j: number): any {
         S.Struct({
           Arn: S.String,
           Description: S.optional(S.String),
-          Steps: S.optional(__S(52, __c6, 4)),
-          OnExceptionSteps: S.optional(__S(52, __c6, 4)),
+          Steps: S.optional(__S(360, __c22, 8)),
+          OnExceptionSteps: S.optional(__S(360, __c22, 8)),
           WorkflowId: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          StructuredLogDestinations: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(17, __c1, 1)),
+          StructuredLogDestinations: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "DescribedWorkflow" });
     case 2:
-      return S.suspend(() => S.Struct({ Workflow: __S(121, __c15, 1) })).annotate({
+      return S.suspend(() => S.Struct({ Workflow: __S(785, __c49, 1) })).annotate({
         identifier: "DescribeWorkflowResponse",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Usage: S.String,
@@ -4772,27 +4883,43 @@ function __c15(j: number): any {
           ActiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           InactiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportCertificateRequest" });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ CertificateId: S.String })).annotate({
         identifier: "ImportCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServerId: S.String,
           HostKeyBody: SensitiveString,
           Description: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportHostKeyRequest" });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ServerId: S.String, HostKeyId: S.String })).annotate({
         identifier: "ImportHostKeyResponse",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, SshPublicKeyBody: S.String, UserName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4800,17 +4927,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ImportSshPublicKeyRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, SshPublicKeyId: S.String, UserName: S.String }),
       ).annotate({
         identifier: "ImportSshPublicKeyResponse",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -4818,7 +4945,7 @@ function __c16(j: number): any {
           ServerId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAccessesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           HomeDirectory: S.optional(S.String),
@@ -4827,17 +4954,21 @@ function __c16(j: number): any {
           ExternalId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedAccess" });
+    case 2:
+      return S.Array(__S(881, __c55, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           ServerId: S.String,
-          Accesses: __S(131, __c16, 3),
+          Accesses: __S(882, __c55, 2),
         }),
       ).annotate({ identifier: "ListAccessesResponse" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -4845,7 +4976,7 @@ function __c16(j: number): any {
           ServerId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAgreementsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4857,23 +4988,23 @@ function __c16(j: number): any {
           PartnerProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedAgreement" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
+    case 2:
+      return S.Array(__S(897, __c56, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Agreements: __S(898, __c56, 2) }),
+      ).annotate({ identifier: "ListAgreementsResponse" });
   }
 }
-function __c17(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Agreements: __S(135, __c16, 7) }),
-      ).annotate({ identifier: "ListAgreementsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCertificatesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4886,19 +5017,23 @@ function __c17(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedCertificate" });
+    case 2:
+      return S.Array(__S(913, __c57, 1));
     case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Certificates: __S(139, __c17, 3) }),
+        S.Struct({ NextToken: S.optional(S.String), Certificates: __S(914, __c57, 2) }),
       ).annotate({ identifier: "ListCertificatesResponse" });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListConnectorsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4906,17 +5041,17 @@ function __c17(j: number): any {
           Url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedConnector" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Connectors: __S(930, __c58, 2) }),
+      ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Connectors: __S(143, __c17, 7) }),
-      ).annotate({ identifier: "ListConnectorsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -4924,26 +5059,30 @@ function __c18(j: number): any {
           WorkflowId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListExecutionsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ExecutionId: S.optional(S.String),
-          InitialFileLocation: S.optional(__S(83, __c10, 3)),
-          ServiceMetadata: S.optional(__S(85, __c10, 5)),
+          InitialFileLocation: S.optional(__S(657, __c41, 1)),
+          ServiceMetadata: S.optional(__S(659, __c41, 3)),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedExecution" });
+    case 2:
+      return S.Array(__S(945, __c59, 1));
     case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           WorkflowId: S.String,
-          Executions: __S(147, __c18, 3),
+          Executions: __S(946, __c59, 2),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String,
@@ -4963,7 +5102,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListFileTransferResultsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FilePath: S.String,
@@ -4974,22 +5113,19 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ConnectorFileTransferResult",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(961, __c60, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          FileTransferResults: __S(151, __c18, 7),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ FileTransferResults: __S(962, __c60, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFileTransferResultsResponse",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -4997,7 +5133,7 @@ function __c19(j: number): any {
           ServerId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListHostKeysRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -5008,17 +5144,21 @@ function __c19(j: number): any {
           DateImported: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ListedHostKey" });
+    case 2:
+      return S.Array(__S(977, __c61, 1));
     case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           ServerId: S.String,
-          HostKeys: __S(155, __c19, 3),
+          HostKeys: __S(978, __c61, 2),
         }),
       ).annotate({ identifier: "ListHostKeysResponse" });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -5026,7 +5166,7 @@ function __c19(j: number): any {
           ProfileType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListProfilesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -5035,17 +5175,17 @@ function __c19(j: number): any {
           ProfileType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedProfile" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Profiles: __S(994, __c62, 2) }),
+      ).annotate({ identifier: "ListProfilesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Profiles: __S(159, __c19, 7) }),
-      ).annotate({ identifier: "ListProfilesResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5053,19 +5193,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSecurityPoliciesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), SecurityPolicyNames: __S(11, __c1, 3) }),
+        S.Struct({ NextToken: S.optional(S.String), SecurityPolicyNames: __S(80, __c5, 0) }),
       ).annotate({
         identifier: "ListSecurityPoliciesResponse",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -5078,13 +5222,17 @@ function __c20(j: number): any {
           UserCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListedServer" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1025, __c64, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Servers: __S(165, __c20, 5) }),
+        S.Struct({ NextToken: S.optional(S.String), Servers: __S(1026, __c64, 2) }),
       ).annotate({ identifier: "ListServersResponse" });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -5094,21 +5242,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           NextToken: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -5116,7 +5264,7 @@ function __c21(j: number): any {
           ServerId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -5127,23 +5275,27 @@ function __c21(j: number): any {
           UserName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedUser" });
+    case 2:
+      return S.Array(__S(1057, __c66, 1));
     case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           ServerId: S.String,
-          Users: __S(171, __c21, 3),
+          Users: __S(1058, __c66, 2),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listWebApps" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListWebAppsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -5153,23 +5305,23 @@ function __c21(j: number): any {
           EndpointType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedWebApp" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), WebApps: __S(1074, __c67, 2) }),
+      ).annotate({ identifier: "ListWebAppsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), WebApps: __S(175, __c21, 7) }),
-      ).annotate({ identifier: "ListWebAppsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListWorkflowsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           WorkflowId: S.optional(S.String),
@@ -5177,13 +5329,17 @@ function __c22(j: number): any {
           Arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListedWorkflow" });
+    case 2:
+      return S.Array(__S(1089, __c68, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Workflows: __S(179, __c22, 3) }),
+        S.Struct({ NextToken: S.optional(S.String), Workflows: __S(1090, __c68, 2) }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           WorkflowId: S.String,
@@ -5194,7 +5350,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SendWorkflowStepStateRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String,
@@ -5205,36 +5365,40 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "StartDirectoryListingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ ListingId: S.String, OutputFileName: S.String })).annotate({
         identifier: "StartDirectoryListingResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(SensitiveString), Value: S.optional(SensitiveString) }),
       ).annotate({ identifier: "CustomHttpHeader" });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(1136, __c71, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String,
-          SendFilePaths: S.optional(__S(11, __c1, 3)),
-          RetrieveFilePaths: S.optional(__S(11, __c1, 3)),
+          SendFilePaths: S.optional(__S(80, __c5, 0)),
+          RetrieveFilePaths: S.optional(__S(80, __c5, 0)),
           LocalDirectoryPath: S.optional(S.String),
           RemoteDirectoryPath: S.optional(S.String),
-          CustomHttpHeaders: S.optional(__S(185, __c23, 1)),
+          CustomHttpHeaders: S.optional(__S(1137, __c71, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartFileTransferRequest" });
     case 3:
       return S.suspend(() => S.Struct({ TransferId: S.String })).annotate({
         identifier: "StartFileTransferResponse",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String, DeletePath: S.String }).pipe(
           T.all(
@@ -5247,23 +5411,27 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartRemoteDeleteRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ DeleteId: S.String })).annotate({
         identifier: "StartRemoteDeleteResponse",
       });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String, SourcePath: S.String, TargetPath: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startRemoteMove" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartRemoteMoveRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ MoveId: S.String })).annotate({
         identifier: "StartRemoteMoveResponse",
       });
   }
 }
-function __c24(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5271,38 +5439,54 @@ function __c24(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartServerRequest" });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopServerRequest" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, Tags: __S(7, __c0, 7) }).pipe(
+        S.Struct({ Arn: S.String, Tags: __S(17, __c1, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TestConnectionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ HostKey: S.optional(S.String) })).annotate({
         identifier: "SftpConnectorConnectionDetails",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.optional(S.String),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
-          SftpConnectionDetails: S.optional(__S(196, __c24, 4)),
+          SftpConnectionDetails: S.optional(__S(1233, __c77, 1)),
         }),
       ).annotate({ identifier: "TestConnectionResponse" });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServerId: S.String,
@@ -5314,7 +5498,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIdentityProviderRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Response: S.optional(S.String),
@@ -5327,28 +5511,36 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, TagKeys: __S(11, __c1, 3) }).pipe(
+        S.Struct({ Arn: S.String, TagKeys: __S(80, __c5, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HomeDirectory: S.optional(S.String),
           HomeDirectoryType: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
           Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
           Role: S.optional(S.String),
           ServerId: S.String,
           ExternalId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateAccessRequest" });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AgreementId: S.String,
@@ -5361,10 +5553,14 @@ function __c25(j: number): any {
           AccessRole: S.optional(S.String),
           PreserveFilename: S.optional(S.String),
           EnforceMessageSigning: S.optional(S.String),
-          CustomDirectories: S.optional(__S(8, __c1, 0)),
+          CustomDirectories: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateAgreementRequest" });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateId: S.String,
@@ -5373,7 +5569,11 @@ function __c25(j: number): any {
           Description: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateCertificateRequest" });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceConfigurationArn: S.optional(S.String),
@@ -5382,23 +5582,27 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateConnectorVpcLatticeEgressConfig",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(204, __c25, 4) })]);
-    case 6:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(1328, __c83, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String,
           Url: S.optional(S.String),
-          As2Config: S.optional(__S(13, __c1, 5)),
+          As2Config: S.optional(__S(113, __c7, 1)),
           AccessRole: S.optional(S.String),
           LoggingRole: S.optional(S.String),
-          SftpConfig: S.optional(__S(14, __c1, 6)),
+          SftpConfig: S.optional(__S(114, __c7, 2)),
           SecurityPolicyName: S.optional(S.String),
-          EgressConfig: S.optional(__S(205, __c25, 5)),
+          EgressConfig: S.optional(__S(1329, __c83, 1)),
           IpAddressType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateConnectorRequest" });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, HostKeyId: S.String, Description: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5406,79 +5610,91 @@ function __c25(j: number): any {
       ).annotate({ identifier: "UpdateHostKeyRequest" });
   }
 }
-function __c26(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ProfileId: S.String, CertificateIds: S.optional(__S(11, __c1, 3)) }).pipe(
+        S.Struct({ ProfileId: S.String, CertificateIds: S.optional(__S(80, __c5, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateProfileRequest" });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Certificate: S.optional(S.String),
-          ProtocolDetails: S.optional(__S(27, __c3, 3)),
-          EndpointDetails: S.optional(__S(21, __c2, 5)),
+          ProtocolDetails: S.optional(__S(213, __c13, 5)),
+          EndpointDetails: S.optional(__S(208, __c13, 0)),
           EndpointType: S.optional(S.String),
           HostKey: S.optional(SensitiveString),
-          IdentityProviderDetails: S.optional(__S(22, __c2, 6)),
+          IdentityProviderDetails: S.optional(__S(209, __c13, 1)),
           LoggingRole: S.optional(S.String),
           PostAuthenticationLoginBanner: S.optional(S.String),
           PreAuthenticationLoginBanner: S.optional(S.String),
-          Protocols: S.optional(__S(23, __c2, 7)),
+          Protocols: S.optional(__S(192, __c12, 0)),
           SecurityPolicyName: S.optional(S.String),
           ServerId: S.String,
-          WorkflowDetails: S.optional(__S(30, __c3, 6)),
-          StructuredLogDestinations: S.optional(__S(11, __c1, 3)),
-          S3StorageOptions: S.optional(__S(31, __c3, 7)),
+          WorkflowDetails: S.optional(__S(216, __c13, 8)),
+          StructuredLogDestinations: S.optional(__S(80, __c5, 0)),
+          S3StorageOptions: S.optional(__S(217, __c13, 9)),
           IpAddressType: S.optional(S.String),
           IdentityProviderType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateServerRequest" });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           HomeDirectory: S.optional(S.String),
           HomeDirectoryType: S.optional(S.String),
-          HomeDirectoryMappings: S.optional(__S(1, __c0, 1)),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
           Policy: S.optional(S.String),
-          PosixProfile: S.optional(__S(3, __c0, 3)),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
           Role: S.optional(S.String),
           ServerId: S.String,
           UserName: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Role: S.optional(S.String) })).annotate({
         identifier: "UpdateWebAppIdentityCenterConfig",
       });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(211, __c26, 3) })]);
-    case 5:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(1408, __c88, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(11, __c1, 3)),
+          SubnetIds: S.optional(__S(80, __c5, 0)),
           IpAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateWebAppVpcConfig" });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(213, __c26, 5) })]);
-    case 7:
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(1410, __c88, 2) })]);
+    case 4:
       return S.suspend(() =>
         S.Struct({
           WebAppId: S.String,
-          IdentityProviderDetails: S.optional(__S(212, __c26, 4)),
+          IdentityProviderDetails: S.optional(__S(1409, __c88, 1)),
           AccessEndpoint: S.optional(S.String),
-          WebAppUnits: S.optional(__S(38, __c4, 6)),
-          EndpointDetails: S.optional(__S(214, __c26, 6)),
+          WebAppUnits: S.optional(__S(288, __c18, 0)),
+          EndpointDetails: S.optional(__S(1411, __c88, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/updateWebApp" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateWebAppRequest" });
   }
 }
-function __c27(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5506,7 +5722,51 @@ function __c27(j: number): any {
       });
   }
 }
-
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HomeDirectory: S.optional(S.String),
+          HomeDirectoryType: S.optional(S.String),
+          HomeDirectoryMappings: S.optional(__S(1473, __c92, 1)),
+          Policy: S.optional(S.String),
+          PosixProfile: S.optional(__S(1457, __c91, 1)),
+          Role: S.String,
+          ServerId: S.String,
+          ExternalId: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAccessRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Uid: S.Number, Gid: S.Number, SecondaryGids: S.optional(__S(1456, __c91, 0)) }),
+      ).annotate({ identifier: "PosixProfile" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Entry: S.String, Target: S.String, Type: S.optional(S.String) }),
+      ).annotate({ identifier: "HomeDirectoryMapEntry" });
+    case 1:
+      return S.Array(__S(1472, __c92, 0));
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ServerId: S.String, ExternalId: S.String })).annotate({
+        identifier: "CreateAccessResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

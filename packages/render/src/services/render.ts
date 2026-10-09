@@ -5595,8 +5595,8 @@ export const addDisk: API.OperationMethod<
   AddDiskError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddDiskRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddDiskResponse>,
+  input: __S(1528, __c191, 0) as any as S.Schema<AddDiskRequest>,
+  output: __S(1536, __c192, 0) as any as S.Schema<AddDiskResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5610,8 +5610,8 @@ export const addHeaders: API.OperationMethod<
   AddHeadersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddHeadersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddHeadersResponse>,
+  input: __S(1624, __c203, 0) as any as S.Schema<AddHeadersRequest>,
+  output: __S(1625, __c203, 1) as any as S.Schema<AddHeadersResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5629,8 +5629,8 @@ export const addOrUpdateBuildSourceSecretFile: API.OperationMethod<
   AddOrUpdateBuildSourceSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddOrUpdateBuildSourceSecretFileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecretFile>,
+  input: __S(1720, __c215, 0) as any as S.Schema<AddOrUpdateBuildSourceSecretFileRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<SecretFile>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5644,8 +5644,8 @@ export const addOrUpdateSecretFile: API.OperationMethod<
   AddOrUpdateSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddOrUpdateSecretFileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecretFile>,
+  input: __S(1856, __c232, 0) as any as S.Schema<AddOrUpdateSecretFileRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<SecretFile>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5659,8 +5659,8 @@ export const addResourcesToEnvironment: API.OperationMethod<
   AddResourcesToEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddResourcesToEnvironmentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Environment>,
+  input: __S(1944, __c243, 0) as any as S.Schema<AddResourcesToEnvironmentRequest>,
+  output: __S(1968, __c246, 0) as any as S.Schema<Environment>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5670,8 +5670,8 @@ export type AddRouteError = BadRequest | Forbidden | NotFound | RenderOpError;
 /** Add redirect/rewrite rules Add redirect/rewrite rules to the service with the provided ID. */
 export const addRoute: API.OperationMethod<AddRouteRequest, Route, AddRouteError, RenderOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(13, __c1, 5) as any as S.Schema<AddRouteRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<Route>,
+    input: __S(2064, __c258, 0) as any as S.Schema<AddRouteRequest>,
+    output: __S(2072, __c259, 0) as any as S.Schema<Route>,
     errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
     protocol: RenderProtocol,
     retry: Retry.Retry,
@@ -5685,8 +5685,8 @@ export const autoscaleService: API.OperationMethod<
   AutoscaleServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AutoscaleServiceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Schema5>,
+  input: __S(2, __c0, 2) as any as S.Schema<AutoscaleServiceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Schema5>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5700,8 +5700,8 @@ export const cancelCronJobRun: API.OperationMethod<
   CancelCronJobRunError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CancelCronJobRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CancelCronJobRunResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CancelCronJobRunRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CancelCronJobRunResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5715,8 +5715,8 @@ export const cancelDeploy: API.OperationMethod<
   CancelDeployError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CancelDeployRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Deploy>,
+  input: __S(216, __c27, 0) as any as S.Schema<CancelDeployRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<Deploy>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5730,8 +5730,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CancelJobRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Schema7>,
+  input: __S(320, __c40, 0) as any as S.Schema<CancelJobRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<Schema7>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5745,8 +5745,8 @@ export const cancelTaskRun: API.OperationMethod<
   CancelTaskRunError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CancelTaskRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CancelTaskRunResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<CancelTaskRunRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CancelTaskRunResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5760,8 +5760,8 @@ export const createBuildSource: API.OperationMethod<
   CreateBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateBuildSourceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateBuildSourceResponse>,
+  input: __S(513, __c64, 1) as any as S.Schema<CreateBuildSourceRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<CreateBuildSourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5775,8 +5775,8 @@ export const createCustomDomain: API.OperationMethod<
   CreateCustomDomainError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateCustomDomainRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreateCustomDomainResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<CreateCustomDomainRequest>,
+  output: __S(642, __c80, 2) as any as S.Schema<CreateCustomDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5790,8 +5790,8 @@ export const createDedicatedIp: API.OperationMethod<
   CreateDedicatedIpError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateDedicatedIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DedicatedIP>,
+  input: __S(736, __c92, 0) as any as S.Schema<CreateDedicatedIpRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<DedicatedIP>,
   errors: [BadRequest, Forbidden, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5805,8 +5805,8 @@ export const createDeploy: API.OperationMethod<
   CreateDeployError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateDeployRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Deploy>,
+  input: __S(832, __c104, 0) as any as S.Schema<CreateDeployRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<Deploy>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5820,8 +5820,8 @@ export const createEnvGroup: API.OperationMethod<
   CreateEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateEnvGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateEnvGroupResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<CreateEnvGroupRequest>,
+  output: __S(952, __c119, 0) as any as S.Schema<CreateEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5835,8 +5835,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Environment>,
+  input: __S(1040, __c130, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(1968, __c246, 0) as any as S.Schema<Environment>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5850,8 +5850,8 @@ export const createKeyValue: API.OperationMethod<
   CreateKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateKeyValueRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<KeyValueDetail>,
+  input: __S(1128, __c141, 0) as any as S.Schema<CreateKeyValueRequest>,
+  output: __S(1160, __c145, 0) as any as S.Schema<KeyValueDetail>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5865,8 +5865,8 @@ export const createPostgres: API.OperationMethod<
   CreatePostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreatePostgresRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PostgresDetail>,
+  input: __S(1248, __c156, 0) as any as S.Schema<CreatePostgresRequest>,
+  output: __S(1264, __c158, 0) as any as S.Schema<PostgresDetail>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5880,8 +5880,8 @@ export const createPostgresExport: API.OperationMethod<
   CreatePostgresExportError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreatePostgresExportRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePostgresExportResponse>,
+  input: __S(1312, __c164, 0) as any as S.Schema<CreatePostgresExportRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreatePostgresExportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5895,8 +5895,8 @@ export const createPostgresUser: API.OperationMethod<
   CreatePostgresUserError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreatePostgresUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePostgresUserResponse>,
+  input: __S(1320, __c165, 0) as any as S.Schema<CreatePostgresUserRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreatePostgresUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5910,8 +5910,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateProjectRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Project>,
+  input: __S(1330, __c166, 2) as any as S.Schema<CreateProjectRequest>,
+  output: __S(1336, __c167, 0) as any as S.Schema<Project>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5925,8 +5925,8 @@ export const createRegistryCredential: API.OperationMethod<
   CreateRegistryCredentialError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateRegistryCredentialRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RegistryCredential>,
+  input: __S(1344, __c168, 0) as any as S.Schema<CreateRegistryCredentialRequest>,
+  output: __S(1352, __c169, 0) as any as S.Schema<RegistryCredential>,
   errors: [BadRequest, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5940,8 +5940,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateServiceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ServiceAndDeploy>,
+  input: __S(1360, __c170, 0) as any as S.Schema<CreateServiceRequest>,
+  output: __S(1376, __c172, 0) as any as S.Schema<ServiceAndDeploy>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5955,8 +5955,8 @@ export const createTask: API.OperationMethod<
   CreateTaskError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateTaskRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<CreateTaskResponse>,
+  input: __S(1392, __c174, 0) as any as S.Schema<CreateTaskRequest>,
+  output: __S(1402, __c175, 2) as any as S.Schema<CreateTaskResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5970,8 +5970,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CreateWebhookResponse>,
+  input: __S(1408, __c176, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(1417, __c177, 1) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -5985,8 +5985,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CreateWorkflowResponse>,
+  input: __S(1425, __c178, 1) as any as S.Schema<CreateWorkflowRequest>,
+  output: __S(1433, __c179, 1) as any as S.Schema<CreateWorkflowResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6000,8 +6000,8 @@ export const createWorkflowVersion: API.OperationMethod<
   CreateWorkflowVersionError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateWorkflowVersionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateWorkflowVersionResponse>,
+  input: __S(1440, __c180, 0) as any as S.Schema<CreateWorkflowVersionRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateWorkflowVersionResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6015,8 +6015,8 @@ export const deleteAutoscalingConfig: API.OperationMethod<
   DeleteAutoscalingConfigError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteAutoscalingConfigRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteAutoscalingConfigResponse>,
+  input: __S(1448, __c181, 0) as any as S.Schema<DeleteAutoscalingConfigRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<DeleteAutoscalingConfigResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6030,8 +6030,8 @@ export const deleteBuildSource: API.OperationMethod<
   DeleteBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteBuildSourceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteBuildSourceResponse>,
+  input: __S(1464, __c183, 0) as any as S.Schema<DeleteBuildSourceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteBuildSourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6045,8 +6045,8 @@ export const deleteBuildSourceEnvVar: API.OperationMethod<
   DeleteBuildSourceEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteBuildSourceEnvVarRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteBuildSourceEnvVarResponse>,
+  input: __S(1472, __c184, 0) as any as S.Schema<DeleteBuildSourceEnvVarRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<DeleteBuildSourceEnvVarResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6060,8 +6060,8 @@ export const deleteBuildSourceSecretFile: API.OperationMethod<
   DeleteBuildSourceSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteBuildSourceSecretFileRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteBuildSourceSecretFileResponse>,
+  input: __S(1480, __c185, 0) as any as S.Schema<DeleteBuildSourceSecretFileRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<DeleteBuildSourceSecretFileResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6075,8 +6075,8 @@ export const deleteCustomDomain: API.OperationMethod<
   DeleteCustomDomainError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteCustomDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCustomDomainResponse>,
+  input: __S(1496, __c187, 0) as any as S.Schema<DeleteCustomDomainRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteCustomDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6090,8 +6090,8 @@ export const deleteDedicatedIp: API.OperationMethod<
   DeleteDedicatedIpError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteDedicatedIpRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDedicatedIpResponse>,
+  input: __S(1504, __c188, 0) as any as S.Schema<DeleteDedicatedIpRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteDedicatedIpResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6105,8 +6105,8 @@ export const deleteDisk: API.OperationMethod<
   DeleteDiskError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DeleteDiskRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDiskResponse>,
+  input: __S(1512, __c189, 0) as any as S.Schema<DeleteDiskRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteDiskResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6120,8 +6120,8 @@ export const deleteEnvGroup: API.OperationMethod<
   DeleteEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteEnvGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEnvGroupResponse>,
+  input: __S(1520, __c190, 0) as any as S.Schema<DeleteEnvGroupRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6135,8 +6135,8 @@ export const deleteEnvGroupEnvVar: API.OperationMethod<
   DeleteEnvGroupEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteEnvGroupEnvVarRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEnvGroupEnvVarResponse>,
+  input: __S(1544, __c193, 0) as any as S.Schema<DeleteEnvGroupEnvVarRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteEnvGroupEnvVarResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6150,8 +6150,8 @@ export const deleteEnvGroupSecretFile: API.OperationMethod<
   DeleteEnvGroupSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteEnvGroupSecretFileRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteEnvGroupSecretFileResponse>,
+  input: __S(1552, __c194, 0) as any as S.Schema<DeleteEnvGroupSecretFileRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<DeleteEnvGroupSecretFileResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6165,8 +6165,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(1560, __c195, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6180,8 +6180,8 @@ export const deleteEnvVar: API.OperationMethod<
   DeleteEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteEnvVarRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEnvVarResponse>,
+  input: __S(1568, __c196, 0) as any as S.Schema<DeleteEnvVarRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteEnvVarResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6195,8 +6195,8 @@ export const deleteHeader: API.OperationMethod<
   DeleteHeaderError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteHeaderRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteHeaderResponse>,
+  input: __S(1576, __c197, 0) as any as S.Schema<DeleteHeaderRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteHeaderResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6210,8 +6210,8 @@ export const deleteKeyValue: API.OperationMethod<
   DeleteKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteKeyValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteKeyValueResponse>,
+  input: __S(1584, __c198, 0) as any as S.Schema<DeleteKeyValueRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteKeyValueResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6225,8 +6225,8 @@ export const deleteOwnerLogStream: API.OperationMethod<
   DeleteOwnerLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteOwnerLogStreamRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteOwnerLogStreamResponse>,
+  input: __S(1592, __c199, 0) as any as S.Schema<DeleteOwnerLogStreamRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteOwnerLogStreamResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6240,8 +6240,8 @@ export const deleteOwnerMetricsStream: API.OperationMethod<
   DeleteOwnerMetricsStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<DeleteOwnerMetricsStreamRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteOwnerMetricsStreamResponse>,
+  input: __S(1600, __c200, 0) as any as S.Schema<DeleteOwnerMetricsStreamRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<DeleteOwnerMetricsStreamResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6255,8 +6255,8 @@ export const deletePostgres: API.OperationMethod<
   DeletePostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DeletePostgresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeletePostgresResponse>,
+  input: __S(1608, __c201, 0) as any as S.Schema<DeletePostgresRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeletePostgresResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6270,8 +6270,8 @@ export const deletePostgresUser: API.OperationMethod<
   DeletePostgresUserError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<DeletePostgresUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeletePostgresUserResponse>,
+  input: __S(1616, __c202, 0) as any as S.Schema<DeletePostgresUserRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeletePostgresUserResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6285,8 +6285,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(1640, __c205, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6300,8 +6300,8 @@ export const deleteRegistryCredential: API.OperationMethod<
   DeleteRegistryCredentialError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteRegistryCredentialRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteRegistryCredentialResponse>,
+  input: __S(1648, __c206, 0) as any as S.Schema<DeleteRegistryCredentialRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<DeleteRegistryCredentialResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6315,8 +6315,8 @@ export const deleteResourceLogStream: API.OperationMethod<
   DeleteResourceLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteResourceLogStreamRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteResourceLogStreamResponse>,
+  input: __S(1656, __c207, 0) as any as S.Schema<DeleteResourceLogStreamRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<DeleteResourceLogStreamResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6330,8 +6330,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteRouteResponse>,
+  input: __S(1664, __c208, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteRouteResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6345,8 +6345,8 @@ export const deleteSecretFile: API.OperationMethod<
   DeleteSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteSecretFileRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteSecretFileResponse>,
+  input: __S(1672, __c209, 0) as any as S.Schema<DeleteSecretFileRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteSecretFileResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6360,8 +6360,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(1680, __c210, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6375,8 +6375,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(1688, __c211, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6390,8 +6390,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(1696, __c212, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6405,8 +6405,8 @@ export const deployRollback: API.OperationMethod<
   DeployRollbackError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeployRollbackRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Deploy>,
+  input: __S(1704, __c213, 0) as any as S.Schema<DeployRollbackRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<Deploy>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6420,8 +6420,8 @@ export const disconnectBlueprint: API.OperationMethod<
   DisconnectBlueprintError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DisconnectBlueprintRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DisconnectBlueprintResponse>,
+  input: __S(1712, __c214, 0) as any as S.Schema<DisconnectBlueprintRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DisconnectBlueprintResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6435,8 +6435,8 @@ export const failoverPostgres: API.OperationMethod<
   FailoverPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<FailoverPostgresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<FailoverPostgresResponse>,
+  input: __S(1736, __c217, 0) as any as S.Schema<FailoverPostgresRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<FailoverPostgresResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6450,8 +6450,8 @@ export const getActiveConnections: API.OperationMethod<
   GetActiveConnectionsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetActiveConnectionsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetActiveConnectionsResponse>,
+  input: __S(1744, __c218, 0) as any as S.Schema<GetActiveConnectionsRequest>,
+  output: __S(1752, __c219, 0) as any as S.Schema<GetActiveConnectionsResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6465,8 +6465,8 @@ export const getBandwidth: API.OperationMethod<
   GetBandwidthError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetBandwidthRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetBandwidthResponse>,
+  input: __S(1776, __c222, 0) as any as S.Schema<GetBandwidthRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetBandwidthResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6480,8 +6480,8 @@ export const getBandwidthSources: API.OperationMethod<
   GetBandwidthSourcesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetBandwidthSourcesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetBandwidthSourcesResponse>,
+  input: __S(1792, __c224, 0) as any as S.Schema<GetBandwidthSourcesRequest>,
+  output: __S(1798, __c224, 6) as any as S.Schema<GetBandwidthSourcesResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6495,8 +6495,8 @@ export const getBlueprint: API.OperationMethod<
   GetBlueprintError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetBlueprintRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GetBlueprintResponse>,
+  input: __S(1800, __c225, 0) as any as S.Schema<GetBlueprintRequest>,
+  output: __S(1803, __c225, 3) as any as S.Schema<GetBlueprintResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6510,8 +6510,8 @@ export const getBuildSource: API.OperationMethod<
   GetBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetBuildSourceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<Schema12>,
+  input: __S(1808, __c226, 0) as any as S.Schema<GetBuildSourceRequest>,
+  output: __S(1816, __c227, 0) as any as S.Schema<Schema12>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6525,8 +6525,8 @@ export const getBuildSourceEnvVar: API.OperationMethod<
   GetBuildSourceEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetBuildSourceEnvVarRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EnvVar>,
+  input: __S(1824, __c228, 0) as any as S.Schema<GetBuildSourceEnvVarRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<EnvVar>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6540,8 +6540,8 @@ export const getBuildSourceSecretFile: API.OperationMethod<
   GetBuildSourceSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetBuildSourceSecretFileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecretFile>,
+  input: __S(1832, __c229, 0) as any as S.Schema<GetBuildSourceSecretFileRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<SecretFile>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6555,8 +6555,8 @@ export const getCpu: API.OperationMethod<
   GetCpuError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetCpuRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<GetCpuResponse>,
+  input: __S(1840, __c230, 0) as any as S.Schema<GetCpuRequest>,
+  output: __S(1843, __c230, 3) as any as S.Schema<GetCpuResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6570,8 +6570,8 @@ export const getCpuLimit: API.OperationMethod<
   GetCpuLimitError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetCpuLimitRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetCpuLimitResponse>,
+  input: __S(1848, __c231, 0) as any as S.Schema<GetCpuLimitRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetCpuLimitResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6585,8 +6585,8 @@ export const getCpuTarget: API.OperationMethod<
   GetCpuTargetError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetCpuTargetRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetCpuTargetResponse>,
+  input: __S(1864, __c233, 0) as any as S.Schema<GetCpuTargetRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetCpuTargetResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6600,8 +6600,8 @@ export const getCustomDomain: API.OperationMethod<
   GetCustomDomainError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetCustomDomainRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CustomDomain>,
+  input: __S(1872, __c234, 0) as any as S.Schema<GetCustomDomainRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<CustomDomain>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6615,8 +6615,8 @@ export const getDedicatedIp: API.OperationMethod<
   GetDedicatedIpError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetDedicatedIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DedicatedIP>,
+  input: __S(1880, __c235, 0) as any as S.Schema<GetDedicatedIpRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<DedicatedIP>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6630,8 +6630,8 @@ export const getDeploy: API.OperationMethod<
   GetDeployError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetDeployRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Deploy>,
+  input: __S(1888, __c236, 0) as any as S.Schema<GetDeployRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<Deploy>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6641,8 +6641,8 @@ export type GetDiskError = Forbidden | NotFound | RenderOpError;
 /** Retrieve disk Retrieve the persistent disk with the provided ID. */
 export const getDisk: API.OperationMethod<GetDiskRequest, Schema2, GetDiskError, RenderOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(157, __c19, 5) as any as S.Schema<GetDiskRequest>,
-    output: __S(1, __c0, 1) as any as S.Schema<Schema2>,
+    input: __S(1896, __c237, 0) as any as S.Schema<GetDiskRequest>,
+    output: __S(1536, __c192, 0) as any as S.Schema<Schema2>,
     errors: [Forbidden, NotFound, UnknownRenderError],
     protocol: RenderProtocol,
     retry: Retry.Retry,
@@ -6656,8 +6656,8 @@ export const getDiskCapacity: API.OperationMethod<
   GetDiskCapacityError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetDiskCapacityRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetDiskCapacityResponse>,
+  input: __S(1904, __c238, 0) as any as S.Schema<GetDiskCapacityRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetDiskCapacityResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6671,8 +6671,8 @@ export const getDiskUsage: API.OperationMethod<
   GetDiskUsageError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetDiskUsageRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetDiskUsageResponse>,
+  input: __S(1912, __c239, 0) as any as S.Schema<GetDiskUsageRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetDiskUsageResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6686,8 +6686,8 @@ export const getEnvGroup: API.OperationMethod<
   GetEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetEnvGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetEnvGroupResponse>,
+  input: __S(1920, __c240, 0) as any as S.Schema<GetEnvGroupRequest>,
+  output: __S(952, __c119, 0) as any as S.Schema<GetEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6701,8 +6701,8 @@ export const getEnvGroupEnvVar: API.OperationMethod<
   GetEnvGroupEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetEnvGroupEnvVarRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EnvVar>,
+  input: __S(1928, __c241, 0) as any as S.Schema<GetEnvGroupEnvVarRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<EnvVar>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6716,8 +6716,8 @@ export const getEnvGroupSecretFile: API.OperationMethod<
   GetEnvGroupSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetEnvGroupSecretFileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecretFile>,
+  input: __S(1936, __c242, 0) as any as S.Schema<GetEnvGroupSecretFileRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<SecretFile>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6731,8 +6731,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Environment>,
+  input: __S(1976, __c247, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(1968, __c246, 0) as any as S.Schema<Environment>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6746,8 +6746,8 @@ export const getEnvVar: API.OperationMethod<
   GetEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetEnvVarRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EnvVar>,
+  input: __S(1984, __c248, 0) as any as S.Schema<GetEnvVarRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<EnvVar>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6761,8 +6761,8 @@ export const getEnvVarsForBuildSource: API.OperationMethod<
   GetEnvVarsForBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetEnvVarsForBuildSourceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetEnvVarsForBuildSourceResponse>,
+  input: __S(1992, __c249, 0) as any as S.Schema<GetEnvVarsForBuildSourceRequest>,
+  output: __S(2002, __c250, 2) as any as S.Schema<GetEnvVarsForBuildSourceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6776,8 +6776,8 @@ export const getEnvVarsForService: API.OperationMethod<
   GetEnvVarsForServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetEnvVarsForServiceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetEnvVarsForServiceResponse>,
+  input: __S(2008, __c251, 0) as any as S.Schema<GetEnvVarsForServiceRequest>,
+  output: __S(2002, __c250, 2) as any as S.Schema<GetEnvVarsForServiceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6791,8 +6791,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetEventRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GetEventResponse>,
+  input: __S(2016, __c252, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(2017, __c252, 1) as any as S.Schema<GetEventResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6806,8 +6806,8 @@ export const getHttpLatency: API.OperationMethod<
   GetHttpLatencyError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetHttpLatencyRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetHttpLatencyResponse>,
+  input: __S(2024, __c253, 0) as any as S.Schema<GetHttpLatencyRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetHttpLatencyResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6821,8 +6821,8 @@ export const getHttpRequests: API.OperationMethod<
   GetHttpRequestsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<GetHttpRequestsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetHttpRequestsResponse>,
+  input: __S(2032, __c254, 0) as any as S.Schema<GetHttpRequestsRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetHttpRequestsResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6836,8 +6836,8 @@ export const getInstanceCount: API.OperationMethod<
   GetInstanceCountError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetInstanceCountRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetInstanceCountResponse>,
+  input: __S(2040, __c255, 0) as any as S.Schema<GetInstanceCountRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetInstanceCountResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6847,8 +6847,8 @@ export type GetJobError = BadRequest | NotFound | RenderOpError;
 /** Retrieve job Retrieve the details of a particular one-off job for a particular service. */
 export const getJob: API.OperationMethod<GetJobRequest, Schema7, GetJobError, RenderOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(176, __c22, 0) as any as S.Schema<GetJobRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<Schema7>,
+    input: __S(2048, __c256, 0) as any as S.Schema<GetJobRequest>,
+    output: __S(328, __c41, 0) as any as S.Schema<Schema7>,
     errors: [BadRequest, NotFound, UnknownRenderError],
     protocol: RenderProtocol,
     retry: Retry.Retry,
@@ -6862,8 +6862,8 @@ export const getKeyValue: API.OperationMethod<
   GetKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetKeyValueRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<KeyValueDetail>,
+  input: __S(2056, __c257, 0) as any as S.Schema<GetKeyValueRequest>,
+  output: __S(1160, __c145, 0) as any as S.Schema<KeyValueDetail>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6877,8 +6877,8 @@ export const getKeyValueConnectionInfo: API.OperationMethod<
   GetKeyValueConnectionInfoError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetKeyValueConnectionInfoRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<KeyValueConnectionInfo>,
+  input: __S(2080, __c260, 0) as any as S.Schema<GetKeyValueConnectionInfoRequest>,
+  output: __S(2081, __c260, 1) as any as S.Schema<KeyValueConnectionInfo>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6892,8 +6892,8 @@ export const getMaintenance: API.OperationMethod<
   GetMaintenanceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetMaintenanceRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetMaintenanceResponse>,
+  input: __S(2088, __c261, 0) as any as S.Schema<GetMaintenanceRequest>,
+  output: __S(2096, __c262, 0) as any as S.Schema<GetMaintenanceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6907,8 +6907,8 @@ export const getMemory: API.OperationMethod<
   GetMemoryError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetMemoryRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetMemoryResponse>,
+  input: __S(2104, __c263, 0) as any as S.Schema<GetMemoryRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetMemoryResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6922,8 +6922,8 @@ export const getMemoryLimit: API.OperationMethod<
   GetMemoryLimitError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetMemoryLimitRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetMemoryLimitResponse>,
+  input: __S(2112, __c264, 0) as any as S.Schema<GetMemoryLimitRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetMemoryLimitResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6937,8 +6937,8 @@ export const getMemoryTarget: API.OperationMethod<
   GetMemoryTargetError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetMemoryTargetRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetMemoryTargetResponse>,
+  input: __S(2120, __c265, 0) as any as S.Schema<GetMemoryTargetRequest>,
+  output: __S(1784, __c223, 0) as any as S.Schema<GetMemoryTargetResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6948,8 +6948,8 @@ export type GetOwnerError = NotFound | RenderOpError;
 /** Retrieve workspace Retrieve the workspace with the provided ID. Workspace IDs start with `tea-`. If you provide a user ID (starts with `own-`), this endpoint returns the user's default workspace. */
 export const getOwner: API.OperationMethod<GetOwnerRequest, Owner, GetOwnerError, RenderOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(185, __c23, 1) as any as S.Schema<GetOwnerRequest>,
-    output: __S(54, __c6, 6) as any as S.Schema<Owner>,
+    input: __S(2128, __c266, 0) as any as S.Schema<GetOwnerRequest>,
+    output: __S(1136, __c142, 0) as any as S.Schema<Owner>,
     errors: [NotFound, UnknownRenderError],
     protocol: RenderProtocol,
     retry: Retry.Retry,
@@ -6963,8 +6963,8 @@ export const getOwnerLogStream: API.OperationMethod<
   GetOwnerLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetOwnerLogStreamRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetOwnerLogStreamResponse>,
+  input: __S(2136, __c267, 0) as any as S.Schema<GetOwnerLogStreamRequest>,
+  output: __S(2144, __c268, 0) as any as S.Schema<GetOwnerLogStreamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6978,8 +6978,8 @@ export const getOwnerMembers: API.OperationMethod<
   GetOwnerMembersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetOwnerMembersRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GetOwnerMembersResponse>,
+  input: __S(2152, __c269, 0) as any as S.Schema<GetOwnerMembersRequest>,
+  output: __S(2154, __c269, 2) as any as S.Schema<GetOwnerMembersResponse>,
   errors: [NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -6993,8 +6993,8 @@ export const getOwnerMetricsStream: API.OperationMethod<
   GetOwnerMetricsStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetOwnerMetricsStreamRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<Schema10>,
+  input: __S(2168, __c271, 0) as any as S.Schema<GetOwnerMetricsStreamRequest>,
+  output: __S(2169, __c271, 1) as any as S.Schema<Schema10>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7008,8 +7008,8 @@ export const getOwnerNotificationSettings: API.OperationMethod<
   GetOwnerNotificationSettingsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetOwnerNotificationSettingsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<GetOwnerNotificationSettingsResponse>,
+  input: __S(2176, __c272, 0) as any as S.Schema<GetOwnerNotificationSettingsRequest>,
+  output: __S(2177, __c272, 1) as any as S.Schema<GetOwnerNotificationSettingsResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7023,8 +7023,8 @@ export const getPostgres: API.OperationMethod<
   GetPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<GetPostgresRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PostgresDetail>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetPostgresRequest>,
+  output: __S(1264, __c158, 0) as any as S.Schema<PostgresDetail>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7038,8 +7038,8 @@ export const getPostgresConnectionInfo: API.OperationMethod<
   GetPostgresConnectionInfoError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetPostgresConnectionInfoRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<PostgresConnectionInfo>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetPostgresConnectionInfoRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<PostgresConnectionInfo>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7053,8 +7053,8 @@ export const getPostgresRecoveryInfo: API.OperationMethod<
   GetPostgresRecoveryInfoError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetPostgresRecoveryInfoRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<GetPostgresRecoveryInfoResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPostgresRecoveryInfoRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetPostgresRecoveryInfoResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7068,8 +7068,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetProjectRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Project>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(1336, __c167, 0) as any as S.Schema<Project>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7083,8 +7083,8 @@ export const getRegistryCredential: API.OperationMethod<
   GetRegistryCredentialError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetRegistryCredentialRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RegistryCredential>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetRegistryCredentialRequest>,
+  output: __S(1352, __c169, 0) as any as S.Schema<RegistryCredential>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7098,8 +7098,8 @@ export const getReplicationLag: API.OperationMethod<
   GetReplicationLagError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetReplicationLagRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetReplicationLagResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetReplicationLagRequest>,
+  output: __S(1752, __c219, 0) as any as S.Schema<GetReplicationLagResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7113,8 +7113,8 @@ export const getResourceLogStream: API.OperationMethod<
   GetResourceLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetResourceLogStreamRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetResourceLogStreamResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetResourceLogStreamRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetResourceLogStreamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7128,8 +7128,8 @@ export const getSecretFile: API.OperationMethod<
   GetSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetSecretFileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecretFile>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetSecretFileRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<SecretFile>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7143,8 +7143,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetServiceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Service>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(1368, __c171, 0) as any as S.Schema<Service>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7158,8 +7158,8 @@ export const getServiceNotificationOverrides: API.OperationMethod<
   GetServiceNotificationOverridesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetServiceNotificationOverridesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetServiceNotificationOverridesResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetServiceNotificationOverridesRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetServiceNotificationOverridesResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7173,8 +7173,8 @@ export const getServiceOutboundIps: API.OperationMethod<
   GetServiceOutboundIpsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetServiceOutboundIpsRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<OutboundIps>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetServiceOutboundIpsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<OutboundIps>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7188,8 +7188,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetTaskRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<GetTaskResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetTaskRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetTaskResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7203,8 +7203,8 @@ export const getTaskRun: API.OperationMethod<
   GetTaskRunError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetTaskRunRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GetTaskRunResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<GetTaskRunRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<GetTaskRunResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7218,8 +7218,8 @@ export const getTaskRunsCompleted: API.OperationMethod<
   GetTaskRunsCompletedError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetTaskRunsCompletedRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetTaskRunsCompletedResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetTaskRunsCompletedRequest>,
+  output: __S(1752, __c219, 0) as any as S.Schema<GetTaskRunsCompletedResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7233,8 +7233,8 @@ export const getTaskRunsQueued: API.OperationMethod<
   GetTaskRunsQueuedError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetTaskRunsQueuedRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetTaskRunsQueuedResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetTaskRunsQueuedRequest>,
+  output: __S(1752, __c219, 0) as any as S.Schema<GetTaskRunsQueuedResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7244,8 +7244,8 @@ export type GetUserError = RenderOpError;
 /** Get the authenticated user Retrieve the user associated with the provided API key. */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, RenderOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(221, __c27, 5) as any as S.Schema<GetUserRequest>,
-    output: __S(222, __c27, 6) as any as S.Schema<User>,
+    input: __S(168, __c21, 0) as any as S.Schema<GetUserRequest>,
+    output: __S(169, __c21, 1) as any as S.Schema<User>,
     errors: [UnknownRenderError],
     protocol: RenderProtocol,
     retry: Retry.Retry,
@@ -7259,8 +7259,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetWebhookRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Schema14>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(1417, __c177, 1) as any as S.Schema<Schema14>,
   errors: [NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7274,8 +7274,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Schema15>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(1433, __c179, 1) as any as S.Schema<Schema15>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7289,8 +7289,8 @@ export const getWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetWorkflowVersionRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetWorkflowVersionResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7304,8 +7304,8 @@ export const linkEnvGroupToBuildSource: API.OperationMethod<
   LinkEnvGroupToBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<LinkEnvGroupToBuildSourceRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LinkEnvGroupToBuildSourceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<LinkEnvGroupToBuildSourceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<LinkEnvGroupToBuildSourceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7319,8 +7319,8 @@ export const linkServiceToEnvGroup: API.OperationMethod<
   LinkServiceToEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<LinkServiceToEnvGroupRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<LinkServiceToEnvGroupResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<LinkServiceToEnvGroupRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<LinkServiceToEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7334,8 +7334,8 @@ export const listApplicationFilterValues: API.OperationMethod<
   ListApplicationFilterValuesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListApplicationFilterValuesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<ListApplicationFilterValuesResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListApplicationFilterValuesRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<ListApplicationFilterValuesResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7349,8 +7349,8 @@ export const listBlueprints: API.OperationMethod<
   ListBlueprintsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListBlueprintsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<ListBlueprintsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListBlueprintsRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<ListBlueprintsResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7364,8 +7364,8 @@ export const listBlueprintSyncs: API.OperationMethod<
   ListBlueprintSyncsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListBlueprintSyncsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListBlueprintSyncsResponse>,
+  input: __S(257, __c32, 1) as any as S.Schema<ListBlueprintSyncsRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<ListBlueprintSyncsResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7379,8 +7379,8 @@ export const listBuildsInBuildSource: API.OperationMethod<
   ListBuildsInBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListBuildsInBuildSourceRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ListBuildsInBuildSourceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListBuildsInBuildSourceRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<ListBuildsInBuildSourceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7394,8 +7394,8 @@ export const listBuildSources: API.OperationMethod<
   ListBuildSourcesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListBuildSourcesRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<ListBuildSourcesResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListBuildSourcesRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<ListBuildSourcesResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7409,8 +7409,8 @@ export const listCustomDomains: API.OperationMethod<
   ListCustomDomainsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListCustomDomainsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListCustomDomainsResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListCustomDomainsRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListCustomDomainsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7424,8 +7424,8 @@ export const listDedicatedIps: API.OperationMethod<
   ListDedicatedIpsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListDedicatedIpsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<ListDedicatedIpsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListDedicatedIpsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<ListDedicatedIpsResponse>,
   errors: [BadRequest, Forbidden, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7439,8 +7439,8 @@ export const listDeploys: API.OperationMethod<
   ListDeploysError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListDeploysRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListDeploysResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListDeploysRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<ListDeploysResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7454,8 +7454,8 @@ export const listDisks: API.OperationMethod<
   ListDisksError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListDisksRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ListDisksResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListDisksRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListDisksResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7469,8 +7469,8 @@ export const listEnvGroups: API.OperationMethod<
   ListEnvGroupsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListEnvGroupsRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<ListEnvGroupsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListEnvGroupsRequest>,
+  output: __S(339, __c42, 3) as any as S.Schema<ListEnvGroupsResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7484,8 +7484,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(347, __c43, 3) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7499,8 +7499,8 @@ export const listEvents: API.OperationMethod<
   ListEventsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListEventsRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<ListEventsResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListEventsRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<ListEventsResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7514,8 +7514,8 @@ export const listHeaders: API.OperationMethod<
   ListHeadersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListHeadersRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<ListHeadersResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListHeadersRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<ListHeadersResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7529,8 +7529,8 @@ export const listHttpFilterValues: API.OperationMethod<
   ListHttpFilterValuesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListHttpFilterValuesRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListHttpFilterValuesResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListHttpFilterValuesRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<ListHttpFilterValuesResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7544,8 +7544,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<ListInstancesRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<ListInstancesResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7559,8 +7559,8 @@ export const listJob: API.OperationMethod<
   ListJobError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListJobRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<ListJobResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListJobRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<ListJobResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7574,8 +7574,8 @@ export const listKeyValue: API.OperationMethod<
   ListKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<ListKeyValueRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<ListKeyValueResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListKeyValueRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<ListKeyValueResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7589,8 +7589,8 @@ export const listLogs: API.OperationMethod<
   ListLogsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<ListLogsRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<ListLogsResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListLogsRequest>,
+  output: __S(405, __c50, 5) as any as S.Schema<ListLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7604,8 +7604,8 @@ export const listLogsValues: API.OperationMethod<
   ListLogsValuesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListLogsValuesRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ListLogsValuesResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<ListLogsValuesRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<ListLogsValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7619,8 +7619,8 @@ export const listMaintenance: API.OperationMethod<
   ListMaintenanceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ListMaintenanceRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<ListMaintenanceResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<ListMaintenanceRequest>,
+  output: __S(426, __c53, 2) as any as S.Schema<ListMaintenanceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7634,8 +7634,8 @@ export const listNotificationOverrides: API.OperationMethod<
   ListNotificationOverridesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<ListNotificationOverridesRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<ListNotificationOverridesResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<ListNotificationOverridesRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<ListNotificationOverridesResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7649,8 +7649,8 @@ export const listOrganizationAuditLogs: API.OperationMethod<
   ListOrganizationAuditLogsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<ListOrganizationAuditLogsRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ListOrganizationAuditLogsResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListOrganizationAuditLogsRequest>,
+  output: __S(453, __c56, 5) as any as S.Schema<ListOrganizationAuditLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7664,8 +7664,8 @@ export const listOwnerAuditLogs: API.OperationMethod<
   ListOwnerAuditLogsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<ListOwnerAuditLogsRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ListOwnerAuditLogsResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<ListOwnerAuditLogsRequest>,
+  output: __S(453, __c56, 5) as any as S.Schema<ListOwnerAuditLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7679,8 +7679,8 @@ export const listOwners: API.OperationMethod<
   ListOwnersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ListOwnersRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<ListOwnersResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListOwnersRequest>,
+  output: __S(467, __c58, 3) as any as S.Schema<ListOwnersResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7694,8 +7694,8 @@ export const listPathFilterValues: API.OperationMethod<
   ListPathFilterValuesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListPathFilterValuesRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<ListPathFilterValuesResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<ListPathFilterValuesRequest>,
+  output: __S(473, __c59, 1) as any as S.Schema<ListPathFilterValuesResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7709,8 +7709,8 @@ export const listPostgres: API.OperationMethod<
   ListPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<ListPostgresRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<ListPostgresResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListPostgresRequest>,
+  output: __S(484, __c60, 4) as any as S.Schema<ListPostgresResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7724,8 +7724,8 @@ export const listPostgresExport: API.OperationMethod<
   ListPostgresExportError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ListPostgresExportRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<ListPostgresExportResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListPostgresExportRequest>,
+  output: __S(491, __c61, 3) as any as S.Schema<ListPostgresExportResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7739,8 +7739,8 @@ export const listPostgresProcesses: API.OperationMethod<
   ListPostgresProcessesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<ListPostgresProcessesRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ListPostgresProcessesResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<ListPostgresProcessesRequest>,
+  output: __S(499, __c62, 3) as any as S.Schema<ListPostgresProcessesResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7754,8 +7754,8 @@ export const listPostgresSizes: API.OperationMethod<
   ListPostgresSizesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListPostgresSizesRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<ListPostgresSizesResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListPostgresSizesRequest>,
+  output: __S(507, __c63, 3) as any as S.Schema<ListPostgresSizesResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7769,8 +7769,8 @@ export const listPostgresTableScans: API.OperationMethod<
   ListPostgresTableScansError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListPostgresTableScansRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<ListPostgresTableScansResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListPostgresTableScansRequest>,
+  output: __S(555, __c69, 3) as any as S.Schema<ListPostgresTableScansResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7784,8 +7784,8 @@ export const listPostgresTopQueries: API.OperationMethod<
   ListPostgresTopQueriesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListPostgresTopQueriesRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ListPostgresTopQueriesResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListPostgresTopQueriesRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<ListPostgresTopQueriesResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7799,8 +7799,8 @@ export const listPostgresUsers: API.OperationMethod<
   ListPostgresUsersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListPostgresUsersRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ListPostgresUsersResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListPostgresUsersRequest>,
+  output: __S(571, __c71, 3) as any as S.Schema<ListPostgresUsersResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7814,8 +7814,8 @@ export const listProjects: API.OperationMethod<
   ListProjectsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListProjectsRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<ListProjectsResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<ListProjectsResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7829,8 +7829,8 @@ export const listRegistryCredentials: API.OperationMethod<
   ListRegistryCredentialsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<ListRegistryCredentialsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<ListRegistryCredentialsResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListRegistryCredentialsRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<ListRegistryCredentialsResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7844,8 +7844,8 @@ export const listResourceLogStreams: API.OperationMethod<
   ListResourceLogStreamsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListResourceLogStreamsRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<ListResourceLogStreamsResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<ListResourceLogStreamsRequest>,
+  output: __S(595, __c74, 3) as any as S.Schema<ListResourceLogStreamsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7859,8 +7859,8 @@ export const listRoutes: API.OperationMethod<
   ListRoutesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<ListRoutesRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<ListRoutesResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListRoutesRequest>,
+  output: __S(603, __c75, 3) as any as S.Schema<ListRoutesResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7874,8 +7874,8 @@ export const listSecretFilesForBuildSource: API.OperationMethod<
   ListSecretFilesForBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListSecretFilesForBuildSourceRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<ListSecretFilesForBuildSourceResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListSecretFilesForBuildSourceRequest>,
+  output: __S(618, __c77, 2) as any as S.Schema<ListSecretFilesForBuildSourceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7889,8 +7889,8 @@ export const listSecretFilesForService: API.OperationMethod<
   ListSecretFilesForServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<ListSecretFilesForServiceRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<ListSecretFilesForServiceResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListSecretFilesForServiceRequest>,
+  output: __S(618, __c77, 2) as any as S.Schema<ListSecretFilesForServiceResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7904,8 +7904,8 @@ export const listServices: API.OperationMethod<
   ListServicesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListServicesRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<ListServicesResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(635, __c79, 3) as any as S.Schema<ListServicesResponse>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7919,8 +7919,8 @@ export const listSnapshots: API.OperationMethod<
   ListSnapshotsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<ListSnapshotsResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(659, __c82, 3) as any as S.Schema<ListSnapshotsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7934,8 +7934,8 @@ export const listTaskRuns: API.OperationMethod<
   ListTaskRunsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<ListTaskRunsRequest>,
-  output: __S(392, __c49, 0) as any as S.Schema<ListTaskRunsResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<ListTaskRunsRequest>,
+  output: __S(667, __c83, 3) as any as S.Schema<ListTaskRunsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7949,8 +7949,8 @@ export const listTasks: API.OperationMethod<
   ListTasksError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ListTasksRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<ListTasksResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<ListTasksRequest>,
+  output: __S(675, __c84, 3) as any as S.Schema<ListTasksResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7964,8 +7964,8 @@ export const listWebhookEvents: API.OperationMethod<
   ListWebhookEventsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ListWebhookEventsRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<ListWebhookEventsResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<ListWebhookEventsRequest>,
+  output: __S(684, __c85, 4) as any as S.Schema<ListWebhookEventsResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7979,8 +7979,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<ListWebhooksRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<ListWebhooksResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(691, __c86, 3) as any as S.Schema<ListWebhooksResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -7994,8 +7994,8 @@ export const listWorkflows: API.OperationMethod<
   ListWorkflowsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(699, __c87, 3) as any as S.Schema<ListWorkflowsResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8009,8 +8009,8 @@ export const listWorkflowVersions: API.OperationMethod<
   ListWorkflowVersionsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListWorkflowVersionsRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<ListWorkflowVersionsResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<ListWorkflowVersionsRequest>,
+  output: __S(708, __c88, 4) as any as S.Schema<ListWorkflowVersionsResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8024,8 +8024,8 @@ export const patchOwnerNotificationSettings: API.OperationMethod<
   PatchOwnerNotificationSettingsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<PatchOwnerNotificationSettingsRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<Schema3>,
+  input: __S(712, __c89, 0) as any as S.Schema<PatchOwnerNotificationSettingsRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<Schema3>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8039,8 +8039,8 @@ export const patchRoute: API.OperationMethod<
   PatchRouteError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<PatchRouteRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<PatchRouteResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<PatchRouteRequest>,
+  output: __S(721, __c90, 1) as any as S.Schema<PatchRouteResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8054,8 +8054,8 @@ export const patchServiceNotificationOverrides: API.OperationMethod<
   PatchServiceNotificationOverridesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<PatchServiceNotificationOverridesRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<Schema4>,
+  input: __S(728, __c91, 0) as any as S.Schema<PatchServiceNotificationOverridesRequest>,
+  output: __S(729, __c91, 1) as any as S.Schema<Schema4>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8069,8 +8069,8 @@ export const postJob: API.OperationMethod<
   PostJobError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<PostJobRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PostJobResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<PostJobRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<PostJobResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8084,8 +8084,8 @@ export const previewService: API.OperationMethod<
   PreviewServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<PreviewServiceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ServiceAndDeploy>,
+  input: __S(760, __c95, 0) as any as S.Schema<PreviewServiceRequest>,
+  output: __S(1376, __c172, 0) as any as S.Schema<ServiceAndDeploy>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8099,8 +8099,8 @@ export const purgeCache: API.OperationMethod<
   PurgeCacheError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<PurgeCacheRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PurgeCacheResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<PurgeCacheRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<PurgeCacheResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8114,8 +8114,8 @@ export const putRoutes: API.OperationMethod<
   PutRoutesError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<PutRoutesRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<PutRoutesResponse>,
+  input: __S(778, __c97, 2) as any as S.Schema<PutRoutesRequest>,
+  output: __S(780, __c97, 4) as any as S.Schema<PutRoutesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8129,8 +8129,8 @@ export const recoverPostgres: API.OperationMethod<
   RecoverPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<RecoverPostgresRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PostgresDetail>,
+  input: __S(784, __c98, 0) as any as S.Schema<RecoverPostgresRequest>,
+  output: __S(1264, __c158, 0) as any as S.Schema<PostgresDetail>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8144,8 +8144,8 @@ export const refreshCustomDomain: API.OperationMethod<
   RefreshCustomDomainError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<RefreshCustomDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RefreshCustomDomainResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<RefreshCustomDomainRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RefreshCustomDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8159,8 +8159,8 @@ export const removeResourcesFromEnvironment: API.OperationMethod<
   RemoveResourcesFromEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<RemoveResourcesFromEnvironmentRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<RemoveResourcesFromEnvironmentResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<RemoveResourcesFromEnvironmentRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<RemoveResourcesFromEnvironmentResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8174,8 +8174,8 @@ export const removeWorkspaceMember: API.OperationMethod<
   RemoveWorkspaceMemberError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<RemoveWorkspaceMemberRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RemoveWorkspaceMemberResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<RemoveWorkspaceMemberRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RemoveWorkspaceMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8189,8 +8189,8 @@ export const restartPostgres: API.OperationMethod<
   RestartPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<RestartPostgresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RestartPostgresResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<RestartPostgresRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RestartPostgresResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8204,8 +8204,8 @@ export const restartService: API.OperationMethod<
   RestartServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<RestartServiceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RestartServiceResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<RestartServiceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<RestartServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8219,8 +8219,8 @@ export const restoreSnapshot: API.OperationMethod<
   RestoreSnapshotError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<RestoreSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Schema2>,
+  input: __S(840, __c105, 0) as any as S.Schema<RestoreSnapshotRequest>,
+  output: __S(1536, __c192, 0) as any as S.Schema<Schema2>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8234,8 +8234,8 @@ export const resumeKeyValue: API.OperationMethod<
   ResumeKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ResumeKeyValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ResumeKeyValueResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<ResumeKeyValueRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ResumeKeyValueResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8249,8 +8249,8 @@ export const resumePostgres: API.OperationMethod<
   ResumePostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ResumePostgresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ResumePostgresResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<ResumePostgresRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ResumePostgresResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8264,8 +8264,8 @@ export const resumeService: API.OperationMethod<
   ResumeServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ResumeServiceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ResumeServiceResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<ResumeServiceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ResumeServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8279,8 +8279,8 @@ export const runCronJob: API.OperationMethod<
   RunCronJobError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<RunCronJobRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<CronJobRun>,
+  input: __S(872, __c109, 0) as any as S.Schema<RunCronJobRequest>,
+  output: __S(873, __c109, 1) as any as S.Schema<CronJobRun>,
   errors: [UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8294,8 +8294,8 @@ export const scaleService: API.OperationMethod<
   ScaleServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<ScaleServiceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ScaleServiceResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<ScaleServiceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ScaleServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8309,8 +8309,8 @@ export const streamTaskRunsEvents: API.OperationMethod<
   StreamTaskRunsEventsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<StreamTaskRunsEventsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<StreamTaskRunsEventsResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<StreamTaskRunsEventsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<StreamTaskRunsEventsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8324,8 +8324,8 @@ export const subscribeLogs: API.OperationMethod<
   SubscribeLogsError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<SubscribeLogsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SubscribeLogsResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<SubscribeLogsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<SubscribeLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8339,8 +8339,8 @@ export const suspendKeyValue: API.OperationMethod<
   SuspendKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<SuspendKeyValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SuspendKeyValueResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<SuspendKeyValueRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<SuspendKeyValueResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8354,8 +8354,8 @@ export const suspendPostgres: API.OperationMethod<
   SuspendPostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<SuspendPostgresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SuspendPostgresResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<SuspendPostgresRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<SuspendPostgresResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8369,8 +8369,8 @@ export const suspendService: API.OperationMethod<
   SuspendServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<SuspendServiceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SuspendServiceResponse>,
+  input: __S(960, __c120, 0) as any as S.Schema<SuspendServiceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<SuspendServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8384,8 +8384,8 @@ export const triggerBuildSourceBuild: API.OperationMethod<
   TriggerBuildSourceBuildError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<TriggerBuildSourceBuildRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<TriggerBuildSourceBuildResponse>,
+  input: __S(968, __c121, 0) as any as S.Schema<TriggerBuildSourceBuildRequest>,
+  output: __S(970, __c121, 2) as any as S.Schema<TriggerBuildSourceBuildResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8399,8 +8399,8 @@ export const triggerMaintenance: API.OperationMethod<
   TriggerMaintenanceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<TriggerMaintenanceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<TriggerMaintenanceResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<TriggerMaintenanceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<TriggerMaintenanceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8414,8 +8414,8 @@ export const unlinkEnvGroupFromBuildSource: API.OperationMethod<
   UnlinkEnvGroupFromBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<UnlinkEnvGroupFromBuildSourceRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<UnlinkEnvGroupFromBuildSourceResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<UnlinkEnvGroupFromBuildSourceRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<UnlinkEnvGroupFromBuildSourceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8429,8 +8429,8 @@ export const unlinkServiceFromEnvGroup: API.OperationMethod<
   UnlinkServiceFromEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<UnlinkServiceFromEnvGroupRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<UnlinkServiceFromEnvGroupResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<UnlinkServiceFromEnvGroupRequest>,
+  output: __S(1488, __c186, 0) as any as S.Schema<UnlinkServiceFromEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8444,8 +8444,8 @@ export const updateBlueprint: API.OperationMethod<
   UpdateBlueprintError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<UpdateBlueprintRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<UpdateBlueprintResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<UpdateBlueprintRequest>,
+  output: __S(1001, __c125, 1) as any as S.Schema<UpdateBlueprintResponse>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8459,8 +8459,8 @@ export const updateBuildSource: API.OperationMethod<
   UpdateBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<UpdateBuildSourceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<Schema12>,
+  input: __S(1011, __c126, 3) as any as S.Schema<UpdateBuildSourceRequest>,
+  output: __S(1816, __c227, 0) as any as S.Schema<Schema12>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8474,8 @@ export const updateBuildSourceEnvVar: API.OperationMethod<
   UpdateBuildSourceEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<UpdateBuildSourceEnvVarRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EnvVar>,
+  input: __S(1016, __c127, 0) as any as S.Schema<UpdateBuildSourceEnvVarRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<EnvVar>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8489,8 +8489,8 @@ export const updateDedicatedIp: API.OperationMethod<
   UpdateDedicatedIpError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<UpdateDedicatedIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DedicatedIP>,
+  input: __S(1024, __c128, 0) as any as S.Schema<UpdateDedicatedIpRequest>,
+  output: __S(744, __c93, 0) as any as S.Schema<DedicatedIP>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8504,8 +8504,8 @@ export const updateDisk: API.OperationMethod<
   UpdateDiskError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<UpdateDiskRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Schema2>,
+  input: __S(1032, __c129, 0) as any as S.Schema<UpdateDiskRequest>,
+  output: __S(1536, __c192, 0) as any as S.Schema<Schema2>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8519,8 +8519,8 @@ export const updateEnvGroup: API.OperationMethod<
   UpdateEnvGroupError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<UpdateEnvGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateEnvGroupResponse>,
+  input: __S(1048, __c131, 0) as any as S.Schema<UpdateEnvGroupRequest>,
+  output: __S(952, __c119, 0) as any as S.Schema<UpdateEnvGroupResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8534,8 +8534,8 @@ export const updateEnvGroupEnvVar: API.OperationMethod<
   UpdateEnvGroupEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<UpdateEnvGroupEnvVarRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<UpdateEnvGroupEnvVarResponse>,
+  input: __S(1056, __c132, 0) as any as S.Schema<UpdateEnvGroupEnvVarRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateEnvGroupEnvVarResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8549,8 +8549,8 @@ export const updateEnvGroupSecretFile: API.OperationMethod<
   UpdateEnvGroupSecretFileError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<UpdateEnvGroupSecretFileRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<UpdateEnvGroupSecretFileResponse>,
+  input: __S(1064, __c133, 0) as any as S.Schema<UpdateEnvGroupSecretFileRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateEnvGroupSecretFileResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8564,8 +8564,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Environment>,
+  input: __S(1072, __c134, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(1968, __c246, 0) as any as S.Schema<Environment>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8579,8 +8579,8 @@ export const updateEnvVar: API.OperationMethod<
   UpdateEnvVarError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<UpdateEnvVarRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EnvVar>,
+  input: __S(1080, __c135, 0) as any as S.Schema<UpdateEnvVarRequest>,
+  output: __S(928, __c116, 0) as any as S.Schema<EnvVar>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8594,8 +8594,8 @@ export const updateEnvVarsForBuildSource: API.OperationMethod<
   UpdateEnvVarsForBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<UpdateEnvVarsForBuildSourceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<UpdateEnvVarsForBuildSourceResponse>,
+  input: __S(1088, __c136, 0) as any as S.Schema<UpdateEnvVarsForBuildSourceRequest>,
+  output: __S(2002, __c250, 2) as any as S.Schema<UpdateEnvVarsForBuildSourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8609,8 +8609,8 @@ export const updateEnvVarsForService: API.OperationMethod<
   UpdateEnvVarsForServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<UpdateEnvVarsForServiceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<UpdateEnvVarsForServiceResponse>,
+  input: __S(1097, __c137, 1) as any as S.Schema<UpdateEnvVarsForServiceRequest>,
+  output: __S(2002, __c250, 2) as any as S.Schema<UpdateEnvVarsForServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8624,8 +8624,8 @@ export const updateHeaders: API.OperationMethod<
   UpdateHeadersError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<UpdateHeadersRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<UpdateHeadersResponse>,
+  input: __S(1106, __c138, 2) as any as S.Schema<UpdateHeadersRequest>,
+  output: __S(1108, __c138, 4) as any as S.Schema<UpdateHeadersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8639,8 +8639,8 @@ export const updateKeyValue: API.OperationMethod<
   UpdateKeyValueError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<UpdateKeyValueRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<KeyValueDetail>,
+  input: __S(1112, __c139, 0) as any as S.Schema<UpdateKeyValueRequest>,
+  output: __S(1160, __c145, 0) as any as S.Schema<KeyValueDetail>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8654,8 +8654,8 @@ export const updateMaintenance: API.OperationMethod<
   UpdateMaintenanceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<UpdateMaintenanceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateMaintenanceResponse>,
+  input: __S(1120, __c140, 0) as any as S.Schema<UpdateMaintenanceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateMaintenanceResponse>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8669,8 +8669,8 @@ export const updateOwnerLogStream: API.OperationMethod<
   UpdateOwnerLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<UpdateOwnerLogStreamRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<UpdateOwnerLogStreamResponse>,
+  input: __S(1168, __c146, 0) as any as S.Schema<UpdateOwnerLogStreamRequest>,
+  output: __S(2144, __c268, 0) as any as S.Schema<UpdateOwnerLogStreamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8684,8 +8684,8 @@ export const updatePostgres: API.OperationMethod<
   UpdatePostgresError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<UpdatePostgresRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PostgresDetail>,
+  input: __S(1176, __c147, 0) as any as S.Schema<UpdatePostgresRequest>,
+  output: __S(1264, __c158, 0) as any as S.Schema<PostgresDetail>,
   errors: [BadRequest, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8699,8 +8699,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Project>,
+  input: __S(1184, __c148, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(1336, __c167, 0) as any as S.Schema<Project>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8719,8 +8719,8 @@ export const updateRegistryCredential: API.OperationMethod<
   UpdateRegistryCredentialError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<UpdateRegistryCredentialRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RegistryCredential>,
+  input: __S(1192, __c149, 0) as any as S.Schema<UpdateRegistryCredentialRequest>,
+  output: __S(1352, __c169, 0) as any as S.Schema<RegistryCredential>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8734,8 +8734,8 @@ export const updateResourceLogStream: API.OperationMethod<
   UpdateResourceLogStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<UpdateResourceLogStreamRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<UpdateResourceLogStreamResponse>,
+  input: __S(1200, __c150, 0) as any as S.Schema<UpdateResourceLogStreamRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateResourceLogStreamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8753,8 +8753,8 @@ export const updateSecretFilesForBuildSource: API.OperationMethod<
   UpdateSecretFilesForBuildSourceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<UpdateSecretFilesForBuildSourceRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<UpdateSecretFilesForBuildSourceResponse>,
+  input: __S(1208, __c151, 0) as any as S.Schema<UpdateSecretFilesForBuildSourceRequest>,
+  output: __S(618, __c77, 2) as any as S.Schema<UpdateSecretFilesForBuildSourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8768,8 +8768,8 @@ export const updateSecretFilesForService: API.OperationMethod<
   UpdateSecretFilesForServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateSecretFilesForServiceRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<UpdateSecretFilesForServiceResponse>,
+  input: __S(1216, __c152, 0) as any as S.Schema<UpdateSecretFilesForServiceRequest>,
+  output: __S(618, __c77, 2) as any as S.Schema<UpdateSecretFilesForServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8783,8 +8783,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Service>,
+  input: __S(1224, __c153, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(1368, __c171, 0) as any as S.Schema<Service>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8798,8 +8798,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Schema14>,
+  input: __S(1232, __c154, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(1417, __c177, 1) as any as S.Schema<Schema14>,
   errors: [BadRequest, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8813,8 +8813,8 @@ export const updateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Schema15>,
+  input: __S(1241, __c155, 1) as any as S.Schema<UpdateWorkflowRequest>,
+  output: __S(1433, __c179, 1) as any as S.Schema<Schema15>,
   errors: [Forbidden, NotFound, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8833,8 +8833,8 @@ export const updateWorkspaceMember: API.OperationMethod<
   UpdateWorkspaceMemberError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<UpdateWorkspaceMemberRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<TeamMember>,
+  input: __S(1288, __c161, 0) as any as S.Schema<UpdateWorkspaceMemberRequest>,
+  output: __S(2160, __c270, 0) as any as S.Schema<TeamMember>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8848,8 +8848,8 @@ export const upsertOwnerMetricsStream: API.OperationMethod<
   UpsertOwnerMetricsStreamError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<UpsertOwnerMetricsStreamRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<UpsertOwnerMetricsStreamResponse>,
+  input: __S(1296, __c162, 0) as any as S.Schema<UpsertOwnerMetricsStreamRequest>,
+  output: __S(1297, __c162, 1) as any as S.Schema<UpsertOwnerMetricsStreamResponse>,
   errors: [BadRequest, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8863,8 +8863,8 @@ export const validateBlueprint: API.OperationMethod<
   ValidateBlueprintError,
   RenderOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<ValidateBlueprintRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<ValidateBlueprintResponse>,
+  input: __S(1304, __c163, 0) as any as S.Schema<ValidateBlueprintRequest>,
+  output: __S(1308, __c163, 4) as any as S.Schema<ValidateBlueprintResponse>,
   errors: [BadRequest, Forbidden, UnknownRenderError],
   protocol: RenderProtocol,
   retry: Retry.Retry,
@@ -8876,1854 +8876,55 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          sizeGB: S.Number,
-          mountPath: S.String,
-          serviceId: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/disks", code: 200 })),
-      ).annotate({ identifier: "AddDiskRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          sizeGB: S.Number,
-          mountPath: S.String,
-          serviceId: S.optional(S.String),
-          createdAt: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "AddDiskResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          path: S.String,
-          name: S.String,
-          value: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/headers", code: 200 })),
-      ).annotate({ identifier: "AddHeadersRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          path: S.String,
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Header" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AddHeadersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-          content: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrUpdateBuildSourceSecretFileRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          content: S.String,
-        }),
-      ).annotate({ identifier: "SecretFile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-          content: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/services/{serviceId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrUpdateSecretFileRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-          resourceIds: __S(8, __c1, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/environments/{environmentId}/resources", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddResourcesToEnvironmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cidrBlock: S.String,
-          description: S.String,
-        }),
-      ).annotate({ identifier: "CidrBlockAndDescription" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          projectId: S.String,
-          databasesIds: __S(8, __c1, 0),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-          redisIds: __S(8, __c1, 0),
-          serviceIds: __S(8, __c1, 0),
-          envGroupIds: __S(8, __c1, 0),
-          protectedStatus: S.String,
-          networkIsolationEnabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "Environment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          type: S.String,
-          source: S.String,
-          destination: S.String,
-          priority: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/routes", code: 200 })),
-      ).annotate({ identifier: "AddRouteRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          source: S.String,
-          destination: S.String,
-          priority: S.Number,
-        }),
-      ).annotate({ identifier: "Route" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           enabled: S.Boolean,
           percentage: S.Number,
         }),
       ).annotate({
         identifier: "AutoscaleServiceRequestCriteriaCpu",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cpu: __S(15, __c1, 7),
-          memory: __S(15, __c1, 7),
+          cpu: __S(0, __c0, 0),
+          memory: __S(0, __c0, 0),
         }),
       ).annotate({
         identifier: "AutoscaleServiceRequestCriteria",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
           enabled: S.Boolean,
           min: S.Number,
           max: S.Number,
-          criteria: __S(16, __c2, 0),
+          criteria: __S(1, __c0, 1),
         }).pipe(T.Http({ method: "PUT", uri: "/services/{serviceId}/autoscaling", code: 200 })),
       ).annotate({ identifier: "AutoscaleServiceRequest" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
           min: S.Number,
           max: S.Number,
-          criteria: __S(16, __c2, 0),
+          criteria: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "Schema5" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cronJobId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/cron-jobs/{cronJobId}/runs", code: 200 })),
-      ).annotate({ identifier: "CancelCronJobRunRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelCronJobRunResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          deployId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/services/{serviceId}/deploys/{deployId}/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CancelDeployRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          message: S.optional(S.String),
-          createdAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeployCommit" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.optional(S.String),
-          sha: S.optional(S.String),
-          registryCredential: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeployImage" });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          commit: S.optional(__S(22, __c2, 6)),
-          image: S.optional(__S(23, __c2, 7)),
-          status: S.optional(S.String),
-          trigger: S.optional(S.String),
-          startedAt: S.optional(S.String),
-          finishedAt: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deploy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          jobId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/services/{serviceId}/jobs/{jobId}/cancel", code: 200 }),
-        ),
-      ).annotate({ identifier: "CancelJobRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          serviceId: S.String,
-          startCommand: S.String,
-          planId: S.String,
-          status: S.optional(S.String),
-          createdAt: S.String,
-          startedAt: S.optional(S.String),
-          finishedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Schema7" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskRunId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/task-runs/{taskRunId}", code: 200 })),
-      ).annotate({ identifier: "CancelTaskRunRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          paths: __S(8, __c1, 0),
-          ignoredPaths: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "BuildFilter2" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          baseDir: S.optional(S.String),
-          branch: S.optional(S.String),
-          buildCommand: S.optional(S.String),
-          buildFilter: S.optional(__S(28, __c3, 4)),
-          dockerfilePath: S.optional(S.String),
-          runtime: S.String,
-          registryCredentialId: S.optional(S.String),
-          region: S.optional(S.String),
-          repoUrl: S.optional(S.String),
-          rootDir: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateBuildSourceRequestGit",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          registryCredentialId: S.optional(S.String),
-          imageUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateBuildSourceRequestImage",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "SchemaItemCase0" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.Array(__S(6, __c0, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          name: S.String,
-          projectId: S.optional(S.String),
-          git: S.optional(__S(29, __c3, 5)),
-          image: S.optional(__S(30, __c3, 6)),
-          serviceIds: S.optional(__S(8, __c1, 0)),
-          envVars: S.optional(__S(32, __c4, 0)),
-          secretFiles: S.optional(__S(33, __c4, 1)),
-          envGroupIds: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/build-sources", code: 200 })),
-      ).annotate({ identifier: "CreateBuildSourceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          baseDir: S.optional(S.String),
-          branch: S.optional(S.String),
-          buildCommand: S.optional(S.String),
-          buildFilter: S.optional(__S(28, __c3, 4)),
-          dockerfilePath: S.optional(S.String),
-          runtime: S.String,
-          registryCredentialId: S.optional(S.String),
-          region: S.optional(S.String),
-          repoUrl: S.optional(S.String),
-          rootDir: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Git" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateBuildSourceResponseServiceLinksItem",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          ownerId: S.String,
-          projectId: S.optional(S.String),
-          git: S.optional(__S(35, __c4, 3)),
-          image: S.optional(__S(30, __c3, 6)),
-          createdAt: S.String,
-          updatedAt: S.String,
-          serviceLinks: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "CreateBuildSourceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/custom-domains", code: 200 })),
-      ).annotate({
-        identifier: "CreateCustomDomainRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomDomainServer" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          domainType: S.String,
-          publicSuffix: S.String,
-          redirectForName: S.String,
-          verificationStatus: S.String,
-          createdAt: S.String,
-          server: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "CustomDomain" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateCustomDomainResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          ownerId: S.String,
-          region: S.String,
-          environmentIds: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/dedicated-ips", code: 200 })),
-      ).annotate({ identifier: "CreateDedicatedIpRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          description: S.String,
-          ownerId: S.String,
-          region: S.String,
-          environmentIds: __S(8, __c1, 0),
-          ips: __S(8, __c1, 0),
-          status: S.String,
-          createdAt: S.String,
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedIP" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          buildId: S.optional(S.String),
-          clearCache: S.optional(S.String),
-          commitId: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          deployMode: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/deploys", code: 200 })),
-      ).annotate({ identifier: "CreateDeployRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ownerId: S.String,
-          envVars: __S(32, __c4, 0),
-          secretFiles: S.optional(__S(33, __c4, 1)),
-          serviceIds: S.optional(__S(8, __c1, 0)),
-          environmentId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/env-groups", code: 200 })),
-      ).annotate({ identifier: "CreateEnvGroupRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "EnvGroupLink" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.Array(__S(31, __c3, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          ownerId: S.String,
-          createdAt: S.String,
-          updatedAt: S.String,
-          serviceLinks: __S(49, __c6, 1),
-          environmentId: S.optional(S.String),
-          envVars: __S(50, __c6, 2),
-          secretFiles: __S(33, __c4, 1),
-        }),
-      ).annotate({ identifier: "CreateEnvGroupResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          projectId: S.String,
-          protectedStatus: S.optional(S.String),
-          networkIsolationEnabled: S.optional(S.Boolean),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/environments", code: 200 })),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ownerId: S.String,
-          plan: S.String,
-          region: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          maxmemoryPolicy: S.optional(S.String),
-          persistenceMode: S.optional(S.String),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/key-value", code: 200 })),
-      ).annotate({ identifier: "CreateKeyValueRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          email: S.String,
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-          twoFactorAuthEnabled: S.optional(S.Boolean),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Owner" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxmemoryPolicy: S.optional(S.String),
-          persistenceMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyValueOptions" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          scheduledAt: S.String,
-          pendingMaintenanceBy: S.optional(S.String),
-          state: S.String,
-        }),
-      ).annotate({ identifier: "Maintenance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          updatedAt: S.String,
-          status: S.String,
-          region: S.String,
-          plan: S.String,
-          name: S.String,
-          owner: __S(54, __c6, 6),
-          options: __S(55, __c6, 7),
-          ipAllowList: __S(11, __c1, 3),
-          environmentId: S.optional(S.String),
-          version: S.String,
-          maintenance: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "KeyValueDetail" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ReadReplicaInput" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          databaseName: S.optional(S.String),
-          databaseUser: S.optional(S.String),
-          datadogAPIKey: S.optional(S.String),
-          datadogSite: S.optional(S.String),
-          name: S.String,
-          enableHighAvailability: S.optional(S.Boolean),
-          environmentId: S.optional(S.String),
-          ownerId: S.String,
-          plan: S.String,
-          diskSizeGB: S.optional(S.Number),
-          enableDiskAutoscaling: S.optional(S.Boolean),
-          connectionPool: S.optional(S.String),
-          region: S.optional(S.String),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-          readReplicas: S.optional(__S(59, __c7, 3)),
-          version: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/postgres", code: 200 })),
-      ).annotate({ identifier: "CreatePostgresRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ReadReplica" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          ipAllowList: __S(11, __c1, 3),
-          createdAt: S.String,
-          updatedAt: S.String,
-          expiresAt: S.optional(S.String),
-          dashboardUrl: S.String,
-          databaseName: S.String,
-          databaseUser: S.String,
-          environmentId: S.optional(S.String),
-          highAvailabilityEnabled: S.Boolean,
-          maintenance: S.optional(__S(56, __c7, 0)),
-          name: S.String,
-          owner: __S(54, __c6, 6),
-          plan: S.String,
-          diskSizeGB: S.optional(S.Number),
-          primaryPostgresID: S.optional(S.String),
-          region: S.String,
-          readReplicas: __S(62, __c7, 6),
-          role: S.String,
-          status: S.String,
-          version: S.String,
-          suspended: S.String,
-          suspenders: __S(63, __c7, 7),
-          diskAutoscalingEnabled: S.Boolean,
-          connectionPool: S.String,
-        }),
-      ).annotate({ identifier: "PostgresDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          postgresId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/export", code: 200 })),
-      ).annotate({
-        identifier: "CreatePostgresExportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          postgresId: S.String.pipe(T.Label()),
-          username: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/credentials", code: 200 })),
-      ).annotate({
-        identifier: "CreatePostgresUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          protectedStatus: S.optional(S.String),
-          networkIsolationEnabled: S.optional(S.Boolean),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ProjectPOSTEnvironmentInput",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ownerId: S.String,
-          environments: __S(68, __c8, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/projects", code: 200 })),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          updatedAt: S.String,
-          name: S.String,
-          owner: __S(54, __c6, 6),
-          environmentIds: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          registry: S.String,
-          name: S.String,
-          username: S.String,
-          authToken: S.String,
-          ownerId: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/registrycredentials", code: 200 })),
-      ).annotate({
-        identifier: "CreateRegistryCredentialRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          registry: S.String,
-          username: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "RegistryCredential" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          registryCredentialId: S.optional(S.String),
-          imagePath: S.String,
-        }),
-      ).annotate({ identifier: "Image" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "HeaderInput" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          name: S.String,
-          ownerId: S.String,
-          repo: S.optional(S.String),
-          autoDeploy: S.optional(S.String),
-          autoDeployTrigger: S.optional(S.String),
-          branch: S.optional(S.String),
-          image: S.optional(__S(73, __c9, 1)),
-          buildFilter: S.optional(__S(28, __c3, 4)),
-          rootDir: S.optional(S.String),
-          envVars: S.optional(__S(32, __c4, 0)),
-          secretFiles: S.optional(__S(33, __c4, 1)),
-          environmentId: S.optional(S.String),
-          serviceDetails: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/services", code: 200 })),
-      ).annotate({ identifier: "CreateServiceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          buildSourceId: S.optional(S.String),
-          autoDeploy: S.String,
-          autoDeployTrigger: S.optional(S.String),
-          branch: S.optional(S.String),
-          buildFilter: S.optional(__S(28, __c3, 4)),
-          createdAt: S.String,
-          dashboardUrl: S.String,
-          environmentId: S.optional(S.String),
-          imagePath: S.optional(S.String),
-          name: S.String,
-          notifyOnFail: S.String,
-          ownerId: S.String,
-          registryCredential: S.optional(__S(36, __c4, 4)),
-          repo: S.optional(S.String),
-          rootDir: S.String,
-          slug: S.String,
-          suspended: S.String,
-          suspenders: __S(63, __c7, 7),
-          type: S.String,
-          updatedAt: S.String,
-          serviceDetails: S.Unknown,
-        }),
-      ).annotate({ identifier: "Service" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(__S(77, __c9, 5)),
-          deployId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceAndDeploy" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.String,
-          input: S.Unknown as any as S.Schema<CreateTaskRequestInput>,
-          idempotencyKey: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/task-runs", code: 200 })),
-      ).annotate({ identifier: "CreateTaskRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          taskRunId: S.optional(S.String),
-          attempt: S.Number,
-          status: S.String,
-          enqueuedAt: S.optional(S.String),
-          startedAt: S.String,
-          completedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateTaskResponseAttemptsItem",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          taskId: S.String,
-          status: S.String,
-          startedAt: S.optional(S.String),
-          completedAt: S.optional(S.String),
-          parentTaskRunId: S.String,
-          parentTaskAttempt: S.optional(S.Number),
-          rootTaskRunId: S.String,
-          retries: S.Number,
-          attempts: __S(82, __c10, 2),
-        }),
-      ).annotate({ identifier: "CreateTaskResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          url: S.String,
-          name: S.String,
-          enabled: S.Boolean,
-          eventFilter: __S(63, __c7, 7),
-        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-          name: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-          enabled: S.Boolean,
-          eventFilter: __S(85, __c10, 5),
-        }),
-      ).annotate({ identifier: "CreateWebhookResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.optional(S.String),
-          buildCommand: S.String,
-          repo: S.String,
-          rootDir: S.optional(S.String),
-          runtime: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateWorkflowRequestBuildConfig",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ownerId: S.String,
-          buildConfig: __S(87, __c10, 7),
-          runCommand: S.String,
-          region: S.String,
-          autoDeployTrigger: S.optional(S.String),
-          envVars: S.optional(__S(32, __c4, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/workflows", code: 200 })),
-      ).annotate({ identifier: "CreateWorkflowRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.optional(S.String),
-          buildCommand: S.String,
-          repo: S.String,
-          rootDir: S.optional(S.String),
-          runtime: S.String,
-        }),
-      ).annotate({ identifier: "BuildConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          ownerId: S.String,
-          createdAt: S.String,
-          updatedAt: S.String,
-          buildConfig: __S(89, __c11, 1),
-          runCommand: S.String,
-          region: S.String,
-          environmentId: S.optional(S.String),
-          slug: S.optional(S.String),
-          autoDeployTrigger: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateWorkflowResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.String,
-          commit: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/workflowversions", code: 200 })),
-      ).annotate({
-        identifier: "CreateWorkflowVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}/autoscaling", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAutoscalingConfigRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAutoscalingConfigResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/build-sources/{buildSourceId}", code: 200 })),
-      ).annotate({ identifier: "DeleteBuildSourceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/build-sources/{buildSourceId}/env-vars/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBuildSourceEnvVarRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBuildSourceSecretFileRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBuildSourceSecretFileResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          customDomainNameOrID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/services/{serviceId}/custom-domains/{customDomainNameOrID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCustomDomainRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dedicatedIpId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
-      ).annotate({ identifier: "DeleteDedicatedIpRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          diskId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/disks/{diskId}", code: 200 })),
-      ).annotate({ identifier: "DeleteDiskRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/env-groups/{envGroupId}", code: 200 })),
-      ).annotate({ identifier: "DeleteEnvGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/env-groups/{envGroupId}/env-vars/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEnvGroupEnvVarRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/env-groups/{envGroupId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEnvGroupSecretFileRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/environments/{environmentId}", code: 200 })),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/services/{serviceId}/env-vars/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEnvVarRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          headerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/services/{serviceId}/headers/{headerId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteHeaderRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          redisId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/key-value/{redisId}", code: 200 })),
-      ).annotate({ identifier: "DeleteKeyValueRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteOwnerLogStreamRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/metrics-stream/{ownerId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteOwnerMetricsStreamRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          postgresId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/postgres/{postgresId}", code: 200 })),
-      ).annotate({ identifier: "DeletePostgresRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          postgresId: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/postgres/{postgresId}/credentials/{username}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePostgresUserRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/projects/{projectId}", code: 200 })),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          registryCredentialId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/registrycredentials/{registryCredentialId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegistryCredentialRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/logs/streams/resource/{resourceId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteResourceLogStreamRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          routeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/services/{serviceId}/routes/{routeId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteRouteRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/services/{serviceId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSecretFileRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}", code: 200 })),
-      ).annotate({ identifier: "DeleteServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhookId}", code: 200 })),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/workflows/{workflowId}", code: 200 })),
-      ).annotate({ identifier: "DeleteWorkflowRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          deployId: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/rollback", code: 200 })),
-      ).annotate({ identifier: "DeployRollbackRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blueprintId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/blueprints/{blueprintId}", code: 200 })),
-      ).annotate({
-        identifier: "DisconnectBlueprintRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          postgresId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/failover", code: 200 })),
-      ).annotate({ identifier: "FailoverPostgresRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/active-connections", code: 200 })),
-      ).annotate({
-        identifier: "GetActiveConnectionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "GetActiveConnectionsResponseBodyItemLabelsItem",
-      });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.String,
-          value: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetActiveConnectionsResponseBodyItemValuesItem",
-      });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          labels: __S(125, __c15, 5),
-          values: __S(127, __c15, 7),
-          unit: S.String,
-        }),
-      ).annotate({
-        identifier: "GetActiveConnectionsResponseBodyItem",
-      });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
-      return S.suspend(() => __S(129, __c16, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetActiveConnectionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/bandwidth", code: 200 })),
-      ).annotate({ identifier: "GetBandwidthRequest" });
-    case 4:
-      return S.suspend(() => __S(129, __c16, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetBandwidthResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/bandwidth-sources", code: 200 })),
-      ).annotate({
-        identifier: "GetBandwidthSourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-          trafficSource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetBandwidthSourcesResponseDataItemLabels",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.Number),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetBandwidthSourcesResponseDataItemValuesItem",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(134, __c16, 6)),
-          values: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({
-        identifier: "GetBandwidthSourcesResponseDataItem",
-      });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({
-        identifier: "GetBandwidthSourcesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blueprintId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/blueprints/{blueprintId}", code: 200 })),
-      ).annotate({ identifier: "GetBlueprintRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "GetBlueprintResponseResourcesItem",
-      });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          status: S.String,
-          autoSync: S.Boolean,
-          repo: S.String,
-          branch: S.String,
-          path: S.String,
-          lastSync: S.optional(S.String),
-          resources: __S(142, __c17, 6),
-        }),
-      ).annotate({ identifier: "GetBlueprintResponse" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/build-sources/{buildSourceId}", code: 200 })),
-      ).annotate({ identifier: "GetBuildSourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          ownerId: S.String,
-          projectId: S.optional(S.String),
-          git: S.optional(__S(35, __c4, 3)),
-          image: S.optional(__S(30, __c3, 6)),
-          createdAt: S.String,
-          updatedAt: S.String,
-          serviceLinks: __S(37, __c4, 5),
-        }),
-      ).annotate({ identifier: "Schema12" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/build-sources/{buildSourceId}/env-vars/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBuildSourceEnvVarRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBuildSourceSecretFileRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-          aggregationMethod: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu", code: 200 })),
-      ).annotate({ identifier: "GetCpuRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          labels: __S(125, __c15, 5),
-          values: __S(127, __c15, 7),
-          unit: S.String,
-        }),
-      ).annotate({ identifier: "GetCpuResponseBodyItem" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() => __S(150, __c18, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetCpuResponse",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu-limit", code: 200 })),
-      ).annotate({ identifier: "GetCpuLimitRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu-target", code: 200 })),
-      ).annotate({ identifier: "GetCpuTargetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          customDomainNameOrID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/services/{serviceId}/custom-domains/{customDomainNameOrID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetCustomDomainRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dedicatedIpId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
-      ).annotate({ identifier: "GetDedicatedIpRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          deployId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/services/{serviceId}/deploys/{deployId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetDeployRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          diskId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/disks/{diskId}", code: 200 })),
-      ).annotate({ identifier: "GetDiskRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/disk-capacity", code: 200 })),
-      ).annotate({ identifier: "GetDiskCapacityRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/disk-usage", code: 200 })),
-      ).annotate({ identifier: "GetDiskUsageRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/env-groups/{envGroupId}", code: 200 })),
-      ).annotate({ identifier: "GetEnvGroupRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/env-groups/{envGroupId}/env-vars/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetEnvGroupEnvVarRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          envGroupId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/env-groups/{envGroupId}/secret-files/{envVarKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEnvGroupSecretFileRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/environments/{environmentId}", code: 200 })),
-      ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          envVarKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/services/{serviceId}/env-vars/{envVarKey}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetEnvVarRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buildSourceId: S.String.pipe(T.Label()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/build-sources/{buildSourceId}/env-vars", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetEnvVarsForBuildSourceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          envVar: __S(31, __c3, 7),
-          cursor: S.String,
-        }),
-      ).annotate({ identifier: "EnvVarWithCursor" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(167, __c20, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetEnvVarsForBuildSourceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/env-vars", code: 200 })),
-      ).annotate({
-        identifier: "GetEnvVarsForServiceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          eventId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/events/{eventId}", code: 200 })),
-      ).annotate({ identifier: "GetEventRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "NewBuild" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          timestamp: S.String,
-          serviceId: S.String,
-          type: S.String,
-          details: S.Unknown,
-        }),
-      ).annotate({ identifier: "GetEventResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          host: S.optional(S.String.pipe(T.Query())),
-          path: S.optional(S.String.pipe(T.Query())),
-          quantile: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/http-latency", code: 200 })),
-      ).annotate({ identifier: "GetHttpLatencyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          host: S.optional(S.String.pipe(T.Query())),
-          path: S.optional(S.String.pipe(T.Query())),
-          aggregateBy: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/http-requests", code: 200 })),
-      ).annotate({ identifier: "GetHttpRequestsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/instance-count", code: 200 })),
-      ).annotate({ identifier: "GetInstanceCountRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String.pipe(T.Label()),
-          jobId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/jobs/{jobId}", code: 200 })),
-      ).annotate({ identifier: "GetJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          redisId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}", code: 200 })),
-      ).annotate({ identifier: "GetKeyValueRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          redisId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}/connection-info", code: 200 })),
-      ).annotate({
-        identifier: "GetKeyValueConnectionInfoRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          internalConnectionString: S.String,
-          externalConnectionString: S.String,
-          cliCommand: S.String,
-        }),
-      ).annotate({ identifier: "KeyValueConnectionInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceRunID: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/maintenance/{maintenanceRunID}", code: 200 })),
-      ).annotate({ identifier: "GetMaintenanceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          scheduledAt: S.String,
-          pendingMaintenanceBy: S.optional(S.String),
-          state: S.String,
-          resourceId: S.String,
-        }),
-      ).annotate({ identifier: "GetMaintenanceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory", code: 200 })),
-      ).annotate({ identifier: "GetMemoryRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory-limit", code: 200 })),
-      ).annotate({ identifier: "GetMemoryLimitRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          instance: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory-target", code: 200 })),
-      ).annotate({ identifier: "GetMemoryTargetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}", code: 200 })),
-      ).annotate({ identifier: "GetOwnerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
-      ).annotate({ identifier: "GetOwnerLogStreamRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          preview: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOwnerLogStreamResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}/members", code: 200 })),
-      ).annotate({ identifier: "GetOwnerMembersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String,
-          name: S.String,
-          email: S.String,
-          status: S.String,
-          role: S.String,
-          mfaEnabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "TeamMember" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() => __S(190, __c23, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOwnerMembersResponse",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/metrics-stream/{ownerId}", code: 200 })),
-      ).annotate({
-        identifier: "GetOwnerMetricsStreamRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          provider: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "Schema10" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/notification-settings/owners/{ownerId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOwnerNotificationSettingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.String,
-          slackEnabled: S.Boolean,
-          emailEnabled: S.Boolean,
-          previewNotificationsEnabled: S.Boolean,
-          notificationsToSend: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOwnerNotificationSettingsResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}", code: 200 })),
       ).annotate({ identifier: "GetPostgresRequest" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -10733,7 +8934,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetPostgresConnectionInfoRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           password: S.String.pipe(T.SensitiveValue({})),
@@ -10744,7 +8945,11 @@ function __c24(j: number): any {
           psqlCommand: S.String,
         }),
       ).annotate({ identifier: "PostgresConnectionInfo" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -10752,11 +8957,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetPostgresRecoveryInfoRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recoveryStatus: S.String,
@@ -10765,13 +8966,21 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetPostgresRecoveryInfoResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/projects/{projectId}", code: 200 })),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryCredentialId: S.String.pipe(T.Label()),
@@ -10781,7 +8990,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetRegistryCredentialRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -10790,7 +9003,11 @@ function __c25(j: number): any {
           resource: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics/replication-lag", code: 200 })),
       ).annotate({ identifier: "GetReplicationLagRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -10798,7 +9015,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetResourceLogStreamRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
@@ -10808,7 +9029,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetResourceLogStreamResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -10821,7 +9046,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSecretFileRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -10829,7 +9058,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetServiceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10845,7 +9074,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetServiceNotificationOverridesRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String,
@@ -10855,7 +9088,29 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetServiceNotificationOverridesResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cronJobId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/cron-jobs/{cronJobId}/runs", code: 200 })),
+      ).annotate({ identifier: "CancelCronJobRunRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelCronJobRunResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -10863,21 +9118,29 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetServiceOutboundIpsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           dedicatedIpId: S.optional(S.String),
-          ips: __S(8, __c1, 0),
+          ips: __S(1952, __c244, 0),
         }),
       ).annotate({ identifier: "OutboundIps" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/tasks/{taskId}", code: 200 })),
       ).annotate({ identifier: "GetTaskRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10887,19 +9150,21 @@ function __c26(j: number): any {
           workflowVersionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTaskResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskRunId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/task-runs/{taskRunId}", code: 200 })),
       ).annotate({ identifier: "GetTaskRunRequest" });
-    case 7:
+    case 2:
       return S.Array(S.Unknown);
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           taskRunId: S.optional(S.String),
@@ -10909,20 +9174,20 @@ function __c27(j: number): any {
           startedAt: S.String,
           completedAt: S.optional(S.String),
           error: S.optional(S.String),
-          results: S.optional(__S(215, __c26, 7)),
+          results: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({
         identifier: "GetTaskRunResponseAttemptsItem",
       });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(147, __c18, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           taskId: S.String,
           status: S.String,
-          results: __S(79, __c9, 7),
+          results: __S(144, __c18, 0),
           error: S.optional(S.String),
           startedAt: S.optional(S.String),
           completedAt: S.optional(S.String),
@@ -10931,10 +9196,14 @@ function __c27(j: number): any {
           parentTaskAttempt: S.optional(S.Number),
           rootTaskRunId: S.String,
           retries: S.Number,
-          attempts: __S(217, __c27, 1),
+          attempts: __S(148, __c18, 4),
         }),
       ).annotate({ identifier: "GetTaskRunResponse" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -10947,7 +9216,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetTaskRunsCompletedRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -10956,11 +9229,15 @@ function __c27(j: number): any {
           resource: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics/task-runs-queued", code: 200 })),
       ).annotate({ identifier: "GetTaskRunsQueuedRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10968,7 +9245,11 @@ function __c27(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "User" });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
@@ -10976,7 +9257,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetWebhookRequest" });
   }
 }
-function __c28(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10984,7 +9265,11 @@ function __c28(j: number): any {
           workflowId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/workflows/{workflowId}", code: 200 })),
       ).annotate({ identifier: "GetWorkflowRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowVersionId: S.String.pipe(T.Label()),
@@ -10992,7 +9277,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetWorkflowVersionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11004,7 +9289,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetWorkflowVersionResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
@@ -11019,7 +9308,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "LinkEnvGroupToBuildSourceRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11027,15 +9320,70 @@ function __c28(j: number): any {
           ownerId: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          serviceLinks: __S(49, __c6, 1),
+          serviceLinks: __S(937, __c117, 1),
           environmentId: S.optional(S.String),
-          envVars: __S(50, __c6, 2),
-          secretFiles: __S(33, __c4, 1),
+          envVars: __S(944, __c118, 0),
+          secretFiles: __S(528, __c66, 0),
         }),
       ).annotate({
         identifier: "LinkEnvGroupToBuildSourceResponse",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          deployId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/services/{serviceId}/deploys/{deployId}/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CancelDeployRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          message: S.optional(S.String),
+          createdAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeployCommit" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ref: S.optional(S.String),
+          sha: S.optional(S.String),
+          registryCredential: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeployImage" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          commit: S.optional(__S(224, __c28, 0)),
+          image: S.optional(__S(225, __c28, 1)),
+          status: S.optional(S.String),
+          trigger: S.optional(S.String),
+          startedAt: S.optional(S.String),
+          finishedAt: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deploy" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envGroupId: S.String.pipe(T.Label()),
@@ -11050,7 +9398,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "LinkServiceToEnvGroupRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -11062,34 +9414,34 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListApplicationFilterValuesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          values: S.optional(__S(8, __c1, 0)),
+          values: S.optional(__S(1952, __c244, 0)),
         }),
       ).annotate({
         identifier: "ListApplicationFilterValuesResponseBodyItem",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
-      return S.suspend(() => __S(232, __c29, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(241, __c30, 1));
+    case 3:
+      return S.suspend(() => __S(242, __c30, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListApplicationFilterValuesResponse",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/blueprints", code: 200 })),
       ).annotate({ identifier: "ListBlueprintsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11102,20 +9454,30 @@ function __c29(j: number): any {
           lastSync: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          blueprint: __S(235, __c29, 3),
+          blueprint: __S(249, __c31, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "BlueprintWithCursor" });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.suspend(() => __S(237, __c29, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(250, __c31, 2));
+    case 4:
+      return S.suspend(() => __S(251, __c31, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBlueprintsResponse",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "NewBuild" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           blueprintId: S.String.pipe(T.Label()),
@@ -11125,34 +9487,34 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListBlueprintSyncsRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          commit: __S(171, __c21, 3),
+          commit: __S(256, __c32, 0),
           startedAt: S.optional(S.String),
           completedAt: S.optional(S.String),
           state: S.String,
         }),
       ).annotate({ identifier: "SyncWithCursorSync" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          sync: __S(240, __c30, 0),
+          sync: __S(258, __c32, 2),
           cursor: S.String,
         }),
       ).annotate({ identifier: "SyncWithCursor" });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
-      return S.suspend(() => __S(242, __c30, 2).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(259, __c32, 3));
+    case 5:
+      return S.suspend(() => __S(260, __c32, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBlueprintSyncsResponse",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
@@ -11162,7 +9524,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListBuildsInBuildSourceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11174,7 +9536,29 @@ function __c30(j: number): any {
           commitUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaBuildRun" });
-    case 6:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          buildSourceId: S.String,
+          buildRun: S.optional(__S(265, __c33, 1)),
+          image: S.optional(__S(272, __c34, 0)),
+          createdAt: S.String,
+          updatedAt: S.String,
+          assetsDeletedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schema13" });
+    case 3:
+      return S.Array(__S(266, __c33, 2));
+    case 4:
+      return S.suspend(() => __S(267, __c33, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListBuildsInBuildSourceResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageVersionId: S.optional(S.String),
@@ -11184,33 +9568,15 @@ function __c30(j: number): any {
           registryCredentialId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaImage" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          buildSourceId: S.String,
-          buildRun: S.optional(__S(245, __c30, 5)),
-          image: S.optional(__S(246, __c30, 6)),
-          createdAt: S.String,
-          updatedAt: S.String,
-          assetsDeletedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Schema13" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(247, __c30, 7));
-    case 1:
-      return S.suspend(() => __S(248, __c31, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListBuildsInBuildSourceResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           includePreviews: S.optional(S.Boolean.pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
@@ -11221,69 +9587,77 @@ function __c31(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/build-sources", code: 200 })),
       ).annotate({ identifier: "ListBuildSourcesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          buildSource: __S(145, __c18, 1),
+          buildSource: __S(1816, __c227, 0),
           cursor: S.String,
         }),
       ).annotate({
         identifier: "ListBuildSourcesResponseBodyItem",
       });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
-      return S.suspend(() => __S(252, __c31, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(281, __c35, 1));
+    case 3:
+      return S.suspend(() => __S(282, __c35, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBuildSourcesResponse",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           domainType: S.optional(S.String.pipe(T.Query())),
           verificationStatus: S.optional(S.String.pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/custom-domains", code: 200 })),
       ).annotate({ identifier: "ListCustomDomainsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customDomain: __S(41, __c5, 1),
+          customDomain: __S(649, __c81, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "CustomDomainWithCursor" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
-      return S.suspend(() => __S(256, __c32, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(289, __c36, 1));
+    case 3:
+      return S.suspend(() => __S(290, __c36, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCustomDomainsResponse",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Query()),
           environmentId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated-ips", code: 200 })),
       ).annotate({ identifier: "ListDedicatedIpsRequest" });
-    case 3:
-      return S.Array(__S(45, __c5, 5));
-    case 4:
-      return S.suspend(() => __S(259, __c32, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(744, __c93, 0));
+    case 2:
+      return S.suspend(() => __S(297, __c37, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedIpsResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          status: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          status: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
@@ -11294,66 +9668,100 @@ function __c32(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/deploys", code: 200 })),
       ).annotate({ identifier: "ListDeploysRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deploy: S.optional(__S(24, __c3, 0)),
-          cursor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeployWithCursor" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(263, __c32, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDeploysResponse",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          diskId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          deploy: S.optional(__S(226, __c28, 2)),
+          cursor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeployWithCursor" });
+    case 2:
+      return S.Array(__S(305, __c38, 1));
+    case 3:
+      return S.suspend(() => __S(306, __c38, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDeploysResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          diskId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          serviceId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          serviceId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/disks", code: 200 })),
       ).annotate({ identifier: "ListDisksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          disk: __S(1, __c0, 1),
+          disk: __S(1536, __c192, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "DiskWithCursor" });
+    case 2:
+      return S.Array(__S(313, __c39, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() => __S(267, __c33, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(314, __c39, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDisksResponse",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          serviceId: S.String.pipe(T.Label()),
+          jobId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/services/{serviceId}/jobs/{jobId}/cancel", code: 200 }),
+        ),
+      ).annotate({ identifier: "CancelJobRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          serviceId: S.String,
+          startCommand: S.String,
+          planId: S.String,
+          status: S.optional(S.String),
+          createdAt: S.String,
+          startedAt: S.optional(S.String),
+          finishedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schema7" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/env-groups", code: 200 })),
       ).annotate({ identifier: "ListEnvGroupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11361,49 +9769,53 @@ function __c33(j: number): any {
           ownerId: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          serviceLinks: __S(49, __c6, 1),
+          serviceLinks: __S(937, __c117, 1),
           environmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvGroupMeta" });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(271, __c33, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(337, __c42, 1));
+    case 3:
+      return S.suspend(() => __S(338, __c42, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEnvGroupsResponse",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          projectId: __S(8, __c1, 0).pipe(T.Query()),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          projectId: __S(1952, __c244, 0).pipe(T.Query()),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/environments", code: 200 })),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          environment: __S(12, __c1, 4),
+          environment: __S(1968, __c246, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "EnvironmentWithCursor" });
+    case 2:
+      return S.Array(__S(345, __c43, 1));
     case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
-      return S.suspend(() => __S(275, __c34, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(346, __c43, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEnvironmentsResponse",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -11414,7 +9826,7 @@ function __c34(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/events", code: 200 })),
       ).annotate({ identifier: "ListEventsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11426,48 +9838,52 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ServiceEventWithCursorEvent",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          event: __S(278, __c34, 6),
-          cursor: S.String,
-        }),
-      ).annotate({ identifier: "ServiceEventWithCursor" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() => __S(280, __c35, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListEventsResponse",
-      });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          event: __S(353, __c44, 1),
+          cursor: S.String,
+        }),
+      ).annotate({ identifier: "ServiceEventWithCursor" });
+    case 3:
+      return S.Array(__S(354, __c44, 2));
+    case 4:
+      return S.suspend(() => __S(355, __c44, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListEventsResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          path: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          value: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          path: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          value: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/headers", code: 200 })),
       ).annotate({ identifier: "ListHeadersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          header: __S(3, __c0, 3),
+          header: __S(1632, __c204, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "HeaderWithCursor" });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.suspend(() => __S(284, __c35, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(361, __c45, 1));
+    case 3:
+      return S.suspend(() => __S(362, __c45, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHeadersResponse",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -11481,51 +9897,55 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListHttpFilterValuesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          values: S.optional(__S(8, __c1, 0)),
+          values: S.optional(__S(1952, __c244, 0)),
         }),
       ).annotate({
         identifier: "ListHttpFilterValuesResponseBodyItem",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(287, __c35, 7));
-    case 1:
-      return S.suspend(() => __S(288, __c36, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(369, __c46, 1));
+    case 3:
+      return S.suspend(() => __S(370, __c46, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHttpFilterValuesResponse",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/instances", code: 200 })),
       ).annotate({ identifier: "ListInstancesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
         }),
       ).annotate({ identifier: "ServiceInstance" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.suspend(() => __S(292, __c36, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(377, __c47, 1));
+    case 3:
+      return S.suspend(() => __S(378, __c47, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInstancesResponse",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          status: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           startedBefore: S.optional(S.String.pipe(T.Query())),
@@ -11534,39 +9954,39 @@ function __c36(j: number): any {
           finishedAfter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/jobs", code: 200 })),
       ).annotate({ identifier: "ListJobRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          job: __S(26, __c3, 2),
+          job: __S(328, __c41, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "JobWithCursor" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(295, __c36, 7));
-    case 1:
-      return S.suspend(() => __S(296, __c37, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
+      return S.suspend(() => __S(386, __c48, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListJobResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          region: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          region: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/key-value", code: 200 })),
       ).annotate({ identifier: "ListKeyValueRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11576,83 +9996,87 @@ function __c37(j: number): any {
           region: S.String,
           plan: S.String,
           name: S.String,
-          owner: __S(54, __c6, 6),
-          options: __S(55, __c6, 7),
-          ipAllowList: __S(11, __c1, 3),
+          owner: __S(1136, __c142, 0),
+          options: __S(1152, __c144, 0),
+          ipAllowList: __S(1961, __c245, 1),
           environmentId: S.optional(S.String),
           version: S.String,
           dashboardUrl: S.String,
         }),
       ).annotate({ identifier: "KeyValue" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keyValue: __S(299, __c37, 3),
+          keyValue: __S(393, __c49, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "KeyValueWithCursor" });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() => __S(301, __c37, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(394, __c49, 2));
+    case 4:
+      return S.suspend(() => __S(395, __c49, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListKeyValueResponse",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Query()),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          resource: __S(8, __c1, 0).pipe(T.Query()),
-          instance: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          host: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          statusCode: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          method: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          task: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          taskRun: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          sandbox: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          level: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          text: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          path: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          resource: __S(1952, __c244, 0).pipe(T.Query()),
+          instance: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          host: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          statusCode: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          method: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          task: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          taskRun: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          sandbox: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          level: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          type: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          text: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          path: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/logs", code: 200 })),
       ).annotate({ identifier: "ListLogsRequest" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "SchemaLabelsItem" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
     case 2:
+      return S.Array(__S(401, __c50, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           message: S.String,
           timestamp: S.String,
-          labels: __S(305, __c38, 1),
+          labels: __S(402, __c50, 2),
         }),
       ).annotate({ identifier: "Schema8" });
-    case 3:
-      return S.Array(__S(306, __c38, 2));
     case 4:
+      return S.Array(__S(403, __c50, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           hasMore: S.Boolean,
           nextStartTime: S.String,
           nextEndTime: S.String,
-          logs: __S(307, __c38, 3),
+          logs: __S(404, __c50, 4),
         }),
       ).annotate({ identifier: "ListLogsResponse" });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Query()),
@@ -11660,70 +10084,88 @@ function __c38(j: number): any {
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          resource: __S(8, __c1, 0).pipe(T.Query()),
-          instance: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          host: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          statusCode: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          method: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          task: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          taskRun: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          sandbox: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          level: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          text: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          path: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          resource: __S(1952, __c244, 0).pipe(T.Query()),
+          instance: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          host: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          statusCode: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          method: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          task: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          taskRun: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          sandbox: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          level: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          type: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          text: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          path: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/logs/values", code: 200 })),
       ).annotate({ identifier: "ListLogsValuesRequest" });
-    case 6:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(1952, __c244, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLogsValuesResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          state: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/maintenance", code: 200 })),
-      ).annotate({ identifier: "ListMaintenanceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(181, __c22, 5));
-    case 1:
-      return S.suspend(() => __S(312, __c39, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListMaintenanceResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          serviceId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          taskRunId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/task-runs/{taskRunId}", code: 200 })),
+      ).annotate({ identifier: "CancelTaskRunRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          state: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/maintenance", code: 200 })),
+      ).annotate({ identifier: "ListMaintenanceRequest" });
+    case 1:
+      return S.Array(__S(2096, __c262, 0));
+    case 2:
+      return S.suspend(() => __S(425, __c53, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListMaintenanceResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          serviceId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/notification-settings/overrides", code: 200 })),
       ).annotate({
         identifier: "ListNotificationOverridesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          override: __S(209, __c26, 1),
+          override: __S(96, __c12, 0),
           cursor: S.String,
         }),
       ).annotate({
         identifier: "NotificationOverrideWithCursor",
       });
-    case 4:
-      return S.Array(__S(315, __c39, 3));
-    case 5:
-      return S.suspend(() => __S(316, __c39, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
+      return S.suspend(() => __S(434, __c54, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListNotificationOverridesResponse",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -11736,7 +10178,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListOrganizationAuditLogsRequest",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -11744,37 +10190,37 @@ function __c39(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogActor" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
     case 1:
+      return S.Record(S.String, S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           timestamp: S.String,
           event: S.String,
           status: S.String,
-          actor: __S(319, __c39, 7),
-          metadata: __S(320, __c40, 0),
+          actor: __S(448, __c56, 0),
+          metadata: __S(449, __c56, 1),
         }),
       ).annotate({ identifier: "AuditLog" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          auditLog: __S(321, __c40, 1),
+          auditLog: __S(450, __c56, 2),
         }),
       ).annotate({ identifier: "AuditLogWithCursor" });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
     case 4:
-      return S.suspend(() => __S(323, __c40, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(451, __c56, 3));
+    case 5:
+      return S.suspend(() => __S(452, __c56, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationAuditLogsResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Label()),
@@ -11787,33 +10233,37 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListOwnerAuditLogsRequest",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          email: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          email: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/owners", code: 200 })),
       ).annotate({ identifier: "ListOwnersRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          owner: S.optional(__S(54, __c6, 6)),
+          owner: S.optional(__S(1136, __c142, 0)),
           cursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "OwnerWithCursor" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
-      return S.suspend(() => __S(328, __c41, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(465, __c58, 1));
+    case 3:
+      return S.suspend(() => __S(466, __c58, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOwnersResponse",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String.pipe(T.Query())),
@@ -11828,32 +10278,36 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListPathFilterValuesRequest",
       });
-    case 3:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(1952, __c244, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPathFilterValuesResponse",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          region: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-          suspended: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          region: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+          suspended: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           includeReplicas: S.optional(S.Boolean.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/postgres", code: 200 })),
       ).annotate({ identifier: "ListPostgresRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          ipAllowList: __S(11, __c1, 3),
+          ipAllowList: __S(1961, __c245, 1),
           createdAt: S.String,
           updatedAt: S.String,
           expiresAt: S.optional(S.String),
@@ -11862,40 +10316,40 @@ function __c41(j: number): any {
           environmentId: S.optional(S.String),
           highAvailabilityEnabled: S.Boolean,
           name: S.String,
-          owner: __S(54, __c6, 6),
+          owner: __S(1136, __c142, 0),
           plan: S.String,
           diskSizeGB: S.optional(S.Number),
           primaryPostgresID: S.optional(S.String),
           region: S.String,
-          readReplicas: __S(62, __c7, 6),
+          readReplicas: __S(1257, __c157, 1),
           role: S.String,
           status: S.String,
           version: S.String,
           suspended: S.String,
-          suspenders: __S(63, __c7, 7),
+          suspenders: __S(1280, __c160, 0),
           dashboardUrl: S.String,
           diskAutoscalingEnabled: S.Boolean,
           connectionPool: S.String,
         }),
       ).annotate({ identifier: "Postgres" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          postgres: __S(333, __c41, 5),
+          postgres: __S(481, __c60, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "PostgresWithCursor" });
-    case 7:
-      return S.Array(__S(334, __c41, 6));
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(335, __c41, 7).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(482, __c60, 2));
+    case 4:
+      return S.suspend(() => __S(483, __c60, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPostgresResponse",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -11903,7 +10357,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPostgresExportRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11913,13 +10367,17 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPostgresExportResponseBodyItem",
       });
+    case 2:
+      return S.Array(__S(489, __c61, 1));
     case 3:
-      return S.Array(__S(338, __c42, 2));
-    case 4:
-      return S.suspend(() => __S(339, __c42, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(490, __c61, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPostgresExportResponse",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -11929,7 +10387,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPostgresProcessesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pid: S.optional(S.Number),
@@ -11949,27 +10407,27 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPostgresProcessesResponseProcessesItem",
       });
-    case 7:
-      return S.Array(__S(342, __c42, 6));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(497, __c62, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          processes: __S(343, __c42, 7),
+          processes: __S(498, __c62, 2),
         }),
       ).annotate({
         identifier: "ListPostgresProcessesResponse",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/query/sizes", code: 200 })),
       ).annotate({ identifier: "ListPostgresSizesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Database: S.optional(S.String),
@@ -11981,17 +10439,135 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListPostgresSizesResponseSizesItem",
       });
+    case 2:
+      return S.Array(__S(505, __c63, 1));
     case 3:
-      return S.Array(__S(346, __c43, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          sizes: __S(347, __c43, 3),
+          sizes: __S(506, __c63, 2),
         }),
       ).annotate({
         identifier: "ListPostgresSizesResponse",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          baseDir: S.optional(S.String),
+          branch: S.optional(S.String),
+          buildCommand: S.optional(S.String),
+          buildFilter: S.optional(__S(536, __c67, 0)),
+          dockerfilePath: S.optional(S.String),
+          runtime: S.String,
+          registryCredentialId: S.optional(S.String),
+          region: S.optional(S.String),
+          repoUrl: S.optional(S.String),
+          rootDir: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateBuildSourceRequestGit",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          name: S.String,
+          projectId: S.optional(S.String),
+          git: S.optional(__S(512, __c64, 0)),
+          image: S.optional(__S(544, __c68, 0)),
+          serviceIds: S.optional(__S(1952, __c244, 0)),
+          envVars: S.optional(__S(520, __c65, 0)),
+          secretFiles: S.optional(__S(528, __c66, 0)),
+          envGroupIds: S.optional(__S(1952, __c244, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/build-sources", code: 200 })),
+      ).annotate({ identifier: "CreateBuildSourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          ownerId: S.String,
+          projectId: S.optional(S.String),
+          git: S.optional(__S(545, __c68, 1)),
+          image: S.optional(__S(544, __c68, 0)),
+          createdAt: S.String,
+          updatedAt: S.String,
+          serviceLinks: __S(546, __c68, 2),
+        }),
+      ).annotate({
+        identifier: "CreateBuildSourceResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1728, __c216, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paths: __S(1952, __c244, 0),
+          ignoredPaths: __S(1952, __c244, 0),
+        }),
+      ).annotate({ identifier: "BuildFilter2" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateBuildSourceResponseServiceLinksItem",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          registryCredentialId: S.optional(S.String),
+          imageUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateBuildSourceRequestImage",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          baseDir: S.optional(S.String),
+          branch: S.optional(S.String),
+          buildCommand: S.optional(S.String),
+          buildFilter: S.optional(__S(536, __c67, 0)),
+          dockerfilePath: S.optional(S.String),
+          runtime: S.String,
+          registryCredentialId: S.optional(S.String),
+          region: S.optional(S.String),
+          repoUrl: S.optional(S.String),
+          rootDir: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Git" });
+    case 2:
+      return S.Array(__S(537, __c67, 1));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -12001,7 +10577,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListPostgresTableScansRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Database: S.optional(S.String),
@@ -12012,21 +10588,21 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListPostgresTableScansResponseTableScansItem",
       });
-    case 7:
-      return S.Array(__S(350, __c43, 6));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(553, __c69, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          tableScans: __S(351, __c43, 7),
+          tableScans: __S(554, __c69, 2),
         }),
       ).annotate({
         identifier: "ListPostgresTableScansResponse",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -12036,7 +10612,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListPostgresTopQueriesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           queryId: S.optional(S.String),
@@ -12062,23 +10638,27 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListPostgresTopQueriesResponseTopQueriesItem",
       });
+    case 2:
+      return S.Array(__S(561, __c70, 1));
     case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          topQueries: __S(355, __c44, 3),
+          topQueries: __S(562, __c70, 2),
         }),
       ).annotate({
         identifier: "ListPostgresTopQueriesResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/credentials", code: 200 })),
       ).annotate({ identifier: "ListPostgresUsersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -12089,76 +10669,80 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListPostgresUsersResponseBodyItem",
       });
-    case 7:
-      return S.Array(__S(358, __c44, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(359, __c44, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(569, __c71, 1));
+    case 3:
+      return S.suspend(() => __S(570, __c71, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPostgresUsersResponse",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/projects", code: 200 })),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          project: __S(70, __c8, 6),
+          project: __S(1336, __c167, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "ProjectWithCursor" });
+    case 2:
+      return S.Array(__S(577, __c72, 1));
     case 3:
-      return S.Array(__S(362, __c45, 2));
-    case 4:
-      return S.suspend(() => __S(363, __c45, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(578, __c72, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectsResponse",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          username: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          username: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          type: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/registrycredentials", code: 200 })),
       ).annotate({
         identifier: "ListRegistryCredentialsRequest",
       });
-    case 6:
-      return S.Array(__S(72, __c9, 0));
-    case 7:
-      return S.suspend(() => __S(366, __c45, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(1352, __c169, 0));
+    case 2:
+      return S.suspend(() => __S(585, __c73, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRegistryCredentialsResponse",
       });
   }
 }
-function __c46(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          logStreamId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          resourceId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          setting: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          logStreamId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          resourceId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          setting: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/logs/streams/resource", code: 200 })),
@@ -12174,38 +10758,42 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "Schema9" });
     case 2:
-      return S.Array(__S(369, __c46, 1));
+      return S.Array(__S(593, __c74, 1));
     case 3:
-      return S.suspend(() => __S(370, __c46, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(594, __c74, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResourceLogStreamsResponse",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          type: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-          source: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          destination: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          type: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+          source: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          destination: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/routes", code: 200 })),
       ).annotate({ identifier: "ListRoutesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          route: __S(14, __c1, 6),
+          route: __S(2072, __c259, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "RouteWithCursor" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
-      return S.suspend(() => __S(374, __c46, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(601, __c75, 1));
+    case 3:
+      return S.suspend(() => __S(602, __c75, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRoutesResponse",
       });
   }
 }
-function __c47(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12219,20 +10807,28 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListSecretFilesForBuildSourceRequest",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          secretFile: __S(6, __c0, 6),
+          secretFile: __S(1728, __c216, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "SecretFileWithCursor" });
+    case 1:
+      return S.Array(__S(616, __c77, 0));
     case 2:
-      return S.Array(__S(377, __c47, 1));
-    case 3:
-      return S.suspend(() => __S(378, __c47, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(617, __c77, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSecretFilesForBuildSourceResponse",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12242,49 +10838,96 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListSecretFilesForServiceRequest",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          env: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-          region: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-          suspended: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          type: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          env: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+          region: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
+          suspended: S.optional(__S(1280, __c160, 0).pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           updatedBefore: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           includePreviews: S.optional(S.Boolean.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services", code: 200 })),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          service: __S(77, __c9, 5),
+          service: __S(1368, __c171, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "ServiceWithCursor" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(383, __c47, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(633, __c79, 1));
+    case 3:
+      return S.suspend(() => __S(634, __c79, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListServicesResponse",
       });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/custom-domains", code: 200 })),
+      ).annotate({
+        identifier: "CreateCustomDomainRequest",
+      });
     case 1:
+      return S.Array(__S(649, __c81, 1));
+    case 2:
+      return S.suspend(() => __S(641, __c80, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateCustomDomainResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomDomainServer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          domainType: S.String,
+          publicSuffix: S.String,
+          redirectForName: S.String,
+          verificationStatus: S.String,
+          createdAt: S.String,
+          server: S.optional(__S(648, __c81, 0)),
+        }),
+      ).annotate({ identifier: "CustomDomain" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           diskId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/disks/{diskId}/snapshots", code: 200 })),
       ).annotate({ identifier: "ListSnapshotsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -12292,66 +10935,74 @@ function __c48(j: number): any {
           instanceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskSnapshot" });
+    case 2:
+      return S.Array(__S(657, __c82, 1));
     case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
-      return S.suspend(() => __S(387, __c48, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(658, __c82, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSnapshotsResponse",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          taskSlug: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          rootTaskRunId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowVersionId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          taskSlug: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          rootTaskRunId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowVersionId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/task-runs", code: 200 })),
       ).annotate({ identifier: "ListTaskRunsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskRun: __S(83, __c10, 3),
-          cursor: S.String,
-        }),
-      ).annotate({ identifier: "TaskRunWithCursor" });
-    case 7:
-      return S.Array(__S(390, __c48, 6));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(391, __c48, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListTaskRunsResponse",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          taskSlug: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowVersionId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          taskRun: __S(1402, __c175, 2),
+          cursor: S.String,
+        }),
+      ).annotate({ identifier: "TaskRunWithCursor" });
+    case 2:
+      return S.Array(__S(665, __c83, 1));
+    case 3:
+      return S.suspend(() => __S(666, __c83, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListTaskRunsResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          taskSlug: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowVersionId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/tasks", code: 200 })),
       ).annotate({ identifier: "ListTasksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          task: __S(213, __c26, 5),
+          task: __S(136, __c17, 0),
           cursor: S.String,
         }),
       ).annotate({ identifier: "TaskWithCursor" });
+    case 2:
+      return S.Array(__S(673, __c84, 1));
     case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
-      return S.suspend(() => __S(395, __c49, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(674, __c84, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTasksResponse",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
@@ -12361,7 +11012,7 @@ function __c49(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhookId}/events", code: 200 })),
       ).annotate({ identifier: "ListWebhookEventsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12375,85 +11026,89 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "WebhookEventWithCursorWebhookEvent",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          webhookEvent: __S(398, __c49, 6),
+          webhookEvent: __S(681, __c85, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "WebhookEventWithCursor" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(399, __c49, 7));
-    case 1:
-      return S.suspend(() => __S(400, __c50, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(682, __c85, 2));
+    case 4:
+      return S.suspend(() => __S(683, __c85, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhookEventsResponse",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "ListWebhooksRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          webhook: __S(86, __c10, 6),
+          webhook: __S(1417, __c177, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "WebhookWithCursor" });
-    case 4:
-      return S.Array(__S(403, __c50, 3));
-    case 5:
-      return S.suspend(() => __S(404, __c50, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(689, __c86, 1));
+    case 3:
+      return S.suspend(() => __S(690, __c86, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhooksResponse",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowID: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          environmentId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          name: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowID: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          environmentId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/workflows", code: 200 })),
       ).annotate({ identifier: "ListWorkflowsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          workflow: __S(90, __c11, 2),
+          workflow: __S(1433, __c179, 1),
           cursor: S.String,
         }),
       ).annotate({ identifier: "WorkflowWithCursor" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(407, __c50, 7));
-    case 1:
-      return S.suspend(() => __S(408, __c51, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(697, __c87, 1));
+    case 3:
+      return S.suspend(() => __S(698, __c87, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWorkflowsResponse",
       });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ownerId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowID: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          workflowVersionId: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          ownerId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowID: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          workflowVersionId: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/workflowversions", code: 200 })),
       ).annotate({
         identifier: "ListWorkflowVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12463,22 +11118,26 @@ function __c51(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "Schema16" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workflowVersion: __S(411, __c51, 3),
+          workflowVersion: __S(705, __c88, 1),
           cursor: S.String,
         }),
       ).annotate({
         identifier: "WorkflowVersionWithCursor",
       });
-    case 5:
-      return S.Array(__S(412, __c51, 4));
-    case 6:
-      return S.suspend(() => __S(413, __c51, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(706, __c88, 2));
+    case 4:
+      return S.suspend(() => __S(707, __c88, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWorkflowVersionsResponse",
       });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Label()),
@@ -12491,11 +11150,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PatchOwnerNotificationSettingsRequest",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String,
@@ -12505,7 +11160,11 @@ function __c52(j: number): any {
           notificationsToSend: S.String,
         }),
       ).annotate({ identifier: "Schema3" });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12515,13 +11174,17 @@ function __c52(j: number): any {
           T.Http({ method: "PATCH", uri: "/services/{serviceId}/routes/{routeId}", code: 200 }),
         ),
       ).annotate({ identifier: "PatchRouteRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(14, __c1, 6)),
+          headers: S.optional(__S(2072, __c259, 0)),
         }),
       ).annotate({ identifier: "PatchRouteResponse" });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12537,7 +11200,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "PatchServiceNotificationOverridesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String,
@@ -12545,7 +11208,44 @@ function __c52(j: number): any {
           notificationsToSend: S.String,
         }),
       ).annotate({ identifier: "Schema4" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          ownerId: S.String,
+          region: S.String,
+          environmentIds: S.optional(__S(1952, __c244, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/dedicated-ips", code: 200 })),
+      ).annotate({ identifier: "CreateDedicatedIpRequest" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.String,
+          ownerId: S.String,
+          region: S.String,
+          environmentIds: __S(1952, __c244, 0),
+          ips: __S(1952, __c244, 0),
+          status: S.String,
+          createdAt: S.String,
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedIP" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12553,7 +11253,11 @@ function __c52(j: number): any {
           planId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/jobs", code: 200 })),
       ).annotate({ identifier: "PostJobRequest" });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12562,7 +11266,11 @@ function __c52(j: number): any {
           plan: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/preview", code: 200 })),
       ).annotate({ identifier: "PreviewServiceRequest" });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12570,7 +11278,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "PurgeCacheRequest" });
   }
 }
-function __c53(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12581,21 +11289,25 @@ function __c53(j: number): any {
         }),
       ).annotate({ identifier: "RoutePut" });
     case 1:
-      return S.Array(__S(424, __c53, 0));
+      return S.Array(__S(776, __c97, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          body: __S(425, __c53, 1).pipe(T.HttpBody()),
+          body: __S(777, __c97, 1).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/services/{serviceId}/routes", code: 200 })),
       ).annotate({ identifier: "PutRoutesRequest" });
     case 3:
-      return S.Array(__S(14, __c1, 6));
+      return S.Array(__S(2072, __c259, 0));
     case 4:
-      return S.suspend(() => __S(427, __c53, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(779, __c97, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "PutRoutesResponse",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -12607,7 +11319,11 @@ function __c53(j: number): any {
           environmentId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/recovery", code: 200 })),
       ).annotate({ identifier: "RecoverPostgresRequest" });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -12622,11 +11338,15 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "RefreshCustomDomainRequest",
       });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
-          resourceIds: __S(8, __c1, 0).pipe(T.Query()),
+          resourceIds: __S(1952, __c244, 0).pipe(T.Query()),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/environments/{environmentId}/resources", code: 200 }),
         ),
@@ -12635,7 +11355,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12646,19 +11366,46 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "RemoveWorkspaceMemberRequest",
       });
-    case 1:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/restart", code: 200 })),
       ).annotate({ identifier: "RestartPostgresRequest" });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/restart", code: 200 })),
       ).annotate({ identifier: "RestartServiceRequest" });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          buildId: S.optional(S.String),
+          clearCache: S.optional(S.String),
+          commitId: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          deployMode: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/deploys", code: 200 })),
+      ).annotate({ identifier: "CreateDeployRequest" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           diskId: S.String.pipe(T.Label()),
@@ -12666,35 +11413,47 @@ function __c54(j: number): any {
           instanceId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/disks/{diskId}/snapshots/restore", code: 200 })),
       ).annotate({ identifier: "RestoreSnapshotRequest" });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redisId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/key-value/{redisId}/resume", code: 200 })),
       ).annotate({ identifier: "ResumeKeyValueRequest" });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/resume", code: 200 })),
       ).annotate({ identifier: "ResumePostgresRequest" });
-    case 6:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/resume", code: 200 })),
       ).annotate({ identifier: "ResumeServiceRequest" });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cronJobId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/cron-jobs/{cronJobId}/runs", code: 200 })),
       ).annotate({ identifier: "RunCronJobRequest" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12705,62 +11464,154 @@ function __c55(j: number): any {
           canceledBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "CronJobRun" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
           numInstances: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/scale", code: 200 })),
       ).annotate({ identifier: "ScaleServiceRequest" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          taskRunIds: __S(8, __c1, 0).pipe(T.Query()),
+          taskRunIds: __S(1952, __c244, 0).pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/task-runs/events", code: 200 })),
       ).annotate({
         identifier: "StreamTaskRunsEventsRequest",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Query()),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          resource: __S(8, __c1, 0).pipe(T.Query()),
-          instance: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          host: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          statusCode: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          method: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          task: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          taskRun: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          sandbox: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          level: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          type: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          text: S.optional(__S(8, __c1, 0).pipe(T.Query())),
-          path: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          resource: __S(1952, __c244, 0).pipe(T.Query()),
+          instance: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          host: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          statusCode: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          method: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          task: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          taskRun: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          sandbox: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          level: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          type: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          text: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
+          path: S.optional(__S(1952, __c244, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/logs/subscribe", code: 200 })),
       ).annotate({ identifier: "SubscribeLogsRequest" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redisId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/key-value/{redisId}/suspend", code: 200 })),
       ).annotate({ identifier: "SuspendKeyValueRequest" });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/suspend", code: 200 })),
       ).annotate({ identifier: "SuspendPostgresRequest" });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ownerId: S.String,
+          envVars: __S(520, __c65, 0),
+          secretFiles: S.optional(__S(528, __c66, 0)),
+          serviceIds: S.optional(__S(1952, __c244, 0)),
+          environmentId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/env-groups", code: 200 })),
+      ).annotate({ identifier: "CreateEnvGroupRequest" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "SchemaItemCase0" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "EnvGroupLink" });
+    case 1:
+      return S.Array(__S(936, __c117, 0));
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(928, __c116, 0));
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          ownerId: S.String,
+          createdAt: S.String,
+          updatedAt: S.String,
+          serviceLinks: __S(937, __c117, 1),
+          environmentId: S.optional(S.String),
+          envVars: __S(944, __c118, 0),
+          secretFiles: __S(528, __c66, 0),
+        }),
+      ).annotate({ identifier: "CreateEnvGroupResponse" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/suspend", code: 200 })),
       ).annotate({ identifier: "SuspendServiceRequest" });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
@@ -12770,11 +11621,7 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "TriggerBuildSourceBuildRequest",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12788,13 +11635,13 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "TriggerBuildSourceBuildResponseBuildRun",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           buildSourceId: S.String,
-          buildRun: S.optional(__S(448, __c56, 0)),
-          image: S.optional(__S(246, __c30, 6)),
+          buildRun: S.optional(__S(969, __c121, 1)),
+          image: S.optional(__S(272, __c34, 0)),
           createdAt: S.String,
           updatedAt: S.String,
           assetsDeletedAt: S.optional(S.String),
@@ -12802,7 +11649,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "TriggerBuildSourceBuildResponse",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maintenanceRunID: S.String.pipe(T.Label()),
@@ -12812,7 +11663,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "TriggerMaintenanceRequest",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
@@ -12827,7 +11682,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UnlinkEnvGroupFromBuildSourceRequest",
       });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envGroupId: S.String.pipe(T.Label()),
@@ -12842,7 +11701,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UnlinkServiceFromEnvGroupRequest",
       });
-    case 5:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           blueprintId: S.String.pipe(T.Label()),
@@ -12851,7 +11714,7 @@ function __c56(j: number): any {
           path: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/blueprints/{blueprintId}", code: 200 })),
       ).annotate({ identifier: "UpdateBlueprintRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12864,26 +11727,26 @@ function __c56(j: number): any {
           lastSync: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateBlueprintResponse" });
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          paths: __S(8, __c1, 0),
-          ignoredPaths: __S(8, __c1, 0),
+          paths: __S(1952, __c244, 0),
+          ignoredPaths: __S(1952, __c244, 0),
         }),
       ).annotate({
         identifier: "UpdateBuildSourceRequestGitBuildFilter",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           baseDir: S.optional(S.String),
           branch: S.optional(S.String),
           buildCommand: S.optional(S.String),
-          buildFilter: S.optional(__S(455, __c56, 7)),
+          buildFilter: S.optional(__S(1008, __c126, 0)),
           dockerfilePath: S.optional(S.String),
           runtime: S.optional(S.String),
           registryCredentialId: S.optional(S.String),
@@ -12894,7 +11757,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateBuildSourceRequestGit",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           imageUrl: S.optional(S.String),
@@ -12903,16 +11766,20 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateBuildSourceRequestImage",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          git: S.optional(__S(456, __c57, 0)),
-          image: S.optional(__S(457, __c57, 1)),
+          git: S.optional(__S(1009, __c126, 1)),
+          image: S.optional(__S(1010, __c126, 2)),
         }).pipe(T.Http({ method: "PATCH", uri: "/build-sources/{buildSourceId}", code: 200 })),
       ).annotate({ identifier: "UpdateBuildSourceRequest" });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
@@ -12928,16 +11795,24 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateBuildSourceEnvVarRequest",
       });
-    case 4:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dedicatedIpId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          environmentIds: S.optional(__S(8, __c1, 0)),
+          environmentIds: S.optional(__S(1952, __c244, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
       ).annotate({ identifier: "UpdateDedicatedIpRequest" });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           diskId: S.String.pipe(T.Label()),
@@ -12946,14 +11821,36 @@ function __c57(j: number): any {
           mountPath: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/disks/{diskId}", code: 200 })),
       ).annotate({ identifier: "UpdateDiskRequest" });
-    case 6:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          projectId: S.String,
+          protectedStatus: S.optional(S.String),
+          networkIsolationEnabled: S.optional(S.Boolean),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/environments", code: 200 })),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envGroupId: S.String.pipe(T.Label()),
           name: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/env-groups/{envGroupId}", code: 200 })),
       ).annotate({ identifier: "UpdateEnvGroupRequest" });
-    case 7:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envGroupId: S.String.pipe(T.Label()),
@@ -12971,7 +11868,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12989,17 +11886,25 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "UpdateEnvGroupSecretFileRequest",
       });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           networkIsolationEnabled: S.optional(S.Boolean),
           protectedStatus: S.optional(S.String),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
         }).pipe(T.Http({ method: "PATCH", uri: "/environments/{environmentId}", code: 200 })),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -13009,46 +11914,68 @@ function __c58(j: number): any {
           T.Http({ method: "PUT", uri: "/services/{serviceId}/env-vars/{envVarKey}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateEnvVarRequest" });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
-          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+          body: __S(520, __c65, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PUT", uri: "/build-sources/{buildSourceId}/env-vars", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateEnvVarsForBuildSourceRequest",
       });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          body: __S(468, __c58, 4).pipe(T.HttpBody()),
+          body: __S(1096, __c137, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/services/{serviceId}/env-vars", code: 200 })),
       ).annotate({
         identifier: "UpdateEnvVarsForServiceRequest",
       });
-    case 6:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "HeaderInput" });
+    case 1:
+      return S.Array(__S(1104, __c138, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          body: __S(75, __c9, 3).pipe(T.HttpBody()),
+          body: __S(1105, __c138, 1).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/services/{serviceId}/headers", code: 200 })),
       ).annotate({ identifier: "UpdateHeadersRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(471, __c58, 7).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(1632, __c204, 0));
+    case 4:
+      return S.suspend(() => __S(1107, __c138, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateHeadersResponse",
       });
-    case 1:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redisId: S.String.pipe(T.Label()),
@@ -13056,17 +11983,104 @@ function __c59(j: number): any {
           plan: S.optional(S.String),
           maxmemoryPolicy: S.optional(S.String),
           persistenceMode: S.optional(S.String),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
         }).pipe(T.Http({ method: "PATCH", uri: "/key-value/{redisId}", code: 200 })),
       ).annotate({ identifier: "UpdateKeyValueRequest" });
-    case 2:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maintenanceRunID: S.String.pipe(T.Label()),
           scheduledAt: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/maintenance/{maintenanceRunID}", code: 200 })),
       ).annotate({ identifier: "UpdateMaintenanceRequest" });
-    case 3:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ownerId: S.String,
+          plan: S.String,
+          region: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          maxmemoryPolicy: S.optional(S.String),
+          persistenceMode: S.optional(S.String),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/key-value", code: 200 })),
+      ).annotate({ identifier: "CreateKeyValueRequest" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          email: S.String,
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+          twoFactorAuthEnabled: S.optional(S.Boolean),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Owner" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          scheduledAt: S.String,
+          pendingMaintenanceBy: S.optional(S.String),
+          state: S.String,
+        }),
+      ).annotate({ identifier: "Maintenance" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxmemoryPolicy: S.optional(S.String),
+          persistenceMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyValueOptions" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          updatedAt: S.String,
+          status: S.String,
+          region: S.String,
+          plan: S.String,
+          name: S.String,
+          owner: __S(1136, __c142, 0),
+          options: __S(1152, __c144, 0),
+          ipAllowList: __S(1961, __c245, 1),
+          environmentId: S.optional(S.String),
+          version: S.String,
+          maintenance: S.optional(__S(1144, __c143, 0)),
+        }),
+      ).annotate({ identifier: "KeyValueDetail" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Label()),
@@ -13077,7 +12091,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateOwnerLogStreamRequest",
       });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postgresId: S.String.pipe(T.Label()),
@@ -13089,18 +12107,26 @@ function __c59(j: number): any {
           enableHighAvailability: S.optional(S.Boolean),
           datadogAPIKey: S.optional(S.String),
           datadogSite: S.optional(S.String),
-          ipAllowList: S.optional(__S(11, __c1, 3)),
-          readReplicas: S.optional(__S(59, __c7, 3)),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+          readReplicas: S.optional(__S(1273, __c159, 1)),
         }).pipe(T.Http({ method: "PATCH", uri: "/postgres/{postgresId}", code: 200 })),
       ).annotate({ identifier: "UpdatePostgresRequest" });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/projects/{projectId}", code: 200 })),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 6:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registryCredentialId: S.String.pipe(T.Label()),
@@ -13118,7 +12144,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateRegistryCredentialRequest",
       });
-    case 7:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -13131,29 +12161,37 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           buildSourceId: S.String.pipe(T.Label()),
-          body: __S(33, __c4, 1).pipe(T.HttpBody()),
+          body: __S(528, __c66, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PUT", uri: "/build-sources/{buildSourceId}/secret-files", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateSecretFilesForBuildSourceRequest",
       });
-    case 1:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          body: __S(33, __c4, 1).pipe(T.HttpBody()),
+          body: __S(528, __c66, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/services/{serviceId}/secret-files", code: 200 })),
       ).annotate({
         identifier: "UpdateSecretFilesForServiceRequest",
       });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
@@ -13163,24 +12201,32 @@ function __c60(j: number): any {
           autoDeployTrigger: S.optional(S.String),
           repo: S.optional(S.String),
           branch: S.optional(S.String),
-          image: S.optional(__S(73, __c9, 1)),
+          image: S.optional(__S(1384, __c173, 0)),
           name: S.optional(S.String),
-          buildFilter: S.optional(__S(28, __c3, 4)),
+          buildFilter: S.optional(__S(536, __c67, 0)),
           rootDir: S.optional(S.String),
           serviceDetails: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/services/{serviceId}", code: 200 })),
       ).annotate({ identifier: "UpdateServiceRequest" });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           url: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          eventFilter: S.optional(__S(85, __c10, 5)),
+          eventFilter: S.optional(__S(1416, __c177, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhookId}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 4:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.String),
@@ -13192,17 +12238,111 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateWorkflowRequestBuildConfig",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          buildConfig: S.optional(__S(484, __c60, 4)),
+          buildConfig: S.optional(__S(1240, __c155, 0)),
           runCommand: S.optional(S.String),
           autoDeployTrigger: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/workflows/{workflowId}", code: 200 })),
       ).annotate({ identifier: "UpdateWorkflowRequest" });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.optional(S.String),
+          databaseUser: S.optional(S.String),
+          datadogAPIKey: S.optional(S.String),
+          datadogSite: S.optional(S.String),
+          name: S.String,
+          enableHighAvailability: S.optional(S.Boolean),
+          environmentId: S.optional(S.String),
+          ownerId: S.String,
+          plan: S.String,
+          diskSizeGB: S.optional(S.Number),
+          enableDiskAutoscaling: S.optional(S.Boolean),
+          connectionPool: S.optional(S.String),
+          region: S.optional(S.String),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+          readReplicas: S.optional(__S(1273, __c159, 1)),
+          version: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/postgres", code: 200 })),
+      ).annotate({ identifier: "CreatePostgresRequest" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ReadReplica" });
+    case 1:
+      return S.Array(__S(1256, __c157, 0));
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          ipAllowList: __S(1961, __c245, 1),
+          createdAt: S.String,
+          updatedAt: S.String,
+          expiresAt: S.optional(S.String),
+          dashboardUrl: S.String,
+          databaseName: S.String,
+          databaseUser: S.String,
+          environmentId: S.optional(S.String),
+          highAvailabilityEnabled: S.Boolean,
+          maintenance: S.optional(__S(1144, __c143, 0)),
+          name: S.String,
+          owner: __S(1136, __c142, 0),
+          plan: S.String,
+          diskSizeGB: S.optional(S.Number),
+          primaryPostgresID: S.optional(S.String),
+          region: S.String,
+          readReplicas: __S(1257, __c157, 1),
+          role: S.String,
+          status: S.String,
+          version: S.String,
+          suspended: S.String,
+          suspenders: __S(1280, __c160, 0),
+          diskAutoscalingEnabled: S.Boolean,
+          connectionPool: S.String,
+        }),
+      ).annotate({ identifier: "PostgresDetail" });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ReadReplicaInput" });
+    case 1:
+      return S.Array(__S(1272, __c159, 0));
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Label()),
@@ -13212,7 +12352,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateWorkspaceMemberRequest",
       });
-    case 7:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String.pipe(T.Label()),
@@ -13223,11 +12367,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpsertOwnerMetricsStreamRequest",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String,
@@ -13237,7 +12377,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "UpsertOwnerMetricsStreamResponse",
       });
-    case 1:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.String,
@@ -13251,7 +12395,7 @@ function __c61(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateBlueprintRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -13262,34 +12406,1733 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ValidateBlueprintResponseErrorsItem",
       });
+    case 2:
+      return S.Array(__S(1305, __c163, 1));
     case 3:
-      return S.Array(__S(490, __c61, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(8, __c1, 0)),
-          databases: S.optional(__S(8, __c1, 0)),
-          keyValue: S.optional(__S(8, __c1, 0)),
-          envGroups: S.optional(__S(8, __c1, 0)),
-          workflows: S.optional(__S(8, __c1, 0)),
+          services: S.optional(__S(1952, __c244, 0)),
+          databases: S.optional(__S(1952, __c244, 0)),
+          keyValue: S.optional(__S(1952, __c244, 0)),
+          envGroups: S.optional(__S(1952, __c244, 0)),
+          workflows: S.optional(__S(1952, __c244, 0)),
           totalActions: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ValidateBlueprintResponsePlan",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
-          errors: S.optional(__S(491, __c61, 3)),
-          plan: S.optional(__S(492, __c61, 4)),
+          errors: S.optional(__S(1306, __c163, 2)),
+          plan: S.optional(__S(1307, __c163, 3)),
         }),
       ).annotate({
         identifier: "ValidateBlueprintResponse",
       });
   }
 }
-
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgresId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/export", code: 200 })),
+      ).annotate({
+        identifier: "CreatePostgresExportRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgresId: S.String.pipe(T.Label()),
+          username: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/credentials", code: 200 })),
+      ).annotate({
+        identifier: "CreatePostgresUserRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          protectedStatus: S.optional(S.String),
+          networkIsolationEnabled: S.optional(S.Boolean),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+        }),
+      ).annotate({
+        identifier: "ProjectPOSTEnvironmentInput",
+      });
+    case 1:
+      return S.Array(__S(1328, __c166, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ownerId: S.String,
+          environments: __S(1329, __c166, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/projects", code: 200 })),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          updatedAt: S.String,
+          name: S.String,
+          owner: __S(1136, __c142, 0),
+          environmentIds: __S(1952, __c244, 0),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registry: S.String,
+          name: S.String,
+          username: S.String,
+          authToken: S.String,
+          ownerId: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/registrycredentials", code: 200 })),
+      ).annotate({
+        identifier: "CreateRegistryCredentialRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          registry: S.String,
+          username: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "RegistryCredential" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          name: S.String,
+          ownerId: S.String,
+          repo: S.optional(S.String),
+          autoDeploy: S.optional(S.String),
+          autoDeployTrigger: S.optional(S.String),
+          branch: S.optional(S.String),
+          image: S.optional(__S(1384, __c173, 0)),
+          buildFilter: S.optional(__S(536, __c67, 0)),
+          rootDir: S.optional(S.String),
+          envVars: S.optional(__S(520, __c65, 0)),
+          secretFiles: S.optional(__S(528, __c66, 0)),
+          environmentId: S.optional(S.String),
+          serviceDetails: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/services", code: 200 })),
+      ).annotate({ identifier: "CreateServiceRequest" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          buildSourceId: S.optional(S.String),
+          autoDeploy: S.String,
+          autoDeployTrigger: S.optional(S.String),
+          branch: S.optional(S.String),
+          buildFilter: S.optional(__S(536, __c67, 0)),
+          createdAt: S.String,
+          dashboardUrl: S.String,
+          environmentId: S.optional(S.String),
+          imagePath: S.optional(S.String),
+          name: S.String,
+          notifyOnFail: S.String,
+          ownerId: S.String,
+          registryCredential: S.optional(__S(537, __c67, 1)),
+          repo: S.optional(S.String),
+          rootDir: S.String,
+          slug: S.String,
+          suspended: S.String,
+          suspenders: __S(1280, __c160, 0),
+          type: S.String,
+          updatedAt: S.String,
+          serviceDetails: S.Unknown,
+        }),
+      ).annotate({ identifier: "Service" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(__S(1368, __c171, 0)),
+          deployId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceAndDeploy" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          registryCredentialId: S.optional(S.String),
+          imagePath: S.String,
+        }),
+      ).annotate({ identifier: "Image" });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.String,
+          input: S.Unknown as any as S.Schema<CreateTaskRequestInput>,
+          idempotencyKey: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/task-runs", code: 200 })),
+      ).annotate({ identifier: "CreateTaskRequest" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskRunId: S.optional(S.String),
+          attempt: S.Number,
+          status: S.String,
+          enqueuedAt: S.optional(S.String),
+          startedAt: S.String,
+          completedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateTaskResponseAttemptsItem",
+      });
+    case 1:
+      return S.Array(__S(1400, __c175, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          taskId: S.String,
+          status: S.String,
+          startedAt: S.optional(S.String),
+          completedAt: S.optional(S.String),
+          parentTaskRunId: S.String,
+          parentTaskAttempt: S.optional(S.Number),
+          rootTaskRunId: S.String,
+          retries: S.Number,
+          attempts: __S(1401, __c175, 1),
+        }),
+      ).annotate({ identifier: "CreateTaskResponse" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          url: S.String,
+          name: S.String,
+          enabled: S.Boolean,
+          eventFilter: __S(1280, __c160, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+          name: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+          enabled: S.Boolean,
+          eventFilter: __S(1416, __c177, 0),
+        }),
+      ).annotate({ identifier: "CreateWebhookResponse" });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(S.String),
+          buildCommand: S.String,
+          repo: S.String,
+          rootDir: S.optional(S.String),
+          runtime: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateWorkflowRequestBuildConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ownerId: S.String,
+          buildConfig: __S(1424, __c178, 0),
+          runCommand: S.String,
+          region: S.String,
+          autoDeployTrigger: S.optional(S.String),
+          envVars: S.optional(__S(520, __c65, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/workflows", code: 200 })),
+      ).annotate({ identifier: "CreateWorkflowRequest" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(S.String),
+          buildCommand: S.String,
+          repo: S.String,
+          rootDir: S.optional(S.String),
+          runtime: S.String,
+        }),
+      ).annotate({ identifier: "BuildConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          ownerId: S.String,
+          createdAt: S.String,
+          updatedAt: S.String,
+          buildConfig: __S(1432, __c179, 0),
+          runCommand: S.String,
+          region: S.String,
+          environmentId: S.optional(S.String),
+          slug: S.optional(S.String),
+          autoDeployTrigger: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateWorkflowResponse" });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.String,
+          commit: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/workflowversions", code: 200 })),
+      ).annotate({
+        identifier: "CreateWorkflowVersionRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}/autoscaling", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAutoscalingConfigRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAutoscalingConfigResponse",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/build-sources/{buildSourceId}", code: 200 })),
+      ).annotate({ identifier: "DeleteBuildSourceRequest" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/build-sources/{buildSourceId}/env-vars/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBuildSourceEnvVarRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBuildSourceSecretFileRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteBuildSourceSecretFileResponse",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          customDomainNameOrID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/services/{serviceId}/custom-domains/{customDomainNameOrID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomDomainRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dedicatedIpId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
+      ).annotate({ identifier: "DeleteDedicatedIpRequest" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          diskId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/disks/{diskId}", code: 200 })),
+      ).annotate({ identifier: "DeleteDiskRequest" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/env-groups/{envGroupId}", code: 200 })),
+      ).annotate({ identifier: "DeleteEnvGroupRequest" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          sizeGB: S.Number,
+          mountPath: S.String,
+          serviceId: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/disks", code: 200 })),
+      ).annotate({ identifier: "AddDiskRequest" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          sizeGB: S.Number,
+          mountPath: S.String,
+          serviceId: S.optional(S.String),
+          createdAt: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "AddDiskResponse" });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/env-groups/{envGroupId}/env-vars/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvGroupEnvVarRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/env-groups/{envGroupId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvGroupSecretFileRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/environments/{environmentId}", code: 200 })),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/services/{serviceId}/env-vars/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEnvVarRequest" });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          headerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/services/{serviceId}/headers/{headerId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteHeaderRequest" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/key-value/{redisId}", code: 200 })),
+      ).annotate({ identifier: "DeleteKeyValueRequest" });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteOwnerLogStreamRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/metrics-stream/{ownerId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteOwnerMetricsStreamRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgresId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/postgres/{postgresId}", code: 200 })),
+      ).annotate({ identifier: "DeletePostgresRequest" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgresId: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/postgres/{postgresId}/credentials/{username}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePostgresUserRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          path: S.String,
+          name: S.String,
+          value: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/headers", code: 200 })),
+      ).annotate({ identifier: "AddHeadersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(1632, __c204, 0)),
+        }),
+      ).annotate({ identifier: "AddHeadersResponse" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          path: S.String,
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Header" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/projects/{projectId}", code: 200 })),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registryCredentialId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/registrycredentials/{registryCredentialId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegistryCredentialRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/logs/streams/resource/{resourceId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteResourceLogStreamRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          routeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/services/{serviceId}/routes/{routeId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteRouteRequest" });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/services/{serviceId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSecretFileRequest" });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}", code: 200 })),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhookId}", code: 200 })),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/workflows/{workflowId}", code: 200 })),
+      ).annotate({ identifier: "DeleteWorkflowRequest" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          deployId: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/rollback", code: 200 })),
+      ).annotate({ identifier: "DeployRollbackRequest" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blueprintId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/blueprints/{blueprintId}", code: 200 })),
+      ).annotate({
+        identifier: "DisconnectBlueprintRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+          content: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrUpdateBuildSourceSecretFileRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          content: S.String,
+        }),
+      ).annotate({ identifier: "SecretFile" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgresId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/failover", code: 200 })),
+      ).annotate({ identifier: "FailoverPostgresRequest" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/active-connections", code: 200 })),
+      ).annotate({
+        identifier: "GetActiveConnectionsRequest",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1769, __c221, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetActiveConnectionsResponse",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "GetActiveConnectionsResponseBodyItemLabelsItem",
+      });
+    case 1:
+      return S.Array(__S(1760, __c220, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.String,
+          value: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetActiveConnectionsResponseBodyItemValuesItem",
+      });
+    case 3:
+      return S.Array(__S(1762, __c220, 2));
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: __S(1761, __c220, 1),
+          values: __S(1763, __c220, 3),
+          unit: S.String,
+        }),
+      ).annotate({
+        identifier: "GetActiveConnectionsResponseBodyItem",
+      });
+    case 1:
+      return S.Array(__S(1768, __c221, 0));
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/bandwidth", code: 200 })),
+      ).annotate({ identifier: "GetBandwidthRequest" });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1769, __c221, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetBandwidthResponse",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/bandwidth-sources", code: 200 })),
+      ).annotate({
+        identifier: "GetBandwidthSourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+          trafficSource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetBandwidthSourcesResponseDataItemLabels",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.Number),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetBandwidthSourcesResponseDataItemValuesItem",
+      });
+    case 3:
+      return S.Array(__S(1794, __c224, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(1793, __c224, 1)),
+          values: S.optional(__S(1795, __c224, 3)),
+        }),
+      ).annotate({
+        identifier: "GetBandwidthSourcesResponseDataItem",
+      });
+    case 5:
+      return S.Array(__S(1796, __c224, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1797, __c224, 5)),
+        }),
+      ).annotate({
+        identifier: "GetBandwidthSourcesResponse",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blueprintId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/blueprints/{blueprintId}", code: 200 })),
+      ).annotate({ identifier: "GetBlueprintRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "GetBlueprintResponseResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(1801, __c225, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          status: S.String,
+          autoSync: S.Boolean,
+          repo: S.String,
+          branch: S.String,
+          path: S.String,
+          lastSync: S.optional(S.String),
+          resources: __S(1802, __c225, 2),
+        }),
+      ).annotate({ identifier: "GetBlueprintResponse" });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/build-sources/{buildSourceId}", code: 200 })),
+      ).annotate({ identifier: "GetBuildSourceRequest" });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          ownerId: S.String,
+          projectId: S.optional(S.String),
+          git: S.optional(__S(545, __c68, 1)),
+          image: S.optional(__S(544, __c68, 0)),
+          createdAt: S.String,
+          updatedAt: S.String,
+          serviceLinks: __S(546, __c68, 2),
+        }),
+      ).annotate({ identifier: "Schema12" });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/build-sources/{buildSourceId}/env-vars/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBuildSourceEnvVarRequest",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/build-sources/{buildSourceId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBuildSourceSecretFileRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+          aggregationMethod: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu", code: 200 })),
+      ).annotate({ identifier: "GetCpuRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          labels: __S(1761, __c220, 1),
+          values: __S(1763, __c220, 3),
+          unit: S.String,
+        }),
+      ).annotate({ identifier: "GetCpuResponseBodyItem" });
+    case 2:
+      return S.Array(__S(1841, __c230, 1));
+    case 3:
+      return S.suspend(() => __S(1842, __c230, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetCpuResponse",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu-limit", code: 200 })),
+      ).annotate({ identifier: "GetCpuLimitRequest" });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+          content: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/services/{serviceId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrUpdateSecretFileRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/cpu-target", code: 200 })),
+      ).annotate({ identifier: "GetCpuTargetRequest" });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          customDomainNameOrID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/services/{serviceId}/custom-domains/{customDomainNameOrID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetCustomDomainRequest" });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dedicatedIpId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
+      ).annotate({ identifier: "GetDedicatedIpRequest" });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          deployId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/services/{serviceId}/deploys/{deployId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetDeployRequest" });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          diskId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/disks/{diskId}", code: 200 })),
+      ).annotate({ identifier: "GetDiskRequest" });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/disk-capacity", code: 200 })),
+      ).annotate({ identifier: "GetDiskCapacityRequest" });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/disk-usage", code: 200 })),
+      ).annotate({ identifier: "GetDiskUsageRequest" });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/env-groups/{envGroupId}", code: 200 })),
+      ).annotate({ identifier: "GetEnvGroupRequest" });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/env-groups/{envGroupId}/env-vars/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetEnvGroupEnvVarRequest" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envGroupId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/env-groups/{envGroupId}/secret-files/{envVarKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEnvGroupSecretFileRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          resourceIds: __S(1952, __c244, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/environments/{environmentId}/resources", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddResourcesToEnvironmentRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrBlock: S.String,
+          description: S.String,
+        }),
+      ).annotate({ identifier: "CidrBlockAndDescription" });
+    case 1:
+      return S.Array(__S(1960, __c245, 0));
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          projectId: S.String,
+          databasesIds: __S(1952, __c244, 0),
+          ipAllowList: S.optional(__S(1961, __c245, 1)),
+          redisIds: __S(1952, __c244, 0),
+          serviceIds: __S(1952, __c244, 0),
+          envGroupIds: __S(1952, __c244, 0),
+          protectedStatus: S.String,
+          networkIsolationEnabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "Environment" });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/environments/{environmentId}", code: 200 })),
+      ).annotate({ identifier: "GetEnvironmentRequest" });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          envVarKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/services/{serviceId}/env-vars/{envVarKey}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetEnvVarRequest" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildSourceId: S.String.pipe(T.Label()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/build-sources/{buildSourceId}/env-vars", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetEnvVarsForBuildSourceRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envVar: __S(928, __c116, 0),
+          cursor: S.String,
+        }),
+      ).annotate({ identifier: "EnvVarWithCursor" });
+    case 1:
+      return S.Array(__S(2000, __c250, 0));
+    case 2:
+      return S.suspend(() => __S(2001, __c250, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetEnvVarsForBuildSourceResponse",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/env-vars", code: 200 })),
+      ).annotate({
+        identifier: "GetEnvVarsForServiceRequest",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/events/{eventId}", code: 200 })),
+      ).annotate({ identifier: "GetEventRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          timestamp: S.String,
+          serviceId: S.String,
+          type: S.String,
+          details: S.Unknown,
+        }),
+      ).annotate({ identifier: "GetEventResponse" });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          host: S.optional(S.String.pipe(T.Query())),
+          path: S.optional(S.String.pipe(T.Query())),
+          quantile: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/http-latency", code: 200 })),
+      ).annotate({ identifier: "GetHttpLatencyRequest" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          host: S.optional(S.String.pipe(T.Query())),
+          path: S.optional(S.String.pipe(T.Query())),
+          aggregateBy: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/http-requests", code: 200 })),
+      ).annotate({ identifier: "GetHttpRequestsRequest" });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/instance-count", code: 200 })),
+      ).annotate({ identifier: "GetInstanceCountRequest" });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          jobId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/jobs/{jobId}", code: 200 })),
+      ).annotate({ identifier: "GetJobRequest" });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}", code: 200 })),
+      ).annotate({ identifier: "GetKeyValueRequest" });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String.pipe(T.Label()),
+          type: S.String,
+          source: S.String,
+          destination: S.String,
+          priority: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/routes", code: 200 })),
+      ).annotate({ identifier: "AddRouteRequest" });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          source: S.String,
+          destination: S.String,
+          priority: S.Number,
+        }),
+      ).annotate({ identifier: "Route" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}/connection-info", code: 200 })),
+      ).annotate({
+        identifier: "GetKeyValueConnectionInfoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          internalConnectionString: S.String,
+          externalConnectionString: S.String,
+          cliCommand: S.String,
+        }),
+      ).annotate({ identifier: "KeyValueConnectionInfo" });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceRunID: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/maintenance/{maintenanceRunID}", code: 200 })),
+      ).annotate({ identifier: "GetMaintenanceRequest" });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          scheduledAt: S.String,
+          pendingMaintenanceBy: S.optional(S.String),
+          state: S.String,
+          resourceId: S.String,
+        }),
+      ).annotate({ identifier: "GetMaintenanceResponse" });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory", code: 200 })),
+      ).annotate({ identifier: "GetMemoryRequest" });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory-limit", code: 200 })),
+      ).annotate({ identifier: "GetMemoryLimitRequest" });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resolutionSeconds: S.optional(S.Number.pipe(T.Query())),
+          resource: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          instance: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics/memory-target", code: 200 })),
+      ).annotate({ identifier: "GetMemoryTargetRequest" });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}", code: 200 })),
+      ).annotate({ identifier: "GetOwnerRequest" });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
+      ).annotate({ identifier: "GetOwnerLogStreamRequest" });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          preview: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOwnerLogStreamResponse",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}/members", code: 200 })),
+      ).annotate({ identifier: "GetOwnerMembersRequest" });
+    case 1:
+      return S.Array(__S(2160, __c270, 0));
+    case 2:
+      return S.suspend(() => __S(2153, __c269, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOwnerMembersResponse",
+      });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String,
+          name: S.String,
+          email: S.String,
+          status: S.String,
+          role: S.String,
+          mfaEnabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "TeamMember" });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/metrics-stream/{ownerId}", code: 200 })),
+      ).annotate({
+        identifier: "GetOwnerMetricsStreamRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          provider: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "Schema10" });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/notification-settings/owners/{ownerId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOwnerNotificationSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.String,
+          slackEnabled: S.Boolean,
+          emailEnabled: S.Boolean,
+          previewNotificationsEnabled: S.Boolean,
+          notificationsToSend: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOwnerNotificationSettingsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

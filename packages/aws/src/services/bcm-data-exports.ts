@@ -141,7 +141,7 @@ export class ValidationException
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(45, __c5, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(81, __c10, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -389,8 +389,8 @@ export const createExport: API.OperationMethod<
   CreateExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateExportRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateExportResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateExportRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateExportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -418,8 +418,8 @@ export const deleteExport: API.OperationMethod<
   DeleteExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteExportRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteExportResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteExportRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteExportResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -446,8 +446,8 @@ export const getExecution: API.OperationMethod<
   GetExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetExecutionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetExecutionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetExecutionRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetExecutionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -474,8 +474,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetExportRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetExportResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetExportResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -501,8 +501,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetTableRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetTableResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetTableRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetTableResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -525,8 +525,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListExecutionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListExecutionsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListExecutionsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ListExecutionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -559,8 +559,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListExportsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListExportsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListExportsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListExportsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -588,8 +588,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Table
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListTablesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListTablesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListTablesRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ListTablesResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -618,8 +618,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -648,8 +648,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -678,8 +678,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -707,8 +707,8 @@ export const updateExport: API.OperationMethod<
   UpdateExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateExportRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateExportResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateExportRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateExportResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -724,138 +724,12 @@ export const updateExport: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(0, __c0, 0).pipe(S.optional));
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          QueryStatement: S.String,
-          TableConfigurations: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "DataQuery" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          OutputType: S.String,
-          Format: S.String,
-          Compression: S.String,
-          Overwrite: S.String,
-        }),
-      ).annotate({ identifier: "S3OutputConfigurations" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          S3Bucket: S.String,
-          S3BucketOwner: S.optional(S.String),
-          S3Prefix: S.String,
-          S3Region: S.String,
-          S3OutputConfigurations: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "S3Destination" });
-    case 5:
-      return S.suspend(() => S.Struct({ S3Destination: __S(4, __c0, 4) })).annotate({
-        identifier: "DestinationConfigurations",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Frequency: S.String })).annotate({
-        identifier: "RefreshCadence",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ExportArn: S.optional(S.String),
-          Name: S.String,
-          Description: S.optional(S.String),
-          DataQuery: __S(2, __c0, 2),
-          DestinationConfigurations: __S(5, __c0, 5),
-          RefreshCadence: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "Export" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "ResourceTag",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Export: __S(7, __c0, 7), ResourceTags: S.optional(__S(9, __c1, 1)) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateExportRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ ExportArn: S.optional(S.String) })).annotate({
-        identifier: "CreateExportResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ExportArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteExportRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ExportArn: S.String, ExecutionId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetExecutionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          StatusCode: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "ExecutionStatus" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ExecutionId: S.optional(S.String),
-          Export: S.optional(__S(7, __c0, 7)),
-          ExecutionStatus: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "GetExecutionResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ExportArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetExportRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          StatusCode: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastRefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "ExportStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Export: S.optional(__S(7, __c0, 7)),
-          ExportStatus: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetExportResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ TableName: S.String, TableProperties: S.optional(__S(0, __c0, 0)) }).pipe(
+        S.Struct({ TableName: S.String, TableProperties: S.optional(__S(112, __c14, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTableRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -863,18 +737,22 @@ function __c2(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Column" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
           Description: S.optional(S.String),
-          TableProperties: S.optional(__S(0, __c0, 0)),
-          Schema: S.optional(__S(21, __c2, 5)),
+          TableProperties: S.optional(__S(112, __c14, 0)),
+          Schema: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "GetTableResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ExportArn: S.String,
@@ -882,51 +760,46 @@ function __c2(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListExecutionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ExecutionId: S.String, ExecutionStatus: __S(144, __c18, 0) }),
+      ).annotate({ identifier: "ExecutionReference" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Executions: S.optional(__S(10, __c1, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExecutionsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListExportsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ExportArn: S.String, ExportName: S.String, ExportStatus: __S(160, __c20, 0) }),
+      ).annotate({ identifier: "ExportReference" });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Exports: S.optional(__S(18, __c2, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExportsResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ExecutionId: S.String, ExecutionStatus: __S(14, __c1, 6) }),
-      ).annotate({ identifier: "ExecutionReference" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Executions: S.optional(__S(25, __c3, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListExecutionsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListExportsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ExportArn: S.String, ExportName: S.String, ExportStatus: __S(17, __c2, 1) }),
-      ).annotate({ identifier: "ExportReference" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Exports: S.optional(__S(29, __c3, 5)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListExportsResponse" });
-    case 7:
-      return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTablesRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -937,22 +810,32 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TablePropertyDescription" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
           Description: S.optional(S.String),
-          TableProperties: S.optional(__S(34, __c4, 2)),
+          TableProperties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Table" });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Tables: S.optional(__S(36, __c4, 4)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tables: S.optional(__S(28, __c3, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
@@ -962,47 +845,217 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceTags: S.optional(__S(9, __c1, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ ResourceTags: S.optional(__S(97, __c12, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, ResourceTags: __S(9, __c1, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, ResourceTags: __S(97, __c12, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, ResourceTagKeys: __S(32, __c4, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ExportArn: S.String, Export: __S(7, __c0, 7) }).pipe(
+        S.Struct({ ExportArn: S.String, Export: __S(126, __c15, 6) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateExportRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
+    case 1:
+      return S.Array(__S(80, __c10, 0));
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Export: __S(126, __c15, 6), ResourceTags: S.optional(__S(97, __c12, 1)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateExportRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "ResourceTag",
+      });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ExportArn: S.optional(S.String) })).annotate({
+        identifier: "CreateExportResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(112, __c14, 0).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ QueryStatement: S.String, TableConfigurations: S.optional(__S(120, __c15, 0)) }),
+      ).annotate({ identifier: "DataQuery" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          OutputType: S.String,
+          Format: S.String,
+          Compression: S.String,
+          Overwrite: S.String,
+        }),
+      ).annotate({ identifier: "S3OutputConfigurations" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          S3Bucket: S.String,
+          S3BucketOwner: S.optional(S.String),
+          S3Prefix: S.String,
+          S3Region: S.String,
+          S3OutputConfigurations: __S(122, __c15, 2),
+        }),
+      ).annotate({ identifier: "S3Destination" });
+    case 4:
+      return S.suspend(() => S.Struct({ S3Destination: __S(123, __c15, 3) })).annotate({
+        identifier: "DestinationConfigurations",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ Frequency: S.String })).annotate({
+        identifier: "RefreshCadence",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ExportArn: S.optional(S.String),
+          Name: S.String,
+          Description: S.optional(S.String),
+          DataQuery: __S(121, __c15, 1),
+          DestinationConfigurations: __S(124, __c15, 4),
+          RefreshCadence: __S(125, __c15, 5),
+        }),
+      ).annotate({ identifier: "Export" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExportArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteExportRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExportArn: S.String, ExecutionId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetExecutionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ExecutionId: S.optional(S.String),
+          Export: S.optional(__S(126, __c15, 6)),
+          ExecutionStatus: S.optional(__S(144, __c18, 0)),
+        }),
+      ).annotate({ identifier: "GetExecutionResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StatusCode: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ExecutionStatus" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExportArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetExportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Export: S.optional(__S(126, __c15, 6)),
+          ExportStatus: S.optional(__S(160, __c20, 0)),
+        }),
+      ).annotate({ identifier: "GetExportResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StatusCode: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastRefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ExportStatus" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -420,8 +420,8 @@ export const appendStream: API.OperationMethod<
   AppendStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AppendStreamRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AppendStreamResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AppendStreamRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AppendStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -435,8 +435,8 @@ export const chatUnfurl: API.OperationMethod<
   ChatUnfurlError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ChatUnfurlRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ChatUnfurlResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ChatUnfurlRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ChatUnfurlResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -450,8 +450,8 @@ export const deleteChat: API.OperationMethod<
   DeleteChatError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteChatRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteChatResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteChatRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteChatResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -465,8 +465,8 @@ export const deleteScheduledMessage: API.OperationMethod<
   DeleteScheduledMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteScheduledMessageRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteScheduledMessageResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteScheduledMessageRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<DeleteScheduledMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -480,8 +480,8 @@ export const getPermalink: API.OperationMethod<
   GetPermalinkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetPermalinkRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPermalinkResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetPermalinkRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetPermalinkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const listScheduledMessages: API.PaginatedOperationMethod<
   ListScheduledMessagesResponseScheduledMessagesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ListScheduledMessagesRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<ListScheduledMessagesResponse>,
+    input: __S(160, __c10, 0) as any as S.Schema<ListScheduledMessagesRequest>,
+    output: __S(164, __c10, 4) as any as S.Schema<ListScheduledMessagesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const meMessage: API.OperationMethod<
   MeMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<MeMessageRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<MeMessageResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<MeMessageRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<MeMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -536,8 +536,8 @@ export const postEphemeral: API.OperationMethod<
   PostEphemeralError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PostEphemeralRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PostEphemeralResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<PostEphemeralRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<PostEphemeralResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -551,8 +551,8 @@ export const postMessage: API.OperationMethod<
   PostMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PostMessageRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PostMessageResponse>,
+  input: __S(210, __c13, 2) as any as S.Schema<PostMessageRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<PostMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -566,8 +566,8 @@ export const scheduleMessage: API.OperationMethod<
   ScheduleMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ScheduleMessageRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ScheduleMessageResponse>,
+  input: __S(226, __c14, 2) as any as S.Schema<ScheduleMessageRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<ScheduleMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -581,8 +581,8 @@ export const startStream: API.OperationMethod<
   StartStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<StartStreamRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StartStreamResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<StartStreamRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<StartStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -596,8 +596,8 @@ export const stopStream: API.OperationMethod<
   StopStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<StopStreamRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<StopStreamResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<StopStreamRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<StopStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -611,8 +611,8 @@ export const updateChat: API.OperationMethod<
   UpdateChatError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UpdateChatRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateChatResponse>,
+  input: __S(102, __c6, 6) as any as S.Schema<UpdateChatRequest>,
+  output: __S(104, __c6, 8) as any as S.Schema<UpdateChatResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -622,17 +622,25 @@ export const updateChat: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
-          chunks: S.optional(__S(0, __c0, 0)),
+          chunks: S.optional(__S(16, __c1, 0)),
           ts: S.String,
           markdown_text: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/chat.appendStream", code: 200 })),
       ).annotate({ identifier: "AppendStreamRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -640,7 +648,11 @@ function __c0(j: number): any {
           ts: S.String,
         }),
       ).annotate({ identifier: "AppendStreamResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String),
@@ -654,235 +666,21 @@ function __c0(j: number): any {
           source: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/chat.unfurl", code: 200 })),
       ).annotate({ identifier: "ChatUnfurlRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "ChatUnfurlResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          as_user: S.optional(S.Boolean),
-          channel: S.String,
-          ts: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/chat.delete", code: 200 })),
-      ).annotate({ identifier: "DeleteChatRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          as_user: S.optional(S.Boolean),
-          channel: S.String,
-          scheduled_message_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/chat.deleteScheduledMessage", code: 200 })),
-      ).annotate({
-        identifier: "DeleteScheduledMessageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "DeleteScheduledMessageResponse",
-      });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          channel: S.String.pipe(T.Query()),
-          message_ts: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/chat.getPermalink", code: 200 })),
-      ).annotate({ identifier: "GetPermalinkRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          permalink: S.String,
           channel: S.String,
-        }),
-      ).annotate({ identifier: "GetPermalinkResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.String),
-          cursor: S.optional(S.String),
-          latest: S.optional(S.String),
-          limit: S.optional(S.Number),
-          oldest: S.optional(S.String),
-          team_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/chat.scheduledMessages.list", code: 200 })),
-      ).annotate({
-        identifier: "ListScheduledMessagesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          channel_id: S.String,
-          post_at: S.Number,
-          date_created: S.Number,
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListScheduledMessagesResponseScheduledMessagesItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListScheduledMessagesResponseResponseMetadata",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          scheduled_messages: __S(12, __c1, 4),
-          response_metadata: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "ListScheduledMessagesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          text: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/chat.meMessage", code: 200 })),
-      ).annotate({ identifier: "MeMessageRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          ts: S.optional(S.String),
-          channel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MeMessageResponse" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          as_user: S.optional(S.Boolean),
-          attachments: S.optional(__S(19, __c2, 3)),
-          blocks: S.optional(__S(20, __c2, 4)),
-          channel: S.String,
-          icon_emoji: S.optional(S.String),
-          icon_url: S.optional(S.String),
-          link_names: S.optional(S.Boolean),
-          markdown_text: S.optional(S.String),
-          metadata: S.optional(S.NullOr(S.String)),
-          parse: S.optional(S.NullOr(S.String)),
-          text: S.optional(S.NullOr(S.String)),
-          thread_ts: S.optional(S.NullOr(S.String)),
-          user: S.String,
-          username: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/chat.postEphemeral", code: 200 })),
-      ).annotate({ identifier: "PostEphemeralRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          message_ts: S.String,
-        }),
-      ).annotate({ identifier: "PostEphemeralResponse" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          as_user: S.optional(S.Boolean),
-          attachments: S.optional(__S(23, __c2, 7)),
-          blocks: S.optional(__S(24, __c3, 0)),
-          channel: S.String,
-          current_draft_last_updated_ts: S.optional(S.String),
-          icon_emoji: S.optional(S.NullOr(S.String)),
-          icon_url: S.optional(S.NullOr(S.String)),
-          link_names: S.optional(S.Boolean),
-          markdown_text: S.optional(S.String),
-          metadata: S.optional(S.NullOr(S.String)),
-          mrkdwn: S.optional(S.Boolean),
-          parse: S.optional(S.NullOr(S.String)),
-          reply_broadcast: S.optional(S.Boolean),
-          text: S.optional(S.NullOr(S.String)),
-          thread_ts: S.optional(S.NullOr(S.String)),
-          unfurl_links: S.optional(S.Boolean),
-          unfurl_media: S.optional(S.Boolean),
-          username: S.optional(S.NullOr(S.String)),
-          unfurl_app_links: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/chat.postMessage", code: 200 })),
-      ).annotate({ identifier: "PostMessageRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.String,
-          ts: S.String,
-          message: S.optional(S.Unknown),
-          is_duplicate: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PostMessageResponse" });
-    case 3:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          as_user: S.optional(S.Boolean),
-          attachments: S.optional(__S(27, __c3, 3)),
-          blocks: S.optional(__S(28, __c3, 4)),
-          channel: S.String,
-          link_names: S.optional(S.Boolean),
-          markdown_text: S.optional(S.String),
-          parse: S.optional(S.String),
-          post_at: S.Number,
-          reply_broadcast: S.optional(S.Boolean),
-          text: S.optional(S.String),
-          thread_ts: S.optional(S.String),
-          unfurl_links: S.optional(S.Boolean),
-          unfurl_media: S.optional(S.Boolean),
-          metadata: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/chat.scheduleMessage", code: 200 })),
-      ).annotate({ identifier: "ScheduleMessageRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.String,
-          post_at: S.Number,
-          scheduled_message_id: S.String,
-          message: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "ScheduleMessageResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          chunks: S.optional(__S(0, __c0, 0)),
+          chunks: S.optional(__S(16, __c1, 0)),
           markdown_text: S.optional(S.String),
           thread_ts: S.optional(S.String),
           recipient_user_id: S.optional(S.String),
@@ -895,7 +693,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "StartStreamRequest" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -918,6 +716,14 @@ function __c4(j: number): any {
           message: S.Unknown,
         }),
       ).annotate({ identifier: "StopStreamResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(240, __c15, 0));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 3:
@@ -925,55 +731,288 @@ function __c4(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 6:
       return S.Array(S.String);
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          as_user: S.optional(S.NullOr(__S(34, __c4, 2))),
-          attachments: S.optional(__S(35, __c4, 3)),
+          as_user: S.optional(S.NullOr(__S(97, __c6, 1))),
+          attachments: S.optional(__S(98, __c6, 2)),
           unfurled_attachments: S.optional(S.NullOr(S.String)),
-          blocks: S.optional(__S(36, __c4, 4)),
+          blocks: S.optional(__S(99, __c6, 3)),
           markdown_text: S.optional(S.String),
           metadata: S.optional(S.NullOr(S.String)),
           channel: S.String,
-          link_names: S.optional(S.NullOr(__S(37, __c4, 5))),
+          link_names: S.optional(S.NullOr(__S(100, __c6, 4))),
           parse: S.optional(S.NullOr(S.String)),
           text: S.optional(S.NullOr(S.String)),
           ts: S.String,
           reply_broadcast: S.optional(S.Boolean),
-          file_ids: S.optional(__S(38, __c4, 6)),
+          file_ids: S.optional(__S(101, __c6, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/chat.update", code: 200 })),
       ).annotate({ identifier: "UpdateChatRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           text: S.String,
           blocks: S.optional(S.Unknown),
-          attachments: S.optional(__S(18, __c2, 2)),
-          metadata: S.optional(__S(17, __c2, 1)),
+          attachments: S.optional(__S(96, __c6, 0)),
+          metadata: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({
         identifier: "UpdateChatResponseMessage",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           channel: S.String,
           ts: S.String,
           text: S.String,
-          message: __S(40, __c5, 0),
+          message: __S(103, __c6, 7),
         }),
       ).annotate({ identifier: "UpdateChatResponse" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          as_user: S.optional(S.Boolean),
+          channel: S.String,
+          ts: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/chat.delete", code: 200 })),
+      ).annotate({ identifier: "DeleteChatRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          as_user: S.optional(S.Boolean),
+          channel: S.String,
+          scheduled_message_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/chat.deleteScheduledMessage", code: 200 })),
+      ).annotate({
+        identifier: "DeleteScheduledMessageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "DeleteScheduledMessageResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String.pipe(T.Query()),
+          message_ts: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/chat.getPermalink", code: 200 })),
+      ).annotate({ identifier: "GetPermalinkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          permalink: S.String,
+          channel: S.String,
+        }),
+      ).annotate({ identifier: "GetPermalinkResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.String),
+          cursor: S.optional(S.String),
+          latest: S.optional(S.String),
+          limit: S.optional(S.Number),
+          oldest: S.optional(S.String),
+          team_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/chat.scheduledMessages.list", code: 200 })),
+      ).annotate({
+        identifier: "ListScheduledMessagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          channel_id: S.String,
+          post_at: S.Number,
+          date_created: S.Number,
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListScheduledMessagesResponseScheduledMessagesItem",
+      });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListScheduledMessagesResponseResponseMetadata",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          scheduled_messages: __S(162, __c10, 2),
+          response_metadata: S.optional(__S(163, __c10, 3)),
+        }),
+      ).annotate({
+        identifier: "ListScheduledMessagesResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          text: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/chat.meMessage", code: 200 })),
+      ).annotate({ identifier: "MeMessageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          ts: S.optional(S.String),
+          channel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MeMessageResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          as_user: S.optional(S.Boolean),
+          attachments: S.optional(__S(192, __c12, 0)),
+          blocks: S.optional(__S(193, __c12, 1)),
+          channel: S.String,
+          icon_emoji: S.optional(S.String),
+          icon_url: S.optional(S.String),
+          link_names: S.optional(S.Boolean),
+          markdown_text: S.optional(S.String),
+          metadata: S.optional(S.NullOr(S.String)),
+          parse: S.optional(S.NullOr(S.String)),
+          text: S.optional(S.NullOr(S.String)),
+          thread_ts: S.optional(S.NullOr(S.String)),
+          user: S.String,
+          username: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/chat.postEphemeral", code: 200 })),
+      ).annotate({ identifier: "PostEphemeralRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          message_ts: S.String,
+        }),
+      ).annotate({ identifier: "PostEphemeralResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          as_user: S.optional(S.Boolean),
+          attachments: S.optional(__S(208, __c13, 0)),
+          blocks: S.optional(__S(209, __c13, 1)),
+          channel: S.String,
+          current_draft_last_updated_ts: S.optional(S.String),
+          icon_emoji: S.optional(S.NullOr(S.String)),
+          icon_url: S.optional(S.NullOr(S.String)),
+          link_names: S.optional(S.Boolean),
+          markdown_text: S.optional(S.String),
+          metadata: S.optional(S.NullOr(S.String)),
+          mrkdwn: S.optional(S.Boolean),
+          parse: S.optional(S.NullOr(S.String)),
+          reply_broadcast: S.optional(S.Boolean),
+          text: S.optional(S.NullOr(S.String)),
+          thread_ts: S.optional(S.NullOr(S.String)),
+          unfurl_links: S.optional(S.Boolean),
+          unfurl_media: S.optional(S.Boolean),
+          username: S.optional(S.NullOr(S.String)),
+          unfurl_app_links: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/chat.postMessage", code: 200 })),
+      ).annotate({ identifier: "PostMessageRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.String,
+          ts: S.String,
+          message: S.optional(S.Unknown),
+          is_duplicate: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PostMessageResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          as_user: S.optional(S.Boolean),
+          attachments: S.optional(__S(224, __c14, 0)),
+          blocks: S.optional(__S(225, __c14, 1)),
+          channel: S.String,
+          link_names: S.optional(S.Boolean),
+          markdown_text: S.optional(S.String),
+          parse: S.optional(S.String),
+          post_at: S.Number,
+          reply_broadcast: S.optional(S.Boolean),
+          text: S.optional(S.String),
+          thread_ts: S.optional(S.String),
+          unfurl_links: S.optional(S.Boolean),
+          unfurl_media: S.optional(S.Boolean),
+          metadata: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/chat.scheduleMessage", code: 200 })),
+      ).annotate({ identifier: "ScheduleMessageRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.String,
+          post_at: S.Number,
+          scheduled_message_id: S.String,
+          message: __S(240, __c15, 0),
+        }),
+      ).annotate({ identifier: "ScheduleMessageResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

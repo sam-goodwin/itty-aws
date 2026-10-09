@@ -337,7 +337,7 @@ export const getVrackServiceResource: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetVrackServiceResourceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<VrackServicesVrackServicesWithIAM>,
+  output: __S(18, __c1, 2) as any as S.Schema<VrackServicesVrackServicesWithIAM>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -351,8 +351,8 @@ export const getVrackServiceResourceTask: API.OperationMethod<
   GetVrackServiceResourceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetVrackServiceResourceTaskRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CommonTask>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetVrackServiceResourceTaskRequest>,
+  output: __S(68, __c4, 4) as any as S.Schema<CommonTask>,
   errors: [BadRequest, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -367,14 +367,14 @@ export const listVrackServiceReferenceCompatibleManagedServiceType: API.Operatio
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    80,
+    __c5,
+    0,
   ) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -389,8 +389,8 @@ export const listVrackServiceReferenceRegion: API.OperationMethod<
   ListVrackServiceReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListVrackServiceReferenceRegionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListVrackServiceReferenceRegionResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListVrackServiceReferenceRegionRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<ListVrackServiceReferenceRegionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -404,8 +404,8 @@ export const listVrackServiceResource: API.OperationMethod<
   ListVrackServiceResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListVrackServiceResourceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListVrackServiceResourceResponse>,
+  input: __S(115, __c7, 3) as any as S.Schema<ListVrackServiceResourceRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<ListVrackServiceResourceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -419,11 +419,15 @@ export const listVrackServiceResourceEligibleManagedService: API.OperationMethod
   ListVrackServiceResourceEligibleManagedServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceRequest>,
+  input: __S(
+    128,
+    __c8,
+    0,
+  ) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceRequest>,
   output: __S(
-    43,
-    __c5,
-    3,
+    132,
+    __c8,
+    4,
   ) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -438,8 +442,8 @@ export const listVrackServiceResourceTask: API.OperationMethod<
   ListVrackServiceResourceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListVrackServiceResourceTaskRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListVrackServiceResourceTaskResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListVrackServiceResourceTaskRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<ListVrackServiceResourceTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -453,8 +457,8 @@ export const putVrackServiceResource: API.OperationMethod<
   PutVrackServiceResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PutVrackServiceResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<VrackServicesVrackServices>,
+  input: __S(160, __c10, 0) as any as S.Schema<PutVrackServiceResourceRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<VrackServicesVrackServices>,
   errors: [BadRequest, NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -473,27 +477,62 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetVrackServiceResourceRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(16, __c1, 0))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(__S(39, __c2, 7)),
+          currentTasks: S.optional(S.NullOr(__S(41, __c2, 9))),
+          iam: S.optional(S.NullOr(__S(17, __c1, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(47, __c2, 15)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VrackServicesVrackServicesWithIAM",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           ip: S.optional(S.String),
         }),
       ).annotate({ identifier: "VrackServicesEndpoint" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(2, __c0, 2)),
+          endpoints: S.optional(__S(33, __c2, 1)),
           managedServiceURN: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VrackServicesServiceEndpoint",
       });
+    case 3:
+      return S.Array(__S(34, __c2, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           cidr: S.optional(S.String),
@@ -504,34 +543,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "VrackServicesServiceRange",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           cidr: S.optional(S.String),
           displayName: S.optional(S.NullOr(S.String)),
-          serviceEndpoints: S.optional(__S(4, __c0, 4)),
-          serviceRange: S.optional(__S(5, __c0, 5)),
+          serviceEndpoints: S.optional(__S(35, __c2, 3)),
+          serviceRange: S.optional(__S(36, __c2, 4)),
           vlan: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "VrackServicesSubnet" });
+    case 6:
+      return S.Array(__S(37, __c2, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           productStatus: S.optional(S.String),
           region: S.optional(S.String),
-          subnets: S.optional(__S(7, __c0, 7)),
+          subnets: S.optional(__S(38, __c2, 6)),
           vrackId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "VrackServicesVrackServicesCurrentState",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -540,20 +575,9 @@ function __c1(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonCurrentTask" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(11, __c1, 3))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 5:
+    case 9:
+      return S.Array(__S(40, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           managedServiceURN: S.String,
@@ -561,9 +585,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "VrackServicesTargetServiceEndpoint",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(42, __c2, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           cidr: S.String,
@@ -571,49 +595,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "VrackServicesTargetServiceRange",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           cidr: S.String,
           displayName: S.optional(S.NullOr(S.String)),
-          serviceEndpoints: __S(14, __c1, 6),
-          serviceRange: __S(15, __c1, 7),
+          serviceEndpoints: __S(43, __c2, 11),
+          serviceRange: __S(44, __c2, 12),
           vlan: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "VrackServicesTargetSubnet",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(45, __c2, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          subnets: __S(17, __c2, 1),
+          subnets: __S(46, __c2, 14),
         }),
       ).annotate({
         identifier: "VrackServicesVrackServicesTargetSpec",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(__S(8, __c1, 0)),
-          currentTasks: S.optional(S.NullOr(__S(10, __c1, 2))),
-          iam: S.optional(S.NullOr(__S(12, __c1, 4))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(18, __c2, 2)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VrackServicesVrackServicesWithIAM",
-      });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vrackServicesId: S.String.pipe(T.Label()),
@@ -628,44 +636,48 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetVrackServiceResourceTaskRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTaskError" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTaskProgress" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          errors: S.optional(S.NullOr(__S(22, __c2, 6))),
+          errors: S.optional(S.NullOr(__S(65, __c4, 1))),
           finishedAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           link: S.optional(S.String),
           message: S.optional(S.String),
-          progress: S.optional(__S(24, __c3, 0)),
+          progress: S.optional(__S(67, __c4, 3)),
           startedAt: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
           type: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTask" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -680,13 +692,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeRequest",
       });
-    case 3:
+    case 1:
       return S.Array(S.String);
-    case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(81, __c5, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -695,47 +711,51 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListVrackServiceReferenceRegionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VrackServicesRegion" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
+      return S.suspend(() => __S(98, __c6, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceReferenceRegionResponse",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "IamResourceTagFilterInput",
       });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Record(S.String, __S(113, __c7, 1));
     case 3:
-      return S.Record(S.String, __S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(35, __c4, 3).pipe(T.Query())),
+          iamTags: S.optional(__S(114, __c7, 2).pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/vrackServices/resource", code: 200 })),
       ).annotate({
         identifier: "ListVrackServiceResourceRequest",
       });
+    case 4:
+      return S.Array(__S(18, __c1, 2));
     case 5:
-      return S.Array(__S(19, __c2, 3));
-    case 6:
-      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(116, __c7, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vrackServicesId: S.String.pipe(T.Label()),
@@ -751,28 +771,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListVrackServiceResourceEligibleManagedServiceRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           managedServiceType: S.optional(S.String),
-          managedServiceURNs: S.optional(__S(40, __c5, 0)),
+          managedServiceURNs: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({
         identifier: "VrackServicesEligibleManagedService",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() => __S(131, __c8, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceEligibleManagedServiceResponse",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vrackServicesId: S.String.pipe(T.Label()),
@@ -788,38 +808,38 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListVrackServiceResourceTaskRequest",
       });
-    case 5:
-      return S.Array(__S(25, __c3, 1));
-    case 6:
-      return S.suspend(() => __S(45, __c5, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(68, __c4, 4));
+    case 2:
+      return S.suspend(() => __S(145, __c9, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceTaskResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vrackServicesId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(18, __c2, 2),
+          targetSpec: __S(47, __c2, 15),
         }).pipe(
           T.Http({ method: "PUT", uri: "/vrackServices/resource/{vrackServicesId}", code: 200 }),
         ),
       ).annotate({
         identifier: "PutVrackServiceResourceRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(8, __c1, 0)),
-          currentTasks: S.optional(S.NullOr(__S(10, __c1, 2))),
+          currentState: S.optional(__S(39, __c2, 7)),
+          currentTasks: S.optional(S.NullOr(__S(41, __c2, 9))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(18, __c2, 2)),
+          targetSpec: S.optional(__S(47, __c2, 15)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -827,7 +847,6 @@ function __c6(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

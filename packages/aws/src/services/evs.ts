@@ -128,7 +128,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(82, __c10, 2)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(465, __c29, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -654,8 +654,8 @@ export const associateEipToVlan: API.OperationMethod<
   AssociateEipToVlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateEipToVlanRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociateEipToVlanResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<AssociateEipToVlanRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<AssociateEipToVlanResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -676,8 +676,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateEntitlementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateEntitlementResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<CreateEntitlementRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<CreateEntitlementResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -702,8 +702,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(595, __c37, 3) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -728,8 +728,8 @@ export const createEnvironmentConnector: API.OperationMethod<
   CreateEnvironmentConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateEnvironmentConnectorRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateEnvironmentConnectorResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEnvironmentConnectorRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CreateEnvironmentConnectorResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -756,8 +756,8 @@ export const createEnvironmentHost: API.OperationMethod<
   CreateEnvironmentHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateEnvironmentHostRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateEnvironmentHostResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateEnvironmentHostRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateEnvironmentHostResponse>,
   errors: [ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -778,8 +778,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteEntitlementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteEntitlementResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteEntitlementRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<DeleteEntitlementResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -800,8 +800,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -824,8 +824,8 @@ export const deleteEnvironmentConnector: API.OperationMethod<
   DeleteEnvironmentConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteEnvironmentConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteEnvironmentConnectorResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteEnvironmentConnectorRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<DeleteEnvironmentConnectorResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -847,8 +847,8 @@ export const deleteEnvironmentHost: API.OperationMethod<
   DeleteEnvironmentHostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteEnvironmentHostRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteEnvironmentHostResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteEnvironmentHostRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteEnvironmentHostResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -869,8 +869,8 @@ export const disassociateEipFromVlan: API.OperationMethod<
   DisassociateEipFromVlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DisassociateEipFromVlanRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DisassociateEipFromVlanResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DisassociateEipFromVlanRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DisassociateEipFromVlanResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -891,8 +891,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetAccountSettingsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetAccountSettingsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<GetAccountSettingsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -915,8 +915,8 @@ export const getDepotUrl: API.OperationMethod<
   GetDepotUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetDepotUrlRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetDepotUrlResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetDepotUrlRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GetDepotUrlResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -933,8 +933,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetEnvironmentResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const getVersions: API.OperationMethod<
   GetVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetVersionsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetVersionsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetVersionsRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<GetVersionsResponse>,
   errors: [InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -973,8 +973,8 @@ export const listEnvironmentConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Connector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListEnvironmentConnectorsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListEnvironmentConnectorsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListEnvironmentConnectorsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListEnvironmentConnectorsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1001,8 +1001,8 @@ export const listEnvironmentHosts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Host
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListEnvironmentHostsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListEnvironmentHostsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListEnvironmentHostsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListEnvironmentHostsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1026,8 +1026,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1054,8 +1054,8 @@ export const listEnvironmentVlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Vlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListEnvironmentVlansRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListEnvironmentVlansResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListEnvironmentVlansRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListEnvironmentVlansResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1078,8 +1078,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1100,8 +1100,8 @@ export const listVmEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VmEntitlement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListVmEntitlementsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListVmEntitlementsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListVmEntitlementsRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<ListVmEntitlementsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1130,8 +1130,8 @@ export const putAccountSettings: API.OperationMethod<
   PutAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<PutAccountSettingsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PutAccountSettingsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<PutAccountSettingsRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<PutAccountSettingsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1153,8 +1153,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -1176,8 +1176,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, TagPolicyException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1200,8 +1200,8 @@ export const updateEnvironmentConnector: API.OperationMethod<
   UpdateEnvironmentConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UpdateEnvironmentConnectorRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateEnvironmentConnectorResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<UpdateEnvironmentConnectorRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<UpdateEnvironmentConnectorResponse>,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1215,6 +1215,501 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+          type: S.String,
+          applianceFqdn: S.String,
+          secretIdentifier: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentConnectorRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          result: S.optional(S.String),
+          lastCheckAttempt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          impairedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ConnectorCheck" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          connectorId: S.optional(S.String),
+          type: S.optional(S.String),
+          applianceFqdn: S.optional(S.String),
+          secretArn: S.optional(S.String),
+          state: S.optional(S.String),
+          stateDetails: S.optional(S.String),
+          status: S.optional(S.String),
+          checks: S.optional(__S(17, __c1, 1)),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Connector" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ connector: S.optional(__S(18, __c1, 2)) })).annotate({
+        identifier: "CreateEnvironmentConnectorResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String,
+          host: __S(608, __c38, 0),
+          esxVersion: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentHostRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          vcfVersion: S.optional(S.String),
+          environmentStatus: S.optional(S.String),
+          environmentState: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          environmentArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentSummary: S.optional(__S(64, __c4, 0)),
+          host: S.optional(__S(98, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateEnvironmentHostResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ networkInterfaceId: S.optional(S.String) })).annotate({
+        identifier: "NetworkInterface",
+      });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hostName: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          keyName: S.optional(S.String),
+          instanceType: S.optional(S.String),
+          placementGroupId: S.optional(S.String),
+          dedicatedHostId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          hostState: S.optional(S.String),
+          stateDetails: S.optional(S.String),
+          ec2InstanceId: S.optional(S.String),
+          networkInterfaces: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "Host" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String,
+          connectorId: S.String,
+          entitlementType: S.String,
+          vmIds: __S(576, __c36, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteEntitlementRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+          connectorId: S.String.pipe(T.HttpLabel("connectorId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteEnvironmentConnectorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connector: S.optional(__S(18, __c1, 2)),
+          environmentSummary: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "DeleteEnvironmentConnectorResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String,
+          hostName: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteEnvironmentHostRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String,
+          vlanName: S.String,
+          associationId: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateEipFromVlanRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAccountSettingsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
+        identifier: "AccountSetting",
+      });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ settings: S.optional(__S(209, __c13, 1)) })).annotate({
+        identifier: "GetAccountSettingsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+          rotate: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetDepotUrlRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ depotUrl: S.String, token: S.String })).annotate({
+        identifier: "GetDepotUrlResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetEnvironmentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(649, __c40, 9)) })).annotate({
+        identifier: "GetEnvironmentResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetVersionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          vcfVersion: S.String,
+          status: S.String,
+          defaultEsxVersion: S.String,
+          instanceTypes: __S(272, __c17, 0),
+        }),
+      ).annotate({ identifier: "VcfVersionInfo" });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ instanceType: S.String, esxVersions: __S(576, __c36, 0) }),
+      ).annotate({
+        identifier: "InstanceTypeEsxVersionsInfo",
+      });
+    case 4:
+      return S.Array(__S(259, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ vcfVersions: __S(258, __c16, 2), instanceTypeEsxVersions: __S(260, __c16, 4) }),
+      ).annotate({ identifier: "GetVersionsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentConnectorsRequest",
+      });
+    case 1:
+      return S.Array(__S(18, __c1, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), connectors: S.optional(__S(289, __c18, 1)) }),
+      ).annotate({
+        identifier: "ListEnvironmentConnectorsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentHostsRequest",
+      });
+    case 1:
+      return S.Array(__S(98, __c6, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentHosts: S.optional(__S(305, __c19, 1)),
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentHostsResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          state: S.optional(__S(272, __c17, 0)).pipe(T.HttpQuery("state")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListEnvironmentsRequest" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentSummaries: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({ identifier: "ListEnvironmentsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentVlansRequest",
+      });
+    case 1:
+      return S.Array(__S(514, __c32, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentVlans: S.optional(__S(337, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentVlansResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(656, __c41, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          environmentId: S.String,
+          connectorId: S.String,
+          entitlementType: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListVmEntitlementsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), entitlements: S.optional(__S(562, __c35, 2)) }),
+      ).annotate({
+        identifier: "ListVmEntitlementsResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ settings: __S(209, __c13, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutAccountSettingsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: __S(656, __c41, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: __S(576, __c36, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+          connectorId: S.String.pipe(T.HttpLabel("connectorId")),
+          applianceFqdn: S.optional(S.String),
+          secretIdentifier: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateEnvironmentConnectorRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           environmentId: S.String,
           vlanName: S.String,
           allocationId: S.String,
@@ -1222,7 +1717,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateEipToVlanRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ vlan: S.optional(__S(514, __c32, 2)) })).annotate({
+        identifier: "AssociateEipToVlanResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           associationId: S.optional(S.String),
@@ -1230,9 +1737,9 @@ function __c0(j: number): any {
           ipAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "EipAssociation" });
+    case 1:
+      return S.Array(__S(512, __c32, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           vlanId: S.optional(S.Number),
@@ -1244,36 +1751,42 @@ function __c0(j: number): any {
           modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           vlanState: S.optional(S.String),
           stateDetails: S.optional(S.String),
-          eipAssociations: S.optional(__S(2, __c0, 2)),
+          eipAssociations: S.optional(__S(513, __c32, 1)),
           isPublic: S.optional(S.Boolean),
           networkAclId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Vlan" });
-    case 4:
-      return S.suspend(() => S.Struct({ vlan: S.optional(__S(3, __c0, 3)) })).annotate({
-        identifier: "AssociateEipToVlanResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           environmentId: S.String,
           connectorId: S.String,
           entitlementType: S.String,
-          vmIds: __S(5, __c0, 5),
+          vmIds: __S(576, __c36, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEntitlementRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ errorCode: S.String, errorMessage: S.String })).annotate({
-        identifier: "ErrorDetail",
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ entitlements: S.optional(__S(562, __c35, 2)) })).annotate({
+        identifier: "CreateEntitlementResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ errorCode: S.String, errorMessage: S.String })).annotate({
+        identifier: "ErrorDetail",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           vmId: S.optional(S.String),
@@ -1285,57 +1798,69 @@ function __c1(j: number): any {
           lastSyncedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          errorDetail: S.optional(__S(7, __c0, 7)),
+          errorDetail: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "VmEntitlement" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.suspend(() => S.Struct({ entitlements: S.optional(__S(9, __c1, 1)) })).annotate({
-        identifier: "CreateEntitlementResponse",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() => S.Struct({ securityGroups: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "ServiceAccessSecurityGroups",
-      });
-    case 5:
+      return S.Array(__S(561, __c35, 1));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ cidr: S.String })).annotate({
         identifier: "InitialVlanInfo",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          vmkManagement: __S(13, __c1, 5),
-          vmManagement: __S(13, __c1, 5),
-          vMotion: __S(13, __c1, 5),
-          vSan: __S(13, __c1, 5),
-          vTep: __S(13, __c1, 5),
-          edgeVTep: __S(13, __c1, 5),
-          nsxUplink: __S(13, __c1, 5),
-          hcx: __S(13, __c1, 5),
-          expansionVlan1: __S(13, __c1, 5),
-          expansionVlan2: __S(13, __c1, 5),
+          vmkManagement: __S(592, __c37, 0),
+          vmManagement: __S(592, __c37, 0),
+          vMotion: __S(592, __c37, 0),
+          vSan: __S(592, __c37, 0),
+          vTep: __S(592, __c37, 0),
+          edgeVTep: __S(592, __c37, 0),
+          nsxUplink: __S(592, __c37, 0),
+          hcx: __S(592, __c37, 0),
+          expansionVlan1: __S(592, __c37, 0),
+          expansionVlan2: __S(592, __c37, 0),
           isHcxPublic: S.optional(S.Boolean),
           hcxNetworkAclId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InitialVlans" });
-    case 7:
-      return S.suspend(() => S.Struct({ privateRouteServerPeerings: __S(5, __c0, 5) })).annotate({
-        identifier: "ConnectivityInfo",
-      });
+    case 2:
+      return S.Array(__S(608, __c38, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          environmentName: S.optional(S.String),
+          kmsKeyId: S.optional(S.String),
+          tags: S.optional(__S(656, __c41, 0)),
+          serviceAccessSecurityGroups: S.optional(__S(640, __c40, 0)),
+          vpcId: S.String,
+          serviceAccessSubnetId: S.String,
+          vcfVersion: S.String,
+          termsAccepted: S.Boolean,
+          initialVlans: __S(593, __c37, 1),
+          connectivityInfo: S.optional(__S(641, __c40, 1)),
+          licenseInfo: S.optional(__S(643, __c40, 3)),
+          hosts: S.optional(__S(594, __c37, 2)),
+          vcfHostnames: S.optional(__S(644, __c40, 4)),
+          siteId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
   }
 }
-function __c2(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ solutionKey: SensitiveString, vsanKey: SensitiveString }),
-      ).annotate({ identifier: "LicenseInfo" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           hostName: S.String,
@@ -1345,8 +1870,34 @@ function __c2(j: number): any {
           dedicatedHostId: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostInfoForCreate" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(649, __c40, 9)) })).annotate({
+        identifier: "CreateEnvironmentResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ securityGroups: S.optional(__S(576, __c36, 0)) })).annotate(
+        {
+          identifier: "ServiceAccessSecurityGroups",
+        },
+      );
+    case 1:
+      return S.suspend(() => S.Struct({ privateRouteServerPeerings: __S(576, __c36, 0) })).annotate(
+        { identifier: "ConnectivityInfo" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ solutionKey: SensitiveString, vsanKey: SensitiveString }),
+      ).annotate({ identifier: "LicenseInfo" });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(642, __c40, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1364,45 +1915,21 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentName: S.optional(S.String),
-          kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
-          serviceAccessSecurityGroups: S.optional(__S(12, __c1, 4)),
-          vpcId: S.String,
-          serviceAccessSubnetId: S.String,
-          vcfVersion: S.String,
-          termsAccepted: S.Boolean,
-          initialVlans: __S(14, __c1, 6),
-          connectivityInfo: S.optional(__S(15, __c1, 7)),
-          licenseInfo: S.optional(__S(17, __c2, 1)),
-          hosts: S.optional(__S(19, __c2, 3)),
-          vcfHostnames: S.optional(__S(20, __c2, 4)),
-          siteId: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           result: S.optional(S.String),
           impairedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Check" });
+    case 6:
+      return S.Array(__S(645, __c40, 5));
     case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() => S.Struct({ secretArn: S.optional(S.String) })).annotate({
         identifier: "Secret",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(647, __c40, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -1416,430 +1943,25 @@ function __c3(j: number): any {
           serviceAccessSubnetId: S.optional(S.String),
           vcfVersion: S.optional(S.String),
           termsAccepted: S.optional(S.Boolean),
-          licenseInfo: S.optional(__S(17, __c2, 1)),
+          licenseInfo: S.optional(__S(643, __c40, 3)),
           siteId: S.optional(S.String),
           environmentStatus: S.optional(S.String),
-          checks: S.optional(__S(23, __c2, 7)),
-          connectivityInfo: S.optional(__S(15, __c1, 7)),
-          vcfHostnames: S.optional(__S(20, __c2, 4)),
+          checks: S.optional(__S(646, __c40, 6)),
+          connectivityInfo: S.optional(__S(641, __c40, 1)),
+          vcfHostnames: S.optional(__S(644, __c40, 4)),
           kmsKeyId: S.optional(S.String),
-          serviceAccessSecurityGroups: S.optional(__S(12, __c1, 4)),
-          credentials: S.optional(__S(25, __c3, 1)),
+          serviceAccessSecurityGroups: S.optional(__S(640, __c40, 0)),
+          credentials: S.optional(__S(648, __c40, 8)),
         }),
       ).annotate({ identifier: "Environment" });
-    case 3:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(26, __c3, 2)) })).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          type: S.String,
-          applianceFqdn: S.String,
-          secretIdentifier: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEnvironmentConnectorRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          result: S.optional(S.String),
-          lastCheckAttempt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          impairedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "ConnectorCheck" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          connectorId: S.optional(S.String),
-          type: S.optional(S.String),
-          applianceFqdn: S.optional(S.String),
-          secretArn: S.optional(S.String),
-          state: S.optional(S.String),
-          stateDetails: S.optional(S.String),
-          status: S.optional(S.String),
-          checks: S.optional(__S(30, __c3, 6)),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "Connector" });
   }
 }
-function __c4(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ connector: S.optional(__S(31, __c3, 7)) })).annotate({
-        identifier: "CreateEnvironmentConnectorResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String,
-          host: __S(18, __c2, 2),
-          esxVersion: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEnvironmentHostRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          vcfVersion: S.optional(S.String),
-          environmentStatus: S.optional(S.String),
-          environmentState: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          environmentArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentSummary" });
-    case 3:
-      return S.suspend(() => S.Struct({ networkInterfaceId: S.optional(S.String) })).annotate({
-        identifier: "NetworkInterface",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hostName: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          keyName: S.optional(S.String),
-          instanceType: S.optional(S.String),
-          placementGroupId: S.optional(S.String),
-          dedicatedHostId: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          hostState: S.optional(S.String),
-          stateDetails: S.optional(S.String),
-          ec2InstanceId: S.optional(S.String),
-          networkInterfaces: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Host" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          environmentSummary: S.optional(__S(34, __c4, 2)),
-          host: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateEnvironmentHostResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String,
-          connectorId: S.String,
-          entitlementType: S.String,
-          vmIds: __S(5, __c0, 5),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DeleteEntitlementRequest" });
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          connectorId: S.String.pipe(T.HttpLabel("connectorId")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteEnvironmentConnectorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          connector: S.optional(__S(31, __c3, 7)),
-          environmentSummary: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "DeleteEnvironmentConnectorResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String,
-          hostName: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteEnvironmentHostRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String,
-          vlanName: S.String,
-          associationId: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateEipFromVlanRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
-        identifier: "AccountSetting",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ settings: S.optional(__S(47, __c5, 7)) })).annotate({
-        identifier: "GetAccountSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          rotate: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "GetDepotUrlRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ depotUrl: S.String, token: S.String })).annotate({
-        identifier: "GetDepotUrlResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(26, __c3, 2)) })).annotate({
-        identifier: "GetEnvironmentResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetVersionsRequest" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vcfVersion: S.String,
-          status: S.String,
-          defaultEsxVersion: S.String,
-          instanceTypes: __S(54, __c6, 6),
-        }),
-      ).annotate({ identifier: "VcfVersionInfo" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ instanceType: S.String, esxVersions: __S(5, __c0, 5) }),
-      ).annotate({
-        identifier: "InstanceTypeEsxVersionsInfo",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vcfVersions: __S(56, __c7, 0),
-          instanceTypeEsxVersions: __S(58, __c7, 2),
-        }),
-      ).annotate({ identifier: "GetVersionsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEnvironmentConnectorsRequest",
-      });
-    case 5:
-      return S.Array(__S(31, __c3, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), connectors: S.optional(__S(61, __c7, 5)) }),
-      ).annotate({
-        identifier: "ListEnvironmentConnectorsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEnvironmentHostsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(37, __c4, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          environmentHosts: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ListEnvironmentHostsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          state: S.optional(__S(54, __c6, 6)).pipe(T.HttpQuery("state")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          environmentSummaries: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEnvironmentVlansRequest",
-      });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          environmentVlans: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "ListEnvironmentVlansResponse",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(11, __c1, 3)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          environmentId: S.String,
-          connectorId: S.String,
-          entitlementType: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListVmEntitlementsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), entitlements: S.optional(__S(9, __c1, 1)) }),
-      ).annotate({
-        identifier: "ListVmEntitlementsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ settings: __S(47, __c5, 7) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "PutAccountSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(11, __c1, 3) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(5, __c0, 5) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          connectorId: S.String.pipe(T.HttpLabel("connectorId")),
-          applianceFqdn: S.optional(S.String),
-          secretIdentifier: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateEnvironmentConnectorRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

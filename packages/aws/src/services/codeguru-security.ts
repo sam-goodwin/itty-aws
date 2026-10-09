@@ -144,7 +144,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(55, __c6, 7)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(177, __c11, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -426,8 +426,8 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchGetFindingsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BatchGetFindingsResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<BatchGetFindingsRequest>,
+  output: __S(197, __c12, 5) as any as S.Schema<BatchGetFindingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -456,8 +456,8 @@ export const createScan: API.OperationMethod<
   CreateScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateScanRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateScanResponse>,
+  input: __S(241, __c15, 1) as any as S.Schema<CreateScanRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<CreateScanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -488,8 +488,8 @@ export const createUploadUrl: API.OperationMethod<
   CreateUploadUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateUploadUrlRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateUploadUrlResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateUploadUrlRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<CreateUploadUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -516,8 +516,8 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetAccountConfigurationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetAccountConfigurationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetAccountConfigurationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetAccountConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -547,8 +547,8 @@ export const getFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Finding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetFindingsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetFindingsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetFindingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetFindingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -583,8 +583,8 @@ export const getMetricsSummary: API.OperationMethod<
   GetMetricsSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetMetricsSummaryRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetMetricsSummaryResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetMetricsSummaryRequest>,
+  output: __S(22, __c1, 6) as any as S.Schema<GetMetricsSummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -612,8 +612,8 @@ export const getScan: API.OperationMethod<
   GetScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetScanRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetScanResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetScanRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetScanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -642,8 +642,8 @@ export const listFindingsMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountFindingsMetric
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListFindingsMetricsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListFindingsMetricsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListFindingsMetricsRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListFindingsMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -677,8 +677,8 @@ export const listScans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListScansRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListScansResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListScansRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListScansResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -713,8 +713,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -745,8 +745,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -777,8 +777,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -808,8 +808,8 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateAccountConfigurationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateAccountConfigurationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateAccountConfigurationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<UpdateAccountConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -826,181 +826,6 @@ export const updateAccountConfiguration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ scanName: S.String, findingId: S.String })).annotate({
-        identifier: "FindingIdentifier",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ findingIdentifiers: __S(1, __c0, 1) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/batchGetFindings" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetFindingsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), subResourceId: S.optional(S.String) }),
-      ).annotate({ identifier: "Resource" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ number: S.optional(S.Number), content: S.optional(S.String) }),
-      ).annotate({ identifier: "CodeLine" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          path: S.optional(S.String),
-          startLine: S.optional(S.Number),
-          endLine: S.optional(S.Number),
-          codeSnippet: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "FilePath" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          referenceUrls: S.optional(__S(4, __c0, 4)),
-          relatedVulnerabilities: S.optional(__S(4, __c0, 4)),
-          id: S.optional(S.String),
-          filePath: S.optional(__S(7, __c0, 7)),
-          itemCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Vulnerability" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ text: S.optional(S.String), url: S.optional(S.String) }),
-      ).annotate({ identifier: "Recommendation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ description: S.optional(S.String), code: S.optional(S.String) }),
-      ).annotate({ identifier: "SuggestedFix" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recommendation: S.optional(__S(9, __c1, 1)),
-          suggestedFixes: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "Remediation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          description: S.optional(S.String),
-          generatorId: S.optional(S.String),
-          id: S.optional(S.String),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
-          resource: S.optional(__S(3, __c0, 3)),
-          vulnerability: S.optional(__S(8, __c1, 0)),
-          severity: S.optional(S.String),
-          remediation: S.optional(__S(12, __c1, 4)),
-          title: S.optional(S.String),
-          detectorTags: S.optional(__S(4, __c0, 4)),
-          detectorId: S.optional(S.String),
-          detectorName: S.optional(S.String),
-          ruleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Finding" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scanName: S.String,
-          findingId: S.String,
-          errorCode: S.String,
-          message: S.String,
-        }),
-      ).annotate({ identifier: "BatchGetFindingsError" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ findings: __S(14, __c1, 6), failedFindings: __S(16, __c2, 0) }),
-      ).annotate({ identifier: "BatchGetFindingsResponse" });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ codeArtifactId: S.String })]);
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          resourceId: __S(18, __c2, 2),
-          scanName: S.String,
-          scanType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          tags: S.optional(__S(19, __c2, 3)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/scans" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateScanRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scanName: S.String,
-          runId: S.String,
-          resourceId: __S(18, __c2, 2),
-          scanState: S.String,
-          scanNameArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateScanResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ scanName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/uploadUrl" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateUploadUrlRequest" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          s3Url: SensitiveString,
-          requestHeaders: __S(23, __c2, 7),
-          codeArtifactId: S.String,
-        }),
-      ).annotate({ identifier: "CreateUploadUrlResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/accountConfiguration/get" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetAccountConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ kmsKeyArn: S.optional(S.String) })).annotate({
-        identifier: "EncryptionConfig",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ encryptionConfig: __S(26, __c3, 2) })).annotate({
-        identifier: "GetAccountConfigurationResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           scanName: S.String.pipe(T.HttpLabel("scanName")),
@@ -1018,11 +843,15 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetFindingsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ findings: S.optional(__S(14, __c1, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ findings: S.optional(__S(218, __c13, 10)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetFindingsResponse" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           date: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("date")),
@@ -1030,7 +859,37 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/metrics/summary" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMetricsSummaryRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ categoryName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
+      ).annotate({ identifier: "CategoryWithFindingNum" });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ scanName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
+      ).annotate({ identifier: "ScanNameWithFindingNum" });
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          openFindings: S.optional(__S(32, __c2, 0)),
+          categoriesWithMostFindings: S.optional(__S(18, __c1, 2)),
+          scansWithMostOpenFindings: S.optional(__S(20, __c1, 4)),
+          scansWithMostOpenCriticalFindings: S.optional(__S(20, __c1, 4)),
+        }),
+      ).annotate({ identifier: "MetricsSummary" });
+    case 6:
+      return S.suspend(() => S.Struct({ metricsSummary: S.optional(__S(21, __c1, 5)) })).annotate({
+        identifier: "GetMetricsSummaryResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           info: S.optional(S.Number),
@@ -1044,35 +903,9 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ categoryName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
-      ).annotate({ identifier: "CategoryWithFindingNum" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ scanName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
-      ).annotate({ identifier: "ScanNameWithFindingNum" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          openFindings: S.optional(__S(31, __c3, 7)),
-          categoriesWithMostFindings: S.optional(__S(33, __c4, 1)),
-          scansWithMostOpenFindings: S.optional(__S(35, __c4, 3)),
-          scansWithMostOpenCriticalFindings: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "MetricsSummary" });
-    case 5:
-      return S.suspend(() => S.Struct({ metricsSummary: S.optional(__S(36, __c4, 4)) })).annotate({
-        identifier: "GetMetricsSummaryResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           scanName: S.String.pipe(T.HttpLabel("scanName")),
@@ -1081,7 +914,7 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/scans/{scanName}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetScanRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scanName: S.String,
@@ -1097,7 +930,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetScanResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1116,31 +949,35 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          newFindings: S.optional(__S(31, __c3, 7)),
-          closedFindings: S.optional(__S(31, __c3, 7)),
-          openFindings: S.optional(__S(31, __c3, 7)),
-          meanTimeToClose: S.optional(__S(31, __c3, 7)),
+          newFindings: S.optional(__S(32, __c2, 0)),
+          closedFindings: S.optional(__S(32, __c2, 0)),
+          openFindings: S.optional(__S(32, __c2, 0)),
+          meanTimeToClose: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "AccountFindingsMetric" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          findingsMetrics: S.optional(__S(42, __c5, 2)),
+          findingsMetrics: S.optional(__S(66, __c4, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFindingsMetricsResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/scans" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListScansRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scanState: S.String,
@@ -1151,11 +988,11 @@ function __c5(j: number): any {
           scanNameArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScanSummary" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(46, __c5, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ summaries: S.optional(__S(82, __c5, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListScansResponse" });
   }
 }
@@ -1177,14 +1014,18 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(19, __c2, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(256, __c16, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(19, __c2, 3),
+          tags: __S(256, __c16, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1196,15 +1037,23 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(224, __c14, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1216,9 +1065,13 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ encryptionConfig: __S(26, __c3, 2) }).pipe(
+        S.Struct({ encryptionConfig: __S(304, __c19, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/updateAccountConfiguration" }),
             svc,
@@ -1231,15 +1084,213 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateAccountConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+    case 1:
+      return S.Array(__S(176, __c11, 0));
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ scanName: S.String, findingId: S.String })).annotate({
+        identifier: "FindingIdentifier",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ findingIdentifiers: __S(193, __c12, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/batchGetFindings" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetFindingsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scanName: S.String,
+          findingId: S.String,
+          errorCode: S.String,
+          message: S.String,
+        }),
+      ).annotate({ identifier: "BatchGetFindingsError" });
+    case 4:
+      return S.Array(__S(195, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ findings: __S(218, __c13, 10), failedFindings: __S(196, __c12, 4) }),
+      ).annotate({ identifier: "BatchGetFindingsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), subResourceId: S.optional(S.String) }),
+      ).annotate({ identifier: "Resource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ number: S.optional(S.Number), content: S.optional(S.String) }),
+      ).annotate({ identifier: "CodeLine" });
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          path: S.optional(S.String),
+          startLine: S.optional(S.Number),
+          endLine: S.optional(S.Number),
+          codeSnippet: S.optional(__S(210, __c13, 2)),
+        }),
+      ).annotate({ identifier: "FilePath" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          referenceUrls: S.optional(__S(224, __c14, 0)),
+          relatedVulnerabilities: S.optional(__S(224, __c14, 0)),
+          id: S.optional(S.String),
+          filePath: S.optional(__S(211, __c13, 3)),
+          itemCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Vulnerability" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ text: S.optional(S.String), url: S.optional(S.String) }),
+      ).annotate({ identifier: "Recommendation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(S.String), code: S.optional(S.String) }),
+      ).annotate({ identifier: "SuggestedFix" });
+    case 7:
+      return S.Array(__S(214, __c13, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          recommendation: S.optional(__S(213, __c13, 5)),
+          suggestedFixes: S.optional(__S(215, __c13, 7)),
+        }),
+      ).annotate({ identifier: "Remediation" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          description: S.optional(S.String),
+          generatorId: S.optional(S.String),
+          id: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          resource: S.optional(__S(208, __c13, 0)),
+          vulnerability: S.optional(__S(212, __c13, 4)),
+          severity: S.optional(S.String),
+          remediation: S.optional(__S(216, __c13, 8)),
+          title: S.optional(S.String),
+          detectorTags: S.optional(__S(224, __c14, 0)),
+          detectorId: S.optional(S.String),
+          detectorName: S.optional(S.String),
+          ruleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Finding" });
+    case 10:
+      return S.Array(__S(217, __c13, 9));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ codeArtifactId: S.String })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          resourceId: __S(240, __c15, 0),
+          scanName: S.String,
+          scanType: S.optional(S.String),
+          analysisType: S.optional(S.String),
+          tags: S.optional(__S(256, __c16, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/scans" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateScanRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scanName: S.String,
+          runId: S.String,
+          resourceId: __S(240, __c15, 0),
+          scanState: S.String,
+          scanNameArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateScanResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ scanName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/uploadUrl" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateUploadUrlRequest" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          s3Url: SensitiveString,
+          requestHeaders: __S(273, __c17, 1),
+          codeArtifactId: S.String,
+        }),
+      ).annotate({ identifier: "CreateUploadUrlResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/accountConfiguration/get" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAccountConfigurationRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ kmsKeyArn: S.optional(S.String) })).annotate({
+        identifier: "EncryptionConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ encryptionConfig: __S(304, __c19, 0) })).annotate({
+        identifier: "GetAccountConfigurationResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

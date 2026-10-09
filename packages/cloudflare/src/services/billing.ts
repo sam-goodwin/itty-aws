@@ -893,8 +893,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateProfileRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateProfileResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const createProfilesPaymentMethod: API.OperationMethod<
   CreateProfilesPaymentMethodError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateProfilesPaymentMethodRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateProfilesPaymentMethodResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateProfilesPaymentMethodRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateProfilesPaymentMethodResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteProfileResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<DeleteProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const getBadDebt: API.OperationMethod<
   GetBadDebtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetBadDebtRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetBadDebtResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetBadDebtRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetBadDebtResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const getCredit: API.OperationMethod<
   GetCreditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetCreditRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCreditResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetCreditRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetCreditResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -968,8 +968,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetProfileRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetProfileResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const getRatePlan: API.OperationMethod<
   GetRatePlanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetRatePlanRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetRatePlanResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetRatePlanRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<GetRatePlanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -998,8 +998,8 @@ export const getUnpaidInvoice: API.OperationMethod<
   GetUnpaidInvoiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetUnpaidInvoiceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetUnpaidInvoiceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetUnpaidInvoiceRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetUnpaidInvoiceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1013,8 @@ export const getUsage: API.OperationMethod<
   GetUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetUsageRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetUsageResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetUsageRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<GetUsageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1028,8 @@ export const listHistory: API.OperationMethod<
   ListHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListHistoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListHistoryResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListHistoryRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ListHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1043,8 @@ export const paygoUsage: API.OperationMethod<
   PaygoUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<PaygoUsageRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PaygoUsageResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<PaygoUsageRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaygoUsageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1058,8 @@ export const profilesUpdateBillingEmail: API.OperationMethod<
   ProfilesUpdateBillingEmailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ProfilesUpdateBillingEmailRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ProfilesUpdateBillingEmailResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ProfilesUpdateBillingEmailRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ProfilesUpdateBillingEmailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1073,8 +1073,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateProfileResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const usageGetAccountUsageInfoV1: API.OperationMethod<
   UsageGetAccountUsageInfoV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UsageGetAccountUsageInfoV1Request>,
-  output: __S(41, __c5, 1) as any as S.Schema<UsageGetAccountUsageInfoV1Response>,
+  input: __S(56, __c7, 0) as any as S.Schema<UsageGetAccountUsageInfoV1Request>,
+  output: __S(57, __c7, 1) as any as S.Schema<UsageGetAccountUsageInfoV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1103,8 @@ export const usageGetAccountUsageV1: API.OperationMethod<
   UsageGetAccountUsageV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UsageGetAccountUsageV1Request>,
-  output: __S(45, __c5, 5) as any as S.Schema<UsageGetAccountUsageV1Response>,
+  input: __S(72, __c9, 0) as any as S.Schema<UsageGetAccountUsageV1Request>,
+  output: __S(75, __c9, 3) as any as S.Schema<UsageGetAccountUsageV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1118,8 @@ export const usageGetAccountUsageV2: API.OperationMethod<
   UsageGetAccountUsageV2Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UsageGetAccountUsageV2Request>,
-  output: __S(51, __c6, 3) as any as S.Schema<UsageGetAccountUsageV2Response>,
+  input: __S(80, __c10, 0) as any as S.Schema<UsageGetAccountUsageV2Request>,
+  output: __S(85, __c10, 5) as any as S.Schema<UsageGetAccountUsageV2Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1133,8 @@ export const usagePaygoInfo: API.OperationMethod<
   UsagePaygoInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UsagePaygoInfoRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UsagePaygoInfoResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UsagePaygoInfoRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<UsagePaygoInfoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1182,7 +1182,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddressValidationResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1211,7 +1215,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateProfileRequest" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1258,240 +1266,11 @@ function __c0(j: number): any {
           zipcode: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateProfileResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/billing/profile/payment-method",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateProfilesPaymentMethodRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientSecret: S.optional(S.NullOr(S.String).pipe(T.Body("client_secret"))),
-          intentType: S.optional(S.NullOr(S.String).pipe(T.Body("intent_type"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateProfilesPaymentMethodResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({ method: "DELETE", uri: "/accounts/{account_id}/billing/profile", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteProfileRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteProfileResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/bad-debt", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetBadDebtRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(S.String)),
-          amount: S.optional(S.NullOr(S.Number)),
-          amountToPay: S.optional(S.NullOr(S.Number).pipe(T.Body("amount_to_pay"))),
-          currency: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          externalInvoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("external_invoice_id"))),
-          hostedInvoiceUrl: S.optional(S.NullOr(S.String).pipe(T.Body("hosted_invoice_url"))),
-          invoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("invoice_id"))),
-          occurredAt: S.optional(S.NullOr(S.String).pipe(T.Body("occurred_at"))),
-          receiptId: S.optional(S.NullOr(S.String).pipe(T.Body("receipt_id"))),
-          source: S.optional(S.NullOr(S.String)),
-          sourceInvoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("source_invoice_id"))),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetBadDebtResponseInvoicesItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alreadyPaid: S.optional(S.NullOr(S.Number).pipe(T.Body("already_paid"))),
-          badDebtStatus: S.optional(S.NullOr(S.String).pipe(T.Body("bad_debt_status"))),
-          invoices: S.optional(S.NullOr(__S(12, __c1, 4))),
-          totalDebtAmount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_debt_amount"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetBadDebtResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/credits", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCreditRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          confirmedBalanceCents: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("confirmed_balance_cents")),
-          ),
-          currency: S.optional(S.NullOr(S.String)),
-          daysRemaining: S.optional(S.NullOr(S.Number).pipe(T.Body("days_remaining"))),
-          eligible: S.optional(S.NullOr(S.Boolean)),
-          hasRecord: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_record"))),
-          originalAmountCents: S.optional(S.NullOr(S.Number).pipe(T.Body("original_amount_cents"))),
-          percentConsumed: S.optional(S.NullOr(S.Number).pipe(T.Body("percent_consumed"))),
-          projectedDepletionDate: S.optional(
-            S.NullOr(S.String).pipe(T.Body("projected_depletion_date")),
-          ),
-          validFrom: S.optional(S.NullOr(S.String).pipe(T.Body("valid_from"))),
-          validTo: S.optional(S.NullOr(S.String).pipe(T.Body("valid_to"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCreditResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/profile", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetProfileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publicKey: S.String.pipe(T.Label("public_key")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/billing/rate_plans/{public_key}", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRatePlanRequest" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          components: S.optional(S.NullOr(__S(19, __c2, 3))),
-          currency: S.optional(S.NullOr(S.String)),
-          publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRatePlanResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/billing/unpaid-invoice",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetUnpaidInvoiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          invoices: S.optional(S.NullOr(__S(12, __c1, 4))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetUnpaidInvoiceResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billable/usage", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetUsageRequest" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
-          chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
-          chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
-          chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
-          chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
-          consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
-          consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
-          hostProviderName: S.String.pipe(T.Body("HostProviderName")),
-          invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
-          serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
-          xBillableMetricId: S.String.pipe(T.Body("x_BillableMetricId")),
-          billedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("BilledCost"))),
-          billingAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("BillingAccountId"))),
-          billingAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("BillingAccountName"))),
-          billingCurrency: S.optional(S.NullOr(S.String).pipe(T.Body("BillingCurrency"))),
-          billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
-          billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
-          chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
-          contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
-          contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
-          effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
-          listCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ListCost"))),
-          listUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ListUnitPrice"))),
-          pricingQuantity: S.optional(S.NullOr(S.Number).pipe(T.Body("PricingQuantity"))),
-          pricingUnit: S.optional(S.NullOr(S.String).pipe(T.Body("PricingUnit"))),
-          regionId: S.optional(S.NullOr(S.String).pipe(T.Body("RegionId"))),
-          regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
-          subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
-          subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(__S(25, __c3, 1)).pipe(T.Body("Tags"))),
-          xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
-          xProductCategoryName: S.optional(
-            S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
-          ),
-          xProductFamilyId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ProductFamilyId"))),
-          xProductFamilyName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ProductFamilyName"))),
-          xZoneId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneId"))),
-          xZoneName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneName"))),
-        }),
-      ).annotate({ identifier: "UsageGetResultItem" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetUsageResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1502,11 +1281,15 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/history", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoryRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        __S(12, __c1, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(121, __c15, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoryResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1516,11 +1299,7 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billable-usage", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PaygoUsageRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billedCost: S.Number.pipe(T.Body("BilledCost")),
@@ -1552,13 +1331,17 @@ function __c4(j: number): any {
           zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("ZoneName"))),
         }),
       ).annotate({ identifier: "UsagePaygoResultItem" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
-      return S.suspend(() =>
-        __S(33, __c4, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PaygoUsageResponse" });
+      return S.Array(__S(33, __c4, 1));
     case 3:
+      return S.suspend(() =>
+        __S(34, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PaygoUsageResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1573,7 +1356,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ProfilesUpdateBillingEmailRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1622,7 +1405,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ProfilesUpdateBillingEmailResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1649,7 +1436,11 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/billing/profile", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateProfileRequest" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1661,7 +1452,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageInfoV1Request",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          covered: S.Boolean,
+          subscriptions: __S(65, __c8, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UsageGetAccountUsageInfoV1Response",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1672,22 +1476,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageInfoV1ResponseSubscriptionsItem",
       });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          covered: S.Boolean,
-          subscriptions: __S(40, __c5, 0),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UsageGetAccountUsageInfoV1Response",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1699,7 +1494,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageV1Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billedCost: S.Number.pipe(T.Body("BilledCost")),
@@ -1733,15 +1528,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageV1ResultItem",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
-        __S(44, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(74, __c9, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageGetAccountUsageV1Response",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1753,15 +1552,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageV2Request",
       });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(47, __c5, 7));
     case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.Record(S.String, __S(81, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
@@ -1793,7 +1588,7 @@ function __c6(j: number): any {
           regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
           subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
           subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(__S(48, __c6, 0)).pipe(T.Body("Tags"))),
+          tags: S.optional(S.NullOr(__S(82, __c10, 2)).pipe(T.Body("Tags"))),
           xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
           xProductCategoryName: S.optional(
             S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
@@ -1806,15 +1601,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UsageGetAccountUsageV2ResultItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(83, __c10, 3));
+    case 5:
       return S.suspend(() =>
-        __S(50, __c6, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(84, __c10, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageGetAccountUsageV2Response",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1824,16 +1623,272 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UsagePaygoInfoRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           covered: S.Boolean,
-          subscriptions: __S(40, __c5, 0),
+          subscriptions: __S(65, __c8, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UsagePaygoInfoResponse" });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/billing/profile/payment-method",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateProfilesPaymentMethodRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientSecret: S.optional(S.NullOr(S.String).pipe(T.Body("client_secret"))),
+          intentType: S.optional(S.NullOr(S.String).pipe(T.Body("intent_type"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateProfilesPaymentMethodResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({ method: "DELETE", uri: "/accounts/{account_id}/billing/profile", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteProfileRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteProfileResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/bad-debt", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBadDebtRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          alreadyPaid: S.optional(S.NullOr(S.Number).pipe(T.Body("already_paid"))),
+          badDebtStatus: S.optional(S.NullOr(S.String).pipe(T.Body("bad_debt_status"))),
+          invoices: S.optional(S.NullOr(__S(121, __c15, 1))),
+          totalDebtAmount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_debt_amount"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBadDebtResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(S.String)),
+          amount: S.optional(S.NullOr(S.Number)),
+          amountToPay: S.optional(S.NullOr(S.Number).pipe(T.Body("amount_to_pay"))),
+          currency: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          externalInvoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("external_invoice_id"))),
+          hostedInvoiceUrl: S.optional(S.NullOr(S.String).pipe(T.Body("hosted_invoice_url"))),
+          invoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("invoice_id"))),
+          occurredAt: S.optional(S.NullOr(S.String).pipe(T.Body("occurred_at"))),
+          receiptId: S.optional(S.NullOr(S.String).pipe(T.Body("receipt_id"))),
+          source: S.optional(S.NullOr(S.String)),
+          sourceInvoiceId: S.optional(S.NullOr(S.String).pipe(T.Body("source_invoice_id"))),
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetBadDebtResponseInvoicesItem",
+      });
+    case 1:
+      return S.Array(__S(120, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/credits", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCreditRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          confirmedBalanceCents: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("confirmed_balance_cents")),
+          ),
+          currency: S.optional(S.NullOr(S.String)),
+          daysRemaining: S.optional(S.NullOr(S.Number).pipe(T.Body("days_remaining"))),
+          eligible: S.optional(S.NullOr(S.Boolean)),
+          hasRecord: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_record"))),
+          originalAmountCents: S.optional(S.NullOr(S.Number).pipe(T.Body("original_amount_cents"))),
+          percentConsumed: S.optional(S.NullOr(S.Number).pipe(T.Body("percent_consumed"))),
+          projectedDepletionDate: S.optional(
+            S.NullOr(S.String).pipe(T.Body("projected_depletion_date")),
+          ),
+          validFrom: S.optional(S.NullOr(S.String).pipe(T.Body("valid_from"))),
+          validTo: S.optional(S.NullOr(S.String).pipe(T.Body("valid_to"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCreditResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billing/profile", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetProfileRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicKey: S.String.pipe(T.Label("public_key")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/billing/rate_plans/{public_key}", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRatePlanRequest" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          components: S.optional(S.NullOr(__S(146, __c18, 2))),
+          currency: S.optional(S.NullOr(S.String)),
+          publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRatePlanResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/billing/unpaid-invoice",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetUnpaidInvoiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          invoices: S.optional(S.NullOr(__S(121, __c15, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetUnpaidInvoiceResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/billable/usage", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetUsageRequest" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.Record(S.String, __S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
+          chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
+          chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
+          chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
+          chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
+          consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
+          consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
+          hostProviderName: S.String.pipe(T.Body("HostProviderName")),
+          invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
+          serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
+          xBillableMetricId: S.String.pipe(T.Body("x_BillableMetricId")),
+          billedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("BilledCost"))),
+          billingAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("BillingAccountId"))),
+          billingAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("BillingAccountName"))),
+          billingCurrency: S.optional(S.NullOr(S.String).pipe(T.Body("BillingCurrency"))),
+          billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
+          billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
+          chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
+          contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
+          contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
+          effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
+          listCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ListCost"))),
+          listUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ListUnitPrice"))),
+          pricingQuantity: S.optional(S.NullOr(S.Number).pipe(T.Body("PricingQuantity"))),
+          pricingUnit: S.optional(S.NullOr(S.String).pipe(T.Body("PricingUnit"))),
+          regionId: S.optional(S.NullOr(S.String).pipe(T.Body("RegionId"))),
+          regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
+          subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
+          subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
+          tags: S.optional(S.NullOr(__S(162, __c20, 2)).pipe(T.Body("Tags"))),
+          xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
+          xProductCategoryName: S.optional(
+            S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
+          ),
+          xProductFamilyId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ProductFamilyId"))),
+          xProductFamilyName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ProductFamilyName"))),
+          xZoneId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneId"))),
+          xZoneName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneName"))),
+        }),
+      ).annotate({ identifier: "UsageGetResultItem" });
+    case 4:
+      return S.Array(__S(163, __c20, 3));
+    case 5:
+      return S.suspend(() =>
+        __S(164, __c20, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetUsageResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

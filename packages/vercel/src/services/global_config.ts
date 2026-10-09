@@ -419,8 +419,8 @@ export const createEdgeConfig: API.OperationMethod<
   CreateEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateEdgeConfigRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateEdgeConfigResponse>,
+  input: __S(129, __c16, 1) as any as S.Schema<CreateEdgeConfigRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<CreateEdgeConfigResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -440,8 +440,8 @@ export const createEdgeConfigToken: API.OperationMethod<
   CreateEdgeConfigTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateEdgeConfigTokenRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateEdgeConfigTokenResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateEdgeConfigTokenRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateEdgeConfigTokenResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const deleteEdgeConfig: API.OperationMethod<
   DeleteEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteEdgeConfigRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteEdgeConfigResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteEdgeConfigRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteEdgeConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const deleteEdgeConfigSchema: API.OperationMethod<
   DeleteEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteEdgeConfigSchemaRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteEdgeConfigSchemaResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteEdgeConfigSchemaRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteEdgeConfigSchemaResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const deleteEdgeConfigTokens: API.OperationMethod<
   DeleteEdgeConfigTokensError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteEdgeConfigTokensRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteEdgeConfigTokensResponse>,
+  input: __S(177, __c22, 1) as any as S.Schema<DeleteEdgeConfigTokensRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteEdgeConfigTokensResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const getEdgeConfig: API.OperationMethod<
   GetEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetEdgeConfigRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetEdgeConfigResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEdgeConfigRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetEdgeConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const getEdgeConfigBackup: API.OperationMethod<
   GetEdgeConfigBackupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetEdgeConfigBackupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetEdgeConfigBackupResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetEdgeConfigBackupRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetEdgeConfigBackupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const getEdgeConfigBackups: API.OperationMethod<
   GetEdgeConfigBackupsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetEdgeConfigBackupsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetEdgeConfigBackupsResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<GetEdgeConfigBackupsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetEdgeConfigBackupsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const getEdgeConfigItem: API.OperationMethod<
   GetEdgeConfigItemError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetEdgeConfigItemRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GlobalConfigItem>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetEdgeConfigItemRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GlobalConfigItem>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -572,8 +572,8 @@ export const getEdgeConfigItems: API.OperationMethod<
   GetEdgeConfigItemsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetEdgeConfigItemsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetEdgeConfigItemsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetEdgeConfigItemsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetEdgeConfigItemsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -587,8 +587,8 @@ export const getEdgeConfigs: API.OperationMethod<
   GetEdgeConfigsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetEdgeConfigsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetEdgeConfigsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetEdgeConfigsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetEdgeConfigsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const getEdgeConfigSchema: API.OperationMethod<
   GetEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetEdgeConfigSchemaRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetEdgeConfigSchemaResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetEdgeConfigSchemaRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetEdgeConfigSchemaResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const getEdgeConfigToken: API.OperationMethod<
   GetEdgeConfigTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetEdgeConfigTokenRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GlobalConfigToken>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetEdgeConfigTokenRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GlobalConfigToken>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -632,8 +632,8 @@ export const getEdgeConfigTokens: API.OperationMethod<
   GetEdgeConfigTokensError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetEdgeConfigTokensRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetEdgeConfigTokensResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetEdgeConfigTokensRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetEdgeConfigTokensResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const patchEdgeConfigItems: API.OperationMethod<
   PatchEdgeConfigItemsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<PatchEdgeConfigItemsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PatchEdgeConfigItemsResponse>,
+  input: __S(97, __c12, 1) as any as S.Schema<PatchEdgeConfigItemsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<PatchEdgeConfigItemsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -674,8 +674,8 @@ export const patchEdgeConfigSchema: API.OperationMethod<
   PatchEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PatchEdgeConfigSchemaRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<PatchEdgeConfigSchemaResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<PatchEdgeConfigSchemaRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<PatchEdgeConfigSchemaResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const restoreEdgeConfigBackup: API.OperationMethod<
   RestoreEdgeConfigBackupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<RestoreEdgeConfigBackupRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<RestoreEdgeConfigBackupResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<RestoreEdgeConfigBackupRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<RestoreEdgeConfigBackupResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -716,8 +716,8 @@ export const updateEdgeConfig: API.OperationMethod<
   UpdateEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateEdgeConfigRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateEdgeConfigResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateEdgeConfigRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateEdgeConfigResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -727,96 +727,6 @@ export const updateEdgeConfig: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          items: S.optional(__S(0, __c0, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/global-config", code: 200 })),
-      ).annotate({ identifier: "CreateEdgeConfigRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          createdBy: S.optional(S.String),
-          digest: S.String,
-          id: S.String,
-          itemCount: S.Number,
-          ownerId: S.String,
-          sizeInBytes: S.Number,
-          slug: S.String,
-          updatedAt: S.Number,
-        }),
-      ).annotate({ identifier: "CreateEdgeConfigResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          edgeConfigId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          label: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/global-config/{edgeConfigId}/token", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEdgeConfigTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          token: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEdgeConfigTokenResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          edgeConfigId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}", code: 200 })),
-      ).annotate({ identifier: "DeleteEdgeConfigRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteEdgeConfigResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          edgeConfigId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}/schema", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteEdgeConfigSchemaRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          edgeConfigId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          tokens: S.optional(__S(8, __c1, 0)),
-          ids: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}/tokens", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteEdgeConfigTokensRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -824,7 +734,11 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/global-config/{edgeConfigId}", code: 200 })),
       ).annotate({ identifier: "GetEdgeConfigRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -841,7 +755,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigBackupRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetEdgeConfigBackupResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           itemsBytes: S.optional(S.Number),
@@ -852,11 +774,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigBackupResponseBodyCase0Metadata",
       });
-    case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetEdgeConfigBackupResponse",
-      });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -871,23 +789,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigBackupsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(16, __c2, 0)),
           id: S.String,
           lastModified: S.Number,
         }),
       ).annotate({
         identifier: "GetEdgeConfigBackupsResponseBackupsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           hasNext: S.Boolean,
@@ -896,16 +810,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigBackupsResponsePagination",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          backups: __S(16, __c2, 0),
-          pagination: __S(17, __c2, 1),
+          backups: __S(19, __c2, 3),
+          pagination: __S(20, __c2, 4),
         }),
       ).annotate({
         identifier: "GetEdgeConfigBackupsResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -920,7 +838,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEdgeConfigItemRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
@@ -931,7 +853,11 @@ function __c2(j: number): any {
           value: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "GlobalConfigItem" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -943,15 +869,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigItemsRequest",
       });
-    case 6:
-      return S.Array(__S(20, __c2, 4));
-    case 7:
-      return S.suspend(() => __S(22, __c2, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
+      return S.suspend(() => __S(41, __c5, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigItemsResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -977,12 +903,16 @@ function __c3(j: number): any {
         identifier: "GetEdgeConfigsResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(49, __c6, 1));
     case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(50, __c6, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigsResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -994,11 +924,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigSchemaRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigSchemaResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -1015,7 +953,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEdgeConfigTokenRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
@@ -1028,7 +970,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GlobalConfigToken" });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1043,27 +985,31 @@ function __c4(j: number): any {
         identifier: "GetEdgeConfigTokensRequest",
       });
     case 1:
-      return S.Array(__S(31, __c3, 7));
+      return S.Array(__S(80, __c10, 0));
     case 2:
-      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(89, __c11, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigTokensResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          items: __S(35, __c4, 3),
+          items: __S(96, __c12, 0),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/global-config/{edgeConfigId}/items", code: 200 }),
         ),
       ).annotate({
         identifier: "PatchEdgeConfigItemsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1071,7 +1017,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchEdgeConfigItemsResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -1085,7 +1035,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchEdgeConfigSchemaRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -1102,11 +1056,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RestoreEdgeConfigBackupRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           digest: S.String,
@@ -1117,7 +1067,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RestoreEdgeConfigBackupResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
@@ -1127,7 +1081,120 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UpdateEdgeConfigRequest" });
   }
 }
-
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          items: S.optional(__S(128, __c16, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/global-config", code: 200 })),
+      ).annotate({ identifier: "CreateEdgeConfigRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          createdBy: S.optional(S.String),
+          digest: S.String,
+          id: S.String,
+          itemCount: S.Number,
+          ownerId: S.String,
+          sizeInBytes: S.Number,
+          slug: S.String,
+          updatedAt: S.Number,
+        }),
+      ).annotate({ identifier: "CreateEdgeConfigResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          edgeConfigId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          label: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/global-config/{edgeConfigId}/token", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEdgeConfigTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          token: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEdgeConfigTokenResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          edgeConfigId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}", code: 200 })),
+      ).annotate({ identifier: "DeleteEdgeConfigRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEdgeConfigResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          edgeConfigId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}/schema", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteEdgeConfigSchemaRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          edgeConfigId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          tokens: S.optional(__S(176, __c22, 0)),
+          ids: S.optional(__S(176, __c22, 0)),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}/tokens", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteEdgeConfigTokensRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

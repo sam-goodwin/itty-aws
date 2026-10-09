@@ -211,8 +211,8 @@ export const deleteHumanLoop: API.OperationMethod<
   DeleteHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteHumanLoopRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteHumanLoopResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteHumanLoopRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -240,8 +240,8 @@ export const describeHumanLoop: API.OperationMethod<
   DescribeHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DescribeHumanLoopRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DescribeHumanLoopResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DescribeHumanLoopRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<DescribeHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -269,8 +269,8 @@ export const listHumanLoops: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HumanLoopSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListHumanLoopsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListHumanLoopsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListHumanLoopsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListHumanLoopsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -304,8 +304,8 @@ export const startHumanLoop: API.OperationMethod<
   StartHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<StartHumanLoopRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<StartHumanLoopResponse>,
+  input: __S(43, __c5, 3) as any as S.Schema<StartHumanLoopRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<StartHumanLoopResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -333,8 +333,8 @@ export const stopHumanLoop: API.OperationMethod<
   StopHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<StopHumanLoopRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopHumanLoopResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<StopHumanLoopRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<StopHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -351,6 +351,16 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ HumanLoopName: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/human-loops/stop" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopHumanLoopRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ HumanLoopName: S.String.pipe(T.HttpLabel("HumanLoopName")) }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/human-loops/{HumanLoopName}" }),
@@ -362,11 +372,19 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteHumanLoopRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteHumanLoopResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ HumanLoopName: S.String.pipe(T.HttpLabel("HumanLoopName")) }).pipe(
           T.all(
@@ -379,11 +397,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeHumanLoopRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ OutputS3Uri: S.optional(S.String) })).annotate({
         identifier: "HumanLoopOutput",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -393,12 +411,16 @@ function __c0(j: number): any {
           HumanLoopName: S.optional(S.String),
           HumanLoopArn: S.optional(S.String),
           FlowDefinitionArn: S.optional(S.String),
-          HumanLoopOutput: S.optional(__S(3, __c0, 3)),
+          HumanLoopOutput: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "DescribeHumanLoopResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CreationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
@@ -415,7 +437,7 @@ function __c0(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/human-loops" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListHumanLoopsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           HumanLoopName: S.optional(S.String),
@@ -425,53 +447,46 @@ function __c0(j: number): any {
           FlowDefinitionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "HumanLoopSummary" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          HumanLoopSummaries: S.optional(__S(7, __c0, 7)),
+          HumanLoopSummaries: S.optional(__S(34, __c4, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListHumanLoopsResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ InputContent: S.optional(S.String) })).annotate({
         identifier: "HumanLoopInput",
       });
-    case 2:
+    case 1:
       return S.Array(S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ ContentClassifiers: S.optional(__S(10, __c1, 2)) }),
+        S.Struct({ ContentClassifiers: S.optional(__S(41, __c5, 1)) }),
       ).annotate({ identifier: "HumanLoopDataAttributes" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           HumanLoopName: S.optional(S.String),
           FlowDefinitionArn: S.optional(S.String),
-          HumanLoopInput: S.optional(__S(9, __c1, 1)),
-          DataAttributes: S.optional(__S(11, __c1, 3)),
+          HumanLoopInput: S.optional(__S(40, __c5, 0)),
+          DataAttributes: S.optional(__S(42, __c5, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/human-loops" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartHumanLoopRequest" });
-    case 5:
+    case 4:
       return S.suspend(() => S.Struct({ HumanLoopArn: S.optional(S.String) })).annotate({
         identifier: "StartHumanLoopResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ HumanLoopName: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/human-loops/stop" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StopHumanLoopRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

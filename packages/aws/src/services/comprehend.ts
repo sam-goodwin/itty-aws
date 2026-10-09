@@ -113,7 +113,7 @@ export class InvalidRequestException
         }),
       ),
       Detail: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(288, __c36, 0)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(848, __c53, 0)).annotate({
           identifier: "InvalidRequestDetail",
         }),
       ),
@@ -1962,8 +1962,8 @@ export const batchDetectDominantLanguage: API.OperationMethod<
   BatchDetectDominantLanguageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchDetectDominantLanguageRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchDetectDominantLanguageResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BatchDetectDominantLanguageRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<BatchDetectDominantLanguageResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -1993,8 +1993,8 @@ export const batchDetectEntities: API.OperationMethod<
   BatchDetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchDetectEntitiesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchDetectEntitiesResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<BatchDetectEntitiesRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<BatchDetectEntitiesResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2023,8 +2023,8 @@ export const batchDetectKeyPhrases: API.OperationMethod<
   BatchDetectKeyPhrasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BatchDetectKeyPhrasesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BatchDetectKeyPhrasesResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<BatchDetectKeyPhrasesRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<BatchDetectKeyPhrasesResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2055,8 +2055,8 @@ export const batchDetectSentiment: API.OperationMethod<
   BatchDetectSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BatchDetectSentimentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<BatchDetectSentimentResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<BatchDetectSentimentRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<BatchDetectSentimentResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2087,8 +2087,8 @@ export const batchDetectSyntax: API.OperationMethod<
   BatchDetectSyntaxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<BatchDetectSyntaxRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<BatchDetectSyntaxResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<BatchDetectSyntaxRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<BatchDetectSyntaxResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2120,8 +2120,8 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
   BatchDetectTargetedSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<BatchDetectTargetedSentimentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<BatchDetectTargetedSentimentResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<BatchDetectTargetedSentimentRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<BatchDetectTargetedSentimentResponse>,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2170,8 +2170,8 @@ export const classifyDocument: API.OperationMethod<
   ClassifyDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ClassifyDocumentRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ClassifyDocumentResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ClassifyDocumentRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<ClassifyDocumentResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2201,8 +2201,8 @@ export const containsPiiEntities: API.OperationMethod<
   ContainsPiiEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ContainsPiiEntitiesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ContainsPiiEntitiesResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ContainsPiiEntitiesRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<ContainsPiiEntitiesResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2234,8 +2234,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CreateDatasetResponse>,
+  input: __S(342, __c21, 6) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(343, __c21, 7) as any as S.Schema<CreateDatasetResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2273,8 +2273,8 @@ export const createDocumentClassifier: API.OperationMethod<
   CreateDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateDocumentClassifierRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<CreateDocumentClassifierResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateDocumentClassifierRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<CreateDocumentClassifierResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2311,8 +2311,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CreateEndpointResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateEndpointRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<CreateEndpointResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2349,8 +2349,8 @@ export const createEntityRecognizer: API.OperationMethod<
   CreateEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateEntityRecognizerRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateEntityRecognizerResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateEntityRecognizerRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<CreateEntityRecognizerResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2401,8 +2401,8 @@ export const createFlywheel: API.OperationMethod<
   CreateFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<CreateFlywheelRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CreateFlywheelResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<CreateFlywheelRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<CreateFlywheelResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2445,8 +2445,8 @@ export const deleteDocumentClassifier: API.OperationMethod<
   DeleteDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DeleteDocumentClassifierRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DeleteDocumentClassifierResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteDocumentClassifierRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteDocumentClassifierResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2478,8 +2478,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DeleteEndpointResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteEndpointResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2517,8 +2517,8 @@ export const deleteEntityRecognizer: API.OperationMethod<
   DeleteEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteEntityRecognizerRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DeleteEntityRecognizerResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteEntityRecognizerRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteEntityRecognizerResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2553,8 +2553,8 @@ export const deleteFlywheel: API.OperationMethod<
   DeleteFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteFlywheelRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DeleteFlywheelResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteFlywheelRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteFlywheelResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2582,8 +2582,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2607,8 +2607,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DescribeDatasetRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DescribeDatasetResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DescribeDatasetRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<DescribeDatasetResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2636,8 +2636,8 @@ export const describeDocumentClassificationJob: API.OperationMethod<
   DescribeDocumentClassificationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DescribeDocumentClassificationJobRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DescribeDocumentClassificationJobResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DescribeDocumentClassificationJobRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<DescribeDocumentClassificationJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2664,8 +2664,8 @@ export const describeDocumentClassifier: API.OperationMethod<
   DescribeDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DescribeDocumentClassifierRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DescribeDocumentClassifierResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DescribeDocumentClassifierRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<DescribeDocumentClassifierResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2693,8 +2693,8 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
   DescribeDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DescribeDominantLanguageDetectionJobRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DescribeDominantLanguageDetectionJobResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DescribeDominantLanguageDetectionJobRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<DescribeDominantLanguageDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2723,8 +2723,8 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DescribeEndpointRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<DescribeEndpointResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<DescribeEndpointRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<DescribeEndpointResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2752,8 +2752,8 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
   DescribeEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DescribeEntitiesDetectionJobRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DescribeEntitiesDetectionJobResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DescribeEntitiesDetectionJobRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<DescribeEntitiesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2781,8 +2781,8 @@ export const describeEntityRecognizer: API.OperationMethod<
   DescribeEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DescribeEntityRecognizerRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<DescribeEntityRecognizerResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DescribeEntityRecognizerRequest>,
+  output: __S(897, __c56, 1) as any as S.Schema<DescribeEntityRecognizerResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2810,8 +2810,8 @@ export const describeEventsDetectionJob: API.OperationMethod<
   DescribeEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DescribeEventsDetectionJobRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<DescribeEventsDetectionJobResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DescribeEventsDetectionJobRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<DescribeEventsDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2840,8 +2840,8 @@ export const describeFlywheel: API.OperationMethod<
   DescribeFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DescribeFlywheelRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<DescribeFlywheelResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DescribeFlywheelRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<DescribeFlywheelResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2870,8 +2870,8 @@ export const describeFlywheelIteration: API.OperationMethod<
   DescribeFlywheelIterationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DescribeFlywheelIterationRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DescribeFlywheelIterationResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DescribeFlywheelIterationRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<DescribeFlywheelIterationResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2899,8 +2899,8 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
   DescribeKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DescribeKeyPhrasesDetectionJobRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<DescribeKeyPhrasesDetectionJobResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DescribeKeyPhrasesDetectionJobRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<DescribeKeyPhrasesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2928,8 +2928,8 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
   DescribePiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<DescribePiiEntitiesDetectionJobRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DescribePiiEntitiesDetectionJobResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DescribePiiEntitiesDetectionJobRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<DescribePiiEntitiesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2956,8 +2956,8 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DescribeResourcePolicyRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<DescribeResourcePolicyResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<DescribeResourcePolicyRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<DescribeResourcePolicyResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2980,8 +2980,8 @@ export const describeSentimentDetectionJob: API.OperationMethod<
   DescribeSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DescribeSentimentDetectionJobRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DescribeSentimentDetectionJobResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<DescribeSentimentDetectionJobRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<DescribeSentimentDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3009,8 +3009,8 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
   DescribeTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DescribeTargetedSentimentDetectionJobRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<DescribeTargetedSentimentDetectionJobResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<DescribeTargetedSentimentDetectionJobRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<DescribeTargetedSentimentDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3038,8 +3038,8 @@ export const describeTopicsDetectionJob: API.OperationMethod<
   DescribeTopicsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DescribeTopicsDetectionJobRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<DescribeTopicsDetectionJobResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<DescribeTopicsDetectionJobRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<DescribeTopicsDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3066,8 +3066,8 @@ export const detectDominantLanguage: API.OperationMethod<
   DetectDominantLanguageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DetectDominantLanguageRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DetectDominantLanguageResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<DetectDominantLanguageRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<DetectDominantLanguageResponse>,
   errors: [InternalServerException, InvalidRequestException, TextSizeLimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3107,8 +3107,8 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DetectEntitiesRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<DetectEntitiesResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<DetectEntitiesRequest>,
+  output: __S(1209, __c75, 9) as any as S.Schema<DetectEntitiesResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3136,8 +3136,8 @@ export const detectKeyPhrases: API.OperationMethod<
   DetectKeyPhrasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DetectKeyPhrasesRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DetectKeyPhrasesResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DetectKeyPhrasesRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<DetectKeyPhrasesResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3165,8 +3165,8 @@ export const detectPiiEntities: API.OperationMethod<
   DetectPiiEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DetectPiiEntitiesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<DetectPiiEntitiesResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DetectPiiEntitiesRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<DetectPiiEntitiesResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3194,8 +3194,8 @@ export const detectSentiment: API.OperationMethod<
   DetectSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DetectSentimentRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DetectSentimentResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DetectSentimentRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DetectSentimentResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3224,8 +3224,8 @@ export const detectSyntax: API.OperationMethod<
   DetectSyntaxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DetectSyntaxRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<DetectSyntaxResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<DetectSyntaxRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<DetectSyntaxResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3254,8 +3254,8 @@ export const detectTargetedSentiment: API.OperationMethod<
   DetectTargetedSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DetectTargetedSentimentRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DetectTargetedSentimentResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<DetectTargetedSentimentRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<DetectTargetedSentimentResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3284,8 +3284,8 @@ export const detectToxicContent: API.OperationMethod<
   DetectToxicContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DetectToxicContentRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DetectToxicContentResponse>,
+  input: __S(1298, __c81, 2) as any as S.Schema<DetectToxicContentRequest>,
+  output: __S(1301, __c81, 5) as any as S.Schema<DetectToxicContentResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3324,8 +3324,8 @@ export const importModel: API.OperationMethod<
   ImportModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ImportModelRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ImportModelResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ImportModelRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<ImportModelResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3360,8 +3360,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ListDatasetsResponse>,
+  input: __S(1329, __c83, 1) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(1331, __c83, 3) as any as S.Schema<ListDatasetsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3395,8 +3395,8 @@ export const listDocumentClassificationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListDocumentClassificationJobsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<ListDocumentClassificationJobsResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListDocumentClassificationJobsRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<ListDocumentClassificationJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3429,8 +3429,8 @@ export const listDocumentClassifiers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListDocumentClassifiersRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListDocumentClassifiersResponse>,
+  input: __S(1377, __c86, 1) as any as S.Schema<ListDocumentClassifiersRequest>,
+  output: __S(1379, __c86, 3) as any as S.Schema<ListDocumentClassifiersResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3462,8 +3462,8 @@ export const listDocumentClassifierSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListDocumentClassifierSummariesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListDocumentClassifierSummariesResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListDocumentClassifierSummariesRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<ListDocumentClassifierSummariesResponse>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3491,8 +3491,8 @@ export const listDominantLanguageDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListDominantLanguageDetectionJobsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<ListDominantLanguageDetectionJobsResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListDominantLanguageDetectionJobsRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<ListDominantLanguageDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3525,8 +3525,8 @@ export const listEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListEndpointsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<ListEndpointsResponse>,
+  input: __S(1425, __c89, 1) as any as S.Schema<ListEndpointsRequest>,
+  output: __S(1427, __c89, 3) as any as S.Schema<ListEndpointsResponse>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3555,8 +3555,8 @@ export const listEntitiesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListEntitiesDetectionJobsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListEntitiesDetectionJobsResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListEntitiesDetectionJobsRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<ListEntitiesDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3595,8 +3595,8 @@ export const listEntityRecognizers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<ListEntityRecognizersRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<ListEntityRecognizersResponse>,
+  input: __S(1457, __c91, 1) as any as S.Schema<ListEntityRecognizersRequest>,
+  output: __S(1459, __c91, 3) as any as S.Schema<ListEntityRecognizersResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3628,8 +3628,8 @@ export const listEntityRecognizerSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListEntityRecognizerSummariesRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<ListEntityRecognizerSummariesResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListEntityRecognizerSummariesRequest>,
+  output: __S(1475, __c92, 3) as any as S.Schema<ListEntityRecognizerSummariesResponse>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3658,8 +3658,8 @@ export const listEventsDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<ListEventsDetectionJobsRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<ListEventsDetectionJobsResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListEventsDetectionJobsRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<ListEventsDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3696,8 +3696,8 @@ export const listFlywheelIterationHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ListFlywheelIterationHistoryRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<ListFlywheelIterationHistoryResponse>,
+  input: __S(1521, __c95, 1) as any as S.Schema<ListFlywheelIterationHistoryRequest>,
+  output: __S(1523, __c95, 3) as any as S.Schema<ListFlywheelIterationHistoryResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3731,8 +3731,8 @@ export const listFlywheels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListFlywheelsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ListFlywheelsResponse>,
+  input: __S(1537, __c96, 1) as any as S.Schema<ListFlywheelsRequest>,
+  output: __S(1540, __c96, 4) as any as S.Schema<ListFlywheelsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3765,8 +3765,8 @@ export const listKeyPhrasesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListKeyPhrasesDetectionJobsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListKeyPhrasesDetectionJobsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListKeyPhrasesDetectionJobsRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<ListKeyPhrasesDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3799,8 +3799,8 @@ export const listPiiEntitiesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PiiEntitiesDetectionJobProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListPiiEntitiesDetectionJobsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ListPiiEntitiesDetectionJobsResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListPiiEntitiesDetectionJobsRequest>,
+  output: __S(1586, __c99, 2) as any as S.Schema<ListPiiEntitiesDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3834,8 +3834,8 @@ export const listSentimentDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListSentimentDetectionJobsRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<ListSentimentDetectionJobsResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListSentimentDetectionJobsRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<ListSentimentDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3866,8 +3866,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3890,8 +3890,8 @@ export const listTargetedSentimentDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListTargetedSentimentDetectionJobsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListTargetedSentimentDetectionJobsResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListTargetedSentimentDetectionJobsRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<ListTargetedSentimentDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3924,8 +3924,8 @@ export const listTopicsDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListTopicsDetectionJobsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ListTopicsDetectionJobsResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListTopicsDetectionJobsRequest>,
+  output: __S(1650, __c103, 2) as any as S.Schema<ListTopicsDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3958,8 +3958,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3987,8 +3987,8 @@ export const startDocumentClassificationJob: API.OperationMethod<
   StartDocumentClassificationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<StartDocumentClassificationJobRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<StartDocumentClassificationJobResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<StartDocumentClassificationJobRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<StartDocumentClassificationJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4023,8 +4023,8 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
   StartDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<StartDominantLanguageDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartDominantLanguageDetectionJobResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<StartDominantLanguageDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartDominantLanguageDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4062,8 +4062,8 @@ export const startEntitiesDetectionJob: API.OperationMethod<
   StartEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<StartEntitiesDetectionJobRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<StartEntitiesDetectionJobResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<StartEntitiesDetectionJobRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<StartEntitiesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4097,8 +4097,8 @@ export const startEventsDetectionJob: API.OperationMethod<
   StartEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<StartEventsDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartEventsDetectionJobResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<StartEventsDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartEventsDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4131,8 +4131,8 @@ export const startFlywheelIteration: API.OperationMethod<
   StartFlywheelIterationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<StartFlywheelIterationRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<StartFlywheelIterationResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<StartFlywheelIterationRequest>,
+  output: __S(1761, __c110, 1) as any as S.Schema<StartFlywheelIterationResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4164,8 +4164,8 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
   StartKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<StartKeyPhrasesDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartKeyPhrasesDetectionJobResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<StartKeyPhrasesDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartKeyPhrasesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4196,8 +4196,8 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
   StartPiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<StartPiiEntitiesDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartPiiEntitiesDetectionJobResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<StartPiiEntitiesDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartPiiEntitiesDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4230,8 +4230,8 @@ export const startSentimentDetectionJob: API.OperationMethod<
   StartSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<StartSentimentDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartSentimentDetectionJobResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<StartSentimentDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartSentimentDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4264,8 +4264,8 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
   StartTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<StartTargetedSentimentDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartTargetedSentimentDetectionJobResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<StartTargetedSentimentDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartTargetedSentimentDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4297,8 +4297,8 @@ export const startTopicsDetectionJob: API.OperationMethod<
   StartTopicsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<StartTopicsDetectionJobRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<StartTopicsDetectionJobResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<StartTopicsDetectionJobRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<StartTopicsDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4338,8 +4338,8 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
   StopDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<StopDominantLanguageDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopDominantLanguageDetectionJobResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<StopDominantLanguageDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopDominantLanguageDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4372,8 +4372,8 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
   StopEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<StopEntitiesDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopEntitiesDetectionJobResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<StopEntitiesDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopEntitiesDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4395,8 +4395,8 @@ export const stopEventsDetectionJob: API.OperationMethod<
   StopEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<StopEventsDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopEventsDetectionJobResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<StopEventsDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopEventsDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4434,8 +4434,8 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
   StopKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<StopKeyPhrasesDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopKeyPhrasesDetectionJobResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<StopKeyPhrasesDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopKeyPhrasesDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4456,8 +4456,8 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
   StopPiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<StopPiiEntitiesDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopPiiEntitiesDetectionJobResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<StopPiiEntitiesDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopPiiEntitiesDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4490,8 +4490,8 @@ export const stopSentimentDetectionJob: API.OperationMethod<
   StopSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<StopSentimentDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopSentimentDetectionJobResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<StopSentimentDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopSentimentDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4524,8 +4524,8 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
   StopTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<StopTargetedSentimentDetectionJobRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopTargetedSentimentDetectionJobResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<StopTargetedSentimentDetectionJobRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<StopTargetedSentimentDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4553,8 +4553,8 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
   StopTrainingDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<StopTrainingDocumentClassifierRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopTrainingDocumentClassifierResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<StopTrainingDocumentClassifierRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<StopTrainingDocumentClassifierResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4587,8 +4587,8 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
   StopTrainingEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<StopTrainingEntityRecognizerRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopTrainingEntityRecognizerResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<StopTrainingEntityRecognizerRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<StopTrainingEntityRecognizerResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4618,8 +4618,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -4648,8 +4648,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -4681,8 +4681,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<UpdateEndpointResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateEndpointResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4713,8 +4713,8 @@ export const updateFlywheel: API.OperationMethod<
   UpdateFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<UpdateFlywheelRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<UpdateFlywheelResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<UpdateFlywheelRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<UpdateFlywheelResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4731,30 +4731,73 @@ export const updateFlywheel: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SensitiveString);
+      return S.suspend(() =>
+        S.Struct({
+          EndpointArn: S.String,
+          DesiredModelArn: S.optional(S.String),
+          DesiredInferenceUnits: S.optional(S.Number),
+          DesiredDataAccessRoleArn: S.optional(S.String),
+          FlywheelArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateEndpointRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ DesiredModelArn: S.optional(S.String) })).annotate({
+        identifier: "UpdateEndpointResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ModelKmsKeyId: S.optional(S.String),
+          VolumeKmsKeyId: S.optional(S.String),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "UpdateDataSecurityConfig" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0) }).pipe(
+        S.Struct({
+          FlywheelArn: S.String,
+          ActiveModelArn: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          DataSecurityConfig: S.optional(__S(16, __c1, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateFlywheelRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TextList: __S(48, __c3, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDetectDominantLanguageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ LanguageCode: S.optional(S.String), Score: S.optional(S.Number) }),
-      ).annotate({ identifier: "DominantLanguage" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), Languages: S.optional(__S(3, __c0, 3)) }),
+        S.Struct({ Index: S.optional(S.Number), Languages: S.optional(__S(65, __c4, 1)) }),
       ).annotate({
         identifier: "BatchDetectDominantLanguageItemResult",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(34, __c2, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectDominantLanguageResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Index: S.optional(S.Number),
@@ -4762,27 +4805,49 @@ function __c0(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchItemError" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 2:
+      return S.Array(__S(49, __c3, 1));
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResultList: __S(5, __c0, 5), ErrorList: __S(7, __c0, 7) }),
-      ).annotate({
-        identifier: "BatchDetectDominantLanguageResponse",
-      });
+        S.Struct({ LanguageCode: S.optional(S.String), Score: S.optional(S.Number) }),
+      ).annotate({ identifier: "DominantLanguage" });
     case 1:
+      return S.Array(__S(64, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: __S(48, __c3, 0), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDetectEntitiesRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Index: S.optional(S.Number), Entities: S.optional(__S(101, __c6, 5)) }),
+      ).annotate({
+        identifier: "BatchDetectEntitiesItemResult",
+      });
     case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(82, __c5, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectEntitiesResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChildBlockId: S.optional(S.String),
@@ -4790,20 +4855,20 @@ function __c1(j: number): any {
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ChildBlock" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           BlockId: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          ChildBlocks: S.optional(__S(11, __c1, 3)),
+          ChildBlocks: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "BlockReference" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
@@ -4811,38 +4876,42 @@ function __c1(j: number): any {
           Text: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          BlockReferences: S.optional(__S(13, __c1, 5)),
+          BlockReferences: S.optional(__S(99, __c6, 3)),
         }),
       ).annotate({ identifier: "Entity" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 5:
+      return S.Array(__S(100, __c6, 4));
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), Entities: S.optional(__S(15, __c1, 7)) }),
-      ).annotate({
-        identifier: "BatchDetectEntitiesItemResult",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResultList: __S(17, __c2, 1), ErrorList: __S(7, __c0, 7) }),
-      ).annotate({
-        identifier: "BatchDetectEntitiesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: __S(48, __c3, 0), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDetectKeyPhrasesRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Index: S.optional(S.Number), KeyPhrases: S.optional(__S(129, __c8, 1)) }),
+      ).annotate({
+        identifier: "BatchDetectKeyPhrasesItemResult",
+      });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(114, __c7, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectKeyPhrasesResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
@@ -4851,35 +4920,43 @@ function __c2(j: number): any {
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "KeyPhrase" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), KeyPhrases: S.optional(__S(21, __c2, 5)) }),
-      ).annotate({
-        identifier: "BatchDetectKeyPhrasesItemResult",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 1:
+      return S.Array(__S(128, __c8, 0));
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResultList: __S(23, __c2, 7), ErrorList: __S(7, __c0, 7) }),
-      ).annotate({
-        identifier: "BatchDetectKeyPhrasesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: __S(48, __c3, 0), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDetectSentimentRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Index: S.optional(S.Number),
+          Sentiment: S.optional(S.String),
+          SentimentScore: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDetectSentimentItemResult",
+      });
     case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(146, __c9, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectSentimentResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Positive: S.optional(S.Number),
@@ -4888,152 +4965,130 @@ function __c3(j: number): any {
           Mixed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SentimentScore" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          Index: S.optional(S.Number),
-          Sentiment: S.optional(S.String),
-          SentimentScore: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchDetectSentimentItemResult",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResultList: __S(28, __c3, 4), ErrorList: __S(7, __c0, 7) }),
-      ).annotate({
-        identifier: "BatchDetectSentimentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: __S(48, __c3, 0), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchDetectSyntaxRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Index: S.optional(S.Number), SyntaxTokens: S.optional(__S(194, __c12, 2)) }),
+      ).annotate({
+        identifier: "BatchDetectSyntaxItemResult",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(178, __c11, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectSyntaxResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Tag: S.optional(S.String), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "PartOfSpeechTag" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TokenId: S.optional(S.Number),
           Text: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          PartOfSpeech: S.optional(__S(31, __c3, 7)),
+          PartOfSpeech: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({ identifier: "SyntaxToken" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(193, __c12, 1));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), SyntaxTokens: S.optional(__S(33, __c4, 1)) }),
-      ).annotate({
-        identifier: "BatchDetectSyntaxItemResult",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResultList: __S(35, __c4, 3), ErrorList: __S(7, __c0, 7) }),
-      ).annotate({
-        identifier: "BatchDetectSyntaxResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ TextList: __S(0, __c0, 0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: __S(48, __c3, 0), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchDetectTargetedSentimentRequest",
       });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Index: S.optional(S.Number), Entities: S.optional(__S(244, __c15, 4)) }),
+      ).annotate({
+        identifier: "BatchDetectTargetedSentimentItemResult",
+      });
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResultList: __S(210, __c13, 2), ErrorList: __S(50, __c3, 2) }),
+      ).annotate({
+        identifier: "BatchDetectTargetedSentimentResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Sentiment: S.optional(S.String),
-          SentimentScore: S.optional(__S(26, __c3, 2)),
+          SentimentScore: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "MentionSentiment" });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.Number);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
           GroupScore: S.optional(S.Number),
           Text: S.optional(S.String),
           Type: S.optional(S.String),
-          MentionSentiment: S.optional(__S(39, __c4, 7)),
+          MentionSentiment: S.optional(__S(224, __c14, 0)),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TargetedSentimentMention" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DescriptiveMentionIndex: S.optional(__S(38, __c4, 6)),
-          Mentions: S.optional(__S(41, __c5, 1)),
+          DescriptiveMentionIndex: S.optional(__S(240, __c15, 0)),
+          Mentions: S.optional(__S(242, __c15, 2)),
         }),
       ).annotate({ identifier: "TargetedSentimentEntity" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Index: S.optional(S.Number),
-          Entities: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchDetectTargetedSentimentItemResult",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ResultList: __S(45, __c5, 5),
-          ErrorList: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "BatchDetectTargetedSentimentResponse",
-      });
-    case 7:
-      return S.Array(S.String);
+      return S.Array(__S(243, __c15, 3));
   }
 }
-function __c6(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DocumentReadAction: S.String,
-          DocumentReadMode: S.optional(S.String),
-          FeatureTypes: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "DocumentReaderConfig" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(SensitiveString),
           EndpointArn: S.String,
           Bytes: S.optional(T.Blob),
-          DocumentReaderConfig: S.optional(__S(48, __c6, 0)),
+          DocumentReaderConfig: S.optional(__S(273, __c17, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ClassifyDocumentRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -5041,43 +5096,8 @@ function __c6(j: number): any {
           Page: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DocumentClass" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Page: S.optional(S.Number), Count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ExtractedCharactersListItem",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Pages: S.optional(S.Number),
-          ExtractedCharacters: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "DocumentMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Page: S.optional(S.Number), Type: S.optional(S.String) }),
-      ).annotate({ identifier: "DocumentTypeListItem" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Page: S.optional(S.Number),
-          ErrorCode: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorsListItem" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(257, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5087,19 +5107,72 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "WarningsListItem" });
     case 4:
-      return S.Array(__S(59, __c7, 3));
+      return S.Array(__S(259, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Classes: S.optional(__S(51, __c6, 3)),
-          Labels: S.optional(__S(51, __c6, 3)),
-          DocumentMetadata: S.optional(__S(54, __c6, 6)),
-          DocumentType: S.optional(__S(56, __c7, 0)),
-          Errors: S.optional(__S(58, __c7, 2)),
-          Warnings: S.optional(__S(60, __c7, 4)),
+          Classes: S.optional(__S(258, __c16, 2)),
+          Labels: S.optional(__S(258, __c16, 2)),
+          DocumentMetadata: S.optional(__S(290, __c18, 2)),
+          DocumentType: S.optional(__S(292, __c18, 4)),
+          Errors: S.optional(__S(294, __c18, 6)),
+          Warnings: S.optional(__S(260, __c16, 4)),
         }),
       ).annotate({ identifier: "ClassifyDocumentResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DocumentReadAction: S.String,
+          DocumentReadMode: S.optional(S.String),
+          FeatureTypes: S.optional(__S(272, __c17, 0)),
+        }),
+      ).annotate({ identifier: "DocumentReaderConfig" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Page: S.optional(S.Number), Count: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ExtractedCharactersListItem",
+      });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Pages: S.optional(S.Number),
+          ExtractedCharacters: S.optional(__S(289, __c18, 1)),
+        }),
+      ).annotate({ identifier: "DocumentMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Page: S.optional(S.Number), Type: S.optional(S.String) }),
+      ).annotate({ identifier: "DocumentTypeListItem" });
+    case 4:
+      return S.Array(__S(291, __c18, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Page: S.optional(S.Number),
+          ErrorCode: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorsListItem" });
     case 6:
+      return S.Array(__S(293, __c18, 5));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String, LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5107,26 +5180,28 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ContainsPiiEntitiesRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ Labels: S.optional(__S(321, __c20, 1)) })).annotate({
+        identifier: "ContainsPiiEntitiesResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "EntityLabel" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
   }
 }
-function __c8(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ Labels: S.optional(__S(64, __c8, 0)) })).annotate({
-        identifier: "ContainsPiiEntitiesResponse",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          AttributeNames: __S(66, __c8, 2),
+          AttributeNames: __S(368, __c23, 0),
           S3Uri: S.String,
           AnnotationDataS3Uri: S.optional(S.String),
           SourceDocumentsS3Uri: S.optional(S.String),
@@ -5135,75 +5210,125 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DatasetAugmentedManifestsListItem",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ S3Uri: S.String, LabelDelimiter: S.optional(S.String) }),
       ).annotate({
         identifier: "DatasetDocumentClassifierInputDataConfig",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ S3Uri: S.String })).annotate({
-        identifier: "DatasetEntityRecognizerAnnotations",
-      });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({ S3Uri: S.String, InputFormat: S.optional(S.String) }),
       ).annotate({
         identifier: "DatasetEntityRecognizerDocuments",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Annotations: S.optional(__S(70, __c8, 6)),
-          Documents: __S(71, __c8, 7),
-          EntityList: S.optional(__S(70, __c8, 6)),
+          Annotations: S.optional(__S(384, __c24, 0)),
+          Documents: __S(339, __c21, 3),
+          EntityList: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({
         identifier: "DatasetEntityRecognizerInputDataConfig",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          AugmentedManifests: S.optional(__S(68, __c8, 4)),
+          AugmentedManifests: S.optional(__S(337, __c21, 1)),
           DataFormat: S.optional(S.String),
-          DocumentClassifierInputDataConfig: S.optional(__S(69, __c8, 5)),
-          EntityRecognizerInputDataConfig: S.optional(__S(72, __c9, 0)),
+          DocumentClassifierInputDataConfig: S.optional(__S(338, __c21, 2)),
+          EntityRecognizerInputDataConfig: S.optional(__S(340, __c21, 4)),
         }),
       ).annotate({ identifier: "DatasetInputDataConfig" });
-    case 2:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "Tag",
-      });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.String,
           DatasetName: S.String,
           DatasetType: S.optional(S.String),
           Description: S.optional(S.String),
-          InputDataConfig: __S(73, __c9, 1),
+          InputDataConfig: __S(341, __c21, 5),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75, __c9, 3)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatasetRequest" });
-    case 5:
+    case 7:
       return S.suspend(() => S.Struct({ DatasetArn: S.optional(S.String) })).annotate({
         identifier: "CreateDatasetResponse",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ S3Uri: S.String })).annotate({
+        identifier: "DatasetEntityRecognizerAnnotations",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DocumentClassifierName: S.String,
+          VersionName: S.optional(S.String),
+          DataAccessRoleArn: S.String,
+          Tags: S.optional(__S(353, __c22, 1)),
+          InputDataConfig: __S(448, __c28, 0),
+          OutputDataConfig: S.optional(__S(449, __c28, 1)),
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          LanguageCode: S.String,
+          VolumeKmsKeyId: S.optional(S.String),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Mode: S.optional(S.String),
+          ModelKmsKeyId: S.optional(S.String),
+          ModelPolicy: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDocumentClassifierRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ DocumentClassifierArn: S.optional(S.String) })).annotate({
+        identifier: "CreateDocumentClassifierResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SecurityGroupIds: __S(368, __c23, 0), Subnets: __S(368, __c23, 0) }),
+      ).annotate({ identifier: "VpcConfig" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
           Split: S.optional(S.String),
-          AttributeNames: __S(66, __c8, 2),
+          AttributeNames: __S(368, __c23, 0),
           AnnotationDataS3Uri: S.optional(S.String),
           SourceDocumentsS3Uri: S.optional(S.String),
           DocumentType: S.optional(S.String),
@@ -5211,34 +5336,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "AugmentedManifestsListItem",
       });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ S3Uri: S.String, TestS3Uri: S.optional(S.String) }),
       ).annotate({
         identifier: "DocumentClassifierDocuments",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataFormat: S.optional(S.String),
           S3Uri: S.optional(S.String),
           TestS3Uri: S.optional(S.String),
           LabelDelimiter: S.optional(S.String),
-          AugmentedManifests: S.optional(__S(79, __c9, 7)),
+          AugmentedManifests: S.optional(__S(433, __c27, 1)),
           DocumentType: S.optional(S.String),
-          Documents: S.optional(__S(80, __c10, 0)),
-          DocumentReaderConfig: S.optional(__S(48, __c6, 0)),
+          Documents: S.optional(__S(434, __c27, 2)),
+          DocumentReaderConfig: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({
         identifier: "DocumentClassifierInputDataConfig",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.optional(S.String),
@@ -5248,61 +5373,67 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DocumentClassifierOutputDataConfig",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ SecurityGroupIds: __S(66, __c8, 2), Subnets: __S(66, __c8, 2) }),
-      ).annotate({ identifier: "VpcConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DocumentClassifierName: S.String,
-          VersionName: S.optional(S.String),
-          DataAccessRoleArn: S.String,
-          Tags: S.optional(__S(75, __c9, 3)),
-          InputDataConfig: __S(81, __c10, 1),
-          OutputDataConfig: S.optional(__S(82, __c10, 2)),
-          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LanguageCode: S.String,
-          VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Mode: S.optional(S.String),
-          ModelKmsKeyId: S.optional(S.String),
-          ModelPolicy: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDocumentClassifierRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ DocumentClassifierArn: S.optional(S.String) })).annotate({
-        identifier: "CreateDocumentClassifierResponse",
-      });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.String,
           ModelArn: S.optional(S.String),
           DesiredInferenceUnits: S.Number,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75, __c9, 3)),
+          Tags: S.optional(__S(353, __c22, 1)),
           DataAccessRoleArn: S.optional(S.String),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEndpointRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ EndpointArn: S.optional(S.String), ModelArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateEndpointResponse" });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecognizerName: S.String,
+          VersionName: S.optional(S.String),
+          DataAccessRoleArn: S.String,
+          Tags: S.optional(__S(353, __c22, 1)),
+          InputDataConfig: __S(513, __c32, 1),
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          LanguageCode: S.String,
+          VolumeKmsKeyId: S.optional(S.String),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          ModelKmsKeyId: S.optional(S.String),
+          ModelPolicy: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEntityRecognizerRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ EntityRecognizerArn: S.optional(S.String) })).annotate({
+        identifier: "CreateEntityRecognizerResponse",
+      });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Type: S.String })).annotate({
         identifier: "EntityTypesListItem",
       });
     case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+      return S.Array(__S(496, __c31, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
@@ -5312,91 +5443,77 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EntityRecognizerDocuments",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DataFormat: S.optional(S.String),
-          EntityTypes: __S(89, __c11, 1),
-          Documents: S.optional(__S(90, __c11, 2)),
-          Annotations: S.optional(__S(80, __c10, 0)),
-          EntityList: S.optional(__S(70, __c8, 6)),
-          AugmentedManifests: S.optional(__S(79, __c9, 7)),
+          EntityTypes: __S(497, __c31, 1),
+          Documents: S.optional(__S(512, __c32, 0)),
+          Annotations: S.optional(__S(434, __c27, 2)),
+          EntityList: S.optional(__S(384, __c24, 0)),
+          AugmentedManifests: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({
         identifier: "EntityRecognizerInputDataConfig",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RecognizerName: S.String,
-          VersionName: S.optional(S.String),
-          DataAccessRoleArn: S.String,
-          Tags: S.optional(__S(75, __c9, 3)),
-          InputDataConfig: __S(91, __c11, 3),
-          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LanguageCode: S.String,
-          VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          ModelKmsKeyId: S.optional(S.String),
-          ModelPolicy: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEntityRecognizerRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ EntityRecognizerArn: S.optional(S.String) })).annotate({
-        identifier: "CreateEntityRecognizerResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Mode: S.String, Labels: S.optional(__S(66, __c8, 2)) }),
-      ).annotate({
-        identifier: "DocumentClassificationConfig",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ EntityTypes: __S(89, __c11, 1) })).annotate({
-        identifier: "EntityRecognitionConfig",
-      });
   }
 }
-function __c12(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          LanguageCode: S.String,
-          DocumentClassificationConfig: S.optional(__S(94, __c11, 6)),
-          EntityRecognitionConfig: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "TaskConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ModelKmsKeyId: S.optional(S.String),
-          VolumeKmsKeyId: S.optional(S.String),
-          DataLakeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "DataSecurityConfig" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           FlywheelName: S.String,
           ActiveModelArn: S.optional(S.String),
           DataAccessRoleArn: S.String,
-          TaskConfig: S.optional(__S(96, __c12, 0)),
+          TaskConfig: S.optional(__S(546, __c34, 2)),
           ModelType: S.optional(S.String),
           DataLakeS3Uri: S.String,
-          DataSecurityConfig: S.optional(__S(97, __c12, 1)),
+          DataSecurityConfig: S.optional(__S(547, __c34, 3)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75, __c9, 3)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFlywheelRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.optional(S.String), ActiveModelArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateFlywheelResponse" });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Mode: S.String, Labels: S.optional(__S(368, __c23, 0)) }),
+      ).annotate({
+        identifier: "DocumentClassificationConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ EntityTypes: __S(497, __c31, 1) })).annotate({
+        identifier: "EntityRecognitionConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          LanguageCode: S.String,
+          DocumentClassificationConfig: S.optional(__S(544, __c34, 0)),
+          EntityRecognitionConfig: S.optional(__S(545, __c34, 1)),
+        }),
+      ).annotate({ identifier: "TaskConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ModelKmsKeyId: S.optional(S.String),
+          VolumeKmsKeyId: S.optional(S.String),
+          DataLakeKmsKeyId: S.optional(S.String),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "DataSecurityConfig" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DocumentClassifierArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5404,23 +5521,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDocumentClassifierRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDocumentClassifierResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EndpointArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteEndpointRequest" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEndpointResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5430,13 +5559,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteEntityRecognizerRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteFlywheelRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, PolicyRevisionId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5444,13 +5581,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatasetArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeDatasetRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DatasetProperties: S.optional(__S(688, __c43, 0)) }),
+      ).annotate({ identifier: "DescribeDatasetResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DatasetArn: S.optional(S.String),
@@ -5465,11 +5614,11 @@ function __c13(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DatasetProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DatasetProperties: S.optional(__S(108, __c13, 4)) }),
-      ).annotate({ identifier: "DescribeDatasetResponse" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5477,23 +5626,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeDocumentClassificationJobRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DocumentClassificationJobProperties: S.optional(__S(736, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "DescribeDocumentClassificationJobResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
           InputFormat: S.optional(S.String),
-          DocumentReaderConfig: S.optional(__S(48, __c6, 0)),
+          DocumentReaderConfig: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "InputDataConfig" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ S3Uri: S.String, KmsKeyId: S.optional(S.String) }),
       ).annotate({ identifier: "OutputDataConfig" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -5504,25 +5665,21 @@ function __c14(j: number): any {
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DocumentClassifierArn: S.optional(S.String),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
           FlywheelArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DocumentClassificationJobProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DocumentClassificationJobProperties: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "DescribeDocumentClassificationJobResponse",
-      });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DocumentClassifierArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5530,7 +5687,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DescribeDocumentClassifierRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DocumentClassifierProperties: S.optional(__S(770, __c48, 2)) }),
+      ).annotate({
+        identifier: "DescribeDocumentClassifierResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Accuracy: S.optional(S.Number),
@@ -5545,16 +5712,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ClassifierEvaluationMetrics",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NumberOfLabels: S.optional(S.Number),
           NumberOfTrainedDocuments: S.optional(S.Number),
           NumberOfTestDocuments: S.optional(S.Number),
-          EvaluationMetrics: S.optional(__S(116, __c14, 4)),
+          EvaluationMetrics: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "ClassifierMetadata" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DocumentClassifierArn: S.optional(S.String),
@@ -5565,12 +5732,12 @@ function __c14(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(81, __c10, 1)),
-          OutputDataConfig: S.optional(__S(82, __c10, 2)),
-          ClassifierMetadata: S.optional(__S(117, __c14, 5)),
+          InputDataConfig: S.optional(__S(448, __c28, 0)),
+          OutputDataConfig: S.optional(__S(449, __c28, 1)),
+          ClassifierMetadata: S.optional(__S(769, __c48, 1)),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
           Mode: S.optional(S.String),
           ModelKmsKeyId: S.optional(S.String),
           VersionName: S.optional(S.String),
@@ -5580,15 +5747,9 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DocumentClassifierProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DocumentClassifierProperties: S.optional(__S(118, __c14, 6)) }),
-      ).annotate({
-        identifier: "DescribeDocumentClassifierResponse",
-      });
   }
 }
-function __c15(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5601,6 +5762,18 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          DominantLanguageDetectionJobProperties: S.optional(__S(800, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "DescribeDominantLanguageDetectionJobResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
@@ -5608,30 +5781,34 @@ function __c15(j: number): any {
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({
         identifier: "DominantLanguageDetectionJobProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DominantLanguageDetectionJobProperties: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "DescribeDominantLanguageDetectionJobResponse",
-      });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EndpointArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeEndpointRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EndpointProperties: S.optional(__S(832, __c52, 0)) }),
+      ).annotate({ identifier: "DescribeEndpointResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EndpointArn: S.optional(S.String),
@@ -5648,11 +5825,19 @@ function __c15(j: number): any {
           FlywheelArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ EndpointProperties: S.optional(__S(124, __c15, 4)) }),
-      ).annotate({ identifier: "DescribeEndpointResponse" });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Reason: S.optional(S.String) })).annotate({
+        identifier: "InvalidRequestDetail",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5660,7 +5845,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DescribeEntitiesDetectionJobRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EntitiesDetectionJobProperties: S.optional(__S(880, __c55, 0)) }),
+      ).annotate({
+        identifier: "DescribeEntitiesDetectionJobResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -5671,12 +5866,12 @@ function __c15(j: number): any {
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EntityRecognizerArn: S.optional(S.String),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
           LanguageCode: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
           FlywheelArn: S.optional(S.String),
         }),
       ).annotate({
@@ -5684,15 +5879,9 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ EntitiesDetectionJobProperties: S.optional(__S(127, __c15, 7)) }),
-      ).annotate({
-        identifier: "DescribeEntitiesDetectionJobResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ EntityRecognizerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5700,7 +5889,17 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeEntityRecognizerRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EntityRecognizerProperties: S.optional(__S(917, __c57, 5)) }),
+      ).annotate({
+        identifier: "DescribeEntityRecognizerResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Precision: S.optional(S.Number),
@@ -5710,32 +5909,32 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "EntityRecognizerEvaluationMetrics",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          EvaluationMetrics: S.optional(__S(130, __c16, 2)),
+          EvaluationMetrics: S.optional(__S(912, __c57, 0)),
           NumberOfTrainMentions: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "EntityRecognizerMetadataEntityTypesListItem",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NumberOfTrainedDocuments: S.optional(S.Number),
           NumberOfTestDocuments: S.optional(S.Number),
-          EvaluationMetrics: S.optional(__S(130, __c16, 2)),
-          EntityTypes: S.optional(__S(132, __c16, 4)),
+          EvaluationMetrics: S.optional(__S(912, __c57, 0)),
+          EntityTypes: S.optional(__S(914, __c57, 2)),
         }),
       ).annotate({ identifier: "EntityRecognizerMetadata" });
-    case 6:
+    case 4:
       return S.suspend(() => S.Struct({ FlywheelStatsS3Prefix: S.optional(S.String) })).annotate({
         identifier: "EntityRecognizerOutputDataConfig",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           EntityRecognizerArn: S.optional(S.String),
@@ -5746,31 +5945,25 @@ function __c16(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(91, __c11, 3)),
-          RecognizerMetadata: S.optional(__S(133, __c16, 5)),
+          InputDataConfig: S.optional(__S(513, __c32, 1)),
+          RecognizerMetadata: S.optional(__S(915, __c57, 3)),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
           ModelKmsKeyId: S.optional(S.String),
           VersionName: S.optional(S.String),
           SourceModelArn: S.optional(S.String),
           FlywheelArn: S.optional(S.String),
-          OutputDataConfig: S.optional(__S(134, __c16, 6)),
+          OutputDataConfig: S.optional(__S(916, __c57, 4)),
         }),
       ).annotate({
         identifier: "EntityRecognizerProperties",
       });
   }
 }
-function __c17(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ EntityRecognizerProperties: S.optional(__S(135, __c16, 7)) }),
-      ).annotate({
-        identifier: "DescribeEntityRecognizerResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5778,7 +5971,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeEventsDetectionJobRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EventsDetectionJobProperties: S.optional(__S(944, __c59, 0)) }),
+      ).annotate({
+        identifier: "DescribeEventsDetectionJobResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -5788,36 +5991,38 @@ function __c17(j: number): any {
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
           LanguageCode: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          TargetEventTypes: S.optional(__S(66, __c8, 2)),
+          TargetEventTypes: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({
         identifier: "EventsDetectionJobProperties",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ EventsDetectionJobProperties: S.optional(__S(138, __c17, 2)) }),
-      ).annotate({
-        identifier: "DescribeEventsDetectionJobResponse",
-      });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeFlywheelRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.optional(S.String),
           ActiveModelArn: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          TaskConfig: S.optional(__S(96, __c12, 0)),
+          TaskConfig: S.optional(__S(546, __c34, 2)),
           DataLakeS3Uri: S.optional(S.String),
-          DataSecurityConfig: S.optional(__S(97, __c12, 1)),
+          DataSecurityConfig: S.optional(__S(547, __c34, 3)),
           Status: S.optional(S.String),
           ModelType: S.optional(S.String),
           Message: S.optional(S.String),
@@ -5826,11 +6031,15 @@ function __c17(j: number): any {
           LatestFlywheelIteration: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlywheelProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ FlywheelProperties: S.optional(__S(141, __c17, 5)) }),
+        S.Struct({ FlywheelProperties: S.optional(__S(976, __c61, 0)) }),
       ).annotate({ identifier: "DescribeFlywheelResponse" });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.String, FlywheelIterationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5838,9 +6047,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeFlywheelIterationRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FlywheelIterationProperties: S.optional(__S(1009, __c63, 1)) }),
+      ).annotate({
+        identifier: "DescribeFlywheelIterationResponse",
+      });
   }
 }
-function __c18(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5863,21 +6078,19 @@ function __c18(j: number): any {
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           EvaluatedModelArn: S.optional(S.String),
-          EvaluatedModelMetrics: S.optional(__S(144, __c18, 0)),
+          EvaluatedModelMetrics: S.optional(__S(1008, __c63, 0)),
           TrainedModelArn: S.optional(S.String),
-          TrainedModelMetrics: S.optional(__S(144, __c18, 0)),
+          TrainedModelMetrics: S.optional(__S(1008, __c63, 0)),
           EvaluationManifestS3Prefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FlywheelIterationProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ FlywheelIterationProperties: S.optional(__S(145, __c18, 1)) }),
-      ).annotate({
-        identifier: "DescribeFlywheelIterationResponse",
-      });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5885,53 +6098,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DescribeKeyPhrasesDetectionJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          JobId: S.optional(S.String),
-          JobArn: S.optional(S.String),
-          JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
-          Message: S.optional(S.String),
-          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
-          LanguageCode: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "KeyPhrasesDetectionJobProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          KeyPhrasesDetectionJobProperties: S.optional(__S(148, __c18, 4)),
-        }),
+        S.Struct({ KeyPhrasesDetectionJobProperties: S.optional(__S(1040, __c65, 0)) }),
       ).annotate({
         identifier: "DescribeKeyPhrasesDetectionJobResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ JobId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribePiiEntitiesDetectionJobRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          PiiEntityTypes: S.optional(__S(47, __c5, 7)),
-          MaskMode: S.optional(S.String),
-          MaskCharacter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RedactionConfig" });
   }
 }
-function __c19(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5943,9 +6118,51 @@ function __c19(j: number): any {
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
-          RedactionConfig: S.optional(__S(151, __c18, 7)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
+          LanguageCode: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          VolumeKmsKeyId: S.optional(S.String),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "KeyPhrasesDetectionJobProperties",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribePiiEntitiesDetectionJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PiiEntitiesDetectionJobProperties: S.optional(__S(1072, __c67, 0)) }),
+      ).annotate({
+        identifier: "DescribePiiEntitiesDetectionJobResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.optional(S.String),
+          JobArn: S.optional(S.String),
+          JobName: S.optional(S.String),
+          JobStatus: S.optional(S.String),
+          Message: S.optional(S.String),
+          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
+          RedactionConfig: S.optional(__S(1088, __c68, 0)),
           LanguageCode: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
           Mode: S.optional(S.String),
@@ -5953,15 +6170,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PiiEntitiesDetectionJobProperties",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          PiiEntitiesDetectionJobProperties: S.optional(__S(152, __c19, 0)),
+          PiiEntityTypes: S.optional(__S(272, __c17, 0)),
+          MaskMode: S.optional(S.String),
+          MaskCharacter: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribePiiEntitiesDetectionJobResponse",
-      });
-    case 2:
+      ).annotate({ identifier: "RedactionConfig" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5969,7 +6194,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DescribeResourcePolicyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourcePolicy: S.optional(S.String),
@@ -5980,7 +6205,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DescribeResourcePolicyResponse",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5988,13 +6217,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DescribeSentimentDetectionJobRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ SentimentDetectionJobProperties: S.optional(__S(148, __c18, 4)) }),
+        S.Struct({ SentimentDetectionJobProperties: S.optional(__S(1040, __c65, 0)) }),
       ).annotate({
         identifier: "DescribeSentimentDetectionJobResponse",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6002,17 +6235,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DescribeTargetedSentimentDetectionJobRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TargetedSentimentDetectionJobProperties: S.optional(__S(148, __c18, 4)),
+          TargetedSentimentDetectionJobProperties: S.optional(__S(1040, __c65, 0)),
         }),
       ).annotate({
         identifier: "DescribeTargetedSentimentDetectionJobResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6024,6 +6257,16 @@ function __c20(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ TopicsDetectionJobProperties: S.optional(__S(1168, __c73, 0)) }),
+      ).annotate({
+        identifier: "DescribeTopicsDetectionJobResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
@@ -6032,23 +6275,21 @@ function __c20(j: number): any {
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111, __c13, 7)),
-          OutputDataConfig: S.optional(__S(112, __c14, 0)),
+          InputDataConfig: S.optional(__S(720, __c45, 0)),
+          OutputDataConfig: S.optional(__S(721, __c45, 1)),
           NumberOfTopics: S.optional(S.Number),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({
         identifier: "TopicsDetectionJobProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ TopicsDetectionJobProperties: S.optional(__S(161, __c20, 1)) }),
-      ).annotate({
-        identifier: "DescribeTopicsDetectionJobResponse",
-      });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6056,21 +6297,25 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DetectDominantLanguageRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Languages: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Languages: S.optional(__S(65, __c4, 1)) })).annotate({
         identifier: "DetectDominantLanguageResponse",
       });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(SensitiveString),
           LanguageCode: S.optional(S.String),
           EndpointArn: S.optional(S.String),
           Bytes: S.optional(T.Blob),
-          DocumentReaderConfig: S.optional(__S(48, __c6, 0)),
+          DocumentReaderConfig: S.optional(__S(273, __c17, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DetectEntitiesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Height: S.optional(S.Number),
@@ -6079,73 +6324,73 @@ function __c20(j: number): any {
           Width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BoundingBox" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({ X: S.optional(S.Number), Y: S.optional(S.Number) }),
       ).annotate({ identifier: "Point" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1202, __c75, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          BoundingBox: S.optional(__S(166, __c20, 6)),
-          Polygon: S.optional(__S(168, __c21, 0)),
+          BoundingBox: S.optional(__S(1201, __c75, 1)),
+          Polygon: S.optional(__S(1203, __c75, 3)),
         }),
       ).annotate({ identifier: "Geometry" });
-    case 2:
+    case 5:
       return S.suspend(() =>
-        S.Struct({ Ids: S.optional(__S(66, __c8, 2)), Type: S.optional(S.String) }),
+        S.Struct({ Ids: S.optional(__S(368, __c23, 0)), Type: S.optional(S.String) }),
       ).annotate({ identifier: "RelationshipsListItem" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(1205, __c75, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           BlockType: S.optional(S.String),
           Text: S.optional(S.String),
           Page: S.optional(S.Number),
-          Geometry: S.optional(__S(169, __c21, 1)),
-          Relationships: S.optional(__S(171, __c21, 3)),
+          Geometry: S.optional(__S(1204, __c75, 4)),
+          Relationships: S.optional(__S(1206, __c75, 6)),
         }),
       ).annotate({ identifier: "Block" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1207, __c75, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Entities: S.optional(__S(15, __c1, 7)),
-          DocumentMetadata: S.optional(__S(54, __c6, 6)),
-          DocumentType: S.optional(__S(56, __c7, 0)),
-          Blocks: S.optional(__S(173, __c21, 5)),
-          Errors: S.optional(__S(58, __c7, 2)),
+          Entities: S.optional(__S(101, __c6, 5)),
+          DocumentMetadata: S.optional(__S(290, __c18, 2)),
+          DocumentType: S.optional(__S(292, __c18, 4)),
+          Blocks: S.optional(__S(1208, __c75, 8)),
+          Errors: S.optional(__S(294, __c18, 6)),
         }),
       ).annotate({ identifier: "DetectEntitiesResponse" });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectKeyPhrasesRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ KeyPhrases: S.optional(__S(21, __c2, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ KeyPhrases: S.optional(__S(129, __c8, 1)) })).annotate({
         identifier: "DetectKeyPhrasesResponse",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String, LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectPiiEntitiesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
@@ -6154,31 +6399,39 @@ function __c22(j: number): any {
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PiiEntity" });
+    case 2:
+      return S.Array(__S(1233, __c77, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ Entities: S.optional(__S(179, __c22, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ Entities: S.optional(__S(1234, __c77, 2)) })).annotate({
         identifier: "DetectPiiEntitiesResponse",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectSentimentRequest" });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectSyntaxRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ SyntaxTokens: S.optional(__S(33, __c4, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ SyntaxTokens: S.optional(__S(194, __c12, 2)) })).annotate({
         identifier: "DetectSyntaxResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6189,36 +6442,40 @@ function __c23(j: number): any {
         identifier: "DetectTargetedSentimentRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Entities: S.optional(__S(43, __c5, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ Entities: S.optional(__S(244, __c15, 4)) })).annotate({
         identifier: "DetectTargetedSentimentResponse",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Text: SensitiveString })).annotate({
         identifier: "TextSegment",
       });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1296, __c81, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ TextSegments: __S(187, __c23, 3), LanguageCode: S.String }).pipe(
+        S.Struct({ TextSegments: __S(1297, __c81, 1), LanguageCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DetectToxicContentRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Labels: S.optional(__S(64, __c8, 0)), Toxicity: S.optional(S.Number) }),
+        S.Struct({ Labels: S.optional(__S(321, __c20, 1)), Toxicity: S.optional(S.Number) }),
       ).annotate({ identifier: "ToxicLabels" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ ResultList: S.optional(__S(190, __c23, 6)) })).annotate({
+    case 4:
+      return S.Array(__S(1299, __c81, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ ResultList: S.optional(__S(1300, __c81, 4)) })).annotate({
         identifier: "DetectToxicContentResponse",
       });
   }
 }
-function __c24(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6228,14 +6485,18 @@ function __c24(j: number): any {
           VersionName: S.optional(S.String),
           ModelKmsKeyId: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(75, __c9, 3)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportModelRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ModelArn: S.optional(S.String) })).annotate({
         identifier: "ImportModelResponse",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -6244,25 +6505,54 @@ function __c24(j: number): any {
           CreationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DatasetFilter" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.optional(S.String),
-          Filter: S.optional(__S(194, __c24, 2)),
+          Filter: S.optional(__S(1328, __c83, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDatasetsRequest" });
-    case 4:
-      return S.Array(__S(108, __c13, 4));
-    case 5:
+    case 2:
+      return S.Array(__S(688, __c43, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DatasetPropertiesList: S.optional(__S(196, __c24, 4)),
+          DatasetPropertiesList: S.optional(__S(1330, __c83, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filter: S.optional(__S(1360, __c85, 0)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDocumentClassificationJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DocumentClassificationJobPropertiesList: S.optional(__S(1345, __c84, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListDocumentClassificationJobsResponse",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
@@ -6273,32 +6563,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DocumentClassificationJobFilter",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDocumentClassificationJobsRequest",
-      });
   }
 }
-function __c25(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(113, __c14, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DocumentClassificationJobPropertiesList: S.optional(__S(200, __c25, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListDocumentClassificationJobsResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -6307,28 +6576,32 @@ function __c25(j: number): any {
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DocumentClassifierFilter" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(202, __c25, 2)),
+          Filter: S.optional(__S(1376, __c86, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDocumentClassifiersRequest",
       });
-    case 4:
-      return S.Array(__S(118, __c14, 6));
-    case 5:
+    case 2:
+      return S.Array(__S(770, __c48, 2));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassifierPropertiesList: S.optional(__S(204, __c25, 4)),
+          DocumentClassifierPropertiesList: S.optional(__S(1378, __c86, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDocumentClassifiersResponse",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6336,7 +6609,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListDocumentClassifierSummariesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DocumentClassifierName: S.optional(S.String),
@@ -6348,43 +6621,47 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DocumentClassifierSummary",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1393, __c87, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassifierSummariesList: S.optional(__S(208, __c26, 0)),
+          DocumentClassifierSummariesList: S.optional(__S(1394, __c87, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDocumentClassifierSummariesResponse",
       });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDominantLanguageDetectionJobsRequest",
       });
-    case 3:
-      return S.Array(__S(121, __c15, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DominantLanguageDetectionJobPropertiesList: S.optional(__S(211, __c26, 3)),
+          DominantLanguageDetectionJobPropertiesList: S.optional(__S(1409, __c88, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDominantLanguageDetectionJobsResponse",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ModelArn: S.optional(S.String),
@@ -6393,49 +6670,53 @@ function __c26(j: number): any {
           CreationTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EndpointFilter" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(213, __c26, 5)),
+          Filter: S.optional(__S(1424, __c89, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEndpointsRequest" });
-    case 7:
-      return S.Array(__S(124, __c15, 4));
+    case 2:
+      return S.Array(__S(832, __c52, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointPropertiesList: S.optional(__S(1426, __c89, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListEndpointsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EndpointPropertiesList: S.optional(__S(215, __c26, 7)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListEndpointsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListEntitiesDetectionJobsRequest",
       });
+    case 1:
+      return S.Array(__S(880, __c55, 0));
     case 2:
-      return S.Array(__S(127, __c15, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          EntitiesDetectionJobPropertiesList: S.optional(__S(218, __c27, 2)),
+          EntitiesDetectionJobPropertiesList: S.optional(__S(1441, __c90, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEntitiesDetectionJobsResponse",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -6444,22 +6725,22 @@ function __c27(j: number): any {
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EntityRecognizerFilter" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(220, __c27, 4)),
+          Filter: S.optional(__S(1456, __c91, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListEntityRecognizersRequest",
       });
-    case 6:
-      return S.Array(__S(135, __c16, 7));
-    case 7:
+    case 2:
+      return S.Array(__S(917, __c57, 5));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          EntityRecognizerPropertiesList: S.optional(__S(222, __c27, 6)),
+          EntityRecognizerPropertiesList: S.optional(__S(1458, __c91, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6467,7 +6748,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6488,17 +6769,46 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "EntityRecognizerSummary" });
     case 2:
-      return S.Array(__S(225, __c28, 1));
+      return S.Array(__S(1473, __c92, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EntityRecognizerSummariesList: S.optional(__S(226, __c28, 2)),
+          EntityRecognizerSummariesList: S.optional(__S(1474, __c92, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEntityRecognizerSummariesResponse",
       });
-    case 4:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filter: S.optional(__S(1504, __c94, 0)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEventsDetectionJobsRequest",
+      });
+    case 1:
+      return S.Array(__S(944, __c59, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EventsDetectionJobPropertiesList: S.optional(__S(1489, __c93, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEventsDetectionJobsResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
@@ -6507,30 +6817,9 @@ function __c28(j: number): any {
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EventsDetectionJobFilter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Filter: S.optional(__S(228, __c28, 4)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEventsDetectionJobsRequest",
-      });
-    case 6:
-      return S.Array(__S(138, __c17, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EventsDetectionJobPropertiesList: S.optional(__S(230, __c28, 6)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListEventsDetectionJobsResponse",
-      });
   }
 }
-function __c29(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6543,7 +6832,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.String,
-          Filter: S.optional(__S(232, __c29, 0)),
+          Filter: S.optional(__S(1520, __c95, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6551,17 +6840,21 @@ function __c29(j: number): any {
         identifier: "ListFlywheelIterationHistoryRequest",
       });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(1009, __c63, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FlywheelIterationPropertiesList: S.optional(__S(234, __c29, 2)),
+          FlywheelIterationPropertiesList: S.optional(__S(1522, __c95, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFlywheelIterationHistoryResponse",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -6569,15 +6862,15 @@ function __c29(j: number): any {
           CreationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "FlywheelFilter" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(236, __c29, 4)),
+          Filter: S.optional(__S(1536, __c96, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFlywheelsRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.optional(S.String),
@@ -6591,85 +6884,97 @@ function __c29(j: number): any {
           LatestFlywheelIteration: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlywheelSummary" });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
+    case 3:
+      return S.Array(__S(1538, __c96, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          FlywheelSummaryList: S.optional(__S(1539, __c96, 3)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListFlywheelsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FlywheelSummaryList: S.optional(__S(239, __c29, 7)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListFlywheelsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListKeyPhrasesDetectionJobsRequest",
       });
-    case 2:
-      return S.Array(__S(148, __c18, 4));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          KeyPhrasesDetectionJobPropertiesList: S.optional(__S(242, __c30, 2)),
+          KeyPhrasesDetectionJobPropertiesList: S.optional(__S(1568, __c98, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListKeyPhrasesDetectionJobsResponse",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1040, __c65, 0));
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPiiEntitiesDetectionJobsRequest",
       });
-    case 5:
-      return S.Array(__S(152, __c19, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(1072, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          PiiEntitiesDetectionJobPropertiesList: S.optional(__S(245, __c30, 5)),
+          PiiEntitiesDetectionJobPropertiesList: S.optional(__S(1585, __c99, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPiiEntitiesDetectionJobsResponse",
       });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListSentimentDetectionJobsRequest",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SentimentDetectionJobPropertiesList: S.optional(__S(242, __c30, 2)),
+          SentimentDetectionJobPropertiesList: S.optional(__S(1568, __c98, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSentimentDetectionJobsResponse",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6677,47 +6982,55 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(75, __c9, 3)) }),
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(353, __c22, 1)) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198, __c24, 6)),
+          Filter: S.optional(__S(1360, __c85, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListTargetedSentimentDetectionJobsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TargetedSentimentDetectionJobPropertiesList: S.optional(__S(242, __c30, 2)),
+          TargetedSentimentDetectionJobPropertiesList: S.optional(__S(1568, __c98, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTargetedSentimentDetectionJobsResponse",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(228, __c28, 4)),
+          Filter: S.optional(__S(1504, __c94, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListTopicsDetectionJobsRequest",
       });
-    case 6:
-      return S.Array(__S(161, __c20, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1168, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          TopicsDetectionJobPropertiesList: S.optional(__S(254, __c31, 6)),
+          TopicsDetectionJobPropertiesList: S.optional(__S(1649, __c103, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6725,7 +7038,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6739,24 +7052,28 @@ function __c32(j: number): any {
       return S.suspend(() => S.Struct({ PolicyRevisionId: S.optional(S.String) })).annotate({
         identifier: "PutResourcePolicyResponse",
       });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
           DocumentClassifierArn: S.optional(S.String),
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDocumentClassificationJobRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -6767,22 +7084,30 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "StartDocumentClassificationJobResponse",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDominantLanguageDetectionJobRequest",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -6792,25 +7117,29 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "StartDominantLanguageDetectionJobResponse",
       });
-    case 6:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           EntityRecognizerArn: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartEntitiesDetectionJobRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -6823,24 +7152,28 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          TargetEventTypes: __S(66, __c8, 2),
-          Tags: S.optional(__S(75, __c9, 3)),
+          TargetEventTypes: __S(368, __c23, 0),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartEventsDetectionJobRequest",
       });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.String, ClientRequestToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6848,95 +7181,115 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "StartFlywheelIterationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.optional(S.String), FlywheelIterationId: S.optional(S.String) }),
       ).annotate({
         identifier: "StartFlywheelIterationResponse",
       });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartKeyPhrasesDetectionJobRequest",
       });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           Mode: S.String,
-          RedactionConfig: S.optional(__S(151, __c18, 7)),
+          RedactionConfig: S.optional(__S(1088, __c68, 0)),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75, __c9, 3)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartPiiEntitiesDetectionJobRequest",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartSentimentDetectionJobRequest",
       });
-    case 6:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           LanguageCode: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartTargetedSentimentDetectionJobRequest",
       });
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111, __c13, 7),
-          OutputDataConfig: __S(112, __c14, 0),
+          InputDataConfig: __S(720, __c45, 0),
+          OutputDataConfig: __S(721, __c45, 1),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           NumberOfTopics: S.optional(S.Number),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-          Tags: S.optional(__S(75, __c9, 3)),
+          VpcConfig: S.optional(__S(416, __c26, 0)),
+          Tags: S.optional(__S(353, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartTopicsDetectionJobRequest",
       });
   }
 }
-function __c34(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6946,13 +7299,21 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopDominantLanguageDetectionJobRequest",
       });
-    case 1:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(S.String) }),
       ).annotate({
         identifier: "StopDominantLanguageDetectionJobResponse",
       });
-    case 2:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6960,7 +7321,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopEntitiesDetectionJobRequest",
       });
-    case 3:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6968,7 +7333,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopEventsDetectionJobRequest",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6976,7 +7345,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopKeyPhrasesDetectionJobRequest",
       });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6984,7 +7357,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopPiiEntitiesDetectionJobRequest",
       });
-    case 6:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6992,7 +7369,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StopSentimentDetectionJobRequest",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -7002,7 +7383,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7012,7 +7393,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "StopTrainingDocumentClassifierRequest",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EntityRecognizerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -7020,60 +7405,28 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "StopTrainingEntityRecognizerRequest",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(75, __c9, 3) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(353, __c22, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(66, __c8, 2) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(368, __c23, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EndpointArn: S.String,
-          DesiredModelArn: S.optional(S.String),
-          DesiredInferenceUnits: S.optional(S.Number),
-          DesiredDataAccessRoleArn: S.optional(S.String),
-          FlywheelArn: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateEndpointRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ DesiredModelArn: S.optional(S.String) })).annotate({
-        identifier: "UpdateEndpointResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ModelKmsKeyId: S.optional(S.String),
-          VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "UpdateDataSecurityConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FlywheelArn: S.String,
-          ActiveModelArn: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          DataSecurityConfig: S.optional(__S(286, __c35, 6)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateFlywheelRequest" });
   }
 }
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Reason: S.optional(S.String) })).annotate({
-        identifier: "InvalidRequestDetail",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1520,8 +1520,8 @@ export const analyzePackagesProjectsLocationsScans: API.OperationMethod<
   AnalyzePackagesProjectsLocationsScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AnalyzePackagesProjectsLocationsScansRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<Operation>,
+  input: __S(48, __c1, 16) as any as S.Schema<AnalyzePackagesProjectsLocationsScansRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1540,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1560,8 +1560,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Empty>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1575,8 +1575,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<Operation>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const listProjectsLocationsScansVulnerabilities: API.PaginatedOperationMe
   GcpOpContext,
   ListVulnerabilitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListProjectsLocationsScansVulnerabilitiesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ListVulnerabilitiesResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListProjectsLocationsScansVulnerabilitiesRequest>,
+  output: __S(441, __c13, 25) as any as S.Schema<ListVulnerabilitiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1629,8 +1629,8 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1642,13 +1642,32 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          timeout: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:wait",
+            baseUrl: "https://ondemandscanning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "WaitProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           source: S.optional(S.String),
           resourceUrl: S.optional(S.String),
           attachmentUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionSource" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1659,11 +1678,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BaseImage" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(34, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          baseImages: S.optional(__S(3, __c0, 3)),
+          baseImages: S.optional(__S(35, __c1, 3)),
           index: S.optional(S.Number),
           chainId: S.optional(S.String),
           diffId: S.optional(S.String),
@@ -1673,13 +1692,13 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          layerDetails: S.optional(__S(4, __c0, 4)),
+          layerDetails: S.optional(__S(36, __c1, 4)),
           filePath: S.optional(S.String),
           lineNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileLocation" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(37, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1689,32 +1708,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "LanguagePackageDependency",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          licenses: S.optional(__S(9, __c1, 1)),
+          licenses: S.optional(__S(128, __c4, 0)),
           name: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageVersion" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          binaryVersion: S.optional(__S(10, __c1, 2)),
-          sourceVersion: S.optional(__S(10, __c1, 2)),
+          binaryVersion: S.optional(__S(41, __c1, 9)),
+          sourceVersion: S.optional(__S(41, __c1, 9)),
         }),
       ).annotate({ identifier: "BinarySourceInfo" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(42, __c1, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -1723,48 +1736,44 @@ function __c1(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Maintainer" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           packageType: S.optional(S.String),
           os: S.optional(S.String),
           architecture: S.optional(S.String),
           package: S.optional(S.String),
-          ingestionSources: S.optional(__S(1, __c0, 1)),
-          fileLocation: S.optional(__S(6, __c0, 6)),
-          dependencyChain: S.optional(__S(8, __c1, 0)),
-          layerDetails: S.optional(__S(4, __c0, 4)),
-          binaryVersion: S.optional(__S(10, __c1, 2)),
-          binarySourceInfo: S.optional(__S(12, __c1, 4)),
+          ingestionSources: S.optional(__S(33, __c1, 1)),
+          fileLocation: S.optional(__S(38, __c1, 6)),
+          dependencyChain: S.optional(__S(40, __c1, 8)),
+          layerDetails: S.optional(__S(36, __c1, 4)),
+          binaryVersion: S.optional(__S(41, __c1, 9)),
+          binarySourceInfo: S.optional(__S(43, __c1, 11)),
           version: S.optional(S.String),
           cpeUri: S.optional(S.String),
           unused: S.optional(S.String),
-          sourceVersion: S.optional(__S(10, __c1, 2)),
-          licenses: S.optional(__S(9, __c1, 1)),
-          patchedCve: S.optional(__S(9, __c1, 1)),
-          maintainer: S.optional(__S(13, __c1, 5)),
+          sourceVersion: S.optional(__S(41, __c1, 9)),
+          licenses: S.optional(__S(128, __c4, 0)),
+          patchedCve: S.optional(__S(128, __c4, 0)),
+          maintainer: S.optional(__S(44, __c1, 12)),
           osVersion: S.optional(S.String),
           hashDigest: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageData" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
+      return S.Array(__S(45, __c1, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          packages: S.optional(__S(15, __c1, 7)),
+          packages: S.optional(__S(46, __c1, 14)),
           resourceUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzePackagesRequest" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c1, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1775,29 +1784,47 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AnalyzePackagesProjectsLocationsScansRequest",
       });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(19, __c2, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(18, __c2, 2)),
-          response: S.optional(__S(18, __c2, 2)),
+          metadata: S.optional(__S(96, __c3, 0)),
+          response: S.optional(__S(96, __c3, 0)),
           name: S.optional(S.String),
-          error: S.optional(__S(20, __c2, 4)),
+          error: S.optional(__S(98, __c3, 2)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(97, __c3, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1811,13 +1838,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1833,7 +1864,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1847,7 +1882,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1865,17 +1904,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(21, __c2, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(27, __c3, 3)),
+          operations: S.optional(__S(289, __c9, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(9, __c1, 1)),
+          unreachable: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1891,7 +1934,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsScansVulnerabilitiesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.String),
@@ -1902,54 +1945,50 @@ function __c3(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Version" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           comments: S.optional(S.String),
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "License" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cpeUri: S.optional(S.String),
-          version: S.optional(__S(30, __c3, 6)),
+          version: S.optional(__S(321, __c10, 1)),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(30, __c3, 6)),
-          license: S.optional(__S(31, __c3, 7)),
+          version: S.optional(__S(321, __c10, 1)),
+          license: S.optional(__S(322, __c10, 2)),
           name: S.optional(S.String),
           architecture: S.optional(S.String),
           cpeUri: S.optional(S.String),
-          location: S.optional(__S(33, __c4, 1)),
+          location: S.optional(__S(324, __c10, 4)),
           packageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageOccurrence" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           sig: S.optional(S.String),
           keyid: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvelopeSignature" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(326, __c10, 6));
+    case 8:
       return S.Record(S.String, S.String);
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          digest: S.optional(__S(37, __c4, 5)),
+          digest: S.optional(__S(328, __c10, 8)),
           location: S.optional(S.String),
           referrerId: S.optional(S.String),
           mimeType: S.optional(S.String),
@@ -1957,39 +1996,35 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SbomReferenceIntotoPredicate",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          digest: S.optional(__S(37, __c4, 5)),
+          digest: S.optional(__S(328, __c10, 8)),
         }),
       ).annotate({ identifier: "Subject" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(330, __c10, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          predicate: S.optional(__S(38, __c4, 6)),
+          predicate: S.optional(__S(329, __c10, 9)),
           predicateType: S.optional(S.String),
           _type: S.optional(S.String),
-          subject: S.optional(__S(40, __c5, 0)),
+          subject: S.optional(__S(331, __c10, 11)),
         }),
       ).annotate({
         identifier: "SbomReferenceIntotoPayload",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          signatures: S.optional(__S(36, __c4, 4)),
-          payload: S.optional(__S(41, __c5, 1)),
+          signatures: S.optional(__S(327, __c10, 7)),
+          payload: S.optional(__S(332, __c10, 12)),
           payloadType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBOMReferenceOccurrence" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           config: S.optional(S.String),
@@ -1997,11 +2032,11 @@ function __c5(j: number): any {
           deployTime: S.optional(S.String),
           userEmail: S.optional(S.String),
           platform: S.optional(S.String),
-          resourceUri: S.optional(__S(9, __c1, 1)),
+          resourceUri: S.optional(__S(128, __c4, 0)),
           address: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentOccurrence" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           cpeUri: S.optional(S.String),
@@ -2009,7 +2044,7 @@ function __c5(j: number): any {
           benchmarkDocument: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceVersion" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           displayCommand: S.optional(S.String),
@@ -2017,45 +2052,41 @@ function __c5(j: number): any {
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "NonCompliantFile" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 17:
+      return S.Array(__S(336, __c10, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(44, __c5, 4)),
+          version: S.optional(__S(335, __c10, 15)),
           nonComplianceReason: S.optional(S.String),
-          nonCompliantFiles: S.optional(__S(46, __c5, 6)),
+          nonCompliantFiles: S.optional(__S(337, __c10, 17)),
         }),
       ).annotate({ identifier: "ComplianceOccurrence" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          signatures: S.optional(__S(36, __c4, 4)),
+          signatures: S.optional(__S(327, __c10, 7)),
           payloadType: S.optional(S.String),
           payload: S.optional(S.String),
         }),
       ).annotate({ identifier: "Envelope" });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuilderConfig" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(19, __c2, 3)),
+          environment: S.optional(__S(97, __c3, 1)),
           type: S.optional(S.String),
           definedInMaterial: S.optional(S.String),
           entryPoint: S.optional(S.String),
-          arguments: S.optional(__S(19, __c2, 3)),
+          arguments: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "Recipe" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           environment: S.optional(S.Boolean),
@@ -2063,49 +2094,45 @@ function __c6(j: number): any {
           arguments: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Completeness" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           buildFinishedOn: S.optional(S.String),
-          completeness: S.optional(__S(51, __c6, 3)),
+          completeness: S.optional(__S(342, __c10, 22)),
           buildStartedOn: S.optional(S.String),
           reproducible: S.optional(S.Boolean),
           buildInvocationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Metadata" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          builderConfig: S.optional(__S(49, __c6, 1)),
-          materials: S.optional(__S(9, __c1, 1)),
-          recipe: S.optional(__S(50, __c6, 2)),
-          metadata: S.optional(__S(52, __c6, 4)),
+          builderConfig: S.optional(__S(340, __c10, 20)),
+          materials: S.optional(__S(128, __c4, 0)),
+          recipe: S.optional(__S(341, __c10, 21)),
+          metadata: S.optional(__S(343, __c10, 23)),
         }),
       ).annotate({ identifier: "InTotoProvenance" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          digest: S.optional(__S(37, __c4, 5)),
+          digest: S.optional(__S(328, __c10, 8)),
         }),
       ).annotate({ identifier: "Material" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
+      return S.Array(__S(345, __c10, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(18, __c2, 2)),
+          environment: S.optional(__S(96, __c3, 0)),
           definedInMaterial: S.optional(S.String),
           entryPoint: S.optional(S.String),
           type: S.optional(S.String),
-          arguments: S.optional(__S(18, __c2, 2)),
+          arguments: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "SlsaRecipe" });
-    case 1:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           arguments: S.optional(S.Boolean),
@@ -2113,26 +2140,26 @@ function __c7(j: number): any {
           environment: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SlsaCompleteness" });
-    case 2:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           reproducible: S.optional(S.Boolean),
           buildInvocationId: S.optional(S.String),
           buildStartedOn: S.optional(S.String),
           buildFinishedOn: S.optional(S.String),
-          completeness: S.optional(__S(57, __c7, 1)),
+          completeness: S.optional(__S(348, __c10, 28)),
         }),
       ).annotate({ identifier: "SlsaMetadata" });
-    case 3:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          materials: S.optional(__S(55, __c6, 7)),
-          builder: S.optional(__S(49, __c6, 1)),
-          recipe: S.optional(__S(56, __c7, 0)),
-          metadata: S.optional(__S(58, __c7, 2)),
+          materials: S.optional(__S(346, __c10, 26)),
+          builder: S.optional(__S(340, __c10, 20)),
+          recipe: S.optional(__S(347, __c10, 27)),
+          metadata: S.optional(__S(349, __c10, 29)),
         }),
       ).annotate({ identifier: "SlsaProvenance" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           environment: S.optional(S.Boolean),
@@ -2142,10 +2169,14 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          completeness: S.optional(__S(60, __c7, 4)),
+          completeness: S.optional(__S(351, __c10, 31)),
           buildFinishedOn: S.optional(S.String),
           buildInvocationId: S.optional(S.String),
           reproducible: S.optional(S.Boolean),
@@ -2154,108 +2185,100 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           entryPoint: S.optional(S.String),
-          digest: S.optional(__S(37, __c4, 5)),
+          digest: S.optional(__S(328, __c10, 8)),
           uri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(18, __c2, 2)),
-          configSource: S.optional(__S(62, __c7, 6)),
-          environment: S.optional(__S(18, __c2, 2)),
+          parameters: S.optional(__S(96, __c3, 0)),
+          configSource: S.optional(__S(353, __c11, 1)),
+          environment: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(54, __c6, 6));
-    case 1:
+    case 3:
+      return S.Array(__S(345, __c10, 25));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          builder: S.optional(__S(49, __c6, 1)),
-          metadata: S.optional(__S(61, __c7, 5)),
-          invocation: S.optional(__S(63, __c7, 7)),
-          buildConfig: S.optional(__S(18, __c2, 2)),
+          builder: S.optional(__S(340, __c10, 20)),
+          metadata: S.optional(__S(352, __c11, 0)),
+          invocation: S.optional(__S(354, __c11, 2)),
+          buildConfig: S.optional(__S(96, __c3, 0)),
           buildType: S.optional(S.String),
-          materials: S.optional(__S(64, __c8, 0)),
+          materials: S.optional(__S(355, __c11, 3)),
         }),
       ).annotate({ identifier: "SlsaProvenanceZeroTwo" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          provenance: S.optional(__S(53, __c6, 5)),
+          provenance: S.optional(__S(344, __c10, 24)),
           predicateType: S.optional(S.String),
           _type: S.optional(S.String),
-          slsaProvenance: S.optional(__S(59, __c7, 3)),
-          subject: S.optional(__S(40, __c5, 0)),
-          slsaProvenanceZeroTwo: S.optional(__S(65, __c8, 1)),
+          slsaProvenance: S.optional(__S(350, __c10, 30)),
+          subject: S.optional(__S(331, __c10, 11)),
+          slsaProvenanceZeroTwo: S.optional(__S(356, __c11, 4)),
         }),
       ).annotate({ identifier: "InTotoStatement" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          statement: S.optional(__S(66, __c8, 2)),
-          envelope: S.optional(__S(48, __c6, 0)),
+          statement: S.optional(__S(357, __c11, 5)),
+          envelope: S.optional(__S(339, __c10, 19)),
         }),
       ).annotate({
         identifier: "DSSEAttestationOccurrence",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
           sbomState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBOMStatus" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          digest: S.optional(__S(37, __c4, 5)),
+          digest: S.optional(__S(328, __c10, 8)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(360, __c11, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          analysisType: S.optional(__S(9, __c1, 1)),
+          analysisType: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "AnalysisCompleted" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
-    case 1:
+    case 11:
+      return S.Array(__S(98, __c3, 2));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          analysisStatusError: S.optional(__S(20, __c2, 4)),
+          analysisStatusError: S.optional(__S(98, __c3, 2)),
           lastScanTime: S.optional(S.String),
           analysisStatus: S.optional(S.String),
           cpe: S.optional(S.String),
-          sbomStatus: S.optional(__S(68, __c8, 4)),
+          sbomStatus: S.optional(__S(359, __c11, 7)),
           continuousAnalysis: S.optional(S.String),
-          files: S.optional(__S(70, __c8, 6)),
+          files: S.optional(__S(361, __c11, 9)),
           archiveTime: S.optional(S.String),
-          analysisCompleted: S.optional(__S(71, __c8, 7)),
+          analysisCompleted: S.optional(__S(362, __c11, 10)),
           lastVulnerabilityUpdateTime: S.optional(S.String),
-          analysisError: S.optional(__S(72, __c9, 0)),
+          analysisError: S.optional(__S(363, __c11, 11)),
         }),
       ).annotate({ identifier: "DiscoveryOccurrence" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
@@ -2263,21 +2286,21 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           content: S.optional(S.String),
           downloadLocation: S.optional(S.String),
-          annotations: S.optional(__S(18, __c2, 2)),
-          digest: S.optional(__S(37, __c4, 5)),
+          annotations: S.optional(__S(96, __c3, 0)),
+          digest: S.optional(__S(328, __c10, 8)),
         }),
       ).annotate({ identifier: "ResourceDescriptor" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 14:
+      return S.Array(__S(365, __c11, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(37, __c4, 5)),
+          version: S.optional(__S(328, __c10, 8)),
           id: S.optional(S.String),
-          builderDependencies: S.optional(__S(75, __c9, 3)),
+          builderDependencies: S.optional(__S(366, __c11, 14)),
         }),
       ).annotate({ identifier: "ProvenanceBuilder" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           invocationId: S.optional(S.String),
@@ -2285,133 +2308,107 @@ function __c9(j: number): any {
           finishedOn: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildMetadata" });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          builder: S.optional(__S(76, __c9, 4)),
-          byproducts: S.optional(__S(75, __c9, 3)),
-          metadata: S.optional(__S(77, __c9, 5)),
+          builder: S.optional(__S(367, __c11, 15)),
+          byproducts: S.optional(__S(366, __c11, 14)),
+          metadata: S.optional(__S(368, __c11, 16)),
         }),
       ).annotate({ identifier: "RunDetails" });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          internalParameters: S.optional(__S(18, __c2, 2)),
-          resolvedDependencies: S.optional(__S(75, __c9, 3)),
+          internalParameters: S.optional(__S(96, __c3, 0)),
+          resolvedDependencies: S.optional(__S(366, __c11, 14)),
           buildType: S.optional(S.String),
-          externalParameters: S.optional(__S(18, __c2, 2)),
+          externalParameters: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "BuildDefinition" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          runDetails: S.optional(__S(78, __c9, 6)),
-          buildDefinition: S.optional(__S(79, __c9, 7)),
+          runDetails: S.optional(__S(369, __c11, 17)),
+          buildDefinition: S.optional(__S(370, __c11, 18)),
         }),
       ).annotate({ identifier: "SlsaProvenanceV1" });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          predicate: S.optional(__S(80, __c10, 0)),
+          predicate: S.optional(__S(371, __c11, 19)),
           _type: S.optional(S.String),
           predicateType: S.optional(S.String),
-          subject: S.optional(__S(40, __c5, 0)),
+          subject: S.optional(__S(331, __c10, 11)),
         }),
       ).annotate({ identifier: "InTotoSlsaProvenanceV1" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(9, __c1, 1)),
-          env: S.optional(__S(9, __c1, 1)),
-          waitFor: S.optional(__S(9, __c1, 1)),
+          args: S.optional(__S(128, __c4, 0)),
+          env: S.optional(__S(128, __c4, 0)),
+          waitFor: S.optional(__S(128, __c4, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           dir: S.optional(S.String),
         }),
       ).annotate({ identifier: "Command" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 22:
+      return S.Array(__S(373, __c11, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Hash" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 24:
+      return S.Array(__S(375, __c11, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          fileHash: S.optional(__S(85, __c10, 5)),
+          fileHash: S.optional(__S(376, __c11, 24)),
         }),
       ).annotate({ identifier: "FileHashes" });
-    case 7:
-      return S.Record(S.String, __S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
+      return S.Record(S.String, __S(377, __c11, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "AliasContext" });
-    case 1:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           gerritProject: S.optional(S.String),
           revisionId: S.optional(S.String),
-          aliasContext: S.optional(__S(88, __c11, 0)),
+          aliasContext: S.optional(__S(379, __c11, 27)),
           hostUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GerritSourceContext" });
-    case 2:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           repoName: S.optional(S.String),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectRepoId" });
-    case 3:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          projectRepoId: S.optional(__S(90, __c11, 2)),
+          projectRepoId: S.optional(__S(381, __c11, 29)),
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepoId" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          repoId: S.optional(__S(91, __c11, 3)),
-          aliasContext: S.optional(__S(88, __c11, 0)),
+          repoId: S.optional(__S(382, __c11, 30)),
+          aliasContext: S.optional(__S(379, __c11, 27)),
           revisionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRepoSourceContext" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          revisionId: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitSourceContext" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gerrit: S.optional(__S(89, __c11, 1)),
-          cloudRepo: S.optional(__S(92, __c11, 4)),
-          git: S.optional(__S(93, __c11, 5)),
-          labels: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "SourceContext" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -2419,51 +2416,69 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fileHashes: S.optional(__S(87, __c10, 7)),
+          revisionId: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitSourceContext" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gerrit: S.optional(__S(380, __c11, 28)),
+          cloudRepo: S.optional(__S(383, __c11, 31)),
+          git: S.optional(__S(384, __c12, 0)),
+          labels: S.optional(__S(328, __c10, 8)),
+        }),
+      ).annotate({ identifier: "SourceContext" });
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fileHashes: S.optional(__S(378, __c11, 26)),
           artifactStorageSourceUri: S.optional(S.String),
-          additionalContexts: S.optional(__S(95, __c11, 7)),
-          context: S.optional(__S(94, __c11, 6)),
+          additionalContexts: S.optional(__S(386, __c12, 2)),
+          context: S.optional(__S(385, __c12, 1)),
         }),
       ).annotate({ identifier: "Source" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           checksum: S.optional(S.String),
-          names: S.optional(__S(9, __c1, 1)),
+          names: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "Artifact" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(388, __c12, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           createTime: S.optional(S.String),
           builderVersion: S.optional(S.String),
-          commands: S.optional(__S(83, __c10, 3)),
+          commands: S.optional(__S(374, __c11, 22)),
           creator: S.optional(S.String),
           triggerId: S.optional(S.String),
           id: S.optional(S.String),
           projectId: S.optional(S.String),
-          sourceProvenance: S.optional(__S(96, __c12, 0)),
-          buildOptions: S.optional(__S(37, __c4, 5)),
+          sourceProvenance: S.optional(__S(387, __c12, 3)),
+          buildOptions: S.optional(__S(328, __c10, 8)),
           logsUri: S.optional(S.String),
-          builtArtifacts: S.optional(__S(98, __c12, 2)),
+          builtArtifacts: S.optional(__S(389, __c12, 5)),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildProvenance" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          intotoProvenance: S.optional(__S(53, __c6, 5)),
-          intotoStatement: S.optional(__S(66, __c8, 2)),
-          inTotoSlsaProvenanceV1: S.optional(__S(81, __c10, 1)),
-          provenance: S.optional(__S(99, __c12, 3)),
+          intotoProvenance: S.optional(__S(344, __c10, 24)),
+          intotoStatement: S.optional(__S(357, __c11, 5)),
+          inTotoSlsaProvenanceV1: S.optional(__S(372, __c11, 20)),
+          provenance: S.optional(__S(390, __c12, 6)),
           provenanceBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildOccurrence" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           impactScore: S.optional(S.Number),
@@ -2488,20 +2503,16 @@ function __c12(j: number): any {
           exploitMaturity: S.optional(S.String),
         }),
       ).annotate({ identifier: "CVSS" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedUrl" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(393, __c12, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           layerCount: S.optional(S.Number),
@@ -2510,80 +2521,76 @@ function __c13(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GrafeasV1BaseImage" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(395, __c12, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           command: S.optional(S.String),
           index: S.optional(S.Number),
-          baseImages: S.optional(__S(105, __c13, 1)),
+          baseImages: S.optional(__S(396, __c12, 12)),
           chainId: S.optional(S.String),
           diffId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GrafeasV1LayerDetails" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          layerDetails: S.optional(__S(106, __c13, 2)),
+          layerDetails: S.optional(__S(397, __c12, 13)),
           filePath: S.optional(S.String),
           lineNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GrafeasV1FileLocation" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 15:
+      return S.Array(__S(398, __c12, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           effectiveSeverity: S.optional(S.String),
-          fileLocation: S.optional(__S(108, __c13, 4)),
+          fileLocation: S.optional(__S(399, __c12, 15)),
           affectedPackage: S.optional(S.String),
           affectedCpeUri: S.optional(S.String),
           fixAvailable: S.optional(S.Boolean),
-          affectedVersion: S.optional(__S(30, __c3, 6)),
+          affectedVersion: S.optional(__S(321, __c10, 1)),
           packageType: S.optional(S.String),
           fixedPackage: S.optional(S.String),
           fixedCpeUri: S.optional(S.String),
-          fixedVersion: S.optional(__S(30, __c3, 6)),
+          fixedVersion: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "PackageIssue" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 17:
+      return S.Array(__S(400, __c12, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           justificationType: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "Justification" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          remediationUri: S.optional(__S(102, __c12, 6)),
+          remediationUri: S.optional(__S(393, __c12, 9)),
           details: S.optional(S.String),
           remediationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Remediation" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 20:
+      return S.Array(__S(403, __c12, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          justification: S.optional(__S(111, __c13, 7)),
+          justification: S.optional(__S(402, __c12, 18)),
           vulnerabilityId: S.optional(S.String),
           cve: S.optional(S.String),
           state: S.optional(S.String),
           noteName: S.optional(S.String),
-          impacts: S.optional(__S(9, __c1, 1)),
-          relatedUris: S.optional(__S(103, __c12, 7)),
-          remediations: S.optional(__S(113, __c14, 1)),
+          impacts: S.optional(__S(128, __c4, 0)),
+          relatedUris: S.optional(__S(394, __c12, 10)),
+          remediations: S.optional(__S(404, __c12, 20)),
         }),
       ).annotate({ identifier: "VexAssessment" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           knownRansomwareCampaignUse: S.optional(S.String),
@@ -2591,7 +2598,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CISAKnownExploitedVulnerabilities",
       });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
@@ -2600,115 +2607,111 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ExploitPredictionScoringSystem",
       });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          cisaKev: S.optional(__S(115, __c14, 3)),
-          epss: S.optional(__S(116, __c14, 4)),
+          cisaKev: S.optional(__S(406, __c12, 22)),
+          epss: S.optional(__S(407, __c12, 23)),
         }),
       ).annotate({ identifier: "Risk" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           cvssScore: S.optional(S.Number),
-          cvssV2: S.optional(__S(101, __c12, 5)),
-          relatedUrls: S.optional(__S(103, __c12, 7)),
+          cvssV2: S.optional(__S(392, __c12, 8)),
+          relatedUrls: S.optional(__S(394, __c12, 10)),
           effectiveSeverity: S.optional(S.String),
-          cvssV4: S.optional(__S(101, __c12, 5)),
+          cvssV4: S.optional(__S(392, __c12, 8)),
           cvssVersion: S.optional(S.String),
           extraDetails: S.optional(S.String),
           longDescription: S.optional(S.String),
-          cvssv3: S.optional(__S(101, __c12, 5)),
+          cvssv3: S.optional(__S(392, __c12, 8)),
           type: S.optional(S.String),
-          packageIssue: S.optional(__S(110, __c13, 6)),
+          packageIssue: S.optional(__S(401, __c12, 17)),
           fixAvailable: S.optional(S.Boolean),
           severity: S.optional(S.String),
           shortDescription: S.optional(S.String),
-          vexAssessment: S.optional(__S(114, __c14, 2)),
-          risk: S.optional(__S(117, __c14, 5)),
+          vexAssessment: S.optional(__S(405, __c12, 21)),
+          risk: S.optional(__S(408, __c12, 24)),
         }),
       ).annotate({ identifier: "VulnerabilityOccurrence" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           categoryId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Category" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 27:
+      return S.Array(__S(410, __c12, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           updateId: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Identity" });
-    case 2:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           supportUrl: S.optional(S.String),
           lastPublishedTimestamp: S.optional(S.String),
           description: S.optional(S.String),
-          categories: S.optional(__S(120, __c15, 0)),
-          identity: S.optional(__S(121, __c15, 1)),
-          kbArticleIds: S.optional(__S(9, __c1, 1)),
+          categories: S.optional(__S(411, __c12, 27)),
+          identity: S.optional(__S(412, __c12, 28)),
+          kbArticleIds: S.optional(__S(128, __c4, 0)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "WindowsUpdate" });
-    case 3:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           cpeUri: S.optional(S.String),
           classification: S.optional(S.String),
-          cve: S.optional(__S(9, __c1, 1)),
+          cve: S.optional(__S(128, __c4, 0)),
           severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeDistribution" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          windowsUpdate: S.optional(__S(122, __c15, 2)),
-          parsedVersion: S.optional(__S(30, __c3, 6)),
-          distribution: S.optional(__S(123, __c15, 3)),
+          windowsUpdate: S.optional(__S(413, __c12, 29)),
+          parsedVersion: S.optional(__S(321, __c10, 1)),
+          distribution: S.optional(__S(414, __c12, 30)),
           package: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeOccurrence" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lineNumber: S.optional(S.String),
           filePath: S.optional(S.String),
         }),
       ).annotate({ identifier: "FindingLocation" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scanner: S.optional(S.String),
           severity: S.optional(S.String),
           category: S.optional(S.String),
           details: S.optional(S.String),
-          location: S.optional(__S(125, __c15, 5)),
+          location: S.optional(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "Finding" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           verdict: S.optional(S.String),
           scanStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspacePolicyResult" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           candidateCount: S.optional(S.String),
@@ -2718,18 +2721,18 @@ function __c16(j: number): any {
           thinkingCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenUsage" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           scanStatus: S.optional(S.String),
           modelId: S.optional(S.String),
-          tokenUsage: S.optional(__S(129, __c16, 1)),
+          tokenUsage: S.optional(__S(420, __c13, 4)),
           maxSeverity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MaliciousContentLLMResult",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           maxSeverity: S.optional(S.String),
@@ -2738,39 +2741,35 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MaliciousContentStaticResult",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          workspacePolicy: S.optional(__S(128, __c16, 0)),
-          malwareScan: S.optional(__S(128, __c16, 0)),
-          maliciousContentLlmResult: S.optional(__S(130, __c16, 2)),
-          maliciousContentStaticResult: S.optional(__S(131, __c16, 3)),
+          workspacePolicy: S.optional(__S(419, __c13, 3)),
+          malwareScan: S.optional(__S(419, __c13, 3)),
+          maliciousContentLlmResult: S.optional(__S(421, __c13, 5)),
+          maliciousContentStaticResult: S.optional(__S(422, __c13, 6)),
         }),
       ).annotate({ identifier: "PerScannerVerdict" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          findings: S.optional(__S(127, __c15, 7)),
+          findings: S.optional(__S(418, __c13, 2)),
           skillName: S.optional(S.String),
-          perScannerVerdict: S.optional(__S(132, __c16, 4)),
+          perScannerVerdict: S.optional(__S(423, __c13, 7)),
           maxSeverity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AISkillAnalysisOccurrence",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          fileLocation: S.optional(__S(107, __c13, 3)),
+          fileLocation: S.optional(__S(398, __c12, 14)),
         }),
       ).annotate({ identifier: "SecretLocation" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -2778,127 +2777,107 @@ function __c17(j: number): any {
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretStatus" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(427, __c13, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          locations: S.optional(__S(135, __c16, 7)),
-          statuses: S.optional(__S(137, __c17, 1)),
+          locations: S.optional(__S(426, __c13, 10)),
+          statuses: S.optional(__S(428, __c13, 12)),
         }),
       ).annotate({ identifier: "SecretOccurrence" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           v1Name: S.optional(S.String),
-          v2Blob: S.optional(__S(9, __c1, 1)),
+          v2Blob: S.optional(__S(128, __c4, 0)),
           v2Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Fingerprint" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           directive: S.optional(S.String),
           arguments: S.optional(S.String),
         }),
       ).annotate({ identifier: "Layer" });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 16:
+      return S.Array(__S(431, __c13, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           distance: S.optional(S.Number),
-          fingerprint: S.optional(__S(139, __c17, 3)),
-          layerInfo: S.optional(__S(141, __c17, 5)),
+          fingerprint: S.optional(__S(430, __c13, 14)),
+          layerInfo: S.optional(__S(432, __c13, 16)),
           baseResourceUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageOccurrence" });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           compactJwt: S.optional(S.String),
         }),
       ).annotate({ identifier: "Jwt" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 19:
+      return S.Array(__S(434, __c13, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           signature: S.optional(S.String),
           publicKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Signature" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 21:
+      return S.Array(__S(436, __c13, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          jwts: S.optional(__S(144, __c18, 0)),
-          signatures: S.optional(__S(146, __c18, 2)),
+          jwts: S.optional(__S(435, __c13, 19)),
+          signatures: S.optional(__S(437, __c13, 21)),
           serializedPayload: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestationOccurrence" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          package: S.optional(__S(34, __c4, 2)),
-          sbomReference: S.optional(__S(42, __c5, 2)),
-          deployment: S.optional(__S(43, __c5, 3)),
-          compliance: S.optional(__S(47, __c5, 7)),
+          package: S.optional(__S(325, __c10, 5)),
+          sbomReference: S.optional(__S(333, __c10, 13)),
+          deployment: S.optional(__S(334, __c10, 14)),
+          compliance: S.optional(__S(338, __c10, 18)),
           kind: S.optional(S.String),
           noteName: S.optional(S.String),
-          envelope: S.optional(__S(48, __c6, 0)),
-          dsseAttestation: S.optional(__S(67, __c8, 3)),
-          discovery: S.optional(__S(73, __c9, 1)),
-          build: S.optional(__S(100, __c12, 4)),
+          envelope: S.optional(__S(339, __c10, 19)),
+          dsseAttestation: S.optional(__S(358, __c11, 6)),
+          discovery: S.optional(__S(364, __c11, 12)),
+          build: S.optional(__S(391, __c12, 7)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          vulnerability: S.optional(__S(118, __c14, 6)),
+          vulnerability: S.optional(__S(409, __c12, 25)),
           remediation: S.optional(S.String),
           resourceUri: S.optional(S.String),
-          upgrade: S.optional(__S(124, __c15, 4)),
-          aiSkillAnalysis: S.optional(__S(133, __c16, 5)),
-          secret: S.optional(__S(138, __c17, 2)),
-          image: S.optional(__S(142, __c17, 6)),
+          upgrade: S.optional(__S(415, __c12, 31)),
+          aiSkillAnalysis: S.optional(__S(424, __c13, 8)),
+          secret: S.optional(__S(429, __c13, 13)),
+          image: S.optional(__S(433, __c13, 17)),
           advisoryPublishTime: S.optional(S.String),
-          attestation: S.optional(__S(147, __c18, 3)),
+          attestation: S.optional(__S(438, __c13, 22)),
         }),
       ).annotate({ identifier: "Occurrence" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 24:
+      return S.Array(__S(439, __c13, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          occurrences: S.optional(__S(149, __c18, 5)),
+          occurrences: S.optional(__S(440, __c13, 24)),
         }),
       ).annotate({
         identifier: "ListVulnerabilitiesResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeout: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:wait",
-            baseUrl: "https://ondemandscanning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "WaitProjectsLocationsOperationsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

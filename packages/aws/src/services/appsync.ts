@@ -110,7 +110,7 @@ export class BadRequestException
         }),
       ),
       detail: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(188, __c23, 4)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(947, __c59, 3)).annotate({
           identifier: "BadRequestDetail",
         }),
       ),
@@ -1348,7 +1348,7 @@ export const associateApi: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateApiRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AssociateApiResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateApiResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1373,8 +1373,8 @@ export const associateMergedGraphqlApi: API.OperationMethod<
   AssociateMergedGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AssociateMergedGraphqlApiRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AssociateMergedGraphqlApiResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<AssociateMergedGraphqlApiRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<AssociateMergedGraphqlApiResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1406,8 +1406,8 @@ export const associateSourceGraphqlApi: API.OperationMethod<
   AssociateSourceGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AssociateSourceGraphqlApiRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AssociateSourceGraphqlApiResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<AssociateSourceGraphqlApiRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<AssociateSourceGraphqlApiResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1439,8 +1439,8 @@ export const createApi: API.OperationMethod<
   CreateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateApiRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateApiResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateApiRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<CreateApiResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1469,8 +1469,8 @@ export const createApiCache: API.OperationMethod<
   CreateApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateApiCacheRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateApiCacheResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateApiCacheRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateApiCacheResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1501,8 +1501,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateApiKeyResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateApiKeyResponse>,
   errors: [
     ApiKeyLimitExceededException,
     ApiKeyValidityOutOfBoundsException,
@@ -1535,8 +1535,8 @@ export const createChannelNamespace: API.OperationMethod<
   CreateChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateChannelNamespaceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateChannelNamespaceResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateChannelNamespaceRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateChannelNamespaceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1567,8 +1567,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateDataSourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateDataSourceRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<CreateDataSourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1595,8 +1595,8 @@ export const createDomainName: API.OperationMethod<
   CreateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateDomainNameRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<CreateDomainNameResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateDomainNameRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<CreateDomainNameResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1622,8 +1622,8 @@ export const createFunction: API.OperationMethod<
   CreateFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateFunctionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateFunctionResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateFunctionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<CreateFunctionResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1653,8 +1653,8 @@ export const createGraphqlApi: API.OperationMethod<
   CreateGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateGraphqlApiRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateGraphqlApiResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<CreateGraphqlApiRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<CreateGraphqlApiResponse>,
   errors: [
     ApiLimitExceededException,
     BadRequestException,
@@ -1687,8 +1687,8 @@ export const createResolver: API.OperationMethod<
   CreateResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateResolverRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreateResolverResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateResolverRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<CreateResolverResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1717,8 +1717,8 @@ export const createType: API.OperationMethod<
   CreateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateTypeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateTypeResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateTypeRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<CreateTypeResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1748,8 +1748,8 @@ export const deleteApi: API.OperationMethod<
   DeleteApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteApiRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteApiResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteApiRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1779,8 +1779,8 @@ export const deleteApiCache: API.OperationMethod<
   DeleteApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteApiCacheRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteApiCacheResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteApiCacheRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteApiCacheResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1808,8 +1808,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteApiKeyResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1833,8 +1833,8 @@ export const deleteChannelNamespace: API.OperationMethod<
   DeleteChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteChannelNamespaceRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteChannelNamespaceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeleteChannelNamespaceRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<DeleteChannelNamespaceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1864,8 +1864,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteDataSourceRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteDataSourceResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteDataSourceRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<DeleteDataSourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1894,8 +1894,8 @@ export const deleteDomainName: API.OperationMethod<
   DeleteDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteDomainNameRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteDomainNameResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DeleteDomainNameRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<DeleteDomainNameResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1924,8 +1924,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteFunctionResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteFunctionResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1955,8 +1955,8 @@ export const deleteGraphqlApi: API.OperationMethod<
   DeleteGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteGraphqlApiRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteGraphqlApiResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<DeleteGraphqlApiRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<DeleteGraphqlApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1986,8 +1986,8 @@ export const deleteResolver: API.OperationMethod<
   DeleteResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteResolverRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteResolverResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteResolverRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteResolverResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2016,8 +2016,8 @@ export const deleteType: API.OperationMethod<
   DeleteTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteTypeRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteTypeResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteTypeRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteTypeResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2046,8 +2046,8 @@ export const disassociateApi: API.OperationMethod<
   DisassociateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DisassociateApiRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DisassociateApiResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DisassociateApiRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<DisassociateApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2077,8 +2077,8 @@ export const disassociateMergedGraphqlApi: API.OperationMethod<
   DisassociateMergedGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DisassociateMergedGraphqlApiRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<DisassociateMergedGraphqlApiResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DisassociateMergedGraphqlApiRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<DisassociateMergedGraphqlApiResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2108,8 +2108,8 @@ export const disassociateSourceGraphqlApi: API.OperationMethod<
   DisassociateSourceGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DisassociateSourceGraphqlApiRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<DisassociateSourceGraphqlApiResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DisassociateSourceGraphqlApiRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<DisassociateSourceGraphqlApiResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2141,8 +2141,8 @@ export const evaluateCode: API.OperationMethod<
   EvaluateCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<EvaluateCodeRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<EvaluateCodeResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<EvaluateCodeRequest>,
+  output: __S(930, __c58, 2) as any as S.Schema<EvaluateCodeResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2171,8 +2171,8 @@ export const evaluateMappingTemplate: API.OperationMethod<
   EvaluateMappingTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<EvaluateMappingTemplateRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<EvaluateMappingTemplateResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<EvaluateMappingTemplateRequest>,
+  output: __S(962, __c60, 2) as any as S.Schema<EvaluateMappingTemplateResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2195,8 +2195,8 @@ export const flushApiCache: API.OperationMethod<
   FlushApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<FlushApiCacheRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<FlushApiCacheResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<FlushApiCacheRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<FlushApiCacheResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2225,8 +2225,8 @@ export const getApi: API.OperationMethod<
   GetApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetApiRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetApiResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetApiRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2254,8 +2254,8 @@ export const getApiAssociation: API.OperationMethod<
   GetApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetApiAssociationRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetApiAssociationResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetApiAssociationRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<GetApiAssociationResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2278,8 +2278,8 @@ export const getApiCache: API.OperationMethod<
   GetApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetApiCacheRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetApiCacheResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetApiCacheRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<GetApiCacheResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2308,8 +2308,8 @@ export const getChannelNamespace: API.OperationMethod<
   GetChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetChannelNamespaceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetChannelNamespaceResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetChannelNamespaceRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetChannelNamespaceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2338,8 +2338,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDataSourceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetDataSourceResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetDataSourceRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetDataSourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2368,8 +2368,8 @@ export const getDataSourceIntrospection: API.OperationMethod<
   GetDataSourceIntrospectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetDataSourceIntrospectionRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetDataSourceIntrospectionResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<GetDataSourceIntrospectionRequest>,
+  output: __S(1081, __c67, 9) as any as S.Schema<GetDataSourceIntrospectionResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2391,8 +2391,8 @@ export const getDomainName: API.OperationMethod<
   GetDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetDomainNameRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetDomainNameResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetDomainNameRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetDomainNameResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2413,8 +2413,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetFunctionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetFunctionResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetFunctionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GetFunctionResponse>,
   errors: [ConcurrentModificationException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +2437,8 @@ export const getGraphqlApi: API.OperationMethod<
   GetGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetGraphqlApiRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetGraphqlApiResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<GetGraphqlApiRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GetGraphqlApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2468,8 +2468,8 @@ export const getGraphqlApiEnvironmentVariables: API.OperationMethod<
   GetGraphqlApiEnvironmentVariablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetGraphqlApiEnvironmentVariablesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetGraphqlApiEnvironmentVariablesRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2497,8 +2497,8 @@ export const getIntrospectionSchema: API.OperationMethod<
   GetIntrospectionSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetIntrospectionSchemaRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetIntrospectionSchemaResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetIntrospectionSchemaRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<GetIntrospectionSchemaResponse>,
   errors: [
     GraphQLSchemaException,
     InternalFailureException,
@@ -2524,8 +2524,8 @@ export const getResolver: API.OperationMethod<
   GetResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetResolverRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetResolverResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetResolverRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetResolverResponse>,
   errors: [ConcurrentModificationException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2547,8 +2547,8 @@ export const getSchemaCreationStatus: API.OperationMethod<
   GetSchemaCreationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetSchemaCreationStatusRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetSchemaCreationStatusResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetSchemaCreationStatusRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<GetSchemaCreationStatusResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2570,8 +2570,8 @@ export const getSourceApiAssociation: API.OperationMethod<
   GetSourceApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetSourceApiAssociationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetSourceApiAssociationResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetSourceApiAssociationRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<GetSourceApiAssociationResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2594,8 +2594,8 @@ export const getType: API.OperationMethod<
   GetTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetTypeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetTypeResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetTypeRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetTypeResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2629,8 +2629,8 @@ export const listApiKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListApiKeysResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListApiKeysRequest>,
+  output: __S(1250, __c78, 2) as any as S.Schema<ListApiKeysResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2661,8 +2661,8 @@ export const listApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Api
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListApisRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListApisResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListApisRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<ListApisResponse>,
   errors: [BadRequestException, InternalFailureException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2694,8 +2694,8 @@ export const listChannelNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelNamespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListChannelNamespacesRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListChannelNamespacesResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListChannelNamespacesRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListChannelNamespacesResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2724,8 +2724,8 @@ export const listDataSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListDataSourcesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListDataSourcesResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListDataSourcesRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<ListDataSourcesResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2753,8 +2753,8 @@ export const listDomainNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainNameConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListDomainNamesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListDomainNamesResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListDomainNamesRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<ListDomainNamesResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2783,8 +2783,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListFunctionsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListFunctionsResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListFunctionsRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<ListFunctionsResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2812,8 +2812,8 @@ export const listGraphqlApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GraphqlApi
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListGraphqlApisRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ListGraphqlApisResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListGraphqlApisRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<ListGraphqlApisResponse>,
   errors: [BadRequestException, InternalFailureException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2842,8 +2842,8 @@ export const listResolvers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resolver
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListResolversRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ListResolversResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListResolversRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<ListResolversResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2872,8 +2872,8 @@ export const listResolversByFunction: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resolver
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListResolversByFunctionRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListResolversByFunctionResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListResolversByFunctionRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<ListResolversByFunctionResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2902,8 +2902,8 @@ export const listSourceApiAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceApiAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListSourceApiAssociationsRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<ListSourceApiAssociationsResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListSourceApiAssociationsRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<ListSourceApiAssociationsResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2933,8 +2933,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2965,8 +2965,8 @@ export const listTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Type
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListTypesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListTypesResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListTypesRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<ListTypesResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3002,8 +3002,8 @@ export const listTypesByAssociation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Type
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListTypesByAssociationRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListTypesByAssociationResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListTypesByAssociationRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<ListTypesByAssociationResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3075,8 +3075,8 @@ export const putGraphqlApiEnvironmentVariables: API.OperationMethod<
   PutGraphqlApiEnvironmentVariablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<PutGraphqlApiEnvironmentVariablesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<PutGraphqlApiEnvironmentVariablesRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3106,8 +3106,8 @@ export const startDataSourceIntrospection: API.OperationMethod<
   StartDataSourceIntrospectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<StartDataSourceIntrospectionRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<StartDataSourceIntrospectionResponse>,
+  input: __S(1505, __c94, 1) as any as S.Schema<StartDataSourceIntrospectionRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<StartDataSourceIntrospectionResponse>,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3133,8 +3133,8 @@ export const startSchemaCreation: API.OperationMethod<
   StartSchemaCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<StartSchemaCreationRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<StartSchemaCreationResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<StartSchemaCreationRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<StartSchemaCreationResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3164,8 +3164,8 @@ export const startSchemaMerge: API.OperationMethod<
   StartSchemaMergeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<StartSchemaMergeRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<StartSchemaMergeResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<StartSchemaMergeRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<StartSchemaMergeResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3195,8 +3195,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3227,8 +3227,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3259,8 +3259,8 @@ export const updateApi: API.OperationMethod<
   UpdateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UpdateApiRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateApiResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<UpdateApiRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3290,8 +3290,8 @@ export const updateApiCache: API.OperationMethod<
   UpdateApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateApiCacheRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateApiCacheResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<UpdateApiCacheRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<UpdateApiCacheResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3321,8 +3321,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateApiKeyRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateApiKeyResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<UpdateApiKeyResponse>,
   errors: [
     ApiKeyValidityOutOfBoundsException,
     BadRequestException,
@@ -3353,8 +3353,8 @@ export const updateChannelNamespace: API.OperationMethod<
   UpdateChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateChannelNamespaceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateChannelNamespaceResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<UpdateChannelNamespaceRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<UpdateChannelNamespaceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3384,8 +3384,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateDataSourceResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<UpdateDataSourceRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateDataSourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3414,8 +3414,8 @@ export const updateDomainName: API.OperationMethod<
   UpdateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<UpdateDomainNameRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdateDomainNameResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<UpdateDomainNameRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateDomainNameResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3444,8 +3444,8 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<UpdateFunctionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UpdateFunctionResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<UpdateFunctionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateFunctionResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3475,8 +3475,8 @@ export const updateGraphqlApi: API.OperationMethod<
   UpdateGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdateGraphqlApiRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateGraphqlApiResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<UpdateGraphqlApiRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UpdateGraphqlApiResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3506,8 +3506,8 @@ export const updateResolver: API.OperationMethod<
   UpdateResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UpdateResolverRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateResolverResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<UpdateResolverRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<UpdateResolverResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3536,8 +3536,8 @@ export const updateSourceApiAssociation: API.OperationMethod<
   UpdateSourceApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateSourceApiAssociationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateSourceApiAssociationResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<UpdateSourceApiAssociationRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<UpdateSourceApiAssociationResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3566,8 +3566,8 @@ export const updateType: API.OperationMethod<
   UpdateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UpdateTypeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateTypeResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<UpdateTypeRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<UpdateTypeResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3599,6 +3599,14 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AssociateApiRequest" });
     case 1:
       return S.suspend(() =>
+        S.Struct({ apiAssociation: S.optional(__S(16, __c1, 0)) }).pipe(ns),
+      ).annotate({ identifier: "AssociateApiResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           apiId: S.optional(S.String),
@@ -3606,21 +3614,17 @@ function __c0(j: number): any {
           deploymentDetail: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiAssociation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ apiAssociation: S.optional(__S(1, __c0, 1)) }).pipe(ns),
-      ).annotate({ identifier: "AssociateApiResponse" });
-    case 3:
-      return S.suspend(() => S.Struct({ mergeType: S.optional(S.String) })).annotate({
-        identifier: "SourceApiAssociationConfig",
-      });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceApiIdentifier: S.String.pipe(T.HttpLabel("sourceApiIdentifier")),
           mergedApiIdentifier: S.String,
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3, __c0, 3)),
+          sourceApiAssociationConfig: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.all(
             ns,
@@ -3638,7 +3642,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateMergedGraphqlApiRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ mergeType: S.optional(S.String) })).annotate({
+        identifier: "SourceApiAssociationConfig",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           associationId: S.optional(S.String),
@@ -3648,25 +3660,29 @@ function __c0(j: number): any {
           mergedApiArn: S.optional(S.String),
           mergedApiId: S.optional(S.String),
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3, __c0, 3)),
+          sourceApiAssociationConfig: S.optional(__S(48, __c3, 0)),
           sourceApiAssociationStatus: S.optional(S.String),
           sourceApiAssociationStatusDetail: S.optional(S.String),
           lastSuccessfulMergeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SourceApiAssociation" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ sourceApiAssociation: S.optional(__S(5, __c0, 5)) }).pipe(ns),
+        S.Struct({ sourceApiAssociation: S.optional(__S(49, __c3, 1)) }).pipe(ns),
       ).annotate({
         identifier: "AssociateMergedGraphqlApiResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
           sourceApiIdentifier: S.String,
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3, __c0, 3)),
+          sourceApiAssociationConfig: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.all(
             ns,
@@ -3686,11 +3702,44 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          ownerContact: S.optional(S.String),
+          tags: S.optional(__S(96, __c6, 0)),
+          eventConfig: __S(163, __c10, 3),
+        }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/v2/apis" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApiRequest" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ authType: S.String })).annotate({ identifier: "AuthMode" });
     case 1:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userPoolId: S.String,
@@ -3698,7 +3747,7 @@ function __c1(j: number): any {
           appIdClientRegex: S.optional(S.String),
         }),
       ).annotate({ identifier: "CognitoConfig" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           issuer: S.String,
@@ -3707,7 +3756,7 @@ function __c1(j: number): any {
           authTTL: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OpenIDConnectConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authorizerResultTtlInSeconds: S.optional(S.Number),
@@ -3715,74 +3764,63 @@ function __c1(j: number): any {
           identityValidationExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "LambdaAuthorizerConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authType: S.String,
-          cognitoConfig: S.optional(__S(9, __c1, 1)),
-          openIDConnectConfig: S.optional(__S(10, __c1, 2)),
-          lambdaAuthorizerConfig: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AuthProvider" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ authType: S.String })).annotate({
-        identifier: "AuthMode",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ logLevel: S.String, cloudWatchLogsRoleArn: S.String }),
-      ).annotate({ identifier: "EventLogConfig" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
-          authProviders: __S(13, __c1, 5),
-          connectionAuthModes: __S(15, __c1, 7),
-          defaultPublishAuthModes: __S(15, __c1, 7),
-          defaultSubscribeAuthModes: __S(15, __c1, 7),
-          logConfig: S.optional(__S(16, __c2, 0)),
+          authType: S.String,
+          cognitoConfig: S.optional(__S(144, __c9, 0)),
+          openIDConnectConfig: S.optional(__S(145, __c9, 1)),
+          lambdaAuthorizerConfig: S.optional(__S(146, __c9, 2)),
         }),
-      ).annotate({ identifier: "EventConfig" });
+      ).annotate({ identifier: "AuthProvider" });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          ownerContact: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          eventConfig: __S(17, __c2, 1),
-        }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/v2/apis" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateApiRequest" });
+        S.Struct({ logLevel: S.String, cloudWatchLogsRoleArn: S.String }),
+      ).annotate({ identifier: "EventLogConfig" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({
+          authProviders: __S(161, __c10, 1),
+          connectionAuthModes: __S(113, __c7, 1),
+          defaultPublishAuthModes: __S(113, __c7, 1),
+          defaultSubscribeAuthModes: __S(113, __c7, 1),
+          logConfig: S.optional(__S(162, __c10, 2)),
+        }),
+      ).annotate({ identifier: "EventConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiId: S.optional(S.String),
           name: S.optional(S.String),
           ownerContact: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          dns: S.optional(__S(19, __c2, 3)),
+          tags: S.optional(__S(96, __c6, 0)),
+          dns: S.optional(__S(128, __c8, 0)),
           apiArn: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           xrayEnabled: S.optional(S.Boolean),
           wafWebAclArn: S.optional(S.String),
-          eventConfig: S.optional(__S(17, __c2, 1)),
+          eventConfig: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "Api" });
-    case 5:
-      return S.suspend(() => S.Struct({ api: S.optional(__S(20, __c2, 4)) }).pipe(ns)).annotate({
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ api: S.optional(__S(164, __c10, 4)) }).pipe(ns)).annotate({
         identifier: "CreateApiResponse",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -3804,7 +3842,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateApiCacheRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ttl: S.optional(S.Number),
@@ -3816,17 +3858,15 @@ function __c2(j: number): any {
           healthMetricsConfig: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiCache" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ apiCache: S.optional(__S(208, __c13, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateApiCacheResponse" });
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ apiCache: S.optional(__S(23, __c2, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateApiCacheResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -3844,7 +3884,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateApiKeyRequest" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3853,43 +3897,28 @@ function __c3(j: number): any {
           deletes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ApiKey" });
-    case 3:
-      return S.suspend(() => S.Struct({ apiKey: S.optional(__S(26, __c3, 2)) }).pipe(ns)).annotate({
-        identifier: "CreateApiKeyResponse",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ invokeType: S.optional(S.String) })).annotate({
-        identifier: "LambdaConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ dataSourceName: S.String, lambdaConfig: S.optional(__S(28, __c3, 4)) }),
-      ).annotate({ identifier: "Integration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ behavior: S.String, integration: __S(29, __c3, 5) }),
-      ).annotate({ identifier: "HandlerConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          onPublish: S.optional(__S(30, __c3, 6)),
-          onSubscribe: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "HandlerConfigs" });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ apiKey: S.optional(__S(240, __c15, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateApiKeyResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
-          subscribeAuthModes: S.optional(__S(15, __c1, 7)),
-          publishAuthModes: S.optional(__S(15, __c1, 7)),
+          subscribeAuthModes: S.optional(__S(113, __c7, 1)),
+          publishAuthModes: S.optional(__S(113, __c7, 1)),
           codeHandlers: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          handlerConfigs: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(96, __c6, 0)),
+          handlerConfigs: S.optional(__S(291, __c18, 3)),
         }).pipe(
           T.all(
             ns,
@@ -3904,96 +3933,59 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateChannelNamespaceRequest",
       });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ invokeType: S.optional(S.String) })).annotate({
+        identifier: "LambdaConfig",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ dataSourceName: S.String, lambdaConfig: S.optional(__S(288, __c18, 0)) }),
+      ).annotate({ identifier: "Integration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ behavior: S.String, integration: __S(289, __c18, 1) }),
+      ).annotate({ identifier: "HandlerConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          onPublish: S.optional(__S(290, __c18, 2)),
+          onSubscribe: S.optional(__S(290, __c18, 2)),
+        }),
+      ).annotate({ identifier: "HandlerConfigs" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           apiId: S.optional(S.String),
           name: S.optional(S.String),
-          subscribeAuthModes: S.optional(__S(15, __c1, 7)),
-          publishAuthModes: S.optional(__S(15, __c1, 7)),
+          subscribeAuthModes: S.optional(__S(113, __c7, 1)),
+          publishAuthModes: S.optional(__S(113, __c7, 1)),
           codeHandlers: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           channelNamespaceArn: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          handlerConfigs: S.optional(__S(31, __c3, 7)),
+          handlerConfigs: S.optional(__S(291, __c18, 3)),
         }),
       ).annotate({ identifier: "ChannelNamespace" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ channelNamespace: S.optional(__S(33, __c4, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateChannelNamespaceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          baseTableTTL: S.optional(S.Number),
-          deltaSyncTableName: S.optional(S.String),
-          deltaSyncTableTTL: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeltaSyncConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tableName: S.String,
-          awsRegion: S.String,
-          useCallerCredentials: S.optional(S.Boolean),
-          deltaSyncConfig: S.optional(__S(35, __c4, 3)),
-          versioned: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DynamodbDataSourceConfig" });
-    case 5:
-      return S.suspend(() => S.Struct({ lambdaFunctionArn: S.String })).annotate({
-        identifier: "LambdaDataSourceConfig",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ endpoint: S.String, awsRegion: S.String })).annotate({
-        identifier: "ElasticsearchDataSourceConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ signingRegion: S.optional(S.String), signingServiceName: S.optional(S.String) }),
-      ).annotate({ identifier: "AwsIamConfig" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ authorizationType: S.String, awsIamConfig: S.optional(__S(39, __c4, 7)) }),
-      ).annotate({ identifier: "AuthorizationConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          authorizationConfig: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "HttpDataSourceConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          awsRegion: S.optional(S.String),
-          dbClusterIdentifier: S.optional(S.String),
-          databaseName: S.optional(S.String),
-          schema: S.optional(S.String),
-          awsSecretStoreArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RdsHttpEndpointConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          relationalDatabaseSourceType: S.optional(S.String),
-          rdsHttpEndpointConfig: S.optional(__S(42, __c5, 2)),
-        }),
+        S.Struct({ channelNamespace: S.optional(__S(292, __c18, 4)) }).pipe(ns),
       ).annotate({
-        identifier: "RelationalDatabaseDataSourceConfig",
+        identifier: "CreateChannelNamespaceResponse",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ eventBusArn: S.String })).annotate({
-        identifier: "EventBridgeDataSourceConfig",
-      });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4001,13 +3993,13 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           type: S.String,
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36, __c4, 4)),
-          lambdaConfig: S.optional(__S(37, __c4, 5)),
-          elasticsearchConfig: S.optional(__S(38, __c4, 6)),
-          openSearchServiceConfig: S.optional(__S(38, __c4, 6)),
-          httpConfig: S.optional(__S(41, __c5, 1)),
-          relationalDatabaseConfig: S.optional(__S(43, __c5, 3)),
-          eventBridgeConfig: S.optional(__S(44, __c5, 4)),
+          dynamodbConfig: S.optional(__S(337, __c21, 1)),
+          lambdaConfig: S.optional(__S(338, __c21, 2)),
+          elasticsearchConfig: S.optional(__S(339, __c21, 3)),
+          openSearchServiceConfig: S.optional(__S(339, __c21, 3)),
+          httpConfig: S.optional(__S(342, __c21, 6)),
+          relationalDatabaseConfig: S.optional(__S(344, __c21, 8)),
+          eventBridgeConfig: S.optional(__S(345, __c21, 9)),
           metricsConfig: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4021,7 +4013,75 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateDataSourceRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          baseTableTTL: S.optional(S.Number),
+          deltaSyncTableName: S.optional(S.String),
+          deltaSyncTableTTL: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeltaSyncConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tableName: S.String,
+          awsRegion: S.String,
+          useCallerCredentials: S.optional(S.Boolean),
+          deltaSyncConfig: S.optional(__S(336, __c21, 0)),
+          versioned: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DynamodbDataSourceConfig" });
+    case 2:
+      return S.suspend(() => S.Struct({ lambdaFunctionArn: S.String })).annotate({
+        identifier: "LambdaDataSourceConfig",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ endpoint: S.String, awsRegion: S.String })).annotate({
+        identifier: "ElasticsearchDataSourceConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ signingRegion: S.optional(S.String), signingServiceName: S.optional(S.String) }),
+      ).annotate({ identifier: "AwsIamConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ authorizationType: S.String, awsIamConfig: S.optional(__S(340, __c21, 4)) }),
+      ).annotate({ identifier: "AuthorizationConfig" });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          authorizationConfig: S.optional(__S(341, __c21, 5)),
+        }),
+      ).annotate({ identifier: "HttpDataSourceConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          awsRegion: S.optional(S.String),
+          dbClusterIdentifier: S.optional(S.String),
+          databaseName: S.optional(S.String),
+          schema: S.optional(S.String),
+          awsSecretStoreArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RdsHttpEndpointConfig" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          relationalDatabaseSourceType: S.optional(S.String),
+          rdsHttpEndpointConfig: S.optional(__S(343, __c21, 7)),
+        }),
+      ).annotate({
+        identifier: "RelationalDatabaseDataSourceConfig",
+      });
+    case 9:
+      return S.suspend(() => S.Struct({ eventBusArn: S.String })).annotate({
+        identifier: "EventBridgeDataSourceConfig",
+      });
+    case 10:
       return S.suspend(() =>
         S.Struct({
           dataSourceArn: S.optional(S.String),
@@ -4029,25 +4089,27 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           type: S.optional(S.String),
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36, __c4, 4)),
-          lambdaConfig: S.optional(__S(37, __c4, 5)),
-          elasticsearchConfig: S.optional(__S(38, __c4, 6)),
-          openSearchServiceConfig: S.optional(__S(38, __c4, 6)),
-          httpConfig: S.optional(__S(41, __c5, 1)),
-          relationalDatabaseConfig: S.optional(__S(43, __c5, 3)),
-          eventBridgeConfig: S.optional(__S(44, __c5, 4)),
+          dynamodbConfig: S.optional(__S(337, __c21, 1)),
+          lambdaConfig: S.optional(__S(338, __c21, 2)),
+          elasticsearchConfig: S.optional(__S(339, __c21, 3)),
+          openSearchServiceConfig: S.optional(__S(339, __c21, 3)),
+          httpConfig: S.optional(__S(342, __c21, 6)),
+          relationalDatabaseConfig: S.optional(__S(344, __c21, 8)),
+          eventBridgeConfig: S.optional(__S(345, __c21, 9)),
           metricsConfig: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataSource" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ dataSource: S.optional(__S(46, __c5, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDataSourceResponse",
-      });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ dataSource: S.optional(__S(346, __c21, 10)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDataSourceResponse" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4055,7 +4117,7 @@ function __c6(j: number): any {
           domainName: S.String,
           certificateArn: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.all(
             ns,
@@ -4068,7 +4130,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateDomainNameRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
@@ -4076,33 +4142,23 @@ function __c6(j: number): any {
           certificateArn: S.optional(S.String),
           appsyncDomainName: S.optional(S.String),
           hostedZoneId: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           domainNameArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainNameConfig" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ domainNameConfig: S.optional(__S(49, __c6, 1)) }).pipe(ns),
+        S.Struct({ domainNameConfig: S.optional(__S(384, __c24, 0)) }).pipe(ns),
       ).annotate({ identifier: "CreateDomainNameResponse" });
-    case 3:
-      return S.suspend(() => S.Struct({ lambdaConflictHandlerArn: S.optional(S.String) })).annotate(
-        {
-          identifier: "LambdaConflictHandlerConfig",
-        },
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conflictHandler: S.optional(S.String),
-          conflictDetection: S.optional(S.String),
-          lambdaConflictHandlerConfig: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "SyncConfig" });
-    case 5:
-      return S.suspend(() => S.Struct({ name: S.String, runtimeVersion: S.String })).annotate({
-        identifier: "AppSyncRuntime",
-      });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4112,9 +4168,9 @@ function __c6(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52, __c6, 4)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4128,7 +4184,37 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateFunctionRequest" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, runtimeVersion: S.String })).annotate({
+        identifier: "AppSyncRuntime",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ lambdaConflictHandlerArn: S.optional(S.String) })).annotate(
+        {
+          identifier: "LambdaConflictHandlerConfig",
+        },
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conflictHandler: S.optional(S.String),
+          conflictDetection: S.optional(S.String),
+          lambdaConflictHandlerConfig: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({ identifier: "SyncConfig" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
@@ -4139,21 +4225,53 @@ function __c6(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52, __c6, 4)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionConfiguration" });
   }
 }
-function __c7(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ functionConfiguration: S.optional(__S(55, __c6, 7)) }).pipe(ns),
+        S.Struct({ functionConfiguration: S.optional(__S(464, __c29, 0)) }).pipe(ns),
       ).annotate({ identifier: "CreateFunctionResponse" });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          logConfig: S.optional(__S(512, __c32, 0)),
+          authenticationType: S.String,
+          userPoolConfig: S.optional(__S(513, __c32, 1)),
+          openIDConnectConfig: S.optional(__S(145, __c9, 1)),
+          tags: S.optional(__S(96, __c6, 0)),
+          additionalAuthenticationProviders: S.optional(__S(515, __c32, 3)),
+          xrayEnabled: S.optional(S.Boolean),
+          lambdaAuthorizerConfig: S.optional(__S(146, __c9, 2)),
+          apiType: S.optional(S.String),
+          mergedApiExecutionRoleArn: S.optional(S.String),
+          visibility: S.optional(S.String),
+          ownerContact: S.optional(S.String),
+          introspectionConfig: S.optional(S.String),
+          queryDepthLimit: S.optional(S.Number),
+          resolverCountLimit: S.optional(S.Number),
+          enhancedMetricsConfig: S.optional(__S(516, __c32, 4)),
+        }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/v1/apis" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateGraphqlApiRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fieldLogLevel: S.String,
@@ -4161,7 +4279,7 @@ function __c7(j: number): any {
           excludeVerboseContent: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LogConfig" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userPoolId: S.String,
@@ -4170,20 +4288,20 @@ function __c7(j: number): any {
           appIdClientRegex: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPoolConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authenticationType: S.optional(S.String),
-          openIDConnectConfig: S.optional(__S(10, __c1, 2)),
-          userPoolConfig: S.optional(__S(9, __c1, 1)),
-          lambdaAuthorizerConfig: S.optional(__S(11, __c1, 3)),
+          openIDConnectConfig: S.optional(__S(145, __c9, 1)),
+          userPoolConfig: S.optional(__S(144, __c9, 0)),
+          lambdaAuthorizerConfig: S.optional(__S(146, __c9, 2)),
         }),
       ).annotate({
         identifier: "AdditionalAuthenticationProvider",
       });
+    case 3:
+      return S.Array(__S(514, __c32, 2));
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           resolverLevelMetricsBehavior: S.String,
@@ -4191,47 +4309,23 @@ function __c7(j: number): any {
           operationLevelMetricsConfig: S.String,
         }),
       ).annotate({ identifier: "EnhancedMetricsConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          logConfig: S.optional(__S(57, __c7, 1)),
-          authenticationType: S.String,
-          userPoolConfig: S.optional(__S(58, __c7, 2)),
-          openIDConnectConfig: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          additionalAuthenticationProviders: S.optional(__S(60, __c7, 4)),
-          xrayEnabled: S.optional(S.Boolean),
-          lambdaAuthorizerConfig: S.optional(__S(11, __c1, 3)),
-          apiType: S.optional(S.String),
-          mergedApiExecutionRoleArn: S.optional(S.String),
-          visibility: S.optional(S.String),
-          ownerContact: S.optional(S.String),
-          introspectionConfig: S.optional(S.String),
-          queryDepthLimit: S.optional(S.Number),
-          resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61, __c7, 5)),
-        }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/v1/apis" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateGraphqlApiRequest" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           apiId: S.optional(S.String),
           authenticationType: S.optional(S.String),
-          logConfig: S.optional(__S(57, __c7, 1)),
-          userPoolConfig: S.optional(__S(58, __c7, 2)),
-          openIDConnectConfig: S.optional(__S(10, __c1, 2)),
+          logConfig: S.optional(__S(512, __c32, 0)),
+          userPoolConfig: S.optional(__S(513, __c32, 1)),
+          openIDConnectConfig: S.optional(__S(145, __c9, 1)),
           arn: S.optional(S.String),
-          uris: S.optional(__S(19, __c2, 3)),
-          tags: S.optional(__S(8, __c1, 0)),
-          additionalAuthenticationProviders: S.optional(__S(60, __c7, 4)),
+          uris: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          additionalAuthenticationProviders: S.optional(__S(515, __c32, 3)),
           xrayEnabled: S.optional(S.Boolean),
           wafWebAclArn: S.optional(S.String),
-          lambdaAuthorizerConfig: S.optional(__S(11, __c1, 3)),
-          dns: S.optional(__S(19, __c2, 3)),
+          lambdaAuthorizerConfig: S.optional(__S(146, __c9, 2)),
+          dns: S.optional(__S(128, __c8, 0)),
           visibility: S.optional(S.String),
           apiType: S.optional(S.String),
           mergedApiExecutionRoleArn: S.optional(S.String),
@@ -4240,30 +4334,22 @@ function __c7(j: number): any {
           introspectionConfig: S.optional(S.String),
           queryDepthLimit: S.optional(S.Number),
           resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61, __c7, 5)),
+          enhancedMetricsConfig: S.optional(__S(516, __c32, 4)),
         }),
       ).annotate({ identifier: "GraphqlApi" });
   }
 }
-function __c8(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ graphqlApi: S.optional(__S(63, __c7, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGraphqlApiResponse",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => S.Struct({ functions: S.optional(__S(65, __c8, 1)) })).annotate({
-        identifier: "PipelineConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ttl: S.Number, cachingKeys: S.optional(__S(65, __c8, 1)) }),
-      ).annotate({ identifier: "CachingConfig" });
-    case 4:
+        S.Struct({ graphqlApi: S.optional(__S(517, __c32, 5)) }).pipe(ns),
+      ).annotate({ identifier: "CreateGraphqlApiResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4273,11 +4359,11 @@ function __c8(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66, __c8, 2)),
-          syncConfig: S.optional(__S(52, __c6, 4)),
-          cachingConfig: S.optional(__S(67, __c8, 3)),
+          pipelineConfig: S.optional(__S(576, __c36, 0)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
+          cachingConfig: S.optional(__S(577, __c36, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
           metricsConfig: S.optional(S.String),
         }).pipe(
@@ -4292,7 +4378,25 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateResolverRequest" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ functions: S.optional(__S(560, __c35, 0)) })).annotate({
+        identifier: "PipelineConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ttl: S.Number, cachingKeys: S.optional(__S(560, __c35, 0)) }),
+      ).annotate({ identifier: "CachingConfig" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           typeName: S.optional(S.String),
@@ -4302,22 +4406,28 @@ function __c8(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66, __c8, 2)),
-          syncConfig: S.optional(__S(52, __c6, 4)),
-          cachingConfig: S.optional(__S(67, __c8, 3)),
+          pipelineConfig: S.optional(__S(576, __c36, 0)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
+          cachingConfig: S.optional(__S(577, __c36, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
           metricsConfig: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resolver" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resolver: S.optional(__S(69, __c8, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateResolverResponse",
-      });
-    case 7:
+        S.Struct({ resolver: S.optional(__S(578, __c36, 2)) }).pipe(ns),
+      ).annotate({ identifier: "CreateResolverResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4337,7 +4447,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateTypeRequest" });
   }
 }
-function __c9(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4349,11 +4459,19 @@ function __c9(j: number): any {
           format: S.optional(S.String),
         }),
       ).annotate({ identifier: "Type" });
-    case 1:
-      return S.suspend(() => S.Struct({ type: S.optional(__S(72, __c9, 0)) }).pipe(ns)).annotate({
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ type: S.optional(__S(624, __c39, 0)) }).pipe(ns)).annotate({
         identifier: "CreateTypeResponse",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4367,11 +4485,19 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApiRequest" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteApiResponse",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4385,11 +4511,19 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApiCacheRequest" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteApiCacheResponse",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4406,7 +4540,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApiKeyRequest" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4425,15 +4563,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteChannelNamespaceRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteChannelNamespaceResponse",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4450,11 +4588,19 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDataSourceRequest" });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDataSourceResponse",
       });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
           T.all(
@@ -4468,7 +4614,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDomainNameRequest" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4485,7 +4635,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteFunctionRequest" });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4499,7 +4653,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteGraphqlApiRequest" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4520,7 +4678,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteResolverRequest" });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4539,7 +4701,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteTypeRequest" });
   }
 }
-function __c11(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4555,7 +4717,11 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DisassociateApiRequest" });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceApiIdentifier: S.String.pipe(T.HttpLabel("sourceApiIdentifier")),
@@ -4577,13 +4743,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DisassociateMergedGraphqlApiRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ sourceApiAssociationStatus: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "DisassociateMergedGraphqlApiResponse",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
@@ -4605,10 +4779,14 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DisassociateSourceGraphqlApiRequest",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          runtime: __S(53, __c6, 5),
+          runtime: __S(432, __c27, 0),
           code: S.String,
           context: S.String,
           function: S.optional(S.String),
@@ -4624,7 +4802,25 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "EvaluateCodeRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ message: S.optional(S.String), codeErrors: S.optional(__S(946, __c59, 2)) }),
+      ).annotate({ identifier: "EvaluateCodeErrorDetail" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          evaluationResult: S.optional(S.String),
+          error: S.optional(__S(929, __c58, 1)),
+          logs: S.optional(__S(560, __c35, 0)),
+          stash: S.optional(S.String),
+          outErrors: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "EvaluateCodeResponse" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           line: S.optional(S.Number),
@@ -4632,35 +4828,25 @@ function __c11(j: number): any {
           span: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CodeErrorLocation" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           errorType: S.optional(S.String),
           value: S.optional(S.String),
-          location: S.optional(__S(93, __c11, 5)),
+          location: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "CodeError" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ codeErrors: S.optional(__S(946, __c59, 2)) })).annotate({
+        identifier: "BadRequestDetail",
+      });
   }
 }
-function __c12(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ message: S.optional(S.String), codeErrors: S.optional(__S(95, __c11, 7)) }),
-      ).annotate({ identifier: "EvaluateCodeErrorDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          evaluationResult: S.optional(S.String),
-          error: S.optional(__S(96, __c12, 0)),
-          logs: S.optional(__S(65, __c8, 1)),
-          stash: S.optional(S.String),
-          outErrors: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "EvaluateCodeResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ template: S.String, context: S.String }).pipe(
           T.all(
@@ -4676,23 +4862,27 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "EvaluateMappingTemplateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
         identifier: "ErrorDetail",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           evaluationResult: S.optional(S.String),
-          error: S.optional(__S(99, __c12, 3)),
-          logs: S.optional(__S(65, __c8, 1)),
+          error: S.optional(__S(961, __c60, 1)),
+          logs: S.optional(__S(560, __c35, 0)),
           stash: S.optional(S.String),
           outErrors: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "EvaluateMappingTemplateResponse",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4706,7 +4896,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "FlushApiCacheRequest" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4720,7 +4914,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApiRequest" });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
           T.all(
@@ -4734,17 +4932,17 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApiAssociationRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ apiAssociation: S.optional(__S(1, __c0, 1)) }).pipe(ns),
+        S.Struct({ apiAssociation: S.optional(__S(16, __c1, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetApiAssociationResponse",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4758,7 +4956,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApiCacheRequest" });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4777,7 +4979,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetChannelNamespaceRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4794,7 +5000,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDataSourceRequest" });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           introspectionId: S.String.pipe(T.HttpLabel("introspectionId")),
@@ -4815,83 +5025,80 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDataSourceIntrospectionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(
             S.suspend((): S.Schema<DataSourceIntrospectionModelFieldType> =>
-              __S(109, __c13, 5),
+              __S(1073, __c67, 1),
             ).annotate({ identifier: "DataSourceIntrospectionModelFieldType" }),
           ),
-          values: S.optional(__S(65, __c8, 1)),
+          values: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelFieldType",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(__S(109, __c13, 5)),
+          type: S.optional(__S(1073, __c67, 1)),
           length: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelField",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1074, __c67, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          fields: S.optional(__S(65, __c8, 1)),
+          fields: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelIndex",
       });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(1076, __c67, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          fields: S.optional(__S(111, __c13, 7)),
-          primaryKey: S.optional(__S(112, __c14, 0)),
-          indexes: S.optional(__S(113, __c14, 1)),
+          fields: S.optional(__S(1075, __c67, 3)),
+          primaryKey: S.optional(__S(1076, __c67, 4)),
+          indexes: S.optional(__S(1077, __c67, 5)),
           sdl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModel",
       });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(1078, __c67, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({
-          models: S.optional(__S(115, __c14, 3)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ models: S.optional(__S(1079, __c67, 7)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DataSourceIntrospectionResult",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           introspectionId: S.optional(S.String),
           introspectionStatus: S.optional(S.String),
           introspectionStatusDetail: S.optional(S.String),
-          introspectionResult: S.optional(__S(116, __c14, 4)),
+          introspectionResult: S.optional(__S(1080, __c67, 8)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDataSourceIntrospectionResponse",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
           T.all(
@@ -4905,7 +5112,11 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDomainNameRequest" });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4924,7 +5135,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetFunctionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4940,7 +5151,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGraphqlApiRequest" });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -4956,13 +5171,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetGraphqlApiEnvironmentVariablesRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ environmentVariables: S.optional(__S(19, __c2, 3)) }).pipe(ns),
+        S.Struct({ environmentVariables: S.optional(__S(128, __c8, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetGraphqlApiEnvironmentVariablesResponse",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -4982,13 +5205,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetIntrospectionSchemaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ schema: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }).pipe(ns),
       ).annotate({
         identifier: "GetIntrospectionSchemaResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5009,7 +5236,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResolverRequest" });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
           T.all(
@@ -5025,7 +5256,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetSchemaCreationStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), details: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -5033,7 +5264,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5057,7 +5288,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetSourceApiAssociationRequest",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5075,7 +5310,11 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTypeRequest" });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5093,15 +5332,20 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListApiKeysRequest" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ apiKeys: S.optional(__S(131, __c16, 3)), nextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          apiKeys: S.optional(__S(1249, __c78, 1)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListApiKeysResponse" });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5110,17 +5354,17 @@ function __c16(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/v2/apis" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListApisRequest" });
-    case 6:
-      return S.Array(__S(20, __c2, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(164, __c10, 4));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ apis: S.optional(__S(134, __c16, 6)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ apis: S.optional(__S(1265, __c79, 1)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListApisResponse" });
   }
 }
-function __c17(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5143,17 +5387,21 @@ function __c17(j: number): any {
         identifier: "ListChannelNamespacesRequest",
       });
     case 1:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(292, __c18, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channelNamespaces: S.optional(__S(137, __c17, 1)),
+          channelNamespaces: S.optional(__S(1281, __c80, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListChannelNamespacesResponse",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5171,16 +5419,20 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDataSourcesRequest" });
-    case 4:
-      return S.Array(__S(46, __c5, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(346, __c21, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dataSources: S.optional(__S(140, __c17, 4)),
+          dataSources: S.optional(__S(1297, __c81, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDataSourcesResponse" });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5197,20 +5449,20 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDomainNamesRequest" });
-    case 7:
-      return S.Array(__S(49, __c6, 1));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domainNameConfigs: S.optional(__S(143, __c17, 7)),
+          domainNameConfigs: S.optional(__S(1313, __c82, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDomainNamesResponse" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5228,16 +5480,20 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListFunctionsRequest" });
+    case 1:
+      return S.Array(__S(464, __c29, 0));
     case 2:
-      return S.Array(__S(55, __c6, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          functions: S.optional(__S(146, __c18, 2)),
+          functions: S.optional(__S(1329, __c83, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListFunctionsResponse" });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5248,16 +5504,20 @@ function __c18(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/v1/apis" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGraphqlApisRequest" });
-    case 5:
-      return S.Array(__S(63, __c7, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(517, __c32, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          graphqlApis: S.optional(__S(149, __c18, 5)),
+          graphqlApis: S.optional(__S(1345, __c84, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListGraphqlApisResponse" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5276,20 +5536,24 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListResolversRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(69, __c8, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resolvers: S.optional(__S(152, __c19, 0)),
+          resolvers: S.optional(__S(1376, __c86, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListResolversResponse" });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(578, __c36, 2));
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5310,16 +5574,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListResolversByFunctionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resolvers: S.optional(__S(152, __c19, 0)),
+          resolvers: S.optional(__S(1376, __c86, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListResolversByFunctionResponse",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5339,7 +5607,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListSourceApiAssociationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           associationId: S.optional(S.String),
@@ -5353,12 +5621,12 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "SourceApiAssociationSummary",
       });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1409, __c88, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceApiAssociationSummaries: S.optional(__S(158, __c19, 6)),
+          sourceApiAssociationSummaries: S.optional(__S(1410, __c88, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5366,7 +5634,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5385,10 +5653,14 @@ function __c20(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c6, 0)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5407,15 +5679,23 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTypesRequest" });
-    case 3:
-      return S.Array(__S(72, __c9, 0));
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ types: S.optional(__S(163, __c20, 3)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ types: S.optional(__S(1456, __c91, 0)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListTypesResponse" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(624, __c39, 0));
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
@@ -5440,19 +5720,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTypesByAssociationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ types: S.optional(__S(163, __c20, 3)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ types: S.optional(__S(1456, __c91, 0)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "ListTypesByAssociationResponse",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
-          environmentVariables: __S(19, __c2, 3),
+          environmentVariables: __S(128, __c8, 0),
         }).pipe(
           T.all(
             ns,
@@ -5469,7 +5753,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5477,7 +5761,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "RdsDataApiConfig" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ rdsDataApiConfig: S.optional(__S(168, __c21, 0)) }).pipe(
+        S.Struct({ rdsDataApiConfig: S.optional(__S(1504, __c94, 0)) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/v1/datasources/introspections" }),
@@ -5501,7 +5785,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "StartDataSourceIntrospectionResponse",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")), definition: T.Blob }).pipe(
           T.all(
@@ -5517,11 +5805,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "StartSchemaCreationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "StartSchemaCreationResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           associationId: S.String.pipe(T.HttpLabel("associationId")),
@@ -5541,15 +5833,19 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartSchemaMergeRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ sourceApiAssociationStatus: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "StartSchemaMergeResponse" });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(8, __c1, 0),
+          tags: __S(96, __c6, 0),
         }).pipe(
           T.all(
             ns,
@@ -5564,13 +5860,13 @@ function __c21(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(65, __c8, 1).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(560, __c35, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             ns,
@@ -5583,13 +5879,17 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
           ownerContact: S.optional(S.String),
-          eventConfig: __S(17, __c2, 1),
+          eventConfig: __S(163, __c10, 3),
         }).pipe(
           T.all(
             ns,
@@ -5602,7 +5902,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateApiRequest" });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5622,7 +5926,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateApiCacheRequest" });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5641,15 +5949,19 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateApiKeyRequest" });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String.pipe(T.HttpLabel("name")),
-          subscribeAuthModes: S.optional(__S(15, __c1, 7)),
-          publishAuthModes: S.optional(__S(15, __c1, 7)),
+          subscribeAuthModes: S.optional(__S(113, __c7, 1)),
+          publishAuthModes: S.optional(__S(113, __c7, 1)),
           codeHandlers: S.optional(S.String),
-          handlerConfigs: S.optional(__S(31, __c3, 7)),
+          handlerConfigs: S.optional(__S(291, __c18, 3)),
         }).pipe(
           T.all(
             ns,
@@ -5664,7 +5976,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateChannelNamespaceRequest",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5672,13 +5988,13 @@ function __c22(j: number): any {
           description: S.optional(S.String),
           type: S.String,
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36, __c4, 4)),
-          lambdaConfig: S.optional(__S(37, __c4, 5)),
-          elasticsearchConfig: S.optional(__S(38, __c4, 6)),
-          openSearchServiceConfig: S.optional(__S(38, __c4, 6)),
-          httpConfig: S.optional(__S(41, __c5, 1)),
-          relationalDatabaseConfig: S.optional(__S(43, __c5, 3)),
-          eventBridgeConfig: S.optional(__S(44, __c5, 4)),
+          dynamodbConfig: S.optional(__S(337, __c21, 1)),
+          lambdaConfig: S.optional(__S(338, __c21, 2)),
+          elasticsearchConfig: S.optional(__S(339, __c21, 3)),
+          openSearchServiceConfig: S.optional(__S(339, __c21, 3)),
+          httpConfig: S.optional(__S(342, __c21, 6)),
+          relationalDatabaseConfig: S.optional(__S(344, __c21, 8)),
+          eventBridgeConfig: S.optional(__S(345, __c21, 9)),
           metricsConfig: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5692,7 +6008,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDataSourceRequest" });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -5709,7 +6029,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDomainNameRequest" });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5720,9 +6044,9 @@ function __c22(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52, __c6, 4)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5738,26 +6062,26 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UpdateFunctionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
-          logConfig: S.optional(__S(57, __c7, 1)),
+          logConfig: S.optional(__S(512, __c32, 0)),
           authenticationType: S.String,
-          userPoolConfig: S.optional(__S(58, __c7, 2)),
-          openIDConnectConfig: S.optional(__S(10, __c1, 2)),
-          additionalAuthenticationProviders: S.optional(__S(60, __c7, 4)),
+          userPoolConfig: S.optional(__S(513, __c32, 1)),
+          openIDConnectConfig: S.optional(__S(145, __c9, 1)),
+          additionalAuthenticationProviders: S.optional(__S(515, __c32, 3)),
           xrayEnabled: S.optional(S.Boolean),
-          lambdaAuthorizerConfig: S.optional(__S(11, __c1, 3)),
+          lambdaAuthorizerConfig: S.optional(__S(146, __c9, 2)),
           mergedApiExecutionRoleArn: S.optional(S.String),
           ownerContact: S.optional(S.String),
           introspectionConfig: S.optional(S.String),
           queryDepthLimit: S.optional(S.Number),
           resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61, __c7, 5)),
+          enhancedMetricsConfig: S.optional(__S(516, __c32, 4)),
         }).pipe(
           T.all(
             ns,
@@ -5770,7 +6094,11 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateGraphqlApiRequest" });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5780,11 +6108,11 @@ function __c23(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66, __c8, 2)),
-          syncConfig: S.optional(__S(52, __c6, 4)),
-          cachingConfig: S.optional(__S(67, __c8, 3)),
+          pipelineConfig: S.optional(__S(576, __c36, 0)),
+          syncConfig: S.optional(__S(449, __c28, 1)),
+          cachingConfig: S.optional(__S(577, __c36, 1)),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53, __c6, 5)),
+          runtime: S.optional(__S(432, __c27, 0)),
           code: S.optional(S.String),
           metricsConfig: S.optional(S.String),
         }).pipe(
@@ -5802,13 +6130,17 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateResolverRequest" });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           associationId: S.String.pipe(T.HttpLabel("associationId")),
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3, __c0, 3)),
+          sourceApiAssociationConfig: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.all(
             ns,
@@ -5826,7 +6158,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateSourceApiAssociationRequest",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
@@ -5845,13 +6181,8 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateTypeRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ codeErrors: S.optional(__S(95, __c11, 7)) })).annotate({
-        identifier: "BadRequestDetail",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

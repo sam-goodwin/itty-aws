@@ -1708,8 +1708,8 @@ export const batchHandleAccessRequests: API.OperationMethod<
   BatchHandleAccessRequestsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BatchHandleAccessRequestsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchHandleAccessRequestsResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<BatchHandleAccessRequestsRequest>,
+  output: __S(197, __c12, 5) as any as S.Schema<BatchHandleAccessRequestsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1723,8 @@ export const cancelAccessRequest: API.OperationMethod<
   CancelAccessRequestError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CancelAccessRequestRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CancelAccessRequestResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CancelAccessRequestRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<CancelAccessRequestResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1738,8 @@ export const checkUploadMethod: API.OperationMethod<
   CheckUploadMethodError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CheckUploadMethodRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CheckUploadMethodResponse>,
+  input: __S(578, __c36, 2) as any as S.Schema<CheckUploadMethodRequest>,
+  output: __S(581, __c36, 5) as any as S.Schema<CheckUploadMethodResponse>,
   errors: [UnprocessableEntity],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1753,8 @@ export const commit: API.OperationMethod<
   CommitError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CommitRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CommitResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<CommitRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<CommitResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1768,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateBranchRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateBranchResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateBranchRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<CreateBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateTagRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateTagResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateTagRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<CreateTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1798,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteBranchResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteBranchRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1813,8 @@ export const deleteLargeFile: API.OperationMethod<
   DeleteLargeFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteLargeFileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteLargeFileResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteLargeFileRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteLargeFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1828,8 @@ export const deleteLargeFiles: API.OperationMethod<
   DeleteLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteLargeFilesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteLargeFilesResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<DeleteLargeFilesRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1843,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteTagRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteTagResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteTagRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<DeleteTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1858,8 @@ export const duplicateXetFiles: API.OperationMethod<
   DuplicateXetFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DuplicateXetFilesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DuplicateXetFilesResponse>,
+  input: __S(67, __c4, 3) as any as S.Schema<DuplicateXetFilesRequest>,
+  output: __S(70, __c4, 6) as any as S.Schema<DuplicateXetFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1873,8 @@ export const exportAccessReport: API.OperationMethod<
   ExportAccessReportError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ExportAccessReportRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExportAccessReportResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ExportAccessReportRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportAccessReportResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,8 @@ export const generateJwt: API.OperationMethod<
   GenerateJwtError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GenerateJwtRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GenerateJwtResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GenerateJwtRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GenerateJwtResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1903,8 @@ export const getCompareRev: API.OperationMethod<
   GetCompareRevError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetCompareRevRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetCompareRevResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetCompareRevRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<GetCompareRevResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1918,8 @@ export const getFolderSize: API.OperationMethod<
   GetFolderSizeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetFolderSizeRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetFolderSizeResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetFolderSizeRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetFolderSizeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1933,8 @@ export const getModelTags: API.OperationMethod<
   GetModelTagsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetModelTagsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetModelTagsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetModelTagsRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<GetModelTagsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1948,8 @@ export const getNotebookUrl: API.OperationMethod<
   GetNotebookUrlError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetNotebookUrlRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetNotebookUrlResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetNotebookUrlRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetNotebookUrlResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1963,8 +1963,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetResourceGroupRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetResourceGroupResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetResourceGroupRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1978,8 @@ export const getSecurityStatus: API.OperationMethod<
   GetSecurityStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetSecurityStatusRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetSecurityStatusResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetSecurityStatusRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<GetSecurityStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1993,8 @@ export const getTrending: API.OperationMethod<
   GetTrendingError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetTrendingRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetTrendingResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetTrendingRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<GetTrendingResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2008,8 +2008,8 @@ export const grantAccess: API.OperationMethod<
   GrantAccessError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GrantAccessRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GrantAccessResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GrantAccessRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GrantAccessResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2023,8 +2023,8 @@ export const handleAccessRequest: API.OperationMethod<
   HandleAccessRequestError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<HandleAccessRequestRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<HandleAccessRequestResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<HandleAccessRequestRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<HandleAccessRequestResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2038,8 @@ export const listAccessRequests: API.OperationMethod<
   ListAccessRequestsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListAccessRequestsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListAccessRequestsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListAccessRequestsRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<ListAccessRequestsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2053,8 +2053,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListCommitsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListCommitsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListCommitsRequest>,
+  output: __S(294, __c18, 6) as any as S.Schema<ListCommitsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2068,8 @@ export const listFolderContent: API.OperationMethod<
   ListFolderContentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListFolderContentRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListFolderContentResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListFolderContentRequest>,
+  output: __S(328, __c20, 8) as any as S.Schema<ListFolderContentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2083,8 @@ export const listLargeFiles: API.OperationMethod<
   ListLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListLargeFilesRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListLargeFilesResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListLargeFilesRequest>,
+  output: __S(357, __c22, 5) as any as S.Schema<ListLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2098,8 @@ export const listLikers: API.OperationMethod<
   ListLikersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListLikersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListLikersResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListLikersRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<ListLikersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2113,8 +2113,8 @@ export const listPathsInfo: API.OperationMethod<
   ListPathsInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListPathsInfoRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListPathsInfoResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListPathsInfoRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<ListPathsInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2128,8 @@ export const listReferences: API.OperationMethod<
   ListReferencesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListReferencesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListReferencesResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListReferencesRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<ListReferencesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2143,8 @@ export const requestAccess: API.OperationMethod<
   RequestAccessError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<RequestAccessRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<RequestAccessResponse>,
+  input: __S(449, __c28, 1) as any as S.Schema<RequestAccessRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<RequestAccessResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2158,8 @@ export const resolveFile: API.OperationMethod<
   ResolveFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ResolveFileRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ResolveFileResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ResolveFileRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<ResolveFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2173,8 @@ export const resolveFileCached: API.OperationMethod<
   ResolveFileCachedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ResolveFileCachedRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ResolveFileCachedResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ResolveFileCachedRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<ResolveFileCachedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2188,8 @@ export const squashRef: API.OperationMethod<
   SquashRefError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<SquashRefRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<SquashRefResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<SquashRefRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<SquashRefResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2203,8 @@ export const updateRepoSettings: API.OperationMethod<
   UpdateRepoSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UpdateRepoSettingsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<UpdateRepoSettingsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<UpdateRepoSettingsRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<UpdateRepoSettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const xetReadToken: API.OperationMethod<
   XetReadTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<XetReadTokenRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<XetReadTokenResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<XetReadTokenRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<XetReadTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2233,8 +2233,8 @@ export const xetWriteToken: API.OperationMethod<
   XetWriteTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<XetWriteTokenRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<XetWriteTokenResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<XetWriteTokenRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<XetWriteTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2266,53 +2266,6 @@ function __c0(j: number): any {
           addedBy: S.String,
         }),
       ).annotate({ identifier: "AddResourceGroupResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchHandleAccessRequestsRequestRequestsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          status: S.String,
-          rejectionReason: S.optional(S.String),
-          resetReason: S.optional(S.String),
-          requests: __S(3, __c0, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/models/{namespace}/{repo}/user-access-request/batch",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchHandleAccessRequestsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.optional(S.String),
-          user: S.optional(S.String),
-          ok: S.Boolean,
-          error: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchHandleAccessRequestsResponseBodyItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BatchHandleAccessRequestsResponse",
-      });
   }
 }
 function __c1(j: number): any {
@@ -2320,165 +2273,32 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/models/{namespace}/{repo}/user-access-request/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelAccessRequestRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelAccessRequestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          size: S.Number,
-          sample: S.String,
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodRequestFilesItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          files: __S(11, __c1, 3),
-          gitAttributes: S.optional(S.String),
-          gitIgnore: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/models/{namespace}/{repo}/preupload/{rev}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CheckUploadMethodRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          uploadMode: S.String,
-          shouldIgnore: S.Boolean,
-          oid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodResponseFilesItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          files: __S(14, __c1, 6),
-          commitOid: S.String,
-        }),
-      ).annotate({
-        identifier: "CheckUploadMethodResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          create_pr: S.optional(S.String.pipe(T.Query())),
-          hot_reload: S.optional(S.String.pipe(T.Query())),
-          contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/commit/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CommitRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          pullRequestUrl: S.optional(S.String),
-          commitOid: S.String,
-          commitUrl: S.String,
-          hookOutput: S.String,
-        }),
-      ).annotate({ identifier: "CommitResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          startingPoint: S.optional(S.String),
-          emptyBranch: S.optional(S.Boolean),
-          overwrite: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/branch/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateBranchRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-          tag: S.String,
-          message: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/tag/{rev}", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateTagRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          rev: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/models/{namespace}/{repo}/branch/{rev}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBranchRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          sha: S.String.pipe(T.Label()),
-          rewriteHistory: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/models/{namespace}/{repo}/lfs-files/{sha}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLargeFileRequest" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sha: __S(22, __c2, 6),
+          sha: __S(32, __c2, 0),
           rewriteHistory: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "DeleteLargeFilesRequestDeletions",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          deletions: __S(16, __c1, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/models/{namespace}/{repo}/lfs-files/batch",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLargeFilesRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
@@ -2488,26 +2308,16 @@ function __c3(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          deletions: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/models/{namespace}/{repo}/lfs-files/batch",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLargeFilesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/api/models/{namespace}/{repo}/tag/{rev}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteTagRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2516,7 +2326,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestTarget",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -2526,15 +2336,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestFilesItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          target: __S(26, __c3, 2),
-          files: __S(28, __c3, 4),
+          target: __S(64, __c4, 0),
+          files: __S(66, __c4, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2543,7 +2353,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DuplicateXetFilesRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -2553,24 +2363,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesResponseFailedItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(31, __c3, 7),
+          failed: __S(69, __c4, 5),
         }),
       ).annotate({
         identifier: "DuplicateXetFilesResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2581,11 +2391,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExportAccessReportRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ExportAccessReportResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2599,7 +2413,7 @@ function __c4(j: number): any {
           billing_details: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/jwt", code: 200 })),
       ).annotate({ identifier: "GenerateJwtRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           encrypted: S.String,
@@ -2608,16 +2422,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateJwtResponseEncryptedToken",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.String.pipe(T.SensitiveValue({})),
           exp: S.optional(S.Number),
           token: S.String,
-          encryptedToken: S.optional(__S(36, __c4, 4)),
+          encryptedToken: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "GenerateJwtResponse" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2632,13 +2450,13 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCompareRevRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCompareRevResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2662,13 +2480,17 @@ function __c5(j: number): any {
           size: S.Number,
         }),
       ).annotate({ identifier: "GetFolderSizeResponse" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/models-tags-by-type", code: 200 })),
       ).annotate({ identifier: "GetModelTagsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2680,15 +2502,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetModelTagsResponseBodyValueItem",
       });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.Record(S.String, __S(146, __c9, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.Record(S.String, __S(44, __c5, 4));
-    case 6:
-      return S.suspend(() => __S(45, __c5, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(147, __c9, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetModelTagsResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2703,15 +2529,15 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNotebookUrlRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNotebookUrlResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2724,7 +2550,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetResourceGroupRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2732,14 +2558,69 @@ function __c6(j: number): any {
           numUsers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetResourceGroupResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchHandleAccessRequestsRequestRequestsItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          status: S.String,
+          rejectionReason: S.optional(S.String),
+          resetReason: S.optional(S.String),
+          requests: __S(193, __c12, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/models/{namespace}/{repo}/user-access-request/batch",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchHandleAccessRequestsRequest",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+          user: S.optional(S.String),
+          ok: S.Boolean,
+          error: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchHandleAccessRequestsResponseBodyItem",
+      });
+    case 4:
+      return S.Array(__S(195, __c12, 3));
+    case 5:
+      return S.suspend(() => __S(196, __c12, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BatchHandleAccessRequestsResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/scan", code: 200 })),
       ).annotate({ identifier: "GetSecurityStatusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -2748,37 +2629,41 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetSecurityStatusResponseFilesWithIssuesItem",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           scansDone: S.Boolean,
-          filesWithIssues: __S(53, __c6, 5),
+          filesWithIssues: __S(210, __c13, 2),
         }),
       ).annotate({
         identifier: "GetSecurityStatusResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/trending", code: 200 })),
       ).annotate({ identifier: "GetTrendingRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          recentlyTrending: __S(56, __c7, 0),
+          recentlyTrending: __S(225, __c14, 1),
         }),
       ).annotate({ identifier: "GetTrendingResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2793,7 +2678,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GrantAccessRequest" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2813,7 +2702,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "HandleAccessRequestRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2833,7 +2726,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAccessRequestsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2844,9 +2737,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAccessRequestsResponseBodyItemUserOrgsItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2857,15 +2750,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAccessRequestsResponseBodyItemUserServiceAccount",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          orgs: S.optional(__S(62, __c7, 6)),
+          orgs: S.optional(__S(274, __c17, 2)),
           avatarUrl: S.String,
           fullname: S.String,
           isPro: S.Boolean,
@@ -2886,51 +2775,53 @@ function __c8(j: number): any {
           isFollowing: S.optional(S.Boolean),
           reasonToFollow: S.optional(S.String),
           primaryOrgAvatarUrl: S.optional(S.String),
-          serviceAccount: S.optional(__S(63, __c7, 7)),
+          serviceAccount: S.optional(__S(275, __c17, 3)),
           type: S.String,
           email: S.optional(S.String),
-          verifiedOrgNames: __S(22, __c2, 6),
+          verifiedOrgNames: __S(32, __c2, 0),
         }),
       ).annotate({
         identifier: "ListAccessRequestsResponseBodyItemUser",
       });
-    case 1:
+    case 5:
       return S.Record(S.String, S.String);
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(__S(64, __c8, 0)),
+          user: S.optional(__S(276, __c17, 4)),
           grantedBy: S.optional(S.Unknown),
           status: S.String,
-          fields: S.optional(__S(65, __c8, 1)),
+          fields: S.optional(__S(277, __c17, 5)),
           timestamp: S.String,
           reviewedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAccessRequestsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
+    case 7:
+      return S.Array(__S(278, __c17, 6));
+    case 8:
+      return S.suspend(() => __S(279, __c17, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccessRequestsResponse",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
           p: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(__S(69, __c8, 5).pipe(T.Query())),
+          expand: S.optional(__S(304, __c19, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/commits/{rev}", code: 200 }),
         ),
       ).annotate({ identifier: "ListCommitsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user: S.String,
@@ -2939,13 +2830,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCommitsResponseBodyItemAuthorsItem",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
@@ -2954,26 +2841,36 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListCommitsResponseBodyItemFormatted",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
           message: S.String,
-          authors: __S(72, __c9, 0),
+          authors: __S(290, __c18, 2),
           date: S.String,
-          formatted: S.optional(__S(73, __c9, 1)),
+          formatted: S.optional(__S(291, __c18, 3)),
         }),
       ).annotate({
         identifier: "ListCommitsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() => __S(75, __c9, 3).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(292, __c18, 4));
+    case 6:
+      return S.suspend(() => __S(293, __c18, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2992,7 +2889,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFolderContentRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           oid: S.String,
@@ -3002,72 +2899,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemLfs",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-          date: S.String,
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemLastCommit",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          module: S.String,
-          name: S.String,
-          safety: S.String,
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          message: S.optional(S.String),
-          reportLink: S.optional(S.String),
-          reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(81, __c10, 1)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          module: S.String,
-          name: S.String,
-          safety: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          message: S.optional(S.String),
-          reportLink: S.optional(S.String),
-          reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(84, __c10, 4)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           module: S.String,
@@ -3078,59 +2910,124 @@ function __c10(j: number): any {
         identifier:
           "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(87, __c10, 7)),
+          pickleImports: S.optional(__S(323, __c20, 3)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          jFrogScan: S.optional(__S(82, __c10, 2)),
-          protectAiScan: S.optional(__S(85, __c10, 5)),
-          avScan: __S(82, __c10, 2),
-          pickleImportScan: __S(88, __c11, 0),
-          virusTotalScan: S.optional(__S(88, __c11, 0)),
+          jFrogScan: S.optional(__S(339, __c21, 3)),
+          protectAiScan: S.optional(__S(342, __c21, 6)),
+          avScan: __S(339, __c21, 3),
+          pickleImportScan: __S(324, __c20, 4),
+          virusTotalScan: S.optional(__S(324, __c20, 4)),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatus",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           oid: S.String,
           size: S.optional(S.Number),
-          lfs: S.optional(__S(78, __c9, 6)),
+          lfs: S.optional(__S(321, __c20, 1)),
           xetHash: S.optional(S.String),
-          lastCommit: S.optional(__S(79, __c9, 7)),
-          securityFileStatus: S.optional(__S(89, __c11, 1)),
+          lastCommit: S.optional(__S(336, __c21, 0)),
+          securityFileStatus: S.optional(__S(325, __c20, 5)),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() => __S(91, __c11, 3).pipe(T.RawResponseRoot())).annotate({
+    case 7:
+      return S.Array(__S(326, __c20, 6));
+    case 8:
+      return S.suspend(() => __S(327, __c20, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFolderContentResponse",
       });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          date: S.String,
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemLastCommit",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          module: S.String,
+          name: S.String,
+          safety: S.String,
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem",
+      });
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          message: S.optional(S.String),
+          reportLink: S.optional(S.String),
+          reportLabel: S.optional(S.String),
+          pickleImports: S.optional(__S(338, __c21, 2)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          module: S.String,
+          name: S.String,
+          safety: S.String,
+        }),
+      ).annotate({
+        identifier:
+          "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem",
+      });
     case 5:
+      return S.Array(__S(340, __c21, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          message: S.optional(S.String),
+          reportLink: S.optional(S.String),
+          reportLabel: S.optional(S.String),
+          pickleImports: S.optional(__S(341, __c21, 5)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3144,7 +3041,7 @@ function __c11(j: number): any {
           T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/lfs-files", code: 200 }),
         ),
       ).annotate({ identifier: "ListLargeFilesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           avatarUrl: S.String,
@@ -3162,7 +3059,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListLargeFilesResponseBodyItemPusherPrimaryOrg",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -3176,19 +3073,15 @@ function __c11(j: number): any {
           type: S.String,
           isPro: S.Boolean,
           isUserFollowing: S.optional(S.Boolean),
-          primaryOrg: S.optional(__S(94, __c11, 6)),
+          primaryOrg: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({
         identifier: "ListLargeFilesResponseBodyItemPusher",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pusher: S.optional(__S(95, __c11, 7)),
+          pusher: S.optional(__S(354, __c22, 2)),
           ref: S.optional(S.String),
           fileOid: S.String,
           oid: S.String,
@@ -3200,21 +3093,29 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListLargeFilesResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() => __S(97, __c12, 1).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(355, __c22, 3));
+    case 5:
+      return S.suspend(() => __S(356, __c22, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLargeFilesResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          expand: S.optional(__S(69, __c8, 5).pipe(T.Query())),
+          expand: S.optional(__S(304, __c19, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/likers", code: 200 })),
       ).annotate({ identifier: "ListLikersRequest" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3230,7 +3131,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPathsInfoRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pointerSize: S.Number,
@@ -3238,71 +3139,98 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemLfs",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(81, __c10, 1)),
+          pickleImports: S.optional(__S(338, __c21, 2)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusAvScan",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(__S(81, __c10, 1)),
+          pickleImports: S.optional(__S(338, __c21, 2)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          jFrogScan: S.optional(__S(82, __c10, 2)),
-          protectAiScan: S.optional(__S(82, __c10, 2)),
-          avScan: __S(102, __c12, 6),
-          pickleImportScan: __S(85, __c10, 5),
-          virusTotalScan: S.optional(__S(103, __c12, 7)),
+          jFrogScan: S.optional(__S(339, __c21, 3)),
+          protectAiScan: S.optional(__S(339, __c21, 3)),
+          avScan: __S(386, __c24, 2),
+          pickleImportScan: __S(342, __c21, 6),
+          virusTotalScan: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemSecurityFileStatus",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           oid: S.String,
           size: S.Number,
-          lfs: S.optional(__S(101, __c12, 5)),
+          lfs: S.optional(__S(385, __c24, 1)),
           xetHash: S.optional(S.String),
           path: S.String,
-          lastCommit: S.optional(__S(79, __c9, 7)),
-          securityFileStatus: S.optional(__S(104, __c13, 0)),
+          lastCommit: S.optional(__S(336, __c21, 0)),
+          securityFileStatus: S.optional(__S(388, __c24, 4)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() => __S(106, __c13, 2).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(389, __c24, 5));
+    case 7:
+      return S.suspend(() => __S(390, __c24, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPathsInfoResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/models/{namespace}/{repo}/user-access-request/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelAccessRequestRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelAccessRequestResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3310,7 +3238,7 @@ function __c13(j: number): any {
           include_prs: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/models/{namespace}/{repo}/refs", code: 200 })),
       ).annotate({ identifier: "ListReferencesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -3320,20 +3248,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListReferencesResponseTagsItem",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(433, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          tags: __S(110, __c13, 6),
-          branches: __S(110, __c13, 6),
-          converts: __S(110, __c13, 6),
-          pullRequests: S.optional(__S(110, __c13, 6)),
+          tags: __S(434, __c27, 2),
+          branches: __S(434, __c27, 2),
+          converts: __S(434, __c27, 2),
+          pullRequests: S.optional(__S(434, __c27, 2)),
         }),
       ).annotate({ identifier: "ListReferencesResponse" });
   }
 }
-function __c14(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.Unknown);
@@ -3342,10 +3270,14 @@ function __c14(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/{namespace}/{repo}/ask-access", code: 200 })),
       ).annotate({ identifier: "RequestAccessRequest" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3358,7 +3290,7 @@ function __c14(j: number): any {
           T.Http({ method: "GET", uri: "/{namespace}/{repo}/resolve/{rev}/{path}", code: 200 }),
         ),
       ).annotate({ identifier: "ResolveFileRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hash: S.String,
@@ -3368,7 +3300,11 @@ function __c14(j: number): any {
           size: S.Number,
         }),
       ).annotate({ identifier: "ResolveFileResponse" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3385,7 +3321,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResolveFileCachedRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hash: S.String,
@@ -3397,7 +3333,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ResolveFileCachedResponse",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3412,7 +3352,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SquashRefRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commitId: S.String,
@@ -3420,7 +3360,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "SquashRefResponse" });
   }
 }
-function __c15(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3456,7 +3396,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateRepoSettingsResponse",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3470,7 +3414,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "XetReadTokenRequest" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           casUrl: S.String,
@@ -3478,7 +3426,11 @@ function __c15(j: number): any {
           accessToken: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "XetReadTokenResponse" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3494,7 +3446,158 @@ function __c15(j: number): any {
       ).annotate({ identifier: "XetWriteTokenRequest" });
   }
 }
-
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          size: S.Number,
+          sample: S.String,
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodRequestFilesItem",
+      });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          files: __S(577, __c36, 1),
+          gitAttributes: S.optional(S.String),
+          gitIgnore: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/models/{namespace}/{repo}/preupload/{rev}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CheckUploadMethodRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          uploadMode: S.String,
+          shouldIgnore: S.Boolean,
+          oid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodResponseFilesItem",
+      });
+    case 4:
+      return S.Array(__S(579, __c36, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          files: __S(580, __c36, 4),
+          commitOid: S.String,
+        }),
+      ).annotate({
+        identifier: "CheckUploadMethodResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          create_pr: S.optional(S.String.pipe(T.Query())),
+          hot_reload: S.optional(S.String.pipe(T.Query())),
+          contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/commit/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CommitRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          pullRequestUrl: S.optional(S.String),
+          commitOid: S.String,
+          commitUrl: S.String,
+          hookOutput: S.String,
+        }),
+      ).annotate({ identifier: "CommitResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          startingPoint: S.optional(S.String),
+          emptyBranch: S.optional(S.Boolean),
+          overwrite: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/branch/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateBranchRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+          tag: S.String,
+          message: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/models/{namespace}/{repo}/tag/{rev}", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateTagRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          rev: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/models/{namespace}/{repo}/branch/{rev}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBranchRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          sha: S.String.pipe(T.Label()),
+          rewriteHistory: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/models/{namespace}/{repo}/lfs-files/{sha}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLargeFileRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

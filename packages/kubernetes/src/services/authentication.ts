@@ -313,8 +313,8 @@ export const createAuthenticationV1SelfSubjectReview: API.OperationMethod<
   CreateAuthenticationV1SelfSubjectReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAuthenticationV1SelfSubjectReviewRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiAuthenticationV1SelfSubjectReview>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateAuthenticationV1SelfSubjectReviewRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<IoK8sApiAuthenticationV1SelfSubjectReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -331,8 +331,8 @@ export const createAuthenticationV1TokenReview: API.OperationMethod<
   CreateAuthenticationV1TokenReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateAuthenticationV1TokenReviewRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<IoK8sApiAuthenticationV1TokenReview>,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateAuthenticationV1TokenReviewRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<IoK8sApiAuthenticationV1TokenReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const getAuthenticationAPIGroup: API.OperationMethod<
   GetAuthenticationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetAuthenticationAPIGroupRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetAuthenticationAPIGroupRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -361,8 +361,8 @@ export const getAuthenticationV1APIResources: API.OperationMethod<
   GetAuthenticationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAuthenticationV1APIResourcesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetAuthenticationV1APIResourcesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -372,10 +372,52 @@ export const getAuthenticationV1APIResources: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userInfo: S.optional(__S(15, __c1, 7)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAuthenticationV1SelfSubjectReviewStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(13, __c1, 5)),
+          status: S.optional(__S(0, __c0, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/authentication.k8s.io/v1/selfsubjectreviews",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAuthenticationV1SelfSubjectReviewRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(13, __c1, 5)),
+          status: S.optional(__S(0, __c0, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAuthenticationV1SelfSubjectReview",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
@@ -389,9 +431,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.String,
@@ -404,23 +446,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
+          annotations: S.optional(__S(8, __c1, 0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
+          finalizers: S.optional(__S(16, __c2, 0)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(8, __c1, 0)),
+          managedFields: S.optional(__S(10, __c1, 2)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
+          ownerReferences: S.optional(__S(12, __c1, 4)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -428,30 +470,48 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
       });
+    case 6:
+      return S.Record(S.String, __S(16, __c2, 0));
     case 7:
-      return S.Record(S.String, __S(1, __c0, 1));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          extra: S.optional(__S(7, __c0, 7)),
-          groups: S.optional(__S(1, __c0, 1)),
+          extra: S.optional(__S(14, __c1, 6)),
+          groups: S.optional(__S(16, __c2, 0)),
           uid: S.optional(S.String),
           username: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthenticationV1UserInfo",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          audiences: S.optional(__S(16, __c2, 0)),
+          token: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiAuthenticationV1TokenReviewSpec",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          userInfo: S.optional(__S(8, __c1, 0)),
+          audiences: S.optional(__S(16, __c2, 0)),
+          authenticated: S.optional(S.Boolean),
+          error: S.optional(S.String),
+          user: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
-        identifier: "IoK8sApiAuthenticationV1SelfSubjectReviewStatus",
+        identifier: "IoK8sApiAuthenticationV1TokenReviewStatus",
       });
     case 2:
       return S.suspend(() =>
@@ -462,82 +522,30 @@ function __c1(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          status: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/authentication.k8s.io/v1/selfsubjectreviews",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAuthenticationV1SelfSubjectReviewRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          status: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAuthenticationV1SelfSubjectReview",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audiences: S.optional(__S(1, __c0, 1)),
-          token: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAuthenticationV1TokenReviewSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          audiences: S.optional(__S(1, __c0, 1)),
-          authenticated: S.optional(S.Boolean),
-          error: S.optional(S.String),
-          user: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiAuthenticationV1TokenReviewStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(12, __c1, 4),
-          status: S.optional(__S(13, __c1, 5)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(24, __c3, 0),
+          status: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/authentication.k8s.io/v1/tokenreviews", code: 200 }),
         ),
       ).annotate({
         identifier: "CreateAuthenticationV1TokenReviewRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(12, __c1, 4),
-          status: S.optional(__S(13, __c1, 5)),
+          metadata: S.optional(__S(13, __c1, 5)),
+          spec: __S(24, __c3, 0),
+          status: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthenticationV1TokenReview",
       });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -566,23 +574,27 @@ function __c2(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(33, __c4, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(17, __c2, 1)),
-          serverAddressByClientCIDRs: S.optional(__S(19, __c2, 3)),
-          versions: __S(20, __c2, 4),
+          preferredVersion: S.optional(__S(33, __c4, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(35, __c4, 3)),
+          versions: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/authentication.k8s.io/v1/", code: 200 }),
@@ -590,43 +602,38 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAuthenticationV1APIResourcesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(16, __c2, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(16, __c2, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(16, __c2, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(24, __c3, 0),
+          resources: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -161,7 +161,7 @@ export const getRefund: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetRefundRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Refund>,
+  output: __S(5, __c1, 1) as any as S.Schema<Refund>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -177,8 +177,8 @@ export const listRefunds: API.PaginatedOperationMethod<
   Refund
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3, __c0, 3) as any as S.Schema<ListRefundsRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<ListRefundsResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListRefundsRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListRefundsResponse>,
     errors: [BadRequest, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -203,7 +203,11 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/refunds/{id}", code: 200 })),
       ).annotate({ identifier: "GetRefundRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
@@ -212,16 +216,16 @@ function __c0(j: number): any {
           display_decimals: S.Number,
         }),
       ).annotate({ identifier: "Money" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          amount: S.NullOr(__S(1, __c0, 1)),
+          amount: S.NullOr(__S(4, __c1, 0)),
           created_at: S.String,
           failure_message: S.NullOr(S.String),
           failure_reason: S.NullOr(S.String),
           id: S.String,
-          original_amount: __S(1, __c0, 1),
+          original_amount: __S(4, __c1, 0),
           payment_id: S.String,
           provider: S.String,
           provider_created_at: S.NullOr(S.String),
@@ -234,7 +238,11 @@ function __c0(j: number): any {
           visa_rdr: S.Boolean,
         }),
       ).annotate({ identifier: "Refund" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -250,9 +258,9 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/refunds", code: 200 })),
       ).annotate({ identifier: "ListRefundsRequest" });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -263,16 +271,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListRefundsResponsePageInfo",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(4, __c0, 4),
-          page_info: __S(5, __c0, 5),
+          data: __S(9, __c2, 1),
+          page_info: __S(10, __c2, 2),
         }),
       ).annotate({ identifier: "ListRefundsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

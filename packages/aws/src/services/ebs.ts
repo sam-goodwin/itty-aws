@@ -339,8 +339,8 @@ export const completeSnapshot: API.OperationMethod<
   CompleteSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CompleteSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CompleteSnapshotResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<CompleteSnapshotRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<CompleteSnapshotResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -377,8 +377,8 @@ export const getSnapshotBlock: API.OperationMethod<
   GetSnapshotBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSnapshotBlockRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetSnapshotBlockResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSnapshotBlockRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetSnapshotBlockResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -416,8 +416,8 @@ export const listChangedBlocks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListChangedBlocksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListChangedBlocksResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListChangedBlocksRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ListChangedBlocksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -459,8 +459,8 @@ export const listSnapshotBlocks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListSnapshotBlocksRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListSnapshotBlocksResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListSnapshotBlocksRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListSnapshotBlocksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -506,8 +506,8 @@ export const putSnapshotBlock: API.OperationMethod<
   PutSnapshotBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PutSnapshotBlockRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PutSnapshotBlockResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<PutSnapshotBlockRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PutSnapshotBlockResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -550,8 +550,8 @@ export const startSnapshot: API.OperationMethod<
   StartSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<StartSnapshotRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<StartSnapshotResponse>,
+  input: __S(18, __c4, 2) as any as S.Schema<StartSnapshotRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<StartSnapshotResponse>,
   errors: [
     AccessDeniedException,
     ConcurrentLimitExceededException,
@@ -574,31 +574,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
-          ChangedBlocksCount: S.Number.pipe(T.HttpHeader("x-amz-ChangedBlocksCount")),
-          Checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum-Algorithm")),
-          ChecksumAggregationMethod: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-Checksum-Aggregation-Method"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/snapshots/completion/{SnapshotId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CompleteSnapshotRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "CompleteSnapshotResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
           BlockIndex: S.Number.pipe(T.HttpLabel("BlockIndex")),
           BlockToken: S.String.pipe(T.HttpQuery("blockToken")),
         }).pipe(
@@ -612,7 +587,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSnapshotBlockRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DataLength: S.optional(S.Number).pipe(T.HttpHeader("x-amz-Data-Length")),
@@ -621,7 +596,11 @@ function __c0(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum-Algorithm")),
         }),
       ).annotate({ identifier: "GetSnapshotBlockResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FirstSnapshotId: S.optional(S.String).pipe(T.HttpQuery("firstSnapshotId")),
@@ -640,7 +619,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListChangedBlocksRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BlockIndex: S.optional(S.Number),
@@ -648,12 +627,12 @@ function __c0(j: number): any {
           SecondBlockToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangedBlock" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ChangedBlocks: S.optional(__S(6, __c0, 6)),
+          ChangedBlocks: S.optional(__S(6, __c1, 2)),
           ExpiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VolumeSize: S.optional(S.Number),
           BlockSize: S.optional(S.Number),
@@ -664,7 +643,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -691,11 +670,11 @@ function __c1(j: number): any {
         S.Struct({ BlockIndex: S.optional(S.Number), BlockToken: S.optional(S.String) }),
       ).annotate({ identifier: "Block" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(9, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Blocks: S.optional(__S(10, __c1, 2)),
+          Blocks: S.optional(__S(10, __c2, 2)),
           ExpiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VolumeSize: S.optional(S.Number),
           BlockSize: S.optional(S.Number),
@@ -704,7 +683,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListSnapshotBlocksResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
@@ -725,29 +708,29 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutSnapshotBlockRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum")),
           ChecksumAlgorithm: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum-Algorithm")),
         }),
       ).annotate({ identifier: "PutSnapshotBlockResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           VolumeSize: S.Number,
           ParentSnapshotId: S.optional(S.String),
-          Tags: S.optional(__S(15, __c1, 7)),
+          Tags: S.optional(__S(17, __c4, 1)),
           Description: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Encrypted: S.optional(S.Boolean),
@@ -755,7 +738,7 @@ function __c2(j: number): any {
           Timeout: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/snapshots" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSnapshotRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
@@ -765,7 +748,7 @@ function __c2(j: number): any {
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VolumeSize: S.optional(S.Number),
           BlockSize: S.optional(S.Number),
-          Tags: S.optional(__S(15, __c1, 7)),
+          Tags: S.optional(__S(17, __c4, 1)),
           ParentSnapshotId: S.optional(S.String),
           KmsKeyArn: S.optional(SensitiveString),
           SseType: S.optional(S.String),
@@ -773,7 +756,35 @@ function __c2(j: number): any {
       ).annotate({ identifier: "StartSnapshotResponse" });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
+          ChangedBlocksCount: S.Number.pipe(T.HttpHeader("x-amz-ChangedBlocksCount")),
+          Checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum-Algorithm")),
+          ChecksumAggregationMethod: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-Checksum-Aggregation-Method"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/snapshots/completion/{SnapshotId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CompleteSnapshotRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "CompleteSnapshotResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

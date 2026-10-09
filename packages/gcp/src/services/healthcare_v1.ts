@@ -2628,11 +2628,11 @@ export const activateProjectsLocationsDatasetsConsentStoresConsents: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1,
-    __c0,
+    3585,
+    __c112,
     1,
   ) as any as S.Schema<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2651,8 +2651,12 @@ export const analyzeEntitiesProjectsLocationsServicesNlp: API.OperationMethod<
   AnalyzeEntitiesProjectsLocationsServicesNlpError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AnalyzeEntitiesProjectsLocationsServicesNlpRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AnalyzeEntitiesResponse>,
+  input: __S(
+    4097,
+    __c128,
+    1,
+  ) as any as S.Schema<AnalyzeEntitiesProjectsLocationsServicesNlpRequest>,
+  output: __S(4108, __c128, 12) as any as S.Schema<AnalyzeEntitiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2672,11 +2676,11 @@ export const applyAdminConsentsProjectsLocationsDatasetsFhirStores: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
+    4482,
+    __c140,
     2,
   ) as any as S.Schema<ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2696,11 +2700,11 @@ export const applyConsentsProjectsLocationsDatasetsFhirStores: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    4963,
+    __c155,
+    3,
   ) as any as S.Schema<ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2720,11 +2724,11 @@ export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    36,
-    __c4,
-    4,
+    5344,
+    __c167,
+    0,
   ) as any as S.Schema<ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ArchiveUserDataMappingResponse>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ArchiveUserDataMappingResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2742,11 +2746,11 @@ export const binary_vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    37,
-    __c4,
-    5,
+    5728,
+    __c179,
+    0,
   ) as any as S.Schema<Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2765,8 +2769,8 @@ export const bulkDeleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   BulkDeleteProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(1, __c0, 1) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2784,11 +2788,11 @@ export const bulkExportGroupProjectsLocationsDatasetsFhirStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2806,11 +2810,11 @@ export const bulkExportProjectsLocationsDatasetsFhirStoresFhir: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    44,
-    __c5,
-    4,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2829,8 +2833,8 @@ export const cancelProjectsLocationsDatasetsOperations: API.OperationMethod<
   CancelProjectsLocationsDatasetsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CancelProjectsLocationsDatasetsOperationsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CancelProjectsLocationsDatasetsOperationsRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2848,11 +2852,11 @@ export const capabilitiesProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    1568,
+    __c49,
+    0,
   ) as any as S.Schema<CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2872,11 +2876,11 @@ export const checkDataAccessProjectsLocationsDatasetsConsentStores: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
+    1985,
+    __c62,
     1,
   ) as any as S.Schema<CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CheckDataAccessResponse>,
+  output: __S(1986, __c62, 2) as any as S.Schema<CheckDataAccessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2896,11 +2900,11 @@ export const conditionalDeleteProjectsLocationsDatasetsFhirStoresFhir: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    2304,
+    __c72,
+    0,
   ) as any as S.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2920,11 +2924,11 @@ export const conditionalPatchProjectsLocationsDatasetsFhirStoresFhir: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2944,11 +2948,11 @@ export const conditionalUpdateProjectsLocationsDatasetsFhirStoresFhir: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2966,11 +2970,11 @@ export const consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    2400,
+    __c75,
     0,
   ) as any as S.Schema<Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,11 +2994,11 @@ export const createBinaryProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3013,8 +3017,8 @@ export const createProjectsLocationsDatasets: API.OperationMethod<
   CreateProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3037,12 @@ export const createProjectsLocationsDatasetsConsentStores: API.OperationMethod<
   CreateProjectsLocationsDatasetsConsentStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ConsentStore>,
+  input: __S(
+    2528,
+    __c79,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<ConsentStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3054,11 +3062,11 @@ export const createProjectsLocationsDatasetsConsentStoresAttributeDefinitions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    2592,
+    __c81,
     0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AttributeDefinition>,
+  output: __S(2624, __c82, 0) as any as S.Schema<AttributeDefinition>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3078,11 +3086,11 @@ export const createProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    2656,
+    __c83,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ConsentArtifact>,
+  output: __S(2691, __c84, 3) as any as S.Schema<ConsentArtifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3102,11 +3110,11 @@ export const createProjectsLocationsDatasetsConsentStoresConsents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    2720,
+    __c85,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3126,11 +3134,11 @@ export const createProjectsLocationsDatasetsConsentStoresUserDataMappings: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    2752,
+    __c86,
     0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UserDataMapping>,
+  output: __S(2784, __c87, 0) as any as S.Schema<UserDataMapping>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3149,8 +3157,8 @@ export const createProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   CreateProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DicomStore>,
+  input: __S(2816, __c88, 0) as any as S.Schema<CreateProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<DicomStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3177,8 @@ export const createProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   CreateProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<FhirStore>,
+  input: __S(2976, __c93, 0) as any as S.Schema<CreateProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(3082, __c96, 10) as any as S.Schema<FhirStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,11 +3198,11 @@ export const createProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    3104,
+    __c97,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3213,8 +3221,8 @@ export const createProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   CreateProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Hl7V2Store>,
+  input: __S(3136, __c98, 0) as any as S.Schema<CreateProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(3187, __c99, 19) as any as S.Schema<Hl7V2Store>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3234,11 +3242,11 @@ export const createProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    3200,
+    __c100,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Message>,
+  output: __S(3238, __c101, 6) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3257,8 +3265,8 @@ export const deidentifyProjectsLocationsDatasets: API.OperationMethod<
   DeidentifyProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DeidentifyProjectsLocationsDatasetsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(3297, __c103, 1) as any as S.Schema<DeidentifyProjectsLocationsDatasetsRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3278,11 +3286,11 @@ export const deidentifyProjectsLocationsDatasetsDicomStores: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
-    0,
+    3329,
+    __c104,
+    1,
   ) as any as S.Schema<DeidentifyProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3302,11 +3310,11 @@ export const deidentifyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    3395,
+    __c106,
+    3,
   ) as any as S.Schema<DeidentifyProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3326,11 +3334,11 @@ export const deleteFhirOperationProjectsLocationsDatasetsFhirStoresOperations: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    3424,
+    __c107,
+    0,
   ) as any as S.Schema<DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3357,8 @@ export const deleteProjectsLocationsDatasets: API.OperationMethod<
   DeleteProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3369,8 +3377,12 @@ export const deleteProjectsLocationsDatasetsConsentStores: API.OperationMethod<
   DeleteProjectsLocationsDatasetsConsentStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(
+    3488,
+    __c109,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3390,11 +3402,11 @@ export const deleteProjectsLocationsDatasetsConsentStoresAttributeDefinitions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
+    3520,
+    __c110,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3414,11 +3426,11 @@ export const deleteProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    3552,
+    __c111,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3438,11 +3450,11 @@ export const deleteProjectsLocationsDatasetsConsentStoresConsents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    3776,
+    __c118,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3462,11 +3474,11 @@ export const deleteProjectsLocationsDatasetsConsentStoresUserDataMappings: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
-    3,
+    3808,
+    __c119,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3485,8 +3497,8 @@ export const deleteProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   DeleteProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(3840, __c120, 0) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3506,11 +3518,11 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudies: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    157,
-    __c19,
-    5,
+    3872,
+    __c121,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3530,11 +3542,11 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeries: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    3904,
+    __c122,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3554,11 +3566,11 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    159,
-    __c19,
-    7,
+    3936,
+    __c123,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3577,8 +3589,8 @@ export const deleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   DeleteProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(3968, __c124, 0) as any as S.Schema<DeleteProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3598,11 +3610,11 @@ export const deleteProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    161,
-    __c20,
-    1,
+    4000,
+    __c125,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3621,8 +3633,8 @@ export const deleteProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   DeleteProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(4032, __c126, 0) as any as S.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3642,11 +3654,11 @@ export const deleteProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    163,
-    __c20,
-    3,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3666,11 +3678,11 @@ export const deleteRevisionProjectsLocationsDatasetsConsentStoresConsents: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    4160,
+    __c130,
+    0,
   ) as any as S.Schema<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3690,11 +3702,11 @@ export const evaluateUserConsentsProjectsLocationsDatasetsConsentStores: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    166,
-    __c20,
-    6,
+    4193,
+    __c131,
+    1,
   ) as any as S.Schema<EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<EvaluateUserConsentsResponse>,
+  output: __S(4196, __c131, 4) as any as S.Schema<EvaluateUserConsentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3714,11 +3726,11 @@ export const executeBundleProjectsLocationsDatasetsFhirStoresFhir: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    4224,
+    __c132,
+    0,
   ) as any as S.Schema<ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3736,11 +3748,11 @@ export const explainDataAccessProjectsLocationsDatasetsFhirStores: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    171,
-    __c21,
-    3,
+    4256,
+    __c133,
+    0,
   ) as any as S.Schema<ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ExplainDataAccessResponse>,
+  output: __S(4263, __c133, 7) as any as S.Schema<ExplainDataAccessResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3759,8 +3771,8 @@ export const exportProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   ExportProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ExportProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(4290, __c134, 2) as any as S.Schema<ExportProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3779,8 +3791,8 @@ export const exportProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   ExportProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ExportProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(4321, __c135, 1) as any as S.Schema<ExportProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3799,8 +3811,8 @@ export const exportProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   ExportProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ExportProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(4354, __c136, 2) as any as S.Schema<ExportProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3818,11 +3830,11 @@ export const getBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstanc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<GetBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3840,11 +3852,11 @@ export const getDICOMStoreMetricsProjectsLocationsDatasetsDicomStores: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    188,
-    __c23,
-    4,
+    4416,
+    __c138,
+    0,
   ) as any as S.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DicomStoreMetrics>,
+  output: __S(4417, __c138, 1) as any as S.Schema<DicomStoreMetrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3862,11 +3874,11 @@ export const getFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperations
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    190,
-    __c23,
-    6,
+    4448,
+    __c139,
+    0,
   ) as any as S.Schema<GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3884,11 +3896,11 @@ export const getFHIRStoreMetricsProjectsLocationsDatasetsFhirStores: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    191,
-    __c23,
-    7,
+    4608,
+    __c144,
+    0,
   ) as any as S.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<FhirStoreMetrics>,
+  output: __S(4611, __c144, 3) as any as S.Schema<FhirStoreMetrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3906,11 +3918,11 @@ export const getFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    4640,
+    __c145,
+    0,
   ) as any as S.Schema<GetFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3928,11 +3940,11 @@ export const getHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2Stores: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    4672,
+    __c146,
+    0,
   ) as any as S.Schema<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Hl7V2StoreMetrics>,
+  output: __S(4675, __c146, 3) as any as S.Schema<Hl7V2StoreMetrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3958,8 @@ export const getIamPolicyProjectsLocationsDatasets: API.OperationMethod<
   GetIamPolicyProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsRequest>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3965,11 +3977,11 @@ export const getIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    208,
-    __c26,
+    4768,
+    __c149,
     0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3987,11 +3999,11 @@ export const getIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    209,
-    __c26,
-    1,
+    4800,
+    __c150,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4009,11 +4021,11 @@ export const getIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    4832,
+    __c151,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4031,11 +4043,11 @@ export const getIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    211,
-    __c26,
-    3,
+    4864,
+    __c152,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4053,11 +4065,11 @@ export const getIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    212,
-    __c26,
-    4,
+    4896,
+    __c153,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4075,11 +4087,11 @@ export const getInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstanc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    213,
-    __c26,
-    5,
+    4928,
+    __c154,
+    0,
   ) as any as S.Schema<GetInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4097,11 +4109,11 @@ export const getMetadataProjectsLocationsDatasetsDicomStoresStudies: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    214,
-    __c26,
-    6,
+    4992,
+    __c156,
+    0,
   ) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4119,11 +4131,11 @@ export const getMetadataProjectsLocationsDatasetsDicomStoresStudiesSeries: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    5024,
+    __c157,
+    0,
   ) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4141,11 +4153,11 @@ export const getMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstanc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    216,
-    __c27,
+    5056,
+    __c158,
     0,
   ) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4159,8 +4171,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<Location>,
+  input: __S(5088, __c159, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(5120, __c160, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4174,8 +4186,8 @@ export const getProjectsLocationsDatasets: API.OperationMethod<
   GetProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetProjectsLocationsDatasetsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Dataset>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetProjectsLocationsDatasetsRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4189,8 +4201,8 @@ export const getProjectsLocationsDatasetsConsentStores: API.OperationMethod<
   GetProjectsLocationsDatasetsConsentStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ConsentStore>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<ConsentStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4208,11 +4220,11 @@ export const getProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    221,
-    __c27,
-    5,
+    5216,
+    __c163,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AttributeDefinition>,
+  output: __S(2624, __c82, 0) as any as S.Schema<AttributeDefinition>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4230,11 +4242,11 @@ export const getProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    222,
-    __c27,
-    6,
+    5248,
+    __c164,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ConsentArtifact>,
+  output: __S(2691, __c84, 3) as any as S.Schema<ConsentArtifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4252,11 +4264,11 @@ export const getProjectsLocationsDatasetsConsentStoresConsents: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    5280,
+    __c165,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4274,11 +4286,11 @@ export const getProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    5312,
+    __c166,
     0,
   ) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UserDataMapping>,
+  output: __S(2784, __c87, 0) as any as S.Schema<UserDataMapping>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4292,8 +4304,8 @@ export const getProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   GetProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DicomStore>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<DicomStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4307,8 +4319,8 @@ export const getProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   GetProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<FhirStore>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(3082, __c96, 10) as any as S.Schema<FhirStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4322,8 +4334,8 @@ export const getProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   GetProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Hl7V2Store>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(3187, __c99, 19) as any as S.Schema<Hl7V2Store>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4341,11 +4353,11 @@ export const getProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    228,
-    __c28,
-    4,
+    5504,
+    __c172,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Message>,
+  output: __S(3238, __c101, 6) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4359,8 +4371,8 @@ export const getProjectsLocationsDatasetsOperations: API.OperationMethod<
   GetProjectsLocationsDatasetsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetProjectsLocationsDatasetsOperationsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetProjectsLocationsDatasetsOperationsRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4378,11 +4390,11 @@ export const getRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstanc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    230,
-    __c28,
-    6,
+    5568,
+    __c174,
+    0,
   ) as any as S.Schema<GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4400,11 +4412,11 @@ export const getRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstanc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    231,
-    __c28,
-    7,
+    5600,
+    __c175,
+    0,
   ) as any as S.Schema<GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4422,11 +4434,11 @@ export const getSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    232,
-    __c29,
+    5632,
+    __c176,
     0,
   ) as any as S.Schema<GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<SeriesMetrics>,
+  output: __S(5633, __c176, 1) as any as S.Schema<SeriesMetrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4444,11 +4456,11 @@ export const getSeriesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    234,
-    __c29,
-    2,
+    5664,
+    __c177,
+    0,
   ) as any as S.Schema<GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4466,11 +4478,11 @@ export const getStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    5696,
+    __c178,
+    0,
   ) as any as S.Schema<GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<StorageInfo>,
+  output: __S(5699, __c178, 3) as any as S.Schema<StorageInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4488,11 +4500,11 @@ export const getStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    239,
-    __c29,
-    7,
+    5792,
+    __c181,
+    0,
   ) as any as S.Schema<GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<StudyMetrics>,
+  output: __S(5793, __c181, 1) as any as S.Schema<StudyMetrics>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4510,11 +4522,11 @@ export const getStudyProjectsLocationsDatasetsDicomStoresStudies: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    241,
-    __c30,
-    1,
+    5824,
+    __c182,
+    0,
   ) as any as S.Schema<GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4529,11 +4541,11 @@ export const historyProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    242,
-    __c30,
-    2,
+    5856,
+    __c183,
+    0,
   ) as any as S.Schema<HistoryProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4552,8 +4564,8 @@ export const importProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   ImportProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ImportProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(5889, __c184, 1) as any as S.Schema<ImportProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4572,8 +4584,8 @@ export const importProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   ImportProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ImportProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(5953, __c186, 1) as any as S.Schema<ImportProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4592,8 +4604,8 @@ export const importProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   ImportProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ImportProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(5986, __c187, 2) as any as S.Schema<ImportProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4613,11 +4625,11 @@ export const ingestProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    251,
-    __c31,
-    3,
+    6016,
+    __c188,
+    0,
   ) as any as S.Schema<IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<IngestMessageResponse>,
+  output: __S(6017, __c188, 1) as any as S.Schema<IngestMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4632,8 +4644,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ListLocationsResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(6050, __c189, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4649,8 +4661,8 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListProjectsLocationsDatasetsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<ListDatasetsResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ListProjectsLocationsDatasetsRequest>,
+  output: __S(6082, __c190, 2) as any as S.Schema<ListDatasetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4666,8 +4678,8 @@ export const listProjectsLocationsDatasetsConsentStores: API.PaginatedOperationM
   GcpOpContext,
   ListConsentStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<ListConsentStoresResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>,
+  output: __S(6114, __c191, 2) as any as S.Schema<ListConsentStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4687,11 +4699,11 @@ export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API
   ListAttributeDefinitionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    262,
-    __c32,
-    6,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListAttributeDefinitionsResponse>,
+  output: __S(98, __c3, 2) as any as S.Schema<ListAttributeDefinitionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4711,11 +4723,11 @@ export const listProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Pag
   ListConsentArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    265,
-    __c33,
-    1,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<ListConsentArtifactsResponse>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListConsentArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4735,11 +4747,11 @@ export const listProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOp
   ListConsentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    268,
-    __c33,
-    4,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<ListConsentsResponse>,
+  output: __S(161, __c5, 1) as any as S.Schema<ListConsentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4759,11 +4771,11 @@ export const listProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Pag
   ListUserDataMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    271,
-    __c33,
-    7,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListUserDataMappingsResponse>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListUserDataMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4779,8 +4791,8 @@ export const listProjectsLocationsDatasetsDicomStores: API.PaginatedOperationMet
   GcpOpContext,
   ListDicomStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListDicomStoresResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ListDicomStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4796,8 +4808,8 @@ export const listProjectsLocationsDatasetsFhirStores: API.PaginatedOperationMeth
   GcpOpContext,
   ListFhirStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<ListFhirStoresResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListFhirStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4813,8 +4825,8 @@ export const listProjectsLocationsDatasetsHl7V2Stores: API.PaginatedOperationMet
   GcpOpContext,
   ListHl7V2StoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ListHl7V2StoresResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListHl7V2StoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4834,11 +4846,11 @@ export const listProjectsLocationsDatasetsHl7V2StoresMessages: API.PaginatedOper
   ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    283,
-    __c35,
-    3,
+    352,
+    __c11,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<ListMessagesResponse>,
+  output: __S(354, __c11, 2) as any as S.Schema<ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4854,8 +4866,8 @@ export const listProjectsLocationsDatasetsOperations: API.PaginatedOperationMeth
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListProjectsLocationsDatasetsOperationsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListProjectsLocationsDatasetsOperationsRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4875,11 +4887,11 @@ export const listRevisionsProjectsLocationsDatasetsConsentStoresConsents: API.Pa
   ListConsentRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    289,
-    __c36,
-    1,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<ListConsentRevisionsResponse>,
+  output: __S(417, __c13, 1) as any as S.Schema<ListConsentRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4899,8 +4911,8 @@ export const patchProjectsLocationsDatasets: API.OperationMethod<
   PatchProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<PatchProjectsLocationsDatasetsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Dataset>,
+  input: __S(480, __c15, 0) as any as S.Schema<PatchProjectsLocationsDatasetsRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4919,8 +4931,8 @@ export const patchProjectsLocationsDatasetsConsentStores: API.OperationMethod<
   PatchProjectsLocationsDatasetsConsentStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ConsentStore>,
+  input: __S(512, __c16, 0) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<ConsentStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4940,11 +4952,11 @@ export const patchProjectsLocationsDatasetsConsentStoresAttributeDefinitions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    293,
-    __c36,
-    5,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AttributeDefinition>,
+  output: __S(2624, __c82, 0) as any as S.Schema<AttributeDefinition>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4964,11 +4976,11 @@ export const patchProjectsLocationsDatasetsConsentStoresConsents: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    294,
-    __c36,
-    6,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4988,11 +5000,11 @@ export const patchProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    295,
-    __c36,
-    7,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UserDataMapping>,
+  output: __S(2784, __c87, 0) as any as S.Schema<UserDataMapping>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5011,8 +5023,8 @@ export const patchProjectsLocationsDatasetsDicomStores: API.OperationMethod<
   PatchProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<PatchProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DicomStore>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchProjectsLocationsDatasetsDicomStoresRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<DicomStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5031,8 +5043,8 @@ export const patchProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   PatchProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<PatchProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<FhirStore>,
+  input: __S(672, __c21, 0) as any as S.Schema<PatchProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(3082, __c96, 10) as any as S.Schema<FhirStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5051,8 +5063,8 @@ export const patchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   PatchProjectsLocationsDatasetsFhirStoresFhirError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<PatchProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  input: __S(704, __c22, 0) as any as S.Schema<PatchProjectsLocationsDatasetsFhirStoresFhirRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5071,8 +5083,8 @@ export const patchProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   PatchProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<PatchProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Hl7V2Store>,
+  input: __S(736, __c23, 0) as any as S.Schema<PatchProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(3187, __c99, 19) as any as S.Schema<Hl7V2Store>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5092,11 +5104,11 @@ export const patchProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    300,
-    __c37,
-    4,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Message>,
+  output: __S(3238, __c101, 6) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5114,11 +5126,11 @@ export const patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    301,
-    __c37,
-    5,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5136,11 +5148,11 @@ export const patient_everythingProjectsLocationsDatasetsFhirStoresFhir: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    302,
-    __c37,
-    6,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5160,11 +5172,11 @@ export const purgeResourceProjectsLocationsDatasetsFhirStoresFhir: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    303,
-    __c37,
-    7,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  output: __S(5376, __c168, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5184,11 +5196,11 @@ export const queryAccessibleDataProjectsLocationsDatasetsConsentStores: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    305,
-    __c38,
+    929,
+    __c29,
     1,
   ) as any as S.Schema<QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5206,11 +5218,11 @@ export const readBinaryProjectsLocationsDatasetsFhirStoresFhir: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    306,
-    __c38,
-    2,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5224,8 +5236,8 @@ export const readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   ReadProjectsLocationsDatasetsFhirStoresFhirError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ReadProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  input: __S(992, __c31, 0) as any as S.Schema<ReadProjectsLocationsDatasetsFhirStoresFhirRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5245,11 +5257,11 @@ export const rejectProjectsLocationsDatasetsConsentStoresConsents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    309,
-    __c38,
-    5,
+    1024,
+    __c32,
+    0,
   ) as any as S.Schema<RejectProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5269,11 +5281,11 @@ export const revokeProjectsLocationsDatasetsConsentStoresConsents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    310,
-    __c38,
-    6,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Consent>,
+  output: __S(3714, __c116, 2) as any as S.Schema<Consent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5292,8 +5304,8 @@ export const rollbackProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   RollbackProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<RollbackProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(1122, __c35, 2) as any as S.Schema<RollbackProjectsLocationsDatasetsFhirStoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5312,8 +5324,12 @@ export const rollbackProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   RollbackProjectsLocationsDatasetsHl7V2StoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<RollbackProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  input: __S(
+    1154,
+    __c36,
+    2,
+  ) as any as S.Schema<RollbackProjectsLocationsDatasetsHl7V2StoresRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5331,11 +5347,11 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStores: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    317,
-    __c39,
-    5,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5353,11 +5369,11 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudies: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    318,
+    1248,
     __c39,
-    6,
+    0,
   ) as any as S.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5375,11 +5391,11 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    319,
-    __c39,
-    7,
+    1280,
+    __c40,
+    0,
   ) as any as S.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5397,11 +5413,11 @@ export const searchForSeriesProjectsLocationsDatasetsDicomStores: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    320,
-    __c40,
+    1312,
+    __c41,
     0,
   ) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5419,11 +5435,11 @@ export const searchForSeriesProjectsLocationsDatasetsDicomStoresStudies: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    321,
-    __c40,
-    1,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5441,11 +5457,11 @@ export const searchForStudiesProjectsLocationsDatasetsDicomStores: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    322,
-    __c40,
-    2,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5465,11 +5481,11 @@ export const searchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    323,
-    __c40,
-    3,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<SearchProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5489,11 +5505,11 @@ export const searchTypeProjectsLocationsDatasetsFhirStoresFhir: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    324,
-    __c40,
-    4,
+    1440,
+    __c45,
+    0,
   ) as any as S.Schema<SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5513,11 +5529,11 @@ export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStores: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    326,
-    __c40,
-    6,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5537,11 +5553,11 @@ export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    327,
-    __c40,
-    7,
+    1536,
+    __c48,
+    0,
   ) as any as S.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Operation>,
+  output: __S(4513, __c141, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5560,8 +5576,8 @@ export const setIamPolicyProjectsLocationsDatasets: API.OperationMethod<
   SetIamPolicyProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  input: __S(1600, __c50, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsRequest>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5581,11 +5597,11 @@ export const setIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    330,
-    __c41,
-    2,
+    1664,
+    __c52,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5605,11 +5621,11 @@ export const setIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    331,
-    __c41,
-    3,
+    1696,
+    __c53,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5629,11 +5645,11 @@ export const setIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    332,
-    __c41,
-    4,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5653,11 +5669,11 @@ export const setIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    333,
-    __c41,
-    5,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5677,11 +5693,11 @@ export const setIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    334,
-    __c41,
-    6,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Policy>,
+  output: __S(4742, __c148, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5701,11 +5717,11 @@ export const storeInstancesProjectsLocationsDatasetsDicomStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    335,
-    __c41,
-    7,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5725,11 +5741,11 @@ export const storeInstancesProjectsLocationsDatasetsDicomStoresStudies: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    336,
-    __c42,
+    1856,
+    __c58,
     0,
   ) as any as S.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5748,8 +5764,8 @@ export const testIamPermissionsProjectsLocationsDatasets: API.OperationMethod<
   TestIamPermissionsProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5769,11 +5785,11 @@ export const testIamPermissionsProjectsLocationsDatasetsConsentStores: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    339,
-    __c42,
-    3,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5793,11 +5809,11 @@ export const testIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    340,
-    __c42,
-    4,
+    2048,
+    __c64,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5817,11 +5833,11 @@ export const testIamPermissionsProjectsLocationsDatasetsDicomStores: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    341,
-    __c42,
-    5,
+    2080,
+    __c65,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5841,11 +5857,11 @@ export const testIamPermissionsProjectsLocationsDatasetsFhirStores: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    342,
-    __c42,
-    6,
+    2112,
+    __c66,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5865,11 +5881,11 @@ export const testIamPermissionsProjectsLocationsDatasetsHl7V2Stores: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    343,
-    __c42,
-    7,
+    2144,
+    __c67,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5889,11 +5905,11 @@ export const updateBinaryProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    344,
-    __c43,
+    2176,
+    __c68,
     0,
   ) as any as S.Schema<UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5913,11 +5929,11 @@ export const updateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    345,
-    __c43,
-    1,
+    2208,
+    __c69,
+    0,
   ) as any as S.Schema<UpdateProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5937,11 +5953,11 @@ export const validateResourceProjectsLocationsDatasetsFhirStoresFhir: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    346,
-    __c43,
-    2,
+    2240,
+    __c70,
+    0,
   ) as any as S.Schema<ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5955,8 +5971,12 @@ export const vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
   VreadProjectsLocationsDatasetsFhirStoresFhirError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<VreadProjectsLocationsDatasetsFhirStoresFhirRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<HttpBody>,
+  input: __S(
+    2272,
+    __c71,
+    0,
+  ) as any as S.Schema<VreadProjectsLocationsDatasetsFhirStoresFhirRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5968,350 +5988,21 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          consentArtifact: S.optional(S.String),
-          ttl: S.optional(S.String),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivateConsentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:activate",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(3, __c0, 3)),
-          attributeDefinitionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attribute" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationRule: S.optional(__S(2, __c0, 2)),
-          resourceAttributes: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudHealthcareV1ConsentPolicy",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ttl: S.optional(S.String),
-          name: S.optional(S.String),
-          policies: S.optional(__S(7, __c0, 7)),
-          expireTime: S.optional(S.String),
-          state: S.optional(S.String),
-          revisionCreateTime: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
-          consentArtifact: S.optional(S.String),
-          userId: S.optional(S.String),
-          revisionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Consent" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          licensedVocabularies: S.optional(__S(10, __c1, 2)),
-          documentContent: S.optional(S.String),
-          alternativeOutputFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnalyzeEntitiesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nlpService: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+nlpService}:analyzeEntities",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnalyzeEntitiesProjectsLocationsServicesNlpRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subjectId: S.optional(S.String),
-          confidence: S.optional(S.Number),
-          objectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EntityMentionRelationship",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-          vocabularyCodes: S.optional(__S(3, __c0, 3)),
-          preferredTerm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Entity" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Feature" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkedEntity" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          beginOffset: S.optional(S.Number),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextSpan" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          temporalAssessment: S.optional(__S(17, __c2, 1)),
-          subject: S.optional(__S(17, __c2, 1)),
-          linkedEntities: S.optional(__S(19, __c2, 3)),
-          certaintyAssessment: S.optional(__S(17, __c2, 1)),
-          text: S.optional(__S(20, __c2, 4)),
-          mentionId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EntityMention" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fhirBundle: S.optional(S.String),
-          relationships: S.optional(__S(14, __c1, 6)),
-          entities: S.optional(__S(16, __c2, 0)),
-          entityMentions: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "AnalyzeEntitiesResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AdminConsents" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newConsentsList: S.optional(__S(24, __c3, 0)),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ApplyAdminConsentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:applyAdminConsents",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(27, __c3, 3)),
-          response: S.optional(__S(27, __c3, 3)),
-          error: S.optional(__S(29, __c3, 5)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          patientIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "PatientScope" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeRange" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          patientScope: S.optional(__S(31, __c3, 7)),
-          timeRange: S.optional(__S(32, __c4, 0)),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApplyConsentsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:applyConsents",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ArchiveUserDataMappingRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:archive",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(28, __c3, 4)),
-          data: S.optional(S.String),
-          contentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpBody" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uriPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudHealthcareV1FhirGcsDestination",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudHealthcareV1FhirGcsSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           validateOnly: S.optional(S.Boolean),
           type: S.optional(S.String),
           versionConfig: S.optional(S.String),
-          gcsDestination: S.optional(__S(39, __c4, 7)),
-          gcsSource: S.optional(__S(40, __c5, 0)),
+          gcsDestination: S.optional(__S(32, __c1, 0)),
+          gcsSource: S.optional(__S(64, __c2, 0)),
           until: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BulkDeleteResourcesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6322,7 +6013,349 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "BulkDeleteProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uriPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudHealthcareV1FhirGcsDestination",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudHealthcareV1FhirGcsSource",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/attributeDefinitions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
+      });
+    case 1:
+      return S.Array(__S(2624, __c82, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          attributeDefinitions: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "ListAttributeDefinitionsResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/consentArtifacts",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
+      });
+    case 1:
+      return S.Array(__S(2691, __c84, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          consentArtifacts: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "ListConsentArtifactsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/consents",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          consents: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "ListConsentsResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3714, __c116, 2));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/userDataMappings",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+      });
+    case 1:
+      return S.Array(__S(2784, __c87, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userDataMappings: S.optional(__S(225, __c7, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListUserDataMappingsResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomStores",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsDicomStoresRequest",
+      });
+    case 1:
+      return S.Array(__S(2947, __c92, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dicomStores: S.optional(__S(257, __c8, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListDicomStoresResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/fhirStores",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsFhirStoresRequest",
+      });
+    case 1:
+      return S.Array(__S(3082, __c96, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fhirStores: S.optional(__S(289, __c9, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListFhirStoresResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/hl7V2Stores",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsHl7V2StoresRequest",
+      });
+    case 1:
+      return S.Array(__S(3187, __c99, 19));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hl7V2Stores: S.optional(__S(321, __c10, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListHl7V2StoresResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/messages",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
+      });
+    case 1:
+      return S.Array(__S(3238, __c101, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hl7V2Messages: S.optional(__S(353, __c11, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListMessagesResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/operations",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsDatasetsOperationsRequest",
+      });
+    case 1:
+      return S.Array(__S(4513, __c141, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(3744, __c117, 0)),
+          operations: S.optional(__S(385, __c12, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:listRevisions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          consents: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "ListConsentRevisionsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _since: S.optional(S.String.pipe(T.Query())),
@@ -6340,7 +6373,210 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2497, __c78, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2560, __c80, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsConsentStoresRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3714, __c116, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2947, __c92, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3082, __c96, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3187, __c99, 19).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsHl7V2StoresRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3238, __c101, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           outputFormat: S.optional(S.String.pipe(T.Query())),
@@ -6357,11 +6593,275 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _page_token: S.optional(S.String.pipe(T.Query())),
+          _count: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/$consent-enforcement-status",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _page_token: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          end: S.optional(S.String.pipe(T.Query())),
+          _since: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          _type: S.optional(S.String.pipe(T.Query())),
+          _count: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/$everything",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}/$purge",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceAttributes: S.optional(__S(3616, __c113, 0)),
+          gcsDestination: S.optional(__S(32, __c1, 0)),
+          requestAttributes: S.optional(__S(3616, __c113, 0)),
+        }),
+      ).annotate({
+        identifier: "QueryAccessibleDataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          consentStore: S.String.pipe(T.Label()),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+consentStore}:queryAccessibleData",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReadProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:reject",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RejectProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consentArtifact: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RejectConsentRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:revoke",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(__S(3744, __c117, 0)),
+          metadataFilter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RollbackFhirResourceFilteringFields",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(__S(3744, __c117, 0)),
+          changeType: S.optional(S.String),
+          excludeRollbacks: S.optional(S.Boolean),
+          rollbackTime: S.optional(S.String),
+          filteringFields: S.optional(__S(1120, __c35, 0)),
+          force: S.optional(S.Boolean),
+          inputGcsObject: S.optional(S.String),
+          resultGcsBucket: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RollbackFhirResourcesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1121, __c35, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:rollback",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RollbackProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({
+        identifier: "RollbackHL7MessagesFilteringFields",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resultGcsBucket: S.optional(S.String),
+          changeType: S.optional(S.String),
+          filteringFields: S.optional(__S(1152, __c36, 0)),
+          excludeRollbacks: S.optional(S.Boolean),
+          inputGcsObject: S.optional(S.String),
+          rollbackTime: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "RollbackHl7V2MessagesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1153, __c36, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:rollback",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RollbackProjectsLocationsDatasetsHl7V2StoresRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5376, __c168, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6372,7 +6872,217 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsDatasetsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          dicomWebPath: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          resourceType: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/fhir/_search",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          resourceType: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/fhir/{resourceType}/_search",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1504, __c47, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setBlobStorageSettings",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filterConfig: S.optional(__S(3360, __c105, 0)),
+          blobStorageSettings: S.optional(__S(5920, __c185, 0)),
+        }),
+      ).annotate({
+        identifier: "SetBlobStorageSettingsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1504, __c47, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setBlobStorageSettings",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6386,22 +7096,231 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          consents: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ConsentList" });
   }
 }
-function __c6(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          requestAttributes: S.optional(__S(8, __c1, 0)),
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(4742, __c148, 6)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dicomWebPath: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          dicomWebPath: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestAttributes: S.optional(__S(3616, __c113, 0)),
           dataId: S.optional(S.String),
-          consentList: S.optional(__S(47, __c5, 7)),
+          consentList: S.optional(__S(2016, __c63, 0)),
           responseView: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckDataAccessRequest" });
@@ -6409,7 +7328,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           consentStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6423,19 +7342,186 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evaluationResult: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConsentEvaluation" });
-    case 3:
-      return S.Record(S.String, __S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          consentDetails: S.optional(__S(51, __c6, 3)),
+          consentDetails: S.optional(__S(2018, __c63, 2)),
           consented: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CheckDataAccessResponse" });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consents: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({ identifier: "ConsentList" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          evaluationResult: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConsentEvaluation" });
+    case 2:
+      return S.Record(S.String, __S(2017, __c63, 1));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          profile: S.optional(S.String.pipe(T.Query())),
+          type: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/fhir/{+type}/$validate",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "VreadProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String.pipe(T.Label()),
@@ -6450,12 +7536,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           type: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6466,12 +7556,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           type: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6484,7 +7578,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6500,11 +7594,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 1:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6515,28 +7613,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionSpec" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          satisfiesPzs: S.optional(S.Boolean),
-          timeZone: S.optional(S.String),
-          name: S.optional(S.String),
-          encryptionSpec: S.optional(__S(58, __c7, 2)),
-          satisfiesPzi: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Dataset" });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2497, __c78, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6547,21 +7633,36 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          enableConsentCreateOnUpdate: S.optional(S.Boolean),
-          defaultConsentTtl: S.optional(S.String),
-          name: S.optional(S.String),
-          labels: S.optional(__S(8, __c1, 0)),
+          kmsKeyName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ConsentStore" });
-    case 6:
+      ).annotate({ identifier: "EncryptionSpec" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          satisfiesPzs: S.optional(S.Boolean),
+          timeZone: S.optional(S.String),
+          name: S.optional(S.String),
+          encryptionSpec: S.optional(__S(2496, __c78, 0)),
+          satisfiesPzi: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Dataset" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           consentStoreId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2560, __c80, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6572,27 +7673,29 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsConsentStoresRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataMappingDefaultValue: S.optional(S.String),
-          name: S.optional(S.String),
-          allowedValues: S.optional(__S(3, __c0, 3)),
-          category: S.optional(S.String),
-          consentDefaultValues: S.optional(__S(3, __c0, 3)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttributeDefinition" });
   }
 }
-function __c8(j: number): any {
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableConsentCreateOnUpdate: S.optional(S.Boolean),
+          defaultConsentTtl: S.optional(S.String),
+          name: S.optional(S.String),
+          labels: S.optional(__S(3616, __c113, 0)),
+        }),
+      ).annotate({ identifier: "ConsentStore" });
+  }
+}
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           attributeDefinitionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6603,42 +7706,30 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          rawBytes: S.optional(S.String),
-          gcsUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(65, __c8, 1)),
-          signatureTime: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
-          userId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Signature" });
-    case 3:
-      return S.Array(__S(65, __c8, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          consentContentVersion: S.optional(S.String),
-          userId: S.optional(S.String),
+          dataMappingDefaultValue: S.optional(S.String),
           name: S.optional(S.String),
-          witnessSignature: S.optional(__S(66, __c8, 2)),
-          guardianSignature: S.optional(__S(66, __c8, 2)),
-          userSignature: S.optional(__S(66, __c8, 2)),
-          metadata: S.optional(__S(8, __c1, 0)),
-          consentContentScreenshots: S.optional(__S(67, __c8, 3)),
+          allowedValues: S.optional(__S(3744, __c117, 0)),
+          category: S.optional(S.String),
+          consentDefaultValues: S.optional(__S(3744, __c117, 0)),
+          description: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ConsentArtifact" });
-    case 5:
+      ).annotate({ identifier: "AttributeDefinition" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2691, __c84, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6649,11 +7740,50 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rawBytes: S.optional(S.String),
+          gcsUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(2688, __c84, 0)),
+          signatureTime: S.optional(S.String),
+          metadata: S.optional(__S(3616, __c113, 0)),
+          userId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Signature" });
+    case 2:
+      return S.Array(__S(2688, __c84, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          consentContentVersion: S.optional(S.String),
+          userId: S.optional(S.String),
+          name: S.optional(S.String),
+          witnessSignature: S.optional(__S(2689, __c84, 1)),
+          guardianSignature: S.optional(__S(2689, __c84, 1)),
+          userSignature: S.optional(__S(2689, __c84, 1)),
+          metadata: S.optional(__S(3616, __c113, 0)),
+          consentContentScreenshots: S.optional(__S(2690, __c84, 2)),
+        }),
+      ).annotate({ identifier: "ConsentArtifact" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3714, __c116, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6664,26 +7794,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsConsentStoresConsentsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceAttributes: S.optional(__S(5, __c0, 5)),
-          archived: S.optional(S.Boolean),
-          dataId: S.optional(S.String),
-          userId: S.optional(S.String),
-          name: S.optional(S.String),
-          archiveTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserDataMapping" });
   }
 }
-function __c9(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6694,64 +7813,31 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubTopic: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DicomNotificationConfig" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean),
-          schemaFlattened: S.optional(__S(35, __c4, 3)),
-          tableUri: S.optional(S.String),
-          writeDisposition: S.optional(S.String),
-          includeSourceStore: S.optional(S.Boolean),
-          schemaJson: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudHealthcareV1DicomBigQueryDestination",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryDestination: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudHealthcareV1DicomStreamConfig",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubTopic: S.optional(S.String),
-          sendForBulkImport: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "NotificationConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          notificationConfigs: S.optional(__S(74, __c9, 2)),
-          streamConfigs: S.optional(__S(77, __c9, 5)),
-          notificationConfig: S.optional(__S(78, __c9, 6)),
-          labels: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DicomStore" });
   }
 }
-function __c10(j: number): any {
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceAttributes: S.optional(__S(3649, __c114, 1)),
+          archived: S.optional(S.Boolean),
+          dataId: S.optional(S.String),
+          userId: S.optional(S.String),
+          name: S.optional(S.String),
+          archiveTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserDataMapping" });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dicomStoreId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2947, __c92, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6762,62 +7848,93 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pubsubTopic: S.optional(S.String),
-          sendPreviousResourceOnDelete: S.optional(S.Boolean),
-          sendFullResource: S.optional(S.Boolean),
+          sendForBulkImport: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "FhirNotificationConfig" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
+      ).annotate({ identifier: "NotificationConfig" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          enabledImplementationGuides: S.optional(__S(3, __c0, 3)),
-          enableFhirpathProfileValidation: S.optional(S.Boolean),
-          disableRequiredFieldValidation: S.optional(S.Boolean),
-          disableReferenceTypeValidation: S.optional(S.Boolean),
-          disableFhirpathValidation: S.optional(S.Boolean),
-          disableProfileValidation: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ValidationConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uriPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkExportGcsDestination" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expirationMs: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimePartitioning" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recursiveStructureDepth: S.optional(S.String),
-          lastUpdatedPartitionConfig: S.optional(__S(85, __c10, 5)),
-          schemaType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          writeDisposition: S.optional(S.String),
-          datasetUri: S.optional(S.String),
           force: S.optional(S.Boolean),
-          schemaConfig: S.optional(__S(86, __c10, 6)),
+          schemaFlattened: S.optional(__S(5376, __c168, 0)),
+          tableUri: S.optional(S.String),
+          writeDisposition: S.optional(S.String),
+          includeSourceStore: S.optional(S.Boolean),
+          schemaJson: S.optional(__S(5376, __c168, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudHealthcareV1FhirBigQueryDestination",
+        identifier: "GoogleCloudHealthcareV1DicomBigQueryDestination",
       });
   }
 }
-function __c11(j: number): any {
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubTopic: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DicomNotificationConfig" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2912, __c91, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryDestination: S.optional(__S(2880, __c90, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudHealthcareV1DicomStreamConfig",
+      });
+    case 2:
+      return S.Array(__S(2945, __c92, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          notificationConfigs: S.optional(__S(2944, __c92, 0)),
+          streamConfigs: S.optional(__S(2946, __c92, 2)),
+          notificationConfig: S.optional(__S(2848, __c89, 0)),
+          labels: S.optional(__S(3616, __c113, 0)),
+        }),
+      ).annotate({ identifier: "DicomStore" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fhirStoreId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3082, __c96, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/fhirStores",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6829,7 +7946,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kmsWrapped: S.optional(__S(88, __c11, 0)),
+          kmsWrapped: S.optional(__S(3008, __c94, 0)),
           cryptoKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "CryptoHashConfig" });
@@ -6842,22 +7959,22 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cryptoHashConfig: S.optional(__S(89, __c11, 1)),
-          dateShiftConfig: S.optional(__S(89, __c11, 1)),
-          replaceWithInfoTypeConfig: S.optional(__S(35, __c4, 3)),
-          characterMaskConfig: S.optional(__S(90, __c11, 2)),
-          redactConfig: S.optional(__S(35, __c4, 3)),
-          infoTypes: S.optional(__S(3, __c0, 3)),
+          cryptoHashConfig: S.optional(__S(3009, __c94, 1)),
+          dateShiftConfig: S.optional(__S(3009, __c94, 1)),
+          replaceWithInfoTypeConfig: S.optional(__S(5376, __c168, 0)),
+          characterMaskConfig: S.optional(__S(3010, __c94, 2)),
+          redactConfig: S.optional(__S(5376, __c168, 0)),
+          infoTypes: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "InfoTypeTransformation" });
     case 4:
-      return S.Array(__S(91, __c11, 3));
+      return S.Array(__S(3011, __c94, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          transformations: S.optional(__S(92, __c11, 4)),
-          additionalTransformations: S.optional(__S(92, __c11, 4)),
-          excludeInfoTypes: S.optional(__S(3, __c0, 3)),
+          transformations: S.optional(__S(3012, __c94, 4)),
+          additionalTransformations: S.optional(__S(3012, __c94, 4)),
+          excludeInfoTypes: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "TextConfig" });
     case 6:
@@ -6869,72 +7986,125 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(__S(3, __c0, 3)),
+          paths: S.optional(__S(3744, __c117, 0)),
           action: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldMetadata" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(3015, __c94, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          fieldMetadataList: S.optional(__S(96, __c12, 0)),
+          fieldMetadataList: S.optional(__S(3016, __c94, 8)),
           defaultKeepExtensions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FhirConfig" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "TagFilterList" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           skipIdRedaction: S.optional(S.Boolean),
           filterProfile: S.optional(S.String),
-          removeList: S.optional(__S(98, __c12, 2)),
-          keepList: S.optional(__S(98, __c12, 2)),
+          removeList: S.optional(__S(3018, __c94, 10)),
+          keepList: S.optional(__S(3018, __c94, 10)),
         }),
       ).annotate({ identifier: "DicomConfig" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           useRegionalDataProcessing: S.optional(S.Boolean),
-          text: S.optional(__S(93, __c11, 5)),
-          image: S.optional(__S(94, __c11, 6)),
-          fhir: S.optional(__S(97, __c12, 1)),
-          dicom: S.optional(__S(99, __c12, 3)),
+          text: S.optional(__S(3013, __c94, 5)),
+          image: S.optional(__S(3014, __c94, 6)),
+          fhir: S.optional(__S(3017, __c94, 9)),
+          dicom: S.optional(__S(3019, __c94, 11)),
         }),
       ).annotate({ identifier: "DeidentifyConfig" });
-    case 5:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(100, __c12, 4)),
+          expirationMs: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimePartitioning" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recursiveStructureDepth: S.optional(S.String),
+          lastUpdatedPartitionConfig: S.optional(__S(3040, __c95, 0)),
+          schemaType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          writeDisposition: S.optional(S.String),
+          datasetUri: S.optional(S.String),
+          force: S.optional(S.Boolean),
+          schemaConfig: S.optional(__S(3041, __c95, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudHealthcareV1FhirBigQueryDestination",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubTopic: S.optional(S.String),
+          sendPreviousResourceOnDelete: S.optional(S.Boolean),
+          sendFullResource: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FhirNotificationConfig" });
+    case 1:
+      return S.Array(__S(3072, __c96, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabledImplementationGuides: S.optional(__S(3744, __c117, 0)),
+          enableFhirpathProfileValidation: S.optional(S.Boolean),
+          disableRequiredFieldValidation: S.optional(S.Boolean),
+          disableReferenceTypeValidation: S.optional(S.Boolean),
+          disableFhirpathValidation: S.optional(S.Boolean),
+          disableProfileValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ValidationConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uriPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkExportGcsDestination" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(3020, __c94, 12)),
           store: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeidentifiedStoreDestination",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(__S(3, __c0, 3)),
-          bigqueryDestination: S.optional(__S(87, __c10, 7)),
-          deidentifiedStoreDestination: S.optional(__S(101, __c12, 5)),
+          resourceTypes: S.optional(__S(3744, __c117, 0)),
+          bigqueryDestination: S.optional(__S(3042, __c95, 2)),
+          deidentifiedStoreDestination: S.optional(__S(3076, __c96, 4)),
         }),
       ).annotate({ identifier: "StreamConfig" });
+    case 6:
+      return S.Array(__S(3077, __c96, 5));
     case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           logLevel: S.optional(S.String),
@@ -6942,63 +8112,51 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AccessDeterminationLogConfig",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           profile: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsentHeaderHandling" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           accessEnforced: S.optional(S.Boolean),
-          accessDeterminationLogConfig: S.optional(__S(104, __c13, 0)),
-          consentHeaderHandling: S.optional(__S(105, __c13, 1)),
+          accessDeterminationLogConfig: S.optional(__S(3079, __c96, 7)),
+          consentHeaderHandling: S.optional(__S(3080, __c96, 8)),
           version: S.optional(S.String),
-          enforcedAdminConsents: S.optional(__S(3, __c0, 3)),
+          enforcedAdminConsents: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "ConsentConfig" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          notificationConfigs: S.optional(__S(82, __c10, 2)),
+          notificationConfigs: S.optional(__S(3073, __c96, 1)),
           disableResourceVersioning: S.optional(S.Boolean),
-          validationConfig: S.optional(__S(83, __c10, 3)),
+          validationConfig: S.optional(__S(3074, __c96, 2)),
           enableUpdateCreate: S.optional(S.Boolean),
           disableReferentialIntegrity: S.optional(S.Boolean),
           version: S.optional(S.String),
           complexDataTypeReferenceParsing: S.optional(S.String),
-          notificationConfig: S.optional(__S(78, __c9, 6)),
-          bulkExportGcsDestination: S.optional(__S(84, __c10, 4)),
-          streamConfigs: S.optional(__S(103, __c12, 7)),
+          notificationConfig: S.optional(__S(2848, __c89, 0)),
+          bulkExportGcsDestination: S.optional(__S(3075, __c96, 3)),
+          streamConfigs: S.optional(__S(3078, __c96, 6)),
           name: S.optional(S.String),
-          labels: S.optional(__S(8, __c1, 0)),
+          labels: S.optional(__S(3616, __c113, 0)),
           defaultSearchHandlingStrict: S.optional(S.Boolean),
-          consentConfig: S.optional(__S(106, __c13, 2)),
+          consentConfig: S.optional(__S(3081, __c96, 9)),
         }),
       ).annotate({ identifier: "FhirStore" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fhirStoreId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/fhirStores",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String.pipe(T.Label()),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7009,140 +8167,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxOccurs: S.optional(S.Number),
-          type: S.optional(S.String),
-          minOccurs: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SchemaSegment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          segment: S.optional(__S(110, __c13, 6)),
-          group: S.optional(S.suspend(() => __S(113, __c14, 1))),
-        }),
-      ).annotate({ identifier: "GroupOrSegment" });
   }
 }
-function __c14(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minOccurs: S.optional(S.Number),
-          members: S.optional(__S(112, __c14, 0)),
-          choice: S.optional(S.Boolean),
-          maxOccurs: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaGroup" });
-    case 2:
-      return S.Record(S.String, __S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mshField: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersionSource" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          messageSchemaConfigs: S.optional(__S(114, __c14, 2)),
-          version: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({ identifier: "Hl7SchemaConfig" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxOccurs: S.optional(S.Number),
-          table: S.optional(S.String),
-          type: S.optional(S.String),
-          minOccurs: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Field" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          primitive: S.optional(S.String),
-          fields: S.optional(__S(120, __c15, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Type" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(__S(116, __c14, 4)),
-          type: S.optional(__S(122, __c15, 2)),
-        }),
-      ).annotate({ identifier: "Hl7TypesConfig" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unexpectedSegmentHandling: S.optional(S.String),
-          schemas: S.optional(__S(118, __c14, 6)),
-          schematizedParsingType: S.optional(S.String),
-          types: S.optional(__S(124, __c15, 4)),
-          ignoreMinOccurs: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SchemaPackage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          schema: S.optional(__S(125, __c15, 5)),
-          version: S.optional(S.String),
-          allowNullHeader: S.optional(S.Boolean),
-          segmentTerminator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ParserConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubTopic: S.optional(S.String),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hl7V2NotificationConfig" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parserConfig: S.optional(__S(126, __c15, 6)),
-          labels: S.optional(__S(8, __c1, 0)),
-          rejectDuplicateMessage: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          notificationConfigs: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({ identifier: "Hl7V2Store" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           hl7V2StoreId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3187, __c99, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7153,68 +8187,135 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          setId: S.optional(S.String),
-          segmentId: S.optional(S.String),
-          fields: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Segment" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          segments: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "ParsedData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          error: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchematizedData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PatientId" });
   }
 }
-function __c17(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135, __c16, 7));
+      return S.suspend(() =>
+        S.Struct({
+          maxOccurs: S.optional(S.Number),
+          type: S.optional(S.String),
+          minOccurs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SchemaSegment" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sendFacility: S.optional(S.String),
-          data: S.optional(S.String),
-          messageType: S.optional(S.String),
-          parsedData: S.optional(__S(133, __c16, 5)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          sendTime: S.optional(S.String),
-          schematizedData: S.optional(__S(134, __c16, 6)),
-          labels: S.optional(__S(8, __c1, 0)),
-          patientIds: S.optional(__S(136, __c17, 0)),
+          segment: S.optional(__S(3168, __c99, 0)),
+          group: S.optional(S.suspend(() => __S(3171, __c99, 3))),
         }),
-      ).annotate({ identifier: "Message" });
+      ).annotate({ identifier: "GroupOrSegment" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "CreateMessageRequest" });
+      return S.Array(__S(3169, __c99, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          minOccurs: S.optional(S.Number),
+          members: S.optional(__S(3170, __c99, 2)),
+          choice: S.optional(S.Boolean),
+          maxOccurs: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaGroup" });
+    case 4:
+      return S.Record(S.String, __S(3171, __c99, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          mshField: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionSource" });
+    case 6:
+      return S.Array(__S(3173, __c99, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          messageSchemaConfigs: S.optional(__S(3172, __c99, 4)),
+          version: S.optional(__S(3174, __c99, 6)),
+        }),
+      ).annotate({ identifier: "Hl7SchemaConfig" });
+    case 8:
+      return S.Array(__S(3175, __c99, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          maxOccurs: S.optional(S.Number),
+          table: S.optional(S.String),
+          type: S.optional(S.String),
+          minOccurs: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 10:
+      return S.Array(__S(3177, __c99, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          primitive: S.optional(S.String),
+          fields: S.optional(__S(3178, __c99, 10)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Type" });
+    case 12:
+      return S.Array(__S(3179, __c99, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(__S(3174, __c99, 6)),
+          type: S.optional(__S(3180, __c99, 12)),
+        }),
+      ).annotate({ identifier: "Hl7TypesConfig" });
+    case 14:
+      return S.Array(__S(3181, __c99, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          unexpectedSegmentHandling: S.optional(S.String),
+          schemas: S.optional(__S(3176, __c99, 8)),
+          schematizedParsingType: S.optional(S.String),
+          types: S.optional(__S(3182, __c99, 14)),
+          ignoreMinOccurs: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SchemaPackage" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          schema: S.optional(__S(3183, __c99, 15)),
+          version: S.optional(S.String),
+          allowNullHeader: S.optional(S.Boolean),
+          segmentTerminator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ParserConfig" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubTopic: S.optional(S.String),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hl7V2NotificationConfig" });
+    case 18:
+      return S.Array(__S(3185, __c99, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          parserConfig: S.optional(__S(3184, __c99, 16)),
+          labels: S.optional(__S(3616, __c113, 0)),
+          rejectDuplicateMessage: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          notificationConfigs: S.optional(__S(3186, __c99, 18)),
+        }),
+      ).annotate({ identifier: "Hl7V2Store" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7225,19 +8326,84 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
       });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          setId: S.optional(S.String),
+          segmentId: S.optional(S.String),
+          fields: S.optional(__S(3616, __c113, 0)),
+        }),
+      ).annotate({ identifier: "Segment" });
+    case 1:
+      return S.Array(__S(3232, __c101, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          segments: S.optional(__S(3233, __c101, 1)),
+        }),
+      ).annotate({ identifier: "ParsedData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchematizedData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PatientId" });
+    case 5:
+      return S.Array(__S(3236, __c101, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sendFacility: S.optional(S.String),
+          data: S.optional(S.String),
+          messageType: S.optional(S.String),
+          parsedData: S.optional(__S(3234, __c101, 2)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          sendTime: S.optional(S.String),
+          schematizedData: S.optional(__S(3235, __c101, 3)),
+          labels: S.optional(__S(3616, __c113, 0)),
+          patientIds: S.optional(__S(3237, __c101, 5)),
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(3238, __c101, 6)),
+        }),
+      ).annotate({ identifier: "CreateMessageRequest" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           destinationDataset: S.optional(S.String),
-          config: S.optional(__S(100, __c12, 4)),
+          config: S.optional(__S(3020, __c94, 12)),
           gcsConfigUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeidentifyDatasetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceDataset: S.String.pipe(T.Label()),
-          body: S.optional(__S(140, __c17, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3296, __c103, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7248,32 +8414,26 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeidentifyProjectsLocationsDatasetsRequest",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resourcePathsGcsUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DicomFilterConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(100, __c12, 4)),
-          filterConfig: S.optional(__S(142, __c17, 6)),
+          config: S.optional(__S(3020, __c94, 12)),
+          filterConfig: S.optional(__S(3360, __c105, 0)),
           destinationStore: S.optional(S.String),
           gcsConfigUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeidentifyDicomStoreRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3328, __c104, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7284,35 +8444,49 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeidentifyProjectsLocationsDatasetsDicomStoresRequest",
       });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourcePathsGcsUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DicomFilterConfig" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({ identifier: "Resources" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(3, __c0, 3)),
+          resources: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({ identifier: "Resources" });
+      ).annotate({ identifier: "FhirFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({ identifier: "FhirFilter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           destinationStore: S.optional(S.String),
-          config: S.optional(__S(100, __c12, 4)),
-          resourceFilter: S.optional(__S(146, __c18, 2)),
+          config: S.optional(__S(3020, __c94, 12)),
+          resourceFilter: S.optional(__S(3393, __c106, 1)),
           skipModifiedResources: S.optional(S.Boolean),
           gcsConfigUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeidentifyFhirStoreRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sourceStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3394, __c106, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7323,7 +8497,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeidentifyProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7337,7 +8515,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7351,7 +8533,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsRequest",
       });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7367,7 +8553,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7383,7 +8569,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
       });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7397,7 +8587,106 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
       });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consentArtifact: S.optional(S.String),
+          ttl: S.optional(S.String),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivateConsentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3584, __c112, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:activate",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(3744, __c117, 0)),
+          attributeDefinitionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attribute" });
+    case 1:
+      return S.Array(__S(3648, __c114, 0));
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationRule: S.optional(__S(3680, __c115, 0)),
+          resourceAttributes: S.optional(__S(3649, __c114, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudHealthcareV1ConsentPolicy",
+      });
+    case 1:
+      return S.Array(__S(3712, __c116, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ttl: S.optional(S.String),
+          name: S.optional(S.String),
+          policies: S.optional(__S(3713, __c116, 1)),
+          expireTime: S.optional(S.String),
+          state: S.optional(S.String),
+          revisionCreateTime: S.optional(S.String),
+          metadata: S.optional(__S(3616, __c113, 0)),
+          consentArtifact: S.optional(S.String),
+          userId: S.optional(S.String),
+          revisionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Consent" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7411,7 +8700,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest",
       });
-    case 3:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7425,7 +8718,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7439,7 +8736,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7454,7 +8755,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest",
       });
-    case 6:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dicomWebPath: S.String.pipe(T.Label()),
@@ -7469,7 +8774,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dicomWebPath: S.String.pipe(T.Label()),
@@ -7486,7 +8795,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7502,7 +8811,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7516,7 +8829,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7530,7 +8847,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7544,7 +8865,112 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
       });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          licensedVocabularies: S.optional(__S(4128, __c129, 0)),
+          documentContent: S.optional(S.String),
+          alternativeOutputFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyzeEntitiesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nlpService: S.String.pipe(T.Label()),
+          body: S.optional(__S(4096, __c128, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+nlpService}:analyzeEntities",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnalyzeEntitiesProjectsLocationsServicesNlpRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subjectId: S.optional(S.String),
+          confidence: S.optional(S.Number),
+          objectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EntityMentionRelationship",
+      });
+    case 3:
+      return S.Array(__S(4098, __c128, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          vocabularyCodes: S.optional(__S(3744, __c117, 0)),
+          preferredTerm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Entity" });
+    case 5:
+      return S.Array(__S(4100, __c128, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Feature" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkedEntity" });
+    case 8:
+      return S.Array(__S(4103, __c128, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          beginOffset: S.optional(S.Number),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextSpan" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          temporalAssessment: S.optional(__S(4102, __c128, 6)),
+          subject: S.optional(__S(4102, __c128, 6)),
+          linkedEntities: S.optional(__S(4104, __c128, 8)),
+          certaintyAssessment: S.optional(__S(4102, __c128, 6)),
+          text: S.optional(__S(4105, __c128, 9)),
+          mentionId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EntityMention" });
+    case 11:
+      return S.Array(__S(4106, __c128, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          fhirBundle: S.optional(S.String),
+          relationships: S.optional(__S(4099, __c128, 3)),
+          entities: S.optional(__S(4101, __c128, 5)),
+          entityMentions: S.optional(__S(4107, __c128, 11)),
+        }),
+      ).annotate({ identifier: "AnalyzeEntitiesResponse" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7558,25 +8984,29 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest",
       });
-    case 5:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           responseView: S.optional(S.String),
           userId: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          requestAttributes: S.optional(__S(8, __c1, 0)),
-          consentList: S.optional(__S(47, __c5, 7)),
+          requestAttributes: S.optional(__S(3616, __c113, 0)),
+          consentList: S.optional(__S(2016, __c63, 0)),
           pageToken: S.optional(S.String),
-          resourceAttributes: S.optional(__S(8, __c1, 0)),
+          resourceAttributes: S.optional(__S(3616, __c113, 0)),
         }),
       ).annotate({
         identifier: "EvaluateUserConsentsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           consentStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(165, __c20, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4192, __c131, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7587,34 +9017,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dataId: S.optional(S.String),
           consented: S.optional(S.Boolean),
-          consentDetails: S.optional(__S(51, __c6, 3)),
+          consentDetails: S.optional(__S(2018, __c63, 2)),
         }),
       ).annotate({ identifier: "Result" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(4194, __c131, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          results: S.optional(__S(168, __c21, 0)),
+          results: S.optional(__S(4195, __c131, 3)),
         }),
       ).annotate({
         identifier: "EvaluateUserConsentsResponse",
       });
-    case 2:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7625,7 +9055,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 3:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7640,7 +9074,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           purpose: S.optional(S.String),
@@ -7648,51 +9082,51 @@ function __c21(j: number): any {
           actor: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsentAccessorScope" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(4257, __c133, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           patientConsentOwner: S.optional(S.String),
           enforcementTime: S.optional(S.String),
-          variants: S.optional(__S(10, __c1, 2)),
+          variants: S.optional(__S(4128, __c129, 0)),
           consentResource: S.optional(S.String),
           type: S.optional(S.String),
-          matchingAccessorScopes: S.optional(__S(173, __c21, 5)),
-          cascadeOrigins: S.optional(__S(3, __c0, 3)),
+          matchingAccessorScopes: S.optional(__S(4258, __c133, 2)),
+          cascadeOrigins: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({
         identifier: "ExplainDataAccessConsentInfo",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(4259, __c133, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          exceptions: S.optional(S.suspend(() => __S(177, __c22, 1))),
-          enforcingConsents: S.optional(__S(175, __c21, 7)),
-          accessorScope: S.optional(__S(172, __c21, 4)),
+          exceptions: S.optional(S.suspend(() => __S(4262, __c133, 6))),
+          enforcingConsents: S.optional(__S(4260, __c133, 4)),
+          accessorScope: S.optional(__S(4257, __c133, 1)),
           decision: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExplainDataAccessConsentScope",
       });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(4261, __c133, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           warning: S.optional(S.String),
-          consentScopes: S.optional(__S(177, __c22, 1)),
+          consentScopes: S.optional(__S(4262, __c133, 6)),
         }),
       ).annotate({
         identifier: "ExplainDataAccessResponse",
       });
-    case 3:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uriPrefix: S.optional(S.String),
@@ -7701,19 +9135,19 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleCloudHealthcareV1DicomGcsDestination",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          filterConfig: S.optional(__S(142, __c17, 6)),
-          gcsDestination: S.optional(__S(179, __c22, 3)),
-          bigqueryDestination: S.optional(__S(75, __c9, 3)),
+          filterConfig: S.optional(__S(3360, __c105, 0)),
+          gcsDestination: S.optional(__S(4288, __c134, 0)),
+          bigqueryDestination: S.optional(__S(2880, __c90, 0)),
         }),
       ).annotate({ identifier: "ExportDicomDataRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(180, __c22, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(4289, __c134, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7724,20 +9158,24 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ExportProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 6:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          bigqueryDestination: S.optional(__S(87, __c10, 7)),
+          bigqueryDestination: S.optional(__S(3042, __c95, 2)),
           _since: S.optional(S.String),
-          gcsDestination: S.optional(__S(39, __c4, 7)),
+          gcsDestination: S.optional(__S(32, __c1, 0)),
           _type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportResourcesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(182, __c22, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(4320, __c135, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7750,7 +9188,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7764,17 +9202,17 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          gcsDestination: S.optional(__S(184, __c23, 0)),
+          gcsDestination: S.optional(__S(4352, __c136, 0)),
           filter: S.optional(S.String),
           startTime: S.optional(S.String),
-          pubsubDestination: S.optional(__S(73, __c9, 1)),
+          pubsubDestination: S.optional(__S(2912, __c91, 0)),
         }),
       ).annotate({ identifier: "ExportMessagesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(185, __c23, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4353, __c136, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7785,7 +9223,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ExportProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 3:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7801,7 +9243,11 @@ function __c23(j: number): any {
         identifier:
           "GetBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest",
       });
-    case 4:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7815,7 +9261,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           structuredStorageSizeBytes: S.optional(S.String),
@@ -7826,7 +9272,11 @@ function __c23(j: number): any {
           studyCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "DicomStoreMetrics" });
-    case 6:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7840,7 +9290,79 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({ identifier: "AdminConsents" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          newConsentsList: S.optional(__S(4480, __c140, 0)),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApplyAdminConsentsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(4481, __c140, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:applyAdminConsents",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(4576, __c143, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(4544, __c142, 0)),
+          response: S.optional(__S(4544, __c142, 0)),
+          error: S.optional(__S(4512, __c141, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4544, __c142, 0));
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7854,11 +9376,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           versionedStorageSizeBytes: S.optional(S.String),
@@ -7867,16 +9385,20 @@ function __c24(j: number): any {
           structuredStorageSizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "FhirStoreMetric" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
     case 2:
+      return S.Array(__S(4609, __c144, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metrics: S.optional(__S(193, __c24, 1)),
+          metrics: S.optional(__S(4610, __c144, 2)),
         }),
       ).annotate({ identifier: "FhirStoreMetrics" });
-    case 3:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7892,7 +9414,11 @@ function __c24(j: number): any {
         identifier:
           "GetFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest",
       });
-    case 4:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7906,7 +9432,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
@@ -7914,18 +9440,18 @@ function __c24(j: number): any {
           structuredStorageSizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "Hl7V2StoreMetric" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4673, __c146, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metrics: S.optional(__S(198, __c24, 6)),
+          metrics: S.optional(__S(4674, __c146, 2)),
         }),
       ).annotate({ identifier: "Hl7V2StoreMetrics" });
   }
 }
-function __c25(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7942,46 +9468,50 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsRequest",
       });
-    case 1:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(2, __c0, 2)),
+          condition: S.optional(__S(3680, __c115, 0)),
           role: S.optional(S.String),
-          members: S.optional(__S(3, __c0, 3)),
+          members: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "Binding" });
+    case 1:
+      return S.Array(__S(4736, __c148, 0));
     case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(3, __c0, 3)),
+          exemptedMembers: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
+    case 3:
+      return S.Array(__S(4738, __c148, 2));
     case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(204, __c25, 4)),
+          auditLogConfigs: S.optional(__S(4739, __c148, 3)),
         }),
       ).annotate({ identifier: "AuditConfig" });
+    case 5:
+      return S.Array(__S(4740, __c148, 4));
     case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(202, __c25, 2)),
+          bindings: S.optional(__S(4737, __c148, 1)),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(206, __c25, 6)),
+          auditConfigs: S.optional(__S(4741, __c148, 5)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
   }
 }
-function __c26(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7998,7 +9528,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
       });
-    case 1:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -8013,7 +9547,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
       });
-    case 2:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -8028,7 +9566,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 3:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -8043,7 +9585,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 4:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -8058,7 +9604,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 5:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dicomWebPath: S.String.pipe(T.Label()),
@@ -8073,7 +9623,51 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          patientIds: S.optional(__S(3744, __c117, 0)),
+        }),
+      ).annotate({ identifier: "PatientScope" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          patientScope: S.optional(__S(4960, __c155, 0)),
+          timeRange: S.optional(__S(4961, __c155, 1)),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApplyConsentsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(4962, __c155, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:applyConsents",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8088,7 +9682,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest",
       });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dicomWebPath: S.String.pipe(T.Label()),
@@ -8105,7 +9703,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8122,7 +9720,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8136,17 +9738,25 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 2:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(8, __c1, 0)),
+          labels: S.optional(__S(3616, __c113, 0)),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(27, __c3, 3)),
+          metadata: S.optional(__S(4544, __c142, 0)),
           locationId: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 3:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8160,7 +9770,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsRequest",
       });
-    case 4:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8174,7 +9788,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsConsentStoresRequest",
       });
-    case 5:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8188,7 +9806,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
       });
-    case 6:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8202,7 +9824,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
       });
-    case 7:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8218,7 +9844,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8234,7 +9860,38 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
       });
-    case 1:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(5376, __c168, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:archive",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ArchiveUserDataMappingRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8248,7 +9905,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 2:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8262,7 +9923,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsFhirStoresRequest",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8276,7 +9941,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8291,7 +9960,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
       });
-    case 5:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8305,7 +9978,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatasetsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8321,7 +9998,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest",
       });
-    case 7:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           viewport: S.optional(S.String.pipe(T.Query())),
@@ -8340,7 +10021,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8366,7 +10047,11 @@ function __c29(j: number): any {
           structuredStorageSizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeriesMetrics" });
-    case 2:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8381,7 +10066,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
       });
-    case 3:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -8396,7 +10085,7 @@ function __c29(j: number): any {
         identifier:
           "GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storageClass: S.optional(S.String),
@@ -8404,21 +10093,55 @@ function __c29(j: number): any {
           sizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobStorageInfo" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "StructuredStorageInfo" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           referencedResource: S.optional(S.String),
-          blobStorageInfo: S.optional(__S(236, __c29, 4)),
-          structuredStorageInfo: S.optional(__S(237, __c29, 5)),
+          blobStorageInfo: S.optional(__S(5697, __c178, 1)),
+          structuredStorageInfo: S.optional(__S(5698, __c178, 2)),
         }),
       ).annotate({ identifier: "StorageInfo" });
-    case 7:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://healthcare.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(4576, __c143, 0)),
+          data: S.optional(S.String),
+          contentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpBody" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           study: S.String.pipe(T.Label()),
@@ -8432,11 +10155,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           study: S.optional(S.String),
@@ -8446,7 +10165,11 @@ function __c30(j: number): any {
           structuredStorageSizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "StudyMetrics" });
-    case 1:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8461,7 +10184,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest",
       });
-    case 2:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _count: S.optional(S.Number.pipe(T.Query())),
@@ -8479,24 +10206,22 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "HistoryProjectsLocationsDatasetsFhirStoresFhirRequest",
       });
-    case 3:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          blobStorageClass: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BlobStorageSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blobStorageSettings: S.optional(__S(243, __c30, 3)),
-          gcsSource: S.optional(__S(40, __c5, 0)),
+          blobStorageSettings: S.optional(__S(5920, __c185, 0)),
+          gcsSource: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ImportDicomDataRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(244, __c30, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(5888, __c184, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8507,18 +10232,32 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsDatasetsDicomStoresRequest",
       });
-    case 6:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blobStorageClass: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlobStorageSettings" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentStructure: S.optional(S.String),
-          gcsSource: S.optional(__S(40, __c5, 0)),
+          gcsSource: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ImportResourcesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(246, __c30, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5952, __c186, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8531,7 +10270,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8542,14 +10281,14 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(248, __c31, 0)),
+          gcsSource: S.optional(__S(5984, __c187, 0)),
         }),
       ).annotate({ identifier: "ImportMessagesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5985, __c187, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8560,11 +10299,15 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsDatasetsHl7V2StoresRequest",
       });
-    case 3:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8575,21 +10318,25 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(137, __c17, 1)),
+          message: S.optional(__S(3238, __c101, 6)),
           hl7Ack: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestMessageResponse" });
-    case 5:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(3744, __c117, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8600,18 +10347,18 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 6:
-      return S.Array(__S(218, __c27, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(5120, __c160, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(254, __c31, 6)),
+          locations: S.optional(__S(6049, __c189, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
   }
 }
-function __c32(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8630,15 +10377,19 @@ function __c32(j: number): any {
         identifier: "ListProjectsLocationsDatasetsRequest",
       });
     case 1:
-      return S.Array(__S(59, __c7, 3));
+      return S.Array(__S(2497, __c78, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(__S(257, __c32, 1)),
+          datasets: S.optional(__S(6081, __c190, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
-    case 3:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8655,1159 +10406,19 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDatasetsConsentStoresRequest",
       });
-    case 4:
-      return S.Array(__S(61, __c7, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(2560, __c80, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          consentStores: S.optional(__S(260, __c32, 4)),
+          consentStores: S.optional(__S(6113, __c191, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConsentStoresResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/attributeDefinitions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
-      });
-    case 7:
-      return S.Array(__S(63, __c7, 7));
   }
 }
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          attributeDefinitions: S.optional(__S(263, __c32, 7)),
-        }),
-      ).annotate({
-        identifier: "ListAttributeDefinitionsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/consentArtifacts",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
-      });
-    case 2:
-      return S.Array(__S(68, __c8, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          consentArtifacts: S.optional(__S(266, __c33, 2)),
-        }),
-      ).annotate({
-        identifier: "ListConsentArtifactsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/consents",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 5:
-      return S.Array(__S(9, __c1, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          consents: S.optional(__S(269, __c33, 5)),
-        }),
-      ).annotate({ identifier: "ListConsentsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/userDataMappings",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userDataMappings: S.optional(__S(272, __c34, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListUserDataMappingsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomStores",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 3:
-      return S.Array(__S(79, __c9, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dicomStores: S.optional(__S(275, __c34, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDicomStoresResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/fhirStores",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 6:
-      return S.Array(__S(107, __c13, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fhirStores: S.optional(__S(278, __c34, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListFhirStoresResponse" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/hl7V2Stores",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsHl7V2StoresRequest",
-      });
-    case 1:
-      return S.Array(__S(129, __c16, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hl7V2Stores: S.optional(__S(281, __c35, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListHl7V2StoresResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/messages",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
-      });
-    case 4:
-      return S.Array(__S(137, __c17, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hl7V2Messages: S.optional(__S(284, __c35, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListMessagesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/operations",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsDatasetsOperationsRequest",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
-          operations: S.optional(__S(287, __c35, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:listRevisions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          consents: S.optional(__S(269, __c33, 5)),
-        }),
-      ).annotate({
-        identifier: "ListConsentRevisionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsConsentStoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsHl7V2StoresRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _page_token: S.optional(S.String.pipe(T.Query())),
-          _count: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/$consent-enforcement-status",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _page_token: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          end: S.optional(S.String.pipe(T.Query())),
-          _since: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          _type: S.optional(S.String.pipe(T.Query())),
-          _count: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/$everything",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}/$purge",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceAttributes: S.optional(__S(8, __c1, 0)),
-          gcsDestination: S.optional(__S(39, __c4, 7)),
-          requestAttributes: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "QueryAccessibleDataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          consentStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(304, __c38, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+consentStore}:queryAccessibleData",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReadProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          consentArtifact: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RejectConsentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(308, __c38, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:reject",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RejectProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(308, __c38, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:revoke",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(__S(3, __c0, 3)),
-          metadataFilter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RollbackFhirResourceFilteringFields",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(__S(3, __c0, 3)),
-          changeType: S.optional(S.String),
-          excludeRollbacks: S.optional(S.Boolean),
-          rollbackTime: S.optional(S.String),
-          filteringFields: S.optional(__S(311, __c38, 7)),
-          force: S.optional(S.Boolean),
-          inputGcsObject: S.optional(S.String),
-          resultGcsBucket: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RollbackFhirResourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:rollback",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RollbackProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RollbackHL7MessagesFilteringFields",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resultGcsBucket: S.optional(S.String),
-          changeType: S.optional(S.String),
-          filteringFields: S.optional(__S(314, __c39, 2)),
-          excludeRollbacks: S.optional(S.Boolean),
-          inputGcsObject: S.optional(S.String),
-          rollbackTime: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "RollbackHl7V2MessagesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(315, __c39, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:rollback",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RollbackProjectsLocationsDatasetsHl7V2StoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          dicomWebPath: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          resourceType: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/fhir/_search",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/fhir/{resourceType}/_search",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filterConfig: S.optional(__S(142, __c17, 6)),
-          blobStorageSettings: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({
-        identifier: "SetBlobStorageSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(325, __c40, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setBlobStorageSettings",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(325, __c40, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setBlobStorageSettings",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(207, __c25, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dicomWebPath: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          dicomWebPath: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          profile: S.optional(S.String.pipe(T.Query())),
-          type: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/fhir/{+type}/$validate",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://healthcare.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "VreadProjectsLocationsDatasetsFhirStoresFhirRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

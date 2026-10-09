@@ -407,7 +407,7 @@ export const getBalance: API.OperationMethod<
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetBalanceRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BalancesResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<BalancesResponse>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -421,8 +421,8 @@ export const searchGet: API.OperationMethod<
   SearchGetError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<SearchGetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<SearchResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<SearchGetRequest>,
+  output: __S(87, __c2, 23) as any as S.Schema<SearchResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -441,32 +441,40 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currency_code: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           currency: S.String,
           primary: S.optional(S.Boolean),
-          total_balance: __S(1, __c0, 1),
-          available_balance: S.optional(__S(1, __c0, 1)),
-          withheld_balance: S.optional(__S(1, __c0, 1)),
+          total_balance: __S(32, __c1, 0),
+          available_balance: S.optional(__S(32, __c1, 0)),
+          withheld_balance: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "BalanceDetail" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          balances: S.optional(__S(3, __c0, 3)),
+          balances: S.optional(__S(2, __c0, 2)),
           account_id: S.optional(S.String),
           as_of_time: S.optional(S.String),
           last_refresh_time: S.optional(S.String),
         }),
       ).annotate({ identifier: "BalancesResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency_code: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           transaction_id: S.optional(S.String.pipe(T.Query())),
@@ -485,7 +493,7 @@ function __c0(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/reporting/transactions", code: 200 })),
       ).annotate({ identifier: "SearchGetRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           paypal_account_id: S.optional(S.String),
@@ -495,36 +503,36 @@ function __c0(j: number): any {
           transaction_event_code: S.optional(S.String),
           transaction_initiation_date: S.optional(S.String),
           transaction_updated_date: S.optional(S.String),
-          transaction_amount: S.optional(__S(1, __c0, 1)),
-          fee_amount: S.optional(__S(1, __c0, 1)),
-          discount_amount: S.optional(__S(1, __c0, 1)),
-          insurance_amount: S.optional(__S(1, __c0, 1)),
-          sales_tax_amount: S.optional(__S(1, __c0, 1)),
-          shipping_amount: S.optional(__S(1, __c0, 1)),
-          shipping_discount_amount: S.optional(__S(1, __c0, 1)),
-          shipping_tax_amount: S.optional(__S(1, __c0, 1)),
-          other_amount: S.optional(__S(1, __c0, 1)),
-          tip_amount: S.optional(__S(1, __c0, 1)),
+          transaction_amount: S.optional(__S(32, __c1, 0)),
+          fee_amount: S.optional(__S(32, __c1, 0)),
+          discount_amount: S.optional(__S(32, __c1, 0)),
+          insurance_amount: S.optional(__S(32, __c1, 0)),
+          sales_tax_amount: S.optional(__S(32, __c1, 0)),
+          shipping_amount: S.optional(__S(32, __c1, 0)),
+          shipping_discount_amount: S.optional(__S(32, __c1, 0)),
+          shipping_tax_amount: S.optional(__S(32, __c1, 0)),
+          other_amount: S.optional(__S(32, __c1, 0)),
+          tip_amount: S.optional(__S(32, __c1, 0)),
           transaction_status: S.optional(S.String),
           transaction_subject: S.optional(S.String),
           transaction_note: S.optional(S.String),
           payment_tracking_id: S.optional(S.String),
           bank_reference_id: S.optional(S.String),
-          ending_balance: S.optional(__S(1, __c0, 1)),
-          available_balance: S.optional(__S(1, __c0, 1)),
+          ending_balance: S.optional(__S(32, __c1, 0)),
+          available_balance: S.optional(__S(32, __c1, 0)),
           invoice_id: S.optional(S.String),
           custom_field: S.optional(S.String),
           protection_eligibility: S.optional(S.String),
           credit_term: S.optional(S.String),
-          credit_transactional_fee: S.optional(__S(1, __c0, 1)),
-          credit_promotional_fee: S.optional(__S(1, __c0, 1)),
+          credit_transactional_fee: S.optional(__S(32, __c1, 0)),
+          credit_promotional_fee: S.optional(__S(32, __c1, 0)),
           annual_percentage_rate: S.optional(S.String),
           payment_method_type: S.optional(S.String),
           instrument_type: S.optional(S.String),
           instrument_sub_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionInfo" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String,
@@ -532,11 +540,7 @@ function __c0(j: number): any {
           extension_number: S.optional(S.String),
         }),
       ).annotate({ identifier: "Phone" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -548,7 +552,7 @@ function __c1(j: number): any {
           full_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Name" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           line1: S.String,
@@ -559,50 +563,46 @@ function __c1(j: number): any {
           postal_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "Address" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
           email_address: S.optional(S.String),
-          phone_number: S.optional(__S(7, __c0, 7)),
+          phone_number: S.optional(__S(66, __c2, 2)),
           address_status: S.optional(S.String),
           payer_status: S.optional(S.String),
-          payer_name: S.optional(__S(8, __c1, 0)),
+          payer_name: S.optional(__S(67, __c2, 3)),
           country_code: S.optional(S.String),
-          address: S.optional(__S(9, __c1, 1)),
+          address: S.optional(__S(68, __c2, 4)),
         }),
       ).annotate({ identifier: "PayerInfo" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           method: S.optional(S.String),
-          address: S.optional(__S(9, __c1, 1)),
-          secondary_shipping_address: S.optional(__S(9, __c1, 1)),
+          address: S.optional(__S(68, __c2, 4)),
+          secondary_shipping_address: S.optional(__S(68, __c2, 4)),
         }),
       ).annotate({ identifier: "ShippingInfo" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          tax_amount: S.optional(__S(1, __c0, 1)),
+          tax_amount: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "ItemDetailTaxAmount" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           checkout_option_name: S.optional(S.String),
           checkout_option_value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckoutOption" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           item_code: S.optional(S.String),
@@ -610,40 +610,40 @@ function __c2(j: number): any {
           item_description: S.optional(S.String),
           item_options: S.optional(S.String),
           item_quantity: S.optional(S.String),
-          item_unit_price: S.optional(__S(1, __c0, 1)),
-          item_amount: S.optional(__S(1, __c0, 1)),
-          discount_amount: S.optional(__S(1, __c0, 1)),
-          adjustment_amount: S.optional(__S(1, __c0, 1)),
-          gift_wrap_amount: S.optional(__S(1, __c0, 1)),
+          item_unit_price: S.optional(__S(32, __c1, 0)),
+          item_amount: S.optional(__S(32, __c1, 0)),
+          discount_amount: S.optional(__S(32, __c1, 0)),
+          adjustment_amount: S.optional(__S(32, __c1, 0)),
+          gift_wrap_amount: S.optional(__S(32, __c1, 0)),
           tax_percentage: S.optional(S.String),
-          tax_amounts: S.optional(__S(13, __c1, 5)),
-          basic_shipping_amount: S.optional(__S(1, __c0, 1)),
-          extra_shipping_amount: S.optional(__S(1, __c0, 1)),
-          handling_amount: S.optional(__S(1, __c0, 1)),
-          insurance_amount: S.optional(__S(1, __c0, 1)),
-          total_item_amount: S.optional(__S(1, __c0, 1)),
+          tax_amounts: S.optional(__S(72, __c2, 8)),
+          basic_shipping_amount: S.optional(__S(32, __c1, 0)),
+          extra_shipping_amount: S.optional(__S(32, __c1, 0)),
+          handling_amount: S.optional(__S(32, __c1, 0)),
+          insurance_amount: S.optional(__S(32, __c1, 0)),
+          total_item_amount: S.optional(__S(32, __c1, 0)),
           invoice_number: S.optional(S.String),
-          checkout_options: S.optional(__S(15, __c1, 7)),
+          checkout_options: S.optional(__S(74, __c2, 10)),
         }),
       ).annotate({ identifier: "ItemDetail" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(75, __c2, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          item_details: S.optional(__S(17, __c2, 1)),
+          item_details: S.optional(__S(76, __c2, 12)),
           tax_inclusive: S.optional(S.Boolean),
           paypal_invoice_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CartInfo" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           store_id: S.optional(S.String),
           terminal_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "StoreInfo" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           auction_site: S.optional(S.String),
@@ -652,42 +652,38 @@ function __c2(j: number): any {
           auction_closing_date: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuctionInfo" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           incentive_type: S.optional(S.String),
           incentive_code: S.optional(S.String),
-          incentive_amount: S.optional(__S(1, __c0, 1)),
+          incentive_amount: S.optional(__S(32, __c1, 0)),
           incentive_program_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncentiveDetail" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 17:
+      return S.Array(__S(80, __c2, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          incentive_details: S.optional(__S(22, __c2, 6)),
+          incentive_details: S.optional(__S(81, __c2, 17)),
         }),
       ).annotate({ identifier: "IncentiveInfo" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          transaction_info: S.optional(__S(6, __c0, 6)),
-          payer_info: S.optional(__S(10, __c1, 2)),
-          shipping_info: S.optional(__S(11, __c1, 3)),
-          cart_info: S.optional(__S(18, __c2, 2)),
-          store_info: S.optional(__S(19, __c2, 3)),
-          auction_info: S.optional(__S(20, __c2, 4)),
-          incentive_info: S.optional(__S(23, __c2, 7)),
+          transaction_info: S.optional(__S(65, __c2, 1)),
+          payer_info: S.optional(__S(69, __c2, 5)),
+          shipping_info: S.optional(__S(70, __c2, 6)),
+          cart_info: S.optional(__S(77, __c2, 13)),
+          store_info: S.optional(__S(78, __c2, 14)),
+          auction_info: S.optional(__S(79, __c2, 15)),
+          incentive_info: S.optional(__S(82, __c2, 18)),
         }),
       ).annotate({ identifier: "TransactionDetail" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 20:
+      return S.Array(__S(83, __c2, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -695,12 +691,12 @@ function __c3(j: number): any {
           method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 22:
+      return S.Array(__S(85, __c2, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          transaction_details: S.optional(__S(25, __c3, 1)),
+          transaction_details: S.optional(__S(84, __c2, 20)),
           account_number: S.optional(S.String),
           start_date: S.optional(S.String),
           end_date: S.optional(S.String),
@@ -708,12 +704,11 @@ function __c3(j: number): any {
           page: S.optional(S.Number),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(__S(27, __c3, 3)),
+          links: S.optional(__S(86, __c2, 22)),
         }),
       ).annotate({ identifier: "SearchResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

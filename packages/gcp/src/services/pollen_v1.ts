@@ -213,7 +213,7 @@ export const lookupForecast: API.PaginatedOperationMethod<
   LookupForecastResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<LookupForecastRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<LookupForecastResponse>,
+  output: __S(12, __c0, 12) as any as S.Schema<LookupForecastResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   LookupHeatmapTileMapTypesHeatmapTilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<HttpBody>,
+  input: __S(16, __c1, 0) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -311,11 +311,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Pollen_Date" });
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           indexInfo: S.optional(__S(2, __c0, 2)),
@@ -325,27 +321,31 @@ function __c1(j: number): any {
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "PollenTypeInfo" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           plantInfo: S.optional(__S(5, __c0, 5)),
           date: S.optional(__S(6, __c0, 6)),
-          pollenTypeInfo: S.optional(__S(9, __c1, 1)),
+          pollenTypeInfo: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "DayInfo" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           regionCode: S.optional(S.String),
-          dailyInfo: S.optional(__S(11, __c1, 3)),
+          dailyInfo: S.optional(__S(11, __c0, 11)),
         }),
       ).annotate({ identifier: "LookupForecastResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoom: S.Number.pipe(T.Label()),
@@ -362,25 +362,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest",
       });
-    case 6:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(15, __c1, 7)),
+          extensions: S.optional(__S(18, __c1, 2)),
           contentType: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1141,8 +1141,8 @@ export const clearCalendars: API.OperationMethod<
   ClearCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ClearCalendarsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearCalendarsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ClearCalendarsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<ClearCalendarsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1156,8 +1156,8 @@ export const deleteAcl: API.OperationMethod<
   DeleteAclError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAclRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAclResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteAclRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteAclResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1171,8 +1171,8 @@ export const deleteCalendarList: API.OperationMethod<
   DeleteCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteCalendarListRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCalendarListResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteCalendarListRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteCalendarListResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1186,8 +1186,8 @@ export const deleteCalendars: API.OperationMethod<
   DeleteCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteCalendarsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCalendarsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteCalendarsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteCalendarsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1201,8 @@ export const deleteEvents: API.OperationMethod<
   DeleteEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteEventsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEventsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteEventsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1212,8 @@ export type GetAclError = NotFound | Forbidden | GcpOpError;
 /** Returns an access control rule. */
 export const getAcl: API.OperationMethod<GetAclRequest, AclRule, GetAclError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(6, __c0, 6) as any as S.Schema<GetAclRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<AclRule>,
+    input: __S(1568, __c49, 0) as any as S.Schema<GetAclRequest>,
+    output: __S(1601, __c50, 1) as any as S.Schema<AclRule>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1227,8 +1227,8 @@ export const getCalendarList: API.OperationMethod<
   GetCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetCalendarListRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CalendarListEntry>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCalendarListRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<CalendarListEntry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1242,8 @@ export const getCalendars: API.OperationMethod<
   GetCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetCalendarsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Calendar>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetCalendarsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Calendar>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1257,8 +1257,8 @@ export const getColors: API.OperationMethod<
   GetColorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetColorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Colors>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetColorsRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<Colors>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1268,8 @@ export type GetEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the events.list method using the iCalUID parameter. */
 export const getEvents: API.OperationMethod<GetEventsRequest, Event, GetEventsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(27, __c3, 3) as any as S.Schema<GetEventsRequest>,
-    output: __S(55, __c6, 7) as any as S.Schema<Event>,
+    input: __S(256, __c8, 0) as any as S.Schema<GetEventsRequest>,
+    output: __S(346, __c10, 26) as any as S.Schema<Event>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1283,8 +1283,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetSettingsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Setting>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetSettingsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Setting>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1298,8 +1298,8 @@ export const importEvents: API.OperationMethod<
   ImportEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ImportEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(416, __c13, 0) as any as S.Schema<ImportEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1313,8 @@ export const insertAcl: API.OperationMethod<
   InsertAclError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<InsertAclRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AclRule>,
+  input: __S(448, __c14, 0) as any as S.Schema<InsertAclRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<AclRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1328,8 @@ export const insertCalendarList: API.OperationMethod<
   InsertCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<InsertCalendarListRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CalendarListEntry>,
+  input: __S(480, __c15, 0) as any as S.Schema<InsertCalendarListRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<CalendarListEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1343,8 @@ export const insertCalendars: API.OperationMethod<
   InsertCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<InsertCalendarsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Calendar>,
+  input: __S(512, __c16, 0) as any as S.Schema<InsertCalendarsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Calendar>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1358,8 @@ export const insertEvents: API.OperationMethod<
   InsertEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<InsertEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(544, __c17, 0) as any as S.Schema<InsertEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1374,8 +1374,8 @@ export const instancesEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<InstancesEventsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<Events>,
+  input: __S(576, __c18, 0) as any as S.Schema<InstancesEventsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<Events>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1391,8 +1391,8 @@ export const listAcl: API.PaginatedOperationMethod<
   GcpOpContext,
   AclRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListAclRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<Acl>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListAclRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1408,8 @@ export const listCalendarList: API.PaginatedOperationMethod<
   GcpOpContext,
   CalendarListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListCalendarListRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CalendarList>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListCalendarListRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<CalendarList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1425,8 @@ export const listEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListEventsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<Events>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListEventsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<Events>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1442,8 @@ export const listSettings: API.PaginatedOperationMethod<
   GcpOpContext,
   Setting
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListSettingsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Settings>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListSettingsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1458,8 @@ export const moveEvents: API.OperationMethod<
   MoveEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<MoveEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(800, __c25, 0) as any as S.Schema<MoveEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1469,8 @@ export type PatchAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOp
 /** Updates an access control rule. This method supports patch semantics. */
 export const patchAcl: API.OperationMethod<PatchAclRequest, AclRule, PatchAclError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(78, __c9, 6) as any as S.Schema<PatchAclRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<AclRule>,
+    input: __S(832, __c26, 0) as any as S.Schema<PatchAclRequest>,
+    output: __S(1601, __c50, 1) as any as S.Schema<AclRule>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1484,8 +1484,8 @@ export const patchCalendarList: API.OperationMethod<
   PatchCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<PatchCalendarListRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CalendarListEntry>,
+  input: __S(864, __c27, 0) as any as S.Schema<PatchCalendarListRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<CalendarListEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1499,8 @@ export const patchCalendars: API.OperationMethod<
   PatchCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PatchCalendarsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Calendar>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchCalendarsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Calendar>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1514,8 @@ export const patchEvents: API.OperationMethod<
   PatchEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PatchEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(928, __c29, 0) as any as S.Schema<PatchEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1529,8 @@ export const queryFreebusy: API.OperationMethod<
   QueryFreebusyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<QueryFreebusyRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<FreeBusyResponse>,
+  input: __S(963, __c30, 3) as any as S.Schema<QueryFreebusyRequest>,
+  output: __S(972, __c30, 12) as any as S.Schema<FreeBusyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1544,8 @@ export const quickAddEvents: API.OperationMethod<
   QuickAddEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<QuickAddEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(992, __c31, 0) as any as S.Schema<QuickAddEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1559,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<StopChannelsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopChannelsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<StopChannelsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1579,8 +1579,8 @@ export const transferOwnershipCalendars: API.OperationMethod<
   TransferOwnershipCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<TransferOwnershipCalendarsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<TransferOwnershipCalendarsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<TransferOwnershipCalendarsRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<TransferOwnershipCalendarsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1594,8 +1594,8 @@ export const updateAcl: API.OperationMethod<
   UpdateAclError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdateAclRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AclRule>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateAclRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<AclRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1609,8 +1609,8 @@ export const updateCalendarList: API.OperationMethod<
   UpdateCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UpdateCalendarListRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CalendarListEntry>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateCalendarListRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<CalendarListEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1624,8 +1624,8 @@ export const updateCalendars: API.OperationMethod<
   UpdateCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdateCalendarsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Calendar>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateCalendarsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<Calendar>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1639,8 @@ export const updateEvents: API.OperationMethod<
   UpdateEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateEventsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Event>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateEventsRequest>,
+  output: __S(346, __c10, 26) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1650,8 @@ export type WatchAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOp
 /** Watch for changes to ACL resources. */
 export const watchAcl: API.OperationMethod<WatchAclRequest, Channel, WatchAclError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(104, __c13, 0) as any as S.Schema<WatchAclRequest>,
-    output: __S(96, __c12, 0) as any as S.Schema<Channel>,
+    input: __S(1248, __c39, 0) as any as S.Schema<WatchAclRequest>,
+    output: __S(1056, __c33, 0) as any as S.Schema<Channel>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1665,8 +1665,8 @@ export const watchCalendarList: API.OperationMethod<
   WatchCalendarListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<WatchCalendarListRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Channel>,
+  input: __S(1280, __c40, 0) as any as S.Schema<WatchCalendarListRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1680,8 +1680,8 @@ export const watchEvents: API.OperationMethod<
   WatchEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<WatchEventsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Channel>,
+  input: __S(1376, __c43, 0) as any as S.Schema<WatchEventsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1695,8 @@ export const watchSettings: API.OperationMethod<
   WatchSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<WatchSettingsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Channel>,
+  input: __S(1408, __c44, 0) as any as S.Schema<WatchSettingsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1711,143 +1711,17 @@ function __c0(j: number): any {
           calendarId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "calendars/{calendarId}/clear",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "ClearCalendarsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ClearCalendarsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.String.pipe(T.Label()),
-          calendarId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "calendars/{calendarId}/acl/{ruleId}",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAclRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          calendarId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "users/me/calendarList/{calendarId}",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCalendarListRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          calendarId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "calendars/{calendarId}",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCalendarsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          calendarId: S.String.pipe(T.Label()),
-          sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-          sendUpdates: S.optional(S.String.pipe(T.Query())),
-          eventId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "calendars/{calendarId}/events/{eventId}",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEventsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.String.pipe(T.Label()),
-          calendarId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "calendars/{calendarId}/acl/{ruleId}",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAclRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AclRuleScope" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          role: S.optional(S.String),
-          scope: S.optional(__S(7, __c0, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AclRule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          calendarId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
             method: "GET",
             uri: "users/me/calendarList/{calendarId}",
             baseUrl: "https://www.googleapis.com/calendar/v3/",
           }),
         ),
       ).annotate({ identifier: "GetCalendarListRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EventReminder" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CalendarNotification" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          notifications: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CalendarListEntryNotificationSettings",
-      });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
@@ -1856,10 +1730,44 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedConferenceSolutionTypes: S.optional(__S(15, __c1, 7)),
+          allowedConferenceSolutionTypes: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "ConferenceProperties" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EventReminder" });
     case 1:
+      return S.Array(__S(96, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CalendarNotification" });
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          notifications: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "CalendarListEntryNotificationSettings",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -1870,22 +1778,26 @@ function __c2(j: number): any {
           location: S.optional(S.String),
           description: S.optional(S.String),
           deleted: S.optional(S.Boolean),
-          defaultReminders: S.optional(__S(11, __c1, 3)),
+          defaultReminders: S.optional(__S(97, __c3, 1)),
           summaryOverride: S.optional(S.String),
           summary: S.optional(S.String),
           hidden: S.optional(S.Boolean),
           selected: S.optional(S.Boolean),
           accessRole: S.optional(S.String),
-          notificationSettings: S.optional(__S(14, __c1, 6)),
+          notificationSettings: S.optional(__S(130, __c4, 2)),
           primary: S.optional(S.Boolean),
           etag: S.optional(S.String),
           colorId: S.optional(S.String),
           autoAcceptInvitations: S.optional(S.Boolean),
           dataOwner: S.optional(S.String),
-          conferenceProperties: S.optional(__S(16, __c2, 0)),
+          conferenceProperties: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "CalendarListEntry" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
@@ -1897,7 +1809,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCalendarsRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1905,31 +1821,35 @@ function __c2(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventLabel" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          eventLabels: S.optional(__S(20, __c2, 4)),
+          eventLabels: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "LabelProperties" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          conferenceProperties: S.optional(__S(16, __c2, 0)),
+          conferenceProperties: S.optional(__S(64, __c2, 0)),
           description: S.optional(S.String),
           kind: S.optional(S.String),
           autoAcceptInvitations: S.optional(S.Boolean),
           location: S.optional(S.String),
           summary: S.optional(S.String),
-          labelProperties: S.optional(__S(21, __c2, 5)),
+          labelProperties: S.optional(__S(194, __c6, 2)),
           id: S.optional(S.String),
           timeZone: S.optional(S.String),
           etag: S.optional(S.String),
           dataOwner: S.optional(S.String),
         }),
       ).annotate({ identifier: "Calendar" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1939,29 +1859,29 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetColorsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           background: S.optional(S.String),
           foreground: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColorDefinition" });
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
     case 2:
+      return S.Record(S.String, __S(225, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          event: S.optional(__S(25, __c3, 1)),
-          calendar: S.optional(__S(25, __c3, 1)),
+          event: S.optional(__S(226, __c7, 2)),
+          calendar: S.optional(__S(226, __c7, 2)),
           kind: S.optional(S.String),
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "Colors" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
@@ -1977,7 +1897,17 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEventsRequest" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timeZone: S.optional(S.String),
@@ -1985,39 +1915,35 @@ function __c3(j: number): any {
           dateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventDateTime" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConferenceSolutionKey" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           iconUri: S.optional(S.String),
           name: S.optional(S.String),
-          key: S.optional(__S(29, __c3, 5)),
+          key: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "ConferenceSolution" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConferenceRequestStatus" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(31, __c3, 7)),
+          status: S.optional(__S(323, __c10, 3)),
           requestId: S.optional(S.String),
-          conferenceSolutionKey: S.optional(__S(29, __c3, 5)),
+          conferenceSolutionKey: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "CreateConferenceRequest" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           pin: S.optional(S.String),
@@ -2026,43 +1952,41 @@ function __c4(j: number): any {
           uri: S.optional(S.String),
           passcode: S.optional(S.String),
           password: S.optional(S.String),
-          entryPointFeatures: S.optional(__S(15, __c1, 7)),
+          entryPointFeatures: S.optional(__S(32, __c1, 0)),
           accessCode: S.optional(S.String),
           entryPointType: S.optional(S.String),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntryPoint" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
+    case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(35, __c4, 3)),
+          parameters: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "ConferenceParametersAddOnParameters",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          addOnParameters: S.optional(__S(36, __c4, 4)),
+          addOnParameters: S.optional(__S(327, __c10, 7)),
         }),
       ).annotate({ identifier: "ConferenceParameters" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          conferenceSolution: S.optional(__S(30, __c3, 6)),
+          conferenceSolution: S.optional(__S(322, __c10, 2)),
           conferenceId: S.optional(S.String),
-          createRequest: S.optional(__S(32, __c4, 0)),
-          entryPoints: S.optional(__S(34, __c4, 2)),
+          createRequest: S.optional(__S(324, __c10, 4)),
+          entryPoints: S.optional(__S(326, __c10, 6)),
           notes: S.optional(S.String),
           signature: S.optional(S.String),
-          parameters: S.optional(__S(37, __c4, 5)),
+          parameters: S.optional(__S(328, __c10, 8)),
         }),
       ).annotate({ identifier: "ConferenceData" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           iconLink: S.optional(S.String),
@@ -2072,13 +1996,9 @@ function __c4(j: number): any {
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventAttachment" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(330, __c10, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           display: S.optional(S.String),
@@ -2088,17 +2008,17 @@ function __c5(j: number): any {
           type: S.optional(S.String),
           width: S.optional(S.Number),
           link: S.optional(S.String),
-          preferences: S.optional(__S(35, __c4, 3)),
+          preferences: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "EventGadget" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          overrides: S.optional(__S(11, __c1, 3)),
+          overrides: S.optional(__S(97, __c3, 1)),
           useDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventReminders" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           self: S.optional(S.Boolean),
@@ -2107,7 +2027,7 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventOrganizer" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           declineMessage: S.optional(S.String),
@@ -2115,7 +2035,7 @@ function __c5(j: number): any {
           autoDeclineMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventFocusTimeProperties" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -2123,7 +2043,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EventWorkingLocationPropertiesCustomLocation",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           deskId: S.optional(S.String),
@@ -2135,22 +2055,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EventWorkingLocationPropertiesOfficeLocation",
       });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          customLocation: S.optional(__S(45, __c5, 5)),
+          customLocation: S.optional(__S(336, __c10, 16)),
           homeOffice: S.optional(S.Unknown),
           type: S.optional(S.String),
-          officeLocation: S.optional(__S(46, __c5, 6)),
+          officeLocation: S.optional(__S(337, __c10, 17)),
         }),
       ).annotate({
         identifier: "EventWorkingLocationProperties",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.Boolean),
@@ -2166,9 +2082,9 @@ function __c6(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventAttendee" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 20:
+      return S.Array(__S(339, __c10, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           autoDeclineMode: S.optional(S.String),
@@ -2177,7 +2093,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "EventOutOfOfficeProperties",
       });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2185,14 +2101,14 @@ function __c6(j: number): any {
           contact: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventBirthdayProperties" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          shared: S.optional(__S(35, __c4, 3)),
-          private: S.optional(__S(35, __c4, 3)),
+          shared: S.optional(__S(288, __c9, 0)),
+          private: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "EventExtendedProperties" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -2201,65 +2117,65 @@ function __c6(j: number): any {
           self: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventCreator" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSource" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           guestsCanModify: S.optional(S.Boolean),
-          originalStartTime: S.optional(__S(28, __c3, 4)),
+          originalStartTime: S.optional(__S(320, __c10, 0)),
           attendeesOmitted: S.optional(S.Boolean),
           sequence: S.optional(S.Number),
           locked: S.optional(S.Boolean),
           etag: S.optional(S.String),
           summary: S.optional(S.String),
           htmlLink: S.optional(S.String),
-          conferenceData: S.optional(__S(38, __c4, 6)),
+          conferenceData: S.optional(__S(329, __c10, 9)),
           recurringEventId: S.optional(S.String),
           colorId: S.optional(S.String),
           eventType: S.optional(S.String),
-          attachments: S.optional(__S(40, __c5, 0)),
+          attachments: S.optional(__S(331, __c10, 11)),
           privateCopy: S.optional(S.Boolean),
           visibility: S.optional(S.String),
-          gadget: S.optional(__S(41, __c5, 1)),
+          gadget: S.optional(__S(332, __c10, 12)),
           guestsCanSeeOtherGuests: S.optional(S.Boolean),
-          end: S.optional(__S(28, __c3, 4)),
+          end: S.optional(__S(320, __c10, 0)),
           endTimeUnspecified: S.optional(S.Boolean),
-          reminders: S.optional(__S(42, __c5, 2)),
+          reminders: S.optional(__S(333, __c10, 13)),
           created: S.optional(S.String),
-          recurrence: S.optional(__S(15, __c1, 7)),
+          recurrence: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
           anyoneCanAddSelf: S.optional(S.Boolean),
-          organizer: S.optional(__S(43, __c5, 3)),
-          focusTimeProperties: S.optional(__S(44, __c5, 4)),
+          organizer: S.optional(__S(334, __c10, 14)),
+          focusTimeProperties: S.optional(__S(335, __c10, 15)),
           hangoutLink: S.optional(S.String),
-          workingLocationProperties: S.optional(__S(47, __c5, 7)),
-          attendees: S.optional(__S(49, __c6, 1)),
+          workingLocationProperties: S.optional(__S(338, __c10, 18)),
+          attendees: S.optional(__S(340, __c10, 20)),
           transparency: S.optional(S.String),
           guestsCanInviteOthers: S.optional(S.Boolean),
-          start: S.optional(__S(28, __c3, 4)),
+          start: S.optional(__S(320, __c10, 0)),
           eventLabelId: S.optional(S.String),
           description: S.optional(S.String),
           iCalUID: S.optional(S.String),
-          outOfOfficeProperties: S.optional(__S(50, __c6, 2)),
+          outOfOfficeProperties: S.optional(__S(341, __c10, 21)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
           updated: S.optional(S.String),
-          birthdayProperties: S.optional(__S(51, __c6, 3)),
-          extendedProperties: S.optional(__S(52, __c6, 4)),
-          creator: S.optional(__S(53, __c6, 5)),
+          birthdayProperties: S.optional(__S(342, __c10, 22)),
+          extendedProperties: S.optional(__S(343, __c10, 23)),
+          creator: S.optional(__S(344, __c10, 24)),
           status: S.optional(S.String),
-          source: S.optional(__S(54, __c6, 6)),
+          source: S.optional(__S(345, __c10, 25)),
         }),
       ).annotate({ identifier: "Event" });
   }
 }
-function __c7(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2273,7 +2189,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSettingsRequest" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
@@ -2282,14 +2202,18 @@ function __c7(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Setting" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
           calendarId: S.String.pipe(T.Label()),
           conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
           eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c10, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2298,12 +2222,16 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportEventsRequest" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1601, __c50, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2312,11 +2240,15 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertAclRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(131, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2327,10 +2259,14 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InsertCalendarListRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2339,7 +2275,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertCalendarsRequest" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
@@ -2349,7 +2289,7 @@ function __c7(j: number): any {
           supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
           eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c10, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2358,7 +2298,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertEventsRequest" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
@@ -2382,10 +2326,10 @@ function __c7(j: number): any {
       ).annotate({ identifier: "InstancesEventsRequest" });
   }
 }
-function __c8(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
+      return S.Array(__S(346, __c10, 26));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2394,15 +2338,19 @@ function __c8(j: number): any {
           summary: S.optional(S.String),
           accessRole: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(64, __c8, 0),
-          defaultReminders: S.optional(__S(11, __c1, 3)),
+          items: __S(608, __c19, 0),
+          defaultReminders: S.optional(__S(97, __c3, 1)),
           nextSyncToken: S.optional(S.String),
           updated: S.optional(S.String),
           kind: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Events" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -2418,19 +2366,23 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAclRequest" });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(1601, __c50, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(67, __c8, 3),
+          items: __S(641, __c20, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Acl" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -2448,29 +2400,27 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCalendarListRequest" });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(131, __c4, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(70, __c8, 6),
+          items: __S(673, __c21, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalendarList" });
   }
 }
-function __c9(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           syncToken: S.optional(S.String.pipe(T.Query())),
-          eventTypes: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          eventTypes: S.optional(__S(736, __c23, 0).pipe(T.Query())),
           singleEvents: S.optional(S.Boolean.pipe(T.Query())),
           alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
           iCalUID: S.optional(S.String.pipe(T.Query())),
@@ -2478,12 +2428,12 @@ function __c9(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           timeMax: S.optional(S.String.pipe(T.Query())),
-          privateExtendedProperty: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          privateExtendedProperty: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           timeMin: S.optional(S.String.pipe(T.Query())),
           updatedMin: S.optional(S.String.pipe(T.Query())),
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
           showHiddenInvitations: S.optional(S.Boolean.pipe(T.Query())),
-          sharedExtendedProperty: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          sharedExtendedProperty: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           timeZone: S.optional(S.String.pipe(T.Query())),
@@ -2496,7 +2446,17 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEventsRequest" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           syncToken: S.optional(S.String.pipe(T.Query())),
@@ -2510,19 +2470,23 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSettingsRequest" });
-    case 3:
-      return S.Array(__S(57, __c7, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           nextSyncToken: S.optional(S.String),
-          items: __S(75, __c9, 3),
+          items: __S(769, __c24, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Settings" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventId: S.String.pipe(T.Label()),
@@ -2538,13 +2502,17 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveEventsRequest" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1601, __c50, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2553,12 +2521,16 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAclRequest" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
           colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(131, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2569,13 +2541,13 @@ function __c9(j: number): any {
       ).annotate({ identifier: "PatchCalendarListRequest" });
   }
 }
-function __c10(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2584,7 +2556,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchCalendarsRequest" });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendUpdates: S.optional(S.String.pipe(T.Query())),
@@ -2596,7 +2572,7 @@ function __c10(j: number): any {
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
           eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
           conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c10, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2605,29 +2581,33 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchEventsRequest" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeBusyRequestItem" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           groupExpansionMax: S.optional(S.Number),
           timeMin: S.optional(S.String),
-          items: S.optional(__S(83, __c10, 3)),
+          items: S.optional(__S(961, __c30, 1)),
           calendarExpansionMax: S.optional(S.Number),
           timeZone: S.optional(S.String),
           timeMax: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeBusyRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(962, __c30, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2636,57 +2616,57 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryFreebusyRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimePeriod" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(964, __c30, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "Calendar_Error" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(966, __c30, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          busy: S.optional(__S(87, __c10, 7)),
-          errors: S.optional(__S(89, __c11, 1)),
+          busy: S.optional(__S(965, __c30, 5)),
+          errors: S.optional(__S(967, __c30, 7)),
         }),
       ).annotate({ identifier: "FreeBusyCalendar" });
-    case 3:
-      return S.Record(S.String, __S(90, __c11, 2));
-    case 4:
+    case 9:
+      return S.Record(S.String, __S(968, __c30, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          calendars: S.optional(__S(15, __c1, 7)),
-          errors: S.optional(__S(89, __c11, 1)),
+          calendars: S.optional(__S(32, __c1, 0)),
+          errors: S.optional(__S(967, __c30, 7)),
         }),
       ).annotate({ identifier: "FreeBusyGroup" });
-    case 5:
-      return S.Record(S.String, __S(92, __c11, 4));
-    case 6:
+    case 11:
+      return S.Record(S.String, __S(970, __c30, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          calendars: S.optional(__S(91, __c11, 3)),
+          calendars: S.optional(__S(969, __c30, 9)),
           timeMin: S.optional(S.String),
-          groups: S.optional(__S(93, __c11, 5)),
+          groups: S.optional(__S(971, __c30, 11)),
           timeMax: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeBusyResponse" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
@@ -2703,7 +2683,23 @@ function __c11(j: number): any {
       ).annotate({ identifier: "QuickAddEventsRequest" });
   }
 }
-function __c12(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "channels/stop",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "StopChannelsRequest" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2716,23 +2712,15 @@ function __c12(j: number): any {
           expiration: S.optional(S.String),
           payload: S.optional(S.Boolean),
           token: S.optional(S.String),
-          params: S.optional(__S(35, __c4, 3)),
+          params: S.optional(__S(288, __c9, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "channels/stop",
-            baseUrl: "https://www.googleapis.com/calendar/v3/",
-          }),
-        ),
-      ).annotate({ identifier: "StopChannelsRequest" });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newDataOwner: S.String.pipe(T.Query()),
@@ -2748,17 +2736,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TransferOwnershipCalendarsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TransferOwnershipCalendarsResponse",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.String.pipe(T.Label()),
           calendarId: S.String.pipe(T.Label()),
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1601, __c50, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2767,12 +2759,16 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAclRequest" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
           calendarId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(131, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2783,11 +2779,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateCalendarListRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2796,7 +2796,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCalendarsRequest" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
@@ -2808,7 +2812,7 @@ function __c12(j: number): any {
           alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
           sendUpdates: S.optional(S.String.pipe(T.Query())),
           calendarId: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c10, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2819,7 +2823,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "UpdateEventsRequest" });
   }
 }
-function __c13(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2829,7 +2833,7 @@ function __c13(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2838,7 +2842,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchAclRequest" });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2848,7 +2856,7 @@ function __c13(j: number): any {
           showHidden: S.optional(S.Boolean.pipe(T.Query())),
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2857,7 +2865,35 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchCalendarListRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calendarId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "calendars/{calendarId}/clear",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "ClearCalendarsRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ClearCalendarsResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           syncToken: S.optional(S.String.pipe(T.Query())),
@@ -2869,17 +2905,17 @@ function __c13(j: number): any {
           timeZone: S.optional(S.String.pipe(T.Query())),
           showHiddenInvitations: S.optional(S.Boolean.pipe(T.Query())),
           maxAttendees: S.optional(S.Number.pipe(T.Query())),
-          eventTypes: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          eventTypes: S.optional(__S(736, __c23, 0).pipe(T.Query())),
           timeMax: S.optional(S.String.pipe(T.Query())),
           calendarId: S.String.pipe(T.Label()),
           timeMin: S.optional(S.String.pipe(T.Query())),
-          privateExtendedProperty: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          sharedExtendedProperty: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          privateExtendedProperty: S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          sharedExtendedProperty: S.optional(__S(32, __c1, 0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           updatedMin: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2888,13 +2924,17 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchEventsRequest" });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2905,7 +2945,114 @@ function __c13(j: number): any {
       ).annotate({ identifier: "WatchSettingsRequest" });
   }
 }
-
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String.pipe(T.Label()),
+          calendarId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "calendars/{calendarId}/acl/{ruleId}",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAclRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calendarId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "users/me/calendarList/{calendarId}",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCalendarListRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calendarId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "calendars/{calendarId}",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCalendarsRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calendarId: S.String.pipe(T.Label()),
+          sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
+          sendUpdates: S.optional(S.String.pipe(T.Query())),
+          eventId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "calendars/{calendarId}/events/{eventId}",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEventsRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String.pipe(T.Label()),
+          calendarId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "calendars/{calendarId}/acl/{ruleId}",
+            baseUrl: "https://www.googleapis.com/calendar/v3/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAclRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AclRuleScope" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          role: S.optional(S.String),
+          scope: S.optional(__S(1600, __c50, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AclRule" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

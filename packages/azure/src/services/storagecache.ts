@@ -2756,7 +2756,7 @@ export const AmlFilesystemsCancelArchive: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AmlFilesystemsCancelArchiveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AmlFilesystemsCancelArchiveResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<AmlFilesystemsCancelArchiveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2770,8 +2770,8 @@ export const AmlFilesystemsCreateOrUpdate: API.OperationMethod<
   AmlFilesystemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponse>,
+  input: __S(67, __c2, 3) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2785,8 @@ export const ArchiveAmlFilesystem: API.OperationMethod<
   ArchiveAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ArchiveAmlFilesystemRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ArchiveAmlFilesystemResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ArchiveAmlFilesystemRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ArchiveAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2800,8 @@ export const AutoExportJobsCreateOrUpdate: API.OperationMethod<
   AutoExportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<AutoExportJobsCreateOrUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AutoExportJobsCreateOrUpdateResponse>,
+  input: __S(1409, __c44, 1) as any as S.Schema<AutoExportJobsCreateOrUpdateRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<AutoExportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2815,8 +2815,8 @@ export const AutoImportJobsCreateOrUpdate: API.OperationMethod<
   AutoImportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<AutoImportJobsCreateOrUpdateRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<AutoImportJobsCreateOrUpdateResponse>,
+  input: __S(1953, __c61, 1) as any as S.Schema<AutoImportJobsCreateOrUpdateRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<AutoImportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2830,8 @@ export const CachesCreateOrUpdate: API.OperationMethod<
   CachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CachesCreateOrUpdateRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CachesCreateOrUpdateResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<CachesCreateOrUpdateRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<CachesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2845,8 @@ export const CachesDebugInfo: API.OperationMethod<
   CachesDebugInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CachesDebugInfoRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CachesDebugInfoResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<CachesDebugInfoRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CachesDebugInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,8 +2860,8 @@ export const CachesSpaceAllocation: API.OperationMethod<
   CachesSpaceAllocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CachesSpaceAllocationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CachesSpaceAllocationResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CachesSpaceAllocationRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CachesSpaceAllocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2875,8 +2875,8 @@ export const CachesUpgradeFirmware: API.OperationMethod<
   CachesUpgradeFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CachesUpgradeFirmwareRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CachesUpgradeFirmwareResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<CachesUpgradeFirmwareRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CachesUpgradeFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2890,8 @@ export const CheckAmlFSSubnets: API.OperationMethod<
   CheckAmlFSSubnetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CheckAmlFSSubnetsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CheckAmlFSSubnetsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<CheckAmlFSSubnetsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CheckAmlFSSubnetsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2905,8 @@ export const DeleteAmlFilesystem: API.OperationMethod<
   DeleteAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteAmlFilesystemRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteAmlFilesystemResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteAmlFilesystemRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2920,8 +2920,8 @@ export const DeleteAutoExportJob: API.OperationMethod<
   DeleteAutoExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteAutoExportJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteAutoExportJobResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteAutoExportJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2935,8 @@ export const DeleteAutoImportJob: API.OperationMethod<
   DeleteAutoImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteAutoImportJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteAutoImportJobResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteAutoImportJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2950,8 @@ export const DeleteCach: API.OperationMethod<
   DeleteCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteCachRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteCachResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteCachRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2965,8 +2965,8 @@ export const DeleteExpansionJob: API.OperationMethod<
   DeleteExpansionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteExpansionJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteExpansionJobResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteExpansionJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2980,8 +2980,8 @@ export const DeleteImportJob: API.OperationMethod<
   DeleteImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteImportJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteImportJobResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteImportJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2995,8 +2995,8 @@ export const DeleteRebalanceJob: API.OperationMethod<
   DeleteRebalanceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteRebalanceJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteRebalanceJobResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteRebalanceJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3010,8 +3010,8 @@ export const DeleteStorageTarget: API.OperationMethod<
   DeleteStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteStorageTargetRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteStorageTargetResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteStorageTargetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<DeleteStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3025,8 +3025,8 @@ export const ExpansionJobsCreateOrUpdate: API.OperationMethod<
   ExpansionJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ExpansionJobsCreateOrUpdateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ExpansionJobsCreateOrUpdateResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<ExpansionJobsCreateOrUpdateRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<ExpansionJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3040,8 +3040,8 @@ export const FlushCach: API.OperationMethod<
   FlushCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<FlushCachRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<FlushCachResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<FlushCachRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<FlushCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3055,8 +3055,8 @@ export const FlushStorageTarget: API.OperationMethod<
   FlushStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<FlushStorageTargetRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<FlushStorageTargetResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<FlushStorageTargetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<FlushStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3070,8 @@ export const GetAmlFilesystem: API.OperationMethod<
   GetAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetAmlFilesystemRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetAmlFilesystemResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetAmlFilesystemRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<GetAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3085,8 +3085,8 @@ export const GetAscOperation: API.OperationMethod<
   GetAscOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetAscOperationRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<AscOperation>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAscOperationRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<AscOperation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3100,8 +3100,8 @@ export const GetAutoExportJob: API.OperationMethod<
   GetAutoExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetAutoExportJobRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetAutoExportJobResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetAutoExportJobRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3115,8 +3115,8 @@ export const GetAutoImportJob: API.OperationMethod<
   GetAutoImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetAutoImportJobRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetAutoImportJobResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAutoImportJobRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<GetAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3130,8 +3130,8 @@ export const GetCach: API.OperationMethod<
   GetCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetCachRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetCachResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetCachRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<GetCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3145,8 +3145,8 @@ export const GetExpansionJob: API.OperationMethod<
   GetExpansionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetExpansionJobRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetExpansionJobResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetExpansionJobRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3160,8 +3160,8 @@ export const GetImportJob: API.OperationMethod<
   GetImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetImportJobRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetImportJobResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<GetImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3175,8 @@ export const GetRebalanceJob: API.OperationMethod<
   GetRebalanceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetRebalanceJobRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetRebalanceJobResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetRebalanceJobRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<GetRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3190,8 @@ export const GetRequiredAmlFSSubnetsSize: API.OperationMethod<
   GetRequiredAmlFSSubnetsSizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetRequiredAmlFSSubnetsSizeRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<RequiredAmlFilesystemSubnetsSize>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetRequiredAmlFSSubnetsSizeRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<RequiredAmlFilesystemSubnetsSize>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3205,8 +3205,8 @@ export const GetStorageTarget: API.OperationMethod<
   GetStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetStorageTargetRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetStorageTargetResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetStorageTargetRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<GetStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3220,8 +3220,8 @@ export const ImportJobsCreateOrUpdate: API.OperationMethod<
   ImportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ImportJobsCreateOrUpdateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ImportJobsCreateOrUpdateResponse>,
+  input: __S(1601, __c50, 1) as any as S.Schema<ImportJobsCreateOrUpdateRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<ImportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3235,8 +3235,8 @@ export const InvalidateStorageTarget: API.OperationMethod<
   InvalidateStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<InvalidateStorageTargetRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<InvalidateStorageTargetResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<InvalidateStorageTargetRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<InvalidateStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3250,8 @@ export const ListAmlFilesystemByResourceGroup: API.OperationMethod<
   ListAmlFilesystemByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListAmlFilesystemByResourceGroupRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<AmlFilesystemsListResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListAmlFilesystemByResourceGroupRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<AmlFilesystemsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3265,8 @@ export const ListAmlFilesystems: API.OperationMethod<
   ListAmlFilesystemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListAmlFilesystemsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<AmlFilesystemsListResult>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListAmlFilesystemsRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<AmlFilesystemsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3280,8 +3280,8 @@ export const ListAscUsages: API.OperationMethod<
   ListAscUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListAscUsagesRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ResourceUsagesListResult>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAscUsagesRequest>,
+  output: __S(1764, __c55, 4) as any as S.Schema<ResourceUsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3295,8 +3295,8 @@ export const ListAutoExportJobByAmlFilesystem: API.OperationMethod<
   ListAutoExportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListAutoExportJobByAmlFilesystemRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<AutoExportJobsListResult>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListAutoExportJobByAmlFilesystemRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<AutoExportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3310,8 +3310,8 @@ export const ListAutoImportJobByAmlFilesystem: API.OperationMethod<
   ListAutoImportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListAutoImportJobByAmlFilesystemRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<AutoImportJobsListResult>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListAutoImportJobByAmlFilesystemRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<AutoImportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3325,8 +3325,8 @@ export const ListCachByResourceGroup: API.OperationMethod<
   ListCachByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListCachByResourceGroupRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CachesListResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListCachByResourceGroupRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CachesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3340,8 +3340,8 @@ export const ListCaches: API.OperationMethod<
   ListCachesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListCachesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CachesListResult>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListCachesRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CachesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3355,8 +3355,8 @@ export const ListExpansionJobByAmlFilesystem: API.OperationMethod<
   ListExpansionJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListExpansionJobByAmlFilesystemRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ExpansionJobsListResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListExpansionJobByAmlFilesystemRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ExpansionJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3370,8 +3370,8 @@ export const ListImportJobByAmlFilesystem: API.OperationMethod<
   ListImportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListImportJobByAmlFilesystemRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ImportJobsListResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListImportJobByAmlFilesystemRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ImportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3385,8 +3385,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ApiOperationListResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2125, __c66, 13) as any as S.Schema<ApiOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3400,8 +3400,8 @@ export const ListRebalanceJobByAmlFilesystem: API.OperationMethod<
   ListRebalanceJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListRebalanceJobByAmlFilesystemRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<RebalanceJobsListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListRebalanceJobByAmlFilesystemRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<RebalanceJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3415,8 +3415,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListSkusRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<ResourceSkusResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(2185, __c68, 9) as any as S.Schema<ResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3430,8 +3430,8 @@ export const ListStorageTargetByCache: API.OperationMethod<
   ListStorageTargetByCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListStorageTargetByCacheRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<StorageTargetsResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListStorageTargetByCacheRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<StorageTargetsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3445,8 +3445,8 @@ export const ListUsageModels: API.OperationMethod<
   ListUsageModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListUsageModelsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<UsageModelsResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListUsageModelsRequest>,
+  output: __S(2244, __c70, 4) as any as S.Schema<UsageModelsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3460,8 +3460,8 @@ export const PauseCachPrimingJob: API.OperationMethod<
   PauseCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<PauseCachPrimingJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PauseCachPrimingJobResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PauseCachPrimingJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<PauseCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3475,8 +3475,8 @@ export const RefreshStorageTargetsDns: API.OperationMethod<
   RefreshStorageTargetsDnsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<RefreshStorageTargetsDnsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RefreshStorageTargetsDnsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<RefreshStorageTargetsDnsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RefreshStorageTargetsDnsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3490,8 +3490,8 @@ export const RestoreStorageTargetDefaults: API.OperationMethod<
   RestoreStorageTargetDefaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<RestoreStorageTargetDefaultsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RestoreStorageTargetDefaultsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<RestoreStorageTargetDefaultsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RestoreStorageTargetDefaultsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3505,8 +3505,8 @@ export const ResumeCachPrimingJob: API.OperationMethod<
   ResumeCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ResumeCachPrimingJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ResumeCachPrimingJobResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ResumeCachPrimingJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ResumeCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3520,8 +3520,8 @@ export const ResumeStorageTarget: API.OperationMethod<
   ResumeStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ResumeStorageTargetRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ResumeStorageTargetResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ResumeStorageTargetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ResumeStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3535,8 +3535,8 @@ export const StartCach: API.OperationMethod<
   StartCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<StartCachRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StartCachResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<StartCachRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<StartCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3550,8 +3550,8 @@ export const StartCachPrimingJob: API.OperationMethod<
   StartCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<StartCachPrimingJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StartCachPrimingJobResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<StartCachPrimingJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<StartCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3565,8 +3565,8 @@ export const StopCach: API.OperationMethod<
   StopCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<StopCachRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StopCachResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<StopCachRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<StopCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3580,8 +3580,8 @@ export const StopCachPrimingJob: API.OperationMethod<
   StopCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<StopCachPrimingJobRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StopCachPrimingJobResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<StopCachPrimingJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<StopCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3595,8 +3595,8 @@ export const StorageTargetsCreateOrUpdate: API.OperationMethod<
   StorageTargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StorageTargetsCreateOrUpdateResponse>,
+  input: __S(2689, __c84, 1) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>,
+  output: __S(2690, __c84, 2) as any as S.Schema<StorageTargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3610,8 +3610,8 @@ export const SuspendStorageTarget: API.OperationMethod<
   SuspendStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<SuspendStorageTargetRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<SuspendStorageTargetResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<SuspendStorageTargetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<SuspendStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3625,8 +3625,8 @@ export const UpdateAmlFilesystem: API.OperationMethod<
   UpdateAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdateAmlFilesystemRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateAmlFilesystemResponse>,
+  input: __S(2753, __c86, 1) as any as S.Schema<UpdateAmlFilesystemRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<UpdateAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3640,8 +3640,8 @@ export const UpdateAutoExportJob: API.OperationMethod<
   UpdateAutoExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateAutoExportJobRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateAutoExportJobResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<UpdateAutoExportJobRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<UpdateAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3655,8 +3655,8 @@ export const UpdateAutoImportJob: API.OperationMethod<
   UpdateAutoImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateAutoImportJobRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateAutoImportJobResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UpdateAutoImportJobRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<UpdateAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3670,8 +3670,8 @@ export const UpdateCach: API.OperationMethod<
   UpdateCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateCachRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UpdateCachResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateCachRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<UpdateCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3685,8 +3685,8 @@ export const UpdateExpansionJob: API.OperationMethod<
   UpdateExpansionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateExpansionJobRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<UpdateExpansionJobResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateExpansionJobRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3700,8 +3700,8 @@ export const UpdateImportJob: API.OperationMethod<
   UpdateImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateImportJobRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdateImportJobResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<UpdateImportJobRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3715,8 +3715,8 @@ export const UpdateRebalanceJob: API.OperationMethod<
   UpdateRebalanceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateRebalanceJobRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<UpdateRebalanceJobResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<UpdateRebalanceJobRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<UpdateRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3742,120 +3742,60 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AmlFilesystemsCancelArchiveRequest",
       });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AmlFilesystemsCancelArchiveResponse",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KeyVaultKeyReferenceSourceVault",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyUrl: S.String,
-          sourceVault: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "KeyVaultKeyReference" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKey: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "AmlFilesystemEncryptionSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.optional(S.String),
-          timeOfDayUTC: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AmlFilesystemPropertiesMaintenanceWindow",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AmlFilesystemsCancelArchiveResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          container: S.String,
-          loggingContainer: S.String,
-          importPrefix: S.optional(S.String),
-          importPrefixesInitial: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "AmlFilesystemHsmSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          settings: S.optional(__S(8, __c1, 0)),
+          settings: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({
         identifier: "AmlFilesystemPropertiesHsmInput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          noSquashNidLists: S.optional(S.String),
-          squashUID: S.optional(S.Number),
-          squashGID: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AmlFilesystemRootSquashSettingsInput",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storageCapacityTiB: S.Number,
           filesystemSubnet: S.String,
-          encryptionSettings: S.optional(__S(5, __c0, 5)),
-          maintenanceWindow: __S(6, __c0, 6),
-          hsm: S.optional(__S(9, __c1, 1)),
-          rootSquashSettings: S.optional(__S(10, __c1, 2)),
+          encryptionSettings: S.optional(__S(96, __c3, 0)),
+          maintenanceWindow: __S(97, __c3, 1),
+          hsm: S.optional(__S(64, __c2, 0)),
+          rootSquashSettings: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "AmlFilesystemPropertiesInput",
       });
-    case 4:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(12, __c1, 4)),
+          userAssignedIdentities: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({
         identifier: "AmlFilesystemIdentityInput",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkuName" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(13, __c1, 5)),
-          sku: S.optional(__S(14, __c1, 6)),
-          zones: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(65, __c2, 1)),
+          identity: S.optional(__S(66, __c2, 2)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3869,20 +3809,35 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
+          keyEncryptionKey: S.optional(__S(225, __c7, 1)),
         }),
-      ).annotate({ identifier: "SystemData" });
+      ).annotate({
+        identifier: "AmlFilesystemEncryptionSettings",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.optional(S.String),
+          timeOfDayUTC: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AmlFilesystemPropertiesMaintenanceWindow",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.String,
+          loggingContainer: S.String,
+          importPrefix: S.optional(S.String),
+          importPrefixesInitial: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "AmlFilesystemHsmSettings" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -3890,7 +3845,7 @@ function __c2(j: number): any {
           statusDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmlFilesystemHealth" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           persistentVolumeClaim: S.optional(S.String),
@@ -3900,16 +3855,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AmlFilesystemContainerStorageInterface",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mgsAddress: S.optional(S.String),
           mountCommand: S.optional(S.String),
           lustreVersion: S.optional(S.String),
-          containerStorageInterface: S.optional(__S(18, __c2, 2)),
+          containerStorageInterface: S.optional(__S(100, __c3, 4)),
         }),
       ).annotate({ identifier: "AmlFilesystemClientInfo" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -3922,29 +3877,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AmlFilesystemArchiveStatus",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filesystemPath: S.optional(S.String),
-          status: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AmlFilesystemArchive" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(8, __c1, 0)),
-          archiveStatus: S.optional(__S(22, __c2, 6)),
+          filesystemPath: S.optional(S.String),
+          status: S.optional(__S(102, __c3, 6)),
+        }),
+      ).annotate({ identifier: "AmlFilesystemArchive" });
+    case 8:
+      return S.Array(__S(103, __c3, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          settings: S.optional(__S(98, __c3, 2)),
+          archiveStatus: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({
         identifier: "AmlFilesystemPropertiesHsm",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
@@ -3956,23 +3907,78 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AmlFilesystemRootSquashSettings",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           storageCapacityTiB: S.Number,
           currentStorageCapacityTiB: S.optional(S.Number),
           clusterUuid: S.optional(S.String),
-          health: S.optional(__S(17, __c2, 1)),
+          health: S.optional(__S(99, __c3, 3)),
           provisioningState: S.optional(S.String),
           filesystemSubnet: S.String,
-          clientInfo: S.optional(__S(19, __c2, 3)),
+          clientInfo: S.optional(__S(101, __c3, 5)),
           throughputProvisionedMBps: S.optional(S.Number),
-          encryptionSettings: S.optional(__S(5, __c0, 5)),
-          maintenanceWindow: __S(6, __c0, 6),
-          hsm: S.optional(__S(23, __c2, 7)),
-          rootSquashSettings: S.optional(__S(24, __c3, 0)),
+          encryptionSettings: S.optional(__S(96, __c3, 0)),
+          maintenanceWindow: __S(97, __c3, 1),
+          hsm: S.optional(__S(105, __c3, 9)),
+          rootSquashSettings: S.optional(__S(106, __c3, 10)),
         }),
       ).annotate({ identifier: "AmlFilesystemProperties" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "AmlFilesystemIdentity" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KeyVaultKeyReferenceSourceVault",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          keyUrl: S.String,
+          sourceVault: __S(224, __c7, 0),
+        }),
+      ).annotate({ identifier: "KeyVaultKeyReference" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3983,511 +3989,13 @@ function __c3(j: number): any {
         identifier: "UserAssignedIdentitiesValue",
       });
     case 3:
-      return S.Record(S.String, __S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "AmlFilesystemIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(28, __c3, 4)),
-          sku: S.optional(__S(14, __c1, 6)),
-          zones: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AmlFilesystemsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          amlFilesystemName: S.String.pipe(T.Label()),
-          filesystemPath: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ArchiveAmlFilesystemRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ArchiveAmlFilesystemResponse",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          adminStatus: S.optional(S.String),
-          autoExportPrefixes: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "AutoExportJobPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          amlFilesystemName: S.String.pipe(T.Label()),
-          autoExportJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoExportJobsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          statusCode: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-          totalFilesExported: S.optional(S.Number),
-          totalMiBExported: S.optional(S.Number),
-          totalFilesFailed: S.optional(S.Number),
-          exportIterationCount: S.optional(S.Number),
-          lastSuccessfulIterationCompletionTimeUTC: S.optional(S.String),
-          currentIterationFilesDiscovered: S.optional(S.Number),
-          currentIterationMiBDiscovered: S.optional(S.Number),
-          currentIterationFilesExported: S.optional(S.Number),
-          currentIterationMiBExported: S.optional(S.Number),
-          currentIterationFilesFailed: S.optional(S.Number),
-          lastStartedTimeUTC: S.optional(S.String),
-          lastCompletionTimeUTC: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoExportJobPropertiesStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          adminStatus: S.optional(S.String),
-          autoExportPrefixes: S.optional(__S(7, __c0, 7)),
-          status: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "AutoExportJobProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "AutoExportJobsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adminStatus: S.optional(S.String),
-          autoImportPrefixes: S.optional(__S(7, __c0, 7)),
-          conflictResolutionMode: S.optional(S.String),
-          enableDeletions: S.optional(S.Boolean),
-          maximumErrors: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AutoImportJobPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          amlFilesystemName: S.String.pipe(T.Label()),
-          autoImportJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutoImportJobsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          importedFiles: S.optional(S.Number),
-          importedDirectories: S.optional(S.Number),
-          importedSymlinks: S.optional(S.Number),
-          preexistingFiles: S.optional(S.Number),
-          preexistingDirectories: S.optional(S.Number),
-          preexistingSymlinks: S.optional(S.Number),
-          totalBlobsImported: S.optional(S.Number),
-          rateOfBlobImport: S.optional(S.Number),
-          totalErrors: S.optional(S.Number),
-          totalConflicts: S.optional(S.Number),
-          deletions: S.optional(S.Number),
-          lastChangeFeedEventConsumedTime: S.optional(S.String),
-          lastTimeFullySynchronized: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoImportJobPropertiesStatusBlobSyncEvents",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          statusCode: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-          scanStartTime: S.optional(S.String),
-          scanEndTime: S.optional(S.String),
-          totalBlobsWalked: S.optional(S.Number),
-          rateOfBlobWalk: S.optional(S.Number),
-          totalBlobsImported: S.optional(S.Number),
-          rateOfBlobImport: S.optional(S.Number),
-          importedFiles: S.optional(S.Number),
-          importedDirectories: S.optional(S.Number),
-          importedSymlinks: S.optional(S.Number),
-          preexistingFiles: S.optional(S.Number),
-          preexistingDirectories: S.optional(S.Number),
-          preexistingSymlinks: S.optional(S.Number),
-          totalErrors: S.optional(S.Number),
-          totalConflicts: S.optional(S.Number),
-          blobSyncEvents: S.optional(__S(39, __c4, 7)),
-          lastStartedTimeUTC: S.optional(S.String),
-          lastCompletionTimeUTC: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoImportJobPropertiesStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          adminStatus: S.optional(S.String),
-          autoImportPrefixes: S.optional(__S(7, __c0, 7)),
-          conflictResolutionMode: S.optional(S.String),
-          enableDeletions: S.optional(S.Boolean),
-          maximumErrors: S.optional(S.Number),
-          status: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "AutoImportJobProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "AutoImportJobsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          upgradeScheduleEnabled: S.optional(S.Boolean),
-          scheduledTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CacheUpgradeSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mtu: S.optional(S.Number),
-          dnsServers: S.optional(__S(7, __c0, 7)),
-          dnsSearchDomain: S.optional(S.String),
-          ntpServer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CacheNetworkSettingsInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKey: S.optional(__S(4, __c0, 4)),
-          rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CacheEncryptionSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String,
-          filter: S.optional(S.String),
-          access: S.String,
-          suid: S.optional(S.Boolean),
-          submountAccess: S.optional(S.Boolean),
-          rootSquash: S.optional(S.Boolean),
-          anonymousUID: S.optional(S.String),
-          anonymousGID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NfsAccessRule" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          accessRules: __S(47, __c5, 7),
-        }),
-      ).annotate({ identifier: "NfsAccessPolicy" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicies: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "CacheSecuritySettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String,
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "CacheActiveDirectorySettingsCredentials",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primaryDnsIpAddress: S.String,
-          secondaryDnsIpAddress: S.optional(S.String),
-          domainName: S.String,
-          domainNetBiosName: S.String,
-          cacheNetBiosName: S.String,
-          domainJoined: S.optional(S.String),
-          credentials: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "CacheActiveDirectorySettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bindDn: S.optional(S.String),
-          bindPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "CacheUsernameDownloadSettingsCredentials",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          extendedGroups: S.optional(S.Boolean),
-          usernameSource: S.optional(S.String),
-          groupFileURI: S.optional(S.String),
-          userFileURI: S.optional(S.String),
-          ldapServer: S.optional(S.String),
-          ldapBaseDN: S.optional(S.String),
-          encryptLdapConnection: S.optional(S.Boolean),
-          requireValidCertificate: S.optional(S.Boolean),
-          autoDownloadCertificate: S.optional(S.Boolean),
-          caCertificateURI: S.optional(S.String),
-          usernameDownloaded: S.optional(S.String),
-          credentials: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "CacheUsernameDownloadSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activeDirectory: S.optional(__S(52, __c6, 4)),
-          usernameDownload: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "CacheDirectorySettings" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          primingJobName: S.String,
-          primingManifestUrl: S.String,
-        }),
-      ).annotate({ identifier: "PrimingJobInput" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cacheSizeGB: S.optional(S.Number),
-          subnet: S.optional(S.String),
-          upgradeSettings: S.optional(__S(43, __c5, 3)),
-          networkSettings: S.optional(__S(44, __c5, 4)),
-          encryptionSettings: S.optional(__S(45, __c5, 5)),
-          securitySettings: S.optional(__S(50, __c6, 2)),
-          directoryServicesSettings: S.optional(__S(55, __c6, 7)),
-          zones: S.optional(__S(7, __c0, 7)),
-          primingJobs: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "CachePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CacheIdentityInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(59, __c7, 3)),
-          sku: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CachesCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Condition" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          statusDescription: S.optional(S.String),
-          conditions: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "CacheHealth" });
+      return S.Record(S.String, __S(226, __c7, 2));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          currentFirmwareVersion: S.optional(S.String),
-          firmwareUpdateStatus: S.optional(S.String),
-          firmwareUpdateDeadline: S.optional(S.String),
-          lastFirmwareUpdate: S.optional(S.String),
-          pendingFirmwareVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CacheUpgradeStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mtu: S.optional(S.Number),
-          utilityAddresses: S.optional(__S(7, __c0, 7)),
-          dnsServers: S.optional(__S(7, __c0, 7)),
-          dnsSearchDomain: S.optional(S.String),
-          ntpServer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CacheNetworkSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          primingJobName: S.String,
-          primingManifestUrl: S.String,
-          primingJobId: S.optional(S.String),
-          primingJobState: S.optional(S.String),
-          primingJobStatus: S.optional(S.String),
-          primingJobDetails: S.optional(S.String),
-          primingJobPercentComplete: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PrimingJob" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          allocationPercentage: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "StorageTargetSpaceAllocation",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cacheSizeGB: S.optional(S.Number),
-          health: S.optional(__S(63, __c7, 7)),
-          mountAddresses: S.optional(__S(7, __c0, 7)),
-          provisioningState: S.optional(S.String),
-          subnet: S.optional(S.String),
-          upgradeStatus: S.optional(__S(64, __c8, 0)),
-          upgradeSettings: S.optional(__S(43, __c5, 3)),
-          networkSettings: S.optional(__S(65, __c8, 1)),
-          encryptionSettings: S.optional(__S(45, __c5, 5)),
-          securitySettings: S.optional(__S(50, __c6, 2)),
-          directoryServicesSettings: S.optional(__S(55, __c6, 7)),
-          zones: S.optional(__S(7, __c0, 7)),
-          primingJobs: S.optional(__S(67, __c8, 3)),
-          spaceAllocation: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "CacheProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CacheIdentity" });
+      return S.Record(S.String, __S(32, __c1, 0));
   }
 }
 function __c9(j: number): any {
@@ -4495,87 +4003,46 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(70, __c8, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(71, __c8, 7)),
-          sku: S.optional(__S(14, __c1, 6)),
+        }),
+      ).annotate({ identifier: "SkuName" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          noSquashNidLists: S.optional(S.String),
+          squashUID: S.optional(S.Number),
+          squashGID: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "CachesCreateOrUpdateResponse",
+        identifier: "AmlFilesystemRootSquashSettingsInput",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CachesDebugInfoRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(107, __c3, 11)),
+          identity: S.optional(__S(108, __c3, 12)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
+        }),
       ).annotate({
-        identifier: "CachesSpaceAllocationRequest",
+        identifier: "AmlFilesystemsCreateOrUpdateResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CachesUpgradeFirmwareRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          filesystemSubnet: S.optional(S.String),
-          storageCapacityTiB: S.optional(S.Number),
-          sku: S.optional(__S(14, __c1, 6)),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CheckAmlFSSubnetsRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4592,7 +4059,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAmlFilesystemRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4610,7 +4081,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAutoExportJobRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4630,7 +4105,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4647,7 +4122,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCachRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4665,7 +4144,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteExpansionJobRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4681,7 +4164,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteImportJobRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4699,7 +4186,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRebalanceJobRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4718,7 +4209,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteStorageTargetRequest",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newStorageCapacityTiB: S.optional(S.Number),
@@ -4727,16 +4222,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExpansionJobPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           expansionJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(85, __c10, 5)),
+          properties: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4748,7 +4243,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExpansionJobsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -4761,35 +4260,39 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExpansionJobPropertiesStatus",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           newStorageCapacityTiB: S.optional(S.Number),
-          status: S.optional(__S(87, __c10, 7)),
+          status: S.optional(__S(640, __c20, 0)),
           runRebalanceJob: S.optional(S.Boolean),
           rebalanceJobId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpansionJobProperties" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(88, __c11, 0)),
+          properties: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({
         identifier: "ExpansionJobsCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4804,7 +4307,41 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FlushCachRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          amlFilesystemName: S.String.pipe(T.Label()),
+          filesystemPath: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ArchiveAmlFilesystemRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ArchiveAmlFilesystemResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4822,7 +4359,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "FlushStorageTargetRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4837,22 +4378,30 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAmlFilesystemRequest" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(28, __c3, 4)),
-          sku: S.optional(__S(14, __c1, 6)),
-          zones: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(107, __c3, 11)),
+          identity: S.optional(__S(108, __c3, 12)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "GetAmlFilesystemResponse" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4867,7 +4416,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAscOperationRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -4876,19 +4425,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AscOperationErrorResponse",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(__S(96, __c12, 0)),
+          output: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "AscOperationProperties" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4896,11 +4441,15 @@ function __c12(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(95, __c11, 7)),
-          properties: S.optional(__S(97, __c12, 1)),
+          error: S.optional(__S(897, __c28, 1)),
+          properties: S.optional(__S(899, __c28, 3)),
         }),
       ).annotate({ identifier: "AscOperation" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4916,19 +4465,27 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAutoExportJobRequest" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
+          properties: S.optional(__S(1441, __c45, 1)),
         }),
       ).annotate({ identifier: "GetAutoExportJobResponse" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4944,19 +4501,27 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAutoImportJobRequest" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
+          properties: S.optional(__S(1986, __c62, 2)),
         }),
       ).annotate({ identifier: "GetAutoImportJobResponse" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4973,7 +4538,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetCachRequest" });
   }
 }
-function __c13(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4981,15 +4546,19 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(70, __c8, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(2419, __c75, 19)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(71, __c8, 7)),
-          sku: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(2420, __c75, 20)),
+          sku: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "GetCachResponse" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5005,19 +4574,27 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExpansionJobRequest" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(88, __c11, 0)),
+          properties: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({ identifier: "GetExpansionJobResponse" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5033,7 +4610,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetImportJobRequest" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -5056,30 +4637,38 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ImportJobPropertiesStatus",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           adminStatus: S.optional(S.String),
-          importPrefixes: S.optional(__S(7, __c0, 7)),
+          importPrefixes: S.optional(__S(192, __c6, 0)),
           conflictResolutionMode: S.optional(S.String),
           maximumErrors: S.optional(S.Number),
-          status: S.optional(__S(108, __c13, 4)),
+          status: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({ identifier: "ImportJobProperties" });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(109, __c13, 5)),
+          properties: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "GetImportJobResponse" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5097,7 +4686,21 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetRebalanceJobRequest" });
   }
 }
-function __c14(j: number): any {
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1345, __c42, 1)),
+        }),
+      ).annotate({ identifier: "GetRebalanceJobResponse" });
+  }
+}
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5127,25 +4730,19 @@ function __c14(j: number): any {
           provisioningState: S.optional(S.String),
           adminStatus: S.optional(S.String),
           expansionJobId: S.optional(S.String),
-          status: S.optional(__S(112, __c14, 0)),
+          status: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "RebalanceJobProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({ identifier: "GetRebalanceJobResponse" });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           storageCapacityTiB: S.optional(S.Number),
-          sku: S.optional(__S(14, __c1, 6)),
+          sku: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5157,7 +4754,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetRequiredAmlFSSubnetsSizeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           filesystemSubnetSize: S.optional(S.Number),
@@ -5165,7 +4762,98 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "RequiredAmlFilesystemSubnetsSize",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminStatus: S.optional(S.String),
+          autoExportPrefixes: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "AutoExportJobPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          amlFilesystemName: S.String.pipe(T.Label()),
+          autoExportJobName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1408, __c44, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoExportJobsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          statusCode: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          totalFilesExported: S.optional(S.Number),
+          totalMiBExported: S.optional(S.Number),
+          totalFilesFailed: S.optional(S.Number),
+          exportIterationCount: S.optional(S.Number),
+          lastSuccessfulIterationCompletionTimeUTC: S.optional(S.String),
+          currentIterationFilesDiscovered: S.optional(S.Number),
+          currentIterationMiBDiscovered: S.optional(S.Number),
+          currentIterationFilesExported: S.optional(S.Number),
+          currentIterationMiBExported: S.optional(S.Number),
+          currentIterationFilesFailed: S.optional(S.Number),
+          lastStartedTimeUTC: S.optional(S.String),
+          lastCompletionTimeUTC: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutoExportJobPropertiesStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          adminStatus: S.optional(S.String),
+          autoExportPrefixes: S.optional(__S(192, __c6, 0)),
+          status: S.optional(__S(1440, __c45, 0)),
+        }),
+      ).annotate({ identifier: "AutoExportJobProperties" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1441, __c45, 1)),
+        }),
+      ).annotate({
+        identifier: "AutoExportJobsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5181,7 +4869,26 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStorageTargetRequest" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1573, __c49, 5)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetStorageTargetResponse" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespacePath: S.optional(S.String),
@@ -5190,13 +4897,9 @@ function __c14(j: number): any {
           nfsAccessPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceJunction" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           target: S.optional(S.String),
@@ -5205,62 +4908,55 @@ function __c15(j: number): any {
           writeBackTimer: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Nfs3Target" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           target: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClfsTarget" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "UnknownTarget" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          junctions: S.optional(__S(119, __c14, 7)),
-          targetType: S.String,
-          provisioningState: S.optional(S.String),
-          state: S.optional(S.String),
-          nfs3: S.optional(__S(120, __c15, 0)),
-          clfs: S.optional(__S(121, __c15, 1)),
-          unknown: S.optional(__S(122, __c15, 2)),
-          blobNfs: S.optional(__S(120, __c15, 0)),
-          allocationPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StorageTargetProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(123, __c15, 3)),
-          location: S.optional(S.String),
+          attributes: S.optional(__S(160, __c5, 0)),
         }),
-      ).annotate({ identifier: "GetStorageTargetResponse" });
+      ).annotate({ identifier: "UnknownTarget" });
     case 5:
       return S.suspend(() =>
         S.Struct({
+          junctions: S.optional(__S(1569, __c49, 1)),
+          targetType: S.String,
+          provisioningState: S.optional(S.String),
+          state: S.optional(S.String),
+          nfs3: S.optional(__S(1570, __c49, 2)),
+          clfs: S.optional(__S(1571, __c49, 3)),
+          unknown: S.optional(__S(1572, __c49, 4)),
+          blobNfs: S.optional(__S(1570, __c49, 2)),
+          allocationPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StorageTargetProperties" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           adminStatus: S.optional(S.String),
-          importPrefixes: S.optional(__S(7, __c0, 7)),
+          importPrefixes: S.optional(__S(192, __c6, 0)),
           conflictResolutionMode: S.optional(S.String),
           maximumErrors: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImportJobPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           importJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(125, __c15, 5)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5272,23 +4968,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ImportJobsCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(109, __c13, 5)),
+          properties: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({
         identifier: "ImportJobsCreateOrUpdateResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5312,7 +5008,11 @@ function __c16(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "InvalidateStorageTargetResponse",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5328,16 +5028,24 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAmlFilesystemByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(93, __c11, 5));
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(864, __c27, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(131, __c16, 3)),
+          value: S.optional(__S(1696, __c53, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmlFilesystemsListResult" });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5352,7 +5060,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAmlFilesystemsRequest",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5366,36 +5078,36 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAscUsagesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsageName" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
-          name: S.optional(__S(135, __c16, 7)),
+          name: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({ identifier: "ResourceUsage" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1762, __c55, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(137, __c17, 1)),
+          value: S.optional(__S(1763, __c55, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsagesListResult" });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5412,16 +5124,20 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAutoExportJobByAmlFilesystemRequest",
       });
-    case 4:
-      return S.Array(__S(100, __c12, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(140, __c17, 4)),
+          value: S.optional(__S(1793, __c56, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoExportJobsListResult" });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5438,20 +5154,20 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAutoImportJobByAmlFilesystemRequest",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(143, __c17, 7)),
+          value: S.optional(__S(1825, __c57, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoImportJobsListResult" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5467,16 +5183,24 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCachByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(104, __c13, 0));
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1088, __c34, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(146, __c18, 2)),
+          value: S.optional(__S(1888, __c59, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachesListResult" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5489,7 +5213,129 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCachesRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminStatus: S.optional(S.String),
+          autoImportPrefixes: S.optional(__S(192, __c6, 0)),
+          conflictResolutionMode: S.optional(S.String),
+          enableDeletions: S.optional(S.Boolean),
+          maximumErrors: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AutoImportJobPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          amlFilesystemName: S.String.pipe(T.Label()),
+          autoImportJobName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1952, __c61, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutoImportJobsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importedFiles: S.optional(S.Number),
+          importedDirectories: S.optional(S.Number),
+          importedSymlinks: S.optional(S.Number),
+          preexistingFiles: S.optional(S.Number),
+          preexistingDirectories: S.optional(S.Number),
+          preexistingSymlinks: S.optional(S.Number),
+          totalBlobsImported: S.optional(S.Number),
+          rateOfBlobImport: S.optional(S.Number),
+          totalErrors: S.optional(S.Number),
+          totalConflicts: S.optional(S.Number),
+          deletions: S.optional(S.Number),
+          lastChangeFeedEventConsumedTime: S.optional(S.String),
+          lastTimeFullySynchronized: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutoImportJobPropertiesStatusBlobSyncEvents",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          statusCode: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          scanStartTime: S.optional(S.String),
+          scanEndTime: S.optional(S.String),
+          totalBlobsWalked: S.optional(S.Number),
+          rateOfBlobWalk: S.optional(S.Number),
+          totalBlobsImported: S.optional(S.Number),
+          rateOfBlobImport: S.optional(S.Number),
+          importedFiles: S.optional(S.Number),
+          importedDirectories: S.optional(S.Number),
+          importedSymlinks: S.optional(S.Number),
+          preexistingFiles: S.optional(S.Number),
+          preexistingDirectories: S.optional(S.Number),
+          preexistingSymlinks: S.optional(S.Number),
+          totalErrors: S.optional(S.Number),
+          totalConflicts: S.optional(S.Number),
+          blobSyncEvents: S.optional(__S(1984, __c62, 0)),
+          lastStartedTimeUTC: S.optional(S.String),
+          lastCompletionTimeUTC: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutoImportJobPropertiesStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          adminStatus: S.optional(S.String),
+          autoImportPrefixes: S.optional(__S(192, __c6, 0)),
+          conflictResolutionMode: S.optional(S.String),
+          enableDeletions: S.optional(S.Boolean),
+          maximumErrors: S.optional(S.Number),
+          status: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({ identifier: "AutoImportJobProperties" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1986, __c62, 2)),
+        }),
+      ).annotate({
+        identifier: "AutoImportJobsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5506,18 +5352,18 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListExpansionJobByAmlFilesystemRequest",
       });
-    case 6:
-      return S.Array(__S(106, __c13, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(150, __c18, 6)),
+          value: S.optional(__S(2049, __c64, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpansionJobsListResult" });
   }
 }
-function __c19(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5537,15 +5383,19 @@ function __c19(j: number): any {
         identifier: "ListImportJobByAmlFilesystemRequest",
       });
     case 1:
-      return S.Array(__S(110, __c13, 6));
+      return S.Array(__S(1248, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(153, __c19, 1)),
+          value: S.optional(__S(2081, __c65, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportJobsListResult" });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -5556,7 +5406,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
@@ -5565,9 +5415,9 @@ function __c19(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiOperationDisplay" });
-    case 5:
+    case 2:
       return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5576,13 +5426,9 @@ function __c19(j: number): any {
           toBeExportedForShoebox: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricDimension" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(2115, __c66, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5590,61 +5436,61 @@ function __c20(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(157, __c19, 5)),
+          supportedAggregationTypes: S.optional(__S(2114, __c66, 2)),
           metricClass: S.optional(S.String),
-          dimensions: S.optional(__S(159, __c19, 7)),
+          dimensions: S.optional(__S(2116, __c66, 4)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(2117, __c66, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(2119, __c66, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(161, __c20, 1)),
-          logSpecifications: S.optional(__S(163, __c20, 3)),
+          metricSpecifications: S.optional(__S(2118, __c66, 6)),
+          logSpecifications: S.optional(__S(2120, __c66, 8)),
         }),
       ).annotate({
         identifier: "ApiOperationPropertiesServiceSpecification",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(164, __c20, 4)),
+          serviceSpecification: S.optional(__S(2121, __c66, 9)),
         }),
       ).annotate({ identifier: "ApiOperationProperties" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(156, __c19, 4)),
+          display: S.optional(__S(2113, __c66, 1)),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
-          properties: S.optional(__S(165, __c20, 5)),
+          properties: S.optional(__S(2122, __c66, 10)),
         }),
       ).annotate({ identifier: "ApiOperation" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(2123, __c66, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(167, __c20, 7)),
+          value: S.optional(__S(2124, __c66, 12)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiOperationListResult" });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5661,16 +5507,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListRebalanceJobByAmlFilesystemRequest",
       });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
     case 2:
-      return S.Array(__S(114, __c14, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(170, __c21, 2)),
+          value: S.optional(__S(2145, __c67, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RebalanceJobsListResult" });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5683,59 +5533,59 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          zones: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ResourceSkuLocationInfo" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(7, __c0, 7)),
-          reasonCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Restriction" });
     case 2:
-      return S.Array(__S(177, __c22, 1));
+      return S.Array(__S(2177, __c68, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.optional(S.String),
-          capabilities: S.optional(__S(174, __c21, 6)),
-          locations: S.optional(__S(7, __c0, 7)),
-          locationInfo: S.optional(__S(176, __c22, 0)),
-          name: S.optional(S.String),
-          restrictions: S.optional(__S(178, __c22, 2)),
+          location: S.optional(S.String),
+          zones: S.optional(__S(192, __c6, 0)),
         }),
-      ).annotate({ identifier: "ResourceSku" });
+      ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 4:
-      return S.Array(__S(179, __c22, 3));
+      return S.Array(__S(2179, __c68, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(180, __c22, 4)),
+          type: S.optional(S.String),
+          values: S.optional(__S(192, __c6, 0)),
+          reasonCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Restriction" });
+    case 6:
+      return S.Array(__S(2181, __c68, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          capabilities: S.optional(__S(2178, __c68, 2)),
+          locations: S.optional(__S(192, __c6, 0)),
+          locationInfo: S.optional(__S(2180, __c68, 4)),
+          name: S.optional(S.String),
+          restrictions: S.optional(__S(2182, __c68, 6)),
+        }),
+      ).annotate({ identifier: "ResourceSku" });
+    case 8:
+      return S.Array(__S(2183, __c68, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(2184, __c68, 8)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkusResult" });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5752,20 +5602,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListStorageTargetByCacheRequest",
       });
-    case 7:
-      return S.Array(__S(124, __c15, 4));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(183, __c22, 7)),
+          value: S.optional(__S(2209, __c69, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTargetsResult" });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5778,30 +5628,34 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsageModelsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageModelDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(186, __c23, 2)),
+          display: S.optional(__S(2241, __c70, 1)),
           modelName: S.optional(S.String),
           targetType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageModel" });
+    case 3:
+      return S.Array(__S(2242, __c70, 2));
     case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(188, __c23, 4)),
+          value: S.optional(__S(2243, __c70, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageModelsResult" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5819,7 +5673,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PauseCachPrimingJobRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5839,7 +5697,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5859,7 +5717,298 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RestoreStorageTargetDefaultsRequest",
       });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2435, __c76, 3)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(2436, __c76, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CachesCreateOrUpdateRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(2419, __c75, 19)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(2420, __c75, 20)),
+          sku: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "CachesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upgradeScheduleEnabled: S.optional(S.Boolean),
+          scheduledTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CacheUpgradeSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          keyEncryptionKey: S.optional(__S(225, __c7, 1)),
+          rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CacheEncryptionSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String,
+          filter: S.optional(S.String),
+          access: S.String,
+          suid: S.optional(S.Boolean),
+          submountAccess: S.optional(S.Boolean),
+          rootSquash: S.optional(S.Boolean),
+          anonymousUID: S.optional(S.String),
+          anonymousGID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NfsAccessRule" });
+    case 3:
+      return S.Array(__S(2402, __c75, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          accessRules: __S(2403, __c75, 3),
+        }),
+      ).annotate({ identifier: "NfsAccessPolicy" });
+    case 5:
+      return S.Array(__S(2404, __c75, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accessPolicies: S.optional(__S(2405, __c75, 5)),
+        }),
+      ).annotate({ identifier: "CacheSecuritySettings" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String,
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "CacheActiveDirectorySettingsCredentials",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          primaryDnsIpAddress: S.String,
+          secondaryDnsIpAddress: S.optional(S.String),
+          domainName: S.String,
+          domainNetBiosName: S.String,
+          cacheNetBiosName: S.String,
+          domainJoined: S.optional(S.String),
+          credentials: S.optional(__S(2407, __c75, 7)),
+        }),
+      ).annotate({
+        identifier: "CacheActiveDirectorySettings",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          bindDn: S.optional(S.String),
+          bindPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "CacheUsernameDownloadSettingsCredentials",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          extendedGroups: S.optional(S.Boolean),
+          usernameSource: S.optional(S.String),
+          groupFileURI: S.optional(S.String),
+          userFileURI: S.optional(S.String),
+          ldapServer: S.optional(S.String),
+          ldapBaseDN: S.optional(S.String),
+          encryptLdapConnection: S.optional(S.Boolean),
+          requireValidCertificate: S.optional(S.Boolean),
+          autoDownloadCertificate: S.optional(S.Boolean),
+          caCertificateURI: S.optional(S.String),
+          usernameDownloaded: S.optional(S.String),
+          credentials: S.optional(__S(2409, __c75, 9)),
+        }),
+      ).annotate({
+        identifier: "CacheUsernameDownloadSettings",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          activeDirectory: S.optional(__S(2408, __c75, 8)),
+          usernameDownload: S.optional(__S(2410, __c75, 10)),
+        }),
+      ).annotate({ identifier: "CacheDirectorySettings" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Condition" });
+    case 13:
+      return S.Array(__S(2412, __c75, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          statusDescription: S.optional(S.String),
+          conditions: S.optional(__S(2413, __c75, 13)),
+        }),
+      ).annotate({ identifier: "CacheHealth" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          currentFirmwareVersion: S.optional(S.String),
+          firmwareUpdateStatus: S.optional(S.String),
+          firmwareUpdateDeadline: S.optional(S.String),
+          lastFirmwareUpdate: S.optional(S.String),
+          pendingFirmwareVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CacheUpgradeStatus" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          mtu: S.optional(S.Number),
+          utilityAddresses: S.optional(__S(192, __c6, 0)),
+          dnsServers: S.optional(__S(192, __c6, 0)),
+          dnsSearchDomain: S.optional(S.String),
+          ntpServer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CacheNetworkSettings" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          primingJobName: S.String,
+          primingManifestUrl: S.String,
+          primingJobId: S.optional(S.String),
+          primingJobState: S.optional(S.String),
+          primingJobStatus: S.optional(S.String),
+          primingJobDetails: S.optional(S.String),
+          primingJobPercentComplete: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PrimingJob" });
+    case 18:
+      return S.Array(__S(2417, __c75, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          cacheSizeGB: S.optional(S.Number),
+          health: S.optional(__S(2414, __c75, 14)),
+          mountAddresses: S.optional(__S(192, __c6, 0)),
+          provisioningState: S.optional(S.String),
+          subnet: S.optional(S.String),
+          upgradeStatus: S.optional(__S(2415, __c75, 15)),
+          upgradeSettings: S.optional(__S(2400, __c75, 0)),
+          networkSettings: S.optional(__S(2416, __c75, 16)),
+          encryptionSettings: S.optional(__S(2401, __c75, 1)),
+          securitySettings: S.optional(__S(2406, __c75, 6)),
+          directoryServicesSettings: S.optional(__S(2411, __c75, 11)),
+          zones: S.optional(__S(192, __c6, 0)),
+          primingJobs: S.optional(__S(2418, __c75, 18)),
+          spaceAllocation: S.optional(__S(2465, __c77, 1)),
+        }),
+      ).annotate({ identifier: "CacheProperties" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "CacheIdentity" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mtu: S.optional(S.Number),
+          dnsServers: S.optional(__S(192, __c6, 0)),
+          dnsSearchDomain: S.optional(S.String),
+          ntpServer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CacheNetworkSettingsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primingJobName: S.String,
+          primingManifestUrl: S.String,
+        }),
+      ).annotate({ identifier: "PrimingJobInput" });
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cacheSizeGB: S.optional(S.Number),
+          subnet: S.optional(S.String),
+          upgradeSettings: S.optional(__S(2400, __c75, 0)),
+          networkSettings: S.optional(__S(2432, __c76, 0)),
+          encryptionSettings: S.optional(__S(2401, __c75, 1)),
+          securitySettings: S.optional(__S(2406, __c75, 6)),
+          directoryServicesSettings: S.optional(__S(2411, __c75, 11)),
+          zones: S.optional(__S(192, __c6, 0)),
+          primingJobs: S.optional(__S(2434, __c76, 2)),
+        }),
+      ).annotate({ identifier: "CachePropertiesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({ identifier: "CacheIdentityInput" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          allocationPercentage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "StorageTargetSpaceAllocation",
+      });
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5877,7 +6026,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ResumeCachPrimingJobRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5895,7 +6048,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ResumeStorageTargetRequest",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5910,7 +6067,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartCachRequest" });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5929,7 +6090,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartCachPrimingJobRequest",
       });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5944,7 +6109,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopCachRequest" });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5962,32 +6131,32 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StopCachPrimingJobRequest",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          junctions: S.optional(__S(119, __c14, 7)),
+          junctions: S.optional(__S(1569, __c49, 1)),
           targetType: S.String,
           state: S.optional(S.String),
-          nfs3: S.optional(__S(120, __c15, 0)),
-          clfs: S.optional(__S(121, __c15, 1)),
-          unknown: S.optional(__S(122, __c15, 2)),
-          blobNfs: S.optional(__S(120, __c15, 0)),
+          nfs3: S.optional(__S(1570, __c49, 2)),
+          clfs: S.optional(__S(1571, __c49, 3)),
+          unknown: S.optional(__S(1572, __c49, 4)),
+          blobNfs: S.optional(__S(1570, __c49, 2)),
         }),
       ).annotate({
         identifier: "StorageTargetPropertiesInput",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           storageTargetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(199, __c24, 7)),
+          properties: S.optional(__S(2688, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5999,20 +6168,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StorageTargetsCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(123, __c15, 3)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1573, __c49, 5)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageTargetsCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6030,24 +6203,28 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SuspendStorageTargetRequest",
       });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptionSettings: S.optional(__S(5, __c0, 5)),
-          maintenanceWindow: S.optional(__S(6, __c0, 6)),
-          rootSquashSettings: S.optional(__S(10, __c1, 2)),
+          encryptionSettings: S.optional(__S(96, __c3, 0)),
+          maintenanceWindow: S.optional(__S(97, __c3, 1)),
+          rootSquashSettings: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "AmlFilesystemUpdatePropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(203, __c25, 3)),
+          tags: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2752, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6059,23 +6236,19 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateAmlFilesystemRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adminStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoExportJobUpdateProperties",
-      });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           autoExportJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(205, __c25, 5)),
+          tags: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2816, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6087,15 +6260,50 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateAutoExportJobRequest",
       });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutoExportJobUpdateProperties",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CachesDebugInfoRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           autoImportJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(205, __c25, 5)),
+          tags: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2816, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6109,7 +6317,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6117,11 +6325,11 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(2435, __c76, 3)),
+          tags: S.optional(__S(160, __c5, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(59, __c7, 3)),
-          sku: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(2436, __c76, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6131,14 +6339,18 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCachRequest" });
-    case 1:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           expansionJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6150,15 +6362,19 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateExpansionJobRequest",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           importJobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(205, __c25, 5)),
+          tags: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2816, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6168,14 +6384,18 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateImportJobRequest" });
-    case 3:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           rebalanceJobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(205, __c25, 5)),
+          properties: S.optional(__S(2816, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6187,21 +6407,84 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateRebalanceJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(113, __c14, 1)),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1345, __c42, 1)),
         }),
       ).annotate({
         identifier: "UpdateRebalanceJobResponse",
       });
   }
 }
-
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          body: S.optional(__S(2465, __c77, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CachesSpaceAllocationRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CachesUpgradeFirmwareRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          filesystemSubnet: S.optional(S.String),
+          storageCapacityTiB: S.optional(S.Number),
+          sku: S.optional(__S(288, __c9, 0)),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CheckAmlFSSubnetsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

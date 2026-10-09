@@ -272,8 +272,8 @@ export const createCustomTrustStore: API.OperationMethod<
   CreateCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateCustomTrustStoreRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCustomTrustStoreResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateCustomTrustStoreRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<CreateCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -298,8 +298,8 @@ export const deleteCustomTrustStore: API.OperationMethod<
   DeleteCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteCustomTrustStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteCustomTrustStoreResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteCustomTrustStoreRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DeleteCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -325,8 +325,8 @@ export const getCustomTrustStore: API.OperationMethod<
   GetCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetCustomTrustStoreRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetCustomTrustStoreResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetCustomTrustStoreRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<GetCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -351,8 +351,8 @@ export const getTotalTl: API.OperationMethod<
   GetTotalTlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetTotalTlRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetTotalTlResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetTotalTlRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetTotalTlResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -377,8 +377,8 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   CustomTrustStoreListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<ListCustomTrustStoresRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListCustomTrustStoresResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListCustomTrustStoresRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListCustomTrustStoresResponse>,
     errors: [AdvancedCertificateManagerRequired, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -407,8 +407,8 @@ export const updateTotalTl: API.OperationMethod<
   UpdateTotalTlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateTotalTlRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateTotalTlResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<UpdateTotalTlRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdateTotalTlResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -436,8 +436,8 @@ export const updateTotalTls: API.OperationMethod<
   UpdateTotalTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UpdateTotalTlsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateTotalTlsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<UpdateTotalTlsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdateTotalTlsResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -463,6 +463,80 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/acm/custom_trust_store", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCustomTrustStoresRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certificate: S.String,
+          expiresOn: S.String.pipe(T.Body("expires_on")),
+          issuer: S.String,
+          signature: S.String,
+          status: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          uploadedOn: S.String.pipe(T.Body("uploaded_on")),
+        }),
+      ).annotate({
+        identifier: "CustomTrustStoreListResultItem",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(2, __c0, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCustomTrustStoresResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          enabled: S.Boolean,
+          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateTotalTlRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          enabled: S.Boolean,
+          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateTotalTlsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
           certificate: S.String,
         })
           .pipe(
@@ -472,7 +546,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCustomTrustStoreRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -487,7 +565,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCustomTrustStoreResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -504,7 +586,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteCustomTrustStoreRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -512,7 +594,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteCustomTrustStoreResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -529,7 +615,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCustomTrustStoreRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -537,7 +627,11 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTotalTlRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificateAuthority: S.optional(
@@ -547,75 +641,8 @@ function __c0(j: number): any {
           validityPeriod: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_period"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTotalTlResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/acm/custom_trust_store", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCustomTrustStoresRequest",
-      });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          certificate: S.String,
-          expiresOn: S.String.pipe(T.Body("expires_on")),
-          issuer: S.String,
-          signature: S.String,
-          status: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          uploadedOn: S.String.pipe(T.Body("uploaded_on")),
-        }),
-      ).annotate({
-        identifier: "CustomTrustStoreListResultItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCustomTrustStoresResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          enabled: S.Boolean,
-          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateTotalTlRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          enabled: S.Boolean,
-          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateTotalTlsRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

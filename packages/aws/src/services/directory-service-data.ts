@@ -466,8 +466,8 @@ export const addGroupMember: API.OperationMethod<
   AddGroupMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddGroupMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddGroupMemberResult>,
+  input: __S(64, __c16, 0) as any as S.Schema<AddGroupMemberRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<AddGroupMemberResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -499,8 +499,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateGroupRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateGroupResult>,
+  input: __S(72, __c18, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<CreateGroupResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -531,8 +531,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateUserResult>,
+  input: __S(80, __c20, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<CreateUserResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -564,8 +564,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupResult>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<DeleteGroupResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -598,8 +598,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserResult>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<DeleteUserResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -631,8 +631,8 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DescribeGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DescribeGroupResult>,
+  input: __S(8, __c2, 0) as any as S.Schema<DescribeGroupRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DescribeGroupResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -663,8 +663,8 @@ export const describeUser: API.OperationMethod<
   DescribeUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DescribeUserRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DescribeUserResult>,
+  input: __S(16, __c4, 0) as any as S.Schema<DescribeUserRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<DescribeUserResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -698,8 +698,8 @@ export const disableUser: API.OperationMethod<
   DisableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DisableUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableUserResult>,
+  input: __S(20, __c5, 0) as any as S.Schema<DisableUserRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<DisableUserResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -740,8 +740,8 @@ export const listGroupMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListGroupMembersRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListGroupMembersResult>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListGroupMembersRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ListGroupMembersResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -786,8 +786,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListGroupsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListGroupsResult>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<ListGroupsResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -832,8 +832,8 @@ export const listGroupsForMember: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListGroupsForMemberRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListGroupsForMemberResult>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListGroupsForMemberRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<ListGroupsForMemberResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -878,8 +878,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListUsersRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListUsersResult>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(43, __c10, 3) as any as S.Schema<ListUsersResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -916,8 +916,8 @@ export const removeGroupMember: API.OperationMethod<
   RemoveGroupMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<RemoveGroupMemberRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RemoveGroupMemberResult>,
+  input: __S(44, __c11, 0) as any as S.Schema<RemoveGroupMemberRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<RemoveGroupMemberResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -959,8 +959,8 @@ export const searchGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<SearchGroupsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<SearchGroupsResult>,
+  input: __S(48, __c12, 0) as any as S.Schema<SearchGroupsRequest>,
+  output: __S(51, __c12, 3) as any as S.Schema<SearchGroupsResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -1006,8 +1006,8 @@ export const searchUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SearchUsersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SearchUsersResult>,
+  input: __S(52, __c13, 0) as any as S.Schema<SearchUsersRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<SearchUsersResult>,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -1044,8 +1044,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateGroupResult>,
+  input: __S(56, __c14, 0) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<UpdateGroupResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1078,8 +1078,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateUserResult>,
+  input: __S(60, __c15, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<UpdateUserResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1101,104 +1101,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-          GroupName: S.String,
-          MemberName: S.String,
-          MemberRealm: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/GroupMemberships/AddGroupMember" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "AddGroupMemberRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddGroupMemberResult",
-      });
-    case 2:
-      return S.Array(SensitiveString);
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ S: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ N: S.Number }),
-        /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ SS: __S(2, __c0, 2) }),
-      ]);
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3, __c0, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-          SAMAccountName: S.String,
-          GroupType: S.optional(S.String),
-          GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/Groups/CreateGroup" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.optional(S.String),
-          SAMAccountName: S.optional(S.String),
-          SID: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateGroupResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-          SAMAccountName: S.String,
-          EmailAddress: S.optional(SensitiveString),
-          GivenName: S.optional(SensitiveString),
-          Surname: S.optional(SensitiveString),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/Users/CreateUser" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateUserRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.optional(S.String),
-          SID: S.optional(S.String),
-          SAMAccountName: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateUserResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -1213,7 +1115,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1231,15 +1137,17 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           Realm: S.optional(S.String),
           SAMAccountName: S.String,
-          OtherAttributes: S.optional(__S(11, __c1, 3)),
+          OtherAttributes: S.optional(__S(12, __c3, 0)),
         }).pipe(
           T.all(
             ns,
@@ -1252,7 +1160,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeGroupRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
@@ -1262,15 +1170,25 @@ function __c1(j: number): any {
           DistinguishedName: S.optional(SensitiveString),
           GroupType: S.optional(S.String),
           GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeGroupResult" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
-          OtherAttributes: S.optional(__S(11, __c1, 3)),
+          OtherAttributes: S.optional(__S(12, __c3, 0)),
           Realm: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1284,7 +1202,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeUserRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
@@ -1297,12 +1215,12 @@ function __c1(j: number): any {
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
           Enabled: S.optional(S.Boolean),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeUserResult" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1322,7 +1240,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DisableUserRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1343,23 +1265,27 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListGroupMembersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ SID: S.String, SAMAccountName: S.String, MemberType: S.String }),
       ).annotate({ identifier: "Member" });
+    case 2:
+      return S.Array(__S(25, __c6, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
           MemberRealm: S.optional(S.String),
-          Members: S.optional(__S(19, __c2, 3)),
+          Members: S.optional(__S(26, __c6, 2)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListGroupMembersResult" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1378,7 +1304,20 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          Realm: S.optional(S.String),
+          Groups: S.optional(__S(33, __c8, 1)),
+          NextToken: S.optional(SensitiveString),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListGroupsResult" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SID: S.String,
@@ -1387,22 +1326,13 @@ function __c2(j: number): any {
           GroupScope: S.String,
         }),
       ).annotate({ identifier: "GroupSummary" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 1:
+      return S.Array(__S(32, __c8, 0));
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryId: S.optional(S.String),
-          Realm: S.optional(S.String),
-          Groups: S.optional(__S(23, __c2, 7)),
-          NextToken: S.optional(SensitiveString),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListGroupsResult" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1425,19 +1355,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListGroupsForMemberRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
           MemberRealm: S.optional(S.String),
-          Groups: S.optional(__S(23, __c2, 7)),
+          Groups: S.optional(__S(33, __c8, 1)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({
         identifier: "ListGroupsForMemberResult",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1456,7 +1390,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SID: S.String,
@@ -1466,18 +1400,22 @@ function __c3(j: number): any {
           Enabled: S.Boolean,
         }),
       ).annotate({ identifier: "UserSummary" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(41, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Users: S.optional(__S(29, __c3, 5)),
+          Users: S.optional(__S(42, __c10, 2)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListUsersResult" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1497,20 +1435,20 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RemoveGroupMemberRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveGroupMemberResult",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SearchString: SensitiveString,
-          SearchAttributes: __S(11, __c1, 3),
+          SearchAttributes: __S(12, __c3, 0),
           Realm: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
           MaxResults: S.optional(S.Number),
@@ -1526,7 +1464,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchGroupsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SID: S.optional(S.String),
@@ -1534,27 +1472,31 @@ function __c4(j: number): any {
           DistinguishedName: S.optional(SensitiveString),
           GroupType: S.optional(S.String),
           GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
         }),
       ).annotate({ identifier: "Group" });
+    case 2:
+      return S.Array(__S(49, __c12, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Groups: S.optional(__S(35, __c4, 3)),
+          Groups: S.optional(__S(50, __c12, 2)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "SearchGroupsResult" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           Realm: S.optional(S.String),
           SearchString: SensitiveString,
-          SearchAttributes: __S(11, __c1, 3),
+          SearchAttributes: __S(12, __c3, 0),
           NextToken: S.optional(SensitiveString),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -1569,7 +1511,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchUsersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SID: S.optional(S.String),
@@ -1580,32 +1522,32 @@ function __c4(j: number): any {
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
           Enabled: S.optional(S.Boolean),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
         }),
       ).annotate({ identifier: "User" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(53, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Users: S.optional(__S(39, __c4, 7)),
+          Users: S.optional(__S(54, __c13, 2)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "SearchUsersResult" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
           GroupType: S.optional(S.String),
           GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
           UpdateType: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -1620,7 +1562,11 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateGroupRequest" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
@@ -1628,7 +1574,7 @@ function __c5(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
-          OtherAttributes: S.optional(__S(4, __c0, 4)),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
           UpdateType: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -1645,7 +1591,120 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UpdateUserRequest" });
   }
 }
-
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+          GroupName: S.String,
+          MemberName: S.String,
+          MemberRealm: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/GroupMemberships/AddGroupMember" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AddGroupMemberRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddGroupMemberResult",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+          SAMAccountName: S.String,
+          GroupType: S.optional(S.String),
+          GroupScope: S.optional(S.String),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/Groups/CreateGroup" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SAMAccountName: S.optional(S.String),
+          SID: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateGroupResult" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ S: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ N: S.Number }),
+        /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ SS: __S(76, __c19, 0) }),
+      ]);
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(77, __c19, 1).pipe(S.optional));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+          SAMAccountName: S.String,
+          EmailAddress: S.optional(SensitiveString),
+          GivenName: S.optional(SensitiveString),
+          Surname: S.optional(SensitiveString),
+          OtherAttributes: S.optional(__S(78, __c19, 2)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/Users/CreateUser" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SID: S.optional(S.String),
+          SAMAccountName: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateUserResult" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

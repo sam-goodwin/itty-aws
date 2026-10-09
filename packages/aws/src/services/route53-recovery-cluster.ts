@@ -155,7 +155,7 @@ export class ValidationException
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(13, __c1, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(13, __c3, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -265,8 +265,8 @@ export const getRoutingControlState: API.OperationMethod<
   GetRoutingControlStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetRoutingControlStateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetRoutingControlStateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetRoutingControlStateRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<GetRoutingControlStateResponse>,
   errors: [
     AccessDeniedException,
     EndpointTemporarilyUnavailableException,
@@ -323,8 +323,8 @@ export const listRoutingControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoutingControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListRoutingControlsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListRoutingControlsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListRoutingControlsRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<ListRoutingControlsResponse>,
   errors: [
     AccessDeniedException,
     EndpointTemporarilyUnavailableException,
@@ -389,8 +389,8 @@ export const updateRoutingControlState: API.OperationMethod<
   UpdateRoutingControlStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateRoutingControlStateRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateRoutingControlStateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateRoutingControlStateRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<UpdateRoutingControlStateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -451,8 +451,8 @@ export const updateRoutingControlStates: API.OperationMethod<
   UpdateRoutingControlStatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateRoutingControlStatesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateRoutingControlStatesResponse>,
+  input: __S(10, __c2, 2) as any as S.Schema<UpdateRoutingControlStatesRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<UpdateRoutingControlStatesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -473,6 +473,61 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          RoutingControlArn: S.String,
+          RoutingControlState: S.String,
+          SafetyRulesToOverride: S.optional(__S(4, __c1, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateRoutingControlStateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateRoutingControlStateResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RoutingControlArn: S.String, RoutingControlState: S.String }),
+      ).annotate({
+        identifier: "UpdateRoutingControlStateEntry",
+      });
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          UpdateRoutingControlStateEntries: __S(9, __c2, 1),
+          SafetyRulesToOverride: S.optional(__S(4, __c1, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateRoutingControlStatesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ RoutingControlArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
@@ -489,7 +544,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetRoutingControlStateResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ControlPanelArn: S.optional(S.String),
@@ -499,7 +558,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListRoutingControlsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ControlPanelArn: S.optional(S.String),
@@ -510,60 +569,16 @@ function __c0(j: number): any {
           Owner: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingControl" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ RoutingControls: __S(4, __c0, 4), NextToken: S.optional(S.String) }),
+        S.Struct({ RoutingControls: __S(22, __c5, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRoutingControlsResponse",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RoutingControlArn: S.String,
-          RoutingControlState: S.String,
-          SafetyRulesToOverride: S.optional(__S(6, __c0, 6)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRoutingControlStateRequest",
-      });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateRoutingControlStateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RoutingControlArn: S.String, RoutingControlState: S.String }),
-      ).annotate({
-        identifier: "UpdateRoutingControlStateEntry",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          UpdateRoutingControlStateEntries: __S(10, __c1, 2),
-          SafetyRulesToOverride: S.optional(__S(6, __c0, 6)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRoutingControlStatesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

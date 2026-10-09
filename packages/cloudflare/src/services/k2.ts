@@ -403,7 +403,7 @@ export const ackBatch: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AckBatchRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AckBatchResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AckBatchResponse>,
   errors: [K2StreamNotFound, K2SubscriptionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -425,8 +425,8 @@ export const consume: API.OperationMethod<
   ConsumeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ConsumeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ConsumeResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ConsumeRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ConsumeResponse>,
   errors: [
     K2StreamNotFound,
     K2SubscriptionNotFound,
@@ -450,8 +450,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateStreamRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateStreamResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateStreamRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateStreamResponse>,
   errors: [K2NameAlreadyExists, K2InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateSubscriptionResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [
     K2StreamNotFound,
     K2NameAlreadyExists,
@@ -492,8 +492,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteStreamRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteStreamResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteStreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteSubscriptionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteSubscriptionResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [K2StreamNotFound, K2SubscriptionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -526,8 +526,8 @@ export const extendLease: API.OperationMethod<
   ExtendLeaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ExtendLeaseRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ExtendLeaseResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ExtendLeaseRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ExtendLeaseResponse>,
   errors: [
     K2StreamNotFound,
     K2SubscriptionNotFound,
@@ -547,8 +547,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetStreamRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetStreamResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetStreamRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetStreamResponse>,
   errors: [K2StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -562,8 +562,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetSubscriptionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetSubscriptionResponse>,
   errors: [K2StreamNotFound, K2SubscriptionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -577,8 +577,8 @@ export const listMonitoredSubscriptions: API.OperationMethod<
   ListMonitoredSubscriptionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListMonitoredSubscriptionsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ListMonitoredSubscriptionsResponse>,
   errors: [K2StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -594,8 +594,8 @@ export const listStreams: API.PaginatedOperationMethod<
   Stream
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListStreamsRequest>,
-    output: __S(30, __c3, 6) as any as S.Schema<ListStreamsResponse>,
+    input: __S(128, __c16, 0) as any as S.Schema<ListStreamsRequest>,
+    output: __S(130, __c16, 2) as any as S.Schema<ListStreamsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const listSubscriptions: API.OperationMethod<
   ListSubscriptionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [K2StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const nackBatch: API.OperationMethod<
   NackBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<NackBatchRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<NackBatchResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<NackBatchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<NackBatchResponse>,
   errors: [K2StreamNotFound, K2SubscriptionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -655,8 +655,8 @@ export const produce: API.OperationMethod<
   ProduceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ProduceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProduceResponse>,
+  input: __S(154, __c19, 2) as any as S.Schema<ProduceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProduceResponse>,
   errors: [
     K2StreamNotFound,
     K2InvalidRequest,
@@ -679,8 +679,8 @@ export const updateStream: API.OperationMethod<
   UpdateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateStreamRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateStreamResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateStreamRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateStreamResponse>,
   errors: [K2StreamNotFound, K2InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -706,11 +706,19 @@ function __c0(j: number): any {
           )
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "AckBatchRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AckBatchResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -723,62 +731,70 @@ function __c0(j: number): any {
           )
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "ConsumeRequest" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestampMs: S.Number.pipe(T.Body("timestamp_ms")),
           content: S.String,
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(24, __c3, 0))),
         }),
       ).annotate({ identifier: "ConsumedRecord" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           batchId: S.optional(S.NullOr(S.String).pipe(T.Body("batch_id"))),
           leasedUntilMs: S.optional(S.NullOr(S.Number).pipe(T.Body("leased_until_ms"))),
-          records: __S(5, __c0, 5),
+          records: __S(18, __c2, 2),
         }),
       ).annotate({ identifier: "ConsumeResponse" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          origins: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }),
-      ).annotate({ identifier: "StreamCors" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          authentication: S.optional(S.NullOr(S.Boolean)),
-          cors: S.optional(S.NullOr(__S(8, __c1, 0))),
-        }),
-      ).annotate({ identifier: "StreamHttpInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "StreamWorkerBindingInput" });
-    case 3:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           retentionSeconds: S.optional(S.Number.pipe(T.Body("retention_seconds"))),
-          http: __S(9, __c1, 1),
-          workerBinding: S.optional(__S(10, __c1, 2).pipe(T.Body("worker_binding"))),
+          http: __S(42, __c5, 2),
+          workerBinding: S.optional(__S(43, __c5, 3).pipe(T.Body("worker_binding"))),
         }).pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/k2/streams", code: 200 })),
       ).annotate({ identifier: "CreateStreamRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          origins: S.optional(S.NullOr(__S(40, __c5, 0))),
+        }),
+      ).annotate({ identifier: "StreamCors" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          authentication: S.optional(S.NullOr(S.Boolean)),
+          cors: S.optional(S.NullOr(__S(41, __c5, 1))),
+        }),
+      ).annotate({ identifier: "StreamHttpInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "StreamWorkerBindingInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -786,31 +802,33 @@ function __c1(j: number): any {
           name: S.String,
           retentionSeconds: S.Number.pipe(T.Body("retention_seconds")),
           endpoint: S.String,
-          http: __S(9, __c1, 1),
-          workerBinding: __S(10, __c1, 2).pipe(T.Body("worker_binding")),
+          http: __S(42, __c5, 2),
+          workerBinding: __S(43, __c5, 3).pipe(T.Body("worker_binding")),
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
         }),
       ).annotate({ identifier: "CreateStreamResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({ identifier: "SubscriptionStartAt" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
           name: S.String,
-          startAt: __S(13, __c1, 5).pipe(T.Body("start_at")),
+          startAt: __S(64, __c8, 0).pipe(T.Body("start_at")),
         })
           .pipe(T.Http({ method: "POST", uri: "/subscriptions", code: 200 }))
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({
         identifier: "CreateSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -820,7 +838,17 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "SubscriptionStartAt" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -835,7 +863,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteStreamRequest" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -846,7 +878,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteSubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -863,13 +899,17 @@ function __c2(j: number): any {
           )
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "ExtendLeaseRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           leasedUntilMs: S.Number.pipe(T.Body("leased_until_ms")),
         }),
       ).annotate({ identifier: "ExtendLeaseResponse" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -882,7 +922,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStreamRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -891,17 +935,25 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/subscriptions/{subscription_id}", code: 200 }))
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "GetSubscriptionRequest" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          startAt: __S(13, __c1, 5).pipe(T.Body("start_at")),
+          startAt: __S(64, __c8, 0).pipe(T.Body("start_at")),
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
         }),
       ).annotate({ identifier: "GetSubscriptionResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -916,35 +968,35 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListMonitoredSubscriptionsRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           records: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ConsumerLag" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          startAt: __S(13, __c1, 5).pipe(T.Body("start_at")),
+          startAt: __S(64, __c8, 0).pipe(T.Body("start_at")),
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
-          lag: __S(24, __c3, 0),
+          lag: __S(121, __c15, 1),
         }),
       ).annotate({ identifier: "MonitoredSubscription" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.Array(__S(122, __c15, 2));
+    case 4:
+      return S.suspend(() => __S(123, __c15, 3).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListMonitoredSubscriptionsResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -952,16 +1004,20 @@ function __c3(j: number): any {
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/k2/streams", code: 200 })),
       ).annotate({ identifier: "ListStreamsRequest" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(44, __c5, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(29, __c3, 5).pipe(T.EnvelopePayload()),
+          result: __S(129, __c16, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }),
       ).annotate({ identifier: "ListStreamsResponse" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -970,17 +1026,17 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/subscriptions", code: 200 }))
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
     case 1:
-      return S.suspend(() => __S(32, __c4, 0).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.Array(__S(112, __c14, 0));
+    case 2:
+      return S.suspend(() => __S(137, __c17, 1).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListSubscriptionsResponse",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
@@ -997,32 +1053,40 @@ function __c4(j: number): any {
           )
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "NackBatchRequest" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          headers: S.optional(__S(3, __c0, 3)),
+          headers: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "ProduceRecord" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
-          records: __S(36, __c4, 4),
+          records: __S(153, __c19, 1),
         })
           .pipe(T.Http({ method: "POST", uri: "/produce", code: 200 }))
           .pipe(T.Host("https://{stream_id}.k2.cloudflarestorage.com")),
       ).annotate({ identifier: "ProduceRequest" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           streamId: S.String.pipe(T.Label("stream_id")),
           retentionSeconds: S.optional(S.Number.pipe(T.Body("retention_seconds"))),
-          http: S.optional(__S(9, __c1, 1)),
-          workerBinding: S.optional(__S(10, __c1, 2).pipe(T.Body("worker_binding"))),
+          http: S.optional(__S(42, __c5, 2)),
+          workerBinding: S.optional(__S(43, __c5, 3).pipe(T.Body("worker_binding"))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1033,7 +1097,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateStreamRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

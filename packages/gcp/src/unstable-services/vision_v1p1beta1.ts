@@ -969,11 +969,11 @@ export const annotateFiles: API.OperationMethod<
   AnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<AnnotateFilesRequest>,
+  input: __S(288, __c9, 0) as any as S.Schema<AnnotateFilesRequest>,
   output: __S(
-    87,
-    __c10,
-    7,
+    421,
+    __c13,
+    5,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -988,11 +988,11 @@ export const annotateImages: API.OperationMethod<
   AnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<AnnotateImagesRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<AnnotateImagesRequest>,
   output: __S(
-    94,
-    __c11,
-    6,
+    545,
+    __c17,
+    1,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1007,11 +1007,11 @@ export const annotateProjectsFiles: API.OperationMethod<
   AnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<AnnotateProjectsFilesRequest>,
+  input: __S(608, __c19, 0) as any as S.Schema<AnnotateProjectsFilesRequest>,
   output: __S(
-    87,
-    __c10,
-    7,
+    421,
+    __c13,
+    5,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1026,11 +1026,11 @@ export const annotateProjectsImages: API.OperationMethod<
   AnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<AnnotateProjectsImagesRequest>,
+  input: __S(640, __c20, 0) as any as S.Schema<AnnotateProjectsImagesRequest>,
   output: __S(
-    94,
-    __c11,
-    6,
+    545,
+    __c17,
+    1,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1050,11 +1050,11 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
   AnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>,
+  input: __S(672, __c21, 0) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>,
   output: __S(
-    87,
-    __c10,
-    7,
+    421,
+    __c13,
+    5,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1074,11 +1074,11 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
   AnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>,
+  input: __S(704, __c22, 0) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>,
   output: __S(
-    94,
-    __c11,
-    6,
+    545,
+    __c17,
+    1,
   ) as any as S.Schema<GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1098,8 +1098,8 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
   AsyncBatchAnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<AsyncBatchAnnotateFilesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<AsyncBatchAnnotateFilesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1118,8 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
   AsyncBatchAnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<AsyncBatchAnnotateImagesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<AsyncBatchAnnotateImagesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1138,8 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(160, __c5, 0) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1178,8 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1198,8 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Operation>,
+  input: __S(256, __c8, 0) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1207,6 +1207,643 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(66, __c2, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/files:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateFilesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchSize: S.optional(S.Number),
+          gcsDestination: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1OutputConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(401, __c12, 17)),
+          metadata: S.optional(__S(401, __c12, 17)),
+          error: S.optional(__S(403, __c12, 19)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputConfig: S.optional(__S(480, __c15, 0)),
+          features: S.optional(__S(400, __c12, 16)),
+          imageContext: S.optional(__S(398, __c12, 14)),
+          outputConfig: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest",
+      });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(65, __c2, 1)),
+          labels: S.optional(__S(384, __c12, 0)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/images:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateImagesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          outputConfig: S.optional(__S(32, __c1, 0)),
+          parent: S.optional(S.String),
+          labels: S.optional(__S(384, __c12, 0)),
+          requests: S.optional(__S(579, __c18, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(66, __c2, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/files:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateProjectsFilesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/images:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateProjectsImagesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(66, __c2, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/files:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateProjectsLocationsFilesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/images:asyncBatchAnnotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateProjectsLocationsImagesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(418, __c13, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/files:annotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AnnotateFilesRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          score: S.optional(S.Number),
+          name: S.optional(S.String),
+          mid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation",
+      });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ProductKeyValue",
+      });
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          productLabels: S.optional(__S(323, __c10, 3)),
+          description: S.optional(S.String),
+          productCategory: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Product",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          image: S.optional(S.String),
+          product: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsResult",
+      });
+    case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          objectAnnotations: S.optional(__S(321, __c10, 1)),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          results: S.optional(__S(326, __c10, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult",
+      });
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          indexTime: S.optional(S.String),
+          productGroupedResults: S.optional(__S(328, __c10, 8)),
+          results: S.optional(__S(326, __c10, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResults",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          latLng: S.optional(__S(386, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1LocationInfo",
+      });
+    case 11:
+      return S.Array(__S(330, __c10, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          uint64Value: S.optional(S.String),
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Property",
+      });
+    case 13:
+      return S.Array(__S(332, __c10, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(331, __c10, 11)),
+          score: S.optional(S.Number),
+          locale: S.optional(S.String),
+          topicality: S.optional(S.Number),
+          mid: S.optional(S.String),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          description: S.optional(S.String),
+          properties: S.optional(__S(333, __c10, 13)),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1EntityAnnotation",
+      });
+    case 15:
+      return S.Array(__S(334, __c10, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          mid: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          name: S.optional(S.String),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation",
+      });
+    case 17:
+      return S.Array(__S(336, __c10, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          medical: S.optional(S.String),
+          adult: S.optional(S.String),
+          violence: S.optional(S.String),
+          spoof: S.optional(S.String),
+          racy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1SafeSearchAnnotation",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          green: S.optional(S.Number),
+          blue: S.optional(S.Number),
+          red: S.optional(S.Number),
+          alpha: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Color" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          pixelFraction: S.optional(S.Number),
+          color: S.optional(__S(339, __c10, 19)),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ColorInfo",
+      });
+    case 21:
+      return S.Array(__S(340, __c10, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          colors: S.optional(__S(341, __c10, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1DominantColorsAnnotation",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          dominantColors: S.optional(__S(342, __c10, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ImageProperties",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          pageNumber: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1ImageAnnotationContext",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage",
+      });
+    case 26:
+      return S.Array(__S(345, __c10, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          isPrefix: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          detectedLanguages: S.optional(__S(346, __c10, 26)),
+          detectedBreak: S.optional(__S(347, __c10, 27)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationTextProperty",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(396, __c12, 12)),
+          confidence: S.optional(S.Number),
+          property: S.optional(__S(348, __c10, 28)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Symbol",
+      });
+    case 30:
+      return S.Array(__S(349, __c10, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(396, __c12, 12)),
+          symbols: S.optional(__S(350, __c10, 30)),
+          property: S.optional(__S(348, __c10, 28)),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Word",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(351, __c10, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(396, __c12, 12)),
+          confidence: S.optional(S.Number),
+          property: S.optional(__S(348, __c10, 28)),
+          words: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Paragraph",
+      });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(396, __c12, 12)),
+          confidence: S.optional(S.Number),
+          paragraphs: S.optional(__S(354, __c11, 2)),
+          property: S.optional(__S(348, __c10, 28)),
+          blockType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Block",
+      });
+    case 4:
+      return S.Array(__S(355, __c11, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.optional(__S(348, __c10, 28)),
+          blocks: S.optional(__S(356, __c11, 4)),
+          confidence: S.optional(S.Number),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Page",
+      });
+    case 6:
+      return S.Array(__S(357, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          pages: S.optional(__S(358, __c11, 6)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1TextAnnotation",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          score: S.optional(S.Number),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebEntity",
+      });
+    case 9:
+      return S.Array(__S(360, __c11, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebLabel",
+      });
+    case 11:
+      return S.Array(__S(362, __c11, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebImage",
+      });
+    case 13:
+      return S.Array(__S(364, __c11, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          fullMatchingImages: S.optional(__S(365, __c11, 13)),
+          url: S.optional(S.String),
+          partialMatchingImages: S.optional(__S(365, __c11, 13)),
+          pageTitle: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebPage",
+      });
+    case 15:
+      return S.Array(__S(366, __c11, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          webEntities: S.optional(__S(361, __c11, 9)),
+          bestGuessLabels: S.optional(__S(363, __c11, 11)),
+          partialMatchingImages: S.optional(__S(365, __c11, 13)),
+          fullMatchingImages: S.optional(__S(365, __c11, 13)),
+          pagesWithMatchingImages: S.optional(__S(367, __c11, 15)),
+          visuallySimilarImages: S.optional(__S(365, __c11, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1WebDetection",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          importanceFraction: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1CropHint",
+      });
+    case 18:
+      return S.Array(__S(369, __c11, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          cropHints: S.optional(__S(370, __c11, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1CropHintsAnnotation",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          z: S.optional(S.Number),
+          y: S.optional(S.Number),
+          x: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1Position",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          position: S.optional(__S(372, __c11, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1FaceAnnotationLandmark",
+      });
+    case 22:
+      return S.Array(__S(373, __c11, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          tiltAngle: S.optional(S.Number),
+          underExposedLikelihood: S.optional(S.String),
+          panAngle: S.optional(S.Number),
+          surpriseLikelihood: S.optional(S.String),
+          sorrowLikelihood: S.optional(S.String),
+          rollAngle: S.optional(S.Number),
+          angerLikelihood: S.optional(S.String),
+          fdBoundingPoly: S.optional(__S(396, __c12, 12)),
+          landmarkingConfidence: S.optional(S.Number),
+          joyLikelihood: S.optional(S.String),
+          landmarks: S.optional(__S(374, __c11, 22)),
+          headwearLikelihood: S.optional(S.String),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          blurredLikelihood: S.optional(S.String),
+          detectionConfidence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1FaceAnnotation",
+      });
+    case 24:
+      return S.Array(__S(375, __c11, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          productSearchResults: S.optional(__S(329, __c10, 9)),
+          textAnnotations: S.optional(__S(335, __c10, 15)),
+          localizedObjectAnnotations: S.optional(__S(337, __c10, 17)),
+          logoAnnotations: S.optional(__S(335, __c10, 15)),
+          safeSearchAnnotation: S.optional(__S(338, __c10, 18)),
+          imagePropertiesAnnotation: S.optional(__S(343, __c10, 23)),
+          context: S.optional(__S(344, __c10, 24)),
+          fullTextAnnotation: S.optional(__S(359, __c11, 7)),
+          webDetection: S.optional(__S(368, __c11, 16)),
+          labelAnnotations: S.optional(__S(335, __c10, 15)),
+          error: S.optional(__S(403, __c12, 19)),
+          cropHintsAnnotation: S.optional(__S(371, __c11, 19)),
+          landmarkAnnotations: S.optional(__S(335, __c10, 15)),
+          faceAnnotations: S.optional(__S(376, __c11, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AnnotateImageResponse",
+      });
+    case 26:
+      return S.Array(__S(377, __c11, 25));
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -1228,8 +1865,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          minLatLng: S.optional(__S(2, __c0, 2)),
-          maxLatLng: S.optional(__S(2, __c0, 2)),
+          minLatLng: S.optional(__S(386, __c12, 2)),
+          maxLatLng: S.optional(__S(386, __c12, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1LatLongRect",
@@ -1239,7 +1876,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          advancedOcrOptions: S.optional(__S(4, __c0, 4)),
+          advancedOcrOptions: S.optional(__S(388, __c12, 4)),
           enableTextDetectionConfidenceScore: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1250,16 +1887,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aspectRatios: S.optional(__S(6, __c0, 6)),
+          aspectRatios: S.optional(__S(390, __c12, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1CropHintsParams",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           y: S.optional(S.Number),
@@ -1268,9 +1901,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1Vertex",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(392, __c12, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           x: S.optional(S.Number),
@@ -1279,42 +1912,42 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1NormalizedVertex",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(394, __c12, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          vertices: S.optional(__S(9, __c1, 1)),
-          normalizedVertices: S.optional(__S(11, __c1, 3)),
+          vertices: S.optional(__S(393, __c12, 9)),
+          normalizedVertices: S.optional(__S(395, __c12, 11)),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1BoundingPoly",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          productCategories: S.optional(__S(4, __c0, 4)),
+          boundingPoly: S.optional(__S(396, __c12, 12)),
+          productCategories: S.optional(__S(388, __c12, 4)),
           productSet: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1ProductSearchParams",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          webDetectionParams: S.optional(__S(1, __c0, 1)),
-          latLongRect: S.optional(__S(3, __c0, 3)),
-          textDetectionParams: S.optional(__S(5, __c0, 5)),
-          cropHintsParams: S.optional(__S(7, __c0, 7)),
-          productSearchParams: S.optional(__S(13, __c1, 5)),
-          languageHints: S.optional(__S(4, __c0, 4)),
+          webDetectionParams: S.optional(__S(385, __c12, 1)),
+          latLongRect: S.optional(__S(387, __c12, 3)),
+          textDetectionParams: S.optional(__S(389, __c12, 5)),
+          cropHintsParams: S.optional(__S(391, __c12, 7)),
+          productSearchParams: S.optional(__S(397, __c12, 13)),
+          languageHints: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1ImageContext",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -1324,13 +1957,73 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1Feature",
       });
+    case 16:
+      return S.Array(__S(399, __c12, 15));
+    case 17:
+      return S.Record(S.String, S.Unknown);
+    case 18:
+      return S.Array(__S(401, __c12, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(402, __c12, 18)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
   }
 }
-function __c2(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.suspend(() =>
+        S.Struct({
+          imageContext: S.optional(__S(398, __c12, 14)),
+          features: S.optional(__S(400, __c12, 16)),
+          inputConfig: S.optional(__S(480, __c15, 0)),
+          pages: S.optional(__S(390, __c12, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AnnotateFileRequest",
+      });
     case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(384, __c12, 0)),
+          parent: S.optional(S.String),
+          requests: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(378, __c11, 26)),
+          totalPages: S.optional(S.Number),
+          inputConfig: S.optional(__S(480, __c15, 0)),
+          error: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1AnnotateFileResponse",
+      });
+    case 4:
+      return S.Array(__S(419, __c13, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(420, __c13, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -1338,555 +2031,61 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1GcsSource",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(17, __c2, 1)),
+          gcsSource: S.optional(__S(448, __c14, 0)),
           content: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1InputConfig",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          imageContext: S.optional(__S(14, __c1, 6)),
-          features: S.optional(__S(16, __c2, 0)),
-          inputConfig: S.optional(__S(18, __c2, 2)),
-          pages: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AnnotateFileRequest",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
-          parent: S.optional(S.String),
-          requests: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1p1beta1/files:annotate",
+            uri: "v1p1beta1/images:annotate",
             baseUrl: "https://vision.googleapis.com/",
           }),
         ),
-      ).annotate({ identifier: "AnnotateFilesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          score: S.optional(S.Number),
-          name: S.optional(S.String),
-          mid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation",
-      });
+      ).annotate({ identifier: "AnnotateImagesRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ProductKeyValue",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          productLabels: S.optional(__S(26, __c3, 2)),
-          description: S.optional(S.String),
-          productCategory: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Product",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          image: S.optional(S.String),
-          product: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsResult",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectAnnotations: S.optional(__S(24, __c3, 0)),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          results: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          indexTime: S.optional(S.String),
-          productGroupedResults: S.optional(__S(31, __c3, 7)),
-          results: S.optional(__S(29, __c3, 5)),
+          parent: S.optional(S.String),
+          requests: S.optional(__S(579, __c18, 3)),
+          labels: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ProductSearchResults",
+        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          latLng: S.optional(__S(2, __c0, 2)),
+          responses: S.optional(__S(378, __c11, 26)),
         }),
       ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1LocationInfo",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uint64Value: S.optional(S.String),
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Property",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(34, __c4, 2)),
-          score: S.optional(S.Number),
-          locale: S.optional(S.String),
-          topicality: S.optional(S.Number),
-          mid: S.optional(S.String),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          description: S.optional(S.String),
-          properties: S.optional(__S(36, __c4, 4)),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1EntityAnnotation",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mid: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          name: S.optional(S.String),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation",
+        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse",
       });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          medical: S.optional(S.String),
-          adult: S.optional(S.String),
-          violence: S.optional(S.String),
-          spoof: S.optional(S.String),
-          racy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1SafeSearchAnnotation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          green: S.optional(S.Number),
-          blue: S.optional(S.Number),
-          red: S.optional(S.Number),
-          alpha: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Color" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pixelFraction: S.optional(S.Number),
-          color: S.optional(__S(42, __c5, 2)),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ColorInfo",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          colors: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1DominantColorsAnnotation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dominantColors: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ImageProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          pageNumber: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1ImageAnnotationContext",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          isPrefix: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          detectedLanguages: S.optional(__S(49, __c6, 1)),
-          detectedBreak: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1TextAnnotationTextProperty",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(12, __c1, 4)),
-          confidence: S.optional(S.Number),
-          property: S.optional(__S(51, __c6, 3)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Symbol",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(12, __c1, 4)),
-          symbols: S.optional(__S(53, __c6, 5)),
-          property: S.optional(__S(51, __c6, 3)),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Word",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(12, __c1, 4)),
-          confidence: S.optional(S.Number),
-          property: S.optional(__S(51, __c6, 3)),
-          words: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Paragraph",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(12, __c1, 4)),
-          confidence: S.optional(S.Number),
-          paragraphs: S.optional(__S(57, __c7, 1)),
-          property: S.optional(__S(51, __c6, 3)),
-          blockType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Block",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.optional(__S(51, __c6, 3)),
-          blocks: S.optional(__S(59, __c7, 3)),
-          confidence: S.optional(S.Number),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Page",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pages: S.optional(__S(61, __c7, 5)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1TextAnnotation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-          score: S.optional(S.Number),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebEntity",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebLabel",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebImage",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          fullMatchingImages: S.optional(__S(68, __c8, 4)),
-          url: S.optional(S.String),
-          partialMatchingImages: S.optional(__S(68, __c8, 4)),
-          pageTitle: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebPage",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          webEntities: S.optional(__S(64, __c8, 0)),
-          bestGuessLabels: S.optional(__S(66, __c8, 2)),
-          partialMatchingImages: S.optional(__S(68, __c8, 4)),
-          fullMatchingImages: S.optional(__S(68, __c8, 4)),
-          pagesWithMatchingImages: S.optional(__S(70, __c8, 6)),
-          visuallySimilarImages: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1WebDetection",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(73, __c9, 1)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          importanceFraction: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1CropHint",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cropHints: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1CropHintsAnnotation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          z: S.optional(S.Number),
-          y: S.optional(S.Number),
-          x: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1Position",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          position: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1FaceAnnotationLandmark",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tiltAngle: S.optional(S.Number),
-          underExposedLikelihood: S.optional(S.String),
-          panAngle: S.optional(S.Number),
-          surpriseLikelihood: S.optional(S.String),
-          sorrowLikelihood: S.optional(S.String),
-          rollAngle: S.optional(S.Number),
-          angerLikelihood: S.optional(S.String),
-          fdBoundingPoly: S.optional(__S(12, __c1, 4)),
-          landmarkingConfidence: S.optional(S.Number),
-          joyLikelihood: S.optional(S.String),
-          landmarks: S.optional(__S(80, __c10, 0)),
-          headwearLikelihood: S.optional(S.String),
-          boundingPoly: S.optional(__S(12, __c1, 4)),
-          blurredLikelihood: S.optional(S.String),
-          detectionConfidence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1FaceAnnotation",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          productSearchResults: S.optional(__S(32, __c4, 0)),
-          textAnnotations: S.optional(__S(38, __c4, 6)),
-          localizedObjectAnnotations: S.optional(__S(40, __c5, 0)),
-          logoAnnotations: S.optional(__S(38, __c4, 6)),
-          safeSearchAnnotation: S.optional(__S(41, __c5, 1)),
-          imagePropertiesAnnotation: S.optional(__S(46, __c5, 6)),
-          context: S.optional(__S(47, __c5, 7)),
-          fullTextAnnotation: S.optional(__S(62, __c7, 6)),
-          webDetection: S.optional(__S(71, __c8, 7)),
-          labelAnnotations: S.optional(__S(38, __c4, 6)),
-          error: S.optional(__S(74, __c9, 2)),
-          cropHintsAnnotation: S.optional(__S(77, __c9, 5)),
-          landmarkAnnotations: S.optional(__S(38, __c4, 6)),
-          faceAnnotations: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AnnotateImageResponse",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(84, __c10, 4)),
-          totalPages: S.optional(S.Number),
-          inputConfig: S.optional(__S(18, __c2, 2)),
-          error: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AnnotateFileResponse",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse",
-      });
-  }
-}
-function __c11(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1900,7 +2099,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(88, __c11, 0)),
+          source: S.optional(__S(576, __c18, 0)),
           content: S.optional(S.String),
         }),
       ).annotate({
@@ -1909,50 +2108,24 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          imageContext: S.optional(__S(14, __c1, 6)),
-          image: S.optional(__S(89, __c11, 1)),
-          features: S.optional(__S(16, __c2, 0)),
+          imageContext: S.optional(__S(398, __c12, 14)),
+          image: S.optional(__S(577, __c18, 1)),
+          features: S.optional(__S(400, __c12, 16)),
         }),
       ).annotate({
         identifier: "GoogleCloudVisionV1p1beta1AnnotateImageRequest",
       });
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          requests: S.optional(__S(91, __c11, 3)),
-          labels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/images:annotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AnnotateImagesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse",
-      });
-    case 7:
+      return S.Array(__S(578, __c18, 2));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(418, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1965,13 +2138,13 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1982,11 +2155,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnnotateProjectsImagesRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(418, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1997,11 +2174,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnnotateProjectsLocationsFilesRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2012,154 +2193,8 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnnotateProjectsLocationsImagesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          batchSize: S.optional(S.Number),
-          gcsDestination: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1OutputConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inputConfig: S.optional(__S(18, __c2, 2)),
-          features: S.optional(__S(16, __c2, 0)),
-          imageContext: S.optional(__S(14, __c1, 6)),
-          outputConfig: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(101, __c12, 5)),
-          labels: S.optional(__S(0, __c0, 0)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/files:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateFilesRequest",
-      });
   }
 }
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(72, __c9, 0)),
-          metadata: S.optional(__S(72, __c9, 0)),
-          error: S.optional(__S(74, __c9, 2)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          outputConfig: S.optional(__S(99, __c12, 3)),
-          parent: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          requests: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/images:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateImagesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/files:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateProjectsFilesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/images:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateProjectsImagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/files:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateProjectsLocationsFilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/images:asyncBatchAnnotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateProjectsLocationsImagesRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

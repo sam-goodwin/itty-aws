@@ -574,8 +574,8 @@ export const createMetricsCharacterize: API.OperationMethod<
   CreateMetricsCharacterizeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateMetricsCharacterizeRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MetricAnomalyReport>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateMetricsCharacterizeRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<MetricAnomalyReport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const createMetricsExplain: API.OperationMethod<
   CreateMetricsExplainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateMetricsExplainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MetricExplainResponse>,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateMetricsExplainRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<MetricExplainResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const createMetricsQuery: API.OperationMethod<
   CreateMetricsQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateMetricsQueryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<MetricQueryResponse>,
+  input: __S(61, __c7, 5) as any as S.Schema<CreateMetricsQueryRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<MetricQueryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const createMetricsSample: API.OperationMethod<
   CreateMetricsSampleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateMetricsSampleRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<MetricSamplesResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateMetricsSampleRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<MetricSamplesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const createMetricsValue: API.OperationMethod<
   CreateMetricsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateMetricsValueRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<MetricNamesResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateMetricsValueRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<MetricNamesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const getMetricsAttribute: API.OperationMethod<
   GetMetricsAttributeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetMetricsAttributeRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<MetricAttributeKeysResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetMetricsAttributeRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<MetricAttributeKeysResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const getMetricsAttributeValue: API.OperationMethod<
   GetMetricsAttributeValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetMetricsAttributeValueRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<MetricAttributeValuesResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetMetricsAttributeValueRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<MetricAttributeValuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const getMetricsErrorSpike: API.OperationMethod<
   GetMetricsErrorSpikeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetMetricsErrorSpikeRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<MetricErrorSpikesResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetMetricsErrorSpikeRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<MetricErrorSpikesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const getMetricsHasMetrics: API.OperationMethod<
   GetMetricsHasMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetMetricsHasMetricsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<HasMetricsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetMetricsHasMetricsRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<HasMetricsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -707,8 +707,8 @@ export const getMetricsName: API.OperationMethod<
   GetMetricsNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetMetricsNameRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<MetricPickerNamesResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetMetricsNameRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<MetricPickerNamesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -722,8 +722,8 @@ export const getMetricsOverview: API.OperationMethod<
   GetMetricsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetMetricsOverviewRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<MetricsOverviewResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetMetricsOverviewRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<MetricsOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -737,8 +737,8 @@ export const getMetricsValue: API.OperationMethod<
   GetMetricsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetMetricsValueRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<MetricNamesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetMetricsValueRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<MetricNamesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -750,19 +750,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: S.String,
-          op: S.optional(S.String),
-          value: S.String,
-          scope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricFilter" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           metricName: S.String,
           anomalyFrom: S.String,
           anomalyTo: S.optional(S.String),
@@ -770,15 +757,15 @@ function __c0(j: number): any {
           baselineTo: S.optional(S.String),
           aggregation: S.optional(S.NullOr(S.String)),
           quantile: S.optional(S.NullOr(S.Number)),
-          filters: S.optional(__S(1, __c0, 1)),
-          candidateKeys: S.optional(__S(2, __c0, 2)),
+          filters: S.optional(__S(9, __c1, 1)),
+          candidateKeys: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "MetricAnomalyBody" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(3, __c0, 3),
+          query: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -789,7 +776,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateMetricsCharacterizeRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -799,33 +786,9 @@ function __c0(j: number): any {
           change_ratio: S.Number,
         }),
       ).annotate({ identifier: "MetricAnomalyDimension" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.String,
-          value: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "MetricQueryPoint" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          labels: __S(7, __c0, 7),
-          points: __S(9, __c1, 1),
-          metric_name: S.optional(S.NullOr(S.String)),
-          clause: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "MetricSeries" });
     case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           metric_name: S.String,
@@ -842,42 +805,27 @@ function __c1(j: number): any {
           change_ratio: S.Number,
           direction: S.String,
           onset_time: S.NullOr(S.String),
-          top_movers: __S(6, __c0, 6),
-          series: __S(10, __c1, 2),
+          top_movers: __S(3, __c0, 3),
+          series: __S(18, __c2, 2),
         }),
       ).annotate({ identifier: "MetricAnomalyReport" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metricName: S.String,
-          metricType: S.optional(S.NullOr(S.String)),
-          aggregation: S.optional(S.String),
-          quantile: S.optional(S.NullOr(S.Number)),
-          filters: S.optional(__S(1, __c0, 1)),
-          bucketStart: S.String,
-          interval: S.String,
+          key: S.String,
+          op: S.optional(S.String),
+          value: S.String,
+          scope: S.optional(S.String),
         }),
-      ).annotate({ identifier: "MetricExplainBody" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/explain/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMetricsExplainRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.String,
-          value: S.Number,
-        }),
-      ).annotate({ identifier: "MetricSampleView" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+      ).annotate({ identifier: "MetricFilter" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.Record(S.String, S.String);
   }
 }
 function __c2(j: number): any {
@@ -885,18 +833,78 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          time: S.String,
+          value: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "MetricQueryPoint" });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labels: __S(10, __c1, 2),
+          points: __S(17, __c2, 1),
+          metric_name: S.optional(S.NullOr(S.String)),
+          clause: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "MetricSeries" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.String,
+          metricType: S.optional(S.NullOr(S.String)),
+          aggregation: S.optional(S.String),
+          quantile: S.optional(S.NullOr(S.Number)),
+          filters: S.optional(__S(9, __c1, 1)),
+          bucketStart: S.String,
+          interval: S.String,
+        }),
+      ).annotate({ identifier: "MetricExplainBody" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(32, __c4, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/explain/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMetricsExplainRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.String,
+          value: S.Number,
+        }),
+      ).annotate({ identifier: "MetricSampleView" });
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
           service_name: S.String,
-          labels: __S(7, __c0, 7),
-          resource_labels: __S(7, __c0, 7),
-          samples: __S(15, __c1, 7),
+          labels: __S(10, __c1, 2),
+          resource_labels: __S(10, __c1, 2),
+          samples: __S(35, __c4, 3),
           sample_count: S.Number,
           samples_truncated: S.Boolean,
           value: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "MetricSeriesBreakdown" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(36, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           metric_name: S.String,
@@ -907,7 +915,7 @@ function __c2(j: number): any {
           interval: S.String,
           temporal_reducer: S.String,
           spatial_reducer: S.String,
-          series: __S(17, __c2, 1),
+          series: __S(37, __c4, 5),
           series_count: S.Number,
           sample_count: S.Number,
           series_truncated: S.Boolean,
@@ -919,329 +927,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MetricBucketDecomposition",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          decomposition: __S(18, __c2, 2),
+          decomposition: __S(38, __c4, 6),
         }),
       ).annotate({ identifier: "MetricExplainResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          scope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricGroupBy" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          metricName: S.String,
-          metricType: S.optional(S.NullOr(S.String)),
-          aggregation: S.optional(S.String),
-          quantile: S.optional(S.NullOr(S.Number)),
-          filters: S.optional(__S(1, __c0, 1)),
-          groupBy: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "MetricClause" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-          metricType: S.optional(S.NullOr(S.String)),
-          aggregation: S.optional(S.String),
-          quantile: S.optional(S.NullOr(S.Number)),
-          filters: S.optional(__S(1, __c0, 1)),
-          groupBy: S.optional(__S(21, __c2, 5)),
-          interval: S.optional(S.NullOr(S.String)),
-          clauses: S.optional(__S(23, __c2, 7)),
-          formula: S.optional(S.NullOr(S.String)),
-          dateFrom: S.String,
-          dateTo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricQueryBody" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/query/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMetricsQueryRequest",
-      });
-    case 2:
-      return S.Array(__S(10, __c1, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "MetricQueryResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-          dateFrom: S.String,
-          dateTo: S.optional(S.String),
-          traceId: S.optional(S.String),
-          spanId: S.optional(S.String),
-          metricType: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(1, __c0, 1)),
-          limit: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricSamplesBody" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(28, __c3, 4),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/samples/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMetricsSampleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.String,
-          metric_name: S.String,
-          metric_type: S.String,
-          value: S.Number,
-          count: S.Number,
-          unit: S.String,
-          aggregation_temporality: S.String,
-          is_monotonic: S.Boolean,
-          service_name: S.String,
-          trace_id: S.String,
-          span_id: S.String,
-          attributes: __S(7, __c0, 7),
-          resource_attributes: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "MetricEventSample" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(31, __c3, 7),
-        }),
-      ).annotate({ identifier: "MetricSamplesResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          value: S.optional(S.String),
-          limit: S.optional(S.Number),
-          service: S.optional(S.String),
-          names: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/values/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMetricsValueRequest",
-      });
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          metric_type: S.String,
-          unit: S.optional(S.String),
-          last_seen: S.optional(S.NullOr(S.String)),
-          sparkline: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "MetricName" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(36, __c4, 4),
-        }),
-      ).annotate({ identifier: "MetricNamesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dateFrom: S.optional(S.String.pipe(T.Query())),
-          dateTo: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          metricName: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/metrics/attributes/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetricsAttributeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value_count: S.Number,
-        }),
-      ).annotate({ identifier: "MetricAttributeKey" });
   }
 }
 function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(40, __c5, 0),
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "MetricAttributeKeysResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dateFrom: S.optional(S.String.pipe(T.Query())),
-          dateTo: S.optional(S.String.pipe(T.Query())),
-          key: S.String.pipe(T.Query()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          value: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/metrics/attribute_values/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetricsAttributeValueRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "MetricAttributeValue" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(44, __c5, 4),
-        }),
-      ).annotate({
-        identifier: "MetricAttributeValuesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dateFrom: S.String.pipe(T.Query()),
-          dateTo: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/metrics/error_spikes/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetricsErrorSpikeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          detected_at: S.String,
-          issue_id: S.String,
-          issue_name: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "MetricErrorSpike" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(48, __c6, 0),
-        }),
-      ).annotate({
-        identifier: "MetricErrorSpikesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/metrics/has_metrics/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetricsHasMetricsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hasMetrics: S.Boolean,
-        }),
-      ).annotate({ identifier: "HasMetricsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          service: S.optional(S.String.pipe(T.Query())),
-          value: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/metrics/names/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetMetricsNameRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          metric_type: S.String,
-        }),
-      ).annotate({ identifier: "MetricPickerName" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(54, __c6, 6),
-        }),
-      ).annotate({
-        identifier: "MetricPickerNamesResponse",
-      });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1263,7 +957,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "MetricsOverviewService" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1271,10 +965,14 @@ function __c7(j: number): any {
           metric_names: S.Number,
           series: S.Number,
           lookback_seconds: S.Number,
-          services: __S(58, __c7, 2),
+          services: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "MetricsOverviewResponse" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1287,7 +985,340 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetMetricsValueRequest" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          scope: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricGroupBy" });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          metricName: S.String,
+          metricType: S.optional(S.NullOr(S.String)),
+          aggregation: S.optional(S.String),
+          quantile: S.optional(S.NullOr(S.Number)),
+          filters: S.optional(__S(9, __c1, 1)),
+          groupBy: S.optional(__S(57, __c7, 1)),
+        }),
+      ).annotate({ identifier: "MetricClause" });
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+          metricType: S.optional(S.NullOr(S.String)),
+          aggregation: S.optional(S.String),
+          quantile: S.optional(S.NullOr(S.Number)),
+          filters: S.optional(__S(9, __c1, 1)),
+          groupBy: S.optional(__S(57, __c7, 1)),
+          interval: S.optional(S.NullOr(S.String)),
+          clauses: S.optional(__S(59, __c7, 3)),
+          formula: S.optional(S.NullOr(S.String)),
+          dateFrom: S.String,
+          dateTo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricQueryBody" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(60, __c7, 4),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/query/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMetricsQueryRequest",
+      });
+    case 6:
+      return S.Array(__S(18, __c2, 2));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(62, __c7, 6),
+        }),
+      ).annotate({ identifier: "MetricQueryResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+          dateFrom: S.String,
+          dateTo: S.optional(S.String),
+          traceId: S.optional(S.String),
+          spanId: S.optional(S.String),
+          metricType: S.optional(S.NullOr(S.String)),
+          filters: S.optional(__S(9, __c1, 1)),
+          limit: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricSamplesBody" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(64, __c8, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/samples/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMetricsSampleRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.String,
+          metric_name: S.String,
+          metric_type: S.String,
+          value: S.Number,
+          count: S.Number,
+          unit: S.String,
+          aggregation_temporality: S.String,
+          is_monotonic: S.Boolean,
+          service_name: S.String,
+          trace_id: S.String,
+          span_id: S.String,
+          attributes: __S(10, __c1, 2),
+          resource_attributes: __S(10, __c1, 2),
+        }),
+      ).annotate({ identifier: "MetricEventSample" });
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(67, __c8, 3),
+        }),
+      ).annotate({ identifier: "MetricSamplesResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          value: S.optional(S.String),
+          limit: S.optional(S.Number),
+          service: S.optional(S.String),
+          names: __S(24, __c3, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/metrics/values/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMetricsValueRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          metric_type: S.String,
+          unit: S.optional(S.String),
+          last_seen: S.optional(S.NullOr(S.String)),
+          sparkline: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({ identifier: "MetricName" });
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(82, __c10, 2),
+        }),
+      ).annotate({ identifier: "MetricNamesResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dateFrom: S.optional(S.String.pipe(T.Query())),
+          dateTo: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          metricName: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/metrics/attributes/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetricsAttributeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value_count: S.Number,
+        }),
+      ).annotate({ identifier: "MetricAttributeKey" });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(90, __c11, 2),
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "MetricAttributeKeysResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dateFrom: S.optional(S.String.pipe(T.Query())),
+          dateTo: S.optional(S.String.pipe(T.Query())),
+          key: S.String.pipe(T.Query()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          value: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/metrics/attribute_values/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetricsAttributeValueRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "MetricAttributeValue" });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(98, __c12, 2),
+        }),
+      ).annotate({
+        identifier: "MetricAttributeValuesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dateFrom: S.String.pipe(T.Query()),
+          dateTo: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/metrics/error_spikes/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetricsErrorSpikeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          detected_at: S.String,
+          issue_id: S.String,
+          issue_name: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "MetricErrorSpike" });
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(106, __c13, 2),
+        }),
+      ).annotate({
+        identifier: "MetricErrorSpikesResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/metrics/has_metrics/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetricsHasMetricsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hasMetrics: S.Boolean,
+        }),
+      ).annotate({ identifier: "HasMetricsResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          value: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/metrics/names/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetMetricsNameRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          metric_type: S.String,
+        }),
+      ).annotate({ identifier: "MetricPickerName" });
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(122, __c15, 2),
+        }),
+      ).annotate({
+        identifier: "MetricPickerNamesResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));
